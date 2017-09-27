@@ -57,4 +57,9 @@ public class Exportadore implements Serializable
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Exportadore [numero=" + numero + ", tipo=" + tipo + ", additionalProperties=" + additionalProperties + "]";
+    }
+
 }

@@ -57,4 +57,9 @@ public class Declarante implements Serializable
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "Declarante [numero=" + numero + ", tipo=" + tipo + ", additionalProperties=" + additionalProperties + "]";
+    }
+
 }

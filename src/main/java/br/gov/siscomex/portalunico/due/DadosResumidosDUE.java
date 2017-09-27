@@ -228,4 +228,9 @@ public class DadosResumidosDUE implements Serializable
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return "DadosResumidosDUE [numeroDUE=" + numeroDUE + ", numeroRUC=" + numeroRUC + ", situacaoDUE=" + situacaoDUE + ", dataSituacaoDUE=" + dataSituacaoDUE + ", situacaoCarga=" + situacaoCarga + ", controleAdministrativo=" + controleAdministrativo + ", indicadorBloqueio=" + indicadorBloqueio + ", declarante=" + declarante + ", exportadores=" + exportadores + ", codigoRecintoAduaneiroDespacho=" + codigoRecintoAduaneiroDespacho + ", coordenadasDespacho=" + coordenadasDespacho + ", responsaveluaDespacho=" + responsaveluaDespacho + ", uaDespacho=" + uaDespacho + ", codigoRecintoAduaneiroEmbarque=" + codigoRecintoAduaneiroEmbarque + ", uaEmbarque=" + uaEmbarque + ", additionalProperties=" + additionalProperties + "]";
+    }
+
 }
