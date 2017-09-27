@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>samuelfac</groupId>
+  <artifactId>portalunico.siscomex.gov.br</artifactId>
+  <version>25-09-2017</version>
+  <name>PortalUnicoSiscomex</name>
+  <description>Classes da API do Portal Único de Comércio Exterior, a nova forma de interação entre as empresas privadas e os diversos órgãos públicos intervenientes no comércio exterior.</description>
+  <url>https://val.portalunico.siscomex.gov.br/docs/api/</url>
+  <organization>
+  	<name>Samuel Facchinello</name>
+  	<url>https://about.me/samuelfac</url>
+  </organization>
+  <scm>
+  	<developerConnection>Samuel Facchinello</developerConnection>
+  </scm>
+  <issueManagement>
+  	<system>GitHub Issues</system>
+  </issueManagement>
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+</project>
