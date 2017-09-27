@@ -2,235 +2,62 @@
 package br.gov.siscomex.portalunico.due;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "numeroDUE",
-    "numeroRUC",
-    "situacaoDUE",
-    "dataSituacaoDUE",
-    "situacaoCarga",
-    "controleAdministrativo",
-    "indicadorBloqueio",
-    "declarante",
-    "exportadores",
-    "codigoRecintoAduaneiroDespacho",
-    "coordenadasDespacho",
-    "responsaveluaDespacho",
-    "uaDespacho",
-    "codigoRecintoAduaneiroEmbarque",
-    "uaEmbarque"
-})
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import lombok.Data;
+
+@Data
 public class DadosResumidosDUE implements Serializable
 {
 
-    @JsonProperty("numeroDUE")
+    private final static long serialVersionUID = -1410028088068863182L;
+
+    @SerializedName("numeroDUE")
+    @Expose
     private String numeroDUE;
-    @JsonProperty("numeroRUC")
+    @SerializedName("numeroRUC")
+    @Expose
     private String numeroRUC;
-    @JsonProperty("situacaoDUE")
+    @SerializedName("situacaoDUE")
+    @Expose
     private Integer situacaoDUE;
-    @JsonProperty("dataSituacaoDUE")
-    private Date dataSituacaoDUE;
-    @JsonProperty("situacaoCarga")
+    @SerializedName("dataSituacaoDUE")
+    @Expose
+    private String dataSituacaoDUE;
+    @SerializedName("situacaoCarga")
+    @Expose
     private List<Integer> situacaoCarga = null;
-    @JsonProperty("controleAdministrativo")
+    @SerializedName("controleAdministrativo")
+    @Expose
     private Integer controleAdministrativo;
-    @JsonProperty("indicadorBloqueio")
+    @SerializedName("indicadorBloqueio")
+    @Expose
     private Integer indicadorBloqueio;
-    @JsonProperty("declarante")
+    @SerializedName("declarante")
+    @Expose
     private Declarante declarante;
-    @JsonProperty("exportadores")
+    @SerializedName("exportadores")
+    @Expose
     private List<Exportadore> exportadores = null;
-    @JsonProperty("codigoRecintoAduaneiroDespacho")
+    @SerializedName("codigoRecintoAduaneiroDespacho")
+    @Expose
     private String codigoRecintoAduaneiroDespacho;
-    @JsonProperty("coordenadasDespacho")
+    @SerializedName("coordenadasDespacho")
+    @Expose
     private String coordenadasDespacho;
-    @JsonProperty("responsaveluaDespacho")
+    @SerializedName("responsaveluaDespacho")
+    @Expose
     private Object responsaveluaDespacho;
-    @JsonProperty("uaDespacho")
+    @SerializedName("uaDespacho")
+    @Expose
     private String uaDespacho;
-    @JsonProperty("codigoRecintoAduaneiroEmbarque")
+    @SerializedName("codigoRecintoAduaneiroEmbarque")
+    @Expose
     private String codigoRecintoAduaneiroEmbarque;
-    @JsonProperty("uaEmbarque")
+    @SerializedName("uaEmbarque")
+    @Expose
     private String uaEmbarque;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 2577499295168303405L;
-
-    @JsonProperty("numeroDUE")
-    public String getNumeroDUE() {
-        return numeroDUE;
-    }
-
-    @JsonProperty("numeroDUE")
-    public void setNumeroDUE(String numeroDUE) {
-        this.numeroDUE = numeroDUE;
-    }
-
-    @JsonProperty("numeroRUC")
-    public String getNumeroRUC() {
-        return numeroRUC;
-    }
-
-    @JsonProperty("numeroRUC")
-    public void setNumeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-    }
-
-    @JsonProperty("situacaoDUE")
-    public Integer getSituacaoDUE() {
-        return situacaoDUE;
-    }
-
-    @JsonProperty("situacaoDUE")
-    public void setSituacaoDUE(Integer situacaoDUE) {
-        this.situacaoDUE = situacaoDUE;
-    }
-
-    @JsonProperty("dataSituacaoDUE")
-    public Date getDataSituacaoDUE() {
-        return dataSituacaoDUE;
-    }
-
-    @JsonProperty("dataSituacaoDUE")
-    public void setDataSituacaoDUE(Date dataSituacaoDUE) {
-        this.dataSituacaoDUE = dataSituacaoDUE;
-    }
-
-    @JsonProperty("situacaoCarga")
-    public List<Integer> getSituacaoCarga() {
-        return situacaoCarga;
-    }
-
-    @JsonProperty("situacaoCarga")
-    public void setSituacaoCarga(List<Integer> situacaoCarga) {
-        this.situacaoCarga = situacaoCarga;
-    }
-
-    @JsonProperty("controleAdministrativo")
-    public Integer getControleAdministrativo() {
-        return controleAdministrativo;
-    }
-
-    @JsonProperty("controleAdministrativo")
-    public void setControleAdministrativo(Integer controleAdministrativo) {
-        this.controleAdministrativo = controleAdministrativo;
-    }
-
-    @JsonProperty("indicadorBloqueio")
-    public Integer getIndicadorBloqueio() {
-        return indicadorBloqueio;
-    }
-
-    @JsonProperty("indicadorBloqueio")
-    public void setIndicadorBloqueio(Integer indicadorBloqueio) {
-        this.indicadorBloqueio = indicadorBloqueio;
-    }
-
-    @JsonProperty("declarante")
-    public Declarante getDeclarante() {
-        return declarante;
-    }
-
-    @JsonProperty("declarante")
-    public void setDeclarante(Declarante declarante) {
-        this.declarante = declarante;
-    }
-
-    @JsonProperty("exportadores")
-    public List<Exportadore> getExportadores() {
-        return exportadores;
-    }
-
-    @JsonProperty("exportadores")
-    public void setExportadores(List<Exportadore> exportadores) {
-        this.exportadores = exportadores;
-    }
-
-    @JsonProperty("codigoRecintoAduaneiroDespacho")
-    public String getCodigoRecintoAduaneiroDespacho() {
-        return codigoRecintoAduaneiroDespacho;
-    }
-
-    @JsonProperty("codigoRecintoAduaneiroDespacho")
-    public void setCodigoRecintoAduaneiroDespacho(String codigoRecintoAduaneiroDespacho) {
-        this.codigoRecintoAduaneiroDespacho = codigoRecintoAduaneiroDespacho;
-    }
-
-    @JsonProperty("coordenadasDespacho")
-    public String getCoordenadasDespacho() {
-        return coordenadasDespacho;
-    }
-
-    @JsonProperty("coordenadasDespacho")
-    public void setCoordenadasDespacho(String coordenadasDespacho) {
-        this.coordenadasDespacho = coordenadasDespacho;
-    }
-
-    @JsonProperty("responsaveluaDespacho")
-    public Object getResponsaveluaDespacho() {
-        return responsaveluaDespacho;
-    }
-
-    @JsonProperty("responsaveluaDespacho")
-    public void setResponsaveluaDespacho(Object responsaveluaDespacho) {
-        this.responsaveluaDespacho = responsaveluaDespacho;
-    }
-
-    @JsonProperty("uaDespacho")
-    public String getUaDespacho() {
-        return uaDespacho;
-    }
-
-    @JsonProperty("uaDespacho")
-    public void setUaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-    }
-
-    @JsonProperty("codigoRecintoAduaneiroEmbarque")
-    public String getCodigoRecintoAduaneiroEmbarque() {
-        return codigoRecintoAduaneiroEmbarque;
-    }
-
-    @JsonProperty("codigoRecintoAduaneiroEmbarque")
-    public void setCodigoRecintoAduaneiroEmbarque(String codigoRecintoAduaneiroEmbarque) {
-        this.codigoRecintoAduaneiroEmbarque = codigoRecintoAduaneiroEmbarque;
-    }
-
-    @JsonProperty("uaEmbarque")
-    public String getUaEmbarque() {
-        return uaEmbarque;
-    }
-
-    @JsonProperty("uaEmbarque")
-    public void setUaEmbarque(String uaEmbarque) {
-        this.uaEmbarque = uaEmbarque;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
-    @Override
-    public String toString() {
-        return "DadosResumidosDUE [numeroDUE=" + numeroDUE + ", numeroRUC=" + numeroRUC + ", situacaoDUE=" + situacaoDUE + ", dataSituacaoDUE=" + dataSituacaoDUE + ", situacaoCarga=" + situacaoCarga + ", controleAdministrativo=" + controleAdministrativo + ", indicadorBloqueio=" + indicadorBloqueio + ", declarante=" + declarante + ", exportadores=" + exportadores + ", codigoRecintoAduaneiroDespacho=" + codigoRecintoAduaneiroDespacho + ", coordenadasDespacho=" + coordenadasDespacho + ", responsaveluaDespacho=" + responsaveluaDespacho + ", uaDespacho=" + uaDespacho + ", codigoRecintoAduaneiroEmbarque=" + codigoRecintoAduaneiroEmbarque + ", uaEmbarque=" + uaEmbarque + ", additionalProperties=" + additionalProperties + "]";
-    }
-
 }
