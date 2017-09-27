@@ -23,19 +23,19 @@ public class DadosResumidosDUE implements Serializable
     private String numeroRUC;
     @SerializedName("situacaoDUE")
     @Expose
-    private Integer situacaoDUE;
+    private SituacaoDUE situacaoDUE;
     @SerializedName("dataSituacaoDUE")
     @Expose
     private String dataSituacaoDUE;
     @SerializedName("situacaoCarga")
     @Expose
-    private List<Integer> situacaoCarga = null;
+    private List<SituacaoCarga> situacaoCarga = null;
     @SerializedName("controleAdministrativo")
     @Expose
-    private Integer controleAdministrativo;
+    private ControleAdministrativo controleAdministrativo;
     @SerializedName("indicadorBloqueio")
     @Expose
-    private Integer indicadorBloqueio;
+    private IndicadorBloqueio indicadorBloqueio;
     @SerializedName("declarante")
     @Expose
     private Declarante declarante;
