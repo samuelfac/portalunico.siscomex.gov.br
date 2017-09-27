@@ -2,6 +2,7 @@
 package br.gov.siscomex.portalunico.due;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class DadosResumidosDUE implements Serializable
     @JsonProperty("situacaoDUE")
     private Integer situacaoDUE;
     @JsonProperty("dataSituacaoDUE")
-    private String dataSituacaoDUE;
+    private Date dataSituacaoDUE;
     @JsonProperty("situacaoCarga")
     private List<Integer> situacaoCarga = null;
     @JsonProperty("controleAdministrativo")
@@ -98,12 +99,12 @@ public class DadosResumidosDUE implements Serializable
     }
 
     @JsonProperty("dataSituacaoDUE")
-    public String getDataSituacaoDUE() {
+    public Date getDataSituacaoDUE() {
         return dataSituacaoDUE;
     }
 
     @JsonProperty("dataSituacaoDUE")
-    public void setDataSituacaoDUE(String dataSituacaoDUE) {
+    public void setDataSituacaoDUE(Date dataSituacaoDUE) {
         this.dataSituacaoDUE = dataSituacaoDUE;
     }
 
