@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+	targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../TipoSimples.xsd" />
+	<include schemaLocation="../TipoComplexo.xsd" />
+
+	<element name="ManifestacoesExportacao">
+	    		<complexType>
+	      			<sequence>
+	        			<element name="manifestacao" type="tns:ManifestacaoExportacao" minOccurs="1" maxOccurs="1" />
+	      			</sequence>
+	      		</complexType>
+	      		<unique name="identificacaoManifestacao">
+  					<selector xpath="tns:manifestacao"/>
+  					<field xpath="tns:identificacaoManifestacao"/>
+ 				</unique>
+  	</element>
+
+	<complexType name="ManifestacaoExportacao">
+		<sequence>
+
+			<element name="identificacaoManifestacao" type="tns:StringBasica50" minOccurs="1" maxOccurs="1" />
+			<element name="tipoDocumentoTransporte" type="tns:TipoDocumentoTransporte" minOccurs="1" maxOccurs="1" />
+			<element name="indCargaEnviadaDespacho" type="tns:SimNao" minOccurs="1" maxOccurs="1" />
+			<element name="cargaJaEmbarcada" type="tns:SimNao" minOccurs="1" maxOccurs="1" />
+			
+			<choice>
+				<element name="cnpjTransportador" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+				<element name="cpfTransportador" type="tns:CPF" minOccurs="1" maxOccurs="1" />
+			</choice>
+			
+			<choice>
+				<sequence>
+					<element name="codigoURF" type="tns:CodigoURF" minOccurs="1" maxOccurs="1" />
+					<element name="coordenadas" type="tns:Coordenadas" minOccurs="0" maxOccurs="1"/>
+					<element name="cnpjRespEstoqueCarga" type="tns:CNPJ" minOccurs="0" maxOccurs="1" />
+				</sequence>
+				<sequence>
+					<element name="codigoRA" type="tns:CodigoRA" minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</choice>	
+			
+			<choice>
+				<element name="veiculoAereo">
+					<complexType>
+						<sequence>
+							<element name="codigoTipoModal" type="tns:CodigoDominioAereo" minOccurs="1" maxOccurs="1" />
+							<element name="prefixoAeronave" type="tns:PrefixoAeronave" minOccurs="1" maxOccurs="1" />
+							<element name="numeroVoo" type="tns:NumeroVoo" minOccurs="1" maxOccurs="1" />
+							<element name="dataPartidaProcedencia" type="tns:DataPadraoServico" minOccurs="1" maxOccurs="1" />
+						</sequence>
+					</complexType>
+				</element>
+				<element name="veiculoAquaviario">
+					<complexType>
+						<sequence>
+							<element name="codigoTipoModal" type="tns:CodigoDominioAquaViario" minOccurs="1" maxOccurs="1" />
+							<element name="codigoIMO" type="tns:CodigoIMO" minOccurs="1" maxOccurs="1" />
+							<element name="numeroEscala" type="tns:NumeroEscala" minOccurs="1" maxOccurs="1"/>
+							<element name="dataEncerramentoManifesto" type="tns:DataPadraoServico" minOccurs="1" maxOccurs="1"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="outroModal">
+					<complexType>
+						<sequence>
+							<element name="codigoTipoModal" type="tns:CodigoDominioOutroVeiculo" minOccurs="1" maxOccurs="1" />
+							<element name="identificacaoVeiculo" type="tns:IdentificacaoVeiculo" minOccurs="1" maxOccurs="1" />
+							<element name="numeroDocumentoTransporte" type="tns:NumeroDocumentoTransporte" minOccurs="1" maxOccurs="1" />
+							<element name="dataEmissaoDocumentoTransporte" type="tns:DataPadraoServico" minOccurs="1" maxOccurs="1"/>
+						</sequence>
+					</complexType>
+				</element>
+			</choice>
+			
+			<choice>
+				<element name="conhecimentosCarga" minOccurs="1" maxOccurs="1">
+		    		<complexType>
+		      			<sequence>
+		        			<element name="conhecimento" type="tns:Conhecimento" minOccurs="1" maxOccurs="unbounded" />
+		      			</sequence>
+		    		</complexType>
+		      		<unique name="numeroConhecimento">
+		            	<selector xpath="tns:conhecimento" />
+		        		<field xpath="tns:numeroConhecimento" />
+		        	</unique>
+	  			</element>
+
+	  			<element name="transporteProprio" minOccurs="1" maxOccurs="1">
+		    		<complexType>
+		      			<sequence>
+		        			<element name="dadosCarga" type="tns:DadosCarga" minOccurs="1" maxOccurs="unbounded" />
+		      			</sequence>
+		    		</complexType>
+  		  		</element>
+  			</choice>
+
+			<element name="observacoes" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+		</sequence>
+
+	</complexType>
+
+	<complexType name="Conhecimento">
+		<sequence>
+			<element name="numeroConhecimento" type="tns:NumeroConhecimento" minOccurs="1" maxOccurs="1" />
+
+			<element name="dataEmissaoConhecimento" type="tns:DataPadraoServico" minOccurs="1" maxOccurs="1" />
+
+			<element name="frete" type="tns:Frete" minOccurs="0" maxOccurs="1" />
+
+			<element name="cargas">
+	    		<complexType>
+	      			<sequence>
+	        			<element name="dadosCarga" type="tns:DadosCarga" minOccurs="1" maxOccurs="999" />
+	      			</sequence>
+	    		</complexType>
+  			</element>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="DadosCarga">
+		<sequence>
+			<element name="consignadoAOrdem" type="tns:SimNao" minOccurs="1" maxOccurs="1" />
+			<element name="nomeConsignatario" type="tns:StringBasica60" minOccurs="0" maxOccurs="1" />
+			<element name="enderecoConsignatario" type="tns:StringBasica120" minOccurs="0" maxOccurs="1" />
+			<element name="paisDestino" type="tns:Pais" minOccurs="0" maxOccurs="1" />
+			<choice>
+				<sequence>
+					<element ref="tns:conteiner"/>
+				</sequence>
+				<sequence>
+					<element name="documentos" minOccurs="1">
+						<complexType>
+							<sequence>
+								<element name="documento" type="tns:TDocumentoCargaManifestacao"	minOccurs="1" maxOccurs="unbounded" />
+							</sequence>
+						</complexType>
+						<unique name="identificadorNumeroDUEManifestacao">
+					          	<selector xpath="tns:documento" />
+					      		<field xpath="tns:numeroDUE" />
+					      	</unique>
+					      	<unique name="identificadorNumeroRUCManifestacao">
+					          	<selector xpath="tns:documento" />
+					      		<field xpath="tns:numeroRUC" />
+					      	</unique>
+					</element>
+					
+					<element ref="tns:conteiner" minOccurs="0"/>
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+
+	<simpleType name="NumeroDocumentoTransporte">
+		<restriction base="string">
+			<pattern value="[0-9A-Za-z]{5,15}" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="Frete">
+		<sequence>
+			<element name="codigoMoedaFrete" type="tns:MoedaSwift" minOccurs="1" maxOccurs="1" />
+			<element name="formaPagamentoFrete" type="tns:TipoFrete" minOccurs="1" maxOccurs="1" />
+			<element name="valorFrete" type="tns:Dec_1202" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="TDocumentoCargaManifestacao">
+		<sequence>
+			<choice>
+				<element name="numeroDUE"  type="tns:NumeroDUE" />
+				<element name="numeroRUC"  type="tns:NumeroRUC" />
+			</choice>
+			<choice>
+				<sequence>
+                    <element name="cargaSoltaVeiculo">
+						<complexType>
+							<sequence>
+								<element name="carga" type="tns:TCargaSoltaVeiculoPesoBrutoExtend"	minOccurs="1" maxOccurs="unbounded" />
+							</sequence>
+						</complexType>
+						<unique name="identificadorTipoEmbalagemManifestacao">
+					          	<selector xpath="tns:carga" />
+					      		<field xpath="tns:tipoEmbalagem" />
+					      	</unique>
+					</element>
+
+					<element name="granel" type="tns:TGranelManifestacao" minOccurs="0">
+						<unique name="identificadorTipoGranelManifestacao1">
+ 							<selector xpath="tns:carga" />
+ 							<field xpath="tns:tipoGranel" />
+ 						</unique>
+					</element>
+				</sequence>
+				<sequence>
+					<element name="granel" type="tns:TGranelManifestacao">
+						<unique name="identificadorTipoGranelManifestacao2">
+ 							<selector xpath="tns:carga" />
+ 							<field xpath="tns:tipoGranel" />
+ 						</unique>
+					</element>
+				</sequence>
+			</choice>	
+		</sequence>
+	</complexType>
+
+	<element name="conteiner">
+		<complexType>
+			<sequence>
+				<element name="carga" type="tns:ConteinerPesoBrutoExtend" minOccurs="1"
+					maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+   		<unique name="duplicidadeConteiner">
+           	<selector xpath="tns:carga" />
+       		<field xpath="tns:numeroConteiner" />
+       	</unique>
+	</element>
+
+	<complexType name="TGranelManifestacao">
+		<sequence>
+			<element name="carga" type="tns:TGranelPesoBrutoExtend" minOccurs="1"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+</schema>

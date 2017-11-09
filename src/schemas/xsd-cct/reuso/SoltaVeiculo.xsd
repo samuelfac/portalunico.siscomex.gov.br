@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../TipoComplexo.xsd" />
+
+	<element name="cargaSoltaVeiculo">
+		<complexType>
+			<sequence>
+				<element name="carga" type="tns:TCargaSoltaVeiculo"
+					minOccurs="1" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="identificadorTipoEmbalagem">
+			<selector xpath="tns:carga" />
+			<field xpath="tns:tipoEmbalagem" />
+		</unique>
+	</element>
+
+</schema>	

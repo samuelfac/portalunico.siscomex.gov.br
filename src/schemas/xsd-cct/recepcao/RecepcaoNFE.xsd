@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../TipoComplexo.xsd" />
+
+	<element name="recepcoesNFE">
+  		<complexType>
+   			<sequence>
+      			<element name="recepcaoNFE" type="tns:recepcaoNFE" minOccurs="1" maxOccurs="1" />
+   			</sequence>
+   		</complexType>
+		<unique name="identificacaoRecepcaoNFE">
+  			<selector xpath="tns:recepcaoNFE"/>
+  			<field xpath="tns:identificacaoRecepcao"/>
+ 		</unique>
+	</element>
+
+	<complexType name="recepcaoNFE">
+		<sequence>
+
+			<element name="identificacaoRecepcao" type="tns:StringBasica50" minOccurs="1" maxOccurs="1" />
+
+			<element name="cnpjResp" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+
+			<element name="local" type="tns:Local" minOccurs="1" maxOccurs="1" />
+
+			<element name="referenciaLocalRecepcao" type="tns:StringBasica150" minOccurs="0" maxOccurs="1"/>
+
+			<element name="notasFiscais" minOccurs="1" maxOccurs="1">
+	    		<complexType>
+	      			<sequence>
+	        			<element name="notaFiscalEletronica" type="tns:NotaFiscalEletronica" minOccurs="1" maxOccurs="50" />
+	      			</sequence>
+	    		</complexType>
+	      		<unique name="numeroChaveAcesso">
+	            	<selector xpath="tns:notaFiscalEletronica" />
+	        		<field xpath="tns:chaveAcesso" />
+	        	</unique>
+  			</element>
+
+			<element name="transportador" type="tns:Transportador" minOccurs="1" maxOccurs="1" />
+
+			<choice>
+				<element name="pesoAferido" type="tns:Dec_9v3" minOccurs="1" maxOccurs="1" />
+
+				<element name="motivoNaoPesagem" type="tns:StringBasica250" minOccurs="1" maxOccurs="1" />
+			</choice>
+
+			<element name="localArmazenamento" type="tns:StringBasica150" minOccurs="0" maxOccurs="1" />
+
+			<element name="codigoIdentCarga" type="tns:NumeroRUC" minOccurs="0" maxOccurs="1" />
+
+			<element name="avariasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1"/>
+
+			<element name="divergenciasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+			<element name="observacoesGerais" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+		</sequence>
+
+	</complexType>
+
+
+	<!-- DADOS DA NOTA FISCAL ELETRÔNICA -->
+
+	<complexType name="NotaFiscalEletronica">
+		<sequence>
+			<element name="chaveAcesso" type="tns:ChaveNFE" />
+
+			<element name="conteineres" minOccurs="0" maxOccurs="1">
+	    		<complexType>
+	      			<sequence>
+	        			<element name="conteiner" type="tns:TConteiner" minOccurs="1" maxOccurs="unbounded" />
+	      			</sequence>
+	      		</complexType>
+	      		<unique name="numeroConteinerNFE">
+  					<selector xpath="tns:conteiner"/>
+  					<field xpath="tns:numeroConteiner"/>
+ 				</unique>
+  			</element>
+		</sequence>
+	</complexType>
+
+	<!--DEFINIÇÃO DOS TIPOS UTILIZADOS PELA NFE -->
+
+</schema>

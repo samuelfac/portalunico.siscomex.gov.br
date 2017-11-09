@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../reuso/Conteiner.xsd" />
+	<include schemaLocation="../reuso/Granel.xsd" />
+	<include schemaLocation="../reuso/SoltaVeiculo.xsd" />
+
+	<element name="operacaoUnitizacao" type="tns:OperacaoUnitizacao" />
+
+	<complexType name="OperacaoUnitizacao">
+		<sequence>
+
+			<element name="identificacaoResponsavelUnitizacao" type="tns:CNPJ"
+				minOccurs="1" maxOccurs="1" />
+
+			<element name="local" type="tns:TLocalExtend" minOccurs="1" maxOccurs="1" />
+			
+			<element name="unitizacoes">
+				<complexType>
+					<sequence>
+						<element name="unitizacao" type="tns:TUnitizacao"
+							minOccurs="1" maxOccurs="1" />
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+
+	</complexType>
+
+	<complexType name="TUnitizacao">
+		<sequence>
+			<sequence>
+				<element ref="tns:documentosUnitizacao" minOccurs="1" /> 
+				<element ref="tns:conteineres" minOccurs="1" />
+			</sequence>
+		</sequence>
+	</complexType>
+
+	<element name="documentosUnitizacao">
+		<complexType>
+			<sequence>
+				<element name="documento" type="tns:TDocumentoCargaUnitizacao"
+					minOccurs="1" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="identificadorUnitizacaoNumeroDUE">
+			<selector xpath="tns:documento" />
+			<field xpath="tns:numeroDUE" />
+		</unique>
+		<unique name="identificadorUnitizacaoNumeroRUC">
+			<selector xpath="tns:documento" />
+			<field xpath="tns:numeroRUC" />
+		</unique>
+	</element> 
+
+	<complexType name="TDocumentoCargaUnitizacao">
+		<sequence>
+			<choice>
+				<element name="numeroDUE" type="tns:NumeroDUE" />
+				<element name="numeroRUC" type="tns:NumeroRUC" />
+			</choice>
+			<sequence>
+				<element ref="tns:cargaSoltaVeiculo" minOccurs="0" />
+				<element ref="tns:granel" minOccurs="0" />
+			</sequence>
+		</sequence>
+	</complexType>
+
+</schema>

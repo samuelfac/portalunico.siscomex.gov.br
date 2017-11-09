@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../TipoComplexo.xsd" />
+
+	<element name="recepcoesDocumentoTransporte">
+  		<complexType>
+   			<sequence>
+      			<element name="recepcaoDocumentoTransporte" type="tns:RecepcaoDocumentoTransporte" minOccurs="1" maxOccurs="1" />
+   			</sequence>
+   		</complexType>
+
+		<unique name="identificacaoRecepcaoDocumentoTransporte">
+  			<selector xpath="tns:recepcaoDocumentoTransporte"/>
+  			<field xpath="tns:identificacaoRecepcao"/>
+ 		</unique>
+	</element>
+
+	<complexType name="RecepcaoDocumentoTransporte">
+		<sequence>
+
+			<element name="identificacaoRecepcao" type="tns:StringBasica50" minOccurs="1" maxOccurs="1" />
+
+			<element name="cnpjResp" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+
+			<element name="local" type="tns:Local" minOccurs="1" maxOccurs="1" />
+
+			<element name="referenciaLocalRecepcao" type="tns:StringBasica150" minOccurs="0" maxOccurs="1"/>
+
+			<element name="documentosTransporte" minOccurs="1" maxOccurs="1">
+	    		<complexType>
+	      			<sequence>
+	        			<element name="documentoTransporte" type="tns:DocumentoTransporte" minOccurs="1" maxOccurs="100" />
+	      			</sequence>
+	    		</complexType>
+	      		<unique name="idDocumentoTransporte">
+	            	<selector xpath="tns:documentoTransporte" />
+	        		<field xpath="tns:identificacaoDocumentoTransporte" />
+	        	</unique>
+  			</element>
+
+			<element name="transportador" type="tns:Transportador" minOccurs="1" maxOccurs="1" />
+
+			<element name="localArmazenamento" type="tns:StringBasica150" minOccurs="0" maxOccurs="1" />
+
+			<element name="codigoIdentCarga" type="tns:StringBasica150" minOccurs="0" maxOccurs="1" />
+
+			<element name="avariasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1"/>
+
+			<element name="divergenciasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+			<element name="observacoesGerais" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+		</sequence>
+
+	</complexType>
+</schema>
