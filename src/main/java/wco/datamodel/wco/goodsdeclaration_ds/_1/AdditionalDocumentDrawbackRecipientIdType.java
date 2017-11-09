@@ -12,12 +12,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Classe Java de ProductCharacteristicsTypeCodeType complex type.
+ * <p>Classe Java de AdditionalDocumentDrawbackRecipientIdType complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="ProductCharacteristicsTypeCodeType">
+ * &lt;complexType name="AdditionalDocumentDrawbackRecipientIdType">
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
  *       &lt;attribute name="schemeID" type="{http://www.w3.org/2001/XMLSchema}token" />
@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ProductCharacteristicsTypeCodeType", propOrder = {
+@XmlType(name = "AdditionalDocumentDrawbackRecipientIdType", propOrder = {
     "value"
 })
-public class ProductCharacteristicsTypeCodeType {
+public class AdditionalDocumentDrawbackRecipientIdType {
 
     @XmlValue
     protected String value;

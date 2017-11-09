@@ -1,10 +1,3 @@
-//
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.8-b130911.1802 
-// Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2017.09.27 às 10:25:53 AM BRT 
-//
-
 
 package wco.datamodel.wco.goodsdeclaration_ds._1;
 
@@ -28,7 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="AL"/>
  *     &lt;enumeration value="AM"/>
  *     &lt;enumeration value="AO"/>
- *     &lt;enumeration value="AQ"/>
  *     &lt;enumeration value="AR"/>
  *     &lt;enumeration value="AS"/>
  *     &lt;enumeration value="AT"/>
@@ -286,7 +278,6 @@ public enum AddressCountryCodeType {
     AL,
     AM,
     AO,
-    AQ,
     AR,
     AS,
     AT,

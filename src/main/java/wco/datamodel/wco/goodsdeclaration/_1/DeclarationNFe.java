@@ -1,18 +1,9 @@
-//
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.8-b130911.1802 
-// Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2017.09.27 às 10:25:53 AM BRT 
-//
-
 
 package wco.datamodel.wco.goodsdeclaration._1;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -20,9 +11,12 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalDocumentCategoryCodeType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalDocumentDrawbackHsClassificationType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalDocumentDrawbackRecipientIdType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalDocumentIdentificationIDType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalDocumentItemIDType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalDocumentQuantityQuantityType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalInformationLimitDateTimeType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalInformationStatementDescriptionTextType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.AdditionalInformationStatementTypeCodeType;
@@ -38,6 +32,8 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.ExitOfficeIdentificationCodeType
 import wco.datamodel.wco.goodsdeclaration_ds._1.GoodsMeasureNetNetWeightMeasureType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.GoodsMeasureTariffQuantityType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentAgencyGoodsItemCustomsValueAmountType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentProcedureCurrentCodeType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.InvoiceIdentificationIDType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.PreviousDocumentIdentificationIDType;
@@ -202,6 +198,12 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                     &lt;sequence>
  *                                       &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
  *                                       &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
+ *                                       &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
+ *                                       &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+ *                                       &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType" minOccurs="0"/>
+ *                                       &lt;element name="ValueWithoutExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType" minOccurs="0"/>
+ *                                       &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationType" minOccurs="0"/>
+ *                                       &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdType" minOccurs="0"/>
  *                                     &lt;/sequence>
  *                                   &lt;/restriction>
  *                                 &lt;/complexContent>
@@ -325,6 +327,18 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                 &lt;/complexContent>
  *                               &lt;/complexType>
  *                             &lt;/element>
+ *                             &lt;element name="ValuationAdjustment" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="AdditionCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentAdditionCodeType"/>
+ *                                       &lt;element name="PercentageNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentPercentageNumericType"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
  *                           &lt;/sequence>
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
@@ -355,7 +369,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                     &lt;sequence>
  *                                       &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceIdentificationIDType"/>
  *                                       &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceTypeCodeType"/>
- *                                       &lt;element name="Submitter">
+ *                                       &lt;element name="Submitter" minOccurs="0">
  *                                         &lt;complexType>
  *                                           &lt;complexContent>
  *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -1435,6 +1449,12 @@ public class DeclarationNFe {
      *                           &lt;sequence>
      *                             &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
      *                             &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
+     *                             &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
+     *                             &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+     *                             &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType" minOccurs="0"/>
+     *                             &lt;element name="ValueWithoutExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType" minOccurs="0"/>
+     *                             &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationType" minOccurs="0"/>
+     *                             &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdType" minOccurs="0"/>
      *                           &lt;/sequence>
      *                         &lt;/restriction>
      *                       &lt;/complexContent>
@@ -1558,6 +1578,18 @@ public class DeclarationNFe {
      *                       &lt;/complexContent>
      *                     &lt;/complexType>
      *                   &lt;/element>
+     *                   &lt;element name="ValuationAdjustment" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="AdditionCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentAdditionCodeType"/>
+     *                             &lt;element name="PercentageNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentPercentageNumericType"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
      *                 &lt;/sequence>
      *               &lt;/restriction>
      *             &lt;/complexContent>
@@ -1588,7 +1620,7 @@ public class DeclarationNFe {
      *                           &lt;sequence>
      *                             &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceIdentificationIDType"/>
      *                             &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceTypeCodeType"/>
-     *                             &lt;element name="Submitter">
+     *                             &lt;element name="Submitter" minOccurs="0">
      *                               &lt;complexType>
      *                                 &lt;complexContent>
      *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -1762,6 +1794,12 @@ public class DeclarationNFe {
          *                 &lt;sequence>
          *                   &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
          *                   &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
+         *                   &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
+         *                   &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+         *                   &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType" minOccurs="0"/>
+         *                   &lt;element name="ValueWithoutExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType" minOccurs="0"/>
+         *                   &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationType" minOccurs="0"/>
+         *                   &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdType" minOccurs="0"/>
          *                 &lt;/sequence>
          *               &lt;/restriction>
          *             &lt;/complexContent>
@@ -1885,6 +1923,18 @@ public class DeclarationNFe {
          *             &lt;/complexContent>
          *           &lt;/complexType>
          *         &lt;/element>
+         *         &lt;element name="ValuationAdjustment" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="AdditionCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentAdditionCodeType"/>
+         *                   &lt;element name="PercentageNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentPercentageNumericType"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
          *       &lt;/sequence>
          *     &lt;/restriction>
          *   &lt;/complexContent>
@@ -1903,14 +1953,15 @@ public class DeclarationNFe {
             "commodity",
             "goodsMeasure",
             "governmentProcedure",
-            "previousDocument"
+            "previousDocument",
+            "valuationAdjustment"
         })
         public static class GovernmentAgencyGoodsItem {
 
             @XmlElement(name = "CustomsValueAmount", required = true)
             protected GovernmentAgencyGoodsItemCustomsValueAmountType customsValueAmount;
             @XmlElement(name = "SequenceNumeric", required = true)
-            protected BigInteger sequenceNumeric;
+            protected BigDecimal sequenceNumeric;
             @XmlElement(name = "Destination", required = true)
             protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Destination> destination;
             @XmlElement(name = "AdditionalDocument")
@@ -1925,6 +1976,8 @@ public class DeclarationNFe {
             protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.GovernmentProcedure> governmentProcedure;
             @XmlElement(name = "PreviousDocument")
             protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.PreviousDocument> previousDocument;
+            @XmlElement(name = "ValuationAdjustment")
+            protected DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment valuationAdjustment;
 
             /**
              * Obtém o valor da propriedade customsValueAmount.
@@ -1955,10 +2008,10 @@ public class DeclarationNFe {
              * 
              * @return
              *     possible object is
-             *     {@link BigInteger }
+             *     {@link BigDecimal }
              *     
              */
-            public BigInteger getSequenceNumeric() {
+            public BigDecimal getSequenceNumeric() {
                 return sequenceNumeric;
             }
 
@@ -1967,10 +2020,10 @@ public class DeclarationNFe {
              * 
              * @param value
              *     allowed object is
-             *     {@link BigInteger }
+             *     {@link BigDecimal }
              *     
              */
-            public void setSequenceNumeric(BigInteger value) {
+            public void setSequenceNumeric(BigDecimal value) {
                 this.sequenceNumeric = value;
             }
 
@@ -2167,6 +2220,30 @@ public class DeclarationNFe {
                 return this.previousDocument;
             }
 
+            /**
+             * Obtém o valor da propriedade valuationAdjustment.
+             * 
+             * @return
+             *     possible object is
+             *     {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment }
+             *     
+             */
+            public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment getValuationAdjustment() {
+                return valuationAdjustment;
+            }
+
+            /**
+             * Define o valor da propriedade valuationAdjustment.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment }
+             *     
+             */
+            public void setValuationAdjustment(DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment value) {
+                this.valuationAdjustment = value;
+            }
+
 
             /**
              * <p>Classe Java de anonymous complex type.
@@ -2180,6 +2257,12 @@ public class DeclarationNFe {
              *       &lt;sequence>
              *         &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
              *         &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
+             *         &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
+             *         &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+             *         &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType" minOccurs="0"/>
+             *         &lt;element name="ValueWithoutExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType" minOccurs="0"/>
+             *         &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationType" minOccurs="0"/>
+             *         &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdType" minOccurs="0"/>
              *       &lt;/sequence>
              *     &lt;/restriction>
              *   &lt;/complexContent>
@@ -2191,7 +2274,13 @@ public class DeclarationNFe {
             @XmlAccessorType(XmlAccessType.FIELD)
             @XmlType(name = "", propOrder = {
                 "categoryCode",
-                "id"
+                "id",
+                "itemID",
+                "quantityQuantity",
+                "valueWithExchangeCoverAmount",
+                "valueWithoutExchangeCoverAmount",
+                "drawbackHsClassification",
+                "drawbackRecipientId"
             })
             public static class AdditionalDocument {
 
@@ -2200,6 +2289,18 @@ public class DeclarationNFe {
                 protected AdditionalDocumentCategoryCodeType categoryCode;
                 @XmlElement(name = "ID")
                 protected AdditionalDocumentIdentificationIDType id;
+                @XmlElement(name = "ItemID")
+                protected AdditionalDocumentItemIDType itemID;
+                @XmlElement(name = "QuantityQuantity")
+                protected AdditionalDocumentQuantityQuantityType quantityQuantity;
+                @XmlElement(name = "ValueWithExchangeCoverAmount")
+                protected GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType valueWithExchangeCoverAmount;
+                @XmlElement(name = "ValueWithoutExchangeCoverAmount")
+                protected GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType valueWithoutExchangeCoverAmount;
+                @XmlElement(name = "DrawbackHsClassification")
+                protected AdditionalDocumentDrawbackHsClassificationType drawbackHsClassification;
+                @XmlElement(name = "DrawbackRecipientId")
+                protected AdditionalDocumentDrawbackRecipientIdType drawbackRecipientId;
 
                 /**
                  * Obtém o valor da propriedade categoryCode.
@@ -2247,6 +2348,150 @@ public class DeclarationNFe {
                  */
                 public void setID(AdditionalDocumentIdentificationIDType value) {
                     this.id = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade itemID.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link AdditionalDocumentItemIDType }
+                 *     
+                 */
+                public AdditionalDocumentItemIDType getItemID() {
+                    return itemID;
+                }
+
+                /**
+                 * Define o valor da propriedade itemID.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link AdditionalDocumentItemIDType }
+                 *     
+                 */
+                public void setItemID(AdditionalDocumentItemIDType value) {
+                    this.itemID = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade quantityQuantity.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link AdditionalDocumentQuantityQuantityType }
+                 *     
+                 */
+                public AdditionalDocumentQuantityQuantityType getQuantityQuantity() {
+                    return quantityQuantity;
+                }
+
+                /**
+                 * Define o valor da propriedade quantityQuantity.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link AdditionalDocumentQuantityQuantityType }
+                 *     
+                 */
+                public void setQuantityQuantity(AdditionalDocumentQuantityQuantityType value) {
+                    this.quantityQuantity = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade valueWithExchangeCoverAmount.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType }
+                 *     
+                 */
+                public GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType getValueWithExchangeCoverAmount() {
+                    return valueWithExchangeCoverAmount;
+                }
+
+                /**
+                 * Define o valor da propriedade valueWithExchangeCoverAmount.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType }
+                 *     
+                 */
+                public void setValueWithExchangeCoverAmount(GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType value) {
+                    this.valueWithExchangeCoverAmount = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade valueWithoutExchangeCoverAmount.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType }
+                 *     
+                 */
+                public GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType getValueWithoutExchangeCoverAmount() {
+                    return valueWithoutExchangeCoverAmount;
+                }
+
+                /**
+                 * Define o valor da propriedade valueWithoutExchangeCoverAmount.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType }
+                 *     
+                 */
+                public void setValueWithoutExchangeCoverAmount(GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType value) {
+                    this.valueWithoutExchangeCoverAmount = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade drawbackHsClassification.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link AdditionalDocumentDrawbackHsClassificationType }
+                 *     
+                 */
+                public AdditionalDocumentDrawbackHsClassificationType getDrawbackHsClassification() {
+                    return drawbackHsClassification;
+                }
+
+                /**
+                 * Define o valor da propriedade drawbackHsClassification.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link AdditionalDocumentDrawbackHsClassificationType }
+                 *     
+                 */
+                public void setDrawbackHsClassification(AdditionalDocumentDrawbackHsClassificationType value) {
+                    this.drawbackHsClassification = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade drawbackRecipientId.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link AdditionalDocumentDrawbackRecipientIdType }
+                 *     
+                 */
+                public AdditionalDocumentDrawbackRecipientIdType getDrawbackRecipientId() {
+                    return drawbackRecipientId;
+                }
+
+                /**
+                 * Define o valor da propriedade drawbackRecipientId.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link AdditionalDocumentDrawbackRecipientIdType }
+                 *     
+                 */
+                public void setDrawbackRecipientId(AdditionalDocumentDrawbackRecipientIdType value) {
+                    this.drawbackRecipientId = value;
                 }
 
             }
@@ -3421,6 +3666,91 @@ public class DeclarationNFe {
 
             }
 
+
+            /**
+             * <p>Classe Java de anonymous complex type.
+             * 
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="AdditionCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentAdditionCodeType"/>
+             *         &lt;element name="PercentageNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ValuationAdjustmentPercentageNumericType"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "additionCode",
+                "percentageNumeric"
+            })
+            public static class ValuationAdjustment {
+
+                @XmlElement(name = "AdditionCode", required = true)
+                @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                @XmlSchemaType(name = "token")
+                protected String additionCode;
+                @XmlElement(name = "PercentageNumeric", required = true)
+                protected BigDecimal percentageNumeric;
+
+                /**
+                 * Obtém o valor da propriedade additionCode.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getAdditionCode() {
+                    return additionCode;
+                }
+
+                /**
+                 * Define o valor da propriedade additionCode.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setAdditionCode(String value) {
+                    this.additionCode = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade percentageNumeric.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link BigDecimal }
+                 *     
+                 */
+                public BigDecimal getPercentageNumeric() {
+                    return percentageNumeric;
+                }
+
+                /**
+                 * Define o valor da propriedade percentageNumeric.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link BigDecimal }
+                 *     
+                 */
+                public void setPercentageNumeric(BigDecimal value) {
+                    this.percentageNumeric = value;
+                }
+
+            }
+
         }
 
 
@@ -3454,7 +3784,7 @@ public class DeclarationNFe {
          *                 &lt;sequence>
          *                   &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceIdentificationIDType"/>
          *                   &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceTypeCodeType"/>
-         *                   &lt;element name="Submitter">
+         *                   &lt;element name="Submitter" minOccurs="0">
          *                     &lt;complexType>
          *                       &lt;complexContent>
          *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -3612,7 +3942,7 @@ public class DeclarationNFe {
              *       &lt;sequence>
              *         &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceIdentificationIDType"/>
              *         &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ReferencedInvoiceTypeCodeType"/>
-             *         &lt;element name="Submitter">
+             *         &lt;element name="Submitter" minOccurs="0">
              *           &lt;complexType>
              *             &lt;complexContent>
              *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -3644,7 +3974,7 @@ public class DeclarationNFe {
                 @XmlElement(name = "TypeCode", required = true)
                 @XmlSchemaType(name = "token")
                 protected ReferencedInvoiceTypeCodeType typeCode;
-                @XmlElement(name = "Submitter", required = true)
+                @XmlElement(name = "Submitter")
                 protected DeclarationNFe.GoodsShipment.Invoice.ReferencedInvoice.Submitter submitter;
 
                 /**

@@ -1,10 +1,3 @@
-//
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.8-b130911.1802 
-// Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2017.09.27 às 10:25:53 AM BRT 
-//
-
 
 package wco.datamodel.wco.goodsdeclaration._1;
 
@@ -325,6 +318,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment }
+     * 
+     */
+    public DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment createDeclarationNoNFGoodsShipmentGovernmentAgencyGoodsItemValuationAdjustment() {
+        return new DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment();
+    }
+
+    /**
      * Create an instance of {@link DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.Commodity.Classification }
      * 
      */
@@ -490,6 +491,14 @@ public class ObjectFactory {
      */
     public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.PreviousDocument createDeclarationNFeGoodsShipmentGovernmentAgencyGoodsItemPreviousDocument() {
         return new DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.PreviousDocument();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment }
+     * 
+     */
+    public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment createDeclarationNFeGoodsShipmentGovernmentAgencyGoodsItemValuationAdjustment() {
+        return new DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment();
     }
 
     /**

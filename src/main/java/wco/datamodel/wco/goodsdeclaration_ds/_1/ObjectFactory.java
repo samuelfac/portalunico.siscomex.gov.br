@@ -1,10 +1,3 @@
-//
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.8-b130911.1802 
-// Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2017.09.27 às 10:25:53 AM BRT 
-//
-
 
 package wco.datamodel.wco.goodsdeclaration_ds._1;
 
@@ -141,6 +134,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType }
+     * 
+     */
+    public GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType createGovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType() {
+        return new GovernmentAgencyGoodsItemValueWithoutExchangeCoverAmountType();
+    }
+
+    /**
      * Create an instance of {@link AdditionalInformationStatementDescriptionTextType }
      * 
      */
@@ -162,6 +163,14 @@ public class ObjectFactory {
      */
     public GovernmentProcedureCurrentCodeType createGovernmentProcedureCurrentCodeType() {
         return new GovernmentProcedureCurrentCodeType();
+    }
+
+    /**
+     * Create an instance of {@link AdditionalDocumentItemIDType }
+     * 
+     */
+    public AdditionalDocumentItemIDType createAdditionalDocumentItemIDType() {
+        return new AdditionalDocumentItemIDType();
     }
 
     /**
@@ -245,6 +254,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AdditionalDocumentQuantityQuantityType }
+     * 
+     */
+    public AdditionalDocumentQuantityQuantityType createAdditionalDocumentQuantityQuantityType() {
+        return new AdditionalDocumentQuantityQuantityType();
+    }
+
+    /**
      * Create an instance of {@link ExitOfficeIdentificationCodeType }
      * 
      */
@@ -301,6 +318,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AdditionalDocumentDrawbackRecipientIdType }
+     * 
+     */
+    public AdditionalDocumentDrawbackRecipientIdType createAdditionalDocumentDrawbackRecipientIdType() {
+        return new AdditionalDocumentDrawbackRecipientIdType();
+    }
+
+    /**
      * Create an instance of {@link GoodsMeasureUnitDescriptionTextType }
      * 
      */
@@ -341,11 +366,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link AdditionalDocumentDrawbackHsClassificationType }
+     * 
+     */
+    public AdditionalDocumentDrawbackHsClassificationType createAdditionalDocumentDrawbackHsClassificationType() {
+        return new AdditionalDocumentDrawbackHsClassificationType();
+    }
+
+    /**
      * Create an instance of {@link ImporterNameTextType }
      * 
      */
     public ImporterNameTextType createImporterNameTextType() {
         return new ImporterNameTextType();
+    }
+
+    /**
+     * Create an instance of {@link GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType }
+     * 
+     */
+    public GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType createGovernmentAgencyGoodsItemValueWithExchangeCoverAmountType() {
+        return new GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType();
     }
 
     /**
