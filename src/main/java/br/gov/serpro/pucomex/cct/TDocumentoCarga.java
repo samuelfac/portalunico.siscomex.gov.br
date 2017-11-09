@@ -1,16 +1,8 @@
-//
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.8-b130911.1802 
-// Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2017.09.27 às 10:27:17 AM BRT 
-//
-
 
 package br.gov.serpro.pucomex.cct;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -70,8 +62,8 @@ public class TDocumentoCarga {
      * <p>
      * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
      * O nome do campo "Granel" é usado por duas partes diferentes de um esquema. Consulte: 
-     * linha 37 de file:/D:/temp/jaxb/xsd-cct/reuso/DocumentoCarga.xsd
-     * linha 34 de file:/D:/temp/jaxb/xsd-cct/reuso/DocumentoCarga.xsd
+     * linha 37 de file:/D:/temp/PortalUnico/xsd-cct/reuso/DocumentoCarga.xsd
+     * linha 34 de file:/D:/temp/PortalUnico/xsd-cct/reuso/DocumentoCarga.xsd
      * <p>
      * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
      * das seguintes declarações, a fim de alterar seus nomes: 

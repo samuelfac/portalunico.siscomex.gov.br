@@ -1,17 +1,9 @@
-//
-// Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.2.8-b130911.1802 
-// Consulte <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
-// Gerado em: 2017.09.27 às 10:27:17 AM BRT 
-//
-
 
 package br.gov.serpro.pucomex.cct;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -52,7 +44,6 @@ import javax.xml.bind.annotation.XmlType;
     "local",
     "desunitizacoes"
 })
-@XmlRootElement(name = "OperacaoDesunitizacao")
 public class OperacaoDesunitizacao {
 
     @XmlElement(required = true)
