@@ -1,0 +1,18 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-06/schema#",
+	"type": "array",
+	"$id": "http://www.pucomex.serpro.gov.br/lpco/consultar_modelos.schema.json",
+	"items": {
+		"type": "object",
+		"properties": {
+			"numero": { "type": "string" },
+			"dataRegistro": { "type": "string" },
+			"situacao": { "type": "string" },
+			"nome": { "type": "string" },
+			"ncm": { "type": "string" },
+			"importadorExportador": { "type": "string" },
+			"dataFimVigencia": { "type": ["string", "null"] }
+		}
+	}
+}

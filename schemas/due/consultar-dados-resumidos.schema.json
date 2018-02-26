@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "numeroDUE": {
+      "type": "string"
+    },
+    "numeroRUC": {
+      "type": "string"
+    },
+    "situacaoDUE": {
+      "type": "integer"
+    },
+    "dataSituacaoDUE": {
+      "type": "string"
+    },
+    "situacaoCarga": {
+      "items": {
+        "type": "integer"
+      },
+      "type": "array"
+    },
+    "controleAdministrativo": {
+      "type": "integer"
+    },
+    "indicadorBloqueio": {
+      "type": "integer"
+    },
+    "declarante": {
+      "properties": {
+        "numero": {
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "exportadores": {
+      "items": {
+        "properties": {
+          "numero": {
+            "type": "string"
+          },
+          "tipo": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "codigoRecintoAduaneiroDespacho": { "type": "string" },
+    "coordenadasDespacho": {
+      "type": "string"
+    },
+    "responsaveluaDespacho": {
+      "type": "null"
+    },
+    "uaDespacho": {
+      "type": "string"
+    },
+    "codigoRecintoAduaneiroEmbarque": { "type": "string" },
+    "uaEmbarque": {
+      "type": "string"
+    }
+}, "type": "object" }
