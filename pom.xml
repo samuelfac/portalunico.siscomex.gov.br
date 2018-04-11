@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>samuelfac</groupId>
   <artifactId>portalunico.siscomex.gov.br</artifactId>
-  <version>24-01-2018</version>
+  <version>24-01-2018.1</version>
   <name>PortalUnicoSiscomex</name>
   <description>Classes da API do Portal Único de Comércio Exterior, a nova forma de interação entre as empresas privadas e os diversos órgãos públicos intervenientes no comércio exterior.</description>
   <url>https://val.portalunico.siscomex.gov.br/docs/api/</url>
@@ -17,8 +17,8 @@
   	<system>GitHub Issues</system>
   </issueManagement>
   <properties>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-  	<maven.compiler.target>1.8</maven.compiler.target>
+  	<maven.compiler.source>1.7</maven.compiler.source>
+  	<maven.compiler.target>1.7</maven.compiler.target>
   </properties>
   <dependencies>
   	<dependency>
