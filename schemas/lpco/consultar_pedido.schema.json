@@ -12,7 +12,9 @@
 			"nome": { "type": "string" },
 			"ncm": { "type": "string" },
 			"importadorExportador": { "type": "string" },
-			"dataFimVigencia": { "type": ["string", "null"] }
+			"dataFimVigencia": { "type": ["string", "null"] },
+			"dueEmDespacho": { "type": ["string", "null"] },
+			"dueVinculada": { "type": ["string", "null"] }
 		}
 	}
 }

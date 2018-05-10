@@ -27,6 +27,12 @@ public class ConsultarPedido {
     @SerializedName("dataFimVigencia")
     @Expose
     private String dataFimVigencia;
+    @SerializedName("dueEmDespacho")
+    @Expose
+    private String dueEmDespacho;
+    @SerializedName("dueVinculada")
+    @Expose
+    private String dueVinculada;
 
     public String getNumero() {
         return numero;
@@ -84,6 +90,22 @@ public class ConsultarPedido {
         this.dataFimVigencia = dataFimVigencia;
     }
 
+    public String getDueEmDespacho() {
+        return dueEmDespacho;
+    }
+
+    public void setDueEmDespacho(String dueEmDespacho) {
+        this.dueEmDespacho = dueEmDespacho;
+    }
+
+    public String getDueVinculada() {
+        return dueVinculada;
+    }
+
+    public void setDueVinculada(String dueVinculada) {
+        this.dueVinculada = dueVinculada;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -116,6 +138,14 @@ public class ConsultarPedido {
         sb.append('=');
         sb.append(((this.dataFimVigencia == null)?"<null>":this.dataFimVigencia));
         sb.append(',');
+        sb.append("dueEmDespacho");
+        sb.append('=');
+        sb.append(((this.dueEmDespacho == null)?"<null>":this.dueEmDespacho));
+        sb.append(',');
+        sb.append("dueVinculada");
+        sb.append('=');
+        sb.append(((this.dueVinculada == null)?"<null>":this.dueVinculada));
+        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -127,9 +157,11 @@ public class ConsultarPedido {
     @Override
     public int hashCode() {
         int result = 1;
+        result = ((result* 31)+((this.dueEmDespacho == null)? 0 :this.dueEmDespacho.hashCode()));
         result = ((result* 31)+((this.situacao == null)? 0 :this.situacao.hashCode()));
         result = ((result* 31)+((this.numero == null)? 0 :this.numero.hashCode()));
         result = ((result* 31)+((this.dataRegistro == null)? 0 :this.dataRegistro.hashCode()));
+        result = ((result* 31)+((this.dueVinculada == null)? 0 :this.dueVinculada.hashCode()));
         result = ((result* 31)+((this.importadorExportador == null)? 0 :this.importadorExportador.hashCode()));
         result = ((result* 31)+((this.ncm == null)? 0 :this.ncm.hashCode()));
         result = ((result* 31)+((this.nome == null)? 0 :this.nome.hashCode()));
@@ -146,7 +178,7 @@ public class ConsultarPedido {
             return false;
         }
         ConsultarPedido rhs = ((ConsultarPedido) other);
-        return ((((((((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao)))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.dataRegistro == rhs.dataRegistro)||((this.dataRegistro!= null)&&this.dataRegistro.equals(rhs.dataRegistro))))&&((this.importadorExportador == rhs.importadorExportador)||((this.importadorExportador!= null)&&this.importadorExportador.equals(rhs.importadorExportador))))&&((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.dataFimVigencia == rhs.dataFimVigencia)||((this.dataFimVigencia!= null)&&this.dataFimVigencia.equals(rhs.dataFimVigencia))));
+        return ((((((((((this.dueEmDespacho == rhs.dueEmDespacho)||((this.dueEmDespacho!= null)&&this.dueEmDespacho.equals(rhs.dueEmDespacho)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.dataRegistro == rhs.dataRegistro)||((this.dataRegistro!= null)&&this.dataRegistro.equals(rhs.dataRegistro))))&&((this.dueVinculada == rhs.dueVinculada)||((this.dueVinculada!= null)&&this.dueVinculada.equals(rhs.dueVinculada))))&&((this.importadorExportador == rhs.importadorExportador)||((this.importadorExportador!= null)&&this.importadorExportador.equals(rhs.importadorExportador))))&&((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.dataFimVigencia == rhs.dataFimVigencia)||((this.dataFimVigencia!= null)&&this.dataFimVigencia.equals(rhs.dataFimVigencia))));
     }
 
 }
