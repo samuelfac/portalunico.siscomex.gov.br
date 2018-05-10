@@ -34,9 +34,9 @@
 								"listaValor": { 
 									"type": "array",
 									"items": { "type": "string" }
-								},
+								}
 							}
-						} 
+						}
 					},
 					"listaAtributosNcm": { 
 						"type": "array",
@@ -47,7 +47,7 @@
 								"listaValor": { 
 									"type": "array",
 									"items": { "type": "string" }
-								},
+								}
 							}
 						} 
 					}, 
@@ -64,8 +64,38 @@
 					"listaValor": { 
 						"type": "array",
 						"items": { "type": "string" }
-					},
+					}
 				}
+			}
+		},
+		"listaVinculos": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"dataVinculo": { "type": "string" },
+					"numeroDocumento": { "type": "string" },
+					"numeroDocumentoItem": { "type": "integer" },
+					"dataACD": { "type": ["string", "null"] },
+					"dataDesembaraco": { "type": ["string", "null"] },
+					"dataCCE": { "type": ["string", "null"] },
+					"dataAverbacao": { "type": ["string", "null"] },
+					"dataDesvinculacao": { "type": ["string", "null"] },
+					"quantidadeComercial": { "type": ["string", "null"] },
+					"quantidadeUnidadeEstatistica": { "type": ["string", "null"] },
+					"vmle": { "type": ["string", "null"] }
+				}
+			}
+		},
+		"saldo": {
+			"type": "object",
+			"properties": {
+				"saldoQuantidadeComercial": { "type": "number" },
+				"saldoQuantidadeEstatistica": { "type": "number" },
+				"saldoVMLE": { "type": "number" },
+				"saldoPesoLiquido": { "type": "number" },
+				"saldoValorFinanciado": { "type": "number" },
+				"saldoValorCondicaoVenda": { "type": "number" }
 			}
 		}
 	} 
