@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TransitoSimplificadoEntrega complex type.
+ * <p>Classe Java de TransitoSimplificadoEntrega complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TransitoSimplificadoEntrega">
@@ -101,7 +101,7 @@ public class TransitoSimplificadoEntrega {
     protected TransitoSimplificadoEntrega.VeiculoRodoviario veiculoRodoviario;
 
     /**
-     * Gets the value of the codigoURFDestino property.
+     * Obtém o valor da propriedade codigoURFDestino.
      * 
      * @return
      *     possible object is
@@ -113,7 +113,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Sets the value of the codigoURFDestino property.
+     * Define o valor da propriedade codigoURFDestino.
      * 
      * @param value
      *     allowed object is
@@ -125,7 +125,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Gets the value of the cnpjRespDestino property.
+     * Obtém o valor da propriedade cnpjRespDestino.
      * 
      * @return
      *     possible object is
@@ -137,7 +137,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Sets the value of the cnpjRespDestino property.
+     * Define o valor da propriedade cnpjRespDestino.
      * 
      * @param value
      *     allowed object is
@@ -149,7 +149,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Gets the value of the codigoRADestino property.
+     * Obtém o valor da propriedade codigoRADestino.
      * 
      * @return
      *     possible object is
@@ -161,7 +161,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Sets the value of the codigoRADestino property.
+     * Define o valor da propriedade codigoRADestino.
      * 
      * @param value
      *     allowed object is
@@ -173,7 +173,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Gets the value of the veiculoFerroviario property.
+     * Obtém o valor da propriedade veiculoFerroviario.
      * 
      * @return
      *     possible object is
@@ -185,7 +185,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Sets the value of the veiculoFerroviario property.
+     * Define o valor da propriedade veiculoFerroviario.
      * 
      * @param value
      *     allowed object is
@@ -197,7 +197,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Gets the value of the veiculoRodoviario property.
+     * Obtém o valor da propriedade veiculoRodoviario.
      * 
      * @return
      *     possible object is
@@ -209,7 +209,7 @@ public class TransitoSimplificadoEntrega {
     }
 
     /**
-     * Sets the value of the veiculoRodoviario property.
+     * Define o valor da propriedade veiculoRodoviario.
      * 
      * @param value
      *     allowed object is
@@ -222,9 +222,9 @@ public class TransitoSimplificadoEntrega {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -254,7 +254,7 @@ public class TransitoSimplificadoEntrega {
         protected BigInteger quantidadeVagoes;
 
         /**
-         * Gets the value of the prefixoTrem property.
+         * Obtém o valor da propriedade prefixoTrem.
          * 
          * @return
          *     possible object is
@@ -266,7 +266,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Sets the value of the prefixoTrem property.
+         * Define o valor da propriedade prefixoTrem.
          * 
          * @param value
          *     allowed object is
@@ -278,7 +278,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Gets the value of the quantidadeVagoes property.
+         * Obtém o valor da propriedade quantidadeVagoes.
          * 
          * @return
          *     possible object is
@@ -290,7 +290,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Sets the value of the quantidadeVagoes property.
+         * Define o valor da propriedade quantidadeVagoes.
          * 
          * @param value
          *     allowed object is
@@ -305,9 +305,9 @@ public class TransitoSimplificadoEntrega {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -359,7 +359,7 @@ public class TransitoSimplificadoEntrega {
         protected TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos veiculos;
 
         /**
-         * Gets the value of the cpfCondutor property.
+         * Obtém o valor da propriedade cpfCondutor.
          * 
          * @return
          *     possible object is
@@ -371,7 +371,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Sets the value of the cpfCondutor property.
+         * Define o valor da propriedade cpfCondutor.
          * 
          * @param value
          *     allowed object is
@@ -383,7 +383,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Gets the value of the documentoCondutorEstrangeiro property.
+         * Obtém o valor da propriedade documentoCondutorEstrangeiro.
          * 
          * @return
          *     possible object is
@@ -395,7 +395,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Sets the value of the documentoCondutorEstrangeiro property.
+         * Define o valor da propriedade documentoCondutorEstrangeiro.
          * 
          * @param value
          *     allowed object is
@@ -407,7 +407,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Gets the value of the nomeCondutorEstrangeiro property.
+         * Obtém o valor da propriedade nomeCondutorEstrangeiro.
          * 
          * @return
          *     possible object is
@@ -419,7 +419,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Sets the value of the nomeCondutorEstrangeiro property.
+         * Define o valor da propriedade nomeCondutorEstrangeiro.
          * 
          * @param value
          *     allowed object is
@@ -431,7 +431,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Gets the value of the veiculos property.
+         * Obtém o valor da propriedade veiculos.
          * 
          * @return
          *     possible object is
@@ -443,7 +443,7 @@ public class TransitoSimplificadoEntrega {
         }
 
         /**
-         * Sets the value of the veiculos property.
+         * Define o valor da propriedade veiculos.
          * 
          * @param value
          *     allowed object is
@@ -456,9 +456,9 @@ public class TransitoSimplificadoEntrega {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>

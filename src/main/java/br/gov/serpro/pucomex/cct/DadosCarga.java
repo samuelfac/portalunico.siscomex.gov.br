@@ -13,19 +13,15 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DadosCarga complex type.
+ * <p>Classe Java de DadosCarga complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="DadosCarga">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="consignadoAOrdem" type="{http://www.pucomex.serpro.gov.br/cct}SimNao"/>
- *         &lt;element name="nomeConsignatario" type="{http://www.pucomex.serpro.gov.br/cct}StringBasica60" minOccurs="0"/>
- *         &lt;element name="enderecoConsignatario" type="{http://www.pucomex.serpro.gov.br/cct}StringBasica120" minOccurs="0"/>
- *         &lt;element name="paisDestino" type="{http://www.pucomex.serpro.gov.br/cct}Pais" minOccurs="0"/>
  *         &lt;choice>
  *           &lt;sequence>
  *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}conteiner"/>
@@ -60,26 +56,22 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosCarga {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "nomeConsignatario", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "conteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Conteiner.class, required = false),
-        @XmlElementRef(name = "enderecoConsignatario", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "paisDestino", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "consignadoAOrdem", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<Object> content;
 
     /**
-     * Gets the rest of the content model. 
+     * Obtém o restante do modelo do conteúdo. 
      * 
      * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Conteiner" is used by two different parts of a schema. See: 
-     * line 154 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/manifesto/ManifestacaoExportacao.xsd
-     * line 135 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/manifesto/ManifestacaoExportacao.xsd
+     * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
+     * O nome do campo "Conteiner" é usado por duas partes diferentes de um esquema. Consulte: 
+     * linha 157 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
+     * linha 138 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
      * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
+     * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
+     * das seguintes declarações, a fim de alterar seus nomes: 
      * Gets the value of the content property.
      * 
      * <p>
@@ -97,12 +89,8 @@ public class DadosCarga {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link DadosCarga.Documentos }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link Conteiner }
+     * {@link JAXBElement }{@code <}{@link DadosCarga.Documentos }{@code >}
      * 
      * 
      */
@@ -115,9 +103,9 @@ public class DadosCarga {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

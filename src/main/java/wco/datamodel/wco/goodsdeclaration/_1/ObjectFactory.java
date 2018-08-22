@@ -30,6 +30,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeclarationDrawbackIsencao }
+     * 
+     */
+    public DeclarationDrawbackIsencao createDeclarationDrawbackIsencao() {
+        return new DeclarationDrawbackIsencao();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationDrawbackIsencao.GoodsShipment }
+     * 
+     */
+    public DeclarationDrawbackIsencao.GoodsShipment createDeclarationDrawbackIsencaoGoodsShipment() {
+        return new DeclarationDrawbackIsencao.GoodsShipment();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem }
+     * 
+     */
+    public DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem createDeclarationDrawbackIsencaoGoodsShipmentGovernmentAgencyGoodsItem() {
+        return new DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument }
+     * 
+     */
+    public DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument createDeclarationDrawbackIsencaoGoodsShipmentGovernmentAgencyGoodsItemAdditionalDocument() {
+        return new DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument();
+    }
+
+    /**
      * Create an instance of {@link DeclarationNoNF }
      * 
      */
@@ -270,6 +302,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.GovernmentProcedure }
+     * 
+     */
+    public DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.GovernmentProcedure createDeclarationDrawbackIsencaoGoodsShipmentGovernmentAgencyGoodsItemGovernmentProcedure() {
+        return new DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.GovernmentProcedure();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice }
+     * 
+     */
+    public DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice createDeclarationDrawbackIsencaoGoodsShipmentGovernmentAgencyGoodsItemAdditionalDocumentInvoice() {
+        return new DeclarationDrawbackIsencao.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice();
+    }
+
+    /**
      * Create an instance of {@link DeclarationNoNF.AdditionalInformation }
      * 
      */
@@ -398,11 +446,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice }
+     * Create an instance of {@link DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation }
      * 
      */
-    public DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice createDeclarationNoNFGoodsShipmentGovernmentAgencyGoodsItemAdditionalDocumentInvoice() {
-        return new DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice();
+    public DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation createDeclarationNoNFGoodsShipmentGovernmentAgencyGoodsItemAdditionalDocumentAdditionalInformation() {
+        return new DeclarationNoNF.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation();
     }
 
     /**
@@ -563,6 +611,22 @@ public class ObjectFactory {
      */
     public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Commodity.InvoiceLine.ReferencedInvoiceLine.GoodsMeasure createDeclarationNFeGoodsShipmentGovernmentAgencyGoodsItemCommodityInvoiceLineReferencedInvoiceLineGoodsMeasure() {
         return new DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Commodity.InvoiceLine.ReferencedInvoiceLine.GoodsMeasure();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation }
+     * 
+     */
+    public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation createDeclarationNFeGoodsShipmentGovernmentAgencyGoodsItemAdditionalDocumentAdditionalInformation() {
+        return new DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation();
+    }
+
+    /**
+     * Create an instance of {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument }
+     * 
+     */
+    public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument createDeclarationNFeGoodsShipmentGovernmentAgencyGoodsItemAdditionalDocumentPreviousDocument() {
+        return new DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument();
     }
 
     /**

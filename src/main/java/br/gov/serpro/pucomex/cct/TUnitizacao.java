@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TUnitizacao complex type.
+ * <p>Classe Java de TUnitizacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TUnitizacao">
@@ -42,7 +42,7 @@ public class TUnitizacao {
     protected Conteineres conteineres;
 
     /**
-     * Gets the value of the documentosUnitizacao property.
+     * Obtém o valor da propriedade documentosUnitizacao.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class TUnitizacao {
     }
 
     /**
-     * Sets the value of the documentosUnitizacao property.
+     * Define o valor da propriedade documentosUnitizacao.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class TUnitizacao {
     }
 
     /**
-     * Gets the value of the conteineres property.
+     * Obtém o valor da propriedade conteineres.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class TUnitizacao {
     }
 
     /**
-     * Sets the value of the conteineres property.
+     * Define o valor da propriedade conteineres.
      * 
      * @param value
      *     allowed object is

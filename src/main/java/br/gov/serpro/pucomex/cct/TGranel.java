@@ -14,9 +14,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TGranel complex type.
+ * <p>Classe Java de TGranel complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TGranel">
@@ -52,24 +52,24 @@ import javax.xml.bind.annotation.XmlType;
 public class TGranel {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "unidademedida", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "tipoGranel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "quantidade", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "total", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "quantidade", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "unidademedida", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
 
     /**
-     * Gets the rest of the content model. 
+     * Obtém o restante do modelo do conteúdo. 
      * 
      * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Quantidade" is used by two different parts of a schema. See: 
-     * line 100 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/TipoComplexo.xsd
-     * line 97 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/TipoComplexo.xsd
+     * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
+     * O nome do campo "Quantidade" é usado por duas partes diferentes de um esquema. Consulte: 
+     * linha 100 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/TipoComplexo.xsd
+     * linha 97 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/TipoComplexo.xsd
      * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
+     * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
+     * das seguintes declarações, a fim de alterar seus nomes: 
      * Gets the value of the content property.
      * 
      * <p>

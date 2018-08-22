@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TConhecimentoCarga complex type.
+ * <p>Classe Java de TConhecimentoCarga complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TConhecimentoCarga">
@@ -69,7 +69,7 @@ public class TConhecimentoCarga {
     protected String enderecoConsignatario;
 
     /**
-     * Gets the value of the numeroConhecimento property.
+     * Obtém o valor da propriedade numeroConhecimento.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the numeroConhecimento property.
+     * Define o valor da propriedade numeroConhecimento.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the dataEmissaoConhecimento property.
+     * Obtém o valor da propriedade dataEmissaoConhecimento.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the dataEmissaoConhecimento property.
+     * Define o valor da propriedade dataEmissaoConhecimento.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +117,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the codigoMoedaSwift property.
+     * Obtém o valor da propriedade codigoMoedaSwift.
      * 
      * @return
      *     possible object is
@@ -129,7 +129,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the codigoMoedaSwift property.
+     * Define o valor da propriedade codigoMoedaSwift.
      * 
      * @param value
      *     allowed object is
@@ -141,7 +141,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the formaPagamentoFrete property.
+     * Obtém o valor da propriedade formaPagamentoFrete.
      * 
      * @return
      *     possible object is
@@ -153,7 +153,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the formaPagamentoFrete property.
+     * Define o valor da propriedade formaPagamentoFrete.
      * 
      * @param value
      *     allowed object is
@@ -165,7 +165,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the valorFrete property.
+     * Obtém o valor da propriedade valorFrete.
      * 
      * @return
      *     possible object is
@@ -177,7 +177,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the valorFrete property.
+     * Define o valor da propriedade valorFrete.
      * 
      * @param value
      *     allowed object is
@@ -189,7 +189,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the paisDestino property.
+     * Obtém o valor da propriedade paisDestino.
      * 
      * @return
      *     possible object is
@@ -201,7 +201,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the paisDestino property.
+     * Define o valor da propriedade paisDestino.
      * 
      * @param value
      *     allowed object is
@@ -213,7 +213,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the consignadoAOrdem property.
+     * Obtém o valor da propriedade consignadoAOrdem.
      * 
      * @return
      *     possible object is
@@ -225,7 +225,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the consignadoAOrdem property.
+     * Define o valor da propriedade consignadoAOrdem.
      * 
      * @param value
      *     allowed object is
@@ -237,7 +237,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the nomeConsignatario property.
+     * Obtém o valor da propriedade nomeConsignatario.
      * 
      * @return
      *     possible object is
@@ -249,7 +249,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the nomeConsignatario property.
+     * Define o valor da propriedade nomeConsignatario.
      * 
      * @param value
      *     allowed object is
@@ -261,7 +261,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Gets the value of the enderecoConsignatario property.
+     * Obtém o valor da propriedade enderecoConsignatario.
      * 
      * @return
      *     possible object is
@@ -273,7 +273,7 @@ public class TConhecimentoCarga {
     }
 
     /**
-     * Sets the value of the enderecoConsignatario property.
+     * Define o valor da propriedade enderecoConsignatario.
      * 
      * @param value
      *     allowed object is

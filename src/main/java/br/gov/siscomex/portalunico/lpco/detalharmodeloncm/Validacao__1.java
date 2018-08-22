@@ -4,7 +4,7 @@ package br.gov.siscomex.portalunico.lpco.detalharmodeloncm;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Validacao_ {
+public class Validacao__1 {
 
     @SerializedName("obrigatorio")
     @Expose
@@ -65,7 +65,7 @@ public class Validacao_ {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Validacao_.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Validacao__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("obrigatorio");
         sb.append('=');
         sb.append(((this.obrigatorio == null)?"<null>":this.obrigatorio));
@@ -110,10 +110,10 @@ public class Validacao_ {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Validacao_) == false) {
+        if ((other instanceof Validacao__1) == false) {
             return false;
         }
-        Validacao_ rhs = ((Validacao_) other);
+        Validacao__1 rhs = ((Validacao__1) other);
         return ((((((this.permiteMultiplosValores == rhs.permiteMultiplosValores)||((this.permiteMultiplosValores!= null)&&this.permiteMultiplosValores.equals(rhs.permiteMultiplosValores)))&&((this.qtdCasasDecimais == rhs.qtdCasasDecimais)||((this.qtdCasasDecimais!= null)&&this.qtdCasasDecimais.equals(rhs.qtdCasasDecimais))))&&((this.obrigatorio == rhs.obrigatorio)||((this.obrigatorio!= null)&&this.obrigatorio.equals(rhs.obrigatorio))))&&((this.mascara == rhs.mascara)||((this.mascara!= null)&&this.mascara.equals(rhs.mascara))))&&((this.tamanhoMaximo == rhs.tamanhoMaximo)||((this.tamanhoMaximo!= null)&&this.tamanhoMaximo.equals(rhs.tamanhoMaximo))));
     }
 

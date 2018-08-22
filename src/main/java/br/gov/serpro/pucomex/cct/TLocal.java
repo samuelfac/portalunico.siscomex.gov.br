@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TLocal complex type.
+ * <p>Classe Java de TLocal complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TLocal">
@@ -48,7 +48,7 @@ public class TLocal {
     protected String codigoRA;
 
     /**
-     * Gets the value of the codigoURF property.
+     * Obtém o valor da propriedade codigoURF.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class TLocal {
     }
 
     /**
-     * Sets the value of the codigoURF property.
+     * Define o valor da propriedade codigoURF.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class TLocal {
     }
 
     /**
-     * Gets the value of the coordenadas property.
+     * Obtém o valor da propriedade coordenadas.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class TLocal {
     }
 
     /**
-     * Sets the value of the coordenadas property.
+     * Define o valor da propriedade coordenadas.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class TLocal {
     }
 
     /**
-     * Gets the value of the codigoRA property.
+     * Obtém o valor da propriedade codigoRA.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class TLocal {
     }
 
     /**
-     * Sets the value of the codigoRA property.
+     * Define o valor da propriedade codigoRA.
      * 
      * @param value
      *     allowed object is

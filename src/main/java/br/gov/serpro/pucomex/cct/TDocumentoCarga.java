@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TDocumentoCarga complex type.
+ * <p>Classe Java de TDocumentoCarga complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TDocumentoCarga">
@@ -50,23 +50,23 @@ public class TDocumentoCarga {
 
     @XmlElementRefs({
         @XmlElementRef(name = "cargaSoltaVeiculo", namespace = "http://www.pucomex.serpro.gov.br/cct", type = CargaSoltaVeiculo.class, required = false),
-        @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Granel.class, required = false),
+        @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "numeroRUC", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Granel.class, required = false)
     })
     protected List<Object> content;
 
     /**
-     * Gets the rest of the content model. 
+     * Obtém o restante do modelo do conteúdo. 
      * 
      * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Granel" is used by two different parts of a schema. See: 
-     * line 37 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/reuso/DocumentoCarga.xsd
-     * line 34 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/reuso/DocumentoCarga.xsd
+     * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
+     * O nome do campo "Granel" é usado por duas partes diferentes de um esquema. Consulte: 
+     * linha 37 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/reuso/DocumentoCarga.xsd
+     * linha 34 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/reuso/DocumentoCarga.xsd
      * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
+     * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
+     * das seguintes declarações, a fim de alterar seus nomes: 
      * Gets the value of the content property.
      * 
      * <p>
@@ -84,10 +84,10 @@ public class TDocumentoCarga {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link CargaSoltaVeiculo }
      * {@link Granel }
      * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link CargaSoltaVeiculo }
      * 
      * 
      */

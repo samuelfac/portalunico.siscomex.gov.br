@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ItemNFF complex type.
+ * <p>Classe Java de ItemNFF complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="ItemNFF">
@@ -81,7 +81,7 @@ public class ItemNFF {
     protected String quantidadeMedidaEstatistica;
 
     /**
-     * Gets the value of the numeroItem property.
+     * Obtém o valor da propriedade numeroItem.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the numeroItem property.
+     * Define o valor da propriedade numeroItem.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class ItemNFF {
     }
 
     /**
-     * Gets the value of the codigoProduto property.
+     * Obtém o valor da propriedade codigoProduto.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the codigoProduto property.
+     * Define o valor da propriedade codigoProduto.
      * 
      * @param value
      *     allowed object is
@@ -129,7 +129,7 @@ public class ItemNFF {
     }
 
     /**
-     * Gets the value of the ncm property.
+     * Obtém o valor da propriedade ncm.
      * 
      * @return
      *     possible object is
@@ -141,7 +141,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the ncm property.
+     * Define o valor da propriedade ncm.
      * 
      * @param value
      *     allowed object is
@@ -153,7 +153,7 @@ public class ItemNFF {
     }
 
     /**
-     * Gets the value of the descricaoProduto property.
+     * Obtém o valor da propriedade descricaoProduto.
      * 
      * @return
      *     possible object is
@@ -165,7 +165,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the descricaoProduto property.
+     * Define o valor da propriedade descricaoProduto.
      * 
      * @param value
      *     allowed object is
@@ -177,7 +177,7 @@ public class ItemNFF {
     }
 
     /**
-     * Gets the value of the cfop property.
+     * Obtém o valor da propriedade cfop.
      * 
      * @return
      *     possible object is
@@ -189,7 +189,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the cfop property.
+     * Define o valor da propriedade cfop.
      * 
      * @param value
      *     allowed object is
@@ -201,7 +201,7 @@ public class ItemNFF {
     }
 
     /**
-     * Gets the value of the valorTotal property.
+     * Obtém o valor da propriedade valorTotal.
      * 
      * @return
      *     possible object is
@@ -213,7 +213,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the valorTotal property.
+     * Define o valor da propriedade valorTotal.
      * 
      * @param value
      *     allowed object is
@@ -225,7 +225,7 @@ public class ItemNFF {
     }
 
     /**
-     * Gets the value of the quantidadeMedidaEstatistica property.
+     * Obtém o valor da propriedade quantidadeMedidaEstatistica.
      * 
      * @return
      *     possible object is
@@ -237,7 +237,7 @@ public class ItemNFF {
     }
 
     /**
-     * Sets the value of the quantidadeMedidaEstatistica property.
+     * Define o valor da propriedade quantidadeMedidaEstatistica.
      * 
      * @param value
      *     allowed object is

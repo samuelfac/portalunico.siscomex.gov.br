@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TLocalExtend complex type.
+ * <p>Classe Java de TLocalExtend complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TLocalExtend">
@@ -52,7 +52,7 @@ public class TLocalExtend {
     protected String codigoRA;
 
     /**
-     * Gets the value of the codigoURF property.
+     * Obtém o valor da propriedade codigoURF.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Sets the value of the codigoURF property.
+     * Define o valor da propriedade codigoURF.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Gets the value of the coordenadas property.
+     * Obtém o valor da propriedade coordenadas.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Sets the value of the coordenadas property.
+     * Define o valor da propriedade coordenadas.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Gets the value of the cnpjRespEstoqueCarga property.
+     * Obtém o valor da propriedade cnpjRespEstoqueCarga.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Sets the value of the cnpjRespEstoqueCarga property.
+     * Define o valor da propriedade cnpjRespEstoqueCarga.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Gets the value of the codigoRA property.
+     * Obtém o valor da propriedade codigoRA.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class TLocalExtend {
     }
 
     /**
-     * Sets the value of the codigoRA property.
+     * Define o valor da propriedade codigoRA.
      * 
      * @param value
      *     allowed object is

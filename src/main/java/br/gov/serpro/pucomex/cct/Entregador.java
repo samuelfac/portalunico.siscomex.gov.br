@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Classe Java de anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -48,7 +48,7 @@ public class Entregador {
     protected String nomeEstrangeiro;
 
     /**
-     * Gets the value of the cnpj property.
+     * Obtém o valor da propriedade cnpj.
      * 
      * @return
      *     possible object is
@@ -60,7 +60,7 @@ public class Entregador {
     }
 
     /**
-     * Sets the value of the cnpj property.
+     * Define o valor da propriedade cnpj.
      * 
      * @param value
      *     allowed object is
@@ -72,7 +72,7 @@ public class Entregador {
     }
 
     /**
-     * Gets the value of the cpf property.
+     * Obtém o valor da propriedade cpf.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class Entregador {
     }
 
     /**
-     * Sets the value of the cpf property.
+     * Define o valor da propriedade cpf.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class Entregador {
     }
 
     /**
-     * Gets the value of the nomeEstrangeiro property.
+     * Obtém o valor da propriedade nomeEstrangeiro.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class Entregador {
     }
 
     /**
-     * Sets the value of the nomeEstrangeiro property.
+     * Define o valor da propriedade nomeEstrangeiro.
      * 
      * @param value
      *     allowed object is

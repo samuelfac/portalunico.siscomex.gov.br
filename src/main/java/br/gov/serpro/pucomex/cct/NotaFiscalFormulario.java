@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for NotaFiscalFormulario complex type.
+ * <p>Classe Java de NotaFiscalFormulario complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="NotaFiscalFormulario">
@@ -107,7 +107,7 @@ public class NotaFiscalFormulario {
     protected NotaFiscalFormulario.ItensNFF itensNFF;
 
     /**
-     * Gets the value of the numeroNF property.
+     * Obtém o valor da propriedade numeroNF.
      * 
      * @return
      *     possible object is
@@ -119,7 +119,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the numeroNF property.
+     * Define o valor da propriedade numeroNF.
      * 
      * @param value
      *     allowed object is
@@ -131,7 +131,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the serieNF property.
+     * Obtém o valor da propriedade serieNF.
      * 
      * @return
      *     possible object is
@@ -143,7 +143,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the serieNF property.
+     * Define o valor da propriedade serieNF.
      * 
      * @param value
      *     allowed object is
@@ -155,7 +155,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the modeloNF property.
+     * Obtém o valor da propriedade modeloNF.
      * 
      * @return
      *     possible object is
@@ -167,7 +167,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the modeloNF property.
+     * Define o valor da propriedade modeloNF.
      * 
      * @param value
      *     allowed object is
@@ -179,7 +179,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the aamm property.
+     * Obtém o valor da propriedade aamm.
      * 
      * @return
      *     possible object is
@@ -191,7 +191,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the aamm property.
+     * Define o valor da propriedade aamm.
      * 
      * @param value
      *     allowed object is
@@ -203,7 +203,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the ufEmissor property.
+     * Obtém o valor da propriedade ufEmissor.
      * 
      * @return
      *     possible object is
@@ -215,7 +215,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the ufEmissor property.
+     * Define o valor da propriedade ufEmissor.
      * 
      * @param value
      *     allowed object is
@@ -227,7 +227,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the dataEmissao property.
+     * Obtém o valor da propriedade dataEmissao.
      * 
      * @return
      *     possible object is
@@ -239,7 +239,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the dataEmissao property.
+     * Define o valor da propriedade dataEmissao.
      * 
      * @param value
      *     allowed object is
@@ -251,7 +251,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the identificacaoEmissor property.
+     * Obtém o valor da propriedade identificacaoEmissor.
      * 
      * @return
      *     possible object is
@@ -263,7 +263,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the identificacaoEmissor property.
+     * Define o valor da propriedade identificacaoEmissor.
      * 
      * @param value
      *     allowed object is
@@ -275,7 +275,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the destinatario property.
+     * Obtém o valor da propriedade destinatario.
      * 
      * @return
      *     possible object is
@@ -287,7 +287,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the destinatario property.
+     * Define o valor da propriedade destinatario.
      * 
      * @param value
      *     allowed object is
@@ -299,7 +299,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the conteineres property.
+     * Obtém o valor da propriedade conteineres.
      * 
      * @return
      *     possible object is
@@ -311,7 +311,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the conteineres property.
+     * Define o valor da propriedade conteineres.
      * 
      * @param value
      *     allowed object is
@@ -323,7 +323,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Gets the value of the itensNFF property.
+     * Obtém o valor da propriedade itensNFF.
      * 
      * @return
      *     possible object is
@@ -335,7 +335,7 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Sets the value of the itensNFF property.
+     * Define o valor da propriedade itensNFF.
      * 
      * @param value
      *     allowed object is
@@ -348,9 +348,9 @@ public class NotaFiscalFormulario {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -408,9 +408,9 @@ public class NotaFiscalFormulario {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

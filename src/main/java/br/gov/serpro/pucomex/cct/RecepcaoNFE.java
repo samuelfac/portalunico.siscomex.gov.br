@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for recepcaoNFE complex type.
+ * <p>Classe Java de recepcaoNFE complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="recepcaoNFE">
@@ -99,7 +99,7 @@ public class RecepcaoNFE {
     protected String observacoesGerais;
 
     /**
-     * Gets the value of the identificacaoRecepcao property.
+     * Obtém o valor da propriedade identificacaoRecepcao.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the identificacaoRecepcao property.
+     * Define o valor da propriedade identificacaoRecepcao.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the cnpjResp property.
+     * Obtém o valor da propriedade cnpjResp.
      * 
      * @return
      *     possible object is
@@ -135,7 +135,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the cnpjResp property.
+     * Define o valor da propriedade cnpjResp.
      * 
      * @param value
      *     allowed object is
@@ -147,7 +147,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -159,7 +159,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -171,7 +171,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the referenciaLocalRecepcao property.
+     * Obtém o valor da propriedade referenciaLocalRecepcao.
      * 
      * @return
      *     possible object is
@@ -183,7 +183,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the referenciaLocalRecepcao property.
+     * Define o valor da propriedade referenciaLocalRecepcao.
      * 
      * @param value
      *     allowed object is
@@ -195,7 +195,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the notasFiscais property.
+     * Obtém o valor da propriedade notasFiscais.
      * 
      * @return
      *     possible object is
@@ -207,7 +207,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the notasFiscais property.
+     * Define o valor da propriedade notasFiscais.
      * 
      * @param value
      *     allowed object is
@@ -219,7 +219,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the transportador property.
+     * Obtém o valor da propriedade transportador.
      * 
      * @return
      *     possible object is
@@ -231,7 +231,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the transportador property.
+     * Define o valor da propriedade transportador.
      * 
      * @param value
      *     allowed object is
@@ -243,7 +243,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the pesoAferido property.
+     * Obtém o valor da propriedade pesoAferido.
      * 
      * @return
      *     possible object is
@@ -255,7 +255,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the pesoAferido property.
+     * Define o valor da propriedade pesoAferido.
      * 
      * @param value
      *     allowed object is
@@ -267,7 +267,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the motivoNaoPesagem property.
+     * Obtém o valor da propriedade motivoNaoPesagem.
      * 
      * @return
      *     possible object is
@@ -279,7 +279,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the motivoNaoPesagem property.
+     * Define o valor da propriedade motivoNaoPesagem.
      * 
      * @param value
      *     allowed object is
@@ -291,7 +291,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the localArmazenamento property.
+     * Obtém o valor da propriedade localArmazenamento.
      * 
      * @return
      *     possible object is
@@ -303,7 +303,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the localArmazenamento property.
+     * Define o valor da propriedade localArmazenamento.
      * 
      * @param value
      *     allowed object is
@@ -315,7 +315,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the codigoIdentCarga property.
+     * Obtém o valor da propriedade codigoIdentCarga.
      * 
      * @return
      *     possible object is
@@ -327,7 +327,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the codigoIdentCarga property.
+     * Define o valor da propriedade codigoIdentCarga.
      * 
      * @param value
      *     allowed object is
@@ -339,7 +339,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the avariasIdentificadas property.
+     * Obtém o valor da propriedade avariasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -351,7 +351,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the avariasIdentificadas property.
+     * Define o valor da propriedade avariasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -363,7 +363,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the divergenciasIdentificadas property.
+     * Obtém o valor da propriedade divergenciasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -375,7 +375,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the divergenciasIdentificadas property.
+     * Define o valor da propriedade divergenciasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -387,7 +387,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Gets the value of the observacoesGerais property.
+     * Obtém o valor da propriedade observacoesGerais.
      * 
      * @return
      *     possible object is
@@ -399,7 +399,7 @@ public class RecepcaoNFE {
     }
 
     /**
-     * Sets the value of the observacoesGerais property.
+     * Define o valor da propriedade observacoesGerais.
      * 
      * @param value
      *     allowed object is
@@ -412,9 +412,9 @@ public class RecepcaoNFE {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

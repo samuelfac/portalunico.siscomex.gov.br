@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for EntregaConteiner complex type.
+ * <p>Classe Java de EntregaConteiner complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="EntregaConteiner">
@@ -76,7 +76,7 @@ public class EntregaConteiner {
     protected String observacoesGerais;
 
     /**
-     * Gets the value of the identificacaoEntrega property.
+     * Obtém o valor da propriedade identificacaoEntrega.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the identificacaoEntrega property.
+     * Define o valor da propriedade identificacaoEntrega.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the identificacaoPessoaJuridica property.
+     * Obtém o valor da propriedade identificacaoPessoaJuridica.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the identificacaoPessoaJuridica property.
+     * Define o valor da propriedade identificacaoPessoaJuridica.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the conteineres property.
+     * Obtém o valor da propriedade conteineres.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the conteineres property.
+     * Define o valor da propriedade conteineres.
      * 
      * @param value
      *     allowed object is
@@ -172,7 +172,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the recebedor property.
+     * Obtém o valor da propriedade recebedor.
      * 
      * @return
      *     possible object is
@@ -184,7 +184,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the recebedor property.
+     * Define o valor da propriedade recebedor.
      * 
      * @param value
      *     allowed object is
@@ -196,7 +196,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the avariasIdentificadas property.
+     * Obtém o valor da propriedade avariasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -208,7 +208,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the avariasIdentificadas property.
+     * Define o valor da propriedade avariasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -220,7 +220,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the divergenciasIdentificadas property.
+     * Obtém o valor da propriedade divergenciasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -232,7 +232,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the divergenciasIdentificadas property.
+     * Define o valor da propriedade divergenciasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -244,7 +244,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Gets the value of the observacoesGerais property.
+     * Obtém o valor da propriedade observacoesGerais.
      * 
      * @return
      *     possible object is
@@ -256,7 +256,7 @@ public class EntregaConteiner {
     }
 
     /**
-     * Sets the value of the observacoesGerais property.
+     * Define o valor da propriedade observacoesGerais.
      * 
      * @param value
      *     allowed object is
@@ -269,9 +269,9 @@ public class EntregaConteiner {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

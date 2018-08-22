@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Acondicionamento complex type.
+ * <p>Classe Java de Acondicionamento complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="Acondicionamento">
@@ -60,7 +60,7 @@ public class Acondicionamento {
     protected Graneis graneis;
 
     /**
-     * Gets the value of the conteineres property.
+     * Obtém o valor da propriedade conteineres.
      * 
      * @return
      *     possible object is
@@ -72,7 +72,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Sets the value of the conteineres property.
+     * Define o valor da propriedade conteineres.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +84,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Gets the value of the embalagens property.
+     * Obtém o valor da propriedade embalagens.
      * 
      * @return
      *     possible object is
@@ -96,7 +96,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Sets the value of the embalagens property.
+     * Define o valor da propriedade embalagens.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +108,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Gets the value of the cargasSoltasVeiculos property.
+     * Obtém o valor da propriedade cargasSoltasVeiculos.
      * 
      * @return
      *     possible object is
@@ -120,7 +120,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Sets the value of the cargasSoltasVeiculos property.
+     * Define o valor da propriedade cargasSoltasVeiculos.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +132,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Gets the value of the graneis property.
+     * Obtém o valor da propriedade graneis.
      * 
      * @return
      *     possible object is
@@ -144,7 +144,7 @@ public class Acondicionamento {
     }
 
     /**
-     * Sets the value of the graneis property.
+     * Define o valor da propriedade graneis.
      * 
      * @param value
      *     allowed object is
@@ -157,9 +157,9 @@ public class Acondicionamento {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlValue;
 
 
 /**
- * <p>Java class for GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType complex type.
+ * <p>Classe Java de GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType">
@@ -38,7 +38,7 @@ public class GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType {
     protected String languageID;
 
     /**
-     * Gets the value of the value property.
+     * Obtém o valor da propriedade value.
      * 
      * @return
      *     possible object is
@@ -50,7 +50,7 @@ public class GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define o valor da propriedade value.
      * 
      * @param value
      *     allowed object is
@@ -62,7 +62,7 @@ public class GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType {
     }
 
     /**
-     * Gets the value of the languageID property.
+     * Obtém o valor da propriedade languageID.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class GovernmentAgencyGoodsItemValueWithExchangeCoverAmountType {
     }
 
     /**
-     * Sets the value of the languageID property.
+     * Define o valor da propriedade languageID.
      * 
      * @param value
      *     allowed object is

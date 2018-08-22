@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../TipoComplexo.xsd" />
+
+	<element name="granel">
+		<complexType>
+			<sequence>
+				<element name="carga" type="tns:TGranel" minOccurs="1"
+					maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="identificadorTipoGranel">
+			<selector xpath="tns:carga" />
+			<field xpath="tns:tipoGranel" />
+		</unique>
+	</element>
+
+	<element name="graneis">
+		<complexType>
+			<sequence>
+				<element name="granel" type="tns:TGranel" minOccurs="1"
+					maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="duplicidadeTipoGranel">
+			<selector xpath="tns:granel" />
+			<field xpath="tns:tipoGranel" />
+		</unique>
+	</element>
+
+</schema>	

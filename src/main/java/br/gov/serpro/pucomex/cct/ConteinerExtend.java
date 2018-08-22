@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ConteinerExtend complex type.
+ * <p>Classe Java de ConteinerExtend complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="ConteinerExtend">
@@ -43,7 +43,7 @@ public class ConteinerExtend
     protected String motivoNaoPesagem;
 
     /**
-     * Gets the value of the pesoAferido property.
+     * Obtém o valor da propriedade pesoAferido.
      * 
      * @return
      *     possible object is
@@ -55,7 +55,7 @@ public class ConteinerExtend
     }
 
     /**
-     * Sets the value of the pesoAferido property.
+     * Define o valor da propriedade pesoAferido.
      * 
      * @param value
      *     allowed object is
@@ -67,7 +67,7 @@ public class ConteinerExtend
     }
 
     /**
-     * Gets the value of the motivoNaoPesagem property.
+     * Obtém o valor da propriedade motivoNaoPesagem.
      * 
      * @return
      *     possible object is
@@ -79,7 +79,7 @@ public class ConteinerExtend
     }
 
     /**
-     * Sets the value of the motivoNaoPesagem property.
+     * Define o valor da propriedade motivoNaoPesagem.
      * 
      * @param value
      *     allowed object is

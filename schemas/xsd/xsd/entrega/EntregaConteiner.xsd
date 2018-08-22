@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+    <include schemaLocation="../TipoComplexo.xsd" />
+    <include schemaLocation="../reuso/Recebedor.xsd" />
+
+	<element name="entregasConteineres">
+		<complexType>
+			<sequence>
+				<element name="entregaConteiner" type="tns:EntregaConteiner" minOccurs="1" maxOccurs="1" />
+			</sequence>
+		</complexType>
+		<unique name="identificacaoEntregaConteiner">
+			<selector xpath="tns:entregaConteiner" />
+			<field xpath="tns:identificacaoEntrega" />
+		</unique>
+	</element>
+
+
+	<complexType name="EntregaConteiner">
+		<sequence>
+
+			<element name="identificacaoEntrega" type="tns:StringBasica50" minOccurs="1" maxOccurs="1" />
+
+			<element name="identificacaoPessoaJuridica" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+
+			<element name="local" type="tns:TLocal" minOccurs="1" maxOccurs="1" />
+			
+			<element name="conteineres" minOccurs="1" maxOccurs="1" >
+				<complexType>
+	    			<sequence>
+	    				<element name="conteiner" type="tns:ConteinerExtend" minOccurs="1" maxOccurs="50" />
+	    			</sequence>
+	    		</complexType>
+				<unique name="duplicidadeConteinerEntrega">
+					<selector xpath="tns:conteiner"/>
+					<field xpath="tns:numeroConteiner"/>
+				</unique>
+			</element>
+			
+			<element ref="tns:recebedor" minOccurs="1" maxOccurs="1"/>
+			
+			<element name="avariasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1"/>
+
+			<element name="divergenciasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+			<element name="observacoesGerais" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+			
+		</sequence>
+	</complexType>
+</schema>

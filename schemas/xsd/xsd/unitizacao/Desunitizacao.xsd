@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+	
+	<include schemaLocation="../reuso/DocumentoCarga.xsd" />
+	<include schemaLocation="../reuso/NotaFiscal.xsd" />
+	
+	<element name="operacaoDesunitizacao" type="tns:OperacaoDesunitizacao" />
+
+	<complexType name="OperacaoDesunitizacao">
+		<sequence>
+
+			<element name="identificacaoResponsavelDesunitizacao" type="tns:CNPJ"	minOccurs="1" maxOccurs="1" />
+			
+			<element name="local" type="tns:TLocalExtend" minOccurs="1" maxOccurs="1" />
+			
+			<element name="desunitizacoes">
+				<complexType>
+					<sequence>
+						<element name="desunitizacao" type="tns:TDesunitizacao"	minOccurs="1" maxOccurs="1" />
+					</sequence>
+				</complexType>
+				<unique name="duplicidadeConteinerDesunitizacao">
+					<selector xpath="tns:desunitizacao"/>
+					<field xpath="tns:numeroConteiner"/>
+				</unique>
+			</element>
+		</sequence>
+
+	</complexType>
+	
+	<complexType name="TDesunitizacao">
+		<sequence>
+			<sequence>
+				<element name="numeroConteiner" type="tns:NumeroConteiner" minOccurs="1" maxOccurs="1" />
+				<choice>
+					<sequence>
+						<element ref="tns:documentos" minOccurs="1" maxOccurs="1"/>
+						<element ref="tns:notasFiscais" minOccurs="0" maxOccurs="1"/>
+					</sequence>
+					<sequence>
+						<element ref="tns:notasFiscais" minOccurs="1" maxOccurs="1"/>
+					</sequence>
+				</choice>
+				
+			</sequence>
+		</sequence>
+	</complexType>
+</schema>

@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TConteiner complex type.
+ * <p>Classe Java de TConteiner complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TConteiner">
@@ -62,7 +62,7 @@ public class TConteiner {
     protected TConteiner.Lacres lacres;
 
     /**
-     * Gets the value of the numeroConteiner property.
+     * Obtém o valor da propriedade numeroConteiner.
      * 
      * @return
      *     possible object is
@@ -74,7 +74,7 @@ public class TConteiner {
     }
 
     /**
-     * Sets the value of the numeroConteiner property.
+     * Define o valor da propriedade numeroConteiner.
      * 
      * @param value
      *     allowed object is
@@ -86,7 +86,7 @@ public class TConteiner {
     }
 
     /**
-     * Gets the value of the tara property.
+     * Obtém o valor da propriedade tara.
      * 
      * @return
      *     possible object is
@@ -98,7 +98,7 @@ public class TConteiner {
     }
 
     /**
-     * Sets the value of the tara property.
+     * Define o valor da propriedade tara.
      * 
      * @param value
      *     allowed object is
@@ -110,7 +110,7 @@ public class TConteiner {
     }
 
     /**
-     * Gets the value of the lacres property.
+     * Obtém o valor da propriedade lacres.
      * 
      * @return
      *     possible object is
@@ -122,7 +122,7 @@ public class TConteiner {
     }
 
     /**
-     * Sets the value of the lacres property.
+     * Define o valor da propriedade lacres.
      * 
      * @param value
      *     allowed object is
@@ -135,9 +135,9 @@ public class TConteiner {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

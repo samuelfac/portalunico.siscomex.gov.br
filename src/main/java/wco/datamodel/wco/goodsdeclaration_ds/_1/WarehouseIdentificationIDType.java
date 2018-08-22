@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for WarehouseIdentificationIDType complex type.
+ * <p>Classe Java de WarehouseIdentificationIDType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="WarehouseIdentificationIDType">
@@ -42,7 +42,7 @@ public class WarehouseIdentificationIDType {
     protected String schemeID;
 
     /**
-     * Gets the value of the value property.
+     * Obtém o valor da propriedade value.
      * 
      * @return
      *     possible object is
@@ -54,7 +54,7 @@ public class WarehouseIdentificationIDType {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define o valor da propriedade value.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +66,7 @@ public class WarehouseIdentificationIDType {
     }
 
     /**
-     * Gets the value of the schemeID property.
+     * Obtém o valor da propriedade schemeID.
      * 
      * @return
      *     possible object is
@@ -78,7 +78,7 @@ public class WarehouseIdentificationIDType {
     }
 
     /**
-     * Sets the value of the schemeID property.
+     * Define o valor da propriedade schemeID.
      * 
      * @param value
      *     allowed object is

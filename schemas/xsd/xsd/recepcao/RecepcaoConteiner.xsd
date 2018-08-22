@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+    <include schemaLocation="../TipoComplexo.xsd" />
+	<include schemaLocation="../reuso/Entregador.xsd" />
+	<include schemaLocation="./TransitoSimplificadoRecepcao.xsd" />
+    
+	<element name="recepcoesConteineres">
+  		<complexType>
+   			<sequence>
+     			<element name="recepcaoConteiner" type="tns:RecepcaoConteiner" minOccurs="1" maxOccurs="1" />
+   			</sequence>
+   		</complexType>
+   		<unique name="identificacaoRecepcaoConteiner">
+			<selector xpath="tns:recepcaoConteiner"/>
+			<field xpath="tns:identificacaoRecepcao"/>
+		</unique>
+  	</element>
+
+	<complexType name="RecepcaoConteiner">
+		<sequence>
+
+			<element name="identificacaoRecepcao" type="tns:StringBasica50" minOccurs="1" maxOccurs="1" />
+
+			<element name="cnpjResp" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+
+			<element name="local" type="tns:TLocal" minOccurs="1" maxOccurs="1" />
+
+			<element name="referenciaLocalRecepcao" type="tns:StringBasica150" minOccurs="0" maxOccurs="1"/>
+
+            <element ref="tns:entregador" minOccurs="1" maxOccurs="1"/>
+
+            <element name="conteineres" minOccurs="1" maxOccurs="1" >
+				<complexType>
+	    			<sequence>
+	    				<element name="conteiner" type="tns:ConteinerExtend" minOccurs="1" maxOccurs="50" />
+	    			</sequence>
+	    		</complexType>
+				<unique name="duplicidadeConteinerRecepcao">
+					<selector xpath="tns:conteiner"/>
+					<field xpath="tns:numeroConteiner"/>
+				</unique>
+			</element>			
+			
+			<element name="localArmazenamento" type="tns:StringBasica150" minOccurs="0" maxOccurs="1" />
+
+			<element name="codigoIdentCarga" type="tns:StringBasica150" minOccurs="0" maxOccurs="1" />
+
+			<element name="avariasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1"/>
+
+			<element name="divergenciasIdentificadas" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+
+			<element name="observacoesGerais" type="tns:StringBasica250" minOccurs="0" maxOccurs="1" />
+			
+			<element name="transitoSimplificado" type="tns:TransitoSimplificadoRecepcao" minOccurs="0" maxOccurs="1" />
+			
+		</sequence>
+
+	</complexType>
+
+</schema>

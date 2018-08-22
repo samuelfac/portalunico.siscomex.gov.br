@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TVeiculoTransitoSimplificado complex type.
+ * <p>Classe Java de TVeiculoTransitoSimplificado complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TVeiculoTransitoSimplificado">
@@ -52,7 +52,7 @@ public class TVeiculoTransitoSimplificado {
     protected TVeiculoTransitoSimplificado.Lacres lacres;
 
     /**
-     * Gets the value of the placa property.
+     * Obtém o valor da propriedade placa.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class TVeiculoTransitoSimplificado {
     }
 
     /**
-     * Sets the value of the placa property.
+     * Define o valor da propriedade placa.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class TVeiculoTransitoSimplificado {
     }
 
     /**
-     * Gets the value of the lacres property.
+     * Obtém o valor da propriedade lacres.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class TVeiculoTransitoSimplificado {
     }
 
     /**
-     * Sets the value of the lacres property.
+     * Define o valor da propriedade lacres.
      * 
      * @param value
      *     allowed object is
@@ -101,9 +101,9 @@ public class TVeiculoTransitoSimplificado {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="Granel.xsd" />
+	<include schemaLocation="SoltaVeiculo.xsd" />
+
+	<element name="documentos">
+		<complexType>
+			<sequence>
+				<element name="documento" type="tns:TDocumentoCarga"	minOccurs="1" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="identificadorNumeroDUE">
+           	<selector xpath="tns:documento" />
+       		<field xpath="tns:numeroDUE" />
+       	</unique>
+       	<unique name="identificadorNumeroRUC">
+           	<selector xpath="tns:documento" />
+       		<field xpath="tns:numeroRUC" />
+       	</unique>
+	</element>
+
+	<complexType name="TDocumentoCarga">
+		<sequence>
+			<choice>
+				<element name="numeroDUE"  type="tns:NumeroDUE" />
+				<element name="numeroRUC"  type="tns:NumeroRUC" />
+			</choice>
+			<choice>
+				<sequence>
+					<element ref="tns:cargaSoltaVeiculo" />
+					<element ref="tns:granel" minOccurs="0"/>
+				</sequence>
+				<sequence>
+					<element ref="tns:granel" />
+				</sequence>
+			</choice>	
+		</sequence>
+	</complexType>
+
+</schema>	

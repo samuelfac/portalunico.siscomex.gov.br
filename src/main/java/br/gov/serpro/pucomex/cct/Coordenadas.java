@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Coordenadas complex type.
+ * <p>Classe Java de Coordenadas complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="Coordenadas">
@@ -40,7 +40,7 @@ public class Coordenadas {
     protected String longitude;
 
     /**
-     * Gets the value of the latitude property.
+     * Obtém o valor da propriedade latitude.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class Coordenadas {
     }
 
     /**
-     * Sets the value of the latitude property.
+     * Define o valor da propriedade latitude.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class Coordenadas {
     }
 
     /**
-     * Gets the value of the longitude property.
+     * Obtém o valor da propriedade longitude.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public class Coordenadas {
     }
 
     /**
-     * Sets the value of the longitude property.
+     * Define o valor da propriedade longitude.
      * 
      * @param value
      *     allowed object is

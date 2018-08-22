@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TCargaSoltaVeiculoConsolidacao complex type.
+ * <p>Classe Java de TCargaSoltaVeiculoConsolidacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TCargaSoltaVeiculoConsolidacao">
@@ -37,7 +37,7 @@ public class TCargaSoltaVeiculoConsolidacao {
     protected BigInteger quantidade;
 
     /**
-     * Gets the value of the quantidade property.
+     * Obtém o valor da propriedade quantidade.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class TCargaSoltaVeiculoConsolidacao {
     }
 
     /**
-     * Sets the value of the quantidade property.
+     * Define o valor da propriedade quantidade.
      * 
      * @param value
      *     allowed object is

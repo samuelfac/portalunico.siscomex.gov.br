@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlValue;
 
 
 /**
- * <p>Java class for ContactNameTextType complex type.
+ * <p>Classe Java de ContactNameTextType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="ContactNameTextType">
@@ -33,7 +33,7 @@ public class ContactNameTextType {
     protected String value;
 
     /**
-     * Gets the value of the value property.
+     * Obtém o valor da propriedade value.
      * 
      * @return
      *     possible object is
@@ -45,7 +45,7 @@ public class ContactNameTextType {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define o valor da propriedade value.
      * 
      * @param value
      *     allowed object is

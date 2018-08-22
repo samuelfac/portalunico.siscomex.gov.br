@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RecepcaoConteiner complex type.
+ * <p>Classe Java de RecepcaoConteiner complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="RecepcaoConteiner">
@@ -92,7 +92,7 @@ public class RecepcaoConteiner {
     protected TransitoSimplificadoRecepcao transitoSimplificado;
 
     /**
-     * Gets the value of the identificacaoRecepcao property.
+     * Obtém o valor da propriedade identificacaoRecepcao.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the identificacaoRecepcao property.
+     * Define o valor da propriedade identificacaoRecepcao.
      * 
      * @param value
      *     allowed object is
@@ -116,7 +116,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the cnpjResp property.
+     * Obtém o valor da propriedade cnpjResp.
      * 
      * @return
      *     possible object is
@@ -128,7 +128,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the cnpjResp property.
+     * Define o valor da propriedade cnpjResp.
      * 
      * @param value
      *     allowed object is
@@ -140,7 +140,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -152,7 +152,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -164,7 +164,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the referenciaLocalRecepcao property.
+     * Obtém o valor da propriedade referenciaLocalRecepcao.
      * 
      * @return
      *     possible object is
@@ -176,7 +176,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the referenciaLocalRecepcao property.
+     * Define o valor da propriedade referenciaLocalRecepcao.
      * 
      * @param value
      *     allowed object is
@@ -188,7 +188,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the entregador property.
+     * Obtém o valor da propriedade entregador.
      * 
      * @return
      *     possible object is
@@ -200,7 +200,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the entregador property.
+     * Define o valor da propriedade entregador.
      * 
      * @param value
      *     allowed object is
@@ -212,7 +212,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the conteineres property.
+     * Obtém o valor da propriedade conteineres.
      * 
      * @return
      *     possible object is
@@ -224,7 +224,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the conteineres property.
+     * Define o valor da propriedade conteineres.
      * 
      * @param value
      *     allowed object is
@@ -236,7 +236,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the localArmazenamento property.
+     * Obtém o valor da propriedade localArmazenamento.
      * 
      * @return
      *     possible object is
@@ -248,7 +248,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the localArmazenamento property.
+     * Define o valor da propriedade localArmazenamento.
      * 
      * @param value
      *     allowed object is
@@ -260,7 +260,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the codigoIdentCarga property.
+     * Obtém o valor da propriedade codigoIdentCarga.
      * 
      * @return
      *     possible object is
@@ -272,7 +272,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the codigoIdentCarga property.
+     * Define o valor da propriedade codigoIdentCarga.
      * 
      * @param value
      *     allowed object is
@@ -284,7 +284,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the avariasIdentificadas property.
+     * Obtém o valor da propriedade avariasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -296,7 +296,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the avariasIdentificadas property.
+     * Define o valor da propriedade avariasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -308,7 +308,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the divergenciasIdentificadas property.
+     * Obtém o valor da propriedade divergenciasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -320,7 +320,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the divergenciasIdentificadas property.
+     * Define o valor da propriedade divergenciasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -332,7 +332,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the observacoesGerais property.
+     * Obtém o valor da propriedade observacoesGerais.
      * 
      * @return
      *     possible object is
@@ -344,7 +344,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the observacoesGerais property.
+     * Define o valor da propriedade observacoesGerais.
      * 
      * @param value
      *     allowed object is
@@ -356,7 +356,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Gets the value of the transitoSimplificado property.
+     * Obtém o valor da propriedade transitoSimplificado.
      * 
      * @return
      *     possible object is
@@ -368,7 +368,7 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Sets the value of the transitoSimplificado property.
+     * Define o valor da propriedade transitoSimplificado.
      * 
      * @param value
      *     allowed object is
@@ -381,9 +381,9 @@ public class RecepcaoConteiner {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

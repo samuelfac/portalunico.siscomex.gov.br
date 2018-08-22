@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for OperacaoUnitizacao complex type.
+ * <p>Classe Java de OperacaoUnitizacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="OperacaoUnitizacao">
@@ -54,7 +54,7 @@ public class OperacaoUnitizacao {
     protected OperacaoUnitizacao.Unitizacoes unitizacoes;
 
     /**
-     * Gets the value of the identificacaoResponsavelUnitizacao property.
+     * Obtém o valor da propriedade identificacaoResponsavelUnitizacao.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class OperacaoUnitizacao {
     }
 
     /**
-     * Sets the value of the identificacaoResponsavelUnitizacao property.
+     * Define o valor da propriedade identificacaoResponsavelUnitizacao.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class OperacaoUnitizacao {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class OperacaoUnitizacao {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class OperacaoUnitizacao {
     }
 
     /**
-     * Gets the value of the unitizacoes property.
+     * Obtém o valor da propriedade unitizacoes.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class OperacaoUnitizacao {
     }
 
     /**
-     * Sets the value of the unitizacoes property.
+     * Define o valor da propriedade unitizacoes.
      * 
      * @param value
      *     allowed object is
@@ -127,9 +127,9 @@ public class OperacaoUnitizacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -155,7 +155,7 @@ public class OperacaoUnitizacao {
         protected TUnitizacao unitizacao;
 
         /**
-         * Gets the value of the unitizacao property.
+         * Obtém o valor da propriedade unitizacao.
          * 
          * @return
          *     possible object is
@@ -167,7 +167,7 @@ public class OperacaoUnitizacao {
         }
 
         /**
-         * Sets the value of the unitizacao property.
+         * Define o valor da propriedade unitizacao.
          * 
          * @param value
          *     allowed object is

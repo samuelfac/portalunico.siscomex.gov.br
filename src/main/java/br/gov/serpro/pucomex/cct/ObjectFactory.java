@@ -26,52 +26,25 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _TCargaSoltaVeiculoTipoEmbalagem_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "tipoEmbalagem");
-    private final static QName _TCargaSoltaVeiculoQuantidade_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "quantidade");
-    private final static QName _TCargaSoltaVeiculoTotal_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "total");
-    private final static QName _OperacaoDesunitizacao_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "operacaoDesunitizacao");
     private final static QName _OperacaoUnitizacao_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "operacaoUnitizacao");
-    private final static QName _TDocumentoCargaManifestacaoCargaSoltaVeiculo_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "cargaSoltaVeiculo");
-    private final static QName _TDocumentoCargaManifestacaoNumeroRUC_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroRUC");
-    private final static QName _TDocumentoCargaManifestacaoNumeroDUE_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroDUE");
-    private final static QName _TDocumentoCargaManifestacaoGranel_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "granel");
+    private final static QName _OperacaoDesunitizacao_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "operacaoDesunitizacao");
     private final static QName _TGranelTipoGranel_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "tipoGranel");
+    private final static QName _TGranelQuantidade_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "quantidade");
     private final static QName _TGranelUnidademedida_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "unidademedida");
-    private final static QName _DadosCargaNomeConsignatario_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "nomeConsignatario");
+    private final static QName _TGranelTotal_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "total");
+    private final static QName _TDocumentoCargaNumeroRUC_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroRUC");
+    private final static QName _TDocumentoCargaNumeroDUE_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroDUE");
     private final static QName _DadosCargaDocumentos_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "documentos");
-    private final static QName _DadosCargaPaisDestino_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "paisDestino");
-    private final static QName _DadosCargaConsignadoAOrdem_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "consignadoAOrdem");
-    private final static QName _DadosCargaEnderecoConsignatario_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "enderecoConsignatario");
+    private final static QName _TDocumentoCargaManifestacaoGranel_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "granel");
+    private final static QName _TDocumentoCargaManifestacaoCargaSoltaVeiculo_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "cargaSoltaVeiculo");
+    private final static QName _TDesunitizacaoNumeroConteiner_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroConteiner");
+    private final static QName _TCargaSoltaVeiculoTipoEmbalagem_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "tipoEmbalagem");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.gov.serpro.pucomex.cct
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link Acondicionamento }
-     * 
-     */
-    public Acondicionamento createAcondicionamento() {
-        return new Acondicionamento();
-    }
-
-    /**
-     * Create an instance of {@link Destinatario }
-     * 
-     */
-    public Destinatario createDestinatario() {
-        return new Destinatario();
-    }
-
-    /**
-     * Create an instance of {@link NotaFiscalFormulario }
-     * 
-     */
-    public NotaFiscalFormulario createNotaFiscalFormulario() {
-        return new NotaFiscalFormulario();
     }
 
     /**
@@ -83,35 +56,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Local }
-     * 
-     */
-    public Local createLocal() {
-        return new Local();
-    }
-
-    /**
-     * Create an instance of {@link Conhecimento }
-     * 
-     */
-    public Conhecimento createConhecimento() {
-        return new Conhecimento();
-    }
-
-    /**
-     * Create an instance of {@link TVeiculoTransitoSimplificado }
-     * 
-     */
-    public TVeiculoTransitoSimplificado createTVeiculoTransitoSimplificado() {
-        return new TVeiculoTransitoSimplificado();
-    }
-
-    /**
      * Create an instance of {@link TConteiner }
      * 
      */
     public TConteiner createTConteiner() {
         return new TConteiner();
+    }
+
+    /**
+     * Create an instance of {@link DadosCarga }
+     * 
+     */
+    public DadosCarga createDadosCarga() {
+        return new DadosCarga();
     }
 
     /**
@@ -139,27 +96,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DadosCarga }
+     * Create an instance of {@link TVeiculoTransitoSimplificado }
      * 
      */
-    public DadosCarga createDadosCarga() {
-        return new DadosCarga();
+    public TVeiculoTransitoSimplificado createTVeiculoTransitoSimplificado() {
+        return new TVeiculoTransitoSimplificado();
     }
 
     /**
-     * Create an instance of {@link RecepcaoConteiner }
+     * Create an instance of {@link Destinatario }
      * 
      */
-    public RecepcaoConteiner createRecepcaoConteiner() {
-        return new RecepcaoConteiner();
+    public Destinatario createDestinatario() {
+        return new Destinatario();
     }
 
     /**
-     * Create an instance of {@link RecepcaoDocumentoTransporte }
+     * Create an instance of {@link Acondicionamento }
      * 
      */
-    public RecepcaoDocumentoTransporte createRecepcaoDocumentoTransporte() {
-        return new RecepcaoDocumentoTransporte();
+    public Acondicionamento createAcondicionamento() {
+        return new Acondicionamento();
+    }
+
+    /**
+     * Create an instance of {@link Local }
+     * 
+     */
+    public Local createLocal() {
+        return new Local();
+    }
+
+    /**
+     * Create an instance of {@link NotaFiscalFormulario }
+     * 
+     */
+    public NotaFiscalFormulario createNotaFiscalFormulario() {
+        return new NotaFiscalFormulario();
+    }
+
+    /**
+     * Create an instance of {@link ManifestacaoExportacao }
+     * 
+     */
+    public ManifestacaoExportacao createManifestacaoExportacao() {
+        return new ManifestacaoExportacao();
+    }
+
+    /**
+     * Create an instance of {@link EntregaDocumentoTransporte }
+     * 
+     */
+    public EntregaDocumentoTransporte createEntregaDocumentoTransporte() {
+        return new EntregaDocumentoTransporte();
     }
 
     /**
@@ -179,22 +168,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link EntregaDocumentoTransporte }
-     * 
-     */
-    public EntregaDocumentoTransporte createEntregaDocumentoTransporte() {
-        return new EntregaDocumentoTransporte();
-    }
-
-    /**
-     * Create an instance of {@link RecepcaoNFF }
-     * 
-     */
-    public RecepcaoNFF createRecepcaoNFF() {
-        return new RecepcaoNFF();
-    }
-
-    /**
      * Create an instance of {@link RecepcaoNFE }
      * 
      */
@@ -203,19 +176,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OperacaoDesunitizacao }
-     * 
-     */
-    public OperacaoDesunitizacao createOperacaoDesunitizacao() {
-        return new OperacaoDesunitizacao();
-    }
-
-    /**
      * Create an instance of {@link OperacaoConsolidacao }
      * 
      */
     public OperacaoConsolidacao createOperacaoConsolidacao() {
         return new OperacaoConsolidacao();
+    }
+
+    /**
+     * Create an instance of {@link RecepcaoConteiner }
+     * 
+     */
+    public RecepcaoConteiner createRecepcaoConteiner() {
+        return new RecepcaoConteiner();
+    }
+
+    /**
+     * Create an instance of {@link RecepcaoNFF }
+     * 
+     */
+    public RecepcaoNFF createRecepcaoNFF() {
+        return new RecepcaoNFF();
     }
 
     /**
@@ -235,139 +216,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ManifestacaoExportacao }
+     * Create an instance of {@link RecepcaoDocumentoTransporte }
      * 
      */
-    public ManifestacaoExportacao createManifestacaoExportacao() {
-        return new ManifestacaoExportacao();
+    public RecepcaoDocumentoTransporte createRecepcaoDocumentoTransporte() {
+        return new RecepcaoDocumentoTransporte();
     }
 
     /**
-     * Create an instance of {@link ManifestacoesExportacao }
+     * Create an instance of {@link OperacaoDesunitizacao }
      * 
      */
-    public ManifestacoesExportacao createManifestacoesExportacao() {
-        return new ManifestacoesExportacao();
-    }
-
-    /**
-     * Create an instance of {@link CargasSoltasVeiculos }
-     * 
-     */
-    public CargasSoltasVeiculos createCargasSoltasVeiculos() {
-        return new CargasSoltasVeiculos();
-    }
-
-    /**
-     * Create an instance of {@link TCargaSoltaVeiculoConsolidacao }
-     * 
-     */
-    public TCargaSoltaVeiculoConsolidacao createTCargaSoltaVeiculoConsolidacao() {
-        return new TCargaSoltaVeiculoConsolidacao();
-    }
-
-    /**
-     * Create an instance of {@link RecepcoesDocumentoCarga }
-     * 
-     */
-    public RecepcoesDocumentoCarga createRecepcoesDocumentoCarga() {
-        return new RecepcoesDocumentoCarga();
-    }
-
-    /**
-     * Create an instance of {@link RecepcaoDocumentoCarga }
-     * 
-     */
-    public RecepcaoDocumentoCarga createRecepcaoDocumentoCarga() {
-        return new RecepcaoDocumentoCarga();
-    }
-
-    /**
-     * Create an instance of {@link Recebedor }
-     * 
-     */
-    public Recebedor createRecebedor() {
-        return new Recebedor();
-    }
-
-    /**
-     * Create an instance of {@link DocumentosUnitizacao }
-     * 
-     */
-    public DocumentosUnitizacao createDocumentosUnitizacao() {
-        return new DocumentosUnitizacao();
-    }
-
-    /**
-     * Create an instance of {@link TDocumentoCargaUnitizacao }
-     * 
-     */
-    public TDocumentoCargaUnitizacao createTDocumentoCargaUnitizacao() {
-        return new TDocumentoCargaUnitizacao();
-    }
-
-    /**
-     * Create an instance of {@link br.gov.serpro.pucomex.cct.Documentos }
-     * 
-     */
-    public br.gov.serpro.pucomex.cct.Documentos createDocumentos() {
-        return new br.gov.serpro.pucomex.cct.Documentos();
-    }
-
-    /**
-     * Create an instance of {@link TDocumentoCarga }
-     * 
-     */
-    public TDocumentoCarga createTDocumentoCarga() {
-        return new TDocumentoCarga();
-    }
-
-    /**
-     * Create an instance of {@link OperacoesConsolidacao }
-     * 
-     */
-    public OperacoesConsolidacao createOperacoesConsolidacao() {
-        return new OperacoesConsolidacao();
-    }
-
-    /**
-     * Create an instance of {@link RecepcoesNFE }
-     * 
-     */
-    public RecepcoesNFE createRecepcoesNFE() {
-        return new RecepcoesNFE();
-    }
-
-    /**
-     * Create an instance of {@link RecepcoesNFF }
-     * 
-     */
-    public RecepcoesNFF createRecepcoesNFF() {
-        return new RecepcoesNFF();
-    }
-
-    /**
-     * Create an instance of {@link Conteiner }
-     * 
-     */
-    public Conteiner createConteiner() {
-        return new Conteiner();
-    }
-
-    /**
-     * Create an instance of {@link ConteinerPesoBrutoExtend }
-     * 
-     */
-    public ConteinerPesoBrutoExtend createConteinerPesoBrutoExtend() {
-        return new ConteinerPesoBrutoExtend();
-    }
-
-    /**
-     * Create an instance of {@link EntregasDocumentoTransporte }
-     * 
-     */
-    public EntregasDocumentoTransporte createEntregasDocumentoTransporte() {
-        return new EntregasDocumentoTransporte();
+    public OperacaoDesunitizacao createOperacaoDesunitizacao() {
+        return new OperacaoDesunitizacao();
     }
 
     /**
@@ -387,46 +248,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link br.gov.serpro.pucomex.cct.Conteineres }
-     * 
-     */
-    public br.gov.serpro.pucomex.cct.Conteineres createConteineres() {
-        return new br.gov.serpro.pucomex.cct.Conteineres();
-    }
-
-    /**
-     * Create an instance of {@link EntregasConteineres }
-     * 
-     */
-    public EntregasConteineres createEntregasConteineres() {
-        return new EntregasConteineres();
-    }
-
-    /**
-     * Create an instance of {@link RecepcoesDocumentoTransporte }
-     * 
-     */
-    public RecepcoesDocumentoTransporte createRecepcoesDocumentoTransporte() {
-        return new RecepcoesDocumentoTransporte();
-    }
-
-    /**
-     * Create an instance of {@link Granel }
-     * 
-     */
-    public Granel createGranel() {
-        return new Granel();
-    }
-
-    /**
-     * Create an instance of {@link TGranel }
-     * 
-     */
-    public TGranel createTGranel() {
-        return new TGranel();
-    }
-
-    /**
      * Create an instance of {@link Graneis }
      * 
      */
@@ -435,19 +256,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RecepcoesConteineres }
+     * Create an instance of {@link TGranel }
      * 
      */
-    public RecepcoesConteineres createRecepcoesConteineres() {
-        return new RecepcoesConteineres();
-    }
-
-    /**
-     * Create an instance of {@link Entregador }
-     * 
-     */
-    public Entregador createEntregador() {
-        return new Entregador();
+    public TGranel createTGranel() {
+        return new TGranel();
     }
 
     /**
@@ -467,6 +280,182 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RecepcoesDocumentoTransporte }
+     * 
+     */
+    public RecepcoesDocumentoTransporte createRecepcoesDocumentoTransporte() {
+        return new RecepcoesDocumentoTransporte();
+    }
+
+    /**
+     * Create an instance of {@link Granel }
+     * 
+     */
+    public Granel createGranel() {
+        return new Granel();
+    }
+
+    /**
+     * Create an instance of {@link CargasSoltasVeiculos }
+     * 
+     */
+    public CargasSoltasVeiculos createCargasSoltasVeiculos() {
+        return new CargasSoltasVeiculos();
+    }
+
+    /**
+     * Create an instance of {@link TCargaSoltaVeiculoConsolidacao }
+     * 
+     */
+    public TCargaSoltaVeiculoConsolidacao createTCargaSoltaVeiculoConsolidacao() {
+        return new TCargaSoltaVeiculoConsolidacao();
+    }
+
+    /**
+     * Create an instance of {@link Recebedor }
+     * 
+     */
+    public Recebedor createRecebedor() {
+        return new Recebedor();
+    }
+
+    /**
+     * Create an instance of {@link RecepcoesDocumentoCarga }
+     * 
+     */
+    public RecepcoesDocumentoCarga createRecepcoesDocumentoCarga() {
+        return new RecepcoesDocumentoCarga();
+    }
+
+    /**
+     * Create an instance of {@link RecepcaoDocumentoCarga }
+     * 
+     */
+    public RecepcaoDocumentoCarga createRecepcaoDocumentoCarga() {
+        return new RecepcaoDocumentoCarga();
+    }
+
+    /**
+     * Create an instance of {@link br.gov.serpro.pucomex.cct.Conteineres }
+     * 
+     */
+    public br.gov.serpro.pucomex.cct.Conteineres createConteineres() {
+        return new br.gov.serpro.pucomex.cct.Conteineres();
+    }
+
+    /**
+     * Create an instance of {@link br.gov.serpro.pucomex.cct.NotasFiscais }
+     * 
+     */
+    public br.gov.serpro.pucomex.cct.NotasFiscais createNotasFiscais() {
+        return new br.gov.serpro.pucomex.cct.NotasFiscais();
+    }
+
+    /**
+     * Create an instance of {@link TNotaFiscal }
+     * 
+     */
+    public TNotaFiscal createTNotaFiscal() {
+        return new TNotaFiscal();
+    }
+
+    /**
+     * Create an instance of {@link Entregador }
+     * 
+     */
+    public Entregador createEntregador() {
+        return new Entregador();
+    }
+
+    /**
+     * Create an instance of {@link RecepcoesNFF }
+     * 
+     */
+    public RecepcoesNFF createRecepcoesNFF() {
+        return new RecepcoesNFF();
+    }
+
+    /**
+     * Create an instance of {@link RecepcoesConteineres }
+     * 
+     */
+    public RecepcoesConteineres createRecepcoesConteineres() {
+        return new RecepcoesConteineres();
+    }
+
+    /**
+     * Create an instance of {@link DocumentosUnitizacao }
+     * 
+     */
+    public DocumentosUnitizacao createDocumentosUnitizacao() {
+        return new DocumentosUnitizacao();
+    }
+
+    /**
+     * Create an instance of {@link TDocumentoCargaUnitizacao }
+     * 
+     */
+    public TDocumentoCargaUnitizacao createTDocumentoCargaUnitizacao() {
+        return new TDocumentoCargaUnitizacao();
+    }
+
+    /**
+     * Create an instance of {@link OperacoesConsolidacao }
+     * 
+     */
+    public OperacoesConsolidacao createOperacoesConsolidacao() {
+        return new OperacoesConsolidacao();
+    }
+
+    /**
+     * Create an instance of {@link RecepcoesNFE }
+     * 
+     */
+    public RecepcoesNFE createRecepcoesNFE() {
+        return new RecepcoesNFE();
+    }
+
+    /**
+     * Create an instance of {@link EntregasConteineres }
+     * 
+     */
+    public EntregasConteineres createEntregasConteineres() {
+        return new EntregasConteineres();
+    }
+
+    /**
+     * Create an instance of {@link br.gov.serpro.pucomex.cct.Documentos }
+     * 
+     */
+    public br.gov.serpro.pucomex.cct.Documentos createDocumentos() {
+        return new br.gov.serpro.pucomex.cct.Documentos();
+    }
+
+    /**
+     * Create an instance of {@link TDocumentoCarga }
+     * 
+     */
+    public TDocumentoCarga createTDocumentoCarga() {
+        return new TDocumentoCarga();
+    }
+
+    /**
+     * Create an instance of {@link EntregasDocumentoTransporte }
+     * 
+     */
+    public EntregasDocumentoTransporte createEntregasDocumentoTransporte() {
+        return new EntregasDocumentoTransporte();
+    }
+
+    /**
+     * Create an instance of {@link ManifestacoesExportacao }
+     * 
+     */
+    public ManifestacoesExportacao createManifestacoesExportacao() {
+        return new ManifestacoesExportacao();
+    }
+
+    /**
      * Create an instance of {@link EntregasDocumentoCarga }
      * 
      */
@@ -483,27 +472,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TLocalExtend }
+     * Create an instance of {@link Conteiner }
      * 
      */
-    public TLocalExtend createTLocalExtend() {
-        return new TLocalExtend();
+    public Conteiner createConteiner() {
+        return new Conteiner();
     }
 
     /**
-     * Create an instance of {@link TGranelManifestacao }
+     * Create an instance of {@link ConteinerPesoBrutoExtend }
      * 
      */
-    public TGranelManifestacao createTGranelManifestacao() {
-        return new TGranelManifestacao();
-    }
-
-    /**
-     * Create an instance of {@link Frete }
-     * 
-     */
-    public Frete createFrete() {
-        return new Frete();
+    public ConteinerPesoBrutoExtend createConteinerPesoBrutoExtend() {
+        return new ConteinerPesoBrutoExtend();
     }
 
     /**
@@ -515,67 +496,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IdentificacaoEmissor }
-     * 
-     */
-    public IdentificacaoEmissor createIdentificacaoEmissor() {
-        return new IdentificacaoEmissor();
-    }
-
-    /**
-     * Create an instance of {@link TCargaSoltaVeiculoPesoBrutoExtend }
-     * 
-     */
-    public TCargaSoltaVeiculoPesoBrutoExtend createTCargaSoltaVeiculoPesoBrutoExtend() {
-        return new TCargaSoltaVeiculoPesoBrutoExtend();
-    }
-
-    /**
-     * Create an instance of {@link br.gov.serpro.pucomex.cct.Coordenadas }
-     * 
-     */
-    public br.gov.serpro.pucomex.cct.Coordenadas createCoordenadas() {
-        return new br.gov.serpro.pucomex.cct.Coordenadas();
-    }
-
-    /**
-     * Create an instance of {@link Transportador }
-     * 
-     */
-    public Transportador createTransportador() {
-        return new Transportador();
-    }
-
-    /**
-     * Create an instance of {@link TGranelPesoBrutoExtend }
-     * 
-     */
-    public TGranelPesoBrutoExtend createTGranelPesoBrutoExtend() {
-        return new TGranelPesoBrutoExtend();
-    }
-
-    /**
      * Create an instance of {@link TDocumentoCargaConsolidacao }
      * 
      */
     public TDocumentoCargaConsolidacao createTDocumentoCargaConsolidacao() {
         return new TDocumentoCargaConsolidacao();
-    }
-
-    /**
-     * Create an instance of {@link ConteinerExtend }
-     * 
-     */
-    public ConteinerExtend createConteinerExtend() {
-        return new ConteinerExtend();
-    }
-
-    /**
-     * Create an instance of {@link TLocal }
-     * 
-     */
-    public TLocal createTLocal() {
-        return new TLocal();
     }
 
     /**
@@ -587,11 +512,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TUnitizacao }
+     * Create an instance of {@link Frete }
      * 
      */
-    public TUnitizacao createTUnitizacao() {
-        return new TUnitizacao();
+    public Frete createFrete() {
+        return new Frete();
     }
 
     /**
@@ -603,6 +528,54 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link TCargaSoltaVeiculoPesoBrutoExtend }
+     * 
+     */
+    public TCargaSoltaVeiculoPesoBrutoExtend createTCargaSoltaVeiculoPesoBrutoExtend() {
+        return new TCargaSoltaVeiculoPesoBrutoExtend();
+    }
+
+    /**
+     * Create an instance of {@link Conhecimento }
+     * 
+     */
+    public Conhecimento createConhecimento() {
+        return new Conhecimento();
+    }
+
+    /**
+     * Create an instance of {@link TransitoSimplificadoEntregaDocTransporte }
+     * 
+     */
+    public TransitoSimplificadoEntregaDocTransporte createTransitoSimplificadoEntregaDocTransporte() {
+        return new TransitoSimplificadoEntregaDocTransporte();
+    }
+
+    /**
+     * Create an instance of {@link TGranelPesoBrutoExtend }
+     * 
+     */
+    public TGranelPesoBrutoExtend createTGranelPesoBrutoExtend() {
+        return new TGranelPesoBrutoExtend();
+    }
+
+    /**
+     * Create an instance of {@link Transportador }
+     * 
+     */
+    public Transportador createTransportador() {
+        return new Transportador();
+    }
+
+    /**
+     * Create an instance of {@link IdentificacaoEmissor }
+     * 
+     */
+    public IdentificacaoEmissor createIdentificacaoEmissor() {
+        return new IdentificacaoEmissor();
+    }
+
+    /**
      * Create an instance of {@link TDesunitizacao }
      * 
      */
@@ -611,35 +584,59 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Acondicionamento.Conteineres }
+     * Create an instance of {@link TLocal }
      * 
      */
-    public Acondicionamento.Conteineres createAcondicionamentoConteineres() {
-        return new Acondicionamento.Conteineres();
+    public TLocal createTLocal() {
+        return new TLocal();
     }
 
     /**
-     * Create an instance of {@link Destinatario.IdentificacaoEstrangeiro }
+     * Create an instance of {@link ConteinerExtend }
      * 
      */
-    public Destinatario.IdentificacaoEstrangeiro createDestinatarioIdentificacaoEstrangeiro() {
-        return new Destinatario.IdentificacaoEstrangeiro();
+    public ConteinerExtend createConteinerExtend() {
+        return new ConteinerExtend();
     }
 
     /**
-     * Create an instance of {@link NotaFiscalFormulario.Conteineres }
+     * Create an instance of {@link Consignatario }
      * 
      */
-    public NotaFiscalFormulario.Conteineres createNotaFiscalFormularioConteineres() {
-        return new NotaFiscalFormulario.Conteineres();
+    public Consignatario createConsignatario() {
+        return new Consignatario();
     }
 
     /**
-     * Create an instance of {@link NotaFiscalFormulario.ItensNFF }
+     * Create an instance of {@link TUnitizacao }
      * 
      */
-    public NotaFiscalFormulario.ItensNFF createNotaFiscalFormularioItensNFF() {
-        return new NotaFiscalFormulario.ItensNFF();
+    public TUnitizacao createTUnitizacao() {
+        return new TUnitizacao();
+    }
+
+    /**
+     * Create an instance of {@link TLocalExtend }
+     * 
+     */
+    public TLocalExtend createTLocalExtend() {
+        return new TLocalExtend();
+    }
+
+    /**
+     * Create an instance of {@link br.gov.serpro.pucomex.cct.Coordenadas }
+     * 
+     */
+    public br.gov.serpro.pucomex.cct.Coordenadas createCoordenadas() {
+        return new br.gov.serpro.pucomex.cct.Coordenadas();
+    }
+
+    /**
+     * Create an instance of {@link TGranelManifestacao }
+     * 
+     */
+    public TGranelManifestacao createTGranelManifestacao() {
+        return new TGranelManifestacao();
     }
 
     /**
@@ -651,35 +648,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Local.Coordenadas }
-     * 
-     */
-    public Local.Coordenadas createLocalCoordenadas() {
-        return new Local.Coordenadas();
-    }
-
-    /**
-     * Create an instance of {@link Conhecimento.Cargas }
-     * 
-     */
-    public Conhecimento.Cargas createConhecimentoCargas() {
-        return new Conhecimento.Cargas();
-    }
-
-    /**
-     * Create an instance of {@link TVeiculoTransitoSimplificado.Lacres }
-     * 
-     */
-    public TVeiculoTransitoSimplificado.Lacres createTVeiculoTransitoSimplificadoLacres() {
-        return new TVeiculoTransitoSimplificado.Lacres();
-    }
-
-    /**
      * Create an instance of {@link TConteiner.Lacres }
      * 
      */
     public TConteiner.Lacres createTConteinerLacres() {
         return new TConteiner.Lacres();
+    }
+
+    /**
+     * Create an instance of {@link DadosCarga.Documentos }
+     * 
+     */
+    public DadosCarga.Documentos createDadosCargaDocumentos() {
+        return new DadosCarga.Documentos();
     }
 
     /**
@@ -707,99 +688,51 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DadosCarga.Documentos }
+     * Create an instance of {@link TVeiculoTransitoSimplificado.Lacres }
      * 
      */
-    public DadosCarga.Documentos createDadosCargaDocumentos() {
-        return new DadosCarga.Documentos();
+    public TVeiculoTransitoSimplificado.Lacres createTVeiculoTransitoSimplificadoLacres() {
+        return new TVeiculoTransitoSimplificado.Lacres();
     }
 
     /**
-     * Create an instance of {@link RecepcaoConteiner.Conteineres }
+     * Create an instance of {@link Destinatario.IdentificacaoEstrangeiro }
      * 
      */
-    public RecepcaoConteiner.Conteineres createRecepcaoConteinerConteineres() {
-        return new RecepcaoConteiner.Conteineres();
+    public Destinatario.IdentificacaoEstrangeiro createDestinatarioIdentificacaoEstrangeiro() {
+        return new Destinatario.IdentificacaoEstrangeiro();
     }
 
     /**
-     * Create an instance of {@link RecepcaoDocumentoTransporte.DocumentosTransporte }
+     * Create an instance of {@link Acondicionamento.Conteineres }
      * 
      */
-    public RecepcaoDocumentoTransporte.DocumentosTransporte createRecepcaoDocumentoTransporteDocumentosTransporte() {
-        return new RecepcaoDocumentoTransporte.DocumentosTransporte();
+    public Acondicionamento.Conteineres createAcondicionamentoConteineres() {
+        return new Acondicionamento.Conteineres();
     }
 
     /**
-     * Create an instance of {@link OperacaoUnitizacao.Unitizacoes }
+     * Create an instance of {@link Local.Coordenadas }
      * 
      */
-    public OperacaoUnitizacao.Unitizacoes createOperacaoUnitizacaoUnitizacoes() {
-        return new OperacaoUnitizacao.Unitizacoes();
+    public Local.Coordenadas createLocalCoordenadas() {
+        return new Local.Coordenadas();
     }
 
     /**
-     * Create an instance of {@link EntregaConteiner.Conteineres }
+     * Create an instance of {@link NotaFiscalFormulario.Conteineres }
      * 
      */
-    public EntregaConteiner.Conteineres createEntregaConteinerConteineres() {
-        return new EntregaConteiner.Conteineres();
+    public NotaFiscalFormulario.Conteineres createNotaFiscalFormularioConteineres() {
+        return new NotaFiscalFormulario.Conteineres();
     }
 
     /**
-     * Create an instance of {@link EntregaDocumentoTransporte.DocumentosTransporte }
+     * Create an instance of {@link NotaFiscalFormulario.ItensNFF }
      * 
      */
-    public EntregaDocumentoTransporte.DocumentosTransporte createEntregaDocumentoTransporteDocumentosTransporte() {
-        return new EntregaDocumentoTransporte.DocumentosTransporte();
-    }
-
-    /**
-     * Create an instance of {@link RecepcaoNFF.NotasFiscais }
-     * 
-     */
-    public RecepcaoNFF.NotasFiscais createRecepcaoNFFNotasFiscais() {
-        return new RecepcaoNFF.NotasFiscais();
-    }
-
-    /**
-     * Create an instance of {@link RecepcaoNFE.NotasFiscais }
-     * 
-     */
-    public RecepcaoNFE.NotasFiscais createRecepcaoNFENotasFiscais() {
-        return new RecepcaoNFE.NotasFiscais();
-    }
-
-    /**
-     * Create an instance of {@link OperacaoDesunitizacao.Desunitizacoes }
-     * 
-     */
-    public OperacaoDesunitizacao.Desunitizacoes createOperacaoDesunitizacaoDesunitizacoes() {
-        return new OperacaoDesunitizacao.Desunitizacoes();
-    }
-
-    /**
-     * Create an instance of {@link OperacaoConsolidacao.DocumentosConsolidacao }
-     * 
-     */
-    public OperacaoConsolidacao.DocumentosConsolidacao createOperacaoConsolidacaoDocumentosConsolidacao() {
-        return new OperacaoConsolidacao.DocumentosConsolidacao();
-    }
-
-    /**
-     * Create an instance of {@link TransitoSimplificadoEntrega.VeiculoFerroviario }
-     * 
-     */
-    public TransitoSimplificadoEntrega.VeiculoFerroviario createTransitoSimplificadoEntregaVeiculoFerroviario() {
-        return new TransitoSimplificadoEntrega.VeiculoFerroviario();
-    }
-
-    /**
-     * Create an instance of {@link TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos }
-     * 
-     */
-    public TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos createTransitoSimplificadoEntregaVeiculoRodoviarioVeiculos() {
-        return new TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos();
+    public NotaFiscalFormulario.ItensNFF createNotaFiscalFormularioItensNFF() {
+        return new NotaFiscalFormulario.ItensNFF();
     }
 
     /**
@@ -843,39 +776,91 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link EntregaDocumentoTransporte.DocumentosTransporte }
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoEmbalagem", scope = TCargaSoltaVeiculo.class)
-    public JAXBElement<String> createTCargaSoltaVeiculoTipoEmbalagem(String value) {
-        return new JAXBElement<String>(_TCargaSoltaVeiculoTipoEmbalagem_QNAME, String.class, TCargaSoltaVeiculo.class, value);
+    public EntregaDocumentoTransporte.DocumentosTransporte createEntregaDocumentoTransporteDocumentosTransporte() {
+        return new EntregaDocumentoTransporte.DocumentosTransporte();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link OperacaoUnitizacao.Unitizacoes }
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TCargaSoltaVeiculo.class)
-    public JAXBElement<BigInteger> createTCargaSoltaVeiculoQuantidade(BigInteger value) {
-        return new JAXBElement<BigInteger>(_TCargaSoltaVeiculoQuantidade_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    public OperacaoUnitizacao.Unitizacoes createOperacaoUnitizacaoUnitizacoes() {
+        return new OperacaoUnitizacao.Unitizacoes();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link EntregaConteiner.Conteineres }
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TCargaSoltaVeiculo.class)
-    public JAXBElement<BigInteger> createTCargaSoltaVeiculoTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_TCargaSoltaVeiculoTotal_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    public EntregaConteiner.Conteineres createEntregaConteinerConteineres() {
+        return new EntregaConteiner.Conteineres();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OperacaoDesunitizacao }{@code >}}
+     * Create an instance of {@link RecepcaoNFE.NotasFiscais }
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "operacaoDesunitizacao")
-    public JAXBElement<OperacaoDesunitizacao> createOperacaoDesunitizacao(OperacaoDesunitizacao value) {
-        return new JAXBElement<OperacaoDesunitizacao>(_OperacaoDesunitizacao_QNAME, OperacaoDesunitizacao.class, null, value);
+    public RecepcaoNFE.NotasFiscais createRecepcaoNFENotasFiscais() {
+        return new RecepcaoNFE.NotasFiscais();
+    }
+
+    /**
+     * Create an instance of {@link OperacaoConsolidacao.DocumentosConsolidacao }
+     * 
+     */
+    public OperacaoConsolidacao.DocumentosConsolidacao createOperacaoConsolidacaoDocumentosConsolidacao() {
+        return new OperacaoConsolidacao.DocumentosConsolidacao();
+    }
+
+    /**
+     * Create an instance of {@link RecepcaoConteiner.Conteineres }
+     * 
+     */
+    public RecepcaoConteiner.Conteineres createRecepcaoConteinerConteineres() {
+        return new RecepcaoConteiner.Conteineres();
+    }
+
+    /**
+     * Create an instance of {@link RecepcaoNFF.NotasFiscais }
+     * 
+     */
+    public RecepcaoNFF.NotasFiscais createRecepcaoNFFNotasFiscais() {
+        return new RecepcaoNFF.NotasFiscais();
+    }
+
+    /**
+     * Create an instance of {@link TransitoSimplificadoEntrega.VeiculoFerroviario }
+     * 
+     */
+    public TransitoSimplificadoEntrega.VeiculoFerroviario createTransitoSimplificadoEntregaVeiculoFerroviario() {
+        return new TransitoSimplificadoEntrega.VeiculoFerroviario();
+    }
+
+    /**
+     * Create an instance of {@link TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos }
+     * 
+     */
+    public TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos createTransitoSimplificadoEntregaVeiculoRodoviarioVeiculos() {
+        return new TransitoSimplificadoEntrega.VeiculoRodoviario.Veiculos();
+    }
+
+    /**
+     * Create an instance of {@link RecepcaoDocumentoTransporte.DocumentosTransporte }
+     * 
+     */
+    public RecepcaoDocumentoTransporte.DocumentosTransporte createRecepcaoDocumentoTransporteDocumentosTransporte() {
+        return new RecepcaoDocumentoTransporte.DocumentosTransporte();
+    }
+
+    /**
+     * Create an instance of {@link OperacaoDesunitizacao.Desunitizacoes }
+     * 
+     */
+    public OperacaoDesunitizacao.Desunitizacoes createOperacaoDesunitizacaoDesunitizacoes() {
+        return new OperacaoDesunitizacao.Desunitizacoes();
     }
 
     /**
@@ -888,57 +873,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TDocumentoCargaManifestacao.CargaSoltaVeiculo }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OperacaoDesunitizacao }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "cargaSoltaVeiculo", scope = TDocumentoCargaManifestacao.class)
-    public JAXBElement<TDocumentoCargaManifestacao.CargaSoltaVeiculo> createTDocumentoCargaManifestacaoCargaSoltaVeiculo(TDocumentoCargaManifestacao.CargaSoltaVeiculo value) {
-        return new JAXBElement<TDocumentoCargaManifestacao.CargaSoltaVeiculo>(_TDocumentoCargaManifestacaoCargaSoltaVeiculo_QNAME, TDocumentoCargaManifestacao.CargaSoltaVeiculo.class, TDocumentoCargaManifestacao.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCargaManifestacao.class)
-    public JAXBElement<String> createTDocumentoCargaManifestacaoNumeroRUC(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroRUC_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCargaManifestacao.class)
-    public JAXBElement<String> createTDocumentoCargaManifestacaoNumeroDUE(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroDUE_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link TGranelManifestacao }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "granel", scope = TDocumentoCargaManifestacao.class)
-    public JAXBElement<TGranelManifestacao> createTDocumentoCargaManifestacaoGranel(TGranelManifestacao value) {
-        return new JAXBElement<TGranelManifestacao>(_TDocumentoCargaManifestacaoGranel_QNAME, TGranelManifestacao.class, TDocumentoCargaManifestacao.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCarga.class)
-    public JAXBElement<String> createTDocumentoCargaNumeroRUC(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroRUC_QNAME, String.class, TDocumentoCarga.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCarga.class)
-    public JAXBElement<String> createTDocumentoCargaNumeroDUE(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroDUE_QNAME, String.class, TDocumentoCarga.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "operacaoDesunitizacao")
+    public JAXBElement<OperacaoDesunitizacao> createOperacaoDesunitizacao(OperacaoDesunitizacao value) {
+        return new JAXBElement<OperacaoDesunitizacao>(_OperacaoDesunitizacao_QNAME, OperacaoDesunitizacao.class, null, value);
     }
 
     /**
@@ -948,6 +888,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoGranel", scope = TGranel.class)
     public JAXBElement<String> createTGranelTipoGranel(String value) {
         return new JAXBElement<String>(_TGranelTipoGranel_QNAME, String.class, TGranel.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TGranel.class)
+    public JAXBElement<BigDecimal> createTGranelQuantidade(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_TGranelQuantidade_QNAME, BigDecimal.class, TGranel.class, value);
     }
 
     /**
@@ -963,27 +912,27 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TGranel.class)
-    public JAXBElement<BigDecimal> createTGranelQuantidade(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_TCargaSoltaVeiculoQuantidade_QNAME, BigDecimal.class, TGranel.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TGranel.class)
     public JAXBElement<BigDecimal> createTGranelTotal(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_TCargaSoltaVeiculoTotal_QNAME, BigDecimal.class, TGranel.class, value);
+        return new JAXBElement<BigDecimal>(_TGranelTotal_QNAME, BigDecimal.class, TGranel.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "nomeConsignatario", scope = DadosCarga.class)
-    public JAXBElement<String> createDadosCargaNomeConsignatario(String value) {
-        return new JAXBElement<String>(_DadosCargaNomeConsignatario_QNAME, String.class, DadosCarga.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCarga.class)
+    public JAXBElement<String> createTDocumentoCargaNumeroRUC(String value) {
+        return new JAXBElement<String>(_TDocumentoCargaNumeroRUC_QNAME, String.class, TDocumentoCarga.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCarga.class)
+    public JAXBElement<String> createTDocumentoCargaNumeroDUE(String value) {
+        return new JAXBElement<String>(_TDocumentoCargaNumeroDUE_QNAME, String.class, TDocumentoCarga.class, value);
     }
 
     /**
@@ -999,27 +948,72 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "paisDestino", scope = DadosCarga.class)
-    public JAXBElement<String> createDadosCargaPaisDestino(String value) {
-        return new JAXBElement<String>(_DadosCargaPaisDestino_QNAME, String.class, DadosCarga.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCargaManifestacao.class)
+    public JAXBElement<String> createTDocumentoCargaManifestacaoNumeroRUC(String value) {
+        return new JAXBElement<String>(_TDocumentoCargaNumeroRUC_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TGranelManifestacao }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "granel", scope = TDocumentoCargaManifestacao.class)
+    public JAXBElement<TGranelManifestacao> createTDocumentoCargaManifestacaoGranel(TGranelManifestacao value) {
+        return new JAXBElement<TGranelManifestacao>(_TDocumentoCargaManifestacaoGranel_QNAME, TGranelManifestacao.class, TDocumentoCargaManifestacao.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TDocumentoCargaManifestacao.CargaSoltaVeiculo }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "cargaSoltaVeiculo", scope = TDocumentoCargaManifestacao.class)
+    public JAXBElement<TDocumentoCargaManifestacao.CargaSoltaVeiculo> createTDocumentoCargaManifestacaoCargaSoltaVeiculo(TDocumentoCargaManifestacao.CargaSoltaVeiculo value) {
+        return new JAXBElement<TDocumentoCargaManifestacao.CargaSoltaVeiculo>(_TDocumentoCargaManifestacaoCargaSoltaVeiculo_QNAME, TDocumentoCargaManifestacao.CargaSoltaVeiculo.class, TDocumentoCargaManifestacao.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "consignadoAOrdem", scope = DadosCarga.class)
-    public JAXBElement<String> createDadosCargaConsignadoAOrdem(String value) {
-        return new JAXBElement<String>(_DadosCargaConsignadoAOrdem_QNAME, String.class, DadosCarga.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCargaManifestacao.class)
+    public JAXBElement<String> createTDocumentoCargaManifestacaoNumeroDUE(String value) {
+        return new JAXBElement<String>(_TDocumentoCargaNumeroDUE_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "enderecoConsignatario", scope = DadosCarga.class)
-    public JAXBElement<String> createDadosCargaEnderecoConsignatario(String value) {
-        return new JAXBElement<String>(_DadosCargaEnderecoConsignatario_QNAME, String.class, DadosCarga.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroConteiner", scope = TDesunitizacao.class)
+    public JAXBElement<String> createTDesunitizacaoNumeroConteiner(String value) {
+        return new JAXBElement<String>(_TDesunitizacaoNumeroConteiner_QNAME, String.class, TDesunitizacao.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TCargaSoltaVeiculo.class)
+    public JAXBElement<BigInteger> createTCargaSoltaVeiculoQuantidade(BigInteger value) {
+        return new JAXBElement<BigInteger>(_TGranelQuantidade_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TCargaSoltaVeiculo.class)
+    public JAXBElement<BigInteger> createTCargaSoltaVeiculoTotal(BigInteger value) {
+        return new JAXBElement<BigInteger>(_TGranelTotal_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoEmbalagem", scope = TCargaSoltaVeiculo.class)
+    public JAXBElement<String> createTCargaSoltaVeiculoTipoEmbalagem(String value) {
+        return new JAXBElement<String>(_TCargaSoltaVeiculoTipoEmbalagem_QNAME, String.class, TCargaSoltaVeiculo.class, value);
     }
 
 }

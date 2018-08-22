@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TEmbalagem complex type.
+ * <p>Classe Java de TEmbalagem complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TEmbalagem">
@@ -41,7 +41,7 @@ public class TEmbalagem {
     protected BigInteger quantidade;
 
     /**
-     * Gets the value of the tipoEmbalagem property.
+     * Obtém o valor da propriedade tipoEmbalagem.
      * 
      * @return
      *     possible object is
@@ -53,7 +53,7 @@ public class TEmbalagem {
     }
 
     /**
-     * Sets the value of the tipoEmbalagem property.
+     * Define o valor da propriedade tipoEmbalagem.
      * 
      * @param value
      *     allowed object is
@@ -65,7 +65,7 @@ public class TEmbalagem {
     }
 
     /**
-     * Gets the value of the quantidade property.
+     * Obtém o valor da propriedade quantidade.
      * 
      * @return
      *     possible object is
@@ -77,7 +77,7 @@ public class TEmbalagem {
     }
 
     /**
-     * Sets the value of the quantidade property.
+     * Define o valor da propriedade quantidade.
      * 
      * @param value
      *     allowed object is

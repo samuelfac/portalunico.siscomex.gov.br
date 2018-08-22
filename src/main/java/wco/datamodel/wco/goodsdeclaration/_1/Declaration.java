@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Classe Java de anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;choice>
  *         &lt;element name="DeclarationNFe" type="{urn:wco:datamodel:WCO:GoodsDeclaration:1}DeclarationNFe"/>
  *         &lt;element name="DeclarationNoNF" type="{urn:wco:datamodel:WCO:GoodsDeclaration:1}DeclarationNoNF"/>
+ *         &lt;element name="DeclarationDrawbackIsencao" type="{urn:wco:datamodel:WCO:GoodsDeclaration:1}DeclarationDrawbackIsencao"/>
  *       &lt;/choice>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,7 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "declarationNFe",
-    "declarationNoNF"
+    "declarationNoNF",
+    "declarationDrawbackIsencao"
 })
 @XmlRootElement(name = "Declaration", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
 public class Declaration {
@@ -40,9 +42,11 @@ public class Declaration {
     protected DeclarationNFe declarationNFe;
     @XmlElement(name = "DeclarationNoNF", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
     protected DeclarationNoNF declarationNoNF;
+    @XmlElement(name = "DeclarationDrawbackIsencao", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+    protected DeclarationDrawbackIsencao declarationDrawbackIsencao;
 
     /**
-     * Gets the value of the declarationNFe property.
+     * Obtém o valor da propriedade declarationNFe.
      * 
      * @return
      *     possible object is
@@ -54,7 +58,7 @@ public class Declaration {
     }
 
     /**
-     * Sets the value of the declarationNFe property.
+     * Define o valor da propriedade declarationNFe.
      * 
      * @param value
      *     allowed object is
@@ -66,7 +70,7 @@ public class Declaration {
     }
 
     /**
-     * Gets the value of the declarationNoNF property.
+     * Obtém o valor da propriedade declarationNoNF.
      * 
      * @return
      *     possible object is
@@ -78,7 +82,7 @@ public class Declaration {
     }
 
     /**
-     * Sets the value of the declarationNoNF property.
+     * Define o valor da propriedade declarationNoNF.
      * 
      * @param value
      *     allowed object is
@@ -87,6 +91,30 @@ public class Declaration {
      */
     public void setDeclarationNoNF(DeclarationNoNF value) {
         this.declarationNoNF = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade declarationDrawbackIsencao.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DeclarationDrawbackIsencao }
+     *     
+     */
+    public DeclarationDrawbackIsencao getDeclarationDrawbackIsencao() {
+        return declarationDrawbackIsencao;
+    }
+
+    /**
+     * Define o valor da propriedade declarationDrawbackIsencao.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DeclarationDrawbackIsencao }
+     *     
+     */
+    public void setDeclarationDrawbackIsencao(DeclarationDrawbackIsencao value) {
+        this.declarationDrawbackIsencao = value;
     }
 
 }

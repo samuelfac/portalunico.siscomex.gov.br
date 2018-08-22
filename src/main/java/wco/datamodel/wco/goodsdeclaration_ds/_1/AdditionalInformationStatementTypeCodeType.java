@@ -6,9 +6,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for AdditionalInformationStatementTypeCodeType.
+ * <p>Classe Java de AdditionalInformationStatementTypeCodeType.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * <p>
  * <pre>
  * &lt;simpleType name="AdditionalInformationStatementTypeCodeType">
@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="PRI"/>
  *     &lt;enumeration value="TRA"/>
  *     &lt;enumeration value="AVD"/>
+ *     &lt;enumeration value="FGH"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -91,7 +92,13 @@ public enum AdditionalInformationStatementTypeCodeType {
      * Justificativa depuração estatística qtd/peso/valor - Escolhendo esta opção deve-se também preencher statementDescription no level GovernmentAgencyGoodsItem/AdditionalInformation
      * 
      */
-    AVD;
+    AVD,
+
+    /**
+     * Justificativa dispensa NF por outros motivos
+     * 
+     */
+    FGH;
 
     public String value() {
         return name();

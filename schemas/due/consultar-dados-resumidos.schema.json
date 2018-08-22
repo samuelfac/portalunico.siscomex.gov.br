@@ -14,19 +14,34 @@
     },
     "dataSituacaoDUE": {
       "type": "string"
-    },
-    "situacaoCarga": {
-      "items": {
-        "type": "integer"
-      },
-      "type": "array"
-    },
+    },    
+    "indicadorBloqueio": {
+      "type": "integer"
+    },    
     "controleAdministrativo": {
       "type": "integer"
     },
-    "indicadorBloqueio": {
-      "type": "integer"
+    "uaEmbarque": {
+      "type": "string"
+    },    
+    "uaDespacho": {
+      "type": "string"
+    },   
+    "responsavelUADespacho": {
+      "type": "null"
+    },     
+    "codigoRecintoAduaneiroDespacho": { 
+      "type": "string" 
     },
+    "codigoRecintoAduaneiroEmbarque": { 
+      "type": "string" 
+    },
+    "latitudeDespacho": {
+      "type": "string"
+    },
+    "longitudeDespacho": {
+      "type": "string"
+    },    
     "declarante": {
       "properties": {
         "numero": {
@@ -52,18 +67,10 @@
       },
       "type": "array"
     },
-    "codigoRecintoAduaneiroDespacho": { "type": "string" },
-    "coordenadasDespacho": {
-      "type": "string"
-    },
-    "responsaveluaDespacho": {
-      "type": "null"
-    },
-    "uaDespacho": {
-      "type": "string"
-    },
-    "codigoRecintoAduaneiroEmbarque": { "type": "string" },
-    "uaEmbarque": {
-      "type": "string"
-    }
+    "situacaoCarga": {
+      "items": {
+        "type": "integer"
+      },
+      "type": "array"
+    }    
 }, "type": "object" }

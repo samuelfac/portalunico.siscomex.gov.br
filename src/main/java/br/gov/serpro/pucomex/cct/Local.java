@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Local complex type.
+ * <p>Classe Java de Local complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="Local">
@@ -57,7 +57,7 @@ public class Local {
     protected Local.Coordenadas coordenadas;
 
     /**
-     * Gets the value of the codigoURF property.
+     * Obtém o valor da propriedade codigoURF.
      * 
      * @return
      *     possible object is
@@ -69,7 +69,7 @@ public class Local {
     }
 
     /**
-     * Sets the value of the codigoURF property.
+     * Define o valor da propriedade codigoURF.
      * 
      * @param value
      *     allowed object is
@@ -81,7 +81,7 @@ public class Local {
     }
 
     /**
-     * Gets the value of the codigoRA property.
+     * Obtém o valor da propriedade codigoRA.
      * 
      * @return
      *     possible object is
@@ -93,7 +93,7 @@ public class Local {
     }
 
     /**
-     * Sets the value of the codigoRA property.
+     * Define o valor da propriedade codigoRA.
      * 
      * @param value
      *     allowed object is
@@ -105,7 +105,7 @@ public class Local {
     }
 
     /**
-     * Gets the value of the coordenadas property.
+     * Obtém o valor da propriedade coordenadas.
      * 
      * @return
      *     possible object is
@@ -117,7 +117,7 @@ public class Local {
     }
 
     /**
-     * Sets the value of the coordenadas property.
+     * Define o valor da propriedade coordenadas.
      * 
      * @param value
      *     allowed object is
@@ -130,9 +130,9 @@ public class Local {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -162,7 +162,7 @@ public class Local {
         protected String longitude;
 
         /**
-         * Gets the value of the latitude property.
+         * Obtém o valor da propriedade latitude.
          * 
          * @return
          *     possible object is
@@ -174,7 +174,7 @@ public class Local {
         }
 
         /**
-         * Sets the value of the latitude property.
+         * Define o valor da propriedade latitude.
          * 
          * @param value
          *     allowed object is
@@ -186,7 +186,7 @@ public class Local {
         }
 
         /**
-         * Gets the value of the longitude property.
+         * Obtém o valor da propriedade longitude.
          * 
          * @return
          *     possible object is
@@ -198,7 +198,7 @@ public class Local {
         }
 
         /**
-         * Sets the value of the longitude property.
+         * Define o valor da propriedade longitude.
          * 
          * @param value
          *     allowed object is

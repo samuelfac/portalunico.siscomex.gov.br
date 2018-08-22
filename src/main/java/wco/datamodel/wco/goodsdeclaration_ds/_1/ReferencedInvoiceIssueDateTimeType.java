@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for ReferencedInvoiceIssueDateTimeType complex type.
+ * <p>Classe Java de ReferencedInvoiceIssueDateTimeType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="ReferencedInvoiceIssueDateTimeType">
@@ -53,7 +53,7 @@ public class ReferencedInvoiceIssueDateTimeType {
     protected XMLGregorianCalendar dateTime;
 
     /**
-     * Gets the value of the dateTimeString property.
+     * Obtém o valor da propriedade dateTimeString.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class ReferencedInvoiceIssueDateTimeType {
     }
 
     /**
-     * Sets the value of the dateTimeString property.
+     * Define o valor da propriedade dateTimeString.
      * 
      * @param value
      *     allowed object is
@@ -77,7 +77,7 @@ public class ReferencedInvoiceIssueDateTimeType {
     }
 
     /**
-     * Gets the value of the dateTime property.
+     * Obtém o valor da propriedade dateTime.
      * 
      * @return
      *     possible object is
@@ -89,7 +89,7 @@ public class ReferencedInvoiceIssueDateTimeType {
     }
 
     /**
-     * Sets the value of the dateTime property.
+     * Define o valor da propriedade dateTime.
      * 
      * @param value
      *     allowed object is
@@ -102,9 +102,9 @@ public class ReferencedInvoiceIssueDateTimeType {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -130,7 +130,7 @@ public class ReferencedInvoiceIssueDateTimeType {
         protected String formatCode;
 
         /**
-         * Gets the value of the value property.
+         * Obtém o valor da propriedade value.
          * 
          * @return
          *     possible object is
@@ -142,7 +142,7 @@ public class ReferencedInvoiceIssueDateTimeType {
         }
 
         /**
-         * Sets the value of the value property.
+         * Define o valor da propriedade value.
          * 
          * @param value
          *     allowed object is
@@ -154,7 +154,7 @@ public class ReferencedInvoiceIssueDateTimeType {
         }
 
         /**
-         * Gets the value of the formatCode property.
+         * Obtém o valor da propriedade formatCode.
          * 
          * @return
          *     possible object is
@@ -166,7 +166,7 @@ public class ReferencedInvoiceIssueDateTimeType {
         }
 
         /**
-         * Sets the value of the formatCode property.
+         * Define o valor da propriedade formatCode.
          * 
          * @param value
          *     allowed object is

@@ -13,9 +13,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TDocumentoCargaManifestacao complex type.
+ * <p>Classe Java de TDocumentoCargaManifestacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TDocumentoCargaManifestacao">
@@ -60,24 +60,24 @@ import javax.xml.bind.annotation.XmlType;
 public class TDocumentoCargaManifestacao {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "cargaSoltaVeiculo", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "numeroRUC", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "cargaSoltaVeiculo", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
 
     /**
-     * Gets the rest of the content model. 
+     * Obtém o restante do modelo do conteúdo. 
      * 
      * <p>
-     * You are getting this "catch-all" property because of the following reason: 
-     * The field name "Granel" is used by two different parts of a schema. See: 
-     * line 202 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/manifesto/ManifestacaoExportacao.xsd
-     * line 194 of file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd-cct/manifesto/ManifestacaoExportacao.xsd
+     * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
+     * O nome do campo "Granel" é usado por duas partes diferentes de um esquema. Consulte: 
+     * linha 205 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
+     * linha 197 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
      * <p>
-     * To get rid of this property, apply a property customization to one 
-     * of both of the following declarations to change their names: 
+     * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
+     * das seguintes declarações, a fim de alterar seus nomes: 
      * Gets the value of the content property.
      * 
      * <p>
@@ -95,10 +95,10 @@ public class TDocumentoCargaManifestacao {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link JAXBElement }{@code <}{@link TDocumentoCargaManifestacao.CargaSoltaVeiculo }{@code >}
      * {@link JAXBElement }{@code <}{@link TGranelManifestacao }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * 
      */
@@ -111,9 +111,9 @@ public class TDocumentoCargaManifestacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

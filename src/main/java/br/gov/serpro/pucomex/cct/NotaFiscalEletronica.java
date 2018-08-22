@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for NotaFiscalEletronica complex type.
+ * <p>Classe Java de NotaFiscalEletronica complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="NotaFiscalEletronica">
@@ -52,7 +52,7 @@ public class NotaFiscalEletronica {
     protected NotaFiscalEletronica.Conteineres conteineres;
 
     /**
-     * Gets the value of the chaveAcesso property.
+     * Obtém o valor da propriedade chaveAcesso.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class NotaFiscalEletronica {
     }
 
     /**
-     * Sets the value of the chaveAcesso property.
+     * Define o valor da propriedade chaveAcesso.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class NotaFiscalEletronica {
     }
 
     /**
-     * Gets the value of the conteineres property.
+     * Obtém o valor da propriedade conteineres.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class NotaFiscalEletronica {
     }
 
     /**
-     * Sets the value of the conteineres property.
+     * Define o valor da propriedade conteineres.
      * 
      * @param value
      *     allowed object is
@@ -101,9 +101,9 @@ public class NotaFiscalEletronica {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

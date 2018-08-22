@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TDocumentoCargaUnitizacao complex type.
+ * <p>Classe Java de TDocumentoCargaUnitizacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TDocumentoCargaUnitizacao">
@@ -52,7 +52,7 @@ public class TDocumentoCargaUnitizacao {
     protected Granel granel;
 
     /**
-     * Gets the value of the numeroDUE property.
+     * Obtém o valor da propriedade numeroDUE.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Sets the value of the numeroDUE property.
+     * Define o valor da propriedade numeroDUE.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Gets the value of the numeroRUC property.
+     * Obtém o valor da propriedade numeroRUC.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Sets the value of the numeroRUC property.
+     * Define o valor da propriedade numeroRUC.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Gets the value of the cargaSoltaVeiculo property.
+     * Obtém o valor da propriedade cargaSoltaVeiculo.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Sets the value of the cargaSoltaVeiculo property.
+     * Define o valor da propriedade cargaSoltaVeiculo.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Gets the value of the granel property.
+     * Obtém o valor da propriedade granel.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class TDocumentoCargaUnitizacao {
     }
 
     /**
-     * Sets the value of the granel property.
+     * Define o valor da propriedade granel.
      * 
      * @param value
      *     allowed object is

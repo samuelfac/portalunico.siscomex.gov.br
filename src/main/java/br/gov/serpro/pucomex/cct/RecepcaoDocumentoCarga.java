@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RecepcaoDocumentoCarga complex type.
+ * <p>Classe Java de RecepcaoDocumentoCarga complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="RecepcaoDocumentoCarga">
@@ -91,7 +91,7 @@ public class RecepcaoDocumentoCarga {
     protected TransitoSimplificadoRecepcao transitoSimplificado;
 
     /**
-     * Gets the value of the identificacaoRecepcao property.
+     * Obtém o valor da propriedade identificacaoRecepcao.
      * 
      * @return
      *     possible object is
@@ -103,7 +103,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the identificacaoRecepcao property.
+     * Define o valor da propriedade identificacaoRecepcao.
      * 
      * @param value
      *     allowed object is
@@ -115,7 +115,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the cnpjResp property.
+     * Obtém o valor da propriedade cnpjResp.
      * 
      * @return
      *     possible object is
@@ -127,7 +127,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the cnpjResp property.
+     * Define o valor da propriedade cnpjResp.
      * 
      * @param value
      *     allowed object is
@@ -139,7 +139,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -151,7 +151,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -163,7 +163,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the referenciaLocalRecepcao property.
+     * Obtém o valor da propriedade referenciaLocalRecepcao.
      * 
      * @return
      *     possible object is
@@ -175,7 +175,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the referenciaLocalRecepcao property.
+     * Define o valor da propriedade referenciaLocalRecepcao.
      * 
      * @param value
      *     allowed object is
@@ -187,7 +187,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the entregador property.
+     * Obtém o valor da propriedade entregador.
      * 
      * @return
      *     possible object is
@@ -199,7 +199,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the entregador property.
+     * Define o valor da propriedade entregador.
      * 
      * @param value
      *     allowed object is
@@ -211,7 +211,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the documentos property.
+     * Obtém o valor da propriedade documentos.
      * 
      * @return
      *     possible object is
@@ -223,7 +223,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the documentos property.
+     * Define o valor da propriedade documentos.
      * 
      * @param value
      *     allowed object is
@@ -235,7 +235,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the pesoAferido property.
+     * Obtém o valor da propriedade pesoAferido.
      * 
      * @return
      *     possible object is
@@ -247,7 +247,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the pesoAferido property.
+     * Define o valor da propriedade pesoAferido.
      * 
      * @param value
      *     allowed object is
@@ -259,7 +259,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the motivoNaoPesagem property.
+     * Obtém o valor da propriedade motivoNaoPesagem.
      * 
      * @return
      *     possible object is
@@ -271,7 +271,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the motivoNaoPesagem property.
+     * Define o valor da propriedade motivoNaoPesagem.
      * 
      * @param value
      *     allowed object is
@@ -283,7 +283,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the localArmazenamento property.
+     * Obtém o valor da propriedade localArmazenamento.
      * 
      * @return
      *     possible object is
@@ -295,7 +295,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the localArmazenamento property.
+     * Define o valor da propriedade localArmazenamento.
      * 
      * @param value
      *     allowed object is
@@ -307,7 +307,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the codigoIdentCarga property.
+     * Obtém o valor da propriedade codigoIdentCarga.
      * 
      * @return
      *     possible object is
@@ -319,7 +319,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the codigoIdentCarga property.
+     * Define o valor da propriedade codigoIdentCarga.
      * 
      * @param value
      *     allowed object is
@@ -331,7 +331,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the avariasIdentificadas property.
+     * Obtém o valor da propriedade avariasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -343,7 +343,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the avariasIdentificadas property.
+     * Define o valor da propriedade avariasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -355,7 +355,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the divergenciasIdentificadas property.
+     * Obtém o valor da propriedade divergenciasIdentificadas.
      * 
      * @return
      *     possible object is
@@ -367,7 +367,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the divergenciasIdentificadas property.
+     * Define o valor da propriedade divergenciasIdentificadas.
      * 
      * @param value
      *     allowed object is
@@ -379,7 +379,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the observacoesGerais property.
+     * Obtém o valor da propriedade observacoesGerais.
      * 
      * @return
      *     possible object is
@@ -391,7 +391,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the observacoesGerais property.
+     * Define o valor da propriedade observacoesGerais.
      * 
      * @param value
      *     allowed object is
@@ -403,7 +403,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Gets the value of the transitoSimplificado property.
+     * Obtém o valor da propriedade transitoSimplificado.
      * 
      * @return
      *     possible object is
@@ -415,7 +415,7 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Sets the value of the transitoSimplificado property.
+     * Define o valor da propriedade transitoSimplificado.
      * 
      * @param value
      *     allowed object is

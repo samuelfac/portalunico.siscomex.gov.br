@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+
+	<include schemaLocation="../TipoComplexo.xsd" />
+	<include schemaLocation="../reuso/TVeiculoTransitoSimplificado.xsd" />
+
+		<complexType name="TransitoSimplificadoEntrega">
+				<sequence>
+				<choice>
+					<sequence>
+						<element name="codigoURFDestino" type="tns:CodigoURF" minOccurs="1" maxOccurs="1" />
+						<element name="cnpjRespDestino" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+					</sequence>
+					<sequence>
+						<element name="codigoRADestino" type="tns:CodigoRA" minOccurs="1" maxOccurs="1" />
+					</sequence>
+				</choice>
+
+				<choice>
+					<element name="veiculoFerroviario">
+						<complexType>
+							<sequence>
+								<element name="prefixoTrem" type="tns:StringBasica15" minOccurs="1" maxOccurs="1" />
+								<element name="quantidadeVagoes" type="tns:QuantidadeVagoes" minOccurs="1" maxOccurs="1" />
+							</sequence>
+						</complexType>
+					</element>
+
+					<element name="veiculoRodoviario">
+						<complexType>
+							<sequence>
+								<choice minOccurs="1" maxOccurs="1" >
+									<element name="cpfCondutor"  type="tns:CPF" />
+									<sequence>
+										<element name="documentoCondutorEstrangeiro"  type="tns:StringBasica15" />
+										<element name="nomeCondutorEstrangeiro" type="tns:StringBasica60" />	
+									</sequence>
+								</choice>
+								
+								<element name="veiculos" minOccurs="1" maxOccurs="1">
+						    		<complexType>
+						      			<sequence>
+						        			<element name="veiculo" type="tns:TVeiculoTransitoSimplificado" minOccurs="1" maxOccurs="4" />
+						      			</sequence>
+						      		</complexType>
+						      		<unique name="placaVeiculoEntrega">
+					  					<selector xpath="tns:veiculo"/>
+					  					<field xpath="tns:placa"/>
+					 				</unique>
+					  			</element>
+							</sequence>
+						</complexType>
+					</element>
+
+				</choice>
+			</sequence>
+		</complexType>
+
+</schema>

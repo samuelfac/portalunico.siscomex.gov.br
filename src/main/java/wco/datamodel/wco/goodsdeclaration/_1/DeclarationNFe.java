@@ -7,6 +7,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -38,15 +39,21 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.GoodsMeasureNetNetWeightMeasureT
 import wco.datamodel.wco.goodsdeclaration_ds._1.GoodsMeasureTariffQuantityType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.GoodsMeasureTypeCodeType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentAgencyGoodsItemCustomsValueAmountType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentAgencyGoodsItemFinancedValueAmountType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.GovernmentProcedureCurrentCodeType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.InvoiceCustomsValueAmountType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.InvoiceIdentificationIDType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.InvoiceIssueDateTimeType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.InvoiceQuantityQuantityType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.PreviousDocumentAmountAmountType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.PreviousDocumentCategoryCodeType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.PreviousDocumentIdentificationIDType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.PreviousDocumentItemIDType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.PreviousDocumentQuantityQuantityType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.ProductCharacteristicsDescriptionTextType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.ProductCharacteristicsTypeCodeType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.ProductCriteriaConformanceDescriptionTextType;
-import wco.datamodel.wco.goodsdeclaration_ds._1.ProductCriteriaConformanceTypeCodeType;
+import wco.datamodel.wco.goodsdeclaration_ds._1.ProductCriteriaConformanceQuantityQuantityType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.ReferencedInvoiceIdentificationIDType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.ReferencedInvoiceLineInvoiceIdentificationIDType;
 import wco.datamodel.wco.goodsdeclaration_ds._1.ReferencedInvoiceTypeCodeType;
@@ -59,9 +66,9 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
 
 
 /**
- * <p>Java class for DeclarationNFe complex type.
+ * <p>Classe Java de DeclarationNFe complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="DeclarationNFe">
@@ -75,7 +82,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
  *                   &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}DeclarationOfficeIdentificationCodeType"/>
- *                   &lt;element name="Warehouse" minOccurs="0">
+ *                   &lt;element name="Warehouse">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -112,7 +119,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                 &lt;sequence>
  *                   &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
  *                   &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
- *                   &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType" minOccurs="0"/>
+ *                   &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -197,6 +204,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence>
  *                             &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType"/>
+ *                             &lt;element name="FinancedValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemFinancedValueAmountType" minOccurs="0"/>
  *                             &lt;element name="SequenceNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemSequenceNumericType"/>
  *                             &lt;element name="Destination" maxOccurs="unbounded">
  *                               &lt;complexType>
@@ -225,7 +233,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                 &lt;complexContent>
  *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                                     &lt;sequence>
- *                                       &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
+ *                                       &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType"/>
  *                                       &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
  *                                       &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationTextType" minOccurs="0"/>
  *                                       &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdTextType" minOccurs="0"/>
@@ -233,6 +241,34 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                       &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentValueWithExchangeCoverAmountType" minOccurs="0"/>
  *                                       &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
  *                                       &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+ *                                       &lt;element name="AdditionalInformation" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
+ *                                                 &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
+ *                                                 &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/restriction>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="PreviousDocument" maxOccurs="unbounded" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="AmountAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentAmountAmountType" minOccurs="0"/>
+ *                                                 &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentCategoryCodeType"/>
+ *                                                 &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentIdentificationIDType" minOccurs="0"/>
+ *                                                 &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentQuantityQuantityType" minOccurs="0"/>
+ *                                                 &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentItemIDType" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/restriction>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
  *                                       &lt;element name="Invoice" maxOccurs="unbounded" minOccurs="0">
  *                                         &lt;complexType>
  *                                           &lt;complexContent>
@@ -241,7 +277,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                                 &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIdentificationIDType" minOccurs="0"/>
  *                                                 &lt;element name="IssueDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIssueDateTimeType" minOccurs="0"/>
  *                                                 &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceTypeCodeType" minOccurs="0"/>
- *                                                 &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType" minOccurs="0"/>
+ *                                                 &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceCustomsValueAmountType" minOccurs="0"/>
  *                                                 &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceQuantityQuantityType" minOccurs="0"/>
  *                                               &lt;/sequence>
  *                                             &lt;/restriction>
@@ -261,7 +297,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                       &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
  *                                       &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
  *                                       &lt;element name="LimitDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationLimitDateTimeType" minOccurs="0"/>
- *                                       &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType" minOccurs="0"/>
+ *                                       &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
  *                                     &lt;/sequence>
  *                                   &lt;/restriction>
  *                                 &lt;/complexContent>
@@ -338,6 +374,7 @@ import wco.datamodel.wco.goodsdeclaration_ds._1.WarehouseLongitudeMeasureType;
  *                                           &lt;complexContent>
  *                                             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                                               &lt;sequence>
+ *                                                 &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceQuantityQuantityType"/>
  *                                                 &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceTypeCodeType"/>
  *                                                 &lt;element name="Description" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceDescriptionTextType"/>
  *                                               &lt;/sequence>
@@ -513,7 +550,7 @@ public class DeclarationNFe {
     protected DeclarationNFe.UCR ucr;
 
     /**
-     * Gets the value of the id property.
+     * Obtém o valor da propriedade id.
      * 
      * @return
      *     possible object is
@@ -525,7 +562,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define o valor da propriedade id.
      * 
      * @param value
      *     allowed object is
@@ -537,7 +574,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Gets the value of the declarationOffice property.
+     * Obtém o valor da propriedade declarationOffice.
      * 
      * @return
      *     possible object is
@@ -549,7 +586,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Sets the value of the declarationOffice property.
+     * Define o valor da propriedade declarationOffice.
      * 
      * @param value
      *     allowed object is
@@ -590,7 +627,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Gets the value of the currencyExchange property.
+     * Obtém o valor da propriedade currencyExchange.
      * 
      * @return
      *     possible object is
@@ -602,7 +639,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Sets the value of the currencyExchange property.
+     * Define o valor da propriedade currencyExchange.
      * 
      * @param value
      *     allowed object is
@@ -614,7 +651,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Gets the value of the declarant property.
+     * Obtém o valor da propriedade declarant.
      * 
      * @return
      *     possible object is
@@ -626,7 +663,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Sets the value of the declarant property.
+     * Define o valor da propriedade declarant.
      * 
      * @param value
      *     allowed object is
@@ -638,7 +675,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Gets the value of the exitOffice property.
+     * Obtém o valor da propriedade exitOffice.
      * 
      * @return
      *     possible object is
@@ -650,7 +687,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Sets the value of the exitOffice property.
+     * Define o valor da propriedade exitOffice.
      * 
      * @param value
      *     allowed object is
@@ -691,7 +728,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Gets the value of the ucr property.
+     * Obtém o valor da propriedade ucr.
      * 
      * @return
      *     possible object is
@@ -703,7 +740,7 @@ public class DeclarationNFe {
     }
 
     /**
-     * Sets the value of the ucr property.
+     * Define o valor da propriedade ucr.
      * 
      * @param value
      *     allowed object is
@@ -716,9 +753,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -727,7 +764,7 @@ public class DeclarationNFe {
      *       &lt;sequence>
      *         &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
      *         &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
-     *         &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType" minOccurs="0"/>
+     *         &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -746,14 +783,16 @@ public class DeclarationNFe {
 
         @XmlElement(name = "StatementCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
         @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+        @XmlSchemaType(name = "token")
         protected String statementCode;
         @XmlElement(name = "StatementDescription", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
         protected AdditionalInformationStatementDescriptionTextType statementDescription;
-        @XmlElement(name = "StatementTypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+        @XmlElement(name = "StatementTypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+        @XmlSchemaType(name = "token")
         protected AdditionalInformationStatementTypeCodeType statementTypeCode;
 
         /**
-         * Gets the value of the statementCode property.
+         * Obtém o valor da propriedade statementCode.
          * 
          * @return
          *     possible object is
@@ -765,7 +804,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the statementCode property.
+         * Define o valor da propriedade statementCode.
          * 
          * @param value
          *     allowed object is
@@ -777,7 +816,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the statementDescription property.
+         * Obtém o valor da propriedade statementDescription.
          * 
          * @return
          *     possible object is
@@ -789,7 +828,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the statementDescription property.
+         * Define o valor da propriedade statementDescription.
          * 
          * @param value
          *     allowed object is
@@ -801,7 +840,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the statementTypeCode property.
+         * Obtém o valor da propriedade statementTypeCode.
          * 
          * @return
          *     possible object is
@@ -813,7 +852,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the statementTypeCode property.
+         * Define o valor da propriedade statementTypeCode.
          * 
          * @param value
          *     allowed object is
@@ -828,9 +867,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -853,10 +892,11 @@ public class DeclarationNFe {
     public static class CurrencyExchange {
 
         @XmlElement(name = "CurrencyTypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+        @XmlSchemaType(name = "token")
         protected CurrencyExchangeCurrencyTypeCodeType currencyTypeCode;
 
         /**
-         * Gets the value of the currencyTypeCode property.
+         * Obtém o valor da propriedade currencyTypeCode.
          * 
          * @return
          *     possible object is
@@ -868,7 +908,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the currencyTypeCode property.
+         * Define o valor da propriedade currencyTypeCode.
          * 
          * @param value
          *     allowed object is
@@ -883,9 +923,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -937,7 +977,7 @@ public class DeclarationNFe {
         protected DeclarationNFe.Declarant.Contact contact;
 
         /**
-         * Gets the value of the id property.
+         * Obtém o valor da propriedade id.
          * 
          * @return
          *     possible object is
@@ -949,7 +989,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the id property.
+         * Define o valor da propriedade id.
          * 
          * @param value
          *     allowed object is
@@ -961,7 +1001,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the contact property.
+         * Obtém o valor da propriedade contact.
          * 
          * @return
          *     possible object is
@@ -973,7 +1013,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the contact property.
+         * Define o valor da propriedade contact.
          * 
          * @param value
          *     allowed object is
@@ -986,9 +1026,9 @@ public class DeclarationNFe {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -1029,7 +1069,7 @@ public class DeclarationNFe {
             protected List<DeclarationNFe.Declarant.Contact.Communication> communication;
 
             /**
-             * Gets the value of the name property.
+             * Obtém o valor da propriedade name.
              * 
              * @return
              *     possible object is
@@ -1041,7 +1081,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the name property.
+             * Define o valor da propriedade name.
              * 
              * @param value
              *     allowed object is
@@ -1083,9 +1123,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -1112,10 +1152,11 @@ public class DeclarationNFe {
                 @XmlElement(name = "ID", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                 protected CommunicationIdentificationIDType id;
                 @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                @XmlSchemaType(name = "token")
                 protected CommunicationTypeCodeType typeCode;
 
                 /**
-                 * Gets the value of the id property.
+                 * Obtém o valor da propriedade id.
                  * 
                  * @return
                  *     possible object is
@@ -1127,7 +1168,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the id property.
+                 * Define o valor da propriedade id.
                  * 
                  * @param value
                  *     allowed object is
@@ -1139,7 +1180,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the typeCode property.
+                 * Obtém o valor da propriedade typeCode.
                  * 
                  * @return
                  *     possible object is
@@ -1151,7 +1192,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the typeCode property.
+                 * Define o valor da propriedade typeCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -1170,9 +1211,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -1180,7 +1221,7 @@ public class DeclarationNFe {
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
      *         &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}DeclarationOfficeIdentificationCodeType"/>
-     *         &lt;element name="Warehouse" minOccurs="0">
+     *         &lt;element name="Warehouse">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -1222,11 +1263,11 @@ public class DeclarationNFe {
 
         @XmlElement(name = "ID", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
         protected DeclarationOfficeIdentificationCodeType id;
-        @XmlElement(name = "Warehouse", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+        @XmlElement(name = "Warehouse", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
         protected DeclarationNFe.DeclarationOffice.Warehouse warehouse;
 
         /**
-         * Gets the value of the id property.
+         * Obtém o valor da propriedade id.
          * 
          * @return
          *     possible object is
@@ -1238,7 +1279,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the id property.
+         * Define o valor da propriedade id.
          * 
          * @param value
          *     allowed object is
@@ -1250,7 +1291,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the warehouse property.
+         * Obtém o valor da propriedade warehouse.
          * 
          * @return
          *     possible object is
@@ -1262,7 +1303,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the warehouse property.
+         * Define o valor da propriedade warehouse.
          * 
          * @param value
          *     allowed object is
@@ -1275,9 +1316,9 @@ public class DeclarationNFe {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -1321,6 +1362,7 @@ public class DeclarationNFe {
             protected WarehouseIdentificationIDType id;
             @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+            @XmlSchemaType(name = "token")
             protected String typeCode;
             @XmlElement(name = "LatitudeMeasure", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
             protected WarehouseLatitudeMeasureType latitudeMeasure;
@@ -1330,7 +1372,7 @@ public class DeclarationNFe {
             protected DeclarationNFe.DeclarationOffice.Warehouse.Address address;
 
             /**
-             * Gets the value of the id property.
+             * Obtém o valor da propriedade id.
              * 
              * @return
              *     possible object is
@@ -1342,7 +1384,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the id property.
+             * Define o valor da propriedade id.
              * 
              * @param value
              *     allowed object is
@@ -1354,7 +1396,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the typeCode property.
+             * Obtém o valor da propriedade typeCode.
              * 
              * @return
              *     possible object is
@@ -1366,7 +1408,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the typeCode property.
+             * Define o valor da propriedade typeCode.
              * 
              * @param value
              *     allowed object is
@@ -1378,7 +1420,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the latitudeMeasure property.
+             * Obtém o valor da propriedade latitudeMeasure.
              * 
              * @return
              *     possible object is
@@ -1390,7 +1432,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the latitudeMeasure property.
+             * Define o valor da propriedade latitudeMeasure.
              * 
              * @param value
              *     allowed object is
@@ -1402,7 +1444,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the longitudeMeasure property.
+             * Obtém o valor da propriedade longitudeMeasure.
              * 
              * @return
              *     possible object is
@@ -1414,7 +1456,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the longitudeMeasure property.
+             * Define o valor da propriedade longitudeMeasure.
              * 
              * @param value
              *     allowed object is
@@ -1426,7 +1468,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the address property.
+             * Obtém o valor da propriedade address.
              * 
              * @return
              *     possible object is
@@ -1438,7 +1480,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the address property.
+             * Define o valor da propriedade address.
              * 
              * @param value
              *     allowed object is
@@ -1451,9 +1493,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -1479,7 +1521,7 @@ public class DeclarationNFe {
                 protected AddressLineTextType line;
 
                 /**
-                 * Gets the value of the line property.
+                 * Obtém o valor da propriedade line.
                  * 
                  * @return
                  *     possible object is
@@ -1491,7 +1533,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the line property.
+                 * Define o valor da propriedade line.
                  * 
                  * @param value
                  *     allowed object is
@@ -1510,9 +1552,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -1553,7 +1595,7 @@ public class DeclarationNFe {
         protected DeclarationNFe.ExitOffice.Warehouse warehouse;
 
         /**
-         * Gets the value of the id property.
+         * Obtém o valor da propriedade id.
          * 
          * @return
          *     possible object is
@@ -1565,7 +1607,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the id property.
+         * Define o valor da propriedade id.
          * 
          * @param value
          *     allowed object is
@@ -1577,7 +1619,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the warehouse property.
+         * Obtém o valor da propriedade warehouse.
          * 
          * @return
          *     possible object is
@@ -1589,7 +1631,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the warehouse property.
+         * Define o valor da propriedade warehouse.
          * 
          * @param value
          *     allowed object is
@@ -1602,9 +1644,9 @@ public class DeclarationNFe {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -1632,10 +1674,11 @@ public class DeclarationNFe {
             protected WarehouseIdentificationIDType id;
             @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+            @XmlSchemaType(name = "token")
             protected String typeCode;
 
             /**
-             * Gets the value of the id property.
+             * Obtém o valor da propriedade id.
              * 
              * @return
              *     possible object is
@@ -1647,7 +1690,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the id property.
+             * Define o valor da propriedade id.
              * 
              * @param value
              *     allowed object is
@@ -1659,7 +1702,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the typeCode property.
+             * Obtém o valor da propriedade typeCode.
              * 
              * @return
              *     possible object is
@@ -1671,7 +1714,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the typeCode property.
+             * Define o valor da propriedade typeCode.
              * 
              * @param value
              *     allowed object is
@@ -1688,9 +1731,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -1703,6 +1746,7 @@ public class DeclarationNFe {
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence>
      *                   &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType"/>
+     *                   &lt;element name="FinancedValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemFinancedValueAmountType" minOccurs="0"/>
      *                   &lt;element name="SequenceNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemSequenceNumericType"/>
      *                   &lt;element name="Destination" maxOccurs="unbounded">
      *                     &lt;complexType>
@@ -1731,7 +1775,7 @@ public class DeclarationNFe {
      *                       &lt;complexContent>
      *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                           &lt;sequence>
-     *                             &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
+     *                             &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType"/>
      *                             &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
      *                             &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationTextType" minOccurs="0"/>
      *                             &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdTextType" minOccurs="0"/>
@@ -1739,6 +1783,34 @@ public class DeclarationNFe {
      *                             &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentValueWithExchangeCoverAmountType" minOccurs="0"/>
      *                             &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
      *                             &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+     *                             &lt;element name="AdditionalInformation" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
+     *                                       &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
+     *                                       &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/restriction>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="PreviousDocument" maxOccurs="unbounded" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="AmountAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentAmountAmountType" minOccurs="0"/>
+     *                                       &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentCategoryCodeType"/>
+     *                                       &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentIdentificationIDType" minOccurs="0"/>
+     *                                       &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentQuantityQuantityType" minOccurs="0"/>
+     *                                       &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentItemIDType" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/restriction>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
      *                             &lt;element name="Invoice" maxOccurs="unbounded" minOccurs="0">
      *                               &lt;complexType>
      *                                 &lt;complexContent>
@@ -1747,7 +1819,7 @@ public class DeclarationNFe {
      *                                       &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIdentificationIDType" minOccurs="0"/>
      *                                       &lt;element name="IssueDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIssueDateTimeType" minOccurs="0"/>
      *                                       &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceTypeCodeType" minOccurs="0"/>
-     *                                       &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType" minOccurs="0"/>
+     *                                       &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceCustomsValueAmountType" minOccurs="0"/>
      *                                       &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceQuantityQuantityType" minOccurs="0"/>
      *                                     &lt;/sequence>
      *                                   &lt;/restriction>
@@ -1767,7 +1839,7 @@ public class DeclarationNFe {
      *                             &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
      *                             &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
      *                             &lt;element name="LimitDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationLimitDateTimeType" minOccurs="0"/>
-     *                             &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType" minOccurs="0"/>
+     *                             &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
      *                           &lt;/sequence>
      *                         &lt;/restriction>
      *                       &lt;/complexContent>
@@ -1844,6 +1916,7 @@ public class DeclarationNFe {
      *                                 &lt;complexContent>
      *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                                     &lt;sequence>
+     *                                       &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceQuantityQuantityType"/>
      *                                       &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceTypeCodeType"/>
      *                                       &lt;element name="Description" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceDescriptionTextType"/>
      *                                     &lt;/sequence>
@@ -2017,7 +2090,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the invoice property.
+         * Obtém o valor da propriedade invoice.
          * 
          * @return
          *     possible object is
@@ -2029,7 +2102,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the invoice property.
+         * Define o valor da propriedade invoice.
          * 
          * @param value
          *     allowed object is
@@ -2041,7 +2114,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Gets the value of the tradeTerms property.
+         * Obtém o valor da propriedade tradeTerms.
          * 
          * @return
          *     possible object is
@@ -2053,7 +2126,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the tradeTerms property.
+         * Define o valor da propriedade tradeTerms.
          * 
          * @param value
          *     allowed object is
@@ -2066,9 +2139,9 @@ public class DeclarationNFe {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -2076,6 +2149,7 @@ public class DeclarationNFe {
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
          *         &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType"/>
+         *         &lt;element name="FinancedValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemFinancedValueAmountType" minOccurs="0"/>
          *         &lt;element name="SequenceNumeric" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemSequenceNumericType"/>
          *         &lt;element name="Destination" maxOccurs="unbounded">
          *           &lt;complexType>
@@ -2104,7 +2178,7 @@ public class DeclarationNFe {
          *             &lt;complexContent>
          *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *                 &lt;sequence>
-         *                   &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
+         *                   &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType"/>
          *                   &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
          *                   &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationTextType" minOccurs="0"/>
          *                   &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdTextType" minOccurs="0"/>
@@ -2112,6 +2186,34 @@ public class DeclarationNFe {
          *                   &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentValueWithExchangeCoverAmountType" minOccurs="0"/>
          *                   &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
          *                   &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+         *                   &lt;element name="AdditionalInformation" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                           &lt;sequence>
+         *                             &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
+         *                             &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
+         *                             &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
+         *                           &lt;/sequence>
+         *                         &lt;/restriction>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="PreviousDocument" maxOccurs="unbounded" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                           &lt;sequence>
+         *                             &lt;element name="AmountAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentAmountAmountType" minOccurs="0"/>
+         *                             &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentCategoryCodeType"/>
+         *                             &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentIdentificationIDType" minOccurs="0"/>
+         *                             &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentQuantityQuantityType" minOccurs="0"/>
+         *                             &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentItemIDType" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/restriction>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
          *                   &lt;element name="Invoice" maxOccurs="unbounded" minOccurs="0">
          *                     &lt;complexType>
          *                       &lt;complexContent>
@@ -2120,7 +2222,7 @@ public class DeclarationNFe {
          *                             &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIdentificationIDType" minOccurs="0"/>
          *                             &lt;element name="IssueDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIssueDateTimeType" minOccurs="0"/>
          *                             &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceTypeCodeType" minOccurs="0"/>
-         *                             &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType" minOccurs="0"/>
+         *                             &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceCustomsValueAmountType" minOccurs="0"/>
          *                             &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceQuantityQuantityType" minOccurs="0"/>
          *                           &lt;/sequence>
          *                         &lt;/restriction>
@@ -2140,7 +2242,7 @@ public class DeclarationNFe {
          *                   &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
          *                   &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
          *                   &lt;element name="LimitDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationLimitDateTimeType" minOccurs="0"/>
-         *                   &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType" minOccurs="0"/>
+         *                   &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
          *                 &lt;/sequence>
          *               &lt;/restriction>
          *             &lt;/complexContent>
@@ -2217,6 +2319,7 @@ public class DeclarationNFe {
          *                       &lt;complexContent>
          *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *                           &lt;sequence>
+         *                             &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceQuantityQuantityType"/>
          *                             &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceTypeCodeType"/>
          *                             &lt;element name="Description" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceDescriptionTextType"/>
          *                           &lt;/sequence>
@@ -2286,6 +2389,7 @@ public class DeclarationNFe {
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "", propOrder = {
             "customsValueAmount",
+            "financedValueAmount",
             "sequenceNumeric",
             "destination",
             "additionalDocument",
@@ -2300,6 +2404,8 @@ public class DeclarationNFe {
 
             @XmlElement(name = "CustomsValueAmount", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
             protected GovernmentAgencyGoodsItemCustomsValueAmountType customsValueAmount;
+            @XmlElement(name = "FinancedValueAmount", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+            protected GovernmentAgencyGoodsItemFinancedValueAmountType financedValueAmount;
             @XmlElement(name = "SequenceNumeric", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
             protected BigDecimal sequenceNumeric;
             @XmlElement(name = "Destination", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
@@ -2320,7 +2426,7 @@ public class DeclarationNFe {
             protected DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.ValuationAdjustment valuationAdjustment;
 
             /**
-             * Gets the value of the customsValueAmount property.
+             * Obtém o valor da propriedade customsValueAmount.
              * 
              * @return
              *     possible object is
@@ -2332,7 +2438,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the customsValueAmount property.
+             * Define o valor da propriedade customsValueAmount.
              * 
              * @param value
              *     allowed object is
@@ -2344,7 +2450,31 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the sequenceNumeric property.
+             * Obtém o valor da propriedade financedValueAmount.
+             * 
+             * @return
+             *     possible object is
+             *     {@link GovernmentAgencyGoodsItemFinancedValueAmountType }
+             *     
+             */
+            public GovernmentAgencyGoodsItemFinancedValueAmountType getFinancedValueAmount() {
+                return financedValueAmount;
+            }
+
+            /**
+             * Define o valor da propriedade financedValueAmount.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link GovernmentAgencyGoodsItemFinancedValueAmountType }
+             *     
+             */
+            public void setFinancedValueAmount(GovernmentAgencyGoodsItemFinancedValueAmountType value) {
+                this.financedValueAmount = value;
+            }
+
+            /**
+             * Obtém o valor da propriedade sequenceNumeric.
              * 
              * @return
              *     possible object is
@@ -2356,7 +2486,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the sequenceNumeric property.
+             * Define o valor da propriedade sequenceNumeric.
              * 
              * @param value
              *     allowed object is
@@ -2455,7 +2585,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the commodity property.
+             * Obtém o valor da propriedade commodity.
              * 
              * @return
              *     possible object is
@@ -2467,7 +2597,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the commodity property.
+             * Define o valor da propriedade commodity.
              * 
              * @param value
              *     allowed object is
@@ -2479,7 +2609,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the goodsMeasure property.
+             * Obtém o valor da propriedade goodsMeasure.
              * 
              * @return
              *     possible object is
@@ -2491,7 +2621,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the goodsMeasure property.
+             * Define o valor da propriedade goodsMeasure.
              * 
              * @param value
              *     allowed object is
@@ -2561,7 +2691,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the valuationAdjustment property.
+             * Obtém o valor da propriedade valuationAdjustment.
              * 
              * @return
              *     possible object is
@@ -2573,7 +2703,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the valuationAdjustment property.
+             * Define o valor da propriedade valuationAdjustment.
              * 
              * @param value
              *     allowed object is
@@ -2586,16 +2716,16 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
              *   &lt;complexContent>
              *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
              *       &lt;sequence>
-             *         &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType" minOccurs="0"/>
+             *         &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentCategoryCodeType"/>
              *         &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentIdentificationIDType" minOccurs="0"/>
              *         &lt;element name="DrawbackHsClassification" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackHsClassificationTextType" minOccurs="0"/>
              *         &lt;element name="DrawbackRecipientId" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentDrawbackRecipientIdTextType" minOccurs="0"/>
@@ -2603,6 +2733,34 @@ public class DeclarationNFe {
              *         &lt;element name="ValueWithExchangeCoverAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentValueWithExchangeCoverAmountType" minOccurs="0"/>
              *         &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentItemIDType" minOccurs="0"/>
              *         &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalDocumentQuantityQuantityType" minOccurs="0"/>
+             *         &lt;element name="AdditionalInformation" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *                 &lt;sequence>
+             *                   &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
+             *                   &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
+             *                   &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
+             *                 &lt;/sequence>
+             *               &lt;/restriction>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="PreviousDocument" maxOccurs="unbounded" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *                 &lt;sequence>
+             *                   &lt;element name="AmountAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentAmountAmountType" minOccurs="0"/>
+             *                   &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentCategoryCodeType"/>
+             *                   &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentIdentificationIDType" minOccurs="0"/>
+             *                   &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentQuantityQuantityType" minOccurs="0"/>
+             *                   &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentItemIDType" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/restriction>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
              *         &lt;element name="Invoice" maxOccurs="unbounded" minOccurs="0">
              *           &lt;complexType>
              *             &lt;complexContent>
@@ -2611,7 +2769,7 @@ public class DeclarationNFe {
              *                   &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIdentificationIDType" minOccurs="0"/>
              *                   &lt;element name="IssueDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIssueDateTimeType" minOccurs="0"/>
              *                   &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceTypeCodeType" minOccurs="0"/>
-             *                   &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType" minOccurs="0"/>
+             *                   &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceCustomsValueAmountType" minOccurs="0"/>
              *                   &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceQuantityQuantityType" minOccurs="0"/>
              *                 &lt;/sequence>
              *               &lt;/restriction>
@@ -2636,11 +2794,14 @@ public class DeclarationNFe {
                 "valueWithExchangeCoverAmount",
                 "itemID",
                 "quantityQuantity",
+                "additionalInformation",
+                "previousDocument",
                 "invoice"
             })
             public static class AdditionalDocument {
 
-                @XmlElement(name = "CategoryCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                @XmlElement(name = "CategoryCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                @XmlSchemaType(name = "token")
                 protected AdditionalDocumentCategoryCodeType categoryCode;
                 @XmlElement(name = "ID", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 protected AdditionalDocumentIdentificationIDType id;
@@ -2656,11 +2817,15 @@ public class DeclarationNFe {
                 protected AdditionalDocumentItemIDType itemID;
                 @XmlElement(name = "QuantityQuantity", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 protected AdditionalDocumentQuantityQuantityType quantityQuantity;
+                @XmlElement(name = "AdditionalInformation", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                protected DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation additionalInformation;
+                @XmlElement(name = "PreviousDocument", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument> previousDocument;
                 @XmlElement(name = "Invoice", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.Invoice> invoice;
 
                 /**
-                 * Gets the value of the categoryCode property.
+                 * Obtém o valor da propriedade categoryCode.
                  * 
                  * @return
                  *     possible object is
@@ -2672,7 +2837,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the categoryCode property.
+                 * Define o valor da propriedade categoryCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -2684,7 +2849,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the id property.
+                 * Obtém o valor da propriedade id.
                  * 
                  * @return
                  *     possible object is
@@ -2696,7 +2861,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the id property.
+                 * Define o valor da propriedade id.
                  * 
                  * @param value
                  *     allowed object is
@@ -2708,7 +2873,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the drawbackHsClassification property.
+                 * Obtém o valor da propriedade drawbackHsClassification.
                  * 
                  * @return
                  *     possible object is
@@ -2720,7 +2885,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the drawbackHsClassification property.
+                 * Define o valor da propriedade drawbackHsClassification.
                  * 
                  * @param value
                  *     allowed object is
@@ -2732,7 +2897,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the drawbackRecipientId property.
+                 * Obtém o valor da propriedade drawbackRecipientId.
                  * 
                  * @return
                  *     possible object is
@@ -2744,7 +2909,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the drawbackRecipientId property.
+                 * Define o valor da propriedade drawbackRecipientId.
                  * 
                  * @param value
                  *     allowed object is
@@ -2756,7 +2921,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the valueWithoutExchangeCoverAmount property.
+                 * Obtém o valor da propriedade valueWithoutExchangeCoverAmount.
                  * 
                  * @return
                  *     possible object is
@@ -2768,7 +2933,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the valueWithoutExchangeCoverAmount property.
+                 * Define o valor da propriedade valueWithoutExchangeCoverAmount.
                  * 
                  * @param value
                  *     allowed object is
@@ -2780,7 +2945,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the valueWithExchangeCoverAmount property.
+                 * Obtém o valor da propriedade valueWithExchangeCoverAmount.
                  * 
                  * @return
                  *     possible object is
@@ -2792,7 +2957,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the valueWithExchangeCoverAmount property.
+                 * Define o valor da propriedade valueWithExchangeCoverAmount.
                  * 
                  * @param value
                  *     allowed object is
@@ -2804,7 +2969,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the itemID property.
+                 * Obtém o valor da propriedade itemID.
                  * 
                  * @return
                  *     possible object is
@@ -2816,7 +2981,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the itemID property.
+                 * Define o valor da propriedade itemID.
                  * 
                  * @param value
                  *     allowed object is
@@ -2828,7 +2993,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the quantityQuantity property.
+                 * Obtém o valor da propriedade quantityQuantity.
                  * 
                  * @return
                  *     possible object is
@@ -2840,7 +3005,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the quantityQuantity property.
+                 * Define o valor da propriedade quantityQuantity.
                  * 
                  * @param value
                  *     allowed object is
@@ -2849,6 +3014,59 @@ public class DeclarationNFe {
                  */
                 public void setQuantityQuantity(AdditionalDocumentQuantityQuantityType value) {
                     this.quantityQuantity = value;
+                }
+
+                /**
+                 * Obtém o valor da propriedade additionalInformation.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation }
+                 *     
+                 */
+                public DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation getAdditionalInformation() {
+                    return additionalInformation;
+                }
+
+                /**
+                 * Define o valor da propriedade additionalInformation.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation }
+                 *     
+                 */
+                public void setAdditionalInformation(DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.AdditionalInformation value) {
+                    this.additionalInformation = value;
+                }
+
+                /**
+                 * Gets the value of the previousDocument property.
+                 * 
+                 * <p>
+                 * This accessor method returns a reference to the live list,
+                 * not a snapshot. Therefore any modification you make to the
+                 * returned list will be present inside the JAXB object.
+                 * This is why there is not a <CODE>set</CODE> method for the previousDocument property.
+                 * 
+                 * <p>
+                 * For example, to add a new item, do as follows:
+                 * <pre>
+                 *    getPreviousDocument().add(newItem);
+                 * </pre>
+                 * 
+                 * 
+                 * <p>
+                 * Objects of the following type(s) are allowed in the list
+                 * {@link DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument }
+                 * 
+                 * 
+                 */
+                public List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument> getPreviousDocument() {
+                    if (previousDocument == null) {
+                        previousDocument = new ArrayList<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.AdditionalDocument.PreviousDocument>();
+                    }
+                    return this.previousDocument;
                 }
 
                 /**
@@ -2882,9 +3100,123 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                 *       &lt;sequence>
+                 *         &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
+                 *         &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
+                 *         &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
+                 *       &lt;/sequence>
+                 *     &lt;/restriction>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "statementCode",
+                    "statementDescription",
+                    "statementTypeCode"
+                })
+                public static class AdditionalInformation {
+
+                    @XmlElement(name = "StatementCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                    @XmlSchemaType(name = "token")
+                    protected String statementCode;
+                    @XmlElement(name = "StatementDescription", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                    protected AdditionalInformationStatementDescriptionTextType statementDescription;
+                    @XmlElement(name = "StatementTypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                    @XmlSchemaType(name = "token")
+                    protected AdditionalInformationStatementTypeCodeType statementTypeCode;
+
+                    /**
+                     * Obtém o valor da propriedade statementCode.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getStatementCode() {
+                        return statementCode;
+                    }
+
+                    /**
+                     * Define o valor da propriedade statementCode.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setStatementCode(String value) {
+                        this.statementCode = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade statementDescription.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link AdditionalInformationStatementDescriptionTextType }
+                     *     
+                     */
+                    public AdditionalInformationStatementDescriptionTextType getStatementDescription() {
+                        return statementDescription;
+                    }
+
+                    /**
+                     * Define o valor da propriedade statementDescription.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link AdditionalInformationStatementDescriptionTextType }
+                     *     
+                     */
+                    public void setStatementDescription(AdditionalInformationStatementDescriptionTextType value) {
+                        this.statementDescription = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade statementTypeCode.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link AdditionalInformationStatementTypeCodeType }
+                     *     
+                     */
+                    public AdditionalInformationStatementTypeCodeType getStatementTypeCode() {
+                        return statementTypeCode;
+                    }
+
+                    /**
+                     * Define o valor da propriedade statementTypeCode.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link AdditionalInformationStatementTypeCodeType }
+                     *     
+                     */
+                    public void setStatementTypeCode(AdditionalInformationStatementTypeCodeType value) {
+                        this.statementTypeCode = value;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Classe Java de anonymous complex type.
+                 * 
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -2894,7 +3226,7 @@ public class DeclarationNFe {
                  *         &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIdentificationIDType" minOccurs="0"/>
                  *         &lt;element name="IssueDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceIssueDateTimeType" minOccurs="0"/>
                  *         &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceTypeCodeType" minOccurs="0"/>
-                 *         &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}GovernmentAgencyGoodsItemCustomsValueAmountType" minOccurs="0"/>
+                 *         &lt;element name="CustomsValueAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceCustomsValueAmountType" minOccurs="0"/>
                  *         &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}InvoiceQuantityQuantityType" minOccurs="0"/>
                  *       &lt;/sequence>
                  *     &lt;/restriction>
@@ -2920,14 +3252,15 @@ public class DeclarationNFe {
                     protected InvoiceIssueDateTimeType issueDateTime;
                     @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                    @XmlSchemaType(name = "token")
                     protected String typeCode;
                     @XmlElement(name = "CustomsValueAmount", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
-                    protected GovernmentAgencyGoodsItemCustomsValueAmountType customsValueAmount;
+                    protected InvoiceCustomsValueAmountType customsValueAmount;
                     @XmlElement(name = "QuantityQuantity", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                     protected InvoiceQuantityQuantityType quantityQuantity;
 
                     /**
-                     * Gets the value of the id property.
+                     * Obtém o valor da propriedade id.
                      * 
                      * @return
                      *     possible object is
@@ -2939,7 +3272,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the id property.
+                     * Define o valor da propriedade id.
                      * 
                      * @param value
                      *     allowed object is
@@ -2951,7 +3284,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Gets the value of the issueDateTime property.
+                     * Obtém o valor da propriedade issueDateTime.
                      * 
                      * @return
                      *     possible object is
@@ -2963,7 +3296,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the issueDateTime property.
+                     * Define o valor da propriedade issueDateTime.
                      * 
                      * @param value
                      *     allowed object is
@@ -2975,7 +3308,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Gets the value of the typeCode property.
+                     * Obtém o valor da propriedade typeCode.
                      * 
                      * @return
                      *     possible object is
@@ -2987,7 +3320,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the typeCode property.
+                     * Define o valor da propriedade typeCode.
                      * 
                      * @param value
                      *     allowed object is
@@ -2999,31 +3332,31 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Gets the value of the customsValueAmount property.
+                     * Obtém o valor da propriedade customsValueAmount.
                      * 
                      * @return
                      *     possible object is
-                     *     {@link GovernmentAgencyGoodsItemCustomsValueAmountType }
+                     *     {@link InvoiceCustomsValueAmountType }
                      *     
                      */
-                    public GovernmentAgencyGoodsItemCustomsValueAmountType getCustomsValueAmount() {
+                    public InvoiceCustomsValueAmountType getCustomsValueAmount() {
                         return customsValueAmount;
                     }
 
                     /**
-                     * Sets the value of the customsValueAmount property.
+                     * Define o valor da propriedade customsValueAmount.
                      * 
                      * @param value
                      *     allowed object is
-                     *     {@link GovernmentAgencyGoodsItemCustomsValueAmountType }
+                     *     {@link InvoiceCustomsValueAmountType }
                      *     
                      */
-                    public void setCustomsValueAmount(GovernmentAgencyGoodsItemCustomsValueAmountType value) {
+                    public void setCustomsValueAmount(InvoiceCustomsValueAmountType value) {
                         this.customsValueAmount = value;
                     }
 
                     /**
-                     * Gets the value of the quantityQuantity property.
+                     * Obtém o valor da propriedade quantityQuantity.
                      * 
                      * @return
                      *     possible object is
@@ -3035,7 +3368,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the quantityQuantity property.
+                     * Define o valor da propriedade quantityQuantity.
                      * 
                      * @param value
                      *     allowed object is
@@ -3048,13 +3381,181 @@ public class DeclarationNFe {
 
                 }
 
+
+                /**
+                 * <p>Classe Java de anonymous complex type.
+                 * 
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+                 *       &lt;sequence>
+                 *         &lt;element name="AmountAmount" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentAmountAmountType" minOccurs="0"/>
+                 *         &lt;element name="CategoryCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentCategoryCodeType"/>
+                 *         &lt;element name="ID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentIdentificationIDType" minOccurs="0"/>
+                 *         &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentQuantityQuantityType" minOccurs="0"/>
+                 *         &lt;element name="ItemID" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}PreviousDocumentItemIDType" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/restriction>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "amountAmount",
+                    "categoryCode",
+                    "id",
+                    "quantityQuantity",
+                    "itemID"
+                })
+                public static class PreviousDocument {
+
+                    @XmlElement(name = "AmountAmount", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                    protected PreviousDocumentAmountAmountType amountAmount;
+                    @XmlElement(name = "CategoryCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                    @XmlSchemaType(name = "token")
+                    protected PreviousDocumentCategoryCodeType categoryCode;
+                    @XmlElement(name = "ID", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                    protected PreviousDocumentIdentificationIDType id;
+                    @XmlElement(name = "QuantityQuantity", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                    protected PreviousDocumentQuantityQuantityType quantityQuantity;
+                    @XmlElement(name = "ItemID", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                    protected PreviousDocumentItemIDType itemID;
+
+                    /**
+                     * Obtém o valor da propriedade amountAmount.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link PreviousDocumentAmountAmountType }
+                     *     
+                     */
+                    public PreviousDocumentAmountAmountType getAmountAmount() {
+                        return amountAmount;
+                    }
+
+                    /**
+                     * Define o valor da propriedade amountAmount.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link PreviousDocumentAmountAmountType }
+                     *     
+                     */
+                    public void setAmountAmount(PreviousDocumentAmountAmountType value) {
+                        this.amountAmount = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade categoryCode.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link PreviousDocumentCategoryCodeType }
+                     *     
+                     */
+                    public PreviousDocumentCategoryCodeType getCategoryCode() {
+                        return categoryCode;
+                    }
+
+                    /**
+                     * Define o valor da propriedade categoryCode.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link PreviousDocumentCategoryCodeType }
+                     *     
+                     */
+                    public void setCategoryCode(PreviousDocumentCategoryCodeType value) {
+                        this.categoryCode = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade id.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link PreviousDocumentIdentificationIDType }
+                     *     
+                     */
+                    public PreviousDocumentIdentificationIDType getID() {
+                        return id;
+                    }
+
+                    /**
+                     * Define o valor da propriedade id.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link PreviousDocumentIdentificationIDType }
+                     *     
+                     */
+                    public void setID(PreviousDocumentIdentificationIDType value) {
+                        this.id = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade quantityQuantity.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link PreviousDocumentQuantityQuantityType }
+                     *     
+                     */
+                    public PreviousDocumentQuantityQuantityType getQuantityQuantity() {
+                        return quantityQuantity;
+                    }
+
+                    /**
+                     * Define o valor da propriedade quantityQuantity.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link PreviousDocumentQuantityQuantityType }
+                     *     
+                     */
+                    public void setQuantityQuantity(PreviousDocumentQuantityQuantityType value) {
+                        this.quantityQuantity = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade itemID.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link PreviousDocumentItemIDType }
+                     *     
+                     */
+                    public PreviousDocumentItemIDType getItemID() {
+                        return itemID;
+                    }
+
+                    /**
+                     * Define o valor da propriedade itemID.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link PreviousDocumentItemIDType }
+                     *     
+                     */
+                    public void setItemID(PreviousDocumentItemIDType value) {
+                        this.itemID = value;
+                    }
+
+                }
+
             }
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -3064,7 +3565,7 @@ public class DeclarationNFe {
              *         &lt;element name="StatementCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementCodeType" minOccurs="0"/>
              *         &lt;element name="StatementDescription" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementDescriptionTextType" minOccurs="0"/>
              *         &lt;element name="LimitDateTime" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationLimitDateTimeType" minOccurs="0"/>
-             *         &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType" minOccurs="0"/>
+             *         &lt;element name="StatementTypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}AdditionalInformationStatementTypeCodeType"/>
              *       &lt;/sequence>
              *     &lt;/restriction>
              *   &lt;/complexContent>
@@ -3084,16 +3585,18 @@ public class DeclarationNFe {
 
                 @XmlElement(name = "StatementCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                @XmlSchemaType(name = "token")
                 protected String statementCode;
                 @XmlElement(name = "StatementDescription", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 protected AdditionalInformationStatementDescriptionTextType statementDescription;
                 @XmlElement(name = "LimitDateTime", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 protected AdditionalInformationLimitDateTimeType limitDateTime;
-                @XmlElement(name = "StatementTypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
+                @XmlElement(name = "StatementTypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                @XmlSchemaType(name = "token")
                 protected AdditionalInformationStatementTypeCodeType statementTypeCode;
 
                 /**
-                 * Gets the value of the statementCode property.
+                 * Obtém o valor da propriedade statementCode.
                  * 
                  * @return
                  *     possible object is
@@ -3105,7 +3608,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the statementCode property.
+                 * Define o valor da propriedade statementCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -3117,7 +3620,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the statementDescription property.
+                 * Obtém o valor da propriedade statementDescription.
                  * 
                  * @return
                  *     possible object is
@@ -3129,7 +3632,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the statementDescription property.
+                 * Define o valor da propriedade statementDescription.
                  * 
                  * @param value
                  *     allowed object is
@@ -3141,7 +3644,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the limitDateTime property.
+                 * Obtém o valor da propriedade limitDateTime.
                  * 
                  * @return
                  *     possible object is
@@ -3153,7 +3656,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the limitDateTime property.
+                 * Define o valor da propriedade limitDateTime.
                  * 
                  * @param value
                  *     allowed object is
@@ -3165,7 +3668,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the statementTypeCode property.
+                 * Obtém o valor da propriedade statementTypeCode.
                  * 
                  * @return
                  *     possible object is
@@ -3177,7 +3680,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the statementTypeCode property.
+                 * Define o valor da propriedade statementTypeCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -3192,9 +3695,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -3267,6 +3770,7 @@ public class DeclarationNFe {
              *             &lt;complexContent>
              *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
              *                 &lt;sequence>
+             *                   &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceQuantityQuantityType"/>
              *                   &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceTypeCodeType"/>
              *                   &lt;element name="Description" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceDescriptionTextType"/>
              *                 &lt;/sequence>
@@ -3310,7 +3814,7 @@ public class DeclarationNFe {
                 protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Commodity.ProductCriteriaConformance> productCriteriaConformance;
 
                 /**
-                 * Gets the value of the description property.
+                 * Obtém o valor da propriedade description.
                  * 
                  * @return
                  *     possible object is
@@ -3322,7 +3826,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the description property.
+                 * Define o valor da propriedade description.
                  * 
                  * @param value
                  *     allowed object is
@@ -3334,7 +3838,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the valueAmount property.
+                 * Obtém o valor da propriedade valueAmount.
                  * 
                  * @return
                  *     possible object is
@@ -3346,7 +3850,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the valueAmount property.
+                 * Define o valor da propriedade valueAmount.
                  * 
                  * @param value
                  *     allowed object is
@@ -3358,7 +3862,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the invoiceBRLvalueAmount property.
+                 * Obtém o valor da propriedade invoiceBRLvalueAmount.
                  * 
                  * @return
                  *     possible object is
@@ -3370,7 +3874,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the invoiceBRLvalueAmount property.
+                 * Define o valor da propriedade invoiceBRLvalueAmount.
                  * 
                  * @param value
                  *     allowed object is
@@ -3411,7 +3915,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the invoiceLine property.
+                 * Obtém o valor da propriedade invoiceLine.
                  * 
                  * @return
                  *     possible object is
@@ -3423,7 +3927,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the invoiceLine property.
+                 * Define o valor da propriedade invoiceLine.
                  * 
                  * @param value
                  *     allowed object is
@@ -3494,9 +3998,9 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -3521,12 +4025,13 @@ public class DeclarationNFe {
                 public static class GoodsMeasure {
 
                     @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                    @XmlSchemaType(name = "token")
                     protected GoodsMeasureTypeCodeType typeCode;
                     @XmlElement(name = "TariffQuantity", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                     protected GoodsMeasureTariffQuantityType tariffQuantity;
 
                     /**
-                     * Gets the value of the typeCode property.
+                     * Obtém o valor da propriedade typeCode.
                      * 
                      * @return
                      *     possible object is
@@ -3538,7 +4043,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the typeCode property.
+                     * Define o valor da propriedade typeCode.
                      * 
                      * @param value
                      *     allowed object is
@@ -3550,7 +4055,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Gets the value of the tariffQuantity property.
+                     * Obtém o valor da propriedade tariffQuantity.
                      * 
                      * @return
                      *     possible object is
@@ -3562,7 +4067,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the tariffQuantity property.
+                     * Define o valor da propriedade tariffQuantity.
                      * 
                      * @param value
                      *     allowed object is
@@ -3577,9 +4082,9 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -3631,7 +4136,7 @@ public class DeclarationNFe {
                     protected List<DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Commodity.InvoiceLine.ReferencedInvoiceLine> referencedInvoiceLine;
 
                     /**
-                     * Gets the value of the sequenceNumeric property.
+                     * Obtém o valor da propriedade sequenceNumeric.
                      * 
                      * @return
                      *     possible object is
@@ -3643,7 +4148,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the sequenceNumeric property.
+                     * Define o valor da propriedade sequenceNumeric.
                      * 
                      * @param value
                      *     allowed object is
@@ -3685,9 +4190,9 @@ public class DeclarationNFe {
 
 
                     /**
-                     * <p>Java class for anonymous complex type.
+                     * <p>Classe Java de anonymous complex type.
                      * 
-                     * <p>The following schema fragment specifies the expected content contained within this class.
+                     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                      * 
                      * <pre>
                      * &lt;complexType>
@@ -3731,7 +4236,7 @@ public class DeclarationNFe {
                         protected DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Commodity.InvoiceLine.ReferencedInvoiceLine.GoodsMeasure goodsMeasure;
 
                         /**
-                         * Gets the value of the sequenceNumeric property.
+                         * Obtém o valor da propriedade sequenceNumeric.
                          * 
                          * @return
                          *     possible object is
@@ -3743,7 +4248,7 @@ public class DeclarationNFe {
                         }
 
                         /**
-                         * Sets the value of the sequenceNumeric property.
+                         * Define o valor da propriedade sequenceNumeric.
                          * 
                          * @param value
                          *     allowed object is
@@ -3755,7 +4260,7 @@ public class DeclarationNFe {
                         }
 
                         /**
-                         * Gets the value of the invoiceIdentificationID property.
+                         * Obtém o valor da propriedade invoiceIdentificationID.
                          * 
                          * @return
                          *     possible object is
@@ -3767,7 +4272,7 @@ public class DeclarationNFe {
                         }
 
                         /**
-                         * Sets the value of the invoiceIdentificationID property.
+                         * Define o valor da propriedade invoiceIdentificationID.
                          * 
                          * @param value
                          *     allowed object is
@@ -3779,7 +4284,7 @@ public class DeclarationNFe {
                         }
 
                         /**
-                         * Gets the value of the goodsMeasure property.
+                         * Obtém o valor da propriedade goodsMeasure.
                          * 
                          * @return
                          *     possible object is
@@ -3791,7 +4296,7 @@ public class DeclarationNFe {
                         }
 
                         /**
-                         * Sets the value of the goodsMeasure property.
+                         * Define o valor da propriedade goodsMeasure.
                          * 
                          * @param value
                          *     allowed object is
@@ -3804,9 +4309,9 @@ public class DeclarationNFe {
 
 
                         /**
-                         * <p>Java class for anonymous complex type.
+                         * <p>Classe Java de anonymous complex type.
                          * 
-                         * <p>The following schema fragment specifies the expected content contained within this class.
+                         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                          * 
                          * <pre>
                          * &lt;complexType>
@@ -3832,7 +4337,7 @@ public class DeclarationNFe {
                             protected GoodsMeasureTariffQuantityType tariffQuantity;
 
                             /**
-                             * Gets the value of the tariffQuantity property.
+                             * Obtém o valor da propriedade tariffQuantity.
                              * 
                              * @return
                              *     possible object is
@@ -3844,7 +4349,7 @@ public class DeclarationNFe {
                             }
 
                             /**
-                             * Sets the value of the tariffQuantity property.
+                             * Define o valor da propriedade tariffQuantity.
                              * 
                              * @param value
                              *     allowed object is
@@ -3863,9 +4368,9 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -3895,7 +4400,7 @@ public class DeclarationNFe {
                     protected ProductCharacteristicsDescriptionTextType description;
 
                     /**
-                     * Gets the value of the typeCode property.
+                     * Obtém o valor da propriedade typeCode.
                      * 
                      * @return
                      *     possible object is
@@ -3907,7 +4412,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the typeCode property.
+                     * Define o valor da propriedade typeCode.
                      * 
                      * @param value
                      *     allowed object is
@@ -3919,7 +4424,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Gets the value of the description property.
+                     * Obtém o valor da propriedade description.
                      * 
                      * @return
                      *     possible object is
@@ -3931,7 +4436,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the description property.
+                     * Define o valor da propriedade description.
                      * 
                      * @param value
                      *     allowed object is
@@ -3946,15 +4451,16 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
                  *   &lt;complexContent>
                  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
                  *       &lt;sequence>
+                 *         &lt;element name="QuantityQuantity" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceQuantityQuantityType"/>
                  *         &lt;element name="TypeCode" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceTypeCodeType"/>
                  *         &lt;element name="Description" type="{urn:wco:datamodel:WCO:GoodsDeclaration_DS:1}ProductCriteriaConformanceDescriptionTextType"/>
                  *       &lt;/sequence>
@@ -3967,42 +4473,71 @@ public class DeclarationNFe {
                  */
                 @XmlAccessorType(XmlAccessType.FIELD)
                 @XmlType(name = "", propOrder = {
+                    "quantityQuantity",
                     "typeCode",
                     "description"
                 })
                 public static class ProductCriteriaConformance {
 
+                    @XmlElement(name = "QuantityQuantity", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                    protected ProductCriteriaConformanceQuantityQuantityType quantityQuantity;
                     @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
-                    protected ProductCriteriaConformanceTypeCodeType typeCode;
+                    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                    @XmlSchemaType(name = "token")
+                    protected String typeCode;
                     @XmlElement(name = "Description", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                     protected ProductCriteriaConformanceDescriptionTextType description;
 
                     /**
-                     * Gets the value of the typeCode property.
+                     * Obtém o valor da propriedade quantityQuantity.
                      * 
                      * @return
                      *     possible object is
-                     *     {@link ProductCriteriaConformanceTypeCodeType }
+                     *     {@link ProductCriteriaConformanceQuantityQuantityType }
                      *     
                      */
-                    public ProductCriteriaConformanceTypeCodeType getTypeCode() {
+                    public ProductCriteriaConformanceQuantityQuantityType getQuantityQuantity() {
+                        return quantityQuantity;
+                    }
+
+                    /**
+                     * Define o valor da propriedade quantityQuantity.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link ProductCriteriaConformanceQuantityQuantityType }
+                     *     
+                     */
+                    public void setQuantityQuantity(ProductCriteriaConformanceQuantityQuantityType value) {
+                        this.quantityQuantity = value;
+                    }
+
+                    /**
+                     * Obtém o valor da propriedade typeCode.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getTypeCode() {
                         return typeCode;
                     }
 
                     /**
-                     * Sets the value of the typeCode property.
+                     * Define o valor da propriedade typeCode.
                      * 
                      * @param value
                      *     allowed object is
-                     *     {@link ProductCriteriaConformanceTypeCodeType }
+                     *     {@link String }
                      *     
                      */
-                    public void setTypeCode(ProductCriteriaConformanceTypeCodeType value) {
+                    public void setTypeCode(String value) {
                         this.typeCode = value;
                     }
 
                     /**
-                     * Gets the value of the description property.
+                     * Obtém o valor da propriedade description.
                      * 
                      * @return
                      *     possible object is
@@ -4014,7 +4549,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the description property.
+                     * Define o valor da propriedade description.
                      * 
                      * @param value
                      *     allowed object is
@@ -4031,9 +4566,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4068,12 +4603,13 @@ public class DeclarationNFe {
             public static class Destination {
 
                 @XmlElement(name = "CountryCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                @XmlSchemaType(name = "token")
                 protected DestinationCountryCodeType countryCode;
                 @XmlElement(name = "GoodsMeasure", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                 protected DeclarationNFe.GoodsShipment.GovernmentAgencyGoodsItem.Destination.GoodsMeasure goodsMeasure;
 
                 /**
-                 * Gets the value of the countryCode property.
+                 * Obtém o valor da propriedade countryCode.
                  * 
                  * @return
                  *     possible object is
@@ -4085,7 +4621,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the countryCode property.
+                 * Define o valor da propriedade countryCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -4097,7 +4633,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the goodsMeasure property.
+                 * Obtém o valor da propriedade goodsMeasure.
                  * 
                  * @return
                  *     possible object is
@@ -4109,7 +4645,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the goodsMeasure property.
+                 * Define o valor da propriedade goodsMeasure.
                  * 
                  * @param value
                  *     allowed object is
@@ -4122,9 +4658,9 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -4150,7 +4686,7 @@ public class DeclarationNFe {
                     protected GoodsMeasureTariffQuantityType tariffQuantity;
 
                     /**
-                     * Gets the value of the tariffQuantity property.
+                     * Obtém o valor da propriedade tariffQuantity.
                      * 
                      * @return
                      *     possible object is
@@ -4162,7 +4698,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the tariffQuantity property.
+                     * Define o valor da propriedade tariffQuantity.
                      * 
                      * @param value
                      *     allowed object is
@@ -4179,9 +4715,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4207,7 +4743,7 @@ public class DeclarationNFe {
                 protected GoodsMeasureNetNetWeightMeasureType netNetWeightMeasure;
 
                 /**
-                 * Gets the value of the netNetWeightMeasure property.
+                 * Obtém o valor da propriedade netNetWeightMeasure.
                  * 
                  * @return
                  *     possible object is
@@ -4219,7 +4755,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the netNetWeightMeasure property.
+                 * Define o valor da propriedade netNetWeightMeasure.
                  * 
                  * @param value
                  *     allowed object is
@@ -4234,9 +4770,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4262,7 +4798,7 @@ public class DeclarationNFe {
                 protected GovernmentProcedureCurrentCodeType currentCode;
 
                 /**
-                 * Gets the value of the currentCode property.
+                 * Obtém o valor da propriedade currentCode.
                  * 
                  * @return
                  *     possible object is
@@ -4274,7 +4810,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the currentCode property.
+                 * Define o valor da propriedade currentCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -4289,9 +4825,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4319,10 +4855,11 @@ public class DeclarationNFe {
                 protected PreviousDocumentIdentificationIDType id;
                 @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                @XmlSchemaType(name = "token")
                 protected String typeCode;
 
                 /**
-                 * Gets the value of the id property.
+                 * Obtém o valor da propriedade id.
                  * 
                  * @return
                  *     possible object is
@@ -4334,7 +4871,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the id property.
+                 * Define o valor da propriedade id.
                  * 
                  * @param value
                  *     allowed object is
@@ -4346,7 +4883,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the typeCode property.
+                 * Obtém o valor da propriedade typeCode.
                  * 
                  * @return
                  *     possible object is
@@ -4358,7 +4895,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the typeCode property.
+                 * Define o valor da propriedade typeCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -4373,9 +4910,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4401,12 +4938,13 @@ public class DeclarationNFe {
 
                 @XmlElement(name = "AdditionCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                 @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+                @XmlSchemaType(name = "token")
                 protected String additionCode;
                 @XmlElement(name = "PercentageNumeric", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                 protected BigDecimal percentageNumeric;
 
                 /**
-                 * Gets the value of the additionCode property.
+                 * Obtém o valor da propriedade additionCode.
                  * 
                  * @return
                  *     possible object is
@@ -4418,7 +4956,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the additionCode property.
+                 * Define o valor da propriedade additionCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -4430,7 +4968,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the percentageNumeric property.
+                 * Obtém o valor da propriedade percentageNumeric.
                  * 
                  * @return
                  *     possible object is
@@ -4442,7 +4980,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the percentageNumeric property.
+                 * Define o valor da propriedade percentageNumeric.
                  * 
                  * @param value
                  *     allowed object is
@@ -4459,9 +4997,9 @@ public class DeclarationNFe {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -4525,6 +5063,7 @@ public class DeclarationNFe {
             protected InvoiceIdentificationIDType id;
             @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
             @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+            @XmlSchemaType(name = "token")
             protected String typeCode;
             @XmlElement(name = "Submitter", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
             protected DeclarationNFe.GoodsShipment.Invoice.Submitter submitter;
@@ -4532,7 +5071,7 @@ public class DeclarationNFe {
             protected List<DeclarationNFe.GoodsShipment.Invoice.ReferencedInvoice> referencedInvoice;
 
             /**
-             * Gets the value of the id property.
+             * Obtém o valor da propriedade id.
              * 
              * @return
              *     possible object is
@@ -4544,7 +5083,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the id property.
+             * Define o valor da propriedade id.
              * 
              * @param value
              *     allowed object is
@@ -4556,7 +5095,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the typeCode property.
+             * Obtém o valor da propriedade typeCode.
              * 
              * @return
              *     possible object is
@@ -4568,7 +5107,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the typeCode property.
+             * Define o valor da propriedade typeCode.
              * 
              * @param value
              *     allowed object is
@@ -4580,7 +5119,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Gets the value of the submitter property.
+             * Obtém o valor da propriedade submitter.
              * 
              * @return
              *     possible object is
@@ -4592,7 +5131,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the submitter property.
+             * Define o valor da propriedade submitter.
              * 
              * @param value
              *     allowed object is
@@ -4634,9 +5173,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4675,12 +5214,13 @@ public class DeclarationNFe {
                 @XmlElement(name = "ID", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
                 protected ReferencedInvoiceIdentificationIDType id;
                 @XmlElement(name = "TypeCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+                @XmlSchemaType(name = "token")
                 protected ReferencedInvoiceTypeCodeType typeCode;
                 @XmlElement(name = "Submitter", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1")
                 protected DeclarationNFe.GoodsShipment.Invoice.ReferencedInvoice.Submitter submitter;
 
                 /**
-                 * Gets the value of the id property.
+                 * Obtém o valor da propriedade id.
                  * 
                  * @return
                  *     possible object is
@@ -4692,7 +5232,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the id property.
+                 * Define o valor da propriedade id.
                  * 
                  * @param value
                  *     allowed object is
@@ -4704,7 +5244,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the typeCode property.
+                 * Obtém o valor da propriedade typeCode.
                  * 
                  * @return
                  *     possible object is
@@ -4716,7 +5256,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the typeCode property.
+                 * Define o valor da propriedade typeCode.
                  * 
                  * @param value
                  *     allowed object is
@@ -4728,7 +5268,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Gets the value of the submitter property.
+                 * Obtém o valor da propriedade submitter.
                  * 
                  * @return
                  *     possible object is
@@ -4740,7 +5280,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the submitter property.
+                 * Define o valor da propriedade submitter.
                  * 
                  * @param value
                  *     allowed object is
@@ -4753,9 +5293,9 @@ public class DeclarationNFe {
 
 
                 /**
-                 * <p>Java class for anonymous complex type.
+                 * <p>Classe Java de anonymous complex type.
                  * 
-                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
                  * 
                  * <pre>
                  * &lt;complexType>
@@ -4781,7 +5321,7 @@ public class DeclarationNFe {
                     protected SubmitterIdentificationIDType id;
 
                     /**
-                     * Gets the value of the id property.
+                     * Obtém o valor da propriedade id.
                      * 
                      * @return
                      *     possible object is
@@ -4793,7 +5333,7 @@ public class DeclarationNFe {
                     }
 
                     /**
-                     * Sets the value of the id property.
+                     * Define o valor da propriedade id.
                      * 
                      * @param value
                      *     allowed object is
@@ -4810,9 +5350,9 @@ public class DeclarationNFe {
 
 
             /**
-             * <p>Java class for anonymous complex type.
+             * <p>Classe Java de anonymous complex type.
              * 
-             * <p>The following schema fragment specifies the expected content contained within this class.
+             * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
              * 
              * <pre>
              * &lt;complexType>
@@ -4838,7 +5378,7 @@ public class DeclarationNFe {
                 protected SubmitterIdentificationIDType id;
 
                 /**
-                 * Gets the value of the id property.
+                 * Obtém o valor da propriedade id.
                  * 
                  * @return
                  *     possible object is
@@ -4850,7 +5390,7 @@ public class DeclarationNFe {
                 }
 
                 /**
-                 * Sets the value of the id property.
+                 * Define o valor da propriedade id.
                  * 
                  * @param value
                  *     allowed object is
@@ -4867,9 +5407,9 @@ public class DeclarationNFe {
 
 
         /**
-         * <p>Java class for anonymous complex type.
+         * <p>Classe Java de anonymous complex type.
          * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
+         * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
          * 
          * <pre>
          * &lt;complexType>
@@ -4892,10 +5432,11 @@ public class DeclarationNFe {
         public static class TradeTerms {
 
             @XmlElement(name = "ConditionCode", namespace = "urn:wco:datamodel:WCO:GoodsDeclaration:1", required = true)
+            @XmlSchemaType(name = "token")
             protected TradeTermsConditionCodeType conditionCode;
 
             /**
-             * Gets the value of the conditionCode property.
+             * Obtém o valor da propriedade conditionCode.
              * 
              * @return
              *     possible object is
@@ -4907,7 +5448,7 @@ public class DeclarationNFe {
             }
 
             /**
-             * Sets the value of the conditionCode property.
+             * Define o valor da propriedade conditionCode.
              * 
              * @param value
              *     allowed object is
@@ -4924,9 +5465,9 @@ public class DeclarationNFe {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -4952,7 +5493,7 @@ public class DeclarationNFe {
         protected UCRTraderAssignedReferenceIDType traderAssignedReferenceID;
 
         /**
-         * Gets the value of the traderAssignedReferenceID property.
+         * Obtém o valor da propriedade traderAssignedReferenceID.
          * 
          * @return
          *     possible object is
@@ -4964,7 +5505,7 @@ public class DeclarationNFe {
         }
 
         /**
-         * Sets the value of the traderAssignedReferenceID property.
+         * Define o valor da propriedade traderAssignedReferenceID.
          * 
          * @param value
          *     allowed object is

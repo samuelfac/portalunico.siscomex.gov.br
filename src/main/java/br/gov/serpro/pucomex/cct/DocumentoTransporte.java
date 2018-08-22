@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for DocumentoTransporte complex type.
+ * <p>Classe Java de DocumentoTransporte complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="DocumentoTransporte">
@@ -71,7 +71,7 @@ public class DocumentoTransporte {
     protected String motivoNaoPesagem;
 
     /**
-     * Gets the value of the identificacaoDocumentoTransporte property.
+     * Obtém o valor da propriedade identificacaoDocumentoTransporte.
      * 
      * @return
      *     possible object is
@@ -83,7 +83,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the identificacaoDocumentoTransporte property.
+     * Define o valor da propriedade identificacaoDocumentoTransporte.
      * 
      * @param value
      *     allowed object is
@@ -95,7 +95,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the tipoDocumentoTransporte property.
+     * Obtém o valor da propriedade tipoDocumentoTransporte.
      * 
      * @return
      *     possible object is
@@ -107,7 +107,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the tipoDocumentoTransporte property.
+     * Define o valor da propriedade tipoDocumentoTransporte.
      * 
      * @param value
      *     allowed object is
@@ -119,7 +119,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the dataEmissaoDocumentoTransporte property.
+     * Obtém o valor da propriedade dataEmissaoDocumentoTransporte.
      * 
      * @return
      *     possible object is
@@ -131,7 +131,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the dataEmissaoDocumentoTransporte property.
+     * Define o valor da propriedade dataEmissaoDocumentoTransporte.
      * 
      * @param value
      *     allowed object is
@@ -143,7 +143,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the dadosVeiculoConferem property.
+     * Obtém o valor da propriedade dadosVeiculoConferem.
      * 
      * @return
      *     possible object is
@@ -155,7 +155,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the dadosVeiculoConferem property.
+     * Define o valor da propriedade dadosVeiculoConferem.
      * 
      * @param value
      *     allowed object is
@@ -167,7 +167,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the dadosUnidadeTransporteConferem property.
+     * Obtém o valor da propriedade dadosUnidadeTransporteConferem.
      * 
      * @return
      *     possible object is
@@ -179,7 +179,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the dadosUnidadeTransporteConferem property.
+     * Define o valor da propriedade dadosUnidadeTransporteConferem.
      * 
      * @param value
      *     allowed object is
@@ -191,7 +191,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the dadosConteinerConferem property.
+     * Obtém o valor da propriedade dadosConteinerConferem.
      * 
      * @return
      *     possible object is
@@ -203,7 +203,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the dadosConteinerConferem property.
+     * Define o valor da propriedade dadosConteinerConferem.
      * 
      * @param value
      *     allowed object is
@@ -215,7 +215,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the dadosEmbalagemConferem property.
+     * Obtém o valor da propriedade dadosEmbalagemConferem.
      * 
      * @return
      *     possible object is
@@ -227,7 +227,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the dadosEmbalagemConferem property.
+     * Define o valor da propriedade dadosEmbalagemConferem.
      * 
      * @param value
      *     allowed object is
@@ -239,7 +239,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the pesoAferido property.
+     * Obtém o valor da propriedade pesoAferido.
      * 
      * @return
      *     possible object is
@@ -251,7 +251,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the pesoAferido property.
+     * Define o valor da propriedade pesoAferido.
      * 
      * @param value
      *     allowed object is
@@ -263,7 +263,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Gets the value of the motivoNaoPesagem property.
+     * Obtém o valor da propriedade motivoNaoPesagem.
      * 
      * @return
      *     possible object is
@@ -275,7 +275,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Sets the value of the motivoNaoPesagem property.
+     * Define o valor da propriedade motivoNaoPesagem.
      * 
      * @param value
      *     allowed object is

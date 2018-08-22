@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Classe Java de anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,7 +38,7 @@ public class EntregasDocumentoCarga {
     protected EntregaDocumentoCarga entregaDocumentoCarga;
 
     /**
-     * Gets the value of the entregaDocumentoCarga property.
+     * Obtém o valor da propriedade entregaDocumentoCarga.
      * 
      * @return
      *     possible object is
@@ -50,7 +50,7 @@ public class EntregasDocumentoCarga {
     }
 
     /**
-     * Sets the value of the entregaDocumentoCarga property.
+     * Define o valor da propriedade entregaDocumentoCarga.
      * 
      * @param value
      *     allowed object is

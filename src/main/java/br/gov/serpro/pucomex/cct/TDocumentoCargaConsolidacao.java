@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TDocumentoCargaConsolidacao complex type.
+ * <p>Classe Java de TDocumentoCargaConsolidacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TDocumentoCargaConsolidacao">
@@ -46,7 +46,7 @@ public class TDocumentoCargaConsolidacao {
     protected TConhecimentoCarga conhecimento;
 
     /**
-     * Gets the value of the numeroDUE property.
+     * Obtém o valor da propriedade numeroDUE.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class TDocumentoCargaConsolidacao {
     }
 
     /**
-     * Sets the value of the numeroDUE property.
+     * Define o valor da propriedade numeroDUE.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class TDocumentoCargaConsolidacao {
     }
 
     /**
-     * Gets the value of the numeroRUC property.
+     * Obtém o valor da propriedade numeroRUC.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class TDocumentoCargaConsolidacao {
     }
 
     /**
-     * Sets the value of the numeroRUC property.
+     * Define o valor da propriedade numeroRUC.
      * 
      * @param value
      *     allowed object is
@@ -94,7 +94,7 @@ public class TDocumentoCargaConsolidacao {
     }
 
     /**
-     * Gets the value of the conhecimento property.
+     * Obtém o valor da propriedade conhecimento.
      * 
      * @return
      *     possible object is
@@ -106,7 +106,7 @@ public class TDocumentoCargaConsolidacao {
     }
 
     /**
-     * Sets the value of the conhecimento property.
+     * Define o valor da propriedade conhecimento.
      * 
      * @param value
      *     allowed object is

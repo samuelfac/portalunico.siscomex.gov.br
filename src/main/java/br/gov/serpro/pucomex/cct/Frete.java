@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Frete complex type.
+ * <p>Classe Java de Frete complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="Frete">
@@ -45,7 +45,7 @@ public class Frete {
     protected BigDecimal valorFrete;
 
     /**
-     * Gets the value of the codigoMoedaFrete property.
+     * Obtém o valor da propriedade codigoMoedaFrete.
      * 
      * @return
      *     possible object is
@@ -57,7 +57,7 @@ public class Frete {
     }
 
     /**
-     * Sets the value of the codigoMoedaFrete property.
+     * Define o valor da propriedade codigoMoedaFrete.
      * 
      * @param value
      *     allowed object is
@@ -69,7 +69,7 @@ public class Frete {
     }
 
     /**
-     * Gets the value of the formaPagamentoFrete property.
+     * Obtém o valor da propriedade formaPagamentoFrete.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class Frete {
     }
 
     /**
-     * Sets the value of the formaPagamentoFrete property.
+     * Define o valor da propriedade formaPagamentoFrete.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class Frete {
     }
 
     /**
-     * Gets the value of the valorFrete property.
+     * Obtém o valor da propriedade valorFrete.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class Frete {
     }
 
     /**
-     * Sets the value of the valorFrete property.
+     * Define o valor da propriedade valorFrete.
      * 
      * @param value
      *     allowed object is

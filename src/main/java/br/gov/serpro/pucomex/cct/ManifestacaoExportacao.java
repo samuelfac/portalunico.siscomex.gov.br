@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ManifestacaoExportacao complex type.
+ * <p>Classe Java de ManifestacaoExportacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="ManifestacaoExportacao">
@@ -99,7 +99,7 @@ import javax.xml.bind.annotation.XmlType;
  *               &lt;complexContent>
  *                 &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                   &lt;sequence>
- *                     &lt;element name="dadosCarga" type="{http://www.pucomex.serpro.gov.br/cct}DadosCarga" maxOccurs="unbounded"/>
+ *                     &lt;element name="consignatario" type="{http://www.pucomex.serpro.gov.br/cct}Consignatario"/>
  *                   &lt;/sequence>
  *                 &lt;/restriction>
  *               &lt;/complexContent>
@@ -170,7 +170,7 @@ public class ManifestacaoExportacao {
     protected String observacoes;
 
     /**
-     * Gets the value of the identificacaoManifestacao property.
+     * Obtém o valor da propriedade identificacaoManifestacao.
      * 
      * @return
      *     possible object is
@@ -182,7 +182,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the identificacaoManifestacao property.
+     * Define o valor da propriedade identificacaoManifestacao.
      * 
      * @param value
      *     allowed object is
@@ -194,7 +194,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the tipoDocumentoTransporte property.
+     * Obtém o valor da propriedade tipoDocumentoTransporte.
      * 
      * @return
      *     possible object is
@@ -206,7 +206,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the tipoDocumentoTransporte property.
+     * Define o valor da propriedade tipoDocumentoTransporte.
      * 
      * @param value
      *     allowed object is
@@ -218,7 +218,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the indCargaEnviadaDespacho property.
+     * Obtém o valor da propriedade indCargaEnviadaDespacho.
      * 
      * @return
      *     possible object is
@@ -230,7 +230,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the indCargaEnviadaDespacho property.
+     * Define o valor da propriedade indCargaEnviadaDespacho.
      * 
      * @param value
      *     allowed object is
@@ -242,7 +242,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the cargaJaEmbarcada property.
+     * Obtém o valor da propriedade cargaJaEmbarcada.
      * 
      * @return
      *     possible object is
@@ -254,7 +254,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the cargaJaEmbarcada property.
+     * Define o valor da propriedade cargaJaEmbarcada.
      * 
      * @param value
      *     allowed object is
@@ -266,7 +266,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the cnpjTransportador property.
+     * Obtém o valor da propriedade cnpjTransportador.
      * 
      * @return
      *     possible object is
@@ -278,7 +278,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the cnpjTransportador property.
+     * Define o valor da propriedade cnpjTransportador.
      * 
      * @param value
      *     allowed object is
@@ -290,7 +290,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the cpfTransportador property.
+     * Obtém o valor da propriedade cpfTransportador.
      * 
      * @return
      *     possible object is
@@ -302,7 +302,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the cpfTransportador property.
+     * Define o valor da propriedade cpfTransportador.
      * 
      * @param value
      *     allowed object is
@@ -314,7 +314,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the codigoURF property.
+     * Obtém o valor da propriedade codigoURF.
      * 
      * @return
      *     possible object is
@@ -326,7 +326,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the codigoURF property.
+     * Define o valor da propriedade codigoURF.
      * 
      * @param value
      *     allowed object is
@@ -338,7 +338,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the coordenadas property.
+     * Obtém o valor da propriedade coordenadas.
      * 
      * @return
      *     possible object is
@@ -350,7 +350,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the coordenadas property.
+     * Define o valor da propriedade coordenadas.
      * 
      * @param value
      *     allowed object is
@@ -362,7 +362,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the cnpjRespEstoqueCarga property.
+     * Obtém o valor da propriedade cnpjRespEstoqueCarga.
      * 
      * @return
      *     possible object is
@@ -374,7 +374,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the cnpjRespEstoqueCarga property.
+     * Define o valor da propriedade cnpjRespEstoqueCarga.
      * 
      * @param value
      *     allowed object is
@@ -386,7 +386,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the codigoRA property.
+     * Obtém o valor da propriedade codigoRA.
      * 
      * @return
      *     possible object is
@@ -398,7 +398,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the codigoRA property.
+     * Define o valor da propriedade codigoRA.
      * 
      * @param value
      *     allowed object is
@@ -410,7 +410,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the veiculoAereo property.
+     * Obtém o valor da propriedade veiculoAereo.
      * 
      * @return
      *     possible object is
@@ -422,7 +422,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the veiculoAereo property.
+     * Define o valor da propriedade veiculoAereo.
      * 
      * @param value
      *     allowed object is
@@ -434,7 +434,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the veiculoAquaviario property.
+     * Obtém o valor da propriedade veiculoAquaviario.
      * 
      * @return
      *     possible object is
@@ -446,7 +446,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the veiculoAquaviario property.
+     * Define o valor da propriedade veiculoAquaviario.
      * 
      * @param value
      *     allowed object is
@@ -458,7 +458,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the outroModal property.
+     * Obtém o valor da propriedade outroModal.
      * 
      * @return
      *     possible object is
@@ -470,7 +470,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the outroModal property.
+     * Define o valor da propriedade outroModal.
      * 
      * @param value
      *     allowed object is
@@ -482,7 +482,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the conhecimentosCarga property.
+     * Obtém o valor da propriedade conhecimentosCarga.
      * 
      * @return
      *     possible object is
@@ -494,7 +494,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the conhecimentosCarga property.
+     * Define o valor da propriedade conhecimentosCarga.
      * 
      * @param value
      *     allowed object is
@@ -506,7 +506,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the transporteProprio property.
+     * Obtém o valor da propriedade transporteProprio.
      * 
      * @return
      *     possible object is
@@ -518,7 +518,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the transporteProprio property.
+     * Define o valor da propriedade transporteProprio.
      * 
      * @param value
      *     allowed object is
@@ -530,7 +530,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Gets the value of the observacoes property.
+     * Obtém o valor da propriedade observacoes.
      * 
      * @return
      *     possible object is
@@ -542,7 +542,7 @@ public class ManifestacaoExportacao {
     }
 
     /**
-     * Sets the value of the observacoes property.
+     * Define o valor da propriedade observacoes.
      * 
      * @param value
      *     allowed object is
@@ -555,9 +555,9 @@ public class ManifestacaoExportacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -615,9 +615,9 @@ public class ManifestacaoExportacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -655,7 +655,7 @@ public class ManifestacaoExportacao {
         protected String dataEmissaoDocumentoTransporte;
 
         /**
-         * Gets the value of the codigoTipoModal property.
+         * Obtém o valor da propriedade codigoTipoModal.
          * 
          * @return
          *     possible object is
@@ -667,7 +667,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the codigoTipoModal property.
+         * Define o valor da propriedade codigoTipoModal.
          * 
          * @param value
          *     allowed object is
@@ -679,7 +679,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the identificacaoVeiculo property.
+         * Obtém o valor da propriedade identificacaoVeiculo.
          * 
          * @return
          *     possible object is
@@ -691,7 +691,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the identificacaoVeiculo property.
+         * Define o valor da propriedade identificacaoVeiculo.
          * 
          * @param value
          *     allowed object is
@@ -703,7 +703,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the numeroDocumentoTransporte property.
+         * Obtém o valor da propriedade numeroDocumentoTransporte.
          * 
          * @return
          *     possible object is
@@ -715,7 +715,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the numeroDocumentoTransporte property.
+         * Define o valor da propriedade numeroDocumentoTransporte.
          * 
          * @param value
          *     allowed object is
@@ -727,7 +727,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the dataEmissaoDocumentoTransporte property.
+         * Obtém o valor da propriedade dataEmissaoDocumentoTransporte.
          * 
          * @return
          *     possible object is
@@ -739,7 +739,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the dataEmissaoDocumentoTransporte property.
+         * Define o valor da propriedade dataEmissaoDocumentoTransporte.
          * 
          * @param value
          *     allowed object is
@@ -754,16 +754,16 @@ public class ManifestacaoExportacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="dadosCarga" type="{http://www.pucomex.serpro.gov.br/cct}DadosCarga" maxOccurs="unbounded"/>
+     *         &lt;element name="consignatario" type="{http://www.pucomex.serpro.gov.br/cct}Consignatario"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -774,49 +774,44 @@ public class ManifestacaoExportacao {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "dadosCarga"
+        "consignatario"
     })
     public static class TransporteProprio {
 
         @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-        protected List<DadosCarga> dadosCarga;
+        protected Consignatario consignatario;
 
         /**
-         * Gets the value of the dadosCarga property.
+         * Obtém o valor da propriedade consignatario.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the dadosCarga property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getDadosCarga().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link DadosCarga }
-         * 
-         * 
+         * @return
+         *     possible object is
+         *     {@link Consignatario }
+         *     
          */
-        public List<DadosCarga> getDadosCarga() {
-            if (dadosCarga == null) {
-                dadosCarga = new ArrayList<DadosCarga>();
-            }
-            return this.dadosCarga;
+        public Consignatario getConsignatario() {
+            return consignatario;
+        }
+
+        /**
+         * Define o valor da propriedade consignatario.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link Consignatario }
+         *     
+         */
+        public void setConsignatario(Consignatario value) {
+            this.consignatario = value;
         }
 
     }
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -854,7 +849,7 @@ public class ManifestacaoExportacao {
         protected String dataPartidaProcedencia;
 
         /**
-         * Gets the value of the codigoTipoModal property.
+         * Obtém o valor da propriedade codigoTipoModal.
          * 
          * @return
          *     possible object is
@@ -866,7 +861,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the codigoTipoModal property.
+         * Define o valor da propriedade codigoTipoModal.
          * 
          * @param value
          *     allowed object is
@@ -878,7 +873,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the prefixoAeronave property.
+         * Obtém o valor da propriedade prefixoAeronave.
          * 
          * @return
          *     possible object is
@@ -890,7 +885,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the prefixoAeronave property.
+         * Define o valor da propriedade prefixoAeronave.
          * 
          * @param value
          *     allowed object is
@@ -902,7 +897,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the numeroVoo property.
+         * Obtém o valor da propriedade numeroVoo.
          * 
          * @return
          *     possible object is
@@ -914,7 +909,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the numeroVoo property.
+         * Define o valor da propriedade numeroVoo.
          * 
          * @param value
          *     allowed object is
@@ -926,7 +921,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the dataPartidaProcedencia property.
+         * Obtém o valor da propriedade dataPartidaProcedencia.
          * 
          * @return
          *     possible object is
@@ -938,7 +933,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the dataPartidaProcedencia property.
+         * Define o valor da propriedade dataPartidaProcedencia.
          * 
          * @param value
          *     allowed object is
@@ -953,9 +948,9 @@ public class ManifestacaoExportacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -993,7 +988,7 @@ public class ManifestacaoExportacao {
         protected String dataEncerramentoManifesto;
 
         /**
-         * Gets the value of the codigoTipoModal property.
+         * Obtém o valor da propriedade codigoTipoModal.
          * 
          * @return
          *     possible object is
@@ -1005,7 +1000,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the codigoTipoModal property.
+         * Define o valor da propriedade codigoTipoModal.
          * 
          * @param value
          *     allowed object is
@@ -1017,7 +1012,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the codigoIMO property.
+         * Obtém o valor da propriedade codigoIMO.
          * 
          * @return
          *     possible object is
@@ -1029,7 +1024,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the codigoIMO property.
+         * Define o valor da propriedade codigoIMO.
          * 
          * @param value
          *     allowed object is
@@ -1041,7 +1036,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the numeroEscala property.
+         * Obtém o valor da propriedade numeroEscala.
          * 
          * @return
          *     possible object is
@@ -1053,7 +1048,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the numeroEscala property.
+         * Define o valor da propriedade numeroEscala.
          * 
          * @param value
          *     allowed object is
@@ -1065,7 +1060,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Gets the value of the dataEncerramentoManifesto property.
+         * Obtém o valor da propriedade dataEncerramentoManifesto.
          * 
          * @return
          *     possible object is
@@ -1077,7 +1072,7 @@ public class ManifestacaoExportacao {
         }
 
         /**
-         * Sets the value of the dataEncerramentoManifesto property.
+         * Define o valor da propriedade dataEncerramentoManifesto.
          * 
          * @param value
          *     allowed object is

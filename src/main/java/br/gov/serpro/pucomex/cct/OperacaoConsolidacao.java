@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for OperacaoConsolidacao complex type.
+ * <p>Classe Java de OperacaoConsolidacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="OperacaoConsolidacao">
@@ -69,7 +69,7 @@ public class OperacaoConsolidacao {
     protected OperacaoConsolidacao.DocumentosConsolidacao documentosConsolidacao;
 
     /**
-     * Gets the value of the identificacaoConsolidacao property.
+     * Obtém o valor da propriedade identificacaoConsolidacao.
      * 
      * @return
      *     possible object is
@@ -81,7 +81,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Sets the value of the identificacaoConsolidacao property.
+     * Define o valor da propriedade identificacaoConsolidacao.
      * 
      * @param value
      *     allowed object is
@@ -93,7 +93,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Gets the value of the numeroMRUC property.
+     * Obtém o valor da propriedade numeroMRUC.
      * 
      * @return
      *     possible object is
@@ -105,7 +105,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Sets the value of the numeroMRUC property.
+     * Define o valor da propriedade numeroMRUC.
      * 
      * @param value
      *     allowed object is
@@ -117,7 +117,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Gets the value of the tipoDeCarga property.
+     * Obtém o valor da propriedade tipoDeCarga.
      * 
      * @return
      *     possible object is
@@ -129,7 +129,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Sets the value of the tipoDeCarga property.
+     * Define o valor da propriedade tipoDeCarga.
      * 
      * @param value
      *     allowed object is
@@ -141,7 +141,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Gets the value of the cnpjConsolidador property.
+     * Obtém o valor da propriedade cnpjConsolidador.
      * 
      * @return
      *     possible object is
@@ -153,7 +153,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Sets the value of the cnpjConsolidador property.
+     * Define o valor da propriedade cnpjConsolidador.
      * 
      * @param value
      *     allowed object is
@@ -165,7 +165,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Gets the value of the acondicionamento property.
+     * Obtém o valor da propriedade acondicionamento.
      * 
      * @return
      *     possible object is
@@ -177,7 +177,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Sets the value of the acondicionamento property.
+     * Define o valor da propriedade acondicionamento.
      * 
      * @param value
      *     allowed object is
@@ -189,7 +189,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Gets the value of the documentosConsolidacao property.
+     * Obtém o valor da propriedade documentosConsolidacao.
      * 
      * @return
      *     possible object is
@@ -201,7 +201,7 @@ public class OperacaoConsolidacao {
     }
 
     /**
-     * Sets the value of the documentosConsolidacao property.
+     * Define o valor da propriedade documentosConsolidacao.
      * 
      * @param value
      *     allowed object is
@@ -214,9 +214,9 @@ public class OperacaoConsolidacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

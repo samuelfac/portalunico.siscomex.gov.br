@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Destinatario complex type.
+ * <p>Classe Java de Destinatario complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="Destinatario">
@@ -55,7 +55,7 @@ public class Destinatario {
     protected Destinatario.IdentificacaoEstrangeiro identificacaoEstrangeiro;
 
     /**
-     * Gets the value of the cnpj property.
+     * Obtém o valor da propriedade cnpj.
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class Destinatario {
     }
 
     /**
-     * Sets the value of the cnpj property.
+     * Define o valor da propriedade cnpj.
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class Destinatario {
     }
 
     /**
-     * Gets the value of the cpf property.
+     * Obtém o valor da propriedade cpf.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class Destinatario {
     }
 
     /**
-     * Sets the value of the cpf property.
+     * Define o valor da propriedade cpf.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class Destinatario {
     }
 
     /**
-     * Gets the value of the identificacaoEstrangeiro property.
+     * Obtém o valor da propriedade identificacaoEstrangeiro.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class Destinatario {
     }
 
     /**
-     * Sets the value of the identificacaoEstrangeiro property.
+     * Define o valor da propriedade identificacaoEstrangeiro.
      * 
      * @param value
      *     allowed object is
@@ -128,9 +128,9 @@ public class Destinatario {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -160,7 +160,7 @@ public class Destinatario {
         protected String nome;
 
         /**
-         * Gets the value of the pais property.
+         * Obtém o valor da propriedade pais.
          * 
          * @return
          *     possible object is
@@ -172,7 +172,7 @@ public class Destinatario {
         }
 
         /**
-         * Sets the value of the pais property.
+         * Define o valor da propriedade pais.
          * 
          * @param value
          *     allowed object is
@@ -184,7 +184,7 @@ public class Destinatario {
         }
 
         /**
-         * Gets the value of the nome property.
+         * Obtém o valor da propriedade nome.
          * 
          * @return
          *     possible object is
@@ -196,7 +196,7 @@ public class Destinatario {
         }
 
         /**
-         * Sets the value of the nome property.
+         * Define o valor da propriedade nome.
          * 
          * @param value
          *     allowed object is

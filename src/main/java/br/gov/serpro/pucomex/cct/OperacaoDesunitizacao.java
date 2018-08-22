@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for OperacaoDesunitizacao complex type.
+ * <p>Classe Java de OperacaoDesunitizacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="OperacaoDesunitizacao">
@@ -54,7 +54,7 @@ public class OperacaoDesunitizacao {
     protected OperacaoDesunitizacao.Desunitizacoes desunitizacoes;
 
     /**
-     * Gets the value of the identificacaoResponsavelDesunitizacao property.
+     * Obtém o valor da propriedade identificacaoResponsavelDesunitizacao.
      * 
      * @return
      *     possible object is
@@ -66,7 +66,7 @@ public class OperacaoDesunitizacao {
     }
 
     /**
-     * Sets the value of the identificacaoResponsavelDesunitizacao property.
+     * Define o valor da propriedade identificacaoResponsavelDesunitizacao.
      * 
      * @param value
      *     allowed object is
@@ -78,7 +78,7 @@ public class OperacaoDesunitizacao {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -90,7 +90,7 @@ public class OperacaoDesunitizacao {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -102,7 +102,7 @@ public class OperacaoDesunitizacao {
     }
 
     /**
-     * Gets the value of the desunitizacoes property.
+     * Obtém o valor da propriedade desunitizacoes.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class OperacaoDesunitizacao {
     }
 
     /**
-     * Sets the value of the desunitizacoes property.
+     * Define o valor da propriedade desunitizacoes.
      * 
      * @param value
      *     allowed object is
@@ -127,9 +127,9 @@ public class OperacaoDesunitizacao {
 
 
     /**
-     * <p>Java class for anonymous complex type.
+     * <p>Classe Java de anonymous complex type.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>
@@ -155,7 +155,7 @@ public class OperacaoDesunitizacao {
         protected TDesunitizacao desunitizacao;
 
         /**
-         * Gets the value of the desunitizacao property.
+         * Obtém o valor da propriedade desunitizacao.
          * 
          * @return
          *     possible object is
@@ -167,7 +167,7 @@ public class OperacaoDesunitizacao {
         }
 
         /**
-         * Sets the value of the desunitizacao property.
+         * Define o valor da propriedade desunitizacao.
          * 
          * @param value
          *     allowed object is

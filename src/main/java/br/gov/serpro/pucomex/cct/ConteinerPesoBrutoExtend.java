@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for ConteinerPesoBrutoExtend complex type.
+ * <p>Classe Java de ConteinerPesoBrutoExtend complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="ConteinerPesoBrutoExtend">
@@ -39,7 +39,7 @@ public class ConteinerPesoBrutoExtend
     protected BigDecimal pesoBruto;
 
     /**
-     * Gets the value of the pesoBruto property.
+     * Obtém o valor da propriedade pesoBruto.
      * 
      * @return
      *     possible object is
@@ -51,7 +51,7 @@ public class ConteinerPesoBrutoExtend
     }
 
     /**
-     * Sets the value of the pesoBruto property.
+     * Define o valor da propriedade pesoBruto.
      * 
      * @param value
      *     allowed object is

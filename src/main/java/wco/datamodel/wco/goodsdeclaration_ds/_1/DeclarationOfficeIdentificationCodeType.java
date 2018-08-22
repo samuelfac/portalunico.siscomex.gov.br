@@ -12,9 +12,9 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 /**
- * <p>Java class for DeclarationOfficeIdentificationCodeType complex type.
+ * <p>Classe Java de DeclarationOfficeIdentificationCodeType complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="DeclarationOfficeIdentificationCodeType">
@@ -44,7 +44,7 @@ public class DeclarationOfficeIdentificationCodeType {
     protected String listID;
 
     /**
-     * Gets the value of the value property.
+     * Obtém o valor da propriedade value.
      * 
      * @return
      *     possible object is
@@ -56,7 +56,7 @@ public class DeclarationOfficeIdentificationCodeType {
     }
 
     /**
-     * Sets the value of the value property.
+     * Define o valor da propriedade value.
      * 
      * @param value
      *     allowed object is
@@ -68,7 +68,7 @@ public class DeclarationOfficeIdentificationCodeType {
     }
 
     /**
-     * Gets the value of the listID property.
+     * Obtém o valor da propriedade listID.
      * 
      * @return
      *     possible object is
@@ -80,7 +80,7 @@ public class DeclarationOfficeIdentificationCodeType {
     }
 
     /**
-     * Sets the value of the listID property.
+     * Define o valor da propriedade listID.
      * 
      * @param value
      *     allowed object is

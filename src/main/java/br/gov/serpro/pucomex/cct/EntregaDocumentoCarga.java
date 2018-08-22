@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for EntregaDocumentoCarga complex type.
+ * <p>Classe Java de EntregaDocumentoCarga complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="EntregaDocumentoCarga">
@@ -63,7 +63,7 @@ public class EntregaDocumentoCarga {
     protected String motivoNaoPesagem;
 
     /**
-     * Gets the value of the identificacaoEntrega property.
+     * Obtém o valor da propriedade identificacaoEntrega.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the identificacaoEntrega property.
+     * Define o valor da propriedade identificacaoEntrega.
      * 
      * @param value
      *     allowed object is
@@ -87,7 +87,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Gets the value of the identificacaoPessoaJuridica property.
+     * Obtém o valor da propriedade identificacaoPessoaJuridica.
      * 
      * @return
      *     possible object is
@@ -99,7 +99,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the identificacaoPessoaJuridica property.
+     * Define o valor da propriedade identificacaoPessoaJuridica.
      * 
      * @param value
      *     allowed object is
@@ -111,7 +111,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -123,7 +123,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -135,7 +135,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Gets the value of the documentos property.
+     * Obtém o valor da propriedade documentos.
      * 
      * @return
      *     possible object is
@@ -147,7 +147,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the documentos property.
+     * Define o valor da propriedade documentos.
      * 
      * @param value
      *     allowed object is
@@ -159,7 +159,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Gets the value of the recebedor property.
+     * Obtém o valor da propriedade recebedor.
      * 
      * @return
      *     possible object is
@@ -171,7 +171,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the recebedor property.
+     * Define o valor da propriedade recebedor.
      * 
      * @param value
      *     allowed object is
@@ -183,7 +183,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Gets the value of the pesoAferido property.
+     * Obtém o valor da propriedade pesoAferido.
      * 
      * @return
      *     possible object is
@@ -195,7 +195,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the pesoAferido property.
+     * Define o valor da propriedade pesoAferido.
      * 
      * @param value
      *     allowed object is
@@ -207,7 +207,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Gets the value of the motivoNaoPesagem property.
+     * Obtém o valor da propriedade motivoNaoPesagem.
      * 
      * @return
      *     possible object is
@@ -219,7 +219,7 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Sets the value of the motivoNaoPesagem property.
+     * Define o valor da propriedade motivoNaoPesagem.
      * 
      * @param value
      *     allowed object is

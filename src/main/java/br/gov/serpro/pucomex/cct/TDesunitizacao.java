@@ -1,16 +1,20 @@
 
 package br.gov.serpro.pucomex.cct;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for TDesunitizacao complex type.
+ * <p>Classe Java de TDesunitizacao complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="TDesunitizacao">
@@ -19,7 +23,15 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;sequence>
  *           &lt;element name="numeroConteiner" type="{http://www.pucomex.serpro.gov.br/cct}NumeroConteiner"/>
- *           &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}documentos"/>
+ *           &lt;choice>
+ *             &lt;sequence>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}documentos"/>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}notasFiscais" minOccurs="0"/>
+ *             &lt;/sequence>
+ *             &lt;sequence>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}notasFiscais"/>
+ *             &lt;/sequence>
+ *           &lt;/choice>
  *         &lt;/sequence>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -31,62 +43,56 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TDesunitizacao", namespace = "http://www.pucomex.serpro.gov.br/cct", propOrder = {
-    "numeroConteiner",
-    "documentos"
+    "content"
 })
 public class TDesunitizacao {
 
-    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-    protected String numeroConteiner;
-    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-    protected Documentos documentos;
+    @XmlElementRefs({
+        @XmlElementRef(name = "numeroConteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "notasFiscais", namespace = "http://www.pucomex.serpro.gov.br/cct", type = NotasFiscais.class, required = false),
+        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Documentos.class, required = false)
+    })
+    protected List<Object> content;
 
     /**
-     * Gets the value of the numeroConteiner property.
+     * Obtém o restante do modelo do conteúdo. 
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNumeroConteiner() {
-        return numeroConteiner;
-    }
-
-    /**
-     * Sets the value of the numeroConteiner property.
+     * <p>
+     * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
+     * O nome do campo "NotasFiscais" é usado por duas partes diferentes de um esquema. Consulte: 
+     * linha 43 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/unitizacao/Desunitizacao.xsd
+     * linha 40 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/unitizacao/Desunitizacao.xsd
+     * <p>
+     * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
+     * das seguintes declarações, a fim de alterar seus nomes: 
+     * Gets the value of the content property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNumeroConteiner(String value) {
-        this.numeroConteiner = value;
-    }
-
-    /**
-     * Gets the value of the documentos property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the content property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Documentos }
-     *     
-     */
-    public Documentos getDocumentos() {
-        return documentos;
-    }
-
-    /**
-     * Sets the value of the documentos property.
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getContent().add(newItem);
+     * </pre>
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Documentos }
-     *     
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link NotasFiscais }
+     * {@link Documentos }
+     * 
+     * 
      */
-    public void setDocumentos(Documentos value) {
-        this.documentos = value;
+    public List<Object> getContent() {
+        if (content == null) {
+            content = new ArrayList<Object>();
+        }
+        return this.content;
     }
 
 }

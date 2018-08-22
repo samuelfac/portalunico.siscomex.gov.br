@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>Classe Java de anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType>
@@ -63,7 +63,7 @@ public class Recebedor {
     protected TransitoSimplificadoEntrega transitoSimplificado;
 
     /**
-     * Gets the value of the cnpj property.
+     * Obtém o valor da propriedade cnpj.
      * 
      * @return
      *     possible object is
@@ -75,7 +75,7 @@ public class Recebedor {
     }
 
     /**
-     * Sets the value of the cnpj property.
+     * Define o valor da propriedade cnpj.
      * 
      * @param value
      *     allowed object is
@@ -87,7 +87,7 @@ public class Recebedor {
     }
 
     /**
-     * Gets the value of the cpf property.
+     * Obtém o valor da propriedade cpf.
      * 
      * @return
      *     possible object is
@@ -99,7 +99,7 @@ public class Recebedor {
     }
 
     /**
-     * Sets the value of the cpf property.
+     * Define o valor da propriedade cpf.
      * 
      * @param value
      *     allowed object is
@@ -111,7 +111,7 @@ public class Recebedor {
     }
 
     /**
-     * Gets the value of the nomeEstrangeiro property.
+     * Obtém o valor da propriedade nomeEstrangeiro.
      * 
      * @return
      *     possible object is
@@ -123,7 +123,7 @@ public class Recebedor {
     }
 
     /**
-     * Sets the value of the nomeEstrangeiro property.
+     * Define o valor da propriedade nomeEstrangeiro.
      * 
      * @param value
      *     allowed object is
@@ -135,7 +135,7 @@ public class Recebedor {
     }
 
     /**
-     * Gets the value of the viaTransporte property.
+     * Obtém o valor da propriedade viaTransporte.
      * 
      * @return
      *     possible object is
@@ -147,7 +147,7 @@ public class Recebedor {
     }
 
     /**
-     * Sets the value of the viaTransporte property.
+     * Define o valor da propriedade viaTransporte.
      * 
      * @param value
      *     allowed object is
@@ -159,7 +159,7 @@ public class Recebedor {
     }
 
     /**
-     * Gets the value of the baldeacaoOuTransbordo property.
+     * Obtém o valor da propriedade baldeacaoOuTransbordo.
      * 
      * @return
      *     possible object is
@@ -171,7 +171,7 @@ public class Recebedor {
     }
 
     /**
-     * Sets the value of the baldeacaoOuTransbordo property.
+     * Define o valor da propriedade baldeacaoOuTransbordo.
      * 
      * @param value
      *     allowed object is
@@ -183,7 +183,7 @@ public class Recebedor {
     }
 
     /**
-     * Gets the value of the transitoSimplificado property.
+     * Obtém o valor da propriedade transitoSimplificado.
      * 
      * @return
      *     possible object is
@@ -195,7 +195,7 @@ public class Recebedor {
     }
 
     /**
-     * Sets the value of the transitoSimplificado property.
+     * Define o valor da propriedade transitoSimplificado.
      * 
      * @param value
      *     allowed object is

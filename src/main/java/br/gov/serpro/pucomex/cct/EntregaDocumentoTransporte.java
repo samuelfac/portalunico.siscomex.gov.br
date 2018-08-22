@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for EntregaDocumentoTransporte complex type.
+ * <p>Classe Java de EntregaDocumentoTransporte complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
  * &lt;complexType name="EntregaDocumentoTransporte">
@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element name="transitoSimplificado" type="{http://www.pucomex.serpro.gov.br/cct}TransitoSimplificadoEntregaDocTransporte" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,7 +47,8 @@ import javax.xml.bind.annotation.XmlType;
     "identificacaoEntrega",
     "identificacaoPessoaJuridica",
     "local",
-    "documentosTransporte"
+    "documentosTransporte",
+    "transitoSimplificado"
 })
 public class EntregaDocumentoTransporte {
 
@@ -58,9 +60,11 @@ public class EntregaDocumentoTransporte {
     protected Local local;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
     protected EntregaDocumentoTransporte.DocumentosTransporte documentosTransporte;
+    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
+    protected TransitoSimplificadoEntregaDocTransporte transitoSimplificado;
 
     /**
-     * Gets the value of the identificacaoEntrega property.
+     * Obtém o valor da propriedade identificacaoEntrega.
      * 
      * @return
      *     possible object is
@@ -72,7 +76,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Sets the value of the identificacaoEntrega property.
+     * Define o valor da propriedade identificacaoEntrega.
      * 
      * @param value
      *     allowed object is
@@ -84,7 +88,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Gets the value of the identificacaoPessoaJuridica property.
+     * Obtém o valor da propriedade identificacaoPessoaJuridica.
      * 
      * @return
      *     possible object is
@@ -96,7 +100,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Sets the value of the identificacaoPessoaJuridica property.
+     * Define o valor da propriedade identificacaoPessoaJuridica.
      * 
      * @param value
      *     allowed object is
@@ -108,7 +112,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Gets the value of the local property.
+     * Obtém o valor da propriedade local.
      * 
      * @return
      *     possible object is
@@ -120,7 +124,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Sets the value of the local property.
+     * Define o valor da propriedade local.
      * 
      * @param value
      *     allowed object is
@@ -132,7 +136,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Gets the value of the documentosTransporte property.
+     * Obtém o valor da propriedade documentosTransporte.
      * 
      * @return
      *     possible object is
@@ -144,7 +148,7 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Sets the value of the documentosTransporte property.
+     * Define o valor da propriedade documentosTransporte.
      * 
      * @param value
      *     allowed object is
@@ -155,11 +159,35 @@ public class EntregaDocumentoTransporte {
         this.documentosTransporte = value;
     }
 
+    /**
+     * Obtém o valor da propriedade transitoSimplificado.
+     * 
+     * @return
+     *     possible object is
+     *     {@link TransitoSimplificadoEntregaDocTransporte }
+     *     
+     */
+    public TransitoSimplificadoEntregaDocTransporte getTransitoSimplificado() {
+        return transitoSimplificado;
+    }
 
     /**
-     * <p>Java class for anonymous complex type.
+     * Define o valor da propriedade transitoSimplificado.
      * 
-     * <p>The following schema fragment specifies the expected content contained within this class.
+     * @param value
+     *     allowed object is
+     *     {@link TransitoSimplificadoEntregaDocTransporte }
+     *     
+     */
+    public void setTransitoSimplificado(TransitoSimplificadoEntregaDocTransporte value) {
+        this.transitoSimplificado = value;
+    }
+
+
+    /**
+     * <p>Classe Java de anonymous complex type.
+     * 
+     * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
      * 
      * <pre>
      * &lt;complexType>

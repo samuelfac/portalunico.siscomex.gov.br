@@ -7,8 +7,6 @@
 		"codigoModelo": { "type": "string" },
 		"importadorExportador": { "type": "string" },
 		"declarante": { "type": "string" },
-		"unidadeMedidaEstatistica": { "type": ["string", "null"] },
-		"unidadeMedidaComercializada": { "type": ["string", "null"] },
 		"informacaoAdicional": { "type": ["string", "null"] },
 		"listaNcm": {
 			"type": "array",
@@ -25,7 +23,7 @@
 								"listaValor": { 
 									"type": "array",
 									"items": { "type": "string" }
-								},
+								}
 							}
 						} 
 					},
@@ -38,7 +36,7 @@
 								"listaValor": { 
 									"type": "array",
 									"items": { "type": "string" }
-								},
+								}
 							}
 						} 
 					}, 
@@ -55,9 +53,10 @@
 					"listaValor": { 
 						"type": "array",
 						"items": { "type": "string" }
-					},
+					}
 				}
 			}
-		}
+		},
+		"unidadeMedidaComercializada": { "type": ["string", "null"] }
 	} 
 }
