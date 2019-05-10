@@ -48,9 +48,9 @@ import javax.xml.bind.annotation.XmlType;
 public class TDesunitizacao {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "numeroConteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Documentos.class, required = false),
         @XmlElementRef(name = "notasFiscais", namespace = "http://www.pucomex.serpro.gov.br/cct", type = NotasFiscais.class, required = false),
-        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Documentos.class, required = false)
+        @XmlElementRef(name = "numeroConteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<Object> content;
 
@@ -82,9 +82,9 @@ public class TDesunitizacao {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link NotasFiscais }
      * {@link Documentos }
+     * {@link NotasFiscais }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      * 
      */

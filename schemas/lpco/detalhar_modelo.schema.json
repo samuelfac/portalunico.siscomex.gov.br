@@ -7,8 +7,12 @@
 		"modelo": {
 			"type": "object",
 			"properties": {
+			    "orgaoAnuente": { "type": "string" },
 				"codigo": { "type": "string" },
-				"nome": { "type": "string" }
+				"informacoesExportadorImportador": { "type": ["string", "null"] },				
+				"informacoesAnuente": { "type": ["string", "null"] },
+				"exibirInformacaoAdicional": { "type": "boolean" },
+    			"requerCatalogoProduto": { "type": "boolean" }
 			}
 		  },
 		"listaCamposFormulario": {
@@ -25,11 +29,21 @@
 					"validacao": {
 						"type": "object",
 						"properties": {
-						        "obrigatorio": { "type": "boolean" },
-						        "permiteMultiplosValores": { "type": "boolean" },
+						    "obrigatorio": { "type": "boolean" },
+						    "permiteMultiplosValores": { "type": "boolean" },
 							"mascara":  { "type": ["string", "null"] },
 							"tamanhoMaximo":  { "type": ["integer", "null"] },
-							"qtdCasasDecimais":  { "type": ["integer", "null"] }
+							"qtdCasasDecimais":  { "type": ["integer", "null"] },
+							"dominios": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": { "type": "string" },
+										"descricao": { "type": ["string", "null"] }
+									}
+								}
+							} 
 						}
 					}
 				}
@@ -53,7 +67,17 @@
 						        "permiteMultiplosValores": { "type": "boolean" },
 							"mascara":  { "type": ["string", "null"] },
 							"tamanhoMaximo":  { "type": ["integer", "null"] },
-							"qtdCasasDecimais":  { "type": ["integer", "null"] }
+							"qtdCasasDecimais":  { "type": ["integer", "null"] },
+							"dominios": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": { "type": "string" },
+										"descricao": { "type": ["string", "null"] }
+									}
+								}
+							} 
 						}
 					}
 				}

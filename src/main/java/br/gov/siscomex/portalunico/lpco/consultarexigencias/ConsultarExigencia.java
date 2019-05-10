@@ -6,9 +6,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class ConsultarExigencia {
 
-    @SerializedName("id")
+    @SerializedName("numero")
     @Expose
-    private String id;
+    private String numero;
     @SerializedName("exigencia")
     @Expose
     private String exigencia;
@@ -21,16 +21,19 @@ public class ConsultarExigencia {
     @SerializedName("dataResposta")
     @Expose
     private String dataResposta;
+    @SerializedName("justificativa")
+    @Expose
+    private String justificativa;
     @SerializedName("situacao")
     @Expose
     private Situacao situacao;
 
-    public String getId() {
-        return id;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getExigencia() {
@@ -65,6 +68,14 @@ public class ConsultarExigencia {
         this.dataResposta = dataResposta;
     }
 
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
     public Situacao getSituacao() {
         return situacao;
     }
@@ -77,9 +88,9 @@ public class ConsultarExigencia {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(ConsultarExigencia.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("id");
+        sb.append("numero");
         sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
+        sb.append(((this.numero == null)?"<null>":this.numero));
         sb.append(',');
         sb.append("exigencia");
         sb.append('=');
@@ -96,6 +107,10 @@ public class ConsultarExigencia {
         sb.append("dataResposta");
         sb.append('=');
         sb.append(((this.dataResposta == null)?"<null>":this.dataResposta));
+        sb.append(',');
+        sb.append("justificativa");
+        sb.append('=');
+        sb.append(((this.justificativa == null)?"<null>":this.justificativa));
         sb.append(',');
         sb.append("situacao");
         sb.append('=');
@@ -115,9 +130,10 @@ public class ConsultarExigencia {
         result = ((result* 31)+((this.exigencia == null)? 0 :this.exigencia.hashCode()));
         result = ((result* 31)+((this.dataExigencia == null)? 0 :this.dataExigencia.hashCode()));
         result = ((result* 31)+((this.situacao == null)? 0 :this.situacao.hashCode()));
+        result = ((result* 31)+((this.numero == null)? 0 :this.numero.hashCode()));
         result = ((result* 31)+((this.resposta == null)? 0 :this.resposta.hashCode()));
+        result = ((result* 31)+((this.justificativa == null)? 0 :this.justificativa.hashCode()));
         result = ((result* 31)+((this.dataResposta == null)? 0 :this.dataResposta.hashCode()));
-        result = ((result* 31)+((this.id == null)? 0 :this.id.hashCode()));
         return result;
     }
 
@@ -130,7 +146,7 @@ public class ConsultarExigencia {
             return false;
         }
         ConsultarExigencia rhs = ((ConsultarExigencia) other);
-        return (((((((this.exigencia == rhs.exigencia)||((this.exigencia!= null)&&this.exigencia.equals(rhs.exigencia)))&&((this.dataExigencia == rhs.dataExigencia)||((this.dataExigencia!= null)&&this.dataExigencia.equals(rhs.dataExigencia))))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.resposta == rhs.resposta)||((this.resposta!= null)&&this.resposta.equals(rhs.resposta))))&&((this.dataResposta == rhs.dataResposta)||((this.dataResposta!= null)&&this.dataResposta.equals(rhs.dataResposta))))&&((this.id == rhs.id)||((this.id!= null)&&this.id.equals(rhs.id))));
+        return ((((((((this.exigencia == rhs.exigencia)||((this.exigencia!= null)&&this.exigencia.equals(rhs.exigencia)))&&((this.dataExigencia == rhs.dataExigencia)||((this.dataExigencia!= null)&&this.dataExigencia.equals(rhs.dataExigencia))))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.resposta == rhs.resposta)||((this.resposta!= null)&&this.resposta.equals(rhs.resposta))))&&((this.justificativa == rhs.justificativa)||((this.justificativa!= null)&&this.justificativa.equals(rhs.justificativa))))&&((this.dataResposta == rhs.dataResposta)||((this.dataResposta!= null)&&this.dataResposta.equals(rhs.dataResposta))));
     }
 
 }

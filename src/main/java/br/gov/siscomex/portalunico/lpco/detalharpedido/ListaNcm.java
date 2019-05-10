@@ -11,6 +11,9 @@ public class ListaNcm {
     @SerializedName("ncm")
     @Expose
     private String ncm;
+    @SerializedName("numeroItem")
+    @Expose
+    private Integer numeroItem;
     @SerializedName("listaCamposNcm")
     @Expose
     private List<ListaCamposNcm> listaCamposNcm = new ArrayList<ListaCamposNcm>();
@@ -27,6 +30,14 @@ public class ListaNcm {
 
     public void setNcm(String ncm) {
         this.ncm = ncm;
+    }
+
+    public Integer getNumeroItem() {
+        return numeroItem;
+    }
+
+    public void setNumeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
     }
 
     public List<ListaCamposNcm> getListaCamposNcm() {
@@ -61,6 +72,10 @@ public class ListaNcm {
         sb.append('=');
         sb.append(((this.ncm == null)?"<null>":this.ncm));
         sb.append(',');
+        sb.append("numeroItem");
+        sb.append('=');
+        sb.append(((this.numeroItem == null)?"<null>":this.numeroItem));
+        sb.append(',');
         sb.append("listaCamposNcm");
         sb.append('=');
         sb.append(((this.listaCamposNcm == null)?"<null>":this.listaCamposNcm));
@@ -87,6 +102,7 @@ public class ListaNcm {
         result = ((result* 31)+((this.ncm == null)? 0 :this.ncm.hashCode()));
         result = ((result* 31)+((this.unidadeMedidaComercializada == null)? 0 :this.unidadeMedidaComercializada.hashCode()));
         result = ((result* 31)+((this.listaCamposNcm == null)? 0 :this.listaCamposNcm.hashCode()));
+        result = ((result* 31)+((this.numeroItem == null)? 0 :this.numeroItem.hashCode()));
         result = ((result* 31)+((this.listaAtributosNcm == null)? 0 :this.listaAtributosNcm.hashCode()));
         return result;
     }
@@ -100,7 +116,7 @@ public class ListaNcm {
             return false;
         }
         ListaNcm rhs = ((ListaNcm) other);
-        return (((((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm)))&&((this.unidadeMedidaComercializada == rhs.unidadeMedidaComercializada)||((this.unidadeMedidaComercializada!= null)&&this.unidadeMedidaComercializada.equals(rhs.unidadeMedidaComercializada))))&&((this.listaCamposNcm == rhs.listaCamposNcm)||((this.listaCamposNcm!= null)&&this.listaCamposNcm.equals(rhs.listaCamposNcm))))&&((this.listaAtributosNcm == rhs.listaAtributosNcm)||((this.listaAtributosNcm!= null)&&this.listaAtributosNcm.equals(rhs.listaAtributosNcm))));
+        return ((((((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm)))&&((this.unidadeMedidaComercializada == rhs.unidadeMedidaComercializada)||((this.unidadeMedidaComercializada!= null)&&this.unidadeMedidaComercializada.equals(rhs.unidadeMedidaComercializada))))&&((this.listaCamposNcm == rhs.listaCamposNcm)||((this.listaCamposNcm!= null)&&this.listaCamposNcm.equals(rhs.listaCamposNcm))))&&((this.numeroItem == rhs.numeroItem)||((this.numeroItem!= null)&&this.numeroItem.equals(rhs.numeroItem))))&&((this.listaAtributosNcm == rhs.listaAtributosNcm)||((this.listaAtributosNcm!= null)&&this.listaAtributosNcm.equals(rhs.listaAtributosNcm))));
     }
 
 }

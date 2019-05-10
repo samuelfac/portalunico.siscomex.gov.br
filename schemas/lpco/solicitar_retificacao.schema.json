@@ -2,7 +2,7 @@
 	"definitions": {},
 	"$schema": "http://json-schema.org/draft-06/schema#",
 	"type": "object",
-	"$id": "http://www.pucomex.serpro.gov.br/lpco/alterar_pedido.schema.json",
+	"$id": "http://www.pucomex.serpro.gov.br/lpco/solicitar_retificacao.schema.json",
 	"properties": {
 		"justificativa": { "type": ["string"] },
 		"informacaoAdicional": { "type": ["string", "null"] },

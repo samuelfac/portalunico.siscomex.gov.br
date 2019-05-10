@@ -2,9 +2,10 @@
 	"definitions": {},
 	"$schema": "http://json-schema.org/draft-06/schema#",
 	"type": "object",
-	"$id": "http://www.pucomex.serpro.gov.br/lpco/detalhar_modelos.schema.json",
+	"$id": "http://www.pucomex.serpro.gov.br/lpco/detalhar_pedido.schema.json",
 	"properties": {
 		"numero": { "type": "string" },
+		"chaveAcesso": { "type": "string" },
 		"codigoModelo": { "type": "string" },
 		"orgao": { "type": "string" },
 		"situacao": { 
@@ -15,7 +16,9 @@
 			 }
 		},
 		"importadorExportador": { "type": "string" },
-		"declarante": { "type": "string" },
+		"declarante": { "type": ["string", "null"] },
+		"prorrogacaoPendente": { "type": "boolean" },
+    	"retificacaoPendente": { "type": "boolean" },
 		"unidadeMedidaEstatistica": { "type": ["string", "null"] },
 		"unidadeMedidaComercializada": { "type": ["string", "null"] },
 		"informacaoAdicional": { "type": ["string", "null"] },
@@ -25,7 +28,8 @@
 				"type": "object",
 				"properties": {
 					"ncm": { "type": "string" },
-					"listaCamposNcm": { 
+					"numeroItem": { "type": "integer" },
+					"listaCamposNcm": {
 						"type": "array",
 						"items": {
 							"type": "object",
@@ -34,6 +38,26 @@
 								"listaValor": { 
 									"type": "array",
 									"items": { "type": "string" }
+								},
+								"intervenientes": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+						          			"id": { "type": "string" },
+          									"nome": { "type": "string" },
+          									"endereco": {
+          										"type": "object",
+												"properties": {
+            										"logradouro": { "type": ["string", "null"] },
+            										"bairro": { "type": ["string", "null"] },
+            										"municipio": { "type": ["string", "null"] },
+            										"cep": { "type": ["string", "null"] },
+            										"uf": { "type": ["string", "null"] }
+            									}
+											}		
+										}
+									}
 								}
 							}
 						}
@@ -64,6 +88,26 @@
 					"listaValor": { 
 						"type": "array",
 						"items": { "type": "string" }
+					},
+					"intervenientes": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+			          			"id": { "type": "string" },
+								"nome": { "type": "string" },
+          						"endereco": {
+          							"type": "object",
+									"properties": {
+            							"logradouro": { "type": ["string", "null"] },
+            							"bairro": { "type": ["string", "null"] },
+            							"municipio": { "type": ["string", "null"] },
+            							"cep": { "type": ["string", "null"] },
+            							"uf": { "type": ["string", "null"] }
+            						}
+								}		
+							}
+						}
 					}
 				}
 			}
@@ -87,9 +131,10 @@
 				}
 			}
 		},
-		"saldo": {
+		"saldos": {
 			"type": "object",
 			"properties": {
+			 	"titulo": { "type": "string" },
 				"saldoQuantidadeComercial": { "type": "number" },
 				"saldoQuantidadeEstatistica": { "type": "number" },
 				"saldoVMLE": { "type": "number" },

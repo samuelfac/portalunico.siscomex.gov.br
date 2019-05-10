@@ -24,6 +24,9 @@ public class AlterarSituacao {
     @SerializedName("requerInspecao")
     @Expose
     private Boolean requerInspecao;
+    @SerializedName("validoMultiplasOperacoes")
+    @Expose
+    private Boolean validoMultiplasOperacoes;
 
     public String getSituacao() {
         return situacao;
@@ -73,6 +76,14 @@ public class AlterarSituacao {
         this.requerInspecao = requerInspecao;
     }
 
+    public Boolean getValidoMultiplasOperacoes() {
+        return validoMultiplasOperacoes;
+    }
+
+    public void setValidoMultiplasOperacoes(Boolean validoMultiplasOperacoes) {
+        this.validoMultiplasOperacoes = validoMultiplasOperacoes;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -101,6 +112,10 @@ public class AlterarSituacao {
         sb.append('=');
         sb.append(((this.requerInspecao == null)?"<null>":this.requerInspecao));
         sb.append(',');
+        sb.append("validoMultiplasOperacoes");
+        sb.append('=');
+        sb.append(((this.validoMultiplasOperacoes == null)?"<null>":this.validoMultiplasOperacoes));
+        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -115,6 +130,7 @@ public class AlterarSituacao {
         result = ((result* 31)+((this.requerInspecao == null)? 0 :this.requerInspecao.hashCode()));
         result = ((result* 31)+((this.situacao == null)? 0 :this.situacao.hashCode()));
         result = ((result* 31)+((this.justificativa == null)? 0 :this.justificativa.hashCode()));
+        result = ((result* 31)+((this.validoMultiplasOperacoes == null)? 0 :this.validoMultiplasOperacoes.hashCode()));
         result = ((result* 31)+((this.dataFinalVigencia == null)? 0 :this.dataFinalVigencia.hashCode()));
         result = ((result* 31)+((this.dataInicioVigencia == null)? 0 :this.dataInicioVigencia.hashCode()));
         result = ((result* 31)+((this.numeroOrgaoOrigem == null)? 0 :this.numeroOrgaoOrigem.hashCode()));
@@ -130,7 +146,7 @@ public class AlterarSituacao {
             return false;
         }
         AlterarSituacao rhs = ((AlterarSituacao) other);
-        return (((((((this.requerInspecao == rhs.requerInspecao)||((this.requerInspecao!= null)&&this.requerInspecao.equals(rhs.requerInspecao)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.justificativa == rhs.justificativa)||((this.justificativa!= null)&&this.justificativa.equals(rhs.justificativa))))&&((this.dataFinalVigencia == rhs.dataFinalVigencia)||((this.dataFinalVigencia!= null)&&this.dataFinalVigencia.equals(rhs.dataFinalVigencia))))&&((this.dataInicioVigencia == rhs.dataInicioVigencia)||((this.dataInicioVigencia!= null)&&this.dataInicioVigencia.equals(rhs.dataInicioVigencia))))&&((this.numeroOrgaoOrigem == rhs.numeroOrgaoOrigem)||((this.numeroOrgaoOrigem!= null)&&this.numeroOrgaoOrigem.equals(rhs.numeroOrgaoOrigem))));
+        return ((((((((this.requerInspecao == rhs.requerInspecao)||((this.requerInspecao!= null)&&this.requerInspecao.equals(rhs.requerInspecao)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.justificativa == rhs.justificativa)||((this.justificativa!= null)&&this.justificativa.equals(rhs.justificativa))))&&((this.validoMultiplasOperacoes == rhs.validoMultiplasOperacoes)||((this.validoMultiplasOperacoes!= null)&&this.validoMultiplasOperacoes.equals(rhs.validoMultiplasOperacoes))))&&((this.dataFinalVigencia == rhs.dataFinalVigencia)||((this.dataFinalVigencia!= null)&&this.dataFinalVigencia.equals(rhs.dataFinalVigencia))))&&((this.dataInicioVigencia == rhs.dataInicioVigencia)||((this.dataInicioVigencia!= null)&&this.dataInicioVigencia.equals(rhs.dataInicioVigencia))))&&((this.numeroOrgaoOrigem == rhs.numeroOrgaoOrigem)||((this.numeroOrgaoOrigem!= null)&&this.numeroOrgaoOrigem.equals(rhs.numeroOrgaoOrigem))));
     }
 
 }

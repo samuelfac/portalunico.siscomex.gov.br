@@ -14,6 +14,9 @@ public class ListaCamposNcm {
     @SerializedName("nome")
     @Expose
     private String nome;
+    @SerializedName("unidadeMedida")
+    @Expose
+    private String unidadeMedida;
     @SerializedName("tipo")
     @Expose
     private ListaCamposNcm.Tipo tipo;
@@ -35,6 +38,14 @@ public class ListaCamposNcm {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
     public ListaCamposNcm.Tipo getTipo() {
@@ -65,6 +76,10 @@ public class ListaCamposNcm {
         sb.append('=');
         sb.append(((this.nome == null)?"<null>":this.nome));
         sb.append(',');
+        sb.append("unidadeMedida");
+        sb.append('=');
+        sb.append(((this.unidadeMedida == null)?"<null>":this.unidadeMedida));
+        sb.append(',');
         sb.append("tipo");
         sb.append('=');
         sb.append(((this.tipo == null)?"<null>":this.tipo));
@@ -84,6 +99,7 @@ public class ListaCamposNcm {
     @Override
     public int hashCode() {
         int result = 1;
+        result = ((result* 31)+((this.unidadeMedida == null)? 0 :this.unidadeMedida.hashCode()));
         result = ((result* 31)+((this.codigo == null)? 0 :this.codigo.hashCode()));
         result = ((result* 31)+((this.nome == null)? 0 :this.nome.hashCode()));
         result = ((result* 31)+((this.tipo == null)? 0 :this.tipo.hashCode()));
@@ -100,7 +116,7 @@ public class ListaCamposNcm {
             return false;
         }
         ListaCamposNcm rhs = ((ListaCamposNcm) other);
-        return (((((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo)))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.tipo == rhs.tipo)||((this.tipo!= null)&&this.tipo.equals(rhs.tipo))))&&((this.validacao == rhs.validacao)||((this.validacao!= null)&&this.validacao.equals(rhs.validacao))));
+        return ((((((this.unidadeMedida == rhs.unidadeMedida)||((this.unidadeMedida!= null)&&this.unidadeMedida.equals(rhs.unidadeMedida)))&&((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.tipo == rhs.tipo)||((this.tipo!= null)&&this.tipo.equals(rhs.tipo))))&&((this.validacao == rhs.validacao)||((this.validacao!= null)&&this.validacao.equals(rhs.validacao))));
     }
 
     public enum Tipo {

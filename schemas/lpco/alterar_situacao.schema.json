@@ -9,6 +9,7 @@
 		"dataInicioVigencia": { "type": ["string", "null"] },
 		"dataFinalVigencia": { "type": ["string", "null"] },
 		"numeroOrgaoOrigem": { "type": ["string", "null"] },
-		"requerInspecao": { "type": ["boolean", "null"] }
+		"requerInspecao": { "type": ["boolean", "null"] },
+		"validoMultiplasOperacoes": { "type": ["boolean", "null"] }
 	}
 }

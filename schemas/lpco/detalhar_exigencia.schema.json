@@ -3,12 +3,13 @@
 	"$schema": "http://json-schema.org/draft-06/schema#",
 	"type": "object",
 	"$id": "http://www.pucomex.serpro.gov.br/lpco/detalhar_exigencia.schema.json",
-	"properties": { 
-		"id": { "type": "string" },
+	"properties": {
+		"numero": { "type": "string" },
 		"exigencia": { "type": "string" },
 		"dataExigencia": { "type": "string" },
 		"resposta": { "type": ["string", "null"] },
 		"dataResposta": { "type": ["string", "null"] },
+		"justificativa": { "type": ["string", "null"] },
 		"situacao": {
 			"type": "object",
 			"properties": { 

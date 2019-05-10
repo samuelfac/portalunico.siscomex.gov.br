@@ -2,8 +2,8 @@
 	"definitions": {},
 	"$schema": "http://json-schema.org/draft-06/schema#",
 	"type": "object",
-	"$id": "http://www.pucomex.serpro.gov.br/lpco/incluir_exigencia.schema.json",
+	"$id": "http://www.pucomex.serpro.gov.br/lpco/justificativa.schema.json",
 	"properties": { 
-		"justificativa": { "type": "string" }
+		"justificativa": { "type": ["string", "null"] }
 	}
 }

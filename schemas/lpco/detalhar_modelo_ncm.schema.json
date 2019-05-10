@@ -14,6 +14,7 @@
 				"properties": {
 					"codigo": { "type": "string" },
 					"nome": { "type": "string" },
+					"unidadeMedida": { "type": ["string", "null"] },
 					"tipo":  { 
 						"type": "string",
 						 "enum": ["BOOLEANO", "DATA", "DATA_HORA", "NUMERO_INTEIRO", "NUMERO_REAL", "TEXTO"]
@@ -25,7 +26,17 @@
 						        "permiteMultiplosValores": { "type": "boolean" },
 							"mascara":  { "type": ["string", "null"] },
 							"tamanhoMaximo":  { "type": ["integer", "null"] },
-							"qtdCasasDecimais":  { "type": ["integer", "null"] }
+							"qtdCasasDecimais":  { "type": ["integer", "null"] },
+							"dominios": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": { "type": "string" },
+										"descricao": { "type": ["string", "null"] }
+									}
+								}
+							}
 						}
 					}
 				}
@@ -49,7 +60,17 @@
 						        "permiteMultiplosValores": { "type": "boolean" },
 							"mascara":  { "type": ["string", "null"] },
 							"tamanhoMaximo":  { "type": ["integer", "null"] },
-							"qtdCasasDecimais":  { "type": ["integer", "null"] }
+							"qtdCasasDecimais":  { "type": ["integer", "null"] },
+							"dominios": {
+								"type": "array",
+								"items": {
+									"type": "object",
+									"properties": {
+										"id": { "type": "string" },
+										"descricao": { "type": ["string", "null"] }
+									}
+								}
+							} 
 						}
 					}
 				}

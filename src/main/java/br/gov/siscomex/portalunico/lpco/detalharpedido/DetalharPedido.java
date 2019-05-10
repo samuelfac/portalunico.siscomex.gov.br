@@ -11,6 +11,9 @@ public class DetalharPedido {
     @SerializedName("numero")
     @Expose
     private String numero;
+    @SerializedName("chaveAcesso")
+    @Expose
+    private String chaveAcesso;
     @SerializedName("codigoModelo")
     @Expose
     private String codigoModelo;
@@ -26,6 +29,12 @@ public class DetalharPedido {
     @SerializedName("declarante")
     @Expose
     private String declarante;
+    @SerializedName("prorrogacaoPendente")
+    @Expose
+    private Boolean prorrogacaoPendente;
+    @SerializedName("retificacaoPendente")
+    @Expose
+    private Boolean retificacaoPendente;
     @SerializedName("unidadeMedidaEstatistica")
     @Expose
     private String unidadeMedidaEstatistica;
@@ -44,9 +53,9 @@ public class DetalharPedido {
     @SerializedName("listaVinculos")
     @Expose
     private List<ListaVinculo> listaVinculos = new ArrayList<ListaVinculo>();
-    @SerializedName("saldo")
+    @SerializedName("saldos")
     @Expose
-    private Saldo saldo;
+    private Saldos saldos;
 
     public String getNumero() {
         return numero;
@@ -54,6 +63,14 @@ public class DetalharPedido {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getChaveAcesso() {
+        return chaveAcesso;
+    }
+
+    public void setChaveAcesso(String chaveAcesso) {
+        this.chaveAcesso = chaveAcesso;
     }
 
     public String getCodigoModelo() {
@@ -94,6 +111,22 @@ public class DetalharPedido {
 
     public void setDeclarante(String declarante) {
         this.declarante = declarante;
+    }
+
+    public Boolean getProrrogacaoPendente() {
+        return prorrogacaoPendente;
+    }
+
+    public void setProrrogacaoPendente(Boolean prorrogacaoPendente) {
+        this.prorrogacaoPendente = prorrogacaoPendente;
+    }
+
+    public Boolean getRetificacaoPendente() {
+        return retificacaoPendente;
+    }
+
+    public void setRetificacaoPendente(Boolean retificacaoPendente) {
+        this.retificacaoPendente = retificacaoPendente;
     }
 
     public String getUnidadeMedidaEstatistica() {
@@ -144,12 +177,12 @@ public class DetalharPedido {
         this.listaVinculos = listaVinculos;
     }
 
-    public Saldo getSaldo() {
-        return saldo;
+    public Saldos getSaldos() {
+        return saldos;
     }
 
-    public void setSaldo(Saldo saldo) {
-        this.saldo = saldo;
+    public void setSaldos(Saldos saldos) {
+        this.saldos = saldos;
     }
 
     @Override
@@ -159,6 +192,10 @@ public class DetalharPedido {
         sb.append("numero");
         sb.append('=');
         sb.append(((this.numero == null)?"<null>":this.numero));
+        sb.append(',');
+        sb.append("chaveAcesso");
+        sb.append('=');
+        sb.append(((this.chaveAcesso == null)?"<null>":this.chaveAcesso));
         sb.append(',');
         sb.append("codigoModelo");
         sb.append('=');
@@ -179,6 +216,14 @@ public class DetalharPedido {
         sb.append("declarante");
         sb.append('=');
         sb.append(((this.declarante == null)?"<null>":this.declarante));
+        sb.append(',');
+        sb.append("prorrogacaoPendente");
+        sb.append('=');
+        sb.append(((this.prorrogacaoPendente == null)?"<null>":this.prorrogacaoPendente));
+        sb.append(',');
+        sb.append("retificacaoPendente");
+        sb.append('=');
+        sb.append(((this.retificacaoPendente == null)?"<null>":this.retificacaoPendente));
         sb.append(',');
         sb.append("unidadeMedidaEstatistica");
         sb.append('=');
@@ -204,9 +249,9 @@ public class DetalharPedido {
         sb.append('=');
         sb.append(((this.listaVinculos == null)?"<null>":this.listaVinculos));
         sb.append(',');
-        sb.append("saldo");
+        sb.append("saldos");
         sb.append('=');
-        sb.append(((this.saldo == null)?"<null>":this.saldo));
+        sb.append(((this.saldos == null)?"<null>":this.saldos));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -226,10 +271,13 @@ public class DetalharPedido {
         result = ((result* 31)+((this.codigoModelo == null)? 0 :this.codigoModelo.hashCode()));
         result = ((result* 31)+((this.declarante == null)? 0 :this.declarante.hashCode()));
         result = ((result* 31)+((this.importadorExportador == null)? 0 :this.importadorExportador.hashCode()));
-        result = ((result* 31)+((this.saldo == null)? 0 :this.saldo.hashCode()));
+        result = ((result* 31)+((this.saldos == null)? 0 :this.saldos.hashCode()));
+        result = ((result* 31)+((this.retificacaoPendente == null)? 0 :this.retificacaoPendente.hashCode()));
         result = ((result* 31)+((this.listaCamposFormulario == null)? 0 :this.listaCamposFormulario.hashCode()));
         result = ((result* 31)+((this.listaNcm == null)? 0 :this.listaNcm.hashCode()));
         result = ((result* 31)+((this.unidadeMedidaEstatistica == null)? 0 :this.unidadeMedidaEstatistica.hashCode()));
+        result = ((result* 31)+((this.prorrogacaoPendente == null)? 0 :this.prorrogacaoPendente.hashCode()));
+        result = ((result* 31)+((this.chaveAcesso == null)? 0 :this.chaveAcesso.hashCode()));
         result = ((result* 31)+((this.informacaoAdicional == null)? 0 :this.informacaoAdicional.hashCode()));
         result = ((result* 31)+((this.unidadeMedidaComercializada == null)? 0 :this.unidadeMedidaComercializada.hashCode()));
         return result;
@@ -244,7 +292,7 @@ public class DetalharPedido {
             return false;
         }
         DetalharPedido rhs = ((DetalharPedido) other);
-        return ((((((((((((((this.listaVinculos == rhs.listaVinculos)||((this.listaVinculos!= null)&&this.listaVinculos.equals(rhs.listaVinculos)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.orgao == rhs.orgao)||((this.orgao!= null)&&this.orgao.equals(rhs.orgao))))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.codigoModelo == rhs.codigoModelo)||((this.codigoModelo!= null)&&this.codigoModelo.equals(rhs.codigoModelo))))&&((this.declarante == rhs.declarante)||((this.declarante!= null)&&this.declarante.equals(rhs.declarante))))&&((this.importadorExportador == rhs.importadorExportador)||((this.importadorExportador!= null)&&this.importadorExportador.equals(rhs.importadorExportador))))&&((this.saldo == rhs.saldo)||((this.saldo!= null)&&this.saldo.equals(rhs.saldo))))&&((this.listaCamposFormulario == rhs.listaCamposFormulario)||((this.listaCamposFormulario!= null)&&this.listaCamposFormulario.equals(rhs.listaCamposFormulario))))&&((this.listaNcm == rhs.listaNcm)||((this.listaNcm!= null)&&this.listaNcm.equals(rhs.listaNcm))))&&((this.unidadeMedidaEstatistica == rhs.unidadeMedidaEstatistica)||((this.unidadeMedidaEstatistica!= null)&&this.unidadeMedidaEstatistica.equals(rhs.unidadeMedidaEstatistica))))&&((this.informacaoAdicional == rhs.informacaoAdicional)||((this.informacaoAdicional!= null)&&this.informacaoAdicional.equals(rhs.informacaoAdicional))))&&((this.unidadeMedidaComercializada == rhs.unidadeMedidaComercializada)||((this.unidadeMedidaComercializada!= null)&&this.unidadeMedidaComercializada.equals(rhs.unidadeMedidaComercializada))));
+        return (((((((((((((((((this.listaVinculos == rhs.listaVinculos)||((this.listaVinculos!= null)&&this.listaVinculos.equals(rhs.listaVinculos)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.orgao == rhs.orgao)||((this.orgao!= null)&&this.orgao.equals(rhs.orgao))))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.codigoModelo == rhs.codigoModelo)||((this.codigoModelo!= null)&&this.codigoModelo.equals(rhs.codigoModelo))))&&((this.declarante == rhs.declarante)||((this.declarante!= null)&&this.declarante.equals(rhs.declarante))))&&((this.importadorExportador == rhs.importadorExportador)||((this.importadorExportador!= null)&&this.importadorExportador.equals(rhs.importadorExportador))))&&((this.saldos == rhs.saldos)||((this.saldos!= null)&&this.saldos.equals(rhs.saldos))))&&((this.retificacaoPendente == rhs.retificacaoPendente)||((this.retificacaoPendente!= null)&&this.retificacaoPendente.equals(rhs.retificacaoPendente))))&&((this.listaCamposFormulario == rhs.listaCamposFormulario)||((this.listaCamposFormulario!= null)&&this.listaCamposFormulario.equals(rhs.listaCamposFormulario))))&&((this.listaNcm == rhs.listaNcm)||((this.listaNcm!= null)&&this.listaNcm.equals(rhs.listaNcm))))&&((this.unidadeMedidaEstatistica == rhs.unidadeMedidaEstatistica)||((this.unidadeMedidaEstatistica!= null)&&this.unidadeMedidaEstatistica.equals(rhs.unidadeMedidaEstatistica))))&&((this.prorrogacaoPendente == rhs.prorrogacaoPendente)||((this.prorrogacaoPendente!= null)&&this.prorrogacaoPendente.equals(rhs.prorrogacaoPendente))))&&((this.chaveAcesso == rhs.chaveAcesso)||((this.chaveAcesso!= null)&&this.chaveAcesso.equals(rhs.chaveAcesso))))&&((this.informacaoAdicional == rhs.informacaoAdicional)||((this.informacaoAdicional!= null)&&this.informacaoAdicional.equals(rhs.informacaoAdicional))))&&((this.unidadeMedidaComercializada == rhs.unidadeMedidaComercializada)||((this.unidadeMedidaComercializada!= null)&&this.unidadeMedidaComercializada.equals(rhs.unidadeMedidaComercializada))));
     }
 
 }

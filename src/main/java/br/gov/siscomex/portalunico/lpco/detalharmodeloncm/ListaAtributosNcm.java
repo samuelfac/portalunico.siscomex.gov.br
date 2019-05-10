@@ -19,7 +19,7 @@ public class ListaAtributosNcm {
     private ListaAtributosNcm.Tipo tipo;
     @SerializedName("validacao")
     @Expose
-    private Validacao__1 validacao;
+    private Validacao validacao;
 
     public String getCodigo() {
         return codigo;
@@ -45,11 +45,11 @@ public class ListaAtributosNcm {
         this.tipo = tipo;
     }
 
-    public Validacao__1 getValidacao() {
+    public Validacao getValidacao() {
         return validacao;
     }
 
-    public void setValidacao(Validacao__1 validacao) {
+    public void setValidacao(Validacao validacao) {
         this.validacao = validacao;
     }
 

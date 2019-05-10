@@ -56,8 +56,8 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosCarga {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "conteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Conteiner.class, required = false),
-        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "conteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Conteiner.class, required = false)
     })
     protected List<Object> content;
 
@@ -89,8 +89,8 @@ public class DadosCarga {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Conteiner }
      * {@link JAXBElement }{@code <}{@link DadosCarga.Documentos }{@code >}
+     * {@link Conteiner }
      * 
      * 
      */

@@ -1,6 +1,8 @@
 
 package br.gov.siscomex.portalunico.lpco.detalharmodelo;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -21,6 +23,9 @@ public class Validacao {
     @SerializedName("qtdCasasDecimais")
     @Expose
     private Integer qtdCasasDecimais;
+    @SerializedName("dominios")
+    @Expose
+    private List<Dominio> dominios = new ArrayList<Dominio>();
 
     public Boolean getObrigatorio() {
         return obrigatorio;
@@ -62,6 +67,14 @@ public class Validacao {
         this.qtdCasasDecimais = qtdCasasDecimais;
     }
 
+    public List<Dominio> getDominios() {
+        return dominios;
+    }
+
+    public void setDominios(List<Dominio> dominios) {
+        this.dominios = dominios;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -86,6 +99,10 @@ public class Validacao {
         sb.append('=');
         sb.append(((this.qtdCasasDecimais == null)?"<null>":this.qtdCasasDecimais));
         sb.append(',');
+        sb.append("dominios");
+        sb.append('=');
+        sb.append(((this.dominios == null)?"<null>":this.dominios));
+        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -99,9 +116,10 @@ public class Validacao {
         int result = 1;
         result = ((result* 31)+((this.permiteMultiplosValores == null)? 0 :this.permiteMultiplosValores.hashCode()));
         result = ((result* 31)+((this.qtdCasasDecimais == null)? 0 :this.qtdCasasDecimais.hashCode()));
+        result = ((result* 31)+((this.dominios == null)? 0 :this.dominios.hashCode()));
         result = ((result* 31)+((this.obrigatorio == null)? 0 :this.obrigatorio.hashCode()));
-        result = ((result* 31)+((this.mascara == null)? 0 :this.mascara.hashCode()));
         result = ((result* 31)+((this.tamanhoMaximo == null)? 0 :this.tamanhoMaximo.hashCode()));
+        result = ((result* 31)+((this.mascara == null)? 0 :this.mascara.hashCode()));
         return result;
     }
 
@@ -114,7 +132,7 @@ public class Validacao {
             return false;
         }
         Validacao rhs = ((Validacao) other);
-        return ((((((this.permiteMultiplosValores == rhs.permiteMultiplosValores)||((this.permiteMultiplosValores!= null)&&this.permiteMultiplosValores.equals(rhs.permiteMultiplosValores)))&&((this.qtdCasasDecimais == rhs.qtdCasasDecimais)||((this.qtdCasasDecimais!= null)&&this.qtdCasasDecimais.equals(rhs.qtdCasasDecimais))))&&((this.obrigatorio == rhs.obrigatorio)||((this.obrigatorio!= null)&&this.obrigatorio.equals(rhs.obrigatorio))))&&((this.mascara == rhs.mascara)||((this.mascara!= null)&&this.mascara.equals(rhs.mascara))))&&((this.tamanhoMaximo == rhs.tamanhoMaximo)||((this.tamanhoMaximo!= null)&&this.tamanhoMaximo.equals(rhs.tamanhoMaximo))));
+        return (((((((this.permiteMultiplosValores == rhs.permiteMultiplosValores)||((this.permiteMultiplosValores!= null)&&this.permiteMultiplosValores.equals(rhs.permiteMultiplosValores)))&&((this.qtdCasasDecimais == rhs.qtdCasasDecimais)||((this.qtdCasasDecimais!= null)&&this.qtdCasasDecimais.equals(rhs.qtdCasasDecimais))))&&((this.dominios == rhs.dominios)||((this.dominios!= null)&&this.dominios.equals(rhs.dominios))))&&((this.obrigatorio == rhs.obrigatorio)||((this.obrigatorio!= null)&&this.obrigatorio.equals(rhs.obrigatorio))))&&((this.tamanhoMaximo == rhs.tamanhoMaximo)||((this.tamanhoMaximo!= null)&&this.tamanhoMaximo.equals(rhs.tamanhoMaximo))))&&((this.mascara == rhs.mascara)||((this.mascara!= null)&&this.mascara.equals(rhs.mascara))));
     }
 
 }

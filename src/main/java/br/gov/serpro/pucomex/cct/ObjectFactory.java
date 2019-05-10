@@ -28,17 +28,17 @@ public class ObjectFactory {
 
     private final static QName _OperacaoUnitizacao_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "operacaoUnitizacao");
     private final static QName _OperacaoDesunitizacao_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "operacaoDesunitizacao");
-    private final static QName _TGranelTipoGranel_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "tipoGranel");
-    private final static QName _TGranelQuantidade_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "quantidade");
-    private final static QName _TGranelUnidademedida_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "unidademedida");
-    private final static QName _TGranelTotal_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "total");
-    private final static QName _TDocumentoCargaNumeroRUC_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroRUC");
-    private final static QName _TDocumentoCargaNumeroDUE_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroDUE");
     private final static QName _DadosCargaDocumentos_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "documentos");
+    private final static QName _TDocumentoCargaManifestacaoNumeroRUC_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroRUC");
     private final static QName _TDocumentoCargaManifestacaoGranel_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "granel");
     private final static QName _TDocumentoCargaManifestacaoCargaSoltaVeiculo_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "cargaSoltaVeiculo");
-    private final static QName _TDesunitizacaoNumeroConteiner_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroConteiner");
+    private final static QName _TDocumentoCargaManifestacaoNumeroDUE_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroDUE");
+    private final static QName _TCargaSoltaVeiculoQuantidade_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "quantidade");
+    private final static QName _TCargaSoltaVeiculoTotal_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "total");
     private final static QName _TCargaSoltaVeiculoTipoEmbalagem_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "tipoEmbalagem");
+    private final static QName _TGranelTipoGranel_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "tipoGranel");
+    private final static QName _TGranelUnidademedida_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "unidademedida");
+    private final static QName _TDesunitizacaoNumeroConteiner_QNAME = new QName("http://www.pucomex.serpro.gov.br/cct", "numeroConteiner");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: br.gov.serpro.pucomex.cct
@@ -882,60 +882,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoGranel", scope = TGranel.class)
-    public JAXBElement<String> createTGranelTipoGranel(String value) {
-        return new JAXBElement<String>(_TGranelTipoGranel_QNAME, String.class, TGranel.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TGranel.class)
-    public JAXBElement<BigDecimal> createTGranelQuantidade(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_TGranelQuantidade_QNAME, BigDecimal.class, TGranel.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UnidadeMedida }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "unidademedida", scope = TGranel.class)
-    public JAXBElement<UnidadeMedida> createTGranelUnidademedida(UnidadeMedida value) {
-        return new JAXBElement<UnidadeMedida>(_TGranelUnidademedida_QNAME, UnidadeMedida.class, TGranel.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TGranel.class)
-    public JAXBElement<BigDecimal> createTGranelTotal(BigDecimal value) {
-        return new JAXBElement<BigDecimal>(_TGranelTotal_QNAME, BigDecimal.class, TGranel.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCarga.class)
-    public JAXBElement<String> createTDocumentoCargaNumeroRUC(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaNumeroRUC_QNAME, String.class, TDocumentoCarga.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCarga.class)
-    public JAXBElement<String> createTDocumentoCargaNumeroDUE(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaNumeroDUE_QNAME, String.class, TDocumentoCarga.class, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DadosCarga.Documentos }{@code >}}
      * 
      */
@@ -950,7 +896,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCargaManifestacao.class)
     public JAXBElement<String> createTDocumentoCargaManifestacaoNumeroRUC(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaNumeroRUC_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
+        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroRUC_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
     }
 
     /**
@@ -977,7 +923,70 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCargaManifestacao.class)
     public JAXBElement<String> createTDocumentoCargaManifestacaoNumeroDUE(String value) {
-        return new JAXBElement<String>(_TDocumentoCargaNumeroDUE_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
+        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroDUE_QNAME, String.class, TDocumentoCargaManifestacao.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TCargaSoltaVeiculo.class)
+    public JAXBElement<BigInteger> createTCargaSoltaVeiculoQuantidade(BigInteger value) {
+        return new JAXBElement<BigInteger>(_TCargaSoltaVeiculoQuantidade_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TCargaSoltaVeiculo.class)
+    public JAXBElement<BigInteger> createTCargaSoltaVeiculoTotal(BigInteger value) {
+        return new JAXBElement<BigInteger>(_TCargaSoltaVeiculoTotal_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoEmbalagem", scope = TCargaSoltaVeiculo.class)
+    public JAXBElement<String> createTCargaSoltaVeiculoTipoEmbalagem(String value) {
+        return new JAXBElement<String>(_TCargaSoltaVeiculoTipoEmbalagem_QNAME, String.class, TCargaSoltaVeiculo.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoGranel", scope = TGranel.class)
+    public JAXBElement<String> createTGranelTipoGranel(String value) {
+        return new JAXBElement<String>(_TGranelTipoGranel_QNAME, String.class, TGranel.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TGranel.class)
+    public JAXBElement<BigDecimal> createTGranelQuantidade(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_TCargaSoltaVeiculoQuantidade_QNAME, BigDecimal.class, TGranel.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UnidadeMedida }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "unidademedida", scope = TGranel.class)
+    public JAXBElement<UnidadeMedida> createTGranelUnidademedida(UnidadeMedida value) {
+        return new JAXBElement<UnidadeMedida>(_TGranelUnidademedida_QNAME, UnidadeMedida.class, TGranel.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TGranel.class)
+    public JAXBElement<BigDecimal> createTGranelTotal(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_TCargaSoltaVeiculoTotal_QNAME, BigDecimal.class, TGranel.class, value);
     }
 
     /**
@@ -990,30 +999,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "quantidade", scope = TCargaSoltaVeiculo.class)
-    public JAXBElement<BigInteger> createTCargaSoltaVeiculoQuantidade(BigInteger value) {
-        return new JAXBElement<BigInteger>(_TGranelQuantidade_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "total", scope = TCargaSoltaVeiculo.class)
-    public JAXBElement<BigInteger> createTCargaSoltaVeiculoTotal(BigInteger value) {
-        return new JAXBElement<BigInteger>(_TGranelTotal_QNAME, BigInteger.class, TCargaSoltaVeiculo.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroRUC", scope = TDocumentoCarga.class)
+    public JAXBElement<String> createTDocumentoCargaNumeroRUC(String value) {
+        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroRUC_QNAME, String.class, TDocumentoCarga.class, value);
     }
 
     /**
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "tipoEmbalagem", scope = TCargaSoltaVeiculo.class)
-    public JAXBElement<String> createTCargaSoltaVeiculoTipoEmbalagem(String value) {
-        return new JAXBElement<String>(_TCargaSoltaVeiculoTipoEmbalagem_QNAME, String.class, TCargaSoltaVeiculo.class, value);
+    @XmlElementDecl(namespace = "http://www.pucomex.serpro.gov.br/cct", name = "numeroDUE", scope = TDocumentoCarga.class)
+    public JAXBElement<String> createTDocumentoCargaNumeroDUE(String value) {
+        return new JAXBElement<String>(_TDocumentoCargaManifestacaoNumeroDUE_QNAME, String.class, TDocumentoCarga.class, value);
     }
 
 }

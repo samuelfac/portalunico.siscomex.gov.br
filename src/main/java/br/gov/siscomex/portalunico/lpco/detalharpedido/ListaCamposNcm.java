@@ -14,6 +14,9 @@ public class ListaCamposNcm {
     @SerializedName("listaValor")
     @Expose
     private List<String> listaValor = new ArrayList<String>();
+    @SerializedName("intervenientes")
+    @Expose
+    private List<Interveniente> intervenientes = new ArrayList<Interveniente>();
 
     public String getCodigo() {
         return codigo;
@@ -31,6 +34,14 @@ public class ListaCamposNcm {
         this.listaValor = listaValor;
     }
 
+    public List<Interveniente> getIntervenientes() {
+        return intervenientes;
+    }
+
+    public void setIntervenientes(List<Interveniente> intervenientes) {
+        this.intervenientes = intervenientes;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -42,6 +53,10 @@ public class ListaCamposNcm {
         sb.append("listaValor");
         sb.append('=');
         sb.append(((this.listaValor == null)?"<null>":this.listaValor));
+        sb.append(',');
+        sb.append("intervenientes");
+        sb.append('=');
+        sb.append(((this.intervenientes == null)?"<null>":this.intervenientes));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
@@ -55,6 +70,7 @@ public class ListaCamposNcm {
     public int hashCode() {
         int result = 1;
         result = ((result* 31)+((this.codigo == null)? 0 :this.codigo.hashCode()));
+        result = ((result* 31)+((this.intervenientes == null)? 0 :this.intervenientes.hashCode()));
         result = ((result* 31)+((this.listaValor == null)? 0 :this.listaValor.hashCode()));
         return result;
     }
@@ -68,7 +84,7 @@ public class ListaCamposNcm {
             return false;
         }
         ListaCamposNcm rhs = ((ListaCamposNcm) other);
-        return (((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo)))&&((this.listaValor == rhs.listaValor)||((this.listaValor!= null)&&this.listaValor.equals(rhs.listaValor))));
+        return ((((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo)))&&((this.intervenientes == rhs.intervenientes)||((this.intervenientes!= null)&&this.intervenientes.equals(rhs.intervenientes))))&&((this.listaValor == rhs.listaValor)||((this.listaValor!= null)&&this.listaValor.equals(rhs.listaValor))));
     }
 
 }
