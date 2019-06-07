@@ -4,7 +4,7 @@
     "type": "object",
     "$id": "http://www.pucomex.serpro.gov.br/catp/produto-detalhar-retorno.schema.json",
     "properties": {
-        
+
         "type": "object",
         "properties": {
             "seq": {
@@ -22,7 +22,7 @@
                     "null"
                 ]
             },
-            "cnpjRaiz": {
+            "cpfCnpjRaiz": {
                 "type": "string"
             },
             "situacao": {

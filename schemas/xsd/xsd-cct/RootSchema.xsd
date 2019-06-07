@@ -1,14 +1,15 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.pucomex.serpro.gov.br/cct">
-	<include schemaLocation="manifesto/ManifestacaoExportacao.xsd" />
-	<include schemaLocation="recepcao/RecepcaoNFF.xsd" />
-	<include schemaLocation="recepcao/RecepcaoNFE.xsd" />
-	<include schemaLocation="entrega/EntregaConteiner.xsd" />
-	<include schemaLocation="entrega/EntregaDocumentoCarga.xsd" />
-	<include schemaLocation="entrega/EntregaDocumentoTransporte.xsd" />
-	<include schemaLocation="recepcao/RecepcaoDocumentoCarga.xsd" />
-	<include schemaLocation="recepcao/RecepcaoDocumentoTransporte.xsd" />
-	<include schemaLocation="recepcao/RecepcaoConteiner.xsd" />
-	<include schemaLocation="unitizacao/Unitizacao.xsd" />
-	<include schemaLocation="unitizacao/Desunitizacao.xsd" />
-	<include schemaLocation="consolidacao/Consolidacao.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/manifesto/ManifestacaoExportacao.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/manifesto/ManifestacaoExportacaoMicPreACD.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/recepcao/RecepcaoNFF.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/recepcao/RecepcaoNFE.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/entrega/EntregaConteiner.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/entrega/EntregaDocumentoCarga.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/entrega/EntregaDocumentoTransporte.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/recepcao/RecepcaoDocumentoCarga.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/recepcao/RecepcaoDocumentoTransporte.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/recepcao/RecepcaoConteiner.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/unitizacao/Unitizacao.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/unitizacao/Desunitizacao.xsd" />
+	<include schemaLocation="vfs:/content/pucomex-cct-service-ext.war/WEB-INF/classes/xsd/consolidacao/Consolidacao.xsd" />
 </schema>

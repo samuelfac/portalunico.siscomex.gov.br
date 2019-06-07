@@ -43,7 +43,7 @@
 				<complexType>
 					<sequence>
 						<element name="documento" type="tns:TDocumentoCargaConsolidacao"
-							minOccurs="2" maxOccurs="unbounded" />
+							minOccurs="0" maxOccurs="unbounded" />
 					</sequence>
 				</complexType>
 				<unique name="identNumeroDUE">

@@ -4,6 +4,9 @@
 	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
 	
 	<include schemaLocation="../reuso/DocumentoCarga.xsd" />
+	<include schemaLocation="../reuso/NotaFiscal.xsd" />
+	<include schemaLocation="../reuso/ItemDUE.xsd" />
+	<include schemaLocation="../reuso/DUIMP.xsd" />
 	
 	<element name="operacaoDesunitizacao" type="tns:OperacaoDesunitizacao" />
 
@@ -33,9 +36,24 @@
 		<sequence>
 			<sequence>
 				<element name="numeroConteiner" type="tns:NumeroConteiner" minOccurs="1" maxOccurs="1" />
-				<element ref="tns:documentos" minOccurs="1" maxOccurs="1"/> 
+				<choice>
+					<sequence>
+						<element ref="tns:documentos" minOccurs="1" maxOccurs="1"/>
+						<element ref="tns:notasFiscais" minOccurs="0" maxOccurs="1"/>
+						<element ref="tns:itensDUE" minOccurs="0" maxOccurs="1"/>
+					</sequence>
+					<sequence>
+						<element ref="tns:notasFiscais" minOccurs="1" maxOccurs="1"/>
+						<element ref="tns:itensDUE" minOccurs="0" maxOccurs="1"/>
+					</sequence>
+					<sequence>
+						<element ref="tns:itensDUE" minOccurs="1" maxOccurs="1"/>
+					</sequence>
+					<sequence>
+						<element ref="tns:duimps" minOccurs="1" maxOccurs="1"/>
+					</sequence>
+				</choice>
 			</sequence>
 		</sequence>
 	</complexType>
-
 </schema>

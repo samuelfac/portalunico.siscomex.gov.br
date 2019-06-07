@@ -5,6 +5,7 @@
 
 	<include schemaLocation="Granel.xsd" />
 	<include schemaLocation="SoltaVeiculo.xsd" />
+	<include schemaLocation="Veiculo.xsd" />
 
 	<element name="documentos">
 		<complexType>
@@ -32,9 +33,14 @@
 				<sequence>
 					<element ref="tns:cargaSoltaVeiculo" />
 					<element ref="tns:granel" minOccurs="0"/>
+					<element ref="tns:veiculo" minOccurs="0"/>
 				</sequence>
 				<sequence>
 					<element ref="tns:granel" />
+					<element ref="tns:veiculo" minOccurs="0"/>
+				</sequence>
+				<sequence>
+					<element ref="tns:veiculo"/>
 				</sequence>
 			</choice>	
 		</sequence>

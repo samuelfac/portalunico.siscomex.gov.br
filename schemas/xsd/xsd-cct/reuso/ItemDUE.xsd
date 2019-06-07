@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+	
+	<element name="itensDUE">
+		<complexType>
+			<sequence>
+				<element name="itemDUE" type="tns:TItemDUE" minOccurs="1" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<complexType name="TItemDUE">
+		<sequence>
+			<element name="numeroDUE" type="integer" />
+			<element name="numeroItem" type="integer" />
+			<element name="ncm" type="string" />
+			<element name="unidadeEstatistica" type="string" />
+			<element name="quantidadeExportada" type="integer" />
+		</sequence>
+	</complexType>
+</schema>

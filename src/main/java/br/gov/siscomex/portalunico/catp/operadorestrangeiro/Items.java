@@ -9,9 +9,9 @@ public class Items {
     @SerializedName("seq")
     @Expose
     private Integer seq;
-    @SerializedName("cnpjRaiz")
+    @SerializedName("cpfCnpjRaiz")
     @Expose
-    private String cnpjRaiz;
+    private String cpfCnpjRaiz;
     @SerializedName("codigo")
     @Expose
     private String codigo;
@@ -42,12 +42,12 @@ public class Items {
         this.seq = seq;
     }
 
-    public String getCnpjRaiz() {
-        return cnpjRaiz;
+    public String getCpfCnpjRaiz() {
+        return cpfCnpjRaiz;
     }
 
-    public void setCnpjRaiz(String cnpjRaiz) {
-        this.cnpjRaiz = cnpjRaiz;
+    public void setCpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
     }
 
     public String getCodigo() {
@@ -114,9 +114,9 @@ public class Items {
         sb.append('=');
         sb.append(((this.seq == null)?"<null>":this.seq));
         sb.append(',');
-        sb.append("cnpjRaiz");
+        sb.append("cpfCnpjRaiz");
         sb.append('=');
-        sb.append(((this.cnpjRaiz == null)?"<null>":this.cnpjRaiz));
+        sb.append(((this.cpfCnpjRaiz == null)?"<null>":this.cpfCnpjRaiz));
         sb.append(',');
         sb.append("codigo");
         sb.append('=');
@@ -157,11 +157,11 @@ public class Items {
     @Override
     public int hashCode() {
         int result = 1;
+        result = ((result* 31)+((this.cpfCnpjRaiz == null)? 0 :this.cpfCnpjRaiz.hashCode()));
         result = ((result* 31)+((this.codigo == null)? 0 :this.codigo.hashCode()));
         result = ((result* 31)+((this.codigoSubdivisaoPais == null)? 0 :this.codigoSubdivisaoPais.hashCode()));
         result = ((result* 31)+((this.logradouro == null)? 0 :this.logradouro.hashCode()));
         result = ((result* 31)+((this.nomeCidade == null)? 0 :this.nomeCidade.hashCode()));
-        result = ((result* 31)+((this.cnpjRaiz == null)? 0 :this.cnpjRaiz.hashCode()));
         result = ((result* 31)+((this.nome == null)? 0 :this.nome.hashCode()));
         result = ((result* 31)+((this.seq == null)? 0 :this.seq.hashCode()));
         result = ((result* 31)+((this.codigoPais == null)? 0 :this.codigoPais.hashCode()));
@@ -178,7 +178,7 @@ public class Items {
             return false;
         }
         Items rhs = ((Items) other);
-        return ((((((((((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo)))&&((this.codigoSubdivisaoPais == rhs.codigoSubdivisaoPais)||((this.codigoSubdivisaoPais!= null)&&this.codigoSubdivisaoPais.equals(rhs.codigoSubdivisaoPais))))&&((this.logradouro == rhs.logradouro)||((this.logradouro!= null)&&this.logradouro.equals(rhs.logradouro))))&&((this.nomeCidade == rhs.nomeCidade)||((this.nomeCidade!= null)&&this.nomeCidade.equals(rhs.nomeCidade))))&&((this.cnpjRaiz == rhs.cnpjRaiz)||((this.cnpjRaiz!= null)&&this.cnpjRaiz.equals(rhs.cnpjRaiz))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.seq == rhs.seq)||((this.seq!= null)&&this.seq.equals(rhs.seq))))&&((this.codigoPais == rhs.codigoPais)||((this.codigoPais!= null)&&this.codigoPais.equals(rhs.codigoPais))))&&((this.cep == rhs.cep)||((this.cep!= null)&&this.cep.equals(rhs.cep))));
+        return ((((((((((this.cpfCnpjRaiz == rhs.cpfCnpjRaiz)||((this.cpfCnpjRaiz!= null)&&this.cpfCnpjRaiz.equals(rhs.cpfCnpjRaiz)))&&((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo))))&&((this.codigoSubdivisaoPais == rhs.codigoSubdivisaoPais)||((this.codigoSubdivisaoPais!= null)&&this.codigoSubdivisaoPais.equals(rhs.codigoSubdivisaoPais))))&&((this.logradouro == rhs.logradouro)||((this.logradouro!= null)&&this.logradouro.equals(rhs.logradouro))))&&((this.nomeCidade == rhs.nomeCidade)||((this.nomeCidade!= null)&&this.nomeCidade.equals(rhs.nomeCidade))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.seq == rhs.seq)||((this.seq!= null)&&this.seq.equals(rhs.seq))))&&((this.codigoPais == rhs.codigoPais)||((this.codigoPais!= null)&&this.codigoPais.equals(rhs.codigoPais))))&&((this.cep == rhs.cep)||((this.cep!= null)&&this.cep.equals(rhs.cep))));
     }
 
 }

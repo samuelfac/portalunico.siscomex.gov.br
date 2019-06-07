@@ -17,9 +17,9 @@ public class Items {
     @SerializedName("descricao")
     @Expose
     private String descricao;
-    @SerializedName("cnpjRaiz")
+    @SerializedName("cpfCnpjRaiz")
     @Expose
-    private String cnpjRaiz;
+    private String cpfCnpjRaiz;
     @SerializedName("situacao")
     @Expose
     private String situacao;
@@ -84,12 +84,12 @@ public class Items {
         this.descricao = descricao;
     }
 
-    public String getCnpjRaiz() {
-        return cnpjRaiz;
+    public String getCpfCnpjRaiz() {
+        return cpfCnpjRaiz;
     }
 
-    public void setCnpjRaiz(String cnpjRaiz) {
-        this.cnpjRaiz = cnpjRaiz;
+    public void setCpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
     }
 
     public String getSituacao() {
@@ -212,9 +212,9 @@ public class Items {
         sb.append('=');
         sb.append(((this.descricao == null)?"<null>":this.descricao));
         sb.append(',');
-        sb.append("cnpjRaiz");
+        sb.append("cpfCnpjRaiz");
         sb.append('=');
-        sb.append(((this.cnpjRaiz == null)?"<null>":this.cnpjRaiz));
+        sb.append(((this.cpfCnpjRaiz == null)?"<null>":this.cpfCnpjRaiz));
         sb.append(',');
         sb.append("situacao");
         sb.append('=');
@@ -284,12 +284,12 @@ public class Items {
         result = ((result* 31)+((this.situacao == null)? 0 :this.situacao.hashCode()));
         result = ((result* 31)+((this.codigoNaladi == null)? 0 :this.codigoNaladi.hashCode()));
         result = ((result* 31)+((this.descricao == null)? 0 :this.descricao.hashCode()));
+        result = ((result* 31)+((this.cpfCnpjRaiz == null)? 0 :this.cpfCnpjRaiz.hashCode()));
         result = ((result* 31)+((this.codigoGPCBrick == null)? 0 :this.codigoGPCBrick.hashCode()));
         result = ((result* 31)+((this.codigoOperadorEstrangeiro == null)? 0 :this.codigoOperadorEstrangeiro.hashCode()));
         result = ((result* 31)+((this.codigoGPC == null)? 0 :this.codigoGPC.hashCode()));
         result = ((result* 31)+((this.codigoUNSPSC == null)? 0 :this.codigoUNSPSC.hashCode()));
         result = ((result* 31)+((this.codigosInterno == null)? 0 :this.codigosInterno.hashCode()));
-        result = ((result* 31)+((this.cnpjRaiz == null)? 0 :this.cnpjRaiz.hashCode()));
         result = ((result* 31)+((this.ncm == null)? 0 :this.ncm.hashCode()));
         result = ((result* 31)+((this.paisOrigem == null)? 0 :this.paisOrigem.hashCode()));
         result = ((result* 31)+((this.cpfCnpjFabricante == null)? 0 :this.cpfCnpjFabricante.hashCode()));
@@ -308,7 +308,7 @@ public class Items {
             return false;
         }
         Items rhs = ((Items) other);
-        return ((((((((((((((((((this.fabricanteConhecido == rhs.fabricanteConhecido)||((this.fabricanteConhecido!= null)&&this.fabricanteConhecido.equals(rhs.fabricanteConhecido)))&&((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo))))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.codigoNaladi == rhs.codigoNaladi)||((this.codigoNaladi!= null)&&this.codigoNaladi.equals(rhs.codigoNaladi))))&&((this.descricao == rhs.descricao)||((this.descricao!= null)&&this.descricao.equals(rhs.descricao))))&&((this.codigoGPCBrick == rhs.codigoGPCBrick)||((this.codigoGPCBrick!= null)&&this.codigoGPCBrick.equals(rhs.codigoGPCBrick))))&&((this.codigoOperadorEstrangeiro == rhs.codigoOperadorEstrangeiro)||((this.codigoOperadorEstrangeiro!= null)&&this.codigoOperadorEstrangeiro.equals(rhs.codigoOperadorEstrangeiro))))&&((this.codigoGPC == rhs.codigoGPC)||((this.codigoGPC!= null)&&this.codigoGPC.equals(rhs.codigoGPC))))&&((this.codigoUNSPSC == rhs.codigoUNSPSC)||((this.codigoUNSPSC!= null)&&this.codigoUNSPSC.equals(rhs.codigoUNSPSC))))&&((this.codigosInterno == rhs.codigosInterno)||((this.codigosInterno!= null)&&this.codigosInterno.equals(rhs.codigosInterno))))&&((this.cnpjRaiz == rhs.cnpjRaiz)||((this.cnpjRaiz!= null)&&this.cnpjRaiz.equals(rhs.cnpjRaiz))))&&((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm))))&&((this.paisOrigem == rhs.paisOrigem)||((this.paisOrigem!= null)&&this.paisOrigem.equals(rhs.paisOrigem))))&&((this.cpfCnpjFabricante == rhs.cpfCnpjFabricante)||((this.cpfCnpjFabricante!= null)&&this.cpfCnpjFabricante.equals(rhs.cpfCnpjFabricante))))&&((this.seq == rhs.seq)||((this.seq!= null)&&this.seq.equals(rhs.seq))))&&((this.atributos == rhs.atributos)||((this.atributos!= null)&&this.atributos.equals(rhs.atributos))))&&((this.modalidade == rhs.modalidade)||((this.modalidade!= null)&&this.modalidade.equals(rhs.modalidade))));
+        return ((((((((((((((((((this.fabricanteConhecido == rhs.fabricanteConhecido)||((this.fabricanteConhecido!= null)&&this.fabricanteConhecido.equals(rhs.fabricanteConhecido)))&&((this.codigo == rhs.codigo)||((this.codigo!= null)&&this.codigo.equals(rhs.codigo))))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.codigoNaladi == rhs.codigoNaladi)||((this.codigoNaladi!= null)&&this.codigoNaladi.equals(rhs.codigoNaladi))))&&((this.descricao == rhs.descricao)||((this.descricao!= null)&&this.descricao.equals(rhs.descricao))))&&((this.cpfCnpjRaiz == rhs.cpfCnpjRaiz)||((this.cpfCnpjRaiz!= null)&&this.cpfCnpjRaiz.equals(rhs.cpfCnpjRaiz))))&&((this.codigoGPCBrick == rhs.codigoGPCBrick)||((this.codigoGPCBrick!= null)&&this.codigoGPCBrick.equals(rhs.codigoGPCBrick))))&&((this.codigoOperadorEstrangeiro == rhs.codigoOperadorEstrangeiro)||((this.codigoOperadorEstrangeiro!= null)&&this.codigoOperadorEstrangeiro.equals(rhs.codigoOperadorEstrangeiro))))&&((this.codigoGPC == rhs.codigoGPC)||((this.codigoGPC!= null)&&this.codigoGPC.equals(rhs.codigoGPC))))&&((this.codigoUNSPSC == rhs.codigoUNSPSC)||((this.codigoUNSPSC!= null)&&this.codigoUNSPSC.equals(rhs.codigoUNSPSC))))&&((this.codigosInterno == rhs.codigosInterno)||((this.codigosInterno!= null)&&this.codigosInterno.equals(rhs.codigosInterno))))&&((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm))))&&((this.paisOrigem == rhs.paisOrigem)||((this.paisOrigem!= null)&&this.paisOrigem.equals(rhs.paisOrigem))))&&((this.cpfCnpjFabricante == rhs.cpfCnpjFabricante)||((this.cpfCnpjFabricante!= null)&&this.cpfCnpjFabricante.equals(rhs.cpfCnpjFabricante))))&&((this.seq == rhs.seq)||((this.seq!= null)&&this.seq.equals(rhs.seq))))&&((this.atributos == rhs.atributos)||((this.atributos!= null)&&this.atributos.equals(rhs.atributos))))&&((this.modalidade == rhs.modalidade)||((this.modalidade!= null)&&this.modalidade.equals(rhs.modalidade))));
     }
 
 }

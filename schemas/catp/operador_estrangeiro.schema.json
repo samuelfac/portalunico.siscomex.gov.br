@@ -10,7 +10,7 @@
                 "seq": {
                     "type": "integer"
                 },
-		        "cnpjRaiz": {
+		        "cpfCnpjRaiz": {
 		            "type": "string"
 		        },
 		        "codigo": {

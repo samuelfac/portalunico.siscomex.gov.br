@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" targetNamespace="http://www.pucomex.serpro.gov.br/cct"
+	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
+	
+	<element name="duimps">
+		<complexType>
+			<sequence>
+				<element name="duimp" type="tns:TDUIMP" minOccurs="1" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<complexType name="TDUIMP">
+		<sequence>
+			<element name="numeroDUIMP" type="integer" />
+			<element name="numeroRUC" type="integer" />
+		</sequence>
+	</complexType>
+</schema>

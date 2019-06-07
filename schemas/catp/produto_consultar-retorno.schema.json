@@ -22,7 +22,7 @@
 	                    "null"
 	                ]
 	            },
-	            "cnpjRaiz": {
+	            "cpfCnpjRaiz": {
 	                "type": "string"
 	            },
 	            "situacao": {
@@ -101,7 +101,7 @@
 	                "items": {
 	                    "type": "string"
 	                }
-	            } 
+	            }
 	        }
 	    }
 	}

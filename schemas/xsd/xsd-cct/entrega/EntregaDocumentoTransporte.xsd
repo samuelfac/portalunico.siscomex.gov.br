@@ -29,7 +29,7 @@
 			<element name="documentosTransporte" minOccurs="1" maxOccurs="1">
 	    		<complexType>
 	      			<sequence>
-	        			<element name="documentoTransporte" type="tns:DocumentoTransporte" minOccurs="1" maxOccurs="100" />
+	        			<element name="documentoTransporte" type="tns:DocumentoTransporte" minOccurs="1" maxOccurs="1" />
 	      			</sequence>
 	    		</complexType>
 	      		<unique name="idDocumentoTransporteUnique">
@@ -37,7 +37,24 @@
 	        		<field xpath="tns:identificacaoDocumentoTransporte" />
 	        	</unique>
   			</element>
+  			
+  			<element name="transitoSimplificado" type="tns:TransitoSimplificadoEntregaDocTransporte" minOccurs="0" maxOccurs="1" />
 
 		</sequence>
 	</complexType>
+	
+	<complexType name="TransitoSimplificadoEntregaDocTransporte">
+		<sequence>
+			<choice>
+				<sequence>
+					<element name="codigoURFDestino" type="tns:CodigoURF" minOccurs="1" maxOccurs="1" />
+					<element name="cnpjRespDestino" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />
+				</sequence>
+				<sequence>
+					<element name="codigoRADestino" type="tns:CodigoRA" minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+	
 </schema>
