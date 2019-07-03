@@ -71,6 +71,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/complexType>
  *           &lt;/element>
  *         &lt;/choice>
+ *         &lt;element name="indEscaneamento" type="{http://www.pucomex.serpro.gov.br/cct}SimNao" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -85,7 +86,8 @@ import javax.xml.bind.annotation.XmlType;
     "cnpjRespDestino",
     "codigoRADestino",
     "veiculoFerroviario",
-    "veiculoRodoviario"
+    "veiculoRodoviario",
+    "indEscaneamento"
 })
 public class TransitoSimplificadoEntrega {
 
@@ -99,6 +101,8 @@ public class TransitoSimplificadoEntrega {
     protected TransitoSimplificadoEntrega.VeiculoFerroviario veiculoFerroviario;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
     protected TransitoSimplificadoEntrega.VeiculoRodoviario veiculoRodoviario;
+    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
+    protected String indEscaneamento;
 
     /**
      * Obtém o valor da propriedade codigoURFDestino.
@@ -218,6 +222,30 @@ public class TransitoSimplificadoEntrega {
      */
     public void setVeiculoRodoviario(TransitoSimplificadoEntrega.VeiculoRodoviario value) {
         this.veiculoRodoviario = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade indEscaneamento.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIndEscaneamento() {
+        return indEscaneamento;
+    }
+
+    /**
+     * Define o valor da propriedade indEscaneamento.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIndEscaneamento(String value) {
+        this.indEscaneamento = value;
     }
 
 

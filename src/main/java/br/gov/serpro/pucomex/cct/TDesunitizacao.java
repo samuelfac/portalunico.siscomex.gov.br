@@ -27,9 +27,17 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;sequence>
  *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}documentos"/>
  *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}notasFiscais" minOccurs="0"/>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}itensDUE" minOccurs="0"/>
  *             &lt;/sequence>
  *             &lt;sequence>
  *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}notasFiscais"/>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}itensDUE" minOccurs="0"/>
+ *             &lt;/sequence>
+ *             &lt;sequence>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}itensDUE"/>
+ *             &lt;/sequence>
+ *             &lt;sequence>
+ *               &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}duimps"/>
  *             &lt;/sequence>
  *           &lt;/choice>
  *         &lt;/sequence>
@@ -48,9 +56,11 @@ import javax.xml.bind.annotation.XmlType;
 public class TDesunitizacao {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Documentos.class, required = false),
+        @XmlElementRef(name = "duimps", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Duimps.class, required = false),
         @XmlElementRef(name = "notasFiscais", namespace = "http://www.pucomex.serpro.gov.br/cct", type = NotasFiscais.class, required = false),
-        @XmlElementRef(name = "numeroConteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "numeroConteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Documentos.class, required = false),
+        @XmlElementRef(name = "itensDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = ItensDUE.class, required = false)
     })
     protected List<Object> content;
 
@@ -60,8 +70,8 @@ public class TDesunitizacao {
      * <p>
      * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
      * O nome do campo "NotasFiscais" é usado por duas partes diferentes de um esquema. Consulte: 
-     * linha 43 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/unitizacao/Desunitizacao.xsd
-     * linha 40 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/unitizacao/Desunitizacao.xsd
+     * linha 46 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/unitizacao/Desunitizacao.xsd
+     * linha 42 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/unitizacao/Desunitizacao.xsd
      * <p>
      * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
      * das seguintes declarações, a fim de alterar seus nomes: 
@@ -82,9 +92,11 @@ public class TDesunitizacao {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Documentos }
      * {@link NotasFiscais }
      * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link Duimps }
+     * {@link Documentos }
+     * {@link ItensDUE }
      * 
      * 
      */

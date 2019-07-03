@@ -29,9 +29,14 @@ import javax.xml.bind.annotation.XmlType;
  *           &lt;sequence>
  *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}cargaSoltaVeiculo"/>
  *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}granel" minOccurs="0"/>
+ *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}veiculo" minOccurs="0"/>
  *           &lt;/sequence>
  *           &lt;sequence>
  *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}granel"/>
+ *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}veiculo" minOccurs="0"/>
+ *           &lt;/sequence>
+ *           &lt;sequence>
+ *             &lt;element ref="{http://www.pucomex.serpro.gov.br/cct}veiculo"/>
  *           &lt;/sequence>
  *         &lt;/choice>
  *       &lt;/sequence>
@@ -49,10 +54,11 @@ import javax.xml.bind.annotation.XmlType;
 public class TDocumentoCarga {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "numeroRUC", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "veiculo", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Veiculo.class, required = false),
         @XmlElementRef(name = "cargaSoltaVeiculo", namespace = "http://www.pucomex.serpro.gov.br/cct", type = CargaSoltaVeiculo.class, required = false),
+        @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Granel.class, required = false),
-        @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "numeroRUC", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<Object> content;
 
@@ -62,8 +68,8 @@ public class TDocumentoCarga {
      * <p>
      * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
      * O nome do campo "Granel" é usado por duas partes diferentes de um esquema. Consulte: 
-     * linha 37 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/reuso/DocumentoCarga.xsd
-     * linha 34 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/reuso/DocumentoCarga.xsd
+     * linha 39 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/reuso/DocumentoCarga.xsd
+     * linha 35 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/reuso/DocumentoCarga.xsd
      * <p>
      * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
      * das seguintes declarações, a fim de alterar seus nomes: 
@@ -84,10 +90,11 @@ public class TDocumentoCarga {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link CargaSoltaVeiculo }
+     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link Veiculo }
      * {@link Granel }
      * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link CargaSoltaVeiculo }
      * 
      * 
      */

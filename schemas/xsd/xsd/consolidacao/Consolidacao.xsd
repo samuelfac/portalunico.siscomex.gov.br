@@ -31,9 +31,6 @@
 			<element name="numeroMRUC" type="tns:NumeroMRUC" minOccurs="0"
 				maxOccurs="1" />
 
-			<element name="tipoDeCarga" type="tns:TipoCargaConsolidar"
-				minOccurs="1" maxOccurs="1" />
-
 			<element name="cnpjConsolidador" type="tns:CNPJ" minOccurs="1"
 				maxOccurs="1" />
 
@@ -43,7 +40,7 @@
 				<complexType>
 					<sequence>
 						<element name="documento" type="tns:TDocumentoCargaConsolidacao"
-							minOccurs="2" maxOccurs="unbounded" />
+							minOccurs="0" maxOccurs="unbounded" />
 					</sequence>
 				</complexType>
 				<unique name="identNumeroDUE">

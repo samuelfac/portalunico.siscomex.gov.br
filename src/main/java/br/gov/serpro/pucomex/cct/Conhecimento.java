@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="numeroConhecimento" type="{http://www.pucomex.serpro.gov.br/cct}NumeroConhecimento"/>
  *         &lt;element name="dataEmissaoConhecimento" type="{http://www.pucomex.serpro.gov.br/cct}DataPadraoServico"/>
- *         &lt;element name="frete" type="{http://www.pucomex.serpro.gov.br/cct}Frete" minOccurs="0"/>
+ *         &lt;element name="frete" type="{http://www.pucomex.serpro.gov.br/cct}Frete"/>
  *         &lt;sequence>
  *           &lt;element name="consignatario" type="{http://www.pucomex.serpro.gov.br/cct}Consignatario"/>
  *         &lt;/sequence>
@@ -44,7 +44,7 @@ public class Conhecimento {
     protected String numeroConhecimento;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
     protected String dataEmissaoConhecimento;
-    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
+    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
     protected Frete frete;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
     protected Consignatario consignatario;

@@ -24,8 +24,8 @@
 		<sequence>
 
 			<element name="identificacaoManifestacao" type="tns:StringBasica50" minOccurs="1" maxOccurs="1" />
-			<element name="tipoDocumentoTransporte" type="tns:TipoDocumentoTransporte" minOccurs="1" maxOccurs="1" />
-			<element name="indCargaEnviadaDespacho" type="tns:SimNao" minOccurs="1" maxOccurs="1" />
+			<element name="tipoDocumentoTransporte" type="tns:TipoDocumentoTransporteSemMIC" minOccurs="1" maxOccurs="1" />
+			<element name="indCargaEnviadaDespacho" type="tns:Nao" minOccurs="1" maxOccurs="1" />
 			<element name="cargaJaEmbarcada" type="tns:SimNao" minOccurs="1" maxOccurs="1" />
 			
 			<choice>
@@ -72,6 +72,7 @@
 							<element name="identificacaoVeiculo" type="tns:IdentificacaoVeiculo" minOccurs="1" maxOccurs="1" />
 							<element name="numeroDocumentoTransporte" type="tns:NumeroDocumentoTransporte" minOccurs="1" maxOccurs="1" />
 							<element name="dataEmissaoDocumentoTransporte" type="tns:DataPadraoServico" minOccurs="1" maxOccurs="1"/>
+							<element name="dadosDocumentoTransporte" type="tns:DadosDocumentoTransporte" minOccurs="0" maxOccurs="1" />
 						</sequence>
 					</complexType>
 				</element>
@@ -111,7 +112,7 @@
 
 			<element name="dataEmissaoConhecimento" type="tns:DataPadraoServico" minOccurs="1" maxOccurs="1" />
 
-			<element name="frete" type="tns:Frete" minOccurs="0" maxOccurs="1" />
+			<element name="frete" type="tns:Frete" minOccurs="1" maxOccurs="1" />
 
    			<sequence>
        			<element name="consignatario" type="tns:Consignatario" minOccurs="1" maxOccurs="1" />

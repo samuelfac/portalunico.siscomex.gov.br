@@ -7,7 +7,7 @@
 	
 	<complexType name="TVeiculoTransitoSimplificado" >
 		<sequence>
-			<element name="placa" type="tns:StringBasica15" minOccurs="1" maxOccurs="1" />
+			<element name="placa" type="tns:PlacaVeiculo" minOccurs="1" maxOccurs="1" />
 
 			<element name="lacres" minOccurs="0" maxOccurs="1" >
 				<complexType>

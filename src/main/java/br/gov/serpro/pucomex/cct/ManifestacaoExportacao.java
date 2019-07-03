@@ -1,7 +1,6 @@
 
 package br.gov.serpro.pucomex.cct;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -21,8 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="identificacaoManifestacao" type="{http://www.pucomex.serpro.gov.br/cct}StringBasica50"/>
- *         &lt;element name="tipoDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}TipoDocumentoTransporte"/>
- *         &lt;element name="indCargaEnviadaDespacho" type="{http://www.pucomex.serpro.gov.br/cct}SimNao"/>
+ *         &lt;element name="tipoDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}TipoDocumentoTransporteSemMIC"/>
+ *         &lt;element name="indCargaEnviadaDespacho" type="{http://www.pucomex.serpro.gov.br/cct}Nao"/>
  *         &lt;element name="cargaJaEmbarcada" type="{http://www.pucomex.serpro.gov.br/cct}SimNao"/>
  *         &lt;choice>
  *           &lt;element name="cnpjTransportador" type="{http://www.pucomex.serpro.gov.br/cct}CNPJ"/>
@@ -76,6 +75,7 @@ import javax.xml.bind.annotation.XmlType;
  *                     &lt;element name="identificacaoVeiculo" type="{http://www.pucomex.serpro.gov.br/cct}IdentificacaoVeiculo"/>
  *                     &lt;element name="numeroDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}NumeroDocumentoTransporte"/>
  *                     &lt;element name="dataEmissaoDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DataPadraoServico"/>
+ *                     &lt;element name="dadosDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DadosDocumentoTransporte" minOccurs="0"/>
  *                   &lt;/sequence>
  *                 &lt;/restriction>
  *               &lt;/complexContent>
@@ -628,6 +628,7 @@ public class ManifestacaoExportacao {
      *         &lt;element name="identificacaoVeiculo" type="{http://www.pucomex.serpro.gov.br/cct}IdentificacaoVeiculo"/>
      *         &lt;element name="numeroDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}NumeroDocumentoTransporte"/>
      *         &lt;element name="dataEmissaoDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DataPadraoServico"/>
+     *         &lt;element name="dadosDocumentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DadosDocumentoTransporte" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -641,7 +642,8 @@ public class ManifestacaoExportacao {
         "codigoTipoModal",
         "identificacaoVeiculo",
         "numeroDocumentoTransporte",
-        "dataEmissaoDocumentoTransporte"
+        "dataEmissaoDocumentoTransporte",
+        "dadosDocumentoTransporte"
     })
     public static class OutroModal {
 
@@ -653,6 +655,8 @@ public class ManifestacaoExportacao {
         protected String numeroDocumentoTransporte;
         @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
         protected String dataEmissaoDocumentoTransporte;
+        @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
+        protected DadosDocumentoTransporte dadosDocumentoTransporte;
 
         /**
          * Obtém o valor da propriedade codigoTipoModal.
@@ -750,6 +754,30 @@ public class ManifestacaoExportacao {
             this.dataEmissaoDocumentoTransporte = value;
         }
 
+        /**
+         * Obtém o valor da propriedade dadosDocumentoTransporte.
+         * 
+         * @return
+         *     possible object is
+         *     {@link DadosDocumentoTransporte }
+         *     
+         */
+        public DadosDocumentoTransporte getDadosDocumentoTransporte() {
+            return dadosDocumentoTransporte;
+        }
+
+        /**
+         * Define o valor da propriedade dadosDocumentoTransporte.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link DadosDocumentoTransporte }
+         *     
+         */
+        public void setDadosDocumentoTransporte(DadosDocumentoTransporte value) {
+            this.dadosDocumentoTransporte = value;
+        }
+
     }
 
 
@@ -844,7 +872,7 @@ public class ManifestacaoExportacao {
         @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
         protected String prefixoAeronave;
         @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-        protected BigInteger numeroVoo;
+        protected String numeroVoo;
         @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
         protected String dataPartidaProcedencia;
 
@@ -901,10 +929,10 @@ public class ManifestacaoExportacao {
          * 
          * @return
          *     possible object is
-         *     {@link BigInteger }
+         *     {@link String }
          *     
          */
-        public BigInteger getNumeroVoo() {
+        public String getNumeroVoo() {
             return numeroVoo;
         }
 
@@ -913,10 +941,10 @@ public class ManifestacaoExportacao {
          * 
          * @param value
          *     allowed object is
-         *     {@link BigInteger }
+         *     {@link String }
          *     
          */
-        public void setNumeroVoo(BigInteger value) {
+        public void setNumeroVoo(String value) {
             this.numeroVoo = value;
         }
 

@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="placa" type="{http://www.pucomex.serpro.gov.br/cct}StringBasica15"/>
+ *         &lt;element name="placa" type="{http://www.pucomex.serpro.gov.br/cct}PlacaVeiculo"/>
  *         &lt;element name="tara" type="{http://www.pucomex.serpro.gov.br/cct}Tara"/>
  *         &lt;element name="lacres" minOccurs="0">
  *           &lt;complexType>

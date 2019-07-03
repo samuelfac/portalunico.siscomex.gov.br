@@ -37,7 +37,7 @@
 
 	<simpleType name="MoedaSwift">
 		<restriction base="string">
-			<pattern value="[A-Z]{3}"/>
+			<pattern value="[A-Z]{3}" />
 		</restriction>
 	</simpleType>
 
@@ -61,7 +61,7 @@
 
 	<simpleType name="CodigoIMO">
 		<restriction base="string">
-			<pattern value="[0-9]{15}" />
+			<pattern value="[a-z,A-Z,0-9]{1,15}" />
 		</restriction>
 	</simpleType>
 
@@ -98,6 +98,11 @@
 		</restriction>
 	</simpleType>
 
+	<simpleType name="ViaTransporteRodoviaria">
+		<restriction base="string">
+			<pattern value="07" />
+		</restriction>
+	</simpleType>
 
 	<simpleType name="Dec_1110v">
 		<restriction base="string">
@@ -121,6 +126,12 @@
 		</restriction>
 	</simpleType>
 
+	<simpleType name="Dec_2v1">
+		<restriction base="decimal">
+			<pattern value="([0-9]{1}|[1-9]{1}[0-9]{1})\.[0-9]{1}" />
+		</restriction>
+	</simpleType>
+
 	<simpleType name="Dec_6v3">
 		<restriction base="decimal">
 			<pattern value="0\.[0-9]{3}|[1-9]{1}[0-9]{0,5}\.[0-9]{3}" />
@@ -129,14 +140,14 @@
 
 	<simpleType name="Dec_9v3">
 		<restriction base="decimal">
-			<minInclusive value="0.001"/>
+			<minInclusive value="0.001" />
 			<pattern value="0\.[0-9]{3}|[1-9]{1}[0-9]{0,8}\.[0-9]{3}" />
 		</restriction>
 	</simpleType>
 
 	<simpleType name="IdentificacaoVeiculo">
 		<restriction base="string">
-			<pattern value="[A-Za-z0-9-]{5,15}" />
+			<pattern value="[A-Za-z0-9]{5,15}" />
 		</restriction>
 	</simpleType>
 
@@ -159,7 +170,7 @@
 	</simpleType>
 
 	<simpleType name="NumeroVoo">
-		<restriction base="integer">
+		<restriction base="string">
 			<pattern value="[0-9a-zA-Z]{5,9}" />
 		</restriction>
 	</simpleType>
@@ -176,10 +187,16 @@
 			<pattern value="[0-9a-zA-Z]{1,11}" />
 		</restriction>
 	</simpleType>
-	
-		<simpleType name="NumeroConhecimento">
+
+	<simpleType name="NumeroConhecimento">
 		<restriction base="string">
 			<pattern value="[0-9A-Za-z]{5,20}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NumeroConhecimentoMIC">
+		<restriction base="string">
+			<pattern value="[A-Za-z]{2}[0-9]{3,9}" />
 		</restriction>
 	</simpleType>
 
@@ -195,7 +212,7 @@
 				value="([0-9]{1}BR[0-9]{8}[0-9]{1}[0-9a-zA-Z]{1,23})|([0-9]{1}BR[0-9]{11}[0-9]{1}[0-9a-zA-Z]{1,20})" />
 		</restriction>
 	</simpleType>
-	
+
 	<simpleType name="NumeroMRUC">
 		<restriction base="string">
 			<pattern
@@ -209,6 +226,12 @@
 		</restriction>
 	</simpleType>
 
+	<simpleType name="PaisIN">
+		<restriction base="integer">
+			<pattern value="[0-9]{3}" />
+		</restriction>
+	</simpleType>
+
 	<simpleType name="PrefixoAeronave">
 		<restriction base="string">
 			<pattern value="[0-9a-zA-Z]{5,15}" />
@@ -217,7 +240,7 @@
 
 	<simpleType name="QuantidadeSoltaVeiculo">
 		<restriction base="integer">
-			<minInclusive value="1"/>
+			<minInclusive value="1" />
 			<pattern value="[0-9]{1,7}" />
 		</restriction>
 	</simpleType>
@@ -225,6 +248,18 @@
 	<simpleType name="SimNao">
 		<restriction base="string">
 			<pattern value="S|N" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="Nao">
+		<restriction base="string">
+			<pattern value="N" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="Sim">
+		<restriction base="string">
+			<pattern value="S" />
 		</restriction>
 	</simpleType>
 
@@ -236,50 +271,78 @@
 
 	<simpleType name="StringBasica10">
 		<restriction base="string">
-			<maxLength value='10' />
 			<minLength value='1' />
+			<maxLength value='10' />
 		</restriction>
 	</simpleType>
 
 	<simpleType name="StringBasica15">
 		<restriction base="string">
-			<maxLength value='15' />
 			<minLength value='1' />
+			<maxLength value='15' />
 		</restriction>
 	</simpleType>
-	
+
+	<simpleType name="StringBasica20">
+		<restriction base="string">
+			<minLength value='1' />
+			<maxLength value='20' />
+		</restriction>
+	</simpleType>
+
 	<simpleType name="StringBasica50">
 		<restriction base="string">
-			<maxLength value='50' />
 			<minLength value='1' />
+			<maxLength value='50' />
 		</restriction>
 	</simpleType>
 
 	<simpleType name="StringBasica60">
 		<restriction base="string">
-			<maxLength value='60' />
 			<minLength value='2' />
+			<maxLength value='60' />
 		</restriction>
 	</simpleType>
 
 	<simpleType name="StringBasica120">
 		<restriction base="string">
-			<maxLength value='120' />
 			<minLength value='2' />
+			<maxLength value='120' />
 		</restriction>
 	</simpleType>
 
 	<simpleType name="StringBasica150">
 		<restriction base="string">
-			<maxLength value='150' />
 			<minLength value='2' />
+			<maxLength value='150' />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StringBasica200">
+		<restriction base="string">
+			<minLength value='2' />
+			<maxLength value='200' />
 		</restriction>
 	</simpleType>
 
 	<simpleType name="StringBasica250">
 		<restriction base="string">
-			<maxLength value='250' />
 			<minLength value='2' />
+			<maxLength value='250' />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StringBasica400">
+		<restriction base="string">
+			<minLength value='1' />
+			<maxLength value='400' />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="StringBasica500">
+		<restriction base="string">
+			<minLength value='1' />
+			<maxLength value='500' />
 		</restriction>
 	</simpleType>
 
@@ -291,7 +354,7 @@
 			<pattern value="[1|2]" />
 		</restriction>
 	</simpleType>
-	
+
 	<simpleType name="TipoCargaConsolidar">
 		<annotation>
 			<documentation>2 = Solta ou Veículo | 3 = Granel</documentation>
@@ -307,13 +370,25 @@
 			<pattern value="[0][1-4,8]" />
 		</restriction>
 	</simpleType>
-	
+
+	<simpleType name="TipoDocumentoTransporteSemMIC">
+		<restriction base="tns:CodigoDominio2N">
+			<pattern value="[0][2-4,8]" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TipoDocumentoTransporteMIC">
+		<restriction base="tns:CodigoDominio2N">
+			<pattern value="01" />
+		</restriction>
+	</simpleType>
+
 	<simpleType name="TipoDocumentoTransporteRecepcao">
 		<restriction base="tns:CodigoDominio2N">
 			<pattern value="[0][1-3,8]" />
 		</restriction>
 	</simpleType>
-	
+
 	<simpleType name="TipoFrete">
 		<annotation>
 			<documentation>1 = prepaid | 2 = collect</documentation>
@@ -322,7 +397,7 @@
 			<pattern value="[1|2]" />
 		</restriction>
 	</simpleType>
-	
+
 	<simpleType name="UnidadeMedida">
 		<restriction base="string">
 			<enumeration value="kg" />
@@ -348,6 +423,18 @@
 		</restriction>
 	</simpleType>
 
+	<simpleType name="UF2">
+		<restriction base="string">
+			<pattern value="[A-Z]{2}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CodigoMunicipio">
+		<restriction base="integer">
+			<pattern value="[0-9]{4}" />
+		</restriction>
+	</simpleType>
+
 	<simpleType name="UnidadeCarga">
 		<restriction base="string">
 			<enumeration value="veiculo" />
@@ -358,9 +445,146 @@
 
 	<simpleType name="QuantidadeVagoes">
 		<restriction base="integer">
-			<minInclusive value="1"/>
+			<minInclusive value="1" />
 			<pattern value="[0-9]{1,2}" />
 		</restriction>
 	</simpleType>
+
+	<simpleType name="Ano">
+		<restriction base="integer">
+			<pattern value="([1]{1}[9]{1}[0-9]{2}|[2]{1}[0]{1}[0-9]{2})" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="ChassiVeiculo">
+		<restriction base="string">
+			<minLength value="2" />
+			<maxLength value="20" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MarcaVeiculo">
+		<restriction base="string">
+            <minLength value="2" />
+			<maxLength value="20" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="PlacaVeiculo">
+		<restriction base="string">
+			<pattern value="[0-9a-zA-Z]{1,15}" />
+		</restriction>
+	</simpleType>		
+
+	<simpleType name="Tara">
+		<restriction base="decimal">
+			<pattern value="0|0\.[0-9]{3}|[1-9]{1}[0-9]{0,8}(\.[0-9]{3})?" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="PaisDestinoMIC">
+		<restriction base="string">
+			<enumeration value="AR">
+				<annotation>
+					<documentation>Argentina</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="BO">
+				<annotation>
+					<documentation>Bolívia</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="CL">
+				<annotation>
+					<documentation>Chile</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="PY">
+				<annotation>
+					<documentation>Paraguai</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="PE">
+				<annotation>
+					<documentation>Peru</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="UY">
+				<annotation>
+					<documentation>Uruguai</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="TipoTransporteMIC">
+		<restriction base="integer">
+			<enumeration value="1">
+				<annotation>
+					<documentation>Regular</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="2">
+				<annotation>
+					<documentation>Próprio</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="3">
+				<annotation>
+					<documentation>Ocasional</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="LicencaTransportador">
+		<restriction base="string">
+		    <pattern value="[0-9]{4}\/[0-9]{2}"></pattern>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="AutorizacaoOcasional">
+		<restriction base="string">
+			<pattern value="[0-9a-zA-Z]{1,20}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CodigoAduanaDestino">
+		<restriction base="integer">
+			<pattern value="[0-9]{1,7}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="Moeda">
+		<restriction base="string">
+			<pattern value="[0-9]{3}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MoedaDolarDosEUA">
+		<restriction base="string">
+			<pattern value="220" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="CodigoTiposVolumes">
+		<restriction base="integer">
+			<pattern value="[0-9]{1,2}" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="QuantidadeVolumes">
+		<restriction base="integer">
+			<minInclusive value="1" />
+			<maxInclusive value="999999" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="IdFiscalEstrangeiro">
+		<restriction base="string">
+			<pattern value="[0-9a-zA-Z-]{1,14}" />
+		</restriction>
+	</simpleType>
+
 
 </schema>

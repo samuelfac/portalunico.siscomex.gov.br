@@ -29,7 +29,7 @@
 			<element name="documentosTransporte" minOccurs="1" maxOccurs="1">
 	    		<complexType>
 	      			<sequence>
-	        			<element name="documentoTransporte" type="tns:DocumentoTransporte" minOccurs="1" maxOccurs="100" />
+	        			<element name="documentoTransporte" type="tns:DocumentoTransporte" minOccurs="1" maxOccurs="1" />
 	      			</sequence>
 	    		</complexType>
 	      		<unique name="idDocumentoTransporteUnique">

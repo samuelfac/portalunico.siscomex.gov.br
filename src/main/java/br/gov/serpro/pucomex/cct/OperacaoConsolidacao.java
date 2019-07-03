@@ -1,7 +1,6 @@
 
 package br.gov.serpro.pucomex.cct;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -22,7 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="identificacaoConsolidacao" type="{http://www.pucomex.serpro.gov.br/cct}StringBasica50"/>
  *         &lt;element name="numeroMRUC" type="{http://www.pucomex.serpro.gov.br/cct}NumeroMRUC" minOccurs="0"/>
- *         &lt;element name="tipoDeCarga" type="{http://www.pucomex.serpro.gov.br/cct}TipoCargaConsolidar"/>
  *         &lt;element name="cnpjConsolidador" type="{http://www.pucomex.serpro.gov.br/cct}CNPJ"/>
  *         &lt;element name="acondicionamento" type="{http://www.pucomex.serpro.gov.br/cct}Acondicionamento"/>
  *         &lt;element name="documentosConsolidacao">
@@ -30,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="documento" type="{http://www.pucomex.serpro.gov.br/cct}TDocumentoCargaConsolidacao" maxOccurs="unbounded" minOccurs="2"/>
+ *                   &lt;element name="documento" type="{http://www.pucomex.serpro.gov.br/cct}TDocumentoCargaConsolidacao" maxOccurs="unbounded" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -48,7 +46,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "OperacaoConsolidacao", namespace = "http://www.pucomex.serpro.gov.br/cct", propOrder = {
     "identificacaoConsolidacao",
     "numeroMRUC",
-    "tipoDeCarga",
     "cnpjConsolidador",
     "acondicionamento",
     "documentosConsolidacao"
@@ -59,8 +56,6 @@ public class OperacaoConsolidacao {
     protected String identificacaoConsolidacao;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
     protected String numeroMRUC;
-    @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-    protected BigInteger tipoDeCarga;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
     protected String cnpjConsolidador;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
@@ -114,30 +109,6 @@ public class OperacaoConsolidacao {
      */
     public void setNumeroMRUC(String value) {
         this.numeroMRUC = value;
-    }
-
-    /**
-     * Obtém o valor da propriedade tipoDeCarga.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getTipoDeCarga() {
-        return tipoDeCarga;
-    }
-
-    /**
-     * Define o valor da propriedade tipoDeCarga.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setTipoDeCarga(BigInteger value) {
-        this.tipoDeCarga = value;
     }
 
     /**
@@ -223,7 +194,7 @@ public class OperacaoConsolidacao {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="documento" type="{http://www.pucomex.serpro.gov.br/cct}TDocumentoCargaConsolidacao" maxOccurs="unbounded" minOccurs="2"/>
+     *         &lt;element name="documento" type="{http://www.pucomex.serpro.gov.br/cct}TDocumentoCargaConsolidacao" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -238,7 +209,7 @@ public class OperacaoConsolidacao {
     })
     public static class DocumentosConsolidacao {
 
-        @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
+        @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct")
         protected List<TDocumentoCargaConsolidacao> documento;
 
         /**

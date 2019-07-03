@@ -56,8 +56,8 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosCarga {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "conteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Conteiner.class, required = false)
+        @XmlElementRef(name = "conteiner", namespace = "http://www.pucomex.serpro.gov.br/cct", type = Conteiner.class, required = false),
+        @XmlElementRef(name = "documentos", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<Object> content;
 
@@ -67,8 +67,8 @@ public class DadosCarga {
      * <p>
      * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
      * O nome do campo "Conteiner" é usado por duas partes diferentes de um esquema. Consulte: 
-     * linha 157 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
-     * linha 138 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
+     * linha 158 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
+     * linha 139 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
      * <p>
      * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
      * das seguintes declarações, a fim de alterar seus nomes: 
@@ -89,8 +89,8 @@ public class DadosCarga {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link DadosCarga.Documentos }{@code >}
      * {@link Conteiner }
+     * {@link JAXBElement }{@code <}{@link DadosCarga.Documentos }{@code >}
      * 
      * 
      */

@@ -52,9 +52,9 @@ import javax.xml.bind.annotation.XmlType;
 public class TCargaSoltaVeiculo {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "quantidade", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "tipoEmbalagem", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "total", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "total", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "quantidade", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<? extends Serializable>> content;
 
@@ -64,8 +64,8 @@ public class TCargaSoltaVeiculo {
      * <p>
      * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
      * O nome do campo "Quantidade" é usado por duas partes diferentes de um esquema. Consulte: 
-     * linha 71 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/TipoComplexo.xsd
-     * linha 68 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/TipoComplexo.xsd
+     * linha 98 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/TipoComplexo.xsd
+     * linha 95 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/TipoComplexo.xsd
      * <p>
      * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
      * das seguintes declarações, a fim de alterar seus nomes: 
@@ -86,9 +86,9 @@ public class TCargaSoltaVeiculo {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
-     * {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
+     * {@link JAXBElement }{@code <}{@link BigInteger }{@code >}
      * 
      * 
      */

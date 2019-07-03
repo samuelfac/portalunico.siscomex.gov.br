@@ -1,8 +1,6 @@
 
 package br.gov.serpro.pucomex.cct;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="documentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DocumentoTransporte" maxOccurs="100"/>
+ *                   &lt;element name="documentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DocumentoTransporte"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -194,7 +192,7 @@ public class EntregaDocumentoTransporte {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="documentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DocumentoTransporte" maxOccurs="100"/>
+     *         &lt;element name="documentoTransporte" type="{http://www.pucomex.serpro.gov.br/cct}DocumentoTransporte"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -210,35 +208,30 @@ public class EntregaDocumentoTransporte {
     public static class DocumentosTransporte {
 
         @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-        protected List<DocumentoTransporte> documentoTransporte;
+        protected DocumentoTransporte documentoTransporte;
 
         /**
-         * Gets the value of the documentoTransporte property.
+         * Obtém o valor da propriedade documentoTransporte.
          * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the documentoTransporte property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getDocumentoTransporte().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link DocumentoTransporte }
-         * 
-         * 
+         * @return
+         *     possible object is
+         *     {@link DocumentoTransporte }
+         *     
          */
-        public List<DocumentoTransporte> getDocumentoTransporte() {
-            if (documentoTransporte == null) {
-                documentoTransporte = new ArrayList<DocumentoTransporte>();
-            }
-            return this.documentoTransporte;
+        public DocumentoTransporte getDocumentoTransporte() {
+            return documentoTransporte;
+        }
+
+        /**
+         * Define o valor da propriedade documentoTransporte.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link DocumentoTransporte }
+         *     
+         */
+        public void setDocumentoTransporte(DocumentoTransporte value) {
+            this.documentoTransporte = value;
         }
 
     }

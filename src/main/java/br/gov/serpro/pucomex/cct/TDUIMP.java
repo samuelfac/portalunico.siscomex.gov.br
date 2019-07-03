@@ -1,7 +1,7 @@
 
 package br.gov.serpro.pucomex.cct;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -9,17 +9,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java de CavaloMicDTO complex type.
+ * <p>Classe Java de TDUIMP complex type.
  * 
  * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
  * 
  * <pre>
- * &lt;complexType name="CavaloMicDTO">
+ * &lt;complexType name="TDUIMP">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="placa" type="{http://www.pucomex.serpro.gov.br/cct}PlacaVeiculo"/>
- *         &lt;element name="tara" type="{http://www.pucomex.serpro.gov.br/cct}Tara"/>
+ *         &lt;element name="numeroDUIMP" type="{http://www.w3.org/2001/XMLSchema}integer"/>
+ *         &lt;element name="numeroRUC" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,63 +29,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "CavaloMicDTO", namespace = "http://www.pucomex.serpro.gov.br/cct", propOrder = {
-    "placa",
-    "tara"
+@XmlType(name = "TDUIMP", namespace = "http://www.pucomex.serpro.gov.br/cct", propOrder = {
+    "numeroDUIMP",
+    "numeroRUC"
 })
-public class CavaloMicDTO {
+public class TDUIMP {
 
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-    protected String placa;
+    protected BigInteger numeroDUIMP;
     @XmlElement(namespace = "http://www.pucomex.serpro.gov.br/cct", required = true)
-    protected BigDecimal tara;
+    protected BigInteger numeroRUC;
 
     /**
-     * Obtém o valor da propriedade placa.
+     * Obtém o valor da propriedade numeroDUIMP.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public String getPlaca() {
-        return placa;
+    public BigInteger getNumeroDUIMP() {
+        return numeroDUIMP;
     }
 
     /**
-     * Define o valor da propriedade placa.
+     * Define o valor da propriedade numeroDUIMP.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link BigInteger }
      *     
      */
-    public void setPlaca(String value) {
-        this.placa = value;
+    public void setNumeroDUIMP(BigInteger value) {
+        this.numeroDUIMP = value;
     }
 
     /**
-     * Obtém o valor da propriedade tara.
+     * Obtém o valor da propriedade numeroRUC.
      * 
      * @return
      *     possible object is
-     *     {@link BigDecimal }
+     *     {@link BigInteger }
      *     
      */
-    public BigDecimal getTara() {
-        return tara;
+    public BigInteger getNumeroRUC() {
+        return numeroRUC;
     }
 
     /**
-     * Define o valor da propriedade tara.
+     * Define o valor da propriedade numeroRUC.
      * 
      * @param value
      *     allowed object is
-     *     {@link BigDecimal }
+     *     {@link BigInteger }
      *     
      */
-    public void setTara(BigDecimal value) {
-        this.tara = value;
+    public void setNumeroRUC(BigInteger value) {
+        this.numeroRUC = value;
     }
 
 }

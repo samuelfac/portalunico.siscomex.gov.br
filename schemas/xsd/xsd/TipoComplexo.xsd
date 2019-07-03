@@ -6,7 +6,37 @@
 	xmlns:tns="http://www.pucomex.serpro.gov.br/cct">
 
 	<include schemaLocation="./TipoSimples.xsd" />
-
+	
+	<complexType name="LocalCompleto">
+		<sequence>
+			<element name="codigoURF" type="tns:CodigoURF" minOccurs="1" maxOccurs="1" />
+			<choice>
+				<element name="codigoRA" type="tns:CodigoRA" minOccurs="1" maxOccurs="1" />
+				<sequence>
+					<element name="cnpjResponsavel" type="tns:CNPJ" minOccurs="1" maxOccurs="1" />	
+					<element name="coordenadas" type="tns:Coordenadas" minOccurs="0" maxOccurs="1" />
+				</sequence>
+			</choice>
+		</sequence>
+	</complexType>
+	
+	<complexType name="LocalPartida">
+			<complexContent>
+			<extension base="tns:LocalCompleto">
+				<sequence>
+					<element name="uf" type="tns:UF2" minOccurs="1" maxOccurs="1" />
+					<element name="cidade" type="tns:CodigoMunicipio" minOccurs="1" maxOccurs="1" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>	
+	
+	<complexType name="DadosDocumentoTransporte">
+		<sequence>
+			<element name="localSaida" type="tns:LocalCompleto" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+	
 	<complexType name="Local">
 		<sequence>
 			<element name="codigoURF" type="tns:CodigoURF" minOccurs="1" maxOccurs="1" />
@@ -15,10 +45,8 @@
 				<element name="coordenadas">
 					<complexType>
 						<sequence>
-							<element name="latitude" type="tns:Latitude"
-								minOccurs="1" maxOccurs="1" />
-							<element name="longitude" type="tns:Longitude"
-								minOccurs="1" maxOccurs="1" />
+							<element name="latitude" type="tns:Latitude" minOccurs="1" maxOccurs="1" />
+							<element name="longitude" type="tns:Longitude" minOccurs="1" maxOccurs="1" />
 						</sequence>
 					</complexType>
 				</element>
@@ -30,7 +58,6 @@
 		<sequence>
 			<element name="numeroConteiner" type="tns:NumeroConteiner" minOccurs="1" maxOccurs="1" />
 			<element name="tara" type="tns:Dec_6v3" minOccurs="1" maxOccurs="1" />
-
 			<element name="lacres" minOccurs="0" maxOccurs="1" >
 				<complexType>
 	    			<sequence>

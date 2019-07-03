@@ -60,10 +60,10 @@ import javax.xml.bind.annotation.XmlType;
 public class TDocumentoCargaManifestacao {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "cargaSoltaVeiculo", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "numeroDUE", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "numeroRUC", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
+        @XmlElementRef(name = "numeroRUC", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "granel", namespace = "http://www.pucomex.serpro.gov.br/cct", type = JAXBElement.class, required = false)
     })
     protected List<JAXBElement<?>> content;
 
@@ -73,8 +73,8 @@ public class TDocumentoCargaManifestacao {
      * <p>
      * Você está obtendo esta propriedade "catch-all" pelo seguinte motivo: 
      * O nome do campo "Granel" é usado por duas partes diferentes de um esquema. Consulte: 
-     * linha 205 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
-     * linha 197 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
+     * linha 206 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
+     * linha 198 de file:/D:/pontocob/workspace/java/portalunico.siscomex.gov.br/schemas/xsd/xsd/manifesto/ManifestacaoExportacao.xsd
      * <p>
      * Para eliminar esta propriedade, aplique uma personalização de propriedade a uma 
      * das seguintes declarações, a fim de alterar seus nomes: 
@@ -95,10 +95,10 @@ public class TDocumentoCargaManifestacao {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link TGranelManifestacao }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
      * {@link JAXBElement }{@code <}{@link TDocumentoCargaManifestacao.CargaSoltaVeiculo }{@code >}
      * {@link JAXBElement }{@code <}{@link String }{@code >}
+     * {@link JAXBElement }{@code <}{@link TGranelManifestacao }{@code >}
      * 
      * 
      */

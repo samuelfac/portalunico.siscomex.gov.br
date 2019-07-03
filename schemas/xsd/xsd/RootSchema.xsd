@@ -1,5 +1,6 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.pucomex.serpro.gov.br/cct">
 	<include schemaLocation="manifesto/ManifestacaoExportacao.xsd" />
+	<include schemaLocation="manifesto/ManifestacaoExportacaoPreACDMic.xsd" />
 	<include schemaLocation="recepcao/RecepcaoNFF.xsd" />
 	<include schemaLocation="recepcao/RecepcaoNFE.xsd" />
 	<include schemaLocation="entrega/EntregaConteiner.xsd" />
