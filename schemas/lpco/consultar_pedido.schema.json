@@ -10,6 +10,7 @@
 			"dataRegistro": { "type": "string" },
 			"situacao": { "type": "string" },
 			"codigoModelo": { "type": "string" },
+			"dataInicioVigenciaModelo": { "type": "string" },
 			"nome": { "type": "string" },
 			"ncm": { "type": "string" },
 			"importadorExportador": { "type": "string" },
@@ -17,7 +18,8 @@
 			"dueEmDespacho": { "type": ["string", "null"] },
 			"dueVinculada": { "type": ["string", "null"] },
 			"prorrogacaoPendente": { "type": "boolean" },
-    		"retificacaoPendente": { "type": "boolean" }
+    		"retificacaoPendente": { "type": "boolean" },
+    		"dataSituacaoAtual": { "type": "string" }
 		}
 	}
 }

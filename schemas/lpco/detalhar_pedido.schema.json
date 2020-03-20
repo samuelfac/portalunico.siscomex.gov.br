@@ -7,6 +7,7 @@
 		"numero": { "type": "string" },
 		"chaveAcesso": { "type": "string" },
 		"codigoModelo": { "type": "string" },
+		"dataInicioVigenciaModelo": { "type": "string" },
 		"orgao": { "type": "string" },
 		"situacao": { 
 			"type": "object",
@@ -15,6 +16,7 @@
 				"descricao": { "type": "string" }
 			 }
 		},
+		"dataSituacaoAtual": { "type": "string" },
 		"importadorExportador": { "type": "string" },
 		"declarante": { "type": ["string", "null"] },
 		"prorrogacaoPendente": { "type": "boolean" },

@@ -18,6 +18,9 @@ public class ConsultarPedido {
     @SerializedName("codigoModelo")
     @Expose
     private String codigoModelo;
+    @SerializedName("dataInicioVigenciaModelo")
+    @Expose
+    private String dataInicioVigenciaModelo;
     @SerializedName("nome")
     @Expose
     private String nome;
@@ -42,6 +45,9 @@ public class ConsultarPedido {
     @SerializedName("retificacaoPendente")
     @Expose
     private Boolean retificacaoPendente;
+    @SerializedName("dataSituacaoAtual")
+    @Expose
+    private String dataSituacaoAtual;
 
     public String getNumero() {
         return numero;
@@ -73,6 +79,14 @@ public class ConsultarPedido {
 
     public void setCodigoModelo(String codigoModelo) {
         this.codigoModelo = codigoModelo;
+    }
+
+    public String getDataInicioVigenciaModelo() {
+        return dataInicioVigenciaModelo;
+    }
+
+    public void setDataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
+        this.dataInicioVigenciaModelo = dataInicioVigenciaModelo;
     }
 
     public String getNome() {
@@ -139,6 +153,14 @@ public class ConsultarPedido {
         this.retificacaoPendente = retificacaoPendente;
     }
 
+    public String getDataSituacaoAtual() {
+        return dataSituacaoAtual;
+    }
+
+    public void setDataSituacaoAtual(String dataSituacaoAtual) {
+        this.dataSituacaoAtual = dataSituacaoAtual;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -158,6 +180,10 @@ public class ConsultarPedido {
         sb.append("codigoModelo");
         sb.append('=');
         sb.append(((this.codigoModelo == null)?"<null>":this.codigoModelo));
+        sb.append(',');
+        sb.append("dataInicioVigenciaModelo");
+        sb.append('=');
+        sb.append(((this.dataInicioVigenciaModelo == null)?"<null>":this.dataInicioVigenciaModelo));
         sb.append(',');
         sb.append("nome");
         sb.append('=');
@@ -191,6 +217,10 @@ public class ConsultarPedido {
         sb.append('=');
         sb.append(((this.retificacaoPendente == null)?"<null>":this.retificacaoPendente));
         sb.append(',');
+        sb.append("dataSituacaoAtual");
+        sb.append('=');
+        sb.append(((this.dataSituacaoAtual == null)?"<null>":this.dataSituacaoAtual));
+        sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {
@@ -211,9 +241,11 @@ public class ConsultarPedido {
         result = ((result* 31)+((this.nome == null)? 0 :this.nome.hashCode()));
         result = ((result* 31)+((this.dataFimVigencia == null)? 0 :this.dataFimVigencia.hashCode()));
         result = ((result* 31)+((this.retificacaoPendente == null)? 0 :this.retificacaoPendente.hashCode()));
+        result = ((result* 31)+((this.dataSituacaoAtual == null)? 0 :this.dataSituacaoAtual.hashCode()));
         result = ((result* 31)+((this.prorrogacaoPendente == null)? 0 :this.prorrogacaoPendente.hashCode()));
         result = ((result* 31)+((this.dueVinculada == null)? 0 :this.dueVinculada.hashCode()));
         result = ((result* 31)+((this.ncm == null)? 0 :this.ncm.hashCode()));
+        result = ((result* 31)+((this.dataInicioVigenciaModelo == null)? 0 :this.dataInicioVigenciaModelo.hashCode()));
         return result;
     }
 
@@ -226,7 +258,7 @@ public class ConsultarPedido {
             return false;
         }
         ConsultarPedido rhs = ((ConsultarPedido) other);
-        return (((((((((((((this.dueEmDespacho == rhs.dueEmDespacho)||((this.dueEmDespacho!= null)&&this.dueEmDespacho.equals(rhs.dueEmDespacho)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.codigoModelo == rhs.codigoModelo)||((this.codigoModelo!= null)&&this.codigoModelo.equals(rhs.codigoModelo))))&&((this.dataRegistro == rhs.dataRegistro)||((this.dataRegistro!= null)&&this.dataRegistro.equals(rhs.dataRegistro))))&&((this.importadorExportador == rhs.importadorExportador)||((this.importadorExportador!= null)&&this.importadorExportador.equals(rhs.importadorExportador))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.dataFimVigencia == rhs.dataFimVigencia)||((this.dataFimVigencia!= null)&&this.dataFimVigencia.equals(rhs.dataFimVigencia))))&&((this.retificacaoPendente == rhs.retificacaoPendente)||((this.retificacaoPendente!= null)&&this.retificacaoPendente.equals(rhs.retificacaoPendente))))&&((this.prorrogacaoPendente == rhs.prorrogacaoPendente)||((this.prorrogacaoPendente!= null)&&this.prorrogacaoPendente.equals(rhs.prorrogacaoPendente))))&&((this.dueVinculada == rhs.dueVinculada)||((this.dueVinculada!= null)&&this.dueVinculada.equals(rhs.dueVinculada))))&&((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm))));
+        return (((((((((((((((this.dueEmDespacho == rhs.dueEmDespacho)||((this.dueEmDespacho!= null)&&this.dueEmDespacho.equals(rhs.dueEmDespacho)))&&((this.situacao == rhs.situacao)||((this.situacao!= null)&&this.situacao.equals(rhs.situacao))))&&((this.numero == rhs.numero)||((this.numero!= null)&&this.numero.equals(rhs.numero))))&&((this.codigoModelo == rhs.codigoModelo)||((this.codigoModelo!= null)&&this.codigoModelo.equals(rhs.codigoModelo))))&&((this.dataRegistro == rhs.dataRegistro)||((this.dataRegistro!= null)&&this.dataRegistro.equals(rhs.dataRegistro))))&&((this.importadorExportador == rhs.importadorExportador)||((this.importadorExportador!= null)&&this.importadorExportador.equals(rhs.importadorExportador))))&&((this.nome == rhs.nome)||((this.nome!= null)&&this.nome.equals(rhs.nome))))&&((this.dataFimVigencia == rhs.dataFimVigencia)||((this.dataFimVigencia!= null)&&this.dataFimVigencia.equals(rhs.dataFimVigencia))))&&((this.retificacaoPendente == rhs.retificacaoPendente)||((this.retificacaoPendente!= null)&&this.retificacaoPendente.equals(rhs.retificacaoPendente))))&&((this.dataSituacaoAtual == rhs.dataSituacaoAtual)||((this.dataSituacaoAtual!= null)&&this.dataSituacaoAtual.equals(rhs.dataSituacaoAtual))))&&((this.prorrogacaoPendente == rhs.prorrogacaoPendente)||((this.prorrogacaoPendente!= null)&&this.prorrogacaoPendente.equals(rhs.prorrogacaoPendente))))&&((this.dueVinculada == rhs.dueVinculada)||((this.dueVinculada!= null)&&this.dueVinculada.equals(rhs.dueVinculada))))&&((this.ncm == rhs.ncm)||((this.ncm!= null)&&this.ncm.equals(rhs.ncm))))&&((this.dataInicioVigenciaModelo == rhs.dataInicioVigenciaModelo)||((this.dataInicioVigenciaModelo!= null)&&this.dataInicioVigenciaModelo.equals(rhs.dataInicioVigenciaModelo))));
     }
 
 }
