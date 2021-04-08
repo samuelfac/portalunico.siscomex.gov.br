@@ -21,10 +21,10 @@ jobs:
            java-version: 1.8
            
        - name: Validate version
-         run: mvn -DskipTests -B validate
+         run: mvn -B validate
             
        - name: Deploy to GitHub packages
          # Have to skip doc and sources because GH Packages doesn't support classifiers
-         run: mvn -DskipTests -B deploy -Dmaven.javadoc.skip=true -Dmaven.source.skip=true
+         run: mvn -B deploy
          env:
             GITHUB_TOKEN: ${{ github.token }}
