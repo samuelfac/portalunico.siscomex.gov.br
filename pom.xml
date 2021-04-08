@@ -76,5 +76,13 @@
 			<version>${jackson-jaxrs-version}</version>
 		</dependency>
 	</dependencies>
+ 
+	<distributionManagement> 
+		<repository> 
+			<id>github</id> 
+			<name>GitHub samuelfac Apache Maven Packages</name> 
+			<url>https://maven.pkg.github.com/samuelfac/portalunico</url> 
+		</repository> 
+	</distributionManagement> 
 
 </project>
