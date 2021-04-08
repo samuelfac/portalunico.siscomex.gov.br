@@ -1,42 +1,80 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>samuelfac</groupId>
-  <artifactId>portalunico.siscomex.gov.br</artifactId>
-  <version>20-03-2020</version>
-  <name>PortalUnicoSiscomex</name>
-  <description>Classes da API do Portal Único de Comércio Exterior, a nova forma de interação entre as empresas privadas e os diversos órgãos públicos intervenientes no comércio exterior.</description>
-  <url>https://val.portalunico.siscomex.gov.br/docs/api/</url>
-  <organization>
-  	<name>Samuel Facchinello</name>
-  	<url>https://about.me/samuelfac</url>
-  </organization>
-  <scm>
-  	<developerConnection>Samuel Facchinello</developerConnection>
-  </scm>
-  <issueManagement>
-  	<system>GitHub Issues</system>
-  </issueManagement>
-  <properties>
-  	<project.build.sourceEncoding>cp1252</project.build.sourceEncoding>
-  	<maven.compiler.source>1.7</maven.compiler.source>
-  	<maven.compiler.target>1.7</maven.compiler.target>
-  </properties>
-  <dependencies>
-  	<dependency>
-	    <groupId>org.projectlombok</groupId>
-	    <artifactId>lombok</artifactId>
-	    <version>1.18.12</version>
-	    <scope>provided</scope>
-	</dependency>
-	<dependency>
-	    <groupId>com.google.code.gson</groupId>
-	    <artifactId>gson</artifactId>
-	    <version>2.8.5</version>
-	</dependency>
-	<dependency>
-	    <groupId>log4j</groupId>
-	    <artifactId>log4j</artifactId>
-	    <version>1.2.17</version>
-	</dependency>
-  </dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>samuelfac</groupId>
+	<artifactId>portalunico.siscomex.gov.br</artifactId>
+	<version>eufrates</version>
+	<name>PortalUnicoSiscomex</name>
+
+	<description>Classes da API do Portal Único de Comércio Exterior, a nova forma de interação entre as empresas privadas e os diversos órgãos públicos intervenientes no comércio exterior.</description>
+	<url>https://docs.portalunico.siscomex.gov.br/</url>
+
+	<organization>
+		<name>Samuel Facchinello</name>
+		<url>https://about.me/samuelfac</url>
+	</organization>
+
+	<scm>
+		<developerConnection>Samuel Facchinello</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+	</issueManagement>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<cxf-version>3.4.3</cxf-version>
+		<jackson-jaxrs-version>2.12.2</jackson-jaxrs-version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-service-description</artifactId>
+			<version>${cxf-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-rs-service-description-swagger</artifactId>
+			<version>${cxf-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-ws-policy</artifactId>
+			<version>${cxf-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-wsdl</artifactId>
+			<version>${cxf-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson-jaxrs-version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson-jaxrs-version}</version>
+		</dependency>
+	</dependencies>
+
 </project>

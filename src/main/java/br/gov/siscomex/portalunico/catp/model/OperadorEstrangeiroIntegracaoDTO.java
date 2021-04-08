@@ -1,0 +1,389 @@
+package br.gov.siscomex.portalunico.catp.model;
+
+import java.time.OffsetDateTime;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+ @XmlType(name = "OperadorEstrangeiroIntegracaoDTO", propOrder =
+    { "seq", "cpfCnpjRaiz", "codigo", "versao", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "dataReferencia"
+})
+
+@XmlRootElement(name="OperadorEstrangeiroIntegracaoDTO")
+public class OperadorEstrangeiroIntegracaoDTO  {
+  
+  @XmlElement(name="seq", required = true)
+  @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial <br>Tamanho máximo: 3<br>Formato: Inteiro, com até 3 digitos")
+ /**
+   * Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial <br>Tamanho máximo: 3<br>Formato: Inteiro, com até 3 digitos
+  **/
+  private Integer seq = null;
+
+  @XmlElement(name="cpfCnpjRaiz", required = true)
+  @ApiModelProperty(example = "00000000", required = true, value = "CPF ou CNPJ raiz do importador/exportador. Informar os 8 primeiros digitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
+ /**
+   * CPF ou CNPJ raiz do importador/exportador. Informar os 8 primeiros digitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
+  **/
+  private String cpfCnpjRaiz = null;
+
+  @XmlElement(name="codigo", required = true)
+  @ApiModelProperty(example = "123", required = true, value = "TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35")
+ /**
+   * TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35
+  **/
+  private String codigo = null;
+
+  @XmlElement(name="versao")
+  @ApiModelProperty(example = "1", value = "Versão do Operador Estrangeiro (utilizado somente para retorno de valor)<br>Tamanho: 8<br>Formato: 'NNNNNNNN'")
+ /**
+   * Versão do Operador Estrangeiro (utilizado somente para retorno de valor)<br>Tamanho: 8<br>Formato: 'NNNNNNNN'
+  **/
+  private String versao = null;
+
+  @XmlElement(name="nome", required = true)
+  @ApiModelProperty(example = "Fornecedor 123", required = true, value = "Nome/Razão Social do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
+ /**
+   * Nome/Razão Social do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70
+  **/
+  private String nome = null;
+
+  @XmlElement(name="situacao")
+  @ApiModelProperty(example = "ATIVADO", value = "Situação do Operador Estrangeiro<br>ATIVADO, DESATIVADO")
+ /**
+   * Situação do Operador Estrangeiro<br>ATIVADO, DESATIVADO
+  **/
+  private String situacao = null;
+
+  @XmlElement(name="logradouro", required = true)
+  @ApiModelProperty(example = "Rua teste, 155, Bairro teste", required = true, value = "Logradouro do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
+ /**
+   * Logradouro do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70
+  **/
+  private String logradouro = null;
+
+  @XmlElement(name="nomeCidade", required = true)
+  @ApiModelProperty(example = "Buenos Aires", required = true, value = "Nome da Cidade<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
+ /**
+   * Nome da Cidade<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
+  **/
+  private String nomeCidade = null;
+
+  @XmlElement(name="codigoSubdivisaoPais")
+  @ApiModelProperty(example = "AR-B", value = "Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho: 4<br>Formato: 'AA-A'")
+ /**
+   * Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho: 4<br>Formato: 'AA-A'
+  **/
+  private String codigoSubdivisaoPais = null;
+
+  @XmlElement(name="codigoPais", required = true)
+  @ApiModelProperty(example = "AR", required = true, value = "Código do país. Usar tabela ISO 3166<br>Tamanho: 2<br>Formato: 'AA'")
+ /**
+   * Código do país. Usar tabela ISO 3166<br>Tamanho: 2<br>Formato: 'AA'
+  **/
+  private String codigoPais = null;
+
+  @XmlElement(name="cep")
+  @ApiModelProperty(example = "12345", value = "Código postal<br>Tamanho: 9")
+ /**
+   * Código postal<br>Tamanho: 9
+  **/
+  private String cep = null;
+
+  @XmlElement(name="codigoInterno")
+  @ApiModelProperty(example = "12345", value = "Código interno para uso em outros sitemas<br>Tamanho: 35")
+ /**
+   * Código interno para uso em outros sitemas<br>Tamanho: 35
+  **/
+  private String codigoInterno = null;
+
+  @XmlElement(name="dataReferencia")
+  @ApiModelProperty(value = "Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'")
+ /**
+   * Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'
+  **/
+  private OffsetDateTime dataReferencia = null;
+ /**
+   * Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial &lt;br&gt;Tamanho máximo: 3&lt;br&gt;Formato: Inteiro, com até 3 digitos
+   * @return seq
+  **/
+  @JsonProperty("seq")
+  @NotNull
+  public Integer getSeq() {
+    return seq;
+  }
+
+  public void setSeq(Integer seq) {
+    this.seq = seq;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO seq(Integer seq) {
+    this.seq = seq;
+    return this;
+  }
+
+ /**
+   * CPF ou CNPJ raiz do importador/exportador. Informar os 8 primeiros digitos do CNPJ, suprimindo os pontos&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+   * @return cpfCnpjRaiz
+  **/
+  @JsonProperty("cpfCnpjRaiz")
+  @NotNull
+  public String getCpfCnpjRaiz() {
+    return cpfCnpjRaiz;
+  }
+
+  public void setCpfCnpjRaiz(String cpfCnpjRaiz) {
+    this.cpfCnpjRaiz = cpfCnpjRaiz;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
+    this.cpfCnpjRaiz = cpfCnpjRaiz;
+    return this;
+  }
+
+ /**
+   * TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br&gt;Tamanho: 35
+   * @return codigo
+  **/
+  @JsonProperty("codigo")
+  @NotNull
+  public String getCodigo() {
+    return codigo;
+  }
+
+  public void setCodigo(String codigo) {
+    this.codigo = codigo;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO codigo(String codigo) {
+    this.codigo = codigo;
+    return this;
+  }
+
+ /**
+   * Versão do Operador Estrangeiro (utilizado somente para retorno de valor)&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;
+   * @return versao
+  **/
+  @JsonProperty("versao")
+  public String getVersao() {
+    return versao;
+  }
+
+  public void setVersao(String versao) {
+    this.versao = versao;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO versao(String versao) {
+    this.versao = versao;
+    return this;
+  }
+
+ /**
+   * Nome/Razão Social do Operador Estrangeiro&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 70
+   * @return nome
+  **/
+  @JsonProperty("nome")
+  @NotNull
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO nome(String nome) {
+    this.nome = nome;
+    return this;
+  }
+
+ /**
+   * Situação do Operador Estrangeiro&lt;br&gt;ATIVADO, DESATIVADO
+   * @return situacao
+  **/
+  @JsonProperty("situacao")
+  public String getSituacao() {
+    return situacao;
+  }
+
+  public void setSituacao(String situacao) {
+    this.situacao = situacao;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO situacao(String situacao) {
+    this.situacao = situacao;
+    return this;
+  }
+
+ /**
+   * Logradouro do Operador Estrangeiro&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 70
+   * @return logradouro
+  **/
+  @JsonProperty("logradouro")
+  @NotNull
+  public String getLogradouro() {
+    return logradouro;
+  }
+
+  public void setLogradouro(String logradouro) {
+    this.logradouro = logradouro;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO logradouro(String logradouro) {
+    this.logradouro = logradouro;
+    return this;
+  }
+
+ /**
+   * Nome da Cidade&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
+   * @return nomeCidade
+  **/
+  @JsonProperty("nomeCidade")
+  @NotNull
+  public String getNomeCidade() {
+    return nomeCidade;
+  }
+
+  public void setNomeCidade(String nomeCidade) {
+    this.nomeCidade = nomeCidade;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO nomeCidade(String nomeCidade) {
+    this.nomeCidade = nomeCidade;
+    return this;
+  }
+
+ /**
+   * Código da subdivisao do país. Usar tabela ISO 3166&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;AA-A&#39;
+   * @return codigoSubdivisaoPais
+  **/
+  @JsonProperty("codigoSubdivisaoPais")
+  public String getCodigoSubdivisaoPais() {
+    return codigoSubdivisaoPais;
+  }
+
+  public void setCodigoSubdivisaoPais(String codigoSubdivisaoPais) {
+    this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
+    this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+    return this;
+  }
+
+ /**
+   * Código do país. Usar tabela ISO 3166&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: &#39;AA&#39;
+   * @return codigoPais
+  **/
+  @JsonProperty("codigoPais")
+  @NotNull
+  public String getCodigoPais() {
+    return codigoPais;
+  }
+
+  public void setCodigoPais(String codigoPais) {
+    this.codigoPais = codigoPais;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO codigoPais(String codigoPais) {
+    this.codigoPais = codigoPais;
+    return this;
+  }
+
+ /**
+   * Código postal&lt;br&gt;Tamanho: 9
+   * @return cep
+  **/
+  @JsonProperty("cep")
+  public String getCep() {
+    return cep;
+  }
+
+  public void setCep(String cep) {
+    this.cep = cep;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO cep(String cep) {
+    this.cep = cep;
+    return this;
+  }
+
+ /**
+   * Código interno para uso em outros sitemas&lt;br&gt;Tamanho: 35
+   * @return codigoInterno
+  **/
+  @JsonProperty("codigoInterno")
+  public String getCodigoInterno() {
+    return codigoInterno;
+  }
+
+  public void setCodigoInterno(String codigoInterno) {
+    this.codigoInterno = codigoInterno;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO codigoInterno(String codigoInterno) {
+    this.codigoInterno = codigoInterno;
+    return this;
+  }
+
+ /**
+   * Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+   * @return dataReferencia
+  **/
+  @JsonProperty("dataReferencia")
+  public OffsetDateTime getDataReferencia() {
+    return dataReferencia;
+  }
+
+  public void setDataReferencia(OffsetDateTime dataReferencia) {
+    this.dataReferencia = dataReferencia;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
+    this.dataReferencia = dataReferencia;
+    return this;
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class OperadorEstrangeiroIntegracaoDTO {\n");
+    
+    sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
+    sb.append("    cpfCnpjRaiz: ").append(toIndentedString(cpfCnpjRaiz)).append("\n");
+    sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
+    sb.append("    versao: ").append(toIndentedString(versao)).append("\n");
+    sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
+    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
+    sb.append("    logradouro: ").append(toIndentedString(logradouro)).append("\n");
+    sb.append("    nomeCidade: ").append(toIndentedString(nomeCidade)).append("\n");
+    sb.append("    codigoSubdivisaoPais: ").append(toIndentedString(codigoSubdivisaoPais)).append("\n");
+    sb.append("    codigoPais: ").append(toIndentedString(codigoPais)).append("\n");
+    sb.append("    cep: ").append(toIndentedString(cep)).append("\n");
+    sb.append("    codigoInterno: ").append(toIndentedString(codigoInterno)).append("\n");
+    sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}
+
