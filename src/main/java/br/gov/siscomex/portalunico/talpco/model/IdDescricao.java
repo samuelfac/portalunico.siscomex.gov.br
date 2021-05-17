@@ -24,8 +24,8 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Estrutura genérica que representa um par id e descrição")
 public class IdDescricao  {
   
-  @XmlElement(name="descricao", required = true)
-  @ApiModelProperty(example = "Para outros usos", required = true, value = "Descrição textual do item")
+  @XmlElement(name="descricao")
+  @ApiModelProperty(example = "Para outros usos", value = "Descrição textual do item")
  /**
    * Descrição textual do item
   **/
@@ -42,7 +42,6 @@ public class IdDescricao  {
    * @return descricao
   **/
   @JsonProperty("descricao")
-  @NotNull
   public String getDescricao() {
     return descricao;
   }

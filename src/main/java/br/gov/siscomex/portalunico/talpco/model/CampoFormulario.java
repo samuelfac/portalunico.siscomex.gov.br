@@ -270,7 +270,11 @@ public enum CodigoEnum {
 	
 	@XmlEnumValue("FUNDAMENTO_LEGAL")
 	@JsonProperty("FUNDAMENTO_LEGAL")
-	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL"));
+	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL")),
+	
+	@XmlEnumValue("ATT_<número>")
+	@JsonProperty("ATT_<número>")
+	ATT__N_MERO_(String.valueOf("ATT_<número>"));
 
 
     private String value;
@@ -353,9 +357,13 @@ public enum TipoEnum {
 	@JsonProperty("RUC")
 	RUC(String.valueOf("RUC")),
 	
-	@XmlEnumValue("OPERADOR_ESTRANGEIRO FABRICANTE")
-	@JsonProperty("OPERADOR_ESTRANGEIRO FABRICANTE")
-	OPERADOR_ESTRANGEIRO_FABRICANTE(String.valueOf("OPERADOR_ESTRANGEIRO FABRICANTE")),
+	@XmlEnumValue("OPERADOR_ESTRANGEIRO")
+	@JsonProperty("OPERADOR_ESTRANGEIRO")
+	OPERADOR_ESTRANGEIRO(String.valueOf("OPERADOR_ESTRANGEIRO")),
+	
+	@XmlEnumValue("FABRICANTE")
+	@JsonProperty("FABRICANTE")
+	FABRICANTE(String.valueOf("FABRICANTE")),
 	
 	@XmlEnumValue("IMPORTACAO_TERCEIROS")
 	@JsonProperty("IMPORTACAO_TERCEIROS")
@@ -365,9 +373,13 @@ public enum TipoEnum {
 	@JsonProperty("VALOR_COM_UNIDADE_MEDIDA")
 	VALOR_COM_UNIDADE_MEDIDA(String.valueOf("VALOR_COM_UNIDADE_MEDIDA")),
 	
-	@XmlEnumValue("VALOR_MONETARIO FUNDAMENTO_LEGAL")
-	@JsonProperty("VALOR_MONETARIO FUNDAMENTO_LEGAL")
-	VALOR_MONETARIO_FUNDAMENTO_LEGAL(String.valueOf("VALOR_MONETARIO FUNDAMENTO_LEGAL"));
+	@XmlEnumValue("VALOR_MONETARIO")
+	@JsonProperty("VALOR_MONETARIO")
+	VALOR_MONETARIO(String.valueOf("VALOR_MONETARIO")),
+	
+	@XmlEnumValue("FUNDAMENTO_LEGAL")
+	@JsonProperty("FUNDAMENTO_LEGAL")
+	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL"));
 
 
     private String value;

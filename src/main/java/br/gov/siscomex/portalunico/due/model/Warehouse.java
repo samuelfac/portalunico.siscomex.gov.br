@@ -8,18 +8,25 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import org.apache.cxf.transport.http.Address;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Warehouse", propOrder =
-    { "id", "typeCode"
+    { "address", "id", "typeCode"
 })
 
 @XmlRootElement(name="Warehouse")
 public class Warehouse  {
   
+  @XmlElement(name="address")
+  @ApiModelProperty(value = "")
+  @Valid
+  private Address address = null;
+
   @XmlElement(name="id")
   @ApiModelProperty(value = "")
   @Valid
@@ -28,6 +35,24 @@ public class Warehouse  {
   @XmlElement(name="typeCode", required = true)
   @ApiModelProperty(required = true, value = "")
   private String typeCode = null;
+ /**
+   * Get address
+   * @return address
+  **/
+  @JsonProperty("address")
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
+  public Warehouse address(Address address) {
+    this.address = address;
+    return this;
+  }
+
  /**
    * Get id
    * @return id
@@ -71,6 +96,7 @@ public class Warehouse  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Warehouse {\n");
     
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    typeCode: ").append(toIndentedString(typeCode)).append("\n");
     sb.append("}");
