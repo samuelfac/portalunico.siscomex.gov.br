@@ -30,7 +30,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<cxf-version>3.4.3</cxf-version>
-		<jackson-jaxrs-version>2.12.2</jackson-jaxrs-version>
+		<jackson-jaxrs-version>2.12.3</jackson-jaxrs-version>
 	</properties>
 
 	<dependencies>
@@ -81,7 +81,7 @@
 		<repository> 
 			<id>github</id> 
 			<name>GitHub samuelfac Apache Maven Packages</name> 
-			<url>https://maven.pkg.github.com/samuelfac/portalunico</url> 
+			<url>https://maven.pkg.github.com/samuelfac/portalunico.siscomex.gov.br</url> 
 		</repository> 
 	</distributionManagement> 
 
