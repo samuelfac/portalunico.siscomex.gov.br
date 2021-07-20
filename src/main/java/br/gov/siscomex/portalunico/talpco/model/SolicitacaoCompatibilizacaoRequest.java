@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SolicitacaoCompatibilizacaoRequest", propOrder =
-    { "justificativa", "numeroDocumento", "numeroItemDocumento", "versaoCompatibilizacao"
+    { "numeroDocumento", "numeroItemDocumento", "versaoCompatibilizacao", "justificativa"
 })
 
 @XmlRootElement(name="SolicitacaoCompatibilizacaoRequest")
@@ -24,13 +24,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados para realizar uma solicitação de compatiblização de versões de produtos de um LPCO")
 public class SolicitacaoCompatibilizacaoRequest  {
   
-  @XmlElement(name="justificativa")
-  @ApiModelProperty(example = "Texto livre", value = "Justificativa utilizada para solicitação de compatibilização<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
- /**
-   * Justificativa utilizada para solicitação de compatibilização<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
-  **/
-  private String justificativa = null;
-
   @XmlElement(name="numeroDocumento", required = true)
   @ApiModelProperty(example = "20BR00000000000", required = true, value = "Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados<br>Tamanho: 15")
  /**
@@ -51,24 +44,13 @@ public class SolicitacaoCompatibilizacaoRequest  {
    * Versão do produto a ser compatilizado<br>Tamanho mínimo: 1<br>Tamanho máximo: 3
   **/
   private String versaoCompatibilizacao = null;
+
+  @XmlElement(name="justificativa")
+  @ApiModelProperty(example = "Texto livre", value = "Justificativa utilizada para solicitação de compatibilização<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
  /**
-   * Justificativa utilizada para solicitação de compatibilização&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
-   * @return justificativa
+   * Justificativa utilizada para solicitação de compatibilização<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
   **/
-  @JsonProperty("justificativa")
-  public String getJustificativa() {
-    return justificativa;
-  }
-
-  public void setJustificativa(String justificativa) {
-    this.justificativa = justificativa;
-  }
-
-  public SolicitacaoCompatibilizacaoRequest justificativa(String justificativa) {
-    this.justificativa = justificativa;
-    return this;
-  }
-
+  private String justificativa = null;
  /**
    * Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados&lt;br&gt;Tamanho: 15
    * @return numeroDocumento
@@ -126,16 +108,34 @@ public class SolicitacaoCompatibilizacaoRequest  {
     return this;
   }
 
+ /**
+   * Justificativa utilizada para solicitação de compatibilização&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
+   * @return justificativa
+  **/
+  @JsonProperty("justificativa")
+  public String getJustificativa() {
+    return justificativa;
+  }
+
+  public void setJustificativa(String justificativa) {
+    this.justificativa = justificativa;
+  }
+
+  public SolicitacaoCompatibilizacaoRequest justificativa(String justificativa) {
+    this.justificativa = justificativa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SolicitacaoCompatibilizacaoRequest {\n");
     
-    sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    numeroDocumento: ").append(toIndentedString(numeroDocumento)).append("\n");
     sb.append("    numeroItemDocumento: ").append(toIndentedString(numeroItemDocumento)).append("\n");
     sb.append("    versaoCompatibilizacao: ").append(toIndentedString(versaoCompatibilizacao)).append("\n");
+    sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

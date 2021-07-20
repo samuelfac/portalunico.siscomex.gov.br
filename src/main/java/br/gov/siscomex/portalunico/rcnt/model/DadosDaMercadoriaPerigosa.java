@@ -19,20 +19,20 @@ import io.swagger.annotations.ApiModelProperty;
 public class DadosDaMercadoriaPerigosa  {
   
   @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 10")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Identificação de cada elemento da lista.<br/>Tamanho: 10
   **/
   private String idElemento = null;
 
   @XmlElement(name="codigoMercadoriaPerigosa")
-  @ApiModelProperty(example = "4", value = "<br/>Código da mercadoria perigosa.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Mercadoria_Perigosa.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Mercadoria_Perigosa.pdf </a>")
+  @ApiModelProperty(example = "4", value = "<br/>Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do <a href=https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel=\"noopener noreferrer\" target=\"_blank\">Tabelas Aduaneiras</a><br/>Tamanho: 10")
  /**
-   * <br/>Código da mercadoria perigosa.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Mercadoria_Perigosa.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Mercadoria_Perigosa.pdf </a>
+   * <br/>Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do <a href=https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel=\"noopener noreferrer\" target=\"_blank\">Tabelas Aduaneiras</a><br/>Tamanho: 10
   **/
   private String codigoMercadoriaPerigosa = null;
  /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 10
    * @return idElemento
   **/
   @JsonProperty("idElemento")
@@ -50,7 +50,7 @@ public class DadosDaMercadoriaPerigosa  {
   }
 
  /**
-   * &lt;br/&gt;Código da mercadoria perigosa.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Mercadoria_Perigosa.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Mercadoria_Perigosa.pdf &lt;/a&gt;
+   * &lt;br/&gt;Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do &lt;a href&#x3D;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Tabelas Aduaneiras&lt;/a&gt;&lt;br/&gt;Tamanho: 10
    * @return codigoMercadoriaPerigosa
   **/
   @JsonProperty("codigoMercadoriaPerigosa")

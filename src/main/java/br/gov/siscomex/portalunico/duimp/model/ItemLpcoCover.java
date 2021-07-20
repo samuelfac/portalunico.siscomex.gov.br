@@ -24,9 +24,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class ItemLpcoCover  {
   
   @XmlElement(name="numero")
-  @ApiModelProperty(example = "I2000000007", value = "Número do LPCO<br><br>Tamanho: 11<br>Formato: 'IAANNNNNNNN'<br>Lei de formação. O número do LPCO é composto por: <br>* I = Prefixo para modelos utilizados na Importação.<br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNN = 8 caracteres númericos. Número sequencial do modelo.")
+  @ApiModelProperty(example = "I2000000007", value = "Número do LPCO<br><br>Tamanho: 11<br>Formato: 'IAANNNNNNNN'<br>Lei de formação. O número do LPCO é composto por: <br>* I = Prefixo para modelos utilizados na Importação.<br>* AA = Ano do registro do LPCO.<br>* NNNNNNNN = 8 caracteres númericos. Número sequencial do modelo.")
  /**
-   * Número do LPCO<br><br>Tamanho: 11<br>Formato: 'IAANNNNNNNN'<br>Lei de formação. O número do LPCO é composto por: <br>* I = Prefixo para modelos utilizados na Importação.<br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNN = 8 caracteres númericos. Número sequencial do modelo.
+   * Número do LPCO<br><br>Tamanho: 11<br>Formato: 'IAANNNNNNNN'<br>Lei de formação. O número do LPCO é composto por: <br>* I = Prefixo para modelos utilizados na Importação.<br>* AA = Ano do registro do LPCO.<br>* NNNNNNNN = 8 caracteres númericos. Número sequencial do modelo.
   **/
   private String numero = null;
 
@@ -44,7 +44,7 @@ public class ItemLpcoCover  {
   **/
   private String orgao = null;
  /**
-   * Número do LPCO&lt;br&gt;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;IAANNNNNNNN&#39;&lt;br&gt;Lei de formação. O número do LPCO é composto por: &lt;br&gt;* I &#x3D; Prefixo para modelos utilizados na Importação.&lt;br&gt;* AA &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* NNNNNNNN &#x3D; 8 caracteres númericos. Número sequencial do modelo.
+   * Número do LPCO&lt;br&gt;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;IAANNNNNNNN&#39;&lt;br&gt;Lei de formação. O número do LPCO é composto por: &lt;br&gt;* I &#x3D; Prefixo para modelos utilizados na Importação.&lt;br&gt;* AA &#x3D; Ano do registro do LPCO.&lt;br&gt;* NNNNNNNN &#x3D; 8 caracteres númericos. Número sequencial do modelo.
    * @return numero
   **/
   @JsonProperty("numero")

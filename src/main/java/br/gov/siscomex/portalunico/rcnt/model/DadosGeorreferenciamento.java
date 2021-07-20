@@ -137,17 +137,17 @@ public enum TipoOperacaoEnum {
   **/
   private String idAreaEquipamento = null;
 
-  @XmlElement(name="nome")
-  @ApiModelProperty(value = "Nome da área ou equipamento<br/>Tamanho: 100")
+  @XmlElement(name="nome", required = true)
+  @ApiModelProperty(required = true, value = "Nome da área ou equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Nome da área ou equipamento<br/>Tamanho: 100
+   * Nome da área ou equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String nome = null;
 
-  @XmlElement(name="areaEquipamentoAtivo")
-  @ApiModelProperty(example = "false", value = "Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="areaEquipamentoAtivo", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean areaEquipamentoAtivo = null;
 
@@ -241,10 +241,10 @@ public enum TipoEnum {
     }
 }
 
-  @XmlElement(name="tipo")
-  @ApiModelProperty(example = "6", value = "Tipo de área ou equipamento<br/>Domínio:<br/>1 - Recinto (polígono) <br/> 2 - Área posicionamento contêiner (polígono) <br/>3 - Área posicionamento veículos (polígono) <br/>4 - Área de conferência física (polígono) <br/>5 - Área armazenamento lotes (polígono) <br/>6 - Balança (ponto) <br/>7 - Scanner (ponto) <br/>8 - Gate (ponto) <br/>9 - Catraca e similares (ponto) <br/>10 - Câmeras (ponto) <br/>11 - Portêiner (ponto) <br/>12 - Silo (ponto) <br/>13 - Tanque de armazenamento (ponto)")
+  @XmlElement(name="tipo", required = true)
+  @ApiModelProperty(example = "6", required = true, value = "Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>1 - Recinto (polígono) <br/> 2 - Área posicionamento contêiner (polígono) <br/>3 - Área posicionamento veículos (polígono) <br/>4 - Área de conferência física (polígono) <br/>5 - Área armazenamento lotes (polígono) <br/>6 - Balança (ponto) <br/>7 - Scanner (ponto) <br/>8 - Gate (ponto) <br/>9 - Catraca e similares (ponto) <br/>10 - Câmeras (ponto) <br/>11 - Portêiner (ponto) <br/>12 - Silo (ponto) <br/>13 - Tanque de armazenamento (ponto)")
  /**
-   * Tipo de área ou equipamento<br/>Domínio:<br/>1 - Recinto (polígono) <br/> 2 - Área posicionamento contêiner (polígono) <br/>3 - Área posicionamento veículos (polígono) <br/>4 - Área de conferência física (polígono) <br/>5 - Área armazenamento lotes (polígono) <br/>6 - Balança (ponto) <br/>7 - Scanner (ponto) <br/>8 - Gate (ponto) <br/>9 - Catraca e similares (ponto) <br/>10 - Câmeras (ponto) <br/>11 - Portêiner (ponto) <br/>12 - Silo (ponto) <br/>13 - Tanque de armazenamento (ponto)
+   * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>1 - Recinto (polígono) <br/> 2 - Área posicionamento contêiner (polígono) <br/>3 - Área posicionamento veículos (polígono) <br/>4 - Área de conferência física (polígono) <br/>5 - Área armazenamento lotes (polígono) <br/>6 - Balança (ponto) <br/>7 - Scanner (ponto) <br/>8 - Gate (ponto) <br/>9 - Catraca e similares (ponto) <br/>10 - Câmeras (ponto) <br/>11 - Portêiner (ponto) <br/>12 - Silo (ponto) <br/>13 - Tanque de armazenamento (ponto)
   **/
   private TipoEnum tipo = null;
 
@@ -445,10 +445,11 @@ public enum TipoEnum {
   }
 
  /**
-   * Nome da área ou equipamento&lt;br/&gt;Tamanho: 100
+   * Nome da área ou equipamento. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")
+  @NotNull
   public String getNome() {
     return nome;
   }
@@ -463,10 +464,11 @@ public enum TipoEnum {
   }
 
  /**
-   * Área ou equipamento ativo.&lt;br/&gt;Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Área ou equipamento ativo.&lt;br/&gt;Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return areaEquipamentoAtivo
   **/
   @JsonProperty("areaEquipamentoAtivo")
+  @NotNull
   public Boolean isAreaEquipamentoAtivo() {
     return areaEquipamentoAtivo;
   }
@@ -499,10 +501,11 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo de área ou equipamento&lt;br/&gt;Domínio:&lt;br/&gt;1 - Recinto (polígono) &lt;br/&gt; 2 - Área posicionamento contêiner (polígono) &lt;br/&gt;3 - Área posicionamento veículos (polígono) &lt;br/&gt;4 - Área de conferência física (polígono) &lt;br/&gt;5 - Área armazenamento lotes (polígono) &lt;br/&gt;6 - Balança (ponto) &lt;br/&gt;7 - Scanner (ponto) &lt;br/&gt;8 - Gate (ponto) &lt;br/&gt;9 - Catraca e similares (ponto) &lt;br/&gt;10 - Câmeras (ponto) &lt;br/&gt;11 - Portêiner (ponto) &lt;br/&gt;12 - Silo (ponto) &lt;br/&gt;13 - Tanque de armazenamento (ponto)
+   * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;1 - Recinto (polígono) &lt;br/&gt; 2 - Área posicionamento contêiner (polígono) &lt;br/&gt;3 - Área posicionamento veículos (polígono) &lt;br/&gt;4 - Área de conferência física (polígono) &lt;br/&gt;5 - Área armazenamento lotes (polígono) &lt;br/&gt;6 - Balança (ponto) &lt;br/&gt;7 - Scanner (ponto) &lt;br/&gt;8 - Gate (ponto) &lt;br/&gt;9 - Catraca e similares (ponto) &lt;br/&gt;10 - Câmeras (ponto) &lt;br/&gt;11 - Portêiner (ponto) &lt;br/&gt;12 - Silo (ponto) &lt;br/&gt;13 - Tanque de armazenamento (ponto)
    * @return tipo
   **/
   @JsonProperty("tipo")
+  @NotNull
   public String getTipo() {
     if (tipo == null) {
       return null;

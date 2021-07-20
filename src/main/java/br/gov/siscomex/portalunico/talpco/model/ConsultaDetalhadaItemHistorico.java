@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ConsultaDetalhadaItemHistorico", propOrder =
-    { "cpfCnpj", "dataAlteracao", "exibeParaInterveniente", "idVersao", "justificativa", "nomeUsuario", "situacao"
+    { "idVersao", "dataAlteracao", "situacao", "justificativa", "nomeUsuario", "cpfCnpj", "exibeParaInterveniente"
 })
 
 @XmlRootElement(name="ConsultaDetalhadaItemHistorico")
@@ -24,12 +24,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de um item do histórico de um LPCO, exibido na consulta detalhada de LPCOs")
 public class ConsultaDetalhadaItemHistorico  {
   
-  @XmlElement(name="cpfCnpj")
-  @ApiModelProperty(example = "03141554900", value = "CPF/CNPJ do usuário que efetuou a operação registrada no histórico<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)")
- /**
-   * CPF/CNPJ do usuário que efetuou a operação registrada no histórico<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
-  **/
-  private String cpfCnpj = null;
+  @XmlElement(name="idVersao")
+  @ApiModelProperty(value = "")
+  private Long idVersao = null;
 
   @XmlElement(name="dataAlteracao", required = true)
   @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", required = true, value = "Data em que a entrada do histórico aconteceu.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
@@ -38,16 +35,12 @@ public class ConsultaDetalhadaItemHistorico  {
   **/
   private String dataAlteracao = null;
 
-  @XmlElement(name="exibeParaInterveniente", required = true)
-  @ApiModelProperty(example = "false", required = true, value = "Indica se o CPF/nome do usuário que efetuou a operação registrada no histórico pode ser exibida para os importadores / exportadores")
+  @XmlElement(name="situacao", required = true)
+  @ApiModelProperty(example = "Deferido", required = true, value = "Situação do LPCO no momento da entrada do histórico.<br>Tamanho máximo: 50")
  /**
-   * Indica se o CPF/nome do usuário que efetuou a operação registrada no histórico pode ser exibida para os importadores / exportadores
+   * Situação do LPCO no momento da entrada do histórico.<br>Tamanho máximo: 50
   **/
-  private Boolean exibeParaInterveniente = false;
-
-  @XmlElement(name="idVersao")
-  @ApiModelProperty(value = "")
-  private Long idVersao = null;
+  private String situacao = null;
 
   @XmlElement(name="justificativa")
   @ApiModelProperty(example = "<texto livre>", value = "Justificativa da operação registrada no histórico.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
@@ -63,27 +56,34 @@ public class ConsultaDetalhadaItemHistorico  {
   **/
   private String nomeUsuario = null;
 
-  @XmlElement(name="situacao", required = true)
-  @ApiModelProperty(example = "Deferido", required = true, value = "Situação do LPCO no momento da entrada do histórico.<br>Tamanho máximo: 50")
+  @XmlElement(name="cpfCnpj")
+  @ApiModelProperty(example = "03141554900", value = "CPF/CNPJ do usuário que efetuou a operação registrada no histórico<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)")
  /**
-   * Situação do LPCO no momento da entrada do histórico.<br>Tamanho máximo: 50
+   * CPF/CNPJ do usuário que efetuou a operação registrada no histórico<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
   **/
-  private String situacao = null;
+  private String cpfCnpj = null;
+
+  @XmlElement(name="exibeParaInterveniente", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Indica se o CPF/nome do usuário que efetuou a operação registrada no histórico pode ser exibida para os importadores / exportadores")
  /**
-   * CPF/CNPJ do usuário que efetuou a operação registrada no histórico&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)&lt;br&gt;Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
-   * @return cpfCnpj
+   * Indica se o CPF/nome do usuário que efetuou a operação registrada no histórico pode ser exibida para os importadores / exportadores
   **/
-  @JsonProperty("cpfCnpj")
-  public String getCpfCnpj() {
-    return cpfCnpj;
+  private Boolean exibeParaInterveniente = false;
+ /**
+   * Get idVersao
+   * @return idVersao
+  **/
+  @JsonProperty("idVersao")
+  public Long getIdVersao() {
+    return idVersao;
   }
 
-  public void setCpfCnpj(String cpfCnpj) {
-    this.cpfCnpj = cpfCnpj;
+  public void setIdVersao(Long idVersao) {
+    this.idVersao = idVersao;
   }
 
-  public ConsultaDetalhadaItemHistorico cpfCnpj(String cpfCnpj) {
-    this.cpfCnpj = cpfCnpj;
+  public ConsultaDetalhadaItemHistorico idVersao(Long idVersao) {
+    this.idVersao = idVersao;
     return this;
   }
 
@@ -107,39 +107,21 @@ public class ConsultaDetalhadaItemHistorico  {
   }
 
  /**
-   * Indica se o CPF/nome do usuário que efetuou a operação registrada no histórico pode ser exibida para os importadores / exportadores
-   * @return exibeParaInterveniente
+   * Situação do LPCO no momento da entrada do histórico.&lt;br&gt;Tamanho máximo: 50
+   * @return situacao
   **/
-  @JsonProperty("exibeParaInterveniente")
+  @JsonProperty("situacao")
   @NotNull
-  public Boolean isExibeParaInterveniente() {
-    return exibeParaInterveniente;
+  public String getSituacao() {
+    return situacao;
   }
 
-  public void setExibeParaInterveniente(Boolean exibeParaInterveniente) {
-    this.exibeParaInterveniente = exibeParaInterveniente;
+  public void setSituacao(String situacao) {
+    this.situacao = situacao;
   }
 
-  public ConsultaDetalhadaItemHistorico exibeParaInterveniente(Boolean exibeParaInterveniente) {
-    this.exibeParaInterveniente = exibeParaInterveniente;
-    return this;
-  }
-
- /**
-   * Get idVersao
-   * @return idVersao
-  **/
-  @JsonProperty("idVersao")
-  public Long getIdVersao() {
-    return idVersao;
-  }
-
-  public void setIdVersao(Long idVersao) {
-    this.idVersao = idVersao;
-  }
-
-  public ConsultaDetalhadaItemHistorico idVersao(Long idVersao) {
-    this.idVersao = idVersao;
+  public ConsultaDetalhadaItemHistorico situacao(String situacao) {
+    this.situacao = situacao;
     return this;
   }
 
@@ -180,21 +162,39 @@ public class ConsultaDetalhadaItemHistorico  {
   }
 
  /**
-   * Situação do LPCO no momento da entrada do histórico.&lt;br&gt;Tamanho máximo: 50
-   * @return situacao
+   * CPF/CNPJ do usuário que efetuou a operação registrada no histórico&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)&lt;br&gt;Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
+   * @return cpfCnpj
   **/
-  @JsonProperty("situacao")
+  @JsonProperty("cpfCnpj")
+  public String getCpfCnpj() {
+    return cpfCnpj;
+  }
+
+  public void setCpfCnpj(String cpfCnpj) {
+    this.cpfCnpj = cpfCnpj;
+  }
+
+  public ConsultaDetalhadaItemHistorico cpfCnpj(String cpfCnpj) {
+    this.cpfCnpj = cpfCnpj;
+    return this;
+  }
+
+ /**
+   * Indica se o CPF/nome do usuário que efetuou a operação registrada no histórico pode ser exibida para os importadores / exportadores
+   * @return exibeParaInterveniente
+  **/
+  @JsonProperty("exibeParaInterveniente")
   @NotNull
-  public String getSituacao() {
-    return situacao;
+  public Boolean isExibeParaInterveniente() {
+    return exibeParaInterveniente;
   }
 
-  public void setSituacao(String situacao) {
-    this.situacao = situacao;
+  public void setExibeParaInterveniente(Boolean exibeParaInterveniente) {
+    this.exibeParaInterveniente = exibeParaInterveniente;
   }
 
-  public ConsultaDetalhadaItemHistorico situacao(String situacao) {
-    this.situacao = situacao;
+  public ConsultaDetalhadaItemHistorico exibeParaInterveniente(Boolean exibeParaInterveniente) {
+    this.exibeParaInterveniente = exibeParaInterveniente;
     return this;
   }
 
@@ -204,13 +204,13 @@ public class ConsultaDetalhadaItemHistorico  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsultaDetalhadaItemHistorico {\n");
     
-    sb.append("    cpfCnpj: ").append(toIndentedString(cpfCnpj)).append("\n");
-    sb.append("    dataAlteracao: ").append(toIndentedString(dataAlteracao)).append("\n");
-    sb.append("    exibeParaInterveniente: ").append(toIndentedString(exibeParaInterveniente)).append("\n");
     sb.append("    idVersao: ").append(toIndentedString(idVersao)).append("\n");
+    sb.append("    dataAlteracao: ").append(toIndentedString(dataAlteracao)).append("\n");
+    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    nomeUsuario: ").append(toIndentedString(nomeUsuario)).append("\n");
-    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
+    sb.append("    cpfCnpj: ").append(toIndentedString(cpfCnpj)).append("\n");
+    sb.append("    exibeParaInterveniente: ").append(toIndentedString(exibeParaInterveniente)).append("\n");
     sb.append("}");
     return sb.toString();
   }

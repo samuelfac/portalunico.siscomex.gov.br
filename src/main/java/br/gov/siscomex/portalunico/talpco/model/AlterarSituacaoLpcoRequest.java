@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AlterarSituacaoLpcoRequest", propOrder =
-    { "dataFinalVigencia", "dataInicioVigencia", "justificativa", "numeroOrgaoOrigem", "requerInspecao", "situacao"
+    { "situacao", "justificativa", "dataInicioVigencia", "dataFinalVigencia", "numeroOrgaoOrigem", "requerInspecao"
 })
 
 @XmlRootElement(name="AlterarSituacaoLpcoRequest")
@@ -26,41 +26,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados a serem informados para realizar a alteração da situação de um LPCO")
 public class AlterarSituacaoLpcoRequest  {
   
-  @XmlElement(name="dataFinalVigencia")
-  @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
- /**
-   * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
-  **/
-  private String dataFinalVigencia = null;
-
-  @XmlElement(name="dataInicioVigencia")
-  @ApiModelProperty(example = "2019-09-02", value = "Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
- /**
-   * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
-  **/
-  private String dataInicioVigencia = null;
-
-  @XmlElement(name="justificativa")
-  @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
- /**
-   * Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
-  **/
-  private String justificativa = null;
-
-  @XmlElement(name="numeroOrgaoOrigem")
-  @ApiModelProperty(example = "EXA12345", value = "Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
- /**
-   * Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-  **/
-  private String numeroOrgaoOrigem = null;
-
-  @XmlElement(name="requerInspecao")
-  @ApiModelProperty(example = "false", value = "Indica se haverá necessidade de inspeção de carga")
- /**
-   * Indica se haverá necessidade de inspeção de carga
-  **/
-  private Boolean requerInspecao = false;
-
 
 @XmlType(name="SituacaoEnum")
 @XmlEnum(String.class)
@@ -122,21 +87,78 @@ public enum SituacaoEnum {
    * Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50
   **/
   private SituacaoEnum situacao = null;
+
+  @XmlElement(name="justificativa")
+  @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
  /**
-   * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
-   * @return dataFinalVigencia
+   * Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
   **/
-  @JsonProperty("dataFinalVigencia")
-  public String getDataFinalVigencia() {
-    return dataFinalVigencia;
+  private String justificativa = null;
+
+  @XmlElement(name="dataInicioVigencia")
+  @ApiModelProperty(example = "2019-09-02", value = "Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+ /**
+   * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+  **/
+  private String dataInicioVigencia = null;
+
+  @XmlElement(name="dataFinalVigencia")
+  @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+ /**
+   * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+  **/
+  private String dataFinalVigencia = null;
+
+  @XmlElement(name="numeroOrgaoOrigem")
+  @ApiModelProperty(example = "EXA12345", value = "Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+ /**
+   * Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+  **/
+  private String numeroOrgaoOrigem = null;
+
+  @XmlElement(name="requerInspecao")
+  @ApiModelProperty(example = "false", value = "Indica se haverá necessidade de inspeção de carga")
+ /**
+   * Indica se haverá necessidade de inspeção de carga
+  **/
+  private Boolean requerInspecao = false;
+ /**
+   * Código da nova situação do LPCO&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
+   * @return situacao
+  **/
+  @JsonProperty("situacao")
+  @NotNull
+  public String getSituacao() {
+    if (situacao == null) {
+      return null;
+    }
+    return situacao.value();
   }
 
-  public void setDataFinalVigencia(String dataFinalVigencia) {
-    this.dataFinalVigencia = dataFinalVigencia;
+  public void setSituacao(SituacaoEnum situacao) {
+    this.situacao = situacao;
   }
 
-  public AlterarSituacaoLpcoRequest dataFinalVigencia(String dataFinalVigencia) {
-    this.dataFinalVigencia = dataFinalVigencia;
+  public AlterarSituacaoLpcoRequest situacao(SituacaoEnum situacao) {
+    this.situacao = situacao;
+    return this;
+  }
+
+ /**
+   * Justificativa para a alteração da situação do LPCO &lt;br&gt; Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
+   * @return justificativa
+  **/
+  @JsonProperty("justificativa")
+  public String getJustificativa() {
+    return justificativa;
+  }
+
+  public void setJustificativa(String justificativa) {
+    this.justificativa = justificativa;
+  }
+
+  public AlterarSituacaoLpcoRequest justificativa(String justificativa) {
+    this.justificativa = justificativa;
     return this;
   }
 
@@ -159,20 +181,20 @@ public enum SituacaoEnum {
   }
 
  /**
-   * Justificativa para a alteração da situação do LPCO &lt;br&gt; Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
-   * @return justificativa
+   * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
+   * @return dataFinalVigencia
   **/
-  @JsonProperty("justificativa")
-  public String getJustificativa() {
-    return justificativa;
+  @JsonProperty("dataFinalVigencia")
+  public String getDataFinalVigencia() {
+    return dataFinalVigencia;
   }
 
-  public void setJustificativa(String justificativa) {
-    this.justificativa = justificativa;
+  public void setDataFinalVigencia(String dataFinalVigencia) {
+    this.dataFinalVigencia = dataFinalVigencia;
   }
 
-  public AlterarSituacaoLpcoRequest justificativa(String justificativa) {
-    this.justificativa = justificativa;
+  public AlterarSituacaoLpcoRequest dataFinalVigencia(String dataFinalVigencia) {
+    this.dataFinalVigencia = dataFinalVigencia;
     return this;
   }
 
@@ -212,40 +234,18 @@ public enum SituacaoEnum {
     return this;
   }
 
- /**
-   * Código da nova situação do LPCO&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
-   * @return situacao
-  **/
-  @JsonProperty("situacao")
-  @NotNull
-  public String getSituacao() {
-    if (situacao == null) {
-      return null;
-    }
-    return situacao.value();
-  }
-
-  public void setSituacao(SituacaoEnum situacao) {
-    this.situacao = situacao;
-  }
-
-  public AlterarSituacaoLpcoRequest situacao(SituacaoEnum situacao) {
-    this.situacao = situacao;
-    return this;
-  }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlterarSituacaoLpcoRequest {\n");
     
-    sb.append("    dataFinalVigencia: ").append(toIndentedString(dataFinalVigencia)).append("\n");
-    sb.append("    dataInicioVigencia: ").append(toIndentedString(dataInicioVigencia)).append("\n");
+    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
+    sb.append("    dataInicioVigencia: ").append(toIndentedString(dataInicioVigencia)).append("\n");
+    sb.append("    dataFinalVigencia: ").append(toIndentedString(dataFinalVigencia)).append("\n");
     sb.append("    numeroOrgaoOrigem: ").append(toIndentedString(numeroOrgaoOrigem)).append("\n");
     sb.append("    requerInspecao: ").append(toIndentedString(requerInspecao)).append("\n");
-    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

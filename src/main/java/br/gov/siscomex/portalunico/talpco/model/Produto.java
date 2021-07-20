@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Produto", propOrder =
-    { "cnpjRaiz", "codigo", "versao"
+    { "codigo", "versao", "cnpjRaiz"
 })
 
 @XmlRootElement(name="Produto")
@@ -24,13 +24,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Referência a um produto utilizado em um item de um LPCO")
 public class Produto  {
   
-  @XmlElement(name="cnpjRaiz", required = true)
-  @ApiModelProperty(example = "33683111", required = true, value = "Raiz do CNPJ do fabricante do produto")
- /**
-   * Raiz do CNPJ do fabricante do produto
-  **/
-  private String cnpjRaiz = null;
-
   @XmlElement(name="codigo", required = true)
   @ApiModelProperty(example = "12", required = true, value = "Código do produto do item do LPCO")
  /**
@@ -44,25 +37,13 @@ public class Produto  {
    * Versão do produto
   **/
   private String versao = null;
+
+  @XmlElement(name="cnpjRaiz", required = true)
+  @ApiModelProperty(example = "33683111", required = true, value = "Raiz do CNPJ do fabricante do produto")
  /**
    * Raiz do CNPJ do fabricante do produto
-   * @return cnpjRaiz
   **/
-  @JsonProperty("cnpjRaiz")
-  @NotNull
-  public String getCnpjRaiz() {
-    return cnpjRaiz;
-  }
-
-  public void setCnpjRaiz(String cnpjRaiz) {
-    this.cnpjRaiz = cnpjRaiz;
-  }
-
-  public Produto cnpjRaiz(String cnpjRaiz) {
-    this.cnpjRaiz = cnpjRaiz;
-    return this;
-  }
-
+  private String cnpjRaiz = null;
  /**
    * Código do produto do item do LPCO
    * @return codigo
@@ -101,15 +82,34 @@ public class Produto  {
     return this;
   }
 
+ /**
+   * Raiz do CNPJ do fabricante do produto
+   * @return cnpjRaiz
+  **/
+  @JsonProperty("cnpjRaiz")
+  @NotNull
+  public String getCnpjRaiz() {
+    return cnpjRaiz;
+  }
+
+  public void setCnpjRaiz(String cnpjRaiz) {
+    this.cnpjRaiz = cnpjRaiz;
+  }
+
+  public Produto cnpjRaiz(String cnpjRaiz) {
+    this.cnpjRaiz = cnpjRaiz;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Produto {\n");
     
-    sb.append("    cnpjRaiz: ").append(toIndentedString(cnpjRaiz)).append("\n");
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    versao: ").append(toIndentedString(versao)).append("\n");
+    sb.append("    cnpjRaiz: ").append(toIndentedString(cnpjRaiz)).append("\n");
     sb.append("}");
     return sb.toString();
   }

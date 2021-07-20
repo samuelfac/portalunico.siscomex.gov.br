@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Pessoa", propOrder =
-    { "endereco", "id", "nome"
+    { "id", "nome", "endereco"
 })
 
 @XmlRootElement(name="Pessoa")
@@ -25,11 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de uma pessoa física / jurídica")
 public class Pessoa  {
   
-  @XmlElement(name="endereco")
-  @ApiModelProperty(value = "")
-  @Valid
-  private Endereco endereco = null;
-
   @XmlElement(name="id", required = true)
   @ApiModelProperty(example = "12345678901", required = true, value = "Identificação (CPF/CNPJ) do interveniente<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)")
  /**
@@ -43,24 +38,11 @@ public class Pessoa  {
    * Nome do interveniente
   **/
   private String nome = null;
- /**
-   * Get endereco
-   * @return endereco
-  **/
-  @JsonProperty("endereco")
-  public Endereco getEndereco() {
-    return endereco;
-  }
 
-  public void setEndereco(Endereco endereco) {
-    this.endereco = endereco;
-  }
-
-  public Pessoa endereco(Endereco endereco) {
-    this.endereco = endereco;
-    return this;
-  }
-
+  @XmlElement(name="endereco")
+  @ApiModelProperty(value = "")
+  @Valid
+  private Endereco endereco = null;
  /**
    * Identificação (CPF/CNPJ) do interveniente&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)&lt;br&gt;Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
    * @return id
@@ -99,15 +81,33 @@ public class Pessoa  {
     return this;
   }
 
+ /**
+   * Get endereco
+   * @return endereco
+  **/
+  @JsonProperty("endereco")
+  public Endereco getEndereco() {
+    return endereco;
+  }
+
+  public void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
+  }
+
+  public Pessoa endereco(Endereco endereco) {
+    this.endereco = endereco;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Pessoa {\n");
     
-    sb.append("    endereco: ").append(toIndentedString(endereco)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
+    sb.append("    endereco: ").append(toIndentedString(endereco)).append("\n");
     sb.append("}");
     return sb.toString();
   }

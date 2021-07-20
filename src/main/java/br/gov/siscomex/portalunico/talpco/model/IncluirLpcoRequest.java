@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "IncluirLpcoRequest", propOrder =
-    { "codigoModelo", "dataReferencia", "declarante", "importadorExportador", "informacaoAdicional", "listaCamposFormulario", "listaNcm", "unidadeMedidaComercializada", "unidadeMedidaEstatistica"
+    { "codigoModelo", "informacaoAdicional", "dataReferencia", "listaCamposFormulario", "listaNcm"
 })
 
 @XmlRootElement(name="IncluirLpcoRequest")
@@ -35,21 +35,6 @@ public class IncluirLpcoRequest  {
   **/
   private String codigoModelo = null;
 
-  @XmlElement(name="dataReferencia")
-  @ApiModelProperty(example = "2019-08-27T13:28", value = "Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ")
- /**
-   * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ
-  **/
-  private String dataReferencia = null;
-
-  @XmlElement(name="declarante")
-  @ApiModelProperty(value = "")
-  private String declarante = null;
-
-  @XmlElement(name="importadorExportador")
-  @ApiModelProperty(value = "")
-  private String importadorExportador = null;
-
   @XmlElement(name="informacaoAdicional")
   @ApiModelProperty(example = "Texto livre", value = "Informações adicionais prestadas pelo importador/exportador")
  /**
@@ -57,32 +42,28 @@ public class IncluirLpcoRequest  {
   **/
   private String informacaoAdicional = null;
 
+  @XmlElement(name="dataReferencia")
+  @ApiModelProperty(example = "2019-08-27T13:28", value = "Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ")
+ /**
+   * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ
+  **/
+  private String dataReferencia = null;
+
   @XmlElement(name="listaCamposFormulario", required = true)
-  @ApiModelProperty(required = true, value = "Lista dos campos do pedido LPCO que fazem parte dos Dados Gerais do LPCO (ou seja, que não são declarados por NCM).")
+  @ApiModelProperty(required = true, value = "Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.")
   @Valid
  /**
-   * Lista dos campos do pedido LPCO que fazem parte dos Dados Gerais do LPCO (ou seja, que não são declarados por NCM).
+   * Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.
   **/
   private List<CampoLpcoRequest> listaCamposFormulario = new ArrayList<>();
 
   @XmlElement(name="listaNcm")
-  @ApiModelProperty(value = "Lista dos itens NCM declarados no pedido LPCO.")
+  @ApiModelProperty(value = "Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.")
   @Valid
  /**
-   * Lista dos itens NCM declarados no pedido LPCO.
+   * Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.
   **/
-  private List<ItemNcmLpcoRequest> listaNcm = null;
-
-  @XmlElement(name="unidadeMedidaComercializada")
-  @ApiModelProperty(value = "DESCONTINUADO. Utilize o campo unidade do campo QTD_COMERCIALIZADA")
- /**
-   * DESCONTINUADO. Utilize o campo unidade do campo QTD_COMERCIALIZADA
-  **/
-  private String unidadeMedidaComercializada = null;
-
-  @XmlElement(name="unidadeMedidaEstatistica")
-  @ApiModelProperty(value = "")
-  private String unidadeMedidaEstatistica = null;
+  private List<ItemLpcoRequest> listaNcm = null;
  /**
    * Código do modelo de LPCO utilizado para o pedido&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do LPCO no ano
    * @return codigoModelo
@@ -99,60 +80,6 @@ public class IncluirLpcoRequest  {
 
   public IncluirLpcoRequest codigoModelo(String codigoModelo) {
     this.codigoModelo = codigoModelo;
-    return this;
-  }
-
- /**
-   * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
-   * @return dataReferencia
-  **/
-  @JsonProperty("dataReferencia")
-  public String getDataReferencia() {
-    return dataReferencia;
-  }
-
-  public void setDataReferencia(String dataReferencia) {
-    this.dataReferencia = dataReferencia;
-  }
-
-  public IncluirLpcoRequest dataReferencia(String dataReferencia) {
-    this.dataReferencia = dataReferencia;
-    return this;
-  }
-
- /**
-   * Get declarante
-   * @return declarante
-  **/
-  @JsonProperty("declarante")
-  public String getDeclarante() {
-    return declarante;
-  }
-
-  public void setDeclarante(String declarante) {
-    this.declarante = declarante;
-  }
-
-  public IncluirLpcoRequest declarante(String declarante) {
-    this.declarante = declarante;
-    return this;
-  }
-
- /**
-   * Get importadorExportador
-   * @return importadorExportador
-  **/
-  @JsonProperty("importadorExportador")
-  public String getImportadorExportador() {
-    return importadorExportador;
-  }
-
-  public void setImportadorExportador(String importadorExportador) {
-    this.importadorExportador = importadorExportador;
-  }
-
-  public IncluirLpcoRequest importadorExportador(String importadorExportador) {
-    this.importadorExportador = importadorExportador;
     return this;
   }
 
@@ -175,7 +102,25 @@ public class IncluirLpcoRequest  {
   }
 
  /**
-   * Lista dos campos do pedido LPCO que fazem parte dos Dados Gerais do LPCO (ou seja, que não são declarados por NCM).
+   * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
+   * @return dataReferencia
+  **/
+  @JsonProperty("dataReferencia")
+  public String getDataReferencia() {
+    return dataReferencia;
+  }
+
+  public void setDataReferencia(String dataReferencia) {
+    this.dataReferencia = dataReferencia;
+  }
+
+  public IncluirLpcoRequest dataReferencia(String dataReferencia) {
+    this.dataReferencia = dataReferencia;
+    return this;
+  }
+
+ /**
+   * Lista de campos do pedido que fazem parte dos \&quot;Dados Gerais\&quot; do LPCO, ou seja, aqueles que não são informados por item.
    * @return listaCamposFormulario
   **/
   @JsonProperty("listaCamposFormulario")
@@ -199,61 +144,25 @@ public class IncluirLpcoRequest  {
   }
 
  /**
-   * Lista dos itens NCM declarados no pedido LPCO.
+   * Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.
    * @return listaNcm
   **/
   @JsonProperty("listaNcm")
-  public List<ItemNcmLpcoRequest> getListaNcm() {
+  public List<ItemLpcoRequest> getListaNcm() {
     return listaNcm;
   }
 
-  public void setListaNcm(List<ItemNcmLpcoRequest> listaNcm) {
+  public void setListaNcm(List<ItemLpcoRequest> listaNcm) {
     this.listaNcm = listaNcm;
   }
 
-  public IncluirLpcoRequest listaNcm(List<ItemNcmLpcoRequest> listaNcm) {
+  public IncluirLpcoRequest listaNcm(List<ItemLpcoRequest> listaNcm) {
     this.listaNcm = listaNcm;
     return this;
   }
 
-  public IncluirLpcoRequest addListaNcmItem(ItemNcmLpcoRequest listaNcmItem) {
+  public IncluirLpcoRequest addListaNcmItem(ItemLpcoRequest listaNcmItem) {
     this.listaNcm.add(listaNcmItem);
-    return this;
-  }
-
- /**
-   * DESCONTINUADO. Utilize o campo unidade do campo QTD_COMERCIALIZADA
-   * @return unidadeMedidaComercializada
-  **/
-  @JsonProperty("unidadeMedidaComercializada")
-  public String getUnidadeMedidaComercializada() {
-    return unidadeMedidaComercializada;
-  }
-
-  public void setUnidadeMedidaComercializada(String unidadeMedidaComercializada) {
-    this.unidadeMedidaComercializada = unidadeMedidaComercializada;
-  }
-
-  public IncluirLpcoRequest unidadeMedidaComercializada(String unidadeMedidaComercializada) {
-    this.unidadeMedidaComercializada = unidadeMedidaComercializada;
-    return this;
-  }
-
- /**
-   * Get unidadeMedidaEstatistica
-   * @return unidadeMedidaEstatistica
-  **/
-  @JsonProperty("unidadeMedidaEstatistica")
-  public String getUnidadeMedidaEstatistica() {
-    return unidadeMedidaEstatistica;
-  }
-
-  public void setUnidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
-    this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
-  }
-
-  public IncluirLpcoRequest unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
-    this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
     return this;
   }
 
@@ -264,14 +173,10 @@ public class IncluirLpcoRequest  {
     sb.append("class IncluirLpcoRequest {\n");
     
     sb.append("    codigoModelo: ").append(toIndentedString(codigoModelo)).append("\n");
-    sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
-    sb.append("    declarante: ").append(toIndentedString(declarante)).append("\n");
-    sb.append("    importadorExportador: ").append(toIndentedString(importadorExportador)).append("\n");
     sb.append("    informacaoAdicional: ").append(toIndentedString(informacaoAdicional)).append("\n");
+    sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
     sb.append("    listaCamposFormulario: ").append(toIndentedString(listaCamposFormulario)).append("\n");
     sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
-    sb.append("    unidadeMedidaComercializada: ").append(toIndentedString(unidadeMedidaComercializada)).append("\n");
-    sb.append("    unidadeMedidaEstatistica: ").append(toIndentedString(unidadeMedidaEstatistica)).append("\n");
     sb.append("}");
     return sb.toString();
   }

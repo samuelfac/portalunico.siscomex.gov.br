@@ -36,7 +36,10 @@ public class LoteValidacaoDTO  {
   private String codigo = null;
 
   @XmlElement(name="erros")
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Lista de erros")
+ /**
+   * Lista de erros
+  **/
   private List<String> erros = null;
 
   @XmlElement(name="sucesso", required = true)
@@ -84,7 +87,7 @@ public class LoteValidacaoDTO  {
   }
 
  /**
-   * Get erros
+   * Lista de erros
    * @return erros
   **/
   @JsonProperty("erros")

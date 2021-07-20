@@ -18,6 +18,7 @@ import br.gov.siscomex.portalunico.due.model.AtoConcessorio;
 import br.gov.siscomex.portalunico.due.model.DUE;
 import br.gov.siscomex.portalunico.due.model.DUEResumida;
 import br.gov.siscomex.portalunico.due.model.Declaration;
+import br.gov.siscomex.portalunico.due.model.ExigenciaFiscalEstruturada;
 import br.gov.siscomex.portalunico.due.model.Link;
 import br.gov.siscomex.portalunico.due.model.PucomexReturn;
 import io.swagger.annotations.Api;
@@ -54,7 +55,7 @@ public interface DueApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response alterar(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "" ,required=true)@Valid Declaration body, @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response alterar(@ApiParam(value = "" ,required=true)@Valid Declaration body, @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consulta que retorna uma lista de Links para as DUEs encontradas.
@@ -71,7 +72,7 @@ public interface DueApi  {
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response buscar(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi,  @NotNull @ApiParam(value = "Chave de acesso da Nota Fiscal<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'",required=true)  @QueryParam("nota-fiscal") String notaFiscal, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response buscar( @NotNull @ApiParam(value = "Chave de acesso da Nota Fiscal<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'",required=true)  @QueryParam("nota-fiscal") String notaFiscal, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consulta DUE com dados resumidos.
@@ -87,7 +88,7 @@ public interface DueApi  {
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarDadosResumidosDUE(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi,  @NotNull @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'<br />ou<br />RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'",required=true)  @QueryParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response consultarDadosResumidosDUE( @NotNull @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'<br />ou<br />RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'",required=true)  @QueryParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Serviço para criação do documento único de exportação - DUE.
@@ -107,7 +108,7 @@ public interface DueApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response inserir(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "" ,required=true)@Valid Declaration body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response inserir(@ApiParam(value = "" ,required=true)@Valid Declaration body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Retorna lista de atos concessórios do tipo isenção
@@ -125,7 +126,25 @@ public interface DueApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response lista(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero-da-due") String numeroDaDue, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Número do Item de DU-E<br />Formato: Inteiro, com até 5 digitos")  @QueryParam("numero-item-de-due") String numeroItemDeDue,  @ApiParam(value = "Índice do primeiro elemento<br />Formato: Inteiro, com até 10 digitos", defaultValue="0") @DefaultValue("0") @QueryParam("offset") Integer offset,  @ApiParam(value = "Índice do último elemento<br />Formato: Inteiro, com até 10 digitos", defaultValue="49") @DefaultValue("49") @QueryParam("limit") Integer limit,  @ApiParam(value = "Número do ato concessório<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")  @QueryParam("numero") String numero,  @ApiParam(value = "Item do ato concessório<br />Formato: Inteiro, com até 5 digitos")  @QueryParam("numero-do-item") String numeroDoItem,  @ApiParam(value = "CNPJ do Beneficiário<br />Tamanho: 14<br />Formato: 'NNNNNNNNNNNNNN'")  @QueryParam("cnpj-do-beneficiario") String cnpjDoBeneficiario,  @ApiParam(value = "Ordenação", allowableValues="NUMERO, ITEM, CNPJ_DO_BENEFICIARIO, NUMERO_ITEM_DUE, DATA_DE_REGISTRO")  @QueryParam("ordenacao") String ordenacao,  @ApiParam(value = "Tipo de Ordenação", allowableValues="ASC, DESC")  @QueryParam("tipoDeOrdenacao") String tipoDeOrdenacao);
+    public Response lista(@ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero-da-due") String numeroDaDue, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Número do Item de DU-E<br />Formato: Inteiro, com até 5 digitos")  @QueryParam("numero-item-de-due") String numeroItemDeDue,  @ApiParam(value = "Índice do primeiro elemento<br />Formato: Inteiro, com até 10 digitos", defaultValue="0") @DefaultValue("0") @QueryParam("offset") Integer offset,  @ApiParam(value = "Índice do último elemento<br />Formato: Inteiro, com até 10 digitos", defaultValue="49") @DefaultValue("49") @QueryParam("limit") Integer limit,  @ApiParam(value = "Número do ato concessório<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")  @QueryParam("numero") String numero,  @ApiParam(value = "Item do ato concessório<br />Formato: Inteiro, com até 5 digitos")  @QueryParam("numero-do-item") String numeroDoItem,  @ApiParam(value = "CNPJ do Beneficiário<br />Tamanho: 14<br />Formato: 'NNNNNNNNNNNNNN'")  @QueryParam("cnpj-do-beneficiario") String cnpjDoBeneficiario,  @ApiParam(value = "Ordenação", allowableValues="NUMERO, ITEM, CNPJ_DO_BENEFICIARIO, NUMERO_ITEM_DUE, DATA_DE_REGISTRO")  @QueryParam("ordenacao") String ordenacao,  @ApiParam(value = "Tipo de Ordenação", allowableValues="ASC, DESC")  @QueryParam("tipoDeOrdenacao") String tipoDeOrdenacao);
+
+    /**
+     * Retorna lista de exigências fiscais de uma DUE.
+     *
+     */
+    @GET
+    @Path("/ext/due/{numero-da-due}/exigencias-fiscais")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Retorna lista de exigências fiscais de uma DUE.", notes = "", tags={ "due" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ExigenciaFiscalEstruturada.class, responseContainer = "List"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 400, message = "Requisição mal formatada"),
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+    public Response obter(@ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero-da-due") String numeroDaDue, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Retorna Declaração Única de Exportação - DUE, por número.
@@ -142,7 +161,7 @@ public interface DueApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 404, message = "Recurso não localizado"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response obterPorDUE(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response obterPorDUE(@ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Retorna Declaração Única de Exportação - DUE, por número da RUC.
@@ -159,7 +178,7 @@ public interface DueApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 404, message = "Recurso não localizado"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response obterPorRUC(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response obterPorRUC(@ApiParam(value = "RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Serviço para vinculação de atos concessórios de Drawback Isenção ao documento único de exportação - DUE.
@@ -173,6 +192,6 @@ public interface DueApi  {
     @ApiOperation(value = "Serviço para vinculação de atos concessórios de Drawback Isenção ao documento único de exportação - DUE.", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/duex/vinculo-drawback-isencao/\">Exemplos adicionais da DUE</a><br><br><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/duex/oma-xsd.zip\">XSD para download</a></p>", tags={ "due" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation") })
-    public Response vinculaAtosConcessorios(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Declaration" ,required=true)@Valid Declaration body, @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "Authorization token" ,required=true)@HeaderParam("javax.servlet.request.X509Certificate") String javaxServletRequestX509Certificate, @ApiParam(value = "Content-Type" ,required=true, defaultValue="application/xml")@HeaderParam("Content-Type") String contentType, @ApiParam(value = "Accept" ,required=true, defaultValue="application/xml")@HeaderParam("Accept") String accept);
+    public Response vinculaAtosConcessorios(@ApiParam(value = "Declaration" ,required=true)@Valid Declaration body, @ApiParam(value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'",required=true) @PathParam("numero") String numero, @ApiParam(value = "Authorization token" ,required=true)@HeaderParam("javax.servlet.request.X509Certificate") String javaxServletRequestX509Certificate, @ApiParam(value = "Content-Type" ,required=true, defaultValue="application/xml")@HeaderParam("Content-Type") String contentType, @ApiParam(value = "Accept" ,required=true, defaultValue="application/xml")@HeaderParam("Accept") String accept);
 }
 

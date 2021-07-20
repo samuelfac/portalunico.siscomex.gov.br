@@ -24,9 +24,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class DadosPrximoNavio  {
   
   @XmlElement(name="imo")
-  @ApiModelProperty(value = "Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Embarcacao.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Embarcacao.pdf </a>")
+  @ApiModelProperty(value = "Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio EMBARCAÇÃO disponível no acesso público do sistema <a href=https://www.mercante.transportes.gov.br/g36127/servlet/serpro.siscomex.mercante.servlet.MercanteController rel=\"noopener noreferrer\" target=\"_blank\">Mercante</a><br/>Tamanho: 10")
  /**
-   * Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Embarcacao.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Embarcacao.pdf </a>
+   * Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio EMBARCAÇÃO disponível no acesso público do sistema <a href=https://www.mercante.transportes.gov.br/g36127/servlet/serpro.siscomex.mercante.servlet.MercanteController rel=\"noopener noreferrer\" target=\"_blank\">Mercante</a><br/>Tamanho: 10
   **/
   private String imo = null;
 
@@ -37,7 +37,7 @@ public class DadosPrximoNavio  {
   **/
   private String nome = null;
  /**
-   * Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Embarcacao.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Embarcacao.pdf &lt;/a&gt;
+   * Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio EMBARCAÇÃO disponível no acesso público do sistema &lt;a href&#x3D;https://www.mercante.transportes.gov.br/g36127/servlet/serpro.siscomex.mercante.servlet.MercanteController rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Mercante&lt;/a&gt;&lt;br/&gt;Tamanho: 10
    * @return imo
   **/
   @JsonProperty("imo")

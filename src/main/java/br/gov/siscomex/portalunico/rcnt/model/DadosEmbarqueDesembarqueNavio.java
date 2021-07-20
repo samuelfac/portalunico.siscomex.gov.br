@@ -194,10 +194,10 @@ public enum EmbarqueDesembarqueEnum {
     }
 }
 
-  @XmlElement(name="embarqueDesembarque")
-  @ApiModelProperty(example = "E", value = "Tipo de evento: embarque ou desembarque.<br/>Domínio:<br/>E - Embarque<br/>D - Desembarque")
+  @XmlElement(name="embarqueDesembarque", required = true)
+  @ApiModelProperty(example = "E", required = true, value = "Tipo de evento: embarque ou desembarque. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Embarque<br/>D - Desembarque")
  /**
-   * Tipo de evento: embarque ou desembarque.<br/>Domínio:<br/>E - Embarque<br/>D - Desembarque
+   * Tipo de evento: embarque ou desembarque. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Embarque<br/>D - Desembarque
   **/
   private EmbarqueDesembarqueEnum embarqueDesembarque = null;
 
@@ -216,7 +216,7 @@ public enum EmbarqueDesembarqueEnum {
   private String tipoConteiner = null;
 
   @XmlElement(name="taraConteiner")
-  @ApiModelProperty(example = "300.25", value = "Tara Contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
+  @ApiModelProperty(value = "Tara Contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
   @Valid
  /**
    * Tara Contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
@@ -224,7 +224,7 @@ public enum EmbarqueDesembarqueEnum {
   private BigDecimal taraConteiner = null;
 
   @XmlElement(name="pesoBrutoManifesto")
-  @ApiModelProperty(example = "100.25", value = "Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
+  @ApiModelProperty(value = "Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
   @Valid
  /**
    * Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.
@@ -232,7 +232,7 @@ public enum EmbarqueDesembarqueEnum {
   private BigDecimal pesoBrutoManifesto = null;
 
   @XmlElement(name="pesoBrutoBalanca")
-  @ApiModelProperty(example = "100.25", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
+  @ApiModelProperty(value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
   @Valid
  /**
    * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
@@ -240,7 +240,7 @@ public enum EmbarqueDesembarqueEnum {
   private BigDecimal pesoBrutoBalanca = null;
 
   @XmlElement(name="pesoArqueacao")
-  @ApiModelProperty(example = "100.25", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.")
+  @ApiModelProperty(value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.")
   @Valid
  /**
    * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.
@@ -318,7 +318,7 @@ public enum TipoGranelEnum {
   private TipoGranelEnum tipoGranel = null;
 
   @XmlElement(name="volume")
-  @ApiModelProperty(example = "30.55", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.")
+  @ApiModelProperty(value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.")
   @Valid
  /**
    * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.
@@ -665,10 +665,11 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Tipo de evento: embarque ou desembarque.&lt;br/&gt;Domínio:&lt;br/&gt;E - Embarque&lt;br/&gt;D - Desembarque
+   * Tipo de evento: embarque ou desembarque. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;E - Embarque&lt;br/&gt;D - Desembarque
    * @return embarqueDesembarque
   **/
   @JsonProperty("embarqueDesembarque")
+  @NotNull
   public String getEmbarqueDesembarque() {
     if (embarqueDesembarque == null) {
       return null;

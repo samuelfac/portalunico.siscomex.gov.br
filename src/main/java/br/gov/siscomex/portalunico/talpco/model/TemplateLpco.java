@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TemplateLpco", propOrder =
-    { "listaCamposFormulario", "listaCamposNcm", "modelo", "permiteMultiplosCpfCnpjExportador"
+    { "modelo", "listaCamposFormulario", "listaCamposNcm"
 })
 
 @XmlRootElement(name="TemplateLpco")
@@ -28,6 +28,11 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Template que especifica a estrutura de um formulário de um LPCO")
 public class TemplateLpco  {
   
+  @XmlElement(name="modelo", required = true)
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private ModeloLpcoCompleto modelo = null;
+
   @XmlElement(name="listaCamposFormulario", required = true)
   @ApiModelProperty(required = true, value = "Lista de definições de campos do formulário.")
   @Valid
@@ -43,18 +48,25 @@ public class TemplateLpco  {
    * Lista de definições de campos a serem preenchidos para cada NCM informada no LPCO
   **/
   private List<CampoFormulario> listaCamposNcm = new ArrayList<>();
-
-  @XmlElement(name="modelo", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private ModeloLpcoCompleto modelo = null;
-
-  @XmlElement(name="permiteMultiplosCpfCnpjExportador")
-  @ApiModelProperty(value = "DESCONTINUADO. Utilize \"permiteMultiplosValores\" do campo CPF_CNPJ_EXPORTADOR.")
  /**
-   * DESCONTINUADO. Utilize \"permiteMultiplosValores\" do campo CPF_CNPJ_EXPORTADOR.
+   * Get modelo
+   * @return modelo
   **/
-  private Boolean permiteMultiplosCpfCnpjExportador = false;
+  @JsonProperty("modelo")
+  @NotNull
+  public ModeloLpcoCompleto getModelo() {
+    return modelo;
+  }
+
+  public void setModelo(ModeloLpcoCompleto modelo) {
+    this.modelo = modelo;
+  }
+
+  public TemplateLpco modelo(ModeloLpcoCompleto modelo) {
+    this.modelo = modelo;
+    return this;
+  }
+
  /**
    * Lista de definições de campos do formulário.
    * @return listaCamposFormulario
@@ -103,53 +115,15 @@ public class TemplateLpco  {
     return this;
   }
 
- /**
-   * Get modelo
-   * @return modelo
-  **/
-  @JsonProperty("modelo")
-  @NotNull
-  public ModeloLpcoCompleto getModelo() {
-    return modelo;
-  }
-
-  public void setModelo(ModeloLpcoCompleto modelo) {
-    this.modelo = modelo;
-  }
-
-  public TemplateLpco modelo(ModeloLpcoCompleto modelo) {
-    this.modelo = modelo;
-    return this;
-  }
-
- /**
-   * DESCONTINUADO. Utilize \&quot;permiteMultiplosValores\&quot; do campo CPF_CNPJ_EXPORTADOR.
-   * @return permiteMultiplosCpfCnpjExportador
-  **/
-  @JsonProperty("permiteMultiplosCpfCnpjExportador")
-  public Boolean isPermiteMultiplosCpfCnpjExportador() {
-    return permiteMultiplosCpfCnpjExportador;
-  }
-
-  public void setPermiteMultiplosCpfCnpjExportador(Boolean permiteMultiplosCpfCnpjExportador) {
-    this.permiteMultiplosCpfCnpjExportador = permiteMultiplosCpfCnpjExportador;
-  }
-
-  public TemplateLpco permiteMultiplosCpfCnpjExportador(Boolean permiteMultiplosCpfCnpjExportador) {
-    this.permiteMultiplosCpfCnpjExportador = permiteMultiplosCpfCnpjExportador;
-    return this;
-  }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateLpco {\n");
     
+    sb.append("    modelo: ").append(toIndentedString(modelo)).append("\n");
     sb.append("    listaCamposFormulario: ").append(toIndentedString(listaCamposFormulario)).append("\n");
     sb.append("    listaCamposNcm: ").append(toIndentedString(listaCamposNcm)).append("\n");
-    sb.append("    modelo: ").append(toIndentedString(modelo)).append("\n");
-    sb.append("    permiteMultiplosCpfCnpjExportador: ").append(toIndentedString(permiteMultiplosCpfCnpjExportador)).append("\n");
     sb.append("}");
     return sb.toString();
   }

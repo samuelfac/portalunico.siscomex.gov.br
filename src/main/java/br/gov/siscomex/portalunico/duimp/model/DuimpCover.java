@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DuimpCover", propOrder =
-    { "numeroDeclaracao", "versaoDeclaracao", "situacaoDeclaracao", "versaoDeclaracaoVigente", "dataHoraCriacao", "dataHoraRegistro", "dataHoraRegistroVersaoVigente", "cpfResponsavel", "tipoImportador", "niImportador", "nomeImportador", "ufImportador", "canalSelecao", "dadosCarga", "documentosInstrutivoDespacho", "processosVinculados", "docDeclaracoesExportacaoEstrangeira", "dadosResumo", "itensHistorico", "itens"
+    { "versaoDeclaracao", "situacaoDeclaracao", "versaoDeclaracaoVigente", "dataHoraCriacao", "dataHoraRegistro", "dataHoraRegistroVersaoVigente", "cpfResponsavel", "tipoImportador", "niImportador", "nomeImportador", "ufImportador", "canalSelecao", "equipesTrabalho", "dadosCarga", "documentosInstrutivoDespacho", "processosVinculados", "docDeclaracoesExportacaoEstrangeira", "dadosResumo", "itensHistorico", "itens"
 })
 
 @XmlRootElement(name="DuimpCover")
@@ -31,13 +31,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados da Duimp destinados à da SEFAZ")
 public class DuimpCover  {
   
-  @XmlElement(name="numeroDeclaracao", required = true)
-  @ApiModelProperty(example = "19BR00000004677", required = true, value = "Número da Duimp<br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)")
- /**
-   * Número da Duimp<br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)
-  **/
-  private String numeroDeclaracao = null;
-
   @XmlElement(name="versaoDeclaracao", required = true)
   @ApiModelProperty(example = "1", required = true, value = "Versão da Duimp<br>Valor mínimo: 1<br>Valor máximo: 9999")
  /**
@@ -202,6 +195,14 @@ public enum CanalSelecaoEnum {
   **/
   private CanalSelecaoEnum canalSelecao = null;
 
+  @XmlElement(name="equipesTrabalho", required = true)
+  @ApiModelProperty(required = true, value = "Lista de equipes de trabalho")
+  @Valid
+ /**
+   * Lista de equipes de trabalho
+  **/
+  private List<DadosDeEquipeDeTrabalho> equipesTrabalho = new ArrayList<>();
+
   @XmlElement(name="dadosCarga", required = true)
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -251,25 +252,6 @@ public enum CanalSelecaoEnum {
    * Lista de itens de Duimp
   **/
   private List<ItemCover> itens = new ArrayList<>();
- /**
-   * Número da Duimp&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* NN &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* AA &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* NNNNNNNNNN &#x3D; 10 caracteres númericos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* N &#x3D; 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)
-   * @return numeroDeclaracao
-  **/
-  @JsonProperty("numeroDeclaracao")
-  @NotNull
-  public String getNumeroDeclaracao() {
-    return numeroDeclaracao;
-  }
-
-  public void setNumeroDeclaracao(String numeroDeclaracao) {
-    this.numeroDeclaracao = numeroDeclaracao;
-  }
-
-  public DuimpCover numeroDeclaracao(String numeroDeclaracao) {
-    this.numeroDeclaracao = numeroDeclaracao;
-    return this;
-  }
-
  /**
    * Versão da Duimp&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
    * @return versaoDeclaracao
@@ -505,6 +487,30 @@ public enum CanalSelecaoEnum {
   }
 
  /**
+   * Lista de equipes de trabalho
+   * @return equipesTrabalho
+  **/
+  @JsonProperty("equipesTrabalho")
+  @NotNull
+  public List<DadosDeEquipeDeTrabalho> getEquipesTrabalho() {
+    return equipesTrabalho;
+  }
+
+  public void setEquipesTrabalho(List<DadosDeEquipeDeTrabalho> equipesTrabalho) {
+    this.equipesTrabalho = equipesTrabalho;
+  }
+
+  public DuimpCover equipesTrabalho(List<DadosDeEquipeDeTrabalho> equipesTrabalho) {
+    this.equipesTrabalho = equipesTrabalho;
+    return this;
+  }
+
+  public DuimpCover addEquipesTrabalhoItem(DadosDeEquipeDeTrabalho equipesTrabalhoItem) {
+    this.equipesTrabalho.add(equipesTrabalhoItem);
+    return this;
+  }
+
+ /**
    * Get dadosCarga
    * @return dadosCarga
   **/
@@ -665,7 +671,6 @@ public enum CanalSelecaoEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class DuimpCover {\n");
     
-    sb.append("    numeroDeclaracao: ").append(toIndentedString(numeroDeclaracao)).append("\n");
     sb.append("    versaoDeclaracao: ").append(toIndentedString(versaoDeclaracao)).append("\n");
     sb.append("    situacaoDeclaracao: ").append(toIndentedString(situacaoDeclaracao)).append("\n");
     sb.append("    versaoDeclaracaoVigente: ").append(toIndentedString(versaoDeclaracaoVigente)).append("\n");
@@ -678,6 +683,7 @@ public enum CanalSelecaoEnum {
     sb.append("    nomeImportador: ").append(toIndentedString(nomeImportador)).append("\n");
     sb.append("    ufImportador: ").append(toIndentedString(ufImportador)).append("\n");
     sb.append("    canalSelecao: ").append(toIndentedString(canalSelecao)).append("\n");
+    sb.append("    equipesTrabalho: ").append(toIndentedString(equipesTrabalho)).append("\n");
     sb.append("    dadosCarga: ").append(toIndentedString(dadosCarga)).append("\n");
     sb.append("    documentosInstrutivoDespacho: ").append(toIndentedString(documentosInstrutivoDespacho)).append("\n");
     sb.append("    processosVinculados: ").append(toIndentedString(processosVinculados)).append("\n");

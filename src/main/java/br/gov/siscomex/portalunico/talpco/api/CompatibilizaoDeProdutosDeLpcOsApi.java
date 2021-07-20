@@ -9,10 +9,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
-import br.gov.siscomex.portalunico.talpco.model.CompatibilizacaoLpcoExternalDTO;
+import br.gov.siscomex.portalunico.talpco.model.CompatibilizacaoLpcoResponse;
 import br.gov.siscomex.portalunico.talpco.model.JustificativaCompatibilizacaoRequest;
 import br.gov.siscomex.portalunico.talpco.model.SolicitacaoCompatibilizacaoRequest;
 import io.swagger.annotations.Api;
@@ -43,13 +42,13 @@ public interface CompatibilizaoDeProdutosDeLpcOsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Aceitar solicitação de compatibilização de LPCO.", notes = "<p> Disponível apenas para a Administração Pública.</p>", tags={ "Compatibilização de produtos de LPCOs" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoExternalDTO.class),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoResponse.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response aceitarSolicitacaoAlteracao(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número do LPCO para o qual será aceita a solicitação de compatibilização.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid JustificativaCompatibilizacaoRequest body);
+    public Response aceitarSolicitacaoAlteracao(@ApiParam(value = "Número do LPCO para o qual será aceita a solicitação de compatibilização.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid JustificativaCompatibilizacaoRequest body);
 
     /**
      * Cancelar solicitação de retificação de LPCO.
@@ -61,13 +60,13 @@ public interface CompatibilizaoDeProdutosDeLpcOsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Cancelar solicitação de retificação de LPCO.", notes = "", tags={ "Compatibilização de produtos de LPCOs" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoExternalDTO.class),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoResponse.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response cancelarSolicitacaoAlteracao(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número do LPCO para o qual será cancelada a solicitação de retificação.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid JustificativaCompatibilizacaoRequest body);
+    public Response cancelarSolicitacaoAlteracao(@ApiParam(value = "Número do LPCO para o qual será cancelada a solicitação de retificação.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid JustificativaCompatibilizacaoRequest body);
 
     /**
      * Solicitar Compatibilização de LPCO.
@@ -79,13 +78,13 @@ public interface CompatibilizaoDeProdutosDeLpcOsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Solicitar Compatibilização de LPCO.", notes = "", tags={ "Compatibilização de produtos de LPCOs" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoExternalDTO.class),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoResponse.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response inserirSolicitacaoAlteracao(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número do LPCO a ser compatibilizado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid SolicitacaoCompatibilizacaoRequest body);
+    public Response inserirSolicitacaoAlteracao(@ApiParam(value = "Número do LPCO a ser compatibilizado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid SolicitacaoCompatibilizacaoRequest body);
 
     /**
      * Negar solicitação de compatiblização de LPCO.
@@ -99,13 +98,13 @@ public interface CompatibilizaoDeProdutosDeLpcOsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Negar solicitação de compatiblização de LPCO.", notes = "<p> Disponível apenas para a Administração Pública.</p>", tags={ "Compatibilização de produtos de LPCOs" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoExternalDTO.class),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoResponse.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response negarSolicitacaoAlteracaoDepreciada(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número do LPCO para o qual será negada a solicitação de compatiblização.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid JustificativaCompatibilizacaoRequest body);
+    public Response negarSolicitacaoAlteracaoDepreciada(@ApiParam(value = "Número do LPCO para o qual será negada a solicitação de compatiblização.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "" )@Valid JustificativaCompatibilizacaoRequest body);
 
     /**
      * Detalhar Solicitação de Compatibilização pendentes de análise.
@@ -116,13 +115,13 @@ public interface CompatibilizaoDeProdutosDeLpcOsApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Detalhar Solicitação de Compatibilização pendentes de análise.", notes = "", tags={ "Compatibilização de produtos de LPCOs" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoExternalDTO.class),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = CompatibilizacaoLpcoResponse.class),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nemhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response obterRetificacao(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Número do LPCO a ser verificado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response obterRetificacao(@ApiParam(value = "Número do LPCO a ser verificado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano",required=true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

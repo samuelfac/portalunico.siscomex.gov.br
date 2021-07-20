@@ -141,7 +141,7 @@ public enum TipoOperacaoEnum {
   private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
 
   @XmlElement(name="paisNacionalidade")
-  @ApiModelProperty(example = "23", value = "Pais Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
+  @ApiModelProperty(example = "DE", value = "Pais Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
  /**
    * Pais Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
   **/
@@ -200,10 +200,10 @@ public enum GeneroEnum {
   **/
   private String cnh = null;
 
-  @XmlElement(name="nome")
-  @ApiModelProperty(value = "Nome<br/>Tamanho: 100")
+  @XmlElement(name="nome", required = true)
+  @ApiModelProperty(required = true, value = "Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Nome<br/>Tamanho: 100
+   * Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String nome = null;
 
@@ -576,10 +576,11 @@ public enum GeneroEnum {
   }
 
  /**
-   * Nome&lt;br/&gt;Tamanho: 100
+   * Nome. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")
+  @NotNull
   public String getNome() {
     return nome;
   }

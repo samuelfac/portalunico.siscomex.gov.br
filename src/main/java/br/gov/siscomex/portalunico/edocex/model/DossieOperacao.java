@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DossieOperacao", propOrder =
-    { "cnpjCpf", "cpfCriacao", "cpfVinculacao", "criadoPor", "dataHoraCriacao", "dataHoraVinculacao", "descricaoDossie", "documentos", "idTipoDossie", "nomeTipoDossie", "numeroDossie", "vinculadoPor"
+    { "cnpjCpf", "cpfCriacao", "cpfVinculacao", "criadoPor", "dataHoraCriacao", "dataHoraVinculacao", "descricaoDossie", "documentos", "dossiesVinculados", "idTipoDossie", "nomeTipoDossie", "numeroDossie", "vinculadoPor"
 })
 
 @XmlRootElement(name="DossieOperacao")
@@ -122,6 +122,14 @@ public enum CriadoPorEnum {
   @ApiModelProperty(value = "")
   @Valid
   private List<Documento> documentos = null;
+
+  @XmlElement(name="dossiesVinculados")
+  @ApiModelProperty(value = "Lista de dossiês vinculos ao dossiê da operação.")
+  @Valid
+ /**
+   * Lista de dossiês vinculos ao dossiê da operação.
+  **/
+  private List<DossieVinculado> dossiesVinculados = null;
 
   @XmlElement(name="idTipoDossie", required = true)
   @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
@@ -348,6 +356,29 @@ public enum VinculadoPorEnum {
   }
 
  /**
+   * Lista de dossiês vinculos ao dossiê da operação.
+   * @return dossiesVinculados
+  **/
+  @JsonProperty("dossiesVinculados")
+  public List<DossieVinculado> getDossiesVinculados() {
+    return dossiesVinculados;
+  }
+
+  public void setDossiesVinculados(List<DossieVinculado> dossiesVinculados) {
+    this.dossiesVinculados = dossiesVinculados;
+  }
+
+  public DossieOperacao dossiesVinculados(List<DossieVinculado> dossiesVinculados) {
+    this.dossiesVinculados = dossiesVinculados;
+    return this;
+  }
+
+  public DossieOperacao addDossiesVinculadosItem(DossieVinculado dossiesVinculadosItem) {
+    this.dossiesVinculados.add(dossiesVinculadosItem);
+    return this;
+  }
+
+ /**
    * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
    * @return idTipoDossie
   **/
@@ -439,6 +470,7 @@ public enum VinculadoPorEnum {
     sb.append("    dataHoraVinculacao: ").append(toIndentedString(dataHoraVinculacao)).append("\n");
     sb.append("    descricaoDossie: ").append(toIndentedString(descricaoDossie)).append("\n");
     sb.append("    documentos: ").append(toIndentedString(documentos)).append("\n");
+    sb.append("    dossiesVinculados: ").append(toIndentedString(dossiesVinculados)).append("\n");
     sb.append("    idTipoDossie: ").append(toIndentedString(idTipoDossie)).append("\n");
     sb.append("    nomeTipoDossie: ").append(toIndentedString(nomeTipoDossie)).append("\n");
     sb.append("    numeroDossie: ").append(toIndentedString(numeroDossie)).append("\n");

@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -18,6 +19,10 @@ import io.swagger.annotations.ApiModelProperty;
 })
 
 @XmlRootElement(name="DadosDocumentoEstrangeiro")
+/**
+  * Informar apenas no caso de estrangeiro sem CPF
+ **/
+@ApiModel(description="Informar apenas no caso de estrangeiro sem CPF")
 public class DadosDocumentoEstrangeiro  {
   
   @XmlElement(name="numero")
@@ -81,7 +86,7 @@ public enum TipoEnum {
   private String validade = null;
 
   @XmlElement(name="paisEmissor")
-  @ApiModelProperty(example = "23", value = "País emissor do documento conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
+  @ApiModelProperty(example = "DE", value = "País emissor do documento conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
  /**
    * País emissor do documento conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
   **/

@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ResultadoServicoExternoPaginado", propOrder =
-    { "itens", "lastPage", "offset", "pageSize", "totalItens"
+    { "lastPage", "itens", "offset", "pageSize", "totalItens"
 })
 
 @XmlRootElement(name="ResultadoServicoExternoPaginado")
@@ -28,6 +28,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de um página retoranda pela consulta detalhada de LPCOs")
 public class ResultadoServicoExternoPaginado  {
   
+  @XmlElement(name="lastPage")
+  @ApiModelProperty(value = "")
+  private Boolean lastPage = false;
+
   @XmlElement(name="itens", required = true)
   @ApiModelProperty(required = true, value = "Lista de registros que fazem parte da pagina atual contida nesta resposta da consulta paginada.<br>")
   @Valid
@@ -35,10 +39,6 @@ public class ResultadoServicoExternoPaginado  {
    * Lista de registros que fazem parte da pagina atual contida nesta resposta da consulta paginada.<br>
   **/
   private List<ConsultaDetalhadaLpco> itens = new ArrayList<>();
-
-  @XmlElement(name="lastPage")
-  @ApiModelProperty(value = "")
-  private Boolean lastPage = false;
 
   @XmlElement(name="offset", required = true)
   @ApiModelProperty(required = true, value = "Índice do primeiro registro contido nesta resposta.<br>")
@@ -61,6 +61,24 @@ public class ResultadoServicoExternoPaginado  {
   **/
   private Integer totalItens = null;
  /**
+   * Get lastPage
+   * @return lastPage
+  **/
+  @JsonProperty("lastPage")
+  public Boolean isLastPage() {
+    return lastPage;
+  }
+
+  public void setLastPage(Boolean lastPage) {
+    this.lastPage = lastPage;
+  }
+
+  public ResultadoServicoExternoPaginado lastPage(Boolean lastPage) {
+    this.lastPage = lastPage;
+    return this;
+  }
+
+ /**
    * Lista de registros que fazem parte da pagina atual contida nesta resposta da consulta paginada.&lt;br&gt;
    * @return itens
   **/
@@ -81,24 +99,6 @@ public class ResultadoServicoExternoPaginado  {
 
   public ResultadoServicoExternoPaginado addItensItem(ConsultaDetalhadaLpco itensItem) {
     this.itens.add(itensItem);
-    return this;
-  }
-
- /**
-   * Get lastPage
-   * @return lastPage
-  **/
-  @JsonProperty("lastPage")
-  public Boolean isLastPage() {
-    return lastPage;
-  }
-
-  public void setLastPage(Boolean lastPage) {
-    this.lastPage = lastPage;
-  }
-
-  public ResultadoServicoExternoPaginado lastPage(Boolean lastPage) {
-    this.lastPage = lastPage;
     return this;
   }
 
@@ -165,8 +165,8 @@ public class ResultadoServicoExternoPaginado  {
     StringBuilder sb = new StringBuilder();
     sb.append("class ResultadoServicoExternoPaginado {\n");
     
-    sb.append("    itens: ").append(toIndentedString(itens)).append("\n");
     sb.append("    lastPage: ").append(toIndentedString(lastPage)).append("\n");
+    sb.append("    itens: ").append(toIndentedString(itens)).append("\n");
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
     sb.append("    totalItens: ").append(toIndentedString(totalItens)).append("\n");

@@ -88,9 +88,9 @@ public enum TipoOperacaoEnum {
 }
 
   @XmlElement(name="tipoOperacao", required = true)
-  @ApiModelProperty(example = "DI", required = true, value = "DI - Declaração de Importação,<br/>LI - Licença de Importação,<br/>RE - Registro de Exportação,<br/>DT - Declaração de Trânsito,<br/>")
+  @ApiModelProperty(example = "DI", required = true, value = "DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>")
  /**
-   * DI - Declaração de Importação,<br/>LI - Licença de Importação,<br/>RE - Registro de Exportação,<br/>DT - Declaração de Trânsito,<br/>
+   * DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>
   **/
   private TipoOperacaoEnum tipoOperacao = null;
  /**
@@ -132,7 +132,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * DI - Declaração de Importação,&lt;br/&gt;LI - Licença de Importação,&lt;br/&gt;RE - Registro de Exportação,&lt;br/&gt;DT - Declaração de Trânsito,&lt;br/&gt;
+   * DI - Declaração de Importação&lt;br/&gt;LI - Licença de Importação&lt;br/&gt;RE - Registro de Exportação&lt;br/&gt;DT - Declaração de Trânsito&lt;br/&gt;
    * @return tipoOperacao
   **/
   @JsonProperty("tipoOperacao")

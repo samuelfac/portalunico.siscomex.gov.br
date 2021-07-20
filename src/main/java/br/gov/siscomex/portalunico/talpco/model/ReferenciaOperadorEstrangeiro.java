@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ReferenciaOperadorEstrangeiro", propOrder =
-    { "codigo", "codigoPais", "cpfCnpjRaiz", "versao"
+    { "codigo", "cpfCnpjRaiz", "codigoPais", "versao"
 })
 
 @XmlRootElement(name="ReferenciaOperadorEstrangeiro")
@@ -31,19 +31,19 @@ public class ReferenciaOperadorEstrangeiro  {
   **/
   private String codigo = null;
 
-  @XmlElement(name="codigoPais", required = true)
-  @ApiModelProperty(example = "AR", required = true, value = "Código do país do operador estrangeiro.<br>Tamanho: 2")
- /**
-   * Código do país do operador estrangeiro.<br>Tamanho: 2
-  **/
-  private String codigoPais = null;
-
   @XmlElement(name="cpfCnpjRaiz", required = true)
   @ApiModelProperty(example = "00055555", required = true, value = "CNPJ raiz do operador estrangeiro.<br>Tamanho: 8")
  /**
    * CNPJ raiz do operador estrangeiro.<br>Tamanho: 8
   **/
   private String cpfCnpjRaiz = null;
+
+  @XmlElement(name="codigoPais", required = true)
+  @ApiModelProperty(example = "AR", required = true, value = "Código do país do operador estrangeiro.<br>Tamanho: 2")
+ /**
+   * Código do país do operador estrangeiro.<br>Tamanho: 2
+  **/
+  private String codigoPais = null;
 
   @XmlElement(name="versao", required = true)
   @ApiModelProperty(example = "1", required = true, value = "Versão do operador estrangeiro.<br>")
@@ -71,25 +71,6 @@ public class ReferenciaOperadorEstrangeiro  {
   }
 
  /**
-   * Código do país do operador estrangeiro.&lt;br&gt;Tamanho: 2
-   * @return codigoPais
-  **/
-  @JsonProperty("codigoPais")
-  @NotNull
-  public String getCodigoPais() {
-    return codigoPais;
-  }
-
-  public void setCodigoPais(String codigoPais) {
-    this.codigoPais = codigoPais;
-  }
-
-  public ReferenciaOperadorEstrangeiro codigoPais(String codigoPais) {
-    this.codigoPais = codigoPais;
-    return this;
-  }
-
- /**
    * CNPJ raiz do operador estrangeiro.&lt;br&gt;Tamanho: 8
    * @return cpfCnpjRaiz
   **/
@@ -105,6 +86,25 @@ public class ReferenciaOperadorEstrangeiro  {
 
   public ReferenciaOperadorEstrangeiro cpfCnpjRaiz(String cpfCnpjRaiz) {
     this.cpfCnpjRaiz = cpfCnpjRaiz;
+    return this;
+  }
+
+ /**
+   * Código do país do operador estrangeiro.&lt;br&gt;Tamanho: 2
+   * @return codigoPais
+  **/
+  @JsonProperty("codigoPais")
+  @NotNull
+  public String getCodigoPais() {
+    return codigoPais;
+  }
+
+  public void setCodigoPais(String codigoPais) {
+    this.codigoPais = codigoPais;
+  }
+
+  public ReferenciaOperadorEstrangeiro codigoPais(String codigoPais) {
+    this.codigoPais = codigoPais;
     return this;
   }
 
@@ -134,8 +134,8 @@ public class ReferenciaOperadorEstrangeiro  {
     sb.append("class ReferenciaOperadorEstrangeiro {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
-    sb.append("    codigoPais: ").append(toIndentedString(codigoPais)).append("\n");
     sb.append("    cpfCnpjRaiz: ").append(toIndentedString(cpfCnpjRaiz)).append("\n");
+    sb.append("    codigoPais: ").append(toIndentedString(codigoPais)).append("\n");
     sb.append("    versao: ").append(toIndentedString(versao)).append("\n");
     sb.append("}");
     return sb.toString();

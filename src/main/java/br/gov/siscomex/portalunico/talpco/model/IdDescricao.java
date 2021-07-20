@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "IdDescricao", propOrder =
-    { "descricao", "id"
+    { "id", "descricao"
 })
 
 @XmlRootElement(name="IdDescricao")
@@ -24,37 +24,19 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Estrutura genérica que representa um par id e descrição")
 public class IdDescricao  {
   
-  @XmlElement(name="descricao")
-  @ApiModelProperty(example = "Para outros usos", value = "Descrição textual do item")
- /**
-   * Descrição textual do item
-  **/
-  private String descricao = null;
-
   @XmlElement(name="id", required = true)
   @ApiModelProperty(example = "99", required = true, value = "Identificador do item")
  /**
    * Identificador do item
   **/
   private String id = null;
+
+  @XmlElement(name="descricao")
+  @ApiModelProperty(example = "Para outros usos", value = "Descrição textual do item")
  /**
    * Descrição textual do item
-   * @return descricao
   **/
-  @JsonProperty("descricao")
-  public String getDescricao() {
-    return descricao;
-  }
-
-  public void setDescricao(String descricao) {
-    this.descricao = descricao;
-  }
-
-  public IdDescricao descricao(String descricao) {
-    this.descricao = descricao;
-    return this;
-  }
-
+  private String descricao = null;
  /**
    * Identificador do item
    * @return id
@@ -74,14 +56,32 @@ public class IdDescricao  {
     return this;
   }
 
+ /**
+   * Descrição textual do item
+   * @return descricao
+  **/
+  @JsonProperty("descricao")
+  public String getDescricao() {
+    return descricao;
+  }
+
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
+
+  public IdDescricao descricao(String descricao) {
+    this.descricao = descricao;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IdDescricao {\n");
     
-    sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

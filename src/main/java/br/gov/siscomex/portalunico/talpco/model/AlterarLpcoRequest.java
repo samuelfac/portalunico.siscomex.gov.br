@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AlterarLpcoRequest", propOrder =
-    { "informacaoAdicional", "justificativa", "listaCamposFormulario", "listaNcm", "unidadeMedidaComercializada"
+    { "justificativa", "informacaoAdicional", "listaCamposFormulario", "listaNcm"
 })
 
 @XmlRootElement(name="AlterarLpcoRequest")
@@ -28,6 +28,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados a serem informados para a alteração de um LPCO")
 public class AlterarLpcoRequest  {
   
+  @XmlElement(name="justificativa")
+  @ApiModelProperty(example = "Complemento de informações", value = "Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido.<br>Tamanho mínimo: 0<br>Tamanho máximo: 3900")
+ /**
+   * Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido.<br>Tamanho mínimo: 0<br>Tamanho máximo: 3900
+  **/
+  private String justificativa = null;
+
   @XmlElement(name="informacaoAdicional")
   @ApiModelProperty(example = "Texto livre", value = "Informações adicionais prestadas pelo importador/exportador.<br>Tamanho mínimo: 0<br><br>Tamanho máximo: 4000")
  /**
@@ -35,35 +42,39 @@ public class AlterarLpcoRequest  {
   **/
   private String informacaoAdicional = null;
 
-  @XmlElement(name="justificativa")
-  @ApiModelProperty(example = "Complemento de informações", value = "Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido<br>Tamanho mínimo: 0<br>Tamanho máximo: 3900")
- /**
-   * Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido<br>Tamanho mínimo: 0<br>Tamanho máximo: 3900
-  **/
-  private String justificativa = null;
-
   @XmlElement(name="listaCamposFormulario", required = true)
-  @ApiModelProperty(required = true, value = "Lista dos campos LPCO que fazem parte dos Dados Gerais do LPCO (ou seja, que não são declarados por NCM).")
+  @ApiModelProperty(required = true, value = "Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.")
   @Valid
  /**
-   * Lista dos campos LPCO que fazem parte dos Dados Gerais do LPCO (ou seja, que não são declarados por NCM).
+   * Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.
   **/
   private List<CampoLpcoRequest> listaCamposFormulario = new ArrayList<>();
 
   @XmlElement(name="listaNcm")
-  @ApiModelProperty(value = "Lista dos itens NCM declarados no LPCO.")
+  @ApiModelProperty(value = "Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.")
   @Valid
  /**
-   * Lista dos itens NCM declarados no LPCO.
+   * Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.
   **/
-  private List<ItemNcmLpcoRequest> listaNcm = null;
-
-  @XmlElement(name="unidadeMedidaComercializada")
-  @ApiModelProperty(value = "DESCONTINUADO. Utilize o campo unidade do campo QTD_COMERCIALIZADA<br>Tamanho mínimo: 1<br>Tamanho máximo: 60")
+  private List<ItemLpcoRequest> listaNcm = null;
  /**
-   * DESCONTINUADO. Utilize o campo unidade do campo QTD_COMERCIALIZADA<br>Tamanho mínimo: 1<br>Tamanho máximo: 60
+   * Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 3900
+   * @return justificativa
   **/
-  private String unidadeMedidaComercializada = null;
+  @JsonProperty("justificativa")
+  public String getJustificativa() {
+    return justificativa;
+  }
+
+  public void setJustificativa(String justificativa) {
+    this.justificativa = justificativa;
+  }
+
+  public AlterarLpcoRequest justificativa(String justificativa) {
+    this.justificativa = justificativa;
+    return this;
+  }
+
  /**
    * Informações adicionais prestadas pelo importador/exportador.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;&lt;br&gt;Tamanho máximo: 4000
    * @return informacaoAdicional
@@ -83,25 +94,7 @@ public class AlterarLpcoRequest  {
   }
 
  /**
-   * Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 3900
-   * @return justificativa
-  **/
-  @JsonProperty("justificativa")
-  public String getJustificativa() {
-    return justificativa;
-  }
-
-  public void setJustificativa(String justificativa) {
-    this.justificativa = justificativa;
-  }
-
-  public AlterarLpcoRequest justificativa(String justificativa) {
-    this.justificativa = justificativa;
-    return this;
-  }
-
- /**
-   * Lista dos campos LPCO que fazem parte dos Dados Gerais do LPCO (ou seja, que não são declarados por NCM).
+   * Lista de campos do pedido que fazem parte dos \&quot;Dados Gerais\&quot; do LPCO, ou seja, aqueles que não são informados por item.
    * @return listaCamposFormulario
   **/
   @JsonProperty("listaCamposFormulario")
@@ -125,43 +118,25 @@ public class AlterarLpcoRequest  {
   }
 
  /**
-   * Lista dos itens NCM declarados no LPCO.
+   * Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.
    * @return listaNcm
   **/
   @JsonProperty("listaNcm")
-  public List<ItemNcmLpcoRequest> getListaNcm() {
+  public List<ItemLpcoRequest> getListaNcm() {
     return listaNcm;
   }
 
-  public void setListaNcm(List<ItemNcmLpcoRequest> listaNcm) {
+  public void setListaNcm(List<ItemLpcoRequest> listaNcm) {
     this.listaNcm = listaNcm;
   }
 
-  public AlterarLpcoRequest listaNcm(List<ItemNcmLpcoRequest> listaNcm) {
+  public AlterarLpcoRequest listaNcm(List<ItemLpcoRequest> listaNcm) {
     this.listaNcm = listaNcm;
     return this;
   }
 
-  public AlterarLpcoRequest addListaNcmItem(ItemNcmLpcoRequest listaNcmItem) {
+  public AlterarLpcoRequest addListaNcmItem(ItemLpcoRequest listaNcmItem) {
     this.listaNcm.add(listaNcmItem);
-    return this;
-  }
-
- /**
-   * DESCONTINUADO. Utilize o campo unidade do campo QTD_COMERCIALIZADA&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 60
-   * @return unidadeMedidaComercializada
-  **/
-  @JsonProperty("unidadeMedidaComercializada")
-  public String getUnidadeMedidaComercializada() {
-    return unidadeMedidaComercializada;
-  }
-
-  public void setUnidadeMedidaComercializada(String unidadeMedidaComercializada) {
-    this.unidadeMedidaComercializada = unidadeMedidaComercializada;
-  }
-
-  public AlterarLpcoRequest unidadeMedidaComercializada(String unidadeMedidaComercializada) {
-    this.unidadeMedidaComercializada = unidadeMedidaComercializada;
     return this;
   }
 
@@ -171,11 +146,10 @@ public class AlterarLpcoRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlterarLpcoRequest {\n");
     
-    sb.append("    informacaoAdicional: ").append(toIndentedString(informacaoAdicional)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
+    sb.append("    informacaoAdicional: ").append(toIndentedString(informacaoAdicional)).append("\n");
     sb.append("    listaCamposFormulario: ").append(toIndentedString(listaCamposFormulario)).append("\n");
     sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
-    sb.append("    unidadeMedidaComercializada: ").append(toIndentedString(unidadeMedidaComercializada)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosPesagemVeculo", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "pesoBrutoManifesto", "placa", "tara", "listaSemirreboque", "taraConjunto", "listaConteineresUld", "pesoBrutoBalanca", "vazio", "capturaAutoPeso", "dutos", "ncm", "volume", "balanca", "listaCameras"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaNfe", "pesoBrutoManifesto", "placa", "tara", "listaSemirreboque", "taraConjunto", "listaConteineresUld", "pesoBrutoBalanca", "vazio", "capturaAutoPeso", "dutos", "correiasTransportadoras", "ncm", "volume", "balanca", "listaCameras"
 })
 
 @XmlRootElement(name="DadosPesagemVeculo")
@@ -139,6 +139,14 @@ public enum TipoOperacaoEnum {
   **/
   private List<DadosDoManisfestoDaCarga> listaManifestos = null;
 
+  @XmlElement(name="listaNfe")
+  @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
+  @Valid
+ /**
+   * Lista de chaves das NFE que amparam o transporte.
+  **/
+  private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
+
   @XmlElement(name="pesoBrutoManifesto")
   @ApiModelProperty(value = "Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
   @Valid
@@ -253,6 +261,52 @@ public enum DutosEnum {
    * Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.<br/>Domínio:<br/>E - Entrada via dutos<br/>S - Saída via dutos
   **/
   private DutosEnum dutos = null;
+
+
+@XmlType(name="CorreiasTransportadorasEnum")
+@XmlEnum(String.class)
+public enum CorreiasTransportadorasEnum {
+
+	@XmlEnumValue("'E'")
+	@JsonProperty("'E'")
+	E_(String.valueOf("'E'")),
+	
+	@XmlEnumValue("'S'")
+	@JsonProperty("'S'")
+	S_(String.valueOf("'S'"));
+
+
+    private String value;
+
+    CorreiasTransportadorasEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CorreiasTransportadorasEnum fromValue(String v) {
+        for (CorreiasTransportadorasEnum b : CorreiasTransportadorasEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to CorreiasTransportadorasEnum");
+    }
+}
+
+  @XmlElement(name="correiasTransportadoras")
+  @ApiModelProperty(example = "E", value = "Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto, oriundo de usina, pátio de estocagem ou silo, por meio de correias transportadoras. Não aplicável nos descarregamentos de veículos ou embarcações com correias transportadoras, neste caso enviar Embarque/Desembarque Navio. <br/>Domínio:<br/>E - Entrada<br/>S - Saída")
+ /**
+   * Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto, oriundo de usina, pátio de estocagem ou silo, por meio de correias transportadoras. Não aplicável nos descarregamentos de veículos ou embarcações com correias transportadoras, neste caso enviar Embarque/Desembarque Navio. <br/>Domínio:<br/>E - Entrada<br/>S - Saída
+  **/
+  private CorreiasTransportadorasEnum correiasTransportadoras = null;
 
   @XmlElement(name="ncm")
   @ApiModelProperty(value = "Dutos. Informar a NCM da mercadoria que chegou ou saiu via dutos.<br/>Esta informação será prestada no caso de dutos pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8")
@@ -478,6 +532,29 @@ public enum DutosEnum {
   }
 
  /**
+   * Lista de chaves das NFE que amparam o transporte.
+   * @return listaNfe
+  **/
+  @JsonProperty("listaNfe")
+  public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+    return listaNfe;
+  }
+
+  public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+  }
+
+  public DadosPesagemVeculo listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+    return this;
+  }
+
+  public DadosPesagemVeculo addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
+    this.listaNfe.add(listaNfeItem);
+    return this;
+  }
+
+ /**
    * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada&lt;br/&gt;&lt;br/&gt;pesoBrutoManifesto, até 4 casas decimais.
    * @return pesoBrutoManifesto
   **/
@@ -671,6 +748,27 @@ public enum DutosEnum {
   }
 
  /**
+   * Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto, oriundo de usina, pátio de estocagem ou silo, por meio de correias transportadoras. Não aplicável nos descarregamentos de veículos ou embarcações com correias transportadoras, neste caso enviar Embarque/Desembarque Navio. &lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
+   * @return correiasTransportadoras
+  **/
+  @JsonProperty("correiasTransportadoras")
+  public String getCorreiasTransportadoras() {
+    if (correiasTransportadoras == null) {
+      return null;
+    }
+    return correiasTransportadoras.value();
+  }
+
+  public void setCorreiasTransportadoras(CorreiasTransportadorasEnum correiasTransportadoras) {
+    this.correiasTransportadoras = correiasTransportadoras;
+  }
+
+  public DadosPesagemVeculo correiasTransportadoras(CorreiasTransportadorasEnum correiasTransportadoras) {
+    this.correiasTransportadoras = correiasTransportadoras;
+    return this;
+  }
+
+ /**
    * Dutos. Informar a NCM da mercadoria que chegou ou saiu via dutos.&lt;br/&gt;Esta informação será prestada no caso de dutos pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;Tamanho: 8
    * @return ncm
   **/
@@ -763,6 +861,7 @@ public enum DutosEnum {
     sb.append("    contingencia: ").append(toIndentedString(contingencia)).append("\n");
     sb.append("    codigoRecinto: ").append(toIndentedString(codigoRecinto)).append("\n");
     sb.append("    listaManifestos: ").append(toIndentedString(listaManifestos)).append("\n");
+    sb.append("    listaNfe: ").append(toIndentedString(listaNfe)).append("\n");
     sb.append("    pesoBrutoManifesto: ").append(toIndentedString(pesoBrutoManifesto)).append("\n");
     sb.append("    placa: ").append(toIndentedString(placa)).append("\n");
     sb.append("    tara: ").append(toIndentedString(tara)).append("\n");
@@ -773,6 +872,7 @@ public enum DutosEnum {
     sb.append("    vazio: ").append(toIndentedString(vazio)).append("\n");
     sb.append("    capturaAutoPeso: ").append(toIndentedString(capturaAutoPeso)).append("\n");
     sb.append("    dutos: ").append(toIndentedString(dutos)).append("\n");
+    sb.append("    correiasTransportadoras: ").append(toIndentedString(correiasTransportadoras)).append("\n");
     sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
     sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
     sb.append("    balanca: ").append(toIndentedString(balanca)).append("\n");

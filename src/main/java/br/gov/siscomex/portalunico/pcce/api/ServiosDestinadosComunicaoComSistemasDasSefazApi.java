@@ -2,14 +2,18 @@ package br.gov.siscomex.portalunico.pcce.api;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import br.gov.siscomex.portalunico.pcce.model.SefazCreditoIcmsDto;
 import br.gov.siscomex.portalunico.pcce.model.SefazDadosIcmsDto;
+import br.gov.siscomex.portalunico.pcce.model.SolicitacaoCalculoIcmsDto;
+import br.gov.siscomex.portalunico.pcce.model.SolicitacaoIcmsDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -44,7 +48,47 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response confirmarCreditoPagamentoIcms(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Dados da confirmação de crédito de ICMS" ,required=true)@Valid SefazCreditoIcmsDto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response confirmarCreditoPagamentoIcms(@ApiParam(value = "Dados da confirmação de crédito de ICMS" ,required=true)@Valid SefazCreditoIcmsDto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+
+    /**
+     * Consulta de declarações de ICMS
+     *
+     * Consulta dados das declarações de ICMS no PCCE.
+     *
+     */
+    @GET
+    @Path("/ext/sefaz/icms/consulta/{numDeclaracao}")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Consulta de declarações de ICMS", notes = "Consulta dados das declarações de ICMS no PCCE.", tags={ "Serviços destinados à comunicação com sistemas das Sefaz" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = SolicitacaoIcmsDto.class, responseContainer = "List"),
+        @ApiResponse(code = 400, message = "Requisição mal formatada"),
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado"),
+        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+    public Response consultarDeclaracoesIcmsSefaz(@ApiParam(value = "Número da Duimp (sem hífen e sem versão)",required=true) @PathParam("numDeclaracao") String numDeclaracao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+
+    /**
+     * Consulta de solicitação de cálculo de ICMS pendente
+     *
+     * Consulta de solicitação de cálculo de ICMS pendente.
+     *
+     */
+    @GET
+    @Path("/ext/sefaz/icms/consulta/calculo/{numDeclaracao}/{versaoDeclaracao}")
+    @Produces({ "application/json" })
+    @ApiOperation(value = "Consulta de solicitação de cálculo de ICMS pendente", notes = "Consulta de solicitação de cálculo de ICMS pendente.", tags={ "Serviços destinados à comunicação com sistemas das Sefaz" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = SolicitacaoCalculoIcmsDto.class),
+        @ApiResponse(code = 400, message = "Requisição mal formatada"),
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado"),
+        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+    public Response consultarSolicitacaoCalculoIcmsSefaz(@ApiParam(value = "Número da Duimp (sem hífen)",required=true) @PathParam("numDeclaracao") String numDeclaracao, @ApiParam(value = "Versão da Duimp",required=true) @PathParam("versaoDeclaracao") Integer versaoDeclaracao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Receber dados de declaração de ICMS da Sefaz
@@ -64,6 +108,6 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response receberDadosDeclaracaoIcmsSefaz(@QueryParam("TPP-ID") String TPP_ID, @HeaderParam("abi") String abi, @ApiParam(value = "Dados da declaração de ICMS" ,required=true)@Valid SefazDadosIcmsDto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response receberDadosDeclaracaoIcmsSefaz(@ApiParam(value = "Dados da declaração de ICMS" ,required=true)@Valid SefazDadosIcmsDto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

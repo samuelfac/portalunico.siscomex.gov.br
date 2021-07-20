@@ -1,5 +1,6 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -32,10 +33,10 @@ public class DadosMotorista  {
   **/
   private String cpf = null;
 
-  @XmlElement(name="nome")
-  @ApiModelProperty(value = "Nome Motorista<br/>Tamanho: 100")
+  @XmlElement(name="nome", required = true)
+  @ApiModelProperty(required = true, value = "Nome Motorista. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Nome Motorista<br/>Tamanho: 100
+   * Nome Motorista. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String nome = null;
  /**
@@ -75,10 +76,11 @@ public class DadosMotorista  {
   }
 
  /**
-   * Nome Motorista&lt;br/&gt;Tamanho: 100
+   * Nome Motorista. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")
+  @NotNull
   public String getNome() {
     return nome;
   }

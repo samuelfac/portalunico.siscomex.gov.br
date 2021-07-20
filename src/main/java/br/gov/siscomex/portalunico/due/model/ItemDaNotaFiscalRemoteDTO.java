@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemDaNotaFiscalRemoteDTO", propOrder =
-    { "apresentadaParaDespacho", "cfop", "codigoDoProduto", "descricao", "ncm", "notaFiscal", "numeroDoItem", "quantidadeConsumida", "quantidadeEstatistica", "unidadeComercial", "valorTotalBruto", "valorTotalCalculado"
+    { "apresentadaParaDespacho", "cfop", "codigoDoProduto", "ncm", "notaFiscal", "numeroDoItem", "quantidadeConsumida", "quantidadeEstatistica", "unidadeComercial", "valorTotalBruto", "valorTotalCalculado"
 })
 
 @XmlRootElement(name="ItemDaNotaFiscalRemoteDTO")
@@ -38,13 +38,6 @@ public class ItemDaNotaFiscalRemoteDTO  {
    * Código do produto<br />Tamanho mínimo: 1<br />Tamanho máximo: 60
   **/
   private String codigoDoProduto = null;
-
-  @XmlElement(name="descricao")
-  @ApiModelProperty(value = "Descrição<br />Tamanho mínimo: 1<br />Tamanho máximo: 256")
- /**
-   * Descrição<br />Tamanho mínimo: 1<br />Tamanho máximo: 256
-  **/
-  private String descricao = null;
 
   @XmlElement(name="ncm")
   @ApiModelProperty(value = "")
@@ -153,24 +146,6 @@ public class ItemDaNotaFiscalRemoteDTO  {
 
   public ItemDaNotaFiscalRemoteDTO codigoDoProduto(String codigoDoProduto) {
     this.codigoDoProduto = codigoDoProduto;
-    return this;
-  }
-
- /**
-   * Descrição&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 256
-   * @return descricao
-  **/
-  @JsonProperty("descricao")
-  public String getDescricao() {
-    return descricao;
-  }
-
-  public void setDescricao(String descricao) {
-    this.descricao = descricao;
-  }
-
-  public ItemDaNotaFiscalRemoteDTO descricao(String descricao) {
-    this.descricao = descricao;
     return this;
   }
 
@@ -327,7 +302,6 @@ public class ItemDaNotaFiscalRemoteDTO  {
     sb.append("    apresentadaParaDespacho: ").append(toIndentedString(apresentadaParaDespacho)).append("\n");
     sb.append("    cfop: ").append(toIndentedString(cfop)).append("\n");
     sb.append("    codigoDoProduto: ").append(toIndentedString(codigoDoProduto)).append("\n");
-    sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
     sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
     sb.append("    notaFiscal: ").append(toIndentedString(notaFiscal)).append("\n");
     sb.append("    numeroDoItem: ").append(toIndentedString(numeroDoItem)).append("\n");

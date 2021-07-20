@@ -130,10 +130,10 @@ public enum TipoOperacaoEnum {
   **/
   private String codigoRecinto = null;
 
-  @XmlElement(name="numeroLote")
-  @ApiModelProperty(value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote<br/>Tamanho: 100")
+  @XmlElement(name="numeroLote", required = true)
+  @ApiModelProperty(required = true, value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote<br/>Tamanho: 100
+   * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String numeroLote = null;
 
@@ -335,10 +335,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote&lt;br/&gt;Tamanho: 100
+   * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return numeroLote
   **/
   @JsonProperty("numeroLote")
+  @NotNull
   public String getNumeroLote() {
     return numeroLote;
   }

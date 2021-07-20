@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "VinculoDocLpco", propOrder =
-    { "dataACD", "dataAverbacao", "dataCCE", "dataDesembaraco", "dataDesvinculacao", "dataVinculo", "numeroDocumento", "numeroDocumentoItem", "quantidadeComercial", "quantidadeUnidadeEstatistica", "vmle"
+    { "dataVinculo", "numeroDocumento", "numeroDocumentoItem", "dataACD", "dataDesembaraco", "dataCCE", "dataAverbacao", "dataDesvinculacao", "quantidadeComercial", "quantidadeUnidadeEstatistica", "vmle"
 })
 
 @XmlRootElement(name="VinculoDocLpco")
@@ -27,41 +27,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de um vínculo entre um LPCO e uma DU-E / DUIMP")
 public class VinculoDocLpco  {
   
-  @XmlElement(name="dataACD")
-  @ApiModelProperty(example = "25/11/2020", value = "Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
- /**
-   * Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-  **/
-  private String dataACD = null;
-
-  @XmlElement(name="dataAverbacao")
-  @ApiModelProperty(example = "25/11/2020", value = "Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
- /**
-   * Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-  **/
-  private String dataAverbacao = null;
-
-  @XmlElement(name="dataCCE")
-  @ApiModelProperty(example = "25/11/2020", value = "Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
- /**
-   * Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-  **/
-  private String dataCCE = null;
-
-  @XmlElement(name="dataDesembaraco")
-  @ApiModelProperty(example = "25/11/2020", value = "Data de desembaraço da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
- /**
-   * Data de desembaraço da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-  **/
-  private String dataDesembaraco = null;
-
-  @XmlElement(name="dataDesvinculacao")
-  @ApiModelProperty(example = "25/11/2020", value = "Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy")
- /**
-   * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy
-  **/
-  private String dataDesvinculacao = null;
-
   @XmlElement(name="dataVinculo", required = true)
   @ApiModelProperty(example = "25/11/2020", required = true, value = "Data em que o vínculo entre o LPCO e a DU-E foi criado<br>Formato: dd/MM/yyyy")
  /**
@@ -82,6 +47,41 @@ public class VinculoDocLpco  {
    * Número do item da DU-E ao qual o LPCO foi vinculado
   **/
   private Long numeroDocumentoItem = null;
+
+  @XmlElement(name="dataACD")
+  @ApiModelProperty(example = "25/11/2020", value = "Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
+ /**
+   * Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
+  **/
+  private String dataACD = null;
+
+  @XmlElement(name="dataDesembaraco")
+  @ApiModelProperty(example = "25/11/2020", value = "Data de desembaraço da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
+ /**
+   * Data de desembaraço da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
+  **/
+  private String dataDesembaraco = null;
+
+  @XmlElement(name="dataCCE")
+  @ApiModelProperty(example = "25/11/2020", value = "Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
+ /**
+   * Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
+  **/
+  private String dataCCE = null;
+
+  @XmlElement(name="dataAverbacao")
+  @ApiModelProperty(example = "25/11/2020", value = "Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
+ /**
+   * Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
+  **/
+  private String dataAverbacao = null;
+
+  @XmlElement(name="dataDesvinculacao")
+  @ApiModelProperty(example = "25/11/2020", value = "Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy")
+ /**
+   * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy
+  **/
+  private String dataDesvinculacao = null;
 
   @XmlElement(name="quantidadeComercial")
   @ApiModelProperty(example = "100.001122", value = "Se o LPCO  tiver um campo com código QTDE_COMERCIALIZADA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 6 casas decimais")
@@ -106,96 +106,6 @@ public class VinculoDocLpco  {
    * Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 2 casas decimais
   **/
   private BigDecimal vmle = null;
- /**
-   * Data de ACD da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
-   * @return dataACD
-  **/
-  @JsonProperty("dataACD")
-  public String getDataACD() {
-    return dataACD;
-  }
-
-  public void setDataACD(String dataACD) {
-    this.dataACD = dataACD;
-  }
-
-  public VinculoDocLpco dataACD(String dataACD) {
-    this.dataACD = dataACD;
-    return this;
-  }
-
- /**
-   * Data de averbação da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
-   * @return dataAverbacao
-  **/
-  @JsonProperty("dataAverbacao")
-  public String getDataAverbacao() {
-    return dataAverbacao;
-  }
-
-  public void setDataAverbacao(String dataAverbacao) {
-    this.dataAverbacao = dataAverbacao;
-  }
-
-  public VinculoDocLpco dataAverbacao(String dataAverbacao) {
-    this.dataAverbacao = dataAverbacao;
-    return this;
-  }
-
- /**
-   * Data de CCE da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
-   * @return dataCCE
-  **/
-  @JsonProperty("dataCCE")
-  public String getDataCCE() {
-    return dataCCE;
-  }
-
-  public void setDataCCE(String dataCCE) {
-    this.dataCCE = dataCCE;
-  }
-
-  public VinculoDocLpco dataCCE(String dataCCE) {
-    this.dataCCE = dataCCE;
-    return this;
-  }
-
- /**
-   * Data de desembaraço da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
-   * @return dataDesembaraco
-  **/
-  @JsonProperty("dataDesembaraco")
-  public String getDataDesembaraco() {
-    return dataDesembaraco;
-  }
-
-  public void setDataDesembaraco(String dataDesembaraco) {
-    this.dataDesembaraco = dataDesembaraco;
-  }
-
-  public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
-    this.dataDesembaraco = dataDesembaraco;
-    return this;
-  }
-
- /**
-   * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido&lt;br&gt;Formato: dd/MM/yyyy
-   * @return dataDesvinculacao
-  **/
-  @JsonProperty("dataDesvinculacao")
-  public String getDataDesvinculacao() {
-    return dataDesvinculacao;
-  }
-
-  public void setDataDesvinculacao(String dataDesvinculacao) {
-    this.dataDesvinculacao = dataDesvinculacao;
-  }
-
-  public VinculoDocLpco dataDesvinculacao(String dataDesvinculacao) {
-    this.dataDesvinculacao = dataDesvinculacao;
-    return this;
-  }
-
  /**
    * Data em que o vínculo entre o LPCO e a DU-E foi criado&lt;br&gt;Formato: dd/MM/yyyy
    * @return dataVinculo
@@ -250,6 +160,96 @@ public class VinculoDocLpco  {
 
   public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
     this.numeroDocumentoItem = numeroDocumentoItem;
+    return this;
+  }
+
+ /**
+   * Data de ACD da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
+   * @return dataACD
+  **/
+  @JsonProperty("dataACD")
+  public String getDataACD() {
+    return dataACD;
+  }
+
+  public void setDataACD(String dataACD) {
+    this.dataACD = dataACD;
+  }
+
+  public VinculoDocLpco dataACD(String dataACD) {
+    this.dataACD = dataACD;
+    return this;
+  }
+
+ /**
+   * Data de desembaraço da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
+   * @return dataDesembaraco
+  **/
+  @JsonProperty("dataDesembaraco")
+  public String getDataDesembaraco() {
+    return dataDesembaraco;
+  }
+
+  public void setDataDesembaraco(String dataDesembaraco) {
+    this.dataDesembaraco = dataDesembaraco;
+  }
+
+  public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
+    this.dataDesembaraco = dataDesembaraco;
+    return this;
+  }
+
+ /**
+   * Data de CCE da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
+   * @return dataCCE
+  **/
+  @JsonProperty("dataCCE")
+  public String getDataCCE() {
+    return dataCCE;
+  }
+
+  public void setDataCCE(String dataCCE) {
+    this.dataCCE = dataCCE;
+  }
+
+  public VinculoDocLpco dataCCE(String dataCCE) {
+    this.dataCCE = dataCCE;
+    return this;
+  }
+
+ /**
+   * Data de averbação da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
+   * @return dataAverbacao
+  **/
+  @JsonProperty("dataAverbacao")
+  public String getDataAverbacao() {
+    return dataAverbacao;
+  }
+
+  public void setDataAverbacao(String dataAverbacao) {
+    this.dataAverbacao = dataAverbacao;
+  }
+
+  public VinculoDocLpco dataAverbacao(String dataAverbacao) {
+    this.dataAverbacao = dataAverbacao;
+    return this;
+  }
+
+ /**
+   * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido&lt;br&gt;Formato: dd/MM/yyyy
+   * @return dataDesvinculacao
+  **/
+  @JsonProperty("dataDesvinculacao")
+  public String getDataDesvinculacao() {
+    return dataDesvinculacao;
+  }
+
+  public void setDataDesvinculacao(String dataDesvinculacao) {
+    this.dataDesvinculacao = dataDesvinculacao;
+  }
+
+  public VinculoDocLpco dataDesvinculacao(String dataDesvinculacao) {
+    this.dataDesvinculacao = dataDesvinculacao;
     return this;
   }
 
@@ -313,14 +313,14 @@ public class VinculoDocLpco  {
     StringBuilder sb = new StringBuilder();
     sb.append("class VinculoDocLpco {\n");
     
-    sb.append("    dataACD: ").append(toIndentedString(dataACD)).append("\n");
-    sb.append("    dataAverbacao: ").append(toIndentedString(dataAverbacao)).append("\n");
-    sb.append("    dataCCE: ").append(toIndentedString(dataCCE)).append("\n");
-    sb.append("    dataDesembaraco: ").append(toIndentedString(dataDesembaraco)).append("\n");
-    sb.append("    dataDesvinculacao: ").append(toIndentedString(dataDesvinculacao)).append("\n");
     sb.append("    dataVinculo: ").append(toIndentedString(dataVinculo)).append("\n");
     sb.append("    numeroDocumento: ").append(toIndentedString(numeroDocumento)).append("\n");
     sb.append("    numeroDocumentoItem: ").append(toIndentedString(numeroDocumentoItem)).append("\n");
+    sb.append("    dataACD: ").append(toIndentedString(dataACD)).append("\n");
+    sb.append("    dataDesembaraco: ").append(toIndentedString(dataDesembaraco)).append("\n");
+    sb.append("    dataCCE: ").append(toIndentedString(dataCCE)).append("\n");
+    sb.append("    dataAverbacao: ").append(toIndentedString(dataAverbacao)).append("\n");
+    sb.append("    dataDesvinculacao: ").append(toIndentedString(dataDesvinculacao)).append("\n");
     sb.append("    quantidadeComercial: ").append(toIndentedString(quantidadeComercial)).append("\n");
     sb.append("    quantidadeUnidadeEstatistica: ").append(toIndentedString(quantidadeUnidadeEstatistica)).append("\n");
     sb.append("    vmle: ").append(toIndentedString(vmle)).append("\n");

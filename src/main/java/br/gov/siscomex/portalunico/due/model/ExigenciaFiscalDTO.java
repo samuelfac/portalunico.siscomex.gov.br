@@ -91,7 +91,31 @@ public enum SituacaoEnum {
 	
 	@XmlEnumValue("CANCELADA")
 	@JsonProperty("CANCELADA")
-	CANCELADA(String.valueOf("CANCELADA"));
+	CANCELADA(String.valueOf("CANCELADA")),
+	
+	@XmlEnumValue("ATIVA")
+	@JsonProperty("ATIVA")
+	ATIVA(String.valueOf("ATIVA")),
+	
+	@XmlEnumValue("DISPENSADA")
+	@JsonProperty("DISPENSADA")
+	DISPENSADA(String.valueOf("DISPENSADA")),
+	
+	@XmlEnumValue("CANCELADA_DUIMP")
+	@JsonProperty("CANCELADA_DUIMP")
+	CANCELADA_DUIMP(String.valueOf("CANCELADA_DUIMP")),
+	
+	@XmlEnumValue("ATENDIDA")
+	@JsonProperty("ATENDIDA")
+	ATENDIDA(String.valueOf("ATENDIDA")),
+	
+	@XmlEnumValue("ENCERRADA_DUIMP")
+	@JsonProperty("ENCERRADA_DUIMP")
+	ENCERRADA_DUIMP(String.valueOf("ENCERRADA_DUIMP")),
+	
+	@XmlEnumValue("ENCERRADA_POR_OFICIO_DUIMP")
+	@JsonProperty("ENCERRADA_POR_OFICIO_DUIMP")
+	ENCERRADA_POR_OFICIO_DUIMP(String.valueOf("ENCERRADA_POR_OFICIO_DUIMP"));
 
 
     private String value;

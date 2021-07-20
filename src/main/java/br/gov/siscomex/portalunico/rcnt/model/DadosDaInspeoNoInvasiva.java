@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosDaInspeoNoInvasiva", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaCarga", "listaSemirreboque", "listaConteineresUld", "vazio", "imagemScanner", "arquivoMetadados", "scanner", "listaCameras"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaNfe", "listaCarga", "listaSemirreboque", "listaConteineresUld", "vazio", "imagemScanner", "arquivoMetadados", "scanner", "listaCameras"
 })
 
 @XmlRootElement(name="DadosDaInspeoNoInvasiva")
@@ -138,6 +138,14 @@ public enum TipoOperacaoEnum {
   **/
   private List<DadosDoManisfestoDaCarga> listaManifestos = null;
 
+  @XmlElement(name="listaNfe")
+  @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
+  @Valid
+ /**
+   * Lista de chaves das NFE que amparam o transporte.
+  **/
+  private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
+
   @XmlElement(name="listaCarga")
   @ApiModelProperty(value = "Lista de identificadores de Carga.")
   @Valid
@@ -169,10 +177,10 @@ public enum TipoOperacaoEnum {
   **/
   private Boolean vazio = null;
 
-  @XmlElement(name="imagemScanner")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="imagemScanner", required = true)
+  @ApiModelProperty(required = true, value = "")
   @Valid
-  private ImagemScannerCover imagemScanner = null;
+  private DadosImagemScanner imagemScanner = null;
 
   @XmlElement(name="arquivoMetadados")
   @ApiModelProperty(example = "xml", value = "Arquivo gerado que acompanha a imagem do scanner, geralmente um xml<br/>Tamanho: 7160")
@@ -390,6 +398,29 @@ public enum TipoOperacaoEnum {
   }
 
  /**
+   * Lista de chaves das NFE que amparam o transporte.
+   * @return listaNfe
+  **/
+  @JsonProperty("listaNfe")
+  public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+    return listaNfe;
+  }
+
+  public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+  }
+
+  public DadosDaInspeoNoInvasiva listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+    return this;
+  }
+
+  public DadosDaInspeoNoInvasiva addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
+    this.listaNfe.add(listaNfeItem);
+    return this;
+  }
+
+ /**
    * Lista de identificadores de Carga.
    * @return listaCarga
   **/
@@ -481,15 +512,16 @@ public enum TipoOperacaoEnum {
    * @return imagemScanner
   **/
   @JsonProperty("imagemScanner")
-  public ImagemScannerCover getImagemScanner() {
+  @NotNull
+  public DadosImagemScanner getImagemScanner() {
     return imagemScanner;
   }
 
-  public void setImagemScanner(ImagemScannerCover imagemScanner) {
+  public void setImagemScanner(DadosImagemScanner imagemScanner) {
     this.imagemScanner = imagemScanner;
   }
 
-  public DadosDaInspeoNoInvasiva imagemScanner(ImagemScannerCover imagemScanner) {
+  public DadosDaInspeoNoInvasiva imagemScanner(DadosImagemScanner imagemScanner) {
     this.imagemScanner = imagemScanner;
     return this;
   }
@@ -569,6 +601,7 @@ public enum TipoOperacaoEnum {
     sb.append("    contingencia: ").append(toIndentedString(contingencia)).append("\n");
     sb.append("    codigoRecinto: ").append(toIndentedString(codigoRecinto)).append("\n");
     sb.append("    listaManifestos: ").append(toIndentedString(listaManifestos)).append("\n");
+    sb.append("    listaNfe: ").append(toIndentedString(listaNfe)).append("\n");
     sb.append("    listaCarga: ").append(toIndentedString(listaCarga)).append("\n");
     sb.append("    listaSemirreboque: ").append(toIndentedString(listaSemirreboque)).append("\n");
     sb.append("    listaConteineresUld: ").append(toIndentedString(listaConteineresUld)).append("\n");

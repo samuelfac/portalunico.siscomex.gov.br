@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DUE", propOrder =
-    { "atosConcessoriosIsencao", "bloqueio", "canal", "chaveDeAcesso", "consorciada", "dat", "dataDeCriacao", "dataDeRegistro", "dataDoCCE", "declaracaoTributaria", "declarante", "despachoEmRecintoAlfandegado", "despachoEmRecintoDomiciliar", "embarqueEmRecintoAlfandegado", "enderecoDoEstabelecimentoDoLocalDeDespacho", "enderecoDoEstabelecimentoDoLocalDeEmbarque", "estabelecimentoDoLocalDeDespacho", "eventosDoHistorico", "exigenciaAtiva", "exigenciasFiscais", "formaDeExportacao", "impedidoDeEmbarque", "inclusaoNotaFiscal", "informacoesComplementares", "itens", "justificativaDeDispensaDaNotaFiscal", "latitudeDoLocalDeDespacho", "latitudeDoLocalDeEmbarque", "longitudeDoLocalDeDespacho", "longitudeDoLocalDeEmbarque", "moeda", "motivoDeDispensaDaNotaFiscal", "numero", "oea", "paisImportador", "recintoAduaneiroDeDespacho", "recintoAduaneiroDeEmbarque", "referenciaDoEnderecoDoLocalDeDespacho", "referenciaDoEnderecoDoLocalDeEmbarque", "responsavelPeloACD", "ruc", "situacao", "situacaoDoTratamentoAdministrativo", "situacaoEspecial", "situacoesDaCarga", "solicitacoes", "tipo", "tratamentoPrioritario", "unidadeLocalDeAnaliseFiscal", "unidadeLocalDeDespacho", "unidadeLocalDeEmbarque", "valorTotalMercadoria", "viaDeTransporteEspecial"
+    { "atosConcessoriosIsencao", "bloqueio", "canal", "chaveDeAcesso", "consorciada", "dat", "dataDeCriacao", "dataDeRegistro", "dataDoCCE", "declaracaoTributaria", "declarante", "despachoEmRecintoAlfandegado", "despachoEmRecintoDomiciliar", "embarqueEmRecintoAlfandegado", "enderecoDoEstabelecimentoDoLocalDeDespacho", "enderecoDoEstabelecimentoDoLocalDeEmbarque", "estabelecimentoDoLocalDeDespacho", "eventosDoHistorico", "exigenciaAtiva", "exigenciasFiscais", "exigenciasFiscaisEstruturadas", "formaDeExportacao", "impedidoDeEmbarque", "inclusaoNotaFiscal", "informacoesComplementares", "itens", "justificativaDeDispensaDaNotaFiscal", "latitudeDoLocalDeDespacho", "latitudeDoLocalDeEmbarque", "longitudeDoLocalDeDespacho", "longitudeDoLocalDeEmbarque", "moeda", "motivoDeDispensaDaNotaFiscal", "numero", "oea", "paisImportador", "recintoAduaneiroDeDespacho", "recintoAduaneiroDeEmbarque", "referenciaDoEnderecoDoLocalDeDespacho", "referenciaDoEnderecoDoLocalDeEmbarque", "responsavelPeloACD", "ruc", "situacao", "situacaoDoTratamentoAdministrativo", "situacaoEspecial", "situacoesDaCarga", "solicitacoes", "tipo", "tratamentoPrioritario", "unidadeLocalDeAnaliseFiscal", "unidadeLocalDeDespacho", "unidadeLocalDeEmbarque", "valorTotalMercadoria", "viaDeTransporteEspecial"
 })
 
 @XmlRootElement(name="DUE")
@@ -168,9 +168,17 @@ public enum CanalEnum {
   private Boolean exigenciaAtiva = false;
 
   @XmlElement(name="exigenciasFiscais")
+  @ApiModelProperty(value = "*Campo descontinuado, utilize o atributo exigenciasFiscaisEstruturadas ")
+  @Valid
+ /**
+   * *Campo descontinuado, utilize o atributo exigenciasFiscaisEstruturadas 
+  **/
+  private List<ExigenciaFiscalDTO> exigenciasFiscais = null;
+
+  @XmlElement(name="exigenciasFiscaisEstruturadas")
   @ApiModelProperty(value = "")
   @Valid
-  private List<ExigenciaFiscalDTO> exigenciasFiscais = null;
+  private Link exigenciasFiscaisEstruturadas = null;
 
 
 @XmlType(name="FormaDeExportacaoEnum")
@@ -1026,7 +1034,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Get exigenciasFiscais
+   * *Campo descontinuado, utilize o atributo exigenciasFiscaisEstruturadas 
    * @return exigenciasFiscais
   **/
   @JsonProperty("exigenciasFiscais")
@@ -1045,6 +1053,24 @@ public enum TipoEnum {
 
   public DUE addExigenciasFiscaisItem(ExigenciaFiscalDTO exigenciasFiscaisItem) {
     this.exigenciasFiscais.add(exigenciasFiscaisItem);
+    return this;
+  }
+
+ /**
+   * Get exigenciasFiscaisEstruturadas
+   * @return exigenciasFiscaisEstruturadas
+  **/
+  @JsonProperty("exigenciasFiscaisEstruturadas")
+  public Link getExigenciasFiscaisEstruturadas() {
+    return exigenciasFiscaisEstruturadas;
+  }
+
+  public void setExigenciasFiscaisEstruturadas(Link exigenciasFiscaisEstruturadas) {
+    this.exigenciasFiscaisEstruturadas = exigenciasFiscaisEstruturadas;
+  }
+
+  public DUE exigenciasFiscaisEstruturadas(Link exigenciasFiscaisEstruturadas) {
+    this.exigenciasFiscaisEstruturadas = exigenciasFiscaisEstruturadas;
     return this;
   }
 
@@ -1701,6 +1727,7 @@ public enum TipoEnum {
     sb.append("    eventosDoHistorico: ").append(toIndentedString(eventosDoHistorico)).append("\n");
     sb.append("    exigenciaAtiva: ").append(toIndentedString(exigenciaAtiva)).append("\n");
     sb.append("    exigenciasFiscais: ").append(toIndentedString(exigenciasFiscais)).append("\n");
+    sb.append("    exigenciasFiscaisEstruturadas: ").append(toIndentedString(exigenciasFiscaisEstruturadas)).append("\n");
     sb.append("    formaDeExportacao: ").append(toIndentedString(formaDeExportacao)).append("\n");
     sb.append("    impedidoDeEmbarque: ").append(toIndentedString(impedidoDeEmbarque)).append("\n");
     sb.append("    inclusaoNotaFiscal: ").append(toIndentedString(inclusaoNotaFiscal)).append("\n");

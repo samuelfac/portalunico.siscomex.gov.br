@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosContinerUldAcessoVeculo", propOrder =
-    { "idElemento", "numeroConteiner", "identificacaoUld", "tipo", "ocrNumero", "vazio", "numeroBooking", "listaLacres", "avaria", "portoDescarregamento", "paisDestinoFinalCarga", "navio", "cnpjCliente", "nomeCliente", "cnpjEstabelecimentoEstufagem", "nomeEstabelecimentoEstufagem"
+    { "idElemento", "numeroConteiner", "identificacaoUld", "tipo", "ocrNumero", "vazio", "numeroBooking", "listaLacres", "avaria", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "listaNavio", "listaCliente", "cnpjEstabelecimentoEstufagem", "nomeEstabelecimentoEstufagem"
 })
 
 @XmlRootElement(name="DadosContinerUldAcessoVeculo")
@@ -85,38 +85,37 @@ public class DadosContinerUldAcessoVeculo  {
   **/
   private Boolean avaria = null;
 
-  @XmlElement(name="portoDescarregamento")
-  @ApiModelProperty(value = "Porto em que a carga vai descarregar.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Porto.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Porto.pdf </a>")
- /**
-   * Porto em que a carga vai descarregar.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Porto.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Porto.pdf </a>
-  **/
-  private String portoDescarregamento = null;
-
-  @XmlElement(name="paisDestinoFinalCarga")
-  @ApiModelProperty(example = "23", value = "País de destino final da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
- /**
-   * País de destino final da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
-  **/
-  private String paisDestinoFinalCarga = null;
-
-  @XmlElement(name="navio")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="listaPortoDescarregamento")
+  @ApiModelProperty(value = "Lista de portos.")
   @Valid
-  private DadosNavio navio = null;
-
-  @XmlElement(name="cnpjCliente")
-  @ApiModelProperty(example = "44444444444444", value = " CNPJ do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
  /**
-   *  CNPJ do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+   * Lista de portos.
   **/
-  private String cnpjCliente = null;
+  private List<DadosDoPorto> listaPortoDescarregamento = null;
 
-  @XmlElement(name="nomeCliente")
-  @ApiModelProperty(value = " Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100")
+  @XmlElement(name="listaPaisDestinoFinalCarga")
+  @ApiModelProperty(value = "Lista de paises.")
+  @Valid
  /**
-   *  Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100
+   * Lista de paises.
   **/
-  private String nomeCliente = null;
+  private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
+
+  @XmlElement(name="listaNavio")
+  @ApiModelProperty(value = "Navio.")
+  @Valid
+ /**
+   * Navio.
+  **/
+  private List<DadosListaNavio> listaNavio = null;
+
+  @XmlElement(name="listaCliente")
+  @ApiModelProperty(value = "Cliente.")
+  @Valid
+ /**
+   * Cliente.
+  **/
+  private List<DadosCliente> listaCliente = null;
 
   @XmlElement(name="cnpjEstabelecimentoEstufagem")
   @ApiModelProperty(example = "44444444444444", value = "CNPJ do estabelecimento onde a carga foi estufada.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
@@ -299,92 +298,94 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Porto em que a carga vai descarregar.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Porto.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Porto.pdf &lt;/a&gt;
-   * @return portoDescarregamento
+   * Lista de portos.
+   * @return listaPortoDescarregamento
   **/
-  @JsonProperty("portoDescarregamento")
-  public String getPortoDescarregamento() {
-    return portoDescarregamento;
+  @JsonProperty("listaPortoDescarregamento")
+  public List<DadosDoPorto> getListaPortoDescarregamento() {
+    return listaPortoDescarregamento;
   }
 
-  public void setPortoDescarregamento(String portoDescarregamento) {
-    this.portoDescarregamento = portoDescarregamento;
+  public void setListaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
+    this.listaPortoDescarregamento = listaPortoDescarregamento;
   }
 
-  public DadosContinerUldAcessoVeculo portoDescarregamento(String portoDescarregamento) {
-    this.portoDescarregamento = portoDescarregamento;
+  public DadosContinerUldAcessoVeculo listaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
+    this.listaPortoDescarregamento = listaPortoDescarregamento;
+    return this;
+  }
+
+  public DadosContinerUldAcessoVeculo addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
+    this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
     return this;
   }
 
  /**
-   * País de destino final da carga conforme tabela de domínio.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
-   * @return paisDestinoFinalCarga
+   * Lista de paises.
+   * @return listaPaisDestinoFinalCarga
   **/
-  @JsonProperty("paisDestinoFinalCarga")
-  public String getPaisDestinoFinalCarga() {
-    return paisDestinoFinalCarga;
+  @JsonProperty("listaPaisDestinoFinalCarga")
+  public List<DadosDoPais> getListaPaisDestinoFinalCarga() {
+    return listaPaisDestinoFinalCarga;
   }
 
-  public void setPaisDestinoFinalCarga(String paisDestinoFinalCarga) {
-    this.paisDestinoFinalCarga = paisDestinoFinalCarga;
+  public void setListaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+    this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
   }
 
-  public DadosContinerUldAcessoVeculo paisDestinoFinalCarga(String paisDestinoFinalCarga) {
-    this.paisDestinoFinalCarga = paisDestinoFinalCarga;
+  public DadosContinerUldAcessoVeculo listaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+    this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
+    return this;
+  }
+
+  public DadosContinerUldAcessoVeculo addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
+    this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
     return this;
   }
 
  /**
-   * Get navio
-   * @return navio
+   * Navio.
+   * @return listaNavio
   **/
-  @JsonProperty("navio")
-  public DadosNavio getNavio() {
-    return navio;
+  @JsonProperty("listaNavio")
+  public List<DadosListaNavio> getListaNavio() {
+    return listaNavio;
   }
 
-  public void setNavio(DadosNavio navio) {
-    this.navio = navio;
+  public void setListaNavio(List<DadosListaNavio> listaNavio) {
+    this.listaNavio = listaNavio;
   }
 
-  public DadosContinerUldAcessoVeculo navio(DadosNavio navio) {
-    this.navio = navio;
+  public DadosContinerUldAcessoVeculo listaNavio(List<DadosListaNavio> listaNavio) {
+    this.listaNavio = listaNavio;
+    return this;
+  }
+
+  public DadosContinerUldAcessoVeculo addListaNavioItem(DadosListaNavio listaNavioItem) {
+    this.listaNavio.add(listaNavioItem);
     return this;
   }
 
  /**
-   *  CNPJ do cliente do armazenamento. &lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-   * @return cnpjCliente
+   * Cliente.
+   * @return listaCliente
   **/
-  @JsonProperty("cnpjCliente")
-  public String getCnpjCliente() {
-    return cnpjCliente;
+  @JsonProperty("listaCliente")
+  public List<DadosCliente> getListaCliente() {
+    return listaCliente;
   }
 
-  public void setCnpjCliente(String cnpjCliente) {
-    this.cnpjCliente = cnpjCliente;
+  public void setListaCliente(List<DadosCliente> listaCliente) {
+    this.listaCliente = listaCliente;
   }
 
-  public DadosContinerUldAcessoVeculo cnpjCliente(String cnpjCliente) {
-    this.cnpjCliente = cnpjCliente;
+  public DadosContinerUldAcessoVeculo listaCliente(List<DadosCliente> listaCliente) {
+    this.listaCliente = listaCliente;
     return this;
   }
 
- /**
-   *  Nome do cliente do armazenamento. &lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 100
-   * @return nomeCliente
-  **/
-  @JsonProperty("nomeCliente")
-  public String getNomeCliente() {
-    return nomeCliente;
-  }
-
-  public void setNomeCliente(String nomeCliente) {
-    this.nomeCliente = nomeCliente;
-  }
-
-  public DadosContinerUldAcessoVeculo nomeCliente(String nomeCliente) {
-    this.nomeCliente = nomeCliente;
+  public DadosContinerUldAcessoVeculo addListaClienteItem(DadosCliente listaClienteItem) {
+    this.listaCliente.add(listaClienteItem);
     return this;
   }
 
@@ -439,11 +440,10 @@ public class DadosContinerUldAcessoVeculo  {
     sb.append("    numeroBooking: ").append(toIndentedString(numeroBooking)).append("\n");
     sb.append("    listaLacres: ").append(toIndentedString(listaLacres)).append("\n");
     sb.append("    avaria: ").append(toIndentedString(avaria)).append("\n");
-    sb.append("    portoDescarregamento: ").append(toIndentedString(portoDescarregamento)).append("\n");
-    sb.append("    paisDestinoFinalCarga: ").append(toIndentedString(paisDestinoFinalCarga)).append("\n");
-    sb.append("    navio: ").append(toIndentedString(navio)).append("\n");
-    sb.append("    cnpjCliente: ").append(toIndentedString(cnpjCliente)).append("\n");
-    sb.append("    nomeCliente: ").append(toIndentedString(nomeCliente)).append("\n");
+    sb.append("    listaPortoDescarregamento: ").append(toIndentedString(listaPortoDescarregamento)).append("\n");
+    sb.append("    listaPaisDestinoFinalCarga: ").append(toIndentedString(listaPaisDestinoFinalCarga)).append("\n");
+    sb.append("    listaNavio: ").append(toIndentedString(listaNavio)).append("\n");
+    sb.append("    listaCliente: ").append(toIndentedString(listaCliente)).append("\n");
     sb.append("    cnpjEstabelecimentoEstufagem: ").append(toIndentedString(cnpjEstabelecimentoEstufagem)).append("\n");
     sb.append("    nomeEstabelecimentoEstufagem: ").append(toIndentedString(nomeEstabelecimentoEstufagem)).append("\n");
     sb.append("}");

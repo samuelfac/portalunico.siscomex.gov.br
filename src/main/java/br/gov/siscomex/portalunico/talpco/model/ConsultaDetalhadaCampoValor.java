@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ConsultaDetalhadaCampoValor", propOrder =
-    { "dataInclusao", "valor"
+    { "valor", "dataInclusao"
 })
 
 @XmlRootElement(name="ConsultaDetalhadaCampoValor")
@@ -24,38 +24,19 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Valor de um campo de um LPCO, exibido na consulta detalhada de LPCOs")
 public class ConsultaDetalhadaCampoValor  {
   
-  @XmlElement(name="dataInclusao", required = true)
-  @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", required = true, value = "Data de inclusão do valor<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
- /**
-   * Data de inclusão do valor<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
-  **/
-  private String dataInclusao = null;
-
   @XmlElement(name="valor", required = true)
   @ApiModelProperty(example = "01", required = true, value = "Valor do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 10000")
  /**
    * Valor do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 10000
   **/
   private String valor = null;
+
+  @XmlElement(name="dataInclusao", required = true)
+  @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", required = true, value = "Data de inclusão do valor<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
  /**
-   * Data de inclusão do valor&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
-   * @return dataInclusao
+   * Data de inclusão do valor<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
   **/
-  @JsonProperty("dataInclusao")
-  @NotNull
-  public String getDataInclusao() {
-    return dataInclusao;
-  }
-
-  public void setDataInclusao(String dataInclusao) {
-    this.dataInclusao = dataInclusao;
-  }
-
-  public ConsultaDetalhadaCampoValor dataInclusao(String dataInclusao) {
-    this.dataInclusao = dataInclusao;
-    return this;
-  }
-
+  private String dataInclusao = null;
  /**
    * Valor do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10000
    * @return valor
@@ -75,14 +56,33 @@ public class ConsultaDetalhadaCampoValor  {
     return this;
   }
 
+ /**
+   * Data de inclusão do valor&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
+   * @return dataInclusao
+  **/
+  @JsonProperty("dataInclusao")
+  @NotNull
+  public String getDataInclusao() {
+    return dataInclusao;
+  }
+
+  public void setDataInclusao(String dataInclusao) {
+    this.dataInclusao = dataInclusao;
+  }
+
+  public ConsultaDetalhadaCampoValor dataInclusao(String dataInclusao) {
+    this.dataInclusao = dataInclusao;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsultaDetalhadaCampoValor {\n");
     
-    sb.append("    dataInclusao: ").append(toIndentedString(dataInclusao)).append("\n");
     sb.append("    valor: ").append(toIndentedString(valor)).append("\n");
+    sb.append("    dataInclusao: ").append(toIndentedString(dataInclusao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

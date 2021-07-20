@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RetificacaoLpco", propOrder =
-    { "dataRegistro", "justificativa", "listaAlteracoes", "situacao"
+    { "situacao", "dataRegistro", "justificativa", "listaAlteracoes"
 })
 
 @XmlRootElement(name="RetificacaoLpco")
@@ -28,6 +28,11 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de uma retificação de um LPCO")
 public class RetificacaoLpco  {
   
+  @XmlElement(name="situacao", required = true)
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private IdDescricao situacao = null;
+
   @XmlElement(name="dataRegistro", required = true)
   @ApiModelProperty(example = "2019-09-02T12:10Z", required = true, value = "Data e hora em que o pedido de retificação foi registrado<br>Formato: dd-MM-yyyy'T'HH:mmZ")
  /**
@@ -49,11 +54,25 @@ public class RetificacaoLpco  {
    * Lista de alterações realizadas na retificação
   **/
   private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
+ /**
+   * Get situacao
+   * @return situacao
+  **/
+  @JsonProperty("situacao")
+  @NotNull
+  public IdDescricao getSituacao() {
+    return situacao;
+  }
 
-  @XmlElement(name="situacao", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private IdDescricao situacao = null;
+  public void setSituacao(IdDescricao situacao) {
+    this.situacao = situacao;
+  }
+
+  public RetificacaoLpco situacao(IdDescricao situacao) {
+    this.situacao = situacao;
+    return this;
+  }
+
  /**
    * Data e hora em que o pedido de retificação foi registrado&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
    * @return dataRegistro
@@ -115,35 +134,16 @@ public class RetificacaoLpco  {
     return this;
   }
 
- /**
-   * Get situacao
-   * @return situacao
-  **/
-  @JsonProperty("situacao")
-  @NotNull
-  public IdDescricao getSituacao() {
-    return situacao;
-  }
-
-  public void setSituacao(IdDescricao situacao) {
-    this.situacao = situacao;
-  }
-
-  public RetificacaoLpco situacao(IdDescricao situacao) {
-    this.situacao = situacao;
-    return this;
-  }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetificacaoLpco {\n");
     
+    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    dataRegistro: ").append(toIndentedString(dataRegistro)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    listaAlteracoes: ").append(toIndentedString(listaAlteracoes)).append("\n");
-    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

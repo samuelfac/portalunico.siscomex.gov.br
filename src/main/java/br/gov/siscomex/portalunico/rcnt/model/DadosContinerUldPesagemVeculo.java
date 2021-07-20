@@ -50,7 +50,7 @@ public class DadosContinerUldPesagemVeculo  {
   private String tipo = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(example = "200.0", value = "Tara do contêiner ou ULD.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(value = "Tara do contêiner ou ULD.<br/><br/>tara, até 4 casas decimais.")
   @Valid
  /**
    * Tara do contêiner ou ULD.<br/><br/>tara, até 4 casas decimais.

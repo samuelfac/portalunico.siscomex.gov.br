@@ -47,9 +47,9 @@ public enum TipoEnum {
 	@JsonProperty("'TIF'")
 	TIF_(String.valueOf("'TIF'")),
 	
-	@XmlEnumValue("'BL'")
-	@JsonProperty("'BL'")
-	BL_(String.valueOf("'BL'")),
+	@XmlEnumValue("'RWB'")
+	@JsonProperty("'RWB'")
+	RWB_(String.valueOf("'RWB'")),
 	
 	@XmlEnumValue("'AWB'")
 	@JsonProperty("'AWB'")
@@ -59,25 +59,21 @@ public enum TipoEnum {
 	@JsonProperty("'DSIC'")
 	DSIC_(String.valueOf("'DSIC'")),
 	
-	@XmlEnumValue("'COURIER'")
-	@JsonProperty("'COURIER'")
-	COURIER_(String.valueOf("'COURIER'")),
-	
-	@XmlEnumValue("'POSTAL'")
-	@JsonProperty("'POSTAL'")
-	POSTAL_(String.valueOf("'POSTAL'")),
-	
 	@XmlEnumValue("'CTE'")
 	@JsonProperty("'CTE'")
 	CTE_(String.valueOf("'CTE'")),
 	
-	@XmlEnumValue("'CELET'")
-	@JsonProperty("'CELET'")
-	CELET_(String.valueOf("'CELET'")),
-	
 	@XmlEnumValue("'CE_MERCANTE'")
 	@JsonProperty("'CE_MERCANTE'")
-	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'"));
+	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'")),
+	
+	@XmlEnumValue("'BL'")
+	@JsonProperty("'BL'")
+	BL_(String.valueOf("'BL'")),
+	
+	@XmlEnumValue("'POSTAL'")
+	@JsonProperty("'POSTAL'")
+	POSTAL_(String.valueOf("'POSTAL'"));
 
 
     private String value;
@@ -106,9 +102,9 @@ public enum TipoEnum {
 }
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
   **/
   private TipoEnum tipo = null;
  /**
@@ -148,7 +144,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - CRT&lt;br/&gt;TIF - TIF&lt;br/&gt;BL - BL&lt;br/&gt;AWB - AWB&lt;br/&gt;DSIC - DSIC&lt;br/&gt;COURIER - Courier&lt;br/&gt;POSTAL - Postal&lt;br/&gt;CTE - CT-e&lt;br/&gt;CELET - Conhecimento Eletrônico&lt;br&gt;CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
    * @return tipo
   **/
   @JsonProperty("tipo")

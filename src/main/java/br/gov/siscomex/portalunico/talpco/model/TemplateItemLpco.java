@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TemplateItemLpco", propOrder =
-    { "descricaoNcm", "listaAtributosNcm", "listaCamposNcm", "ncm", "unidadeMedidaEstatistica"
+    { "ncm", "descricaoNcm", "listaCamposNcm", "listaAtributosNcm", "unidadeMedidaEstatistica"
 })
 
 @XmlRootElement(name="TemplateItemLpco")
@@ -28,20 +28,19 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Template que especifica a estrutura de um item de um formulário de um LPCO")
 public class TemplateItemLpco  {
   
+  @XmlElement(name="ncm", required = true)
+  @ApiModelProperty(example = "08051000", required = true, value = "Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN")
+ /**
+   * Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN
+  **/
+  private String ncm = null;
+
   @XmlElement(name="descricaoNcm", required = true)
   @ApiModelProperty(example = "- LARANJAS", required = true, value = "Descrição do NCM informado para pesquisa do modelo")
  /**
    * Descrição do NCM informado para pesquisa do modelo
   **/
   private String descricaoNcm = null;
-
-  @XmlElement(name="listaAtributosNcm", required = true)
-  @ApiModelProperty(required = true, value = "Lista de definições dos atributos exigidos para o o NCM no formulário")
-  @Valid
- /**
-   * Lista de definições dos atributos exigidos para o o NCM no formulário
-  **/
-  private List<CampoFormulario> listaAtributosNcm = new ArrayList<>();
 
   @XmlElement(name="listaCamposNcm", required = true)
   @ApiModelProperty(required = true, value = "Lista de definições de campos a serem preenchidos por NCM")
@@ -51,12 +50,13 @@ public class TemplateItemLpco  {
   **/
   private List<CampoFormulario> listaCamposNcm = new ArrayList<>();
 
-  @XmlElement(name="ncm", required = true)
-  @ApiModelProperty(example = "08051000", required = true, value = "Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN")
+  @XmlElement(name="listaAtributosNcm", required = true)
+  @ApiModelProperty(required = true, value = "Lista de definições dos atributos exigidos para o o NCM no formulário")
+  @Valid
  /**
-   * Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN
+   * Lista de definições dos atributos exigidos para o o NCM no formulário
   **/
-  private String ncm = null;
+  private List<CampoFormulario> listaAtributosNcm = new ArrayList<>();
 
   @XmlElement(name="unidadeMedidaEstatistica")
   @ApiModelProperty(value = "Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \"unidadeMedida\" do campo QTD_ESTATISTICA na inclusão/alteração do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 60")
@@ -64,6 +64,25 @@ public class TemplateItemLpco  {
    * Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \"unidadeMedida\" do campo QTD_ESTATISTICA na inclusão/alteração do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 60
   **/
   private String unidadeMedidaEstatistica = null;
+ /**
+   * Código NCM informado para pesquisa do modelo&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
+   * @return ncm
+  **/
+  @JsonProperty("ncm")
+  @NotNull
+  public String getNcm() {
+    return ncm;
+  }
+
+  public void setNcm(String ncm) {
+    this.ncm = ncm;
+  }
+
+  public TemplateItemLpco ncm(String ncm) {
+    this.ncm = ncm;
+    return this;
+  }
+
  /**
    * Descrição do NCM informado para pesquisa do modelo
    * @return descricaoNcm
@@ -80,30 +99,6 @@ public class TemplateItemLpco  {
 
   public TemplateItemLpco descricaoNcm(String descricaoNcm) {
     this.descricaoNcm = descricaoNcm;
-    return this;
-  }
-
- /**
-   * Lista de definições dos atributos exigidos para o o NCM no formulário
-   * @return listaAtributosNcm
-  **/
-  @JsonProperty("listaAtributosNcm")
-  @NotNull
-  public List<CampoFormulario> getListaAtributosNcm() {
-    return listaAtributosNcm;
-  }
-
-  public void setListaAtributosNcm(List<CampoFormulario> listaAtributosNcm) {
-    this.listaAtributosNcm = listaAtributosNcm;
-  }
-
-  public TemplateItemLpco listaAtributosNcm(List<CampoFormulario> listaAtributosNcm) {
-    this.listaAtributosNcm = listaAtributosNcm;
-    return this;
-  }
-
-  public TemplateItemLpco addListaAtributosNcmItem(CampoFormulario listaAtributosNcmItem) {
-    this.listaAtributosNcm.add(listaAtributosNcmItem);
     return this;
   }
 
@@ -132,21 +127,26 @@ public class TemplateItemLpco  {
   }
 
  /**
-   * Código NCM informado para pesquisa do modelo&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
-   * @return ncm
+   * Lista de definições dos atributos exigidos para o o NCM no formulário
+   * @return listaAtributosNcm
   **/
-  @JsonProperty("ncm")
+  @JsonProperty("listaAtributosNcm")
   @NotNull
-  public String getNcm() {
-    return ncm;
+  public List<CampoFormulario> getListaAtributosNcm() {
+    return listaAtributosNcm;
   }
 
-  public void setNcm(String ncm) {
-    this.ncm = ncm;
+  public void setListaAtributosNcm(List<CampoFormulario> listaAtributosNcm) {
+    this.listaAtributosNcm = listaAtributosNcm;
   }
 
-  public TemplateItemLpco ncm(String ncm) {
-    this.ncm = ncm;
+  public TemplateItemLpco listaAtributosNcm(List<CampoFormulario> listaAtributosNcm) {
+    this.listaAtributosNcm = listaAtributosNcm;
+    return this;
+  }
+
+  public TemplateItemLpco addListaAtributosNcmItem(CampoFormulario listaAtributosNcmItem) {
+    this.listaAtributosNcm.add(listaAtributosNcmItem);
     return this;
   }
 
@@ -174,10 +174,10 @@ public class TemplateItemLpco  {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateItemLpco {\n");
     
-    sb.append("    descricaoNcm: ").append(toIndentedString(descricaoNcm)).append("\n");
-    sb.append("    listaAtributosNcm: ").append(toIndentedString(listaAtributosNcm)).append("\n");
-    sb.append("    listaCamposNcm: ").append(toIndentedString(listaCamposNcm)).append("\n");
     sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
+    sb.append("    descricaoNcm: ").append(toIndentedString(descricaoNcm)).append("\n");
+    sb.append("    listaCamposNcm: ").append(toIndentedString(listaCamposNcm)).append("\n");
+    sb.append("    listaAtributosNcm: ").append(toIndentedString(listaAtributosNcm)).append("\n");
     sb.append("    unidadeMedidaEstatistica: ").append(toIndentedString(unidadeMedidaEstatistica)).append("\n");
     sb.append("}");
     return sb.toString();

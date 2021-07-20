@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosProrrogacaoLpco", propOrder =
-    { "dataCadastroSolicitacao", "dataFimVigencia", "dataInicioVigencia", "dataUltimaAlteracao", "justificativa", "novaDataFimVigencia", "situacao"
+    { "situacao", "novaDataFimVigencia", "dataInicioVigencia", "dataFimVigencia", "dataCadastroSolicitacao", "dataUltimaAlteracao", "justificativa"
 })
 
 @XmlRootElement(name="DadosProrrogacaoLpco")
@@ -25,12 +25,24 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de uma solicitação de prorrogação")
 public class DadosProrrogacaoLpco  {
   
-  @XmlElement(name="dataCadastroSolicitacao", required = true)
-  @ApiModelProperty(example = "2019-10-01", required = true, value = "Data em que a solicitação de prorrogação foi cadastrada<br>Formato: yyyy-MM-dd")
+  @XmlElement(name="situacao")
+  @ApiModelProperty(value = "")
+  @Valid
+  private IdDescricao situacao = null;
+
+  @XmlElement(name="novaDataFimVigencia")
+  @ApiModelProperty(example = "2019-10-01", value = "Nova data solicitada para fim de vigência<br>Formato: yyyy-MM-dd")
  /**
-   * Data em que a solicitação de prorrogação foi cadastrada<br>Formato: yyyy-MM-dd
+   * Nova data solicitada para fim de vigência<br>Formato: yyyy-MM-dd
   **/
-  private String dataCadastroSolicitacao = null;
+  private String novaDataFimVigencia = null;
+
+  @XmlElement(name="dataInicioVigencia", required = true)
+  @ApiModelProperty(example = "2019-10-01", required = true, value = "Início de vigência do LPCO<br>Formato: yyyy-MM-dd")
+ /**
+   * Início de vigência do LPCO<br>Formato: yyyy-MM-dd
+  **/
+  private String dataInicioVigencia = null;
 
   @XmlElement(name="dataFimVigencia", required = true)
   @ApiModelProperty(example = "2019-10-01", required = true, value = "Data atual de fim de vigência do LPCO<br>Formato: yyyy-MM-dd")
@@ -39,12 +51,12 @@ public class DadosProrrogacaoLpco  {
   **/
   private String dataFimVigencia = null;
 
-  @XmlElement(name="dataInicioVigencia", required = true)
-  @ApiModelProperty(example = "2019-10-01", required = true, value = "Início de vigência do LPCO<br>Formato: yyyy-MM-dd")
+  @XmlElement(name="dataCadastroSolicitacao", required = true)
+  @ApiModelProperty(example = "2019-10-01", required = true, value = "Data em que a solicitação de prorrogação foi cadastrada<br>Formato: yyyy-MM-dd")
  /**
-   * Início de vigência do LPCO<br>Formato: yyyy-MM-dd
+   * Data em que a solicitação de prorrogação foi cadastrada<br>Formato: yyyy-MM-dd
   **/
-  private String dataInicioVigencia = null;
+  private String dataCadastroSolicitacao = null;
 
   @XmlElement(name="dataUltimaAlteracao")
   @ApiModelProperty(example = "2019-10-01", value = "Data da última alteração da solicitação de prorrogação<br>Formato: yyyy-MM-dd")
@@ -59,34 +71,58 @@ public class DadosProrrogacaoLpco  {
    * Justificativa da solicitação de prorrogação.<br>Tamanho mínimo: 0<br>Tamanho máximo: 400
   **/
   private String justificativa = null;
-
-  @XmlElement(name="novaDataFimVigencia")
-  @ApiModelProperty(example = "2019-10-01", value = "Nova data solicitada para fim de vigência<br>Formato: yyyy-MM-dd")
  /**
-   * Nova data solicitada para fim de vigência<br>Formato: yyyy-MM-dd
+   * Get situacao
+   * @return situacao
   **/
-  private String novaDataFimVigencia = null;
+  @JsonProperty("situacao")
+  public IdDescricao getSituacao() {
+    return situacao;
+  }
 
-  @XmlElement(name="situacao")
-  @ApiModelProperty(value = "")
-  @Valid
-  private IdDescricao situacao = null;
+  public void setSituacao(IdDescricao situacao) {
+    this.situacao = situacao;
+  }
+
+  public DadosProrrogacaoLpco situacao(IdDescricao situacao) {
+    this.situacao = situacao;
+    return this;
+  }
+
  /**
-   * Data em que a solicitação de prorrogação foi cadastrada&lt;br&gt;Formato: yyyy-MM-dd
-   * @return dataCadastroSolicitacao
+   * Nova data solicitada para fim de vigência&lt;br&gt;Formato: yyyy-MM-dd
+   * @return novaDataFimVigencia
   **/
-  @JsonProperty("dataCadastroSolicitacao")
+  @JsonProperty("novaDataFimVigencia")
+  public String getNovaDataFimVigencia() {
+    return novaDataFimVigencia;
+  }
+
+  public void setNovaDataFimVigencia(String novaDataFimVigencia) {
+    this.novaDataFimVigencia = novaDataFimVigencia;
+  }
+
+  public DadosProrrogacaoLpco novaDataFimVigencia(String novaDataFimVigencia) {
+    this.novaDataFimVigencia = novaDataFimVigencia;
+    return this;
+  }
+
+ /**
+   * Início de vigência do LPCO&lt;br&gt;Formato: yyyy-MM-dd
+   * @return dataInicioVigencia
+  **/
+  @JsonProperty("dataInicioVigencia")
   @NotNull
-  public String getDataCadastroSolicitacao() {
-    return dataCadastroSolicitacao;
+  public String getDataInicioVigencia() {
+    return dataInicioVigencia;
   }
 
-  public void setDataCadastroSolicitacao(String dataCadastroSolicitacao) {
-    this.dataCadastroSolicitacao = dataCadastroSolicitacao;
+  public void setDataInicioVigencia(String dataInicioVigencia) {
+    this.dataInicioVigencia = dataInicioVigencia;
   }
 
-  public DadosProrrogacaoLpco dataCadastroSolicitacao(String dataCadastroSolicitacao) {
-    this.dataCadastroSolicitacao = dataCadastroSolicitacao;
+  public DadosProrrogacaoLpco dataInicioVigencia(String dataInicioVigencia) {
+    this.dataInicioVigencia = dataInicioVigencia;
     return this;
   }
 
@@ -110,21 +146,21 @@ public class DadosProrrogacaoLpco  {
   }
 
  /**
-   * Início de vigência do LPCO&lt;br&gt;Formato: yyyy-MM-dd
-   * @return dataInicioVigencia
+   * Data em que a solicitação de prorrogação foi cadastrada&lt;br&gt;Formato: yyyy-MM-dd
+   * @return dataCadastroSolicitacao
   **/
-  @JsonProperty("dataInicioVigencia")
+  @JsonProperty("dataCadastroSolicitacao")
   @NotNull
-  public String getDataInicioVigencia() {
-    return dataInicioVigencia;
+  public String getDataCadastroSolicitacao() {
+    return dataCadastroSolicitacao;
   }
 
-  public void setDataInicioVigencia(String dataInicioVigencia) {
-    this.dataInicioVigencia = dataInicioVigencia;
+  public void setDataCadastroSolicitacao(String dataCadastroSolicitacao) {
+    this.dataCadastroSolicitacao = dataCadastroSolicitacao;
   }
 
-  public DadosProrrogacaoLpco dataInicioVigencia(String dataInicioVigencia) {
-    this.dataInicioVigencia = dataInicioVigencia;
+  public DadosProrrogacaoLpco dataCadastroSolicitacao(String dataCadastroSolicitacao) {
+    this.dataCadastroSolicitacao = dataCadastroSolicitacao;
     return this;
   }
 
@@ -164,55 +200,19 @@ public class DadosProrrogacaoLpco  {
     return this;
   }
 
- /**
-   * Nova data solicitada para fim de vigência&lt;br&gt;Formato: yyyy-MM-dd
-   * @return novaDataFimVigencia
-  **/
-  @JsonProperty("novaDataFimVigencia")
-  public String getNovaDataFimVigencia() {
-    return novaDataFimVigencia;
-  }
-
-  public void setNovaDataFimVigencia(String novaDataFimVigencia) {
-    this.novaDataFimVigencia = novaDataFimVigencia;
-  }
-
-  public DadosProrrogacaoLpco novaDataFimVigencia(String novaDataFimVigencia) {
-    this.novaDataFimVigencia = novaDataFimVigencia;
-    return this;
-  }
-
- /**
-   * Get situacao
-   * @return situacao
-  **/
-  @JsonProperty("situacao")
-  public IdDescricao getSituacao() {
-    return situacao;
-  }
-
-  public void setSituacao(IdDescricao situacao) {
-    this.situacao = situacao;
-  }
-
-  public DadosProrrogacaoLpco situacao(IdDescricao situacao) {
-    this.situacao = situacao;
-    return this;
-  }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DadosProrrogacaoLpco {\n");
     
-    sb.append("    dataCadastroSolicitacao: ").append(toIndentedString(dataCadastroSolicitacao)).append("\n");
-    sb.append("    dataFimVigencia: ").append(toIndentedString(dataFimVigencia)).append("\n");
+    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
+    sb.append("    novaDataFimVigencia: ").append(toIndentedString(novaDataFimVigencia)).append("\n");
     sb.append("    dataInicioVigencia: ").append(toIndentedString(dataInicioVigencia)).append("\n");
+    sb.append("    dataFimVigencia: ").append(toIndentedString(dataFimVigencia)).append("\n");
+    sb.append("    dataCadastroSolicitacao: ").append(toIndentedString(dataCadastroSolicitacao)).append("\n");
     sb.append("    dataUltimaAlteracao: ").append(toIndentedString(dataUltimaAlteracao)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
-    sb.append("    novaDataFimVigencia: ").append(toIndentedString(novaDataFimVigencia)).append("\n");
-    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

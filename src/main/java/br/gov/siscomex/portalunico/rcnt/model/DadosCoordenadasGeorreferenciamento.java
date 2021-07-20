@@ -37,7 +37,7 @@ public class DadosCoordenadasGeorreferenciamento  {
   private BigDecimal latitude = null;
 
   @XmlElement(name="longitude")
-  @ApiModelProperty(example = "29.123456", value = "Longitude, 6 casas decimais")
+  @ApiModelProperty(example = "-29.123456", value = "Longitude, 6 casas decimais")
   @Valid
  /**
    * Longitude, 6 casas decimais

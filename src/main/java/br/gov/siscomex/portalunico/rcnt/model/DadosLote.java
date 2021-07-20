@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -29,10 +30,10 @@ public class DadosLote  {
   **/
   private String idElemento = null;
 
-  @XmlElement(name="numeroLote")
-  @ApiModelProperty(value = "Número do Lote interno gerado pelo Recinto.<br/>Tamanho: 100")
+  @XmlElement(name="numeroLote", required = true)
+  @ApiModelProperty(required = true, value = "Número do Lote interno gerado pelo Recinto. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Número do Lote interno gerado pelo Recinto.<br/>Tamanho: 100
+   * Número do Lote interno gerado pelo Recinto. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String numeroLote = null;
 
@@ -141,10 +142,11 @@ public class DadosLote  {
   }
 
  /**
-   * Número do Lote interno gerado pelo Recinto.&lt;br/&gt;Tamanho: 100
+   * Número do Lote interno gerado pelo Recinto. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return numeroLote
   **/
   @JsonProperty("numeroLote")
+  @NotNull
   public String getNumeroLote() {
     return numeroLote;
   }

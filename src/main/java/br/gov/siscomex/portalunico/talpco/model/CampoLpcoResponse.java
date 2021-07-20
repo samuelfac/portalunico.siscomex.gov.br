@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CampoLpcoResponse", propOrder =
-    { "codigo", "intervenientes", "listaValor", "unidadeMedida", "valorComposto"
+    { "codigo", "listaValor", "valorComposto", "unidadeMedida", "intervenientes"
 })
 
 @XmlRootElement(name="CampoLpcoResponse")
@@ -35,20 +35,17 @@ public class CampoLpcoResponse  {
   **/
   private String codigo = null;
 
-  @XmlElement(name="intervenientes")
-  @ApiModelProperty(value = "Lista com detalhes dos exportadores/importadores. Informado apenas nos campos CPF_CNPJ_IMPORTADOR e CPF_CNPJ_EXPORTADOR")
-  @Valid
- /**
-   * Lista com detalhes dos exportadores/importadores. Informado apenas nos campos CPF_CNPJ_IMPORTADOR e CPF_CNPJ_EXPORTADOR
-  **/
-  private List<Pessoa> intervenientes = null;
-
   @XmlElement(name="listaValor", required = true)
   @ApiModelProperty(example = "{\"12345678901\", \"12345678901234\"}", required = true, value = "Lista dos valores declarados para o campo ou atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 10000")
  /**
    * Lista dos valores declarados para o campo ou atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 10000
   **/
   private List<String> listaValor = new ArrayList<>();
+
+  @XmlElement(name="valorComposto")
+  @ApiModelProperty(value = "")
+  @Valid
+  private ReferenciaValorComposto valorComposto = null;
 
   @XmlElement(name="unidadeMedida")
   @ApiModelProperty(example = "UN", value = "Unidade de medida utilizada no campo. Informado apenas nos campos QTD_COMERCIALIZADA e QTD_ESTATISTICA<br>Tamanho mínimo: 1<br>Tamanho máximo: 60")
@@ -57,10 +54,13 @@ public class CampoLpcoResponse  {
   **/
   private String unidadeMedida = null;
 
-  @XmlElement(name="valorComposto")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="intervenientes")
+  @ApiModelProperty(value = "Lista com detalhes dos exportadores/importadores. Informado apenas nos campos CPF_CNPJ_IMPORTADOR e CPF_CNPJ_EXPORTADOR")
   @Valid
-  private ReferenciaValorComposto valorComposto = null;
+ /**
+   * Lista com detalhes dos exportadores/importadores. Informado apenas nos campos CPF_CNPJ_IMPORTADOR e CPF_CNPJ_EXPORTADOR
+  **/
+  private List<Pessoa> intervenientes = null;
  /**
    * Código do campo ou do atributo do NCM&lt;br&gt;Tamanho máximo: 40&lt;br&gt;Formato: Valores do domínio OU código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;Lei de formação: O código do campo pode ser um dos tipos padrão pré-definidos no domínio ou um código de um atributo do Cadastro de Atributos&lt;br&gt;Domínio: PAIS_DESTINO&lt;br&gt;PAIS_IMPORTADOR&lt;br&gt;SITUACAO_ESPECIAL&lt;br&gt;TRATAMENTO_PRIORITARIO&lt;br&gt;NCM&lt;br&gt;ENQUADRAMENTO_OPERACAO&lt;br&gt;URF_EMBARQUE&lt;br&gt;URF_DESPACHO&lt;br&gt;RECINTO_EMBARQUE&lt;br&gt;RECINTO_DESPACHO&lt;br&gt;CONDICAO_VENDA&lt;br&gt;VIA_ESPECIAL_TRANSPORTE&lt;br&gt;MOEDA&lt;br&gt;MOTIVO_DISPENSA_NF&lt;br&gt;IMPORTADOR&lt;br&gt;CHAVE_ACESSO_NFE&lt;br&gt;QTDE_COMERCIALIZADA&lt;br&gt;QTDE_ESTATISTICA&lt;br&gt;VMLE&lt;br&gt;CODIGO_PRODUTO&lt;br&gt;CPF_CNPJ_EXPORTADOR&lt;br&gt;CPF_CNPJ_DECLARANTE&lt;br&gt;ENDERECO_IMPORTADOR&lt;br&gt;PESO_LIQUIDO_TOTAL&lt;br&gt;NUMERO_CONTEINER&lt;br&gt;NUMERO_LACRE&lt;br&gt;CNPJ_TRANSPORTADOR&lt;br&gt;NOME_TRANSPORTADOR_ESTRANGEIRO&lt;br&gt;TIPOS_EMBALAGEM&lt;br&gt;NOME_CONSIGNATARIO&lt;br&gt;ENDERECO_CONSIGNATARIO&lt;br&gt;VALOR_FINANCIADO&lt;br&gt;VALOR_CONDICAO_VENDA&lt;br&gt;FORMA_EXPORTACAO&lt;br&gt;PAIS_ORIGEM&lt;br&gt;PAIS_AQUISICAO&lt;br&gt;PAIS_PROCEDENCIA&lt;br&gt;CPF_CNPJ_IMPORTADOR&lt;br&gt;CODIGO_NALADI&lt;br&gt;CODIGO_FUNDAMENTO&lt;br&gt;CONDICAO_MERCADORIA&lt;br&gt;EXPORTADOR_E_FABRICANTE_DO_PRODUTO&lt;br&gt;CRONOGRAMA_EMBARQUE&lt;br&gt;CRONOGRAMA_FATURAMENTO&lt;br&gt;RUC&lt;br&gt;NUMERO_CONHECIMENTO&lt;br&gt;PAIS_CONSIGNATARIO&lt;br&gt;TIPO_EMBALAGEM_LISTA&lt;br&gt;TIPO_IMPORTADOR_DUIMP&lt;br&gt;INDICACAO_IMPORTACAO_TERCEIROS&lt;br&gt;MOEDA_NEGOCIADA_DUIMP&lt;br&gt;FABRICANTE_PRODUTOR&lt;br&gt;EXPORTADOR_ESTRANGEIRO&lt;br&gt;UNIDADE_LOCALIZACAO_CARGA&lt;br&gt;UNIDADE_ENTRADA_DESCARGA&lt;br&gt;VIA_TRANSPORTE&lt;br&gt;TIPO_EMBALAGEM_ITEM_CARGA&lt;br&gt;VALOR_UNITARIO_CONDICAO_VENDA&lt;br&gt;LOCAL_EMBARQUE&lt;br&gt;FUNDAMENTO_LEGAL
    * @return codigo
@@ -77,29 +77,6 @@ public class CampoLpcoResponse  {
 
   public CampoLpcoResponse codigo(String codigo) {
     this.codigo = codigo;
-    return this;
-  }
-
- /**
-   * Lista com detalhes dos exportadores/importadores. Informado apenas nos campos CPF_CNPJ_IMPORTADOR e CPF_CNPJ_EXPORTADOR
-   * @return intervenientes
-  **/
-  @JsonProperty("intervenientes")
-  public List<Pessoa> getIntervenientes() {
-    return intervenientes;
-  }
-
-  public void setIntervenientes(List<Pessoa> intervenientes) {
-    this.intervenientes = intervenientes;
-  }
-
-  public CampoLpcoResponse intervenientes(List<Pessoa> intervenientes) {
-    this.intervenientes = intervenientes;
-    return this;
-  }
-
-  public CampoLpcoResponse addIntervenientesItem(Pessoa intervenientesItem) {
-    this.intervenientes.add(intervenientesItem);
     return this;
   }
 
@@ -128,6 +105,24 @@ public class CampoLpcoResponse  {
   }
 
  /**
+   * Get valorComposto
+   * @return valorComposto
+  **/
+  @JsonProperty("valorComposto")
+  public ReferenciaValorComposto getValorComposto() {
+    return valorComposto;
+  }
+
+  public void setValorComposto(ReferenciaValorComposto valorComposto) {
+    this.valorComposto = valorComposto;
+  }
+
+  public CampoLpcoResponse valorComposto(ReferenciaValorComposto valorComposto) {
+    this.valorComposto = valorComposto;
+    return this;
+  }
+
+ /**
    * Unidade de medida utilizada no campo. Informado apenas nos campos QTD_COMERCIALIZADA e QTD_ESTATISTICA&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 60
    * @return unidadeMedida
   **/
@@ -146,20 +141,25 @@ public class CampoLpcoResponse  {
   }
 
  /**
-   * Get valorComposto
-   * @return valorComposto
+   * Lista com detalhes dos exportadores/importadores. Informado apenas nos campos CPF_CNPJ_IMPORTADOR e CPF_CNPJ_EXPORTADOR
+   * @return intervenientes
   **/
-  @JsonProperty("valorComposto")
-  public ReferenciaValorComposto getValorComposto() {
-    return valorComposto;
+  @JsonProperty("intervenientes")
+  public List<Pessoa> getIntervenientes() {
+    return intervenientes;
   }
 
-  public void setValorComposto(ReferenciaValorComposto valorComposto) {
-    this.valorComposto = valorComposto;
+  public void setIntervenientes(List<Pessoa> intervenientes) {
+    this.intervenientes = intervenientes;
   }
 
-  public CampoLpcoResponse valorComposto(ReferenciaValorComposto valorComposto) {
-    this.valorComposto = valorComposto;
+  public CampoLpcoResponse intervenientes(List<Pessoa> intervenientes) {
+    this.intervenientes = intervenientes;
+    return this;
+  }
+
+  public CampoLpcoResponse addIntervenientesItem(Pessoa intervenientesItem) {
+    this.intervenientes.add(intervenientesItem);
     return this;
   }
 
@@ -170,10 +170,10 @@ public class CampoLpcoResponse  {
     sb.append("class CampoLpcoResponse {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
-    sb.append("    intervenientes: ").append(toIndentedString(intervenientes)).append("\n");
     sb.append("    listaValor: ").append(toIndentedString(listaValor)).append("\n");
-    sb.append("    unidadeMedida: ").append(toIndentedString(unidadeMedida)).append("\n");
     sb.append("    valorComposto: ").append(toIndentedString(valorComposto)).append("\n");
+    sb.append("    unidadeMedida: ").append(toIndentedString(unidadeMedida)).append("\n");
+    sb.append("    intervenientes: ").append(toIndentedString(intervenientes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

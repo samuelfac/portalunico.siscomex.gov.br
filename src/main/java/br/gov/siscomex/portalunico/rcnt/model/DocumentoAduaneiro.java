@@ -105,7 +105,11 @@ public enum TipoEnum {
 	
 	@XmlEnumValue("'DRI'")
 	@JsonProperty("'DRI'")
-	DRI_(String.valueOf("'DRI'"));
+	DRI_(String.valueOf("'DRI'")),
+	
+	@XmlEnumValue("'DCI'")
+	@JsonProperty("'DCI'")
+	DCI_(String.valueOf("'DCI'"));
 
 
     private String value;
@@ -134,9 +138,9 @@ public enum TipoEnum {
 }
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "DUIMP", value = "Tipo da Declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de Importação")
+  @ApiModelProperty(example = "DUIMP", value = "Tipo da Declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação")
  /**
-   * Tipo da Declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de Importação
+   * Tipo da Declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação
   **/
   private TipoEnum tipo = null;
  /**
@@ -176,7 +180,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo da Declaração aduaneira conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;DI - Declaração de Importação &lt;br/&gt;DSI_ELETRONICA - DSI Eletrônica &lt;br/&gt;DSI_FORMULARIO - DSI Formulário &lt;br/&gt;DSE_ELETRONICA - DSE Eletrônica &lt;br/&gt;DSE_FORMULARIO -  DSE Formulário &lt;br/&gt;DUIMP - Declaração Única de Importação &lt;br/&gt;DUE - Declaração Única de Exportação &lt;br/&gt;DE - Declaração de Exportação &lt;br/&gt;DTA - Declaração de Trânsito Aduaneiro &lt;br/&gt;DTA_S - Declaração de Trânsito Aduaneiro Simplificado &lt;br/&gt;DTAI - Declaração de Trânsito Aduaneiro Internacional &lt;br/&gt;DTC - Declaração de Trânsito de Contêiner &lt;br/&gt;DAT - Documento de Acompanhamento de Trânsito &lt;br/&gt;ATA_C - Carnê Ata (Ata Carnet) &lt;br/&gt;DIR - Declaração de Importação de Remessa &lt;br/&gt;DRE - Declaração de Remessas de Exportação &lt;br/&gt;DRI - Declaração de Remessas de Importação
+   * Tipo da Declaração aduaneira conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;DI - Declaração de Importação &lt;br/&gt;DSI_ELETRONICA - DSI Eletrônica &lt;br/&gt;DSI_FORMULARIO - DSI Formulário &lt;br/&gt;DSE_ELETRONICA - DSE Eletrônica &lt;br/&gt;DSE_FORMULARIO -  DSE Formulário &lt;br/&gt;DUIMP - Declaração Única de Importação &lt;br/&gt;DUE - Declaração Única de Exportação &lt;br/&gt;DE - Declaração de Exportação &lt;br/&gt;DTA - Declaração de Trânsito Aduaneiro &lt;br/&gt;DTA_S - Declaração de Trânsito Aduaneiro Simplificado &lt;br/&gt;DTAI - Declaração de Trânsito Aduaneiro Internacional &lt;br/&gt;DTC - Declaração de Trânsito de Contêiner &lt;br/&gt;DAT - Documento de Acompanhamento de Trânsito &lt;br/&gt;ATA_C - Carnê Ata (Ata Carnet) &lt;br/&gt;DIR - Declaração de Importação de Remessa &lt;br/&gt;DRE - Declaração de Remessas de Exportação &lt;br/&gt;DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação
    * @return tipo
   **/
   @JsonProperty("tipo")

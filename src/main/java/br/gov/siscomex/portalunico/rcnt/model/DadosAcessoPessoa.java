@@ -176,10 +176,10 @@ public enum DirecaoEnum {
     }
 }
 
-  @XmlElement(name="direcao")
-  @ApiModelProperty(example = "E", value = "Direção do acesso<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
+  @XmlElement(name="direcao", required = true)
+  @ApiModelProperty(example = "E", required = true, value = "Direção do acesso. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
  /**
-   * Direção do acesso<br/>Domínio:<br/>E - Entrada<br/>S - Saída
+   * Direção do acesso. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída
   **/
   private DirecaoEnum direcao = null;
 
@@ -244,10 +244,10 @@ public enum IdentificacaoEnum {
   **/
   private String identidadeEstrangeiro = null;
 
-  @XmlElement(name="nome")
-  @ApiModelProperty(value = "Nome da pessoa que está acessando o recinto (entrada ou saída).<br/>Tamanho: 100")
+  @XmlElement(name="nome", required = true)
+  @ApiModelProperty(required = true, value = "Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Nome da pessoa que está acessando o recinto (entrada ou saída).<br/>Tamanho: 100
+   * Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String nome = null;
 
@@ -469,10 +469,11 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Direção do acesso&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
+   * Direção do acesso. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
    * @return direcao
   **/
   @JsonProperty("direcao")
+  @NotNull
   public String getDirecao() {
     if (direcao == null) {
       return null;
@@ -529,10 +530,11 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Nome da pessoa que está acessando o recinto (entrada ou saída).&lt;br/&gt;Tamanho: 100
+   * Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")
+  @NotNull
   public String getNome() {
     return nome;
   }

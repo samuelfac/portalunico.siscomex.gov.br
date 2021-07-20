@@ -264,9 +264,9 @@ public enum TipoConhecimentoEnum {
 	@JsonProperty("'TIF'")
 	TIF_(String.valueOf("'TIF'")),
 	
-	@XmlEnumValue("'BL'")
-	@JsonProperty("'BL'")
-	BL_(String.valueOf("'BL'")),
+	@XmlEnumValue("'RWB'")
+	@JsonProperty("'RWB'")
+	RWB_(String.valueOf("'RWB'")),
 	
 	@XmlEnumValue("'AWB'")
 	@JsonProperty("'AWB'")
@@ -276,25 +276,21 @@ public enum TipoConhecimentoEnum {
 	@JsonProperty("'DSIC'")
 	DSIC_(String.valueOf("'DSIC'")),
 	
-	@XmlEnumValue("'COURIER'")
-	@JsonProperty("'COURIER'")
-	COURIER_(String.valueOf("'COURIER'")),
-	
-	@XmlEnumValue("'POSTAL'")
-	@JsonProperty("'POSTAL'")
-	POSTAL_(String.valueOf("'POSTAL'")),
-	
 	@XmlEnumValue("'CTE'")
 	@JsonProperty("'CTE'")
 	CTE_(String.valueOf("'CTE'")),
 	
-	@XmlEnumValue("'CELET'")
-	@JsonProperty("'CELET'")
-	CELET_(String.valueOf("'CELET'")),
-	
 	@XmlEnumValue("'CE_MERCANTE'")
 	@JsonProperty("'CE_MERCANTE'")
-	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'"));
+	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'")),
+	
+	@XmlEnumValue("'BL'")
+	@JsonProperty("'BL'")
+	BL_(String.valueOf("'BL'")),
+	
+	@XmlEnumValue("'POSTAL'")
+	@JsonProperty("'POSTAL'")
+	POSTAL_(String.valueOf("'POSTAL'"));
 
 
     private String value;
@@ -323,9 +319,9 @@ public enum TipoConhecimentoEnum {
 }
 
   @XmlElement(name="tipoConhecimento")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
   **/
   private TipoConhecimentoEnum tipoConhecimento = null;
 
@@ -407,7 +403,11 @@ public enum TipoDeclaracaoEnum {
 	
 	@XmlEnumValue("'DRI'")
 	@JsonProperty("'DRI'")
-	DRI_(String.valueOf("'DRI'"));
+	DRI_(String.valueOf("'DRI'")),
+	
+	@XmlEnumValue("'DCI'")
+	@JsonProperty("'DCI'")
+	DCI_(String.valueOf("'DCI'"));
 
 
     private String value;
@@ -436,9 +436,9 @@ public enum TipoDeclaracaoEnum {
 }
 
   @XmlElement(name="tipoDeclaracao")
-  @ApiModelProperty(example = "DUIMP", value = "Tipo da declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de Importação")
+  @ApiModelProperty(example = "DUIMP", value = "Tipo da declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação")
  /**
-   * Tipo da declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de Importação
+   * Tipo da declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação
   **/
   private TipoDeclaracaoEnum tipoDeclaracao = null;
 
@@ -536,6 +536,14 @@ public enum SolicitanteEnum {
 	@JsonProperty("'DEPLA'")
 	DEPLA_(String.valueOf("'DEPLA'")),
 	
+	@XmlEnumValue("'DEPOSITARIO'")
+	@JsonProperty("'DEPOSITARIO'")
+	DEPOSITARIO_(String.valueOf("'DEPOSITARIO'")),
+	
+	@XmlEnumValue("'DESPACHANTE'")
+	@JsonProperty("'DESPACHANTE'")
+	DESPACHANTE_(String.valueOf("'DESPACHANTE'")),
+	
 	@XmlEnumValue("'DFPC'")
 	@JsonProperty("'DFPC'")
 	DFPC_(String.valueOf("'DFPC'")),
@@ -552,6 +560,10 @@ public enum SolicitanteEnum {
 	@JsonProperty("'ECT'")
 	ECT_(String.valueOf("'ECT'")),
 	
+	@XmlEnumValue("'EXPORTADOR'")
+	@JsonProperty("'EXPORTADOR'")
+	EXPORTADOR_(String.valueOf("'EXPORTADOR'")),
+	
 	@XmlEnumValue("'GESTOR'")
 	@JsonProperty("'GESTOR'")
 	GESTOR_(String.valueOf("'GESTOR'")),
@@ -567,6 +579,10 @@ public enum SolicitanteEnum {
 	@XmlEnumValue("'IPHAN'")
 	@JsonProperty("'IPHAN'")
 	IPHAN_(String.valueOf("'IPHAN'")),
+	
+	@XmlEnumValue("'IMPORTADOR'")
+	@JsonProperty("'IMPORTADOR'")
+	IMPORTADOR_(String.valueOf("'IMPORTADOR'")),
 	
 	@XmlEnumValue("'JUSTIÇA'")
 	@JsonProperty("'JUSTIÇA'")
@@ -612,6 +628,10 @@ public enum SolicitanteEnum {
 	@JsonProperty("'SUFRAMA'")
 	SUFRAMA_(String.valueOf("'SUFRAMA'")),
 	
+	@XmlEnumValue("'TRANSPORTADOR'")
+	@JsonProperty("'TRANSPORTADOR'")
+	TRANSPORTADOR_(String.valueOf("'TRANSPORTADOR'")),
+	
 	@XmlEnumValue("'OUTRO'")
 	@JsonProperty("'OUTRO'")
 	OUTRO_(String.valueOf("'OUTRO'"));
@@ -643,9 +663,9 @@ public enum SolicitanteEnum {
 }
 
   @XmlElement(name="solicitante")
-  @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.<br/>Domínio:<br/>ACI - ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE")
+  @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.<br/>Domínio:<br/>ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DEPOSITARIO - DEPOSITÁRIO<br/>DESPACHANTE - DESPACHANTE<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>EXPORTADOR - EXPORTADOR<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>IMPORTADOR - IMPORTADOR<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>TRANSPORTADOR - TRANSPORTADOR<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE")
  /**
-   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.<br/>Domínio:<br/>ACI - ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
+   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.<br/>Domínio:<br/>ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DEPOSITARIO - DEPOSITÁRIO<br/>DESPACHANTE - DESPACHANTE<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>EXPORTADOR - EXPORTADOR<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>IMPORTADOR - IMPORTADOR<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>TRANSPORTADOR - TRANSPORTADOR<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
   **/
   private SolicitanteEnum solicitante = null;
 
@@ -930,7 +950,7 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - CRT&lt;br/&gt;TIF - TIF&lt;br/&gt;BL - BL&lt;br/&gt;AWB - AWB&lt;br/&gt;DSIC - DSIC&lt;br/&gt;COURIER - Courier&lt;br/&gt;POSTAL - Postal&lt;br/&gt;CTE - CT-e&lt;br/&gt;CELET - Conhecimento Eletrônico&lt;br&gt;CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
    * @return tipoConhecimento
   **/
   @JsonProperty("tipoConhecimento")
@@ -969,7 +989,7 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Tipo da declaração aduaneira conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;DI - Declaração de Importação &lt;br/&gt;DSI_ELETRONICA - DSI Eletrônica &lt;br/&gt;DSI_FORMULARIO - DSI Formulário &lt;br/&gt;DSE_ELETRONICA - DSE Eletrônica &lt;br/&gt;DSE_FORMULARIO -  DSE Formulário &lt;br/&gt;DUIMP - Declaração Única de Importação &lt;br/&gt;DUE - Declaração Única de Exportação &lt;br/&gt;DE - Declaração de Exportação &lt;br/&gt;DTA - Declaração de Trânsito Aduaneiro &lt;br/&gt;DTA_S - Declaração de Trânsito Aduaneiro Simplificado &lt;br/&gt;DTAI - Declaração de Trânsito Aduaneiro Internacional &lt;br/&gt;DTC - Declaração de Trânsito de Contêiner &lt;br/&gt;DAT - Documento de Acompanhamento de Trânsito &lt;br/&gt;ATA_C - Carnê Ata (Ata Carnet) &lt;br/&gt;DIR - Declaração de Importação de Remessa &lt;br/&gt;DRE - Declaração de Remessas de Exportação &lt;br/&gt;DRI - Declaração de Remessas de Importação
+   * Tipo da declaração aduaneira conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;DI - Declaração de Importação &lt;br/&gt;DSI_ELETRONICA - DSI Eletrônica &lt;br/&gt;DSI_FORMULARIO - DSI Formulário &lt;br/&gt;DSE_ELETRONICA - DSE Eletrônica &lt;br/&gt;DSE_FORMULARIO -  DSE Formulário &lt;br/&gt;DUIMP - Declaração Única de Importação &lt;br/&gt;DUE - Declaração Única de Exportação &lt;br/&gt;DE - Declaração de Exportação &lt;br/&gt;DTA - Declaração de Trânsito Aduaneiro &lt;br/&gt;DTA_S - Declaração de Trânsito Aduaneiro Simplificado &lt;br/&gt;DTAI - Declaração de Trânsito Aduaneiro Internacional &lt;br/&gt;DTC - Declaração de Trânsito de Contêiner &lt;br/&gt;DAT - Documento de Acompanhamento de Trânsito &lt;br/&gt;ATA_C - Carnê Ata (Ata Carnet) &lt;br/&gt;DIR - Declaração de Importação de Remessa &lt;br/&gt;DRE - Declaração de Remessas de Exportação &lt;br/&gt;DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação
    * @return tipoDeclaracao
   **/
   @JsonProperty("tipoDeclaracao")
@@ -1067,7 +1087,7 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.&lt;br/&gt;Domínio:&lt;br/&gt;ACI - ÁREA DE CONTROLE INTEGRADO&lt;br/&gt;ANCINE - AGENCIA NACIONAL DO CINEMA&lt;br/&gt;ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA&lt;br/&gt;ANP - AGENCIA NACIONAL DO PETROLEO&lt;br/&gt;ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA&lt;br/&gt;BB - BANCO DO BRASIL&lt;br/&gt;BEFIEX - PROGRAMAS BEFIEX&lt;br/&gt;BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL&lt;br/&gt;CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR&lt;br/&gt;CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO&lt;br/&gt;CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS&lt;br/&gt;COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL&lt;br/&gt;DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO&lt;br/&gt;DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR&lt;br/&gt;DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR&lt;br/&gt;DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS&lt;br/&gt;DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL&lt;br/&gt;DPF - DEPARTAMENTO DE POLICIA FEDERAL&lt;br/&gt;ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS&lt;br/&gt;GESTOR - MICT/DECEX/GESTOR&lt;br/&gt;IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS&lt;br/&gt;INMETRO - INSTITUTO NACIONAL DE METROLOGIA&lt;br/&gt;IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL&lt;br/&gt;JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.&lt;br/&gt;MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO&lt;br/&gt;MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO&lt;br/&gt;MD - MINISTERIO DA DEFESA&lt;br/&gt;MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES&lt;br/&gt;RFB - RECEITA FEDERAL DO BRASIL&lt;br/&gt;SDAVO - AUDIOVISUAL&lt;br/&gt;SECEX - SECRETARIA DE COMERCIO EXTERIOR&lt;br/&gt;SEPIN - MIN.DA CIENCIA E TECNOLOGIA&lt;br/&gt;SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO&lt;br/&gt;SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS&lt;br/&gt;OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
+   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.&lt;br/&gt;Domínio:&lt;br/&gt;ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO&lt;br/&gt;ANCINE - AGENCIA NACIONAL DO CINEMA&lt;br/&gt;ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA&lt;br/&gt;ANP - AGENCIA NACIONAL DO PETROLEO&lt;br/&gt;ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA&lt;br/&gt;BB - BANCO DO BRASIL&lt;br/&gt;BEFIEX - PROGRAMAS BEFIEX&lt;br/&gt;BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL&lt;br/&gt;CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR&lt;br/&gt;CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO&lt;br/&gt;CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS&lt;br/&gt;COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL&lt;br/&gt;DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO&lt;br/&gt;DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR&lt;br/&gt;DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR&lt;br/&gt;DEPOSITARIO - DEPOSITÁRIO&lt;br/&gt;DESPACHANTE - DESPACHANTE&lt;br/&gt;DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS&lt;br/&gt;DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL&lt;br/&gt;DPF - DEPARTAMENTO DE POLICIA FEDERAL&lt;br/&gt;ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS&lt;br/&gt;EXPORTADOR - EXPORTADOR&lt;br/&gt;GESTOR - MICT/DECEX/GESTOR&lt;br/&gt;IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS&lt;br/&gt;INMETRO - INSTITUTO NACIONAL DE METROLOGIA&lt;br/&gt;IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL&lt;br/&gt;IMPORTADOR - IMPORTADOR&lt;br/&gt;JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.&lt;br/&gt;MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO&lt;br/&gt;MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO&lt;br/&gt;MD - MINISTERIO DA DEFESA&lt;br/&gt;MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES&lt;br/&gt;RFB - RECEITA FEDERAL DO BRASIL&lt;br/&gt;SDAVO - AUDIOVISUAL&lt;br/&gt;SECEX - SECRETARIA DE COMERCIO EXTERIOR&lt;br/&gt;SEPIN - MIN.DA CIENCIA E TECNOLOGIA&lt;br/&gt;SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO&lt;br/&gt;SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS&lt;br/&gt;TRANSPORTADOR - TRANSPORTADOR&lt;br/&gt;OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
    * @return solicitante
   **/
   @JsonProperty("solicitante")

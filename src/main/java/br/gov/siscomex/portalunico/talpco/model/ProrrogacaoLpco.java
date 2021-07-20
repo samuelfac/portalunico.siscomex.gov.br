@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ProrrogacaoLpco", propOrder =
-    { "justificativa", "novaDataFimVigencia"
+    { "novaDataFimVigencia", "justificativa"
 })
 
 @XmlRootElement(name="ProrrogacaoLpco")
@@ -23,37 +23,19 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Dados de uma solicitação de prorrogação de um LPCO")
 public class ProrrogacaoLpco  {
   
-  @XmlElement(name="justificativa")
-  @ApiModelProperty(example = "Texto livre", value = "Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
- /**
-   * Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
-  **/
-  private String justificativa = null;
-
   @XmlElement(name="novaDataFimVigencia")
   @ApiModelProperty(example = "2019-09-03", value = "Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd")
  /**
    * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd
   **/
   private String novaDataFimVigencia = null;
+
+  @XmlElement(name="justificativa")
+  @ApiModelProperty(example = "Texto livre", value = "Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
  /**
-   * Justificativa para a solicitação de prorrogação&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
-   * @return justificativa
+   * Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
   **/
-  @JsonProperty("justificativa")
-  public String getJustificativa() {
-    return justificativa;
-  }
-
-  public void setJustificativa(String justificativa) {
-    this.justificativa = justificativa;
-  }
-
-  public ProrrogacaoLpco justificativa(String justificativa) {
-    this.justificativa = justificativa;
-    return this;
-  }
-
+  private String justificativa = null;
  /**
    * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
    * @return novaDataFimVigencia
@@ -72,14 +54,32 @@ public class ProrrogacaoLpco  {
     return this;
   }
 
+ /**
+   * Justificativa para a solicitação de prorrogação&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
+   * @return justificativa
+  **/
+  @JsonProperty("justificativa")
+  public String getJustificativa() {
+    return justificativa;
+  }
+
+  public void setJustificativa(String justificativa) {
+    this.justificativa = justificativa;
+  }
+
+  public ProrrogacaoLpco justificativa(String justificativa) {
+    this.justificativa = justificativa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProrrogacaoLpco {\n");
     
-    sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    novaDataFimVigencia: ").append(toIndentedString(novaDataFimVigencia)).append("\n");
+    sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

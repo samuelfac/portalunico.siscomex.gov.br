@@ -135,9 +135,9 @@ public enum TipoDadoEnum {
 }
 
   @XmlElement(name="tipoDado", required = true)
-  @ApiModelProperty(example = "NUMERO_REAL", required = true, value = "Tipo de dado da palavra-chave.<br/>DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO<br/>Formato DATA:      dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss")
+  @ApiModelProperty(example = "NUMERO_REAL", required = true, value = "Tipo de dado da palavra-chave.<br/>DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss<br/>Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)<br/>Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)")
  /**
-   * Tipo de dado da palavra-chave.<br/>DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO<br/>Formato DATA:      dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss
+   * Tipo de dado da palavra-chave.<br/>DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss<br/>Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)<br/>Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)
   **/
   private TipoDadoEnum tipoDado = null;
  /**
@@ -276,7 +276,7 @@ public enum TipoDadoEnum {
   }
 
  /**
-   * Tipo de dado da palavra-chave.&lt;br/&gt;DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO&lt;br/&gt;Formato DATA:      dd/MM/yyyy&lt;br/&gt;Formato DATA_HORA: dd/MM/yyyy HH:mm:ss
+   * Tipo de dado da palavra-chave.&lt;br/&gt;DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO&lt;br/&gt;Formato TEXTO: conforme máscara definida para a palavra-chave&lt;br/&gt;Formato DATA: dd/MM/yyyy&lt;br/&gt;Formato DATA_HORA: dd/MM/yyyy HH:mm:ss&lt;br/&gt;Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)&lt;br/&gt;Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)
    * @return tipoDado
   **/
   @JsonProperty("tipoDado")

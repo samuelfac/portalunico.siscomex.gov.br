@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ReferenciaValorCampoFundamentoLegal", propOrder =
-    { "camposAdicionais", "codigoFundamento"
+    { "codigoFundamento", "ncm", "camposAdicionais"
 })
 
 @XmlRootElement(name="ReferenciaValorCampoFundamentoLegal")
@@ -27,6 +27,20 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Valor de um campo composto do tipo Fundamento Legal de um LPCO")
 public class ReferenciaValorCampoFundamentoLegal  {
   
+  @XmlElement(name="codigoFundamento", required = true)
+  @ApiModelProperty(example = "00102030004", required = true, value = "Código do fundamento legal.<br>Tamanho: 11<br>Formato: 0CCTTRRFFFF, onde CC = Código da agregação, TT=Tipo da Agregação, RR=Regime, FFFF=Fundamento legal")
+ /**
+   * Código do fundamento legal.<br>Tamanho: 11<br>Formato: 0CCTTRRFFFF, onde CC = Código da agregação, TT=Tipo da Agregação, RR=Regime, FFFF=Fundamento legal
+  **/
+  private String codigoFundamento = null;
+
+  @XmlElement(name="ncm")
+  @ApiModelProperty(example = "01012100", value = "NCM vinculada ao fundamento legal, se houver.<br>Tamanho: 8<br>Formato: NNNNNNNN")
+ /**
+   * NCM vinculada ao fundamento legal, se houver.<br>Tamanho: 8<br>Formato: NNNNNNNN
+  **/
+  private String ncm = null;
+
   @XmlElement(name="camposAdicionais")
   @ApiModelProperty(value = "Campos adicionais do fundamento legal.<br>")
   @Valid
@@ -34,13 +48,43 @@ public class ReferenciaValorCampoFundamentoLegal  {
    * Campos adicionais do fundamento legal.<br>
   **/
   private List<ReferenciaCampoAdicionalTt> camposAdicionais = null;
-
-  @XmlElement(name="codigoFundamento", required = true)
-  @ApiModelProperty(example = "00102030004", required = true, value = "Código do fundamento legal.<br>Tamanho: 11<br>Formato: 0CCTTRRFFFF, onde CC = Código da agregação, TT=Tipo da Agregação, RR=Regime, FFFF=Fundamento legal")
  /**
-   * Código do fundamento legal.<br>Tamanho: 11<br>Formato: 0CCTTRRFFFF, onde CC = Código da agregação, TT=Tipo da Agregação, RR=Regime, FFFF=Fundamento legal
+   * Código do fundamento legal.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: 0CCTTRRFFFF, onde CC &#x3D; Código da agregação, TT&#x3D;Tipo da Agregação, RR&#x3D;Regime, FFFF&#x3D;Fundamento legal
+   * @return codigoFundamento
   **/
-  private String codigoFundamento = null;
+  @JsonProperty("codigoFundamento")
+  @NotNull
+  public String getCodigoFundamento() {
+    return codigoFundamento;
+  }
+
+  public void setCodigoFundamento(String codigoFundamento) {
+    this.codigoFundamento = codigoFundamento;
+  }
+
+  public ReferenciaValorCampoFundamentoLegal codigoFundamento(String codigoFundamento) {
+    this.codigoFundamento = codigoFundamento;
+    return this;
+  }
+
+ /**
+   * NCM vinculada ao fundamento legal, se houver.&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
+   * @return ncm
+  **/
+  @JsonProperty("ncm")
+  public String getNcm() {
+    return ncm;
+  }
+
+  public void setNcm(String ncm) {
+    this.ncm = ncm;
+  }
+
+  public ReferenciaValorCampoFundamentoLegal ncm(String ncm) {
+    this.ncm = ncm;
+    return this;
+  }
+
  /**
    * Campos adicionais do fundamento legal.&lt;br&gt;
    * @return camposAdicionais
@@ -64,33 +108,15 @@ public class ReferenciaValorCampoFundamentoLegal  {
     return this;
   }
 
- /**
-   * Código do fundamento legal.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: 0CCTTRRFFFF, onde CC &#x3D; Código da agregação, TT&#x3D;Tipo da Agregação, RR&#x3D;Regime, FFFF&#x3D;Fundamento legal
-   * @return codigoFundamento
-  **/
-  @JsonProperty("codigoFundamento")
-  @NotNull
-  public String getCodigoFundamento() {
-    return codigoFundamento;
-  }
-
-  public void setCodigoFundamento(String codigoFundamento) {
-    this.codigoFundamento = codigoFundamento;
-  }
-
-  public ReferenciaValorCampoFundamentoLegal codigoFundamento(String codigoFundamento) {
-    this.codigoFundamento = codigoFundamento;
-    return this;
-  }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReferenciaValorCampoFundamentoLegal {\n");
     
-    sb.append("    camposAdicionais: ").append(toIndentedString(camposAdicionais)).append("\n");
     sb.append("    codigoFundamento: ").append(toIndentedString(codigoFundamento)).append("\n");
+    sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
+    sb.append("    camposAdicionais: ").append(toIndentedString(camposAdicionais)).append("\n");
     sb.append("}");
     return sb.toString();
   }

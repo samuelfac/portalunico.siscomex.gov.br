@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosDaCarga", propOrder =
-    { "identificacaoCarga", "uaLocalizacaoCarga", "ufLocalizacaoCarga", "codRecintoLocalizacaoCarga", "uaAnaliseFiscal", "ufAnaliseFiscal", "uaEntradaCarga", "ufEntradaCarga", "viaTransporte", "tipoConhecimento", "descTipoConhecimento", "paisProcedencia", "dataChegada", "pesoLiquido", "moedaFreteTotal", "valorFreteTotalMoedaUtiliza", "valorFreteTotalEmReal", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado", "moedaSeguro", "valorSeguroMoedaUtilizada", "valorSeguroEmReal"
+    { "identificacaoCarga", "uaDeclarada", "ufDeclarada", "codRecintoLocalizacaoCarga", "uaDestinoFinal", "uaEntradaCarga", "ufEntradaCarga", "viaTransporte", "tipoConhecimento", "descTipoConhecimento", "paisProcedencia", "dataChegada", "pesoLiquido", "moedaFreteTotal", "valorFreteTotalMoedaUtiliza", "valorFreteTotalEmReal", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado", "moedaSeguro", "valorSeguroMoedaUtilizada", "valorSeguroEmReal"
 })
 
 @XmlRootElement(name="DadosDaCarga")
@@ -31,19 +31,19 @@ public class DadosDaCarga  {
   **/
   private String identificacaoCarga = null;
 
-  @XmlElement(name="uaLocalizacaoCarga")
-  @ApiModelProperty(example = "0717600", value = "Código da unidade da RFB onde as mercadorias acobertadas pela Duimp serão submetidas a despacho aduaneiro<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
+  @XmlElement(name="uaDeclarada")
+  @ApiModelProperty(example = "0717600", value = "Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
  /**
-   * Código da unidade da RFB onde as mercadorias acobertadas pela Duimp serão submetidas a despacho aduaneiro<br>Tamanho: 7<br>Formato: 'NNNNNNN'
+   * Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Tamanho: 7<br>Formato: 'NNNNNNN'
   **/
-  private String uaLocalizacaoCarga = null;
+  private String uaDeclarada = null;
 
-  @XmlElement(name="ufLocalizacaoCarga")
-  @ApiModelProperty(example = "RJ", value = "Unidade da federação de localilzação da carga<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2")
+  @XmlElement(name="ufDeclarada")
+  @ApiModelProperty(example = "RJ", value = "Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2")
  /**
-   * Unidade da federação de localilzação da carga<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2
+   * Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2
   **/
-  private String ufLocalizacaoCarga = null;
+  private String ufDeclarada = null;
 
   @XmlElement(name="codRecintoLocalizacaoCarga")
   @ApiModelProperty(example = "7912001", value = "Código do recinto alfandegado onde a mercadoria foi armazenada para verificação física<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
@@ -52,19 +52,12 @@ public class DadosDaCarga  {
   **/
   private String codRecintoLocalizacaoCarga = null;
 
-  @XmlElement(name="uaAnaliseFiscal")
-  @ApiModelProperty(example = "0717600", value = "Código da unidade da RFB que ficará responsável pela análise fiscal e desembaraço da declaração<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
+  @XmlElement(name="uaDestinoFinal")
+  @ApiModelProperty(example = "0717600", value = "Código da unidade de destino final da carga<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
  /**
-   * Código da unidade da RFB que ficará responsável pela análise fiscal e desembaraço da declaração<br>Tamanho: 7<br>Formato: 'NNNNNNN'
+   * Código da unidade de destino final da carga<br>Tamanho: 7<br>Formato: 'NNNNNNN'
   **/
-  private String uaAnaliseFiscal = null;
-
-  @XmlElement(name="ufAnaliseFiscal")
-  @ApiModelProperty(example = "RJ", value = "Unidade da federação da análise fiscal<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2")
- /**
-   * Unidade da federação da análise fiscal<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2
-  **/
-  private String ufAnaliseFiscal = null;
+  private String uaDestinoFinal = null;
 
   @XmlElement(name="uaEntradaCarga")
   @ApiModelProperty(example = "0717600", value = "Unidade da Receita Federal que jurisdiciona o local de entrada da mercadoria no País<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
@@ -178,7 +171,7 @@ public enum TipoConhecimentoEnum {
   @XmlElement(name="paisProcedencia")
   @ApiModelProperty(value = "")
   @Valid
-  private PasDoExportadorExtrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia = null;
+  private PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia = null;
 
   @XmlElement(name="dataChegada")
   @ApiModelProperty(value = "Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -321,38 +314,38 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Código da unidade da RFB onde as mercadorias acobertadas pela Duimp serão submetidas a despacho aduaneiro&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;
-   * @return uaLocalizacaoCarga
+   * Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;
+   * @return uaDeclarada
   **/
-  @JsonProperty("uaLocalizacaoCarga")
-  public String getUaLocalizacaoCarga() {
-    return uaLocalizacaoCarga;
+  @JsonProperty("uaDeclarada")
+  public String getUaDeclarada() {
+    return uaDeclarada;
   }
 
-  public void setUaLocalizacaoCarga(String uaLocalizacaoCarga) {
-    this.uaLocalizacaoCarga = uaLocalizacaoCarga;
+  public void setUaDeclarada(String uaDeclarada) {
+    this.uaDeclarada = uaDeclarada;
   }
 
-  public DadosDaCarga uaLocalizacaoCarga(String uaLocalizacaoCarga) {
-    this.uaLocalizacaoCarga = uaLocalizacaoCarga;
+  public DadosDaCarga uaDeclarada(String uaDeclarada) {
+    this.uaDeclarada = uaDeclarada;
     return this;
   }
 
  /**
-   * Unidade da federação de localilzação da carga&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
-   * @return ufLocalizacaoCarga
+   * Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
+   * @return ufDeclarada
   **/
-  @JsonProperty("ufLocalizacaoCarga")
-  public String getUfLocalizacaoCarga() {
-    return ufLocalizacaoCarga;
+  @JsonProperty("ufDeclarada")
+  public String getUfDeclarada() {
+    return ufDeclarada;
   }
 
-  public void setUfLocalizacaoCarga(String ufLocalizacaoCarga) {
-    this.ufLocalizacaoCarga = ufLocalizacaoCarga;
+  public void setUfDeclarada(String ufDeclarada) {
+    this.ufDeclarada = ufDeclarada;
   }
 
-  public DadosDaCarga ufLocalizacaoCarga(String ufLocalizacaoCarga) {
-    this.ufLocalizacaoCarga = ufLocalizacaoCarga;
+  public DadosDaCarga ufDeclarada(String ufDeclarada) {
+    this.ufDeclarada = ufDeclarada;
     return this;
   }
 
@@ -375,38 +368,20 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Código da unidade da RFB que ficará responsável pela análise fiscal e desembaraço da declaração&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;
-   * @return uaAnaliseFiscal
+   * Código da unidade de destino final da carga&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;
+   * @return uaDestinoFinal
   **/
-  @JsonProperty("uaAnaliseFiscal")
-  public String getUaAnaliseFiscal() {
-    return uaAnaliseFiscal;
+  @JsonProperty("uaDestinoFinal")
+  public String getUaDestinoFinal() {
+    return uaDestinoFinal;
   }
 
-  public void setUaAnaliseFiscal(String uaAnaliseFiscal) {
-    this.uaAnaliseFiscal = uaAnaliseFiscal;
+  public void setUaDestinoFinal(String uaDestinoFinal) {
+    this.uaDestinoFinal = uaDestinoFinal;
   }
 
-  public DadosDaCarga uaAnaliseFiscal(String uaAnaliseFiscal) {
-    this.uaAnaliseFiscal = uaAnaliseFiscal;
-    return this;
-  }
-
- /**
-   * Unidade da federação da análise fiscal&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
-   * @return ufAnaliseFiscal
-  **/
-  @JsonProperty("ufAnaliseFiscal")
-  public String getUfAnaliseFiscal() {
-    return ufAnaliseFiscal;
-  }
-
-  public void setUfAnaliseFiscal(String ufAnaliseFiscal) {
-    this.ufAnaliseFiscal = ufAnaliseFiscal;
-  }
-
-  public DadosDaCarga ufAnaliseFiscal(String ufAnaliseFiscal) {
-    this.ufAnaliseFiscal = ufAnaliseFiscal;
+  public DadosDaCarga uaDestinoFinal(String uaDestinoFinal) {
+    this.uaDestinoFinal = uaDestinoFinal;
     return this;
   }
 
@@ -511,15 +486,15 @@ public enum IndicadorAFRMMQuitadoEnum {
    * @return paisProcedencia
   **/
   @JsonProperty("paisProcedencia")
-  public PasDoExportadorExtrangeiroObjetoCompostoPelosAtributosCdigoEDescrio getPaisProcedencia() {
+  public PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio getPaisProcedencia() {
     return paisProcedencia;
   }
 
-  public void setPaisProcedencia(PasDoExportadorExtrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
+  public void setPaisProcedencia(PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
     this.paisProcedencia = paisProcedencia;
   }
 
-  public DadosDaCarga paisProcedencia(PasDoExportadorExtrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
+  public DadosDaCarga paisProcedencia(PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
     this.paisProcedencia = paisProcedencia;
     return this;
   }
@@ -732,11 +707,10 @@ public enum IndicadorAFRMMQuitadoEnum {
     sb.append("class DadosDaCarga {\n");
     
     sb.append("    identificacaoCarga: ").append(toIndentedString(identificacaoCarga)).append("\n");
-    sb.append("    uaLocalizacaoCarga: ").append(toIndentedString(uaLocalizacaoCarga)).append("\n");
-    sb.append("    ufLocalizacaoCarga: ").append(toIndentedString(ufLocalizacaoCarga)).append("\n");
+    sb.append("    uaDeclarada: ").append(toIndentedString(uaDeclarada)).append("\n");
+    sb.append("    ufDeclarada: ").append(toIndentedString(ufDeclarada)).append("\n");
     sb.append("    codRecintoLocalizacaoCarga: ").append(toIndentedString(codRecintoLocalizacaoCarga)).append("\n");
-    sb.append("    uaAnaliseFiscal: ").append(toIndentedString(uaAnaliseFiscal)).append("\n");
-    sb.append("    ufAnaliseFiscal: ").append(toIndentedString(ufAnaliseFiscal)).append("\n");
+    sb.append("    uaDestinoFinal: ").append(toIndentedString(uaDestinoFinal)).append("\n");
     sb.append("    uaEntradaCarga: ").append(toIndentedString(uaEntradaCarga)).append("\n");
     sb.append("    ufEntradaCarga: ").append(toIndentedString(ufEntradaCarga)).append("\n");
     sb.append("    viaTransporte: ").append(toIndentedString(viaTransporte)).append("\n");

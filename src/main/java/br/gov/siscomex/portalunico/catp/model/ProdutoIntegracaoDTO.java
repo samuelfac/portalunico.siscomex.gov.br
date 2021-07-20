@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ProdutoIntegracaoDTO", propOrder =
-    { "seq", "codigo", "descricao", "cpfCnpjRaiz", "situacao", "modalidade", "ncm", "versao", "atributos", "codigosInterno", "dataReferencia"
+    { "seq", "codigo", "descricao", "denominacao", "cpfCnpjRaiz", "situacao", "modalidade", "ncm", "versao", "atributos", "atributosMultivalorados", "atributosCompostos", "atributosCompostosMultivalorados", "codigosInterno", "dataReferencia"
 })
 
 @XmlRootElement(name="ProdutoIntegracaoDTO")
@@ -43,6 +43,13 @@ public class ProdutoIntegracaoDTO  {
    * Descrição complementar do produto<br>Tamanho: 3700
   **/
   private String descricao = null;
+
+  @XmlElement(name="denominacao")
+  @ApiModelProperty(example = "Denominação Produto Teste", value = "Denominação do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
+ /**
+   * Denominação do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 100
+  **/
+  private String denominacao = null;
 
   @XmlElement(name="cpfCnpjRaiz")
   @ApiModelProperty(example = "00000000", value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
@@ -85,7 +92,31 @@ public class ProdutoIntegracaoDTO  {
  /**
    * Lista de atributos da NCM informada
   **/
-  private List<ProdutoCampoIntegracaoDTO> atributos = null;
+  private List<ProdutoCampoSimplesIntegracaoDTO> atributos = null;
+
+  @XmlElement(name="atributosMultivalorados")
+  @ApiModelProperty(value = "Lista de atributos multivalorados da NCM informada")
+  @Valid
+ /**
+   * Lista de atributos multivalorados da NCM informada
+  **/
+  private List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados = null;
+
+  @XmlElement(name="atributosCompostos")
+  @ApiModelProperty(value = "Lista de atributos compostos da NCM informada")
+  @Valid
+ /**
+   * Lista de atributos compostos da NCM informada
+  **/
+  private List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos = null;
+
+  @XmlElement(name="atributosCompostosMultivalorados")
+  @ApiModelProperty(value = "Lista de atributos multivalorados compostos da NCM informada")
+  @Valid
+ /**
+   * Lista de atributos multivalorados compostos da NCM informada
+  **/
+  private List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados = null;
 
   @XmlElement(name="codigosInterno")
   @ApiModelProperty(value = "Lista de códigos internos do produto do Exportador/Importador<br>Tamanho: 60")
@@ -152,6 +183,24 @@ public class ProdutoIntegracaoDTO  {
 
   public ProdutoIntegracaoDTO descricao(String descricao) {
     this.descricao = descricao;
+    return this;
+  }
+
+ /**
+   * Denominação do produto&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+   * @return denominacao
+  **/
+  @JsonProperty("denominacao")
+  public String getDenominacao() {
+    return denominacao;
+  }
+
+  public void setDenominacao(String denominacao) {
+    this.denominacao = denominacao;
+  }
+
+  public ProdutoIntegracaoDTO denominacao(String denominacao) {
+    this.denominacao = denominacao;
     return this;
   }
 
@@ -250,21 +299,90 @@ public class ProdutoIntegracaoDTO  {
    * @return atributos
   **/
   @JsonProperty("atributos")
-  public List<ProdutoCampoIntegracaoDTO> getAtributos() {
+  public List<ProdutoCampoSimplesIntegracaoDTO> getAtributos() {
     return atributos;
   }
 
-  public void setAtributos(List<ProdutoCampoIntegracaoDTO> atributos) {
+  public void setAtributos(List<ProdutoCampoSimplesIntegracaoDTO> atributos) {
     this.atributos = atributos;
   }
 
-  public ProdutoIntegracaoDTO atributos(List<ProdutoCampoIntegracaoDTO> atributos) {
+  public ProdutoIntegracaoDTO atributos(List<ProdutoCampoSimplesIntegracaoDTO> atributos) {
     this.atributos = atributos;
     return this;
   }
 
-  public ProdutoIntegracaoDTO addAtributosItem(ProdutoCampoIntegracaoDTO atributosItem) {
+  public ProdutoIntegracaoDTO addAtributosItem(ProdutoCampoSimplesIntegracaoDTO atributosItem) {
     this.atributos.add(atributosItem);
+    return this;
+  }
+
+ /**
+   * Lista de atributos multivalorados da NCM informada
+   * @return atributosMultivalorados
+  **/
+  @JsonProperty("atributosMultivalorados")
+  public List<ProdutoCampoMultivaloradoIntegracaoDTO> getAtributosMultivalorados() {
+    return atributosMultivalorados;
+  }
+
+  public void setAtributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
+    this.atributosMultivalorados = atributosMultivalorados;
+  }
+
+  public ProdutoIntegracaoDTO atributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
+    this.atributosMultivalorados = atributosMultivalorados;
+    return this;
+  }
+
+  public ProdutoIntegracaoDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
+    this.atributosMultivalorados.add(atributosMultivaloradosItem);
+    return this;
+  }
+
+ /**
+   * Lista de atributos compostos da NCM informada
+   * @return atributosCompostos
+  **/
+  @JsonProperty("atributosCompostos")
+  public List<ProdutoCampoCompostoIntegracaoDTO> getAtributosCompostos() {
+    return atributosCompostos;
+  }
+
+  public void setAtributosCompostos(List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos) {
+    this.atributosCompostos = atributosCompostos;
+  }
+
+  public ProdutoIntegracaoDTO atributosCompostos(List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos) {
+    this.atributosCompostos = atributosCompostos;
+    return this;
+  }
+
+  public ProdutoIntegracaoDTO addAtributosCompostosItem(ProdutoCampoCompostoIntegracaoDTO atributosCompostosItem) {
+    this.atributosCompostos.add(atributosCompostosItem);
+    return this;
+  }
+
+ /**
+   * Lista de atributos multivalorados compostos da NCM informada
+   * @return atributosCompostosMultivalorados
+  **/
+  @JsonProperty("atributosCompostosMultivalorados")
+  public List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> getAtributosCompostosMultivalorados() {
+    return atributosCompostosMultivalorados;
+  }
+
+  public void setAtributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
+    this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
+  }
+
+  public ProdutoIntegracaoDTO atributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
+    this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
+    return this;
+  }
+
+  public ProdutoIntegracaoDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
+    this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
     return this;
   }
 
@@ -318,12 +436,16 @@ public class ProdutoIntegracaoDTO  {
     sb.append("    seq: ").append(toIndentedString(seq)).append("\n");
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
+    sb.append("    denominacao: ").append(toIndentedString(denominacao)).append("\n");
     sb.append("    cpfCnpjRaiz: ").append(toIndentedString(cpfCnpjRaiz)).append("\n");
     sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    modalidade: ").append(toIndentedString(modalidade)).append("\n");
     sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
     sb.append("    versao: ").append(toIndentedString(versao)).append("\n");
     sb.append("    atributos: ").append(toIndentedString(atributos)).append("\n");
+    sb.append("    atributosMultivalorados: ").append(toIndentedString(atributosMultivalorados)).append("\n");
+    sb.append("    atributosCompostos: ").append(toIndentedString(atributosCompostos)).append("\n");
+    sb.append("    atributosCompostosMultivalorados: ").append(toIndentedString(atributosCompostosMultivalorados)).append("\n");
     sb.append("    codigosInterno: ").append(toIndentedString(codigosInterno)).append("\n");
     sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
     sb.append("}");

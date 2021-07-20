@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "GuiaIcmsDto", propOrder =
-    { "codigoBarrasGuia", "codigoReceita", "descricaoCodigoReceita", "geradorGuia", "numeroControle", "valorAtualizacaoMonetaria", "valorCalculado", "valorDevido", "valorJuros", "valorMulta", "valorTotal"
+    { "codigoBarrasGuia", "codigoReceita", "descricaoCodigoReceita", "geradorGuia", "linhaDigitavel", "numeroControle", "valorAtualizacaoMonetaria", "valorCalculado", "valorDevido", "valorJuros", "valorMulta", "valorTotal"
 })
 
 @XmlRootElement(name="GuiaIcmsDto")
@@ -30,7 +30,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class GuiaIcmsDto  {
   
   @XmlElement(name="codigoBarrasGuia", required = true)
-  @ApiModelProperty(example = "8581000000005010003101727430100561176269457719001", required = true, value = "Codigo de barras da guia (Portal GNRE ou do próprio Estado) <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
+  @ApiModelProperty(example = "85810000000050100031017274301005611762694577", required = true, value = "Codigo de barras da guia (Portal GNRE ou do próprio Estado) <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
  /**
    * Codigo de barras da guia (Portal GNRE ou do próprio Estado) <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
   **/
@@ -95,6 +95,13 @@ public enum GeradorGuiaEnum {
    * Responsável pela geração da guia
   **/
   private GeradorGuiaEnum geradorGuia = null;
+
+  @XmlElement(name="linhaDigitavel", required = true)
+  @ApiModelProperty(example = "85811.01725 74301.005612 17626.945772 0 00000005010003", required = true, value = "Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
+ /**
+   * Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
+  **/
+  private String linhaDigitavel = null;
 
   @XmlElement(name="numeroControle")
   @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (NossoNúmero) <br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
@@ -225,6 +232,25 @@ public enum GeradorGuiaEnum {
 
   public GuiaIcmsDto geradorGuia(GeradorGuiaEnum geradorGuia) {
     this.geradorGuia = geradorGuia;
+    return this;
+  }
+
+ /**
+   * Linha digitável para pagamento &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+   * @return linhaDigitavel
+  **/
+  @JsonProperty("linhaDigitavel")
+  @NotNull
+  public String getLinhaDigitavel() {
+    return linhaDigitavel;
+  }
+
+  public void setLinhaDigitavel(String linhaDigitavel) {
+    this.linhaDigitavel = linhaDigitavel;
+  }
+
+  public GuiaIcmsDto linhaDigitavel(String linhaDigitavel) {
+    this.linhaDigitavel = linhaDigitavel;
     return this;
   }
 
@@ -367,6 +393,7 @@ public enum GeradorGuiaEnum {
     sb.append("    codigoReceita: ").append(toIndentedString(codigoReceita)).append("\n");
     sb.append("    descricaoCodigoReceita: ").append(toIndentedString(descricaoCodigoReceita)).append("\n");
     sb.append("    geradorGuia: ").append(toIndentedString(geradorGuia)).append("\n");
+    sb.append("    linhaDigitavel: ").append(toIndentedString(linhaDigitavel)).append("\n");
     sb.append("    numeroControle: ").append(toIndentedString(numeroControle)).append("\n");
     sb.append("    valorAtualizacaoMonetaria: ").append(toIndentedString(valorAtualizacaoMonetaria)).append("\n");
     sb.append("    valorCalculado: ").append(toIndentedString(valorCalculado)).append("\n");

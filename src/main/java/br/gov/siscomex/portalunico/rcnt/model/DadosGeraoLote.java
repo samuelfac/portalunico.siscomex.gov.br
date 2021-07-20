@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosGeraoLote", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "cnpjResponsavelAnterior", "codigoRecintoOrigem", "pesoManifesto", "listaVolumesManifesto", "numeroConteiner", "identificacaoUld", "listaChassi", "navio", "iataAeronave", "prefixoAeronave", "viagem", "escala", "aeroportoOrigem", "placaSemirreboque", "listaMercadoriaPerigosa", "perecivel", "cargaSolta", "listaCameras", "observacaoRecepcao", "lotes"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaNfe", "cnpjResponsavelAnterior", "codigoRecintoOrigem", "pesoManifesto", "listaVolumesManifesto", "numeroConteiner", "identificacaoUld", "listaChassi", "navio", "iataAeronave", "prefixoAeronave", "viagem", "escala", "aeroportoOrigem", "placaSemirreboque", "listaMercadoriaPerigosa", "perecivel", "cargaSolta", "indicadorDeRemessaInternacional", "listaCameras", "observacaoRecepcao", "lotes"
 })
 
 @XmlRootElement(name="DadosGeraoLote")
@@ -219,9 +219,9 @@ public enum TipoConhecimentoEnum {
 	@JsonProperty("'TIF'")
 	TIF_(String.valueOf("'TIF'")),
 	
-	@XmlEnumValue("'BL'")
-	@JsonProperty("'BL'")
-	BL_(String.valueOf("'BL'")),
+	@XmlEnumValue("'RWB'")
+	@JsonProperty("'RWB'")
+	RWB_(String.valueOf("'RWB'")),
 	
 	@XmlEnumValue("'AWB'")
 	@JsonProperty("'AWB'")
@@ -231,25 +231,21 @@ public enum TipoConhecimentoEnum {
 	@JsonProperty("'DSIC'")
 	DSIC_(String.valueOf("'DSIC'")),
 	
-	@XmlEnumValue("'COURIER'")
-	@JsonProperty("'COURIER'")
-	COURIER_(String.valueOf("'COURIER'")),
-	
-	@XmlEnumValue("'POSTAL'")
-	@JsonProperty("'POSTAL'")
-	POSTAL_(String.valueOf("'POSTAL'")),
-	
 	@XmlEnumValue("'CTE'")
 	@JsonProperty("'CTE'")
 	CTE_(String.valueOf("'CTE'")),
 	
-	@XmlEnumValue("'CELET'")
-	@JsonProperty("'CELET'")
-	CELET_(String.valueOf("'CELET'")),
-	
 	@XmlEnumValue("'CE_MERCANTE'")
 	@JsonProperty("'CE_MERCANTE'")
-	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'"));
+	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'")),
+	
+	@XmlEnumValue("'BL'")
+	@JsonProperty("'BL'")
+	BL_(String.valueOf("'BL'")),
+	
+	@XmlEnumValue("'POSTAL'")
+	@JsonProperty("'POSTAL'")
+	POSTAL_(String.valueOf("'POSTAL'"));
 
 
     private String value;
@@ -278,9 +274,9 @@ public enum TipoConhecimentoEnum {
 }
 
   @XmlElement(name="tipoConhecimento")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
   **/
   private TipoConhecimentoEnum tipoConhecimento = null;
 
@@ -289,6 +285,14 @@ public enum TipoConhecimentoEnum {
   @Valid
   private DeclaraoAduaneira declaracaoAduaneira = null;
 
+  @XmlElement(name="listaNfe")
+  @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
+  @Valid
+ /**
+   * Lista de chaves das NFE que amparam o transporte.
+  **/
+  private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
+
   @XmlElement(name="cnpjResponsavelAnterior")
   @ApiModelProperty(example = "44444444444444", value = "CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
  /**
@@ -296,8 +300,8 @@ public enum TipoConhecimentoEnum {
   **/
   private String cnpjResponsavelAnterior = null;
 
-  @XmlElement(name="codigoRecintoOrigem", required = true)
-  @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto de origem. No modal aéreo, deve ser preenchido na troca de responsabilidade entre depositários.<br/>Tamanho: 15")
+  @XmlElement(name="codigoRecintoOrigem")
+  @ApiModelProperty(example = "1111111", value = "Código Siscomex do recinto de origem. No modal aéreo, deve ser preenchido na troca de responsabilidade entre depositários.<br/>Tamanho: 15")
  /**
    * Código Siscomex do recinto de origem. No modal aéreo, deve ser preenchido na troca de responsabilidade entre depositários.<br/>Tamanho: 15
   **/
@@ -409,6 +413,52 @@ public enum TipoConhecimentoEnum {
    * Carga Solta<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean cargaSolta = null;
+
+
+@XmlType(name="IndicadorDeRemessaInternacionalEnum")
+@XmlEnum(String.class)
+public enum IndicadorDeRemessaInternacionalEnum {
+
+	@XmlEnumValue("'E'")
+	@JsonProperty("'E'")
+	E_(String.valueOf("'E'")),
+	
+	@XmlEnumValue("'P'")
+	@JsonProperty("'P'")
+	P_(String.valueOf("'P'"));
+
+
+    private String value;
+
+    IndicadorDeRemessaInternacionalEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static IndicadorDeRemessaInternacionalEnum fromValue(String v) {
+        for (IndicadorDeRemessaInternacionalEnum b : IndicadorDeRemessaInternacionalEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorDeRemessaInternacionalEnum");
+    }
+}
+
+  @XmlElement(name="indicadorDeRemessaInternacional")
+  @ApiModelProperty(example = "E", value = "Indicador de remessa internacional expressa ou postal<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL")
+ /**
+   * Indicador de remessa internacional expressa ou postal<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL
+  **/
+  private IndicadorDeRemessaInternacionalEnum indicadorDeRemessaInternacional = null;
 
   @XmlElement(name="listaCameras")
   @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.")
@@ -679,7 +729,7 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - CRT&lt;br/&gt;TIF - TIF&lt;br/&gt;BL - BL&lt;br/&gt;AWB - AWB&lt;br/&gt;DSIC - DSIC&lt;br/&gt;COURIER - Courier&lt;br/&gt;POSTAL - Postal&lt;br/&gt;CTE - CT-e&lt;br/&gt;CELET - Conhecimento Eletrônico&lt;br&gt;CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
    * @return tipoConhecimento
   **/
   @JsonProperty("tipoConhecimento")
@@ -718,6 +768,29 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
+   * Lista de chaves das NFE que amparam o transporte.
+   * @return listaNfe
+  **/
+  @JsonProperty("listaNfe")
+  public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+    return listaNfe;
+  }
+
+  public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+  }
+
+  public DadosGeraoLote listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+    return this;
+  }
+
+  public DadosGeraoLote addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
+    this.listaNfe.add(listaNfeItem);
+    return this;
+  }
+
+ /**
    * CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
    * @return cnpjResponsavelAnterior
   **/
@@ -740,7 +813,6 @@ public enum TipoConhecimentoEnum {
    * @return codigoRecintoOrigem
   **/
   @JsonProperty("codigoRecintoOrigem")
-  @NotNull
   public String getCodigoRecintoOrigem() {
     return codigoRecintoOrigem;
   }
@@ -1040,6 +1112,27 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
+   * Indicador de remessa internacional expressa ou postal&lt;br/&gt;Domínio:&lt;br/&gt;E - EXPRESSA&lt;br/&gt;P - POSTAL
+   * @return indicadorDeRemessaInternacional
+  **/
+  @JsonProperty("indicadorDeRemessaInternacional")
+  public String getIndicadorDeRemessaInternacional() {
+    if (indicadorDeRemessaInternacional == null) {
+      return null;
+    }
+    return indicadorDeRemessaInternacional.value();
+  }
+
+  public void setIndicadorDeRemessaInternacional(IndicadorDeRemessaInternacionalEnum indicadorDeRemessaInternacional) {
+    this.indicadorDeRemessaInternacional = indicadorDeRemessaInternacional;
+  }
+
+  public DadosGeraoLote indicadorDeRemessaInternacional(IndicadorDeRemessaInternacionalEnum indicadorDeRemessaInternacional) {
+    this.indicadorDeRemessaInternacional = indicadorDeRemessaInternacional;
+    return this;
+  }
+
+ /**
    * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.
    * @return listaCameras
   **/
@@ -1124,6 +1217,7 @@ public enum TipoConhecimentoEnum {
     sb.append("    numeroConhecimento: ").append(toIndentedString(numeroConhecimento)).append("\n");
     sb.append("    tipoConhecimento: ").append(toIndentedString(tipoConhecimento)).append("\n");
     sb.append("    declaracaoAduaneira: ").append(toIndentedString(declaracaoAduaneira)).append("\n");
+    sb.append("    listaNfe: ").append(toIndentedString(listaNfe)).append("\n");
     sb.append("    cnpjResponsavelAnterior: ").append(toIndentedString(cnpjResponsavelAnterior)).append("\n");
     sb.append("    codigoRecintoOrigem: ").append(toIndentedString(codigoRecintoOrigem)).append("\n");
     sb.append("    pesoManifesto: ").append(toIndentedString(pesoManifesto)).append("\n");
@@ -1141,6 +1235,7 @@ public enum TipoConhecimentoEnum {
     sb.append("    listaMercadoriaPerigosa: ").append(toIndentedString(listaMercadoriaPerigosa)).append("\n");
     sb.append("    perecivel: ").append(toIndentedString(perecivel)).append("\n");
     sb.append("    cargaSolta: ").append(toIndentedString(cargaSolta)).append("\n");
+    sb.append("    indicadorDeRemessaInternacional: ").append(toIndentedString(indicadorDeRemessaInternacional)).append("\n");
     sb.append("    listaCameras: ").append(toIndentedString(listaCameras)).append("\n");
     sb.append("    observacaoRecepcao: ").append(toIndentedString(observacaoRecepcao)).append("\n");
     sb.append("    lotes: ").append(toIndentedString(lotes)).append("\n");

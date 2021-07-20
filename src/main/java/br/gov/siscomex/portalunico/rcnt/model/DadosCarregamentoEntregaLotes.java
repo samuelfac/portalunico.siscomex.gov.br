@@ -1,5 +1,7 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -18,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosCarregamentoEntregaLotes", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaNumeroLote", "quantidadeVolumesLote", "placaSemirreboque", "numeroConteiner", "identificacaoUld", "entregaParaCompanhiaAerea", "cnpjCompanhiaAerea", "nomeCompanhiaAerea", "iataAeronave", "prefixoAeronave", "viagem", "voo", "escala", "entregaParaPessoaFisica", "cpfRecepcao", "listaCameras"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaNfe", "listaNumeroLote", "indicadorPerdimento", "identificacaoDocumentoPerdimento", "quantidadeVolumesLote", "placaSemirreboque", "numeroConteiner", "identificacaoUld", "entregaParaCompanhiaAerea", "cnpjCompanhiaAerea", "nomeCompanhiaAerea", "iataAeronave", "prefixoAeronave", "viagem", "voo", "escala", "entregaParaPessoaFisica", "cpfRecepcao", "documentoEstrangeiro", "listaCameras"
 })
 
 @XmlRootElement(name="DadosCarregamentoEntregaLotes")
@@ -218,9 +220,9 @@ public enum TipoConhecimentoEnum {
 	@JsonProperty("'TIF'")
 	TIF_(String.valueOf("'TIF'")),
 	
-	@XmlEnumValue("'BL'")
-	@JsonProperty("'BL'")
-	BL_(String.valueOf("'BL'")),
+	@XmlEnumValue("'RWB'")
+	@JsonProperty("'RWB'")
+	RWB_(String.valueOf("'RWB'")),
 	
 	@XmlEnumValue("'AWB'")
 	@JsonProperty("'AWB'")
@@ -230,25 +232,21 @@ public enum TipoConhecimentoEnum {
 	@JsonProperty("'DSIC'")
 	DSIC_(String.valueOf("'DSIC'")),
 	
-	@XmlEnumValue("'COURIER'")
-	@JsonProperty("'COURIER'")
-	COURIER_(String.valueOf("'COURIER'")),
-	
-	@XmlEnumValue("'POSTAL'")
-	@JsonProperty("'POSTAL'")
-	POSTAL_(String.valueOf("'POSTAL'")),
-	
 	@XmlEnumValue("'CTE'")
 	@JsonProperty("'CTE'")
 	CTE_(String.valueOf("'CTE'")),
 	
-	@XmlEnumValue("'CELET'")
-	@JsonProperty("'CELET'")
-	CELET_(String.valueOf("'CELET'")),
-	
 	@XmlEnumValue("'CE_MERCANTE'")
 	@JsonProperty("'CE_MERCANTE'")
-	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'"));
+	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'")),
+	
+	@XmlEnumValue("'BL'")
+	@JsonProperty("'BL'")
+	BL_(String.valueOf("'BL'")),
+	
+	@XmlEnumValue("'POSTAL'")
+	@JsonProperty("'POSTAL'")
+	POSTAL_(String.valueOf("'POSTAL'"));
 
 
     private String value;
@@ -277,9 +275,9 @@ public enum TipoConhecimentoEnum {
 }
 
   @XmlElement(name="tipoConhecimento")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - CRT<br/>TIF - TIF<br/>BL - BL<br/>AWB - AWB<br/>DSIC - DSIC<br/>COURIER - Courier<br/>POSTAL - Postal<br/>CTE - CT-e<br/>CELET - Conhecimento Eletrônico<br>CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
   **/
   private TipoConhecimentoEnum tipoConhecimento = null;
 
@@ -288,20 +286,43 @@ public enum TipoConhecimentoEnum {
   @Valid
   private DeclaraoAduaneira declaracaoAduaneira = null;
 
-  @XmlElement(name="listaNumeroLote")
-  @ApiModelProperty(value = "Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES")
+  @XmlElement(name="listaNfe")
+  @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
   @Valid
  /**
-   * Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES
+   * Lista de chaves das NFE que amparam o transporte.
   **/
-  private List<DadosDaIdentificaoDoLote> listaNumeroLote = null;
+  private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
+
+  @XmlElement(name="listaNumeroLote", required = true)
+  @ApiModelProperty(required = true, value = "Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. Pode ser nulo quando o evento for de exclusão.")
+  @Valid
+ /**
+   * Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. Pode ser nulo quando o evento for de exclusão.
+  **/
+  private List<DadosDaIdentificaoDoLote> listaNumeroLote = new ArrayList<>();
+
+  @XmlElement(name="indicadorPerdimento")
+  @ApiModelProperty(example = "false", value = "Indica que os volumes carregados em unidade de carga ou entregues foram objeto de destinação de mercadorias em perdimento<br/>Domínio:<br/>true - Sim<br/>false - Não")
+ /**
+   * Indica que os volumes carregados em unidade de carga ou entregues foram objeto de destinação de mercadorias em perdimento<br/>Domínio:<br/>true - Sim<br/>false - Não
+  **/
+  private Boolean indicadorPerdimento = null;
+
+  @XmlElement(name="identificacaoDocumentoPerdimento")
+  @ApiModelProperty(value = " Identificação do documento ou termo que amparou o perdimento<br/>Tamanho: 100")
+ /**
+   *  Identificação do documento ou termo que amparou o perdimento<br/>Tamanho: 100
+  **/
+  private String identificacaoDocumentoPerdimento = null;
 
   @XmlElement(name="quantidadeVolumesLote")
-  @ApiModelProperty(example = "20", value = "Quantidade de volumes carregados em unidade de carga ou entregues")
+  @ApiModelProperty(value = "Quantidade de volumes carregados em unidade de carga ou entregues")
+  @Valid
  /**
    * Quantidade de volumes carregados em unidade de carga ou entregues
   **/
-  private Integer quantidadeVolumesLote = null;
+  private BigDecimal quantidadeVolumesLote = null;
 
   @XmlElement(name="placaSemirreboque")
   @ApiModelProperty(value = "Placa do semirreboque, vagão ou truck que carregou a carga.<br/>Tamanho: 50")
@@ -393,6 +414,11 @@ public enum TipoConhecimentoEnum {
    * CPF para os casos em que o recinto entrega os lotes em mãos para novo responsável pessoa física. Nessa situação não há veículo transportador.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
   **/
   private String cpfRecepcao = null;
+
+  @XmlElement(name="documentoEstrangeiro")
+  @ApiModelProperty(value = "")
+  @Valid
+  private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
 
   @XmlElement(name="listaCameras")
   @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi carregado ou entregue para companhia aérea.")
@@ -648,7 +674,7 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - CRT&lt;br/&gt;TIF - TIF&lt;br/&gt;BL - BL&lt;br/&gt;AWB - AWB&lt;br/&gt;DSIC - DSIC&lt;br/&gt;COURIER - Courier&lt;br/&gt;POSTAL - Postal&lt;br/&gt;CTE - CT-e&lt;br/&gt;CELET - Conhecimento Eletrônico&lt;br&gt;CE_MERCANTE - CE Mercante
+   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
    * @return tipoConhecimento
   **/
   @JsonProperty("tipoConhecimento")
@@ -687,10 +713,34 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
-   * Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES
+   * Lista de chaves das NFE que amparam o transporte.
+   * @return listaNfe
+  **/
+  @JsonProperty("listaNfe")
+  public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+    return listaNfe;
+  }
+
+  public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+  }
+
+  public DadosCarregamentoEntregaLotes listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+    this.listaNfe = listaNfe;
+    return this;
+  }
+
+  public DadosCarregamentoEntregaLotes addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
+    this.listaNfe.add(listaNfeItem);
+    return this;
+  }
+
+ /**
+   * Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. Pode ser nulo quando o evento for de exclusão.
    * @return listaNumeroLote
   **/
   @JsonProperty("listaNumeroLote")
+  @NotNull
   public List<DadosDaIdentificaoDoLote> getListaNumeroLote() {
     return listaNumeroLote;
   }
@@ -710,19 +760,55 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
+   * Indica que os volumes carregados em unidade de carga ou entregues foram objeto de destinação de mercadorias em perdimento&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * @return indicadorPerdimento
+  **/
+  @JsonProperty("indicadorPerdimento")
+  public Boolean isIndicadorPerdimento() {
+    return indicadorPerdimento;
+  }
+
+  public void setIndicadorPerdimento(Boolean indicadorPerdimento) {
+    this.indicadorPerdimento = indicadorPerdimento;
+  }
+
+  public DadosCarregamentoEntregaLotes indicadorPerdimento(Boolean indicadorPerdimento) {
+    this.indicadorPerdimento = indicadorPerdimento;
+    return this;
+  }
+
+ /**
+   *  Identificação do documento ou termo que amparou o perdimento&lt;br/&gt;Tamanho: 100
+   * @return identificacaoDocumentoPerdimento
+  **/
+  @JsonProperty("identificacaoDocumentoPerdimento")
+  public String getIdentificacaoDocumentoPerdimento() {
+    return identificacaoDocumentoPerdimento;
+  }
+
+  public void setIdentificacaoDocumentoPerdimento(String identificacaoDocumentoPerdimento) {
+    this.identificacaoDocumentoPerdimento = identificacaoDocumentoPerdimento;
+  }
+
+  public DadosCarregamentoEntregaLotes identificacaoDocumentoPerdimento(String identificacaoDocumentoPerdimento) {
+    this.identificacaoDocumentoPerdimento = identificacaoDocumentoPerdimento;
+    return this;
+  }
+
+ /**
    * Quantidade de volumes carregados em unidade de carga ou entregues
    * @return quantidadeVolumesLote
   **/
   @JsonProperty("quantidadeVolumesLote")
-  public Integer getQuantidadeVolumesLote() {
+  public BigDecimal getQuantidadeVolumesLote() {
     return quantidadeVolumesLote;
   }
 
-  public void setQuantidadeVolumesLote(Integer quantidadeVolumesLote) {
+  public void setQuantidadeVolumesLote(BigDecimal quantidadeVolumesLote) {
     this.quantidadeVolumesLote = quantidadeVolumesLote;
   }
 
-  public DadosCarregamentoEntregaLotes quantidadeVolumesLote(Integer quantidadeVolumesLote) {
+  public DadosCarregamentoEntregaLotes quantidadeVolumesLote(BigDecimal quantidadeVolumesLote) {
     this.quantidadeVolumesLote = quantidadeVolumesLote;
     return this;
   }
@@ -962,6 +1048,24 @@ public enum TipoConhecimentoEnum {
   }
 
  /**
+   * Get documentoEstrangeiro
+   * @return documentoEstrangeiro
+  **/
+  @JsonProperty("documentoEstrangeiro")
+  public DadosDocumentoEstrangeiro getDocumentoEstrangeiro() {
+    return documentoEstrangeiro;
+  }
+
+  public void setDocumentoEstrangeiro(DadosDocumentoEstrangeiro documentoEstrangeiro) {
+    this.documentoEstrangeiro = documentoEstrangeiro;
+  }
+
+  public DadosCarregamentoEntregaLotes documentoEstrangeiro(DadosDocumentoEstrangeiro documentoEstrangeiro) {
+    this.documentoEstrangeiro = documentoEstrangeiro;
+    return this;
+  }
+
+ /**
    * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi carregado ou entregue para companhia aérea.
    * @return listaCameras
   **/
@@ -1005,7 +1109,10 @@ public enum TipoConhecimentoEnum {
     sb.append("    numeroConhecimento: ").append(toIndentedString(numeroConhecimento)).append("\n");
     sb.append("    tipoConhecimento: ").append(toIndentedString(tipoConhecimento)).append("\n");
     sb.append("    declaracaoAduaneira: ").append(toIndentedString(declaracaoAduaneira)).append("\n");
+    sb.append("    listaNfe: ").append(toIndentedString(listaNfe)).append("\n");
     sb.append("    listaNumeroLote: ").append(toIndentedString(listaNumeroLote)).append("\n");
+    sb.append("    indicadorPerdimento: ").append(toIndentedString(indicadorPerdimento)).append("\n");
+    sb.append("    identificacaoDocumentoPerdimento: ").append(toIndentedString(identificacaoDocumentoPerdimento)).append("\n");
     sb.append("    quantidadeVolumesLote: ").append(toIndentedString(quantidadeVolumesLote)).append("\n");
     sb.append("    placaSemirreboque: ").append(toIndentedString(placaSemirreboque)).append("\n");
     sb.append("    numeroConteiner: ").append(toIndentedString(numeroConteiner)).append("\n");
@@ -1020,6 +1127,7 @@ public enum TipoConhecimentoEnum {
     sb.append("    escala: ").append(toIndentedString(escala)).append("\n");
     sb.append("    entregaParaPessoaFisica: ").append(toIndentedString(entregaParaPessoaFisica)).append("\n");
     sb.append("    cpfRecepcao: ").append(toIndentedString(cpfRecepcao)).append("\n");
+    sb.append("    documentoEstrangeiro: ").append(toIndentedString(documentoEstrangeiro)).append("\n");
     sb.append("    listaCameras: ").append(toIndentedString(listaCameras)).append("\n");
     sb.append("}");
     return sb.toString();

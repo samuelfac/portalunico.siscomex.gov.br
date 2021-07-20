@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Endereco", propOrder =
-    { "bairro", "cep", "logradouro", "municipio", "uf"
+    { "logradouro", "bairro", "municipio", "cep", "uf"
 })
 
 @XmlRootElement(name="Endereco")
@@ -24,26 +24,19 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Endereço de uma pessoa física/jurídica")
 public class Endereco  {
   
-  @XmlElement(name="bairro")
-  @ApiModelProperty(example = "Centro", value = "Nome do bairro")
- /**
-   * Nome do bairro
-  **/
-  private String bairro = null;
-
-  @XmlElement(name="cep")
-  @ApiModelProperty(example = "99999-999", value = "Código CEP com máscara<br>Tamanho mínimo: 9<br>Tamanho máximo: 9<br>Formato: NNNNN-NNN")
- /**
-   * Código CEP com máscara<br>Tamanho mínimo: 9<br>Tamanho máximo: 9<br>Formato: NNNNN-NNN
-  **/
-  private String cep = null;
-
   @XmlElement(name="logradouro", required = true)
   @ApiModelProperty(example = "Rua das Acácias, 123", required = true, value = "Descrição do logradouro, com número")
  /**
    * Descrição do logradouro, com número
   **/
   private String logradouro = null;
+
+  @XmlElement(name="bairro")
+  @ApiModelProperty(example = "Centro", value = "Nome do bairro")
+ /**
+   * Nome do bairro
+  **/
+  private String bairro = null;
 
   @XmlElement(name="municipio")
   @ApiModelProperty(example = "Florianópolis", value = "Nome do município")
@@ -52,48 +45,19 @@ public class Endereco  {
   **/
   private String municipio = null;
 
+  @XmlElement(name="cep")
+  @ApiModelProperty(example = "99999-999", value = "Código CEP com máscara<br>Tamanho mínimo: 9<br>Tamanho máximo: 9<br>Formato: NNNNN-NNN")
+ /**
+   * Código CEP com máscara<br>Tamanho mínimo: 9<br>Tamanho máximo: 9<br>Formato: NNNNN-NNN
+  **/
+  private String cep = null;
+
   @XmlElement(name="uf")
   @ApiModelProperty(example = "SC", value = "Sigla de unidade federativa<br>Tamanho mínimo: 2<br>Tamanho máximo: 2")
  /**
    * Sigla de unidade federativa<br>Tamanho mínimo: 2<br>Tamanho máximo: 2
   **/
   private String uf = null;
- /**
-   * Nome do bairro
-   * @return bairro
-  **/
-  @JsonProperty("bairro")
-  public String getBairro() {
-    return bairro;
-  }
-
-  public void setBairro(String bairro) {
-    this.bairro = bairro;
-  }
-
-  public Endereco bairro(String bairro) {
-    this.bairro = bairro;
-    return this;
-  }
-
- /**
-   * Código CEP com máscara&lt;br&gt;Tamanho mínimo: 9&lt;br&gt;Tamanho máximo: 9&lt;br&gt;Formato: NNNNN-NNN
-   * @return cep
-  **/
-  @JsonProperty("cep")
-  public String getCep() {
-    return cep;
-  }
-
-  public void setCep(String cep) {
-    this.cep = cep;
-  }
-
-  public Endereco cep(String cep) {
-    this.cep = cep;
-    return this;
-  }
-
  /**
    * Descrição do logradouro, com número
    * @return logradouro
@@ -114,6 +78,24 @@ public class Endereco  {
   }
 
  /**
+   * Nome do bairro
+   * @return bairro
+  **/
+  @JsonProperty("bairro")
+  public String getBairro() {
+    return bairro;
+  }
+
+  public void setBairro(String bairro) {
+    this.bairro = bairro;
+  }
+
+  public Endereco bairro(String bairro) {
+    this.bairro = bairro;
+    return this;
+  }
+
+ /**
    * Nome do município
    * @return municipio
   **/
@@ -128,6 +110,24 @@ public class Endereco  {
 
   public Endereco municipio(String municipio) {
     this.municipio = municipio;
+    return this;
+  }
+
+ /**
+   * Código CEP com máscara&lt;br&gt;Tamanho mínimo: 9&lt;br&gt;Tamanho máximo: 9&lt;br&gt;Formato: NNNNN-NNN
+   * @return cep
+  **/
+  @JsonProperty("cep")
+  public String getCep() {
+    return cep;
+  }
+
+  public void setCep(String cep) {
+    this.cep = cep;
+  }
+
+  public Endereco cep(String cep) {
+    this.cep = cep;
     return this;
   }
 
@@ -155,10 +155,10 @@ public class Endereco  {
     StringBuilder sb = new StringBuilder();
     sb.append("class Endereco {\n");
     
-    sb.append("    bairro: ").append(toIndentedString(bairro)).append("\n");
-    sb.append("    cep: ").append(toIndentedString(cep)).append("\n");
     sb.append("    logradouro: ").append(toIndentedString(logradouro)).append("\n");
+    sb.append("    bairro: ").append(toIndentedString(bairro)).append("\n");
     sb.append("    municipio: ").append(toIndentedString(municipio)).append("\n");
+    sb.append("    cep: ").append(toIndentedString(cep)).append("\n");
     sb.append("    uf: ").append(toIndentedString(uf)).append("\n");
     sb.append("}");
     return sb.toString();

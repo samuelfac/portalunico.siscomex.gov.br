@@ -1,5 +1,6 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosRepresentante", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "cpfRepresentante", "cnpjRepresentante", "nomeRepresentante", "cpfRepresentado", "cnpjRepresentado", "nomeRepresentado", "dataHoraInicioValidade", "dataHoraFimValidade", "motivo"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "cpfRepresentante", "cnpjRepresentante", "documentoEstrangeiroRepresentante", "nomeRepresentante", "cpfRepresentado", "cnpjRepresentado", "nomeRepresentado", "documentoEstrangeiroRepresentado", "dataHoraInicioValidade", "dataHoraFimValidade", "motivo"
 })
 
 @XmlRootElement(name="DadosRepresentante")
@@ -141,6 +142,11 @@ public enum TipoOperacaoEnum {
   **/
   private String cnpjRepresentante = null;
 
+  @XmlElement(name="documentoEstrangeiroRepresentante")
+  @ApiModelProperty(value = "")
+  @Valid
+  private DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante = null;
+
   @XmlElement(name="nomeRepresentante")
   @ApiModelProperty(value = "Nome Representante<br/>Tamanho: 100")
  /**
@@ -168,6 +174,11 @@ public enum TipoOperacaoEnum {
    * Nome do representado<br/>Tamanho: 100
   **/
   private String nomeRepresentado = null;
+
+  @XmlElement(name="documentoEstrangeiroRepresentado")
+  @ApiModelProperty(value = "")
+  @Valid
+  private DadosDocumentoEstrangeiro documentoEstrangeiroRepresentado = null;
 
   @XmlElement(name="dataHoraInicioValidade")
   @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data Início representação<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -397,6 +408,24 @@ public enum TipoOperacaoEnum {
   }
 
  /**
+   * Get documentoEstrangeiroRepresentante
+   * @return documentoEstrangeiroRepresentante
+  **/
+  @JsonProperty("documentoEstrangeiroRepresentante")
+  public DadosDocumentoEstrangeiro getDocumentoEstrangeiroRepresentante() {
+    return documentoEstrangeiroRepresentante;
+  }
+
+  public void setDocumentoEstrangeiroRepresentante(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante) {
+    this.documentoEstrangeiroRepresentante = documentoEstrangeiroRepresentante;
+  }
+
+  public DadosRepresentante documentoEstrangeiroRepresentante(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante) {
+    this.documentoEstrangeiroRepresentante = documentoEstrangeiroRepresentante;
+    return this;
+  }
+
+ /**
    * Nome Representante&lt;br/&gt;Tamanho: 100
    * @return nomeRepresentante
   **/
@@ -465,6 +494,24 @@ public enum TipoOperacaoEnum {
 
   public DadosRepresentante nomeRepresentado(String nomeRepresentado) {
     this.nomeRepresentado = nomeRepresentado;
+    return this;
+  }
+
+ /**
+   * Get documentoEstrangeiroRepresentado
+   * @return documentoEstrangeiroRepresentado
+  **/
+  @JsonProperty("documentoEstrangeiroRepresentado")
+  public DadosDocumentoEstrangeiro getDocumentoEstrangeiroRepresentado() {
+    return documentoEstrangeiroRepresentado;
+  }
+
+  public void setDocumentoEstrangeiroRepresentado(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentado) {
+    this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
+  }
+
+  public DadosRepresentante documentoEstrangeiroRepresentado(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentado) {
+    this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
     return this;
   }
 
@@ -539,10 +586,12 @@ public enum TipoOperacaoEnum {
     sb.append("    codigoRecinto: ").append(toIndentedString(codigoRecinto)).append("\n");
     sb.append("    cpfRepresentante: ").append(toIndentedString(cpfRepresentante)).append("\n");
     sb.append("    cnpjRepresentante: ").append(toIndentedString(cnpjRepresentante)).append("\n");
+    sb.append("    documentoEstrangeiroRepresentante: ").append(toIndentedString(documentoEstrangeiroRepresentante)).append("\n");
     sb.append("    nomeRepresentante: ").append(toIndentedString(nomeRepresentante)).append("\n");
     sb.append("    cpfRepresentado: ").append(toIndentedString(cpfRepresentado)).append("\n");
     sb.append("    cnpjRepresentado: ").append(toIndentedString(cnpjRepresentado)).append("\n");
     sb.append("    nomeRepresentado: ").append(toIndentedString(nomeRepresentado)).append("\n");
+    sb.append("    documentoEstrangeiroRepresentado: ").append(toIndentedString(documentoEstrangeiroRepresentado)).append("\n");
     sb.append("    dataHoraInicioValidade: ").append(toIndentedString(dataHoraInicioValidade)).append("\n");
     sb.append("    dataHoraFimValidade: ").append(toIndentedString(dataHoraFimValidade)).append("\n");
     sb.append("    motivo: ").append(toIndentedString(motivo)).append("\n");

@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ModeloLpcoResumido", propOrder =
-    { "codigo", "nome"
+    { "codigo", "nome", "preenchimento"
 })
 
 @XmlRootElement(name="ModeloLpcoResumido")
@@ -37,6 +37,13 @@ public class ModeloLpcoResumido  {
    * Nome do modelo de LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 100
   **/
   private String nome = null;
+
+  @XmlElement(name="preenchimento", required = true)
+  @ApiModelProperty(required = true, value = "Forma de preenchimento do modelo, se pelo importador/exportador, de ofício, ou ambos.")
+ /**
+   * Forma de preenchimento do modelo, se pelo importador/exportador, de ofício, ou ambos.
+  **/
+  private String preenchimento = null;
  /**
    * Código do modelo de LPCO&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do LPCO no ano
    * @return codigo
@@ -75,6 +82,25 @@ public class ModeloLpcoResumido  {
     return this;
   }
 
+ /**
+   * Forma de preenchimento do modelo, se pelo importador/exportador, de ofício, ou ambos.
+   * @return preenchimento
+  **/
+  @JsonProperty("preenchimento")
+  @NotNull
+  public String getPreenchimento() {
+    return preenchimento;
+  }
+
+  public void setPreenchimento(String preenchimento) {
+    this.preenchimento = preenchimento;
+  }
+
+  public ModeloLpcoResumido preenchimento(String preenchimento) {
+    this.preenchimento = preenchimento;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -83,6 +109,7 @@ public class ModeloLpcoResumido  {
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
+    sb.append("    preenchimento: ").append(toIndentedString(preenchimento)).append("\n");
     sb.append("}");
     return sb.toString();
   }

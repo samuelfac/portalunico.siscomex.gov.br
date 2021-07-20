@@ -1,7 +1,9 @@
 package br.gov.siscomex.portalunico.catp.model;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,14 +13,19 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "OperadorEstrangeiroIntegracaoDTO", propOrder =
-    { "seq", "cpfCnpjRaiz", "codigo", "versao", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "dataReferencia"
+    { "seq", "cpfCnpjRaiz", "codigo", "versao", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "email", "dataReferencia", "agenciasEmissoras"
 })
 
 @XmlRootElement(name="OperadorEstrangeiroIntegracaoDTO")
+/**
+  * Retorna os dados de uma versão do operador estrangeiro.
+ **/
+@ApiModel(description="Retorna os dados de uma versão do operador estrangeiro.")
 public class OperadorEstrangeiroIntegracaoDTO  {
   
   @XmlElement(name="seq", required = true)
@@ -105,12 +112,27 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   **/
   private String codigoInterno = null;
 
+  @XmlElement(name="email")
+  @ApiModelProperty(example = "email@email.com", value = "E-mail do Operador Estrangeiro<br>Tamanho: 70")
+ /**
+   * E-mail do Operador Estrangeiro<br>Tamanho: 70
+  **/
+  private String email = null;
+
   @XmlElement(name="dataReferencia")
   @ApiModelProperty(value = "Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'")
  /**
    * Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'
   **/
   private OffsetDateTime dataReferencia = null;
+
+  @XmlElement(name="agenciasEmissoras")
+  @ApiModelProperty(value = "Lista de códigos de Agências Emissoras<br>Tamanho: 3")
+  @Valid
+ /**
+   * Lista de códigos de Agências Emissoras<br>Tamanho: 3
+  **/
+  private List<AgenciaEmissoraIntegracaoDTO> agenciasEmissoras = null;
  /**
    * Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial &lt;br&gt;Tamanho máximo: 3&lt;br&gt;Formato: Inteiro, com até 3 digitos
    * @return seq
@@ -335,6 +357,24 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   }
 
  /**
+   * E-mail do Operador Estrangeiro&lt;br&gt;Tamanho: 70
+   * @return email
+  **/
+  @JsonProperty("email")
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO email(String email) {
+    this.email = email;
+    return this;
+  }
+
+ /**
    * Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
    * @return dataReferencia
   **/
@@ -349,6 +389,29 @@ public class OperadorEstrangeiroIntegracaoDTO  {
 
   public OperadorEstrangeiroIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
     this.dataReferencia = dataReferencia;
+    return this;
+  }
+
+ /**
+   * Lista de códigos de Agências Emissoras&lt;br&gt;Tamanho: 3
+   * @return agenciasEmissoras
+  **/
+  @JsonProperty("agenciasEmissoras")
+  public List<AgenciaEmissoraIntegracaoDTO> getAgenciasEmissoras() {
+    return agenciasEmissoras;
+  }
+
+  public void setAgenciasEmissoras(List<AgenciaEmissoraIntegracaoDTO> agenciasEmissoras) {
+    this.agenciasEmissoras = agenciasEmissoras;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO agenciasEmissoras(List<AgenciaEmissoraIntegracaoDTO> agenciasEmissoras) {
+    this.agenciasEmissoras = agenciasEmissoras;
+    return this;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO addAgenciasEmissorasItem(AgenciaEmissoraIntegracaoDTO agenciasEmissorasItem) {
+    this.agenciasEmissoras.add(agenciasEmissorasItem);
     return this;
   }
 
@@ -370,7 +433,9 @@ public class OperadorEstrangeiroIntegracaoDTO  {
     sb.append("    codigoPais: ").append(toIndentedString(codigoPais)).append("\n");
     sb.append("    cep: ").append(toIndentedString(cep)).append("\n");
     sb.append("    codigoInterno: ").append(toIndentedString(codigoInterno)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
+    sb.append("    agenciasEmissoras: ").append(toIndentedString(agenciasEmissoras)).append("\n");
     sb.append("}");
     return sb.toString();
   }

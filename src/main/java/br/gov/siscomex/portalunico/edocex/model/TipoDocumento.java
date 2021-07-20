@@ -29,7 +29,7 @@ public class TipoDocumento  {
  /**
    * Id do tipo de documento.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
   **/
-  private Integer idTipoDocumento = null;
+  private Long idTipoDocumento = null;
 
   @XmlElement(name="nomeTipoDocumento", required = true)
   @ApiModelProperty(example = "Fatura Comercial", required = true, value = "Nome do tipo de documento.<br/>Tamanho máximo: 255")
@@ -43,15 +43,15 @@ public class TipoDocumento  {
   **/
   @JsonProperty("idTipoDocumento")
   @NotNull
-  public Integer getIdTipoDocumento() {
+  public Long getIdTipoDocumento() {
     return idTipoDocumento;
   }
 
-  public void setIdTipoDocumento(Integer idTipoDocumento) {
+  public void setIdTipoDocumento(Long idTipoDocumento) {
     this.idTipoDocumento = idTipoDocumento;
   }
 
-  public TipoDocumento idTipoDocumento(Integer idTipoDocumento) {
+  public TipoDocumento idTipoDocumento(Long idTipoDocumento) {
     this.idTipoDocumento = idTipoDocumento;
     return this;
   }

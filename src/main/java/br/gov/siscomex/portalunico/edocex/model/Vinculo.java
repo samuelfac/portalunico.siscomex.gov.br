@@ -23,9 +23,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlRootElement(name="Vinculo")
 /**
-  * Vinculo do dossiê.
+  * Vinculo do dossiê  com operação.
  **/
-@ApiModel(description="Vinculo do dossiê.")
+@ApiModel(description="Vinculo do dossiê  com operação.")
 public class Vinculo  {
   
   @XmlElement(name="cpfVinculacao", required = true)
@@ -66,22 +66,6 @@ public enum TipoOperacaoEnum {
 	@JsonProperty("RE")
 	RE(String.valueOf("RE")),
 	
-	@XmlEnumValue("LPCO")
-	@JsonProperty("LPCO")
-	LPCO(String.valueOf("LPCO")),
-	
-	@XmlEnumValue("DUE")
-	@JsonProperty("DUE")
-	DUE(String.valueOf("DUE")),
-	
-	@XmlEnumValue("CATP")
-	@JsonProperty("CATP")
-	CATP(String.valueOf("CATP")),
-	
-	@XmlEnumValue("DUIMP")
-	@JsonProperty("DUIMP")
-	DUIMP(String.valueOf("DUIMP")),
-	
 	@XmlEnumValue("DT")
 	@JsonProperty("DT")
 	DT(String.valueOf("DT")),
@@ -89,6 +73,22 @@ public enum TipoOperacaoEnum {
 	@XmlEnumValue("DIR")
 	@JsonProperty("DIR")
 	DIR(String.valueOf("DIR")),
+	
+	@XmlEnumValue("CATP")
+	@JsonProperty("CATP")
+	CATP(String.valueOf("CATP")),
+	
+	@XmlEnumValue("DUE")
+	@JsonProperty("DUE")
+	DUE(String.valueOf("DUE")),
+	
+	@XmlEnumValue("DUIMP")
+	@JsonProperty("DUIMP")
+	DUIMP(String.valueOf("DUIMP")),
+	
+	@XmlEnumValue("LPCO")
+	@JsonProperty("LPCO")
+	LPCO(String.valueOf("LPCO")),
 	
 	@XmlEnumValue("RECINTOS")
 	@JsonProperty("RECINTOS")
@@ -121,9 +121,9 @@ public enum TipoOperacaoEnum {
 }
 
   @XmlElement(name="tipoOperacao", required = true)
-  @ApiModelProperty(example = "DUE", required = true, value = "Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação,<br/>LI - Licença de Importação,<br/>RE - Registro de Exportação,<br/>LPCO - Tratamento Administrativo/LPCO,<br/>DUE - Declaração Única de Exportação,<br/>CATP - Catálogo de Produtos,<br/>DUIMP - Declaração Única de Importação,<br/>DT - Declaração de Trânsito,<br/>DIR - Declaração de Importação de Remessa</br>RECINTOS - Recintos Aduaneiros")
+  @ApiModelProperty(example = "DUE", required = true, value = "Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>RECINTOS - Recintos Aduaneiros")
  /**
-   * Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação,<br/>LI - Licença de Importação,<br/>RE - Registro de Exportação,<br/>LPCO - Tratamento Administrativo/LPCO,<br/>DUE - Declaração Única de Exportação,<br/>CATP - Catálogo de Produtos,<br/>DUIMP - Declaração Única de Importação,<br/>DT - Declaração de Trânsito,<br/>DIR - Declaração de Importação de Remessa</br>RECINTOS - Recintos Aduaneiros
+   * Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>RECINTOS - Recintos Aduaneiros
   **/
   private TipoOperacaoEnum tipoOperacao = null;
 
@@ -229,7 +229,7 @@ public enum VinculadoPorEnum {
   }
 
  /**
-   * Identifica o tipo de operação desejado:&lt;br/&gt;DI - Declaração de Importação,&lt;br/&gt;LI - Licença de Importação,&lt;br/&gt;RE - Registro de Exportação,&lt;br/&gt;LPCO - Tratamento Administrativo/LPCO,&lt;br/&gt;DUE - Declaração Única de Exportação,&lt;br/&gt;CATP - Catálogo de Produtos,&lt;br/&gt;DUIMP - Declaração Única de Importação,&lt;br/&gt;DT - Declaração de Trânsito,&lt;br/&gt;DIR - Declaração de Importação de Remessa&lt;/br&gt;RECINTOS - Recintos Aduaneiros
+   * Identifica o tipo de operação desejado:&lt;br/&gt;DI - Declaração de Importação&lt;br/&gt;LI - Licença de Importação&lt;br/&gt;RE - Registro de Exportação&lt;br/&gt;DT - Declaração de Trânsito&lt;br/&gt;DIR - Declaração de Importação de Remessa&lt;br/&gt;CATP - Catálogo de Produtos&lt;br/&gt;DUE - Declaração Única de Exportação&lt;br/&gt;DUIMP - Declaração Única de Importação,&lt;br/&gt;LPCO - Tratamento Administrativo/LPCO&lt;br/&gt;RECINTOS - Recintos Aduaneiros
    * @return tipoOperacao
   **/
   @JsonProperty("tipoOperacao")

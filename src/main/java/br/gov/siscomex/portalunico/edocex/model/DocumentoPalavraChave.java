@@ -25,9 +25,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class DocumentoPalavraChave  {
   
   @XmlElement(name="conteudoPalavraChave", required = true)
-  @ApiModelProperty(example = "1.000,00", required = true, value = "Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato: conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO)")
+  @ApiModelProperty(example = "1.000,00", required = true, value = "Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss<br/>Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)<br/>Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)")
  /**
-   * Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato: conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO)
+   * Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss<br/>Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)<br/>Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)
   **/
   private String conteudoPalavraChave = null;
 
@@ -45,7 +45,7 @@ public class DocumentoPalavraChave  {
   **/
   private String nomePalavraChave = null;
  /**
-   * Conteúdo informado para a palavra-chave.&lt;br/&gt;Tamanho máximo: 255&lt;br/&gt;Formato: conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO)
+   * Conteúdo informado para a palavra-chave.&lt;br/&gt;Tamanho máximo: 255&lt;br/&gt;Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):&lt;br/&gt;Formato TEXTO: conforme máscara definida para a palavra-chave&lt;br/&gt;Formato DATA: dd/MM/yyyy&lt;br/&gt;Formato DATA_HORA: dd/MM/yyyy HH:mm:ss&lt;br/&gt;Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)&lt;br/&gt;Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)
    * @return conteudoPalavraChave
   **/
   @JsonProperty("conteudoPalavraChave")

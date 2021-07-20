@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosCredenciamentoVeculo", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "placa", "marca", "modelo", "ano", "capacidadeTanqueCombustivel", "satelite", "cnpjResponsavel", "cpfResponsavel", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "credenciamentoAtivo"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "placa", "marca", "modelo", "ano", "capacidadeTanqueCombustivel", "satelite", "cnpjResponsavel", "cpfResponsavel", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "credenciamentoAtivo", "motivacao"
 })
 
 @XmlRootElement(name="DadosCredenciamentoVeculo")
@@ -127,10 +127,10 @@ public enum TipoOperacaoEnum {
   **/
   private String codigoRecinto = null;
 
-  @XmlElement(name="placa")
-  @ApiModelProperty(value = "Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão)<br/>Tamanho: 50")
+  @XmlElement(name="placa", required = true)
+  @ApiModelProperty(required = true, value = "Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
  /**
-   * Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão)<br/>Tamanho: 50
+   * Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
   **/
   private String placa = null;
 
@@ -224,6 +224,13 @@ public enum TipoOperacaoEnum {
    * Credenciamento Ativo. [S/N]?<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean credenciamentoAtivo = null;
+
+  @XmlElement(name="motivacao")
+  @ApiModelProperty(value = "Motivação do credenciamento<br/>Tamanho: 100")
+ /**
+   * Motivação do credenciamento<br/>Tamanho: 100
+  **/
+  private String motivacao = null;
  /**
    * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
    * @return tipoOperacao
@@ -396,10 +403,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão)&lt;br/&gt;Tamanho: 50
+   * Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")
+  @NotNull
   public String getPlaca() {
     return placa;
   }
@@ -647,6 +655,24 @@ public enum TipoOperacaoEnum {
     return this;
   }
 
+ /**
+   * Motivação do credenciamento&lt;br/&gt;Tamanho: 100
+   * @return motivacao
+  **/
+  @JsonProperty("motivacao")
+  public String getMotivacao() {
+    return motivacao;
+  }
+
+  public void setMotivacao(String motivacao) {
+    this.motivacao = motivacao;
+  }
+
+  public DadosCredenciamentoVeculo motivacao(String motivacao) {
+    this.motivacao = motivacao;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -676,6 +702,7 @@ public enum TipoOperacaoEnum {
     sb.append("    horaPrevistaSaida: ").append(toIndentedString(horaPrevistaSaida)).append("\n");
     sb.append("    areas: ").append(toIndentedString(areas)).append("\n");
     sb.append("    credenciamentoAtivo: ").append(toIndentedString(credenciamentoAtivo)).append("\n");
+    sb.append("    motivacao: ").append(toIndentedString(motivacao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

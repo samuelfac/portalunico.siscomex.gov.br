@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CampoFormulario", propOrder =
-    { "codigo", "nome", "tipo", "unidadeMedida", "validacao"
+    { "codigo", "nome", "unidadeMedida", "tipo", "validacao"
 })
 
 @XmlRootElement(name="CampoFormulario")
@@ -244,9 +244,9 @@ public enum CodigoEnum {
 	@JsonProperty("EXPORTADOR_ESTRANGEIRO")
 	EXPORTADOR_ESTRANGEIRO(String.valueOf("EXPORTADOR_ESTRANGEIRO")),
 	
-	@XmlEnumValue("UNIDADE_LOCALIZACAO_CARGA")
-	@JsonProperty("UNIDADE_LOCALIZACAO_CARGA")
-	UNIDADE_LOCALIZACAO_CARGA(String.valueOf("UNIDADE_LOCALIZACAO_CARGA")),
+	@XmlEnumValue("UNIDADE_DESPACHO")
+	@JsonProperty("UNIDADE_DESPACHO")
+	UNIDADE_DESPACHO(String.valueOf("UNIDADE_DESPACHO")),
 	
 	@XmlEnumValue("UNIDADE_ENTRADA_DESCARGA")
 	@JsonProperty("UNIDADE_ENTRADA_DESCARGA")
@@ -271,6 +271,14 @@ public enum CodigoEnum {
 	@XmlEnumValue("FUNDAMENTO_LEGAL")
 	@JsonProperty("FUNDAMENTO_LEGAL")
 	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL")),
+	
+	@XmlEnumValue("QTDE_COTA")
+	@JsonProperty("QTDE_COTA")
+	QTDE_COTA(String.valueOf("QTDE_COTA")),
+	
+	@XmlEnumValue("ATRIBUTO_COMPOSTO")
+	@JsonProperty("ATRIBUTO_COMPOSTO")
+	ATRIBUTO_COMPOSTO(String.valueOf("ATRIBUTO_COMPOSTO")),
 	
 	@XmlEnumValue("ATT_<número>")
 	@JsonProperty("ATT_<número>")
@@ -315,6 +323,13 @@ public enum CodigoEnum {
    * Nome descritivo do campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40
   **/
   private String nome = null;
+
+  @XmlElement(name="unidadeMedida")
+  @ApiModelProperty(example = "KG", value = "Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60")
+ /**
+   * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60
+  **/
+  private String unidadeMedida = null;
 
 
 @XmlType(name="TipoEnum")
@@ -379,7 +394,11 @@ public enum TipoEnum {
 	
 	@XmlEnumValue("FUNDAMENTO_LEGAL")
 	@JsonProperty("FUNDAMENTO_LEGAL")
-	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL"));
+	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL")),
+	
+	@XmlEnumValue("ATRIBUTO_COMPOSTO")
+	@JsonProperty("ATRIBUTO_COMPOSTO")
+	ATRIBUTO_COMPOSTO(String.valueOf("ATRIBUTO_COMPOSTO"));
 
 
     private String value;
@@ -413,13 +432,6 @@ public enum TipoEnum {
    * Tipo da informação recebida pelo campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40
   **/
   private TipoEnum tipo = null;
-
-  @XmlElement(name="unidadeMedida")
-  @ApiModelProperty(example = "KG", value = "Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60")
- /**
-   * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60
-  **/
-  private String unidadeMedida = null;
 
   @XmlElement(name="validacao", required = true)
   @ApiModelProperty(required = true, value = "")
@@ -467,6 +479,24 @@ public enum TipoEnum {
   }
 
  /**
+   * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 60
+   * @return unidadeMedida
+  **/
+  @JsonProperty("unidadeMedida")
+  public String getUnidadeMedida() {
+    return unidadeMedida;
+  }
+
+  public void setUnidadeMedida(String unidadeMedida) {
+    this.unidadeMedida = unidadeMedida;
+  }
+
+  public CampoFormulario unidadeMedida(String unidadeMedida) {
+    this.unidadeMedida = unidadeMedida;
+    return this;
+  }
+
+ /**
    * Tipo da informação recebida pelo campo&lt;br&gt;Tamanho mínimo: 1 &lt;br&gt;Tamanho máximo: 40
    * @return tipo
   **/
@@ -485,24 +515,6 @@ public enum TipoEnum {
 
   public CampoFormulario tipo(TipoEnum tipo) {
     this.tipo = tipo;
-    return this;
-  }
-
- /**
-   * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 60
-   * @return unidadeMedida
-  **/
-  @JsonProperty("unidadeMedida")
-  public String getUnidadeMedida() {
-    return unidadeMedida;
-  }
-
-  public void setUnidadeMedida(String unidadeMedida) {
-    this.unidadeMedida = unidadeMedida;
-  }
-
-  public CampoFormulario unidadeMedida(String unidadeMedida) {
-    this.unidadeMedida = unidadeMedida;
     return this;
   }
 
@@ -533,8 +545,8 @@ public enum TipoEnum {
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
-    sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    unidadeMedida: ").append(toIndentedString(unidadeMedida)).append("\n");
+    sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    validacao: ").append(toIndentedString(validacao)).append("\n");
     sb.append("}");
     return sb.toString();

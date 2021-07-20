@@ -127,17 +127,17 @@ public enum TipoOperacaoEnum {
   **/
   private String codigoRecinto = null;
 
-  @XmlElement(name="equipamento")
-  @ApiModelProperty(value = "Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível.<br/>Tamanho: 36")
+  @XmlElement(name="equipamento", required = true)
+  @ApiModelProperty(required = true, value = "Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
  /**
-   * Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível.<br/>Tamanho: 36
+   * Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
   **/
   private String equipamento = null;
 
-  @XmlElement(name="disponivel")
-  @ApiModelProperty(example = "false", value = "Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="disponivel", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean disponivel = null;
 
@@ -326,10 +326,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível.&lt;br/&gt;Tamanho: 36
+   * Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
    * @return equipamento
   **/
   @JsonProperty("equipamento")
+  @NotNull
   public String getEquipamento() {
     return equipamento;
   }
@@ -344,10 +345,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return disponivel
   **/
   @JsonProperty("disponivel")
+  @NotNull
   public Boolean isDisponivel() {
     return disponivel;
   }

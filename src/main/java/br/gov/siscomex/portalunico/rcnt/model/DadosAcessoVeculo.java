@@ -169,10 +169,10 @@ public enum OperacaoEnum {
     }
 }
 
-  @XmlElement(name="operacao")
-  @ApiModelProperty(example = "C", value = "Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso).<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso")
+  @XmlElement(name="operacao", required = true)
+  @ApiModelProperty(example = "C", required = true, value = "Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso")
  /**
-   * Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso).<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso
+   * Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso
   **/
   private OperacaoEnum operacao = null;
 
@@ -215,10 +215,10 @@ public enum DirecaoEnum {
     }
 }
 
-  @XmlElement(name="direcao")
-  @ApiModelProperty(example = "E", value = "Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo.<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
+  @XmlElement(name="direcao", required = true)
+  @ApiModelProperty(example = "E", required = true, value = "Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
  /**
-   * Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo.<br/>Domínio:<br/>E - Entrada<br/>S - Saída
+   * Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída
   **/
   private DirecaoEnum direcao = null;
 
@@ -253,10 +253,10 @@ public enum DirecaoEnum {
   private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
 
   @XmlElement(name="listaNfe")
-  @ApiModelProperty(value = "Lista de chaves das NF-e que amparam a carga.")
+  @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
   @Valid
  /**
-   * Lista de chaves das NF-e que amparam a carga.
+   * Lista de chaves das NFE que amparam o transporte.
   **/
   private List<DadosDaNotaFiscal> listaNfe = null;
 
@@ -346,10 +346,10 @@ public enum TipoGranelEnum {
   **/
   private List<DadosDoChassi> listaChassi = null;
 
-  @XmlElement(name="placa")
-  @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50")
+  @XmlElement(name="placa", required = true)
+  @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
   **/
   private String placa = null;
 
@@ -673,10 +673,11 @@ public enum ModalEnum {
   }
 
  /**
-   * Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso).&lt;br/&gt;Domínio:&lt;br/&gt;G - Agendamento&lt;br/&gt;C - Acesso
+   * Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;G - Agendamento&lt;br/&gt;C - Acesso
    * @return operacao
   **/
   @JsonProperty("operacao")
+  @NotNull
   public String getOperacao() {
     if (operacao == null) {
       return null;
@@ -694,10 +695,11 @@ public enum ModalEnum {
   }
 
  /**
-   * Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
+   * Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
    * @return direcao
   **/
   @JsonProperty("direcao")
+  @NotNull
   public String getDirecao() {
     if (direcao == null) {
       return null;
@@ -797,7 +799,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Lista de chaves das NF-e que amparam a carga.
+   * Lista de chaves das NFE que amparam o transporte.
    * @return listaNfe
   **/
   @JsonProperty("listaNfe")
@@ -887,10 +889,11 @@ public enum ModalEnum {
   }
 
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).&lt;br/&gt;Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")
+  @NotNull
   public String getPlaca() {
     return placa;
   }

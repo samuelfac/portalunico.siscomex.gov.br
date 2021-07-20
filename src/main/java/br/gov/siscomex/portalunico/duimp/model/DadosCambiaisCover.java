@@ -76,9 +76,9 @@ public enum CoberturaCambialEnum {
 }
 
   @XmlElement(name="coberturaCambial")
-  @ApiModelProperty(example = "1", value = "Cubertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
+  @ApiModelProperty(example = "1", value = "Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
  /**
-   * Cubertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1
+   * Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1
   **/
   private CoberturaCambialEnum coberturaCambial = null;
 
@@ -109,7 +109,7 @@ public enum CoberturaCambialEnum {
   @Valid
   private MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura = null;
  /**
-   * Cubertura cambial. &lt;br&gt;Dominio:&lt;br&gt;1 - Até 180 dias,&lt;br&gt;2 - De 181 até 360 dias,&lt;br&gt;3 - Acima de 360 dias,&lt;br&gt;4 - Sem cobertura&lt;br&gt;Tamanho: 1
+   * Cobertura cambial. &lt;br&gt;Dominio:&lt;br&gt;1 - Até 180 dias,&lt;br&gt;2 - De 181 até 360 dias,&lt;br&gt;3 - Acima de 360 dias,&lt;br&gt;4 - Sem cobertura&lt;br&gt;Tamanho: 1
    * @return coberturaCambial
   **/
   @JsonProperty("coberturaCambial")
