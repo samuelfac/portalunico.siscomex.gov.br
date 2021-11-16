@@ -26,9 +26,9 @@ public class DadosDoPais  {
   private String idElemento = null;
 
   @XmlElement(name="pais")
-  @ApiModelProperty(example = "DE", value = "País de destino final da carga conforme tabela de domínio. <br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
+  @ApiModelProperty(example = "DE", value = "País de destino final da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
  /**
-   * País de destino final da carga conforme tabela de domínio. <br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
+   * País de destino final da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
   **/
   private String pais = null;
  /**
@@ -50,7 +50,7 @@ public class DadosDoPais  {
   }
 
  /**
-   * País de destino final da carga conforme tabela de domínio. &lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
+   * País de destino final da carga conforme tabela de domínio.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
    * @return pais
   **/
   @JsonProperty("pais")

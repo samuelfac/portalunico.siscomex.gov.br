@@ -146,10 +146,10 @@ public enum TipoOperacaoEnum {
   private String placa = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
   @Valid
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
   **/
   private List<DadosDoChassi> listaChassi = null;
 
@@ -382,16 +382,16 @@ public enum OrgaoSolicitanteEnum {
   private OrgaoSolicitanteEnum orgaoSolicitante = null;
 
   @XmlElement(name="avaria")
-  @ApiModelProperty(example = "false", value = "Avaria<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Avaria<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean avaria = null;
 
   @XmlElement(name="areaVeiculos")
-  @ApiModelProperty(value = "Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36")
  /**
-   * Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 100
+   * Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36
   **/
   private String areaVeiculos = null;
 
@@ -616,7 +616,7 @@ public enum OrgaoSolicitanteEnum {
   }
 
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -743,7 +743,7 @@ public enum OrgaoSolicitanteEnum {
   }
 
  /**
-   * Avaria&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return avaria
   **/
   @JsonProperty("avaria")
@@ -761,7 +761,7 @@ public enum OrgaoSolicitanteEnum {
   }
 
  /**
-   * Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt;Tamanho: 100
+   * Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt;Tamanho: 36
    * @return areaVeiculos
   **/
   @JsonProperty("areaVeiculos")

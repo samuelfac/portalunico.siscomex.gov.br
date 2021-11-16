@@ -58,9 +58,9 @@ public class DadosSemirreboque  {
   private Boolean vazio = null;
 
   @XmlElement(name="avaria")
-  @ApiModelProperty(example = "false", value = "Avarias<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Avarias<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean avaria = null;
 
@@ -73,26 +73,26 @@ public class DadosSemirreboque  {
   private List<DadosDoPorto> listaPortoDescarregamento = null;
 
   @XmlElement(name="listaPaisDestinoFinalCarga")
-  @ApiModelProperty(value = "Lista de paises.")
+  @ApiModelProperty(value = "Lista de países.")
   @Valid
  /**
-   * Lista de paises.
+   * Lista de países.
   **/
   private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
 
   @XmlElement(name="listaNavio")
-  @ApiModelProperty(value = "Navio.")
+  @ApiModelProperty(value = "Lista de navios.")
   @Valid
  /**
-   * Navio.
+   * Lista de navios.
   **/
   private List<DadosListaNavio> listaNavio = null;
 
   @XmlElement(name="listaCliente")
-  @ApiModelProperty(value = "Cliente.")
+  @ApiModelProperty(value = "Lista de clientes.")
   @Valid
  /**
-   * Cliente.
+   * Lista de clientes.
   **/
   private List<DadosCliente> listaCliente = null;
 
@@ -205,7 +205,7 @@ public class DadosSemirreboque  {
   }
 
  /**
-   * Avarias&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return avaria
   **/
   @JsonProperty("avaria")
@@ -246,7 +246,7 @@ public class DadosSemirreboque  {
   }
 
  /**
-   * Lista de paises.
+   * Lista de países.
    * @return listaPaisDestinoFinalCarga
   **/
   @JsonProperty("listaPaisDestinoFinalCarga")
@@ -269,7 +269,7 @@ public class DadosSemirreboque  {
   }
 
  /**
-   * Navio.
+   * Lista de navios.
    * @return listaNavio
   **/
   @JsonProperty("listaNavio")
@@ -292,7 +292,7 @@ public class DadosSemirreboque  {
   }
 
  /**
-   * Cliente.
+   * Lista de clientes.
    * @return listaCliente
   **/
   @JsonProperty("listaCliente")

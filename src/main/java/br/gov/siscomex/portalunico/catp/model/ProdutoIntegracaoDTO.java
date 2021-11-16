@@ -38,9 +38,9 @@ public class ProdutoIntegracaoDTO  {
   private Long codigo = null;
 
   @XmlElement(name="descricao")
-  @ApiModelProperty(example = "Produto Teste", value = "Descrição complementar do produto<br>Tamanho: 3700")
+  @ApiModelProperty(example = "Produto Teste", value = "Detalhamento complementar do produto<br>Tamanho: 3700")
  /**
-   * Descrição complementar do produto<br>Tamanho: 3700
+   * Detalhamento complementar do produto<br>Tamanho: 3700
   **/
   private String descricao = null;
 
@@ -169,7 +169,7 @@ public class ProdutoIntegracaoDTO  {
   }
 
  /**
-   * Descrição complementar do produto&lt;br&gt;Tamanho: 3700
+   * Detalhamento complementar do produto&lt;br&gt;Tamanho: 3700
    * @return descricao
   **/
   @JsonProperty("descricao")

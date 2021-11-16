@@ -129,16 +129,16 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="cpfRepresentante")
-  @ApiModelProperty(example = "55555555555", value = "CPF Representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+  @ApiModelProperty(example = "55555555555", value = "CPF representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
  /**
-   * CPF Representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+   * CPF representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
   **/
   private String cpfRepresentante = null;
 
   @XmlElement(name="cnpjRepresentante")
-  @ApiModelProperty(example = "44444444444444", value = "CNPJ Representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+  @ApiModelProperty(example = "44444444444444", value = "CNPJ representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
  /**
-   * CNPJ Representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+   * CNPJ representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
   **/
   private String cnpjRepresentante = null;
 
@@ -148,23 +148,23 @@ public enum TipoOperacaoEnum {
   private DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante = null;
 
   @XmlElement(name="nomeRepresentante")
-  @ApiModelProperty(value = "Nome Representante<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Nome representante<br/>Tamanho: 100")
  /**
-   * Nome Representante<br/>Tamanho: 100
+   * Nome representante<br/>Tamanho: 100
   **/
   private String nomeRepresentante = null;
 
   @XmlElement(name="cpfRepresentado")
-  @ApiModelProperty(example = "55555555555", value = "CPF Representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+  @ApiModelProperty(example = "55555555555", value = "CPF representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
  /**
-   * CPF Representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+   * CPF representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
   **/
   private String cpfRepresentado = null;
 
   @XmlElement(name="cnpjRepresentado")
-  @ApiModelProperty(example = "44444444444444", value = "CNPJ Representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+  @ApiModelProperty(example = "44444444444444", value = "CNPJ representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
  /**
-   * CNPJ Representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+   * CNPJ representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
   **/
   private String cnpjRepresentado = null;
 
@@ -195,9 +195,9 @@ public enum TipoOperacaoEnum {
   private String dataHoraFimValidade = null;
 
   @XmlElement(name="motivo")
-  @ApiModelProperty(example = "representação para trâmite de documentos, representação para fechar faturamento com recinto, representação para monitoramento de cargas no portal do recinto ...", value = "motivo da representação<br/>Tamanho: 100")
+  @ApiModelProperty(example = "representação para trâmite de documentos, representação para fechar faturamento com recinto, representação para monitoramento de cargas no portal do recinto...", value = "Motivo da representação<br/>Tamanho: 100")
  /**
-   * motivo da representação<br/>Tamanho: 100
+   * Motivo da representação<br/>Tamanho: 100
   **/
   private String motivo = null;
  /**
@@ -372,7 +372,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * CPF Representante&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+   * CPF representante&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
    * @return cpfRepresentante
   **/
   @JsonProperty("cpfRepresentante")
@@ -390,7 +390,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * CNPJ Representante&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+   * CNPJ representante&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
    * @return cnpjRepresentante
   **/
   @JsonProperty("cnpjRepresentante")
@@ -426,7 +426,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Nome Representante&lt;br/&gt;Tamanho: 100
+   * Nome representante&lt;br/&gt;Tamanho: 100
    * @return nomeRepresentante
   **/
   @JsonProperty("nomeRepresentante")
@@ -444,7 +444,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * CPF Representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+   * CPF representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
    * @return cpfRepresentado
   **/
   @JsonProperty("cpfRepresentado")
@@ -462,7 +462,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * CNPJ Representado&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+   * CNPJ representado&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
    * @return cnpjRepresentado
   **/
   @JsonProperty("cnpjRepresentado")
@@ -552,7 +552,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * motivo da representação&lt;br/&gt;Tamanho: 100
+   * Motivo da representação&lt;br/&gt;Tamanho: 100
    * @return motivo
   **/
   @JsonProperty("motivo")

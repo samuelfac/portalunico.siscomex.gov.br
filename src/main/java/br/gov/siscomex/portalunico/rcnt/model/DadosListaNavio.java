@@ -33,9 +33,9 @@ public class DadosListaNavio  {
   private String imo = null;
 
   @XmlElement(name="nome")
-  @ApiModelProperty(value = " Nome do navio de embarque ou desembarque da carga.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Nome do navio de embarque ou desembarque da carga.<br/>Tamanho: 100")
  /**
-   *  Nome do navio de embarque ou desembarque da carga.<br/>Tamanho: 100
+   * Nome do navio de embarque ou desembarque da carga.<br/>Tamanho: 100
   **/
   private String nome = null;
  /**
@@ -75,7 +75,7 @@ public class DadosListaNavio  {
   }
 
  /**
-   *  Nome do navio de embarque ou desembarque da carga.&lt;br/&gt;Tamanho: 100
+   * Nome do navio de embarque ou desembarque da carga.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")

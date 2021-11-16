@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosImagemScanner", propOrder =
-    { "dataHoraScaneamento", "dataHoraUltimaModificacaoArquivo", "nomeArquivo", "tipoArquivo", "listaCoordenadasAlerta", "arquivoImagem", "arquivoAssinatura", "idChaveLocalizacao"
+    { "dataHoraScaneamento", "dataHoraUltimaModificacaoArquivo", "nomeArquivo", "tipoArquivo", "listaCoordenadasAlerta", "arquivoImagem", "idChaveLocalizacao"
 })
 
 @XmlRootElement(name="DadosImagemScanner")
@@ -68,13 +68,6 @@ public class DadosImagemScanner  {
    * Arquivo de imagem jpeg (encoder base64). <br/>Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas, com colunas proporcionais, com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.
   **/
   private String arquivoImagem = null;
-
-  @XmlElement(name="arquivoAssinatura")
-  @ApiModelProperty(value = "Assinatura do arquivo de imagem (encoder base64).<br/>String em BASE64 representando o conteúdo da assinatura (arquivo p7s) referente ao arquivo de imagem. <br/><br/>Para gerar a assinatura do documento no formato PKCS#7 sem o conteúdo anexado (CAdES detached) podem ser utilizados:* o Assinador Serpro de forma interativa* o componente Java Demoiselle Signer item Assinatura Digital no Formato PKCS#7/CAdES sem o conteúdo anexado (detached) para implementação em sistemas próprios.")
- /**
-   * Assinatura do arquivo de imagem (encoder base64).<br/>String em BASE64 representando o conteúdo da assinatura (arquivo p7s) referente ao arquivo de imagem. <br/><br/>Para gerar a assinatura do documento no formato PKCS#7 sem o conteúdo anexado (CAdES detached) podem ser utilizados:* o Assinador Serpro de forma interativa* o componente Java Demoiselle Signer item Assinatura Digital no Formato PKCS#7/CAdES sem o conteúdo anexado (detached) para implementação em sistemas próprios.
-  **/
-  private String arquivoAssinatura = null;
 
   @XmlElement(name="idChaveLocalizacao")
   @ApiModelProperty(value = "Referência ao código (truck id, ref id, etc) gerado pelo sistema de inspeção não invasiva e que permite acessar os dados diretamente no equipamento utilizando o software proprietário. Omitir caso o sistema implantado no recinto permita localizar estes dados usando o número da unidade de carga / ou dados do veículo transportador.<br/>Tamanho: 200")
@@ -196,24 +189,6 @@ public class DadosImagemScanner  {
   }
 
  /**
-   * Assinatura do arquivo de imagem (encoder base64).&lt;br/&gt;String em BASE64 representando o conteúdo da assinatura (arquivo p7s) referente ao arquivo de imagem. &lt;br/&gt;&lt;br/&gt;Para gerar a assinatura do documento no formato PKCS#7 sem o conteúdo anexado (CAdES detached) podem ser utilizados:* o Assinador Serpro de forma interativa* o componente Java Demoiselle Signer item Assinatura Digital no Formato PKCS#7/CAdES sem o conteúdo anexado (detached) para implementação em sistemas próprios.
-   * @return arquivoAssinatura
-  **/
-  @JsonProperty("arquivoAssinatura")
-  public String getArquivoAssinatura() {
-    return arquivoAssinatura;
-  }
-
-  public void setArquivoAssinatura(String arquivoAssinatura) {
-    this.arquivoAssinatura = arquivoAssinatura;
-  }
-
-  public DadosImagemScanner arquivoAssinatura(String arquivoAssinatura) {
-    this.arquivoAssinatura = arquivoAssinatura;
-    return this;
-  }
-
- /**
    * Referência ao código (truck id, ref id, etc) gerado pelo sistema de inspeção não invasiva e que permite acessar os dados diretamente no equipamento utilizando o software proprietário. Omitir caso o sistema implantado no recinto permita localizar estes dados usando o número da unidade de carga / ou dados do veículo transportador.&lt;br/&gt;Tamanho: 200
    * @return idChaveLocalizacao
   **/
@@ -243,7 +218,6 @@ public class DadosImagemScanner  {
     sb.append("    tipoArquivo: ").append(toIndentedString(tipoArquivo)).append("\n");
     sb.append("    listaCoordenadasAlerta: ").append(toIndentedString(listaCoordenadasAlerta)).append("\n");
     sb.append("    arquivoImagem: ").append(toIndentedString(arquivoImagem)).append("\n");
-    sb.append("    arquivoAssinatura: ").append(toIndentedString(arquivoAssinatura)).append("\n");
     sb.append("    idChaveLocalizacao: ").append(toIndentedString(idChaveLocalizacao)).append("\n");
     sb.append("}");
     return sb.toString();

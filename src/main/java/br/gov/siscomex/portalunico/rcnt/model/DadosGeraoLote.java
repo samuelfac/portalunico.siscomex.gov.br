@@ -274,9 +274,9 @@ public enum TipoConhecimentoEnum {
 }
 
   @XmlElement(name="tipoConhecimento")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
+  @ApiModelProperty(example = "AWB", value = "<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
+   * <br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
   **/
   private TipoConhecimentoEnum tipoConhecimento = null;
 
@@ -331,17 +331,17 @@ public enum TipoConhecimentoEnum {
   private String numeroConteiner = null;
 
   @XmlElement(name="identificacaoUld")
-  @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e  Código do proprietário da ULD (2 caracteres - PP). Ex: AZEB123_AA, AKE21001NZ.<br/>Tamanho: 10")
+  @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
  /**
-   * Identificação da ULD, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e  Código do proprietário da ULD (2 caracteres - PP). Ex: AZEB123_AA, AKE21001NZ.<br/>Tamanho: 10
+   * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
   **/
   private String identificacaoUld = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
   @Valid
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
   **/
   private List<DadosDoChassi> listaChassi = null;
 
@@ -365,9 +365,9 @@ public enum TipoConhecimentoEnum {
   private String prefixoAeronave = null;
 
   @XmlElement(name="viagem")
-  @ApiModelProperty(example = "'AA090520191209MIA', onde voo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA'", value = "Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: voo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.")
+  @ApiModelProperty(example = "'AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA'", value = "Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.")
  /**
-   * Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: voo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
+   * Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
   **/
   private String viagem = null;
 
@@ -386,9 +386,9 @@ public enum TipoConhecimentoEnum {
   private String aeroportoOrigem = null;
 
   @XmlElement(name="placaSemirreboque")
-  @ApiModelProperty(value = "Placa semirreboque / vagão<br/>Tamanho: 50<br/>Placa do semirreboque, vagão ou truck que descarregou a carga não conteinerizada.")
+  @ApiModelProperty(value = "Placa semirreboque/vagão<br/>Tamanho: 50<br/>Placa do semirreboque, vagão ou truck que descarregou a carga não conteinerizada.")
  /**
-   * Placa semirreboque / vagão<br/>Tamanho: 50<br/>Placa do semirreboque, vagão ou truck que descarregou a carga não conteinerizada.
+   * Placa semirreboque/vagão<br/>Tamanho: 50<br/>Placa do semirreboque, vagão ou truck que descarregou a carga não conteinerizada.
   **/
   private String placaSemirreboque = null;
 
@@ -454,9 +454,9 @@ public enum IndicadorDeRemessaInternacionalEnum {
 }
 
   @XmlElement(name="indicadorDeRemessaInternacional")
-  @ApiModelProperty(example = "E", value = "Indicador de remessa internacional expressa ou postal<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL")
+  @ApiModelProperty(example = "E", value = "Indicador de remessa internacional expressa ou postal.<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL")
  /**
-   * Indicador de remessa internacional expressa ou postal<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL
+   * Indicador de remessa internacional expressa ou postal.<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL
   **/
   private IndicadorDeRemessaInternacionalEnum indicadorDeRemessaInternacional = null;
 
@@ -729,7 +729,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
+   * &lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
    * @return tipoConhecimento
   **/
   @JsonProperty("tipoConhecimento")
@@ -886,7 +886,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Identificação da ULD, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e  Código do proprietário da ULD (2 caracteres - PP). Ex: AZEB123_AA, AKE21001NZ.&lt;br/&gt;Tamanho: 10
+   * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
    * @return identificacaoUld
   **/
   @JsonProperty("identificacaoUld")
@@ -904,7 +904,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -981,7 +981,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Identificação da viagem.&lt;br/&gt;Tamanho: 20&lt;br/&gt;No aéreo a composição da viagem é: voo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
+   * Identificação da viagem.&lt;br/&gt;Tamanho: 20&lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
    * @return viagem
   **/
   @JsonProperty("viagem")
@@ -1035,7 +1035,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Placa semirreboque / vagão&lt;br/&gt;Tamanho: 50&lt;br/&gt;Placa do semirreboque, vagão ou truck que descarregou a carga não conteinerizada.
+   * Placa semirreboque/vagão&lt;br/&gt;Tamanho: 50&lt;br/&gt;Placa do semirreboque, vagão ou truck que descarregou a carga não conteinerizada.
    * @return placaSemirreboque
   **/
   @JsonProperty("placaSemirreboque")
@@ -1112,7 +1112,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Indicador de remessa internacional expressa ou postal&lt;br/&gt;Domínio:&lt;br/&gt;E - EXPRESSA&lt;br/&gt;P - POSTAL
+   * Indicador de remessa internacional expressa ou postal.&lt;br/&gt;Domínio:&lt;br/&gt;E - EXPRESSA&lt;br/&gt;P - POSTAL
    * @return indicadorDeRemessaInternacional
   **/
   @JsonProperty("indicadorDeRemessaInternacional")

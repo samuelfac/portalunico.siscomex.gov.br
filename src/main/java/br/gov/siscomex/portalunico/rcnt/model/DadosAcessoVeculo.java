@@ -170,9 +170,9 @@ public enum OperacaoEnum {
 }
 
   @XmlElement(name="operacao", required = true)
-  @ApiModelProperty(example = "C", required = true, value = "Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso")
+  @ApiModelProperty(example = "G", required = true, value = "Operação de agendamento de entrada/saída de veículo (agendamento) ou de entrada/saída de veículo (acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso")
  /**
-   * Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso
+   * Operação de agendamento de entrada/saída de veículo (agendamento) ou de entrada/saída de veículo (acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso
   **/
   private OperacaoEnum operacao = null;
 
@@ -332,17 +332,17 @@ public enum TipoGranelEnum {
 }
 
   @XmlElement(name="tipoGranel")
-  @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS  - MINÉRIOS <br/>02 - SÓLIDOS  - GRÃOS <br/>03 - SÓLIDOS  - FARELOS <br/>04 - SÓLIDOS  - OUTROS <br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS <br/>07 - GASOSOS <br/>99 - OUTROS<br/>")
+  @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>")
  /**
-   * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS  - MINÉRIOS <br/>02 - SÓLIDOS  - GRÃOS <br/>03 - SÓLIDOS  - FARELOS <br/>04 - SÓLIDOS  - OUTROS <br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS <br/>07 - GASOSOS <br/>99 - OUTROS<br/>
+   * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>
   **/
   private TipoGranelEnum tipoGranel = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
   @Valid
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
   **/
   private List<DadosDoChassi> listaChassi = null;
 
@@ -488,9 +488,9 @@ public enum ModalEnum {
   private ModalEnum modal = null;
 
   @XmlElement(name="gate")
-  @ApiModelProperty(value = "Identificação do Gate. <br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.")
+  @ApiModelProperty(value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36")
  /**
-   * Identificação do Gate. <br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.
+   * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36
   **/
   private String gate = null;
 
@@ -673,7 +673,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Operação de agendamento de entrada/saída de veículo(agendamento) ou de entrada/saída de veículo(acesso). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;G - Agendamento&lt;br/&gt;C - Acesso
+   * Operação de agendamento de entrada/saída de veículo (agendamento) ou de entrada/saída de veículo (acesso). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;G - Agendamento&lt;br/&gt;C - Acesso
    * @return operacao
   **/
   @JsonProperty("operacao")
@@ -845,7 +845,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS  - MINÉRIOS &lt;br/&gt;02 - SÓLIDOS  - GRÃOS &lt;br/&gt;03 - SÓLIDOS  - FARELOS &lt;br/&gt;04 - SÓLIDOS  - OUTROS &lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS &lt;br/&gt;07 - GASOSOS &lt;br/&gt;99 - OUTROS&lt;br/&gt;
+   * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;br/&gt;
    * @return tipoGranel
   **/
   @JsonProperty("tipoGranel")
@@ -866,7 +866,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -1155,7 +1155,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Identificação do Gate. &lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.
+   * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt;Tamanho: 36
    * @return gate
   **/
   @JsonProperty("gate")

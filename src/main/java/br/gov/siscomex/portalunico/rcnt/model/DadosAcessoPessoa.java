@@ -252,16 +252,16 @@ public enum IdentificacaoEnum {
   private String nome = null;
 
   @XmlElement(name="reserva")
-  @ApiModelProperty(value = "Número da reserva do passageiro. <br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Número da reserva do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50")
  /**
-   * Número da reserva do passageiro. <br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50
+   * Número da reserva do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50
   **/
   private String reserva = null;
 
   @XmlElement(name="voo")
-  @ApiModelProperty(value = "Número do voo do passageiro. <br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 20")
+  @ApiModelProperty(value = "Número do vôo do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos.<br/>Tamanho: 20")
  /**
-   * Número do voo do passageiro. <br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 20
+   * Número do vôo do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos.<br/>Tamanho: 20
   **/
   private String voo = null;
 
@@ -549,7 +549,7 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Número da reserva do passageiro. &lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos&lt;br/&gt;Tamanho: 50
+   * Número da reserva do passageiro.&lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos&lt;br/&gt;Tamanho: 50
    * @return reserva
   **/
   @JsonProperty("reserva")
@@ -567,7 +567,7 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Número do voo do passageiro. &lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos&lt;br/&gt;Tamanho: 20
+   * Número do vôo do passageiro.&lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos.&lt;br/&gt;Tamanho: 20
    * @return voo
   **/
   @JsonProperty("voo")

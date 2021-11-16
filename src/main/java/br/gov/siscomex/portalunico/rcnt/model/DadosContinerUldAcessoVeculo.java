@@ -36,9 +36,9 @@ public class DadosContinerUldAcessoVeculo  {
   private String numeroConteiner = null;
 
   @XmlElement(name="identificacaoUld")
-  @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e  Código do proprietário da ULD (2 caracteres - PP). Ex: AZEB123_AA, AKE21001NZ.<br/>Tamanho: 10")
+  @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
  /**
-   * Identificação da ULD, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e  Código do proprietário da ULD (2 caracteres - PP). Ex: AZEB123_AA, AKE21001NZ.<br/>Tamanho: 10
+   * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
   **/
   private String identificacaoUld = null;
 
@@ -71,17 +71,17 @@ public class DadosContinerUldAcessoVeculo  {
   private String numeroBooking = null;
 
   @XmlElement(name="listaLacres")
-  @ApiModelProperty(value = "Lista lacres")
+  @ApiModelProperty(value = "Lista de Lacres.")
   @Valid
  /**
-   * Lista lacres
+   * Lista de Lacres.
   **/
   private List<DadosDoLacre> listaLacres = null;
 
   @XmlElement(name="avaria")
-  @ApiModelProperty(example = "false", value = "Avarias.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Avarias.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean avaria = null;
 
@@ -94,26 +94,26 @@ public class DadosContinerUldAcessoVeculo  {
   private List<DadosDoPorto> listaPortoDescarregamento = null;
 
   @XmlElement(name="listaPaisDestinoFinalCarga")
-  @ApiModelProperty(value = "Lista de paises.")
+  @ApiModelProperty(value = "Lista de países.")
   @Valid
  /**
-   * Lista de paises.
+   * Lista de países.
   **/
   private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
 
   @XmlElement(name="listaNavio")
-  @ApiModelProperty(value = "Navio.")
+  @ApiModelProperty(value = "Lista de navios.")
   @Valid
  /**
-   * Navio.
+   * Lista de navios.
   **/
   private List<DadosListaNavio> listaNavio = null;
 
   @XmlElement(name="listaCliente")
-  @ApiModelProperty(value = "Cliente.")
+  @ApiModelProperty(value = "Lista de clientes.")
   @Valid
  /**
-   * Cliente.
+   * Lista de clientes.
   **/
   private List<DadosCliente> listaCliente = null;
 
@@ -167,7 +167,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Identificação da ULD, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e  Código do proprietário da ULD (2 caracteres - PP). Ex: AZEB123_AA, AKE21001NZ.&lt;br/&gt;Tamanho: 10
+   * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
    * @return identificacaoUld
   **/
   @JsonProperty("identificacaoUld")
@@ -257,7 +257,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Lista lacres
+   * Lista de Lacres.
    * @return listaLacres
   **/
   @JsonProperty("listaLacres")
@@ -280,7 +280,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Avarias.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return avaria
   **/
   @JsonProperty("avaria")
@@ -321,7 +321,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Lista de paises.
+   * Lista de países.
    * @return listaPaisDestinoFinalCarga
   **/
   @JsonProperty("listaPaisDestinoFinalCarga")
@@ -344,7 +344,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Navio.
+   * Lista de navios.
    * @return listaNavio
   **/
   @JsonProperty("listaNavio")
@@ -367,7 +367,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Cliente.
+   * Lista de clientes.
    * @return listaCliente
   **/
   @JsonProperty("listaCliente")

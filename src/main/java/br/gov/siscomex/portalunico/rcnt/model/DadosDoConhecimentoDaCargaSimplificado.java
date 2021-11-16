@@ -39,41 +39,9 @@ public class DadosDoConhecimentoDaCargaSimplificado  {
 @XmlEnum(String.class)
 public enum TipoEnum {
 
-	@XmlEnumValue("'CRT'")
-	@JsonProperty("'CRT'")
-	CRT_(String.valueOf("'CRT'")),
-	
-	@XmlEnumValue("'TIF'")
-	@JsonProperty("'TIF'")
-	TIF_(String.valueOf("'TIF'")),
-	
-	@XmlEnumValue("'RWB'")
-	@JsonProperty("'RWB'")
-	RWB_(String.valueOf("'RWB'")),
-	
-	@XmlEnumValue("'AWB'")
-	@JsonProperty("'AWB'")
-	AWB_(String.valueOf("'AWB'")),
-	
-	@XmlEnumValue("'DSIC'")
-	@JsonProperty("'DSIC'")
-	DSIC_(String.valueOf("'DSIC'")),
-	
-	@XmlEnumValue("'CTE'")
-	@JsonProperty("'CTE'")
-	CTE_(String.valueOf("'CTE'")),
-	
-	@XmlEnumValue("'CE_MERCANTE'")
-	@JsonProperty("'CE_MERCANTE'")
-	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'")),
-	
-	@XmlEnumValue("'BL'")
-	@JsonProperty("'BL'")
-	BL_(String.valueOf("'BL'")),
-	
-	@XmlEnumValue("'POSTAL'")
-	@JsonProperty("'POSTAL'")
-	POSTAL_(String.valueOf("'POSTAL'"));
+	@XmlEnumValue("<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
+	@JsonProperty("<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
+	_BR_DOM_NIO_BR_CRT_CONHECIMENTO_INTERNACIONAL_DE_TRANSPORTE_RODOVI_RIO_BR_TIF_CONHECIMENTO_CARTA_DE_PORTE_INTERNACIONAL_BR_RWB_RAIL_WAYBILL_BR_AWB_AIR_WAYBILL_BR_DSIC_DOCUMENTO_SUBSIDI_RIO_DE_IDENTIFICA_O_DA_CARGA_BR_CTE_CONHECIMENTO_DE_TRANSPORTE_ELETR_NICO_BR_CE_MERCANTE_CONHECIMENTO_ELETR_NICO_MERCANTE_BR_BL_BILL_OF_LADING_BR_POSTAL_REMESSA_POSTAL_INTERNACIONAL_BR_(String.valueOf("<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>"));
 
 
     private String value;
@@ -102,9 +70,9 @@ public enum TipoEnum {
 }
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
+   * Tipo de conhecimento conforme tabela de domínio.
   **/
   private TipoEnum tipo = null;
  /**
@@ -144,7 +112,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
+   * Tipo de conhecimento conforme tabela de domínio.
    * @return tipo
   **/
   @JsonProperty("tipo")

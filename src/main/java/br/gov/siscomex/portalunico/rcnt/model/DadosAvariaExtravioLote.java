@@ -188,9 +188,9 @@ public enum TipoEnum {
 }
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "E", value = "Tipo de evento (Avaria / Extravio / Furto)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio<br/>F - Furto")
+  @ApiModelProperty(example = "E", value = "Tipo de evento (Avaria/Extravio/Furto)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio<br/>F - Furto")
  /**
-   * Tipo de evento (Avaria / Extravio / Furto)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio<br/>F - Furto
+   * Tipo de evento (Avaria/Extravio/Furto)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio<br/>F - Furto
   **/
   private TipoEnum tipo = null;
 
@@ -423,7 +423,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo de evento (Avaria / Extravio / Furto)&lt;br/&gt;Domínio:&lt;br/&gt;A - Avaria&lt;br/&gt;E - Extravio&lt;br/&gt;F - Furto
+   * Tipo de evento (Avaria/Extravio/Furto)&lt;br/&gt;Domínio:&lt;br/&gt;A - Avaria&lt;br/&gt;E - Extravio&lt;br/&gt;F - Furto
    * @return tipo
   **/
   @JsonProperty("tipo")

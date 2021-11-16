@@ -163,10 +163,10 @@ public enum TipoOperacaoEnum {
   private String placa = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo / semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo / semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
+   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
   **/
   private BigDecimal tara = null;
 
@@ -179,10 +179,10 @@ public enum TipoOperacaoEnum {
   private List<DadosSemirreboquePesagem> listaSemirreboque = null;
 
   @XmlElement(name="taraConjunto")
-  @ApiModelProperty(value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo / semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.")
+  @ApiModelProperty(value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo / semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.
+   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.
   **/
   private BigDecimal taraConjunto = null;
 
@@ -324,9 +324,9 @@ public enum CorreiasTransportadorasEnum {
   private BigDecimal volume = null;
 
   @XmlElement(name="balanca")
-  @ApiModelProperty(value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativa a localização da balança.<br/>Tamanho: 36")
+  @ApiModelProperty(value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36")
  /**
-   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativa a localização da balança.<br/>Tamanho: 36
+   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36
   **/
   private String balanca = null;
 
@@ -591,7 +591,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo / semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
+   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
    * @return tara
   **/
   @JsonProperty("tara")
@@ -632,7 +632,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo / semirreboque). Comum no modal aquaviário e aéreo.&lt;br/&gt;&lt;br/&gt;taraConjunto, até 4 casas decimais.
+   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.&lt;br/&gt;&lt;br/&gt;taraConjunto, até 4 casas decimais.
    * @return taraConjunto
   **/
   @JsonProperty("taraConjunto")
@@ -805,7 +805,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativa a localização da balança.&lt;br/&gt;Tamanho: 36
+   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.&lt;br/&gt;Tamanho: 36
    * @return balanca
   **/
   @JsonProperty("balanca")

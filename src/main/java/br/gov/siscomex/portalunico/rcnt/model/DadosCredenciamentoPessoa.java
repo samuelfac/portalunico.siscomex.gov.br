@@ -141,9 +141,9 @@ public enum TipoOperacaoEnum {
   private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
 
   @XmlElement(name="paisNacionalidade")
-  @ApiModelProperty(example = "DE", value = "Pais Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
+  @ApiModelProperty(example = "DE", value = "País Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
  /**
-   * Pais Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
+   * País Nacionalidade conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
   **/
   private String paisNacionalidade = null;
 
@@ -271,16 +271,16 @@ public enum GeneroEnum {
   private String dataFimValidade = null;
 
   @XmlElement(name="horaPrevistaEntrada")
-  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar / sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
+  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
  /**
-   * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar / sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
+   * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
   **/
   private String horaPrevistaEntrada = null;
 
   @XmlElement(name="horaPrevistaSaida")
-  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar / sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
+  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
  /**
-   * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar / sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
+   * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
   **/
   private String horaPrevistaSaida = null;
 
@@ -519,7 +519,7 @@ public enum GeneroEnum {
   }
 
  /**
-   * Pais Nacionalidade conforme tabela de domínio&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
+   * País Nacionalidade conforme tabela de domínio&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
    * @return paisNacionalidade
   **/
   @JsonProperty("paisNacionalidade")
@@ -757,7 +757,7 @@ public enum GeneroEnum {
   }
 
  /**
-   * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar / sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
+   * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
    * @return horaPrevistaEntrada
   **/
   @JsonProperty("horaPrevistaEntrada")
@@ -775,7 +775,7 @@ public enum GeneroEnum {
   }
 
  /**
-   * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar / sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
+   * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
    * @return horaPrevistaSaida
   **/
   @JsonProperty("horaPrevistaSaida")

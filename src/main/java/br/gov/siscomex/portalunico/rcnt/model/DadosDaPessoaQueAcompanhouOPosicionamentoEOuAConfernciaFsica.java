@@ -26,16 +26,16 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica  {
   private String idElemento = null;
 
   @XmlElement(name="cpf")
-  @ApiModelProperty(value = "Informar o CPF das pessoas que acompanharam o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+  @ApiModelProperty(value = "Informar o CPF da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
  /**
-   * Informar o CPF das pessoas que acompanharam o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+   * Informar o CPF da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
   **/
   private String cpf = null;
 
   @XmlElement(name="nome")
-  @ApiModelProperty(value = "Informar o nome das pessoas que acompanharam o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Informar o nome da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 100")
  /**
-   * Informar o nome das pessoas que acompanharam o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 100
+   * Informar o nome da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 100
   **/
   private String nome = null;
 
@@ -64,7 +64,7 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica  {
   }
 
  /**
-   * Informar o CPF das pessoas que acompanharam o posicionamento da carga e/ou a conferência física.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+   * Informar o CPF da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
    * @return cpf
   **/
   @JsonProperty("cpf")
@@ -82,7 +82,7 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica  {
   }
 
  /**
-   * Informar o nome das pessoas que acompanharam o posicionamento da carga e/ou a conferência física.&lt;br/&gt;Tamanho: 100
+   * Informar o nome da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")

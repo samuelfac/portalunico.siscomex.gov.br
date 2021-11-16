@@ -148,16 +148,16 @@ public enum TipoOperacaoEnum {
   private String prefixoAeronave = null;
 
   @XmlElement(name="viagem")
-  @ApiModelProperty(example = "'AA090520191209MIA', onde voo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA'", value = "<br/>No aéreo a composição da viagem é: voo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20")
+  @ApiModelProperty(example = "'AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA'", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20")
  /**
-   * <br/>No aéreo a composição da viagem é: voo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20
+   * <br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20
   **/
   private String viagem = null;
 
   @XmlElement(name="voo")
-  @ApiModelProperty(value = "Voo<br/>Tamanho: 20")
+  @ApiModelProperty(value = "Vôo<br/>Tamanho: 20")
  /**
-   * Voo<br/>Tamanho: 20
+   * Vôo<br/>Tamanho: 20
   **/
   private String voo = null;
 
@@ -408,7 +408,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * &lt;br/&gt;No aéreo a composição da viagem é: voo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.&lt;br/&gt;Tamanho: 20
+   * &lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.&lt;br/&gt;Tamanho: 20
    * @return viagem
   **/
   @JsonProperty("viagem")
@@ -426,7 +426,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Voo&lt;br/&gt;Tamanho: 20
+   * Vôo&lt;br/&gt;Tamanho: 20
    * @return voo
   **/
   @JsonProperty("voo")

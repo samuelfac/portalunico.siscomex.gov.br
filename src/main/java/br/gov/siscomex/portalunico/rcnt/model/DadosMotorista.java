@@ -27,16 +27,16 @@ public class DadosMotorista  {
   private String protocoloCredenciamento = null;
 
   @XmlElement(name="cpf")
-  @ApiModelProperty(example = "55555555555", value = "CPF Motorista<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+  @ApiModelProperty(example = "55555555555", value = "CPF do motorista.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
  /**
-   * CPF Motorista<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+   * CPF do motorista.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
   **/
   private String cpf = null;
 
   @XmlElement(name="nome", required = true)
-  @ApiModelProperty(required = true, value = "Nome Motorista. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Nome do motorista. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
  /**
-   * Nome Motorista. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
+   * Nome do motorista. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
   **/
   private String nome = null;
  /**
@@ -58,7 +58,7 @@ public class DadosMotorista  {
   }
 
  /**
-   * CPF Motorista&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+   * CPF do motorista.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
    * @return cpf
   **/
   @JsonProperty("cpf")
@@ -76,7 +76,7 @@ public class DadosMotorista  {
   }
 
  /**
-   * Nome Motorista. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+   * Nome do motorista. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
    * @return nome
   **/
   @JsonProperty("nome")

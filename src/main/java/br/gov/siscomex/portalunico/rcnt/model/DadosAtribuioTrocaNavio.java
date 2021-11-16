@@ -129,16 +129,16 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="numeroConteiner")
-  @ApiModelProperty(value = "Número do Contêiner<br/>Tamanho: 200")
+  @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
  /**
-   * Número do Contêiner<br/>Tamanho: 200
+   * Identificação do número do contêiner.<br/>Tamanho: 200
   **/
   private String numeroConteiner = null;
 
   @XmlElement(name="numeroLote")
-  @ApiModelProperty(value = "Número de lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Tamanho: 100")
  /**
-   * Número de lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Tamanho: 100
+   * Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Tamanho: 100
   **/
   private String numeroLote = null;
 
@@ -346,7 +346,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Número do Contêiner&lt;br/&gt;Tamanho: 200
+   * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
    * @return numeroConteiner
   **/
   @JsonProperty("numeroConteiner")
@@ -364,7 +364,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Número de lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.&lt;br/&gt;Tamanho: 100
+   * Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.&lt;br/&gt;Tamanho: 100
    * @return numeroLote
   **/
   @JsonProperty("numeroLote")

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>samuelfac</groupId>
 	<artifactId>portalunico.siscomex.gov.br</artifactId>
-	<version>guaiba</version>
+	<version>torne</version>
 	<name>PortalUnicoSiscomex</name>
 
 	<description>Classes da API do Portal Único de Comércio Exterior, a nova forma de interação entre as empresas privadas e os diversos órgãos públicos intervenientes no comércio exterior.</description>
@@ -29,8 +29,8 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<cxf-version>3.4.3</cxf-version>
-		<jackson-jaxrs-version>2.12.3</jackson-jaxrs-version>
+		<cxf-version>3.4.5</cxf-version>
+		<jackson-jaxrs-version>2.13.0</jackson-jaxrs-version>
 	</properties>
 
 	<dependencies>

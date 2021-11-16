@@ -26,16 +26,16 @@ public class DadosCliente  {
   private String idElemento = null;
 
   @XmlElement(name="cnpjCliente")
-  @ApiModelProperty(example = "44444444444444", value = " CNPJ do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+  @ApiModelProperty(example = "44444444444444", value = "CNPJ do cliente do armazenamento.<br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
  /**
-   *  CNPJ do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+   * CNPJ do cliente do armazenamento.<br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
   **/
   private String cnpjCliente = null;
 
   @XmlElement(name="nomeCliente")
-  @ApiModelProperty(value = " Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100")
  /**
-   *  Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100
+   * Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100
   **/
   private String nomeCliente = null;
  /**
@@ -57,7 +57,7 @@ public class DadosCliente  {
   }
 
  /**
-   *  CNPJ do cliente do armazenamento. &lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+   * CNPJ do cliente do armazenamento.&lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
    * @return cnpjCliente
   **/
   @JsonProperty("cnpjCliente")
@@ -75,7 +75,7 @@ public class DadosCliente  {
   }
 
  /**
-   *  Nome do cliente do armazenamento. &lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 100
+   * Nome do cliente do armazenamento. &lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 100
    * @return nomeCliente
   **/
   @JsonProperty("nomeCliente")

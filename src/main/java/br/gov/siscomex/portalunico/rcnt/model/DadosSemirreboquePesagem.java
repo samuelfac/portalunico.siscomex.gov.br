@@ -36,10 +36,10 @@ public class DadosSemirreboquePesagem  {
   private String placa = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo / semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo / semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
+   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
   **/
   private BigDecimal tara = null;
  /**
@@ -79,7 +79,7 @@ public class DadosSemirreboquePesagem  {
   }
 
  /**
-   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo / semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
+   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
    * @return tara
   **/
   @JsonProperty("tara")

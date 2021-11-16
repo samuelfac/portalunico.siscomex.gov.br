@@ -26,30 +26,30 @@ public class DadosDaCoordenadaDeAlerta  {
   private String idElemento = null;
 
   @XmlElement(name="x")
-  @ApiModelProperty(example = "12", value = "Lista de coordenada para marca o alerta na posição X")
+  @ApiModelProperty(example = "12", value = "Coordenada para marcar o alerta na posição X")
  /**
-   * Lista de coordenada para marca o alerta na posição X
+   * Coordenada para marcar o alerta na posição X
   **/
   private Integer x = null;
 
   @XmlElement(name="y")
-  @ApiModelProperty(example = "7", value = "Lista de coordenada para marca o alerta na posição Y")
+  @ApiModelProperty(example = "7", value = "Coordenada para marcar o alerta na posição Y")
  /**
-   * Lista de coordenada para marca o alerta na posição Y
+   * Coordenada para marcar o alerta na posição Y
   **/
   private Integer y = null;
 
   @XmlElement(name="x2")
-  @ApiModelProperty(example = "0", value = "Lista de coordenada para marca o alerta na posição X2")
+  @ApiModelProperty(example = "0", value = "Coordenada para marcar o alerta na posição X2")
  /**
-   * Lista de coordenada para marca o alerta na posição X2
+   * Coordenada para marcar o alerta na posição X2
   **/
   private Integer x2 = null;
 
   @XmlElement(name="y2")
-  @ApiModelProperty(example = "8", value = "Lista de coordenada para marca o alerta na posição Y2")
+  @ApiModelProperty(example = "8", value = "Coordenada para marcar o alerta na posição Y2")
  /**
-   * Lista de coordenada para marca o alerta na posição Y2
+   * Coordenada para marcar o alerta na posição Y2
   **/
   private Integer y2 = null;
  /**
@@ -71,7 +71,7 @@ public class DadosDaCoordenadaDeAlerta  {
   }
 
  /**
-   * Lista de coordenada para marca o alerta na posição X
+   * Coordenada para marcar o alerta na posição X
    * @return x
   **/
   @JsonProperty("x")
@@ -89,7 +89,7 @@ public class DadosDaCoordenadaDeAlerta  {
   }
 
  /**
-   * Lista de coordenada para marca o alerta na posição Y
+   * Coordenada para marcar o alerta na posição Y
    * @return y
   **/
   @JsonProperty("y")
@@ -107,7 +107,7 @@ public class DadosDaCoordenadaDeAlerta  {
   }
 
  /**
-   * Lista de coordenada para marca o alerta na posição X2
+   * Coordenada para marcar o alerta na posição X2
    * @return x2
   **/
   @JsonProperty("x2")
@@ -125,7 +125,7 @@ public class DadosDaCoordenadaDeAlerta  {
   }
 
  /**
-   * Lista de coordenada para marca o alerta na posição Y2
+   * Coordenada para marcar o alerta na posição Y2
    * @return y2
   **/
   @JsonProperty("y2")

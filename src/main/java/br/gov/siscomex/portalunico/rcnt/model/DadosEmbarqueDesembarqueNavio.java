@@ -202,9 +202,9 @@ public enum EmbarqueDesembarqueEnum {
   private EmbarqueDesembarqueEnum embarqueDesembarque = null;
 
   @XmlElement(name="numeroConteiner")
-  @ApiModelProperty(value = "Identificação do número do Contêiner<br/>Tamanho: 200")
+  @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
  /**
-   * Identificação do número do Contêiner<br/>Tamanho: 200
+   * Identificação do número do contêiner.<br/>Tamanho: 200
   **/
   private String numeroConteiner = null;
 
@@ -216,10 +216,10 @@ public enum EmbarqueDesembarqueEnum {
   private String tipoConteiner = null;
 
   @XmlElement(name="taraConteiner")
-  @ApiModelProperty(value = "Tara Contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
+  @ApiModelProperty(value = "Tara do contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
   @Valid
  /**
-   * Tara Contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
+   * Tara do contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
   **/
   private BigDecimal taraConteiner = null;
 
@@ -311,9 +311,9 @@ public enum TipoGranelEnum {
 }
 
   @XmlElement(name="tipoGranel")
-  @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS  - MINÉRIOS <br/>02 - SÓLIDOS  - GRÃOS <br/>03 - SÓLIDOS  - FARELOS <br/>04 - SÓLIDOS  - OUTROS <br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS <br/>07 - GASOSOS <br/>99 - OUTROS<br/>")
+  @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>")
  /**
-   * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS  - MINÉRIOS <br/>02 - SÓLIDOS  - GRÃOS <br/>03 - SÓLIDOS  - FARELOS <br/>04 - SÓLIDOS  - OUTROS <br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS <br/>07 - GASOSOS <br/>99 - OUTROS<br/>
+   * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>
   **/
   private TipoGranelEnum tipoGranel = null;
 
@@ -333,25 +333,25 @@ public enum TipoGranelEnum {
   private Boolean cargaSolta = null;
 
   @XmlElement(name="numeroLote")
-  @ApiModelProperty(value = "<br/>Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. <br/>Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/>Por exemplo: carga solta. <br/>Tamanho: 100")
+  @ApiModelProperty(value = "<br/>Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/>Por exemplo: carga solta. <br/>Tamanho: 100")
  /**
-   * <br/>Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. <br/>Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/>Por exemplo: carga solta. <br/>Tamanho: 100
+   * <br/>Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/>Por exemplo: carga solta. <br/>Tamanho: 100
   **/
   private String numeroLote = null;
 
   @XmlElement(name="listaVolumes")
-  @ApiModelProperty(value = "Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregament de carga solta.")
+  @ApiModelProperty(value = "Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregamento de carga solta.")
   @Valid
  /**
-   * Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregament de carga solta.
+   * Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregamento de carga solta.
   **/
   private List<DadosVolumeVerificado> listaVolumes = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)")
   @Valid
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)
   **/
   private List<DadosDoChassi> listaChassi = null;
 
@@ -399,9 +399,9 @@ public enum TipoGranelEnum {
   private List<DadosDoPais> paisDestinoFinalCarga = null;
 
   @XmlElement(name="posicaoNavio")
-  @ApiModelProperty(value = "Posição do contêiner ou volume dentro do navio. <br/>Tamanho: 20")
+  @ApiModelProperty(value = "Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20")
  /**
-   * Posição do contêiner ou volume dentro do navio. <br/>Tamanho: 20
+   * Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20
   **/
   private String posicaoNavio = null;
 
@@ -411,9 +411,9 @@ public enum TipoGranelEnum {
   private DadosPrximoNavio proximoNavio = null;
 
   @XmlElement(name="portainer")
-  @ApiModelProperty(value = "Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar.  Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36")
+  @ApiModelProperty(value = "Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36")
  /**
-   * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar.  Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36
+   * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36
   **/
   private String portainer = null;
 
@@ -687,7 +687,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Identificação do número do Contêiner&lt;br/&gt;Tamanho: 200
+   * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
    * @return numeroConteiner
   **/
   @JsonProperty("numeroConteiner")
@@ -723,7 +723,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Tara Contêiner.&lt;br/&gt; Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.&lt;br/&gt;&lt;br/&gt;taraConteiner, até 4 casas decimais.
+   * Tara do contêiner.&lt;br/&gt; Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.&lt;br/&gt;&lt;br/&gt;taraConteiner, até 4 casas decimais.
    * @return taraConteiner
   **/
   @JsonProperty("taraConteiner")
@@ -795,7 +795,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS  - MINÉRIOS &lt;br/&gt;02 - SÓLIDOS  - GRÃOS &lt;br/&gt;03 - SÓLIDOS  - FARELOS &lt;br/&gt;04 - SÓLIDOS  - OUTROS &lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS &lt;br/&gt;07 - GASOSOS &lt;br/&gt;99 - OUTROS&lt;br/&gt;
+   * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;br/&gt;
    * @return tipoGranel
   **/
   @JsonProperty("tipoGranel")
@@ -852,7 +852,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. &lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;Por exemplo: carga solta. &lt;br/&gt;Tamanho: 100
+   * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.&lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;Por exemplo: carga solta. &lt;br/&gt;Tamanho: 100
    * @return numeroLote
   **/
   @JsonProperty("numeroLote")
@@ -870,7 +870,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregament de carga solta.
+   * Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregamento de carga solta.
    * @return listaVolumes
   **/
   @JsonProperty("listaVolumes")
@@ -893,7 +893,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Lista de Chassis.Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -1039,7 +1039,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Posição do contêiner ou volume dentro do navio. &lt;br/&gt;Tamanho: 20
+   * Posição do contêiner ou volume dentro do navio.&lt;br/&gt;Tamanho: 20
    * @return posicaoNavio
   **/
   @JsonProperty("posicaoNavio")
@@ -1075,7 +1075,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.&lt;br/&gt;No caso de uso de equipamento do navio ou elemento móvel, não informar.  Usar o protocolo do evento de georreferenciamento. &lt;br/&gt;&lt;br/&gt;Tamanho: 36
+   * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.&lt;br/&gt;No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. &lt;br/&gt;&lt;br/&gt;Tamanho: 36
    * @return portainer
   **/
   @JsonProperty("portainer")

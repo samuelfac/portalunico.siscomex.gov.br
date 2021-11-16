@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "OperadorEstrangeiroIntegracaoDTO", propOrder =
-    { "seq", "cpfCnpjRaiz", "codigo", "versao", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "email", "dataReferencia", "agenciasEmissoras"
+    { "seq", "cpfCnpjRaiz", "codigo", "versao", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "email", "dataReferencia", "identificacoesAdicionais"
 })
 
 @XmlRootElement(name="OperadorEstrangeiroIntegracaoDTO")
@@ -126,13 +126,13 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   **/
   private OffsetDateTime dataReferencia = null;
 
-  @XmlElement(name="agenciasEmissoras")
-  @ApiModelProperty(value = "Lista de códigos de Agências Emissoras<br>Tamanho: 3")
+  @XmlElement(name="identificacoesAdicionais")
+  @ApiModelProperty(value = "Lista de identificações adicionais do operador estrangeiro em agências internacionais.")
   @Valid
  /**
-   * Lista de códigos de Agências Emissoras<br>Tamanho: 3
+   * Lista de identificações adicionais do operador estrangeiro em agências internacionais.
   **/
-  private List<AgenciaEmissoraIntegracaoDTO> agenciasEmissoras = null;
+  private List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais = null;
  /**
    * Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial &lt;br&gt;Tamanho máximo: 3&lt;br&gt;Formato: Inteiro, com até 3 digitos
    * @return seq
@@ -393,25 +393,25 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   }
 
  /**
-   * Lista de códigos de Agências Emissoras&lt;br&gt;Tamanho: 3
-   * @return agenciasEmissoras
+   * Lista de identificações adicionais do operador estrangeiro em agências internacionais.
+   * @return identificacoesAdicionais
   **/
-  @JsonProperty("agenciasEmissoras")
-  public List<AgenciaEmissoraIntegracaoDTO> getAgenciasEmissoras() {
-    return agenciasEmissoras;
+  @JsonProperty("identificacoesAdicionais")
+  public List<IdentificacaoAdicionalIntegracaoDTO> getIdentificacoesAdicionais() {
+    return identificacoesAdicionais;
   }
 
-  public void setAgenciasEmissoras(List<AgenciaEmissoraIntegracaoDTO> agenciasEmissoras) {
-    this.agenciasEmissoras = agenciasEmissoras;
+  public void setIdentificacoesAdicionais(List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais) {
+    this.identificacoesAdicionais = identificacoesAdicionais;
   }
 
-  public OperadorEstrangeiroIntegracaoDTO agenciasEmissoras(List<AgenciaEmissoraIntegracaoDTO> agenciasEmissoras) {
-    this.agenciasEmissoras = agenciasEmissoras;
+  public OperadorEstrangeiroIntegracaoDTO identificacoesAdicionais(List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais) {
+    this.identificacoesAdicionais = identificacoesAdicionais;
     return this;
   }
 
-  public OperadorEstrangeiroIntegracaoDTO addAgenciasEmissorasItem(AgenciaEmissoraIntegracaoDTO agenciasEmissorasItem) {
-    this.agenciasEmissoras.add(agenciasEmissorasItem);
+  public OperadorEstrangeiroIntegracaoDTO addIdentificacoesAdicionaisItem(IdentificacaoAdicionalIntegracaoDTO identificacoesAdicionaisItem) {
+    this.identificacoesAdicionais.add(identificacoesAdicionaisItem);
     return this;
   }
 
@@ -435,7 +435,7 @@ public class OperadorEstrangeiroIntegracaoDTO  {
     sb.append("    codigoInterno: ").append(toIndentedString(codigoInterno)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
-    sb.append("    agenciasEmissoras: ").append(toIndentedString(agenciasEmissoras)).append("\n");
+    sb.append("    identificacoesAdicionais: ").append(toIndentedString(identificacoesAdicionais)).append("\n");
     sb.append("}");
     return sb.toString();
   }

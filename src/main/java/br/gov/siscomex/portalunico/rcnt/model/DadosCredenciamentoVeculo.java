@@ -128,9 +128,9 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="placa", required = true)
-  @ApiModelProperty(required = true, value = "Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+  @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
  /**
-   * Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
   **/
   private String placa = null;
 
@@ -198,16 +198,16 @@ public enum TipoOperacaoEnum {
   private String dataFimValidade = null;
 
   @XmlElement(name="horaPrevistaEntrada")
-  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar / sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
+  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
  /**
-   * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar / sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
+   * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
   **/
   private String horaPrevistaEntrada = null;
 
   @XmlElement(name="horaPrevistaSaida")
-  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar / sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
+  @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
  /**
-   * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar / sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
+   * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
   **/
   private String horaPrevistaSaida = null;
 
@@ -219,9 +219,9 @@ public enum TipoOperacaoEnum {
   private String areas = null;
 
   @XmlElement(name="credenciamentoAtivo")
-  @ApiModelProperty(example = "false", value = "Credenciamento Ativo. [S/N]?<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Credenciamento ativo?<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Credenciamento Ativo. [S/N]?<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Credenciamento ativo?<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean credenciamentoAtivo = null;
 
@@ -403,7 +403,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Placa de veículos (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")
@@ -584,7 +584,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar / sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
+   * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
    * @return horaPrevistaEntrada
   **/
   @JsonProperty("horaPrevistaEntrada")
@@ -602,7 +602,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar / sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
+   * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
    * @return horaPrevistaSaida
   **/
   @JsonProperty("horaPrevistaSaida")
@@ -638,7 +638,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Credenciamento Ativo. [S/N]?&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Credenciamento ativo?&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return credenciamentoAtivo
   **/
   @JsonProperty("credenciamentoAtivo")
