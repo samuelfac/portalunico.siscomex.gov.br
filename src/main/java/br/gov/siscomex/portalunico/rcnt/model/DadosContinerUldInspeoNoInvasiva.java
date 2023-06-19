@@ -1,14 +1,10 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosContinerUldInspeoNoInvasiva", propOrder =
@@ -18,10 +14,10 @@ import io.swagger.annotations.ApiModelProperty;
 @XmlRootElement(name="DadosContinerUldInspeoNoInvasiva")
 public class DadosContinerUldInspeoNoInvasiva  {
   
-  @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @XmlElement(name="idElemento", required = true)
+  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
   **/
   private String idElemento = null;
 
@@ -53,10 +49,11 @@ public class DadosContinerUldInspeoNoInvasiva  {
   **/
   private Boolean ocrNumero = null;
  /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
    * @return idElemento
   **/
   @JsonProperty("idElemento")
+  @NotNull
   public String getIdElemento() {
     return idElemento;
   }

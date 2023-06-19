@@ -1,17 +1,11 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RespostaApiItens", propOrder =
@@ -42,10 +36,10 @@ public class RespostaApiItens  {
   private List<LinkCover> links = null;
 
   @XmlElement(name="multiStatus")
-  @ApiModelProperty(value = "Lista que conterá o status para cada item da Duimp submetido pelos métodos PUT e POST.")
+  @ApiModelProperty(value = "Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. <br>Cada elemento desta lista possuí um atributo 'code' informando o código da resposta para um item específico.<br>Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro")
   @Valid
  /**
-   * Lista que conterá o status para cada item da Duimp submetido pelos métodos PUT e POST.
+   * Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. <br>Cada elemento desta lista possuí um atributo 'code' informando o código da resposta para um item específico.<br>Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro
   **/
   private List<RespostaApiMultiStatus> multiStatus = null;
  /**
@@ -108,7 +102,7 @@ public class RespostaApiItens  {
   }
 
  /**
-   * Lista que conterá o status para cada item da Duimp submetido pelos métodos PUT e POST.
+   * Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. &lt;br&gt;Cada elemento desta lista possuí um atributo &#39;code&#39; informando o código da resposta para um item específico.&lt;br&gt;Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro
    * @return multiStatus
   **/
   @JsonProperty("multiStatus")

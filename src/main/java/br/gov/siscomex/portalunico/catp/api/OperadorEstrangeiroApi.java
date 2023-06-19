@@ -1,27 +1,14 @@
 package br.gov.siscomex.portalunico.catp.api;
 
-import java.util.List;
+import br.gov.siscomex.portalunico.catp.model.LoteValidacaoVersaoDTO;
+import br.gov.siscomex.portalunico.catp.model.OperadorEstrangeiroIntegracaoDTO;
+import io.swagger.annotations.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-
-import br.gov.siscomex.portalunico.catp.model.LoteValidacaoDTO;
-import br.gov.siscomex.portalunico.catp.model.OperadorEstrangeiroIntegracaoDTO;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.util.List;
 
 /**
  * Catálogo de Produtos
@@ -98,7 +85,7 @@ public interface OperadorEstrangeiroApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Incluir/Retificar Operador Estrangeiro", notes = "", tags={ "Operador Estrangeiro" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = LoteValidacaoDTO.class, responseContainer = "List"),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = LoteValidacaoVersaoDTO.class, responseContainer = "List"),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

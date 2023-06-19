@@ -1,24 +1,18 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "EstoqueNFE", propOrder =
-    { "numero", "urf", "recinto", "latitude", "longitude", "registro", "responsavel", "ncm", "pesoAferido", "motivoNaoPesagem", "itens"
+    { "numero", "urf", "recinto", "latitude", "longitude", "registro", "responsavel", "pesoAferido", "motivoNaoPesagem", "itens"
 })
 
 @XmlRootElement(name="EstoqueNFE")
@@ -76,14 +70,6 @@ public class EstoqueNFE  {
    * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
   **/
   private String responsavel = null;
-
-  @XmlElement(name="ncm")
-  @ApiModelProperty(example = "1022190.0", value = "Código NCM do produto<br>Tamanho: 8")
-  @Valid
- /**
-   * Código NCM do produto<br>Tamanho: 8
-  **/
-  private BigDecimal ncm = null;
 
   @XmlElement(name="pesoAferido")
   @ApiModelProperty(example = "100.0", value = "Peso aferido na recepção em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
@@ -234,24 +220,6 @@ public class EstoqueNFE  {
   }
 
  /**
-   * Código NCM do produto&lt;br&gt;Tamanho: 8
-   * @return ncm
-  **/
-  @JsonProperty("ncm")
-  public BigDecimal getNcm() {
-    return ncm;
-  }
-
-  public void setNcm(BigDecimal ncm) {
-    this.ncm = ncm;
-  }
-
-  public EstoqueNFE ncm(BigDecimal ncm) {
-    this.ncm = ncm;
-    return this;
-  }
-
- /**
    * Peso aferido na recepção em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
    * @return pesoAferido
   **/
@@ -323,7 +291,6 @@ public class EstoqueNFE  {
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    registro: ").append(toIndentedString(registro)).append("\n");
     sb.append("    responsavel: ").append(toIndentedString(responsavel)).append("\n");
-    sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
     sb.append("    pesoAferido: ").append(toIndentedString(pesoAferido)).append("\n");
     sb.append("    motivoNaoPesagem: ").append(toIndentedString(motivoNaoPesagem)).append("\n");
     sb.append("    itens: ").append(toIndentedString(itens)).append("\n");

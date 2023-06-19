@@ -1,20 +1,15 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ConsultarLpcoResponse", propOrder =
-    { "numero", "dataRegistro", "situacao", "codigoModelo", "dataInicioVigenciaModelo", "nome", "dataFimVigencia", "dueVinculada", "prorrogacaoPendente", "retificacaoPendente", "dataSituacaoAtual"
+    { "numero", "dataRegistro", "situacao", "codigoModelo", "dataInicioVigenciaModelo", "nome", "dataInicioVigencia", "dataFimVigencia", "dueVinculada", "prorrogacaoPendente", "retificacaoPendente", "dataSituacaoAtual", "canal"
 })
 
 @XmlRootElement(name="ConsultarLpcoResponse")
@@ -66,6 +61,13 @@ public class ConsultarLpcoResponse  {
   **/
   private String nome = null;
 
+  @XmlElement(name="dataInicioVigencia")
+  @ApiModelProperty(example = "01/01/2020", value = "Data de início da vigência do LPCO<br>Formato: dd/MM/yyyy")
+ /**
+   * Data de início da vigência do LPCO<br>Formato: dd/MM/yyyy
+  **/
+  private String dataInicioVigencia = null;
+
   @XmlElement(name="dataFimVigencia")
   @ApiModelProperty(example = "25/11/2020", value = "Data de fim da vigência do LPCO<br>Formato: dd/MM/yyyy")
  /**
@@ -100,6 +102,56 @@ public class ConsultarLpcoResponse  {
    * Data em que o LPCO passou para sua situação atual<br> Formato: Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
   **/
   private String dataSituacaoAtual = null;
+
+
+@XmlType(name="CanalEnum")
+@XmlEnum(String.class)
+public enum CanalEnum {
+
+	@XmlEnumValue("VERDE")
+	@JsonProperty("VERDE")
+	VERDE(String.valueOf("VERDE")),
+	
+	@XmlEnumValue("AMARELO")
+	@JsonProperty("AMARELO")
+	AMARELO(String.valueOf("AMARELO")),
+	
+	@XmlEnumValue("VERMELHO")
+	@JsonProperty("VERMELHO")
+	VERMELHO(String.valueOf("VERMELHO"));
+
+
+    private String value;
+
+    CanalEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CanalEnum fromValue(String v) {
+        for (CanalEnum b : CanalEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+    }
+}
+
+  @XmlElement(name="canal")
+  @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
+ /**
+   * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
+  **/
+  private CanalEnum canal = null;
  /**
    * Número do LPCO&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
    * @return numero
@@ -215,6 +267,24 @@ public class ConsultarLpcoResponse  {
   }
 
  /**
+   * Data de início da vigência do LPCO&lt;br&gt;Formato: dd/MM/yyyy
+   * @return dataInicioVigencia
+  **/
+  @JsonProperty("dataInicioVigencia")
+  public String getDataInicioVigencia() {
+    return dataInicioVigencia;
+  }
+
+  public void setDataInicioVigencia(String dataInicioVigencia) {
+    this.dataInicioVigencia = dataInicioVigencia;
+  }
+
+  public ConsultarLpcoResponse dataInicioVigencia(String dataInicioVigencia) {
+    this.dataInicioVigencia = dataInicioVigencia;
+    return this;
+  }
+
+ /**
    * Data de fim da vigência do LPCO&lt;br&gt;Formato: dd/MM/yyyy
    * @return dataFimVigencia
   **/
@@ -307,6 +377,27 @@ public class ConsultarLpcoResponse  {
     return this;
   }
 
+ /**
+   * Canal. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
+   * @return canal
+  **/
+  @JsonProperty("canal")
+  public String getCanal() {
+    if (canal == null) {
+      return null;
+    }
+    return canal.value();
+  }
+
+  public void setCanal(CanalEnum canal) {
+    this.canal = canal;
+  }
+
+  public ConsultarLpcoResponse canal(CanalEnum canal) {
+    this.canal = canal;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -319,11 +410,13 @@ public class ConsultarLpcoResponse  {
     sb.append("    codigoModelo: ").append(toIndentedString(codigoModelo)).append("\n");
     sb.append("    dataInicioVigenciaModelo: ").append(toIndentedString(dataInicioVigenciaModelo)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
+    sb.append("    dataInicioVigencia: ").append(toIndentedString(dataInicioVigencia)).append("\n");
     sb.append("    dataFimVigencia: ").append(toIndentedString(dataFimVigencia)).append("\n");
     sb.append("    dueVinculada: ").append(toIndentedString(dueVinculada)).append("\n");
     sb.append("    prorrogacaoPendente: ").append(toIndentedString(prorrogacaoPendente)).append("\n");
     sb.append("    retificacaoPendente: ").append(toIndentedString(retificacaoPendente)).append("\n");
     sb.append("    dataSituacaoAtual: ").append(toIndentedString(dataSituacaoAtual)).append("\n");
+    sb.append("    canal: ").append(toIndentedString(canal)).append("\n");
     sb.append("}");
     return sb.toString();
   }

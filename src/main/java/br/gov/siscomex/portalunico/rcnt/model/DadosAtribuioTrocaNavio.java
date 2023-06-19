@@ -1,18 +1,11 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosAtribuioTrocaNavio", propOrder =
@@ -162,16 +155,16 @@ public enum TipoOperacaoEnum {
   private String escala = null;
 
   @XmlElement(name="portoDescarregamento")
-  @ApiModelProperty(value = "Porto em que a carga vai descarregar.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Porto.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Porto.pdf </a>")
+  @ApiModelProperty(value = "Porto em que a carga vai descarregar. Conforme tabela de domínio Porto disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Porto em que a carga vai descarregar.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Porto.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Porto.pdf </a>
+   * Porto em que a carga vai descarregar. Conforme tabela de domínio Porto disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
   private String portoDescarregamento = null;
 
   @XmlElement(name="paisDestinoFinalCarga")
-  @ApiModelProperty(example = "DE", value = "País de destino final da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
+  @ApiModelProperty(example = "DE", value = "País de destino final da carga. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * País de destino final da carga conforme tabela de domínio.<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
+   * País de destino final da carga. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
   private String paisDestinoFinalCarga = null;
  /**
@@ -436,7 +429,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Porto em que a carga vai descarregar.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Porto.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Porto.pdf &lt;/a&gt;
+   * Porto em que a carga vai descarregar. Conforme tabela de domínio Porto disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return portoDescarregamento
   **/
   @JsonProperty("portoDescarregamento")
@@ -454,7 +447,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * País de destino final da carga conforme tabela de domínio.&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
+   * País de destino final da carga. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return paisDestinoFinalCarga
   **/
   @JsonProperty("paisDestinoFinalCarga")

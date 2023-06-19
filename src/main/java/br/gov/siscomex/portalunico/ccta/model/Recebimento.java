@@ -1,20 +1,12 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Recebimento", propOrder =
@@ -29,9 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class Recebimento  {
   
   @XmlElement(name="protocolNumber")
-  @ApiModelProperty(example = "20200414180000001", value = "Número de protocolo gerado no recebimento do arquivo<br>Tamanho: 17<br>Formato: 'AAAAAAAAAAAAAAAAA'")
+  @ApiModelProperty(example = "123e4567-e89b-12d3-a456-426655440000", value = "Número de protocolo gerado no recebimento do arquivo<br>Tamanho: 17<br>Formato: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'")
  /**
-   * Número de protocolo gerado no recebimento do arquivo<br>Tamanho: 17<br>Formato: 'AAAAAAAAAAAAAAAAA'
+   * Número de protocolo gerado no recebimento do arquivo<br>Tamanho: 17<br>Formato: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'
   **/
   private String protocolNumber = null;
 
@@ -168,7 +160,7 @@ public enum StatusEnum {
   **/
   private List<ErroArquivo> errorList = null;
  /**
-   * Número de protocolo gerado no recebimento do arquivo&lt;br&gt;Tamanho: 17&lt;br&gt;Formato: &#39;AAAAAAAAAAAAAAAAA&#39;
+   * Número de protocolo gerado no recebimento do arquivo&lt;br&gt;Tamanho: 17&lt;br&gt;Formato: &#39;AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA&#39;
    * @return protocolNumber
   **/
   @JsonProperty("protocolNumber")

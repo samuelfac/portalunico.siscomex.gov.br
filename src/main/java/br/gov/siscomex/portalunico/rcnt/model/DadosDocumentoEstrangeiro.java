@@ -1,21 +1,14 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosDocumentoEstrangeiro", propOrder =
-    { "numero", "tipo", "validade", "paisEmissor"
+    { "numero", "paisEmissor", "tipo", "validade"
 })
 
 @XmlRootElement(name="DadosDocumentoEstrangeiro")
@@ -31,6 +24,13 @@ public class DadosDocumentoEstrangeiro  {
    * Número do documento<br/>Tamanho: 50
   **/
   private String numero = null;
+
+  @XmlElement(name="paisEmissor")
+  @ApiModelProperty(example = "DE", value = "País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+ /**
+   * País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+  **/
+  private String paisEmissor = null;
 
 
 @XmlType(name="TipoEnum")
@@ -84,13 +84,6 @@ public enum TipoEnum {
    * Validade do documento<br/>Formato: 'yyyy-MM-dd'
   **/
   private String validade = null;
-
-  @XmlElement(name="paisEmissor")
-  @ApiModelProperty(example = "DE", value = "País emissor do documento conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>")
- /**
-   * País emissor do documento conforme tabela de domínio<br/>Domínio: conforme <a href=\"../pages/exemplos/rcnt/Pais.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Pais.pdf </a>
-  **/
-  private String paisEmissor = null;
  /**
    * Número do documento&lt;br/&gt;Tamanho: 50
    * @return numero
@@ -106,6 +99,24 @@ public enum TipoEnum {
 
   public DadosDocumentoEstrangeiro numero(String numero) {
     this.numero = numero;
+    return this;
+  }
+
+ /**
+   * País emissor do documento. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
+   * @return paisEmissor
+  **/
+  @JsonProperty("paisEmissor")
+  public String getPaisEmissor() {
+    return paisEmissor;
+  }
+
+  public void setPaisEmissor(String paisEmissor) {
+    this.paisEmissor = paisEmissor;
+  }
+
+  public DadosDocumentoEstrangeiro paisEmissor(String paisEmissor) {
+    this.paisEmissor = paisEmissor;
     return this;
   }
 
@@ -148,24 +159,6 @@ public enum TipoEnum {
     return this;
   }
 
- /**
-   * País emissor do documento conforme tabela de domínio&lt;br/&gt;Domínio: conforme &lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Pais.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Pais.pdf &lt;/a&gt;
-   * @return paisEmissor
-  **/
-  @JsonProperty("paisEmissor")
-  public String getPaisEmissor() {
-    return paisEmissor;
-  }
-
-  public void setPaisEmissor(String paisEmissor) {
-    this.paisEmissor = paisEmissor;
-  }
-
-  public DadosDocumentoEstrangeiro paisEmissor(String paisEmissor) {
-    this.paisEmissor = paisEmissor;
-    return this;
-  }
-
 
   @Override
   public String toString() {
@@ -173,9 +166,9 @@ public enum TipoEnum {
     sb.append("class DadosDocumentoEstrangeiro {\n");
     
     sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
+    sb.append("    paisEmissor: ").append(toIndentedString(paisEmissor)).append("\n");
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    validade: ").append(toIndentedString(validade)).append("\n");
-    sb.append("    paisEmissor: ").append(toIndentedString(paisEmissor)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,19 +1,13 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemLpcoRequest", propOrder =
@@ -22,13 +16,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlRootElement(name="ItemLpcoRequest")
 /**
-  * Dados de um item de um LPCO a ser cadastrado ou alterado
+  * Dados de um item de um LPCO a ser alterado
  **/
-@ApiModel(description="Dados de um item de um LPCO a ser cadastrado ou alterado")
+@ApiModel(description="Dados de um item de um LPCO a ser alterado")
 public class ItemLpcoRequest  {
   
-  @XmlElement(name="numeroItem")
-  @ApiModelProperty(example = "1", value = "Número sequencial do item LPCO.")
+  @XmlElement(name="numeroItem", required = true)
+  @ApiModelProperty(example = "1", required = true, value = "Número sequencial do item LPCO.")
  /**
    * Número sequencial do item LPCO.
   **/
@@ -47,10 +41,10 @@ public class ItemLpcoRequest  {
   private Produto produto = null;
 
   @XmlElement(name="listaCamposNcm")
-  @ApiModelProperty(value = "Lista de campos de cada item do LPCO exigidos pelo modelo.")
+  @ApiModelProperty(value = "Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.")
   @Valid
  /**
-   * Lista de campos de cada item do LPCO exigidos pelo modelo.
+   * Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.
   **/
   private List<CampoLpcoRequest> listaCamposNcm = null;
 
@@ -66,6 +60,7 @@ public class ItemLpcoRequest  {
    * @return numeroItem
   **/
   @JsonProperty("numeroItem")
+  @NotNull
   public Integer getNumeroItem() {
     return numeroItem;
   }
@@ -117,7 +112,7 @@ public class ItemLpcoRequest  {
   }
 
  /**
-   * Lista de campos de cada item do LPCO exigidos pelo modelo.
+   * Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.
    * @return listaCamposNcm
   **/
   @JsonProperty("listaCamposNcm")

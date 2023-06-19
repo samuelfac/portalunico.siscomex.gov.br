@@ -1,24 +1,17 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosDaCarga", propOrder =
-    { "identificacaoCarga", "uaDeclarada", "ufDeclarada", "codRecintoLocalizacaoCarga", "uaDestinoFinal", "uaEntradaCarga", "ufEntradaCarga", "viaTransporte", "tipoConhecimento", "descTipoConhecimento", "paisProcedencia", "dataChegada", "pesoLiquido", "moedaFreteTotal", "valorFreteTotalMoedaUtiliza", "valorFreteTotalEmReal", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado", "moedaSeguro", "valorSeguroMoedaUtilizada", "valorSeguroEmReal"
+    { "identificacaoCarga", "uaDeclarada", "ufDeclarada", "codRecintoLocalizacaoCarga", "uaDestinoFinal", "uaEntradaCarga", "ufEntradaCarga", "viaTransporte", "tipoConhecimento", "descTipoConhecimento", "paisProcedencia", "dataChegada", "pesoLiquido", "moedaFreteTotal", "valorFreteTotalMoedaUtiliza", "valorFreteTotalEmReal", "valorFreteTotalDolar", "componentesFrete", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado", "moedaSeguro", "valorSeguroMoedaUtilizada", "valorSeguroEmReal", "valorSeguroDolar"
 })
 
 @XmlRootElement(name="DadosDaCarga")
@@ -174,9 +167,9 @@ public enum TipoConhecimentoEnum {
   private PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia = null;
 
   @XmlElement(name="dataChegada")
-  @ApiModelProperty(value = "Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+  @ApiModelProperty(value = "Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'")
  /**
-   * Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+   * Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'
   **/
   private OffsetDateTime dataChegada = null;
 
@@ -196,20 +189,36 @@ public enum TipoConhecimentoEnum {
   private Integer moedaFreteTotal = null;
 
   @XmlElement(name="valorFreteTotalMoedaUtiliza")
-  @ApiModelProperty(example = "10.12", value = "Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "10.12", value = "Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
   @Valid
  /**
-   * Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
   **/
   private BigDecimal valorFreteTotalMoedaUtiliza = null;
 
   @XmlElement(name="valorFreteTotalEmReal")
-  @ApiModelProperty(example = "40.48", value = "Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "40.48", value = "Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
   @Valid
  /**
-   * Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
   **/
   private BigDecimal valorFreteTotalEmReal = null;
+
+  @XmlElement(name="valorFreteTotalDolar")
+  @ApiModelProperty(example = "40.48", value = "Valor total do frete em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
+  @Valid
+ /**
+   * Valor total do frete em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+  **/
+  private BigDecimal valorFreteTotalDolar = null;
+
+  @XmlElement(name="componentesFrete")
+  @ApiModelProperty(value = "Lista de Componentes do Frete")
+  @Valid
+ /**
+   * Lista de Componentes do Frete
+  **/
+  private List<ComponenteDeFrete> componentesFrete = null;
 
   @XmlElement(name="valorAFRMMDevido")
   @ApiModelProperty(example = "20.12", value = "Valor Devido do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -295,6 +304,14 @@ public enum IndicadorAFRMMQuitadoEnum {
    * Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
   **/
   private BigDecimal valorSeguroEmReal = null;
+
+  @XmlElement(name="valorSeguroDolar")
+  @ApiModelProperty(example = "120.48", value = "Valor do seguro em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @Valid
+ /**
+   * Valor do seguro em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+  **/
+  private BigDecimal valorSeguroDolar = null;
  /**
    * Número de Identificação da Carga.&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN
    * @return identificacaoCarga
@@ -500,7 +517,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Data de Chegada da Carga na URF de Localização da Carga.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * Data de Chegada da Carga na URF de Localização da Carga.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
    * @return dataChegada
   **/
   @JsonProperty("dataChegada")
@@ -554,7 +571,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Valor total do frete na moeda utilizada&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do frete na moeda utilizada&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
    * @return valorFreteTotalMoedaUtiliza
   **/
   @JsonProperty("valorFreteTotalMoedaUtiliza")
@@ -572,7 +589,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Valor total do frete em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do frete em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
    * @return valorFreteTotalEmReal
   **/
   @JsonProperty("valorFreteTotalEmReal")
@@ -586,6 +603,47 @@ public enum IndicadorAFRMMQuitadoEnum {
 
   public DadosDaCarga valorFreteTotalEmReal(BigDecimal valorFreteTotalEmReal) {
     this.valorFreteTotalEmReal = valorFreteTotalEmReal;
+    return this;
+  }
+
+ /**
+   * Valor total do frete em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+   * @return valorFreteTotalDolar
+  **/
+  @JsonProperty("valorFreteTotalDolar")
+  public BigDecimal getValorFreteTotalDolar() {
+    return valorFreteTotalDolar;
+  }
+
+  public void setValorFreteTotalDolar(BigDecimal valorFreteTotalDolar) {
+    this.valorFreteTotalDolar = valorFreteTotalDolar;
+  }
+
+  public DadosDaCarga valorFreteTotalDolar(BigDecimal valorFreteTotalDolar) {
+    this.valorFreteTotalDolar = valorFreteTotalDolar;
+    return this;
+  }
+
+ /**
+   * Lista de Componentes do Frete
+   * @return componentesFrete
+  **/
+  @JsonProperty("componentesFrete")
+  public List<ComponenteDeFrete> getComponentesFrete() {
+    return componentesFrete;
+  }
+
+  public void setComponentesFrete(List<ComponenteDeFrete> componentesFrete) {
+    this.componentesFrete = componentesFrete;
+  }
+
+  public DadosDaCarga componentesFrete(List<ComponenteDeFrete> componentesFrete) {
+    this.componentesFrete = componentesFrete;
+    return this;
+  }
+
+  public DadosDaCarga addComponentesFreteItem(ComponenteDeFrete componentesFreteItem) {
+    this.componentesFrete.add(componentesFreteItem);
     return this;
   }
 
@@ -700,6 +758,24 @@ public enum IndicadorAFRMMQuitadoEnum {
     return this;
   }
 
+ /**
+   * Valor do seguro em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * @return valorSeguroDolar
+  **/
+  @JsonProperty("valorSeguroDolar")
+  public BigDecimal getValorSeguroDolar() {
+    return valorSeguroDolar;
+  }
+
+  public void setValorSeguroDolar(BigDecimal valorSeguroDolar) {
+    this.valorSeguroDolar = valorSeguroDolar;
+  }
+
+  public DadosDaCarga valorSeguroDolar(BigDecimal valorSeguroDolar) {
+    this.valorSeguroDolar = valorSeguroDolar;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -722,12 +798,15 @@ public enum IndicadorAFRMMQuitadoEnum {
     sb.append("    moedaFreteTotal: ").append(toIndentedString(moedaFreteTotal)).append("\n");
     sb.append("    valorFreteTotalMoedaUtiliza: ").append(toIndentedString(valorFreteTotalMoedaUtiliza)).append("\n");
     sb.append("    valorFreteTotalEmReal: ").append(toIndentedString(valorFreteTotalEmReal)).append("\n");
+    sb.append("    valorFreteTotalDolar: ").append(toIndentedString(valorFreteTotalDolar)).append("\n");
+    sb.append("    componentesFrete: ").append(toIndentedString(componentesFrete)).append("\n");
     sb.append("    valorAFRMMDevido: ").append(toIndentedString(valorAFRMMDevido)).append("\n");
     sb.append("    valorAFRMMPago: ").append(toIndentedString(valorAFRMMPago)).append("\n");
     sb.append("    indicadorAFRMMQuitado: ").append(toIndentedString(indicadorAFRMMQuitado)).append("\n");
     sb.append("    moedaSeguro: ").append(toIndentedString(moedaSeguro)).append("\n");
     sb.append("    valorSeguroMoedaUtilizada: ").append(toIndentedString(valorSeguroMoedaUtilizada)).append("\n");
     sb.append("    valorSeguroEmReal: ").append(toIndentedString(valorSeguroEmReal)).append("\n");
+    sb.append("    valorSeguroDolar: ").append(toIndentedString(valorSeguroDolar)).append("\n");
     sb.append("}");
     return sb.toString();
   }

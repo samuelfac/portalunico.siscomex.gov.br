@@ -1,26 +1,19 @@
 package br.gov.siscomex.portalunico.edocex.model;
 
-import java.time.OffsetDateTime;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Documento", propOrder =
-    { "anexadoPor", "cpfAnexacao", "dataHoraAnexacao", "disponivelParaOrgaos", "documentoLido", "documentoPalavrasChave", "id", "idTipoDocumento", "nomeArquivo", "nomeTipoDocumento", "restritoAosOrgaos", "sha256"
+    { "acessivelSetorPrivado", "anexadoPor", "cpfAnexacao", "dataHoraAnexacao", "disponivelParaOrgaos", "documentoLido", "documentoPalavrasChave", "id", "idTipoDocumento", "nomeArquivo", "nomeTipoDocumento", "sha256", "tipoAcesso"
 })
 
 @XmlRootElement(name="Documento")
@@ -30,6 +23,13 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Documento.")
 public class Documento  {
   
+  @XmlElement(name="acessivelSetorPrivado")
+  @ApiModelProperty(example = "false", value = "Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)")
+ /**
+   * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
+  **/
+  private Boolean acessivelSetorPrivado = false;
+
 
 @XmlType(name="AnexadoPorEnum")
 @XmlEnum(String.class)
@@ -69,8 +69,8 @@ public enum AnexadoPorEnum {
     }
 }
 
-  @XmlElement(name="anexadoPor")
-  @ApiModelProperty(example = "Representante Legal", value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
+  @XmlElement(name="anexadoPor", required = true)
+  @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
  /**
    * Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30
   **/
@@ -83,32 +83,35 @@ public enum AnexadoPorEnum {
   **/
   private String cpfAnexacao = null;
 
-  @XmlElement(name="dataHoraAnexacao")
-  @ApiModelProperty(value = "Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
+  @XmlElement(name="dataHoraAnexacao", required = true)
+  @ApiModelProperty(required = true, value = "Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
  /**
    * Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
   **/
   private OffsetDateTime dataHoraAnexacao = null;
 
   @XmlElement(name="disponivelParaOrgaos")
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>")
   @Valid
+ /**
+   * Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>
+  **/
   private List<DocumentoDisponivelParaOrgao> disponivelParaOrgaos = null;
 
-  @XmlElement(name="documentoLido")
-  @ApiModelProperty(example = "true", value = "Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.")
+  @XmlElement(name="documentoLido", required = true)
+  @ApiModelProperty(example = "true", required = true, value = "Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.")
  /**
    * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
   **/
   private Boolean documentoLido = false;
 
-  @XmlElement(name="documentoPalavrasChave")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="documentoPalavrasChave", required = true)
+  @ApiModelProperty(required = true, value = "")
   @Valid
-  private List<DocumentoPalavraChave> documentoPalavrasChave = null;
+  private List<DocumentoPalavraChave> documentoPalavrasChave = new ArrayList<>();
 
-  @XmlElement(name="id")
-  @ApiModelProperty(example = "4456487453", value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807")
+  @XmlElement(name="id", required = true)
+  @ApiModelProperty(example = "4456487453", required = true, value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807")
  /**
    * Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807
   **/
@@ -121,38 +124,100 @@ public enum AnexadoPorEnum {
   **/
   private Integer idTipoDocumento = null;
 
-  @XmlElement(name="nomeArquivo")
-  @ApiModelProperty(example = "texto.txt", value = "Nome do arquivo<br/>Tamanho máximo: 255")
+  @XmlElement(name="nomeArquivo", required = true)
+  @ApiModelProperty(example = "texto.txt", required = true, value = "Nome do arquivo<br/>Tamanho máximo: 255")
  /**
    * Nome do arquivo<br/>Tamanho máximo: 255
   **/
   private String nomeArquivo = null;
 
-  @XmlElement(name="nomeTipoDocumento")
-  @ApiModelProperty(example = "Fatura Comercial", value = "Nome do tipo de documento.<br/>Tamanho máximo: 255")
+  @XmlElement(name="nomeTipoDocumento", required = true)
+  @ApiModelProperty(example = "Fatura Comercial", required = true, value = "Nome do tipo de documento.<br/>Tamanho máximo: 255")
  /**
    * Nome do tipo de documento.<br/>Tamanho máximo: 255
   **/
   private String nomeTipoDocumento = null;
 
-  @XmlElement(name="restritoAosOrgaos")
-  @ApiModelProperty(example = "true", value = "Indica que este documento esta disponível apenas para os órgãos anuentes. (Se aplica apenas nas visões RFB e Anuentes)")
- /**
-   * Indica que este documento esta disponível apenas para os órgãos anuentes. (Se aplica apenas nas visões RFB e Anuentes)
-  **/
-  private Boolean restritoAosOrgaos = false;
-
-  @XmlElement(name="sha256")
-  @ApiModelProperty(example = "536292681b12d75fb1bce7b793d38c5d9d82efc408b53bda08abeeccb5eda434", value = "String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64")
+  @XmlElement(name="sha256", required = true)
+  @ApiModelProperty(example = "536292681b12d75fb1bce7b793d38c5d9d82efc408b53bda08abeeccb5eda434", required = true, value = "String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64")
  /**
    * String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64
   **/
   private String sha256 = null;
+
+
+@XmlType(name="TipoAcessoEnum")
+@XmlEnum(Integer.class)
+public enum TipoAcessoEnum {
+
+	@XmlEnumValue("1")
+	@JsonProperty("1")
+	NUMBER_1(Integer.valueOf(1)),
+	
+	@XmlEnumValue("2")
+	@JsonProperty("2")
+	NUMBER_2(Integer.valueOf(2)),
+	
+	@XmlEnumValue("3")
+	@JsonProperty("3")
+	NUMBER_3(Integer.valueOf(3));
+
+
+    private Integer value;
+
+    TipoAcessoEnum (Integer v) {
+        value = v;
+    }
+
+    public Integer value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static TipoAcessoEnum fromValue(String v) {
+        for (TipoAcessoEnum b : TipoAcessoEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoAcessoEnum");
+    }
+}
+
+  @XmlElement(name="tipoAcesso")
+  @ApiModelProperty(example = "1", value = "Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>")
+ /**
+   * Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>
+  **/
+  private TipoAcessoEnum tipoAcesso = null;
+ /**
+   * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
+   * @return acessivelSetorPrivado
+  **/
+  @JsonProperty("acessivelSetorPrivado")
+  public Boolean isAcessivelSetorPrivado() {
+    return acessivelSetorPrivado;
+  }
+
+  public void setAcessivelSetorPrivado(Boolean acessivelSetorPrivado) {
+    this.acessivelSetorPrivado = acessivelSetorPrivado;
+  }
+
+  public Documento acessivelSetorPrivado(Boolean acessivelSetorPrivado) {
+    this.acessivelSetorPrivado = acessivelSetorPrivado;
+    return this;
+  }
+
  /**
    * Tipo de usuário/órgão que anexou o documento.&lt;br/&gt;Tamanho máximo: 30
    * @return anexadoPor
   **/
   @JsonProperty("anexadoPor")
+  @NotNull
   public String getAnexadoPor() {
     if (anexadoPor == null) {
       return null;
@@ -192,6 +257,7 @@ public enum AnexadoPorEnum {
    * @return dataHoraAnexacao
   **/
   @JsonProperty("dataHoraAnexacao")
+  @NotNull
   public OffsetDateTime getDataHoraAnexacao() {
     return dataHoraAnexacao;
   }
@@ -206,7 +272,7 @@ public enum AnexadoPorEnum {
   }
 
  /**
-   * Get disponivelParaOrgaos
+   * Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR&lt;br/&gt;
    * @return disponivelParaOrgaos
   **/
   @JsonProperty("disponivelParaOrgaos")
@@ -233,6 +299,7 @@ public enum AnexadoPorEnum {
    * @return documentoLido
   **/
   @JsonProperty("documentoLido")
+  @NotNull
   public Boolean isDocumentoLido() {
     return documentoLido;
   }
@@ -251,6 +318,7 @@ public enum AnexadoPorEnum {
    * @return documentoPalavrasChave
   **/
   @JsonProperty("documentoPalavrasChave")
+  @NotNull
   public List<DocumentoPalavraChave> getDocumentoPalavrasChave() {
     return documentoPalavrasChave;
   }
@@ -274,6 +342,7 @@ public enum AnexadoPorEnum {
    * @return id
   **/
   @JsonProperty("id")
+  @NotNull
   public Long getId() {
     return id;
   }
@@ -311,6 +380,7 @@ public enum AnexadoPorEnum {
    * @return nomeArquivo
   **/
   @JsonProperty("nomeArquivo")
+  @NotNull
   public String getNomeArquivo() {
     return nomeArquivo;
   }
@@ -329,6 +399,7 @@ public enum AnexadoPorEnum {
    * @return nomeTipoDocumento
   **/
   @JsonProperty("nomeTipoDocumento")
+  @NotNull
   public String getNomeTipoDocumento() {
     return nomeTipoDocumento;
   }
@@ -343,28 +414,11 @@ public enum AnexadoPorEnum {
   }
 
  /**
-   * Indica que este documento esta disponível apenas para os órgãos anuentes. (Se aplica apenas nas visões RFB e Anuentes)
-   * @return restritoAosOrgaos
-  **/
-  @JsonProperty("restritoAosOrgaos")
-  public Boolean isRestritoAosOrgaos() {
-    return restritoAosOrgaos;
-  }
-
-  public void setRestritoAosOrgaos(Boolean restritoAosOrgaos) {
-    this.restritoAosOrgaos = restritoAosOrgaos;
-  }
-
-  public Documento restritoAosOrgaos(Boolean restritoAosOrgaos) {
-    this.restritoAosOrgaos = restritoAosOrgaos;
-    return this;
-  }
-
- /**
    * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
    * @return sha256
   **/
   @JsonProperty("sha256")
+  @NotNull
   public String getSha256() {
     return sha256;
   }
@@ -378,12 +432,34 @@ public enum AnexadoPorEnum {
     return this;
   }
 
+ /**
+   * Tipo de acesso ao documento.&lt;br/&gt;&lt;br/&gt;Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO&lt;br/&gt;&lt;br/&gt;1 - Acessível para todos os órgãos da operação&lt;br/&gt;2 - Restringir a disponibilização para RFB e SEFAZ&lt;br/&gt;3 - Acessível apenas para RFB&lt;br/&gt;&lt;br/&gt;
+   * @return tipoAcesso
+  **/
+  @JsonProperty("tipoAcesso")
+  public Integer getTipoAcesso() {
+    if (tipoAcesso == null) {
+      return null;
+    }
+    return tipoAcesso.value();
+  }
+
+  public void setTipoAcesso(TipoAcessoEnum tipoAcesso) {
+    this.tipoAcesso = tipoAcesso;
+  }
+
+  public Documento tipoAcesso(TipoAcessoEnum tipoAcesso) {
+    this.tipoAcesso = tipoAcesso;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Documento {\n");
     
+    sb.append("    acessivelSetorPrivado: ").append(toIndentedString(acessivelSetorPrivado)).append("\n");
     sb.append("    anexadoPor: ").append(toIndentedString(anexadoPor)).append("\n");
     sb.append("    cpfAnexacao: ").append(toIndentedString(cpfAnexacao)).append("\n");
     sb.append("    dataHoraAnexacao: ").append(toIndentedString(dataHoraAnexacao)).append("\n");
@@ -394,8 +470,8 @@ public enum AnexadoPorEnum {
     sb.append("    idTipoDocumento: ").append(toIndentedString(idTipoDocumento)).append("\n");
     sb.append("    nomeArquivo: ").append(toIndentedString(nomeArquivo)).append("\n");
     sb.append("    nomeTipoDocumento: ").append(toIndentedString(nomeTipoDocumento)).append("\n");
-    sb.append("    restritoAosOrgaos: ").append(toIndentedString(restritoAosOrgaos)).append("\n");
     sb.append("    sha256: ").append(toIndentedString(sha256)).append("\n");
+    sb.append("    tipoAcesso: ").append(toIndentedString(tipoAcesso)).append("\n");
     sb.append("}");
     return sb.toString();
   }

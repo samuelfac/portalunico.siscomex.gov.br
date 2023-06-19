@@ -1,25 +1,17 @@
 package br.gov.siscomex.portalunico.pcce.model;
 
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SolicitacaoCalculoIcmsDto", propOrder =
-    { "cnaeAdquirente", "cnaeImportador", "codMunicipioDesembaracoPretendido", "cpfSolicitante", "descricaoDespesasAduaneiras", "informacoesComplementares", "numeroDeclaracao", "tipoDeclaracao", "tipoSolicitacao", "tipoTratamento", "ufAdquirente", "ufFavorecida", "ufImportador", "valorAfrmm", "valorDespesasAduaneiras", "versaoDeclaracao"
+    { "cnaeAdquirente", "cnaeImportador", "codMunicipioDesembaracoPretendido", "cpfSolicitante", "descricaoDespesasAduaneiras", "informacoesComplementares", "numeroDeclaracao", "opcaoIcms", "tipoDeclaracao", "tipoSolicitacao", "tipoTratamento", "ufAdquirente", "ufFavorecida", "ufImportador", "valorAfrmm", "valorDespesasAduaneiras", "versaoDeclaracao"
 })
 
 @XmlRootElement(name="SolicitacaoCalculoIcmsDto")
@@ -77,6 +69,11 @@ public class SolicitacaoCalculoIcmsDto  {
    * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
   **/
   private String numeroDeclaracao = null;
+
+  @XmlElement(name="opcaoIcms")
+  @ApiModelProperty(value = "")
+  @Valid
+  private OpcaoIcmsConsultaDto opcaoIcms = null;
 
 
 @XmlType(name="TipoDeclaracaoEnum")
@@ -822,6 +819,24 @@ public enum UfImportadorEnum {
   }
 
  /**
+   * Get opcaoIcms
+   * @return opcaoIcms
+  **/
+  @JsonProperty("opcaoIcms")
+  public OpcaoIcmsConsultaDto getOpcaoIcms() {
+    return opcaoIcms;
+  }
+
+  public void setOpcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
+    this.opcaoIcms = opcaoIcms;
+  }
+
+  public SolicitacaoCalculoIcmsDto opcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
+    this.opcaoIcms = opcaoIcms;
+    return this;
+  }
+
+ /**
    * Tipo da declaração no Comércio Exterior
    * @return tipoDeclaracao
   **/
@@ -1021,6 +1036,7 @@ public enum UfImportadorEnum {
     sb.append("    descricaoDespesasAduaneiras: ").append(toIndentedString(descricaoDespesasAduaneiras)).append("\n");
     sb.append("    informacoesComplementares: ").append(toIndentedString(informacoesComplementares)).append("\n");
     sb.append("    numeroDeclaracao: ").append(toIndentedString(numeroDeclaracao)).append("\n");
+    sb.append("    opcaoIcms: ").append(toIndentedString(opcaoIcms)).append("\n");
     sb.append("    tipoDeclaracao: ").append(toIndentedString(tipoDeclaracao)).append("\n");
     sb.append("    tipoSolicitacao: ").append(toIndentedString(tipoSolicitacao)).append("\n");
     sb.append("    tipoTratamento: ").append(toIndentedString(tipoTratamento)).append("\n");

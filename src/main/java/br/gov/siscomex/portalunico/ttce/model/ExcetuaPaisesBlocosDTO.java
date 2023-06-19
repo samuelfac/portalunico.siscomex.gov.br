@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.ttce.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ExcetuaPaisesBlocosDTO", propOrder =
@@ -34,7 +28,7 @@ public class ExcetuaPaisesBlocosDTO  {
  /**
    * Lista contendo o código e o nome dos Blocos Econômicos para os quais se excetua este conjunto de Tratamento Tributário agrupados.
   **/
-  private List<CodigoNomeBlocoDTO> blocos = new ArrayList<>();
+  private List<CodigoNomeBlocoExcetuaDTO> blocos = new ArrayList<>();
 
   @XmlElement(name="paises", required = true)
   @ApiModelProperty(required = true, value = "Lista contendo o código e o nome dos Países para os quais se excetua este conjunto de Tratamentos Tributários agrupados.")
@@ -42,27 +36,27 @@ public class ExcetuaPaisesBlocosDTO  {
  /**
    * Lista contendo o código e o nome dos Países para os quais se excetua este conjunto de Tratamentos Tributários agrupados.
   **/
-  private List<CodigoNomePaisDTO> paises = new ArrayList<>();
+  private List<CodigoNomePaisExcetuaDTO> paises = new ArrayList<>();
  /**
    * Lista contendo o código e o nome dos Blocos Econômicos para os quais se excetua este conjunto de Tratamento Tributário agrupados.
    * @return blocos
   **/
   @JsonProperty("blocos")
   @NotNull
-  public List<CodigoNomeBlocoDTO> getBlocos() {
+  public List<CodigoNomeBlocoExcetuaDTO> getBlocos() {
     return blocos;
   }
 
-  public void setBlocos(List<CodigoNomeBlocoDTO> blocos) {
+  public void setBlocos(List<CodigoNomeBlocoExcetuaDTO> blocos) {
     this.blocos = blocos;
   }
 
-  public ExcetuaPaisesBlocosDTO blocos(List<CodigoNomeBlocoDTO> blocos) {
+  public ExcetuaPaisesBlocosDTO blocos(List<CodigoNomeBlocoExcetuaDTO> blocos) {
     this.blocos = blocos;
     return this;
   }
 
-  public ExcetuaPaisesBlocosDTO addBlocosItem(CodigoNomeBlocoDTO blocosItem) {
+  public ExcetuaPaisesBlocosDTO addBlocosItem(CodigoNomeBlocoExcetuaDTO blocosItem) {
     this.blocos.add(blocosItem);
     return this;
   }
@@ -73,20 +67,20 @@ public class ExcetuaPaisesBlocosDTO  {
   **/
   @JsonProperty("paises")
   @NotNull
-  public List<CodigoNomePaisDTO> getPaises() {
+  public List<CodigoNomePaisExcetuaDTO> getPaises() {
     return paises;
   }
 
-  public void setPaises(List<CodigoNomePaisDTO> paises) {
+  public void setPaises(List<CodigoNomePaisExcetuaDTO> paises) {
     this.paises = paises;
   }
 
-  public ExcetuaPaisesBlocosDTO paises(List<CodigoNomePaisDTO> paises) {
+  public ExcetuaPaisesBlocosDTO paises(List<CodigoNomePaisExcetuaDTO> paises) {
     this.paises = paises;
     return this;
   }
 
-  public ExcetuaPaisesBlocosDTO addPaisesItem(CodigoNomePaisDTO paisesItem) {
+  public ExcetuaPaisesBlocosDTO addPaisesItem(CodigoNomePaisExcetuaDTO paisesItem) {
     this.paises.add(paisesItem);
     return this;
   }

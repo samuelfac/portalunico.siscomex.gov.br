@@ -1,22 +1,15 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CargaDuimpConsultaCover", propOrder =
-    { "unidadeDeclarada", "identificacao", "seguro", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado"
+    { "unidadeDeclarada", "identificacao", "seguro", "frete", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado"
 })
 
 @XmlRootElement(name="CargaDuimpConsultaCover")
@@ -41,7 +34,12 @@ public class CargaDuimpConsultaCover  {
   @XmlElement(name="seguro")
   @ApiModelProperty(value = "")
   @Valid
-  private SeguroCargaDuimpConsultaCover seguro = null;
+  private CargaDuimpSeguroConsultaCover seguro = null;
+
+  @XmlElement(name="frete")
+  @ApiModelProperty(value = "")
+  @Valid
+  private CargaDuimpFreteConsultaCover frete = null;
 
   @XmlElement(name="valorAFRMMDevido")
   @ApiModelProperty(example = "153.77", value = "Valor devido do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -147,16 +145,34 @@ public enum IndicadorAFRMMQuitadoEnum {
    * @return seguro
   **/
   @JsonProperty("seguro")
-  public SeguroCargaDuimpConsultaCover getSeguro() {
+  public CargaDuimpSeguroConsultaCover getSeguro() {
     return seguro;
   }
 
-  public void setSeguro(SeguroCargaDuimpConsultaCover seguro) {
+  public void setSeguro(CargaDuimpSeguroConsultaCover seguro) {
     this.seguro = seguro;
   }
 
-  public CargaDuimpConsultaCover seguro(SeguroCargaDuimpConsultaCover seguro) {
+  public CargaDuimpConsultaCover seguro(CargaDuimpSeguroConsultaCover seguro) {
     this.seguro = seguro;
+    return this;
+  }
+
+ /**
+   * Get frete
+   * @return frete
+  **/
+  @JsonProperty("frete")
+  public CargaDuimpFreteConsultaCover getFrete() {
+    return frete;
+  }
+
+  public void setFrete(CargaDuimpFreteConsultaCover frete) {
+    this.frete = frete;
+  }
+
+  public CargaDuimpConsultaCover frete(CargaDuimpFreteConsultaCover frete) {
+    this.frete = frete;
     return this;
   }
 
@@ -226,6 +242,7 @@ public enum IndicadorAFRMMQuitadoEnum {
     sb.append("    unidadeDeclarada: ").append(toIndentedString(unidadeDeclarada)).append("\n");
     sb.append("    identificacao: ").append(toIndentedString(identificacao)).append("\n");
     sb.append("    seguro: ").append(toIndentedString(seguro)).append("\n");
+    sb.append("    frete: ").append(toIndentedString(frete)).append("\n");
     sb.append("    valorAFRMMDevido: ").append(toIndentedString(valorAFRMMDevido)).append("\n");
     sb.append("    valorAFRMMPago: ").append(toIndentedString(valorAFRMMPago)).append("\n");
     sb.append("    indicadorAFRMMQuitado: ").append(toIndentedString(indicadorAFRMMQuitado)).append("\n");

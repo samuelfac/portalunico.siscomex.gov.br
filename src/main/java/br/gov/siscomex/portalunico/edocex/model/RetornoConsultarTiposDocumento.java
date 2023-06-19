@@ -1,18 +1,14 @@
 package br.gov.siscomex.portalunico.edocex.model;
 
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RetornoConsultarTiposDocumento", propOrder =
@@ -26,27 +22,27 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description="Retorno da consulta de tipos de documentos e de órgãos anuentes.")
 public class RetornoConsultarTiposDocumento  {
   
-  @XmlElement(name="orgaosAnuentes")
-  @ApiModelProperty(value = "Órgãos anuentes.")
+  @XmlElement(name="orgaosAnuentes", required = true)
+  @ApiModelProperty(required = true, value = "Órgãos anuentes.")
   @Valid
  /**
    * Órgãos anuentes.
   **/
-  private List<OrgaoAnuente> orgaosAnuentes = null;
+  private List<OrgaoAnuente> orgaosAnuentes = new ArrayList<>();
 
-  @XmlElement(name="tiposDocumento")
-  @ApiModelProperty(value = "Tipos de documentos.")
+  @XmlElement(name="tiposDocumento", required = true)
+  @ApiModelProperty(required = true, value = "Tipos de documentos.")
   @Valid
  /**
    * Tipos de documentos.
   **/
-  private List<TipoDocumento> tiposDocumento = null;
+  private List<TipoDocumento> tiposDocumento = new ArrayList<>();
 
   @XmlElement(name="tiposDossie")
-  @ApiModelProperty(value = "Tipos de dossiê.")
+  @ApiModelProperty(value = "Tipos de dossiê.<br/><br/>Somente será retornado na consulta por tipo de operação quando, na operação solicitada, existir mais de um tipo de dossiê possível de ser utilizado. As operações que permitem mais de um tipo de dossiê são: DI, LI, RE e DT.")
   @Valid
  /**
-   * Tipos de dossiê.
+   * Tipos de dossiê.<br/><br/>Somente será retornado na consulta por tipo de operação quando, na operação solicitada, existir mais de um tipo de dossiê possível de ser utilizado. As operações que permitem mais de um tipo de dossiê são: DI, LI, RE e DT.
   **/
   private List<TipoDossie> tiposDossie = null;
  /**
@@ -54,6 +50,7 @@ public class RetornoConsultarTiposDocumento  {
    * @return orgaosAnuentes
   **/
   @JsonProperty("orgaosAnuentes")
+  @NotNull
   public List<OrgaoAnuente> getOrgaosAnuentes() {
     return orgaosAnuentes;
   }
@@ -77,6 +74,7 @@ public class RetornoConsultarTiposDocumento  {
    * @return tiposDocumento
   **/
   @JsonProperty("tiposDocumento")
+  @NotNull
   public List<TipoDocumento> getTiposDocumento() {
     return tiposDocumento;
   }
@@ -96,7 +94,7 @@ public class RetornoConsultarTiposDocumento  {
   }
 
  /**
-   * Tipos de dossiê.
+   * Tipos de dossiê.&lt;br/&gt;&lt;br/&gt;Somente será retornado na consulta por tipo de operação quando, na operação solicitada, existir mais de um tipo de dossiê possível de ser utilizado. As operações que permitem mais de um tipo de dossiê são: DI, LI, RE e DT.
    * @return tiposDossie
   **/
   @JsonProperty("tiposDossie")

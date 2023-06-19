@@ -1,18 +1,13 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CondicaoVendaDTO", propOrder =
-    { "codigo", "descricao", "descricaoCrt"
+    { "codigo", "descricao"
 })
 
 @XmlRootElement(name="CondicaoVendaDTO")
@@ -31,13 +26,6 @@ public class CondicaoVendaDTO  {
    * Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 100
   **/
   private String descricao = null;
-
-  @XmlElement(name="descricaoCrt")
-  @ApiModelProperty(value = "Descrição CRT<br />Tamanho mínimo: 0<br />Tamanho máximo: 100")
- /**
-   * Descrição CRT<br />Tamanho mínimo: 0<br />Tamanho máximo: 100
-  **/
-  private String descricaoCrt = null;
  /**
    * Código&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 3
    * @return codigo
@@ -74,24 +62,6 @@ public class CondicaoVendaDTO  {
     return this;
   }
 
- /**
-   * Descrição CRT&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 100
-   * @return descricaoCrt
-  **/
-  @JsonProperty("descricaoCrt")
-  public String getDescricaoCrt() {
-    return descricaoCrt;
-  }
-
-  public void setDescricaoCrt(String descricaoCrt) {
-    this.descricaoCrt = descricaoCrt;
-  }
-
-  public CondicaoVendaDTO descricaoCrt(String descricaoCrt) {
-    this.descricaoCrt = descricaoCrt;
-    return this;
-  }
-
 
   @Override
   public String toString() {
@@ -100,7 +70,6 @@ public class CondicaoVendaDTO  {
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
-    sb.append("    descricaoCrt: ").append(toIndentedString(descricaoCrt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

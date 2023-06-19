@@ -1,20 +1,12 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CertificadoMercosul", propOrder =
@@ -33,10 +25,6 @@ public class CertificadoMercosul  {
 @XmlEnum(String.class)
 public enum TipoCertificadoMercosulEnum {
 
-	@XmlEnumValue("1")
-	@JsonProperty("1")
-	_1(String.valueOf("1")),
-	
 	@XmlEnumValue("2")
 	@JsonProperty("2")
 	_2(String.valueOf("2")),
@@ -72,9 +60,9 @@ public enum TipoCertificadoMercosulEnum {
 }
 
   @XmlElement(name="tipoCertificadoMercosul")
-  @ApiModelProperty(example = "2", value = "Tipo de certificado Mercosul.<br>Dominio:<br>1 - Sem certificado<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1")
+  @ApiModelProperty(example = "2", value = "Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1")
  /**
-   * Tipo de certificado Mercosul.<br>Dominio:<br>1 - Sem certificado<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1
+   * Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1
   **/
   private TipoCertificadoMercosulEnum tipoCertificadoMercosul = null;
 
@@ -93,7 +81,7 @@ public enum TipoCertificadoMercosulEnum {
   **/
   private BigDecimal quantidadeUnidadeEstatisticaCertificado = null;
  /**
-   * Tipo de certificado Mercosul.&lt;br&gt;Dominio:&lt;br&gt;1 - Sem certificado&lt;br&gt;2 - CCPTC&lt;br&gt;3 - CCROM&lt;br&gt;Tamanho: 1
+   * Tipo de certificado Mercosul.&lt;br&gt;Dominio:&lt;br&gt;2 - CCPTC&lt;br&gt;3 - CCROM&lt;br&gt;Tamanho: 1
    * @return tipoCertificadoMercosul
   **/
   @JsonProperty("tipoCertificadoMercosul")

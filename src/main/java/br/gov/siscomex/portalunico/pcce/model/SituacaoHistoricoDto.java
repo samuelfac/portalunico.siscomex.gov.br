@@ -1,20 +1,11 @@
 package br.gov.siscomex.portalunico.pcce.model;
 
-import java.time.OffsetDateTime;
-
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SituacaoHistoricoDto", propOrder =
@@ -43,11 +34,11 @@ public class SituacaoHistoricoDto  {
   private String cpfResponsavel = null;
 
   @XmlElement(name="dataSituacao", required = true)
-  @ApiModelProperty(example = "2019-09-17T18:38:23.056Z", required = true, value = "Data da situação<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+  @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data da situação<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
  /**
-   * Data da situação<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+   * Data da situação<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
   **/
-  private OffsetDateTime dataSituacao = null;
+  private String dataSituacao = null;
 
 
 @XmlType(name="DescricaoSituacaoEnum")
@@ -188,20 +179,20 @@ public enum DescricaoSituacaoEnum {
   }
 
  /**
-   * Data da situação&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * Data da situação&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
    * @return dataSituacao
   **/
   @JsonProperty("dataSituacao")
   @NotNull
-  public OffsetDateTime getDataSituacao() {
+  public String getDataSituacao() {
     return dataSituacao;
   }
 
-  public void setDataSituacao(OffsetDateTime dataSituacao) {
+  public void setDataSituacao(String dataSituacao) {
     this.dataSituacao = dataSituacao;
   }
 
-  public SituacaoHistoricoDto dataSituacao(OffsetDateTime dataSituacao) {
+  public SituacaoHistoricoDto dataSituacao(String dataSituacao) {
     this.dataSituacao = dataSituacao;
     return this;
   }

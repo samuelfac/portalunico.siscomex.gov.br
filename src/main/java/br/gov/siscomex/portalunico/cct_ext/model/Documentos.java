@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Documentos", propOrder =
@@ -23,20 +17,20 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlRootElement(name="Documentos")
 /**
-  * Lista de documentos de carga
+  * Documentos de carga envolvidos na entrega (DU-E / RUC)
  **/
-@ApiModel(description="Lista de documentos de carga")
+@ApiModel(description="Documentos de carga envolvidos na entrega (DU-E / RUC)")
 public class Documentos  {
   
   @XmlElement(name="documento", required = true)
-  @ApiModelProperty(required = true, value = "Lista de documentos de carga")
+  @ApiModelProperty(required = true, value = "Documento de carga envolvidos na entrega (DU-E / RUC)")
   @Valid
  /**
-   * Lista de documentos de carga
+   * Documento de carga envolvidos na entrega (DU-E / RUC)
   **/
   private List<Documento> documento = new ArrayList<>();
  /**
-   * Lista de documentos de carga
+   * Documento de carga envolvidos na entrega (DU-E / RUC)
    * @return documento
   **/
   @JsonProperty("documento")

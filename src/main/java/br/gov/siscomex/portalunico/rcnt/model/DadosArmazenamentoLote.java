@@ -1,20 +1,12 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosArmazenamentoLote", propOrder =
@@ -150,7 +142,7 @@ public enum TipoOperacaoEnum {
   private DadosLocalizaoArmazenamentoLote localizacao = null;
 
   @XmlElement(name="areaArmazenamento")
-  @ApiModelProperty(value = "Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
  /**
    * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
   **/

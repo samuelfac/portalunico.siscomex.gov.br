@@ -1,33 +1,41 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "LpcoDetalhado", propOrder =
-    { "numero", "codigoModelo", "dataInicioVigenciaModelo", "orgao", "situacao", "dataSituacaoAtual", "informacaoAdicional", "chaveAcesso", "prorrogacaoPendente", "retificacaoPendente", "dataRegistro", "listaCamposFormulario", "listaNcm", "listaVinculos", "saldos"
+    { "dataInicioVigencia", "dataFimVigencia", "numero", "codigoModelo", "dataInicioVigenciaModelo", "orgao", "situacao", "dataSituacaoAtual", "informacaoAdicional", "chaveAcesso", "prorrogacaoPendente", "retificacaoPendente", "dataRegistro", "listaCamposFormulario", "listaNcm", "listaVinculos", "saldos", "numeroLI", "numeroConhecimento", "modalTransporte", "dataHoraEmbarque", "dataHoraPresencaCarga", "canal"
 })
 
 @XmlRootElement(name="LpcoDetalhado")
 /**
-  * Dados detalhados de um LPCO
+  * Dados detalhados de um LPCO. Confira exemplos para <a target='_blank' href='../pages/exemplos/talp/lpco-exportacao'>exporta&ccedil;&atilde;o</a> e para <a target='_blank' href='../pages/exemplos/talp/lpco-importacao'>importa&ccedil;&atilde;o</a>.
  **/
-@ApiModel(description="Dados detalhados de um LPCO")
+@ApiModel(description="Dados detalhados de um LPCO. Confira exemplos para <a target='_blank' href='../pages/exemplos/talp/lpco-exportacao'>exporta&ccedil;&atilde;o</a> e para <a target='_blank' href='../pages/exemplos/talp/lpco-importacao'>importa&ccedil;&atilde;o</a>.")
 public class LpcoDetalhado  {
   
+  @XmlElement(name="dataInicioVigencia")
+  @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data de início de vigência do LPCO.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
+ /**
+   * Data de início de vigência do LPCO.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
+  **/
+  private String dataInicioVigencia = null;
+
+  @XmlElement(name="dataFimVigencia")
+  @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data de fim de vigência do LPCO.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
+ /**
+   * Data de fim de vigência do LPCO.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
+  **/
+  private String dataFimVigencia = null;
+
   @XmlElement(name="numero", required = true)
   @ApiModelProperty(example = "E1900000001", required = true, value = "Número do LPCO<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")
  /**
@@ -59,7 +67,7 @@ public class LpcoDetalhado  {
   @XmlElement(name="situacao", required = true)
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private IdDescricao situacao = null;
+  private SituacaoLpco situacao = null;
 
   @XmlElement(name="dataSituacaoAtual", required = true)
   @ApiModelProperty(example = "2019-08-29T14:03:52.123Z", required = true, value = "Momento no qual o LPCO entrou na sua situação atual<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
@@ -134,6 +142,170 @@ public class LpcoDetalhado  {
    * Saldos restantes do LPCO, caso o LPCO tenha cotas.
   **/
   private List<Cotas> saldos = null;
+
+  @XmlElement(name="numeroLI")
+  @ApiModelProperty(example = "2300012349", value = "Número da LI a qual o LPCO está vinculado, se for o caso.<br>Tamanho: 11<br>Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)<br>Lei de formação: O número da LI é composto por:<br>* AA = Ano do registro da LI<br>* NNNNNNN = Número sequencial da LI no ano* V = Dígito verificador")
+ /**
+   * Número da LI a qual o LPCO está vinculado, se for o caso.<br>Tamanho: 11<br>Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)<br>Lei de formação: O número da LI é composto por:<br>* AA = Ano do registro da LI<br>* NNNNNNN = Número sequencial da LI no ano* V = Dígito verificador
+  **/
+  private Long numeroLI = null;
+
+  @XmlElement(name="numeroConhecimento")
+  @ApiModelProperty(example = "99999999999999999999", value = "Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
+ /**
+   * Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
+  **/
+  private String numeroConhecimento = null;
+
+
+@XmlType(name="ModalTransporteEnum")
+@XmlEnum(String.class)
+public enum ModalTransporteEnum {
+
+	@XmlEnumValue("AEREO")
+	@JsonProperty("AEREO")
+	AEREO(String.valueOf("AEREO")),
+	
+	@XmlEnumValue("MARITIMO")
+	@JsonProperty("MARITIMO")
+	MARITIMO(String.valueOf("MARITIMO")),
+	
+	@XmlEnumValue("TERRESTRE")
+	@JsonProperty("TERRESTRE")
+	TERRESTRE(String.valueOf("TERRESTRE"));
+
+
+    private String value;
+
+    ModalTransporteEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static ModalTransporteEnum fromValue(String v) {
+        for (ModalTransporteEnum b : ModalTransporteEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalTransporteEnum");
+    }
+}
+
+  @XmlElement(name="modalTransporte")
+  @ApiModelProperty(example = "MARITIMO", value = "Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
+ /**
+   * Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
+  **/
+  private ModalTransporteEnum modalTransporte = null;
+
+  @XmlElement(name="dataHoraEmbarque")
+  @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data de hora do embarque de carga. Disponível apenas em LPCOs com LI vinculada.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
+ /**
+   * Data de hora do embarque de carga. Disponível apenas em LPCOs com LI vinculada.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
+  **/
+  private String dataHoraEmbarque = null;
+
+  @XmlElement(name="dataHoraPresencaCarga")
+  @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data de hora da presença de carga. Disponível apenas em LPCOs com LI vinculada.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
+ /**
+   * Data de hora da presença de carga. Disponível apenas em LPCOs com LI vinculada.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
+  **/
+  private String dataHoraPresencaCarga = null;
+
+
+@XmlType(name="CanalEnum")
+@XmlEnum(String.class)
+public enum CanalEnum {
+
+	@XmlEnumValue("VERDE")
+	@JsonProperty("VERDE")
+	VERDE(String.valueOf("VERDE")),
+	
+	@XmlEnumValue("AMARELO")
+	@JsonProperty("AMARELO")
+	AMARELO(String.valueOf("AMARELO")),
+	
+	@XmlEnumValue("VERMELHO")
+	@JsonProperty("VERMELHO")
+	VERMELHO(String.valueOf("VERMELHO"));
+
+
+    private String value;
+
+    CanalEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CanalEnum fromValue(String v) {
+        for (CanalEnum b : CanalEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+    }
+}
+
+  @XmlElement(name="canal")
+  @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
+ /**
+   * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
+  **/
+  private CanalEnum canal = null;
+ /**
+   * Data de início de vigência do LPCO.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
+   * @return dataInicioVigencia
+  **/
+  @JsonProperty("dataInicioVigencia")
+  public String getDataInicioVigencia() {
+    return dataInicioVigencia;
+  }
+
+  public void setDataInicioVigencia(String dataInicioVigencia) {
+    this.dataInicioVigencia = dataInicioVigencia;
+  }
+
+  public LpcoDetalhado dataInicioVigencia(String dataInicioVigencia) {
+    this.dataInicioVigencia = dataInicioVigencia;
+    return this;
+  }
+
+ /**
+   * Data de fim de vigência do LPCO.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
+   * @return dataFimVigencia
+  **/
+  @JsonProperty("dataFimVigencia")
+  public String getDataFimVigencia() {
+    return dataFimVigencia;
+  }
+
+  public void setDataFimVigencia(String dataFimVigencia) {
+    this.dataFimVigencia = dataFimVigencia;
+  }
+
+  public LpcoDetalhado dataFimVigencia(String dataFimVigencia) {
+    this.dataFimVigencia = dataFimVigencia;
+    return this;
+  }
+
  /**
    * Número do LPCO&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
    * @return numero
@@ -216,15 +388,15 @@ public class LpcoDetalhado  {
   **/
   @JsonProperty("situacao")
   @NotNull
-  public IdDescricao getSituacao() {
+  public SituacaoLpco getSituacao() {
     return situacao;
   }
 
-  public void setSituacao(IdDescricao situacao) {
+  public void setSituacao(SituacaoLpco situacao) {
     this.situacao = situacao;
   }
 
-  public LpcoDetalhado situacao(IdDescricao situacao) {
+  public LpcoDetalhado situacao(SituacaoLpco situacao) {
     this.situacao = situacao;
     return this;
   }
@@ -435,12 +607,128 @@ public class LpcoDetalhado  {
     return this;
   }
 
+ /**
+   * Número da LI a qual o LPCO está vinculado, se for o caso.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)&lt;br&gt;Lei de formação: O número da LI é composto por:&lt;br&gt;* AA &#x3D; Ano do registro da LI&lt;br&gt;* NNNNNNN &#x3D; Número sequencial da LI no ano* V &#x3D; Dígito verificador
+   * @return numeroLI
+  **/
+  @JsonProperty("numeroLI")
+  public Long getNumeroLI() {
+    return numeroLI;
+  }
+
+  public void setNumeroLI(Long numeroLI) {
+    this.numeroLI = numeroLI;
+  }
+
+  public LpcoDetalhado numeroLI(Long numeroLI) {
+    this.numeroLI = numeroLI;
+    return this;
+  }
+
+ /**
+   * Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
+   * @return numeroConhecimento
+  **/
+  @JsonProperty("numeroConhecimento")
+  public String getNumeroConhecimento() {
+    return numeroConhecimento;
+  }
+
+  public void setNumeroConhecimento(String numeroConhecimento) {
+    this.numeroConhecimento = numeroConhecimento;
+  }
+
+  public LpcoDetalhado numeroConhecimento(String numeroConhecimento) {
+    this.numeroConhecimento = numeroConhecimento;
+    return this;
+  }
+
+ /**
+   * Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
+   * @return modalTransporte
+  **/
+  @JsonProperty("modalTransporte")
+  public String getModalTransporte() {
+    if (modalTransporte == null) {
+      return null;
+    }
+    return modalTransporte.value();
+  }
+
+  public void setModalTransporte(ModalTransporteEnum modalTransporte) {
+    this.modalTransporte = modalTransporte;
+  }
+
+  public LpcoDetalhado modalTransporte(ModalTransporteEnum modalTransporte) {
+    this.modalTransporte = modalTransporte;
+    return this;
+  }
+
+ /**
+   * Data de hora do embarque de carga. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
+   * @return dataHoraEmbarque
+  **/
+  @JsonProperty("dataHoraEmbarque")
+  public String getDataHoraEmbarque() {
+    return dataHoraEmbarque;
+  }
+
+  public void setDataHoraEmbarque(String dataHoraEmbarque) {
+    this.dataHoraEmbarque = dataHoraEmbarque;
+  }
+
+  public LpcoDetalhado dataHoraEmbarque(String dataHoraEmbarque) {
+    this.dataHoraEmbarque = dataHoraEmbarque;
+    return this;
+  }
+
+ /**
+   * Data de hora da presença de carga. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
+   * @return dataHoraPresencaCarga
+  **/
+  @JsonProperty("dataHoraPresencaCarga")
+  public String getDataHoraPresencaCarga() {
+    return dataHoraPresencaCarga;
+  }
+
+  public void setDataHoraPresencaCarga(String dataHoraPresencaCarga) {
+    this.dataHoraPresencaCarga = dataHoraPresencaCarga;
+  }
+
+  public LpcoDetalhado dataHoraPresencaCarga(String dataHoraPresencaCarga) {
+    this.dataHoraPresencaCarga = dataHoraPresencaCarga;
+    return this;
+  }
+
+ /**
+   * Canal. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
+   * @return canal
+  **/
+  @JsonProperty("canal")
+  public String getCanal() {
+    if (canal == null) {
+      return null;
+    }
+    return canal.value();
+  }
+
+  public void setCanal(CanalEnum canal) {
+    this.canal = canal;
+  }
+
+  public LpcoDetalhado canal(CanalEnum canal) {
+    this.canal = canal;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LpcoDetalhado {\n");
     
+    sb.append("    dataInicioVigencia: ").append(toIndentedString(dataInicioVigencia)).append("\n");
+    sb.append("    dataFimVigencia: ").append(toIndentedString(dataFimVigencia)).append("\n");
     sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
     sb.append("    codigoModelo: ").append(toIndentedString(codigoModelo)).append("\n");
     sb.append("    dataInicioVigenciaModelo: ").append(toIndentedString(dataInicioVigenciaModelo)).append("\n");
@@ -456,6 +744,12 @@ public class LpcoDetalhado  {
     sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
     sb.append("    listaVinculos: ").append(toIndentedString(listaVinculos)).append("\n");
     sb.append("    saldos: ").append(toIndentedString(saldos)).append("\n");
+    sb.append("    numeroLI: ").append(toIndentedString(numeroLI)).append("\n");
+    sb.append("    numeroConhecimento: ").append(toIndentedString(numeroConhecimento)).append("\n");
+    sb.append("    modalTransporte: ").append(toIndentedString(modalTransporte)).append("\n");
+    sb.append("    dataHoraEmbarque: ").append(toIndentedString(dataHoraEmbarque)).append("\n");
+    sb.append("    dataHoraPresencaCarga: ").append(toIndentedString(dataHoraPresencaCarga)).append("\n");
+    sb.append("    canal: ").append(toIndentedString(canal)).append("\n");
     sb.append("}");
     return sb.toString();
   }

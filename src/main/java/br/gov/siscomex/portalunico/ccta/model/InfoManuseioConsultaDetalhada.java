@@ -1,14 +1,9 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "InfoManuseioConsultaDetalhada", propOrder =
@@ -19,14 +14,14 @@ import io.swagger.annotations.ApiModelProperty;
 public class InfoManuseioConsultaDetalhada  {
   
   @XmlElement(name="codigo")
-  @ApiModelProperty(example = "Exemplo de procedimento especial<br/> ", value = "Código relacionado a um procedimento especial a ser realizado referente a carga<br/> ")
+  @ApiModelProperty(example = "CAO, ELI, ELM, RCM, DIS, AWD, AWR, FDAW, FDCA, MSAW, MSCA, ...", value = "Código relacionado a um procedimento especial a ser realizado referente a carga<br/> ")
  /**
    * Código relacionado a um procedimento especial a ser realizado referente a carga<br/> 
   **/
   private String codigo = null;
 
   @XmlElement(name="detalhes")
-  @ApiModelProperty(example = "Exemplo de procedimento especial<br/> ", value = "Descrição do procedimento especial a ser realizado<br/> ")
+  @ApiModelProperty(example = "Cargo Aircraft Only, Lithium Ion Batteries otherwise excepted from the IATA DGR, ...", value = "Descrição do procedimento especial a ser realizado<br/> ")
  /**
    * Descrição do procedimento especial a ser realizado<br/> 
   **/

@@ -1,24 +1,18 @@
 package br.gov.siscomex.portalunico.ttce.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosTratamentosTributariosImportacaoDTO", propOrder =
-    { "dataGeracao", "tratamentosTributariosAgrupados"
+    { "dataGeracao", "tratamentosTributariosImportacao"
 })
 
 @XmlRootElement(name="DadosTratamentosTributariosImportacaoDTO")
@@ -29,19 +23,19 @@ import io.swagger.annotations.ApiModelProperty;
 public class DadosTratamentosTributariosImportacaoDTO  {
   
   @XmlElement(name="dataGeracao", required = true)
-  @ApiModelProperty(required = true, value = "Data da geração destes dados.<br>Formato: 'yyyy-MM-dd'")
+  @ApiModelProperty(example = "13/09/2021", required = true, value = "Data da geração destes dados.<br>Formato: 'yyyy-MM-dd'")
  /**
    * Data da geração destes dados.<br>Formato: 'yyyy-MM-dd'
   **/
   private String dataGeracao = null;
 
-  @XmlElement(name="tratamentosTributariosAgrupados", required = true)
+  @XmlElement(name="tratamentosTributariosImportacao", required = true)
   @ApiModelProperty(required = true, value = "Lista contendo os Tratamentos Tributários de Importação.<br/>São apresentados todos os Tratamentos Tributários com Fundamento Legal do tipo Normal, que necessitam de atributos, <br/>bem como todos os Tratamentos Tributários com Fundamento Legal do tipo Opcional, independente de necessitar ou não de atributos. NÃO estão nesta lista os Tratamentos Tributários do tipo Normal que NÃO necessitam de atributos.")
   @Valid
  /**
    * Lista contendo os Tratamentos Tributários de Importação.<br/>São apresentados todos os Tratamentos Tributários com Fundamento Legal do tipo Normal, que necessitam de atributos, <br/>bem como todos os Tratamentos Tributários com Fundamento Legal do tipo Opcional, independente de necessitar ou não de atributos. NÃO estão nesta lista os Tratamentos Tributários do tipo Normal que NÃO necessitam de atributos.
   **/
-  private List<TratamentosTributariosAgrupadosDTO> tratamentosTributariosAgrupados = new ArrayList<>();
+  private List<TratamentosTributariosAgrupadosDTO> tratamentosTributariosImportacao = new ArrayList<>();
  /**
    * Data da geração destes dados.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
    * @return dataGeracao
@@ -63,25 +57,25 @@ public class DadosTratamentosTributariosImportacaoDTO  {
 
  /**
    * Lista contendo os Tratamentos Tributários de Importação.&lt;br/&gt;São apresentados todos os Tratamentos Tributários com Fundamento Legal do tipo Normal, que necessitam de atributos, &lt;br/&gt;bem como todos os Tratamentos Tributários com Fundamento Legal do tipo Opcional, independente de necessitar ou não de atributos. NÃO estão nesta lista os Tratamentos Tributários do tipo Normal que NÃO necessitam de atributos.
-   * @return tratamentosTributariosAgrupados
+   * @return tratamentosTributariosImportacao
   **/
-  @JsonProperty("tratamentosTributariosAgrupados")
+  @JsonProperty("tratamentosTributariosImportacao")
   @NotNull
-  public List<TratamentosTributariosAgrupadosDTO> getTratamentosTributariosAgrupados() {
-    return tratamentosTributariosAgrupados;
+  public List<TratamentosTributariosAgrupadosDTO> getTratamentosTributariosImportacao() {
+    return tratamentosTributariosImportacao;
   }
 
-  public void setTratamentosTributariosAgrupados(List<TratamentosTributariosAgrupadosDTO> tratamentosTributariosAgrupados) {
-    this.tratamentosTributariosAgrupados = tratamentosTributariosAgrupados;
+  public void setTratamentosTributariosImportacao(List<TratamentosTributariosAgrupadosDTO> tratamentosTributariosImportacao) {
+    this.tratamentosTributariosImportacao = tratamentosTributariosImportacao;
   }
 
-  public DadosTratamentosTributariosImportacaoDTO tratamentosTributariosAgrupados(List<TratamentosTributariosAgrupadosDTO> tratamentosTributariosAgrupados) {
-    this.tratamentosTributariosAgrupados = tratamentosTributariosAgrupados;
+  public DadosTratamentosTributariosImportacaoDTO tratamentosTributariosImportacao(List<TratamentosTributariosAgrupadosDTO> tratamentosTributariosImportacao) {
+    this.tratamentosTributariosImportacao = tratamentosTributariosImportacao;
     return this;
   }
 
-  public DadosTratamentosTributariosImportacaoDTO addTratamentosTributariosAgrupadosItem(TratamentosTributariosAgrupadosDTO tratamentosTributariosAgrupadosItem) {
-    this.tratamentosTributariosAgrupados.add(tratamentosTributariosAgrupadosItem);
+  public DadosTratamentosTributariosImportacaoDTO addTratamentosTributariosImportacaoItem(TratamentosTributariosAgrupadosDTO tratamentosTributariosImportacaoItem) {
+    this.tratamentosTributariosImportacao.add(tratamentosTributariosImportacaoItem);
     return this;
   }
 
@@ -92,7 +86,7 @@ public class DadosTratamentosTributariosImportacaoDTO  {
     sb.append("class DadosTratamentosTributariosImportacaoDTO {\n");
     
     sb.append("    dataGeracao: ").append(toIndentedString(dataGeracao)).append("\n");
-    sb.append("    tratamentosTributariosAgrupados: ").append(toIndentedString(tratamentosTributariosAgrupados)).append("\n");
+    sb.append("    tratamentosTributariosImportacao: ").append(toIndentedString(tratamentosTributariosImportacao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

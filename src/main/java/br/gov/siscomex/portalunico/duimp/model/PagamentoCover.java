@@ -1,23 +1,17 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "PagamentoCover", propOrder =
-    { "versaoDuimpPagamento", "banco", "agencia", "conta", "codigoReceita", "descricaoReceita", "valorTributo", "dataHoraPagamento"
+    { "versaoDuimpPagamento", "banco", "agencia", "conta", "codigoReceita", "descricaoReceita", "valorTributo", "dataHoraPagamento", "pagamentoJuros"
 })
 
 @XmlRootElement(name="PagamentoCover")
@@ -83,6 +77,11 @@ public class PagamentoCover  {
    * Data e hora do pagamento<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
   **/
   private OffsetDateTime dataHoraPagamento = null;
+
+  @XmlElement(name="pagamentoJuros")
+  @ApiModelProperty(value = "")
+  @Valid
+  private PagamentoJurosCover pagamentoJuros = null;
  /**
    * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
    * @return versaoDuimpPagamento
@@ -227,6 +226,24 @@ public class PagamentoCover  {
     return this;
   }
 
+ /**
+   * Get pagamentoJuros
+   * @return pagamentoJuros
+  **/
+  @JsonProperty("pagamentoJuros")
+  public PagamentoJurosCover getPagamentoJuros() {
+    return pagamentoJuros;
+  }
+
+  public void setPagamentoJuros(PagamentoJurosCover pagamentoJuros) {
+    this.pagamentoJuros = pagamentoJuros;
+  }
+
+  public PagamentoCover pagamentoJuros(PagamentoJurosCover pagamentoJuros) {
+    this.pagamentoJuros = pagamentoJuros;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -241,6 +258,7 @@ public class PagamentoCover  {
     sb.append("    descricaoReceita: ").append(toIndentedString(descricaoReceita)).append("\n");
     sb.append("    valorTributo: ").append(toIndentedString(valorTributo)).append("\n");
     sb.append("    dataHoraPagamento: ").append(toIndentedString(dataHoraPagamento)).append("\n");
+    sb.append("    pagamentoJuros: ").append(toIndentedString(pagamentoJuros)).append("\n");
     sb.append("}");
     return sb.toString();
   }

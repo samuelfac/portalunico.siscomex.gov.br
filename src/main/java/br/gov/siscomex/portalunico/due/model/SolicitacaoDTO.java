@@ -1,34 +1,19 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import java.time.OffsetDateTime;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SolicitacaoDTO", propOrder =
-    { "codigoDoStatusDaSolicitacao", "dataDaSolicitacao", "dataDeApreciacao", "motivo", "motivoDoIndeferimento", "numeroDoComprot", "statusDaSolicitacao", "tipoSolicitacao", "usuarioQueAnalisou", "usuarioResponsavel"
+    { "dataDaSolicitacao", "dataDeApreciacao", "motivo", "motivoDoIndeferimento", "numeroDoComprot", "situacaoSolicitacaoDue", "tipoSolicitacao", "usuarioQueAnalisou", "usuarioResponsavel"
 })
 
 @XmlRootElement(name="SolicitacaoDTO")
 public class SolicitacaoDTO  {
   
-  @XmlElement(name="codigoDoStatusDaSolicitacao")
-  @ApiModelProperty(value = "Código do Status da Solicitação<br />Domínio: <br />1 = Pendente<br />2 = Em análise<br />3 = Deferida<br />4 = Em Exigência<br />5 = Deferida com Exigência<br />6 = Indeferida<br />7 = Cancelada")
- /**
-   * Código do Status da Solicitação<br />Domínio: <br />1 = Pendente<br />2 = Em análise<br />3 = Deferida<br />4 = Em Exigência<br />5 = Deferida com Exigência<br />6 = Indeferida<br />7 = Cancelada
-  **/
-  private Integer codigoDoStatusDaSolicitacao = null;
-
   @XmlElement(name="dataDaSolicitacao")
   @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da solicitação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
  /**
@@ -64,12 +49,68 @@ public class SolicitacaoDTO  {
   **/
   private String numeroDoComprot = null;
 
-  @XmlElement(name="statusDaSolicitacao")
-  @ApiModelProperty(value = "Status da Solicitação<br />Tamanho mínimo: 1<br />Tamanho máximo: 50")
- /**
-   * Status da Solicitação<br />Tamanho mínimo: 1<br />Tamanho máximo: 50
-  **/
-  private String statusDaSolicitacao = null;
+
+@XmlType(name="SituacaoSolicitacaoDueEnum")
+@XmlEnum(String.class)
+public enum SituacaoSolicitacaoDueEnum {
+
+	@XmlEnumValue("PENDENTE")
+	@JsonProperty("PENDENTE")
+	PENDENTE(String.valueOf("PENDENTE")),
+	
+	@XmlEnumValue("EM_ANALISE")
+	@JsonProperty("EM_ANALISE")
+	EM_ANALISE(String.valueOf("EM_ANALISE")),
+	
+	@XmlEnumValue("DEFERIDA")
+	@JsonProperty("DEFERIDA")
+	DEFERIDA(String.valueOf("DEFERIDA")),
+	
+	@XmlEnumValue("EXIGENCIA")
+	@JsonProperty("EXIGENCIA")
+	EXIGENCIA(String.valueOf("EXIGENCIA")),
+	
+	@XmlEnumValue("DEFERIDA_COM_EXIGENCIA")
+	@JsonProperty("DEFERIDA_COM_EXIGENCIA")
+	DEFERIDA_COM_EXIGENCIA(String.valueOf("DEFERIDA_COM_EXIGENCIA")),
+	
+	@XmlEnumValue("INDEFERIDA")
+	@JsonProperty("INDEFERIDA")
+	INDEFERIDA(String.valueOf("INDEFERIDA")),
+	
+	@XmlEnumValue("CANCELADA")
+	@JsonProperty("CANCELADA")
+	CANCELADA(String.valueOf("CANCELADA"));
+
+
+    private String value;
+
+    SituacaoSolicitacaoDueEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static SituacaoSolicitacaoDueEnum fromValue(String v) {
+        for (SituacaoSolicitacaoDueEnum b : SituacaoSolicitacaoDueEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoDueEnum");
+    }
+}
+
+  @XmlElement(name="situacaoSolicitacaoDue")
+  @ApiModelProperty(value = "")
+  private SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue = null;
 
 
 @XmlType(name="TipoSolicitacaoEnum")
@@ -127,24 +168,6 @@ public enum TipoSolicitacaoEnum {
    * Usuário responsável<br />Tamanho mínimo: 0<br />Tamanho máximo: 11
   **/
   private String usuarioResponsavel = null;
- /**
-   * Código do Status da Solicitação&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Pendente&lt;br /&gt;2 &#x3D; Em análise&lt;br /&gt;3 &#x3D; Deferida&lt;br /&gt;4 &#x3D; Em Exigência&lt;br /&gt;5 &#x3D; Deferida com Exigência&lt;br /&gt;6 &#x3D; Indeferida&lt;br /&gt;7 &#x3D; Cancelada
-   * @return codigoDoStatusDaSolicitacao
-  **/
-  @JsonProperty("codigoDoStatusDaSolicitacao")
-  public Integer getCodigoDoStatusDaSolicitacao() {
-    return codigoDoStatusDaSolicitacao;
-  }
-
-  public void setCodigoDoStatusDaSolicitacao(Integer codigoDoStatusDaSolicitacao) {
-    this.codigoDoStatusDaSolicitacao = codigoDoStatusDaSolicitacao;
-  }
-
-  public SolicitacaoDTO codigoDoStatusDaSolicitacao(Integer codigoDoStatusDaSolicitacao) {
-    this.codigoDoStatusDaSolicitacao = codigoDoStatusDaSolicitacao;
-    return this;
-  }
-
  /**
    * Data da solicitação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
    * @return dataDaSolicitacao
@@ -236,20 +259,23 @@ public enum TipoSolicitacaoEnum {
   }
 
  /**
-   * Status da Solicitação&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 50
-   * @return statusDaSolicitacao
+   * Get situacaoSolicitacaoDue
+   * @return situacaoSolicitacaoDue
   **/
-  @JsonProperty("statusDaSolicitacao")
-  public String getStatusDaSolicitacao() {
-    return statusDaSolicitacao;
+  @JsonProperty("situacaoSolicitacaoDue")
+  public String getSituacaoSolicitacaoDue() {
+    if (situacaoSolicitacaoDue == null) {
+      return null;
+    }
+    return situacaoSolicitacaoDue.value();
   }
 
-  public void setStatusDaSolicitacao(String statusDaSolicitacao) {
-    this.statusDaSolicitacao = statusDaSolicitacao;
+  public void setSituacaoSolicitacaoDue(SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue) {
+    this.situacaoSolicitacaoDue = situacaoSolicitacaoDue;
   }
 
-  public SolicitacaoDTO statusDaSolicitacao(String statusDaSolicitacao) {
-    this.statusDaSolicitacao = statusDaSolicitacao;
+  public SolicitacaoDTO situacaoSolicitacaoDue(SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue) {
+    this.situacaoSolicitacaoDue = situacaoSolicitacaoDue;
     return this;
   }
 
@@ -316,13 +342,12 @@ public enum TipoSolicitacaoEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class SolicitacaoDTO {\n");
     
-    sb.append("    codigoDoStatusDaSolicitacao: ").append(toIndentedString(codigoDoStatusDaSolicitacao)).append("\n");
     sb.append("    dataDaSolicitacao: ").append(toIndentedString(dataDaSolicitacao)).append("\n");
     sb.append("    dataDeApreciacao: ").append(toIndentedString(dataDeApreciacao)).append("\n");
     sb.append("    motivo: ").append(toIndentedString(motivo)).append("\n");
     sb.append("    motivoDoIndeferimento: ").append(toIndentedString(motivoDoIndeferimento)).append("\n");
     sb.append("    numeroDoComprot: ").append(toIndentedString(numeroDoComprot)).append("\n");
-    sb.append("    statusDaSolicitacao: ").append(toIndentedString(statusDaSolicitacao)).append("\n");
+    sb.append("    situacaoSolicitacaoDue: ").append(toIndentedString(situacaoSolicitacaoDue)).append("\n");
     sb.append("    tipoSolicitacao: ").append(toIndentedString(tipoSolicitacao)).append("\n");
     sb.append("    usuarioQueAnalisou: ").append(toIndentedString(usuarioQueAnalisou)).append("\n");
     sb.append("    usuarioResponsavel: ").append(toIndentedString(usuarioResponsavel)).append("\n");

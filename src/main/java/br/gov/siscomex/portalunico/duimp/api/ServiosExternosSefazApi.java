@@ -1,18 +1,11 @@
 package br.gov.siscomex.portalunico.duimp.api;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-
 import br.gov.siscomex.portalunico.duimp.model.DuimpCover;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import br.gov.siscomex.portalunico.duimp.model.RespostaApiErroSefaz;
+import io.swagger.annotations.*;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 /**
  * Declaração Única de Importação - SEFAZ
@@ -40,7 +33,7 @@ public interface ServiosExternosSefazApi  {
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
-        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = RespostaApiErroSefaz.class),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
     public Response consultarDuimp2(@ApiParam(value = "Número da Duimp<br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numeroDuimp") String numeroDuimp, @ApiParam(value = "Versão da Duimp<br>Valor mínimo: 1<br>Valor máximo: 9999",required=true) @PathParam("versaoDuimp") String versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
@@ -60,7 +53,7 @@ public interface ServiosExternosSefazApi  {
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
-        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = RespostaApiErroSefaz.class),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
     public Response consultarDuimp3(@ApiParam(value = "Número da Duimp<br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numeroDuimp") String numeroDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

@@ -1,27 +1,18 @@
 package br.gov.siscomex.portalunico.pcce.model;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SolicitacaoIcmsDto", propOrder =
-    { "cargaEntregue", "cnaeAdquirente", "cnaeImportador", "codMunicipioDesembaracoPretendido", "cpfSolicitante", "dataConfirmacaoCredito", "descricaoDespesasAduaneiras", "guias", "historico", "informacoesComplementares", "numMandadoJudicial", "numeroDeclaracao", "periodoReferencia", "situacaoSolicitacao", "status", "tipoDeclaracao", "tipoSolicitacao", "tipoTratamento", "ufAdquirente", "ufFavorecida", "ufImportador", "valorAfrmm", "valorCIFExonerado", "valorCIFPagamento", "valorDespesasAduaneiras", "valorTotalARecolher", "valorTotalCredito", "valorTotalDevido", "versaoDeclaracao"
+    { "cargaEntregue", "cnaeAdquirente", "cnaeImportador", "codMunicipioDesembaracoPretendido", "cpfSolicitante", "dataConfirmacaoCredito", "descricaoDespesasAduaneiras", "guias", "historico", "informacoesComplementares", "numMandadoJudicial", "numeroDeclaracao", "opcaoIcms", "periodoReferencia", "situacaoSolicitacao", "status", "tipoDeclaracao", "tipoSolicitacao", "tipoTratamento", "ufAdquirente", "ufFavorecida", "ufImportador", "valorAfrmm", "valorCIFExonerado", "valorCIFPagamento", "valorDespesasAduaneiras", "valorTotalARecolher", "valorTotalCredito", "valorTotalDevido", "versaoDeclaracao"
 })
 
 @XmlRootElement(name="SolicitacaoIcmsDto")
@@ -67,11 +58,11 @@ public class SolicitacaoIcmsDto  {
   private String cpfSolicitante = null;
 
   @XmlElement(name="dataConfirmacaoCredito", required = true)
-  @ApiModelProperty(example = "2019-09-17T18:38:23.056Z", required = true, value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+  @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
  /**
-   * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+   * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
   **/
-  private OffsetDateTime dataConfirmacaoCredito = null;
+  private String dataConfirmacaoCredito = null;
 
   @XmlElement(name="descricaoDespesasAduaneiras")
   @ApiModelProperty(value = "Descrição das demais despesas aduaneiras <br>Tamanho máximo: 400")
@@ -81,10 +72,10 @@ public class SolicitacaoIcmsDto  {
   private String descricaoDespesasAduaneiras = null;
 
   @XmlElement(name="guias")
-  @ApiModelProperty(value = "Lista de guias de pagamento de ICMS")
+  @ApiModelProperty(value = "Lista de guias de pagamento de ICMS (não canceladas)")
   @Valid
  /**
-   * Lista de guias de pagamento de ICMS
+   * Lista de guias de pagamento de ICMS (não canceladas)
   **/
   private List<GuiaIcmsDto> guias = null;
 
@@ -116,6 +107,11 @@ public class SolicitacaoIcmsDto  {
    * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
   **/
   private String numeroDeclaracao = null;
+
+  @XmlElement(name="opcaoIcms")
+  @ApiModelProperty(value = "")
+  @Valid
+  private OpcaoIcmsConsultaDto opcaoIcms = null;
 
   @XmlElement(name="periodoReferencia", required = true)
   @ApiModelProperty(example = "2019-01", required = true, value = "Período de referência<br>Formato: 'yyyy-MM'")
@@ -981,20 +977,20 @@ public enum UfImportadorEnum {
   }
 
  /**
-   * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
    * @return dataConfirmacaoCredito
   **/
   @JsonProperty("dataConfirmacaoCredito")
   @NotNull
-  public OffsetDateTime getDataConfirmacaoCredito() {
+  public String getDataConfirmacaoCredito() {
     return dataConfirmacaoCredito;
   }
 
-  public void setDataConfirmacaoCredito(OffsetDateTime dataConfirmacaoCredito) {
+  public void setDataConfirmacaoCredito(String dataConfirmacaoCredito) {
     this.dataConfirmacaoCredito = dataConfirmacaoCredito;
   }
 
-  public SolicitacaoIcmsDto dataConfirmacaoCredito(OffsetDateTime dataConfirmacaoCredito) {
+  public SolicitacaoIcmsDto dataConfirmacaoCredito(String dataConfirmacaoCredito) {
     this.dataConfirmacaoCredito = dataConfirmacaoCredito;
     return this;
   }
@@ -1018,7 +1014,7 @@ public enum UfImportadorEnum {
   }
 
  /**
-   * Lista de guias de pagamento de ICMS
+   * Lista de guias de pagamento de ICMS (não canceladas)
    * @return guias
   **/
   @JsonProperty("guias")
@@ -1115,6 +1111,24 @@ public enum UfImportadorEnum {
 
   public SolicitacaoIcmsDto numeroDeclaracao(String numeroDeclaracao) {
     this.numeroDeclaracao = numeroDeclaracao;
+    return this;
+  }
+
+ /**
+   * Get opcaoIcms
+   * @return opcaoIcms
+  **/
+  @JsonProperty("opcaoIcms")
+  public OpcaoIcmsConsultaDto getOpcaoIcms() {
+    return opcaoIcms;
+  }
+
+  public void setOpcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
+    this.opcaoIcms = opcaoIcms;
+  }
+
+  public SolicitacaoIcmsDto opcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
+    this.opcaoIcms = opcaoIcms;
     return this;
   }
 
@@ -1474,6 +1488,7 @@ public enum UfImportadorEnum {
     sb.append("    informacoesComplementares: ").append(toIndentedString(informacoesComplementares)).append("\n");
     sb.append("    numMandadoJudicial: ").append(toIndentedString(numMandadoJudicial)).append("\n");
     sb.append("    numeroDeclaracao: ").append(toIndentedString(numeroDeclaracao)).append("\n");
+    sb.append("    opcaoIcms: ").append(toIndentedString(opcaoIcms)).append("\n");
     sb.append("    periodoReferencia: ").append(toIndentedString(periodoReferencia)).append("\n");
     sb.append("    situacaoSolicitacao: ").append(toIndentedString(situacaoSolicitacao)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

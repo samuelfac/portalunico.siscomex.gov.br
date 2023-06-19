@@ -1,27 +1,18 @@
 package br.gov.siscomex.portalunico.pcce.model;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SefazDadosIcmsDto", propOrder =
-    { "autenticidadeGlme", "cpfSolicitante", "dataConfirmacaoCredito", "dataVencimento", "guias", "iniciativaSefaz", "justificativaIndeferimento", "numeroDeclaracao", "numeroGlme", "numeroMandadoJudicial", "periodoReferencia", "tipoDeclaracao", "tipoRetorno", "tipoSolicitacao", "ufFavorecida", "valorAfrmm", "valorCIFExonerado", "valorCalculado", "valorCifPagamento", "valorTotalCredito", "valorTotalDevido", "valorTotalaRecolher", "versaoDeclaracao"
+    { "autenticidadeGlme", "cpfSolicitante", "dataConfirmacaoCredito", "guias", "iniciativaSefaz", "justificativaIndeferimento", "numeroDeclaracao", "numeroGlme", "numeroMandadoJudicial", "periodoReferencia", "tipoDeclaracao", "tipoRetorno", "tipoSolicitacao", "ufFavorecida", "valorAfrmm", "valorCIFExonerado", "valorCalculado", "valorCifPagamento", "valorTotalCredito", "valorTotalDevido", "valorTotalaRecolher", "versaoDeclaracao"
 })
 
 @XmlRootElement(name="SefazDadosIcmsDto")
@@ -46,18 +37,11 @@ public class SefazDadosIcmsDto  {
   private String cpfSolicitante = null;
 
   @XmlElement(name="dataConfirmacaoCredito")
-  @ApiModelProperty(example = "2019-09-17T18:38:23.056Z", value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP")
+  @ApiModelProperty(example = "2021-08-31T09:11:06-0300", value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP")
  /**
-   * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP
+   * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP
   **/
-  private OffsetDateTime dataConfirmacaoCredito = null;
-
-  @XmlElement(name="dataVencimento")
-  @ApiModelProperty(value = "Data de vencimento<br>Formato: 'yyyy-MM-dd'<br/>(*) Obrigatório se tipoRetorno = CALCULADO_A_PAGAR.")
- /**
-   * Data de vencimento<br>Formato: 'yyyy-MM-dd'<br/>(*) Obrigatório se tipoRetorno = CALCULADO_A_PAGAR.
-  **/
-  private OffsetDateTime dataVencimento = null;
+  private String dataConfirmacaoCredito = null;
 
   @XmlElement(name="guias")
   @ApiModelProperty(value = "Lista de guias de pagamento de ICMS<br/>(*) Obrigatório se tipoRetorno = CALCULADO_A_PAGAR.")
@@ -65,7 +49,7 @@ public class SefazDadosIcmsDto  {
  /**
    * Lista de guias de pagamento de ICMS<br/>(*) Obrigatório se tipoRetorno = CALCULADO_A_PAGAR.
   **/
-  private List<GuiaIcmsDto> guias = null;
+  private List<GuiaIcmsCreditoDto> guias = null;
 
   @XmlElement(name="iniciativaSefaz", required = true)
   @ApiModelProperty(example = "true", required = true, value = "Indicador de que a solicitação foi originada na Sefaz<br>Dominio:<br>true - Sim, <br>false - Não")
@@ -504,38 +488,20 @@ public enum UfFavorecidaEnum {
   }
 
  /**
-   * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR e tipoSolicitacao !&#x3D; EXONERACAO_INTEGRAL_DUIMP
+   * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR e tipoSolicitacao !&#x3D; EXONERACAO_INTEGRAL_DUIMP
    * @return dataConfirmacaoCredito
   **/
   @JsonProperty("dataConfirmacaoCredito")
-  public OffsetDateTime getDataConfirmacaoCredito() {
+  public String getDataConfirmacaoCredito() {
     return dataConfirmacaoCredito;
   }
 
-  public void setDataConfirmacaoCredito(OffsetDateTime dataConfirmacaoCredito) {
+  public void setDataConfirmacaoCredito(String dataConfirmacaoCredito) {
     this.dataConfirmacaoCredito = dataConfirmacaoCredito;
   }
 
-  public SefazDadosIcmsDto dataConfirmacaoCredito(OffsetDateTime dataConfirmacaoCredito) {
+  public SefazDadosIcmsDto dataConfirmacaoCredito(String dataConfirmacaoCredito) {
     this.dataConfirmacaoCredito = dataConfirmacaoCredito;
-    return this;
-  }
-
- /**
-   * Data de vencimento&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;&lt;br/&gt;(*) Obrigatório se tipoRetorno &#x3D; CALCULADO_A_PAGAR.
-   * @return dataVencimento
-  **/
-  @JsonProperty("dataVencimento")
-  public OffsetDateTime getDataVencimento() {
-    return dataVencimento;
-  }
-
-  public void setDataVencimento(OffsetDateTime dataVencimento) {
-    this.dataVencimento = dataVencimento;
-  }
-
-  public SefazDadosIcmsDto dataVencimento(OffsetDateTime dataVencimento) {
-    this.dataVencimento = dataVencimento;
     return this;
   }
 
@@ -544,20 +510,20 @@ public enum UfFavorecidaEnum {
    * @return guias
   **/
   @JsonProperty("guias")
-  public List<GuiaIcmsDto> getGuias() {
+  public List<GuiaIcmsCreditoDto> getGuias() {
     return guias;
   }
 
-  public void setGuias(List<GuiaIcmsDto> guias) {
+  public void setGuias(List<GuiaIcmsCreditoDto> guias) {
     this.guias = guias;
   }
 
-  public SefazDadosIcmsDto guias(List<GuiaIcmsDto> guias) {
+  public SefazDadosIcmsDto guias(List<GuiaIcmsCreditoDto> guias) {
     this.guias = guias;
     return this;
   }
 
-  public SefazDadosIcmsDto addGuiasItem(GuiaIcmsDto guiasItem) {
+  public SefazDadosIcmsDto addGuiasItem(GuiaIcmsCreditoDto guiasItem) {
     this.guias.add(guiasItem);
     return this;
   }
@@ -914,7 +880,6 @@ public enum UfFavorecidaEnum {
     sb.append("    autenticidadeGlme: ").append(toIndentedString(autenticidadeGlme)).append("\n");
     sb.append("    cpfSolicitante: ").append(toIndentedString(cpfSolicitante)).append("\n");
     sb.append("    dataConfirmacaoCredito: ").append(toIndentedString(dataConfirmacaoCredito)).append("\n");
-    sb.append("    dataVencimento: ").append(toIndentedString(dataVencimento)).append("\n");
     sb.append("    guias: ").append(toIndentedString(guias)).append("\n");
     sb.append("    iniciativaSefaz: ").append(toIndentedString(iniciativaSefaz)).append("\n");
     sb.append("    justificativaIndeferimento: ").append(toIndentedString(justificativaIndeferimento)).append("\n");

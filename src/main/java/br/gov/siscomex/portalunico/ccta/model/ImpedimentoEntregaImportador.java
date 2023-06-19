@@ -1,19 +1,14 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ImpedimentoEntregaImportador", propOrder =
-    { "codigo", "descricao"
+    { "codigo", "descricao", "descricaoUnidadeRFB", "unidadeRFB"
 })
 
 @XmlRootElement(name="ImpedimentoEntregaImportador")
@@ -36,6 +31,20 @@ public class ImpedimentoEntregaImportador  {
    * Descrição do impedimento<br/>Tamanho máximo: 300
   **/
   private String descricao = null;
+
+  @XmlElement(name="descricaoUnidadeRFB")
+  @ApiModelProperty(example = "AEROPORTO INTERNACIONAL DO RIO DE JANEIRO", value = "Descrição da unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo só é retornado para impedimentos originados no sistema Mantra")
+ /**
+   * Descrição da unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo só é retornado para impedimentos originados no sistema Mantra
+  **/
+  private String descricaoUnidadeRFB = null;
+
+  @XmlElement(name="unidadeRFB")
+  @ApiModelProperty(example = "0717700", value = "Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo só é retornado para impedimentos originados no sistema Mantra")
+ /**
+   * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo só é retornado para impedimentos originados no sistema Mantra
+  **/
+  private String unidadeRFB = null;
  /**
    * Código do impedimento.&lt;br/&gt;Tamanho: 11
    * @return codigo
@@ -72,6 +81,42 @@ public class ImpedimentoEntregaImportador  {
     return this;
   }
 
+ /**
+   * Descrição da unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega&lt;br/&gt;Este campo só é retornado para impedimentos originados no sistema Mantra
+   * @return descricaoUnidadeRFB
+  **/
+  @JsonProperty("descricaoUnidadeRFB")
+  public String getDescricaoUnidadeRFB() {
+    return descricaoUnidadeRFB;
+  }
+
+  public void setDescricaoUnidadeRFB(String descricaoUnidadeRFB) {
+    this.descricaoUnidadeRFB = descricaoUnidadeRFB;
+  }
+
+  public ImpedimentoEntregaImportador descricaoUnidadeRFB(String descricaoUnidadeRFB) {
+    this.descricaoUnidadeRFB = descricaoUnidadeRFB;
+    return this;
+  }
+
+ /**
+   * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega&lt;br/&gt;Este campo só é retornado para impedimentos originados no sistema Mantra
+   * @return unidadeRFB
+  **/
+  @JsonProperty("unidadeRFB")
+  public String getUnidadeRFB() {
+    return unidadeRFB;
+  }
+
+  public void setUnidadeRFB(String unidadeRFB) {
+    this.unidadeRFB = unidadeRFB;
+  }
+
+  public ImpedimentoEntregaImportador unidadeRFB(String unidadeRFB) {
+    this.unidadeRFB = unidadeRFB;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -80,6 +125,8 @@ public class ImpedimentoEntregaImportador  {
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
+    sb.append("    descricaoUnidadeRFB: ").append(toIndentedString(descricaoUnidadeRFB)).append("\n");
+    sb.append("    unidadeRFB: ").append(toIndentedString(unidadeRFB)).append("\n");
     sb.append("}");
     return sb.toString();
   }

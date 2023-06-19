@@ -1,24 +1,18 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "IncluirLpcoRequest", propOrder =
-    { "codigoModelo", "informacaoAdicional", "dataReferencia", "listaCamposFormulario", "listaNcm"
+    { "codigoModelo", "informacaoAdicional", "dataReferencia", "listaCamposFormulario", "listaNcm", "numeroLI"
 })
 
 @XmlRootElement(name="IncluirLpcoRequest")
@@ -63,7 +57,14 @@ public class IncluirLpcoRequest  {
  /**
    * Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.
   **/
-  private List<ItemLpcoRequest> listaNcm = null;
+  private List<ItemLpcoInserirRequest> listaNcm = null;
+
+  @XmlElement(name="numeroLI")
+  @ApiModelProperty(example = "2200002094", value = "Número da LI")
+ /**
+   * Número da LI
+  **/
+  private Long numeroLI = null;
  /**
    * Código do modelo de LPCO utilizado para o pedido&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do LPCO no ano
    * @return codigoModelo
@@ -148,21 +149,39 @@ public class IncluirLpcoRequest  {
    * @return listaNcm
   **/
   @JsonProperty("listaNcm")
-  public List<ItemLpcoRequest> getListaNcm() {
+  public List<ItemLpcoInserirRequest> getListaNcm() {
     return listaNcm;
   }
 
-  public void setListaNcm(List<ItemLpcoRequest> listaNcm) {
+  public void setListaNcm(List<ItemLpcoInserirRequest> listaNcm) {
     this.listaNcm = listaNcm;
   }
 
-  public IncluirLpcoRequest listaNcm(List<ItemLpcoRequest> listaNcm) {
+  public IncluirLpcoRequest listaNcm(List<ItemLpcoInserirRequest> listaNcm) {
     this.listaNcm = listaNcm;
     return this;
   }
 
-  public IncluirLpcoRequest addListaNcmItem(ItemLpcoRequest listaNcmItem) {
+  public IncluirLpcoRequest addListaNcmItem(ItemLpcoInserirRequest listaNcmItem) {
     this.listaNcm.add(listaNcmItem);
+    return this;
+  }
+
+ /**
+   * Número da LI
+   * @return numeroLI
+  **/
+  @JsonProperty("numeroLI")
+  public Long getNumeroLI() {
+    return numeroLI;
+  }
+
+  public void setNumeroLI(Long numeroLI) {
+    this.numeroLI = numeroLI;
+  }
+
+  public IncluirLpcoRequest numeroLI(Long numeroLI) {
+    this.numeroLI = numeroLI;
     return this;
   }
 
@@ -177,6 +196,7 @@ public class IncluirLpcoRequest  {
     sb.append("    dataReferencia: ").append(toIndentedString(dataReferencia)).append("\n");
     sb.append("    listaCamposFormulario: ").append(toIndentedString(listaCamposFormulario)).append("\n");
     sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
+    sb.append("    numeroLI: ").append(toIndentedString(numeroLI)).append("\n");
     sb.append("}");
     return sb.toString();
   }

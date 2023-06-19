@@ -1,23 +1,17 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CampoLpcoRequest", propOrder =
-    { "codigo", "listaValor", "valorComposto", "unidadeMedida"
+    { "codigo", "listaValor", "valorComposto", "unidadeMedida", "codigoAtributoPai"
 })
 
 @XmlRootElement(name="CampoLpcoRequest")
@@ -52,6 +46,13 @@ public class CampoLpcoRequest  {
    * Unidade de medida utilizada no campo. Necessário apenas para campos QTD_COMERCIALIZADA<br>Tamanho mínimo: 1<br>Tamanho máximo: 60
   **/
   private String unidadeMedida = null;
+
+  @XmlElement(name="codigoAtributoPai")
+  @ApiModelProperty(example = "ATT_1", value = "Código do atributo condicionante<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>")
+ /**
+   * Código do atributo condicionante<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>
+  **/
+  private String codigoAtributoPai = null;
  /**
    * Código do campo ou atributo do NCM&lt;BR&gt;Tamanho máximo: 40&lt;br&gt;Formato: Valores do domínio OU código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;Lei de formação: O código do campo pode ser um dos tipos padrão pré-definidos no domínio ou um código de um atributo do Cadastro de Atributos&lt;br&gt;Domínio: PAIS_DESTINO&lt;br&gt;PAIS_IMPORTADOR&lt;br&gt;SITUACAO_ESPECIAL&lt;br&gt;TRATAMENTO_PRIORITARIO&lt;br&gt;NCM&lt;br&gt;ENQUADRAMENTO_OPERACAO&lt;br&gt;URF_EMBARQUE&lt;br&gt;URF_DESPACHO&lt;br&gt;RECINTO_EMBARQUE&lt;br&gt;RECINTO_DESPACHO&lt;br&gt;CONDICAO_VENDA&lt;br&gt;VIA_ESPECIAL_TRANSPORTE&lt;br&gt;MOEDA&lt;br&gt;MOTIVO_DISPENSA_NF&lt;br&gt;IMPORTADOR&lt;br&gt;CHAVE_ACESSO_NFE&lt;br&gt;QTDE_COMERCIALIZADA&lt;br&gt;QTDE_ESTATISTICA&lt;br&gt;VMLE&lt;br&gt;CODIGO_PRODUTO&lt;br&gt;CPF_CNPJ_EXPORTADOR&lt;br&gt;CPF_CNPJ_DECLARANTE&lt;br&gt;ENDERECO_IMPORTADOR&lt;br&gt;PESO_LIQUIDO_TOTAL&lt;br&gt;NUMERO_CONTEINER&lt;br&gt;NUMERO_LACRE&lt;br&gt;CNPJ_TRANSPORTADOR&lt;br&gt;NOME_TRANSPORTADOR_ESTRANGEIRO&lt;br&gt;TIPOS_EMBALAGEM&lt;br&gt;NOME_CONSIGNATARIO&lt;br&gt;ENDERECO_CONSIGNATARIO&lt;br&gt;VALOR_FINANCIADO&lt;br&gt;VALOR_CONDICAO_VENDA&lt;br&gt;FORMA_EXPORTACAO&lt;br&gt;PAIS_ORIGEM&lt;br&gt;PAIS_AQUISICAO&lt;br&gt;PAIS_PROCEDENCIA&lt;br&gt;CPF_CNPJ_IMPORTADOR&lt;br&gt;CODIGO_NALADI&lt;br&gt;CODIGO_FUNDAMENTO&lt;br&gt;CONDICAO_MERCADORIA&lt;br&gt;EXPORTADOR_E_FABRICANTE_DO_PRODUTO&lt;br&gt;CRONOGRAMA_EMBARQUE&lt;br&gt;CRONOGRAMA_FATURAMENTO&lt;br&gt;RUC&lt;br&gt;NUMERO_CONHECIMENTO&lt;br&gt;PAIS_CONSIGNATARIO&lt;br&gt;TIPO_EMBALAGEM_LISTA&lt;br&gt;TIPO_IMPORTADOR_DUIMP&lt;br&gt;INDICACAO_IMPORTACAO_TERCEIROS&lt;br&gt;MOEDA_NEGOCIADA_DUIMP&lt;br&gt;FABRICANTE_PRODUTOR&lt;br&gt;EXPORTADOR_ESTRANGEIRO&lt;br&gt;UNIDADE_LOCALIZACAO_CARGA&lt;br&gt;UNIDADE_ENTRADA_DESCARGA&lt;br&gt;VIA_TRANSPORTE&lt;br&gt;TIPO_EMBALAGEM_ITEM_CARGA&lt;br&gt;VALOR_UNITARIO_CONDICAO_VENDA&lt;br&gt;LOCAL_EMBARQUE&lt;br&gt;FUNDAMENTO_LEGAL
    * @return codigo
@@ -130,6 +131,24 @@ public class CampoLpcoRequest  {
     return this;
   }
 
+ /**
+   * Código do atributo condicionante&lt;BR&gt;Tamanho máximo: 40&lt;br&gt;Formato: Código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;
+   * @return codigoAtributoPai
+  **/
+  @JsonProperty("codigoAtributoPai")
+  public String getCodigoAtributoPai() {
+    return codigoAtributoPai;
+  }
+
+  public void setCodigoAtributoPai(String codigoAtributoPai) {
+    this.codigoAtributoPai = codigoAtributoPai;
+  }
+
+  public CampoLpcoRequest codigoAtributoPai(String codigoAtributoPai) {
+    this.codigoAtributoPai = codigoAtributoPai;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -140,6 +159,7 @@ public class CampoLpcoRequest  {
     sb.append("    listaValor: ").append(toIndentedString(listaValor)).append("\n");
     sb.append("    valorComposto: ").append(toIndentedString(valorComposto)).append("\n");
     sb.append("    unidadeMedida: ").append(toIndentedString(unidadeMedida)).append("\n");
+    sb.append("    codigoAtributoPai: ").append(toIndentedString(codigoAtributoPai)).append("\n");
     sb.append("}");
     return sb.toString();
   }

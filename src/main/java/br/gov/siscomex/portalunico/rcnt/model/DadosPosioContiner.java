@@ -1,20 +1,12 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosPosioContiner", propOrder =
@@ -163,203 +155,12 @@ public enum TipoOperacaoEnum {
   **/
   private Boolean conferenciaFisica = null;
 
-
-@XmlType(name="SolicitanteFisicaEnum")
-@XmlEnum(String.class)
-public enum SolicitanteFisicaEnum {
-
-	@XmlEnumValue("'ACI'")
-	@JsonProperty("'ACI'")
-	ACI_(String.valueOf("'ACI'")),
-	
-	@XmlEnumValue("'ANCINE'")
-	@JsonProperty("'ANCINE'")
-	ANCINE_(String.valueOf("'ANCINE'")),
-	
-	@XmlEnumValue("'ANEEL'")
-	@JsonProperty("'ANEEL'")
-	ANEEL_(String.valueOf("'ANEEL'")),
-	
-	@XmlEnumValue("'ANP'")
-	@JsonProperty("'ANP'")
-	ANP_(String.valueOf("'ANP'")),
-	
-	@XmlEnumValue("'ANVISA'")
-	@JsonProperty("'ANVISA'")
-	ANVISA_(String.valueOf("'ANVISA'")),
-	
-	@XmlEnumValue("'BB'")
-	@JsonProperty("'BB'")
-	BB_(String.valueOf("'BB'")),
-	
-	@XmlEnumValue("'BEFIEX'")
-	@JsonProperty("'BEFIEX'")
-	BEFIEX_(String.valueOf("'BEFIEX'")),
-	
-	@XmlEnumValue("'BNDES'")
-	@JsonProperty("'BNDES'")
-	BNDES_(String.valueOf("'BNDES'")),
-	
-	@XmlEnumValue("'CNEN'")
-	@JsonProperty("'CNEN'")
-	CNEN_(String.valueOf("'CNEN'")),
-	
-	@XmlEnumValue("'CNPQ'")
-	@JsonProperty("'CNPQ'")
-	CNPQ_(String.valueOf("'CNPQ'")),
-	
-	@XmlEnumValue("'CONFAZ'")
-	@JsonProperty("'CONFAZ'")
-	CONFAZ_(String.valueOf("'CONFAZ'")),
-	
-	@XmlEnumValue("'COTAC'")
-	@JsonProperty("'COTAC'")
-	COTAC_(String.valueOf("'COTAC'")),
-	
-	@XmlEnumValue("'DEAEX'")
-	@JsonProperty("'DEAEX'")
-	DEAEX_(String.valueOf("'DEAEX'")),
-	
-	@XmlEnumValue("'DECEX'")
-	@JsonProperty("'DECEX'")
-	DECEX_(String.valueOf("'DECEX'")),
-	
-	@XmlEnumValue("'DEPLA'")
-	@JsonProperty("'DEPLA'")
-	DEPLA_(String.valueOf("'DEPLA'")),
-	
-	@XmlEnumValue("'DEPOSITARIO'")
-	@JsonProperty("'DEPOSITARIO'")
-	DEPOSITARIO_(String.valueOf("'DEPOSITARIO'")),
-	
-	@XmlEnumValue("'DESPACHANTE'")
-	@JsonProperty("'DESPACHANTE'")
-	DESPACHANTE_(String.valueOf("'DESPACHANTE'")),
-	
-	@XmlEnumValue("'DFPC'")
-	@JsonProperty("'DFPC'")
-	DFPC_(String.valueOf("'DFPC'")),
-	
-	@XmlEnumValue("'DNPM'")
-	@JsonProperty("'DNPM'")
-	DNPM_(String.valueOf("'DNPM'")),
-	
-	@XmlEnumValue("'DPF'")
-	@JsonProperty("'DPF'")
-	DPF_(String.valueOf("'DPF'")),
-	
-	@XmlEnumValue("'ECT'")
-	@JsonProperty("'ECT'")
-	ECT_(String.valueOf("'ECT'")),
-	
-	@XmlEnumValue("'EXPORTADOR'")
-	@JsonProperty("'EXPORTADOR'")
-	EXPORTADOR_(String.valueOf("'EXPORTADOR'")),
-	
-	@XmlEnumValue("'GESTOR'")
-	@JsonProperty("'GESTOR'")
-	GESTOR_(String.valueOf("'GESTOR'")),
-	
-	@XmlEnumValue("'IBAMA'")
-	@JsonProperty("'IBAMA'")
-	IBAMA_(String.valueOf("'IBAMA'")),
-	
-	@XmlEnumValue("'INMETRO'")
-	@JsonProperty("'INMETRO'")
-	INMETRO_(String.valueOf("'INMETRO'")),
-	
-	@XmlEnumValue("'IPHAN'")
-	@JsonProperty("'IPHAN'")
-	IPHAN_(String.valueOf("'IPHAN'")),
-	
-	@XmlEnumValue("'IMPORTADOR'")
-	@JsonProperty("'IMPORTADOR'")
-	IMPORTADOR_(String.valueOf("'IMPORTADOR'")),
-	
-	@XmlEnumValue("'JUSTIÇA'")
-	@JsonProperty("'JUSTIÇA'")
-	JUSTI_A_(String.valueOf("'JUSTIÇA'")),
-	
-	@XmlEnumValue("'MAPA'")
-	@JsonProperty("'MAPA'")
-	MAPA_(String.valueOf("'MAPA'")),
-	
-	@XmlEnumValue("'MCTI'")
-	@JsonProperty("'MCTI'")
-	MCTI_(String.valueOf("'MCTI'")),
-	
-	@XmlEnumValue("'MD'")
-	@JsonProperty("'MD'")
-	MD_(String.valueOf("'MD'")),
-	
-	@XmlEnumValue("'MRE'")
-	@JsonProperty("'MRE'")
-	MRE_(String.valueOf("'MRE'")),
-	
-	@XmlEnumValue("'RFB'")
-	@JsonProperty("'RFB'")
-	RFB_(String.valueOf("'RFB'")),
-	
-	@XmlEnumValue("'SDAVO'")
-	@JsonProperty("'SDAVO'")
-	SDAVO_(String.valueOf("'SDAVO'")),
-	
-	@XmlEnumValue("'SECEX'")
-	@JsonProperty("'SECEX'")
-	SECEX_(String.valueOf("'SECEX'")),
-	
-	@XmlEnumValue("'SEPIN'")
-	@JsonProperty("'SEPIN'")
-	SEPIN_(String.valueOf("'SEPIN'")),
-	
-	@XmlEnumValue("'SPC-MA'")
-	@JsonProperty("'SPC-MA'")
-	SPC_MA_(String.valueOf("'SPC-MA'")),
-	
-	@XmlEnumValue("'SUFRAMA'")
-	@JsonProperty("'SUFRAMA'")
-	SUFRAMA_(String.valueOf("'SUFRAMA'")),
-	
-	@XmlEnumValue("'TRANSPORTADOR'")
-	@JsonProperty("'TRANSPORTADOR'")
-	TRANSPORTADOR_(String.valueOf("'TRANSPORTADOR'")),
-	
-	@XmlEnumValue("'OUTRO'")
-	@JsonProperty("'OUTRO'")
-	OUTRO_(String.valueOf("'OUTRO'"));
-
-
-    private String value;
-
-    SolicitanteFisicaEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static SolicitanteFisicaEnum fromValue(String v) {
-        for (SolicitanteFisicaEnum b : SolicitanteFisicaEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to SolicitanteFisicaEnum");
-    }
-}
-
   @XmlElement(name="solicitanteFisica")
-  @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou a conferência física conforme tabela de domínio.<br/>Domínio:<br/>ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DEPOSITARIO - DEPOSITÁRIO<br/>DESPACHANTE - DESPACHANTE<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>EXPORTADOR - EXPORTADOR<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>IMPORTADOR - IMPORTADOR<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>TRANSPORTADOR - TRANSPORTADOR<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE")
+  @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Indicar qual o interveniente que solicitou a conferência física conforme tabela de domínio.<br/>Domínio:<br/>ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DEPOSITARIO - DEPOSITÁRIO<br/>DESPACHANTE - DESPACHANTE<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>EXPORTADOR - EXPORTADOR<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>IMPORTADOR - IMPORTADOR<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>TRANSPORTADOR - TRANSPORTADOR<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
+   * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
-  private SolicitanteFisicaEnum solicitanteFisica = null;
+  private String solicitanteFisica = null;
 
   @XmlElement(name="avaria")
   @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -376,7 +177,7 @@ public enum SolicitanteFisicaEnum {
   private Boolean vazio = null;
 
   @XmlElement(name="areaConteiner")
-  @ApiModelProperty(value = "Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
  /**
    * Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
   **/
@@ -652,22 +453,19 @@ public enum SolicitanteFisicaEnum {
   }
 
  /**
-   * Indicar qual o interveniente que solicitou a conferência física conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO&lt;br/&gt;ANCINE - AGENCIA NACIONAL DO CINEMA&lt;br/&gt;ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA&lt;br/&gt;ANP - AGENCIA NACIONAL DO PETROLEO&lt;br/&gt;ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA&lt;br/&gt;BB - BANCO DO BRASIL&lt;br/&gt;BEFIEX - PROGRAMAS BEFIEX&lt;br/&gt;BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL&lt;br/&gt;CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR&lt;br/&gt;CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO&lt;br/&gt;CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS&lt;br/&gt;COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL&lt;br/&gt;DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO&lt;br/&gt;DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR&lt;br/&gt;DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR&lt;br/&gt;DEPOSITARIO - DEPOSITÁRIO&lt;br/&gt;DESPACHANTE - DESPACHANTE&lt;br/&gt;DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS&lt;br/&gt;DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL&lt;br/&gt;DPF - DEPARTAMENTO DE POLICIA FEDERAL&lt;br/&gt;ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS&lt;br/&gt;EXPORTADOR - EXPORTADOR&lt;br/&gt;GESTOR - MICT/DECEX/GESTOR&lt;br/&gt;IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS&lt;br/&gt;INMETRO - INSTITUTO NACIONAL DE METROLOGIA&lt;br/&gt;IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL&lt;br/&gt;IMPORTADOR - IMPORTADOR&lt;br/&gt;JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.&lt;br/&gt;MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO&lt;br/&gt;MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO&lt;br/&gt;MD - MINISTERIO DA DEFESA&lt;br/&gt;MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES&lt;br/&gt;RFB - RECEITA FEDERAL DO BRASIL&lt;br/&gt;SDAVO - AUDIOVISUAL&lt;br/&gt;SECEX - SECRETARIA DE COMERCIO EXTERIOR&lt;br/&gt;SEPIN - MIN.DA CIENCIA E TECNOLOGIA&lt;br/&gt;SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO&lt;br/&gt;SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS&lt;br/&gt;TRANSPORTADOR - TRANSPORTADOR&lt;br/&gt;OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
+   * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return solicitanteFisica
   **/
   @JsonProperty("solicitanteFisica")
   public String getSolicitanteFisica() {
-    if (solicitanteFisica == null) {
-      return null;
-    }
-    return solicitanteFisica.value();
+    return solicitanteFisica;
   }
 
-  public void setSolicitanteFisica(SolicitanteFisicaEnum solicitanteFisica) {
+  public void setSolicitanteFisica(String solicitanteFisica) {
     this.solicitanteFisica = solicitanteFisica;
   }
 
-  public DadosPosioContiner solicitanteFisica(SolicitanteFisicaEnum solicitanteFisica) {
+  public DadosPosioContiner solicitanteFisica(String solicitanteFisica) {
     this.solicitanteFisica = solicitanteFisica;
     return this;
   }

@@ -1,41 +1,14 @@
 package br.gov.siscomex.portalunico.cct_ext.api;
 
-import java.math.BigDecimal;
-import java.util.List;
+import br.gov.siscomex.portalunico.cct_ext.model.*;
+import io.swagger.annotations.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-
-import br.gov.siscomex.portalunico.cct_ext.model.ConsultaConteiner;
-import br.gov.siscomex.portalunico.cct_ext.model.EntregasConteineres;
-import br.gov.siscomex.portalunico.cct_ext.model.EntregasDocumentoCarga;
-import br.gov.siscomex.portalunico.cct_ext.model.EstoqueNFE;
-import br.gov.siscomex.portalunico.cct_ext.model.ListaRegistros;
-import br.gov.siscomex.portalunico.cct_ext.model.ManifestacoesExportacao;
-import br.gov.siscomex.portalunico.cct_ext.model.ManifestacoesExportacaoPreACDMicDTO;
-import br.gov.siscomex.portalunico.cct_ext.model.OperacaoDesunitizacao;
-import br.gov.siscomex.portalunico.cct_ext.model.OperacaoUnitizacao;
-import br.gov.siscomex.portalunico.cct_ext.model.OperacoesConsolidacao;
-import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesConteineres;
-import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesDocumentoCarga;
-import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesNFE;
-import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesNFF;
-import br.gov.siscomex.portalunico.cct_ext.model.ResultadoConsulta;
-import br.gov.siscomex.portalunico.cct_ext.model.ResultadoConsultaMRUC;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Controle de Carga e Trânsito Exportação
@@ -266,7 +239,7 @@ public interface CargaApi  {
     public Response manifestarCargaExportacao(@ApiParam(value = "Manifestos de Dados de Embarque para Exportação" ,required=true)@Valid ManifestacoesExportacao body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
-     * Olá Manifestar Dados de Embarque para Exportação de um MIC/DTA Pré-ACD
+     * Manifestar Dados de Embarque para Exportação de um MIC/DTA Pré-ACD
      *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/manifestacao-dados-embarque-pre-acd/\&quot;&gt;Exemplos de Manifestos de Dados de Embarque para Exportação de Carga Pré ACD&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
      *
@@ -274,7 +247,7 @@ public interface CargaApi  {
     @POST
     @Path("/ext/carga/manifestacao-dados-embarque-pre-acd")
     @Consumes({ "application/xml" })
-    @ApiOperation(value = "Olá Manifestar Dados de Embarque para Exportação de um MIC/DTA Pré-ACD", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/manifestacao-dados-embarque-pre-acd/\">Exemplos de Manifestos de Dados de Embarque para Exportação de Carga Pré ACD</a><br><br><a href=\"../pages/exemplos/cctr/xsd-cct-exp.zip\">XSD para download</a></p>", tags={ "Carga" })
+    @ApiOperation(value = "Manifestar Dados de Embarque para Exportação de um MIC/DTA Pré-ACD", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/manifestacao-dados-embarque-pre-acd/\">Exemplos de Manifestos de Dados de Embarque para Exportação de Carga Pré ACD</a><br><br><a href=\"../pages/exemplos/cctr/xsd-cct-exp.zip\">XSD para download</a></p>", tags={ "Carga" })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),

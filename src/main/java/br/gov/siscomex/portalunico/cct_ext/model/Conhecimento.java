@@ -1,21 +1,16 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Conhecimento", propOrder =
-    { "numero", "dataEmissao", "frete", "carga"
+    { "numero", "dataEmissao", "frete", "carga", "documentosAnexo"
 })
 
 @XmlRootElement(name="Conhecimento")
@@ -48,6 +43,11 @@ public class Conhecimento  {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private Carga carga = null;
+
+  @XmlElement(name="documentosAnexo")
+  @ApiModelProperty(value = "")
+  @Valid
+  private DocumentosAnexo documentosAnexo = null;
  /**
    * Número do conhecimento de carga&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: PPNNNNNNNNNNNNNNNNNN, onde PP &#x3D; sigla ISO/Alfa 2 do país
    * @return numero
@@ -124,6 +124,24 @@ public class Conhecimento  {
     return this;
   }
 
+ /**
+   * Get documentosAnexo
+   * @return documentosAnexo
+  **/
+  @JsonProperty("documentosAnexo")
+  public DocumentosAnexo getDocumentosAnexo() {
+    return documentosAnexo;
+  }
+
+  public void setDocumentosAnexo(DocumentosAnexo documentosAnexo) {
+    this.documentosAnexo = documentosAnexo;
+  }
+
+  public Conhecimento documentosAnexo(DocumentosAnexo documentosAnexo) {
+    this.documentosAnexo = documentosAnexo;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -134,6 +152,7 @@ public class Conhecimento  {
     sb.append("    dataEmissao: ").append(toIndentedString(dataEmissao)).append("\n");
     sb.append("    frete: ").append(toIndentedString(frete)).append("\n");
     sb.append("    carga: ").append(toIndentedString(carga)).append("\n");
+    sb.append("    documentosAnexo: ").append(toIndentedString(documentosAnexo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

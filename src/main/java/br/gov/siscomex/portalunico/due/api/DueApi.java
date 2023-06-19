@@ -1,31 +1,12 @@
 package br.gov.siscomex.portalunico.due.api;
 
+import br.gov.siscomex.portalunico.due.model.*;
+import io.swagger.annotations.*;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-
-import br.gov.siscomex.portalunico.due.model.AtoConcessorio;
-import br.gov.siscomex.portalunico.due.model.DUE;
-import br.gov.siscomex.portalunico.due.model.DUEResumida;
-import br.gov.siscomex.portalunico.due.model.Declaration;
-import br.gov.siscomex.portalunico.due.model.ExigenciaFiscalEstruturada;
-import br.gov.siscomex.portalunico.due.model.Link;
-import br.gov.siscomex.portalunico.due.model.PucomexReturn;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
 /**
  * Declaração Única de Exportação
@@ -121,6 +102,7 @@ public interface DueApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AtoConcessorio.class, responseContainer = "List"),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 206, message = "Retorno do conteúdo particionado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),

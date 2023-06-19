@@ -1,16 +1,10 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosDoConhecimentoDaCargaSimplificado", propOrder =
@@ -20,10 +14,10 @@ import io.swagger.annotations.ApiModelProperty;
 @XmlRootElement(name="DadosDoConhecimentoDaCargaSimplificado")
 public class DadosDoConhecimentoDaCargaSimplificado  {
   
-  @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @XmlElement(name="idElemento", required = true)
+  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
   **/
   private String idElemento = null;
 
@@ -34,52 +28,18 @@ public class DadosDoConhecimentoDaCargaSimplificado  {
   **/
   private String numero = null;
 
-
-@XmlType(name="TipoEnum")
-@XmlEnum(String.class)
-public enum TipoEnum {
-
-	@XmlEnumValue("<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
-	@JsonProperty("<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
-	_BR_DOM_NIO_BR_CRT_CONHECIMENTO_INTERNACIONAL_DE_TRANSPORTE_RODOVI_RIO_BR_TIF_CONHECIMENTO_CARTA_DE_PORTE_INTERNACIONAL_BR_RWB_RAIL_WAYBILL_BR_AWB_AIR_WAYBILL_BR_DSIC_DOCUMENTO_SUBSIDI_RIO_DE_IDENTIFICA_O_DA_CARGA_BR_CTE_CONHECIMENTO_DE_TRANSPORTE_ELETR_NICO_BR_CE_MERCANTE_CONHECIMENTO_ELETR_NICO_MERCANTE_BR_BL_BILL_OF_LADING_BR_POSTAL_REMESSA_POSTAL_INTERNACIONAL_BR_(String.valueOf("<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>"));
-
-
-    private String value;
-
-    TipoEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static TipoEnum fromValue(String v) {
-        for (TipoEnum b : TipoEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-    }
-}
-
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.
+   * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
-  private TipoEnum tipo = null;
+  private String tipo = null;
  /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
    * @return idElemento
   **/
   @JsonProperty("idElemento")
+  @NotNull
   public String getIdElemento() {
     return idElemento;
   }
@@ -112,22 +72,19 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.
+   * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return tipo
   **/
   @JsonProperty("tipo")
   public String getTipo() {
-    if (tipo == null) {
-      return null;
-    }
-    return tipo.value();
+    return tipo;
   }
 
-  public void setTipo(TipoEnum tipo) {
+  public void setTipo(String tipo) {
     this.tipo = tipo;
   }
 
-  public DadosDoConhecimentoDaCargaSimplificado tipo(TipoEnum tipo) {
+  public DadosDoConhecimentoDaCargaSimplificado tipo(String tipo) {
     this.tipo = tipo;
     return this;
   }

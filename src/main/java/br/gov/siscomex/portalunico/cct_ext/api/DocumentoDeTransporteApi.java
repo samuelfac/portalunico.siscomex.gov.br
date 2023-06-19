@@ -1,24 +1,14 @@
 package br.gov.siscomex.portalunico.cct_ext.api;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Response;
-
 import br.gov.siscomex.portalunico.cct_ext.model.DocumentosTransporte;
 import br.gov.siscomex.portalunico.cct_ext.model.EntregasDocumentoTransporte;
 import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesDocumentoTransporte;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 /**
  * Controle de Carga e Trânsito Exportação
@@ -48,7 +38,7 @@ public interface DocumentoDeTransporteApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarDocumentoTransporteDAT( @NotNull @ApiParam(value = "Lista de DAT (número do documento) separados por ¦<br>Cada documento de Transporte DAT é formado pelo número do DAT<br>Tamanho 11<br>Formato: AABRNNNNNN-D<br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>NNNNN - Numeração sequencial<br>D - DV",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response consultarDocumentoTransporteDAT( @NotNull @ApiParam(value = "Lista de DAT (número do documento) separados por |<br>Cada documento de Transporte DAT é formado pelo número do DAT<br>Tamanho 11<br>Formato: AABRNNNNNN-D<br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>NNNNN - Numeração sequencial<br>D - DV<br>ex: 20BR0061234|23BR0064567|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consultar uma lista de Documento de Transporte do tipo DTAI
@@ -68,7 +58,7 @@ public interface DocumentoDeTransporteApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarDocumentoTransporteDTAI( @NotNull @ApiParam(value = "Lista de Documentos de Transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response consultarDocumentoTransporteDTAI( @NotNull @ApiParam(value = "Lista de DTAI (número do documento,data de emissão) separados por |<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA<br>ex: DTAI05ABR01,01-02-2023|3E33D3D33,10-08-2020|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consultar uma lista de Documento de Transporte do tipo MIC-DTA
@@ -88,7 +78,7 @@ public interface DocumentoDeTransporteApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarDocumentoTransporteMIC( @NotNull @ApiParam(value = "Lista de Documentos de Transporte<br>Tamanho: 11<br>Formato: BRNNNNNNNNN<br>Descrição Formato<br>BR - Brasil<br>NNNNNNNNN - sequencial numérico",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response consultarDocumentoTransporteMIC( @NotNull @ApiParam(value = "Lista de MIC (número do documento,data de emissão) separados por |<br>Tamanho: 11<br>Formato: BRNNNNNNNNN<br>Descrição Formato<br>BR - Brasil<br>NNNNNNNNN - sequencial numérico<br>ex: BR123456788,01-01-2020|BR123456789,11-10-2022|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consultar uma lista de Documento de Transporte do tipo TIF-DTA
@@ -108,7 +98,7 @@ public interface DocumentoDeTransporteApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarDocumentoTransporteTIF( @NotNull @ApiParam(value = "Lista de Documentos de Transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response consultarDocumentoTransporteTIF( @NotNull @ApiParam(value = "Lista de TIF (número do documento,data de emissão) separados por |<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA<br>ex: 2344234324,08-06-2020|TIF22ABR01,14-05-2022|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Entregar de Documento de Transporte

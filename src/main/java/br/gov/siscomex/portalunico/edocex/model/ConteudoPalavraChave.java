@@ -1,16 +1,11 @@
 package br.gov.siscomex.portalunico.edocex.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ConteudoPalavraChave", propOrder =
@@ -25,9 +20,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class ConteudoPalavraChave  {
   
   @XmlElement(name="conteudo", required = true)
-  @ApiModelProperty(example = "1.000,00", required = true, value = "Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss<br/>Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)<br/>Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)")
+  @ApiModelProperty(example = "1.000,00", required = true, value = "Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy ou yyyy-MM-dd<br/>&emsp;&emsp;Exemplos: 15/02/2021 ou 2021-02-15<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss ou formato ISO 8601 yyyy-MM-dd'T'HH:mm:ss.SSSz<br/>&emsp;&emsp;Exemplos: 15/02/2021 15:48:25, 2021-02-15T15:48:25 ou 2019-05-03T15:38:11.855BRT<br/>Formato NUMERO_INTEIRO: 99.999 (com ou sem ponto como separador de milhar)<br/>&emsp;&emsp;Exemplos: 1234 ou 1.234<br/>Formato NUMERO_REAL: 99.999,99 (pode ser enviado em três formatos diferentes:<br/>&emsp;&emsp;1) com ponto como separador de milhar e vírgula como separador decimal;<br/>&emsp;&emsp;2) apenas vírgula como separador decimal, sem separador de milhar; ou<br/>&emsp;&emsp;3) apenas ponto como separador decimal, sem separador de milhar)<br/>&emsp;&emsp;Exemplos: 1.234.478,65 ou 1234478.65 ou 1234478,65<br/>")
  /**
-   * Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss<br/>Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)<br/>Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)
+   * Conteúdo informado para a palavra-chave.<br/>Tamanho máximo: 255<br/>Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):<br/>Formato TEXTO: conforme máscara definida para a palavra-chave<br/>Formato DATA: dd/MM/yyyy ou yyyy-MM-dd<br/>&emsp;&emsp;Exemplos: 15/02/2021 ou 2021-02-15<br/>Formato DATA_HORA: dd/MM/yyyy HH:mm:ss ou formato ISO 8601 yyyy-MM-dd'T'HH:mm:ss.SSSz<br/>&emsp;&emsp;Exemplos: 15/02/2021 15:48:25, 2021-02-15T15:48:25 ou 2019-05-03T15:38:11.855BRT<br/>Formato NUMERO_INTEIRO: 99.999 (com ou sem ponto como separador de milhar)<br/>&emsp;&emsp;Exemplos: 1234 ou 1.234<br/>Formato NUMERO_REAL: 99.999,99 (pode ser enviado em três formatos diferentes:<br/>&emsp;&emsp;1) com ponto como separador de milhar e vírgula como separador decimal;<br/>&emsp;&emsp;2) apenas vírgula como separador decimal, sem separador de milhar; ou<br/>&emsp;&emsp;3) apenas ponto como separador decimal, sem separador de milhar)<br/>&emsp;&emsp;Exemplos: 1.234.478,65 ou 1234478.65 ou 1234478,65<br/>
   **/
   private String conteudo = null;
 
@@ -38,7 +33,7 @@ public class ConteudoPalavraChave  {
   **/
   private Integer idPalavraChave = null;
  /**
-   * Conteúdo informado para a palavra-chave.&lt;br/&gt;Tamanho máximo: 255&lt;br/&gt;Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):&lt;br/&gt;Formato TEXTO: conforme máscara definida para a palavra-chave&lt;br/&gt;Formato DATA: dd/MM/yyyy&lt;br/&gt;Formato DATA_HORA: dd/MM/yyyy HH:mm:ss&lt;br/&gt;Formato NUMERO_INTEIRO: 99.999 (com ponto como separador de milhares)&lt;br/&gt;Formato NUMERO_REAL: 99.999,99 (com ponto como separador de milhares e vírgula como separador decimal)
+   * Conteúdo informado para a palavra-chave.&lt;br/&gt;Tamanho máximo: 255&lt;br/&gt;Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):&lt;br/&gt;Formato TEXTO: conforme máscara definida para a palavra-chave&lt;br/&gt;Formato DATA: dd/MM/yyyy ou yyyy-MM-dd&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 15/02/2021 ou 2021-02-15&lt;br/&gt;Formato DATA_HORA: dd/MM/yyyy HH:mm:ss ou formato ISO 8601 yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 15/02/2021 15:48:25, 2021-02-15T15:48:25 ou 2019-05-03T15:38:11.855BRT&lt;br/&gt;Formato NUMERO_INTEIRO: 99.999 (com ou sem ponto como separador de milhar)&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 1234 ou 1.234&lt;br/&gt;Formato NUMERO_REAL: 99.999,99 (pode ser enviado em três formatos diferentes:&lt;br/&gt;&amp;emsp;&amp;emsp;1) com ponto como separador de milhar e vírgula como separador decimal;&lt;br/&gt;&amp;emsp;&amp;emsp;2) apenas vírgula como separador decimal, sem separador de milhar; ou&lt;br/&gt;&amp;emsp;&amp;emsp;3) apenas ponto como separador decimal, sem separador de milhar)&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 1.234.478,65 ou 1234478.65 ou 1234478,65&lt;br/&gt;
    * @return conteudo
   **/
   @JsonProperty("conteudo")

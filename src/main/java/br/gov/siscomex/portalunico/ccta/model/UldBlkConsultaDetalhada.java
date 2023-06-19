@@ -1,80 +1,26 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "UldBlkConsultaDetalhada", propOrder =
-    { "formaTransporte", "tipoULD", "numeroSerieULD", "codigoProprietarioULD", "conhecimentos"
+    { "codigoProprietarioULD", "numeroSerieULD", "quantidade", "tara", "tipoULD"
 })
 
 @XmlRootElement(name="UldBlkConsultaDetalhada")
 public class UldBlkConsultaDetalhada  {
   
-
-@XmlType(name="FormaTransporteEnum")
-@XmlEnum(String.class)
-public enum FormaTransporteEnum {
-
-	@XmlEnumValue("ULD")
-	@JsonProperty("ULD")
-	ULD(String.valueOf("ULD")),
-	
-	@XmlEnumValue("BLK")
-	@JsonProperty("BLK")
-	BLK(String.valueOf("BLK"));
-
-
-    private String value;
-
-    FormaTransporteEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static FormaTransporteEnum fromValue(String v) {
-        for (FormaTransporteEnum b : FormaTransporteEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to FormaTransporteEnum");
-    }
-}
-
-  @XmlElement(name="formaTransporte")
-  @ApiModelProperty(example = "BLK", value = "Forma de transporte<br/>Tamanho 3<br/> Formato: AAA")
+  @XmlElement(name="codigoProprietarioULD")
+  @ApiModelProperty(example = "XX", value = "Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA")
  /**
-   * Forma de transporte<br/>Tamanho 3<br/> Formato: AAA
+   * Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA
   **/
-  private FormaTransporteEnum formaTransporte = null;
-
-  @XmlElement(name="tipoULD")
-  @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
- /**
-   * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
-  **/
-  private String tipoULD = null;
+  private String codigoProprietarioULD = null;
 
   @XmlElement(name="numeroSerieULD")
   @ApiModelProperty(example = "AS123", value = "Número de série de uma ULD registrado pelo seu proprietário<br/>Tamanho: 5<br/> Formato: AAAAA")
@@ -83,56 +29,42 @@ public enum FormaTransporteEnum {
   **/
   private String numeroSerieULD = null;
 
-  @XmlElement(name="codigoProprietarioULD")
-  @ApiModelProperty(example = "XX", value = "Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA")
+  @XmlElement(name="quantidade")
+  @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
  /**
-   * Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA
+   * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
   **/
-  private String codigoProprietarioULD = null;
+  private Integer quantidade = null;
 
-  @XmlElement(name="conhecimentos")
-  @ApiModelProperty(value = "Lista contendo os conhecimentos manifestados para este manifesto<br/>")
+  @XmlElement(name="tara")
+  @ApiModelProperty(example = "780.348", value = "Peso da unidade da ULD, vazia<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto")
   @Valid
  /**
-   * Lista contendo os conhecimentos manifestados para este manifesto<br/>
+   * Peso da unidade da ULD, vazia<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto
   **/
-  private List<ChaveConhecimento> conhecimentos = null;
+  private BigDecimal tara = null;
+
+  @XmlElement(name="tipoULD")
+  @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
  /**
-   * Forma de transporte&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
-   * @return formaTransporte
+   * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
   **/
-  @JsonProperty("formaTransporte")
-  public String getFormaTransporte() {
-    if (formaTransporte == null) {
-      return null;
-    }
-    return formaTransporte.value();
-  }
-
-  public void setFormaTransporte(FormaTransporteEnum formaTransporte) {
-    this.formaTransporte = formaTransporte;
-  }
-
-  public UldBlkConsultaDetalhada formaTransporte(FormaTransporteEnum formaTransporte) {
-    this.formaTransporte = formaTransporte;
-    return this;
-  }
-
+  private String tipoULD = null;
  /**
-   * Código referente ao tipo da ULD&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
-   * @return tipoULD
+   * Identifica a companhia aérea proprietária da ULD&lt;br/&gt;Tamanho: : 2&lt;br/&gt; Formato: AA
+   * @return codigoProprietarioULD
   **/
-  @JsonProperty("tipoULD")
-  public String getTipoULD() {
-    return tipoULD;
+  @JsonProperty("codigoProprietarioULD")
+  public String getCodigoProprietarioULD() {
+    return codigoProprietarioULD;
   }
 
-  public void setTipoULD(String tipoULD) {
-    this.tipoULD = tipoULD;
+  public void setCodigoProprietarioULD(String codigoProprietarioULD) {
+    this.codigoProprietarioULD = codigoProprietarioULD;
   }
 
-  public UldBlkConsultaDetalhada tipoULD(String tipoULD) {
-    this.tipoULD = tipoULD;
+  public UldBlkConsultaDetalhada codigoProprietarioULD(String codigoProprietarioULD) {
+    this.codigoProprietarioULD = codigoProprietarioULD;
     return this;
   }
 
@@ -155,43 +87,56 @@ public enum FormaTransporteEnum {
   }
 
  /**
-   * Identifica a companhia aérea proprietária da ULD&lt;br/&gt;Tamanho: : 2&lt;br/&gt; Formato: AA
-   * @return codigoProprietarioULD
+   * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+   * @return quantidade
   **/
-  @JsonProperty("codigoProprietarioULD")
-  public String getCodigoProprietarioULD() {
-    return codigoProprietarioULD;
+  @JsonProperty("quantidade")
+  public Integer getQuantidade() {
+    return quantidade;
   }
 
-  public void setCodigoProprietarioULD(String codigoProprietarioULD) {
-    this.codigoProprietarioULD = codigoProprietarioULD;
+  public void setQuantidade(Integer quantidade) {
+    this.quantidade = quantidade;
   }
 
-  public UldBlkConsultaDetalhada codigoProprietarioULD(String codigoProprietarioULD) {
-    this.codigoProprietarioULD = codigoProprietarioULD;
+  public UldBlkConsultaDetalhada quantidade(Integer quantidade) {
+    this.quantidade = quantidade;
     return this;
   }
 
  /**
-   * Lista contendo os conhecimentos manifestados para este manifesto&lt;br/&gt;
-   * @return conhecimentos
+   * Peso da unidade da ULD, vazia&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto
+   * @return tara
   **/
-  @JsonProperty("conhecimentos")
-  public List<ChaveConhecimento> getConhecimentos() {
-    return conhecimentos;
+  @JsonProperty("tara")
+  public BigDecimal getTara() {
+    return tara;
   }
 
-  public void setConhecimentos(List<ChaveConhecimento> conhecimentos) {
-    this.conhecimentos = conhecimentos;
+  public void setTara(BigDecimal tara) {
+    this.tara = tara;
   }
 
-  public UldBlkConsultaDetalhada conhecimentos(List<ChaveConhecimento> conhecimentos) {
-    this.conhecimentos = conhecimentos;
+  public UldBlkConsultaDetalhada tara(BigDecimal tara) {
+    this.tara = tara;
     return this;
   }
 
-  public UldBlkConsultaDetalhada addConhecimentosItem(ChaveConhecimento conhecimentosItem) {
-    this.conhecimentos.add(conhecimentosItem);
+ /**
+   * Código referente ao tipo da ULD&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
+   * @return tipoULD
+  **/
+  @JsonProperty("tipoULD")
+  public String getTipoULD() {
+    return tipoULD;
+  }
+
+  public void setTipoULD(String tipoULD) {
+    this.tipoULD = tipoULD;
+  }
+
+  public UldBlkConsultaDetalhada tipoULD(String tipoULD) {
+    this.tipoULD = tipoULD;
     return this;
   }
 
@@ -201,11 +146,11 @@ public enum FormaTransporteEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class UldBlkConsultaDetalhada {\n");
     
-    sb.append("    formaTransporte: ").append(toIndentedString(formaTransporte)).append("\n");
-    sb.append("    tipoULD: ").append(toIndentedString(tipoULD)).append("\n");
-    sb.append("    numeroSerieULD: ").append(toIndentedString(numeroSerieULD)).append("\n");
     sb.append("    codigoProprietarioULD: ").append(toIndentedString(codigoProprietarioULD)).append("\n");
-    sb.append("    conhecimentos: ").append(toIndentedString(conhecimentos)).append("\n");
+    sb.append("    numeroSerieULD: ").append(toIndentedString(numeroSerieULD)).append("\n");
+    sb.append("    quantidade: ").append(toIndentedString(quantidade)).append("\n");
+    sb.append("    tara: ").append(toIndentedString(tara)).append("\n");
+    sb.append("    tipoULD: ").append(toIndentedString(tipoULD)).append("\n");
     sb.append("}");
     return sb.toString();
   }

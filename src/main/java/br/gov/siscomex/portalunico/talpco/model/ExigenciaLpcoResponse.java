@@ -1,17 +1,12 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ExigenciaLpcoResponse", propOrder =
@@ -63,7 +58,7 @@ public class ExigenciaLpcoResponse  {
   @XmlElement(name="situacao", required = true)
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private IdDescricao situacao = null;
+  private SituacaoExigenciaLpco situacao = null;
 
   @XmlElement(name="numeroCancelado")
   @ApiModelProperty(example = "1", value = "Número da exigência anterior cancelada")
@@ -177,15 +172,15 @@ public class ExigenciaLpcoResponse  {
   **/
   @JsonProperty("situacao")
   @NotNull
-  public IdDescricao getSituacao() {
+  public SituacaoExigenciaLpco getSituacao() {
     return situacao;
   }
 
-  public void setSituacao(IdDescricao situacao) {
+  public void setSituacao(SituacaoExigenciaLpco situacao) {
     this.situacao = situacao;
   }
 
-  public ExigenciaLpcoResponse situacao(IdDescricao situacao) {
+  public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
     this.situacao = situacao;
     return this;
   }

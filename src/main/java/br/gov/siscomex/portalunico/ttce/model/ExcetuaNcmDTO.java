@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.ttce.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ExcetuaNcmDTO", propOrder =
@@ -34,27 +28,27 @@ public class ExcetuaNcmDTO  {
  /**
    * Lista contendo os códigos das NCMs para os quais se excetua este conjunto de Tratamentos Tributários agrupados.
   **/
-  private List<CodigoNcmDTO> ncms = new ArrayList<>();
+  private List<CodigoNcmExcetuaDTO> ncms = new ArrayList<>();
  /**
    * Lista contendo os códigos das NCMs para os quais se excetua este conjunto de Tratamentos Tributários agrupados.
    * @return ncms
   **/
   @JsonProperty("ncms")
   @NotNull
-  public List<CodigoNcmDTO> getNcms() {
+  public List<CodigoNcmExcetuaDTO> getNcms() {
     return ncms;
   }
 
-  public void setNcms(List<CodigoNcmDTO> ncms) {
+  public void setNcms(List<CodigoNcmExcetuaDTO> ncms) {
     this.ncms = ncms;
   }
 
-  public ExcetuaNcmDTO ncms(List<CodigoNcmDTO> ncms) {
+  public ExcetuaNcmDTO ncms(List<CodigoNcmExcetuaDTO> ncms) {
     this.ncms = ncms;
     return this;
   }
 
-  public ExcetuaNcmDTO addNcmsItem(CodigoNcmDTO ncmsItem) {
+  public ExcetuaNcmDTO addNcmsItem(CodigoNcmExcetuaDTO ncmsItem) {
     this.ncms.add(ncmsItem);
     return this;
   }

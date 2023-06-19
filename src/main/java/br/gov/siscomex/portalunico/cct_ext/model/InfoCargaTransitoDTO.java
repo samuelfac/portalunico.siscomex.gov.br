@@ -1,17 +1,11 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "InfoCargaTransitoDTO", propOrder =
@@ -33,11 +27,13 @@ public class InfoCargaTransitoDTO  {
 
   @XmlElement(name="documentosTransporteNacional")
   @ApiModelProperty(value = "")
-  private List<String> documentosTransporteNacional = null;
+  @Valid
+  private List<ConsultaDTO> documentosTransporteNacional = null;
 
   @XmlElement(name="conhecimentos")
   @ApiModelProperty(value = "")
-  private List<String> conhecimentos = null;
+  @Valid
+  private List<ConsultaDTO> conhecimentos = null;
 
   @XmlElement(name="documentosTransporteInternacional")
   @ApiModelProperty(value = "")
@@ -98,20 +94,20 @@ public class InfoCargaTransitoDTO  {
    * @return documentosTransporteNacional
   **/
   @JsonProperty("documentosTransporteNacional")
-  public List<String> getDocumentosTransporteNacional() {
+  public List<ConsultaDTO> getDocumentosTransporteNacional() {
     return documentosTransporteNacional;
   }
 
-  public void setDocumentosTransporteNacional(List<String> documentosTransporteNacional) {
+  public void setDocumentosTransporteNacional(List<ConsultaDTO> documentosTransporteNacional) {
     this.documentosTransporteNacional = documentosTransporteNacional;
   }
 
-  public InfoCargaTransitoDTO documentosTransporteNacional(List<String> documentosTransporteNacional) {
+  public InfoCargaTransitoDTO documentosTransporteNacional(List<ConsultaDTO> documentosTransporteNacional) {
     this.documentosTransporteNacional = documentosTransporteNacional;
     return this;
   }
 
-  public InfoCargaTransitoDTO addDocumentosTransporteNacionalItem(String documentosTransporteNacionalItem) {
+  public InfoCargaTransitoDTO addDocumentosTransporteNacionalItem(ConsultaDTO documentosTransporteNacionalItem) {
     this.documentosTransporteNacional.add(documentosTransporteNacionalItem);
     return this;
   }
@@ -121,20 +117,20 @@ public class InfoCargaTransitoDTO  {
    * @return conhecimentos
   **/
   @JsonProperty("conhecimentos")
-  public List<String> getConhecimentos() {
+  public List<ConsultaDTO> getConhecimentos() {
     return conhecimentos;
   }
 
-  public void setConhecimentos(List<String> conhecimentos) {
+  public void setConhecimentos(List<ConsultaDTO> conhecimentos) {
     this.conhecimentos = conhecimentos;
   }
 
-  public InfoCargaTransitoDTO conhecimentos(List<String> conhecimentos) {
+  public InfoCargaTransitoDTO conhecimentos(List<ConsultaDTO> conhecimentos) {
     this.conhecimentos = conhecimentos;
     return this;
   }
 
-  public InfoCargaTransitoDTO addConhecimentosItem(String conhecimentosItem) {
+  public InfoCargaTransitoDTO addConhecimentosItem(ConsultaDTO conhecimentosItem) {
     this.conhecimentos.add(conhecimentosItem);
     return this;
   }

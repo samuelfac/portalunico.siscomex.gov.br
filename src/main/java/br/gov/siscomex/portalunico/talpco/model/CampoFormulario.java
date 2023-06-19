@@ -1,30 +1,24 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CampoFormulario", propOrder =
-    { "codigo", "nome", "unidadeMedida", "tipo", "validacao"
+    { "codigo", "nome", "unidadeMedida", "tipo", "validacao", "condicaoPreenchimento", "codigoAtributoPai", "subatributos", "orientacao", "exemplo"
 })
 
 @XmlRootElement(name="CampoFormulario")
 /**
-  * Definição da estrutura de um campo de um LPCO
+  * Definição da estrutura de um campo de um LPCO. Quando o campo for do tipo INDICACAO_IMPORTACAO_TERCEIROS, EXPORTADOR_ESTRANGEIRO, EXPORTADOR_E_FABRICANTE_DO_PRODUTO, FABRICANTE_PRODUTOR, FUNDAMENTO_LEGAL ou ATRIBUTO_COMPOSTO, consultar o DTO \"ReferenciaValorComposto\" na sessão \"Models\" ao final desta documentação.
  **/
-@ApiModel(description="Definição da estrutura de um campo de um LPCO")
+@ApiModel(description="Definição da estrutura de um campo de um LPCO. Quando o campo for do tipo INDICACAO_IMPORTACAO_TERCEIROS, EXPORTADOR_ESTRANGEIRO, EXPORTADOR_E_FABRICANTE_DO_PRODUTO, FABRICANTE_PRODUTOR, FUNDAMENTO_LEGAL ou ATRIBUTO_COMPOSTO, consultar o DTO \"ReferenciaValorComposto\" na sessão \"Models\" ao final desta documentação.")
 public class CampoFormulario  {
   
 
@@ -264,10 +258,6 @@ public enum CodigoEnum {
 	@JsonProperty("VALOR_UNITARIO_CONDICAO_VENDA")
 	VALOR_UNITARIO_CONDICAO_VENDA(String.valueOf("VALOR_UNITARIO_CONDICAO_VENDA")),
 	
-	@XmlEnumValue("LOCAL_EMBARQUE")
-	@JsonProperty("LOCAL_EMBARQUE")
-	LOCAL_EMBARQUE(String.valueOf("LOCAL_EMBARQUE")),
-	
 	@XmlEnumValue("FUNDAMENTO_LEGAL")
 	@JsonProperty("FUNDAMENTO_LEGAL")
 	FUNDAMENTO_LEGAL(String.valueOf("FUNDAMENTO_LEGAL")),
@@ -279,6 +269,22 @@ public enum CodigoEnum {
 	@XmlEnumValue("ATRIBUTO_COMPOSTO")
 	@JsonProperty("ATRIBUTO_COMPOSTO")
 	ATRIBUTO_COMPOSTO(String.valueOf("ATRIBUTO_COMPOSTO")),
+	
+	@XmlEnumValue("IMPORTADOR_ADQUIRENTE_ENCOMENDANTE")
+	@JsonProperty("IMPORTADOR_ADQUIRENTE_ENCOMENDANTE")
+	IMPORTADOR_ADQUIRENTE_ENCOMENDANTE(String.valueOf("IMPORTADOR_ADQUIRENTE_ENCOMENDANTE")),
+	
+	@XmlEnumValue("UNIDADE_DESTINO_CARGA")
+	@JsonProperty("UNIDADE_DESTINO_CARGA")
+	UNIDADE_DESTINO_CARGA(String.valueOf("UNIDADE_DESTINO_CARGA")),
+	
+	@XmlEnumValue("RECINTO_ARMAZENAMENTO CAMPO_CONTROLE_DE_SALDO")
+	@JsonProperty("RECINTO_ARMAZENAMENTO CAMPO_CONTROLE_DE_SALDO")
+	RECINTO_ARMAZENAMENTO_CAMPO_CONTROLE_DE_SALDO(String.valueOf("RECINTO_ARMAZENAMENTO CAMPO_CONTROLE_DE_SALDO")),
+	
+	@XmlEnumValue("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM")
+	@JsonProperty("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM")
+	LPCO_VINCULADO_DENOMINACAO_PRODUTO_PESO_LIQUIDO_ITEM(String.valueOf("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM")),
 	
 	@XmlEnumValue("ATT_<número>")
 	@JsonProperty("ATT_<número>")
@@ -398,7 +404,23 @@ public enum TipoEnum {
 	
 	@XmlEnumValue("ATRIBUTO_COMPOSTO")
 	@JsonProperty("ATRIBUTO_COMPOSTO")
-	ATRIBUTO_COMPOSTO(String.valueOf("ATRIBUTO_COMPOSTO"));
+	ATRIBUTO_COMPOSTO(String.valueOf("ATRIBUTO_COMPOSTO")),
+	
+	@XmlEnumValue("VALOR_LPCO_VINCULADO")
+	@JsonProperty("VALOR_LPCO_VINCULADO")
+	VALOR_LPCO_VINCULADO(String.valueOf("VALOR_LPCO_VINCULADO")),
+	
+	@XmlEnumValue("CHAVE_NFE")
+	@JsonProperty("CHAVE_NFE")
+	CHAVE_NFE(String.valueOf("CHAVE_NFE")),
+	
+	@XmlEnumValue("CPF_CNPJ")
+	@JsonProperty("CPF_CNPJ")
+	CPF_CNPJ(String.valueOf("CPF_CNPJ")),
+	
+	@XmlEnumValue("CNPJ")
+	@JsonProperty("CNPJ")
+	CNPJ(String.valueOf("CNPJ"));
 
 
     private String value;
@@ -437,6 +459,42 @@ public enum TipoEnum {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private ValidacaoCampoLpco validacao = null;
+
+  @XmlElement(name="condicaoPreenchimento")
+  @ApiModelProperty(example = "ATT_1 >= 10 && ATT_1 <=100", value = "Indica em qual condição este campo pode ser preenchido")
+ /**
+   * Indica em qual condição este campo pode ser preenchido
+  **/
+  private String condicaoPreenchimento = null;
+
+  @XmlElement(name="codigoAtributoPai")
+  @ApiModelProperty(example = "ATT_1", value = "Código do atributo condicionante a ser informado no campo LPCO na propriedade 'codigoAtributoPai'")
+ /**
+   * Código do atributo condicionante a ser informado no campo LPCO na propriedade 'codigoAtributoPai'
+  **/
+  private String codigoAtributoPai = null;
+
+  @XmlElement(name="subatributos")
+  @ApiModelProperty(value = "Lista de subatributos que compõem este campo quando for um atributo composto")
+  @Valid
+ /**
+   * Lista de subatributos que compõem este campo quando for um atributo composto
+  **/
+  private List<CampoFormulario> subatributos = null;
+
+  @XmlElement(name="orientacao")
+  @ApiModelProperty(example = "Preencher o valor conforme a máscara do campo.", value = "Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.")
+ /**
+   * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+  **/
+  private String orientacao = null;
+
+  @XmlElement(name="exemplo")
+  @ApiModelProperty(example = "{ \"codigo\": \"ATT_0001\", \"listaValor\": [ \"true\"] }", value = "Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.")
+ /**
+   * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+  **/
+  private String exemplo = null;
  /**
    * Código de identificação do campo&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
    * @return codigo
@@ -537,6 +595,101 @@ public enum TipoEnum {
     return this;
   }
 
+ /**
+   * Indica em qual condição este campo pode ser preenchido
+   * @return condicaoPreenchimento
+  **/
+  @JsonProperty("condicaoPreenchimento")
+  public String getCondicaoPreenchimento() {
+    return condicaoPreenchimento;
+  }
+
+  public void setCondicaoPreenchimento(String condicaoPreenchimento) {
+    this.condicaoPreenchimento = condicaoPreenchimento;
+  }
+
+  public CampoFormulario condicaoPreenchimento(String condicaoPreenchimento) {
+    this.condicaoPreenchimento = condicaoPreenchimento;
+    return this;
+  }
+
+ /**
+   * Código do atributo condicionante a ser informado no campo LPCO na propriedade &#39;codigoAtributoPai&#39;
+   * @return codigoAtributoPai
+  **/
+  @JsonProperty("codigoAtributoPai")
+  public String getCodigoAtributoPai() {
+    return codigoAtributoPai;
+  }
+
+  public void setCodigoAtributoPai(String codigoAtributoPai) {
+    this.codigoAtributoPai = codigoAtributoPai;
+  }
+
+  public CampoFormulario codigoAtributoPai(String codigoAtributoPai) {
+    this.codigoAtributoPai = codigoAtributoPai;
+    return this;
+  }
+
+ /**
+   * Lista de subatributos que compõem este campo quando for um atributo composto
+   * @return subatributos
+  **/
+  @JsonProperty("subatributos")
+  public List<CampoFormulario> getSubatributos() {
+    return subatributos;
+  }
+
+  public void setSubatributos(List<CampoFormulario> subatributos) {
+    this.subatributos = subatributos;
+  }
+
+  public CampoFormulario subatributos(List<CampoFormulario> subatributos) {
+    this.subatributos = subatributos;
+    return this;
+  }
+
+  public CampoFormulario addSubatributosItem(CampoFormulario subatributosItem) {
+    this.subatributos.add(subatributosItem);
+    return this;
+  }
+
+ /**
+   * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+   * @return orientacao
+  **/
+  @JsonProperty("orientacao")
+  public String getOrientacao() {
+    return orientacao;
+  }
+
+  public void setOrientacao(String orientacao) {
+    this.orientacao = orientacao;
+  }
+
+  public CampoFormulario orientacao(String orientacao) {
+    this.orientacao = orientacao;
+    return this;
+  }
+
+ /**
+   * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+   * @return exemplo
+  **/
+  @JsonProperty("exemplo")
+  public String getExemplo() {
+    return exemplo;
+  }
+
+  public void setExemplo(String exemplo) {
+    this.exemplo = exemplo;
+  }
+
+  public CampoFormulario exemplo(String exemplo) {
+    this.exemplo = exemplo;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -548,6 +701,11 @@ public enum TipoEnum {
     sb.append("    unidadeMedida: ").append(toIndentedString(unidadeMedida)).append("\n");
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    validacao: ").append(toIndentedString(validacao)).append("\n");
+    sb.append("    condicaoPreenchimento: ").append(toIndentedString(condicaoPreenchimento)).append("\n");
+    sb.append("    codigoAtributoPai: ").append(toIndentedString(codigoAtributoPai)).append("\n");
+    sb.append("    subatributos: ").append(toIndentedString(subatributos)).append("\n");
+    sb.append("    orientacao: ").append(toIndentedString(orientacao)).append("\n");
+    sb.append("    exemplo: ").append(toIndentedString(exemplo)).append("\n");
     sb.append("}");
     return sb.toString();
   }

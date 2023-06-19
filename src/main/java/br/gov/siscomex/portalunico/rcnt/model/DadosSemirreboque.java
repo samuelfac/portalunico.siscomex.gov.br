@@ -1,33 +1,21 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosSemirreboque", propOrder =
-    { "placa", "listaLacres", "idElemento", "ocrPlaca", "vazio", "avaria", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "listaNavio", "listaCliente", "cnpjEstabelecimentoEstufagem", "nomeEstabelecimentoEstufagem"
+    { "listaLacres", "placa", "idElemento", "ocrPlaca", "vazio", "avaria", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "listaNavio", "listaCliente", "cnpjEstabelecimentoEstufagem", "nomeEstabelecimentoEstufagem"
 })
 
 @XmlRootElement(name="DadosSemirreboque")
 public class DadosSemirreboque  {
   
-  @XmlElement(name="placa")
-  @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
- /**
-   * Placa<br/>Tamanho: 50
-  **/
-  private String placa = null;
-
   @XmlElement(name="listaLacres")
   @ApiModelProperty(value = "Lista de Lacres.")
   @Valid
@@ -36,10 +24,17 @@ public class DadosSemirreboque  {
   **/
   private List<DadosDoLacre> listaLacres = null;
 
-  @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @XmlElement(name="placa")
+  @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Placa<br/>Tamanho: 50
+  **/
+  private String placa = null;
+
+  @XmlElement(name="idElemento", required = true)
+  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+ /**
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
   **/
   private String idElemento = null;
 
@@ -110,24 +105,6 @@ public class DadosSemirreboque  {
   **/
   private String nomeEstabelecimentoEstufagem = null;
  /**
-   * Placa&lt;br/&gt;Tamanho: 50
-   * @return placa
-  **/
-  @JsonProperty("placa")
-  public String getPlaca() {
-    return placa;
-  }
-
-  public void setPlaca(String placa) {
-    this.placa = placa;
-  }
-
-  public DadosSemirreboque placa(String placa) {
-    this.placa = placa;
-    return this;
-  }
-
- /**
    * Lista de Lacres.
    * @return listaLacres
   **/
@@ -151,10 +128,29 @@ public class DadosSemirreboque  {
   }
 
  /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Placa&lt;br/&gt;Tamanho: 50
+   * @return placa
+  **/
+  @JsonProperty("placa")
+  public String getPlaca() {
+    return placa;
+  }
+
+  public void setPlaca(String placa) {
+    this.placa = placa;
+  }
+
+  public DadosSemirreboque placa(String placa) {
+    this.placa = placa;
+    return this;
+  }
+
+ /**
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
    * @return idElemento
   **/
   @JsonProperty("idElemento")
+  @NotNull
   public String getIdElemento() {
     return idElemento;
   }
@@ -356,8 +352,8 @@ public class DadosSemirreboque  {
     StringBuilder sb = new StringBuilder();
     sb.append("class DadosSemirreboque {\n");
     
-    sb.append("    placa: ").append(toIndentedString(placa)).append("\n");
     sb.append("    listaLacres: ").append(toIndentedString(listaLacres)).append("\n");
+    sb.append("    placa: ").append(toIndentedString(placa)).append("\n");
     sb.append("    idElemento: ").append(toIndentedString(idElemento)).append("\n");
     sb.append("    ocrPlaca: ").append(toIndentedString(ocrPlaca)).append("\n");
     sb.append("    vazio: ").append(toIndentedString(vazio)).append("\n");

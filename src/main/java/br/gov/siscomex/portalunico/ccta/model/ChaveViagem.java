@@ -1,14 +1,9 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ChaveViagem", propOrder =
@@ -19,13 +14,13 @@ import io.swagger.annotations.ApiModelProperty;
 public class ChaveViagem  {
   
   @XmlElement(name="identificacaoViagem")
-  @ApiModelProperty(example = "XX099020200922MIA", value = "Número do identificação do manifesto<br/>Tamanho: 17")
+  @ApiModelProperty(example = "XX099020200922MIA", value = "Número de identificação do manifesto<br/>Tamanho: 17")
  /**
-   * Número do identificação do manifesto<br/>Tamanho: 17
+   * Número de identificação do manifesto<br/>Tamanho: 17
   **/
   private String identificacaoViagem = null;
  /**
-   * Número do identificação do manifesto&lt;br/&gt;Tamanho: 17
+   * Número de identificação do manifesto&lt;br/&gt;Tamanho: 17
    * @return identificacaoViagem
   **/
   @JsonProperty("identificacaoViagem")

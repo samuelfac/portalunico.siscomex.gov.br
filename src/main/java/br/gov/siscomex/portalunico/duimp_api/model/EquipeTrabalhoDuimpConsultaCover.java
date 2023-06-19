@@ -1,15 +1,10 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "EquipeTrabalhoDuimpConsultaCover", propOrder =
@@ -24,9 +19,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class EquipeTrabalhoDuimpConsultaCover  {
   
   @XmlElement(name="siglaOrgao")
-  @ApiModelProperty(example = "ANVISA", value = "Sigla do Órgão Anuente.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+  @ApiModelProperty(example = "ANVISA", value = "Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
  /**
-   * Sigla do Órgão Anuente.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+   * Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
   **/
   private String siglaOrgao = null;
 
@@ -44,7 +39,7 @@ public class EquipeTrabalhoDuimpConsultaCover  {
   **/
   private String descricao = null;
  /**
-   * Sigla do Órgão Anuente.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+   * Sigla do órgão da administração pública.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
    * @return siglaOrgao
   **/
   @JsonProperty("siglaOrgao")

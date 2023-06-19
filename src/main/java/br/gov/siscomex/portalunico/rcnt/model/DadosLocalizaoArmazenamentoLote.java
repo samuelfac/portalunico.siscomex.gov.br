@@ -1,36 +1,24 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosLocalizaoArmazenamentoLote", propOrder =
-    { "setor", "rua", "estante", "prateleira", "box"
+    { "box", "estante", "prateleira", "rua", "setor"
 })
 
 @XmlRootElement(name="DadosLocalizaoArmazenamentoLote")
 public class DadosLocalizaoArmazenamentoLote  {
   
-  @XmlElement(name="setor")
-  @ApiModelProperty(value = "Setor<br/>Tamanho: 100")
+  @XmlElement(name="box")
+  @ApiModelProperty(value = "Box<br/>Tamanho: 100")
  /**
-   * Setor<br/>Tamanho: 100
+   * Box<br/>Tamanho: 100
   **/
-  private String setor = null;
-
-  @XmlElement(name="rua")
-  @ApiModelProperty(value = "Rua<br/>Tamanho: 100")
- /**
-   * Rua<br/>Tamanho: 100
-  **/
-  private String rua = null;
+  private String box = null;
 
   @XmlElement(name="estante")
   @ApiModelProperty(value = "Estante<br/>Tamanho: 20")
@@ -46,45 +34,34 @@ public class DadosLocalizaoArmazenamentoLote  {
   **/
   private String prateleira = null;
 
-  @XmlElement(name="box")
-  @ApiModelProperty(value = "Box<br/>Tamanho: 100")
+  @XmlElement(name="rua")
+  @ApiModelProperty(value = "Rua<br/>Tamanho: 100")
  /**
-   * Box<br/>Tamanho: 100
+   * Rua<br/>Tamanho: 100
   **/
-  private String box = null;
+  private String rua = null;
+
+  @XmlElement(name="setor")
+  @ApiModelProperty(value = "Setor<br/>Tamanho: 100")
  /**
-   * Setor&lt;br/&gt;Tamanho: 100
-   * @return setor
+   * Setor<br/>Tamanho: 100
   **/
-  @JsonProperty("setor")
-  public String getSetor() {
-    return setor;
-  }
-
-  public void setSetor(String setor) {
-    this.setor = setor;
-  }
-
-  public DadosLocalizaoArmazenamentoLote setor(String setor) {
-    this.setor = setor;
-    return this;
-  }
-
+  private String setor = null;
  /**
-   * Rua&lt;br/&gt;Tamanho: 100
-   * @return rua
+   * Box&lt;br/&gt;Tamanho: 100
+   * @return box
   **/
-  @JsonProperty("rua")
-  public String getRua() {
-    return rua;
+  @JsonProperty("box")
+  public String getBox() {
+    return box;
   }
 
-  public void setRua(String rua) {
-    this.rua = rua;
+  public void setBox(String box) {
+    this.box = box;
   }
 
-  public DadosLocalizaoArmazenamentoLote rua(String rua) {
-    this.rua = rua;
+  public DadosLocalizaoArmazenamentoLote box(String box) {
+    this.box = box;
     return this;
   }
 
@@ -125,20 +102,38 @@ public class DadosLocalizaoArmazenamentoLote  {
   }
 
  /**
-   * Box&lt;br/&gt;Tamanho: 100
-   * @return box
+   * Rua&lt;br/&gt;Tamanho: 100
+   * @return rua
   **/
-  @JsonProperty("box")
-  public String getBox() {
-    return box;
+  @JsonProperty("rua")
+  public String getRua() {
+    return rua;
   }
 
-  public void setBox(String box) {
-    this.box = box;
+  public void setRua(String rua) {
+    this.rua = rua;
   }
 
-  public DadosLocalizaoArmazenamentoLote box(String box) {
-    this.box = box;
+  public DadosLocalizaoArmazenamentoLote rua(String rua) {
+    this.rua = rua;
+    return this;
+  }
+
+ /**
+   * Setor&lt;br/&gt;Tamanho: 100
+   * @return setor
+  **/
+  @JsonProperty("setor")
+  public String getSetor() {
+    return setor;
+  }
+
+  public void setSetor(String setor) {
+    this.setor = setor;
+  }
+
+  public DadosLocalizaoArmazenamentoLote setor(String setor) {
+    this.setor = setor;
     return this;
   }
 
@@ -148,11 +143,11 @@ public class DadosLocalizaoArmazenamentoLote  {
     StringBuilder sb = new StringBuilder();
     sb.append("class DadosLocalizaoArmazenamentoLote {\n");
     
-    sb.append("    setor: ").append(toIndentedString(setor)).append("\n");
-    sb.append("    rua: ").append(toIndentedString(rua)).append("\n");
+    sb.append("    box: ").append(toIndentedString(box)).append("\n");
     sb.append("    estante: ").append(toIndentedString(estante)).append("\n");
     sb.append("    prateleira: ").append(toIndentedString(prateleira)).append("\n");
-    sb.append("    box: ").append(toIndentedString(box)).append("\n");
+    sb.append("    rua: ").append(toIndentedString(rua)).append("\n");
+    sb.append("    setor: ").append(toIndentedString(setor)).append("\n");
     sb.append("}");
     return sb.toString();
   }

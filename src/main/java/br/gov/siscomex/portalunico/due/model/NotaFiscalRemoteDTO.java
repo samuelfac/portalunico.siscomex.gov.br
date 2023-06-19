@@ -1,19 +1,15 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "NotaFiscalRemoteDTO", propOrder =
-    { "chaveDeAcesso", "finalidade", "identificacaoDoEmitente", "modelo", "notaFicalEletronica", "numeroDoDocumento", "quantidadeDeItens", "serie", "ufDoEmissor"
+    { "chaveDeAcesso", "dataEmissao", "finalidade", "identificacaoDoEmitente", "modelo", "notaFicalEletronica", "numeroDoDocumento", "quantidadeDeItens", "serie", "ufDoEmissor"
 })
 
 @XmlRootElement(name="NotaFiscalRemoteDTO")
@@ -25,6 +21,13 @@ public class NotaFiscalRemoteDTO  {
    * Chave de acesso<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
   **/
   private String chaveDeAcesso = null;
+
+  @XmlElement(name="dataEmissao")
+  @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de emissão da NF<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+ /**
+   * Data de emissão da NF<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+  **/
+  private OffsetDateTime dataEmissao = null;
 
   @XmlElement(name="finalidade")
   @ApiModelProperty(value = "Finalidade<br />Tamanho mínimo: 1<br />Tamanho máximo: 25")
@@ -91,6 +94,24 @@ public class NotaFiscalRemoteDTO  {
 
   public NotaFiscalRemoteDTO chaveDeAcesso(String chaveDeAcesso) {
     this.chaveDeAcesso = chaveDeAcesso;
+    return this;
+  }
+
+ /**
+   * Data de emissão da NF&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * @return dataEmissao
+  **/
+  @JsonProperty("dataEmissao")
+  public OffsetDateTime getDataEmissao() {
+    return dataEmissao;
+  }
+
+  public void setDataEmissao(OffsetDateTime dataEmissao) {
+    this.dataEmissao = dataEmissao;
+  }
+
+  public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
+    this.dataEmissao = dataEmissao;
     return this;
   }
 
@@ -245,6 +266,7 @@ public class NotaFiscalRemoteDTO  {
     sb.append("class NotaFiscalRemoteDTO {\n");
     
     sb.append("    chaveDeAcesso: ").append(toIndentedString(chaveDeAcesso)).append("\n");
+    sb.append("    dataEmissao: ").append(toIndentedString(dataEmissao)).append("\n");
     sb.append("    finalidade: ").append(toIndentedString(finalidade)).append("\n");
     sb.append("    identificacaoDoEmitente: ").append(toIndentedString(identificacaoDoEmitente)).append("\n");
     sb.append("    modelo: ").append(toIndentedString(modelo)).append("\n");

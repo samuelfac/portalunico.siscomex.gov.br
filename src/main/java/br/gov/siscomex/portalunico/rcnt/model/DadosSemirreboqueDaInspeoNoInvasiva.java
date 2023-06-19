@@ -1,36 +1,25 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosSemirreboqueDaInspeoNoInvasiva", propOrder =
-    { "idElemento", "placa", "ocrPlaca"
+    { "idElemento", "ocrPlaca", "placa"
 })
 
 @XmlRootElement(name="DadosSemirreboqueDaInspeoNoInvasiva")
 public class DadosSemirreboqueDaInspeoNoInvasiva  {
   
-  @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @XmlElement(name="idElemento", required = true)
+  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
   **/
   private String idElemento = null;
-
-  @XmlElement(name="placa")
-  @ApiModelProperty(value = "Placa (semirreboque, vagão, truck)<br/>Tamanho: 50")
- /**
-   * Placa (semirreboque, vagão, truck)<br/>Tamanho: 50
-  **/
-  private String placa = null;
 
   @XmlElement(name="ocrPlaca")
   @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -38,11 +27,19 @@ public class DadosSemirreboqueDaInspeoNoInvasiva  {
    * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean ocrPlaca = null;
+
+  @XmlElement(name="placa")
+  @ApiModelProperty(value = "Placa (semirreboque, vagão, truck)<br/>Tamanho: 50")
  /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Placa (semirreboque, vagão, truck)<br/>Tamanho: 50
+  **/
+  private String placa = null;
+ /**
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
    * @return idElemento
   **/
   @JsonProperty("idElemento")
+  @NotNull
   public String getIdElemento() {
     return idElemento;
   }
@@ -53,24 +50,6 @@ public class DadosSemirreboqueDaInspeoNoInvasiva  {
 
   public DadosSemirreboqueDaInspeoNoInvasiva idElemento(String idElemento) {
     this.idElemento = idElemento;
-    return this;
-  }
-
- /**
-   * Placa (semirreboque, vagão, truck)&lt;br/&gt;Tamanho: 50
-   * @return placa
-  **/
-  @JsonProperty("placa")
-  public String getPlaca() {
-    return placa;
-  }
-
-  public void setPlaca(String placa) {
-    this.placa = placa;
-  }
-
-  public DadosSemirreboqueDaInspeoNoInvasiva placa(String placa) {
-    this.placa = placa;
     return this;
   }
 
@@ -92,6 +71,24 @@ public class DadosSemirreboqueDaInspeoNoInvasiva  {
     return this;
   }
 
+ /**
+   * Placa (semirreboque, vagão, truck)&lt;br/&gt;Tamanho: 50
+   * @return placa
+  **/
+  @JsonProperty("placa")
+  public String getPlaca() {
+    return placa;
+  }
+
+  public void setPlaca(String placa) {
+    this.placa = placa;
+  }
+
+  public DadosSemirreboqueDaInspeoNoInvasiva placa(String placa) {
+    this.placa = placa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -99,8 +96,8 @@ public class DadosSemirreboqueDaInspeoNoInvasiva  {
     sb.append("class DadosSemirreboqueDaInspeoNoInvasiva {\n");
     
     sb.append("    idElemento: ").append(toIndentedString(idElemento)).append("\n");
-    sb.append("    placa: ").append(toIndentedString(placa)).append("\n");
     sb.append("    ocrPlaca: ").append(toIndentedString(ocrPlaca)).append("\n");
+    sb.append("    placa: ").append(toIndentedString(placa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

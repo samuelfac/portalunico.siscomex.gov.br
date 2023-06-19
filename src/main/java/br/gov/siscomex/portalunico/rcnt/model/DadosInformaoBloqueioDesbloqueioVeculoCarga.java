@@ -1,20 +1,12 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosInformaoBloqueioDesbloqueioVeculoCarga", propOrder =
@@ -245,85 +237,18 @@ public enum TipoManifestoEnum {
   private String numeroConhecimentoMAWB = null;
 
   @XmlElement(name="numeroConhecimento")
-  @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100")
+  @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100")
  /**
-   * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100
+   * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100
   **/
   private String numeroConhecimento = null;
 
-
-@XmlType(name="TipoConhecimentoEnum")
-@XmlEnum(String.class)
-public enum TipoConhecimentoEnum {
-
-	@XmlEnumValue("'CRT'")
-	@JsonProperty("'CRT'")
-	CRT_(String.valueOf("'CRT'")),
-	
-	@XmlEnumValue("'TIF'")
-	@JsonProperty("'TIF'")
-	TIF_(String.valueOf("'TIF'")),
-	
-	@XmlEnumValue("'RWB'")
-	@JsonProperty("'RWB'")
-	RWB_(String.valueOf("'RWB'")),
-	
-	@XmlEnumValue("'AWB'")
-	@JsonProperty("'AWB'")
-	AWB_(String.valueOf("'AWB'")),
-	
-	@XmlEnumValue("'DSIC'")
-	@JsonProperty("'DSIC'")
-	DSIC_(String.valueOf("'DSIC'")),
-	
-	@XmlEnumValue("'CTE'")
-	@JsonProperty("'CTE'")
-	CTE_(String.valueOf("'CTE'")),
-	
-	@XmlEnumValue("'CE_MERCANTE'")
-	@JsonProperty("'CE_MERCANTE'")
-	CE_MERCANTE_(String.valueOf("'CE_MERCANTE'")),
-	
-	@XmlEnumValue("'BL'")
-	@JsonProperty("'BL'")
-	BL_(String.valueOf("'BL'")),
-	
-	@XmlEnumValue("'POSTAL'")
-	@JsonProperty("'POSTAL'")
-	POSTAL_(String.valueOf("'POSTAL'"));
-
-
-    private String value;
-
-    TipoConhecimentoEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static TipoConhecimentoEnum fromValue(String v) {
-        for (TipoConhecimentoEnum b : TipoConhecimentoEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoConhecimentoEnum");
-    }
-}
-
   @XmlElement(name="tipoConhecimento")
-  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>")
+  @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Tipo de conhecimento conforme tabela de domínio.<br/>Domínio:<br/>CRT - Conhecimento Internacional de Transporte Rodoviário<br/>TIF - Conhecimento-Carta de Porte Internacional<br/>RWB - Rail WayBill<br/>AWB - Air WayBill<br/>DSIC - Documento Subsidiário de Identificação da Carga<br/>CTE - Conhecimento de Transporte Eletrônico<br/>CE_MERCANTE - Conhecimento Eletrônico Mercante<br/>BL - Bill of Lading<br/>POSTAL - Remessa Postal Internacional<br/>
+   * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
-  private TipoConhecimentoEnum tipoConhecimento = null;
+  private String tipoConhecimento = null;
 
   @XmlElement(name="numeroDeclaracao")
   @ApiModelProperty(value = "Número da declaração aduaneira.<br/>Tamanho: 100")
@@ -332,115 +257,12 @@ public enum TipoConhecimentoEnum {
   **/
   private String numeroDeclaracao = null;
 
-
-@XmlType(name="TipoDeclaracaoEnum")
-@XmlEnum(String.class)
-public enum TipoDeclaracaoEnum {
-
-	@XmlEnumValue("'DI'")
-	@JsonProperty("'DI'")
-	DI_(String.valueOf("'DI'")),
-	
-	@XmlEnumValue("'DSI_ELETRONICA'")
-	@JsonProperty("'DSI_ELETRONICA'")
-	DSI_ELETRONICA_(String.valueOf("'DSI_ELETRONICA'")),
-	
-	@XmlEnumValue("'DSI_FORMULARIO'")
-	@JsonProperty("'DSI_FORMULARIO'")
-	DSI_FORMULARIO_(String.valueOf("'DSI_FORMULARIO'")),
-	
-	@XmlEnumValue("'DSE_ELETRONICA'")
-	@JsonProperty("'DSE_ELETRONICA'")
-	DSE_ELETRONICA_(String.valueOf("'DSE_ELETRONICA'")),
-	
-	@XmlEnumValue("'DSE_FORMULARIO'")
-	@JsonProperty("'DSE_FORMULARIO'")
-	DSE_FORMULARIO_(String.valueOf("'DSE_FORMULARIO'")),
-	
-	@XmlEnumValue("'DUIMP'")
-	@JsonProperty("'DUIMP'")
-	DUIMP_(String.valueOf("'DUIMP'")),
-	
-	@XmlEnumValue("'DUE'")
-	@JsonProperty("'DUE'")
-	DUE_(String.valueOf("'DUE'")),
-	
-	@XmlEnumValue("'DE'")
-	@JsonProperty("'DE'")
-	DE_(String.valueOf("'DE'")),
-	
-	@XmlEnumValue("'DTA'")
-	@JsonProperty("'DTA'")
-	DTA_(String.valueOf("'DTA'")),
-	
-	@XmlEnumValue("'DTA_S'")
-	@JsonProperty("'DTA_S'")
-	DTA_S_(String.valueOf("'DTA_S'")),
-	
-	@XmlEnumValue("'DTAI'")
-	@JsonProperty("'DTAI'")
-	DTAI_(String.valueOf("'DTAI'")),
-	
-	@XmlEnumValue("'DTC'")
-	@JsonProperty("'DTC'")
-	DTC_(String.valueOf("'DTC'")),
-	
-	@XmlEnumValue("'DAT'")
-	@JsonProperty("'DAT'")
-	DAT_(String.valueOf("'DAT'")),
-	
-	@XmlEnumValue("'ATA_C'")
-	@JsonProperty("'ATA_C'")
-	ATA_C_(String.valueOf("'ATA_C'")),
-	
-	@XmlEnumValue("'DIR'")
-	@JsonProperty("'DIR'")
-	DIR_(String.valueOf("'DIR'")),
-	
-	@XmlEnumValue("'DRE'")
-	@JsonProperty("'DRE'")
-	DRE_(String.valueOf("'DRE'")),
-	
-	@XmlEnumValue("'DRI'")
-	@JsonProperty("'DRI'")
-	DRI_(String.valueOf("'DRI'")),
-	
-	@XmlEnumValue("'DCI'")
-	@JsonProperty("'DCI'")
-	DCI_(String.valueOf("'DCI'"));
-
-
-    private String value;
-
-    TipoDeclaracaoEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static TipoDeclaracaoEnum fromValue(String v) {
-        for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-    }
-}
-
   @XmlElement(name="tipoDeclaracao")
-  @ApiModelProperty(example = "DUIMP", value = "Tipo da declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação")
+  @ApiModelProperty(example = "DUIMP", value = "Tipo da declaração aduaneira.  Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Tipo da declaração aduaneira conforme tabela de domínio.<br/>Domínio:<br/>DI - Declaração de Importação <br/>DSI_ELETRONICA - DSI Eletrônica <br/>DSI_FORMULARIO - DSI Formulário <br/>DSE_ELETRONICA - DSE Eletrônica <br/>DSE_FORMULARIO -  DSE Formulário <br/>DUIMP - Declaração Única de Importação <br/>DUE - Declaração Única de Exportação <br/>DE - Declaração de Exportação <br/>DTA - Declaração de Trânsito Aduaneiro <br/>DTA_S - Declaração de Trânsito Aduaneiro Simplificado <br/>DTAI - Declaração de Trânsito Aduaneiro Internacional <br/>DTC - Declaração de Trânsito de Contêiner <br/>DAT - Documento de Acompanhamento de Trânsito <br/>ATA_C - Carnê Ata (Ata Carnet) <br/>DIR - Declaração de Importação de Remessa <br/>DRE - Declaração de Remessas de Exportação <br/>DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação
+   * Tipo da declaração aduaneira.  Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
-  private TipoDeclaracaoEnum tipoDeclaracao = null;
+  private String tipoDeclaracao = null;
 
   @XmlElement(name="placa")
   @ApiModelProperty(value = "Placa (cavalo-trator/semirreboque/locomotiva/vagão).<br/>Tamanho: 50")
@@ -471,203 +293,12 @@ public enum TipoDeclaracaoEnum {
   **/
   private List<DadosDaIdentificaoDoLote> listaLotes = null;
 
-
-@XmlType(name="SolicitanteEnum")
-@XmlEnum(String.class)
-public enum SolicitanteEnum {
-
-	@XmlEnumValue("'ACI'")
-	@JsonProperty("'ACI'")
-	ACI_(String.valueOf("'ACI'")),
-	
-	@XmlEnumValue("'ANCINE'")
-	@JsonProperty("'ANCINE'")
-	ANCINE_(String.valueOf("'ANCINE'")),
-	
-	@XmlEnumValue("'ANEEL'")
-	@JsonProperty("'ANEEL'")
-	ANEEL_(String.valueOf("'ANEEL'")),
-	
-	@XmlEnumValue("'ANP'")
-	@JsonProperty("'ANP'")
-	ANP_(String.valueOf("'ANP'")),
-	
-	@XmlEnumValue("'ANVISA'")
-	@JsonProperty("'ANVISA'")
-	ANVISA_(String.valueOf("'ANVISA'")),
-	
-	@XmlEnumValue("'BB'")
-	@JsonProperty("'BB'")
-	BB_(String.valueOf("'BB'")),
-	
-	@XmlEnumValue("'BEFIEX'")
-	@JsonProperty("'BEFIEX'")
-	BEFIEX_(String.valueOf("'BEFIEX'")),
-	
-	@XmlEnumValue("'BNDES'")
-	@JsonProperty("'BNDES'")
-	BNDES_(String.valueOf("'BNDES'")),
-	
-	@XmlEnumValue("'CNEN'")
-	@JsonProperty("'CNEN'")
-	CNEN_(String.valueOf("'CNEN'")),
-	
-	@XmlEnumValue("'CNPQ'")
-	@JsonProperty("'CNPQ'")
-	CNPQ_(String.valueOf("'CNPQ'")),
-	
-	@XmlEnumValue("'CONFAZ'")
-	@JsonProperty("'CONFAZ'")
-	CONFAZ_(String.valueOf("'CONFAZ'")),
-	
-	@XmlEnumValue("'COTAC'")
-	@JsonProperty("'COTAC'")
-	COTAC_(String.valueOf("'COTAC'")),
-	
-	@XmlEnumValue("'DEAEX'")
-	@JsonProperty("'DEAEX'")
-	DEAEX_(String.valueOf("'DEAEX'")),
-	
-	@XmlEnumValue("'DECEX'")
-	@JsonProperty("'DECEX'")
-	DECEX_(String.valueOf("'DECEX'")),
-	
-	@XmlEnumValue("'DEPLA'")
-	@JsonProperty("'DEPLA'")
-	DEPLA_(String.valueOf("'DEPLA'")),
-	
-	@XmlEnumValue("'DEPOSITARIO'")
-	@JsonProperty("'DEPOSITARIO'")
-	DEPOSITARIO_(String.valueOf("'DEPOSITARIO'")),
-	
-	@XmlEnumValue("'DESPACHANTE'")
-	@JsonProperty("'DESPACHANTE'")
-	DESPACHANTE_(String.valueOf("'DESPACHANTE'")),
-	
-	@XmlEnumValue("'DFPC'")
-	@JsonProperty("'DFPC'")
-	DFPC_(String.valueOf("'DFPC'")),
-	
-	@XmlEnumValue("'DNPM'")
-	@JsonProperty("'DNPM'")
-	DNPM_(String.valueOf("'DNPM'")),
-	
-	@XmlEnumValue("'DPF'")
-	@JsonProperty("'DPF'")
-	DPF_(String.valueOf("'DPF'")),
-	
-	@XmlEnumValue("'ECT'")
-	@JsonProperty("'ECT'")
-	ECT_(String.valueOf("'ECT'")),
-	
-	@XmlEnumValue("'EXPORTADOR'")
-	@JsonProperty("'EXPORTADOR'")
-	EXPORTADOR_(String.valueOf("'EXPORTADOR'")),
-	
-	@XmlEnumValue("'GESTOR'")
-	@JsonProperty("'GESTOR'")
-	GESTOR_(String.valueOf("'GESTOR'")),
-	
-	@XmlEnumValue("'IBAMA'")
-	@JsonProperty("'IBAMA'")
-	IBAMA_(String.valueOf("'IBAMA'")),
-	
-	@XmlEnumValue("'INMETRO'")
-	@JsonProperty("'INMETRO'")
-	INMETRO_(String.valueOf("'INMETRO'")),
-	
-	@XmlEnumValue("'IPHAN'")
-	@JsonProperty("'IPHAN'")
-	IPHAN_(String.valueOf("'IPHAN'")),
-	
-	@XmlEnumValue("'IMPORTADOR'")
-	@JsonProperty("'IMPORTADOR'")
-	IMPORTADOR_(String.valueOf("'IMPORTADOR'")),
-	
-	@XmlEnumValue("'JUSTIÇA'")
-	@JsonProperty("'JUSTIÇA'")
-	JUSTI_A_(String.valueOf("'JUSTIÇA'")),
-	
-	@XmlEnumValue("'MAPA'")
-	@JsonProperty("'MAPA'")
-	MAPA_(String.valueOf("'MAPA'")),
-	
-	@XmlEnumValue("'MCTI'")
-	@JsonProperty("'MCTI'")
-	MCTI_(String.valueOf("'MCTI'")),
-	
-	@XmlEnumValue("'MD'")
-	@JsonProperty("'MD'")
-	MD_(String.valueOf("'MD'")),
-	
-	@XmlEnumValue("'MRE'")
-	@JsonProperty("'MRE'")
-	MRE_(String.valueOf("'MRE'")),
-	
-	@XmlEnumValue("'RFB'")
-	@JsonProperty("'RFB'")
-	RFB_(String.valueOf("'RFB'")),
-	
-	@XmlEnumValue("'SDAVO'")
-	@JsonProperty("'SDAVO'")
-	SDAVO_(String.valueOf("'SDAVO'")),
-	
-	@XmlEnumValue("'SECEX'")
-	@JsonProperty("'SECEX'")
-	SECEX_(String.valueOf("'SECEX'")),
-	
-	@XmlEnumValue("'SEPIN'")
-	@JsonProperty("'SEPIN'")
-	SEPIN_(String.valueOf("'SEPIN'")),
-	
-	@XmlEnumValue("'SPC-MA'")
-	@JsonProperty("'SPC-MA'")
-	SPC_MA_(String.valueOf("'SPC-MA'")),
-	
-	@XmlEnumValue("'SUFRAMA'")
-	@JsonProperty("'SUFRAMA'")
-	SUFRAMA_(String.valueOf("'SUFRAMA'")),
-	
-	@XmlEnumValue("'TRANSPORTADOR'")
-	@JsonProperty("'TRANSPORTADOR'")
-	TRANSPORTADOR_(String.valueOf("'TRANSPORTADOR'")),
-	
-	@XmlEnumValue("'OUTRO'")
-	@JsonProperty("'OUTRO'")
-	OUTRO_(String.valueOf("'OUTRO'"));
-
-
-    private String value;
-
-    SolicitanteEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static SolicitanteEnum fromValue(String v) {
-        for (SolicitanteEnum b : SolicitanteEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to SolicitanteEnum");
-    }
-}
-
   @XmlElement(name="solicitante")
-  @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.<br/>Domínio:<br/>ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DEPOSITARIO - DEPOSITÁRIO<br/>DESPACHANTE - DESPACHANTE<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>EXPORTADOR - EXPORTADOR<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>IMPORTADOR - IMPORTADOR<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>TRANSPORTADOR - TRANSPORTADOR<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE")
+  @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.<br/>Domínio:<br/>ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO<br/>ANCINE - AGENCIA NACIONAL DO CINEMA<br/>ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA<br/>ANP - AGENCIA NACIONAL DO PETROLEO<br/>ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA<br/>BB - BANCO DO BRASIL<br/>BEFIEX - PROGRAMAS BEFIEX<br/>BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL<br/>CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR<br/>CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO<br/>CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS<br/>COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL<br/>DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO<br/>DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR<br/>DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR<br/>DEPOSITARIO - DEPOSITÁRIO<br/>DESPACHANTE - DESPACHANTE<br/>DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS<br/>DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL<br/>DPF - DEPARTAMENTO DE POLICIA FEDERAL<br/>ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS<br/>EXPORTADOR - EXPORTADOR<br/>GESTOR - MICT/DECEX/GESTOR<br/>IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS<br/>INMETRO - INSTITUTO NACIONAL DE METROLOGIA<br/>IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL<br/>IMPORTADOR - IMPORTADOR<br/>JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.<br/>MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO<br/>MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO<br/>MD - MINISTERIO DA DEFESA<br/>MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES<br/>RFB - RECEITA FEDERAL DO BRASIL<br/>SDAVO - AUDIOVISUAL<br/>SECEX - SECRETARIA DE COMERCIO EXTERIOR<br/>SEPIN - MIN.DA CIENCIA E TECNOLOGIA<br/>SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO<br/>SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS<br/>TRANSPORTADOR - TRANSPORTADOR<br/>OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
+   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
-  private SolicitanteEnum solicitante = null;
+  private String solicitante = null;
 
   @XmlElement(name="setorSolicitante")
   @ApiModelProperty(value = "Identificação do setor, seção e/ou serviço solicitante do bloqueio ou desbloqueio.<br/>Tamanho: 100")
@@ -932,7 +563,7 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.&lt;br/&gt;Tamanho: 100
+   * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.&lt;br/&gt;Tamanho: 100
    * @return numeroConhecimento
   **/
   @JsonProperty("numeroConhecimento")
@@ -950,22 +581,19 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Tipo de conhecimento conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;CRT - Conhecimento Internacional de Transporte Rodoviário&lt;br/&gt;TIF - Conhecimento-Carta de Porte Internacional&lt;br/&gt;RWB - Rail WayBill&lt;br/&gt;AWB - Air WayBill&lt;br/&gt;DSIC - Documento Subsidiário de Identificação da Carga&lt;br/&gt;CTE - Conhecimento de Transporte Eletrônico&lt;br/&gt;CE_MERCANTE - Conhecimento Eletrônico Mercante&lt;br/&gt;BL - Bill of Lading&lt;br/&gt;POSTAL - Remessa Postal Internacional&lt;br/&gt;
+   * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return tipoConhecimento
   **/
   @JsonProperty("tipoConhecimento")
   public String getTipoConhecimento() {
-    if (tipoConhecimento == null) {
-      return null;
-    }
-    return tipoConhecimento.value();
+    return tipoConhecimento;
   }
 
-  public void setTipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
+  public void setTipoConhecimento(String tipoConhecimento) {
     this.tipoConhecimento = tipoConhecimento;
   }
 
-  public DadosInformaoBloqueioDesbloqueioVeculoCarga tipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
+  public DadosInformaoBloqueioDesbloqueioVeculoCarga tipoConhecimento(String tipoConhecimento) {
     this.tipoConhecimento = tipoConhecimento;
     return this;
   }
@@ -989,22 +617,19 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Tipo da declaração aduaneira conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;DI - Declaração de Importação &lt;br/&gt;DSI_ELETRONICA - DSI Eletrônica &lt;br/&gt;DSI_FORMULARIO - DSI Formulário &lt;br/&gt;DSE_ELETRONICA - DSE Eletrônica &lt;br/&gt;DSE_FORMULARIO -  DSE Formulário &lt;br/&gt;DUIMP - Declaração Única de Importação &lt;br/&gt;DUE - Declaração Única de Exportação &lt;br/&gt;DE - Declaração de Exportação &lt;br/&gt;DTA - Declaração de Trânsito Aduaneiro &lt;br/&gt;DTA_S - Declaração de Trânsito Aduaneiro Simplificado &lt;br/&gt;DTAI - Declaração de Trânsito Aduaneiro Internacional &lt;br/&gt;DTC - Declaração de Trânsito de Contêiner &lt;br/&gt;DAT - Documento de Acompanhamento de Trânsito &lt;br/&gt;ATA_C - Carnê Ata (Ata Carnet) &lt;br/&gt;DIR - Declaração de Importação de Remessa &lt;br/&gt;DRE - Declaração de Remessas de Exportação &lt;br/&gt;DRI - Declaração de Remessas de ImportaçãoDCI - Declaração para Controle de Internação
+   * Tipo da declaração aduaneira.  Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return tipoDeclaracao
   **/
   @JsonProperty("tipoDeclaracao")
   public String getTipoDeclaracao() {
-    if (tipoDeclaracao == null) {
-      return null;
-    }
-    return tipoDeclaracao.value();
+    return tipoDeclaracao;
   }
 
-  public void setTipoDeclaracao(TipoDeclaracaoEnum tipoDeclaracao) {
+  public void setTipoDeclaracao(String tipoDeclaracao) {
     this.tipoDeclaracao = tipoDeclaracao;
   }
 
-  public DadosInformaoBloqueioDesbloqueioVeculoCarga tipoDeclaracao(TipoDeclaracaoEnum tipoDeclaracao) {
+  public DadosInformaoBloqueioDesbloqueioVeculoCarga tipoDeclaracao(String tipoDeclaracao) {
     this.tipoDeclaracao = tipoDeclaracao;
     return this;
   }
@@ -1087,22 +712,19 @@ public enum SolicitanteEnum {
   }
 
  /**
-   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio.&lt;br/&gt;Domínio:&lt;br/&gt;ACI - ÓRGÃO ESTRANGEIRO EM ÁREA DE CONTROLE INTEGRADO&lt;br/&gt;ANCINE - AGENCIA NACIONAL DO CINEMA&lt;br/&gt;ANEEL - AGENCIA NACIONAL DE ENERGIA ELETRICA&lt;br/&gt;ANP - AGENCIA NACIONAL DO PETROLEO&lt;br/&gt;ANVISA - AGENCIA NACIONAL DE VIGILANCIA SANITARIA&lt;br/&gt;BB - BANCO DO BRASIL&lt;br/&gt;BEFIEX - PROGRAMAS BEFIEX&lt;br/&gt;BNDES - BANCO NACIONAL DE DESENVOLVIMENTO ECONÔMICO E SOCIAL&lt;br/&gt;CNEN - COMISSAO NACIONAL DE ENERGIA NUCLEAR&lt;br/&gt;CNPQ - CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTIFICO E TECNOLOGICO&lt;br/&gt;CONFAZ - CONSELHO NACIONAL DE POLITICA FAZENDARIA/SECRETARIAS DE FAZENDA ESTADUAIS&lt;br/&gt;COTAC - MIN.AERON. COMISSAO COORDENADORA DO TRANSPORTE AEREO CIVIL&lt;br/&gt;DEAEX - DEPARTAMENTO DE ESTATISTICA E APOIO A EXPORTACAO&lt;br/&gt;DECEX - DEPARTAMENTO DE OPERACOES DE COMERCIO EXTERIOR&lt;br/&gt;DEPLA - DEPARTAMENTO DE PLANEJAMENTO E DESENVOLVIMENTO DO COMERCIO EXTERIOR&lt;br/&gt;DEPOSITARIO - DEPOSITÁRIO&lt;br/&gt;DESPACHANTE - DESPACHANTE&lt;br/&gt;DFPC - DIRETORIA DE FISCALIZACAO DE PRODUTOS CONTROLADOS&lt;br/&gt;DNPM - DEPARTAMENTO NACIONAL DE PRODUCAO MINERAL&lt;br/&gt;DPF - DEPARTAMENTO DE POLICIA FEDERAL&lt;br/&gt;ECT - EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS&lt;br/&gt;EXPORTADOR - EXPORTADOR&lt;br/&gt;GESTOR - MICT/DECEX/GESTOR&lt;br/&gt;IBAMA - INSTITUTO BRASILEIRO DO MEIO AMBIENTE E DOS RECURSOS NATURAIS RENOVAVEIS&lt;br/&gt;INMETRO - INSTITUTO NACIONAL DE METROLOGIA&lt;br/&gt;IPHAN - INSTITUTO DO PATRIMÔNIO HISTÓRICO E ARTÍSTICO NACIONAL&lt;br/&gt;IMPORTADOR - IMPORTADOR&lt;br/&gt;JUSTIÇA - JUSTIÇA FEDERAL OU ESTADUAL, TRIBUNAIS, E DEMAIS.&lt;br/&gt;MAPA - MINISTERIO DA AGRICULTURA,PECUARIA E ABASTECIMENTO&lt;br/&gt;MCTI - MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO&lt;br/&gt;MD - MINISTERIO DA DEFESA&lt;br/&gt;MRE - MINISTÉRIO DAS RELAÇÕES EXTERIORES&lt;br/&gt;RFB - RECEITA FEDERAL DO BRASIL&lt;br/&gt;SDAVO - AUDIOVISUAL&lt;br/&gt;SECEX - SECRETARIA DE COMERCIO EXTERIOR&lt;br/&gt;SEPIN - MIN.DA CIENCIA E TECNOLOGIA&lt;br/&gt;SPC_MA - SECRETARIA DE PRODUCAO E COMERCIALIZACAO&lt;br/&gt;SUFRAMA - SUPERINTENDENCIA DA ZONA FRANCA DE MANAUS&lt;br/&gt;TRANSPORTADOR - TRANSPORTADOR&lt;br/&gt;OUTRO - OUTROS NÃO LISTADOS ANTERIORMENTE
+   * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return solicitante
   **/
   @JsonProperty("solicitante")
   public String getSolicitante() {
-    if (solicitante == null) {
-      return null;
-    }
-    return solicitante.value();
+    return solicitante;
   }
 
-  public void setSolicitante(SolicitanteEnum solicitante) {
+  public void setSolicitante(String solicitante) {
     this.solicitante = solicitante;
   }
 
-  public DadosInformaoBloqueioDesbloqueioVeculoCarga solicitante(SolicitanteEnum solicitante) {
+  public DadosInformaoBloqueioDesbloqueioVeculoCarga solicitante(String solicitante) {
     this.solicitante = solicitante;
     return this;
   }

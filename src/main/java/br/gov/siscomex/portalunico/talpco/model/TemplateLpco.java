@@ -1,24 +1,18 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TemplateLpco", propOrder =
-    { "modelo", "listaCamposFormulario", "listaCamposNcm"
+    { "modelo", "listaCamposFormulario", "listaNcm"
 })
 
 @XmlRootElement(name="TemplateLpco")
@@ -34,20 +28,17 @@ public class TemplateLpco  {
   private ModeloLpcoCompleto modelo = null;
 
   @XmlElement(name="listaCamposFormulario", required = true)
-  @ApiModelProperty(required = true, value = "Lista de definições de campos do formulário.")
+  @ApiModelProperty(required = true, value = "Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.")
   @Valid
  /**
-   * Lista de definições de campos do formulário.
+   * Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.
   **/
   private List<CampoFormulario> listaCamposFormulario = new ArrayList<>();
 
-  @XmlElement(name="listaCamposNcm", required = true)
-  @ApiModelProperty(required = true, value = "Lista de definições de campos a serem preenchidos para cada NCM informada no LPCO")
+  @XmlElement(name="listaNcm")
+  @ApiModelProperty(value = "")
   @Valid
- /**
-   * Lista de definições de campos a serem preenchidos para cada NCM informada no LPCO
-  **/
-  private List<CampoFormulario> listaCamposNcm = new ArrayList<>();
+  private TemplateListaNcm listaNcm = null;
  /**
    * Get modelo
    * @return modelo
@@ -68,7 +59,7 @@ public class TemplateLpco  {
   }
 
  /**
-   * Lista de definições de campos do formulário.
+   * Lista de campos do pedido que fazem parte dos \&quot;Dados Gerais\&quot; do LPCO, ou seja, aqueles que não são informados por item.
    * @return listaCamposFormulario
   **/
   @JsonProperty("listaCamposFormulario")
@@ -92,26 +83,20 @@ public class TemplateLpco  {
   }
 
  /**
-   * Lista de definições de campos a serem preenchidos para cada NCM informada no LPCO
-   * @return listaCamposNcm
+   * Get listaNcm
+   * @return listaNcm
   **/
-  @JsonProperty("listaCamposNcm")
-  @NotNull
-  public List<CampoFormulario> getListaCamposNcm() {
-    return listaCamposNcm;
+  @JsonProperty("listaNcm")
+  public TemplateListaNcm getListaNcm() {
+    return listaNcm;
   }
 
-  public void setListaCamposNcm(List<CampoFormulario> listaCamposNcm) {
-    this.listaCamposNcm = listaCamposNcm;
+  public void setListaNcm(TemplateListaNcm listaNcm) {
+    this.listaNcm = listaNcm;
   }
 
-  public TemplateLpco listaCamposNcm(List<CampoFormulario> listaCamposNcm) {
-    this.listaCamposNcm = listaCamposNcm;
-    return this;
-  }
-
-  public TemplateLpco addListaCamposNcmItem(CampoFormulario listaCamposNcmItem) {
-    this.listaCamposNcm.add(listaCamposNcmItem);
+  public TemplateLpco listaNcm(TemplateListaNcm listaNcm) {
+    this.listaNcm = listaNcm;
     return this;
   }
 
@@ -123,7 +108,7 @@ public class TemplateLpco  {
     
     sb.append("    modelo: ").append(toIndentedString(modelo)).append("\n");
     sb.append("    listaCamposFormulario: ").append(toIndentedString(listaCamposFormulario)).append("\n");
-    sb.append("    listaCamposNcm: ").append(toIndentedString(listaCamposNcm)).append("\n");
+    sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
     sb.append("}");
     return sb.toString();
   }

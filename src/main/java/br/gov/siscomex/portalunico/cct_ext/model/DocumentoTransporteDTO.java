@@ -1,31 +1,33 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
-
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DocumentoTransporteDTO", propOrder =
-    { "numeroDocumentoTransporte", "tipoDocumentoTransporte", "codigoViaTransporte", "situacaoAtual", "situacoesObservacao", "dataEmissao", "cpfCnpjTransportador", "nomeTransportador", "tipoDAT", "localOrigem", "localDestinoPrevisto", "localDestinoRealizado", "veiculoFerroviario", "veiculoRodoviario", "conteineres", "cargas", "identificacaoVeiculo", "pesoBrutoTransportado", "observacao", "dadosVeiculoConferem", "dadosUnidadeTransporteConferem", "dadosConteinerConferem", "dadosEmbalagemConferem", "cargaComAvaria", "descricaoAvaria", "cargaComDivergencia", "descricaoDivergencia", "observacaoRecepcao", "pesoAferido", "motivoNaoPesagem", "dataHoraInicioTransito", "dataHoraChegadaTransito", "numeroLicencaOriginaria", "numeroLicComplTETI", "dataSolicitacaoTransito", "descricaoViaDeTransporte", "descricaoTipoDocumentoTransporte"
+    { "ano", "sequencia", "numeroDocumentoTransporte", "tipoDocumentoTransporte", "codigoViaTransporte", "situacaoAtual", "situacoesObservacao", "dataEmissao", "cpfCnpjTransportador", "nomeTransportador", "tipoDAT", "localOrigem", "localDestinoPrevisto", "localDestinoRealizado", "veiculoFerroviario", "veiculoRodoviario", "conteineres", "cargas", "identificacaoVeiculo", "pesoBrutoTransportado", "observacao", "dadosVeiculoConferem", "dadosUnidadeTransporteConferem", "dadosConteinerConferem", "dadosEmbalagemConferem", "cargaComAvaria", "descricaoAvaria", "cargaComDivergencia", "descricaoDivergencia", "observacaoRecepcao", "pesoAferido", "motivoNaoPesagem", "dataHoraInicioTransito", "dataHoraChegadaTransito", "numeroLicencaOriginaria", "numeroLicComplTETI", "dataSolicitacaoTransito", "descricaoViaDeTransporte", "descricaoTipoDocumentoTransporte", "urlConsulta"
 })
 
 @XmlRootElement(name="DocumentoTransporteDTO")
 public class DocumentoTransporteDTO  {
   
+  @XmlElement(name="ano")
+  @ApiModelProperty(value = "")
+  @Valid
+  private BigDecimal ano = null;
+
+  @XmlElement(name="sequencia")
+  @ApiModelProperty(value = "")
+  @Valid
+  private BigDecimal sequencia = null;
+
   @XmlElement(name="numeroDocumentoTransporte")
   @ApiModelProperty(value = "")
   private String numeroDocumentoTransporte = null;
@@ -257,6 +259,46 @@ public enum SituacaoAtualEnum {
   @XmlElement(name="descricaoTipoDocumentoTransporte")
   @ApiModelProperty(value = "")
   private String descricaoTipoDocumentoTransporte = null;
+
+  @XmlElement(name="urlConsulta")
+  @ApiModelProperty(value = "")
+  private String urlConsulta = null;
+ /**
+   * Get ano
+   * @return ano
+  **/
+  @JsonProperty("ano")
+  public BigDecimal getAno() {
+    return ano;
+  }
+
+  public void setAno(BigDecimal ano) {
+    this.ano = ano;
+  }
+
+  public DocumentoTransporteDTO ano(BigDecimal ano) {
+    this.ano = ano;
+    return this;
+  }
+
+ /**
+   * Get sequencia
+   * @return sequencia
+  **/
+  @JsonProperty("sequencia")
+  public BigDecimal getSequencia() {
+    return sequencia;
+  }
+
+  public void setSequencia(BigDecimal sequencia) {
+    this.sequencia = sequencia;
+  }
+
+  public DocumentoTransporteDTO sequencia(BigDecimal sequencia) {
+    this.sequencia = sequencia;
+    return this;
+  }
+
  /**
    * Get numeroDocumentoTransporte
    * @return numeroDocumentoTransporte
@@ -941,12 +983,32 @@ public enum SituacaoAtualEnum {
     return this;
   }
 
+ /**
+   * Get urlConsulta
+   * @return urlConsulta
+  **/
+  @JsonProperty("urlConsulta")
+  public String getUrlConsulta() {
+    return urlConsulta;
+  }
+
+  public void setUrlConsulta(String urlConsulta) {
+    this.urlConsulta = urlConsulta;
+  }
+
+  public DocumentoTransporteDTO urlConsulta(String urlConsulta) {
+    this.urlConsulta = urlConsulta;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentoTransporteDTO {\n");
     
+    sb.append("    ano: ").append(toIndentedString(ano)).append("\n");
+    sb.append("    sequencia: ").append(toIndentedString(sequencia)).append("\n");
     sb.append("    numeroDocumentoTransporte: ").append(toIndentedString(numeroDocumentoTransporte)).append("\n");
     sb.append("    tipoDocumentoTransporte: ").append(toIndentedString(tipoDocumentoTransporte)).append("\n");
     sb.append("    codigoViaTransporte: ").append(toIndentedString(codigoViaTransporte)).append("\n");
@@ -984,6 +1046,7 @@ public enum SituacaoAtualEnum {
     sb.append("    dataSolicitacaoTransito: ").append(toIndentedString(dataSolicitacaoTransito)).append("\n");
     sb.append("    descricaoViaDeTransporte: ").append(toIndentedString(descricaoViaDeTransporte)).append("\n");
     sb.append("    descricaoTipoDocumentoTransporte: ").append(toIndentedString(descricaoTipoDocumentoTransporte)).append("\n");
+    sb.append("    urlConsulta: ").append(toIndentedString(urlConsulta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

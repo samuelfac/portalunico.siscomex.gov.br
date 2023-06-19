@@ -1,17 +1,10 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosDaChegadaAoPontoZero", propOrder =
@@ -135,7 +128,7 @@ public enum TipoOperacaoEnum {
   private String identificacaoUld = null;
 
   @XmlElement(name="viagem")
-  @ApiModelProperty(example = "'AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA'", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.<br/>Tamanho: 20")
+  @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.<br/>Tamanho: 20")
  /**
    * <br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.<br/>Tamanho: 20
   **/

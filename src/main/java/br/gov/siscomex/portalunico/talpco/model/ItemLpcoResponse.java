@@ -1,23 +1,17 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemLpcoResponse", propOrder =
-    { "numeroItem", "ncm", "listaCamposNcm", "listaAtributosNcm", "produto"
+    { "numeroItem", "ncm", "listaCamposNcm", "listaAtributosNcm", "produto", "identificadorCota", "criterioDistribuicaoCota", "parcelaDistribuicaoCota"
 })
 
 @XmlRootElement(name="ItemLpcoResponse")
@@ -61,6 +55,27 @@ public class ItemLpcoResponse  {
   @ApiModelProperty(value = "")
   @Valid
   private Produto produto = null;
+
+  @XmlElement(name="identificadorCota")
+  @ApiModelProperty(example = "I00085-01-01", value = "Identificador da cota")
+ /**
+   * Identificador da cota
+  **/
+  private String identificadorCota = null;
+
+  @XmlElement(name="criterioDistribuicaoCota")
+  @ApiModelProperty(example = "Performance", value = "Critério de distribuição da cota")
+ /**
+   * Critério de distribuição da cota
+  **/
+  private String criterioDistribuicaoCota = null;
+
+  @XmlElement(name="parcelaDistribuicaoCota")
+  @ApiModelProperty(example = "Ordem de registro", value = "Parcela de distribuição da cota")
+ /**
+   * Parcela de distribuição da cota
+  **/
+  private String parcelaDistribuicaoCota = null;
  /**
    * Número sequencial do item do LPCO.
    * @return numeroItem
@@ -163,6 +178,60 @@ public class ItemLpcoResponse  {
     return this;
   }
 
+ /**
+   * Identificador da cota
+   * @return identificadorCota
+  **/
+  @JsonProperty("identificadorCota")
+  public String getIdentificadorCota() {
+    return identificadorCota;
+  }
+
+  public void setIdentificadorCota(String identificadorCota) {
+    this.identificadorCota = identificadorCota;
+  }
+
+  public ItemLpcoResponse identificadorCota(String identificadorCota) {
+    this.identificadorCota = identificadorCota;
+    return this;
+  }
+
+ /**
+   * Critério de distribuição da cota
+   * @return criterioDistribuicaoCota
+  **/
+  @JsonProperty("criterioDistribuicaoCota")
+  public String getCriterioDistribuicaoCota() {
+    return criterioDistribuicaoCota;
+  }
+
+  public void setCriterioDistribuicaoCota(String criterioDistribuicaoCota) {
+    this.criterioDistribuicaoCota = criterioDistribuicaoCota;
+  }
+
+  public ItemLpcoResponse criterioDistribuicaoCota(String criterioDistribuicaoCota) {
+    this.criterioDistribuicaoCota = criterioDistribuicaoCota;
+    return this;
+  }
+
+ /**
+   * Parcela de distribuição da cota
+   * @return parcelaDistribuicaoCota
+  **/
+  @JsonProperty("parcelaDistribuicaoCota")
+  public String getParcelaDistribuicaoCota() {
+    return parcelaDistribuicaoCota;
+  }
+
+  public void setParcelaDistribuicaoCota(String parcelaDistribuicaoCota) {
+    this.parcelaDistribuicaoCota = parcelaDistribuicaoCota;
+  }
+
+  public ItemLpcoResponse parcelaDistribuicaoCota(String parcelaDistribuicaoCota) {
+    this.parcelaDistribuicaoCota = parcelaDistribuicaoCota;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -174,6 +243,9 @@ public class ItemLpcoResponse  {
     sb.append("    listaCamposNcm: ").append(toIndentedString(listaCamposNcm)).append("\n");
     sb.append("    listaAtributosNcm: ").append(toIndentedString(listaAtributosNcm)).append("\n");
     sb.append("    produto: ").append(toIndentedString(produto)).append("\n");
+    sb.append("    identificadorCota: ").append(toIndentedString(identificadorCota)).append("\n");
+    sb.append("    criterioDistribuicaoCota: ").append(toIndentedString(criterioDistribuicaoCota)).append("\n");
+    sb.append("    parcelaDistribuicaoCota: ").append(toIndentedString(parcelaDistribuicaoCota)).append("\n");
     sb.append("}");
     return sb.toString();
   }

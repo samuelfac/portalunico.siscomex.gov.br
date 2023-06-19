@@ -1,16 +1,11 @@
 package br.gov.siscomex.portalunico.ttce.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "VigenciaTratamentoDTO", propOrder =
@@ -25,14 +20,14 @@ import io.swagger.annotations.ApiModelProperty;
 public class VigenciaTratamentoDTO  {
   
   @XmlElement(name="inicio", required = true)
-  @ApiModelProperty(example = "2020-01-01", required = true, value = "Data de início da vigência</br><br>Formato: 'yyyy-MM-dd'")
+  @ApiModelProperty(required = true, value = "Data de início da vigência</br><br>Formato: 'yyyy-MM-dd'")
  /**
    * Data de início da vigência</br><br>Formato: 'yyyy-MM-dd'
   **/
   private String inicio = null;
 
   @XmlElement(name="fim", required = true)
-  @ApiModelProperty(example = "2021-12-31", required = true, value = "Data de fim da vigência</br><br>Formato: 'yyyy-MM-dd'")
+  @ApiModelProperty(required = true, value = "Data de fim da vigência</br><br>Formato: 'yyyy-MM-dd'")
  /**
    * Data de fim da vigência</br><br>Formato: 'yyyy-MM-dd'
   **/

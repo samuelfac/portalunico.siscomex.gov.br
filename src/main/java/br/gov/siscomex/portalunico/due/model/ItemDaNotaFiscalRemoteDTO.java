@@ -1,21 +1,15 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemDaNotaFiscalRemoteDTO", propOrder =
-    { "apresentadaParaDespacho", "cfop", "codigoDoProduto", "ncm", "notaFiscal", "numeroDoItem", "quantidadeConsumida", "quantidadeEstatistica", "unidadeComercial", "valorTotalBruto", "valorTotalCalculado"
+    { "apresentadaParaDespacho", "cfop", "codigoDoProduto", "ncm", "notaFiscal", "numeroDoItem", "quantidadeComercial", "quantidadeConsumida", "quantidadeEstatistica", "unidadeComercial", "valorTotalBruto", "valorTotalCalculado"
 })
 
 @XmlRootElement(name="ItemDaNotaFiscalRemoteDTO")
@@ -56,6 +50,14 @@ public class ItemDaNotaFiscalRemoteDTO  {
    * Número<br />Tamanho: 3,0<br />Formato: Decimal, com 0 casas decimais.
   **/
   private BigDecimal numeroDoItem = null;
+
+  @XmlElement(name="quantidadeComercial")
+  @ApiModelProperty(value = "Quantidade comercializada<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.")
+  @Valid
+ /**
+   * Quantidade comercializada<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.
+  **/
+  private BigDecimal quantidadeComercial = null;
 
   @XmlElement(name="quantidadeConsumida")
   @ApiModelProperty(value = "Quantidade consumida<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
@@ -204,6 +206,24 @@ public class ItemDaNotaFiscalRemoteDTO  {
   }
 
  /**
+   * Quantidade comercializada&lt;br /&gt;Tamanho: 11,4&lt;br /&gt;Formato: Decimal, com até 4 casas decimais separadas por ponto.
+   * @return quantidadeComercial
+  **/
+  @JsonProperty("quantidadeComercial")
+  public BigDecimal getQuantidadeComercial() {
+    return quantidadeComercial;
+  }
+
+  public void setQuantidadeComercial(BigDecimal quantidadeComercial) {
+    this.quantidadeComercial = quantidadeComercial;
+  }
+
+  public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
+    this.quantidadeComercial = quantidadeComercial;
+    return this;
+  }
+
+ /**
    * Quantidade consumida&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
    * @return quantidadeConsumida
   **/
@@ -305,6 +325,7 @@ public class ItemDaNotaFiscalRemoteDTO  {
     sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
     sb.append("    notaFiscal: ").append(toIndentedString(notaFiscal)).append("\n");
     sb.append("    numeroDoItem: ").append(toIndentedString(numeroDoItem)).append("\n");
+    sb.append("    quantidadeComercial: ").append(toIndentedString(quantidadeComercial)).append("\n");
     sb.append("    quantidadeConsumida: ").append(toIndentedString(quantidadeConsumida)).append("\n");
     sb.append("    quantidadeEstatistica: ").append(toIndentedString(quantidadeEstatistica)).append("\n");
     sb.append("    unidadeComercial: ").append(toIndentedString(unidadeComercial)).append("\n");

@@ -1,19 +1,13 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ValidacaoCampoLpco", propOrder =
@@ -28,9 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 public class ValidacaoCampoLpco  {
   
   @XmlElement(name="obrigatorio", required = true)
-  @ApiModelProperty(example = "true", required = true, value = "Indica se o campo é obrigatório")
+  @ApiModelProperty(example = "true", required = true, value = "Indica se o campo é obrigatório. Caso seja um atributo condicionado e esteja marcado como obrigatório, ele deverá ser preenchido se a condição for cumprida.")
  /**
-   * Indica se o campo é obrigatório
+   * Indica se o campo é obrigatório. Caso seja um atributo condicionado e esteja marcado como obrigatório, ele deverá ser preenchido se a condição for cumprida.
   **/
   private Boolean obrigatorio = false;
 
@@ -70,7 +64,7 @@ public class ValidacaoCampoLpco  {
   **/
   private List<IdDescricao> dominios = null;
  /**
-   * Indica se o campo é obrigatório
+   * Indica se o campo é obrigatório. Caso seja um atributo condicionado e esteja marcado como obrigatório, ele deverá ser preenchido se a condição for cumprida.
    * @return obrigatorio
   **/
   @JsonProperty("obrigatorio")

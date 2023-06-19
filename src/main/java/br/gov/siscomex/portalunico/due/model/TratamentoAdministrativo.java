@@ -1,18 +1,10 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TratamentoAdministrativo", propOrder =
@@ -102,7 +94,15 @@ public enum SituacaoEnum {
 	
 	@XmlEnumValue("RASCUNHO_RETIFICACAO")
 	@JsonProperty("RASCUNHO_RETIFICACAO")
-	RASCUNHO_RETIFICACAO(String.valueOf("RASCUNHO_RETIFICACAO"));
+	RASCUNHO_RETIFICACAO(String.valueOf("RASCUNHO_RETIFICACAO")),
+	
+	@XmlEnumValue("RASCUNHO_LPCO")
+	@JsonProperty("RASCUNHO_LPCO")
+	RASCUNHO_LPCO(String.valueOf("RASCUNHO_LPCO")),
+	
+	@XmlEnumValue("AGUARDANDO_PAGAMENTO")
+	@JsonProperty("AGUARDANDO_PAGAMENTO")
+	AGUARDANDO_PAGAMENTO(String.valueOf("AGUARDANDO_PAGAMENTO"));
 
 
     private String value;

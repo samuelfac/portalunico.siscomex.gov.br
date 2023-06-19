@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.ttce.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AplicaNcmDTO", propOrder =
@@ -29,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class AplicaNcmDTO  {
   
   @XmlElement(name="indicadorTodosNCMs", required = true)
-  @ApiModelProperty(example = "true", required = true, value = "Indicador de que este conjunto de Tratamentos Tributários agrupados se aplica para todas as NCMs.<br/><br>Dominio:<br>true - Sim, <br>false - Não")
+  @ApiModelProperty(example = "false", required = true, value = "Indicador de que este conjunto de Tratamentos Tributários agrupados se aplica para todas as NCMs.<br/><br>Dominio:<br>true - Sim, <br>false - Não")
  /**
    * Indicador de que este conjunto de Tratamentos Tributários agrupados se aplica para todas as NCMs.<br/><br>Dominio:<br>true - Sim, <br>false - Não
   **/
@@ -41,7 +35,7 @@ public class AplicaNcmDTO  {
  /**
    * Lista contendo os códigos das NCMs para as quais se aplica este conjunto de Tratamentos Tributários agrupados.<br/>A lista será vazia caso o indicadorTodosNCMs=true.
   **/
-  private List<CodigoNcmDTO> ncms = new ArrayList<>();
+  private List<CodigoNcmAplicaDTO> ncms = new ArrayList<>();
  /**
    * Indicador de que este conjunto de Tratamentos Tributários agrupados se aplica para todas as NCMs.&lt;br/&gt;&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
    * @return indicadorTodosNCMs
@@ -67,20 +61,20 @@ public class AplicaNcmDTO  {
   **/
   @JsonProperty("ncms")
   @NotNull
-  public List<CodigoNcmDTO> getNcms() {
+  public List<CodigoNcmAplicaDTO> getNcms() {
     return ncms;
   }
 
-  public void setNcms(List<CodigoNcmDTO> ncms) {
+  public void setNcms(List<CodigoNcmAplicaDTO> ncms) {
     this.ncms = ncms;
   }
 
-  public AplicaNcmDTO ncms(List<CodigoNcmDTO> ncms) {
+  public AplicaNcmDTO ncms(List<CodigoNcmAplicaDTO> ncms) {
     this.ncms = ncms;
     return this;
   }
 
-  public AplicaNcmDTO addNcmsItem(CodigoNcmDTO ncmsItem) {
+  public AplicaNcmDTO addNcmsItem(CodigoNcmAplicaDTO ncmsItem) {
     this.ncms.add(ncmsItem);
     return this;
   }

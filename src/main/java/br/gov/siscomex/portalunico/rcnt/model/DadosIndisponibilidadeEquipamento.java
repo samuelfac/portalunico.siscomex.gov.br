@@ -1,17 +1,10 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosIndisponibilidadeEquipamento", propOrder =
@@ -128,7 +121,7 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="equipamento", required = true)
-  @ApiModelProperty(required = true, value = "Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
  /**
    * Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
   **/

@@ -1,19 +1,13 @@
 package br.gov.siscomex.portalunico.catp.model;
 
-import java.time.OffsetDateTime;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ProdutoIntegracaoDTO", propOrder =
@@ -66,9 +60,9 @@ public class ProdutoIntegracaoDTO  {
   private String situacao = null;
 
   @XmlElement(name="modalidade")
-  @ApiModelProperty(example = "EXPORTACAO", value = "Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO <br>AMBOS)")
+  @ApiModelProperty(example = "EXPORTACAO", value = "Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO)")
  /**
-   * Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO <br>AMBOS)
+   * Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO)
   **/
   private String modalidade = null;
 
@@ -241,7 +235,7 @@ public class ProdutoIntegracaoDTO  {
   }
 
  /**
-   * Modalidade de operacao &lt;br&gt;Domínio: (IMPORTACAO &lt;br&gt;EXPORTACAO &lt;br&gt;AMBOS)
+   * Modalidade de operacao &lt;br&gt;Domínio: (IMPORTACAO &lt;br&gt;EXPORTACAO)
    * @return modalidade
   **/
   @JsonProperty("modalidade")

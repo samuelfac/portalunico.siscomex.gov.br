@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CompatibilizacaoLpcoResponse", propOrder =
@@ -38,7 +32,7 @@ public class CompatibilizacaoLpcoResponse  {
   @XmlElement(name="situacao", required = true)
   @ApiModelProperty(required = true, value = "")
   @Valid
-  private IdDescricao situacao = null;
+  private SituacaoCompatibilizacaoLpco situacao = null;
 
   @XmlElement(name="dataRegistro", required = true)
   @ApiModelProperty(example = "2019-09-02T12:10Z", required = true, value = "Data e hora em que o pedido de compatibilização foi registrado<br>Formato: dd-MM-yyyy'T'HH:mmZ")
@@ -55,10 +49,10 @@ public class CompatibilizacaoLpcoResponse  {
   private String justificativa = null;
 
   @XmlElement(name="listaAlteracoes", required = true)
-  @ApiModelProperty(required = true, value = "Lista de alterações realizadas na retificação")
+  @ApiModelProperty(required = true, value = "Lista de alterações realizadas na compatibilização")
   @Valid
  /**
-   * Lista de alterações realizadas na retificação
+   * Lista de alterações realizadas na compatibilização
   **/
   private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
  /**
@@ -86,15 +80,15 @@ public class CompatibilizacaoLpcoResponse  {
   **/
   @JsonProperty("situacao")
   @NotNull
-  public IdDescricao getSituacao() {
+  public SituacaoCompatibilizacaoLpco getSituacao() {
     return situacao;
   }
 
-  public void setSituacao(IdDescricao situacao) {
+  public void setSituacao(SituacaoCompatibilizacaoLpco situacao) {
     this.situacao = situacao;
   }
 
-  public CompatibilizacaoLpcoResponse situacao(IdDescricao situacao) {
+  public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
     this.situacao = situacao;
     return this;
   }
@@ -137,7 +131,7 @@ public class CompatibilizacaoLpcoResponse  {
   }
 
  /**
-   * Lista de alterações realizadas na retificação
+   * Lista de alterações realizadas na compatibilização
    * @return listaAlteracoes
   **/
   @JsonProperty("listaAlteracoes")

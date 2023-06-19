@@ -1,20 +1,15 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Consignatario", propOrder =
-    { "indConsignadoAOrdem", "pais", "nome", "endereco"
+    { "indConsignadoAOrdem", "pais", "nome", "endereco", "idEstrangeiro"
 })
 
 @XmlRootElement(name="Consignatario")
@@ -51,6 +46,13 @@ public class Consignatario  {
    * Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
   **/
   private String endereco = null;
+
+  @XmlElement(name="idEstrangeiro")
+  @ApiModelProperty(example = "ABCD123456789", value = "Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+ /**
+   * Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+  **/
+  private String idEstrangeiro = null;
  /**
    * Indicador To Order&lt;br&gt;Domínio: 1 (prepaid), 2 (collect).
    * @return indConsignadoAOrdem
@@ -124,6 +126,24 @@ public class Consignatario  {
     return this;
   }
 
+ /**
+   * Identificação fiscal do consignatário estrangeiro&lt;br&gt;Tamanho: 14&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+   * @return idEstrangeiro
+  **/
+  @JsonProperty("idEstrangeiro")
+  public String getIdEstrangeiro() {
+    return idEstrangeiro;
+  }
+
+  public void setIdEstrangeiro(String idEstrangeiro) {
+    this.idEstrangeiro = idEstrangeiro;
+  }
+
+  public Consignatario idEstrangeiro(String idEstrangeiro) {
+    this.idEstrangeiro = idEstrangeiro;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -134,6 +154,7 @@ public class Consignatario  {
     sb.append("    pais: ").append(toIndentedString(pais)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
     sb.append("    endereco: ").append(toIndentedString(endereco)).append("\n");
+    sb.append("    idEstrangeiro: ").append(toIndentedString(idEstrangeiro)).append("\n");
     sb.append("}");
     return sb.toString();
   }

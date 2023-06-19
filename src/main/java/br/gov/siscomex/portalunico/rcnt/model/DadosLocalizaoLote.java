@@ -1,37 +1,18 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosLocalizaoLote", propOrder =
-    { "quadra", "pilha", "altura", "fila"
+    { "altura", "fila", "pilha", "quadra"
 })
 
 @XmlRootElement(name="DadosLocalizaoLote")
 public class DadosLocalizaoLote  {
   
-  @XmlElement(name="quadra")
-  @ApiModelProperty(value = "Quadra<br/>Tamanho: 20")
- /**
-   * Quadra<br/>Tamanho: 20
-  **/
-  private String quadra = null;
-
-  @XmlElement(name="pilha")
-  @ApiModelProperty(value = "Pilha<br/>Tamanho: 20")
- /**
-   * Pilha<br/>Tamanho: 20
-  **/
-  private String pilha = null;
-
   @XmlElement(name="altura")
   @ApiModelProperty(value = "Altura<br/>Tamanho: 20")
  /**
@@ -45,42 +26,20 @@ public class DadosLocalizaoLote  {
    * Fila<br/>Tamanho: 20
   **/
   private String fila = null;
+
+  @XmlElement(name="pilha")
+  @ApiModelProperty(value = "Pilha<br/>Tamanho: 20")
  /**
-   * Quadra&lt;br/&gt;Tamanho: 20
-   * @return quadra
+   * Pilha<br/>Tamanho: 20
   **/
-  @JsonProperty("quadra")
-  public String getQuadra() {
-    return quadra;
-  }
+  private String pilha = null;
 
-  public void setQuadra(String quadra) {
-    this.quadra = quadra;
-  }
-
-  public DadosLocalizaoLote quadra(String quadra) {
-    this.quadra = quadra;
-    return this;
-  }
-
+  @XmlElement(name="quadra")
+  @ApiModelProperty(value = "Quadra<br/>Tamanho: 20")
  /**
-   * Pilha&lt;br/&gt;Tamanho: 20
-   * @return pilha
+   * Quadra<br/>Tamanho: 20
   **/
-  @JsonProperty("pilha")
-  public String getPilha() {
-    return pilha;
-  }
-
-  public void setPilha(String pilha) {
-    this.pilha = pilha;
-  }
-
-  public DadosLocalizaoLote pilha(String pilha) {
-    this.pilha = pilha;
-    return this;
-  }
-
+  private String quadra = null;
  /**
    * Altura&lt;br/&gt;Tamanho: 20
    * @return altura
@@ -117,16 +76,52 @@ public class DadosLocalizaoLote  {
     return this;
   }
 
+ /**
+   * Pilha&lt;br/&gt;Tamanho: 20
+   * @return pilha
+  **/
+  @JsonProperty("pilha")
+  public String getPilha() {
+    return pilha;
+  }
+
+  public void setPilha(String pilha) {
+    this.pilha = pilha;
+  }
+
+  public DadosLocalizaoLote pilha(String pilha) {
+    this.pilha = pilha;
+    return this;
+  }
+
+ /**
+   * Quadra&lt;br/&gt;Tamanho: 20
+   * @return quadra
+  **/
+  @JsonProperty("quadra")
+  public String getQuadra() {
+    return quadra;
+  }
+
+  public void setQuadra(String quadra) {
+    this.quadra = quadra;
+  }
+
+  public DadosLocalizaoLote quadra(String quadra) {
+    this.quadra = quadra;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DadosLocalizaoLote {\n");
     
-    sb.append("    quadra: ").append(toIndentedString(quadra)).append("\n");
-    sb.append("    pilha: ").append(toIndentedString(pilha)).append("\n");
     sb.append("    altura: ").append(toIndentedString(altura)).append("\n");
     sb.append("    fila: ").append(toIndentedString(fila)).append("\n");
+    sb.append("    pilha: ").append(toIndentedString(pilha)).append("\n");
+    sb.append("    quadra: ").append(toIndentedString(quadra)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,25 +1,17 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.math.BigDecimal;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosEmbarqueDesembarqueNavio", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaDeclaracaoAduaneira", "listaNfe", "embarqueDesembarque", "numeroConteiner", "tipoConteiner", "taraConteiner", "pesoBrutoManifesto", "pesoBrutoBalanca", "pesoArqueacao", "tipoGranel", "volume", "cargaSolta", "numeroLote", "listaVolumes", "listaChassi", "navio", "viagem", "escala", "listaPortoCarregamento", "listaPortoDescarregamento", "paisDestinoFinalCarga", "posicaoNavio", "proximoNavio", "portainer", "listaCameras"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaDeclaracaoAduaneira", "listaNfe", "embarqueDesembarque", "numeroConteiner", "tipoConteiner", "taraConteiner", "pesoBrutoManifesto", "pesoBrutoBalanca", "pesoArqueacao", "tipoGranel", "volume", "cargaSolta", "numeroLote", "listaVolumes", "listaChassi", "navio", "viagem", "escala", "listaPortoCarregamento", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "posicaoNavio", "proximoNavio", "portainer", "listaCameras"
 })
 
 @XmlRootElement(name="DadosEmbarqueDesembarqueNavio")
@@ -216,15 +208,15 @@ public enum EmbarqueDesembarqueEnum {
   private String tipoConteiner = null;
 
   @XmlElement(name="taraConteiner")
-  @ApiModelProperty(value = "Tara do contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do contêiner (KG).<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do contêiner.<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
+   * Tara do contêiner (KG).<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
   **/
   private BigDecimal taraConteiner = null;
 
   @XmlElement(name="pesoBrutoManifesto")
-  @ApiModelProperty(value = "Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
   @Valid
  /**
    * Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.
@@ -232,7 +224,7 @@ public enum EmbarqueDesembarqueEnum {
   private BigDecimal pesoBrutoManifesto = null;
 
   @XmlElement(name="pesoBrutoBalanca")
-  @ApiModelProperty(value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
   @Valid
  /**
    * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
@@ -240,7 +232,7 @@ public enum EmbarqueDesembarqueEnum {
   private BigDecimal pesoBrutoBalanca = null;
 
   @XmlElement(name="pesoArqueacao")
-  @ApiModelProperty(value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.")
   @Valid
  /**
    * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.
@@ -318,7 +310,7 @@ public enum TipoGranelEnum {
   private TipoGranelEnum tipoGranel = null;
 
   @XmlElement(name="volume")
-  @ApiModelProperty(value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.")
   @Valid
  /**
    * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.
@@ -390,13 +382,13 @@ public enum TipoGranelEnum {
   **/
   private List<DadosDoPorto> listaPortoDescarregamento = null;
 
-  @XmlElement(name="paisDestinoFinalCarga")
+  @XmlElement(name="listaPaisDestinoFinalCarga")
   @ApiModelProperty(value = "Lista de países de destino final da carga conforme tabela de domínio.")
   @Valid
  /**
    * Lista de países de destino final da carga conforme tabela de domínio.
   **/
-  private List<DadosDoPais> paisDestinoFinalCarga = null;
+  private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
 
   @XmlElement(name="posicaoNavio")
   @ApiModelProperty(value = "Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20")
@@ -411,7 +403,7 @@ public enum TipoGranelEnum {
   private DadosPrximoNavio proximoNavio = null;
 
   @XmlElement(name="portainer")
-  @ApiModelProperty(value = "Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36")
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36")
  /**
    * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36
   **/
@@ -723,7 +715,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Tara do contêiner.&lt;br/&gt; Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.&lt;br/&gt;&lt;br/&gt;taraConteiner, até 4 casas decimais.
+   * Tara do contêiner (KG).&lt;br/&gt; Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.&lt;br/&gt;&lt;br/&gt;taraConteiner, até 4 casas decimais.
    * @return taraConteiner
   **/
   @JsonProperty("taraConteiner")
@@ -1017,24 +1009,24 @@ public enum TipoGranelEnum {
 
  /**
    * Lista de países de destino final da carga conforme tabela de domínio.
-   * @return paisDestinoFinalCarga
+   * @return listaPaisDestinoFinalCarga
   **/
-  @JsonProperty("paisDestinoFinalCarga")
-  public List<DadosDoPais> getPaisDestinoFinalCarga() {
-    return paisDestinoFinalCarga;
+  @JsonProperty("listaPaisDestinoFinalCarga")
+  public List<DadosDoPais> getListaPaisDestinoFinalCarga() {
+    return listaPaisDestinoFinalCarga;
   }
 
-  public void setPaisDestinoFinalCarga(List<DadosDoPais> paisDestinoFinalCarga) {
-    this.paisDestinoFinalCarga = paisDestinoFinalCarga;
+  public void setListaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+    this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
   }
 
-  public DadosEmbarqueDesembarqueNavio paisDestinoFinalCarga(List<DadosDoPais> paisDestinoFinalCarga) {
-    this.paisDestinoFinalCarga = paisDestinoFinalCarga;
+  public DadosEmbarqueDesembarqueNavio listaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+    this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
     return this;
   }
 
-  public DadosEmbarqueDesembarqueNavio addPaisDestinoFinalCargaItem(DadosDoPais paisDestinoFinalCargaItem) {
-    this.paisDestinoFinalCarga.add(paisDestinoFinalCargaItem);
+  public DadosEmbarqueDesembarqueNavio addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
+    this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
     return this;
   }
 
@@ -1151,7 +1143,7 @@ public enum TipoGranelEnum {
     sb.append("    escala: ").append(toIndentedString(escala)).append("\n");
     sb.append("    listaPortoCarregamento: ").append(toIndentedString(listaPortoCarregamento)).append("\n");
     sb.append("    listaPortoDescarregamento: ").append(toIndentedString(listaPortoDescarregamento)).append("\n");
-    sb.append("    paisDestinoFinalCarga: ").append(toIndentedString(paisDestinoFinalCarga)).append("\n");
+    sb.append("    listaPaisDestinoFinalCarga: ").append(toIndentedString(listaPaisDestinoFinalCarga)).append("\n");
     sb.append("    posicaoNavio: ").append(toIndentedString(posicaoNavio)).append("\n");
     sb.append("    proximoNavio: ").append(toIndentedString(proximoNavio)).append("\n");
     sb.append("    portainer: ").append(toIndentedString(portainer)).append("\n");

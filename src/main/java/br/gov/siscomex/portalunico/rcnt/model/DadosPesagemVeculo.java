@@ -1,21 +1,13 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.math.BigDecimal;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosPesagemVeculo", propOrder =
@@ -148,7 +140,7 @@ public enum TipoOperacaoEnum {
   private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
 
   @XmlElement(name="pesoBrutoManifesto")
-  @ApiModelProperty(value = "Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
   @Valid
  /**
    * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/><br/>pesoBrutoManifesto, até 4 casas decimais.
@@ -163,7 +155,7 @@ public enum TipoOperacaoEnum {
   private String placa = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
   @Valid
  /**
    * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
@@ -179,7 +171,7 @@ public enum TipoOperacaoEnum {
   private List<DadosSemirreboquePesagem> listaSemirreboque = null;
 
   @XmlElement(name="taraConjunto")
-  @ApiModelProperty(value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.")
   @Valid
  /**
    * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.
@@ -195,7 +187,7 @@ public enum TipoOperacaoEnum {
   private List<DadosContinerUldPesagemVeculo> listaConteineresUld = null;
 
   @XmlElement(name="pesoBrutoBalanca")
-  @ApiModelProperty(value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
   @Valid
  /**
    * Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
@@ -309,14 +301,14 @@ public enum CorreiasTransportadorasEnum {
   private CorreiasTransportadorasEnum correiasTransportadoras = null;
 
   @XmlElement(name="ncm")
-  @ApiModelProperty(value = "Dutos. Informar a NCM da mercadoria que chegou ou saiu via dutos.<br/>Esta informação será prestada no caso de dutos pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8")
+  @ApiModelProperty(value = "Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8")
  /**
-   * Dutos. Informar a NCM da mercadoria que chegou ou saiu via dutos.<br/>Esta informação será prestada no caso de dutos pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8
+   * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8
   **/
   private String ncm = null;
 
   @XmlElement(name="volume")
-  @ApiModelProperty(value = "Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/><br/>volume, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/><br/>volume, até 4 casas decimais.")
   @Valid
  /**
    * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/><br/>volume, até 4 casas decimais.
@@ -324,7 +316,7 @@ public enum CorreiasTransportadorasEnum {
   private BigDecimal volume = null;
 
   @XmlElement(name="balanca")
-  @ApiModelProperty(value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36")
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36")
  /**
    * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36
   **/
@@ -769,7 +761,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Dutos. Informar a NCM da mercadoria que chegou ou saiu via dutos.&lt;br/&gt;Esta informação será prestada no caso de dutos pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;Tamanho: 8
+   * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.&lt;br/&gt;Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;Tamanho: 8
    * @return ncm
   **/
   @JsonProperty("ncm")

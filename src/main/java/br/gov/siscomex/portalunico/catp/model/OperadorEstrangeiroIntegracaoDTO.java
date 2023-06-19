@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.catp.model;
 
-import java.time.OffsetDateTime;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "OperadorEstrangeiroIntegracaoDTO", propOrder =
@@ -85,9 +79,9 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   private String nomeCidade = null;
 
   @XmlElement(name="codigoSubdivisaoPais")
-  @ApiModelProperty(example = "AR-B", value = "Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho: 4<br>Formato: 'AA-A'")
+  @ApiModelProperty(example = "AR-B", value = "Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho máximo: 6<br>Formato: 'AA-AAA'")
  /**
-   * Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho: 4<br>Formato: 'AA-A'
+   * Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho máximo: 6<br>Formato: 'AA-AAA'
   **/
   private String codigoSubdivisaoPais = null;
 
@@ -284,7 +278,7 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   }
 
  /**
-   * Código da subdivisao do país. Usar tabela ISO 3166&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;AA-A&#39;
+   * Código da subdivisao do país. Usar tabela ISO 3166&lt;br&gt;Tamanho máximo: 6&lt;br&gt;Formato: &#39;AA-AAA&#39;
    * @return codigoSubdivisaoPais
   **/
   @JsonProperty("codigoSubdivisaoPais")

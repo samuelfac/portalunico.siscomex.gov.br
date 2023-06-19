@@ -1,20 +1,12 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosGeorreferenciamento", propOrder =
@@ -158,95 +150,12 @@ public enum TipoOperacaoEnum {
   **/
   private Integer azimuteCamera = null;
 
-
-@XmlType(name="TipoEnum")
-@XmlEnum(String.class)
-public enum TipoEnum {
-
-	@XmlEnumValue("'1'")
-	@JsonProperty("'1'")
-	_1_(String.valueOf("'1'")),
-	
-	@XmlEnumValue("'2'")
-	@JsonProperty("'2'")
-	_2_(String.valueOf("'2'")),
-	
-	@XmlEnumValue("'3'")
-	@JsonProperty("'3'")
-	_3_(String.valueOf("'3'")),
-	
-	@XmlEnumValue("'4'")
-	@JsonProperty("'4'")
-	_4_(String.valueOf("'4'")),
-	
-	@XmlEnumValue("'5'")
-	@JsonProperty("'5'")
-	_5_(String.valueOf("'5'")),
-	
-	@XmlEnumValue("'6'")
-	@JsonProperty("'6'")
-	_6_(String.valueOf("'6'")),
-	
-	@XmlEnumValue("'7'")
-	@JsonProperty("'7'")
-	_7_(String.valueOf("'7'")),
-	
-	@XmlEnumValue("'8'")
-	@JsonProperty("'8'")
-	_8_(String.valueOf("'8'")),
-	
-	@XmlEnumValue("'9'")
-	@JsonProperty("'9'")
-	_9_(String.valueOf("'9'")),
-	
-	@XmlEnumValue("'10'")
-	@JsonProperty("'10'")
-	_10_(String.valueOf("'10'")),
-	
-	@XmlEnumValue("'11'")
-	@JsonProperty("'11'")
-	_11_(String.valueOf("'11'")),
-	
-	@XmlEnumValue("'12'")
-	@JsonProperty("'12'")
-	_12_(String.valueOf("'12'")),
-	
-	@XmlEnumValue("'13'")
-	@JsonProperty("'13'")
-	_13_(String.valueOf("'13'"));
-
-
-    private String value;
-
-    TipoEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static TipoEnum fromValue(String v) {
-        for (TipoEnum b : TipoEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-    }
-}
-
   @XmlElement(name="tipo", required = true)
-  @ApiModelProperty(example = "6", required = true, value = "Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>1 - Recinto (polígono) <br/> 2 - Área posicionamento contêiner (polígono) <br/>3 - Área posicionamento veículos (polígono) <br/>4 - Área de conferência física (polígono) <br/>5 - Área armazenamento lotes (polígono) <br/>6 - Balança (ponto) <br/>7 - Scanner (ponto) <br/>8 - Gate (ponto) <br/>9 - Catraca e similares (ponto) <br/>10 - Câmeras (ponto) <br/>11 - Portêiner (ponto) <br/>12 - Silo (ponto) <br/>13 - Tanque de armazenamento (ponto)")
+  @ApiModelProperty(example = "6", required = true, value = "Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
  /**
-   * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>1 - Recinto (polígono) <br/> 2 - Área posicionamento contêiner (polígono) <br/>3 - Área posicionamento veículos (polígono) <br/>4 - Área de conferência física (polígono) <br/>5 - Área armazenamento lotes (polígono) <br/>6 - Balança (ponto) <br/>7 - Scanner (ponto) <br/>8 - Gate (ponto) <br/>9 - Catraca e similares (ponto) <br/>10 - Câmeras (ponto) <br/>11 - Portêiner (ponto) <br/>12 - Silo (ponto) <br/>13 - Tanque de armazenamento (ponto)
+   * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
   **/
-  private TipoEnum tipo = null;
+  private String tipo = null;
 
   @XmlElement(name="listaCoordenadas")
   @ApiModelProperty(value = "Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.<br/>No caso de câmeras mobile não transmitir esse atributo.")
@@ -501,23 +410,20 @@ public enum TipoEnum {
   }
 
  /**
-   * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;1 - Recinto (polígono) &lt;br/&gt; 2 - Área posicionamento contêiner (polígono) &lt;br/&gt;3 - Área posicionamento veículos (polígono) &lt;br/&gt;4 - Área de conferência física (polígono) &lt;br/&gt;5 - Área armazenamento lotes (polígono) &lt;br/&gt;6 - Balança (ponto) &lt;br/&gt;7 - Scanner (ponto) &lt;br/&gt;8 - Gate (ponto) &lt;br/&gt;9 - Catraca e similares (ponto) &lt;br/&gt;10 - Câmeras (ponto) &lt;br/&gt;11 - Portêiner (ponto) &lt;br/&gt;12 - Silo (ponto) &lt;br/&gt;13 - Tanque de armazenamento (ponto)
+   * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
    * @return tipo
   **/
   @JsonProperty("tipo")
   @NotNull
   public String getTipo() {
-    if (tipo == null) {
-      return null;
-    }
-    return tipo.value();
+    return tipo;
   }
 
-  public void setTipo(TipoEnum tipo) {
+  public void setTipo(String tipo) {
     this.tipo = tipo;
   }
 
-  public DadosGeorreferenciamento tipo(TipoEnum tipo) {
+  public DadosGeorreferenciamento tipo(String tipo) {
     this.tipo = tipo;
     return this;
   }

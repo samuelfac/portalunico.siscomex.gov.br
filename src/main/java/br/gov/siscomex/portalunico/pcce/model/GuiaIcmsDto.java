@@ -1,32 +1,24 @@
 package br.gov.siscomex.portalunico.pcce.model;
 
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "GuiaIcmsDto", propOrder =
-    { "codigoBarrasGuia", "codigoReceita", "descricaoCodigoReceita", "geradorGuia", "linhaDigitavel", "numeroControle", "valorAtualizacaoMonetaria", "valorCalculado", "valorDevido", "valorJuros", "valorMulta", "valorTotal"
+    { "codigoBarrasGuia", "codigoReceita", "dataCancelamento", "dataLimitePagamento", "dataPagamento", "dataVencimento", "descricaoCodigoReceita", "geradorGuia", "linhaDigitavel", "numeroControle", "valorAtualizacaoMonetaria", "valorCalculado", "valorDevido", "valorJuros", "valorMulta", "valorTotal"
 })
 
 @XmlRootElement(name="GuiaIcmsDto")
 /**
-  * Dados da guia de pagamento de ICMS vinda da Sefaz
+  * Dados da guia de pagamento de ICMS
  **/
-@ApiModel(description="Dados da guia de pagamento de ICMS vinda da Sefaz")
+@ApiModel(description="Dados da guia de pagamento de ICMS")
 public class GuiaIcmsDto  {
   
   @XmlElement(name="codigoBarrasGuia", required = true)
@@ -37,11 +29,39 @@ public class GuiaIcmsDto  {
   private String codigoBarrasGuia = null;
 
   @XmlElement(name="codigoReceita", required = true)
-  @ApiModelProperty(example = "999999", required = true, value = "Codigo da Receita utilizado pelo Estado <br>Tamanho mínimo: 1<br>Tamanho máximo: 6")
+  @ApiModelProperty(example = "999999", required = true, value = "Código de Receita utilizado pelo Estado <br>Tamanho mínimo: 1<br>Tamanho máximo: 6")
  /**
-   * Codigo da Receita utilizado pelo Estado <br>Tamanho mínimo: 1<br>Tamanho máximo: 6
+   * Código de Receita utilizado pelo Estado <br>Tamanho mínimo: 1<br>Tamanho máximo: 6
   **/
   private String codigoReceita = null;
+
+  @XmlElement(name="dataCancelamento")
+  @ApiModelProperty(example = "2021-11-12T11:00:06-0300", value = "Data de cancelamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+ /**
+   * Data de cancelamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+  **/
+  private String dataCancelamento = null;
+
+  @XmlElement(name="dataLimitePagamento", required = true)
+  @ApiModelProperty(example = "2021-11-10", required = true, value = "Data limite para pagamento da guia<br>Formato: 'yyyy-MM-dd'")
+ /**
+   * Data limite para pagamento da guia<br>Formato: 'yyyy-MM-dd'
+  **/
+  private String dataLimitePagamento = null;
+
+  @XmlElement(name="dataPagamento")
+  @ApiModelProperty(example = "2021-08-31T09:11:06-0300", value = "Data de pagamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+ /**
+   * Data de pagamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+  **/
+  private String dataPagamento = null;
+
+  @XmlElement(name="dataVencimento", required = true)
+  @ApiModelProperty(example = "2021-11-10", required = true, value = "Data de vencimento da guia<br>Formato: 'yyyy-MM-dd'")
+ /**
+   * Data de vencimento da guia<br>Formato: 'yyyy-MM-dd'
+  **/
+  private String dataVencimento = null;
 
   @XmlElement(name="descricaoCodigoReceita")
   @ApiModelProperty(example = "Id eu nisl nunc mi", value = "Descrição do código da Receita <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
@@ -104,9 +124,9 @@ public enum GeradorGuiaEnum {
   private String linhaDigitavel = null;
 
   @XmlElement(name="numeroControle")
-  @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (NossoNúmero) <br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
+  @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
  /**
-   * Número de Controle da Sefaz (NossoNúmero) <br>Tamanho mínimo: 1<br>Tamanho máximo: 20
+   * Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
   **/
   private String numeroControle = null;
 
@@ -177,7 +197,7 @@ public enum GeradorGuiaEnum {
   }
 
  /**
-   * Codigo da Receita utilizado pelo Estado &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 6
+   * Código de Receita utilizado pelo Estado &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 6
    * @return codigoReceita
   **/
   @JsonProperty("codigoReceita")
@@ -192,6 +212,80 @@ public enum GeradorGuiaEnum {
 
   public GuiaIcmsDto codigoReceita(String codigoReceita) {
     this.codigoReceita = codigoReceita;
+    return this;
+  }
+
+ /**
+   * Data de cancelamento da Guia de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+   * @return dataCancelamento
+  **/
+  @JsonProperty("dataCancelamento")
+  public String getDataCancelamento() {
+    return dataCancelamento;
+  }
+
+  public void setDataCancelamento(String dataCancelamento) {
+    this.dataCancelamento = dataCancelamento;
+  }
+
+  public GuiaIcmsDto dataCancelamento(String dataCancelamento) {
+    this.dataCancelamento = dataCancelamento;
+    return this;
+  }
+
+ /**
+   * Data limite para pagamento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+   * @return dataLimitePagamento
+  **/
+  @JsonProperty("dataLimitePagamento")
+  @NotNull
+  public String getDataLimitePagamento() {
+    return dataLimitePagamento;
+  }
+
+  public void setDataLimitePagamento(String dataLimitePagamento) {
+    this.dataLimitePagamento = dataLimitePagamento;
+  }
+
+  public GuiaIcmsDto dataLimitePagamento(String dataLimitePagamento) {
+    this.dataLimitePagamento = dataLimitePagamento;
+    return this;
+  }
+
+ /**
+   * Data de pagamento da Guia de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+   * @return dataPagamento
+  **/
+  @JsonProperty("dataPagamento")
+  public String getDataPagamento() {
+    return dataPagamento;
+  }
+
+  public void setDataPagamento(String dataPagamento) {
+    this.dataPagamento = dataPagamento;
+  }
+
+  public GuiaIcmsDto dataPagamento(String dataPagamento) {
+    this.dataPagamento = dataPagamento;
+    return this;
+  }
+
+ /**
+   * Data de vencimento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+   * @return dataVencimento
+  **/
+  @JsonProperty("dataVencimento")
+  @NotNull
+  public String getDataVencimento() {
+    return dataVencimento;
+  }
+
+  public void setDataVencimento(String dataVencimento) {
+    this.dataVencimento = dataVencimento;
+  }
+
+  public GuiaIcmsDto dataVencimento(String dataVencimento) {
+    this.dataVencimento = dataVencimento;
     return this;
   }
 
@@ -255,7 +349,7 @@ public enum GeradorGuiaEnum {
   }
 
  /**
-   * Número de Controle da Sefaz (NossoNúmero) &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
+   * Número de Controle da Sefaz (Nosso Número)&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
    * @return numeroControle
   **/
   @JsonProperty("numeroControle")
@@ -391,6 +485,10 @@ public enum GeradorGuiaEnum {
     
     sb.append("    codigoBarrasGuia: ").append(toIndentedString(codigoBarrasGuia)).append("\n");
     sb.append("    codigoReceita: ").append(toIndentedString(codigoReceita)).append("\n");
+    sb.append("    dataCancelamento: ").append(toIndentedString(dataCancelamento)).append("\n");
+    sb.append("    dataLimitePagamento: ").append(toIndentedString(dataLimitePagamento)).append("\n");
+    sb.append("    dataPagamento: ").append(toIndentedString(dataPagamento)).append("\n");
+    sb.append("    dataVencimento: ").append(toIndentedString(dataVencimento)).append("\n");
     sb.append("    descricaoCodigoReceita: ").append(toIndentedString(descricaoCodigoReceita)).append("\n");
     sb.append("    geradorGuia: ").append(toIndentedString(geradorGuia)).append("\n");
     sb.append("    linhaDigitavel: ").append(toIndentedString(linhaDigitavel)).append("\n");

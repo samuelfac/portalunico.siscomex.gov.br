@@ -1,23 +1,15 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DuimpCover", propOrder =
@@ -26,9 +18,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 @XmlRootElement(name="DuimpCover")
 /**
-  * Dados da Duimp destinados à da SEFAZ
+  * Dados da Duimp destinados às SEFAZ
  **/
-@ApiModel(description="Dados da Duimp destinados à da SEFAZ")
+@ApiModel(description="Dados da Duimp destinados às SEFAZ")
 public class DuimpCover  {
   
   @XmlElement(name="versaoDeclaracao", required = true)
@@ -209,12 +201,12 @@ public enum CanalSelecaoEnum {
   private DadosDaCarga dadosCarga = null;
 
   @XmlElement(name="documentosInstrutivoDespacho", required = true)
-  @ApiModelProperty(required = true, value = "Lista de documentos instrutivos para despacho")
+  @ApiModelProperty(required = true, value = "Lista de documentos instrutivos do despacho")
   @Valid
  /**
-   * Lista de documentos instrutivos para despacho
+   * Lista de documentos instrutivos do despacho
   **/
-  private List<DocumentoInstrutivoDeDespacho> documentosInstrutivoDespacho = new ArrayList<>();
+  private List<DocumentoInstrutivoDoDespacho> documentosInstrutivoDespacho = new ArrayList<>();
 
   @XmlElement(name="processosVinculados")
   @ApiModelProperty(value = "Lista de processos vinculados")
@@ -530,25 +522,25 @@ public enum CanalSelecaoEnum {
   }
 
  /**
-   * Lista de documentos instrutivos para despacho
+   * Lista de documentos instrutivos do despacho
    * @return documentosInstrutivoDespacho
   **/
   @JsonProperty("documentosInstrutivoDespacho")
   @NotNull
-  public List<DocumentoInstrutivoDeDespacho> getDocumentosInstrutivoDespacho() {
+  public List<DocumentoInstrutivoDoDespacho> getDocumentosInstrutivoDespacho() {
     return documentosInstrutivoDespacho;
   }
 
-  public void setDocumentosInstrutivoDespacho(List<DocumentoInstrutivoDeDespacho> documentosInstrutivoDespacho) {
+  public void setDocumentosInstrutivoDespacho(List<DocumentoInstrutivoDoDespacho> documentosInstrutivoDespacho) {
     this.documentosInstrutivoDespacho = documentosInstrutivoDespacho;
   }
 
-  public DuimpCover documentosInstrutivoDespacho(List<DocumentoInstrutivoDeDespacho> documentosInstrutivoDespacho) {
+  public DuimpCover documentosInstrutivoDespacho(List<DocumentoInstrutivoDoDespacho> documentosInstrutivoDespacho) {
     this.documentosInstrutivoDespacho = documentosInstrutivoDespacho;
     return this;
   }
 
-  public DuimpCover addDocumentosInstrutivoDespachoItem(DocumentoInstrutivoDeDespacho documentosInstrutivoDespachoItem) {
+  public DuimpCover addDocumentosInstrutivoDespachoItem(DocumentoInstrutivoDoDespacho documentosInstrutivoDespachoItem) {
     this.documentosInstrutivoDespacho.add(documentosInstrutivoDespachoItem);
     return this;
   }

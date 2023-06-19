@@ -1,21 +1,16 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Manifestacao", propOrder =
-    { "identificacaoManifestacao", "infoGeral", "veiculo", "transportador", "conhecimentos", "carga"
+    { "identificacaoManifestacao", "infoGeral", "veiculo", "transportador", "conhecimentos", "carga", "rota"
 })
 
 @XmlRootElement(name="Manifestacao")
@@ -56,6 +51,11 @@ public class Manifestacao  {
   @ApiModelProperty(required = true, value = "")
   @Valid
   private Carga carga = null;
+
+  @XmlElement(name="rota")
+  @ApiModelProperty(value = "")
+  @Valid
+  private Rota rota = null;
  /**
    * Identificação da Manifestação&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada manifesto no momento da exibição de eventuais mensagens de erro. Este campo é uma chave dentro do arquivo XML, não admitindo duplicatas.&lt;br&gt;Tamanho: 13&lt;br&gt;Formato: AAAAAAAAAAAAA
    * @return identificacaoManifestacao
@@ -170,6 +170,24 @@ public class Manifestacao  {
     return this;
   }
 
+ /**
+   * Get rota
+   * @return rota
+  **/
+  @JsonProperty("rota")
+  public Rota getRota() {
+    return rota;
+  }
+
+  public void setRota(Rota rota) {
+    this.rota = rota;
+  }
+
+  public Manifestacao rota(Rota rota) {
+    this.rota = rota;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -182,6 +200,7 @@ public class Manifestacao  {
     sb.append("    transportador: ").append(toIndentedString(transportador)).append("\n");
     sb.append("    conhecimentos: ").append(toIndentedString(conhecimentos)).append("\n");
     sb.append("    carga: ").append(toIndentedString(carga)).append("\n");
+    sb.append("    rota: ").append(toIndentedString(rota)).append("\n");
     sb.append("}");
     return sb.toString();
   }

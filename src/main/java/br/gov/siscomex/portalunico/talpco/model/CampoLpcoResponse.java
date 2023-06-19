@@ -1,24 +1,18 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CampoLpcoResponse", propOrder =
-    { "codigo", "listaValor", "valorComposto", "unidadeMedida", "intervenientes"
+    { "codigo", "codigoAtributoPai", "listaValor", "valorComposto", "unidadeMedida", "intervenientes"
 })
 
 @XmlRootElement(name="CampoLpcoResponse")
@@ -34,6 +28,13 @@ public class CampoLpcoResponse  {
    * Código do campo ou do atributo do NCM<br>Tamanho máximo: 40<br>Formato: Valores do domínio OU código de atributo no formato ATT_NNNNNNNNN<br>Lei de formação: O código do campo pode ser um dos tipos padrão pré-definidos no domínio ou um código de um atributo do Cadastro de Atributos<br>Domínio: PAIS_DESTINO<br>PAIS_IMPORTADOR<br>SITUACAO_ESPECIAL<br>TRATAMENTO_PRIORITARIO<br>NCM<br>ENQUADRAMENTO_OPERACAO<br>URF_EMBARQUE<br>URF_DESPACHO<br>RECINTO_EMBARQUE<br>RECINTO_DESPACHO<br>CONDICAO_VENDA<br>VIA_ESPECIAL_TRANSPORTE<br>MOEDA<br>MOTIVO_DISPENSA_NF<br>IMPORTADOR<br>CHAVE_ACESSO_NFE<br>QTDE_COMERCIALIZADA<br>QTDE_ESTATISTICA<br>VMLE<br>CODIGO_PRODUTO<br>CPF_CNPJ_EXPORTADOR<br>CPF_CNPJ_DECLARANTE<br>ENDERECO_IMPORTADOR<br>PESO_LIQUIDO_TOTAL<br>NUMERO_CONTEINER<br>NUMERO_LACRE<br>CNPJ_TRANSPORTADOR<br>NOME_TRANSPORTADOR_ESTRANGEIRO<br>TIPOS_EMBALAGEM<br>NOME_CONSIGNATARIO<br>ENDERECO_CONSIGNATARIO<br>VALOR_FINANCIADO<br>VALOR_CONDICAO_VENDA<br>FORMA_EXPORTACAO<br>PAIS_ORIGEM<br>PAIS_AQUISICAO<br>PAIS_PROCEDENCIA<br>CPF_CNPJ_IMPORTADOR<br>CODIGO_NALADI<br>CODIGO_FUNDAMENTO<br>CONDICAO_MERCADORIA<br>EXPORTADOR_E_FABRICANTE_DO_PRODUTO<br>CRONOGRAMA_EMBARQUE<br>CRONOGRAMA_FATURAMENTO<br>RUC<br>NUMERO_CONHECIMENTO<br>PAIS_CONSIGNATARIO<br>TIPO_EMBALAGEM_LISTA<br>TIPO_IMPORTADOR_DUIMP<br>INDICACAO_IMPORTACAO_TERCEIROS<br>MOEDA_NEGOCIADA_DUIMP<br>FABRICANTE_PRODUTOR<br>EXPORTADOR_ESTRANGEIRO<br>UNIDADE_LOCALIZACAO_CARGA<br>UNIDADE_ENTRADA_DESCARGA<br>VIA_TRANSPORTE<br>TIPO_EMBALAGEM_ITEM_CARGA<br>VALOR_UNITARIO_CONDICAO_VENDA<br>LOCAL_EMBARQUE<br>FUNDAMENTO_LEGAL
   **/
   private String codigo = null;
+
+  @XmlElement(name="codigoAtributoPai")
+  @ApiModelProperty(example = "ATT_1", value = "Código do atributo condicionante<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>")
+ /**
+   * Código do atributo condicionante<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>
+  **/
+  private String codigoAtributoPai = null;
 
   @XmlElement(name="listaValor", required = true)
   @ApiModelProperty(example = "{\"12345678901\", \"12345678901234\"}", required = true, value = "Lista dos valores declarados para o campo ou atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 10000")
@@ -77,6 +78,24 @@ public class CampoLpcoResponse  {
 
   public CampoLpcoResponse codigo(String codigo) {
     this.codigo = codigo;
+    return this;
+  }
+
+ /**
+   * Código do atributo condicionante&lt;BR&gt;Tamanho máximo: 40&lt;br&gt;Formato: Código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;
+   * @return codigoAtributoPai
+  **/
+  @JsonProperty("codigoAtributoPai")
+  public String getCodigoAtributoPai() {
+    return codigoAtributoPai;
+  }
+
+  public void setCodigoAtributoPai(String codigoAtributoPai) {
+    this.codigoAtributoPai = codigoAtributoPai;
+  }
+
+  public CampoLpcoResponse codigoAtributoPai(String codigoAtributoPai) {
+    this.codigoAtributoPai = codigoAtributoPai;
     return this;
   }
 
@@ -170,6 +189,7 @@ public class CampoLpcoResponse  {
     sb.append("class CampoLpcoResponse {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
+    sb.append("    codigoAtributoPai: ").append(toIndentedString(codigoAtributoPai)).append("\n");
     sb.append("    listaValor: ").append(toIndentedString(listaValor)).append("\n");
     sb.append("    valorComposto: ").append(toIndentedString(valorComposto)).append("\n");
     sb.append("    unidadeMedida: ").append(toIndentedString(unidadeMedida)).append("\n");

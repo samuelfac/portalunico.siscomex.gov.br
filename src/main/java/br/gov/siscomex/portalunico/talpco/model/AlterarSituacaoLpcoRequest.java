@@ -1,22 +1,15 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AlterarSituacaoLpcoRequest", propOrder =
-    { "situacao", "justificativa", "dataInicioVigencia", "dataFinalVigencia", "numeroOrgaoOrigem", "requerInspecao"
+    { "situacao", "justificativa", "dataInicioVigencia", "dataFinalVigencia", "numeroOrgaoOrigem", "requerInspecao", "decisaoJudicial", "faltaPagamentoTaxa", "canal"
 })
 
 @XmlRootElement(name="AlterarSituacaoLpcoRequest")
@@ -53,7 +46,11 @@ public enum SituacaoEnum {
 	
 	@XmlEnumValue("ANULADO_REVOGADO")
 	@JsonProperty("ANULADO_REVOGADO")
-	ANULADO_REVOGADO(String.valueOf("ANULADO_REVOGADO"));
+	ANULADO_REVOGADO(String.valueOf("ANULADO_REVOGADO")),
+	
+	@XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
+	@JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
+	AUTORIZACAO_IMPORTACAO_EMITIDA(String.valueOf("AUTORIZACAO_IMPORTACAO_EMITIDA"));
 
 
     private String value;
@@ -122,6 +119,70 @@ public enum SituacaoEnum {
    * Indica se haverá necessidade de inspeção de carga
   **/
   private Boolean requerInspecao = false;
+
+  @XmlElement(name="decisaoJudicial")
+  @ApiModelProperty(example = "false", value = "Indicador de decisão judicial utilizado no deferimento")
+ /**
+   * Indicador de decisão judicial utilizado no deferimento
+  **/
+  private Boolean decisaoJudicial = false;
+
+  @XmlElement(name="faltaPagamentoTaxa")
+  @ApiModelProperty(example = "false", value = "Indicador de pagamento de taxa não efetuado")
+ /**
+   * Indicador de pagamento de taxa não efetuado
+  **/
+  private Boolean faltaPagamentoTaxa = false;
+
+
+@XmlType(name="CanalEnum")
+@XmlEnum(String.class)
+public enum CanalEnum {
+
+	@XmlEnumValue("VERDE")
+	@JsonProperty("VERDE")
+	VERDE(String.valueOf("VERDE")),
+	
+	@XmlEnumValue("AMARELO")
+	@JsonProperty("AMARELO")
+	AMARELO(String.valueOf("AMARELO")),
+	
+	@XmlEnumValue("VERMELHO")
+	@JsonProperty("VERMELHO")
+	VERMELHO(String.valueOf("VERMELHO"));
+
+
+    private String value;
+
+    CanalEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    public static CanalEnum fromValue(String v) {
+        for (CanalEnum b : CanalEnum.values()) {
+            if (String.valueOf(b.value).equals(v)) {
+                return b;
+            }
+        }
+        throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+    }
+}
+
+  @XmlElement(name="canal")
+  @ApiModelProperty(example = "VERDE", value = "Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>")
+ /**
+   * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>
+  **/
+  private CanalEnum canal = null;
  /**
    * Código da nova situação do LPCO&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
    * @return situacao
@@ -234,6 +295,63 @@ public enum SituacaoEnum {
     return this;
   }
 
+ /**
+   * Indicador de decisão judicial utilizado no deferimento
+   * @return decisaoJudicial
+  **/
+  @JsonProperty("decisaoJudicial")
+  public Boolean isDecisaoJudicial() {
+    return decisaoJudicial;
+  }
+
+  public void setDecisaoJudicial(Boolean decisaoJudicial) {
+    this.decisaoJudicial = decisaoJudicial;
+  }
+
+  public AlterarSituacaoLpcoRequest decisaoJudicial(Boolean decisaoJudicial) {
+    this.decisaoJudicial = decisaoJudicial;
+    return this;
+  }
+
+ /**
+   * Indicador de pagamento de taxa não efetuado
+   * @return faltaPagamentoTaxa
+  **/
+  @JsonProperty("faltaPagamentoTaxa")
+  public Boolean isFaltaPagamentoTaxa() {
+    return faltaPagamentoTaxa;
+  }
+
+  public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+    this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+  }
+
+  public AlterarSituacaoLpcoRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+    this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+    return this;
+  }
+
+ /**
+   * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO&lt;br&gt;
+   * @return canal
+  **/
+  @JsonProperty("canal")
+  public String getCanal() {
+    if (canal == null) {
+      return null;
+    }
+    return canal.value();
+  }
+
+  public void setCanal(CanalEnum canal) {
+    this.canal = canal;
+  }
+
+  public AlterarSituacaoLpcoRequest canal(CanalEnum canal) {
+    this.canal = canal;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -246,6 +364,9 @@ public enum SituacaoEnum {
     sb.append("    dataFinalVigencia: ").append(toIndentedString(dataFinalVigencia)).append("\n");
     sb.append("    numeroOrgaoOrigem: ").append(toIndentedString(numeroOrgaoOrigem)).append("\n");
     sb.append("    requerInspecao: ").append(toIndentedString(requerInspecao)).append("\n");
+    sb.append("    decisaoJudicial: ").append(toIndentedString(decisaoJudicial)).append("\n");
+    sb.append("    faltaPagamentoTaxa: ").append(toIndentedString(faltaPagamentoTaxa)).append("\n");
+    sb.append("    canal: ").append(toIndentedString(canal)).append("\n");
     sb.append("}");
     return sb.toString();
   }

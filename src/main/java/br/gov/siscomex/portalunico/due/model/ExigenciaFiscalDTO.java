@@ -1,18 +1,10 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import java.time.OffsetDateTime;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ExigenciaFiscalDTO", propOrder =
@@ -115,7 +107,15 @@ public enum SituacaoEnum {
 	
 	@XmlEnumValue("ENCERRADA_POR_OFICIO_DUIMP")
 	@JsonProperty("ENCERRADA_POR_OFICIO_DUIMP")
-	ENCERRADA_POR_OFICIO_DUIMP(String.valueOf("ENCERRADA_POR_OFICIO_DUIMP"));
+	ENCERRADA_POR_OFICIO_DUIMP(String.valueOf("ENCERRADA_POR_OFICIO_DUIMP")),
+	
+	@XmlEnumValue("CANCELADA_CONFERENCIA_ANUENTE")
+	@JsonProperty("CANCELADA_CONFERENCIA_ANUENTE")
+	CANCELADA_CONFERENCIA_ANUENTE(String.valueOf("CANCELADA_CONFERENCIA_ANUENTE")),
+	
+	@XmlEnumValue("ENCERRADA_PERDA_OBJETO")
+	@JsonProperty("ENCERRADA_PERDA_OBJETO")
+	ENCERRADA_PERDA_OBJETO(String.valueOf("ENCERRADA_PERDA_OBJETO"));
 
 
     private String value;

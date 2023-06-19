@@ -1,17 +1,12 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosSemirreboquePesagem", propOrder =
@@ -21,32 +16,33 @@ import io.swagger.annotations.ApiModelProperty;
 @XmlRootElement(name="DadosSemirreboquePesagem")
 public class DadosSemirreboquePesagem  {
   
-  @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @XmlElement(name="idElemento", required = true)
+  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
   **/
   private String idElemento = null;
 
   @XmlElement(name="placa")
-  @ApiModelProperty(value = "Placa do veículo (semirreboque ou vagão)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
  /**
-   * Placa do veículo (semirreboque ou vagão)<br/>Tamanho: 50
+   * Placa<br/>Tamanho: 50
   **/
   private String placa = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
   @Valid
  /**
    * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
   **/
   private BigDecimal tara = null;
  /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
    * @return idElemento
   **/
   @JsonProperty("idElemento")
+  @NotNull
   public String getIdElemento() {
     return idElemento;
   }
@@ -61,7 +57,7 @@ public class DadosSemirreboquePesagem  {
   }
 
  /**
-   * Placa do veículo (semirreboque ou vagão)&lt;br/&gt;Tamanho: 50
+   * Placa&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")

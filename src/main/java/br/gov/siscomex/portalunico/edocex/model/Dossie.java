@@ -1,22 +1,14 @@
 package br.gov.siscomex.portalunico.edocex.model;
 
-import java.time.OffsetDateTime;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Dossie", propOrder =
@@ -110,10 +102,10 @@ public enum CriadoPorEnum {
   private List<Documento> documentos = null;
 
   @XmlElement(name="dossiesVinculados")
-  @ApiModelProperty(value = "Lista de dossiês vinculos ao dossiê da operação.")
+  @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
   @Valid
  /**
-   * Lista de dossiês vinculos ao dossiê da operação.
+   * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. 
   **/
   private List<DossieVinculado> dossiesVinculados = null;
 
@@ -267,7 +259,7 @@ public enum CriadoPorEnum {
   }
 
  /**
-   * Lista de dossiês vinculos ao dossiê da operação.
+   * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.&lt;br/&gt;Lista de dossiês vinculados ao dossiê da operação. 
    * @return dossiesVinculados
   **/
   @JsonProperty("dossiesVinculados")

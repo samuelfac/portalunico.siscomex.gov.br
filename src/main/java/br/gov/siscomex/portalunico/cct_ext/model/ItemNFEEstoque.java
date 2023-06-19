@@ -1,22 +1,16 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import java.math.BigDecimal;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemNFEEstoque", propOrder =
-    { "item", "saldo"
+    { "item", "ncm", "saldo"
 })
 
 @XmlRootElement(name="ItemNFEEstoque")
@@ -33,6 +27,14 @@ public class ItemNFEEstoque  {
    * Número do Item da Nota Fiscal Eletrônica<br>Tamanho máximo: 4<br>Formato: NNNN
   **/
   private BigDecimal item = null;
+
+  @XmlElement(name="ncm")
+  @ApiModelProperty(example = "1022190.0", value = "Código NCM do produto<br>Tamanho: 8")
+  @Valid
+ /**
+   * Código NCM do produto<br>Tamanho: 8
+  **/
+  private BigDecimal ncm = null;
 
   @XmlElement(name="saldo")
   @ApiModelProperty(example = "100.0", value = "Saldo em estoque<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
@@ -56,6 +58,24 @@ public class ItemNFEEstoque  {
 
   public ItemNFEEstoque item(BigDecimal item) {
     this.item = item;
+    return this;
+  }
+
+ /**
+   * Código NCM do produto&lt;br&gt;Tamanho: 8
+   * @return ncm
+  **/
+  @JsonProperty("ncm")
+  public BigDecimal getNcm() {
+    return ncm;
+  }
+
+  public void setNcm(BigDecimal ncm) {
+    this.ncm = ncm;
+  }
+
+  public ItemNFEEstoque ncm(BigDecimal ncm) {
+    this.ncm = ncm;
     return this;
   }
 
@@ -84,6 +104,7 @@ public class ItemNFEEstoque  {
     sb.append("class ItemNFEEstoque {\n");
     
     sb.append("    item: ").append(toIndentedString(item)).append("\n");
+    sb.append("    ncm: ").append(toIndentedString(ncm)).append("\n");
     sb.append("    saldo: ").append(toIndentedString(saldo)).append("\n");
     sb.append("}");
     return sb.toString();

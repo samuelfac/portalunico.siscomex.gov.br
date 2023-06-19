@@ -1,22 +1,15 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosAgendaOperaoNaviosAeronaves", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "navio", "iataAeronave", "prefixoAeronave", "viagem", "voo", "escala", "agendamento", "chegada", "operacao"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "navio", "iataAeronave", "prefixoAeronave", "viagem", "voo", "escala", "agendamento", "chegada", "periodoOperacao"
 })
 
 @XmlRootElement(name="DadosAgendaOperaoNaviosAeronaves")
@@ -148,7 +141,7 @@ public enum TipoOperacaoEnum {
   private String prefixoAeronave = null;
 
   @XmlElement(name="viagem")
-  @ApiModelProperty(example = "'AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA'", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20")
+  @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20")
  /**
    * <br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20
   **/
@@ -178,10 +171,10 @@ public enum TipoOperacaoEnum {
   @Valid
   private DadosAgendaOperaoNaviosAeronavesChegada chegada = null;
 
-  @XmlElement(name="operacao")
+  @XmlElement(name="periodoOperacao")
   @ApiModelProperty(value = "")
   @Valid
-  private DadosAgendaOperaoNaviosAeronavesOperao operacao = null;
+  private DadosAgendaOperaoNaviosAeronavesOperao periodoOperacao = null;
  /**
    * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
    * @return tipoOperacao
@@ -498,20 +491,20 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Get operacao
-   * @return operacao
+   * Get periodoOperacao
+   * @return periodoOperacao
   **/
-  @JsonProperty("operacao")
-  public DadosAgendaOperaoNaviosAeronavesOperao getOperacao() {
-    return operacao;
+  @JsonProperty("periodoOperacao")
+  public DadosAgendaOperaoNaviosAeronavesOperao getPeriodoOperacao() {
+    return periodoOperacao;
   }
 
-  public void setOperacao(DadosAgendaOperaoNaviosAeronavesOperao operacao) {
-    this.operacao = operacao;
+  public void setPeriodoOperacao(DadosAgendaOperaoNaviosAeronavesOperao periodoOperacao) {
+    this.periodoOperacao = periodoOperacao;
   }
 
-  public DadosAgendaOperaoNaviosAeronaves operacao(DadosAgendaOperaoNaviosAeronavesOperao operacao) {
-    this.operacao = operacao;
+  public DadosAgendaOperaoNaviosAeronaves periodoOperacao(DadosAgendaOperaoNaviosAeronavesOperao periodoOperacao) {
+    this.periodoOperacao = periodoOperacao;
     return this;
   }
 
@@ -538,7 +531,7 @@ public enum TipoOperacaoEnum {
     sb.append("    escala: ").append(toIndentedString(escala)).append("\n");
     sb.append("    agendamento: ").append(toIndentedString(agendamento)).append("\n");
     sb.append("    chegada: ").append(toIndentedString(chegada)).append("\n");
-    sb.append("    operacao: ").append(toIndentedString(operacao)).append("\n");
+    sb.append("    periodoOperacao: ").append(toIndentedString(periodoOperacao)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,26 +1,18 @@
 package br.gov.siscomex.portalunico.pcce.model;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "SefazCreditoIcmsDto", propOrder =
-    { "dataConfirmacaoCredito", "numeroDeclaracao", "tipoDeclaracao", "tipoSolicitacao", "ufFavorecida", "valorTotalCredito", "versaoDeclaracao"
+    { "dataConfirmacaoCredito", "guias", "numeroDeclaracao", "tipoDeclaracao", "tipoSolicitacao", "ufFavorecida", "valorTotalCredito", "versaoDeclaracao"
 })
 
 @XmlRootElement(name="SefazCreditoIcmsDto")
@@ -31,11 +23,19 @@ import io.swagger.annotations.ApiModelProperty;
 public class SefazCreditoIcmsDto  {
   
   @XmlElement(name="dataConfirmacaoCredito", required = true)
-  @ApiModelProperty(example = "2019-09-17T18:38:23.056Z", required = true, value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+  @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
  /**
-   * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+   * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
   **/
-  private OffsetDateTime dataConfirmacaoCredito = null;
+  private String dataConfirmacaoCredito = null;
+
+  @XmlElement(name="guias")
+  @ApiModelProperty(value = "Lista de guias de ICMS já pagas.")
+  @Valid
+ /**
+   * Lista de guias de ICMS já pagas.
+  **/
+  private List<GuiaIcmsCreditoDto> guias = null;
 
   @XmlElement(name="numeroDeclaracao", required = true)
   @ApiModelProperty(example = "19BR00000004677", required = true, value = "Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15")
@@ -305,21 +305,44 @@ public enum UfFavorecidaEnum {
   **/
   private String versaoDeclaracao = null;
  /**
-   * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
    * @return dataConfirmacaoCredito
   **/
   @JsonProperty("dataConfirmacaoCredito")
   @NotNull
-  public OffsetDateTime getDataConfirmacaoCredito() {
+  public String getDataConfirmacaoCredito() {
     return dataConfirmacaoCredito;
   }
 
-  public void setDataConfirmacaoCredito(OffsetDateTime dataConfirmacaoCredito) {
+  public void setDataConfirmacaoCredito(String dataConfirmacaoCredito) {
     this.dataConfirmacaoCredito = dataConfirmacaoCredito;
   }
 
-  public SefazCreditoIcmsDto dataConfirmacaoCredito(OffsetDateTime dataConfirmacaoCredito) {
+  public SefazCreditoIcmsDto dataConfirmacaoCredito(String dataConfirmacaoCredito) {
     this.dataConfirmacaoCredito = dataConfirmacaoCredito;
+    return this;
+  }
+
+ /**
+   * Lista de guias de ICMS já pagas.
+   * @return guias
+  **/
+  @JsonProperty("guias")
+  public List<GuiaIcmsCreditoDto> getGuias() {
+    return guias;
+  }
+
+  public void setGuias(List<GuiaIcmsCreditoDto> guias) {
+    this.guias = guias;
+  }
+
+  public SefazCreditoIcmsDto guias(List<GuiaIcmsCreditoDto> guias) {
+    this.guias = guias;
+    return this;
+  }
+
+  public SefazCreditoIcmsDto addGuiasItem(GuiaIcmsCreditoDto guiasItem) {
+    this.guias.add(guiasItem);
     return this;
   }
 
@@ -453,6 +476,7 @@ public enum UfFavorecidaEnum {
     sb.append("class SefazCreditoIcmsDto {\n");
     
     sb.append("    dataConfirmacaoCredito: ").append(toIndentedString(dataConfirmacaoCredito)).append("\n");
+    sb.append("    guias: ").append(toIndentedString(guias)).append("\n");
     sb.append("    numeroDeclaracao: ").append(toIndentedString(numeroDeclaracao)).append("\n");
     sb.append("    tipoDeclaracao: ").append(toIndentedString(tipoDeclaracao)).append("\n");
     sb.append("    tipoSolicitacao: ").append(toIndentedString(tipoSolicitacao)).append("\n");

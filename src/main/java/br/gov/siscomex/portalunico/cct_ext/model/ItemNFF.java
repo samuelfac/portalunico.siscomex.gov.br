@@ -1,19 +1,13 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemNFF", propOrder =
@@ -71,9 +65,9 @@ public class ItemNFF  {
   private BigDecimal valorTotal = null;
 
   @XmlElement(name="quantidadeMedidaEstatistica", required = true)
-  @ApiModelProperty(example = "50", required = true, value = "Quantidade na medida estatística definida para a NCM<br>Tamanho: 15.4<br>Formato: Decimal, com quatro casas decimais separadas por ponto")
+  @ApiModelProperty(example = "50", required = true, value = "Quantidade na medida estatística definida para a NCM<br>Tamanho: 16.5<br>Formato: Decimal, com cinco casas decimais separadas por ponto")
  /**
-   * Quantidade na medida estatística definida para a NCM<br>Tamanho: 15.4<br>Formato: Decimal, com quatro casas decimais separadas por ponto
+   * Quantidade na medida estatística definida para a NCM<br>Tamanho: 16.5<br>Formato: Decimal, com cinco casas decimais separadas por ponto
   **/
   private String quantidadeMedidaEstatistica = null;
  /**
@@ -191,7 +185,7 @@ public class ItemNFF  {
   }
 
  /**
-   * Quantidade na medida estatística definida para a NCM&lt;br&gt;Tamanho: 15.4&lt;br&gt;Formato: Decimal, com quatro casas decimais separadas por ponto
+   * Quantidade na medida estatística definida para a NCM&lt;br&gt;Tamanho: 16.5&lt;br&gt;Formato: Decimal, com cinco casas decimais separadas por ponto
    * @return quantidadeMedidaEstatistica
   **/
   @JsonProperty("quantidadeMedidaEstatistica")

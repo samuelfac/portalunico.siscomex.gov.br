@@ -1,29 +1,32 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosVolumeVerificado", propOrder =
-    { "idElemento", "quantidade", "tipo", "madeira"
+    { "idElemento", "madeira", "quantidade", "tipo"
 })
 
 @XmlRootElement(name="DadosVolumeVerificado")
 public class DadosVolumeVerificado  {
   
-  @XmlElement(name="idElemento")
-  @ApiModelProperty(value = "Identificação de cada elemento da lista.<br/>Tamanho: 40")
+  @XmlElement(name="idElemento", required = true)
+  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
  /**
-   * Identificação de cada elemento da lista.<br/>Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
   **/
   private String idElemento = null;
+
+  @XmlElement(name="madeira")
+  @ApiModelProperty(example = "false", value = "Informar se a embalagem contém madeira.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+ /**
+   * Informar se a embalagem contém madeira.<br/>Domínio:<br/>true - Sim<br/>false - Não
+  **/
+  private Boolean madeira = null;
 
   @XmlElement(name="quantidade")
   @ApiModelProperty(example = "13", value = "Quantidade de volumes")
@@ -38,18 +41,12 @@ public class DadosVolumeVerificado  {
    * Tipo de volumes/embalagens.<br/>Domínio:<br/>01 - AMARRADO/ATADO/FEIXE<br/>02 - BARRICA DE FERRO<br/>03 - BARRICA DE FIBRA DE VIDRO<br/>04 - BARRICA DE PAPELAO<br/>05 - BARRICA DE PLASTICO<br/>06 - BARRICA DE OUTROS MATERIAIS<br/>07 - BAU DE MADEIRA<br/>08 - BAU DE METAL<br/>09 - BAU DE OUTROS MATERIAIS<br/>10 - BIG BAG<br/>11 - BLOCO<br/>12 - BOBINA<br/>13 - BOMBONA<br/>14 - BOTIJAO<br/>15 - CAIXA CORRUGADA<br/>16 - CAIXA DE ISOPOR<br/>17 - CAIXA DE MADEIRA<br/>18 - CAIXA DE METAL<br/>19 - CAIXA DE PAPELAO<br/>20 - CAIXA DE PLASTICO<br/>21 - CAIXA DE OUTROS MATERIAIS<br/>22 - CANUDO<br/>23 - CARRETEL<br/>24 - CILINDRO<br/>25 - CINTADO<br/>26 - ENGRADADO DE MADEIRA<br/>27 - ENGRADADO DE PLASTICO<br/>28 - ENGRADADO DE OUTROS MATERIAIS<br/>29 - ENVELOPE<br/>30 - ESTOJO<br/>31 - ESTRADO<br/>32 - FARDO<br/>33 - FRASCO<br/>34 - GALAO DE METAL<br/>35 - GALAO DE PLASTICO<br/>36 - GALAO DE OUTROS MATERIAIS<br/>37 - GRANEL<br/>38 - LATA<br/>39 - MALA<br/>40 - MALETA<br/>41 - PACOTE<br/>42 - PECA<br/>43 - QUARTOLA<br/>44 - ROLO<br/>45 - SACA<br/>46 - SACO DE ANIAGEM<br/>47 - SACO DE COURO<br/>48 - SACO DE LONA<br/>49 - SACO DE NYLON<br/>50 - SACO DE PAPEL<br/>51 - SACO DE PAPELAO<br/>52 - SACO DE PLASTICO<br/>53 - SACO DE OUTROS MATERIAIS<br/>54 - SACOLA<br/>55 - SAN BAG<br/>56 - TAMBOR DE METAL<br/>57 - TAMBOR DE PAPELAO<br/>58 - TAMBOR DE PLASTICO<br/>59 - TAMBOR DE OUTROS MATERIAIS<br/>60 - PALLETS<br/>99 - OUTROS
   **/
   private String tipo = null;
-
-  @XmlElement(name="madeira")
-  @ApiModelProperty(example = "false", value = "Informar se a embalagem contém madeira.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Informar se a embalagem contém madeira.<br/>Domínio:<br/>true - Sim<br/>false - Não
-  **/
-  private Boolean madeira = null;
- /**
-   * Identificação de cada elemento da lista.&lt;br/&gt;Tamanho: 40
+   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
    * @return idElemento
   **/
   @JsonProperty("idElemento")
+  @NotNull
   public String getIdElemento() {
     return idElemento;
   }
@@ -60,6 +57,24 @@ public class DadosVolumeVerificado  {
 
   public DadosVolumeVerificado idElemento(String idElemento) {
     this.idElemento = idElemento;
+    return this;
+  }
+
+ /**
+   * Informar se a embalagem contém madeira.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * @return madeira
+  **/
+  @JsonProperty("madeira")
+  public Boolean isMadeira() {
+    return madeira;
+  }
+
+  public void setMadeira(Boolean madeira) {
+    this.madeira = madeira;
+  }
+
+  public DadosVolumeVerificado madeira(Boolean madeira) {
+    this.madeira = madeira;
     return this;
   }
 
@@ -99,24 +114,6 @@ public class DadosVolumeVerificado  {
     return this;
   }
 
- /**
-   * Informar se a embalagem contém madeira.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-   * @return madeira
-  **/
-  @JsonProperty("madeira")
-  public Boolean isMadeira() {
-    return madeira;
-  }
-
-  public void setMadeira(Boolean madeira) {
-    this.madeira = madeira;
-  }
-
-  public DadosVolumeVerificado madeira(Boolean madeira) {
-    this.madeira = madeira;
-    return this;
-  }
-
 
   @Override
   public String toString() {
@@ -124,9 +121,9 @@ public class DadosVolumeVerificado  {
     sb.append("class DadosVolumeVerificado {\n");
     
     sb.append("    idElemento: ").append(toIndentedString(idElemento)).append("\n");
+    sb.append("    madeira: ").append(toIndentedString(madeira)).append("\n");
     sb.append("    quantidade: ").append(toIndentedString(quantidade)).append("\n");
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
-    sb.append("    madeira: ").append(toIndentedString(madeira)).append("\n");
     sb.append("}");
     return sb.toString();
   }

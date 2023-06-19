@@ -1,25 +1,39 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DocumentoSaidaConsultaDetalhada", propOrder =
-    { "tipo", "numero", "dataHoraVinculacao"
+    { "dataHoraVinculacao", "numero", "raDestinoDta", "tipo", "uaDestinoDta"
 })
 
 @XmlRootElement(name="DocumentoSaidaConsultaDetalhada")
 public class DocumentoSaidaConsultaDetalhada  {
   
+  @XmlElement(name="dataHoraVinculacao")
+  @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora do registro<br/> ")
+ /**
+   * Data / Hora do registro<br/> 
+  **/
+  private String dataHoraVinculacao = null;
+
+  @XmlElement(name="numero")
+  @ApiModelProperty(example = "5490178901", value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN")
+ /**
+   * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
+  **/
+  private String numero = null;
+
+  @XmlElement(name="raDestinoDta")
+  @ApiModelProperty(example = "7911101", value = "Recinto Aduaneiro de destino da DTA.")
+ /**
+   * Recinto Aduaneiro de destino da DTA.
+  **/
+  private String raDestinoDta = null;
+
 
 @XmlType(name="TipoEnum")
 @XmlEnum(String.class)
@@ -142,37 +156,27 @@ public enum TipoEnum {
   **/
   private TipoEnum tipo = null;
 
-  @XmlElement(name="numero")
-  @ApiModelProperty(example = "5490178901", value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN")
+  @XmlElement(name="uaDestinoDta")
+  @ApiModelProperty(example = "0717700", value = "Unidade da RFB de destino da DTA.")
  /**
-   * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
+   * Unidade da RFB de destino da DTA.
   **/
-  private String numero = null;
-
-  @XmlElement(name="dataHoraVinculacao")
-  @ApiModelProperty(example = "12/02/2021 21:21 ", value = "Data / Hora do registro<br/> ")
+  private String uaDestinoDta = null;
  /**
-   * Data / Hora do registro<br/> 
+   * Data / Hora do registro&lt;br/&gt; 
+   * @return dataHoraVinculacao
   **/
-  private String dataHoraVinculacao = null;
- /**
-   * Tipo de documento de saída&lt;p&gt;Os documentos podem ser:&lt;/p&gt;10 – DI&lt;br/&gt;11 – Processo Digital/Processo Dossiê&lt;br/&gt;12 – E-DMOV&lt;br/&gt;20 – Outros&lt;br/&gt;21 – PMB&lt;br/&gt;22 – PDE/TR&lt;br/&gt;23 – DSI Eletrônica&lt;br/&gt;24 – DSI Formulário&lt;br/&gt;30 – DTA - Importação comum&lt;br/&gt;31 – DTA - Importação especial - bagagem desacompanhada&lt;br/&gt;32 – DTA - Importação especial - mala diplomática&lt;br/&gt;33 – DTA - Importação especial - urna funerária&lt;br/&gt;34 – DTA - Importação especial - outras&lt;br/&gt;35 – DTA - Passagem comum&lt;br/&gt;36 – DTA - Passagem comum - bagagem desacompanhada&lt;br/&gt;37 – DTA - Passagem comum - mala diplomática&lt;br/&gt;38 – DTA - Passagem comum - partes e peças&lt;br/&gt;39 – DTA - Passagem comum - urna funerária&lt;br/&gt;40 – DTA - Passagem comum - outras&lt;br/&gt;50 – DTI&lt;br/&gt;99 – DUIMP&lt;br/&gt;
-   * @return tipo
-  **/
-  @JsonProperty("tipo")
-  public String getTipo() {
-    if (tipo == null) {
-      return null;
-    }
-    return tipo.value();
+  @JsonProperty("dataHoraVinculacao")
+  public String getDataHoraVinculacao() {
+    return dataHoraVinculacao;
   }
 
-  public void setTipo(TipoEnum tipo) {
-    this.tipo = tipo;
+  public void setDataHoraVinculacao(String dataHoraVinculacao) {
+    this.dataHoraVinculacao = dataHoraVinculacao;
   }
 
-  public DocumentoSaidaConsultaDetalhada tipo(TipoEnum tipo) {
-    this.tipo = tipo;
+  public DocumentoSaidaConsultaDetalhada dataHoraVinculacao(String dataHoraVinculacao) {
+    this.dataHoraVinculacao = dataHoraVinculacao;
     return this;
   }
 
@@ -195,20 +199,59 @@ public enum TipoEnum {
   }
 
  /**
-   * Data / Hora do registro&lt;br/&gt; 
-   * @return dataHoraVinculacao
+   * Recinto Aduaneiro de destino da DTA.
+   * @return raDestinoDta
   **/
-  @JsonProperty("dataHoraVinculacao")
-  public String getDataHoraVinculacao() {
-    return dataHoraVinculacao;
+  @JsonProperty("raDestinoDta")
+  public String getRaDestinoDta() {
+    return raDestinoDta;
   }
 
-  public void setDataHoraVinculacao(String dataHoraVinculacao) {
-    this.dataHoraVinculacao = dataHoraVinculacao;
+  public void setRaDestinoDta(String raDestinoDta) {
+    this.raDestinoDta = raDestinoDta;
   }
 
-  public DocumentoSaidaConsultaDetalhada dataHoraVinculacao(String dataHoraVinculacao) {
-    this.dataHoraVinculacao = dataHoraVinculacao;
+  public DocumentoSaidaConsultaDetalhada raDestinoDta(String raDestinoDta) {
+    this.raDestinoDta = raDestinoDta;
+    return this;
+  }
+
+ /**
+   * Tipo de documento de saída&lt;p&gt;Os documentos podem ser:&lt;/p&gt;10 – DI&lt;br/&gt;11 – Processo Digital/Processo Dossiê&lt;br/&gt;12 – E-DMOV&lt;br/&gt;20 – Outros&lt;br/&gt;21 – PMB&lt;br/&gt;22 – PDE/TR&lt;br/&gt;23 – DSI Eletrônica&lt;br/&gt;24 – DSI Formulário&lt;br/&gt;30 – DTA - Importação comum&lt;br/&gt;31 – DTA - Importação especial - bagagem desacompanhada&lt;br/&gt;32 – DTA - Importação especial - mala diplomática&lt;br/&gt;33 – DTA - Importação especial - urna funerária&lt;br/&gt;34 – DTA - Importação especial - outras&lt;br/&gt;35 – DTA - Passagem comum&lt;br/&gt;36 – DTA - Passagem comum - bagagem desacompanhada&lt;br/&gt;37 – DTA - Passagem comum - mala diplomática&lt;br/&gt;38 – DTA - Passagem comum - partes e peças&lt;br/&gt;39 – DTA - Passagem comum - urna funerária&lt;br/&gt;40 – DTA - Passagem comum - outras&lt;br/&gt;50 – DTI&lt;br/&gt;99 – DUIMP&lt;br/&gt;
+   * @return tipo
+  **/
+  @JsonProperty("tipo")
+  public String getTipo() {
+    if (tipo == null) {
+      return null;
+    }
+    return tipo.value();
+  }
+
+  public void setTipo(TipoEnum tipo) {
+    this.tipo = tipo;
+  }
+
+  public DocumentoSaidaConsultaDetalhada tipo(TipoEnum tipo) {
+    this.tipo = tipo;
+    return this;
+  }
+
+ /**
+   * Unidade da RFB de destino da DTA.
+   * @return uaDestinoDta
+  **/
+  @JsonProperty("uaDestinoDta")
+  public String getUaDestinoDta() {
+    return uaDestinoDta;
+  }
+
+  public void setUaDestinoDta(String uaDestinoDta) {
+    this.uaDestinoDta = uaDestinoDta;
+  }
+
+  public DocumentoSaidaConsultaDetalhada uaDestinoDta(String uaDestinoDta) {
+    this.uaDestinoDta = uaDestinoDta;
     return this;
   }
 
@@ -218,9 +261,11 @@ public enum TipoEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentoSaidaConsultaDetalhada {\n");
     
-    sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
-    sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
     sb.append("    dataHoraVinculacao: ").append(toIndentedString(dataHoraVinculacao)).append("\n");
+    sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
+    sb.append("    raDestinoDta: ").append(toIndentedString(raDestinoDta)).append("\n");
+    sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
+    sb.append("    uaDestinoDta: ").append(toIndentedString(uaDestinoDta)).append("\n");
     sb.append("}");
     return sb.toString();
   }

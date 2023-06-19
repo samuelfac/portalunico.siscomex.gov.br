@@ -1,24 +1,16 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
+import javax.xml.bind.annotation.*;
+import java.util.List;
+
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ResultadoAnaliseRiscoDuimpCover", propOrder =
-    { "canalConsolidado", "resultadoOrgao"
+    { "canalConsolidado", "resultadoRFB", "resultadoAnuente"
 })
 
 @XmlRootElement(name="ResultadoAnaliseRiscoDuimpCover")
@@ -82,10 +74,15 @@ public enum CanalConsolidadoEnum {
   **/
   private CanalConsolidadoEnum canalConsolidado = null;
 
-  @XmlElement(name="resultadoOrgao")
+  @XmlElement(name="resultadoRFB")
   @ApiModelProperty(value = "")
   @Valid
-  private List<ResultadoOrgaoDuimpCover> resultadoOrgao = null;
+  private List<ResultadoAnaliseRiscoRfbCover> resultadoRFB = null;
+
+  @XmlElement(name="resultadoAnuente")
+  @ApiModelProperty(value = "")
+  @Valid
+  private List<ResultadoAnaliseRiscoAnuenteCover> resultadoAnuente = null;
  /**
    * Canais da análise de risco.&lt;br&gt;Domínio:
    * @return canalConsolidado
@@ -108,25 +105,48 @@ public enum CanalConsolidadoEnum {
   }
 
  /**
-   * Get resultadoOrgao
-   * @return resultadoOrgao
+   * Get resultadoRFB
+   * @return resultadoRFB
   **/
-  @JsonProperty("resultadoOrgao")
-  public List<ResultadoOrgaoDuimpCover> getResultadoOrgao() {
-    return resultadoOrgao;
+  @JsonProperty("resultadoRFB")
+  public List<ResultadoAnaliseRiscoRfbCover> getResultadoRFB() {
+    return resultadoRFB;
   }
 
-  public void setResultadoOrgao(List<ResultadoOrgaoDuimpCover> resultadoOrgao) {
-    this.resultadoOrgao = resultadoOrgao;
+  public void setResultadoRFB(List<ResultadoAnaliseRiscoRfbCover> resultadoRFB) {
+    this.resultadoRFB = resultadoRFB;
   }
 
-  public ResultadoAnaliseRiscoDuimpCover resultadoOrgao(List<ResultadoOrgaoDuimpCover> resultadoOrgao) {
-    this.resultadoOrgao = resultadoOrgao;
+  public ResultadoAnaliseRiscoDuimpCover resultadoRFB(List<ResultadoAnaliseRiscoRfbCover> resultadoRFB) {
+    this.resultadoRFB = resultadoRFB;
     return this;
   }
 
-  public ResultadoAnaliseRiscoDuimpCover addResultadoOrgaoItem(ResultadoOrgaoDuimpCover resultadoOrgaoItem) {
-    this.resultadoOrgao.add(resultadoOrgaoItem);
+  public ResultadoAnaliseRiscoDuimpCover addResultadoRFBItem(ResultadoAnaliseRiscoRfbCover resultadoRFBItem) {
+    this.resultadoRFB.add(resultadoRFBItem);
+    return this;
+  }
+
+ /**
+   * Get resultadoAnuente
+   * @return resultadoAnuente
+  **/
+  @JsonProperty("resultadoAnuente")
+  public List<ResultadoAnaliseRiscoAnuenteCover> getResultadoAnuente() {
+    return resultadoAnuente;
+  }
+
+  public void setResultadoAnuente(List<ResultadoAnaliseRiscoAnuenteCover> resultadoAnuente) {
+    this.resultadoAnuente = resultadoAnuente;
+  }
+
+  public ResultadoAnaliseRiscoDuimpCover resultadoAnuente(List<ResultadoAnaliseRiscoAnuenteCover> resultadoAnuente) {
+    this.resultadoAnuente = resultadoAnuente;
+    return this;
+  }
+
+  public ResultadoAnaliseRiscoDuimpCover addResultadoAnuenteItem(ResultadoAnaliseRiscoAnuenteCover resultadoAnuenteItem) {
+    this.resultadoAnuente.add(resultadoAnuenteItem);
     return this;
   }
 
@@ -137,7 +157,8 @@ public enum CanalConsolidadoEnum {
     sb.append("class ResultadoAnaliseRiscoDuimpCover {\n");
     
     sb.append("    canalConsolidado: ").append(toIndentedString(canalConsolidado)).append("\n");
-    sb.append("    resultadoOrgao: ").append(toIndentedString(resultadoOrgao)).append("\n");
+    sb.append("    resultadoRFB: ").append(toIndentedString(resultadoRFB)).append("\n");
+    sb.append("    resultadoAnuente: ").append(toIndentedString(resultadoAnuente)).append("\n");
     sb.append("}");
     return sb.toString();
   }

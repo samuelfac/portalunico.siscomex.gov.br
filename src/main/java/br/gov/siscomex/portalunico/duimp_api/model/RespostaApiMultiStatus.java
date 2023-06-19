@@ -1,17 +1,11 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RespostaApiMultiStatus", propOrder =
@@ -22,16 +16,16 @@ import io.swagger.annotations.ApiModelProperty;
 public class RespostaApiMultiStatus  {
   
   @XmlElement(name="code")
-  @ApiModelProperty(example = "201", value = "Código HTTP da resposta.")
+  @ApiModelProperty(example = "201", value = "Código da resposta individual para um dos itens que compõem a resposta.")
  /**
-   * Código HTTP da resposta.
+   * Código da resposta individual para um dos itens que compõem a resposta.
   **/
   private Integer code = null;
 
   @XmlElement(name="message")
-  @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
+  @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.")
  /**
-   * Mensagem de resposta do resultado da operação.
+   * Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.
   **/
   private String message = null;
 
@@ -41,10 +35,10 @@ public class RespostaApiMultiStatus  {
   private IdentificacaoItemCriadoCover identificacao = null;
 
   @XmlElement(name="errors")
-  @ApiModelProperty(value = "Conjunto de erros de validação dos campos. Devolvido apenas para erros HTTP 422.")
+  @ApiModelProperty(value = "Conjunto de erros de validação dos campos. Esta lista é devolvida apenas quando o atributo 'code' deste item é igual a 422. <br> Isto ocorrerá apenas quando a resposta da requisição http for 207")
   @Valid
  /**
-   * Conjunto de erros de validação dos campos. Devolvido apenas para erros HTTP 422.
+   * Conjunto de erros de validação dos campos. Esta lista é devolvida apenas quando o atributo 'code' deste item é igual a 422. <br> Isto ocorrerá apenas quando a resposta da requisição http for 207
   **/
   private List<DuimpApiMessageCover> errors = null;
 
@@ -56,7 +50,7 @@ public class RespostaApiMultiStatus  {
   **/
   private List<LinkCover> links = null;
  /**
-   * Código HTTP da resposta.
+   * Código da resposta individual para um dos itens que compõem a resposta.
    * @return code
   **/
   @JsonProperty("code")
@@ -74,7 +68,7 @@ public class RespostaApiMultiStatus  {
   }
 
  /**
-   * Mensagem de resposta do resultado da operação.
+   * Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.
    * @return message
   **/
   @JsonProperty("message")
@@ -110,7 +104,7 @@ public class RespostaApiMultiStatus  {
   }
 
  /**
-   * Conjunto de erros de validação dos campos. Devolvido apenas para erros HTTP 422.
+   * Conjunto de erros de validação dos campos. Esta lista é devolvida apenas quando o atributo &#39;code&#39; deste item é igual a 422. &lt;br&gt; Isto ocorrerá apenas quando a resposta da requisição http for 207
    * @return errors
   **/
   @JsonProperty("errors")

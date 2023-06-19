@@ -1,31 +1,20 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DuimpConsultaCover", propOrder =
-    { "itens", "identificacao", "situacao", "equipesTrabalho", "resultadoAnaliseRisco", "carga", "documentos", "adicoes", "tributos", "pagamentos", "tratamentoAdministrativo"
+    { "identificacao", "situacao", "equipesTrabalho", "resultadoAnaliseRisco", "carga", "documentos", "adicoes", "tributos", "pagamentos", "tratamentoAdministrativo", "quantidadeItens", "itens"
 })
 
 @XmlRootElement(name="DuimpConsultaCover")
 public class DuimpConsultaCover  {
   
-  @XmlElement(name="itens")
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<ItemConsultaDuimpCover> itens = null;
-
   @XmlElement(name="identificacao")
   @ApiModelProperty(value = "")
   @Valid
@@ -75,29 +64,21 @@ public class DuimpConsultaCover  {
   @ApiModelProperty(value = "")
   @Valid
   private TratamentoAdministrativoCover tratamentoAdministrativo = null;
+
+  @XmlElement(name="quantidadeItens")
+  @ApiModelProperty(example = "100", value = "Quantidade total de Itens da Duimp.<br>Tamanho mínimo: 1<br>Tamanho máximo: 5")
  /**
-   * Get itens
-   * @return itens
+   * Quantidade total de Itens da Duimp.<br>Tamanho mínimo: 1<br>Tamanho máximo: 5
   **/
-  @JsonProperty("itens")
-  public List<ItemConsultaDuimpCover> getItens() {
-    return itens;
-  }
+  private Integer quantidadeItens = null;
 
-  public void setItens(List<ItemConsultaDuimpCover> itens) {
-    this.itens = itens;
-  }
-
-  public DuimpConsultaCover itens(List<ItemConsultaDuimpCover> itens) {
-    this.itens = itens;
-    return this;
-  }
-
-  public DuimpConsultaCover addItensItem(ItemConsultaDuimpCover itensItem) {
-    this.itens.add(itensItem);
-    return this;
-  }
-
+  @XmlElement(name="itens")
+  @ApiModelProperty(value = "Lista contendo os links para os itens da Duimp")
+  @Valid
+ /**
+   * Lista contendo os links para os itens da Duimp
+  **/
+  private List<ItemConsultaDuimpCover> itens = null;
  /**
    * Get identificacao
    * @return identificacao
@@ -293,13 +274,53 @@ public class DuimpConsultaCover  {
     return this;
   }
 
+ /**
+   * Quantidade total de Itens da Duimp.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 5
+   * @return quantidadeItens
+  **/
+  @JsonProperty("quantidadeItens")
+  public Integer getQuantidadeItens() {
+    return quantidadeItens;
+  }
+
+  public void setQuantidadeItens(Integer quantidadeItens) {
+    this.quantidadeItens = quantidadeItens;
+  }
+
+  public DuimpConsultaCover quantidadeItens(Integer quantidadeItens) {
+    this.quantidadeItens = quantidadeItens;
+    return this;
+  }
+
+ /**
+   * Lista contendo os links para os itens da Duimp
+   * @return itens
+  **/
+  @JsonProperty("itens")
+  public List<ItemConsultaDuimpCover> getItens() {
+    return itens;
+  }
+
+  public void setItens(List<ItemConsultaDuimpCover> itens) {
+    this.itens = itens;
+  }
+
+  public DuimpConsultaCover itens(List<ItemConsultaDuimpCover> itens) {
+    this.itens = itens;
+    return this;
+  }
+
+  public DuimpConsultaCover addItensItem(ItemConsultaDuimpCover itensItem) {
+    this.itens.add(itensItem);
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DuimpConsultaCover {\n");
     
-    sb.append("    itens: ").append(toIndentedString(itens)).append("\n");
     sb.append("    identificacao: ").append(toIndentedString(identificacao)).append("\n");
     sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    equipesTrabalho: ").append(toIndentedString(equipesTrabalho)).append("\n");
@@ -310,6 +331,8 @@ public class DuimpConsultaCover  {
     sb.append("    tributos: ").append(toIndentedString(tributos)).append("\n");
     sb.append("    pagamentos: ").append(toIndentedString(pagamentos)).append("\n");
     sb.append("    tratamentoAdministrativo: ").append(toIndentedString(tratamentoAdministrativo)).append("\n");
+    sb.append("    quantidadeItens: ").append(toIndentedString(quantidadeItens)).append("\n");
+    sb.append("    itens: ").append(toIndentedString(itens)).append("\n");
     sb.append("}");
     return sb.toString();
   }

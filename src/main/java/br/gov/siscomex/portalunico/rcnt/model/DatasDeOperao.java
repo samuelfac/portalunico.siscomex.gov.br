@@ -1,23 +1,22 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DatasDeOperao", propOrder =
-    { "dataHoraInicioPosicionamento", "dataHoraFimPosicionamento", "dataHoraInicioConferenciaFisica", "dataHoraFimConferenciaFisica"
+    { "dtHrInicioConferenciaFisica", "dataHoraInicioPosicionamento", "dataHoraFimPosicionamento", "dataHoraInicioConferenciaFisica", "dataHoraFimConferenciaFisica"
 })
 
 @XmlRootElement(name="DatasDeOperao")
 public class DatasDeOperao  {
   
+  @XmlElement(name="dtHrInicioConferenciaFisica")
+  @ApiModelProperty(value = "")
+  private String dtHrInicioConferenciaFisica = null;
+
   @XmlElement(name="dataHoraInicioPosicionamento")
   @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Informar data e hora do início do posicionamento da carga para fins de conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
  /**
@@ -45,6 +44,24 @@ public class DatasDeOperao  {
    * Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
   **/
   private String dataHoraFimConferenciaFisica = null;
+ /**
+   * Get dtHrInicioConferenciaFisica
+   * @return dtHrInicioConferenciaFisica
+  **/
+  @JsonProperty("dtHrInicioConferenciaFisica")
+  public String getDtHrInicioConferenciaFisica() {
+    return dtHrInicioConferenciaFisica;
+  }
+
+  public void setDtHrInicioConferenciaFisica(String dtHrInicioConferenciaFisica) {
+    this.dtHrInicioConferenciaFisica = dtHrInicioConferenciaFisica;
+  }
+
+  public DatasDeOperao dtHrInicioConferenciaFisica(String dtHrInicioConferenciaFisica) {
+    this.dtHrInicioConferenciaFisica = dtHrInicioConferenciaFisica;
+    return this;
+  }
+
  /**
    * Informar data e hora do início do posicionamento da carga para fins de conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
    * @return dataHoraInicioPosicionamento
@@ -123,6 +140,7 @@ public class DatasDeOperao  {
     StringBuilder sb = new StringBuilder();
     sb.append("class DatasDeOperao {\n");
     
+    sb.append("    dtHrInicioConferenciaFisica: ").append(toIndentedString(dtHrInicioConferenciaFisica)).append("\n");
     sb.append("    dataHoraInicioPosicionamento: ").append(toIndentedString(dataHoraInicioPosicionamento)).append("\n");
     sb.append("    dataHoraFimPosicionamento: ").append(toIndentedString(dataHoraFimPosicionamento)).append("\n");
     sb.append("    dataHoraInicioConferenciaFisica: ").append(toIndentedString(dataHoraInicioConferenciaFisica)).append("\n");

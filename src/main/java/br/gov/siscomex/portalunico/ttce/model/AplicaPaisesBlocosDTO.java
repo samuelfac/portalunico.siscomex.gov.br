@@ -1,20 +1,14 @@
 package br.gov.siscomex.portalunico.ttce.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AplicaPaisesBlocosDTO", propOrder =
@@ -29,7 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
 public class AplicaPaisesBlocosDTO  {
   
   @XmlElement(name="indicadorTodosPaises", required = true)
-  @ApiModelProperty(example = "true", required = true, value = "Indicador de que estes Tratamentos Tributários agrupados se aplicam para todos os países.<br/><br>Dominio:<br>true - Sim, <br>false - Não")
+  @ApiModelProperty(example = "false", required = true, value = "Indicador de que estes Tratamentos Tributários agrupados se aplicam para todos os países.<br/><br>Dominio:<br>true - Sim, <br>false - Não")
  /**
    * Indicador de que estes Tratamentos Tributários agrupados se aplicam para todos os países.<br/><br>Dominio:<br>true - Sim, <br>false - Não
   **/
@@ -41,7 +35,7 @@ public class AplicaPaisesBlocosDTO  {
  /**
    * Lista contendo o código e nome dos Países para os quais se aplica este conjunto de Tratamentos Tributários agrupados.
   **/
-  private List<CodigoNomePaisDTO> paises = new ArrayList<>();
+  private List<CodigoNomePaisAplicaDTO> paises = new ArrayList<>();
 
   @XmlElement(name="blocos", required = true)
   @ApiModelProperty(required = true, value = "Lista contendo o código e nome dos Blocos Econômicos para os quais se aplica este conjunto de Tratamentos Tributários agrupados.")
@@ -49,7 +43,7 @@ public class AplicaPaisesBlocosDTO  {
  /**
    * Lista contendo o código e nome dos Blocos Econômicos para os quais se aplica este conjunto de Tratamentos Tributários agrupados.
   **/
-  private List<CodigoNomeBlocoDTO> blocos = new ArrayList<>();
+  private List<CodigoNomeBlocoAplicaDTO> blocos = new ArrayList<>();
  /**
    * Indicador de que estes Tratamentos Tributários agrupados se aplicam para todos os países.&lt;br/&gt;&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
    * @return indicadorTodosPaises
@@ -75,20 +69,20 @@ public class AplicaPaisesBlocosDTO  {
   **/
   @JsonProperty("paises")
   @NotNull
-  public List<CodigoNomePaisDTO> getPaises() {
+  public List<CodigoNomePaisAplicaDTO> getPaises() {
     return paises;
   }
 
-  public void setPaises(List<CodigoNomePaisDTO> paises) {
+  public void setPaises(List<CodigoNomePaisAplicaDTO> paises) {
     this.paises = paises;
   }
 
-  public AplicaPaisesBlocosDTO paises(List<CodigoNomePaisDTO> paises) {
+  public AplicaPaisesBlocosDTO paises(List<CodigoNomePaisAplicaDTO> paises) {
     this.paises = paises;
     return this;
   }
 
-  public AplicaPaisesBlocosDTO addPaisesItem(CodigoNomePaisDTO paisesItem) {
+  public AplicaPaisesBlocosDTO addPaisesItem(CodigoNomePaisAplicaDTO paisesItem) {
     this.paises.add(paisesItem);
     return this;
   }
@@ -99,20 +93,20 @@ public class AplicaPaisesBlocosDTO  {
   **/
   @JsonProperty("blocos")
   @NotNull
-  public List<CodigoNomeBlocoDTO> getBlocos() {
+  public List<CodigoNomeBlocoAplicaDTO> getBlocos() {
     return blocos;
   }
 
-  public void setBlocos(List<CodigoNomeBlocoDTO> blocos) {
+  public void setBlocos(List<CodigoNomeBlocoAplicaDTO> blocos) {
     this.blocos = blocos;
   }
 
-  public AplicaPaisesBlocosDTO blocos(List<CodigoNomeBlocoDTO> blocos) {
+  public AplicaPaisesBlocosDTO blocos(List<CodigoNomeBlocoAplicaDTO> blocos) {
     this.blocos = blocos;
     return this;
   }
 
-  public AplicaPaisesBlocosDTO addBlocosItem(CodigoNomeBlocoDTO blocosItem) {
+  public AplicaPaisesBlocosDTO addBlocosItem(CodigoNomeBlocoAplicaDTO blocosItem) {
     this.blocos.add(blocosItem);
     return this;
   }

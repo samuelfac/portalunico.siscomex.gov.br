@@ -1,22 +1,15 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import java.math.BigDecimal;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.*;
+import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AtoConcessorio", propOrder =
-    { "beneficiario", "item", "itemDeDUE", "motivosDeNaoVinculacao", "numero", "quantidadeExportada", "situacao", "tipo", "valorComCoberturaCambial"
+    { "beneficiario", "item", "itemDeDUE", "numero", "quantidadeExportada", "tipo", "valorComCoberturaCambial", "valorSemCoberturaCambial"
 })
 
 @XmlRootElement(name="AtoConcessorio")
@@ -37,11 +30,6 @@ public class AtoConcessorio  {
   @Valid
   private ItemDeDUE itemDeDUE = null;
 
-  @XmlElement(name="motivosDeNaoVinculacao")
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao = null;
-
   @XmlElement(name="numero")
   @ApiModelProperty(value = "Número <br />Tamanho mínimo: 1<br />Tamanho máximo: 11")
  /**
@@ -57,11 +45,6 @@ public class AtoConcessorio  {
   **/
   private BigDecimal quantidadeExportada = null;
 
-  @XmlElement(name="situacao")
-  @ApiModelProperty(value = "")
-  @Valid
-  private Situacao situacao = null;
-
   @XmlElement(name="tipo")
   @ApiModelProperty(value = "")
   @Valid
@@ -74,6 +57,14 @@ public class AtoConcessorio  {
    * Valor com cobertura cambial<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorComCoberturaCambial = null;
+
+  @XmlElement(name="valorSemCoberturaCambial")
+  @ApiModelProperty(value = "Valor sem cobertura cambial<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+  @Valid
+ /**
+   * Valor sem cobertura cambial<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
+  **/
+  private BigDecimal valorSemCoberturaCambial = null;
  /**
    * Get beneficiario
    * @return beneficiario
@@ -129,29 +120,6 @@ public class AtoConcessorio  {
   }
 
  /**
-   * Get motivosDeNaoVinculacao
-   * @return motivosDeNaoVinculacao
-  **/
-  @JsonProperty("motivosDeNaoVinculacao")
-  public List<MotivoDeNaoVinculacao> getMotivosDeNaoVinculacao() {
-    return motivosDeNaoVinculacao;
-  }
-
-  public void setMotivosDeNaoVinculacao(List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao) {
-    this.motivosDeNaoVinculacao = motivosDeNaoVinculacao;
-  }
-
-  public AtoConcessorio motivosDeNaoVinculacao(List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao) {
-    this.motivosDeNaoVinculacao = motivosDeNaoVinculacao;
-    return this;
-  }
-
-  public AtoConcessorio addMotivosDeNaoVinculacaoItem(MotivoDeNaoVinculacao motivosDeNaoVinculacaoItem) {
-    this.motivosDeNaoVinculacao.add(motivosDeNaoVinculacaoItem);
-    return this;
-  }
-
- /**
    * Número &lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 11
    * @return numero
   **/
@@ -184,24 +152,6 @@ public class AtoConcessorio  {
 
   public AtoConcessorio quantidadeExportada(BigDecimal quantidadeExportada) {
     this.quantidadeExportada = quantidadeExportada;
-    return this;
-  }
-
- /**
-   * Get situacao
-   * @return situacao
-  **/
-  @JsonProperty("situacao")
-  public Situacao getSituacao() {
-    return situacao;
-  }
-
-  public void setSituacao(Situacao situacao) {
-    this.situacao = situacao;
-  }
-
-  public AtoConcessorio situacao(Situacao situacao) {
-    this.situacao = situacao;
     return this;
   }
 
@@ -241,6 +191,24 @@ public class AtoConcessorio  {
     return this;
   }
 
+ /**
+   * Valor sem cobertura cambial&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+   * @return valorSemCoberturaCambial
+  **/
+  @JsonProperty("valorSemCoberturaCambial")
+  public BigDecimal getValorSemCoberturaCambial() {
+    return valorSemCoberturaCambial;
+  }
+
+  public void setValorSemCoberturaCambial(BigDecimal valorSemCoberturaCambial) {
+    this.valorSemCoberturaCambial = valorSemCoberturaCambial;
+  }
+
+  public AtoConcessorio valorSemCoberturaCambial(BigDecimal valorSemCoberturaCambial) {
+    this.valorSemCoberturaCambial = valorSemCoberturaCambial;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -250,12 +218,11 @@ public class AtoConcessorio  {
     sb.append("    beneficiario: ").append(toIndentedString(beneficiario)).append("\n");
     sb.append("    item: ").append(toIndentedString(item)).append("\n");
     sb.append("    itemDeDUE: ").append(toIndentedString(itemDeDUE)).append("\n");
-    sb.append("    motivosDeNaoVinculacao: ").append(toIndentedString(motivosDeNaoVinculacao)).append("\n");
     sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
     sb.append("    quantidadeExportada: ").append(toIndentedString(quantidadeExportada)).append("\n");
-    sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    valorComCoberturaCambial: ").append(toIndentedString(valorComCoberturaCambial)).append("\n");
+    sb.append("    valorSemCoberturaCambial: ").append(toIndentedString(valorSemCoberturaCambial)).append("\n");
     sb.append("}");
     return sb.toString();
   }
