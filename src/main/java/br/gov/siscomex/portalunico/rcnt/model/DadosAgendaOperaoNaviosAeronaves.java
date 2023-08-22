@@ -1,11 +1,22 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
+import br.gov.siscomex.portalunico.rcnt.model.DadosAgendaOperaoNaviosAeronavesAgendamento;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAgendaOperaoNaviosAeronavesChegada;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAgendaOperaoNaviosAeronavesOperao;
+import br.gov.siscomex.portalunico.rcnt.model.DadosNavio;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosAgendaOperaoNaviosAeronaves", propOrder =

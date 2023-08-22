@@ -1,10 +1,19 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ValoresTributoDuimpConsultaCover", propOrder =
@@ -19,9 +28,9 @@ import javax.xml.bind.annotation.*;
 public class ValoresTributoDuimpConsultaCover  {
   
   @XmlElement(name="calculado")
-  @ApiModelProperty(example = "1598.73", value = "Valor Calculado do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "1598.73", value = "Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso,este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens")
  /**
-   * Valor Calculado do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso,este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens
   **/
   private Double calculado = null;
 
@@ -33,9 +42,9 @@ public class ValoresTributoDuimpConsultaCover  {
   private Double aReduzir = null;
 
   @XmlElement(name="devido")
-  @ApiModelProperty(example = "201.12", value = "Valor Devido do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "201.12", value = "Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores originalmente devidos dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens")
  /**
-   * Valor Devido do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores originalmente devidos dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens
   **/
   private Double devido = null;
 
@@ -60,7 +69,7 @@ public class ValoresTributoDuimpConsultaCover  {
   **/
   private Double recolhido = null;
  /**
-   * Valor Calculado do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso,este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens
    * @return calculado
   **/
   @JsonProperty("calculado")
@@ -96,7 +105,7 @@ public class ValoresTributoDuimpConsultaCover  {
   }
 
  /**
-   * Valor Devido do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores originalmente devidos dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor possuirá o somatório dos valores calculados do pagamento proporcional dos itens
    * @return devido
   **/
   @JsonProperty("devido")

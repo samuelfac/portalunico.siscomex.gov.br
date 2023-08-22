@@ -31,6 +31,7 @@
 
 		<cxf-version>3.4.5</cxf-version>
 		<jackson-jaxrs-version>2.13.0</jackson-jaxrs-version>
+		<github.global.server>github</github.global.server>
 	</properties>
 
 	<dependencies>

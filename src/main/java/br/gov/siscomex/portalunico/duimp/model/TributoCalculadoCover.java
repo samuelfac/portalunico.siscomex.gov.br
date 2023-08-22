@@ -1,12 +1,21 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp.model.TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TributoCalculadoCover", propOrder =
@@ -26,42 +35,42 @@ public class TributoCalculadoCover  {
   private TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto = null;
 
   @XmlElement(name="valorCalculado")
-  @ApiModelProperty(example = "1000.0", value = "Valor calculado do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "1000.0", value = "Valor calculado do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor calculado do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor calculado do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorCalculado = null;
 
   @XmlElement(name="valorAReduzir")
-  @ApiModelProperty(example = "0.0", value = "Valor a reduzir do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "Valor a reduzir do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor a reduzir do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor a reduzir do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorAReduzir = null;
 
   @XmlElement(name="valorSuspenso")
-  @ApiModelProperty(example = "0.0", value = "Valor suspenso do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "Valor suspenso do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor suspenso do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor suspenso do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorSuspenso = null;
 
   @XmlElement(name="valorDevido")
-  @ApiModelProperty(example = "1000.0", value = "Valor devido do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "1000.0", value = "Valor devido do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor devido do tributo<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor devido do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorDevido = null;
 
   @XmlElement(name="impostoARecolher")
-  @ApiModelProperty(example = "200.0", value = "Valor do tributo a recolher<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "200.0", value = "Valor do tributo a recolher<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor do tributo a recolher<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do tributo a recolher<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal impostoARecolher = null;
  /**
@@ -83,7 +92,7 @@ public class TributoCalculadoCover  {
   }
 
  /**
-   * Valor calculado do tributo&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor calculado do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorCalculado
   **/
   @JsonProperty("valorCalculado")
@@ -101,7 +110,7 @@ public class TributoCalculadoCover  {
   }
 
  /**
-   * Valor a reduzir do tributo&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor a reduzir do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorAReduzir
   **/
   @JsonProperty("valorAReduzir")
@@ -119,7 +128,7 @@ public class TributoCalculadoCover  {
   }
 
  /**
-   * Valor suspenso do tributo&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor suspenso do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorSuspenso
   **/
   @JsonProperty("valorSuspenso")
@@ -137,7 +146,7 @@ public class TributoCalculadoCover  {
   }
 
  /**
-   * Valor devido do tributo&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor devido do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorDevido
   **/
   @JsonProperty("valorDevido")
@@ -155,7 +164,7 @@ public class TributoCalculadoCover  {
   }
 
  /**
-   * Valor do tributo a recolher&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do tributo a recolher&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return impostoARecolher
   **/
   @JsonProperty("impostoARecolher")

@@ -1,18 +1,27 @@
 package br.gov.siscomex.portalunico.catp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.catp.model.IdentificacaoAdicionalIntegracaoDTO;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "OperadorEstrangeiroIntegracaoDTO", propOrder =
-    { "seq", "cpfCnpjRaiz", "codigo", "versao", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "email", "dataReferencia", "identificacoesAdicionais"
+    { "seq", "cpfCnpjRaiz", "codigo", "versao", "tin", "nome", "situacao", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "codigoPais", "cep", "codigoInterno", "email", "dataReferencia", "identificacoesAdicionais"
 })
 
 @XmlRootElement(name="OperadorEstrangeiroIntegracaoDTO")
@@ -37,9 +46,9 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   private String cpfCnpjRaiz = null;
 
   @XmlElement(name="codigo", required = true)
-  @ApiModelProperty(example = "123", required = true, value = "TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35")
+  @ApiModelProperty(example = "OPE_1", required = true, value = "Código do Operador Estrangeiro (utilizado somente para retorno de valor)<br>Tamanho: 35")
  /**
-   * TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35
+   * Código do Operador Estrangeiro (utilizado somente para retorno de valor)<br>Tamanho: 35
   **/
   private String codigo = null;
 
@@ -49,6 +58,13 @@ public class OperadorEstrangeiroIntegracaoDTO  {
    * Versão do Operador Estrangeiro (utilizado somente para retorno de valor)<br>Tamanho: 8<br>Formato: 'NNNNNNNN'
   **/
   private String versao = null;
+
+  @XmlElement(name="tin")
+  @ApiModelProperty(example = "123", value = "TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35")
+ /**
+   * TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35
+  **/
+  private String tin = null;
 
   @XmlElement(name="nome", required = true)
   @ApiModelProperty(example = "Fornecedor 123", required = true, value = "Nome/Razão Social do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
@@ -166,7 +182,7 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   }
 
  /**
-   * TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br&gt;Tamanho: 35
+   * Código do Operador Estrangeiro (utilizado somente para retorno de valor)&lt;br&gt;Tamanho: 35
    * @return codigo
   **/
   @JsonProperty("codigo")
@@ -199,6 +215,24 @@ public class OperadorEstrangeiroIntegracaoDTO  {
 
   public OperadorEstrangeiroIntegracaoDTO versao(String versao) {
     this.versao = versao;
+    return this;
+  }
+
+ /**
+   * TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br&gt;Tamanho: 35
+   * @return tin
+  **/
+  @JsonProperty("tin")
+  public String getTin() {
+    return tin;
+  }
+
+  public void setTin(String tin) {
+    this.tin = tin;
+  }
+
+  public OperadorEstrangeiroIntegracaoDTO tin(String tin) {
+    this.tin = tin;
     return this;
   }
 
@@ -419,6 +453,7 @@ public class OperadorEstrangeiroIntegracaoDTO  {
     sb.append("    cpfCnpjRaiz: ").append(toIndentedString(cpfCnpjRaiz)).append("\n");
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    versao: ").append(toIndentedString(versao)).append("\n");
+    sb.append("    tin: ").append(toIndentedString(tin)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
     sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    logradouro: ").append(toIndentedString(logradouro)).append("\n");

@@ -1,13 +1,37 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.due.model.CNPJ;
+import br.gov.siscomex.portalunico.due.model.DeclaracaoTributaria;
+import br.gov.siscomex.portalunico.due.model.EventoDoHistoricoDTO;
+import br.gov.siscomex.portalunico.due.model.ExigenciaFiscalDTO;
+import br.gov.siscomex.portalunico.due.model.ItemDUERemoteDTO;
+import br.gov.siscomex.portalunico.due.model.Link;
+import br.gov.siscomex.portalunico.due.model.MoedaDto;
+import br.gov.siscomex.portalunico.due.model.MotivoDispensaNotaFiscalDTO;
+import br.gov.siscomex.portalunico.due.model.PaisDto;
+import br.gov.siscomex.portalunico.due.model.PessoaDTO;
+import br.gov.siscomex.portalunico.due.model.RecintoAduaneiroDto;
+import br.gov.siscomex.portalunico.due.model.SituacaoDaCargaDTO;
+import br.gov.siscomex.portalunico.due.model.SolicitacaoDTO;
+import br.gov.siscomex.portalunico.due.model.UnidadeLocalRFBDto;
+import br.gov.siscomex.portalunico.due.model.ViaTransporteEspecialDTO;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DUE", propOrder =

@@ -1,9 +1,18 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "MercadoriaDuimpConsultaCover", propOrder =
@@ -14,20 +23,20 @@ import javax.xml.bind.annotation.*;
 public class MercadoriaDuimpConsultaCover  {
   
   @XmlElement(name="valorTotalLocalEmbarqueBRL")
-  @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em R$ (Reais). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
  /**
-   * Valor total da mercadoria no local de embarque em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em R$ (Reais). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
   **/
   private Double valorTotalLocalEmbarqueBRL = null;
 
   @XmlElement(name="valorTotalLocalEmbarqueUSD")
-  @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em US$ (Dólares).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em US$ (Dólares). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
  /**
-   * Valor total da mercadoria no local de embarque em US$ (Dólares).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em US$ (Dólares). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
   **/
   private Double valorTotalLocalEmbarqueUSD = null;
  /**
-   * Valor total da mercadoria no local de embarque em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em R$ (Reais). &lt;br&gt; Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
    * @return valorTotalLocalEmbarqueBRL
   **/
   @JsonProperty("valorTotalLocalEmbarqueBRL")
@@ -45,7 +54,7 @@ public class MercadoriaDuimpConsultaCover  {
   }
 
  /**
-   * Valor total da mercadoria no local de embarque em US$ (Dólares).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em US$ (Dólares). &lt;br&gt; Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
    * @return valorTotalLocalEmbarqueUSD
   **/
   @JsonProperty("valorTotalLocalEmbarqueUSD")

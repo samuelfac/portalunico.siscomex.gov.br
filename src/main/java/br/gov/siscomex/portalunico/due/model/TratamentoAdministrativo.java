@@ -1,10 +1,20 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TratamentoAdministrativo", propOrder =
@@ -102,7 +112,27 @@ public enum SituacaoEnum {
 	
 	@XmlEnumValue("AGUARDANDO_PAGAMENTO")
 	@JsonProperty("AGUARDANDO_PAGAMENTO")
-	AGUARDANDO_PAGAMENTO(String.valueOf("AGUARDANDO_PAGAMENTO"));
+	AGUARDANDO_PAGAMENTO(String.valueOf("AGUARDANDO_PAGAMENTO")),
+	
+	@XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
+	@JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
+	AUTORIZACAO_IMPORTACAO_EMITIDA(String.valueOf("AUTORIZACAO_IMPORTACAO_EMITIDA")),
+	
+	@XmlEnumValue("PARAMETRIZADO")
+	@JsonProperty("PARAMETRIZADO")
+	PARAMETRIZADO(String.valueOf("PARAMETRIZADO")),
+	
+	@XmlEnumValue("CONFERENCIA_DOCUMENTAL")
+	@JsonProperty("CONFERENCIA_DOCUMENTAL")
+	CONFERENCIA_DOCUMENTAL(String.valueOf("CONFERENCIA_DOCUMENTAL")),
+	
+	@XmlEnumValue("INSPECAO_FISICA")
+	@JsonProperty("INSPECAO_FISICA")
+	INSPECAO_FISICA(String.valueOf("INSPECAO_FISICA")),
+	
+	@XmlEnumValue("RECURSO_INDEFERIMENTO")
+	@JsonProperty("RECURSO_INDEFERIMENTO")
+	RECURSO_INDEFERIMENTO(String.valueOf("RECURSO_INDEFERIMENTO"));
 
 
     private String value;

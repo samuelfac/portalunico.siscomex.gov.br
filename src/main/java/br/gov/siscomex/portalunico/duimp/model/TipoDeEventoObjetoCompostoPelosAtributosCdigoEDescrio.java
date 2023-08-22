@@ -1,9 +1,18 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio", propOrder =
@@ -21,9 +30,9 @@ public class TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio  {
   private String codigo = null;
 
   @XmlElement(name="descricao")
-  @ApiModelProperty(example = "Carga Entregue", value = "Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 80")
+  @ApiModelProperty(example = "Carga Entregue", value = "Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
  /**
-   * Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 80
+   * Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 150
   **/
   private String descricao = null;
  /**
@@ -45,7 +54,7 @@ public class TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio  {
   }
 
  /**
-   * Descrição correspondente ao valor informado no atributo &#39;codigo&#39;. &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
+   * Descrição correspondente ao valor informado no atributo &#39;codigo&#39;. &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
    * @return descricao
   **/
   @JsonProperty("descricao")

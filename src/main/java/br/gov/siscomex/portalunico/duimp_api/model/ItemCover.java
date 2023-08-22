@@ -1,17 +1,41 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp_api.model.AtributoFundamentoLegalItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.AtributoItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.CaracterizacaoImportacaoCover;
+import br.gov.siscomex.portalunico.duimp_api.model.CertificadoMercosulCover;
+import br.gov.siscomex.portalunico.duimp_api.model.CondicaoVendaCover;
+import br.gov.siscomex.portalunico.duimp_api.model.DadosCambiaisCover;
+import br.gov.siscomex.portalunico.duimp_api.model.DeclaracaoVinculadaCover;
+import br.gov.siscomex.portalunico.duimp_api.model.ExportadorCover;
+import br.gov.siscomex.portalunico.duimp_api.model.FabricanteCover;
+import br.gov.siscomex.portalunico.duimp_api.model.IdentificacaoItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.IndicadorCompradorVendedorCover;
+import br.gov.siscomex.portalunico.duimp_api.model.IndicadorExportadorFabricanteCover;
+import br.gov.siscomex.portalunico.duimp_api.model.LpcoCover;
+import br.gov.siscomex.portalunico.duimp_api.model.MercadoriaCover;
+import br.gov.siscomex.portalunico.duimp_api.model.ProdutoCover;
+import br.gov.siscomex.portalunico.duimp_api.model.TributoItemCover;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemCover", propOrder =
-    { "identificacao", "produto", "caracterizacaoImportacao", "indicadorExportadorFabricante", "fabricante", "exportador", "indicadorCompradorVendedor", "mercadoria", "condicaoVenda", "lpcos", "certificadoMercosul", "documentosVinculados", "dadosCambiais", "atributos", "tributos"
+    { "identificacao", "produto", "caracterizacaoImportacao", "indicadorExportadorFabricante", "fabricante", "exportador", "indicadorCompradorVendedor", "mercadoria", "condicaoVenda", "lpcos", "certificadoMercosul", "declaracoesVinculadas", "dadosCambiais", "atributosDuimp", "atributosFundamentoLegalDuimp", "tributos"
 })
 
 @XmlRootElement(name="ItemCover")
@@ -76,20 +100,25 @@ public class ItemCover  {
   @Valid
   private List<CertificadoMercosulCover> certificadoMercosul = null;
 
-  @XmlElement(name="documentosVinculados")
+  @XmlElement(name="declaracoesVinculadas")
   @ApiModelProperty(value = "")
   @Valid
-  private List<DocumentoVinculadoCover> documentosVinculados = null;
+  private List<DeclaracaoVinculadaCover> declaracoesVinculadas = null;
 
   @XmlElement(name="dadosCambiais", required = true)
   @ApiModelProperty(required = true, value = "")
   @Valid
   private DadosCambiaisCover dadosCambiais = null;
 
-  @XmlElement(name="atributos")
+  @XmlElement(name="atributosDuimp")
   @ApiModelProperty(value = "")
   @Valid
-  private List<AtributoItemCover> atributos = null;
+  private List<AtributoItemCover> atributosDuimp = null;
+
+  @XmlElement(name="atributosFundamentoLegalDuimp")
+  @ApiModelProperty(value = "")
+  @Valid
+  private List<AtributoFundamentoLegalItemCover> atributosFundamentoLegalDuimp = null;
 
   @XmlElement(name="tributos")
   @ApiModelProperty(value = "")
@@ -311,25 +340,25 @@ public class ItemCover  {
   }
 
  /**
-   * Get documentosVinculados
-   * @return documentosVinculados
+   * Get declaracoesVinculadas
+   * @return declaracoesVinculadas
   **/
-  @JsonProperty("documentosVinculados")
-  public List<DocumentoVinculadoCover> getDocumentosVinculados() {
-    return documentosVinculados;
+  @JsonProperty("declaracoesVinculadas")
+  public List<DeclaracaoVinculadaCover> getDeclaracoesVinculadas() {
+    return declaracoesVinculadas;
   }
 
-  public void setDocumentosVinculados(List<DocumentoVinculadoCover> documentosVinculados) {
-    this.documentosVinculados = documentosVinculados;
+  public void setDeclaracoesVinculadas(List<DeclaracaoVinculadaCover> declaracoesVinculadas) {
+    this.declaracoesVinculadas = declaracoesVinculadas;
   }
 
-  public ItemCover documentosVinculados(List<DocumentoVinculadoCover> documentosVinculados) {
-    this.documentosVinculados = documentosVinculados;
+  public ItemCover declaracoesVinculadas(List<DeclaracaoVinculadaCover> declaracoesVinculadas) {
+    this.declaracoesVinculadas = declaracoesVinculadas;
     return this;
   }
 
-  public ItemCover addDocumentosVinculadosItem(DocumentoVinculadoCover documentosVinculadosItem) {
-    this.documentosVinculados.add(documentosVinculadosItem);
+  public ItemCover addDeclaracoesVinculadasItem(DeclaracaoVinculadaCover declaracoesVinculadasItem) {
+    this.declaracoesVinculadas.add(declaracoesVinculadasItem);
     return this;
   }
 
@@ -353,25 +382,48 @@ public class ItemCover  {
   }
 
  /**
-   * Get atributos
-   * @return atributos
+   * Get atributosDuimp
+   * @return atributosDuimp
   **/
-  @JsonProperty("atributos")
-  public List<AtributoItemCover> getAtributos() {
-    return atributos;
+  @JsonProperty("atributosDuimp")
+  public List<AtributoItemCover> getAtributosDuimp() {
+    return atributosDuimp;
   }
 
-  public void setAtributos(List<AtributoItemCover> atributos) {
-    this.atributos = atributos;
+  public void setAtributosDuimp(List<AtributoItemCover> atributosDuimp) {
+    this.atributosDuimp = atributosDuimp;
   }
 
-  public ItemCover atributos(List<AtributoItemCover> atributos) {
-    this.atributos = atributos;
+  public ItemCover atributosDuimp(List<AtributoItemCover> atributosDuimp) {
+    this.atributosDuimp = atributosDuimp;
     return this;
   }
 
-  public ItemCover addAtributosItem(AtributoItemCover atributosItem) {
-    this.atributos.add(atributosItem);
+  public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
+    this.atributosDuimp.add(atributosDuimpItem);
+    return this;
+  }
+
+ /**
+   * Get atributosFundamentoLegalDuimp
+   * @return atributosFundamentoLegalDuimp
+  **/
+  @JsonProperty("atributosFundamentoLegalDuimp")
+  public List<AtributoFundamentoLegalItemCover> getAtributosFundamentoLegalDuimp() {
+    return atributosFundamentoLegalDuimp;
+  }
+
+  public void setAtributosFundamentoLegalDuimp(List<AtributoFundamentoLegalItemCover> atributosFundamentoLegalDuimp) {
+    this.atributosFundamentoLegalDuimp = atributosFundamentoLegalDuimp;
+  }
+
+  public ItemCover atributosFundamentoLegalDuimp(List<AtributoFundamentoLegalItemCover> atributosFundamentoLegalDuimp) {
+    this.atributosFundamentoLegalDuimp = atributosFundamentoLegalDuimp;
+    return this;
+  }
+
+  public ItemCover addAtributosFundamentoLegalDuimpItem(AtributoFundamentoLegalItemCover atributosFundamentoLegalDuimpItem) {
+    this.atributosFundamentoLegalDuimp.add(atributosFundamentoLegalDuimpItem);
     return this;
   }
 
@@ -415,9 +467,10 @@ public class ItemCover  {
     sb.append("    condicaoVenda: ").append(toIndentedString(condicaoVenda)).append("\n");
     sb.append("    lpcos: ").append(toIndentedString(lpcos)).append("\n");
     sb.append("    certificadoMercosul: ").append(toIndentedString(certificadoMercosul)).append("\n");
-    sb.append("    documentosVinculados: ").append(toIndentedString(documentosVinculados)).append("\n");
+    sb.append("    declaracoesVinculadas: ").append(toIndentedString(declaracoesVinculadas)).append("\n");
     sb.append("    dadosCambiais: ").append(toIndentedString(dadosCambiais)).append("\n");
-    sb.append("    atributos: ").append(toIndentedString(atributos)).append("\n");
+    sb.append("    atributosDuimp: ").append(toIndentedString(atributosDuimp)).append("\n");
+    sb.append("    atributosFundamentoLegalDuimp: ").append(toIndentedString(atributosFundamentoLegalDuimp)).append("\n");
     sb.append("    tributos: ").append(toIndentedString(tributos)).append("\n");
     sb.append("}");
     return sb.toString();

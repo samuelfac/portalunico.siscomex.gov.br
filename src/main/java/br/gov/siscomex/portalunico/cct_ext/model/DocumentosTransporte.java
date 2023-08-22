@@ -1,143 +1,262 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.math.BigDecimal;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
+import javax.validation.constraints.*;
 import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DocumentosTransporte", propOrder =
-    { "id", "tipoDocumento", "numeroDocumento", "dataEmissao", "identificacaoVeiculo"
+    { "identificacaoDocumentoTransporte", "tipoDocumentoTransporte", "dataEmissaoDocumentoTransporte", "dadosVeiculoConferem", "dadosUnidadeTransporteConferem", "dadosConteinerConferem", "dadosEmbalagemConferem", "pesoAferido", "motivoNaoPesagem"
 })
 
 @XmlRootElement(name="DocumentosTransporte")
 /**
-  * Documento de transporte
+  * Dados dos documentos de transporte
  **/
-@ApiModel(description="Documento de transporte")
+@ApiModel(description="Dados dos documentos de transporte")
 public class DocumentosTransporte  {
   
-  @XmlElement(name="id")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="identificacaoDocumentoTransporte", required = true)
+  @ApiModelProperty(example = "16BR0008093", required = true, value = "Identificação do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA")
+ /**
+   * Identificação do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA
+  **/
+  private String identificacaoDocumentoTransporte = null;
+
+  @XmlElement(name="tipoDocumentoTransporte", required = true)
+  @ApiModelProperty(example = "1", required = true, value = "Tipo do documento de transporte<br>Tamanho: 2<br>Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros")
+ /**
+   * Tipo do documento de transporte<br>Tamanho: 2<br>Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros
+  **/
+  private Integer tipoDocumentoTransporte = null;
+
+  @XmlElement(name="dataEmissaoDocumentoTransporte", required = true)
+  @ApiModelProperty(example = "2018-04-01", required = true, value = "Data de emissão do documento de transporte<br>Formato: AAAA-MM-DD")
+ /**
+   * Data de emissão do documento de transporte<br>Formato: AAAA-MM-DD
+  **/
+  private String dataEmissaoDocumentoTransporte = null;
+
+  @XmlElement(name="dadosVeiculoConferem", required = true)
+  @ApiModelProperty(example = "N", required = true, value = "Indicador de conferência dos dados do veículo com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+ /**
+   * Indicador de conferência dos dados do veículo com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+  **/
+  private String dadosVeiculoConferem = null;
+
+  @XmlElement(name="dadosUnidadeTransporteConferem", required = true)
+  @ApiModelProperty(example = "N", required = true, value = "Indicador de conferência dos dados da unidade de transporte com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+ /**
+   * Indicador de conferência dos dados da unidade de transporte com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+  **/
+  private String dadosUnidadeTransporteConferem = null;
+
+  @XmlElement(name="dadosConteinerConferem", required = true)
+  @ApiModelProperty(example = "N", required = true, value = "Indicador de conferência dos dados do contêiner com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+ /**
+   * Indicador de conferência dos dados do contêiner com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+  **/
+  private String dadosConteinerConferem = null;
+
+  @XmlElement(name="dadosEmbalagemConferem", required = true)
+  @ApiModelProperty(example = "N", required = true, value = "Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+ /**
+   * Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+  **/
+  private String dadosEmbalagemConferem = null;
+
+  @XmlElement(name="pesoAferido")
+  @ApiModelProperty(example = "100.0", value = "Peso aferido na balança do recinto em Kg.<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
   @Valid
-  private DocumentoTransportePK id = null;
+ /**
+   * Peso aferido na balança do recinto em Kg.<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
+  **/
+  private BigDecimal pesoAferido = null;
 
-  @XmlElement(name="tipoDocumento")
-  @ApiModelProperty(example = "1", value = "Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros")
+  @XmlElement(name="motivoNaoPesagem")
+  @ApiModelProperty(example = "Motivo da não realização da pesagem", value = "Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.")
  /**
-   * Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros
+   * Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
   **/
-  private String tipoDocumento = null;
-
-  @XmlElement(name="numeroDocumento")
-  @ApiModelProperty(example = "123456", value = "Tamanho mínimo: 5<br>Tamanho máximo: 15")
+  private String motivoNaoPesagem = null;
  /**
-   * Tamanho mínimo: 5<br>Tamanho máximo: 15
+   * Identificação do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho Máximo: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
+   * @return identificacaoDocumentoTransporte
   **/
-  private String numeroDocumento = null;
-
-  @XmlElement(name="dataEmissao")
-  @ApiModelProperty(example = "2019-12-30", value = "Formato: AAAA-MM-DD")
- /**
-   * Formato: AAAA-MM-DD
-  **/
-  private String dataEmissao = null;
-
-  @XmlElement(name="identificacaoVeiculo")
-  @ApiModelProperty(example = "ABC1234", value = "Tamanho mínimo: 1<br>Tamanho máximo: 15")
- /**
-   * Tamanho mínimo: 1<br>Tamanho máximo: 15
-  **/
-  private String identificacaoVeiculo = null;
- /**
-   * Get id
-   * @return id
-  **/
-  @JsonProperty("id")
-  public DocumentoTransportePK getId() {
-    return id;
+  @JsonProperty("identificacaoDocumentoTransporte")
+  @NotNull
+  public String getIdentificacaoDocumentoTransporte() {
+    return identificacaoDocumentoTransporte;
   }
 
-  public void setId(DocumentoTransportePK id) {
-    this.id = id;
+  public void setIdentificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
+    this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
   }
 
-  public DocumentosTransporte id(DocumentoTransportePK id) {
-    this.id = id;
+  public DocumentosTransporte identificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
+    this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
     return this;
   }
 
  /**
-   * Domínio&lt;br&gt;01 - MIC/DTA&lt;br&gt;02 - TIF/DTA&lt;br&gt;03 - DTAI&lt;br&gt;04 - Outros
-   * @return tipoDocumento
+   * Tipo do documento de transporte&lt;br&gt;Tamanho: 2&lt;br&gt;Domínio&lt;br&gt;01 - MIC/DTA&lt;br&gt;02 - TIF/DTA&lt;br&gt;03 - DTAI&lt;br&gt;04 - Outros
+   * @return tipoDocumentoTransporte
   **/
-  @JsonProperty("tipoDocumento")
-  public String getTipoDocumento() {
-    return tipoDocumento;
+  @JsonProperty("tipoDocumentoTransporte")
+  @NotNull
+  public Integer getTipoDocumentoTransporte() {
+    return tipoDocumentoTransporte;
   }
 
-  public void setTipoDocumento(String tipoDocumento) {
-    this.tipoDocumento = tipoDocumento;
+  public void setTipoDocumentoTransporte(Integer tipoDocumentoTransporte) {
+    this.tipoDocumentoTransporte = tipoDocumentoTransporte;
   }
 
-  public DocumentosTransporte tipoDocumento(String tipoDocumento) {
-    this.tipoDocumento = tipoDocumento;
+  public DocumentosTransporte tipoDocumentoTransporte(Integer tipoDocumentoTransporte) {
+    this.tipoDocumentoTransporte = tipoDocumentoTransporte;
     return this;
   }
 
  /**
-   * Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15
-   * @return numeroDocumento
+   * Data de emissão do documento de transporte&lt;br&gt;Formato: AAAA-MM-DD
+   * @return dataEmissaoDocumentoTransporte
   **/
-  @JsonProperty("numeroDocumento")
-  public String getNumeroDocumento() {
-    return numeroDocumento;
+  @JsonProperty("dataEmissaoDocumentoTransporte")
+  @NotNull
+  public String getDataEmissaoDocumentoTransporte() {
+    return dataEmissaoDocumentoTransporte;
   }
 
-  public void setNumeroDocumento(String numeroDocumento) {
-    this.numeroDocumento = numeroDocumento;
+  public void setDataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
+    this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
   }
 
-  public DocumentosTransporte numeroDocumento(String numeroDocumento) {
-    this.numeroDocumento = numeroDocumento;
+  public DocumentosTransporte dataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
+    this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
     return this;
   }
 
  /**
-   * Formato: AAAA-MM-DD
-   * @return dataEmissao
+   * Indicador de conferência dos dados do veículo com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+   * @return dadosVeiculoConferem
   **/
-  @JsonProperty("dataEmissao")
-  public String getDataEmissao() {
-    return dataEmissao;
+  @JsonProperty("dadosVeiculoConferem")
+  @NotNull
+  public String getDadosVeiculoConferem() {
+    return dadosVeiculoConferem;
   }
 
-  public void setDataEmissao(String dataEmissao) {
-    this.dataEmissao = dataEmissao;
+  public void setDadosVeiculoConferem(String dadosVeiculoConferem) {
+    this.dadosVeiculoConferem = dadosVeiculoConferem;
   }
 
-  public DocumentosTransporte dataEmissao(String dataEmissao) {
-    this.dataEmissao = dataEmissao;
+  public DocumentosTransporte dadosVeiculoConferem(String dadosVeiculoConferem) {
+    this.dadosVeiculoConferem = dadosVeiculoConferem;
     return this;
   }
 
  /**
-   * Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 15
-   * @return identificacaoVeiculo
+   * Indicador de conferência dos dados da unidade de transporte com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+   * @return dadosUnidadeTransporteConferem
   **/
-  @JsonProperty("identificacaoVeiculo")
-  public String getIdentificacaoVeiculo() {
-    return identificacaoVeiculo;
+  @JsonProperty("dadosUnidadeTransporteConferem")
+  @NotNull
+  public String getDadosUnidadeTransporteConferem() {
+    return dadosUnidadeTransporteConferem;
   }
 
-  public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
-    this.identificacaoVeiculo = identificacaoVeiculo;
+  public void setDadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
+    this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
   }
 
-  public DocumentosTransporte identificacaoVeiculo(String identificacaoVeiculo) {
-    this.identificacaoVeiculo = identificacaoVeiculo;
+  public DocumentosTransporte dadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
+    this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
+    return this;
+  }
+
+ /**
+   * Indicador de conferência dos dados do contêiner com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+   * @return dadosConteinerConferem
+  **/
+  @JsonProperty("dadosConteinerConferem")
+  @NotNull
+  public String getDadosConteinerConferem() {
+    return dadosConteinerConferem;
+  }
+
+  public void setDadosConteinerConferem(String dadosConteinerConferem) {
+    this.dadosConteinerConferem = dadosConteinerConferem;
+  }
+
+  public DocumentosTransporte dadosConteinerConferem(String dadosConteinerConferem) {
+    this.dadosConteinerConferem = dadosConteinerConferem;
+    return this;
+  }
+
+ /**
+   * Indicador de conferência dos dados das embalagens com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+   * @return dadosEmbalagemConferem
+  **/
+  @JsonProperty("dadosEmbalagemConferem")
+  @NotNull
+  public String getDadosEmbalagemConferem() {
+    return dadosEmbalagemConferem;
+  }
+
+  public void setDadosEmbalagemConferem(String dadosEmbalagemConferem) {
+    this.dadosEmbalagemConferem = dadosEmbalagemConferem;
+  }
+
+  public DocumentosTransporte dadosEmbalagemConferem(String dadosEmbalagemConferem) {
+    this.dadosEmbalagemConferem = dadosEmbalagemConferem;
+    return this;
+  }
+
+ /**
+   * Peso aferido na balança do recinto em Kg.&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
+   * @return pesoAferido
+  **/
+  @JsonProperty("pesoAferido")
+  public BigDecimal getPesoAferido() {
+    return pesoAferido;
+  }
+
+  public void setPesoAferido(BigDecimal pesoAferido) {
+    this.pesoAferido = pesoAferido;
+  }
+
+  public DocumentosTransporte pesoAferido(BigDecimal pesoAferido) {
+    this.pesoAferido = pesoAferido;
+    return this;
+  }
+
+ /**
+   * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
+   * @return motivoNaoPesagem
+  **/
+  @JsonProperty("motivoNaoPesagem")
+  public String getMotivoNaoPesagem() {
+    return motivoNaoPesagem;
+  }
+
+  public void setMotivoNaoPesagem(String motivoNaoPesagem) {
+    this.motivoNaoPesagem = motivoNaoPesagem;
+  }
+
+  public DocumentosTransporte motivoNaoPesagem(String motivoNaoPesagem) {
+    this.motivoNaoPesagem = motivoNaoPesagem;
     return this;
   }
 
@@ -147,11 +266,15 @@ public class DocumentosTransporte  {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentosTransporte {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    tipoDocumento: ").append(toIndentedString(tipoDocumento)).append("\n");
-    sb.append("    numeroDocumento: ").append(toIndentedString(numeroDocumento)).append("\n");
-    sb.append("    dataEmissao: ").append(toIndentedString(dataEmissao)).append("\n");
-    sb.append("    identificacaoVeiculo: ").append(toIndentedString(identificacaoVeiculo)).append("\n");
+    sb.append("    identificacaoDocumentoTransporte: ").append(toIndentedString(identificacaoDocumentoTransporte)).append("\n");
+    sb.append("    tipoDocumentoTransporte: ").append(toIndentedString(tipoDocumentoTransporte)).append("\n");
+    sb.append("    dataEmissaoDocumentoTransporte: ").append(toIndentedString(dataEmissaoDocumentoTransporte)).append("\n");
+    sb.append("    dadosVeiculoConferem: ").append(toIndentedString(dadosVeiculoConferem)).append("\n");
+    sb.append("    dadosUnidadeTransporteConferem: ").append(toIndentedString(dadosUnidadeTransporteConferem)).append("\n");
+    sb.append("    dadosConteinerConferem: ").append(toIndentedString(dadosConteinerConferem)).append("\n");
+    sb.append("    dadosEmbalagemConferem: ").append(toIndentedString(dadosEmbalagemConferem)).append("\n");
+    sb.append("    pesoAferido: ").append(toIndentedString(pesoAferido)).append("\n");
+    sb.append("    motivoNaoPesagem: ").append(toIndentedString(motivoNaoPesagem)).append("\n");
     sb.append("}");
     return sb.toString();
   }

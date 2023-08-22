@@ -4,11 +4,24 @@ import br.gov.siscomex.portalunico.duimp_api.model.DiagnosticoCover;
 import br.gov.siscomex.portalunico.duimp_api.model.RegistroCover;
 import br.gov.siscomex.portalunico.duimp_api.model.RespostaApiDiagnosticoRegistro;
 import br.gov.siscomex.portalunico.duimp_api.model.RespostaApiErro;
-import io.swagger.annotations.*;
 
-import javax.validation.Valid;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.jaxrs.PATCH;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Declaração Única de Importação - Intervenientes Privados
@@ -38,7 +51,7 @@ public interface RegistroEDiagnsticoApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = RespostaApiErro.class),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response diagnosticarDuimp(@ApiParam(value = "Dados para diagnóstico da Duimp." ,required=true)@Valid DiagnosticoCover body, @ApiParam(value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numero-duimp") String numeroDuimp, @ApiParam(value = "Versão da Duimp.<br>Valor mínimo: 1<br>Valor máximo: 9999",required=true) @PathParam("versao-duimp") Object versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response diagnosticarDuimp(@ApiParam(value = "Dados para diagnóstico da Duimp." ,required=true)@Valid DiagnosticoCover body, @ApiParam(value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'AABRSSSSSSSSSSD'<br>Lei de formação. O número da Duimp é composto por: <br>* AA = Corresponde ao ano do registro da Declaração. <br>* BR = Corresponde à sigla do país de emissão do documento (BR).<br>* SSSSSSSSSS = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numero-duimp") String numeroDuimp, @ApiParam(value = "Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999",required=true) @PathParam("versao-duimp") Object versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Solicitar o registro da Duimp para registro ou retificação.
@@ -58,6 +71,6 @@ public interface RegistroEDiagnsticoApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = RespostaApiErro.class),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response registrarDuimp(@ApiParam(value = "Dados para registro da Duimp." ,required=true)@Valid RegistroCover body, @ApiParam(value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numero-duimp") String numeroDuimp, @ApiParam(value = "Versão da Duimp.<br>Valor mínimo: 1<br>Valor máximo: 9999",required=true) @PathParam("versao-duimp") Object versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+    public Response registrarDuimp(@ApiParam(value = "Dados para registro da Duimp." ,required=true)@Valid RegistroCover body, @ApiParam(value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'AABRSSSSSSSSSSD'<br>Lei de formação. O número da Duimp é composto por: <br>* AA = Corresponde ao ano do registro da Declaração. <br>* BR = Corresponde à sigla do país de emissão do documento (BR).<br>* SSSSSSSSSS = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numero-duimp") String numeroDuimp, @ApiParam(value = "Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999",required=true) @PathParam("versao-duimp") Object versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

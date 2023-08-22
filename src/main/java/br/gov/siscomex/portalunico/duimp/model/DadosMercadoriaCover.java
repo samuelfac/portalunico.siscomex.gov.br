@@ -1,12 +1,20 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosMercadoriaCover", propOrder =
@@ -166,18 +174,18 @@ public enum CondicaoEnum {
   private BigDecimal valorUnitarioCondicaoVenda = null;
 
   @XmlElement(name="valorMercadoriaCondicaoVendaMoedaNegociada")
-  @ApiModelProperty(example = "1000.0", value = "Valor total do item na Condição de Venda na moeda negociada.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "1000.0", value = "Valor total do item na Condição de Venda na moeda negociada.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor total do item na Condição de Venda na moeda negociada.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do item na Condição de Venda na moeda negociada.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorMercadoriaCondicaoVendaMoedaNegociada = null;
 
   @XmlElement(name="valorMercadoriaCondicaoVendaReal")
-  @ApiModelProperty(example = "3806.5", value = "Valor total do item na Condição de Venda em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "3806.5", value = "Valor total do item na Condição de Venda em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor total do item na Condição de Venda em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do item na Condição de Venda em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorMercadoriaCondicaoVendaReal = null;
  /**
@@ -349,7 +357,7 @@ public enum CondicaoEnum {
   }
 
  /**
-   * Valor total do item na Condição de Venda na moeda negociada.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do item na Condição de Venda na moeda negociada.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorMercadoriaCondicaoVendaMoedaNegociada
   **/
   @JsonProperty("valorMercadoriaCondicaoVendaMoedaNegociada")
@@ -367,7 +375,7 @@ public enum CondicaoEnum {
   }
 
  /**
-   * Valor total do item na Condição de Venda em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total do item na Condição de Venda em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorMercadoriaCondicaoVendaReal
   **/
   @JsonProperty("valorMercadoriaCondicaoVendaReal")

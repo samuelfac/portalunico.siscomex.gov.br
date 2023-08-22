@@ -1,13 +1,30 @@
 package br.gov.siscomex.portalunico.due.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.due.model.AdditionalDocument;
+import br.gov.siscomex.portalunico.due.model.AdditionalInformation;
+import br.gov.siscomex.portalunico.due.model.CurrencyExchange;
+import br.gov.siscomex.portalunico.due.model.Declarant;
+import br.gov.siscomex.portalunico.due.model.DeclarationIdentificationIDType;
+import br.gov.siscomex.portalunico.due.model.DeclarationOffice;
+import br.gov.siscomex.portalunico.due.model.DutyTaxFee;
+import br.gov.siscomex.portalunico.due.model.ExitOffice;
+import br.gov.siscomex.portalunico.due.model.GoodsShipment;
+import br.gov.siscomex.portalunico.due.model.UCR;
 import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DeclarationNFe", propOrder =

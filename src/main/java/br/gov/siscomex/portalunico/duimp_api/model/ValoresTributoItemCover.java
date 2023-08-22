@@ -1,14 +1,23 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ValoresTributoItemCover", propOrder =
-    { "calculado", "aReduzir", "devido", "suspenso", "aRecolher"
+    { "calculado", "aReduzir", "devido", "suspenso", "aRecolher", "originalDevido", "calculadoPagProporcional"
 })
 
 @XmlRootElement(name="ValoresTributoItemCover")
@@ -52,6 +61,20 @@ public class ValoresTributoItemCover  {
    * Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
   **/
   private Double aRecolher = null;
+
+  @XmlElement(name="originalDevido")
+  @ApiModelProperty(example = "16.7", value = "Valor do Tributo Originalmente Devido em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+ /**
+   * Valor do Tributo Originalmente Devido em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+  **/
+  private Double originalDevido = null;
+
+  @XmlElement(name="calculadoPagProporcional")
+  @ApiModelProperty(example = "16.7", value = "Valor do Tributo Calculado do Pagamento Proporcional em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+ /**
+   * Valor do Tributo Calculado do Pagamento Proporcional em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+  **/
+  private Double calculadoPagProporcional = null;
  /**
    * Valor Calculado do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
    * @return calculado
@@ -142,6 +165,42 @@ public class ValoresTributoItemCover  {
     return this;
   }
 
+ /**
+   * Valor do Tributo Originalmente Devido em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * @return originalDevido
+  **/
+  @JsonProperty("originalDevido")
+  public Double getOriginalDevido() {
+    return originalDevido;
+  }
+
+  public void setOriginalDevido(Double originalDevido) {
+    this.originalDevido = originalDevido;
+  }
+
+  public ValoresTributoItemCover originalDevido(Double originalDevido) {
+    this.originalDevido = originalDevido;
+    return this;
+  }
+
+ /**
+   * Valor do Tributo Calculado do Pagamento Proporcional em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * @return calculadoPagProporcional
+  **/
+  @JsonProperty("calculadoPagProporcional")
+  public Double getCalculadoPagProporcional() {
+    return calculadoPagProporcional;
+  }
+
+  public void setCalculadoPagProporcional(Double calculadoPagProporcional) {
+    this.calculadoPagProporcional = calculadoPagProporcional;
+  }
+
+  public ValoresTributoItemCover calculadoPagProporcional(Double calculadoPagProporcional) {
+    this.calculadoPagProporcional = calculadoPagProporcional;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -153,6 +212,8 @@ public class ValoresTributoItemCover  {
     sb.append("    devido: ").append(toIndentedString(devido)).append("\n");
     sb.append("    suspenso: ").append(toIndentedString(suspenso)).append("\n");
     sb.append("    aRecolher: ").append(toIndentedString(aRecolher)).append("\n");
+    sb.append("    originalDevido: ").append(toIndentedString(originalDevido)).append("\n");
+    sb.append("    calculadoPagProporcional: ").append(toIndentedString(calculadoPagProporcional)).append("\n");
     sb.append("}");
     return sb.toString();
   }

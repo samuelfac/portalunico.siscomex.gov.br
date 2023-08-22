@@ -1,12 +1,20 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AcrescimoDeducaoCover", propOrder =
@@ -78,18 +86,18 @@ public enum TipoOperacaoEnum {
   private Integer codigo = null;
 
   @XmlElement(name="valor")
-  @ApiModelProperty(example = "100.12", value = "Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "100.12", value = "Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valor = null;
 
   @XmlElement(name="valorReal")
-  @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em Real.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor do acréscimo/dedução em Real.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorReal = null;
  /**
@@ -150,7 +158,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valor
   **/
   @JsonProperty("valor")
@@ -168,7 +176,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Valor do acréscimo/dedução em Real.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do acréscimo/dedução em Real.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorReal
   **/
   @JsonProperty("valorReal")

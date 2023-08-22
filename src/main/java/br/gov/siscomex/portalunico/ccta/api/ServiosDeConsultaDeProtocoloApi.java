@@ -1,10 +1,24 @@
 package br.gov.siscomex.portalunico.ccta.api;
 
 import br.gov.siscomex.portalunico.ccta.model.RetornoConsultaProtocolo;
-import io.swagger.annotations.*;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.jaxrs.PATCH;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Controle de Carga e Trânsito Importação - Modal Aéreo
@@ -28,7 +42,6 @@ public interface ServiosDeConsultaDeProtocoloApi  {
     @ApiOperation(value = "Consultar a situação do processamento do protocolo.", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">A identificação da consulta é o número do protocolo gerado pelo sistema.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">As situações retornadas podem ser:</p><ul><li><em>EM_PROCESSAMENTO</em> – Aguardando processamento.</li><li><em>PROCESSADO</em> – Processamento realizado com sucesso.</li><li><em>REJEITADO</em> – Processamento rejeitado. Neste caso, a lista de erros encontrados é retornada no resultado.</li></ul>", tags={ "Serviços de Consulta de Protocolo" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocolo.class),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),

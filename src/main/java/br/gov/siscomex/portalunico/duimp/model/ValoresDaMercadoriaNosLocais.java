@@ -1,11 +1,19 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ValoresDaMercadoriaNosLocais", propOrder =
@@ -16,30 +24,30 @@ import java.math.BigDecimal;
 public class ValoresDaMercadoriaNosLocais  {
   
   @XmlElement(name="valorTotalMercadoriaLocalEmbarqueDolar")
-  @ApiModelProperty(example = "10.12", value = "Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "10.12", value = "Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorTotalMercadoriaLocalEmbarqueDolar = null;
 
   @XmlElement(name="valorTotalMercadoriaLocalEmbarqueReal")
-  @ApiModelProperty(example = "20.1234", value = "Valor total da mercadoria no local de embarque em reais<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "20.12", value = "Valor total da mercadoria no local de embarque em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor total da mercadoria no local de embarque em reais<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorTotalMercadoriaLocalEmbarqueReal = null;
 
   @XmlElement(name="valorTotalMercadoriaLocalDescargaReal")
-  @ApiModelProperty(example = "30.1234567", value = "Valor total da mercadoria no local de descarga em reais<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "30.12", value = "Valor total da mercadoria no local de descarga em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor total da mercadoria no local de descarga em reais<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de descarga em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorTotalMercadoriaLocalDescargaReal = null;
  /**
-   * Valor total da mercadoria no local de embarque em dolar&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em dolar&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorTotalMercadoriaLocalEmbarqueDolar
   **/
   @JsonProperty("valorTotalMercadoriaLocalEmbarqueDolar")
@@ -57,7 +65,7 @@ public class ValoresDaMercadoriaNosLocais  {
   }
 
  /**
-   * Valor total da mercadoria no local de embarque em reais&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de embarque em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorTotalMercadoriaLocalEmbarqueReal
   **/
   @JsonProperty("valorTotalMercadoriaLocalEmbarqueReal")
@@ -75,7 +83,7 @@ public class ValoresDaMercadoriaNosLocais  {
   }
 
  /**
-   * Valor total da mercadoria no local de descarga em reais&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor total da mercadoria no local de descarga em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorTotalMercadoriaLocalDescargaReal
   **/
   @JsonProperty("valorTotalMercadoriaLocalDescargaReal")

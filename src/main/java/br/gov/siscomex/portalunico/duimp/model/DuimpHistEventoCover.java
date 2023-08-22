@@ -1,12 +1,21 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp.model.TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DuimpHistEventoCover", propOrder =
@@ -28,11 +37,11 @@ public class DuimpHistEventoCover  {
   private String numeroDuimp = null;
 
   @XmlElement(name="versaoDuimp")
-  @ApiModelProperty(example = "1", value = "Versão da Duimp em que ocorreu o evento<br>Valor mínimo: 1<br>Valor máximo: 9999")
+  @ApiModelProperty(example = "0001", value = "Versão da Duimp em que ocorreu o evento<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
  /**
-   * Versão da Duimp em que ocorreu o evento<br>Valor mínimo: 1<br>Valor máximo: 9999
+   * Versão da Duimp em que ocorreu o evento<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
   **/
-  private Integer versaoDuimp = null;
+  private String versaoDuimp = null;
 
   @XmlElement(name="evento")
   @ApiModelProperty(value = "")
@@ -64,19 +73,19 @@ public class DuimpHistEventoCover  {
   }
 
  /**
-   * Versão da Duimp em que ocorreu o evento&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+   * Versão da Duimp em que ocorreu o evento&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
    * @return versaoDuimp
   **/
   @JsonProperty("versaoDuimp")
-  public Integer getVersaoDuimp() {
+  public String getVersaoDuimp() {
     return versaoDuimp;
   }
 
-  public void setVersaoDuimp(Integer versaoDuimp) {
+  public void setVersaoDuimp(String versaoDuimp) {
     this.versaoDuimp = versaoDuimp;
   }
 
-  public DuimpHistEventoCover versaoDuimp(Integer versaoDuimp) {
+  public DuimpHistEventoCover versaoDuimp(String versaoDuimp) {
     this.versaoDuimp = versaoDuimp;
     return this;
   }

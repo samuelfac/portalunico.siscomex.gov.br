@@ -1,11 +1,47 @@
 package br.gov.siscomex.portalunico.rcnt.api;
 
-import br.gov.siscomex.portalunico.rcnt.model.*;
-import io.swagger.annotations.*;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAcessoPessoa;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAcessoVeculo;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAgendaOperaoNaviosAeronaves;
+import br.gov.siscomex.portalunico.rcnt.model.DadosArmazenamentoLote;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAtribuioTrocaNavio;
+import br.gov.siscomex.portalunico.rcnt.model.DadosAvariaExtravioLote;
+import br.gov.siscomex.portalunico.rcnt.model.DadosCarregamentoEntregaLotes;
+import br.gov.siscomex.portalunico.rcnt.model.DadosCredenciamentoPessoa;
+import br.gov.siscomex.portalunico.rcnt.model.DadosCredenciamentoVeculo;
+import br.gov.siscomex.portalunico.rcnt.model.DadosDaChegadaAoPontoZero;
+import br.gov.siscomex.portalunico.rcnt.model.DadosDaConfernciaFsica;
+import br.gov.siscomex.portalunico.rcnt.model.DadosDaInspeoNoInvasiva;
+import br.gov.siscomex.portalunico.rcnt.model.DadosEmbarqueDesembarqueNavio;
+import br.gov.siscomex.portalunico.rcnt.model.DadosGeorreferenciamento;
+import br.gov.siscomex.portalunico.rcnt.model.DadosGeraoLote;
+import br.gov.siscomex.portalunico.rcnt.model.DadosIndisponibilidadeEquipamento;
+import br.gov.siscomex.portalunico.rcnt.model.DadosInformaoBloqueioDesbloqueioVeculoCarga;
+import br.gov.siscomex.portalunico.rcnt.model.DadosInformaoPrviaTrnsitoSimplificadoContiner;
+import br.gov.siscomex.portalunico.rcnt.model.DadosPesagemVeculo;
+import br.gov.siscomex.portalunico.rcnt.model.DadosPosioContiner;
+import br.gov.siscomex.portalunico.rcnt.model.DadosPosioVeculoPtio;
+import br.gov.siscomex.portalunico.rcnt.model.DadosRepresentante;
+import br.gov.siscomex.portalunico.rcnt.model.ExceptionCoverDocumentacao;
+import br.gov.siscomex.portalunico.rcnt.model.RespostaParaSucessoNaRecepoDeEventoAduaneiro;
 
-import javax.validation.Valid;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.jaxrs.PATCH;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Recintos Aduaneiros

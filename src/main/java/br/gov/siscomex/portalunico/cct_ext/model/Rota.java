@@ -1,13 +1,21 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.cct_ext.model.RotasPassagem;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Rota", propOrder =
@@ -44,20 +52,18 @@ public class Rota  {
   private String codigoCidadeEntrada = null;
 
   @XmlElement(name="codigoAduanaEntrada", required = true)
-  @ApiModelProperty(example = "222.0", required = true, value = "Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-  @Valid
+  @ApiModelProperty(example = "222", required = true, value = "Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
  /**
    * Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
   **/
-  private BigDecimal codigoAduanaEntrada = null;
+  private String codigoAduanaEntrada = null;
 
   @XmlElement(name="codigoLugarOperativoEntrada", required = true)
-  @ApiModelProperty(example = "1234567.0", required = true, value = "Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-  @Valid
+  @ApiModelProperty(example = "1234567", required = true, value = "Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
  /**
    * Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
   **/
-  private BigDecimal codigoLugarOperativoEntrada = null;
+  private String codigoLugarOperativoEntrada = null;
 
   @XmlElement(name="codigoCidadeDestino", required = true)
   @ApiModelProperty(example = "20", required = true, value = "Cidade de destino (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
@@ -67,20 +73,18 @@ public class Rota  {
   private String codigoCidadeDestino = null;
 
   @XmlElement(name="codigoAduanaDestino", required = true)
-  @ApiModelProperty(example = "333.0", required = true, value = "Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-  @Valid
+  @ApiModelProperty(example = "333", required = true, value = "Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
  /**
    * Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
   **/
-  private BigDecimal codigoAduanaDestino = null;
+  private String codigoAduanaDestino = null;
 
   @XmlElement(name="codigoLugarOperativoDestino", required = true)
-  @ApiModelProperty(example = "1234567.0", required = true, value = "Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-  @Valid
+  @ApiModelProperty(example = "1234567", required = true, value = "Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
  /**
    * Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
   **/
-  private BigDecimal codigoLugarOperativoDestino = null;
+  private String codigoLugarOperativoDestino = null;
 
   @XmlElement(name="rotasPassagem")
   @ApiModelProperty(value = "")
@@ -149,15 +153,15 @@ public class Rota  {
   **/
   @JsonProperty("codigoAduanaEntrada")
   @NotNull
-  public BigDecimal getCodigoAduanaEntrada() {
+  public String getCodigoAduanaEntrada() {
     return codigoAduanaEntrada;
   }
 
-  public void setCodigoAduanaEntrada(BigDecimal codigoAduanaEntrada) {
+  public void setCodigoAduanaEntrada(String codigoAduanaEntrada) {
     this.codigoAduanaEntrada = codigoAduanaEntrada;
   }
 
-  public Rota codigoAduanaEntrada(BigDecimal codigoAduanaEntrada) {
+  public Rota codigoAduanaEntrada(String codigoAduanaEntrada) {
     this.codigoAduanaEntrada = codigoAduanaEntrada;
     return this;
   }
@@ -168,15 +172,15 @@ public class Rota  {
   **/
   @JsonProperty("codigoLugarOperativoEntrada")
   @NotNull
-  public BigDecimal getCodigoLugarOperativoEntrada() {
+  public String getCodigoLugarOperativoEntrada() {
     return codigoLugarOperativoEntrada;
   }
 
-  public void setCodigoLugarOperativoEntrada(BigDecimal codigoLugarOperativoEntrada) {
+  public void setCodigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
     this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
   }
 
-  public Rota codigoLugarOperativoEntrada(BigDecimal codigoLugarOperativoEntrada) {
+  public Rota codigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
     this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
     return this;
   }
@@ -206,15 +210,15 @@ public class Rota  {
   **/
   @JsonProperty("codigoAduanaDestino")
   @NotNull
-  public BigDecimal getCodigoAduanaDestino() {
+  public String getCodigoAduanaDestino() {
     return codigoAduanaDestino;
   }
 
-  public void setCodigoAduanaDestino(BigDecimal codigoAduanaDestino) {
+  public void setCodigoAduanaDestino(String codigoAduanaDestino) {
     this.codigoAduanaDestino = codigoAduanaDestino;
   }
 
-  public Rota codigoAduanaDestino(BigDecimal codigoAduanaDestino) {
+  public Rota codigoAduanaDestino(String codigoAduanaDestino) {
     this.codigoAduanaDestino = codigoAduanaDestino;
     return this;
   }
@@ -225,15 +229,15 @@ public class Rota  {
   **/
   @JsonProperty("codigoLugarOperativoDestino")
   @NotNull
-  public BigDecimal getCodigoLugarOperativoDestino() {
+  public String getCodigoLugarOperativoDestino() {
     return codigoLugarOperativoDestino;
   }
 
-  public void setCodigoLugarOperativoDestino(BigDecimal codigoLugarOperativoDestino) {
+  public void setCodigoLugarOperativoDestino(String codigoLugarOperativoDestino) {
     this.codigoLugarOperativoDestino = codigoLugarOperativoDestino;
   }
 
-  public Rota codigoLugarOperativoDestino(BigDecimal codigoLugarOperativoDestino) {
+  public Rota codigoLugarOperativoDestino(String codigoLugarOperativoDestino) {
     this.codigoLugarOperativoDestino = codigoLugarOperativoDestino;
     return this;
   }

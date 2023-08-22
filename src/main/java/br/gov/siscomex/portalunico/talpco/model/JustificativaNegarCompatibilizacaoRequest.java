@@ -1,14 +1,23 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "JustificativaNegarCompatibilizacaoRequest", propOrder =
-    { "justificativa", "faltaPagamentoTaxa"
+    { "justificativa", "faltaPagamentoTaxa", "motivoAnalise"
 })
 
 @XmlRootElement(name="JustificativaNegarCompatibilizacaoRequest")
@@ -31,6 +40,13 @@ public class JustificativaNegarCompatibilizacaoRequest  {
    * Indica se o pagamento de taxa não efetuado
   **/
   private Boolean faltaPagamentoTaxa = false;
+
+  @XmlElement(name="motivoAnalise")
+  @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+  **/
+  private String motivoAnalise = null;
  /**
    * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
    * @return justificativa
@@ -67,6 +83,24 @@ public class JustificativaNegarCompatibilizacaoRequest  {
     return this;
   }
 
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+   * @return motivoAnalise
+  **/
+  @JsonProperty("motivoAnalise")
+  public String getMotivoAnalise() {
+    return motivoAnalise;
+  }
+
+  public void setMotivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+  }
+
+  public JustificativaNegarCompatibilizacaoRequest motivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -75,6 +109,7 @@ public class JustificativaNegarCompatibilizacaoRequest  {
     
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    faltaPagamentoTaxa: ").append(toIndentedString(faltaPagamentoTaxa)).append("\n");
+    sb.append("    motivoAnalise: ").append(toIndentedString(motivoAnalise)).append("\n");
     sb.append("}");
     return sb.toString();
   }

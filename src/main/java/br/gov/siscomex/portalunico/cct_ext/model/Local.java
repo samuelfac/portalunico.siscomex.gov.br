@@ -1,11 +1,20 @@
 package br.gov.siscomex.portalunico.cct_ext.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import br.gov.siscomex.portalunico.cct_ext.model.Coordenadas;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
+import javax.validation.constraints.*;
 import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "Local", propOrder =
@@ -14,22 +23,22 @@ import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name="Local")
 /**
-  * Dados do local da entrega
+  * Dados do local da recepção
  **/
-@ApiModel(description="Dados do local da entrega")
+@ApiModel(description="Dados do local da recepção")
 public class Local  {
   
-  @XmlElement(name="codigoURF")
-  @ApiModelProperty(example = "0717600", value = "Código da unidade da Receita Federal onde a recepção está sendo efetuada<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Unidades da RFB.<br>Deve ser informado apenas quando o receptor não for um depositário.")
+  @XmlElement(name="codigoURF", required = true)
+  @ApiModelProperty(example = "0817600", required = true, value = "Código da Unidade da Receita Federal de Despacho<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Unidades da RFB de Despacho")
  /**
-   * Código da unidade da Receita Federal onde a recepção está sendo efetuada<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Unidades da RFB.<br>Deve ser informado apenas quando o receptor não for um depositário.
+   * Código da Unidade da Receita Federal de Despacho<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Unidades da RFB de Despacho
   **/
   private String codigoURF = null;
 
   @XmlElement(name="codigoRA")
-  @ApiModelProperty(example = "7911101", value = "Código do recinto alfandegado onde a recepção está sendo efetuada<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de recintos aduaneiros<br>Deve ser informado apenas quando o receptor for um depositário.")
+  @ApiModelProperty(example = "8911101", value = "Código do Recinto Alfandegado<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.<br>Deve ser informado somente quando o atributo coordenadas não for informado.")
  /**
-   * Código do recinto alfandegado onde a recepção está sendo efetuada<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de recintos aduaneiros<br>Deve ser informado apenas quando o receptor for um depositário.
+   * Código do Recinto Alfandegado<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.<br>Deve ser informado somente quando o atributo coordenadas não for informado.
   **/
   private String codigoRA = null;
 
@@ -38,10 +47,11 @@ public class Local  {
   @Valid
   private Coordenadas coordenadas = null;
  /**
-   * Código da unidade da Receita Federal onde a recepção está sendo efetuada&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB.&lt;br&gt;Deve ser informado apenas quando o receptor não for um depositário.
+   * Código da Unidade da Receita Federal de Despacho&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB de Despacho
    * @return codigoURF
   **/
   @JsonProperty("codigoURF")
+  @NotNull
   public String getCodigoURF() {
     return codigoURF;
   }
@@ -56,7 +66,7 @@ public class Local  {
   }
 
  /**
-   * Código do recinto alfandegado onde a recepção está sendo efetuada&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de recintos aduaneiros&lt;br&gt;Deve ser informado apenas quando o receptor for um depositário.
+   * Código do Recinto Alfandegado&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Recintos Alfandegados.&lt;br&gt;Deve ser informado somente quando o atributo coordenadas não for informado.
    * @return codigoRA
   **/
   @JsonProperty("codigoRA")

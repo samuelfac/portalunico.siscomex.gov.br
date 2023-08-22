@@ -2,11 +2,24 @@ package br.gov.siscomex.portalunico.ccta.api;
 
 import br.gov.siscomex.portalunico.ccta.model.Recebimento;
 import br.gov.siscomex.portalunico.ccta.model.Resposta;
-import io.swagger.annotations.*;
 
-import javax.validation.constraints.NotNull;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.jaxrs.PATCH;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Controle de Carga e Trânsito Importação - Modal Aéreo
@@ -30,7 +43,6 @@ public interface ServiosDeConsultaDeArquivosRecebidosApi  {
     @ApiOperation(value = "Consultar Situação de Arquivos por Número de Protocolo", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Consulta, para um determinado número de protocolo, a situação atual do processamento do arquivo enviado. O número de protocolo é aquele gerado pelo sistema após o recebimento do arquivo, quando o mesmo passa pela validação do XSD da IATA.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">As situações podem ser:</p><ul><li><em>Received</em> – Aguardando processamento.</li><li><em>Processed</em> – Processamento realizado com sucesso, com gravação dos dados na base de dados.</li><li><em>Rejected</em> – Arquivo rejeitado por erro no processamento. Neste caso, a lista de erros encontrados é exibida.</li></ul>", tags={ "Serviços de Consulta de Arquivos Recebidos" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = Recebimento.class),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
@@ -58,6 +70,6 @@ public interface ServiosDeConsultaDeArquivosRecebidosApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarRecepcaoUsingGET(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @NotNull @ApiParam(value = "Data de término período recebimento do arquivo  Tamanho: 10  Formato YYYY-MM-DD",required=true)  @QueryParam("endDate") String endDate,  @NotNull @ApiParam(value = "Data de início período recebimento do arquivo  Tamanho: 10  Formato YYYY-MM-DD",required=true)  @QueryParam("startDate") String startDate,  @ApiParam(value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")  @QueryParam("cnpj") String cnpj);
+    public Response consultarRecepcaoUsingGET(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @NotNull @ApiParam(value = "Data de término período recebimento do arquivo  Tamanho: 10  Formato YYYY-MM-DD ou YYYY-MM-DD'T'HH:MI:SS",required=true)  @QueryParam("endDate") String endDate,  @NotNull @ApiParam(value = "Data de início período recebimento do arquivo  Tamanho: 10  Formato YYYY-MM-DD ou YYYY-MM-DD'T'HH:MI:SS",required=true)  @QueryParam("startDate") String startDate,  @ApiParam(value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")  @QueryParam("cnpj") String cnpj);
 }
 

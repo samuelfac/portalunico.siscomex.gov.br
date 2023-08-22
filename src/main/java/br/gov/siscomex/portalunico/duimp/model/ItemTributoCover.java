@@ -1,16 +1,30 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp.model.AtributoCover;
+import br.gov.siscomex.portalunico.duimp.model.CalculoTributoCover;
+import br.gov.siscomex.portalunico.duimp.model.DadosMercadoriaCover;
+import br.gov.siscomex.portalunico.duimp.model.TributoAplicadoCover;
+import br.gov.siscomex.portalunico.duimp.model.ValorMercadoriaCover;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemTributoCover", propOrder =
-    { "dadosMercadoria", "valorMercadoria", "tributosAplicados", "calculosTributos"
+    { "dadosMercadoria", "valorMercadoria", "tributosAplicados", "calculosTributos", "atributosFundamentoLegalDuimp"
 })
 
 @XmlRootElement(name="ItemTributoCover")
@@ -45,6 +59,14 @@ public class ItemTributoCover  {
    * Lista de tributos calculados
   **/
   private List<CalculoTributoCover> calculosTributos = null;
+
+  @XmlElement(name="atributosFundamentoLegalDuimp")
+  @ApiModelProperty(value = "Lista de atributos dinâmicos informativos de fundamento legal")
+  @Valid
+ /**
+   * Lista de atributos dinâmicos informativos de fundamento legal
+  **/
+  private List<AtributoCover> atributosFundamentoLegalDuimp = null;
  /**
    * Get dadosMercadoria
    * @return dadosMercadoria
@@ -127,6 +149,29 @@ public class ItemTributoCover  {
     return this;
   }
 
+ /**
+   * Lista de atributos dinâmicos informativos de fundamento legal
+   * @return atributosFundamentoLegalDuimp
+  **/
+  @JsonProperty("atributosFundamentoLegalDuimp")
+  public List<AtributoCover> getAtributosFundamentoLegalDuimp() {
+    return atributosFundamentoLegalDuimp;
+  }
+
+  public void setAtributosFundamentoLegalDuimp(List<AtributoCover> atributosFundamentoLegalDuimp) {
+    this.atributosFundamentoLegalDuimp = atributosFundamentoLegalDuimp;
+  }
+
+  public ItemTributoCover atributosFundamentoLegalDuimp(List<AtributoCover> atributosFundamentoLegalDuimp) {
+    this.atributosFundamentoLegalDuimp = atributosFundamentoLegalDuimp;
+    return this;
+  }
+
+  public ItemTributoCover addAtributosFundamentoLegalDuimpItem(AtributoCover atributosFundamentoLegalDuimpItem) {
+    this.atributosFundamentoLegalDuimp.add(atributosFundamentoLegalDuimpItem);
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -137,6 +182,7 @@ public class ItemTributoCover  {
     sb.append("    valorMercadoria: ").append(toIndentedString(valorMercadoria)).append("\n");
     sb.append("    tributosAplicados: ").append(toIndentedString(tributosAplicados)).append("\n");
     sb.append("    calculosTributos: ").append(toIndentedString(calculosTributos)).append("\n");
+    sb.append("    atributosFundamentoLegalDuimp: ").append(toIndentedString(atributosFundamentoLegalDuimp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

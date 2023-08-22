@@ -1,12 +1,29 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.ccta.model.BloqueioConsultaDetalhada;
+import br.gov.siscomex.portalunico.ccta.model.CargaDetalheChegadaTerrestre;
+import br.gov.siscomex.portalunico.ccta.model.ChaveConhecimento;
+import br.gov.siscomex.portalunico.ccta.model.ChaveViagem;
+import br.gov.siscomex.portalunico.ccta.model.DesbloqueioConsultaDetalhada;
+import br.gov.siscomex.portalunico.ccta.model.DocumentoSaidaConsultaDetalhada;
+import br.gov.siscomex.portalunico.ccta.model.EstoqueConsultaDetalhada;
+import br.gov.siscomex.portalunico.ccta.model.InfoManuseioConsultaDetalhada;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DsicConsultaDetalhada", propOrder =
@@ -500,6 +517,10 @@ public enum TipoDocumentoViajanteEnum {
 	@JsonProperty("I")
 	I(String.valueOf("I")),
 	
+	@XmlEnumValue("F")
+	@JsonProperty("F")
+	F(String.valueOf("F")),
+	
 	@XmlEnumValue("O")
 	@JsonProperty("O")
 	O(String.valueOf("O")),
@@ -535,9 +556,9 @@ public enum TipoDocumentoViajanteEnum {
 }
 
   @XmlElement(name="tipoDocumentoViajante")
-  @ApiModelProperty(example = "I", value = "Tipo de documento do passageiro<br/>P – Passaporte<br/>I – Carteira de identidade<br/>O – Outros<br/>N – Nenhum<br/>")
+  @ApiModelProperty(example = "I", value = "Tipo de documento do passageiro<br/>P – Passaporte<br/>I – Carteira de identidade<br/>F – CPF<br/>O – Outros<br/>N – Nenhum<br/>")
  /**
-   * Tipo de documento do passageiro<br/>P – Passaporte<br/>I – Carteira de identidade<br/>O – Outros<br/>N – Nenhum<br/>
+   * Tipo de documento do passageiro<br/>P – Passaporte<br/>I – Carteira de identidade<br/>F – CPF<br/>O – Outros<br/>N – Nenhum<br/>
   **/
   private TipoDocumentoViajanteEnum tipoDocumentoViajante = null;
 
@@ -1253,7 +1274,7 @@ public enum TipoDocumentoViajanteEnum {
   }
 
  /**
-   * Tipo de documento do passageiro&lt;br/&gt;P – Passaporte&lt;br/&gt;I – Carteira de identidade&lt;br/&gt;O – Outros&lt;br/&gt;N – Nenhum&lt;br/&gt;
+   * Tipo de documento do passageiro&lt;br/&gt;P – Passaporte&lt;br/&gt;I – Carteira de identidade&lt;br/&gt;F – CPF&lt;br/&gt;O – Outros&lt;br/&gt;N – Nenhum&lt;br/&gt;
    * @return tipoDocumentoViajante
   **/
   @JsonProperty("tipoDocumentoViajante")

@@ -1,22 +1,31 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DocumentoVinculadoCover", propOrder =
-    { "tipo", "numero", "numeroItem"
+ @XmlType(name = "DeclaracaoVinculadaCover", propOrder =
+    { "tipo", "numero", "numeroItem", "chaveAcesso"
 })
 
-@XmlRootElement(name="DocumentoVinculadoCover")
+@XmlRootElement(name="DeclaracaoVinculadaCover")
 /**
   * Lista de declarações aduaneiras vinculadas.
  **/
 @ApiModel(description="Lista de declarações aduaneiras vinculadas.")
-public class DocumentoVinculadoCover  {
+public class DeclaracaoVinculadaCover  {
   
 
 @XmlType(name="TipoEnum")
@@ -66,14 +75,14 @@ public enum TipoEnum {
 }
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "DUE", value = "Tipo de declaração vinculada.<br>Domínio:")
+  @ApiModelProperty(example = "DUIMP", value = "Tipo de declaração vinculada.<br>Domínio:")
  /**
    * Tipo de declaração vinculada.<br>Domínio:
   **/
   private TipoEnum tipo = null;
 
   @XmlElement(name="numero")
-  @ApiModelProperty(example = "19BR00000004936", value = "Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 16")
+  @ApiModelProperty(example = "23BR00001010550", value = "Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 16")
  /**
    * Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 16
   **/
@@ -85,6 +94,13 @@ public enum TipoEnum {
    * Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999
   **/
   private Integer numeroItem = null;
+
+  @XmlElement(name="chaveAcesso")
+  @ApiModelProperty(example = "23NcT000115501", value = "Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)")
+ /**
+   * Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)
+  **/
+  private String chaveAcesso = null;
  /**
    * Tipo de declaração vinculada.&lt;br&gt;Domínio:
    * @return tipo
@@ -101,7 +117,7 @@ public enum TipoEnum {
     this.tipo = tipo;
   }
 
-  public DocumentoVinculadoCover tipo(TipoEnum tipo) {
+  public DeclaracaoVinculadaCover tipo(TipoEnum tipo) {
     this.tipo = tipo;
     return this;
   }
@@ -119,7 +135,7 @@ public enum TipoEnum {
     this.numero = numero;
   }
 
-  public DocumentoVinculadoCover numero(String numero) {
+  public DeclaracaoVinculadaCover numero(String numero) {
     this.numero = numero;
     return this;
   }
@@ -137,8 +153,26 @@ public enum TipoEnum {
     this.numeroItem = numeroItem;
   }
 
-  public DocumentoVinculadoCover numeroItem(Integer numeroItem) {
+  public DeclaracaoVinculadaCover numeroItem(Integer numeroItem) {
     this.numeroItem = numeroItem;
+    return this;
+  }
+
+ /**
+   * Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;AALLLSSSSSSSSD&#39;&lt;br&gt;Lei de formação: &lt;br&gt;* AA &#x3D; Corresponde ao ano (2 caracteres).&lt;br&gt;* LLL &#x3D; 3 letras aleatórias.&lt;br&gt;* SSSSSSSS &#x3D; 8 caracteres númericos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)
+   * @return chaveAcesso
+  **/
+  @JsonProperty("chaveAcesso")
+  public String getChaveAcesso() {
+    return chaveAcesso;
+  }
+
+  public void setChaveAcesso(String chaveAcesso) {
+    this.chaveAcesso = chaveAcesso;
+  }
+
+  public DeclaracaoVinculadaCover chaveAcesso(String chaveAcesso) {
+    this.chaveAcesso = chaveAcesso;
     return this;
   }
 
@@ -146,11 +180,12 @@ public enum TipoEnum {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentoVinculadoCover {\n");
+    sb.append("class DeclaracaoVinculadaCover {\n");
     
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
     sb.append("    numeroItem: ").append(toIndentedString(numeroItem)).append("\n");
+    sb.append("    chaveAcesso: ").append(toIndentedString(chaveAcesso)).append("\n");
     sb.append("}");
     return sb.toString();
   }

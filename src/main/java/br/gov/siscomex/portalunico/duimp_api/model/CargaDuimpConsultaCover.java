@@ -1,15 +1,27 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import br.gov.siscomex.portalunico.duimp_api.model.CargaDuimpFreteConsultaCover;
+import br.gov.siscomex.portalunico.duimp_api.model.CargaDuimpMotivoSituacaoEspecialCover;
+import br.gov.siscomex.portalunico.duimp_api.model.CargaDuimpSeguroConsultaCover;
+import br.gov.siscomex.portalunico.duimp_api.model.UnidadeDeclaradaCover;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
+import javax.validation.constraints.*;
 import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CargaDuimpConsultaCover", propOrder =
-    { "unidadeDeclarada", "identificacao", "seguro", "frete", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado"
+    { "unidadeDeclarada", "identificacao", "seguro", "frete", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado", "motivoSituacaoEspecial"
 })
 
 @XmlRootElement(name="CargaDuimpConsultaCover")
@@ -25,9 +37,9 @@ public class CargaDuimpConsultaCover  {
   private UnidadeDeclaradaCover unidadeDeclarada = null;
 
   @XmlElement(name="identificacao")
-  @ApiModelProperty(example = "132105000002800", value = "Número de Identificação da Carga.<br>Tamanho: 15<br>Formato: NNNNNNNNNNNNNNN<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11")
+  @ApiModelProperty(example = "132105000002800", value = "Número de Identificação da Carga.<br>Tamanho: 15<br>Formato: NNNNNNNNNNNNNNN<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
  /**
-   * Número de Identificação da Carga.<br>Tamanho: 15<br>Formato: NNNNNNNNNNNNNNN<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11
+   * Número de Identificação da Carga.<br>Tamanho: 15<br>Formato: NNNNNNNNNNNNNNN<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
   **/
   private String identificacao = null;
 
@@ -42,16 +54,16 @@ public class CargaDuimpConsultaCover  {
   private CargaDuimpFreteConsultaCover frete = null;
 
   @XmlElement(name="valorAFRMMDevido")
-  @ApiModelProperty(example = "153.77", value = "Valor devido do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "153.77", value = "Valor devido do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
  /**
-   * Valor devido do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor devido do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
   **/
   private Double valorAFRMMDevido = null;
 
   @XmlElement(name="valorAFRMMPago")
-  @ApiModelProperty(example = "153.77", value = "Valor pago do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "153.77", value = "Valor pago do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
  /**
-   * Valor pago do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor pago do AFRMM e da TUM em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
   **/
   private Double valorAFRMMPago = null;
 
@@ -99,11 +111,16 @@ public enum IndicadorAFRMMQuitadoEnum {
 }
 
   @XmlElement(name="indicadorAFRMMQuitado")
-  @ApiModelProperty(example = "SIM", value = "Indicador de AFRMM e da TUM quitados.<br>Domínio:")
+  @ApiModelProperty(example = "SIM", value = "Indicador de AFRMM e da TUM quitados. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo<br>Domínio:")
  /**
-   * Indicador de AFRMM e da TUM quitados.<br>Domínio:
+   * Indicador de AFRMM e da TUM quitados. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo<br>Domínio:
   **/
   private IndicadorAFRMMQuitadoEnum indicadorAFRMMQuitado = null;
+
+  @XmlElement(name="motivoSituacaoEspecial")
+  @ApiModelProperty(value = "")
+  @Valid
+  private CargaDuimpMotivoSituacaoEspecialCover motivoSituacaoEspecial = null;
  /**
    * Get unidadeDeclarada
    * @return unidadeDeclarada
@@ -123,7 +140,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Número de Identificação da Carga.&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN&lt;br&gt;Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind&#x3D;11
+   * Número de Identificação da Carga.&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN&lt;br&gt;Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind&#x3D;11Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
    * @return identificacao
   **/
   @JsonProperty("identificacao")
@@ -177,7 +194,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Valor devido do AFRMM e da TUM em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor devido do AFRMM e da TUM em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
    * @return valorAFRMMDevido
   **/
   @JsonProperty("valorAFRMMDevido")
@@ -195,7 +212,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Valor pago do AFRMM e da TUM em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor pago do AFRMM e da TUM em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
    * @return valorAFRMMPago
   **/
   @JsonProperty("valorAFRMMPago")
@@ -213,7 +230,7 @@ public enum IndicadorAFRMMQuitadoEnum {
   }
 
  /**
-   * Indicador de AFRMM e da TUM quitados.&lt;br&gt;Domínio:
+   * Indicador de AFRMM e da TUM quitados. Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo&lt;br&gt;Domínio:
    * @return indicadorAFRMMQuitado
   **/
   @JsonProperty("indicadorAFRMMQuitado")
@@ -233,6 +250,24 @@ public enum IndicadorAFRMMQuitadoEnum {
     return this;
   }
 
+ /**
+   * Get motivoSituacaoEspecial
+   * @return motivoSituacaoEspecial
+  **/
+  @JsonProperty("motivoSituacaoEspecial")
+  public CargaDuimpMotivoSituacaoEspecialCover getMotivoSituacaoEspecial() {
+    return motivoSituacaoEspecial;
+  }
+
+  public void setMotivoSituacaoEspecial(CargaDuimpMotivoSituacaoEspecialCover motivoSituacaoEspecial) {
+    this.motivoSituacaoEspecial = motivoSituacaoEspecial;
+  }
+
+  public CargaDuimpConsultaCover motivoSituacaoEspecial(CargaDuimpMotivoSituacaoEspecialCover motivoSituacaoEspecial) {
+    this.motivoSituacaoEspecial = motivoSituacaoEspecial;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -246,6 +281,7 @@ public enum IndicadorAFRMMQuitadoEnum {
     sb.append("    valorAFRMMDevido: ").append(toIndentedString(valorAFRMMDevido)).append("\n");
     sb.append("    valorAFRMMPago: ").append(toIndentedString(valorAFRMMPago)).append("\n");
     sb.append("    indicadorAFRMMQuitado: ").append(toIndentedString(indicadorAFRMMQuitado)).append("\n");
+    sb.append("    motivoSituacaoEspecial: ").append(toIndentedString(motivoSituacaoEspecial)).append("\n");
     sb.append("}");
     return sb.toString();
   }

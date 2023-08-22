@@ -1,15 +1,23 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AlterarSituacaoLpcoRequest", propOrder =
-    { "situacao", "justificativa", "dataInicioVigencia", "dataFinalVigencia", "numeroOrgaoOrigem", "requerInspecao", "decisaoJudicial", "faltaPagamentoTaxa", "canal"
+    { "situacao", "justificativa", "dataInicioVigencia", "dataFinalVigencia", "numeroOrgaoOrigem", "requerInspecao", "decisaoJudicial", "faltaPagamentoTaxa", "canal", "motivoAnalise"
 })
 
 @XmlRootElement(name="AlterarSituacaoLpcoRequest")
@@ -183,6 +191,13 @@ public enum CanalEnum {
    * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>
   **/
   private CanalEnum canal = null;
+
+  @XmlElement(name="motivoAnalise")
+  @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+  **/
+  private String motivoAnalise = null;
  /**
    * Código da nova situação do LPCO&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
    * @return situacao
@@ -352,6 +367,24 @@ public enum CanalEnum {
     return this;
   }
 
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+   * @return motivoAnalise
+  **/
+  @JsonProperty("motivoAnalise")
+  public String getMotivoAnalise() {
+    return motivoAnalise;
+  }
+
+  public void setMotivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+  }
+
+  public AlterarSituacaoLpcoRequest motivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -367,6 +400,7 @@ public enum CanalEnum {
     sb.append("    decisaoJudicial: ").append(toIndentedString(decisaoJudicial)).append("\n");
     sb.append("    faltaPagamentoTaxa: ").append(toIndentedString(faltaPagamentoTaxa)).append("\n");
     sb.append("    canal: ").append(toIndentedString(canal)).append("\n");
+    sb.append("    motivoAnalise: ").append(toIndentedString(motivoAnalise)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,16 +1,27 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp.model.FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio;
+import br.gov.siscomex.portalunico.duimp.model.TipoDeAlquotaDoTributoObjetoCompostoPelosAtributosCdigoEDescrio;
+import br.gov.siscomex.portalunico.duimp.model.TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CalculoTributoCover", propOrder =
-    { "imposto", "fundamentoLegalNormal", "valorBaseCalculo", "valorBaseCalculoEspecifica", "valorBaseCalculoReduzida", "percReducaoBaseCalculo", "tipoAliquota", "valorAliquota", "valorAliquotaEspecifica", "valorAliquotaReduzida", "percReducaoAliquotaReduzida", "valorCalculado", "valorAReduzir", "valorDevido", "valorSuspenso", "impostoARecolher", "valorNormal", "indicadorTributado"
+    { "imposto", "fundamentoLegalNormal", "valorBaseCalculo", "valorBaseCalculoEspecifica", "valorBaseCalculoReduzida", "percReducaoBaseCalculo", "tipoAliquota", "valorAliquota", "valorAliquotaEspecifica", "valorAliquotaReduzida", "percReducaoAliquotaReduzida", "valorCalculado", "valorAReduzir", "valorDevido", "valorSuspenso", "impostoARecolher", "valorNormal", "valorOriginalmenteDevido", "percentualPagamentoProporcional", "valorCalculadoPagamentoProporcional", "indicadorTributado"
 })
 
 @XmlRootElement(name="CalculoTributoCover")
@@ -31,34 +42,34 @@ public class CalculoTributoCover  {
   private FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegalNormal = null;
 
   @XmlElement(name="valorBaseCalculo")
-  @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor da base de cálculo em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da base de cálculo em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorBaseCalculo = null;
 
   @XmlElement(name="valorBaseCalculoEspecifica")
-  @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo específica em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo específica em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor da base de cálculo específica em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da base de cálculo específica em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorBaseCalculoEspecifica = null;
 
   @XmlElement(name="valorBaseCalculoReduzida")
-  @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo reduzida em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo reduzida em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor da base de cálculo reduzida em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da base de cálculo reduzida em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorBaseCalculoReduzida = null;
 
   @XmlElement(name="percReducaoBaseCalculo")
-  @ApiModelProperty(example = "10.0", value = "Percentual de redução da base de cálculo.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "10.0", value = "Percentual de redução da base de cálculo.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Percentual de redução da base de cálculo.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+   * Percentual de redução da base de cálculo.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal percReducaoBaseCalculo = null;
 
@@ -68,84 +79,108 @@ public class CalculoTributoCover  {
   private TipoDeAlquotaDoTributoObjetoCompostoPelosAtributosCdigoEDescrio tipoAliquota = null;
 
   @XmlElement(name="valorAliquota")
-  @ApiModelProperty(example = "35.0", value = "Valor da alíquota (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "35.0", value = "Valor da alíquota (%).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor da alíquota (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da alíquota (%).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorAliquota = null;
 
   @XmlElement(name="valorAliquotaEspecifica")
-  @ApiModelProperty(example = "35.0", value = "Valor da alíquota específica (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "35.0", value = "Valor da alíquota específica (%).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor da alíquota específica (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da alíquota específica (%).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorAliquotaEspecifica = null;
 
   @XmlElement(name="valorAliquotaReduzida")
-  @ApiModelProperty(example = "35.0", value = "Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "35.0", value = "Valor da alíquota reduzida (%).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da alíquota reduzida (%).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorAliquotaReduzida = null;
 
   @XmlElement(name="percReducaoAliquotaReduzida")
-  @ApiModelProperty(example = "0.0", value = "percentual de redução a alíquota reduzida.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "percentual de redução a alíquota reduzida.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * percentual de redução a alíquota reduzida.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+   * percentual de redução a alíquota reduzida.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal percReducaoAliquotaReduzida = null;
 
   @XmlElement(name="valorCalculado")
-  @ApiModelProperty(example = "1598.73", value = "Valor calculado em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "1598.73", value = "Valor calculado em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor calculado em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor calculado em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorCalculado = null;
 
   @XmlElement(name="valorAReduzir")
-  @ApiModelProperty(example = "0.0", value = "Valor a reduzir em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "Valor a reduzir em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor a reduzir em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor a reduzir em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorAReduzir = null;
 
   @XmlElement(name="valorDevido")
-  @ApiModelProperty(example = "0.0", value = "Valor devido em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "Valor devido em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor devido em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor devido em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorDevido = null;
 
   @XmlElement(name="valorSuspenso")
-  @ApiModelProperty(example = "0.0", value = "Valor suspenso em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "Valor suspenso em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor suspenso em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor suspenso em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorSuspenso = null;
 
   @XmlElement(name="impostoARecolher")
-  @ApiModelProperty(example = "0.0", value = "Valor do imposto a recolher em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "0.0", value = "Valor do imposto a recolher em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor do imposto a recolher em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do imposto a recolher em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal impostoARecolher = null;
 
   @XmlElement(name="valorNormal")
-  @ApiModelProperty(example = "456.78", value = "Valor normal em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+  @ApiModelProperty(example = "456.78", value = "Valor normal em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
   @Valid
  /**
-   * Valor normal em reais.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor normal em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
   **/
   private BigDecimal valorNormal = null;
+
+  @XmlElement(name="valorOriginalmenteDevido")
+  @ApiModelProperty(example = "456.78", value = "Valor originalmente devido em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o 'Indicador de cobrança do tributo suspenso' = Sim<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+  @Valid
+ /**
+   * Valor originalmente devido em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o 'Indicador de cobrança do tributo suspenso' = Sim<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+  **/
+  private BigDecimal valorOriginalmenteDevido = null;
+
+  @XmlElement(name="percentualPagamentoProporcional")
+  @ApiModelProperty(example = "50.0", value = "Percentual de pagamento (para a admissão temporária com pagamento proporcional)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+  @Valid
+ /**
+   * Percentual de pagamento (para a admissão temporária com pagamento proporcional)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+  **/
+  private BigDecimal percentualPagamentoProporcional = null;
+
+  @XmlElement(name="valorCalculadoPagamentoProporcional")
+  @ApiModelProperty(example = "456.78", value = "Valor calculado do pagamento proporcional em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o 'Indicador de cobrança do tributo suspenso' = Sim.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+  @Valid
+ /**
+   * Valor calculado do pagamento proporcional em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o 'Indicador de cobrança do tributo suspenso' = Sim.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+  **/
+  private BigDecimal valorCalculadoPagamentoProporcional = null;
 
 
 @XmlType(name="IndicadorTributadoEnum")
@@ -229,7 +264,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor da base de cálculo em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da base de cálculo em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorBaseCalculo
   **/
   @JsonProperty("valorBaseCalculo")
@@ -247,7 +282,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor da base de cálculo específica em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da base de cálculo específica em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorBaseCalculoEspecifica
   **/
   @JsonProperty("valorBaseCalculoEspecifica")
@@ -265,7 +300,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor da base de cálculo reduzida em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da base de cálculo reduzida em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorBaseCalculoReduzida
   **/
   @JsonProperty("valorBaseCalculoReduzida")
@@ -283,7 +318,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Percentual de redução da base de cálculo.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+   * Percentual de redução da base de cálculo.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return percReducaoBaseCalculo
   **/
   @JsonProperty("percReducaoBaseCalculo")
@@ -319,7 +354,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor da alíquota (%).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da alíquota (%).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorAliquota
   **/
   @JsonProperty("valorAliquota")
@@ -337,7 +372,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor da alíquota específica (%).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da alíquota específica (%).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorAliquotaEspecifica
   **/
   @JsonProperty("valorAliquotaEspecifica")
@@ -355,7 +390,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor da alíquota reduzida (%).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor da alíquota reduzida (%).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorAliquotaReduzida
   **/
   @JsonProperty("valorAliquotaReduzida")
@@ -373,7 +408,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * percentual de redução a alíquota reduzida.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+   * percentual de redução a alíquota reduzida.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return percReducaoAliquotaReduzida
   **/
   @JsonProperty("percReducaoAliquotaReduzida")
@@ -391,7 +426,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor calculado em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor calculado em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorCalculado
   **/
   @JsonProperty("valorCalculado")
@@ -409,7 +444,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor a reduzir em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor a reduzir em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorAReduzir
   **/
   @JsonProperty("valorAReduzir")
@@ -427,7 +462,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor devido em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor devido em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorDevido
   **/
   @JsonProperty("valorDevido")
@@ -445,7 +480,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor suspenso em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor suspenso em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorSuspenso
   **/
   @JsonProperty("valorSuspenso")
@@ -463,7 +498,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor do imposto a recolher em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor do imposto a recolher em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return impostoARecolher
   **/
   @JsonProperty("impostoARecolher")
@@ -481,7 +516,7 @@ public enum IndicadorTributadoEnum {
   }
 
  /**
-   * Valor normal em reais.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * Valor normal em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
    * @return valorNormal
   **/
   @JsonProperty("valorNormal")
@@ -495,6 +530,60 @@ public enum IndicadorTributadoEnum {
 
   public CalculoTributoCover valorNormal(BigDecimal valorNormal) {
     this.valorNormal = valorNormal;
+    return this;
+  }
+
+ /**
+   * Valor originalmente devido em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o &#39;Indicador de cobrança do tributo suspenso&#39; &#x3D; Sim&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+   * @return valorOriginalmenteDevido
+  **/
+  @JsonProperty("valorOriginalmenteDevido")
+  public BigDecimal getValorOriginalmenteDevido() {
+    return valorOriginalmenteDevido;
+  }
+
+  public void setValorOriginalmenteDevido(BigDecimal valorOriginalmenteDevido) {
+    this.valorOriginalmenteDevido = valorOriginalmenteDevido;
+  }
+
+  public CalculoTributoCover valorOriginalmenteDevido(BigDecimal valorOriginalmenteDevido) {
+    this.valorOriginalmenteDevido = valorOriginalmenteDevido;
+    return this;
+  }
+
+ /**
+   * Percentual de pagamento (para a admissão temporária com pagamento proporcional)&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+   * @return percentualPagamentoProporcional
+  **/
+  @JsonProperty("percentualPagamentoProporcional")
+  public BigDecimal getPercentualPagamentoProporcional() {
+    return percentualPagamentoProporcional;
+  }
+
+  public void setPercentualPagamentoProporcional(BigDecimal percentualPagamentoProporcional) {
+    this.percentualPagamentoProporcional = percentualPagamentoProporcional;
+  }
+
+  public CalculoTributoCover percentualPagamentoProporcional(BigDecimal percentualPagamentoProporcional) {
+    this.percentualPagamentoProporcional = percentualPagamentoProporcional;
+    return this;
+  }
+
+ /**
+   * Valor calculado do pagamento proporcional em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o &#39;Indicador de cobrança do tributo suspenso&#39; &#x3D; Sim.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+   * @return valorCalculadoPagamentoProporcional
+  **/
+  @JsonProperty("valorCalculadoPagamentoProporcional")
+  public BigDecimal getValorCalculadoPagamentoProporcional() {
+    return valorCalculadoPagamentoProporcional;
+  }
+
+  public void setValorCalculadoPagamentoProporcional(BigDecimal valorCalculadoPagamentoProporcional) {
+    this.valorCalculadoPagamentoProporcional = valorCalculadoPagamentoProporcional;
+  }
+
+  public CalculoTributoCover valorCalculadoPagamentoProporcional(BigDecimal valorCalculadoPagamentoProporcional) {
+    this.valorCalculadoPagamentoProporcional = valorCalculadoPagamentoProporcional;
     return this;
   }
 
@@ -542,6 +631,9 @@ public enum IndicadorTributadoEnum {
     sb.append("    valorSuspenso: ").append(toIndentedString(valorSuspenso)).append("\n");
     sb.append("    impostoARecolher: ").append(toIndentedString(impostoARecolher)).append("\n");
     sb.append("    valorNormal: ").append(toIndentedString(valorNormal)).append("\n");
+    sb.append("    valorOriginalmenteDevido: ").append(toIndentedString(valorOriginalmenteDevido)).append("\n");
+    sb.append("    percentualPagamentoProporcional: ").append(toIndentedString(percentualPagamentoProporcional)).append("\n");
+    sb.append("    valorCalculadoPagamentoProporcional: ").append(toIndentedString(valorCalculadoPagamentoProporcional)).append("\n");
     sb.append("    indicadorTributado: ").append(toIndentedString(indicadorTributado)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,10 +1,19 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemTratamentoAdministrativoCover", propOrder =
@@ -19,9 +28,9 @@ import javax.xml.bind.annotation.*;
 public class ItemTratamentoAdministrativoCover  {
   
   @XmlElement(name="numeroItemDuimp")
-  @ApiModelProperty(example = "1.0", value = "Identificação de cada item de TA (número sequencial).<br>Tamanho: 15")
+  @ApiModelProperty(example = "1.0", value = "Identificação de cada item de Duimp que possui TA (número sequencial).<br>Tamanho: 15")
  /**
-   * Identificação de cada item de TA (número sequencial).<br>Tamanho: 15
+   * Identificação de cada item de Duimp que possui TA (número sequencial).<br>Tamanho: 15
   **/
   private Double numeroItemDuimp = null;
 
@@ -103,7 +112,7 @@ public enum TipoTratamentoEnum {
   **/
   private String observacoes = null;
  /**
-   * Identificação de cada item de TA (número sequencial).&lt;br&gt;Tamanho: 15
+   * Identificação de cada item de Duimp que possui TA (número sequencial).&lt;br&gt;Tamanho: 15
    * @return numeroItemDuimp
   **/
   @JsonProperty("numeroItemDuimp")

@@ -1,14 +1,23 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "MemoriaCalculoItemCover", propOrder =
-    { "codigoFundamentoLegalNormal", "baseCalculoBRL", "baseCalculoEspecificaBRL", "baseCalculoReduzidaBRL", "percentualReducaoBaseCalculo", "tipoAliquota", "percentualReducaoAliquotaReduzida", "valorAliquota", "valorAliquotaEspecifica", "valorAliquotaReduzida", "normal", "tributado"
+    { "codigoFundamentoLegalNormal", "baseCalculoBRL", "baseCalculoEspecificaBRL", "baseCalculoReduzidaBRL", "percentualReducaoBaseCalculo", "tipoAliquota", "percentualReducaoAliquotaReduzida", "valorAliquota", "valorAliquotaEspecifica", "valorAliquotaReduzida", "normal", "tributado", "percentualPagamento"
 })
 
 @XmlRootElement(name="MemoriaCalculoItemCover")
@@ -140,6 +149,13 @@ public enum TipoAliquotaEnum {
    * Indicador de tributação.
   **/
   private Boolean tributado = null;
+
+  @XmlElement(name="percentualPagamento")
+  @ApiModelProperty(example = "4227.8", value = "Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+ /**
+   * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+  **/
+  private Double percentualPagamento = null;
  /**
    * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
    * @return codigoFundamentoLegalNormal
@@ -359,6 +375,24 @@ public enum TipoAliquotaEnum {
     return this;
   }
 
+ /**
+   * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+   * @return percentualPagamento
+  **/
+  @JsonProperty("percentualPagamento")
+  public Double getPercentualPagamento() {
+    return percentualPagamento;
+  }
+
+  public void setPercentualPagamento(Double percentualPagamento) {
+    this.percentualPagamento = percentualPagamento;
+  }
+
+  public MemoriaCalculoItemCover percentualPagamento(Double percentualPagamento) {
+    this.percentualPagamento = percentualPagamento;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -377,6 +411,7 @@ public enum TipoAliquotaEnum {
     sb.append("    valorAliquotaReduzida: ").append(toIndentedString(valorAliquotaReduzida)).append("\n");
     sb.append("    normal: ").append(toIndentedString(normal)).append("\n");
     sb.append("    tributado: ").append(toIndentedString(tributado)).append("\n");
+    sb.append("    percentualPagamento: ").append(toIndentedString(percentualPagamento)).append("\n");
     sb.append("}");
     return sb.toString();
   }

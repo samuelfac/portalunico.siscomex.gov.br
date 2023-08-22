@@ -1,17 +1,26 @@
 package br.gov.siscomex.portalunico.talpco.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.talpco.model.DadosAlteracoesLpco;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemHistoricoLpcoResponse", propOrder =
-    { "dataAlteracao", "situacao", "situacaoSolicitacao", "solicitacao", "usuario", "justificativa", "alteracoes"
+    { "dataAlteracao", "situacao", "situacaoSolicitacao", "solicitacao", "usuario", "justificativa", "motivoAnalise", "alteracoes"
 })
 
 @XmlRootElement(name="ItemHistoricoLpcoResponse")
@@ -62,6 +71,13 @@ public class ItemHistoricoLpcoResponse  {
    * Justificativa utilizada para o evento no LPCO.<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
   **/
   private String justificativa = null;
+
+  @XmlElement(name="motivoAnalise")
+  @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+  **/
+  private String motivoAnalise = null;
 
   @XmlElement(name="alteracoes")
   @ApiModelProperty(value = "Lista de alterações realizadas no evento do LPCO.")
@@ -181,6 +197,24 @@ public class ItemHistoricoLpcoResponse  {
   }
 
  /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+   * @return motivoAnalise
+  **/
+  @JsonProperty("motivoAnalise")
+  public String getMotivoAnalise() {
+    return motivoAnalise;
+  }
+
+  public void setMotivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+  }
+
+  public ItemHistoricoLpcoResponse motivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+    return this;
+  }
+
+ /**
    * Lista de alterações realizadas no evento do LPCO.
    * @return alteracoes
   **/
@@ -215,6 +249,7 @@ public class ItemHistoricoLpcoResponse  {
     sb.append("    solicitacao: ").append(toIndentedString(solicitacao)).append("\n");
     sb.append("    usuario: ").append(toIndentedString(usuario)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
+    sb.append("    motivoAnalise: ").append(toIndentedString(motivoAnalise)).append("\n");
     sb.append("    alteracoes: ").append(toIndentedString(alteracoes)).append("\n");
     sb.append("}");
     return sb.toString();

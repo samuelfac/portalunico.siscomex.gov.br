@@ -1,12 +1,24 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp_api.model.MercadoriaValoresCalculadosItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.TributoCalculadoItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.TributoItemCover;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "TributosConsultaItemCover", propOrder =
@@ -26,8 +38,11 @@ public class TributosConsultaItemCover  {
   private MercadoriaValoresCalculadosItemCover mercadoria = null;
 
   @XmlElement(name="tributosAplicados")
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Para Duimp de situação especial de despacho cujo motivo indicar cobrança de tributos suspensos: o cálculo dos tributos será feito em conformidade com os fundamentos legais informados na declaração de admissão")
   @Valid
+ /**
+   * Para Duimp de situação especial de despacho cujo motivo indicar cobrança de tributos suspensos: o cálculo dos tributos será feito em conformidade com os fundamentos legais informados na declaração de admissão
+  **/
   private List<TributoItemCover> tributosAplicados = null;
 
   @XmlElement(name="tributosCalculados")
@@ -53,7 +68,7 @@ public class TributosConsultaItemCover  {
   }
 
  /**
-   * Get tributosAplicados
+   * Para Duimp de situação especial de despacho cujo motivo indicar cobrança de tributos suspensos: o cálculo dos tributos será feito em conformidade com os fundamentos legais informados na declaração de admissão
    * @return tributosAplicados
   **/
   @JsonProperty("tributosAplicados")

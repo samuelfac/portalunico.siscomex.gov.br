@@ -2,13 +2,24 @@ package br.gov.siscomex.portalunico.catp.api;
 
 import br.gov.siscomex.portalunico.catp.model.LoteValidacaoVersaoDTO;
 import br.gov.siscomex.portalunico.catp.model.OperadorEstrangeiroIntegracaoDTO;
-import io.swagger.annotations.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.List;
+import javax.ws.rs.core.MediaType;
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.jaxrs.PATCH;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Catálogo de Produtos
@@ -37,7 +48,7 @@ public interface OperadorEstrangeiroApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultar( @NotNull @ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true)  @QueryParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador) <br>Tamanho: 35")  @QueryParam("codigo") String codigo,  @ApiParam(value = "Códigos internos do Operador Estrangeiro do Exportador/Importador  <br>Tamanho: 35")  @QueryParam("codigoInterno") String codigoInterno,  @ApiParam(value = "Nome do Operador Estrangeiro  <br>Tamanho: 70")  @QueryParam("nome") String nome,  @ApiParam(value = "Código do país. Usar tabela ISO 3166 <br>Tamanho: 2 <br>Formato: 'AA' <br>")  @QueryParam("paisOrigem") String paisOrigem,  @ApiParam(value = "Exibir desativados", defaultValue="false") @DefaultValue("false") @QueryParam("exibirDesativados") Boolean exibirDesativados);
+    public Response consultar( @NotNull @ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true)  @QueryParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador) <br>Tamanho: 35")  @QueryParam("tin") String tin,  @ApiParam(value = "Código <br>Tamanho: 35")  @QueryParam("codigo") String codigo,  @ApiParam(value = "Códigos internos do Operador Estrangeiro do Exportador/Importador  <br>Tamanho: 35")  @QueryParam("codigoInterno") String codigoInterno,  @ApiParam(value = "Nome do Operador Estrangeiro  <br>Tamanho: 70")  @QueryParam("nome") String nome,  @ApiParam(value = "Código do país. Usar tabela ISO 3166 <br>Tamanho: 2 <br>Formato: 'AA' <br>")  @QueryParam("paisOrigem") String paisOrigem,  @ApiParam(value = "Exibir desativados", defaultValue="false") @DefaultValue("false") @QueryParam("exibirDesativados") Boolean exibirDesativados);
 
     /**
      * Detalhar Versão do OperadorExtrangeiro

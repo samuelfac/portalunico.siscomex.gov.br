@@ -1,19 +1,36 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp.model.DadosDaCarga;
+import br.gov.siscomex.portalunico.duimp.model.DadosDaDeclaraoEstrangeira;
+import br.gov.siscomex.portalunico.duimp.model.DadosDeEquipeDeTrabalho;
+import br.gov.siscomex.portalunico.duimp.model.DadosDoProcesso;
+import br.gov.siscomex.portalunico.duimp.model.DadosResumo;
+import br.gov.siscomex.portalunico.duimp.model.DocumentoInstrutivoDoDespacho;
+import br.gov.siscomex.portalunico.duimp.model.DuimpHistEventoCover;
+import br.gov.siscomex.portalunico.duimp.model.InformaesRelacionadasSituaoEspecialDeDespacho;
+import br.gov.siscomex.portalunico.duimp.model.ItemCover;
+import br.gov.siscomex.portalunico.duimp.model.SituaoDaDuimpObjetoCompostoPelosAtributosCdigoEDescrio;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DuimpCover", propOrder =
-    { "versaoDeclaracao", "situacaoDeclaracao", "versaoDeclaracaoVigente", "dataHoraCriacao", "dataHoraRegistro", "dataHoraRegistroVersaoVigente", "cpfResponsavel", "tipoImportador", "niImportador", "nomeImportador", "ufImportador", "canalSelecao", "equipesTrabalho", "dadosCarga", "documentosInstrutivoDespacho", "processosVinculados", "docDeclaracoesExportacaoEstrangeira", "dadosResumo", "itensHistorico", "itens"
+    { "versaoDeclaracao", "situacaoDeclaracao", "versaoDeclaracaoVigente", "dataHoraCriacao", "dataHoraRegistro", "dataHoraRegistroVersaoVigente", "cpfResponsavel", "tipoImportador", "niImportador", "nomeImportador", "ufImportador", "canalSelecao", "equipesTrabalho", "informacoesSituacaoEspecialDespacho", "dadosCarga", "documentosInstrutivoDespacho", "processosVinculados", "docDeclaracoesExportacaoEstrangeira", "dadosResumo", "itensHistorico", "itens"
 })
 
 @XmlRootElement(name="DuimpCover")
@@ -24,9 +41,9 @@ import java.util.List;
 public class DuimpCover  {
   
   @XmlElement(name="versaoDeclaracao", required = true)
-  @ApiModelProperty(example = "1", required = true, value = "Versão da Duimp<br>Valor mínimo: 1<br>Valor máximo: 9999")
+  @ApiModelProperty(example = "0001", required = true, value = "Versão da Duimp<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
  /**
-   * Versão da Duimp<br>Valor mínimo: 1<br>Valor máximo: 9999
+   * Versão da Duimp<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
   **/
   private String versaoDeclaracao = null;
 
@@ -36,9 +53,9 @@ public class DuimpCover  {
   private SituaoDaDuimpObjetoCompostoPelosAtributosCdigoEDescrio situacaoDeclaracao = null;
 
   @XmlElement(name="versaoDeclaracaoVigente", required = true)
-  @ApiModelProperty(example = "001", required = true, value = "Versão da declaração que está atualmente vigente. Pode ser superior a versão solicitada.<br>Valor mínimo: 1<br>Valor máximo: 9999")
+  @ApiModelProperty(example = "0001", required = true, value = "Versão da declaração que está atualmente vigente. Pode ser superior a versão solicitada.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
  /**
-   * Versão da declaração que está atualmente vigente. Pode ser superior a versão solicitada.<br>Valor mínimo: 1<br>Valor máximo: 9999
+   * Versão da declaração que está atualmente vigente. Pode ser superior a versão solicitada.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
   **/
   private String versaoDeclaracaoVigente = null;
 
@@ -195,6 +212,11 @@ public enum CanalSelecaoEnum {
   **/
   private List<DadosDeEquipeDeTrabalho> equipesTrabalho = new ArrayList<>();
 
+  @XmlElement(name="informacoesSituacaoEspecialDespacho", required = true)
+  @ApiModelProperty(required = true, value = "")
+  @Valid
+  private InformaesRelacionadasSituaoEspecialDeDespacho informacoesSituacaoEspecialDespacho = null;
+
   @XmlElement(name="dadosCarga", required = true)
   @ApiModelProperty(required = true, value = "")
   @Valid
@@ -245,7 +267,7 @@ public enum CanalSelecaoEnum {
   **/
   private List<ItemCover> itens = new ArrayList<>();
  /**
-   * Versão da Duimp&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+   * Versão da Duimp&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
    * @return versaoDeclaracao
   **/
   @JsonProperty("versaoDeclaracao")
@@ -283,7 +305,7 @@ public enum CanalSelecaoEnum {
   }
 
  /**
-   * Versão da declaração que está atualmente vigente. Pode ser superior a versão solicitada.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+   * Versão da declaração que está atualmente vigente. Pode ser superior a versão solicitada.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
    * @return versaoDeclaracaoVigente
   **/
   @JsonProperty("versaoDeclaracaoVigente")
@@ -503,6 +525,25 @@ public enum CanalSelecaoEnum {
   }
 
  /**
+   * Get informacoesSituacaoEspecialDespacho
+   * @return informacoesSituacaoEspecialDespacho
+  **/
+  @JsonProperty("informacoesSituacaoEspecialDespacho")
+  @NotNull
+  public InformaesRelacionadasSituaoEspecialDeDespacho getInformacoesSituacaoEspecialDespacho() {
+    return informacoesSituacaoEspecialDespacho;
+  }
+
+  public void setInformacoesSituacaoEspecialDespacho(InformaesRelacionadasSituaoEspecialDeDespacho informacoesSituacaoEspecialDespacho) {
+    this.informacoesSituacaoEspecialDespacho = informacoesSituacaoEspecialDespacho;
+  }
+
+  public DuimpCover informacoesSituacaoEspecialDespacho(InformaesRelacionadasSituaoEspecialDeDespacho informacoesSituacaoEspecialDespacho) {
+    this.informacoesSituacaoEspecialDespacho = informacoesSituacaoEspecialDespacho;
+    return this;
+  }
+
+ /**
    * Get dadosCarga
    * @return dadosCarga
   **/
@@ -676,6 +717,7 @@ public enum CanalSelecaoEnum {
     sb.append("    ufImportador: ").append(toIndentedString(ufImportador)).append("\n");
     sb.append("    canalSelecao: ").append(toIndentedString(canalSelecao)).append("\n");
     sb.append("    equipesTrabalho: ").append(toIndentedString(equipesTrabalho)).append("\n");
+    sb.append("    informacoesSituacaoEspecialDespacho: ").append(toIndentedString(informacoesSituacaoEspecialDespacho)).append("\n");
     sb.append("    dadosCarga: ").append(toIndentedString(dadosCarga)).append("\n");
     sb.append("    documentosInstrutivoDespacho: ").append(toIndentedString(documentosInstrutivoDespacho)).append("\n");
     sb.append("    processosVinculados: ").append(toIndentedString(processosVinculados)).append("\n");

@@ -1,14 +1,40 @@
 package br.gov.siscomex.portalunico.cct_ext.api;
 
-import br.gov.siscomex.portalunico.cct_ext.model.*;
-import io.swagger.annotations.*;
+import java.math.BigDecimal;
+import br.gov.siscomex.portalunico.cct_ext.model.ConsultaConteiner;
+import br.gov.siscomex.portalunico.cct_ext.model.EntregasConteineres;
+import br.gov.siscomex.portalunico.cct_ext.model.EntregasDocumentoCarga;
+import br.gov.siscomex.portalunico.cct_ext.model.EstoqueNFE;
+import br.gov.siscomex.portalunico.cct_ext.model.ListaRegistros;
+import br.gov.siscomex.portalunico.cct_ext.model.ManifestacoesExportacao;
+import br.gov.siscomex.portalunico.cct_ext.model.ManifestacoesExportacaoPreACDMicDTO;
+import br.gov.siscomex.portalunico.cct_ext.model.OperacaoDesunitizacao;
+import br.gov.siscomex.portalunico.cct_ext.model.OperacaoUnitizacao;
+import br.gov.siscomex.portalunico.cct_ext.model.OperacoesConsolidacao;
+import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesConteineres;
+import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesDocumentoCarga;
+import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesNFE;
+import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesNFF;
+import br.gov.siscomex.portalunico.cct_ext.model.ResultadoConsulta;
+import br.gov.siscomex.portalunico.cct_ext.model.ResultadoConsultaMRUC;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
-import java.util.List;
+import javax.ws.rs.core.MediaType;
+import org.apache.cxf.jaxrs.ext.multipart.*;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.jaxrs.PATCH;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
 /**
  * Controle de Carga e Trânsito Exportação

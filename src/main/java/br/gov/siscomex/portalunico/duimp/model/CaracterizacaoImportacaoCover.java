@@ -1,10 +1,19 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CaracterizacaoImportacaoCover", propOrder =
@@ -19,9 +28,9 @@ import javax.xml.bind.annotation.*;
 public class CaracterizacaoImportacaoCover  {
   
   @XmlElement(name="indicadorImportacaoTerceiros")
-  @ApiModelProperty(value = "Indicador de importação por terceiros.<br>Dominio:<br>S - SIM,<br>N - NÃO<br>Tamanho: 1")
+  @ApiModelProperty(value = "Indicador de importação por terceiros.<br>Dominio: <br>S - Sim, <br>N - Não<br>Tamanho: 1")
  /**
-   * Indicador de importação por terceiros.<br>Dominio:<br>S - SIM,<br>N - NÃO<br>Tamanho: 1
+   * Indicador de importação por terceiros.<br>Dominio: <br>S - Sim, <br>N - Não<br>Tamanho: 1
   **/
   private Integer indicadorImportacaoTerceiros = null;
 
@@ -40,13 +49,13 @@ public class CaracterizacaoImportacaoCover  {
   private String ufAdquirente = null;
 
   @XmlElement(name="nomeAdquirente")
-  @ApiModelProperty(example = "Nome do adquirente", value = "Nome do adquirente<br>Tamanho mínimo: 1<br>Tamanho máximo: 80")
+  @ApiModelProperty(example = "Nome do adquirente", value = "Nome do adquirente<br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
  /**
-   * Nome do adquirente<br>Tamanho mínimo: 1<br>Tamanho máximo: 80
+   * Nome do adquirente<br>Tamanho mínimo: 1<br>Tamanho máximo: 150
   **/
   private String nomeAdquirente = null;
  /**
-   * Indicador de importação por terceiros.&lt;br&gt;Dominio:&lt;br&gt;S - SIM,&lt;br&gt;N - NÃO&lt;br&gt;Tamanho: 1
+   * Indicador de importação por terceiros.&lt;br&gt;Dominio: &lt;br&gt;S - Sim, &lt;br&gt;N - Não&lt;br&gt;Tamanho: 1
    * @return indicadorImportacaoTerceiros
   **/
   @JsonProperty("indicadorImportacaoTerceiros")
@@ -100,7 +109,7 @@ public class CaracterizacaoImportacaoCover  {
   }
 
  /**
-   * Nome do adquirente&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
+   * Nome do adquirente&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
    * @return nomeAdquirente
   **/
   @JsonProperty("nomeAdquirente")

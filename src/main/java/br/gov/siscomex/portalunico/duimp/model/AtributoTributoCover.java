@@ -1,10 +1,19 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
 
-import javax.xml.bind.annotation.*;
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "AtributoTributoCover", propOrder =
@@ -33,9 +42,9 @@ public class AtributoTributoCover  {
   private String valor = null;
 
   @XmlElement(name="descricao")
-  @ApiModelProperty(example = "Naladi", value = "Descrição do atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 80")
+  @ApiModelProperty(example = "Naladi", value = "Descrição do atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
  /**
-   * Descrição do atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 80
+   * Descrição do atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 150
   **/
   private String descricao = null;
 
@@ -89,7 +98,7 @@ public class AtributoTributoCover  {
   }
 
  /**
-   * Descrição do atributo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
+   * Descrição do atributo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
    * @return descricao
   **/
   @JsonProperty("descricao")

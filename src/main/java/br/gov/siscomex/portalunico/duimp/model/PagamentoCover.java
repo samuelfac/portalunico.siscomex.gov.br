@@ -1,13 +1,22 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp.model.PagamentoJurosCover;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "PagamentoCover", propOrder =
@@ -22,9 +31,9 @@ import java.time.OffsetDateTime;
 public class PagamentoCover  {
   
   @XmlElement(name="versaoDuimpPagamento")
-  @ApiModelProperty(example = "1", value = "Versão da Duimp em que este pagamento foi realizado.<br>Valor mínimo: 1<br>Valor máximo: 9999")
+  @ApiModelProperty(example = "1", value = "Versão da Duimp em que este pagamento foi realizado.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
  /**
-   * Versão da Duimp em que este pagamento foi realizado.<br>Valor mínimo: 1<br>Valor máximo: 9999
+   * Versão da Duimp em que este pagamento foi realizado.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
   **/
   private String versaoDuimpPagamento = null;
 
@@ -83,7 +92,7 @@ public class PagamentoCover  {
   @Valid
   private PagamentoJurosCover pagamentoJuros = null;
  /**
-   * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+   * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
    * @return versaoDuimpPagamento
   **/
   @JsonProperty("versaoDuimpPagamento")

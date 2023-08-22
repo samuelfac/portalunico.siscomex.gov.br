@@ -1,16 +1,29 @@
 package br.gov.siscomex.portalunico.ccta.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.ccta.model.BloqueioCargaConsultaResumida;
+import br.gov.siscomex.portalunico.ccta.model.ChaveViagem;
+import br.gov.siscomex.portalunico.ccta.model.EstoqueConsultaResumida;
+import br.gov.siscomex.portalunico.ccta.model.RecepcaoComAvaria;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ConhecimentoConsultaResumida", propOrder =
-    { "bloqueiosAtivos", "cnpjResponsavelArquivo", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "dataEmissao", "identificacao", "indicadorPartesMadeira", "partesEstoque", "pesoBrutoConhecimento", "quantidadeVolumesConhecimento", "ruc", "tipo", "viagensAssociadas"
+    { "bloqueiosAtivos", "cnpjResponsavelArquivo", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "dataEmissao", "identificacao", "indicadorPartesMadeira", "partesEstoque", "pesoBrutoConhecimento", "quantidadeVolumesConhecimento", "recepcoesComAvarias", "ruc", "tipo", "viagensAssociadas"
 })
 
 @XmlRootElement(name="ConhecimentoConsultaResumida")
@@ -127,6 +140,14 @@ public enum IndicadorPartesMadeiraEnum {
    * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
   **/
   private Integer quantidadeVolumesConhecimento = null;
+
+  @XmlElement(name="recepcoesComAvarias")
+  @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+  @Valid
+ /**
+   * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+  **/
+  private List<RecepcaoComAvaria> recepcoesComAvarias = null;
 
   @XmlElement(name="ruc")
   @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 32")
@@ -386,6 +407,29 @@ public enum TipoEnum {
   }
 
  /**
+   * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
+   * @return recepcoesComAvarias
+  **/
+  @JsonProperty("recepcoesComAvarias")
+  public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
+    return recepcoesComAvarias;
+  }
+
+  public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+    this.recepcoesComAvarias = recepcoesComAvarias;
+  }
+
+  public ConhecimentoConsultaResumida recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+    this.recepcoesComAvarias = recepcoesComAvarias;
+    return this;
+  }
+
+  public ConhecimentoConsultaResumida addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
+    this.recepcoesComAvarias.add(recepcoesComAvariasItem);
+    return this;
+  }
+
+ /**
    * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 32
    * @return ruc
   **/
@@ -463,6 +507,7 @@ public enum TipoEnum {
     sb.append("    partesEstoque: ").append(toIndentedString(partesEstoque)).append("\n");
     sb.append("    pesoBrutoConhecimento: ").append(toIndentedString(pesoBrutoConhecimento)).append("\n");
     sb.append("    quantidadeVolumesConhecimento: ").append(toIndentedString(quantidadeVolumesConhecimento)).append("\n");
+    sb.append("    recepcoesComAvarias: ").append(toIndentedString(recepcoesComAvarias)).append("\n");
     sb.append("    ruc: ").append(toIndentedString(ruc)).append("\n");
     sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
     sb.append("    viagensAssociadas: ").append(toIndentedString(viagensAssociadas)).append("\n");

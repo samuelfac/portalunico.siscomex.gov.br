@@ -1,12 +1,26 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.Valid;
-import javax.xml.bind.annotation.*;
+import br.gov.siscomex.portalunico.duimp_api.model.AcrescimoDeducaoConsultaItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.FreteConsultaItemCover;
+import br.gov.siscomex.portalunico.duimp_api.model.IncotermCover;
+import br.gov.siscomex.portalunico.duimp_api.model.MetodoValoracaoCover;
+import br.gov.siscomex.portalunico.duimp_api.model.SeguroConsultaItemCover;
+import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
+import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+import io.swagger.annotations.ApiModelProperty;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CondicaoVendaConsultaItemCover", propOrder =
@@ -15,9 +29,9 @@ import java.util.List;
 
 @XmlRootElement(name="CondicaoVendaConsultaItemCover")
 /**
-  * Condição de venda da mercadoria.
+  * <br>Condição de venda da mercadoria.<br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)
  **/
-@ApiModel(description="Condição de venda da mercadoria.")
+@ApiModel(description="<br>Condição de venda da mercadoria.<br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)")
 public class CondicaoVendaConsultaItemCover  {
   
   @XmlElement(name="metodoValoracao")
