@@ -1,32 +1,17 @@
 package br.gov.siscomex.portalunico.duimp.model;
 
-import br.gov.siscomex.portalunico.duimp.model.CaracterizacaoImportacaoCover;
-import br.gov.siscomex.portalunico.duimp.model.CertificadoMercosul;
-import br.gov.siscomex.portalunico.duimp.model.CondicaoVendaMercadoriaCover;
-import br.gov.siscomex.portalunico.duimp.model.DadosCambiaisCover;
-import br.gov.siscomex.portalunico.duimp.model.DeclaracaoVinculada;
-import br.gov.siscomex.portalunico.duimp.model.ExportadorEstrangeiroCover;
-import br.gov.siscomex.portalunico.duimp.model.InformacaoComplementarCover;
-import br.gov.siscomex.portalunico.duimp.model.ItemInfoAdicinaisCover;
-import br.gov.siscomex.portalunico.duimp.model.ItemLpcoCover;
-import br.gov.siscomex.portalunico.duimp.model.ItemTributoCover;
-import br.gov.siscomex.portalunico.duimp.model.ProdutoCover;
-import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
 import io.swagger.annotations.ApiModelProperty;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemCover", propOrder =

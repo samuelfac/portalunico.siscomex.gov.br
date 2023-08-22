@@ -7,24 +7,25 @@ import br.gov.siscomex.portalunico.due.model.Declaration;
 import br.gov.siscomex.portalunico.due.model.ExigenciaFiscalEstruturada;
 import br.gov.siscomex.portalunico.due.model.Link;
 import br.gov.siscomex.portalunico.due.model.PucomexReturn;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-import java.util.Map;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
-import org.apache.cxf.jaxrs.ext.multipart.*;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
-import io.swagger.jaxrs.PATCH;
-import javax.validation.constraints.*;
+import io.swagger.annotations.ApiResponses;
+
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
 
 /**
  * Declaração Única de Exportação

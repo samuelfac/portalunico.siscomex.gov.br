@@ -1,36 +1,17 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import br.gov.siscomex.portalunico.duimp_api.model.AtributoFundamentoLegalCover;
-import br.gov.siscomex.portalunico.duimp_api.model.AtributoItemCover;
-import br.gov.siscomex.portalunico.duimp_api.model.CaracterizacaoImportacaoConsultaItemCover;
-import br.gov.siscomex.portalunico.duimp_api.model.CertificadoMercosulCover;
-import br.gov.siscomex.portalunico.duimp_api.model.CondicaoVendaConsultaItemCover;
-import br.gov.siscomex.portalunico.duimp_api.model.DadosCambiaisCover;
-import br.gov.siscomex.portalunico.duimp_api.model.DeclaracaoVinculadaCoverConsulta;
-import br.gov.siscomex.portalunico.duimp_api.model.ExportadorCover;
-import br.gov.siscomex.portalunico.duimp_api.model.FabricanteCover;
-import br.gov.siscomex.portalunico.duimp_api.model.IdentificadorItemDuimpCover;
-import br.gov.siscomex.portalunico.duimp_api.model.IndicadorCompradorVendedorCover;
-import br.gov.siscomex.portalunico.duimp_api.model.IndicadorExportadorFabricanteCover;
-import br.gov.siscomex.portalunico.duimp_api.model.LpcoCover;
-import br.gov.siscomex.portalunico.duimp_api.model.MercadoriaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.ProdutoConsultaItemCover;
-import br.gov.siscomex.portalunico.duimp_api.model.TributosConsultaItemCover;
-import java.util.ArrayList;
-import java.util.List;
-import io.swagger.annotations.ApiModel;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ItemConsultaCover", propOrder =

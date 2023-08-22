@@ -1,31 +1,15 @@
 package br.gov.siscomex.portalunico.duimp_api.model;
 
-import br.gov.siscomex.portalunico.duimp_api.model.AdicaoValoresCalculadosDuimpCover;
-import br.gov.siscomex.portalunico.duimp_api.model.CargaDuimpConsultaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.DocumentosDuimpConsultaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.EquipeTrabalhoDuimpConsultaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.IdentificacaoDuimpConsultaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.ItemConsultaDuimpCover;
-import br.gov.siscomex.portalunico.duimp_api.model.PagamentoDuimpConsultaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.ResultadoAnaliseRiscoDuimpCover;
-import br.gov.siscomex.portalunico.duimp_api.model.SituacaoDuimpConsultaCover;
-import br.gov.siscomex.portalunico.duimp_api.model.TratamentoAdministrativoCover;
-import br.gov.siscomex.portalunico.duimp_api.model.TributoConsultaDuimpCover;
-import java.util.ArrayList;
-import java.util.List;
-import io.swagger.annotations.ApiModel;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DuimpConsultaCover", propOrder =

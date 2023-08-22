@@ -1,25 +1,17 @@
 package br.gov.siscomex.portalunico.catp.model;
 
-import br.gov.siscomex.portalunico.catp.model.ProdutoCampoCompostoIntegracaoDTO;
-import br.gov.siscomex.portalunico.catp.model.ProdutoCampoCompostoMultivaloradoIntegracaoDTO;
-import br.gov.siscomex.portalunico.catp.model.ProdutoCampoMultivaloradoIntegracaoDTO;
-import br.gov.siscomex.portalunico.catp.model.ProdutoCampoSimplesIntegracaoDTO;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import io.swagger.annotations.ApiModel;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.OffsetDateTime;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ProdutoIntegracaoDTO", propOrder =

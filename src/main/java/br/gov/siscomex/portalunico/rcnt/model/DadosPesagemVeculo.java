@@ -1,26 +1,19 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
-import br.gov.siscomex.portalunico.rcnt.model.DadosContinerUldPesagemVeculo;
-import br.gov.siscomex.portalunico.rcnt.model.DadosDaCmera;
-import br.gov.siscomex.portalunico.rcnt.model.DadosDaNotaFiscalEmbarqueDesembarque;
-import br.gov.siscomex.portalunico.rcnt.model.DadosDoManisfestoDaCarga;
-import br.gov.siscomex.portalunico.rcnt.model.DadosSemirreboquePesagem;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import io.swagger.annotations.ApiModel;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.math.BigDecimal;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosPesagemVeculo", propOrder =

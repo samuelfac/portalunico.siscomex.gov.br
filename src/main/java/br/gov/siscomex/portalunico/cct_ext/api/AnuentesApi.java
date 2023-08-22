@@ -1,24 +1,18 @@
 package br.gov.siscomex.portalunico.cct_ext.api;
 
 import br.gov.siscomex.portalunico.cct_ext.model.InfoCargaTransitoDTO;
-
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.List;
-import java.util.Map;
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
-import org.apache.cxf.jaxrs.ext.multipart.*;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
-import io.swagger.jaxrs.PATCH;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
+import io.swagger.annotations.ApiResponses;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
 /**
  * Controle de Carga e Trânsito Exportação
