@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ProrrogacaoLpcoResponse", propOrder =
-    { "situacao", "novaDataFimVigencia", "dataInicioVigencia", "dataFimVigencia", "dataCadastroSolicitacao", "dataUltimaAlteracao", "justificativa"
+    { "situacao", "novaDataFimVigencia", "dataInicioVigencia", "dataFimVigencia", "dataCadastroSolicitacao", "dataUltimaAlteracao", "justificativa", "situacaoPagamentoTaxa"
 })
 
 @XmlRootElement(name="ProrrogacaoLpcoResponse")
@@ -70,6 +70,11 @@ public class ProrrogacaoLpcoResponse  {
    * Justificativa da solicitação de prorrogação.<br>Tamanho mínimo: 0<br>Tamanho máximo: 400
   **/
   private String justificativa = null;
+
+  @XmlElement(name="situacaoPagamentoTaxa")
+  @ApiModelProperty(value = "")
+  @Valid
+  private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
  /**
    * Get situacao
    * @return situacao
@@ -199,6 +204,24 @@ public class ProrrogacaoLpcoResponse  {
     return this;
   }
 
+ /**
+   * Get situacaoPagamentoTaxa
+   * @return situacaoPagamentoTaxa
+  **/
+  @JsonProperty("situacaoPagamentoTaxa")
+  public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+    return situacaoPagamentoTaxa;
+  }
+
+  public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+  }
+
+  public ProrrogacaoLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -212,6 +235,7 @@ public class ProrrogacaoLpcoResponse  {
     sb.append("    dataCadastroSolicitacao: ").append(toIndentedString(dataCadastroSolicitacao)).append("\n");
     sb.append("    dataUltimaAlteracao: ").append(toIndentedString(dataUltimaAlteracao)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
+    sb.append("    situacaoPagamentoTaxa: ").append(toIndentedString(situacaoPagamentoTaxa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

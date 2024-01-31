@@ -63,14 +63,14 @@ public class ModeloLpcoCompleto  {
  /**
    * Indica se o sistema permite que seja informado o campo informacaoAdicional durante o cadastro de LPCOs do modelo
   **/
-  private Boolean exibirInformacaoAdicional = false;
+  private Boolean exibirInformacaoAdicional = null;
 
   @XmlElement(name="requerCatalogoProduto", required = true)
   @ApiModelProperty(example = "false", required = true, value = "Indica se a informação de mercadorias será via Catálogo de Produtos")
  /**
    * Indica se a informação de mercadorias será via Catálogo de Produtos
   **/
-  private Boolean requerCatalogoProduto = false;
+  private Boolean requerCatalogoProduto = null;
 
   @XmlElement(name="dataInicioVigencia", required = true)
   @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", required = true, value = "Data de início de vigência do modelo<br> Formato: Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")

@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ExigenciaLpcoResponse", propOrder =
-    { "numero", "exigencia", "dataExigencia", "resposta", "dataResposta", "situacao", "numeroCancelado", "aviso"
+    { "numero", "exigencia", "dataExigencia", "resposta", "dataResposta", "situacao", "numeroCancelado", "aviso", "situacaoPagamentoTaxa"
 })
 
 @XmlRootElement(name="ExigenciaLpcoResponse")
@@ -77,6 +77,11 @@ public class ExigenciaLpcoResponse  {
    * Aviso sobre a operação realizada
   **/
   private String aviso = null;
+
+  @XmlElement(name="situacaoPagamentoTaxa")
+  @ApiModelProperty(value = "")
+  @Valid
+  private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
  /**
    * Número sequencial da exigência
    * @return numero
@@ -225,6 +230,24 @@ public class ExigenciaLpcoResponse  {
     return this;
   }
 
+ /**
+   * Get situacaoPagamentoTaxa
+   * @return situacaoPagamentoTaxa
+  **/
+  @JsonProperty("situacaoPagamentoTaxa")
+  public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+    return situacaoPagamentoTaxa;
+  }
+
+  public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+  }
+
+  public ExigenciaLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -239,6 +262,7 @@ public class ExigenciaLpcoResponse  {
     sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");
     sb.append("    numeroCancelado: ").append(toIndentedString(numeroCancelado)).append("\n");
     sb.append("    aviso: ").append(toIndentedString(aviso)).append("\n");
+    sb.append("    situacaoPagamentoTaxa: ").append(toIndentedString(situacaoPagamentoTaxa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

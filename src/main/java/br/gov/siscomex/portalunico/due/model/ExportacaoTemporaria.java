@@ -34,7 +34,7 @@ public class ExportacaoTemporaria  {
 
   @XmlElement(name="temporaria", required = true)
   @ApiModelProperty(required = true, value = "")
-  private Boolean temporaria = false;
+  private Boolean temporaria = null;
  /**
    * Número do processo&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 17
    * @return numeroDoProcesso

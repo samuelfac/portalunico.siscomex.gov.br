@@ -40,15 +40,15 @@ public interface DocumentoDeTransporteApi  {
     @Path("/ext/documento-transporte/dat")
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar uma lista de Documento de Transporte do tipo DAT", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/consultar-dat/\">Exemplos de Respostas da Consulta DAT</a></p>", tags={ "Documento de Transporte" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarDocumentoTransporteDAT( @NotNull @ApiParam(value = "Lista de DAT (número do documento) separados por |<br>Cada documento de Transporte DAT é formado pelo número do DAT<br>Tamanho 11<br>Formato: AABRNNNNNN-D<br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>NNNNN - Numeração sequencial<br>D - DV<br>ex: 20BR0061234|23BR0064567|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
+    public Response consultarDocumentoTransporteDAT(@NotNull @ApiParam(value = "Lista de DAT (número do documento) separados por |<br>Cada documento de Transporte DAT é formado pelo número do DAT<br>Tamanho 11<br>Formato: AABRNNNNNN-D<br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>NNNNN - Numeração sequencial<br>D - DV<br>ex: 20BR0061234|23BR0064567|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consultar uma lista de Documento de Transporte do tipo DTAI
@@ -63,11 +63,11 @@ public interface DocumentoDeTransporteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarDocumentoTransporteDTAI( @NotNull @ApiParam(value = "Lista de DTAI (número do documento,data de emissão) separados por |<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA<br>ex: DTAI05ABR01,01-02-2023|3E33D3D33,10-08-2020|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -83,11 +83,11 @@ public interface DocumentoDeTransporteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarDocumentoTransporteMIC( @NotNull @ApiParam(value = "Lista de MIC (número do documento,data de emissão) separados por |<br>Tamanho: 11<br>Formato: BRNNNNNNNNN<br>Descrição Formato<br>BR - Brasil<br>NNNNNNNNN - sequencial numérico<br>ex: BR123456788,01-01-2020|BR123456789,11-10-2022|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -103,11 +103,11 @@ public interface DocumentoDeTransporteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarDocumentoTransporteTIF( @NotNull @ApiParam(value = "Lista de TIF (número do documento,data de emissão) separados por |<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA<br>ex: 2344234324,08-06-2020|TIF22ABR01,14-05-2022|...",required=true)  @QueryParam("documentos") String documentos, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -123,11 +123,11 @@ public interface DocumentoDeTransporteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response entregarDocumentoTransporte(@ApiParam(value = "Entregas de Documentos de Transporte" ,required=true)@Valid EntregasDocumentoTransporte body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -143,11 +143,11 @@ public interface DocumentoDeTransporteApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response recepcionarDocumentoTransporte(@ApiParam(value = "Recepções de Documentos de Transporte" ,required=true)@Valid RecepcoesDocumentoTransporte body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

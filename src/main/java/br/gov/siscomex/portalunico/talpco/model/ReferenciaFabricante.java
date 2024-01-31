@@ -36,7 +36,7 @@ public class ReferenciaFabricante  {
  /**
    * Indica se é um fabricante conhecido.<br>
   **/
-  private Boolean conhecido = false;
+  private Boolean conhecido = null;
 
   @XmlElement(name="cpfCnpj")
   @ApiModelProperty(example = "03141554900", value = "CPF / CNPJ do fabricante. Só deve ser informado se for um fabricante nacional (codigoPais = BR).<br>Tamanho: 11 (CPF) ou 14 (CNPJ)")

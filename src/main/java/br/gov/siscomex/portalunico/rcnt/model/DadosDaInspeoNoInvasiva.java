@@ -73,9 +73,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -168,10 +168,10 @@ public enum TipoOperacaoEnum {
   **/
   private List<DadosContinerUldInspeoNoInvasiva> listaConteineresUld = null;
 
-  @XmlElement(name="vazio")
-  @ApiModelProperty(example = "false", value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="vazio", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não Pode ser nulo quando o evento for de exclusão.")
  /**
-   * Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não Pode ser nulo quando o evento for de exclusão.
   **/
   private Boolean vazio = null;
 
@@ -187,10 +187,10 @@ public enum TipoOperacaoEnum {
   **/
   private String arquivoMetadados = null;
 
-  @XmlElement(name="scanner")
-  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner.<br/>Tamanho: 36")
+  @XmlElement(name="scanner", required = true)
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
  /**
-   * Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner.<br/>Tamanho: 36
+   * Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
   **/
   private String scanner = null;
 
@@ -224,7 +224,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -488,10 +488,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não Pode ser nulo quando o evento for de exclusão.
    * @return vazio
   **/
   @JsonProperty("vazio")
+  @NotNull
   public Boolean isVazio() {
     return vazio;
   }
@@ -543,10 +544,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner.&lt;br/&gt;Tamanho: 36
+   * Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
    * @return scanner
   **/
   @JsonProperty("scanner")
+  @NotNull
   public String getScanner() {
     return scanner;
   }

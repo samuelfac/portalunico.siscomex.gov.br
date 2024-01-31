@@ -288,9 +288,9 @@ public enum CodigoEnum {
 	@JsonProperty("RECINTO_ARMAZENAMENTO CAMPO_CONTROLE_DE_SALDO")
 	RECINTO_ARMAZENAMENTO_CAMPO_CONTROLE_DE_SALDO(String.valueOf("RECINTO_ARMAZENAMENTO CAMPO_CONTROLE_DE_SALDO")),
 	
-	@XmlEnumValue("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM")
-	@JsonProperty("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM")
-	LPCO_VINCULADO_DENOMINACAO_PRODUTO_PESO_LIQUIDO_ITEM(String.valueOf("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM")),
+	@XmlEnumValue("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM MOTIVO_SITUACAO_ESPECIAL")
+	@JsonProperty("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM MOTIVO_SITUACAO_ESPECIAL")
+	LPCO_VINCULADO_DENOMINACAO_PRODUTO_PESO_LIQUIDO_ITEM_MOTIVO_SITUACAO_ESPECIAL(String.valueOf("LPCO_VINCULADO DENOMINACAO_PRODUTO PESO_LIQUIDO_ITEM MOTIVO_SITUACAO_ESPECIAL")),
 	
 	@XmlEnumValue("ATT_<número>")
 	@JsonProperty("ATT_<número>")
@@ -467,9 +467,9 @@ public enum TipoEnum {
   private ValidacaoCampoLpco validacao = null;
 
   @XmlElement(name="condicaoPreenchimento")
-  @ApiModelProperty(example = "ATT_1 >= 10 && ATT_1 <=100", value = "Indica em qual condição este campo pode ser preenchido")
+  @ApiModelProperty(example = "1) 'ATT_1 == 04 || == 05 || == 06', 2) 'ATT_1 > 10 && < 100'", value = "Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são '<', '<=', '>', '>=', '==', '!=', '&&', '||', e o campo será preenchido com a sentença completa, conforme os exemplos")
  /**
-   * Indica em qual condição este campo pode ser preenchido
+   * Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são '<', '<=', '>', '>=', '==', '!=', '&&', '||', e o campo será preenchido com a sentença completa, conforme os exemplos
   **/
   private String condicaoPreenchimento = null;
 
@@ -602,7 +602,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Indica em qual condição este campo pode ser preenchido
+   * Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são &#39;&lt;&#39;, &#39;&lt;&#x3D;&#39;, &#39;&gt;&#39;, &#39;&gt;&#x3D;&#39;, &#39;&#x3D;&#x3D;&#39;, &#39;!&#x3D;&#39;, &#39;&amp;&amp;&#39;, &#39;||&#39;, e o campo será preenchido com a sentença completa, conforme os exemplos
    * @return condicaoPreenchimento
   **/
   @JsonProperty("condicaoPreenchimento")

@@ -21,7 +21,7 @@ public class ItemDaNotaFiscalRemoteDTO  {
   
   @XmlElement(name="apresentadaParaDespacho")
   @ApiModelProperty(value = "")
-  private Boolean apresentadaParaDespacho = false;
+  private Boolean apresentadaParaDespacho = null;
 
   @XmlElement(name="cfop")
   @ApiModelProperty(value = "CFOP<br />Formato: Inteiro, com até 3 digitos")
@@ -40,7 +40,7 @@ public class ItemDaNotaFiscalRemoteDTO  {
   @XmlElement(name="ncm")
   @ApiModelProperty(value = "")
   @Valid
-  private NcmDto ncm = null;
+  private NCMDTO ncm = null;
 
   @XmlElement(name="notaFiscal")
   @ApiModelProperty(value = "")
@@ -160,15 +160,15 @@ public class ItemDaNotaFiscalRemoteDTO  {
    * @return ncm
   **/
   @JsonProperty("ncm")
-  public NcmDto getNcm() {
+  public NCMDTO getNcm() {
     return ncm;
   }
 
-  public void setNcm(NcmDto ncm) {
+  public void setNcm(NCMDTO ncm) {
     this.ncm = ncm;
   }
 
-  public ItemDaNotaFiscalRemoteDTO ncm(NcmDto ncm) {
+  public ItemDaNotaFiscalRemoteDTO ncm(NCMDTO ncm) {
     this.ncm = ncm;
     return this;
   }

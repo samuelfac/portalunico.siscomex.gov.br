@@ -40,7 +40,7 @@ public interface RegistroEDiagnsticoApi  {
     @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Solicitar o diagnóstico da Duimp para registro ou retificação", notes = "Use esta funcionalidade para solicitar o diagn&oacute;stico de uma Duimp em rascunho ou uma solicita&ccedil;&atilde;o de retifica&ccedil;&atilde;o em rascunho.<br> <p>No caso de solicita&ccedil;&atilde;o recebida com sucesso, voc&ecirc; receber&aacute; como retorno a informa&ccedil;&atilde;o de que a sua solicita&ccedil;&atilde;o est&aacute; em processamento. <strong>O resultado do diagn&oacute;stico solicitado ser&aacute; recebido via notifica&ccedil;&atilde;o push.</strong> </p><p>Os eventos de notifica&ccedil;&atilde;o push da API Duimp Intervenientes Privados podem ser consultados na documenta&ccedil;&atilde;o de API do Pucomex, no seguinte endere&ccedil;o: <a href=\"../pages/duimp_eventos_intervenientes_privados/\">Eventos da Duimp</a> </p><p>Para mais esclarecimentos sobre como realizar a assinatura dos eventos, verificar a ocorr&ecirc;ncia de falhas na notifica&ccedil;&atilde;o e outras opera&ccedil;&otilde;es envolvendo a notifica&ccedil;&atilde;o de eventos, acessar o seguinte endere&ccedil;o: <a href=\"../pages/webhooks/\">Documenta&ccedil;&atilde;o sobre Webhooks</a> </p>", tags={ "Registro e Diagnóstico" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 201, message = "Operação realizada com sucesso", response = RespostaApiDiagnosticoRegistro.class),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),

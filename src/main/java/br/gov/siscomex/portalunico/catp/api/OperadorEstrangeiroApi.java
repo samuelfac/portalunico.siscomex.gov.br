@@ -40,16 +40,16 @@ public interface OperadorEstrangeiroApi  {
     @Path("/ext/operador-estrangeiro")
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar Operador Estrangeiro", notes = "", tags={ "Operador Estrangeiro" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = OperadorEstrangeiroIntegracaoDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultar( @NotNull @ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true)  @QueryParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador) <br>Tamanho: 35")  @QueryParam("tin") String tin,  @ApiParam(value = "Código <br>Tamanho: 35")  @QueryParam("codigo") String codigo,  @ApiParam(value = "Códigos internos do Operador Estrangeiro do Exportador/Importador  <br>Tamanho: 35")  @QueryParam("codigoInterno") String codigoInterno,  @ApiParam(value = "Nome do Operador Estrangeiro  <br>Tamanho: 70")  @QueryParam("nome") String nome,  @ApiParam(value = "Código do país. Usar tabela ISO 3166 <br>Tamanho: 2 <br>Formato: 'AA' <br>")  @QueryParam("paisOrigem") String paisOrigem,  @ApiParam(value = "Exibir desativados", defaultValue="false") @DefaultValue("false") @QueryParam("exibirDesativados") Boolean exibirDesativados);
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
+    public Response consultar(@NotNull @ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true)  @QueryParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador) <br>Tamanho: 35")  @QueryParam("tin") String tin, @ApiParam(value = "Código <br>Tamanho: 35")  @QueryParam("codigo") String codigo, @ApiParam(value = "Códigos internos do Operador Estrangeiro do Exportador/Importador  <br>Tamanho: 35")  @QueryParam("codigoInterno") String codigoInterno, @ApiParam(value = "Nome do Operador Estrangeiro  <br>Tamanho: 70")  @QueryParam("nome") String nome, @ApiParam(value = "Código do país. Usar tabela ISO 3166 <br>Tamanho: 2 <br>Formato: 'AA' <br>")  @QueryParam("paisOrigem") String paisOrigem, @ApiParam(value = "Exibir desativados", defaultValue="false") @DefaultValue("false") @QueryParam("exibirDesativados") Boolean exibirDesativados);
 
     /**
      * Detalhar Versão do OperadorExtrangeiro
@@ -60,13 +60,13 @@ public interface OperadorEstrangeiroApi  {
     @ApiOperation(value = "Detalhar Versão do OperadorExtrangeiro", notes = "", tags={ "Operador Estrangeiro" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response detalhar(@ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true) @PathParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "Código do país. Usar tabela ISO 3166 <br>Tamanho: 2 <br>Formato: 'AA' <br>",required=true) @PathParam("codigoPais") String codigoPais, @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador Estrangeiro) <br>Tamanho: 35 <br>",required=true) @PathParam("codigo") String codigo, @ApiParam(value = "Informar a versão do Operador Estrangeiro (exemplo: '1') ou uma versão retificada do Operador Estrangeiro (exemplo: '1.1').<br>Tamanho Máximo: 8 <br>",required=true) @PathParam("versao") String versao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -78,13 +78,13 @@ public interface OperadorEstrangeiroApi  {
     @ApiOperation(value = "Exportar Catálogo de Operadores Estrangeiros", notes = "", tags={ "Operador Estrangeiro" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response downloadOperadorEstrangeiro(@ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true) @PathParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "Exibir desativados",required=true) @PathParam("exibirDesativados") Boolean exibirDesativados, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -98,13 +98,13 @@ public interface OperadorEstrangeiroApi  {
     @ApiOperation(value = "Incluir/Retificar Operador Estrangeiro", notes = "", tags={ "Operador Estrangeiro" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = LoteValidacaoVersaoDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response incluir(@ApiParam(value = "Lista de Operadores Estrangeiros" ,required=true)@Valid List<OperadorEstrangeiroIntegracaoDTO> body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

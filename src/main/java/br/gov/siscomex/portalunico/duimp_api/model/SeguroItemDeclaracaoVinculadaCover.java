@@ -20,14 +20,14 @@ import java.math.BigDecimal;
 public class SeguroItemDeclaracaoVinculadaCover  {
   
   @XmlElement(name="valorBRL")
-  @ApiModelProperty(example = "10.53", value = "Valor do seguro (R$) do item da declaração vinculada, quando o tipo for \"Duimp\"  E  quando o seguro foi calculado durante a elaboração/registro. Para os demais casos, esse atributo será fornecido com o valor nulo")
+  @ApiModelProperty(example = "10.53", value = "Valor do seguro (R$) do item.<br>O valor do seguro (R$) do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \"Duimp\" e quando o seguro foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do seguro (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do seguro (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.")
   @Valid
  /**
-   * Valor do seguro (R$) do item da declaração vinculada, quando o tipo for \"Duimp\"  E  quando o seguro foi calculado durante a elaboração/registro. Para os demais casos, esse atributo será fornecido com o valor nulo
+   * Valor do seguro (R$) do item.<br>O valor do seguro (R$) do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \"Duimp\" e quando o seguro foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do seguro (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do seguro (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.
   **/
   private BigDecimal valorBRL = null;
  /**
-   * Valor do seguro (R$) do item da declaração vinculada, quando o tipo for \&quot;Duimp\&quot;  E  quando o seguro foi calculado durante a elaboração/registro. Para os demais casos, esse atributo será fornecido com o valor nulo
+   * Valor do seguro (R$) do item.&lt;br&gt;O valor do seguro (R$) do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \&quot;Duimp\&quot; e quando o seguro foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do seguro (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do seguro (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.
    * @return valorBRL
   **/
   @JsonProperty("valorBRL")

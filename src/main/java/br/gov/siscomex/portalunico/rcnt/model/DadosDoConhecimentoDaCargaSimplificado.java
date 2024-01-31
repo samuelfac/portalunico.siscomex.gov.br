@@ -26,9 +26,9 @@ public class DadosDoConhecimentoDaCargaSimplificado  {
   private String idElemento = null;
 
   @XmlElement(name="numero")
-  @ApiModelProperty(example = "131805000071025", value = "Número do conhecimento. <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100")
+  @ApiModelProperty(example = "131805000071025", value = "Número do conhecimento. <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
  /**
-   * Número do conhecimento. <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100
+   * Número do conhecimento. <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
   **/
   private String numero = null;
 
@@ -58,7 +58,7 @@ public class DadosDoConhecimentoDaCargaSimplificado  {
   }
 
  /**
-   * Número do conhecimento. &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.&lt;br/&gt;Tamanho: 100
+   * Número do conhecimento. &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
    * @return numero
   **/
   @JsonProperty("numero")

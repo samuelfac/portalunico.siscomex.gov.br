@@ -30,14 +30,14 @@ public class ValidacaoCampoLpco  {
  /**
    * Indica se o campo é obrigatório. Caso seja um atributo condicionado e esteja marcado como obrigatório, ele deverá ser preenchido se a condição for cumprida.
   **/
-  private Boolean obrigatorio = false;
+  private Boolean obrigatorio = null;
 
   @XmlElement(name="permiteMultiplosValores", required = true)
   @ApiModelProperty(example = "true", required = true, value = "Indica se o campo permite mais do que um valor")
  /**
    * Indica se o campo permite mais do que um valor
   **/
-  private Boolean permiteMultiplosValores = false;
+  private Boolean permiteMultiplosValores = null;
 
   @XmlElement(name="mascara")
   @ApiModelProperty(example = "A9999", value = "Máscara de restrição de entrada de dados do campo. Definições: 9: dígito numérico; A: dígito alfanumérico; *: dígito numérico ou alfanumérico")

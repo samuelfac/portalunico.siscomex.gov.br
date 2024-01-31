@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ConhecimentoConsultaDetalhada", propOrder =
-    { "bloqueiosAtivos", "bloqueiosBaixados", "caixaPostalAgenteDeCargaConsolidadorEstrang", "caixaPostalConsignatarioConhecimento", "caixaPostalEmbarcadorEstrangeiro", "categoriaCarga", "chegadasTerrestres", "cidadeAgenteDeCargaConsolidadorEstrang", "cidadeConsignatarioConhecimento", "cidadeEmbarcadorEstrangeiro", "cnpjResponsavelArquivo", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "contatosAgenteDeCargaConsolidadorEstrang", "contatosConsignatarioConhecimento", "contatosEmbarcadorEstrangeiro", "dataEmissao", "dataHoraAssinaturaTransportador", "descricaoResumida", "divergencias", "documentosSaida", "dsicsApropriados", "enderecoAgenteDeCargaConsolidadorEstrang", "enderecoConsignatarioConhecimento", "enderecoEmbarcadorEstrangeiro", "frete", "hawbAssociados", "identificacao", "identificacaoDocumentoConsignatario", "indicadorNaoRecepcaoHawbAssociados", "indicadorPartesMadeira", "itensCarga", "localAssinaturaTransportador", "manuseiosEspeciais", "mawbAwbAssociados", "nomeAgenteDeCargaConsolidadorEstrang", "nomeAssinaturaEmbarcadorEstrangeiro", "nomeAssinaturaTransportador", "nomeConsignatarioConhecimento", "nomeDocumentoConsignatario", "nomeEmbarcadorEstrangeiro", "outrasInfosServico", "outrasPartesInteressadas", "paisAgenteDeCargaConsolidadorEstrang", "paisConsignatarioConhecimento", "paisEmbarcadorEstrangeiro", "partesEstoque", "pesoBrutoConhecimento", "quantidadeVolumesConhecimento", "razaoSocialDocumentoConsignatario", "recintoAduaneiroDestino", "ruc", "situacao", "solicitacoesServicosEspeciais", "tipo", "tipoDocumentoConsignatario", "viagensAssociadas"
+    { "bloqueiosAtivos", "bloqueiosBaixados", "caixaPostalAgenteDeCargaConsolidadorEstrang", "caixaPostalConsignatarioConhecimento", "caixaPostalEmbarcadorEstrangeiro", "categoriaCarga", "chegadasTerrestres", "cidadeAgenteDeCargaConsolidadorEstrang", "cidadeConsignatarioConhecimento", "cidadeEmbarcadorEstrangeiro", "cnpjResponsavelArquivo", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "contatosAgenteDeCargaConsolidadorEstrang", "contatosConsignatarioConhecimento", "contatosEmbarcadorEstrangeiro", "dataEmissao", "dataHoraAssinaturaTransportador", "descricaoResumida", "divergencias", "documentosSaida", "dsicsApropriados", "enderecoAgenteDeCargaConsolidadorEstrang", "enderecoConsignatarioConhecimento", "enderecoEmbarcadorEstrangeiro", "frete", "hawbAssociados", "identificacao", "identificacaoDocumentoConsignatario", "indicadorNaoRecepcaoHawbAssociados", "indicadorPartesMadeira", "itensCarga", "localAssinaturaTransportador", "manuseiosEspeciais", "mawbAwbAssociados", "nomeAgenteDeCargaConsolidadorEstrang", "nomeAssinaturaEmbarcadorEstrangeiro", "nomeAssinaturaTransportador", "nomeConsignatarioConhecimento", "nomeDocumentoConsignatario", "nomeEmbarcadorEstrangeiro", "outrasInfosServico", "outrasPartesInteressadas", "paisAgenteDeCargaConsolidadorEstrang", "paisConsignatarioConhecimento", "paisEmbarcadorEstrangeiro", "partesEstoque", "pesoBrutoConhecimento", "quantidadeVolumesConhecimento", "razaoSocialDocumentoConsignatario", "recepcoesComAvarias", "recintoAduaneiroDestino", "ruc", "situacao", "solicitacoesServicosEspeciais", "tipo", "tipoDocumentoConsignatario", "viagensAssociadas"
 })
 
 @XmlRootElement(name="ConhecimentoConsultaDetalhada")
@@ -320,9 +320,9 @@ public enum IndicadorNaoRecepcaoHawbAssociadosEnum {
 }
 
   @XmlElement(name="indicadorNaoRecepcaoHawbAssociados")
-  @ApiModelProperty(example = "S", value = "Indicador relacionado à recepção de todos os cargas relacionadas<br/> ")
+  @ApiModelProperty(example = "S", value = "Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.")
  /**
-   * Indicador relacionado à recepção de todos os cargas relacionadas<br/> 
+   * Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.
   **/
   private IndicadorNaoRecepcaoHawbAssociadosEnum indicadorNaoRecepcaoHawbAssociados = null;
 
@@ -511,6 +511,14 @@ public enum IndicadorPartesMadeiraEnum {
    * Razão social do consignatário<br/>Tamanho máximo: 70
   **/
   private String razaoSocialDocumentoConsignatario = null;
+
+  @XmlElement(name="recepcoesComAvarias")
+  @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+  @Valid
+ /**
+   * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+  **/
+  private List<RecepcaoComAvaria> recepcoesComAvarias = null;
 
   @XmlElement(name="recintoAduaneiroDestino")
   @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
@@ -1263,7 +1271,7 @@ public enum TipoDocumentoConsignatarioEnum {
   }
 
  /**
-   * Indicador relacionado à recepção de todos os cargas relacionadas&lt;br/&gt; 
+   * Informação prestada pelo transportador responsável pelo conhecimento.&lt;br&gt;S - Sim&lt;br&gt;N - Não&lt;br&gt;&lt;br&gt;Quando for \&quot;S\&quot;, a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.&lt;br&gt;&lt;br&gt;Quando for \&quot;N\&quot;, a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.&lt;br&gt;&lt;br&gt;Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.
    * @return indicadorNaoRecepcaoHawbAssociados
   **/
   @JsonProperty("indicadorNaoRecepcaoHawbAssociados")
@@ -1677,6 +1685,29 @@ public enum TipoDocumentoConsignatarioEnum {
   }
 
  /**
+   * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
+   * @return recepcoesComAvarias
+  **/
+  @JsonProperty("recepcoesComAvarias")
+  public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
+    return recepcoesComAvarias;
+  }
+
+  public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+    this.recepcoesComAvarias = recepcoesComAvarias;
+  }
+
+  public ConhecimentoConsultaDetalhada recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+    this.recepcoesComAvarias = recepcoesComAvarias;
+    return this;
+  }
+
+  public ConhecimentoConsultaDetalhada addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
+    this.recepcoesComAvarias.add(recepcoesComAvariasItem);
+    return this;
+  }
+
+ /**
    * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
    * @return recintoAduaneiroDestino
   **/
@@ -1877,6 +1908,7 @@ public enum TipoDocumentoConsignatarioEnum {
     sb.append("    pesoBrutoConhecimento: ").append(toIndentedString(pesoBrutoConhecimento)).append("\n");
     sb.append("    quantidadeVolumesConhecimento: ").append(toIndentedString(quantidadeVolumesConhecimento)).append("\n");
     sb.append("    razaoSocialDocumentoConsignatario: ").append(toIndentedString(razaoSocialDocumentoConsignatario)).append("\n");
+    sb.append("    recepcoesComAvarias: ").append(toIndentedString(recepcoesComAvarias)).append("\n");
     sb.append("    recintoAduaneiroDestino: ").append(toIndentedString(recintoAduaneiroDestino)).append("\n");
     sb.append("    ruc: ").append(toIndentedString(ruc)).append("\n");
     sb.append("    situacao: ").append(toIndentedString(situacao)).append("\n");

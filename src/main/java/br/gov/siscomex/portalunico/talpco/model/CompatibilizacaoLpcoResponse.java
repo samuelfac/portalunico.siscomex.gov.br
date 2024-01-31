@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "CompatibilizacaoLpcoResponse", propOrder =
-    { "numero", "situacao", "dataRegistro", "justificativa", "listaAlteracoes"
+    { "numero", "situacao", "dataRegistro", "justificativa", "listaAlteracoes", "situacaoPagamentoTaxa"
 })
 
 @XmlRootElement(name="CompatibilizacaoLpcoResponse")
@@ -59,6 +59,11 @@ public class CompatibilizacaoLpcoResponse  {
    * Lista de alterações realizadas na compatibilização
   **/
   private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
+
+  @XmlElement(name="situacaoPagamentoTaxa")
+  @ApiModelProperty(value = "")
+  @Valid
+  private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
  /**
    * Número do pedido de compatibilização
    * @return numero
@@ -158,6 +163,24 @@ public class CompatibilizacaoLpcoResponse  {
     return this;
   }
 
+ /**
+   * Get situacaoPagamentoTaxa
+   * @return situacaoPagamentoTaxa
+  **/
+  @JsonProperty("situacaoPagamentoTaxa")
+  public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+    return situacaoPagamentoTaxa;
+  }
+
+  public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+  }
+
+  public CompatibilizacaoLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -169,6 +192,7 @@ public class CompatibilizacaoLpcoResponse  {
     sb.append("    dataRegistro: ").append(toIndentedString(dataRegistro)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    listaAlteracoes: ").append(toIndentedString(listaAlteracoes)).append("\n");
+    sb.append("    situacaoPagamentoTaxa: ").append(toIndentedString(situacaoPagamentoTaxa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -29,7 +29,7 @@ public class ReferenciaExportadorEFabricanteDoProduto  {
  /**
    * Indica se é o exportador é igual ao fabricante do produto.<br>
   **/
-  private Boolean exportadorIgualFabricante = false;
+  private Boolean exportadorIgualFabricante = null;
 
   @XmlElement(name="operadorEstrangeiro")
   @ApiModelProperty(value = "")

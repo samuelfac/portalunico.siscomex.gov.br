@@ -73,9 +73,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -129,9 +129,9 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="cpf")
-  @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que está acessando o recinto (entrada ou saída).<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+  @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que está acessando o recinto (entrada ou saída). <br/>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
  /**
-   * CPF da pessoa que está acessando o recinto (entrada ou saída).<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+   * CPF da pessoa que está acessando o recinto (entrada ou saída). <br/>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
   **/
   private String cpf = null;
 
@@ -228,17 +228,17 @@ public enum IdentificacaoEnum {
     }
 }
 
-  @XmlElement(name="identificacao")
-  @ApiModelProperty(example = "1", value = "Forma de identificação conforme tabela de domínio.<br/>Domínio:<br/>1 - cartão<br/>2 - biométrico<br/>3 - cartão + biometria <br/>4 - manual")
+  @XmlElement(name="identificacao", required = true)
+  @ApiModelProperty(example = "1", required = true, value = "Forma de identificação conforme tabela de domínio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>1 - cartão<br/>2 - biométrico<br/>3 - cartão + biometria <br/>4 - manual")
  /**
-   * Forma de identificação conforme tabela de domínio.<br/>Domínio:<br/>1 - cartão<br/>2 - biométrico<br/>3 - cartão + biometria <br/>4 - manual
+   * Forma de identificação conforme tabela de domínio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>1 - cartão<br/>2 - biométrico<br/>3 - cartão + biometria <br/>4 - manual
   **/
   private IdentificacaoEnum identificacao = null;
 
   @XmlElement(name="identidadeEstrangeiro")
-  @ApiModelProperty(example = "FB000001", value = "Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<br/>Tamanho: 50")
+  @ApiModelProperty(example = "FB000001", value = "Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. <br/>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50")
  /**
-   * Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<br/>Tamanho: 50
+   * Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. <br/>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50
   **/
   private String identidadeEstrangeiro = null;
 
@@ -263,10 +263,10 @@ public enum IdentificacaoEnum {
   **/
   private String voo = null;
 
-  @XmlElement(name="catraca")
-  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Portão ou catraca de acesso. <br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado<br/>Tamanho: 36")
+  @XmlElement(name="catraca", required = true)
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Portão ou catraca de acesso. <br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
  /**
-   * Portão ou catraca de acesso. <br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado<br/>Tamanho: 36
+   * Portão ou catraca de acesso. <br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
   **/
   private String catraca = null;
 
@@ -300,7 +300,7 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -449,7 +449,7 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * CPF da pessoa que está acessando o recinto (entrada ou saída).&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+   * CPF da pessoa que está acessando o recinto (entrada ou saída). &lt;br/&gt;É obrigatório informar o atributo &#39;cpf&#39; quando o atributo &#39;identidadeEstrangeiro&#39; não for informado.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
    * @return cpf
   **/
   @JsonProperty("cpf")
@@ -489,10 +489,11 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Forma de identificação conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;1 - cartão&lt;br/&gt;2 - biométrico&lt;br/&gt;3 - cartão + biometria &lt;br/&gt;4 - manual
+   * Forma de identificação conforme tabela de domínio. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;1 - cartão&lt;br/&gt;2 - biométrico&lt;br/&gt;3 - cartão + biometria &lt;br/&gt;4 - manual
    * @return identificacao
   **/
   @JsonProperty("identificacao")
+  @NotNull
   public String getIdentificacao() {
     if (identificacao == null) {
       return null;
@@ -510,7 +511,7 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Número do documento de estrangeiro. &lt;br/&gt; Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.&lt;br/&gt;Tamanho: 50
+   * Número do documento de estrangeiro. &lt;br/&gt; Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. &lt;br/&gt;É obrigatório informar o atributo &#39;identidadeEstrangeiro&#39; quando o atributo &#39;cpf&#39; não for informado.&lt;br/&gt;Tamanho: 50
    * @return identidadeEstrangeiro
   **/
   @JsonProperty("identidadeEstrangeiro")
@@ -583,10 +584,11 @@ public enum IdentificacaoEnum {
   }
 
  /**
-   * Portão ou catraca de acesso. &lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado&lt;br/&gt;Tamanho: 36
+   * Portão ou catraca de acesso. &lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
    * @return catraca
   **/
   @JsonProperty("catraca")
+  @NotNull
   public String getCatraca() {
     return catraca;
   }

@@ -34,7 +34,7 @@ public interface ServiosDeConsultaDeProtocoloApi  {
     @Path("/api/ext/protocolos/{numeroProtocolo}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar a situação do processamento do protocolo.", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">A identificação da consulta é o número do protocolo gerado pelo sistema.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">As situações retornadas podem ser:</p><ul><li><em>EM_PROCESSAMENTO</em> – Aguardando processamento.</li><li><em>PROCESSADO</em> – Processamento realizado com sucesso.</li><li><em>REJEITADO</em> – Processamento rejeitado. Neste caso, a lista de erros encontrados é retornada no resultado.</li></ul>", tags={ "Serviços de Consulta de Protocolo" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocolo.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

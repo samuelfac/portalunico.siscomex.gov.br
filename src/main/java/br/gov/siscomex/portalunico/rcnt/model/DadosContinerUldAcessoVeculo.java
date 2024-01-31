@@ -42,23 +42,23 @@ public class DadosContinerUldAcessoVeculo  {
   private String identificacaoUld = null;
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "12U0", value = "Tipo de contêiner conforme tabela de domínio.<br/><a href=\"../pages/exemplos/rcnt/Tipo_Conteiner.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Tipo_Conteiner.pdf </a>")
+  @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/> É obrigatório informar os atributos 'tipo', 'ocrNumero' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'numeroConteiner' for informado.")
  /**
-   * Tipo de contêiner conforme tabela de domínio.<br/><a href=\"../pages/exemplos/rcnt/Tipo_Conteiner.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Tipo_Conteiner.pdf </a>
+   *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/> É obrigatório informar os atributos 'tipo', 'ocrNumero' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'numeroConteiner' for informado.
   **/
   private String tipo = null;
 
   @XmlElement(name="ocrNumero")
-  @ApiModelProperty(example = "false", value = "Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<br/> É obrigatório informar os atributos 'tipo', 'ocrNumero' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'numeroConteiner' for informado.")
  /**
-   * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<br/> É obrigatório informar os atributos 'tipo', 'ocrNumero' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'numeroConteiner' for informado.
   **/
   private Boolean ocrNumero = null;
 
   @XmlElement(name="vazio")
-  @ApiModelProperty(example = "false", value = "Contêiner vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Contêiner vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não<br/> É obrigatório informar os atributos 'tipo', 'ocrNumero' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'numeroConteiner' for informado.")
  /**
-   * Contêiner vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Contêiner vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não<br/> É obrigatório informar os atributos 'tipo', 'ocrNumero' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'numeroConteiner' for informado.
   **/
   private Boolean vazio = null;
 
@@ -185,7 +185,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Tipo de contêiner conforme tabela de domínio.&lt;br/&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Tipo_Conteiner.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Tipo_Conteiner.pdf &lt;/a&gt;
+   *  Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt; É obrigatório informar os atributos &#39;tipo&#39;, &#39;ocrNumero&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;numeroConteiner&#39; for informado.
    * @return tipo
   **/
   @JsonProperty("tipo")
@@ -203,7 +203,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;br/&gt; É obrigatório informar os atributos &#39;tipo&#39;, &#39;ocrNumero&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;numeroConteiner&#39; for informado.
    * @return ocrNumero
   **/
   @JsonProperty("ocrNumero")
@@ -221,7 +221,7 @@ public class DadosContinerUldAcessoVeculo  {
   }
 
  /**
-   * Contêiner vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Contêiner vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;br/&gt; É obrigatório informar os atributos &#39;tipo&#39;, &#39;ocrNumero&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;numeroConteiner&#39; for informado.
    * @return vazio
   **/
   @JsonProperty("vazio")

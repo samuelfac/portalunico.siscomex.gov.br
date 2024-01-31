@@ -35,16 +35,16 @@ public class QuadroCalculoDto  {
   @XmlElement(name="tipo")
   @ApiModelProperty(value = "")
   @Valid
-  private TipoTributoDto tipo = null;
+  private TipoTributoDTO tipo = null;
 
   @XmlElement(name="tributado")
   @ApiModelProperty(value = "")
-  private Boolean tributado = false;
+  private Boolean tributado = null;
 
   @XmlElement(name="tributo")
   @ApiModelProperty(value = "")
   @Valid
-  private TributoDto tributo = null;
+  private TributoDTO tributo = null;
 
   @XmlElement(name="valorARecolher")
   @ApiModelProperty(value = "Valor a recolher<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -134,15 +134,15 @@ public class QuadroCalculoDto  {
    * @return tipo
   **/
   @JsonProperty("tipo")
-  public TipoTributoDto getTipo() {
+  public TipoTributoDTO getTipo() {
     return tipo;
   }
 
-  public void setTipo(TipoTributoDto tipo) {
+  public void setTipo(TipoTributoDTO tipo) {
     this.tipo = tipo;
   }
 
-  public QuadroCalculoDto tipo(TipoTributoDto tipo) {
+  public QuadroCalculoDto tipo(TipoTributoDTO tipo) {
     this.tipo = tipo;
     return this;
   }
@@ -170,15 +170,15 @@ public class QuadroCalculoDto  {
    * @return tributo
   **/
   @JsonProperty("tributo")
-  public TributoDto getTributo() {
+  public TributoDTO getTributo() {
     return tributo;
   }
 
-  public void setTributo(TributoDto tributo) {
+  public void setTributo(TributoDTO tributo) {
     this.tributo = tributo;
   }
 
-  public QuadroCalculoDto tributo(TributoDto tributo) {
+  public QuadroCalculoDto tributo(TributoDTO tributo) {
     this.tributo = tributo;
     return this;
   }

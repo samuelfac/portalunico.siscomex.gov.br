@@ -69,13 +69,13 @@ public enum CodigoEnum {
 }
 
   @XmlElement(name="codigo", required = true)
-  @ApiModelProperty(example = "NAO_HA_VINCULACAO", required = true, value = "Código de vinculação comprador x vendedor.<br>Domínio:")
+  @ApiModelProperty(example = "NAO_HA_VINCULACAO", required = true, value = "Tipo de vinculação 'comprador x vendedor' ou 'comprador/encomendante x vendedor'.<br>Domínio:")
  /**
-   * Código de vinculação comprador x vendedor.<br>Domínio:
+   * Tipo de vinculação 'comprador x vendedor' ou 'comprador/encomendante x vendedor'.<br>Domínio:
   **/
   private CodigoEnum codigo = null;
  /**
-   * Código de vinculação comprador x vendedor.&lt;br&gt;Domínio:
+   * Tipo de vinculação &#39;comprador x vendedor&#39; ou &#39;comprador/encomendante x vendedor&#39;.&lt;br&gt;Domínio:
    * @return codigo
   **/
   @JsonProperty("codigo")

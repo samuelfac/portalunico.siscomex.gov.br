@@ -34,7 +34,7 @@ public interface ServiosDeConsultaDeDsicApi  {
     @Path("/api/ext/dsic/{numeroDsic}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Retorna o detalhamento de um DSIC.", notes = "Retorna o detalhamento de um DSIC.", tags={ "Serviços de Consulta de DSIC" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DsicConsultaDetalhada.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

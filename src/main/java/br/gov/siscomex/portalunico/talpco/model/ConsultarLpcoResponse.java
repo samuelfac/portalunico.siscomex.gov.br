@@ -93,14 +93,14 @@ public class ConsultarLpcoResponse  {
  /**
    * Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.
   **/
-  private Boolean prorrogacaoPendente = false;
+  private Boolean prorrogacaoPendente = null;
 
   @XmlElement(name="retificacaoPendente", required = true)
   @ApiModelProperty(example = "false", required = true, value = "Indica se existe uma solicitação de retificação deste LPCO que ainda não foi analisada pelo órgão anuente.")
  /**
    * Indica se existe uma solicitação de retificação deste LPCO que ainda não foi analisada pelo órgão anuente.
   **/
-  private Boolean retificacaoPendente = false;
+  private Boolean retificacaoPendente = null;
 
   @XmlElement(name="dataSituacaoAtual", required = true)
   @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", required = true, value = "Data em que o LPCO passou para sua situação atual<br> Formato: Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")

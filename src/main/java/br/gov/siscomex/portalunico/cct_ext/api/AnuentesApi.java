@@ -34,14 +34,14 @@ public interface AnuentesApi  {
     @Path("/ext/anuentes/{due}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Obter Dados da Carga e Trânsito a partir do número da DU-E", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/secex-p025/\">Exemplos de Respostas</a></p>", tags={ "Anuentes" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = InfoCargaTransitoDTO.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response obterDadosCargaTransito(@ApiParam(value = "Número da DU-E<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV",required=true) @PathParam("due") String due, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

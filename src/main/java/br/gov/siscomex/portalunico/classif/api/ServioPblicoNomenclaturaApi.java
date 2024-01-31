@@ -27,7 +27,7 @@ public interface ServioPblicoNomenclaturaApi  {
     @GET
     @Path("/publico/nomenclatura/download/json")
     @ApiOperation(value = "Download do Arquivo ", notes = "", tags={ "Serviço Público Nomenclatura" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "sucesso"),
         @ApiResponse(code = 404, message = "Arquivo não encontrado") })
     public Response downloadPublico();

@@ -32,7 +32,7 @@ public enum IdEnum {
 
 	@XmlEnumValue("PARA_ANALISE")
 	@JsonProperty("PARA_ANALISE")
-	ANALISE(String.valueOf("PARA_ANALISE"));
+	PARA_ANALISE(String.valueOf("PARA_ANALISE"));
 
 
     private String value;
@@ -74,7 +74,7 @@ public enum DescricaoEnum {
 
 	@XmlEnumValue("Para análise")
 	@JsonProperty("Para análise")
-	LISE(String.valueOf("Para análise"));
+	PARA_AN_LISE(String.valueOf("Para análise"));
 
 
     private String value;

@@ -30,7 +30,7 @@ public class DUE  {
 
   @XmlElement(name="bloqueio")
   @ApiModelProperty(value = "")
-  private Boolean bloqueio = false;
+  private Boolean bloqueio = null;
 
 
 @XmlType(name="CanalEnum")
@@ -88,23 +88,23 @@ public enum CanalEnum {
 
   @XmlElement(name="consorciada")
   @ApiModelProperty(value = "")
-  private Boolean consorciada = false;
+  private Boolean consorciada = null;
 
   @XmlElement(name="dat")
   @ApiModelProperty(value = "")
-  private Boolean dat = false;
+  private Boolean dat = null;
 
   @XmlElement(name="dataDeCriacao")
-  @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de criação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+  @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
  /**
-   * Data de criação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+   * Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
   **/
   private OffsetDateTime dataDeCriacao = null;
 
   @XmlElement(name="dataDeRegistro")
-  @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+  @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de registro da DU-E. Esta data é atualizada quando a DU-E recebe qualquer tipo de movimentação.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
  /**
-   * Data de registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+   * Data de registro da DU-E. Esta data é atualizada quando a DU-E recebe qualquer tipo de movimentação.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
   **/
   private OffsetDateTime dataDeRegistro = null;
 
@@ -127,15 +127,15 @@ public enum CanalEnum {
 
   @XmlElement(name="despachoEmRecintoAlfandegado")
   @ApiModelProperty(value = "")
-  private Boolean despachoEmRecintoAlfandegado = false;
+  private Boolean despachoEmRecintoAlfandegado = null;
 
   @XmlElement(name="despachoEmRecintoDomiciliar")
   @ApiModelProperty(value = "")
-  private Boolean despachoEmRecintoDomiciliar = false;
+  private Boolean despachoEmRecintoDomiciliar = null;
 
   @XmlElement(name="embarqueEmRecintoAlfandegado")
   @ApiModelProperty(value = "")
-  private Boolean embarqueEmRecintoAlfandegado = false;
+  private Boolean embarqueEmRecintoAlfandegado = null;
 
   @XmlElement(name="enderecoDoEstabelecimentoDoLocalDeDespacho")
   @ApiModelProperty(value = "Endereço do estabelecimento do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
@@ -163,7 +163,7 @@ public enum CanalEnum {
 
   @XmlElement(name="exigenciaAtiva")
   @ApiModelProperty(value = "")
-  private Boolean exigenciaAtiva = false;
+  private Boolean exigenciaAtiva = null;
 
   @XmlElement(name="exigenciasFiscais")
   @ApiModelProperty(value = "*Campo descontinuado, utilize o atributo exigenciasFiscaisEstruturadas ")
@@ -227,11 +227,11 @@ public enum FormaDeExportacaoEnum {
 
   @XmlElement(name="impedidoDeEmbarque")
   @ApiModelProperty(value = "")
-  private Boolean impedidoDeEmbarque = false;
+  private Boolean impedidoDeEmbarque = null;
 
   @XmlElement(name="inclusaoNotaFiscal")
   @ApiModelProperty(value = "")
-  private Boolean inclusaoNotaFiscal = false;
+  private Boolean inclusaoNotaFiscal = null;
 
   @XmlElement(name="informacoesComplementares")
   @ApiModelProperty(value = "Informações complementares<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000")
@@ -283,7 +283,7 @@ public enum FormaDeExportacaoEnum {
   @XmlElement(name="moeda")
   @ApiModelProperty(value = "")
   @Valid
-  private MoedaDto moeda = null;
+  private MoedaDTO moeda = null;
 
   @XmlElement(name="motivoDeDispensaDaNotaFiscal")
   @ApiModelProperty(value = "")
@@ -299,22 +299,22 @@ public enum FormaDeExportacaoEnum {
 
   @XmlElement(name="oea")
   @ApiModelProperty(value = "")
-  private Boolean oea = false;
+  private Boolean oea = null;
 
   @XmlElement(name="paisImportador")
   @ApiModelProperty(value = "")
   @Valid
-  private PaisDto paisImportador = null;
+  private PaisDTO paisImportador = null;
 
   @XmlElement(name="recintoAduaneiroDeDespacho")
   @ApiModelProperty(value = "")
   @Valid
-  private RecintoAduaneiroDto recintoAduaneiroDeDespacho = null;
+  private RecintoAduaneiroDTO recintoAduaneiroDeDespacho = null;
 
   @XmlElement(name="recintoAduaneiroDeEmbarque")
   @ApiModelProperty(value = "")
   @Valid
-  private RecintoAduaneiroDto recintoAduaneiroDeEmbarque = null;
+  private RecintoAduaneiroDTO recintoAduaneiroDeEmbarque = null;
 
   @XmlElement(name="referenciaDoEnderecoDoLocalDeDespacho")
   @ApiModelProperty(value = "Referência do endereço do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
@@ -652,7 +652,7 @@ public enum TipoEnum {
 
   @XmlElement(name="tratamentoPrioritario")
   @ApiModelProperty(value = "")
-  private Boolean tratamentoPrioritario = false;
+  private Boolean tratamentoPrioritario = null;
 
   @XmlElement(name="unidadeLocalDeAnaliseFiscal")
   @ApiModelProperty(value = "")
@@ -793,7 +793,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Data de criação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
    * @return dataDeCriacao
   **/
   @JsonProperty("dataDeCriacao")
@@ -811,7 +811,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Data de registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+   * Data de registro da DU-E. Esta data é atualizada quando a DU-E recebe qualquer tipo de movimentação.&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
    * @return dataDeRegistro
   **/
   @JsonProperty("dataDeRegistro")
@@ -1265,15 +1265,15 @@ public enum TipoEnum {
    * @return moeda
   **/
   @JsonProperty("moeda")
-  public MoedaDto getMoeda() {
+  public MoedaDTO getMoeda() {
     return moeda;
   }
 
-  public void setMoeda(MoedaDto moeda) {
+  public void setMoeda(MoedaDTO moeda) {
     this.moeda = moeda;
   }
 
-  public DUE moeda(MoedaDto moeda) {
+  public DUE moeda(MoedaDTO moeda) {
     this.moeda = moeda;
     return this;
   }
@@ -1337,15 +1337,15 @@ public enum TipoEnum {
    * @return paisImportador
   **/
   @JsonProperty("paisImportador")
-  public PaisDto getPaisImportador() {
+  public PaisDTO getPaisImportador() {
     return paisImportador;
   }
 
-  public void setPaisImportador(PaisDto paisImportador) {
+  public void setPaisImportador(PaisDTO paisImportador) {
     this.paisImportador = paisImportador;
   }
 
-  public DUE paisImportador(PaisDto paisImportador) {
+  public DUE paisImportador(PaisDTO paisImportador) {
     this.paisImportador = paisImportador;
     return this;
   }
@@ -1355,15 +1355,15 @@ public enum TipoEnum {
    * @return recintoAduaneiroDeDespacho
   **/
   @JsonProperty("recintoAduaneiroDeDespacho")
-  public RecintoAduaneiroDto getRecintoAduaneiroDeDespacho() {
+  public RecintoAduaneiroDTO getRecintoAduaneiroDeDespacho() {
     return recintoAduaneiroDeDespacho;
   }
 
-  public void setRecintoAduaneiroDeDespacho(RecintoAduaneiroDto recintoAduaneiroDeDespacho) {
+  public void setRecintoAduaneiroDeDespacho(RecintoAduaneiroDTO recintoAduaneiroDeDespacho) {
     this.recintoAduaneiroDeDespacho = recintoAduaneiroDeDespacho;
   }
 
-  public DUE recintoAduaneiroDeDespacho(RecintoAduaneiroDto recintoAduaneiroDeDespacho) {
+  public DUE recintoAduaneiroDeDespacho(RecintoAduaneiroDTO recintoAduaneiroDeDespacho) {
     this.recintoAduaneiroDeDespacho = recintoAduaneiroDeDespacho;
     return this;
   }
@@ -1373,15 +1373,15 @@ public enum TipoEnum {
    * @return recintoAduaneiroDeEmbarque
   **/
   @JsonProperty("recintoAduaneiroDeEmbarque")
-  public RecintoAduaneiroDto getRecintoAduaneiroDeEmbarque() {
+  public RecintoAduaneiroDTO getRecintoAduaneiroDeEmbarque() {
     return recintoAduaneiroDeEmbarque;
   }
 
-  public void setRecintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
+  public void setRecintoAduaneiroDeEmbarque(RecintoAduaneiroDTO recintoAduaneiroDeEmbarque) {
     this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
   }
 
-  public DUE recintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
+  public DUE recintoAduaneiroDeEmbarque(RecintoAduaneiroDTO recintoAduaneiroDeEmbarque) {
     this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
     return this;
   }

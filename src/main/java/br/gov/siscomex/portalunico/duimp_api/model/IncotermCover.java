@@ -7,8 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,95 +22,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description="Condição de Venda<br>Origem: Sistema de Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/<br>Observação: Este grupo só deve ser preenchido quando o atributo \"código do método de valoração\" for preenchido com o valor '1'.")
 public class IncotermCover  {
   
-
-@XmlType(name="CodigoEnum")
-@XmlEnum(String.class)
-public enum CodigoEnum {
-
-	@XmlEnumValue("EXW")
-	@JsonProperty("EXW")
-	EXW(String.valueOf("EXW")),
-	
-	@XmlEnumValue("FAS")
-	@JsonProperty("FAS")
-	FAS(String.valueOf("FAS")),
-	
-	@XmlEnumValue("FCA")
-	@JsonProperty("FCA")
-	FCA(String.valueOf("FCA")),
-	
-	@XmlEnumValue("FOB")
-	@JsonProperty("FOB")
-	FOB(String.valueOf("FOB")),
-	
-	@XmlEnumValue("OCV")
-	@JsonProperty("OCV")
-	OCV(String.valueOf("OCV")),
-	
-	@XmlEnumValue("C_F")
-	@JsonProperty("C_F")
-	C_F(String.valueOf("C_F")),
-	
-	@XmlEnumValue("CFR")
-	@JsonProperty("CFR")
-	CFR(String.valueOf("CFR")),
-	
-	@XmlEnumValue("CPT")
-	@JsonProperty("CPT")
-	CPT(String.valueOf("CPT")),
-	
-	@XmlEnumValue("C_I")
-	@JsonProperty("C_I")
-	C_I(String.valueOf("C_I")),
-	
-	@XmlEnumValue("DAT")
-	@JsonProperty("DAT")
-	DAT(String.valueOf("DAT")),
-	
-	@XmlEnumValue("CIF")
-	@JsonProperty("CIF")
-	CIF(String.valueOf("CIF")),
-	
-	@XmlEnumValue("CIP")
-	@JsonProperty("CIP")
-	CIP(String.valueOf("CIP")),
-	
-	@XmlEnumValue("DAP")
-	@JsonProperty("DAP")
-	DAP(String.valueOf("DAP"));
-
-
-    private String value;
-
-    CodigoEnum (String v) {
-        value = v;
-    }
-
-    public String value() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
-
-    public static CodigoEnum fromValue(String v) {
-        for (CodigoEnum b : CodigoEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
-        }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-    }
-}
-
   @XmlElement(name="codigo")
-  @ApiModelProperty(example = "FOB", value = "Código da Condição de Venda (Código INCOTERM).<br>Tamanho: 3<br>Domínio:")
+  @ApiModelProperty(example = "FOB", value = "Código da Condição de Venda (Código INCOTERM).<br>Tamanho: 3<br>Domínio: EXW, FAS, FCA, FOB, OCV, C+F, CFR, CPT, C+I, DAT, CIF, CIP, DAP")
  /**
-   * Código da Condição de Venda (Código INCOTERM).<br>Tamanho: 3<br>Domínio:
+   * Código da Condição de Venda (Código INCOTERM).<br>Tamanho: 3<br>Domínio: EXW, FAS, FCA, FOB, OCV, C+F, CFR, CPT, C+I, DAT, CIF, CIP, DAP
   **/
-  private CodigoEnum codigo = null;
+  private String codigo = null;
 
   @XmlElement(name="complemento")
   @ApiModelProperty(example = "1", value = "Descrição complementar da condição de venda.<br>Tamanho mínimo: 0<br>Tamanho máximo: 250")
@@ -121,22 +36,19 @@ public enum CodigoEnum {
   **/
   private String complemento = null;
  /**
-   * Código da Condição de Venda (Código INCOTERM).&lt;br&gt;Tamanho: 3&lt;br&gt;Domínio:
+   * Código da Condição de Venda (Código INCOTERM).&lt;br&gt;Tamanho: 3&lt;br&gt;Domínio: EXW, FAS, FCA, FOB, OCV, C+F, CFR, CPT, C+I, DAT, CIF, CIP, DAP
    * @return codigo
   **/
   @JsonProperty("codigo")
   public String getCodigo() {
-    if (codigo == null) {
-      return null;
-    }
-    return codigo.value();
+    return codigo;
   }
 
-  public void setCodigo(CodigoEnum codigo) {
+  public void setCodigo(String codigo) {
     this.codigo = codigo;
   }
 
-  public IncotermCover codigo(CodigoEnum codigo) {
+  public IncotermCover codigo(String codigo) {
     this.codigo = codigo;
     return this;
   }

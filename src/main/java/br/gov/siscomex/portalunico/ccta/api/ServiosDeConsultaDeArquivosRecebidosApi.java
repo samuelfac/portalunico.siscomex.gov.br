@@ -1,7 +1,7 @@
 package br.gov.siscomex.portalunico.ccta.api;
 
 import br.gov.siscomex.portalunico.ccta.model.Recebimento;
-import br.gov.siscomex.portalunico.ccta.model.Resposta;
+import br.gov.siscomex.portalunico.ccta.model.RespostaRecebimento;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -37,7 +37,7 @@ public interface ServiosDeConsultaDeArquivosRecebidosApi  {
     @Path("/api/ext/check/received-files/{protocolNumber}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar Situação de Arquivos por Número de Protocolo", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Consulta, para um determinado número de protocolo, a situação atual do processamento do arquivo enviado. O número de protocolo é aquele gerado pelo sistema após o recebimento do arquivo, quando o mesmo passa pela validação do XSD da IATA.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">As situações podem ser:</p><ul><li><em>Received</em> – Aguardando processamento.</li><li><em>Processed</em> – Processamento realizado com sucesso, com gravação dos dados na base de dados.</li><li><em>Rejected</em> – Arquivo rejeitado por erro no processamento. Neste caso, a lista de erros encontrados é exibida.</li></ul>", tags={ "Serviços de Consulta de Arquivos Recebidos" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = Recebimento.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
@@ -58,7 +58,7 @@ public interface ServiosDeConsultaDeArquivosRecebidosApi  {
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar Situação de Arquivos por Data", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Consulta, para uma determinada data, a lista de arquivos enviados que passaram pela validação do XSD da IATA, tendo número de protocolo gerado. O retorno traz a situação atual do processamento de cada arquivo.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">As situações podem ser:</p><ul><li><em>Received</em> – Aguardando processamento.</li><li><em>Processed</em> – Processamento realizado com sucesso, com gravação dos dados na base.</li><li><em>Rejected</em> – Arquivo rejeitado por erro no processamento. Neste caso, a lista de erros encontrados é exibida.</li></ul>", tags={ "Serviços de Consulta de Arquivos Recebidos" })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = Resposta.class),
+        @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RespostaRecebimento.class),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

@@ -31,7 +31,7 @@ public class DeclaracaoTributaria  {
 
   @XmlElement(name="divergente")
   @ApiModelProperty(value = "")
-  private Boolean divergente = false;
+  private Boolean divergente = null;
 
   @XmlElement(name="recolhimentos")
   @ApiModelProperty(value = "")

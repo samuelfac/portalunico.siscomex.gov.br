@@ -26,9 +26,9 @@ public class DadosSemirreboqueDaInspeoNoInvasiva  {
   private String idElemento = null;
 
   @XmlElement(name="ocrPlaca")
-  @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<br/>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.")
  /**
-   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<br/>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.
   **/
   private Boolean ocrPlaca = null;
 
@@ -58,7 +58,7 @@ public class DadosSemirreboqueDaInspeoNoInvasiva  {
   }
 
  /**
-   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;br/&gt;É obrigatório que o atributo &#39;ocrPlaca&#39; seja informado quando o atributo &#39;placa&#39; for informado.
    * @return ocrPlaca
   **/
   @JsonProperty("ocrPlaca")

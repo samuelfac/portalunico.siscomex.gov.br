@@ -41,7 +41,7 @@ public class ProrrogacaoLpcoNegarRequest  {
  /**
    * Indica se o pagamento de taxa não efetuado
   **/
-  private Boolean faltaPagamentoTaxa = false;
+  private Boolean faltaPagamentoTaxa = null;
 
   @XmlElement(name="motivoAnalise")
   @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")

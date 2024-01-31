@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "CoordenadaGeograficaDto", propOrder =
+ @XmlType(name = "CoordenadaGeograficaDTO", propOrder =
     { "coordenadaArrayLatitudeLongitude", "latitude", "longitude"
 })
 
-@XmlRootElement(name="CoordenadaGeograficaDto")
-public class CoordenadaGeograficaDto  {
+@XmlRootElement(name="CoordenadaGeograficaDTO")
+public class CoordenadaGeograficaDTO  {
   
   @XmlElement(name="coordenadaArrayLatitudeLongitude")
   @ApiModelProperty(value = "")
@@ -48,12 +48,12 @@ public class CoordenadaGeograficaDto  {
     this.coordenadaArrayLatitudeLongitude = coordenadaArrayLatitudeLongitude;
   }
 
-  public CoordenadaGeograficaDto coordenadaArrayLatitudeLongitude(List<String> coordenadaArrayLatitudeLongitude) {
+  public CoordenadaGeograficaDTO coordenadaArrayLatitudeLongitude(List<String> coordenadaArrayLatitudeLongitude) {
     this.coordenadaArrayLatitudeLongitude = coordenadaArrayLatitudeLongitude;
     return this;
   }
 
-  public CoordenadaGeograficaDto addCoordenadaArrayLatitudeLongitudeItem(String coordenadaArrayLatitudeLongitudeItem) {
+  public CoordenadaGeograficaDTO addCoordenadaArrayLatitudeLongitudeItem(String coordenadaArrayLatitudeLongitudeItem) {
     this.coordenadaArrayLatitudeLongitude.add(coordenadaArrayLatitudeLongitudeItem);
     return this;
   }
@@ -71,7 +71,7 @@ public class CoordenadaGeograficaDto  {
     this.latitude = latitude;
   }
 
-  public CoordenadaGeograficaDto latitude(String latitude) {
+  public CoordenadaGeograficaDTO latitude(String latitude) {
     this.latitude = latitude;
     return this;
   }
@@ -89,7 +89,7 @@ public class CoordenadaGeograficaDto  {
     this.longitude = longitude;
   }
 
-  public CoordenadaGeograficaDto longitude(String longitude) {
+  public CoordenadaGeograficaDTO longitude(String longitude) {
     this.longitude = longitude;
     return this;
   }
@@ -98,7 +98,7 @@ public class CoordenadaGeograficaDto  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CoordenadaGeograficaDto {\n");
+    sb.append("class CoordenadaGeograficaDTO {\n");
     
     sb.append("    coordenadaArrayLatitudeLongitude: ").append(toIndentedString(coordenadaArrayLatitudeLongitude)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");

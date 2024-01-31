@@ -73,9 +73,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -137,17 +137,17 @@ public enum TipoOperacaoEnum {
   private List<DadosDoManisfestoDaCarga> listaManifestos = null;
 
   @XmlElement(name="placa", required = true)
-  @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+  @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/> Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/> Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
   **/
   private String placa = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50")
   @Valid
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50
   **/
   private List<DadosDoChassi> listaChassi = null;
 
@@ -232,7 +232,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -404,7 +404,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt; Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")
@@ -423,7 +423,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")

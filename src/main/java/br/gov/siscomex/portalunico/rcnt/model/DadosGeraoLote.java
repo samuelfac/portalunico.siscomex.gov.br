@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DadosGeraoLote", propOrder =
-    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "numeroRUC", "declaracaoAduaneira", "listaNfe", "cnpjResponsavelAnterior", "codigoRecintoOrigem", "pesoManifesto", "listaVolumesManifesto", "numeroConteiner", "identificacaoUld", "listaChassi", "navio", "iataAeronave", "prefixoAeronave", "viagem", "escala", "aeroportoOrigem", "placaSemirreboque", "listaMercadoriaPerigosa", "perecivel", "cargaSolta", "indicadorDeRemessaInternacional", "listaCameras", "observacaoRecepcao", "lotes"
+    { "tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "numeroRUC", "declaracaoAduaneira", "listaNfe", "listaMalas", "cnpjResponsavelAnterior", "codigoRecintoOrigem", "pesoManifesto", "listaVolumesManifesto", "numeroConteiner", "identificacaoUld", "listaChassi", "navio", "iataAeronave", "prefixoAeronave", "viagem", "escala", "aeroportoOrigem", "placaSemirreboque", "listaMercadoriaPerigosa", "perecivel", "cargaSolta", "indicadorDeRemessaInternacional", "listaCameras", "observacaoRecepcao", "lotes"
 })
 
 @XmlRootElement(name="DadosGeraoLote")
@@ -74,9 +74,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -130,9 +130,9 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="numeroManifesto")
-  @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto.<br/>Tamanho: 100")
+  @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
  /**
-   * Número do Manifesto.<br/>Tamanho: 100
+   * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
   **/
   private String numeroManifesto = null;
 
@@ -191,16 +191,16 @@ public enum TipoManifestoEnum {
   private TipoManifestoEnum tipoManifesto = null;
 
   @XmlElement(name="numeroConhecimentoMAWB")
-  @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Tamanho: 100")
+  @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100")
  /**
-   * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Tamanho: 100
+   * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100
   **/
   private String numeroConhecimentoMAWB = null;
 
   @XmlElement(name="numeroConhecimento")
-  @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100")
+  @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
  /**
-   * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.<br/>Tamanho: 100
+   * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
   **/
   private String numeroConhecimento = null;
 
@@ -230,6 +230,14 @@ public enum TipoManifestoEnum {
    * Lista de chaves das NFE que amparam o transporte.
   **/
   private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
+
+  @XmlElement(name="listaMalas")
+  @ApiModelProperty(value = "Lista com as malas postais. Utilizar apenas para remessa postal internacional.")
+  @Valid
+ /**
+   * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
+  **/
+  private List<DadosDaMala> listaMalas = null;
 
   @XmlElement(name="cnpjResponsavelAnterior")
   @ApiModelProperty(example = "44444444444444", value = "CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
@@ -276,10 +284,10 @@ public enum TipoManifestoEnum {
   private String identificacaoUld = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50")
   @Valid
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50
   **/
   private List<DadosDoChassi> listaChassi = null;
 
@@ -443,7 +451,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -592,7 +600,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Número do Manifesto.&lt;br/&gt;Tamanho: 100
+   * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
    * @return numeroManifesto
   **/
   @JsonProperty("numeroManifesto")
@@ -631,7 +639,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Tamanho: 100
+   * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
    * @return numeroConhecimentoMAWB
   **/
   @JsonProperty("numeroConhecimentoMAWB")
@@ -649,7 +657,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga.&lt;br/&gt;Tamanho: 100
+   * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
    * @return numeroConhecimento
   **/
   @JsonProperty("numeroConhecimento")
@@ -740,6 +748,29 @@ public enum IndicadorDeRemessaInternacionalEnum {
 
   public DadosGeraoLote addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
     this.listaNfe.add(listaNfeItem);
+    return this;
+  }
+
+ /**
+   * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
+   * @return listaMalas
+  **/
+  @JsonProperty("listaMalas")
+  public List<DadosDaMala> getListaMalas() {
+    return listaMalas;
+  }
+
+  public void setListaMalas(List<DadosDaMala> listaMalas) {
+    this.listaMalas = listaMalas;
+  }
+
+  public DadosGeraoLote listaMalas(List<DadosDaMala> listaMalas) {
+    this.listaMalas = listaMalas;
+    return this;
+  }
+
+  public DadosGeraoLote addListaMalasItem(DadosDaMala listaMalasItem) {
+    this.listaMalas.add(listaMalasItem);
     return this;
   }
 
@@ -857,7 +888,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
   }
 
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -1172,6 +1203,7 @@ public enum IndicadorDeRemessaInternacionalEnum {
     sb.append("    numeroRUC: ").append(toIndentedString(numeroRUC)).append("\n");
     sb.append("    declaracaoAduaneira: ").append(toIndentedString(declaracaoAduaneira)).append("\n");
     sb.append("    listaNfe: ").append(toIndentedString(listaNfe)).append("\n");
+    sb.append("    listaMalas: ").append(toIndentedString(listaMalas)).append("\n");
     sb.append("    cnpjResponsavelAnterior: ").append(toIndentedString(cnpjResponsavelAnterior)).append("\n");
     sb.append("    codigoRecintoOrigem: ").append(toIndentedString(codigoRecintoOrigem)).append("\n");
     sb.append("    pesoManifesto: ").append(toIndentedString(pesoManifesto)).append("\n");

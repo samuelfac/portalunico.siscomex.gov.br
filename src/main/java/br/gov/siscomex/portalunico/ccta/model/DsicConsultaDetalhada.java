@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "DsicConsultaDetalhada", propOrder =
-    { "bloqueiosAtivos", "bloqueiosBaixados", "chegadasTerrestres", "cnpjResponsavelGeracaoDsicDepositario", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "conhecimentoApropriado", "dataHoraEmissao", "descricaoMercadoria", "documentosSaida", "identificacaoConhecimento", "identificacaoDSIC", "identificacaoDocumentoConsignatario", "manuseiosEspeciais", "motivo", "nomeConsignatario", "nomeResponsavelGeracaoDsicDepositario", "nomeViajante", "numeroAutorizacaoSobrevooDac", "numeroDocumentoRetencaoApreensao", "numeroDocumentoViajante", "observacoes", "orgaoEmissorDocumentoViajante", "outrasInfosServico", "partesEstoque", "pesoBruto", "quantidadeVolumes", "recintoAduaneiroGeracaoDsic", "ruc", "setorResponsavelGeracaoDsicRfb", "situacao", "solicitacoesServicosEspeciais", "tipoConhecimento", "tipoDocumentoConsignatario", "tipoDocumentoRetencaoApreensao", "tipoDocumentoViajante", "unidadeResponsavelGeracaoDsicRfb", "unidadeRfbGeracaoDsic", "valorArbitrado", "viagemAssociada"
+    { "bloqueiosAtivos", "bloqueiosBaixados", "chegadasTerrestres", "cnpjResponsavelGeracaoDsicDepositario", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "conhecimentoApropriado", "dataHoraEmissao", "descricaoMercadoria", "documentosSaida", "identificacaoConhecimento", "identificacaoDSIC", "identificacaoDocumentoConsignatario", "manuseiosEspeciais", "motivo", "nomeConsignatario", "nomeResponsavelGeracaoDsicDepositario", "nomeViajante", "numeroAutorizacaoSobrevooDac", "numeroDocumentoRetencaoApreensao", "numeroDocumentoViajante", "observacoes", "orgaoEmissorDocumentoViajante", "outrasInfosServico", "partesEstoque", "pesoBruto", "quantidadeVolumes", "recepcoesComAvarias", "recintoAduaneiroGeracaoDsic", "ruc", "setorResponsavelGeracaoDsicRfb", "situacao", "solicitacoesServicosEspeciais", "tipoConhecimento", "tipoDocumentoConsignatario", "tipoDocumentoRetencaoApreensao", "tipoDocumentoViajante", "unidadeResponsavelGeracaoDsicRfb", "unidadeRfbGeracaoDsic", "valorArbitrado", "viagemAssociada"
 })
 
 @XmlRootElement(name="DsicConsultaDetalhada")
@@ -267,6 +267,14 @@ public enum MotivoEnum {
    * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
   **/
   private Integer quantidadeVolumes = null;
+
+  @XmlElement(name="recepcoesComAvarias")
+  @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+  @Valid
+ /**
+   * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+  **/
+  private List<RecepcaoComAvaria> recepcoesComAvarias = null;
 
   @XmlElement(name="recintoAduaneiroGeracaoDsic")
   @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
@@ -1102,6 +1110,29 @@ public enum TipoDocumentoViajanteEnum {
   }
 
  /**
+   * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
+   * @return recepcoesComAvarias
+  **/
+  @JsonProperty("recepcoesComAvarias")
+  public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
+    return recepcoesComAvarias;
+  }
+
+  public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+    this.recepcoesComAvarias = recepcoesComAvarias;
+  }
+
+  public DsicConsultaDetalhada recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+    this.recepcoesComAvarias = recepcoesComAvarias;
+    return this;
+  }
+
+  public DsicConsultaDetalhada addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
+    this.recepcoesComAvarias.add(recepcoesComAvariasItem);
+    return this;
+  }
+
+ /**
    * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
    * @return recintoAduaneiroGeracaoDsic
   **/
@@ -1388,6 +1419,7 @@ public enum TipoDocumentoViajanteEnum {
     sb.append("    partesEstoque: ").append(toIndentedString(partesEstoque)).append("\n");
     sb.append("    pesoBruto: ").append(toIndentedString(pesoBruto)).append("\n");
     sb.append("    quantidadeVolumes: ").append(toIndentedString(quantidadeVolumes)).append("\n");
+    sb.append("    recepcoesComAvarias: ").append(toIndentedString(recepcoesComAvarias)).append("\n");
     sb.append("    recintoAduaneiroGeracaoDsic: ").append(toIndentedString(recintoAduaneiroGeracaoDsic)).append("\n");
     sb.append("    ruc: ").append(toIndentedString(ruc)).append("\n");
     sb.append("    setorResponsavelGeracaoDsicRfb: ").append(toIndentedString(setorResponsavelGeracaoDsicRfb)).append("\n");

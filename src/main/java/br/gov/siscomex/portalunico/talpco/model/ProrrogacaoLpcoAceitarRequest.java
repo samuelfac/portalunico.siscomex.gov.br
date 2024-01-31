@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "ProrrogacaoLpcoAceitarRequest", propOrder =
-    { "novaDataFimVigencia", "justificativa", "decisaoJudicial"
+    { "novaDataFimVigencia", "justificativa", "decisaoJudicial", "motivoAnalise"
 })
 
 @XmlRootElement(name="ProrrogacaoLpcoAceitarRequest")
@@ -41,7 +41,14 @@ public class ProrrogacaoLpcoAceitarRequest  {
  /**
    * Indicador de decisão judicial
   **/
-  private Boolean decisaoJudicial = false;
+  private Boolean decisaoJudicial = null;
+
+  @XmlElement(name="motivoAnalise")
+  @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+  **/
+  private String motivoAnalise = null;
  /**
    * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
    * @return novaDataFimVigencia
@@ -96,6 +103,24 @@ public class ProrrogacaoLpcoAceitarRequest  {
     return this;
   }
 
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+   * @return motivoAnalise
+  **/
+  @JsonProperty("motivoAnalise")
+  public String getMotivoAnalise() {
+    return motivoAnalise;
+  }
+
+  public void setMotivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+  }
+
+  public ProrrogacaoLpcoAceitarRequest motivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -105,6 +130,7 @@ public class ProrrogacaoLpcoAceitarRequest  {
     sb.append("    novaDataFimVigencia: ").append(toIndentedString(novaDataFimVigencia)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    decisaoJudicial: ").append(toIndentedString(decisaoJudicial)).append("\n");
+    sb.append("    motivoAnalise: ").append(toIndentedString(motivoAnalise)).append("\n");
     sb.append("}");
     return sb.toString();
   }

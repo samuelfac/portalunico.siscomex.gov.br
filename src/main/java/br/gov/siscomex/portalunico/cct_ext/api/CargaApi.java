@@ -56,14 +56,14 @@ public interface CargaApi  {
     @Path("/ext/carga/consolidar-carga")
     @Consumes({ "application/xml" })
     @ApiOperation(value = "Consolidar Carga", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/consolidar-carga/\">Exemplos de Consolidação de Carga</a><br><br><a href=\"../pages/exemplos/cctr/xsd-cct-exp.zip\">XSD para download</a></p>", tags={ "Carga" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consolidarCarga(@ApiParam(value = "Lista de consolidações" ,required=true)@Valid OperacoesConsolidacao body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -79,11 +79,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ConsultaConteiner.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarConteiner( @NotNull @ApiParam(value = "Número do Contêiner<br>Tamanho mínimo: 1<br>Tamanho máximo: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA",required=true)  @QueryParam("nrConteiner") List<String> nrConteiner, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -99,11 +99,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ResultadoConsulta.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarDUERUC( @NotNull @ApiParam(value = "Número da DU-E, da RUC ou RUC Master (até 50 ocorrências)<br><br>Número da DU-E<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV<br><br>Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",required=true)  @QueryParam("nrDocumento") List<String> nrDocumento, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -119,11 +119,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ListaRegistros.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarEstoqueAntesACD(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "CPF ou CNPJ Responsável<br>Tamanho mínimo: 11<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")  @QueryParam("cpfOuCnpjResponsavel") String cpfOuCnpjResponsavel,  @ApiParam(value = "Código URF<br>Tamanho: 7<br>Formato: NNNNNNN")  @QueryParam("codigoURF") String codigoURF,  @ApiParam(value = "Código RA<br>Tamanho: 7<br>Formato: NNNNNNN")  @QueryParam("codigoRA") String codigoRA,  @ApiParam(value = "CPF ou CNPJ Emitente<br>Tamanho mínimo: 11<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")  @QueryParam("cpfOuCnpjEmitente") String cpfOuCnpjEmitente,  @ApiParam(value = "CPF ou CNPJ Destinatário<br>Tamanho mínimo: 11<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")  @QueryParam("cpfOuCnpjDestinatario") String cpfOuCnpjDestinatario,  @ApiParam(value = "Data inicial emissão<br>Formato: AAAA-MM-DD")  @QueryParam("dataEmissaoInicial") String dataEmissaoInicial,  @ApiParam(value = "Data final emissão<br>Formato: AAAA-MM-DD")  @QueryParam("dataEmissaoFinal") String dataEmissaoFinal,  @ApiParam(value = "Data inicial entrada<br>Formato: AAAA-MM-DD")  @QueryParam("dataEntradaInicial") String dataEntradaInicial,  @ApiParam(value = "Data final entrada<br>Formato: AAAA-MM-DD")  @QueryParam("dataEntradaFinal") String dataEntradaFinal,  @ApiParam(value = "Código NCM<br>Tamanho: 8<br>Formato: NNNNNNNN")  @QueryParam("codigoNCM") String codigoNCM,  @ApiParam(value = "Código Pais Destinatário<br>Tamanho: 2<br>Formato: AA")  @QueryParam("codigoPaisDestinatario") String codigoPaisDestinatario,  @ApiParam(value = "Número NF formulário<br>Tamanho: 9<br>Formato: NNNNNNNNN")  @QueryParam("numeroNFF") String numeroNFF,  @ApiParam(value = "Modelo<br>Tamanho: 2<br>Formato: AA")  @QueryParam("modelo") String modelo,  @ApiParam(value = "Série<br>Tamanho: 3<br>Formato: NNN")  @QueryParam("serie") String serie,  @ApiParam(value = "UF Emissor<br>Tamanho: 2 <br>Formato: AA")  @QueryParam("ufEmissor") String ufEmissor,  @ApiParam(value = "Ano/Mês Emissão<br>Tamanho: 4 <br>Formato: AAMM")  @QueryParam("anoMesEmissao") String anoMesEmissao,  @ApiParam(value = "Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")  @QueryParam("numeroNFE") String numeroNFE,  @ApiParam(value = "Número Contêiner<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA")  @QueryParam("numeroConteiner") String numeroConteiner,  @ApiParam(value = "Tipo documento de transporte<br>Tamanho: 2<br>Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros")  @QueryParam("tipoDocumentoTransporte") Integer tipoDocumentoTransporte,  @ApiParam(value = "Número documento transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA")  @QueryParam("numeroDocumentoTransporte") String numeroDocumentoTransporte,  @ApiParam(value = "Data emissão documento transporte<br>Formato: AAAA-MM-DDTHH:MM:SSZ")  @QueryParam("dataEmissaoDocumentoTransporte") String dataEmissaoDocumentoTransporte);
 
     /**
@@ -139,11 +139,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ListaRegistros.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarEstoquePosACD(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Números do Documento<br><br>Número da DU-E<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV<br><br>Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")  @QueryParam("nrDocumento") String nrDocumento,  @ApiParam(value = "Número Contêiner<br>Tamanho mínimo: 1<br>Tamanho máximo: 11<br>Formato: AAAAAAAAAAA")  @QueryParam("numeroConteiner") String numeroConteiner,  @ApiParam(value = "Data entrada inicial<br>Formato: AAAA-MM-DD")  @QueryParam("dataEntradaInicial") String dataEntradaInicial,  @ApiParam(value = "Data entrada final<br>Formato: AAAA-MM-DD")  @QueryParam("dataEntradaFinal") String dataEntradaFinal,  @ApiParam(value = "CPF ou CNPJ Responsável<br>Tamanho mínimo: 11<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")  @QueryParam("cpfOuCnpjResponsavel") String cpfOuCnpjResponsavel,  @ApiParam(value = "Código URF<br>Tamanho: 7<br>Formato: NNNNNNN")  @QueryParam("codigoURF") BigDecimal codigoURF,  @ApiParam(value = "Código RA<br>Tamanho: 7<br>Formato: NNNNNNN")  @QueryParam("codigoRA") BigDecimal codigoRA,  @ApiParam(value = "Código País do Importador<br>Tamanho: 2<br>Formato: AA")  @QueryParam("codigoPaisImportador") BigDecimal codigoPaisImportador,  @ApiParam(value = "Código País de Destino<br>Tamanho: 2<br>Formato: AA")  @QueryParam("codigoPaisDestino") BigDecimal codigoPaisDestino,  @ApiParam(value = "CPF ou CNPJ Consolidador<br>Tamanho mínimo: 11<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")  @QueryParam("cpfOuCnpjConsolidador") String cpfOuCnpjConsolidador,  @ApiParam(value = "CPF ou CNPJ Exportador<br>Tamanho mínimo: 11<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")  @QueryParam("cpfOuCnpjExportador") String cpfOuCnpjExportador,  @ApiParam(value = "Tipo Documento Transporte<br>Tamanho: 2<br>Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros")  @QueryParam("tipoDocumentoTransporte") Integer tipoDocumentoTransporte,  @ApiParam(value = "Número Documento Transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA")  @QueryParam("numeroDocumentoTransporte") String numeroDocumentoTransporte,  @ApiParam(value = "Data emissão documento de transporte<br>Formato: AAAA-MM-DD")  @QueryParam("dataEmissaoDocumentoTransporte") String dataEmissaoDocumentoTransporte);
 
     /**
@@ -159,11 +159,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ResultadoConsultaMRUC.class),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarMRUC( @NotNull @ApiParam(value = "Números de RUC masters<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",required=true)  @QueryParam("nrDocumento") List<String> nrDocumento, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -177,11 +177,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = EstoqueNFE.class, responseContainer = "List"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response consultarNFe(@ApiParam(value = "Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",required=true) @PathParam("listaNfe") String listaNfe, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -197,11 +197,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response desunitizarCarga(@ApiParam(value = "Desunitização de Carga" ,required=true)@Valid OperacaoDesunitizacao body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -217,11 +217,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response entregarConteiner(@ApiParam(value = "Entregas por Contêineres" ,required=true)@Valid EntregasConteineres body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -237,11 +237,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response entregarDocumentoCarga(@ApiParam(value = "Entrega por DU-E/RUC" ,required=true)@Valid EntregasDocumentoCarga body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -257,11 +257,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response manifestarCargaExportacao(@ApiParam(value = "Manifestos de Dados de Embarque para Exportação" ,required=true)@Valid ManifestacoesExportacao body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -277,11 +277,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response manifestarCargaExportacaoMicPreACD(@ApiParam(value = "Manifestos de Dados de Embarque para Exportação de Carga Pré ACD" ,required=true)@Valid ManifestacoesExportacaoPreACDMicDTO body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -297,11 +297,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response recepcionarConteiner(@ApiParam(value = "Recepções por Contêineres" ,required=true)@Valid RecepcoesConteineres body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -317,11 +317,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response recepcionarDocumentoCarga(@ApiParam(value = "Recepções Carga por DU-E/RUC" ,required=true)@Valid RecepcoesDocumentoCarga body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -337,11 +337,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response recepcionarNFE(@ApiParam(value = "Recepções de Nota Fiscal Eletrônica<br>Limite de 50 notas fiscais" ,required=true)@Valid RecepcoesNFE body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -357,11 +357,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response recepcionarNFF(@ApiParam(value = "Recepções de Nota Fiscal Formulário" ,required=true)@Valid RecepcoesNFF body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -377,11 +377,11 @@ public interface CargaApi  {
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response unitizar(@ApiParam(value = "Unitização de Carga" ,required=true)@Valid OperacaoUnitizacao body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

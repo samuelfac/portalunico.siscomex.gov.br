@@ -26,9 +26,9 @@ public class ComponenteDeFrete  {
   private String descricao = null;
 
   @XmlElement(name="codigoComponenteFrete")
-  @ApiModelProperty(example = "A01", value = "Código do componente do Frete<br> Domínio: Tabela de Componentes do Frete do Sistema Mercante.<br>Tamanho: 3<br>Formato: 'AAA'")
+  @ApiModelProperty(example = "A01", value = "Código do componente do Frete<br> Domínio: Tabela de Componentes do Frete do Sistema Mercante.<br>Origem: Sistema Mercante - https://www.mercante.transportes.gov.br/<br>Tamanho: 3<br>Formato: 'AAA'")
  /**
-   * Código do componente do Frete<br> Domínio: Tabela de Componentes do Frete do Sistema Mercante.<br>Tamanho: 3<br>Formato: 'AAA'
+   * Código do componente do Frete<br> Domínio: Tabela de Componentes do Frete do Sistema Mercante.<br>Origem: Sistema Mercante - https://www.mercante.transportes.gov.br/<br>Tamanho: 3<br>Formato: 'AAA'
   **/
   private String codigoComponenteFrete = null;
 
@@ -111,7 +111,7 @@ public enum PagamentoEnum {
   }
 
  /**
-   * Código do componente do Frete&lt;br&gt; Domínio: Tabela de Componentes do Frete do Sistema Mercante.&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;AAA&#39;
+   * Código do componente do Frete&lt;br&gt; Domínio: Tabela de Componentes do Frete do Sistema Mercante.&lt;br&gt;Origem: Sistema Mercante - https://www.mercante.transportes.gov.br/&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;AAA&#39;
    * @return codigoComponenteFrete
   **/
   @JsonProperty("codigoComponenteFrete")

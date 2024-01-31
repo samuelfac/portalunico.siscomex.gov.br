@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiResponses;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -47,7 +48,7 @@ public interface ItensDaDuimpApi  {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Atualizar dados dos itens da Duimp para registro ou retificação.", notes = "Use esta funcionalidade para atualizar os dados dos itens de uma Duimp que já teve seus dados gerais salvos tanto para registro quanto para retificação da declaração.<br> <b>Tamanho:</b> Podem ser enviados até <b>100</b> itens por requisição.<br>Para enviar mais de 100 itens, basta envir os itens restantes em novas requisições.", tags={ "Itens da Duimp" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RespostaApiItens.class),
         @ApiResponse(code = 207, message = "Operação com múltiplos resultados. Resultados individuais devem ser observados no corpo da resposta da requisição", response = RespostaApiItens.class),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
@@ -112,7 +113,7 @@ public interface ItensDaDuimpApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = RespostaApiErro.class),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultarItensDuimp(@ApiParam(value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'AABRSSSSSSSSSSD'<br>Lei de formação. O número da Duimp é composto por: <br>* AA = Corresponde ao ano do registro da Declaração. <br>* BR = Corresponde à sigla do país de emissão do documento (BR).<br>* SSSSSSSSSS = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numero-duimp") String numeroDuimp, @ApiParam(value = "Versão vigente da Duimp.<br>Valor mínimo: 1<br>Valor máximo: 9999",required=true) @PathParam("versao-duimp") Object versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Número do primeiro item da Duimp que será retornado na relação de itens.<br>Valor mínimo: 1<br>Valor máximo: 99999")  @QueryParam("inicial") Object inicial,  @ApiParam(value = "Quantidade máxima de itens que pode ser retornada.<br>Valor mínimo: 1<br>Valor máximo: 100")  @QueryParam("tamanho") Object tamanho);
+    public Response consultarItensDuimp(@ApiParam(value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'AABRSSSSSSSSSSD'<br>Lei de formação. O número da Duimp é composto por: <br>* AA = Corresponde ao ano do registro da Declaração. <br>* BR = Corresponde à sigla do país de emissão do documento (BR).<br>* SSSSSSSSSS = 10 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = 1 caracter númerico. DV para todos os demais caracteres numéricos (Módulo 11)",required=true) @PathParam("numero-duimp") String numeroDuimp, @ApiParam(value = "Versão vigente da Duimp.<br>Valor mínimo: 1<br>Valor máximo: 9999",required=true) @PathParam("versao-duimp") Object versaoDuimp, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Número do primeiro item da Duimp que será retornado na relação de itens.<br>Valor mínimo: 1<br>Valor máximo: 99999", defaultValue="1") @DefaultValue("1") @QueryParam("inicial") Object inicial,  @ApiParam(value = "Quantidade máxima de itens que pode ser retornada.<br>Valor mínimo: 1<br>Valor máximo: 100", defaultValue="100") @DefaultValue("100") @QueryParam("tamanho") Object tamanho);
 
     /**
      * Excluir dados dos itens da Duimp para registro ou retificação.

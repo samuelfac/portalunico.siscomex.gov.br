@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "LpcoDetalhado", propOrder =
-    { "dataInicioVigencia", "dataFimVigencia", "numero", "codigoModelo", "dataInicioVigenciaModelo", "orgao", "situacao", "dataSituacaoAtual", "informacaoAdicional", "chaveAcesso", "prorrogacaoPendente", "retificacaoPendente", "dataRegistro", "listaCamposFormulario", "listaNcm", "listaVinculos", "saldos", "numeroLI", "numeroConhecimento", "modalTransporte", "dataHoraEmbarque", "dataHoraPresencaCarga", "canal"
+    { "dataInicioVigencia", "dataFimVigencia", "mensagem", "numero", "codigoModelo", "dataInicioVigenciaModelo", "orgao", "situacao", "dataSituacaoAtual", "informacaoAdicional", "chaveAcesso", "prorrogacaoPendente", "retificacaoPendente", "dataRegistro", "listaCamposFormulario", "listaNcm", "listaVinculos", "saldos", "numeroConhecimento", "modalTransporte", "dataHoraEmbarque", "dataHoraPresencaCarga", "canal", "situacaoPagamentoTaxa"
 })
 
 @XmlRootElement(name="LpcoDetalhado")
@@ -41,6 +41,13 @@ public class LpcoDetalhado  {
    * Data de fim de vigência do LPCO.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ
   **/
   private String dataFimVigencia = null;
+
+  @XmlElement(name="mensagem")
+  @ApiModelProperty(example = "A alteração de situação do LPCO foi efetivada mas o sistema LI retornou uma mensagem de negócio. Em alguns casos é possível que o status da anuência não tenha sido atualizado. Favor verificar a mensagem completa no histórico do LPCO.", value = "Mensagem do sistema<br>")
+ /**
+   * Mensagem do sistema<br>
+  **/
+  private String mensagem = null;
 
   @XmlElement(name="numero", required = true)
   @ApiModelProperty(example = "E1900000001", required = true, value = "Número do LPCO<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")
@@ -101,14 +108,14 @@ public class LpcoDetalhado  {
  /**
    * Indica se há um pedido de prorrogação do LPCO ainda pendente
   **/
-  private Boolean prorrogacaoPendente = false;
+  private Boolean prorrogacaoPendente = null;
 
   @XmlElement(name="retificacaoPendente", required = true)
   @ApiModelProperty(example = "true", required = true, value = "Indica se há um pedido de retificação do LPCO ainda pendente")
  /**
    * Indica se há um pedido de retificação do LPCO ainda pendente
   **/
-  private Boolean retificacaoPendente = false;
+  private Boolean retificacaoPendente = null;
 
   @XmlElement(name="dataRegistro", required = true)
   @ApiModelProperty(example = "2019-08-29T14:03:52.123Z", required = true, value = "Momento no qual o LPCO foi registrado<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")
@@ -148,13 +155,6 @@ public class LpcoDetalhado  {
    * Saldos restantes do LPCO, caso o LPCO tenha cotas.
   **/
   private List<Cotas> saldos = null;
-
-  @XmlElement(name="numeroLI")
-  @ApiModelProperty(example = "2300012349", value = "Número da LI a qual o LPCO está vinculado, se for o caso.<br>Tamanho: 11<br>Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)<br>Lei de formação: O número da LI é composto por:<br>* AA = Ano do registro da LI<br>* NNNNNNN = Número sequencial da LI no ano* V = Dígito verificador")
- /**
-   * Número da LI a qual o LPCO está vinculado, se for o caso.<br>Tamanho: 11<br>Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)<br>Lei de formação: O número da LI é composto por:<br>* AA = Ano do registro da LI<br>* NNNNNNN = Número sequencial da LI no ano* V = Dígito verificador
-  **/
-  private Long numeroLI = null;
 
   @XmlElement(name="numeroConhecimento")
   @ApiModelProperty(example = "99999999999999999999", value = "Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
@@ -276,6 +276,11 @@ public enum CanalEnum {
    * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
   **/
   private CanalEnum canal = null;
+
+  @XmlElement(name="situacaoPagamentoTaxa")
+  @ApiModelProperty(value = "")
+  @Valid
+  private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
  /**
    * Data de início de vigência do LPCO.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
    * @return dataInicioVigencia
@@ -309,6 +314,24 @@ public enum CanalEnum {
 
   public LpcoDetalhado dataFimVigencia(String dataFimVigencia) {
     this.dataFimVigencia = dataFimVigencia;
+    return this;
+  }
+
+ /**
+   * Mensagem do sistema&lt;br&gt;
+   * @return mensagem
+  **/
+  @JsonProperty("mensagem")
+  public String getMensagem() {
+    return mensagem;
+  }
+
+  public void setMensagem(String mensagem) {
+    this.mensagem = mensagem;
+  }
+
+  public LpcoDetalhado mensagem(String mensagem) {
+    this.mensagem = mensagem;
     return this;
   }
 
@@ -614,24 +637,6 @@ public enum CanalEnum {
   }
 
  /**
-   * Número da LI a qual o LPCO está vinculado, se for o caso.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)&lt;br&gt;Lei de formação: O número da LI é composto por:&lt;br&gt;* AA &#x3D; Ano do registro da LI&lt;br&gt;* NNNNNNN &#x3D; Número sequencial da LI no ano* V &#x3D; Dígito verificador
-   * @return numeroLI
-  **/
-  @JsonProperty("numeroLI")
-  public Long getNumeroLI() {
-    return numeroLI;
-  }
-
-  public void setNumeroLI(Long numeroLI) {
-    this.numeroLI = numeroLI;
-  }
-
-  public LpcoDetalhado numeroLI(Long numeroLI) {
-    this.numeroLI = numeroLI;
-    return this;
-  }
-
- /**
    * Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
    * @return numeroConhecimento
   **/
@@ -727,6 +732,24 @@ public enum CanalEnum {
     return this;
   }
 
+ /**
+   * Get situacaoPagamentoTaxa
+   * @return situacaoPagamentoTaxa
+  **/
+  @JsonProperty("situacaoPagamentoTaxa")
+  public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+    return situacaoPagamentoTaxa;
+  }
+
+  public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+  }
+
+  public LpcoDetalhado situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -735,6 +758,7 @@ public enum CanalEnum {
     
     sb.append("    dataInicioVigencia: ").append(toIndentedString(dataInicioVigencia)).append("\n");
     sb.append("    dataFimVigencia: ").append(toIndentedString(dataFimVigencia)).append("\n");
+    sb.append("    mensagem: ").append(toIndentedString(mensagem)).append("\n");
     sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
     sb.append("    codigoModelo: ").append(toIndentedString(codigoModelo)).append("\n");
     sb.append("    dataInicioVigenciaModelo: ").append(toIndentedString(dataInicioVigenciaModelo)).append("\n");
@@ -750,12 +774,12 @@ public enum CanalEnum {
     sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
     sb.append("    listaVinculos: ").append(toIndentedString(listaVinculos)).append("\n");
     sb.append("    saldos: ").append(toIndentedString(saldos)).append("\n");
-    sb.append("    numeroLI: ").append(toIndentedString(numeroLI)).append("\n");
     sb.append("    numeroConhecimento: ").append(toIndentedString(numeroConhecimento)).append("\n");
     sb.append("    modalTransporte: ").append(toIndentedString(modalTransporte)).append("\n");
     sb.append("    dataHoraEmbarque: ").append(toIndentedString(dataHoraEmbarque)).append("\n");
     sb.append("    dataHoraPresencaCarga: ").append(toIndentedString(dataHoraPresencaCarga)).append("\n");
     sb.append("    canal: ").append(toIndentedString(canal)).append("\n");
+    sb.append("    situacaoPagamentoTaxa: ").append(toIndentedString(situacaoPagamentoTaxa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

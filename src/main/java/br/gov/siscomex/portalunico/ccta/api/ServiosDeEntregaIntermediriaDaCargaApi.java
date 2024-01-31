@@ -37,7 +37,7 @@ public interface ServiosDeEntregaIntermediriaDaCargaApi  {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Possibilitar a entrega intermediária da carga", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Esse serviço tem por objetivo possibilitar a entrega intermediária da carga, através do conhecimento de carga/DSIC e do interveniente destinatário que pode ser:</p><ul><li>Cia. Aérea</li><li>Depositário</li><li>Transportador Terrestre</li><li>Operador Remessa Postal</li></ul>", tags={ "Serviços de Entrega Intermediária da Carga" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = EntregaIntermediariaSucesso.class),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),

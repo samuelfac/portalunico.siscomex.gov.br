@@ -72,9 +72,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -128,23 +128,23 @@ public enum TipoOperacaoEnum {
   private String codigoRecinto = null;
 
   @XmlElement(name="numeroConteiner")
-  @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
+  @ApiModelProperty(value = "Identificação do número do contêiner.<br/>É obrigatório que o atributo 'numeroConteiner' seja informado quando o atributo 'numeroLote' não for informado.<br/>Tamanho: 200")
  /**
-   * Identificação do número do contêiner.<br/>Tamanho: 200
+   * Identificação do número do contêiner.<br/>É obrigatório que o atributo 'numeroConteiner' seja informado quando o atributo 'numeroLote' não for informado.<br/>Tamanho: 200
   **/
   private String numeroConteiner = null;
 
   @XmlElement(name="numeroLote")
-  @ApiModelProperty(value = "Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>É obrigatório que o atributo 'numeroLote' seja informado quando o atributo 'numeroConteiner' não for informado.<br/>Tamanho: 100")
  /**
-   * Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Tamanho: 100
+   * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>É obrigatório que o atributo 'numeroLote' seja informado quando o atributo 'numeroConteiner' não for informado.<br/>Tamanho: 100
   **/
   private String numeroLote = null;
 
-  @XmlElement(name="navio")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="navio", required = true)
+  @ApiModelProperty(required = true, value = "")
   @Valid
-  private DadosNavio navio = null;
+  private DadosNavioNomeObrigatorio navio = null;
 
   @XmlElement(name="viagem")
   @ApiModelProperty(value = "Viagem<br/>Tamanho: 20")
@@ -196,7 +196,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -345,7 +345,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
+   * Identificação do número do contêiner.&lt;br/&gt;É obrigatório que o atributo &#39;numeroConteiner&#39; seja informado quando o atributo &#39;numeroLote&#39; não for informado.&lt;br/&gt;Tamanho: 200
    * @return numeroConteiner
   **/
   @JsonProperty("numeroConteiner")
@@ -363,7 +363,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.&lt;br/&gt;Tamanho: 100
+   * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;É obrigatório que o atributo &#39;numeroLote&#39; seja informado quando o atributo &#39;numeroConteiner&#39; não for informado.&lt;br/&gt;Tamanho: 100
    * @return numeroLote
   **/
   @JsonProperty("numeroLote")
@@ -385,15 +385,16 @@ public enum TipoOperacaoEnum {
    * @return navio
   **/
   @JsonProperty("navio")
-  public DadosNavio getNavio() {
+  @NotNull
+  public DadosNavioNomeObrigatorio getNavio() {
     return navio;
   }
 
-  public void setNavio(DadosNavio navio) {
+  public void setNavio(DadosNavioNomeObrigatorio navio) {
     this.navio = navio;
   }
 
-  public DadosAtribuioTrocaNavio navio(DadosNavio navio) {
+  public DadosAtribuioTrocaNavio navio(DadosNavioNomeObrigatorio navio) {
     this.navio = navio;
     return this;
   }

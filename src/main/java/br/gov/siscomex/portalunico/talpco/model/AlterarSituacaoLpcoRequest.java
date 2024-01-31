@@ -124,21 +124,21 @@ public enum SituacaoEnum {
  /**
    * Indica se haverá necessidade de inspeção de carga
   **/
-  private Boolean requerInspecao = false;
+  private Boolean requerInspecao = null;
 
   @XmlElement(name="decisaoJudicial")
   @ApiModelProperty(example = "false", value = "Indicador de decisão judicial utilizado no deferimento")
  /**
    * Indicador de decisão judicial utilizado no deferimento
   **/
-  private Boolean decisaoJudicial = false;
+  private Boolean decisaoJudicial = null;
 
   @XmlElement(name="faltaPagamentoTaxa")
   @ApiModelProperty(example = "false", value = "Indicador de pagamento de taxa não efetuado")
  /**
    * Indicador de pagamento de taxa não efetuado
   **/
-  private Boolean faltaPagamentoTaxa = false;
+  private Boolean faltaPagamentoTaxa = null;
 
 
 @XmlType(name="CanalEnum")

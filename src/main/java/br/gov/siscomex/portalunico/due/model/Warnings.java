@@ -20,7 +20,7 @@ public class Warnings  {
   
   @XmlElement(name="empty")
   @ApiModelProperty(value = "")
-  private Boolean empty = false;
+  private Boolean empty = null;
 
   @XmlElement(name="warning")
   @ApiModelProperty(value = "")

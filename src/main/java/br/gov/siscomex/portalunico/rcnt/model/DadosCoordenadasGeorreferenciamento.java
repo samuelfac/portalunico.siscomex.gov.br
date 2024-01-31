@@ -27,19 +27,19 @@ public class DadosCoordenadasGeorreferenciamento  {
   **/
   private String idElemento = null;
 
-  @XmlElement(name="latitude")
-  @ApiModelProperty(example = "15.123456", value = "Latitude, 6 casas decimais")
+  @XmlElement(name="latitude", required = true)
+  @ApiModelProperty(example = "9.123456", required = true, value = "Latitude (somente serão válidos valores entre: +10.000000 e -38.000000), 6 casas decimais")
   @Valid
  /**
-   * Latitude, 6 casas decimais
+   * Latitude (somente serão válidos valores entre: +10.000000 e -38.000000), 6 casas decimais
   **/
   private BigDecimal latitude = null;
 
-  @XmlElement(name="longitude")
-  @ApiModelProperty(example = "-29.123456", value = "Longitude, 6 casas decimais")
+  @XmlElement(name="longitude", required = true)
+  @ApiModelProperty(example = "-31.123456", required = true, value = "Longitude (somente serão válidos valores entre: -30.000000 e -78.000000) , 6 casas decimais")
   @Valid
  /**
-   * Longitude, 6 casas decimais
+   * Longitude (somente serão válidos valores entre: -30.000000 e -78.000000) , 6 casas decimais
   **/
   private BigDecimal longitude = null;
  /**
@@ -62,10 +62,11 @@ public class DadosCoordenadasGeorreferenciamento  {
   }
 
  /**
-   * Latitude, 6 casas decimais
+   * Latitude (somente serão válidos valores entre: +10.000000 e -38.000000), 6 casas decimais
    * @return latitude
   **/
   @JsonProperty("latitude")
+  @NotNull
   public BigDecimal getLatitude() {
     return latitude;
   }
@@ -80,10 +81,11 @@ public class DadosCoordenadasGeorreferenciamento  {
   }
 
  /**
-   * Longitude, 6 casas decimais
+   * Longitude (somente serão válidos valores entre: -30.000000 e -78.000000) , 6 casas decimais
    * @return longitude
   **/
   @JsonProperty("longitude")
+  @NotNull
   public BigDecimal getLongitude() {
     return longitude;
   }

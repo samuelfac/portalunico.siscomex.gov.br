@@ -42,17 +42,17 @@ public class DadosContinerUldPesagemVeculo  {
   private String identificacaoUld = null;
 
   @XmlElement(name="tipo")
-  @ApiModelProperty(example = "12U0", value = "Tipo de contêiner conforme tabela de domínio.<br/><a href=\"../pages/exemplos/rcnt/Tipo_Conteiner.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Tipo_Conteiner.pdf </a>")
+  @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.")
  /**
-   * Tipo de contêiner conforme tabela de domínio.<br/><a href=\"../pages/exemplos/rcnt/Tipo_Conteiner.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Tipo_Conteiner.pdf </a>
+   *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.
   **/
   private String tipo = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(example = "15.5", value = "Tara do contêiner ou ULD.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do contêiner ou ULD<br/>É obrigatório informar o atributo 'tara' quando pelo menos um dos seguintes atributos estiver informado: 'numeroConteiner', 'identificacaoULD'.<br/>tara, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do contêiner ou ULD.<br/><br/>tara, até 4 casas decimais.
+   * Tara do contêiner ou ULD<br/>É obrigatório informar o atributo 'tara' quando pelo menos um dos seguintes atributos estiver informado: 'numeroConteiner', 'identificacaoULD'.<br/>tara, até 4 casas decimais.
   **/
   private BigDecimal tara = null;
  /**
@@ -111,7 +111,7 @@ public class DadosContinerUldPesagemVeculo  {
   }
 
  /**
-   * Tipo de contêiner conforme tabela de domínio.&lt;br/&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Tipo_Conteiner.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Tipo_Conteiner.pdf &lt;/a&gt;
+   *  Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt;É obrigatório informar o atributo &#39;tipoConteiner&#39; quando o atributo &#39;numeroConteiner&#39; for informado.
    * @return tipo
   **/
   @JsonProperty("tipo")
@@ -129,7 +129,7 @@ public class DadosContinerUldPesagemVeculo  {
   }
 
  /**
-   * Tara do contêiner ou ULD.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
+   * Tara do contêiner ou ULD&lt;br/&gt;É obrigatório informar o atributo &#39;tara&#39; quando pelo menos um dos seguintes atributos estiver informado: &#39;numeroConteiner&#39;, &#39;identificacaoULD&#39;.&lt;br/&gt;tara, até 4 casas decimais.
    * @return tara
   **/
   @JsonProperty("tara")

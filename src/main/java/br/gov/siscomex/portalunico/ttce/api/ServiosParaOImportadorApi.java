@@ -33,7 +33,7 @@ public interface ServiosParaOImportadorApi  {
     @Path("/ext/tratamentos-tributarios/importacao/")
     @Produces({ "application/zip" })
     @ApiOperation(value = "Serviço que retorna um arquivo para auxiliar o importador a preencher a lista de 'tributos' no JSON do serviço para inclusão de itens na DUIMP. Este arquivo é gerado diariamente com os tratamentos tributários vigentes e contem os fundamentos legais normais que contenham atributos adicionais e todos os fundamentos legais opcionais (com ou sem atributos adicionais). O retorno deste serviço é um arquivo ZIP com um arquivo JSON.", notes = "Serviço que retorna um arquivo para auxiliar o importador a preencher a lista de 'tributos' no JSON do serviço para inclusão de itens na DUIMP. Este arquivo é gerado diariamente com os tratamentos tributários vigentes e contem os fundamentos legais normais que contenham atributos adicionais e todos os fundamentos legais opcionais (com ou sem atributos adicionais). O retorno deste serviço é um arquivo ZIP com um arquivo JSON.", tags={ "Serviços para o importador" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DadosTratamentosTributariosImportacaoDTO.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

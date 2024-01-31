@@ -47,7 +47,7 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi  {
     @Path("/ext/sefaz/opcao/{id}")
     @Consumes({ "*/*" })
     @ApiOperation(value = "Alterar opção de cálculo de ICMS", notes = "Altera os dados e/ou inativa uma opção de cálculo de ICMS.", tags={ "Serviços destinados à comunicação com sistemas das Sefaz" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

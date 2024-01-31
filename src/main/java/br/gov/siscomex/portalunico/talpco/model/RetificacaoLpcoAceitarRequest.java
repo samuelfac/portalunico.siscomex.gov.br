@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RetificacaoLpcoAceitarRequest", propOrder =
-    { "justificativa", "decisaoJudicial"
+    { "justificativa", "decisaoJudicial", "motivoAnalise"
 })
 
 @XmlRootElement(name="RetificacaoLpcoAceitarRequest")
@@ -34,7 +34,14 @@ public class RetificacaoLpcoAceitarRequest  {
  /**
    * Indicador de decisão judicial
   **/
-  private Boolean decisaoJudicial = false;
+  private Boolean decisaoJudicial = null;
+
+  @XmlElement(name="motivoAnalise")
+  @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+  **/
+  private String motivoAnalise = null;
  /**
    * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
    * @return justificativa
@@ -71,6 +78,24 @@ public class RetificacaoLpcoAceitarRequest  {
     return this;
   }
 
+ /**
+   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+   * @return motivoAnalise
+  **/
+  @JsonProperty("motivoAnalise")
+  public String getMotivoAnalise() {
+    return motivoAnalise;
+  }
+
+  public void setMotivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+  }
+
+  public RetificacaoLpcoAceitarRequest motivoAnalise(String motivoAnalise) {
+    this.motivoAnalise = motivoAnalise;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -79,6 +104,7 @@ public class RetificacaoLpcoAceitarRequest  {
     
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    decisaoJudicial: ").append(toIndentedString(decisaoJudicial)).append("\n");
+    sb.append("    motivoAnalise: ").append(toIndentedString(motivoAnalise)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -73,9 +73,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -228,9 +228,9 @@ public enum DirecaoEnum {
   private String protocoloAgenda = null;
 
   @XmlElement(name="dataHoraAgenda")
-  @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+  @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. <br/>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'operacao' for informado com valor 'G'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
  /**
-   * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+   * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. <br/>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'operacao' for informado com valor 'G'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
   **/
   private String dataHoraAgenda = null;
 
@@ -259,10 +259,10 @@ public enum DirecaoEnum {
   private List<DadosDaNotaFiscal> listaNfe = null;
 
   @XmlElement(name="listaMalas")
-  @ApiModelProperty(value = "Lista com as malas postais. Utilizar apenas para malas postais.")
+  @ApiModelProperty(value = "Lista com as malas postais. Utilizar apenas para remessa postal internacional.")
   @Valid
  /**
-   * Lista com as malas postais. Utilizar apenas para malas postais.
+   * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
   **/
   private List<DadosDaMala> listaMalas = null;
 
@@ -337,17 +337,17 @@ public enum TipoGranelEnum {
   private TipoGranelEnum tipoGranel = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50")
   @Valid
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)<br/>Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50
   **/
   private List<DadosDoChassi> listaChassi = null;
 
-  @XmlElement(name="placa", required = true)
-  @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+  @XmlElement(name="placa")
+  @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
   **/
   private String placa = null;
 
@@ -359,23 +359,23 @@ public enum TipoGranelEnum {
   private String ufEmplacamento = null;
 
   @XmlElement(name="ocrPlaca")
-  @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). <br/>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). <br/>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean ocrPlaca = null;
 
   @XmlElement(name="oogDimensao")
-  @ApiModelProperty(example = "false", value = "Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogDimensao' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogDimensao' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean oogDimensao = null;
 
   @XmlElement(name="oogPeso")
-  @ApiModelProperty(example = "false", value = "Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @ApiModelProperty(example = "false", value = "Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogPeso' quando o atributo 'operacao' for informado com  valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogPeso' quando o atributo 'operacao' for informado com  valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean oogPeso = null;
 
@@ -479,16 +479,16 @@ public enum ModalEnum {
 }
 
   @XmlElement(name="modal")
-  @ApiModelProperty(example = "R", value = "Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário<br/>L - Fluvial")
+  @ApiModelProperty(example = "R", value = "Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<br/> É obrigatório informar o atributo 'modal' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário<br/>L - Fluvial")
  /**
-   * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário<br/>L - Fluvial
+   * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<br/> É obrigatório informar o atributo 'modal' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário<br/>L - Fluvial
   **/
   private ModalEnum modal = null;
 
   @XmlElement(name="gate")
-  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36")
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/> É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36")
  /**
-   * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36
+   * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/> É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36
   **/
   private String gate = null;
 
@@ -522,7 +522,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -733,7 +733,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+   * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. &lt;br/&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;G&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
    * @return dataHoraAgenda
   **/
   @JsonProperty("dataHoraAgenda")
@@ -820,7 +820,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Lista com as malas postais. Utilizar apenas para malas postais.
+   * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
    * @return listaMalas
   **/
   @JsonProperty("listaMalas")
@@ -864,7 +864,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)&lt;br/&gt;Tamanho: 50
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;É obrigatório informar o atributo &#39;listaChassi.chassi&#39; quando o atributo &#39;placa&#39; não for informado.&lt;br/&gt;Tamanho: 50
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -887,11 +887,10 @@ public enum ModalEnum {
   }
 
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt;É obrigatório informar o atributo &#39;placa&#39; quando o atributo &#39;lista.Chassi.chassi&#39; não for informado. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")
-  @NotNull
   public String getPlaca() {
     return placa;
   }
@@ -924,7 +923,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). &lt;br/&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return ocrPlaca
   **/
   @JsonProperty("ocrPlaca")
@@ -942,7 +941,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. &lt;br/&gt;É obrigatório informar o atributo &#39;oogDimensao&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return oogDimensao
   **/
   @JsonProperty("oogDimensao")
@@ -960,7 +959,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. &lt;br/&gt;É obrigatório informar o atributo &#39;oogPeso&#39; quando o atributo &#39;operacao&#39; for informado com  valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return oogPeso
   **/
   @JsonProperty("oogPeso")
@@ -1132,7 +1131,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.&lt;br/&gt;Domínio:&lt;br/&gt;R - Rodoviário&lt;br/&gt;F - Ferroviário&lt;br/&gt;L - Fluvial
+   * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.&lt;br/&gt; É obrigatório informar o atributo &#39;modal&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;R - Rodoviário&lt;br/&gt;F - Ferroviário&lt;br/&gt;L - Fluvial
    * @return modal
   **/
   @JsonProperty("modal")
@@ -1153,7 +1152,7 @@ public enum ModalEnum {
   }
 
  /**
-   * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt;Tamanho: 36
+   * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt; É obrigatório informar o atributo &#39;gate&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 36
    * @return gate
   **/
   @JsonProperty("gate")

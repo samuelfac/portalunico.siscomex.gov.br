@@ -99,7 +99,11 @@ public enum TpOperacaoOrigemEnum {
 
 	@XmlEnumValue("LPCO")
 	@JsonProperty("LPCO")
-	LPCO(String.valueOf("LPCO"));
+	LPCO(String.valueOf("LPCO")),
+	
+	@XmlEnumValue("DUIMP")
+	@JsonProperty("DUIMP")
+	DUIMP(String.valueOf("DUIMP"));
 
 
     private String value;

@@ -19,7 +19,7 @@ public class SituacaoDaCargaDTO  {
   
   @XmlElement(name="cargaOperada")
   @ApiModelProperty(value = "")
-  private Boolean cargaOperada = false;
+  private Boolean cargaOperada = null;
 
   @XmlElement(name="codigo")
   @ApiModelProperty(value = "Código da situação da Carga<br />Formato: Inteiro, com 1 digito")

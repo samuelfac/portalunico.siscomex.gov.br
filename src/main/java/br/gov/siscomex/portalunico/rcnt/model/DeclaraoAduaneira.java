@@ -18,9 +18,9 @@ import javax.xml.bind.annotation.XmlType;
 public class DeclaraoAduaneira  {
   
   @XmlElement(name="numeroDeclaracao")
-  @ApiModelProperty(value = "Número da declaração aduaneira.<br/>Tamanho: 100")
+  @ApiModelProperty(value = "Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100")
  /**
-   * Número da declaração aduaneira.<br/>Tamanho: 100
+   * Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100
   **/
   private String numeroDeclaracao = null;
 
@@ -31,7 +31,7 @@ public class DeclaraoAduaneira  {
   **/
   private String tipo = null;
  /**
-   * Número da declaração aduaneira.&lt;br/&gt;Tamanho: 100
+   * Número da declaração aduaneira.&lt;br/&gt; O tamanho permitido para &#39;numeroDeclaracao&#39; será conforme o valor de &#39;tipo&#39; da declaração:   &#39;DI&#39;: 10 (somente números) &#39;DTA&#39;: 10 &#39;DUE&#39;: 14 &#39;DAT&#39;: 11 &#39;DUIMP&#39;: 15 Outros: até 100
    * @return numeroDeclaracao
   **/
   @JsonProperty("numeroDeclaracao")

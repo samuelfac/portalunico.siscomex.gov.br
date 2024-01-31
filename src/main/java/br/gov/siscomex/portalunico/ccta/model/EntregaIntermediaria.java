@@ -342,9 +342,9 @@ public enum TipoRecebedorEnum {
 }
 
   @XmlElement(name="tipoRecebedor", required = true)
-  @ApiModelProperty(example = "OPERADOR_REMESSA_POSTAL", required = true, value = "Tipo do recebedor da entrega intermediária que será realizada.<br/>Quando o interveniente de origem for CIA_AEREA apenas intervenientes CIA_AEREA e OPERADOR_REMESSA_POSTAL serão permitidos como recebedores da entrega intermediária.")
+  @ApiModelProperty(example = "OPERADOR_REMESSA_POSTAL", required = true, value = "Tipo do recebedor da entrega intermediária que será realizada.<br/><br/>Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.<br/>Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.")
  /**
-   * Tipo do recebedor da entrega intermediária que será realizada.<br/>Quando o interveniente de origem for CIA_AEREA apenas intervenientes CIA_AEREA e OPERADOR_REMESSA_POSTAL serão permitidos como recebedores da entrega intermediária.
+   * Tipo do recebedor da entrega intermediária que será realizada.<br/><br/>Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.<br/>Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.
   **/
   private TipoRecebedorEnum tipoRecebedor = null;
 
@@ -631,7 +631,7 @@ public enum TipoRecebedorEnum {
   }
 
  /**
-   * Tipo do recebedor da entrega intermediária que será realizada.&lt;br/&gt;Quando o interveniente de origem for CIA_AEREA apenas intervenientes CIA_AEREA e OPERADOR_REMESSA_POSTAL serão permitidos como recebedores da entrega intermediária.
+   * Tipo do recebedor da entrega intermediária que será realizada.&lt;br/&gt;&lt;br/&gt;Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.&lt;br/&gt;Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.
    * @return tipoRecebedor
   **/
   @JsonProperty("tipoRecebedor")

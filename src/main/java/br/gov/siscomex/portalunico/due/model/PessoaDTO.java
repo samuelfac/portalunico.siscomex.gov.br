@@ -22,12 +22,12 @@ public class PessoaDTO  {
   
   @XmlElement(name="estrangeiro")
   @ApiModelProperty(value = "")
-  private Boolean estrangeiro = false;
+  private Boolean estrangeiro = null;
 
   @XmlElement(name="nacionalidade")
   @ApiModelProperty(value = "")
   @Valid
-  private PaisDto nacionalidade = null;
+  private PaisDTO nacionalidade = null;
 
   @XmlElement(name="nome")
   @ApiModelProperty(value = "Nome<br />Tamanho mínimo: 1<br />Tamanho máximo: 150")
@@ -116,15 +116,15 @@ public enum TipoDoDocumentoEnum {
    * @return nacionalidade
   **/
   @JsonProperty("nacionalidade")
-  public PaisDto getNacionalidade() {
+  public PaisDTO getNacionalidade() {
     return nacionalidade;
   }
 
-  public void setNacionalidade(PaisDto nacionalidade) {
+  public void setNacionalidade(PaisDTO nacionalidade) {
     this.nacionalidade = nacionalidade;
   }
 
-  public PessoaDTO nacionalidade(PaisDto nacionalidade) {
+  public PessoaDTO nacionalidade(PaisDTO nacionalidade) {
     this.nacionalidade = nacionalidade;
     return this;
   }

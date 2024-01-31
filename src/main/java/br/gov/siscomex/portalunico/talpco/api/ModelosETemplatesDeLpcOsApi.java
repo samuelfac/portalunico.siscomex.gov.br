@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface ModelosETemplatesDeLpcOsApi  {
+public interface ModelosETemplatesDeLpcosApi  {
 
     /**
      * Consultar lista de modelos de LPCO de um órgão anuente.
@@ -35,7 +35,7 @@ public interface ModelosETemplatesDeLpcOsApi  {
     @Path("/ext/lpco/modelo/consulta/{codigoOrgao}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar lista de modelos de LPCO de um órgão anuente.", notes = "", tags={ "Modelos e templates de LPCOs" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ModeloLpcoResumido.class, responseContainer = "List"),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nemhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
@@ -43,7 +43,7 @@ public interface ModelosETemplatesDeLpcOsApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consulta(@ApiParam(value = "Código do órgão anuente responsável pelo modelo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30",required=true) @PathParam("codigoOrgao") String codigoOrgao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Data de referência opcional que serve para retornar o estado do modelo LPCO em um momento do passado. Se não informada, utiliza-se o momento atual. A data deve ser informada no padrão ISO 8601 com precisão mínima de minutos.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")  @QueryParam("dataReferencia") String dataReferencia);
+    public Response consulta(@ApiParam(value = "Código do órgão anuente responsável pelo modelo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30",required=true) @PathParam("codigoOrgao") String codigoOrgao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Data de referência opcional que serve para retornar o estado do modelo LPCO em um momento do passado. Se não informada, utiliza-se o momento atual. A data deve ser informada no padrão ISO 8601 com precisão mínima de minutos.<br>Formato: dd-MM-yyyy'T'HH:mm:ss:SSSZ")  @QueryParam("dataReferencia") String dataReferencia);
 
     /**
      * Retornar informações de um modelo de LPCO, incluindo a listas de campos a serem preenchidos.

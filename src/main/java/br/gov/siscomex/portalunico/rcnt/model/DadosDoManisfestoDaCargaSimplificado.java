@@ -38,9 +38,9 @@ public class DadosDoManisfestoDaCargaSimplificado  {
   private List<DadosDoConhecimentoDaCargaSimplificado> listaConhecimentos = null;
 
   @XmlElement(name="numero")
-  @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto.<br/>Tamanho: 100")
+  @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
  /**
-   * Número do Manifesto.<br/>Tamanho: 100
+   * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
   **/
   private String numero = null;
 
@@ -140,7 +140,7 @@ public enum TipoEnum {
   }
 
  /**
-   * Número do Manifesto.&lt;br/&gt;Tamanho: 100
+   * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
    * @return numero
   **/
   @JsonProperty("numero")

@@ -39,7 +39,7 @@ public interface ModelosDaDuimpApi  {
     @Path("/ext/modelo/duimp/{numero-duimp}/{versao-duimp}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Recuperar modelo dos dados gerais da Duimp.", notes = "Use esta funcionalidade para gerar o JSON que servirá de modelo para a funcionalidade salvar dados gerais.", tags={ "Modelos da Duimp" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DuimpCover.class),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),

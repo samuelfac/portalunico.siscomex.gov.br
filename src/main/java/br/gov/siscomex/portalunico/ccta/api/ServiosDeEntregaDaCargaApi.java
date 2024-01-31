@@ -41,7 +41,7 @@ public interface ServiosDeEntregaDaCargaApi  {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Possibilitar a entrega da carga", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Esse serviço tem por objetivo possibilitar a entrega da carga para o destinatário final, através do conhecimento de carga/DSIC e do documento de saída vinculado ao mesmo. A entrega poderá ser realizada de forma total ou parcial.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">O processamento dessa entrega é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.</p>", tags={ "Serviços de Entrega da Carga" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoSolicitacaEntregaImportador.class),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
@@ -53,15 +53,15 @@ public interface ServiosDeEntregaDaCargaApi  {
     public Response entregaImportadorUsingPOST(@ApiParam(value = "Dados da entrega da carga" ,required=true)@Valid EntregaCarga body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
-     * Consultar a lista de impedimentos para realização da entrega da carga
+     * Consultar a lista de impedimentos e condições para realização da entrega da carga
      *
-     * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;Esse serviço tem por objetivo retornar a lista de impedimentos para a realização da entrega da carga.&lt;/p&gt;
+     * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;Esse serviço tem por objetivo retornar a lista de impedimentos e condições para a realização da entrega da carga.&lt;/p&gt;
      *
      */
     @GET
     @Path("/api/ext/entregas-carga/impedimentos")
     @Produces({ "application/json" })
-    @ApiOperation(value = "Consultar a lista de impedimentos para realização da entrega da carga", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Esse serviço tem por objetivo retornar a lista de impedimentos para a realização da entrega da carga.</p>", tags={ "Serviços de Entrega da Carga" })
+    @ApiOperation(value = "Consultar a lista de impedimentos e condições para realização da entrega da carga", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Esse serviço tem por objetivo retornar a lista de impedimentos e condições para a realização da entrega da carga.</p>", tags={ "Serviços de Entrega da Carga" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaImpedimentosEntregaImportador.class),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),

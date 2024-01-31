@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -28,17 +29,17 @@ public class DadosLote  {
   **/
   private String contraMarca = null;
 
-  @XmlElement(name="divergenciaQualificacao")
-  @ApiModelProperty(example = "false", value = "Divergência de qualificação de mercadoria/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="divergenciaQualificacao", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Divergência de qualificação de mercadoria/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean divergenciaQualificacao = null;
 
-  @XmlElement(name="divergenciaQuantidade")
-  @ApiModelProperty(example = "false", value = "Divergência de quantidades de mercadoria/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="divergenciaQuantidade", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Divergência de quantidades de mercadoria/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean divergenciaQuantidade = null;
 
@@ -64,13 +65,13 @@ public class DadosLote  {
   **/
   private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
 
-  @XmlElement(name="listaVolumesVerificados")
-  @ApiModelProperty(value = "Lista de Volumes recepcionados")
+  @XmlElement(name="listaVolumesVerificados", required = true)
+  @ApiModelProperty(required = true, value = "Lista de volumes verificados e recepcionados.")
   @Valid
  /**
-   * Lista de Volumes recepcionados
+   * Lista de volumes verificados e recepcionados.
   **/
-  private List<DadosVolumeVerificado> listaVolumesVerificados = null;
+  private List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados = new ArrayList<>();
 
   @XmlElement(name="marca")
   @ApiModelProperty(value = "Marca visível<br/>Tamanho: 100")
@@ -109,16 +110,16 @@ public class DadosLote  {
   private BigDecimal pesoLoteBalanca = null;
 
   @XmlElement(name="quantidadeVolumesAvariados")
-  @ApiModelProperty(example = "3", value = "Quantidade de volumes avariados")
+  @ApiModelProperty(example = "3", value = "Informar a quantidade de volumes avariados. <br/>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.")
  /**
-   * Quantidade de volumes avariados
+   * Informar a quantidade de volumes avariados. <br/>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.
   **/
   private Integer quantidadeVolumesAvariados = null;
 
   @XmlElement(name="quantidadeVolumesDivergentes")
-  @ApiModelProperty(example = "10", value = "Quantidade de volumes divergentes")
+  @ApiModelProperty(example = "10", value = "Informar a quantidade de volumes divergentes. <br/>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.")
  /**
-   * Quantidade de volumes divergentes
+   * Informar a quantidade de volumes divergentes. <br/>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.
   **/
   private Integer quantidadeVolumesDivergentes = null;
  /**
@@ -140,10 +141,11 @@ public class DadosLote  {
   }
 
  /**
-   * Divergência de qualificação de mercadoria/volumes&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return divergenciaQualificacao
   **/
   @JsonProperty("divergenciaQualificacao")
+  @NotNull
   public Boolean isDivergenciaQualificacao() {
     return divergenciaQualificacao;
   }
@@ -158,10 +160,11 @@ public class DadosLote  {
   }
 
  /**
-   * Divergência de quantidades de mercadoria/volumes&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return divergenciaQuantidade
   **/
   @JsonProperty("divergenciaQuantidade")
+  @NotNull
   public Boolean isDivergenciaQuantidade() {
     return divergenciaQuantidade;
   }
@@ -236,24 +239,25 @@ public class DadosLote  {
   }
 
  /**
-   * Lista de Volumes recepcionados
+   * Lista de volumes verificados e recepcionados.
    * @return listaVolumesVerificados
   **/
   @JsonProperty("listaVolumesVerificados")
-  public List<DadosVolumeVerificado> getListaVolumesVerificados() {
+  @NotNull
+  public List<DadosVolumeVerificadoMadeiraObrigatorio> getListaVolumesVerificados() {
     return listaVolumesVerificados;
   }
 
-  public void setListaVolumesVerificados(List<DadosVolumeVerificado> listaVolumesVerificados) {
+  public void setListaVolumesVerificados(List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados) {
     this.listaVolumesVerificados = listaVolumesVerificados;
   }
 
-  public DadosLote listaVolumesVerificados(List<DadosVolumeVerificado> listaVolumesVerificados) {
+  public DadosLote listaVolumesVerificados(List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados) {
     this.listaVolumesVerificados = listaVolumesVerificados;
     return this;
   }
 
-  public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificado listaVolumesVerificadosItem) {
+  public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
     this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
     return this;
   }
@@ -350,7 +354,7 @@ public class DadosLote  {
   }
 
  /**
-   * Quantidade de volumes avariados
+   * Informar a quantidade de volumes avariados. &lt;br/&gt;É obrigatório que o atributo &#39;quantidadeVolumesAvariados&#39; seja informado quando o atributo &#39;tipoAvaria&#39; for informado.
    * @return quantidadeVolumesAvariados
   **/
   @JsonProperty("quantidadeVolumesAvariados")
@@ -368,7 +372,7 @@ public class DadosLote  {
   }
 
  /**
-   * Quantidade de volumes divergentes
+   * Informar a quantidade de volumes divergentes. &lt;br/&gt;É obrigatório que o atributo &#39;quantidadeVolumesDivergentes&#39; seja informado quando o atributo &#39;divergenciaQuantidade&#39; for informado com &#39;true&#39;.
    * @return quantidadeVolumesDivergentes
   **/
   @JsonProperty("quantidadeVolumesDivergentes")

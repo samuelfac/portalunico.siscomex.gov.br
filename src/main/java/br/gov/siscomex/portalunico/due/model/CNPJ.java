@@ -19,11 +19,11 @@ public class CNPJ  {
   
   @XmlElement(name="cnpj")
   @ApiModelProperty(value = "")
-  private Boolean cnpj = false;
+  private Boolean cnpj = null;
 
   @XmlElement(name="cpf")
   @ApiModelProperty(value = "")
-  private Boolean cpf = false;
+  private Boolean cpf = null;
 
   @XmlElement(name="nome")
   @ApiModelProperty(value = "Nome<br />Tamanho mínimo: 1<br />Tamanho máximo: 150")

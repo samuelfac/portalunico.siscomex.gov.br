@@ -13,16 +13,16 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "Resposta", propOrder =
+ @XmlType(name = "RespostaRecebimento", propOrder =
     { "message", "list"
 })
 
-@XmlRootElement(name="Resposta")
+@XmlRootElement(name="RespostaRecebimento")
 /**
   * Resposta para a consulta da situação atual do processamento do arquivo enviado
  **/
 @ApiModel(description="Resposta para a consulta da situação atual do processamento do arquivo enviado")
-public class Resposta  {
+public class RespostaRecebimento  {
   
   @XmlElement(name="message")
   @ApiModelProperty(example = "A consulta efetuada retornou mais de 500 registros. Refine sua pesquisa.", value = "Mensagem de retorno quando a pesquisa retornar mais registros que o máximo permitido")
@@ -51,7 +51,7 @@ public class Resposta  {
     this.message = message;
   }
 
-  public Resposta message(String message) {
+  public RespostaRecebimento message(String message) {
     this.message = message;
     return this;
   }
@@ -69,12 +69,12 @@ public class Resposta  {
     this.list = list;
   }
 
-  public Resposta list(List<Recebimento> list) {
+  public RespostaRecebimento list(List<Recebimento> list) {
     this.list = list;
     return this;
   }
 
-  public Resposta addListItem(Recebimento listItem) {
+  public RespostaRecebimento addListItem(Recebimento listItem) {
     this.list.add(listItem);
     return this;
   }
@@ -83,7 +83,7 @@ public class Resposta  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Resposta {\n");
+    sb.append("class RespostaRecebimento {\n");
     
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    list: ").append(toIndentedString(list)).append("\n");

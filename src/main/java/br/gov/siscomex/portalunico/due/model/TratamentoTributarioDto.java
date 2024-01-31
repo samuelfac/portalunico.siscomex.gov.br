@@ -13,12 +13,12 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "TratamentoTributarioDto", propOrder =
+ @XmlType(name = "TratamentoTributarioDTO", propOrder =
     { "dataDoRegistro", "fundamentoLegal", "regimeTributario", "tributos"
 })
 
-@XmlRootElement(name="TratamentoTributarioDto")
-public class TratamentoTributarioDto  {
+@XmlRootElement(name="TratamentoTributarioDTO")
+public class TratamentoTributarioDTO  {
   
   @XmlElement(name="dataDoRegistro")
   @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -35,7 +35,7 @@ public class TratamentoTributarioDto  {
   @XmlElement(name="regimeTributario")
   @ApiModelProperty(value = "")
   @Valid
-  private RegimeTributarioDto regimeTributario = null;
+  private  RegimeTributarioDTO regimeTributario = null;
 
   @XmlElement(name="tributos")
   @ApiModelProperty(value = "")
@@ -54,7 +54,7 @@ public class TratamentoTributarioDto  {
     this.dataDoRegistro = dataDoRegistro;
   }
 
-  public TratamentoTributarioDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
+  public TratamentoTributarioDTO dataDoRegistro(OffsetDateTime dataDoRegistro) {
     this.dataDoRegistro = dataDoRegistro;
     return this;
   }
@@ -72,7 +72,7 @@ public class TratamentoTributarioDto  {
     this.fundamentoLegal = fundamentoLegal;
   }
 
-  public TratamentoTributarioDto fundamentoLegal(FundamentoLegal fundamentoLegal) {
+  public TratamentoTributarioDTO fundamentoLegal(FundamentoLegal fundamentoLegal) {
     this.fundamentoLegal = fundamentoLegal;
     return this;
   }
@@ -82,15 +82,15 @@ public class TratamentoTributarioDto  {
    * @return regimeTributario
   **/
   @JsonProperty("regimeTributario")
-  public RegimeTributarioDto getRegimeTributario() {
+  public  RegimeTributarioDTO getRegimeTributario() {
     return regimeTributario;
   }
 
-  public void setRegimeTributario(RegimeTributarioDto regimeTributario) {
+  public void setRegimeTributario( RegimeTributarioDTO regimeTributario) {
     this.regimeTributario = regimeTributario;
   }
 
-  public TratamentoTributarioDto regimeTributario(RegimeTributarioDto regimeTributario) {
+  public TratamentoTributarioDTO regimeTributario( RegimeTributarioDTO regimeTributario) {
     this.regimeTributario = regimeTributario;
     return this;
   }
@@ -108,12 +108,12 @@ public class TratamentoTributarioDto  {
     this.tributos = tributos;
   }
 
-  public TratamentoTributarioDto tributos(List<TratamentoTributoDto> tributos) {
+  public TratamentoTributarioDTO tributos(List<TratamentoTributoDto> tributos) {
     this.tributos = tributos;
     return this;
   }
 
-  public TratamentoTributarioDto addTributosItem(TratamentoTributoDto tributosItem) {
+  public TratamentoTributarioDTO addTributosItem(TratamentoTributoDto tributosItem) {
     this.tributos.add(tributosItem);
     return this;
   }
@@ -122,7 +122,7 @@ public class TratamentoTributarioDto  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TratamentoTributarioDto {\n");
+    sb.append("class TratamentoTributarioDTO {\n");
     
     sb.append("    dataDoRegistro: ").append(toIndentedString(dataDoRegistro)).append("\n");
     sb.append("    fundamentoLegal: ").append(toIndentedString(fundamentoLegal)).append("\n");

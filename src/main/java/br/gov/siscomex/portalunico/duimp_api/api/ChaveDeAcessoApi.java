@@ -40,14 +40,14 @@ public interface ChaveDeAcessoApi  {
     @Path("/ext/duimp/chaves-acesso/importadores/{ni-importador}")
     @Produces({ "application/json" })
     @ApiOperation(value = "Recuperar chave de acesso de lista de Duimp a partir de um importador.", notes = "Use esta funcionalidade para recuperar os dados relativos a chave de acesso do importador em um determinado período.", tags={ "Chave de acesso" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DuimpChaveCover.class, responseContainer = "List"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = RespostaApiErro.class),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response buscarChavesPorImportador(@ApiParam(value = "NI do importador.",required=true) @PathParam("ni-importador") String niImportador,  @NotNull @ApiParam(value = "Data inicial da pesquisa.",required=true)  @QueryParam("data-inicio") String dataInicio,  @NotNull @ApiParam(value = "Data final da pesquisa.",required=true)  @QueryParam("data-termino") String dataTermino, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "")  @QueryParam("offset") Object offset,  @ApiParam(value = "", defaultValue="100") @DefaultValue("100") @QueryParam("limit") String limit);
+    public Response buscarChavesPorImportador(@ApiParam(value = "NI do importador.",required=true) @PathParam("ni-importador") String niImportador, @NotNull @ApiParam(value = "Data inicial da pesquisa.",required=true)  @QueryParam("data-inicio") String dataInicio, @NotNull @ApiParam(value = "Data final da pesquisa.",required=true)  @QueryParam("data-termino") String dataTermino, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "", defaultValue="0") @DefaultValue("0") @QueryParam("offset") Object offset, @ApiParam(value = "", defaultValue="100") @DefaultValue("100") @QueryParam("limit") String limit);
 
     /**
      * Recuperar as chaves de acesso de uma lista de Duimp.

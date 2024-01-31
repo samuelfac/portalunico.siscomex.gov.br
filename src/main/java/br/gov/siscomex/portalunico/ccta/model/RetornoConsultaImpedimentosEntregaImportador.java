@@ -16,16 +16,24 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RetornoConsultaImpedimentosEntregaImportador", propOrder =
-    { "entregaAutorizada", "identificacaoCarga", "impedimentos", "numeroDocumentoSaida", "tipoCarga", "tipoDocumentoSaida"
+    { "condicoes", "entregaAutorizada", "identificacaoCarga", "impedimentos", "numeroDocumentoSaida", "tipoCarga", "tipoDocumentoSaida"
 })
 
 @XmlRootElement(name="RetornoConsultaImpedimentosEntregaImportador")
 /**
-  * Retorno da consulta de impedimentos da entrega da carga.
+  * Retorno da consulta de impedimentos e condições da entrega da carga.
  **/
-@ApiModel(description="Retorno da consulta de impedimentos da entrega da carga.")
+@ApiModel(description="Retorno da consulta de impedimentos e condições da entrega da carga.")
 public class RetornoConsultaImpedimentosEntregaImportador  {
   
+  @XmlElement(name="condicoes")
+  @ApiModelProperty(value = "Lista de condições da entrega de carga ao importador")
+  @Valid
+ /**
+   * Lista de condições da entrega de carga ao importador
+  **/
+  private List<CondicaoEntregaImportador> condicoes = null;
+
   @XmlElement(name="entregaAutorizada")
   @ApiModelProperty(example = "false", value = "Indicador informando que a entrega esta autorizada")
  /**
@@ -179,6 +187,29 @@ public enum TipoDocumentoSaidaEnum {
   **/
   private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
  /**
+   * Lista de condições da entrega de carga ao importador
+   * @return condicoes
+  **/
+  @JsonProperty("condicoes")
+  public List<CondicaoEntregaImportador> getCondicoes() {
+    return condicoes;
+  }
+
+  public void setCondicoes(List<CondicaoEntregaImportador> condicoes) {
+    this.condicoes = condicoes;
+  }
+
+  public RetornoConsultaImpedimentosEntregaImportador condicoes(List<CondicaoEntregaImportador> condicoes) {
+    this.condicoes = condicoes;
+    return this;
+  }
+
+  public RetornoConsultaImpedimentosEntregaImportador addCondicoesItem(CondicaoEntregaImportador condicoesItem) {
+    this.condicoes.add(condicoesItem);
+    return this;
+  }
+
+ /**
    * Indicador informando que a entrega esta autorizada
    * @return entregaAutorizada
   **/
@@ -303,6 +334,7 @@ public enum TipoDocumentoSaidaEnum {
     StringBuilder sb = new StringBuilder();
     sb.append("class RetornoConsultaImpedimentosEntregaImportador {\n");
     
+    sb.append("    condicoes: ").append(toIndentedString(condicoes)).append("\n");
     sb.append("    entregaAutorizada: ").append(toIndentedString(entregaAutorizada)).append("\n");
     sb.append("    identificacaoCarga: ").append(toIndentedString(identificacaoCarga)).append("\n");
     sb.append("    impedimentos: ").append(toIndentedString(impedimentos)).append("\n");

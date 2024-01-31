@@ -36,7 +36,11 @@ public enum IndicadorEnum {
 	
 	@XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
 	@JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
-	POR_CONTA_E_ORDEM(String.valueOf("IMPORTACAO_POR_CONTA_E_ORDEM"));
+	POR_CONTA_E_ORDEM(String.valueOf("IMPORTACAO_POR_CONTA_E_ORDEM")),
+	
+	@XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
+	@JsonProperty("IMPORTACAO_POR_ENCOMENDA")
+	POR_ENCOMENDA(String.valueOf("IMPORTACAO_POR_ENCOMENDA"));
 
 
     private String value;
@@ -72,9 +76,9 @@ public enum IndicadorEnum {
   private IndicadorEnum indicador = null;
 
   @XmlElement(name="ni")
-  @ApiModelProperty(example = "00000000000191", value = "CNPJ do adquirente.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando selecionada a opção 'IMPORTACAO_POR_CONTA_E_ORDEM'")
+  @ApiModelProperty(example = "00000000000191", value = "CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'")
  /**
-   * CNPJ do adquirente.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando selecionada a opção 'IMPORTACAO_POR_CONTA_E_ORDEM'
+   * CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'
   **/
   private String ni = null;
  /**
@@ -100,7 +104,7 @@ public enum IndicadorEnum {
   }
 
  /**
-   * CNPJ do adquirente.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;br&gt;Observação: Este atributo é informado apenas quando selecionada a opção &#39;IMPORTACAO_POR_CONTA_E_ORDEM&#39;
+   * CNPJ do adquirente ou encomendante.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;br&gt;Observação: Este atributo é informado apenas quando o atributo &#39;indicador&#39; possui um dos seguintes valores: &#39;IMPORTACAO_POR_CONTA_E_ORDEM&#39;, &#39;IMPORTACAO_POR_ENCOMENDA&#39;
    * @return ni
   **/
   @JsonProperty("ni")

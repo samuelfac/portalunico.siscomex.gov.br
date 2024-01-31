@@ -36,7 +36,7 @@ public interface ServiosDeConsultaDeConhecimentoDeCargaApi  {
     @Path("/api/ext/conhecimentos")
     @Produces({ "application/json" })
     @ApiOperation(value = "Retorna o detalhamento de um ou mais conhecimentos de carga.", notes = "Retorna o detalhamento de um ou mais conhecimentos de carga.", tags={ "Serviços de Consulta de Conhecimento de Carga" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ConhecimentoConsultaDetalhada.class, responseContainer = "List"),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
@@ -45,7 +45,7 @@ public interface ServiosDeConsultaDeConhecimentoDeCargaApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response listarViagensCargasDetalhadoIdentificacaoManifestoUsingGET(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @NotNull @ApiParam(value = "Número do Conhecimento",required=true)  @QueryParam("numeroConhecimento") String numeroConhecimento,  @ApiParam(value = "CNPJ Responsável  Tamanho: 14  Formato: NNNNNNNNNNNNNN")  @QueryParam("cnpjResponsavel") String cnpjResponsavel,  @ApiParam(value = "Data da emissão do conhecimento  Tamanho: 10  Formato YYYY-MM-DD")  @QueryParam("dataEmissao") String dataEmissao);
+    public Response listarViagensCargasDetalhadoIdentificacaoManifestoUsingGET(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "Número do Conhecimento",required=true)  @QueryParam("numeroConhecimento") String numeroConhecimento, @ApiParam(value = "CNPJ Responsável  Tamanho: 14  Formato: NNNNNNNNNNNNNN")  @QueryParam("cnpjResponsavel") String cnpjResponsavel, @ApiParam(value = "Data da emissão do conhecimento  Tamanho: 10  Formato YYYY-MM-DD")  @QueryParam("dataEmissao") String dataEmissao);
 
     /**
      * Retorna o resumo de um ou mais conhecimentos de carga ativos.

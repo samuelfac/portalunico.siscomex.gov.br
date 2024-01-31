@@ -54,7 +54,7 @@ public class NotaFiscalRemoteDTO  {
 
   @XmlElement(name="notaFicalEletronica")
   @ApiModelProperty(value = "")
-  private Boolean notaFicalEletronica = false;
+  private Boolean notaFicalEletronica = null;
 
   @XmlElement(name="numeroDoDocumento")
   @ApiModelProperty(value = "Número do documento<br />Formato: Inteiro, com até 9 digitos")

@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "NcmDto", propOrder =
+ @XmlType(name = "NCMDTO", propOrder =
     { "codigo", "descricao", "unidadeMedidaEstatistica"
 })
 
-@XmlRootElement(name="NcmDto")
-public class NcmDto  {
+@XmlRootElement(name="NCMDTO")
+public class NCMDTO  {
   
   @XmlElement(name="codigo")
   @ApiModelProperty(example = "01013000", value = "Código<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")
@@ -50,7 +50,7 @@ public class NcmDto  {
     this.codigo = codigo;
   }
 
-  public NcmDto codigo(String codigo) {
+  public NCMDTO codigo(String codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -68,7 +68,7 @@ public class NcmDto  {
     this.descricao = descricao;
   }
 
-  public NcmDto descricao(String descricao) {
+  public NCMDTO descricao(String descricao) {
     this.descricao = descricao;
     return this;
   }
@@ -86,7 +86,7 @@ public class NcmDto  {
     this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
   }
 
-  public NcmDto unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
+  public NCMDTO unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
     this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
     return this;
   }
@@ -95,7 +95,7 @@ public class NcmDto  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class NcmDto {\n");
+    sb.append("class NCMDTO {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");

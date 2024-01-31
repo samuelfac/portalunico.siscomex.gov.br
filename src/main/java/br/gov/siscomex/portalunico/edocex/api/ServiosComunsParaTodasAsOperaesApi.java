@@ -43,7 +43,7 @@ public interface ServiosComunsParaTodasAsOperaesApi  {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Anexar documento à operação.", notes = "Esse serviço somente poderá ser utilizado quando houver apenas um dossiê vinculado à operação e para os seguintes tipos de operações:<ul><li>DI - Declaração de Importação<br/></li><li>LI - Licença de Importação<br/></li><li>RE - Registro de Exportação<br/></li><li>DT - Declaração de Trânsito<br/></li><li>DIR - Declaração de Importação de Remessa<br/></li><li>DUE - Declaração Única de Exportação<br/></li><li>DUIMP - Declaração Única de Importação,<br/></li><li>CATP - Catálogo de Produtos<br/></li><li>LPCO - Tratamento Administrativo/LPCO<br/></li></ul>", tags={ "Serviços comuns para todas as operações" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoAnexarDocumento.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

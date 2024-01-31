@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -73,9 +74,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -163,13 +164,13 @@ public enum TipoOperacaoEnum {
   **/
   private String tipo = null;
 
-  @XmlElement(name="listaCoordenadas")
-  @ApiModelProperty(value = "Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.<br/>No caso de câmeras mobile não transmitir esse atributo.")
+  @XmlElement(name="listaCoordenadas", required = true)
+  @ApiModelProperty(required = true, value = "Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.")
   @Valid
  /**
-   * Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.<br/>No caso de câmeras mobile não transmitir esse atributo.
+   * Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.
   **/
-  private List<DadosCoordenadasGeorreferenciamento> listaCoordenadas = null;
+  private List<DadosCoordenadasGeorreferenciamento> listaCoordenadas = new ArrayList<>();
  /**
    * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
    * @return tipoOperacao
@@ -193,7 +194,7 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -435,10 +436,11 @@ public enum TipoOperacaoEnum {
   }
 
  /**
-   * Lista de Coordenadas.&lt;br/&gt;Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.&lt;br/&gt;No caso de câmeras mobile não transmitir esse atributo.
+   * Lista de Coordenadas.&lt;br/&gt;Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.
    * @return listaCoordenadas
   **/
   @JsonProperty("listaCoordenadas")
+  @NotNull
   public List<DadosCoordenadasGeorreferenciamento> getListaCoordenadas() {
     return listaCoordenadas;
   }

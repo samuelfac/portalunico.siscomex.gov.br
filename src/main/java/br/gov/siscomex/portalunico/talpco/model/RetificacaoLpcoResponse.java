@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
  @XmlType(name = "RetificacaoLpcoResponse", propOrder =
-    { "situacao", "dataRegistro", "justificativa", "listaAlteracoes"
+    { "situacao", "dataRegistro", "justificativa", "listaAlteracoes", "situacaoPagamentoTaxa"
 })
 
 @XmlRootElement(name="RetificacaoLpcoResponse")
@@ -52,6 +52,11 @@ public class RetificacaoLpcoResponse  {
    * Lista de alterações realizadas na retificação
   **/
   private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
+
+  @XmlElement(name="situacaoPagamentoTaxa")
+  @ApiModelProperty(value = "")
+  @Valid
+  private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
  /**
    * Get situacao
    * @return situacao
@@ -132,6 +137,24 @@ public class RetificacaoLpcoResponse  {
     return this;
   }
 
+ /**
+   * Get situacaoPagamentoTaxa
+   * @return situacaoPagamentoTaxa
+  **/
+  @JsonProperty("situacaoPagamentoTaxa")
+  public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+    return situacaoPagamentoTaxa;
+  }
+
+  public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+  }
+
+  public RetificacaoLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+    this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    return this;
+  }
+
 
   @Override
   public String toString() {
@@ -142,6 +165,7 @@ public class RetificacaoLpcoResponse  {
     sb.append("    dataRegistro: ").append(toIndentedString(dataRegistro)).append("\n");
     sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
     sb.append("    listaAlteracoes: ").append(toIndentedString(listaAlteracoes)).append("\n");
+    sb.append("    situacaoPagamentoTaxa: ").append(toIndentedString(situacaoPagamentoTaxa)).append("\n");
     sb.append("}");
     return sb.toString();
   }

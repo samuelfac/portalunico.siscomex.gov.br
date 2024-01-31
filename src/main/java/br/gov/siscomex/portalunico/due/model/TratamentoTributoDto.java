@@ -21,26 +21,26 @@ public class TratamentoTributoDto  {
   @XmlElement(name="tipo")
   @ApiModelProperty(value = "")
   @Valid
-  private TipoTributoDto tipo = null;
+  private TipoTributoDTO tipo = null;
 
   @XmlElement(name="tributo")
   @ApiModelProperty(value = "")
   @Valid
-  private TributoDto tributo = null;
+  private TributoDTO tributo = null;
  /**
    * Get tipo
    * @return tipo
   **/
   @JsonProperty("tipo")
-  public TipoTributoDto getTipo() {
+  public TipoTributoDTO getTipo() {
     return tipo;
   }
 
-  public void setTipo(TipoTributoDto tipo) {
+  public void setTipo(TipoTributoDTO tipo) {
     this.tipo = tipo;
   }
 
-  public TratamentoTributoDto tipo(TipoTributoDto tipo) {
+  public TratamentoTributoDto tipo(TipoTributoDTO tipo) {
     this.tipo = tipo;
     return this;
   }
@@ -50,15 +50,15 @@ public class TratamentoTributoDto  {
    * @return tributo
   **/
   @JsonProperty("tributo")
-  public TributoDto getTributo() {
+  public TributoDTO getTributo() {
     return tributo;
   }
 
-  public void setTributo(TributoDto tributo) {
+  public void setTributo(TributoDTO tributo) {
     this.tributo = tributo;
   }
 
-  public TratamentoTributoDto tributo(TributoDto tributo) {
+  public TratamentoTributoDto tributo(TributoDTO tributo) {
     this.tributo = tributo;
     return this;
   }

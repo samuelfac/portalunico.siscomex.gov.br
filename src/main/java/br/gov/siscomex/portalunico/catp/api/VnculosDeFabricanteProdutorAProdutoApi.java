@@ -36,15 +36,15 @@ public interface VnculosDeFabricanteProdutorAProdutoApi  {
     @GET
     @Path("/ext/fabricante/exportar/{cpfCnpjRaiz}")
     @ApiOperation(value = "Exportar Vínculos de Fabricante-Produtor a Produto", notes = "", tags={ "Vínculos de Fabricante-Produtor a Produto" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response downloadOperadorEstrangeiro(@ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true) @PathParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -58,13 +58,13 @@ public interface VnculosDeFabricanteProdutorAProdutoApi  {
     @ApiOperation(value = "Vincular/Desvincular Fabricante-Produtor a Produto", notes = "", tags={ "Vínculos de Fabricante-Produtor a Produto" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = LoteValidacaoDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response incluir(@ApiParam(value = "Lista de Fabricantes/Produtores" ,required=true)@Valid List<FabricanteIntegracaoDTO> body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

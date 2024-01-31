@@ -29,6 +29,10 @@ public class AdditionalInformation  {
 @XmlEnum(String.class)
 public enum StatementTypeCodeEnum {
 
+	@XmlEnumValue("ACT")
+	@JsonProperty("ACT")
+	ACT(String.valueOf("ACT")),
+	
 	@XmlEnumValue("AAI")
 	@JsonProperty("AAI")
 	AAI(String.valueOf("AAI")),

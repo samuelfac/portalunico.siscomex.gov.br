@@ -49,9 +49,9 @@ public class GuiaPagamentoTributosDTO  {
   private String dtVencimento = null;
 
   @XmlElement(name="infoAdicionais")
-  @ApiModelProperty(example = "REGISTRO", value = "Informações adicionais de interesse da operação de origem <br>Tamanho máximo: 200<br/>(*) Obrigatório se tpDocumentoOrigem=LPCO. Valores válidos: LPCO: [REGISTRO, RETIFICACAO, PRORROGACAO, COMPATIBILIZACAO]")
+  @ApiModelProperty(example = "REGISTRO", value = "Informações adicionais de interesse da operação de origem <br>Tamanho máximo: 200<br/>(*) Obrigatório se tpOperacaoOrigem=LPCO. Valores válidos: LPCO: [REGISTRO, RETIFICACAO, PRORROGACAO, COMPATIBILIZACAO]")
  /**
-   * Informações adicionais de interesse da operação de origem <br>Tamanho máximo: 200<br/>(*) Obrigatório se tpDocumentoOrigem=LPCO. Valores válidos: LPCO: [REGISTRO, RETIFICACAO, PRORROGACAO, COMPATIBILIZACAO]
+   * Informações adicionais de interesse da operação de origem <br>Tamanho máximo: 200<br/>(*) Obrigatório se tpOperacaoOrigem=LPCO. Valores válidos: LPCO: [REGISTRO, RETIFICACAO, PRORROGACAO, COMPATIBILIZACAO]
   **/
   private String infoAdicionais = null;
 
@@ -63,9 +63,9 @@ public class GuiaPagamentoTributosDTO  {
   private String linhaDigitavel = null;
 
   @XmlElement(name="linkPdf")
-  @ApiModelProperty(example = "http://xxxxxxxx.xx/I2100001234-guia.pdf", value = "Link para o PDF da guia <br>Tamanho máximo: 400<br/>(*) Obrigatório se tpDocumentoOrigem = LPCO e tpGuiaPagamento = GRU")
+  @ApiModelProperty(example = "http://xxxxxxxx.xx/I2100001234-guia.pdf", value = "Link para o PDF da guia <br>Tamanho máximo: 400<br/>(*) Obrigatório se tpOperacaoOrigem = LPCO e tpGuiaPagamento = GRU")
  /**
-   * Link para o PDF da guia <br>Tamanho máximo: 400<br/>(*) Obrigatório se tpDocumentoOrigem = LPCO e tpGuiaPagamento = GRU
+   * Link para o PDF da guia <br>Tamanho máximo: 400<br/>(*) Obrigatório se tpOperacaoOrigem = LPCO e tpGuiaPagamento = GRU
   **/
   private String linkPdf = null;
 
@@ -129,7 +129,11 @@ public enum TpOperacaoOrigemEnum {
 
 	@XmlEnumValue("LPCO")
 	@JsonProperty("LPCO")
-	LPCO(String.valueOf("LPCO"));
+	LPCO(String.valueOf("LPCO")),
+	
+	@XmlEnumValue("DUIMP")
+	@JsonProperty("DUIMP")
+	DUIMP(String.valueOf("DUIMP"));
 
 
     private String value;
@@ -226,7 +230,7 @@ public enum TpOperacaoOrigemEnum {
   }
 
  /**
-   * Informações adicionais de interesse da operação de origem &lt;br&gt;Tamanho máximo: 200&lt;br/&gt;(*) Obrigatório se tpDocumentoOrigem&#x3D;LPCO. Valores válidos: LPCO: [REGISTRO, RETIFICACAO, PRORROGACAO, COMPATIBILIZACAO]
+   * Informações adicionais de interesse da operação de origem &lt;br&gt;Tamanho máximo: 200&lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem&#x3D;LPCO. Valores válidos: LPCO: [REGISTRO, RETIFICACAO, PRORROGACAO, COMPATIBILIZACAO]
    * @return infoAdicionais
   **/
   @JsonProperty("infoAdicionais")
@@ -262,7 +266,7 @@ public enum TpOperacaoOrigemEnum {
   }
 
  /**
-   * Link para o PDF da guia &lt;br&gt;Tamanho máximo: 400&lt;br/&gt;(*) Obrigatório se tpDocumentoOrigem &#x3D; LPCO e tpGuiaPagamento &#x3D; GRU
+   * Link para o PDF da guia &lt;br&gt;Tamanho máximo: 400&lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem &#x3D; LPCO e tpGuiaPagamento &#x3D; GRU
    * @return linkPdf
   **/
   @JsonProperty("linkPdf")

@@ -61,9 +61,9 @@ public class DadosImagemScanner  {
   private List<DadosDaCoordenadaDeAlerta> listaCoordenadasAlerta = null;
 
   @XmlElement(name="arquivoImagem")
-  @ApiModelProperty(value = "Arquivo de imagem jpeg (encoder base64). <br/>Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas, com colunas proporcionais, com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.")
+  @ApiModelProperty(value = "Arquivo de imagem jpeg (encoder base64). <br/>Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas (800 pixels de altura), com colunas proporcionais(largura da imagem deve ser proporcional), com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.")
  /**
-   * Arquivo de imagem jpeg (encoder base64). <br/>Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas, com colunas proporcionais, com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.
+   * Arquivo de imagem jpeg (encoder base64). <br/>Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas (800 pixels de altura), com colunas proporcionais(largura da imagem deve ser proporcional), com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.
   **/
   private String arquivoImagem = null;
 
@@ -169,7 +169,7 @@ public class DadosImagemScanner  {
   }
 
  /**
-   * Arquivo de imagem jpeg (encoder base64). &lt;br/&gt;Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas, com colunas proporcionais, com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.
+   * Arquivo de imagem jpeg (encoder base64). &lt;br/&gt;Enviar uma cópia da imagem original gerada pelo equipamento de inspeção não invasiva no formato jpeg, redimensionada para 800 linhas (800 pixels de altura), com colunas proporcionais(largura da imagem deve ser proporcional), com uso de filtro Antialias/Lanczos próprio para redução de imagens, com preservação da informação de canais de cor original. (doc técnica). A imagem redimensionada também não poderá ser superior a 400 Kb, sendo o caso, redimensionar para um tamanho um pouco menor que 800 linhas.
    * @return arquivoImagem
   **/
   @JsonProperty("arquivoImagem")

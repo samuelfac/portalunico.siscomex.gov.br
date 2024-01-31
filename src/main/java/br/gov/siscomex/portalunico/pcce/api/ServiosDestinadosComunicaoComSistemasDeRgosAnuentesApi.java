@@ -2,6 +2,7 @@ package br.gov.siscomex.portalunico.pcce.api;
 
 import br.gov.siscomex.portalunico.pcce.model.DadosPagamentoTributosDTO;
 import br.gov.siscomex.portalunico.pcce.model.GuiaPagamentoTributosDTO;
+import br.gov.siscomex.portalunico.pcce.model.SolicitacaoPagamentoTaxaDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -35,7 +36,7 @@ public interface ServiosDestinadosComunicaoComSistemasDeRgosAnuentesApi  {
     @Path("/ext/anuentes/guia/pagamento")
     @Consumes({ "application/json" })
     @ApiOperation(value = "Confirmar pagamento de guia de tributos dos orgãos anuentes", notes = "Recebe dos órgãos anuentes a confirmação de pagamento de uma guia.", tags={ "Serviços destinados à comunicação com sistemas de órgãos anuentes" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
@@ -64,5 +65,25 @@ public interface ServiosDestinadosComunicaoComSistemasDeRgosAnuentesApi  {
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
     public Response receberDadosGuiaPagamento(@ApiParam(value = "Dados da guia de pagamento" ,required=true)@Valid GuiaPagamentoTributosDTO body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
+
+    /**
+     * Solicitar pagamento de taxa de órgãos anuentes
+     *
+     * Recebe dos órgãos anuentes os dados para realizar o pagamento de taxa.
+     *
+     */
+    @POST
+    @Path("/ext/anuentes/pagamento")
+    @Consumes({ "application/json" })
+    @ApiOperation(value = "Solicitar pagamento de taxa de órgãos anuentes", notes = "Recebe dos órgãos anuentes os dados para realizar o pagamento de taxa.", tags={ "Serviços destinados à comunicação com sistemas de órgãos anuentes" })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 201, message = "Recurso criado com sucesso"),
+        @ApiResponse(code = 400, message = "Requisição mal formatada"),
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado"),
+        @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+    public Response receberSolicitacaoPagamento(@ApiParam(value = "Dados da solicitação de pagamento de taxa" ,required=true)@Valid SolicitacaoPagamentoTaxaDTO body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação." ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação." ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

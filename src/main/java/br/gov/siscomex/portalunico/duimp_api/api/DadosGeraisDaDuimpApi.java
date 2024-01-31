@@ -45,7 +45,7 @@ public interface DadosGeraisDaDuimpApi  {
     @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Atualizar dados gerais da Duimp para registro ou retificação.", notes = "Use esta funcionalidade para atualizar os dados gerais de uma Duimp que já foi salva tanto para registro quanto para retificação.", tags={ "Dados gerais da Duimp" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RespostaApi.class),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),

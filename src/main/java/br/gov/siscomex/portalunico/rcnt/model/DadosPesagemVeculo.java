@@ -74,9 +74,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -154,17 +154,17 @@ public enum TipoOperacaoEnum {
   private BigDecimal pesoBrutoManifesto = null;
 
   @XmlElement(name="placa")
-  @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50")
+  @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/><br/>Tamanho: 50")
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/><br/>Tamanho: 50
   **/
   private String placa = null;
 
   @XmlElement(name="tara")
-  @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/><br/>tara, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/><br/>tara, até 4 casas decimais.
+   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/><br/>tara, até 4 casas decimais.
   **/
   private BigDecimal tara = null;
 
@@ -177,10 +177,10 @@ public enum TipoOperacaoEnum {
   private List<DadosSemirreboquePesagem> listaSemirreboque = null;
 
   @XmlElement(name="taraConjunto")
-  @ApiModelProperty(example = "15.5", value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/><br/>taraConjunto, até 4 casas decimais.")
   @Valid
  /**
-   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/><br/>taraConjunto, até 4 casas decimais.
+   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/><br/>taraConjunto, até 4 casas decimais.
   **/
   private BigDecimal taraConjunto = null;
 
@@ -193,24 +193,24 @@ public enum TipoOperacaoEnum {
   private List<DadosContinerUldPesagemVeculo> listaConteineresUld = null;
 
   @XmlElement(name="pesoBrutoBalanca")
-  @ApiModelProperty(example = "15.5", value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
   @Valid
  /**
-   * Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
+   * Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
   **/
   private BigDecimal pesoBrutoBalanca = null;
 
-  @XmlElement(name="vazio")
-  @ApiModelProperty(example = "false", value = "Indicar se é uma pesagem de veículo vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="vazio", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Indicar se é uma pesagem de veículo vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean vazio = null;
 
-  @XmlElement(name="capturaAutoPeso")
-  @ApiModelProperty(example = "false", value = "Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="capturaAutoPeso", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
-   * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana.<br/>Domínio:<br/>true - Sim<br/>false - Não
+   * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean capturaAutoPeso = null;
 
@@ -300,31 +300,31 @@ public enum CorreiasTransportadorasEnum {
 }
 
   @XmlElement(name="correiasTransportadoras")
-  @ApiModelProperty(example = "E", value = "Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto, oriundo de usina, pátio de estocagem ou silo, por meio de correias transportadoras. Não aplicável nos descarregamentos de veículos ou embarcações com correias transportadoras, neste caso enviar Embarque/Desembarque Navio. <br/>Domínio:<br/>E - Entrada<br/>S - Saída")
+  @ApiModelProperty(example = "E", value = "Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto por meio de correias transportadoras. <br/>Domínio:<br/>E - Entrada<br/>S - Saída")
  /**
-   * Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto, oriundo de usina, pátio de estocagem ou silo, por meio de correias transportadoras. Não aplicável nos descarregamentos de veículos ou embarcações com correias transportadoras, neste caso enviar Embarque/Desembarque Navio. <br/>Domínio:<br/>E - Entrada<br/>S - Saída
+   * Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto por meio de correias transportadoras. <br/>Domínio:<br/>E - Entrada<br/>S - Saída
   **/
   private CorreiasTransportadorasEnum correiasTransportadoras = null;
 
   @XmlElement(name="ncm")
-  @ApiModelProperty(value = "Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8")
+  @ApiModelProperty(value = "Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>É obrigatório informar o atributo 'ncm' quando pelo menos um dos seguintes atributos for informado: 'dutos', 'correiasTransportadoras'.<br/>Tamanho: 8")
  /**
-   * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>Tamanho: 8
+   * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>É obrigatório informar o atributo 'ncm' quando pelo menos um dos seguintes atributos for informado: 'dutos', 'correiasTransportadoras'.<br/>Tamanho: 8
   **/
   private String ncm = null;
 
   @XmlElement(name="volume")
-  @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/><br/>volume, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/> É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.")
   @Valid
  /**
-   * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/><br/>volume, até 4 casas decimais.
+   * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/> É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
   **/
   private BigDecimal volume = null;
 
-  @XmlElement(name="balanca")
-  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36")
+  @XmlElement(name="balanca", required = true)
+  @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
  /**
-   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.<br/>Tamanho: 36
+   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
   **/
   private String balanca = null;
 
@@ -358,7 +358,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -571,7 +571,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).&lt;br/&gt;Tamanho: 50
+   * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
    * @return placa
   **/
   @JsonProperty("placa")
@@ -589,7 +589,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
+   * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
    * @return tara
   **/
   @JsonProperty("tara")
@@ -630,7 +630,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.&lt;br/&gt;&lt;br/&gt;taraConjunto, até 4 casas decimais.
+   * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;taraConjunto, até 4 casas decimais.
    * @return taraConjunto
   **/
   @JsonProperty("taraConjunto")
@@ -671,7 +671,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Peso bruto da pesagem na balança (Kg).&lt;br/&gt;Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.&lt;br/&gt;&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
+   * Peso bruto da pesagem na balança (Kg).&lt;br/&gt;Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.&lt;br/&gt;É obrigatório informar o atributo &#39;pesoBrutoBalanca&#39; quando o atributo &#39;volume&#39; não for informado.&lt;br/&gt;&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
    * @return pesoBrutoBalanca
   **/
   @JsonProperty("pesoBrutoBalanca")
@@ -689,10 +689,11 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Indicar se é uma pesagem de veículo vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return vazio
   **/
   @JsonProperty("vazio")
+  @NotNull
   public Boolean isVazio() {
     return vazio;
   }
@@ -707,10 +708,11 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+   * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
    * @return capturaAutoPeso
   **/
   @JsonProperty("capturaAutoPeso")
+  @NotNull
   public Boolean isCapturaAutoPeso() {
     return capturaAutoPeso;
   }
@@ -746,7 +748,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto, oriundo de usina, pátio de estocagem ou silo, por meio de correias transportadoras. Não aplicável nos descarregamentos de veículos ou embarcações com correias transportadoras, neste caso enviar Embarque/Desembarque Navio. &lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
+   * Informar esse atributo quando, de forma similar a dutos, o granel ingressar no recinto por meio de correias transportadoras. &lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
    * @return correiasTransportadoras
   **/
   @JsonProperty("correiasTransportadoras")
@@ -767,7 +769,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.&lt;br/&gt;Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;Tamanho: 8
+   * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.&lt;br/&gt;Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;É obrigatório informar o atributo &#39;ncm&#39; quando pelo menos um dos seguintes atributos for informado: &#39;dutos&#39;, &#39;correiasTransportadoras&#39;.&lt;br/&gt;Tamanho: 8
    * @return ncm
   **/
   @JsonProperty("ncm")
@@ -785,7 +787,7 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.&lt;br/&gt;&lt;br/&gt;volume, até 4 casas decimais.
+   * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.&lt;br/&gt; É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
    * @return volume
   **/
   @JsonProperty("volume")
@@ -803,10 +805,11 @@ public enum CorreiasTransportadorasEnum {
   }
 
  /**
-   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança.&lt;br/&gt;Tamanho: 36
+   * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
    * @return balanca
   **/
   @JsonProperty("balanca")
+  @NotNull
   public String getBalanca() {
     return balanca;
   }

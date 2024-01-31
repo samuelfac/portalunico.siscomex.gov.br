@@ -74,9 +74,9 @@ public enum TipoOperacaoEnum {
   private TipoOperacaoEnum tipoOperacao = null;
 
   @XmlElement(name="idEvento", required = true)
-  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100")
+  @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/>Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
   **/
   private String idEvento = null;
 
@@ -200,16 +200,16 @@ public enum EmbarqueDesembarqueEnum {
   private EmbarqueDesembarqueEnum embarqueDesembarque = null;
 
   @XmlElement(name="numeroConteiner")
-  @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
+  @ApiModelProperty(value = "Identificação do número do contêiner.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200")
  /**
-   * Identificação do número do contêiner.<br/>Tamanho: 200
+   * Identificação do número do contêiner.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200
   **/
   private String numeroConteiner = null;
 
   @XmlElement(name="tipoConteiner")
-  @ApiModelProperty(example = "12U0", value = "Tipo de contêiner conforme tabela de domínio.<br/><a href=\"../pages/exemplos/rcnt/Tipo_Conteiner.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Tipo_Conteiner.pdf </a>")
+  @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.")
  /**
-   * Tipo de contêiner conforme tabela de domínio.<br/><a href=\"../pages/exemplos/rcnt/Tipo_Conteiner.pdf\" rel=\"noopener noreferrer\" target=\"_blank\"> Tipo_Conteiner.pdf </a>
+   *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.
   **/
   private String tipoConteiner = null;
 
@@ -230,18 +230,18 @@ public enum EmbarqueDesembarqueEnum {
   private BigDecimal pesoBrutoManifesto = null;
 
   @XmlElement(name="pesoBrutoBalanca")
-  @ApiModelProperty(example = "15.5", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.")
   @Valid
  /**
-   * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
+   * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.
   **/
   private BigDecimal pesoBrutoBalanca = null;
 
   @XmlElement(name="pesoArqueacao")
-  @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.")
   @Valid
  /**
-   * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>pesoArqueacao, até 4 casas decimais.
+   * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.
   **/
   private BigDecimal pesoArqueacao = null;
 
@@ -309,66 +309,66 @@ public enum TipoGranelEnum {
 }
 
   @XmlElement(name="tipoGranel")
-  @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>")
+  @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
  /**
-   * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>
+   * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
   **/
   private TipoGranelEnum tipoGranel = null;
 
   @XmlElement(name="volume")
-  @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.")
+  @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.")
   @Valid
  /**
-   * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>volume, até 4 casas decimais.
+   * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.
   **/
   private BigDecimal volume = null;
 
-  @XmlElement(name="cargaSolta")
-  @ApiModelProperty(example = "false", value = "Indicador de carga solta.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+  @XmlElement(name="cargaSolta", required = true)
+  @ApiModelProperty(example = "false", required = true, value = "Indicador de carga solta.<br/>Domínio:<br/>true - Sim<br/>false - Não")
  /**
    * Indicador de carga solta.<br/>Domínio:<br/>true - Sim<br/>false - Não
   **/
   private Boolean cargaSolta = null;
 
   @XmlElement(name="numeroLote")
-  @ApiModelProperty(value = "<br/>Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/>Por exemplo: carga solta. <br/>Tamanho: 100")
+  @ApiModelProperty(value = "<br/>Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/><br/>Tamanho: 100")
  /**
-   * <br/>Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.<br/>Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/>Por exemplo: carga solta. <br/>Tamanho: 100
+   * <br/>Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/><br/>Tamanho: 100
   **/
   private String numeroLote = null;
 
   @XmlElement(name="listaVolumes")
-  @ApiModelProperty(value = "Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregamento de carga solta.")
+  @ApiModelProperty(value = "Informar no caso de carregamento ou descarregamento de carga solta.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
   @Valid
  /**
-   * Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregamento de carga solta.
+   * Informar no caso de carregamento ou descarregamento de carga solta.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
   **/
   private List<DadosVolumeVerificado> listaVolumes = null;
 
   @XmlElement(name="listaChassi")
-  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)")
+  @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
   @Valid
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
   **/
   private List<DadosDoChassi> listaChassi = null;
 
-  @XmlElement(name="navio")
-  @ApiModelProperty(value = "")
+  @XmlElement(name="navio", required = true)
+  @ApiModelProperty(required = true, value = "")
   @Valid
-  private DadosNavio navio = null;
+  private DadosNavioObrigatorio navio = null;
 
-  @XmlElement(name="viagem")
-  @ApiModelProperty(value = "Viagem<br/>Tamanho: 20")
+  @XmlElement(name="viagem", required = true)
+  @ApiModelProperty(required = true, value = "Viagem Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20")
  /**
-   * Viagem<br/>Tamanho: 20
+   * Viagem Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20
   **/
   private String viagem = null;
 
-  @XmlElement(name="escala")
-  @ApiModelProperty(value = "Escala<br/>Tamanho: 20")
+  @XmlElement(name="escala", required = true)
+  @ApiModelProperty(required = true, value = "Escala Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20")
  /**
-   * Escala<br/>Tamanho: 20
+   * Escala Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20
   **/
   private String escala = null;
 
@@ -445,7 +445,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt;Tamanho: 100
+   * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
    * @return idEvento
   **/
   @JsonProperty("idEvento")
@@ -685,7 +685,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
+   * Identificação do número do contêiner.&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.&lt;br/&gt;Tamanho: 200
    * @return numeroConteiner
   **/
   @JsonProperty("numeroConteiner")
@@ -703,7 +703,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Tipo de contêiner conforme tabela de domínio.&lt;br/&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/rcnt/Tipo_Conteiner.pdf\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt; Tipo_Conteiner.pdf &lt;/a&gt;
+   *  Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt;É obrigatório informar o atributo &#39;tipoConteiner&#39; quando o atributo &#39;numeroConteiner&#39; for informado.
    * @return tipoConteiner
   **/
   @JsonProperty("tipoConteiner")
@@ -757,7 +757,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.&lt;br/&gt;&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
+   * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
    * @return pesoBrutoBalanca
   **/
   @JsonProperty("pesoBrutoBalanca")
@@ -775,7 +775,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;br/&gt;&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
+   * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
    * @return pesoArqueacao
   **/
   @JsonProperty("pesoArqueacao")
@@ -793,7 +793,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;br/&gt;
+   * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
    * @return tipoGranel
   **/
   @JsonProperty("tipoGranel")
@@ -814,7 +814,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.&lt;br/&gt;&lt;br/&gt;volume, até 4 casas decimais.
+   * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;volume, até 4 casas decimais.
    * @return volume
   **/
   @JsonProperty("volume")
@@ -836,6 +836,7 @@ public enum TipoGranelEnum {
    * @return cargaSolta
   **/
   @JsonProperty("cargaSolta")
+  @NotNull
   public Boolean isCargaSolta() {
     return cargaSolta;
   }
@@ -850,7 +851,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.&lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;Por exemplo: carga solta. &lt;br/&gt;Tamanho: 100
+   * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;&lt;br/&gt;Tamanho: 100
    * @return numeroLote
   **/
   @JsonProperty("numeroLote")
@@ -868,7 +869,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Informar no caso de carregamento de carga solta em que não houve Geração de Lotes ou nos casos de descarregamento de carga solta.
+   * Informar no caso de carregamento ou descarregamento de carga solta.&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
    * @return listaVolumes
   **/
   @JsonProperty("listaVolumes")
@@ -891,7 +892,7 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...)
+   * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
    * @return listaChassi
   **/
   @JsonProperty("listaChassi")
@@ -918,24 +919,26 @@ public enum TipoGranelEnum {
    * @return navio
   **/
   @JsonProperty("navio")
-  public DadosNavio getNavio() {
+  @NotNull
+  public DadosNavioObrigatorio getNavio() {
     return navio;
   }
 
-  public void setNavio(DadosNavio navio) {
+  public void setNavio(DadosNavioObrigatorio navio) {
     this.navio = navio;
   }
 
-  public DadosEmbarqueDesembarqueNavio navio(DadosNavio navio) {
+  public DadosEmbarqueDesembarqueNavio navio(DadosNavioObrigatorio navio) {
     this.navio = navio;
     return this;
   }
 
  /**
-   * Viagem&lt;br/&gt;Tamanho: 20
+   * Viagem Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
    * @return viagem
   **/
   @JsonProperty("viagem")
+  @NotNull
   public String getViagem() {
     return viagem;
   }
@@ -950,10 +953,11 @@ public enum TipoGranelEnum {
   }
 
  /**
-   * Escala&lt;br/&gt;Tamanho: 20
+   * Escala Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
    * @return escala
   **/
   @JsonProperty("escala")
+  @NotNull
   public String getEscala() {
     return escala;
   }

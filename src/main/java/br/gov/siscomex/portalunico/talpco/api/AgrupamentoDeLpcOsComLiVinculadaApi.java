@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface AgrupamentoDeLpcOsComLiVinculadaApi  {
+public interface AgrupamentoDeLpcosComLiVinculadaApi  {
 
     /**
      * Altera os LPCOs que fazer parte de um agrupamento.
@@ -39,7 +39,7 @@ public interface AgrupamentoDeLpcOsComLiVinculadaApi  {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Altera os LPCOs que fazer parte de um agrupamento.", notes = "", tags={ "Agrupamento de LPCOs com LI vinculada" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AgrupamentoLpco.class),
         @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nemhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
@@ -84,6 +84,6 @@ public interface AgrupamentoDeLpcOsComLiVinculadaApi  {
         @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response getDadosAgrupamento(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Número de um LPCO que faz parte do agrupamento.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")  @QueryParam("numeroLpco") String numeroLpco,  @ApiParam(value = "Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais")  @QueryParam("chaveAgrupamento") String chaveAgrupamento);
+    public Response getDadosAgrupamento1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Número de um LPCO que faz parte do agrupamento.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")  @QueryParam("numeroLpco") String numeroLpco,  @ApiParam(value = "Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais")  @QueryParam("chaveAgrupamento") String chaveAgrupamento);
 }
 

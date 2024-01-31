@@ -44,7 +44,7 @@ public interface ServiosParaOperaesDiLiReDtEDirApi  {
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     @ApiOperation(value = "Anexar documento ao dossiê.", notes = "Esse serviço somente poderá ser utilizado para dossiês dos seguintes tipos de operações:<ul><li>DI - Declaração de Importação<br/></li><li>LI - Licença de Importação<br/></li><li>RE - Registro de Exportação<br/></li><li>DT - Declaração de Trânsito<br/></li><li>DIR - Declaração de Importação de Remessa<br/></li></ul>", tags={ "Serviços para operações DI, LI, RE, DT e DIR" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoAnexarDocumento.class),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
         @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

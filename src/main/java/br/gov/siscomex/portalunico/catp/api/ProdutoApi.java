@@ -39,16 +39,16 @@ public interface ProdutoApi  {
     @Path("/ext/produto")
     @Produces({ "application/json" })
     @ApiOperation(value = "Consultar Produtos", notes = "", tags={ "Produto" })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProdutoIntegracaoDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response consultar( @NotNull @ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true)  @QueryParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken,  @ApiParam(value = "Código do produto  <br>Tamanho: 10 <br>Formato: 'NNNNNNNNNN'")  @QueryParam("codigo") String codigo,  @ApiParam(value = "Códigos internos do produto do Exportador/Importador  <br>Tamanho: 60")  @QueryParam("codigoInterno") String codigoInterno,  @ApiParam(value = "Detalhamento complementar do produto <br>Tamanho: 3700")  @QueryParam("descricao") String descricao,  @ApiParam(value = "Denominacao do produto  <br>Tamanho: 3700")  @QueryParam("denominacao") String denominacao,  @ApiParam(value = "NCM do produto  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN'")  @QueryParam("ncm") String ncm,  @ApiParam(value = "Período do registro - Data inicial <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("periodoRegistroInicio") String periodoRegistroInicio,  @ApiParam(value = "Período do registro - Data final <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("periodoRegistroFim") String periodoRegistroFim,  @ApiParam(value = "Situação do produto (0 - Ativado, 1 - Desativado, 2 - Rascunho)  <br>Tamanho: 1 <br>Formato: 'N'")  @QueryParam("situacao") Integer situacao,  @ApiParam(value = "Período da última alteração - Data inicial <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("ultimaAlteracaoInicio") String ultimaAlteracaoInicio,  @ApiParam(value = "Período da última alteração - Data final <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("ultimaAlteracaoFim") String ultimaAlteracaoFim,  @ApiParam(value = "Código do país de origem no formato ISO 3166  <br>Tamanho: 2 <br>Formato: 'AA'")  @QueryParam("paisOrigem") String paisOrigem,  @ApiParam(value = "CPF/CNPJ do fabricante nacional  <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN' <br>Tamanho: 14 <br>Formato: 'NNNNNNNNNNNNNN'")  @QueryParam("cpfCnpjFabricante") String cpfCnpjFabricante,  @ApiParam(value = "Modalidade de operação   <br>Domínio: IMPORTACAO <br>EXPORTACAO <br>AMBOS", allowableValues="AMBOS, EXPORTACAO, IMPORTACAO")  @QueryParam("modalidade") String modalidade,  @ApiParam(value = "Produtos no estado atual da data de referência <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("dataReferencia") String dataReferencia,  @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador) <br>Tamanho: 35")  @QueryParam("operadorEstrangeiroCodigo") String operadorEstrangeiroCodigo);
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
+    public Response consultar(@NotNull @ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true)  @QueryParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Código do produto  <br>Tamanho: 10 <br>Formato: 'NNNNNNNNNN'")  @QueryParam("codigo") String codigo, @ApiParam(value = "Códigos internos do produto do Exportador/Importador  <br>Tamanho: 60")  @QueryParam("codigoInterno") String codigoInterno, @ApiParam(value = "Detalhamento complementar do produto <br>Tamanho: 3700")  @QueryParam("descricao") String descricao, @ApiParam(value = "Denominacao do produto  <br>Tamanho: 3700")  @QueryParam("denominacao") String denominacao, @ApiParam(value = "NCM do produto  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN'")  @QueryParam("ncm") String ncm, @ApiParam(value = "Período do registro - Data inicial <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("periodoRegistroInicio") String periodoRegistroInicio, @ApiParam(value = "Período do registro - Data final <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("periodoRegistroFim") String periodoRegistroFim, @ApiParam(value = "Situação do produto (0 - Ativado, 1 - Desativado, 2 - Rascunho)  <br>Tamanho: 1 <br>Formato: 'N'")  @QueryParam("situacao") Integer situacao, @ApiParam(value = "Período da última alteração - Data inicial <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("ultimaAlteracaoInicio") String ultimaAlteracaoInicio, @ApiParam(value = "Período da última alteração - Data final <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("ultimaAlteracaoFim") String ultimaAlteracaoFim, @ApiParam(value = "Código do país de origem no formato ISO 3166  <br>Tamanho: 2 <br>Formato: 'AA'")  @QueryParam("paisOrigem") String paisOrigem, @ApiParam(value = "CPF/CNPJ do fabricante nacional  <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN' <br>Tamanho: 14 <br>Formato: 'NNNNNNNNNNNNNN'")  @QueryParam("cpfCnpjFabricante") String cpfCnpjFabricante, @ApiParam(value = "Modalidade de operação   <br>Domínio: IMPORTACAO <br>EXPORTACAO <br>AMBOS", allowableValues="AMBOS, EXPORTACAO, IMPORTACAO")  @QueryParam("modalidade") String modalidade, @ApiParam(value = "Produtos no estado atual da data de referência <br>Tamanho: 10 <br>Formato: 'yyyy-MM-dd'")  @QueryParam("dataReferencia") String dataReferencia, @ApiParam(value = "TIN - Trade Identification Number (Número de Identificação do Operador) <br>Tamanho: 35")  @QueryParam("operadorEstrangeiroCodigo") String operadorEstrangeiroCodigo);
 
     /**
      * Exportar Catálogo de Produtos
@@ -59,13 +59,13 @@ public interface ProdutoApi  {
     @ApiOperation(value = "Exportar Catálogo de Produtos", notes = "", tags={ "Produto" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response downloadProdutos(@ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true) @PathParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "Exibir desativados",required=true) @PathParam("exibirDesativados") Boolean exibirDesativados, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -78,13 +78,13 @@ public interface ProdutoApi  {
     @ApiOperation(value = "Detalhar Versão do Produto", notes = "", tags={ "Produto" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProdutoIntegracaoDTO.class),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response recuperar(@ApiParam(value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos  <br>Tamanho: 8 <br>Formato: 'NNNNNNNN' <br>Tamanho: 11 <br>Formato: 'NNNNNNNNNNN'",required=true) @PathParam("cpfCnpjRaiz") String cpfCnpjRaiz, @ApiParam(value = "Código do produto <br>Tamanho: 10 <br>Formato: 'NNNNNNNNNN'",required=true) @PathParam("codigo") String codigo, @ApiParam(value = "Informar a versão do produto (exemplo: '1') ou uma versão retificada do produto (exemplo: '1.1').<br>Tamanho Máximo: 8 <br>",required=true) @PathParam("versao") String versao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -98,13 +98,13 @@ public interface ProdutoApi  {
     @ApiOperation(value = "Incluir/Retificar Produtos", notes = "", tags={ "Produto" })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = LoteValidacaoVersaoDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
         @ApiResponse(code = 400, message = "Requisição mal formatada"),
-        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-        @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-        @ApiResponse(code = 500, message = "Erro interno no servidor") })
+        @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+        @ApiResponse(code = 500, message = "Erro interno no servidor"),
+        @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+        @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+        @ApiResponse(code = 404, message = "Recurso não encontrado") })
     public Response salvarLote(@ApiParam(value = "Lista de Produtos" ,required=true)@Valid List<ProdutoIntegracaoDTO> body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

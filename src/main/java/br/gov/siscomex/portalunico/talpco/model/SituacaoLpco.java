@@ -96,7 +96,11 @@ public enum IdEnum {
 	
 	@XmlEnumValue("RECURSO_INDEFERIMENTO")
 	@JsonProperty("RECURSO_INDEFERIMENTO")
-	RECURSO_INDEFERIMENTO(String.valueOf("RECURSO_INDEFERIMENTO"));
+	RECURSO_INDEFERIMENTO(String.valueOf("RECURSO_INDEFERIMENTO")),
+	
+	@XmlEnumValue("RECURSO_DIVERSO")
+	@JsonProperty("RECURSO_DIVERSO")
+	RECURSO_DIVERSO(String.valueOf("RECURSO_DIVERSO"));
 
 
     private String value;
@@ -202,7 +206,11 @@ public enum DescricaoEnum {
 	
 	@XmlEnumValue("Recurso de indeferimento")
 	@JsonProperty("Recurso de indeferimento")
-	RECURSO_DE_INDEFERIMENTO(String.valueOf("Recurso de indeferimento"));
+	RECURSO_DE_INDEFERIMENTO(String.valueOf("Recurso de indeferimento")),
+	
+	@XmlEnumValue("Recursos diversos")
+	@JsonProperty("Recursos diversos")
+	RECURSOS_DIVERSOS(String.valueOf("Recursos diversos"));
 
 
     private String value;

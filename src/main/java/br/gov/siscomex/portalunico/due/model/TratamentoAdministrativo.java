@@ -29,7 +29,7 @@ public class TratamentoAdministrativo  {
 
   @XmlElement(name="impeditivoDeEmbarque")
   @ApiModelProperty(value = "")
-  private Boolean impeditivoDeEmbarque = false;
+  private Boolean impeditivoDeEmbarque = null;
 
   @XmlElement(name="mensagem")
   @ApiModelProperty(value = "Mensagem<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000")
@@ -128,7 +128,11 @@ public enum SituacaoEnum {
 	
 	@XmlEnumValue("RECURSO_INDEFERIMENTO")
 	@JsonProperty("RECURSO_INDEFERIMENTO")
-	RECURSO_INDEFERIMENTO(String.valueOf("RECURSO_INDEFERIMENTO"));
+	RECURSO_INDEFERIMENTO(String.valueOf("RECURSO_INDEFERIMENTO")),
+	
+	@XmlEnumValue("RECURSO_DIVERSO")
+	@JsonProperty("RECURSO_DIVERSO")
+	RECURSO_DIVERSO(String.valueOf("RECURSO_DIVERSO"));
 
 
     private String value;
