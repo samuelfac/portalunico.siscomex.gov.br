@@ -40,7 +40,7 @@ public class ItemDaNotaFiscalRemoteDTO  {
   @XmlElement(name="ncm")
   @ApiModelProperty(value = "")
   @Valid
-  private NCMDTO ncm = null;
+  private NcmDto ncm = null;
 
   @XmlElement(name="notaFiscal")
   @ApiModelProperty(value = "")
@@ -160,15 +160,15 @@ public class ItemDaNotaFiscalRemoteDTO  {
    * @return ncm
   **/
   @JsonProperty("ncm")
-  public NCMDTO getNcm() {
+  public NcmDto getNcm() {
     return ncm;
   }
 
-  public void setNcm(NCMDTO ncm) {
+    public void setNcm(NcmDto ncm) {
     this.ncm = ncm;
   }
 
-  public ItemDaNotaFiscalRemoteDTO ncm(NCMDTO ncm) {
+    public ItemDaNotaFiscalRemoteDTO ncm(NcmDto ncm) {
     this.ncm = ncm;
     return this;
   }

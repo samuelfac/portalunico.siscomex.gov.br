@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "AtributoDTO", propOrder =
+@XmlType(name = "AtributoDto", propOrder =
     { "codigo", "conteudo", "descricao"
 })
 
-@XmlRootElement(name="AtributoDTO")
-public class AtributoDTO  {
+@XmlRootElement(name = "AtributoDto")
+public class AtributoDto {
   
   @XmlElement(name="codigo")
   @ApiModelProperty(value = "Código<br />Tamanho mínimo: 0<br />Tamanho máximo: 19")
@@ -50,7 +50,7 @@ public class AtributoDTO  {
     this.codigo = codigo;
   }
 
-  public AtributoDTO codigo(String codigo) {
+    public AtributoDto codigo(String codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -68,7 +68,7 @@ public class AtributoDTO  {
     this.conteudo = conteudo;
   }
 
-  public AtributoDTO conteudo(String conteudo) {
+    public AtributoDto conteudo(String conteudo) {
     this.conteudo = conteudo;
     return this;
   }
@@ -86,7 +86,7 @@ public class AtributoDTO  {
     this.descricao = descricao;
   }
 
-  public AtributoDTO descricao(String descricao) {
+    public AtributoDto descricao(String descricao) {
     this.descricao = descricao;
     return this;
   }
@@ -95,7 +95,7 @@ public class AtributoDTO  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AtributoDTO {\n");
+      sb.append("class AtributoDto {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    conteudo: ").append(toIndentedString(conteudo)).append("\n");

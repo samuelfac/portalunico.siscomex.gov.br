@@ -31,12 +31,12 @@ public class ItemDUERemoteDTO  {
   @XmlElement(name="atributos")
   @ApiModelProperty(value = "")
   @Valid
-  private List<AtributoDTO> atributos = null;
+  private List<AtributoDto> atributos = null;
 
   @XmlElement(name="calculoTributario")
   @ApiModelProperty(value = "")
   @Valid
-  private CalculoTributarioDTO calculoTributario = null;
+  private CalculoTributarioDto calculoTributario = null;
 
   @XmlElement(name="codigoCondicaoVenda")
   @ApiModelProperty(value = "")
@@ -114,7 +114,7 @@ public class ItemDUERemoteDTO  {
   @XmlElement(name="listaPaisDestino")
   @ApiModelProperty(value = "")
   @Valid
-  private List<PaisDTO> listaPaisDestino = null;
+  private List<PaisDto> listaPaisDestino = null;
 
   @XmlElement(name="motivoDoTratamentoPrioritario")
   @ApiModelProperty(value = "Motivo do Tratamento prioritário<br />Domínio: <br />1 = Carga viva<br />2 = Carga perecível<br />3 = Carga perigosa<br />4 = Urna funerária<br />5 = Órgãos humano<br />6 = Partes/peças de aeronave")
@@ -126,7 +126,7 @@ public class ItemDUERemoteDTO  {
   @XmlElement(name="ncm")
   @ApiModelProperty(value = "")
   @Valid
-  private NCMDTO ncm = null;
+  private NcmDto ncm = null;
 
   @XmlElement(name="nomeImportador")
   @ApiModelProperty(value = "Nome do importador<br />Tamanho mínimo: 0<br />Tamanho máximo: 60")
@@ -253,20 +253,20 @@ public class ItemDUERemoteDTO  {
    * @return atributos
   **/
   @JsonProperty("atributos")
-  public List<AtributoDTO> getAtributos() {
+  public List<AtributoDto> getAtributos() {
     return atributos;
   }
 
-  public void setAtributos(List<AtributoDTO> atributos) {
+    public void setAtributos(List<AtributoDto> atributos) {
     this.atributos = atributos;
   }
 
-  public ItemDUERemoteDTO atributos(List<AtributoDTO> atributos) {
+    public ItemDUERemoteDTO atributos(List<AtributoDto> atributos) {
     this.atributos = atributos;
     return this;
   }
 
-  public ItemDUERemoteDTO addAtributosItem(AtributoDTO atributosItem) {
+    public ItemDUERemoteDTO addAtributosItem(AtributoDto atributosItem) {
     this.atributos.add(atributosItem);
     return this;
   }
@@ -276,15 +276,15 @@ public class ItemDUERemoteDTO  {
    * @return calculoTributario
   **/
   @JsonProperty("calculoTributario")
-  public CalculoTributarioDTO getCalculoTributario() {
+  public CalculoTributarioDto getCalculoTributario() {
     return calculoTributario;
   }
 
-  public void setCalculoTributario(CalculoTributarioDTO calculoTributario) {
+    public void setCalculoTributario(CalculoTributarioDto calculoTributario) {
     this.calculoTributario = calculoTributario;
   }
 
-  public ItemDUERemoteDTO calculoTributario(CalculoTributarioDTO calculoTributario) {
+    public ItemDUERemoteDTO calculoTributario(CalculoTributarioDto calculoTributario) {
     this.calculoTributario = calculoTributario;
     return this;
   }
@@ -553,20 +553,20 @@ public class ItemDUERemoteDTO  {
    * @return listaPaisDestino
   **/
   @JsonProperty("listaPaisDestino")
-  public List<PaisDTO> getListaPaisDestino() {
+  public List<PaisDto> getListaPaisDestino() {
     return listaPaisDestino;
   }
 
-  public void setListaPaisDestino(List<PaisDTO> listaPaisDestino) {
+    public void setListaPaisDestino(List<PaisDto> listaPaisDestino) {
     this.listaPaisDestino = listaPaisDestino;
   }
 
-  public ItemDUERemoteDTO listaPaisDestino(List<PaisDTO> listaPaisDestino) {
+    public ItemDUERemoteDTO listaPaisDestino(List<PaisDto> listaPaisDestino) {
     this.listaPaisDestino = listaPaisDestino;
     return this;
   }
 
-  public ItemDUERemoteDTO addListaPaisDestinoItem(PaisDTO listaPaisDestinoItem) {
+    public ItemDUERemoteDTO addListaPaisDestinoItem(PaisDto listaPaisDestinoItem) {
     this.listaPaisDestino.add(listaPaisDestinoItem);
     return this;
   }
@@ -594,15 +594,15 @@ public class ItemDUERemoteDTO  {
    * @return ncm
   **/
   @JsonProperty("ncm")
-  public NCMDTO getNcm() {
+  public NcmDto getNcm() {
     return ncm;
   }
 
-  public void setNcm(NCMDTO ncm) {
+    public void setNcm(NcmDto ncm) {
     this.ncm = ncm;
   }
 
-  public ItemDUERemoteDTO ncm(NCMDTO ncm) {
+    public ItemDUERemoteDTO ncm(NcmDto ncm) {
     this.ncm = ncm;
     return this;
   }

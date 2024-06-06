@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "PaisDTO", propOrder =
+@XmlType(name = "PaisDto", propOrder =
     { "codigo", "nome", "nomeResumido"
 })
 
-@XmlRootElement(name="PaisDTO")
-public class PaisDTO  {
+@XmlRootElement(name = "PaisDto")
+public class PaisDto {
   
   @XmlElement(name="codigo")
   @ApiModelProperty(value = "Código<br />Formato: Inteiro, com até 3 digitos")
@@ -50,7 +50,7 @@ public class PaisDTO  {
     this.codigo = codigo;
   }
 
-  public PaisDTO codigo(Long codigo) {
+    public PaisDto codigo(Long codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -68,7 +68,7 @@ public class PaisDTO  {
     this.nome = nome;
   }
 
-  public PaisDTO nome(String nome) {
+    public PaisDto nome(String nome) {
     this.nome = nome;
     return this;
   }
@@ -86,7 +86,7 @@ public class PaisDTO  {
     this.nomeResumido = nomeResumido;
   }
 
-  public PaisDTO nomeResumido(String nomeResumido) {
+    public PaisDto nomeResumido(String nomeResumido) {
     this.nomeResumido = nomeResumido;
     return this;
   }
@@ -95,7 +95,7 @@ public class PaisDTO  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaisDTO {\n");
+      sb.append("class PaisDto {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");

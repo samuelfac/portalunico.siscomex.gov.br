@@ -47,7 +47,7 @@ public interface ServiosDeEnvioDeArquivosApi  {
         @ApiResponse(code = 404, message = "Recurso não encontrado"),
         @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
         @ApiResponse(code = 500, message = "Erro interno no servidor") })
-    public Response doPostUsingPOST(@ApiParam(value = "" ,required=true)@Valid String body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação" ,required=true)@HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação" ,required=true)@HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "CNPJ da Companhia Aérea  Tamanho: 14  Formato: NNNNNNNNNNNNNN",required=true)  @QueryParam("cnpj") String cnpj);
+    Response doPostUsingPOST(@ApiParam(value = "", required = true) @Valid String body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "CNPJ da Companhia Aérea  Tamanho: 14  Formato: NNNNNNNNNNNNNN", required = true) @QueryParam("cnpj") String cnpj);
 
     /**
      * Informar Associação Master e House - XFHL (House Manifest)

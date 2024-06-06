@@ -27,9 +27,9 @@ import java.util.List;
 public class OperadorEstrangeiroIntegracaoDTO  {
   
   @XmlElement(name="seq", required = true)
-  @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial <br>Tamanho máximo: 3<br>Formato: Inteiro, com até 3 digitos")
+  @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. <br>Tamanho máximo: 3. <br> Importante: A lista enviada deve conter, no máximo, 100 elementos.")
  /**
-   * Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial <br>Tamanho máximo: 3<br>Formato: Inteiro, com até 3 digitos
+  * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. <br>Tamanho máximo: 3. <br> Importante: A lista enviada deve conter, no máximo, 100 elementos.
   **/
   private Integer seq = null;
 
@@ -139,7 +139,7 @@ public class OperadorEstrangeiroIntegracaoDTO  {
   **/
   private List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais = null;
  /**
-   * Número sequencial utilizado para identificar o Operador Estrangeiro na lista, o retorno da validação se dará através deste sequencial &lt;br&gt;Tamanho máximo: 3&lt;br&gt;Formato: Inteiro, com até 3 digitos
+  * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. &lt;br&gt;Tamanho máximo: 3. &lt;br&gt; Importante: A lista enviada deve conter, no máximo, 100 elementos.
    * @return seq
   **/
   @JsonProperty("seq")

@@ -12,12 +12,12 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "CalculoTributarioDTO", propOrder =
+@XmlType(name = "CalculoTributarioDto", propOrder =
     { "quadroDeCalculos", "tratamentosTributarios"
 })
 
-@XmlRootElement(name="CalculoTributarioDTO")
-public class CalculoTributarioDTO  {
+@XmlRootElement(name = "CalculoTributarioDto")
+public class CalculoTributarioDto {
   
   @XmlElement(name="quadroDeCalculos")
   @ApiModelProperty(value = "")
@@ -27,7 +27,7 @@ public class CalculoTributarioDTO  {
   @XmlElement(name="tratamentosTributarios")
   @ApiModelProperty(value = "")
   @Valid
-  private List<TratamentoTributarioDTO> tratamentosTributarios = null;
+  private List<TratamentoTributarioDto> tratamentosTributarios = null;
  /**
    * Get quadroDeCalculos
    * @return quadroDeCalculos
@@ -41,12 +41,12 @@ public class CalculoTributarioDTO  {
     this.quadroDeCalculos = quadroDeCalculos;
   }
 
-  public CalculoTributarioDTO quadroDeCalculos(List<QuadroCalculoDto> quadroDeCalculos) {
+    public CalculoTributarioDto quadroDeCalculos(List<QuadroCalculoDto> quadroDeCalculos) {
     this.quadroDeCalculos = quadroDeCalculos;
     return this;
   }
 
-  public CalculoTributarioDTO addQuadroDeCalculosItem(QuadroCalculoDto quadroDeCalculosItem) {
+    public CalculoTributarioDto addQuadroDeCalculosItem(QuadroCalculoDto quadroDeCalculosItem) {
     this.quadroDeCalculos.add(quadroDeCalculosItem);
     return this;
   }
@@ -56,20 +56,20 @@ public class CalculoTributarioDTO  {
    * @return tratamentosTributarios
   **/
   @JsonProperty("tratamentosTributarios")
-  public List<TratamentoTributarioDTO> getTratamentosTributarios() {
+  public List<TratamentoTributarioDto> getTratamentosTributarios() {
     return tratamentosTributarios;
   }
 
-  public void setTratamentosTributarios(List<TratamentoTributarioDTO> tratamentosTributarios) {
+    public void setTratamentosTributarios(List<TratamentoTributarioDto> tratamentosTributarios) {
     this.tratamentosTributarios = tratamentosTributarios;
   }
 
-  public CalculoTributarioDTO tratamentosTributarios(List<TratamentoTributarioDTO> tratamentosTributarios) {
+    public CalculoTributarioDto tratamentosTributarios(List<TratamentoTributarioDto> tratamentosTributarios) {
     this.tratamentosTributarios = tratamentosTributarios;
     return this;
   }
 
-  public CalculoTributarioDTO addTratamentosTributariosItem(TratamentoTributarioDTO tratamentosTributariosItem) {
+    public CalculoTributarioDto addTratamentosTributariosItem(TratamentoTributarioDto tratamentosTributariosItem) {
     this.tratamentosTributarios.add(tratamentosTributariosItem);
     return this;
   }
@@ -78,7 +78,7 @@ public class CalculoTributarioDTO  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CalculoTributarioDTO {\n");
+      sb.append("class CalculoTributarioDto {\n");
     
     sb.append("    quadroDeCalculos: ").append(toIndentedString(quadroDeCalculos)).append("\n");
     sb.append("    tratamentosTributarios: ").append(toIndentedString(tratamentosTributarios)).append("\n");

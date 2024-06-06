@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "RecintoAduaneiroDTO", propOrder =
+@XmlType(name = "RecintoAduaneiroDto", propOrder =
     { "codigo", "cooordenada", "descricao", "unidadeLocalRFB", "zona"
 })
 
-@XmlRootElement(name="RecintoAduaneiroDTO")
-public class RecintoAduaneiroDTO  {
+@XmlRootElement(name = "RecintoAduaneiroDto")
+public class RecintoAduaneiroDto {
   
   @XmlElement(name="codigo")
   @ApiModelProperty(example = "8911101", value = "Código<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
@@ -28,7 +28,7 @@ public class RecintoAduaneiroDTO  {
   @XmlElement(name="cooordenada")
   @ApiModelProperty(value = "")
   @Valid
-  private  CoordenadaGeograficaDTO cooordenada = null;
+  private CoordenadaGeograficaDto cooordenada = null;
 
   @XmlElement(name="descricao")
   @ApiModelProperty(value = "Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
@@ -61,7 +61,7 @@ public class RecintoAduaneiroDTO  {
     this.codigo = codigo;
   }
 
-  public RecintoAduaneiroDTO codigo(String codigo) {
+    public RecintoAduaneiroDto codigo(String codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -71,15 +71,15 @@ public class RecintoAduaneiroDTO  {
    * @return cooordenada
   **/
   @JsonProperty("cooordenada")
-  public  CoordenadaGeograficaDTO getCooordenada() {
+  public CoordenadaGeograficaDto getCooordenada() {
     return cooordenada;
   }
 
-  public void setCooordenada( CoordenadaGeograficaDTO cooordenada) {
+    public void setCooordenada(CoordenadaGeograficaDto cooordenada) {
     this.cooordenada = cooordenada;
   }
 
-  public RecintoAduaneiroDTO cooordenada( CoordenadaGeograficaDTO cooordenada) {
+    public RecintoAduaneiroDto cooordenada(CoordenadaGeograficaDto cooordenada) {
     this.cooordenada = cooordenada;
     return this;
   }
@@ -97,7 +97,7 @@ public class RecintoAduaneiroDTO  {
     this.descricao = descricao;
   }
 
-  public RecintoAduaneiroDTO descricao(String descricao) {
+    public RecintoAduaneiroDto descricao(String descricao) {
     this.descricao = descricao;
     return this;
   }
@@ -115,7 +115,7 @@ public class RecintoAduaneiroDTO  {
     this.unidadeLocalRFB = unidadeLocalRFB;
   }
 
-  public RecintoAduaneiroDTO unidadeLocalRFB(UnidadeLocalRFBDto unidadeLocalRFB) {
+    public RecintoAduaneiroDto unidadeLocalRFB(UnidadeLocalRFBDto unidadeLocalRFB) {
     this.unidadeLocalRFB = unidadeLocalRFB;
     return this;
   }
@@ -133,7 +133,7 @@ public class RecintoAduaneiroDTO  {
     this.zona = zona;
   }
 
-  public RecintoAduaneiroDTO zona(String zona) {
+    public RecintoAduaneiroDto zona(String zona) {
     this.zona = zona;
     return this;
   }
@@ -142,7 +142,7 @@ public class RecintoAduaneiroDTO  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecintoAduaneiroDTO {\n");
+      sb.append("class RecintoAduaneiroDto {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    cooordenada: ").append(toIndentedString(cooordenada)).append("\n");

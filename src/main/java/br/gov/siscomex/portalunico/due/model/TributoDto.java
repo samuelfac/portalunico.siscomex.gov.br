@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "TributoDTO", propOrder =
+@XmlType(name = "TributoDto", propOrder =
     { "codigo", "nome"
 })
 
-@XmlRootElement(name="TributoDTO")
-public class TributoDTO  {
+@XmlRootElement(name = "TributoDto")
+public class TributoDto {
   
   @XmlElement(name="codigo")
   @ApiModelProperty(value = "Código<br />Formato: Inteiro, com até 17 digitos")
@@ -43,7 +43,7 @@ public class TributoDTO  {
     this.codigo = codigo;
   }
 
-  public TributoDTO codigo(Long codigo) {
+    public TributoDto codigo(Long codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -61,7 +61,7 @@ public class TributoDTO  {
     this.nome = nome;
   }
 
-  public TributoDTO nome(String nome) {
+    public TributoDto nome(String nome) {
     this.nome = nome;
     return this;
   }
@@ -70,7 +70,7 @@ public class TributoDTO  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TributoDTO {\n");
+      sb.append("class TributoDto {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    nome: ").append(toIndentedString(nome)).append("\n");

@@ -283,7 +283,7 @@ public enum FormaDeExportacaoEnum {
   @XmlElement(name="moeda")
   @ApiModelProperty(value = "")
   @Valid
-  private MoedaDTO moeda = null;
+  private MoedaDto moeda = null;
 
   @XmlElement(name="motivoDeDispensaDaNotaFiscal")
   @ApiModelProperty(value = "")
@@ -304,17 +304,17 @@ public enum FormaDeExportacaoEnum {
   @XmlElement(name="paisImportador")
   @ApiModelProperty(value = "")
   @Valid
-  private PaisDTO paisImportador = null;
+  private PaisDto paisImportador = null;
 
   @XmlElement(name="recintoAduaneiroDeDespacho")
   @ApiModelProperty(value = "")
   @Valid
-  private RecintoAduaneiroDTO recintoAduaneiroDeDespacho = null;
+  private RecintoAduaneiroDto recintoAduaneiroDeDespacho = null;
 
   @XmlElement(name="recintoAduaneiroDeEmbarque")
   @ApiModelProperty(value = "")
   @Valid
-  private RecintoAduaneiroDTO recintoAduaneiroDeEmbarque = null;
+  private RecintoAduaneiroDto recintoAduaneiroDeEmbarque = null;
 
   @XmlElement(name="referenciaDoEnderecoDoLocalDeDespacho")
   @ApiModelProperty(value = "Referência do endereço do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
@@ -1265,15 +1265,15 @@ public enum TipoEnum {
    * @return moeda
   **/
   @JsonProperty("moeda")
-  public MoedaDTO getMoeda() {
+  public MoedaDto getMoeda() {
     return moeda;
   }
 
-  public void setMoeda(MoedaDTO moeda) {
+    public void setMoeda(MoedaDto moeda) {
     this.moeda = moeda;
   }
 
-  public DUE moeda(MoedaDTO moeda) {
+    public DUE moeda(MoedaDto moeda) {
     this.moeda = moeda;
     return this;
   }
@@ -1337,15 +1337,15 @@ public enum TipoEnum {
    * @return paisImportador
   **/
   @JsonProperty("paisImportador")
-  public PaisDTO getPaisImportador() {
+  public PaisDto getPaisImportador() {
     return paisImportador;
   }
 
-  public void setPaisImportador(PaisDTO paisImportador) {
+    public void setPaisImportador(PaisDto paisImportador) {
     this.paisImportador = paisImportador;
   }
 
-  public DUE paisImportador(PaisDTO paisImportador) {
+    public DUE paisImportador(PaisDto paisImportador) {
     this.paisImportador = paisImportador;
     return this;
   }
@@ -1355,15 +1355,15 @@ public enum TipoEnum {
    * @return recintoAduaneiroDeDespacho
   **/
   @JsonProperty("recintoAduaneiroDeDespacho")
-  public RecintoAduaneiroDTO getRecintoAduaneiroDeDespacho() {
+  public RecintoAduaneiroDto getRecintoAduaneiroDeDespacho() {
     return recintoAduaneiroDeDespacho;
   }
 
-  public void setRecintoAduaneiroDeDespacho(RecintoAduaneiroDTO recintoAduaneiroDeDespacho) {
+    public void setRecintoAduaneiroDeDespacho(RecintoAduaneiroDto recintoAduaneiroDeDespacho) {
     this.recintoAduaneiroDeDespacho = recintoAduaneiroDeDespacho;
   }
 
-  public DUE recintoAduaneiroDeDespacho(RecintoAduaneiroDTO recintoAduaneiroDeDespacho) {
+    public DUE recintoAduaneiroDeDespacho(RecintoAduaneiroDto recintoAduaneiroDeDespacho) {
     this.recintoAduaneiroDeDespacho = recintoAduaneiroDeDespacho;
     return this;
   }
@@ -1373,15 +1373,15 @@ public enum TipoEnum {
    * @return recintoAduaneiroDeEmbarque
   **/
   @JsonProperty("recintoAduaneiroDeEmbarque")
-  public RecintoAduaneiroDTO getRecintoAduaneiroDeEmbarque() {
+  public RecintoAduaneiroDto getRecintoAduaneiroDeEmbarque() {
     return recintoAduaneiroDeEmbarque;
   }
 
-  public void setRecintoAduaneiroDeEmbarque(RecintoAduaneiroDTO recintoAduaneiroDeEmbarque) {
+    public void setRecintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
     this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
   }
 
-  public DUE recintoAduaneiroDeEmbarque(RecintoAduaneiroDTO recintoAduaneiroDeEmbarque) {
+    public DUE recintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
     this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
     return this;
   }

@@ -10,12 +10,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "MoedaDTO", propOrder =
+@XmlType(name = "MoedaDto", propOrder =
     { "codigo", "descricao"
 })
 
-@XmlRootElement(name="MoedaDTO")
-public class MoedaDTO  {
+@XmlRootElement(name = "MoedaDto")
+public class MoedaDto {
   
   @XmlElement(name="codigo")
   @ApiModelProperty(value = "Código<br />Formato: Inteiro, com até 3 digitos")
@@ -43,7 +43,7 @@ public class MoedaDTO  {
     this.codigo = codigo;
   }
 
-  public MoedaDTO codigo(Integer codigo) {
+    public MoedaDto codigo(Integer codigo) {
     this.codigo = codigo;
     return this;
   }
@@ -61,7 +61,7 @@ public class MoedaDTO  {
     this.descricao = descricao;
   }
 
-  public MoedaDTO descricao(String descricao) {
+    public MoedaDto descricao(String descricao) {
     this.descricao = descricao;
     return this;
   }
@@ -70,7 +70,7 @@ public class MoedaDTO  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MoedaDTO {\n");
+      sb.append("class MoedaDto {\n");
     
     sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
     sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
