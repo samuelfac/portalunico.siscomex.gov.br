@@ -27,7 +27,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface ExignciasDeLpcosApi  {
+public interface ExignciasDeLpcOsApi {
 
     /**
      * Cancelar uma exigência de LPCO.

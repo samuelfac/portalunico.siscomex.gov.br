@@ -38,7 +38,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface CadastroEdioEConsultasDeLpcosApi  {
+public interface CadastroEdioEConsultasDeLpcOsApi {
 
     /**
      * Alterar um pedido de LPCO.

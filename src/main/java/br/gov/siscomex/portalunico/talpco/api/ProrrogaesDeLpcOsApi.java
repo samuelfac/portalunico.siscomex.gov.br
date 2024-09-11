@@ -29,7 +29,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface ProrrogaesDeLpcosApi  {
+public interface ProrrogaesDeLpcOsApi {
 
     /**
      * Aceitar solicitação de prorrogação de LPCO.

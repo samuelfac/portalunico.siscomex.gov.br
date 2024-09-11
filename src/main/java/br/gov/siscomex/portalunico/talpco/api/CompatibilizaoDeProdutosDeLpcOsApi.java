@@ -30,7 +30,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface CompatibilizaoDeProdutosDeLpcosApi  {
+public interface CompatibilizaoDeProdutosDeLpcOsApi {
 
     /**
      * Aceitar solicitação de compatibilização de LPCO.

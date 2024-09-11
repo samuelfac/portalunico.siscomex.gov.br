@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface AgrupamentoDeLpcosComLiVinculadaApi  {
+public interface AgrupamentoDeLpcOsComLiVinculadaApi {
 
     /**
      * Altera os LPCOs que fazer parte de um agrupamento.

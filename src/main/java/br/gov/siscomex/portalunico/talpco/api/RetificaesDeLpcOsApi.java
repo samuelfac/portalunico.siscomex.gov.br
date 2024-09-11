@@ -32,7 +32,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface RetificaesDeLpcosApi  {
+public interface RetificaesDeLpcOsApi {
 
     /**
      * Aceitar solicitação de retificação de LPCO.

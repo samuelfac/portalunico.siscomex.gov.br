@@ -25,7 +25,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("/")
 @Api(value = "/", description = "")
-public interface ModelosETemplatesDeLpcosApi  {
+public interface ModelosETemplatesDeLpcOsApi {
 
     /**
      * Consultar lista de modelos de LPCO de um órgão anuente.
