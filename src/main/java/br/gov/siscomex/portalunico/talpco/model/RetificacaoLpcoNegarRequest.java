@@ -11,113 +11,116 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "RetificacaoLpcoNegarRequest", propOrder =
-    { "justificativa", "faltaPagamentoTaxa", "motivoAnalise"
-})
+@XmlType(name = "RetificacaoLpcoNegarRequest", propOrder =
+        {"justificativa", "faltaPagamentoTaxa", "motivoAnalise"
+        })
 
-@XmlRootElement(name="RetificacaoLpcoNegarRequest")
+@XmlRootElement(name = "RetificacaoLpcoNegarRequest")
 /**
-  * Dados para negar uma solicitação de retificação de um LPCO
+ * Dados para negar uma solicitação de retificação de um LPCO
  **/
-@ApiModel(description="Dados para negar uma solicitação de retificação de um LPCO")
-public class RetificacaoLpcoNegarRequest  {
-  
-  @XmlElement(name="justificativa")
-  @ApiModelProperty(example = "Texto livre", value = "Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900")
- /**
-   * Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900
-  **/
-  private String justificativa = null;
+@ApiModel(description = "Dados para negar uma solicitação de retificação de um LPCO")
+public class RetificacaoLpcoNegarRequest {
 
-  @XmlElement(name="faltaPagamentoTaxa")
-  @ApiModelProperty(example = "false", value = "Indica se o pagamento de taxa não efetuado")
- /**
-   * Indica se o pagamento de taxa não efetuado
-  **/
-  private Boolean faltaPagamentoTaxa = null;
+    @XmlElement(name = "justificativa")
+    @ApiModelProperty(example = "Texto livre", value = "Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900")
+    /**
+     * Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900
+     **/
+    private String justificativa = null;
 
-  @XmlElement(name="motivoAnalise")
-  @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
- /**
-   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
-  **/
-  private String motivoAnalise = null;
- /**
-   * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
-   * @return justificativa
-  **/
-  @JsonProperty("justificativa")
-  public String getJustificativa() {
-    return justificativa;
-  }
+    @XmlElement(name = "faltaPagamentoTaxa")
+    @ApiModelProperty(example = "false", value = "Indica se o pagamento de taxa não efetuado")
+    /**
+     * Indica se o pagamento de taxa não efetuado
+     **/
+    private Boolean faltaPagamentoTaxa = null;
 
-  public void setJustificativa(String justificativa) {
-    this.justificativa = justificativa;
-  }
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+     **/
+    private String motivoAnalise = null;
 
-  public RetificacaoLpcoNegarRequest justificativa(String justificativa) {
-    this.justificativa = justificativa;
-    return this;
-  }
-
- /**
-   * Indica se o pagamento de taxa não efetuado
-   * @return faltaPagamentoTaxa
-  **/
-  @JsonProperty("faltaPagamentoTaxa")
-  public Boolean isFaltaPagamentoTaxa() {
-    return faltaPagamentoTaxa;
-  }
-
-  public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
-    this.faltaPagamentoTaxa = faltaPagamentoTaxa;
-  }
-
-  public RetificacaoLpcoNegarRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
-    this.faltaPagamentoTaxa = faltaPagamentoTaxa;
-    return this;
-  }
-
- /**
-   * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
-   * @return motivoAnalise
-  **/
-  @JsonProperty("motivoAnalise")
-  public String getMotivoAnalise() {
-    return motivoAnalise;
-  }
-
-  public void setMotivoAnalise(String motivoAnalise) {
-    this.motivoAnalise = motivoAnalise;
-  }
-
-  public RetificacaoLpcoNegarRequest motivoAnalise(String motivoAnalise) {
-    this.motivoAnalise = motivoAnalise;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RetificacaoLpcoNegarRequest {\n");
-    
-    sb.append("    justificativa: ").append(toIndentedString(justificativa)).append("\n");
-    sb.append("    faltaPagamentoTaxa: ").append(toIndentedString(faltaPagamentoTaxa)).append("\n");
-    sb.append("    motivoAnalise: ").append(toIndentedString(motivoAnalise)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
+     *
+     * @return justificativa
+     **/
+    @JsonProperty("justificativa")
+    public String getJustificativa() {
+        return justificativa;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
+    public RetificacaoLpcoNegarRequest justificativa(String justificativa) {
+        this.justificativa = justificativa;
+        return this;
+    }
+
+    /**
+     * Indica se o pagamento de taxa não efetuado
+     *
+     * @return faltaPagamentoTaxa
+     **/
+    @JsonProperty("faltaPagamentoTaxa")
+    public Boolean isFaltaPagamentoTaxa() {
+        return faltaPagamentoTaxa;
+    }
+
+    public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+    }
+
+    public RetificacaoLpcoNegarRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+        return this;
+    }
+
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+     *
+     * @return motivoAnalise
+     **/
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
+    }
+
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+    }
+
+    public RetificacaoLpcoNegarRequest motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class RetificacaoLpcoNegarRequest {\n" +
+                "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

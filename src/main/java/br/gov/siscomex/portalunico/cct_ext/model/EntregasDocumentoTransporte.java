@@ -15,68 +15,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "EntregasDocumentoTransporte", propOrder =
-    { "entregaDocumentoTransporte"
-})
+@XmlType(name = "EntregasDocumentoTransporte", propOrder =
+        {"entregaDocumentoTransporte"
+        })
 
-@XmlRootElement(name="EntregasDocumentoTransporte")
+@XmlRootElement(name = "EntregasDocumentoTransporte")
 /**
-  * Entregas por Documentos de Transporte<br>Máximo de ocorrências: 1
+ * Entregas por Documentos de Transporte<br>Máximo de ocorrências: 1
  **/
-@ApiModel(description="Entregas por Documentos de Transporte<br>Máximo de ocorrências: 1")
-public class EntregasDocumentoTransporte  {
-  
-  @XmlElement(name="entregaDocumentoTransporte", required = true)
-  @ApiModelProperty(required = true, value = "Entregas por Documentos de Transporte")
-  @Valid
- /**
-   * Entregas por Documentos de Transporte
-  **/
-  private List<EntregaDocumentoTransporte> entregaDocumentoTransporte = new ArrayList<>();
- /**
-   * Entregas por Documentos de Transporte
-   * @return entregaDocumentoTransporte
-  **/
-  @JsonProperty("entregaDocumentoTransporte")
-  @NotNull
-  public List<EntregaDocumentoTransporte> getEntregaDocumentoTransporte() {
-    return entregaDocumentoTransporte;
-  }
+@ApiModel(description = "Entregas por Documentos de Transporte<br>Máximo de ocorrências: 1")
+public class EntregasDocumentoTransporte {
 
-  public void setEntregaDocumentoTransporte(List<EntregaDocumentoTransporte> entregaDocumentoTransporte) {
-    this.entregaDocumentoTransporte = entregaDocumentoTransporte;
-  }
+    @XmlElement(name = "entregaDocumentoTransporte", required = true)
+    @ApiModelProperty(required = true, value = "Entregas por Documentos de Transporte")
+    @Valid
+    /**
+     * Entregas por Documentos de Transporte
+     **/
+    private List<EntregaDocumentoTransporte> entregaDocumentoTransporte = new ArrayList<>();
 
-  public EntregasDocumentoTransporte entregaDocumentoTransporte(List<EntregaDocumentoTransporte> entregaDocumentoTransporte) {
-    this.entregaDocumentoTransporte = entregaDocumentoTransporte;
-    return this;
-  }
-
-  public EntregasDocumentoTransporte addEntregaDocumentoTransporteItem(EntregaDocumentoTransporte entregaDocumentoTransporteItem) {
-    this.entregaDocumentoTransporte.add(entregaDocumentoTransporteItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class EntregasDocumentoTransporte {\n");
-    
-    sb.append("    entregaDocumentoTransporte: ").append(toIndentedString(entregaDocumentoTransporte)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Entregas por Documentos de Transporte
+     *
+     * @return entregaDocumentoTransporte
+     **/
+    @JsonProperty("entregaDocumentoTransporte")
+    @NotNull
+    public List<EntregaDocumentoTransporte> getEntregaDocumentoTransporte() {
+        return entregaDocumentoTransporte;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setEntregaDocumentoTransporte(List<EntregaDocumentoTransporte> entregaDocumentoTransporte) {
+        this.entregaDocumentoTransporte = entregaDocumentoTransporte;
+    }
+
+    public EntregasDocumentoTransporte entregaDocumentoTransporte(List<EntregaDocumentoTransporte> entregaDocumentoTransporte) {
+        this.entregaDocumentoTransporte = entregaDocumentoTransporte;
+        return this;
+    }
+
+    public EntregasDocumentoTransporte addEntregaDocumentoTransporteItem(EntregaDocumentoTransporte entregaDocumentoTransporteItem) {
+        this.entregaDocumentoTransporte.add(entregaDocumentoTransporteItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class EntregasDocumentoTransporte {\n" +
+                "    entregaDocumentoTransporte: " + toIndentedString(entregaDocumentoTransporte) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

@@ -14,134 +14,136 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "CaracterizacaoImportacaoConsultaItemCover", propOrder =
-    { "indicador", "ni"
-})
+@XmlType(name = "CaracterizacaoImportacaoConsultaItemCover", propOrder =
+        {"indicador", "ni"
+        })
 
-@XmlRootElement(name="CaracterizacaoImportacaoConsultaItemCover")
+@XmlRootElement(name = "CaracterizacaoImportacaoConsultaItemCover")
 /**
-  * Caracterização da Importação.
+ * Caracterização da Importação.
  **/
-@ApiModel(description="Caracterização da Importação.")
-public class CaracterizacaoImportacaoConsultaItemCover  {
-  
-
-@XmlType(name="IndicadorEnum")
-@XmlEnum(String.class)
-public enum IndicadorEnum {
-
-	@XmlEnumValue("IMPORTACAO_DIRETA")
-	@JsonProperty("IMPORTACAO_DIRETA")
-	DIRETA(String.valueOf("IMPORTACAO_DIRETA")),
-	
-	@XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
-	@JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
-	POR_CONTA_E_ORDEM(String.valueOf("IMPORTACAO_POR_CONTA_E_ORDEM")),
-	
-	@XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
-	@JsonProperty("IMPORTACAO_POR_ENCOMENDA")
-	POR_ENCOMENDA(String.valueOf("IMPORTACAO_POR_ENCOMENDA"));
+@ApiModel(description = "Caracterização da Importação.")
+public class CaracterizacaoImportacaoConsultaItemCover {
 
 
-    private String value;
+    @XmlType(name = "IndicadorEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorEnum {
 
-    IndicadorEnum (String v) {
-        value = v;
+        @XmlEnumValue("IMPORTACAO_DIRETA")
+        @JsonProperty("IMPORTACAO_DIRETA")
+        DIRETA("IMPORTACAO_DIRETA"),
+
+        @XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
+        @JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
+        POR_CONTA_E_ORDEM("IMPORTACAO_POR_CONTA_E_ORDEM"),
+
+        @XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
+        @JsonProperty("IMPORTACAO_POR_ENCOMENDA")
+        POR_ENCOMENDA("IMPORTACAO_POR_ENCOMENDA");
+
+
+        private final String value;
+
+        IndicadorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorEnum fromValue(String v) {
+            for (IndicadorEnum b : IndicadorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorEnum");
+        }
     }
 
-    public String value() {
-        return value;
+    @XmlElement(name = "indicador", required = true)
+    @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
+    /**
+     * Indicador de importação por terceiros.
+     **/
+    private IndicadorEnum indicador = null;
+
+    @XmlElement(name = "ni")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'")
+    /**
+     * CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'
+     **/
+    private String ni = null;
+
+    /**
+     * Indicador de importação por terceiros.
+     *
+     * @return indicador
+     **/
+    @JsonProperty("indicador")
+    @NotNull
+    public String getIndicador() {
+        if (indicador == null) {
+            return null;
+        }
+        return indicador.value();
     }
+
+    public void setIndicador(IndicadorEnum indicador) {
+        this.indicador = indicador;
+    }
+
+    public CaracterizacaoImportacaoConsultaItemCover indicador(IndicadorEnum indicador) {
+        this.indicador = indicador;
+        return this;
+    }
+
+    /**
+     * CNPJ do adquirente ou encomendante.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;br&gt;Observação: Este atributo é informado apenas quando o atributo &#39;indicador&#39; possui um dos seguintes valores: &#39;IMPORTACAO_POR_CONTA_E_ORDEM&#39;, &#39;IMPORTACAO_POR_ENCOMENDA&#39;
+     *
+     * @return ni
+     **/
+    @JsonProperty("ni")
+    public String getNi() {
+        return ni;
+    }
+
+    public void setNi(String ni) {
+        this.ni = ni;
+    }
+
+    public CaracterizacaoImportacaoConsultaItemCover ni(String ni) {
+        this.ni = ni;
+        return this;
+    }
+
 
     @Override
     public String toString() {
-        return String.valueOf(value);
+
+        String sb = "class CaracterizacaoImportacaoConsultaItemCover {\n" +
+                "    indicador: " + toIndentedString(indicador) + "\n" +
+                "    ni: " + toIndentedString(ni) + "\n" +
+                "}";
+        return sb;
     }
 
-    public static IndicadorEnum fromValue(String v) {
-        for (IndicadorEnum b : IndicadorEnum.values()) {
-            if (String.valueOf(b.value).equals(v)) {
-                return b;
-            }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-        throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorEnum");
+        return o.toString().replace("\n", "\n    ");
     }
-}
-
-  @XmlElement(name="indicador", required = true)
-  @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
- /**
-   * Indicador de importação por terceiros.
-  **/
-  private IndicadorEnum indicador = null;
-
-  @XmlElement(name="ni")
-  @ApiModelProperty(example = "00000000000191", value = "CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'")
- /**
-   * CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'
-  **/
-  private String ni = null;
- /**
-   * Indicador de importação por terceiros.
-   * @return indicador
-  **/
-  @JsonProperty("indicador")
-  @NotNull
-  public String getIndicador() {
-    if (indicador == null) {
-      return null;
-    }
-    return indicador.value();
-  }
-
-  public void setIndicador(IndicadorEnum indicador) {
-    this.indicador = indicador;
-  }
-
-  public CaracterizacaoImportacaoConsultaItemCover indicador(IndicadorEnum indicador) {
-    this.indicador = indicador;
-    return this;
-  }
-
- /**
-   * CNPJ do adquirente ou encomendante.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;br&gt;Observação: Este atributo é informado apenas quando o atributo &#39;indicador&#39; possui um dos seguintes valores: &#39;IMPORTACAO_POR_CONTA_E_ORDEM&#39;, &#39;IMPORTACAO_POR_ENCOMENDA&#39;
-   * @return ni
-  **/
-  @JsonProperty("ni")
-  public String getNi() {
-    return ni;
-  }
-
-  public void setNi(String ni) {
-    this.ni = ni;
-  }
-
-  public CaracterizacaoImportacaoConsultaItemCover ni(String ni) {
-    this.ni = ni;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CaracterizacaoImportacaoConsultaItemCover {\n");
-    
-    sb.append("    indicador: ").append(toIndentedString(indicador)).append("\n");
-    sb.append("    ni: ").append(toIndentedString(ni)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
 }
 

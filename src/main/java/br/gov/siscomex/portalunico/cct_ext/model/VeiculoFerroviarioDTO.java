@@ -10,77 +10,79 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "VeiculoFerroviarioDTO", propOrder =
-    { "prefixoTrem", "quantidadeVagoes"
-})
+@XmlType(name = "VeiculoFerroviarioDTO", propOrder =
+        {"prefixoTrem", "quantidadeVagoes"
+        })
 
-@XmlRootElement(name="VeiculoFerroviarioDTO")
-public class VeiculoFerroviarioDTO  {
-  
-  @XmlElement(name="prefixoTrem")
-  @ApiModelProperty(value = "")
-  private String prefixoTrem = null;
+@XmlRootElement(name = "VeiculoFerroviarioDTO")
+public class VeiculoFerroviarioDTO {
 
-  @XmlElement(name="quantidadeVagoes")
-  @ApiModelProperty(value = "")
-  private Integer quantidadeVagoes = null;
- /**
-   * Get prefixoTrem
-   * @return prefixoTrem
-  **/
-  @JsonProperty("prefixoTrem")
-  public String getPrefixoTrem() {
-    return prefixoTrem;
-  }
+    @XmlElement(name = "prefixoTrem")
+    @ApiModelProperty(value = "")
+    private String prefixoTrem = null;
 
-  public void setPrefixoTrem(String prefixoTrem) {
-    this.prefixoTrem = prefixoTrem;
-  }
+    @XmlElement(name = "quantidadeVagoes")
+    @ApiModelProperty(value = "")
+    private Integer quantidadeVagoes = null;
 
-  public VeiculoFerroviarioDTO prefixoTrem(String prefixoTrem) {
-    this.prefixoTrem = prefixoTrem;
-    return this;
-  }
-
- /**
-   * Get quantidadeVagoes
-   * @return quantidadeVagoes
-  **/
-  @JsonProperty("quantidadeVagoes")
-  public Integer getQuantidadeVagoes() {
-    return quantidadeVagoes;
-  }
-
-  public void setQuantidadeVagoes(Integer quantidadeVagoes) {
-    this.quantidadeVagoes = quantidadeVagoes;
-  }
-
-  public VeiculoFerroviarioDTO quantidadeVagoes(Integer quantidadeVagoes) {
-    this.quantidadeVagoes = quantidadeVagoes;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class VeiculoFerroviarioDTO {\n");
-    
-    sb.append("    prefixoTrem: ").append(toIndentedString(prefixoTrem)).append("\n");
-    sb.append("    quantidadeVagoes: ").append(toIndentedString(quantidadeVagoes)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get prefixoTrem
+     *
+     * @return prefixoTrem
+     **/
+    @JsonProperty("prefixoTrem")
+    public String getPrefixoTrem() {
+        return prefixoTrem;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setPrefixoTrem(String prefixoTrem) {
+        this.prefixoTrem = prefixoTrem;
+    }
+
+    public VeiculoFerroviarioDTO prefixoTrem(String prefixoTrem) {
+        this.prefixoTrem = prefixoTrem;
+        return this;
+    }
+
+    /**
+     * Get quantidadeVagoes
+     *
+     * @return quantidadeVagoes
+     **/
+    @JsonProperty("quantidadeVagoes")
+    public Integer getQuantidadeVagoes() {
+        return quantidadeVagoes;
+    }
+
+    public void setQuantidadeVagoes(Integer quantidadeVagoes) {
+        this.quantidadeVagoes = quantidadeVagoes;
+    }
+
+    public VeiculoFerroviarioDTO quantidadeVagoes(Integer quantidadeVagoes) {
+        this.quantidadeVagoes = quantidadeVagoes;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class VeiculoFerroviarioDTO {\n" +
+                "    prefixoTrem: " + toIndentedString(prefixoTrem) + "\n" +
+                "    quantidadeVagoes: " + toIndentedString(quantidadeVagoes) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

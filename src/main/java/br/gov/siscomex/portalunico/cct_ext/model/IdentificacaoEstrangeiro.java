@@ -12,89 +12,91 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "IdentificacaoEstrangeiro", propOrder =
-    { "pais", "nome"
-})
+@XmlType(name = "IdentificacaoEstrangeiro", propOrder =
+        {"pais", "nome"
+        })
 
-@XmlRootElement(name="IdentificacaoEstrangeiro")
+@XmlRootElement(name = "IdentificacaoEstrangeiro")
 /**
-  * Dados do Destinatário Estrangeiro
+ * Dados do Destinatário Estrangeiro
  **/
-@ApiModel(description="Dados do Destinatário Estrangeiro")
-public class IdentificacaoEstrangeiro  {
-  
-  @XmlElement(name="pais", required = true)
-  @ApiModelProperty(example = "AR", required = true, value = "País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA")
- /**
-   * País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA
-  **/
-  private String pais = null;
+@ApiModel(description = "Dados do Destinatário Estrangeiro")
+public class IdentificacaoEstrangeiro {
 
-  @XmlElement(name="nome", required = true)
-  @ApiModelProperty(example = "Nome do destinatário", required = true, value = "Nome do destinatário<br>Tamanho: 60")
- /**
-   * Nome do destinatário<br>Tamanho: 60
-  **/
-  private String nome = null;
- /**
-   * País do Transportador&lt;br&gt;Sigla ISO/Alfa 2 do país&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
-   * @return pais
-  **/
-  @JsonProperty("pais")
-  @NotNull
-  public String getPais() {
-    return pais;
-  }
+    @XmlElement(name = "pais", required = true)
+    @ApiModelProperty(example = "AR", required = true, value = "País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA")
+    /**
+     * País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA
+     **/
+    private String pais = null;
 
-  public void setPais(String pais) {
-    this.pais = pais;
-  }
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "Nome do destinatário", required = true, value = "Nome do destinatário<br>Tamanho: 60")
+    /**
+     * Nome do destinatário<br>Tamanho: 60
+     **/
+    private String nome = null;
 
-  public IdentificacaoEstrangeiro pais(String pais) {
-    this.pais = pais;
-    return this;
-  }
-
- /**
-   * Nome do destinatário&lt;br&gt;Tamanho: 60
-   * @return nome
-  **/
-  @JsonProperty("nome")
-  @NotNull
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  public IdentificacaoEstrangeiro nome(String nome) {
-    this.nome = nome;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class IdentificacaoEstrangeiro {\n");
-    
-    sb.append("    pais: ").append(toIndentedString(pais)).append("\n");
-    sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * País do Transportador&lt;br&gt;Sigla ISO/Alfa 2 do país&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
+     *
+     * @return pais
+     **/
+    @JsonProperty("pais")
+    @NotNull
+    public String getPais() {
+        return pais;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public IdentificacaoEstrangeiro pais(String pais) {
+        this.pais = pais;
+        return this;
+    }
+
+    /**
+     * Nome do destinatário&lt;br&gt;Tamanho: 60
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public IdentificacaoEstrangeiro nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class IdentificacaoEstrangeiro {\n" +
+                "    pais: " + toIndentedString(pais) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

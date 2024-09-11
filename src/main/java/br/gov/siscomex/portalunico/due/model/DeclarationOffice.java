@@ -12,81 +12,83 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DeclarationOffice", propOrder =
-    { "id", "warehouse"
-})
+@XmlType(name = "DeclarationOffice", propOrder =
+        {"id", "warehouse"
+        })
 
-@XmlRootElement(name="DeclarationOffice")
-public class DeclarationOffice  {
-  
-  @XmlElement(name="id", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private DeclarationOfficeIdentificationCodeType id = null;
+@XmlRootElement(name = "DeclarationOffice")
+public class DeclarationOffice {
 
-  @XmlElement(name="warehouse", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private Warehouse warehouse = null;
- /**
-   * Get id
-   * @return id
-  **/
-  @JsonProperty("id")
-  @NotNull
-  public DeclarationOfficeIdentificationCodeType getId() {
-    return id;
-  }
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DeclarationOfficeIdentificationCodeType id = null;
 
-  public void setId(DeclarationOfficeIdentificationCodeType id) {
-    this.id = id;
-  }
+    @XmlElement(name = "warehouse", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Warehouse warehouse = null;
 
-  public DeclarationOffice id(DeclarationOfficeIdentificationCodeType id) {
-    this.id = id;
-    return this;
-  }
-
- /**
-   * Get warehouse
-   * @return warehouse
-  **/
-  @JsonProperty("warehouse")
-  @NotNull
-  public Warehouse getWarehouse() {
-    return warehouse;
-  }
-
-  public void setWarehouse(Warehouse warehouse) {
-    this.warehouse = warehouse;
-  }
-
-  public DeclarationOffice warehouse(Warehouse warehouse) {
-    this.warehouse = warehouse;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DeclarationOffice {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    warehouse: ").append(toIndentedString(warehouse)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get id
+     *
+     * @return id
+     **/
+    @JsonProperty("id")
+    @NotNull
+    public DeclarationOfficeIdentificationCodeType getId() {
+        return id;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setId(DeclarationOfficeIdentificationCodeType id) {
+        this.id = id;
+    }
+
+    public DeclarationOffice id(DeclarationOfficeIdentificationCodeType id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get warehouse
+     *
+     * @return warehouse
+     **/
+    @JsonProperty("warehouse")
+    @NotNull
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public DeclarationOffice warehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class DeclarationOffice {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    warehouse: " + toIndentedString(warehouse) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

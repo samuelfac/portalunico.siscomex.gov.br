@@ -12,56 +12,57 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "UCR", propOrder =
-    { "traderAssignedReferenceID"
-})
+@XmlType(name = "UCR", propOrder =
+        {"traderAssignedReferenceID"
+        })
 
-@XmlRootElement(name="UCR")
-public class UCR  {
-  
-  @XmlElement(name="traderAssignedReferenceID", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private UCRTraderAssignedReferenceIDType traderAssignedReferenceID = null;
- /**
-   * Get traderAssignedReferenceID
-   * @return traderAssignedReferenceID
-  **/
-  @JsonProperty("traderAssignedReferenceID")
-  @NotNull
-  public UCRTraderAssignedReferenceIDType getTraderAssignedReferenceID() {
-    return traderAssignedReferenceID;
-  }
+@XmlRootElement(name = "UCR")
+public class UCR {
 
-  public void setTraderAssignedReferenceID(UCRTraderAssignedReferenceIDType traderAssignedReferenceID) {
-    this.traderAssignedReferenceID = traderAssignedReferenceID;
-  }
+    @XmlElement(name = "traderAssignedReferenceID", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private UCRTraderAssignedReferenceIDType traderAssignedReferenceID = null;
 
-  public UCR traderAssignedReferenceID(UCRTraderAssignedReferenceIDType traderAssignedReferenceID) {
-    this.traderAssignedReferenceID = traderAssignedReferenceID;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class UCR {\n");
-    
-    sb.append("    traderAssignedReferenceID: ").append(toIndentedString(traderAssignedReferenceID)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get traderAssignedReferenceID
+     *
+     * @return traderAssignedReferenceID
+     **/
+    @JsonProperty("traderAssignedReferenceID")
+    @NotNull
+    public UCRTraderAssignedReferenceIDType getTraderAssignedReferenceID() {
+        return traderAssignedReferenceID;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setTraderAssignedReferenceID(UCRTraderAssignedReferenceIDType traderAssignedReferenceID) {
+        this.traderAssignedReferenceID = traderAssignedReferenceID;
+    }
+
+    public UCR traderAssignedReferenceID(UCRTraderAssignedReferenceIDType traderAssignedReferenceID) {
+        this.traderAssignedReferenceID = traderAssignedReferenceID;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class UCR {\n" +
+                "    traderAssignedReferenceID: " + toIndentedString(traderAssignedReferenceID) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

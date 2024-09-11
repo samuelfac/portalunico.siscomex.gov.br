@@ -12,62 +12,63 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "TipoDocumentoInstrucaoCover", propOrder =
-    { "codigo"
-})
+@XmlType(name = "TipoDocumentoInstrucaoCover", propOrder =
+        {"codigo"
+        })
 
-@XmlRootElement(name="TipoDocumentoInstrucaoCover")
+@XmlRootElement(name = "TipoDocumentoInstrucaoCover")
 /**
-  * Tipo do documento instrutivo para despacho.
+ * Tipo do documento instrutivo para despacho.
  **/
-@ApiModel(description="Tipo do documento instrutivo para despacho.")
-public class TipoDocumentoInstrucaoCover  {
-  
-  @XmlElement(name="codigo", required = true)
-  @ApiModelProperty(example = "99", required = true, value = "Código do Tipo de Documento no sistema Anexação (E-Docex).<br>Domínio: Tipos de Documento existentes no sistema Anexação (E-Docex).<br>Valor mínimo: 1<br>Valor máximo: 999")
- /**
-   * Código do Tipo de Documento no sistema Anexação (E-Docex).<br>Domínio: Tipos de Documento existentes no sistema Anexação (E-Docex).<br>Valor mínimo: 1<br>Valor máximo: 999
-  **/
-  private String codigo = null;
- /**
-   * Código do Tipo de Documento no sistema Anexação (E-Docex).&lt;br&gt;Domínio: Tipos de Documento existentes no sistema Anexação (E-Docex).&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
-   * @return codigo
-  **/
-  @JsonProperty("codigo")
-  @NotNull
-  public String getCodigo() {
-    return codigo;
-  }
+@ApiModel(description = "Tipo do documento instrutivo para despacho.")
+public class TipoDocumentoInstrucaoCover {
 
-  public void setCodigo(String codigo) {
-    this.codigo = codigo;
-  }
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "99", required = true, value = "Código do Tipo de Documento no sistema Anexação (E-Docex).<br>Domínio: Tipos de Documento existentes no sistema Anexação (E-Docex).<br>Valor mínimo: 1<br>Valor máximo: 999")
+    /**
+     * Código do Tipo de Documento no sistema Anexação (E-Docex).<br>Domínio: Tipos de Documento existentes no sistema Anexação (E-Docex).<br>Valor mínimo: 1<br>Valor máximo: 999
+     **/
+    private String codigo = null;
 
-  public TipoDocumentoInstrucaoCover codigo(String codigo) {
-    this.codigo = codigo;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TipoDocumentoInstrucaoCover {\n");
-    
-    sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Código do Tipo de Documento no sistema Anexação (E-Docex).&lt;br&gt;Domínio: Tipos de Documento existentes no sistema Anexação (E-Docex).&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    @NotNull
+    public String getCodigo() {
+        return codigo;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public TipoDocumentoInstrucaoCover codigo(String codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TipoDocumentoInstrucaoCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

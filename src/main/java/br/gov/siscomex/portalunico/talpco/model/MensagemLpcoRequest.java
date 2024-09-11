@@ -11,58 +11,59 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "MensagemLpcoRequest", propOrder =
-    { "mensagem"
-})
+@XmlType(name = "MensagemLpcoRequest", propOrder =
+        {"mensagem"
+        })
 
-@XmlRootElement(name="MensagemLpcoRequest")
+@XmlRootElement(name = "MensagemLpcoRequest")
 /**
-  * Mensagem a ser incluída no histórico do LPCO
+ * Mensagem a ser incluída no histórico do LPCO
  **/
-@ApiModel(description="Mensagem a ser incluída no histórico do LPCO")
-public class MensagemLpcoRequest  {
-  
-  @XmlElement(name="mensagem")
-  @ApiModelProperty(value = "")
-  private String mensagem = null;
- /**
-   * Get mensagem
-   * @return mensagem
-  **/
-  @JsonProperty("mensagem")
-  public String getMensagem() {
-    return mensagem;
-  }
+@ApiModel(description = "Mensagem a ser incluída no histórico do LPCO")
+public class MensagemLpcoRequest {
 
-  public void setMensagem(String mensagem) {
-    this.mensagem = mensagem;
-  }
+    @XmlElement(name = "mensagem")
+    @ApiModelProperty(value = "")
+    private String mensagem = null;
 
-  public MensagemLpcoRequest mensagem(String mensagem) {
-    this.mensagem = mensagem;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class MensagemLpcoRequest {\n");
-    
-    sb.append("    mensagem: ").append(toIndentedString(mensagem)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get mensagem
+     *
+     * @return mensagem
+     **/
+    @JsonProperty("mensagem")
+    public String getMensagem() {
+        return mensagem;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public MensagemLpcoRequest mensagem(String mensagem) {
+        this.mensagem = mensagem;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class MensagemLpcoRequest {\n" +
+                "    mensagem: " + toIndentedString(mensagem) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

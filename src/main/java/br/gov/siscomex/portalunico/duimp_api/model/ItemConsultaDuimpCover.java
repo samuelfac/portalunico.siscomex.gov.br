@@ -10,77 +10,79 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ItemConsultaDuimpCover", propOrder =
-    { "indice", "link"
-})
+@XmlType(name = "ItemConsultaDuimpCover", propOrder =
+        {"indice", "link"
+        })
 
-@XmlRootElement(name="ItemConsultaDuimpCover")
-public class ItemConsultaDuimpCover  {
-  
-  @XmlElement(name="indice")
-  @ApiModelProperty(example = "1", value = "")
-  private Integer indice = null;
+@XmlRootElement(name = "ItemConsultaDuimpCover")
+public class ItemConsultaDuimpCover {
 
-  @XmlElement(name="link")
-  @ApiModelProperty(example = "ext/duimp/19BR00000004677/0/itens/1", value = "")
-  private String link = null;
- /**
-   * Get indice
-   * @return indice
-  **/
-  @JsonProperty("indice")
-  public Integer getIndice() {
-    return indice;
-  }
+    @XmlElement(name = "indice")
+    @ApiModelProperty(example = "1", value = "")
+    private Integer indice = null;
 
-  public void setIndice(Integer indice) {
-    this.indice = indice;
-  }
+    @XmlElement(name = "link")
+    @ApiModelProperty(example = "ext/duimp/19BR00000004677/0/itens/1", value = "")
+    private String link = null;
 
-  public ItemConsultaDuimpCover indice(Integer indice) {
-    this.indice = indice;
-    return this;
-  }
-
- /**
-   * Get link
-   * @return link
-  **/
-  @JsonProperty("link")
-  public String getLink() {
-    return link;
-  }
-
-  public void setLink(String link) {
-    this.link = link;
-  }
-
-  public ItemConsultaDuimpCover link(String link) {
-    this.link = link;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ItemConsultaDuimpCover {\n");
-    
-    sb.append("    indice: ").append(toIndentedString(indice)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get indice
+     *
+     * @return indice
+     **/
+    @JsonProperty("indice")
+    public Integer getIndice() {
+        return indice;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setIndice(Integer indice) {
+        this.indice = indice;
+    }
+
+    public ItemConsultaDuimpCover indice(Integer indice) {
+        this.indice = indice;
+        return this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return link
+     **/
+    @JsonProperty("link")
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public ItemConsultaDuimpCover link(String link) {
+        this.link = link;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ItemConsultaDuimpCover {\n" +
+                "    indice: " + toIndentedString(indice) + "\n" +
+                "    link: " + toIndentedString(link) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

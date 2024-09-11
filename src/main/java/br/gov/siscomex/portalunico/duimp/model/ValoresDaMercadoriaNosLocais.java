@@ -12,112 +12,115 @@ import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ValoresDaMercadoriaNosLocais", propOrder =
-    { "valorTotalMercadoriaLocalEmbarqueDolar", "valorTotalMercadoriaLocalEmbarqueReal", "valorTotalMercadoriaLocalDescargaReal"
-})
+@XmlType(name = "ValoresDaMercadoriaNosLocais", propOrder =
+        {"valorTotalMercadoriaLocalEmbarqueDolar", "valorTotalMercadoriaLocalEmbarqueReal", "valorTotalMercadoriaLocalDescargaReal"
+        })
 
-@XmlRootElement(name="ValoresDaMercadoriaNosLocais")
-public class ValoresDaMercadoriaNosLocais  {
-  
-  @XmlElement(name="valorTotalMercadoriaLocalEmbarqueDolar")
-  @ApiModelProperty(example = "10.12", value = "Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-  @Valid
- /**
-   * Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-  **/
-  private BigDecimal valorTotalMercadoriaLocalEmbarqueDolar = null;
+@XmlRootElement(name = "ValoresDaMercadoriaNosLocais")
+public class ValoresDaMercadoriaNosLocais {
 
-  @XmlElement(name="valorTotalMercadoriaLocalEmbarqueReal")
-  @ApiModelProperty(example = "20.12", value = "Valor total da mercadoria no local de embarque em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-  @Valid
- /**
-   * Valor total da mercadoria no local de embarque em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-  **/
-  private BigDecimal valorTotalMercadoriaLocalEmbarqueReal = null;
+    @XmlElement(name = "valorTotalMercadoriaLocalEmbarqueDolar")
+    @ApiModelProperty(example = "10.12", value = "Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor total da mercadoria no local de embarque em dolar<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTotalMercadoriaLocalEmbarqueDolar = null;
 
-  @XmlElement(name="valorTotalMercadoriaLocalDescargaReal")
-  @ApiModelProperty(example = "30.12", value = "Valor total da mercadoria no local de descarga em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-  @Valid
- /**
-   * Valor total da mercadoria no local de descarga em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-  **/
-  private BigDecimal valorTotalMercadoriaLocalDescargaReal = null;
- /**
-   * Valor total da mercadoria no local de embarque em dolar&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-   * @return valorTotalMercadoriaLocalEmbarqueDolar
-  **/
-  @JsonProperty("valorTotalMercadoriaLocalEmbarqueDolar")
-  public BigDecimal getValorTotalMercadoriaLocalEmbarqueDolar() {
-    return valorTotalMercadoriaLocalEmbarqueDolar;
-  }
+    @XmlElement(name = "valorTotalMercadoriaLocalEmbarqueReal")
+    @ApiModelProperty(example = "20.12", value = "Valor total da mercadoria no local de embarque em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor total da mercadoria no local de embarque em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTotalMercadoriaLocalEmbarqueReal = null;
 
-  public void setValorTotalMercadoriaLocalEmbarqueDolar(BigDecimal valorTotalMercadoriaLocalEmbarqueDolar) {
-    this.valorTotalMercadoriaLocalEmbarqueDolar = valorTotalMercadoriaLocalEmbarqueDolar;
-  }
+    @XmlElement(name = "valorTotalMercadoriaLocalDescargaReal")
+    @ApiModelProperty(example = "30.12", value = "Valor total da mercadoria no local de descarga em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor total da mercadoria no local de descarga em reais<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTotalMercadoriaLocalDescargaReal = null;
 
-  public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalEmbarqueDolar(BigDecimal valorTotalMercadoriaLocalEmbarqueDolar) {
-    this.valorTotalMercadoriaLocalEmbarqueDolar = valorTotalMercadoriaLocalEmbarqueDolar;
-    return this;
-  }
-
- /**
-   * Valor total da mercadoria no local de embarque em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-   * @return valorTotalMercadoriaLocalEmbarqueReal
-  **/
-  @JsonProperty("valorTotalMercadoriaLocalEmbarqueReal")
-  public BigDecimal getValorTotalMercadoriaLocalEmbarqueReal() {
-    return valorTotalMercadoriaLocalEmbarqueReal;
-  }
-
-  public void setValorTotalMercadoriaLocalEmbarqueReal(BigDecimal valorTotalMercadoriaLocalEmbarqueReal) {
-    this.valorTotalMercadoriaLocalEmbarqueReal = valorTotalMercadoriaLocalEmbarqueReal;
-  }
-
-  public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalEmbarqueReal(BigDecimal valorTotalMercadoriaLocalEmbarqueReal) {
-    this.valorTotalMercadoriaLocalEmbarqueReal = valorTotalMercadoriaLocalEmbarqueReal;
-    return this;
-  }
-
- /**
-   * Valor total da mercadoria no local de descarga em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-   * @return valorTotalMercadoriaLocalDescargaReal
-  **/
-  @JsonProperty("valorTotalMercadoriaLocalDescargaReal")
-  public BigDecimal getValorTotalMercadoriaLocalDescargaReal() {
-    return valorTotalMercadoriaLocalDescargaReal;
-  }
-
-  public void setValorTotalMercadoriaLocalDescargaReal(BigDecimal valorTotalMercadoriaLocalDescargaReal) {
-    this.valorTotalMercadoriaLocalDescargaReal = valorTotalMercadoriaLocalDescargaReal;
-  }
-
-  public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalDescargaReal(BigDecimal valorTotalMercadoriaLocalDescargaReal) {
-    this.valorTotalMercadoriaLocalDescargaReal = valorTotalMercadoriaLocalDescargaReal;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ValoresDaMercadoriaNosLocais {\n");
-    
-    sb.append("    valorTotalMercadoriaLocalEmbarqueDolar: ").append(toIndentedString(valorTotalMercadoriaLocalEmbarqueDolar)).append("\n");
-    sb.append("    valorTotalMercadoriaLocalEmbarqueReal: ").append(toIndentedString(valorTotalMercadoriaLocalEmbarqueReal)).append("\n");
-    sb.append("    valorTotalMercadoriaLocalDescargaReal: ").append(toIndentedString(valorTotalMercadoriaLocalDescargaReal)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Valor total da mercadoria no local de embarque em dolar&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorTotalMercadoriaLocalEmbarqueDolar
+     **/
+    @JsonProperty("valorTotalMercadoriaLocalEmbarqueDolar")
+    public BigDecimal getValorTotalMercadoriaLocalEmbarqueDolar() {
+        return valorTotalMercadoriaLocalEmbarqueDolar;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setValorTotalMercadoriaLocalEmbarqueDolar(BigDecimal valorTotalMercadoriaLocalEmbarqueDolar) {
+        this.valorTotalMercadoriaLocalEmbarqueDolar = valorTotalMercadoriaLocalEmbarqueDolar;
+    }
+
+    public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalEmbarqueDolar(BigDecimal valorTotalMercadoriaLocalEmbarqueDolar) {
+        this.valorTotalMercadoriaLocalEmbarqueDolar = valorTotalMercadoriaLocalEmbarqueDolar;
+        return this;
+    }
+
+    /**
+     * Valor total da mercadoria no local de embarque em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorTotalMercadoriaLocalEmbarqueReal
+     **/
+    @JsonProperty("valorTotalMercadoriaLocalEmbarqueReal")
+    public BigDecimal getValorTotalMercadoriaLocalEmbarqueReal() {
+        return valorTotalMercadoriaLocalEmbarqueReal;
+    }
+
+    public void setValorTotalMercadoriaLocalEmbarqueReal(BigDecimal valorTotalMercadoriaLocalEmbarqueReal) {
+        this.valorTotalMercadoriaLocalEmbarqueReal = valorTotalMercadoriaLocalEmbarqueReal;
+    }
+
+    public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalEmbarqueReal(BigDecimal valorTotalMercadoriaLocalEmbarqueReal) {
+        this.valorTotalMercadoriaLocalEmbarqueReal = valorTotalMercadoriaLocalEmbarqueReal;
+        return this;
+    }
+
+    /**
+     * Valor total da mercadoria no local de descarga em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorTotalMercadoriaLocalDescargaReal
+     **/
+    @JsonProperty("valorTotalMercadoriaLocalDescargaReal")
+    public BigDecimal getValorTotalMercadoriaLocalDescargaReal() {
+        return valorTotalMercadoriaLocalDescargaReal;
+    }
+
+    public void setValorTotalMercadoriaLocalDescargaReal(BigDecimal valorTotalMercadoriaLocalDescargaReal) {
+        this.valorTotalMercadoriaLocalDescargaReal = valorTotalMercadoriaLocalDescargaReal;
+    }
+
+    public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalDescargaReal(BigDecimal valorTotalMercadoriaLocalDescargaReal) {
+        this.valorTotalMercadoriaLocalDescargaReal = valorTotalMercadoriaLocalDescargaReal;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ValoresDaMercadoriaNosLocais {\n" +
+                "    valorTotalMercadoriaLocalEmbarqueDolar: " + toIndentedString(valorTotalMercadoriaLocalEmbarqueDolar) + "\n" +
+                "    valorTotalMercadoriaLocalEmbarqueReal: " + toIndentedString(valorTotalMercadoriaLocalEmbarqueReal) + "\n" +
+                "    valorTotalMercadoriaLocalDescargaReal: " + toIndentedString(valorTotalMercadoriaLocalDescargaReal) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

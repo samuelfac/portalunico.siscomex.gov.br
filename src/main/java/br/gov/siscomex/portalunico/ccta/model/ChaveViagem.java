@@ -10,57 +10,58 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ChaveViagem", propOrder =
-    { "identificacaoViagem"
-})
+@XmlType(name = "ChaveViagem", propOrder =
+        {"identificacaoViagem"
+        })
 
-@XmlRootElement(name="ChaveViagem")
-public class ChaveViagem  {
-  
-  @XmlElement(name="identificacaoViagem")
-  @ApiModelProperty(example = "XX099020200922MIA", value = "Número de identificação do manifesto<br/>Tamanho: 17")
- /**
-   * Número de identificação do manifesto<br/>Tamanho: 17
-  **/
-  private String identificacaoViagem = null;
- /**
-   * Número de identificação do manifesto&lt;br/&gt;Tamanho: 17
-   * @return identificacaoViagem
-  **/
-  @JsonProperty("identificacaoViagem")
-  public String getIdentificacaoViagem() {
-    return identificacaoViagem;
-  }
+@XmlRootElement(name = "ChaveViagem")
+public class ChaveViagem {
 
-  public void setIdentificacaoViagem(String identificacaoViagem) {
-    this.identificacaoViagem = identificacaoViagem;
-  }
+    @XmlElement(name = "identificacaoViagem")
+    @ApiModelProperty(example = "XX099020200922MIA", value = "Número de identificação do manifesto<br/>Tamanho: 17")
+    /**
+     * Número de identificação do manifesto<br/>Tamanho: 17
+     **/
+    private String identificacaoViagem = null;
 
-  public ChaveViagem identificacaoViagem(String identificacaoViagem) {
-    this.identificacaoViagem = identificacaoViagem;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ChaveViagem {\n");
-    
-    sb.append("    identificacaoViagem: ").append(toIndentedString(identificacaoViagem)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Número de identificação do manifesto&lt;br/&gt;Tamanho: 17
+     *
+     * @return identificacaoViagem
+     **/
+    @JsonProperty("identificacaoViagem")
+    public String getIdentificacaoViagem() {
+        return identificacaoViagem;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setIdentificacaoViagem(String identificacaoViagem) {
+        this.identificacaoViagem = identificacaoViagem;
+    }
+
+    public ChaveViagem identificacaoViagem(String identificacaoViagem) {
+        this.identificacaoViagem = identificacaoViagem;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ChaveViagem {\n" +
+                "    identificacaoViagem: " + toIndentedString(identificacaoViagem) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

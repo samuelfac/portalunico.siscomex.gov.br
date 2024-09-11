@@ -13,67 +13,68 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DocumentosAnexo", propOrder =
-    { "documentoAnexo"
-})
+@XmlType(name = "DocumentosAnexo", propOrder =
+        {"documentoAnexo"
+        })
 
-@XmlRootElement(name="DocumentosAnexo")
+@XmlRootElement(name = "DocumentosAnexo")
 /**
-  * Documentos em Anexo
+ * Documentos em Anexo
  **/
-@ApiModel(description="Documentos em Anexo")
-public class DocumentosAnexo  {
-  
-  @XmlElement(name="documentoAnexo")
-  @ApiModelProperty(value = "Documentos em Passagem")
-  @Valid
- /**
-   * Documentos em Passagem
-  **/
-  private List<DocumentoAnexo> documentoAnexo = null;
- /**
-   * Documentos em Passagem
-   * @return documentoAnexo
-  **/
-  @JsonProperty("documentoAnexo")
-  public List<DocumentoAnexo> getDocumentoAnexo() {
-    return documentoAnexo;
-  }
+@ApiModel(description = "Documentos em Anexo")
+public class DocumentosAnexo {
 
-  public void setDocumentoAnexo(List<DocumentoAnexo> documentoAnexo) {
-    this.documentoAnexo = documentoAnexo;
-  }
+    @XmlElement(name = "documentoAnexo")
+    @ApiModelProperty(value = "Documentos em Passagem")
+    @Valid
+    /**
+     * Documentos em Passagem
+     **/
+    private List<DocumentoAnexo> documentoAnexo = null;
 
-  public DocumentosAnexo documentoAnexo(List<DocumentoAnexo> documentoAnexo) {
-    this.documentoAnexo = documentoAnexo;
-    return this;
-  }
-
-  public DocumentosAnexo addDocumentoAnexoItem(DocumentoAnexo documentoAnexoItem) {
-    this.documentoAnexo.add(documentoAnexoItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentosAnexo {\n");
-    
-    sb.append("    documentoAnexo: ").append(toIndentedString(documentoAnexo)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Documentos em Passagem
+     *
+     * @return documentoAnexo
+     **/
+    @JsonProperty("documentoAnexo")
+    public List<DocumentoAnexo> getDocumentoAnexo() {
+        return documentoAnexo;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setDocumentoAnexo(List<DocumentoAnexo> documentoAnexo) {
+        this.documentoAnexo = documentoAnexo;
+    }
+
+    public DocumentosAnexo documentoAnexo(List<DocumentoAnexo> documentoAnexo) {
+        this.documentoAnexo = documentoAnexo;
+        return this;
+    }
+
+    public DocumentosAnexo addDocumentoAnexoItem(DocumentoAnexo documentoAnexoItem) {
+        this.documentoAnexo.add(documentoAnexoItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentosAnexo {\n" +
+                "    documentoAnexo: " + toIndentedString(documentoAnexo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

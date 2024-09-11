@@ -11,85 +11,87 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "CampoRetornoApiRepresentation", propOrder =
-    { "nomeTabela", "nome"
-})
+@XmlType(name = "CampoRetornoApiRepresentation", propOrder =
+        {"nomeTabela", "nome"
+        })
 
-@XmlRootElement(name="CampoRetornoApiRepresentation")
-public class CampoRetornoApiRepresentation  {
-  
-  @XmlElement(name="nomeTabela", required = true)
-  @ApiModelProperty(example = "GRUPO_EXIGENCIA", required = true, value = "Nome da tabela.")
- /**
-   * Nome da tabela.
-  **/
-  private String nomeTabela = null;
+@XmlRootElement(name = "CampoRetornoApiRepresentation")
+public class CampoRetornoApiRepresentation {
 
-  @XmlElement(name="nome", required = true)
-  @ApiModelProperty(example = "DESCRICAO", required = true, value = "Nome do campo.")
- /**
-   * Nome do campo.
-  **/
-  private String nome = null;
- /**
-   * Nome da tabela.
-   * @return nomeTabela
-  **/
-  @JsonProperty("nomeTabela")
-  @NotNull
-  public String getNomeTabela() {
-    return nomeTabela;
-  }
+    @XmlElement(name = "nomeTabela", required = true)
+    @ApiModelProperty(example = "GRUPO_EXIGENCIA", required = true, value = "Nome da tabela.")
+    /**
+     * Nome da tabela.
+     **/
+    private String nomeTabela = null;
 
-  public void setNomeTabela(String nomeTabela) {
-    this.nomeTabela = nomeTabela;
-  }
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "DESCRICAO", required = true, value = "Nome do campo.")
+    /**
+     * Nome do campo.
+     **/
+    private String nome = null;
 
-  public CampoRetornoApiRepresentation nomeTabela(String nomeTabela) {
-    this.nomeTabela = nomeTabela;
-    return this;
-  }
-
- /**
-   * Nome do campo.
-   * @return nome
-  **/
-  @JsonProperty("nome")
-  @NotNull
-  public String getNome() {
-    return nome;
-  }
-
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
-
-  public CampoRetornoApiRepresentation nome(String nome) {
-    this.nome = nome;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CampoRetornoApiRepresentation {\n");
-    
-    sb.append("    nomeTabela: ").append(toIndentedString(nomeTabela)).append("\n");
-    sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Nome da tabela.
+     *
+     * @return nomeTabela
+     **/
+    @JsonProperty("nomeTabela")
+    @NotNull
+    public String getNomeTabela() {
+        return nomeTabela;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setNomeTabela(String nomeTabela) {
+        this.nomeTabela = nomeTabela;
+    }
+
+    public CampoRetornoApiRepresentation nomeTabela(String nomeTabela) {
+        this.nomeTabela = nomeTabela;
+        return this;
+    }
+
+    /**
+     * Nome do campo.
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public CampoRetornoApiRepresentation nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class CampoRetornoApiRepresentation {\n" +
+                "    nomeTabela: " + toIndentedString(nomeTabela) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

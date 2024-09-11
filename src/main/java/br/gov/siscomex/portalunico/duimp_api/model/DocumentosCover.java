@@ -15,123 +15,126 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DocumentosCover", propOrder =
-    { "documentosInstrucao", "processos", "declaracoesExportacaoEstrangeira"
-})
+@XmlType(name = "DocumentosCover", propOrder =
+        {"documentosInstrucao", "processos", "declaracoesExportacaoEstrangeira"
+        })
 
-@XmlRootElement(name="DocumentosCover")
+@XmlRootElement(name = "DocumentosCover")
 /**
-  * Lista de documentos associados à declaração única de importação.
+ * Lista de documentos associados à declaração única de importação.
  **/
-@ApiModel(description="Lista de documentos associados à declaração única de importação.")
-public class DocumentosCover  {
-  
-  @XmlElement(name="documentosInstrucao", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<DocumentoInstrucaoCover> documentosInstrucao = new ArrayList<>();
+@ApiModel(description = "Lista de documentos associados à declaração única de importação.")
+public class DocumentosCover {
 
-  @XmlElement(name="processos")
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<ProcessoDocumentoInstrucaoCover> processos = null;
+    @XmlElement(name = "documentosInstrucao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private List<DocumentoInstrucaoCover> documentosInstrucao = new ArrayList<>();
 
-  @XmlElement(name="declaracoesExportacaoEstrangeira")
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira = null;
- /**
-   * Get documentosInstrucao
-   * @return documentosInstrucao
-  **/
-  @JsonProperty("documentosInstrucao")
-  @NotNull
-  public List<DocumentoInstrucaoCover> getDocumentosInstrucao() {
-    return documentosInstrucao;
-  }
+    @XmlElement(name = "processos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<ProcessoDocumentoInstrucaoCover> processos = null;
 
-  public void setDocumentosInstrucao(List<DocumentoInstrucaoCover> documentosInstrucao) {
-    this.documentosInstrucao = documentosInstrucao;
-  }
+    @XmlElement(name = "declaracoesExportacaoEstrangeira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira = null;
 
-  public DocumentosCover documentosInstrucao(List<DocumentoInstrucaoCover> documentosInstrucao) {
-    this.documentosInstrucao = documentosInstrucao;
-    return this;
-  }
-
-  public DocumentosCover addDocumentosInstrucaoItem(DocumentoInstrucaoCover documentosInstrucaoItem) {
-    this.documentosInstrucao.add(documentosInstrucaoItem);
-    return this;
-  }
-
- /**
-   * Get processos
-   * @return processos
-  **/
-  @JsonProperty("processos")
-  public List<ProcessoDocumentoInstrucaoCover> getProcessos() {
-    return processos;
-  }
-
-  public void setProcessos(List<ProcessoDocumentoInstrucaoCover> processos) {
-    this.processos = processos;
-  }
-
-  public DocumentosCover processos(List<ProcessoDocumentoInstrucaoCover> processos) {
-    this.processos = processos;
-    return this;
-  }
-
-  public DocumentosCover addProcessosItem(ProcessoDocumentoInstrucaoCover processosItem) {
-    this.processos.add(processosItem);
-    return this;
-  }
-
- /**
-   * Get declaracoesExportacaoEstrangeira
-   * @return declaracoesExportacaoEstrangeira
-  **/
-  @JsonProperty("declaracoesExportacaoEstrangeira")
-  public List<DeclaracaoExportacaoEstrangeiraCover> getDeclaracoesExportacaoEstrangeira() {
-    return declaracoesExportacaoEstrangeira;
-  }
-
-  public void setDeclaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
-    this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
-  }
-
-  public DocumentosCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
-    this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
-    return this;
-  }
-
-  public DocumentosCover addDeclaracoesExportacaoEstrangeiraItem(DeclaracaoExportacaoEstrangeiraCover declaracoesExportacaoEstrangeiraItem) {
-    this.declaracoesExportacaoEstrangeira.add(declaracoesExportacaoEstrangeiraItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentosCover {\n");
-    
-    sb.append("    documentosInstrucao: ").append(toIndentedString(documentosInstrucao)).append("\n");
-    sb.append("    processos: ").append(toIndentedString(processos)).append("\n");
-    sb.append("    declaracoesExportacaoEstrangeira: ").append(toIndentedString(declaracoesExportacaoEstrangeira)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get documentosInstrucao
+     *
+     * @return documentosInstrucao
+     **/
+    @JsonProperty("documentosInstrucao")
+    @NotNull
+    public List<DocumentoInstrucaoCover> getDocumentosInstrucao() {
+        return documentosInstrucao;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setDocumentosInstrucao(List<DocumentoInstrucaoCover> documentosInstrucao) {
+        this.documentosInstrucao = documentosInstrucao;
+    }
+
+    public DocumentosCover documentosInstrucao(List<DocumentoInstrucaoCover> documentosInstrucao) {
+        this.documentosInstrucao = documentosInstrucao;
+        return this;
+    }
+
+    public DocumentosCover addDocumentosInstrucaoItem(DocumentoInstrucaoCover documentosInstrucaoItem) {
+        this.documentosInstrucao.add(documentosInstrucaoItem);
+        return this;
+    }
+
+    /**
+     * Get processos
+     *
+     * @return processos
+     **/
+    @JsonProperty("processos")
+    public List<ProcessoDocumentoInstrucaoCover> getProcessos() {
+        return processos;
+    }
+
+    public void setProcessos(List<ProcessoDocumentoInstrucaoCover> processos) {
+        this.processos = processos;
+    }
+
+    public DocumentosCover processos(List<ProcessoDocumentoInstrucaoCover> processos) {
+        this.processos = processos;
+        return this;
+    }
+
+    public DocumentosCover addProcessosItem(ProcessoDocumentoInstrucaoCover processosItem) {
+        this.processos.add(processosItem);
+        return this;
+    }
+
+    /**
+     * Get declaracoesExportacaoEstrangeira
+     *
+     * @return declaracoesExportacaoEstrangeira
+     **/
+    @JsonProperty("declaracoesExportacaoEstrangeira")
+    public List<DeclaracaoExportacaoEstrangeiraCover> getDeclaracoesExportacaoEstrangeira() {
+        return declaracoesExportacaoEstrangeira;
+    }
+
+    public void setDeclaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
+        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
+    }
+
+    public DocumentosCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
+        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
+        return this;
+    }
+
+    public DocumentosCover addDeclaracoesExportacaoEstrangeiraItem(DeclaracaoExportacaoEstrangeiraCover declaracoesExportacaoEstrangeiraItem) {
+        this.declaracoesExportacaoEstrangeira.add(declaracoesExportacaoEstrangeiraItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentosCover {\n" +
+                "    documentosInstrucao: " + toIndentedString(documentosInstrucao) + "\n" +
+                "    processos: " + toIndentedString(processos) + "\n" +
+                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

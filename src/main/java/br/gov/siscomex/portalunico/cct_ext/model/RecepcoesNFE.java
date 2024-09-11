@@ -13,64 +13,65 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "RecepcoesNFE", propOrder =
-    { "recepcaoNFe"
-})
+@XmlType(name = "RecepcoesNFE", propOrder =
+        {"recepcaoNFe"
+        })
 
-@XmlRootElement(name="RecepcoesNFE")
+@XmlRootElement(name = "RecepcoesNFE")
 /**
-  * Recepções de Nota Fiscal Eletrônica<br>Máximo de ocorrências: 1
+ * Recepções de Nota Fiscal Eletrônica<br>Máximo de ocorrências: 1
  **/
-@ApiModel(description="Recepções de Nota Fiscal Eletrônica<br>Máximo de ocorrências: 1")
-public class RecepcoesNFE  {
-  
-  @XmlElement(name="recepcaoNFe")
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<RecepcaoNFE> recepcaoNFe = null;
- /**
-   * Get recepcaoNFe
-   * @return recepcaoNFe
-  **/
-  @JsonProperty("recepcaoNFe")
-  public List<RecepcaoNFE> getRecepcaoNFe() {
-    return recepcaoNFe;
-  }
+@ApiModel(description = "Recepções de Nota Fiscal Eletrônica<br>Máximo de ocorrências: 1")
+public class RecepcoesNFE {
 
-  public void setRecepcaoNFe(List<RecepcaoNFE> recepcaoNFe) {
-    this.recepcaoNFe = recepcaoNFe;
-  }
+    @XmlElement(name = "recepcaoNFe")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<RecepcaoNFE> recepcaoNFe = null;
 
-  public RecepcoesNFE recepcaoNFe(List<RecepcaoNFE> recepcaoNFe) {
-    this.recepcaoNFe = recepcaoNFe;
-    return this;
-  }
-
-  public RecepcoesNFE addRecepcaoNFeItem(RecepcaoNFE recepcaoNFeItem) {
-    this.recepcaoNFe.add(recepcaoNFeItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RecepcoesNFE {\n");
-    
-    sb.append("    recepcaoNFe: ").append(toIndentedString(recepcaoNFe)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get recepcaoNFe
+     *
+     * @return recepcaoNFe
+     **/
+    @JsonProperty("recepcaoNFe")
+    public List<RecepcaoNFE> getRecepcaoNFe() {
+        return recepcaoNFe;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setRecepcaoNFe(List<RecepcaoNFE> recepcaoNFe) {
+        this.recepcaoNFe = recepcaoNFe;
+    }
+
+    public RecepcoesNFE recepcaoNFe(List<RecepcaoNFE> recepcaoNFe) {
+        this.recepcaoNFe = recepcaoNFe;
+        return this;
+    }
+
+    public RecepcoesNFE addRecepcaoNFeItem(RecepcaoNFE recepcaoNFeItem) {
+        this.recepcaoNFe.add(recepcaoNFeItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class RecepcoesNFE {\n" +
+                "    recepcaoNFe: " + toIndentedString(recepcaoNFe) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

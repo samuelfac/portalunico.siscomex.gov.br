@@ -15,68 +15,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ItensNFF", propOrder =
-    { "itemNFF"
-})
+@XmlType(name = "ItensNFF", propOrder =
+        {"itemNFF"
+        })
 
-@XmlRootElement(name="ItensNFF")
+@XmlRootElement(name = "ItensNFF")
 /**
-  * Lista de itens de nota fiscal
+ * Lista de itens de nota fiscal
  **/
-@ApiModel(description="Lista de itens de nota fiscal")
-public class ItensNFF  {
-  
-  @XmlElement(name="itemNFF", required = true)
-  @ApiModelProperty(required = true, value = "Lista de itens de nota fiscal")
-  @Valid
- /**
-   * Lista de itens de nota fiscal
-  **/
-  private List<ItemNFF> itemNFF = new ArrayList<>();
- /**
-   * Lista de itens de nota fiscal
-   * @return itemNFF
-  **/
-  @JsonProperty("itemNFF")
-  @NotNull
-  public List<ItemNFF> getItemNFF() {
-    return itemNFF;
-  }
+@ApiModel(description = "Lista de itens de nota fiscal")
+public class ItensNFF {
 
-  public void setItemNFF(List<ItemNFF> itemNFF) {
-    this.itemNFF = itemNFF;
-  }
+    @XmlElement(name = "itemNFF", required = true)
+    @ApiModelProperty(required = true, value = "Lista de itens de nota fiscal")
+    @Valid
+    /**
+     * Lista de itens de nota fiscal
+     **/
+    private List<ItemNFF> itemNFF = new ArrayList<>();
 
-  public ItensNFF itemNFF(List<ItemNFF> itemNFF) {
-    this.itemNFF = itemNFF;
-    return this;
-  }
-
-  public ItensNFF addItemNFFItem(ItemNFF itemNFFItem) {
-    this.itemNFF.add(itemNFFItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ItensNFF {\n");
-    
-    sb.append("    itemNFF: ").append(toIndentedString(itemNFF)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Lista de itens de nota fiscal
+     *
+     * @return itemNFF
+     **/
+    @JsonProperty("itemNFF")
+    @NotNull
+    public List<ItemNFF> getItemNFF() {
+        return itemNFF;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setItemNFF(List<ItemNFF> itemNFF) {
+        this.itemNFF = itemNFF;
+    }
+
+    public ItensNFF itemNFF(List<ItemNFF> itemNFF) {
+        this.itemNFF = itemNFF;
+        return this;
+    }
+
+    public ItensNFF addItemNFFItem(ItemNFF itemNFFItem) {
+        this.itemNFF.add(itemNFFItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ItensNFF {\n" +
+                "    itemNFF: " + toIndentedString(itemNFF) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

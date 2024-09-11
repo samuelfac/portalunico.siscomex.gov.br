@@ -12,62 +12,63 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "RetornoCriarDossie", propOrder =
-    { "numeroDossie"
-})
+@XmlType(name = "RetornoCriarDossie", propOrder =
+        {"numeroDossie"
+        })
 
-@XmlRootElement(name="RetornoCriarDossie")
+@XmlRootElement(name = "RetornoCriarDossie")
 /**
-  * Retorno da criação do dossiê.
+ * Retorno da criação do dossiê.
  **/
-@ApiModel(description="Retorno da criação do dossiê.")
-public class RetornoCriarDossie  {
-  
-  @XmlElement(name="numeroDossie", required = true)
-  @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
- /**
-   * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
-  **/
-  private String numeroDossie = null;
- /**
-   * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-   * @return numeroDossie
-  **/
-  @JsonProperty("numeroDossie")
-  @NotNull
-  public String getNumeroDossie() {
-    return numeroDossie;
-  }
+@ApiModel(description = "Retorno da criação do dossiê.")
+public class RetornoCriarDossie {
 
-  public void setNumeroDossie(String numeroDossie) {
-    this.numeroDossie = numeroDossie;
-  }
+    @XmlElement(name = "numeroDossie", required = true)
+    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
+    /**
+     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
+     **/
+    private String numeroDossie = null;
 
-  public RetornoCriarDossie numeroDossie(String numeroDossie) {
-    this.numeroDossie = numeroDossie;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RetornoCriarDossie {\n");
-    
-    sb.append("    numeroDossie: ").append(toIndentedString(numeroDossie)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     *
+     * @return numeroDossie
+     **/
+    @JsonProperty("numeroDossie")
+    @NotNull
+    public String getNumeroDossie() {
+        return numeroDossie;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setNumeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
+    }
+
+    public RetornoCriarDossie numeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class RetornoCriarDossie {\n" +
+                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

@@ -14,61 +14,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DeclarationDrawbackIsencao", propOrder =
-    { "goodsShipment"
-})
+@XmlType(name = "DeclarationDrawbackIsencao", propOrder =
+        {"goodsShipment"
+        })
 
-@XmlRootElement(name="DeclarationDrawbackIsencao")
-public class DeclarationDrawbackIsencao  {
-  
-  @XmlElement(name="goodsShipment", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<GoodsShipment> goodsShipment = new ArrayList<>();
- /**
-   * Get goodsShipment
-   * @return goodsShipment
-  **/
-  @JsonProperty("goodsShipment")
-  @NotNull
-  public List<GoodsShipment> getGoodsShipment() {
-    return goodsShipment;
-  }
+@XmlRootElement(name = "DeclarationDrawbackIsencao")
+public class DeclarationDrawbackIsencao {
 
-  public void setGoodsShipment(List<GoodsShipment> goodsShipment) {
-    this.goodsShipment = goodsShipment;
-  }
+    @XmlElement(name = "goodsShipment", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private List<GoodsShipment> goodsShipment = new ArrayList<>();
 
-  public DeclarationDrawbackIsencao goodsShipment(List<GoodsShipment> goodsShipment) {
-    this.goodsShipment = goodsShipment;
-    return this;
-  }
-
-  public DeclarationDrawbackIsencao addGoodsShipmentItem(GoodsShipment goodsShipmentItem) {
-    this.goodsShipment.add(goodsShipmentItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DeclarationDrawbackIsencao {\n");
-    
-    sb.append("    goodsShipment: ").append(toIndentedString(goodsShipment)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get goodsShipment
+     *
+     * @return goodsShipment
+     **/
+    @JsonProperty("goodsShipment")
+    @NotNull
+    public List<GoodsShipment> getGoodsShipment() {
+        return goodsShipment;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setGoodsShipment(List<GoodsShipment> goodsShipment) {
+        this.goodsShipment = goodsShipment;
+    }
+
+    public DeclarationDrawbackIsencao goodsShipment(List<GoodsShipment> goodsShipment) {
+        this.goodsShipment = goodsShipment;
+        return this;
+    }
+
+    public DeclarationDrawbackIsencao addGoodsShipmentItem(GoodsShipment goodsShipmentItem) {
+        this.goodsShipment.add(goodsShipmentItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class DeclarationDrawbackIsencao {\n" +
+                "    goodsShipment: " + toIndentedString(goodsShipment) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

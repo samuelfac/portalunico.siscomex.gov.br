@@ -13,60 +13,61 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "EntregasConteineres", propOrder =
-    { "entregaConteiner"
-})
+@XmlType(name = "EntregasConteineres", propOrder =
+        {"entregaConteiner"
+        })
 
-@XmlRootElement(name="EntregasConteineres")
+@XmlRootElement(name = "EntregasConteineres")
 /**
-  * Entregas por contêineres<br>Máximo de ocorrências: 1
+ * Entregas por contêineres<br>Máximo de ocorrências: 1
  **/
-@ApiModel(description="Entregas por contêineres<br>Máximo de ocorrências: 1")
-public class EntregasConteineres  {
-  
-  @XmlElement(name="entregaConteiner", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private EntregaConteiner entregaConteiner = null;
- /**
-   * Get entregaConteiner
-   * @return entregaConteiner
-  **/
-  @JsonProperty("entregaConteiner")
-  @NotNull
-  public EntregaConteiner getEntregaConteiner() {
-    return entregaConteiner;
-  }
+@ApiModel(description = "Entregas por contêineres<br>Máximo de ocorrências: 1")
+public class EntregasConteineres {
 
-  public void setEntregaConteiner(EntregaConteiner entregaConteiner) {
-    this.entregaConteiner = entregaConteiner;
-  }
+    @XmlElement(name = "entregaConteiner", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private EntregaConteiner entregaConteiner = null;
 
-  public EntregasConteineres entregaConteiner(EntregaConteiner entregaConteiner) {
-    this.entregaConteiner = entregaConteiner;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class EntregasConteineres {\n");
-    
-    sb.append("    entregaConteiner: ").append(toIndentedString(entregaConteiner)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get entregaConteiner
+     *
+     * @return entregaConteiner
+     **/
+    @JsonProperty("entregaConteiner")
+    @NotNull
+    public EntregaConteiner getEntregaConteiner() {
+        return entregaConteiner;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setEntregaConteiner(EntregaConteiner entregaConteiner) {
+        this.entregaConteiner = entregaConteiner;
+    }
+
+    public EntregasConteineres entregaConteiner(EntregaConteiner entregaConteiner) {
+        this.entregaConteiner = entregaConteiner;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class EntregasConteineres {\n" +
+                "    entregaConteiner: " + toIndentedString(entregaConteiner) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

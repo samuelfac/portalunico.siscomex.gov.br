@@ -15,117 +15,147 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "TemplateLpco", propOrder =
-    { "modelo", "listaCamposFormulario", "listaNcm"
-})
+@XmlType(name = "TemplateLpco", propOrder =
+        {"modelo", "listaCamposFormulario", "listaNcm", "exigeNumeroLI"
+        })
 
-@XmlRootElement(name="TemplateLpco")
+@XmlRootElement(name = "TemplateLpco")
 /**
-  * Template que especifica a estrutura de um formulário de um LPCO
+ * Template que especifica a estrutura de um formulário de um LPCO
  **/
-@ApiModel(description="Template que especifica a estrutura de um formulário de um LPCO")
-public class TemplateLpco  {
-  
-  @XmlElement(name="modelo", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private ModeloLpcoCompleto modelo = null;
+@ApiModel(description = "Template que especifica a estrutura de um formulário de um LPCO")
+public class TemplateLpco {
 
-  @XmlElement(name="listaCamposFormulario", required = true)
-  @ApiModelProperty(required = true, value = "Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.")
-  @Valid
- /**
-   * Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.
-  **/
-  private List<CampoFormulario> listaCamposFormulario = new ArrayList<>();
+    @XmlElement(name = "modelo", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ModeloLpcoCompleto modelo = null;
 
-  @XmlElement(name="listaNcm")
-  @ApiModelProperty(value = "")
-  @Valid
-  private TemplateListaNcm listaNcm = null;
- /**
-   * Get modelo
-   * @return modelo
-  **/
-  @JsonProperty("modelo")
-  @NotNull
-  public ModeloLpcoCompleto getModelo() {
-    return modelo;
-  }
+    @XmlElement(name = "listaCamposFormulario", required = true)
+    @ApiModelProperty(required = true, value = "Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.")
+    @Valid
+    /**
+     * Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.
+     **/
+    private List<CampoFormulario> listaCamposFormulario = new ArrayList<>();
 
-  public void setModelo(ModeloLpcoCompleto modelo) {
-    this.modelo = modelo;
-  }
+    @XmlElement(name = "listaNcm")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TemplateListaNcm listaNcm = null;
 
-  public TemplateLpco modelo(ModeloLpcoCompleto modelo) {
-    this.modelo = modelo;
-    return this;
-  }
+    @XmlElement(name = "exigeNumeroLI")
+    @ApiModelProperty(value = "Indica que se é necessário ou não informar o campo \"numeroLI\" no cadastro de LPCO deste modelo.")
+    /**
+     * Indica que se é necessário ou não informar o campo \"numeroLI\" no cadastro de LPCO deste modelo.
+     **/
+    private Boolean exigeNumeroLI = null;
 
- /**
-   * Lista de campos do pedido que fazem parte dos \&quot;Dados Gerais\&quot; do LPCO, ou seja, aqueles que não são informados por item.
-   * @return listaCamposFormulario
-  **/
-  @JsonProperty("listaCamposFormulario")
-  @NotNull
-  public List<CampoFormulario> getListaCamposFormulario() {
-    return listaCamposFormulario;
-  }
-
-  public void setListaCamposFormulario(List<CampoFormulario> listaCamposFormulario) {
-    this.listaCamposFormulario = listaCamposFormulario;
-  }
-
-  public TemplateLpco listaCamposFormulario(List<CampoFormulario> listaCamposFormulario) {
-    this.listaCamposFormulario = listaCamposFormulario;
-    return this;
-  }
-
-  public TemplateLpco addListaCamposFormularioItem(CampoFormulario listaCamposFormularioItem) {
-    this.listaCamposFormulario.add(listaCamposFormularioItem);
-    return this;
-  }
-
- /**
-   * Get listaNcm
-   * @return listaNcm
-  **/
-  @JsonProperty("listaNcm")
-  public TemplateListaNcm getListaNcm() {
-    return listaNcm;
-  }
-
-  public void setListaNcm(TemplateListaNcm listaNcm) {
-    this.listaNcm = listaNcm;
-  }
-
-  public TemplateLpco listaNcm(TemplateListaNcm listaNcm) {
-    this.listaNcm = listaNcm;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class TemplateLpco {\n");
-    
-    sb.append("    modelo: ").append(toIndentedString(modelo)).append("\n");
-    sb.append("    listaCamposFormulario: ").append(toIndentedString(listaCamposFormulario)).append("\n");
-    sb.append("    listaNcm: ").append(toIndentedString(listaNcm)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get modelo
+     *
+     * @return modelo
+     **/
+    @JsonProperty("modelo")
+    @NotNull
+    public ModeloLpcoCompleto getModelo() {
+        return modelo;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setModelo(ModeloLpcoCompleto modelo) {
+        this.modelo = modelo;
+    }
+
+    public TemplateLpco modelo(ModeloLpcoCompleto modelo) {
+        this.modelo = modelo;
+        return this;
+    }
+
+    /**
+     * Lista de campos do pedido que fazem parte dos \&quot;Dados Gerais\&quot; do LPCO, ou seja, aqueles que não são informados por item.
+     *
+     * @return listaCamposFormulario
+     **/
+    @JsonProperty("listaCamposFormulario")
+    @NotNull
+    public List<CampoFormulario> getListaCamposFormulario() {
+        return listaCamposFormulario;
+    }
+
+    public void setListaCamposFormulario(List<CampoFormulario> listaCamposFormulario) {
+        this.listaCamposFormulario = listaCamposFormulario;
+    }
+
+    public TemplateLpco listaCamposFormulario(List<CampoFormulario> listaCamposFormulario) {
+        this.listaCamposFormulario = listaCamposFormulario;
+        return this;
+    }
+
+    public TemplateLpco addListaCamposFormularioItem(CampoFormulario listaCamposFormularioItem) {
+        this.listaCamposFormulario.add(listaCamposFormularioItem);
+        return this;
+    }
+
+    /**
+     * Get listaNcm
+     *
+     * @return listaNcm
+     **/
+    @JsonProperty("listaNcm")
+    public TemplateListaNcm getListaNcm() {
+        return listaNcm;
+    }
+
+    public void setListaNcm(TemplateListaNcm listaNcm) {
+        this.listaNcm = listaNcm;
+    }
+
+    public TemplateLpco listaNcm(TemplateListaNcm listaNcm) {
+        this.listaNcm = listaNcm;
+        return this;
+    }
+
+    /**
+     * Indica que se é necessário ou não informar o campo \&quot;numeroLI\&quot; no cadastro de LPCO deste modelo.
+     *
+     * @return exigeNumeroLI
+     **/
+    @JsonProperty("exigeNumeroLI")
+    public Boolean isExigeNumeroLI() {
+        return exigeNumeroLI;
+    }
+
+    public void setExigeNumeroLI(Boolean exigeNumeroLI) {
+        this.exigeNumeroLI = exigeNumeroLI;
+    }
+
+    public TemplateLpco exigeNumeroLI(Boolean exigeNumeroLI) {
+        this.exigeNumeroLI = exigeNumeroLI;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TemplateLpco {\n" +
+                "    modelo: " + toIndentedString(modelo) + "\n" +
+                "    listaCamposFormulario: " + toIndentedString(listaCamposFormulario) + "\n" +
+                "    listaNcm: " + toIndentedString(listaNcm) + "\n" +
+                "    exigeNumeroLI: " + toIndentedString(exigeNumeroLI) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

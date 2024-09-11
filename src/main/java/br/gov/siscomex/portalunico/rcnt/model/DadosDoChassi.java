@@ -11,84 +11,86 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DadosDoChassi", propOrder =
-    { "chassi", "idElemento"
-})
+@XmlType(name = "DadosDoChassi", propOrder =
+        {"chassi", "idElemento"
+        })
 
-@XmlRootElement(name="DadosDoChassi")
-public class DadosDoChassi  {
-  
-  @XmlElement(name="chassi")
-  @ApiModelProperty(example = "chassi1...", value = "Número do chassi.<br/>Tamanho: 50")
- /**
-   * Número do chassi.<br/>Tamanho: 50
-  **/
-  private String chassi = null;
+@XmlRootElement(name = "DadosDoChassi")
+public class DadosDoChassi {
 
-  @XmlElement(name="idElemento", required = true)
-  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
- /**
-   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-  **/
-  private String idElemento = null;
- /**
-   * Número do chassi.&lt;br/&gt;Tamanho: 50
-   * @return chassi
-  **/
-  @JsonProperty("chassi")
-  public String getChassi() {
-    return chassi;
-  }
+    @XmlElement(name = "chassi")
+    @ApiModelProperty(example = "chassi1...", value = "Número do chassi.<br/>Tamanho: 50")
+    /**
+     * Número do chassi.<br/>Tamanho: 50
+     **/
+    private String chassi = null;
 
-  public void setChassi(String chassi) {
-    this.chassi = chassi;
-  }
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
-  public DadosDoChassi chassi(String chassi) {
-    this.chassi = chassi;
-    return this;
-  }
-
- /**
-   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-   * @return idElemento
-  **/
-  @JsonProperty("idElemento")
-  @NotNull
-  public String getIdElemento() {
-    return idElemento;
-  }
-
-  public void setIdElemento(String idElemento) {
-    this.idElemento = idElemento;
-  }
-
-  public DadosDoChassi idElemento(String idElemento) {
-    this.idElemento = idElemento;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DadosDoChassi {\n");
-    
-    sb.append("    chassi: ").append(toIndentedString(chassi)).append("\n");
-    sb.append("    idElemento: ").append(toIndentedString(idElemento)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Número do chassi.&lt;br/&gt;Tamanho: 50
+     *
+     * @return chassi
+     **/
+    @JsonProperty("chassi")
+    public String getChassi() {
+        return chassi;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public DadosDoChassi chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDoChassi idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class DadosDoChassi {\n" +
+                "    chassi: " + toIndentedString(chassi) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

@@ -12,56 +12,57 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "GovernmentProcedure", propOrder =
-    { "currentCode"
-})
+@XmlType(name = "GovernmentProcedure", propOrder =
+        {"currentCode"
+        })
 
-@XmlRootElement(name="GovernmentProcedure")
-public class GovernmentProcedure  {
-  
-  @XmlElement(name="currentCode", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private GovernmentProcedureCurrentCodeType currentCode = null;
- /**
-   * Get currentCode
-   * @return currentCode
-  **/
-  @JsonProperty("currentCode")
-  @NotNull
-  public GovernmentProcedureCurrentCodeType getCurrentCode() {
-    return currentCode;
-  }
+@XmlRootElement(name = "GovernmentProcedure")
+public class GovernmentProcedure {
 
-  public void setCurrentCode(GovernmentProcedureCurrentCodeType currentCode) {
-    this.currentCode = currentCode;
-  }
+    @XmlElement(name = "currentCode", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private GovernmentProcedureCurrentCodeType currentCode = null;
 
-  public GovernmentProcedure currentCode(GovernmentProcedureCurrentCodeType currentCode) {
-    this.currentCode = currentCode;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GovernmentProcedure {\n");
-    
-    sb.append("    currentCode: ").append(toIndentedString(currentCode)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get currentCode
+     *
+     * @return currentCode
+     **/
+    @JsonProperty("currentCode")
+    @NotNull
+    public GovernmentProcedureCurrentCodeType getCurrentCode() {
+        return currentCode;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setCurrentCode(GovernmentProcedureCurrentCodeType currentCode) {
+        this.currentCode = currentCode;
+    }
+
+    public GovernmentProcedure currentCode(GovernmentProcedureCurrentCodeType currentCode) {
+        this.currentCode = currentCode;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class GovernmentProcedure {\n" +
+                "    currentCode: " + toIndentedString(currentCode) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

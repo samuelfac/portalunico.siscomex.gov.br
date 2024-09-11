@@ -14,86 +14,88 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "Contact", propOrder =
-    { "communication", "name"
-})
+@XmlType(name = "Contact", propOrder =
+        {"communication", "name"
+        })
 
-@XmlRootElement(name="Contact")
-public class Contact  {
-  
-  @XmlElement(name="communication", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private List<Communication> communication = new ArrayList<>();
+@XmlRootElement(name = "Contact")
+public class Contact {
 
-  @XmlElement(name="name", required = true)
-  @ApiModelProperty(required = true, value = "")
-  @Valid
-  private ContactNameTextType name = null;
- /**
-   * Get communication
-   * @return communication
-  **/
-  @JsonProperty("communication")
-  @NotNull
-  public List<Communication> getCommunication() {
-    return communication;
-  }
+    @XmlElement(name = "communication", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private List<Communication> communication = new ArrayList<>();
 
-  public void setCommunication(List<Communication> communication) {
-    this.communication = communication;
-  }
+    @XmlElement(name = "name", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ContactNameTextType name = null;
 
-  public Contact communication(List<Communication> communication) {
-    this.communication = communication;
-    return this;
-  }
-
-  public Contact addCommunicationItem(Communication communicationItem) {
-    this.communication.add(communicationItem);
-    return this;
-  }
-
- /**
-   * Get name
-   * @return name
-  **/
-  @JsonProperty("name")
-  @NotNull
-  public ContactNameTextType getName() {
-    return name;
-  }
-
-  public void setName(ContactNameTextType name) {
-    this.name = name;
-  }
-
-  public Contact name(ContactNameTextType name) {
-    this.name = name;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Contact {\n");
-    
-    sb.append("    communication: ").append(toIndentedString(communication)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get communication
+     *
+     * @return communication
+     **/
+    @JsonProperty("communication")
+    @NotNull
+    public List<Communication> getCommunication() {
+        return communication;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setCommunication(List<Communication> communication) {
+        this.communication = communication;
+    }
+
+    public Contact communication(List<Communication> communication) {
+        this.communication = communication;
+        return this;
+    }
+
+    public Contact addCommunicationItem(Communication communicationItem) {
+        this.communication.add(communicationItem);
+        return this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return name
+     **/
+    @JsonProperty("name")
+    @NotNull
+    public ContactNameTextType getName() {
+        return name;
+    }
+
+    public void setName(ContactNameTextType name) {
+        this.name = name;
+    }
+
+    public Contact name(ContactNameTextType name) {
+        this.name = name;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class Contact {\n" +
+                "    communication: " + toIndentedString(communication) + "\n" +
+                "    name: " + toIndentedString(name) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

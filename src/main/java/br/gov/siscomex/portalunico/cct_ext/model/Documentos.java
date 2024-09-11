@@ -15,68 +15,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "Documentos", propOrder =
-    { "documento"
-})
+@XmlType(name = "Documentos", propOrder =
+        {"documento"
+        })
 
-@XmlRootElement(name="Documentos")
+@XmlRootElement(name = "Documentos")
 /**
-  * Documentos de carga envolvidos na entrega (DU-E / RUC)
+ * Documentos de carga envolvidos na entrega (DU-E / RUC)
  **/
-@ApiModel(description="Documentos de carga envolvidos na entrega (DU-E / RUC)")
-public class Documentos  {
-  
-  @XmlElement(name="documento", required = true)
-  @ApiModelProperty(required = true, value = "Documento de carga envolvidos na entrega (DU-E / RUC)")
-  @Valid
- /**
-   * Documento de carga envolvidos na entrega (DU-E / RUC)
-  **/
-  private List<Documento> documento = new ArrayList<>();
- /**
-   * Documento de carga envolvidos na entrega (DU-E / RUC)
-   * @return documento
-  **/
-  @JsonProperty("documento")
-  @NotNull
-  public List<Documento> getDocumento() {
-    return documento;
-  }
+@ApiModel(description = "Documentos de carga envolvidos na entrega (DU-E / RUC)")
+public class Documentos {
 
-  public void setDocumento(List<Documento> documento) {
-    this.documento = documento;
-  }
+    @XmlElement(name = "documento", required = true)
+    @ApiModelProperty(required = true, value = "Documento de carga envolvidos na entrega (DU-E / RUC)")
+    @Valid
+    /**
+     * Documento de carga envolvidos na entrega (DU-E / RUC)
+     **/
+    private List<Documento> documento = new ArrayList<>();
 
-  public Documentos documento(List<Documento> documento) {
-    this.documento = documento;
-    return this;
-  }
-
-  public Documentos addDocumentoItem(Documento documentoItem) {
-    this.documento.add(documentoItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Documentos {\n");
-    
-    sb.append("    documento: ").append(toIndentedString(documento)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Documento de carga envolvidos na entrega (DU-E / RUC)
+     *
+     * @return documento
+     **/
+    @JsonProperty("documento")
+    @NotNull
+    public List<Documento> getDocumento() {
+        return documento;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setDocumento(List<Documento> documento) {
+        this.documento = documento;
+    }
+
+    public Documentos documento(List<Documento> documento) {
+        this.documento = documento;
+        return this;
+    }
+
+    public Documentos addDocumentoItem(Documento documentoItem) {
+        this.documento.add(documentoItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class Documentos {\n" +
+                "    documento: " + toIndentedString(documento) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

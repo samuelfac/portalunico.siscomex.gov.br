@@ -4,70 +4,102 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "Veiculo", propOrder =
-    { "chassi"
-})
+@XmlType(name = "Veiculo", propOrder =
+        {"placa", "lacres"
+        })
 
-@XmlRootElement(name="Veiculo")
+@XmlRootElement(name = "Veiculo")
 /**
-  * Dados informados para carga do tipo veículos
+ * Dados do veículo
  **/
-@ApiModel(description="Dados informados para carga do tipo veículos")
-public class Veiculo  {
-  
-  @XmlElement(name="chassi", required = true)
-  @ApiModelProperty(example = "9BWZZZ377VT004251 ", required = true, value = "Chassi do veículo<br>Tamanho: 20")
- /**
-   * Chassi do veículo<br>Tamanho: 20
-  **/
-  private String chassi = null;
- /**
-   * Chassi do veículo&lt;br&gt;Tamanho: 20
-   * @return chassi
-  **/
-  @JsonProperty("chassi")
-  @NotNull
-  public String getChassi() {
-    return chassi;
-  }
+@ApiModel(description = "Dados do veículo")
+public class Veiculo {
 
-  public void setChassi(String chassi) {
-    this.chassi = chassi;
-  }
+    @XmlElement(name = "placa")
+    @ApiModelProperty(example = "TTT1234", value = "Placa do veículo<br>Tamanho: 15")
+    /**
+     * Placa do veículo<br>Tamanho: 15
+     **/
+    private String placa = null;
 
-  public Veiculo chassi(String chassi) {
-    this.chassi = chassi;
-    return this;
-  }
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(example = "[12345,54321]", value = "Lista com os códigos dos lacres vinculados ao veículo<br>Tamanho de cada lacre: 15")
+    /**
+     * Lista com os códigos dos lacres vinculados ao veículo<br>Tamanho de cada lacre: 15
+     **/
+    private List<String> lacres = null;
 
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Veiculo {\n");
-    
-    sb.append("    chassi: ").append(toIndentedString(chassi)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Placa do veículo&lt;br&gt;Tamanho: 15
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public Veiculo placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Lista com os códigos dos lacres vinculados ao veículo&lt;br&gt;Tamanho de cada lacre: 15
+     *
+     * @return lacres
+     **/
+    @JsonProperty("lacres")
+    public List<String> getLacres() {
+        return lacres;
+    }
+
+    public void setLacres(List<String> lacres) {
+        this.lacres = lacres;
+    }
+
+    public Veiculo lacres(List<String> lacres) {
+        this.lacres = lacres;
+        return this;
+    }
+
+    public Veiculo addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class Veiculo {\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

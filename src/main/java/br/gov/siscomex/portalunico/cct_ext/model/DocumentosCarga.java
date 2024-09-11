@@ -13,87 +13,89 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DocumentosCarga", propOrder =
-    { "nivel", "documentos"
-})
+@XmlType(name = "DocumentosCarga", propOrder =
+        {"nivel", "documentos"
+        })
 
-@XmlRootElement(name="DocumentosCarga")
+@XmlRootElement(name = "DocumentosCarga")
 /**
-  * Documentos de carga
+ * Documentos de carga
  **/
-@ApiModel(description="Documentos de carga")
-public class DocumentosCarga  {
-  
-  @XmlElement(name="nivel")
-  @ApiModelProperty(value = "")
-  private String nivel = null;
+@ApiModel(description = "Documentos de carga")
+public class DocumentosCarga {
 
-  @XmlElement(name="documentos")
-  @ApiModelProperty(value = "")
-  @Valid
-  private List<DocumentoCarga> documentos = null;
- /**
-   * Get nivel
-   * @return nivel
-  **/
-  @JsonProperty("nivel")
-  public String getNivel() {
-    return nivel;
-  }
+    @XmlElement(name = "nivel")
+    @ApiModelProperty(value = "")
+    private String nivel = null;
 
-  public void setNivel(String nivel) {
-    this.nivel = nivel;
-  }
+    @XmlElement(name = "documentos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DocumentoCarga> documentos = null;
 
-  public DocumentosCarga nivel(String nivel) {
-    this.nivel = nivel;
-    return this;
-  }
-
- /**
-   * Get documentos
-   * @return documentos
-  **/
-  @JsonProperty("documentos")
-  public List<DocumentoCarga> getDocumentos() {
-    return documentos;
-  }
-
-  public void setDocumentos(List<DocumentoCarga> documentos) {
-    this.documentos = documentos;
-  }
-
-  public DocumentosCarga documentos(List<DocumentoCarga> documentos) {
-    this.documentos = documentos;
-    return this;
-  }
-
-  public DocumentosCarga addDocumentosItem(DocumentoCarga documentosItem) {
-    this.documentos.add(documentosItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentosCarga {\n");
-    
-    sb.append("    nivel: ").append(toIndentedString(nivel)).append("\n");
-    sb.append("    documentos: ").append(toIndentedString(documentos)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get nivel
+     *
+     * @return nivel
+     **/
+    @JsonProperty("nivel")
+    public String getNivel() {
+        return nivel;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
+    }
+
+    public DocumentosCarga nivel(String nivel) {
+        this.nivel = nivel;
+        return this;
+    }
+
+    /**
+     * Get documentos
+     *
+     * @return documentos
+     **/
+    @JsonProperty("documentos")
+    public List<DocumentoCarga> getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(List<DocumentoCarga> documentos) {
+        this.documentos = documentos;
+    }
+
+    public DocumentosCarga documentos(List<DocumentoCarga> documentos) {
+        this.documentos = documentos;
+        return this;
+    }
+
+    public DocumentosCarga addDocumentosItem(DocumentoCarga documentosItem) {
+        this.documentos.add(documentosItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentosCarga {\n" +
+                "    nivel: " + toIndentedString(nivel) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

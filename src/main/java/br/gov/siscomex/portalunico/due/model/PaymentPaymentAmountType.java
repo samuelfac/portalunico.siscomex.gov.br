@@ -12,55 +12,56 @@ import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "PaymentPaymentAmountType", propOrder =
-    { "value"
-})
+@XmlType(name = "PaymentPaymentAmountType", propOrder =
+        {"value"
+        })
 
-@XmlRootElement(name="PaymentPaymentAmountType")
-public class PaymentPaymentAmountType  {
-  
-  @XmlElement(name="value")
-  @ApiModelProperty(value = "")
-  @Valid
-  private BigDecimal value = null;
- /**
-   * Get value
-   * @return value
-  **/
-  @JsonProperty("value")
-  public BigDecimal getValue() {
-    return value;
-  }
+@XmlRootElement(name = "PaymentPaymentAmountType")
+public class PaymentPaymentAmountType {
 
-  public void setValue(BigDecimal value) {
-    this.value = value;
-  }
+    @XmlElement(name = "value")
+    @ApiModelProperty(value = "")
+    @Valid
+    private BigDecimal value = null;
 
-  public PaymentPaymentAmountType value(BigDecimal value) {
-    this.value = value;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentPaymentAmountType {\n");
-    
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get value
+     *
+     * @return value
+     **/
+    @JsonProperty("value")
+    public BigDecimal getValue() {
+        return value;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public PaymentPaymentAmountType value(BigDecimal value) {
+        this.value = value;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class PaymentPaymentAmountType {\n" +
+                "    value: " + toIndentedString(value) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

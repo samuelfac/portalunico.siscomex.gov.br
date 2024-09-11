@@ -10,54 +10,55 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "CommunicationIdentificationIDType", propOrder =
-    { "value"
-})
+@XmlType(name = "CommunicationIdentificationIDType", propOrder =
+        {"value"
+        })
 
-@XmlRootElement(name="CommunicationIdentificationIDType")
-public class CommunicationIdentificationIDType  {
-  
-  @XmlElement(name="value")
-  @ApiModelProperty(value = "")
-  private String value = null;
- /**
-   * Get value
-   * @return value
-  **/
-  @JsonProperty("value")
-  public String getValue() {
-    return value;
-  }
+@XmlRootElement(name = "CommunicationIdentificationIDType")
+public class CommunicationIdentificationIDType {
 
-  public void setValue(String value) {
-    this.value = value;
-  }
+    @XmlElement(name = "value")
+    @ApiModelProperty(value = "")
+    private String value = null;
 
-  public CommunicationIdentificationIDType value(String value) {
-    this.value = value;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class CommunicationIdentificationIDType {\n");
-    
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get value
+     *
+     * @return value
+     **/
+    @JsonProperty("value")
+    public String getValue() {
+        return value;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public CommunicationIdentificationIDType value(String value) {
+        this.value = value;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class CommunicationIdentificationIDType {\n" +
+                "    value: " + toIndentedString(value) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

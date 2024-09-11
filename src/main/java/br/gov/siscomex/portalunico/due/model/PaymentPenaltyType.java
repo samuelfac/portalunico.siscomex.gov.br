@@ -12,55 +12,56 @@ import javax.xml.bind.annotation.XmlType;
 import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "PaymentPenaltyType", propOrder =
-    { "value"
-})
+@XmlType(name = "PaymentPenaltyType", propOrder =
+        {"value"
+        })
 
-@XmlRootElement(name="PaymentPenaltyType")
-public class PaymentPenaltyType  {
-  
-  @XmlElement(name="value")
-  @ApiModelProperty(value = "")
-  @Valid
-  private BigDecimal value = null;
- /**
-   * Get value
-   * @return value
-  **/
-  @JsonProperty("value")
-  public BigDecimal getValue() {
-    return value;
-  }
+@XmlRootElement(name = "PaymentPenaltyType")
+public class PaymentPenaltyType {
 
-  public void setValue(BigDecimal value) {
-    this.value = value;
-  }
+    @XmlElement(name = "value")
+    @ApiModelProperty(value = "")
+    @Valid
+    private BigDecimal value = null;
 
-  public PaymentPenaltyType value(BigDecimal value) {
-    this.value = value;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentPenaltyType {\n");
-    
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get value
+     *
+     * @return value
+     **/
+    @JsonProperty("value")
+    public BigDecimal getValue() {
+        return value;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setValue(BigDecimal value) {
+        this.value = value;
+    }
+
+    public PaymentPenaltyType value(BigDecimal value) {
+        this.value = value;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class PaymentPenaltyType {\n" +
+                "    value: " + toIndentedString(value) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

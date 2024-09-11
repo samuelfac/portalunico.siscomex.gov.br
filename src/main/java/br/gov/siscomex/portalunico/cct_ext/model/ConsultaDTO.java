@@ -10,77 +10,79 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ConsultaDTO", propOrder =
-    { "numero", "urlConsulta"
-})
+@XmlType(name = "ConsultaDTO", propOrder =
+        {"numero", "urlConsulta"
+        })
 
-@XmlRootElement(name="ConsultaDTO")
-public class ConsultaDTO  {
-  
-  @XmlElement(name="numero")
-  @ApiModelProperty(value = "")
-  private String numero = null;
+@XmlRootElement(name = "ConsultaDTO")
+public class ConsultaDTO {
 
-  @XmlElement(name="urlConsulta")
-  @ApiModelProperty(value = "")
-  private String urlConsulta = null;
- /**
-   * Get numero
-   * @return numero
-  **/
-  @JsonProperty("numero")
-  public String getNumero() {
-    return numero;
-  }
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "")
+    private String numero = null;
 
-  public void setNumero(String numero) {
-    this.numero = numero;
-  }
+    @XmlElement(name = "urlConsulta")
+    @ApiModelProperty(value = "")
+    private String urlConsulta = null;
 
-  public ConsultaDTO numero(String numero) {
-    this.numero = numero;
-    return this;
-  }
-
- /**
-   * Get urlConsulta
-   * @return urlConsulta
-  **/
-  @JsonProperty("urlConsulta")
-  public String getUrlConsulta() {
-    return urlConsulta;
-  }
-
-  public void setUrlConsulta(String urlConsulta) {
-    this.urlConsulta = urlConsulta;
-  }
-
-  public ConsultaDTO urlConsulta(String urlConsulta) {
-    this.urlConsulta = urlConsulta;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ConsultaDTO {\n");
-    
-    sb.append("    numero: ").append(toIndentedString(numero)).append("\n");
-    sb.append("    urlConsulta: ").append(toIndentedString(urlConsulta)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get numero
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public ConsultaDTO numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    /**
+     * Get urlConsulta
+     *
+     * @return urlConsulta
+     **/
+    @JsonProperty("urlConsulta")
+    public String getUrlConsulta() {
+        return urlConsulta;
+    }
+
+    public void setUrlConsulta(String urlConsulta) {
+        this.urlConsulta = urlConsulta;
+    }
+
+    public ConsultaDTO urlConsulta(String urlConsulta) {
+        this.urlConsulta = urlConsulta;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ConsultaDTO {\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    urlConsulta: " + toIndentedString(urlConsulta) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

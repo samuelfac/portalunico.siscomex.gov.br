@@ -15,68 +15,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "EntregasDocumentoCarga", propOrder =
-    { "entregaDocumentoCarga"
-})
+@XmlType(name = "EntregasDocumentoCarga", propOrder =
+        {"entregaDocumentoCarga"
+        })
 
-@XmlRootElement(name="EntregasDocumentoCarga")
+@XmlRootElement(name = "EntregasDocumentoCarga")
 /**
-  * Entregas por Documento de Carga<br>Máximo de ocorrências: 1
+ * Entregas por Documento de Carga<br>Máximo de ocorrências: 1
  **/
-@ApiModel(description="Entregas por Documento de Carga<br>Máximo de ocorrências: 1")
-public class EntregasDocumentoCarga  {
-  
-  @XmlElement(name="entregaDocumentoCarga", required = true)
-  @ApiModelProperty(required = true, value = "Entrega por Documento de Carga")
-  @Valid
- /**
-   * Entrega por Documento de Carga
-  **/
-  private List<EntregaDocumentoCarga> entregaDocumentoCarga = new ArrayList<>();
- /**
-   * Entrega por Documento de Carga
-   * @return entregaDocumentoCarga
-  **/
-  @JsonProperty("entregaDocumentoCarga")
-  @NotNull
-  public List<EntregaDocumentoCarga> getEntregaDocumentoCarga() {
-    return entregaDocumentoCarga;
-  }
+@ApiModel(description = "Entregas por Documento de Carga<br>Máximo de ocorrências: 1")
+public class EntregasDocumentoCarga {
 
-  public void setEntregaDocumentoCarga(List<EntregaDocumentoCarga> entregaDocumentoCarga) {
-    this.entregaDocumentoCarga = entregaDocumentoCarga;
-  }
+    @XmlElement(name = "entregaDocumentoCarga", required = true)
+    @ApiModelProperty(required = true, value = "Entrega por Documento de Carga")
+    @Valid
+    /**
+     * Entrega por Documento de Carga
+     **/
+    private List<EntregaDocumentoCarga> entregaDocumentoCarga = new ArrayList<>();
 
-  public EntregasDocumentoCarga entregaDocumentoCarga(List<EntregaDocumentoCarga> entregaDocumentoCarga) {
-    this.entregaDocumentoCarga = entregaDocumentoCarga;
-    return this;
-  }
-
-  public EntregasDocumentoCarga addEntregaDocumentoCargaItem(EntregaDocumentoCarga entregaDocumentoCargaItem) {
-    this.entregaDocumentoCarga.add(entregaDocumentoCargaItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class EntregasDocumentoCarga {\n");
-    
-    sb.append("    entregaDocumentoCarga: ").append(toIndentedString(entregaDocumentoCarga)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Entrega por Documento de Carga
+     *
+     * @return entregaDocumentoCarga
+     **/
+    @JsonProperty("entregaDocumentoCarga")
+    @NotNull
+    public List<EntregaDocumentoCarga> getEntregaDocumentoCarga() {
+        return entregaDocumentoCarga;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setEntregaDocumentoCarga(List<EntregaDocumentoCarga> entregaDocumentoCarga) {
+        this.entregaDocumentoCarga = entregaDocumentoCarga;
+    }
+
+    public EntregasDocumentoCarga entregaDocumentoCarga(List<EntregaDocumentoCarga> entregaDocumentoCarga) {
+        this.entregaDocumentoCarga = entregaDocumentoCarga;
+        return this;
+    }
+
+    public EntregasDocumentoCarga addEntregaDocumentoCargaItem(EntregaDocumentoCarga entregaDocumentoCargaItem) {
+        this.entregaDocumentoCarga.add(entregaDocumentoCargaItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class EntregasDocumentoCarga {\n" +
+                "    entregaDocumentoCarga: " + toIndentedString(entregaDocumentoCarga) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

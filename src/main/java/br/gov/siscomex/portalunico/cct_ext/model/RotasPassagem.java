@@ -13,67 +13,68 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "RotasPassagem", propOrder =
-    { "rotaPassagem"
-})
+@XmlType(name = "RotasPassagem", propOrder =
+        {"rotaPassagem"
+        })
 
-@XmlRootElement(name="RotasPassagem")
+@XmlRootElement(name = "RotasPassagem")
 /**
-  * Rotas de Passagem
+ * Rotas de Passagem
  **/
-@ApiModel(description="Rotas de Passagem")
-public class RotasPassagem  {
-  
-  @XmlElement(name="rotaPassagem")
-  @ApiModelProperty(value = "Rotas de Passagem")
-  @Valid
- /**
-   * Rotas de Passagem
-  **/
-  private List<RotaPassagem> rotaPassagem = null;
- /**
-   * Rotas de Passagem
-   * @return rotaPassagem
-  **/
-  @JsonProperty("rotaPassagem")
-  public List<RotaPassagem> getRotaPassagem() {
-    return rotaPassagem;
-  }
+@ApiModel(description = "Rotas de Passagem")
+public class RotasPassagem {
 
-  public void setRotaPassagem(List<RotaPassagem> rotaPassagem) {
-    this.rotaPassagem = rotaPassagem;
-  }
+    @XmlElement(name = "rotaPassagem")
+    @ApiModelProperty(value = "Rotas de Passagem")
+    @Valid
+    /**
+     * Rotas de Passagem
+     **/
+    private List<RotaPassagem> rotaPassagem = null;
 
-  public RotasPassagem rotaPassagem(List<RotaPassagem> rotaPassagem) {
-    this.rotaPassagem = rotaPassagem;
-    return this;
-  }
-
-  public RotasPassagem addRotaPassagemItem(RotaPassagem rotaPassagemItem) {
-    this.rotaPassagem.add(rotaPassagemItem);
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class RotasPassagem {\n");
-    
-    sb.append("    rotaPassagem: ").append(toIndentedString(rotaPassagem)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Rotas de Passagem
+     *
+     * @return rotaPassagem
+     **/
+    @JsonProperty("rotaPassagem")
+    public List<RotaPassagem> getRotaPassagem() {
+        return rotaPassagem;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setRotaPassagem(List<RotaPassagem> rotaPassagem) {
+        this.rotaPassagem = rotaPassagem;
+    }
+
+    public RotasPassagem rotaPassagem(List<RotaPassagem> rotaPassagem) {
+        this.rotaPassagem = rotaPassagem;
+        return this;
+    }
+
+    public RotasPassagem addRotaPassagemItem(RotaPassagem rotaPassagemItem) {
+        this.rotaPassagem.add(rotaPassagemItem);
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class RotasPassagem {\n" +
+                "    rotaPassagem: " + toIndentedString(rotaPassagem) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

@@ -10,77 +10,103 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ItemAtributoListaConsultaDTO", propOrder =
-    { "codigo", "descricao"
-})
+@XmlType(name = "ItemAtributoListaConsultaDTO", propOrder =
+        {"codigo", "descricao", "filtro"
+        })
 
-@XmlRootElement(name="ItemAtributoListaConsultaDTO")
-public class ItemAtributoListaConsultaDTO  {
-  
-  @XmlElement(name="codigo")
-  @ApiModelProperty(value = "")
-  private String codigo = null;
+@XmlRootElement(name = "ItemAtributoListaConsultaDTO")
+public class ItemAtributoListaConsultaDTO {
 
-  @XmlElement(name="descricao")
-  @ApiModelProperty(value = "")
-  private String descricao = null;
- /**
-   * Get codigo
-   * @return codigo
-  **/
-  @JsonProperty("codigo")
-  public String getCodigo() {
-    return codigo;
-  }
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(value = "")
+    private String codigo = null;
 
-  public void setCodigo(String codigo) {
-    this.codigo = codigo;
-  }
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(value = "")
+    private String descricao = null;
 
-  public ItemAtributoListaConsultaDTO codigo(String codigo) {
-    this.codigo = codigo;
-    return this;
-  }
+    @XmlElement(name = "filtro")
+    @ApiModelProperty(value = "")
+    private String filtro = null;
 
- /**
-   * Get descricao
-   * @return descricao
-  **/
-  @JsonProperty("descricao")
-  public String getDescricao() {
-    return descricao;
-  }
-
-  public void setDescricao(String descricao) {
-    this.descricao = descricao;
-  }
-
-  public ItemAtributoListaConsultaDTO descricao(String descricao) {
-    this.descricao = descricao;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ItemAtributoListaConsultaDTO {\n");
-    
-    sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
-    sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Get codigo
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    public String getCodigo() {
+        return codigo;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public ItemAtributoListaConsultaDTO codigo(String codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+    /**
+     * Get descricao
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public ItemAtributoListaConsultaDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    /**
+     * Get filtro
+     *
+     * @return filtro
+     **/
+    @JsonProperty("filtro")
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }
+
+    public ItemAtributoListaConsultaDTO filtro(String filtro) {
+        this.filtro = filtro;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ItemAtributoListaConsultaDTO {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    filtro: " + toIndentedString(filtro) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 

@@ -10,57 +10,58 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "ChaveDsic", propOrder =
-    { "identificacaoDSIC"
-})
+@XmlType(name = "ChaveDsic", propOrder =
+        {"identificacaoDSIC"
+        })
 
-@XmlRootElement(name="ChaveDsic")
-public class ChaveDsic  {
-  
-  @XmlElement(name="identificacaoDSIC")
-  @ApiModelProperty(example = "D2000000035", value = "Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN")
- /**
-   * Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN
-  **/
-  private String identificacaoDSIC = null;
- /**
-   * Número de identificação do DSIC&lt;br/&gt;Tamanho: 11&lt;br/&gt; Formato: ANNNNNNNNNN
-   * @return identificacaoDSIC
-  **/
-  @JsonProperty("identificacaoDSIC")
-  public String getIdentificacaoDSIC() {
-    return identificacaoDSIC;
-  }
+@XmlRootElement(name = "ChaveDsic")
+public class ChaveDsic {
 
-  public void setIdentificacaoDSIC(String identificacaoDSIC) {
-    this.identificacaoDSIC = identificacaoDSIC;
-  }
+    @XmlElement(name = "identificacaoDSIC")
+    @ApiModelProperty(example = "D2000000035", value = "Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN")
+    /**
+     * Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN
+     **/
+    private String identificacaoDSIC = null;
 
-  public ChaveDsic identificacaoDSIC(String identificacaoDSIC) {
-    this.identificacaoDSIC = identificacaoDSIC;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ChaveDsic {\n");
-    
-    sb.append("    identificacaoDSIC: ").append(toIndentedString(identificacaoDSIC)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Número de identificação do DSIC&lt;br/&gt;Tamanho: 11&lt;br/&gt; Formato: ANNNNNNNNNN
+     *
+     * @return identificacaoDSIC
+     **/
+    @JsonProperty("identificacaoDSIC")
+    public String getIdentificacaoDSIC() {
+        return identificacaoDSIC;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setIdentificacaoDSIC(String identificacaoDSIC) {
+        this.identificacaoDSIC = identificacaoDSIC;
+    }
+
+    public ChaveDsic identificacaoDSIC(String identificacaoDSIC) {
+        this.identificacaoDSIC = identificacaoDSIC;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ChaveDsic {\n" +
+                "    identificacaoDSIC: " + toIndentedString(identificacaoDSIC) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 }
 
