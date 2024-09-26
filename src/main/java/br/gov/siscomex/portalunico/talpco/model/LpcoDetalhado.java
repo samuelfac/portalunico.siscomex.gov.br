@@ -461,7 +461,6 @@ public class LpcoDetalhado {
 
     /**
      * Informações adicionais prestadas pelo importador/exportador
-     *
      * @return informacaoAdicional
      **/
     @JsonProperty("informacaoAdicional")
@@ -480,7 +479,6 @@ public class LpcoDetalhado {
 
     /**
      * Chave de acesso do LPCO para Acesso Público&lt;br&gt;Tamanho mínimo: 32&lt;br&gt;Tamanho máximo:32&lt;br&gt;Formato: valor hexadecimal
-     *
      * @return chaveAcesso
      **/
     @JsonProperty("chaveAcesso")
@@ -520,7 +518,6 @@ public class LpcoDetalhado {
 
     /**
      * Indica se há um pedido de retificação do LPCO ainda pendente
-     *
      * @return retificacaoPendente
      **/
     @JsonProperty("retificacaoPendente")
@@ -540,7 +537,6 @@ public class LpcoDetalhado {
 
     /**
      * Momento no qual o LPCO foi registrado&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
-     *
      * @return dataRegistro
      **/
     @JsonProperty("dataRegistro")
@@ -585,7 +581,6 @@ public class LpcoDetalhado {
 
     /**
      * Lista dos itens do LPCO. Contém campos como NCM e código do produto de cada item do LPCO, entre outros.
-     *
      * @return listaNcm
      **/
     @JsonProperty("listaNcm")
@@ -609,7 +604,6 @@ public class LpcoDetalhado {
 
     /**
      * Lista de documentos \&quot;DU-E\&quot; ou \&quot;Duimp\&quot; que estão vinculados ao LPCO.
-     *
      * @return listaVinculos
      **/
     @JsonProperty("listaVinculos")
@@ -633,7 +627,6 @@ public class LpcoDetalhado {
 
     /**
      * Saldos restantes do LPCO, caso o LPCO tenha cotas.
-     *
      * @return saldos
      **/
     @JsonProperty("saldos")
@@ -657,7 +650,6 @@ public class LpcoDetalhado {
 
     /**
      * Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
-     *
      * @return numeroConhecimento
      **/
     @JsonProperty("numeroConhecimento")
@@ -698,7 +690,6 @@ public class LpcoDetalhado {
 
     /**
      * Data de hora do embarque de carga. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
-     *
      * @return dataHoraEmbarque
      **/
     @JsonProperty("dataHoraEmbarque")
@@ -717,7 +708,6 @@ public class LpcoDetalhado {
 
     /**
      * Data de hora da presença de carga. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
-     *
      * @return dataHoraPresencaCarga
      **/
     @JsonProperty("dataHoraPresencaCarga")
@@ -736,7 +726,6 @@ public class LpcoDetalhado {
 
     /**
      * Canal. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
-     *
      * @return canal
      **/
     @JsonProperty("canal")
@@ -758,7 +747,6 @@ public class LpcoDetalhado {
 
     /**
      * Get situacaoPagamentoTaxa
-     *
      * @return situacaoPagamentoTaxa
      **/
     @JsonProperty("situacaoPagamentoTaxa")

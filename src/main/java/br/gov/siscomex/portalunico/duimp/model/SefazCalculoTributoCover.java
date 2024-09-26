@@ -434,7 +434,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor calculado em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorCalculado
      **/
     @JsonProperty("valorCalculado")
@@ -453,7 +452,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor a reduzir em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorAReduzir
      **/
     @JsonProperty("valorAReduzir")
@@ -472,7 +470,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor devido em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorDevido
      **/
     @JsonProperty("valorDevido")
@@ -491,7 +488,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor suspenso em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorSuspenso
      **/
     @JsonProperty("valorSuspenso")
@@ -510,7 +506,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor do imposto a recolher em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return impostoARecolher
      **/
     @JsonProperty("impostoARecolher")
@@ -529,7 +524,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor normal em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorNormal
      **/
     @JsonProperty("valorNormal")
@@ -548,7 +542,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor originalmente devido em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o &#39;Indicador de cobrança do tributo suspenso&#39; &#x3D; Sim&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorOriginalmenteDevido
      **/
     @JsonProperty("valorOriginalmenteDevido")

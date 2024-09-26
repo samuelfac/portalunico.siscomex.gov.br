@@ -967,7 +967,6 @@ public class SolicitacaoCalculoIcmsDto {
 
     /**
      * UF importador
-     *
      * @return ufImportador
      **/
     @JsonProperty("ufImportador")
@@ -990,7 +989,6 @@ public class SolicitacaoCalculoIcmsDto {
 
     /**
      * Valor do AFRMM no momento da criação da solicitação&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorAfrmm
      **/
     @JsonProperty("valorAfrmm")
@@ -1010,7 +1008,6 @@ public class SolicitacaoCalculoIcmsDto {
 
     /**
      * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorDespesasAduaneiras
      **/
     @JsonProperty("valorDespesasAduaneiras")
@@ -1029,7 +1026,6 @@ public class SolicitacaoCalculoIcmsDto {
 
     /**
      * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDeclaracao
      **/
     @JsonProperty("versaoDeclaracao")

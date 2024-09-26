@@ -250,7 +250,6 @@ public class DeclarationNFe {
 
     /**
      * Get id
-     *
      * @return id
      **/
     @JsonProperty("id")

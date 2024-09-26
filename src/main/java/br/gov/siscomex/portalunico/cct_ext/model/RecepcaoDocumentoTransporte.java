@@ -270,7 +270,6 @@ public class RecepcaoDocumentoTransporte {
 
     /**
      * Código de identificação da carga
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -327,7 +326,6 @@ public class RecepcaoDocumentoTransporte {
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")

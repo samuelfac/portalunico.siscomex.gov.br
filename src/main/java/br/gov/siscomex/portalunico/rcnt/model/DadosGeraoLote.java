@@ -591,7 +591,6 @@ public class DadosGeraoLote {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -611,7 +610,6 @@ public class DadosGeraoLote {
 
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroManifesto
      **/
     @JsonProperty("numeroManifesto")
@@ -671,7 +669,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimento
      **/
     @JsonProperty("numeroConhecimento")
@@ -690,7 +687,6 @@ public class DadosGeraoLote {
 
     /**
      * Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipoConhecimento
      **/
     @JsonProperty("tipoConhecimento")
@@ -709,7 +705,6 @@ public class DadosGeraoLote {
 
     /**
      * Número da RUC (Referência Única da Carga) / UCR (Unique Consignment Reference).&lt;br/&gt;Tamanho: 35
-     *
      * @return numeroRUC
      **/
     @JsonProperty("numeroRUC")
@@ -728,7 +723,6 @@ public class DadosGeraoLote {
 
     /**
      * Get declaracaoAduaneira
-     *
      * @return declaracaoAduaneira
      **/
     @JsonProperty("declaracaoAduaneira")
@@ -747,7 +741,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de chaves das NFE que amparam o transporte.
-     *
      * @return listaNfe
      **/
     @JsonProperty("listaNfe")
@@ -771,7 +764,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
-     *
      * @return listaMalas
      **/
     @JsonProperty("listaMalas")
@@ -795,7 +787,6 @@ public class DadosGeraoLote {
 
     /**
      * CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
      * @return cnpjResponsavelAnterior
      **/
     @JsonProperty("cnpjResponsavelAnterior")
@@ -814,7 +805,6 @@ public class DadosGeraoLote {
 
     /**
      * Código Siscomex do recinto de origem. No modal aéreo, deve ser preenchido na troca de responsabilidade entre depositários.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecintoOrigem
      **/
     @JsonProperty("codigoRecintoOrigem")
@@ -833,7 +823,6 @@ public class DadosGeraoLote {
 
     /**
      * Peso manifestado total da carga, ou seja, do conhecimento.&lt;br/&gt;&lt;br/&gt;pesoManifesto, até 4 casas decimais.
-     *
      * @return pesoManifesto
      **/
     @JsonProperty("pesoManifesto")
@@ -876,7 +865,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
-     *
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -895,7 +883,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
      * @return identificacaoUld
      **/
     @JsonProperty("identificacaoUld")
@@ -914,7 +901,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
-     *
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
@@ -938,7 +924,6 @@ public class DadosGeraoLote {
 
     /**
      * Get navio
-     *
      * @return navio
      **/
     @JsonProperty("navio")
@@ -957,7 +942,6 @@ public class DadosGeraoLote {
 
     /**
      * Código IATA da aeronave&lt;br/&gt;Tamanho: 50
-     *
      * @return iataAeronave
      **/
     @JsonProperty("iataAeronave")
@@ -976,7 +960,6 @@ public class DadosGeraoLote {
 
     /**
      * Prefixo da Aeronave&lt;br/&gt;Tamanho: 20
-     *
      * @return prefixoAeronave
      **/
     @JsonProperty("prefixoAeronave")
@@ -995,7 +978,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação da viagem.&lt;br/&gt;Tamanho: 20&lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")
@@ -1014,7 +996,6 @@ public class DadosGeraoLote {
 
     /**
      * Escala&lt;br/&gt;Tamanho: 20
-     *
      * @return escala
      **/
     @JsonProperty("escala")
@@ -1033,7 +1014,6 @@ public class DadosGeraoLote {
 
     /**
      * Aeroporto de origem da carga - Código IATA&lt;br/&gt;Tamanho: 3
-     *
      * @return aeroportoOrigem
      **/
     @JsonProperty("aeroportoOrigem")
@@ -1052,7 +1032,6 @@ public class DadosGeraoLote {
 
     /**
      * Placa semirreboque/vagão&lt;br/&gt;Tamanho: 50Placa semirreboque/vagão.
-     *
      * @return placaSemirreboque
      **/
     @JsonProperty("placaSemirreboque")
@@ -1095,7 +1074,6 @@ public class DadosGeraoLote {
 
     /**
      * Mercadoria Perecível&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return perecivel
      **/
     @JsonProperty("perecivel")
@@ -1114,7 +1092,6 @@ public class DadosGeraoLote {
 
     /**
      * Carga Solta&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return cargaSolta
      **/
     @JsonProperty("cargaSolta")
@@ -1155,7 +1132,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")
@@ -1179,7 +1155,6 @@ public class DadosGeraoLote {
 
     /**
      * Observações da recepção da carga&lt;br/&gt;Tamanho: 200
-     *
      * @return observacaoRecepcao
      **/
     @JsonProperty("observacaoRecepcao")
@@ -1198,7 +1173,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de lotes
-     *
      * @return lotes
      **/
     @JsonProperty("lotes")

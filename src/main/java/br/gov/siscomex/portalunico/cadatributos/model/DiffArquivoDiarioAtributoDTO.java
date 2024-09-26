@@ -256,7 +256,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get wcoid
-     *
      * @return wcoid
      **/
     @JsonProperty("wcoid")
@@ -313,7 +312,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get tamanhoMaximo
-     *
      * @return tamanhoMaximo
      **/
     @JsonProperty("tamanhoMaximo")
@@ -332,7 +330,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get mascara
-     *
      * @return mascara
      **/
     @JsonProperty("mascara")
@@ -351,7 +348,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get casasDecimais
-     *
      * @return casasDecimais
      **/
     @JsonProperty("casasDecimais")
@@ -370,7 +366,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get modalidade
-     *
      * @return modalidade
      **/
     @JsonProperty("modalidade")
@@ -389,7 +384,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get obrigatorio
-     *
      * @return obrigatorio
      **/
     @JsonProperty("obrigatorio")
@@ -427,7 +421,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get dataFimVigencia
-     *
      * @return dataFimVigencia
      **/
     @JsonProperty("dataFimVigencia")
@@ -446,7 +439,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get informacaoAdicional
-     *
      * @return informacaoAdicional
      **/
     @JsonProperty("informacaoAdicional")
@@ -465,7 +457,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get dominio
-     *
      * @return dominio
      **/
     @JsonProperty("dominio")
@@ -484,7 +475,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get objetivos
-     *
      * @return objetivos
      **/
     @JsonProperty("objetivos")
@@ -503,7 +493,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get orgaos
-     *
      * @return orgaos
      **/
     @JsonProperty("orgaos")
@@ -541,7 +530,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get condicionados
-     *
      * @return condicionados
      **/
     @JsonProperty("condicionados")
@@ -560,7 +548,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get listaSubatributos
-     *
      * @return listaSubatributos
      **/
     @JsonProperty("listaSubatributos")
@@ -579,7 +566,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get multivalorado
-     *
      * @return multivalorado
      **/
     @JsonProperty("multivalorado")

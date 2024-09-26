@@ -276,7 +276,6 @@ public class InfoGeral {
 
     /**
      * Observações&lt;br&gt;Tamanho: 250
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")

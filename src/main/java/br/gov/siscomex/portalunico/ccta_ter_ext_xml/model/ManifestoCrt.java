@@ -1049,7 +1049,6 @@ public class ManifestoCrt {
 
     /**
      * Código Locode  da cidade do remetente da carga&lt;br/&gt; Formato: AAAAA
-     *
      * @return cidadeRemetente
      **/
     @JsonProperty("cidadeRemetente")
@@ -1089,7 +1088,6 @@ public class ManifestoCrt {
 
     /**
      * Código postal do endereço do consignatário  estrangeiro&lt;br/&gt; Tamanho Máximo: 8
-     *
      * @return codigoPostalConsignatario
      **/
     @JsonProperty("codigoPostalConsignatario")
@@ -1108,7 +1106,6 @@ public class ManifestoCrt {
 
     /**
      * Código postal do endereço do destinatário da cargaObrigatorio para destinatário brasileiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; true)&lt;br/&gt; Tamanho Máximo: 8
-     *
      * @return codigoPostalDestinatario
      **/
     @JsonProperty("codigoPostalDestinatario")
@@ -1146,7 +1143,6 @@ public class ManifestoCrt {
 
     /**
      * Código postal do endereço do remetente da carga&lt;br/&gt; Tamanho Máximo: 8
-     *
      * @return codigoPostalRemetente
      **/
     @JsonProperty("codigoPostalRemetente")
@@ -1166,7 +1162,6 @@ public class ManifestoCrt {
 
     /**
      * Data de emissão do conhecimento&lt;br/&gt;A data de emissão não pode ser anterior à Data de Implantação do sistema CCT rodoviário menos um mês.  &lt;br/&gt;A data de emissão não pode ser posterior à data atual&lt;br/&gt;(utilizar como chave junto com numero do CRT apenas a a data AAAAMMDD&lt;br/&gt;Formato: yyyyMMddHHmmssZ
-     *
      * @return dataEmissao
      **/
     @JsonProperty("dataEmissao")
@@ -1206,7 +1201,6 @@ public class ManifestoCrt {
 
     /**
      * Qualquer declaração, observação ou instrução relativo ao transporte&lt;br/&gt; Tamanho Máximo: 500
-     *
      * @return declaracaoObservacao
      **/
     @JsonProperty("declaracaoObservacao")
@@ -1226,7 +1220,6 @@ public class ManifestoCrt {
 
     /**
      * Indicador se o destinatário da carga é brasileiro
-     *
      * @return destinatarioNacBrasileira
      **/
     @JsonProperty("destinatarioNacBrasileira")
@@ -1246,7 +1239,6 @@ public class ManifestoCrt {
 
     /**
      * Get documentosApresentados
-     *
      * @return documentosApresentados
      **/
     @JsonProperty("documentosApresentados")
@@ -1270,7 +1262,6 @@ public class ManifestoCrt {
 
     /**
      * E-mail da parte a notificar&lt;br/&gt;Precisar ter formato de email valido&lt;br/&gt; Tamanho Máximo: 100
-     *
      * @return emailParteNotificar
      **/
     @JsonProperty("emailParteNotificar")
@@ -1289,7 +1280,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do estado do endereço do consignatário  estrangeiro&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoConsignatario
      **/
     @JsonProperty("estadoConsignatario")
@@ -1308,7 +1298,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do estado do endereço do destinatário da carga&lt;/br&gt;Obrigatorio para destinatário estrangeiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoDestinatario
      **/
     @JsonProperty("estadoDestinatario")
@@ -1327,7 +1316,6 @@ public class ManifestoCrt {
 
     /**
      * Estado da parte a notificar, quando estrangeiro&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoParteNotificarEstrangeiro
      **/
     @JsonProperty("estadoParteNotificarEstrangeiro")
@@ -1346,7 +1334,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do estado ou província do remetente&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoRemetente
      **/
     @JsonProperty("estadoRemetente")
@@ -1366,7 +1353,6 @@ public class ManifestoCrt {
 
     /**
      * Identificação fiscal do consignatário da carga&lt;br/&gt;quando \&quot;idTipoDocumentoConsignatario\&quot;  for \&quot;F\&quot; ou \&quot;J\&quot; deverá estar ativo no cadastro de CPF/CNPJ&lt;br/&gt; Tamanho Máximo: 35
-     *
      * @return idFiscalConsignatario
      **/
     @JsonProperty("idFiscalConsignatario")
@@ -1386,7 +1372,6 @@ public class ManifestoCrt {
 
     /**
      * Identificação do destinatário da carga&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return idFiscalDestinatario
      **/
     @JsonProperty("idFiscalDestinatario")
@@ -1406,7 +1391,6 @@ public class ManifestoCrt {
 
     /**
      * Identificação fiscal da parte a notificar&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return idFiscalParteNotificar
      **/
     @JsonProperty("idFiscalParteNotificar")
@@ -1425,7 +1409,6 @@ public class ManifestoCrt {
 
     /**
      * Identificação fiscal do remetente da carga&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return idFiscalRemetente
      **/
     @JsonProperty("idFiscalRemetente")
@@ -1445,7 +1428,6 @@ public class ManifestoCrt {
 
     /**
      * Identificação da carga&lt;br/&gt;Se \&quot;paisRemetente\&quot;  for ATIT (*1) , o formato é AAXXXXXXXXX, em que AA &#x3D; \&quot;paisRemetente\&quot;&lt;br/&gt;Se \&quot;paisRemetente\&quot;  não for ATIT, campo de texto livre.&lt;br/&gt;Não pode haver outra carga com a mesma chave \&quot;identificacaoCrt\&quot;+\&quot;dataEmissao\&quot;&lt;br/&gt; Tamanho Máximo: 15
-     *
      * @return identificacaoCrt
      **/
     @JsonProperty("identificacaoCrt")
@@ -1484,7 +1466,6 @@ public class ManifestoCrt {
 
     /**
      * Identificação do transportador Nacional&lt;br/&gt;Se campo transportadorNacBrasileira  igual a \&quot;true\&quot; ( Transportador Nacional) é obrigatório o preenchimento do CNPJ. Este CNPJ deve estar ativo no cadastro de CNPJ e ser validado no Cadastro de Transportadores.&lt;br/&gt; Tamanho: 14
-     *
      * @return identificacaoTransportadorNacional
      **/
     @JsonProperty("identificacaoTransportadorNacional")
@@ -1503,7 +1484,6 @@ public class ManifestoCrt {
 
     /**
      * Indicador do consignatário é brasileiro
-     *
      * @return inConsignatarioNacBrasileira
      **/
     @JsonProperty("inConsignatarioNacBrasileira")
@@ -1522,7 +1502,6 @@ public class ManifestoCrt {
 
     /**
      * Indicador se a parte a notificar da carga é brasileiro
-     *
      * @return inParteNotificarNacBrasileira
      **/
     @JsonProperty("inParteNotificarNacBrasileira")
@@ -1564,7 +1543,6 @@ public class ManifestoCrt {
 
     /**
      * Instruções sobre formalidades de alfândega&lt;br/&gt; Tamanho Máximo: 500
-     *
      * @return instrucaoFormalidadeAlfandega
      **/
     @JsonProperty("instrucaoFormalidadeAlfandega")
@@ -1584,7 +1562,6 @@ public class ManifestoCrt {
 
     /**
      * Get itensCRT
-     *
      * @return itensCRT
      **/
     @JsonProperty("itensCRT")
@@ -1608,7 +1585,6 @@ public class ManifestoCrt {
 
     /**
      * Licença Complementar do Transportador Estrangeiro&lt;br/&gt;Se tipoTransporteTransportador &#x3D; \&quot;REG\&quot; e campo transportadorNacBrasileira  igual a \&quot;false\&quot; ( Transportador estrangeiro) é obrigatório o preenchimento desse campo. &lt;br/&gt; Tamanho Máximo: 6
-     *
      * @return licencaComplementarTransportador
      **/
     @JsonProperty("licencaComplementarTransportador")
@@ -1627,7 +1603,6 @@ public class ManifestoCrt {
 
     /**
      * Licença Originária do Transportador Nacional&lt;br/&gt;Se tipoTransporteTransportador &#x3D; \&quot;REG\&quot; e campo transportadorNacBrasileira  igual a \&quot;true\&quot; ( Transportador Nacional) é obrigatório o preenchimento desse campo&lt;br/&gt; Tamanho Máximo: 6
-     *
      * @return licencaOriginariaTransportador
      **/
     @JsonProperty("licencaOriginariaTransportador")
@@ -1646,7 +1621,6 @@ public class ManifestoCrt {
 
     /**
      * Get manuseiosEspeciaisCarga
-     *
      * @return manuseiosEspeciaisCarga
      **/
     @JsonProperty("manuseiosEspeciaisCarga")
@@ -1694,7 +1668,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do frete da mercadoria do destinatário&lt;br/&gt;Formato: AAA
-     *
      * @return moedaFreteDestinatario
      **/
     @JsonProperty("moedaFreteDestinatario")
@@ -1713,7 +1686,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do frete externo da mercadoria&lt;br/&gt;Formato: AAA
-     *
      * @return moedaFreteExterno
      **/
     @JsonProperty("moedaFreteExterno")
@@ -1733,7 +1705,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do frete da mercadoria do remetente&lt;br/&gt;Formato: AAA
-     *
      * @return moedaFreteRemetente
      **/
     @JsonProperty("moedaFreteRemetente")
@@ -1752,7 +1723,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do valor das mercadorias declarado pelo remetente&lt;br/&gt;Formato: AAA
-     *
      * @return moedaMercadoriaDeclaradoRemetente
      **/
     @JsonProperty("moedaMercadoriaDeclaradoRemetente")
@@ -1771,7 +1741,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do valor da mercadoria no local de embarque no momento em que o transportador se responsabiliza pela carga&lt;br/&gt;Formato: AAA
-     *
      * @return moedaMercadoriaLocalEmbarque
      **/
     @JsonProperty("moedaMercadoriaLocalEmbarque")
@@ -1791,7 +1760,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda de outros custos do destinatario&lt;br/&gt;Formato: AAA
-     *
      * @return moedaOutrosCustosDestinatario
      **/
     @JsonProperty("moedaOutrosCustosDestinatario")
@@ -1810,7 +1778,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda de outros custos do remetente&lt;br/&gt;Formato: AAA
-     *
      * @return moedaOutrosCustosRemetente
      **/
     @JsonProperty("moedaOutrosCustosRemetente")
@@ -1829,7 +1796,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do reembolso da mercadoria - contra entrega&lt;br/&gt;Formato: AAA
-     *
      * @return moedaReembolso
      **/
     @JsonProperty("moedaReembolso")
@@ -1848,7 +1814,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do seguro da mercadoria do destinatário&lt;br/&gt;Formato: AAA
-     *
      * @return moedaSeguroDestinatario
      **/
     @JsonProperty("moedaSeguroDestinatario")
@@ -1867,7 +1832,6 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda do seguro da mercadoria do remetente&lt;br/&gt;Formato: AAA
-     *
      * @return moedaSeguroRemetente
      **/
     @JsonProperty("moedaSeguroRemetente")
@@ -1886,7 +1850,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do consignatário estrangeiro &lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeConsignatario
      **/
     @JsonProperty("nomeConsignatario")
@@ -1905,7 +1868,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do destinatário da carga&lt;/br&gt;Obrigatorio para destinatário estrangeiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeDestinatario
      **/
     @JsonProperty("nomeDestinatario")
@@ -1924,7 +1886,6 @@ public class ManifestoCrt {
 
     /**
      * Nome da parte a notificar, quando estrangeiro&lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeParteNotificarEstrangeiro
      **/
     @JsonProperty("nomeParteNotificarEstrangeiro")
@@ -1943,7 +1904,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do remetente da carga&lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeRemetente
      **/
     @JsonProperty("nomeRemetente")
@@ -1963,7 +1923,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do transportador estrangeiro&lt;br/&gt;Se campo transportadorNacBrasileira  igual a \&quot;false\&quot; ( Transportador estrangeiro) é obrigatório o preenchimento.&lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeTransportadorEstrangeiro
      **/
     @JsonProperty("nomeTransportadorEstrangeiro")
@@ -1982,7 +1941,6 @@ public class ManifestoCrt {
 
     /**
      * Sigla do país do consignatário  estrangeiro&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisConsignatario
      **/
     @JsonProperty("paisConsignatario")
@@ -2001,7 +1959,6 @@ public class ManifestoCrt {
 
     /**
      * Sigla do país do destinatário da carga&lt;/br&gt;Obrigatorio para destinatário estrangeiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; false)&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisDestinatario
      **/
     @JsonProperty("paisDestinatario")
@@ -2020,7 +1977,6 @@ public class ManifestoCrt {
 
     /**
      * Código do país de emissão do CRT&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisEmissao
      **/
     @JsonProperty("paisEmissao")
@@ -2040,7 +1996,6 @@ public class ManifestoCrt {
 
     /**
      * sigla do país de entrega da carga&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisEntrega
      **/
     @JsonProperty("paisEntrega")
@@ -2060,7 +2015,6 @@ public class ManifestoCrt {
 
     /**
      * País onde a mercadoria foi fabricada&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisOrigemMercadoria
      **/
     @JsonProperty("paisOrigemMercadoria")
@@ -2080,7 +2034,6 @@ public class ManifestoCrt {
 
     /**
      * País da parte a notificar, quando estrangeiro&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisParteNotificarEstrangeiro
      **/
     @JsonProperty("paisParteNotificarEstrangeiro")
@@ -2099,7 +2052,6 @@ public class ManifestoCrt {
 
     /**
      * Sigla do país do remetente da carga&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisRemetente
      **/
     @JsonProperty("paisRemetente")
@@ -2119,7 +2071,6 @@ public class ManifestoCrt {
 
     /**
      * Código do país em que o transportador se responsabiliza pela mercadoria&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisTranspResponsMercadoria
      **/
     @JsonProperty("paisTranspResponsMercadoria")
@@ -2139,7 +2090,6 @@ public class ManifestoCrt {
 
     /**
      * Peso bruto da carga em KG&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return pesoBrutoKg
      **/
     @JsonProperty("pesoBrutoKg")
@@ -2159,7 +2109,6 @@ public class ManifestoCrt {
 
     /**
      * Data em que o transportador se compromete com a  entrega da carga&lt;br/&gt;Formato: yyyyMMddHHmmss
-     *
      * @return prazoEntrega
      **/
     @JsonProperty("prazoEntrega")
@@ -2178,7 +2127,6 @@ public class ManifestoCrt {
 
     /**
      * Rua do endereço do consignatário estrangeiro &lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaConsignatario
      **/
     @JsonProperty("ruaConsignatario")
@@ -2197,7 +2145,6 @@ public class ManifestoCrt {
 
     /**
      * Rua do endereço do destinatário da carga&lt;/br&gt;Obrigatorio para destinatário estrangeiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaDestinatario
      **/
     @JsonProperty("ruaDestinatario")
@@ -2216,7 +2163,6 @@ public class ManifestoCrt {
 
     /**
      * rua da parte a notificar, quando estrangeiro&lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaParteNotificarEstrangeiro
      **/
     @JsonProperty("ruaParteNotificarEstrangeiro")
@@ -2235,7 +2181,6 @@ public class ManifestoCrt {
 
     /**
      * Nome da Rua do remetente da carga&lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaRemetente
      **/
     @JsonProperty("ruaRemetente")
@@ -2255,7 +2200,6 @@ public class ManifestoCrt {
 
     /**
      * ruc&lt;br/&gt;Não pode existir outro RUC na tabela de conhecimento com o mesmo número (levando em consideração conhecimentos ativos , ou seja, não excluídos logicamente ).&lt;br/&gt;Quando não informado, será gerado pelo sistema.&lt;br/&gt;Caso transportador seja estrangeiro e a licença complementar não for informado o campo RUC é obrigatório&lt;br/&gt; Tamanho Máximo: 35
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -2274,7 +2218,6 @@ public class ManifestoCrt {
 
     /**
      * Telefone da parte a notificar&lt;br/&gt;Precisar ter no mínimo 12 números, podendo começar com +&lt;br/&gt; Tamanho Máximo: 16
-     *
      * @return telefoneParteNotificar
      **/
     @JsonProperty("telefoneParteNotificar")
@@ -2338,7 +2281,6 @@ public class ManifestoCrt {
 
     /**
      * Identifica qual o tipo de Carga&lt;br/&gt;Granel (3), Veículo (4), Carga Solta (2), Conteiner (1)
-     *
      * @return tipoItemCRT
      **/
     @JsonProperty("tipoItemCRT")
@@ -2361,7 +2303,6 @@ public class ManifestoCrt {
 
     /**
      * Tipo de transporte do transportador&lt;br/&gt;REG &#x3D; Regular PRO&#x3D;próprio OCA&#x3D;Ocasional&lt;br/&gt; Tamanho Máximo: 3
-     *
      * @return tipoTransporteTransportador
      **/
     @JsonProperty("tipoTransporteTransportador")
@@ -2384,7 +2325,6 @@ public class ManifestoCrt {
 
     /**
      * Indica que o transportador da carga é brasileiro
-     *
      * @return transportadorNacBrasileira
      **/
     @JsonProperty("transportadorNacBrasileira")
@@ -2404,7 +2344,6 @@ public class ManifestoCrt {
 
     /**
      * Get transportadoresSucessivos
-     *
      * @return transportadoresSucessivos
      **/
     @JsonProperty("transportadoresSucessivos")
@@ -2428,7 +2367,6 @@ public class ManifestoCrt {
 
     /**
      * Valor do frete da mercadoria do destinatário&lt;br/&gt;Deverá ser preenchido e diferente de zero caso o valor do frete do remetente for informado zerado&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFreteDestinatario
      **/
     @JsonProperty("valorFreteDestinatario")
@@ -2447,7 +2385,6 @@ public class ManifestoCrt {
 
     /**
      * Valor do frete externo da mercadoria&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFreteExterno
      **/
     @JsonProperty("valorFreteExterno")
@@ -2467,7 +2404,6 @@ public class ManifestoCrt {
 
     /**
      * Valor do frete da mercadoria do remetente&lt;br/&gt;Deverá ser preenchido e diferente de zero caso o frete do destinatário for informado zerado&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFreteRemetente
      **/
     @JsonProperty("valorFreteRemetente")
@@ -2486,7 +2422,6 @@ public class ManifestoCrt {
 
     /**
      * Valor das mercadorias declarado pelo remetente&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorMercadoriaDeclaradoRemetente
      **/
     @JsonProperty("valorMercadoriaDeclaradoRemetente")
@@ -2505,7 +2440,6 @@ public class ManifestoCrt {
 
     /**
      * Valor da mercadoria no local de embarque no momento em que o transportador se responsabiliza pela carga&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorMercadoriaLocalEmbarque
      **/
     @JsonProperty("valorMercadoriaLocalEmbarque")
@@ -2525,7 +2459,6 @@ public class ManifestoCrt {
 
     /**
      * Valor de outros custos do destinatario&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorOutrosCustosDestinatario
      **/
     @JsonProperty("valorOutrosCustosDestinatario")
@@ -2544,7 +2477,6 @@ public class ManifestoCrt {
 
     /**
      * Valor de outros custos do remetente&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorOutrosCustosRemetente
      **/
     @JsonProperty("valorOutrosCustosRemetente")
@@ -2563,7 +2495,6 @@ public class ManifestoCrt {
 
     /**
      * Valor do reembolso da mercadoria - contra entrega&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorReembolso
      **/
     @JsonProperty("valorReembolso")
@@ -2582,7 +2513,6 @@ public class ManifestoCrt {
 
     /**
      * Valor do seguro da mercadoria do destinatário&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorSeguroDestinatario
      **/
     @JsonProperty("valorSeguroDestinatario")
@@ -2601,7 +2531,6 @@ public class ManifestoCrt {
 
     /**
      * Valor do seguro da mercadoria do remetente&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorSeguroRemetente
      **/
     @JsonProperty("valorSeguroRemetente")
@@ -2620,7 +2549,6 @@ public class ManifestoCrt {
 
     /**
      * Volume da carga em metros cúbicos&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return volumeM3
      **/
     @JsonProperty("volumeM3")

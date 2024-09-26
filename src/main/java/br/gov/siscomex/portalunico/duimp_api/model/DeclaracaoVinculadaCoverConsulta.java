@@ -265,7 +265,6 @@ public class DeclaracaoVinculadaCoverConsulta {
 
     /**
      * Get item
-     *
      * @return item
      **/
     @JsonProperty("item")

@@ -425,7 +425,6 @@ public class SefazDuimpCover {
 
     /**
      * &lt;br&gt;Número de indentificação do Importador: &lt;br&gt;Caso seja CNPJ: &lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return niImportador
      **/
     @JsonProperty("niImportador")
@@ -465,7 +464,6 @@ public class SefazDuimpCover {
 
     /**
      * UF do importador&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO
-     *
      * @return ufImportador
      **/
     @JsonProperty("ufImportador")
@@ -598,7 +596,6 @@ public class SefazDuimpCover {
 
     /**
      * Lista de processos vinculados
-     *
      * @return processosVinculados
      **/
     @JsonProperty("processosVinculados")
@@ -622,7 +619,6 @@ public class SefazDuimpCover {
 
     /**
      * Lista de declarações estrangeiras
-     *
      * @return docDeclaracoesExportacaoEstrangeira
      **/
     @JsonProperty("docDeclaracoesExportacaoEstrangeira")
@@ -646,7 +642,6 @@ public class SefazDuimpCover {
 
     /**
      * Get sefazDadosResumo
-     *
      * @return sefazDadosResumo
      **/
     @JsonProperty("sefazDadosResumo")
@@ -666,7 +661,6 @@ public class SefazDuimpCover {
 
     /**
      * Lista de eventos no histórico de operações
-     *
      * @return itensHistorico
      **/
     @JsonProperty("itensHistorico")
@@ -690,7 +684,6 @@ public class SefazDuimpCover {
 
     /**
      * Lista de itens de Duimp
-     *
      * @return itens
      **/
     @JsonProperty("itens")

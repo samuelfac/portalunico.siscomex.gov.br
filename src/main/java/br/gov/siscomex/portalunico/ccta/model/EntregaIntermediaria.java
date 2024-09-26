@@ -525,7 +525,6 @@ public class EntregaIntermediaria {
 
     /**
      * Número do DTA&lt;br/&gt;Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.&lt;/br&gt;Para os demais motivos não deve ser informado.&lt;br/&gt;&lt;br/&gt;Tamanho mínimo: 8&lt;br/&gt;Tamanho máximo: 15&lt;br/&gt; Formato: AAAAAAAAAAAAAAA&lt;br/&gt;&lt;br/&gt;
-     *
      * @return numeroDTA
      **/
     @JsonProperty("numeroDTA")
@@ -544,7 +543,6 @@ public class EntregaIntermediaria {
 
     /**
      * Observações sobre a entrega intermediária&lt;br/&gt;Tamanho máximo: 1000
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")
@@ -563,7 +561,6 @@ public class EntregaIntermediaria {
 
     /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
      * @return pesoEntrega
      **/
     @JsonProperty("pesoEntrega")
@@ -583,7 +580,6 @@ public class EntregaIntermediaria {
 
     /**
      * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
-     *
      * @return recintoAduaneiro
      **/
     @JsonProperty("recintoAduaneiro")
@@ -670,7 +666,6 @@ public class EntregaIntermediaria {
 
     /**
      * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária&lt;br/&gt;
-     *
      * @return unidadeRFB
      **/
     @JsonProperty("unidadeRFB")
@@ -690,7 +685,6 @@ public class EntregaIntermediaria {
 
     /**
      * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
      * @return volumeEntrega
      **/
     @JsonProperty("volumeEntrega")

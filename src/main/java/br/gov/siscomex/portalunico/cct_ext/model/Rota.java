@@ -249,7 +249,6 @@ public class Rota {
 
     /**
      * Get rotasPassagem
-     *
      * @return rotasPassagem
      **/
     @JsonProperty("rotasPassagem")

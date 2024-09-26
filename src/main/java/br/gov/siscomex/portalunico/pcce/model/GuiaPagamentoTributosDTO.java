@@ -358,7 +358,6 @@ public class GuiaPagamentoTributosDTO {
 
     /**
      * Valor total da guia &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotal
      **/
     @JsonProperty("valorTotal")

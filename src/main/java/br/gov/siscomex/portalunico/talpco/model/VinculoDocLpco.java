@@ -300,7 +300,6 @@ public class VinculoDocLpco {
 
     /**
      * Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 2 casas decimais
-     *
      * @return vmle
      **/
     @JsonProperty("vmle")

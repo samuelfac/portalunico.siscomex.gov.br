@@ -215,7 +215,6 @@ public class CargaDTO {
 
     /**
      * Get descricaoCarga
-     *
      * @return descricaoCarga
      **/
     @JsonProperty("descricaoCarga")
@@ -234,7 +233,6 @@ public class CargaDTO {
 
     /**
      * Get pesoBruto
-     *
      * @return pesoBruto
      **/
     @JsonProperty("pesoBruto")

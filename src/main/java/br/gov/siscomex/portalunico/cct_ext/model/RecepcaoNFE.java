@@ -289,7 +289,6 @@ public class RecepcaoNFE {
 
     /**
      * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -308,7 +307,6 @@ public class RecepcaoNFE {
 
     /**
      * Avarias identificadas&lt;br&gt;Tamanho: 250
-     *
      * @return avariasIdentificadas
      **/
     @JsonProperty("avariasIdentificadas")
@@ -346,7 +344,6 @@ public class RecepcaoNFE {
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")

@@ -237,7 +237,6 @@ public class Cotas {
 
     /**
      * Símbolo da moeda associada ao saldo do campo VMLE&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
-     *
      * @return moedaVmle
      **/
     @JsonProperty("moedaVmle")

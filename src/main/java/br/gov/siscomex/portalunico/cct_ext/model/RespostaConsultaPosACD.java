@@ -341,7 +341,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
-     *
      * @return latitude
      **/
     @JsonProperty("latitude")
@@ -360,7 +359,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Longitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
-     *
      * @return longitude
      **/
     @JsonProperty("longitude")
@@ -398,7 +396,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-     *
      * @return nomeResponsavel
      **/
     @JsonProperty("nomeResponsavel")
@@ -417,7 +414,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD&lt;br&gt;Descrição do Formato:&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
-     *
      * @return numeroDUE
      **/
     @JsonProperty("numeroDUE")
@@ -436,7 +432,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho: 14&lt;br&gt;Formato: AAAAAAAAAAAAAA
-     *
      * @return numeroDUIMP
      **/
     @JsonProperty("numeroDUIMP")
@@ -455,7 +450,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     *
      * @return numeroRUC
      **/
     @JsonProperty("numeroRUC")
@@ -493,7 +487,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho Máximo: 50&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-     *
      * @return nomePaisImportador
      **/
     @JsonProperty("nomePaisImportador")
@@ -531,7 +524,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho: 30&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-     *
      * @return nomeSituacaoEspecial
      **/
     @JsonProperty("nomeSituacaoEspecial")
@@ -572,7 +564,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Get nrConhecimento
-     *
      * @return nrConhecimento
      **/
     @JsonProperty("nrConhecimento")
@@ -591,7 +582,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Get numeroCEMercante
-     *
      * @return numeroCEMercante
      **/
     @JsonProperty("numeroCEMercante")

@@ -336,7 +336,6 @@ public class CrtViagem {
 
     /**
      * Get itensCarga
-     *
      * @return itensCarga
      **/
     @JsonProperty("itensCarga")
@@ -360,7 +359,6 @@ public class CrtViagem {
 
     /**
      * Get mercadorias
-     *
      * @return mercadorias
      **/
     @JsonProperty("mercadorias")
@@ -384,7 +382,6 @@ public class CrtViagem {
 
     /**
      * Número do CRT&lt;br/&gt; Tamanho Máximo: 15
-     *
      * @return numeroCrt
      **/
     @JsonProperty("numeroCrt")
@@ -427,7 +424,6 @@ public class CrtViagem {
 
     /**
      * Valor do frete FCA.&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFCA
      **/
     @JsonProperty("valorFCA")
@@ -447,7 +443,6 @@ public class CrtViagem {
 
     /**
      * Valor do frete cobrado na parte da carga que está sendo transportada em uma viagem.&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFrete
      **/
     @JsonProperty("valorFrete")
@@ -467,7 +462,6 @@ public class CrtViagem {
 
     /**
      * Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorSeguro
      **/
     @JsonProperty("valorSeguro")

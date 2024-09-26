@@ -278,7 +278,6 @@ public class DesbloqueioConsultaDetalhada {
 
     /**
      * Tipo do bloqueio aplicado&lt;br&gt;Tamanho: 100&lt;br/&gt;
-     *
      * @return tipoBloqueio
      **/
     @JsonProperty("tipoBloqueio")

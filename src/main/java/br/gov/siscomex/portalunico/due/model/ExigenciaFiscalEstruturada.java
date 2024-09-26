@@ -313,7 +313,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * NCM sugerida&lt;br /&gt;Tamanho: 8
-     *
      * @return ncmSugerida
      **/
     @JsonProperty("ncmSugerida")
@@ -332,7 +331,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Número da DU-E&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNAANNNNNNNNNN&#39;
-     *
      * @return numeroDocumento
      **/
     @JsonProperty("numeroDocumento")
@@ -351,7 +349,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Número de ordem da exigência&lt;br /&gt;Formato: Inteiro, com até 3 digitos
-     *
      * @return numeroExigencia
      **/
     @JsonProperty("numeroExigencia")
@@ -370,7 +367,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Observação do servidor ao atender uma exigência&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
-     *
      * @return observacaoAtendimento
      **/
     @JsonProperty("observacaoAtendimento")
@@ -389,7 +385,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Órgão responsável pela criação da exigência&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 10
-     *
      * @return orgao
      **/
     @JsonProperty("orgao")
@@ -408,7 +403,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Get situacao
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -427,7 +421,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Valor a recolher de Multa&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorRecolherMulta
      **/
     @JsonProperty("valorRecolherMulta")
@@ -446,7 +439,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Número da versão da DU-E&lt;br /&gt;Formato: Inteiro, com até 10 digitos
-     *
      * @return versaoDocumento
      **/
     @JsonProperty("versaoDocumento")

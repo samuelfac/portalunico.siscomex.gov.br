@@ -295,7 +295,6 @@ public class ViagemConsultaDetalhada {
 
     /**
      * Número de identificação do manifesto&lt;br/&gt;Tamanho: 17
-     *
      * @return identificacaoViagem
      **/
     @JsonProperty("identificacaoViagem")
@@ -352,7 +351,6 @@ public class ViagemConsultaDetalhada {
 
     /**
      * Código da situação da viagem&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativa &lt;br/&gt;C - Cancelada&lt;br/&gt;
-     *
      * @return situacaoViagem
      **/
     @JsonProperty("situacaoViagem")

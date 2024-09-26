@@ -208,7 +208,6 @@ public class ValoresTributoDuimpCover {
 
     /**
      * Valores de cálculo de juros.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return juros
      **/
     @JsonProperty("juros")

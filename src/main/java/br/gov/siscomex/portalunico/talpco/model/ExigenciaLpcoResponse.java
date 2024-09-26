@@ -222,7 +222,6 @@ public class ExigenciaLpcoResponse {
 
     /**
      * Aviso sobre a operação realizada
-     *
      * @return aviso
      **/
     @JsonProperty("aviso")

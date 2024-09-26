@@ -521,7 +521,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -541,7 +540,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroManifesto
      **/
     @JsonProperty("numeroManifesto")
@@ -601,7 +599,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimento
      **/
     @JsonProperty("numeroConhecimento")
@@ -620,7 +617,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipoConhecimento
      **/
     @JsonProperty("tipoConhecimento")
@@ -639,7 +635,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Get declaracaoAduaneira
-     *
      * @return declaracaoAduaneira
      **/
     @JsonProperty("declaracaoAduaneira")
@@ -658,7 +653,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Lista de chaves das NFE que amparam o transporte.
-     *
      * @return listaNfe
      **/
     @JsonProperty("listaNfe")
@@ -707,7 +701,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Indica que os volumes carregados em unidade de carga ou entregues foram objeto de destinação de mercadorias em perdimento&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return indicadorPerdimento
      **/
     @JsonProperty("indicadorPerdimento")
@@ -745,7 +738,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Quantidade de volumes carregados em unidade de carga ou entregues
-     *
      * @return quantidadeVolumesLote
      **/
     @JsonProperty("quantidadeVolumesLote")
@@ -764,7 +756,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Placa do semirreboque, vagão ou truck que carregou a carga.&lt;br/&gt;Tamanho: 50
-     *
      * @return placaSemirreboque
      **/
     @JsonProperty("placaSemirreboque")
@@ -783,7 +774,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Identificação do número do contêiner em que os lotes foram carregados.&lt;br/&gt;Tamanho: 200
-     *
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -802,7 +792,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Identificação da ULD em que os lotes foram carregados, no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
      * @return identificacaoUld
      **/
     @JsonProperty("identificacaoUld")
@@ -821,7 +810,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Entrega para companhia aérea. &lt;br/&gt;Indicador para os casos em que o recinto apenas entrega os lotes para companhia aérea.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return entregaParaCompanhiaAerea
      **/
     @JsonProperty("entregaParaCompanhiaAerea")
@@ -840,7 +828,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * CNPJ da companhia aérea para a qual o depositário entregou os lotes.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
      * @return cnpjCompanhiaAerea
      **/
     @JsonProperty("cnpjCompanhiaAerea")
@@ -859,7 +846,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Nome da companhia aérea para a qual o depositário entregou os lotes.&lt;br/&gt;Tamanho: 100
-     *
      * @return nomeCompanhiaAerea
      **/
     @JsonProperty("nomeCompanhiaAerea")
@@ -878,7 +864,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * IATA Aeronave&lt;br/&gt;Tamanho: 50
-     *
      * @return iataAeronave
      **/
     @JsonProperty("iataAeronave")
@@ -897,7 +882,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Prefixo Aeronave&lt;br/&gt;Tamanho: 20
-     *
      * @return prefixoAeronave
      **/
     @JsonProperty("prefixoAeronave")
@@ -916,7 +900,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Identificação da viagem.&lt;br/&gt;Tamanho: 20&lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")
@@ -935,7 +918,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Vôo&lt;br/&gt;Tamanho: 20
-     *
      * @return voo
      **/
     @JsonProperty("voo")
@@ -954,7 +936,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Escala&lt;br/&gt;Tamanho: 20
-     *
      * @return escala
      **/
     @JsonProperty("escala")
@@ -973,7 +954,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Indicador para os casos em que o recinto entrega os lotes em mãos para novo responsável pessoa física. Nessa situação não há veículo transportador.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return entregaParaPessoaFisica
      **/
     @JsonProperty("entregaParaPessoaFisica")
@@ -992,7 +972,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * CPF para os casos em que o recinto entrega os lotes em mãos para novo responsável pessoa física. Nessa situação não há veículo transportador.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpfRecepcao
      **/
     @JsonProperty("cpfRecepcao")
@@ -1011,7 +990,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Get documentoEstrangeiro
-     *
      * @return documentoEstrangeiro
      **/
     @JsonProperty("documentoEstrangeiro")
@@ -1030,7 +1008,6 @@ public class DadosCarregamentoEntregaLotes {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi carregado ou entregue para companhia aérea.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

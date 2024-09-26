@@ -456,7 +456,6 @@ public class DadosDaCarga {
 
     /**
      * Data de Chegada da Carga na URF de Localização da Carga.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataChegada
      **/
     @JsonProperty("dataChegada")
@@ -494,7 +493,6 @@ public class DadosDaCarga {
 
     /**
      * Peso líquido em quilogramas correspondente ao quantitativo total das mercadorias do item.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
      * @return pesoLiquido
      **/
     @JsonProperty("pesoLiquido")
@@ -513,7 +511,6 @@ public class DadosDaCarga {
 
     /**
      * Código da moeda do Valor total do Frete&lt;br&gt; Domínio: Tabela de Moedas do Siscomex.&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;NNN&#39;
-     *
      * @return moedaFreteTotal
      **/
     @JsonProperty("moedaFreteTotal")
@@ -551,7 +548,6 @@ public class DadosDaCarga {
 
     /**
      * Valor total do frete em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
      * @return valorFreteTotalEmReal
      **/
     @JsonProperty("valorFreteTotalEmReal")
@@ -570,7 +566,6 @@ public class DadosDaCarga {
 
     /**
      * Valor total do frete em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
      * @return valorFreteTotalDolar
      **/
     @JsonProperty("valorFreteTotalDolar")
@@ -589,7 +584,6 @@ public class DadosDaCarga {
 
     /**
      * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
      * @return valorFreteTotalDestinoEmReal
      **/
     @JsonProperty("valorFreteTotalDestinoEmReal")
@@ -608,7 +602,6 @@ public class DadosDaCarga {
 
     /**
      * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
      * @return valorFreteTotalDestinoDolar
      **/
     @JsonProperty("valorFreteTotalDestinoDolar")
@@ -627,7 +620,6 @@ public class DadosDaCarga {
 
     /**
      * Código da moeda negociada do seguro&lt;br&gt; Domínio: Tabela de Moedas do Siscomex.&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;NNN&#39;
-     *
      * @return moedaSeguro
      **/
     @JsonProperty("moedaSeguro")
@@ -646,7 +638,6 @@ public class DadosDaCarga {
 
     /**
      * Valor do seguro na moeda negociada&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorSeguroMoedaUtilizada
      **/
     @JsonProperty("valorSeguroMoedaUtilizada")
@@ -665,7 +656,6 @@ public class DadosDaCarga {
 
     /**
      * Valor do seguro em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorSeguroEmReal
      **/
     @JsonProperty("valorSeguroEmReal")
@@ -684,7 +674,6 @@ public class DadosDaCarga {
 
     /**
      * Valor do seguro em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorSeguroDolar
      **/
     @JsonProperty("valorSeguroDolar")
@@ -722,7 +711,6 @@ public class DadosDaCarga {
 
     /**
      * Get dadosCargaAerea
-     *
      * @return dadosCargaAerea
      **/
     @JsonProperty("dadosCargaAerea")

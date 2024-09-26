@@ -372,7 +372,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -416,7 +415,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt; Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -436,7 +434,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
-     *
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
@@ -508,7 +505,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Box indicativo da localização do veículo. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
      * @return box
      **/
     @JsonProperty("box")
@@ -528,7 +524,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Indicar se o veículo encontra-se em conferência&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return conferenciaFisica
      **/
     @JsonProperty("conferenciaFisica")
@@ -547,7 +542,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return orgaoSolicitante
      **/
     @JsonProperty("orgaoSolicitante")
@@ -566,7 +560,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return avaria
      **/
     @JsonProperty("avaria")
@@ -585,7 +578,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt;Tamanho: 36
-     *
      * @return areaVeiculos
      **/
     @JsonProperty("areaVeiculos")
@@ -604,7 +596,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o veículo está posicionado.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

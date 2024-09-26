@@ -289,7 +289,6 @@ public class RecepcaoNFF {
 
     /**
      * Código de identificação da carga
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -308,7 +307,6 @@ public class RecepcaoNFF {
 
     /**
      * Avarias identificadas&lt;br&gt;Tamanho: 250
-     *
      * @return avariasIdentificadas
      **/
     @JsonProperty("avariasIdentificadas")
@@ -346,7 +344,6 @@ public class RecepcaoNFF {
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")

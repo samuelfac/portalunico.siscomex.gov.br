@@ -318,7 +318,6 @@ public class ItemEnLastre {
 
     /**
      * Tipo de embalagem da carga solta transportada na viagem (en lastre)&lt;br/&gt; para tipo &#x3D; 2 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 2
-     *
      * @return tipoEmbalagem
      **/
     @JsonProperty("tipoEmbalagem")

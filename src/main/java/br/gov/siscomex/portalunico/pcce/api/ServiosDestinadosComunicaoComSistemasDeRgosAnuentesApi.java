@@ -20,6 +20,7 @@ import javax.ws.rs.core.Response;
  * Pagamento Centralizado do Comércio Exterior
  *
  * <p><!DOCTYPE html><html><h4>Introdução</h4><p>O PCCE visa facilitar a validação e o acompanhamento do cumprimento da obrigação do ICMS, via PUCOMEX, junto às Sefaz/UF e o pagamento de tributos federais relativos à Declaração Única de Importação. Futuramente também será responsável pelos pagamentos dos demais tributos e taxas vinculados ao Comércio Exterior.</p><h4>URLs de Acesso</h4><p>Para utilizar os serviços disponíveis nessa API deve-se seguir o seguinte padrão de URL:</p><p><em>https://{ambiente}/<strong>pcce</strong>/api/{serviço}</em></p><p>Onde, em <strong>{ambiente}</strong> deve-se informar o ambiente desejado dentro os ambientes disponíveis na tabela abaixo e em <strong>{serviço}</strong> utilizar a URI do serviço desejado.</p><style type=\"text/css\">.tg  {border-collapse:collapse;border-color:#bbb;border-spacing:0;width: 100%;}.tg td{background-color:#E0FFEB;border-color:#bbb;border-style:solid;border-width:1px;color:#594F4F;  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}.tg th{background-color:#9DE0AD;border-color:#bbb;border-style:solid;border-width:1px;color:#493F3F;  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}.tg .tg-cabecalho{text-align:left;vertical-align:top}.tg .tg-corpo{border-color:inherit;text-align:left;vertical-align:top}</style><table class=\"tg\" style=\"width: 100%;\"><thead><tr>    <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">Nome do Ambiente</span></th>    <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">URL de acesso</span></th>  </tr></thead><tbody>  <tr>    <td class=\"tg-corpo\">Ambiente de Validação das Empresas</td>    <td class=\"tg-corpo\">val.portalunico.siscomex.gov.br</td>  </tr>  <tr>    <td class=\"tg-corpo\">Ambiente de Produção</td>    <td class=\"tg-corpo\">portalunico.siscomex.gov.br</td>  </tr></tbody></table><br/><p><strong>Exemplo:</strong> Para o serviço \"Confirmar crédito de pagamento de ICMS\" a URI é \"/ext/sefaz/icms/credito\".</p><p>Logo, abaixo temos um exemplo de URL completa considerando o ambiente de Produção, consumindo este serviço:</p><p><em>https://portalunico.siscomex.gov.br/pcce/api/ext/sefaz/icms/credito</em></p></html>
+ *
  */
 @Path("/")
 @Api(value = "/", description = "")
@@ -27,8 +28,9 @@ public interface ServiosDestinadosComunicaoComSistemasDeRgosAnuentesApi {
 
     /**
      * Confirmar pagamento de guia de tributos dos orgãos anuentes
-     * <p>
+     *
      * Recebe dos órgãos anuentes a confirmação de pagamento de uma guia.
+     *
      */
     @POST
     @Path("/ext/anuentes/guia/pagamento")
@@ -46,8 +48,9 @@ public interface ServiosDestinadosComunicaoComSistemasDeRgosAnuentesApi {
 
     /**
      * Cadastrar guia de pagamento de tributos de órgãos anuentes
-     * <p>
+     *
      * Recebe dos órgãos anuentes os dados referentes a uma guia de pagamento de tributos.
+     *
      */
     @POST
     @Path("/ext/anuentes/guia")
@@ -65,8 +68,9 @@ public interface ServiosDestinadosComunicaoComSistemasDeRgosAnuentesApi {
 
     /**
      * Solicitar pagamento de taxa de órgãos anuentes
-     * <p>
+     *
      * Recebe dos órgãos anuentes os dados para realizar o pagamento de taxa.
+     *
      */
     @POST
     @Path("/ext/anuentes/pagamento")

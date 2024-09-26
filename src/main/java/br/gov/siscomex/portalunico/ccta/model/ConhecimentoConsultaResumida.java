@@ -412,7 +412,6 @@ public class ConhecimentoConsultaResumida {
 
     /**
      * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
-     *
      * @return recepcoesComAvarias
      **/
     @JsonProperty("recepcoesComAvarias")
@@ -436,7 +435,6 @@ public class ConhecimentoConsultaResumida {
 
     /**
      * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 32
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -455,7 +453,6 @@ public class ConhecimentoConsultaResumida {
 
     /**
      * Tipo de carga.
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")
@@ -477,7 +474,6 @@ public class ConhecimentoConsultaResumida {
 
     /**
      * Lista contendo as viagens às quais a carga está associada&lt;br/&gt;
-     *
      * @return viagensAssociadas
      **/
     @JsonProperty("viagensAssociadas")

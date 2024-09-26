@@ -272,7 +272,6 @@ public class DadosLote {
 
     /**
      * Marca visível&lt;br/&gt;Tamanho: 100
-     *
      * @return marca
      **/
     @JsonProperty("marca")
@@ -311,7 +310,6 @@ public class DadosLote {
 
     /**
      * Observações da avaria&lt;br/&gt;Tamanho: 200
-     *
      * @return observacaoAvaria
      **/
     @JsonProperty("observacaoAvaria")
@@ -349,7 +347,6 @@ public class DadosLote {
 
     /**
      * Peso do lote na balança (Kg).&lt;br/&gt;&lt;br/&gt;pesoLoteBalanca, até 4 casas decimais.
-     *
      * @return pesoLoteBalanca
      **/
     @JsonProperty("pesoLoteBalanca")

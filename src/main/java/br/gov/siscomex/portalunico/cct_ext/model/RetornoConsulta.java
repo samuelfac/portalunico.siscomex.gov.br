@@ -279,7 +279,6 @@ public class RetornoConsulta {
 
     /**
      * Get listaGraneis
-     *
      * @return listaGraneis
      **/
     @JsonProperty("listaGraneis")

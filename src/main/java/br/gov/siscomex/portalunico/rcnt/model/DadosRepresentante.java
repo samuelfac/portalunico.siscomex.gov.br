@@ -362,7 +362,6 @@ public class DadosRepresentante {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -382,7 +381,6 @@ public class DadosRepresentante {
 
     /**
      * CPF representante&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpfRepresentante
      **/
     @JsonProperty("cpfRepresentante")
@@ -439,7 +437,6 @@ public class DadosRepresentante {
 
     /**
      * Nome representante&lt;br/&gt;Tamanho: 100
-     *
      * @return nomeRepresentante
      **/
     @JsonProperty("nomeRepresentante")
@@ -458,7 +455,6 @@ public class DadosRepresentante {
 
     /**
      * CPF representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpfRepresentado
      **/
     @JsonProperty("cpfRepresentado")
@@ -477,7 +473,6 @@ public class DadosRepresentante {
 
     /**
      * CNPJ representado&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
      * @return cnpjRepresentado
      **/
     @JsonProperty("cnpjRepresentado")
@@ -496,7 +491,6 @@ public class DadosRepresentante {
 
     /**
      * Nome do representado&lt;br/&gt;Tamanho: 100
-     *
      * @return nomeRepresentado
      **/
     @JsonProperty("nomeRepresentado")
@@ -534,7 +528,6 @@ public class DadosRepresentante {
 
     /**
      * Data Início representação&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
      * @return dataHoraInicioValidade
      **/
     @JsonProperty("dataHoraInicioValidade")
@@ -553,7 +546,6 @@ public class DadosRepresentante {
 
     /**
      * Data Fim representação, se houver&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
      * @return dataHoraFimValidade
      **/
     @JsonProperty("dataHoraFimValidade")
@@ -572,7 +564,6 @@ public class DadosRepresentante {
 
     /**
      * Motivo da representação&lt;br/&gt;Tamanho: 100
-     *
      * @return motivo
      **/
     @JsonProperty("motivo")

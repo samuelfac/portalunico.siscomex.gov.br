@@ -213,7 +213,6 @@ public class AtoConcessorio {
 
     /**
      * Get tipo
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")

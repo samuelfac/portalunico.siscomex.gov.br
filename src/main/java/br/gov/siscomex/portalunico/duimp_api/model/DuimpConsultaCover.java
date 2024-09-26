@@ -291,7 +291,6 @@ public class DuimpConsultaCover {
 
     /**
      * Quantidade total de Itens da Duimp.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 5
-     *
      * @return quantidadeItens
      **/
     @JsonProperty("quantidadeItens")
@@ -310,7 +309,6 @@ public class DuimpConsultaCover {
 
     /**
      * Lista contendo os links para os itens da Duimp
-     *
      * @return itens
      **/
     @JsonProperty("itens")

@@ -31,6 +31,7 @@ import java.util.List;
  * Pagamento Centralizado do Comércio Exterior
  *
  * <p><!DOCTYPE html><html><h4>Introdução</h4><p>O PCCE visa facilitar a validação e o acompanhamento do cumprimento da obrigação do ICMS, via PUCOMEX, junto às Sefaz/UF e o pagamento de tributos federais relativos à Declaração Única de Importação. Futuramente também será responsável pelos pagamentos dos demais tributos e taxas vinculados ao Comércio Exterior.</p><h4>URLs de Acesso</h4><p>Para utilizar os serviços disponíveis nessa API deve-se seguir o seguinte padrão de URL:</p><p><em>https://{ambiente}/<strong>pcce</strong>/api/{serviço}</em></p><p>Onde, em <strong>{ambiente}</strong> deve-se informar o ambiente desejado dentro os ambientes disponíveis na tabela abaixo e em <strong>{serviço}</strong> utilizar a URI do serviço desejado.</p><style type=\"text/css\">.tg  {border-collapse:collapse;border-color:#bbb;border-spacing:0;width: 100%;}.tg td{background-color:#E0FFEB;border-color:#bbb;border-style:solid;border-width:1px;color:#594F4F;  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}.tg th{background-color:#9DE0AD;border-color:#bbb;border-style:solid;border-width:1px;color:#493F3F;  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}.tg .tg-cabecalho{text-align:left;vertical-align:top}.tg .tg-corpo{border-color:inherit;text-align:left;vertical-align:top}</style><table class=\"tg\" style=\"width: 100%;\"><thead><tr>    <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">Nome do Ambiente</span></th>    <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">URL de acesso</span></th>  </tr></thead><tbody>  <tr>    <td class=\"tg-corpo\">Ambiente de Validação das Empresas</td>    <td class=\"tg-corpo\">val.portalunico.siscomex.gov.br</td>  </tr>  <tr>    <td class=\"tg-corpo\">Ambiente de Produção</td>    <td class=\"tg-corpo\">portalunico.siscomex.gov.br</td>  </tr></tbody></table><br/><p><strong>Exemplo:</strong> Para o serviço \"Confirmar crédito de pagamento de ICMS\" a URI é \"/ext/sefaz/icms/credito\".</p><p>Logo, abaixo temos um exemplo de URL completa considerando o ambiente de Produção, consumindo este serviço:</p><p><em>https://portalunico.siscomex.gov.br/pcce/api/ext/sefaz/icms/credito</em></p></html>
+ *
  */
 @Path("/")
 @Api(value = "/", description = "")
@@ -38,8 +39,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Alterar opção de cálculo de ICMS
-     * <p>
+     *
      * Altera os dados e/ou inativa uma opção de cálculo de ICMS.
+     *
      */
     @PUT
     @Path("/ext/sefaz/opcao/{id}")
@@ -57,8 +59,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Cadastrar opções para cálculo de ICMS
-     * <p>
+     *
      * Recebe da Sefaz os dados referentes às opções que serão disponibilizadas para o importador na solicitação de cálculo de ICMS.
+     *
      */
     @POST
     @Path("/ext/sefaz/opcao")
@@ -76,8 +79,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Cancelar declaração de ICMS
-     * <p>
+     *
      * Recebe da Sefaz favorecida cancelamento de uma Declação de ICMS com criação automática pela própria Sefaz.
+     *
      */
     @PUT
     @Path("/ext/sefaz/icms/cancelamento/{numDeclaracao}/{versaoDeclaracao}")
@@ -94,8 +98,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Confirmar crédito de pagamento de ICMS
-     * <p>
+     *
      * Recebe da Sefaz a confirmação de crédito de pagamento de ICMS.
+     *
      */
     @POST
     @Path("/ext/sefaz/icms/credito")
@@ -113,8 +118,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Consultar declarações de ICMS
-     * <p>
+     *
      * Consulta dados das declarações de ICMS no PCCE.
+     *
      */
     @GET
     @Path("/ext/sefaz/icms/consulta/{numDeclaracao}")
@@ -132,8 +138,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Consultar opções de cálculo de ICMS
-     * <p>
+     *
      * Retorna a lista de opções de cálculo de ICMS cadastradas para a Sefaz.
+     *
      */
     @GET
     @Path("/ext/sefaz/opcao")
@@ -151,8 +158,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Consultar solicitação de cálculo de ICMS pendente
-     * <p>
+     *
      * Consulta de solicitação de cálculo de ICMS pendente.
+     *
      */
     @GET
     @Path("/ext/sefaz/icms/consulta/calculo/{numDeclaracao}/{versaoDeclaracao}")
@@ -170,8 +178,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Excluir opção de cálculo de ICMS
-     * <p>
+     *
      * Exclui uma opção de cálculo de ICMS.
+     *
      */
     @DELETE
     @Path("/ext/sefaz/opcao/{id}")
@@ -188,8 +197,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Cancelar guia de pagamento de ICMS
-     * <p>
+     *
      * Registra o cancelamento de uma guia de pagamento de ICMS.
+     *
      */
     @PUT
     @Path("/ext/sefaz/icms/guia/{numDeclaracao}/{versaoDeclaracao}/{codigoBarras}")
@@ -206,8 +216,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Receber dados de declaração de ICMS da Sefaz
-     * <p>
+     *
      * Recebe da Sefaz os dados referentes ao cálculo de ICMS para criação automática da declaração de ICMS no Pucomex.
+     *
      */
     @POST
     @Path("/ext/sefaz/icms")
@@ -225,8 +236,9 @@ public interface ServiosDestinadosComunicaoComSistemasDasSefazApi {
 
     /**
      * Cadastrar guia de pagamento de ICMS
-     * <p>
+     *
      * Cadastra uma guia de pagamento de ICMS recebida da Sefaz.
+     *
      */
     @POST
     @Path("/ext/sefaz/icms/guia")

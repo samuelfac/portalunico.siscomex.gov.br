@@ -238,7 +238,6 @@ public class FabricanteIntegracaoDTO {
 
     /**
      * Código do país de origem no formato ISO 3166&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: &#39;AA&#39;
-     *
      * @return codigoPais
      **/
     @JsonProperty("codigoPais")

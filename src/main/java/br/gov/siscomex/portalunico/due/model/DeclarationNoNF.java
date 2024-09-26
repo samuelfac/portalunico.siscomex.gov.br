@@ -211,7 +211,6 @@ public class DeclarationNoNF {
 
     /**
      * Get ucr
-     *
      * @return ucr
      **/
     @JsonProperty("ucr")

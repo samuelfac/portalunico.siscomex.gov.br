@@ -304,7 +304,6 @@ public class ItemConsultaCover {
 
     /**
      * Get mercadoria
-     *
      * @return mercadoria
      **/
     @JsonProperty("mercadoria")
@@ -342,7 +341,6 @@ public class ItemConsultaCover {
 
     /**
      * Get lpcos
-     *
      * @return lpcos
      **/
     @JsonProperty("lpcos")
@@ -414,7 +412,6 @@ public class ItemConsultaCover {
 
     /**
      * Get dadosCambiais
-     *
      * @return dadosCambiais
      **/
     @JsonProperty("dadosCambiais")
@@ -433,7 +430,6 @@ public class ItemConsultaCover {
 
     /**
      * Get atributosDuimp
-     *
      * @return atributosDuimp
      **/
     @JsonProperty("atributosDuimp")

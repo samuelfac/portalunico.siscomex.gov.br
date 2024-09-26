@@ -40,7 +40,8 @@ import java.util.List;
 /**
  * Controle de Carga e Trânsito Exportação
  *
- * <p><h4>Introdu&ccedil;&atilde;o</h4>  <p>Bem-vindo &agrave; Application Programming Interface (API) do sistema Pucomex - Controle de Cargas e Transito Exporta&ccedil;&atilde;o.<br>Sistema desenvolvido para simplificar o controle de carga e trânsito no processo de Exportação, dando uma única solução e um único fluxo para qualquer tipo de carga e qualquer modal de transporte.  Facilita a organização e realização da recepção, consolidação, trânsito, entrega, carregamento e manifestação de cargas.</p>  <h4>URLs de Acesso</h4>  <p>Para utilizar os servi&ccedil;os dispon&iacute;veis nessa API deve-se seguir o seguinte padr&atilde;o de URL:</p>  <p><em>https://{ambiente}/<strong>cct</strong>/api/{servi&ccedil;o}</em></p>  <p>Onde, em <strong>{ambiente}</strong> deve-se informar o ambiente desejado dentro os ambientes dispon&iacute;veis na tabela abaixo e em <strong>{servi&ccedil;o}</strong> utilizar a URI do servi&ccedil;o desejado.</p>    <style type=\"text/css\">  .tg  {border-collapse:collapse;border-color:#bbb;border-spacing:0;width: 604px;}  .tg td{background-color:#E0FFEB;border-color:#bbb;border-style:solid;border-width:1px;color:#594F4F;    font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}  .tg th{background-color:#9DE0AD;border-color:#bbb;border-style:solid;border-width:1px;color:#493F3F;    font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}  .tg .tg-cabecalho{text-align:left;vertical-align:top}  .tg .tg-corpo{border-color:inherit;text-align:left;vertical-align:top}  </style>    <table class=\"tg\" style=\"width: 604px;\">  <thead>    <tr>      <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">Nome do Ambiente</span></th>      <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">URL de acesso</span></th>    </tr>  </thead>  <tbody>    <tr>      <td class=\"tg-corpo\">Ambiente de Validação da Empresas</td>      <td class=\"tg-corpo\">val.portalunico.siscomex.gov.br</td>    </tr>    <tr>      <td class=\"\\tg-corpo\">Ambiente de Produção</td>      <td class=\"\\tg-corpo\">portalunico.siscomex.gov.br</td>    </tr>  </tbody>  </table>    <p>&nbsp;</p>  <p><strong>Exemplo:</strong> Para o servi&ccedil;o \"Recepções de Nota Fiscal Eletrônica\" a URI &eacute; \"ext/carga/recepcao-nfe\".</p>  <p>Logo, abaixo temos um exemplo de URL completa considerando o ambiente de Valida&ccedil;&atilde;o, consumindo este servi&ccedil;o </p>  <p><em>https://val.portalunico.siscomex.gov.br/cct/ext/carga/recepcao-nfe</em></p>
+ * <p><h4>Introdu&ccedil;&atilde;o</h4>  <p>Bem-vindo &agrave; Application Programming Interface (API) do sistema Pucomex - Controle de Cargas e Transito Exporta&ccedil;&atilde;o.<br>Sistema desenvolvido para simplificar o controle de carga e trânsito no processo de Exportação, dando uma única solução e um único fluxo para qualquer tipo de carga e qualquer modal de transporte.  Facilita a organização e realização da recepção, consolidação, trânsito, entrega, carregamento e manifestação de cargas.</p>  <h4>URLs de Acesso</h4>  <p>Para utilizar os servi&ccedil;os dispon&iacute;veis nessa API deve-se seguir o seguinte padr&atilde;o de URL:</p>  <p><em>https://{ambiente}/<strong>cct</strong>/api/{servi&ccedil;o}</em></p>  <p>Onde, em <strong>{ambiente}</strong> deve-se informar o ambiente desejado dentro os ambientes dispon&iacute;veis na tabela abaixo e em <strong>{servi&ccedil;o}</strong> utilizar a URI do servi&ccedil;o desejado.</p>    <style type=\"text/css\">  .tg  {border-collapse:collapse;border-color:#bbb;border-spacing:0;width: 604px;}  .tg td{background-color:#E0FFEB;border-color:#bbb;border-style:solid;border-width:1px;color:#594F4F;    font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}  .tg th{background-color:#9DE0AD;border-color:#bbb;border-style:solid;border-width:1px;color:#493F3F;    font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}  .tg .tg-cabecalho{text-align:left;vertical-align:top}  .tg .tg-corpo{border-color:inherit;text-align:left;vertical-align:top}  </style>    <table class=\"tg\" style=\"width: 604px;\">  <thead>    <tr>      <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">Nome do Ambiente</span></th>      <th class=\"tg-cabecalho\"><span style=\"font-weight:bold\">URL de acesso</span></th>    </tr>  </thead>  <tbody>    <tr>      <td class=\"tg-corpo\">Ambiente de Validação da Empresas</td>      <td class=\"tg-corpo\">val.portalunico.siscomex.gov.br</td>    </tr>    <tr>      <td class=\"\\tg-corpo\">Ambiente de Produção</td>      <td class=\"\\tg-corpo\">portalunico.siscomex.gov.br</td>    </tr>  </tbody>  </table>    <p>&nbsp;</p>  <p><strong>Exemplo:</strong> Para o servi&ccedil;o \"Recepções de Nota Fiscal Eletrônica\" a URI &eacute; \"ext/carga/recepcao-nfe\".</p>  <p>Logo, abaixo temos um exemplo de URL completa considerando o ambiente de Valida&ccedil;&atilde;o, consumindo este servi&ccedil;o </p>  <p><em>https://val.portalunico.siscomex.gov.br/cct/ext/carga/recepcao-nfe</em></p>  
+ *
  */
 @Path("/")
 @Api(value = "/", description = "")
@@ -48,8 +49,9 @@ public interface CargaApi {
 
     /**
      * Consolidar Carga
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/consolidar-carga/\&quot;&gt;Exemplos de Consolidação de Carga&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/consolidar-carga")
@@ -67,8 +69,9 @@ public interface CargaApi {
 
     /**
      * Consultar Contêiner
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/consultar-conteiner/\&quot;&gt;Exemplos de Respostas da Consulta Contêiner&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @GET
     @Path("/ext/carga/conteiner")
@@ -86,8 +89,9 @@ public interface CargaApi {
 
     /**
      * Consultar DU-E, RUC e RUC Master
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/consultar-due-ruc/\&quot;&gt;Exemplos de Respostas da Consulta DU-E, RUC e RUC Master&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @GET
     @Path("/ext/carga/due-ruc")
@@ -105,8 +109,9 @@ public interface CargaApi {
 
     /**
      * Consultar Estoque Pré ACD
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/consultar-estoque-pre-acd/\&quot;&gt;Exemplos de Respostas da Consulta Estoque Pré ACD&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @GET
     @Path("/ext/deposito-carga/estoque-antes-acd")
@@ -124,8 +129,9 @@ public interface CargaApi {
 
     /**
      * Consultar Estoque Pós ACD
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/consultar-estoque-pos-acd/\&quot;&gt;Exemplos de Respostas da Consulta Estoque Pós ACD&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @GET
     @Path("/ext/deposito-carga/estoque-pos-acd")
@@ -143,8 +149,9 @@ public interface CargaApi {
 
     /**
      * Consultar RUC Master
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/consultar-mruc/\&quot;&gt;Exemplos de Respostas da Consulta RUC Master&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @GET
     @Path("/ext/carga/mruc")
@@ -162,6 +169,7 @@ public interface CargaApi {
 
     /**
      * Listar Notas Fiscais à partir de DANFEs separados por vírgula
+     *
      */
     @GET
     @Path("/ext/deposito-carga/estoque-nota-fiscal/{listaNfe}")
@@ -179,8 +187,9 @@ public interface CargaApi {
 
     /**
      * Desunitizar Carga
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/desunitizar-carga/\&quot;&gt;Exemplos de Desunitização de Carga&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/unitizacao/desunitizar-carga")
@@ -198,8 +207,9 @@ public interface CargaApi {
 
     /**
      * Entregar por Contêiner
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/entrega-conteiner/\&quot;&gt;Exemplos de Entregas por Contêineres&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/entrega-conteiner")
@@ -217,8 +227,9 @@ public interface CargaApi {
 
     /**
      * Entregar Carga por DU-E/RUC
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/entrega-due-ruc/\&quot;&gt;Exemplos de Entregas por DU-E/RUC&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/entrega-due-ruc")
@@ -236,8 +247,9 @@ public interface CargaApi {
 
     /**
      * Manifestar Dados de Embarque para Exportação
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/manifestacao-dados-embarque/\&quot;&gt;Exemplos de Manifestos de Dados de Embarque para Exportação&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/manifestacao-dados-embarque")
@@ -255,8 +267,9 @@ public interface CargaApi {
 
     /**
      * Manifestar Dados de Embarque para Exportação de um MIC/DTA Pré-ACD
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/manifestacao-dados-embarque-pre-acd/\&quot;&gt;Exemplos de Manifestos de Dados de Embarque para Exportação de Carga Pré ACD&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/manifestacao-dados-embarque-pre-acd")
@@ -274,8 +287,9 @@ public interface CargaApi {
 
     /**
      * Recepcionar por Contêiner
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/recepcao-conteiner/\&quot;&gt;Exemplos de Recepções por Contêineres&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/recepcao-conteiner")
@@ -293,8 +307,9 @@ public interface CargaApi {
 
     /**
      * Recepcionar Carga por DU-E/RUC
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/recepcao-due-ruc/\&quot;&gt;Exemplos de Recepções de Carga por DU-E/RUC&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/recepcao-due-ruc")
@@ -312,8 +327,9 @@ public interface CargaApi {
 
     /**
      * Recepcionar por Nota Fiscal Eletrônica (NF-e)
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/recepcao-nfe/\&quot;&gt;Exemplos de Recepções de Nota Fiscal Eletrônica&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/recepcao-nfe")
@@ -331,8 +347,9 @@ public interface CargaApi {
 
     /**
      * Recepcionar por Nota Fiscal Formulário
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/recepcao-nff/\&quot;&gt;Exemplos de Recepções de Nota Fiscal Formulário&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/carga/recepcao-nff")
@@ -350,8 +367,9 @@ public interface CargaApi {
 
     /**
      * Unitizar Carga
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/cctr/unitizar-carga/\&quot;&gt;Exemplos de Unitização de Carga&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/unitizacao/unitizar-carga")

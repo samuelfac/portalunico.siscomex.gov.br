@@ -1025,7 +1025,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Lista de guias de pagamento de ICMS (não canceladas)
-     *
      * @return guias
      **/
     @JsonProperty("guias")
@@ -1092,7 +1091,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Número do Mandado Judicial &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; MANDADO_JUDICIAL_DUIMP
-     *
      * @return numMandadoJudicial
      **/
     @JsonProperty("numMandadoJudicial")
@@ -1111,7 +1109,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Número da declaração&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 15
-     *
      * @return numeroDeclaracao
      **/
     @JsonProperty("numeroDeclaracao")
@@ -1131,7 +1128,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Get opcaoIcms
-     *
      * @return opcaoIcms
      **/
     @JsonProperty("opcaoIcms")
@@ -1150,7 +1146,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Período de referência&lt;br&gt;Formato: &#39;yyyy-MM&#39;
-     *
      * @return periodoReferencia
      **/
     @JsonProperty("periodoReferencia")
@@ -1193,7 +1188,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Observação, conforme o tipo de tratamento
-     *
      * @return status
      **/
     @JsonProperty("status")
@@ -1281,7 +1275,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * UF favorecida
-     *
      * @return ufAdquirente
      **/
     @JsonProperty("ufAdquirente")
@@ -1303,7 +1296,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * UF favorecida
-     *
      * @return ufFavorecida
      **/
     @JsonProperty("ufFavorecida")
@@ -1326,7 +1318,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * UF importador
-     *
      * @return ufImportador
      **/
     @JsonProperty("ufImportador")
@@ -1349,7 +1340,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor do AFRMM no momento da criação da solicitação&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo.
-     *
      * @return valorAfrmm
      **/
     @JsonProperty("valorAfrmm")
@@ -1368,7 +1358,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor CIF Exonerado (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP.
-     *
      * @return valorCIFExonerado
      **/
     @JsonProperty("valorCIFExonerado")
@@ -1387,7 +1376,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor considerado para a base de cálculo do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP.
-     *
      * @return valorCIFPagamento
      **/
     @JsonProperty("valorCIFPagamento")
@@ -1406,7 +1394,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorDespesasAduaneiras
      **/
     @JsonProperty("valorDespesasAduaneiras")
@@ -1425,7 +1412,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor total a recolher de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotalARecolher
      **/
     @JsonProperty("valorTotalARecolher")
@@ -1445,7 +1431,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor total do crédito de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotalCredito
      **/
     @JsonProperty("valorTotalCredito")
@@ -1465,7 +1450,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Valor total devido de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotalDevido
      **/
     @JsonProperty("valorTotalDevido")
@@ -1485,7 +1469,6 @@ public class SolicitacaoIcmsDto {
 
     /**
      * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDeclaracao
      **/
     @JsonProperty("versaoDeclaracao")

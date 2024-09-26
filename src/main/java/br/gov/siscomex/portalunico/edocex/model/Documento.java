@@ -353,7 +353,6 @@ public class Documento {
 
     /**
      * Id do documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 9223372036854775807
-     *
      * @return id
      **/
     @JsonProperty("id")
@@ -393,7 +392,6 @@ public class Documento {
 
     /**
      * Nome do arquivo&lt;br/&gt;Tamanho máximo: 255
-     *
      * @return nomeArquivo
      **/
     @JsonProperty("nomeArquivo")
@@ -433,7 +431,6 @@ public class Documento {
 
     /**
      * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
-     *
      * @return sha256
      **/
     @JsonProperty("sha256")

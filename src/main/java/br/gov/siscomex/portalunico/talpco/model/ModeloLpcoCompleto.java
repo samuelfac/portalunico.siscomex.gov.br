@@ -246,7 +246,6 @@ public class ModeloLpcoCompleto {
 
     /**
      * Forma de preenchimento do modelo, sem pelo importador/exportador, de ofício, ou ambos.
-     *
      * @return preenchimento
      **/
     @JsonProperty("preenchimento")

@@ -336,7 +336,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -356,7 +355,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * Identificação do número do contêiner.&lt;br/&gt;É obrigatório que o atributo &#39;numeroConteiner&#39; seja informado quando o atributo &#39;numeroLote&#39; não for informado.&lt;br/&gt;Tamanho: 200
-     *
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -375,7 +373,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;É obrigatório que o atributo &#39;numeroLote&#39; seja informado quando o atributo &#39;numeroConteiner&#39; não for informado.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
@@ -394,7 +391,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * Get navio
-     *
      * @return navio
      **/
     @JsonProperty("navio")
@@ -414,7 +410,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * Viagem&lt;br/&gt;Tamanho: 20
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")
@@ -433,7 +428,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * Escala&lt;br/&gt;Tamanho: 20
-     *
      * @return escala
      **/
     @JsonProperty("escala")
@@ -471,7 +465,6 @@ public class DadosAtribuioTrocaNavio {
 
     /**
      * País de destino final da carga. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return paisDestinoFinalCarga
      **/
     @JsonProperty("paisDestinoFinalCarga")

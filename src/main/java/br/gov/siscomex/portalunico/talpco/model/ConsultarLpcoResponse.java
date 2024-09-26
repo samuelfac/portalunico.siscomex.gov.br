@@ -319,7 +319,6 @@ public class ConsultarLpcoResponse {
 
     /**
      * Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )
-     *
      * @return dueVinculada
      **/
     @JsonProperty("dueVinculada")
@@ -378,7 +377,6 @@ public class ConsultarLpcoResponse {
 
     /**
      * Data em que o LPCO passou para sua situação atual&lt;br&gt; Formato: Formato: dd-MM-yyyy&#39;T&#39;HH:mm:ss:SSSZ
-     *
      * @return dataSituacaoAtual
      **/
     @JsonProperty("dataSituacaoAtual")
@@ -398,7 +396,6 @@ public class ConsultarLpcoResponse {
 
     /**
      * Canal. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
-     *
      * @return canal
      **/
     @JsonProperty("canal")

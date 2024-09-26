@@ -234,7 +234,6 @@ public class ExceptionCoverDocumentacao {
 
     /**
      * Get tag
-     *
      * @return tag
      **/
     @JsonProperty("tag")

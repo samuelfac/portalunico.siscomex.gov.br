@@ -360,7 +360,6 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Código do Recinto Aduaneiro&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
-     *
      * @return codigoRA
      **/
     @JsonProperty("codigoRA")
@@ -379,7 +378,6 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
-     *
      * @return latitude
      **/
     @JsonProperty("latitude")
@@ -398,7 +396,6 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Longitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
-     *
      * @return longitude
      **/
     @JsonProperty("longitude")
@@ -436,7 +433,6 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-     *
      * @return nomeResponsavel
      **/
     @JsonProperty("nomeResponsavel")
@@ -455,7 +451,6 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Tamanho: 4&lt;br&gt;Formato: NNNN
-     *
      * @return anoDeposito
      **/
     @JsonProperty("anoDeposito")
@@ -515,7 +510,6 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
-     *
      * @return dataCriacao
      **/
     @JsonProperty("dataCriacao")

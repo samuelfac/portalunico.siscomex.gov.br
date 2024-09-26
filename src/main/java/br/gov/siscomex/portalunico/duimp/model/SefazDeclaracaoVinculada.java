@@ -397,7 +397,6 @@ public class SefazDeclaracaoVinculada {
 
     /**
      * Valor do frete (R$) do item.&lt;br&gt;O valor do frete (R$) do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \&quot;Duimp\&quot; e quando o frete foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do frete (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do frete (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Apenas quando a declaração vinculada for uma Duimp.
-     *
      * @return valorFreteReal
      **/
     @JsonProperty("valorFreteReal")
@@ -416,7 +415,6 @@ public class SefazDeclaracaoVinculada {
 
     /**
      * Valor do seguro (R$) do item.&lt;br&gt;O valor do seguro (R$) item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \&quot;Duimp\&quot; e quando o seguro foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do seguro (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do seguro (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorSeguroReal
      **/
     @JsonProperty("valorSeguroReal")
@@ -473,7 +471,6 @@ public class SefazDeclaracaoVinculada {
 
     /**
      * Regime Aplicado ao  Item da Declaração Vinculada.&lt;br&gt;Dominio: Regimes tributários existentes no sistema Tratamento Tributário&lt;br&gt;Observação:&lt;br&gt;Apenas quando a declaração vinculada for uma Duimp.
-     *
      * @return itemCodigoRegime
      **/
     @JsonProperty("itemCodigoRegime")
@@ -492,7 +489,6 @@ public class SefazDeclaracaoVinculada {
 
     /**
      * Fundamento Aplicado ao Item da Declaração Vinculada&lt;br&gt;Dominio: Fundamentos legais existentes no sistema Tratamento Tributário&lt;br&gt;Observação:&lt;br&gt;Apenas quando a declaração vinculada for uma Duimp.
-     *
      * @return itemCodigoFundamento
      **/
     @JsonProperty("itemCodigoFundamento")
@@ -511,7 +507,6 @@ public class SefazDeclaracaoVinculada {
 
     /**
      * Código da NCM associada ao item da Declaração Vinculada.&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Observação:&lt;br&gt;Apenas quando a declaração vinculada for uma Duimp.
-     *
      * @return itemNcmAssociada
      **/
     @JsonProperty("itemNcmAssociada")

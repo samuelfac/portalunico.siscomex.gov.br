@@ -440,7 +440,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -460,7 +459,6 @@ public class DadosAcessoPessoa {
 
     /**
      * CPF da pessoa que está acessando o recinto (entrada ou saída). &lt;br/&gt;É obrigatório informar o atributo &#39;cpf&#39; quando o atributo &#39;identidadeEstrangeiro&#39; não for informado.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpf
      **/
     @JsonProperty("cpf")
@@ -525,7 +523,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Número do documento de estrangeiro. &lt;br/&gt; Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. &lt;br/&gt;É obrigatório informar o atributo &#39;identidadeEstrangeiro&#39; quando o atributo &#39;cpf&#39; não for informado.&lt;br/&gt;Tamanho: 50
-     *
      * @return identidadeEstrangeiro
      **/
     @JsonProperty("identidadeEstrangeiro")
@@ -544,7 +541,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
      * @return nome
      **/
     @JsonProperty("nome")
@@ -564,7 +560,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Número da reserva do passageiro.&lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos&lt;br/&gt;Tamanho: 50
-     *
      * @return reserva
      **/
     @JsonProperty("reserva")
@@ -583,7 +578,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Número do vôo do passageiro.&lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos.&lt;br/&gt;Tamanho: 20
-     *
      * @return voo
      **/
     @JsonProperty("voo")
@@ -602,7 +596,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Portão ou catraca de acesso. &lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
-     *
      * @return catraca
      **/
     @JsonProperty("catraca")
@@ -622,7 +615,6 @@ public class DadosAcessoPessoa {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área de acesso.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

@@ -305,7 +305,6 @@ public class DUEResumida {
 
     /**
      * Número da DUE&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNAANNNNNNNNNN&#39;
-     *
      * @return numeroDUE
      **/
     @JsonProperty("numeroDUE")
@@ -324,7 +323,6 @@ public class DUEResumida {
 
     /**
      * RUC - Número da referência única de carga&lt;br /&gt;Tamanho: 35&lt;br /&gt;Formato: &#39;NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
-     *
      * @return numeroRUC
      **/
     @JsonProperty("numeroRUC")
@@ -343,7 +341,6 @@ public class DUEResumida {
 
     /**
      * Responsável pela Unidade Aduaneira do Despacho&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 14
-     *
      * @return responsavelUADespacho
      **/
     @JsonProperty("responsavelUADespacho")
@@ -362,7 +359,6 @@ public class DUEResumida {
 
     /**
      * Situação da Carga&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Estocada&lt;br /&gt;2 &#x3D; Em Trânsito&lt;br /&gt;3 &#x3D; Carga Completamente Exportada
-     *
      * @return situacaoCarga
      **/
     @JsonProperty("situacaoCarga")
@@ -386,7 +382,6 @@ public class DUEResumida {
 
     /**
      * Situação&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Em elaboração&lt;br /&gt; 10 &#x3D; Registrada&lt;br /&gt;11 &#x3D; Declaração apresentada para despacho&lt;br /&gt; 15 &#x3D; ACD em processamento&lt;br /&gt;20 &#x3D; Liberada sem conferência aduaneira&lt;br /&gt; 21 &#x3D; Selecionada para conferência aduaneira&lt;br /&gt;24 &#x3D; Embarque antecipado pendente de LPCO&lt;br /&gt; 25 &#x3D; Embarque antecipado autorizado&lt;br /&gt;26 &#x3D; Embarque antecipado pendente de autorização&lt;br /&gt; 30 &#x3D; Em análise fiscal&lt;br /&gt;35 &#x3D; Concluída análise fiscal&lt;br /&gt; 36 &#x3D; Desembaraço pendente de LPCO&lt;br /&gt; 40 &#x3D; Desembaraçada&lt;br /&gt;70 &#x3D; Averbada&lt;br /&gt; 80 &#x3D; Cancelada pelo exportador&lt;br /&gt; 81 &#x3D; Cancelada por expiração de prazo&lt;br /&gt;82 &#x3D; Cancelada pela RFB&lt;br /&gt; 83 &#x3D; Cancelada pela RFB a pedido do exportador&lt;br /&gt; 86 &#x3D; Interrompida
-     *
      * @return situacaoDUE
      **/
     @JsonProperty("situacaoDUE")
@@ -405,7 +400,6 @@ public class DUEResumida {
 
     /**
      * Unidade aduaneira de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
      * @return uaDespacho
      **/
     @JsonProperty("uaDespacho")
@@ -424,7 +418,6 @@ public class DUEResumida {
 
     /**
      * Unidade aduaneira de Embarque&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
      * @return uaEmbarque
      **/
     @JsonProperty("uaEmbarque")

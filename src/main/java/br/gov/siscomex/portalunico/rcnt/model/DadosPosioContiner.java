@@ -359,7 +359,6 @@ public class DadosPosioContiner {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -399,7 +398,6 @@ public class DadosPosioContiner {
 
     /**
      * Placa semirreboque/vagão. Informar em caso de descarregamento. &lt;br/&gt;Tamanho: 50
-     *
      * @return placaSemirreboque
      **/
     @JsonProperty("placaSemirreboque")
@@ -418,7 +416,6 @@ public class DadosPosioContiner {
 
     /**
      * Get localizacao
-     *
      * @return localizacao
      **/
     @JsonProperty("localizacao")
@@ -437,7 +434,6 @@ public class DadosPosioContiner {
 
     /**
      * Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. &lt;br/&gt;Tamanho: 20
-     *
      * @return posicaoNavio
      **/
     @JsonProperty("posicaoNavio")
@@ -456,7 +452,6 @@ public class DadosPosioContiner {
 
     /**
      * Informar se o contêiner está em conferência física. &lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return conferenciaFisica
      **/
     @JsonProperty("conferenciaFisica")
@@ -475,7 +470,6 @@ public class DadosPosioContiner {
 
     /**
      * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return solicitanteFisica
      **/
     @JsonProperty("solicitanteFisica")
@@ -494,7 +488,6 @@ public class DadosPosioContiner {
 
     /**
      * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return avaria
      **/
     @JsonProperty("avaria")
@@ -513,7 +506,6 @@ public class DadosPosioContiner {
 
     /**
      * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return vazio
      **/
     @JsonProperty("vazio")
@@ -532,7 +524,6 @@ public class DadosPosioContiner {
 
     /**
      * Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
-     *
      * @return areaConteiner
      **/
     @JsonProperty("areaConteiner")
@@ -551,7 +542,6 @@ public class DadosPosioContiner {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a unidade foi posicionada.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

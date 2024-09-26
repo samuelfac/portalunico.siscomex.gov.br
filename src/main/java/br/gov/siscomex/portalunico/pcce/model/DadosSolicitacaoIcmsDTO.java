@@ -557,7 +557,6 @@ public class DadosSolicitacaoIcmsDTO {
 
     /**
      * Valor do AFRMM&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo.
-     *
      * @return valorAfrmm
      **/
     @JsonProperty("valorAfrmm")
@@ -576,7 +575,6 @@ public class DadosSolicitacaoIcmsDTO {
 
     /**
      * Valor CIF considerado para exoneração (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; &#39;EXONERACAO_PAG_PARCIAL_DUIMP&#39; ou &#39;EXONERACAO_INTEGRAL_DUIMP&#39; e tipo de tratamento !&#x3D; &#39;CALCULO_SEFAZ&#39;.
-     *
      * @return valorCIFExonerado
      **/
     @JsonProperty("valorCIFExonerado")
@@ -595,7 +593,6 @@ public class DadosSolicitacaoIcmsDTO {
 
     /**
      * Valor considerado para a base de cálculo do ICMS quando a declaração for um pagamento parcial&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; &#39;PAGAMENTO_PARCIAL_DUIMP&#39; ou &#39;EXONERACAO_PAG_PARCIAL_DUIMP&#39; e tipo de tratamento !&#x3D; &#39;CALCULO_SEFAZ&#39;.
-     *
      * @return valorCIFPagamento
      **/
     @JsonProperty("valorCIFPagamento")
@@ -633,7 +630,6 @@ public class DadosSolicitacaoIcmsDTO {
 
     /**
      * Valor do ICMS importação&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; &#39;PAGAMENTO_INTEGRAL_DUIMP&#39; ou &#39;PAGAMENTO_PARCIAL_DUIMP&#39; ou &#39;EXONERACAO_PAG_PARCIAL_DUIMP&#39; e tipo de tratamento !&#x3D; &#39;CALCULO_SEFAZ&#39;.
-     *
      * @return valorIcms
      **/
     @JsonProperty("valorIcms")
@@ -652,7 +648,6 @@ public class DadosSolicitacaoIcmsDTO {
 
     /**
      * Versão da Duimp&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDuimp
      **/
     @JsonProperty("versaoDuimp")

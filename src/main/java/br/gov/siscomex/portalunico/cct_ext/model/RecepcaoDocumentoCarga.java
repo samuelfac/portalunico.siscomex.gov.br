@@ -294,7 +294,6 @@ public class RecepcaoDocumentoCarga {
 
     /**
      * Código de identificação da carga
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -313,7 +312,6 @@ public class RecepcaoDocumentoCarga {
 
     /**
      * Avarias identificadas&lt;br&gt;Tamanho: 250
-     *
      * @return avariasIdentificadas
      **/
     @JsonProperty("avariasIdentificadas")
@@ -351,7 +349,6 @@ public class RecepcaoDocumentoCarga {
 
     /**
      * Observações gerais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")
@@ -370,7 +367,6 @@ public class RecepcaoDocumentoCarga {
 
     /**
      * Get transitoSimplificado
-     *
      * @return transitoSimplificado
      **/
     @JsonProperty("transitoSimplificado")

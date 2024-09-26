@@ -165,7 +165,6 @@ public class DiagnosticInfo {
 
     /**
      * Get usuario
-     *
      * @return usuario
      **/
     @JsonProperty("usuario")
@@ -184,7 +183,6 @@ public class DiagnosticInfo {
 
     /**
      * Get visao
-     *
      * @return visao
      **/
     @JsonProperty("visao")

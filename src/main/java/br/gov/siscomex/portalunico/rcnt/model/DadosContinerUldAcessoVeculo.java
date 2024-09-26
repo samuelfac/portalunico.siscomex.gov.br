@@ -290,7 +290,6 @@ public class DadosContinerUldAcessoVeculo {
 
     /**
      * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return avaria
      **/
     @JsonProperty("avaria")
@@ -357,7 +356,6 @@ public class DadosContinerUldAcessoVeculo {
 
     /**
      * Lista de navios.
-     *
      * @return listaNavio
      **/
     @JsonProperty("listaNavio")
@@ -381,7 +379,6 @@ public class DadosContinerUldAcessoVeculo {
 
     /**
      * Lista de clientes.
-     *
      * @return listaCliente
      **/
     @JsonProperty("listaCliente")
@@ -424,7 +421,6 @@ public class DadosContinerUldAcessoVeculo {
 
     /**
      * Nome do estabelecimento onde a carga foi estufada.&lt;br/&gt;Tamanho: 200
-     *
      * @return nomeEstabelecimentoEstufagem
      **/
     @JsonProperty("nomeEstabelecimentoEstufagem")

@@ -252,7 +252,6 @@ public class EstoqueNFE {
 
     /**
      * Motivo da não pesagem na recepção&lt;br&gt;Tamanho: 250
-     *
      * @return motivoNaoPesagem
      **/
     @JsonProperty("motivoNaoPesagem")
@@ -271,7 +270,6 @@ public class EstoqueNFE {
 
     /**
      * Itens da Nota Fiscal
-     *
      * @return itens
      **/
     @JsonProperty("itens")

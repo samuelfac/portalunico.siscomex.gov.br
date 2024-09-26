@@ -364,7 +364,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -408,7 +407,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Lista de chaves das NFE que amparam o transporte.
-     *
      * @return listaNfe
      **/
     @JsonProperty("listaNfe")
@@ -432,7 +430,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Lista de identificadores de Carga.
-     *
      * @return listaCarga
      **/
     @JsonProperty("listaCarga")
@@ -504,7 +501,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não Pode ser nulo quando o evento for de exclusão.
-     *
      * @return vazio
      **/
     @JsonProperty("vazio")
@@ -524,7 +520,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Get imagemScanner
-     *
      * @return imagemScanner
      **/
     @JsonProperty("imagemScanner")
@@ -544,7 +539,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Arquivo gerado que acompanha a imagem do scanner, geralmente um xml&lt;br/&gt;Tamanho: 7160
-     *
      * @return arquivoMetadados
      **/
     @JsonProperty("arquivoMetadados")
@@ -563,7 +557,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Identificação do scanner. Usar o protocolo do evento de georreferenciamento relativo ao scanner. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
-     *
      * @return scanner
      **/
     @JsonProperty("scanner")
@@ -583,7 +576,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde foi realizado o escaneamento.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

@@ -409,7 +409,6 @@ public class CargaDetalheChegadaTerrestre {
 
     /**
      * Placa do veículo terrestre.&lt;br/&gt;Tamanho: 7&lt;br/&gt;Formato: AAANNNN ou AAANANN
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -428,7 +427,6 @@ public class CargaDetalheChegadaTerrestre {
 
     /**
      * Número do termo gerado no sistema Mantra&lt;br/&gt;Tamanho: 9&lt;br/&gt;Formato: NNNNNNNNN
-     *
      * @return termo
      **/
     @JsonProperty("termo")

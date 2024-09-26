@@ -376,7 +376,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -396,7 +395,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
@@ -456,7 +454,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Lista dos Tipos de Avarias.
-     *
      * @return listaTipoAvaria
      **/
     @JsonProperty("listaTipoAvaria")
@@ -480,7 +477,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Quantidade de volumes avariados, extraviados ou furtados.
-     *
      * @return quantidadeVolumes
      **/
     @JsonProperty("quantidadeVolumes")
@@ -499,7 +495,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Observações&lt;br/&gt;Tamanho: 100
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")

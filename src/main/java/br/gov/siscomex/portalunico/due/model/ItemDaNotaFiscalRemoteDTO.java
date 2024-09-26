@@ -275,7 +275,6 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     /**
      * Unidade comercial&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 6
-     *
      * @return unidadeComercial
      **/
     @JsonProperty("unidadeComercial")
@@ -294,7 +293,6 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     /**
      * Valor total bruto&lt;br /&gt;Tamanho: 13,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorTotalBruto
      **/
     @JsonProperty("valorTotalBruto")
@@ -313,7 +311,6 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     /**
      * Valor total calculado&lt;br /&gt;Tamanho: 13,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorTotalCalculado
      **/
     @JsonProperty("valorTotalCalculado")

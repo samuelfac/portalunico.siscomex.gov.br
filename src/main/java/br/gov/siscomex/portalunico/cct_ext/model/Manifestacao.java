@@ -183,7 +183,6 @@ public class Manifestacao {
 
     /**
      * Get rota
-     *
      * @return rota
      **/
     @JsonProperty("rota")

@@ -300,7 +300,6 @@ public class Carga {
 
     /**
      * Valor do seguro&lt;br&gt;Tamanho: 14.2&lt;br&gt;Formato: NNNNNNNNNNNNNN.NN
-     *
      * @return valorSeguro
      **/
     @JsonProperty("valorSeguro")
@@ -319,7 +318,6 @@ public class Carga {
 
     /**
      * Código da moeda do seguro&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN
-     *
      * @return moedaValorSeguro
      **/
     @JsonProperty("moedaValorSeguro")
@@ -357,7 +355,6 @@ public class Carga {
 
     /**
      * Nome do tipo de volume&lt;br&gt;Tamanho: 15
-     *
      * @return nomeTiposVolumes
      **/
     @JsonProperty("nomeTiposVolumes")
@@ -377,7 +374,6 @@ public class Carga {
 
     /**
      * Quantidade do volume&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: NNNNNN
-     *
      * @return qtdeVolumes
      **/
     @JsonProperty("qtdeVolumes")
@@ -396,7 +392,6 @@ public class Carga {
 
     /**
      * Peso Bruto (kg) da mercadoria&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
-     *
      * @return pesoBruto
      **/
     @JsonProperty("pesoBruto")
@@ -436,7 +431,6 @@ public class Carga {
 
     /**
      * Documentos anexos&lt;br&gt;Tamanho: 400
-     *
      * @return documentosAnexos
      **/
     @JsonProperty("documentosAnexos")

@@ -330,7 +330,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Valor da alíquota reduzida (%).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorAliquotaReduzida
      **/
     @JsonProperty("valorAliquotaReduzida")
@@ -349,7 +348,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Valor normal em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return normal
      **/
     @JsonProperty("normal")
@@ -368,7 +366,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Indicador de tributação.
-     *
      * @return tributado
      **/
     @JsonProperty("tributado")
@@ -387,7 +384,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return percentualPagamento
      **/
     @JsonProperty("percentualPagamento")

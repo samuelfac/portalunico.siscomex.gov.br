@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -104,7 +105,7 @@ public class TransportadorCover {
      * @return nomeEstrangeiro
      **/
     @JsonProperty("nomeEstrangeiro")
-    @Pattern(regexp = "[a-zA-Z0-9-]{2,60}")
+    @Size(min = 2, max = 60)
     public String getNomeEstrangeiro() {
         return nomeEstrangeiro;
     }
@@ -144,7 +145,7 @@ public class TransportadorCover {
      * @return nomeCondutorEstrangeiro
      **/
     @JsonProperty("nomeCondutorEstrangeiro")
-    @Pattern(regexp = "[a-zA-Z0-9-]{2,60}")
+    @Size(min = 2, max = 60)
     public String getNomeCondutorEstrangeiro() {
         return nomeCondutorEstrangeiro;
     }

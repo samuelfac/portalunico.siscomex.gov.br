@@ -316,7 +316,6 @@ public class DadosIndisponibilidadeEquipamento {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -336,7 +335,6 @@ public class DadosIndisponibilidadeEquipamento {
 
     /**
      * Usar o protocolo do evento de georreferenciamento para indicar o equipamento indisponível. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
-     *
      * @return equipamento
      **/
     @JsonProperty("equipamento")
@@ -356,7 +354,6 @@ public class DadosIndisponibilidadeEquipamento {
 
     /**
      * Disponível ou indisponível. Quando do retorno à normalidade transmitir como disponível. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return disponivel
      **/
     @JsonProperty("disponivel")

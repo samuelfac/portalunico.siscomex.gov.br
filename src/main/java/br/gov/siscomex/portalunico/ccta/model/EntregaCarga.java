@@ -453,7 +453,6 @@ public class EntregaCarga {
 
     /**
      * Observações sobre a entrega&lt;br/&gt;Tamanho máximo: 300
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")
@@ -472,7 +471,6 @@ public class EntregaCarga {
 
     /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
      * @return pesoEntrega
      **/
     @JsonProperty("pesoEntrega")
@@ -511,7 +509,6 @@ public class EntregaCarga {
 
     /**
      * Recinto Aduaneiro do Depositário responsável pela entrega.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado para outros intervenientes.
-     *
      * @return recintoAduaneiro
      **/
     @JsonProperty("recintoAduaneiro")
@@ -599,7 +596,6 @@ public class EntregaCarga {
 
     /**
      * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega&lt;br/&gt;Este campo é obrigatório para Cia. Aérea e opcional para o Depositário.
-     *
      * @return unidadeRFB
      **/
     @JsonProperty("unidadeRFB")
@@ -618,7 +614,6 @@ public class EntregaCarga {
 
     /**
      * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
      * @return volumeEntrega
      **/
     @JsonProperty("volumeEntrega")

@@ -289,7 +289,6 @@ public class MercadoriaCover {
 
     /**
      * Descrição complementar da mercadoria.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 4000
-     *
      * @return descricao
      **/
     @JsonProperty("descricao")

@@ -451,7 +451,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get nomeTransportador
-     *
      * @return nomeTransportador
      **/
     @JsonProperty("nomeTransportador")
@@ -470,7 +469,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get tipoDAT
-     *
      * @return tipoDAT
      **/
     @JsonProperty("tipoDAT")
@@ -489,7 +487,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get localOrigem
-     *
      * @return localOrigem
      **/
     @JsonProperty("localOrigem")
@@ -508,7 +505,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get localDestinoPrevisto
-     *
      * @return localDestinoPrevisto
      **/
     @JsonProperty("localDestinoPrevisto")
@@ -546,7 +542,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get veiculoFerroviario
-     *
      * @return veiculoFerroviario
      **/
     @JsonProperty("veiculoFerroviario")
@@ -565,7 +560,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get veiculoRodoviario
-     *
      * @return veiculoRodoviario
      **/
     @JsonProperty("veiculoRodoviario")
@@ -584,7 +578,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get conteineres
-     *
      * @return conteineres
      **/
     @JsonProperty("conteineres")
@@ -632,7 +625,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get identificacaoVeiculo
-     *
      * @return identificacaoVeiculo
      **/
     @JsonProperty("identificacaoVeiculo")
@@ -651,7 +643,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get pesoBrutoTransportado
-     *
      * @return pesoBrutoTransportado
      **/
     @JsonProperty("pesoBrutoTransportado")
@@ -689,7 +680,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get dadosVeiculoConferem
-     *
      * @return dadosVeiculoConferem
      **/
     @JsonProperty("dadosVeiculoConferem")
@@ -708,7 +698,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get dadosUnidadeTransporteConferem
-     *
      * @return dadosUnidadeTransporteConferem
      **/
     @JsonProperty("dadosUnidadeTransporteConferem")
@@ -727,7 +716,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get dadosConteinerConferem
-     *
      * @return dadosConteinerConferem
      **/
     @JsonProperty("dadosConteinerConferem")
@@ -746,7 +734,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get dadosEmbalagemConferem
-     *
      * @return dadosEmbalagemConferem
      **/
     @JsonProperty("dadosEmbalagemConferem")
@@ -860,7 +847,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get pesoAferido
-     *
      * @return pesoAferido
      **/
     @JsonProperty("pesoAferido")
@@ -879,7 +865,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get motivoNaoPesagem
-     *
      * @return motivoNaoPesagem
      **/
     @JsonProperty("motivoNaoPesagem")
@@ -955,7 +940,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get numeroLicComplTETI
-     *
      * @return numeroLicComplTETI
      **/
     @JsonProperty("numeroLicComplTETI")
@@ -993,7 +977,6 @@ public class DocumentoTransporteDTO {
 
     /**
      * Get descricaoViaDeTransporte
-     *
      * @return descricaoViaDeTransporte
      **/
     @JsonProperty("descricaoViaDeTransporte")

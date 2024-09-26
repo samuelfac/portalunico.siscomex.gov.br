@@ -209,7 +209,6 @@ public class Ocorrncia {
 
     /**
      * Contém o indicador de resolução da ocorrência. Valores pré-definidos:&lt;br/&gt;0 - Ocorrência não resolvida; &lt;br/&gt;1 - Ocorrência resolvida;&lt;br&gt;2 - Interrompida RFB
-     *
      * @return resolvida
      **/
     @JsonProperty("resolvida")

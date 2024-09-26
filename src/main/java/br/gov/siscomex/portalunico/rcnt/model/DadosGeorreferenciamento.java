@@ -334,7 +334,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -373,7 +372,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Nome da área ou equipamento. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
      * @return nome
      **/
     @JsonProperty("nome")
@@ -413,7 +411,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Azimute da câmera.&lt;br/&gt;Azimute em relação ao norte geográfico (número inteiro que representa o ângulo de 0 a 360 graus a partir do norte geográfico em sentido horário). Informar apenas para as câmeras fixas.&lt;br/&gt;Tamanho: 3
-     *
      * @return azimuteCamera
      **/
     @JsonProperty("azimuteCamera")
@@ -432,7 +429,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")

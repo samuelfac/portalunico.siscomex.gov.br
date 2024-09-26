@@ -585,7 +585,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -653,7 +652,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.
-     *
      * @return listaNfe
      **/
     @JsonProperty("listaNfe")
@@ -700,7 +698,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Identificação do número do contêiner.&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.&lt;br/&gt;Tamanho: 200
-     *
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -718,8 +715,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt;É obrigatório informar o atributo &#39;tipoConteiner&#39; quando o atributo &#39;numeroConteiner&#39; for informado.
-     *
+     *  Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt;É obrigatório informar o atributo &#39;tipoConteiner&#39; quando o atributo &#39;numeroConteiner&#39; for informado.
      * @return tipoConteiner
      **/
     @JsonProperty("tipoConteiner")
@@ -738,7 +734,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Tara do contêiner (KG).&lt;br/&gt; Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.&lt;br/&gt;&lt;br/&gt;taraConteiner, até 4 casas decimais.
-     *
      * @return taraConteiner
      **/
     @JsonProperty("taraConteiner")
@@ -757,7 +752,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Peso bruto manifesto / VGM (Kg).&lt;br/&gt;&lt;br/&gt;pesoBrutoManifesto, até 4 casas decimais.
-     *
      * @return pesoBrutoManifesto
      **/
     @JsonProperty("pesoBrutoManifesto")
@@ -776,7 +770,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
-     *
      * @return pesoBrutoBalanca
      **/
     @JsonProperty("pesoBrutoBalanca")
@@ -795,7 +788,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
-     *
      * @return pesoArqueacao
      **/
     @JsonProperty("pesoArqueacao")
@@ -836,7 +828,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;volume, até 4 casas decimais.
-     *
      * @return volume
      **/
     @JsonProperty("volume")
@@ -855,7 +846,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Indicador de carga solta.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return cargaSolta
      **/
     @JsonProperty("cargaSolta")
@@ -875,7 +865,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
@@ -894,7 +883,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Informar no caso de carregamento ou descarregamento de carga solta.&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
-     *
      * @return listaVolumes
      **/
     @JsonProperty("listaVolumes")
@@ -918,7 +906,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
-     *
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
@@ -962,7 +949,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Viagem Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")
@@ -982,7 +968,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Escala Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
-     *
      * @return escala
      **/
     @JsonProperty("escala")
@@ -1002,7 +987,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada.
-     *
      * @return listaPortoCarregamento
      **/
     @JsonProperty("listaPortoCarregamento")
@@ -1026,7 +1010,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.
-     *
      * @return listaPortoDescarregamento
      **/
     @JsonProperty("listaPortoDescarregamento")
@@ -1050,7 +1033,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Lista de países de destino final da carga conforme tabela de domínio.
-     *
      * @return listaPaisDestinoFinalCarga
      **/
     @JsonProperty("listaPaisDestinoFinalCarga")
@@ -1074,7 +1056,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Posição do contêiner ou volume dentro do navio.&lt;br/&gt;Tamanho: 20
-     *
      * @return posicaoNavio
      **/
     @JsonProperty("posicaoNavio")
@@ -1112,7 +1093,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.&lt;br/&gt;No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. &lt;br/&gt;&lt;br/&gt;Tamanho: 36
-     *
      * @return portainer
      **/
     @JsonProperty("portainer")
@@ -1131,7 +1111,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

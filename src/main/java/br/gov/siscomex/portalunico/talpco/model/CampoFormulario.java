@@ -701,7 +701,6 @@ public class CampoFormulario {
 
     /**
      * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
-     *
      * @return orientacao
      **/
     @JsonProperty("orientacao")
@@ -720,7 +719,6 @@ public class CampoFormulario {
 
     /**
      * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
-     *
      * @return exemplo
      **/
     @JsonProperty("exemplo")

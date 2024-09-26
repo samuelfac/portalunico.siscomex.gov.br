@@ -190,7 +190,6 @@ public class ParteInteressadaConsultaDetalhada {
 
     /**
      * Tipo da parte interessada&lt;br/&gt; Tamanho: 1&lt;br/&gt;1 - Consignatário&lt;br/&gt;2 - Embarcador&lt;br/&gt;3 - Agente de carga&lt;br/&gt;4 - Outras partes interessadas&lt;br/&gt;
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")

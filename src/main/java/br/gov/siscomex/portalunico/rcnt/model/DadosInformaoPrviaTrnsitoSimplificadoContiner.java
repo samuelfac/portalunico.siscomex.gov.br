@@ -324,7 +324,6 @@ public class DadosInformaoPrviaTrnsitoSimplificadoContiner {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -382,7 +381,6 @@ public class DadosInformaoPrviaTrnsitoSimplificadoContiner {
 
     /**
      * Viagem&lt;br/&gt;Tamanho: 20
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")
@@ -401,7 +399,6 @@ public class DadosInformaoPrviaTrnsitoSimplificadoContiner {
 
     /**
      * Escala&lt;br/&gt;Tamanho: 20
-     *
      * @return escala
      **/
     @JsonProperty("escala")
@@ -420,7 +417,6 @@ public class DadosInformaoPrviaTrnsitoSimplificadoContiner {
 
     /**
      * Lista de cargas
-     *
      * @return listaCargas
      **/
     @JsonProperty("listaCargas")

@@ -248,7 +248,6 @@ public class NotaFiscalFormulario {
 
     /**
      * Get conteineres
-     *
      * @return conteineres
      **/
     @JsonProperty("conteineres")
@@ -268,7 +267,6 @@ public class NotaFiscalFormulario {
 
     /**
      * Get itensNFF
-     *
      * @return itensNFF
      **/
     @JsonProperty("itensNFF")

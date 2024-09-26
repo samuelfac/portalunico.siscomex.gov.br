@@ -279,7 +279,6 @@ public class DadosSemirreboque {
 
     /**
      * Lista de navios.
-     *
      * @return listaNavio
      **/
     @JsonProperty("listaNavio")
@@ -303,7 +302,6 @@ public class DadosSemirreboque {
 
     /**
      * Lista de clientes.
-     *
      * @return listaCliente
      **/
     @JsonProperty("listaCliente")

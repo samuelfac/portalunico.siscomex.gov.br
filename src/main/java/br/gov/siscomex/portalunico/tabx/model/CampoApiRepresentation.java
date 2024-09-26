@@ -304,7 +304,6 @@ public class CampoApiRepresentation {
 
     /**
      * Formato do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
-     *
      * @return formato
      **/
     @JsonProperty("formato")
@@ -363,7 +362,6 @@ public class CampoApiRepresentation {
 
     /**
      * Indicador de chave de negócio.
-     *
      * @return chaveNegocio
      **/
     @JsonProperty("chaveNegocio")
@@ -423,7 +421,6 @@ public class CampoApiRepresentation {
 
     /**
      * Indicador de existência de domínio.
-     *
      * @return possuiDominio
      **/
     @JsonProperty("possuiDominio")
@@ -443,7 +440,6 @@ public class CampoApiRepresentation {
 
     /**
      * Nome da tabela estrangeira.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
-     *
      * @return nomeTabelaEstrangeira
      **/
     @JsonProperty("nomeTabelaEstrangeira")
@@ -462,7 +458,6 @@ public class CampoApiRepresentation {
 
     /**
      * Domínios do campo.
-     *
      * @return dominios
      **/
     @JsonProperty("dominios")

@@ -473,7 +473,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -493,7 +492,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * CPF&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpf
      **/
     @JsonProperty("cpf")
@@ -531,7 +529,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * País Nacionalidade. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return paisNacionalidade
      **/
     @JsonProperty("paisNacionalidade")
@@ -572,7 +569,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.&lt;br/&gt;Tamanho: 50
-     *
      * @return cnh
      **/
     @JsonProperty("cnh")
@@ -591,7 +587,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Nome. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
      * @return nome
      **/
     @JsonProperty("nome")
@@ -611,7 +606,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Data de nascimento&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataNascimento
      **/
     @JsonProperty("dataNascimento")
@@ -630,7 +624,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Telefone&lt;br/&gt;Tamanho: 20
-     *
      * @return fone
      **/
     @JsonProperty("fone")
@@ -649,7 +642,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * CNPJ do representado&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
      * @return cnpjRepresentado
      **/
     @JsonProperty("cnpjRepresentado")
@@ -668,7 +660,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * CPF do representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpfRepresentado
      **/
     @JsonProperty("cpfRepresentado")
@@ -687,7 +678,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Nome do representado&lt;br/&gt;Tamanho: 100
-     *
      * @return nomeRepresentado
      **/
     @JsonProperty("nomeRepresentado")
@@ -706,7 +696,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Qualificação (Funcionários, Ajudante despachante, Visitante, Prestador de Serviços, Autoridade Pública, etc)&lt;br/&gt;Tamanho: 50
-     *
      * @return qualificacao
      **/
     @JsonProperty("qualificacao")
@@ -725,7 +714,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Função na empresa representada&lt;br/&gt;Tamanho: 50
-     *
      * @return funcao
      **/
     @JsonProperty("funcao")
@@ -744,7 +732,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Data do início da validade do credenciamento&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataInicioValidade
      **/
     @JsonProperty("dataInicioValidade")
@@ -763,7 +750,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Data do final da validade do credenciamento, se houver&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataFimValidade
      **/
     @JsonProperty("dataFimValidade")
@@ -782,7 +768,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     *
      * @return horaPrevistaEntrada
      **/
     @JsonProperty("horaPrevistaEntrada")
@@ -801,7 +786,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     *
      * @return horaPrevistaSaida
      **/
     @JsonProperty("horaPrevistaSaida")
@@ -820,7 +804,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 50
-     *
      * @return areas
      **/
     @JsonProperty("areas")
@@ -839,7 +822,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.&lt;br/&gt;Tamanho: 100
-     *
      * @return materiaisFerramentas
      **/
     @JsonProperty("materiaisFerramentas")
@@ -858,7 +840,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Credenciamento Ativo&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return credenciamentoAtivo
      **/
     @JsonProperty("credenciamentoAtivo")
@@ -877,7 +858,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Motivação do credenciamento.&lt;br/&gt;Tamanho: 100
-     *
      * @return motivacao
      **/
     @JsonProperty("motivacao")

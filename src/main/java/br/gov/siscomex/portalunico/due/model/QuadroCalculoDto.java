@@ -248,7 +248,6 @@ public class QuadroCalculoDto {
 
     /**
      * Valor devido&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorDevido
      **/
     @JsonProperty("valorDevido")
@@ -267,7 +266,6 @@ public class QuadroCalculoDto {
 
     /**
      * Valor normal&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorNormal
      **/
     @JsonProperty("valorNormal")
@@ -286,7 +284,6 @@ public class QuadroCalculoDto {
 
     /**
      * Valor suspenso&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return valorSuspenso
      **/
     @JsonProperty("valorSuspenso")

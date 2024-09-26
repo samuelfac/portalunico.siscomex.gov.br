@@ -264,7 +264,6 @@ public class ExceptionCover {
 
     /**
      * Get info
-     *
      * @return info
      **/
     @JsonProperty("info")

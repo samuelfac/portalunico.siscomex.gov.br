@@ -419,7 +419,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Endereço do importador&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 380
-     *
      * @return enderecoImportador
      **/
     @JsonProperty("enderecoImportador")
@@ -457,7 +456,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Get exportador
-     *
      * @return exportador
      **/
     @JsonProperty("exportador")
@@ -495,7 +493,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Get itensDaNotaDeRemessa
-     *
      * @return itensDaNotaDeRemessa
      **/
     @JsonProperty("itensDaNotaDeRemessa")
@@ -543,7 +540,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Get listaDeEnquadramentos
-     *
      * @return listaDeEnquadramentos
      **/
     @JsonProperty("listaDeEnquadramentos")
@@ -567,7 +563,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Get listaPaisDestino
-     *
      * @return listaPaisDestino
      **/
     @JsonProperty("listaPaisDestino")
@@ -591,7 +586,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Motivo do Tratamento prioritário&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Carga viva&lt;br /&gt;2 &#x3D; Carga perecível&lt;br /&gt;3 &#x3D; Carga perigosa&lt;br /&gt;4 &#x3D; Urna funerária&lt;br /&gt;5 &#x3D; Órgãos humano&lt;br /&gt;6 &#x3D; Partes/peças de aeronave
-     *
      * @return motivoDoTratamentoPrioritario
      **/
     @JsonProperty("motivoDoTratamentoPrioritario")
@@ -610,7 +604,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Get ncm
-     *
      * @return ncm
      **/
     @JsonProperty("ncm")
@@ -629,7 +622,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Nome do importador&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 60
-     *
      * @return nomeImportador
      **/
     @JsonProperty("nomeImportador")
@@ -648,7 +640,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Número do item&lt;br /&gt;Formato: Inteiro, com até 5 digitos
-     *
      * @return numero
      **/
     @JsonProperty("numero")
@@ -667,7 +658,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Percentual de comissão do Agente&lt;br /&gt;Tamanho: 3,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return percentualDeComissaoDoAgente
      **/
     @JsonProperty("percentualDeComissaoDoAgente")
@@ -686,7 +676,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Peso líquido total&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
      * @return pesoLiquidoTotal
      **/
     @JsonProperty("pesoLiquidoTotal")
@@ -705,7 +694,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Quantidade na unidade comercializada&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
      * @return quantidadeNaUnidadeComercializada
      **/
     @JsonProperty("quantidadeNaUnidadeComercializada")
@@ -724,7 +712,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Quantidade na unidade comercializada&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
      * @return quantidadeNaUnidadeEstatistica
      **/
     @JsonProperty("quantidadeNaUnidadeEstatistica")
@@ -743,7 +730,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Get tratamentosAdministrativos
-     *
      * @return tratamentosAdministrativos
      **/
     @JsonProperty("tratamentosAdministrativos")
@@ -767,7 +753,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Unidade comercializada&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 20
-     *
      * @return unidadeComercializada
      **/
     @JsonProperty("unidadeComercializada")
@@ -786,7 +771,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Valor da mercadoria na condição de venda&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorDaMercadoriaNaCondicaoDeVenda
      **/
     @JsonProperty("valorDaMercadoriaNaCondicaoDeVenda")
@@ -824,7 +808,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Valor da Mercadoria no local de embarque&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorDaMercadoriaNoLocalDeEmbarque
      **/
     @JsonProperty("valorDaMercadoriaNoLocalDeEmbarque")
@@ -862,7 +845,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Valor Financiado&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorFinanciado
      **/
     @JsonProperty("valorFinanciado")
@@ -881,7 +863,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Valor total&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorTotal
      **/
     @JsonProperty("valorTotal")

@@ -31,6 +31,7 @@ import javax.ws.rs.core.Response;
  * Declaração Única de Exportação
  *
  * <p><p>Bem-vindo à API do sistema Pucomex - Declaração Única de Exportação.</p><p>A Declaração Única de Exportação (DU-E) reúne as informações comercias, tributárias e aduaneiras necessárias para a realização de todos os tipos de exportação. As informações prestadas pelo exportador permitem que sejam realizadas autorizações e fiscalizações por parte dos diversos órgãos competentes da administração pública brasileira na execução de suas atribuições legais.</p><p>A DU-E é elaborada a partir das informações prestadas nas notas fiscais de exportação eliminando com isso a redundância de informações a serem prestadas pelos exportadores. As informações relativas à carga, LPCO, e tributação podem ser prestadas nos momentos mais oportunos permitindo uma maior flexibilidade e agilidade no processo de exportação.</p><p>A DU-E permite que com uma consulta todo o fluxo seguido pela declaração seja visualizado tanto por parte dos operadores privados quando pelos órgãos diversos governamentais. </p><h4>URLs de Acesso</h4><p>Para utilizar os servi&ccedil;os dispon&iacute;veis nessa API deve-se seguir o seguinte padr&atilde;o de URL:</p><p><em>https://{ambiente}/<strong>due</strong>/api/{servi&ccedil;o}</em></p><p>Onde, em <strong>{ambiente}</strong> deve-se informar o ambiente desejado dentro os ambientes dispon&iacute;veis na tabela abaixo e em <strong>{servi&ccedil;o}</strong> utilizar a URI do servi&ccedil;o desejado.</p> <style type=\"text/css\">  .tg  {border-collapse:collapse;border-color:#bbb;border-spacing:0;width: 604px;}  .tg td{background-color:#E0FFEB;border-color:#bbb;border-style:solid;    border-width:1px;color:#594F4F;    font-family:Arial, sans-serif;font-size:14px;overflow:hidden;    padding:10px 5px;word-break:normal;}  .tg th{background-color:#9DE0AD;border-color:#bbb;border-style:solid;       border-width:1px;color:#493F3F;       font-family:Arial, sans-serif;font-size:14px;font-weight:normal;         overflow:hidden;padding:10px 5px;word-break:normal;}  .tg .tg-cabecalho{text-align:left;vertical-align:top}  .tg .tg-corpo{border-color:inherit;text-align:left;vertical-align:top}</style><table class=\"tg\" style=\"width: 604px;\"><thead>  <tr>    <th class=\"tg-cabecalho\">      <span style=\"font-weight:bold\">Nome do Ambiente</span>     </th>    <th class=\"tg-cabecalho\">      <span style=\"font-weight:bold\">URL de acesso</span>     </th>  </tr></thead><tbody>  <tr>    <td class=\"tg-corpo\">Ambiente de Validação da Empresas&nbsp;&nbsp;&nbsp;</td>    <td class=\"tg-corpo\">val.portalunico.siscomex.gov.br</td>  </tr>  <tr>    <td class=\"tg-corpo\">Ambiente de Produção&nbsp;&nbsp;&nbsp;</td>    <td class=\"tg-corpo\">portalunico.siscomex.gov.br</td>  </tr></tbody></table><p>&nbsp;</p><p><strong>Exemplo:</strong> Para o servi&ccedil;o \"Retorna Declaração Única de Exportação - DUE, por número\" a URI &eacute; \"due/api/ext/due/{numero}\".</p><p>Logo, abaixo temos um exemplo de URL completa considerando o ambiente de Valida&ccedil;&atilde;o, consumindo este servi&ccedil;o </p> <p><em>https://val.portalunico.siscomex.gov.br/due/api/ext/due/17BR0055562808</em></p>
+ *
  */
 @Path("/")
 @Api(value = "/", description = "")
@@ -38,8 +39,9 @@ public interface DueApi {
 
     /**
      * Altera Declaração de Documento Único de Exportação - DUE.
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/duex/registro-retificacao/\&quot;&gt;Exemplos adicionais da DUE&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/duex/oma-xsd.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @PUT
     @Path("/ext/due/{numero}")
@@ -57,6 +59,7 @@ public interface DueApi {
 
     /**
      * Consulta que retorna uma lista de Links para as DUEs encontradas.
+     *
      */
     @GET
     @Path("/ext/due")
@@ -73,6 +76,7 @@ public interface DueApi {
 
     /**
      * Consulta DUE com dados resumidos.
+     *
      */
     @GET
     @Path("/ext/due/consultarDadosResumidosDUE")
@@ -88,8 +92,9 @@ public interface DueApi {
 
     /**
      * Serviço para criação do documento único de exportação - DUE.
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/duex/registro-retificacao/\&quot;&gt;Exemplos adicionais da DUE&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/duex/oma-xsd.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @POST
     @Path("/ext/due")
@@ -107,6 +112,7 @@ public interface DueApi {
 
     /**
      * Retorna lista de atos concessórios do tipo isenção
+     *
      */
     @GET
     @Path("/ext/due/{numero-da-due}/drawback/isencao/atos-concessorios")
@@ -125,6 +131,7 @@ public interface DueApi {
 
     /**
      * Retorna lista de exigências fiscais de uma DUE.
+     *
      */
     @GET
     @Path("/ext/due/{numero-da-due}/exigencias-fiscais")
@@ -142,6 +149,7 @@ public interface DueApi {
 
     /**
      * Retorna Declaração Única de Exportação - DUE, por número.
+     *
      */
     @GET
     @Path("/ext/due/numero-da-due/{numero}")
@@ -158,6 +166,7 @@ public interface DueApi {
 
     /**
      * Retorna Declaração Única de Exportação - DUE, por número da RUC.
+     *
      */
     @GET
     @Path("/ext/due/numero-da-ruc/{numero}")
@@ -174,8 +183,9 @@ public interface DueApi {
 
     /**
      * Serviço para vinculação de atos concessórios de Drawback Isenção ao documento único de exportação - DUE.
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/duex/vinculo-drawback-isencao/\&quot;&gt;Exemplos adicionais da DUE&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; href&#x3D;\&quot;../pages/exemplos/duex/oma-xsd.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
+     *
      */
     @PUT
     @Path("/ext/due/{numero}/ato-concessorio-isencao")

@@ -228,7 +228,6 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
 
     /**
      * Situacao do processamento&lt;/br&gt;0 - Aguardando processamento;&lt;/br&gt;1 - Processamento concluído.
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")

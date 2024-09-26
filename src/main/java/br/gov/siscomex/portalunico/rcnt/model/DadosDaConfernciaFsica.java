@@ -592,7 +592,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -634,7 +633,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
      * @return dataHoraAgenda
      **/
     @JsonProperty("dataHoraAgenda")
@@ -653,7 +651,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return conferenciaRemota
      **/
     @JsonProperty("conferenciaRemota")
@@ -672,7 +669,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Em agendamento de conferência remota, informar telefones dos prepostos do depositário responsáveis pela verificação para fins de comunicação
-     *
      * @return listaTelefones
      **/
     @JsonProperty("listaTelefones")
@@ -696,7 +692,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return solicitante
      **/
     @JsonProperty("solicitante")
@@ -715,7 +710,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Identificação do setor, seção e/ou serviço solicitante da conferência física.&lt;br/&gt;Tamanho: 100
-     *
      * @return setorSolicitante
      **/
     @JsonProperty("setorSolicitante")
@@ -734,7 +728,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroManifesto
      **/
     @JsonProperty("numeroManifesto")
@@ -775,7 +768,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimentoMAWB
      **/
     @JsonProperty("numeroConhecimentoMAWB")
@@ -794,7 +786,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimento
      **/
     @JsonProperty("numeroConhecimento")
@@ -813,7 +804,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipoConhecimento
      **/
     @JsonProperty("tipoConhecimento")
@@ -832,7 +822,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Get declaracaoAduaneira
-     *
      * @return declaracaoAduaneira
      **/
     @JsonProperty("declaracaoAduaneira")
@@ -875,7 +864,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Lista de número do contêiner
-     *
      * @return listaNumeroConteiner
      **/
     @JsonProperty("listaNumeroConteiner")
@@ -899,7 +887,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
      * @return listaIdentificacaoUld
      **/
     @JsonProperty("listaIdentificacaoUld")
@@ -923,7 +910,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
-     *
      * @return listaNumeroLote
      **/
     @JsonProperty("listaNumeroLote")
@@ -947,7 +933,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
-     *
      * @return areaConferenciaFisica
      **/
     @JsonProperty("areaConferenciaFisica")
@@ -966,7 +951,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")
@@ -990,7 +974,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Get dataHoraOperacao
-     *
      * @return dataHoraOperacao
      **/
     @JsonProperty("dataHoraOperacao")
@@ -1081,7 +1064,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Informar se houve retirada de amostras durante a conferência física&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return retiradaAmostras
      **/
     @JsonProperty("retiradaAmostras")
@@ -1100,7 +1082,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Lista dos Tipos de Avarias.
-     *
      * @return listaTipoAvaria
      **/
     @JsonProperty("listaTipoAvaria")
@@ -1124,7 +1105,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Informar o quantidade de volumes avariados
-     *
      * @return quantidadeVolumesAvariados
      **/
     @JsonProperty("quantidadeVolumesAvariados")
@@ -1143,7 +1123,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Registrar as informações da avaria&lt;br/&gt;Tamanho: 200
-     *
      * @return observacaoAvaria
      **/
     @JsonProperty("observacaoAvaria")
@@ -1162,7 +1141,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return divergenciaQuantidade
      **/
     @JsonProperty("divergenciaQuantidade")
@@ -1181,7 +1159,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return divergenciaQualificacao
      **/
     @JsonProperty("divergenciaQualificacao")
@@ -1200,7 +1177,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Caso constatado, informar a quantidade de volumes divergentes
-     *
      * @return quantidadeVolumesDivergentes
      **/
     @JsonProperty("quantidadeVolumesDivergentes")
@@ -1219,7 +1195,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Caso constatado, registrar as informações das divergências&lt;br/&gt;Tamanho: 200
-     *
      * @return observacaoDivergencia
      **/
     @JsonProperty("observacaoDivergencia")

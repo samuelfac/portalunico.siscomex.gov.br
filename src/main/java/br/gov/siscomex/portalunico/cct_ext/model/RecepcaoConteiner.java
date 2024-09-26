@@ -275,7 +275,6 @@ public class RecepcaoConteiner {
 
     /**
      * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -332,7 +331,6 @@ public class RecepcaoConteiner {
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho&gt; 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")
@@ -351,7 +349,6 @@ public class RecepcaoConteiner {
 
     /**
      * Get transitoSimplificado
-     *
      * @return transitoSimplificado
      **/
     @JsonProperty("transitoSimplificado")

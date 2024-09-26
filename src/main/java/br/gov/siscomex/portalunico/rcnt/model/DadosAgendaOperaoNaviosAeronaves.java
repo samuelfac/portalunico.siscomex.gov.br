@@ -344,7 +344,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -364,7 +363,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Get navio
-     *
      * @return navio
      **/
     @JsonProperty("navio")
@@ -383,7 +381,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Código IATA da Aeronave&lt;br/&gt;Tamanho: 50
-     *
      * @return iataAeronave
      **/
     @JsonProperty("iataAeronave")
@@ -402,7 +399,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Prefixo da aeronave&lt;br/&gt;Tamanho: 20
-     *
      * @return prefixoAeronave
      **/
     @JsonProperty("prefixoAeronave")
@@ -421,7 +417,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * &lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.&lt;br/&gt;Tamanho: 20
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")
@@ -440,7 +435,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Vôo&lt;br/&gt;Tamanho: 20
-     *
      * @return voo
      **/
     @JsonProperty("voo")
@@ -459,7 +453,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Escala&lt;br/&gt;Tamanho: 20
-     *
      * @return escala
      **/
     @JsonProperty("escala")
@@ -497,7 +490,6 @@ public class DadosAgendaOperaoNaviosAeronaves {
 
     /**
      * Get chegada
-     *
      * @return chegada
      **/
     @JsonProperty("chegada")

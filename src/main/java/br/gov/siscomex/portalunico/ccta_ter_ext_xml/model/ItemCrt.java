@@ -286,7 +286,6 @@ public class ItemCrt {
 
     /**
      * Peso bruto do item de carga em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return pesoBrutoKg
      **/
     @JsonProperty("pesoBrutoKg")
@@ -306,7 +305,6 @@ public class ItemCrt {
 
     /**
      * Peso líquido do item de carga em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return pesoLiquido
      **/
     @JsonProperty("pesoLiquido")
@@ -344,7 +342,6 @@ public class ItemCrt {
 
     /**
      * Número sequencial do item de carga&lt;br/&gt; Tamanho Máximo: 4
-     *
      * @return sequencial
      **/
     @JsonProperty("sequencial")
@@ -364,7 +361,6 @@ public class ItemCrt {
 
     /**
      * Tara do conteiner em Kg&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório&lt;br/&gt;Formato: Número Racional com 6 casas inteiras e 3 casas decimais
-     *
      * @return taraConteiner
      **/
     @JsonProperty("taraConteiner")
@@ -383,7 +379,6 @@ public class ItemCrt {
 
     /**
      * Tipo de embalagem de carga solta&lt;/br&gt;Para item Carga Solta (2), campo obrigatório, recuperar de tabela&lt;br/&gt; Tamanho Máximo: 2
-     *
      * @return tipoEmbalagem
      **/
     @JsonProperty("tipoEmbalagem")
@@ -402,7 +397,6 @@ public class ItemCrt {
 
     /**
      * Código do tipo de granel&lt;/br&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 3 preenchimento obrigatório conforme Tabela de tipos de granel(TabX)&lt;br/&gt;Tamanho Máximo: 2
-     *
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")

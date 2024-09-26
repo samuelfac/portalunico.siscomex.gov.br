@@ -377,7 +377,6 @@ public class AlterarSituacaoLpcoRequest {
 
     /**
      * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
-     *
      * @return motivoAnalise
      **/
     @JsonProperty("motivoAnalise")

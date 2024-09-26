@@ -906,7 +906,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     *
      * @return cnpjResponsavelArquivo
      **/
     @JsonProperty("cnpjResponsavelArquivo")
@@ -1011,7 +1010,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista de contatos do embarcador estrangeiro.
-     *
      * @return contatosEmbarcadorEstrangeiro
      **/
     @JsonProperty("contatosEmbarcadorEstrangeiro")
@@ -1035,7 +1033,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
      * @return dataEmissao
      **/
     @JsonProperty("dataEmissao")
@@ -1054,7 +1051,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Data/Hora de emissao do XFWB pelo transportador.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
      * @return dataHoraAssinaturaTransportador
      **/
     @JsonProperty("dataHoraAssinaturaTransportador")
@@ -1073,7 +1069,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Descrição resumida das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
-     *
      * @return descricaoResumida
      **/
     @JsonProperty("descricaoResumida")
@@ -1092,7 +1087,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista as divergências ativos da carga&lt;br/&gt;
-     *
      * @return divergencias
      **/
     @JsonProperty("divergencias")
@@ -1116,7 +1110,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
-     *
      * @return documentosSaida
      **/
     @JsonProperty("documentosSaida")
@@ -1140,7 +1133,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo os Dsics apropriados a carga&lt;br/&gt;
-     *
      * @return dsicsApropriados
      **/
     @JsonProperty("dsicsApropriados")
@@ -1164,7 +1156,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Endereco do agente de carga consolidador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return enderecoAgenteDeCargaConsolidadorEstrang
      **/
     @JsonProperty("enderecoAgenteDeCargaConsolidadorEstrang")
@@ -1183,7 +1174,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Endereco do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return enderecoConsignatarioConhecimento
      **/
     @JsonProperty("enderecoConsignatarioConhecimento")
@@ -1202,7 +1192,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Endereco do embarcador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return enderecoEmbarcadorEstrangeiro
      **/
     @JsonProperty("enderecoEmbarcadorEstrangeiro")
@@ -1221,7 +1210,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Get frete
-     *
      * @return frete
      **/
     @JsonProperty("frete")
@@ -1240,7 +1228,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as cargas HAWB&lt;br/&gt;
-     *
      * @return hawbAssociados
      **/
     @JsonProperty("hawbAssociados")
@@ -1264,7 +1251,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
      * @return identificacao
      **/
     @JsonProperty("identificacao")
@@ -1283,7 +1269,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * CNPJ do consignatário&lt;br/&gt;Tamanho: 14&lt;br/&gt;
-     *
      * @return identificacaoDocumentoConsignatario
      **/
     @JsonProperty("identificacaoDocumentoConsignatario")
@@ -1324,7 +1309,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Indica a presença de partes de madeira&lt;br/&gt; S - Sim &lt;br/&gt;N - Não&lt;br/&gt;
-     *
      * @return indicadorPartesMadeira
      **/
     @JsonProperty("indicadorPartesMadeira")
@@ -1346,7 +1330,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo os itens de carga contidos na carga / Dsic&lt;br/&gt;
-     *
      * @return itensCarga
      **/
     @JsonProperty("itensCarga")
@@ -1370,7 +1353,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Local de emissao do XFWB pelo transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
-     *
      * @return localAssinaturaTransportador
      **/
     @JsonProperty("localAssinaturaTransportador")
@@ -1389,7 +1371,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
-     *
      * @return manuseiosEspeciais
      **/
     @JsonProperty("manuseiosEspeciais")
@@ -1413,7 +1394,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as cargas MAWB&lt;br/&gt;
-     *
      * @return mawbAwbAssociados
      **/
     @JsonProperty("mawbAwbAssociados")
@@ -1437,7 +1417,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Nome do agente de carga consolidador estrangeiro&lt;br&gt;Tamanho: 70&lt;br/&gt;
-     *
      * @return nomeAgenteDeCargaConsolidadorEstrang
      **/
     @JsonProperty("nomeAgenteDeCargaConsolidadorEstrang")
@@ -1456,7 +1435,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Nome do responsável pelo embarque&lt;br&gt;Tamanho: 70&lt;br/&gt;
-     *
      * @return nomeAssinaturaEmbarcadorEstrangeiro
      **/
     @JsonProperty("nomeAssinaturaEmbarcadorEstrangeiro")
@@ -1475,7 +1453,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Assinatura transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
-     *
      * @return nomeAssinaturaTransportador
      **/
     @JsonProperty("nomeAssinaturaTransportador")
@@ -1494,7 +1471,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Nome do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return nomeConsignatarioConhecimento
      **/
     @JsonProperty("nomeConsignatarioConhecimento")
@@ -1513,7 +1489,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Nome do consignatário no documento&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return nomeDocumentoConsignatario
      **/
     @JsonProperty("nomeDocumentoConsignatario")
@@ -1532,7 +1507,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Nome do embarcador estrangeiro&lt;br&gt;Tamanho: 70&lt;br/&gt;
-     *
      * @return nomeEmbarcadorEstrangeiro
      **/
     @JsonProperty("nomeEmbarcadorEstrangeiro")
@@ -1551,7 +1525,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as outras informações de serviço para a carga / Dsic&lt;br/&gt;
-     *
      * @return outrasInfosServico
      **/
     @JsonProperty("outrasInfosServico")
@@ -1575,7 +1548,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista das partes interessadas.
-     *
      * @return outrasPartesInteressadas
      **/
     @JsonProperty("outrasPartesInteressadas")
@@ -1599,7 +1571,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * País do agente de carga consolidador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
-     *
      * @return paisAgenteDeCargaConsolidadorEstrang
      **/
     @JsonProperty("paisAgenteDeCargaConsolidadorEstrang")
@@ -1618,7 +1589,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * País do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
-     *
      * @return paisConsignatarioConhecimento
      **/
     @JsonProperty("paisConsignatarioConhecimento")
@@ -1637,7 +1607,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * País do embarcador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
-     *
      * @return paisEmbarcadorEstrangeiro
      **/
     @JsonProperty("paisEmbarcadorEstrangeiro")
@@ -1656,7 +1625,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as partes da carga&lt;br/&gt;
-     *
      * @return partesEstoque
      **/
     @JsonProperty("partesEstoque")
@@ -1680,7 +1648,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
      * @return pesoBrutoConhecimento
      **/
     @JsonProperty("pesoBrutoConhecimento")
@@ -1699,7 +1666,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
      * @return quantidadeVolumesConhecimento
      **/
     @JsonProperty("quantidadeVolumesConhecimento")
@@ -1718,7 +1684,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Razão social do consignatário&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return razaoSocialDocumentoConsignatario
      **/
     @JsonProperty("razaoSocialDocumentoConsignatario")
@@ -1737,7 +1702,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
-     *
      * @return recepcoesComAvarias
      **/
     @JsonProperty("recepcoesComAvarias")
@@ -1761,7 +1725,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
-     *
      * @return recintoAduaneiroDestino
      **/
     @JsonProperty("recintoAduaneiroDestino")
@@ -1780,7 +1743,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 32
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -1799,7 +1761,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Código da situação do Conhecimento&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excluído&lt;br/&gt;
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -1821,7 +1782,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
-     *
      * @return solicitacoesServicosEspeciais
      **/
     @JsonProperty("solicitacoesServicosEspeciais")
@@ -1845,7 +1805,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Tipo de carga.
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")
@@ -1889,7 +1848,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as viagens as quais a carga / Dsic está associada&lt;br/&gt;
-     *
      * @return viagensAssociadas
      **/
     @JsonProperty("viagensAssociadas")

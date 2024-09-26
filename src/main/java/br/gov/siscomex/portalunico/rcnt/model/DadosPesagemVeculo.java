@@ -498,7 +498,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -542,7 +541,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Lista de chaves das NFE que amparam o transporte.
-     *
      * @return listaNfe
      **/
     @JsonProperty("listaNfe")
@@ -566,7 +564,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada&lt;br/&gt;&lt;br/&gt;pesoBrutoManifesto, até 4 casas decimais.
-     *
      * @return pesoBrutoManifesto
      **/
     @JsonProperty("pesoBrutoManifesto")
@@ -585,7 +582,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -604,7 +600,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
-     *
      * @return tara
      **/
     @JsonProperty("tara")
@@ -647,7 +642,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;taraConjunto, até 4 casas decimais.
-     *
      * @return taraConjunto
      **/
     @JsonProperty("taraConjunto")
@@ -690,7 +684,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Peso bruto da pesagem na balança (Kg).&lt;br/&gt;Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.&lt;br/&gt;É obrigatório informar o atributo &#39;pesoBrutoBalanca&#39; quando o atributo &#39;volume&#39; não for informado.&lt;br/&gt;&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
-     *
      * @return pesoBrutoBalanca
      **/
     @JsonProperty("pesoBrutoBalanca")
@@ -709,7 +702,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return vazio
      **/
     @JsonProperty("vazio")
@@ -729,7 +721,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return capturaAutoPeso
      **/
     @JsonProperty("capturaAutoPeso")
@@ -749,7 +740,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada via dutos&lt;br/&gt;S - Saída via dutos
-     *
      * @return dutos
      **/
     @JsonProperty("dutos")
@@ -793,7 +783,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.&lt;br/&gt;Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;É obrigatório informar o atributo &#39;ncm&#39; quando pelo menos um dos seguintes atributos for informado: &#39;dutos&#39;, &#39;correiasTransportadoras&#39;.&lt;br/&gt;Tamanho: 8
-     *
      * @return ncm
      **/
     @JsonProperty("ncm")
@@ -812,7 +801,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.&lt;br/&gt; É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
-     *
      * @return volume
      **/
     @JsonProperty("volume")
@@ -831,7 +819,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
-     *
      * @return balanca
      **/
     @JsonProperty("balanca")
@@ -851,7 +838,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a pesagem. Transmitir este atributo em caso de dutos.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

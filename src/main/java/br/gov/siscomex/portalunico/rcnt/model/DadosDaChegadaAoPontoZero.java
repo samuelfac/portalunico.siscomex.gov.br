@@ -302,7 +302,6 @@ public class DadosDaChegadaAoPontoZero {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -322,7 +321,6 @@ public class DadosDaChegadaAoPontoZero {
 
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
      * @return identificacaoUld
      **/
     @JsonProperty("identificacaoUld")
@@ -341,7 +339,6 @@ public class DadosDaChegadaAoPontoZero {
 
     /**
      * &lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.&lt;br/&gt;Tamanho: 20
-     *
      * @return viagem
      **/
     @JsonProperty("viagem")

@@ -384,7 +384,6 @@ public class EstoqueConsultaDetalhada {
 
     /**
      * Código da UL&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
-     *
      * @return unidadeRfb
      **/
     @JsonProperty("unidadeRfb")

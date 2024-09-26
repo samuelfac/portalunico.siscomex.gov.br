@@ -250,7 +250,6 @@ public class DocumentosTransporte {
 
     /**
      * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
-     *
      * @return motivoNaoPesagem
      **/
     @JsonProperty("motivoNaoPesagem")

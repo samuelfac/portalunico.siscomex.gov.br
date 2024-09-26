@@ -694,7 +694,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Número da GLME &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
-     *
      * @return numeroGlme
      **/
     @JsonProperty("numeroGlme")
@@ -713,7 +712,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Número do Mandado Judicial &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; MANDADO_JUDICIAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
-     *
      * @return numeroMandadoJudicial
      **/
     @JsonProperty("numeroMandadoJudicial")
@@ -732,7 +730,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Período de referência &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: &#39;yyyy-MM&#39;
-     *
      * @return periodoReferencia
      **/
     @JsonProperty("periodoReferencia")
@@ -843,7 +840,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor do AFRMM&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo e tipoRetorno !&#x3D; INDEFERIDO.
-     *
      * @return valorAfrmm
      **/
     @JsonProperty("valorAfrmm")
@@ -862,7 +858,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor CIF Exonerado (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
-     *
      * @return valorCIFExonerado
      **/
     @JsonProperty("valorCIFExonerado")
@@ -881,7 +876,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor calculado sem benefícios &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorCalculado
      **/
     @JsonProperty("valorCalculado")
@@ -900,7 +894,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor considerado para a base de cálculo do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
-     *
      * @return valorCifPagamento
      **/
     @JsonProperty("valorCifPagamento")
@@ -919,7 +912,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor total do crédito de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR e tipoSolicitacao !&#x3D; EXONERACAO_INTEGRAL_DUIMP
-     *
      * @return valorTotalCredito
      **/
     @JsonProperty("valorTotalCredito")
@@ -938,7 +930,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor total devido (a pagar ou pago) &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotalDevido
      **/
     @JsonProperty("valorTotalDevido")
@@ -957,7 +948,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Somatório dos valores devidos + juros + multa + atualização monetária&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
-     *
      * @return valorTotalaRecolher
      **/
     @JsonProperty("valorTotalaRecolher")
@@ -976,7 +966,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDeclaracao
      **/
     @JsonProperty("versaoDeclaracao")

@@ -266,7 +266,6 @@ public class ProdutoIntegracaoDTO {
 
     /**
      * NCM do produto&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;
-     *
      * @return ncm
      **/
     @JsonProperty("ncm")
@@ -285,7 +284,6 @@ public class ProdutoIntegracaoDTO {
 
     /**
      * Versão do produto (exemplo: &#39;1&#39;) ou versão retificada do produto (exemplo: &#39;1.1&#39;). Informar somente quando estiver retificando uma versão do produto. &lt;br&gt;Tamanho máximo: 8
-     *
      * @return versao
      **/
     @JsonProperty("versao")
@@ -400,7 +398,6 @@ public class ProdutoIntegracaoDTO {
 
     /**
      * Lista de códigos internos do produto do Exportador/Importador&lt;br&gt;Tamanho: 60
-     *
      * @return codigosInterno
      **/
     @JsonProperty("codigosInterno")
@@ -424,7 +421,6 @@ public class ProdutoIntegracaoDTO {
 
     /**
      * Data de referência, informar somente quando for criar produto com data retroativa&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataReferencia
      **/
     @JsonProperty("dataReferencia")

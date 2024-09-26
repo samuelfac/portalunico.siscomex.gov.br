@@ -324,7 +324,6 @@ public class DadosArmazenamentoLote {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -344,7 +343,6 @@ public class DadosArmazenamentoLote {
 
     /**
      * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
@@ -383,7 +381,6 @@ public class DadosArmazenamentoLote {
 
     /**
      * Get localizacao
-     *
      * @return localizacao
      **/
     @JsonProperty("localizacao")
@@ -402,7 +399,6 @@ public class DadosArmazenamentoLote {
 
     /**
      * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
-     *
      * @return areaArmazenamento
      **/
     @JsonProperty("areaArmazenamento")
@@ -421,7 +417,6 @@ public class DadosArmazenamentoLote {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi armazenado.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

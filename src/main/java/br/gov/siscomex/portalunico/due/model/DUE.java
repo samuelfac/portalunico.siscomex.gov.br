@@ -825,7 +825,6 @@ public class DUE {
 
     /**
      * Data em que a carga foi completamente exportada&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
      * @return dataDoCCE
      **/
     @JsonProperty("dataDoCCE")
@@ -863,7 +862,6 @@ public class DUE {
 
     /**
      * Get declarante
-     *
      * @return declarante
      **/
     @JsonProperty("declarante")
@@ -920,7 +918,6 @@ public class DUE {
 
     /**
      * Get embarqueEmRecintoAlfandegado
-     *
      * @return embarqueEmRecintoAlfandegado
      **/
     @JsonProperty("embarqueEmRecintoAlfandegado")
@@ -977,7 +974,6 @@ public class DUE {
 
     /**
      * Get estabelecimentoDoLocalDeDespacho
-     *
      * @return estabelecimentoDoLocalDeDespacho
      **/
     @JsonProperty("estabelecimentoDoLocalDeDespacho")
@@ -996,7 +992,6 @@ public class DUE {
 
     /**
      * Get eventosDoHistorico
-     *
      * @return eventosDoHistorico
      **/
     @JsonProperty("eventosDoHistorico")
@@ -1039,7 +1034,6 @@ public class DUE {
 
     /**
      * *Campo descontinuado, utilize o atributo exigenciasFiscaisEstruturadas
-     *
      * @return exigenciasFiscais
      **/
     @JsonProperty("exigenciasFiscais")
@@ -1063,7 +1057,6 @@ public class DUE {
 
     /**
      * Get exigenciasFiscaisEstruturadas
-     *
      * @return exigenciasFiscaisEstruturadas
      **/
     @JsonProperty("exigenciasFiscaisEstruturadas")
@@ -1082,7 +1075,6 @@ public class DUE {
 
     /**
      * Get formaDeExportacao
-     *
      * @return formaDeExportacao
      **/
     @JsonProperty("formaDeExportacao")
@@ -1142,7 +1134,6 @@ public class DUE {
 
     /**
      * Informações complementares&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 2000
-     *
      * @return informacoesComplementares
      **/
     @JsonProperty("informacoesComplementares")
@@ -1185,7 +1176,6 @@ public class DUE {
 
     /**
      * Justificativa de dispensa da Nota Fiscal&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 1000
-     *
      * @return justificativaDeDispensaDaNotaFiscal
      **/
     @JsonProperty("justificativaDeDispensaDaNotaFiscal")
@@ -1204,7 +1194,6 @@ public class DUE {
 
     /**
      * Latitude do Local de Despacho&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
-     *
      * @return latitudeDoLocalDeDespacho
      **/
     @JsonProperty("latitudeDoLocalDeDespacho")
@@ -1223,7 +1212,6 @@ public class DUE {
 
     /**
      * Longitude do Local de Despacho&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
-     *
      * @return longitudeDoLocalDeDespacho
      **/
     @JsonProperty("longitudeDoLocalDeDespacho")
@@ -1242,7 +1230,6 @@ public class DUE {
 
     /**
      * Get moeda
-     *
      * @return moeda
      **/
     @JsonProperty("moeda")
@@ -1261,7 +1248,6 @@ public class DUE {
 
     /**
      * Get motivoDeDispensaDaNotaFiscal
-     *
      * @return motivoDeDispensaDaNotaFiscal
      **/
     @JsonProperty("motivoDeDispensaDaNotaFiscal")
@@ -1280,7 +1266,6 @@ public class DUE {
 
     /**
      * Número da DUE&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNAANNNNNNNNNN&#39;
-     *
      * @return numero
      **/
     @JsonProperty("numero")
@@ -1299,7 +1284,6 @@ public class DUE {
 
     /**
      * Get oea
-     *
      * @return oea
      **/
     @JsonProperty("oea")
@@ -1318,7 +1302,6 @@ public class DUE {
 
     /**
      * Get paisImportador
-     *
      * @return paisImportador
      **/
     @JsonProperty("paisImportador")
@@ -1337,7 +1320,6 @@ public class DUE {
 
     /**
      * Get recintoAduaneiroDeDespacho
-     *
      * @return recintoAduaneiroDeDespacho
      **/
     @JsonProperty("recintoAduaneiroDeDespacho")
@@ -1356,7 +1338,6 @@ public class DUE {
 
     /**
      * Get recintoAduaneiroDeEmbarque
-     *
      * @return recintoAduaneiroDeEmbarque
      **/
     @JsonProperty("recintoAduaneiroDeEmbarque")
@@ -1375,7 +1356,6 @@ public class DUE {
 
     /**
      * Referência do endereço do local de despacho&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 240
-     *
      * @return referenciaDoEnderecoDoLocalDeDespacho
      **/
     @JsonProperty("referenciaDoEnderecoDoLocalDeDespacho")
@@ -1394,7 +1374,6 @@ public class DUE {
 
     /**
      * Referência do endereço do local de embarque&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 240
-     *
      * @return referenciaDoEnderecoDoLocalDeEmbarque
      **/
     @JsonProperty("referenciaDoEnderecoDoLocalDeEmbarque")
@@ -1413,7 +1392,6 @@ public class DUE {
 
     /**
      * Get responsavelPeloACD
-     *
      * @return responsavelPeloACD
      **/
     @JsonProperty("responsavelPeloACD")
@@ -1435,7 +1413,6 @@ public class DUE {
 
     /**
      * RUC - Número da referência única de carga&lt;br /&gt;Tamanho: 35&lt;br /&gt;Formato: &#39;NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -1454,7 +1431,6 @@ public class DUE {
 
     /**
      * Get situacao
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -1520,7 +1496,6 @@ public class DUE {
 
     /**
      * Get situacoesDaCarga
-     *
      * @return situacoesDaCarga
      **/
     @JsonProperty("situacoesDaCarga")
@@ -1544,7 +1519,6 @@ public class DUE {
 
     /**
      * Get solicitacoes
-     *
      * @return solicitacoes
      **/
     @JsonProperty("solicitacoes")
@@ -1590,7 +1564,6 @@ public class DUE {
 
     /**
      * Get tratamentoPrioritario
-     *
      * @return tratamentoPrioritario
      **/
     @JsonProperty("tratamentoPrioritario")
@@ -1628,7 +1601,6 @@ public class DUE {
 
     /**
      * Get unidadeLocalDeDespacho
-     *
      * @return unidadeLocalDeDespacho
      **/
     @JsonProperty("unidadeLocalDeDespacho")
@@ -1647,7 +1619,6 @@ public class DUE {
 
     /**
      * Get unidadeLocalDeEmbarque
-     *
      * @return unidadeLocalDeEmbarque
      **/
     @JsonProperty("unidadeLocalDeEmbarque")
@@ -1666,7 +1637,6 @@ public class DUE {
 
     /**
      * Valor total da mercadoria&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorTotalMercadoria
      **/
     @JsonProperty("valorTotalMercadoria")

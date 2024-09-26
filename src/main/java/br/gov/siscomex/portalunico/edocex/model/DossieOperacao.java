@@ -388,7 +388,6 @@ public class DossieOperacao {
 
     /**
      * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
-     *
      * @return idTipoDossie
      **/
     @JsonProperty("idTipoDossie")
@@ -408,7 +407,6 @@ public class DossieOperacao {
 
     /**
      * Nome do tipo de dossiê.&lt;br/&gt;Tamanho máximo: 255
-     *
      * @return nomeTipoDossie
      **/
     @JsonProperty("nomeTipoDossie")
@@ -427,7 +425,6 @@ public class DossieOperacao {
 
     /**
      * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-     *
      * @return numeroDossie
      **/
     @JsonProperty("numeroDossie")

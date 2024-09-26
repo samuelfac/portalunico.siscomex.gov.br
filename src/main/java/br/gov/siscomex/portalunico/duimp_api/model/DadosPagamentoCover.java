@@ -191,7 +191,6 @@ public class DadosPagamentoCover {
 
     /**
      * Valor pago.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valor
      **/
     @JsonProperty("valor")

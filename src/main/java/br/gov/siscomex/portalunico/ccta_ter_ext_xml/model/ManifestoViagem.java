@@ -865,7 +865,6 @@ public class ManifestoViagem {
 
     /**
      * Chassi do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return chassiVeiculo
      **/
     @JsonProperty("chassiVeiculo")
@@ -905,7 +904,6 @@ public class ManifestoViagem {
 
     /**
      * Cidade de partida da viagem&lt;br/&gt; Formato: AAAAA
-     *
      * @return cidadePartida
      **/
     @JsonProperty("cidadePartida")
@@ -944,7 +942,6 @@ public class ManifestoViagem {
 
     /**
      * Cidade do endereço do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return cidadeTransportadorEstrangeiro
      **/
     @JsonProperty("cidadeTransportadorEstrangeiro")
@@ -1001,7 +998,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informa se o condutor do veículo da viagem é de nacionalidade brasileira
-     *
      * @return condutorBrasileiro
      **/
     @JsonProperty("condutorBrasileiro")
@@ -1021,7 +1017,6 @@ public class ManifestoViagem {
 
     /**
      * Get crts
-     *
      * @return crts
      **/
     @JsonProperty("crts")
@@ -1045,7 +1040,6 @@ public class ManifestoViagem {
 
     /**
      * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataEmissao
      **/
     @JsonProperty("dataEmissao")
@@ -1065,7 +1059,6 @@ public class ManifestoViagem {
 
     /**
      * data prevista de chegada do veículo na cidade de destino final viagem&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataPrevistaDestinoFinal
      **/
     @JsonProperty("dataPrevistaDestinoFinal")
@@ -1084,7 +1077,6 @@ public class ManifestoViagem {
 
     /**
      * Data prevista de chegada do veículo na Aduana de entrada no Brasil&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataPrevistaEntrada
      **/
     @JsonProperty("dataPrevistaEntrada")
@@ -1103,7 +1095,6 @@ public class ManifestoViagem {
 
     /**
      * Data de vencimento do seguro&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataVencimentoSeguro
      **/
     @JsonProperty("dataVencimentoSeguro")
@@ -1123,7 +1114,6 @@ public class ManifestoViagem {
 
     /**
      * Descrição da rota internacional desde local de partida até a cidade de destino final&lt;br/&gt; Tamanho Máximo: 500
-     *
      * @return descricaoRotaInternacional
      **/
     @JsonProperty("descricaoRotaInternacional")
@@ -1143,7 +1133,6 @@ public class ManifestoViagem {
 
     /**
      * Estado ou província do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoProprietarioVeiculoEstrangeiro
      **/
     @JsonProperty("estadoProprietarioVeiculoEstrangeiro")
@@ -1162,7 +1151,6 @@ public class ManifestoViagem {
 
     /**
      * Estado ou província do endereço do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoTransportadorEstrangeiro
      **/
     @JsonProperty("estadoTransportadorEstrangeiro")
@@ -1181,7 +1169,6 @@ public class ManifestoViagem {
 
     /**
      * Identificação fiscal do proprietário do veículo da viagem&lt;br/&gt;Se proprietarioVeiculoBrasileiro é S, o CPF ou CNPJ preenchido neste campo será validado na tabela de CPF ou CNPJ.&lt;br/&gt; Tamanho: 14
-     *
      * @return identificacaoProprietarioVeiculo
      **/
     @JsonProperty("identificacaoProprietarioVeiculo")
@@ -1220,7 +1207,6 @@ public class ManifestoViagem {
 
     /**
      * Número de identificação do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho: 14
-     *
      * @return identificacaoTransportadorEstrangeiro
      **/
     @JsonProperty("identificacaoTransportadorEstrangeiro")
@@ -1239,7 +1225,6 @@ public class ManifestoViagem {
 
     /**
      * CNPJ do transportador nacional&lt;br/&gt; Se transportadorNacBrasileira é true, este campo é de preenchimento obrigatório e válido no cadastro de CNPJ&lt;br/&gt; Tamanho: 14
-     *
      * @return identificacaoTransportadorNacional
      **/
     @JsonProperty("identificacaoTransportadorNacional")
@@ -1306,7 +1291,6 @@ public class ManifestoViagem {
 
     /**
      * Licença complementar&lt;br/&gt;campo obrigatório  se tipoTransporte é REG e transportadorNacBrasileira é false.&lt;br/&gt; Tamanho Máximo: 6
-     *
      * @return licencaComplementar
      **/
     @JsonProperty("licencaComplementar")
@@ -1325,7 +1309,6 @@ public class ManifestoViagem {
 
     /**
      * Licença originária&lt;br/&gt;campo obrigatório  se tipoTransporte é REG e transportadorNacBrasileira é true.&lt;br/&gt; Tamanho Máximo: 6
-     *
      * @return licencaOriginaria
      **/
     @JsonProperty("licencaOriginaria")
@@ -1344,7 +1327,6 @@ public class ManifestoViagem {
 
     /**
      * Marca do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return marcaVeiculo
      **/
     @JsonProperty("marcaVeiculo")
@@ -1364,7 +1346,6 @@ public class ManifestoViagem {
 
     /**
      * Nome do condutor estrangeiro do veículo&lt;/br&gt;Obrigatorio se condutor do veículo for estrangeiro (\&quot;condutorBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return nomeCondutorVeiculoEstrangeiro
      **/
     @JsonProperty("nomeCondutorVeiculoEstrangeiro")
@@ -1383,7 +1364,6 @@ public class ManifestoViagem {
 
     /**
      * Nome do proprietário estrangeiro do veículo &lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeProprietarioVeiculoEstrangeiro
      **/
     @JsonProperty("nomeProprietarioVeiculoEstrangeiro")
@@ -1402,7 +1382,6 @@ public class ManifestoViagem {
 
     /**
      * Nome do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return nomeTransportadorEstrangeiro
      **/
     @JsonProperty("nomeTransportadorEstrangeiro")
@@ -1421,7 +1400,6 @@ public class ManifestoViagem {
 
     /**
      * Numero da declaração de trânsito no exterior, quando ocorrer&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return numeroDTAExterior
      **/
     @JsonProperty("numeroDTAExterior")
@@ -1440,7 +1418,6 @@ public class ManifestoViagem {
 
     /**
      * Número do documento do condutor do veículo (relacionado ao Tipo do documento informado no campo anterior)&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return numeroDocumentoCondutorVeiculo
      **/
     @JsonProperty("numeroDocumentoCondutorVeiculo")
@@ -1460,7 +1437,6 @@ public class ManifestoViagem {
 
     /**
      * Número do documento de transporte.&lt;br/&gt;Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte, e dataEmissao.&lt;br/&gt; Tamanho Máximo: 15
-     *
      * @return numeroDocumentoTransporte
      **/
     @JsonProperty("numeroDocumentoTransporte")
@@ -1499,7 +1475,6 @@ public class ManifestoViagem {
 
     /**
      * Observações adicionais a serem reportadas sobre o veículo&lt;br/&gt; Tamanho Máximo: 200
-     *
      * @return observacoesVeiculo
      **/
     @JsonProperty("observacoesVeiculo")
@@ -1518,7 +1493,6 @@ public class ManifestoViagem {
 
     /**
      * País de destino final da viagem&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisDestinoFinal
      **/
     @JsonProperty("paisDestinoFinal")
@@ -1538,7 +1512,6 @@ public class ManifestoViagem {
 
     /**
      * País de partida da viagem&lt;br/&gt; Se tipoDocumentoTransporte é DTAI, o país preenchido deverá ser Venezuela.&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisPartida
      **/
     @JsonProperty("paisPartida")
@@ -1558,7 +1531,6 @@ public class ManifestoViagem {
 
     /**
      * País do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisProprietarioVeiculoEstrangeiro
      **/
     @JsonProperty("paisProprietarioVeiculoEstrangeiro")
@@ -1577,7 +1549,6 @@ public class ManifestoViagem {
 
     /**
      * Pais do endereço do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisTransportadorEstrangeiro
      **/
     @JsonProperty("paisTransportadorEstrangeiro")
@@ -1596,7 +1567,6 @@ public class ManifestoViagem {
 
     /**
      * Placa do cavalo &lt;br/&gt;Obrigatória apenas se o cavalo não for a própria mercadoria.&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return placaCavalo
      **/
     @JsonProperty("placaCavalo")
@@ -1616,7 +1586,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informa se o proprietário do veículo da viagem é de nacionalidade brasileira (true/false)
-     *
      * @return proprietarioVeiculoBrasileiro
      **/
     @JsonProperty("proprietarioVeiculoBrasileiro")
@@ -1660,7 +1629,6 @@ public class ManifestoViagem {
 
     /**
      * Local de entrada na fronteira (Recinto alfandegado)&lt;br/&gt; Tamanho Máximo: 7
-     *
      * @return recintoEntrada
      **/
     @JsonProperty("recintoEntrada")
@@ -1680,7 +1648,6 @@ public class ManifestoViagem {
 
     /**
      * Rua do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaProprietarioVeiculoEstrangeiro
      **/
     @JsonProperty("ruaProprietarioVeiculoEstrangeiro")
@@ -1699,7 +1666,6 @@ public class ManifestoViagem {
 
     /**
      * Rua do endereço do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaTransportadorEstrangeiro
      **/
     @JsonProperty("ruaTransportadorEstrangeiro")
@@ -1718,7 +1684,6 @@ public class ManifestoViagem {
 
     /**
      * Tara do cavalo&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return taraCavalo
      **/
     @JsonProperty("taraCavalo")
@@ -1737,7 +1702,6 @@ public class ManifestoViagem {
 
     /**
      * indicador se o veículo está transportando cargas com partes ou peças de madeira
-     *
      * @return temPecasMadeira
      **/
     @JsonProperty("temPecasMadeira")
@@ -1757,7 +1721,6 @@ public class ManifestoViagem {
 
     /**
      * Tipo do documento do condutor do veículo.&lt;br/&gt; \&quot;F\&quot; (CPF), \&quot;J\&quot; (CNPJ),\&quot;P\&quot; (passaporte), \&quot;O\&quot; (outros)&lt;br/&gt;Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \&quot;F\&quot; ou \&quot;H\&quot;.&lt;br/&gt;Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser &#39;P&#39; ou &#39;O&#39;
-     *
      * @return tipoDocumentoCondutorVeiculo
      **/
     @JsonProperty("tipoDocumentoCondutorVeiculo")
@@ -1780,7 +1743,6 @@ public class ManifestoViagem {
 
     /**
      * Tipo de documento de transporte&lt;br/&gt;Deve ser MIC/DTA (1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela &lt;br/&gt;ou \&quot;Outros\&quot;(4) se paisPartida for qualquer outro país.
-     *
      * @return tipoDocumentoTransporte
      **/
     @JsonProperty("tipoDocumentoTransporte")
@@ -1803,7 +1765,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
-     *
      * @return tipoTransporte
      **/
     @JsonProperty("tipoTransporte")
@@ -1826,7 +1787,6 @@ public class ManifestoViagem {
 
     /**
      * Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.
-     *
      * @return tipoVeiculo
      **/
     @JsonProperty("tipoVeiculo")
@@ -1849,7 +1809,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informe se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
-     *
      * @return transitoInternacional
      **/
     @JsonProperty("transitoInternacional")
@@ -1889,7 +1848,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
-     *
      * @return transportadorNacBrasileira
      **/
     @JsonProperty("transportadorNacBrasileira")
@@ -1909,7 +1867,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informa se o transportador é o proprietário do veículo
-     *
      * @return transportadorProprietarioVeiculo
      **/
     @JsonProperty("transportadorProprietarioVeiculo")
@@ -1929,7 +1886,6 @@ public class ManifestoViagem {
 
     /**
      * Local de entrada na fronteira (Unidade da Receita Federal)&lt;br/&gt; Tamanho Máximo: 7
-     *
      * @return ulEntrada
      **/
     @JsonProperty("ulEntrada")

@@ -369,7 +369,6 @@ public class RecepcaoNFECover {
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")

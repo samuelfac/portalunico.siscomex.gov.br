@@ -393,7 +393,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -413,7 +412,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -433,7 +431,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Marca&lt;br/&gt;Tamanho: 20
-     *
      * @return marca
      **/
     @JsonProperty("marca")
@@ -452,7 +449,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Modelo&lt;br/&gt;Tamanho: 20
-     *
      * @return modelo
      **/
     @JsonProperty("modelo")
@@ -509,7 +505,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Monitoramento via satélite.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return satelite
      **/
     @JsonProperty("satelite")
@@ -528,7 +523,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * CNPJ do responsável pelo veículo&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
      * @return cnpjResponsavel
      **/
     @JsonProperty("cnpjResponsavel")
@@ -547,7 +541,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * CPF do responsável pelo veículo&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
      * @return cpfResponsavel
      **/
     @JsonProperty("cpfResponsavel")
@@ -566,7 +559,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Data do início da validade do credenciamento&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataInicioValidade
      **/
     @JsonProperty("dataInicioValidade")
@@ -585,7 +577,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataFimValidade
      **/
     @JsonProperty("dataFimValidade")
@@ -604,7 +595,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     *
      * @return horaPrevistaEntrada
      **/
     @JsonProperty("horaPrevistaEntrada")
@@ -623,7 +613,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     *
      * @return horaPrevistaSaida
      **/
     @JsonProperty("horaPrevistaSaida")
@@ -642,7 +631,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Somente para os casos em que o veículo foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 100
-     *
      * @return areas
      **/
     @JsonProperty("areas")
@@ -661,7 +649,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Credenciamento ativo?&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return credenciamentoAtivo
      **/
     @JsonProperty("credenciamentoAtivo")
@@ -680,7 +667,6 @@ public class DadosCredenciamentoVeculo {
 
     /**
      * Motivação do credenciamento&lt;br/&gt;Tamanho: 100
-     *
      * @return motivacao
      **/
     @JsonProperty("motivacao")

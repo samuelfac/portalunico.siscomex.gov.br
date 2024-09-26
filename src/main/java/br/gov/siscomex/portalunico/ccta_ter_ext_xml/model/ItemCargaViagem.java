@@ -219,7 +219,6 @@ public class ItemCargaViagem {
 
     /**
      * Tipo de granel do item de carga transportado na viagempara tipocarga &#x3D; 3 preenchimento obrigatório conforme Tabela de tipos de granel(TabX)&lt;br/&gt;Tamanho Máximo: 2
-     *
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")

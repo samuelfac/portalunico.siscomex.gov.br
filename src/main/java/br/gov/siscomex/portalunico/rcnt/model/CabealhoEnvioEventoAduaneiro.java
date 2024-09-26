@@ -288,7 +288,6 @@ public class CabealhoEnvioEventoAduaneiro {
 
     /**
      * Código do Recinto Aduaneiro&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")

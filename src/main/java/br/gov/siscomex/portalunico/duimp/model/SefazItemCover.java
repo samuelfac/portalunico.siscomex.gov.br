@@ -282,7 +282,6 @@ public class SefazItemCover {
 
     /**
      * Get itemTributo
-     *
      * @return itemTributo
      **/
     @JsonProperty("itemTributo")
@@ -302,7 +301,6 @@ public class SefazItemCover {
 
     /**
      * Lista de LPCOs do item
-     *
      * @return lpcos
      **/
     @JsonProperty("lpcos")

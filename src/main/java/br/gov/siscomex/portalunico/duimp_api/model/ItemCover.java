@@ -285,7 +285,6 @@ public class ItemCover {
 
     /**
      * Get lpcos
-     *
      * @return lpcos
      **/
     @JsonProperty("lpcos")
@@ -357,7 +356,6 @@ public class ItemCover {
 
     /**
      * Get dadosCambiais
-     *
      * @return dadosCambiais
      **/
     @JsonProperty("dadosCambiais")
@@ -377,7 +375,6 @@ public class ItemCover {
 
     /**
      * Get atributosDuimp
-     *
      * @return atributosDuimp
      **/
     @JsonProperty("atributosDuimp")

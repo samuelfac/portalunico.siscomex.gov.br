@@ -661,7 +661,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Observação, conforme o tipo de tratamento
-     *
      * @return status
      **/
     @JsonProperty("status")
@@ -749,7 +748,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor do AFRMM no momento da criação da solicitação&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo.
-     *
      * @return valorAfrmm
      **/
     @JsonProperty("valorAfrmm")
@@ -768,7 +766,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor CIF considerado para exoneração (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; &#39;EXONERACAO_PAG_PARCIAL_DUIMP&#39; ou &#39;EXONERACAO_INTEGRAL_DUIMP&#39; e tipo de tratamento !&#x3D; &#39;CALCULO_SEFAZ&#39;.
-     *
      * @return valorCIFExonerado
      **/
     @JsonProperty("valorCIFExonerado")
@@ -787,7 +784,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor considerado para a base de cálculo do ICMS quando a declaração for um pagamento parcial&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; &#39;PAGAMENTO_PARCIAL_DUIMP&#39; ou &#39;EXONERACAO_PAG_PARCIAL_DUIMP&#39; e tipo de tratamento !&#x3D; &#39;CALCULO_SEFAZ&#39;.
-     *
      * @return valorCIFPagamento
      **/
     @JsonProperty("valorCIFPagamento")
@@ -806,7 +802,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorDespesasAduaneiras
      **/
     @JsonProperty("valorDespesasAduaneiras")
@@ -825,7 +820,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor do ICMS importação&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; &#39;PAGAMENTO_INTEGRAL_DUIMP&#39; ou &#39;PAGAMENTO_PARCIAL_DUIMP&#39; ou &#39;EXONERACAO_PAG_PARCIAL_DUIMP&#39; e tipo de tratamento !&#x3D; &#39;CALCULO_SEFAZ&#39;.
-     *
      * @return valorIcms
      **/
     @JsonProperty("valorIcms")
@@ -844,7 +838,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor a pagar do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorPagarIcms
      **/
     @JsonProperty("valorPagarIcms")
@@ -864,7 +857,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor total já pago do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorPagoIcms
      **/
     @JsonProperty("valorPagoIcms")
@@ -884,7 +876,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Versão da Duimp&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDuimp
      **/
     @JsonProperty("versaoDuimp")

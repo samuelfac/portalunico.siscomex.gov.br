@@ -317,7 +317,6 @@ public class Dossie {
 
     /**
      * Nome do tipo de dossiê.&lt;br/&gt;Tamanho máximo: 255
-     *
      * @return nomeTipoDossie
      **/
     @JsonProperty("nomeTipoDossie")
@@ -336,7 +335,6 @@ public class Dossie {
 
     /**
      * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-     *
      * @return numeroDossie
      **/
     @JsonProperty("numeroDossie")
@@ -356,7 +354,6 @@ public class Dossie {
 
     /**
      * Lista de vinculos do dossiê com operações.
-     *
      * @return vinculos
      **/
     @JsonProperty("vinculos")

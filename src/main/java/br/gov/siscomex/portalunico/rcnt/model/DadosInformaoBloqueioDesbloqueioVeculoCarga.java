@@ -482,7 +482,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -524,7 +523,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroManifesto
      **/
     @JsonProperty("numeroManifesto")
@@ -565,7 +563,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimentoMAWB
      **/
     @JsonProperty("numeroConhecimentoMAWB")
@@ -584,7 +581,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimento
      **/
     @JsonProperty("numeroConhecimento")
@@ -603,7 +599,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipoConhecimento
      **/
     @JsonProperty("tipoConhecimento")
@@ -622,7 +617,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Número da declaração aduaneira.&lt;br/&gt; O tamanho permitido para &#39;numeroDeclaracao&#39; será conforme o valor de &#39;tipo&#39; da declaração:   &#39;DI&#39;: 10 (somente números) &#39;DTA&#39;: 10 &#39;DUE&#39;: 14 &#39;DAT&#39;: 11 &#39;DUIMP&#39;: 15 Outros: até 100
-     *
      * @return numeroDeclaracao
      **/
     @JsonProperty("numeroDeclaracao")
@@ -641,7 +635,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Tipo da declaração aduaneira.  Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipoDeclaracao
      **/
     @JsonProperty("tipoDeclaracao")
@@ -660,7 +653,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Placa (cavalo-trator/semirreboque/locomotiva/vagão).&lt;br/&gt;Tamanho: 50
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -679,7 +671,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
-     *
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -698,7 +689,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
      * @return identificacaoUld
      **/
     @JsonProperty("identificacaoUld")
@@ -717,7 +707,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Lista de lotes. Usar o mesmo número gerado no Evento de Geração de Lotes.
-     *
      * @return listaLotes
      **/
     @JsonProperty("listaLotes")
@@ -741,7 +730,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return solicitante
      **/
     @JsonProperty("solicitante")
@@ -760,7 +748,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Identificação do setor, seção e/ou serviço solicitante do bloqueio ou desbloqueio.&lt;br/&gt;Tamanho: 100
-     *
      * @return setorSolicitante
      **/
     @JsonProperty("setorSolicitante")
@@ -779,7 +766,6 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
 
     /**
      * Motivação do bloqueio ou desbloqueio.&lt;br/&gt;Tamanho: 100
-     *
      * @return motivo
      **/
     @JsonProperty("motivo")

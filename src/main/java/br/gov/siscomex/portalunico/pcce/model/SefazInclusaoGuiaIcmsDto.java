@@ -386,7 +386,6 @@ public class SefazInclusaoGuiaIcmsDto {
 
     /**
      * Valor calculado sem benefícios/onerações para o código de receita &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorCalculado
      **/
     @JsonProperty("valorCalculado")
@@ -406,7 +405,6 @@ public class SefazInclusaoGuiaIcmsDto {
 
     /**
      * Valor devido efetivamente &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorDevido
      **/
     @JsonProperty("valorDevido")
@@ -426,7 +424,6 @@ public class SefazInclusaoGuiaIcmsDto {
 
     /**
      * Valor dos juros &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorJuros
      **/
     @JsonProperty("valorJuros")
@@ -445,7 +442,6 @@ public class SefazInclusaoGuiaIcmsDto {
 
     /**
      * Valor da multa &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorMulta
      **/
     @JsonProperty("valorMulta")
@@ -464,7 +460,6 @@ public class SefazInclusaoGuiaIcmsDto {
 
     /**
      * Somatório dos valores devidos + juros + multa + atualização monetária &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotal
      **/
     @JsonProperty("valorTotal")
@@ -484,7 +479,6 @@ public class SefazInclusaoGuiaIcmsDto {
 
     /**
      * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDeclaracao
      **/
     @JsonProperty("versaoDeclaracao")

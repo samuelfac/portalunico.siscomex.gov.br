@@ -798,7 +798,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
      * @return identificacaoConhecimento
      **/
     @JsonProperty("identificacaoConhecimento")
@@ -817,7 +816,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número de identificação do DSIC&lt;br/&gt;Tamanho: 11&lt;br/&gt; Formato: ANNNNNNNNNN
-     *
      * @return identificacaoDSIC
      **/
     @JsonProperty("identificacaoDSIC")
@@ -855,7 +853,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
-     *
      * @return manuseiosEspeciais
      **/
     @JsonProperty("manuseiosEspeciais")
@@ -879,7 +876,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Motivo de geração do DSIC&lt;br/&gt;1 - Meios Próprios&lt;br/&gt;2 - Apreensão&lt;br/&gt;3 - Retenção&lt;br/&gt;4 - Descaracterização de Bagagem&lt;br/&gt;5 - Outros&lt;br/&gt;
-     *
      * @return motivo
      **/
     @JsonProperty("motivo")
@@ -901,7 +897,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Nome do consignatário&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 40
-     *
      * @return nomeConsignatario
      **/
     @JsonProperty("nomeConsignatario")
@@ -939,7 +934,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Nome do passageiro&lt;br/&gt;Tamanho máximo: 40
-     *
      * @return nomeViajante
      **/
     @JsonProperty("nomeViajante")
@@ -958,7 +952,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número de autorização de sobrevoo DAC&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-     *
      * @return numeroAutorizacaoSobrevooDac
      **/
     @JsonProperty("numeroAutorizacaoSobrevooDac")
@@ -977,7 +970,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número do documento para retenção e apreensão&lt;br/&gt;Tamanho:15&lt;br/&gt;Formato: NNNNNNNNNNNNNNNN
-     *
      * @return numeroDocumentoRetencaoApreensao
      **/
     @JsonProperty("numeroDocumentoRetencaoApreensao")
@@ -996,7 +988,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número do documento do passageiro&lt;br/&gt;Tamanho máximo: 20
-     *
      * @return numeroDocumentoViajante
      **/
     @JsonProperty("numeroDocumentoViajante")
@@ -1015,7 +1006,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Observação&lt;br/&gt;Tamanho máximo: 50
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")
@@ -1034,7 +1024,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número do documento do passageiro&lt;br/&gt;Tamanho máximo: 30
-     *
      * @return orgaoEmissorDocumentoViajante
      **/
     @JsonProperty("orgaoEmissorDocumentoViajante")
@@ -1053,7 +1042,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Lista contendo as outras informações de serviço para a carga / Dsic&lt;br/&gt;
-     *
      * @return outrasInfosServico
      **/
     @JsonProperty("outrasInfosServico")
@@ -1077,7 +1065,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Lista contendo as partes da carga&lt;br/&gt;
-     *
      * @return partesEstoque
      **/
     @JsonProperty("partesEstoque")
@@ -1101,7 +1088,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
      * @return pesoBruto
      **/
     @JsonProperty("pesoBruto")
@@ -1120,7 +1106,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
      * @return quantidadeVolumes
      **/
     @JsonProperty("quantidadeVolumes")
@@ -1139,7 +1124,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
-     *
      * @return recepcoesComAvarias
      **/
     @JsonProperty("recepcoesComAvarias")
@@ -1163,7 +1147,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
-     *
      * @return recintoAduaneiroGeracaoDsic
      **/
     @JsonProperty("recintoAduaneiroGeracaoDsic")
@@ -1182,7 +1165,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 32
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -1201,7 +1183,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Setor de lotação do fiscal responsável pela geração do DSIC&lt;br/&gt;Tamanho: 35
-     *
      * @return setorResponsavelGeracaoDsicRfb
      **/
     @JsonProperty("setorResponsavelGeracaoDsicRfb")
@@ -1220,7 +1201,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Código da situação do DSIC&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excludído&lt;br/&gt;P - Apropriado&lt;br/&gt;
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -1266,7 +1246,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Tipo de carga.
-     *
      * @return tipoConhecimento
      **/
     @JsonProperty("tipoConhecimento")
@@ -1332,7 +1311,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Tipo de documento do passageiro&lt;br/&gt;P – Passaporte&lt;br/&gt;I – Carteira de identidade&lt;br/&gt;F – CPF&lt;br/&gt;O – Outros&lt;br/&gt;N – Nenhum&lt;br/&gt;
-     *
      * @return tipoDocumentoViajante
      **/
     @JsonProperty("tipoDocumentoViajante")
@@ -1354,7 +1332,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Unidade de lotação do fiscal responsável pela geração do DSIC&lt;br/&gt;Tamanho: 8
-     *
      * @return unidadeResponsavelGeracaoDsicRfb
      **/
     @JsonProperty("unidadeResponsavelGeracaoDsicRfb")
@@ -1373,7 +1350,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Código da UL de destino&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
-     *
      * @return unidadeRfbGeracaoDsic
      **/
     @JsonProperty("unidadeRfbGeracaoDsic")
@@ -1392,7 +1368,6 @@ public class DsicConsultaDetalhada {
 
     /**
      * Valor arbitrado pela RFB.&lt;br/&gt;Tamanho: 9,2&lt;br/&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorArbitrado
      **/
     @JsonProperty("valorArbitrado")

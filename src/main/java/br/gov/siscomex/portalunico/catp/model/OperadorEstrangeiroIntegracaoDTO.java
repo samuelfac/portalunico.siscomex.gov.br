@@ -298,7 +298,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     /**
      * Nome da Cidade&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
-     *
      * @return nomeCidade
      **/
     @JsonProperty("nomeCidade")
@@ -337,7 +336,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     /**
      * Código do país. Usar tabela ISO 3166&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: &#39;AA&#39;
-     *
      * @return codigoPais
      **/
     @JsonProperty("codigoPais")
@@ -357,7 +355,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     /**
      * Código postal&lt;br&gt;Tamanho: 9
-     *
      * @return cep
      **/
     @JsonProperty("cep")
@@ -376,7 +373,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     /**
      * Código interno para uso em outros sitemas&lt;br&gt;Tamanho: 35
-     *
      * @return codigoInterno
      **/
     @JsonProperty("codigoInterno")
@@ -395,7 +391,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     /**
      * E-mail do Operador Estrangeiro&lt;br&gt;Tamanho: 70
-     *
      * @return email
      **/
     @JsonProperty("email")
@@ -414,7 +409,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     /**
      * Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataReferencia
      **/
     @JsonProperty("dataReferencia")

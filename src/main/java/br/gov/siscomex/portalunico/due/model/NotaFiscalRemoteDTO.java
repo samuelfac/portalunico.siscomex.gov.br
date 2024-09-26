@@ -238,7 +238,6 @@ public class NotaFiscalRemoteDTO {
 
     /**
      * Serie&lt;br /&gt;Formato: Inteiro, com até 3 digitos
-     *
      * @return serie
      **/
     @JsonProperty("serie")
@@ -257,7 +256,6 @@ public class NotaFiscalRemoteDTO {
 
     /**
      * UF do emissor&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;AAS&#39;
-     *
      * @return ufDoEmissor
      **/
     @JsonProperty("ufDoEmissor")

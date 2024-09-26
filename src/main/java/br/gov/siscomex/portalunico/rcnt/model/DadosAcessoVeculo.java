@@ -662,7 +662,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -728,7 +727,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Protocolo do Evento de Agendamento que foi recebido quando do envio do evento.&lt;br/&gt;Tamanho: 36
-     *
      * @return protocoloAgenda
      **/
     @JsonProperty("protocoloAgenda")
@@ -747,7 +745,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. &lt;br/&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;G&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
      * @return dataHoraAgenda
      **/
     @JsonProperty("dataHoraAgenda")
@@ -766,7 +763,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista de manifestos.
-     *
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
@@ -814,7 +810,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista de chaves das NFE que amparam o transporte.
-     *
      * @return listaNfe
      **/
     @JsonProperty("listaNfe")
@@ -838,7 +833,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
-     *
      * @return listaMalas
      **/
     @JsonProperty("listaMalas")
@@ -884,7 +878,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;É obrigatório informar o atributo &#39;listaChassi.chassi&#39; quando o atributo &#39;placa&#39; não for informado.&lt;br/&gt;Tamanho: 50
-     *
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
@@ -908,7 +901,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt;É obrigatório informar o atributo &#39;placa&#39; quando o atributo &#39;lista.Chassi.chassi&#39; não for informado. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -927,7 +919,6 @@ public class DadosAcessoVeculo {
 
     /**
      * UF Emplacamento.&lt;br/&gt;Informar apenas no caso de trânsito terrestre cuja chegada da carga no país ocorreu via aeroporto&lt;br/&gt;Tamanho: 2
-     *
      * @return ufEmplacamento
      **/
     @JsonProperty("ufEmplacamento")
@@ -946,7 +937,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). &lt;br/&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return ocrPlaca
      **/
     @JsonProperty("ocrPlaca")
@@ -965,7 +955,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. &lt;br/&gt;É obrigatório informar o atributo &#39;oogDimensao&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return oogDimensao
      **/
     @JsonProperty("oogDimensao")
@@ -984,7 +973,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. &lt;br/&gt;É obrigatório informar o atributo &#39;oogPeso&#39; quando o atributo &#39;operacao&#39; for informado com  valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return oogPeso
      **/
     @JsonProperty("oogPeso")
@@ -1003,7 +991,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista de semirreboques ou vagões. No caso de caminhão truck utilizar essa estrutura repetindo a identificação da placa do veículo.
-     *
      * @return listaSemirreboque
      **/
     @JsonProperty("listaSemirreboque")
@@ -1027,7 +1014,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
-     *
      * @return listaConteineresUld
      **/
     @JsonProperty("listaConteineresUld")
@@ -1051,7 +1037,6 @@ public class DadosAcessoVeculo {
 
     /**
      * CNPJ da empresa transportadora.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
      * @return cnpjTransportador
      **/
     @JsonProperty("cnpjTransportador")
@@ -1070,7 +1055,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Nome da empresa transportadora.&lt;br/&gt;Tamanho: 100
-     *
      * @return nomeTransportador
      **/
     @JsonProperty("nomeTransportador")
@@ -1108,7 +1092,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Código Siscomex do recinto de destino. Informar apenas no caso de saída do recinto em regime de trânsito.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecintoDestino
      **/
     @JsonProperty("codigoRecintoDestino")
@@ -1127,7 +1110,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Código Siscomex do recinto de origem. Informar apenas no caso de chegada em recinto em regime de trânsito.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecintoOrigem
      **/
     @JsonProperty("codigoRecintoOrigem")
@@ -1146,7 +1128,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Informar data e hora de partida do veículo da origem sob regime de trânsito.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
      * @return dataHoraPartidaOrigem
      **/
     @JsonProperty("dataHoraPartidaOrigem")
@@ -1165,7 +1146,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.&lt;br/&gt; É obrigatório informar o atributo &#39;modal&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;R - Rodoviário&lt;br/&gt;F - Ferroviário&lt;br/&gt;L - Fluvial
-     *
      * @return modal
      **/
     @JsonProperty("modal")
@@ -1187,7 +1167,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt; É obrigatório informar o atributo &#39;gate&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 36
-     *
      * @return gate
      **/
     @JsonProperty("gate")
@@ -1206,7 +1185,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem o Gate por onde o veículo ingressou/saiu.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")

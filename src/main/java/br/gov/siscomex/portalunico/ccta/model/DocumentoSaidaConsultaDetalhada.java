@@ -354,7 +354,6 @@ public class DocumentoSaidaConsultaDetalhada {
 
     /**
      * Versão da Duimp
-     *
      * @return versaoDuimp
      **/
     @JsonProperty("versaoDuimp")
