@@ -128,8 +128,8 @@ public class DadosAvariaExtravioLote {
      **/
     private String codigoRecinto = null;
 
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100")
+    @XmlElement(name = "numeroLote", required = true)
+    @ApiModelProperty(required = true, value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100")
     /**
      * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100
      **/
@@ -153,11 +153,7 @@ public class DadosAvariaExtravioLote {
 
         @XmlEnumValue("'E'")
         @JsonProperty("'E'")
-        E_("'E'"),
-
-        @XmlEnumValue("'F'")
-        @JsonProperty("'F'")
-        F_("'F'");
+        E_("'E'");
 
 
         private final String value;
@@ -185,10 +181,10 @@ public class DadosAvariaExtravioLote {
         }
     }
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "E", value = "Tipo de evento (Avaria/Extravio/Furto)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio<br/>F - Furto")
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "E", required = true, value = "Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio")
     /**
-     * Tipo de evento (Avaria/Extravio/Furto)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio<br/>F - Furto
+     * Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio
      **/
     private TipoEnum tipo = null;
 
@@ -198,10 +194,10 @@ public class DadosAvariaExtravioLote {
     /**
      * Lista dos Tipos de Avarias.
      **/
-    private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
+    private List<DadosDoTipoDeAvariaExtravio> listaTipoAvaria = null;
 
-    @XmlElement(name = "quantidadeVolumes")
-    @ApiModelProperty(value = "Quantidade de volumes avariados, extraviados ou furtados.")
+    @XmlElement(name = "quantidadeVolumes", required = true)
+    @ApiModelProperty(required = true, value = "Quantidade de volumes avariados, extraviados ou furtados.")
     /**
      * Quantidade de volumes avariados, extraviados ou furtados.
      **/
@@ -398,6 +394,7 @@ public class DadosAvariaExtravioLote {
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
+    @NotNull
     public String getNumeroLote() {
         return numeroLote;
     }
@@ -431,11 +428,12 @@ public class DadosAvariaExtravioLote {
     }
 
     /**
-     * Tipo de evento (Avaria/Extravio/Furto)&lt;br/&gt;Domínio:&lt;br/&gt;A - Avaria&lt;br/&gt;E - Extravio&lt;br/&gt;F - Furto
+     * Tipo de evento (Avaria/Extravio)&lt;br/&gt;Domínio:&lt;br/&gt;A - Avaria&lt;br/&gt;E - Extravio
      *
      * @return tipo
      **/
     @JsonProperty("tipo")
+    @NotNull
     public String getTipo() {
         if (tipo == null) {
             return null;
@@ -457,20 +455,20 @@ public class DadosAvariaExtravioLote {
      * @return listaTipoAvaria
      **/
     @JsonProperty("listaTipoAvaria")
-    public List<DadosDoTipoDeAvaria> getListaTipoAvaria() {
+    public List<DadosDoTipoDeAvariaExtravio> getListaTipoAvaria() {
         return listaTipoAvaria;
     }
 
-    public void setListaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
+    public void setListaTipoAvaria(List<DadosDoTipoDeAvariaExtravio> listaTipoAvaria) {
         this.listaTipoAvaria = listaTipoAvaria;
     }
 
-    public DadosAvariaExtravioLote listaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
+    public DadosAvariaExtravioLote listaTipoAvaria(List<DadosDoTipoDeAvariaExtravio> listaTipoAvaria) {
         this.listaTipoAvaria = listaTipoAvaria;
         return this;
     }
 
-    public DadosAvariaExtravioLote addListaTipoAvariaItem(DadosDoTipoDeAvaria listaTipoAvariaItem) {
+    public DadosAvariaExtravioLote addListaTipoAvariaItem(DadosDoTipoDeAvariaExtravio listaTipoAvariaItem) {
         this.listaTipoAvaria.add(listaTipoAvariaItem);
         return this;
     }
@@ -480,6 +478,7 @@ public class DadosAvariaExtravioLote {
      * @return quantidadeVolumes
      **/
     @JsonProperty("quantidadeVolumes")
+    @NotNull
     public Integer getQuantidadeVolumes() {
         return quantidadeVolumes;
     }

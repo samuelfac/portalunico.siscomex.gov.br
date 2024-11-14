@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaInspeoNoInvasiva", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaNfe", "listaCarga", "listaSemirreboque", "listaConteineresUld", "vazio", "imagemScanner", "arquivoMetadados", "scanner", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaChassis", "listaNfe", "listaCarga", "listaSemirreboque", "listaConteineresUld", "placa", "ocrPlaca", "vazio", "imagemScanner", "arquivoMetadados", "scanner", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosDaInspeoNoInvasiva")
@@ -134,7 +134,15 @@ public class DadosDaInspeoNoInvasiva {
     /**
      * Lista de manifestos.
      **/
-    private List<DadosDoManisfestoDaCarga> listaManifestos = null;
+    private List<DadosDoManifestoDaCarga> listaManifestos = null;
+
+    @XmlElement(name = "listaChassis")
+    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).")
+    @Valid
+    /**
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).
+     **/
+    private List<DadosDoChassiEmbarque> listaChassis = null;
 
     @XmlElement(name = "listaNfe")
     @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
@@ -153,10 +161,10 @@ public class DadosDaInspeoNoInvasiva {
     private List<DadosDaCarga> listaCarga = null;
 
     @XmlElement(name = "listaSemirreboque")
-    @ApiModelProperty(value = "Lista de semirreboques ou vagões. No caso de caminhão truck informar a placa nessa estrutura.")
+    @ApiModelProperty(value = "Lista de semirreboques ou vagões.")
     @Valid
     /**
-     * Lista de semirreboques ou vagões. No caso de caminhão truck informar a placa nessa estrutura.
+     * Lista de semirreboques ou vagões.
      **/
     private List<DadosSemirreboqueDaInspeoNoInvasiva> listaSemirreboque = null;
 
@@ -167,6 +175,20 @@ public class DadosDaInspeoNoInvasiva {
      * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
      **/
     private List<DadosContinerUldInspeoNoInvasiva> listaConteineresUld = null;
+
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/locomotiva).<br/>Tamanho: 50")
+    /**
+     * Placa do veículo (Cavalo-trator/truck/locomotiva).<br/>Tamanho: 50
+     **/
+    private String placa = null;
+
+    @XmlElement(name = "ocrPlaca")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.")
+    /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.
+     **/
+    private Boolean ocrPlaca = null;
 
     @XmlElement(name = "vazio", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não Pode ser nulo quando o evento for de exclusão.")
@@ -181,9 +203,9 @@ public class DadosDaInspeoNoInvasiva {
     private DadosImagemScanner imagemScanner = null;
 
     @XmlElement(name = "arquivoMetadados")
-    @ApiModelProperty(example = "xml", value = "Arquivo gerado que acompanha a imagem do scanner, geralmente um xml<br/>Tamanho: 7160")
+    @ApiModelProperty(example = "xml", value = "Arquivo gerado que acompanha a imagem do scanner, geralmente um xml<br/>Tamanho: 14000")
     /**
-     * Arquivo gerado que acompanha a imagem do scanner, geralmente um xml<br/>Tamanho: 7160
+     * Arquivo gerado que acompanha a imagem do scanner, geralmente um xml<br/>Tamanho: 14000
      **/
     private String arquivoMetadados = null;
 
@@ -387,21 +409,45 @@ public class DadosDaInspeoNoInvasiva {
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
-    public List<DadosDoManisfestoDaCarga> getListaManifestos() {
+    public List<DadosDoManifestoDaCarga> getListaManifestos() {
         return listaManifestos;
     }
 
-    public void setListaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public void setListaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
     }
 
-    public DadosDaInspeoNoInvasiva listaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public DadosDaInspeoNoInvasiva listaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
         return this;
     }
 
-    public DadosDaInspeoNoInvasiva addListaManifestosItem(DadosDoManisfestoDaCarga listaManifestosItem) {
+    public DadosDaInspeoNoInvasiva addListaManifestosItem(DadosDoManifestoDaCarga listaManifestosItem) {
         this.listaManifestos.add(listaManifestosItem);
+        return this;
+    }
+
+    /**
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).
+     *
+     * @return listaChassis
+     **/
+    @JsonProperty("listaChassis")
+    public List<DadosDoChassiEmbarque> getListaChassis() {
+        return listaChassis;
+    }
+
+    public void setListaChassis(List<DadosDoChassiEmbarque> listaChassis) {
+        this.listaChassis = listaChassis;
+    }
+
+    public DadosDaInspeoNoInvasiva listaChassis(List<DadosDoChassiEmbarque> listaChassis) {
+        this.listaChassis = listaChassis;
+        return this;
+    }
+
+    public DadosDaInspeoNoInvasiva addListaChassisItem(DadosDoChassiEmbarque listaChassisItem) {
+        this.listaChassis.add(listaChassisItem);
         return this;
     }
 
@@ -452,7 +498,7 @@ public class DadosDaInspeoNoInvasiva {
     }
 
     /**
-     * Lista de semirreboques ou vagões. No caso de caminhão truck informar a placa nessa estrutura.
+     * Lista de semirreboques ou vagões.
      *
      * @return listaSemirreboque
      **/
@@ -477,7 +523,6 @@ public class DadosDaInspeoNoInvasiva {
 
     /**
      * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
-     *
      * @return listaConteineresUld
      **/
     @JsonProperty("listaConteineresUld")
@@ -496,6 +541,44 @@ public class DadosDaInspeoNoInvasiva {
 
     public DadosDaInspeoNoInvasiva addListaConteineresUldItem(DadosContinerUldInspeoNoInvasiva listaConteineresUldItem) {
         this.listaConteineresUld.add(listaConteineresUldItem);
+        return this;
+    }
+
+    /**
+     * Placa do veículo (Cavalo-trator/truck/locomotiva).&lt;br/&gt;Tamanho: 50
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public DadosDaInspeoNoInvasiva placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;ocrPlaca&#39; seja informado quando o atributo &#39;placa&#39; for informado.
+     *
+     * @return ocrPlaca
+     **/
+    @JsonProperty("ocrPlaca")
+    public Boolean isOcrPlaca() {
+        return ocrPlaca;
+    }
+
+    public void setOcrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+    }
+
+    public DadosDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
         return this;
     }
 
@@ -538,7 +621,7 @@ public class DadosDaInspeoNoInvasiva {
     }
 
     /**
-     * Arquivo gerado que acompanha a imagem do scanner, geralmente um xml&lt;br/&gt;Tamanho: 7160
+     * Arquivo gerado que acompanha a imagem do scanner, geralmente um xml&lt;br/&gt;Tamanho: 14000
      * @return arquivoMetadados
      **/
     @JsonProperty("arquivoMetadados")
@@ -612,10 +695,13 @@ public class DadosDaInspeoNoInvasiva {
                 "    contingencia: " + toIndentedString(contingencia) + "\n" +
                 "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
                 "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
+                "    listaChassis: " + toIndentedString(listaChassis) + "\n" +
                 "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
                 "    listaCarga: " + toIndentedString(listaCarga) + "\n" +
                 "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
                 "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    vazio: " + toIndentedString(vazio) + "\n" +
                 "    imagemScanner: " + toIndentedString(imagemScanner) + "\n" +
                 "    arquivoMetadados: " + toIndentedString(arquivoMetadados) + "\n" +

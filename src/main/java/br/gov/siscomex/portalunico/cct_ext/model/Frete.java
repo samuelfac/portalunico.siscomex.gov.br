@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Frete", propOrder =
-        {"codigoMoedaFrete", "formaPagamento", "valor"
+        {"codigoMoedaFrete", "formaPagamentoFrete", "valorFrete"
         })
 
 @XmlRootElement(name = "Frete")
@@ -26,29 +26,29 @@ import java.math.BigDecimal;
 public class Frete {
 
     @XmlElement(name = "codigoMoedaFrete", required = true)
-    @ApiModelProperty(example = "USD", required = true, value = "Código da moeda do Frete<br>Domínio: Tabela Tipo de Moeda")
+    @ApiModelProperty(example = "USD", required = true, value = "Código da moeda do Frete<br>Tamanho: 3<br>Formato: AAA<br>Domínio: Tabela Tipo de Moeda")
     /**
-     * Código da moeda do Frete<br>Domínio: Tabela Tipo de Moeda
+     * Código da moeda do Frete<br>Tamanho: 3<br>Formato: AAA<br>Domínio: Tabela Tipo de Moeda
      **/
     private String codigoMoedaFrete = null;
 
-    @XmlElement(name = "formaPagamento", required = true)
+    @XmlElement(name = "formaPagamentoFrete", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Forma de pagamento do frete<br>Domínio: 1 (prepaid), 2 (collect).")
     /**
      * Forma de pagamento do frete<br>Domínio: 1 (prepaid), 2 (collect).
      **/
-    private String formaPagamento = null;
+    private String formaPagamentoFrete = null;
 
-    @XmlElement(name = "valor", required = true)
-    @ApiModelProperty(example = "15632.87", required = true, value = "Valor do frete")
+    @XmlElement(name = "valorFrete", required = true)
+    @ApiModelProperty(example = "15632.87", required = true, value = "Valor do frete<br>Tamanho: 15.2<br>Formato: Decimal, com duas casas decimais separadas por ponto")
     @Valid
     /**
-     * Valor do frete
+     * Valor do frete<br>Tamanho: 15.2<br>Formato: Decimal, com duas casas decimais separadas por ponto
      **/
-    private BigDecimal valor = null;
+    private BigDecimal valorFrete = null;
 
     /**
-     * Código da moeda do Frete&lt;br&gt;Domínio: Tabela Tipo de Moeda
+     * Código da moeda do Frete&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: AAA&lt;br&gt;Domínio: Tabela Tipo de Moeda
      *
      * @return codigoMoedaFrete
      **/
@@ -70,40 +70,40 @@ public class Frete {
     /**
      * Forma de pagamento do frete&lt;br&gt;Domínio: 1 (prepaid), 2 (collect).
      *
-     * @return formaPagamento
+     * @return formaPagamentoFrete
      **/
-    @JsonProperty("formaPagamento")
+    @JsonProperty("formaPagamentoFrete")
     @NotNull
-    public String getFormaPagamento() {
-        return formaPagamento;
+    public String getFormaPagamentoFrete() {
+        return formaPagamentoFrete;
     }
 
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
+    public void setFormaPagamentoFrete(String formaPagamentoFrete) {
+        this.formaPagamentoFrete = formaPagamentoFrete;
     }
 
-    public Frete formaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
+    public Frete formaPagamentoFrete(String formaPagamentoFrete) {
+        this.formaPagamentoFrete = formaPagamentoFrete;
         return this;
     }
 
     /**
-     * Valor do frete
+     * Valor do frete&lt;br&gt;Tamanho: 15.2&lt;br&gt;Formato: Decimal, com duas casas decimais separadas por ponto
      *
-     * @return valor
+     * @return valorFrete
      **/
-    @JsonProperty("valor")
+    @JsonProperty("valorFrete")
     @NotNull
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorFrete() {
+        return valorFrete;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorFrete(BigDecimal valorFrete) {
+        this.valorFrete = valorFrete;
     }
 
-    public Frete valor(BigDecimal valor) {
-        this.valor = valor;
+    public Frete valorFrete(BigDecimal valorFrete) {
+        this.valorFrete = valorFrete;
         return this;
     }
 
@@ -113,8 +113,8 @@ public class Frete {
 
         String sb = "class Frete {\n" +
                 "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
-                "    formaPagamento: " + toIndentedString(formaPagamento) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
+                "    formaPagamentoFrete: " + toIndentedString(formaPagamentoFrete) + "\n" +
+                "    valorFrete: " + toIndentedString(valorFrete) + "\n" +
                 "}";
         return sb;
     }

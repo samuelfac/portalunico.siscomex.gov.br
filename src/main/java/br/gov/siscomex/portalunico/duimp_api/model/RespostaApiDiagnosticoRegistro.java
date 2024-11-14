@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiDiagnosticoRegistro", propOrder =
-        {"message", "identificacao", "links", "situacao"
+        {"message", "identificacao", "situacao", "links"
         })
 
 @XmlRootElement(name = "RespostaApiDiagnosticoRegistro")
@@ -31,6 +31,13 @@ public class RespostaApiDiagnosticoRegistro {
     @Valid
     private IdentificacaoDuimpRespostaApi identificacao = null;
 
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(example = "Diagnóstico em processamento", value = "Descrição da situação inicial da solicitação de diagnóstico ou registro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 80")
+    /**
+     * Descrição da situação inicial da solicitação de diagnóstico ou registro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 80
+     **/
+    private String situacao = null;
+
     @XmlElement(name = "links")
     @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
     @Valid
@@ -38,13 +45,6 @@ public class RespostaApiDiagnosticoRegistro {
      * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
      **/
     private List<LinkCover> links = null;
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(example = "Diagnóstico em processamento", value = "Descrição da situação inicial da solicitação de diagnóstico ou registro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 80")
-    /**
-     * Descrição da situação inicial da solicitação de diagnóstico ou registro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 80
-     **/
-    private String situacao = null;
 
     /**
      * Mensagem de resposta do resultado da operação.
@@ -85,6 +85,25 @@ public class RespostaApiDiagnosticoRegistro {
     }
 
     /**
+     * Descrição da situação inicial da solicitação de diagnóstico ou registro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public RespostaApiDiagnosticoRegistro situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
      * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
      *
      * @return links
@@ -108,25 +127,6 @@ public class RespostaApiDiagnosticoRegistro {
         return this;
     }
 
-    /**
-     * Descrição da situação inicial da solicitação de diagnóstico ou registro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public RespostaApiDiagnosticoRegistro situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
 
     @Override
     public String toString() {
@@ -134,8 +134,8 @@ public class RespostaApiDiagnosticoRegistro {
         String sb = "class RespostaApiDiagnosticoRegistro {\n" +
                 "    message: " + toIndentedString(message) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiItens", propOrder =
-        {"message", "identificacao", "links", "multiStatus"
+        {"message", "identificacao", "multiStatus", "links"
         })
 
 @XmlRootElement(name = "RespostaApiItens")
@@ -31,14 +31,6 @@ public class RespostaApiItens {
     @Valid
     private IdentificacaoDuimpRespostaApi identificacao = null;
 
-    @XmlElement(name = "links")
-    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
-    @Valid
-    /**
-     * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
-     **/
-    private List<LinkCover> links = null;
-
     @XmlElement(name = "multiStatus")
     @ApiModelProperty(value = "Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. <br>Cada elemento desta lista possuí um atributo 'code' informando o código da resposta para um item específico.<br>Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro")
     @Valid
@@ -46,6 +38,14 @@ public class RespostaApiItens {
      * Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. <br>Cada elemento desta lista possuí um atributo 'code' informando o código da resposta para um item específico.<br>Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro
      **/
     private List<RespostaApiMultiStatus> multiStatus = null;
+
+    @XmlElement(name = "links")
+    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
+    @Valid
+    /**
+     * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
+     **/
+    private List<LinkCover> links = null;
 
     /**
      * Mensagem de resposta do resultado da operação.
@@ -86,30 +86,6 @@ public class RespostaApiItens {
     }
 
     /**
-     * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
-     *
-     * @return links
-     **/
-    @JsonProperty("links")
-    public List<LinkCover> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<LinkCover> links) {
-        this.links = links;
-    }
-
-    public RespostaApiItens links(List<LinkCover> links) {
-        this.links = links;
-        return this;
-    }
-
-    public RespostaApiItens addLinksItem(LinkCover linksItem) {
-        this.links.add(linksItem);
-        return this;
-    }
-
-    /**
      * Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. &lt;br&gt;Cada elemento desta lista possuí um atributo &#39;code&#39; informando o código da resposta para um item específico.&lt;br&gt;Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro
      *
      * @return multiStatus
@@ -133,6 +109,30 @@ public class RespostaApiItens {
         return this;
     }
 
+    /**
+     * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
+     *
+     * @return links
+     **/
+    @JsonProperty("links")
+    public List<LinkCover> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<LinkCover> links) {
+        this.links = links;
+    }
+
+    public RespostaApiItens links(List<LinkCover> links) {
+        this.links = links;
+        return this;
+    }
+
+    public RespostaApiItens addLinksItem(LinkCover linksItem) {
+        this.links.add(linksItem);
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -140,8 +140,8 @@ public class RespostaApiItens {
         String sb = "class RespostaApiItens {\n" +
                 "    message: " + toIndentedString(message) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    multiStatus: " + toIndentedString(multiStatus) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

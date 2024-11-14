@@ -67,7 +67,7 @@ public class ResultadoConsultaConteiner {
     @XmlElement(name = "documentosTransporte")
     @ApiModelProperty(value = "")
     @Valid
-    private List<DocumentosTransporte> documentosTransporte = null;
+    private List<DocumentoTransporteDTO> documentosTransporte = null;
 
     @XmlElement(name = "permiteMovimentacao")
     @ApiModelProperty(example = "true", value = "")
@@ -203,20 +203,20 @@ public class ResultadoConsultaConteiner {
      * @return documentosTransporte
      **/
     @JsonProperty("documentosTransporte")
-    public List<DocumentosTransporte> getDocumentosTransporte() {
+    public List<DocumentoTransporteDTO> getDocumentosTransporte() {
         return documentosTransporte;
     }
 
-    public void setDocumentosTransporte(List<DocumentosTransporte> documentosTransporte) {
+    public void setDocumentosTransporte(List<DocumentoTransporteDTO> documentosTransporte) {
         this.documentosTransporte = documentosTransporte;
     }
 
-    public ResultadoConsultaConteiner documentosTransporte(List<DocumentosTransporte> documentosTransporte) {
+    public ResultadoConsultaConteiner documentosTransporte(List<DocumentoTransporteDTO> documentosTransporte) {
         this.documentosTransporte = documentosTransporte;
         return this;
     }
 
-    public ResultadoConsultaConteiner addDocumentosTransporteItem(DocumentosTransporte documentosTransporteItem) {
+    public ResultadoConsultaConteiner addDocumentosTransporteItem(DocumentoTransporteDTO documentosTransporteItem) {
         this.documentosTransporte.add(documentosTransporteItem);
         return this;
     }

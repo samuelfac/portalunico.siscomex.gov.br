@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosDoChassi {
 
     @XmlElement(name = "chassi")
-    @ApiModelProperty(example = "chassi1...", value = "Número do chassi.<br/>Tamanho: 50")
+    @ApiModelProperty(example = "chassi1...", value = "Número do chassi.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'placa' seja informado quando o atributo 'listaChassi.chassi' não for informado.<br/>Tamanho: 50")
     /**
-     * Número do chassi.<br/>Tamanho: 50
+     * Número do chassi.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'placa' seja informado quando o atributo 'listaChassi.chassi' não for informado.<br/>Tamanho: 50
      **/
     private String chassi = null;
 
@@ -33,7 +33,7 @@ public class DadosDoChassi {
     private String idElemento = null;
 
     /**
-     * Número do chassi.&lt;br/&gt;Tamanho: 50
+     * Número do chassi.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;placa&#39; seja informado quando o atributo &#39;listaChassi.chassi&#39; não for informado.&lt;br/&gt;Tamanho: 50
      *
      * @return chassi
      **/

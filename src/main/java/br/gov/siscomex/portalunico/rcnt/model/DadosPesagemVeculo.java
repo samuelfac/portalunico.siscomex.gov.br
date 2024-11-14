@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosPesagemVeculo", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaNfe", "pesoBrutoManifesto", "placa", "tara", "listaSemirreboque", "taraConjunto", "listaConteineresUld", "pesoBrutoBalanca", "vazio", "capturaAutoPeso", "dutos", "correiasTransportadoras", "ncm", "volume", "balanca", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaNfe", "pesoBrutoManifesto", "placa", "ocrPlaca", "tara", "listaSemirreboque", "taraConjunto", "listaConteineresUld", "pesoBrutoBalanca", "capturaAutoPeso", "vazio", "dutos", "correiasTransportadoras", "ncm", "volume", "balanca", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosPesagemVeculo")
@@ -135,7 +135,7 @@ public class DadosPesagemVeculo {
     /**
      * Lista de manifestos.
      **/
-    private List<DadosDoManisfestoDaCarga> listaManifestos = null;
+    private List<DadosDoManifestoDaCarga> listaManifestos = null;
 
     @XmlElement(name = "listaNfe")
     @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
@@ -146,25 +146,32 @@ public class DadosPesagemVeculo {
     private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
 
     @XmlElement(name = "pesoBrutoManifesto")
-    @ApiModelProperty(example = "15.5", value = "Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/>pesoBrutoManifesto, até 4 casas decimais.")
     @Valid
     /**
-     * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/><br/>pesoBrutoManifesto, até 4 casas decimais.
+     * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada<br/>pesoBrutoManifesto, até 4 casas decimais.
      **/
     private BigDecimal pesoBrutoManifesto = null;
 
     @XmlElement(name = "placa")
-    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/><br/>Tamanho: 50")
+    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50")
     /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/><br/>Tamanho: 50
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50
      **/
     private String placa = null;
 
+    @XmlElement(name = "ocrPlaca")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean ocrPlaca = null;
+
     @XmlElement(name = "tara")
-    @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/><br/>tara, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>tara, até 4 casas decimais.")
     @Valid
     /**
-     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/><br/>tara, até 4 casas decimais.
+     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>tara, até 4 casas decimais.
      **/
     private BigDecimal tara = null;
 
@@ -177,10 +184,10 @@ public class DadosPesagemVeculo {
     private List<DadosSemirreboquePesagem> listaSemirreboque = null;
 
     @XmlElement(name = "taraConjunto")
-    @ApiModelProperty(example = "15.5", value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/><br/>taraConjunto, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>taraConjunto, até 4 casas decimais.")
     @Valid
     /**
-     * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/><br/>taraConjunto, até 4 casas decimais.
+     * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>taraConjunto, até 4 casas decimais.
      **/
     private BigDecimal taraConjunto = null;
 
@@ -193,19 +200,12 @@ public class DadosPesagemVeculo {
     private List<DadosContinerUldPesagemVeculo> listaConteineresUld = null;
 
     @XmlElement(name = "pesoBrutoBalanca")
-    @ApiModelProperty(example = "15.5", value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.")
     @Valid
     /**
-     * Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<br/>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/><br/>pesoBrutoBalanca, até 4 casas decimais.
+     * Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.
      **/
     private BigDecimal pesoBrutoBalanca = null;
-
-    @XmlElement(name = "vazio", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean vazio = null;
 
     @XmlElement(name = "capturaAutoPeso", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -213,6 +213,13 @@ public class DadosPesagemVeculo {
      * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean capturaAutoPeso = null;
+
+    @XmlElement(name = "vazio", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean vazio = null;
 
 
     @XmlType(name = "DutosEnum")
@@ -307,24 +314,24 @@ public class DadosPesagemVeculo {
     private CorreiasTransportadorasEnum correiasTransportadoras = null;
 
     @XmlElement(name = "ncm")
-    @ApiModelProperty(value = "Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>É obrigatório informar o atributo 'ncm' quando pelo menos um dos seguintes atributos for informado: 'dutos', 'correiasTransportadoras'.<br/>Tamanho: 8")
+    @ApiModelProperty(value = "Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ncm' quando pelo menos um dos seguintes atributos for informado: 'dutos', 'correiasTransportadoras'.<br/>Tamanho: 8")
     /**
-     * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<br/>É obrigatório informar o atributo 'ncm' quando pelo menos um dos seguintes atributos for informado: 'dutos', 'correiasTransportadoras'.<br/>Tamanho: 8
+     * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.<br/>Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ncm' quando pelo menos um dos seguintes atributos for informado: 'dutos', 'correiasTransportadoras'.<br/>Tamanho: 8
      **/
     private String ncm = null;
 
     @XmlElement(name = "volume")
-    @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/> É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.")
     @Valid
     /**
-     * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<br/> É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
+     * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
      **/
     private BigDecimal volume = null;
 
     @XmlElement(name = "balanca", required = true)
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação balança, medidor ou outro equipamento utilizado para quantificação. Usar o protocolo do evento de georreferenciamento relativo à localização do equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36")
     /**
-     * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
+     * Identificação balança, medidor ou outro equipamento utilizado para quantificação. Usar o protocolo do evento de georreferenciamento relativo à localização do equipamento. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 36
      **/
     private String balanca = null;
 
@@ -521,20 +528,20 @@ public class DadosPesagemVeculo {
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
-    public List<DadosDoManisfestoDaCarga> getListaManifestos() {
+    public List<DadosDoManifestoDaCarga> getListaManifestos() {
         return listaManifestos;
     }
 
-    public void setListaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public void setListaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
     }
 
-    public DadosPesagemVeculo listaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public DadosPesagemVeculo listaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
         return this;
     }
 
-    public DadosPesagemVeculo addListaManifestosItem(DadosDoManisfestoDaCarga listaManifestosItem) {
+    public DadosPesagemVeculo addListaManifestosItem(DadosDoManifestoDaCarga listaManifestosItem) {
         this.listaManifestos.add(listaManifestosItem);
         return this;
     }
@@ -563,7 +570,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada&lt;br/&gt;&lt;br/&gt;pesoBrutoManifesto, até 4 casas decimais.
+     * Peso bruto no manifesto (Kg). Informar o peso bruto manifestado para a carga ou unidade de carga pesada&lt;br/&gt;pesoBrutoManifesto, até 4 casas decimais.
      * @return pesoBrutoManifesto
      **/
     @JsonProperty("pesoBrutoManifesto")
@@ -581,7 +588,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).&lt;br/&gt;Tamanho: 50
      * @return placa
      **/
     @JsonProperty("placa")
@@ -599,7 +606,26 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return ocrPlaca
+     **/
+    @JsonProperty("ocrPlaca")
+    public Boolean isOcrPlaca() {
+        return ocrPlaca;
+    }
+
+    public void setOcrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+    }
+
+    public DadosPesagemVeculo ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+        return this;
+    }
+
+    /**
+     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;tara, até 4 casas decimais.
      * @return tara
      **/
     @JsonProperty("tara")
@@ -618,7 +644,6 @@ public class DadosPesagemVeculo {
 
     /**
      * Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.
-     *
      * @return listaSemirreboque
      **/
     @JsonProperty("listaSemirreboque")
@@ -641,7 +666,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;taraConjunto, até 4 casas decimais.
+     * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;tara&#39;, &#39;taraConjunto&#39; quando o atributo &#39;placa&#39; estiver informado.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;taraConjunto, até 4 casas decimais.
      * @return taraConjunto
      **/
     @JsonProperty("taraConjunto")
@@ -683,7 +708,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Peso bruto da pesagem na balança (Kg).&lt;br/&gt;Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.&lt;br/&gt;É obrigatório informar o atributo &#39;pesoBrutoBalanca&#39; quando o atributo &#39;volume&#39; não for informado.&lt;br/&gt;&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
+     * Peso bruto da pesagem na balança (Kg).&lt;br/&gt;Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;pesoBrutoBalanca&#39; quando o atributo &#39;volume&#39; não for informado.&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
      * @return pesoBrutoBalanca
      **/
     @JsonProperty("pesoBrutoBalanca")
@@ -701,26 +726,8 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     * @return vazio
-     **/
-    @JsonProperty("vazio")
-    @NotNull
-    public Boolean isVazio() {
-        return vazio;
-    }
-
-    public void setVazio(Boolean vazio) {
-        this.vazio = vazio;
-    }
-
-    public DadosPesagemVeculo vazio(Boolean vazio) {
-        this.vazio = vazio;
-        return this;
-    }
-
-    /**
      * Captura automática de peso. Indica se o peso foi obtido automaticamente, sem intervenção humana. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
      * @return capturaAutoPeso
      **/
     @JsonProperty("capturaAutoPeso")
@@ -735,6 +742,26 @@ public class DadosPesagemVeculo {
 
     public DadosPesagemVeculo capturaAutoPeso(Boolean capturaAutoPeso) {
         this.capturaAutoPeso = capturaAutoPeso;
+        return this;
+    }
+
+    /**
+     * Indicar se é uma pesagem de veículo vazio. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return vazio
+     **/
+    @JsonProperty("vazio")
+    @NotNull
+    public Boolean isVazio() {
+        return vazio;
+    }
+
+    public void setVazio(Boolean vazio) {
+        this.vazio = vazio;
+    }
+
+    public DadosPesagemVeculo vazio(Boolean vazio) {
+        this.vazio = vazio;
         return this;
     }
 
@@ -782,7 +809,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.&lt;br/&gt;Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;br/&gt;É obrigatório informar o atributo &#39;ncm&#39; quando pelo menos um dos seguintes atributos for informado: &#39;dutos&#39;, &#39;correiasTransportadoras&#39;.&lt;br/&gt;Tamanho: 8
+     * Informar a NCM da mercadoria que chegou ou saiu via dutos ou correia transportadora.&lt;br/&gt;Esta informação será prestada no caso de dutos ou correia transportadora pois há situações em que inexiste NFe ou conhecimento de carga ao final da operação de pesagem.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ncm&#39; quando pelo menos um dos seguintes atributos for informado: &#39;dutos&#39;, &#39;correiasTransportadoras&#39;.&lt;br/&gt;Tamanho: 8
      * @return ncm
      **/
     @JsonProperty("ncm")
@@ -800,7 +827,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.&lt;br/&gt; É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
+     * Volume (metros cúbicos). Informar nos casos de granel líquido ou gasoso em que haja essa medição. Especificamente no caso de dutos transmitir o atributo com volume do fluxo ao final da operação.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo ‘volume’ quando o atributo ‘pesoBrutoBalanca’ não for informado.até 4 casas decimais.
      * @return volume
      **/
     @JsonProperty("volume")
@@ -818,7 +845,7 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Identificação balança. Usar o protocolo do evento de georreferenciamento relativo à localização da balança. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
+     * Identificação balança, medidor ou outro equipamento utilizado para quantificação. Usar o protocolo do evento de georreferenciamento relativo à localização do equipamento. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 36
      * @return balanca
      **/
     @JsonProperty("balanca")
@@ -877,13 +904,14 @@ public class DadosPesagemVeculo {
                 "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
                 "    pesoBrutoManifesto: " + toIndentedString(pesoBrutoManifesto) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
                 "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
                 "    taraConjunto: " + toIndentedString(taraConjunto) + "\n" +
                 "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
                 "    pesoBrutoBalanca: " + toIndentedString(pesoBrutoBalanca) + "\n" +
-                "    vazio: " + toIndentedString(vazio) + "\n" +
                 "    capturaAutoPeso: " + toIndentedString(capturaAutoPeso) + "\n" +
+                "    vazio: " + toIndentedString(vazio) + "\n" +
                 "    dutos: " + toIndentedString(dutos) + "\n" +
                 "    correiasTransportadoras: " + toIndentedString(correiasTransportadoras) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
@@ -903,6 +931,6 @@ public class DadosPesagemVeculo {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }
 

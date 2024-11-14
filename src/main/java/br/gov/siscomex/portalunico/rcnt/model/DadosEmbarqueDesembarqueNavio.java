@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosEmbarqueDesembarqueNavio", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaDeclaracaoAduaneira", "listaNfe", "embarqueDesembarque", "numeroConteiner", "tipoConteiner", "taraConteiner", "pesoBrutoManifesto", "pesoBrutoBalanca", "pesoArqueacao", "tipoGranel", "volume", "cargaSolta", "numeroLote", "listaVolumes", "listaChassi", "navio", "viagem", "escala", "listaPortoCarregamento", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "posicaoNavio", "proximoNavio", "portainer", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "listaDeclaracaoAduaneira", "listaNfe", "embarqueDesembarque", "numeroConteiner", "tipoConteiner", "taraConteiner", "pesoBrutoManifesto", "pesoBrutoBalanca", "pesoArqueacao", "tipoGranel", "volume", "ncm", "cargaSolta", "numeroLote", "listaVolumes", "listaChassi", "navio", "viagem", "escala", "listaPortoCarregamento", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "posicaoNavio", "proximoNavio", "portainer", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosEmbarqueDesembarqueNavio")
@@ -135,7 +135,7 @@ public class DadosEmbarqueDesembarqueNavio {
     /**
      * Lista de manifestos.
      **/
-    private List<DadosDoManisfestoDaCargaSimplificado> listaManifestos = null;
+    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
 
     @XmlElement(name = "listaDeclaracaoAduaneira")
     @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
@@ -200,16 +200,16 @@ public class DadosEmbarqueDesembarqueNavio {
     private EmbarqueDesembarqueEnum embarqueDesembarque = null;
 
     @XmlElement(name = "numeroConteiner")
-    @ApiModelProperty(value = "Identificação do número do contêiner.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200")
+    @ApiModelProperty(value = "Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200")
     /**
-     * Identificação do número do contêiner.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200
+     * Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200
      **/
     private String numeroConteiner = null;
 
     @XmlElement(name = "tipoConteiner")
-    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.")
+    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.")
     /**
-     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.
+     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.
      **/
     private String tipoConteiner = null;
 
@@ -230,18 +230,18 @@ public class DadosEmbarqueDesembarqueNavio {
     private BigDecimal pesoBrutoManifesto = null;
 
     @XmlElement(name = "pesoBrutoBalanca")
-    @ApiModelProperty(example = "15.5", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.")
     @Valid
     /**
-     * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.
+     * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.
      **/
     private BigDecimal pesoBrutoBalanca = null;
 
     @XmlElement(name = "pesoArqueacao")
-    @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.")
     @Valid
     /**
-     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.
+     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.
      **/
     private BigDecimal pesoArqueacao = null;
 
@@ -309,19 +309,26 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     @XmlElement(name = "tipoGranel")
-    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
+    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
     /**
-     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
+     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
      **/
     private TipoGranelEnum tipoGranel = null;
 
     @XmlElement(name = "volume")
-    @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.")
     @Valid
     /**
-     * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.
+     * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.
      **/
     private BigDecimal volume = null;
+
+    @XmlElement(name = "ncm")
+    @ApiModelProperty(value = "Informar a NCM apenas no caso de embarque ou desembarque de granel.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'NCM' quando o atributo  'tipoGranel' for informado.<br/>Tamanho: 8")
+    /**
+     * Informar a NCM apenas no caso de embarque ou desembarque de granel.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'NCM' quando o atributo  'tipoGranel' for informado.<br/>Tamanho: 8
+     **/
+    private String ncm = null;
 
     @XmlElement(name = "cargaSolta", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indicador de carga solta.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -338,20 +345,20 @@ public class DadosEmbarqueDesembarqueNavio {
     private String numeroLote = null;
 
     @XmlElement(name = "listaVolumes")
-    @ApiModelProperty(value = "Informar no caso de carregamento ou descarregamento de carga solta.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
+    @ApiModelProperty(value = "Informar no caso de carregamento ou descarregamento de carga solta.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
     @Valid
     /**
-     * Informar no caso de carregamento ou descarregamento de carga solta.<br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
+     * Informar no caso de carregamento ou descarregamento de carga solta.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
      **/
     private List<DadosVolumeVerificado> listaVolumes = null;
 
     @XmlElement(name = "listaChassi")
-    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
+    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
     @Valid
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
      **/
-    private List<DadosDoChassi> listaChassi = null;
+    private List<DadosDoChassiEmbarque> listaChassi = null;
 
     @XmlElement(name = "navio", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -608,20 +615,20 @@ public class DadosEmbarqueDesembarqueNavio {
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
-    public List<DadosDoManisfestoDaCargaSimplificado> getListaManifestos() {
+    public List<DadosDoManifestoDaCargaSimplificado> getListaManifestos() {
         return listaManifestos;
     }
 
-    public void setListaManifestos(List<DadosDoManisfestoDaCargaSimplificado> listaManifestos) {
+    public void setListaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
         this.listaManifestos = listaManifestos;
     }
 
-    public DadosEmbarqueDesembarqueNavio listaManifestos(List<DadosDoManisfestoDaCargaSimplificado> listaManifestos) {
+    public DadosEmbarqueDesembarqueNavio listaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
         this.listaManifestos = listaManifestos;
         return this;
     }
 
-    public DadosEmbarqueDesembarqueNavio addListaManifestosItem(DadosDoManisfestoDaCargaSimplificado listaManifestosItem) {
+    public DadosEmbarqueDesembarqueNavio addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
         this.listaManifestos.add(listaManifestosItem);
         return this;
     }
@@ -697,7 +704,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Identificação do número do contêiner.&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.&lt;br/&gt;Tamanho: 200
+     * Identificação do número do contêiner.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.&lt;br/&gt;Tamanho: 200
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -715,7 +722,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     *  Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt;É obrigatório informar o atributo &#39;tipoConteiner&#39; quando o atributo &#39;numeroConteiner&#39; for informado.
+     *  Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;tipoConteiner&#39; quando o atributo &#39;numeroConteiner&#39; for informado.
      * @return tipoConteiner
      **/
     @JsonProperty("tipoConteiner")
@@ -769,7 +776,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
+     * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
      * @return pesoBrutoBalanca
      **/
     @JsonProperty("pesoBrutoBalanca")
@@ -787,7 +794,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
+     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
      * @return pesoArqueacao
      **/
     @JsonProperty("pesoArqueacao")
@@ -805,7 +812,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
+     * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
      *
      * @return tipoGranel
      **/
@@ -827,7 +834,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.&lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;volume, até 4 casas decimais.
+     * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;volume, até 4 casas decimais.
      * @return volume
      **/
     @JsonProperty("volume")
@@ -841,6 +848,25 @@ public class DadosEmbarqueDesembarqueNavio {
 
     public DadosEmbarqueDesembarqueNavio volume(BigDecimal volume) {
         this.volume = volume;
+        return this;
+    }
+
+    /**
+     * Informar a NCM apenas no caso de embarque ou desembarque de granel.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;NCM&#39; quando o atributo  &#39;tipoGranel&#39; for informado.&lt;br/&gt;Tamanho: 8
+     *
+     * @return ncm
+     **/
+    @JsonProperty("ncm")
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
+    }
+
+    public DadosEmbarqueDesembarqueNavio ncm(String ncm) {
+        this.ncm = ncm;
         return this;
     }
 
@@ -882,7 +908,7 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Informar no caso de carregamento ou descarregamento de carga solta.&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
+     * Informar no caso de carregamento ou descarregamento de carga solta.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
      * @return listaVolumes
      **/
     @JsonProperty("listaVolumes")
@@ -905,24 +931,24 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
-    public List<DadosDoChassi> getListaChassi() {
+    public List<DadosDoChassiEmbarque> getListaChassi() {
         return listaChassi;
     }
 
-    public void setListaChassi(List<DadosDoChassi> listaChassi) {
+    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
     }
 
-    public DadosEmbarqueDesembarqueNavio listaChassi(List<DadosDoChassi> listaChassi) {
+    public DadosEmbarqueDesembarqueNavio listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
         return this;
     }
 
-    public DadosEmbarqueDesembarqueNavio addListaChassiItem(DadosDoChassi listaChassiItem) {
+    public DadosEmbarqueDesembarqueNavio addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
         this.listaChassi.add(listaChassiItem);
         return this;
     }
@@ -1158,6 +1184,7 @@ public class DadosEmbarqueDesembarqueNavio {
                 "    pesoArqueacao: " + toIndentedString(pesoArqueacao) + "\n" +
                 "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "    volume: " + toIndentedString(volume) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
                 "    cargaSolta: " + toIndentedString(cargaSolta) + "\n" +
                 "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    listaVolumes: " + toIndentedString(listaVolumes) + "\n" +

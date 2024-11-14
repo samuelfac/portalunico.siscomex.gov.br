@@ -18,21 +18,21 @@ import javax.xml.bind.annotation.XmlType;
 public class DuimpApiMessageCover {
 
     @XmlElement(name = "code")
-    @ApiModelProperty(example = "DIMP-ER0004", value = "Código interno da mensagem de erro.")
+    @ApiModelProperty(example = "DIMP-ER9999", value = "Código interno da mensagem de erro.")
     /**
      * Código interno da mensagem de erro.
      **/
     private String code = null;
 
     @XmlElement(name = "field")
-    @ApiModelProperty(example = "numero", value = "Nome do campo que contém o valor inválido.")
+    @ApiModelProperty(example = "numero", value = "Nome do campo que contém o valor inválido. <br> Atributo opcional: Só será devolvido caso o erro tenha sido provocado por um atributo inválido")
     /**
-     * Nome do campo que contém o valor inválido.
+     * Nome do campo que contém o valor inválido. <br> Atributo opcional: Só será devolvido caso o erro tenha sido provocado por um atributo inválido
      **/
     private String field = null;
 
     @XmlElement(name = "message")
-    @ApiModelProperty(example = "Número da Duimp inválido.", value = "Mensagem de erro.")
+    @ApiModelProperty(example = "Mensagem de negócio detalhando o código de erro informado no atributo 'code'.", value = "Mensagem de erro.")
     /**
      * Mensagem de erro.
      **/
@@ -58,7 +58,7 @@ public class DuimpApiMessageCover {
     }
 
     /**
-     * Nome do campo que contém o valor inválido.
+     * Nome do campo que contém o valor inválido. &lt;br&gt; Atributo opcional: Só será devolvido caso o erro tenha sido provocado por um atributo inválido
      *
      * @return field
      **/

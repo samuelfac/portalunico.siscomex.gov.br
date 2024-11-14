@@ -40,16 +40,16 @@ public class DadosContinerUldInspeoNoInvasiva {
     private String identificacaoUld = null;
 
     @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
+    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
     /**
-     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><br/>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.
+     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.
      **/
     private String tipo = null;
 
     @XmlElement(name = "ocrNumero")
-    @ApiModelProperty(example = "false", value = "Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<br/>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
+    @ApiModelProperty(example = "false", value = "Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
     /**
-     * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<br/>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.
+     * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.
      **/
     private Boolean ocrNumero = null;
 
@@ -112,7 +112,7 @@ public class DadosContinerUldInspeoNoInvasiva {
     }
 
     /**
-     * Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;br/&gt;É obrigatório que os atributos &#39;ocrNumero&#39; e &#39;tipo&#39; sejam informados quando o atributo &#39;numeroConteiner&#39; for informado.
+     * Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;ocrNumero&#39; e &#39;tipo&#39; sejam informados quando o atributo &#39;numeroConteiner&#39; for informado.
      *
      * @return tipo
      **/
@@ -131,7 +131,7 @@ public class DadosContinerUldInspeoNoInvasiva {
     }
 
     /**
-     * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;br/&gt;É obrigatório que os atributos &#39;ocrNumero&#39; e &#39;tipo&#39; sejam informados quando o atributo &#39;numeroConteiner&#39; for informado.
+     * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;ocrNumero&#39; e &#39;tipo&#39; sejam informados quando o atributo &#39;numeroConteiner&#39; for informado.
      *
      * @return ocrNumero
      **/

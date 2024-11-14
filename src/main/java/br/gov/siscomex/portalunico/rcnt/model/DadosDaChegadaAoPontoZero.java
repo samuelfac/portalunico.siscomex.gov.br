@@ -126,15 +126,15 @@ public class DadosDaChegadaAoPontoZero {
      **/
     private String codigoRecinto = null;
 
-    @XmlElement(name = "identificacaoUld")
-    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
+    @XmlElement(name = "identificacaoUld", required = true)
+    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", required = true, value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
      **/
     private String identificacaoUld = null;
 
-    @XmlElement(name = "viagem")
-    @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.<br/>Tamanho: 20")
+    @XmlElement(name = "viagem", required = true)
+    @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", required = true, value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.<br/>Tamanho: 20")
     /**
      * <br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.<br/>Tamanho: 20
      **/
@@ -321,9 +321,11 @@ public class DadosDaChegadaAoPontoZero {
 
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
+     *
      * @return identificacaoUld
      **/
     @JsonProperty("identificacaoUld")
+    @NotNull
     public String getIdentificacaoUld() {
         return identificacaoUld;
     }
@@ -342,6 +344,7 @@ public class DadosDaChegadaAoPontoZero {
      * @return viagem
      **/
     @JsonProperty("viagem")
+    @NotNull
     public String getViagem() {
         return viagem;
     }

@@ -53,10 +53,10 @@ public class DadosImagemScanner {
     private String tipoArquivo = null;
 
     @XmlElement(name = "listaCoordenadasAlerta")
-    @ApiModelProperty(value = "Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.")
+    @ApiModelProperty(value = "Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.Os pontos (x, y, x2, y2) devem ser proporcionais ao tamanho (dimensões), em pixels, do arquivo de imagem enviado. Considerar o “x” (largura) e “y” (altura) do plano cartesiano.")
     @Valid
     /**
-     * Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.
+     * Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.Os pontos (x, y, x2, y2) devem ser proporcionais ao tamanho (dimensões), em pixels, do arquivo de imagem enviado. Considerar o “x” (largura) e “y” (altura) do plano cartesiano.
      **/
     private List<DadosDaCoordenadaDeAlerta> listaCoordenadasAlerta = null;
 
@@ -151,7 +151,7 @@ public class DadosImagemScanner {
     }
 
     /**
-     * Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.
+     * Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.Os pontos (x, y, x2, y2) devem ser proporcionais ao tamanho (dimensões), em pixels, do arquivo de imagem enviado. Considerar o “x” (largura) e “y” (altura) do plano cartesiano.
      *
      * @return listaCoordenadasAlerta
      **/

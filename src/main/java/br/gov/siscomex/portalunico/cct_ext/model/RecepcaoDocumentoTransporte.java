@@ -65,7 +65,7 @@ public class RecepcaoDocumentoTransporte {
     /**
      * Dados dos documentos de transporte
      **/
-    private List<DocumentosTransporte> documentosTransporte = new ArrayList<>();
+    private List<DocumentoTransporteCover> documentosTransporte = new ArrayList<>();
 
     @XmlElement(name = "transportador", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -211,20 +211,20 @@ public class RecepcaoDocumentoTransporte {
      **/
     @JsonProperty("documentosTransporte")
     @NotNull
-    public List<DocumentosTransporte> getDocumentosTransporte() {
+    public List<DocumentoTransporteCover> getDocumentosTransporte() {
         return documentosTransporte;
     }
 
-    public void setDocumentosTransporte(List<DocumentosTransporte> documentosTransporte) {
+    public void setDocumentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
         this.documentosTransporte = documentosTransporte;
     }
 
-    public RecepcaoDocumentoTransporte documentosTransporte(List<DocumentosTransporte> documentosTransporte) {
+    public RecepcaoDocumentoTransporte documentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
         this.documentosTransporte = documentosTransporte;
         return this;
     }
 
-    public RecepcaoDocumentoTransporte addDocumentosTransporteItem(DocumentosTransporte documentosTransporteItem) {
+    public RecepcaoDocumentoTransporte addDocumentosTransporteItem(DocumentoTransporteCover documentosTransporteItem) {
         this.documentosTransporte.add(documentosTransporteItem);
         return this;
     }

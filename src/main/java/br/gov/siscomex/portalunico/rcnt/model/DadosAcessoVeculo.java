@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosAcessoVeculo", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "operacao", "direcao", "protocoloAgenda", "dataHoraAgenda", "listaManifestos", "listaDeclaracaoAduaneira", "listaNfe", "listaMalas", "tipoGranel", "listaChassi", "placa", "ufEmplacamento", "ocrPlaca", "oogDimensao", "oogPeso", "listaSemirreboque", "listaConteineresUld", "cnpjTransportador", "nomeTransportador", "motorista", "codigoRecintoDestino", "codigoRecintoOrigem", "dataHoraPartidaOrigem", "modal", "gate", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "operacao", "direcao", "protocoloAgenda", "dataHoraAgenda", "listaManifestos", "listaDeclaracaoAduaneira", "listaNfe", "listaMalas", "tipoGranel", "listaChassi", "placa", "ufEmplacamento", "ocrPlaca", "oogDimensao", "oogPeso", "listaSemirreboque", "listaConteineresUld", "cnpjTransportador", "cpfTransportador", "transportadorEstrangeiro", "nomeTransportador", "motorista", "codigoRecintoDestino", "codigoRecintoOrigem", "dataHoraPartidaOrigem", "modal", "gate", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosAcessoVeculo")
@@ -228,9 +228,9 @@ public class DadosAcessoVeculo {
     private String protocoloAgenda = null;
 
     @XmlElement(name = "dataHoraAgenda")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. <br/>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'operacao' for informado com valor 'G'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'operacao' for informado com valor 'G'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. <br/>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'operacao' for informado com valor 'G'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'operacao' for informado com valor 'G'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraAgenda = null;
 
@@ -240,7 +240,7 @@ public class DadosAcessoVeculo {
     /**
      * Lista de manifestos.
      **/
-    private List<DadosDoManisfestoDaCarga> listaManifestos = null;
+    private List<DadosDoManifestoDaCarga> listaManifestos = null;
 
     @XmlElement(name = "listaDeclaracaoAduaneira")
     @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
@@ -330,24 +330,24 @@ public class DadosAcessoVeculo {
     }
 
     @XmlElement(name = "tipoGranel")
-    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>")
+    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS")
     /**
-     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<br/>
+     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS
      **/
     private TipoGranelEnum tipoGranel = null;
 
     @XmlElement(name = "listaChassi")
-    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50")
+    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50")
     @Valid
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50
      **/
-    private List<DadosDoChassi> listaChassi = null;
+    private List<DadosDoChassiEmbarque> listaChassi = null;
 
     @XmlElement(name = "placa")
-    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
     /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
      **/
     private String placa = null;
 
@@ -359,23 +359,23 @@ public class DadosAcessoVeculo {
     private String ufEmplacamento = null;
 
     @XmlElement(name = "ocrPlaca")
-    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). <br/>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). <br/>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean ocrPlaca = null;
 
     @XmlElement(name = "oogDimensao")
-    @ApiModelProperty(example = "false", value = "Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogDimensao' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'oogDimensao' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogDimensao' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'oogDimensao' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean oogDimensao = null;
 
     @XmlElement(name = "oogPeso")
-    @ApiModelProperty(example = "false", value = "Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogPeso' quando o atributo 'operacao' for informado com  valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. <font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'oogPeso' quando o atributo 'operacao' for informado com  valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. <br/>É obrigatório informar o atributo 'oogPeso' quando o atributo 'operacao' for informado com  valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. <font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'oogPeso' quando o atributo 'operacao' for informado com  valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean oogPeso = null;
 
@@ -401,6 +401,20 @@ public class DadosAcessoVeculo {
      * CNPJ da empresa transportadora.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
      **/
     private String cnpjTransportador = null;
+
+    @XmlElement(name = "cpfTransportador")
+    @ApiModelProperty(example = "55555555555", value = "CPF do transportador, aplicável quando for transportador autônomo sem empresa.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF do transportador, aplicável quando for transportador autônomo sem empresa.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfTransportador = null;
+
+    @XmlElement(name = "transportadorEstrangeiro")
+    @ApiModelProperty(value = "Identificação fiscal de empresa estrangeira responsável pelo transporte. Por exemplo: TIN - Trade Identification Number (Número de Identificação do Operador)<br/>Tamanho: 50")
+    /**
+     * Identificação fiscal de empresa estrangeira responsável pelo transporte. Por exemplo: TIN - Trade Identification Number (Número de Identificação do Operador)<br/>Tamanho: 50
+     **/
+    private String transportadorEstrangeiro = null;
 
     @XmlElement(name = "nomeTransportador")
     @ApiModelProperty(value = "Nome da empresa transportadora.<br/>Tamanho: 100")
@@ -446,11 +460,7 @@ public class DadosAcessoVeculo {
 
         @XmlEnumValue("'F'")
         @JsonProperty("'F'")
-        F_("'F'"),
-
-        @XmlEnumValue("'L'")
-        @JsonProperty("'L'")
-        L_("'L'");
+        F_("'F'");
 
 
         private final String value;
@@ -479,16 +489,16 @@ public class DadosAcessoVeculo {
     }
 
     @XmlElement(name = "modal")
-    @ApiModelProperty(example = "R", value = "Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<br/> É obrigatório informar o atributo 'modal' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário<br/>L - Fluvial")
+    @ApiModelProperty(example = "R", value = "Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'modal' quando o atributo 'operacao' for informado com valor 'C'. <br/> <br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário")
     /**
-     * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<br/> É obrigatório informar o atributo 'modal' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário<br/>L - Fluvial
+     * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'modal' quando o atributo 'operacao' for informado com valor 'C'. <br/> <br/>Domínio:<br/>R - Rodoviário<br/>F - Ferroviário
      **/
     private ModalEnum modal = null;
 
     @XmlElement(name = "gate")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/> É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36")
     /**
-     * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<br/> É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36
+     * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36
      **/
     private String gate = null;
 
@@ -744,7 +754,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada. &lt;br/&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;G&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     * Data e Hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;G&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      * @return dataHoraAgenda
      **/
     @JsonProperty("dataHoraAgenda")
@@ -766,20 +776,20 @@ public class DadosAcessoVeculo {
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
-    public List<DadosDoManisfestoDaCarga> getListaManifestos() {
+    public List<DadosDoManifestoDaCarga> getListaManifestos() {
         return listaManifestos;
     }
 
-    public void setListaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public void setListaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
     }
 
-    public DadosAcessoVeculo listaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public DadosAcessoVeculo listaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
         return this;
     }
 
-    public DadosAcessoVeculo addListaManifestosItem(DadosDoManisfestoDaCarga listaManifestosItem) {
+    public DadosAcessoVeculo addListaManifestosItem(DadosDoManifestoDaCarga listaManifestosItem) {
         this.listaManifestos.add(listaManifestosItem);
         return this;
     }
@@ -855,7 +865,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;br/&gt;
+     * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS
      *
      * @return tipoGranel
      **/
@@ -877,30 +887,30 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;É obrigatório informar o atributo &#39;listaChassi.chassi&#39; quando o atributo &#39;placa&#39; não for informado.&lt;br/&gt;Tamanho: 50
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;listaChassi.chassi&#39; quando o atributo &#39;placa&#39; não for informado.&lt;br/&gt;Tamanho: 50
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
-    public List<DadosDoChassi> getListaChassi() {
+    public List<DadosDoChassiEmbarque> getListaChassi() {
         return listaChassi;
     }
 
-    public void setListaChassi(List<DadosDoChassi> listaChassi) {
+    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
     }
 
-    public DadosAcessoVeculo listaChassi(List<DadosDoChassi> listaChassi) {
+    public DadosAcessoVeculo listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
         return this;
     }
 
-    public DadosAcessoVeculo addListaChassiItem(DadosDoChassi listaChassiItem) {
+    public DadosAcessoVeculo addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
         this.listaChassi.add(listaChassiItem);
         return this;
     }
 
     /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt;É obrigatório informar o atributo &#39;placa&#39; quando o atributo &#39;lista.Chassi.chassi&#39; não for informado. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;placa&#39; quando o atributo &#39;lista.Chassi.chassi&#39; não for informado. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
      * @return placa
      **/
     @JsonProperty("placa")
@@ -936,7 +946,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). &lt;br/&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      * @return ocrPlaca
      **/
     @JsonProperty("ocrPlaca")
@@ -954,7 +964,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner. &lt;br/&gt;É obrigatório informar o atributo &#39;oogDimensao&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;oogDimensao&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      * @return oogDimensao
      **/
     @JsonProperty("oogDimensao")
@@ -972,7 +982,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. &lt;br/&gt;É obrigatório informar o atributo &#39;oogPeso&#39; quando o atributo &#39;operacao&#39; for informado com  valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Peso que impeça a entrada/saída OOG (Out of Gauge) pelo gate padrão, a pesagem ou a passagem pelo scanner. &lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;oogPeso&#39; quando o atributo &#39;operacao&#39; for informado com  valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      * @return oogPeso
      **/
     @JsonProperty("oogPeso")
@@ -1054,6 +1064,44 @@ public class DadosAcessoVeculo {
     }
 
     /**
+     * CPF do transportador, aplicável quando for transportador autônomo sem empresa.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfTransportador
+     **/
+    @JsonProperty("cpfTransportador")
+    public String getCpfTransportador() {
+        return cpfTransportador;
+    }
+
+    public void setCpfTransportador(String cpfTransportador) {
+        this.cpfTransportador = cpfTransportador;
+    }
+
+    public DadosAcessoVeculo cpfTransportador(String cpfTransportador) {
+        this.cpfTransportador = cpfTransportador;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal de empresa estrangeira responsável pelo transporte. Por exemplo: TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br/&gt;Tamanho: 50
+     *
+     * @return transportadorEstrangeiro
+     **/
+    @JsonProperty("transportadorEstrangeiro")
+    public String getTransportadorEstrangeiro() {
+        return transportadorEstrangeiro;
+    }
+
+    public void setTransportadorEstrangeiro(String transportadorEstrangeiro) {
+        this.transportadorEstrangeiro = transportadorEstrangeiro;
+    }
+
+    public DadosAcessoVeculo transportadorEstrangeiro(String transportadorEstrangeiro) {
+        this.transportadorEstrangeiro = transportadorEstrangeiro;
+        return this;
+    }
+
+    /**
      * Nome da empresa transportadora.&lt;br/&gt;Tamanho: 100
      * @return nomeTransportador
      **/
@@ -1073,7 +1121,6 @@ public class DadosAcessoVeculo {
 
     /**
      * Get motorista
-     *
      * @return motorista
      **/
     @JsonProperty("motorista")
@@ -1145,7 +1192,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.&lt;br/&gt; É obrigatório informar o atributo &#39;modal&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;R - Rodoviário&lt;br/&gt;F - Ferroviário&lt;br/&gt;L - Fluvial
+     * Modal. Forma como a carga chegou/saiu do recinto, transporte rodoviário ou transporte ferroviário. Conforme tabela domínio.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;modal&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;. &lt;br/&gt; &lt;br/&gt;Domínio:&lt;br/&gt;R - Rodoviário&lt;br/&gt;F - Ferroviário
      * @return modal
      **/
     @JsonProperty("modal")
@@ -1166,7 +1213,7 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;br/&gt; É obrigatório informar o atributo &#39;gate&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 36
+     * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;gate&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 36
      * @return gate
      **/
     @JsonProperty("gate")
@@ -1238,6 +1285,8 @@ public class DadosAcessoVeculo {
                 "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
                 "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
                 "    cnpjTransportador: " + toIndentedString(cnpjTransportador) + "\n" +
+                "    cpfTransportador: " + toIndentedString(cpfTransportador) + "\n" +
+                "    transportadorEstrangeiro: " + toIndentedString(transportadorEstrangeiro) + "\n" +
                 "    nomeTransportador: " + toIndentedString(nomeTransportador) + "\n" +
                 "    motorista: " + toIndentedString(motorista) + "\n" +
                 "    codigoRecintoDestino: " + toIndentedString(codigoRecintoDestino) + "\n" +

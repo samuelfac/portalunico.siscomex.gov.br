@@ -147,8 +147,8 @@ public class DadosIndisponibilidadeEquipamento {
      **/
     private String dataHoraPrevisaoDisponibilidade = null;
 
-    @XmlElement(name = "motivoIndisponibilidade")
-    @ApiModelProperty(value = "Motivo da indisponibilidade<br/>Tamanho: 100")
+    @XmlElement(name = "motivoIndisponibilidade", required = true)
+    @ApiModelProperty(required = true, value = "Motivo da indisponibilidade<br/>Tamanho: 100")
     /**
      * Motivo da indisponibilidade<br/>Tamanho: 100
      **/
@@ -396,6 +396,7 @@ public class DadosIndisponibilidadeEquipamento {
      * @return motivoIndisponibilidade
      **/
     @JsonProperty("motivoIndisponibilidade")
+    @NotNull
     public String getMotivoIndisponibilidade() {
         return motivoIndisponibilidade;
     }

@@ -110,16 +110,16 @@ public class DadosLote {
     private BigDecimal pesoLoteBalanca = null;
 
     @XmlElement(name = "quantidadeVolumesAvariados")
-    @ApiModelProperty(example = "3", value = "Informar a quantidade de volumes avariados. <br/>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.")
+    @ApiModelProperty(example = "3", value = "Informar a quantidade de volumes avariados.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.")
     /**
-     * Informar a quantidade de volumes avariados. <br/>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.
+     * Informar a quantidade de volumes avariados.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.
      **/
     private Integer quantidadeVolumesAvariados = null;
 
     @XmlElement(name = "quantidadeVolumesDivergentes")
-    @ApiModelProperty(example = "10", value = "Informar a quantidade de volumes divergentes. <br/>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.")
+    @ApiModelProperty(example = "10", value = "Informar a quantidade de volumes divergentes.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.")
     /**
-     * Informar a quantidade de volumes divergentes. <br/>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.
+     * Informar a quantidade de volumes divergentes.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.
      **/
     private Integer quantidadeVolumesDivergentes = null;
 
@@ -364,7 +364,7 @@ public class DadosLote {
     }
 
     /**
-     * Informar a quantidade de volumes avariados. &lt;br/&gt;É obrigatório que o atributo &#39;quantidadeVolumesAvariados&#39; seja informado quando o atributo &#39;tipoAvaria&#39; for informado.
+     * Informar a quantidade de volumes avariados.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;quantidadeVolumesAvariados&#39; seja informado quando o atributo &#39;tipoAvaria&#39; for informado.
      *
      * @return quantidadeVolumesAvariados
      **/
@@ -383,7 +383,7 @@ public class DadosLote {
     }
 
     /**
-     * Informar a quantidade de volumes divergentes. &lt;br/&gt;É obrigatório que o atributo &#39;quantidadeVolumesDivergentes&#39; seja informado quando o atributo &#39;divergenciaQuantidade&#39; for informado com &#39;true&#39;.
+     * Informar a quantidade de volumes divergentes.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;quantidadeVolumesDivergentes&#39; seja informado quando o atributo &#39;divergenciaQuantidade&#39; for informado com &#39;true&#39;.
      *
      * @return quantidadeVolumesDivergentes
      **/

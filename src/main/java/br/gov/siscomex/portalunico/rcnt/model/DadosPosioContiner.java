@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosPosioContiner", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroConteiner", "placaSemirreboque", "localizacao", "posicaoNavio", "conferenciaFisica", "solicitanteFisica", "avaria", "vazio", "areaConteiner", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroConteiner", "placa", "placaSemirreboque", "vazio", "listaNfe", "listaDeclaracaoAduaneira", "listaManifestos", "localizacao", "posicaoNavio", "conferenciaFisica", "solicitanteFisica", "avaria", "areaConteiner", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosPosioContiner")
@@ -135,12 +135,50 @@ public class DadosPosioContiner {
      **/
     private String numeroConteiner = null;
 
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.<br/>Tamanho: 50")
+    /**
+     * Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.<br/>Tamanho: 50
+     **/
+    private String placa = null;
+
     @XmlElement(name = "placaSemirreboque")
     @ApiModelProperty(value = "Placa semirreboque/vagão. Informar em caso de descarregamento. <br/>Tamanho: 50")
     /**
      * Placa semirreboque/vagão. Informar em caso de descarregamento. <br/>Tamanho: 50
      **/
     private String placaSemirreboque = null;
+
+    @XmlElement(name = "vazio", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean vazio = null;
+
+    @XmlElement(name = "listaNfe")
+    @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
+    @Valid
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     **/
+    private List<DadosDaNotaFiscal> listaNfe = null;
+
+    @XmlElement(name = "listaDeclaracaoAduaneira")
+    @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
+    @Valid
+    /**
+     * Lista de declarações aduaneiras associadas à carga.
+     **/
+    private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
+
+    @XmlElement(name = "listaManifestos")
+    @ApiModelProperty(value = "Lista de manifestos.")
+    @Valid
+    /**
+     * Lista de manifestos.
+     **/
+    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
 
     @XmlElement(name = "localizacao")
     @ApiModelProperty(value = "")
@@ -175,15 +213,8 @@ public class DadosPosioContiner {
      **/
     private Boolean avaria = null;
 
-    @XmlElement(name = "vazio")
-    @ApiModelProperty(example = "false", value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean vazio = null;
-
-    @XmlElement(name = "areaConteiner")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    @XmlElement(name = "areaConteiner", required = true)
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
     /**
      * Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
      **/
@@ -397,6 +428,25 @@ public class DadosPosioContiner {
     }
 
     /**
+     * Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.&lt;br/&gt;Tamanho: 50
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public DadosPosioContiner placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
+    /**
      * Placa semirreboque/vagão. Informar em caso de descarregamento. &lt;br/&gt;Tamanho: 50
      * @return placaSemirreboque
      **/
@@ -415,7 +465,100 @@ public class DadosPosioContiner {
     }
 
     /**
+     * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return vazio
+     **/
+    @JsonProperty("vazio")
+    @NotNull
+    public Boolean isVazio() {
+        return vazio;
+    }
+
+    public void setVazio(Boolean vazio) {
+        this.vazio = vazio;
+    }
+
+    public DadosPosioContiner vazio(Boolean vazio) {
+        this.vazio = vazio;
+        return this;
+    }
+
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     *
+     * @return listaNfe
+     **/
+    @JsonProperty("listaNfe")
+    public List<DadosDaNotaFiscal> getListaNfe() {
+        return listaNfe;
+    }
+
+    public void setListaNfe(List<DadosDaNotaFiscal> listaNfe) {
+        this.listaNfe = listaNfe;
+    }
+
+    public DadosPosioContiner listaNfe(List<DadosDaNotaFiscal> listaNfe) {
+        this.listaNfe = listaNfe;
+        return this;
+    }
+
+    public DadosPosioContiner addListaNfeItem(DadosDaNotaFiscal listaNfeItem) {
+        this.listaNfe.add(listaNfeItem);
+        return this;
+    }
+
+    /**
+     * Lista de declarações aduaneiras associadas à carga.
+     *
+     * @return listaDeclaracaoAduaneira
+     **/
+    @JsonProperty("listaDeclaracaoAduaneira")
+    public List<DocumentoAduaneiro> getListaDeclaracaoAduaneira() {
+        return listaDeclaracaoAduaneira;
+    }
+
+    public void setListaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
+        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
+    }
+
+    public DadosPosioContiner listaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
+        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
+        return this;
+    }
+
+    public DadosPosioContiner addListaDeclaracaoAduaneiraItem(DocumentoAduaneiro listaDeclaracaoAduaneiraItem) {
+        this.listaDeclaracaoAduaneira.add(listaDeclaracaoAduaneiraItem);
+        return this;
+    }
+
+    /**
+     * Lista de manifestos.
+     *
+     * @return listaManifestos
+     **/
+    @JsonProperty("listaManifestos")
+    public List<DadosDoManifestoDaCargaSimplificado> getListaManifestos() {
+        return listaManifestos;
+    }
+
+    public void setListaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
+        this.listaManifestos = listaManifestos;
+    }
+
+    public DadosPosioContiner listaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
+        this.listaManifestos = listaManifestos;
+        return this;
+    }
+
+    public DadosPosioContiner addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
+        this.listaManifestos.add(listaManifestosItem);
+        return this;
+    }
+
+    /**
      * Get localizacao
+     *
      * @return localizacao
      **/
     @JsonProperty("localizacao")
@@ -505,28 +648,11 @@ public class DadosPosioContiner {
     }
 
     /**
-     * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     * @return vazio
-     **/
-    @JsonProperty("vazio")
-    public Boolean isVazio() {
-        return vazio;
-    }
-
-    public void setVazio(Boolean vazio) {
-        this.vazio = vazio;
-    }
-
-    public DadosPosioContiner vazio(Boolean vazio) {
-        this.vazio = vazio;
-        return this;
-    }
-
-    /**
      * Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
      * @return areaConteiner
      **/
     @JsonProperty("areaConteiner")
+    @NotNull
     public String getAreaConteiner() {
         return areaConteiner;
     }
@@ -578,13 +704,17 @@ public class DadosPosioContiner {
                 "    contingencia: " + toIndentedString(contingencia) + "\n" +
                 "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
                 "    placaSemirreboque: " + toIndentedString(placaSemirreboque) + "\n" +
+                "    vazio: " + toIndentedString(vazio) + "\n" +
+                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
+                "    listaDeclaracaoAduaneira: " + toIndentedString(listaDeclaracaoAduaneira) + "\n" +
+                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
                 "    localizacao: " + toIndentedString(localizacao) + "\n" +
                 "    posicaoNavio: " + toIndentedString(posicaoNavio) + "\n" +
                 "    conferenciaFisica: " + toIndentedString(conferenciaFisica) + "\n" +
                 "    solicitanteFisica: " + toIndentedString(solicitanteFisica) + "\n" +
                 "    avaria: " + toIndentedString(avaria) + "\n" +
-                "    vazio: " + toIndentedString(vazio) + "\n" +
                 "    areaConteiner: " + toIndentedString(areaConteiner) + "\n" +
                 "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
                 "}";

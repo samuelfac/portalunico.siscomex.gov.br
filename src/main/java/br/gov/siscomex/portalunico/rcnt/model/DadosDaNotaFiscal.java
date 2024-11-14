@@ -19,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosDaNotaFiscal {
 
     @XmlElement(name = "chaveNfe")
-    @ApiModelProperty(example = "35200200000000002720550900024285641000000001", value = "Chave da NF-e que ampara a carga.<br/>Tamanho: 100")
+    @ApiModelProperty(example = "35200200000000002720550900024285641000000001", value = "Chave da NF-e que ampara o transporte.<br/>Tamanho: 100")
     /**
-     * Chave da NF-e que ampara a carga.<br/>Tamanho: 100
+     * Chave da NF-e que ampara o transporte.<br/>Tamanho: 100
      **/
     private String chaveNfe = null;
 
@@ -33,7 +33,7 @@ public class DadosDaNotaFiscal {
     private String idElemento = null;
 
     /**
-     * Chave da NF-e que ampara a carga.&lt;br/&gt;Tamanho: 100
+     * Chave da NF-e que ampara o transporte.&lt;br/&gt;Tamanho: 100
      *
      * @return chaveNfe
      **/

@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosGeraoLote", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "numeroRUC", "declaracaoAduaneira", "listaNfe", "listaMalas", "cnpjResponsavelAnterior", "codigoRecintoOrigem", "pesoManifesto", "listaVolumesManifesto", "numeroConteiner", "identificacaoUld", "listaChassi", "navio", "iataAeronave", "prefixoAeronave", "viagem", "escala", "aeroportoOrigem", "placaSemirreboque", "listaMercadoriaPerigosa", "perecivel", "cargaSolta", "indicadorDeRemessaInternacional", "listaCameras", "observacaoRecepcao", "lotes"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "placa", "listaNfe", "declaracaoAduaneira", "listaDeclaracaoAduaneira", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "numeroRUC", "listaMalas", "cnpjResponsavelAnterior", "codigoRecintoOrigem", "pesoManifesto", "listaVolumesManifesto", "numeroConteiner", "identificacaoUld", "listaChassi", "navio", "iataAeronave", "prefixoAeronave", "viagem", "escala", "aeroportoOrigem", "placaSemirreboque", "listaMercadoriaPerigosa", "perecivel", "cargaSolta", "areaCargaSolta", "indicadorDeRemessaInternacional", "listaCameras", "observacaoRecepcao", "lotes"
         })
 
 @XmlRootElement(name = "DadosGeraoLote")
@@ -129,6 +129,34 @@ public class DadosGeraoLote {
      **/
     private String codigoRecinto = null;
 
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa do Veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+    /**
+     * Placa do Veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+     **/
+    private String placa = null;
+
+    @XmlElement(name = "listaNfe")
+    @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
+    @Valid
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     **/
+    private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
+
+    @XmlElement(name = "declaracaoAduaneira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DeclaraoAduaneira declaracaoAduaneira = null;
+
+    @XmlElement(name = "listaDeclaracaoAduaneira")
+    @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga (art. 17A, IN rfb 1702)")
+    @Valid
+    /**
+     * Lista de declarações aduaneiras associadas à carga (art. 17A, IN rfb 1702)
+     **/
+    private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
+
     @XmlElement(name = "numeroManifesto")
     @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
     /**
@@ -218,19 +246,6 @@ public class DadosGeraoLote {
      **/
     private String numeroRUC = null;
 
-    @XmlElement(name = "declaracaoAduaneira")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DeclaraoAduaneira declaracaoAduaneira = null;
-
-    @XmlElement(name = "listaNfe")
-    @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
-    @Valid
-    /**
-     * Lista de chaves das NFE que amparam o transporte.
-     **/
-    private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
-
     @XmlElement(name = "listaMalas")
     @ApiModelProperty(value = "Lista com as malas postais. Utilizar apenas para remessa postal internacional.")
     @Valid
@@ -289,7 +304,7 @@ public class DadosGeraoLote {
     /**
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50
      **/
-    private List<DadosDoChassi> listaChassi = null;
+    private List<DadosDoChassiEmbarque> listaChassi = null;
 
     @XmlElement(name = "navio")
     @ApiModelProperty(value = "")
@@ -332,9 +347,9 @@ public class DadosGeraoLote {
     private String aeroportoOrigem = null;
 
     @XmlElement(name = "placaSemirreboque")
-    @ApiModelProperty(value = "Placa semirreboque/vagão<br/>Tamanho: 50Placa semirreboque/vagão.")
+    @ApiModelProperty(value = "Placa semirreboque/vagão.<br/>Tamanho: 50")
     /**
-     * Placa semirreboque/vagão<br/>Tamanho: 50Placa semirreboque/vagão.
+     * Placa semirreboque/vagão.<br/>Tamanho: 50
      **/
     private String placaSemirreboque = null;
 
@@ -359,6 +374,13 @@ public class DadosGeraoLote {
      * Carga Solta<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean cargaSolta = null;
+
+    @XmlElement(name = "areaCargaSolta", required = true)
+    @ApiModelProperty(required = true, value = "Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    /**
+     * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
+     **/
+    private String areaCargaSolta = null;
 
 
     @XmlType(name = "IndicadorDeRemessaInternacionalEnum")
@@ -609,6 +631,92 @@ public class DadosGeraoLote {
     }
 
     /**
+     * Placa do Veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public DadosGeraoLote placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     *
+     * @return listaNfe
+     **/
+    @JsonProperty("listaNfe")
+    public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+        return listaNfe;
+    }
+
+    public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+        this.listaNfe = listaNfe;
+    }
+
+    public DadosGeraoLote listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+        this.listaNfe = listaNfe;
+        return this;
+    }
+
+    public DadosGeraoLote addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
+        this.listaNfe.add(listaNfeItem);
+        return this;
+    }
+
+    /**
+     * Get declaracaoAduaneira
+     *
+     * @return declaracaoAduaneira
+     **/
+    @JsonProperty("declaracaoAduaneira")
+    public DeclaraoAduaneira getDeclaracaoAduaneira() {
+        return declaracaoAduaneira;
+    }
+
+    public void setDeclaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
+        this.declaracaoAduaneira = declaracaoAduaneira;
+    }
+
+    public DadosGeraoLote declaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
+        this.declaracaoAduaneira = declaracaoAduaneira;
+        return this;
+    }
+
+    /**
+     * Lista de declarações aduaneiras associadas à carga (art. 17A, IN rfb 1702)
+     *
+     * @return listaDeclaracaoAduaneira
+     **/
+    @JsonProperty("listaDeclaracaoAduaneira")
+    public List<DocumentoAduaneiro> getListaDeclaracaoAduaneira() {
+        return listaDeclaracaoAduaneira;
+    }
+
+    public void setListaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
+        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
+    }
+
+    public DadosGeraoLote listaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
+        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
+        return this;
+    }
+
+    public DadosGeraoLote addListaDeclaracaoAduaneiraItem(DocumentoAduaneiro listaDeclaracaoAduaneiraItem) {
+        this.listaDeclaracaoAduaneira.add(listaDeclaracaoAduaneiraItem);
+        return this;
+    }
+
+    /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
      * @return numeroManifesto
      **/
@@ -628,7 +736,6 @@ public class DadosGeraoLote {
 
     /**
      * Tipo do manifesto conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;MICDTA - MicDTA&lt;br/&gt;TIFDTA - TifDTA&lt;br/&gt;MDFE - MDF-e&lt;br/&gt;MELET - Manifesto Eletrônico
-     *
      * @return tipoManifesto
      **/
     @JsonProperty("tipoManifesto")
@@ -650,7 +757,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimentoMAWB
      **/
     @JsonProperty("numeroConhecimentoMAWB")
@@ -718,47 +824,6 @@ public class DadosGeraoLote {
 
     public DadosGeraoLote numeroRUC(String numeroRUC) {
         this.numeroRUC = numeroRUC;
-        return this;
-    }
-
-    /**
-     * Get declaracaoAduaneira
-     * @return declaracaoAduaneira
-     **/
-    @JsonProperty("declaracaoAduaneira")
-    public DeclaraoAduaneira getDeclaracaoAduaneira() {
-        return declaracaoAduaneira;
-    }
-
-    public void setDeclaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
-        this.declaracaoAduaneira = declaracaoAduaneira;
-    }
-
-    public DadosGeraoLote declaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
-        this.declaracaoAduaneira = declaracaoAduaneira;
-        return this;
-    }
-
-    /**
-     * Lista de chaves das NFE que amparam o transporte.
-     * @return listaNfe
-     **/
-    @JsonProperty("listaNfe")
-    public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
-        return listaNfe;
-    }
-
-    public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
-        this.listaNfe = listaNfe;
-    }
-
-    public DadosGeraoLote listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
-        this.listaNfe = listaNfe;
-        return this;
-    }
-
-    public DadosGeraoLote addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
-        this.listaNfe.add(listaNfeItem);
         return this;
     }
 
@@ -841,7 +906,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de Volumes Manifestados
-     *
      * @return listaVolumesManifesto
      **/
     @JsonProperty("listaVolumesManifesto")
@@ -904,20 +968,20 @@ public class DadosGeraoLote {
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
-    public List<DadosDoChassi> getListaChassi() {
+    public List<DadosDoChassiEmbarque> getListaChassi() {
         return listaChassi;
     }
 
-    public void setListaChassi(List<DadosDoChassi> listaChassi) {
+    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
     }
 
-    public DadosGeraoLote listaChassi(List<DadosDoChassi> listaChassi) {
+    public DadosGeraoLote listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
         return this;
     }
 
-    public DadosGeraoLote addListaChassiItem(DadosDoChassi listaChassiItem) {
+    public DadosGeraoLote addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
         this.listaChassi.add(listaChassiItem);
         return this;
     }
@@ -1031,7 +1095,7 @@ public class DadosGeraoLote {
     }
 
     /**
-     * Placa semirreboque/vagão&lt;br/&gt;Tamanho: 50Placa semirreboque/vagão.
+     * Placa semirreboque/vagão.&lt;br/&gt;Tamanho: 50
      * @return placaSemirreboque
      **/
     @JsonProperty("placaSemirreboque")
@@ -1050,7 +1114,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de códigos da mercadoria perigosa.
-     *
      * @return listaMercadoriaPerigosa
      **/
     @JsonProperty("listaMercadoriaPerigosa")
@@ -1105,6 +1168,26 @@ public class DadosGeraoLote {
 
     public DadosGeraoLote cargaSolta(Boolean cargaSolta) {
         this.cargaSolta = cargaSolta;
+        return this;
+    }
+
+    /**
+     * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
+     *
+     * @return areaCargaSolta
+     **/
+    @JsonProperty("areaCargaSolta")
+    @NotNull
+    public String getAreaCargaSolta() {
+        return areaCargaSolta;
+    }
+
+    public void setAreaCargaSolta(String areaCargaSolta) {
+        this.areaCargaSolta = areaCargaSolta;
+    }
+
+    public DadosGeraoLote areaCargaSolta(String areaCargaSolta) {
+        this.areaCargaSolta = areaCargaSolta;
         return this;
     }
 
@@ -1208,14 +1291,16 @@ public class DadosGeraoLote {
                 "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
                 "    contingencia: " + toIndentedString(contingencia) + "\n" +
                 "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
+                "    declaracaoAduaneira: " + toIndentedString(declaracaoAduaneira) + "\n" +
+                "    listaDeclaracaoAduaneira: " + toIndentedString(listaDeclaracaoAduaneira) + "\n" +
                 "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
                 "    tipoManifesto: " + toIndentedString(tipoManifesto) + "\n" +
                 "    numeroConhecimentoMAWB: " + toIndentedString(numeroConhecimentoMAWB) + "\n" +
                 "    numeroConhecimento: " + toIndentedString(numeroConhecimento) + "\n" +
                 "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
                 "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
-                "    declaracaoAduaneira: " + toIndentedString(declaracaoAduaneira) + "\n" +
-                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
                 "    listaMalas: " + toIndentedString(listaMalas) + "\n" +
                 "    cnpjResponsavelAnterior: " + toIndentedString(cnpjResponsavelAnterior) + "\n" +
                 "    codigoRecintoOrigem: " + toIndentedString(codigoRecintoOrigem) + "\n" +
@@ -1234,6 +1319,7 @@ public class DadosGeraoLote {
                 "    listaMercadoriaPerigosa: " + toIndentedString(listaMercadoriaPerigosa) + "\n" +
                 "    perecivel: " + toIndentedString(perecivel) + "\n" +
                 "    cargaSolta: " + toIndentedString(cargaSolta) + "\n" +
+                "    areaCargaSolta: " + toIndentedString(areaCargaSolta) + "\n" +
                 "    indicadorDeRemessaInternacional: " + toIndentedString(indicadorDeRemessaInternacional) + "\n" +
                 "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
                 "    observacaoRecepcao: " + toIndentedString(observacaoRecepcao) + "\n" +

@@ -393,6 +393,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Código WCO ID&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 10
+     *
      * @return wcoid
      **/
     @JsonProperty("wcoid")
@@ -453,6 +454,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Tamanho máximo&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 10
+     *
      * @return tamanhoMaximo
      **/
     @JsonProperty("tamanhoMaximo")
@@ -471,6 +473,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Máscara&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 50
+     *
      * @return mascara
      **/
     @JsonProperty("mascara")
@@ -489,6 +492,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Casas Decimais&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 10
+     *
      * @return casasDecimais
      **/
     @JsonProperty("casasDecimais")
@@ -507,6 +511,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Modalidade de operação.&lt;br&gt;Tamanho máximo: 20&lt;br&gt;Domínio:&lt;br&gt;Exportação&lt;br&gt;Importação
+     *
      * @return modalidade
      **/
     @JsonProperty("modalidade")
@@ -526,6 +531,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Preenchimento obrigatório.&lt;br&gt;Domínio:&lt;br&gt;true&lt;br&gt;false
+     *
      * @return obrigatorio
      **/
     @JsonProperty("obrigatorio")
@@ -565,6 +571,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Data de fim de vigência&lt;br&gt;Formato: yyyy-MM-dd
+     *
      * @return dataFimVigencia
      **/
     @JsonProperty("dataFimVigencia")
@@ -583,6 +590,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Informação adicional de preenchimento para o vínculo&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 1000
+     *
      * @return informacaoAdicional
      **/
     @JsonProperty("informacaoAdicional")
@@ -601,6 +609,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Lista de domínio do atributo
+     *
      * @return dominio
      **/
     @JsonProperty("dominio")
@@ -624,6 +633,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Get atributoFiltro
+     *
      * @return atributoFiltro
      **/
     @JsonProperty("atributoFiltro")
@@ -642,6 +652,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Lista de objetivos do atributo
+     *
      * @return objetivos
      **/
     @JsonProperty("objetivos")
@@ -665,6 +676,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Lista de códigos dos órgãos vinculados ao Atributo e NCM&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
+     *
      * @return orgaos
      **/
     @JsonProperty("orgaos")
@@ -708,6 +720,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Lista de atributos condicionados
+     *
      * @return condicionados
      **/
     @JsonProperty("condicionados")
@@ -731,6 +744,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Lista de subatributos
+     *
      * @return listaSubatributos
      **/
     @JsonProperty("listaSubatributos")
@@ -754,6 +768,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Campo multivalorado.&lt;br&gt;Domínio:&lt;br&gt;true&lt;br&gt;false
+     *
      * @return multivalorado
      **/
     @JsonProperty("multivalorado")

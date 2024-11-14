@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ResultadoAnaliseRiscoRfbCover {
 
     @XmlElement(name = "orgao")
-    @ApiModelProperty(example = "Receita", value = "Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    @ApiModelProperty(example = "RECEITA", value = "Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
      * Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/

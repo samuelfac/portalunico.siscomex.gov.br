@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -13,14 +14,14 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LocalSaida", propOrder =
-        {"codigoURF", "codigoRA"
+        {"codigoURF", "codigoRA", "cnpjResponsavel", "coordenadas"
         })
 
 @XmlRootElement(name = "LocalSaida")
 /**
- * Dados do Local de Saída
+ * Local de saída
  **/
-@ApiModel(description = "Dados do Local de Saída")
+@ApiModel(description = "Local de saída")
 public class LocalSaida {
 
     @XmlElement(name = "codigoURF", required = true)
@@ -36,6 +37,18 @@ public class LocalSaida {
      * Código do Recinto Aduaneiro<br>Tamanho: 7<br>Formato: NNNNNNN
      **/
     private String codigoRA = null;
+
+    @XmlElement(name = "cnpjResponsavel", required = true)
+    @ApiModelProperty(example = "15573459000106", required = true, value = "CNPJ do responsável pelo local<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ do responsável pelo local<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResponsavel = null;
+
+    @XmlElement(name = "coordenadas", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Coordenadas coordenadas = null;
 
     /**
      * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
@@ -77,6 +90,46 @@ public class LocalSaida {
         return this;
     }
 
+    /**
+     * CNPJ do responsável pelo local&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return cnpjResponsavel
+     **/
+    @JsonProperty("cnpjResponsavel")
+    @NotNull
+    public String getCnpjResponsavel() {
+        return cnpjResponsavel;
+    }
+
+    public void setCnpjResponsavel(String cnpjResponsavel) {
+        this.cnpjResponsavel = cnpjResponsavel;
+    }
+
+    public LocalSaida cnpjResponsavel(String cnpjResponsavel) {
+        this.cnpjResponsavel = cnpjResponsavel;
+        return this;
+    }
+
+    /**
+     * Get coordenadas
+     *
+     * @return coordenadas
+     **/
+    @JsonProperty("coordenadas")
+    @NotNull
+    public Coordenadas getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
+    }
+
+    public LocalSaida coordenadas(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -84,6 +137,8 @@ public class LocalSaida {
         String sb = "class LocalSaida {\n" +
                 "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
                 "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
+                "    cnpjResponsavel: " + toIndentedString(cnpjResponsavel) + "\n" +
+                "    coordenadas: " + toIndentedString(coordenadas) + "\n" +
                 "}";
         return sb;
     }

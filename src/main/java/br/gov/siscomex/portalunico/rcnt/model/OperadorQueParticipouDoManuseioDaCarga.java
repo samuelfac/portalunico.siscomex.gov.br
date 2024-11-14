@@ -26,16 +26,16 @@ public class OperadorQueParticipouDoManuseioDaCarga {
     private String idElemento = null;
 
     @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "55555555555", value = "Informar o CPF do operador que manuseou a carga<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    @ApiModelProperty(example = "55555555555", value = "Informar o CPF do operador que manuseou a carga<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
-     * Informar o CPF do operador que manuseou a carga<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * Informar o CPF do operador que manuseou a carga<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
 
     @XmlElement(name = "nome")
-    @ApiModelProperty(value = "Informar o nome do operador que manuseou a carga<br/>Tamanho: 100")
+    @ApiModelProperty(value = "Informar o nome do operador que manuseou a carga<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 100")
     /**
-     * Informar o nome do operador que manuseou a carga<br/>Tamanho: 100
+     * Informar o nome do operador que manuseou a carga<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 100
      **/
     private String nome = null;
 
@@ -60,7 +60,7 @@ public class OperadorQueParticipouDoManuseioDaCarga {
     }
 
     /**
-     * Informar o CPF do operador que manuseou a carga&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * Informar o CPF do operador que manuseou a carga&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpf
      **/
@@ -79,7 +79,7 @@ public class OperadorQueParticipouDoManuseioDaCarga {
     }
 
     /**
-     * Informar o nome do operador que manuseou a carga&lt;br/&gt;Tamanho: 100
+     * Informar o nome do operador que manuseou a carga&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Tamanho: 100
      *
      * @return nome
      **/

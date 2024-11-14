@@ -1,6 +1,7 @@
 package br.gov.siscomex.portalunico.rcnt.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -15,24 +16,28 @@ import javax.xml.bind.annotation.XmlType;
         })
 
 @XmlRootElement(name = "DeclaraoAduaneira")
+/**
+ * (campo será descontinuado em próxima release)
+ **/
+@ApiModel(description = "(campo será descontinuado em próxima release)")
 public class DeclaraoAduaneira {
 
     @XmlElement(name = "numeroDeclaracao")
-    @ApiModelProperty(value = "Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100")
+    @ApiModelProperty(value = "(campo será descontinuado em próxima release)<br/>Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100")
     /**
-     * Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100
+     * (campo será descontinuado em próxima release)<br/>Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100
      **/
     private String numeroDeclaracao = null;
 
     @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "DUIMP", value = "Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    @ApiModelProperty(example = "DUIMP", value = "(campo será descontinuado em próxima release)<br/>Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
-     * Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     * (campo será descontinuado em próxima release)<br/>Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
     private String tipo = null;
 
     /**
-     * Número da declaração aduaneira.&lt;br/&gt; O tamanho permitido para &#39;numeroDeclaracao&#39; será conforme o valor de &#39;tipo&#39; da declaração:   &#39;DI&#39;: 10 (somente números) &#39;DTA&#39;: 10 &#39;DUE&#39;: 14 &#39;DAT&#39;: 11 &#39;DUIMP&#39;: 15 Outros: até 100
+     * (campo será descontinuado em próxima release)&lt;br/&gt;Número da declaração aduaneira.&lt;br/&gt; O tamanho permitido para &#39;numeroDeclaracao&#39; será conforme o valor de &#39;tipo&#39; da declaração:   &#39;DI&#39;: 10 (somente números) &#39;DTA&#39;: 10 &#39;DUE&#39;: 14 &#39;DAT&#39;: 11 &#39;DUIMP&#39;: 15 Outros: até 100
      *
      * @return numeroDeclaracao
      **/
@@ -51,7 +56,7 @@ public class DeclaraoAduaneira {
     }
 
     /**
-     * Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
+     * (campo será descontinuado em próxima release)&lt;br/&gt;Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
      *
      * @return tipo
      **/

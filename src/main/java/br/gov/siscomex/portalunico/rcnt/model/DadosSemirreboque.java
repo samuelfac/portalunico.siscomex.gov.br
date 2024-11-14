@@ -43,16 +43,16 @@ public class DadosSemirreboque {
     private String idElemento = null;
 
     @XmlElement(name = "ocrPlaca")
-    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). <br/>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). <br/>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean ocrPlaca = null;
 
     @XmlElement(name = "vazio")
-    @ApiModelProperty(example = "false", value = "Veículo vazio. <br/>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Veículo vazio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Veículo vazio. <br/>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Veículo vazio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean vazio = null;
 
@@ -173,7 +173,7 @@ public class DadosSemirreboque {
     }
 
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition). &lt;br/&gt;É obrigatório informar os atributos &#39;ocrPlaca&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;ocrPlaca&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return ocrPlaca
      **/
@@ -192,7 +192,7 @@ public class DadosSemirreboque {
     }
 
     /**
-     * Veículo vazio. &lt;br/&gt;É obrigatório informar os atributos &#39;ocrPlaca&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Veículo vazio.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;ocrPlaca&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return vazio
      **/

@@ -129,9 +129,9 @@ public class DadosAcessoPessoa {
     private String codigoRecinto = null;
 
     @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que está acessando o recinto (entrada ou saída). <br/>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que está acessando o recinto (entrada ou saída).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
-     * CPF da pessoa que está acessando o recinto (entrada ou saída). <br/>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * CPF da pessoa que está acessando o recinto (entrada ou saída).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
 
@@ -236,9 +236,9 @@ public class DadosAcessoPessoa {
     private IdentificacaoEnum identificacao = null;
 
     @XmlElement(name = "identidadeEstrangeiro")
-    @ApiModelProperty(example = "FB000001", value = "Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. <br/>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50")
+    @ApiModelProperty(example = "FB000001", value = "Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50")
     /**
-     * Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. <br/>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50
+     * Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50
      **/
     private String identidadeEstrangeiro = null;
 
@@ -458,7 +458,7 @@ public class DadosAcessoPessoa {
     }
 
     /**
-     * CPF da pessoa que está acessando o recinto (entrada ou saída). &lt;br/&gt;É obrigatório informar o atributo &#39;cpf&#39; quando o atributo &#39;identidadeEstrangeiro&#39; não for informado.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * CPF da pessoa que está acessando o recinto (entrada ou saída).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;cpf&#39; quando o atributo &#39;identidadeEstrangeiro&#39; não for informado.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      * @return cpf
      **/
     @JsonProperty("cpf")
@@ -522,7 +522,7 @@ public class DadosAcessoPessoa {
     }
 
     /**
-     * Número do documento de estrangeiro. &lt;br/&gt; Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível. &lt;br/&gt;É obrigatório informar o atributo &#39;identidadeEstrangeiro&#39; quando o atributo &#39;cpf&#39; não for informado.&lt;br/&gt;Tamanho: 50
+     * Número do documento de estrangeiro. &lt;br/&gt; Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;identidadeEstrangeiro&#39; quando o atributo &#39;cpf&#39; não for informado.&lt;br/&gt;Tamanho: 50
      * @return identidadeEstrangeiro
      **/
     @JsonProperty("identidadeEstrangeiro")

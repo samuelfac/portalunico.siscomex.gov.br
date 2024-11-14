@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCarregamentoEntregaLotes", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaNfe", "listaNumeroLote", "indicadorPerdimento", "identificacaoDocumentoPerdimento", "quantidadeVolumesLote", "placaSemirreboque", "numeroConteiner", "identificacaoUld", "entregaParaCompanhiaAerea", "cnpjCompanhiaAerea", "nomeCompanhiaAerea", "iataAeronave", "prefixoAeronave", "viagem", "voo", "escala", "entregaParaPessoaFisica", "cpfRecepcao", "documentoEstrangeiro", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaNfe", "areaCargaSolta", "listaNumeroLote", "indicadorPerdimento", "identificacaoDocumentoPerdimento", "quantidadeVolumesLote", "placaSemirreboque", "numeroConteiner", "identificacaoUld", "entregaParaCompanhiaAerea", "cnpjCompanhiaAerea", "nomeCompanhiaAerea", "iataAeronave", "prefixoAeronave", "viagem", "voo", "escala", "entregaParaPessoaFisica", "cpfRecepcao", "documentoEstrangeiro", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosCarregamentoEntregaLotes")
@@ -225,6 +225,13 @@ public class DadosCarregamentoEntregaLotes {
      **/
     private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
 
+    @XmlElement(name = "areaCargaSolta", required = true)
+    @ApiModelProperty(required = true, value = "Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento. <br/>Tamanho: 36")
+    /**
+     * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento. <br/>Tamanho: 36
+     **/
+    private String areaCargaSolta = null;
+
     @XmlElement(name = "listaNumeroLote", required = true)
     @ApiModelProperty(required = true, value = "Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. Pode ser nulo quando o evento for de exclusão.")
     @Valid
@@ -247,8 +254,8 @@ public class DadosCarregamentoEntregaLotes {
      **/
     private String identificacaoDocumentoPerdimento = null;
 
-    @XmlElement(name = "quantidadeVolumesLote")
-    @ApiModelProperty(example = "15.5", value = "Quantidade de volumes carregados em unidade de carga ou entregues")
+    @XmlElement(name = "quantidadeVolumesLote", required = true)
+    @ApiModelProperty(example = "15.5", required = true, value = "Quantidade de volumes carregados em unidade de carga ou entregues")
     @Valid
     /**
      * Quantidade de volumes carregados em unidade de carga ou entregues
@@ -675,8 +682,27 @@ public class DadosCarregamentoEntregaLotes {
     }
 
     /**
-     * Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. Pode ser nulo quando o evento for de exclusão.
+     * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento. &lt;br/&gt;Tamanho: 36
      *
+     * @return areaCargaSolta
+     **/
+    @JsonProperty("areaCargaSolta")
+    @NotNull
+    public String getAreaCargaSolta() {
+        return areaCargaSolta;
+    }
+
+    public void setAreaCargaSolta(String areaCargaSolta) {
+        this.areaCargaSolta = areaCargaSolta;
+    }
+
+    public DadosCarregamentoEntregaLotes areaCargaSolta(String areaCargaSolta) {
+        this.areaCargaSolta = areaCargaSolta;
+        return this;
+    }
+
+    /**
+     * Lista com os números dos lotes carregados e/ou entregues. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES. Pode ser nulo quando o evento for de exclusão.
      * @return listaNumeroLote
      **/
     @JsonProperty("listaNumeroLote")
@@ -741,6 +767,7 @@ public class DadosCarregamentoEntregaLotes {
      * @return quantidadeVolumesLote
      **/
     @JsonProperty("quantidadeVolumesLote")
+    @NotNull
     public BigDecimal getQuantidadeVolumesLote() {
         return quantidadeVolumesLote;
     }
@@ -1050,6 +1077,7 @@ public class DadosCarregamentoEntregaLotes {
                 "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
                 "    declaracaoAduaneira: " + toIndentedString(declaracaoAduaneira) + "\n" +
                 "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
+                "    areaCargaSolta: " + toIndentedString(areaCargaSolta) + "\n" +
                 "    listaNumeroLote: " + toIndentedString(listaNumeroLote) + "\n" +
                 "    indicadorPerdimento: " + toIndentedString(indicadorPerdimento) + "\n" +
                 "    identificacaoDocumentoPerdimento: " + toIndentedString(identificacaoDocumentoPerdimento) + "\n" +

@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 public class ExportadorCover {
 
     @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "CN001", required = true, value = "Código do exportador estrangeiro (TIN).<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
+    @ApiModelProperty(example = "CN001", required = true, value = "Código do exportador estrangeiro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
     /**
-     * Código do exportador estrangeiro (TIN).<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
+     * Código do exportador estrangeiro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
      **/
     private String codigo = null;
 
@@ -51,7 +51,7 @@ public class ExportadorCover {
     private PaisExportadorCover pais = null;
 
     /**
-     * Código do exportador estrangeiro (TIN).&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
+     * Código do exportador estrangeiro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
      *
      * @return codigo
      **/

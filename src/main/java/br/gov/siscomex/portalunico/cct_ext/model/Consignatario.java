@@ -4,153 +4,166 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Consignatario", propOrder =
-        {"indConsignadoAOrdem", "pais", "nome", "endereco", "idEstrangeiro"
+        {"consignadoAOrdem", "nomeConsignatario", "enderecoConsignatario", "paisDestino", "dadosCarga"
         })
 
 @XmlRootElement(name = "Consignatario")
 /**
- * Dados do consignatário
+ * Informações do Consignatário
  **/
-@ApiModel(description = "Dados do consignatário")
+@ApiModel(description = "Informações do Consignatário")
 public class Consignatario {
 
-    @XmlElement(name = "indConsignadoAOrdem", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Indicador To Order<br>Domínio: 1 (prepaid), 2 (collect).")
+    @XmlElement(name = "consignadoAOrdem", required = true)
+    @ApiModelProperty(example = "N", required = true, value = "Indicador de consignação à ordem<br>Domínio: Domínio: S (Sim), N(Não).")
     /**
-     * Indicador To Order<br>Domínio: 1 (prepaid), 2 (collect).
+     * Indicador de consignação à ordem<br>Domínio: Domínio: S (Sim), N(Não).
      **/
-    private String indConsignadoAOrdem = null;
+    private String consignadoAOrdem = null;
 
-    @XmlElement(name = "pais")
-    @ApiModelProperty(example = "AR", value = "Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
+    @XmlElement(name = "nomeConsignatario", required = true)
+    @ApiModelProperty(example = "Nome do Consignatário", required = true, value = "Nome do consignatário<br>Informado e obrigatório apenas se indicador de consignação à ordem igual a Não.")
     /**
-     * Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
+     * Nome do consignatário<br>Informado e obrigatório apenas se indicador de consignação à ordem igual a Não.
      **/
-    private String pais = null;
+    private String nomeConsignatario = null;
 
-    @XmlElement(name = "nome")
-    @ApiModelProperty(example = "Nome do consignatário", value = "Nome do consignatário<br>Tamanho: 60<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    @XmlElement(name = "enderecoConsignatario", required = true)
+    @ApiModelProperty(example = "Endereço do consignatário", required = true, value = "Endereço do consignatário<br>Informado e obrigatório apenas se indicador de consignação à ordem igual a Não.")
     /**
-     * Nome do consignatário<br>Tamanho: 60<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Endereço do consignatário<br>Informado e obrigatório apenas se indicador de consignação à ordem igual a Não.
      **/
-    private String nome = null;
+    private String enderecoConsignatario = null;
 
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(example = "Endereço do consignatário", value = "Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    @XmlElement(name = "paisDestino", required = true)
+    @ApiModelProperty(example = "US", required = true, value = "Código do país de destino da carga<br>Domínio: Tabela de Países - código ISO/ALFA2.")
     /**
-     * Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Código do país de destino da carga<br>Domínio: Tabela de Países - código ISO/ALFA2.
      **/
-    private String endereco = null;
+    private String paisDestino = null;
 
-    @XmlElement(name = "idEstrangeiro")
-    @ApiModelProperty(example = "ABCD123456789", value = "Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    @XmlElement(name = "dadosCarga", required = true)
+    @ApiModelProperty(required = true, value = "Dados das cargas Manifestadas")
+    @Valid
     /**
-     * Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Dados das cargas Manifestadas
      **/
-    private String idEstrangeiro = null;
+    private List<DadosCarga> dadosCarga = new ArrayList<>();
 
     /**
-     * Indicador To Order&lt;br&gt;Domínio: 1 (prepaid), 2 (collect).
+     * Indicador de consignação à ordem&lt;br&gt;Domínio: Domínio: S (Sim), N(Não).
      *
-     * @return indConsignadoAOrdem
+     * @return consignadoAOrdem
      **/
-    @JsonProperty("indConsignadoAOrdem")
+    @JsonProperty("consignadoAOrdem")
     @NotNull
-    public String getIndConsignadoAOrdem() {
-        return indConsignadoAOrdem;
+    public String getConsignadoAOrdem() {
+        return consignadoAOrdem;
     }
 
-    public void setIndConsignadoAOrdem(String indConsignadoAOrdem) {
-        this.indConsignadoAOrdem = indConsignadoAOrdem;
+    public void setConsignadoAOrdem(String consignadoAOrdem) {
+        this.consignadoAOrdem = consignadoAOrdem;
     }
 
-    public Consignatario indConsignadoAOrdem(String indConsignadoAOrdem) {
-        this.indConsignadoAOrdem = indConsignadoAOrdem;
+    public Consignatario consignadoAOrdem(String consignadoAOrdem) {
+        this.consignadoAOrdem = consignadoAOrdem;
         return this;
     }
 
     /**
-     * Sigla do país de origem do consignatário&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
+     * Nome do consignatário&lt;br&gt;Informado e obrigatório apenas se indicador de consignação à ordem igual a Não.
      *
-     * @return pais
+     * @return nomeConsignatario
      **/
-    @JsonProperty("pais")
-    public String getPais() {
-        return pais;
+    @JsonProperty("nomeConsignatario")
+    @NotNull
+    public String getNomeConsignatario() {
+        return nomeConsignatario;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public void setNomeConsignatario(String nomeConsignatario) {
+        this.nomeConsignatario = nomeConsignatario;
     }
 
-    public Consignatario pais(String pais) {
-        this.pais = pais;
+    public Consignatario nomeConsignatario(String nomeConsignatario) {
+        this.nomeConsignatario = nomeConsignatario;
         return this;
     }
 
     /**
-     * Nome do consignatário&lt;br&gt;Tamanho: 60&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Endereço do consignatário&lt;br&gt;Informado e obrigatório apenas se indicador de consignação à ordem igual a Não.
      *
-     * @return nome
+     * @return enderecoConsignatario
      **/
-    @JsonProperty("nome")
-    public String getNome() {
-        return nome;
+    @JsonProperty("enderecoConsignatario")
+    @NotNull
+    public String getEnderecoConsignatario() {
+        return enderecoConsignatario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEnderecoConsignatario(String enderecoConsignatario) {
+        this.enderecoConsignatario = enderecoConsignatario;
     }
 
-    public Consignatario nome(String nome) {
-        this.nome = nome;
+    public Consignatario enderecoConsignatario(String enderecoConsignatario) {
+        this.enderecoConsignatario = enderecoConsignatario;
         return this;
     }
 
     /**
-     * Endereço do consignatário&lt;br&gt;Tamanho: 260&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Código do país de destino da carga&lt;br&gt;Domínio: Tabela de Países - código ISO/ALFA2.
      *
-     * @return endereco
+     * @return paisDestino
      **/
-    @JsonProperty("endereco")
-    public String getEndereco() {
-        return endereco;
+    @JsonProperty("paisDestino")
+    @NotNull
+    public String getPaisDestino() {
+        return paisDestino;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setPaisDestino(String paisDestino) {
+        this.paisDestino = paisDestino;
     }
 
-    public Consignatario endereco(String endereco) {
-        this.endereco = endereco;
+    public Consignatario paisDestino(String paisDestino) {
+        this.paisDestino = paisDestino;
         return this;
     }
 
     /**
-     * Identificação fiscal do consignatário estrangeiro&lt;br&gt;Tamanho: 14&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Dados das cargas Manifestadas
      *
-     * @return idEstrangeiro
+     * @return dadosCarga
      **/
-    @JsonProperty("idEstrangeiro")
-    public String getIdEstrangeiro() {
-        return idEstrangeiro;
+    @JsonProperty("dadosCarga")
+    @NotNull
+    public List<DadosCarga> getDadosCarga() {
+        return dadosCarga;
     }
 
-    public void setIdEstrangeiro(String idEstrangeiro) {
-        this.idEstrangeiro = idEstrangeiro;
+    public void setDadosCarga(List<DadosCarga> dadosCarga) {
+        this.dadosCarga = dadosCarga;
     }
 
-    public Consignatario idEstrangeiro(String idEstrangeiro) {
-        this.idEstrangeiro = idEstrangeiro;
+    public Consignatario dadosCarga(List<DadosCarga> dadosCarga) {
+        this.dadosCarga = dadosCarga;
+        return this;
+    }
+
+    public Consignatario addDadosCargaItem(DadosCarga dadosCargaItem) {
+        this.dadosCarga.add(dadosCargaItem);
         return this;
     }
 
@@ -159,11 +172,11 @@ public class Consignatario {
     public String toString() {
 
         String sb = "class Consignatario {\n" +
-                "    indConsignadoAOrdem: " + toIndentedString(indConsignadoAOrdem) + "\n" +
-                "    pais: " + toIndentedString(pais) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    idEstrangeiro: " + toIndentedString(idEstrangeiro) + "\n" +
+                "    consignadoAOrdem: " + toIndentedString(consignadoAOrdem) + "\n" +
+                "    nomeConsignatario: " + toIndentedString(nomeConsignatario) + "\n" +
+                "    enderecoConsignatario: " + toIndentedString(enderecoConsignatario) + "\n" +
+                "    paisDestino: " + toIndentedString(paisDestino) + "\n" +
+                "    dadosCarga: " + toIndentedString(dadosCarga) + "\n" +
                 "}";
         return sb;
     }

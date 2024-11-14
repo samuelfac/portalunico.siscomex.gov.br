@@ -26,30 +26,30 @@ public class DadosDaCoordenadaDeAlerta {
     private String idElemento = null;
 
     @XmlElement(name = "x")
-    @ApiModelProperty(example = "12", value = "Coordenada para marcar o alerta na posição X")
+    @ApiModelProperty(example = "12", value = "Coordenada para marcar o alerta na posição X (largura)")
     /**
-     * Coordenada para marcar o alerta na posição X
+     * Coordenada para marcar o alerta na posição X (largura)
      **/
     private Integer x = null;
 
     @XmlElement(name = "y")
-    @ApiModelProperty(example = "7", value = "Coordenada para marcar o alerta na posição Y")
+    @ApiModelProperty(example = "7", value = "Coordenada para marcar o alerta na posição Y (altura)")
     /**
-     * Coordenada para marcar o alerta na posição Y
+     * Coordenada para marcar o alerta na posição Y (altura)
      **/
     private Integer y = null;
 
     @XmlElement(name = "x2")
-    @ApiModelProperty(example = "0", value = "Coordenada para marcar o alerta na posição X2")
+    @ApiModelProperty(example = "0", value = "Coordenada para marcar o alerta na posição X2 (largura)")
     /**
-     * Coordenada para marcar o alerta na posição X2
+     * Coordenada para marcar o alerta na posição X2 (largura)
      **/
     private Integer x2 = null;
 
     @XmlElement(name = "y2")
-    @ApiModelProperty(example = "8", value = "Coordenada para marcar o alerta na posição Y2")
+    @ApiModelProperty(example = "8", value = "Coordenada para marcar o alerta na posição Y2 (altura)")
     /**
-     * Coordenada para marcar o alerta na posição Y2
+     * Coordenada para marcar o alerta na posição Y2 (altura)
      **/
     private Integer y2 = null;
 
@@ -74,7 +74,7 @@ public class DadosDaCoordenadaDeAlerta {
     }
 
     /**
-     * Coordenada para marcar o alerta na posição X
+     * Coordenada para marcar o alerta na posição X (largura)
      *
      * @return x
      **/
@@ -93,7 +93,7 @@ public class DadosDaCoordenadaDeAlerta {
     }
 
     /**
-     * Coordenada para marcar o alerta na posição Y
+     * Coordenada para marcar o alerta na posição Y (altura)
      *
      * @return y
      **/
@@ -112,7 +112,7 @@ public class DadosDaCoordenadaDeAlerta {
     }
 
     /**
-     * Coordenada para marcar o alerta na posição X2
+     * Coordenada para marcar o alerta na posição X2 (largura)
      *
      * @return x2
      **/
@@ -131,7 +131,7 @@ public class DadosDaCoordenadaDeAlerta {
     }
 
     /**
-     * Coordenada para marcar o alerta na posição Y2
+     * Coordenada para marcar o alerta na posição Y2 (altura)
      *
      * @return y2
      **/

@@ -12,23 +12,30 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosMotorista", propOrder =
-        {"cpf", "nome", "protocoloCredenciamento"
+        {"cpf", "identidadeEstrangeiro", "nome", "protocoloCredenciamento"
         })
 
 @XmlRootElement(name = "DadosMotorista")
 public class DadosMotorista {
 
     @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "55555555555", value = "CPF do motorista.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    @ApiModelProperty(example = "55555555555", value = "CPF do motorista.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'motorista.cpf', 'motorista.identidadeEstrangeiro', quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
-     * CPF do motorista.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * CPF do motorista.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'motorista.cpf', 'motorista.identidadeEstrangeiro', quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
 
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(required = true, value = "Nome do motorista. Obrigatório em eventos \"operacao=C (Acesso)\". Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
+    @XmlElement(name = "identidadeEstrangeiro")
+    @ApiModelProperty(value = "Número do documento de estrangeiro. Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'motorista.cpf', 'motorista.identidadeEstrangeiro', quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 50")
     /**
-     * Nome do motorista. Obrigatório em eventos \"operacao=C (Acesso)\". Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
+     * Número do documento de estrangeiro. Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'motorista.cpf', 'motorista.identidadeEstrangeiro', quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 50
+     **/
+    private String identidadeEstrangeiro = null;
+
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(required = true, value = "Nome do motorista.<font color=\"red\"><strong><br/>(!)</strong></font>Obrigatório em eventos \"operacao=C (Acesso)\". Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
+    /**
+     * Nome do motorista.<font color=\"red\"><strong><br/>(!)</strong></font>Obrigatório em eventos \"operacao=C (Acesso)\". Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
      **/
     private String nome = null;
 
@@ -40,7 +47,7 @@ public class DadosMotorista {
     private String protocoloCredenciamento = null;
 
     /**
-     * CPF do motorista.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * CPF do motorista.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;motorista.cpf&#39;, &#39;motorista.identidadeEstrangeiro&#39;, quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpf
      **/
@@ -59,7 +66,26 @@ public class DadosMotorista {
     }
 
     /**
-     * Nome do motorista. Obrigatório em eventos \&quot;operacao&#x3D;C (Acesso)\&quot;. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     * Número do documento de estrangeiro. Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;motorista.cpf&#39;, &#39;motorista.identidadeEstrangeiro&#39;, quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 50
+     *
+     * @return identidadeEstrangeiro
+     **/
+    @JsonProperty("identidadeEstrangeiro")
+    public String getIdentidadeEstrangeiro() {
+        return identidadeEstrangeiro;
+    }
+
+    public void setIdentidadeEstrangeiro(String identidadeEstrangeiro) {
+        this.identidadeEstrangeiro = identidadeEstrangeiro;
+    }
+
+    public DadosMotorista identidadeEstrangeiro(String identidadeEstrangeiro) {
+        this.identidadeEstrangeiro = identidadeEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Nome do motorista.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;Obrigatório em eventos \&quot;operacao&#x3D;C (Acesso)\&quot;. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
      *
      * @return nome
      **/
@@ -103,6 +129,7 @@ public class DadosMotorista {
 
         String sb = "class DadosMotorista {\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
+                "    identidadeEstrangeiro: " + toIndentedString(identidadeEstrangeiro) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    protocoloCredenciamento: " + toIndentedString(protocoloCredenciamento) + "\n" +
                 "}";

@@ -122,9 +122,9 @@ public class SefazExportadorEstrangeiroCover {
     private VinculacaoCompradorVendedorEnum vinculacaoCompradorVendedor = null;
 
     @XmlElement(name = "codigoOperadorExportador")
-    @ApiModelProperty(example = "CN001", value = "Código do exportador estrangeiro (TIN)<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
+    @ApiModelProperty(example = "CN001", value = "Código do exportador estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
     /**
-     * Código do exportador estrangeiro (TIN)<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
+     * Código do exportador estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
      **/
     private String codigoOperadorExportador = null;
 
@@ -178,7 +178,7 @@ public class SefazExportadorEstrangeiroCover {
     }
 
     /**
-     * Código do exportador estrangeiro (TIN)&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
+     * Código do exportador estrangeiro&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
      *
      * @return codigoOperadorExportador
      **/

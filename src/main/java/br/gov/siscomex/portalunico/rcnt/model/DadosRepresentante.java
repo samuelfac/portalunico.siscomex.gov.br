@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosRepresentante", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "cpfRepresentante", "cnpjRepresentante", "documentoEstrangeiroRepresentante", "nomeRepresentante", "cpfRepresentado", "cnpjRepresentado", "nomeRepresentado", "documentoEstrangeiroRepresentado", "dataHoraInicioValidade", "dataHoraFimValidade", "motivo"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "cpfRepresentante", "cnpjRepresentante", "documentoEstrangeiroRepresentante", "operadorEstrangeiroRepresentante", "nomeRepresentante", "cpfRepresentado", "cnpjRepresentado", "documentoEstrangeiroRepresentado", "operadorEstrangeiroRepresentado", "nomeRepresentado", "dataHoraInicioValidade", "dataHoraFimValidade", "motivo"
         })
 
 @XmlRootElement(name = "DadosRepresentante")
@@ -128,23 +128,30 @@ public class DadosRepresentante {
     private String codigoRecinto = null;
 
     @XmlElement(name = "cpfRepresentante")
-    @ApiModelProperty(example = "55555555555", value = "CPF representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    @ApiModelProperty(example = "55555555555", value = "CPF representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante'.")
     /**
-     * CPF representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * CPF representante<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante'.
      **/
     private String cpfRepresentante = null;
 
     @XmlElement(name = "cnpjRepresentante")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante'.")
     /**
-     * CNPJ representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     * CNPJ representante<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante'.
      **/
     private String cnpjRepresentante = null;
 
     @XmlElement(name = "documentoEstrangeiroRepresentante")
     @ApiModelProperty(value = "")
     @Valid
-    private DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante = null;
+    private DadosDocumentoDeEstrangeiroRepresentante documentoEstrangeiroRepresentante = null;
+
+    @XmlElement(name = "operadorEstrangeiroRepresentante")
+    @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira representante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante'.<br/>Tamanho: 50")
+    /**
+     * Identificação fiscal de empresa estrangeira representante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante'.<br/>Tamanho: 50
+     **/
+    private String operadorEstrangeiroRepresentante = null;
 
     @XmlElement(name = "nomeRepresentante")
     @ApiModelProperty(value = "Nome representante<br/>Tamanho: 100")
@@ -154,18 +161,30 @@ public class DadosRepresentante {
     private String nomeRepresentante = null;
 
     @XmlElement(name = "cpfRepresentado")
-    @ApiModelProperty(example = "55555555555", value = "CPF representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    @ApiModelProperty(example = "55555555555", value = "CPF representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.")
     /**
-     * CPF representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * CPF representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.
      **/
     private String cpfRepresentado = null;
 
     @XmlElement(name = "cnpjRepresentado")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.")
     /**
-     * CNPJ representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     * CNPJ representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.
      **/
     private String cnpjRepresentado = null;
+
+    @XmlElement(name = "documentoEstrangeiroRepresentado")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDocumentoDeEstrangeiroRepresentado documentoEstrangeiroRepresentado = null;
+
+    @XmlElement(name = "operadorEstrangeiroRepresentado")
+    @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira representada<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.<br/>Tamanho: 50")
+    /**
+     * Identificação fiscal de empresa estrangeira representada<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.<br/>Tamanho: 50
+     **/
+    private String operadorEstrangeiroRepresentado = null;
 
     @XmlElement(name = "nomeRepresentado")
     @ApiModelProperty(value = "Nome do representado<br/>Tamanho: 100")
@@ -173,11 +192,6 @@ public class DadosRepresentante {
      * Nome do representado<br/>Tamanho: 100
      **/
     private String nomeRepresentado = null;
-
-    @XmlElement(name = "documentoEstrangeiroRepresentado")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDocumentoEstrangeiro documentoEstrangeiroRepresentado = null;
 
     @XmlElement(name = "dataHoraInicioValidade")
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data Início representação<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -193,8 +207,8 @@ public class DadosRepresentante {
      **/
     private String dataHoraFimValidade = null;
 
-    @XmlElement(name = "motivo")
-    @ApiModelProperty(example = "representação para trâmite de documentos, representação para fechar faturamento com recinto, representação para monitoramento de cargas no portal do recinto...", value = "Motivo da representação<br/>Tamanho: 100")
+    @XmlElement(name = "motivo", required = true)
+    @ApiModelProperty(example = "representação para trâmite de documentos, representação para fechar faturamento com recinto, representação para monitoramento de cargas no portal do recinto...", required = true, value = "Motivo da representação<br/>Tamanho: 100")
     /**
      * Motivo da representação<br/>Tamanho: 100
      **/
@@ -380,7 +394,7 @@ public class DadosRepresentante {
     }
 
     /**
-     * CPF representante&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * CPF representante&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante&#39;.
      * @return cpfRepresentante
      **/
     @JsonProperty("cpfRepresentante")
@@ -398,7 +412,7 @@ public class DadosRepresentante {
     }
 
     /**
-     * CNPJ representante&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     * CNPJ representante&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante&#39;.
      *
      * @return cnpjRepresentante
      **/
@@ -422,16 +436,35 @@ public class DadosRepresentante {
      * @return documentoEstrangeiroRepresentante
      **/
     @JsonProperty("documentoEstrangeiroRepresentante")
-    public DadosDocumentoEstrangeiro getDocumentoEstrangeiroRepresentante() {
+    public DadosDocumentoDeEstrangeiroRepresentante getDocumentoEstrangeiroRepresentante() {
         return documentoEstrangeiroRepresentante;
     }
 
-    public void setDocumentoEstrangeiroRepresentante(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante) {
+    public void setDocumentoEstrangeiroRepresentante(DadosDocumentoDeEstrangeiroRepresentante documentoEstrangeiroRepresentante) {
         this.documentoEstrangeiroRepresentante = documentoEstrangeiroRepresentante;
     }
 
-    public DadosRepresentante documentoEstrangeiroRepresentante(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentante) {
+    public DadosRepresentante documentoEstrangeiroRepresentante(DadosDocumentoDeEstrangeiroRepresentante documentoEstrangeiroRepresentante) {
         this.documentoEstrangeiroRepresentante = documentoEstrangeiroRepresentante;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal de empresa estrangeira representante&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentante OU cnpjRepresentante OU  documentoEstrangeiroRepresentante (número, tipo, país) OU  operadorEstrangeiroRepresentante&#39;.&lt;br/&gt;Tamanho: 50
+     *
+     * @return operadorEstrangeiroRepresentante
+     **/
+    @JsonProperty("operadorEstrangeiroRepresentante")
+    public String getOperadorEstrangeiroRepresentante() {
+        return operadorEstrangeiroRepresentante;
+    }
+
+    public void setOperadorEstrangeiroRepresentante(String operadorEstrangeiroRepresentante) {
+        this.operadorEstrangeiroRepresentante = operadorEstrangeiroRepresentante;
+    }
+
+    public DadosRepresentante operadorEstrangeiroRepresentante(String operadorEstrangeiroRepresentante) {
+        this.operadorEstrangeiroRepresentante = operadorEstrangeiroRepresentante;
         return this;
     }
 
@@ -454,7 +487,7 @@ public class DadosRepresentante {
     }
 
     /**
-     * CPF representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * CPF representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado&#39;.
      * @return cpfRepresentado
      **/
     @JsonProperty("cpfRepresentado")
@@ -472,7 +505,7 @@ public class DadosRepresentante {
     }
 
     /**
-     * CNPJ representado&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     * CNPJ representado&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado&#39;.
      * @return cnpjRepresentado
      **/
     @JsonProperty("cnpjRepresentado")
@@ -486,6 +519,44 @@ public class DadosRepresentante {
 
     public DadosRepresentante cnpjRepresentado(String cnpjRepresentado) {
         this.cnpjRepresentado = cnpjRepresentado;
+        return this;
+    }
+
+    /**
+     * Get documentoEstrangeiroRepresentado
+     *
+     * @return documentoEstrangeiroRepresentado
+     **/
+    @JsonProperty("documentoEstrangeiroRepresentado")
+    public DadosDocumentoDeEstrangeiroRepresentado getDocumentoEstrangeiroRepresentado() {
+        return documentoEstrangeiroRepresentado;
+    }
+
+    public void setDocumentoEstrangeiroRepresentado(DadosDocumentoDeEstrangeiroRepresentado documentoEstrangeiroRepresentado) {
+        this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
+    }
+
+    public DadosRepresentante documentoEstrangeiroRepresentado(DadosDocumentoDeEstrangeiroRepresentado documentoEstrangeiroRepresentado) {
+        this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal de empresa estrangeira representada&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado&#39;.&lt;br/&gt;Tamanho: 50
+     *
+     * @return operadorEstrangeiroRepresentado
+     **/
+    @JsonProperty("operadorEstrangeiroRepresentado")
+    public String getOperadorEstrangeiroRepresentado() {
+        return operadorEstrangeiroRepresentado;
+    }
+
+    public void setOperadorEstrangeiroRepresentado(String operadorEstrangeiroRepresentado) {
+        this.operadorEstrangeiroRepresentado = operadorEstrangeiroRepresentado;
+    }
+
+    public DadosRepresentante operadorEstrangeiroRepresentado(String operadorEstrangeiroRepresentado) {
+        this.operadorEstrangeiroRepresentado = operadorEstrangeiroRepresentado;
         return this;
     }
 
@@ -504,25 +575,6 @@ public class DadosRepresentante {
 
     public DadosRepresentante nomeRepresentado(String nomeRepresentado) {
         this.nomeRepresentado = nomeRepresentado;
-        return this;
-    }
-
-    /**
-     * Get documentoEstrangeiroRepresentado
-     *
-     * @return documentoEstrangeiroRepresentado
-     **/
-    @JsonProperty("documentoEstrangeiroRepresentado")
-    public DadosDocumentoEstrangeiro getDocumentoEstrangeiroRepresentado() {
-        return documentoEstrangeiroRepresentado;
-    }
-
-    public void setDocumentoEstrangeiroRepresentado(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentado) {
-        this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
-    }
-
-    public DadosRepresentante documentoEstrangeiroRepresentado(DadosDocumentoEstrangeiro documentoEstrangeiroRepresentado) {
-        this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
         return this;
     }
 
@@ -567,6 +619,7 @@ public class DadosRepresentante {
      * @return motivo
      **/
     @JsonProperty("motivo")
+    @NotNull
     public String getMotivo() {
         return motivo;
     }
@@ -597,11 +650,13 @@ public class DadosRepresentante {
                 "    cpfRepresentante: " + toIndentedString(cpfRepresentante) + "\n" +
                 "    cnpjRepresentante: " + toIndentedString(cnpjRepresentante) + "\n" +
                 "    documentoEstrangeiroRepresentante: " + toIndentedString(documentoEstrangeiroRepresentante) + "\n" +
+                "    operadorEstrangeiroRepresentante: " + toIndentedString(operadorEstrangeiroRepresentante) + "\n" +
                 "    nomeRepresentante: " + toIndentedString(nomeRepresentante) + "\n" +
                 "    cpfRepresentado: " + toIndentedString(cpfRepresentado) + "\n" +
                 "    cnpjRepresentado: " + toIndentedString(cnpjRepresentado) + "\n" +
-                "    nomeRepresentado: " + toIndentedString(nomeRepresentado) + "\n" +
                 "    documentoEstrangeiroRepresentado: " + toIndentedString(documentoEstrangeiroRepresentado) + "\n" +
+                "    operadorEstrangeiroRepresentado: " + toIndentedString(operadorEstrangeiroRepresentado) + "\n" +
+                "    nomeRepresentado: " + toIndentedString(nomeRepresentado) + "\n" +
                 "    dataHoraInicioValidade: " + toIndentedString(dataHoraInicioValidade) + "\n" +
                 "    dataHoraFimValidade: " + toIndentedString(dataHoraFimValidade) + "\n" +
                 "    motivo: " + toIndentedString(motivo) + "\n" +

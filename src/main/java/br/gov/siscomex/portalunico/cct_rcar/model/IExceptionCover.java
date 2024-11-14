@@ -225,7 +225,6 @@ public class IExceptionCover {
 
     /**
      * Get code
-     *
      * @return code
      **/
     @JsonProperty("code")
@@ -244,7 +243,6 @@ public class IExceptionCover {
 
     /**
      * Get field
-     *
      * @return field
      **/
     @JsonProperty("field")
@@ -281,6 +279,7 @@ public class IExceptionCover {
 
     /**
      * Get detail
+     *
      * @return detail
      **/
     @JsonProperty("detail")

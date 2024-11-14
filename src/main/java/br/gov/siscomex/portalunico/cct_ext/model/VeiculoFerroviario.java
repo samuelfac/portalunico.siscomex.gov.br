@@ -18,27 +18,27 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "VeiculoFerroviario")
 /**
- * Dados do veículo ferroviário
+ * Informações sobre o veículo Ferroviário
  **/
-@ApiModel(description = "Dados do veículo ferroviário")
+@ApiModel(description = "Informações sobre o veículo Ferroviário")
 public class VeiculoFerroviario {
 
     @XmlElement(name = "prefixoTrem", required = true)
-    @ApiModelProperty(example = "trem001", required = true, value = "Identificação do trem<br>Tamanho: 15")
+    @ApiModelProperty(example = "TR123", required = true, value = "Prefixo do Trem")
     /**
-     * Identificação do trem<br>Tamanho: 15
+     * Prefixo do Trem
      **/
     private String prefixoTrem = null;
 
     @XmlElement(name = "quantidadeVagoes", required = true)
-    @ApiModelProperty(example = "10", required = true, value = "Número de vagões envolvidos no transporte<br>Tamanho: 3")
+    @ApiModelProperty(example = "10", required = true, value = "Quantidade de Vagões")
     /**
-     * Número de vagões envolvidos no transporte<br>Tamanho: 3
+     * Quantidade de Vagões
      **/
     private Integer quantidadeVagoes = null;
 
     /**
-     * Identificação do trem&lt;br&gt;Tamanho: 15
+     * Prefixo do Trem
      *
      * @return prefixoTrem
      **/
@@ -58,7 +58,7 @@ public class VeiculoFerroviario {
     }
 
     /**
-     * Número de vagões envolvidos no transporte&lt;br&gt;Tamanho: 3
+     * Quantidade de Vagões
      *
      * @return quantidadeVagoes
      **/

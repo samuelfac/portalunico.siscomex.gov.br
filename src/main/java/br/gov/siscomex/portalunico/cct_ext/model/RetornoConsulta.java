@@ -79,7 +79,7 @@ public class RetornoConsulta {
     /**
      * Número documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15
      **/
-    private List<DocumentosTransporte> documentosDeTransporte = null;
+    private List<DocumentoTransporteDTO> documentosDeTransporte = null;
 
     @XmlElement(name = "listaCargasSoltasVeiculos")
     @ApiModelProperty(value = "")
@@ -235,20 +235,20 @@ public class RetornoConsulta {
      * @return documentosDeTransporte
      **/
     @JsonProperty("documentosDeTransporte")
-    public List<DocumentosTransporte> getDocumentosDeTransporte() {
+    public List<DocumentoTransporteDTO> getDocumentosDeTransporte() {
         return documentosDeTransporte;
     }
 
-    public void setDocumentosDeTransporte(List<DocumentosTransporte> documentosDeTransporte) {
+    public void setDocumentosDeTransporte(List<DocumentoTransporteDTO> documentosDeTransporte) {
         this.documentosDeTransporte = documentosDeTransporte;
     }
 
-    public RetornoConsulta documentosDeTransporte(List<DocumentosTransporte> documentosDeTransporte) {
+    public RetornoConsulta documentosDeTransporte(List<DocumentoTransporteDTO> documentosDeTransporte) {
         this.documentosDeTransporte = documentosDeTransporte;
         return this;
     }
 
-    public RetornoConsulta addDocumentosDeTransporteItem(DocumentosTransporte documentosDeTransporteItem) {
+    public RetornoConsulta addDocumentosDeTransporteItem(DocumentoTransporteDTO documentosDeTransporteItem) {
         this.documentosDeTransporte.add(documentosDeTransporteItem);
         return this;
     }

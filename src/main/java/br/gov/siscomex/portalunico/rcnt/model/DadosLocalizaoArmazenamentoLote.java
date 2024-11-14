@@ -18,42 +18,42 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosLocalizaoArmazenamentoLote {
 
     @XmlElement(name = "box")
-    @ApiModelProperty(value = "Box<br/>Tamanho: 100")
+    @ApiModelProperty(value = "Box<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
     /**
-     * Box<br/>Tamanho: 100
+     * Box<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
      **/
     private String box = null;
 
     @XmlElement(name = "estante")
-    @ApiModelProperty(value = "Estante<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Estante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20")
     /**
-     * Estante<br/>Tamanho: 20
+     * Estante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20
      **/
     private String estante = null;
 
     @XmlElement(name = "prateleira")
-    @ApiModelProperty(value = "Prateleira<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Prateleira<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20")
     /**
-     * Prateleira<br/>Tamanho: 20
+     * Prateleira<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20
      **/
     private String prateleira = null;
 
     @XmlElement(name = "rua")
-    @ApiModelProperty(value = "Rua<br/>Tamanho: 100")
+    @ApiModelProperty(value = "Rua<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
     /**
-     * Rua<br/>Tamanho: 100
+     * Rua<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
      **/
     private String rua = null;
 
     @XmlElement(name = "setor")
-    @ApiModelProperty(value = "Setor<br/>Tamanho: 100")
+    @ApiModelProperty(value = "Setor<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
     /**
-     * Setor<br/>Tamanho: 100
+     * Setor<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
      **/
     private String setor = null;
 
     /**
-     * Box&lt;br/&gt;Tamanho: 100
+     * Box&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
      * @return box
      **/
@@ -72,7 +72,7 @@ public class DadosLocalizaoArmazenamentoLote {
     }
 
     /**
-     * Estante&lt;br/&gt;Tamanho: 20
+     * Estante&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return estante
      **/
@@ -91,7 +91,7 @@ public class DadosLocalizaoArmazenamentoLote {
     }
 
     /**
-     * Prateleira&lt;br/&gt;Tamanho: 20
+     * Prateleira&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return prateleira
      **/
@@ -110,7 +110,7 @@ public class DadosLocalizaoArmazenamentoLote {
     }
 
     /**
-     * Rua&lt;br/&gt;Tamanho: 100
+     * Rua&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
      * @return rua
      **/
@@ -129,7 +129,7 @@ public class DadosLocalizaoArmazenamentoLote {
     }
 
     /**
-     * Setor&lt;br/&gt;Tamanho: 100
+     * Setor&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
      * @return setor
      **/

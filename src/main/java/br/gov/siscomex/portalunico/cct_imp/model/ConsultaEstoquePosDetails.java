@@ -321,7 +321,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Número da Duimp
-     *
      * @return numeroDUIMP
      **/
     @JsonProperty("numeroDUIMP")
@@ -340,7 +339,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Descrição da situação da Duimp
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -359,7 +357,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Descrição do canal da Duimp
-     *
      * @return canal
      **/
     @JsonProperty("canal")
@@ -378,7 +375,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Get importador
-     *
      * @return importador
      **/
     @JsonProperty("importador")
@@ -440,7 +436,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Get destinoFinalCarga
-     *
      * @return destinoFinalCarga
      **/
     @JsonProperty("destinoFinalCarga")
@@ -459,7 +454,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Nome do consignarário
-     *
      * @return nomeConsignatario
      **/
     @JsonProperty("nomeConsignatario")
@@ -478,7 +472,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Nome do país de origem da carga
-     *
      * @return paisOrigemCarga
      **/
     @JsonProperty("paisOrigemCarga")
@@ -497,7 +490,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Indica se existe autorização no Sistema DIMP para entrega da carga
-     *
      * @return entregaAutorizadaPelaDuimp
      **/
     @JsonProperty("entregaAutorizadaPelaDuimp")

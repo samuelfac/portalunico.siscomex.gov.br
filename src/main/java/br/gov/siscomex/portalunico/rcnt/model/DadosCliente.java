@@ -12,18 +12,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCliente", propOrder =
-        {"cnpjCliente", "idElemento", "nomeCliente"
+        {"cnpjCliente", "cpfCliente", "idElemento", "nomeCliente"
         })
 
 @XmlRootElement(name = "DadosCliente")
 public class DadosCliente {
 
     @XmlElement(name = "cnpjCliente")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do cliente do armazenamento.<br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
     /**
-     * CNPJ do cliente do armazenamento.<br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     * CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
      **/
     private String cnpjCliente = null;
+
+    @XmlElement(name = "cpfCliente")
+    @ApiModelProperty(example = "55555555555", value = "CPF do Cliente da estadia.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF do Cliente da estadia.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfCliente = null;
 
     @XmlElement(name = "idElemento", required = true)
     @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
@@ -33,14 +40,14 @@ public class DadosCliente {
     private String idElemento = null;
 
     @XmlElement(name = "nomeCliente")
-    @ApiModelProperty(value = "Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100")
+    @ApiModelProperty(value = "Nome do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 100")
     /**
-     * Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100
+     * Nome do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 100
      **/
     private String nomeCliente = null;
 
     /**
-     * CNPJ do cliente do armazenamento.&lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     * CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
      *
      * @return cnpjCliente
      **/
@@ -55,6 +62,25 @@ public class DadosCliente {
 
     public DadosCliente cnpjCliente(String cnpjCliente) {
         this.cnpjCliente = cnpjCliente;
+        return this;
+    }
+
+    /**
+     * CPF do Cliente da estadia.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfCliente
+     **/
+    @JsonProperty("cpfCliente")
+    public String getCpfCliente() {
+        return cpfCliente;
+    }
+
+    public void setCpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+    }
+
+    public DadosCliente cpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
         return this;
     }
 
@@ -79,7 +105,7 @@ public class DadosCliente {
     }
 
     /**
-     * Nome do cliente do armazenamento. &lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 100
+     * Nome do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 100
      *
      * @return nomeCliente
      **/
@@ -103,6 +129,7 @@ public class DadosCliente {
 
         String sb = "class DadosCliente {\n" +
                 "    cnpjCliente: " + toIndentedString(cnpjCliente) + "\n" +
+                "    cpfCliente: " + toIndentedString(cpfCliente) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    nomeCliente: " + toIndentedString(nomeCliente) + "\n" +
                 "}";

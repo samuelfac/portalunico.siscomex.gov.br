@@ -242,7 +242,6 @@ public class RecepcaoDocumentoCarga {
 
     /**
      * Observações gerais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")

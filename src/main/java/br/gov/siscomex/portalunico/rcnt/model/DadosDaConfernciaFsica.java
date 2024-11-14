@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaConfernciaFsica", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "tipo", "dataHoraAgenda", "conferenciaRemota", "listaTelefones", "solicitante", "setorSolicitante", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaPlacaSemirreboque", "listaNumeroConteiner", "listaIdentificacaoUld", "listaNumeroLote", "areaConferenciaFisica", "listaCameras", "dataHoraOperacao", "listaOperadoresPosicionamento", "listaPessoasAcompanhamento", "listaLacres", "retiradaAmostras", "listaTipoAvaria", "quantidadeVolumesAvariados", "observacaoAvaria", "divergenciaQuantidade", "divergenciaQualificacao", "quantidadeVolumesDivergentes", "observacaoDivergencia"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "tipo", "dataHoraAgenda", "conferenciaRemota", "listaTelefones", "solicitante", "setorSolicitante", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaPlacaSemirreboque", "listaNumeroConteiner", "listaIdentificacaoUld", "listaNumeroLote", "areaConferenciaFisica", "listaCameras", "dataHoraOperacao", "listaOperadoresPosicionamento", "listaPessoasAcompanhamento", "listaLacres", "retiradaAmostras", "listaTipoAvaria", "quantidadeVolumesAvariados", "observacaoAvaria", "divergenciaQuantidade", "divergenciaQualificacao", "quantidadeVolumesDivergentes", "observacaoDivergencia", "listaTratamentoAdministrativo"
         })
 
 @XmlRootElement(name = "DadosDaConfernciaFsica")
@@ -167,22 +167,22 @@ public class DadosDaConfernciaFsica {
         }
     }
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "AGE", value = "Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física")
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "AGE", required = true, value = "Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física")
     /**
      * Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física
      **/
     private TipoEnum tipo = null;
 
     @XmlElement(name = "dataHoraAgenda")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "<b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * <b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraAgenda = null;
 
-    @XmlElement(name = "conferenciaRemota")
-    @ApiModelProperty(example = "false", value = "Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @XmlElement(name = "conferenciaRemota", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
@@ -196,8 +196,8 @@ public class DadosDaConfernciaFsica {
      **/
     private List<DadosDoTelefone> listaTelefones = null;
 
-    @XmlElement(name = "solicitante")
-    @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    @XmlElement(name = "solicitante", required = true)
+    @ApiModelProperty(example = "ANCINE", required = true, value = "Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
      * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
@@ -330,9 +330,9 @@ public class DadosDaConfernciaFsica {
     private List<DadosDaIdentificaoDoLote> listaNumeroLote = null;
 
     @XmlElement(name = "areaConferenciaFisica")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 36")
     /**
-     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
+     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 36
      **/
     private String areaConferenciaFisica = null;
 
@@ -374,9 +374,9 @@ public class DadosDaConfernciaFsica {
     private List<DadosDoLacre> listaLacres = null;
 
     @XmlElement(name = "retiradaAmostras")
-    @ApiModelProperty(example = "false", value = "Informar se houve retirada de amostras durante a conferência física<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Informar se houve retirada de amostras durante a conferência física<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean retiradaAmostras = null;
 
@@ -389,9 +389,9 @@ public class DadosDaConfernciaFsica {
     private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
 
     @XmlElement(name = "quantidadeVolumesAvariados")
-    @ApiModelProperty(example = "28", value = "Informar o quantidade de volumes avariados")
+    @ApiModelProperty(example = "28", value = "Informar o quantidade de volumes avariados<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesAvariados' quando o atributo 'tipo' for informado com valor 'CCF' e 'listaTipoAvaria' for informado.")
     /**
-     * Informar o quantidade de volumes avariados
+     * Informar o quantidade de volumes avariados<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesAvariados' quando o atributo 'tipo' for informado com valor 'CCF' e 'listaTipoAvaria' for informado.
      **/
     private Integer quantidadeVolumesAvariados = null;
 
@@ -403,23 +403,23 @@ public class DadosDaConfernciaFsica {
     private String observacaoAvaria = null;
 
     @XmlElement(name = "divergenciaQuantidade")
-    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean divergenciaQuantidade = null;
 
     @XmlElement(name = "divergenciaQualificacao")
-    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean divergenciaQualificacao = null;
 
     @XmlElement(name = "quantidadeVolumesDivergentes")
-    @ApiModelProperty(example = "17", value = "Caso constatado, informar a quantidade de volumes divergentes")
+    @ApiModelProperty(example = "17", value = "Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'")
     /**
-     * Caso constatado, informar a quantidade de volumes divergentes
+     * Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'
      **/
     private Integer quantidadeVolumesDivergentes = null;
 
@@ -429,6 +429,14 @@ public class DadosDaConfernciaFsica {
      * Caso constatado, registrar as informações das divergências<br/>Tamanho: 200
      **/
     private String observacaoDivergencia = null;
+
+    @XmlElement(name = "listaTratamentoAdministrativo")
+    @ApiModelProperty(value = "Lista de Tratamento Administrativo")
+    @Valid
+    /**
+     * Lista de Tratamento Administrativo
+     **/
+    private List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo = null;
 
     /**
      * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
@@ -615,6 +623,7 @@ public class DadosDaConfernciaFsica {
      * @return tipo
      **/
     @JsonProperty("tipo")
+    @NotNull
     public String getTipo() {
         if (tipo == null) {
             return null;
@@ -632,7 +641,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     * &lt;b&gt;Nota:&lt;/b&gt; Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;AGE&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      * @return dataHoraAgenda
      **/
     @JsonProperty("dataHoraAgenda")
@@ -654,6 +663,7 @@ public class DadosDaConfernciaFsica {
      * @return conferenciaRemota
      **/
     @JsonProperty("conferenciaRemota")
+    @NotNull
     public Boolean isConferenciaRemota() {
         return conferenciaRemota;
     }
@@ -695,6 +705,7 @@ public class DadosDaConfernciaFsica {
      * @return solicitante
      **/
     @JsonProperty("solicitante")
+    @NotNull
     public String getSolicitante() {
         return solicitante;
     }
@@ -932,7 +943,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
+     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Tamanho: 36
      * @return areaConferenciaFisica
      **/
     @JsonProperty("areaConferenciaFisica")
@@ -1063,7 +1074,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Informar se houve retirada de amostras durante a conferência física&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Informar se houve retirada de amostras durante a conferência física&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      * @return retiradaAmostras
      **/
     @JsonProperty("retiradaAmostras")
@@ -1104,7 +1115,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Informar o quantidade de volumes avariados
+     * Informar o quantidade de volumes avariados&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesAvariados&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;listaTipoAvaria&#39; for informado.
      * @return quantidadeVolumesAvariados
      **/
     @JsonProperty("quantidadeVolumesAvariados")
@@ -1140,7 +1151,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      * @return divergenciaQuantidade
      **/
     @JsonProperty("divergenciaQuantidade")
@@ -1158,7 +1169,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      * @return divergenciaQualificacao
      **/
     @JsonProperty("divergenciaQualificacao")
@@ -1176,7 +1187,7 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Caso constatado, informar a quantidade de volumes divergentes
+     * Caso constatado, informar a quantidade de volumes divergentes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesDivergentes&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;divergenciaQuantidade&#39; for informado com valor &#39;True&#39;
      * @return quantidadeVolumesDivergentes
      **/
     @JsonProperty("quantidadeVolumesDivergentes")
@@ -1208,6 +1219,30 @@ public class DadosDaConfernciaFsica {
 
     public DadosDaConfernciaFsica observacaoDivergencia(String observacaoDivergencia) {
         this.observacaoDivergencia = observacaoDivergencia;
+        return this;
+    }
+
+    /**
+     * Lista de Tratamento Administrativo
+     *
+     * @return listaTratamentoAdministrativo
+     **/
+    @JsonProperty("listaTratamentoAdministrativo")
+    public List<DadosDoTratamentoAdministrativo> getListaTratamentoAdministrativo() {
+        return listaTratamentoAdministrativo;
+    }
+
+    public void setListaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
+        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
+    }
+
+    public DadosDaConfernciaFsica listaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
+        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaTratamentoAdministrativoItem(DadosDoTratamentoAdministrativo listaTratamentoAdministrativoItem) {
+        this.listaTratamentoAdministrativo.add(listaTratamentoAdministrativoItem);
         return this;
     }
 
@@ -1255,6 +1290,7 @@ public class DadosDaConfernciaFsica {
                 "    divergenciaQualificacao: " + toIndentedString(divergenciaQualificacao) + "\n" +
                 "    quantidadeVolumesDivergentes: " + toIndentedString(quantidadeVolumesDivergentes) + "\n" +
                 "    observacaoDivergencia: " + toIndentedString(observacaoDivergencia) + "\n" +
+                "    listaTratamentoAdministrativo: " + toIndentedString(listaTratamentoAdministrativo) + "\n" +
                 "}";
         return sb;
     }

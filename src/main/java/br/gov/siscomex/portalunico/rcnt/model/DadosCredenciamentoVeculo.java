@@ -3,6 +3,7 @@ package br.gov.siscomex.portalunico.rcnt.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCredenciamentoVeculo", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "placa", "marca", "modelo", "ano", "capacidadeTanqueCombustivel", "satelite", "cnpjResponsavel", "cpfResponsavel", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "credenciamentoAtivo", "motivacao"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "placa", "marca", "modelo", "ano", "capacidadeTanqueCombustivel", "satelite", "cnpjResponsavel", "cpfResponsavel", "operadorEstrangeiroResponsavel", "documentoEstrangeiroResponsavel", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "credenciamentoAtivo", "motivacao"
         })
 
 @XmlRootElement(name = "DadosCredenciamentoVeculo")
@@ -161,8 +162,8 @@ public class DadosCredenciamentoVeculo {
      **/
     private Integer capacidadeTanqueCombustivel = null;
 
-    @XmlElement(name = "satelite")
-    @ApiModelProperty(example = "false", value = "Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @XmlElement(name = "satelite", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
@@ -181,6 +182,18 @@ public class DadosCredenciamentoVeculo {
      * CPF do responsável pelo veículo<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfResponsavel = null;
+
+    @XmlElement(name = "operadorEstrangeiroResponsavel")
+    @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.")
+    /**
+     * Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.
+     **/
+    private String operadorEstrangeiroResponsavel = null;
+
+    @XmlElement(name = "documentoEstrangeiroResponsavel")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel = null;
 
     @XmlElement(name = "dataInicioValidade")
     @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
@@ -217,8 +230,8 @@ public class DadosCredenciamentoVeculo {
      **/
     private String areas = null;
 
-    @XmlElement(name = "credenciamentoAtivo")
-    @ApiModelProperty(example = "false", value = "Credenciamento ativo?<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @XmlElement(name = "credenciamentoAtivo", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Credenciamento ativo?<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Credenciamento ativo?<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
@@ -508,6 +521,7 @@ public class DadosCredenciamentoVeculo {
      * @return satelite
      **/
     @JsonProperty("satelite")
+    @NotNull
     public Boolean isSatelite() {
         return satelite;
     }
@@ -554,6 +568,44 @@ public class DadosCredenciamentoVeculo {
 
     public DadosCredenciamentoVeculo cpfResponsavel(String cpfResponsavel) {
         this.cpfResponsavel = cpfResponsavel;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.
+     *
+     * @return operadorEstrangeiroResponsavel
+     **/
+    @JsonProperty("operadorEstrangeiroResponsavel")
+    public String getOperadorEstrangeiroResponsavel() {
+        return operadorEstrangeiroResponsavel;
+    }
+
+    public void setOperadorEstrangeiroResponsavel(String operadorEstrangeiroResponsavel) {
+        this.operadorEstrangeiroResponsavel = operadorEstrangeiroResponsavel;
+    }
+
+    public DadosCredenciamentoVeculo operadorEstrangeiroResponsavel(String operadorEstrangeiroResponsavel) {
+        this.operadorEstrangeiroResponsavel = operadorEstrangeiroResponsavel;
+        return this;
+    }
+
+    /**
+     * Get documentoEstrangeiroResponsavel
+     *
+     * @return documentoEstrangeiroResponsavel
+     **/
+    @JsonProperty("documentoEstrangeiroResponsavel")
+    public DadosDocumentoEstrangeiroResponsvel getDocumentoEstrangeiroResponsavel() {
+        return documentoEstrangeiroResponsavel;
+    }
+
+    public void setDocumentoEstrangeiroResponsavel(DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel) {
+        this.documentoEstrangeiroResponsavel = documentoEstrangeiroResponsavel;
+    }
+
+    public DadosCredenciamentoVeculo documentoEstrangeiroResponsavel(DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel) {
+        this.documentoEstrangeiroResponsavel = documentoEstrangeiroResponsavel;
         return this;
     }
 
@@ -652,6 +704,7 @@ public class DadosCredenciamentoVeculo {
      * @return credenciamentoAtivo
      **/
     @JsonProperty("credenciamentoAtivo")
+    @NotNull
     public Boolean isCredenciamentoAtivo() {
         return credenciamentoAtivo;
     }
@@ -705,6 +758,8 @@ public class DadosCredenciamentoVeculo {
                 "    satelite: " + toIndentedString(satelite) + "\n" +
                 "    cnpjResponsavel: " + toIndentedString(cnpjResponsavel) + "\n" +
                 "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
+                "    operadorEstrangeiroResponsavel: " + toIndentedString(operadorEstrangeiroResponsavel) + "\n" +
+                "    documentoEstrangeiroResponsavel: " + toIndentedString(documentoEstrangeiroResponsavel) + "\n" +
                 "    dataInicioValidade: " + toIndentedString(dataInicioValidade) + "\n" +
                 "    dataFimValidade: " + toIndentedString(dataFimValidade) + "\n" +
                 "    horaPrevistaEntrada: " + toIndentedString(horaPrevistaEntrada) + "\n" +

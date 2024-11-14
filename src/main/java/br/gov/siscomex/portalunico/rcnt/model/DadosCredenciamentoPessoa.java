@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCredenciamentoPessoa", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "cpf", "documentoEstrangeiro", "paisNacionalidade", "genero", "cnh", "nome", "dataNascimento", "fone", "cnpjRepresentado", "cpfRepresentado", "nomeRepresentado", "qualificacao", "funcao", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "materiaisFerramentas", "credenciamentoAtivo", "motivacao"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "cpf", "documentoEstrangeiro", "paisNacionalidade", "sexo", "cnh", "nome", "dataNascimento", "fone", "cnpjRepresentado", "cpfRepresentado", "operadorEstrangeiroRepresentado", "documentoEstrangeiroRepresentado", "nomeRepresentado", "qualificacao", "funcao", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "materiaisFerramentas", "credenciamentoAtivo", "motivacao"
         })
 
 @XmlRootElement(name = "DadosCredenciamentoPessoa")
@@ -128,9 +128,9 @@ public class DadosCredenciamentoPessoa {
     private String codigoRecinto = null;
 
     @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "55555555555", value = "CPF<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    @ApiModelProperty(example = "55555555555", value = "CPF de pessoa credenciada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'cpf' seja informado quando os atributos 'documentoEstrangeiro.numero', documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' não forem informados.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
-     * CPF<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * CPF de pessoa credenciada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'cpf' seja informado quando os atributos 'documentoEstrangeiro.numero', documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' não forem informados.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
 
@@ -147,9 +147,9 @@ public class DadosCredenciamentoPessoa {
     private String paisNacionalidade = null;
 
 
-    @XmlType(name = "GeneroEnum")
+    @XmlType(name = "SexoEnum")
     @XmlEnum(String.class)
-    public enum GeneroEnum {
+    public enum SexoEnum {
 
         @XmlEnumValue("'F'")
         @JsonProperty("'F'")
@@ -162,7 +162,7 @@ public class DadosCredenciamentoPessoa {
 
         private final String value;
 
-        GeneroEnum(String v) {
+        SexoEnum(String v) {
             value = v;
         }
 
@@ -175,22 +175,22 @@ public class DadosCredenciamentoPessoa {
             return String.valueOf(value);
         }
 
-        public static GeneroEnum fromValue(String v) {
-            for (GeneroEnum b : GeneroEnum.values()) {
+        public static SexoEnum fromValue(String v) {
+            for (SexoEnum b : SexoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to GeneroEnum");
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SexoEnum");
         }
     }
 
-    @XmlElement(name = "genero")
-    @ApiModelProperty(example = "F", value = "Gênero conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1")
+    @XmlElement(name = "sexo")
+    @ApiModelProperty(example = "F", value = "Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1")
     /**
-     * Gênero conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1
+     * Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1
      **/
-    private GeneroEnum genero = null;
+    private SexoEnum sexo = null;
 
     @XmlElement(name = "cnh")
     @ApiModelProperty(value = "CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50")
@@ -233,6 +233,18 @@ public class DadosCredenciamentoPessoa {
      * CPF do representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfRepresentado = null;
+
+    @XmlElement(name = "operadorEstrangeiroRepresentado")
+    @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira representada<br/>Tamanho: 50")
+    /**
+     * Identificação fiscal de empresa estrangeira representada<br/>Tamanho: 50
+     **/
+    private String operadorEstrangeiroRepresentado = null;
+
+    @XmlElement(name = "documentoEstrangeiroRepresentado")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDocumentoEstrangeiroRepresentado documentoEstrangeiroRepresentado = null;
 
     @XmlElement(name = "nomeRepresentado")
     @ApiModelProperty(value = "Nome do representado<br/>Tamanho: 100")
@@ -284,9 +296,9 @@ public class DadosCredenciamentoPessoa {
     private String horaPrevistaSaida = null;
 
     @XmlElement(name = "areas")
-    @ApiModelProperty(value = "Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 50")
+    @ApiModelProperty(value = "Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200")
     /**
-     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 50
+     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200
      **/
     private String areas = null;
 
@@ -297,8 +309,8 @@ public class DadosCredenciamentoPessoa {
      **/
     private String materiaisFerramentas = null;
 
-    @XmlElement(name = "credenciamentoAtivo")
-    @ApiModelProperty(example = "false", value = "Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    @XmlElement(name = "credenciamentoAtivo", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
@@ -491,7 +503,7 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * CPF&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * CPF de pessoa credenciada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;cpf&#39; seja informado quando os atributos &#39;documentoEstrangeiro.numero&#39;, documentoEstrangeiro.tipo&#39; e &#39;documentoEstrangeiro.paisEmissor&#39; não forem informados.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      * @return cpf
      **/
     @JsonProperty("cpf")
@@ -546,24 +558,24 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Gênero conforme tabela de domínio&lt;br/&gt;Domínio:&lt;br/&gt;F - Feminino&lt;br/&gt;M - Masculino&lt;br/&gt;Tamanho: 1
+     * Sexo conforme tabela de domínio&lt;br/&gt;Domínio:&lt;br/&gt;F - Feminino&lt;br/&gt;M - Masculino&lt;br/&gt;Tamanho: 1
      *
-     * @return genero
+     * @return sexo
      **/
-    @JsonProperty("genero")
-    public String getGenero() {
-        if (genero == null) {
+    @JsonProperty("sexo")
+    public String getSexo() {
+        if (sexo == null) {
             return null;
         }
-        return genero.value();
+        return sexo.value();
     }
 
-    public void setGenero(GeneroEnum genero) {
-        this.genero = genero;
+    public void setSexo(SexoEnum sexo) {
+        this.sexo = sexo;
     }
 
-    public DadosCredenciamentoPessoa genero(GeneroEnum genero) {
-        this.genero = genero;
+    public DadosCredenciamentoPessoa sexo(SexoEnum sexo) {
+        this.sexo = sexo;
         return this;
     }
 
@@ -673,6 +685,44 @@ public class DadosCredenciamentoPessoa {
 
     public DadosCredenciamentoPessoa cpfRepresentado(String cpfRepresentado) {
         this.cpfRepresentado = cpfRepresentado;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal de empresa estrangeira representada&lt;br/&gt;Tamanho: 50
+     *
+     * @return operadorEstrangeiroRepresentado
+     **/
+    @JsonProperty("operadorEstrangeiroRepresentado")
+    public String getOperadorEstrangeiroRepresentado() {
+        return operadorEstrangeiroRepresentado;
+    }
+
+    public void setOperadorEstrangeiroRepresentado(String operadorEstrangeiroRepresentado) {
+        this.operadorEstrangeiroRepresentado = operadorEstrangeiroRepresentado;
+    }
+
+    public DadosCredenciamentoPessoa operadorEstrangeiroRepresentado(String operadorEstrangeiroRepresentado) {
+        this.operadorEstrangeiroRepresentado = operadorEstrangeiroRepresentado;
+        return this;
+    }
+
+    /**
+     * Get documentoEstrangeiroRepresentado
+     *
+     * @return documentoEstrangeiroRepresentado
+     **/
+    @JsonProperty("documentoEstrangeiroRepresentado")
+    public DadosDocumentoEstrangeiroRepresentado getDocumentoEstrangeiroRepresentado() {
+        return documentoEstrangeiroRepresentado;
+    }
+
+    public void setDocumentoEstrangeiroRepresentado(DadosDocumentoEstrangeiroRepresentado documentoEstrangeiroRepresentado) {
+        this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
+    }
+
+    public DadosCredenciamentoPessoa documentoEstrangeiroRepresentado(DadosDocumentoEstrangeiroRepresentado documentoEstrangeiroRepresentado) {
+        this.documentoEstrangeiroRepresentado = documentoEstrangeiroRepresentado;
         return this;
     }
 
@@ -803,7 +853,7 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 50
+     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 200
      * @return areas
      **/
     @JsonProperty("areas")
@@ -843,6 +893,7 @@ public class DadosCredenciamentoPessoa {
      * @return credenciamentoAtivo
      **/
     @JsonProperty("credenciamentoAtivo")
+    @NotNull
     public Boolean isCredenciamentoAtivo() {
         return credenciamentoAtivo;
     }
@@ -891,13 +942,15 @@ public class DadosCredenciamentoPessoa {
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    documentoEstrangeiro: " + toIndentedString(documentoEstrangeiro) + "\n" +
                 "    paisNacionalidade: " + toIndentedString(paisNacionalidade) + "\n" +
-                "    genero: " + toIndentedString(genero) + "\n" +
+                "    sexo: " + toIndentedString(sexo) + "\n" +
                 "    cnh: " + toIndentedString(cnh) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    dataNascimento: " + toIndentedString(dataNascimento) + "\n" +
                 "    fone: " + toIndentedString(fone) + "\n" +
                 "    cnpjRepresentado: " + toIndentedString(cnpjRepresentado) + "\n" +
                 "    cpfRepresentado: " + toIndentedString(cpfRepresentado) + "\n" +
+                "    operadorEstrangeiroRepresentado: " + toIndentedString(operadorEstrangeiroRepresentado) + "\n" +
+                "    documentoEstrangeiroRepresentado: " + toIndentedString(documentoEstrangeiroRepresentado) + "\n" +
                 "    nomeRepresentado: " + toIndentedString(nomeRepresentado) + "\n" +
                 "    qualificacao: " + toIndentedString(qualificacao) + "\n" +
                 "    funcao: " + toIndentedString(funcao) + "\n" +

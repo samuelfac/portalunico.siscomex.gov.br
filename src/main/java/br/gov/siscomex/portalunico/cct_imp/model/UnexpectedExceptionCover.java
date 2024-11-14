@@ -255,7 +255,6 @@ public class UnexpectedExceptionCover {
 
     /**
      * Get info
-     *
      * @return info
      **/
     @JsonProperty("info")

@@ -255,7 +255,6 @@ public class BusinessExceptionCover {
 
     /**
      * Get info
-     *
      * @return info
      **/
     @JsonProperty("info")

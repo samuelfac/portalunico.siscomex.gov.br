@@ -24,9 +24,9 @@ import javax.xml.bind.annotation.XmlType;
 public class FabricanteCover {
 
     @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "2104", value = "Código do Fabricante.<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação: Quando o país de origem for \"BR\", este atributo deverá ser preenchido com o CNPJ ou CPF do Fabricante. Quando o país de origem for diferente de \"BR\", deverá ser utilizado o código do exportador estrangeiro (TIN).")
+    @ApiModelProperty(example = "2104", value = "Código do Fabricante.<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação: Quando o país de origem for \"BR\", este atributo deverá ser preenchido com o CNPJ ou CPF do Fabricante. Quando o país de origem for diferente de \"BR\", deverá ser utilizado o código do exportador estrangeiro.")
     /**
-     * Código do Fabricante.<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação: Quando o país de origem for \"BR\", este atributo deverá ser preenchido com o CNPJ ou CPF do Fabricante. Quando o país de origem for diferente de \"BR\", deverá ser utilizado o código do exportador estrangeiro (TIN).
+     * Código do Fabricante.<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação: Quando o país de origem for \"BR\", este atributo deverá ser preenchido com o CNPJ ou CPF do Fabricante. Quando o país de origem for diferente de \"BR\", deverá ser utilizado o código do exportador estrangeiro.
      **/
     private String codigo = null;
 
@@ -50,7 +50,7 @@ public class FabricanteCover {
     private PaisFabricanteCover pais = null;
 
     /**
-     * Código do Fabricante.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Observação: Quando o país de origem for \&quot;BR\&quot;, este atributo deverá ser preenchido com o CNPJ ou CPF do Fabricante. Quando o país de origem for diferente de \&quot;BR\&quot;, deverá ser utilizado o código do exportador estrangeiro (TIN).
+     * Código do Fabricante.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Observação: Quando o país de origem for \&quot;BR\&quot;, este atributo deverá ser preenchido com o CNPJ ou CPF do Fabricante. Quando o país de origem for diferente de \&quot;BR\&quot;, deverá ser utilizado o código do exportador estrangeiro.
      *
      * @return codigo
      **/

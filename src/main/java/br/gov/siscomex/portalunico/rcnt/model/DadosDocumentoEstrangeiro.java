@@ -25,16 +25,16 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosDocumentoEstrangeiro {
 
     @XmlElement(name = "numero")
-    @ApiModelProperty(value = "Número do documento<br/>Tamanho: 50")
+    @ApiModelProperty(value = "Número do documento<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.<br/>Tamanho: 50")
     /**
-     * Número do documento<br/>Tamanho: 50
+     * Número do documento<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.<br/>Tamanho: 50
      **/
     private String numero = null;
 
     @XmlElement(name = "paisEmissor")
-    @ApiModelProperty(example = "DE", value = "País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    @ApiModelProperty(example = "DE", value = "País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.")
     /**
-     * País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     * País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.
      **/
     private String paisEmissor = null;
 
@@ -78,9 +78,9 @@ public class DadosDocumentoEstrangeiro {
     }
 
     @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte")
+    @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.")
     /**
-     * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte
+     * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.
      **/
     private TipoEnum tipo = null;
 
@@ -92,7 +92,7 @@ public class DadosDocumentoEstrangeiro {
     private String validade = null;
 
     /**
-     * Número do documento&lt;br/&gt;Tamanho: 50
+     * Número do documento&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;documentoEstrangeiro.numero&#39;, &#39;documentoEstrangeiro.tipo&#39; e &#39;documentoEstrangeiro.paisEmissor&#39; sejam informados quando o atributo &#39;cpf&#39; não for informado.&lt;br/&gt;Tamanho: 50
      *
      * @return numero
      **/
@@ -111,7 +111,7 @@ public class DadosDocumentoEstrangeiro {
     }
 
     /**
-     * País emissor do documento. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
+     * País emissor do documento. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;documentoEstrangeiro.numero&#39;, &#39;documentoEstrangeiro.tipo&#39; e &#39;documentoEstrangeiro.paisEmissor&#39; sejam informados quando o atributo &#39;cpf&#39; não for informado.
      *
      * @return paisEmissor
      **/
@@ -130,7 +130,7 @@ public class DadosDocumentoEstrangeiro {
     }
 
     /**
-     * Tipo de documento&lt;br/&gt;Domínio:&lt;br/&gt;I - Identidade&lt;br/&gt;P - Passaporte
+     * Tipo de documento&lt;br/&gt;Domínio:&lt;br/&gt;I - Identidade&lt;br/&gt;P - Passaporte&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;documentoEstrangeiro.numero&#39;, &#39;documentoEstrangeiro.tipo&#39; e &#39;documentoEstrangeiro.paisEmissor&#39; sejam informados quando o atributo &#39;cpf&#39; não for informado.
      *
      * @return tipo
      **/

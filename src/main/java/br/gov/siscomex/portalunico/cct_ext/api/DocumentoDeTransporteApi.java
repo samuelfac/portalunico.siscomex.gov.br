@@ -1,7 +1,7 @@
 package br.gov.siscomex.portalunico.cct_ext.api;
 
-import br.gov.siscomex.portalunico.cct_ext.model.DocumentosTransporte;
 import br.gov.siscomex.portalunico.cct_ext.model.EntregasDocumentoTransporte;
+import br.gov.siscomex.portalunico.cct_ext.model.ListaDocumentosTransporte;
 import br.gov.siscomex.portalunico.cct_ext.model.RecepcoesDocumentoTransporte;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,7 +41,7 @@ public interface DocumentoDeTransporteApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Consultar uma lista de Documento de Transporte do tipo DAT", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/consultar-dat/\">Exemplos de Respostas da Consulta DAT</a></p>", tags = {"Documento de Transporte"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ListaDocumentosTransporte.class),
             @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
@@ -61,7 +61,7 @@ public interface DocumentoDeTransporteApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Consultar uma lista de Documento de Transporte do tipo DTAI", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/consultar-dtai/\">Exemplos de Respostas da Consulta DTAI</a></p>", tags = {"Documento de Transporte"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ListaDocumentosTransporte.class),
             @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
@@ -81,7 +81,7 @@ public interface DocumentoDeTransporteApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Consultar uma lista de Documento de Transporte do tipo MIC-DTA", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/consultar-mic/\">Exemplos de Respostas da Consulta MIC</a></p>", tags = {"Documento de Transporte"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ListaDocumentosTransporte.class),
             @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
@@ -101,7 +101,7 @@ public interface DocumentoDeTransporteApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Consultar uma lista de Documento de Transporte do tipo TIF-DTA", notes = "<p><a rel=\"noopener noreferrer\" href=\"../pages/exemplos/cctr/consultar-tif-dta/\">Exemplos de Respostas da Consulta TIF-DTA</a></p>", tags = {"Documento de Transporte"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = DocumentosTransporte.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ListaDocumentosTransporte.class),
             @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),

@@ -18,35 +18,35 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosLocalizaoLote {
 
     @XmlElement(name = "altura")
-    @ApiModelProperty(value = "Altura<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Altura<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20")
     /**
-     * Altura<br/>Tamanho: 20
+     * Altura<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20
      **/
     private String altura = null;
 
     @XmlElement(name = "fila")
-    @ApiModelProperty(value = "Fila<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Fila<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20")
     /**
-     * Fila<br/>Tamanho: 20
+     * Fila<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20
      **/
     private String fila = null;
 
     @XmlElement(name = "pilha")
-    @ApiModelProperty(value = "Pilha<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Pilha<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20")
     /**
-     * Pilha<br/>Tamanho: 20
+     * Pilha<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20
      **/
     private String pilha = null;
 
     @XmlElement(name = "quadra")
-    @ApiModelProperty(value = "Quadra<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Quadra<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20")
     /**
-     * Quadra<br/>Tamanho: 20
+     * Quadra<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'quadra', 'pilha', 'altura', 'fila'.<br/>Tamanho: 20
      **/
     private String quadra = null;
 
     /**
-     * Altura&lt;br/&gt;Tamanho: 20
+     * Altura&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;quadra&#39;, &#39;pilha&#39;, &#39;altura&#39;, &#39;fila&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return altura
      **/
@@ -65,7 +65,7 @@ public class DadosLocalizaoLote {
     }
 
     /**
-     * Fila&lt;br/&gt;Tamanho: 20
+     * Fila&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;quadra&#39;, &#39;pilha&#39;, &#39;altura&#39;, &#39;fila&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return fila
      **/
@@ -84,7 +84,7 @@ public class DadosLocalizaoLote {
     }
 
     /**
-     * Pilha&lt;br/&gt;Tamanho: 20
+     * Pilha&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;quadra&#39;, &#39;pilha&#39;, &#39;altura&#39;, &#39;fila&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return pilha
      **/
@@ -103,7 +103,7 @@ public class DadosLocalizaoLote {
     }
 
     /**
-     * Quadra&lt;br/&gt;Tamanho: 20
+     * Quadra&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;quadra&#39;, &#39;pilha&#39;, &#39;altura&#39;, &#39;fila&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return quadra
      **/

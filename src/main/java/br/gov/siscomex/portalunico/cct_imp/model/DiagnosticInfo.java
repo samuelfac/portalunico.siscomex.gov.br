@@ -170,7 +170,6 @@ public class DiagnosticInfo {
 
     /**
      * Get fluxo
-     *
      * @return fluxo
      **/
     @JsonProperty("fluxo")

@@ -14,18 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCargaContiner", propOrder =
-        {"cnpjCliente", "cnpjTransportador", "codigoRecintoDestino", "idElemento", "listaLacres", "listaManifestos", "numeroConteiner"
+        {"cnpjTransportador", "codigoRecintoDestino", "idElemento", "listaCnpjCliente", "listaLacres", "listaManifestos", "numeroConteiner"
         })
 
 @XmlRootElement(name = "DadosCargaContiner")
 public class DadosCargaContiner {
-
-    @XmlElement(name = "cnpjCliente")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do importador ou do exportador<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do importador ou do exportador<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpjCliente = null;
 
     @XmlElement(name = "cnpjTransportador")
     @ApiModelProperty(example = "44444444444444", value = "CNPJ do transportador<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
@@ -48,6 +41,14 @@ public class DadosCargaContiner {
      **/
     private String idElemento = null;
 
+    @XmlElement(name = "listaCnpjCliente")
+    @ApiModelProperty(value = "Lista CNPJ Cliente")
+    @Valid
+    /**
+     * Lista CNPJ Cliente
+     **/
+    private List<DadosDoCnpjDoCliente> listaCnpjCliente = null;
+
     @XmlElement(name = "listaLacres")
     @ApiModelProperty(value = "Lista de lacres")
     @Valid
@@ -62,7 +63,7 @@ public class DadosCargaContiner {
     /**
      * Lista de manifestos.
      **/
-    private List<DadosDoManisfestoDaCargaSimplificado> listaManifestos = null;
+    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
 
     @XmlElement(name = "numeroConteiner")
     @ApiModelProperty(value = "Número do contêiner a ser removido<br/>Tamanho: 200")
@@ -70,25 +71,6 @@ public class DadosCargaContiner {
      * Número do contêiner a ser removido<br/>Tamanho: 200
      **/
     private String numeroConteiner = null;
-
-    /**
-     * CNPJ do importador ou do exportador&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
-     * @return cnpjCliente
-     **/
-    @JsonProperty("cnpjCliente")
-    public String getCnpjCliente() {
-        return cnpjCliente;
-    }
-
-    public void setCnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
-    }
-
-    public DadosCargaContiner cnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
-        return this;
-    }
 
     /**
      * CNPJ do transportador&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
@@ -149,6 +131,30 @@ public class DadosCargaContiner {
     }
 
     /**
+     * Lista CNPJ Cliente
+     *
+     * @return listaCnpjCliente
+     **/
+    @JsonProperty("listaCnpjCliente")
+    public List<DadosDoCnpjDoCliente> getListaCnpjCliente() {
+        return listaCnpjCliente;
+    }
+
+    public void setListaCnpjCliente(List<DadosDoCnpjDoCliente> listaCnpjCliente) {
+        this.listaCnpjCliente = listaCnpjCliente;
+    }
+
+    public DadosCargaContiner listaCnpjCliente(List<DadosDoCnpjDoCliente> listaCnpjCliente) {
+        this.listaCnpjCliente = listaCnpjCliente;
+        return this;
+    }
+
+    public DadosCargaContiner addListaCnpjClienteItem(DadosDoCnpjDoCliente listaCnpjClienteItem) {
+        this.listaCnpjCliente.add(listaCnpjClienteItem);
+        return this;
+    }
+
+    /**
      * Lista de lacres
      *
      * @return listaLacres
@@ -178,20 +184,20 @@ public class DadosCargaContiner {
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
-    public List<DadosDoManisfestoDaCargaSimplificado> getListaManifestos() {
+    public List<DadosDoManifestoDaCargaSimplificado> getListaManifestos() {
         return listaManifestos;
     }
 
-    public void setListaManifestos(List<DadosDoManisfestoDaCargaSimplificado> listaManifestos) {
+    public void setListaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
         this.listaManifestos = listaManifestos;
     }
 
-    public DadosCargaContiner listaManifestos(List<DadosDoManisfestoDaCargaSimplificado> listaManifestos) {
+    public DadosCargaContiner listaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
         this.listaManifestos = listaManifestos;
         return this;
     }
 
-    public DadosCargaContiner addListaManifestosItem(DadosDoManisfestoDaCargaSimplificado listaManifestosItem) {
+    public DadosCargaContiner addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
         this.listaManifestos.add(listaManifestosItem);
         return this;
     }
@@ -220,10 +226,10 @@ public class DadosCargaContiner {
     public String toString() {
 
         String sb = "class DadosCargaContiner {\n" +
-                "    cnpjCliente: " + toIndentedString(cnpjCliente) + "\n" +
                 "    cnpjTransportador: " + toIndentedString(cnpjTransportador) + "\n" +
                 "    codigoRecintoDestino: " + toIndentedString(codigoRecintoDestino) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    listaCnpjCliente: " + toIndentedString(listaCnpjCliente) + "\n" +
                 "    listaLacres: " + toIndentedString(listaLacres) + "\n" +
                 "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +

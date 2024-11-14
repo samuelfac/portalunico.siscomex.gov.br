@@ -25,9 +25,9 @@ import javax.xml.bind.annotation.XmlType;
 public class MemoriaCalculoItemCover {
 
     @XmlElement(name = "codigoFundamentoLegalNormal")
-    @ApiModelProperty(example = "1001", value = "Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @ApiModelProperty(example = "1001", value = "Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.")
     /**
-     * Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
      **/
     private Integer codigoFundamentoLegalNormal = null;
 
@@ -155,7 +155,7 @@ public class MemoriaCalculoItemCover {
     private Double percentualPagamento = null;
 
     /**
-     * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
      *
      * @return codigoFundamentoLegalNormal
      **/

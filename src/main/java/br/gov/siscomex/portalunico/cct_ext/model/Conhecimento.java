@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Conhecimento", propOrder =
-        {"numero", "dataEmissao", "frete", "carga", "documentosAnexo"
+        {"numeroConhecimento", "dataEmissaoConhecimento", "frete", "consignatario"
         })
 
 @XmlRootElement(name = "Conhecimento")
@@ -24,72 +24,67 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do conhecimento de carga")
 public class Conhecimento {
 
-    @XmlElement(name = "numero", required = true)
-    @ApiModelProperty(example = "BR123456789", required = true, value = "Número do conhecimento de carga<br>Tamanho: 20<br>Formato: PPNNNNNNNNNNNNNNNNNN, onde PP = sigla ISO/Alfa 2 do país")
+    @XmlElement(name = "numeroConhecimento", required = true)
+    @ApiModelProperty(example = "123456789", required = true, value = "Número do conhecimento de carga<br>Em uma mesma manifestação de embarque não podem ser inseridos conhecimentos de carga com o mesmo número.")
     /**
-     * Número do conhecimento de carga<br>Tamanho: 20<br>Formato: PPNNNNNNNNNNNNNNNNNN, onde PP = sigla ISO/Alfa 2 do país
+     * Número do conhecimento de carga<br>Em uma mesma manifestação de embarque não podem ser inseridos conhecimentos de carga com o mesmo número.
      **/
-    private String numero = null;
+    private String numeroConhecimento = null;
 
-    @XmlElement(name = "dataEmissao", required = true)
-    @ApiModelProperty(example = "2016-12-19", required = true, value = "Data de emissão do conhecimento de carga<br>Formato: AAAA-MM-DD")
+    @XmlElement(name = "dataEmissaoConhecimento", required = true)
+    @ApiModelProperty(example = "2016-12-19", required = true, value = "Data de emissão do conhecimento de carga")
     /**
-     * Data de emissão do conhecimento de carga<br>Formato: AAAA-MM-DD
+     * Data de emissão do conhecimento de carga
      **/
-    private String dataEmissao = null;
+    private String dataEmissaoConhecimento = null;
 
-    @XmlElement(name = "frete", required = true)
-    @ApiModelProperty(required = true, value = "")
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
     @Valid
     private Frete frete = null;
 
-    @XmlElement(name = "carga", required = true)
+    @XmlElement(name = "consignatario", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private Carga carga = null;
-
-    @XmlElement(name = "documentosAnexo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DocumentosAnexo documentosAnexo = null;
+    private Consignatario consignatario = null;
 
     /**
-     * Número do conhecimento de carga&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: PPNNNNNNNNNNNNNNNNNN, onde PP &#x3D; sigla ISO/Alfa 2 do país
+     * Número do conhecimento de carga&lt;br&gt;Em uma mesma manifestação de embarque não podem ser inseridos conhecimentos de carga com o mesmo número.
      *
-     * @return numero
+     * @return numeroConhecimento
      **/
-    @JsonProperty("numero")
+    @JsonProperty("numeroConhecimento")
     @NotNull
-    public String getNumero() {
-        return numero;
+    public String getNumeroConhecimento() {
+        return numeroConhecimento;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setNumeroConhecimento(String numeroConhecimento) {
+        this.numeroConhecimento = numeroConhecimento;
     }
 
-    public Conhecimento numero(String numero) {
-        this.numero = numero;
+    public Conhecimento numeroConhecimento(String numeroConhecimento) {
+        this.numeroConhecimento = numeroConhecimento;
         return this;
     }
 
     /**
-     * Data de emissão do conhecimento de carga&lt;br&gt;Formato: AAAA-MM-DD
+     * Data de emissão do conhecimento de carga
      *
-     * @return dataEmissao
+     * @return dataEmissaoConhecimento
      **/
-    @JsonProperty("dataEmissao")
+    @JsonProperty("dataEmissaoConhecimento")
     @NotNull
-    public String getDataEmissao() {
-        return dataEmissao;
+    public String getDataEmissaoConhecimento() {
+        return dataEmissaoConhecimento;
     }
 
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public void setDataEmissaoConhecimento(String dataEmissaoConhecimento) {
+        this.dataEmissaoConhecimento = dataEmissaoConhecimento;
     }
 
-    public Conhecimento dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public Conhecimento dataEmissaoConhecimento(String dataEmissaoConhecimento) {
+        this.dataEmissaoConhecimento = dataEmissaoConhecimento;
         return this;
     }
 
@@ -99,7 +94,6 @@ public class Conhecimento {
      * @return frete
      **/
     @JsonProperty("frete")
-    @NotNull
     public Frete getFrete() {
         return frete;
     }
@@ -114,41 +108,22 @@ public class Conhecimento {
     }
 
     /**
-     * Get carga
+     * Get consignatario
      *
-     * @return carga
+     * @return consignatario
      **/
-    @JsonProperty("carga")
+    @JsonProperty("consignatario")
     @NotNull
-    public Carga getCarga() {
-        return carga;
+    public Consignatario getConsignatario() {
+        return consignatario;
     }
 
-    public void setCarga(Carga carga) {
-        this.carga = carga;
+    public void setConsignatario(Consignatario consignatario) {
+        this.consignatario = consignatario;
     }
 
-    public Conhecimento carga(Carga carga) {
-        this.carga = carga;
-        return this;
-    }
-
-    /**
-     * Get documentosAnexo
-     *
-     * @return documentosAnexo
-     **/
-    @JsonProperty("documentosAnexo")
-    public DocumentosAnexo getDocumentosAnexo() {
-        return documentosAnexo;
-    }
-
-    public void setDocumentosAnexo(DocumentosAnexo documentosAnexo) {
-        this.documentosAnexo = documentosAnexo;
-    }
-
-    public Conhecimento documentosAnexo(DocumentosAnexo documentosAnexo) {
-        this.documentosAnexo = documentosAnexo;
+    public Conhecimento consignatario(Consignatario consignatario) {
+        this.consignatario = consignatario;
         return this;
     }
 
@@ -157,11 +132,10 @@ public class Conhecimento {
     public String toString() {
 
         String sb = "class Conhecimento {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    numeroConhecimento: " + toIndentedString(numeroConhecimento) + "\n" +
+                "    dataEmissaoConhecimento: " + toIndentedString(dataEmissaoConhecimento) + "\n" +
                 "    frete: " + toIndentedString(frete) + "\n" +
-                "    carga: " + toIndentedString(carga) + "\n" +
-                "    documentosAnexo: " + toIndentedString(documentosAnexo) + "\n" +
+                "    consignatario: " + toIndentedString(consignatario) + "\n" +
                 "}";
         return sb;
     }

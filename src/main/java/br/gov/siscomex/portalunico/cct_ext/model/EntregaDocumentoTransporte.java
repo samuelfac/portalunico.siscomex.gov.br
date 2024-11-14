@@ -58,7 +58,7 @@ public class EntregaDocumentoTransporte {
     /**
      * Dados dos documentos de transporte
      **/
-    private List<DocumentosTransporte> documentosTransporte = new ArrayList<>();
+    private List<DocumentoTransporteCover> documentosTransporte = new ArrayList<>();
 
     @XmlElement(name = "transitoSimplificado")
     @ApiModelProperty(value = "")
@@ -150,20 +150,20 @@ public class EntregaDocumentoTransporte {
      **/
     @JsonProperty("documentosTransporte")
     @NotNull
-    public List<DocumentosTransporte> getDocumentosTransporte() {
+    public List<DocumentoTransporteCover> getDocumentosTransporte() {
         return documentosTransporte;
     }
 
-    public void setDocumentosTransporte(List<DocumentosTransporte> documentosTransporte) {
+    public void setDocumentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
         this.documentosTransporte = documentosTransporte;
     }
 
-    public EntregaDocumentoTransporte documentosTransporte(List<DocumentosTransporte> documentosTransporte) {
+    public EntregaDocumentoTransporte documentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
         this.documentosTransporte = documentosTransporte;
         return this;
     }
 
-    public EntregaDocumentoTransporte addDocumentosTransporteItem(DocumentosTransporte documentosTransporteItem) {
+    public EntregaDocumentoTransporte addDocumentosTransporteItem(DocumentoTransporteCover documentosTransporteItem) {
         this.documentosTransporte.add(documentosTransporteItem);
         return this;
     }

@@ -130,40 +130,40 @@ public class DadosAgendaOperaoNaviosAeronaves {
     @XmlElement(name = "navio")
     @ApiModelProperty(value = "")
     @Valid
-    private DadosNavio navio = null;
+    private DadosNavioAgenda navio = null;
 
     @XmlElement(name = "iataAeronave")
-    @ApiModelProperty(value = "Código IATA da Aeronave<br/>Tamanho: 50")
+    @ApiModelProperty(value = "Código IATA da Aeronave<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 50")
     /**
-     * Código IATA da Aeronave<br/>Tamanho: 50
+     * Código IATA da Aeronave<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 50
      **/
     private String iataAeronave = null;
 
     @XmlElement(name = "prefixoAeronave")
-    @ApiModelProperty(value = "Prefixo da aeronave<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Prefixo da aeronave<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 20")
     /**
-     * Prefixo da aeronave<br/>Tamanho: 20
+     * Prefixo da aeronave<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 20
      **/
     private String prefixoAeronave = null;
 
-    @XmlElement(name = "viagem")
-    @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20")
+    @XmlElement(name = "viagem", required = true)
+    @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", required = true, value = "<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20")
     /**
      * <br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.<br/>Tamanho: 20
      **/
     private String viagem = null;
 
     @XmlElement(name = "voo")
-    @ApiModelProperty(value = "Vôo<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Vôo<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 20")
     /**
-     * Vôo<br/>Tamanho: 20
+     * Vôo<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 20
      **/
     private String voo = null;
 
     @XmlElement(name = "escala")
-    @ApiModelProperty(value = "Escala<br/>Tamanho: 20")
+    @ApiModelProperty(value = "Escala<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 20")
     /**
-     * Escala<br/>Tamanho: 20
+     * Escala<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: ('navio.imo', 'navio.nome' e 'escala') ou ('iataAeronave', 'prefixoAeronave' e 'voo')<br/>Tamanho: 20
      **/
     private String escala = null;
 
@@ -366,21 +366,21 @@ public class DadosAgendaOperaoNaviosAeronaves {
      * @return navio
      **/
     @JsonProperty("navio")
-    public DadosNavio getNavio() {
+    public DadosNavioAgenda getNavio() {
         return navio;
     }
 
-    public void setNavio(DadosNavio navio) {
+    public void setNavio(DadosNavioAgenda navio) {
         this.navio = navio;
     }
 
-    public DadosAgendaOperaoNaviosAeronaves navio(DadosNavio navio) {
+    public DadosAgendaOperaoNaviosAeronaves navio(DadosNavioAgenda navio) {
         this.navio = navio;
         return this;
     }
 
     /**
-     * Código IATA da Aeronave&lt;br/&gt;Tamanho: 50
+     * Código IATA da Aeronave&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: (&#39;navio.imo&#39;, &#39;navio.nome&#39; e &#39;escala&#39;) ou (&#39;iataAeronave&#39;, &#39;prefixoAeronave&#39; e &#39;voo&#39;)&lt;br/&gt;Tamanho: 50
      * @return iataAeronave
      **/
     @JsonProperty("iataAeronave")
@@ -398,7 +398,7 @@ public class DadosAgendaOperaoNaviosAeronaves {
     }
 
     /**
-     * Prefixo da aeronave&lt;br/&gt;Tamanho: 20
+     * Prefixo da aeronave&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: (&#39;navio.imo&#39;, &#39;navio.nome&#39; e &#39;escala&#39;) ou (&#39;iataAeronave&#39;, &#39;prefixoAeronave&#39; e &#39;voo&#39;)&lt;br/&gt;Tamanho: 20
      * @return prefixoAeronave
      **/
     @JsonProperty("prefixoAeronave")
@@ -420,6 +420,7 @@ public class DadosAgendaOperaoNaviosAeronaves {
      * @return viagem
      **/
     @JsonProperty("viagem")
+    @NotNull
     public String getViagem() {
         return viagem;
     }
@@ -434,7 +435,7 @@ public class DadosAgendaOperaoNaviosAeronaves {
     }
 
     /**
-     * Vôo&lt;br/&gt;Tamanho: 20
+     * Vôo&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: (&#39;navio.imo&#39;, &#39;navio.nome&#39; e &#39;escala&#39;) ou (&#39;iataAeronave&#39;, &#39;prefixoAeronave&#39; e &#39;voo&#39;)&lt;br/&gt;Tamanho: 20
      * @return voo
      **/
     @JsonProperty("voo")
@@ -452,7 +453,7 @@ public class DadosAgendaOperaoNaviosAeronaves {
     }
 
     /**
-     * Escala&lt;br/&gt;Tamanho: 20
+     * Escala&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o valor para pelo menos um dos seguintes grupos de atributos: (&#39;navio.imo&#39;, &#39;navio.nome&#39; e &#39;escala&#39;) ou (&#39;iataAeronave&#39;, &#39;prefixoAeronave&#39; e &#39;voo&#39;)&lt;br/&gt;Tamanho: 20
      * @return escala
      **/
     @JsonProperty("escala")

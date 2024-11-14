@@ -4,79 +4,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Veiculo", propOrder =
-        {"placa", "lacres"
+        {"chassi"
         })
 
 @XmlRootElement(name = "Veiculo")
 /**
- * Dados do veículo
+ * Dados informados para carga do tipo veículos
  **/
-@ApiModel(description = "Dados do veículo")
+@ApiModel(description = "Dados informados para carga do tipo veículos")
 public class Veiculo {
 
-    @XmlElement(name = "placa")
-    @ApiModelProperty(example = "TTT1234", value = "Placa do veículo<br>Tamanho: 15")
+    @XmlElement(name = "chassi", required = true)
+    @ApiModelProperty(example = "9BWZZZ377VT004251 ", required = true, value = "Chassi do veículo<br>Tamanho: 20")
     /**
-     * Placa do veículo<br>Tamanho: 15
+     * Chassi do veículo<br>Tamanho: 20
      **/
-    private String placa = null;
-
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(example = "[12345,54321]", value = "Lista com os códigos dos lacres vinculados ao veículo<br>Tamanho de cada lacre: 15")
-    /**
-     * Lista com os códigos dos lacres vinculados ao veículo<br>Tamanho de cada lacre: 15
-     **/
-    private List<String> lacres = null;
+    private String chassi = null;
 
     /**
-     * Placa do veículo&lt;br&gt;Tamanho: 15
+     * Chassi do veículo&lt;br&gt;Tamanho: 20
      *
-     * @return placa
+     * @return chassi
      **/
-    @JsonProperty("placa")
-    public String getPlaca() {
-        return placa;
+    @JsonProperty("chassi")
+    @NotNull
+    public String getChassi() {
+        return chassi;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 
-    public Veiculo placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
-
-    /**
-     * Lista com os códigos dos lacres vinculados ao veículo&lt;br&gt;Tamanho de cada lacre: 15
-     *
-     * @return lacres
-     **/
-    @JsonProperty("lacres")
-    public List<String> getLacres() {
-        return lacres;
-    }
-
-    public void setLacres(List<String> lacres) {
-        this.lacres = lacres;
-    }
-
-    public Veiculo lacres(List<String> lacres) {
-        this.lacres = lacres;
-        return this;
-    }
-
-    public Veiculo addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
+    public Veiculo chassi(String chassi) {
+        this.chassi = chassi;
         return this;
     }
 
@@ -85,8 +55,7 @@ public class Veiculo {
     public String toString() {
 
         String sb = "class Veiculo {\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
+                "    chassi: " + toIndentedString(chassi) + "\n" +
                 "}";
         return sb;
     }

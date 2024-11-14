@@ -135,8 +135,8 @@ public class DadosArmazenamentoLote {
      **/
     private String numeroLote = null;
 
-    @XmlElement(name = "quantidadeVolumesLote")
-    @ApiModelProperty(value = "Quantidade de volumes do lote")
+    @XmlElement(name = "quantidadeVolumesLote", required = true)
+    @ApiModelProperty(required = true, value = "Quantidade de volumes do lote")
     /**
      * Quantidade de volumes do lote
      **/
@@ -147,8 +147,8 @@ public class DadosArmazenamentoLote {
     @Valid
     private DadosLocalizaoArmazenamentoLote localizacao = null;
 
-    @XmlElement(name = "areaArmazenamento")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    @XmlElement(name = "areaArmazenamento", required = true)
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
     /**
      * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
      **/
@@ -366,6 +366,7 @@ public class DadosArmazenamentoLote {
      * @return quantidadeVolumesLote
      **/
     @JsonProperty("quantidadeVolumesLote")
+    @NotNull
     public Integer getQuantidadeVolumesLote() {
         return quantidadeVolumesLote;
     }
@@ -402,6 +403,7 @@ public class DadosArmazenamentoLote {
      * @return areaArmazenamento
      **/
     @JsonProperty("areaArmazenamento")
+    @NotNull
     public String getAreaArmazenamento() {
         return areaArmazenamento;
     }

@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosPosioVeculoPtio", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "placa", "listaChassi", "listaSemirreboque", "listaConteineresUld", "box", "conferenciaFisica", "orgaoSolicitante", "avaria", "areaVeiculos", "listaCameras"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "listaManifestos", "placa", "vazio", "listaChassi", "listaSemirreboque", "listaConteineresUld", "box", "conferenciaFisica", "orgaoSolicitante", "avaria", "areaVeiculos", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosPosioVeculoPtio")
@@ -134,20 +134,27 @@ public class DadosPosioVeculoPtio {
     /**
      * Lista de manifestos.
      **/
-    private List<DadosDoManisfestoDaCarga> listaManifestos = null;
+    private List<DadosDoManifestoDaCarga> listaManifestos = null;
 
-    @XmlElement(name = "placa", required = true)
-    @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/> Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'placa' seja informado quando o atributo 'listaChassi.chassi' não for informado.")
     /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). <br/> Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'placa' seja informado quando o atributo 'listaChassi.chassi' não for informado.
      **/
     private String placa = null;
 
+    @XmlElement(name = "vazio")
+    @ApiModelProperty(example = "false", value = "Indicador de veículo vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'vazio' seja informado quando o atributo 'placa' for informado.")
+    /**
+     * Indicador de veículo vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'vazio' seja informado quando o atributo 'placa' for informado.
+     **/
+    private Boolean vazio = null;
+
     @XmlElement(name = "listaChassi")
-    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50")
+    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<br/>Tamanho: 50")
     @Valid
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<br/>Tamanho: 50
      **/
     private List<DadosDoChassi> listaChassi = null;
 
@@ -195,8 +202,8 @@ public class DadosPosioVeculoPtio {
      **/
     private Boolean avaria = null;
 
-    @XmlElement(name = "areaVeiculos")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36")
+    @XmlElement(name = "areaVeiculos", required = true)
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36")
     /**
      * Identificação da área de posicionamento dos veículos. Usar o protocolo do Evento de Georreferenciamento relativo ao ponto de acesso utilizado.<br/>Tamanho: 36
      **/
@@ -395,30 +402,29 @@ public class DadosPosioVeculoPtio {
      * @return listaManifestos
      **/
     @JsonProperty("listaManifestos")
-    public List<DadosDoManisfestoDaCarga> getListaManifestos() {
+    public List<DadosDoManifestoDaCarga> getListaManifestos() {
         return listaManifestos;
     }
 
-    public void setListaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public void setListaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
     }
 
-    public DadosPosioVeculoPtio listaManifestos(List<DadosDoManisfestoDaCarga> listaManifestos) {
+    public DadosPosioVeculoPtio listaManifestos(List<DadosDoManifestoDaCarga> listaManifestos) {
         this.listaManifestos = listaManifestos;
         return this;
     }
 
-    public DadosPosioVeculoPtio addListaManifestosItem(DadosDoManisfestoDaCarga listaManifestosItem) {
+    public DadosPosioVeculoPtio addListaManifestosItem(DadosDoManifestoDaCarga listaManifestosItem) {
         this.listaManifestos.add(listaManifestosItem);
         return this;
     }
 
     /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva). &lt;br/&gt; Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;placa&#39; seja informado quando o atributo &#39;listaChassi.chassi&#39; não for informado.
      * @return placa
      **/
     @JsonProperty("placa")
-    @NotNull
     public String getPlaca() {
         return placa;
     }
@@ -433,7 +439,26 @@ public class DadosPosioVeculoPtio {
     }
 
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
+     * Indicador de veículo vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;vazio&#39; seja informado quando o atributo &#39;placa&#39; for informado.
+     *
+     * @return vazio
+     **/
+    @JsonProperty("vazio")
+    public Boolean isVazio() {
+        return vazio;
+    }
+
+    public void setVazio(Boolean vazio) {
+        this.vazio = vazio;
+    }
+
+    public DadosPosioVeculoPtio vazio(Boolean vazio) {
+        this.vazio = vazio;
+        return this;
+    }
+
+    /**
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).&lt;br/&gt;Tamanho: 50
      * @return listaChassi
      **/
     @JsonProperty("listaChassi")
@@ -481,7 +506,6 @@ public class DadosPosioVeculoPtio {
 
     /**
      * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
-     *
      * @return listaConteineresUld
      **/
     @JsonProperty("listaConteineresUld")
@@ -581,6 +605,7 @@ public class DadosPosioVeculoPtio {
      * @return areaVeiculos
      **/
     @JsonProperty("areaVeiculos")
+    @NotNull
     public String getAreaVeiculos() {
         return areaVeiculos;
     }
@@ -633,6 +658,7 @@ public class DadosPosioVeculoPtio {
                 "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
                 "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    vazio: " + toIndentedString(vazio) + "\n" +
                 "    listaChassi: " + toIndentedString(listaChassi) + "\n" +
                 "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
                 "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +

@@ -167,8 +167,8 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
         }
     }
 
-    @XmlElement(name = "status")
-    @ApiModelProperty(example = "B", value = "Informar bloqueio ou desbloqueio.<br/>Domínio:<br/>B - Bloqueio<br/>D - Desbloqueio")
+    @XmlElement(name = "status", required = true)
+    @ApiModelProperty(example = "B", required = true, value = "Informar bloqueio ou desbloqueio.<br/>Domínio:<br/>B - Bloqueio<br/>D - Desbloqueio")
     /**
      * Informar bloqueio ou desbloqueio.<br/>Domínio:<br/>B - Bloqueio<br/>D - Desbloqueio
      **/
@@ -299,8 +299,8 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
      **/
     private List<DadosDaIdentificaoDoLote> listaLotes = null;
 
-    @XmlElement(name = "solicitante")
-    @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    @XmlElement(name = "solicitante", required = true)
+    @ApiModelProperty(example = "ANCINE", required = true, value = "Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
      * Indicar qual o interveniente que solicitou o bloqueio ou desbloqueio. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
@@ -313,8 +313,8 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
      **/
     private String setorSolicitante = null;
 
-    @XmlElement(name = "motivo")
-    @ApiModelProperty(value = "Motivação do bloqueio ou desbloqueio.<br/>Tamanho: 100")
+    @XmlElement(name = "motivo", required = true)
+    @ApiModelProperty(required = true, value = "Motivação do bloqueio ou desbloqueio.<br/>Tamanho: 100")
     /**
      * Motivação do bloqueio ou desbloqueio.<br/>Tamanho: 100
      **/
@@ -505,6 +505,7 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
      * @return status
      **/
     @JsonProperty("status")
+    @NotNull
     public String getStatus() {
         if (status == null) {
             return null;
@@ -733,6 +734,7 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
      * @return solicitante
      **/
     @JsonProperty("solicitante")
+    @NotNull
     public String getSolicitante() {
         return solicitante;
     }
@@ -769,6 +771,7 @@ public class DadosInformaoBloqueioDesbloqueioVeculoCarga {
      * @return motivo
      **/
     @JsonProperty("motivo")
+    @NotNull
     public String getMotivo() {
         return motivo;
     }

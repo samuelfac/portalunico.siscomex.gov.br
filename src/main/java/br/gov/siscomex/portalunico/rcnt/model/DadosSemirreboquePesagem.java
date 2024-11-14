@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosSemirreboquePesagem", propOrder =
-        {"idElemento", "placa", "tara"
+        {"idElemento", "ocrPlaca", "placa", "tara"
         })
 
 @XmlRootElement(name = "DadosSemirreboquePesagem")
@@ -27,6 +27,13 @@ public class DadosSemirreboquePesagem {
      **/
     private String idElemento = null;
 
+    @XmlElement(name = "ocrPlaca")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaSemirreboque.ocrPlaca' quando o atributo 'listaSemirreboque.placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaSemirreboque.ocrPlaca' quando o atributo 'listaSemirreboque.placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean ocrPlaca = null;
+
     @XmlElement(name = "placa")
     @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
     /**
@@ -35,10 +42,10 @@ public class DadosSemirreboquePesagem {
     private String placa = null;
 
     @XmlElement(name = "tara")
-    @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/><br/>tara, até 4 casas decimais.")
+    @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>tara, até 4 casas decimais.")
     @Valid
     /**
-     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<br/>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/><br/>tara, até 4 casas decimais.
+     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>tara, até 4 casas decimais.
      **/
     private BigDecimal tara = null;
 
@@ -63,6 +70,25 @@ public class DadosSemirreboquePesagem {
     }
 
     /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;listaSemirreboque.ocrPlaca&#39; quando o atributo &#39;listaSemirreboque.placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return ocrPlaca
+     **/
+    @JsonProperty("ocrPlaca")
+    public Boolean isOcrPlaca() {
+        return ocrPlaca;
+    }
+
+    public void setOcrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+    }
+
+    public DadosSemirreboquePesagem ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+        return this;
+    }
+
+    /**
      * Placa&lt;br/&gt;Tamanho: 50
      *
      * @return placa
@@ -82,7 +108,7 @@ public class DadosSemirreboquePesagem {
     }
 
     /**
-     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;br/&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;&lt;br/&gt;tara, até 4 casas decimais.
+     * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;tara, até 4 casas decimais.
      *
      * @return tara
      **/
@@ -106,6 +132,7 @@ public class DadosSemirreboquePesagem {
 
         String sb = "class DadosSemirreboquePesagem {\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
                 "}";

@@ -128,16 +128,16 @@ public class DadosAtribuioTrocaNavio {
     private String codigoRecinto = null;
 
     @XmlElement(name = "numeroConteiner")
-    @ApiModelProperty(value = "Identificação do número do contêiner.<br/>É obrigatório que o atributo 'numeroConteiner' seja informado quando o atributo 'numeroLote' não for informado.<br/>Tamanho: 200")
+    @ApiModelProperty(value = "Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'numeroConteiner' seja informado quando o atributo 'numeroLote' não for informado.<br/>Tamanho: 200")
     /**
-     * Identificação do número do contêiner.<br/>É obrigatório que o atributo 'numeroConteiner' seja informado quando o atributo 'numeroLote' não for informado.<br/>Tamanho: 200
+     * Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'numeroConteiner' seja informado quando o atributo 'numeroLote' não for informado.<br/>Tamanho: 200
      **/
     private String numeroConteiner = null;
 
     @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>É obrigatório que o atributo 'numeroLote' seja informado quando o atributo 'numeroConteiner' não for informado.<br/>Tamanho: 100")
+    @ApiModelProperty(value = "Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'numeroLote' seja informado quando o atributo 'numeroConteiner' não for informado.<br/>Tamanho: 100")
     /**
-     * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>É obrigatório que o atributo 'numeroLote' seja informado quando o atributo 'numeroConteiner' não for informado.<br/>Tamanho: 100
+     * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'numeroLote' seja informado quando o atributo 'numeroConteiner' não for informado.<br/>Tamanho: 100
      **/
     private String numeroLote = null;
 
@@ -354,7 +354,7 @@ public class DadosAtribuioTrocaNavio {
     }
 
     /**
-     * Identificação do número do contêiner.&lt;br/&gt;É obrigatório que o atributo &#39;numeroConteiner&#39; seja informado quando o atributo &#39;numeroLote&#39; não for informado.&lt;br/&gt;Tamanho: 200
+     * Identificação do número do contêiner.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;numeroConteiner&#39; seja informado quando o atributo &#39;numeroLote&#39; não for informado.&lt;br/&gt;Tamanho: 200
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -372,7 +372,7 @@ public class DadosAtribuioTrocaNavio {
     }
 
     /**
-     * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;É obrigatório que o atributo &#39;numeroLote&#39; seja informado quando o atributo &#39;numeroConteiner&#39; não for informado.&lt;br/&gt;Tamanho: 100
+     * Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;numeroLote&#39; seja informado quando o atributo &#39;numeroConteiner&#39; não for informado.&lt;br/&gt;Tamanho: 100
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
