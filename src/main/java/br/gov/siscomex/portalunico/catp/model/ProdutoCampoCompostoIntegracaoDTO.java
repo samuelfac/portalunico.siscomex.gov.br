@@ -36,6 +36,17 @@ public class ProdutoCampoCompostoIntegracaoDTO {
     private String atributo = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Lista de atributos compostos limitado a quantide 5
      *
      * @return valores
@@ -79,7 +90,6 @@ public class ProdutoCampoCompostoIntegracaoDTO {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -89,16 +99,4 @@ public class ProdutoCampoCompostoIntegracaoDTO {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

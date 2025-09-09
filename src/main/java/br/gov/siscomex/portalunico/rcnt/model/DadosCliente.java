@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCliente", propOrder =
-        {"cnpjCliente", "cpfCliente", "idElemento", "nomeCliente"
+        {"cpfCliente", "cnpjCliente", "idElemento", "nomeCliente"
         })
 
 @XmlRootElement(name = "DadosCliente")
 public class DadosCliente {
-
-    @XmlElement(name = "cnpjCliente")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpjCliente = null;
 
     @XmlElement(name = "cpfCliente")
     @ApiModelProperty(example = "55555555555", value = "CPF do Cliente da estadia.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -31,6 +24,13 @@ public class DadosCliente {
      * CPF do Cliente da estadia.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfCliente = null;
+
+    @XmlElement(name = "cnpjCliente")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String cnpjCliente = null;
 
     @XmlElement(name = "idElemento", required = true)
     @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
@@ -47,22 +47,14 @@ public class DadosCliente {
     private String nomeCliente = null;
 
     /**
-     * CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
-     * @return cnpjCliente
-     **/
-    @JsonProperty("cnpjCliente")
-    public String getCnpjCliente() {
-        return cnpjCliente;
-    }
-
-    public void setCnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
-    }
-
-    public DadosCliente cnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -81,6 +73,25 @@ public class DadosCliente {
 
     public DadosCliente cpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
+        return this;
+    }
+
+    /**
+     * CNPJ do cliente da estadia. Cliente que contratou o serviço de estadia do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     *
+     * @return cnpjCliente
+     **/
+    @JsonProperty("cnpjCliente")
+    public String getCnpjCliente() {
+        return cnpjCliente;
+    }
+
+    public void setCnpjCliente(String cnpjCliente) {
+        this.cnpjCliente = cnpjCliente;
+    }
+
+    public DadosCliente cnpjCliente(String cnpjCliente) {
+        this.cnpjCliente = cnpjCliente;
         return this;
     }
 
@@ -123,28 +134,15 @@ public class DadosCliente {
         return this;
     }
 
-
     @Override
     public String toString() {
 
         String sb = "class DadosCliente {\n" +
-                "    cnpjCliente: " + toIndentedString(cnpjCliente) + "\n" +
                 "    cpfCliente: " + toIndentedString(cpfCliente) + "\n" +
+                "    cnpjCliente: " + toIndentedString(cnpjCliente) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    nomeCliente: " + toIndentedString(nomeCliente) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

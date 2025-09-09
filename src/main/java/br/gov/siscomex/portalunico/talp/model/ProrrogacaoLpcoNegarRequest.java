@@ -1,0 +1,151 @@
+package br.gov.siscomex.portalunico.talp.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ProrrogacaoLpcoNegarRequest", propOrder =
+        {"motivoAnalise", "justificativa", "faltaPagamentoTaxa", "novaDataFimVigencia"
+        })
+
+@XmlRootElement(name = "ProrrogacaoLpcoNegarRequest")
+/**
+ * Dados de uma solicitação de prorrogação de um LPCO
+ **/
+@ApiModel(description = "Dados de uma solicitação de prorrogação de um LPCO")
+public class ProrrogacaoLpcoNegarRequest {
+
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+     **/
+    private String motivoAnalise = null;
+
+    @XmlElement(name = "justificativa")
+    @ApiModelProperty(example = "Texto livre", value = "Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
+    /**
+     * Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
+     **/
+    private String justificativa = null;
+
+    @XmlElement(name = "faltaPagamentoTaxa")
+    @ApiModelProperty(example = "false", value = "Indica se o pagamento de taxa não efetuado")
+    /**
+     * Indica se o pagamento de taxa não efetuado
+     **/
+    private Boolean faltaPagamentoTaxa = null;
+
+    @XmlElement(name = "novaDataFimVigencia")
+    @ApiModelProperty(example = "2019-09-03", value = "Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd")
+    /**
+     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd
+     **/
+    private String novaDataFimVigencia = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+     *
+     * @return motivoAnalise
+     **/
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
+    }
+
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+    }
+
+    public ProrrogacaoLpcoNegarRequest motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+        return this;
+    }
+
+    /**
+     * Justificativa para a solicitação de prorrogação&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
+     *
+     * @return justificativa
+     **/
+    @JsonProperty("justificativa")
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
+    public ProrrogacaoLpcoNegarRequest justificativa(String justificativa) {
+        this.justificativa = justificativa;
+        return this;
+    }
+
+    /**
+     * Indica se o pagamento de taxa não efetuado
+     *
+     * @return faltaPagamentoTaxa
+     **/
+    @JsonProperty("faltaPagamentoTaxa")
+    public Boolean isisFaltaPagamentoTaxa() {
+        return faltaPagamentoTaxa;
+    }
+
+    public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+    }
+
+    public ProrrogacaoLpcoNegarRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+        return this;
+    }
+
+    /**
+     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return novaDataFimVigencia
+     **/
+    @JsonProperty("novaDataFimVigencia")
+    public String getNovaDataFimVigencia() {
+        return novaDataFimVigencia;
+    }
+
+    public void setNovaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
+    }
+
+    public ProrrogacaoLpcoNegarRequest novaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ProrrogacaoLpcoNegarRequest {\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
+                "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
+                "    novaDataFimVigencia: " + toIndentedString(novaDataFimVigencia) + "\n" +
+                "}";
+        return sb;
+    }
+}

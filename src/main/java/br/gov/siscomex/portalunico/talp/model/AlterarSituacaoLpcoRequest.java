@@ -1,0 +1,416 @@
+package br.gov.siscomex.portalunico.talp.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "AlterarSituacaoLpcoRequest", propOrder =
+        {"requerInspecao", "motivoAnalise", "situacao", "justificativa", "canal", "dataFinalVigencia", "faltaPagamentoTaxa", "dataInicioVigencia", "decisaoJudicial", "numeroOrgaoOrigem"
+        })
+
+@XmlRootElement(name = "AlterarSituacaoLpcoRequest")
+/**
+ * Dados a serem informados para realizar a alteração da situação de um LPCO
+ **/
+@ApiModel(description = "Dados a serem informados para realizar a alteração da situação de um LPCO")
+public class AlterarSituacaoLpcoRequest {
+
+    @XmlElement(name = "requerInspecao")
+    @ApiModelProperty(example = "false", value = "Indica se haverá necessidade de inspeção de carga")
+    /**
+     * Indica se haverá necessidade de inspeção de carga
+     **/
+    private Boolean requerInspecao = null;
+
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+     **/
+    private String motivoAnalise = null;
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(example = "EM_ANALISE", required = true, value = "Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50")
+    /**
+     * Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50
+     **/
+    private SituacaoEnum situacao = null;
+    @XmlElement(name = "justificativa")
+    @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
+    /**
+     * Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
+     **/
+    private String justificativa = null;
+    @XmlElement(name = "canal")
+    @ApiModelProperty(example = "VERDE", value = "Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>")
+    /**
+     * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>
+     **/
+    private CanalEnum canal = null;
+    @XmlElement(name = "dataFinalVigencia")
+    @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+    /**
+     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+     **/
+    private String dataFinalVigencia = null;
+    @XmlElement(name = "faltaPagamentoTaxa")
+    @ApiModelProperty(example = "false", value = "Indicador de pagamento de taxa não efetuado")
+    /**
+     * Indicador de pagamento de taxa não efetuado
+     **/
+    private Boolean faltaPagamentoTaxa = null;
+    @XmlElement(name = "dataInicioVigencia")
+    @ApiModelProperty(example = "2019-09-02", value = "Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+    /**
+     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+     **/
+    private String dataInicioVigencia = null;
+    @XmlElement(name = "decisaoJudicial")
+    @ApiModelProperty(example = "false", value = "Indicador de decisão judicial utilizado no deferimento")
+    /**
+     * Indicador de decisão judicial utilizado no deferimento
+     **/
+    private Boolean decisaoJudicial = null;
+    @XmlElement(name = "numeroOrgaoOrigem")
+    @ApiModelProperty(example = "EXA12345", value = "Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String numeroOrgaoOrigem = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Indica se haverá necessidade de inspeção de carga
+     *
+     * @return requerInspecao
+     **/
+    @JsonProperty("requerInspecao")
+    public Boolean isisRequerInspecao() {
+        return requerInspecao;
+    }
+
+    public void setRequerInspecao(Boolean requerInspecao) {
+        this.requerInspecao = requerInspecao;
+    }
+
+    public AlterarSituacaoLpcoRequest requerInspecao(Boolean requerInspecao) {
+        this.requerInspecao = requerInspecao;
+        return this;
+    }
+
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+     *
+     * @return motivoAnalise
+     **/
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
+    }
+
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+    }
+
+    public AlterarSituacaoLpcoRequest motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+        return this;
+    }
+
+    /**
+     * Código da nova situação do LPCO&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public String getSituacao() {
+        if (situacao == null) {
+            return null;
+        }
+        return situacao.value();
+    }
+
+    public void setSituacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
+    }
+
+    public AlterarSituacaoLpcoRequest situacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Justificativa para a alteração da situação do LPCO &lt;br&gt; Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
+     *
+     * @return justificativa
+     **/
+    @JsonProperty("justificativa")
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
+    public AlterarSituacaoLpcoRequest justificativa(String justificativa) {
+        this.justificativa = justificativa;
+        return this;
+    }
+
+    /**
+     * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO&lt;br&gt;
+     *
+     * @return canal
+     **/
+    @JsonProperty("canal")
+    public String getCanal() {
+        if (canal == null) {
+            return null;
+        }
+        return canal.value();
+    }
+
+    public void setCanal(CanalEnum canal) {
+        this.canal = canal;
+    }
+
+    public AlterarSituacaoLpcoRequest canal(CanalEnum canal) {
+        this.canal = canal;
+        return this;
+    }
+
+    /**
+     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return dataFinalVigencia
+     **/
+    @JsonProperty("dataFinalVigencia")
+    public String getDataFinalVigencia() {
+        return dataFinalVigencia;
+    }
+
+    public void setDataFinalVigencia(String dataFinalVigencia) {
+        this.dataFinalVigencia = dataFinalVigencia;
+    }
+
+    public AlterarSituacaoLpcoRequest dataFinalVigencia(String dataFinalVigencia) {
+        this.dataFinalVigencia = dataFinalVigencia;
+        return this;
+    }
+
+    /**
+     * Indicador de pagamento de taxa não efetuado
+     *
+     * @return faltaPagamentoTaxa
+     **/
+    @JsonProperty("faltaPagamentoTaxa")
+    public Boolean isisFaltaPagamentoTaxa() {
+        return faltaPagamentoTaxa;
+    }
+
+    public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+    }
+
+    public AlterarSituacaoLpcoRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+        return this;
+    }
+
+    /**
+     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return dataInicioVigencia
+     **/
+    @JsonProperty("dataInicioVigencia")
+    public String getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public AlterarSituacaoLpcoRequest dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+        return this;
+    }
+
+    /**
+     * Indicador de decisão judicial utilizado no deferimento
+     *
+     * @return decisaoJudicial
+     **/
+    @JsonProperty("decisaoJudicial")
+    public Boolean isisDecisaoJudicial() {
+        return decisaoJudicial;
+    }
+
+    public void setDecisaoJudicial(Boolean decisaoJudicial) {
+        this.decisaoJudicial = decisaoJudicial;
+    }
+
+    public AlterarSituacaoLpcoRequest decisaoJudicial(Boolean decisaoJudicial) {
+        this.decisaoJudicial = decisaoJudicial;
+        return this;
+    }
+
+    /**
+     * Número do LPCO no órgão anuente, se houver&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+     *
+     * @return numeroOrgaoOrigem
+     **/
+    @JsonProperty("numeroOrgaoOrigem")
+    public String getNumeroOrgaoOrigem() {
+        return numeroOrgaoOrigem;
+    }
+
+    public void setNumeroOrgaoOrigem(String numeroOrgaoOrigem) {
+        this.numeroOrgaoOrigem = numeroOrgaoOrigem;
+    }
+
+    public AlterarSituacaoLpcoRequest numeroOrgaoOrigem(String numeroOrgaoOrigem) {
+        this.numeroOrgaoOrigem = numeroOrgaoOrigem;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class AlterarSituacaoLpcoRequest {\n" +
+                "    requerInspecao: " + toIndentedString(requerInspecao) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    canal: " + toIndentedString(canal) + "\n" +
+                "    dataFinalVigencia: " + toIndentedString(dataFinalVigencia) + "\n" +
+                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
+                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
+                "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
+                "    numeroOrgaoOrigem: " + toIndentedString(numeroOrgaoOrigem) + "\n" +
+                "}";
+        return sb;
+    }
+
+
+    @XmlType(name = "SituacaoEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoEnum {
+
+        @XmlEnumValue("PARA_ANALISE")
+        @JsonProperty("PARA_ANALISE")
+        PARA_ANALISE("PARA_ANALISE"),
+
+        @XmlEnumValue("EM_ANALISE")
+        @JsonProperty("EM_ANALISE")
+        EM_ANALISE("EM_ANALISE"),
+
+        @XmlEnumValue("DEFERIDO")
+        @JsonProperty("DEFERIDO")
+        DEFERIDO("DEFERIDO"),
+
+        @XmlEnumValue("CANCELADO")
+        @JsonProperty("CANCELADO")
+        CANCELADO("CANCELADO"),
+
+        @XmlEnumValue("INDEFERIDO")
+        @JsonProperty("INDEFERIDO")
+        INDEFERIDO("INDEFERIDO"),
+
+        @XmlEnumValue("ANULADO_REVOGADO")
+        @JsonProperty("ANULADO_REVOGADO")
+        ANULADO_REVOGADO("ANULADO_REVOGADO"),
+
+        @XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
+        @JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
+        AUTORIZACAO_IMPORTACAO_EMITIDA("AUTORIZACAO_IMPORTACAO_EMITIDA");
+
+
+        private final String value;
+
+        SituacaoEnum(String v) {
+            value = v;
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "CanalEnum")
+    @XmlEnum(String.class)
+    public enum CanalEnum {
+
+        @XmlEnumValue("VERDE")
+        @JsonProperty("VERDE")
+        VERDE("VERDE"),
+
+        @XmlEnumValue("AMARELO")
+        @JsonProperty("AMARELO")
+        AMARELO("AMARELO"),
+
+        @XmlEnumValue("VERMELHO")
+        @JsonProperty("VERMELHO")
+        VERMELHO("VERMELHO");
+
+
+        private final String value;
+
+        CanalEnum(String v) {
+            value = v;
+        }
+
+        public static CanalEnum fromValue(String v) {
+            for (CanalEnum b : CanalEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+}

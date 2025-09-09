@@ -1,0 +1,180 @@
+package br.gov.siscomex.portalunico.cctr.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Consignatario", propOrder =
+        {"indConsignadoAOrdem", "endereco", "nome", "idEstrangeiro", "pais"
+        })
+
+@XmlRootElement(name = "Consignatario")
+/**
+ * Dados do consignatário
+ **/
+@ApiModel(description = "Dados do consignatário")
+public class Consignatario {
+
+    @XmlElement(name = "indConsignadoAOrdem", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Indicador To Order<br>Domínio: 1 (prepaid), 2 (collect).")
+    /**
+     * Indicador To Order<br>Domínio: 1 (prepaid), 2 (collect).
+     **/
+    private String indConsignadoAOrdem = null;
+
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(example = "Endereço do consignatário", value = "Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    /**
+     * Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     **/
+    private String endereco = null;
+
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Nome do consignatário", value = "Nome do consignatário<br>Tamanho: 60<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    /**
+     * Nome do consignatário<br>Tamanho: 60<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     **/
+    private String nome = null;
+
+    @XmlElement(name = "idEstrangeiro")
+    @ApiModelProperty(example = "ABCD123456789", value = "Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    /**
+     * Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     **/
+    private String idEstrangeiro = null;
+
+    @XmlElement(name = "pais")
+    @ApiModelProperty(example = "AR", value = "Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
+    /**
+     * Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
+     **/
+    private String pais = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Indicador To Order&lt;br&gt;Domínio: 1 (prepaid), 2 (collect).
+     *
+     * @return indConsignadoAOrdem
+     **/
+    @JsonProperty("indConsignadoAOrdem")
+    @NotNull
+    public String getIndConsignadoAOrdem() {
+        return indConsignadoAOrdem;
+    }
+
+    public void setIndConsignadoAOrdem(String indConsignadoAOrdem) {
+        this.indConsignadoAOrdem = indConsignadoAOrdem;
+    }
+
+    public Consignatario indConsignadoAOrdem(String indConsignadoAOrdem) {
+        this.indConsignadoAOrdem = indConsignadoAOrdem;
+        return this;
+    }
+
+    /**
+     * Endereço do consignatário&lt;br&gt;Tamanho: 260&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Consignatario endereco(String endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    /**
+     * Nome do consignatário&lt;br&gt;Tamanho: 60&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Consignatario nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal do consignatário estrangeiro&lt;br&gt;Tamanho: 14&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     *
+     * @return idEstrangeiro
+     **/
+    @JsonProperty("idEstrangeiro")
+    public String getIdEstrangeiro() {
+        return idEstrangeiro;
+    }
+
+    public void setIdEstrangeiro(String idEstrangeiro) {
+        this.idEstrangeiro = idEstrangeiro;
+    }
+
+    public Consignatario idEstrangeiro(String idEstrangeiro) {
+        this.idEstrangeiro = idEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Sigla do país de origem do consignatário&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
+     *
+     * @return pais
+     **/
+    @JsonProperty("pais")
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public Consignatario pais(String pais) {
+        this.pais = pais;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class Consignatario {\n" +
+                "    indConsignadoAOrdem: " + toIndentedString(indConsignadoAOrdem) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    idEstrangeiro: " + toIndentedString(idEstrangeiro) + "\n" +
+                "    pais: " + toIndentedString(pais) + "\n" +
+                "}";
+        return sb;
+    }
+}

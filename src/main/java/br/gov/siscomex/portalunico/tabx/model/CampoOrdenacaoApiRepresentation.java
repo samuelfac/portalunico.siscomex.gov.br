@@ -33,52 +33,23 @@ public class CampoOrdenacaoApiRepresentation {
      * Nome do campo.
      **/
     private String nome = null;
-
-
-    @XmlType(name = "TipoOrdenacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOrdenacaoEnum {
-
-        @XmlEnumValue("ASC")
-        @JsonProperty("ASC")
-        ASC("ASC"),
-
-        @XmlEnumValue("DESC")
-        @JsonProperty("DESC")
-        DESC("DESC");
-
-
-        private final String value;
-
-        TipoOrdenacaoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoOrdenacaoEnum fromValue(String v) {
-            for (TipoOrdenacaoEnum b : TipoOrdenacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOrdenacaoEnum");
-        }
-    }
-
     @XmlElement(name = "tipoOrdenacao")
     @ApiModelProperty(example = "DESC", value = "Tipo de ordenação.<br>Domínio:")
     /**
      * Tipo de ordenação.<br>Domínio:
      **/
     private TipoOrdenacaoEnum tipoOrdenacao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Nome da tabela.
@@ -154,15 +125,41 @@ public class CampoOrdenacaoApiRepresentation {
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoOrdenacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOrdenacaoEnum {
+
+        @XmlEnumValue("ASC")
+        @JsonProperty("ASC")
+        ASC("ASC"),
+
+        @XmlEnumValue("DESC")
+        @JsonProperty("DESC")
+        DESC("DESC");
+
+
+        private final String value;
+
+        TipoOrdenacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoOrdenacaoEnum fromValue(String v) {
+            for (TipoOrdenacaoEnum b : TipoOrdenacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOrdenacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

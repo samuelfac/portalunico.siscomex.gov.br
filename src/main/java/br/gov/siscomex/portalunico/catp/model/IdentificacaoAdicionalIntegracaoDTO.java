@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IdentificacaoAdicionalIntegracaoDTO", propOrder =
-        {"numero", "codigo"
+        {"codigo", "numero"
         })
 
 @XmlRootElement(name = "IdentificacaoAdicionalIntegracaoDTO")
 public class IdentificacaoAdicionalIntegracaoDTO {
-
-    @XmlElement(name = "numero", required = true)
-    @ApiModelProperty(example = "1232121212122", required = true, value = " Número de identificação do operador estrangeiro em uma agência internacional<br>Tamanho: 35")
-    /**
-     *  Número de identificação do operador estrangeiro em uma agência internacional<br>Tamanho: 35
-     **/
-    private String numero = null;
 
     @XmlElement(name = "codigo", required = true)
     @ApiModelProperty(example = "123", required = true, value = " Código da agência emissora da identificação. Os valores admitidos estão listados no campo \"Code\", na página a seguir: https://service.unece.org/trade/untdid/d20b/tred/tred3055.htm<br>Tamanho: 3")
@@ -32,24 +25,22 @@ public class IdentificacaoAdicionalIntegracaoDTO {
      **/
     private String codigo = null;
 
+    @XmlElement(name = "numero", required = true)
+    @ApiModelProperty(example = "1232121212122", required = true, value = " Número de identificação do operador estrangeiro em uma agência internacional<br>Tamanho: 35")
     /**
-     * Número de identificação do operador estrangeiro em uma agência internacional&lt;br&gt;Tamanho: 35
-     *
-     * @return numero
+     *  Número de identificação do operador estrangeiro em uma agência internacional<br>Tamanho: 35
      **/
-    @JsonProperty("numero")
-    @NotNull
-    public String getNumero() {
-        return numero;
-    }
+    private String numero = null;
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public IdentificacaoAdicionalIntegracaoDTO numero(String numero) {
-        this.numero = numero;
-        return this;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -72,26 +63,33 @@ public class IdentificacaoAdicionalIntegracaoDTO {
         return this;
     }
 
+    /**
+     * Número de identificação do operador estrangeiro em uma agência internacional&lt;br&gt;Tamanho: 35
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    @NotNull
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public IdentificacaoAdicionalIntegracaoDTO numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class IdentificacaoAdicionalIntegracaoDTO {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecepcaoComAvaria", propOrder =
-        {"avarias", "observacoesAvarias", "recinto"
+        {"avarias", "recinto", "observacoesAvarias"
         })
 
 @XmlRootElement(name = "RecepcaoComAvaria")
@@ -27,6 +27,13 @@ public class RecepcaoComAvaria {
      **/
     private List<Avaria> avarias = null;
 
+    @XmlElement(name = "recinto")
+    @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
+    /**
+     * Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos
+     **/
+    private String recinto = null;
+
     @XmlElement(name = "observacoesAvarias")
     @ApiModelProperty(value = "Lista as observações sobre as avarias na recepção<br/>")
     /**
@@ -34,12 +41,16 @@ public class RecepcaoComAvaria {
      **/
     private List<String> observacoesAvarias = null;
 
-    @XmlElement(name = "recinto")
-    @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
     /**
-     * Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos
-     **/
-    private String recinto = null;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Lista as avarias&lt;br/&gt;
@@ -62,6 +73,25 @@ public class RecepcaoComAvaria {
 
     public RecepcaoComAvaria addAvariasItem(Avaria avariasItem) {
         this.avarias.add(avariasItem);
+        return this;
+    }
+
+    /**
+     * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
+     *
+     * @return recinto
+     **/
+    @JsonProperty("recinto")
+    public String getRecinto() {
+        return recinto;
+    }
+
+    public void setRecinto(String recinto) {
+        this.recinto = recinto;
+    }
+
+    public RecepcaoComAvaria recinto(String recinto) {
+        this.recinto = recinto;
         return this;
     }
 
@@ -89,46 +119,14 @@ public class RecepcaoComAvaria {
         return this;
     }
 
-    /**
-     * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
-     *
-     * @return recinto
-     **/
-    @JsonProperty("recinto")
-    public String getRecinto() {
-        return recinto;
-    }
-
-    public void setRecinto(String recinto) {
-        this.recinto = recinto;
-    }
-
-    public RecepcaoComAvaria recinto(String recinto) {
-        this.recinto = recinto;
-        return this;
-    }
-
-
     @Override
     public String toString() {
 
         String sb = "class RecepcaoComAvaria {\n" +
                 "    avarias: " + toIndentedString(avarias) + "\n" +
-                "    observacoesAvarias: " + toIndentedString(observacoesAvarias) + "\n" +
                 "    recinto: " + toIndentedString(recinto) + "\n" +
+                "    observacoesAvarias: " + toIndentedString(observacoesAvarias) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

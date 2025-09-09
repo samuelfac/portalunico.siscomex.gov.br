@@ -20,57 +20,29 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoAtuacao {
 
 
-    @XmlType(name = "CodigoEnum")
-    @XmlEnum(String.class)
-    public enum CodigoEnum {
-
-        @XmlEnumValue("C")
-        @JsonProperty("C")
-        C("C"),
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A");
-
-
-        private final String value;
-
-        CodigoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static CodigoEnum fromValue(String v) {
-            for (CodigoEnum b : CodigoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-        }
-    }
-
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "C", value = "Código do tipo de atuação.<br/>Tamanho: 1<br/>C - Transportador<br/>A - Agente de Carga")
     /**
      * Código do tipo de atuação.<br/>Tamanho: 1<br/>C - Transportador<br/>A - Agente de Carga
      **/
     private CodigoEnum codigo = null;
-
     @XmlElement(name = "descricao")
     @ApiModelProperty(example = "Transportador", value = "Descrição do tipo de atuação.<br/>Tamanho: 15")
     /**
      * Descrição do tipo de atuação.<br/>Tamanho: 15
      **/
     private String descricao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Código do tipo de atuação.&lt;br/&gt;Tamanho: 1&lt;br/&gt;C - Transportador&lt;br/&gt;A - Agente de Carga
@@ -124,15 +96,41 @@ public class TipoAtuacao {
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "CodigoEnum")
+    @XmlEnum(String.class)
+    public enum CodigoEnum {
+
+        @XmlEnumValue("C")
+        @JsonProperty("C")
+        C("C"),
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A");
+
+
+        private final String value;
+
+        CodigoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static CodigoEnum fromValue(String v) {
+            for (CodigoEnum b : CodigoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

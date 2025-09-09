@@ -13,18 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LoteValidacaoDTO", propOrder =
-        {"seq", "codigo", "erros", "sucesso"
+        {"codigo", "erros", "sucesso", "seq"
         })
 
 @XmlRootElement(name = "LoteValidacaoDTO")
 public class LoteValidacaoDTO {
-
-    @XmlElement(name = "seq", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos")
-    /**
-     * Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos
-     **/
-    private Integer seq = null;
 
     @XmlElement(name = "codigo", required = true)
     @ApiModelProperty(required = true, value = "Código utilizado na operação<br>Tamanho: 35")
@@ -47,24 +40,22 @@ public class LoteValidacaoDTO {
      **/
     private Boolean sucesso = false;
 
+    @XmlElement(name = "seq", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos")
     /**
-     * Número sequencial utilizado para identificar registro no lote&lt;br&gt;Formato: Inteiro, com até 3 digitos
-     *
-     * @return seq
+     * Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos
      **/
-    @JsonProperty("seq")
-    @NotNull
-    public Integer getSeq() {
-        return seq;
-    }
+    private Integer seq = null;
 
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public LoteValidacaoDTO seq(Integer seq) {
-        this.seq = seq;
-        return this;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -118,7 +109,7 @@ public class LoteValidacaoDTO {
      **/
     @JsonProperty("sucesso")
     @NotNull
-    public Boolean isSucesso() {
+    public Boolean isisSucesso() {
         return sucesso;
     }
 
@@ -131,28 +122,35 @@ public class LoteValidacaoDTO {
         return this;
     }
 
+    /**
+     * Número sequencial utilizado para identificar registro no lote&lt;br&gt;Formato: Inteiro, com até 3 digitos
+     *
+     * @return seq
+     **/
+    @JsonProperty("seq")
+    @NotNull
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
+    public LoteValidacaoDTO seq(Integer seq) {
+        this.seq = seq;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class LoteValidacaoDTO {\n" +
-                "    seq: " + toIndentedString(seq) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
                 "    sucesso: " + toIndentedString(sucesso) + "\n" +
+                "    seq: " + toIndentedString(seq) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

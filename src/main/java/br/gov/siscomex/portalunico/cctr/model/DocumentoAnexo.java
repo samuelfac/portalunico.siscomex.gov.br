@@ -1,0 +1,103 @@
+package br.gov.siscomex.portalunico.cctr.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.math.BigDecimal;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "DocumentoAnexo", propOrder =
+        {"tipo", "numero"
+        })
+
+@XmlRootElement(name = "DocumentoAnexo")
+/**
+ * Documentos Anexo
+ **/
+@ApiModel(description = "Documentos Anexo")
+public class DocumentoAnexo {
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(required = true, value = "Tipo de Documento Anexo.<br>Tamanho: 16<br>Formato: AAA..AA")
+    @Valid
+    /**
+     * Tipo de Documento Anexo.<br>Tamanho: 16<br>Formato: AAA..AA
+     **/
+    private BigDecimal tipo = null;
+
+    @XmlElement(name = "numero", required = true)
+    @ApiModelProperty(example = "1223123123", required = true, value = "Número de Documento Anexo.<br>Tamanho: 39<br>Formato: AAA..AA")
+    /**
+     * Número de Documento Anexo.<br>Tamanho: 39<br>Formato: AAA..AA
+     **/
+    private String numero = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tipo de Documento Anexo.&lt;br&gt;Tamanho: 16&lt;br&gt;Formato: AAA..AA
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    @NotNull
+    public BigDecimal getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(BigDecimal tipo) {
+        this.tipo = tipo;
+    }
+
+    public DocumentoAnexo tipo(BigDecimal tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Número de Documento Anexo.&lt;br&gt;Tamanho: 39&lt;br&gt;Formato: AAA..AA
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    @NotNull
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public DocumentoAnexo numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentoAnexo {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "}";
+        return sb;
+    }
+}

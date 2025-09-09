@@ -20,61 +20,29 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTotalMoedaDestino {
 
 
-    @XmlType(name = "CodigoEnum")
-    @XmlEnum(String.class)
-    public enum CodigoEnum {
-
-        @XmlEnumValue("M")
-        @JsonProperty("M")
-        M("M"),
-
-        @XmlEnumValue("E")
-        @JsonProperty("E")
-        E("E"),
-
-        @XmlEnumValue("TC")
-        @JsonProperty("TC")
-        TC("TC");
-
-
-        private final String value;
-
-        CodigoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static CodigoEnum fromValue(String v) {
-            for (CodigoEnum b : CodigoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-        }
-    }
-
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "E", value = "Código do total na moeda de destino.<br/>Tamanho: 2<br/>M - Total na Moeda de Destino<br/>E - Encargos no Destino<br/>TC - Total Collect")
     /**
      * Código do total na moeda de destino.<br/>Tamanho: 2<br/>M - Total na Moeda de Destino<br/>E - Encargos no Destino<br/>TC - Total Collect
      **/
     private CodigoEnum codigo = null;
-
     @XmlElement(name = "descricao")
     @ApiModelProperty(example = "Encargos no Destino", value = "Descrição do total na moeda de destino.<br/>Tamanho: 25")
     /**
      * Descrição do total na moeda de destino.<br/>Tamanho: 25
      **/
     private String descricao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Código do total na moeda de destino.&lt;br/&gt;Tamanho: 2&lt;br/&gt;M - Total na Moeda de Destino&lt;br/&gt;E - Encargos no Destino&lt;br/&gt;TC - Total Collect
@@ -128,15 +96,45 @@ public class TipoTotalMoedaDestino {
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "CodigoEnum")
+    @XmlEnum(String.class)
+    public enum CodigoEnum {
+
+        @XmlEnumValue("M")
+        @JsonProperty("M")
+        M("M"),
+
+        @XmlEnumValue("E")
+        @JsonProperty("E")
+        E("E"),
+
+        @XmlEnumValue("TC")
+        @JsonProperty("TC")
+        TC("TC");
+
+
+        private final String value;
+
+        CodigoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static CodigoEnum fromValue(String v) {
+            for (CodigoEnum b : CodigoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

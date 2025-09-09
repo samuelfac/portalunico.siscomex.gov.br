@@ -20,73 +20,29 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTotalMoedaOrigem {
 
 
-    @XmlType(name = "CodigoEnum")
-    @XmlEnum(String.class)
-    public enum CodigoEnum {
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("V")
-        @JsonProperty("V")
-        V("V"),
-
-        @XmlEnumValue("I")
-        @JsonProperty("I")
-        I("I"),
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A"),
-
-        @XmlEnumValue("C")
-        @JsonProperty("C")
-        C("C"),
-
-        @XmlEnumValue("T")
-        @JsonProperty("T")
-        T("T");
-
-
-        private final String value;
-
-        CodigoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static CodigoEnum fromValue(String v) {
-            for (CodigoEnum b : CodigoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-        }
-    }
-
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "P", value = "Código do total na moeda de origem.<br/>Tamanho: 1<br/>P - Por Peso<br/>V - Por Valor<br/>I - Impostos<br/>A - Outros Serviços (Agente de Carga)<br/>C - Outros Serviços (Transportador)<br/>T - Total")
     /**
      * Código do total na moeda de origem.<br/>Tamanho: 1<br/>P - Por Peso<br/>V - Por Valor<br/>I - Impostos<br/>A - Outros Serviços (Agente de Carga)<br/>C - Outros Serviços (Transportador)<br/>T - Total
      **/
     private CodigoEnum codigo = null;
-
     @XmlElement(name = "descricao")
     @ApiModelProperty(example = "Por Peso", value = "Descrição do total na moeda de origem.<br/>Tamanho: 33")
     /**
      * Descrição do total na moeda de origem.<br/>Tamanho: 33
      **/
     private String descricao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Código do total na moeda de origem.&lt;br/&gt;Tamanho: 1&lt;br/&gt;P - Por Peso&lt;br/&gt;V - Por Valor&lt;br/&gt;I - Impostos&lt;br/&gt;A - Outros Serviços (Agente de Carga)&lt;br/&gt;C - Outros Serviços (Transportador)&lt;br/&gt;T - Total
@@ -140,15 +96,57 @@ public class TipoTotalMoedaOrigem {
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "CodigoEnum")
+    @XmlEnum(String.class)
+    public enum CodigoEnum {
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("V")
+        @JsonProperty("V")
+        V("V"),
+
+        @XmlEnumValue("I")
+        @JsonProperty("I")
+        I("I"),
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A"),
+
+        @XmlEnumValue("C")
+        @JsonProperty("C")
+        C("C"),
+
+        @XmlEnumValue("T")
+        @JsonProperty("T")
+        T("T");
+
+
+        private final String value;
+
+        CodigoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static CodigoEnum fromValue(String v) {
+            for (CodigoEnum b : CodigoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

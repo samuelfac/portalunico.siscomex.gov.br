@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultaImpedimentosEntregaImportador", propOrder =
-        {"condicoes", "entregaAutorizada", "identificacaoCarga", "impedimentos", "numeroDocumentoSaida", "tipoCarga", "tipoDocumentoSaida"
+        {"condicoes", "identificacaoCarga", "entregaAutorizada", "impedimentos", "tipoCarga", "numeroDocumentoSaida", "tipoDocumentoSaida"
         })
 
 @XmlRootElement(name = "RetornoConsultaImpedimentosEntregaImportador")
@@ -34,19 +34,19 @@ public class RetornoConsultaImpedimentosEntregaImportador {
      **/
     private List<CondicaoEntregaImportador> condicoes = null;
 
+    @XmlElement(name = "identificacaoCarga")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
+    /**
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
+     **/
+    private String identificacaoCarga = null;
+
     @XmlElement(name = "entregaAutorizada")
     @ApiModelProperty(example = "false", value = "Indicador informando que a entrega esta autorizada")
     /**
      * Indicador informando que a entrega esta autorizada
      **/
     private Boolean entregaAutorizada = null;
-
-    @XmlElement(name = "identificacaoCarga")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Identificação da carga (Conhecimento/DSIC)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
-    /**
-     * Identificação da carga (Conhecimento/DSIC)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
-     **/
-    private String identificacaoCarga = null;
 
     @XmlElement(name = "impedimentos")
     @ApiModelProperty(value = "Lista de impedimentos da entrega da carga ao importador")
@@ -55,13 +55,199 @@ public class RetornoConsultaImpedimentosEntregaImportador {
      * Lista de impedimentos da entrega da carga ao importador
      **/
     private List<ImpedimentoEntregaImportador> impedimentos = null;
-
+    @XmlElement(name = "tipoCarga")
+    @ApiModelProperty(example = "740", value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
+    /**
+     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
+     **/
+    private TipoCargaEnum tipoCarga = null;
     @XmlElement(name = "numeroDocumentoSaida")
     @ApiModelProperty(example = "5490178901", value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN")
     /**
      * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
      **/
     private String numeroDocumentoSaida = null;
+    @XmlElement(name = "tipoDocumentoSaida")
+    @ApiModelProperty(example = "PROCESSO", value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
+    /**
+     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     **/
+    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista de condições da entrega de carga ao importador
+     *
+     * @return condicoes
+     **/
+    @JsonProperty("condicoes")
+    public List<CondicaoEntregaImportador> getCondicoes() {
+        return condicoes;
+    }
+
+    public void setCondicoes(List<CondicaoEntregaImportador> condicoes) {
+        this.condicoes = condicoes;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador condicoes(List<CondicaoEntregaImportador> condicoes) {
+        this.condicoes = condicoes;
+        return this;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador addCondicoesItem(CondicaoEntregaImportador condicoesItem) {
+        this.condicoes.add(condicoesItem);
+        return this;
+    }
+
+    /**
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacaoCarga
+     **/
+    @JsonProperty("identificacaoCarga")
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
+    }
+
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador identificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+        return this;
+    }
+
+    /**
+     * Indicador informando que a entrega esta autorizada
+     *
+     * @return entregaAutorizada
+     **/
+    @JsonProperty("entregaAutorizada")
+    public Boolean isisEntregaAutorizada() {
+        return entregaAutorizada;
+    }
+
+    public void setEntregaAutorizada(Boolean entregaAutorizada) {
+        this.entregaAutorizada = entregaAutorizada;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador entregaAutorizada(Boolean entregaAutorizada) {
+        this.entregaAutorizada = entregaAutorizada;
+        return this;
+    }
+
+    /**
+     * Lista de impedimentos da entrega da carga ao importador
+     *
+     * @return impedimentos
+     **/
+    @JsonProperty("impedimentos")
+    public List<ImpedimentoEntregaImportador> getImpedimentos() {
+        return impedimentos;
+    }
+
+    public void setImpedimentos(List<ImpedimentoEntregaImportador> impedimentos) {
+        this.impedimentos = impedimentos;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador impedimentos(List<ImpedimentoEntregaImportador> impedimentos) {
+        this.impedimentos = impedimentos;
+        return this;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador addImpedimentosItem(ImpedimentoEntregaImportador impedimentosItem) {
+        this.impedimentos.add(impedimentosItem);
+        return this;
+    }
+
+    /**
+     * Tipo de carga. &lt;p&gt;Os tipos podem ser:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;em&gt;740&lt;/em&gt; – Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;741&lt;/em&gt; – Master Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;703&lt;/em&gt; – House Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;14&lt;/em&gt; – DSIC - Documento Subsidiário de Identificação de Carga.&lt;/li&gt;&lt;li&gt;&lt;em&gt;13&lt;/em&gt; – CRT - Conhecimento Rodoviário de Trânsito.&lt;/li&gt;&lt;/ul&gt;
+     *
+     * @return tipoCarga
+     **/
+    @JsonProperty("tipoCarga")
+    public String getTipoCarga() {
+        if (tipoCarga == null) {
+            return null;
+        }
+        return tipoCarga.value();
+    }
+
+    public void setTipoCarga(TipoCargaEnum tipoCarga) {
+        this.tipoCarga = tipoCarga;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador tipoCarga(TipoCargaEnum tipoCarga) {
+        this.tipoCarga = tipoCarga;
+        return this;
+    }
+
+    /**
+     * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
+     *
+     * @return numeroDocumentoSaida
+     **/
+    @JsonProperty("numeroDocumentoSaida")
+    public String getNumeroDocumentoSaida() {
+        return numeroDocumentoSaida;
+    }
+
+    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador numeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+        return this;
+    }
+
+    /**
+     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     *
+     * @return tipoDocumentoSaida
+     **/
+    @JsonProperty("tipoDocumentoSaida")
+    public String getTipoDocumentoSaida() {
+        if (tipoDocumentoSaida == null) {
+            return null;
+        }
+        return tipoDocumentoSaida.value();
+    }
+
+    public void setTipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
+        this.tipoDocumentoSaida = tipoDocumentoSaida;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador tipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
+        this.tipoDocumentoSaida = tipoDocumentoSaida;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class RetornoConsultaImpedimentosEntregaImportador {\n" +
+                "    condicoes: " + toIndentedString(condicoes) + "\n" +
+                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
+                "    entregaAutorizada: " + toIndentedString(entregaAutorizada) + "\n" +
+                "    impedimentos: " + toIndentedString(impedimentos) + "\n" +
+                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
+                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
+                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
+                "}";
+        return sb;
+    }
 
 
     @XmlType(name = "TipoCargaEnum")
@@ -82,22 +268,17 @@ public class RetornoConsultaImpedimentosEntregaImportador {
 
         @XmlEnumValue("14")
         @JsonProperty("14")
-        _14("14");
+        _14("14"),
+
+        @XmlEnumValue("13")
+        @JsonProperty("13")
+        _13("13");
 
 
         private final String value;
 
         TipoCargaEnum(String v) {
             value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
         }
 
         public static TipoCargaEnum fromValue(String v) {
@@ -108,15 +289,16 @@ public class RetornoConsultaImpedimentosEntregaImportador {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
         }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
-
-    @XmlElement(name = "tipoCarga")
-    @ApiModelProperty(example = "740", value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li></ul>")
-    /**
-     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li></ul>
-     **/
-    private TipoCargaEnum tipoCarga = null;
-
 
     @XmlType(name = "TipoDocumentoSaidaEnum")
     @XmlEnum(String.class)
@@ -165,15 +347,6 @@ public class RetornoConsultaImpedimentosEntregaImportador {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoDocumentoSaidaEnum fromValue(String v) {
             for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -182,189 +355,14 @@ public class RetornoConsultaImpedimentosEntregaImportador {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
         }
-    }
 
-    @XmlElement(name = "tipoDocumentoSaida")
-    @ApiModelProperty(example = "PROCESSO", value = "Tipo de documento de saída")
-    /**
-     * Tipo de documento de saída
-     **/
-    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
-
-    /**
-     * Lista de condições da entrega de carga ao importador
-     *
-     * @return condicoes
-     **/
-    @JsonProperty("condicoes")
-    public List<CondicaoEntregaImportador> getCondicoes() {
-        return condicoes;
-    }
-
-    public void setCondicoes(List<CondicaoEntregaImportador> condicoes) {
-        this.condicoes = condicoes;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador condicoes(List<CondicaoEntregaImportador> condicoes) {
-        this.condicoes = condicoes;
-        return this;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador addCondicoesItem(CondicaoEntregaImportador condicoesItem) {
-        this.condicoes.add(condicoesItem);
-        return this;
-    }
-
-    /**
-     * Indicador informando que a entrega esta autorizada
-     *
-     * @return entregaAutorizada
-     **/
-    @JsonProperty("entregaAutorizada")
-    public Boolean isEntregaAutorizada() {
-        return entregaAutorizada;
-    }
-
-    public void setEntregaAutorizada(Boolean entregaAutorizada) {
-        this.entregaAutorizada = entregaAutorizada;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador entregaAutorizada(Boolean entregaAutorizada) {
-        this.entregaAutorizada = entregaAutorizada;
-        return this;
-    }
-
-    /**
-     * Identificação da carga (Conhecimento/DSIC)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacaoCarga
-     **/
-    @JsonProperty("identificacaoCarga")
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
-    }
-
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador identificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
-    /**
-     * Lista de impedimentos da entrega da carga ao importador
-     *
-     * @return impedimentos
-     **/
-    @JsonProperty("impedimentos")
-    public List<ImpedimentoEntregaImportador> getImpedimentos() {
-        return impedimentos;
-    }
-
-    public void setImpedimentos(List<ImpedimentoEntregaImportador> impedimentos) {
-        this.impedimentos = impedimentos;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador impedimentos(List<ImpedimentoEntregaImportador> impedimentos) {
-        this.impedimentos = impedimentos;
-        return this;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador addImpedimentosItem(ImpedimentoEntregaImportador impedimentosItem) {
-        this.impedimentos.add(impedimentosItem);
-        return this;
-    }
-
-    /**
-     * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
-     *
-     * @return numeroDocumentoSaida
-     **/
-    @JsonProperty("numeroDocumentoSaida")
-    public String getNumeroDocumentoSaida() {
-        return numeroDocumentoSaida;
-    }
-
-    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador numeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-        return this;
-    }
-
-    /**
-     * Tipo de carga. &lt;p&gt;Os tipos podem ser:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;em&gt;740&lt;/em&gt; – Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;741&lt;/em&gt; – Master Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;703&lt;/em&gt; – House Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;14&lt;/em&gt; – DSIC - Documento Subsidiário de Identificação de Carga.&lt;/li&gt;&lt;/ul&gt;
-     *
-     * @return tipoCarga
-     **/
-    @JsonProperty("tipoCarga")
-    public String getTipoCarga() {
-        if (tipoCarga == null) {
-            return null;
+        public String value() {
+            return value;
         }
-        return tipoCarga.value();
-    }
 
-    public void setTipoCarga(TipoCargaEnum tipoCarga) {
-        this.tipoCarga = tipoCarga;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador tipoCarga(TipoCargaEnum tipoCarga) {
-        this.tipoCarga = tipoCarga;
-        return this;
-    }
-
-    /**
-     * Tipo de documento de saída
-     *
-     * @return tipoDocumentoSaida
-     **/
-    @JsonProperty("tipoDocumentoSaida")
-    public String getTipoDocumentoSaida() {
-        if (tipoDocumentoSaida == null) {
-            return null;
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
-        return tipoDocumentoSaida.value();
-    }
-
-    public void setTipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
-        this.tipoDocumentoSaida = tipoDocumentoSaida;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador tipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
-        this.tipoDocumentoSaida = tipoDocumentoSaida;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoConsultaImpedimentosEntregaImportador {\n" +
-                "    condicoes: " + toIndentedString(condicoes) + "\n" +
-                "    entregaAutorizada: " + toIndentedString(entregaAutorizada) + "\n" +
-                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
-                "    impedimentos: " + toIndentedString(impedimentos) + "\n" +
-                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
-                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
-                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
-                "}";
-        return sb;
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
     }
 }
-

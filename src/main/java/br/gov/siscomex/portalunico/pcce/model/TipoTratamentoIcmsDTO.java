@@ -41,56 +41,23 @@ public class TipoTratamentoIcmsDTO {
      * Lista das opcões disponíveis para solicitação de cálculo (tipo de tratamento = 'CALCULO_SEFAZ')
      **/
     private List<OpcaoCalculoIcmsDTO> opcoesIcms = null;
-
-
-    @XmlType(name = "TipoTratamentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoTratamentoEnum {
-
-        @XmlEnumValue("MANUAL")
-        @JsonProperty("MANUAL")
-        MANUAL("MANUAL"),
-
-        @XmlEnumValue("DECLARATORIO")
-        @JsonProperty("DECLARATORIO")
-        DECLARATORIO("DECLARATORIO"),
-
-        @XmlEnumValue("CALCULO_SEFAZ")
-        @JsonProperty("CALCULO_SEFAZ")
-        CALCULO_SEFAZ("CALCULO_SEFAZ");
-
-
-        private final String value;
-
-        TipoTratamentoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoTratamentoEnum fromValue(String v) {
-            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
-        }
-    }
-
     @XmlElement(name = "tipoTratamento", required = true)
     @ApiModelProperty(required = true, value = "Tipo de tratamento usado pela Sefaz para o ICMS")
     /**
      * Tipo de tratamento usado pela Sefaz para o ICMS
      **/
     private TipoTratamentoEnum tipoTratamento = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Descrição do tipo de tratamento
@@ -171,15 +138,45 @@ public class TipoTratamentoIcmsDTO {
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoTratamentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoTratamentoEnum {
+
+        @XmlEnumValue("MANUAL")
+        @JsonProperty("MANUAL")
+        MANUAL("MANUAL"),
+
+        @XmlEnumValue("DECLARATORIO")
+        @JsonProperty("DECLARATORIO")
+        DECLARATORIO("DECLARATORIO"),
+
+        @XmlEnumValue("CALCULO_SEFAZ")
+        @JsonProperty("CALCULO_SEFAZ")
+        CALCULO_SEFAZ("CALCULO_SEFAZ");
+
+
+        private final String value;
+
+        TipoTratamentoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoTratamentoEnum fromValue(String v) {
+            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

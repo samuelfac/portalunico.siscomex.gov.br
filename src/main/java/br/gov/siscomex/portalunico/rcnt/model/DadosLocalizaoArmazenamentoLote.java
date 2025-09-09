@@ -11,39 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosLocalizaoArmazenamentoLote", propOrder =
-        {"box", "estante", "prateleira", "rua", "setor"
+        {"setor", "prateleira", "estante", "box", "rua"
         })
 
 @XmlRootElement(name = "DadosLocalizaoArmazenamentoLote")
 public class DadosLocalizaoArmazenamentoLote {
-
-    @XmlElement(name = "box")
-    @ApiModelProperty(value = "Box<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
-    /**
-     * Box<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
-     **/
-    private String box = null;
-
-    @XmlElement(name = "estante")
-    @ApiModelProperty(value = "Estante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20")
-    /**
-     * Estante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20
-     **/
-    private String estante = null;
-
-    @XmlElement(name = "prateleira")
-    @ApiModelProperty(value = "Prateleira<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20")
-    /**
-     * Prateleira<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20
-     **/
-    private String prateleira = null;
-
-    @XmlElement(name = "rua")
-    @ApiModelProperty(value = "Rua<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
-    /**
-     * Rua<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
-     **/
-    private String rua = null;
 
     @XmlElement(name = "setor")
     @ApiModelProperty(value = "Setor<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
@@ -52,41 +24,61 @@ public class DadosLocalizaoArmazenamentoLote {
      **/
     private String setor = null;
 
+    @XmlElement(name = "prateleira")
+    @ApiModelProperty(value = "Prateleira<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20")
     /**
-     * Box&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
-     *
-     * @return box
+     * Prateleira<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20
      **/
-    @JsonProperty("box")
-    public String getBox() {
-        return box;
-    }
+    private String prateleira = null;
 
-    public void setBox(String box) {
-        this.box = box;
-    }
+    @XmlElement(name = "estante")
+    @ApiModelProperty(value = "Estante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20")
+    /**
+     * Estante<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 20
+     **/
+    private String estante = null;
 
-    public DadosLocalizaoArmazenamentoLote box(String box) {
-        this.box = box;
-        return this;
+    @XmlElement(name = "box")
+    @ApiModelProperty(value = "Box<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
+    /**
+     * Box<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
+     **/
+    private String box = null;
+
+    @XmlElement(name = "rua")
+    @ApiModelProperty(value = "Rua<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100")
+    /**
+     * Rua<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'setor', 'rua', 'estante', 'prateleira', 'box'.<br/>Tamanho: 100
+     **/
+    private String rua = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
-     * Estante&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 20
+     * Setor&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
-     * @return estante
+     * @return setor
      **/
-    @JsonProperty("estante")
-    public String getEstante() {
-        return estante;
+    @JsonProperty("setor")
+    public String getSetor() {
+        return setor;
     }
 
-    public void setEstante(String estante) {
-        this.estante = estante;
+    public void setSetor(String setor) {
+        this.setor = setor;
     }
 
-    public DadosLocalizaoArmazenamentoLote estante(String estante) {
-        this.estante = estante;
+    public DadosLocalizaoArmazenamentoLote setor(String setor) {
+        this.setor = setor;
         return this;
     }
 
@@ -110,6 +102,44 @@ public class DadosLocalizaoArmazenamentoLote {
     }
 
     /**
+     * Estante&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 20
+     *
+     * @return estante
+     **/
+    @JsonProperty("estante")
+    public String getEstante() {
+        return estante;
+    }
+
+    public void setEstante(String estante) {
+        this.estante = estante;
+    }
+
+    public DadosLocalizaoArmazenamentoLote estante(String estante) {
+        this.estante = estante;
+        return this;
+    }
+
+    /**
+     * Box&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
+     *
+     * @return box
+     **/
+    @JsonProperty("box")
+    public String getBox() {
+        return box;
+    }
+
+    public void setBox(String box) {
+        this.box = box;
+    }
+
+    public DadosLocalizaoArmazenamentoLote box(String box) {
+        this.box = box;
+        return this;
+    }
+
+    /**
      * Rua&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
      * @return rua
@@ -128,48 +158,16 @@ public class DadosLocalizaoArmazenamentoLote {
         return this;
     }
 
-    /**
-     * Setor&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
-     *
-     * @return setor
-     **/
-    @JsonProperty("setor")
-    public String getSetor() {
-        return setor;
-    }
-
-    public void setSetor(String setor) {
-        this.setor = setor;
-    }
-
-    public DadosLocalizaoArmazenamentoLote setor(String setor) {
-        this.setor = setor;
-        return this;
-    }
-
-
     @Override
     public String toString() {
 
         String sb = "class DadosLocalizaoArmazenamentoLote {\n" +
-                "    box: " + toIndentedString(box) + "\n" +
-                "    estante: " + toIndentedString(estante) + "\n" +
-                "    prateleira: " + toIndentedString(prateleira) + "\n" +
-                "    rua: " + toIndentedString(rua) + "\n" +
                 "    setor: " + toIndentedString(setor) + "\n" +
+                "    prateleira: " + toIndentedString(prateleira) + "\n" +
+                "    estante: " + toIndentedString(estante) + "\n" +
+                "    box: " + toIndentedString(box) + "\n" +
+                "    rua: " + toIndentedString(rua) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

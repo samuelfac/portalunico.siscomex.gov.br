@@ -33,6 +33,17 @@ public class DominioCampoApiRepresentation {
     private String descricao = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Código do domínio do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3
      *
      * @return codigo
@@ -72,7 +83,6 @@ public class DominioCampoApiRepresentation {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -82,16 +92,4 @@ public class DominioCampoApiRepresentation {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

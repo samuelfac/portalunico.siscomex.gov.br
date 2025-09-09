@@ -16,117 +16,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosArmazenamentoLote", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroLote", "quantidadeVolumesLote", "localizacao", "areaArmazenamento", "listaCameras"
+        {"numeroLote", "localizacao", "listaCameras", "idEvento", "dataHoraRegistro", "dataHoraOcorrencia", "tipoOperacao", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "areaArmazenamento", "codigoRecinto", "cpfOperadorOcorrencia", "contingencia", "quantidadeVolumesLote"
         })
 
 @XmlRootElement(name = "DadosArmazenamentoLote")
 public class DadosArmazenamentoLote {
-
-
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-    }
-
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-
-    @XmlElement(name = "idEvento", required = true)
-    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
-     **/
-    private String idEvento = null;
-
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
-
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
-
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorOcorrencia = null;
-
-    @XmlElement(name = "cpfOperadorRegistro")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorRegistro = null;
-
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
-     **/
-    private String protocoloEventoRetificadoOuExcluido = null;
-
-    @XmlElement(name = "contingencia", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean contingencia = null;
-
-    @XmlElement(name = "codigoRecinto", required = true)
-    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
-     **/
-    private String codigoRecinto = null;
 
     @XmlElement(name = "numeroLote", required = true)
     @ApiModelProperty(required = true, value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
@@ -135,24 +29,10 @@ public class DadosArmazenamentoLote {
      **/
     private String numeroLote = null;
 
-    @XmlElement(name = "quantidadeVolumesLote", required = true)
-    @ApiModelProperty(required = true, value = "Quantidade de volumes do lote")
-    /**
-     * Quantidade de volumes do lote
-     **/
-    private Integer quantidadeVolumesLote = null;
-
     @XmlElement(name = "localizacao")
     @ApiModelProperty(value = "")
     @Valid
     private DadosLocalizaoArmazenamentoLote localizacao = null;
-
-    @XmlElement(name = "areaArmazenamento", required = true)
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
-    /**
-     * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
-     **/
-    private String areaArmazenamento = null;
 
     @XmlElement(name = "listaCameras")
     @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi armazenado.")
@@ -162,26 +42,146 @@ public class DadosArmazenamentoLote {
      **/
     private List<DadosDaCmera> listaCameras = null;
 
+    @XmlElement(name = "idEvento", required = true)
+    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
     /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
-     *
-     * @return tipoOperacao
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
      **/
-    @JsonProperty("tipoOperacao")
-    @NotNull
-    public String getTipoOperacao() {
-        if (tipoOperacao == null) {
-            return null;
+    private String idEvento = null;
+
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraRegistro = null;
+
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraOcorrencia = null;
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
+    /**
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
+    @XmlElement(name = "cpfOperadorRegistro")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorRegistro = null;
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     **/
+    private String protocoloEventoRetificadoOuExcluido = null;
+    @XmlElement(name = "areaArmazenamento", required = true)
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    /**
+     * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
+     **/
+    private String areaArmazenamento = null;
+    @XmlElement(name = "codigoRecinto", required = true)
+    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
+     **/
+    private String codigoRecinto = null;
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorOcorrencia = null;
+    @XmlElement(name = "contingencia", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean contingencia = null;
+    @XmlElement(name = "quantidadeVolumesLote", required = true)
+    @ApiModelProperty(required = true, value = "Quantidade de volumes do lote")
+    /**
+     * Quantidade de volumes do lote
+     **/
+    private Integer quantidadeVolumesLote = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-        return tipoOperacao.value();
+        return o.toString().replace("\n", "\n    ");
     }
 
-    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    /**
+     * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     *
+     * @return numeroLote
+     **/
+    @JsonProperty("numeroLote")
+    @NotNull
+    public String getNumeroLote() {
+        return numeroLote;
     }
 
-    public DadosArmazenamentoLote tipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+    }
+
+    public DadosArmazenamentoLote numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
+    }
+
+    /**
+     * Get localizacao
+     *
+     * @return localizacao
+     **/
+    @JsonProperty("localizacao")
+    public DadosLocalizaoArmazenamentoLote getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(DadosLocalizaoArmazenamentoLote localizacao) {
+        this.localizacao = localizacao;
+    }
+
+    public DadosArmazenamentoLote localizacao(DadosLocalizaoArmazenamentoLote localizacao) {
+        this.localizacao = localizacao;
+        return this;
+    }
+
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi armazenado.
+     *
+     * @return listaCameras
+     **/
+    @JsonProperty("listaCameras")
+    public List<DadosDaCmera> getListaCameras() {
+        return listaCameras;
+    }
+
+    public void setListaCameras(List<DadosDaCmera> listaCameras) {
+        this.listaCameras = listaCameras;
+    }
+
+    public DadosArmazenamentoLote listaCameras(List<DadosDaCmera> listaCameras) {
+        this.listaCameras = listaCameras;
+        return this;
+    }
+
+    public DadosArmazenamentoLote addListaCamerasItem(DadosDaCmera listaCamerasItem) {
+        this.listaCameras.add(listaCamerasItem);
         return this;
     }
 
@@ -206,26 +206,6 @@ public class DadosArmazenamentoLote {
     }
 
     /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraOcorrencia
-     **/
-    @JsonProperty("dataHoraOcorrencia")
-    @NotNull
-    public String getDataHoraOcorrencia() {
-        return dataHoraOcorrencia;
-    }
-
-    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-    }
-
-    public DadosArmazenamentoLote dataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-        return this;
-    }
-
-    /**
      * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraRegistro
@@ -246,21 +226,45 @@ public class DadosArmazenamentoLote {
     }
 
     /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return cpfOperadorOcorrencia
+     * @return dataHoraOcorrencia
      **/
-    @JsonProperty("cpfOperadorOcorrencia")
-    public String getCpfOperadorOcorrencia() {
-        return cpfOperadorOcorrencia;
+    @JsonProperty("dataHoraOcorrencia")
+    @NotNull
+    public String getDataHoraOcorrencia() {
+        return dataHoraOcorrencia;
     }
 
-    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
     }
 
-    public DadosArmazenamentoLote cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    public DadosArmazenamentoLote dataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+        return this;
+    }
+
+    /**
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
+     *
+     * @return tipoOperacao
+     **/
+    @JsonProperty("tipoOperacao")
+    @NotNull
+    public String getTipoOperacao() {
+        if (tipoOperacao == null) {
+            return null;
+        }
+        return tipoOperacao.value();
+    }
+
+    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+    }
+
+    public DadosArmazenamentoLote tipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
         return this;
     }
 
@@ -303,27 +307,28 @@ public class DadosArmazenamentoLote {
     }
 
     /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
      *
-     * @return contingencia
+     * @return areaArmazenamento
      **/
-    @JsonProperty("contingencia")
+    @JsonProperty("areaArmazenamento")
     @NotNull
-    public Boolean isContingencia() {
-        return contingencia;
+    public String getAreaArmazenamento() {
+        return areaArmazenamento;
     }
 
-    public void setContingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
+    public void setAreaArmazenamento(String areaArmazenamento) {
+        this.areaArmazenamento = areaArmazenamento;
     }
 
-    public DadosArmazenamentoLote contingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
+    public DadosArmazenamentoLote areaArmazenamento(String areaArmazenamento) {
+        this.areaArmazenamento = areaArmazenamento;
         return this;
     }
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
+     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -342,21 +347,41 @@ public class DadosArmazenamentoLote {
     }
 
     /**
-     * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     * @return numeroLote
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorOcorrencia
      **/
-    @JsonProperty("numeroLote")
+    @JsonProperty("cpfOperadorOcorrencia")
+    public String getCpfOperadorOcorrencia() {
+        return cpfOperadorOcorrencia;
+    }
+
+    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    }
+
+    public DadosArmazenamentoLote cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+        return this;
+    }
+
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return contingencia
+     **/
+    @JsonProperty("contingencia")
     @NotNull
-    public String getNumeroLote() {
-        return numeroLote;
+    public Boolean isisContingencia() {
+        return contingencia;
     }
 
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
+    public void setContingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
     }
 
-    public DadosArmazenamentoLote numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
+    public DadosArmazenamentoLote contingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
         return this;
     }
 
@@ -380,98 +405,68 @@ public class DadosArmazenamentoLote {
         return this;
     }
 
-    /**
-     * Get localizacao
-     * @return localizacao
-     **/
-    @JsonProperty("localizacao")
-    public DadosLocalizaoArmazenamentoLote getLocalizacao() {
-        return localizacao;
-    }
-
-    public void setLocalizacao(DadosLocalizaoArmazenamentoLote localizacao) {
-        this.localizacao = localizacao;
-    }
-
-    public DadosArmazenamentoLote localizacao(DadosLocalizaoArmazenamentoLote localizacao) {
-        this.localizacao = localizacao;
-        return this;
-    }
-
-    /**
-     * Identificação da área de armazenamento do lote. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
-     * @return areaArmazenamento
-     **/
-    @JsonProperty("areaArmazenamento")
-    @NotNull
-    public String getAreaArmazenamento() {
-        return areaArmazenamento;
-    }
-
-    public void setAreaArmazenamento(String areaArmazenamento) {
-        this.areaArmazenamento = areaArmazenamento;
-    }
-
-    public DadosArmazenamentoLote areaArmazenamento(String areaArmazenamento) {
-        this.areaArmazenamento = areaArmazenamento;
-        return this;
-    }
-
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde o lote foi armazenado.
-     * @return listaCameras
-     **/
-    @JsonProperty("listaCameras")
-    public List<DadosDaCmera> getListaCameras() {
-        return listaCameras;
-    }
-
-    public void setListaCameras(List<DadosDaCmera> listaCameras) {
-        this.listaCameras = listaCameras;
-    }
-
-    public DadosArmazenamentoLote listaCameras(List<DadosDaCmera> listaCameras) {
-        this.listaCameras = listaCameras;
-        return this;
-    }
-
-    public DadosArmazenamentoLote addListaCamerasItem(DadosDaCmera listaCamerasItem) {
-        this.listaCameras.add(listaCamerasItem);
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class DadosArmazenamentoLote {\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    localizacao: " + toIndentedString(localizacao) + "\n" +
+                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
                 "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
                 "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
                 "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
                 "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
-                "    quantidadeVolumesLote: " + toIndentedString(quantidadeVolumesLote) + "\n" +
-                "    localizacao: " + toIndentedString(localizacao) + "\n" +
                 "    areaArmazenamento: " + toIndentedString(areaArmazenamento) + "\n" +
-                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    quantidadeVolumesLote: " + toIndentedString(quantidadeVolumesLote) + "\n" +
                 "}";
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TabelaCamposApiRepresentation", propOrder =
-        {"nome", "rotulo", "descricao", "campos"
+        {"nome", "rotulo", "campos", "descricao"
         })
 
 @XmlRootElement(name = "TabelaCamposApiRepresentation")
@@ -34,13 +34,6 @@ public class TabelaCamposApiRepresentation {
      **/
     private String rotulo = null;
 
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Tabela de Grupo de Exigência", value = "Descrição da tabela.<br>Tamanho mínimo: 1<br>Tamanho máximo: 1000")
-    /**
-     * Descrição da tabela.<br>Tamanho mínimo: 1<br>Tamanho máximo: 1000
-     **/
-    private String descricao = null;
-
     @XmlElement(name = "campos")
     @ApiModelProperty(value = "Campos da tabela.")
     @Valid
@@ -48,6 +41,24 @@ public class TabelaCamposApiRepresentation {
      * Campos da tabela.
      **/
     private List<CampoApiRepresentation> campos = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Tabela de Grupo de Exigência", value = "Descrição da tabela.<br>Tamanho mínimo: 1<br>Tamanho máximo: 1000")
+    /**
+     * Descrição da tabela.<br>Tamanho mínimo: 1<br>Tamanho máximo: 1000
+     **/
+    private String descricao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Nome da tabela.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
@@ -89,25 +100,6 @@ public class TabelaCamposApiRepresentation {
     }
 
     /**
-     * Descrição da tabela.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 1000
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public TabelaCamposApiRepresentation descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
-    /**
      * Campos da tabela.
      *
      * @return campos
@@ -131,6 +123,24 @@ public class TabelaCamposApiRepresentation {
         return this;
     }
 
+    /**
+     * Descrição da tabela.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 1000
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public TabelaCamposApiRepresentation descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
 
     @Override
     public String toString() {
@@ -138,21 +148,9 @@ public class TabelaCamposApiRepresentation {
         String sb = "class TabelaCamposApiRepresentation {\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    rotulo: " + toIndentedString(rotulo) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "    campos: " + toIndentedString(campos) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

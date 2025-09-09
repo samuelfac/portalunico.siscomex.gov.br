@@ -13,64 +13,12 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecebedorEntregaCarga", propOrder =
-        {"nome", "numeroDocumento", "tipoDocumento"
+        {"tipoDocumento", "nome", "numeroDocumento"
         })
 
 @XmlRootElement(name = "RecebedorEntregaCarga")
 public class RecebedorEntregaCarga {
 
-    @XmlElement(name = "nome")
-    @ApiModelProperty(example = "Fulano da Silva", value = "Nome do recebedor da carga")
-    /**
-     * Nome do recebedor da carga
-     **/
-    private String nome = null;
-
-    @XmlElement(name = "numeroDocumento")
-    @ApiModelProperty(example = "12345678901", value = "Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>")
-    /**
-     * Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>
-     **/
-    private String numeroDocumento = null;
-
-
-    @XmlType(name = "TipoDocumentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoEnum {
-
-        @XmlEnumValue("PASSAPORTE")
-        @JsonProperty("PASSAPORTE")
-        PASSAPORTE("PASSAPORTE"),
-
-        @XmlEnumValue("CPF")
-        @JsonProperty("CPF")
-        CPF("CPF");
-
-
-        private final String value;
-
-        TipoDocumentoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoDocumentoEnum fromValue(String v) {
-            for (TipoDocumentoEnum b : TipoDocumentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoEnum");
-        }
-    }
 
     @XmlElement(name = "tipoDocumento")
     @ApiModelProperty(example = "CPF", value = "Tipo de documento do recebedor da carga")
@@ -78,6 +26,51 @@ public class RecebedorEntregaCarga {
      * Tipo de documento do recebedor da carga
      **/
     private TipoDocumentoEnum tipoDocumento = null;
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Fulano da Silva", value = "Nome do recebedor da carga")
+    /**
+     * Nome do recebedor da carga
+     **/
+    private String nome = null;
+    @XmlElement(name = "numeroDocumento")
+    @ApiModelProperty(example = "12345678901", value = "Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>")
+    /**
+     * Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>
+     **/
+    private String numeroDocumento = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tipo de documento do recebedor da carga
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public String getTipoDocumento() {
+        if (tipoDocumento == null) {
+            return null;
+        }
+        return tipoDocumento.value();
+    }
+
+    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public RecebedorEntregaCarga tipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
 
     /**
      * Nome do recebedor da carga
@@ -117,49 +110,53 @@ public class RecebedorEntregaCarga {
         return this;
     }
 
-    /**
-     * Tipo de documento do recebedor da carga
-     *
-     * @return tipoDocumento
-     **/
-    @JsonProperty("tipoDocumento")
-    public String getTipoDocumento() {
-        if (tipoDocumento == null) {
-            return null;
-        }
-        return tipoDocumento.value();
-    }
-
-    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public RecebedorEntregaCarga tipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class RecebedorEntregaCarga {\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoDocumentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoEnum {
+
+        @XmlEnumValue("PASSAPORTE")
+        @JsonProperty("PASSAPORTE")
+        PASSAPORTE("PASSAPORTE"),
+
+        @XmlEnumValue("CPF")
+        @JsonProperty("CPF")
+        CPF("CPF");
+
+
+        private final String value;
+
+        TipoDocumentoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoDocumentoEnum fromValue(String v) {
+            for (TipoDocumentoEnum b : TipoDocumentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

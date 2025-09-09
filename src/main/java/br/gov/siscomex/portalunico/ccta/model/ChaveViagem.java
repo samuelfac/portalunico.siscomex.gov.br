@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ChaveViagem", propOrder =
-        {"identificacaoViagem"
+        {"identificacaoViagem", "aeroportoChegada", "termoEntrada", "dataHoraChegadaEfetiva"
         })
 
 @XmlRootElement(name = "ChaveViagem")
@@ -23,6 +23,38 @@ public class ChaveViagem {
      * Número de identificação do manifesto<br/>Tamanho: 17
      **/
     private String identificacaoViagem = null;
+
+    @XmlElement(name = "aeroportoChegada")
+    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
+    /**
+     * Código IATA do aeroporto<br/>Tamanho: 3
+     **/
+    private String aeroportoChegada = null;
+
+    @XmlElement(name = "termoEntrada")
+    @ApiModelProperty(example = "200027913", value = "Número de identificação do termo de entrada")
+    /**
+     * Número de identificação do termo de entrada
+     **/
+    private String termoEntrada = null;
+
+    @XmlElement(name = "dataHoraChegadaEfetiva")
+    @ApiModelProperty(example = "2020-04-08T15:30:00-03:00", value = "Data/Hora de chegada efetiva.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    /**
+     * Data/Hora de chegada efetiva.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     **/
+    private String dataHoraChegadaEfetiva = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Número de identificação do manifesto&lt;br/&gt;Tamanho: 17
@@ -43,25 +75,72 @@ public class ChaveViagem {
         return this;
     }
 
+    /**
+     * Código IATA do aeroporto&lt;br/&gt;Tamanho: 3
+     *
+     * @return aeroportoChegada
+     **/
+    @JsonProperty("aeroportoChegada")
+    public String getAeroportoChegada() {
+        return aeroportoChegada;
+    }
+
+    public void setAeroportoChegada(String aeroportoChegada) {
+        this.aeroportoChegada = aeroportoChegada;
+    }
+
+    public ChaveViagem aeroportoChegada(String aeroportoChegada) {
+        this.aeroportoChegada = aeroportoChegada;
+        return this;
+    }
+
+    /**
+     * Número de identificação do termo de entrada
+     *
+     * @return termoEntrada
+     **/
+    @JsonProperty("termoEntrada")
+    public String getTermoEntrada() {
+        return termoEntrada;
+    }
+
+    public void setTermoEntrada(String termoEntrada) {
+        this.termoEntrada = termoEntrada;
+    }
+
+    public ChaveViagem termoEntrada(String termoEntrada) {
+        this.termoEntrada = termoEntrada;
+        return this;
+    }
+
+    /**
+     * Data/Hora de chegada efetiva.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataHoraChegadaEfetiva
+     **/
+    @JsonProperty("dataHoraChegadaEfetiva")
+    public String getDataHoraChegadaEfetiva() {
+        return dataHoraChegadaEfetiva;
+    }
+
+    public void setDataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
+        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+    }
+
+    public ChaveViagem dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
+        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class ChaveViagem {\n" +
                 "    identificacaoViagem: " + toIndentedString(identificacaoViagem) + "\n" +
+                "    aeroportoChegada: " + toIndentedString(aeroportoChegada) + "\n" +
+                "    termoEntrada: " + toIndentedString(termoEntrada) + "\n" +
+                "    dataHoraChegadaEfetiva: " + toIndentedString(dataHoraChegadaEfetiva) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

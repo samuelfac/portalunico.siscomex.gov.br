@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AtributoMercadoriaDTO", propOrder =
-        {"codigo", "descricaoCodigo", "tipoCodigo", "valor", "descricaoValor"
+        {"codigo", "descricaoValor", "valor", "descricaoCodigo", "tipoCodigo"
         })
 
 @XmlRootElement(name = "AtributoMercadoriaDTO")
@@ -30,6 +30,20 @@ public class AtributoMercadoriaDTO {
      **/
     private String codigo = null;
 
+    @XmlElement(name = "descricaoValor")
+    @ApiModelProperty(example = "EX 0001 - Coletor descartável para perfurocortantes.", value = "Descrição do valor do Atributo.")
+    /**
+     * Descrição do valor do Atributo.
+     **/
+    private String descricaoValor = null;
+
+    @XmlElement(name = "valor")
+    @ApiModelProperty(example = "0001", value = "Valor atribuido ao Atributo.")
+    /**
+     * Valor atribuido ao Atributo.
+     **/
+    private String valor = null;
+
     @XmlElement(name = "descricaoCodigo", required = true)
     @ApiModelProperty(example = "EX II", required = true, value = "Nome de apresentação do Atributo.")
     /**
@@ -44,19 +58,16 @@ public class AtributoMercadoriaDTO {
      **/
     private String tipoCodigo = null;
 
-    @XmlElement(name = "valor")
-    @ApiModelProperty(example = "0001", value = "Valor atribuido ao Atributo.")
     /**
-     * Valor atribuido ao Atributo.
-     **/
-    private String valor = null;
-
-    @XmlElement(name = "descricaoValor")
-    @ApiModelProperty(example = "EX 0001 - Coletor descartável para perfurocortantes.", value = "Descrição do valor do Atributo.")
-    /**
-     * Descrição do valor do Atributo.
-     **/
-    private String descricaoValor = null;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Código do Atributo.
@@ -75,6 +86,44 @@ public class AtributoMercadoriaDTO {
 
     public AtributoMercadoriaDTO codigo(String codigo) {
         this.codigo = codigo;
+        return this;
+    }
+
+    /**
+     * Descrição do valor do Atributo.
+     *
+     * @return descricaoValor
+     **/
+    @JsonProperty("descricaoValor")
+    public String getDescricaoValor() {
+        return descricaoValor;
+    }
+
+    public void setDescricaoValor(String descricaoValor) {
+        this.descricaoValor = descricaoValor;
+    }
+
+    public AtributoMercadoriaDTO descricaoValor(String descricaoValor) {
+        this.descricaoValor = descricaoValor;
+        return this;
+    }
+
+    /**
+     * Valor atribuido ao Atributo.
+     *
+     * @return valor
+     **/
+    @JsonProperty("valor")
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public AtributoMercadoriaDTO valor(String valor) {
+        this.valor = valor;
         return this;
     }
 
@@ -118,67 +167,16 @@ public class AtributoMercadoriaDTO {
         return this;
     }
 
-    /**
-     * Valor atribuido ao Atributo.
-     *
-     * @return valor
-     **/
-    @JsonProperty("valor")
-    public String getValor() {
-        return valor;
-    }
-
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-
-    public AtributoMercadoriaDTO valor(String valor) {
-        this.valor = valor;
-        return this;
-    }
-
-    /**
-     * Descrição do valor do Atributo.
-     *
-     * @return descricaoValor
-     **/
-    @JsonProperty("descricaoValor")
-    public String getDescricaoValor() {
-        return descricaoValor;
-    }
-
-    public void setDescricaoValor(String descricaoValor) {
-        this.descricaoValor = descricaoValor;
-    }
-
-    public AtributoMercadoriaDTO descricaoValor(String descricaoValor) {
-        this.descricaoValor = descricaoValor;
-        return this;
-    }
-
-
     @Override
     public String toString() {
 
         String sb = "class AtributoMercadoriaDTO {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    descricaoValor: " + toIndentedString(descricaoValor) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
                 "    descricaoCodigo: " + toIndentedString(descricaoCodigo) + "\n" +
                 "    tipoCodigo: " + toIndentedString(tipoCodigo) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
-                "    descricaoValor: " + toIndentedString(descricaoValor) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

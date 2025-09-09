@@ -1,0 +1,126 @@
+package br.gov.siscomex.portalunico.dimp.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ValorPagamentoRegistroCover", propOrder =
+        {"juros", "tributo", "valor"
+        })
+
+@XmlRootElement(name = "ValorPagamentoRegistroCover")
+/**
+ * Dados do tributo principal.
+ **/
+@ApiModel(description = "Dados do tributo principal.")
+public class ValorPagamentoRegistroCover {
+
+    @XmlElement(name = "juros")
+    @ApiModelProperty(example = "10.12", value = "Valor do pagamento de juros em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    /**
+     * Valor do pagamento de juros em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private Double juros = null;
+
+    @XmlElement(name = "tributo", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private TributoPagamentoRegistroCover tributo = null;
+
+    @XmlElement(name = "valor", required = true)
+    @ApiModelProperty(example = "10.12", required = true, value = "Valor do pagamento principal em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    /**
+     * Valor do pagamento principal em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private Double valor = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Valor do pagamento de juros em R$ (Reais).&lt;br&gt;Tamanho: 13,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return juros
+     **/
+    @JsonProperty("juros")
+    public Double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(Double juros) {
+        this.juros = juros;
+    }
+
+    public ValorPagamentoRegistroCover juros(Double juros) {
+        this.juros = juros;
+        return this;
+    }
+
+    /**
+     * Get tributo
+     *
+     * @return tributo
+     **/
+    @JsonProperty("tributo")
+    @NotNull
+    public TributoPagamentoRegistroCover getTributo() {
+        return tributo;
+    }
+
+    public void setTributo(TributoPagamentoRegistroCover tributo) {
+        this.tributo = tributo;
+    }
+
+    public ValorPagamentoRegistroCover tributo(TributoPagamentoRegistroCover tributo) {
+        this.tributo = tributo;
+        return this;
+    }
+
+    /**
+     * Valor do pagamento principal em R$ (Reais).&lt;br&gt;Tamanho: 13,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valor
+     **/
+    @JsonProperty("valor")
+    @NotNull
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public ValorPagamentoRegistroCover valor(Double valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ValorPagamentoRegistroCover {\n" +
+                "    juros: " + toIndentedString(juros) + "\n" +
+                "    tributo: " + toIndentedString(tributo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
+                "}";
+        return sb;
+    }
+}

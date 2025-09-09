@@ -1,0 +1,81 @@
+package br.gov.siscomex.portalunico.cctr.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ConhecimentosCarga", propOrder =
+        {"conhecimento"
+        })
+
+@XmlRootElement(name = "ConhecimentosCarga")
+/**
+ * Lista dos conhecimento de carga
+ **/
+@ApiModel(description = "Lista dos conhecimento de carga")
+public class ConhecimentosCarga {
+
+    @XmlElement(name = "conhecimento", required = true)
+    @ApiModelProperty(required = true, value = "Lista dos conhecimento de carga")
+    @Valid
+    /**
+     * Lista dos conhecimento de carga
+     **/
+    private List<Conhecimento> conhecimento = new ArrayList<>();
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista dos conhecimento de carga
+     *
+     * @return conhecimento
+     **/
+    @JsonProperty("conhecimento")
+    @NotNull
+    public List<Conhecimento> getConhecimento() {
+        return conhecimento;
+    }
+
+    public void setConhecimento(List<Conhecimento> conhecimento) {
+        this.conhecimento = conhecimento;
+    }
+
+    public ConhecimentosCarga conhecimento(List<Conhecimento> conhecimento) {
+        this.conhecimento = conhecimento;
+        return this;
+    }
+
+    public ConhecimentosCarga addConhecimentoItem(Conhecimento conhecimentoItem) {
+        this.conhecimento.add(conhecimentoItem);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ConhecimentosCarga {\n" +
+                "    conhecimento: " + toIndentedString(conhecimento) + "\n" +
+                "}";
+        return sb;
+    }
+}

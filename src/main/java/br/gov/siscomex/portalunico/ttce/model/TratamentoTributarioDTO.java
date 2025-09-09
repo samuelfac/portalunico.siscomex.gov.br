@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TratamentoTributarioDTO", propOrder =
-        {"tributo", "regime", "fundamentoLegal", "mercadorias"
+        {"fundamentoLegal", "regime", "mercadorias", "tributo"
         })
 
 @XmlRootElement(name = "TratamentoTributarioDTO")
@@ -26,20 +26,15 @@ import java.util.List;
 @ApiModel(description = "DTO que representa um Tratamento Tributário de Importação.")
 public class TratamentoTributarioDTO {
 
-    @XmlElement(name = "tributo", required = true)
+    @XmlElement(name = "fundamentoLegal", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private CodigoNomeTributoDTO tributo = null;
+    private FundamentoLegalDTO fundamentoLegal = null;
 
     @XmlElement(name = "regime", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private CodigoNomeRegimeDTO regime = null;
-
-    @XmlElement(name = "fundamentoLegal", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private FundamentoLegalDTO fundamentoLegal = null;
 
     @XmlElement(name = "mercadorias", required = true)
     @ApiModelProperty(required = true, value = "Lista de mercadorias (NCMs) que se enquadram nesse Tratamento Tributário mas que possuem características específicas (lista de Atributos).")
@@ -49,23 +44,39 @@ public class TratamentoTributarioDTO {
      **/
     private List<MercadoriaDTO> mercadorias = new ArrayList<>();
 
+    @XmlElement(name = "tributo", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private CodigoNomeTributoDTO tributo = null;
+
     /**
-     * Get tributo
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get fundamentoLegal
      *
-     * @return tributo
+     * @return fundamentoLegal
      **/
-    @JsonProperty("tributo")
+    @JsonProperty("fundamentoLegal")
     @NotNull
-    public CodigoNomeTributoDTO getTributo() {
-        return tributo;
+    public FundamentoLegalDTO getFundamentoLegal() {
+        return fundamentoLegal;
     }
 
-    public void setTributo(CodigoNomeTributoDTO tributo) {
-        this.tributo = tributo;
+    public void setFundamentoLegal(FundamentoLegalDTO fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
     }
 
-    public TratamentoTributarioDTO tributo(CodigoNomeTributoDTO tributo) {
-        this.tributo = tributo;
+    public TratamentoTributarioDTO fundamentoLegal(FundamentoLegalDTO fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
         return this;
     }
 
@@ -86,26 +97,6 @@ public class TratamentoTributarioDTO {
 
     public TratamentoTributarioDTO regime(CodigoNomeRegimeDTO regime) {
         this.regime = regime;
-        return this;
-    }
-
-    /**
-     * Get fundamentoLegal
-     *
-     * @return fundamentoLegal
-     **/
-    @JsonProperty("fundamentoLegal")
-    @NotNull
-    public FundamentoLegalDTO getFundamentoLegal() {
-        return fundamentoLegal;
-    }
-
-    public void setFundamentoLegal(FundamentoLegalDTO fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-    }
-
-    public TratamentoTributarioDTO fundamentoLegal(FundamentoLegalDTO fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
         return this;
     }
 
@@ -134,28 +125,35 @@ public class TratamentoTributarioDTO {
         return this;
     }
 
+    /**
+     * Get tributo
+     *
+     * @return tributo
+     **/
+    @JsonProperty("tributo")
+    @NotNull
+    public CodigoNomeTributoDTO getTributo() {
+        return tributo;
+    }
+
+    public void setTributo(CodigoNomeTributoDTO tributo) {
+        this.tributo = tributo;
+    }
+
+    public TratamentoTributarioDTO tributo(CodigoNomeTributoDTO tributo) {
+        this.tributo = tributo;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class TratamentoTributarioDTO {\n" +
-                "    tributo: " + toIndentedString(tributo) + "\n" +
-                "    regime: " + toIndentedString(regime) + "\n" +
                 "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
+                "    regime: " + toIndentedString(regime) + "\n" +
                 "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
+                "    tributo: " + toIndentedString(tributo) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

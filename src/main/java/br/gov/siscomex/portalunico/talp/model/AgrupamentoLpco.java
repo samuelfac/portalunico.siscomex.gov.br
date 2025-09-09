@@ -1,0 +1,109 @@
+package br.gov.siscomex.portalunico.talp.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import java.util.ArrayList;
+import java.util.List;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "AgrupamentoLpco", propOrder =
+        {"itens", "chave"
+        })
+
+@XmlRootElement(name = "AgrupamentoLpco")
+/**
+ * Dados do agrupamento de LPCOs (apenas LPCOs com LI vinculada)
+ **/
+@ApiModel(description = "Dados do agrupamento de LPCOs (apenas LPCOs com LI vinculada)")
+public class AgrupamentoLpco {
+
+    @XmlElement(name = "itens", required = true)
+    @ApiModelProperty(required = true, value = "Itens que identificam os LPCOs que fazem parte do agrupamento.")
+    @Valid
+    /**
+     * Itens que identificam os LPCOs que fazem parte do agrupamento.
+     **/
+    private List<ItemAgrupamentoLpco> itens = new ArrayList<>();
+
+    @XmlElement(name = "chave", required = true)
+    @ApiModelProperty(example = "0123456789abcdef0123456789abcdef", required = true, value = "Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais")
+    /**
+     * Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais
+     **/
+    private String chave = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Itens que identificam os LPCOs que fazem parte do agrupamento.
+     *
+     * @return itens
+     **/
+    @JsonProperty("itens")
+    @NotNull
+    public List<ItemAgrupamentoLpco> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemAgrupamentoLpco> itens) {
+        this.itens = itens;
+    }
+
+    public AgrupamentoLpco itens(List<ItemAgrupamentoLpco> itens) {
+        this.itens = itens;
+        return this;
+    }
+
+    public AgrupamentoLpco addItensItem(ItemAgrupamentoLpco itensItem) {
+        this.itens.add(itensItem);
+        return this;
+    }
+
+    /**
+     * Chave de identificação do agrupamento.&lt;br&gt;Tamanho: 32&lt;br&gt;Formato: caracteres hexadecimais
+     *
+     * @return chave
+     **/
+    @JsonProperty("chave")
+    @NotNull
+    public String getChave() {
+        return chave;
+    }
+
+    public void setChave(String chave) {
+        this.chave = chave;
+    }
+
+    public AgrupamentoLpco chave(String chave) {
+        this.chave = chave;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class AgrupamentoLpco {\n" +
+                "    itens: " + toIndentedString(itens) + "\n" +
+                "    chave: " + toIndentedString(chave) + "\n" +
+                "}";
+        return sb;
+    }
+}

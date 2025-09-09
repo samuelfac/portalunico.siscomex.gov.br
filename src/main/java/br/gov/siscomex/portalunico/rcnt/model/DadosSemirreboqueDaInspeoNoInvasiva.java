@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosSemirreboqueDaInspeoNoInvasiva", propOrder =
-        {"idElemento", "ocrPlaca", "placa"
+        {"ocrPlaca", "idElemento", "placa"
         })
 
 @XmlRootElement(name = "DadosSemirreboqueDaInspeoNoInvasiva")
 public class DadosSemirreboqueDaInspeoNoInvasiva {
-
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
 
     @XmlElement(name = "ocrPlaca")
     @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.")
@@ -32,12 +25,49 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
      **/
     private Boolean ocrPlaca = null;
 
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
+
     @XmlElement(name = "placa")
     @ApiModelProperty(value = "Placa (semirreboque, vagão, truck)<br/>Tamanho: 50")
     /**
      * Placa (semirreboque, vagão, truck)<br/>Tamanho: 50
      **/
     private String placa = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;ocrPlaca&#39; seja informado quando o atributo &#39;placa&#39; for informado.
+     *
+     * @return ocrPlaca
+     **/
+    @JsonProperty("ocrPlaca")
+    public Boolean isisOcrPlaca() {
+        return ocrPlaca;
+    }
+
+    public void setOcrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+    }
+
+    public DadosSemirreboqueDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+        return this;
+    }
 
     /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
@@ -60,25 +90,6 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
     }
 
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;ocrPlaca&#39; seja informado quando o atributo &#39;placa&#39; for informado.
-     *
-     * @return ocrPlaca
-     **/
-    @JsonProperty("ocrPlaca")
-    public Boolean isOcrPlaca() {
-        return ocrPlaca;
-    }
-
-    public void setOcrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
-    }
-
-    public DadosSemirreboqueDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
-        return this;
-    }
-
-    /**
      * Placa (semirreboque, vagão, truck)&lt;br/&gt;Tamanho: 50
      *
      * @return placa
@@ -97,27 +108,14 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
         return this;
     }
 
-
     @Override
     public String toString() {
 
         String sb = "class DadosSemirreboqueDaInspeoNoInvasiva {\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

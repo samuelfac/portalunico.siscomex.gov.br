@@ -15,166 +15,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCredenciamentoVeculo", propOrder =
-        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "placa", "marca", "modelo", "ano", "capacidadeTanqueCombustivel", "satelite", "cnpjResponsavel", "cpfResponsavel", "operadorEstrangeiroResponsavel", "documentoEstrangeiroResponsavel", "dataInicioValidade", "dataFimValidade", "horaPrevistaEntrada", "horaPrevistaSaida", "areas", "credenciamentoAtivo", "motivacao"
+        {"cpfResponsavel", "documentoEstrangeiroResponsavel", "dataHoraOcorrencia", "areas", "cpfOperadorRegistro", "marca", "operadorEstrangeiroResponsavel", "horaPrevistaEntrada", "cnpjResponsavel", "credenciamentoAtivo", "codigoRecinto", "dataFimValidade", "placa", "ano", "idEvento", "dataHoraRegistro", "dataInicioValidade", "capacidadeTanqueCombustivel", "horaPrevistaSaida", "tipoOperacao", "modelo", "protocoloEventoRetificadoOuExcluido", "satelite", "cpfOperadorOcorrencia", "contingencia", "motivacao"
         })
 
 @XmlRootElement(name = "DadosCredenciamentoVeculo")
 public class DadosCredenciamentoVeculo {
-
-
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-    }
-
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-
-    @XmlElement(name = "idEvento", required = true)
-    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
-     **/
-    private String idEvento = null;
-
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
-
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
-
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorOcorrencia = null;
-
-    @XmlElement(name = "cpfOperadorRegistro")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorRegistro = null;
-
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
-     **/
-    private String protocoloEventoRetificadoOuExcluido = null;
-
-    @XmlElement(name = "contingencia", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean contingencia = null;
-
-    @XmlElement(name = "codigoRecinto", required = true)
-    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
-     **/
-    private String codigoRecinto = null;
-
-    @XmlElement(name = "placa", required = true)
-    @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
-    /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
-     **/
-    private String placa = null;
-
-    @XmlElement(name = "marca")
-    @ApiModelProperty(value = "Marca<br/>Tamanho: 20")
-    /**
-     * Marca<br/>Tamanho: 20
-     **/
-    private String marca = null;
-
-    @XmlElement(name = "modelo")
-    @ApiModelProperty(value = "Modelo<br/>Tamanho: 20")
-    /**
-     * Modelo<br/>Tamanho: 20
-     **/
-    private String modelo = null;
-
-    @XmlElement(name = "ano")
-    @ApiModelProperty(example = "2019", value = "Ano")
-    /**
-     * Ano
-     **/
-    private Integer ano = null;
-
-    @XmlElement(name = "capacidadeTanqueCombustivel")
-    @ApiModelProperty(example = "52", value = "Informar a capacidade total do(s) tanque(s) de combustível (em Litros)")
-    /**
-     * Informar a capacidade total do(s) tanque(s) de combustível (em Litros)
-     **/
-    private Integer capacidadeTanqueCombustivel = null;
-
-    @XmlElement(name = "satelite", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean satelite = null;
-
-    @XmlElement(name = "cnpjResponsavel")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do responsável pelo veículo<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do responsável pelo veículo<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpjResponsavel = null;
 
     @XmlElement(name = "cpfResponsavel")
     @ApiModelProperty(example = "55555555555", value = "CPF do responsável pelo veículo<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -183,45 +28,17 @@ public class DadosCredenciamentoVeculo {
      **/
     private String cpfResponsavel = null;
 
-    @XmlElement(name = "operadorEstrangeiroResponsavel")
-    @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.")
-    /**
-     * Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.
-     **/
-    private String operadorEstrangeiroResponsavel = null;
-
     @XmlElement(name = "documentoEstrangeiroResponsavel")
     @ApiModelProperty(value = "")
     @Valid
     private DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel = null;
 
-    @XmlElement(name = "dataInicioValidade")
-    @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String dataInicioValidade = null;
-
-    @XmlElement(name = "dataFimValidade")
-    @ApiModelProperty(example = "2020-04-01", value = "Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.<br/>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.<br/>Formato: 'yyyy-MM-dd'
-     **/
-    private String dataFimValidade = null;
-
-    @XmlElement(name = "horaPrevistaEntrada")
-    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
-    /**
-     * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
-     **/
-    private String horaPrevistaEntrada = null;
-
-    @XmlElement(name = "horaPrevistaSaida")
-    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
-    /**
-     * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
-     **/
-    private String horaPrevistaSaida = null;
+    private String dataHoraOcorrencia = null;
 
     @XmlElement(name = "areas")
     @ApiModelProperty(value = "Somente para os casos em que o veículo foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 100")
@@ -230,6 +47,41 @@ public class DadosCredenciamentoVeculo {
      **/
     private String areas = null;
 
+    @XmlElement(name = "cpfOperadorRegistro")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorRegistro = null;
+
+    @XmlElement(name = "marca")
+    @ApiModelProperty(value = "Marca<br/>Tamanho: 20")
+    /**
+     * Marca<br/>Tamanho: 20
+     **/
+    private String marca = null;
+
+    @XmlElement(name = "operadorEstrangeiroResponsavel")
+    @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.")
+    /**
+     * Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.
+     **/
+    private String operadorEstrangeiroResponsavel = null;
+
+    @XmlElement(name = "horaPrevistaEntrada")
+    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
+    /**
+     * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
+     **/
+    private String horaPrevistaEntrada = null;
+
+    @XmlElement(name = "cnpjResponsavel")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do responsável pelo veículo<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * CNPJ do responsável pelo veículo<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String cnpjResponsavel = null;
+
     @XmlElement(name = "credenciamentoAtivo", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Credenciamento ativo?<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
@@ -237,12 +89,488 @@ public class DadosCredenciamentoVeculo {
      **/
     private Boolean credenciamentoAtivo = null;
 
+    @XmlElement(name = "codigoRecinto", required = true)
+    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
+     **/
+    private String codigoRecinto = null;
+
+    @XmlElement(name = "dataFimValidade")
+    @ApiModelProperty(example = "2020-04-01", value = "Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.<br/>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.<br/>Formato: 'yyyy-MM-dd'
+     **/
+    private String dataFimValidade = null;
+
+    @XmlElement(name = "placa", required = true)
+    @ApiModelProperty(required = true, value = "Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
+    /**
+     * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+     **/
+    private String placa = null;
+
+    @XmlElement(name = "ano")
+    @ApiModelProperty(example = "2019", value = "Ano")
+    /**
+     * Ano
+     **/
+    private Integer ano = null;
+
+    @XmlElement(name = "idEvento", required = true)
+    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
+     **/
+    private String idEvento = null;
+
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraRegistro = null;
+
+    @XmlElement(name = "dataInicioValidade")
+    @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'
+     **/
+    private String dataInicioValidade = null;
+
+    @XmlElement(name = "capacidadeTanqueCombustivel")
+    @ApiModelProperty(example = "52", value = "Informar a capacidade total do(s) tanque(s) de combustível (em Litros)")
+    /**
+     * Informar a capacidade total do(s) tanque(s) de combustível (em Litros)
+     **/
+    private Integer capacidadeTanqueCombustivel = null;
+
+    @XmlElement(name = "horaPrevistaSaida")
+    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'")
+    /**
+     * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.<br/>Formato: 'HH:mm:ssZ'
+     **/
+    private String horaPrevistaSaida = null;
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
+    /**
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
+    @XmlElement(name = "modelo")
+    @ApiModelProperty(value = "Modelo<br/>Tamanho: 20")
+    /**
+     * Modelo<br/>Tamanho: 20
+     **/
+    private String modelo = null;
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     **/
+    private String protocoloEventoRetificadoOuExcluido = null;
+    @XmlElement(name = "satelite", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Monitoramento via satélite.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean satelite = null;
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorOcorrencia = null;
+    @XmlElement(name = "contingencia", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean contingencia = null;
     @XmlElement(name = "motivacao")
     @ApiModelProperty(value = "Motivação do credenciamento<br/>Tamanho: 100")
     /**
      * Motivação do credenciamento<br/>Tamanho: 100
      **/
     private String motivacao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CPF do responsável pelo veículo&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfResponsavel
+     **/
+    @JsonProperty("cpfResponsavel")
+    public String getCpfResponsavel() {
+        return cpfResponsavel;
+    }
+
+    public void setCpfResponsavel(String cpfResponsavel) {
+        this.cpfResponsavel = cpfResponsavel;
+    }
+
+    public DadosCredenciamentoVeculo cpfResponsavel(String cpfResponsavel) {
+        this.cpfResponsavel = cpfResponsavel;
+        return this;
+    }
+
+    /**
+     * Get documentoEstrangeiroResponsavel
+     *
+     * @return documentoEstrangeiroResponsavel
+     **/
+    @JsonProperty("documentoEstrangeiroResponsavel")
+    public DadosDocumentoEstrangeiroResponsvel getDocumentoEstrangeiroResponsavel() {
+        return documentoEstrangeiroResponsavel;
+    }
+
+    public void setDocumentoEstrangeiroResponsavel(DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel) {
+        this.documentoEstrangeiroResponsavel = documentoEstrangeiroResponsavel;
+    }
+
+    public DadosCredenciamentoVeculo documentoEstrangeiroResponsavel(DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel) {
+        this.documentoEstrangeiroResponsavel = documentoEstrangeiroResponsavel;
+        return this;
+    }
+
+    /**
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraOcorrencia
+     **/
+    @JsonProperty("dataHoraOcorrencia")
+    @NotNull
+    public String getDataHoraOcorrencia() {
+        return dataHoraOcorrencia;
+    }
+
+    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+    }
+
+    public DadosCredenciamentoVeculo dataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+        return this;
+    }
+
+    /**
+     * Somente para os casos em que o veículo foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 100
+     *
+     * @return areas
+     **/
+    @JsonProperty("areas")
+    public String getAreas() {
+        return areas;
+    }
+
+    public void setAreas(String areas) {
+        this.areas = areas;
+    }
+
+    public DadosCredenciamentoVeculo areas(String areas) {
+        this.areas = areas;
+        return this;
+    }
+
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorRegistro
+     **/
+    @JsonProperty("cpfOperadorRegistro")
+    public String getCpfOperadorRegistro() {
+        return cpfOperadorRegistro;
+    }
+
+    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+    }
+
+    public DadosCredenciamentoVeculo cpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+        return this;
+    }
+
+    /**
+     * Marca&lt;br/&gt;Tamanho: 20
+     *
+     * @return marca
+     **/
+    @JsonProperty("marca")
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public DadosCredenciamentoVeculo marca(String marca) {
+        this.marca = marca;
+        return this;
+    }
+
+    /**
+     * Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.
+     *
+     * @return operadorEstrangeiroResponsavel
+     **/
+    @JsonProperty("operadorEstrangeiroResponsavel")
+    public String getOperadorEstrangeiroResponsavel() {
+        return operadorEstrangeiroResponsavel;
+    }
+
+    public void setOperadorEstrangeiroResponsavel(String operadorEstrangeiroResponsavel) {
+        this.operadorEstrangeiroResponsavel = operadorEstrangeiroResponsavel;
+    }
+
+    public DadosCredenciamentoVeculo operadorEstrangeiroResponsavel(String operadorEstrangeiroResponsavel) {
+        this.operadorEstrangeiroResponsavel = operadorEstrangeiroResponsavel;
+        return this;
+    }
+
+    /**
+     * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
+     *
+     * @return horaPrevistaEntrada
+     **/
+    @JsonProperty("horaPrevistaEntrada")
+    public String getHoraPrevistaEntrada() {
+        return horaPrevistaEntrada;
+    }
+
+    public void setHoraPrevistaEntrada(String horaPrevistaEntrada) {
+        this.horaPrevistaEntrada = horaPrevistaEntrada;
+    }
+
+    public DadosCredenciamentoVeculo horaPrevistaEntrada(String horaPrevistaEntrada) {
+        this.horaPrevistaEntrada = horaPrevistaEntrada;
+        return this;
+    }
+
+    /**
+     * CNPJ do responsável pelo veículo&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     *
+     * @return cnpjResponsavel
+     **/
+    @JsonProperty("cnpjResponsavel")
+    public String getCnpjResponsavel() {
+        return cnpjResponsavel;
+    }
+
+    public void setCnpjResponsavel(String cnpjResponsavel) {
+        this.cnpjResponsavel = cnpjResponsavel;
+    }
+
+    public DadosCredenciamentoVeculo cnpjResponsavel(String cnpjResponsavel) {
+        this.cnpjResponsavel = cnpjResponsavel;
+        return this;
+    }
+
+    /**
+     * Credenciamento ativo?&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return credenciamentoAtivo
+     **/
+    @JsonProperty("credenciamentoAtivo")
+    @NotNull
+    public Boolean isisCredenciamentoAtivo() {
+        return credenciamentoAtivo;
+    }
+
+    public void setCredenciamentoAtivo(Boolean credenciamentoAtivo) {
+        this.credenciamentoAtivo = credenciamentoAtivo;
+    }
+
+    public DadosCredenciamentoVeculo credenciamentoAtivo(Boolean credenciamentoAtivo) {
+        this.credenciamentoAtivo = credenciamentoAtivo;
+        return this;
+    }
+
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
+     *
+     * @return codigoRecinto
+     **/
+    @JsonProperty("codigoRecinto")
+    @NotNull
+    public String getCodigoRecinto() {
+        return codigoRecinto;
+    }
+
+    public void setCodigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+    }
+
+    public DadosCredenciamentoVeculo codigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+        return this;
+    }
+
+    /**
+     * Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
+     *
+     * @return dataFimValidade
+     **/
+    @JsonProperty("dataFimValidade")
+    public String getDataFimValidade() {
+        return dataFimValidade;
+    }
+
+    public void setDataFimValidade(String dataFimValidade) {
+        this.dataFimValidade = dataFimValidade;
+    }
+
+    public DadosCredenciamentoVeculo dataFimValidade(String dataFimValidade) {
+        this.dataFimValidade = dataFimValidade;
+        return this;
+    }
+
+    /**
+     * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    @NotNull
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public DadosCredenciamentoVeculo placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Ano
+     *
+     * @return ano
+     **/
+    @JsonProperty("ano")
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
+
+    public DadosCredenciamentoVeculo ano(Integer ano) {
+        this.ano = ano;
+        return this;
+    }
+
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
+     *
+     * @return idEvento
+     **/
+    @JsonProperty("idEvento")
+    @NotNull
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(String idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public DadosCredenciamentoVeculo idEvento(String idEvento) {
+        this.idEvento = idEvento;
+        return this;
+    }
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    public DadosCredenciamentoVeculo dataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+        return this;
+    }
+
+    /**
+     * Data do início da validade do credenciamento&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
+     *
+     * @return dataInicioValidade
+     **/
+    @JsonProperty("dataInicioValidade")
+    public String getDataInicioValidade() {
+        return dataInicioValidade;
+    }
+
+    public void setDataInicioValidade(String dataInicioValidade) {
+        this.dataInicioValidade = dataInicioValidade;
+    }
+
+    public DadosCredenciamentoVeculo dataInicioValidade(String dataInicioValidade) {
+        this.dataInicioValidade = dataInicioValidade;
+        return this;
+    }
+
+    /**
+     * Informar a capacidade total do(s) tanque(s) de combustível (em Litros)
+     *
+     * @return capacidadeTanqueCombustivel
+     **/
+    @JsonProperty("capacidadeTanqueCombustivel")
+    public Integer getCapacidadeTanqueCombustivel() {
+        return capacidadeTanqueCombustivel;
+    }
+
+    public void setCapacidadeTanqueCombustivel(Integer capacidadeTanqueCombustivel) {
+        this.capacidadeTanqueCombustivel = capacidadeTanqueCombustivel;
+    }
+
+    public DadosCredenciamentoVeculo capacidadeTanqueCombustivel(Integer capacidadeTanqueCombustivel) {
+        this.capacidadeTanqueCombustivel = capacidadeTanqueCombustivel;
+        return this;
+    }
+
+    /**
+     * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
+     *
+     * @return horaPrevistaSaida
+     **/
+    @JsonProperty("horaPrevistaSaida")
+    public String getHoraPrevistaSaida() {
+        return horaPrevistaSaida;
+    }
+
+    public void setHoraPrevistaSaida(String horaPrevistaSaida) {
+        this.horaPrevistaSaida = horaPrevistaSaida;
+    }
+
+    public DadosCredenciamentoVeculo horaPrevistaSaida(String horaPrevistaSaida) {
+        this.horaPrevistaSaida = horaPrevistaSaida;
+        return this;
+    }
 
     /**
      * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
@@ -268,100 +596,21 @@ public class DadosCredenciamentoVeculo {
     }
 
     /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
+     * Modelo&lt;br/&gt;Tamanho: 20
      *
-     * @return idEvento
+     * @return modelo
      **/
-    @JsonProperty("idEvento")
-    @NotNull
-    public String getIdEvento() {
-        return idEvento;
+    @JsonProperty("modelo")
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public DadosCredenciamentoVeculo idEvento(String idEvento) {
-        this.idEvento = idEvento;
-        return this;
-    }
-
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraOcorrencia
-     **/
-    @JsonProperty("dataHoraOcorrencia")
-    @NotNull
-    public String getDataHoraOcorrencia() {
-        return dataHoraOcorrencia;
-    }
-
-    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-    }
-
-    public DadosCredenciamentoVeculo dataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-        return this;
-    }
-
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    public DadosCredenciamentoVeculo dataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-        return this;
-    }
-
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorOcorrencia
-     **/
-    @JsonProperty("cpfOperadorOcorrencia")
-    public String getCpfOperadorOcorrencia() {
-        return cpfOperadorOcorrencia;
-    }
-
-    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
-    }
-
-    public DadosCredenciamentoVeculo cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
-        return this;
-    }
-
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorRegistro
-     **/
-    @JsonProperty("cpfOperadorRegistro")
-    public String getCpfOperadorRegistro() {
-        return cpfOperadorRegistro;
-    }
-
-    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-    }
-
-    public DadosCredenciamentoVeculo cpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
+    public DadosCredenciamentoVeculo modelo(String modelo) {
+        this.modelo = modelo;
         return this;
     }
 
@@ -385,144 +634,13 @@ public class DadosCredenciamentoVeculo {
     }
 
     /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return contingencia
-     **/
-    @JsonProperty("contingencia")
-    @NotNull
-    public Boolean isContingencia() {
-        return contingencia;
-    }
-
-    public void setContingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
-    }
-
-    public DadosCredenciamentoVeculo contingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
-        return this;
-    }
-
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     * @return codigoRecinto
-     **/
-    @JsonProperty("codigoRecinto")
-    @NotNull
-    public String getCodigoRecinto() {
-        return codigoRecinto;
-    }
-
-    public void setCodigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-    }
-
-    public DadosCredenciamentoVeculo codigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-        return this;
-    }
-
-    /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/Semirreboque/locomotiva/vagão). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
-     * @return placa
-     **/
-    @JsonProperty("placa")
-    @NotNull
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public DadosCredenciamentoVeculo placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
-
-    /**
-     * Marca&lt;br/&gt;Tamanho: 20
-     * @return marca
-     **/
-    @JsonProperty("marca")
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public DadosCredenciamentoVeculo marca(String marca) {
-        this.marca = marca;
-        return this;
-    }
-
-    /**
-     * Modelo&lt;br/&gt;Tamanho: 20
-     * @return modelo
-     **/
-    @JsonProperty("modelo")
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public DadosCredenciamentoVeculo modelo(String modelo) {
-        this.modelo = modelo;
-        return this;
-    }
-
-    /**
-     * Ano
-     *
-     * @return ano
-     **/
-    @JsonProperty("ano")
-    public Integer getAno() {
-        return ano;
-    }
-
-    public void setAno(Integer ano) {
-        this.ano = ano;
-    }
-
-    public DadosCredenciamentoVeculo ano(Integer ano) {
-        this.ano = ano;
-        return this;
-    }
-
-    /**
-     * Informar a capacidade total do(s) tanque(s) de combustível (em Litros)
-     *
-     * @return capacidadeTanqueCombustivel
-     **/
-    @JsonProperty("capacidadeTanqueCombustivel")
-    public Integer getCapacidadeTanqueCombustivel() {
-        return capacidadeTanqueCombustivel;
-    }
-
-    public void setCapacidadeTanqueCombustivel(Integer capacidadeTanqueCombustivel) {
-        this.capacidadeTanqueCombustivel = capacidadeTanqueCombustivel;
-    }
-
-    public DadosCredenciamentoVeculo capacidadeTanqueCombustivel(Integer capacidadeTanqueCombustivel) {
-        this.capacidadeTanqueCombustivel = capacidadeTanqueCombustivel;
-        return this;
-    }
-
-    /**
      * Monitoramento via satélite.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
      * @return satelite
      **/
     @JsonProperty("satelite")
     @NotNull
-    public Boolean isSatelite() {
+    public Boolean isisSatelite() {
         return satelite;
     }
 
@@ -536,190 +654,47 @@ public class DadosCredenciamentoVeculo {
     }
 
     /**
-     * CNPJ do responsável pelo veículo&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     * @return cnpjResponsavel
-     **/
-    @JsonProperty("cnpjResponsavel")
-    public String getCnpjResponsavel() {
-        return cnpjResponsavel;
-    }
-
-    public void setCnpjResponsavel(String cnpjResponsavel) {
-        this.cnpjResponsavel = cnpjResponsavel;
-    }
-
-    public DadosCredenciamentoVeculo cnpjResponsavel(String cnpjResponsavel) {
-        this.cnpjResponsavel = cnpjResponsavel;
-        return this;
-    }
-
-    /**
-     * CPF do responsável pelo veículo&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     * @return cpfResponsavel
-     **/
-    @JsonProperty("cpfResponsavel")
-    public String getCpfResponsavel() {
-        return cpfResponsavel;
-    }
-
-    public void setCpfResponsavel(String cpfResponsavel) {
-        this.cpfResponsavel = cpfResponsavel;
-    }
-
-    public DadosCredenciamentoVeculo cpfResponsavel(String cpfResponsavel) {
-        this.cpfResponsavel = cpfResponsavel;
-        return this;
-    }
-
-    /**
-     * Identificação fiscal de empresa estrangeira responsável pelo veículo credenciado.
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
-     * @return operadorEstrangeiroResponsavel
+     * @return cpfOperadorOcorrencia
      **/
-    @JsonProperty("operadorEstrangeiroResponsavel")
-    public String getOperadorEstrangeiroResponsavel() {
-        return operadorEstrangeiroResponsavel;
+    @JsonProperty("cpfOperadorOcorrencia")
+    public String getCpfOperadorOcorrencia() {
+        return cpfOperadorOcorrencia;
     }
 
-    public void setOperadorEstrangeiroResponsavel(String operadorEstrangeiroResponsavel) {
-        this.operadorEstrangeiroResponsavel = operadorEstrangeiroResponsavel;
+    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
     }
 
-    public DadosCredenciamentoVeculo operadorEstrangeiroResponsavel(String operadorEstrangeiroResponsavel) {
-        this.operadorEstrangeiroResponsavel = operadorEstrangeiroResponsavel;
+    public DadosCredenciamentoVeculo cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
         return this;
     }
 
     /**
-     * Get documentoEstrangeiroResponsavel
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
-     * @return documentoEstrangeiroResponsavel
+     * @return contingencia
      **/
-    @JsonProperty("documentoEstrangeiroResponsavel")
-    public DadosDocumentoEstrangeiroResponsvel getDocumentoEstrangeiroResponsavel() {
-        return documentoEstrangeiroResponsavel;
-    }
-
-    public void setDocumentoEstrangeiroResponsavel(DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel) {
-        this.documentoEstrangeiroResponsavel = documentoEstrangeiroResponsavel;
-    }
-
-    public DadosCredenciamentoVeculo documentoEstrangeiroResponsavel(DadosDocumentoEstrangeiroResponsvel documentoEstrangeiroResponsavel) {
-        this.documentoEstrangeiroResponsavel = documentoEstrangeiroResponsavel;
-        return this;
-    }
-
-    /**
-     * Data do início da validade do credenciamento&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     * @return dataInicioValidade
-     **/
-    @JsonProperty("dataInicioValidade")
-    public String getDataInicioValidade() {
-        return dataInicioValidade;
-    }
-
-    public void setDataInicioValidade(String dataInicioValidade) {
-        this.dataInicioValidade = dataInicioValidade;
-    }
-
-    public DadosCredenciamentoVeculo dataInicioValidade(String dataInicioValidade) {
-        this.dataInicioValidade = dataInicioValidade;
-        return this;
-    }
-
-    /**
-     * Data do final da validade do credenciamento. Informar data fim da validade do credenciamento quando for o caso.&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     * @return dataFimValidade
-     **/
-    @JsonProperty("dataFimValidade")
-    public String getDataFimValidade() {
-        return dataFimValidade;
-    }
-
-    public void setDataFimValidade(String dataFimValidade) {
-        this.dataFimValidade = dataFimValidade;
-    }
-
-    public DadosCredenciamentoVeculo dataFimValidade(String dataFimValidade) {
-        this.dataFimValidade = dataFimValidade;
-        return this;
-    }
-
-    /**
-     * Hora prevista para entrada. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     * @return horaPrevistaEntrada
-     **/
-    @JsonProperty("horaPrevistaEntrada")
-    public String getHoraPrevistaEntrada() {
-        return horaPrevistaEntrada;
-    }
-
-    public void setHoraPrevistaEntrada(String horaPrevistaEntrada) {
-        this.horaPrevistaEntrada = horaPrevistaEntrada;
-    }
-
-    public DadosCredenciamentoVeculo horaPrevistaEntrada(String horaPrevistaEntrada) {
-        this.horaPrevistaEntrada = horaPrevistaEntrada;
-        return this;
-    }
-
-    /**
-     * Hora prevista para saída. Para os casos em que o veículo foi autorizado a entrar/sair apenas em determinados horários.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     * @return horaPrevistaSaida
-     **/
-    @JsonProperty("horaPrevistaSaida")
-    public String getHoraPrevistaSaida() {
-        return horaPrevistaSaida;
-    }
-
-    public void setHoraPrevistaSaida(String horaPrevistaSaida) {
-        this.horaPrevistaSaida = horaPrevistaSaida;
-    }
-
-    public DadosCredenciamentoVeculo horaPrevistaSaida(String horaPrevistaSaida) {
-        this.horaPrevistaSaida = horaPrevistaSaida;
-        return this;
-    }
-
-    /**
-     * Somente para os casos em que o veículo foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 100
-     * @return areas
-     **/
-    @JsonProperty("areas")
-    public String getAreas() {
-        return areas;
-    }
-
-    public void setAreas(String areas) {
-        this.areas = areas;
-    }
-
-    public DadosCredenciamentoVeculo areas(String areas) {
-        this.areas = areas;
-        return this;
-    }
-
-    /**
-     * Credenciamento ativo?&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     * @return credenciamentoAtivo
-     **/
-    @JsonProperty("credenciamentoAtivo")
+    @JsonProperty("contingencia")
     @NotNull
-    public Boolean isCredenciamentoAtivo() {
-        return credenciamentoAtivo;
+    public Boolean isisContingencia() {
+        return contingencia;
     }
 
-    public void setCredenciamentoAtivo(Boolean credenciamentoAtivo) {
-        this.credenciamentoAtivo = credenciamentoAtivo;
+    public void setContingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
     }
 
-    public DadosCredenciamentoVeculo credenciamentoAtivo(Boolean credenciamentoAtivo) {
-        this.credenciamentoAtivo = credenciamentoAtivo;
+    public DadosCredenciamentoVeculo contingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
         return this;
     }
 
     /**
      * Motivação do credenciamento&lt;br/&gt;Tamanho: 100
+     *
      * @return motivacao
      **/
     @JsonProperty("motivacao")
@@ -741,45 +716,75 @@ public class DadosCredenciamentoVeculo {
     public String toString() {
 
         String sb = "class DadosCredenciamentoVeculo {\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
-                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
-                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    marca: " + toIndentedString(marca) + "\n" +
-                "    modelo: " + toIndentedString(modelo) + "\n" +
-                "    ano: " + toIndentedString(ano) + "\n" +
-                "    capacidadeTanqueCombustivel: " + toIndentedString(capacidadeTanqueCombustivel) + "\n" +
-                "    satelite: " + toIndentedString(satelite) + "\n" +
-                "    cnpjResponsavel: " + toIndentedString(cnpjResponsavel) + "\n" +
                 "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
-                "    operadorEstrangeiroResponsavel: " + toIndentedString(operadorEstrangeiroResponsavel) + "\n" +
                 "    documentoEstrangeiroResponsavel: " + toIndentedString(documentoEstrangeiroResponsavel) + "\n" +
-                "    dataInicioValidade: " + toIndentedString(dataInicioValidade) + "\n" +
-                "    dataFimValidade: " + toIndentedString(dataFimValidade) + "\n" +
-                "    horaPrevistaEntrada: " + toIndentedString(horaPrevistaEntrada) + "\n" +
-                "    horaPrevistaSaida: " + toIndentedString(horaPrevistaSaida) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
                 "    areas: " + toIndentedString(areas) + "\n" +
+                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
+                "    marca: " + toIndentedString(marca) + "\n" +
+                "    operadorEstrangeiroResponsavel: " + toIndentedString(operadorEstrangeiroResponsavel) + "\n" +
+                "    horaPrevistaEntrada: " + toIndentedString(horaPrevistaEntrada) + "\n" +
+                "    cnpjResponsavel: " + toIndentedString(cnpjResponsavel) + "\n" +
                 "    credenciamentoAtivo: " + toIndentedString(credenciamentoAtivo) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    dataFimValidade: " + toIndentedString(dataFimValidade) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    ano: " + toIndentedString(ano) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    dataInicioValidade: " + toIndentedString(dataInicioValidade) + "\n" +
+                "    capacidadeTanqueCombustivel: " + toIndentedString(capacidadeTanqueCombustivel) + "\n" +
+                "    horaPrevistaSaida: " + toIndentedString(horaPrevistaSaida) + "\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    modelo: " + toIndentedString(modelo) + "\n" +
+                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
+                "    satelite: " + toIndentedString(satelite) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
                 "    motivacao: " + toIndentedString(motivacao) + "\n" +
                 "}";
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

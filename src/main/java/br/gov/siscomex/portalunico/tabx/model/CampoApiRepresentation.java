@@ -16,87 +16,12 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CampoApiRepresentation", propOrder =
-        {"nome", "rotulo", "descricao", "tipo", "tamanho", "casasDecimais", "formato", "obrigatorio", "autoNumerado", "chaveNegocio", "campoEstrangeiro", "restricaoUnicidade", "possuiDominio", "nomeTabelaEstrangeira", "dominios"
+        {"tipo", "possuiDominio", "dominios", "obrigatorio", "formato", "nome", "autoNumerado", "campoEstrangeiro", "nomeTabelaEstrangeira", "descricao", "chaveNegocio", "tamanho", "casasDecimais", "rotulo", "restricaoUnicidade"
         })
 
 @XmlRootElement(name = "CampoApiRepresentation")
 public class CampoApiRepresentation {
 
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(example = "INDICADOR_DESPACHO_EXP", required = true, value = "Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40")
-    /**
-     * Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40
-     **/
-    private String nome = null;
-
-    @XmlElement(name = "rotulo")
-    @ApiModelProperty(example = "Indicador de despacho de exportação", value = "Rótulo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
-    /**
-     * Rótulo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
-     **/
-    private String rotulo = null;
-
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Indicador de despacho de exportação", value = "Descrição do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
-    /**
-     * Descrição do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 100
-     **/
-    private String descricao = null;
-
-
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("INTEIRO")
-        @JsonProperty("INTEIRO")
-        INTEIRO("INTEIRO"),
-
-        @XmlEnumValue("DECIMAL")
-        @JsonProperty("DECIMAL")
-        DECIMAL("DECIMAL"),
-
-        @XmlEnumValue("STRING")
-        @JsonProperty("STRING")
-        STRING("STRING"),
-
-        @XmlEnumValue("DATA")
-        @JsonProperty("DATA")
-        DATA("DATA"),
-
-        @XmlEnumValue("DATA_HORA")
-        @JsonProperty("DATA_HORA")
-        DATA_HORA("DATA_HORA"),
-
-        @XmlEnumValue("BOOLEANO")
-        @JsonProperty("BOOLEANO")
-        BOOLEANO("BOOLEANO");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-    }
 
     @XmlElement(name = "tipo", required = true)
     @ApiModelProperty(example = "STRING", required = true, value = "Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
@@ -104,77 +29,12 @@ public class CampoApiRepresentation {
      * Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
      **/
     private TipoEnum tipo = null;
-
-    @XmlElement(name = "tamanho")
-    @ApiModelProperty(example = "1", value = "Tamanho do campo.<br>Valor mínimo: 1<br>Valor máximo: 9999")
-    /**
-     * Tamanho do campo.<br>Valor mínimo: 1<br>Valor máximo: 9999
-     **/
-    private Integer tamanho = null;
-
-    @XmlElement(name = "casasDecimais")
-    @ApiModelProperty(example = "0", value = "Casas decimais do campo.<br>Valor: 0 ou 1")
-    /**
-     * Casas decimais do campo.<br>Valor: 0 ou 1
-     **/
-    private Integer casasDecimais = null;
-
-    @XmlElement(name = "formato")
-    @ApiModelProperty(value = "Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String formato = null;
-
-    @XmlElement(name = "obrigatorio", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Obrigatoriedade do campo.")
-    /**
-     * Obrigatoriedade do campo.
-     **/
-    private Boolean obrigatorio = null;
-
-    @XmlElement(name = "autoNumerado", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador de autonumerado.")
-    /**
-     * Indicador de autonumerado.
-     **/
-    private Boolean autoNumerado = null;
-
-    @XmlElement(name = "chaveNegocio", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indicador de chave de negócio.")
-    /**
-     * Indicador de chave de negócio.
-     **/
-    private Boolean chaveNegocio = null;
-
-    @XmlElement(name = "campoEstrangeiro", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indicador de campo estrangeiro.")
-    /**
-     * Indicador de campo estrangeiro.
-     **/
-    private Boolean campoEstrangeiro = null;
-
-    @XmlElement(name = "restricaoUnicidade", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador de restrição por unicidade.")
-    /**
-     * Indicador de restrição por unicidade.
-     **/
-    private Boolean restricaoUnicidade = null;
-
     @XmlElement(name = "possuiDominio", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador de existência de domínio.")
     /**
      * Indicador de existência de domínio.
      **/
     private Boolean possuiDominio = null;
-
-    @XmlElement(name = "nomeTabelaEstrangeira")
-    @ApiModelProperty(value = "Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
-    /**
-     * Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
-     **/
-    private String nomeTabelaEstrangeira = null;
-
     @XmlElement(name = "dominios")
     @ApiModelProperty(value = "Domínios do campo.")
     @Valid
@@ -182,6 +42,195 @@ public class CampoApiRepresentation {
      * Domínios do campo.
      **/
     private List<DominioCampoApiRepresentation> dominios = null;
+    @XmlElement(name = "obrigatorio", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Obrigatoriedade do campo.")
+    /**
+     * Obrigatoriedade do campo.
+     **/
+    private Boolean obrigatorio = null;
+    @XmlElement(name = "formato")
+    @ApiModelProperty(value = "Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String formato = null;
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "INDICADOR_DESPACHO_EXP", required = true, value = "Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40")
+    /**
+     * Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40
+     **/
+    private String nome = null;
+    @XmlElement(name = "autoNumerado", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador de autonumerado.")
+    /**
+     * Indicador de autonumerado.
+     **/
+    private Boolean autoNumerado = null;
+    @XmlElement(name = "campoEstrangeiro", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indicador de campo estrangeiro.")
+    /**
+     * Indicador de campo estrangeiro.
+     **/
+    private Boolean campoEstrangeiro = null;
+    @XmlElement(name = "nomeTabelaEstrangeira")
+    @ApiModelProperty(value = "Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
+    /**
+     * Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
+     **/
+    private String nomeTabelaEstrangeira = null;
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Indicador de despacho de exportação", value = "Descrição do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
+    /**
+     * Descrição do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 100
+     **/
+    private String descricao = null;
+    @XmlElement(name = "chaveNegocio", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indicador de chave de negócio.")
+    /**
+     * Indicador de chave de negócio.
+     **/
+    private Boolean chaveNegocio = null;
+    @XmlElement(name = "tamanho")
+    @ApiModelProperty(example = "1", value = "Tamanho do campo.<br>Valor mínimo: 1<br>Valor máximo: 9999")
+    /**
+     * Tamanho do campo.<br>Valor mínimo: 1<br>Valor máximo: 9999
+     **/
+    private Integer tamanho = null;
+    @XmlElement(name = "casasDecimais")
+    @ApiModelProperty(example = "0", value = "Casas decimais do campo.<br>Valor: 0 ou 1")
+    /**
+     * Casas decimais do campo.<br>Valor: 0 ou 1
+     **/
+    private Integer casasDecimais = null;
+    @XmlElement(name = "rotulo")
+    @ApiModelProperty(example = "Indicador de despacho de exportação", value = "Rótulo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
+    /**
+     * Rótulo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
+     **/
+    private String rotulo = null;
+    @XmlElement(name = "restricaoUnicidade", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador de restrição por unicidade.")
+    /**
+     * Indicador de restrição por unicidade.
+     **/
+    private Boolean restricaoUnicidade = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tipo do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    @NotNull
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public CampoApiRepresentation tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Indicador de existência de domínio.
+     *
+     * @return possuiDominio
+     **/
+    @JsonProperty("possuiDominio")
+    @NotNull
+    public Boolean isisPossuiDominio() {
+        return possuiDominio;
+    }
+
+    public void setPossuiDominio(Boolean possuiDominio) {
+        this.possuiDominio = possuiDominio;
+    }
+
+    public CampoApiRepresentation possuiDominio(Boolean possuiDominio) {
+        this.possuiDominio = possuiDominio;
+        return this;
+    }
+
+    /**
+     * Domínios do campo.
+     *
+     * @return dominios
+     **/
+    @JsonProperty("dominios")
+    public List<DominioCampoApiRepresentation> getDominios() {
+        return dominios;
+    }
+
+    public void setDominios(List<DominioCampoApiRepresentation> dominios) {
+        this.dominios = dominios;
+    }
+
+    public CampoApiRepresentation dominios(List<DominioCampoApiRepresentation> dominios) {
+        this.dominios = dominios;
+        return this;
+    }
+
+    public CampoApiRepresentation addDominiosItem(DominioCampoApiRepresentation dominiosItem) {
+        this.dominios.add(dominiosItem);
+        return this;
+    }
+
+    /**
+     * Obrigatoriedade do campo.
+     *
+     * @return obrigatorio
+     **/
+    @JsonProperty("obrigatorio")
+    @NotNull
+    public Boolean isisObrigatorio() {
+        return obrigatorio;
+    }
+
+    public void setObrigatorio(Boolean obrigatorio) {
+        this.obrigatorio = obrigatorio;
+    }
+
+    public CampoApiRepresentation obrigatorio(Boolean obrigatorio) {
+        this.obrigatorio = obrigatorio;
+        return this;
+    }
+
+    /**
+     * Formato do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+     *
+     * @return formato
+     **/
+    @JsonProperty("formato")
+    public String getFormato() {
+        return formato;
+    }
+
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
+    public CampoApiRepresentation formato(String formato) {
+        this.formato = formato;
+        return this;
+    }
 
     /**
      * Nome do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 40
@@ -204,21 +253,61 @@ public class CampoApiRepresentation {
     }
 
     /**
-     * Rótulo do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
+     * Indicador de autonumerado.
      *
-     * @return rotulo
+     * @return autoNumerado
      **/
-    @JsonProperty("rotulo")
-    public String getRotulo() {
-        return rotulo;
+    @JsonProperty("autoNumerado")
+    @NotNull
+    public Boolean isisAutoNumerado() {
+        return autoNumerado;
     }
 
-    public void setRotulo(String rotulo) {
-        this.rotulo = rotulo;
+    public void setAutoNumerado(Boolean autoNumerado) {
+        this.autoNumerado = autoNumerado;
     }
 
-    public CampoApiRepresentation rotulo(String rotulo) {
-        this.rotulo = rotulo;
+    public CampoApiRepresentation autoNumerado(Boolean autoNumerado) {
+        this.autoNumerado = autoNumerado;
+        return this;
+    }
+
+    /**
+     * Indicador de campo estrangeiro.
+     *
+     * @return campoEstrangeiro
+     **/
+    @JsonProperty("campoEstrangeiro")
+    @NotNull
+    public Boolean isisCampoEstrangeiro() {
+        return campoEstrangeiro;
+    }
+
+    public void setCampoEstrangeiro(Boolean campoEstrangeiro) {
+        this.campoEstrangeiro = campoEstrangeiro;
+    }
+
+    public CampoApiRepresentation campoEstrangeiro(Boolean campoEstrangeiro) {
+        this.campoEstrangeiro = campoEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Nome da tabela estrangeira.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
+     *
+     * @return nomeTabelaEstrangeira
+     **/
+    @JsonProperty("nomeTabelaEstrangeira")
+    public String getNomeTabelaEstrangeira() {
+        return nomeTabelaEstrangeira;
+    }
+
+    public void setNomeTabelaEstrangeira(String nomeTabelaEstrangeira) {
+        this.nomeTabelaEstrangeira = nomeTabelaEstrangeira;
+    }
+
+    public CampoApiRepresentation nomeTabelaEstrangeira(String nomeTabelaEstrangeira) {
+        this.nomeTabelaEstrangeira = nomeTabelaEstrangeira;
         return this;
     }
 
@@ -242,25 +331,22 @@ public class CampoApiRepresentation {
     }
 
     /**
-     * Tipo do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
+     * Indicador de chave de negócio.
      *
-     * @return tipo
+     * @return chaveNegocio
      **/
-    @JsonProperty("tipo")
+    @JsonProperty("chaveNegocio")
     @NotNull
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
+    public Boolean isisChaveNegocio() {
+        return chaveNegocio;
     }
 
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public void setChaveNegocio(Boolean chaveNegocio) {
+        this.chaveNegocio = chaveNegocio;
     }
 
-    public CampoApiRepresentation tipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public CampoApiRepresentation chaveNegocio(Boolean chaveNegocio) {
+        this.chaveNegocio = chaveNegocio;
         return this;
     }
 
@@ -303,99 +389,21 @@ public class CampoApiRepresentation {
     }
 
     /**
-     * Formato do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
-     * @return formato
-     **/
-    @JsonProperty("formato")
-    public String getFormato() {
-        return formato;
-    }
-
-    public void setFormato(String formato) {
-        this.formato = formato;
-    }
-
-    public CampoApiRepresentation formato(String formato) {
-        this.formato = formato;
-        return this;
-    }
-
-    /**
-     * Obrigatoriedade do campo.
+     * Rótulo do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
      *
-     * @return obrigatorio
+     * @return rotulo
      **/
-    @JsonProperty("obrigatorio")
-    @NotNull
-    public Boolean isObrigatorio() {
-        return obrigatorio;
+    @JsonProperty("rotulo")
+    public String getRotulo() {
+        return rotulo;
     }
 
-    public void setObrigatorio(Boolean obrigatorio) {
-        this.obrigatorio = obrigatorio;
+    public void setRotulo(String rotulo) {
+        this.rotulo = rotulo;
     }
 
-    public CampoApiRepresentation obrigatorio(Boolean obrigatorio) {
-        this.obrigatorio = obrigatorio;
-        return this;
-    }
-
-    /**
-     * Indicador de autonumerado.
-     *
-     * @return autoNumerado
-     **/
-    @JsonProperty("autoNumerado")
-    @NotNull
-    public Boolean isAutoNumerado() {
-        return autoNumerado;
-    }
-
-    public void setAutoNumerado(Boolean autoNumerado) {
-        this.autoNumerado = autoNumerado;
-    }
-
-    public CampoApiRepresentation autoNumerado(Boolean autoNumerado) {
-        this.autoNumerado = autoNumerado;
-        return this;
-    }
-
-    /**
-     * Indicador de chave de negócio.
-     * @return chaveNegocio
-     **/
-    @JsonProperty("chaveNegocio")
-    @NotNull
-    public Boolean isChaveNegocio() {
-        return chaveNegocio;
-    }
-
-    public void setChaveNegocio(Boolean chaveNegocio) {
-        this.chaveNegocio = chaveNegocio;
-    }
-
-    public CampoApiRepresentation chaveNegocio(Boolean chaveNegocio) {
-        this.chaveNegocio = chaveNegocio;
-        return this;
-    }
-
-    /**
-     * Indicador de campo estrangeiro.
-     *
-     * @return campoEstrangeiro
-     **/
-    @JsonProperty("campoEstrangeiro")
-    @NotNull
-    public Boolean isCampoEstrangeiro() {
-        return campoEstrangeiro;
-    }
-
-    public void setCampoEstrangeiro(Boolean campoEstrangeiro) {
-        this.campoEstrangeiro = campoEstrangeiro;
-    }
-
-    public CampoApiRepresentation campoEstrangeiro(Boolean campoEstrangeiro) {
-        this.campoEstrangeiro = campoEstrangeiro;
+    public CampoApiRepresentation rotulo(String rotulo) {
+        this.rotulo = rotulo;
         return this;
     }
 
@@ -406,7 +414,7 @@ public class CampoApiRepresentation {
      **/
     @JsonProperty("restricaoUnicidade")
     @NotNull
-    public Boolean isRestricaoUnicidade() {
+    public Boolean isisRestricaoUnicidade() {
         return restricaoUnicidade;
     }
 
@@ -419,99 +427,81 @@ public class CampoApiRepresentation {
         return this;
     }
 
-    /**
-     * Indicador de existência de domínio.
-     * @return possuiDominio
-     **/
-    @JsonProperty("possuiDominio")
-    @NotNull
-    public Boolean isPossuiDominio() {
-        return possuiDominio;
-    }
-
-    public void setPossuiDominio(Boolean possuiDominio) {
-        this.possuiDominio = possuiDominio;
-    }
-
-    public CampoApiRepresentation possuiDominio(Boolean possuiDominio) {
-        this.possuiDominio = possuiDominio;
-        return this;
-    }
-
-    /**
-     * Nome da tabela estrangeira.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
-     * @return nomeTabelaEstrangeira
-     **/
-    @JsonProperty("nomeTabelaEstrangeira")
-    public String getNomeTabelaEstrangeira() {
-        return nomeTabelaEstrangeira;
-    }
-
-    public void setNomeTabelaEstrangeira(String nomeTabelaEstrangeira) {
-        this.nomeTabelaEstrangeira = nomeTabelaEstrangeira;
-    }
-
-    public CampoApiRepresentation nomeTabelaEstrangeira(String nomeTabelaEstrangeira) {
-        this.nomeTabelaEstrangeira = nomeTabelaEstrangeira;
-        return this;
-    }
-
-    /**
-     * Domínios do campo.
-     * @return dominios
-     **/
-    @JsonProperty("dominios")
-    public List<DominioCampoApiRepresentation> getDominios() {
-        return dominios;
-    }
-
-    public void setDominios(List<DominioCampoApiRepresentation> dominios) {
-        this.dominios = dominios;
-    }
-
-    public CampoApiRepresentation dominios(List<DominioCampoApiRepresentation> dominios) {
-        this.dominios = dominios;
-        return this;
-    }
-
-    public CampoApiRepresentation addDominiosItem(DominioCampoApiRepresentation dominiosItem) {
-        this.dominios.add(dominiosItem);
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class CampoApiRepresentation {\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    rotulo: " + toIndentedString(rotulo) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    possuiDominio: " + toIndentedString(possuiDominio) + "\n" +
+                "    dominios: " + toIndentedString(dominios) + "\n" +
+                "    obrigatorio: " + toIndentedString(obrigatorio) + "\n" +
+                "    formato: " + toIndentedString(formato) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    autoNumerado: " + toIndentedString(autoNumerado) + "\n" +
+                "    campoEstrangeiro: " + toIndentedString(campoEstrangeiro) + "\n" +
+                "    nomeTabelaEstrangeira: " + toIndentedString(nomeTabelaEstrangeira) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    chaveNegocio: " + toIndentedString(chaveNegocio) + "\n" +
                 "    tamanho: " + toIndentedString(tamanho) + "\n" +
                 "    casasDecimais: " + toIndentedString(casasDecimais) + "\n" +
-                "    formato: " + toIndentedString(formato) + "\n" +
-                "    obrigatorio: " + toIndentedString(obrigatorio) + "\n" +
-                "    autoNumerado: " + toIndentedString(autoNumerado) + "\n" +
-                "    chaveNegocio: " + toIndentedString(chaveNegocio) + "\n" +
-                "    campoEstrangeiro: " + toIndentedString(campoEstrangeiro) + "\n" +
+                "    rotulo: " + toIndentedString(rotulo) + "\n" +
                 "    restricaoUnicidade: " + toIndentedString(restricaoUnicidade) + "\n" +
-                "    possuiDominio: " + toIndentedString(possuiDominio) + "\n" +
-                "    nomeTabelaEstrangeira: " + toIndentedString(nomeTabelaEstrangeira) + "\n" +
-                "    dominios: " + toIndentedString(dominios) + "\n" +
                 "}";
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("INTEIRO")
+        @JsonProperty("INTEIRO")
+        INTEIRO("INTEIRO"),
+
+        @XmlEnumValue("DECIMAL")
+        @JsonProperty("DECIMAL")
+        DECIMAL("DECIMAL"),
+
+        @XmlEnumValue("STRING")
+        @JsonProperty("STRING")
+        STRING("STRING"),
+
+        @XmlEnumValue("DATA")
+        @JsonProperty("DATA")
+        DATA("DATA"),
+
+        @XmlEnumValue("DATA_HORA")
+        @JsonProperty("DATA_HORA")
+        DATA_HORA("DATA_HORA"),
+
+        @XmlEnumValue("BOOLEANO")
+        @JsonProperty("BOOLEANO")
+        BOOLEANO("BOOLEANO");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

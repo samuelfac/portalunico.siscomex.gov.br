@@ -11,84 +11,84 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
- @XmlType(name = "DadosDoChassiEmbarque", propOrder =
-    { "chassi", "idElemento"
-})
+@XmlType(name = "DadosDoChassiEmbarque", propOrder =
+        {"chassi", "idElemento"
+        })
 
-@XmlRootElement(name="DadosDoChassiEmbarque")
-public class DadosDoChassiEmbarque  {
-  
-  @XmlElement(name="chassi")
-  @ApiModelProperty(example = "chassi1...", value = "Número do chassi.<br/>Tamanho: 50")
- /**
-   * Número do chassi.<br/>Tamanho: 50
-  **/
-  private String chassi = null;
+@XmlRootElement(name = "DadosDoChassiEmbarque")
+public class DadosDoChassiEmbarque {
 
-  @XmlElement(name="idElemento", required = true)
-  @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
- /**
-   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-  **/
-  private String idElemento = null;
- /**
-   * Número do chassi.&lt;br/&gt;Tamanho: 50
-   * @return chassi
-  **/
-  @JsonProperty("chassi")
-  public String getChassi() {
-    return chassi;
-  }
+    @XmlElement(name = "chassi")
+    @ApiModelProperty(example = "chassi1...", value = "Número do chassi.<br/>Tamanho: 50")
+    /**
+     * Número do chassi.<br/>Tamanho: 50
+     **/
+    private String chassi = null;
 
-  public void setChassi(String chassi) {
-    this.chassi = chassi;
-  }
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
-  public DadosDoChassiEmbarque chassi(String chassi) {
-    this.chassi = chassi;
-    return this;
-  }
-
- /**
-   * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-   * @return idElemento
-  **/
-  @JsonProperty("idElemento")
-  @NotNull
-  public String getIdElemento() {
-    return idElemento;
-  }
-
-  public void setIdElemento(String idElemento) {
-    this.idElemento = idElemento;
-  }
-
-  public DadosDoChassiEmbarque idElemento(String idElemento) {
-    this.idElemento = idElemento;
-    return this;
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class DadosDoChassiEmbarque {\n");
-    
-    sb.append("    chassi: ").append(toIndentedString(chassi)).append("\n");
-    sb.append("    idElemento: ").append(toIndentedString(idElemento)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private static String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
-    return o.toString().replace("\n", "\n    ");
-  }
-}
 
+    /**
+     * Número do chassi.&lt;br/&gt;Tamanho: 50
+     *
+     * @return chassi
+     **/
+    @JsonProperty("chassi")
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public DadosDoChassiEmbarque chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDoChassiEmbarque idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class DadosDoChassiEmbarque {\n" +
+                "    chassi: " + toIndentedString(chassi) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "}";
+        return sb;
+    }
+}

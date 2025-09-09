@@ -33,6 +33,17 @@ public class DadosDaNotaFiscalEmbarqueDesembarque {
     private String idElemento = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Chave NF-e.&lt;br/&gt;Tamanho: 100
      *
      * @return chaveNfe
@@ -71,7 +82,6 @@ public class DadosDaNotaFiscalEmbarqueDesembarque {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -81,16 +91,4 @@ public class DadosDaNotaFiscalEmbarqueDesembarque {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

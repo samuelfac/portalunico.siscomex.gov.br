@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FundamentoLegalOpcionalDTO", propOrder =
-        {"codigoTributo", "codigoRegime", "codigoFundamentoLegal", "codigoNomenclaturaAlternativa"
+        {"codigoRegime", "codigoTributo", "codigoFundamentoLegal", "codigoNomenclaturaAlternativa"
         })
 
 @XmlRootElement(name = "FundamentoLegalOpcionalDTO")
@@ -23,19 +23,19 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "DTO que representa um Fundamento Legal opcional.")
 public class FundamentoLegalOpcionalDTO {
 
-    @XmlElement(name = "codigoTributo", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Código do Tributo.")
-    /**
-     * Código do Tributo.
-     **/
-    private Long codigoTributo = null;
-
     @XmlElement(name = "codigoRegime", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Código identificador do Regime Tributário.")
     /**
      * Código identificador do Regime Tributário.
      **/
     private Long codigoRegime = null;
+
+    @XmlElement(name = "codigoTributo", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Código do Tributo.")
+    /**
+     * Código do Tributo.
+     **/
+    private Long codigoTributo = null;
 
     @XmlElement(name = "codigoFundamentoLegal", required = true)
     @ApiModelProperty(example = "15", required = true, value = "Código identificador do Fundamento Legal, com até 4 dígitos.")
@@ -52,23 +52,14 @@ public class FundamentoLegalOpcionalDTO {
     private String codigoNomenclaturaAlternativa = null;
 
     /**
-     * Código do Tributo.
-     *
-     * @return codigoTributo
-     **/
-    @JsonProperty("codigoTributo")
-    @NotNull
-    public Long getCodigoTributo() {
-        return codigoTributo;
-    }
-
-    public void setCodigoTributo(Long codigoTributo) {
-        this.codigoTributo = codigoTributo;
-    }
-
-    public FundamentoLegalOpcionalDTO codigoTributo(Long codigoTributo) {
-        this.codigoTributo = codigoTributo;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -88,6 +79,26 @@ public class FundamentoLegalOpcionalDTO {
 
     public FundamentoLegalOpcionalDTO codigoRegime(Long codigoRegime) {
         this.codigoRegime = codigoRegime;
+        return this;
+    }
+
+    /**
+     * Código do Tributo.
+     *
+     * @return codigoTributo
+     **/
+    @JsonProperty("codigoTributo")
+    @NotNull
+    public Long getCodigoTributo() {
+        return codigoTributo;
+    }
+
+    public void setCodigoTributo(Long codigoTributo) {
+        this.codigoTributo = codigoTributo;
+    }
+
+    public FundamentoLegalOpcionalDTO codigoTributo(Long codigoTributo) {
+        this.codigoTributo = codigoTributo;
         return this;
     }
 
@@ -130,28 +141,15 @@ public class FundamentoLegalOpcionalDTO {
         return this;
     }
 
-
     @Override
     public String toString() {
 
         String sb = "class FundamentoLegalOpcionalDTO {\n" +
-                "    codigoTributo: " + toIndentedString(codigoTributo) + "\n" +
                 "    codigoRegime: " + toIndentedString(codigoRegime) + "\n" +
+                "    codigoTributo: " + toIndentedString(codigoTributo) + "\n" +
                 "    codigoFundamentoLegal: " + toIndentedString(codigoFundamentoLegal) + "\n" +
                 "    codigoNomenclaturaAlternativa: " + toIndentedString(codigoNomenclaturaAlternativa) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

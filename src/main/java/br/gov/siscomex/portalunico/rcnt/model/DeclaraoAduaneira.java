@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclaraoAduaneira", propOrder =
-        {"numeroDeclaracao", "tipo"
+        {"tipo", "numeroDeclaracao"
         })
 
 @XmlRootElement(name = "DeclaraoAduaneira")
@@ -22,13 +22,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "(campo será descontinuado em próxima release)")
 public class DeclaraoAduaneira {
 
-    @XmlElement(name = "numeroDeclaracao")
-    @ApiModelProperty(value = "(campo será descontinuado em próxima release)<br/>Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100")
-    /**
-     * (campo será descontinuado em próxima release)<br/>Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100
-     **/
-    private String numeroDeclaracao = null;
-
     @XmlElement(name = "tipo")
     @ApiModelProperty(example = "DUIMP", value = "(campo será descontinuado em próxima release)<br/>Tipo da Declaração aduaneira. Conforme tabela de domínio Tipo de Declaração Aduaneira disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
@@ -36,23 +29,22 @@ public class DeclaraoAduaneira {
      **/
     private String tipo = null;
 
+    @XmlElement(name = "numeroDeclaracao")
+    @ApiModelProperty(value = "(campo será descontinuado em próxima release)<br/>Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100")
     /**
-     * (campo será descontinuado em próxima release)&lt;br/&gt;Número da declaração aduaneira.&lt;br/&gt; O tamanho permitido para &#39;numeroDeclaracao&#39; será conforme o valor de &#39;tipo&#39; da declaração:   &#39;DI&#39;: 10 (somente números) &#39;DTA&#39;: 10 &#39;DUE&#39;: 14 &#39;DAT&#39;: 11 &#39;DUIMP&#39;: 15 Outros: até 100
-     *
-     * @return numeroDeclaracao
+     * (campo será descontinuado em próxima release)<br/>Número da declaração aduaneira.<br/> O tamanho permitido para 'numeroDeclaracao' será conforme o valor de 'tipo' da declaração:   'DI': 10 (somente números) 'DTA': 10 'DUE': 14 'DAT': 11 'DUIMP': 15 Outros: até 100
      **/
-    @JsonProperty("numeroDeclaracao")
-    public String getNumeroDeclaracao() {
-        return numeroDeclaracao;
-    }
+    private String numeroDeclaracao = null;
 
-    public void setNumeroDeclaracao(String numeroDeclaracao) {
-        this.numeroDeclaracao = numeroDeclaracao;
-    }
-
-    public DeclaraoAduaneira numeroDeclaracao(String numeroDeclaracao) {
-        this.numeroDeclaracao = numeroDeclaracao;
-        return this;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -74,26 +66,32 @@ public class DeclaraoAduaneira {
         return this;
     }
 
+    /**
+     * (campo será descontinuado em próxima release)&lt;br/&gt;Número da declaração aduaneira.&lt;br/&gt; O tamanho permitido para &#39;numeroDeclaracao&#39; será conforme o valor de &#39;tipo&#39; da declaração:   &#39;DI&#39;: 10 (somente números) &#39;DTA&#39;: 10 &#39;DUE&#39;: 14 &#39;DAT&#39;: 11 &#39;DUIMP&#39;: 15 Outros: até 100
+     *
+     * @return numeroDeclaracao
+     **/
+    @JsonProperty("numeroDeclaracao")
+    public String getNumeroDeclaracao() {
+        return numeroDeclaracao;
+    }
+
+    public void setNumeroDeclaracao(String numeroDeclaracao) {
+        this.numeroDeclaracao = numeroDeclaracao;
+    }
+
+    public DeclaraoAduaneira numeroDeclaracao(String numeroDeclaracao) {
+        this.numeroDeclaracao = numeroDeclaracao;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class DeclaraoAduaneira {\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

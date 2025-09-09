@@ -13,26 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemCargaConhecimentoConsultaDetalhada", propOrder =
-        {"classificacoesMercadoria", "descricaoMercadoria", "ulds"
+        {"ulds", "descricaoMercadoria", "classificacoesMercadoria"
         })
 
 @XmlRootElement(name = "ItemCargaConhecimentoConsultaDetalhada")
 public class ItemCargaConhecimentoConsultaDetalhada {
-
-    @XmlElement(name = "classificacoesMercadoria")
-    @ApiModelProperty(example = "877887", value = "Código de classificação da mercadoria<br/>Tamanho: 18")
-    @Valid
-    /**
-     * Código de classificação da mercadoria<br/>Tamanho: 18
-     **/
-    private List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria = null;
-
-    @XmlElement(name = "descricaoMercadoria")
-    @ApiModelProperty(example = "Descrição completa das mercadorias", value = "Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
-    /**
-     * Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
-     **/
-    private String descricaoMercadoria = null;
 
     @XmlElement(name = "ulds")
     @ApiModelProperty(value = "Lista contendo as Ulds da carga<br/>")
@@ -42,47 +27,30 @@ public class ItemCargaConhecimentoConsultaDetalhada {
      **/
     private List<UldBlkConsultaDetalhada> ulds = null;
 
+    @XmlElement(name = "descricaoMercadoria")
+    @ApiModelProperty(example = "Descrição completa das mercadorias", value = "Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
     /**
-     * Código de classificação da mercadoria&lt;br/&gt;Tamanho: 18
-     *
-     * @return classificacoesMercadoria
+     * Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
      **/
-    @JsonProperty("classificacoesMercadoria")
-    public List<ClassificacaoMercadoriaConsultaDetalhada> getClassificacoesMercadoria() {
-        return classificacoesMercadoria;
-    }
+    private String descricaoMercadoria = null;
 
-    public void setClassificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
-        this.classificacoesMercadoria = classificacoesMercadoria;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada classificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
-        this.classificacoesMercadoria = classificacoesMercadoria;
-        return this;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
-        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
-        return this;
-    }
+    @XmlElement(name = "classificacoesMercadoria")
+    @ApiModelProperty(example = "877887", value = "Código de classificação da mercadoria<br/>Tamanho: 18")
+    @Valid
+    /**
+     * Código de classificação da mercadoria<br/>Tamanho: 18
+     **/
+    private List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria = null;
 
     /**
-     * Descrição completa das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
-     *
-     * @return descricaoMercadoria
-     **/
-    @JsonProperty("descricaoMercadoria")
-    public String getDescricaoMercadoria() {
-        return descricaoMercadoria;
-    }
-
-    public void setDescricaoMercadoria(String descricaoMercadoria) {
-        this.descricaoMercadoria = descricaoMercadoria;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada descricaoMercadoria(String descricaoMercadoria) {
-        this.descricaoMercadoria = descricaoMercadoria;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -109,27 +77,57 @@ public class ItemCargaConhecimentoConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Descrição completa das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
+     *
+     * @return descricaoMercadoria
+     **/
+    @JsonProperty("descricaoMercadoria")
+    public String getDescricaoMercadoria() {
+        return descricaoMercadoria;
+    }
+
+    public void setDescricaoMercadoria(String descricaoMercadoria) {
+        this.descricaoMercadoria = descricaoMercadoria;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada descricaoMercadoria(String descricaoMercadoria) {
+        this.descricaoMercadoria = descricaoMercadoria;
+        return this;
+    }
+
+    /**
+     * Código de classificação da mercadoria&lt;br/&gt;Tamanho: 18
+     *
+     * @return classificacoesMercadoria
+     **/
+    @JsonProperty("classificacoesMercadoria")
+    public List<ClassificacaoMercadoriaConsultaDetalhada> getClassificacoesMercadoria() {
+        return classificacoesMercadoria;
+    }
+
+    public void setClassificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
+        this.classificacoesMercadoria = classificacoesMercadoria;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada classificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
+        this.classificacoesMercadoria = classificacoesMercadoria;
+        return this;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
+        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class ItemCargaConhecimentoConsultaDetalhada {\n" +
-                "    classificacoesMercadoria: " + toIndentedString(classificacoesMercadoria) + "\n" +
-                "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
                 "    ulds: " + toIndentedString(ulds) + "\n" +
+                "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
+                "    classificacoesMercadoria: " + toIndentedString(classificacoesMercadoria) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

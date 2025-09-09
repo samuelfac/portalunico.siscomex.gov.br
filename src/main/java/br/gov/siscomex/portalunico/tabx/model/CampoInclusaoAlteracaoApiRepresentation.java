@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CampoInclusaoAlteracaoApiRepresentation", propOrder =
-        {"nome", "valor"
+        {"valor", "nome"
         })
 
 @XmlRootElement(name = "CampoInclusaoAlteracaoApiRepresentation")
 public class CampoInclusaoAlteracaoApiRepresentation {
-
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(example = "NOME", required = true, value = "Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40")
-    /**
-     * Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40
-     **/
-    private String nome = null;
 
     @XmlElement(name = "valor")
     @ApiModelProperty(example = "Grupo de exigência para material nacionalizado", value = "Valor atribuído ao campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: definido nos metadados da tabela")
@@ -32,24 +25,22 @@ public class CampoInclusaoAlteracaoApiRepresentation {
      **/
     private String valor = null;
 
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "NOME", required = true, value = "Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40")
     /**
-     * Nome do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 40
-     *
-     * @return nome
+     * Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40
      **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
+    private String nome = null;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public CampoInclusaoAlteracaoApiRepresentation nome(String nome) {
-        this.nome = nome;
-        return this;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -71,26 +62,33 @@ public class CampoInclusaoAlteracaoApiRepresentation {
         return this;
     }
 
+    /**
+     * Nome do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 40
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public CampoInclusaoAlteracaoApiRepresentation nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class CampoInclusaoAlteracaoApiRepresentation {\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    valor: " + toIndentedString(valor) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

@@ -1,0 +1,124 @@
+package br.gov.siscomex.portalunico.cctr.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Destinatrio", propOrder =
+        {"endereco", "nome", "numeroCnpj"
+        })
+
+@XmlRootElement(name = "Destinatrio")
+/**
+ * Dados do destinatário
+ **/
+@ApiModel(description = "Dados do destinatário")
+public class Destinatrio {
+
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(example = "Endereço do destinatário estrangeiro", value = "Endereço do destinatário estrangeiro<br>Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.")
+    /**
+     * Endereço do destinatário estrangeiro<br>Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
+     **/
+    private String endereco = null;
+
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Nome do destinatário estrangeiro", value = "Nome do destinatário estrangeiro<br>Tamanho: 60<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.")
+    /**
+     * Nome do destinatário estrangeiro<br>Tamanho: 60<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.
+     **/
+    private String nome = null;
+
+    @XmlElement(name = "numeroCnpj")
+    @ApiModelProperty(example = "12345678901234", value = "CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro.")
+    /**
+     * CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro.
+     **/
+    private String numeroCnpj = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Endereço do destinatário estrangeiro&lt;br&gt;Tamanho: 120&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Destinatrio endereco(String endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    /**
+     * Nome do destinatário estrangeiro&lt;br&gt;Tamanho: 60&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Destinatrio nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    /**
+     * CNPJ do destinatário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro.
+     *
+     * @return numeroCnpj
+     **/
+    @JsonProperty("numeroCnpj")
+    public String getNumeroCnpj() {
+        return numeroCnpj;
+    }
+
+    public void setNumeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
+    }
+
+    public Destinatrio numeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class Destinatrio {\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    numeroCnpj: " + toIndentedString(numeroCnpj) + "\n" +
+                "}";
+        return sb;
+    }
+}

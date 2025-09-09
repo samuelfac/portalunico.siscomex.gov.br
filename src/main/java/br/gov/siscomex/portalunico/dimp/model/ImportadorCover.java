@@ -1,0 +1,143 @@
+package br.gov.siscomex.portalunico.dimp.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlEnum;
+import javax.xml.bind.annotation.XmlEnumValue;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ImportadorCover", propOrder =
+        {"ni", "tipoImportador"
+        })
+
+@XmlRootElement(name = "ImportadorCover")
+/**
+ * Identificação do importador da declaração única de importação.
+ **/
+@ApiModel(description = "Identificação do importador da declaração única de importação.")
+public class ImportadorCover {
+
+    @XmlElement(name = "ni", required = true)
+    @ApiModelProperty(example = "00055555000130", required = true, value = "<br>Número do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
+    /**
+     * <br>Número do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
+     **/
+    private String ni = null;
+    @XmlElement(name = "tipoImportador", required = true)
+    @ApiModelProperty(example = "CNPJ", required = true, value = "Descreve se o Importador é do tipo CPF ou CNPJ")
+    /**
+     * Descreve se o Importador é do tipo CPF ou CNPJ
+     **/
+    private TipoImportadorEnum tipoImportador = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * &lt;br&gt;Número do Importador: &lt;br&gt;Caso seja CNPJ: &lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;AAAAAAAAAAAANN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return ni
+     **/
+    @JsonProperty("ni")
+    @NotNull
+    public String getNi() {
+        return ni;
+    }
+
+    public void setNi(String ni) {
+        this.ni = ni;
+    }
+
+    public ImportadorCover ni(String ni) {
+        this.ni = ni;
+        return this;
+    }
+
+    /**
+     * Descreve se o Importador é do tipo CPF ou CNPJ
+     *
+     * @return tipoImportador
+     **/
+    @JsonProperty("tipoImportador")
+    @NotNull
+    public String getTipoImportador() {
+        if (tipoImportador == null) {
+            return null;
+        }
+        return tipoImportador.value();
+    }
+
+    public void setTipoImportador(TipoImportadorEnum tipoImportador) {
+        this.tipoImportador = tipoImportador;
+    }
+
+    public ImportadorCover tipoImportador(TipoImportadorEnum tipoImportador) {
+        this.tipoImportador = tipoImportador;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ImportadorCover {\n" +
+                "    ni: " + toIndentedString(ni) + "\n" +
+                "    tipoImportador: " + toIndentedString(tipoImportador) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlType(name = "TipoImportadorEnum")
+    @XmlEnum(String.class)
+    public enum TipoImportadorEnum {
+
+        @XmlEnumValue("CNPJ")
+        @JsonProperty("CNPJ")
+        CNPJ("CNPJ"),
+
+        @XmlEnumValue("CPF")
+        @JsonProperty("CPF")
+        CPF("CPF");
+
+
+        private final String value;
+
+        TipoImportadorEnum(String v) {
+            value = v;
+        }
+
+        public static TipoImportadorEnum fromValue(String v) {
+            for (TipoImportadorEnum b : TipoImportadorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoImportadorEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+}

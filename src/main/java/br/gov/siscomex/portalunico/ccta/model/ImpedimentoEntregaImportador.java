@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ImpedimentoEntregaImportador", propOrder =
-        {"codigo", "descricao", "descricaoUnidadeRFB", "unidadeRFB"
+        {"codigo", "descricaoUnidadeRFB", "unidadeRFB", "descricao"
         })
 
 @XmlRootElement(name = "ImpedimentoEntregaImportador")
@@ -29,13 +29,6 @@ public class ImpedimentoEntregaImportador {
      **/
     private String codigo = null;
 
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Carga bloqueada.", value = "Descrição do impedimento<br/>Tamanho máximo: 300")
-    /**
-     * Descrição do impedimento<br/>Tamanho máximo: 300
-     **/
-    private String descricao = null;
-
     @XmlElement(name = "descricaoUnidadeRFB")
     @ApiModelProperty(example = "AEROPORTO INTERNACIONAL DO RIO DE JANEIRO", value = "Descrição da unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo é retornado para impedimentos originados nos sistemas Mantra e Duimp.")
     /**
@@ -49,6 +42,24 @@ public class ImpedimentoEntregaImportador {
      * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo é retornado para impedimentos originados nos sistemas Mantra e Duimp.
      **/
     private String unidadeRFB = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Carga bloqueada.", value = "Descrição do impedimento<br/>Tamanho máximo: 300")
+    /**
+     * Descrição do impedimento<br/>Tamanho máximo: 300
+     **/
+    private String descricao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * Código do impedimento.&lt;br/&gt;Tamanho: 11
@@ -66,25 +77,6 @@ public class ImpedimentoEntregaImportador {
 
     public ImpedimentoEntregaImportador codigo(String codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * Descrição do impedimento&lt;br/&gt;Tamanho máximo: 300
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public ImpedimentoEntregaImportador descricao(String descricao) {
-        this.descricao = descricao;
         return this;
     }
 
@@ -126,28 +118,34 @@ public class ImpedimentoEntregaImportador {
         return this;
     }
 
+    /**
+     * Descrição do impedimento&lt;br/&gt;Tamanho máximo: 300
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public ImpedimentoEntregaImportador descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class ImpedimentoEntregaImportador {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "    descricaoUnidadeRFB: " + toIndentedString(descricaoUnidadeRFB) + "\n" +
                 "    unidadeRFB: " + toIndentedString(unidadeRFB) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

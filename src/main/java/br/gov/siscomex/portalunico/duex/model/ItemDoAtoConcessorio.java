@@ -1,0 +1,92 @@
+package br.gov.siscomex.portalunico.duex.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "ItemDoAtoConcessorio", propOrder =
+        {"numero", "ncm"
+        })
+
+@XmlRootElement(name = "ItemDoAtoConcessorio")
+public class ItemDoAtoConcessorio {
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "Número<br />Formato: Inteiro, com até 5 digitos")
+    /**
+     * Número<br />Formato: Inteiro, com até 5 digitos
+     **/
+    private String numero = null;
+
+    @XmlElement(name = "ncm")
+    @ApiModelProperty(example = "01013000", value = "NCM<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")
+    /**
+     * NCM<br />Tamanho: 8<br />Formato: 'NNNNNNNN'
+     **/
+    private String ncm = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número&lt;br /&gt;Formato: Inteiro, com até 5 digitos
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public ItemDoAtoConcessorio numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    /**
+     * NCM&lt;br /&gt;Tamanho: 8&lt;br /&gt;Formato: &#39;NNNNNNNN&#39;
+     *
+     * @return ncm
+     **/
+    @JsonProperty("ncm")
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
+    }
+
+    public ItemDoAtoConcessorio ncm(String ncm) {
+        this.ncm = ncm;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ItemDoAtoConcessorio {\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "}";
+        return sb;
+    }
+}

@@ -12,18 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica", propOrder =
-        {"idElemento", "cpf", "nome", "qualificacao"
+        {"qualificacao", "cpf", "nome", "idElemento"
         })
 
 @XmlRootElement(name = "DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica")
 public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    @XmlElement(name = "qualificacao")
+    @ApiModelProperty(value = "Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100
      **/
-    private String idElemento = null;
+    private String qualificacao = null;
 
     @XmlElement(name = "cpf")
     @ApiModelProperty(value = "Informar o CPF da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -39,30 +39,40 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
      **/
     private String nome = null;
 
-    @XmlElement(name = "qualificacao")
-    @ApiModelProperty(value = "Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100")
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
-    private String qualificacao = null;
+    private String idElemento = null;
 
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)&lt;br/&gt;Tamanho: 100
      *
-     * @return idElemento
+     * @return qualificacao
      **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
+    @JsonProperty("qualificacao")
+    public String getQualificacao() {
+        return qualificacao;
     }
 
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
+    public void setQualificacao(String qualificacao) {
+        this.qualificacao = qualificacao;
     }
 
-    public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica idElemento(String idElemento) {
-        this.idElemento = idElemento;
+    public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica qualificacao(String qualificacao) {
+        this.qualificacao = qualificacao;
         return this;
     }
 
@@ -105,46 +115,34 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
     }
 
     /**
-     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)&lt;br/&gt;Tamanho: 100
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
-     * @return qualificacao
+     * @return idElemento
      **/
-    @JsonProperty("qualificacao")
-    public String getQualificacao() {
-        return qualificacao;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
     }
 
-    public void setQualificacao(String qualificacao) {
-        this.qualificacao = qualificacao;
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
     }
 
-    public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica qualificacao(String qualificacao) {
-        this.qualificacao = qualificacao;
+    public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
-
 
     @Override
     public String toString() {
 
         String sb = "class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    qualificacao: " + toIndentedString(qualificacao) + "\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    qualificacao: " + toIndentedString(qualificacao) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

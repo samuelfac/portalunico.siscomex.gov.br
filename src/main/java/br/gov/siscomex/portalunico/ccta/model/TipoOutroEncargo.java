@@ -32,6 +32,17 @@ public class TipoOutroEncargo {
     private String descricao = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Código do tipo do outro encargo.&lt;br/&gt;Tamanho: 2
      *
      * @return codigo
@@ -69,7 +80,6 @@ public class TipoOutroEncargo {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -79,16 +89,4 @@ public class TipoOutroEncargo {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

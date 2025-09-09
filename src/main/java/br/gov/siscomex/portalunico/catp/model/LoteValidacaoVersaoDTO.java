@@ -13,18 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LoteValidacaoVersaoDTO", propOrder =
-        {"seq", "codigo", "erros", "sucesso", "versao"
+        {"codigo", "erros", "sucesso", "seq", "versao"
         })
 
 @XmlRootElement(name = "LoteValidacaoVersaoDTO")
 public class LoteValidacaoVersaoDTO {
-
-    @XmlElement(name = "seq", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos")
-    /**
-     * Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos
-     **/
-    private Integer seq = null;
 
     @XmlElement(name = "codigo", required = true)
     @ApiModelProperty(required = true, value = "Código utilizado na operação<br>Tamanho: 35")
@@ -47,6 +40,13 @@ public class LoteValidacaoVersaoDTO {
      **/
     private Boolean sucesso = false;
 
+    @XmlElement(name = "seq", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos")
+    /**
+     * Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos
+     **/
+    private Integer seq = null;
+
     @XmlElement(name = "versao")
     @ApiModelProperty(value = "Versão do produto  <br>Tamanho máximo: 8")
     /**
@@ -55,23 +55,14 @@ public class LoteValidacaoVersaoDTO {
     private String versao = null;
 
     /**
-     * Número sequencial utilizado para identificar registro no lote&lt;br&gt;Formato: Inteiro, com até 3 digitos
-     *
-     * @return seq
-     **/
-    @JsonProperty("seq")
-    @NotNull
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public LoteValidacaoVersaoDTO seq(Integer seq) {
-        this.seq = seq;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -125,7 +116,7 @@ public class LoteValidacaoVersaoDTO {
      **/
     @JsonProperty("sucesso")
     @NotNull
-    public Boolean isSucesso() {
+    public Boolean isisSucesso() {
         return sucesso;
     }
 
@@ -135,6 +126,26 @@ public class LoteValidacaoVersaoDTO {
 
     public LoteValidacaoVersaoDTO sucesso(Boolean sucesso) {
         this.sucesso = sucesso;
+        return this;
+    }
+
+    /**
+     * Número sequencial utilizado para identificar registro no lote&lt;br&gt;Formato: Inteiro, com até 3 digitos
+     *
+     * @return seq
+     **/
+    @JsonProperty("seq")
+    @NotNull
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
+    public LoteValidacaoVersaoDTO seq(Integer seq) {
+        this.seq = seq;
         return this;
     }
 
@@ -157,29 +168,16 @@ public class LoteValidacaoVersaoDTO {
         return this;
     }
 
-
     @Override
     public String toString() {
 
         String sb = "class LoteValidacaoVersaoDTO {\n" +
-                "    seq: " + toIndentedString(seq) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
                 "    sucesso: " + toIndentedString(sucesso) + "\n" +
+                "    seq: " + toIndentedString(seq) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

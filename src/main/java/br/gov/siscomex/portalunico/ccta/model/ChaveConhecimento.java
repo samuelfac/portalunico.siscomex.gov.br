@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ChaveConhecimento", propOrder =
-        {"cnpjResponsavelArquivo", "dataEmissao", "identificacao"
+        {"cnpjResponsavelArquivo", "identificacao", "dataEmissao"
         })
 
 @XmlRootElement(name = "ChaveConhecimento")
@@ -24,6 +24,13 @@ public class ChaveConhecimento {
      **/
     private String cnpjResponsavelArquivo = null;
 
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
+    /**
+     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
+     **/
+    private String identificacao = null;
+
     @XmlElement(name = "dataEmissao")
     @ApiModelProperty(example = "2020-04-08T11:00:00-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
     /**
@@ -31,12 +38,16 @@ public class ChaveConhecimento {
      **/
     private String dataEmissao = null;
 
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
     /**
-     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
-     **/
-    private String identificacao = null;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
 
     /**
      * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
@@ -54,25 +65,6 @@ public class ChaveConhecimento {
 
     public ChaveConhecimento cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
         this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-        return this;
-    }
-
-    /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public ChaveConhecimento dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
         return this;
     }
 
@@ -95,27 +87,33 @@ public class ChaveConhecimento {
         return this;
     }
 
+    /**
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public ChaveConhecimento dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class ChaveConhecimento {\n" +
                 "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

@@ -32,6 +32,17 @@ public class InfoManuseioConsultaDetalhada {
     private String detalhes = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Código relacionado a um procedimento especial a ser realizado referente a carga&lt;br/&gt;
      *
      * @return codigo
@@ -69,7 +80,6 @@ public class InfoManuseioConsultaDetalhada {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -79,16 +89,4 @@ public class InfoManuseioConsultaDetalhada {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

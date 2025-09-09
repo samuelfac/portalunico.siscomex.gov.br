@@ -12,25 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosContinerUldPosioVeculoPtio", propOrder =
-        {"idElemento", "numeroConteiner", "identificacaoUld", "vazio"
+        {"identificacaoUld", "numeroConteiner", "vazio", "idElemento"
         })
 
 @XmlRootElement(name = "DadosContinerUldPosioVeculoPtio")
 public class DadosContinerUldPosioVeculoPtio {
-
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
-
-    @XmlElement(name = "numeroConteiner")
-    @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
-    /**
-     * Identificação do número do contêiner.<br/>Tamanho: 200
-     **/
-    private String numeroConteiner = null;
 
     @XmlElement(name = "identificacaoUld")
     @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
@@ -39,6 +25,13 @@ public class DadosContinerUldPosioVeculoPtio {
      **/
     private String identificacaoUld = null;
 
+    @XmlElement(name = "numeroConteiner")
+    @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
+    /**
+     * Identificação do número do contêiner.<br/>Tamanho: 200
+     **/
+    private String numeroConteiner = null;
+
     @XmlElement(name = "vazio")
     @ApiModelProperty(example = "false", value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
@@ -46,23 +39,40 @@ public class DadosContinerUldPosioVeculoPtio {
      **/
     private Boolean vazio = null;
 
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
+    private String idElemento = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
+    /**
+     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
+     *
+     * @return identificacaoUld
+     **/
+    @JsonProperty("identificacaoUld")
+    public String getIdentificacaoUld() {
+        return identificacaoUld;
     }
 
-    public DadosContinerUldPosioVeculoPtio idElemento(String idElemento) {
-        this.idElemento = idElemento;
+    public void setIdentificacaoUld(String identificacaoUld) {
+        this.identificacaoUld = identificacaoUld;
+    }
+
+    public DadosContinerUldPosioVeculoPtio identificacaoUld(String identificacaoUld) {
+        this.identificacaoUld = identificacaoUld;
         return this;
     }
 
@@ -86,31 +96,12 @@ public class DadosContinerUldPosioVeculoPtio {
     }
 
     /**
-     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
-     * @return identificacaoUld
-     **/
-    @JsonProperty("identificacaoUld")
-    public String getIdentificacaoUld() {
-        return identificacaoUld;
-    }
-
-    public void setIdentificacaoUld(String identificacaoUld) {
-        this.identificacaoUld = identificacaoUld;
-    }
-
-    public DadosContinerUldPosioVeculoPtio identificacaoUld(String identificacaoUld) {
-        this.identificacaoUld = identificacaoUld;
-        return this;
-    }
-
-    /**
      * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return vazio
      **/
     @JsonProperty("vazio")
-    public Boolean isVazio() {
+    public Boolean isisVazio() {
         return vazio;
     }
 
@@ -123,28 +114,35 @@ public class DadosContinerUldPosioVeculoPtio {
         return this;
     }
 
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosContinerUldPosioVeculoPtio idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class DadosContinerUldPosioVeculoPtio {\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
-                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    identificacaoUld: " + toIndentedString(identificacaoUld) + "\n" +
+                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    vazio: " + toIndentedString(vazio) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

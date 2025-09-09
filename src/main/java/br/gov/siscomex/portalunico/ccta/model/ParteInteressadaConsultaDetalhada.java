@@ -13,18 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParteInteressadaConsultaDetalhada", propOrder =
-        {"caixaPostal", "cidade", "contatos", "endereco", "nome", "pais", "tipo"
+        {"cidade", "tipo", "contatos", "endereco", "caixaPostal", "nome", "pais"
         })
 
 @XmlRootElement(name = "ParteInteressadaConsultaDetalhada")
 public class ParteInteressadaConsultaDetalhada {
-
-    @XmlElement(name = "caixaPostal")
-    @ApiModelProperty(example = "29292-929", value = "Endereço postal da parte interessada<br/>Tamanho máximo: 70")
-    /**
-     * Endereço postal da parte interessada<br/>Tamanho máximo: 70
-     **/
-    private String caixaPostal = null;
 
     @XmlElement(name = "cidade")
     @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade da parte interessada<br/>Tamanho máximo: 70")
@@ -32,6 +25,13 @@ public class ParteInteressadaConsultaDetalhada {
      * Cidade da parte interessada<br/>Tamanho máximo: 70
      **/
     private String cidade = null;
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "2", value = "Tipo da parte interessada<br/> Tamanho: 1<br/>1 - Consignatário<br/>2 - Embarcador<br/>3 - Agente de carga<br/>4 - Outras partes interessadas<br/>")
+    /**
+     * Tipo da parte interessada<br/> Tamanho: 1<br/>1 - Consignatário<br/>2 - Embarcador<br/>3 - Agente de carga<br/>4 - Outras partes interessadas<br/>
+     **/
+    private String tipo = null;
 
     @XmlElement(name = "contatos")
     @ApiModelProperty(value = "Lista de contatos da parte interessada.")
@@ -48,6 +48,13 @@ public class ParteInteressadaConsultaDetalhada {
      **/
     private String endereco = null;
 
+    @XmlElement(name = "caixaPostal")
+    @ApiModelProperty(example = "29292-929", value = "Endereço postal da parte interessada<br/>Tamanho máximo: 70")
+    /**
+     * Endereço postal da parte interessada<br/>Tamanho máximo: 70
+     **/
+    private String caixaPostal = null;
+
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Banco do Brasil", value = "Nome da parte interessada<br/> Tamanho: 70<br/>")
     /**
@@ -62,30 +69,15 @@ public class ParteInteressadaConsultaDetalhada {
      **/
     private String pais = null;
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "2", value = "Tipo da parte interessada<br/> Tamanho: 1<br/>1 - Consignatário<br/>2 - Embarcador<br/>3 - Agente de carga<br/>4 - Outras partes interessadas<br/>")
     /**
-     * Tipo da parte interessada<br/> Tamanho: 1<br/>1 - Consignatário<br/>2 - Embarcador<br/>3 - Agente de carga<br/>4 - Outras partes interessadas<br/>
-     **/
-    private String tipo = null;
-
-    /**
-     * Endereço postal da parte interessada&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return caixaPostal
-     **/
-    @JsonProperty("caixaPostal")
-    public String getCaixaPostal() {
-        return caixaPostal;
-    }
-
-    public void setCaixaPostal(String caixaPostal) {
-        this.caixaPostal = caixaPostal;
-    }
-
-    public ParteInteressadaConsultaDetalhada caixaPostal(String caixaPostal) {
-        this.caixaPostal = caixaPostal;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -104,6 +96,25 @@ public class ParteInteressadaConsultaDetalhada {
 
     public ParteInteressadaConsultaDetalhada cidade(String cidade) {
         this.cidade = cidade;
+        return this;
+    }
+
+    /**
+     * Tipo da parte interessada&lt;br/&gt; Tamanho: 1&lt;br/&gt;1 - Consignatário&lt;br/&gt;2 - Embarcador&lt;br/&gt;3 - Agente de carga&lt;br/&gt;4 - Outras partes interessadas&lt;br/&gt;
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public ParteInteressadaConsultaDetalhada tipo(String tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -151,6 +162,25 @@ public class ParteInteressadaConsultaDetalhada {
     }
 
     /**
+     * Endereço postal da parte interessada&lt;br/&gt;Tamanho máximo: 70
+     *
+     * @return caixaPostal
+     **/
+    @JsonProperty("caixaPostal")
+    public String getCaixaPostal() {
+        return caixaPostal;
+    }
+
+    public void setCaixaPostal(String caixaPostal) {
+        this.caixaPostal = caixaPostal;
+    }
+
+    public ParteInteressadaConsultaDetalhada caixaPostal(String caixaPostal) {
+        this.caixaPostal = caixaPostal;
+        return this;
+    }
+
+    /**
      * Nome da parte interessada&lt;br/&gt; Tamanho: 70&lt;br/&gt;
      *
      * @return nome
@@ -188,49 +218,18 @@ public class ParteInteressadaConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Tipo da parte interessada&lt;br/&gt; Tamanho: 1&lt;br/&gt;1 - Consignatário&lt;br/&gt;2 - Embarcador&lt;br/&gt;3 - Agente de carga&lt;br/&gt;4 - Outras partes interessadas&lt;br/&gt;
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public ParteInteressadaConsultaDetalhada tipo(String tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-
     @Override
     public String toString() {
 
         String sb = "class ParteInteressadaConsultaDetalhada {\n" +
-                "    caixaPostal: " + toIndentedString(caixaPostal) + "\n" +
                 "    cidade: " + toIndentedString(cidade) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    contatos: " + toIndentedString(contatos) + "\n" +
                 "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    caixaPostal: " + toIndentedString(caixaPostal) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

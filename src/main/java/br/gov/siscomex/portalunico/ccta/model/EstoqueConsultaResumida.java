@@ -13,18 +13,19 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EstoqueConsultaResumida", propOrder =
-        {"dataHoraSituacaoAtual", "identificacaoViagem", "pesoBrutoEstoque", "quantidadeVolumesEstoque", "recintoAduaneiro", "situacaoAtual", "unidadeRfb"
+        {"quantidadeVolumesEstoque", "identificacaoViagem", "pesoBrutoEstoque", "dataHoraSituacaoAtual", "recintoAduaneiro", "unidadeRfb", "situacaoAtual"
         })
 
 @XmlRootElement(name = "EstoqueConsultaResumida")
 public class EstoqueConsultaResumida {
 
-    @XmlElement(name = "dataHoraSituacaoAtual")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/> ")
+    @XmlElement(name = "quantidadeVolumesEstoque")
+    @ApiModelProperty(example = "780.348", value = "Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto. ")
+    @Valid
     /**
-     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/>
+     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
-    private String dataHoraSituacaoAtual = null;
+    private BigDecimal quantidadeVolumesEstoque = null;
 
     @XmlElement(name = "identificacaoViagem")
     @ApiModelProperty(example = "XX099020200922MIA", value = "Número de identificação do manifesto<br/>Tamanho: 17")
@@ -41,13 +42,12 @@ public class EstoqueConsultaResumida {
      **/
     private BigDecimal pesoBrutoEstoque = null;
 
-    @XmlElement(name = "quantidadeVolumesEstoque")
-    @ApiModelProperty(example = "780.348", value = "Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto. ")
-    @Valid
+    @XmlElement(name = "dataHoraSituacaoAtual")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/> ")
     /**
-     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/>
      **/
-    private BigDecimal quantidadeVolumesEstoque = null;
+    private String dataHoraSituacaoAtual = null;
 
     @XmlElement(name = "recintoAduaneiro")
     @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
@@ -56,13 +56,6 @@ public class EstoqueConsultaResumida {
      **/
     private String recintoAduaneiro = null;
 
-    @XmlElement(name = "situacaoAtual")
-    @ApiModelProperty(example = "Em área de transferência", value = "Descrição da situação do estoque da carga<br/> ")
-    /**
-     * Descrição da situação do estoque da carga<br/>
-     **/
-    private String situacaoAtual = null;
-
     @XmlElement(name = "unidadeRfb")
     @ApiModelProperty(example = "0817600", value = "Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA")
     /**
@@ -70,22 +63,40 @@ public class EstoqueConsultaResumida {
      **/
     private String unidadeRfb = null;
 
+    @XmlElement(name = "situacaoAtual")
+    @ApiModelProperty(example = "Em área de transferência", value = "Descrição da situação do estoque da carga<br/> ")
     /**
-     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.&lt;br/&gt;
-     *
-     * @return dataHoraSituacaoAtual
+     * Descrição da situação do estoque da carga<br/>
      **/
-    @JsonProperty("dataHoraSituacaoAtual")
-    public String getDataHoraSituacaoAtual() {
-        return dataHoraSituacaoAtual;
+    private String situacaoAtual = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
-    public void setDataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
-        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+    /**
+     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     *
+     * @return quantidadeVolumesEstoque
+     **/
+    @JsonProperty("quantidadeVolumesEstoque")
+    public BigDecimal getQuantidadeVolumesEstoque() {
+        return quantidadeVolumesEstoque;
     }
 
-    public EstoqueConsultaResumida dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
-        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+    public void setQuantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
+        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
+    }
+
+    public EstoqueConsultaResumida quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
+        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
         return this;
     }
 
@@ -128,21 +139,21 @@ public class EstoqueConsultaResumida {
     }
 
     /**
-     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.&lt;br/&gt;
      *
-     * @return quantidadeVolumesEstoque
+     * @return dataHoraSituacaoAtual
      **/
-    @JsonProperty("quantidadeVolumesEstoque")
-    public BigDecimal getQuantidadeVolumesEstoque() {
-        return quantidadeVolumesEstoque;
+    @JsonProperty("dataHoraSituacaoAtual")
+    public String getDataHoraSituacaoAtual() {
+        return dataHoraSituacaoAtual;
     }
 
-    public void setQuantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
-        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
+    public void setDataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
+        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
     }
 
-    public EstoqueConsultaResumida quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
-        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
+    public EstoqueConsultaResumida dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
+        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
         return this;
     }
 
@@ -166,25 +177,6 @@ public class EstoqueConsultaResumida {
     }
 
     /**
-     * Descrição da situação do estoque da carga&lt;br/&gt;
-     *
-     * @return situacaoAtual
-     **/
-    @JsonProperty("situacaoAtual")
-    public String getSituacaoAtual() {
-        return situacaoAtual;
-    }
-
-    public void setSituacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-    }
-
-    public EstoqueConsultaResumida situacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-        return this;
-    }
-
-    /**
      * Código da UL&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
      *
      * @return unidadeRfb
@@ -203,31 +195,37 @@ public class EstoqueConsultaResumida {
         return this;
     }
 
+    /**
+     * Descrição da situação do estoque da carga&lt;br/&gt;
+     *
+     * @return situacaoAtual
+     **/
+    @JsonProperty("situacaoAtual")
+    public String getSituacaoAtual() {
+        return situacaoAtual;
+    }
+
+    public void setSituacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+    }
+
+    public EstoqueConsultaResumida situacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class EstoqueConsultaResumida {\n" +
-                "    dataHoraSituacaoAtual: " + toIndentedString(dataHoraSituacaoAtual) + "\n" +
+                "    quantidadeVolumesEstoque: " + toIndentedString(quantidadeVolumesEstoque) + "\n" +
                 "    identificacaoViagem: " + toIndentedString(identificacaoViagem) + "\n" +
                 "    pesoBrutoEstoque: " + toIndentedString(pesoBrutoEstoque) + "\n" +
-                "    quantidadeVolumesEstoque: " + toIndentedString(quantidadeVolumesEstoque) + "\n" +
+                "    dataHoraSituacaoAtual: " + toIndentedString(dataHoraSituacaoAtual) + "\n" +
                 "    recintoAduaneiro: " + toIndentedString(recintoAduaneiro) + "\n" +
-                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
                 "    unidadeRfb: " + toIndentedString(unidadeRfb) + "\n" +
+                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

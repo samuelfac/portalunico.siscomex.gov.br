@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OpcaoIcmsAlteracaoDto", propOrder =
-        {"ativa", "descricaoOpcao"
+        {"descricaoOpcao", "ativa"
         })
 
 @XmlRootElement(name = "OpcaoIcmsAlteracaoDto")
@@ -23,13 +23,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Opção de ICMS a ser alterada pela Sefaz")
 public class OpcaoIcmsAlteracaoDto {
 
-    @XmlElement(name = "ativa", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador de que a opção está ativa e ficará disponível para uso pelo importador<br>Dominio:<br>true - Sim, <br>false - Não")
-    /**
-     * Indicador de que a opção está ativa e ficará disponível para uso pelo importador<br>Dominio:<br>true - Sim, <br>false - Não
-     **/
-    private Boolean ativa = null;
-
     @XmlElement(name = "descricaoOpcao", required = true)
     @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
@@ -37,24 +30,22 @@ public class OpcaoIcmsAlteracaoDto {
      **/
     private String descricaoOpcao = null;
 
+    @XmlElement(name = "ativa", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador de que a opção está ativa e ficará disponível para uso pelo importador<br>Dominio:<br>true - Sim, <br>false - Não")
     /**
-     * Indicador de que a opção está ativa e ficará disponível para uso pelo importador&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
-     *
-     * @return ativa
+     * Indicador de que a opção está ativa e ficará disponível para uso pelo importador<br>Dominio:<br>true - Sim, <br>false - Não
      **/
-    @JsonProperty("ativa")
-    @NotNull
-    public Boolean isAtiva() {
-        return ativa;
-    }
+    private Boolean ativa = null;
 
-    public void setAtiva(Boolean ativa) {
-        this.ativa = ativa;
-    }
-
-    public OpcaoIcmsAlteracaoDto ativa(Boolean ativa) {
-        this.ativa = ativa;
-        return this;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -77,26 +68,33 @@ public class OpcaoIcmsAlteracaoDto {
         return this;
     }
 
+    /**
+     * Indicador de que a opção está ativa e ficará disponível para uso pelo importador&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
+     *
+     * @return ativa
+     **/
+    @JsonProperty("ativa")
+    @NotNull
+    public Boolean isisAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(Boolean ativa) {
+        this.ativa = ativa;
+    }
+
+    public OpcaoIcmsAlteracaoDto ativa(Boolean ativa) {
+        this.ativa = ativa;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class OpcaoIcmsAlteracaoDto {\n" +
-                "    ativa: " + toIndentedString(ativa) + "\n" +
                 "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
+                "    ativa: " + toIndentedString(ativa) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

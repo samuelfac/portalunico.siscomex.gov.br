@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OpcaoIcmsDto", propOrder =
-        {"codigoOpcao", "descricaoOpcao", "tipoSolicitacao"
+        {"descricaoOpcao", "tipoSolicitacao", "codigoOpcao"
         })
 
 @XmlRootElement(name = "OpcaoIcmsDto")
@@ -25,6 +25,18 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Opção de ICMS a ser cadastrada pela Sefaz")
 public class OpcaoIcmsDto {
 
+    @XmlElement(name = "descricaoOpcao", required = true)
+    @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String descricaoOpcao = null;
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
+    /**
+     * Tipo de declaração de ICMS à qual a opção está vinculada
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
     @XmlElement(name = "codigoOpcao", required = true)
     @ApiModelProperty(example = "9999", required = true, value = "Codigo identificador da opção<br>Tamanho: 4")
     /**
@@ -32,89 +44,15 @@ public class OpcaoIcmsDto {
      **/
     private String codigoOpcao = null;
 
-    @XmlElement(name = "descricaoOpcao", required = true)
-    @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
-     * Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String descricaoOpcao = null;
-
-
-    @XmlType(name = "TipoSolicitacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoSolicitacaoEnum {
-
-        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
-        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
-        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
-        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
-        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
-        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
-        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
-        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
-        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
-        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
-        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
-
-
-        private final String value;
-
-        TipoSolicitacaoEnum(String v) {
-            value = v;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-    }
-
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
-    /**
-     * Tipo de declaração de ICMS à qual a opção está vinculada
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-
-    /**
-     * Codigo identificador da opção&lt;br&gt;Tamanho: 4
-     *
-     * @return codigoOpcao
-     **/
-    @JsonProperty("codigoOpcao")
-    @NotNull
-    public String getCodigoOpcao() {
-        return codigoOpcao;
-    }
-
-    public void setCodigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
-    }
-
-    public OpcaoIcmsDto codigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
-        return this;
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -160,27 +98,85 @@ public class OpcaoIcmsDto {
         return this;
     }
 
+    /**
+     * Codigo identificador da opção&lt;br&gt;Tamanho: 4
+     *
+     * @return codigoOpcao
+     **/
+    @JsonProperty("codigoOpcao")
+    @NotNull
+    public String getCodigoOpcao() {
+        return codigoOpcao;
+    }
+
+    public void setCodigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+    }
+
+    public OpcaoIcmsDto codigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class OpcaoIcmsDto {\n" +
-                "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
                 "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
                 "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
                 "}";
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoSolicitacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoSolicitacaoEnum {
+
+        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
+        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
+        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
+        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
+        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
+        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
+        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
+        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
+        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
+        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
+        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
+
+
+        private final String value;
+
+        TipoSolicitacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-

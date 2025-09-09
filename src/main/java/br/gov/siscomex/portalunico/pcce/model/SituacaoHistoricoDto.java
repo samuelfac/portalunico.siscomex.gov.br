@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SituacaoHistoricoDto", propOrder =
-        {"comentario", "cpfResponsavel", "dataSituacao", "descricaoSituacao"
+        {"cpfResponsavel", "dataSituacao", "descricaoSituacao", "comentario"
         })
 
 @XmlRootElement(name = "SituacaoHistoricoDto")
@@ -24,13 +24,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados do histórico de uma declaração ICMS criada no PCCE")
 public class SituacaoHistoricoDto {
-
-    @XmlElement(name = "comentario")
-    @ApiModelProperty(value = "Justificativa do pedido ou resposta do importador/sefaz")
-    /**
-     * Justificativa do pedido ou resposta do importador/sefaz
-     **/
-    private String comentario = null;
 
     @XmlElement(name = "cpfResponsavel", required = true)
     @ApiModelProperty(example = "11111111111", required = true, value = "CPF do responsável pela declaração de ICMS<br>Formato: 'NNNNNNNNNNN'<br>Tamanho: 11")
@@ -45,7 +38,124 @@ public class SituacaoHistoricoDto {
      * Data da situação<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
      **/
     private String dataSituacao = null;
+    @XmlElement(name = "descricaoSituacao", required = true)
+    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
+    /**
+     * Descrição da situação da solicitação
+     **/
+    private DescricaoSituacaoEnum descricaoSituacao = null;
+    @XmlElement(name = "comentario")
+    @ApiModelProperty(value = "Justificativa do pedido ou resposta do importador/sefaz")
+    /**
+     * Justificativa do pedido ou resposta do importador/sefaz
+     **/
+    private String comentario = null;
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CPF do responsável pela declaração de ICMS&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11
+     *
+     * @return cpfResponsavel
+     **/
+    @JsonProperty("cpfResponsavel")
+    @NotNull
+    public String getCpfResponsavel() {
+        return cpfResponsavel;
+    }
+
+    public void setCpfResponsavel(String cpfResponsavel) {
+        this.cpfResponsavel = cpfResponsavel;
+    }
+
+    public SituacaoHistoricoDto cpfResponsavel(String cpfResponsavel) {
+        this.cpfResponsavel = cpfResponsavel;
+        return this;
+    }
+
+    /**
+     * Data da situação&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataSituacao
+     **/
+    @JsonProperty("dataSituacao")
+    @NotNull
+    public String getDataSituacao() {
+        return dataSituacao;
+    }
+
+    public void setDataSituacao(String dataSituacao) {
+        this.dataSituacao = dataSituacao;
+    }
+
+    public SituacaoHistoricoDto dataSituacao(String dataSituacao) {
+        this.dataSituacao = dataSituacao;
+        return this;
+    }
+
+    /**
+     * Descrição da situação da solicitação
+     *
+     * @return descricaoSituacao
+     **/
+    @JsonProperty("descricaoSituacao")
+    @NotNull
+    public String getDescricaoSituacao() {
+        if (descricaoSituacao == null) {
+            return null;
+        }
+        return descricaoSituacao.value();
+    }
+
+    public void setDescricaoSituacao(DescricaoSituacaoEnum descricaoSituacao) {
+        this.descricaoSituacao = descricaoSituacao;
+    }
+
+    public SituacaoHistoricoDto descricaoSituacao(DescricaoSituacaoEnum descricaoSituacao) {
+        this.descricaoSituacao = descricaoSituacao;
+        return this;
+    }
+
+    /**
+     * Justificativa do pedido ou resposta do importador/sefaz
+     *
+     * @return comentario
+     **/
+    @JsonProperty("comentario")
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public SituacaoHistoricoDto comentario(String comentario) {
+        this.comentario = comentario;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoHistoricoDto {\n" +
+                "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
+                "    dataSituacao: " + toIndentedString(dataSituacao) + "\n" +
+                "    descricaoSituacao: " + toIndentedString(descricaoSituacao) + "\n" +
+                "    comentario: " + toIndentedString(comentario) + "\n" +
+                "}";
+        return sb;
+    }
 
     @XmlType(name = "DescricaoSituacaoEnum")
     @XmlEnum(String.class)
@@ -118,15 +228,6 @@ public class SituacaoHistoricoDto {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static DescricaoSituacaoEnum fromValue(String v) {
             for (DescricaoSituacaoEnum b : DescricaoSituacaoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -135,119 +236,14 @@ public class SituacaoHistoricoDto {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoSituacaoEnum");
         }
-    }
 
-    @XmlElement(name = "descricaoSituacao", required = true)
-    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
-    /**
-     * Descrição da situação da solicitação
-     **/
-    private DescricaoSituacaoEnum descricaoSituacao = null;
-
-    /**
-     * Justificativa do pedido ou resposta do importador/sefaz
-     *
-     * @return comentario
-     **/
-    @JsonProperty("comentario")
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
-    public SituacaoHistoricoDto comentario(String comentario) {
-        this.comentario = comentario;
-        return this;
-    }
-
-    /**
-     * CPF do responsável pela declaração de ICMS&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11
-     *
-     * @return cpfResponsavel
-     **/
-    @JsonProperty("cpfResponsavel")
-    @NotNull
-    public String getCpfResponsavel() {
-        return cpfResponsavel;
-    }
-
-    public void setCpfResponsavel(String cpfResponsavel) {
-        this.cpfResponsavel = cpfResponsavel;
-    }
-
-    public SituacaoHistoricoDto cpfResponsavel(String cpfResponsavel) {
-        this.cpfResponsavel = cpfResponsavel;
-        return this;
-    }
-
-    /**
-     * Data da situação&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataSituacao
-     **/
-    @JsonProperty("dataSituacao")
-    @NotNull
-    public String getDataSituacao() {
-        return dataSituacao;
-    }
-
-    public void setDataSituacao(String dataSituacao) {
-        this.dataSituacao = dataSituacao;
-    }
-
-    public SituacaoHistoricoDto dataSituacao(String dataSituacao) {
-        this.dataSituacao = dataSituacao;
-        return this;
-    }
-
-    /**
-     * Descrição da situação da solicitação
-     *
-     * @return descricaoSituacao
-     **/
-    @JsonProperty("descricaoSituacao")
-    @NotNull
-    public String getDescricaoSituacao() {
-        if (descricaoSituacao == null) {
-            return null;
+        public String value() {
+            return value;
         }
-        return descricaoSituacao.value();
-    }
 
-    public void setDescricaoSituacao(DescricaoSituacaoEnum descricaoSituacao) {
-        this.descricaoSituacao = descricaoSituacao;
-    }
-
-    public SituacaoHistoricoDto descricaoSituacao(DescricaoSituacaoEnum descricaoSituacao) {
-        this.descricaoSituacao = descricaoSituacao;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoHistoricoDto {\n" +
-                "    comentario: " + toIndentedString(comentario) + "\n" +
-                "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
-                "    dataSituacao: " + toIndentedString(dataSituacao) + "\n" +
-                "    descricaoSituacao: " + toIndentedString(descricaoSituacao) + "\n" +
-                "}";
-        return sb;
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
-        return o.toString().replace("\n", "\n    ");
     }
 }
-

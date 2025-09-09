@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UFCandidataIcmsDTO", propOrder =
-        {"siglaUF", "tipoFavorecida", "tiposDeclaracao"
+        {"siglaUF", "tiposDeclaracao", "tipoFavorecida"
         })
 
 @XmlRootElement(name = "UFCandidataIcmsDTO")
@@ -27,6 +27,120 @@ import java.util.List;
  **/
 @ApiModel(description = "Dados e configurações de uma UF candidata à favorecida do ICMS de Duimp")
 public class UFCandidataIcmsDTO {
+
+
+    @XmlElement(name = "siglaUF", required = true)
+    @ApiModelProperty(required = true, value = "Sigla da UF candidata à favorecida do ICMS")
+    /**
+     * Sigla da UF candidata à favorecida do ICMS
+     **/
+    private SiglaUFEnum siglaUF = null;
+    @XmlElement(name = "tiposDeclaracao", required = true)
+    @ApiModelProperty(required = true, value = "Lista de tipos de declaração/solicitação disponíveis para a UF")
+    @Valid
+    /**
+     * Lista de tipos de declaração/solicitação disponíveis para a UF
+     **/
+    private List<TipoDeclaracaoIcmsDTO> tiposDeclaracao = new ArrayList<>();
+    @XmlElement(name = "tipoFavorecida", required = true)
+    @ApiModelProperty(required = true, value = "Tipo da UF em relação à declaração de ICMS")
+    /**
+     * Tipo da UF em relação à declaração de ICMS
+     **/
+    private TipoFavorecidaEnum tipoFavorecida = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Sigla da UF candidata à favorecida do ICMS
+     *
+     * @return siglaUF
+     **/
+    @JsonProperty("siglaUF")
+    @NotNull
+    public String getSiglaUF() {
+        if (siglaUF == null) {
+            return null;
+        }
+        return siglaUF.value();
+    }
+
+    public void setSiglaUF(SiglaUFEnum siglaUF) {
+        this.siglaUF = siglaUF;
+    }
+
+    public UFCandidataIcmsDTO siglaUF(SiglaUFEnum siglaUF) {
+        this.siglaUF = siglaUF;
+        return this;
+    }
+
+    /**
+     * Lista de tipos de declaração/solicitação disponíveis para a UF
+     *
+     * @return tiposDeclaracao
+     **/
+    @JsonProperty("tiposDeclaracao")
+    @NotNull
+    public List<TipoDeclaracaoIcmsDTO> getTiposDeclaracao() {
+        return tiposDeclaracao;
+    }
+
+    public void setTiposDeclaracao(List<TipoDeclaracaoIcmsDTO> tiposDeclaracao) {
+        this.tiposDeclaracao = tiposDeclaracao;
+    }
+
+    public UFCandidataIcmsDTO tiposDeclaracao(List<TipoDeclaracaoIcmsDTO> tiposDeclaracao) {
+        this.tiposDeclaracao = tiposDeclaracao;
+        return this;
+    }
+
+    public UFCandidataIcmsDTO addTiposDeclaracaoItem(TipoDeclaracaoIcmsDTO tiposDeclaracaoItem) {
+        this.tiposDeclaracao.add(tiposDeclaracaoItem);
+        return this;
+    }
+
+    /**
+     * Tipo da UF em relação à declaração de ICMS
+     *
+     * @return tipoFavorecida
+     **/
+    @JsonProperty("tipoFavorecida")
+    @NotNull
+    public String getTipoFavorecida() {
+        if (tipoFavorecida == null) {
+            return null;
+        }
+        return tipoFavorecida.value();
+    }
+
+    public void setTipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
+        this.tipoFavorecida = tipoFavorecida;
+    }
+
+    public UFCandidataIcmsDTO tipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
+        this.tipoFavorecida = tipoFavorecida;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class UFCandidataIcmsDTO {\n" +
+                "    siglaUF: " + toIndentedString(siglaUF) + "\n" +
+                "    tiposDeclaracao: " + toIndentedString(tiposDeclaracao) + "\n" +
+                "    tipoFavorecida: " + toIndentedString(tipoFavorecida) + "\n" +
+                "}";
+        return sb;
+    }
 
 
     @XmlType(name = "SiglaUFEnum")
@@ -148,15 +262,6 @@ public class UFCandidataIcmsDTO {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static SiglaUFEnum fromValue(String v) {
             for (SiglaUFEnum b : SiglaUFEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -165,15 +270,16 @@ public class UFCandidataIcmsDTO {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to SiglaUFEnum");
         }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
-
-    @XmlElement(name = "siglaUF", required = true)
-    @ApiModelProperty(required = true, value = "Sigla da UF candidata à favorecida do ICMS")
-    /**
-     * Sigla da UF candidata à favorecida do ICMS
-     **/
-    private SiglaUFEnum siglaUF = null;
-
 
     @XmlType(name = "TipoFavorecidaEnum")
     @XmlEnum(String.class)
@@ -198,15 +304,6 @@ public class UFCandidataIcmsDTO {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoFavorecidaEnum fromValue(String v) {
             for (TipoFavorecidaEnum b : TipoFavorecidaEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -215,115 +312,14 @@ public class UFCandidataIcmsDTO {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoFavorecidaEnum");
         }
-    }
 
-    @XmlElement(name = "tipoFavorecida", required = true)
-    @ApiModelProperty(required = true, value = "Tipo da UF em relação à declaração de ICMS")
-    /**
-     * Tipo da UF em relação à declaração de ICMS
-     **/
-    private TipoFavorecidaEnum tipoFavorecida = null;
-
-    @XmlElement(name = "tiposDeclaracao", required = true)
-    @ApiModelProperty(required = true, value = "Lista de tipos de declaração/solicitação disponíveis para a UF")
-    @Valid
-    /**
-     * Lista de tipos de declaração/solicitação disponíveis para a UF
-     **/
-    private List<TipoDeclaracaoIcmsDTO> tiposDeclaracao = new ArrayList<>();
-
-    /**
-     * Sigla da UF candidata à favorecida do ICMS
-     *
-     * @return siglaUF
-     **/
-    @JsonProperty("siglaUF")
-    @NotNull
-    public String getSiglaUF() {
-        if (siglaUF == null) {
-            return null;
+        public String value() {
+            return value;
         }
-        return siglaUF.value();
-    }
 
-    public void setSiglaUF(SiglaUFEnum siglaUF) {
-        this.siglaUF = siglaUF;
-    }
-
-    public UFCandidataIcmsDTO siglaUF(SiglaUFEnum siglaUF) {
-        this.siglaUF = siglaUF;
-        return this;
-    }
-
-    /**
-     * Tipo da UF em relação à declaração de ICMS
-     *
-     * @return tipoFavorecida
-     **/
-    @JsonProperty("tipoFavorecida")
-    @NotNull
-    public String getTipoFavorecida() {
-        if (tipoFavorecida == null) {
-            return null;
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
-        return tipoFavorecida.value();
-    }
-
-    public void setTipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
-        this.tipoFavorecida = tipoFavorecida;
-    }
-
-    public UFCandidataIcmsDTO tipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
-        this.tipoFavorecida = tipoFavorecida;
-        return this;
-    }
-
-    /**
-     * Lista de tipos de declaração/solicitação disponíveis para a UF
-     *
-     * @return tiposDeclaracao
-     **/
-    @JsonProperty("tiposDeclaracao")
-    @NotNull
-    public List<TipoDeclaracaoIcmsDTO> getTiposDeclaracao() {
-        return tiposDeclaracao;
-    }
-
-    public void setTiposDeclaracao(List<TipoDeclaracaoIcmsDTO> tiposDeclaracao) {
-        this.tiposDeclaracao = tiposDeclaracao;
-    }
-
-    public UFCandidataIcmsDTO tiposDeclaracao(List<TipoDeclaracaoIcmsDTO> tiposDeclaracao) {
-        this.tiposDeclaracao = tiposDeclaracao;
-        return this;
-    }
-
-    public UFCandidataIcmsDTO addTiposDeclaracaoItem(TipoDeclaracaoIcmsDTO tiposDeclaracaoItem) {
-        this.tiposDeclaracao.add(tiposDeclaracaoItem);
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class UFCandidataIcmsDTO {\n" +
-                "    siglaUF: " + toIndentedString(siglaUF) + "\n" +
-                "    tipoFavorecida: " + toIndentedString(tipoFavorecida) + "\n" +
-                "    tiposDeclaracao: " + toIndentedString(tiposDeclaracao) + "\n" +
-                "}";
-        return sb;
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
     }
 }
-

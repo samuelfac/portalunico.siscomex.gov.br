@@ -49,6 +49,17 @@ public class DuimpUFsCandidatasIcmsDTO {
     private String versaoDuimp = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Lista de  UFs que podem ser favorecidas pelo ICMS da Duimp
      *
      * @return canditadasUFFavorecida
@@ -113,7 +124,6 @@ public class DuimpUFsCandidatasIcmsDTO {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -124,16 +134,4 @@ public class DuimpUFsCandidatasIcmsDTO {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

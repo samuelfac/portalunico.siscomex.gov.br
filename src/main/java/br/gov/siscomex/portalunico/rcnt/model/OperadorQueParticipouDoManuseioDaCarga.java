@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OperadorQueParticipouDoManuseioDaCarga", propOrder =
-        {"idElemento", "cpf", "nome"
+        {"cpf", "nome", "idElemento"
         })
 
 @XmlRootElement(name = "OperadorQueParticipouDoManuseioDaCarga")
 public class OperadorQueParticipouDoManuseioDaCarga {
-
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
 
     @XmlElement(name = "cpf")
     @ApiModelProperty(example = "55555555555", value = "Informar o CPF do operador que manuseou a carga<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -39,24 +32,22 @@ public class OperadorQueParticipouDoManuseioDaCarga {
      **/
     private String nome = null;
 
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
+    private String idElemento = null;
 
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public OperadorQueParticipouDoManuseioDaCarga idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -97,27 +88,34 @@ public class OperadorQueParticipouDoManuseioDaCarga {
         return this;
     }
 
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public OperadorQueParticipouDoManuseioDaCarga idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class OperadorQueParticipouDoManuseioDaCarga {\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

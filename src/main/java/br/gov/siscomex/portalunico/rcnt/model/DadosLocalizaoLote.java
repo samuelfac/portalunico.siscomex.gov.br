@@ -46,6 +46,17 @@ public class DadosLocalizaoLote {
     private String quadra = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Altura&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;quadra&#39;, &#39;pilha&#39;, &#39;altura&#39;, &#39;fila&#39;.&lt;br/&gt;Tamanho: 20
      *
      * @return altura
@@ -121,7 +132,6 @@ public class DadosLocalizaoLote {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -133,16 +143,4 @@ public class DadosLocalizaoLote {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

@@ -12,16 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaDetalheFreteOutroEncargo", propOrder =
-        {"formaPgto", "motivo", "recebedor", "tipo", "valorTotal"
+        {"motivo", "tipo", "formaPgto", "valorTotal", "recebedor"
         })
 
 @XmlRootElement(name = "CargaDetalheFreteOutroEncargo")
 public class CargaDetalheFreteOutroEncargo {
-
-    @XmlElement(name = "formaPgto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FormaPagamento formaPgto = null;
 
     @XmlElement(name = "motivo")
     @ApiModelProperty(value = "Motivo para o outro encargo do frete.<br/>Tamanho: 70")
@@ -30,38 +25,35 @@ public class CargaDetalheFreteOutroEncargo {
      **/
     private String motivo = null;
 
-    @XmlElement(name = "recebedor")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoAtuacao recebedor = null;
-
     @XmlElement(name = "tipo")
     @ApiModelProperty(value = "")
     @Valid
     private TipoOutroEncargo tipo = null;
+
+    @XmlElement(name = "formaPgto")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FormaPagamento formaPgto = null;
 
     @XmlElement(name = "valorTotal")
     @ApiModelProperty(value = "")
     @Valid
     private ValorMonetario valorTotal = null;
 
+    @XmlElement(name = "recebedor")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoAtuacao recebedor = null;
+
     /**
-     * Get formaPgto
-     *
-     * @return formaPgto
-     **/
-    @JsonProperty("formaPgto")
-    public FormaPagamento getFormaPgto() {
-        return formaPgto;
-    }
-
-    public void setFormaPgto(FormaPagamento formaPgto) {
-        this.formaPgto = formaPgto;
-    }
-
-    public CargaDetalheFreteOutroEncargo formaPgto(FormaPagamento formaPgto) {
-        this.formaPgto = formaPgto;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -80,25 +72,6 @@ public class CargaDetalheFreteOutroEncargo {
 
     public CargaDetalheFreteOutroEncargo motivo(String motivo) {
         this.motivo = motivo;
-        return this;
-    }
-
-    /**
-     * Get recebedor
-     *
-     * @return recebedor
-     **/
-    @JsonProperty("recebedor")
-    public TipoAtuacao getRecebedor() {
-        return recebedor;
-    }
-
-    public void setRecebedor(TipoAtuacao recebedor) {
-        this.recebedor = recebedor;
-    }
-
-    public CargaDetalheFreteOutroEncargo recebedor(TipoAtuacao recebedor) {
-        this.recebedor = recebedor;
         return this;
     }
 
@@ -122,6 +95,25 @@ public class CargaDetalheFreteOutroEncargo {
     }
 
     /**
+     * Get formaPgto
+     *
+     * @return formaPgto
+     **/
+    @JsonProperty("formaPgto")
+    public FormaPagamento getFormaPgto() {
+        return formaPgto;
+    }
+
+    public void setFormaPgto(FormaPagamento formaPgto) {
+        this.formaPgto = formaPgto;
+    }
+
+    public CargaDetalheFreteOutroEncargo formaPgto(FormaPagamento formaPgto) {
+        this.formaPgto = formaPgto;
+        return this;
+    }
+
+    /**
      * Get valorTotal
      *
      * @return valorTotal
@@ -140,29 +132,35 @@ public class CargaDetalheFreteOutroEncargo {
         return this;
     }
 
+    /**
+     * Get recebedor
+     *
+     * @return recebedor
+     **/
+    @JsonProperty("recebedor")
+    public TipoAtuacao getRecebedor() {
+        return recebedor;
+    }
+
+    public void setRecebedor(TipoAtuacao recebedor) {
+        this.recebedor = recebedor;
+    }
+
+    public CargaDetalheFreteOutroEncargo recebedor(TipoAtuacao recebedor) {
+        this.recebedor = recebedor;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class CargaDetalheFreteOutroEncargo {\n" +
-                "    formaPgto: " + toIndentedString(formaPgto) + "\n" +
                 "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    recebedor: " + toIndentedString(recebedor) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    formaPgto: " + toIndentedString(formaPgto) + "\n" +
                 "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
+                "    recebedor: " + toIndentedString(recebedor) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

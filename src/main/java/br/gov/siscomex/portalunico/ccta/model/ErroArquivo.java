@@ -44,6 +44,17 @@ public class ErroArquivo {
     private String detail = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Código identificador do tipo de erro encontrado
      *
      * @return code
@@ -100,7 +111,6 @@ public class ErroArquivo {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -111,16 +121,4 @@ public class ErroArquivo {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

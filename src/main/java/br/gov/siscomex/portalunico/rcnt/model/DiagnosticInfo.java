@@ -11,11 +11,19 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DiagnosticInfo", propOrder =
-        {"ambiente", "fluxo", "mnemonico", "sistema", "trackerId", "url", "usuario", "visao"
+        {"mnemonico", "trackerId", "ambiente", "fluxo", "sistema", "usuario", "url", "visao"
         })
 
 @XmlRootElement(name = "DiagnosticInfo")
 public class DiagnosticInfo {
+
+    @XmlElement(name = "mnemonico")
+    @ApiModelProperty(value = "")
+    private String mnemonico = null;
+
+    @XmlElement(name = "trackerId")
+    @ApiModelProperty(value = "")
+    private String trackerId = null;
 
     @XmlElement(name = "ambiente")
     @ApiModelProperty(value = "")
@@ -25,29 +33,70 @@ public class DiagnosticInfo {
     @ApiModelProperty(value = "")
     private String fluxo = null;
 
-    @XmlElement(name = "mnemonico")
-    @ApiModelProperty(value = "")
-    private String mnemonico = null;
-
     @XmlElement(name = "sistema")
     @ApiModelProperty(value = "")
     private String sistema = null;
-
-    @XmlElement(name = "trackerId")
-    @ApiModelProperty(value = "")
-    private String trackerId = null;
-
-    @XmlElement(name = "url")
-    @ApiModelProperty(value = "")
-    private String url = null;
 
     @XmlElement(name = "usuario")
     @ApiModelProperty(value = "")
     private String usuario = null;
 
+    @XmlElement(name = "url")
+    @ApiModelProperty(value = "")
+    private String url = null;
+
     @XmlElement(name = "visao")
     @ApiModelProperty(value = "")
     private String visao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get mnemonico
+     *
+     * @return mnemonico
+     **/
+    @JsonProperty("mnemonico")
+    public String getMnemonico() {
+        return mnemonico;
+    }
+
+    public void setMnemonico(String mnemonico) {
+        this.mnemonico = mnemonico;
+    }
+
+    public DiagnosticInfo mnemonico(String mnemonico) {
+        this.mnemonico = mnemonico;
+        return this;
+    }
+
+    /**
+     * Get trackerId
+     *
+     * @return trackerId
+     **/
+    @JsonProperty("trackerId")
+    public String getTrackerId() {
+        return trackerId;
+    }
+
+    public void setTrackerId(String trackerId) {
+        this.trackerId = trackerId;
+    }
+
+    public DiagnosticInfo trackerId(String trackerId) {
+        this.trackerId = trackerId;
+        return this;
+    }
 
     /**
      * Get ambiente
@@ -88,25 +137,6 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Get mnemonico
-     *
-     * @return mnemonico
-     **/
-    @JsonProperty("mnemonico")
-    public String getMnemonico() {
-        return mnemonico;
-    }
-
-    public void setMnemonico(String mnemonico) {
-        this.mnemonico = mnemonico;
-    }
-
-    public DiagnosticInfo mnemonico(String mnemonico) {
-        this.mnemonico = mnemonico;
-        return this;
-    }
-
-    /**
      * Get sistema
      *
      * @return sistema
@@ -126,21 +156,21 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Get trackerId
+     * Get usuario
      *
-     * @return trackerId
+     * @return usuario
      **/
-    @JsonProperty("trackerId")
-    public String getTrackerId() {
-        return trackerId;
+    @JsonProperty("usuario")
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setTrackerId(String trackerId) {
-        this.trackerId = trackerId;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public DiagnosticInfo trackerId(String trackerId) {
-        this.trackerId = trackerId;
+    public DiagnosticInfo usuario(String usuario) {
+        this.usuario = usuario;
         return this;
     }
 
@@ -164,25 +194,8 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Get usuario
-     * @return usuario
-     **/
-    @JsonProperty("usuario")
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public DiagnosticInfo usuario(String usuario) {
-        this.usuario = usuario;
-        return this;
-    }
-
-    /**
      * Get visao
+     *
      * @return visao
      **/
     @JsonProperty("visao")
@@ -199,32 +212,19 @@ public class DiagnosticInfo {
         return this;
     }
 
-
     @Override
     public String toString() {
 
         String sb = "class DiagnosticInfo {\n" +
+                "    mnemonico: " + toIndentedString(mnemonico) + "\n" +
+                "    trackerId: " + toIndentedString(trackerId) + "\n" +
                 "    ambiente: " + toIndentedString(ambiente) + "\n" +
                 "    fluxo: " + toIndentedString(fluxo) + "\n" +
-                "    mnemonico: " + toIndentedString(mnemonico) + "\n" +
                 "    sistema: " + toIndentedString(sistema) + "\n" +
-                "    trackerId: " + toIndentedString(trackerId) + "\n" +
-                "    url: " + toIndentedString(url) + "\n" +
                 "    usuario: " + toIndentedString(usuario) + "\n" +
+                "    url: " + toIndentedString(url) + "\n" +
                 "    visao: " + toIndentedString(visao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

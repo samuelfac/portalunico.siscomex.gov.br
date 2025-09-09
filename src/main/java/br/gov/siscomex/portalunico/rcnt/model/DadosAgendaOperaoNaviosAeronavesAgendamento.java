@@ -32,6 +32,17 @@ public class DadosAgendaOperaoNaviosAeronavesAgendamento {
     private String dataHoraPrevisaoSaida = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Data e hora previstas para atracação de navio ou pouso de aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraPrevisaoChegada
@@ -69,7 +80,6 @@ public class DadosAgendaOperaoNaviosAeronavesAgendamento {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -79,16 +89,4 @@ public class DadosAgendaOperaoNaviosAeronavesAgendamento {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

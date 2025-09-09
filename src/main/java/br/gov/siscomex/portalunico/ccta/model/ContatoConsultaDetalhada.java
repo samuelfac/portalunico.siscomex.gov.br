@@ -11,25 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContatoConsultaDetalhada", propOrder =
-        {"email", "nome", "telefone"
+        {"telefone", "nome", "email"
         })
 
 @XmlRootElement(name = "ContatoConsultaDetalhada")
 public class ContatoConsultaDetalhada {
-
-    @XmlElement(name = "email")
-    @ApiModelProperty(example = "email@provedor.com.br", value = "E-mail do contato<br/> Tamanho: 35<br/>")
-    /**
-     * E-mail do contato<br/> Tamanho: 35<br/>
-     **/
-    private String email = null;
-
-    @XmlElement(name = "nome")
-    @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do contato<br/> Tamanho: 70<br/>")
-    /**
-     * Nome do contato<br/> Tamanho: 70<br/>
-     **/
-    private String nome = null;
 
     @XmlElement(name = "telefone")
     @ApiModelProperty(example = "+55 21 9999 99 99", value = "Telefone do contato<br/> Tamanho: 35<br/>")
@@ -38,22 +24,47 @@ public class ContatoConsultaDetalhada {
      **/
     private String telefone = null;
 
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do contato<br/> Tamanho: 70<br/>")
     /**
-     * E-mail do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
-     *
-     * @return email
+     * Nome do contato<br/> Tamanho: 70<br/>
      **/
-    @JsonProperty("email")
-    public String getEmail() {
-        return email;
+    private String nome = null;
+
+    @XmlElement(name = "email")
+    @ApiModelProperty(example = "email@provedor.com.br", value = "E-mail do contato<br/> Tamanho: 35<br/>")
+    /**
+     * E-mail do contato<br/> Tamanho: 35<br/>
+     **/
+    private String email = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    /**
+     * Telefone do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
+     *
+     * @return telefone
+     **/
+    @JsonProperty("telefone")
+    public String getTelefone() {
+        return telefone;
     }
 
-    public ContatoConsultaDetalhada email(String email) {
-        this.email = email;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public ContatoConsultaDetalhada telefone(String telefone) {
+        this.telefone = telefone;
         return this;
     }
 
@@ -77,45 +88,32 @@ public class ContatoConsultaDetalhada {
     }
 
     /**
-     * Telefone do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
+     * E-mail do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
      *
-     * @return telefone
+     * @return email
      **/
-    @JsonProperty("telefone")
-    public String getTelefone() {
-        return telefone;
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public ContatoConsultaDetalhada telefone(String telefone) {
-        this.telefone = telefone;
+    public ContatoConsultaDetalhada email(String email) {
+        this.email = email;
         return this;
     }
-
 
     @Override
     public String toString() {
 
         String sb = "class ContatoConsultaDetalhada {\n" +
-                "    email: " + toIndentedString(email) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    telefone: " + toIndentedString(telefone) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    email: " + toIndentedString(email) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

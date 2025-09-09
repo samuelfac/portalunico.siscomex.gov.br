@@ -33,6 +33,17 @@ public class DadosDoChassi {
     private String idElemento = null;
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Número do chassi.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;placa&#39; seja informado quando o atributo &#39;listaChassi.chassi&#39; não for informado.&lt;br/&gt;Tamanho: 50
      *
      * @return chassi
@@ -71,7 +82,6 @@ public class DadosDoChassi {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -81,16 +91,4 @@ public class DadosDoChassi {
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

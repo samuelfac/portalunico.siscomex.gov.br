@@ -13,23 +13,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaParaSucessoNaRecepoDeEventoAduaneiro", propOrder =
-        {"cabecalhoRequisicao", "dataHoraTransmissao", "protocolo"
+        {"protocolo", "dataHoraTransmissao", "cabecalhoRequisicao"
         })
 
 @XmlRootElement(name = "RespostaParaSucessoNaRecepoDeEventoAduaneiro")
 public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
-
-    @XmlElement(name = "cabecalhoRequisicao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private CabealhoEnvioEventoAduaneiro cabecalhoRequisicao = null;
-
-    @XmlElement(name = "dataHoraTransmissao", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora de transmissão <br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e Hora de transmissão <br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraTransmissao = null;
 
     @XmlElement(name = "protocolo", required = true)
     @ApiModelProperty(required = true, value = "Protocolo do Evento<br/>Tamanho: 36")
@@ -38,23 +26,46 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
      **/
     private String protocolo = null;
 
+    @XmlElement(name = "dataHoraTransmissao", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora de transmissão <br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Get cabecalhoRequisicao
-     *
-     * @return cabecalhoRequisicao
+     * Data e Hora de transmissão <br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    @JsonProperty("cabecalhoRequisicao")
+    private String dataHoraTransmissao = null;
+
+    @XmlElement(name = "cabecalhoRequisicao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private CabealhoEnvioEventoAduaneiro cabecalhoRequisicao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Protocolo do Evento&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocolo
+     **/
+    @JsonProperty("protocolo")
     @NotNull
-    public CabealhoEnvioEventoAduaneiro getCabecalhoRequisicao() {
-        return cabecalhoRequisicao;
+    public String getProtocolo() {
+        return protocolo;
     }
 
-    public void setCabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
-        this.cabecalhoRequisicao = cabecalhoRequisicao;
+    public void setProtocolo(String protocolo) {
+        this.protocolo = protocolo;
     }
 
-    public RespostaParaSucessoNaRecepoDeEventoAduaneiro cabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
-        this.cabecalhoRequisicao = cabecalhoRequisicao;
+    public RespostaParaSucessoNaRecepoDeEventoAduaneiro protocolo(String protocolo) {
+        this.protocolo = protocolo;
         return this;
     }
 
@@ -79,46 +90,33 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
     }
 
     /**
-     * Protocolo do Evento&lt;br/&gt;Tamanho: 36
+     * Get cabecalhoRequisicao
      *
-     * @return protocolo
+     * @return cabecalhoRequisicao
      **/
-    @JsonProperty("protocolo")
+    @JsonProperty("cabecalhoRequisicao")
     @NotNull
-    public String getProtocolo() {
-        return protocolo;
+    public CabealhoEnvioEventoAduaneiro getCabecalhoRequisicao() {
+        return cabecalhoRequisicao;
     }
 
-    public void setProtocolo(String protocolo) {
-        this.protocolo = protocolo;
+    public void setCabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
+        this.cabecalhoRequisicao = cabecalhoRequisicao;
     }
 
-    public RespostaParaSucessoNaRecepoDeEventoAduaneiro protocolo(String protocolo) {
-        this.protocolo = protocolo;
+    public RespostaParaSucessoNaRecepoDeEventoAduaneiro cabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
+        this.cabecalhoRequisicao = cabecalhoRequisicao;
         return this;
     }
-
 
     @Override
     public String toString() {
 
         String sb = "class RespostaParaSucessoNaRecepoDeEventoAduaneiro {\n" +
-                "    cabecalhoRequisicao: " + toIndentedString(cabecalhoRequisicao) + "\n" +
-                "    dataHoraTransmissao: " + toIndentedString(dataHoraTransmissao) + "\n" +
                 "    protocolo: " + toIndentedString(protocolo) + "\n" +
+                "    dataHoraTransmissao: " + toIndentedString(dataHoraTransmissao) + "\n" +
+                "    cabecalhoRequisicao: " + toIndentedString(cabecalhoRequisicao) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FundamentoLegalOpcionalDisponivelDTO", propOrder =
-        {"tributo", "regime", "fundamentoLegal"
+        {"fundamentoLegal", "possuiAtributosAdicionais", "regime", "tributo"
         })
 
 @XmlRootElement(name = "FundamentoLegalOpcionalDisponivelDTO")
@@ -24,38 +24,76 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "DTO que representa um Fundamento Legal opcional, disponível para o importador.")
 public class FundamentoLegalOpcionalDisponivelDTO {
 
-    @XmlElement(name = "tributo", required = true)
+    @XmlElement(name = "fundamentoLegal", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private CodigoNomeTributoDTO tributo = null;
+    private CodigoNomeTipoFundamentoOpcionalDTO fundamentoLegal = null;
+
+    @XmlElement(name = "possuiAtributosAdicionais", required = true)
+    @ApiModelProperty(required = true, value = "Indicador se o Fundamento Opcional possui Atributos Adicionais. S-Sim N-Não")
+    /**
+     * Indicador se o Fundamento Opcional possui Atributos Adicionais. S-Sim N-Não
+     **/
+    private String possuiAtributosAdicionais = null;
 
     @XmlElement(name = "regime", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private CodigoNomeRegimeDTO regime = null;
 
-    @XmlElement(name = "fundamentoLegal", required = true)
+    @XmlElement(name = "tributo", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private CodigoNomeTipoFundamentoOpcionalDTO fundamentoLegal = null;
+    private CodigoNomeTributoDTO tributo = null;
 
     /**
-     * Get tributo
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get fundamentoLegal
      *
-     * @return tributo
+     * @return fundamentoLegal
      **/
-    @JsonProperty("tributo")
+    @JsonProperty("fundamentoLegal")
     @NotNull
-    public CodigoNomeTributoDTO getTributo() {
-        return tributo;
+    public CodigoNomeTipoFundamentoOpcionalDTO getFundamentoLegal() {
+        return fundamentoLegal;
     }
 
-    public void setTributo(CodigoNomeTributoDTO tributo) {
-        this.tributo = tributo;
+    public void setFundamentoLegal(CodigoNomeTipoFundamentoOpcionalDTO fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
     }
 
-    public FundamentoLegalOpcionalDisponivelDTO tributo(CodigoNomeTributoDTO tributo) {
-        this.tributo = tributo;
+    public FundamentoLegalOpcionalDisponivelDTO fundamentoLegal(CodigoNomeTipoFundamentoOpcionalDTO fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
+        return this;
+    }
+
+    /**
+     * Indicador se o Fundamento Opcional possui Atributos Adicionais. S-Sim N-Não
+     *
+     * @return possuiAtributosAdicionais
+     **/
+    @JsonProperty("possuiAtributosAdicionais")
+    @NotNull
+    public String getPossuiAtributosAdicionais() {
+        return possuiAtributosAdicionais;
+    }
+
+    public void setPossuiAtributosAdicionais(String possuiAtributosAdicionais) {
+        this.possuiAtributosAdicionais = possuiAtributosAdicionais;
+    }
+
+    public FundamentoLegalOpcionalDisponivelDTO possuiAtributosAdicionais(String possuiAtributosAdicionais) {
+        this.possuiAtributosAdicionais = possuiAtributosAdicionais;
         return this;
     }
 
@@ -80,46 +118,34 @@ public class FundamentoLegalOpcionalDisponivelDTO {
     }
 
     /**
-     * Get fundamentoLegal
+     * Get tributo
      *
-     * @return fundamentoLegal
+     * @return tributo
      **/
-    @JsonProperty("fundamentoLegal")
+    @JsonProperty("tributo")
     @NotNull
-    public CodigoNomeTipoFundamentoOpcionalDTO getFundamentoLegal() {
-        return fundamentoLegal;
+    public CodigoNomeTributoDTO getTributo() {
+        return tributo;
     }
 
-    public void setFundamentoLegal(CodigoNomeTipoFundamentoOpcionalDTO fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
+    public void setTributo(CodigoNomeTributoDTO tributo) {
+        this.tributo = tributo;
     }
 
-    public FundamentoLegalOpcionalDisponivelDTO fundamentoLegal(CodigoNomeTipoFundamentoOpcionalDTO fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
+    public FundamentoLegalOpcionalDisponivelDTO tributo(CodigoNomeTributoDTO tributo) {
+        this.tributo = tributo;
         return this;
     }
-
 
     @Override
     public String toString() {
 
         String sb = "class FundamentoLegalOpcionalDisponivelDTO {\n" +
-                "    tributo: " + toIndentedString(tributo) + "\n" +
-                "    regime: " + toIndentedString(regime) + "\n" +
                 "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
+                "    possuiAtributosAdicionais: " + toIndentedString(possuiAtributosAdicionais) + "\n" +
+                "    regime: " + toIndentedString(regime) + "\n" +
+                "    tributo: " + toIndentedString(tributo) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

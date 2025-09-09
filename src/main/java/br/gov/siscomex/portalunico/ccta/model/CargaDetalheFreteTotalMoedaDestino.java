@@ -12,39 +12,31 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaDetalheFreteTotalMoedaDestino", propOrder =
-        {"tipo", "valorCollect"
+        {"valorCollect", "tipo"
         })
 
 @XmlRootElement(name = "CargaDetalheFreteTotalMoedaDestino")
 public class CargaDetalheFreteTotalMoedaDestino {
-
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoTotalMoedaDestino tipo = null;
 
     @XmlElement(name = "valorCollect")
     @ApiModelProperty(value = "")
     @Valid
     private ValorMonetario valorCollect = null;
 
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoTotalMoedaDestino tipo = null;
+
     /**
-     * Get tipo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public TipoTotalMoedaDestino getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoTotalMoedaDestino tipo) {
-        this.tipo = tipo;
-    }
-
-    public CargaDetalheFreteTotalMoedaDestino tipo(TipoTotalMoedaDestino tipo) {
-        this.tipo = tipo;
-        return this;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -66,26 +58,32 @@ public class CargaDetalheFreteTotalMoedaDestino {
         return this;
     }
 
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoTotalMoedaDestino getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoTotalMoedaDestino tipo) {
+        this.tipo = tipo;
+    }
+
+    public CargaDetalheFreteTotalMoedaDestino tipo(TipoTotalMoedaDestino tipo) {
+        this.tipo = tipo;
+        return this;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class CargaDetalheFreteTotalMoedaDestino {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 }
-

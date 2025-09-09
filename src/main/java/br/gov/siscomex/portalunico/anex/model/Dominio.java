@@ -1,0 +1,100 @@
+package br.gov.siscomex.portalunico.anex.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Dominio", propOrder =
+        {"codigo", "descricao"
+        })
+
+@XmlRootElement(name = "Dominio")
+/**
+ * Código e descrição de palavra-chave do tipo LISTA.
+ **/
+@ApiModel(description = "Código e descrição de palavra-chave do tipo LISTA.")
+public class Dominio {
+
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "9410", required = true, value = "Código do domínimo da palavra-chave para o tipo de dado LISTA.<br/>Tamanho máximo: 30")
+    /**
+     * Código do domínimo da palavra-chave para o tipo de dado LISTA.<br/>Tamanho máximo: 30
+     **/
+    private String codigo = null;
+
+    @XmlElement(name = "descricao", required = true)
+    @ApiModelProperty(example = "Fiscalização Sanitária de até 10 itens de medicamentos e substâncias sujeitas a controle especial, integrantes do procedimento 1, por pessoa jurídica para fins industriais ou comerciais", required = true, value = "Descrição do domínimo da palavra-chave para o tipo de dado LISTA.<br/>Tamanho máximo: 255")
+    /**
+     * Descrição do domínimo da palavra-chave para o tipo de dado LISTA.<br/>Tamanho máximo: 255
+     **/
+    private String descricao = null;
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do domínimo da palavra-chave para o tipo de dado LISTA.&lt;br/&gt;Tamanho máximo: 30
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    @NotNull
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Dominio codigo(String codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+    /**
+     * Descrição do domínimo da palavra-chave para o tipo de dado LISTA.&lt;br/&gt;Tamanho máximo: 255
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    @NotNull
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Dominio descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class Dominio {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+}

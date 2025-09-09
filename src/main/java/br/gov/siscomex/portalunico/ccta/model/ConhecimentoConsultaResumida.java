@@ -16,12 +16,74 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConhecimentoConsultaResumida", propOrder =
-        {"bloqueiosAtivos", "cnpjResponsavelArquivo", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "dataEmissao", "identificacao", "indicadorPartesMadeira", "partesEstoque", "pesoBrutoConhecimento", "quantidadeVolumesConhecimento", "recepcoesComAvarias", "ruc", "tipo", "viagensAssociadas"
+        {"ruc", "tipo", "identificacao", "quantidadeVolumesConhecimento", "dataEmissao", "cnpjResponsavelArquivo", "codigoAeroportoDestinoConhecimento", "indicadorPartesMadeira", "recepcoesComAvarias", "viagensAssociadas", "bloqueiosAtivos", "codigoAeroportoOrigemConhecimento", "partesEstoque", "pesoBrutoConhecimento"
         })
 
 @XmlRootElement(name = "ConhecimentoConsultaResumida")
 public class ConhecimentoConsultaResumida {
 
+    @XmlElement(name = "ruc")
+    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
+    /**
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
+     **/
+    private String ruc = null;
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
+    /**
+     * Tipo de carga.
+     **/
+    private TipoEnum tipo = null;
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
+    /**
+     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
+     **/
+    private String identificacao = null;
+    @XmlElement(name = "quantidadeVolumesConhecimento")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer quantidadeVolumesConhecimento = null;
+    @XmlElement(name = "dataEmissao")
+    @ApiModelProperty(example = "2020-05-07T17:43:18-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    /**
+     * Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     **/
+    private String dataEmissao = null;
+    @XmlElement(name = "cnpjResponsavelArquivo")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResponsavelArquivo = null;
+    @XmlElement(name = "codigoAeroportoDestinoConhecimento")
+    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto de destino do conhecimento<br/>Tamanho: 3")
+    /**
+     * Código IATA do aeroporto de destino do conhecimento<br/>Tamanho: 3
+     **/
+    private String codigoAeroportoDestinoConhecimento = null;
+    @XmlElement(name = "indicadorPartesMadeira")
+    @ApiModelProperty(example = "S", value = "Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>")
+    /**
+     * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>
+     **/
+    private IndicadorPartesMadeiraEnum indicadorPartesMadeira = null;
+    @XmlElement(name = "recepcoesComAvarias")
+    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+    @Valid
+    /**
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+     **/
+    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
+    @XmlElement(name = "viagensAssociadas")
+    @ApiModelProperty(value = "Lista contendo as viagens às quais a carga está associada<br/>")
+    @Valid
+    /**
+     * Lista contendo as viagens às quais a carga está associada<br/>
+     **/
+    private List<ChaveViagem> viagensAssociadas = null;
     @XmlElement(name = "bloqueiosAtivos")
     @ApiModelProperty(value = "Lista os bloqueios ativos da carga<br/>")
     @Valid
@@ -29,88 +91,12 @@ public class ConhecimentoConsultaResumida {
      * Lista os bloqueios ativos da carga<br/>
      **/
     private List<BloqueioCargaConsultaResumida> bloqueiosAtivos = null;
-
-    @XmlElement(name = "cnpjResponsavelArquivo")
-    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjResponsavelArquivo = null;
-
-    @XmlElement(name = "codigoAeroportoDestinoConhecimento")
-    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto de destino do conhecimento<br/>Tamanho: 3")
-    /**
-     * Código IATA do aeroporto de destino do conhecimento<br/>Tamanho: 3
-     **/
-    private String codigoAeroportoDestinoConhecimento = null;
-
     @XmlElement(name = "codigoAeroportoOrigemConhecimento")
     @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto de origem do conhecimento<br/>Tamanho: 3")
     /**
      * Código IATA do aeroporto de origem do conhecimento<br/>Tamanho: 3
      **/
     private String codigoAeroportoOrigemConhecimento = null;
-
-    @XmlElement(name = "dataEmissao")
-    @ApiModelProperty(example = "2020-05-07T17:43:18-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
-    /**
-     * Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
-     **/
-    private String dataEmissao = null;
-
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
-    /**
-     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
-     **/
-    private String identificacao = null;
-
-
-    @XmlType(name = "IndicadorPartesMadeiraEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorPartesMadeiraEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        IndicadorPartesMadeiraEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static IndicadorPartesMadeiraEnum fromValue(String v) {
-            for (IndicadorPartesMadeiraEnum b : IndicadorPartesMadeiraEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorPartesMadeiraEnum");
-        }
-    }
-
-    @XmlElement(name = "indicadorPartesMadeira")
-    @ApiModelProperty(example = "S", value = "Indica a presença de partes de madeira<br/> S - Sim <br/>N - Não<br/>")
-    /**
-     * Indica a presença de partes de madeira<br/> S - Sim <br/>N - Não<br/>
-     **/
-    private IndicadorPartesMadeiraEnum indicadorPartesMadeira = null;
-
     @XmlElement(name = "partesEstoque")
     @ApiModelProperty(value = "Lista os estoques ativos da carga<br/>")
     @Valid
@@ -118,7 +104,6 @@ public class ConhecimentoConsultaResumida {
      * Lista os estoques ativos da carga<br/>
      **/
     private List<EstoqueConsultaResumida> partesEstoque = null;
-
     @XmlElement(name = "pesoBrutoConhecimento")
     @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
     @Valid
@@ -127,107 +112,112 @@ public class ConhecimentoConsultaResumida {
      **/
     private BigDecimal pesoBrutoConhecimento = null;
 
-    @XmlElement(name = "quantidadeVolumesConhecimento")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
     /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidadeVolumesConhecimento = null;
-
-    @XmlElement(name = "recepcoesComAvarias")
-    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
-    @Valid
-    /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
-     **/
-    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
-
-    @XmlElement(name = "ruc")
-    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 32")
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 32
-     **/
-    private String ruc = null;
-
-
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("AWB")
-        @JsonProperty("AWB")
-        AWB("AWB"),
-
-        @XmlEnumValue("DSIC")
-        @JsonProperty("DSIC")
-        DSIC("DSIC"),
-
-        @XmlEnumValue("HAWB ou MAWB")
-        @JsonProperty("HAWB ou MAWB")
-        HAWB_OU_MAWB("HAWB ou MAWB");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
     /**
-     * Tipo de carga.
-     **/
-    private TipoEnum tipo = null;
-
-    @XmlElement(name = "viagensAssociadas")
-    @ApiModelProperty(value = "Lista contendo as viagens às quais a carga está associada<br/>")
-    @Valid
-    /**
-     * Lista contendo as viagens às quais a carga está associada<br/>
-     **/
-    private List<ChaveViagem> viagensAssociadas = null;
-
-    /**
-     * Lista os bloqueios ativos da carga&lt;br/&gt;
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
      *
-     * @return bloqueiosAtivos
+     * @return ruc
      **/
-    @JsonProperty("bloqueiosAtivos")
-    public List<BloqueioCargaConsultaResumida> getBloqueiosAtivos() {
-        return bloqueiosAtivos;
+    @JsonProperty("ruc")
+    public String getRuc() {
+        return ruc;
     }
 
-    public void setBloqueiosAtivos(List<BloqueioCargaConsultaResumida> bloqueiosAtivos) {
-        this.bloqueiosAtivos = bloqueiosAtivos;
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
     }
 
-    public ConhecimentoConsultaResumida bloqueiosAtivos(List<BloqueioCargaConsultaResumida> bloqueiosAtivos) {
-        this.bloqueiosAtivos = bloqueiosAtivos;
+    public ConhecimentoConsultaResumida ruc(String ruc) {
+        this.ruc = ruc;
         return this;
     }
 
-    public ConhecimentoConsultaResumida addBloqueiosAtivosItem(BloqueioCargaConsultaResumida bloqueiosAtivosItem) {
-        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+    /**
+     * Tipo de carga.
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public ConhecimentoConsultaResumida tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    public String getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
+
+    public ConhecimentoConsultaResumida identificacao(String identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
+
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return quantidadeVolumesConhecimento
+     **/
+    @JsonProperty("quantidadeVolumesConhecimento")
+    public Integer getQuantidadeVolumesConhecimento() {
+        return quantidadeVolumesConhecimento;
+    }
+
+    public void setQuantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
+        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
+    }
+
+    public ConhecimentoConsultaResumida quantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
+        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
+        return this;
+    }
+
+    /**
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public ConhecimentoConsultaResumida dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
         return this;
     }
 
@@ -270,64 +260,7 @@ public class ConhecimentoConsultaResumida {
     }
 
     /**
-     * Código IATA do aeroporto de origem do conhecimento&lt;br/&gt;Tamanho: 3
-     *
-     * @return codigoAeroportoOrigemConhecimento
-     **/
-    @JsonProperty("codigoAeroportoOrigemConhecimento")
-    public String getCodigoAeroportoOrigemConhecimento() {
-        return codigoAeroportoOrigemConhecimento;
-    }
-
-    public void setCodigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
-        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
-    }
-
-    public ConhecimentoConsultaResumida codigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
-        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
-        return this;
-    }
-
-    /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public ConhecimentoConsultaResumida dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
-
-    /**
-     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacao
-     **/
-    @JsonProperty("identificacao")
-    public String getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(String identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public ConhecimentoConsultaResumida identificacao(String identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
-    /**
-     * Indica a presença de partes de madeira&lt;br/&gt; S - Sim &lt;br/&gt;N - Não&lt;br/&gt;
+     * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira&lt;br/&gt; S - Sim &lt;br/&gt;N - Não&lt;br/&gt;
      *
      * @return indicadorPartesMadeira
      **/
@@ -345,6 +278,97 @@ public class ConhecimentoConsultaResumida {
 
     public ConhecimentoConsultaResumida indicadorPartesMadeira(IndicadorPartesMadeiraEnum indicadorPartesMadeira) {
         this.indicadorPartesMadeira = indicadorPartesMadeira;
+        return this;
+    }
+
+    /**
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
+     *
+     * @return recepcoesComAvarias
+     **/
+    @JsonProperty("recepcoesComAvarias")
+    public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
+        return recepcoesComAvarias;
+    }
+
+    public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+        this.recepcoesComAvarias = recepcoesComAvarias;
+    }
+
+    public ConhecimentoConsultaResumida recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+        this.recepcoesComAvarias = recepcoesComAvarias;
+        return this;
+    }
+
+    public ConhecimentoConsultaResumida addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
+        this.recepcoesComAvarias.add(recepcoesComAvariasItem);
+        return this;
+    }
+
+    /**
+     * Lista contendo as viagens às quais a carga está associada&lt;br/&gt;
+     *
+     * @return viagensAssociadas
+     **/
+    @JsonProperty("viagensAssociadas")
+    public List<ChaveViagem> getViagensAssociadas() {
+        return viagensAssociadas;
+    }
+
+    public void setViagensAssociadas(List<ChaveViagem> viagensAssociadas) {
+        this.viagensAssociadas = viagensAssociadas;
+    }
+
+    public ConhecimentoConsultaResumida viagensAssociadas(List<ChaveViagem> viagensAssociadas) {
+        this.viagensAssociadas = viagensAssociadas;
+        return this;
+    }
+
+    public ConhecimentoConsultaResumida addViagensAssociadasItem(ChaveViagem viagensAssociadasItem) {
+        this.viagensAssociadas.add(viagensAssociadasItem);
+        return this;
+    }
+
+    /**
+     * Lista os bloqueios ativos da carga&lt;br/&gt;
+     *
+     * @return bloqueiosAtivos
+     **/
+    @JsonProperty("bloqueiosAtivos")
+    public List<BloqueioCargaConsultaResumida> getBloqueiosAtivos() {
+        return bloqueiosAtivos;
+    }
+
+    public void setBloqueiosAtivos(List<BloqueioCargaConsultaResumida> bloqueiosAtivos) {
+        this.bloqueiosAtivos = bloqueiosAtivos;
+    }
+
+    public ConhecimentoConsultaResumida bloqueiosAtivos(List<BloqueioCargaConsultaResumida> bloqueiosAtivos) {
+        this.bloqueiosAtivos = bloqueiosAtivos;
+        return this;
+    }
+
+    public ConhecimentoConsultaResumida addBloqueiosAtivosItem(BloqueioCargaConsultaResumida bloqueiosAtivosItem) {
+        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+        return this;
+    }
+
+    /**
+     * Código IATA do aeroporto de origem do conhecimento&lt;br/&gt;Tamanho: 3
+     *
+     * @return codigoAeroportoOrigemConhecimento
+     **/
+    @JsonProperty("codigoAeroportoOrigemConhecimento")
+    public String getCodigoAeroportoOrigemConhecimento() {
+        return codigoAeroportoOrigemConhecimento;
+    }
+
+    public void setCodigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
+        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
+    }
+
+    public ConhecimentoConsultaResumida codigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
+        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
         return this;
     }
 
@@ -391,142 +415,106 @@ public class ConhecimentoConsultaResumida {
         return this;
     }
 
-    /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return quantidadeVolumesConhecimento
-     **/
-    @JsonProperty("quantidadeVolumesConhecimento")
-    public Integer getQuantidadeVolumesConhecimento() {
-        return quantidadeVolumesConhecimento;
-    }
-
-    public void setQuantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
-        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
-    }
-
-    public ConhecimentoConsultaResumida quantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
-        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
-        return this;
-    }
-
-    /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
-     * @return recepcoesComAvarias
-     **/
-    @JsonProperty("recepcoesComAvarias")
-    public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
-        return recepcoesComAvarias;
-    }
-
-    public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
-        this.recepcoesComAvarias = recepcoesComAvarias;
-    }
-
-    public ConhecimentoConsultaResumida recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
-        this.recepcoesComAvarias = recepcoesComAvarias;
-        return this;
-    }
-
-    public ConhecimentoConsultaResumida addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
-        this.recepcoesComAvarias.add(recepcoesComAvariasItem);
-        return this;
-    }
-
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 32
-     * @return ruc
-     **/
-    @JsonProperty("ruc")
-    public String getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
-    }
-
-    public ConhecimentoConsultaResumida ruc(String ruc) {
-        this.ruc = ruc;
-        return this;
-    }
-
-    /**
-     * Tipo de carga.
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public ConhecimentoConsultaResumida tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Lista contendo as viagens às quais a carga está associada&lt;br/&gt;
-     * @return viagensAssociadas
-     **/
-    @JsonProperty("viagensAssociadas")
-    public List<ChaveViagem> getViagensAssociadas() {
-        return viagensAssociadas;
-    }
-
-    public void setViagensAssociadas(List<ChaveViagem> viagensAssociadas) {
-        this.viagensAssociadas = viagensAssociadas;
-    }
-
-    public ConhecimentoConsultaResumida viagensAssociadas(List<ChaveViagem> viagensAssociadas) {
-        this.viagensAssociadas = viagensAssociadas;
-        return this;
-    }
-
-    public ConhecimentoConsultaResumida addViagensAssociadasItem(ChaveViagem viagensAssociadasItem) {
-        this.viagensAssociadas.add(viagensAssociadasItem);
-        return this;
-    }
-
-
     @Override
     public String toString() {
 
         String sb = "class ConhecimentoConsultaResumida {\n" +
-                "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
-                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    indicadorPartesMadeira: " + toIndentedString(indicadorPartesMadeira) + "\n" +
-                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
-                "    pesoBrutoConhecimento: " + toIndentedString(pesoBrutoConhecimento) + "\n" +
-                "    quantidadeVolumesConhecimento: " + toIndentedString(quantidadeVolumesConhecimento) + "\n" +
-                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
                 "    ruc: " + toIndentedString(ruc) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    quantidadeVolumesConhecimento: " + toIndentedString(quantidadeVolumesConhecimento) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
+                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
+                "    indicadorPartesMadeira: " + toIndentedString(indicadorPartesMadeira) + "\n" +
+                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
                 "    viagensAssociadas: " + toIndentedString(viagensAssociadas) + "\n" +
+                "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
+                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
+                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
+                "    pesoBrutoConhecimento: " + toIndentedString(pesoBrutoConhecimento) + "\n" +
                 "}";
         return sb;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("AWB")
+        @JsonProperty("AWB")
+        AWB("AWB"),
+
+        @XmlEnumValue("DSIC")
+        @JsonProperty("DSIC")
+        DSIC("DSIC"),
+
+        @XmlEnumValue("HAWB ou MAWB")
+        @JsonProperty("HAWB ou MAWB")
+        HAWB_OU_MAWB("HAWB ou MAWB");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "IndicadorPartesMadeiraEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorPartesMadeiraEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        IndicadorPartesMadeiraEnum(String v) {
+            value = v;
+        }
+
+        public static IndicadorPartesMadeiraEnum fromValue(String v) {
+            for (IndicadorPartesMadeiraEnum b : IndicadorPartesMadeiraEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorPartesMadeiraEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }
-
