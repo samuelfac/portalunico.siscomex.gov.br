@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SituacaoHistoricoDto", propOrder =
-        {"cpfResponsavel", "dataSituacao", "descricaoSituacao", "comentario"
+        {"comentario", "cpfResponsavel", "dataSituacao", "descricaoSituacao"
         })
 
 @XmlRootElement(name = "SituacaoHistoricoDto")
@@ -24,6 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados do histórico de uma declaração ICMS criada no PCCE")
 public class SituacaoHistoricoDto {
+
+    @XmlElement(name = "comentario")
+    @ApiModelProperty(value = "Justificativa do pedido ou resposta do importador/sefaz")
+    /**
+     * Justificativa do pedido ou resposta do importador/sefaz
+     **/
+    private String comentario = null;
 
     @XmlElement(name = "cpfResponsavel", required = true)
     @ApiModelProperty(example = "11111111111", required = true, value = "CPF do responsável pela declaração de ICMS<br>Formato: 'NNNNNNNNNNN'<br>Tamanho: 11")
@@ -44,12 +51,6 @@ public class SituacaoHistoricoDto {
      * Descrição da situação da solicitação
      **/
     private DescricaoSituacaoEnum descricaoSituacao = null;
-    @XmlElement(name = "comentario")
-    @ApiModelProperty(value = "Justificativa do pedido ou resposta do importador/sefaz")
-    /**
-     * Justificativa do pedido ou resposta do importador/sefaz
-     **/
-    private String comentario = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -60,6 +61,25 @@ public class SituacaoHistoricoDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Justificativa do pedido ou resposta do importador/sefaz
+     *
+     * @return comentario
+     **/
+    @JsonProperty("comentario")
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public SituacaoHistoricoDto comentario(String comentario) {
+        this.comentario = comentario;
+        return this;
     }
 
     /**
@@ -125,34 +145,15 @@ public class SituacaoHistoricoDto {
         return this;
     }
 
-    /**
-     * Justificativa do pedido ou resposta do importador/sefaz
-     *
-     * @return comentario
-     **/
-    @JsonProperty("comentario")
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
-    public SituacaoHistoricoDto comentario(String comentario) {
-        this.comentario = comentario;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class SituacaoHistoricoDto {\n" +
+                "    comentario: " + toIndentedString(comentario) + "\n" +
                 "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
                 "    dataSituacao: " + toIndentedString(dataSituacao) + "\n" +
                 "    descricaoSituacao: " + toIndentedString(descricaoSituacao) + "\n" +
-                "    comentario: " + toIndentedString(comentario) + "\n" +
                 "}";
         return sb;
     }
@@ -228,15 +229,6 @@ public class SituacaoHistoricoDto {
             value = v;
         }
 
-        public static DescricaoSituacaoEnum fromValue(String v) {
-            for (DescricaoSituacaoEnum b : DescricaoSituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoSituacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -244,6 +236,15 @@ public class SituacaoHistoricoDto {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static DescricaoSituacaoEnum fromValue(String v) {
+            for (DescricaoSituacaoEnum b : DescricaoSituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoSituacaoEnum");
         }
     }
 }

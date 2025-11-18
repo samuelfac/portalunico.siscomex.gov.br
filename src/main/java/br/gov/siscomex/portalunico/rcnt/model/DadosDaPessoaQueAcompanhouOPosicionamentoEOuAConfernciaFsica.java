@@ -12,18 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica", propOrder =
-        {"qualificacao", "cpf", "nome", "idElemento"
+        {"idElemento", "cpf", "nome", "qualificacao"
         })
 
 @XmlRootElement(name = "DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica")
 public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
 
-    @XmlElement(name = "qualificacao")
-    @ApiModelProperty(value = "Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100")
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
-    private String qualificacao = null;
+    private String idElemento = null;
 
     @XmlElement(name = "cpf")
     @ApiModelProperty(value = "Informar o CPF da pessoa que acompanhou o posicionamento da carga e/ou a conferência física.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -39,12 +39,12 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
      **/
     private String nome = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    @XmlElement(name = "qualificacao")
+    @ApiModelProperty(value = "Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)<br/>Tamanho: 100
      **/
-    private String idElemento = null;
+    private String qualificacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,22 +58,18 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
     }
 
     /**
-     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)&lt;br/&gt;Tamanho: 100
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
-     * @return qualificacao
+     * @return idElemento
      **/
-    @JsonProperty("qualificacao")
-    public String getQualificacao() {
-        return qualificacao;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
     }
 
-    public void setQualificacao(String qualificacao) {
-        this.qualificacao = qualificacao;
-    }
-
-    public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica qualificacao(String qualificacao) {
-        this.qualificacao = qualificacao;
-        return this;
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
     }
 
     /**
@@ -114,23 +110,27 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
     public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica idElemento(String idElemento) {
         this.idElemento = idElemento;
+        return this;
+    }
+
+    /**
+     * Qualificação (Importador, Exportador, Despachante, Ajudante de Despachante, Transportador, Depositário ou seu preposto ...)&lt;br/&gt;Tamanho: 100
+     *
+     * @return qualificacao
+     **/
+    @JsonProperty("qualificacao")
+    public String getQualificacao() {
+        return qualificacao;
+    }
+
+    public void setQualificacao(String qualificacao) {
+        this.qualificacao = qualificacao;
+    }
+
+    public DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica qualificacao(String qualificacao) {
+        this.qualificacao = qualificacao;
         return this;
     }
 
@@ -138,10 +138,10 @@ public class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {
     public String toString() {
 
         String sb = "class DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica {\n" +
-                "    qualificacao: " + toIndentedString(qualificacao) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    qualificacao: " + toIndentedString(qualificacao) + "\n" +
                 "}";
         return sb;
     }

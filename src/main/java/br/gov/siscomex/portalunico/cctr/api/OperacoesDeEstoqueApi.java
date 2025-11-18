@@ -27,7 +27,7 @@ public interface OperacoesDeEstoqueApi {
 
     /**
      * Consultar Estoque
-     * <p>
+     *
      * Consultar o estoque por número de Duimp e/ou por número de CE Mercante
      *
      */
@@ -36,8 +36,8 @@ public interface OperacoesDeEstoqueApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Consultar Estoque", notes = "Consultar o estoque por número de Duimp e/ou por número de CE Mercante", tags = {"Operacoes de Estoque"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ConsultaEstoquePosResult.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = BusinessExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ConsultaEstoquePosResult.class),
             @ApiResponse(code = 500, message = "Erro interno no servidor", response = UnexpectedExceptionCover.class)})
     ConsultaEstoquePosResult consultarPosAcd(@NotNull @ApiParam(value = "Lista de números de Duimp e/ou de CE Mercante<br>Tamanho Máximo: 50", required = true) @QueryParam("numeros") String numeros);
 }

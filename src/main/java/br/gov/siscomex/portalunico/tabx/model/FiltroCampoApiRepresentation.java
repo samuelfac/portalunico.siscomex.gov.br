@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FiltroCampoApiRepresentation", propOrder =
-        {"nomeTabela", "valores", "nome"
+        {"nomeTabela", "nome", "valores"
         })
 
 @XmlRootElement(name = "FiltroCampoApiRepresentation")
@@ -27,13 +27,6 @@ public class FiltroCampoApiRepresentation {
      **/
     private String nomeTabela = null;
 
-    @XmlElement(name = "valores", required = true)
-    @ApiModelProperty(example = "[\"01\",\"02\"]", required = true, value = "Valores atribuído ao filtro.")
-    /**
-     * Valores atribuído ao filtro.
-     **/
-    private List<String> valores = new ArrayList<>();
-
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "CODIGO", required = true, value = "Nome do campo.")
     /**
@@ -41,16 +34,12 @@ public class FiltroCampoApiRepresentation {
      **/
     private String nome = null;
 
+    @XmlElement(name = "valores", required = true)
+    @ApiModelProperty(example = "[\"01\",\"02\"]", required = true, value = "Valores atribuído ao filtro.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Valores atribuído ao filtro.
+     **/
+    private List<String> valores = new ArrayList<>();
 
     /**
      * Nome da tabela.
@@ -70,6 +59,32 @@ public class FiltroCampoApiRepresentation {
     public FiltroCampoApiRepresentation nomeTabela(String nomeTabela) {
         this.nomeTabela = nomeTabela;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Nome do campo.
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
@@ -97,21 +112,6 @@ public class FiltroCampoApiRepresentation {
         return this;
     }
 
-    /**
-     * Nome do campo.
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public FiltroCampoApiRepresentation nome(String nome) {
         this.nome = nome;
         return this;
@@ -122,8 +122,8 @@ public class FiltroCampoApiRepresentation {
 
         String sb = "class FiltroCampoApiRepresentation {\n" +
                 "    nomeTabela: " + toIndentedString(nomeTabela) + "\n" +
-                "    valores: " + toIndentedString(valores) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    valores: " + toIndentedString(valores) + "\n" +
                 "}";
         return sb;
     }

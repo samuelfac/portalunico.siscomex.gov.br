@@ -14,11 +14,18 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SolicitacaoDTO", propOrder =
-        {"dataDeApreciacao", "motivo", "numeroDoComprot", "situacaoSolicitacaoDue", "motivoDoIndeferimento", "tipoSolicitacao", "usuarioQueAnalisou", "usuarioResponsavel", "dataDaSolicitacao"
+        {"dataDaSolicitacao", "dataDeApreciacao", "motivo", "motivoDoIndeferimento", "numeroDoComprot", "situacaoSolicitacaoDue", "tipoSolicitacao", "usuarioQueAnalisou", "usuarioResponsavel"
         })
 
 @XmlRootElement(name = "SolicitacaoDTO")
 public class SolicitacaoDTO {
+
+    @XmlElement(name = "dataDaSolicitacao")
+    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da solicitação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    /**
+     * Data da solicitação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     **/
+    private OffsetDateTime dataDaSolicitacao = null;
 
     @XmlElement(name = "dataDeApreciacao")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de apreciação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -34,42 +41,19 @@ public class SolicitacaoDTO {
      **/
     private String motivo = null;
 
-    @XmlElement(name = "numeroDoComprot")
-    @ApiModelProperty(value = "Número do comprot<br />Tamanho mínimo: 0<br />Tamanho máximo: 17")
-    /**
-     * Número do comprot<br />Tamanho mínimo: 0<br />Tamanho máximo: 17
-     **/
-    private String numeroDoComprot = null;
-    @XmlElement(name = "situacaoSolicitacaoDue")
-    @ApiModelProperty(value = "")
-    private SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue = null;
     @XmlElement(name = "motivoDoIndeferimento")
     @ApiModelProperty(value = "Motivo do indeferimento<br />Tamanho mínimo: 0<br />Tamanho máximo: 4000")
     /**
      * Motivo do indeferimento<br />Tamanho mínimo: 0<br />Tamanho máximo: 4000
      **/
     private String motivoDoIndeferimento = null;
-    @XmlElement(name = "tipoSolicitacao")
-    @ApiModelProperty(value = "")
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-    @XmlElement(name = "usuarioQueAnalisou")
-    @ApiModelProperty(value = "Status da Solicitação<br />Tamanho mínimo: 0<br />Tamanho máximo: 8")
+
+    @XmlElement(name = "numeroDoComprot")
+    @ApiModelProperty(value = "Número do comprot<br />Tamanho mínimo: 0<br />Tamanho máximo: 17")
     /**
-     * Status da Solicitação<br />Tamanho mínimo: 0<br />Tamanho máximo: 8
+     * Número do comprot<br />Tamanho mínimo: 0<br />Tamanho máximo: 17
      **/
-    private String usuarioQueAnalisou = null;
-    @XmlElement(name = "usuarioResponsavel")
-    @ApiModelProperty(value = "Usuário responsável<br />Tamanho mínimo: 0<br />Tamanho máximo: 11")
-    /**
-     * Usuário responsável<br />Tamanho mínimo: 0<br />Tamanho máximo: 11
-     **/
-    private String usuarioResponsavel = null;
-    @XmlElement(name = "dataDaSolicitacao")
-    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da solicitação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
-    /**
-     * Data da solicitação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
-     **/
-    private OffsetDateTime dataDaSolicitacao = null;
+    private String numeroDoComprot = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -80,6 +64,57 @@ public class SolicitacaoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "situacaoSolicitacaoDue")
+    @ApiModelProperty(value = "")
+    private SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue = null;
+
+    /**
+     * Data da solicitação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     *
+     * @return dataDaSolicitacao
+     **/
+    @JsonProperty("dataDaSolicitacao")
+    public OffsetDateTime getDataDaSolicitacao() {
+        return dataDaSolicitacao;
+    }
+
+    @XmlElement(name = "tipoSolicitacao")
+    @ApiModelProperty(value = "")
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+
+    @XmlElement(name = "usuarioQueAnalisou")
+    @ApiModelProperty(value = "Status da Solicitação<br />Tamanho mínimo: 0<br />Tamanho máximo: 8")
+    /**
+     * Status da Solicitação<br />Tamanho mínimo: 0<br />Tamanho máximo: 8
+     **/
+    private String usuarioQueAnalisou = null;
+
+    @XmlElement(name = "usuarioResponsavel")
+    @ApiModelProperty(value = "Usuário responsável<br />Tamanho mínimo: 0<br />Tamanho máximo: 11")
+    /**
+     * Usuário responsável<br />Tamanho mínimo: 0<br />Tamanho máximo: 11
+     **/
+    private String usuarioResponsavel = null;
+
+    public void setDataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
+        this.dataDaSolicitacao = dataDaSolicitacao;
+    }
+
+    public SolicitacaoDTO dataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
+        this.dataDaSolicitacao = dataDaSolicitacao;
+        return this;
+    }
+
+    /**
+     * Motivo do indeferimento&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
+     *
+     * @return motivoDoIndeferimento
+     **/
+    @JsonProperty("motivoDoIndeferimento")
+    public String getMotivoDoIndeferimento() {
+        return motivoDoIndeferimento;
     }
 
     /**
@@ -120,6 +155,32 @@ public class SolicitacaoDTO {
         return this;
     }
 
+    public void setMotivoDoIndeferimento(String motivoDoIndeferimento) {
+        this.motivoDoIndeferimento = motivoDoIndeferimento;
+    }
+
+    public SolicitacaoDTO motivoDoIndeferimento(String motivoDoIndeferimento) {
+        this.motivoDoIndeferimento = motivoDoIndeferimento;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class SolicitacaoDTO {\n" +
+                "    dataDaSolicitacao: " + toIndentedString(dataDaSolicitacao) + "\n" +
+                "    dataDeApreciacao: " + toIndentedString(dataDeApreciacao) + "\n" +
+                "    motivo: " + toIndentedString(motivo) + "\n" +
+                "    motivoDoIndeferimento: " + toIndentedString(motivoDoIndeferimento) + "\n" +
+                "    numeroDoComprot: " + toIndentedString(numeroDoComprot) + "\n" +
+                "    situacaoSolicitacaoDue: " + toIndentedString(situacaoSolicitacaoDue) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    usuarioQueAnalisou: " + toIndentedString(usuarioQueAnalisou) + "\n" +
+                "    usuarioResponsavel: " + toIndentedString(usuarioResponsavel) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Número do comprot&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 17
      *
@@ -158,25 +219,6 @@ public class SolicitacaoDTO {
 
     public SolicitacaoDTO situacaoSolicitacaoDue(SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue) {
         this.situacaoSolicitacaoDue = situacaoSolicitacaoDue;
-        return this;
-    }
-
-    /**
-     * Motivo do indeferimento&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
-     *
-     * @return motivoDoIndeferimento
-     **/
-    @JsonProperty("motivoDoIndeferimento")
-    public String getMotivoDoIndeferimento() {
-        return motivoDoIndeferimento;
-    }
-
-    public void setMotivoDoIndeferimento(String motivoDoIndeferimento) {
-        this.motivoDoIndeferimento = motivoDoIndeferimento;
-    }
-
-    public SolicitacaoDTO motivoDoIndeferimento(String motivoDoIndeferimento) {
-        this.motivoDoIndeferimento = motivoDoIndeferimento;
         return this;
     }
 
@@ -238,42 +280,6 @@ public class SolicitacaoDTO {
     public SolicitacaoDTO usuarioResponsavel(String usuarioResponsavel) {
         this.usuarioResponsavel = usuarioResponsavel;
         return this;
-    }
-
-    /**
-     * Data da solicitação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataDaSolicitacao
-     **/
-    @JsonProperty("dataDaSolicitacao")
-    public OffsetDateTime getDataDaSolicitacao() {
-        return dataDaSolicitacao;
-    }
-
-    public void setDataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
-        this.dataDaSolicitacao = dataDaSolicitacao;
-    }
-
-    public SolicitacaoDTO dataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
-        this.dataDaSolicitacao = dataDaSolicitacao;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SolicitacaoDTO {\n" +
-                "    dataDeApreciacao: " + toIndentedString(dataDeApreciacao) + "\n" +
-                "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    numeroDoComprot: " + toIndentedString(numeroDoComprot) + "\n" +
-                "    situacaoSolicitacaoDue: " + toIndentedString(situacaoSolicitacaoDue) + "\n" +
-                "    motivoDoIndeferimento: " + toIndentedString(motivoDoIndeferimento) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    usuarioQueAnalisou: " + toIndentedString(usuarioQueAnalisou) + "\n" +
-                "    usuarioResponsavel: " + toIndentedString(usuarioResponsavel) + "\n" +
-                "    dataDaSolicitacao: " + toIndentedString(dataDaSolicitacao) + "\n" +
-                "}";
-        return sb;
     }
 
 

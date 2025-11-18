@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ErroValidacao", propOrder =
-        {"codigo", "mensagem", "erros", "referencia"
+        {"codigo", "mensagem", "referencia", "erros"
         })
 
 @XmlRootElement(name = "ErroValidacao")
@@ -38,14 +38,6 @@ public class ErroValidacao {
      **/
     private String mensagem = null;
 
-    @XmlElement(name = "erros")
-    @ApiModelProperty(value = "Lista de campos (atributos) que apresentam erros de validação")
-    @Valid
-    /**
-     * Lista de campos (atributos) que apresentam erros de validação
-     **/
-    private List<ErroAtributo> erros = null;
-
     @XmlElement(name = "referencia")
     @ApiModelProperty(example = "https://api-docs.portalunico.siscomex.gov.br/", value = "Referência na Documentação da API")
     /**
@@ -53,16 +45,13 @@ public class ErroValidacao {
      **/
     private String referencia = null;
 
+    @XmlElement(name = "erros")
+    @ApiModelProperty(value = "Lista de campos (atributos) que apresentam erros de validação")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Lista de campos (atributos) que apresentam erros de validação
+     **/
+    private List<ErroAtributo> erros = null;
 
     /**
      * Código do erro de validação
@@ -103,6 +92,31 @@ public class ErroValidacao {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Referência na Documentação da API
+     *
+     * @return referencia
+     **/
+    @JsonProperty("referencia")
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+
+    /**
      * Lista de campos (atributos) que apresentam erros de validação
      *
      * @return erros
@@ -126,20 +140,6 @@ public class ErroValidacao {
         return this;
     }
 
-    /**
-     * Referência na Documentação da API
-     *
-     * @return referencia
-     **/
-    @JsonProperty("referencia")
-    public String getReferencia() {
-        return referencia;
-    }
-
-    public void setReferencia(String referencia) {
-        this.referencia = referencia;
-    }
-
     public ErroValidacao referencia(String referencia) {
         this.referencia = referencia;
         return this;
@@ -151,8 +151,8 @@ public class ErroValidacao {
         String sb = "class ErroValidacao {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    mensagem: " + toIndentedString(mensagem) + "\n" +
-                "    erros: " + toIndentedString(erros) + "\n" +
                 "    referencia: " + toIndentedString(referencia) + "\n" +
+                "    erros: " + toIndentedString(erros) + "\n" +
                 "}";
         return sb;
     }

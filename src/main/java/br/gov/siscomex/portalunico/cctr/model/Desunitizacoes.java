@@ -35,17 +35,6 @@ public class Desunitizacoes {
     private List<Desunitizacao> desunitizacao = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista das desunitizações
      *
      * @return desunitizacao
@@ -68,6 +57,18 @@ public class Desunitizacoes {
     public Desunitizacoes addDesunitizacaoItem(Desunitizacao desunitizacaoItem) {
         this.desunitizacao.add(desunitizacaoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

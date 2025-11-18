@@ -16,11 +16,16 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga", propOrder =
-        {"valorAFRMMDevido", "componentesFrete", "valorAFRMMPago", "tipoConhecimento", "indicadorAFRMMQuitado"
+        {"tipoConhecimento", "valorAFRMMDevido", "valorAFRMMPago", "indicadorAFRMMQuitado", "componentesFrete"
         })
 
 @XmlRootElement(name = "DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga")
 public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
+
+    @XmlElement(name = "tipoConhecimento")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoDeConhecimentoDaCargaAquaviria tipoConhecimento = null;
 
     @XmlElement(name = "valorAFRMMDevido")
     @ApiModelProperty(example = "20.12", value = "Valor Devido do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -30,6 +35,13 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
      **/
     private BigDecimal valorAFRMMDevido = null;
 
+    @XmlElement(name = "valorAFRMMPago")
+    @ApiModelProperty(example = "80.48", value = "Valor Pago do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor Pago do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorAFRMMPago = null;
     @XmlElement(name = "componentesFrete")
     @ApiModelProperty(value = "Lista de Componentes do Frete")
     @Valid
@@ -38,18 +50,6 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
      **/
     private List<ComponenteDeFrete> componentesFrete = null;
 
-    @XmlElement(name = "valorAFRMMPago")
-    @ApiModelProperty(example = "80.48", value = "Valor Pago do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor Pago do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorAFRMMPago = null;
-
-    @XmlElement(name = "tipoConhecimento")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDeConhecimentoDaCargaAquaviria tipoConhecimento = null;
     @XmlElement(name = "indicadorAFRMMQuitado")
     @ApiModelProperty(example = "1", value = "Indica se o AFRMM encontra-se quitado ou exonerado.<br>Dominio: <br>1 - Sim,<br>2 - Não,<br>0 - informação não recebida do sistema de controle de Carga")
     /**
@@ -69,6 +69,25 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
     }
 
     /**
+     * Get tipoConhecimento
+     *
+     * @return tipoConhecimento
+     **/
+    @JsonProperty("tipoConhecimento")
+    public TipoDeConhecimentoDaCargaAquaviria getTipoConhecimento() {
+        return tipoConhecimento;
+    }
+
+    public void setTipoConhecimento(TipoDeConhecimentoDaCargaAquaviria tipoConhecimento) {
+        this.tipoConhecimento = tipoConhecimento;
+    }
+
+    public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga tipoConhecimento(TipoDeConhecimentoDaCargaAquaviria tipoConhecimento) {
+        this.tipoConhecimento = tipoConhecimento;
+        return this;
+    }
+
+    /**
      * Valor Devido do AFRMM e da TUM em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorAFRMMDevido
@@ -84,6 +103,47 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
 
     public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga valorAFRMMDevido(BigDecimal valorAFRMMDevido) {
         this.valorAFRMMDevido = valorAFRMMDevido;
+        return this;
+    }
+
+    /**
+     * Valor Pago do AFRMM e da TUM em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorAFRMMPago
+     **/
+    @JsonProperty("valorAFRMMPago")
+    public BigDecimal getValorAFRMMPago() {
+        return valorAFRMMPago;
+    }
+
+    public void setValorAFRMMPago(BigDecimal valorAFRMMPago) {
+        this.valorAFRMMPago = valorAFRMMPago;
+    }
+
+    public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga valorAFRMMPago(BigDecimal valorAFRMMPago) {
+        this.valorAFRMMPago = valorAFRMMPago;
+        return this;
+    }
+
+    /**
+     * Indica se o AFRMM encontra-se quitado ou exonerado.&lt;br&gt;Dominio: &lt;br&gt;1 - Sim,&lt;br&gt;2 - Não,&lt;br&gt;0 - informação não recebida do sistema de controle de Carga
+     *
+     * @return indicadorAFRMMQuitado
+     **/
+    @JsonProperty("indicadorAFRMMQuitado")
+    public Integer getIndicadorAFRMMQuitado() {
+        if (indicadorAFRMMQuitado == null) {
+            return null;
+        }
+        return indicadorAFRMMQuitado.value();
+    }
+
+    public void setIndicadorAFRMMQuitado(IndicadorAFRMMQuitadoEnum indicadorAFRMMQuitado) {
+        this.indicadorAFRMMQuitado = indicadorAFRMMQuitado;
+    }
+
+    public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga indicadorAFRMMQuitado(IndicadorAFRMMQuitadoEnum indicadorAFRMMQuitado) {
+        this.indicadorAFRMMQuitado = indicadorAFRMMQuitado;
         return this;
     }
 
@@ -111,76 +171,16 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
         return this;
     }
 
-    /**
-     * Valor Pago do AFRMM e da TUM em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorAFRMMPago
-     **/
-    @JsonProperty("valorAFRMMPago")
-    public BigDecimal getValorAFRMMPago() {
-        return valorAFRMMPago;
-    }
-
-    public void setValorAFRMMPago(BigDecimal valorAFRMMPago) {
-        this.valorAFRMMPago = valorAFRMMPago;
-    }
-
-    public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga valorAFRMMPago(BigDecimal valorAFRMMPago) {
-        this.valorAFRMMPago = valorAFRMMPago;
-        return this;
-    }
-
-    /**
-     * Get tipoConhecimento
-     *
-     * @return tipoConhecimento
-     **/
-    @JsonProperty("tipoConhecimento")
-    public TipoDeConhecimentoDaCargaAquaviria getTipoConhecimento() {
-        return tipoConhecimento;
-    }
-
-    public void setTipoConhecimento(TipoDeConhecimentoDaCargaAquaviria tipoConhecimento) {
-        this.tipoConhecimento = tipoConhecimento;
-    }
-
-    public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga tipoConhecimento(TipoDeConhecimentoDaCargaAquaviria tipoConhecimento) {
-        this.tipoConhecimento = tipoConhecimento;
-        return this;
-    }
-
-    /**
-     * Indica se o AFRMM encontra-se quitado ou exonerado.&lt;br&gt;Dominio: &lt;br&gt;1 - Sim,&lt;br&gt;2 - Não,&lt;br&gt;0 - informação não recebida do sistema de controle de Carga
-     *
-     * @return indicadorAFRMMQuitado
-     **/
-    @JsonProperty("indicadorAFRMMQuitado")
-    public Integer getIndicadorAFRMMQuitado() {
-        if (indicadorAFRMMQuitado == null) {
-            return null;
-        }
-        return indicadorAFRMMQuitado.value();
-    }
-
-    public void setIndicadorAFRMMQuitado(IndicadorAFRMMQuitadoEnum indicadorAFRMMQuitado) {
-        this.indicadorAFRMMQuitado = indicadorAFRMMQuitado;
-    }
-
-    public DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga indicadorAFRMMQuitado(IndicadorAFRMMQuitadoEnum indicadorAFRMMQuitado) {
-        this.indicadorAFRMMQuitado = indicadorAFRMMQuitado;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {\n" +
-                "    valorAFRMMDevido: " + toIndentedString(valorAFRMMDevido) + "\n" +
-                "    componentesFrete: " + toIndentedString(componentesFrete) + "\n" +
-                "    valorAFRMMPago: " + toIndentedString(valorAFRMMPago) + "\n" +
                 "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "    valorAFRMMDevido: " + toIndentedString(valorAFRMMDevido) + "\n" +
+                "    valorAFRMMPago: " + toIndentedString(valorAFRMMPago) + "\n" +
                 "    indicadorAFRMMQuitado: " + toIndentedString(indicadorAFRMMQuitado) + "\n" +
+                "    componentesFrete: " + toIndentedString(componentesFrete) + "\n" +
                 "}";
         return sb;
     }

@@ -22,23 +22,6 @@ import javax.xml.bind.annotation.XmlType;
 public class AcrescimoDeducaoValoresCalculadosCover {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "ACRESCIMO", required = true, value = "Tipo de Operação (acreścimo ou dedução).<br>Domínio:")
-    /**
-     * Tipo de Operação (acreścimo ou dedução).<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "denominacao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DenominacaoAcrescimoDeducaoCover denominacao = null;
-    @XmlElement(name = "valorBRL")
-    @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor do acréscimo/dedução em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double valorBRL = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -49,6 +32,25 @@ public class AcrescimoDeducaoValoresCalculadosCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "ACRESCIMO", required = true, value = "Tipo de Operação (acreścimo ou dedução).<br>Domínio:")
+    /**
+     * Tipo de Operação (acreścimo ou dedução).<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "denominacao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DenominacaoAcrescimoDeducaoCover denominacao = null;
+
+    @XmlElement(name = "valorBRL")
+    @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valor do acréscimo/dedução em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double valorBRL = null;
 
     /**
      * Tipo de Operação (acreścimo ou dedução).&lt;br&gt;Domínio:
@@ -111,7 +113,6 @@ public class AcrescimoDeducaoValoresCalculadosCover {
         this.valorBRL = valorBRL;
         return this;
     }
-
 
     @Override
     public String toString() {

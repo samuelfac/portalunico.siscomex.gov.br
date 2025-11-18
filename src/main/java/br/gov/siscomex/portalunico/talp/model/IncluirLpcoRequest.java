@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IncluirLpcoRequest", propOrder =
-        {"dataReferencia", "codigoModelo", "numeroLI", "justificativaDispensaTaxa", "informacaoAdicional", "listaCamposFormulario", "listaNcm", "dispensaTaxa"
+        {"codigoModelo", "informacaoAdicional", "dataReferencia", "listaCamposFormulario", "listaNcm", "numeroLI", "dispensaTaxa", "justificativaDispensaTaxa"
         })
 
 @XmlRootElement(name = "IncluirLpcoRequest")
@@ -26,13 +26,6 @@ import java.util.List;
 @ApiModel(description = "Dados de um LPCO a ser cadastrado")
 public class IncluirLpcoRequest {
 
-    @XmlElement(name = "dataReferencia")
-    @ApiModelProperty(example = "2019-08-27T13:28", value = "Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ")
-    /**
-     * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ
-     **/
-    private String dataReferencia = null;
-
     @XmlElement(name = "codigoModelo", required = true)
     @ApiModelProperty(example = "E00104", required = true, value = "Código do modelo de LPCO utilizado para o pedido<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano")
     /**
@@ -40,26 +33,19 @@ public class IncluirLpcoRequest {
      **/
     private String codigoModelo = null;
 
-    @XmlElement(name = "numeroLI")
-    @ApiModelProperty(example = "2200002094", value = "Número da LI. É obrigatório quando o campo \"exigeNumeroLI\" do modelo for true.")
-    /**
-     * Número da LI. É obrigatório quando o campo \"exigeNumeroLI\" do modelo for true.
-     **/
-    private Long numeroLI = null;
-
-    @XmlElement(name = "justificativaDispensaTaxa")
-    @ApiModelProperty(example = "Texto livre", value = "Justificativa da Dispensa de Taxa. É obrigatório quando o campo \"dispensaTaxa\" for true.")
-    /**
-     * Justificativa da Dispensa de Taxa. É obrigatório quando o campo \"dispensaTaxa\" for true.
-     **/
-    private String justificativaDispensaTaxa = null;
-
     @XmlElement(name = "informacaoAdicional")
     @ApiModelProperty(example = "Texto livre", value = "Informações adicionais prestadas pelo importador/exportador")
     /**
      * Informações adicionais prestadas pelo importador/exportador
      **/
     private String informacaoAdicional = null;
+
+    @XmlElement(name = "dataReferencia")
+    @ApiModelProperty(example = "2019-08-27T13:28", value = "Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ")
+    /**
+     * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual<br>Formato: dd-MM-yyyy'T'HH:mmZ
+     **/
+    private String dataReferencia = null;
 
     @XmlElement(name = "listaCamposFormulario", required = true)
     @ApiModelProperty(required = true, value = "Lista de campos do pedido que fazem parte dos \"Dados Gerais\" do LPCO, ou seja, aqueles que não são informados por item.")
@@ -77,12 +63,65 @@ public class IncluirLpcoRequest {
      **/
     private List<ItemLpcoInserirRequest> listaNcm = null;
 
+    @XmlElement(name = "numeroLI")
+    @ApiModelProperty(example = "2200002094", value = "Número da LI. É obrigatório quando o campo \"exigeNumeroLI\" do modelo for true.")
+    /**
+     * Número da LI. É obrigatório quando o campo \"exigeNumeroLI\" do modelo for true.
+     **/
+    private Long numeroLI = null;
+
     @XmlElement(name = "dispensaTaxa")
     @ApiModelProperty(example = "true", value = "Dispensa de Taxa. Informa se o LPCO é dispensado de taxa.")
     /**
      * Dispensa de Taxa. Informa se o LPCO é dispensado de taxa.
      **/
     private Boolean dispensaTaxa = null;
+
+    @XmlElement(name = "justificativaDispensaTaxa")
+    @ApiModelProperty(example = "Texto livre", value = "Justificativa da Dispensa de Taxa. É obrigatório quando o campo \"dispensaTaxa\" for true.")
+    /**
+     * Justificativa da Dispensa de Taxa. É obrigatório quando o campo \"dispensaTaxa\" for true.
+     **/
+    private String justificativaDispensaTaxa = null;
+
+    /**
+     * Código do modelo de LPCO utilizado para o pedido&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do modelo no ano
+     *
+     * @return codigoModelo
+     **/
+    @JsonProperty("codigoModelo")
+    @NotNull
+    public String getCodigoModelo() {
+        return codigoModelo;
+    }
+
+    public void setCodigoModelo(String codigoModelo) {
+        this.codigoModelo = codigoModelo;
+    }
+
+    public IncluirLpcoRequest codigoModelo(String codigoModelo) {
+        this.codigoModelo = codigoModelo;
+        return this;
+    }
+
+    /**
+     * Informações adicionais prestadas pelo importador/exportador
+     *
+     * @return informacaoAdicional
+     **/
+    @JsonProperty("informacaoAdicional")
+    public String getInformacaoAdicional() {
+        return informacaoAdicional;
+    }
+
+    public void setInformacaoAdicional(String informacaoAdicional) {
+        this.informacaoAdicional = informacaoAdicional;
+    }
+
+    public IncluirLpcoRequest informacaoAdicional(String informacaoAdicional) {
+        this.informacaoAdicional = informacaoAdicional;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -107,88 +146,6 @@ public class IncluirLpcoRequest {
 
     public void setDataReferencia(String dataReferencia) {
         this.dataReferencia = dataReferencia;
-    }
-
-    public IncluirLpcoRequest dataReferencia(String dataReferencia) {
-        this.dataReferencia = dataReferencia;
-        return this;
-    }
-
-    /**
-     * Código do modelo de LPCO utilizado para o pedido&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do modelo no ano
-     *
-     * @return codigoModelo
-     **/
-    @JsonProperty("codigoModelo")
-    @NotNull
-    public String getCodigoModelo() {
-        return codigoModelo;
-    }
-
-    public void setCodigoModelo(String codigoModelo) {
-        this.codigoModelo = codigoModelo;
-    }
-
-    public IncluirLpcoRequest codigoModelo(String codigoModelo) {
-        this.codigoModelo = codigoModelo;
-        return this;
-    }
-
-    /**
-     * Número da LI. É obrigatório quando o campo \&quot;exigeNumeroLI\&quot; do modelo for true.
-     *
-     * @return numeroLI
-     **/
-    @JsonProperty("numeroLI")
-    public Long getNumeroLI() {
-        return numeroLI;
-    }
-
-    public void setNumeroLI(Long numeroLI) {
-        this.numeroLI = numeroLI;
-    }
-
-    public IncluirLpcoRequest numeroLI(Long numeroLI) {
-        this.numeroLI = numeroLI;
-        return this;
-    }
-
-    /**
-     * Justificativa da Dispensa de Taxa. É obrigatório quando o campo \&quot;dispensaTaxa\&quot; for true.
-     *
-     * @return justificativaDispensaTaxa
-     **/
-    @JsonProperty("justificativaDispensaTaxa")
-    public String getJustificativaDispensaTaxa() {
-        return justificativaDispensaTaxa;
-    }
-
-    public void setJustificativaDispensaTaxa(String justificativaDispensaTaxa) {
-        this.justificativaDispensaTaxa = justificativaDispensaTaxa;
-    }
-
-    public IncluirLpcoRequest justificativaDispensaTaxa(String justificativaDispensaTaxa) {
-        this.justificativaDispensaTaxa = justificativaDispensaTaxa;
-        return this;
-    }
-
-    /**
-     * Informações adicionais prestadas pelo importador/exportador
-     *
-     * @return informacaoAdicional
-     **/
-    @JsonProperty("informacaoAdicional")
-    public String getInformacaoAdicional() {
-        return informacaoAdicional;
-    }
-
-    public void setInformacaoAdicional(String informacaoAdicional) {
-        this.informacaoAdicional = informacaoAdicional;
-    }
-
-    public IncluirLpcoRequest informacaoAdicional(String informacaoAdicional) {
-        this.informacaoAdicional = informacaoAdicional;
-        return this;
     }
 
     /**
@@ -240,6 +197,25 @@ public class IncluirLpcoRequest {
         return this;
     }
 
+    public IncluirLpcoRequest dataReferencia(String dataReferencia) {
+        this.dataReferencia = dataReferencia;
+        return this;
+    }
+
+    /**
+     * Número da LI. É obrigatório quando o campo \&quot;exigeNumeroLI\&quot; do modelo for true.
+     *
+     * @return numeroLI
+     **/
+    @JsonProperty("numeroLI")
+    public Long getNumeroLI() {
+        return numeroLI;
+    }
+
+    public void setNumeroLI(Long numeroLI) {
+        this.numeroLI = numeroLI;
+    }
+
     /**
      * Dispensa de Taxa. Informa se o LPCO é dispensado de taxa.
      *
@@ -259,18 +235,42 @@ public class IncluirLpcoRequest {
         return this;
     }
 
+    public IncluirLpcoRequest numeroLI(Long numeroLI) {
+        this.numeroLI = numeroLI;
+        return this;
+    }
+
+    /**
+     * Justificativa da Dispensa de Taxa. É obrigatório quando o campo \&quot;dispensaTaxa\&quot; for true.
+     *
+     * @return justificativaDispensaTaxa
+     **/
+    @JsonProperty("justificativaDispensaTaxa")
+    public String getJustificativaDispensaTaxa() {
+        return justificativaDispensaTaxa;
+    }
+
+    public void setJustificativaDispensaTaxa(String justificativaDispensaTaxa) {
+        this.justificativaDispensaTaxa = justificativaDispensaTaxa;
+    }
+
+    public IncluirLpcoRequest justificativaDispensaTaxa(String justificativaDispensaTaxa) {
+        this.justificativaDispensaTaxa = justificativaDispensaTaxa;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class IncluirLpcoRequest {\n" +
-                "    dataReferencia: " + toIndentedString(dataReferencia) + "\n" +
                 "    codigoModelo: " + toIndentedString(codigoModelo) + "\n" +
-                "    numeroLI: " + toIndentedString(numeroLI) + "\n" +
-                "    justificativaDispensaTaxa: " + toIndentedString(justificativaDispensaTaxa) + "\n" +
                 "    informacaoAdicional: " + toIndentedString(informacaoAdicional) + "\n" +
+                "    dataReferencia: " + toIndentedString(dataReferencia) + "\n" +
                 "    listaCamposFormulario: " + toIndentedString(listaCamposFormulario) + "\n" +
                 "    listaNcm: " + toIndentedString(listaNcm) + "\n" +
+                "    numeroLI: " + toIndentedString(numeroLI) + "\n" +
                 "    dispensaTaxa: " + toIndentedString(dispensaTaxa) + "\n" +
+                "    justificativaDispensaTaxa: " + toIndentedString(justificativaDispensaTaxa) + "\n" +
                 "}";
         return sb;
     }

@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "JurosPagamentoCover", propOrder =
-        {"codigoReceita", "valor", "dataPagamentoJuros", "agenciaJuros", "bancoJuros", "contaJuros"
+        {"codigoReceita", "valor", "dataPagamentoJuros", "bancoJuros", "agenciaJuros", "contaJuros"
         })
 
 @XmlRootElement(name = "JurosPagamentoCover")
@@ -43,13 +43,6 @@ public class JurosPagamentoCover {
      **/
     private String dataPagamentoJuros = null;
 
-    @XmlElement(name = "agenciaJuros")
-    @ApiModelProperty(example = "3521", value = "Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4")
-    /**
-     * Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4
-     **/
-    private String agenciaJuros = null;
-
     @XmlElement(name = "bancoJuros")
     @ApiModelProperty(example = "001", value = "Código do banco.<br>Valor mínimo: 1<br>Valor máximo: 999")
     /**
@@ -57,23 +50,19 @@ public class JurosPagamentoCover {
      **/
     private String bancoJuros = null;
 
+    @XmlElement(name = "agenciaJuros")
+    @ApiModelProperty(example = "3521", value = "Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4")
+    /**
+     * Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4
+     **/
+    private String agenciaJuros = null;
+
     @XmlElement(name = "contaJuros")
     @ApiModelProperty(example = "707070", value = "Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
     /**
      * Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
      **/
     private String contaJuros = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Código da receita.&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
@@ -133,25 +122,6 @@ public class JurosPagamentoCover {
     }
 
     /**
-     * Número da agência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4
-     *
-     * @return agenciaJuros
-     **/
-    @JsonProperty("agenciaJuros")
-    public String getAgenciaJuros() {
-        return agenciaJuros;
-    }
-
-    public void setAgenciaJuros(String agenciaJuros) {
-        this.agenciaJuros = agenciaJuros;
-    }
-
-    public JurosPagamentoCover agenciaJuros(String agenciaJuros) {
-        this.agenciaJuros = agenciaJuros;
-        return this;
-    }
-
-    /**
      * Código do banco.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
      *
      * @return bancoJuros
@@ -168,6 +138,31 @@ public class JurosPagamentoCover {
     public JurosPagamentoCover bancoJuros(String bancoJuros) {
         this.bancoJuros = bancoJuros;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número da agência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4
+     *
+     * @return agenciaJuros
+     **/
+    @JsonProperty("agenciaJuros")
+    public String getAgenciaJuros() {
+        return agenciaJuros;
+    }
+
+    public void setAgenciaJuros(String agenciaJuros) {
+        this.agenciaJuros = agenciaJuros;
     }
 
     /**
@@ -189,6 +184,11 @@ public class JurosPagamentoCover {
         return this;
     }
 
+    public JurosPagamentoCover agenciaJuros(String agenciaJuros) {
+        this.agenciaJuros = agenciaJuros;
+        return this;
+    }
+
     @Override
     public String toString() {
 
@@ -196,8 +196,8 @@ public class JurosPagamentoCover {
                 "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
                 "    valor: " + toIndentedString(valor) + "\n" +
                 "    dataPagamentoJuros: " + toIndentedString(dataPagamentoJuros) + "\n" +
-                "    agenciaJuros: " + toIndentedString(agenciaJuros) + "\n" +
                 "    bancoJuros: " + toIndentedString(bancoJuros) + "\n" +
+                "    agenciaJuros: " + toIndentedString(agenciaJuros) + "\n" +
                 "    contaJuros: " + toIndentedString(contaJuros) + "\n" +
                 "}";
         return sb;

@@ -16,25 +16,71 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosAvariaExtravioLote", propOrder =
-        {"tipo", "quantidadeVolumes", "numeroLote", "numeroTermoFiscalAvaria", "idEvento", "dataHoraRegistro", "dataHoraOcorrencia", "tipoOperacao", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "listaTipoAvaria", "observacoes", "codigoRecinto", "cpfOperadorOcorrencia", "contingencia"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroLote", "numeroTermoFiscalAvaria", "tipo", "listaTipoAvaria", "quantidadeVolumes", "observacoes"
         })
 
 @XmlRootElement(name = "DadosAvariaExtravioLote")
 public class DadosAvariaExtravioLote {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "E", required = true, value = "Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio")
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
     /**
-     * Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
      **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "quantidadeVolumes", required = true)
-    @ApiModelProperty(required = true, value = "Quantidade de volumes avariados, extraviados ou furtados.")
+    private TipoOperacaoEnum tipoOperacao = null;
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Quantidade de volumes avariados, extraviados ou furtados.
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private Integer quantidadeVolumes = null;
+    private String dataHoraOcorrencia = null;
+
+    @XmlElement(name = "idEvento", required = true)
+    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
+     **/
+    private String idEvento = null;
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorOcorrencia = null;
+
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraRegistro = null;
+    @XmlElement(name = "contingencia", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean contingencia = null;
+
+    @XmlElement(name = "cpfOperadorRegistro")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorRegistro = null;
+
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     **/
+    private String protocoloEventoRetificadoOuExcluido = null;
+    @XmlElement(name = "codigoRecinto", required = true)
+    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
+     **/
+    private String codigoRecinto = null;
     @XmlElement(name = "numeroLote", required = true)
     @ApiModelProperty(required = true, value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100")
     /**
@@ -47,42 +93,30 @@ public class DadosAvariaExtravioLote {
      * Número do termo fiscal de avaria (TFA)<br/>Tamanho: 50
      **/
     private String numeroTermoFiscalAvaria = null;
-    @XmlElement(name = "idEvento", required = true)
-    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "E", required = true, value = "Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio")
     /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
+     * Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio
      **/
-    private String idEvento = null;
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    private TipoEnum tipo = null;
+    @XmlElement(name = "quantidadeVolumes", required = true)
+    @ApiModelProperty(required = true, value = "Quantidade de volumes avariados, extraviados ou furtados.")
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Quantidade de volumes avariados, extraviados ou furtados.
      **/
-    private String dataHoraRegistro = null;
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    private Integer quantidadeVolumes = null;
+
     /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "cpfOperadorRegistro")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorRegistro = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
-     **/
-    private String protocoloEventoRetificadoOuExcluido = null;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
     @XmlElement(name = "listaTipoAvaria")
     @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
     @Valid
@@ -96,76 +130,184 @@ public class DadosAvariaExtravioLote {
      * Observações<br/>Tamanho: 100
      **/
     private String observacoes = null;
-    @XmlElement(name = "codigoRecinto", required = true)
-    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
-     **/
-    private String codigoRecinto = null;
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorOcorrencia = null;
-    @XmlElement(name = "contingencia", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean contingencia = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo de evento (Avaria/Extravio)&lt;br/&gt;Domínio:&lt;br/&gt;A - Avaria&lt;br/&gt;E - Extravio
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
      *
-     * @return tipo
+     * @return tipoOperacao
      **/
-    @JsonProperty("tipo")
+    @JsonProperty("tipoOperacao")
     @NotNull
-    public String getTipo() {
-        if (tipo == null) {
+    public String getTipoOperacao() {
+        if (tipoOperacao == null) {
             return null;
         }
-        return tipo.value();
+        return tipoOperacao.value();
     }
 
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
     }
 
-    public DadosAvariaExtravioLote tipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public DadosAvariaExtravioLote tipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
         return this;
     }
 
     /**
-     * Quantidade de volumes avariados, extraviados ou furtados.
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return quantidadeVolumes
+     * @return dataHoraRegistro
      **/
-    @JsonProperty("quantidadeVolumes")
+    @JsonProperty("dataHoraRegistro")
     @NotNull
-    public Integer getQuantidadeVolumes() {
-        return quantidadeVolumes;
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
     }
 
-    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
+     *
+     * @return idEvento
+     **/
+    @JsonProperty("idEvento")
+    @NotNull
+    public String getIdEvento() {
+        return idEvento;
     }
 
-    public DadosAvariaExtravioLote quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
+    public void setIdEvento(String idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public DadosAvariaExtravioLote idEvento(String idEvento) {
+        this.idEvento = idEvento;
+        return this;
+    }
+
+    /**
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraOcorrencia
+     **/
+    @JsonProperty("dataHoraOcorrencia")
+    @NotNull
+    public String getDataHoraOcorrencia() {
+        return dataHoraOcorrencia;
+    }
+
+    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+    }
+
+    public DadosAvariaExtravioLote dataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+        return this;
+    }
+
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    public DadosAvariaExtravioLote dataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+        return this;
+    }
+
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorOcorrencia
+     **/
+    @JsonProperty("cpfOperadorOcorrencia")
+    public String getCpfOperadorOcorrencia() {
+        return cpfOperadorOcorrencia;
+    }
+
+    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    }
+
+    public DadosAvariaExtravioLote cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+        return this;
+    }
+
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return contingencia
+     **/
+    @JsonProperty("contingencia")
+    @NotNull
+    public Boolean isisContingencia() {
+        return contingencia;
+    }
+
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorRegistro
+     **/
+    @JsonProperty("cpfOperadorRegistro")
+    public String getCpfOperadorRegistro() {
+        return cpfOperadorRegistro;
+    }
+
+    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+    }
+
+    public DadosAvariaExtravioLote cpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+        return this;
+    }
+
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocoloEventoRetificadoOuExcluido
+     **/
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
+    }
+
+    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+    }
+
+    public DadosAvariaExtravioLote protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+        return this;
+    }
+
+    public void setContingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
+    }
+
+    public DadosAvariaExtravioLote contingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
+        return this;
+    }
+
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
+     *
+     * @return codigoRecinto
+     **/
+    @JsonProperty("codigoRecinto")
+    @NotNull
+    public String getCodigoRecinto() {
+        return codigoRecinto;
+    }
+
+    public void setCodigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+    }
+
+    public DadosAvariaExtravioLote codigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
         return this;
     }
 
@@ -209,124 +351,41 @@ public class DadosAvariaExtravioLote {
     }
 
     /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
+     * Tipo de evento (Avaria/Extravio)&lt;br/&gt;Domínio:&lt;br/&gt;A - Avaria&lt;br/&gt;E - Extravio
      *
-     * @return idEvento
+     * @return tipo
      **/
-    @JsonProperty("idEvento")
+    @JsonProperty("tipo")
     @NotNull
-    public String getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
-    }
-
-    public DadosAvariaExtravioLote idEvento(String idEvento) {
-        this.idEvento = idEvento;
-        return this;
-    }
-
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    public DadosAvariaExtravioLote dataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-        return this;
-    }
-
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraOcorrencia
-     **/
-    @JsonProperty("dataHoraOcorrencia")
-    @NotNull
-    public String getDataHoraOcorrencia() {
-        return dataHoraOcorrencia;
-    }
-
-    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-    }
-
-    public DadosAvariaExtravioLote dataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-        return this;
-    }
-
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
-     *
-     * @return tipoOperacao
-     **/
-    @JsonProperty("tipoOperacao")
-    @NotNull
-    public String getTipoOperacao() {
-        if (tipoOperacao == null) {
+    public String getTipo() {
+        if (tipo == null) {
             return null;
         }
-        return tipoOperacao.value();
+        return tipo.value();
     }
 
-    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
     }
 
-    public DadosAvariaExtravioLote tipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    public DadosAvariaExtravioLote tipo(TipoEnum tipo) {
+        this.tipo = tipo;
         return this;
     }
 
     /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * Quantidade de volumes avariados, extraviados ou furtados.
      *
-     * @return cpfOperadorRegistro
+     * @return quantidadeVolumes
      **/
-    @JsonProperty("cpfOperadorRegistro")
-    public String getCpfOperadorRegistro() {
-        return cpfOperadorRegistro;
+    @JsonProperty("quantidadeVolumes")
+    @NotNull
+    public Integer getQuantidadeVolumes() {
+        return quantidadeVolumes;
     }
 
-    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-    }
-
-    public DadosAvariaExtravioLote cpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-        return this;
-    }
-
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
-     *
-     * @return protocoloEventoRetificadoOuExcluido
-     **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
-    }
-
-    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
-    }
-
-    public DadosAvariaExtravioLote protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
-        return this;
+    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
     }
 
     /**
@@ -353,6 +412,34 @@ public class DadosAvariaExtravioLote {
         return this;
     }
 
+    public DadosAvariaExtravioLote quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class DadosAvariaExtravioLote {\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
+                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    numeroTermoFiscalAvaria: " + toIndentedString(numeroTermoFiscalAvaria) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    listaTipoAvaria: " + toIndentedString(listaTipoAvaria) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Observações&lt;br/&gt;Tamanho: 100
      *
@@ -372,126 +459,6 @@ public class DadosAvariaExtravioLote {
         return this;
     }
 
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
-     * @return codigoRecinto
-     **/
-    @JsonProperty("codigoRecinto")
-    @NotNull
-    public String getCodigoRecinto() {
-        return codigoRecinto;
-    }
-
-    public void setCodigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-    }
-
-    public DadosAvariaExtravioLote codigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-        return this;
-    }
-
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorOcorrencia
-     **/
-    @JsonProperty("cpfOperadorOcorrencia")
-    public String getCpfOperadorOcorrencia() {
-        return cpfOperadorOcorrencia;
-    }
-
-    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
-    }
-
-    public DadosAvariaExtravioLote cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
-        return this;
-    }
-
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return contingencia
-     **/
-    @JsonProperty("contingencia")
-    @NotNull
-    public Boolean isisContingencia() {
-        return contingencia;
-    }
-
-    public void setContingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
-    }
-
-    public DadosAvariaExtravioLote contingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosAvariaExtravioLote {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
-                "    numeroTermoFiscalAvaria: " + toIndentedString(numeroTermoFiscalAvaria) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
-                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    listaTipoAvaria: " + toIndentedString(listaTipoAvaria) + "\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
-                "}";
-        return sb;
-    }
-
-
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("'A'")
-        @JsonProperty("'A'")
-        A_("'A'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
 
     @XmlType(name = "TipoOperacaoEnum")
     @XmlEnum(String.class)
@@ -523,6 +490,44 @@ public class DadosAvariaExtravioLote {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("'A'")
+        @JsonProperty("'A'")
+        A_("'A'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
 
         public String value() {

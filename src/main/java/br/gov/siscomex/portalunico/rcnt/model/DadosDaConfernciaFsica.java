@@ -16,105 +16,101 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaConfernciaFsica", propOrder =
-        {"tipo", "listaTratamentoAdministrativo", "conferenciaRemota", "observacaoAvaria", "dataHoraOcorrencia", "quantidadeVolumesAvariados", "divergenciaQuantidade", "cpfOperadorRegistro", "tipoConhecimento", "listaTipoAvaria", "observacaoDivergencia", "numeroConhecimentoMAWB", "quantidadeVolumesDivergentes", "codigoRecinto", "numeroConhecimento", "listaTelefones", "listaNumeroLote", "listaCameras", "listaOperadoresPosicionamento", "listaLacres", "idEvento", "dataHoraAgenda", "solicitante", "numeroManifesto", "listaNumeroConteiner", "dataHoraRegistro", "listaIdentificacaoUld", "tipoOperacao", "protocoloEventoRetificadoOuExcluido", "setorSolicitante", "declaracaoAduaneira", "listaPlacaSemirreboque", "dataHoraOperacao", "retiradaAmostras", "listaPessoasAcompanhamento", "tipoManifesto", "cpfOperadorOcorrencia", "contingencia", "areaConferenciaFisica", "divergenciaQualificacao"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "tipo", "dataHoraAgenda", "conferenciaRemota", "listaTelefones", "solicitante", "setorSolicitante", "numeroManifesto", "tipoManifesto", "numeroConhecimentoMAWB", "numeroConhecimento", "tipoConhecimento", "declaracaoAduaneira", "listaPlacaSemirreboque", "listaNumeroConteiner", "listaIdentificacaoUld", "listaNumeroLote", "areaConferenciaFisica", "listaCameras", "dataHoraOperacao", "listaOperadoresPosicionamento", "listaPessoasAcompanhamento", "listaLacres", "retiradaAmostras", "listaTipoAvaria", "quantidadeVolumesAvariados", "observacaoAvaria", "divergenciaQuantidade", "divergenciaQualificacao", "quantidadeVolumesDivergentes", "observacaoDivergencia", "listaTratamentoAdministrativo"
         })
 
 @XmlRootElement(name = "DadosDaConfernciaFsica")
 public class DadosDaConfernciaFsica {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "AGE", required = true, value = "Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física")
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
     /**
-     * Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
      **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "listaTratamentoAdministrativo")
-    @ApiModelProperty(value = "Lista de Tratamento Administrativo")
-    @Valid
+    private TipoOperacaoEnum tipoOperacao = null;
+    @XmlElement(name = "idEvento", required = true)
+    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
     /**
-     * Lista de Tratamento Administrativo
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
      **/
-    private List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo = null;
-    @XmlElement(name = "conferenciaRemota", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    private String idEvento = null;
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private Boolean conferenciaRemota = null;
-    @XmlElement(name = "observacaoAvaria")
-    @ApiModelProperty(value = "Registrar as informações da avaria<br/>Tamanho: 200")
-    /**
-     * Registrar as informações da avaria<br/>Tamanho: 200
-     **/
-    private String observacaoAvaria = null;
+    private String dataHoraRegistro = null;
+
     @XmlElement(name = "dataHoraOcorrencia", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-    @XmlElement(name = "quantidadeVolumesAvariados")
-    @ApiModelProperty(example = "28", value = "Informar o quantidade de volumes avariados<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesAvariados' quando o atributo 'tipo' for informado com valor 'CCF' e 'listaTipoAvaria' for informado.")
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
-     * Informar o quantidade de volumes avariados<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesAvariados' quando o atributo 'tipo' for informado com valor 'CCF' e 'listaTipoAvaria' for informado.
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
-    private Integer quantidadeVolumesAvariados = null;
-    @XmlElement(name = "divergenciaQuantidade")
-    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    private String cpfOperadorOcorrencia = null;
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
     /**
-     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
      **/
-    private Boolean divergenciaQuantidade = null;
+    private String protocoloEventoRetificadoOuExcluido = null;
+
     @XmlElement(name = "cpfOperadorRegistro")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
-    @XmlElement(name = "tipoConhecimento")
-    @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    @XmlElement(name = "contingencia", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
-    private String tipoConhecimento = null;
-    @XmlElement(name = "listaTipoAvaria")
-    @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
-    @Valid
+    private Boolean contingencia = null;
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "AGE", required = true, value = "Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física")
     /**
-     * Lista dos Tipos de Avarias.
+     * Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física
      **/
-    private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
-    @XmlElement(name = "observacaoDivergencia")
-    @ApiModelProperty(value = "Caso constatado, registrar as informações das divergências<br/>Tamanho: 200")
-    /**
-     * Caso constatado, registrar as informações das divergências<br/>Tamanho: 200
-     **/
-    private String observacaoDivergencia = null;
-    @XmlElement(name = "numeroConhecimentoMAWB")
-    @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100")
-    /**
-     * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100
-     **/
-    private String numeroConhecimentoMAWB = null;
-    @XmlElement(name = "quantidadeVolumesDivergentes")
-    @ApiModelProperty(example = "17", value = "Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'")
-    /**
-     * Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'
-     **/
-    private Integer quantidadeVolumesDivergentes = null;
+    private TipoEnum tipo = null;
+
     @XmlElement(name = "codigoRecinto", required = true)
     @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
      **/
     private String codigoRecinto = null;
-    @XmlElement(name = "numeroConhecimento")
-    @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
+    @XmlElement(name = "dataHoraAgenda")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "<b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
+     * <b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String numeroConhecimento = null;
+    private String dataHoraAgenda = null;
+    @XmlElement(name = "conferenciaRemota", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean conferenciaRemota = null;
+    @XmlElement(name = "setorSolicitante")
+    @ApiModelProperty(value = "Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100")
+    /**
+     * Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100
+     **/
+    private String setorSolicitante = null;
+    @XmlElement(name = "tipoManifesto")
+    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
+    /**
+     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
+     **/
+    private TipoManifestoEnum tipoManifesto = null;
+
     @XmlElement(name = "listaTelefones")
     @ApiModelProperty(value = "Em agendamento de conferência remota, informar telefones dos prepostos do depositário responsáveis pela verificação para fins de comunicação")
     @Valid
@@ -122,96 +118,38 @@ public class DadosDaConfernciaFsica {
      * Em agendamento de conferência remota, informar telefones dos prepostos do depositário responsáveis pela verificação para fins de comunicação
      **/
     private List<DadosDoTelefone> listaTelefones = null;
-    @XmlElement(name = "listaNumeroLote")
-    @ApiModelProperty(value = "Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.")
-    @Valid
-    /**
-     * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
-     **/
-    private List<DadosDaIdentificaoDoLote> listaNumeroLote = null;
-    @XmlElement(name = "listaCameras")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.")
-    @Valid
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.
-     **/
-    private List<DadosDaCmera> listaCameras = null;
-    @XmlElement(name = "listaOperadoresPosicionamento")
-    @ApiModelProperty(value = "Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.")
-    @Valid
-    /**
-     * Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.
-     **/
-    private List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento = null;
-    @XmlElement(name = "listaLacres")
-    @ApiModelProperty(value = "Lista de lacres verificados")
-    @Valid
-    /**
-     * Lista de lacres verificados
-     **/
-    private List<DadosDoLacre> listaLacres = null;
-    @XmlElement(name = "idEvento", required = true)
-    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
-     **/
-    private String idEvento = null;
-    @XmlElement(name = "dataHoraAgenda")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "<b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * <b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraAgenda = null;
+
     @XmlElement(name = "solicitante", required = true)
     @ApiModelProperty(example = "ANCINE", required = true, value = "Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
      * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
     private String solicitante = null;
+    @XmlElement(name = "numeroConhecimentoMAWB")
+    @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100")
+    /**
+     * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100
+     **/
+    private String numeroConhecimentoMAWB = null;
+
     @XmlElement(name = "numeroManifesto")
     @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
      **/
     private String numeroManifesto = null;
-    @XmlElement(name = "listaNumeroConteiner")
-    @ApiModelProperty(value = "Lista de número do contêiner")
-    @Valid
+    @XmlElement(name = "numeroConhecimento")
+    @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
     /**
-     * Lista de número do contêiner
+     * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
      **/
-    private List<DadosDoConteiner> listaNumeroConteiner = null;
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    private String numeroConhecimento = null;
+    @XmlElement(name = "tipoConhecimento")
+    @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
-    private String dataHoraRegistro = null;
-    @XmlElement(name = "listaIdentificacaoUld")
-    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
-    @Valid
-    /**
-     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
-     **/
-    private List<DadosDaIdentificaoULD_> listaIdentificacaoUld = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
-     **/
-    private String protocoloEventoRetificadoOuExcluido = null;
-    @XmlElement(name = "setorSolicitante")
-    @ApiModelProperty(value = "Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100")
-    /**
-     * Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100
-     **/
-    private String setorSolicitante = null;
+    private String tipoConhecimento = null;
     @XmlElement(name = "declaracaoAduaneira")
     @ApiModelProperty(value = "")
     @Valid
@@ -223,16 +161,49 @@ public class DadosDaConfernciaFsica {
      * Lista de Placas de semirreboques, vagões ou truck.
      **/
     private List<PlacaSemirreboque> listaPlacaSemirreboque = null;
-    @XmlElement(name = "dataHoraOperacao")
-    @ApiModelProperty(value = "")
+    @XmlElement(name = "listaNumeroLote")
+    @ApiModelProperty(value = "Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.")
     @Valid
-    private DatasDeOperao dataHoraOperacao = null;
-    @XmlElement(name = "retiradaAmostras")
-    @ApiModelProperty(example = "false", value = "Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
      **/
-    private Boolean retiradaAmostras = null;
+    private List<DadosDaIdentificaoDoLote> listaNumeroLote = null;
+    @XmlElement(name = "areaConferenciaFisica")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 36")
+    /**
+     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 36
+     **/
+    private String areaConferenciaFisica = null;
+    @XmlElement(name = "listaCameras")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.")
+    @Valid
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.
+     **/
+    private List<DadosDaCmera> listaCameras = null;
+
+    @XmlElement(name = "listaNumeroConteiner")
+    @ApiModelProperty(value = "Lista de número do contêiner")
+    @Valid
+    /**
+     * Lista de número do contêiner
+     **/
+    private List<DadosDoConteiner> listaNumeroConteiner = null;
+
+    @XmlElement(name = "listaIdentificacaoUld")
+    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
+    @Valid
+    /**
+     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
+     **/
+    private List<DadosDaIdentificaoULD_> listaIdentificacaoUld = null;
+    @XmlElement(name = "listaOperadoresPosicionamento")
+    @ApiModelProperty(value = "Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.")
+    @Valid
+    /**
+     * Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.
+     **/
+    private List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento = null;
     @XmlElement(name = "listaPessoasAcompanhamento")
     @ApiModelProperty(value = "Informar todos as pessoas que acompanharam o posicionamento da carga e/ou a conferência física exceto os operadores informados na lista anterior.")
     @Valid
@@ -240,30 +211,70 @@ public class DadosDaConfernciaFsica {
      * Informar todos as pessoas que acompanharam o posicionamento da carga e/ou a conferência física exceto os operadores informados na lista anterior.
      **/
     private List<DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica> listaPessoasAcompanhamento = null;
-    @XmlElement(name = "tipoManifesto")
-    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
+    @XmlElement(name = "listaLacres")
+    @ApiModelProperty(value = "Lista de lacres verificados")
+    @Valid
     /**
-     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
+     * Lista de lacres verificados
      **/
-    private TipoManifestoEnum tipoManifesto = null;
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    private List<DadosDoLacre> listaLacres = null;
+
+    @XmlElement(name = "dataHoraOperacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DatasDeOperao dataHoraOperacao = null;
+    @XmlElement(name = "listaTipoAvaria")
+    @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
+    @Valid
     /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * Lista dos Tipos de Avarias.
      **/
-    private String cpfOperadorOcorrencia = null;
-    @XmlElement(name = "contingencia", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
+    @XmlElement(name = "quantidadeVolumesAvariados")
+    @ApiModelProperty(example = "28", value = "Informar o quantidade de volumes avariados<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesAvariados' quando o atributo 'tipo' for informado com valor 'CCF' e 'listaTipoAvaria' for informado.")
     /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Informar o quantidade de volumes avariados<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesAvariados' quando o atributo 'tipo' for informado com valor 'CCF' e 'listaTipoAvaria' for informado.
      **/
-    private Boolean contingencia = null;
-    @XmlElement(name = "areaConferenciaFisica")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 36")
+    private Integer quantidadeVolumesAvariados = null;
+    @XmlElement(name = "observacaoAvaria")
+    @ApiModelProperty(value = "Registrar as informações da avaria<br/>Tamanho: 200")
     /**
-     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Tamanho: 36
+     * Registrar as informações da avaria<br/>Tamanho: 200
      **/
-    private String areaConferenciaFisica = null;
+    private String observacaoAvaria = null;
+
+    @XmlElement(name = "retiradaAmostras")
+    @ApiModelProperty(example = "false", value = "Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean retiradaAmostras = null;
+    @XmlElement(name = "divergenciaQuantidade")
+    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean divergenciaQuantidade = null;
+    @XmlElement(name = "quantidadeVolumesDivergentes")
+    @ApiModelProperty(example = "17", value = "Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'")
+    /**
+     * Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'
+     **/
+    private Integer quantidadeVolumesDivergentes = null;
+    @XmlElement(name = "observacaoDivergencia")
+    @ApiModelProperty(value = "Caso constatado, registrar as informações das divergências<br/>Tamanho: 200")
+    /**
+     * Caso constatado, registrar as informações das divergências<br/>Tamanho: 200
+     **/
+    private String observacaoDivergencia = null;
+    @XmlElement(name = "listaTratamentoAdministrativo")
+    @ApiModelProperty(value = "Lista de Tratamento Administrativo")
+    @Valid
+    /**
+     * Lista de Tratamento Administrativo
+     **/
+    private List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo = null;
+
     @XmlElement(name = "divergenciaQualificacao")
     @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
@@ -280,574 +291,6 @@ public class DadosDaConfernciaFsica {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Informar o tipo de evento a ser enviado.&lt;br/&gt;Domínio:&lt;br/&gt;AGE - Agendamento&lt;br/&gt;CCF - Conclusão de Conferência Física
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    @NotNull
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public DadosDaConfernciaFsica tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Lista de Tratamento Administrativo
-     *
-     * @return listaTratamentoAdministrativo
-     **/
-    @JsonProperty("listaTratamentoAdministrativo")
-    public List<DadosDoTratamentoAdministrativo> getListaTratamentoAdministrativo() {
-        return listaTratamentoAdministrativo;
-    }
-
-    public void setListaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
-        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
-    }
-
-    public DadosDaConfernciaFsica listaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
-        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaTratamentoAdministrativoItem(DadosDoTratamentoAdministrativo listaTratamentoAdministrativoItem) {
-        this.listaTratamentoAdministrativo.add(listaTratamentoAdministrativoItem);
-        return this;
-    }
-
-    /**
-     * Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return conferenciaRemota
-     **/
-    @JsonProperty("conferenciaRemota")
-    @NotNull
-    public Boolean isisConferenciaRemota() {
-        return conferenciaRemota;
-    }
-
-    public void setConferenciaRemota(Boolean conferenciaRemota) {
-        this.conferenciaRemota = conferenciaRemota;
-    }
-
-    public DadosDaConfernciaFsica conferenciaRemota(Boolean conferenciaRemota) {
-        this.conferenciaRemota = conferenciaRemota;
-        return this;
-    }
-
-    /**
-     * Registrar as informações da avaria&lt;br/&gt;Tamanho: 200
-     *
-     * @return observacaoAvaria
-     **/
-    @JsonProperty("observacaoAvaria")
-    public String getObservacaoAvaria() {
-        return observacaoAvaria;
-    }
-
-    public void setObservacaoAvaria(String observacaoAvaria) {
-        this.observacaoAvaria = observacaoAvaria;
-    }
-
-    public DadosDaConfernciaFsica observacaoAvaria(String observacaoAvaria) {
-        this.observacaoAvaria = observacaoAvaria;
-        return this;
-    }
-
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraOcorrencia
-     **/
-    @JsonProperty("dataHoraOcorrencia")
-    @NotNull
-    public String getDataHoraOcorrencia() {
-        return dataHoraOcorrencia;
-    }
-
-    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-    }
-
-    public DadosDaConfernciaFsica dataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-        return this;
-    }
-
-    /**
-     * Informar o quantidade de volumes avariados&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesAvariados&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;listaTipoAvaria&#39; for informado.
-     *
-     * @return quantidadeVolumesAvariados
-     **/
-    @JsonProperty("quantidadeVolumesAvariados")
-    public Integer getQuantidadeVolumesAvariados() {
-        return quantidadeVolumesAvariados;
-    }
-
-    public void setQuantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
-        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
-    }
-
-    public DadosDaConfernciaFsica quantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
-        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
-        return this;
-    }
-
-    /**
-     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return divergenciaQuantidade
-     **/
-    @JsonProperty("divergenciaQuantidade")
-    public Boolean isisDivergenciaQuantidade() {
-        return divergenciaQuantidade;
-    }
-
-    public void setDivergenciaQuantidade(Boolean divergenciaQuantidade) {
-        this.divergenciaQuantidade = divergenciaQuantidade;
-    }
-
-    public DadosDaConfernciaFsica divergenciaQuantidade(Boolean divergenciaQuantidade) {
-        this.divergenciaQuantidade = divergenciaQuantidade;
-        return this;
-    }
-
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorRegistro
-     **/
-    @JsonProperty("cpfOperadorRegistro")
-    public String getCpfOperadorRegistro() {
-        return cpfOperadorRegistro;
-    }
-
-    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-    }
-
-    public DadosDaConfernciaFsica cpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-        return this;
-    }
-
-    /**
-     * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
-     * @return tipoConhecimento
-     **/
-    @JsonProperty("tipoConhecimento")
-    public String getTipoConhecimento() {
-        return tipoConhecimento;
-    }
-
-    public void setTipoConhecimento(String tipoConhecimento) {
-        this.tipoConhecimento = tipoConhecimento;
-    }
-
-    public DadosDaConfernciaFsica tipoConhecimento(String tipoConhecimento) {
-        this.tipoConhecimento = tipoConhecimento;
-        return this;
-    }
-
-    /**
-     * Lista dos Tipos de Avarias.
-     *
-     * @return listaTipoAvaria
-     **/
-    @JsonProperty("listaTipoAvaria")
-    public List<DadosDoTipoDeAvaria> getListaTipoAvaria() {
-        return listaTipoAvaria;
-    }
-
-    public void setListaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
-        this.listaTipoAvaria = listaTipoAvaria;
-    }
-
-    public DadosDaConfernciaFsica listaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
-        this.listaTipoAvaria = listaTipoAvaria;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaTipoAvariaItem(DadosDoTipoDeAvaria listaTipoAvariaItem) {
-        this.listaTipoAvaria.add(listaTipoAvariaItem);
-        return this;
-    }
-
-    /**
-     * Caso constatado, registrar as informações das divergências&lt;br/&gt;Tamanho: 200
-     *
-     * @return observacaoDivergencia
-     **/
-    @JsonProperty("observacaoDivergencia")
-    public String getObservacaoDivergencia() {
-        return observacaoDivergencia;
-    }
-
-    public void setObservacaoDivergencia(String observacaoDivergencia) {
-        this.observacaoDivergencia = observacaoDivergencia;
-    }
-
-    public DadosDaConfernciaFsica observacaoDivergencia(String observacaoDivergencia) {
-        this.observacaoDivergencia = observacaoDivergencia;
-        return this;
-    }
-
-    /**
-     * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
-     *
-     * @return numeroConhecimentoMAWB
-     **/
-    @JsonProperty("numeroConhecimentoMAWB")
-    public String getNumeroConhecimentoMAWB() {
-        return numeroConhecimentoMAWB;
-    }
-
-    public void setNumeroConhecimentoMAWB(String numeroConhecimentoMAWB) {
-        this.numeroConhecimentoMAWB = numeroConhecimentoMAWB;
-    }
-
-    public DadosDaConfernciaFsica numeroConhecimentoMAWB(String numeroConhecimentoMAWB) {
-        this.numeroConhecimentoMAWB = numeroConhecimentoMAWB;
-        return this;
-    }
-
-    /**
-     * Caso constatado, informar a quantidade de volumes divergentes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesDivergentes&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;divergenciaQuantidade&#39; for informado com valor &#39;True&#39;
-     *
-     * @return quantidadeVolumesDivergentes
-     **/
-    @JsonProperty("quantidadeVolumesDivergentes")
-    public Integer getQuantidadeVolumesDivergentes() {
-        return quantidadeVolumesDivergentes;
-    }
-
-    public void setQuantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
-        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
-    }
-
-    public DadosDaConfernciaFsica quantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
-        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
-        return this;
-    }
-
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
-     * @return codigoRecinto
-     **/
-    @JsonProperty("codigoRecinto")
-    @NotNull
-    public String getCodigoRecinto() {
-        return codigoRecinto;
-    }
-
-    public void setCodigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-    }
-
-    public DadosDaConfernciaFsica codigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-        return this;
-    }
-
-    /**
-     * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
-     *
-     * @return numeroConhecimento
-     **/
-    @JsonProperty("numeroConhecimento")
-    public String getNumeroConhecimento() {
-        return numeroConhecimento;
-    }
-
-    public void setNumeroConhecimento(String numeroConhecimento) {
-        this.numeroConhecimento = numeroConhecimento;
-    }
-
-    public DadosDaConfernciaFsica numeroConhecimento(String numeroConhecimento) {
-        this.numeroConhecimento = numeroConhecimento;
-        return this;
-    }
-
-    /**
-     * Em agendamento de conferência remota, informar telefones dos prepostos do depositário responsáveis pela verificação para fins de comunicação
-     *
-     * @return listaTelefones
-     **/
-    @JsonProperty("listaTelefones")
-    public List<DadosDoTelefone> getListaTelefones() {
-        return listaTelefones;
-    }
-
-    public void setListaTelefones(List<DadosDoTelefone> listaTelefones) {
-        this.listaTelefones = listaTelefones;
-    }
-
-    public DadosDaConfernciaFsica listaTelefones(List<DadosDoTelefone> listaTelefones) {
-        this.listaTelefones = listaTelefones;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaTelefonesItem(DadosDoTelefone listaTelefonesItem) {
-        this.listaTelefones.add(listaTelefonesItem);
-        return this;
-    }
-
-    /**
-     * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
-     *
-     * @return listaNumeroLote
-     **/
-    @JsonProperty("listaNumeroLote")
-    public List<DadosDaIdentificaoDoLote> getListaNumeroLote() {
-        return listaNumeroLote;
-    }
-
-    public void setListaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
-        this.listaNumeroLote = listaNumeroLote;
-    }
-
-    public DadosDaConfernciaFsica listaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
-        this.listaNumeroLote = listaNumeroLote;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaNumeroLoteItem(DadosDaIdentificaoDoLote listaNumeroLoteItem) {
-        this.listaNumeroLote.add(listaNumeroLoteItem);
-        return this;
-    }
-
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.
-     *
-     * @return listaCameras
-     **/
-    @JsonProperty("listaCameras")
-    public List<DadosDaCmera> getListaCameras() {
-        return listaCameras;
-    }
-
-    public void setListaCameras(List<DadosDaCmera> listaCameras) {
-        this.listaCameras = listaCameras;
-    }
-
-    public DadosDaConfernciaFsica listaCameras(List<DadosDaCmera> listaCameras) {
-        this.listaCameras = listaCameras;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaCamerasItem(DadosDaCmera listaCamerasItem) {
-        this.listaCameras.add(listaCamerasItem);
-        return this;
-    }
-
-    /**
-     * Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.
-     *
-     * @return listaOperadoresPosicionamento
-     **/
-    @JsonProperty("listaOperadoresPosicionamento")
-    public List<OperadorQueParticipouDoManuseioDaCarga> getListaOperadoresPosicionamento() {
-        return listaOperadoresPosicionamento;
-    }
-
-    public void setListaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
-        this.listaOperadoresPosicionamento = listaOperadoresPosicionamento;
-    }
-
-    public DadosDaConfernciaFsica listaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
-        this.listaOperadoresPosicionamento = listaOperadoresPosicionamento;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaOperadoresPosicionamentoItem(OperadorQueParticipouDoManuseioDaCarga listaOperadoresPosicionamentoItem) {
-        this.listaOperadoresPosicionamento.add(listaOperadoresPosicionamentoItem);
-        return this;
-    }
-
-    /**
-     * Lista de lacres verificados
-     *
-     * @return listaLacres
-     **/
-    @JsonProperty("listaLacres")
-    public List<DadosDoLacre> getListaLacres() {
-        return listaLacres;
-    }
-
-    public void setListaLacres(List<DadosDoLacre> listaLacres) {
-        this.listaLacres = listaLacres;
-    }
-
-    public DadosDaConfernciaFsica listaLacres(List<DadosDoLacre> listaLacres) {
-        this.listaLacres = listaLacres;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaLacresItem(DadosDoLacre listaLacresItem) {
-        this.listaLacres.add(listaLacresItem);
-        return this;
-    }
-
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
-     *
-     * @return idEvento
-     **/
-    @JsonProperty("idEvento")
-    @NotNull
-    public String getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
-    }
-
-    public DadosDaConfernciaFsica idEvento(String idEvento) {
-        this.idEvento = idEvento;
-        return this;
-    }
-
-    /**
-     * &lt;b&gt;Nota:&lt;/b&gt; Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;AGE&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraAgenda
-     **/
-    @JsonProperty("dataHoraAgenda")
-    public String getDataHoraAgenda() {
-        return dataHoraAgenda;
-    }
-
-    public void setDataHoraAgenda(String dataHoraAgenda) {
-        this.dataHoraAgenda = dataHoraAgenda;
-    }
-
-    public DadosDaConfernciaFsica dataHoraAgenda(String dataHoraAgenda) {
-        this.dataHoraAgenda = dataHoraAgenda;
-        return this;
-    }
-
-    /**
-     * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
-     * @return solicitante
-     **/
-    @JsonProperty("solicitante")
-    @NotNull
-    public String getSolicitante() {
-        return solicitante;
-    }
-
-    public void setSolicitante(String solicitante) {
-        this.solicitante = solicitante;
-    }
-
-    public DadosDaConfernciaFsica solicitante(String solicitante) {
-        this.solicitante = solicitante;
-        return this;
-    }
-
-    /**
-     * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
-     * @return numeroManifesto
-     **/
-    @JsonProperty("numeroManifesto")
-    public String getNumeroManifesto() {
-        return numeroManifesto;
-    }
-
-    public void setNumeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-    }
-
-    public DadosDaConfernciaFsica numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-        return this;
-    }
-
-    /**
-     * Lista de número do contêiner
-     *
-     * @return listaNumeroConteiner
-     **/
-    @JsonProperty("listaNumeroConteiner")
-    public List<DadosDoConteiner> getListaNumeroConteiner() {
-        return listaNumeroConteiner;
-    }
-
-    public void setListaNumeroConteiner(List<DadosDoConteiner> listaNumeroConteiner) {
-        this.listaNumeroConteiner = listaNumeroConteiner;
-    }
-
-    public DadosDaConfernciaFsica listaNumeroConteiner(List<DadosDoConteiner> listaNumeroConteiner) {
-        this.listaNumeroConteiner = listaNumeroConteiner;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaNumeroConteinerItem(DadosDoConteiner listaNumeroConteinerItem) {
-        this.listaNumeroConteiner.add(listaNumeroConteinerItem);
-        return this;
-    }
-
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    public DadosDaConfernciaFsica dataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-        return this;
-    }
-
-    /**
-     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
-     *
-     * @return listaIdentificacaoUld
-     **/
-    @JsonProperty("listaIdentificacaoUld")
-    public List<DadosDaIdentificaoULD_> getListaIdentificacaoUld() {
-        return listaIdentificacaoUld;
-    }
-
-    public void setListaIdentificacaoUld(List<DadosDaIdentificaoULD_> listaIdentificacaoUld) {
-        this.listaIdentificacaoUld = listaIdentificacaoUld;
-    }
-
-    public DadosDaConfernciaFsica listaIdentificacaoUld(List<DadosDaIdentificaoULD_> listaIdentificacaoUld) {
-        this.listaIdentificacaoUld = listaIdentificacaoUld;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaIdentificacaoUldItem(DadosDaIdentificaoULD_ listaIdentificacaoUldItem) {
-        this.listaIdentificacaoUld.add(listaIdentificacaoUldItem);
-        return this;
     }
 
     /**
@@ -874,6 +317,85 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
+     *
+     * @return idEvento
+     **/
+    @JsonProperty("idEvento")
+    @NotNull
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(String idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public DadosDaConfernciaFsica idEvento(String idEvento) {
+        this.idEvento = idEvento;
+        return this;
+    }
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    /**
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraOcorrencia
+     **/
+    @JsonProperty("dataHoraOcorrencia")
+    @NotNull
+    public String getDataHoraOcorrencia() {
+        return dataHoraOcorrencia;
+    }
+
+    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+    }
+
+    public DadosDaConfernciaFsica dataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica dataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+        return this;
+    }
+
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorOcorrencia
+     **/
+    @JsonProperty("cpfOperadorOcorrencia")
+    public String getCpfOperadorOcorrencia() {
+        return cpfOperadorOcorrencia;
+    }
+
+    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    }
+
+    public DadosDaConfernciaFsica cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+        return this;
+    }
+
+    /**
      * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
      *
      * @return protocoloEventoRetificadoOuExcluido
@@ -887,8 +409,128 @@ public class DadosDaConfernciaFsica {
         this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
     }
 
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorRegistro
+     **/
+    @JsonProperty("cpfOperadorRegistro")
+    public String getCpfOperadorRegistro() {
+        return cpfOperadorRegistro;
+    }
+
+    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+    }
+
+    public DadosDaConfernciaFsica cpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+        return this;
+    }
+
     public DadosDaConfernciaFsica protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
         this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+        return this;
+    }
+
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return contingencia
+     **/
+    @JsonProperty("contingencia")
+    @NotNull
+    public Boolean isisContingencia() {
+        return contingencia;
+    }
+
+    public void setContingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
+    }
+
+    public DadosDaConfernciaFsica contingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
+        return this;
+    }
+
+    /**
+     * Informar o tipo de evento a ser enviado.&lt;br/&gt;Domínio:&lt;br/&gt;AGE - Agendamento&lt;br/&gt;CCF - Conclusão de Conferência Física
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    @NotNull
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
+     * @return codigoRecinto
+     **/
+    @JsonProperty("codigoRecinto")
+    @NotNull
+    public String getCodigoRecinto() {
+        return codigoRecinto;
+    }
+
+    public void setCodigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+    }
+
+    public DadosDaConfernciaFsica codigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * &lt;b&gt;Nota:&lt;/b&gt; Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;dataHoraAgenda&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;AGE&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraAgenda
+     **/
+    @JsonProperty("dataHoraAgenda")
+    public String getDataHoraAgenda() {
+        return dataHoraAgenda;
+    }
+
+    public void setDataHoraAgenda(String dataHoraAgenda) {
+        this.dataHoraAgenda = dataHoraAgenda;
+    }
+
+    public DadosDaConfernciaFsica dataHoraAgenda(String dataHoraAgenda) {
+        this.dataHoraAgenda = dataHoraAgenda;
+        return this;
+    }
+
+    /**
+     * Informar se a conferência física será remota. Por exemplo, utilizando a estrutura do CONFERE ou semelhante.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return conferenciaRemota
+     **/
+    @JsonProperty("conferenciaRemota")
+    @NotNull
+    public Boolean isisConferenciaRemota() {
+        return conferenciaRemota;
+    }
+
+    public void setConferenciaRemota(Boolean conferenciaRemota) {
+        this.conferenciaRemota = conferenciaRemota;
+    }
+
+    public DadosDaConfernciaFsica conferenciaRemota(Boolean conferenciaRemota) {
+        this.conferenciaRemota = conferenciaRemota;
         return this;
     }
 
@@ -906,8 +548,147 @@ public class DadosDaConfernciaFsica {
         this.setorSolicitante = setorSolicitante;
     }
 
+    /**
+     * Em agendamento de conferência remota, informar telefones dos prepostos do depositário responsáveis pela verificação para fins de comunicação
+     * @return listaTelefones
+     **/
+    @JsonProperty("listaTelefones")
+    public List<DadosDoTelefone> getListaTelefones() {
+        return listaTelefones;
+    }
+
+    public void setListaTelefones(List<DadosDoTelefone> listaTelefones) {
+        this.listaTelefones = listaTelefones;
+    }
+
+    public DadosDaConfernciaFsica listaTelefones(List<DadosDoTelefone> listaTelefones) {
+        this.listaTelefones = listaTelefones;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaTelefonesItem(DadosDoTelefone listaTelefonesItem) {
+        this.listaTelefones.add(listaTelefonesItem);
+        return this;
+    }
+
+    /**
+     * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
+     * @return solicitante
+     **/
+    @JsonProperty("solicitante")
+    @NotNull
+    public String getSolicitante() {
+        return solicitante;
+    }
+
+    public void setSolicitante(String solicitante) {
+        this.solicitante = solicitante;
+    }
+
+    public DadosDaConfernciaFsica solicitante(String solicitante) {
+        this.solicitante = solicitante;
+        return this;
+    }
+
     public DadosDaConfernciaFsica setorSolicitante(String setorSolicitante) {
         this.setorSolicitante = setorSolicitante;
+        return this;
+    }
+
+    /**
+     * Tipo do manifesto conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;MICDTA - MicDTA&lt;br/&gt;TIFDTA - TifDTA&lt;br/&gt;MDFE - MDF-e&lt;br/&gt;MELET - Manifesto Eletrônico
+     *
+     * @return tipoManifesto
+     **/
+    @JsonProperty("tipoManifesto")
+    public String getTipoManifesto() {
+        if (tipoManifesto == null) {
+            return null;
+        }
+        return tipoManifesto.value();
+    }
+
+    public void setTipoManifesto(TipoManifestoEnum tipoManifesto) {
+        this.tipoManifesto = tipoManifesto;
+    }
+
+    /**
+     * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
+     * @return numeroManifesto
+     **/
+    @JsonProperty("numeroManifesto")
+    public String getNumeroManifesto() {
+        return numeroManifesto;
+    }
+
+    public void setNumeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+    }
+
+    public DadosDaConfernciaFsica numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica tipoManifesto(TipoManifestoEnum tipoManifesto) {
+        this.tipoManifesto = tipoManifesto;
+        return this;
+    }
+
+    /**
+     * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
+     *
+     * @return numeroConhecimentoMAWB
+     **/
+    @JsonProperty("numeroConhecimentoMAWB")
+    public String getNumeroConhecimentoMAWB() {
+        return numeroConhecimentoMAWB;
+    }
+
+    public void setNumeroConhecimentoMAWB(String numeroConhecimentoMAWB) {
+        this.numeroConhecimentoMAWB = numeroConhecimentoMAWB;
+    }
+
+    public DadosDaConfernciaFsica numeroConhecimentoMAWB(String numeroConhecimentoMAWB) {
+        this.numeroConhecimentoMAWB = numeroConhecimentoMAWB;
+        return this;
+    }
+
+    /**
+     * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
+     *
+     * @return numeroConhecimento
+     **/
+    @JsonProperty("numeroConhecimento")
+    public String getNumeroConhecimento() {
+        return numeroConhecimento;
+    }
+
+    public void setNumeroConhecimento(String numeroConhecimento) {
+        this.numeroConhecimento = numeroConhecimento;
+    }
+
+    public DadosDaConfernciaFsica numeroConhecimento(String numeroConhecimento) {
+        this.numeroConhecimento = numeroConhecimento;
+        return this;
+    }
+
+    /**
+     * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
+     *
+     * @return tipoConhecimento
+     **/
+    @JsonProperty("tipoConhecimento")
+    public String getTipoConhecimento() {
+        return tipoConhecimento;
+    }
+
+    public void setTipoConhecimento(String tipoConhecimento) {
+        this.tipoConhecimento = tipoConhecimento;
+    }
+
+    public DadosDaConfernciaFsica tipoConhecimento(String tipoConhecimento) {
+        this.tipoConhecimento = tipoConhecimento;
         return this;
     }
 
@@ -955,8 +736,133 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Get dataHoraOperacao
+     * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
      *
+     * @return listaNumeroLote
+     **/
+    @JsonProperty("listaNumeroLote")
+    public List<DadosDaIdentificaoDoLote> getListaNumeroLote() {
+        return listaNumeroLote;
+    }
+
+    public void setListaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
+        this.listaNumeroLote = listaNumeroLote;
+    }
+
+    /**
+     * Lista de número do contêiner
+     *
+     * @return listaNumeroConteiner
+     **/
+    @JsonProperty("listaNumeroConteiner")
+    public List<DadosDoConteiner> getListaNumeroConteiner() {
+        return listaNumeroConteiner;
+    }
+
+    public void setListaNumeroConteiner(List<DadosDoConteiner> listaNumeroConteiner) {
+        this.listaNumeroConteiner = listaNumeroConteiner;
+    }
+
+    public DadosDaConfernciaFsica listaNumeroConteiner(List<DadosDoConteiner> listaNumeroConteiner) {
+        this.listaNumeroConteiner = listaNumeroConteiner;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaNumeroConteinerItem(DadosDoConteiner listaNumeroConteinerItem) {
+        this.listaNumeroConteiner.add(listaNumeroConteinerItem);
+        return this;
+    }
+
+    /**
+     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
+     * @return listaIdentificacaoUld
+     **/
+    @JsonProperty("listaIdentificacaoUld")
+    public List<DadosDaIdentificaoULD_> getListaIdentificacaoUld() {
+        return listaIdentificacaoUld;
+    }
+
+    public void setListaIdentificacaoUld(List<DadosDaIdentificaoULD_> listaIdentificacaoUld) {
+        this.listaIdentificacaoUld = listaIdentificacaoUld;
+    }
+
+    public DadosDaConfernciaFsica listaIdentificacaoUld(List<DadosDaIdentificaoULD_> listaIdentificacaoUld) {
+        this.listaIdentificacaoUld = listaIdentificacaoUld;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaIdentificacaoUldItem(DadosDaIdentificaoULD_ listaIdentificacaoUldItem) {
+        this.listaIdentificacaoUld.add(listaIdentificacaoUldItem);
+        return this;
+    }
+
+    public DadosDaConfernciaFsica listaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
+        this.listaNumeroLote = listaNumeroLote;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaNumeroLoteItem(DadosDaIdentificaoDoLote listaNumeroLoteItem) {
+        this.listaNumeroLote.add(listaNumeroLoteItem);
+        return this;
+    }
+
+    /**
+     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Tamanho: 36
+     * @return areaConferenciaFisica
+     **/
+    @JsonProperty("areaConferenciaFisica")
+    public String getAreaConferenciaFisica() {
+        return areaConferenciaFisica;
+    }
+
+    public void setAreaConferenciaFisica(String areaConferenciaFisica) {
+        this.areaConferenciaFisica = areaConferenciaFisica;
+    }
+
+    public DadosDaConfernciaFsica areaConferenciaFisica(String areaConferenciaFisica) {
+        this.areaConferenciaFisica = areaConferenciaFisica;
+        return this;
+    }
+
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a conferência foi efetuada.
+     * @return listaCameras
+     **/
+    @JsonProperty("listaCameras")
+    public List<DadosDaCmera> getListaCameras() {
+        return listaCameras;
+    }
+
+    public void setListaCameras(List<DadosDaCmera> listaCameras) {
+        this.listaCameras = listaCameras;
+    }
+
+    public DadosDaConfernciaFsica listaCameras(List<DadosDaCmera> listaCameras) {
+        this.listaCameras = listaCameras;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaCamerasItem(DadosDaCmera listaCamerasItem) {
+        this.listaCameras.add(listaCamerasItem);
+        return this;
+    }
+
+    /**
+     * Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.
+     *
+     * @return listaOperadoresPosicionamento
+     **/
+    @JsonProperty("listaOperadoresPosicionamento")
+    public List<OperadorQueParticipouDoManuseioDaCarga> getListaOperadoresPosicionamento() {
+        return listaOperadoresPosicionamento;
+    }
+
+    public void setListaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
+        this.listaOperadoresPosicionamento = listaOperadoresPosicionamento;
+    }
+
+    /**
+     * Get dataHoraOperacao
      * @return dataHoraOperacao
      **/
     @JsonProperty("dataHoraOperacao")
@@ -973,28 +879,32 @@ public class DadosDaConfernciaFsica {
         return this;
     }
 
-    /**
-     * Informar se houve retirada de amostras durante a conferência física&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return retiradaAmostras
-     **/
-    @JsonProperty("retiradaAmostras")
-    public Boolean isisRetiradaAmostras() {
-        return retiradaAmostras;
+    public DadosDaConfernciaFsica listaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
+        this.listaOperadoresPosicionamento = listaOperadoresPosicionamento;
+        return this;
     }
 
-    public void setRetiradaAmostras(Boolean retiradaAmostras) {
-        this.retiradaAmostras = retiradaAmostras;
-    }
-
-    public DadosDaConfernciaFsica retiradaAmostras(Boolean retiradaAmostras) {
-        this.retiradaAmostras = retiradaAmostras;
+    public DadosDaConfernciaFsica addListaOperadoresPosicionamentoItem(OperadorQueParticipouDoManuseioDaCarga listaOperadoresPosicionamentoItem) {
+        this.listaOperadoresPosicionamento.add(listaOperadoresPosicionamentoItem);
         return this;
     }
 
     /**
-     * Informar todos as pessoas que acompanharam o posicionamento da carga e/ou a conferência física exceto os operadores informados na lista anterior.
+     * Lista de lacres verificados
      *
+     * @return listaLacres
+     **/
+    @JsonProperty("listaLacres")
+    public List<DadosDoLacre> getListaLacres() {
+        return listaLacres;
+    }
+
+    public void setListaLacres(List<DadosDoLacre> listaLacres) {
+        this.listaLacres = listaLacres;
+    }
+
+    /**
+     * Informar todos as pessoas que acompanharam o posicionamento da carga e/ou a conferência física exceto os operadores informados na lista anterior.
      * @return listaPessoasAcompanhamento
      **/
     @JsonProperty("listaPessoasAcompanhamento")
@@ -1016,89 +926,131 @@ public class DadosDaConfernciaFsica {
         return this;
     }
 
-    /**
-     * Tipo do manifesto conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;MICDTA - MicDTA&lt;br/&gt;TIFDTA - TifDTA&lt;br/&gt;MDFE - MDF-e&lt;br/&gt;MELET - Manifesto Eletrônico
-     *
-     * @return tipoManifesto
-     **/
-    @JsonProperty("tipoManifesto")
-    public String getTipoManifesto() {
-        if (tipoManifesto == null) {
-            return null;
-        }
-        return tipoManifesto.value();
+    public DadosDaConfernciaFsica listaLacres(List<DadosDoLacre> listaLacres) {
+        this.listaLacres = listaLacres;
+        return this;
     }
 
-    public void setTipoManifesto(TipoManifestoEnum tipoManifesto) {
-        this.tipoManifesto = tipoManifesto;
-    }
-
-    public DadosDaConfernciaFsica tipoManifesto(TipoManifestoEnum tipoManifesto) {
-        this.tipoManifesto = tipoManifesto;
+    public DadosDaConfernciaFsica addListaLacresItem(DadosDoLacre listaLacresItem) {
+        this.listaLacres.add(listaLacresItem);
         return this;
     }
 
     /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorOcorrencia
+     * Informar se houve retirada de amostras durante a conferência física&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * @return retiradaAmostras
      **/
-    @JsonProperty("cpfOperadorOcorrencia")
-    public String getCpfOperadorOcorrencia() {
-        return cpfOperadorOcorrencia;
+    @JsonProperty("retiradaAmostras")
+    public Boolean isisRetiradaAmostras() {
+        return retiradaAmostras;
     }
 
-    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    public void setRetiradaAmostras(Boolean retiradaAmostras) {
+        this.retiradaAmostras = retiradaAmostras;
     }
 
-    public DadosDaConfernciaFsica cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    public DadosDaConfernciaFsica retiradaAmostras(Boolean retiradaAmostras) {
+        this.retiradaAmostras = retiradaAmostras;
         return this;
     }
 
     /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Lista dos Tipos de Avarias.
      *
-     * @return contingencia
+     * @return listaTipoAvaria
      **/
-    @JsonProperty("contingencia")
-    @NotNull
-    public Boolean isisContingencia() {
-        return contingencia;
+    @JsonProperty("listaTipoAvaria")
+    public List<DadosDoTipoDeAvaria> getListaTipoAvaria() {
+        return listaTipoAvaria;
     }
 
-    public void setContingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
+    public void setListaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
+        this.listaTipoAvaria = listaTipoAvaria;
     }
 
-    public DadosDaConfernciaFsica contingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
+    public DadosDaConfernciaFsica listaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
+        this.listaTipoAvaria = listaTipoAvaria;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaTipoAvariaItem(DadosDoTipoDeAvaria listaTipoAvariaItem) {
+        this.listaTipoAvaria.add(listaTipoAvariaItem);
         return this;
     }
 
     /**
-     * Identificação da área de conferência (georreferenciamento). Usar o protocolo do evento de georreferenciamento.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Tamanho: 36
+     * Informar o quantidade de volumes avariados&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesAvariados&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;listaTipoAvaria&#39; for informado.
      *
-     * @return areaConferenciaFisica
+     * @return quantidadeVolumesAvariados
      **/
-    @JsonProperty("areaConferenciaFisica")
-    public String getAreaConferenciaFisica() {
-        return areaConferenciaFisica;
+    @JsonProperty("quantidadeVolumesAvariados")
+    public Integer getQuantidadeVolumesAvariados() {
+        return quantidadeVolumesAvariados;
     }
 
-    public void setAreaConferenciaFisica(String areaConferenciaFisica) {
-        this.areaConferenciaFisica = areaConferenciaFisica;
+    public void setQuantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
+        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
     }
 
-    public DadosDaConfernciaFsica areaConferenciaFisica(String areaConferenciaFisica) {
-        this.areaConferenciaFisica = areaConferenciaFisica;
+    public DadosDaConfernciaFsica quantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
+        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
         return this;
+    }
+
+    /**
+     * Registrar as informações da avaria&lt;br/&gt;Tamanho: 200
+     *
+     * @return observacaoAvaria
+     **/
+    @JsonProperty("observacaoAvaria")
+    public String getObservacaoAvaria() {
+        return observacaoAvaria;
+    }
+
+    public void setObservacaoAvaria(String observacaoAvaria) {
+        this.observacaoAvaria = observacaoAvaria;
+    }
+
+    public DadosDaConfernciaFsica observacaoAvaria(String observacaoAvaria) {
+        this.observacaoAvaria = observacaoAvaria;
+        return this;
+    }
+
+    /**
+     * Caso constatado, informar se há divergências de quantidade de mercadorias/volumes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return divergenciaQuantidade
+     **/
+    @JsonProperty("divergenciaQuantidade")
+    public Boolean isisDivergenciaQuantidade() {
+        return divergenciaQuantidade;
+    }
+
+    public void setDivergenciaQuantidade(Boolean divergenciaQuantidade) {
+        this.divergenciaQuantidade = divergenciaQuantidade;
+    }
+
+    public DadosDaConfernciaFsica divergenciaQuantidade(Boolean divergenciaQuantidade) {
+        this.divergenciaQuantidade = divergenciaQuantidade;
+        return this;
+    }
+
+    /**
+     * Caso constatado, informar a quantidade de volumes divergentes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesDivergentes&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;divergenciaQuantidade&#39; for informado com valor &#39;True&#39;
+     *
+     * @return quantidadeVolumesDivergentes
+     **/
+    @JsonProperty("quantidadeVolumesDivergentes")
+    public Integer getQuantidadeVolumesDivergentes() {
+        return quantidadeVolumesDivergentes;
+    }
+
+    public void setQuantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
+        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
     }
 
     /**
      * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return divergenciaQualificacao
      **/
     @JsonProperty("divergenciaQualificacao")
@@ -1115,92 +1067,101 @@ public class DadosDaConfernciaFsica {
         return this;
     }
 
+    public DadosDaConfernciaFsica quantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
+        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
+        return this;
+    }
+
+    /**
+     * Caso constatado, registrar as informações das divergências&lt;br/&gt;Tamanho: 200
+     *
+     * @return observacaoDivergencia
+     **/
+    @JsonProperty("observacaoDivergencia")
+    public String getObservacaoDivergencia() {
+        return observacaoDivergencia;
+    }
+
+    public void setObservacaoDivergencia(String observacaoDivergencia) {
+        this.observacaoDivergencia = observacaoDivergencia;
+    }
+
+    public DadosDaConfernciaFsica observacaoDivergencia(String observacaoDivergencia) {
+        this.observacaoDivergencia = observacaoDivergencia;
+        return this;
+    }
+
+    /**
+     * Lista de Tratamento Administrativo
+     *
+     * @return listaTratamentoAdministrativo
+     **/
+    @JsonProperty("listaTratamentoAdministrativo")
+    public List<DadosDoTratamentoAdministrativo> getListaTratamentoAdministrativo() {
+        return listaTratamentoAdministrativo;
+    }
+
+    public void setListaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
+        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
+    }
+
+    public DadosDaConfernciaFsica listaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
+        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaTratamentoAdministrativoItem(DadosDoTratamentoAdministrativo listaTratamentoAdministrativoItem) {
+        this.listaTratamentoAdministrativo.add(listaTratamentoAdministrativoItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosDaConfernciaFsica {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    listaTratamentoAdministrativo: " + toIndentedString(listaTratamentoAdministrativo) + "\n" +
-                "    conferenciaRemota: " + toIndentedString(conferenciaRemota) + "\n" +
-                "    observacaoAvaria: " + toIndentedString(observacaoAvaria) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    quantidadeVolumesAvariados: " + toIndentedString(quantidadeVolumesAvariados) + "\n" +
-                "    divergenciaQuantidade: " + toIndentedString(divergenciaQuantidade) + "\n" +
-                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
-                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
-                "    listaTipoAvaria: " + toIndentedString(listaTipoAvaria) + "\n" +
-                "    observacaoDivergencia: " + toIndentedString(observacaoDivergencia) + "\n" +
-                "    numeroConhecimentoMAWB: " + toIndentedString(numeroConhecimentoMAWB) + "\n" +
-                "    quantidadeVolumesDivergentes: " + toIndentedString(quantidadeVolumesDivergentes) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    numeroConhecimento: " + toIndentedString(numeroConhecimento) + "\n" +
-                "    listaTelefones: " + toIndentedString(listaTelefones) + "\n" +
-                "    listaNumeroLote: " + toIndentedString(listaNumeroLote) + "\n" +
-                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
-                "    listaOperadoresPosicionamento: " + toIndentedString(listaOperadoresPosicionamento) + "\n" +
-                "    listaLacres: " + toIndentedString(listaLacres) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraAgenda: " + toIndentedString(dataHoraAgenda) + "\n" +
-                "    solicitante: " + toIndentedString(solicitante) + "\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "    listaNumeroConteiner: " + toIndentedString(listaNumeroConteiner) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    listaIdentificacaoUld: " + toIndentedString(listaIdentificacaoUld) + "\n" +
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
                 "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    dataHoraAgenda: " + toIndentedString(dataHoraAgenda) + "\n" +
+                "    conferenciaRemota: " + toIndentedString(conferenciaRemota) + "\n" +
+                "    listaTelefones: " + toIndentedString(listaTelefones) + "\n" +
+                "    solicitante: " + toIndentedString(solicitante) + "\n" +
                 "    setorSolicitante: " + toIndentedString(setorSolicitante) + "\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    tipoManifesto: " + toIndentedString(tipoManifesto) + "\n" +
+                "    numeroConhecimentoMAWB: " + toIndentedString(numeroConhecimentoMAWB) + "\n" +
+                "    numeroConhecimento: " + toIndentedString(numeroConhecimento) + "\n" +
+                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
                 "    declaracaoAduaneira: " + toIndentedString(declaracaoAduaneira) + "\n" +
                 "    listaPlacaSemirreboque: " + toIndentedString(listaPlacaSemirreboque) + "\n" +
-                "    dataHoraOperacao: " + toIndentedString(dataHoraOperacao) + "\n" +
-                "    retiradaAmostras: " + toIndentedString(retiradaAmostras) + "\n" +
-                "    listaPessoasAcompanhamento: " + toIndentedString(listaPessoasAcompanhamento) + "\n" +
-                "    tipoManifesto: " + toIndentedString(tipoManifesto) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    listaNumeroConteiner: " + toIndentedString(listaNumeroConteiner) + "\n" +
+                "    listaIdentificacaoUld: " + toIndentedString(listaIdentificacaoUld) + "\n" +
+                "    listaNumeroLote: " + toIndentedString(listaNumeroLote) + "\n" +
                 "    areaConferenciaFisica: " + toIndentedString(areaConferenciaFisica) + "\n" +
+                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
+                "    dataHoraOperacao: " + toIndentedString(dataHoraOperacao) + "\n" +
+                "    listaOperadoresPosicionamento: " + toIndentedString(listaOperadoresPosicionamento) + "\n" +
+                "    listaPessoasAcompanhamento: " + toIndentedString(listaPessoasAcompanhamento) + "\n" +
+                "    listaLacres: " + toIndentedString(listaLacres) + "\n" +
+                "    retiradaAmostras: " + toIndentedString(retiradaAmostras) + "\n" +
+                "    listaTipoAvaria: " + toIndentedString(listaTipoAvaria) + "\n" +
+                "    quantidadeVolumesAvariados: " + toIndentedString(quantidadeVolumesAvariados) + "\n" +
+                "    observacaoAvaria: " + toIndentedString(observacaoAvaria) + "\n" +
+                "    divergenciaQuantidade: " + toIndentedString(divergenciaQuantidade) + "\n" +
                 "    divergenciaQualificacao: " + toIndentedString(divergenciaQualificacao) + "\n" +
+                "    quantidadeVolumesDivergentes: " + toIndentedString(quantidadeVolumesDivergentes) + "\n" +
+                "    observacaoDivergencia: " + toIndentedString(observacaoDivergencia) + "\n" +
+                "    listaTratamentoAdministrativo: " + toIndentedString(listaTratamentoAdministrativo) + "\n" +
                 "}";
-        return sb;
-    }
-
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("'AGE'")
-        @JsonProperty("'AGE'")
-        AGE_("'AGE'"),
-
-        @XmlEnumValue("'CCF'")
-        @JsonProperty("'CCF'")
-        CCF_("'CCF'");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
+    return sb;
+  }
 
     @XmlType(name = "TipoOperacaoEnum")
     @XmlEnum(String.class)
@@ -1232,6 +1193,45 @@ public class DadosDaConfernciaFsica {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("'AGE'")
+        @JsonProperty("'AGE'")
+        AGE_("'AGE'"),
+
+        @XmlEnumValue("'CCF'")
+        @JsonProperty("'CCF'")
+        CCF_("'CCF'");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
 
         public String value() {

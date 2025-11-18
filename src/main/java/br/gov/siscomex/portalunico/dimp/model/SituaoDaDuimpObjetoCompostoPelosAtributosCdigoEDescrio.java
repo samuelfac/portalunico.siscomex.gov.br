@@ -32,17 +32,6 @@ public class SituaoDaDuimpObjetoCompostoPelosAtributosCdigoEDescrio {
     private String descricao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Situação da versão vigente da Duimp.:&lt;br&gt;Dominio: &lt;br&gt;11 - Registrada. Aguardando Resultado da Análise de Risco&lt;br&gt;12 - Registrada. Aguardando Resultado da Análise de Risco&lt;br&gt;31 - Em Conferência&lt;br&gt;36 - Em Conferência. Pendente de Análise de Risco&lt;br&gt;37 - Em Conferência. Pendente de Análise do Responsável&lt;br&gt;40 - Desembaraçada. Aguardando Cumprimento de Tributos Estaduais&lt;br&gt;42 - Desembaraçada. Aguardando Entrega da Carga&lt;br&gt;43 - Desembaraçada. Carga Entregue&lt;br&gt;50 - Entrega Antecipada Autorizada. Aguardando Cumprimento de Tributos Estaduais&lt;br&gt;52 - Entrega Antecipada Autorizada. Aguardando Entrega da Carga&lt;br&gt;53 - Entrega Antecipada Autorizada. Carga Entregue&lt;br&gt;80 - Cancelada. Por Apuração Especial&lt;br&gt;82 - Cancelada. Pela Aduana a pedido do importador
      *
      * @return codigo
@@ -78,6 +67,18 @@ public class SituaoDaDuimpObjetoCompostoPelosAtributosCdigoEDescrio {
     public SituaoDaDuimpObjetoCompostoPelosAtributosCdigoEDescrio descricao(String descricao) {
         this.descricao = descricao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

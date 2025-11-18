@@ -19,7 +19,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Documento", propOrder =
-        {"disponivelParaOrgaos", "sha256", "documentoPalavrasChave", "documentoLido", "acessivelSetorPrivado", "dataHoraAnexacao", "idTipoDocumento", "nomeArquivo", "cpfAnexacao", "id", "nomeTipoDocumento", "tipoAcesso", "anexadoPor"
+        {"acessivelSetorPrivado", "anexadoPor", "cpfAnexacao", "dataHoraAnexacao", "disponivelParaOrgaos", "documentoLido", "documentoPalavrasChave", "id", "idTipoDocumento", "nomeArquivo", "nomeTipoDocumento", "sha256", "tipoAcesso"
         })
 
 @XmlRootElement(name = "Documento")
@@ -29,26 +29,30 @@ import java.util.List;
 @ApiModel(description = "Documento.")
 public class Documento {
 
-    @XmlElement(name = "disponivelParaOrgaos")
-    @ApiModelProperty(value = "Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>")
-    @Valid
+    @XmlElement(name = "acessivelSetorPrivado")
+    @ApiModelProperty(example = "false", value = "Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)")
     /**
-     * Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>
+     * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
      **/
-    private List<DocumentoDisponivelParaOrgao> disponivelParaOrgaos = null;
-
-    @XmlElement(name = "sha256", required = true)
-    @ApiModelProperty(example = "536292681b12d75fb1bce7b793d38c5d9d82efc408b53bda08abeeccb5eda434", required = true, value = "String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64")
+    private Boolean acessivelSetorPrivado = null;
+    @XmlElement(name = "anexadoPor", required = true)
+    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
     /**
-     * String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64
+     * Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30
      **/
-    private String sha256 = null;
-
-    @XmlElement(name = "documentoPalavrasChave", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private List<DocumentoPalavraChave> documentoPalavrasChave = new ArrayList<>();
-
+    private AnexadoPorEnum anexadoPor = null;
+    @XmlElement(name = "cpfAnexacao")
+    @ApiModelProperty(example = "77777777777", value = "CPF do usuário da anexação sem formatação.<br/>Tamanho: 11")
+    /**
+     * CPF do usuário da anexação sem formatação.<br/>Tamanho: 11
+     **/
+    private String cpfAnexacao = null;
+    @XmlElement(name = "dataHoraAnexacao", required = true)
+    @ApiModelProperty(required = true, value = "Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
+    /**
+     * Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
+     **/
+    private OffsetDateTime dataHoraAnexacao = null;
     @XmlElement(name = "documentoLido", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.")
     /**
@@ -56,19 +60,30 @@ public class Documento {
      **/
     private Boolean documentoLido = null;
 
-    @XmlElement(name = "acessivelSetorPrivado")
-    @ApiModelProperty(example = "false", value = "Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)")
+    @XmlElement(name = "disponivelParaOrgaos")
+    @ApiModelProperty(value = "Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>")
+    @Valid
     /**
-     * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
+     * Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>
      **/
-    private Boolean acessivelSetorPrivado = null;
+    private List<DocumentoDisponivelParaOrgao> disponivelParaOrgaos = null;
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "4456487453", required = true, value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807")
+    /**
+     * Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807
+     **/
+    private Long id = null;
 
-    @XmlElement(name = "dataHoraAnexacao", required = true)
-    @ApiModelProperty(required = true, value = "Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
+    @XmlElement(name = "documentoPalavrasChave", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private List<DocumentoPalavraChave> documentoPalavrasChave = new ArrayList<>();
+    @XmlElement(name = "sha256", required = true)
+    @ApiModelProperty(example = "536292681b12d75fb1bce7b793d38c5d9d82efc408b53bda08abeeccb5eda434", required = true, value = "String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64")
     /**
-     * Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
+     * String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64
      **/
-    private OffsetDateTime dataHoraAnexacao = null;
+    private String sha256 = null;
 
     @XmlElement(name = "idTipoDocumento", required = true)
     @ApiModelProperty(example = "87453", required = true, value = "Id do tipo de documento.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
@@ -84,38 +99,12 @@ public class Documento {
      **/
     private String nomeArquivo = null;
 
-    @XmlElement(name = "cpfAnexacao")
-    @ApiModelProperty(example = "77777777777", value = "CPF do usuário da anexação sem formatação.<br/>Tamanho: 11")
-    /**
-     * CPF do usuário da anexação sem formatação.<br/>Tamanho: 11
-     **/
-    private String cpfAnexacao = null;
-
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "4456487453", required = true, value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807")
-    /**
-     * Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807
-     **/
-    private Long id = null;
-
     @XmlElement(name = "nomeTipoDocumento", required = true)
     @ApiModelProperty(example = "Fatura Comercial", required = true, value = "Nome do tipo de documento.<br/>Tamanho máximo: 255")
     /**
      * Nome do tipo de documento.<br/>Tamanho máximo: 255
      **/
     private String nomeTipoDocumento = null;
-    @XmlElement(name = "tipoAcesso")
-    @ApiModelProperty(example = "1", value = "Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO.<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>")
-    /**
-     * Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO.<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>
-     **/
-    private TipoAcessoEnum tipoAcesso = null;
-    @XmlElement(name = "anexadoPor", required = true)
-    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
-    /**
-     * Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30
-     **/
-    private AnexadoPorEnum anexadoPor = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -126,6 +115,104 @@ public class Documento {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+    @XmlElement(name = "tipoAcesso")
+    @ApiModelProperty(example = "1", value = "Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO.<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>")
+    /**
+     * Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO.<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>
+     **/
+    private TipoAcessoEnum tipoAcesso = null;
+
+    /**
+     * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
+     *
+     * @return acessivelSetorPrivado
+     **/
+    @JsonProperty("acessivelSetorPrivado")
+    public Boolean isisAcessivelSetorPrivado() {
+        return acessivelSetorPrivado;
+    }
+
+    public void setAcessivelSetorPrivado(Boolean acessivelSetorPrivado) {
+        this.acessivelSetorPrivado = acessivelSetorPrivado;
+    }
+
+    public Documento acessivelSetorPrivado(Boolean acessivelSetorPrivado) {
+        this.acessivelSetorPrivado = acessivelSetorPrivado;
+        return this;
+    }
+
+    /**
+     * Tipo de usuário/órgão que anexou o documento.&lt;br/&gt;Tamanho máximo: 30
+     *
+     * @return anexadoPor
+     **/
+    @JsonProperty("anexadoPor")
+    @NotNull
+    public String getAnexadoPor() {
+        if (anexadoPor == null) {
+            return null;
+        }
+        return anexadoPor.value();
+    }
+
+    public void setAnexadoPor(AnexadoPorEnum anexadoPor) {
+        this.anexadoPor = anexadoPor;
+    }
+
+    public Documento anexadoPor(AnexadoPorEnum anexadoPor) {
+        this.anexadoPor = anexadoPor;
+        return this;
+    }
+
+    /**
+     * CPF do usuário da anexação sem formatação.&lt;br/&gt;Tamanho: 11
+     *
+     * @return cpfAnexacao
+     **/
+    @JsonProperty("cpfAnexacao")
+    public String getCpfAnexacao() {
+        return cpfAnexacao;
+    }
+
+    public void setCpfAnexacao(String cpfAnexacao) {
+        this.cpfAnexacao = cpfAnexacao;
+    }
+
+    public Documento cpfAnexacao(String cpfAnexacao) {
+        this.cpfAnexacao = cpfAnexacao;
+        return this;
+    }
+
+    /**
+     * Data/hora da anexação do documento.&lt;br/&gt;Formato ISO 8601: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz
+     *
+     * @return dataHoraAnexacao
+     **/
+    @JsonProperty("dataHoraAnexacao")
+    @NotNull
+    public OffsetDateTime getDataHoraAnexacao() {
+        return dataHoraAnexacao;
+    }
+
+    public void setDataHoraAnexacao(OffsetDateTime dataHoraAnexacao) {
+        this.dataHoraAnexacao = dataHoraAnexacao;
+    }
+
+    public Documento dataHoraAnexacao(OffsetDateTime dataHoraAnexacao) {
+        this.dataHoraAnexacao = dataHoraAnexacao;
+        return this;
+    }
+
+    /**
+     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
+     *
+     * @return documentoLido
+     **/
+    @JsonProperty("documentoLido")
+    @NotNull
+    public Boolean isisDocumentoLido() {
+        return documentoLido;
     }
 
     /**
@@ -152,24 +239,24 @@ public class Documento {
         return this;
     }
 
-    /**
-     * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
-     *
-     * @return sha256
-     **/
-    @JsonProperty("sha256")
-    @NotNull
-    public String getSha256() {
-        return sha256;
+    public void setDocumentoLido(Boolean documentoLido) {
+        this.documentoLido = documentoLido;
     }
 
-    public void setSha256(String sha256) {
-        this.sha256 = sha256;
-    }
-
-    public Documento sha256(String sha256) {
-        this.sha256 = sha256;
+    public Documento documentoLido(Boolean documentoLido) {
+        this.documentoLido = documentoLido;
         return this;
+    }
+
+    /**
+     * Id do documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 9223372036854775807
+     *
+     * @return id
+     **/
+    @JsonProperty("id")
+    @NotNull
+    public Long getId() {
+        return id;
     }
 
     /**
@@ -197,63 +284,24 @@ public class Documento {
         return this;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Documento id(Long id) {
+        this.id = id;
+        return this;
+    }
+
     /**
-     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
+     * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
      *
-     * @return documentoLido
+     * @return sha256
      **/
-    @JsonProperty("documentoLido")
+    @JsonProperty("sha256")
     @NotNull
-    public Boolean isisDocumentoLido() {
-        return documentoLido;
-    }
-
-    public void setDocumentoLido(Boolean documentoLido) {
-        this.documentoLido = documentoLido;
-    }
-
-    public Documento documentoLido(Boolean documentoLido) {
-        this.documentoLido = documentoLido;
-        return this;
-    }
-
-    /**
-     * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
-     *
-     * @return acessivelSetorPrivado
-     **/
-    @JsonProperty("acessivelSetorPrivado")
-    public Boolean isisAcessivelSetorPrivado() {
-        return acessivelSetorPrivado;
-    }
-
-    public void setAcessivelSetorPrivado(Boolean acessivelSetorPrivado) {
-        this.acessivelSetorPrivado = acessivelSetorPrivado;
-    }
-
-    public Documento acessivelSetorPrivado(Boolean acessivelSetorPrivado) {
-        this.acessivelSetorPrivado = acessivelSetorPrivado;
-        return this;
-    }
-
-    /**
-     * Data/hora da anexação do documento.&lt;br/&gt;Formato ISO 8601: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz
-     *
-     * @return dataHoraAnexacao
-     **/
-    @JsonProperty("dataHoraAnexacao")
-    @NotNull
-    public OffsetDateTime getDataHoraAnexacao() {
-        return dataHoraAnexacao;
-    }
-
-    public void setDataHoraAnexacao(OffsetDateTime dataHoraAnexacao) {
-        this.dataHoraAnexacao = dataHoraAnexacao;
-    }
-
-    public Documento dataHoraAnexacao(OffsetDateTime dataHoraAnexacao) {
-        this.dataHoraAnexacao = dataHoraAnexacao;
-        return this;
+    public String getSha256() {
+        return sha256;
     }
 
     /**
@@ -278,7 +326,6 @@ public class Documento {
 
     /**
      * Nome do arquivo&lt;br/&gt;Tamanho máximo: 255
-     *
      * @return nomeArquivo
      **/
     @JsonProperty("nomeArquivo")
@@ -293,45 +340,6 @@ public class Documento {
 
     public Documento nomeArquivo(String nomeArquivo) {
         this.nomeArquivo = nomeArquivo;
-        return this;
-    }
-
-    /**
-     * CPF do usuário da anexação sem formatação.&lt;br/&gt;Tamanho: 11
-     *
-     * @return cpfAnexacao
-     **/
-    @JsonProperty("cpfAnexacao")
-    public String getCpfAnexacao() {
-        return cpfAnexacao;
-    }
-
-    public void setCpfAnexacao(String cpfAnexacao) {
-        this.cpfAnexacao = cpfAnexacao;
-    }
-
-    public Documento cpfAnexacao(String cpfAnexacao) {
-        this.cpfAnexacao = cpfAnexacao;
-        return this;
-    }
-
-    /**
-     * Id do documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 9223372036854775807
-     *
-     * @return id
-     **/
-    @JsonProperty("id")
-    @NotNull
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Documento id(Long id) {
-        this.id = id;
         return this;
     }
 
@@ -353,6 +361,36 @@ public class Documento {
     public Documento nomeTipoDocumento(String nomeTipoDocumento) {
         this.nomeTipoDocumento = nomeTipoDocumento;
         return this;
+    }
+
+    public void setSha256(String sha256) {
+        this.sha256 = sha256;
+    }
+
+    public Documento sha256(String sha256) {
+        this.sha256 = sha256;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class Documento {\n" +
+                "    acessivelSetorPrivado: " + toIndentedString(acessivelSetorPrivado) + "\n" +
+                "    anexadoPor: " + toIndentedString(anexadoPor) + "\n" +
+                "    cpfAnexacao: " + toIndentedString(cpfAnexacao) + "\n" +
+                "    dataHoraAnexacao: " + toIndentedString(dataHoraAnexacao) + "\n" +
+                "    disponivelParaOrgaos: " + toIndentedString(disponivelParaOrgaos) + "\n" +
+                "    documentoLido: " + toIndentedString(documentoLido) + "\n" +
+                "    documentoPalavrasChave: " + toIndentedString(documentoPalavrasChave) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    idTipoDocumento: " + toIndentedString(idTipoDocumento) + "\n" +
+                "    nomeArquivo: " + toIndentedString(nomeArquivo) + "\n" +
+                "    nomeTipoDocumento: " + toIndentedString(nomeTipoDocumento) + "\n" +
+                "    sha256: " + toIndentedString(sha256) + "\n" +
+                "    tipoAcesso: " + toIndentedString(tipoAcesso) + "\n" +
+                "}";
+        return sb;
     }
 
     /**
@@ -377,50 +415,44 @@ public class Documento {
         return this;
     }
 
-    /**
-     * Tipo de usuário/órgão que anexou o documento.&lt;br/&gt;Tamanho máximo: 30
-     *
-     * @return anexadoPor
-     **/
-    @JsonProperty("anexadoPor")
-    @NotNull
-    public String getAnexadoPor() {
-        if (anexadoPor == null) {
-            return null;
+
+    @XmlType(name = "AnexadoPorEnum")
+    @XmlEnum(String.class)
+    public enum AnexadoPorEnum {
+
+        @XmlEnumValue("Representante Legal")
+        @JsonProperty("Representante Legal")
+        REPRESENTANTE_LEGAL("Representante Legal"),
+
+        @XmlEnumValue("Administração Pública")
+        @JsonProperty("Administração Pública")
+        ADMINISTRA_O_P_BLICA("Administração Pública");
+
+
+        private final String value;
+
+        AnexadoPorEnum(String v) {
+            value = v;
         }
-        return anexadoPor.value();
+
+        public static AnexadoPorEnum fromValue(String v) {
+            for (AnexadoPorEnum b : AnexadoPorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to AnexadoPorEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
-
-    public void setAnexadoPor(AnexadoPorEnum anexadoPor) {
-        this.anexadoPor = anexadoPor;
-    }
-
-    public Documento anexadoPor(AnexadoPorEnum anexadoPor) {
-        this.anexadoPor = anexadoPor;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class Documento {\n" +
-                "    disponivelParaOrgaos: " + toIndentedString(disponivelParaOrgaos) + "\n" +
-                "    sha256: " + toIndentedString(sha256) + "\n" +
-                "    documentoPalavrasChave: " + toIndentedString(documentoPalavrasChave) + "\n" +
-                "    documentoLido: " + toIndentedString(documentoLido) + "\n" +
-                "    acessivelSetorPrivado: " + toIndentedString(acessivelSetorPrivado) + "\n" +
-                "    dataHoraAnexacao: " + toIndentedString(dataHoraAnexacao) + "\n" +
-                "    idTipoDocumento: " + toIndentedString(idTipoDocumento) + "\n" +
-                "    nomeArquivo: " + toIndentedString(nomeArquivo) + "\n" +
-                "    cpfAnexacao: " + toIndentedString(cpfAnexacao) + "\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    nomeTipoDocumento: " + toIndentedString(nomeTipoDocumento) + "\n" +
-                "    tipoAcesso: " + toIndentedString(tipoAcesso) + "\n" +
-                "    anexadoPor: " + toIndentedString(anexadoPor) + "\n" +
-                "}";
-        return sb;
-    }
-
 
     @XmlType(name = "TipoAcessoEnum")
     @XmlEnum(Integer.class)
@@ -455,44 +487,6 @@ public class Documento {
         }
 
         public Integer value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "AnexadoPorEnum")
-    @XmlEnum(String.class)
-    public enum AnexadoPorEnum {
-
-        @XmlEnumValue("Representante Legal")
-        @JsonProperty("Representante Legal")
-        REPRESENTANTE_LEGAL("Representante Legal"),
-
-        @XmlEnumValue("Administração Pública")
-        @JsonProperty("Administração Pública")
-        ADMINISTRA_O_P_BLICA("Administração Pública");
-
-
-        private final String value;
-
-        AnexadoPorEnum(String v) {
-            value = v;
-        }
-
-        public static AnexadoPorEnum fromValue(String v) {
-            for (AnexadoPorEnum b : AnexadoPorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to AnexadoPorEnum");
-        }
-
-        public String value() {
             return value;
         }
 

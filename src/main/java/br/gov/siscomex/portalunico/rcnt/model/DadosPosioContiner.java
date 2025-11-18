@@ -16,46 +16,25 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosPosioContiner", propOrder =
-        {"localizacao", "solicitanteFisica", "areaConteiner", "listaCameras", "listaManifestos", "idEvento", "dataHoraRegistro", "dataHoraOcorrencia", "numeroConteiner", "posicaoNavio", "tipoOperacao", "avaria", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "listaNfe", "placaSemirreboque", "conferenciaFisica", "listaDeclaracaoAduaneira", "codigoRecinto", "vazio", "cpfOperadorOcorrencia", "contingencia", "placa"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto", "numeroConteiner", "placa", "placaSemirreboque", "vazio", "listaNfe", "listaDeclaracaoAduaneira", "listaManifestos", "localizacao", "posicaoNavio", "conferenciaFisica", "solicitanteFisica", "avaria", "areaConteiner", "listaCameras"
         })
 
 @XmlRootElement(name = "DadosPosioContiner")
 public class DadosPosioContiner {
 
-    @XmlElement(name = "localizacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosLocalizaoLote localizacao = null;
 
-    @XmlElement(name = "solicitanteFisica")
-    @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
     /**
-     * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
      **/
-    private String solicitanteFisica = null;
-
-    @XmlElement(name = "areaConteiner", required = true)
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    private TipoOperacaoEnum tipoOperacao = null;
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String areaConteiner = null;
-
-    @XmlElement(name = "listaCameras")
-    @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a unidade foi posicionada.")
-    @Valid
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a unidade foi posicionada.
-     **/
-    private List<DadosDaCmera> listaCameras = null;
-
-    @XmlElement(name = "listaManifestos")
-    @ApiModelProperty(value = "Lista de manifestos.")
-    @Valid
-    /**
-     * Lista de manifestos.
-     **/
-    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
+    private String dataHoraRegistro = null;
 
     @XmlElement(name = "idEvento", required = true)
     @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
@@ -64,95 +43,12 @@ public class DadosPosioContiner {
      **/
     private String idEvento = null;
 
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
-
     @XmlElement(name = "dataHoraOcorrencia", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-
-    @XmlElement(name = "numeroConteiner", required = true)
-    @ApiModelProperty(required = true, value = "Identificação do número do contêiner. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 200")
-    /**
-     * Identificação do número do contêiner. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 200
-     **/
-    private String numeroConteiner = null;
-
-    @XmlElement(name = "posicaoNavio")
-    @ApiModelProperty(value = "Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. <br/>Tamanho: 20")
-    /**
-     * Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. <br/>Tamanho: 20
-     **/
-    private String posicaoNavio = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "avaria")
-    @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean avaria = null;
-    @XmlElement(name = "cpfOperadorRegistro")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorRegistro = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
-     **/
-    private String protocoloEventoRetificadoOuExcluido = null;
-    @XmlElement(name = "listaNfe")
-    @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
-    @Valid
-    /**
-     * Lista de chaves das NFE que amparam o transporte.
-     **/
-    private List<DadosDaNotaFiscal> listaNfe = null;
-    @XmlElement(name = "placaSemirreboque")
-    @ApiModelProperty(value = "Placa semirreboque/vagão. Informar em caso de descarregamento. <br/>Tamanho: 50")
-    /**
-     * Placa semirreboque/vagão. Informar em caso de descarregamento. <br/>Tamanho: 50
-     **/
-    private String placaSemirreboque = null;
-    @XmlElement(name = "conferenciaFisica")
-    @ApiModelProperty(example = "false", value = "Informar se o contêiner está em conferência física. <br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Informar se o contêiner está em conferência física. <br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean conferenciaFisica = null;
-    @XmlElement(name = "listaDeclaracaoAduaneira")
-    @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
-    @Valid
-    /**
-     * Lista de declarações aduaneiras associadas à carga.
-     **/
-    private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
-    @XmlElement(name = "codigoRecinto", required = true)
-    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
-     **/
-    private String codigoRecinto = null;
-    @XmlElement(name = "vazio", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean vazio = null;
     @XmlElement(name = "cpfOperadorOcorrencia")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
@@ -165,12 +61,114 @@ public class DadosPosioContiner {
      * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean contingencia = null;
+
+    @XmlElement(name = "cpfOperadorRegistro")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorRegistro = null;
+
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     **/
+    private String protocoloEventoRetificadoOuExcluido = null;
+    @XmlElement(name = "codigoRecinto", required = true)
+    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
+     **/
+    private String codigoRecinto = null;
+    @XmlElement(name = "numeroConteiner", required = true)
+    @ApiModelProperty(required = true, value = "Identificação do número do contêiner. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 200")
+    /**
+     * Identificação do número do contêiner. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 200
+     **/
+    private String numeroConteiner = null;
     @XmlElement(name = "placa")
     @ApiModelProperty(value = "Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.<br/>Tamanho: 50")
     /**
      * Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.<br/>Tamanho: 50
      **/
     private String placa = null;
+    @XmlElement(name = "placaSemirreboque")
+    @ApiModelProperty(value = "Placa semirreboque/vagão. Informar em caso de descarregamento. <br/>Tamanho: 50")
+    /**
+     * Placa semirreboque/vagão. Informar em caso de descarregamento. <br/>Tamanho: 50
+     **/
+    private String placaSemirreboque = null;
+    @XmlElement(name = "vazio", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Vazio.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean vazio = null;
+    @XmlElement(name = "listaDeclaracaoAduaneira")
+    @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
+    @Valid
+    /**
+     * Lista de declarações aduaneiras associadas à carga.
+     **/
+    private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
+
+    @XmlElement(name = "listaNfe")
+    @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
+    @Valid
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     **/
+    private List<DadosDaNotaFiscal> listaNfe = null;
+    @XmlElement(name = "listaManifestos")
+    @ApiModelProperty(value = "Lista de manifestos.")
+    @Valid
+    /**
+     * Lista de manifestos.
+     **/
+    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
+    @XmlElement(name = "localizacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosLocalizaoLote localizacao = null;
+    @XmlElement(name = "posicaoNavio")
+    @ApiModelProperty(value = "Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. <br/>Tamanho: 20")
+    /**
+     * Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. <br/>Tamanho: 20
+     **/
+    private String posicaoNavio = null;
+    @XmlElement(name = "solicitanteFisica")
+    @ApiModelProperty(example = "ANCINE", value = "Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    /**
+     * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     **/
+    private String solicitanteFisica = null;
+
+    @XmlElement(name = "conferenciaFisica")
+    @ApiModelProperty(example = "false", value = "Informar se o contêiner está em conferência física. <br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Informar se o contêiner está em conferência física. <br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean conferenciaFisica = null;
+    @XmlElement(name = "avaria")
+    @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean avaria = null;
+    @XmlElement(name = "areaConteiner", required = true)
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", required = true, value = "Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    /**
+     * Identificação da área de posicionamento do contêiner. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
+     **/
+    private String areaConteiner = null;
+    @XmlElement(name = "listaCameras")
+    @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a unidade foi posicionada.")
+    @Valid
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde a unidade foi posicionada.
+     **/
+    private List<DadosDaCmera> listaCameras = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -181,6 +179,335 @@ public class DadosPosioContiner {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
+     *
+     * @return tipoOperacao
+     **/
+    @JsonProperty("tipoOperacao")
+    @NotNull
+    public String getTipoOperacao() {
+        if (tipoOperacao == null) {
+            return null;
+        }
+        return tipoOperacao.value();
+    }
+
+    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+    }
+
+    public DadosPosioContiner tipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+        return this;
+    }
+
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
+     *
+     * @return idEvento
+     **/
+    @JsonProperty("idEvento")
+    @NotNull
+    public String getIdEvento() {
+        return idEvento;
+    }
+
+    public void setIdEvento(String idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public DadosPosioContiner idEvento(String idEvento) {
+        this.idEvento = idEvento;
+        return this;
+    }
+
+    /**
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraOcorrencia
+     **/
+    @JsonProperty("dataHoraOcorrencia")
+    @NotNull
+    public String getDataHoraOcorrencia() {
+        return dataHoraOcorrencia;
+    }
+
+    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+    }
+
+    public DadosPosioContiner dataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+        return this;
+    }
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    public DadosPosioContiner dataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+        return this;
+    }
+
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorOcorrencia
+     **/
+    @JsonProperty("cpfOperadorOcorrencia")
+    public String getCpfOperadorOcorrencia() {
+        return cpfOperadorOcorrencia;
+    }
+
+    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+    }
+
+    public DadosPosioContiner cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
+        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
+        return this;
+    }
+
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpfOperadorRegistro
+     **/
+    @JsonProperty("cpfOperadorRegistro")
+    public String getCpfOperadorRegistro() {
+        return cpfOperadorRegistro;
+    }
+
+    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+    }
+
+    public DadosPosioContiner cpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
+        return this;
+    }
+
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocoloEventoRetificadoOuExcluido
+     **/
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
+    }
+
+    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+    }
+
+    public DadosPosioContiner protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+        return this;
+    }
+
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return contingencia
+     **/
+    @JsonProperty("contingencia")
+    @NotNull
+    public Boolean isisContingencia() {
+        return contingencia;
+    }
+
+    public void setContingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
+    }
+
+    public DadosPosioContiner contingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
+        return this;
+    }
+
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
+     *
+     * @return codigoRecinto
+     **/
+    @JsonProperty("codigoRecinto")
+    @NotNull
+    public String getCodigoRecinto() {
+        return codigoRecinto;
+    }
+
+    public void setCodigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+    }
+
+    public DadosPosioContiner codigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+        return this;
+    }
+
+    /**
+     * Identificação do número do contêiner. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 200
+     *
+     * @return numeroConteiner
+     **/
+    @JsonProperty("numeroConteiner")
+    @NotNull
+    public String getNumeroConteiner() {
+        return numeroConteiner;
+    }
+
+    public void setNumeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+    }
+
+    public DadosPosioContiner numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+        return this;
+    }
+
+    /**
+     * Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.&lt;br/&gt;Tamanho: 50
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public DadosPosioContiner placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Placa semirreboque/vagão. Informar em caso de descarregamento. &lt;br/&gt;Tamanho: 50
+     *
+     * @return placaSemirreboque
+     **/
+    @JsonProperty("placaSemirreboque")
+    public String getPlacaSemirreboque() {
+        return placaSemirreboque;
+    }
+
+    public void setPlacaSemirreboque(String placaSemirreboque) {
+        this.placaSemirreboque = placaSemirreboque;
+    }
+
+    public DadosPosioContiner placaSemirreboque(String placaSemirreboque) {
+        this.placaSemirreboque = placaSemirreboque;
+        return this;
+    }
+
+    /**
+     * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return vazio
+     **/
+    @JsonProperty("vazio")
+    @NotNull
+    public Boolean isisVazio() {
+        return vazio;
+    }
+
+    public void setVazio(Boolean vazio) {
+        this.vazio = vazio;
+    }
+
+    public DadosPosioContiner vazio(Boolean vazio) {
+        this.vazio = vazio;
+        return this;
+    }
+
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     *
+     * @return listaNfe
+     **/
+    @JsonProperty("listaNfe")
+    public List<DadosDaNotaFiscal> getListaNfe() {
+        return listaNfe;
+    }
+
+    public void setListaNfe(List<DadosDaNotaFiscal> listaNfe) {
+        this.listaNfe = listaNfe;
+    }
+
+    public DadosPosioContiner listaNfe(List<DadosDaNotaFiscal> listaNfe) {
+        this.listaNfe = listaNfe;
+        return this;
+    }
+
+    public DadosPosioContiner addListaNfeItem(DadosDaNotaFiscal listaNfeItem) {
+        this.listaNfe.add(listaNfeItem);
+        return this;
+    }
+
+    /**
+     * Lista de declarações aduaneiras associadas à carga.
+     * @return listaDeclaracaoAduaneira
+     **/
+    @JsonProperty("listaDeclaracaoAduaneira")
+    public List<DocumentoAduaneiro> getListaDeclaracaoAduaneira() {
+        return listaDeclaracaoAduaneira;
+    }
+
+    public void setListaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
+        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
+    }
+
+    public DadosPosioContiner listaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
+        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
+        return this;
+    }
+
+    public DadosPosioContiner addListaDeclaracaoAduaneiraItem(DocumentoAduaneiro listaDeclaracaoAduaneiraItem) {
+        this.listaDeclaracaoAduaneira.add(listaDeclaracaoAduaneiraItem);
+        return this;
+    }
+
+    /**
+     * Lista de manifestos.
+     *
+     * @return listaManifestos
+     **/
+    @JsonProperty("listaManifestos")
+    public List<DadosDoManifestoDaCargaSimplificado> getListaManifestos() {
+        return listaManifestos;
+    }
+
+    public void setListaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
+        this.listaManifestos = listaManifestos;
+    }
+
+    public DadosPosioContiner listaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
+        this.listaManifestos = listaManifestos;
+        return this;
+    }
+
+    public DadosPosioContiner addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
+        this.listaManifestos.add(listaManifestosItem);
+        return this;
     }
 
     /**
@@ -203,8 +530,44 @@ public class DadosPosioContiner {
     }
 
     /**
-     * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
+     * Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. &lt;br/&gt;Tamanho: 20
      *
+     * @return posicaoNavio
+     **/
+    @JsonProperty("posicaoNavio")
+    public String getPosicaoNavio() {
+        return posicaoNavio;
+    }
+
+    public void setPosicaoNavio(String posicaoNavio) {
+        this.posicaoNavio = posicaoNavio;
+    }
+
+    public DadosPosioContiner posicaoNavio(String posicaoNavio) {
+        this.posicaoNavio = posicaoNavio;
+        return this;
+    }
+
+    /**
+     * Informar se o contêiner está em conferência física. &lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * @return conferenciaFisica
+     **/
+    @JsonProperty("conferenciaFisica")
+    public Boolean isisConferenciaFisica() {
+        return conferenciaFisica;
+    }
+
+    public void setConferenciaFisica(Boolean conferenciaFisica) {
+        this.conferenciaFisica = conferenciaFisica;
+    }
+
+    public DadosPosioContiner conferenciaFisica(Boolean conferenciaFisica) {
+        this.conferenciaFisica = conferenciaFisica;
+        return this;
+    }
+
+    /**
+     * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
      * @return solicitanteFisica
      **/
     @JsonProperty("solicitanteFisica")
@@ -218,6 +581,25 @@ public class DadosPosioContiner {
 
     public DadosPosioContiner solicitanteFisica(String solicitanteFisica) {
         this.solicitanteFisica = solicitanteFisica;
+        return this;
+    }
+
+    /**
+     * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return avaria
+     **/
+    @JsonProperty("avaria")
+    public Boolean isisAvaria() {
+        return avaria;
+    }
+
+    public void setAvaria(Boolean avaria) {
+        this.avaria = avaria;
+    }
+
+    public DadosPosioContiner avaria(Boolean avaria) {
+        this.avaria = avaria;
         return this;
     }
 
@@ -265,421 +647,34 @@ public class DadosPosioContiner {
         return this;
     }
 
-    /**
-     * Lista de manifestos.
-     *
-     * @return listaManifestos
-     **/
-    @JsonProperty("listaManifestos")
-    public List<DadosDoManifestoDaCargaSimplificado> getListaManifestos() {
-        return listaManifestos;
-    }
-
-    public void setListaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
-        this.listaManifestos = listaManifestos;
-    }
-
-    public DadosPosioContiner listaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
-        this.listaManifestos = listaManifestos;
-        return this;
-    }
-
-    public DadosPosioContiner addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
-        this.listaManifestos.add(listaManifestosItem);
-        return this;
-    }
-
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.&lt;br/&gt; O idEvento informado em cada evento não pode ser repetido quando \&quot;tipoOperacao\&quot;&#x3D;\&quot;I-Incluir\&quot;, ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.&lt;br/&gt;Tamanho: 100
-     *
-     * @return idEvento
-     **/
-    @JsonProperty("idEvento")
-    @NotNull
-    public String getIdEvento() {
-        return idEvento;
-    }
-
-    public void setIdEvento(String idEvento) {
-        this.idEvento = idEvento;
-    }
-
-    public DadosPosioContiner idEvento(String idEvento) {
-        this.idEvento = idEvento;
-        return this;
-    }
-
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    public DadosPosioContiner dataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-        return this;
-    }
-
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraOcorrencia
-     **/
-    @JsonProperty("dataHoraOcorrencia")
-    @NotNull
-    public String getDataHoraOcorrencia() {
-        return dataHoraOcorrencia;
-    }
-
-    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-    }
-
-    public DadosPosioContiner dataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-        return this;
-    }
-
-    /**
-     * Identificação do número do contêiner. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 200
-     *
-     * @return numeroConteiner
-     **/
-    @JsonProperty("numeroConteiner")
-    @NotNull
-    public String getNumeroConteiner() {
-        return numeroConteiner;
-    }
-
-    public void setNumeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-    }
-
-    public DadosPosioContiner numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
-    /**
-     * Posição que o contêiner tinha no navio no caso de descarregamento ou a posição prevista do contêiner no navio para fins de carregamento. &lt;br/&gt;Tamanho: 20
-     *
-     * @return posicaoNavio
-     **/
-    @JsonProperty("posicaoNavio")
-    public String getPosicaoNavio() {
-        return posicaoNavio;
-    }
-
-    public void setPosicaoNavio(String posicaoNavio) {
-        this.posicaoNavio = posicaoNavio;
-    }
-
-    public DadosPosioContiner posicaoNavio(String posicaoNavio) {
-        this.posicaoNavio = posicaoNavio;
-        return this;
-    }
-
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
-     *
-     * @return tipoOperacao
-     **/
-    @JsonProperty("tipoOperacao")
-    @NotNull
-    public String getTipoOperacao() {
-        if (tipoOperacao == null) {
-            return null;
-        }
-        return tipoOperacao.value();
-    }
-
-    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
-    }
-
-    public DadosPosioContiner tipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
-        return this;
-    }
-
-    /**
-     * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return avaria
-     **/
-    @JsonProperty("avaria")
-    public Boolean isisAvaria() {
-        return avaria;
-    }
-
-    public void setAvaria(Boolean avaria) {
-        this.avaria = avaria;
-    }
-
-    public DadosPosioContiner avaria(Boolean avaria) {
-        this.avaria = avaria;
-        return this;
-    }
-
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorRegistro
-     **/
-    @JsonProperty("cpfOperadorRegistro")
-    public String getCpfOperadorRegistro() {
-        return cpfOperadorRegistro;
-    }
-
-    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-    }
-
-    public DadosPosioContiner cpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-        return this;
-    }
-
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
-     *
-     * @return protocoloEventoRetificadoOuExcluido
-     **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
-    }
-
-    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
-    }
-
-    public DadosPosioContiner protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
-        return this;
-    }
-
-    /**
-     * Lista de chaves das NFE que amparam o transporte.
-     *
-     * @return listaNfe
-     **/
-    @JsonProperty("listaNfe")
-    public List<DadosDaNotaFiscal> getListaNfe() {
-        return listaNfe;
-    }
-
-    public void setListaNfe(List<DadosDaNotaFiscal> listaNfe) {
-        this.listaNfe = listaNfe;
-    }
-
-    public DadosPosioContiner listaNfe(List<DadosDaNotaFiscal> listaNfe) {
-        this.listaNfe = listaNfe;
-        return this;
-    }
-
-    public DadosPosioContiner addListaNfeItem(DadosDaNotaFiscal listaNfeItem) {
-        this.listaNfe.add(listaNfeItem);
-        return this;
-    }
-
-    /**
-     * Placa semirreboque/vagão. Informar em caso de descarregamento. &lt;br/&gt;Tamanho: 50
-     *
-     * @return placaSemirreboque
-     **/
-    @JsonProperty("placaSemirreboque")
-    public String getPlacaSemirreboque() {
-        return placaSemirreboque;
-    }
-
-    public void setPlacaSemirreboque(String placaSemirreboque) {
-        this.placaSemirreboque = placaSemirreboque;
-    }
-
-    public DadosPosioContiner placaSemirreboque(String placaSemirreboque) {
-        this.placaSemirreboque = placaSemirreboque;
-        return this;
-    }
-
-    /**
-     * Informar se o contêiner está em conferência física. &lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return conferenciaFisica
-     **/
-    @JsonProperty("conferenciaFisica")
-    public Boolean isisConferenciaFisica() {
-        return conferenciaFisica;
-    }
-
-    public void setConferenciaFisica(Boolean conferenciaFisica) {
-        this.conferenciaFisica = conferenciaFisica;
-    }
-
-    public DadosPosioContiner conferenciaFisica(Boolean conferenciaFisica) {
-        this.conferenciaFisica = conferenciaFisica;
-        return this;
-    }
-
-    /**
-     * Lista de declarações aduaneiras associadas à carga.
-     *
-     * @return listaDeclaracaoAduaneira
-     **/
-    @JsonProperty("listaDeclaracaoAduaneira")
-    public List<DocumentoAduaneiro> getListaDeclaracaoAduaneira() {
-        return listaDeclaracaoAduaneira;
-    }
-
-    public void setListaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
-        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
-    }
-
-    public DadosPosioContiner listaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
-        this.listaDeclaracaoAduaneira = listaDeclaracaoAduaneira;
-        return this;
-    }
-
-    public DadosPosioContiner addListaDeclaracaoAduaneiraItem(DocumentoAduaneiro listaDeclaracaoAduaneiraItem) {
-        this.listaDeclaracaoAduaneira.add(listaDeclaracaoAduaneiraItem);
-        return this;
-    }
-
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
-     * @return codigoRecinto
-     **/
-    @JsonProperty("codigoRecinto")
-    @NotNull
-    public String getCodigoRecinto() {
-        return codigoRecinto;
-    }
-
-    public void setCodigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-    }
-
-    public DadosPosioContiner codigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-        return this;
-    }
-
-    /**
-     * Vazio.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return vazio
-     **/
-    @JsonProperty("vazio")
-    @NotNull
-    public Boolean isisVazio() {
-        return vazio;
-    }
-
-    public void setVazio(Boolean vazio) {
-        this.vazio = vazio;
-    }
-
-    public DadosPosioContiner vazio(Boolean vazio) {
-        this.vazio = vazio;
-        return this;
-    }
-
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.&lt;br/&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorOcorrencia
-     **/
-    @JsonProperty("cpfOperadorOcorrencia")
-    public String getCpfOperadorOcorrencia() {
-        return cpfOperadorOcorrencia;
-    }
-
-    public void setCpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
-    }
-
-    public DadosPosioContiner cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
-        this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
-        return this;
-    }
-
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return contingencia
-     **/
-    @JsonProperty("contingencia")
-    @NotNull
-    public Boolean isisContingencia() {
-        return contingencia;
-    }
-
-    public void setContingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
-    }
-
-    public DadosPosioContiner contingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
-        return this;
-    }
-
-    /**
-     * Placa (Cavalo-trator/truck/locomotiva). Informar em caso de descarregamento.&lt;br/&gt;Tamanho: 50
-     *
-     * @return placa
-     **/
-    @JsonProperty("placa")
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public DadosPosioContiner placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class DadosPosioContiner {\n" +
-                "    localizacao: " + toIndentedString(localizacao) + "\n" +
-                "    solicitanteFisica: " + toIndentedString(solicitanteFisica) + "\n" +
-                "    areaConteiner: " + toIndentedString(areaConteiner) + "\n" +
-                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
-                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
-                "    posicaoNavio: " + toIndentedString(posicaoNavio) + "\n" +
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    avaria: " + toIndentedString(avaria) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
                 "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
                 "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
-                "    placaSemirreboque: " + toIndentedString(placaSemirreboque) + "\n" +
-                "    conferenciaFisica: " + toIndentedString(conferenciaFisica) + "\n" +
-                "    listaDeclaracaoAduaneira: " + toIndentedString(listaDeclaracaoAduaneira) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    vazio: " + toIndentedString(vazio) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
                 "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    placaSemirreboque: " + toIndentedString(placaSemirreboque) + "\n" +
+                "    vazio: " + toIndentedString(vazio) + "\n" +
+                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
+                "    listaDeclaracaoAduaneira: " + toIndentedString(listaDeclaracaoAduaneira) + "\n" +
+                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
+                "    localizacao: " + toIndentedString(localizacao) + "\n" +
+                "    posicaoNavio: " + toIndentedString(posicaoNavio) + "\n" +
+                "    conferenciaFisica: " + toIndentedString(conferenciaFisica) + "\n" +
+                "    solicitanteFisica: " + toIndentedString(solicitanteFisica) + "\n" +
+                "    avaria: " + toIndentedString(avaria) + "\n" +
+                "    areaConteiner: " + toIndentedString(areaConteiner) + "\n" +
+                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
                 "}";
         return sb;
     }

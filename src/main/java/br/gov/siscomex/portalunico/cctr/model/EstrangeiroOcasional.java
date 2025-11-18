@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EstrangeiroOcasional", propOrder =
-        {"endereco", "licencaOriginaria", "nome", "dataVencimentoAutorizacao", "pais"
+        {"dataVencimentoAutorizacao", "pais", "licencaOriginaria", "endereco", "nome"
         })
 
 @XmlRootElement(name = "EstrangeiroOcasional")
@@ -22,27 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados do transportador estrangeiro ocasional")
 public class EstrangeiroOcasional {
-
-    @XmlElement(name = "endereco", required = true)
-    @ApiModelProperty(example = "Endereço do transportador", required = true, value = "Endereço do transportador<br>Tamanho: 120")
-    /**
-     * Endereço do transportador<br>Tamanho: 120
-     **/
-    private String endereco = null;
-
-    @XmlElement(name = "licencaOriginaria")
-    @ApiModelProperty(example = "1234656517", value = "Número da licença originária<br>Tamanho: 20")
-    /**
-     * Número da licença originária<br>Tamanho: 20
-     **/
-    private String licencaOriginaria = null;
-
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(example = "Nome do transportador", required = true, value = "Nome do transportador<br>Tamanho: 60")
-    /**
-     * Nome do transportador<br>Tamanho: 60
-     **/
-    private String nome = null;
 
     @XmlElement(name = "dataVencimentoAutorizacao")
     @ApiModelProperty(example = "2030-04-01", value = "Data de vencimento da autorização ocasional<br>Formato: AAAA-MM-DD")
@@ -58,6 +37,27 @@ public class EstrangeiroOcasional {
      **/
     private String pais = null;
 
+    @XmlElement(name = "licencaOriginaria")
+    @ApiModelProperty(example = "1234656517", value = "Número da licença originária<br>Tamanho: 20")
+    /**
+     * Número da licença originária<br>Tamanho: 20
+     **/
+    private String licencaOriginaria = null;
+
+    @XmlElement(name = "endereco", required = true)
+    @ApiModelProperty(example = "Endereço do transportador", required = true, value = "Endereço do transportador<br>Tamanho: 120")
+    /**
+     * Endereço do transportador<br>Tamanho: 120
+     **/
+    private String endereco = null;
+
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "Nome do transportador", required = true, value = "Nome do transportador<br>Tamanho: 60")
+    /**
+     * Nome do transportador<br>Tamanho: 60
+     **/
+    private String nome = null;
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -67,65 +67,6 @@ public class EstrangeiroOcasional {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Endereço do transportador&lt;br&gt;Tamanho: 120
-     *
-     * @return endereco
-     **/
-    @JsonProperty("endereco")
-    @NotNull
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public EstrangeiroOcasional endereco(String endereco) {
-        this.endereco = endereco;
-        return this;
-    }
-
-    /**
-     * Número da licença originária&lt;br&gt;Tamanho: 20
-     *
-     * @return licencaOriginaria
-     **/
-    @JsonProperty("licencaOriginaria")
-    public String getLicencaOriginaria() {
-        return licencaOriginaria;
-    }
-
-    public void setLicencaOriginaria(String licencaOriginaria) {
-        this.licencaOriginaria = licencaOriginaria;
-    }
-
-    public EstrangeiroOcasional licencaOriginaria(String licencaOriginaria) {
-        this.licencaOriginaria = licencaOriginaria;
-        return this;
-    }
-
-    /**
-     * Nome do transportador&lt;br&gt;Tamanho: 60
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public EstrangeiroOcasional nome(String nome) {
-        this.nome = nome;
-        return this;
     }
 
     /**
@@ -161,8 +102,67 @@ public class EstrangeiroOcasional {
         this.pais = pais;
     }
 
+    /**
+     * Número da licença originária&lt;br&gt;Tamanho: 20
+     *
+     * @return licencaOriginaria
+     **/
+    @JsonProperty("licencaOriginaria")
+    public String getLicencaOriginaria() {
+        return licencaOriginaria;
+    }
+
+    public void setLicencaOriginaria(String licencaOriginaria) {
+        this.licencaOriginaria = licencaOriginaria;
+    }
+
+    public EstrangeiroOcasional licencaOriginaria(String licencaOriginaria) {
+        this.licencaOriginaria = licencaOriginaria;
+        return this;
+    }
+
     public EstrangeiroOcasional pais(String pais) {
         this.pais = pais;
+        return this;
+    }
+
+    /**
+     * Endereço do transportador&lt;br&gt;Tamanho: 120
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    @NotNull
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    /**
+     * Nome do transportador&lt;br&gt;Tamanho: 60
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public EstrangeiroOcasional nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    public EstrangeiroOcasional endereco(String endereco) {
+        this.endereco = endereco;
         return this;
     }
 
@@ -170,11 +170,11 @@ public class EstrangeiroOcasional {
     public String toString() {
 
         String sb = "class EstrangeiroOcasional {\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    licencaOriginaria: " + toIndentedString(licencaOriginaria) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    dataVencimentoAutorizacao: " + toIndentedString(dataVencimentoAutorizacao) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
+                "    licencaOriginaria: " + toIndentedString(licencaOriginaria) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
                 "}";
         return sb;
     }

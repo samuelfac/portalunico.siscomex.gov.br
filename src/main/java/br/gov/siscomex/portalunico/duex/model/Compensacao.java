@@ -14,19 +14,11 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Compensacao", propOrder =
-        {"valorCompensado", "dataDoRegistro", "numeroDaDeclaracao"
+        {"dataDoRegistro", "numeroDaDeclaracao", "valorCompensado"
         })
 
 @XmlRootElement(name = "Compensacao")
 public class Compensacao {
-
-    @XmlElement(name = "valorCompensado")
-    @ApiModelProperty(value = "Valor compensado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor compensado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorCompensado = null;
 
     @XmlElement(name = "dataDoRegistro")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -42,35 +34,13 @@ public class Compensacao {
      **/
     private String numeroDaDeclaracao = null;
 
+    @XmlElement(name = "valorCompensado")
+    @ApiModelProperty(value = "Valor compensado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Valor compensado&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorCompensado
+     * Valor compensado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    @JsonProperty("valorCompensado")
-    public BigDecimal getValorCompensado() {
-        return valorCompensado;
-    }
-
-    public void setValorCompensado(BigDecimal valorCompensado) {
-        this.valorCompensado = valorCompensado;
-    }
-
-    public Compensacao valorCompensado(BigDecimal valorCompensado) {
-        this.valorCompensado = valorCompensado;
-        return this;
-    }
+    private BigDecimal valorCompensado = null;
 
     /**
      * Data do Registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
@@ -110,13 +80,43 @@ public class Compensacao {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Valor compensado&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorCompensado
+     **/
+    @JsonProperty("valorCompensado")
+    public BigDecimal getValorCompensado() {
+        return valorCompensado;
+    }
+
+    public void setValorCompensado(BigDecimal valorCompensado) {
+        this.valorCompensado = valorCompensado;
+    }
+
+    public Compensacao valorCompensado(BigDecimal valorCompensado) {
+        this.valorCompensado = valorCompensado;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Compensacao {\n" +
-                "    valorCompensado: " + toIndentedString(valorCompensado) + "\n" +
                 "    dataDoRegistro: " + toIndentedString(dataDoRegistro) + "\n" +
                 "    numeroDaDeclaracao: " + toIndentedString(numeroDaDeclaracao) + "\n" +
+                "    valorCompensado: " + toIndentedString(valorCompensado) + "\n" +
                 "}";
         return sb;
     }

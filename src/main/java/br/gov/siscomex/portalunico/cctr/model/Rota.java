@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Rota", propOrder =
-        {"codigoAduanaEntrada", "tempoPercurso", "codigoAduanaDestino", "rotasPassagem", "codigoLugarOperativoDestino", "descricaoRota", "codigoCidadeEntrada", "codigoCidadeDestino", "codigoLugarOperativoEntrada"
+        {"tempoPercurso", "descricaoRota", "codigoCidadeEntrada", "codigoAduanaEntrada", "codigoLugarOperativoEntrada", "codigoCidadeDestino", "codigoAduanaDestino", "codigoLugarOperativoDestino", "rotasPassagem"
         })
 
 @XmlRootElement(name = "Rota")
@@ -25,13 +25,6 @@ import java.math.BigDecimal;
 @ApiModel(description = "Rotas Internacionais")
 public class Rota {
 
-    @XmlElement(name = "codigoAduanaEntrada", required = true)
-    @ApiModelProperty(example = "222", required = true, value = "Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-    /**
-     * Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
-     **/
-    private String codigoAduanaEntrada = null;
-
     @XmlElement(name = "tempoPercurso", required = true)
     @ApiModelProperty(example = "100.0", required = true, value = "Prazo Aduana origem-destino horas.<br>Tamanho: 3<br>Formato: NNN")
     @Valid
@@ -39,25 +32,6 @@ public class Rota {
      * Prazo Aduana origem-destino horas.<br>Tamanho: 3<br>Formato: NNN
      **/
     private BigDecimal tempoPercurso = null;
-
-    @XmlElement(name = "codigoAduanaDestino", required = true)
-    @ApiModelProperty(example = "333", required = true, value = "Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-    /**
-     * Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
-     **/
-    private String codigoAduanaDestino = null;
-
-    @XmlElement(name = "rotasPassagem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private RotasPassagem rotasPassagem = null;
-
-    @XmlElement(name = "codigoLugarOperativoDestino", required = true)
-    @ApiModelProperty(example = "1234567", required = true, value = "Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-    /**
-     * Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
-     **/
-    private String codigoLugarOperativoDestino = null;
 
     @XmlElement(name = "descricaoRota", required = true)
     @ApiModelProperty(example = "Teste Descrição", required = true, value = "Descrição da rota de trânsito internacional.<br>Tamanho: 500<br>Formato: AAA..AA")
@@ -73,12 +47,12 @@ public class Rota {
      **/
     private String codigoCidadeEntrada = null;
 
-    @XmlElement(name = "codigoCidadeDestino", required = true)
-    @ApiModelProperty(example = "20", required = true, value = "Cidade de destino (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
+    @XmlElement(name = "codigoAduanaEntrada", required = true)
+    @ApiModelProperty(example = "222", required = true, value = "Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
     /**
-     * Cidade de destino (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA
+     * Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
      **/
-    private String codigoCidadeDestino = null;
+    private String codigoAduanaEntrada = null;
 
     @XmlElement(name = "codigoLugarOperativoEntrada", required = true)
     @ApiModelProperty(example = "1234567", required = true, value = "Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
@@ -87,36 +61,31 @@ public class Rota {
      **/
     private String codigoLugarOperativoEntrada = null;
 
+    @XmlElement(name = "codigoCidadeDestino", required = true)
+    @ApiModelProperty(example = "20", required = true, value = "Cidade de destino (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Aduana de entrada (ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
-     *
-     * @return codigoAduanaEntrada
+     * Cidade de destino (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA
      **/
-    @JsonProperty("codigoAduanaEntrada")
-    @NotNull
-    public String getCodigoAduanaEntrada() {
-        return codigoAduanaEntrada;
-    }
+    private String codigoCidadeDestino = null;
 
-    public void setCodigoAduanaEntrada(String codigoAduanaEntrada) {
-        this.codigoAduanaEntrada = codigoAduanaEntrada;
-    }
+    @XmlElement(name = "codigoAduanaDestino", required = true)
+    @ApiModelProperty(example = "333", required = true, value = "Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
+    /**
+     * Aduana de destino (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
+     **/
+    private String codigoAduanaDestino = null;
 
-    public Rota codigoAduanaEntrada(String codigoAduanaEntrada) {
-        this.codigoAduanaEntrada = codigoAduanaEntrada;
-        return this;
-    }
+    @XmlElement(name = "codigoLugarOperativoDestino", required = true)
+    @ApiModelProperty(example = "1234567", required = true, value = "Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
+    /**
+     * Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
+     **/
+    private String codigoLugarOperativoDestino = null;
+
+    @XmlElement(name = "rotasPassagem")
+    @ApiModelProperty(value = "")
+    @Valid
+    private RotasPassagem rotasPassagem = null;
 
     /**
      * Prazo Aduana origem-destino horas.&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN
@@ -135,65 +104,6 @@ public class Rota {
 
     public Rota tempoPercurso(BigDecimal tempoPercurso) {
         this.tempoPercurso = tempoPercurso;
-        return this;
-    }
-
-    /**
-     * Aduana de destino (ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
-     *
-     * @return codigoAduanaDestino
-     **/
-    @JsonProperty("codigoAduanaDestino")
-    @NotNull
-    public String getCodigoAduanaDestino() {
-        return codigoAduanaDestino;
-    }
-
-    public void setCodigoAduanaDestino(String codigoAduanaDestino) {
-        this.codigoAduanaDestino = codigoAduanaDestino;
-    }
-
-    public Rota codigoAduanaDestino(String codigoAduanaDestino) {
-        this.codigoAduanaDestino = codigoAduanaDestino;
-        return this;
-    }
-
-    /**
-     * Get rotasPassagem
-     *
-     * @return rotasPassagem
-     **/
-    @JsonProperty("rotasPassagem")
-    public RotasPassagem getRotasPassagem() {
-        return rotasPassagem;
-    }
-
-    public void setRotasPassagem(RotasPassagem rotasPassagem) {
-        this.rotasPassagem = rotasPassagem;
-    }
-
-    public Rota rotasPassagem(RotasPassagem rotasPassagem) {
-        this.rotasPassagem = rotasPassagem;
-        return this;
-    }
-
-    /**
-     * Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
-     *
-     * @return codigoLugarOperativoDestino
-     **/
-    @JsonProperty("codigoLugarOperativoDestino")
-    @NotNull
-    public String getCodigoLugarOperativoDestino() {
-        return codigoLugarOperativoDestino;
-    }
-
-    public void setCodigoLugarOperativoDestino(String codigoLugarOperativoDestino) {
-        this.codigoLugarOperativoDestino = codigoLugarOperativoDestino;
-    }
-
-    public Rota codigoLugarOperativoDestino(String codigoLugarOperativoDestino) {
-        this.codigoLugarOperativoDestino = codigoLugarOperativoDestino;
         return this;
     }
 
@@ -238,23 +148,29 @@ public class Rota {
     }
 
     /**
-     * Cidade de destino (UNLOCODE).&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: AAAAA
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Aduana de entrada (ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
      *
-     * @return codigoCidadeDestino
+     * @return codigoAduanaEntrada
      **/
-    @JsonProperty("codigoCidadeDestino")
+    @JsonProperty("codigoAduanaEntrada")
     @NotNull
-    public String getCodigoCidadeDestino() {
-        return codigoCidadeDestino;
+    public String getCodigoAduanaEntrada() {
+        return codigoAduanaEntrada;
     }
 
-    public void setCodigoCidadeDestino(String codigoCidadeDestino) {
-        this.codigoCidadeDestino = codigoCidadeDestino;
-    }
-
-    public Rota codigoCidadeDestino(String codigoCidadeDestino) {
-        this.codigoCidadeDestino = codigoCidadeDestino;
-        return this;
+    public void setCodigoAduanaEntrada(String codigoAduanaEntrada) {
+        this.codigoAduanaEntrada = codigoAduanaEntrada;
     }
 
     /**
@@ -277,19 +193,103 @@ public class Rota {
         return this;
     }
 
+    public Rota codigoAduanaEntrada(String codigoAduanaEntrada) {
+        this.codigoAduanaEntrada = codigoAduanaEntrada;
+        return this;
+    }
+
+    /**
+     * Cidade de destino (UNLOCODE).&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: AAAAA
+     *
+     * @return codigoCidadeDestino
+     **/
+    @JsonProperty("codigoCidadeDestino")
+    @NotNull
+    public String getCodigoCidadeDestino() {
+        return codigoCidadeDestino;
+    }
+
+    public void setCodigoCidadeDestino(String codigoCidadeDestino) {
+        this.codigoCidadeDestino = codigoCidadeDestino;
+    }
+
+    public Rota codigoCidadeDestino(String codigoCidadeDestino) {
+        this.codigoCidadeDestino = codigoCidadeDestino;
+        return this;
+    }
+
+    /**
+     * Aduana de destino (ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
+     *
+     * @return codigoAduanaDestino
+     **/
+    @JsonProperty("codigoAduanaDestino")
+    @NotNull
+    public String getCodigoAduanaDestino() {
+        return codigoAduanaDestino;
+    }
+
+    public void setCodigoAduanaDestino(String codigoAduanaDestino) {
+        this.codigoAduanaDestino = codigoAduanaDestino;
+    }
+
+    public Rota codigoAduanaDestino(String codigoAduanaDestino) {
+        this.codigoAduanaDestino = codigoAduanaDestino;
+        return this;
+    }
+
+    /**
+     * Lugar operativo de destino (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
+     *
+     * @return codigoLugarOperativoDestino
+     **/
+    @JsonProperty("codigoLugarOperativoDestino")
+    @NotNull
+    public String getCodigoLugarOperativoDestino() {
+        return codigoLugarOperativoDestino;
+    }
+
+    public void setCodigoLugarOperativoDestino(String codigoLugarOperativoDestino) {
+        this.codigoLugarOperativoDestino = codigoLugarOperativoDestino;
+    }
+
+    public Rota codigoLugarOperativoDestino(String codigoLugarOperativoDestino) {
+        this.codigoLugarOperativoDestino = codigoLugarOperativoDestino;
+        return this;
+    }
+
+    /**
+     * Get rotasPassagem
+     *
+     * @return rotasPassagem
+     **/
+    @JsonProperty("rotasPassagem")
+    public RotasPassagem getRotasPassagem() {
+        return rotasPassagem;
+    }
+
+    public void setRotasPassagem(RotasPassagem rotasPassagem) {
+        this.rotasPassagem = rotasPassagem;
+    }
+
+    public Rota rotasPassagem(RotasPassagem rotasPassagem) {
+        this.rotasPassagem = rotasPassagem;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Rota {\n" +
-                "    codigoAduanaEntrada: " + toIndentedString(codigoAduanaEntrada) + "\n" +
                 "    tempoPercurso: " + toIndentedString(tempoPercurso) + "\n" +
-                "    codigoAduanaDestino: " + toIndentedString(codigoAduanaDestino) + "\n" +
-                "    rotasPassagem: " + toIndentedString(rotasPassagem) + "\n" +
-                "    codigoLugarOperativoDestino: " + toIndentedString(codigoLugarOperativoDestino) + "\n" +
                 "    descricaoRota: " + toIndentedString(descricaoRota) + "\n" +
                 "    codigoCidadeEntrada: " + toIndentedString(codigoCidadeEntrada) + "\n" +
-                "    codigoCidadeDestino: " + toIndentedString(codigoCidadeDestino) + "\n" +
+                "    codigoAduanaEntrada: " + toIndentedString(codigoAduanaEntrada) + "\n" +
                 "    codigoLugarOperativoEntrada: " + toIndentedString(codigoLugarOperativoEntrada) + "\n" +
+                "    codigoCidadeDestino: " + toIndentedString(codigoCidadeDestino) + "\n" +
+                "    codigoAduanaDestino: " + toIndentedString(codigoAduanaDestino) + "\n" +
+                "    codigoLugarOperativoDestino: " + toIndentedString(codigoLugarOperativoDestino) + "\n" +
+                "    rotasPassagem: " + toIndentedString(rotasPassagem) + "\n" +
                 "}";
         return sb;
     }

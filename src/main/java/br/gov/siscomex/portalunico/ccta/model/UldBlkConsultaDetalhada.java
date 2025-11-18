@@ -13,33 +13,11 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UldBlkConsultaDetalhada", propOrder =
-        {"tipoULD", "tara", "quantidade", "codigoProprietarioULD", "numeroSerieULD"
+        {"codigoProprietarioULD", "numeroSerieULD", "quantidade", "tara", "tipoULD"
         })
 
 @XmlRootElement(name = "UldBlkConsultaDetalhada")
 public class UldBlkConsultaDetalhada {
-
-    @XmlElement(name = "tipoULD")
-    @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
-    /**
-     * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
-     **/
-    private String tipoULD = null;
-
-    @XmlElement(name = "tara")
-    @ApiModelProperty(example = "780.348", value = "Peso da unidade da ULD, vazia<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto")
-    @Valid
-    /**
-     * Peso da unidade da ULD, vazia<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto
-     **/
-    private BigDecimal tara = null;
-
-    @XmlElement(name = "quantidade")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidade = null;
 
     @XmlElement(name = "codigoProprietarioULD")
     @ApiModelProperty(example = "XX", value = "Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA")
@@ -55,73 +33,27 @@ public class UldBlkConsultaDetalhada {
      **/
     private String numeroSerieULD = null;
 
+    @XmlElement(name = "quantidade")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código referente ao tipo da ULD&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
-     *
-     * @return tipoULD
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
      **/
-    @JsonProperty("tipoULD")
-    public String getTipoULD() {
-        return tipoULD;
-    }
+    private Integer quantidade = null;
 
-    public void setTipoULD(String tipoULD) {
-        this.tipoULD = tipoULD;
-    }
-
-    public UldBlkConsultaDetalhada tipoULD(String tipoULD) {
-        this.tipoULD = tipoULD;
-        return this;
-    }
-
+    @XmlElement(name = "tara")
+    @ApiModelProperty(example = "780.348", value = "Peso da unidade da ULD, vazia<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto")
+    @Valid
     /**
-     * Peso da unidade da ULD, vazia&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto
-     *
-     * @return tara
+     * Peso da unidade da ULD, vazia<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto
      **/
-    @JsonProperty("tara")
-    public BigDecimal getTara() {
-        return tara;
-    }
+    private BigDecimal tara = null;
 
-    public void setTara(BigDecimal tara) {
-        this.tara = tara;
-    }
-
-    public UldBlkConsultaDetalhada tara(BigDecimal tara) {
-        this.tara = tara;
-        return this;
-    }
-
+    @XmlElement(name = "tipoULD")
+    @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
     /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return quantidade
+     * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
      **/
-    @JsonProperty("quantidade")
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public UldBlkConsultaDetalhada quantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-        return this;
-    }
+    private String tipoULD = null;
 
     /**
      * Identifica a companhia aérea proprietária da ULD&lt;br/&gt;Tamanho: : 2&lt;br/&gt; Formato: AA
@@ -161,15 +93,83 @@ public class UldBlkConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return quantidade
+     **/
+    @JsonProperty("quantidade")
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public UldBlkConsultaDetalhada quantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+        return this;
+    }
+
+    /**
+     * Peso da unidade da ULD, vazia&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto
+     *
+     * @return tara
+     **/
+    @JsonProperty("tara")
+    public BigDecimal getTara() {
+        return tara;
+    }
+
+    public void setTara(BigDecimal tara) {
+        this.tara = tara;
+    }
+
+    public UldBlkConsultaDetalhada tara(BigDecimal tara) {
+        this.tara = tara;
+        return this;
+    }
+
+    /**
+     * Código referente ao tipo da ULD&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
+     *
+     * @return tipoULD
+     **/
+    @JsonProperty("tipoULD")
+    public String getTipoULD() {
+        return tipoULD;
+    }
+
+    public void setTipoULD(String tipoULD) {
+        this.tipoULD = tipoULD;
+    }
+
+    public UldBlkConsultaDetalhada tipoULD(String tipoULD) {
+        this.tipoULD = tipoULD;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class UldBlkConsultaDetalhada {\n" +
-                "    tipoULD: " + toIndentedString(tipoULD) + "\n" +
-                "    tara: " + toIndentedString(tara) + "\n" +
-                "    quantidade: " + toIndentedString(quantidade) + "\n" +
                 "    codigoProprietarioULD: " + toIndentedString(codigoProprietarioULD) + "\n" +
                 "    numeroSerieULD: " + toIndentedString(numeroSerieULD) + "\n" +
+                "    quantidade: " + toIndentedString(quantidade) + "\n" +
+                "    tara: " + toIndentedString(tara) + "\n" +
+                "    tipoULD: " + toIndentedString(tipoULD) + "\n" +
                 "}";
         return sb;
     }

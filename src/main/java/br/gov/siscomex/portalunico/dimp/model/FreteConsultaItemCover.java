@@ -30,17 +30,6 @@ public class FreteConsultaItemCover {
     private String valorBRL = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor do frete total em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorBRL
@@ -57,6 +46,18 @@ public class FreteConsultaItemCover {
     public FreteConsultaItemCover valorBRL(String valorBRL) {
         this.valorBRL = valorBRL;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

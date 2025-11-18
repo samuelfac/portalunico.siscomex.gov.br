@@ -13,11 +13,18 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OutrosCustosDoRemetenteDeUmaCargaRodoviria", propOrder =
-        {"valor", "moedaCodigoISO"
+        {"moedaCodigoISO", "valor"
         })
 
 @XmlRootElement(name = "OutrosCustosDoRemetenteDeUmaCargaRodoviria")
 public class OutrosCustosDoRemetenteDeUmaCargaRodoviria {
+
+    @XmlElement(name = "moedaCodigoISO")
+    @ApiModelProperty(example = "USD", value = "Código da Moeda utilizada para o valor associado a outros custos de uma carga rodoviária (ISO-4217) <br>Tamanho: 3<br>Formato: 'AAA'")
+    /**
+     * Código da Moeda utilizada para o valor associado a outros custos de uma carga rodoviária (ISO-4217) <br>Tamanho: 3<br>Formato: 'AAA'
+     **/
+    private String moedaCodigoISO = null;
 
     @XmlElement(name = "valor")
     @ApiModelProperty(example = "10.0", value = "Valor associado a outros custos de uma carga rodoviária. <br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -27,12 +34,24 @@ public class OutrosCustosDoRemetenteDeUmaCargaRodoviria {
      **/
     private BigDecimal valor = null;
 
-    @XmlElement(name = "moedaCodigoISO")
-    @ApiModelProperty(example = "USD", value = "Código da Moeda utilizada para o valor associado a outros custos de uma carga rodoviária (ISO-4217) <br>Tamanho: 3<br>Formato: 'AAA'")
     /**
-     * Código da Moeda utilizada para o valor associado a outros custos de uma carga rodoviária (ISO-4217) <br>Tamanho: 3<br>Formato: 'AAA'
+     * Código da Moeda utilizada para o valor associado a outros custos de uma carga rodoviária (ISO-4217) &lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;AAA&#39;
+     *
+     * @return moedaCodigoISO
      **/
-    private String moedaCodigoISO = null;
+    @JsonProperty("moedaCodigoISO")
+    public String getMoedaCodigoISO() {
+        return moedaCodigoISO;
+    }
+
+    public void setMoedaCodigoISO(String moedaCodigoISO) {
+        this.moedaCodigoISO = moedaCodigoISO;
+    }
+
+    public OutrosCustosDoRemetenteDeUmaCargaRodoviria moedaCodigoISO(String moedaCodigoISO) {
+        this.moedaCodigoISO = moedaCodigoISO;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,31 +83,12 @@ public class OutrosCustosDoRemetenteDeUmaCargaRodoviria {
         return this;
     }
 
-    /**
-     * Código da Moeda utilizada para o valor associado a outros custos de uma carga rodoviária (ISO-4217) &lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;AAA&#39;
-     *
-     * @return moedaCodigoISO
-     **/
-    @JsonProperty("moedaCodigoISO")
-    public String getMoedaCodigoISO() {
-        return moedaCodigoISO;
-    }
-
-    public void setMoedaCodigoISO(String moedaCodigoISO) {
-        this.moedaCodigoISO = moedaCodigoISO;
-    }
-
-    public OutrosCustosDoRemetenteDeUmaCargaRodoviria moedaCodigoISO(String moedaCodigoISO) {
-        this.moedaCodigoISO = moedaCodigoISO;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class OutrosCustosDoRemetenteDeUmaCargaRodoviria {\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    moedaCodigoISO: " + toIndentedString(moedaCodigoISO) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
                 "}";
         return sb;
     }

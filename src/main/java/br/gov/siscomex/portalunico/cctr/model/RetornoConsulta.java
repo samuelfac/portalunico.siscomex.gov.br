@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsulta", propOrder =
-        {"indicadorSeCargaRUCMaster", "numeroRUCMasterDaCarga", "documentosDeTransporte", "numeroDUE", "ocorreuDesembaracoOuAutorizacaoEmbarqueAntecipado", "listaCargasSoltasVeiculos", "numeroRUC", "existeImpedimentoEmbarque", "conteineres", "listaGraneis"
+        {"numeroRUC", "numeroDUE", "ocorreuDesembaracoOuAutorizacaoEmbarqueAntecipado", "existeImpedimentoEmbarque", "indicadorSeCargaRUCMaster", "numeroRUCMasterDaCarga", "conteineres", "documentosDeTransporte", "listaCargasSoltasVeiculos", "listaGraneis"
         })
 
 @XmlRootElement(name = "RetornoConsulta")
@@ -24,27 +24,12 @@ import java.util.List;
 @ApiModel(description = "Retorno da Consulta")
 public class RetornoConsulta {
 
-    @XmlElement(name = "indicadorSeCargaRUCMaster")
-    @ApiModelProperty(example = "false", value = "Indicador se carga RUC Master<br>Domínio:  S (Sim), N (Não)")
+    @XmlElement(name = "numeroRUC")
+    @ApiModelProperty(example = "6BR00000000100000000000000000003477", value = "Número RUC<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
     /**
-     * Indicador se carga RUC Master<br>Domínio:  S (Sim), N (Não)
+     * Número RUC<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      **/
-    private Boolean indicadorSeCargaRUCMaster = null;
-
-    @XmlElement(name = "numeroRUCMasterDaCarga")
-    @ApiModelProperty(example = "6BR00000000100000000000000000003475", value = "Número RUC Master da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
-    /**
-     * Número RUC Master da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     **/
-    private String numeroRUCMasterDaCarga = null;
-
-    @XmlElement(name = "documentosDeTransporte")
-    @ApiModelProperty(value = "Número documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15")
-    @Valid
-    /**
-     * Número documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15
-     **/
-    private List<DocumentoTransporteDTO> documentosDeTransporte = null;
+    private String numeroRUC = null;
 
     @XmlElement(name = "numeroDUE")
     @ApiModelProperty(example = "16BR0000044309", value = "Número DU-E<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD<br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Número Sequencial<br>D - DV")
@@ -60,18 +45,6 @@ public class RetornoConsulta {
      **/
     private Boolean ocorreuDesembaracoOuAutorizacaoEmbarqueAntecipado = null;
 
-    @XmlElement(name = "listaCargasSoltasVeiculos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<DadosCargaSoltaVeiculo> listaCargasSoltasVeiculos = null;
-
-    @XmlElement(name = "numeroRUC")
-    @ApiModelProperty(example = "6BR00000000100000000000000000003477", value = "Número RUC<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
-    /**
-     * Número RUC<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     **/
-    private String numeroRUC = null;
-
     @XmlElement(name = "existeImpedimentoEmbarque")
     @ApiModelProperty(example = "false", value = "Existe Impedimento Embarque<br>Domínio:  S (Sim), N (Não)")
     /**
@@ -79,12 +52,39 @@ public class RetornoConsulta {
      **/
     private Boolean existeImpedimentoEmbarque = null;
 
+    @XmlElement(name = "indicadorSeCargaRUCMaster")
+    @ApiModelProperty(example = "false", value = "Indicador se carga RUC Master<br>Domínio:  S (Sim), N (Não)")
+    /**
+     * Indicador se carga RUC Master<br>Domínio:  S (Sim), N (Não)
+     **/
+    private Boolean indicadorSeCargaRUCMaster = null;
+
+    @XmlElement(name = "numeroRUCMasterDaCarga")
+    @ApiModelProperty(example = "6BR00000000100000000000000000003475", value = "Número RUC Master da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
+    /**
+     * Número RUC Master da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+     **/
+    private String numeroRUCMasterDaCarga = null;
+
     @XmlElement(name = "conteineres")
     @ApiModelProperty(example = "[MARK016,MARK017]", value = "Contêiner<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA")
     /**
      * Contêiner<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA
      **/
     private List<String> conteineres = null;
+
+    @XmlElement(name = "documentosDeTransporte")
+    @ApiModelProperty(value = "Número documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15")
+    @Valid
+    /**
+     * Número documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15
+     **/
+    private List<DocumentoTransporteDTO> documentosDeTransporte = null;
+
+    @XmlElement(name = "listaCargasSoltasVeiculos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DadosCargaSoltaVeiculo> listaCargasSoltasVeiculos = null;
 
     @XmlElement(name = "listaGraneis")
     @ApiModelProperty(value = "")
@@ -103,64 +103,21 @@ public class RetornoConsulta {
     }
 
     /**
-     * Indicador se carga RUC Master&lt;br&gt;Domínio:  S (Sim), N (Não)
+     * Número RUC&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      *
-     * @return indicadorSeCargaRUCMaster
+     * @return numeroRUC
      **/
-    @JsonProperty("indicadorSeCargaRUCMaster")
-    public Boolean isisIndicadorSeCargaRUCMaster() {
-        return indicadorSeCargaRUCMaster;
+    @JsonProperty("numeroRUC")
+    public String getNumeroRUC() {
+        return numeroRUC;
     }
 
-    public void setIndicadorSeCargaRUCMaster(Boolean indicadorSeCargaRUCMaster) {
-        this.indicadorSeCargaRUCMaster = indicadorSeCargaRUCMaster;
+    public void setNumeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
     }
 
-    public RetornoConsulta indicadorSeCargaRUCMaster(Boolean indicadorSeCargaRUCMaster) {
-        this.indicadorSeCargaRUCMaster = indicadorSeCargaRUCMaster;
-        return this;
-    }
-
-    /**
-     * Número RUC Master da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     *
-     * @return numeroRUCMasterDaCarga
-     **/
-    @JsonProperty("numeroRUCMasterDaCarga")
-    public String getNumeroRUCMasterDaCarga() {
-        return numeroRUCMasterDaCarga;
-    }
-
-    public void setNumeroRUCMasterDaCarga(String numeroRUCMasterDaCarga) {
-        this.numeroRUCMasterDaCarga = numeroRUCMasterDaCarga;
-    }
-
-    public RetornoConsulta numeroRUCMasterDaCarga(String numeroRUCMasterDaCarga) {
-        this.numeroRUCMasterDaCarga = numeroRUCMasterDaCarga;
-        return this;
-    }
-
-    /**
-     * Número documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15
-     *
-     * @return documentosDeTransporte
-     **/
-    @JsonProperty("documentosDeTransporte")
-    public List<DocumentoTransporteDTO> getDocumentosDeTransporte() {
-        return documentosDeTransporte;
-    }
-
-    public void setDocumentosDeTransporte(List<DocumentoTransporteDTO> documentosDeTransporte) {
-        this.documentosDeTransporte = documentosDeTransporte;
-    }
-
-    public RetornoConsulta documentosDeTransporte(List<DocumentoTransporteDTO> documentosDeTransporte) {
-        this.documentosDeTransporte = documentosDeTransporte;
-        return this;
-    }
-
-    public RetornoConsulta addDocumentosDeTransporteItem(DocumentoTransporteDTO documentosDeTransporteItem) {
-        this.documentosDeTransporte.add(documentosDeTransporteItem);
+    public RetornoConsulta numeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
         return this;
     }
 
@@ -203,49 +160,6 @@ public class RetornoConsulta {
     }
 
     /**
-     * Get listaCargasSoltasVeiculos
-     *
-     * @return listaCargasSoltasVeiculos
-     **/
-    @JsonProperty("listaCargasSoltasVeiculos")
-    public List<DadosCargaSoltaVeiculo> getListaCargasSoltasVeiculos() {
-        return listaCargasSoltasVeiculos;
-    }
-
-    public void setListaCargasSoltasVeiculos(List<DadosCargaSoltaVeiculo> listaCargasSoltasVeiculos) {
-        this.listaCargasSoltasVeiculos = listaCargasSoltasVeiculos;
-    }
-
-    public RetornoConsulta listaCargasSoltasVeiculos(List<DadosCargaSoltaVeiculo> listaCargasSoltasVeiculos) {
-        this.listaCargasSoltasVeiculos = listaCargasSoltasVeiculos;
-        return this;
-    }
-
-    public RetornoConsulta addListaCargasSoltasVeiculosItem(DadosCargaSoltaVeiculo listaCargasSoltasVeiculosItem) {
-        this.listaCargasSoltasVeiculos.add(listaCargasSoltasVeiculosItem);
-        return this;
-    }
-
-    /**
-     * Número RUC&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     *
-     * @return numeroRUC
-     **/
-    @JsonProperty("numeroRUC")
-    public String getNumeroRUC() {
-        return numeroRUC;
-    }
-
-    public void setNumeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-    }
-
-    public RetornoConsulta numeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-        return this;
-    }
-
-    /**
      * Existe Impedimento Embarque&lt;br&gt;Domínio:  S (Sim), N (Não)
      *
      * @return existeImpedimentoEmbarque
@@ -257,6 +171,44 @@ public class RetornoConsulta {
 
     public void setExisteImpedimentoEmbarque(Boolean existeImpedimentoEmbarque) {
         this.existeImpedimentoEmbarque = existeImpedimentoEmbarque;
+    }
+
+    /**
+     * Indicador se carga RUC Master&lt;br&gt;Domínio:  S (Sim), N (Não)
+     *
+     * @return indicadorSeCargaRUCMaster
+     **/
+    @JsonProperty("indicadorSeCargaRUCMaster")
+    public Boolean isisIndicadorSeCargaRUCMaster() {
+        return indicadorSeCargaRUCMaster;
+    }
+
+    public void setIndicadorSeCargaRUCMaster(Boolean indicadorSeCargaRUCMaster) {
+        this.indicadorSeCargaRUCMaster = indicadorSeCargaRUCMaster;
+    }
+
+    public RetornoConsulta indicadorSeCargaRUCMaster(Boolean indicadorSeCargaRUCMaster) {
+        this.indicadorSeCargaRUCMaster = indicadorSeCargaRUCMaster;
+        return this;
+    }
+
+    /**
+     * Número RUC Master da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+     *
+     * @return numeroRUCMasterDaCarga
+     **/
+    @JsonProperty("numeroRUCMasterDaCarga")
+    public String getNumeroRUCMasterDaCarga() {
+        return numeroRUCMasterDaCarga;
+    }
+
+    public void setNumeroRUCMasterDaCarga(String numeroRUCMasterDaCarga) {
+        this.numeroRUCMasterDaCarga = numeroRUCMasterDaCarga;
+    }
+
+    public RetornoConsulta numeroRUCMasterDaCarga(String numeroRUCMasterDaCarga) {
+        this.numeroRUCMasterDaCarga = numeroRUCMasterDaCarga;
+        return this;
     }
 
     public RetornoConsulta existeImpedimentoEmbarque(Boolean existeImpedimentoEmbarque) {
@@ -283,14 +235,56 @@ public class RetornoConsulta {
         return this;
     }
 
-    public RetornoConsulta addConteineresItem(String conteineresItem) {
-        this.conteineres.add(conteineresItem);
+    /**
+     * Número documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15
+     *
+     * @return documentosDeTransporte
+     **/
+    @JsonProperty("documentosDeTransporte")
+    public List<DocumentoTransporteDTO> getDocumentosDeTransporte() {
+        return documentosDeTransporte;
+    }
+
+    public void setDocumentosDeTransporte(List<DocumentoTransporteDTO> documentosDeTransporte) {
+        this.documentosDeTransporte = documentosDeTransporte;
+    }
+
+    public RetornoConsulta documentosDeTransporte(List<DocumentoTransporteDTO> documentosDeTransporte) {
+        this.documentosDeTransporte = documentosDeTransporte;
+        return this;
+    }
+
+    public RetornoConsulta addDocumentosDeTransporteItem(DocumentoTransporteDTO documentosDeTransporteItem) {
+        this.documentosDeTransporte.add(documentosDeTransporteItem);
+        return this;
+    }
+
+    /**
+     * Get listaCargasSoltasVeiculos
+     *
+     * @return listaCargasSoltasVeiculos
+     **/
+    @JsonProperty("listaCargasSoltasVeiculos")
+    public List<DadosCargaSoltaVeiculo> getListaCargasSoltasVeiculos() {
+        return listaCargasSoltasVeiculos;
+    }
+
+    public void setListaCargasSoltasVeiculos(List<DadosCargaSoltaVeiculo> listaCargasSoltasVeiculos) {
+        this.listaCargasSoltasVeiculos = listaCargasSoltasVeiculos;
+    }
+
+    public RetornoConsulta listaCargasSoltasVeiculos(List<DadosCargaSoltaVeiculo> listaCargasSoltasVeiculos) {
+        this.listaCargasSoltasVeiculos = listaCargasSoltasVeiculos;
+        return this;
+    }
+
+    public RetornoConsulta addListaCargasSoltasVeiculosItem(DadosCargaSoltaVeiculo listaCargasSoltasVeiculosItem) {
+        this.listaCargasSoltasVeiculos.add(listaCargasSoltasVeiculosItem);
         return this;
     }
 
     /**
      * Get listaGraneis
-     *
      * @return listaGraneis
      **/
     @JsonProperty("listaGraneis")
@@ -312,19 +306,24 @@ public class RetornoConsulta {
         return this;
     }
 
+    public RetornoConsulta addConteineresItem(String conteineresItem) {
+        this.conteineres.add(conteineresItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RetornoConsulta {\n" +
-                "    indicadorSeCargaRUCMaster: " + toIndentedString(indicadorSeCargaRUCMaster) + "\n" +
-                "    numeroRUCMasterDaCarga: " + toIndentedString(numeroRUCMasterDaCarga) + "\n" +
-                "    documentosDeTransporte: " + toIndentedString(documentosDeTransporte) + "\n" +
+                "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
                 "    numeroDUE: " + toIndentedString(numeroDUE) + "\n" +
                 "    ocorreuDesembaracoOuAutorizacaoEmbarqueAntecipado: " + toIndentedString(ocorreuDesembaracoOuAutorizacaoEmbarqueAntecipado) + "\n" +
-                "    listaCargasSoltasVeiculos: " + toIndentedString(listaCargasSoltasVeiculos) + "\n" +
-                "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
                 "    existeImpedimentoEmbarque: " + toIndentedString(existeImpedimentoEmbarque) + "\n" +
+                "    indicadorSeCargaRUCMaster: " + toIndentedString(indicadorSeCargaRUCMaster) + "\n" +
+                "    numeroRUCMasterDaCarga: " + toIndentedString(numeroRUCMasterDaCarga) + "\n" +
                 "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "    documentosDeTransporte: " + toIndentedString(documentosDeTransporte) + "\n" +
+                "    listaCargasSoltasVeiculos: " + toIndentedString(listaCargasSoltasVeiculos) + "\n" +
                 "    listaGraneis: " + toIndentedString(listaGraneis) + "\n" +
                 "}";
         return sb;

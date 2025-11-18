@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TGranel", propOrder =
-        {"unidademedida", "quantidade", "tipoGranel"
+        {"tipoGranel", "unidademedida", "quantidade"
         })
 
 @XmlRootElement(name = "TGranel")
@@ -27,20 +27,6 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados informados para carga do tipo granel")
 public class TGranel {
 
-
-    @XmlElement(name = "unidademedida", required = true)
-    @ApiModelProperty(example = "kg", required = true, value = "Unidade de medida estatística<br>Tamanho: 4<br>Formato: AAAA<br>Domínio: kg = quilo e m3 = metro cúbico.")
-    /**
-     * Unidade de medida estatística<br>Tamanho: 4<br>Formato: AAAA<br>Domínio: kg = quilo e m3 = metro cúbico.
-     **/
-    private UnidademedidaEnum unidademedida = null;
-    @XmlElement(name = "quantidade", required = true)
-    @ApiModelProperty(example = "123.456", required = true, value = "Peso bruto<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
-    @Valid
-    /**
-     * Peso bruto<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
-     **/
-    private BigDecimal quantidade = null;
     @XmlElement(name = "tipoGranel", required = true)
     @ApiModelProperty(example = "19", required = true, value = "Tipo de granel conforme a tabela Tipo de Granel<br>Tamanho: 2<br>Formato: NN")
     /**
@@ -57,6 +43,41 @@ public class TGranel {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "unidademedida", required = true)
+    @ApiModelProperty(example = "kg", required = true, value = "Unidade de medida estatística<br>Tamanho: 4<br>Formato: AAAA<br>Domínio: kg = quilo e m3 = metro cúbico.")
+    /**
+     * Unidade de medida estatística<br>Tamanho: 4<br>Formato: AAAA<br>Domínio: kg = quilo e m3 = metro cúbico.
+     **/
+    private UnidademedidaEnum unidademedida = null;
+
+    @XmlElement(name = "quantidade", required = true)
+    @ApiModelProperty(example = "123.456", required = true, value = "Peso bruto<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
+    @Valid
+    /**
+     * Peso bruto<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
+     **/
+    private BigDecimal quantidade = null;
+
+    /**
+     * Tipo de granel conforme a tabela Tipo de Granel&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
+     *
+     * @return tipoGranel
+     **/
+    @JsonProperty("tipoGranel")
+    @NotNull
+    public Integer getTipoGranel() {
+        return tipoGranel;
+    }
+
+    public void setTipoGranel(Integer tipoGranel) {
+        this.tipoGranel = tipoGranel;
+    }
+
+    public TGranel tipoGranel(Integer tipoGranel) {
+        this.tipoGranel = tipoGranel;
+        return this;
     }
 
     /**
@@ -102,34 +123,14 @@ public class TGranel {
         return this;
     }
 
-    /**
-     * Tipo de granel conforme a tabela Tipo de Granel&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
-     *
-     * @return tipoGranel
-     **/
-    @JsonProperty("tipoGranel")
-    @NotNull
-    public Integer getTipoGranel() {
-        return tipoGranel;
-    }
-
-    public void setTipoGranel(Integer tipoGranel) {
-        this.tipoGranel = tipoGranel;
-    }
-
-    public TGranel tipoGranel(Integer tipoGranel) {
-        this.tipoGranel = tipoGranel;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class TGranel {\n" +
+                "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "    unidademedida: " + toIndentedString(unidademedida) + "\n" +
                 "    quantidade: " + toIndentedString(quantidade) + "\n" +
-                "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "}";
         return sb;
     }

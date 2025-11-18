@@ -13,27 +13,22 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemDaNotaFiscalRemoteDTO", propOrder =
-        {"quantidadeComercial", "valorTotalCalculado", "codigoDoProduto", "numeroDoItem", "quantidadeEstatistica", "ncm", "unidadeComercial", "cfop", "notaFiscal", "apresentadaParaDespacho", "quantidadeConsumida", "valorTotalBruto"
+        {"apresentadaParaDespacho", "cfop", "codigoDoProduto", "ncm", "notaFiscal", "numeroDoItem", "quantidadeComercial", "quantidadeConsumida", "quantidadeEstatistica", "unidadeComercial", "valorTotalBruto", "valorTotalCalculado"
         })
 
 @XmlRootElement(name = "ItemDaNotaFiscalRemoteDTO")
 public class ItemDaNotaFiscalRemoteDTO {
 
-    @XmlElement(name = "quantidadeComercial")
-    @ApiModelProperty(value = "Quantidade comercializada<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Quantidade comercializada<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.
-     **/
-    private BigDecimal quantidadeComercial = null;
+    @XmlElement(name = "apresentadaParaDespacho")
+    @ApiModelProperty(value = "")
+    private Boolean apresentadaParaDespacho = null;
 
-    @XmlElement(name = "valorTotalCalculado")
-    @ApiModelProperty(value = "Valor total calculado<br />Tamanho: 13,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
+    @XmlElement(name = "cfop")
+    @ApiModelProperty(value = "CFOP<br />Formato: Inteiro, com até 3 digitos")
     /**
-     * Valor total calculado<br />Tamanho: 13,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     * CFOP<br />Formato: Inteiro, com até 3 digitos
      **/
-    private BigDecimal valorTotalCalculado = null;
+    private Integer cfop = null;
 
     @XmlElement(name = "codigoDoProduto")
     @ApiModelProperty(value = "Código do produto<br />Tamanho mínimo: 1<br />Tamanho máximo: 60")
@@ -41,6 +36,16 @@ public class ItemDaNotaFiscalRemoteDTO {
      * Código do produto<br />Tamanho mínimo: 1<br />Tamanho máximo: 60
      **/
     private String codigoDoProduto = null;
+
+    @XmlElement(name = "ncm")
+    @ApiModelProperty(value = "")
+    @Valid
+    private NcmDto ncm = null;
+
+    @XmlElement(name = "notaFiscal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private NotaFiscalRemoteDTO notaFiscal = null;
 
     @XmlElement(name = "numeroDoItem")
     @ApiModelProperty(value = "Número<br />Tamanho: 3,0<br />Formato: Decimal, com 0 casas decimais.")
@@ -50,41 +55,13 @@ public class ItemDaNotaFiscalRemoteDTO {
      **/
     private BigDecimal numeroDoItem = null;
 
-    @XmlElement(name = "quantidadeEstatistica")
-    @ApiModelProperty(value = "Quantidade estatística<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.")
+    @XmlElement(name = "quantidadeComercial")
+    @ApiModelProperty(value = "Quantidade comercializada<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.")
     @Valid
     /**
-     * Quantidade estatística<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.
+     * Quantidade comercializada<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.
      **/
-    private BigDecimal quantidadeEstatistica = null;
-
-    @XmlElement(name = "ncm")
-    @ApiModelProperty(value = "")
-    @Valid
-    private NcmDto ncm = null;
-
-    @XmlElement(name = "unidadeComercial")
-    @ApiModelProperty(value = "Unidade comercial<br />Tamanho mínimo: 1<br />Tamanho máximo: 6")
-    /**
-     * Unidade comercial<br />Tamanho mínimo: 1<br />Tamanho máximo: 6
-     **/
-    private String unidadeComercial = null;
-
-    @XmlElement(name = "cfop")
-    @ApiModelProperty(value = "CFOP<br />Formato: Inteiro, com até 3 digitos")
-    /**
-     * CFOP<br />Formato: Inteiro, com até 3 digitos
-     **/
-    private Integer cfop = null;
-
-    @XmlElement(name = "notaFiscal")
-    @ApiModelProperty(value = "")
-    @Valid
-    private NotaFiscalRemoteDTO notaFiscal = null;
-
-    @XmlElement(name = "apresentadaParaDespacho")
-    @ApiModelProperty(value = "")
-    private Boolean apresentadaParaDespacho = null;
+    private BigDecimal quantidadeComercial = null;
 
     @XmlElement(name = "quantidadeConsumida")
     @ApiModelProperty(value = "Quantidade consumida<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
@@ -94,6 +71,21 @@ public class ItemDaNotaFiscalRemoteDTO {
      **/
     private BigDecimal quantidadeConsumida = null;
 
+    @XmlElement(name = "quantidadeEstatistica")
+    @ApiModelProperty(value = "Quantidade estatística<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Quantidade estatística<br />Tamanho: 11,4<br />Formato: Decimal, com até 4 casas decimais separadas por ponto.
+     **/
+    private BigDecimal quantidadeEstatistica = null;
+
+    @XmlElement(name = "unidadeComercial")
+    @ApiModelProperty(value = "Unidade comercial<br />Tamanho mínimo: 1<br />Tamanho máximo: 6")
+    /**
+     * Unidade comercial<br />Tamanho mínimo: 1<br />Tamanho máximo: 6
+     **/
+    private String unidadeComercial = null;
+
     @XmlElement(name = "valorTotalBruto")
     @ApiModelProperty(value = "Valor total bruto<br />Tamanho: 13,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -101,6 +93,14 @@ public class ItemDaNotaFiscalRemoteDTO {
      * Valor total bruto<br />Tamanho: 13,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorTotalBruto = null;
+
+    @XmlElement(name = "valorTotalCalculado")
+    @ApiModelProperty(value = "Valor total calculado<br />Tamanho: 13,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor total calculado<br />Tamanho: 13,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTotalCalculado = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -114,41 +114,36 @@ public class ItemDaNotaFiscalRemoteDTO {
     }
 
     /**
-     * Quantidade comercializada&lt;br /&gt;Tamanho: 11,4&lt;br /&gt;Formato: Decimal, com até 4 casas decimais separadas por ponto.
+     * Get apresentadaParaDespacho
      *
-     * @return quantidadeComercial
+     * @return apresentadaParaDespacho
      **/
-    @JsonProperty("quantidadeComercial")
-    public BigDecimal getQuantidadeComercial() {
-        return quantidadeComercial;
+    @JsonProperty("apresentadaParaDespacho")
+    public Boolean isisApresentadaParaDespacho() {
+        return apresentadaParaDespacho;
     }
 
-    public void setQuantidadeComercial(BigDecimal quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
+    public void setApresentadaParaDespacho(Boolean apresentadaParaDespacho) {
+        this.apresentadaParaDespacho = apresentadaParaDespacho;
     }
 
-    public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
+    public ItemDaNotaFiscalRemoteDTO apresentadaParaDespacho(Boolean apresentadaParaDespacho) {
+        this.apresentadaParaDespacho = apresentadaParaDespacho;
         return this;
     }
 
     /**
-     * Valor total calculado&lt;br /&gt;Tamanho: 13,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     * CFOP&lt;br /&gt;Formato: Inteiro, com até 3 digitos
      *
-     * @return valorTotalCalculado
+     * @return cfop
      **/
-    @JsonProperty("valorTotalCalculado")
-    public BigDecimal getValorTotalCalculado() {
-        return valorTotalCalculado;
+    @JsonProperty("cfop")
+    public Integer getCfop() {
+        return cfop;
     }
 
-    public void setValorTotalCalculado(BigDecimal valorTotalCalculado) {
-        this.valorTotalCalculado = valorTotalCalculado;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO valorTotalCalculado(BigDecimal valorTotalCalculado) {
-        this.valorTotalCalculado = valorTotalCalculado;
-        return this;
+    public void setCfop(Integer cfop) {
+        this.cfop = cfop;
     }
 
     /**
@@ -167,44 +162,6 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     public ItemDaNotaFiscalRemoteDTO codigoDoProduto(String codigoDoProduto) {
         this.codigoDoProduto = codigoDoProduto;
-        return this;
-    }
-
-    /**
-     * Número&lt;br /&gt;Tamanho: 3,0&lt;br /&gt;Formato: Decimal, com 0 casas decimais.
-     *
-     * @return numeroDoItem
-     **/
-    @JsonProperty("numeroDoItem")
-    public BigDecimal getNumeroDoItem() {
-        return numeroDoItem;
-    }
-
-    public void setNumeroDoItem(BigDecimal numeroDoItem) {
-        this.numeroDoItem = numeroDoItem;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO numeroDoItem(BigDecimal numeroDoItem) {
-        this.numeroDoItem = numeroDoItem;
-        return this;
-    }
-
-    /**
-     * Quantidade estatística&lt;br /&gt;Tamanho: 11,4&lt;br /&gt;Formato: Decimal, com até 4 casas decimais separadas por ponto.
-     *
-     * @return quantidadeEstatistica
-     **/
-    @JsonProperty("quantidadeEstatistica")
-    public BigDecimal getQuantidadeEstatistica() {
-        return quantidadeEstatistica;
-    }
-
-    public void setQuantidadeEstatistica(BigDecimal quantidadeEstatistica) {
-        this.quantidadeEstatistica = quantidadeEstatistica;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO quantidadeEstatistica(BigDecimal quantidadeEstatistica) {
-        this.quantidadeEstatistica = quantidadeEstatistica;
         return this;
     }
 
@@ -228,44 +185,6 @@ public class ItemDaNotaFiscalRemoteDTO {
     }
 
     /**
-     * Unidade comercial&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 6
-     *
-     * @return unidadeComercial
-     **/
-    @JsonProperty("unidadeComercial")
-    public String getUnidadeComercial() {
-        return unidadeComercial;
-    }
-
-    public void setUnidadeComercial(String unidadeComercial) {
-        this.unidadeComercial = unidadeComercial;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO unidadeComercial(String unidadeComercial) {
-        this.unidadeComercial = unidadeComercial;
-        return this;
-    }
-
-    /**
-     * CFOP&lt;br /&gt;Formato: Inteiro, com até 3 digitos
-     *
-     * @return cfop
-     **/
-    @JsonProperty("cfop")
-    public Integer getCfop() {
-        return cfop;
-    }
-
-    public void setCfop(Integer cfop) {
-        this.cfop = cfop;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO cfop(Integer cfop) {
-        this.cfop = cfop;
-        return this;
-    }
-
-    /**
      * Get notaFiscal
      *
      * @return notaFiscal
@@ -284,23 +203,42 @@ public class ItemDaNotaFiscalRemoteDTO {
         return this;
     }
 
-    /**
-     * Get apresentadaParaDespacho
-     *
-     * @return apresentadaParaDespacho
-     **/
-    @JsonProperty("apresentadaParaDespacho")
-    public Boolean isisApresentadaParaDespacho() {
-        return apresentadaParaDespacho;
-    }
-
-    public void setApresentadaParaDespacho(Boolean apresentadaParaDespacho) {
-        this.apresentadaParaDespacho = apresentadaParaDespacho;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO apresentadaParaDespacho(Boolean apresentadaParaDespacho) {
-        this.apresentadaParaDespacho = apresentadaParaDespacho;
+    public ItemDaNotaFiscalRemoteDTO cfop(Integer cfop) {
+        this.cfop = cfop;
         return this;
+    }
+
+    /**
+     * Número&lt;br /&gt;Tamanho: 3,0&lt;br /&gt;Formato: Decimal, com 0 casas decimais.
+     *
+     * @return numeroDoItem
+     **/
+    @JsonProperty("numeroDoItem")
+    public BigDecimal getNumeroDoItem() {
+        return numeroDoItem;
+    }
+
+    public void setNumeroDoItem(BigDecimal numeroDoItem) {
+        this.numeroDoItem = numeroDoItem;
+    }
+
+    public ItemDaNotaFiscalRemoteDTO numeroDoItem(BigDecimal numeroDoItem) {
+        this.numeroDoItem = numeroDoItem;
+        return this;
+    }
+
+    /**
+     * Quantidade comercializada&lt;br /&gt;Tamanho: 11,4&lt;br /&gt;Formato: Decimal, com até 4 casas decimais separadas por ponto.
+     *
+     * @return quantidadeComercial
+     **/
+    @JsonProperty("quantidadeComercial")
+    public BigDecimal getQuantidadeComercial() {
+        return quantidadeComercial;
+    }
+
+    public void setQuantidadeComercial(BigDecimal quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
     }
 
     /**
@@ -322,9 +260,46 @@ public class ItemDaNotaFiscalRemoteDTO {
         return this;
     }
 
+    public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
+        return this;
+    }
+
+    /**
+     * Quantidade estatística&lt;br /&gt;Tamanho: 11,4&lt;br /&gt;Formato: Decimal, com até 4 casas decimais separadas por ponto.
+     *
+     * @return quantidadeEstatistica
+     **/
+    @JsonProperty("quantidadeEstatistica")
+    public BigDecimal getQuantidadeEstatistica() {
+        return quantidadeEstatistica;
+    }
+
+    public void setQuantidadeEstatistica(BigDecimal quantidadeEstatistica) {
+        this.quantidadeEstatistica = quantidadeEstatistica;
+    }
+
+    public ItemDaNotaFiscalRemoteDTO quantidadeEstatistica(BigDecimal quantidadeEstatistica) {
+        this.quantidadeEstatistica = quantidadeEstatistica;
+        return this;
+    }
+
+    /**
+     * Unidade comercial&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 6
+     *
+     * @return unidadeComercial
+     **/
+    @JsonProperty("unidadeComercial")
+    public String getUnidadeComercial() {
+        return unidadeComercial;
+    }
+
+    public void setUnidadeComercial(String unidadeComercial) {
+        this.unidadeComercial = unidadeComercial;
+    }
+
     /**
      * Valor total bruto&lt;br /&gt;Tamanho: 13,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorTotalBruto
      **/
     @JsonProperty("valorTotalBruto")
@@ -341,22 +316,46 @@ public class ItemDaNotaFiscalRemoteDTO {
         return this;
     }
 
+    public ItemDaNotaFiscalRemoteDTO unidadeComercial(String unidadeComercial) {
+        this.unidadeComercial = unidadeComercial;
+        return this;
+    }
+
+    /**
+     * Valor total calculado&lt;br /&gt;Tamanho: 13,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorTotalCalculado
+     **/
+    @JsonProperty("valorTotalCalculado")
+    public BigDecimal getValorTotalCalculado() {
+        return valorTotalCalculado;
+    }
+
+    public void setValorTotalCalculado(BigDecimal valorTotalCalculado) {
+        this.valorTotalCalculado = valorTotalCalculado;
+    }
+
+    public ItemDaNotaFiscalRemoteDTO valorTotalCalculado(BigDecimal valorTotalCalculado) {
+        this.valorTotalCalculado = valorTotalCalculado;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ItemDaNotaFiscalRemoteDTO {\n" +
-                "    quantidadeComercial: " + toIndentedString(quantidadeComercial) + "\n" +
-                "    valorTotalCalculado: " + toIndentedString(valorTotalCalculado) + "\n" +
-                "    codigoDoProduto: " + toIndentedString(codigoDoProduto) + "\n" +
-                "    numeroDoItem: " + toIndentedString(numeroDoItem) + "\n" +
-                "    quantidadeEstatistica: " + toIndentedString(quantidadeEstatistica) + "\n" +
-                "    ncm: " + toIndentedString(ncm) + "\n" +
-                "    unidadeComercial: " + toIndentedString(unidadeComercial) + "\n" +
-                "    cfop: " + toIndentedString(cfop) + "\n" +
-                "    notaFiscal: " + toIndentedString(notaFiscal) + "\n" +
                 "    apresentadaParaDespacho: " + toIndentedString(apresentadaParaDespacho) + "\n" +
+                "    cfop: " + toIndentedString(cfop) + "\n" +
+                "    codigoDoProduto: " + toIndentedString(codigoDoProduto) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    notaFiscal: " + toIndentedString(notaFiscal) + "\n" +
+                "    numeroDoItem: " + toIndentedString(numeroDoItem) + "\n" +
+                "    quantidadeComercial: " + toIndentedString(quantidadeComercial) + "\n" +
                 "    quantidadeConsumida: " + toIndentedString(quantidadeConsumida) + "\n" +
+                "    quantidadeEstatistica: " + toIndentedString(quantidadeEstatistica) + "\n" +
+                "    unidadeComercial: " + toIndentedString(unidadeComercial) + "\n" +
                 "    valorTotalBruto: " + toIndentedString(valorTotalBruto) + "\n" +
+                "    valorTotalCalculado: " + toIndentedString(valorTotalCalculado) + "\n" +
                 "}";
         return sb;
     }

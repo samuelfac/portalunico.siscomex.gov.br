@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Reboque", propOrder =
-        {"lacres", "tara", "placa"
+        {"placa", "tara", "lacres"
         })
 
 @XmlRootElement(name = "Reboque")
@@ -25,10 +25,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados do reboque")
 public class Reboque {
 
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Lacres lacres = null;
+    @XmlElement(name = "placa", required = true)
+    @ApiModelProperty(example = "7eZJQWu", required = true, value = "Placa do cavalo")
+    /**
+     * Placa do cavalo
+     **/
+    private String placa = null;
 
     @XmlElement(name = "tara", required = true)
     @ApiModelProperty(example = "500.0", required = true, value = "Tara do cavalo em kg")
@@ -38,12 +40,10 @@ public class Reboque {
      **/
     private BigDecimal tara = null;
 
-    @XmlElement(name = "placa", required = true)
-    @ApiModelProperty(example = "7eZJQWu", required = true, value = "Placa do cavalo")
-    /**
-     * Placa do cavalo
-     **/
-    private String placa = null;
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Lacres lacres = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,22 +57,18 @@ public class Reboque {
     }
 
     /**
-     * Get lacres
+     * Placa do cavalo
      *
-     * @return lacres
+     * @return placa
      **/
-    @JsonProperty("lacres")
-    public Lacres getLacres() {
-        return lacres;
+    @JsonProperty("placa")
+    @NotNull
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setLacres(Lacres lacres) {
-        this.lacres = lacres;
-    }
-
-    public Reboque lacres(Lacres lacres) {
-        this.lacres = lacres;
-        return this;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
     /**
@@ -95,23 +91,27 @@ public class Reboque {
         return this;
     }
 
-    /**
-     * Placa do cavalo
-     *
-     * @return placa
-     **/
-    @JsonProperty("placa")
-    @NotNull
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
     public Reboque placa(String placa) {
         this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Get lacres
+     *
+     * @return lacres
+     **/
+    @JsonProperty("lacres")
+    public Lacres getLacres() {
+        return lacres;
+    }
+
+    public void setLacres(Lacres lacres) {
+        this.lacres = lacres;
+    }
+
+    public Reboque lacres(Lacres lacres) {
+        this.lacres = lacres;
         return this;
     }
 
@@ -119,9 +119,9 @@ public class Reboque {
     public String toString() {
 
         String sb = "class Reboque {\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
-                "    tara: " + toIndentedString(tara) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    tara: " + toIndentedString(tara) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "}";
         return sb;
     }

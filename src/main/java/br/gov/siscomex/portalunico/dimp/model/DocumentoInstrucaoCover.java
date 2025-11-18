@@ -37,17 +37,6 @@ public class DocumentoInstrucaoCover {
     private List<PalavraChaveDocumentoInstrucaoCover> palavrasChave = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tipo
      *
      * @return tipo
@@ -90,6 +79,18 @@ public class DocumentoInstrucaoCover {
     public DocumentoInstrucaoCover addPalavrasChaveItem(PalavraChaveDocumentoInstrucaoCover palavrasChaveItem) {
         this.palavrasChave.add(palavrasChaveItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

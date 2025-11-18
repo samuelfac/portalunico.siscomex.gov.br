@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VeiculoAereo", propOrder =
-        {"codigoTipoModal", "numeroVoo", "prefixoAeronave", "dataPartidaProcedencia"
+        {"codigoTipoModal", "prefixoAeronave", "numeroVoo", "dataPartidaProcedencia"
         })
 
 @XmlRootElement(name = "VeiculoAereo")
@@ -30,13 +30,6 @@ public class VeiculoAereo {
      **/
     private String codigoTipoModal = null;
 
-    @XmlElement(name = "numeroVoo", required = true)
-    @ApiModelProperty(example = "70544", required = true, value = "Número do vôo<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-    /**
-     * Número do vôo<br>Tamanho: 9<br>Formato: AAAAAAAAA
-     **/
-    private String numeroVoo = null;
-
     @XmlElement(name = "prefixoAeronave", required = true)
     @ApiModelProperty(example = "LMF1203", required = true, value = "Prefixo aeronave<br>Tamanho: 15<br>Formato: AAAAAAAAAAAAAAA")
     /**
@@ -44,23 +37,19 @@ public class VeiculoAereo {
      **/
     private String prefixoAeronave = null;
 
+    @XmlElement(name = "numeroVoo", required = true)
+    @ApiModelProperty(example = "70544", required = true, value = "Número do vôo<br>Tamanho: 9<br>Formato: AAAAAAAAA")
+    /**
+     * Número do vôo<br>Tamanho: 9<br>Formato: AAAAAAAAA
+     **/
+    private String numeroVoo = null;
+
     @XmlElement(name = "dataPartidaProcedencia", required = true)
     @ApiModelProperty(example = "2016-12-18", required = true, value = "Data de partida da procedencia<br>Formato: AAAA-MM-DD")
     /**
      * Data de partida da procedencia<br>Formato: AAAA-MM-DD
      **/
     private String dataPartidaProcedencia = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Codigo do tipo de modal&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
@@ -79,26 +68,6 @@ public class VeiculoAereo {
 
     public VeiculoAereo codigoTipoModal(String codigoTipoModal) {
         this.codigoTipoModal = codigoTipoModal;
-        return this;
-    }
-
-    /**
-     * Número do vôo&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
-     *
-     * @return numeroVoo
-     **/
-    @JsonProperty("numeroVoo")
-    @NotNull
-    public String getNumeroVoo() {
-        return numeroVoo;
-    }
-
-    public void setNumeroVoo(String numeroVoo) {
-        this.numeroVoo = numeroVoo;
-    }
-
-    public VeiculoAereo numeroVoo(String numeroVoo) {
-        this.numeroVoo = numeroVoo;
         return this;
     }
 
@@ -123,6 +92,32 @@ public class VeiculoAereo {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do vôo&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
+     *
+     * @return numeroVoo
+     **/
+    @JsonProperty("numeroVoo")
+    @NotNull
+    public String getNumeroVoo() {
+        return numeroVoo;
+    }
+
+    public void setNumeroVoo(String numeroVoo) {
+        this.numeroVoo = numeroVoo;
+    }
+
+    /**
      * Data de partida da procedencia&lt;br&gt;Formato: AAAA-MM-DD
      *
      * @return dataPartidaProcedencia
@@ -142,13 +137,18 @@ public class VeiculoAereo {
         return this;
     }
 
+    public VeiculoAereo numeroVoo(String numeroVoo) {
+        this.numeroVoo = numeroVoo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class VeiculoAereo {\n" +
                 "    codigoTipoModal: " + toIndentedString(codigoTipoModal) + "\n" +
-                "    numeroVoo: " + toIndentedString(numeroVoo) + "\n" +
                 "    prefixoAeronave: " + toIndentedString(prefixoAeronave) + "\n" +
+                "    numeroVoo: " + toIndentedString(numeroVoo) + "\n" +
                 "    dataPartidaProcedencia: " + toIndentedString(dataPartidaProcedencia) + "\n" +
                 "}";
         return sb;

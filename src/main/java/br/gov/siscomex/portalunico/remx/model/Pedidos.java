@@ -32,17 +32,6 @@ public class Pedidos {
     private String numeroPedidoRevisao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do registro de devolução gerado pelo sistema.
      *
      * @return numeroDevolucao
@@ -78,6 +67,18 @@ public class Pedidos {
     public Pedidos numeroPedidoRevisao(String numeroPedidoRevisao) {
         this.numeroPedidoRevisao = numeroPedidoRevisao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -14,25 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDeConsultaDeRemessasPelosDepositrios", propOrder =
-        {"situacao", "numeroProtocolo", "dataHoraProcessamento", "dataHorarioEnvio", "erros", "remessas"
+        {"dataHoraProcessamento", "dataHorarioEnvio", "erros", "numeroProtocolo", "remessas", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDeConsultaDeRemessasPelosDepositrios")
 public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
-    /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
-     **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "numeroProtocolo")
-    @ApiModelProperty(value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -56,6 +42,13 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
      **/
     private List<ErroNoProcessamento> erros = null;
 
+    @XmlElement(name = "numeroProtocolo")
+    @ApiModelProperty(value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     **/
+    private String numeroProtocolo = null;
+
     @XmlElement(name = "remessas")
     @ApiModelProperty(value = "Lista de remessas.")
     @Valid
@@ -64,54 +57,12 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
      **/
     private List<DetalheDoProcessamentoDaRemessa> remessas = null;
 
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
-     * @return situacao
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
      **/
-    @JsonProperty("situacao")
-    public Integer getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDeConsultaDeRemessasPelosDepositrios situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDeConsultaDeRemessasPelosDepositrios numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
+    private Integer situacao = null;
 
     /**
      * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
@@ -176,6 +127,31 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    /**
      * Lista de remessas.
      *
      * @return remessas
@@ -199,16 +175,40 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
         return this;
     }
 
+    public ProcessamentoDeConsultaDeRemessasPelosDepositrios numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDeConsultaDeRemessasPelosDepositrios situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProcessamentoDeConsultaDeRemessasPelosDepositrios {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
                 "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
                 "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
                 "    remessas: " + toIndentedString(remessas) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

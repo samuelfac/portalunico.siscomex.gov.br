@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ImportadorCover", propOrder =
-        {"ni", "tipoImportador"
+        {"tipoImportador", "ni"
         })
 
 @XmlRootElement(name = "ImportadorCover")
@@ -25,12 +25,14 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Identificação do importador da declaração única de importação.")
 public class ImportadorCover {
 
+
     @XmlElement(name = "ni", required = true)
     @ApiModelProperty(example = "00055555000130", required = true, value = "<br>Número do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
      * <br>Número do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
      **/
     private String ni = null;
+
     @XmlElement(name = "tipoImportador", required = true)
     @ApiModelProperty(example = "CNPJ", required = true, value = "Descreve se o Importador é do tipo CPF ou CNPJ")
     /**
@@ -47,26 +49,6 @@ public class ImportadorCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * &lt;br&gt;Número do Importador: &lt;br&gt;Caso seja CNPJ: &lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;AAAAAAAAAAAANN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return ni
-     **/
-    @JsonProperty("ni")
-    @NotNull
-    public String getNi() {
-        return ni;
-    }
-
-    public void setNi(String ni) {
-        this.ni = ni;
-    }
-
-    public ImportadorCover ni(String ni) {
-        this.ni = ni;
-        return this;
     }
 
     /**
@@ -92,13 +74,33 @@ public class ImportadorCover {
         return this;
     }
 
+    /**
+     * &lt;br&gt;Número do Importador: &lt;br&gt;Caso seja CNPJ: &lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;AAAAAAAAAAAANN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return ni
+     **/
+    @JsonProperty("ni")
+    @NotNull
+    public String getNi() {
+        return ni;
+    }
+
+    public void setNi(String ni) {
+        this.ni = ni;
+    }
+
+    public ImportadorCover ni(String ni) {
+        this.ni = ni;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class ImportadorCover {\n" +
-                "    ni: " + toIndentedString(ni) + "\n" +
                 "    tipoImportador: " + toIndentedString(tipoImportador) + "\n" +
+                "    ni: " + toIndentedString(ni) + "\n" +
                 "}";
         return sb;
     }

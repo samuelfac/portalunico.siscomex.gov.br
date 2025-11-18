@@ -30,17 +30,6 @@ public class DossieCover {
     private String numero = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Números de dossiê vinculados à Duimp.&lt;br&gt;Tamanho: 20
      *
      * @return numero
@@ -57,6 +46,18 @@ public class DossieCover {
     public DossieCover numero(String numero) {
         this.numero = numero;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

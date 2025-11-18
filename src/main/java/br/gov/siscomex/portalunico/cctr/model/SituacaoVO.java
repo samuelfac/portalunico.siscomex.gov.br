@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SituacaoVO", propOrder =
-        {"dataFim", "nome", "dataInicio"
+        {"nome", "dataInicio", "dataFim"
         })
 
 @XmlRootElement(name = "SituacaoVO")
@@ -22,13 +22,6 @@ import java.time.OffsetDateTime;
  **/
 @ApiModel(description = "Situação (status) de um protocolo")
 public class SituacaoVO {
-
-    @XmlElement(name = "dataFim")
-    @ApiModelProperty(example = "2024-04-15T12:46:55.232-03:00", value = "Data de conclusão da situação")
-    /**
-     * Data de conclusão da situação
-     **/
-    private OffsetDateTime dataFim = null;
 
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "EM PROCESSAMENTO", value = "Nome da situação do protocolo")
@@ -44,35 +37,12 @@ public class SituacaoVO {
      **/
     private OffsetDateTime dataInicio = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "dataFim")
+    @ApiModelProperty(example = "2024-04-15T12:46:55.232-03:00", value = "Data de conclusão da situação")
     /**
      * Data de conclusão da situação
-     *
-     * @return dataFim
      **/
-    @JsonProperty("dataFim")
-    public OffsetDateTime getDataFim() {
-        return dataFim;
-    }
-
-    public void setDataFim(OffsetDateTime dataFim) {
-        this.dataFim = dataFim;
-    }
-
-    public SituacaoVO dataFim(OffsetDateTime dataFim) {
-        this.dataFim = dataFim;
-        return this;
-    }
+    private OffsetDateTime dataFim = null;
 
     /**
      * Nome da situação do protocolo
@@ -112,13 +82,43 @@ public class SituacaoVO {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data de conclusão da situação
+     *
+     * @return dataFim
+     **/
+    @JsonProperty("dataFim")
+    public OffsetDateTime getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(OffsetDateTime dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public SituacaoVO dataFim(OffsetDateTime dataFim) {
+        this.dataFim = dataFim;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SituacaoVO {\n" +
-                "    dataFim: " + toIndentedString(dataFim) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    dataInicio: " + toIndentedString(dataInicio) + "\n" +
+                "    dataFim: " + toIndentedString(dataFim) + "\n" +
                 "}";
         return sb;
     }

@@ -13,18 +13,25 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ChegadaConsultaDetalhada", propOrder =
-        {"dataHoraPartidaPrevista", "dataHoraChegadaPrevista", "prefixoAeronaveChegadaEfetiva", "recintoAduaneiroChegada", "termoEntrada", "uldBlks", "codigoAeroportoChegada", "dataHoraChegadaEfetiva"
+        {"codigoAeroportoChegada", "dataHoraChegadaEfetiva", "dataHoraChegadaPrevista", "dataHoraPartidaPrevista", "prefixoAeronaveChegadaEfetiva", "recintoAduaneiroChegada", "termoEntrada", "uldBlks"
         })
 
 @XmlRootElement(name = "ChegadaConsultaDetalhada")
 public class ChegadaConsultaDetalhada {
 
-    @XmlElement(name = "dataHoraPartidaPrevista")
-    @ApiModelProperty(example = "2020-08-07T15:45:38-03:00", value = "Data/Hora de partida prevista.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    @XmlElement(name = "codigoAeroportoChegada")
+    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
     /**
-     * Data/Hora de partida prevista.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     * Código IATA do aeroporto<br/>Tamanho: 3
      **/
-    private String dataHoraPartidaPrevista = null;
+    private String codigoAeroportoChegada = null;
+
+    @XmlElement(name = "dataHoraChegadaEfetiva")
+    @ApiModelProperty(example = "2020-08-07T15:45:38-03:00", value = "Data/Hora de chegada efetiva.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    /**
+     * Data/Hora de chegada efetiva.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     **/
+    private String dataHoraChegadaEfetiva = null;
 
     @XmlElement(name = "dataHoraChegadaPrevista")
     @ApiModelProperty(example = "2020-08-07T15:45:38-03:00", value = "Data/Hora de chegada prevista.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
@@ -32,6 +39,13 @@ public class ChegadaConsultaDetalhada {
      * Data/Hora de chegada prevista.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
      **/
     private String dataHoraChegadaPrevista = null;
+
+    @XmlElement(name = "dataHoraPartidaPrevista")
+    @ApiModelProperty(example = "2020-08-07T15:45:38-03:00", value = "Data/Hora de partida prevista.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    /**
+     * Data/Hora de partida prevista.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     **/
+    private String dataHoraPartidaPrevista = null;
 
     @XmlElement(name = "prefixoAeronaveChegadaEfetiva")
     @ApiModelProperty(example = "N659UA", value = "Prefixo da aeronave<br/>Tamanho máximo: 70")
@@ -62,20 +76,6 @@ public class ChegadaConsultaDetalhada {
      **/
     private List<UldBlkViagemConsultaDetalhada> uldBlks = null;
 
-    @XmlElement(name = "codigoAeroportoChegada")
-    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
-    /**
-     * Código IATA do aeroporto<br/>Tamanho: 3
-     **/
-    private String codigoAeroportoChegada = null;
-
-    @XmlElement(name = "dataHoraChegadaEfetiva")
-    @ApiModelProperty(example = "2020-08-07T15:45:38-03:00", value = "Data/Hora de chegada efetiva.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
-    /**
-     * Data/Hora de chegada efetiva.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
-     **/
-    private String dataHoraChegadaEfetiva = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -88,22 +88,36 @@ public class ChegadaConsultaDetalhada {
     }
 
     /**
-     * Data/Hora de partida prevista.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     * Código IATA do aeroporto&lt;br/&gt;Tamanho: 3
      *
-     * @return dataHoraPartidaPrevista
+     * @return codigoAeroportoChegada
      **/
-    @JsonProperty("dataHoraPartidaPrevista")
-    public String getDataHoraPartidaPrevista() {
-        return dataHoraPartidaPrevista;
+    @JsonProperty("codigoAeroportoChegada")
+    public String getCodigoAeroportoChegada() {
+        return codigoAeroportoChegada;
     }
 
-    public void setDataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
-        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
+    public void setCodigoAeroportoChegada(String codigoAeroportoChegada) {
+        this.codigoAeroportoChegada = codigoAeroportoChegada;
     }
 
-    public ChegadaConsultaDetalhada dataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
-        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
+    public ChegadaConsultaDetalhada codigoAeroportoChegada(String codigoAeroportoChegada) {
+        this.codigoAeroportoChegada = codigoAeroportoChegada;
         return this;
+    }
+
+    /**
+     * Data/Hora de chegada efetiva.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataHoraChegadaEfetiva
+     **/
+    @JsonProperty("dataHoraChegadaEfetiva")
+    public String getDataHoraChegadaEfetiva() {
+        return dataHoraChegadaEfetiva;
+    }
+
+    public void setDataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
+        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
     }
 
     /**
@@ -123,6 +137,25 @@ public class ChegadaConsultaDetalhada {
     public ChegadaConsultaDetalhada dataHoraChegadaPrevista(String dataHoraChegadaPrevista) {
         this.dataHoraChegadaPrevista = dataHoraChegadaPrevista;
         return this;
+    }
+
+    public ChegadaConsultaDetalhada dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
+        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+        return this;
+    }
+
+    /**
+     * Data/Hora de partida prevista.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataHoraPartidaPrevista
+     **/
+    @JsonProperty("dataHoraPartidaPrevista")
+    public String getDataHoraPartidaPrevista() {
+        return dataHoraPartidaPrevista;
+    }
+
+    public void setDataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
+        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
     }
 
     /**
@@ -206,41 +239,8 @@ public class ChegadaConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Código IATA do aeroporto&lt;br/&gt;Tamanho: 3
-     *
-     * @return codigoAeroportoChegada
-     **/
-    @JsonProperty("codigoAeroportoChegada")
-    public String getCodigoAeroportoChegada() {
-        return codigoAeroportoChegada;
-    }
-
-    public void setCodigoAeroportoChegada(String codigoAeroportoChegada) {
-        this.codigoAeroportoChegada = codigoAeroportoChegada;
-    }
-
-    public ChegadaConsultaDetalhada codigoAeroportoChegada(String codigoAeroportoChegada) {
-        this.codigoAeroportoChegada = codigoAeroportoChegada;
-        return this;
-    }
-
-    /**
-     * Data/Hora de chegada efetiva.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
-     * @return dataHoraChegadaEfetiva
-     **/
-    @JsonProperty("dataHoraChegadaEfetiva")
-    public String getDataHoraChegadaEfetiva() {
-        return dataHoraChegadaEfetiva;
-    }
-
-    public void setDataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
-        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
-    }
-
-    public ChegadaConsultaDetalhada dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
-        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+    public ChegadaConsultaDetalhada dataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
+        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
         return this;
     }
 
@@ -248,14 +248,14 @@ public class ChegadaConsultaDetalhada {
     public String toString() {
 
         String sb = "class ChegadaConsultaDetalhada {\n" +
-                "    dataHoraPartidaPrevista: " + toIndentedString(dataHoraPartidaPrevista) + "\n" +
+                "    codigoAeroportoChegada: " + toIndentedString(codigoAeroportoChegada) + "\n" +
+                "    dataHoraChegadaEfetiva: " + toIndentedString(dataHoraChegadaEfetiva) + "\n" +
                 "    dataHoraChegadaPrevista: " + toIndentedString(dataHoraChegadaPrevista) + "\n" +
+                "    dataHoraPartidaPrevista: " + toIndentedString(dataHoraPartidaPrevista) + "\n" +
                 "    prefixoAeronaveChegadaEfetiva: " + toIndentedString(prefixoAeronaveChegadaEfetiva) + "\n" +
                 "    recintoAduaneiroChegada: " + toIndentedString(recintoAduaneiroChegada) + "\n" +
                 "    termoEntrada: " + toIndentedString(termoEntrada) + "\n" +
                 "    uldBlks: " + toIndentedString(uldBlks) + "\n" +
-                "    codigoAeroportoChegada: " + toIndentedString(codigoAeroportoChegada) + "\n" +
-                "    dataHoraChegadaEfetiva: " + toIndentedString(dataHoraChegadaEfetiva) + "\n" +
                 "}";
         return sb;
     }

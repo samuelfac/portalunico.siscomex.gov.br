@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ValoresTributoDuimpConsultaCover", propOrder =
-        {"suspenso", "devido", "aRecolher", "aReduzir", "recolhido", "calculado"
+        {"calculado", "aReduzir", "devido", "suspenso", "aRecolher", "recolhido"
         })
 
 @XmlRootElement(name = "ValoresTributoDuimpConsultaCover")
@@ -24,29 +24,13 @@ import java.math.BigDecimal;
 @ApiModel(description = "Valores do cálculo do tributo.")
 public class ValoresTributoDuimpConsultaCover {
 
-    @XmlElement(name = "suspenso")
-    @ApiModelProperty(example = "16.7", value = "Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @XmlElement(name = "calculado")
+    @ApiModelProperty(example = "1598.73", value = "Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"originalmente devidos\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
     /**
-     * Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"originalmente devidos\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
-    private BigDecimal suspenso = null;
-
-    @XmlElement(name = "devido")
-    @ApiModelProperty(example = "201.12", value = "Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal devido = null;
-
-    @XmlElement(name = "aRecolher")
-    @ApiModelProperty(example = "16.7", value = "Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal aRecolher = null;
+    private BigDecimal calculado = null;
 
     @XmlElement(name = "aReduzir")
     @ApiModelProperty(example = "135.7", value = "Valor a Reduzir do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -56,6 +40,30 @@ public class ValoresTributoDuimpConsultaCover {
      **/
     private BigDecimal aReduzir = null;
 
+    @XmlElement(name = "devido")
+    @ApiModelProperty(example = "201.12", value = "Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal devido = null;
+
+    @XmlElement(name = "suspenso")
+    @ApiModelProperty(example = "16.7", value = "Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal suspenso = null;
+
+    @XmlElement(name = "aRecolher")
+    @ApiModelProperty(example = "16.7", value = "Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal aRecolher = null;
+
     @XmlElement(name = "recolhido")
     @ApiModelProperty(example = "16.7", value = "Valores Recolhidos (pagos) do Tributo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -63,14 +71,6 @@ public class ValoresTributoDuimpConsultaCover {
      * Valores Recolhidos (pagos) do Tributo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal recolhido = null;
-
-    @XmlElement(name = "calculado")
-    @ApiModelProperty(example = "1598.73", value = "Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"originalmente devidos\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"originalmente devidos\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal calculado = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -84,22 +84,36 @@ public class ValoresTributoDuimpConsultaCover {
     }
 
     /**
-     * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;originalmente devidos\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return suspenso
+     * @return calculado
      **/
-    @JsonProperty("suspenso")
-    public BigDecimal getSuspenso() {
-        return suspenso;
+    @JsonProperty("calculado")
+    public BigDecimal getCalculado() {
+        return calculado;
     }
 
-    public void setSuspenso(BigDecimal suspenso) {
-        this.suspenso = suspenso;
+    public void setCalculado(BigDecimal calculado) {
+        this.calculado = calculado;
     }
 
-    public ValoresTributoDuimpConsultaCover suspenso(BigDecimal suspenso) {
-        this.suspenso = suspenso;
+    public ValoresTributoDuimpConsultaCover calculado(BigDecimal calculado) {
+        this.calculado = calculado;
         return this;
+    }
+
+    /**
+     * Valor a Reduzir do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return aReduzir
+     **/
+    @JsonProperty("aReduzir")
+    public BigDecimal getAReduzir() {
+        return aReduzir;
+    }
+
+    public void setAReduzir(BigDecimal aReduzir) {
+        this.aReduzir = aReduzir;
     }
 
     /**
@@ -119,6 +133,25 @@ public class ValoresTributoDuimpConsultaCover {
     public ValoresTributoDuimpConsultaCover devido(BigDecimal devido) {
         this.devido = devido;
         return this;
+    }
+
+    public ValoresTributoDuimpConsultaCover aReduzir(BigDecimal aReduzir) {
+        this.aReduzir = aReduzir;
+        return this;
+    }
+
+    /**
+     * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return suspenso
+     **/
+    @JsonProperty("suspenso")
+    public BigDecimal getSuspenso() {
+        return suspenso;
+    }
+
+    public void setSuspenso(BigDecimal suspenso) {
+        this.suspenso = suspenso;
     }
 
     /**
@@ -141,25 +174,6 @@ public class ValoresTributoDuimpConsultaCover {
     }
 
     /**
-     * Valor a Reduzir do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return aReduzir
-     **/
-    @JsonProperty("aReduzir")
-    public BigDecimal getAReduzir() {
-        return aReduzir;
-    }
-
-    public void setAReduzir(BigDecimal aReduzir) {
-        this.aReduzir = aReduzir;
-    }
-
-    public ValoresTributoDuimpConsultaCover aReduzir(BigDecimal aReduzir) {
-        this.aReduzir = aReduzir;
-        return this;
-    }
-
-    /**
      * Valores Recolhidos (pagos) do Tributo.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return recolhido
@@ -178,22 +192,8 @@ public class ValoresTributoDuimpConsultaCover {
         return this;
     }
 
-    /**
-     * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;originalmente devidos\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return calculado
-     **/
-    @JsonProperty("calculado")
-    public BigDecimal getCalculado() {
-        return calculado;
-    }
-
-    public void setCalculado(BigDecimal calculado) {
-        this.calculado = calculado;
-    }
-
-    public ValoresTributoDuimpConsultaCover calculado(BigDecimal calculado) {
-        this.calculado = calculado;
+    public ValoresTributoDuimpConsultaCover suspenso(BigDecimal suspenso) {
+        this.suspenso = suspenso;
         return this;
     }
 
@@ -201,12 +201,12 @@ public class ValoresTributoDuimpConsultaCover {
     public String toString() {
 
         String sb = "class ValoresTributoDuimpConsultaCover {\n" +
-                "    suspenso: " + toIndentedString(suspenso) + "\n" +
-                "    devido: " + toIndentedString(devido) + "\n" +
-                "    aRecolher: " + toIndentedString(aRecolher) + "\n" +
-                "    aReduzir: " + toIndentedString(aReduzir) + "\n" +
-                "    recolhido: " + toIndentedString(recolhido) + "\n" +
                 "    calculado: " + toIndentedString(calculado) + "\n" +
+                "    aReduzir: " + toIndentedString(aReduzir) + "\n" +
+                "    devido: " + toIndentedString(devido) + "\n" +
+                "    suspenso: " + toIndentedString(suspenso) + "\n" +
+                "    aRecolher: " + toIndentedString(aRecolher) + "\n" +
+                "    recolhido: " + toIndentedString(recolhido) + "\n" +
                 "}";
         return sb;
     }

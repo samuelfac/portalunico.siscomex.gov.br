@@ -30,12 +30,12 @@ public interface ConsultaSituacaoDoProtocoloDeRecepcaoApi {
      */
     @GET
     @Path("/api/ext/recepcao/{numero}/situacao")
-    @Produces({"application/json", "*/*"})
+    @Produces({"*/*", "application/json"})
     @ApiOperation(value = "Consulta a situação atual do protocolo de recepção", notes = "", tags = {"Consulta Situacao do Protocolo de Recepcao"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocoloVO.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ErroValidacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class)})
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocoloVO.class)})
     RetornoConsultaProtocoloVO situacao(@ApiParam(value = "Identificador do protocolo da recepção", required = true) @PathParam("numero") String numero);
 }
 

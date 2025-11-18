@@ -11,18 +11,15 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SituacaoDaCargaDTO", propOrder =
-        {"cpfOuCnpjDoResponsavel", "codigo", "latitude", "recintoAduaneiro", "urfDeDespacho", "cargaOperada", "descricao", "longitude"
+        {"cargaOperada", "codigo", "cpfOuCnpjDoResponsavel", "descricao", "latitude", "longitude", "recintoAduaneiro", "urfDeDespacho"
         })
 
 @XmlRootElement(name = "SituacaoDaCargaDTO")
 public class SituacaoDaCargaDTO {
 
-    @XmlElement(name = "cpfOuCnpjDoResponsavel")
-    @ApiModelProperty(example = "27015886006", value = "CPF ou CNPJ do responsável<br />Tamanho mínimo: 11<br />Tamanho máximo: 14")
-    /**
-     * CPF ou CNPJ do responsável<br />Tamanho mínimo: 11<br />Tamanho máximo: 14
-     **/
-    private String cpfOuCnpjDoResponsavel = null;
+    @XmlElement(name = "cargaOperada")
+    @ApiModelProperty(value = "")
+    private Boolean cargaOperada = null;
 
     @XmlElement(name = "codigo")
     @ApiModelProperty(value = "Código da situação da Carga<br />Formato: Inteiro, com 1 digito")
@@ -31,12 +28,33 @@ public class SituacaoDaCargaDTO {
      **/
     private Integer codigo = null;
 
+    @XmlElement(name = "cpfOuCnpjDoResponsavel")
+    @ApiModelProperty(example = "27015886006", value = "CPF ou CNPJ do responsável<br />Tamanho mínimo: 11<br />Tamanho máximo: 14")
+    /**
+     * CPF ou CNPJ do responsável<br />Tamanho mínimo: 11<br />Tamanho máximo: 14
+     **/
+    private String cpfOuCnpjDoResponsavel = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Estocada", value = "Descrição da situação da Carga<br />Tamanho mínimo: 1<br />Tamanho máximo: 50")
+    /**
+     * Descrição da situação da Carga<br />Tamanho mínimo: 1<br />Tamanho máximo: 50
+     **/
+    private String descricao = null;
+
     @XmlElement(name = "latitude")
     @ApiModelProperty(value = "Latitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
     /**
      * Latitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
      **/
     private String latitude = null;
+
+    @XmlElement(name = "longitude")
+    @ApiModelProperty(value = "Longitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
+    /**
+     * Longitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
+     **/
+    private String longitude = null;
 
     @XmlElement(name = "recintoAduaneiro")
     @ApiModelProperty(example = "8911101", value = "Recinto Aduaneiro<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
@@ -52,24 +70,6 @@ public class SituacaoDaCargaDTO {
      **/
     private String urfDeDespacho = null;
 
-    @XmlElement(name = "cargaOperada")
-    @ApiModelProperty(value = "")
-    private Boolean cargaOperada = null;
-
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Estocada", value = "Descrição da situação da Carga<br />Tamanho mínimo: 1<br />Tamanho máximo: 50")
-    /**
-     * Descrição da situação da Carga<br />Tamanho mínimo: 1<br />Tamanho máximo: 50
-     **/
-    private String descricao = null;
-
-    @XmlElement(name = "longitude")
-    @ApiModelProperty(value = "Longitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
-    /**
-     * Longitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
-     **/
-    private String longitude = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -79,6 +79,44 @@ public class SituacaoDaCargaDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get cargaOperada
+     *
+     * @return cargaOperada
+     **/
+    @JsonProperty("cargaOperada")
+    public Boolean isisCargaOperada() {
+        return cargaOperada;
+    }
+
+    public void setCargaOperada(Boolean cargaOperada) {
+        this.cargaOperada = cargaOperada;
+    }
+
+    /**
+     * Código da situação da Carga&lt;br /&gt;Formato: Inteiro, com 1 digito
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public SituacaoDaCargaDTO codigo(Integer codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+    public SituacaoDaCargaDTO cargaOperada(Boolean cargaOperada) {
+        this.cargaOperada = cargaOperada;
+        return this;
     }
 
     /**
@@ -101,22 +139,17 @@ public class SituacaoDaCargaDTO {
     }
 
     /**
-     * Código da situação da Carga&lt;br /&gt;Formato: Inteiro, com 1 digito
+     * Descrição da situação da Carga&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 50
      *
-     * @return codigo
+     * @return descricao
      **/
-    @JsonProperty("codigo")
-    public Integer getCodigo() {
-        return codigo;
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
-
-    public SituacaoDaCargaDTO codigo(Integer codigo) {
-        this.codigo = codigo;
-        return this;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**
@@ -136,6 +169,25 @@ public class SituacaoDaCargaDTO {
     public SituacaoDaCargaDTO latitude(String latitude) {
         this.latitude = latitude;
         return this;
+    }
+
+    public SituacaoDaCargaDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    /**
+     * Longitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
+     *
+     * @return longitude
+     **/
+    @JsonProperty("longitude")
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     /**
@@ -176,58 +228,6 @@ public class SituacaoDaCargaDTO {
         return this;
     }
 
-    /**
-     * Get cargaOperada
-     *
-     * @return cargaOperada
-     **/
-    @JsonProperty("cargaOperada")
-    public Boolean isisCargaOperada() {
-        return cargaOperada;
-    }
-
-    public void setCargaOperada(Boolean cargaOperada) {
-        this.cargaOperada = cargaOperada;
-    }
-
-    public SituacaoDaCargaDTO cargaOperada(Boolean cargaOperada) {
-        this.cargaOperada = cargaOperada;
-        return this;
-    }
-
-    /**
-     * Descrição da situação da Carga&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 50
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public SituacaoDaCargaDTO descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
-    /**
-     * Longitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
-     *
-     * @return longitude
-     **/
-    @JsonProperty("longitude")
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
     public SituacaoDaCargaDTO longitude(String longitude) {
         this.longitude = longitude;
         return this;
@@ -237,14 +237,14 @@ public class SituacaoDaCargaDTO {
     public String toString() {
 
         String sb = "class SituacaoDaCargaDTO {\n" +
-                "    cpfOuCnpjDoResponsavel: " + toIndentedString(cpfOuCnpjDoResponsavel) + "\n" +
+                "    cargaOperada: " + toIndentedString(cargaOperada) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    cpfOuCnpjDoResponsavel: " + toIndentedString(cpfOuCnpjDoResponsavel) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "    latitude: " + toIndentedString(latitude) + "\n" +
+                "    longitude: " + toIndentedString(longitude) + "\n" +
                 "    recintoAduaneiro: " + toIndentedString(recintoAduaneiro) + "\n" +
                 "    urfDeDespacho: " + toIndentedString(urfDeDespacho) + "\n" +
-                "    cargaOperada: " + toIndentedString(cargaOperada) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "    longitude: " + toIndentedString(longitude) + "\n" +
                 "}";
         return sb;
     }

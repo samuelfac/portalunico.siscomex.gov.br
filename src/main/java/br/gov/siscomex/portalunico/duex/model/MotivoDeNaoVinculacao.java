@@ -33,17 +33,6 @@ public class MotivoDeNaoVinculacao {
     private String descricao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de criação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataDeRecebimentoDaAnaliseDoDrawback
@@ -79,6 +68,18 @@ public class MotivoDeNaoVinculacao {
     public MotivoDeNaoVinculacao descricao(String descricao) {
         this.descricao = descricao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

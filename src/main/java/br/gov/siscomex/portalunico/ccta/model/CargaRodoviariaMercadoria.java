@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaMercadoria", propOrder =
-        {"classificacaoNCM", "sequencial", "quantidadeVolumes", "pesoBruto", "descricao"
+        {"classificacaoNCM", "descricao", "pesoBruto", "quantidadeVolumes", "sequencial"
         })
 
 @XmlRootElement(name = "CargaRodoviariaMercadoria")
@@ -24,21 +24,12 @@ public class CargaRodoviariaMercadoria {
     @Valid
     private Ncm classificacaoNCM = null;
 
-    @XmlElement(name = "sequencial")
-    @ApiModelProperty(example = "1.0", value = "Número sequencial da mercadoria<br>Pelo menos uma mercadoria é obrigatória<br/> Tamanho Máximo: 4")
-    @Valid
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(value = "Descrição da mercadoria<br/> Tamanho Máximo: 500")
     /**
-     * Número sequencial da mercadoria<br>Pelo menos uma mercadoria é obrigatória<br/> Tamanho Máximo: 4
+     * Descrição da mercadoria<br/> Tamanho Máximo: 500
      **/
-    private BigDecimal sequencial = null;
-
-    @XmlElement(name = "quantidadeVolumes")
-    @ApiModelProperty(example = "1.0", value = "Quantidade<br/> Tamanho Máximo: 6")
-    @Valid
-    /**
-     * Quantidade<br/> Tamanho Máximo: 6
-     **/
-    private BigDecimal quantidadeVolumes = null;
+    private String descricao = null;
 
     @XmlElement(name = "pesoBruto")
     @ApiModelProperty(example = "105.478", value = "Peso da mercadoria em Kg<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
@@ -48,23 +39,21 @@ public class CargaRodoviariaMercadoria {
      **/
     private BigDecimal pesoBruto = null;
 
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(value = "Descrição da mercadoria<br/> Tamanho Máximo: 500")
+    @XmlElement(name = "quantidadeVolumes")
+    @ApiModelProperty(example = "1.0", value = "Quantidade<br/> Tamanho Máximo: 6")
+    @Valid
     /**
-     * Descrição da mercadoria<br/> Tamanho Máximo: 500
+     * Quantidade<br/> Tamanho Máximo: 6
      **/
-    private String descricao = null;
+    private BigDecimal quantidadeVolumes = null;
 
+    @XmlElement(name = "sequencial")
+    @ApiModelProperty(example = "1.0", value = "Número sequencial da mercadoria<br>Pelo menos uma mercadoria é obrigatória<br/> Tamanho Máximo: 4")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número sequencial da mercadoria<br>Pelo menos uma mercadoria é obrigatória<br/> Tamanho Máximo: 4
+     **/
+    private BigDecimal sequencial = null;
 
     /**
      * Get classificacaoNCM
@@ -86,21 +75,51 @@ public class CargaRodoviariaMercadoria {
     }
 
     /**
-     * Número sequencial da mercadoria&lt;br&gt;Pelo menos uma mercadoria é obrigatória&lt;br/&gt; Tamanho Máximo: 4
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Descrição da mercadoria&lt;br/&gt; Tamanho Máximo: 500
      *
-     * @return sequencial
+     * @return descricao
      **/
-    @JsonProperty("sequencial")
-    public BigDecimal getSequencial() {
-        return sequencial;
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setSequencial(BigDecimal sequencial) {
-        this.sequencial = sequencial;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public CargaRodoviariaMercadoria sequencial(BigDecimal sequencial) {
-        this.sequencial = sequencial;
+    /**
+     * Peso da mercadoria em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
+     *
+     * @return pesoBruto
+     **/
+    @JsonProperty("pesoBruto")
+    public BigDecimal getPesoBruto() {
+        return pesoBruto;
+    }
+
+    public void setPesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+    }
+
+    public CargaRodoviariaMercadoria pesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+        return this;
+    }
+
+    public CargaRodoviariaMercadoria descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 
@@ -124,40 +143,21 @@ public class CargaRodoviariaMercadoria {
     }
 
     /**
-     * Peso da mercadoria em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
+     * Número sequencial da mercadoria&lt;br&gt;Pelo menos uma mercadoria é obrigatória&lt;br/&gt; Tamanho Máximo: 4
      *
-     * @return pesoBruto
+     * @return sequencial
      **/
-    @JsonProperty("pesoBruto")
-    public BigDecimal getPesoBruto() {
-        return pesoBruto;
+    @JsonProperty("sequencial")
+    public BigDecimal getSequencial() {
+        return sequencial;
     }
 
-    public void setPesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
+    public void setSequencial(BigDecimal sequencial) {
+        this.sequencial = sequencial;
     }
 
-    public CargaRodoviariaMercadoria pesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
-        return this;
-    }
-
-    /**
-     * Descrição da mercadoria&lt;br/&gt; Tamanho Máximo: 500
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public CargaRodoviariaMercadoria descricao(String descricao) {
-        this.descricao = descricao;
+    public CargaRodoviariaMercadoria sequencial(BigDecimal sequencial) {
+        this.sequencial = sequencial;
         return this;
     }
 
@@ -166,10 +166,10 @@ public class CargaRodoviariaMercadoria {
 
         String sb = "class CargaRodoviariaMercadoria {\n" +
                 "    classificacaoNCM: " + toIndentedString(classificacaoNCM) + "\n" +
-                "    sequencial: " + toIndentedString(sequencial) + "\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
+                "    sequencial: " + toIndentedString(sequencial) + "\n" +
                 "}";
         return sb;
     }

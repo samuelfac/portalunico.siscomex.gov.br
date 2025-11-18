@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Enquadramento", propOrder =
-        {"codigo", "tipo", "dataRegistro", "grupo", "descricao"
+        {"codigo", "dataRegistro", "descricao", "grupo", "tipo"
         })
 
 @XmlRootElement(name = "Enquadramento")
@@ -25,26 +25,12 @@ public class Enquadramento {
      **/
     private Integer codigo = null;
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "Código<br />Formato: Inteiro, com 1 digito")
-    /**
-     * Código<br />Formato: Inteiro, com 1 digito
-     **/
-    private Integer tipo = null;
-
     @XmlElement(name = "dataRegistro")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
     /**
      * Data de Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
      **/
     private OffsetDateTime dataRegistro = null;
-
-    @XmlElement(name = "grupo")
-    @ApiModelProperty(value = "Código<br />Formato: Inteiro, com 1 digito")
-    /**
-     * Código<br />Formato: Inteiro, com 1 digito
-     **/
-    private Integer grupo = null;
 
     @XmlElement(name = "descricao")
     @ApiModelProperty(value = "Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
@@ -53,16 +39,19 @@ public class Enquadramento {
      **/
     private String descricao = null;
 
+    @XmlElement(name = "grupo")
+    @ApiModelProperty(value = "Código<br />Formato: Inteiro, com 1 digito")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Código<br />Formato: Inteiro, com 1 digito
+     **/
+    private Integer grupo = null;
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "Código<br />Formato: Inteiro, com 1 digito")
+    /**
+     * Código<br />Formato: Inteiro, com 1 digito
+     **/
+    private Integer tipo = null;
 
     /**
      * Código&lt;br /&gt;Formato: Inteiro, com até 5 digitos
@@ -80,25 +69,6 @@ public class Enquadramento {
 
     public Enquadramento codigo(Integer codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * Código&lt;br /&gt;Formato: Inteiro, com 1 digito
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public Integer getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
-
-    public Enquadramento tipo(Integer tipo) {
-        this.tipo = tipo;
         return this;
     }
 
@@ -122,6 +92,31 @@ public class Enquadramento {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Descrição&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 50
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    /**
      * Código&lt;br /&gt;Formato: Inteiro, com 1 digito
      *
      * @return grupo
@@ -140,22 +135,27 @@ public class Enquadramento {
         return this;
     }
 
-    /**
-     * Descrição&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 50
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public Enquadramento descricao(String descricao) {
         this.descricao = descricao;
+        return this;
+    }
+
+    /**
+     * Código&lt;br /&gt;Formato: Inteiro, com 1 digito
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public Enquadramento tipo(Integer tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -164,10 +164,10 @@ public class Enquadramento {
 
         String sb = "class Enquadramento {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
-                "    grupo: " + toIndentedString(grupo) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    grupo: " + toIndentedString(grupo) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

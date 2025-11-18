@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OutroModal", propOrder =
-        {"codigoTipoModal", "dadosDocumentoTransporte", "dataEmissaoDocumentoTransporte", "numeroDocumentoTransporte", "identificacaoVeiculo"
+        {"codigoTipoModal", "identificacaoVeiculo", "numeroDocumentoTransporte", "dataEmissaoDocumentoTransporte", "dadosDocumentoTransporte"
         })
 
 @XmlRootElement(name = "OutroModal")
@@ -31,17 +31,12 @@ public class OutroModal {
      **/
     private String codigoTipoModal = null;
 
-    @XmlElement(name = "dadosDocumentoTransporte", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DadosDocumentoTransporte dadosDocumentoTransporte = null;
-
-    @XmlElement(name = "dataEmissaoDocumentoTransporte", required = true)
-    @ApiModelProperty(example = "2016-12-19", required = true, value = "Data de emissao do documento de transporte<br>Formato: AAAA-MM-DD")
+    @XmlElement(name = "identificacaoVeiculo", required = true)
+    @ApiModelProperty(example = "BLT1230", required = true, value = "Identificacao Veículo<br>Tamanho: 15<br>Formato: AAAAAAAAAAAAAAA")
     /**
-     * Data de emissao do documento de transporte<br>Formato: AAAA-MM-DD
+     * Identificacao Veículo<br>Tamanho: 15<br>Formato: AAAAAAAAAAAAAAA
      **/
-    private String dataEmissaoDocumentoTransporte = null;
+    private String identificacaoVeiculo = null;
 
     @XmlElement(name = "numeroDocumentoTransporte", required = true)
     @ApiModelProperty(example = "15573459", required = true, value = "Número do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15")
@@ -50,23 +45,17 @@ public class OutroModal {
      **/
     private String numeroDocumentoTransporte = null;
 
-    @XmlElement(name = "identificacaoVeiculo", required = true)
-    @ApiModelProperty(example = "BLT1230", required = true, value = "Identificacao Veículo<br>Tamanho: 15<br>Formato: AAAAAAAAAAAAAAA")
+    @XmlElement(name = "dataEmissaoDocumentoTransporte", required = true)
+    @ApiModelProperty(example = "2016-12-19", required = true, value = "Data de emissao do documento de transporte<br>Formato: AAAA-MM-DD")
     /**
-     * Identificacao Veículo<br>Tamanho: 15<br>Formato: AAAAAAAAAAAAAAA
+     * Data de emissao do documento de transporte<br>Formato: AAAA-MM-DD
      **/
-    private String identificacaoVeiculo = null;
+    private String dataEmissaoDocumentoTransporte = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "dadosDocumentoTransporte", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DadosDocumentoTransporte dadosDocumentoTransporte = null;
 
     /**
      * Código do tipo de modal&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: ((
@@ -89,22 +78,53 @@ public class OutroModal {
     }
 
     /**
-     * Get dadosDocumentoTransporte
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificacao Veículo&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
      *
-     * @return dadosDocumentoTransporte
+     * @return identificacaoVeiculo
      **/
-    @JsonProperty("dadosDocumentoTransporte")
+    @JsonProperty("identificacaoVeiculo")
     @NotNull
-    public DadosDocumentoTransporte getDadosDocumentoTransporte() {
-        return dadosDocumentoTransporte;
+    public String getIdentificacaoVeiculo() {
+        return identificacaoVeiculo;
     }
 
-    public void setDadosDocumentoTransporte(DadosDocumentoTransporte dadosDocumentoTransporte) {
-        this.dadosDocumentoTransporte = dadosDocumentoTransporte;
+    public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
+        this.identificacaoVeiculo = identificacaoVeiculo;
     }
 
-    public OutroModal dadosDocumentoTransporte(DadosDocumentoTransporte dadosDocumentoTransporte) {
-        this.dadosDocumentoTransporte = dadosDocumentoTransporte;
+    /**
+     * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15
+     *
+     * @return numeroDocumentoTransporte
+     **/
+    @JsonProperty("numeroDocumentoTransporte")
+    @NotNull
+    public String getNumeroDocumentoTransporte() {
+        return numeroDocumentoTransporte;
+    }
+
+    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
+        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+    }
+
+    public OutroModal numeroDocumentoTransporte(String numeroDocumentoTransporte) {
+        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+        return this;
+    }
+
+    public OutroModal identificacaoVeiculo(String identificacaoVeiculo) {
+        this.identificacaoVeiculo = identificacaoVeiculo;
         return this;
     }
 
@@ -129,42 +149,22 @@ public class OutroModal {
     }
 
     /**
-     * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15
+     * Get dadosDocumentoTransporte
      *
-     * @return numeroDocumentoTransporte
+     * @return dadosDocumentoTransporte
      **/
-    @JsonProperty("numeroDocumentoTransporte")
+    @JsonProperty("dadosDocumentoTransporte")
     @NotNull
-    public String getNumeroDocumentoTransporte() {
-        return numeroDocumentoTransporte;
+    public DadosDocumentoTransporte getDadosDocumentoTransporte() {
+        return dadosDocumentoTransporte;
     }
 
-    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+    public void setDadosDocumentoTransporte(DadosDocumentoTransporte dadosDocumentoTransporte) {
+        this.dadosDocumentoTransporte = dadosDocumentoTransporte;
     }
 
-    public OutroModal numeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
-        return this;
-    }
-
-    /**
-     * Identificacao Veículo&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
-     *
-     * @return identificacaoVeiculo
-     **/
-    @JsonProperty("identificacaoVeiculo")
-    @NotNull
-    public String getIdentificacaoVeiculo() {
-        return identificacaoVeiculo;
-    }
-
-    public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
-        this.identificacaoVeiculo = identificacaoVeiculo;
-    }
-
-    public OutroModal identificacaoVeiculo(String identificacaoVeiculo) {
-        this.identificacaoVeiculo = identificacaoVeiculo;
+    public OutroModal dadosDocumentoTransporte(DadosDocumentoTransporte dadosDocumentoTransporte) {
+        this.dadosDocumentoTransporte = dadosDocumentoTransporte;
         return this;
     }
 
@@ -173,10 +173,10 @@ public class OutroModal {
 
         String sb = "class OutroModal {\n" +
                 "    codigoTipoModal: " + toIndentedString(codigoTipoModal) + "\n" +
-                "    dadosDocumentoTransporte: " + toIndentedString(dadosDocumentoTransporte) + "\n" +
-                "    dataEmissaoDocumentoTransporte: " + toIndentedString(dataEmissaoDocumentoTransporte) + "\n" +
-                "    numeroDocumentoTransporte: " + toIndentedString(numeroDocumentoTransporte) + "\n" +
                 "    identificacaoVeiculo: " + toIndentedString(identificacaoVeiculo) + "\n" +
+                "    numeroDocumentoTransporte: " + toIndentedString(numeroDocumentoTransporte) + "\n" +
+                "    dataEmissaoDocumentoTransporte: " + toIndentedString(dataEmissaoDocumentoTransporte) + "\n" +
+                "    dadosDocumentoTransporte: " + toIndentedString(dadosDocumentoTransporte) + "\n" +
                 "}";
         return sb;
     }

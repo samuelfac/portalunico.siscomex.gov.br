@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformacoesVersaoVigenteCover", propOrder =
-        {"numero", "dataRegistro", "versao"
+        {"numero", "versao", "dataRegistro"
         })
 
 @XmlRootElement(name = "InformacoesVersaoVigenteCover")
@@ -29,13 +29,6 @@ public class InformacoesVersaoVigenteCover {
      **/
     private String numero = null;
 
-    @XmlElement(name = "dataRegistro")
-    @ApiModelProperty(example = "2021-05-25T15:53:18-0300", value = "Data e hora em que a Duimp foi registrada.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data e hora em que a Duimp foi registrada.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private String dataRegistro = null;
-
     @XmlElement(name = "versao")
     @ApiModelProperty(example = "1", value = "Versão vigente da Duimp.<br>Valor mínimo: 1<br>Valor máximo: 9999")
     /**
@@ -43,16 +36,12 @@ public class InformacoesVersaoVigenteCover {
      **/
     private String versao = null;
 
+    @XmlElement(name = "dataRegistro")
+    @ApiModelProperty(example = "2021-05-25T15:53:18-0300", value = "Data e hora em que a Duimp foi registrada.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Data e hora em que a Duimp foi registrada.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private String dataRegistro = null;
 
     /**
      * &lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;AABRSSSSSSSSSSD&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* AA &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* BR &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* SSSSSSSSSS &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
@@ -70,25 +59,6 @@ public class InformacoesVersaoVigenteCover {
 
     public InformacoesVersaoVigenteCover numero(String numero) {
         this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Data e hora em que a Duimp foi registrada.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataRegistro
-     **/
-    @JsonProperty("dataRegistro")
-    public String getDataRegistro() {
-        return dataRegistro;
-    }
-
-    public void setDataRegistro(String dataRegistro) {
-        this.dataRegistro = dataRegistro;
-    }
-
-    public InformacoesVersaoVigenteCover dataRegistro(String dataRegistro) {
-        this.dataRegistro = dataRegistro;
         return this;
     }
 
@@ -111,13 +81,43 @@ public class InformacoesVersaoVigenteCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data e hora em que a Duimp foi registrada.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataRegistro
+     **/
+    @JsonProperty("dataRegistro")
+    public String getDataRegistro() {
+        return dataRegistro;
+    }
+
+    public void setDataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
+    }
+
+    public InformacoesVersaoVigenteCover dataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class InformacoesVersaoVigenteCover {\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
-                "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
+                "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "}";
         return sb;
     }

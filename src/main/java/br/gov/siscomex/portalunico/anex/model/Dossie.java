@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Dossie", propOrder =
-        {"documentos", "descricaoDossie", "vinculos", "idTipoDossie", "numeroDossie", "criadoPor", "dataHoraCriacao", "dossiesVinculados", "nomeTipoDossie", "cnpjCpf", "cpfCriacao"
+        {"cnpjCpf", "cpfCriacao", "criadoPor", "dataHoraCriacao", "descricaoDossie", "documentos", "dossiesVinculados", "idTipoDossie", "nomeTipoDossie", "numeroDossie", "vinculos"
         })
 
 @XmlRootElement(name = "Dossie")
@@ -28,11 +28,19 @@ import java.util.List;
 @ApiModel(description = "Dossiê.")
 public class Dossie {
 
-    @XmlElement(name = "documentos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Documento> documentos = null;
+    @XmlElement(name = "cnpjCpf", required = true)
+    @ApiModelProperty(example = "88888888888888", required = true, value = "CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)")
+    /**
+     * CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)
+     **/
+    private String cnpjCpf = null;
 
+    @XmlElement(name = "cpfCriacao", required = true)
+    @ApiModelProperty(example = "77777777777", required = true, value = "CPF do usuário que criou o dossiê sem formatação.<br/>Tamanho: 11")
+    /**
+     * CPF do usuário que criou o dossiê sem formatação.<br/>Tamanho: 11
+     **/
+    private String cpfCriacao = null;
     @XmlElement(name = "descricaoDossie", required = true)
     @ApiModelProperty(example = "Dossiê de exemplo", required = true, value = "Descrição do dossiê.<br/>Tamanho máximo: 255")
     /**
@@ -40,39 +48,23 @@ public class Dossie {
      **/
     private String descricaoDossie = null;
 
-    @XmlElement(name = "vinculos")
-    @ApiModelProperty(value = "Lista de vinculos do dossiê com operações.")
-    @Valid
-    /**
-     * Lista de vinculos do dossiê com operações.
-     **/
-    private List<Vinculo> vinculos = null;
-
-    @XmlElement(name = "idTipoDossie", required = true)
-    @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
-    /**
-     * Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
-     **/
-    private Long idTipoDossie = null;
-
-    @XmlElement(name = "numeroDossie", required = true)
-    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
-    /**
-     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
-     **/
-    private String numeroDossie = null;
     @XmlElement(name = "criadoPor", required = true)
     @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que criou o documento.")
     /**
      * Tipo de usuário/órgão que criou o documento.
      **/
     private CriadoPorEnum criadoPor = null;
+
     @XmlElement(name = "dataHoraCriacao", required = true)
     @ApiModelProperty(required = true, value = "Data/hora da criação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
     /**
      * Data/hora da criação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
      **/
     private OffsetDateTime dataHoraCriacao = null;
+    @XmlElement(name = "documentos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Documento> documentos = null;
     @XmlElement(name = "dossiesVinculados")
     @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
     @Valid
@@ -80,24 +72,32 @@ public class Dossie {
      * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação.
      **/
     private List<DossieVinculado> dossiesVinculados = null;
+    @XmlElement(name = "idTipoDossie", required = true)
+    @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
+    /**
+     * Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
+     **/
+    private Long idTipoDossie = null;
+    @XmlElement(name = "numeroDossie", required = true)
+    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
+    /**
+     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
+     **/
+    private String numeroDossie = null;
+
     @XmlElement(name = "nomeTipoDossie")
     @ApiModelProperty(example = "Dossiê de Importação", value = "Nome do tipo de dossiê.<br/>Tamanho máximo: 255")
     /**
      * Nome do tipo de dossiê.<br/>Tamanho máximo: 255
      **/
     private String nomeTipoDossie = null;
-    @XmlElement(name = "cnpjCpf", required = true)
-    @ApiModelProperty(example = "88888888888888", required = true, value = "CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)")
+    @XmlElement(name = "vinculos")
+    @ApiModelProperty(value = "Lista de vinculos do dossiê com operações.")
+    @Valid
     /**
-     * CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)
+     * Lista de vinculos do dossiê com operações.
      **/
-    private String cnpjCpf = null;
-    @XmlElement(name = "cpfCriacao", required = true)
-    @ApiModelProperty(example = "77777777777", required = true, value = "CPF do usuário que criou o dossiê sem formatação.<br/>Tamanho: 11")
-    /**
-     * CPF do usuário que criou o dossiê sem formatação.<br/>Tamanho: 11
-     **/
-    private String cpfCriacao = null;
+    private List<Vinculo> vinculos = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -111,110 +111,42 @@ public class Dossie {
     }
 
     /**
-     * Get documentos
+     * CNPJ ou CPF do dossiê sem formatação.&lt;br/&gt;Tamanho: 14(CNPJ) ou 11(CPF)
      *
-     * @return documentos
+     * @return cnpjCpf
      **/
-    @JsonProperty("documentos")
-    public List<Documento> getDocumentos() {
-        return documentos;
-    }
-
-    public void setDocumentos(List<Documento> documentos) {
-        this.documentos = documentos;
-    }
-
-    public Dossie documentos(List<Documento> documentos) {
-        this.documentos = documentos;
-        return this;
-    }
-
-    public Dossie addDocumentosItem(Documento documentosItem) {
-        this.documentos.add(documentosItem);
-        return this;
-    }
-
-    /**
-     * Descrição do dossiê.&lt;br/&gt;Tamanho máximo: 255
-     *
-     * @return descricaoDossie
-     **/
-    @JsonProperty("descricaoDossie")
+    @JsonProperty("cnpjCpf")
     @NotNull
-    public String getDescricaoDossie() {
-        return descricaoDossie;
+    public String getCnpjCpf() {
+        return cnpjCpf;
     }
 
-    public void setDescricaoDossie(String descricaoDossie) {
-        this.descricaoDossie = descricaoDossie;
+    public void setCnpjCpf(String cnpjCpf) {
+        this.cnpjCpf = cnpjCpf;
     }
 
-    public Dossie descricaoDossie(String descricaoDossie) {
-        this.descricaoDossie = descricaoDossie;
+    public Dossie cnpjCpf(String cnpjCpf) {
+        this.cnpjCpf = cnpjCpf;
         return this;
     }
 
     /**
-     * Lista de vinculos do dossiê com operações.
+     * CPF do usuário que criou o dossiê sem formatação.&lt;br/&gt;Tamanho: 11
      *
-     * @return vinculos
+     * @return cpfCriacao
      **/
-    @JsonProperty("vinculos")
-    public List<Vinculo> getVinculos() {
-        return vinculos;
-    }
-
-    public void setVinculos(List<Vinculo> vinculos) {
-        this.vinculos = vinculos;
-    }
-
-    public Dossie vinculos(List<Vinculo> vinculos) {
-        this.vinculos = vinculos;
-        return this;
-    }
-
-    public Dossie addVinculosItem(Vinculo vinculosItem) {
-        this.vinculos.add(vinculosItem);
-        return this;
-    }
-
-    /**
-     * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
-     *
-     * @return idTipoDossie
-     **/
-    @JsonProperty("idTipoDossie")
+    @JsonProperty("cpfCriacao")
     @NotNull
-    public Long getIdTipoDossie() {
-        return idTipoDossie;
+    public String getCpfCriacao() {
+        return cpfCriacao;
     }
 
-    public void setIdTipoDossie(Long idTipoDossie) {
-        this.idTipoDossie = idTipoDossie;
+    public void setCpfCriacao(String cpfCriacao) {
+        this.cpfCriacao = cpfCriacao;
     }
 
-    public Dossie idTipoDossie(Long idTipoDossie) {
-        this.idTipoDossie = idTipoDossie;
-        return this;
-    }
-
-    /**
-     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-     *
-     * @return numeroDossie
-     **/
-    @JsonProperty("numeroDossie")
-    @NotNull
-    public String getNumeroDossie() {
-        return numeroDossie;
-    }
-
-    public void setNumeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
-    }
-
-    public Dossie numeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
+    public Dossie cpfCriacao(String cpfCriacao) {
+        this.cpfCriacao = cpfCriacao;
         return this;
     }
 
@@ -262,6 +194,50 @@ public class Dossie {
     }
 
     /**
+     * Descrição do dossiê.&lt;br/&gt;Tamanho máximo: 255
+     *
+     * @return descricaoDossie
+     **/
+    @JsonProperty("descricaoDossie")
+    @NotNull
+    public String getDescricaoDossie() {
+        return descricaoDossie;
+    }
+
+    public void setDescricaoDossie(String descricaoDossie) {
+        this.descricaoDossie = descricaoDossie;
+    }
+
+    public Dossie descricaoDossie(String descricaoDossie) {
+        this.descricaoDossie = descricaoDossie;
+        return this;
+    }
+
+    /**
+     * Get documentos
+     *
+     * @return documentos
+     **/
+    @JsonProperty("documentos")
+    public List<Documento> getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
+    }
+
+    public Dossie documentos(List<Documento> documentos) {
+        this.documentos = documentos;
+        return this;
+    }
+
+    public Dossie addDocumentosItem(Documento documentosItem) {
+        this.documentos.add(documentosItem);
+        return this;
+    }
+
+    /**
      * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.&lt;br/&gt;Lista de dossiês vinculados ao dossiê da operação.
      *
      * @return dossiesVinculados
@@ -286,8 +262,27 @@ public class Dossie {
     }
 
     /**
-     * Nome do tipo de dossiê.&lt;br/&gt;Tamanho máximo: 255
+     * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
      *
+     * @return idTipoDossie
+     **/
+    @JsonProperty("idTipoDossie")
+    @NotNull
+    public Long getIdTipoDossie() {
+        return idTipoDossie;
+    }
+
+    public void setIdTipoDossie(Long idTipoDossie) {
+        this.idTipoDossie = idTipoDossie;
+    }
+
+    public Dossie idTipoDossie(Long idTipoDossie) {
+        this.idTipoDossie = idTipoDossie;
+        return this;
+    }
+
+    /**
+     * Nome do tipo de dossiê.&lt;br/&gt;Tamanho máximo: 255
      * @return nomeTipoDossie
      **/
     @JsonProperty("nomeTipoDossie")
@@ -305,42 +300,45 @@ public class Dossie {
     }
 
     /**
-     * CNPJ ou CPF do dossiê sem formatação.&lt;br/&gt;Tamanho: 14(CNPJ) ou 11(CPF)
-     *
-     * @return cnpjCpf
+     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     * @return numeroDossie
      **/
-    @JsonProperty("cnpjCpf")
+    @JsonProperty("numeroDossie")
     @NotNull
-    public String getCnpjCpf() {
-        return cnpjCpf;
+    public String getNumeroDossie() {
+        return numeroDossie;
     }
 
-    public void setCnpjCpf(String cnpjCpf) {
-        this.cnpjCpf = cnpjCpf;
+    public void setNumeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
     }
 
-    public Dossie cnpjCpf(String cnpjCpf) {
-        this.cnpjCpf = cnpjCpf;
+    public Dossie numeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
         return this;
     }
 
     /**
-     * CPF do usuário que criou o dossiê sem formatação.&lt;br/&gt;Tamanho: 11
+     * Lista de vinculos do dossiê com operações.
      *
-     * @return cpfCriacao
+     * @return vinculos
      **/
-    @JsonProperty("cpfCriacao")
-    @NotNull
-    public String getCpfCriacao() {
-        return cpfCriacao;
+    @JsonProperty("vinculos")
+    public List<Vinculo> getVinculos() {
+        return vinculos;
     }
 
-    public void setCpfCriacao(String cpfCriacao) {
-        this.cpfCriacao = cpfCriacao;
+    public void setVinculos(List<Vinculo> vinculos) {
+        this.vinculos = vinculos;
     }
 
-    public Dossie cpfCriacao(String cpfCriacao) {
-        this.cpfCriacao = cpfCriacao;
+    public Dossie vinculos(List<Vinculo> vinculos) {
+        this.vinculos = vinculos;
+        return this;
+    }
+
+    public Dossie addVinculosItem(Vinculo vinculosItem) {
+        this.vinculos.add(vinculosItem);
         return this;
     }
 
@@ -349,17 +347,17 @@ public class Dossie {
     public String toString() {
 
         String sb = "class Dossie {\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
-                "    descricaoDossie: " + toIndentedString(descricaoDossie) + "\n" +
-                "    vinculos: " + toIndentedString(vinculos) + "\n" +
-                "    idTipoDossie: " + toIndentedString(idTipoDossie) + "\n" +
-                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
-                "    criadoPor: " + toIndentedString(criadoPor) + "\n" +
-                "    dataHoraCriacao: " + toIndentedString(dataHoraCriacao) + "\n" +
-                "    dossiesVinculados: " + toIndentedString(dossiesVinculados) + "\n" +
-                "    nomeTipoDossie: " + toIndentedString(nomeTipoDossie) + "\n" +
                 "    cnpjCpf: " + toIndentedString(cnpjCpf) + "\n" +
                 "    cpfCriacao: " + toIndentedString(cpfCriacao) + "\n" +
+                "    criadoPor: " + toIndentedString(criadoPor) + "\n" +
+                "    dataHoraCriacao: " + toIndentedString(dataHoraCriacao) + "\n" +
+                "    descricaoDossie: " + toIndentedString(descricaoDossie) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
+                "    dossiesVinculados: " + toIndentedString(dossiesVinculados) + "\n" +
+                "    idTipoDossie: " + toIndentedString(idTipoDossie) + "\n" +
+                "    nomeTipoDossie: " + toIndentedString(nomeTipoDossie) + "\n" +
+                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
+                "    vinculos: " + toIndentedString(vinculos) + "\n" +
                 "}";
         return sb;
     }

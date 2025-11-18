@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SolicitacaoIcmsDto", propOrder =
-        {"valorTotalCredito", "cnaeAdquirente", "cpfSolicitante", "ufImportador", "valorDespesasAduaneiras", "ufAdquirente", "ufFavorecida", "opcaoIcms", "valorAfrmm", "guias", "dataConfirmacaoCredito", "valorCIFPagamento", "informacoesComplementares", "tipoTratamento", "descricaoDespesasAduaneiras", "periodoReferencia", "historico", "numMandadoJudicial", "tipoSolicitacao", "situacaoSolicitacao", "numeroDeclaracao", "valorCIFExonerado", "tipoDeclaracao", "cargaEntregue", "valorTotalARecolher", "codMunicipioDesembaracoPretendido", "cnaeImportador", "valorTotalDevido", "versaoDeclaracao", "status"
+        {"cargaEntregue", "cnaeAdquirente", "cnaeImportador", "codMunicipioDesembaracoPretendido", "cpfSolicitante", "dataConfirmacaoCredito", "descricaoDespesasAduaneiras", "guias", "historico", "informacoesComplementares", "numMandadoJudicial", "numeroDeclaracao", "opcaoIcms", "periodoReferencia", "situacaoSolicitacao", "status", "tipoDeclaracao", "tipoSolicitacao", "tipoTratamento", "ufAdquirente", "ufFavorecida", "ufImportador", "valorAfrmm", "valorCIFExonerado", "valorCIFPagamento", "valorDespesasAduaneiras", "valorTotalARecolher", "valorTotalCredito", "valorTotalDevido", "versaoDeclaracao"
         })
 
 @XmlRootElement(name = "SolicitacaoIcmsDto")
@@ -28,13 +28,12 @@ import java.util.List;
 @ApiModel(description = "Dados de declaração ICMS criada no PCCE")
 public class SolicitacaoIcmsDto {
 
-    @XmlElement(name = "valorTotalCredito", required = true)
-    @ApiModelProperty(example = "103.2", required = true, value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
+    @XmlElement(name = "cargaEntregue", required = true)
+    @ApiModelProperty(required = true, value = "Flag para indicar se a carga foi entregue <br/>(*) Utilizado para tipo de tratamento manual")
     /**
-     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Flag para indicar se a carga foi entregue <br/>(*) Utilizado para tipo de tratamento manual
      **/
-    private BigDecimal valorTotalCredito = null;
+    private Boolean cargaEntregue = null;
 
     @XmlElement(name = "cnaeAdquirente")
     @ApiModelProperty(example = "6422100", value = "Código CNAE do Adquirente")
@@ -43,25 +42,120 @@ public class SolicitacaoIcmsDto {
      **/
     private String cnaeAdquirente = null;
 
+    @XmlElement(name = "cnaeImportador", required = true)
+    @ApiModelProperty(example = "6422100", required = true, value = "Código CNAE do Importador")
+    /**
+     * Código CNAE do Importador
+     **/
+    private String cnaeImportador = null;
+
+    @XmlElement(name = "codMunicipioDesembaracoPretendido")
+    @ApiModelProperty(example = "00000", value = "Código TOM do município de despacho (antes chamado de Município de desembaraço pretendido)")
+    /**
+     * Código TOM do município de despacho (antes chamado de Município de desembaraço pretendido)
+     **/
+    private String codMunicipioDesembaracoPretendido = null;
+
     @XmlElement(name = "cpfSolicitante", required = true)
     @ApiModelProperty(example = "11111111111", required = true, value = "CPF do responsável pela declaração de ICMS<br>Formato: 'NNNNNNNNNNN'<br>Tamanho: 11")
     /**
      * CPF do responsável pela declaração de ICMS<br>Formato: 'NNNNNNNNNNN'<br>Tamanho: 11
      **/
     private String cpfSolicitante = null;
-    @XmlElement(name = "ufImportador", required = true)
-    @ApiModelProperty(example = "BA", required = true, value = "UF importador")
+
+    @XmlElement(name = "dataConfirmacaoCredito", required = true)
+    @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
     /**
-     * UF importador
+     * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
      **/
-    private UfImportadorEnum ufImportador = null;
-    @XmlElement(name = "valorDespesasAduaneiras")
-    @ApiModelProperty(example = "162.57", value = "Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    private String dataConfirmacaoCredito = null;
+
+    @XmlElement(name = "descricaoDespesasAduaneiras")
+    @ApiModelProperty(value = "Descrição das demais despesas aduaneiras <br>Tamanho máximo: 400")
+    /**
+     * Descrição das demais despesas aduaneiras <br>Tamanho máximo: 400
+     **/
+    private String descricaoDespesasAduaneiras = null;
+
+    @XmlElement(name = "guias")
+    @ApiModelProperty(value = "Lista de guias de pagamento de ICMS (não canceladas)")
     @Valid
     /**
-     * Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Lista de guias de pagamento de ICMS (não canceladas)
      **/
-    private BigDecimal valorDespesasAduaneiras = null;
+    private List<GuiaIcmsDto> guias = null;
+
+    @XmlElement(name = "historico")
+    @ApiModelProperty(value = "Histórico da solicitação de ICMS")
+    @Valid
+    /**
+     * Histórico da solicitação de ICMS
+     **/
+    private List<SituacaoHistoricoDto> historico = null;
+
+    @XmlElement(name = "informacoesComplementares")
+    @ApiModelProperty(value = "Texto livre com informações complementares pertinentes <br>Tamanho máximo: 400")
+    /**
+     * Texto livre com informações complementares pertinentes <br>Tamanho máximo: 400
+     **/
+    private String informacoesComplementares = null;
+
+    @XmlElement(name = "numMandadoJudicial")
+    @ApiModelProperty(example = "11111111111111111111", value = "Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP")
+    /**
+     * Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP
+     **/
+    private String numMandadoJudicial = null;
+
+    @XmlElement(name = "numeroDeclaracao", required = true)
+    @ApiModelProperty(example = "19BR00000004677", required = true, value = "Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15")
+    /**
+     * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
+     **/
+    private String numeroDeclaracao = null;
+
+    @XmlElement(name = "opcaoIcms")
+    @ApiModelProperty(value = "")
+    @Valid
+    private OpcaoIcmsConsultaDto opcaoIcms = null;
+
+    @XmlElement(name = "periodoReferencia", required = true)
+    @ApiModelProperty(example = "2019-01", required = true, value = "Período de referência<br>Formato: 'yyyy-MM'")
+    /**
+     * Período de referência<br>Formato: 'yyyy-MM'
+     **/
+    private String periodoReferencia = null;
+    @XmlElement(name = "situacaoSolicitacao", required = true)
+    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
+    /**
+     * Descrição da situação da solicitação
+     **/
+    private SituacaoSolicitacaoEnum situacaoSolicitacao = null;
+    @XmlElement(name = "tipoDeclaracao", required = true)
+    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
+    /**
+     * Tipo da declaração no Comércio Exterior
+     **/
+    private TipoDeclaracaoEnum tipoDeclaracao = null;
+
+    @XmlElement(name = "status")
+    @ApiModelProperty(example = "Entrega da carga não permitida. ICMS não declarado ou não foi solicitado pagamento/exoneração do ICMS no Portal Único Siscomex.", value = "Observação, conforme o tipo de tratamento")
+    /**
+     * Observação, conforme o tipo de tratamento
+     **/
+    private String status = null;
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
+    /**
+     * Tipo de solicitação
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+    @XmlElement(name = "tipoTratamento", required = true)
+    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de tratamento usado na declaração")
+    /**
+     * Tipo de tratamento usado na declaração
+     **/
+    private TipoTratamentoEnum tipoTratamento = null;
     @XmlElement(name = "ufAdquirente")
     @ApiModelProperty(example = "SC", value = "UF favorecida")
     /**
@@ -74,10 +168,12 @@ public class SolicitacaoIcmsDto {
      * UF favorecida
      **/
     private UfFavorecidaEnum ufFavorecida = null;
-    @XmlElement(name = "opcaoIcms")
-    @ApiModelProperty(value = "")
-    @Valid
-    private OpcaoIcmsConsultaDto opcaoIcms = null;
+    @XmlElement(name = "ufImportador", required = true)
+    @ApiModelProperty(example = "BA", required = true, value = "UF importador")
+    /**
+     * UF importador
+     **/
+    private UfImportadorEnum ufImportador = null;
     @XmlElement(name = "valorAfrmm")
     @ApiModelProperty(example = "95.8", value = "Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo.")
     @Valid
@@ -85,81 +181,6 @@ public class SolicitacaoIcmsDto {
      * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo.
      **/
     private BigDecimal valorAfrmm = null;
-    @XmlElement(name = "guias")
-    @ApiModelProperty(value = "Lista de guias de pagamento de ICMS (não canceladas)")
-    @Valid
-    /**
-     * Lista de guias de pagamento de ICMS (não canceladas)
-     **/
-    private List<GuiaIcmsDto> guias = null;
-    @XmlElement(name = "dataConfirmacaoCredito", required = true)
-    @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data e hora da confirmação do crédito de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private String dataConfirmacaoCredito = null;
-    @XmlElement(name = "valorCIFPagamento")
-    @ApiModelProperty(example = "162.57", value = "Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP.")
-    @Valid
-    /**
-     * Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP.
-     **/
-    private BigDecimal valorCIFPagamento = null;
-    @XmlElement(name = "informacoesComplementares")
-    @ApiModelProperty(value = "Texto livre com informações complementares pertinentes <br>Tamanho máximo: 400")
-    /**
-     * Texto livre com informações complementares pertinentes <br>Tamanho máximo: 400
-     **/
-    private String informacoesComplementares = null;
-    @XmlElement(name = "tipoTratamento", required = true)
-    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de tratamento usado na declaração")
-    /**
-     * Tipo de tratamento usado na declaração
-     **/
-    private TipoTratamentoEnum tipoTratamento = null;
-    @XmlElement(name = "descricaoDespesasAduaneiras")
-    @ApiModelProperty(value = "Descrição das demais despesas aduaneiras <br>Tamanho máximo: 400")
-    /**
-     * Descrição das demais despesas aduaneiras <br>Tamanho máximo: 400
-     **/
-    private String descricaoDespesasAduaneiras = null;
-    @XmlElement(name = "periodoReferencia", required = true)
-    @ApiModelProperty(example = "2019-01", required = true, value = "Período de referência<br>Formato: 'yyyy-MM'")
-    /**
-     * Período de referência<br>Formato: 'yyyy-MM'
-     **/
-    private String periodoReferencia = null;
-    @XmlElement(name = "historico")
-    @ApiModelProperty(value = "Histórico da solicitação de ICMS")
-    @Valid
-    /**
-     * Histórico da solicitação de ICMS
-     **/
-    private List<SituacaoHistoricoDto> historico = null;
-    @XmlElement(name = "numMandadoJudicial")
-    @ApiModelProperty(example = "11111111111111111111", value = "Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP")
-    /**
-     * Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP
-     **/
-    private String numMandadoJudicial = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
-    /**
-     * Tipo de solicitação
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-    @XmlElement(name = "situacaoSolicitacao", required = true)
-    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
-    /**
-     * Descrição da situação da solicitação
-     **/
-    private SituacaoSolicitacaoEnum situacaoSolicitacao = null;
-    @XmlElement(name = "numeroDeclaracao", required = true)
-    @ApiModelProperty(example = "19BR00000004677", required = true, value = "Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15")
-    /**
-     * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
-     **/
-    private String numeroDeclaracao = null;
     @XmlElement(name = "valorCIFExonerado")
     @ApiModelProperty(example = "60.33", value = "Valor CIF Exonerado (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP.")
     @Valid
@@ -167,18 +188,20 @@ public class SolicitacaoIcmsDto {
      * Valor CIF Exonerado (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP.
      **/
     private BigDecimal valorCIFExonerado = null;
-    @XmlElement(name = "tipoDeclaracao", required = true)
-    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
+    @XmlElement(name = "valorCIFPagamento")
+    @ApiModelProperty(example = "162.57", value = "Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP.")
+    @Valid
     /**
-     * Tipo da declaração no Comércio Exterior
+     * Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP.
      **/
-    private TipoDeclaracaoEnum tipoDeclaracao = null;
-    @XmlElement(name = "cargaEntregue", required = true)
-    @ApiModelProperty(required = true, value = "Flag para indicar se a carga foi entregue <br/>(*) Utilizado para tipo de tratamento manual")
+    private BigDecimal valorCIFPagamento = null;
+    @XmlElement(name = "valorDespesasAduaneiras")
+    @ApiModelProperty(example = "162.57", value = "Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
     /**
-     * Flag para indicar se a carga foi entregue <br/>(*) Utilizado para tipo de tratamento manual
+     * Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
-    private Boolean cargaEntregue = null;
+    private BigDecimal valorDespesasAduaneiras = null;
     @XmlElement(name = "valorTotalARecolher", required = true)
     @ApiModelProperty(example = "103.2", required = true, value = "Valor total a recolher de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -186,18 +209,13 @@ public class SolicitacaoIcmsDto {
      * Valor total a recolher de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorTotalARecolher = null;
-    @XmlElement(name = "codMunicipioDesembaracoPretendido")
-    @ApiModelProperty(example = "00000", value = "Código TOM do município de despacho (antes chamado de Município de desembaraço pretendido)")
+    @XmlElement(name = "valorTotalCredito", required = true)
+    @ApiModelProperty(example = "103.2", required = true, value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
     /**
-     * Código TOM do município de despacho (antes chamado de Município de desembaraço pretendido)
+     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
-    private String codMunicipioDesembaracoPretendido = null;
-    @XmlElement(name = "cnaeImportador", required = true)
-    @ApiModelProperty(example = "6422100", required = true, value = "Código CNAE do Importador")
-    /**
-     * Código CNAE do Importador
-     **/
-    private String cnaeImportador = null;
+    private BigDecimal valorTotalCredito = null;
     @XmlElement(name = "valorTotalDevido", required = true)
     @ApiModelProperty(example = "103.2", required = true, value = "Valor total devido de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -211,12 +229,6 @@ public class SolicitacaoIcmsDto {
      * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
      **/
     private String versaoDeclaracao = null;
-    @XmlElement(name = "status")
-    @ApiModelProperty(example = "Entrega da carga não permitida. ICMS não declarado ou não foi solicitado pagamento/exoneração do ICMS no Portal Único Siscomex.", value = "Observação, conforme o tipo de tratamento")
-    /**
-     * Observação, conforme o tipo de tratamento
-     **/
-    private String status = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -230,22 +242,22 @@ public class SolicitacaoIcmsDto {
     }
 
     /**
-     * Valor total do crédito de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * Flag para indicar se a carga foi entregue &lt;br/&gt;(*) Utilizado para tipo de tratamento manual
      *
-     * @return valorTotalCredito
+     * @return cargaEntregue
      **/
-    @JsonProperty("valorTotalCredito")
+    @JsonProperty("cargaEntregue")
     @NotNull
-    public BigDecimal getValorTotalCredito() {
-        return valorTotalCredito;
+    public Boolean isisCargaEntregue() {
+        return cargaEntregue;
     }
 
-    public void setValorTotalCredito(BigDecimal valorTotalCredito) {
-        this.valorTotalCredito = valorTotalCredito;
+    public void setCargaEntregue(Boolean cargaEntregue) {
+        this.cargaEntregue = cargaEntregue;
     }
 
-    public SolicitacaoIcmsDto valorTotalCredito(BigDecimal valorTotalCredito) {
-        this.valorTotalCredito = valorTotalCredito;
+    public SolicitacaoIcmsDto cargaEntregue(Boolean cargaEntregue) {
+        this.cargaEntregue = cargaEntregue;
         return this;
     }
 
@@ -265,6 +277,45 @@ public class SolicitacaoIcmsDto {
 
     public SolicitacaoIcmsDto cnaeAdquirente(String cnaeAdquirente) {
         this.cnaeAdquirente = cnaeAdquirente;
+        return this;
+    }
+
+    /**
+     * Código CNAE do Importador
+     *
+     * @return cnaeImportador
+     **/
+    @JsonProperty("cnaeImportador")
+    @NotNull
+    public String getCnaeImportador() {
+        return cnaeImportador;
+    }
+
+    public void setCnaeImportador(String cnaeImportador) {
+        this.cnaeImportador = cnaeImportador;
+    }
+
+    public SolicitacaoIcmsDto cnaeImportador(String cnaeImportador) {
+        this.cnaeImportador = cnaeImportador;
+        return this;
+    }
+
+    /**
+     * Código TOM do município de despacho (antes chamado de Município de desembaraço pretendido)
+     *
+     * @return codMunicipioDesembaracoPretendido
+     **/
+    @JsonProperty("codMunicipioDesembaracoPretendido")
+    public String getCodMunicipioDesembaracoPretendido() {
+        return codMunicipioDesembaracoPretendido;
+    }
+
+    public void setCodMunicipioDesembaracoPretendido(String codMunicipioDesembaracoPretendido) {
+        this.codMunicipioDesembaracoPretendido = codMunicipioDesembaracoPretendido;
+    }
+
+    public SolicitacaoIcmsDto codMunicipioDesembaracoPretendido(String codMunicipioDesembaracoPretendido) {
+        this.codMunicipioDesembaracoPretendido = codMunicipioDesembaracoPretendido;
         return this;
     }
 
@@ -289,44 +340,294 @@ public class SolicitacaoIcmsDto {
     }
 
     /**
-     * UF importador
+     * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
      *
-     * @return ufImportador
+     * @return dataConfirmacaoCredito
      **/
-    @JsonProperty("ufImportador")
+    @JsonProperty("dataConfirmacaoCredito")
     @NotNull
-    public String getUfImportador() {
-        if (ufImportador == null) {
-            return null;
-        }
-        return ufImportador.value();
+    public String getDataConfirmacaoCredito() {
+        return dataConfirmacaoCredito;
     }
 
-    public void setUfImportador(UfImportadorEnum ufImportador) {
-        this.ufImportador = ufImportador;
+    public void setDataConfirmacaoCredito(String dataConfirmacaoCredito) {
+        this.dataConfirmacaoCredito = dataConfirmacaoCredito;
     }
 
-    public SolicitacaoIcmsDto ufImportador(UfImportadorEnum ufImportador) {
-        this.ufImportador = ufImportador;
+    public SolicitacaoIcmsDto dataConfirmacaoCredito(String dataConfirmacaoCredito) {
+        this.dataConfirmacaoCredito = dataConfirmacaoCredito;
         return this;
     }
 
     /**
-     * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * Descrição das demais despesas aduaneiras &lt;br&gt;Tamanho máximo: 400
      *
-     * @return valorDespesasAduaneiras
+     * @return descricaoDespesasAduaneiras
      **/
-    @JsonProperty("valorDespesasAduaneiras")
-    public BigDecimal getValorDespesasAduaneiras() {
-        return valorDespesasAduaneiras;
+    @JsonProperty("descricaoDespesasAduaneiras")
+    public String getDescricaoDespesasAduaneiras() {
+        return descricaoDespesasAduaneiras;
     }
 
-    public void setValorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
-        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
+    public void setDescricaoDespesasAduaneiras(String descricaoDespesasAduaneiras) {
+        this.descricaoDespesasAduaneiras = descricaoDespesasAduaneiras;
     }
 
-    public SolicitacaoIcmsDto valorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
-        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
+    public SolicitacaoIcmsDto descricaoDespesasAduaneiras(String descricaoDespesasAduaneiras) {
+        this.descricaoDespesasAduaneiras = descricaoDespesasAduaneiras;
+        return this;
+    }
+
+    /**
+     * Lista de guias de pagamento de ICMS (não canceladas)
+     *
+     * @return guias
+     **/
+    @JsonProperty("guias")
+    public List<GuiaIcmsDto> getGuias() {
+        return guias;
+    }
+
+    public void setGuias(List<GuiaIcmsDto> guias) {
+        this.guias = guias;
+    }
+
+    public SolicitacaoIcmsDto guias(List<GuiaIcmsDto> guias) {
+        this.guias = guias;
+        return this;
+    }
+
+    public SolicitacaoIcmsDto addGuiasItem(GuiaIcmsDto guiasItem) {
+        this.guias.add(guiasItem);
+        return this;
+    }
+
+    /**
+     * Histórico da solicitação de ICMS
+     * @return historico
+     **/
+    @JsonProperty("historico")
+    public List<SituacaoHistoricoDto> getHistorico() {
+        return historico;
+    }
+
+    public void setHistorico(List<SituacaoHistoricoDto> historico) {
+        this.historico = historico;
+    }
+
+    public SolicitacaoIcmsDto historico(List<SituacaoHistoricoDto> historico) {
+        this.historico = historico;
+        return this;
+    }
+
+    public SolicitacaoIcmsDto addHistoricoItem(SituacaoHistoricoDto historicoItem) {
+        this.historico.add(historicoItem);
+        return this;
+    }
+
+    /**
+     * Texto livre com informações complementares pertinentes &lt;br&gt;Tamanho máximo: 400
+     *
+     * @return informacoesComplementares
+     **/
+    @JsonProperty("informacoesComplementares")
+    public String getInformacoesComplementares() {
+        return informacoesComplementares;
+    }
+
+    public void setInformacoesComplementares(String informacoesComplementares) {
+        this.informacoesComplementares = informacoesComplementares;
+    }
+
+    public SolicitacaoIcmsDto informacoesComplementares(String informacoesComplementares) {
+        this.informacoesComplementares = informacoesComplementares;
+        return this;
+    }
+
+    /**
+     * Número do Mandado Judicial &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; MANDADO_JUDICIAL_DUIMP
+     * @return numMandadoJudicial
+     **/
+    @JsonProperty("numMandadoJudicial")
+    public String getNumMandadoJudicial() {
+        return numMandadoJudicial;
+    }
+
+    public void setNumMandadoJudicial(String numMandadoJudicial) {
+        this.numMandadoJudicial = numMandadoJudicial;
+    }
+
+    public SolicitacaoIcmsDto numMandadoJudicial(String numMandadoJudicial) {
+        this.numMandadoJudicial = numMandadoJudicial;
+        return this;
+    }
+
+    /**
+     * Número da declaração&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 15
+     * @return numeroDeclaracao
+     **/
+    @JsonProperty("numeroDeclaracao")
+    @NotNull
+    public String getNumeroDeclaracao() {
+        return numeroDeclaracao;
+    }
+
+    public void setNumeroDeclaracao(String numeroDeclaracao) {
+        this.numeroDeclaracao = numeroDeclaracao;
+    }
+
+    public SolicitacaoIcmsDto numeroDeclaracao(String numeroDeclaracao) {
+        this.numeroDeclaracao = numeroDeclaracao;
+        return this;
+    }
+
+    /**
+     * Get opcaoIcms
+     *
+     * @return opcaoIcms
+     **/
+    @JsonProperty("opcaoIcms")
+    public OpcaoIcmsConsultaDto getOpcaoIcms() {
+        return opcaoIcms;
+    }
+
+    public void setOpcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
+        this.opcaoIcms = opcaoIcms;
+    }
+
+    public SolicitacaoIcmsDto opcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
+        this.opcaoIcms = opcaoIcms;
+        return this;
+    }
+
+    /**
+     * Período de referência&lt;br&gt;Formato: &#39;yyyy-MM&#39;
+     *
+     * @return periodoReferencia
+     **/
+    @JsonProperty("periodoReferencia")
+    @NotNull
+    public String getPeriodoReferencia() {
+        return periodoReferencia;
+    }
+
+    public void setPeriodoReferencia(String periodoReferencia) {
+        this.periodoReferencia = periodoReferencia;
+    }
+
+    public SolicitacaoIcmsDto periodoReferencia(String periodoReferencia) {
+        this.periodoReferencia = periodoReferencia;
+        return this;
+    }
+
+    /**
+     * Descrição da situação da solicitação
+     *
+     * @return situacaoSolicitacao
+     **/
+    @JsonProperty("situacaoSolicitacao")
+    @NotNull
+    public String getSituacaoSolicitacao() {
+        if (situacaoSolicitacao == null) {
+            return null;
+        }
+        return situacaoSolicitacao.value();
+    }
+
+    public void setSituacaoSolicitacao(SituacaoSolicitacaoEnum situacaoSolicitacao) {
+        this.situacaoSolicitacao = situacaoSolicitacao;
+    }
+
+    public SolicitacaoIcmsDto situacaoSolicitacao(SituacaoSolicitacaoEnum situacaoSolicitacao) {
+        this.situacaoSolicitacao = situacaoSolicitacao;
+        return this;
+    }
+
+    /**
+     * Observação, conforme o tipo de tratamento
+     *
+     * @return status
+     **/
+    @JsonProperty("status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public SolicitacaoIcmsDto status(String status) {
+        this.status = status;
+        return this;
+    }
+
+    /**
+     * Tipo da declaração no Comércio Exterior
+     *
+     * @return tipoDeclaracao
+     **/
+    @JsonProperty("tipoDeclaracao")
+    @NotNull
+    public String getTipoDeclaracao() {
+        if (tipoDeclaracao == null) {
+            return null;
+        }
+        return tipoDeclaracao.value();
+    }
+
+    public void setTipoDeclaracao(TipoDeclaracaoEnum tipoDeclaracao) {
+        this.tipoDeclaracao = tipoDeclaracao;
+    }
+
+    public SolicitacaoIcmsDto tipoDeclaracao(TipoDeclaracaoEnum tipoDeclaracao) {
+        this.tipoDeclaracao = tipoDeclaracao;
+        return this;
+    }
+
+    /**
+     * Tipo de solicitação
+     *
+     * @return tipoSolicitacao
+     **/
+    @JsonProperty("tipoSolicitacao")
+    @NotNull
+    public String getTipoSolicitacao() {
+        if (tipoSolicitacao == null) {
+            return null;
+        }
+        return tipoSolicitacao.value();
+    }
+
+    public void setTipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
+        this.tipoSolicitacao = tipoSolicitacao;
+    }
+
+    public SolicitacaoIcmsDto tipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
+        this.tipoSolicitacao = tipoSolicitacao;
+        return this;
+    }
+
+    /**
+     * Tipo de tratamento usado na declaração
+     *
+     * @return tipoTratamento
+     **/
+    @JsonProperty("tipoTratamento")
+    @NotNull
+    public String getTipoTratamento() {
+        if (tipoTratamento == null) {
+            return null;
+        }
+        return tipoTratamento.value();
+    }
+
+    public void setTipoTratamento(TipoTratamentoEnum tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
+    }
+
+    public SolicitacaoIcmsDto tipoTratamento(TipoTratamentoEnum tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
         return this;
     }
 
@@ -376,21 +677,25 @@ public class SolicitacaoIcmsDto {
     }
 
     /**
-     * Get opcaoIcms
+     * UF importador
      *
-     * @return opcaoIcms
+     * @return ufImportador
      **/
-    @JsonProperty("opcaoIcms")
-    public OpcaoIcmsConsultaDto getOpcaoIcms() {
-        return opcaoIcms;
+    @JsonProperty("ufImportador")
+    @NotNull
+    public String getUfImportador() {
+        if (ufImportador == null) {
+            return null;
+        }
+        return ufImportador.value();
     }
 
-    public void setOpcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
-        this.opcaoIcms = opcaoIcms;
+    public void setUfImportador(UfImportadorEnum ufImportador) {
+        this.ufImportador = ufImportador;
     }
 
-    public SolicitacaoIcmsDto opcaoIcms(OpcaoIcmsConsultaDto opcaoIcms) {
-        this.opcaoIcms = opcaoIcms;
+    public SolicitacaoIcmsDto ufImportador(UfImportadorEnum ufImportador) {
+        this.ufImportador = ufImportador;
         return this;
     }
 
@@ -414,46 +719,21 @@ public class SolicitacaoIcmsDto {
     }
 
     /**
-     * Lista de guias de pagamento de ICMS (não canceladas)
+     * Valor CIF Exonerado (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP.
      *
-     * @return guias
+     * @return valorCIFExonerado
      **/
-    @JsonProperty("guias")
-    public List<GuiaIcmsDto> getGuias() {
-        return guias;
+    @JsonProperty("valorCIFExonerado")
+    public BigDecimal getValorCIFExonerado() {
+        return valorCIFExonerado;
     }
 
-    public void setGuias(List<GuiaIcmsDto> guias) {
-        this.guias = guias;
+    public void setValorCIFExonerado(BigDecimal valorCIFExonerado) {
+        this.valorCIFExonerado = valorCIFExonerado;
     }
 
-    public SolicitacaoIcmsDto guias(List<GuiaIcmsDto> guias) {
-        this.guias = guias;
-        return this;
-    }
-
-    public SolicitacaoIcmsDto addGuiasItem(GuiaIcmsDto guiasItem) {
-        this.guias.add(guiasItem);
-        return this;
-    }
-
-    /**
-     * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataConfirmacaoCredito
-     **/
-    @JsonProperty("dataConfirmacaoCredito")
-    @NotNull
-    public String getDataConfirmacaoCredito() {
-        return dataConfirmacaoCredito;
-    }
-
-    public void setDataConfirmacaoCredito(String dataConfirmacaoCredito) {
-        this.dataConfirmacaoCredito = dataConfirmacaoCredito;
-    }
-
-    public SolicitacaoIcmsDto dataConfirmacaoCredito(String dataConfirmacaoCredito) {
-        this.dataConfirmacaoCredito = dataConfirmacaoCredito;
+    public SolicitacaoIcmsDto valorCIFExonerado(BigDecimal valorCIFExonerado) {
+        this.valorCIFExonerado = valorCIFExonerado;
         return this;
     }
 
@@ -477,254 +757,21 @@ public class SolicitacaoIcmsDto {
     }
 
     /**
-     * Texto livre com informações complementares pertinentes &lt;br&gt;Tamanho máximo: 400
+     * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
      *
-     * @return informacoesComplementares
+     * @return valorDespesasAduaneiras
      **/
-    @JsonProperty("informacoesComplementares")
-    public String getInformacoesComplementares() {
-        return informacoesComplementares;
+    @JsonProperty("valorDespesasAduaneiras")
+    public BigDecimal getValorDespesasAduaneiras() {
+        return valorDespesasAduaneiras;
     }
 
-    public void setInformacoesComplementares(String informacoesComplementares) {
-        this.informacoesComplementares = informacoesComplementares;
+    public void setValorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
+        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
     }
 
-    public SolicitacaoIcmsDto informacoesComplementares(String informacoesComplementares) {
-        this.informacoesComplementares = informacoesComplementares;
-        return this;
-    }
-
-    /**
-     * Tipo de tratamento usado na declaração
-     *
-     * @return tipoTratamento
-     **/
-    @JsonProperty("tipoTratamento")
-    @NotNull
-    public String getTipoTratamento() {
-        if (tipoTratamento == null) {
-            return null;
-        }
-        return tipoTratamento.value();
-    }
-
-    public void setTipoTratamento(TipoTratamentoEnum tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
-    }
-
-    public SolicitacaoIcmsDto tipoTratamento(TipoTratamentoEnum tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
-        return this;
-    }
-
-    /**
-     * Descrição das demais despesas aduaneiras &lt;br&gt;Tamanho máximo: 400
-     *
-     * @return descricaoDespesasAduaneiras
-     **/
-    @JsonProperty("descricaoDespesasAduaneiras")
-    public String getDescricaoDespesasAduaneiras() {
-        return descricaoDespesasAduaneiras;
-    }
-
-    public void setDescricaoDespesasAduaneiras(String descricaoDespesasAduaneiras) {
-        this.descricaoDespesasAduaneiras = descricaoDespesasAduaneiras;
-    }
-
-    public SolicitacaoIcmsDto descricaoDespesasAduaneiras(String descricaoDespesasAduaneiras) {
-        this.descricaoDespesasAduaneiras = descricaoDespesasAduaneiras;
-        return this;
-    }
-
-    /**
-     * Período de referência&lt;br&gt;Formato: &#39;yyyy-MM&#39;
-     *
-     * @return periodoReferencia
-     **/
-    @JsonProperty("periodoReferencia")
-    @NotNull
-    public String getPeriodoReferencia() {
-        return periodoReferencia;
-    }
-
-    public void setPeriodoReferencia(String periodoReferencia) {
-        this.periodoReferencia = periodoReferencia;
-    }
-
-    public SolicitacaoIcmsDto periodoReferencia(String periodoReferencia) {
-        this.periodoReferencia = periodoReferencia;
-        return this;
-    }
-
-    /**
-     * Histórico da solicitação de ICMS
-     *
-     * @return historico
-     **/
-    @JsonProperty("historico")
-    public List<SituacaoHistoricoDto> getHistorico() {
-        return historico;
-    }
-
-    public void setHistorico(List<SituacaoHistoricoDto> historico) {
-        this.historico = historico;
-    }
-
-    public SolicitacaoIcmsDto historico(List<SituacaoHistoricoDto> historico) {
-        this.historico = historico;
-        return this;
-    }
-
-    public SolicitacaoIcmsDto addHistoricoItem(SituacaoHistoricoDto historicoItem) {
-        this.historico.add(historicoItem);
-        return this;
-    }
-
-    /**
-     * Número do Mandado Judicial &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; MANDADO_JUDICIAL_DUIMP
-     *
-     * @return numMandadoJudicial
-     **/
-    @JsonProperty("numMandadoJudicial")
-    public String getNumMandadoJudicial() {
-        return numMandadoJudicial;
-    }
-
-    public void setNumMandadoJudicial(String numMandadoJudicial) {
-        this.numMandadoJudicial = numMandadoJudicial;
-    }
-
-    public SolicitacaoIcmsDto numMandadoJudicial(String numMandadoJudicial) {
-        this.numMandadoJudicial = numMandadoJudicial;
-        return this;
-    }
-
-    /**
-     * Tipo de solicitação
-     *
-     * @return tipoSolicitacao
-     **/
-    @JsonProperty("tipoSolicitacao")
-    @NotNull
-    public String getTipoSolicitacao() {
-        if (tipoSolicitacao == null) {
-            return null;
-        }
-        return tipoSolicitacao.value();
-    }
-
-    public void setTipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
-        this.tipoSolicitacao = tipoSolicitacao;
-    }
-
-    public SolicitacaoIcmsDto tipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
-        this.tipoSolicitacao = tipoSolicitacao;
-        return this;
-    }
-
-    /**
-     * Descrição da situação da solicitação
-     *
-     * @return situacaoSolicitacao
-     **/
-    @JsonProperty("situacaoSolicitacao")
-    @NotNull
-    public String getSituacaoSolicitacao() {
-        if (situacaoSolicitacao == null) {
-            return null;
-        }
-        return situacaoSolicitacao.value();
-    }
-
-    public void setSituacaoSolicitacao(SituacaoSolicitacaoEnum situacaoSolicitacao) {
-        this.situacaoSolicitacao = situacaoSolicitacao;
-    }
-
-    public SolicitacaoIcmsDto situacaoSolicitacao(SituacaoSolicitacaoEnum situacaoSolicitacao) {
-        this.situacaoSolicitacao = situacaoSolicitacao;
-        return this;
-    }
-
-    /**
-     * Número da declaração&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 15
-     *
-     * @return numeroDeclaracao
-     **/
-    @JsonProperty("numeroDeclaracao")
-    @NotNull
-    public String getNumeroDeclaracao() {
-        return numeroDeclaracao;
-    }
-
-    public void setNumeroDeclaracao(String numeroDeclaracao) {
-        this.numeroDeclaracao = numeroDeclaracao;
-    }
-
-    public SolicitacaoIcmsDto numeroDeclaracao(String numeroDeclaracao) {
-        this.numeroDeclaracao = numeroDeclaracao;
-        return this;
-    }
-
-    /**
-     * Valor CIF Exonerado (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP.
-     *
-     * @return valorCIFExonerado
-     **/
-    @JsonProperty("valorCIFExonerado")
-    public BigDecimal getValorCIFExonerado() {
-        return valorCIFExonerado;
-    }
-
-    public void setValorCIFExonerado(BigDecimal valorCIFExonerado) {
-        this.valorCIFExonerado = valorCIFExonerado;
-    }
-
-    public SolicitacaoIcmsDto valorCIFExonerado(BigDecimal valorCIFExonerado) {
-        this.valorCIFExonerado = valorCIFExonerado;
-        return this;
-    }
-
-    /**
-     * Tipo da declaração no Comércio Exterior
-     *
-     * @return tipoDeclaracao
-     **/
-    @JsonProperty("tipoDeclaracao")
-    @NotNull
-    public String getTipoDeclaracao() {
-        if (tipoDeclaracao == null) {
-            return null;
-        }
-        return tipoDeclaracao.value();
-    }
-
-    public void setTipoDeclaracao(TipoDeclaracaoEnum tipoDeclaracao) {
-        this.tipoDeclaracao = tipoDeclaracao;
-    }
-
-    public SolicitacaoIcmsDto tipoDeclaracao(TipoDeclaracaoEnum tipoDeclaracao) {
-        this.tipoDeclaracao = tipoDeclaracao;
-        return this;
-    }
-
-    /**
-     * Flag para indicar se a carga foi entregue &lt;br/&gt;(*) Utilizado para tipo de tratamento manual
-     *
-     * @return cargaEntregue
-     **/
-    @JsonProperty("cargaEntregue")
-    @NotNull
-    public Boolean isisCargaEntregue() {
-        return cargaEntregue;
-    }
-
-    public void setCargaEntregue(Boolean cargaEntregue) {
-        this.cargaEntregue = cargaEntregue;
-    }
-
-    public SolicitacaoIcmsDto cargaEntregue(Boolean cargaEntregue) {
-        this.cargaEntregue = cargaEntregue;
+    public SolicitacaoIcmsDto valorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
+        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
         return this;
     }
 
@@ -749,41 +796,22 @@ public class SolicitacaoIcmsDto {
     }
 
     /**
-     * Código TOM do município de despacho (antes chamado de Município de desembaraço pretendido)
+     * Valor total do crédito de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
      *
-     * @return codMunicipioDesembaracoPretendido
+     * @return valorTotalCredito
      **/
-    @JsonProperty("codMunicipioDesembaracoPretendido")
-    public String getCodMunicipioDesembaracoPretendido() {
-        return codMunicipioDesembaracoPretendido;
-    }
-
-    public void setCodMunicipioDesembaracoPretendido(String codMunicipioDesembaracoPretendido) {
-        this.codMunicipioDesembaracoPretendido = codMunicipioDesembaracoPretendido;
-    }
-
-    public SolicitacaoIcmsDto codMunicipioDesembaracoPretendido(String codMunicipioDesembaracoPretendido) {
-        this.codMunicipioDesembaracoPretendido = codMunicipioDesembaracoPretendido;
-        return this;
-    }
-
-    /**
-     * Código CNAE do Importador
-     *
-     * @return cnaeImportador
-     **/
-    @JsonProperty("cnaeImportador")
+    @JsonProperty("valorTotalCredito")
     @NotNull
-    public String getCnaeImportador() {
-        return cnaeImportador;
+    public BigDecimal getValorTotalCredito() {
+        return valorTotalCredito;
     }
 
-    public void setCnaeImportador(String cnaeImportador) {
-        this.cnaeImportador = cnaeImportador;
+    public void setValorTotalCredito(BigDecimal valorTotalCredito) {
+        this.valorTotalCredito = valorTotalCredito;
     }
 
-    public SolicitacaoIcmsDto cnaeImportador(String cnaeImportador) {
-        this.cnaeImportador = cnaeImportador;
+    public SolicitacaoIcmsDto valorTotalCredito(BigDecimal valorTotalCredito) {
+        this.valorTotalCredito = valorTotalCredito;
         return this;
     }
 
@@ -827,189 +855,252 @@ public class SolicitacaoIcmsDto {
         return this;
     }
 
-    /**
-     * Observação, conforme o tipo de tratamento
-     *
-     * @return status
-     **/
-    @JsonProperty("status")
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public SolicitacaoIcmsDto status(String status) {
-        this.status = status;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class SolicitacaoIcmsDto {\n" +
-                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
+                "    cargaEntregue: " + toIndentedString(cargaEntregue) + "\n" +
                 "    cnaeAdquirente: " + toIndentedString(cnaeAdquirente) + "\n" +
+                "    cnaeImportador: " + toIndentedString(cnaeImportador) + "\n" +
+                "    codMunicipioDesembaracoPretendido: " + toIndentedString(codMunicipioDesembaracoPretendido) + "\n" +
                 "    cpfSolicitante: " + toIndentedString(cpfSolicitante) + "\n" +
-                "    ufImportador: " + toIndentedString(ufImportador) + "\n" +
-                "    valorDespesasAduaneiras: " + toIndentedString(valorDespesasAduaneiras) + "\n" +
+                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
+                "    descricaoDespesasAduaneiras: " + toIndentedString(descricaoDespesasAduaneiras) + "\n" +
+                "    guias: " + toIndentedString(guias) + "\n" +
+                "    historico: " + toIndentedString(historico) + "\n" +
+                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
+                "    numMandadoJudicial: " + toIndentedString(numMandadoJudicial) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    opcaoIcms: " + toIndentedString(opcaoIcms) + "\n" +
+                "    periodoReferencia: " + toIndentedString(periodoReferencia) + "\n" +
+                "    situacaoSolicitacao: " + toIndentedString(situacaoSolicitacao) + "\n" +
+                "    status: " + toIndentedString(status) + "\n" +
+                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
                 "    ufAdquirente: " + toIndentedString(ufAdquirente) + "\n" +
                 "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
-                "    opcaoIcms: " + toIndentedString(opcaoIcms) + "\n" +
+                "    ufImportador: " + toIndentedString(ufImportador) + "\n" +
                 "    valorAfrmm: " + toIndentedString(valorAfrmm) + "\n" +
-                "    guias: " + toIndentedString(guias) + "\n" +
-                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
-                "    valorCIFPagamento: " + toIndentedString(valorCIFPagamento) + "\n" +
-                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
-                "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
-                "    descricaoDespesasAduaneiras: " + toIndentedString(descricaoDespesasAduaneiras) + "\n" +
-                "    periodoReferencia: " + toIndentedString(periodoReferencia) + "\n" +
-                "    historico: " + toIndentedString(historico) + "\n" +
-                "    numMandadoJudicial: " + toIndentedString(numMandadoJudicial) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    situacaoSolicitacao: " + toIndentedString(situacaoSolicitacao) + "\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
                 "    valorCIFExonerado: " + toIndentedString(valorCIFExonerado) + "\n" +
-                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
-                "    cargaEntregue: " + toIndentedString(cargaEntregue) + "\n" +
+                "    valorCIFPagamento: " + toIndentedString(valorCIFPagamento) + "\n" +
+                "    valorDespesasAduaneiras: " + toIndentedString(valorDespesasAduaneiras) + "\n" +
                 "    valorTotalARecolher: " + toIndentedString(valorTotalARecolher) + "\n" +
-                "    codMunicipioDesembaracoPretendido: " + toIndentedString(codMunicipioDesembaracoPretendido) + "\n" +
-                "    cnaeImportador: " + toIndentedString(cnaeImportador) + "\n" +
+                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
                 "    valorTotalDevido: " + toIndentedString(valorTotalDevido) + "\n" +
                 "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
-                "    status: " + toIndentedString(status) + "\n" +
                 "}";
         return sb;
     }
 
-    @XmlType(name = "UfImportadorEnum")
+    @XmlType(name = "SituacaoSolicitacaoEnum")
     @XmlEnum(String.class)
-    public enum UfImportadorEnum {
+    public enum SituacaoSolicitacaoEnum {
 
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
+        @XmlEnumValue("DUIMP_DECLARADA")
+        @JsonProperty("DUIMP_DECLARADA")
+        DECLARADA("DUIMP_DECLARADA"),
 
-        @XmlEnumValue("AL")
-        @JsonProperty("AL")
-        AL("AL"),
+        @XmlEnumValue("DUIMP_CANCELADA_IMPORTADOR")
+        @JsonProperty("DUIMP_CANCELADA_IMPORTADOR")
+        CANCELADA_IMPORTADOR("DUIMP_CANCELADA_IMPORTADOR"),
 
-        @XmlEnumValue("AM")
-        @JsonProperty("AM")
-        AM("AM"),
+        @XmlEnumValue("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
+        @JsonProperty("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
+        PENDENTE_PAGAMENTO_EXONERACAO("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO"),
 
-        @XmlEnumValue("AP")
-        @JsonProperty("AP")
-        AP("AP"),
+        @XmlEnumValue("DUIMP_PAGA_EXONERADA")
+        @JsonProperty("DUIMP_PAGA_EXONERADA")
+        PAGA_EXONERADA("DUIMP_PAGA_EXONERADA"),
 
-        @XmlEnumValue("BA")
-        @JsonProperty("BA")
-        BA("BA"),
+        @XmlEnumValue("DUIMP_CANCELADA_AUTOMATICAMENTE")
+        @JsonProperty("DUIMP_CANCELADA_AUTOMATICAMENTE")
+        CANCELADA_AUTOMATICAMENTE("DUIMP_CANCELADA_AUTOMATICAMENTE"),
 
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
+        @XmlEnumValue("DUIMP_AGUARDANDO_DOCUMENTACAO")
+        @JsonProperty("DUIMP_AGUARDANDO_DOCUMENTACAO")
+        AGUARDANDO_DOCUMENTACAO("DUIMP_AGUARDANDO_DOCUMENTACAO"),
 
-        @XmlEnumValue("DF")
-        @JsonProperty("DF")
-        DF("DF"),
+        @XmlEnumValue("DUIMP_AGUARDANDO_EXIGENCIA")
+        @JsonProperty("DUIMP_AGUARDANDO_EXIGENCIA")
+        AGUARDANDO_EXIGENCIA("DUIMP_AGUARDANDO_EXIGENCIA"),
 
-        @XmlEnumValue("ES")
-        @JsonProperty("ES")
-        ES("ES"),
+        @XmlEnumValue("DUIMP_A_DISTRIBUIR")
+        @JsonProperty("DUIMP_A_DISTRIBUIR")
+        A_DISTRIBUIR("DUIMP_A_DISTRIBUIR"),
 
-        @XmlEnumValue("GO")
-        @JsonProperty("GO")
-        GO("GO"),
+        @XmlEnumValue("DUIMP_A_DISTRIBUIR_RETORNO")
+        @JsonProperty("DUIMP_A_DISTRIBUIR_RETORNO")
+        A_DISTRIBUIR_RETORNO("DUIMP_A_DISTRIBUIR_RETORNO"),
 
-        @XmlEnumValue("MA")
-        @JsonProperty("MA")
-        MA("MA"),
+        @XmlEnumValue("DUIMP_DISTRIBUIDA")
+        @JsonProperty("DUIMP_DISTRIBUIDA")
+        DISTRIBUIDA("DUIMP_DISTRIBUIDA"),
 
-        @XmlEnumValue("MG")
-        @JsonProperty("MG")
-        MG("MG"),
+        @XmlEnumValue("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
+        @JsonProperty("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
+        SOLICITACAO_AUTORIZADA_SEFAZ("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ"),
 
-        @XmlEnumValue("MS")
-        @JsonProperty("MS")
-        MS("MS"),
+        @XmlEnumValue("DUIMP_SOLICITACAO_INDEFERIDA")
+        @JsonProperty("DUIMP_SOLICITACAO_INDEFERIDA")
+        SOLICITACAO_INDEFERIDA("DUIMP_SOLICITACAO_INDEFERIDA"),
 
-        @XmlEnumValue("MT")
-        @JsonProperty("MT")
-        MT("MT"),
+        @XmlEnumValue("DUIMP_DECLARADA_PAGA")
+        @JsonProperty("DUIMP_DECLARADA_PAGA")
+        DECLARADA_PAGA("DUIMP_DECLARADA_PAGA"),
 
-        @XmlEnumValue("PA")
-        @JsonProperty("PA")
-        PA("PA"),
+        @XmlEnumValue("DUIMP_CALCULO_SOLICITADO")
+        @JsonProperty("DUIMP_CALCULO_SOLICITADO")
+        CALCULO_SOLICITADO("DUIMP_CALCULO_SOLICITADO"),
 
-        @XmlEnumValue("PB")
-        @JsonProperty("PB")
-        PB("PB"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("PI")
-        @JsonProperty("PI")
-        PI("PI"),
-
-        @XmlEnumValue("PR")
-        @JsonProperty("PR")
-        PR("PR"),
-
-        @XmlEnumValue("RJ")
-        @JsonProperty("RJ")
-        RJ("RJ"),
-
-        @XmlEnumValue("RN")
-        @JsonProperty("RN")
-        RN("RN"),
-
-        @XmlEnumValue("RO")
-        @JsonProperty("RO")
-        RO("RO"),
-
-        @XmlEnumValue("RR")
-        @JsonProperty("RR")
-        RR("RR"),
-
-        @XmlEnumValue("RS")
-        @JsonProperty("RS")
-        RS("RS"),
-
-        @XmlEnumValue("SC")
-        @JsonProperty("SC")
-        SC("SC"),
-
-        @XmlEnumValue("SE")
-        @JsonProperty("SE")
-        SE("SE"),
-
-        @XmlEnumValue("SP")
-        @JsonProperty("SP")
-        SP("SP"),
-
-        @XmlEnumValue("TO")
-        @JsonProperty("TO")
-        TO("TO");
+        @XmlEnumValue("DUIMP_CALCULO_INDEFERIDO")
+        @JsonProperty("DUIMP_CALCULO_INDEFERIDO")
+        CALCULO_INDEFERIDO("DUIMP_CALCULO_INDEFERIDO");
 
 
         private final String value;
 
-        UfImportadorEnum(String v) {
+        SituacaoSolicitacaoEnum(String v) {
             value = v;
         }
 
-        public static UfImportadorEnum fromValue(String v) {
-            for (UfImportadorEnum b : UfImportadorEnum.values()) {
+        public static SituacaoSolicitacaoEnum fromValue(String v) {
+            for (SituacaoSolicitacaoEnum b : SituacaoSolicitacaoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfImportadorEnum");
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "TipoDeclaracaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDeclaracaoEnum {
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TipoDeclaracaoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoDeclaracaoEnum fromValue(String v) {
+            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "TipoSolicitacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoSolicitacaoEnum {
+
+        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
+        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
+        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
+        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
+        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
+        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
+        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
+        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
+        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
+        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
+        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
+
+
+        private final String value;
+
+        TipoSolicitacaoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "TipoTratamentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoTratamentoEnum {
+
+        @XmlEnumValue("MANUAL")
+        @JsonProperty("MANUAL")
+        MANUAL("MANUAL"),
+
+        @XmlEnumValue("DECLARATORIO")
+        @JsonProperty("DECLARATORIO")
+        DECLARATORIO("DECLARATORIO"),
+
+        @XmlEnumValue("AUTOMATICO")
+        @JsonProperty("AUTOMATICO")
+        AUTOMATICO("AUTOMATICO"),
+
+        @XmlEnumValue("CALCULO_SEFAZ")
+        @JsonProperty("CALCULO_SEFAZ")
+        CALCULO_SEFAZ("CALCULO_SEFAZ");
+
+
+        private final String value;
+
+        TipoTratamentoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoTratamentoEnum fromValue(String v) {
+            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
         }
 
         public String value() {
@@ -1141,15 +1232,6 @@ public class SolicitacaoIcmsDto {
             value = v;
         }
 
-        public static UfAdquirenteEnum fromValue(String v) {
-            for (UfAdquirenteEnum b : UfAdquirenteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfAdquirenteEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -1158,7 +1240,17 @@ public class SolicitacaoIcmsDto {
         public String toString() {
             return String.valueOf(value);
         }
+
+        public static UfAdquirenteEnum fromValue(String v) {
+            for (UfAdquirenteEnum b : UfAdquirenteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfAdquirenteEnum");
+        }
     }
+
 
     @XmlType(name = "UfFavorecidaEnum")
     @XmlEnum(String.class)
@@ -1279,6 +1371,15 @@ public class SolicitacaoIcmsDto {
             value = v;
         }
 
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
         public static UfFavorecidaEnum fromValue(String v) {
             for (UfFavorecidaEnum b : UfFavorecidaEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -1287,51 +1388,125 @@ public class SolicitacaoIcmsDto {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to UfFavorecidaEnum");
         }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
     }
 
-    @XmlType(name = "TipoTratamentoEnum")
+    @XmlType(name = "UfImportadorEnum")
     @XmlEnum(String.class)
-    public enum TipoTratamentoEnum {
+    public enum UfImportadorEnum {
 
-        @XmlEnumValue("MANUAL")
-        @JsonProperty("MANUAL")
-        MANUAL("MANUAL"),
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
 
-        @XmlEnumValue("DECLARATORIO")
-        @JsonProperty("DECLARATORIO")
-        DECLARATORIO("DECLARATORIO"),
+        @XmlEnumValue("AL")
+        @JsonProperty("AL")
+        AL("AL"),
 
-        @XmlEnumValue("AUTOMATICO")
-        @JsonProperty("AUTOMATICO")
-        AUTOMATICO("AUTOMATICO"),
+        @XmlEnumValue("AM")
+        @JsonProperty("AM")
+        AM("AM"),
 
-        @XmlEnumValue("CALCULO_SEFAZ")
-        @JsonProperty("CALCULO_SEFAZ")
-        CALCULO_SEFAZ("CALCULO_SEFAZ");
+        @XmlEnumValue("AP")
+        @JsonProperty("AP")
+        AP("AP"),
+
+        @XmlEnumValue("BA")
+        @JsonProperty("BA")
+        BA("BA"),
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("DF")
+        @JsonProperty("DF")
+        DF("DF"),
+
+        @XmlEnumValue("ES")
+        @JsonProperty("ES")
+        ES("ES"),
+
+        @XmlEnumValue("GO")
+        @JsonProperty("GO")
+        GO("GO"),
+
+        @XmlEnumValue("MA")
+        @JsonProperty("MA")
+        MA("MA"),
+
+        @XmlEnumValue("MG")
+        @JsonProperty("MG")
+        MG("MG"),
+
+        @XmlEnumValue("MS")
+        @JsonProperty("MS")
+        MS("MS"),
+
+        @XmlEnumValue("MT")
+        @JsonProperty("MT")
+        MT("MT"),
+
+        @XmlEnumValue("PA")
+        @JsonProperty("PA")
+        PA("PA"),
+
+        @XmlEnumValue("PB")
+        @JsonProperty("PB")
+        PB("PB"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("PI")
+        @JsonProperty("PI")
+        PI("PI"),
+
+        @XmlEnumValue("PR")
+        @JsonProperty("PR")
+        PR("PR"),
+
+        @XmlEnumValue("RJ")
+        @JsonProperty("RJ")
+        RJ("RJ"),
+
+        @XmlEnumValue("RN")
+        @JsonProperty("RN")
+        RN("RN"),
+
+        @XmlEnumValue("RO")
+        @JsonProperty("RO")
+        RO("RO"),
+
+        @XmlEnumValue("RR")
+        @JsonProperty("RR")
+        RR("RR"),
+
+        @XmlEnumValue("RS")
+        @JsonProperty("RS")
+        RS("RS"),
+
+        @XmlEnumValue("SC")
+        @JsonProperty("SC")
+        SC("SC"),
+
+        @XmlEnumValue("SE")
+        @JsonProperty("SE")
+        SE("SE"),
+
+        @XmlEnumValue("SP")
+        @JsonProperty("SP")
+        SP("SP"),
+
+        @XmlEnumValue("TO")
+        @JsonProperty("TO")
+        TO("TO");
 
 
         private final String value;
 
-        TipoTratamentoEnum(String v) {
+        UfImportadorEnum(String v) {
             value = v;
-        }
-
-        public static TipoTratamentoEnum fromValue(String v) {
-            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
         }
 
         public String value() {
@@ -1342,180 +1517,14 @@ public class SolicitacaoIcmsDto {
         public String toString() {
             return String.valueOf(value);
         }
-    }
 
-    @XmlType(name = "TipoSolicitacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoSolicitacaoEnum {
-
-        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
-        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
-        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
-        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
-        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
-        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
-        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
-        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
-        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
-        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
-        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
-
-
-        private final String value;
-
-        TipoSolicitacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+        public static UfImportadorEnum fromValue(String v) {
+            for (UfImportadorEnum b : UfImportadorEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
                     return b;
                 }
             }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-
-    @XmlType(name = "SituacaoSolicitacaoEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoSolicitacaoEnum {
-
-        @XmlEnumValue("DUIMP_DECLARADA")
-        @JsonProperty("DUIMP_DECLARADA")
-        DECLARADA("DUIMP_DECLARADA"),
-
-        @XmlEnumValue("DUIMP_CANCELADA_IMPORTADOR")
-        @JsonProperty("DUIMP_CANCELADA_IMPORTADOR")
-        CANCELADA_IMPORTADOR("DUIMP_CANCELADA_IMPORTADOR"),
-
-        @XmlEnumValue("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
-        @JsonProperty("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
-        PENDENTE_PAGAMENTO_EXONERACAO("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO"),
-
-        @XmlEnumValue("DUIMP_PAGA_EXONERADA")
-        @JsonProperty("DUIMP_PAGA_EXONERADA")
-        PAGA_EXONERADA("DUIMP_PAGA_EXONERADA"),
-
-        @XmlEnumValue("DUIMP_CANCELADA_AUTOMATICAMENTE")
-        @JsonProperty("DUIMP_CANCELADA_AUTOMATICAMENTE")
-        CANCELADA_AUTOMATICAMENTE("DUIMP_CANCELADA_AUTOMATICAMENTE"),
-
-        @XmlEnumValue("DUIMP_AGUARDANDO_DOCUMENTACAO")
-        @JsonProperty("DUIMP_AGUARDANDO_DOCUMENTACAO")
-        AGUARDANDO_DOCUMENTACAO("DUIMP_AGUARDANDO_DOCUMENTACAO"),
-
-        @XmlEnumValue("DUIMP_AGUARDANDO_EXIGENCIA")
-        @JsonProperty("DUIMP_AGUARDANDO_EXIGENCIA")
-        AGUARDANDO_EXIGENCIA("DUIMP_AGUARDANDO_EXIGENCIA"),
-
-        @XmlEnumValue("DUIMP_A_DISTRIBUIR")
-        @JsonProperty("DUIMP_A_DISTRIBUIR")
-        A_DISTRIBUIR("DUIMP_A_DISTRIBUIR"),
-
-        @XmlEnumValue("DUIMP_A_DISTRIBUIR_RETORNO")
-        @JsonProperty("DUIMP_A_DISTRIBUIR_RETORNO")
-        A_DISTRIBUIR_RETORNO("DUIMP_A_DISTRIBUIR_RETORNO"),
-
-        @XmlEnumValue("DUIMP_DISTRIBUIDA")
-        @JsonProperty("DUIMP_DISTRIBUIDA")
-        DISTRIBUIDA("DUIMP_DISTRIBUIDA"),
-
-        @XmlEnumValue("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
-        @JsonProperty("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
-        SOLICITACAO_AUTORIZADA_SEFAZ("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ"),
-
-        @XmlEnumValue("DUIMP_SOLICITACAO_INDEFERIDA")
-        @JsonProperty("DUIMP_SOLICITACAO_INDEFERIDA")
-        SOLICITACAO_INDEFERIDA("DUIMP_SOLICITACAO_INDEFERIDA"),
-
-        @XmlEnumValue("DUIMP_DECLARADA_PAGA")
-        @JsonProperty("DUIMP_DECLARADA_PAGA")
-        DECLARADA_PAGA("DUIMP_DECLARADA_PAGA"),
-
-        @XmlEnumValue("DUIMP_CALCULO_SOLICITADO")
-        @JsonProperty("DUIMP_CALCULO_SOLICITADO")
-        CALCULO_SOLICITADO("DUIMP_CALCULO_SOLICITADO"),
-
-        @XmlEnumValue("DUIMP_CALCULO_INDEFERIDO")
-        @JsonProperty("DUIMP_CALCULO_INDEFERIDO")
-        CALCULO_INDEFERIDO("DUIMP_CALCULO_INDEFERIDO");
-
-
-        private final String value;
-
-        SituacaoSolicitacaoEnum(String v) {
-            value = v;
-        }
-
-        public static SituacaoSolicitacaoEnum fromValue(String v) {
-            for (SituacaoSolicitacaoEnum b : SituacaoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoDeclaracaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDeclaracaoEnum {
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TipoDeclaracaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDeclaracaoEnum fromValue(String v) {
-            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfImportadorEnum");
         }
     }
 }

@@ -14,11 +14,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CabealhoEnvioEventoAduaneiro", propOrder =
-        {"idEvento", "dataHoraRegistro", "codigoRecinto", "dataHoraOcorrencia", "tipoOperacao", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia"
+        {"tipoOperacao", "idEvento", "dataHoraOcorrencia", "dataHoraRegistro", "cpfOperadorOcorrencia", "cpfOperadorRegistro", "protocoloEventoRetificadoOuExcluido", "contingencia", "codigoRecinto"
         })
 
 @XmlRootElement(name = "CabealhoEnvioEventoAduaneiro")
 public class CabealhoEnvioEventoAduaneiro {
+
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
+    /**
+     * Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora do Registro de Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e Hora do Registro de Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraRegistro = null;
 
     @XmlElement(name = "idEvento", required = true)
     @ApiModelProperty(required = true, value = "Identificador do Evento no Sistema do Recinto<br/>Tamanho: 50")
@@ -27,13 +41,12 @@ public class CabealhoEnvioEventoAduaneiro {
      **/
     private String idEvento = null;
 
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora do Registro de Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora da Ocorrência do Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Data e Hora do Registro de Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Data e Hora da Ocorrência do Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String dataHoraRegistro = null;
-
+    private String dataHoraOcorrencia = null;
     @XmlElement(name = "codigoRecinto", required = true)
     @ApiModelProperty(example = "1111111", required = true, value = "Código do Recinto Aduaneiro<br/>Tamanho: 15")
     /**
@@ -41,36 +54,27 @@ public class CabealhoEnvioEventoAduaneiro {
      **/
     private String codigoRecinto = null;
 
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora da Ocorrência do Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e Hora da Ocorrência do Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
     @XmlElement(name = "cpfOperadorOcorrencia")
     @ApiModelProperty(example = "55555555555", value = "CPF Operador da Ocorrência<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
      * CPF Operador da Ocorrência<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorOcorrencia = null;
+
     @XmlElement(name = "cpfOperadorRegistro")
     @ApiModelProperty(example = "55555555555", value = "CPF Operador do Registro no Sistema<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
      * CPF Operador do Registro no Sistema<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
+
     @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
     @ApiModelProperty(value = "Protocolo do Evento que está sendo Cancelado/Retificado<br/>Tamanho: 36")
     /**
      * Protocolo do Evento que está sendo Cancelado/Retificado<br/>Tamanho: 36
      **/
     private String protocoloEventoRetificadoOuExcluido = null;
+
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indicativo de Contingência<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
@@ -90,6 +94,29 @@ public class CabealhoEnvioEventoAduaneiro {
     }
 
     /**
+     * Tipo da Operação&lt;br/&gt;Tamanho: 1&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
+     *
+     * @return tipoOperacao
+     **/
+    @JsonProperty("tipoOperacao")
+    @NotNull
+    public String getTipoOperacao() {
+        if (tipoOperacao == null) {
+            return null;
+        }
+        return tipoOperacao.value();
+    }
+
+    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+    }
+
+    public CabealhoEnvioEventoAduaneiro tipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+        return this;
+    }
+
+    /**
      * Identificador do Evento no Sistema do Recinto&lt;br/&gt;Tamanho: 50
      *
      * @return idEvento
@@ -106,46 +133,6 @@ public class CabealhoEnvioEventoAduaneiro {
 
     public CabealhoEnvioEventoAduaneiro idEvento(String idEvento) {
         this.idEvento = idEvento;
-        return this;
-    }
-
-    /**
-     * Data e Hora do Registro de Evento&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    public CabealhoEnvioEventoAduaneiro dataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-        return this;
-    }
-
-    /**
-     * Código do Recinto Aduaneiro&lt;br/&gt;Tamanho: 15
-     *
-     * @return codigoRecinto
-     **/
-    @JsonProperty("codigoRecinto")
-    @NotNull
-    public String getCodigoRecinto() {
-        return codigoRecinto;
-    }
-
-    public void setCodigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
-    }
-
-    public CabealhoEnvioEventoAduaneiro codigoRecinto(String codigoRecinto) {
-        this.codigoRecinto = codigoRecinto;
         return this;
     }
 
@@ -170,25 +157,22 @@ public class CabealhoEnvioEventoAduaneiro {
     }
 
     /**
-     * Tipo da Operação&lt;br/&gt;Tamanho: 1&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
+     * Data e Hora do Registro de Evento&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return tipoOperacao
+     * @return dataHoraRegistro
      **/
-    @JsonProperty("tipoOperacao")
+    @JsonProperty("dataHoraRegistro")
     @NotNull
-    public String getTipoOperacao() {
-        if (tipoOperacao == null) {
-            return null;
-        }
-        return tipoOperacao.value();
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
     }
 
-    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
     }
 
-    public CabealhoEnvioEventoAduaneiro tipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
+    public CabealhoEnvioEventoAduaneiro dataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
         return this;
     }
 
@@ -269,20 +253,40 @@ public class CabealhoEnvioEventoAduaneiro {
         return this;
     }
 
+    /**
+     * Código do Recinto Aduaneiro&lt;br/&gt;Tamanho: 15
+     *
+     * @return codigoRecinto
+     **/
+    @JsonProperty("codigoRecinto")
+    @NotNull
+    public String getCodigoRecinto() {
+        return codigoRecinto;
+    }
+
+    public void setCodigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+    }
+
+    public CabealhoEnvioEventoAduaneiro codigoRecinto(String codigoRecinto) {
+        this.codigoRecinto = codigoRecinto;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class CabealhoEnvioEventoAduaneiro {\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
                 "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
                 "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
                 "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
                 "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
                 "}";
         return sb;
     }

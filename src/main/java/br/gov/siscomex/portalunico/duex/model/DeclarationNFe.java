@@ -15,26 +15,31 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclarationNFe", propOrder =
-        {"additionalInformation", "exitOffice", "ucr", "declarationOffice", "dutyTaxFee", "goodsShipment", "id", "declarant", "additionalDocument", "currencyExchange"
+        {"additionalDocument", "additionalInformation", "currencyExchange", "declarant", "declarationOffice", "dutyTaxFee", "exitOffice", "goodsShipment", "id", "ucr"
         })
 
 @XmlRootElement(name = "DeclarationNFe")
 public class DeclarationNFe {
+
+    @XmlElement(name = "additionalDocument")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<AdditionalDocument> additionalDocument = null;
 
     @XmlElement(name = "additionalInformation")
     @ApiModelProperty(value = "")
     @Valid
     private List<AdditionalInformation> additionalInformation = null;
 
-    @XmlElement(name = "exitOffice", required = true)
+    @XmlElement(name = "currencyExchange", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private ExitOffice exitOffice = null;
+    private CurrencyExchange currencyExchange = null;
 
-    @XmlElement(name = "ucr")
-    @ApiModelProperty(value = "")
+    @XmlElement(name = "declarant", required = true)
+    @ApiModelProperty(required = true, value = "")
     @Valid
-    private UCR ucr = null;
+    private Declarant declarant = null;
 
     @XmlElement(name = "declarationOffice", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -46,6 +51,11 @@ public class DeclarationNFe {
     @Valid
     private List<DutyTaxFee> dutyTaxFee = null;
 
+    @XmlElement(name = "exitOffice", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ExitOffice exitOffice = null;
+
     @XmlElement(name = "goodsShipment", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
@@ -56,20 +66,10 @@ public class DeclarationNFe {
     @Valid
     private DeclarationIdentificationIDType id = null;
 
-    @XmlElement(name = "declarant", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Declarant declarant = null;
-
-    @XmlElement(name = "additionalDocument")
+    @XmlElement(name = "ucr")
     @ApiModelProperty(value = "")
     @Valid
-    private List<AdditionalDocument> additionalDocument = null;
-
-    @XmlElement(name = "currencyExchange", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private CurrencyExchange currencyExchange = null;
+    private UCR ucr = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -80,6 +80,25 @@ public class DeclarationNFe {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get additionalDocument
+     *
+     * @return additionalDocument
+     **/
+    @JsonProperty("additionalDocument")
+    public List<AdditionalDocument> getAdditionalDocument() {
+        return additionalDocument;
+    }
+
+    public void setAdditionalDocument(List<AdditionalDocument> additionalDocument) {
+        this.additionalDocument = additionalDocument;
+    }
+
+    public DeclarationNFe additionalDocument(List<AdditionalDocument> additionalDocument) {
+        this.additionalDocument = additionalDocument;
+        return this;
     }
 
     /**
@@ -106,43 +125,44 @@ public class DeclarationNFe {
         return this;
     }
 
+    public DeclarationNFe addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
+        this.additionalDocument.add(additionalDocumentItem);
+        return this;
+    }
+
     /**
-     * Get exitOffice
+     * Get currencyExchange
      *
-     * @return exitOffice
+     * @return currencyExchange
      **/
-    @JsonProperty("exitOffice")
+    @JsonProperty("currencyExchange")
     @NotNull
-    public ExitOffice getExitOffice() {
-        return exitOffice;
+    public CurrencyExchange getCurrencyExchange() {
+        return currencyExchange;
     }
 
-    public void setExitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
+    public void setCurrencyExchange(CurrencyExchange currencyExchange) {
+        this.currencyExchange = currencyExchange;
     }
 
-    public DeclarationNFe exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
+    public DeclarationNFe currencyExchange(CurrencyExchange currencyExchange) {
+        this.currencyExchange = currencyExchange;
         return this;
     }
 
     /**
-     * Get ucr
+     * Get declarant
      *
-     * @return ucr
+     * @return declarant
      **/
-    @JsonProperty("ucr")
-    public UCR getUcr() {
-        return ucr;
+    @JsonProperty("declarant")
+    @NotNull
+    public Declarant getDeclarant() {
+        return declarant;
     }
 
-    public void setUcr(UCR ucr) {
-        this.ucr = ucr;
-    }
-
-    public DeclarationNFe ucr(UCR ucr) {
-        this.ucr = ucr;
-        return this;
+    public void setDeclarant(Declarant declarant) {
+        this.declarant = declarant;
     }
 
     /**
@@ -189,6 +209,26 @@ public class DeclarationNFe {
         return this;
     }
 
+    public DeclarationNFe declarant(Declarant declarant) {
+        this.declarant = declarant;
+        return this;
+    }
+
+    /**
+     * Get exitOffice
+     *
+     * @return exitOffice
+     **/
+    @JsonProperty("exitOffice")
+    @NotNull
+    public ExitOffice getExitOffice() {
+        return exitOffice;
+    }
+
+    public void setExitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
+    }
+
     /**
      * Get goodsShipment
      *
@@ -216,7 +256,6 @@ public class DeclarationNFe {
 
     /**
      * Get id
-     *
      * @return id
      **/
     @JsonProperty("id")
@@ -233,67 +272,27 @@ public class DeclarationNFe {
         return this;
     }
 
-    /**
-     * Get declarant
-     *
-     * @return declarant
-     **/
-    @JsonProperty("declarant")
-    @NotNull
-    public Declarant getDeclarant() {
-        return declarant;
-    }
-
-    public void setDeclarant(Declarant declarant) {
-        this.declarant = declarant;
-    }
-
-    public DeclarationNFe declarant(Declarant declarant) {
-        this.declarant = declarant;
+    public DeclarationNFe exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 
     /**
-     * Get additionalDocument
+     * Get ucr
      *
-     * @return additionalDocument
+     * @return ucr
      **/
-    @JsonProperty("additionalDocument")
-    public List<AdditionalDocument> getAdditionalDocument() {
-        return additionalDocument;
+    @JsonProperty("ucr")
+    public UCR getUcr() {
+        return ucr;
     }
 
-    public void setAdditionalDocument(List<AdditionalDocument> additionalDocument) {
-        this.additionalDocument = additionalDocument;
+    public void setUcr(UCR ucr) {
+        this.ucr = ucr;
     }
 
-    public DeclarationNFe additionalDocument(List<AdditionalDocument> additionalDocument) {
-        this.additionalDocument = additionalDocument;
-        return this;
-    }
-
-    public DeclarationNFe addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
-        this.additionalDocument.add(additionalDocumentItem);
-        return this;
-    }
-
-    /**
-     * Get currencyExchange
-     *
-     * @return currencyExchange
-     **/
-    @JsonProperty("currencyExchange")
-    @NotNull
-    public CurrencyExchange getCurrencyExchange() {
-        return currencyExchange;
-    }
-
-    public void setCurrencyExchange(CurrencyExchange currencyExchange) {
-        this.currencyExchange = currencyExchange;
-    }
-
-    public DeclarationNFe currencyExchange(CurrencyExchange currencyExchange) {
-        this.currencyExchange = currencyExchange;
+    public DeclarationNFe ucr(UCR ucr) {
+        this.ucr = ucr;
         return this;
     }
 
@@ -301,16 +300,16 @@ public class DeclarationNFe {
     public String toString() {
 
         String sb = "class DeclarationNFe {\n" +
+                "    additionalDocument: " + toIndentedString(additionalDocument) + "\n" +
                 "    additionalInformation: " + toIndentedString(additionalInformation) + "\n" +
-                "    exitOffice: " + toIndentedString(exitOffice) + "\n" +
-                "    ucr: " + toIndentedString(ucr) + "\n" +
+                "    currencyExchange: " + toIndentedString(currencyExchange) + "\n" +
+                "    declarant: " + toIndentedString(declarant) + "\n" +
                 "    declarationOffice: " + toIndentedString(declarationOffice) + "\n" +
                 "    dutyTaxFee: " + toIndentedString(dutyTaxFee) + "\n" +
+                "    exitOffice: " + toIndentedString(exitOffice) + "\n" +
                 "    goodsShipment: " + toIndentedString(goodsShipment) + "\n" +
                 "    id: " + toIndentedString(id) + "\n" +
-                "    declarant: " + toIndentedString(declarant) + "\n" +
-                "    additionalDocument: " + toIndentedString(additionalDocument) + "\n" +
-                "    currencyExchange: " + toIndentedString(currencyExchange) + "\n" +
+                "    ucr: " + toIndentedString(ucr) + "\n" +
                 "}";
         return sb;
     }

@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EstoqueNFE", propOrder =
-        {"pesoAferido", "itens", "numero", "recinto", "motivoNaoPesagem", "latitude", "urf", "responsavel", "longitude", "registro"
+        {"numero", "urf", "recinto", "latitude", "longitude", "registro", "responsavel", "pesoAferido", "motivoNaoPesagem", "itens"
         })
 
 @XmlRootElement(name = "EstoqueNFE")
@@ -26,49 +26,12 @@ import java.util.List;
 @ApiModel(description = "Estoque da Nota Fiscal Eletrônica")
 public class EstoqueNFE {
 
-    @XmlElement(name = "pesoAferido")
-    @ApiModelProperty(example = "100.0", value = "Peso aferido na recepção em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
-    @Valid
-    /**
-     * Peso aferido na recepção em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
-     **/
-    private BigDecimal pesoAferido = null;
-
-    @XmlElement(name = "itens")
-    @ApiModelProperty(value = "Itens da Nota Fiscal")
-    @Valid
-    /**
-     * Itens da Nota Fiscal
-     **/
-    private List<ItemNFEEstoque> itens = null;
-
     @XmlElement(name = "numero")
     @ApiModelProperty(example = "20161016175341723460934170526686662814689781", value = "Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
     /**
      * Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      **/
     private String numero = null;
-
-    @XmlElement(name = "recinto")
-    @ApiModelProperty(example = "8911101", value = "Código do recinto aduaneiro onde está estocada a nota<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.")
-    /**
-     * Código do recinto aduaneiro onde está estocada a nota<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.
-     **/
-    private String recinto = null;
-
-    @XmlElement(name = "motivoNaoPesagem")
-    @ApiModelProperty(example = "Motivo da não realização da pesagem", value = "Motivo da não pesagem na recepção<br>Tamanho: 250")
-    /**
-     * Motivo da não pesagem na recepção<br>Tamanho: 250
-     **/
-    private String motivoNaoPesagem = null;
-
-    @XmlElement(name = "latitude")
-    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN")
-    /**
-     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN
-     **/
-    private String latitude = null;
 
     @XmlElement(name = "urf")
     @ApiModelProperty(example = "0817600", value = "Código da unidade da Receita Federal onde está estocada a nota<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Unidades da RFB de Despacho")
@@ -77,12 +40,19 @@ public class EstoqueNFE {
      **/
     private String urf = null;
 
-    @XmlElement(name = "responsavel")
-    @ApiModelProperty(example = "15573459000106", value = "CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")
+    @XmlElement(name = "recinto")
+    @ApiModelProperty(example = "8911101", value = "Código do recinto aduaneiro onde está estocada a nota<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.")
     /**
-     * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
+     * Código do recinto aduaneiro onde está estocada a nota<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.
      **/
-    private String responsavel = null;
+    private String recinto = null;
+
+    @XmlElement(name = "latitude")
+    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN")
+    /**
+     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN
+     **/
+    private String latitude = null;
 
     @XmlElement(name = "longitude")
     @ApiModelProperty(example = "-43.248333", value = "Longitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN")
@@ -98,59 +68,35 @@ public class EstoqueNFE {
      **/
     private OffsetDateTime registro = null;
 
+    @XmlElement(name = "responsavel")
+    @ApiModelProperty(example = "15573459000106", value = "CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Peso aferido na recepção em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
-     *
-     * @return pesoAferido
+     * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
      **/
-    @JsonProperty("pesoAferido")
-    public BigDecimal getPesoAferido() {
-        return pesoAferido;
-    }
+    private String responsavel = null;
 
-    public void setPesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-    }
+    @XmlElement(name = "pesoAferido")
+    @ApiModelProperty(example = "100.0", value = "Peso aferido na recepção em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
+    @Valid
+    /**
+     * Peso aferido na recepção em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
+     **/
+    private BigDecimal pesoAferido = null;
 
-    public EstoqueNFE pesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-        return this;
-    }
+    @XmlElement(name = "motivoNaoPesagem")
+    @ApiModelProperty(example = "Motivo da não realização da pesagem", value = "Motivo da não pesagem na recepção<br>Tamanho: 250")
+    /**
+     * Motivo da não pesagem na recepção<br>Tamanho: 250
+     **/
+    private String motivoNaoPesagem = null;
 
+    @XmlElement(name = "itens")
+    @ApiModelProperty(value = "Itens da Nota Fiscal")
+    @Valid
     /**
      * Itens da Nota Fiscal
-     *
-     * @return itens
      **/
-    @JsonProperty("itens")
-    public List<ItemNFEEstoque> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<ItemNFEEstoque> itens) {
-        this.itens = itens;
-    }
-
-    public EstoqueNFE itens(List<ItemNFEEstoque> itens) {
-        this.itens = itens;
-        return this;
-    }
-
-    public EstoqueNFE addItensItem(ItemNFEEstoque itensItem) {
-        this.itens.add(itensItem);
-        return this;
-    }
+    private List<ItemNFEEstoque> itens = null;
 
     /**
      * Chave de Acesso da Nota Fiscal Eletrônica&lt;br&gt;Tamanho: 44&lt;br&gt;Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
@@ -169,6 +115,31 @@ public class EstoqueNFE {
     public EstoqueNFE numero(String numero) {
         this.numero = numero;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código da unidade da Receita Federal onde está estocada a nota&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB de Despacho
+     *
+     * @return urf
+     **/
+    @JsonProperty("urf")
+    public String getUrf() {
+        return urf;
+    }
+
+    public void setUrf(String urf) {
+        this.urf = urf;
     }
 
     /**
@@ -191,25 +162,6 @@ public class EstoqueNFE {
     }
 
     /**
-     * Motivo da não pesagem na recepção&lt;br&gt;Tamanho: 250
-     *
-     * @return motivoNaoPesagem
-     **/
-    @JsonProperty("motivoNaoPesagem")
-    public String getMotivoNaoPesagem() {
-        return motivoNaoPesagem;
-    }
-
-    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-    }
-
-    public EstoqueNFE motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-        return this;
-    }
-
-    /**
      * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNNN ou -NN.NNNNNNN
      *
      * @return latitude
@@ -225,44 +177,6 @@ public class EstoqueNFE {
 
     public EstoqueNFE latitude(String latitude) {
         this.latitude = latitude;
-        return this;
-    }
-
-    /**
-     * Código da unidade da Receita Federal onde está estocada a nota&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB de Despacho
-     *
-     * @return urf
-     **/
-    @JsonProperty("urf")
-    public String getUrf() {
-        return urf;
-    }
-
-    public void setUrf(String urf) {
-        this.urf = urf;
-    }
-
-    public EstoqueNFE urf(String urf) {
-        this.urf = urf;
-        return this;
-    }
-
-    /**
-     * CPF ou CNPJ do responsável pelo estoque&lt;br&gt;Tamanho máximo: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return responsavel
-     **/
-    @JsonProperty("responsavel")
-    public String getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
-
-    public EstoqueNFE responsavel(String responsavel) {
-        this.responsavel = responsavel;
         return this;
     }
 
@@ -304,20 +218,106 @@ public class EstoqueNFE {
         return this;
     }
 
+    public EstoqueNFE urf(String urf) {
+        this.urf = urf;
+        return this;
+    }
+
+    /**
+     * CPF ou CNPJ do responsável pelo estoque&lt;br&gt;Tamanho máximo: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return responsavel
+     **/
+    @JsonProperty("responsavel")
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public EstoqueNFE responsavel(String responsavel) {
+        this.responsavel = responsavel;
+        return this;
+    }
+
+    /**
+     * Peso aferido na recepção em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
+     *
+     * @return pesoAferido
+     **/
+    @JsonProperty("pesoAferido")
+    public BigDecimal getPesoAferido() {
+        return pesoAferido;
+    }
+
+    public void setPesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
+    }
+
+    public EstoqueNFE pesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
+        return this;
+    }
+
+    /**
+     * Motivo da não pesagem na recepção&lt;br&gt;Tamanho: 250
+     *
+     * @return motivoNaoPesagem
+     **/
+    @JsonProperty("motivoNaoPesagem")
+    public String getMotivoNaoPesagem() {
+        return motivoNaoPesagem;
+    }
+
+    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+    }
+
+    public EstoqueNFE motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
+    }
+
+    /**
+     * Itens da Nota Fiscal
+     *
+     * @return itens
+     **/
+    @JsonProperty("itens")
+    public List<ItemNFEEstoque> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemNFEEstoque> itens) {
+        this.itens = itens;
+    }
+
+    public EstoqueNFE itens(List<ItemNFEEstoque> itens) {
+        this.itens = itens;
+        return this;
+    }
+
+    public EstoqueNFE addItensItem(ItemNFEEstoque itensItem) {
+        this.itens.add(itensItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class EstoqueNFE {\n" +
-                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
-                "    itens: " + toIndentedString(itens) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
-                "    recinto: " + toIndentedString(recinto) + "\n" +
-                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
-                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    urf: " + toIndentedString(urf) + "\n" +
-                "    responsavel: " + toIndentedString(responsavel) + "\n" +
+                "    recinto: " + toIndentedString(recinto) + "\n" +
+                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    longitude: " + toIndentedString(longitude) + "\n" +
                 "    registro: " + toIndentedString(registro) + "\n" +
+                "    responsavel: " + toIndentedString(responsavel) + "\n" +
+                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
+                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
+                "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
     }

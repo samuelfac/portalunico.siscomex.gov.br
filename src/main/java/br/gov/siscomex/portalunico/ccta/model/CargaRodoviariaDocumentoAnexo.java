@@ -12,16 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaDocumentoAnexo", propOrder =
-        {"tipo", "identificacao", "descricao"
+        {"descricao", "identificacao", "tipo"
         })
 
 @XmlRootElement(name = "CargaRodoviariaDocumentoAnexo")
 public class CargaRodoviariaDocumentoAnexo {
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDocumentoApresentado tipo = null;
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(value = "Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50")
+    /**
+     * Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50
+     **/
+    private String descricao = null;
 
     @XmlElement(name = "identificacao")
     @ApiModelProperty(example = "US123456-543B", value = "Número do identificador do documento<br/>Obrigatório quando o campo \"tipo\" do documento for 49 (fatura comercial)<br/> Tamanho Máximo: 20")
@@ -30,12 +32,10 @@ public class CargaRodoviariaDocumentoAnexo {
      **/
     private String identificacao = null;
 
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(value = "Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50")
-    /**
-     * Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50
-     **/
-    private String descricao = null;
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoDocumentoApresentado tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -49,22 +49,17 @@ public class CargaRodoviariaDocumentoAnexo {
     }
 
     /**
-     * Get tipo
+     * Descrição do documento que será apresentado na fronteira&lt;br/&gt; Tamanho Máximo: 50
      *
-     * @return tipo
+     * @return descricao
      **/
-    @JsonProperty("tipo")
-    public TipoDocumentoApresentado getTipo() {
-        return tipo;
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTipo(TipoDocumentoApresentado tipo) {
-        this.tipo = tipo;
-    }
-
-    public CargaRodoviariaDocumentoAnexo tipo(TipoDocumentoApresentado tipo) {
-        this.tipo = tipo;
-        return this;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**
@@ -86,22 +81,27 @@ public class CargaRodoviariaDocumentoAnexo {
         return this;
     }
 
-    /**
-     * Descrição do documento que será apresentado na fronteira&lt;br/&gt; Tamanho Máximo: 50
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public CargaRodoviariaDocumentoAnexo descricao(String descricao) {
         this.descricao = descricao;
+        return this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoDocumentoApresentado getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoDocumentoApresentado tipo) {
+        this.tipo = tipo;
+    }
+
+    public CargaRodoviariaDocumentoAnexo tipo(TipoDocumentoApresentado tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -109,9 +109,9 @@ public class CargaRodoviariaDocumentoAnexo {
     public String toString() {
 
         String sb = "class CargaRodoviariaDocumentoAnexo {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

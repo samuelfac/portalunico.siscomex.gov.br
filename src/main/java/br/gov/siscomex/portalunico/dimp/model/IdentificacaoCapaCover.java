@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IdentificacaoCapaCover", propOrder =
-        {"informacaoComplementar", "importador"
+        {"importador", "informacaoComplementar"
         })
 
 @XmlRootElement(name = "IdentificacaoCapaCover")
@@ -24,6 +24,11 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados da identificação da declaração única de importação.")
 public class IdentificacaoCapaCover {
 
+    @XmlElement(name = "importador", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ImportadorCover importador = null;
+
     @XmlElement(name = "informacaoComplementar")
     @ApiModelProperty(example = "Texto complementando informações sobre a Duimp.", value = "Descrição complementar da Duimp.<br>Tamanho mínimo: 0<br>Tamanho máximo: 7800")
     /**
@@ -31,10 +36,25 @@ public class IdentificacaoCapaCover {
      **/
     private String informacaoComplementar = null;
 
-    @XmlElement(name = "importador", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private ImportadorCover importador = null;
+    /**
+     * Get importador
+     *
+     * @return importador
+     **/
+    @JsonProperty("importador")
+    @NotNull
+    public ImportadorCover getImportador() {
+        return importador;
+    }
+
+    public void setImportador(ImportadorCover importador) {
+        this.importador = importador;
+    }
+
+    public IdentificacaoCapaCover importador(ImportadorCover importador) {
+        this.importador = importador;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,32 +86,12 @@ public class IdentificacaoCapaCover {
         return this;
     }
 
-    /**
-     * Get importador
-     *
-     * @return importador
-     **/
-    @JsonProperty("importador")
-    @NotNull
-    public ImportadorCover getImportador() {
-        return importador;
-    }
-
-    public void setImportador(ImportadorCover importador) {
-        this.importador = importador;
-    }
-
-    public IdentificacaoCapaCover importador(ImportadorCover importador) {
-        this.importador = importador;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class IdentificacaoCapaCover {\n" +
-                "    informacaoComplementar: " + toIndentedString(informacaoComplementar) + "\n" +
                 "    importador: " + toIndentedString(importador) + "\n" +
+                "    informacaoComplementar: " + toIndentedString(informacaoComplementar) + "\n" +
                 "}";
         return sb;
     }

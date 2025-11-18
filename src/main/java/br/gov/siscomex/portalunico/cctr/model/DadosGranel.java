@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosGranel", propOrder =
-        {"sgUnidadeMedida", "descUnidadeMedida", "descricaoGranel", "quantidade", "tipoGranel"
+        {"tipoGranel", "descricaoGranel", "sgUnidadeMedida", "descUnidadeMedida", "quantidade"
         })
 
 @XmlRootElement(name = "DadosGranel")
@@ -23,6 +23,20 @@ import java.math.BigDecimal;
  **/
 @ApiModel(description = "Dados do granel")
 public class DadosGranel {
+
+    @XmlElement(name = "tipoGranel")
+    @ApiModelProperty(example = "60", value = "Tamanho: 2<br>Formato: NN")
+    /**
+     * Tamanho: 2<br>Formato: NN
+     **/
+    private Integer tipoGranel = null;
+
+    @XmlElement(name = "descricaoGranel")
+    @ApiModelProperty(example = "soja", value = "Tamanho:")
+    /**
+     * Tamanho:
+     **/
+    private String descricaoGranel = null;
 
     @XmlElement(name = "sgUnidadeMedida")
     @ApiModelProperty(example = "kg", value = "Tamanho: 4<br>Formato: AAAA")
@@ -38,13 +52,6 @@ public class DadosGranel {
      **/
     private String descUnidadeMedida = null;
 
-    @XmlElement(name = "descricaoGranel")
-    @ApiModelProperty(example = "soja", value = "Tamanho:")
-    /**
-     * Tamanho:
-     **/
-    private String descricaoGranel = null;
-
     @XmlElement(name = "quantidade")
     @ApiModelProperty(example = "10.001", value = "Tamanho: 12.3<br>Formato: Decimal, com três casas decimais separadas por ponto")
     @Valid
@@ -52,13 +59,6 @@ public class DadosGranel {
      * Tamanho: 12.3<br>Formato: Decimal, com três casas decimais separadas por ponto
      **/
     private BigDecimal quantidade = null;
-
-    @XmlElement(name = "tipoGranel")
-    @ApiModelProperty(example = "60", value = "Tamanho: 2<br>Formato: NN")
-    /**
-     * Tamanho: 2<br>Formato: NN
-     **/
-    private Integer tipoGranel = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,6 +69,39 @@ public class DadosGranel {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tamanho: 2&lt;br&gt;Formato: NN
+     *
+     * @return tipoGranel
+     **/
+    @JsonProperty("tipoGranel")
+    public Integer getTipoGranel() {
+        return tipoGranel;
+    }
+
+    public void setTipoGranel(Integer tipoGranel) {
+        this.tipoGranel = tipoGranel;
+    }
+
+    public DadosGranel tipoGranel(Integer tipoGranel) {
+        this.tipoGranel = tipoGranel;
+        return this;
+    }
+
+    /**
+     * Tamanho:
+     *
+     * @return descricaoGranel
+     **/
+    @JsonProperty("descricaoGranel")
+    public String getDescricaoGranel() {
+        return descricaoGranel;
+    }
+
+    public void setDescricaoGranel(String descricaoGranel) {
+        this.descricaoGranel = descricaoGranel;
     }
 
     /**
@@ -110,25 +143,6 @@ public class DadosGranel {
     }
 
     /**
-     * Tamanho:
-     *
-     * @return descricaoGranel
-     **/
-    @JsonProperty("descricaoGranel")
-    public String getDescricaoGranel() {
-        return descricaoGranel;
-    }
-
-    public void setDescricaoGranel(String descricaoGranel) {
-        this.descricaoGranel = descricaoGranel;
-    }
-
-    public DadosGranel descricaoGranel(String descricaoGranel) {
-        this.descricaoGranel = descricaoGranel;
-        return this;
-    }
-
-    /**
      * Tamanho: 12.3&lt;br&gt;Formato: Decimal, com três casas decimais separadas por ponto
      *
      * @return quantidade
@@ -147,22 +161,8 @@ public class DadosGranel {
         return this;
     }
 
-    /**
-     * Tamanho: 2&lt;br&gt;Formato: NN
-     *
-     * @return tipoGranel
-     **/
-    @JsonProperty("tipoGranel")
-    public Integer getTipoGranel() {
-        return tipoGranel;
-    }
-
-    public void setTipoGranel(Integer tipoGranel) {
-        this.tipoGranel = tipoGranel;
-    }
-
-    public DadosGranel tipoGranel(Integer tipoGranel) {
-        this.tipoGranel = tipoGranel;
+    public DadosGranel descricaoGranel(String descricaoGranel) {
+        this.descricaoGranel = descricaoGranel;
         return this;
     }
 
@@ -170,11 +170,11 @@ public class DadosGranel {
     public String toString() {
 
         String sb = "class DadosGranel {\n" +
+                "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
+                "    descricaoGranel: " + toIndentedString(descricaoGranel) + "\n" +
                 "    sgUnidadeMedida: " + toIndentedString(sgUnidadeMedida) + "\n" +
                 "    descUnidadeMedida: " + toIndentedString(descUnidadeMedida) + "\n" +
-                "    descricaoGranel: " + toIndentedString(descricaoGranel) + "\n" +
                 "    quantidade: " + toIndentedString(quantidade) + "\n" +
-                "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "}";
         return sb;
     }

@@ -40,17 +40,6 @@ public class TemplateListaNcm {
     private List<CampoFormulario> listaCamposNcm = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Opções de NCM, sem pontuação, que podem ser preenchidas para cada item do LPCO
      *
      * @return dominioNcm
@@ -96,6 +85,18 @@ public class TemplateListaNcm {
     public TemplateListaNcm addListaCamposNcmItem(CampoFormulario listaCamposNcmItem) {
         this.listaCamposNcm.add(listaCamposNcmItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

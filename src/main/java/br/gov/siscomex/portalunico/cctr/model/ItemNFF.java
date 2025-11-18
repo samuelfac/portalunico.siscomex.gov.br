@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemNFF", propOrder =
-        {"valorTotal", "codigoProduto", "ncm", "cfop", "numeroItem", "quantidadeMedidaEstatistica", "descricaoProduto"
+        {"numeroItem", "codigoProduto", "ncm", "descricaoProduto", "cfop", "valorTotal", "quantidadeMedidaEstatistica"
         })
 
 @XmlRootElement(name = "ItemNFF")
@@ -25,13 +25,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Item da Nota Fiscal Formulário")
 public class ItemNFF {
 
-    @XmlElement(name = "valorTotal", required = true)
-    @ApiModelProperty(example = "100.0", required = true, value = "Valor total<br>Tamanho: 15.2<br>Formato: Decimal, com duas casas decimais separadas por ponto")
-    @Valid
+    @XmlElement(name = "numeroItem", required = true)
+    @ApiModelProperty(example = "001", required = true, value = "Número do item<br>Tamanho: 3<br>Formato: NNN<br>Não será permitida a inclusão de itens duplicados.")
     /**
-     * Valor total<br>Tamanho: 15.2<br>Formato: Decimal, com duas casas decimais separadas por ponto
+     * Número do item<br>Tamanho: 3<br>Formato: NNN<br>Não será permitida a inclusão de itens duplicados.
      **/
-    private BigDecimal valorTotal = null;
+    private String numeroItem = null;
 
     @XmlElement(name = "codigoProduto", required = true)
     @ApiModelProperty(example = "24011010", required = true, value = "Código do produto<br>Tamanho: 60")
@@ -47,6 +46,13 @@ public class ItemNFF {
      **/
     private String ncm = null;
 
+    @XmlElement(name = "descricaoProduto", required = true)
+    @ApiModelProperty(example = "Descrição do produto", required = true, value = "Descrição do produto<br>Tamanho: 256")
+    /**
+     * Descrição do produto<br>Tamanho: 256
+     **/
+    private String descricaoProduto = null;
+
     @XmlElement(name = "cfop", required = true)
     @ApiModelProperty(example = "5504", required = true, value = "Código Fiscal de Operações e Prestações<br>Tamanho: 4")
     /**
@@ -54,12 +60,13 @@ public class ItemNFF {
      **/
     private String cfop = null;
 
-    @XmlElement(name = "numeroItem", required = true)
-    @ApiModelProperty(example = "001", required = true, value = "Número do item<br>Tamanho: 3<br>Formato: NNN<br>Não será permitida a inclusão de itens duplicados.")
+    @XmlElement(name = "valorTotal", required = true)
+    @ApiModelProperty(example = "100.0", required = true, value = "Valor total<br>Tamanho: 15.2<br>Formato: Decimal, com duas casas decimais separadas por ponto")
+    @Valid
     /**
-     * Número do item<br>Tamanho: 3<br>Formato: NNN<br>Não será permitida a inclusão de itens duplicados.
+     * Valor total<br>Tamanho: 15.2<br>Formato: Decimal, com duas casas decimais separadas por ponto
      **/
-    private String numeroItem = null;
+    private BigDecimal valorTotal = null;
 
     @XmlElement(name = "quantidadeMedidaEstatistica", required = true)
     @ApiModelProperty(example = "50", required = true, value = "Quantidade na medida estatística definida para a NCM<br>Tamanho: 16.5<br>Formato: Decimal, com cinco casas decimais separadas por ponto")
@@ -67,13 +74,6 @@ public class ItemNFF {
      * Quantidade na medida estatística definida para a NCM<br>Tamanho: 16.5<br>Formato: Decimal, com cinco casas decimais separadas por ponto
      **/
     private String quantidadeMedidaEstatistica = null;
-
-    @XmlElement(name = "descricaoProduto", required = true)
-    @ApiModelProperty(example = "Descrição do produto", required = true, value = "Descrição do produto<br>Tamanho: 256")
-    /**
-     * Descrição do produto<br>Tamanho: 256
-     **/
-    private String descricaoProduto = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -87,23 +87,18 @@ public class ItemNFF {
     }
 
     /**
-     * Valor total&lt;br&gt;Tamanho: 15.2&lt;br&gt;Formato: Decimal, com duas casas decimais separadas por ponto
+     * Número do item&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN&lt;br&gt;Não será permitida a inclusão de itens duplicados.
      *
-     * @return valorTotal
+     * @return numeroItem
      **/
-    @JsonProperty("valorTotal")
+    @JsonProperty("numeroItem")
     @NotNull
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public String getNumeroItem() {
+        return numeroItem;
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public ItemNFF valorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-        return this;
+    public void setNumeroItem(String numeroItem) {
+        this.numeroItem = numeroItem;
     }
 
     /**
@@ -146,6 +141,26 @@ public class ItemNFF {
         return this;
     }
 
+    public ItemNFF numeroItem(String numeroItem) {
+        this.numeroItem = numeroItem;
+        return this;
+    }
+
+    /**
+     * Descrição do produto&lt;br&gt;Tamanho: 256
+     *
+     * @return descricaoProduto
+     **/
+    @JsonProperty("descricaoProduto")
+    @NotNull
+    public String getDescricaoProduto() {
+        return descricaoProduto;
+    }
+
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
+    }
+
     /**
      * Código Fiscal de Operações e Prestações&lt;br&gt;Tamanho: 4
      *
@@ -166,24 +181,24 @@ public class ItemNFF {
         return this;
     }
 
-    /**
-     * Número do item&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN&lt;br&gt;Não será permitida a inclusão de itens duplicados.
-     *
-     * @return numeroItem
-     **/
-    @JsonProperty("numeroItem")
-    @NotNull
-    public String getNumeroItem() {
-        return numeroItem;
-    }
-
-    public void setNumeroItem(String numeroItem) {
-        this.numeroItem = numeroItem;
-    }
-
-    public ItemNFF numeroItem(String numeroItem) {
-        this.numeroItem = numeroItem;
+    public ItemNFF descricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
         return this;
+    }
+
+    /**
+     * Valor total&lt;br&gt;Tamanho: 15.2&lt;br&gt;Formato: Decimal, com duas casas decimais separadas por ponto
+     *
+     * @return valorTotal
+     **/
+    @JsonProperty("valorTotal")
+    @NotNull
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     /**
@@ -206,23 +221,8 @@ public class ItemNFF {
         return this;
     }
 
-    /**
-     * Descrição do produto&lt;br&gt;Tamanho: 256
-     *
-     * @return descricaoProduto
-     **/
-    @JsonProperty("descricaoProduto")
-    @NotNull
-    public String getDescricaoProduto() {
-        return descricaoProduto;
-    }
-
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
-    }
-
-    public ItemNFF descricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
+    public ItemNFF valorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
         return this;
     }
 
@@ -230,13 +230,13 @@ public class ItemNFF {
     public String toString() {
 
         String sb = "class ItemNFF {\n" +
-                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
+                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
                 "    codigoProduto: " + toIndentedString(codigoProduto) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
-                "    cfop: " + toIndentedString(cfop) + "\n" +
-                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "    quantidadeMedidaEstatistica: " + toIndentedString(quantidadeMedidaEstatistica) + "\n" +
                 "    descricaoProduto: " + toIndentedString(descricaoProduto) + "\n" +
+                "    cfop: " + toIndentedString(cfop) + "\n" +
+                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
+                "    quantidadeMedidaEstatistica: " + toIndentedString(quantidadeMedidaEstatistica) + "\n" +
                 "}";
         return sb;
     }

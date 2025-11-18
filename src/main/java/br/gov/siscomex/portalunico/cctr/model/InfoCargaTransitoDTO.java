@@ -13,16 +13,31 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InfoCargaTransitoDTO", propOrder =
-        {"documentosTransporteNacional", "documentosTransporteInternacional", "viaDeTransporte", "conteiners", "conhecimentos", "cargas"
+        {"cargas", "conteiners", "documentosTransporteNacional", "conhecimentos", "documentosTransporteInternacional", "viaDeTransporte"
         })
 
 @XmlRootElement(name = "InfoCargaTransitoDTO")
 public class InfoCargaTransitoDTO {
 
+    @XmlElement(name = "cargas")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CargaDTO> cargas = null;
+
+    @XmlElement(name = "conteiners")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<ConteinerDTO> conteiners = null;
+
     @XmlElement(name = "documentosTransporteNacional")
     @ApiModelProperty(value = "")
     @Valid
     private List<ConsultaDTO> documentosTransporteNacional = null;
+
+    @XmlElement(name = "conhecimentos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<ConsultaDTO> conhecimentos = null;
 
     @XmlElement(name = "documentosTransporteInternacional")
     @ApiModelProperty(value = "")
@@ -33,21 +48,6 @@ public class InfoCargaTransitoDTO {
     @ApiModelProperty(value = "")
     private List<String> viaDeTransporte = null;
 
-    @XmlElement(name = "conteiners")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<ConteinerDTO> conteiners = null;
-
-    @XmlElement(name = "conhecimentos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<ConsultaDTO> conhecimentos = null;
-
-    @XmlElement(name = "cargas")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaDTO> cargas = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -57,6 +57,49 @@ public class InfoCargaTransitoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get cargas
+     *
+     * @return cargas
+     **/
+    @JsonProperty("cargas")
+    public List<CargaDTO> getCargas() {
+        return cargas;
+    }
+
+    public void setCargas(List<CargaDTO> cargas) {
+        this.cargas = cargas;
+    }
+
+    public InfoCargaTransitoDTO cargas(List<CargaDTO> cargas) {
+        this.cargas = cargas;
+        return this;
+    }
+
+    public InfoCargaTransitoDTO addCargasItem(CargaDTO cargasItem) {
+        this.cargas.add(cargasItem);
+        return this;
+    }
+
+    /**
+     * Get conteiners
+     *
+     * @return conteiners
+     **/
+    @JsonProperty("conteiners")
+    public List<ConteinerDTO> getConteiners() {
+        return conteiners;
+    }
+
+    public void setConteiners(List<ConteinerDTO> conteiners) {
+        this.conteiners = conteiners;
+    }
+
+    public InfoCargaTransitoDTO conteiners(List<ConteinerDTO> conteiners) {
+        this.conteiners = conteiners;
+        return this;
     }
 
     /**
@@ -80,6 +123,30 @@ public class InfoCargaTransitoDTO {
 
     public InfoCargaTransitoDTO addDocumentosTransporteNacionalItem(ConsultaDTO documentosTransporteNacionalItem) {
         this.documentosTransporteNacional.add(documentosTransporteNacionalItem);
+        return this;
+    }
+
+    public InfoCargaTransitoDTO addConteinersItem(ConteinerDTO conteinersItem) {
+        this.conteiners.add(conteinersItem);
+        return this;
+    }
+
+    /**
+     * Get conhecimentos
+     *
+     * @return conhecimentos
+     **/
+    @JsonProperty("conhecimentos")
+    public List<ConsultaDTO> getConhecimentos() {
+        return conhecimentos;
+    }
+
+    public void setConhecimentos(List<ConsultaDTO> conhecimentos) {
+        this.conhecimentos = conhecimentos;
+    }
+
+    public InfoCargaTransitoDTO conhecimentos(List<ConsultaDTO> conhecimentos) {
+        this.conhecimentos = conhecimentos;
         return this;
     }
 
@@ -131,75 +198,8 @@ public class InfoCargaTransitoDTO {
         return this;
     }
 
-    /**
-     * Get conteiners
-     *
-     * @return conteiners
-     **/
-    @JsonProperty("conteiners")
-    public List<ConteinerDTO> getConteiners() {
-        return conteiners;
-    }
-
-    public void setConteiners(List<ConteinerDTO> conteiners) {
-        this.conteiners = conteiners;
-    }
-
-    public InfoCargaTransitoDTO conteiners(List<ConteinerDTO> conteiners) {
-        this.conteiners = conteiners;
-        return this;
-    }
-
-    public InfoCargaTransitoDTO addConteinersItem(ConteinerDTO conteinersItem) {
-        this.conteiners.add(conteinersItem);
-        return this;
-    }
-
-    /**
-     * Get conhecimentos
-     *
-     * @return conhecimentos
-     **/
-    @JsonProperty("conhecimentos")
-    public List<ConsultaDTO> getConhecimentos() {
-        return conhecimentos;
-    }
-
-    public void setConhecimentos(List<ConsultaDTO> conhecimentos) {
-        this.conhecimentos = conhecimentos;
-    }
-
-    public InfoCargaTransitoDTO conhecimentos(List<ConsultaDTO> conhecimentos) {
-        this.conhecimentos = conhecimentos;
-        return this;
-    }
-
     public InfoCargaTransitoDTO addConhecimentosItem(ConsultaDTO conhecimentosItem) {
         this.conhecimentos.add(conhecimentosItem);
-        return this;
-    }
-
-    /**
-     * Get cargas
-     *
-     * @return cargas
-     **/
-    @JsonProperty("cargas")
-    public List<CargaDTO> getCargas() {
-        return cargas;
-    }
-
-    public void setCargas(List<CargaDTO> cargas) {
-        this.cargas = cargas;
-    }
-
-    public InfoCargaTransitoDTO cargas(List<CargaDTO> cargas) {
-        this.cargas = cargas;
-        return this;
-    }
-
-    public InfoCargaTransitoDTO addCargasItem(CargaDTO cargasItem) {
-        this.cargas.add(cargasItem);
         return this;
     }
 
@@ -207,12 +207,12 @@ public class InfoCargaTransitoDTO {
     public String toString() {
 
         String sb = "class InfoCargaTransitoDTO {\n" +
+                "    cargas: " + toIndentedString(cargas) + "\n" +
+                "    conteiners: " + toIndentedString(conteiners) + "\n" +
                 "    documentosTransporteNacional: " + toIndentedString(documentosTransporteNacional) + "\n" +
+                "    conhecimentos: " + toIndentedString(conhecimentos) + "\n" +
                 "    documentosTransporteInternacional: " + toIndentedString(documentosTransporteInternacional) + "\n" +
                 "    viaDeTransporte: " + toIndentedString(viaDeTransporte) + "\n" +
-                "    conteiners: " + toIndentedString(conteiners) + "\n" +
-                "    conhecimentos: " + toIndentedString(conhecimentos) + "\n" +
-                "    cargas: " + toIndentedString(cargas) + "\n" +
                 "}";
         return sb;
     }

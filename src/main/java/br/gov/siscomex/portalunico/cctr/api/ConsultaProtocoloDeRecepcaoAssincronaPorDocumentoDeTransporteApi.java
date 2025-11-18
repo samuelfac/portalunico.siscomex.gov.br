@@ -30,12 +30,12 @@ public interface ConsultaProtocoloDeRecepcaoAssincronaPorDocumentoDeTransporteAp
      */
     @GET
     @Path("/api/ext/recepcao/{numero}/{data}/extrato")
-    @Produces({"application/json", "*/*"})
+    @Produces({"*/*", "application/json"})
     @ApiOperation(value = "Consulta o extrato de recepção com base no MIC/DTA", notes = "", tags = {"Consulta Protocolo de Recepcao Assincrona por Documento de Transporte"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocoloVO.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ErroValidacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class)})
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocoloVO.class)})
     RetornoConsultaProtocoloVO extratoMicdtaExterno(@ApiParam(value = "Identificador do MIC/DTA", required = true) @PathParam("numero") String numero, @ApiParam(value = "Data de emissão do MIC/DTA", required = true) @PathParam("data") String data);
 }
 

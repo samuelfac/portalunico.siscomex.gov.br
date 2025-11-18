@@ -32,17 +32,6 @@ public class NotaFiscalCover {
     private String chaveAcesso = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Chave de Acesso da Nota Fiscal Eletrônica&lt;br&gt;Tamanho: 44&lt;br&gt;Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&lt;br&gt;Não será permitida a inclusão de notas fiscais duplicadas (mesma chave de acesso).
      *
      * @return chaveAcesso
@@ -61,6 +50,18 @@ public class NotaFiscalCover {
     public NotaFiscalCover chaveAcesso(String chaveAcesso) {
         this.chaveAcesso = chaveAcesso;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

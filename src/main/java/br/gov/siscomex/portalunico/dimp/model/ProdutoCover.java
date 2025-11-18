@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProdutoCover", propOrder =
-        {"codigo", "niResponsavel", "versao"
+        {"codigo", "versao", "niResponsavel"
         })
 
 @XmlRootElement(name = "ProdutoCover")
@@ -30,13 +30,6 @@ public class ProdutoCover {
      **/
     private Integer codigo = null;
 
-    @XmlElement(name = "niResponsavel", required = true)
-    @ApiModelProperty(example = "00000000", required = true, value = "<br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
-    /**
-     * <br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
-     **/
-    private String niResponsavel = null;
-
     @XmlElement(name = "versao", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Versão do produto.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
     /**
@@ -44,16 +37,12 @@ public class ProdutoCover {
      **/
     private String versao = null;
 
+    @XmlElement(name = "niResponsavel", required = true)
+    @ApiModelProperty(example = "00000000", required = true, value = "<br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * <br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
+     **/
+    private String niResponsavel = null;
 
     /**
      * Código do produto.&lt;br&gt;Formato: Inteiro, com até 10 dígitos
@@ -72,26 +61,6 @@ public class ProdutoCover {
 
     public ProdutoCover codigo(Integer codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * &lt;br&gt;Número de Identificação: &lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;AAAAAAAA&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return niResponsavel
-     **/
-    @JsonProperty("niResponsavel")
-    @NotNull
-    public String getNiResponsavel() {
-        return niResponsavel;
-    }
-
-    public void setNiResponsavel(String niResponsavel) {
-        this.niResponsavel = niResponsavel;
-    }
-
-    public ProdutoCover niResponsavel(String niResponsavel) {
-        this.niResponsavel = niResponsavel;
         return this;
     }
 
@@ -115,13 +84,44 @@ public class ProdutoCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * &lt;br&gt;Número de Identificação: &lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;AAAAAAAA&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return niResponsavel
+     **/
+    @JsonProperty("niResponsavel")
+    @NotNull
+    public String getNiResponsavel() {
+        return niResponsavel;
+    }
+
+    public void setNiResponsavel(String niResponsavel) {
+        this.niResponsavel = niResponsavel;
+    }
+
+    public ProdutoCover niResponsavel(String niResponsavel) {
+        this.niResponsavel = niResponsavel;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProdutoCover {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    niResponsavel: " + toIndentedString(niResponsavel) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
+                "    niResponsavel: " + toIndentedString(niResponsavel) + "\n" +
                 "}";
         return sb;
     }

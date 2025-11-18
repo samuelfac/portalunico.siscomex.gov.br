@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetificacaoLpcoAceitarRequest", propOrder =
-        {"motivoAnalise", "justificativa", "decisaoJudicial"
+        {"justificativa", "decisaoJudicial", "motivoAnalise"
         })
 
 @XmlRootElement(name = "RetificacaoLpcoAceitarRequest")
@@ -21,13 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados para aceitar uma solicitação de retificação de um LPCO")
 public class RetificacaoLpcoAceitarRequest {
-
-    @XmlElement(name = "motivoAnalise")
-    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
-    /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
-     **/
-    private String motivoAnalise = null;
 
     @XmlElement(name = "justificativa")
     @ApiModelProperty(example = "Texto livre", value = "Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900")
@@ -43,35 +36,12 @@ public class RetificacaoLpcoAceitarRequest {
      **/
     private Boolean decisaoJudicial = null;
 
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
-     *
-     * @return motivoAnalise
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
      **/
-    @JsonProperty("motivoAnalise")
-    public String getMotivoAnalise() {
-        return motivoAnalise;
-    }
-
-    public void setMotivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-    }
-
-    public RetificacaoLpcoAceitarRequest motivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-        return this;
-    }
+    private String motivoAnalise = null;
 
     /**
      * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
@@ -111,13 +81,43 @@ public class RetificacaoLpcoAceitarRequest {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+     *
+     * @return motivoAnalise
+     **/
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
+    }
+
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+    }
+
+    public RetificacaoLpcoAceitarRequest motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RetificacaoLpcoAceitarRequest {\n" +
-                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "}";
         return sb;
     }

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PagamentoDuimpConsultaCover", propOrder =
-        {"principal", "versaoOrigem"
+        {"versaoOrigem", "principal"
         })
 
 @XmlRootElement(name = "PagamentoDuimpConsultaCover")
@@ -23,17 +23,36 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de um pagamento.")
 public class PagamentoDuimpConsultaCover {
 
-    @XmlElement(name = "principal")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosPagamentoCover principal = null;
-
     @XmlElement(name = "versaoOrigem")
     @ApiModelProperty(example = "1", value = "Versão da Duimp em que este pagamento foi realizado.<br>Valor mínimo: 1<br>Valor máximo: 9999")
     /**
      * Versão da Duimp em que este pagamento foi realizado.<br>Valor mínimo: 1<br>Valor máximo: 9999
      **/
     private String versaoOrigem = null;
+
+    @XmlElement(name = "principal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosPagamentoCover principal = null;
+
+    /**
+     * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+     *
+     * @return versaoOrigem
+     **/
+    @JsonProperty("versaoOrigem")
+    public String getVersaoOrigem() {
+        return versaoOrigem;
+    }
+
+    public void setVersaoOrigem(String versaoOrigem) {
+        this.versaoOrigem = versaoOrigem;
+    }
+
+    public PagamentoDuimpConsultaCover versaoOrigem(String versaoOrigem) {
+        this.versaoOrigem = versaoOrigem;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -65,31 +84,12 @@ public class PagamentoDuimpConsultaCover {
         return this;
     }
 
-    /**
-     * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
-     * @return versaoOrigem
-     **/
-    @JsonProperty("versaoOrigem")
-    public String getVersaoOrigem() {
-        return versaoOrigem;
-    }
-
-    public void setVersaoOrigem(String versaoOrigem) {
-        this.versaoOrigem = versaoOrigem;
-    }
-
-    public PagamentoDuimpConsultaCover versaoOrigem(String versaoOrigem) {
-        this.versaoOrigem = versaoOrigem;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class PagamentoDuimpConsultaCover {\n" +
-                "    principal: " + toIndentedString(principal) + "\n" +
                 "    versaoOrigem: " + toIndentedString(versaoOrigem) + "\n" +
+                "    principal: " + toIndentedString(principal) + "\n" +
                 "}";
         return sb;
     }

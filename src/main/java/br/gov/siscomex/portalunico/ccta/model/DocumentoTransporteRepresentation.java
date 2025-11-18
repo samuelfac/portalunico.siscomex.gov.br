@@ -11,23 +11,23 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoTransporteRepresentation", propOrder =
-        {"tipo", "numero", "dataEmissao"
+        {"dataEmissao", "numero", "tipo"
         })
 
 @XmlRootElement(name = "DocumentoTransporteRepresentation")
 public class DocumentoTransporteRepresentation {
 
-    @XmlElement(name = "tipo")
+    @XmlElement(name = "dataEmissao")
     @ApiModelProperty(value = "")
-    private String tipo = null;
+    private String dataEmissao = null;
 
     @XmlElement(name = "numero")
     @ApiModelProperty(value = "")
     private String numero = null;
 
-    @XmlElement(name = "dataEmissao")
+    @XmlElement(name = "tipo")
     @ApiModelProperty(value = "")
-    private String dataEmissao = null;
+    private String tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -41,22 +41,17 @@ public class DocumentoTransporteRepresentation {
     }
 
     /**
-     * Get tipo
+     * Get dataEmissao
      *
-     * @return tipo
+     * @return dataEmissao
      **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        return tipo;
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public DocumentoTransporteRepresentation tipo(String tipo) {
-        this.tipo = tipo;
-        return this;
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
     }
 
     /**
@@ -78,22 +73,27 @@ public class DocumentoTransporteRepresentation {
         return this;
     }
 
-    /**
-     * Get dataEmissao
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
     public DocumentoTransporteRepresentation dataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
+        return this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public DocumentoTransporteRepresentation tipo(String tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -101,9 +101,9 @@ public class DocumentoTransporteRepresentation {
     public String toString() {
 
         String sb = "class DocumentoTransporteRepresentation {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

@@ -42,17 +42,6 @@ public class Conteiner {
     private BigDecimal tara = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Medidas do conteiner vazio transportado na viagem&lt;BR/&gt; 20 (20 pés) ou 40 (40 pés)&lt;br/&gt; Tamanho Máximo: 2
      *
      * @return medida
@@ -107,6 +96,18 @@ public class Conteiner {
     public Conteiner tara(BigDecimal tara) {
         this.tara = tara;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

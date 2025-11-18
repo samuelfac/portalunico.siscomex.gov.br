@@ -12,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaIdentificaoULD_", propOrder =
-        {"identificacaoUld", "idElemento"
+        {"idElemento", "identificacaoUld"
         })
 
 @XmlRootElement(name = "DadosDaIdentificaoULD_")
 public class DadosDaIdentificaoULD_ {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "identificacaoUld")
     @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD <br/>Tamanho: 10")
@@ -25,12 +32,25 @@ public class DadosDaIdentificaoULD_ {
      **/
     private String identificacaoUld = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
      **/
-    private String idElemento = null;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDaIdentificaoULD_ idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,32 +82,12 @@ public class DadosDaIdentificaoULD_ {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosDaIdentificaoULD_ idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosDaIdentificaoULD_ {\n" +
-                "    identificacaoUld: " + toIndentedString(identificacaoUld) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    identificacaoUld: " + toIndentedString(identificacaoUld) + "\n" +
                 "}";
         return sb;
     }

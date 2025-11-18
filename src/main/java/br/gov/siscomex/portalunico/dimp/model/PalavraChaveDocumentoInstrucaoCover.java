@@ -38,17 +38,6 @@ public class PalavraChaveDocumentoInstrucaoCover {
     private String valor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da palavra-chave no sistema Anexação.&lt;br&gt;Domínio: Palavras-Chave existentes no sistema Anexação (E-Docex).&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
      *
      * @return codigo
@@ -86,6 +75,18 @@ public class PalavraChaveDocumentoInstrucaoCover {
     public PalavraChaveDocumentoInstrucaoCover valor(String valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

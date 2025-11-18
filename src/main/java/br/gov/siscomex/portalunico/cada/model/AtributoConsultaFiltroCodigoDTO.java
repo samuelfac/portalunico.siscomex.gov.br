@@ -15,11 +15,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AtributoConsultaFiltroCodigoDTO", propOrder =
-        {"data", "codigos"
+        {"codigos", "data"
         })
 
 @XmlRootElement(name = "AtributoConsultaFiltroCodigoDTO")
 public class AtributoConsultaFiltroCodigoDTO {
+
+    @XmlElement(name = "codigos", required = true)
+    @ApiModelProperty(required = true, value = "Lista de códigos de Atributos (Máximo 100 códigos.)<br>Tamanho mínimo: 1<br>Tamanho máximo: 25")
+    /**
+     * Lista de códigos de Atributos (Máximo 100 códigos.)<br>Tamanho mínimo: 1<br>Tamanho máximo: 25
+     **/
+    private List<String> codigos = new ArrayList<>();
 
     @XmlElement(name = "data", required = true)
     @ApiModelProperty(required = true, value = "Data de referência")
@@ -28,12 +35,30 @@ public class AtributoConsultaFiltroCodigoDTO {
      **/
     private OffsetDateTime data = null;
 
-    @XmlElement(name = "codigos", required = true)
-    @ApiModelProperty(required = true, value = "Lista de códigos de Atributos (Máximo 100 códigos.)<br>Tamanho mínimo: 1<br>Tamanho máximo: 25")
     /**
-     * Lista de códigos de Atributos (Máximo 100 códigos.)<br>Tamanho mínimo: 1<br>Tamanho máximo: 25
+     * Lista de códigos de Atributos (Máximo 100 códigos.)&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 25
+     *
+     * @return codigos
      **/
-    private List<String> codigos = new ArrayList<>();
+    @JsonProperty("codigos")
+    @NotNull
+    public List<String> getCodigos() {
+        return codigos;
+    }
+
+    public void setCodigos(List<String> codigos) {
+        this.codigos = codigos;
+    }
+
+    public AtributoConsultaFiltroCodigoDTO codigos(List<String> codigos) {
+        this.codigos = codigos;
+        return this;
+    }
+
+    public AtributoConsultaFiltroCodigoDTO addCodigosItem(String codigosItem) {
+        this.codigos.add(codigosItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,37 +91,12 @@ public class AtributoConsultaFiltroCodigoDTO {
         return this;
     }
 
-    /**
-     * Lista de códigos de Atributos (Máximo 100 códigos.)&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 25
-     *
-     * @return codigos
-     **/
-    @JsonProperty("codigos")
-    @NotNull
-    public List<String> getCodigos() {
-        return codigos;
-    }
-
-    public void setCodigos(List<String> codigos) {
-        this.codigos = codigos;
-    }
-
-    public AtributoConsultaFiltroCodigoDTO codigos(List<String> codigos) {
-        this.codigos = codigos;
-        return this;
-    }
-
-    public AtributoConsultaFiltroCodigoDTO addCodigosItem(String codigosItem) {
-        this.codigos.add(codigosItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class AtributoConsultaFiltroCodigoDTO {\n" +
-                "    data: " + toIndentedString(data) + "\n" +
                 "    codigos: " + toIndentedString(codigos) + "\n" +
+                "    data: " + toIndentedString(data) + "\n" +
                 "}";
         return sb;
     }

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cargas", propOrder =
-        {"quantidadeManifestada", "numeroDue", "tipoCarga", "numeroRuc", "siglaUnidadeMedida"
+        {"numeroDue", "numeroRuc", "tipoCarga", "siglaUnidadeMedida", "quantidadeManifestada"
         })
 
 @XmlRootElement(name = "Cargas")
@@ -24,25 +24,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte")
 public class Cargas {
 
-    @XmlElement(name = "quantidadeManifestada")
-    @ApiModelProperty(example = "100.0", value = "quantidade Manifestada")
-    @Valid
-    /**
-     * quantidade Manifestada
-     **/
-    private BigDecimal quantidadeManifestada = null;
-
     @XmlElement(name = "numeroDue")
     @ApiModelProperty(example = "19BR0003000299", value = "Número da DU-E<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV")
     /**
      * Número da DU-E<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV
      **/
     private String numeroDue = null;
-
-    @XmlElement(name = "tipoCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ItemDTO tipoCarga = null;
 
     @XmlElement(name = "numeroRuc")
     @ApiModelProperty(example = "9BR00000000100000000000000000016630", value = "Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
@@ -51,6 +38,11 @@ public class Cargas {
      **/
     private String numeroRuc = null;
 
+    @XmlElement(name = "tipoCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ItemDTO tipoCarga = null;
+
     @XmlElement(name = "siglaUnidadeMedida")
     @ApiModelProperty(example = "un", value = "Sigla da Unidade de Medida")
     /**
@@ -58,35 +50,13 @@ public class Cargas {
      **/
     private String siglaUnidadeMedida = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "quantidadeManifestada")
+    @ApiModelProperty(example = "100.0", value = "quantidade Manifestada")
+    @Valid
     /**
      * quantidade Manifestada
-     *
-     * @return quantidadeManifestada
      **/
-    @JsonProperty("quantidadeManifestada")
-    public BigDecimal getQuantidadeManifestada() {
-        return quantidadeManifestada;
-    }
-
-    public void setQuantidadeManifestada(BigDecimal quantidadeManifestada) {
-        this.quantidadeManifestada = quantidadeManifestada;
-    }
-
-    public Cargas quantidadeManifestada(BigDecimal quantidadeManifestada) {
-        this.quantidadeManifestada = quantidadeManifestada;
-        return this;
-    }
+    private BigDecimal quantidadeManifestada = null;
 
     /**
      * Número da DU-E&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD &lt;br&gt;Descrição Formato&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
@@ -104,25 +74,6 @@ public class Cargas {
 
     public Cargas numeroDue(String numeroDue) {
         this.numeroDue = numeroDue;
-        return this;
-    }
-
-    /**
-     * Get tipoCarga
-     *
-     * @return tipoCarga
-     **/
-    @JsonProperty("tipoCarga")
-    public ItemDTO getTipoCarga() {
-        return tipoCarga;
-    }
-
-    public void setTipoCarga(ItemDTO tipoCarga) {
-        this.tipoCarga = tipoCarga;
-    }
-
-    public Cargas tipoCarga(ItemDTO tipoCarga) {
-        this.tipoCarga = tipoCarga;
         return this;
     }
 
@@ -146,6 +97,31 @@ public class Cargas {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get tipoCarga
+     *
+     * @return tipoCarga
+     **/
+    @JsonProperty("tipoCarga")
+    public ItemDTO getTipoCarga() {
+        return tipoCarga;
+    }
+
+    public void setTipoCarga(ItemDTO tipoCarga) {
+        this.tipoCarga = tipoCarga;
+    }
+
+    /**
      * Sigla da Unidade de Medida
      *
      * @return siglaUnidadeMedida
@@ -164,15 +140,39 @@ public class Cargas {
         return this;
     }
 
+    public Cargas tipoCarga(ItemDTO tipoCarga) {
+        this.tipoCarga = tipoCarga;
+        return this;
+    }
+
+    /**
+     * quantidade Manifestada
+     *
+     * @return quantidadeManifestada
+     **/
+    @JsonProperty("quantidadeManifestada")
+    public BigDecimal getQuantidadeManifestada() {
+        return quantidadeManifestada;
+    }
+
+    public void setQuantidadeManifestada(BigDecimal quantidadeManifestada) {
+        this.quantidadeManifestada = quantidadeManifestada;
+    }
+
+    public Cargas quantidadeManifestada(BigDecimal quantidadeManifestada) {
+        this.quantidadeManifestada = quantidadeManifestada;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Cargas {\n" +
-                "    quantidadeManifestada: " + toIndentedString(quantidadeManifestada) + "\n" +
                 "    numeroDue: " + toIndentedString(numeroDue) + "\n" +
-                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
                 "    numeroRuc: " + toIndentedString(numeroRuc) + "\n" +
+                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
                 "    siglaUnidadeMedida: " + toIndentedString(siglaUnidadeMedida) + "\n" +
+                "    quantidadeManifestada: " + toIndentedString(quantidadeManifestada) + "\n" +
                 "}";
         return sb;
     }

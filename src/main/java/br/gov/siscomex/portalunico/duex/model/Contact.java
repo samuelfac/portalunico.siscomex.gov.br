@@ -15,21 +15,46 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Contact", propOrder =
-        {"name", "communication"
+        {"communication", "name"
         })
 
 @XmlRootElement(name = "Contact")
 public class Contact {
+
+    @XmlElement(name = "communication", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private List<Communication> communication = new ArrayList<>();
 
     @XmlElement(name = "name", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private ContactNameTextType name = null;
 
-    @XmlElement(name = "communication", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private List<Communication> communication = new ArrayList<>();
+    /**
+     * Get communication
+     *
+     * @return communication
+     **/
+    @JsonProperty("communication")
+    @NotNull
+    public List<Communication> getCommunication() {
+        return communication;
+    }
+
+    public void setCommunication(List<Communication> communication) {
+        this.communication = communication;
+    }
+
+    public Contact communication(List<Communication> communication) {
+        this.communication = communication;
+        return this;
+    }
+
+    public Contact addCommunicationItem(Communication communicationItem) {
+        this.communication.add(communicationItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,37 +87,12 @@ public class Contact {
         return this;
     }
 
-    /**
-     * Get communication
-     *
-     * @return communication
-     **/
-    @JsonProperty("communication")
-    @NotNull
-    public List<Communication> getCommunication() {
-        return communication;
-    }
-
-    public void setCommunication(List<Communication> communication) {
-        this.communication = communication;
-    }
-
-    public Contact communication(List<Communication> communication) {
-        this.communication = communication;
-        return this;
-    }
-
-    public Contact addCommunicationItem(Communication communicationItem) {
-        this.communication.add(communicationItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Contact {\n" +
-                "    name: " + toIndentedString(name) + "\n" +
                 "    communication: " + toIndentedString(communication) + "\n" +
+                "    name: " + toIndentedString(name) + "\n" +
                 "}";
         return sb;
     }

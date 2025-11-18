@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TratamentoAdministrativo", propOrder =
-        {"codigoLPCO", "orgaos", "situacao", "impeditivoDeEmbarque", "mensagem"
+        {"codigoLPCO", "impeditivoDeEmbarque", "mensagem", "orgaos", "situacao"
         })
 
 @XmlRootElement(name = "TratamentoAdministrativo")
@@ -27,6 +27,17 @@ public class TratamentoAdministrativo {
      **/
     private String codigoLPCO = null;
 
+    @XmlElement(name = "impeditivoDeEmbarque")
+    @ApiModelProperty(value = "")
+    private Boolean impeditivoDeEmbarque = null;
+
+    @XmlElement(name = "mensagem")
+    @ApiModelProperty(value = "Mensagem<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000")
+    /**
+     * Mensagem<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000
+     **/
+    private String mensagem = null;
+
     @XmlElement(name = "orgaos")
     @ApiModelProperty(value = "Órgãos<br />Tamanho mínimo: 0<br />Tamanho máximo: 15")
     /**
@@ -36,15 +47,6 @@ public class TratamentoAdministrativo {
     @XmlElement(name = "situacao")
     @ApiModelProperty(value = "")
     private SituacaoEnum situacao = null;
-    @XmlElement(name = "impeditivoDeEmbarque")
-    @ApiModelProperty(value = "")
-    private Boolean impeditivoDeEmbarque = null;
-    @XmlElement(name = "mensagem")
-    @ApiModelProperty(value = "Mensagem<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000")
-    /**
-     * Mensagem<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000
-     **/
-    private String mensagem = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -73,6 +75,44 @@ public class TratamentoAdministrativo {
 
     public TratamentoAdministrativo codigoLPCO(String codigoLPCO) {
         this.codigoLPCO = codigoLPCO;
+        return this;
+    }
+
+    /**
+     * Get impeditivoDeEmbarque
+     *
+     * @return impeditivoDeEmbarque
+     **/
+    @JsonProperty("impeditivoDeEmbarque")
+    public Boolean isisImpeditivoDeEmbarque() {
+        return impeditivoDeEmbarque;
+    }
+
+    public void setImpeditivoDeEmbarque(Boolean impeditivoDeEmbarque) {
+        this.impeditivoDeEmbarque = impeditivoDeEmbarque;
+    }
+
+    public TratamentoAdministrativo impeditivoDeEmbarque(Boolean impeditivoDeEmbarque) {
+        this.impeditivoDeEmbarque = impeditivoDeEmbarque;
+        return this;
+    }
+
+    /**
+     * Mensagem&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 2000
+     *
+     * @return mensagem
+     **/
+    @JsonProperty("mensagem")
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public TratamentoAdministrativo mensagem(String mensagem) {
+        this.mensagem = mensagem;
         return this;
     }
 
@@ -122,54 +162,16 @@ public class TratamentoAdministrativo {
         return this;
     }
 
-    /**
-     * Get impeditivoDeEmbarque
-     *
-     * @return impeditivoDeEmbarque
-     **/
-    @JsonProperty("impeditivoDeEmbarque")
-    public Boolean isisImpeditivoDeEmbarque() {
-        return impeditivoDeEmbarque;
-    }
-
-    public void setImpeditivoDeEmbarque(Boolean impeditivoDeEmbarque) {
-        this.impeditivoDeEmbarque = impeditivoDeEmbarque;
-    }
-
-    public TratamentoAdministrativo impeditivoDeEmbarque(Boolean impeditivoDeEmbarque) {
-        this.impeditivoDeEmbarque = impeditivoDeEmbarque;
-        return this;
-    }
-
-    /**
-     * Mensagem&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 2000
-     *
-     * @return mensagem
-     **/
-    @JsonProperty("mensagem")
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
-    public TratamentoAdministrativo mensagem(String mensagem) {
-        this.mensagem = mensagem;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class TratamentoAdministrativo {\n" +
                 "    codigoLPCO: " + toIndentedString(codigoLPCO) + "\n" +
-                "    orgaos: " + toIndentedString(orgaos) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    impeditivoDeEmbarque: " + toIndentedString(impeditivoDeEmbarque) + "\n" +
                 "    mensagem: " + toIndentedString(mensagem) + "\n" +
+                "    orgaos: " + toIndentedString(orgaos) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }
@@ -269,15 +271,6 @@ public class TratamentoAdministrativo {
             value = v;
         }
 
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -285,6 +278,15 @@ public class TratamentoAdministrativo {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
         }
     }
 }

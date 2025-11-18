@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EnvioSolicitaoDeDarf", propOrder =
-        {"cnpjDeclarante", "manifestos", "contribuinte"
+        {"cnpjDeclarante", "contribuinte", "manifestos"
         })
 
 @XmlRootElement(name = "EnvioSolicitaoDeDarf")
@@ -27,14 +27,6 @@ public class EnvioSolicitaoDeDarf {
      **/
     private String cnpjDeclarante = null;
 
-    @XmlElement(name = "manifestos")
-    @ApiModelProperty(value = "Lista de manifestos.")
-    @Valid
-    /**
-     * Lista de manifestos.
-     **/
-    private List<ManifestoDaSolicitaoDarf> manifestos = null;
-
     @XmlElement(name = "contribuinte")
     @ApiModelProperty(example = "63198378000161", value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
     /**
@@ -42,16 +34,13 @@ public class EnvioSolicitaoDeDarf {
      **/
     private String contribuinte = null;
 
+    @XmlElement(name = "manifestos")
+    @ApiModelProperty(value = "Lista de manifestos.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Lista de manifestos.
+     **/
+    private List<ManifestoDaSolicitaoDarf> manifestos = null;
 
     /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
@@ -71,6 +60,31 @@ public class EnvioSolicitaoDeDarf {
     public EnvioSolicitaoDeDarf cnpjDeclarante(String cnpjDeclarante) {
         this.cnpjDeclarante = cnpjDeclarante;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
+     *
+     * @return contribuinte
+     **/
+    @JsonProperty("contribuinte")
+    public String getContribuinte() {
+        return contribuinte;
+    }
+
+    public void setContribuinte(String contribuinte) {
+        this.contribuinte = contribuinte;
     }
 
     /**
@@ -97,20 +111,6 @@ public class EnvioSolicitaoDeDarf {
         return this;
     }
 
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return contribuinte
-     **/
-    @JsonProperty("contribuinte")
-    public String getContribuinte() {
-        return contribuinte;
-    }
-
-    public void setContribuinte(String contribuinte) {
-        this.contribuinte = contribuinte;
-    }
-
     public EnvioSolicitaoDeDarf contribuinte(String contribuinte) {
         this.contribuinte = contribuinte;
         return this;
@@ -121,8 +121,8 @@ public class EnvioSolicitaoDeDarf {
 
         String sb = "class EnvioSolicitaoDeDarf {\n" +
                 "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
-                "    manifestos: " + toIndentedString(manifestos) + "\n" +
                 "    contribuinte: " + toIndentedString(contribuinte) + "\n" +
+                "    manifestos: " + toIndentedString(manifestos) + "\n" +
                 "}";
         return sb;
     }

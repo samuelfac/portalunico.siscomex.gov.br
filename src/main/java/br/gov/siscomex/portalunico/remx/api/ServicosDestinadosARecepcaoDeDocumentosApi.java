@@ -53,10 +53,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberRegistroLoteDIRUsingPOST(@ApiParam(value = "JSON do envio de declaração de lote", required = true) @Valid RegistroERetificaoDeLoteDIR body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -71,10 +71,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberRegistroManifestoUsingPOST(@ApiParam(value = "JSON do envio de Registro de manifesto", required = true) @Valid RegistroERetificaoDeManifesto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -89,10 +89,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberRetificacaoLoteDIRUsingPOST(@ApiParam(value = "JSON do envio de retificação de declaração", required = true) @Valid RegistroERetificaoDeLoteDIR body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -107,10 +107,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberRetificacaoManifestoUsingPOST(@ApiParam(value = "JSON do envio de Retificação de manifesto", required = true) @Valid RegistroERetificaoDeManifesto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -125,10 +125,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberSolicitacaoDevolucaoUsingPOST(@ApiParam(value = "JSON do envio de solicitação de devolução", required = true) @Valid EnvioSolicitaoDeDevoluo body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -143,10 +143,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST(@ApiParam(value = "JSON do envio de cancelamento de DARF", required = true) @Valid EnvioPedidoDeReviso body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -161,10 +161,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST1(@ApiParam(value = "JSON do envio de consulta por número de lote", required = true) @Valid ConsultaPorNmeroDeLote body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -179,10 +179,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST10(@ApiParam(value = "JSON do envio de consulta de remessas dos órgãos anuentes", required = true) @Valid ConsultaDeRemessasDosRgosAnuentes body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -197,10 +197,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST11(@ApiParam(value = "JSON do envio de consulta de remessas dos depositários", required = true) @Valid ConsultaDeRemessasDosDepositrios body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -215,10 +215,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST12(@ApiParam(value = "JSON do envio de consulta de remessas da RFB", required = true) @Valid ConsultaDeRemessasDaRFB body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -233,10 +233,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST13(@ApiParam(value = "JSON do envio de manifesto de presenta de carga", required = true) @Valid ManifestoDePresenaDeCarga body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -251,10 +251,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST14(@ApiParam(value = "JSON do envio de pedido de revisão", required = true) @Valid EnvioPedidoDeReviso body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -269,10 +269,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST15(@ApiParam(value = "JSON do envio de solicitação de DARF", required = true) @Valid EnvioSolicitaoDeDarf body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -287,10 +287,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST2(@ApiParam(value = "JSON do envio de consulta de lotes dos órgãos anuentes", required = true) @Valid ConsultaDeLoteDosRgosAnuentes body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -305,10 +305,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST3(@ApiParam(value = "JSON do envio de consulta de lotes dos depositários", required = true) @Valid ConsultaDeLoteDosDepositrios body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -323,10 +323,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST4(@ApiParam(value = "JSON do envio de consulta de lotes da RFB", required = true) @Valid ConsultaDeLoteDaRFB body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -341,10 +341,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST5(@ApiParam(value = "JSON do envio de consulta por número de manifesto", required = true) @Valid ConsultaPorNmeroDeManifesto body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -359,10 +359,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST6(@ApiParam(value = "JSON do envio de consulta de manifestos dos órgãos anuentes", required = true) @Valid ConsultaDeManifestosDosRgosAnuentes body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -377,10 +377,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST7(@ApiParam(value = "JSON do envio de consulta de manifestos dos depositários", required = true) @Valid ConsultaDeManifestosDosDepositrios body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -395,10 +395,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST8(@ApiParam(value = "JSON do envio de consulta de manifestos da RFB", required = true) @Valid ConsultaDeLoteDaRFB body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 
     /**
@@ -413,10 +413,10 @@ public interface ServicosDestinadosARecepcaoDeDocumentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ProtocoloDeEnvioDeDocumento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ProtocoloDeEnvioDeDocumento receberUsingPOST9(@ApiParam(value = "JSON do envio de consulta por número de remessa", required = true) @Valid ConsultaPorNmeroDeRemessa body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") Object authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") Object xCSRFToken);
 }
 

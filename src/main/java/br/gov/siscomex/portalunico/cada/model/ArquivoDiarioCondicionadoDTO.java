@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ArquivoDiarioCondicionadoDTO", propOrder =
-        {"obrigatorio", "multivalorado", "condicao", "atributo", "dataFimVigencia", "dataInicioVigencia", "descricaoCondicao"
+        {"obrigatorio", "multivalorado", "dataInicioVigencia", "dataFimVigencia", "descricaoCondicao", "condicao", "atributo"
         })
 
 @XmlRootElement(name = "ArquivoDiarioCondicionadoDTO")
@@ -33,6 +33,27 @@ public class ArquivoDiarioCondicionadoDTO {
      **/
     private Boolean multivalorado = false;
 
+    @XmlElement(name = "dataInicioVigencia", required = true)
+    @ApiModelProperty(example = "2019-01-01", required = true, value = "Data de início de vigência<br>Formato: yyyy-MM-dd")
+    /**
+     * Data de início de vigência<br>Formato: yyyy-MM-dd
+     **/
+    private String dataInicioVigencia = null;
+
+    @XmlElement(name = "dataFimVigencia")
+    @ApiModelProperty(example = "2019-12-31", value = "Data de fim de vigência<br>Formato: yyyy-MM-dd")
+    /**
+     * Data de fim de vigência<br>Formato: yyyy-MM-dd
+     **/
+    private String dataFimVigencia = null;
+
+    @XmlElement(name = "descricaoCondicao")
+    @ApiModelProperty(example = "'ATT_4747' Igual '02' OU 'ATT_4747' Igual '07' OU 'ATT_4747' Igual '09'", value = "Descrição da condição do atributo<br>Tamanho mínimo: 0<br>Tamanho máximo: 1000")
+    /**
+     * Descrição da condição do atributo<br>Tamanho mínimo: 0<br>Tamanho máximo: 1000
+     **/
+    private String descricaoCondicao = null;
+
     @XmlElement(name = "condicao", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
@@ -42,38 +63,6 @@ public class ArquivoDiarioCondicionadoDTO {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private ArquivoDiarioAtributoDTO atributo = null;
-
-    @XmlElement(name = "dataFimVigencia")
-    @ApiModelProperty(example = "2019-12-31", value = "Data de fim de vigência<br>Formato: yyyy-MM-dd")
-    /**
-     * Data de fim de vigência<br>Formato: yyyy-MM-dd
-     **/
-    private String dataFimVigencia = null;
-
-    @XmlElement(name = "dataInicioVigencia", required = true)
-    @ApiModelProperty(example = "2019-01-01", required = true, value = "Data de início de vigência<br>Formato: yyyy-MM-dd")
-    /**
-     * Data de início de vigência<br>Formato: yyyy-MM-dd
-     **/
-    private String dataInicioVigencia = null;
-
-    @XmlElement(name = "descricaoCondicao")
-    @ApiModelProperty(example = "'ATT_4747' Igual '02' OU 'ATT_4747' Igual '07' OU 'ATT_4747' Igual '09'", value = "Descrição da condição do atributo<br>Tamanho mínimo: 0<br>Tamanho máximo: 1000")
-    /**
-     * Descrição da condição do atributo<br>Tamanho mínimo: 0<br>Tamanho máximo: 1000
-     **/
-    private String descricaoCondicao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Preenchimento obrigatório.&lt;br&gt;Domínio:&lt;br&gt;true&lt;br&gt;false
@@ -112,6 +101,75 @@ public class ArquivoDiarioCondicionadoDTO {
 
     public ArquivoDiarioCondicionadoDTO multivalorado(Boolean multivalorado) {
         this.multivalorado = multivalorado;
+        return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data de início de vigência&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return dataInicioVigencia
+     **/
+    @JsonProperty("dataInicioVigencia")
+    @NotNull
+    public String getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    /**
+     * Data de fim de vigência&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return dataFimVigencia
+     **/
+    @JsonProperty("dataFimVigencia")
+    public String getDataFimVigencia() {
+        return dataFimVigencia;
+    }
+
+    public void setDataFimVigencia(String dataFimVigencia) {
+        this.dataFimVigencia = dataFimVigencia;
+    }
+
+    public ArquivoDiarioCondicionadoDTO dataFimVigencia(String dataFimVigencia) {
+        this.dataFimVigencia = dataFimVigencia;
+        return this;
+    }
+
+    /**
+     * Descrição da condição do atributo&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 1000
+     *
+     * @return descricaoCondicao
+     **/
+    @JsonProperty("descricaoCondicao")
+    public String getDescricaoCondicao() {
+        return descricaoCondicao;
+    }
+
+    public void setDescricaoCondicao(String descricaoCondicao) {
+        this.descricaoCondicao = descricaoCondicao;
+    }
+
+    public ArquivoDiarioCondicionadoDTO descricaoCondicao(String descricaoCondicao) {
+        this.descricaoCondicao = descricaoCondicao;
+        return this;
+    }
+
+    public ArquivoDiarioCondicionadoDTO dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
         return this;
     }
 
@@ -155,75 +213,17 @@ public class ArquivoDiarioCondicionadoDTO {
         return this;
     }
 
-    /**
-     * Data de fim de vigência&lt;br&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataFimVigencia
-     **/
-    @JsonProperty("dataFimVigencia")
-    public String getDataFimVigencia() {
-        return dataFimVigencia;
-    }
-
-    public void setDataFimVigencia(String dataFimVigencia) {
-        this.dataFimVigencia = dataFimVigencia;
-    }
-
-    public ArquivoDiarioCondicionadoDTO dataFimVigencia(String dataFimVigencia) {
-        this.dataFimVigencia = dataFimVigencia;
-        return this;
-    }
-
-    /**
-     * Data de início de vigência&lt;br&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataInicioVigencia
-     **/
-    @JsonProperty("dataInicioVigencia")
-    @NotNull
-    public String getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
-    public ArquivoDiarioCondicionadoDTO dataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
-    /**
-     * Descrição da condição do atributo&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 1000
-     *
-     * @return descricaoCondicao
-     **/
-    @JsonProperty("descricaoCondicao")
-    public String getDescricaoCondicao() {
-        return descricaoCondicao;
-    }
-
-    public void setDescricaoCondicao(String descricaoCondicao) {
-        this.descricaoCondicao = descricaoCondicao;
-    }
-
-    public ArquivoDiarioCondicionadoDTO descricaoCondicao(String descricaoCondicao) {
-        this.descricaoCondicao = descricaoCondicao;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ArquivoDiarioCondicionadoDTO {\n" +
                 "    obrigatorio: " + toIndentedString(obrigatorio) + "\n" +
                 "    multivalorado: " + toIndentedString(multivalorado) + "\n" +
+                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
+                "    dataFimVigencia: " + toIndentedString(dataFimVigencia) + "\n" +
+                "    descricaoCondicao: " + toIndentedString(descricaoCondicao) + "\n" +
                 "    condicao: " + toIndentedString(condicao) + "\n" +
                 "    atributo: " + toIndentedString(atributo) + "\n" +
-                "    dataFimVigencia: " + toIndentedString(dataFimVigencia) + "\n" +
-                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
-                "    descricaoCondicao: " + toIndentedString(descricaoCondicao) + "\n" +
                 "}";
         return sb;
     }

@@ -16,11 +16,32 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosLote", propOrder =
-        {"embalagemComercial", "numeroLote", "observacaoAvaria", "quantidadeVolumesAvariados", "contraMarca", "divergenciaQuantidade", "pesoLoteBalanca", "listaTipoAvaria", "marca", "observacaoDivergencia", "quantidadeVolumesDivergentes", "idElemento", "divergenciaQualificacao", "listaVolumesVerificados"
+        {"contraMarca", "divergenciaQualificacao", "divergenciaQuantidade", "embalagemComercial", "idElemento", "listaTipoAvaria", "listaVolumesVerificados", "marca", "numeroLote", "observacaoAvaria", "observacaoDivergencia", "pesoLoteBalanca", "quantidadeVolumesAvariados", "quantidadeVolumesDivergentes"
         })
 
 @XmlRootElement(name = "DadosLote")
 public class DadosLote {
+
+    @XmlElement(name = "contraMarca")
+    @ApiModelProperty(value = "Contramarca visível<br/>Tamanho: 100")
+    /**
+     * Contramarca visível<br/>Tamanho: 100
+     **/
+    private String contraMarca = null;
+
+    @XmlElement(name = "divergenciaQualificacao", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean divergenciaQualificacao = null;
+
+    @XmlElement(name = "divergenciaQuantidade", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean divergenciaQuantidade = null;
 
     @XmlElement(name = "embalagemComercial")
     @ApiModelProperty(value = "Embalagem comercial visível<br/>Tamanho: 100")
@@ -28,6 +49,36 @@ public class DadosLote {
      * Embalagem comercial visível<br/>Tamanho: 100
      **/
     private String embalagemComercial = null;
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
+
+    @XmlElement(name = "listaTipoAvaria")
+    @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
+    @Valid
+    /**
+     * Lista dos Tipos de Avarias.
+     **/
+    private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
+
+    @XmlElement(name = "listaVolumesVerificados", required = true)
+    @ApiModelProperty(required = true, value = "Lista de volumes verificados e recepcionados.")
+    @Valid
+    /**
+     * Lista de volumes verificados e recepcionados.
+     **/
+    private List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados = new ArrayList<>();
+
+    @XmlElement(name = "marca")
+    @ApiModelProperty(value = "Marca visível<br/>Tamanho: 100")
+    /**
+     * Marca visível<br/>Tamanho: 100
+     **/
+    private String marca = null;
 
     @XmlElement(name = "numeroLote", required = true)
     @ApiModelProperty(required = true, value = "Número do Lote interno gerado pelo Recinto. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
@@ -43,26 +94,12 @@ public class DadosLote {
      **/
     private String observacaoAvaria = null;
 
-    @XmlElement(name = "quantidadeVolumesAvariados")
-    @ApiModelProperty(example = "3", value = "Informar a quantidade de volumes avariados.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.")
+    @XmlElement(name = "observacaoDivergencia")
+    @ApiModelProperty(value = "Observações da divergência<br/>Tamanho: 200")
     /**
-     * Informar a quantidade de volumes avariados.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.
+     * Observações da divergência<br/>Tamanho: 200
      **/
-    private Integer quantidadeVolumesAvariados = null;
-
-    @XmlElement(name = "contraMarca")
-    @ApiModelProperty(value = "Contramarca visível<br/>Tamanho: 100")
-    /**
-     * Contramarca visível<br/>Tamanho: 100
-     **/
-    private String contraMarca = null;
-
-    @XmlElement(name = "divergenciaQuantidade", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean divergenciaQuantidade = null;
+    private String observacaoDivergencia = null;
 
     @XmlElement(name = "pesoLoteBalanca")
     @ApiModelProperty(example = "15.5", value = "Peso do lote na balança (Kg).<br/><br/>pesoLoteBalanca, até 4 casas decimais.")
@@ -72,27 +109,12 @@ public class DadosLote {
      **/
     private BigDecimal pesoLoteBalanca = null;
 
-    @XmlElement(name = "listaTipoAvaria")
-    @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
-    @Valid
+    @XmlElement(name = "quantidadeVolumesAvariados")
+    @ApiModelProperty(example = "3", value = "Informar a quantidade de volumes avariados.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.")
     /**
-     * Lista dos Tipos de Avarias.
+     * Informar a quantidade de volumes avariados.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesAvariados' seja informado quando o atributo 'tipoAvaria' for informado.
      **/
-    private List<DadosDoTipoDeAvaria> listaTipoAvaria = null;
-
-    @XmlElement(name = "marca")
-    @ApiModelProperty(value = "Marca visível<br/>Tamanho: 100")
-    /**
-     * Marca visível<br/>Tamanho: 100
-     **/
-    private String marca = null;
-
-    @XmlElement(name = "observacaoDivergencia")
-    @ApiModelProperty(value = "Observações da divergência<br/>Tamanho: 200")
-    /**
-     * Observações da divergência<br/>Tamanho: 200
-     **/
-    private String observacaoDivergencia = null;
+    private Integer quantidadeVolumesAvariados = null;
 
     @XmlElement(name = "quantidadeVolumesDivergentes")
     @ApiModelProperty(example = "10", value = "Informar a quantidade de volumes divergentes.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'quantidadeVolumesDivergentes' seja informado quando o atributo 'divergenciaQuantidade' for informado com 'true'.")
@@ -101,27 +123,24 @@ public class DadosLote {
      **/
     private Integer quantidadeVolumesDivergentes = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Contramarca visível&lt;br/&gt;Tamanho: 100
+     *
+     * @return contraMarca
      **/
-    private String idElemento = null;
+    @JsonProperty("contraMarca")
+    public String getContraMarca() {
+        return contraMarca;
+    }
 
-    @XmlElement(name = "divergenciaQualificacao", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean divergenciaQualificacao = null;
+    public void setContraMarca(String contraMarca) {
+        this.contraMarca = contraMarca;
+    }
 
-    @XmlElement(name = "listaVolumesVerificados", required = true)
-    @ApiModelProperty(required = true, value = "Lista de volumes verificados e recepcionados.")
-    @Valid
-    /**
-     * Lista de volumes verificados e recepcionados.
-     **/
-    private List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados = new ArrayList<>();
+    public DadosLote contraMarca(String contraMarca) {
+        this.contraMarca = contraMarca;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -132,6 +151,46 @@ public class DadosLote {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return divergenciaQualificacao
+     **/
+    @JsonProperty("divergenciaQualificacao")
+    @NotNull
+    public Boolean isisDivergenciaQualificacao() {
+        return divergenciaQualificacao;
+    }
+
+    public void setDivergenciaQualificacao(Boolean divergenciaQualificacao) {
+        this.divergenciaQualificacao = divergenciaQualificacao;
+    }
+
+    /**
+     * Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return divergenciaQuantidade
+     **/
+    @JsonProperty("divergenciaQuantidade")
+    @NotNull
+    public Boolean isisDivergenciaQuantidade() {
+        return divergenciaQuantidade;
+    }
+
+    public void setDivergenciaQuantidade(Boolean divergenciaQuantidade) {
+        this.divergenciaQuantidade = divergenciaQuantidade;
+    }
+
+    public DadosLote divergenciaQuantidade(Boolean divergenciaQuantidade) {
+        this.divergenciaQuantidade = divergenciaQuantidade;
+        return this;
+    }
+
+    public DadosLote divergenciaQualificacao(Boolean divergenciaQualificacao) {
+        this.divergenciaQualificacao = divergenciaQualificacao;
+        return this;
     }
 
     /**
@@ -150,6 +209,93 @@ public class DadosLote {
 
     public DadosLote embalagemComercial(String embalagemComercial) {
         this.embalagemComercial = embalagemComercial;
+        return this;
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    /**
+     * Lista dos Tipos de Avarias.
+     *
+     * @return listaTipoAvaria
+     **/
+    @JsonProperty("listaTipoAvaria")
+    public List<DadosDoTipoDeAvaria> getListaTipoAvaria() {
+        return listaTipoAvaria;
+    }
+
+    public void setListaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
+        this.listaTipoAvaria = listaTipoAvaria;
+    }
+
+    public DadosLote listaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
+        this.listaTipoAvaria = listaTipoAvaria;
+        return this;
+    }
+
+    public DadosLote addListaTipoAvariaItem(DadosDoTipoDeAvaria listaTipoAvariaItem) {
+        this.listaTipoAvaria.add(listaTipoAvariaItem);
+        return this;
+    }
+
+    public DadosLote idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
+    /**
+     * Lista de volumes verificados e recepcionados.
+     *
+     * @return listaVolumesVerificados
+     **/
+    @JsonProperty("listaVolumesVerificados")
+    @NotNull
+    public List<DadosVolumeVerificadoMadeiraObrigatorio> getListaVolumesVerificados() {
+        return listaVolumesVerificados;
+    }
+
+    public void setListaVolumesVerificados(List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados) {
+        this.listaVolumesVerificados = listaVolumesVerificados;
+    }
+
+    public DadosLote listaVolumesVerificados(List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados) {
+        this.listaVolumesVerificados = listaVolumesVerificados;
+        return this;
+    }
+
+    /**
+     * Marca visível&lt;br/&gt;Tamanho: 100
+     * @return marca
+     **/
+    @JsonProperty("marca")
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public DadosLote marca(String marca) {
+        this.marca = marca;
+        return this;
+    }
+
+    public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
+        this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
         return this;
     }
 
@@ -187,66 +333,27 @@ public class DadosLote {
         this.observacaoAvaria = observacaoAvaria;
     }
 
+    /**
+     * Observações da divergência&lt;br/&gt;Tamanho: 200
+     *
+     * @return observacaoDivergencia
+     **/
+    @JsonProperty("observacaoDivergencia")
+    public String getObservacaoDivergencia() {
+        return observacaoDivergencia;
+    }
+
+    public void setObservacaoDivergencia(String observacaoDivergencia) {
+        this.observacaoDivergencia = observacaoDivergencia;
+    }
+
+    public DadosLote observacaoDivergencia(String observacaoDivergencia) {
+        this.observacaoDivergencia = observacaoDivergencia;
+        return this;
+    }
+
     public DadosLote observacaoAvaria(String observacaoAvaria) {
         this.observacaoAvaria = observacaoAvaria;
-        return this;
-    }
-
-    /**
-     * Informar a quantidade de volumes avariados.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;quantidadeVolumesAvariados&#39; seja informado quando o atributo &#39;tipoAvaria&#39; for informado.
-     *
-     * @return quantidadeVolumesAvariados
-     **/
-    @JsonProperty("quantidadeVolumesAvariados")
-    public Integer getQuantidadeVolumesAvariados() {
-        return quantidadeVolumesAvariados;
-    }
-
-    public void setQuantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
-        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
-    }
-
-    public DadosLote quantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
-        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
-        return this;
-    }
-
-    /**
-     * Contramarca visível&lt;br/&gt;Tamanho: 100
-     *
-     * @return contraMarca
-     **/
-    @JsonProperty("contraMarca")
-    public String getContraMarca() {
-        return contraMarca;
-    }
-
-    public void setContraMarca(String contraMarca) {
-        this.contraMarca = contraMarca;
-    }
-
-    public DadosLote contraMarca(String contraMarca) {
-        this.contraMarca = contraMarca;
-        return this;
-    }
-
-    /**
-     * Divergência de quantidades de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return divergenciaQuantidade
-     **/
-    @JsonProperty("divergenciaQuantidade")
-    @NotNull
-    public Boolean isisDivergenciaQuantidade() {
-        return divergenciaQuantidade;
-    }
-
-    public void setDivergenciaQuantidade(Boolean divergenciaQuantidade) {
-        this.divergenciaQuantidade = divergenciaQuantidade;
-    }
-
-    public DadosLote divergenciaQuantidade(Boolean divergenciaQuantidade) {
-        this.divergenciaQuantidade = divergenciaQuantidade;
         return this;
     }
 
@@ -270,65 +377,17 @@ public class DadosLote {
     }
 
     /**
-     * Lista dos Tipos de Avarias.
+     * Informar a quantidade de volumes avariados.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;quantidadeVolumesAvariados&#39; seja informado quando o atributo &#39;tipoAvaria&#39; for informado.
      *
-     * @return listaTipoAvaria
+     * @return quantidadeVolumesAvariados
      **/
-    @JsonProperty("listaTipoAvaria")
-    public List<DadosDoTipoDeAvaria> getListaTipoAvaria() {
-        return listaTipoAvaria;
+    @JsonProperty("quantidadeVolumesAvariados")
+    public Integer getQuantidadeVolumesAvariados() {
+        return quantidadeVolumesAvariados;
     }
 
-    public void setListaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
-        this.listaTipoAvaria = listaTipoAvaria;
-    }
-
-    public DadosLote listaTipoAvaria(List<DadosDoTipoDeAvaria> listaTipoAvaria) {
-        this.listaTipoAvaria = listaTipoAvaria;
-        return this;
-    }
-
-    public DadosLote addListaTipoAvariaItem(DadosDoTipoDeAvaria listaTipoAvariaItem) {
-        this.listaTipoAvaria.add(listaTipoAvariaItem);
-        return this;
-    }
-
-    /**
-     * Marca visível&lt;br/&gt;Tamanho: 100
-     *
-     * @return marca
-     **/
-    @JsonProperty("marca")
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public DadosLote marca(String marca) {
-        this.marca = marca;
-        return this;
-    }
-
-    /**
-     * Observações da divergência&lt;br/&gt;Tamanho: 200
-     *
-     * @return observacaoDivergencia
-     **/
-    @JsonProperty("observacaoDivergencia")
-    public String getObservacaoDivergencia() {
-        return observacaoDivergencia;
-    }
-
-    public void setObservacaoDivergencia(String observacaoDivergencia) {
-        this.observacaoDivergencia = observacaoDivergencia;
-    }
-
-    public DadosLote observacaoDivergencia(String observacaoDivergencia) {
-        this.observacaoDivergencia = observacaoDivergencia;
-        return this;
+    public void setQuantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
+        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
     }
 
     /**
@@ -350,68 +409,8 @@ public class DadosLote {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosLote idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
-    /**
-     * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return divergenciaQualificacao
-     **/
-    @JsonProperty("divergenciaQualificacao")
-    @NotNull
-    public Boolean isisDivergenciaQualificacao() {
-        return divergenciaQualificacao;
-    }
-
-    public void setDivergenciaQualificacao(Boolean divergenciaQualificacao) {
-        this.divergenciaQualificacao = divergenciaQualificacao;
-    }
-
-    public DadosLote divergenciaQualificacao(Boolean divergenciaQualificacao) {
-        this.divergenciaQualificacao = divergenciaQualificacao;
-        return this;
-    }
-
-    /**
-     * Lista de volumes verificados e recepcionados.
-     *
-     * @return listaVolumesVerificados
-     **/
-    @JsonProperty("listaVolumesVerificados")
-    @NotNull
-    public List<DadosVolumeVerificadoMadeiraObrigatorio> getListaVolumesVerificados() {
-        return listaVolumesVerificados;
-    }
-
-    public void setListaVolumesVerificados(List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados) {
-        this.listaVolumesVerificados = listaVolumesVerificados;
-    }
-
-    public DadosLote listaVolumesVerificados(List<DadosVolumeVerificadoMadeiraObrigatorio> listaVolumesVerificados) {
-        this.listaVolumesVerificados = listaVolumesVerificados;
-        return this;
-    }
-
-    public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
-        this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
+    public DadosLote quantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
+        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
         return this;
     }
 
@@ -419,20 +418,20 @@ public class DadosLote {
     public String toString() {
 
         String sb = "class DadosLote {\n" +
+                "    contraMarca: " + toIndentedString(contraMarca) + "\n" +
+                "    divergenciaQualificacao: " + toIndentedString(divergenciaQualificacao) + "\n" +
+                "    divergenciaQuantidade: " + toIndentedString(divergenciaQuantidade) + "\n" +
                 "    embalagemComercial: " + toIndentedString(embalagemComercial) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    listaTipoAvaria: " + toIndentedString(listaTipoAvaria) + "\n" +
+                "    listaVolumesVerificados: " + toIndentedString(listaVolumesVerificados) + "\n" +
+                "    marca: " + toIndentedString(marca) + "\n" +
                 "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    observacaoAvaria: " + toIndentedString(observacaoAvaria) + "\n" +
-                "    quantidadeVolumesAvariados: " + toIndentedString(quantidadeVolumesAvariados) + "\n" +
-                "    contraMarca: " + toIndentedString(contraMarca) + "\n" +
-                "    divergenciaQuantidade: " + toIndentedString(divergenciaQuantidade) + "\n" +
-                "    pesoLoteBalanca: " + toIndentedString(pesoLoteBalanca) + "\n" +
-                "    listaTipoAvaria: " + toIndentedString(listaTipoAvaria) + "\n" +
-                "    marca: " + toIndentedString(marca) + "\n" +
                 "    observacaoDivergencia: " + toIndentedString(observacaoDivergencia) + "\n" +
+                "    pesoLoteBalanca: " + toIndentedString(pesoLoteBalanca) + "\n" +
+                "    quantidadeVolumesAvariados: " + toIndentedString(quantidadeVolumesAvariados) + "\n" +
                 "    quantidadeVolumesDivergentes: " + toIndentedString(quantidadeVolumesDivergentes) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
-                "    divergenciaQualificacao: " + toIndentedString(divergenciaQualificacao) + "\n" +
-                "    listaVolumesVerificados: " + toIndentedString(listaVolumesVerificados) + "\n" +
                 "}";
         return sb;
     }

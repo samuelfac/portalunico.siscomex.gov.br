@@ -41,12 +41,7 @@ public class TipoTratamentoIcmsDTO {
      * Lista das opcões disponíveis para solicitação de cálculo (tipo de tratamento = 'CALCULO_SEFAZ')
      **/
     private List<OpcaoCalculoIcmsDTO> opcoesIcms = null;
-    @XmlElement(name = "tipoTratamento", required = true)
-    @ApiModelProperty(required = true, value = "Tipo de tratamento usado pela Sefaz para o ICMS")
-    /**
-     * Tipo de tratamento usado pela Sefaz para o ICMS
-     **/
-    private TipoTratamentoEnum tipoTratamento = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,6 +53,13 @@ public class TipoTratamentoIcmsDTO {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoTratamento", required = true)
+    @ApiModelProperty(required = true, value = "Tipo de tratamento usado pela Sefaz para o ICMS")
+    /**
+     * Tipo de tratamento usado pela Sefaz para o ICMS
+     **/
+    private TipoTratamentoEnum tipoTratamento = null;
 
     /**
      * Descrição do tipo de tratamento
@@ -125,7 +127,6 @@ public class TipoTratamentoIcmsDTO {
         this.tipoTratamento = tipoTratamento;
         return this;
     }
-
 
     @Override
     public String toString() {

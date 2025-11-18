@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecepcaoConteiner", propOrder =
-        {"cpfResp", "transitoSimplificado", "codigoIdentCarga", "cnpjResp", "conteineres", "divergenciasIdentificadas", "entregador", "local", "identificacaoRecepcao", "referenciaLocalRecepcao", "avariasIdentificadas", "localArmazenamento", "observacoesGerais"
+        {"identificacaoRecepcao", "cnpjResp", "cpfResp", "local", "referenciaLocalRecepcao", "entregador", "conteineres", "localArmazenamento", "codigoIdentCarga", "avariasIdentificadas", "divergenciasIdentificadas", "observacoesGerais", "transitoSimplificado"
         })
 
 @XmlRootElement(name = "RecepcaoConteiner")
@@ -26,24 +26,12 @@ import java.util.List;
 @ApiModel(description = "Recepção por Contêiner")
 public class RecepcaoConteiner {
 
-    @XmlElement(name = "cpfResp")
-    @ApiModelProperty(example = "07396865168", value = "CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
+    @XmlElement(name = "identificacaoRecepcao", required = true)
+    @ApiModelProperty(example = "613314937", required = true, value = "Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
     /**
-     * CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
+     * Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      **/
-    private String cpfResp = null;
-
-    @XmlElement(name = "transitoSimplificado")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TransitoSimplificado transitoSimplificado = null;
-
-    @XmlElement(name = "codigoIdentCarga")
-    @ApiModelProperty(example = "45411454544", value = "Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35")
-    /**
-     * Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35
-     **/
-    private String codigoIdentCarga = null;
+    private String identificacaoRecepcao = null;
 
     @XmlElement(name = "cnpjResp")
     @ApiModelProperty(example = "07396865000168", value = "CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
@@ -51,6 +39,30 @@ public class RecepcaoConteiner {
      * CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
      **/
     private String cnpjResp = null;
+
+    @XmlElement(name = "cpfResp")
+    @ApiModelProperty(example = "07396865168", value = "CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
+    /**
+     * CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
+     **/
+    private String cpfResp = null;
+
+    @XmlElement(name = "local", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Local local = null;
+
+    @XmlElement(name = "referenciaLocalRecepcao")
+    @ApiModelProperty(example = "Referência do Local de recepção", value = "Referência do Local de recepção")
+    /**
+     * Referência do Local de recepção
+     **/
+    private String referenciaLocalRecepcao = null;
+
+    @XmlElement(name = "entregador", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Entregador entregador = null;
 
     @XmlElement(name = "conteineres", required = true)
     @ApiModelProperty(required = true, value = "Lista dos contêineres a serem recepcionados")
@@ -60,36 +72,19 @@ public class RecepcaoConteiner {
      **/
     private List<Conteiner> conteineres = new ArrayList<>();
 
-    @XmlElement(name = "divergenciasIdentificadas")
-    @ApiModelProperty(example = "Divergências identificadas", value = "Divergências identificadas<br>Tamanho> 250")
+    @XmlElement(name = "localArmazenamento")
+    @ApiModelProperty(example = "Local de armazenamento da carga", value = "Local de armazenamento da carga<br>Tamanho> 150")
     /**
-     * Divergências identificadas<br>Tamanho> 250
+     * Local de armazenamento da carga<br>Tamanho> 150
      **/
-    private String divergenciasIdentificadas = null;
+    private String localArmazenamento = null;
 
-    @XmlElement(name = "entregador", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Entregador entregador = null;
-
-    @XmlElement(name = "local", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Local local = null;
-
-    @XmlElement(name = "identificacaoRecepcao", required = true)
-    @ApiModelProperty(example = "613314937", required = true, value = "Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
+    @XmlElement(name = "codigoIdentCarga")
+    @ApiModelProperty(example = "45411454544", value = "Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35")
     /**
-     * Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
+     * Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35
      **/
-    private String identificacaoRecepcao = null;
-
-    @XmlElement(name = "referenciaLocalRecepcao")
-    @ApiModelProperty(example = "Referência do Local de recepção", value = "Referência do Local de recepção")
-    /**
-     * Referência do Local de recepção
-     **/
-    private String referenciaLocalRecepcao = null;
+    private String codigoIdentCarga = null;
 
     @XmlElement(name = "avariasIdentificadas")
     @ApiModelProperty(example = "Avarias identificadas", value = "Avarias identificadas<br>Tamanho> 250")
@@ -98,12 +93,12 @@ public class RecepcaoConteiner {
      **/
     private String avariasIdentificadas = null;
 
-    @XmlElement(name = "localArmazenamento")
-    @ApiModelProperty(example = "Local de armazenamento da carga", value = "Local de armazenamento da carga<br>Tamanho> 150")
+    @XmlElement(name = "divergenciasIdentificadas")
+    @ApiModelProperty(example = "Divergências identificadas", value = "Divergências identificadas<br>Tamanho> 250")
     /**
-     * Local de armazenamento da carga<br>Tamanho> 150
+     * Divergências identificadas<br>Tamanho> 250
      **/
-    private String localArmazenamento = null;
+    private String divergenciasIdentificadas = null;
 
     @XmlElement(name = "observacoesGerais")
     @ApiModelProperty(example = "Observações adicionais", value = "Observações adicionais<br>Tamanho> 250")
@@ -111,6 +106,11 @@ public class RecepcaoConteiner {
      * Observações adicionais<br>Tamanho> 250
      **/
     private String observacoesGerais = null;
+
+    @XmlElement(name = "transitoSimplificado")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TransitoSimplificado transitoSimplificado = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -124,60 +124,18 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * CPF do responsável pela recepção&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
+     * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
-     * @return cpfResp
+     * @return identificacaoRecepcao
      **/
-    @JsonProperty("cpfResp")
-    public String getCpfResp() {
-        return cpfResp;
+    @JsonProperty("identificacaoRecepcao")
+    @NotNull
+    public String getIdentificacaoRecepcao() {
+        return identificacaoRecepcao;
     }
 
-    public void setCpfResp(String cpfResp) {
-        this.cpfResp = cpfResp;
-    }
-
-    public RecepcaoConteiner cpfResp(String cpfResp) {
-        this.cpfResp = cpfResp;
-        return this;
-    }
-
-    /**
-     * Get transitoSimplificado
-     *
-     * @return transitoSimplificado
-     **/
-    @JsonProperty("transitoSimplificado")
-    public TransitoSimplificado getTransitoSimplificado() {
-        return transitoSimplificado;
-    }
-
-    public void setTransitoSimplificado(TransitoSimplificado transitoSimplificado) {
-        this.transitoSimplificado = transitoSimplificado;
-    }
-
-    public RecepcaoConteiner transitoSimplificado(TransitoSimplificado transitoSimplificado) {
-        this.transitoSimplificado = transitoSimplificado;
-        return this;
-    }
-
-    /**
-     * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
-     *
-     * @return codigoIdentCarga
-     **/
-    @JsonProperty("codigoIdentCarga")
-    public String getCodigoIdentCarga() {
-        return codigoIdentCarga;
-    }
-
-    public void setCodigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
-    }
-
-    public RecepcaoConteiner codigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
-        return this;
+    public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
     }
 
     /**
@@ -199,47 +157,66 @@ public class RecepcaoConteiner {
         return this;
     }
 
+    public RecepcaoConteiner identificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
+        return this;
+    }
+
     /**
-     * Lista dos contêineres a serem recepcionados
+     * CPF do responsável pela recepção&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
-     * @return conteineres
+     * @return cpfResp
      **/
-    @JsonProperty("conteineres")
+    @JsonProperty("cpfResp")
+    public String getCpfResp() {
+        return cpfResp;
+    }
+
+    public void setCpfResp(String cpfResp) {
+        this.cpfResp = cpfResp;
+    }
+
+    /**
+     * Get local
+     *
+     * @return local
+     **/
+    @JsonProperty("local")
     @NotNull
-    public List<Conteiner> getConteineres() {
-        return conteineres;
+    public Local getLocal() {
+        return local;
     }
 
-    public void setConteineres(List<Conteiner> conteineres) {
-        this.conteineres = conteineres;
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
-    public RecepcaoConteiner conteineres(List<Conteiner> conteineres) {
-        this.conteineres = conteineres;
-        return this;
-    }
-
-    public RecepcaoConteiner addConteineresItem(Conteiner conteineresItem) {
-        this.conteineres.add(conteineresItem);
+    public RecepcaoConteiner local(Local local) {
+        this.local = local;
         return this;
     }
 
     /**
-     * Divergências identificadas&lt;br&gt;Tamanho&gt; 250
+     * Referência do Local de recepção
      *
-     * @return divergenciasIdentificadas
+     * @return referenciaLocalRecepcao
      **/
-    @JsonProperty("divergenciasIdentificadas")
-    public String getDivergenciasIdentificadas() {
-        return divergenciasIdentificadas;
+    @JsonProperty("referenciaLocalRecepcao")
+    public String getReferenciaLocalRecepcao() {
+        return referenciaLocalRecepcao;
     }
 
-    public void setDivergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
+    public void setReferenciaLocalRecepcao(String referenciaLocalRecepcao) {
+        this.referenciaLocalRecepcao = referenciaLocalRecepcao;
     }
 
-    public RecepcaoConteiner divergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
+    public RecepcaoConteiner referenciaLocalRecepcao(String referenciaLocalRecepcao) {
+        this.referenciaLocalRecepcao = referenciaLocalRecepcao;
+        return this;
+    }
+
+    public RecepcaoConteiner cpfResp(String cpfResp) {
+        this.cpfResp = cpfResp;
         return this;
     }
 
@@ -264,61 +241,65 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Get local
+     * Lista dos contêineres a serem recepcionados
      *
-     * @return local
+     * @return conteineres
      **/
-    @JsonProperty("local")
+    @JsonProperty("conteineres")
     @NotNull
-    public Local getLocal() {
-        return local;
+    public List<Conteiner> getConteineres() {
+        return conteineres;
     }
 
-    public void setLocal(Local local) {
-        this.local = local;
+    public void setConteineres(List<Conteiner> conteineres) {
+        this.conteineres = conteineres;
     }
 
-    public RecepcaoConteiner local(Local local) {
-        this.local = local;
+    public RecepcaoConteiner conteineres(List<Conteiner> conteineres) {
+        this.conteineres = conteineres;
         return this;
     }
 
     /**
-     * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
+     * Local de armazenamento da carga&lt;br&gt;Tamanho&gt; 150
      *
-     * @return identificacaoRecepcao
+     * @return localArmazenamento
      **/
-    @JsonProperty("identificacaoRecepcao")
-    @NotNull
-    public String getIdentificacaoRecepcao() {
-        return identificacaoRecepcao;
+    @JsonProperty("localArmazenamento")
+    public String getLocalArmazenamento() {
+        return localArmazenamento;
     }
 
-    public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
+    public void setLocalArmazenamento(String localArmazenamento) {
+        this.localArmazenamento = localArmazenamento;
     }
 
-    public RecepcaoConteiner identificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
+    public RecepcaoConteiner localArmazenamento(String localArmazenamento) {
+        this.localArmazenamento = localArmazenamento;
+        return this;
+    }
+
+    public RecepcaoConteiner addConteineresItem(Conteiner conteineresItem) {
+        this.conteineres.add(conteineresItem);
         return this;
     }
 
     /**
-     * Referência do Local de recepção
+     * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
      *
-     * @return referenciaLocalRecepcao
+     * @return codigoIdentCarga
      **/
-    @JsonProperty("referenciaLocalRecepcao")
-    public String getReferenciaLocalRecepcao() {
-        return referenciaLocalRecepcao;
+    @JsonProperty("codigoIdentCarga")
+    public String getCodigoIdentCarga() {
+        return codigoIdentCarga;
     }
 
-    public void setReferenciaLocalRecepcao(String referenciaLocalRecepcao) {
-        this.referenciaLocalRecepcao = referenciaLocalRecepcao;
+    public void setCodigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
     }
 
-    public RecepcaoConteiner referenciaLocalRecepcao(String referenciaLocalRecepcao) {
-        this.referenciaLocalRecepcao = referenciaLocalRecepcao;
+    public RecepcaoConteiner codigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
         return this;
     }
 
@@ -342,27 +323,21 @@ public class RecepcaoConteiner {
     }
 
     /**
-     * Local de armazenamento da carga&lt;br&gt;Tamanho&gt; 150
+     * Divergências identificadas&lt;br&gt;Tamanho&gt; 250
      *
-     * @return localArmazenamento
+     * @return divergenciasIdentificadas
      **/
-    @JsonProperty("localArmazenamento")
-    public String getLocalArmazenamento() {
-        return localArmazenamento;
+    @JsonProperty("divergenciasIdentificadas")
+    public String getDivergenciasIdentificadas() {
+        return divergenciasIdentificadas;
     }
 
-    public void setLocalArmazenamento(String localArmazenamento) {
-        this.localArmazenamento = localArmazenamento;
-    }
-
-    public RecepcaoConteiner localArmazenamento(String localArmazenamento) {
-        this.localArmazenamento = localArmazenamento;
-        return this;
+    public void setDivergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
     }
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho&gt; 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")
@@ -379,23 +354,47 @@ public class RecepcaoConteiner {
         return this;
     }
 
+    public RecepcaoConteiner divergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
+        return this;
+    }
+
+    /**
+     * Get transitoSimplificado
+     *
+     * @return transitoSimplificado
+     **/
+    @JsonProperty("transitoSimplificado")
+    public TransitoSimplificado getTransitoSimplificado() {
+        return transitoSimplificado;
+    }
+
+    public void setTransitoSimplificado(TransitoSimplificado transitoSimplificado) {
+        this.transitoSimplificado = transitoSimplificado;
+    }
+
+    public RecepcaoConteiner transitoSimplificado(TransitoSimplificado transitoSimplificado) {
+        this.transitoSimplificado = transitoSimplificado;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RecepcaoConteiner {\n" +
-                "    cpfResp: " + toIndentedString(cpfResp) + "\n" +
-                "    transitoSimplificado: " + toIndentedString(transitoSimplificado) + "\n" +
-                "    codigoIdentCarga: " + toIndentedString(codigoIdentCarga) + "\n" +
-                "    cnpjResp: " + toIndentedString(cnpjResp) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
-                "    divergenciasIdentificadas: " + toIndentedString(divergenciasIdentificadas) + "\n" +
-                "    entregador: " + toIndentedString(entregador) + "\n" +
-                "    local: " + toIndentedString(local) + "\n" +
                 "    identificacaoRecepcao: " + toIndentedString(identificacaoRecepcao) + "\n" +
+                "    cnpjResp: " + toIndentedString(cnpjResp) + "\n" +
+                "    cpfResp: " + toIndentedString(cpfResp) + "\n" +
+                "    local: " + toIndentedString(local) + "\n" +
                 "    referenciaLocalRecepcao: " + toIndentedString(referenciaLocalRecepcao) + "\n" +
-                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
+                "    entregador: " + toIndentedString(entregador) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "    localArmazenamento: " + toIndentedString(localArmazenamento) + "\n" +
+                "    codigoIdentCarga: " + toIndentedString(codigoIdentCarga) + "\n" +
+                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
+                "    divergenciasIdentificadas: " + toIndentedString(divergenciasIdentificadas) + "\n" +
                 "    observacoesGerais: " + toIndentedString(observacoesGerais) + "\n" +
+                "    transitoSimplificado: " + toIndentedString(transitoSimplificado) + "\n" +
                 "}";
         return sb;
     }

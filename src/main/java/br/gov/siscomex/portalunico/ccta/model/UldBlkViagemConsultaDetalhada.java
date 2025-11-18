@@ -15,13 +15,26 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UldBlkViagemConsultaDetalhada", propOrder =
-        {"formaTransporte", "tipoULD", "conhecimentos", "codigoProprietarioULD", "numeroSerieULD"
+        {"codigoProprietarioULD", "conhecimentos", "formaTransporte", "numeroSerieULD", "tipoULD"
         })
 
 @XmlRootElement(name = "UldBlkViagemConsultaDetalhada")
 public class UldBlkViagemConsultaDetalhada {
 
+    @XmlElement(name = "codigoProprietarioULD")
+    @ApiModelProperty(example = "XX", value = "Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA")
+    /**
+     * Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA
+     **/
+    private String codigoProprietarioULD = null;
 
+    @XmlElement(name = "conhecimentos")
+    @ApiModelProperty(value = "Lista contendo os conhecimentos manifestados para este manifesto<br/>")
+    @Valid
+    /**
+     * Lista contendo os conhecimentos manifestados para este manifesto<br/>
+     **/
+    private List<ConhecimentoViagemConsultaDetalhada> conhecimentos = null;
     @XmlElement(name = "formaTransporte")
     @ApiModelProperty(example = "BLK", value = "Forma de transporte<br/>Tamanho 3<br/> Formato: AAA")
     /**
@@ -34,19 +47,7 @@ public class UldBlkViagemConsultaDetalhada {
      * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
      **/
     private String tipoULD = null;
-    @XmlElement(name = "conhecimentos")
-    @ApiModelProperty(value = "Lista contendo os conhecimentos manifestados para este manifesto<br/>")
-    @Valid
-    /**
-     * Lista contendo os conhecimentos manifestados para este manifesto<br/>
-     **/
-    private List<ConhecimentoViagemConsultaDetalhada> conhecimentos = null;
-    @XmlElement(name = "codigoProprietarioULD")
-    @ApiModelProperty(example = "XX", value = "Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA")
-    /**
-     * Identifica a companhia aérea proprietária da ULD<br/>Tamanho: : 2<br/> Formato: AA
-     **/
-    private String codigoProprietarioULD = null;
+
     @XmlElement(name = "numeroSerieULD")
     @ApiModelProperty(example = "AS123", value = "Número de série de uma ULD registrado pelo seu proprietário<br/>Tamanho: 5<br/> Formato: AAAAA")
     /**
@@ -66,43 +67,21 @@ public class UldBlkViagemConsultaDetalhada {
     }
 
     /**
-     * Forma de transporte&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
+     * Identifica a companhia aérea proprietária da ULD&lt;br/&gt;Tamanho: : 2&lt;br/&gt; Formato: AA
      *
-     * @return formaTransporte
+     * @return codigoProprietarioULD
      **/
-    @JsonProperty("formaTransporte")
-    public String getFormaTransporte() {
-        if (formaTransporte == null) {
-            return null;
-        }
-        return formaTransporte.value();
+    @JsonProperty("codigoProprietarioULD")
+    public String getCodigoProprietarioULD() {
+        return codigoProprietarioULD;
     }
 
-    public void setFormaTransporte(FormaTransporteEnum formaTransporte) {
-        this.formaTransporte = formaTransporte;
+    public void setCodigoProprietarioULD(String codigoProprietarioULD) {
+        this.codigoProprietarioULD = codigoProprietarioULD;
     }
 
-    public UldBlkViagemConsultaDetalhada formaTransporte(FormaTransporteEnum formaTransporte) {
-        this.formaTransporte = formaTransporte;
-        return this;
-    }
-
-    /**
-     * Código referente ao tipo da ULD&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
-     *
-     * @return tipoULD
-     **/
-    @JsonProperty("tipoULD")
-    public String getTipoULD() {
-        return tipoULD;
-    }
-
-    public void setTipoULD(String tipoULD) {
-        this.tipoULD = tipoULD;
-    }
-
-    public UldBlkViagemConsultaDetalhada tipoULD(String tipoULD) {
-        this.tipoULD = tipoULD;
+    public UldBlkViagemConsultaDetalhada codigoProprietarioULD(String codigoProprietarioULD) {
+        this.codigoProprietarioULD = codigoProprietarioULD;
         return this;
     }
 
@@ -131,21 +110,24 @@ public class UldBlkViagemConsultaDetalhada {
     }
 
     /**
-     * Identifica a companhia aérea proprietária da ULD&lt;br/&gt;Tamanho: : 2&lt;br/&gt; Formato: AA
+     * Forma de transporte&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
      *
-     * @return codigoProprietarioULD
+     * @return formaTransporte
      **/
-    @JsonProperty("codigoProprietarioULD")
-    public String getCodigoProprietarioULD() {
-        return codigoProprietarioULD;
+    @JsonProperty("formaTransporte")
+    public String getFormaTransporte() {
+        if (formaTransporte == null) {
+            return null;
+        }
+        return formaTransporte.value();
     }
 
-    public void setCodigoProprietarioULD(String codigoProprietarioULD) {
-        this.codigoProprietarioULD = codigoProprietarioULD;
+    public void setFormaTransporte(FormaTransporteEnum formaTransporte) {
+        this.formaTransporte = formaTransporte;
     }
 
-    public UldBlkViagemConsultaDetalhada codigoProprietarioULD(String codigoProprietarioULD) {
-        this.codigoProprietarioULD = codigoProprietarioULD;
+    public UldBlkViagemConsultaDetalhada formaTransporte(FormaTransporteEnum formaTransporte) {
+        this.formaTransporte = formaTransporte;
         return this;
     }
 
@@ -168,16 +150,35 @@ public class UldBlkViagemConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Código referente ao tipo da ULD&lt;br/&gt;Tamanho 3&lt;br/&gt; Formato: AAA
+     *
+     * @return tipoULD
+     **/
+    @JsonProperty("tipoULD")
+    public String getTipoULD() {
+        return tipoULD;
+    }
+
+    public void setTipoULD(String tipoULD) {
+        this.tipoULD = tipoULD;
+    }
+
+    public UldBlkViagemConsultaDetalhada tipoULD(String tipoULD) {
+        this.tipoULD = tipoULD;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class UldBlkViagemConsultaDetalhada {\n" +
-                "    formaTransporte: " + toIndentedString(formaTransporte) + "\n" +
-                "    tipoULD: " + toIndentedString(tipoULD) + "\n" +
-                "    conhecimentos: " + toIndentedString(conhecimentos) + "\n" +
                 "    codigoProprietarioULD: " + toIndentedString(codigoProprietarioULD) + "\n" +
+                "    conhecimentos: " + toIndentedString(conhecimentos) + "\n" +
+                "    formaTransporte: " + toIndentedString(formaTransporte) + "\n" +
                 "    numeroSerieULD: " + toIndentedString(numeroSerieULD) + "\n" +
+                "    tipoULD: " + toIndentedString(tipoULD) + "\n" +
                 "}";
         return sb;
     }

@@ -32,17 +32,6 @@ public class BalancaDuimpTotaisCover {
     private Long quantidadeTotaltensDuimp = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Quantidade de Duimps selecionadas no período pesquisado.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999999999
      *
      * @return quantidadeTotalDuimp
@@ -78,6 +67,18 @@ public class BalancaDuimpTotaisCover {
     public BalancaDuimpTotaisCover quantidadeTotaltensDuimp(Long quantidadeTotaltensDuimp) {
         this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

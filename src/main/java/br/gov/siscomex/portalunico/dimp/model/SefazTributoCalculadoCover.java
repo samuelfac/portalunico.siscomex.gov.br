@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazTributoCalculadoCover", propOrder =
-        {"valorCalculado", "imposto", "valorDevido", "valorSuspenso", "valorAReduzir", "impostoARecolher"
+        {"imposto", "valorCalculado", "valorAReduzir", "valorSuspenso", "valorDevido", "impostoARecolher"
         })
 
 @XmlRootElement(name = "SefazTributoCalculadoCover")
@@ -24,6 +24,11 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados de um tributo")
 public class SefazTributoCalculadoCover {
 
+    @XmlElement(name = "imposto")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto = null;
+
     @XmlElement(name = "valorCalculado")
     @ApiModelProperty(example = "1000.0", value = "Valor calculado do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -31,27 +36,6 @@ public class SefazTributoCalculadoCover {
      * Valor calculado do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorCalculado = null;
-
-    @XmlElement(name = "imposto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto = null;
-
-    @XmlElement(name = "valorDevido")
-    @ApiModelProperty(example = "1000.0", value = "Valor devido do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor devido do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorDevido = null;
-
-    @XmlElement(name = "valorSuspenso")
-    @ApiModelProperty(example = "0.0", value = "Valor suspenso do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor suspenso do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorSuspenso = null;
 
     @XmlElement(name = "valorAReduzir")
     @ApiModelProperty(example = "0.0", value = "Valor a reduzir do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -61,6 +45,22 @@ public class SefazTributoCalculadoCover {
      **/
     private BigDecimal valorAReduzir = null;
 
+    @XmlElement(name = "valorSuspenso")
+    @ApiModelProperty(example = "0.0", value = "Valor suspenso do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor suspenso do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorSuspenso = null;
+
+    @XmlElement(name = "valorDevido")
+    @ApiModelProperty(example = "1000.0", value = "Valor devido do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor devido do tributo<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorDevido = null;
+
     @XmlElement(name = "impostoARecolher")
     @ApiModelProperty(example = "200.0", value = "Valor do tributo a recolher<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -68,6 +68,25 @@ public class SefazTributoCalculadoCover {
      * Valor do tributo a recolher<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal impostoARecolher = null;
+
+    /**
+     * Get imposto
+     *
+     * @return imposto
+     **/
+    @JsonProperty("imposto")
+    public TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio getImposto() {
+        return imposto;
+    }
+
+    public void setImposto(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto) {
+        this.imposto = imposto;
+    }
+
+    public SefazTributoCalculadoCover imposto(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto) {
+        this.imposto = imposto;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -100,41 +119,17 @@ public class SefazTributoCalculadoCover {
     }
 
     /**
-     * Get imposto
+     * Valor a reduzir do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
-     * @return imposto
+     * @return valorAReduzir
      **/
-    @JsonProperty("imposto")
-    public TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio getImposto() {
-        return imposto;
+    @JsonProperty("valorAReduzir")
+    public BigDecimal getValorAReduzir() {
+        return valorAReduzir;
     }
 
-    public void setImposto(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto) {
-        this.imposto = imposto;
-    }
-
-    public SefazTributoCalculadoCover imposto(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio imposto) {
-        this.imposto = imposto;
-        return this;
-    }
-
-    /**
-     * Valor devido do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorDevido
-     **/
-    @JsonProperty("valorDevido")
-    public BigDecimal getValorDevido() {
-        return valorDevido;
-    }
-
-    public void setValorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
-    }
-
-    public SefazTributoCalculadoCover valorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
-        return this;
+    public void setValorAReduzir(BigDecimal valorAReduzir) {
+        this.valorAReduzir = valorAReduzir;
     }
 
     /**
@@ -156,23 +151,23 @@ public class SefazTributoCalculadoCover {
         return this;
     }
 
-    /**
-     * Valor a reduzir do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorAReduzir
-     **/
-    @JsonProperty("valorAReduzir")
-    public BigDecimal getValorAReduzir() {
-        return valorAReduzir;
-    }
-
-    public void setValorAReduzir(BigDecimal valorAReduzir) {
-        this.valorAReduzir = valorAReduzir;
-    }
-
     public SefazTributoCalculadoCover valorAReduzir(BigDecimal valorAReduzir) {
         this.valorAReduzir = valorAReduzir;
         return this;
+    }
+
+    /**
+     * Valor devido do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorDevido
+     **/
+    @JsonProperty("valorDevido")
+    public BigDecimal getValorDevido() {
+        return valorDevido;
+    }
+
+    public void setValorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
     }
 
     /**
@@ -194,15 +189,20 @@ public class SefazTributoCalculadoCover {
         return this;
     }
 
+    public SefazTributoCalculadoCover valorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazTributoCalculadoCover {\n" +
-                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
                 "    imposto: " + toIndentedString(imposto) + "\n" +
-                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
-                "    valorSuspenso: " + toIndentedString(valorSuspenso) + "\n" +
+                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
                 "    valorAReduzir: " + toIndentedString(valorAReduzir) + "\n" +
+                "    valorSuspenso: " + toIndentedString(valorSuspenso) + "\n" +
+                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
                 "    impostoARecolher: " + toIndentedString(impostoARecolher) + "\n" +
                 "}";
         return sb;

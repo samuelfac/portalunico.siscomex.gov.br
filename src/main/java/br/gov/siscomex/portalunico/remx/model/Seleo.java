@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Seleo", propOrder =
-        {"idOrgaoResponsavelSelecao", "situacaoFiscalizacao", "nomeFiscalResp"
+        {"idOrgaoResponsavelSelecao", "nomeFiscalResp", "situacaoFiscalizacao"
         })
 
 @XmlRootElement(name = "Seleo")
@@ -24,13 +24,6 @@ public class Seleo {
      **/
     private String idOrgaoResponsavelSelecao = null;
 
-    @XmlElement(name = "situacaoFiscalizacao")
-    @ApiModelProperty(value = "Código da situação da fiscalização. Composto por até 2 caracteres numéricos.")
-    /**
-     * Código da situação da fiscalização. Composto por até 2 caracteres numéricos.
-     **/
-    private String situacaoFiscalizacao = null;
-
     @XmlElement(name = "nomeFiscalResp")
     @ApiModelProperty(value = "Nome do fiscal responsável pela seleção manual da remessa para fiscalização.")
     /**
@@ -38,16 +31,12 @@ public class Seleo {
      **/
     private String nomeFiscalResp = null;
 
+    @XmlElement(name = "situacaoFiscalizacao")
+    @ApiModelProperty(value = "Código da situação da fiscalização. Composto por até 2 caracteres numéricos.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Código da situação da fiscalização. Composto por até 2 caracteres numéricos.
+     **/
+    private String situacaoFiscalizacao = null;
 
     /**
      * Identificação do órgão responsável pela seleção para fiscalização.
@@ -65,25 +54,6 @@ public class Seleo {
 
     public Seleo idOrgaoResponsavelSelecao(String idOrgaoResponsavelSelecao) {
         this.idOrgaoResponsavelSelecao = idOrgaoResponsavelSelecao;
-        return this;
-    }
-
-    /**
-     * Código da situação da fiscalização. Composto por até 2 caracteres numéricos.
-     *
-     * @return situacaoFiscalizacao
-     **/
-    @JsonProperty("situacaoFiscalizacao")
-    public String getSituacaoFiscalizacao() {
-        return situacaoFiscalizacao;
-    }
-
-    public void setSituacaoFiscalizacao(String situacaoFiscalizacao) {
-        this.situacaoFiscalizacao = situacaoFiscalizacao;
-    }
-
-    public Seleo situacaoFiscalizacao(String situacaoFiscalizacao) {
-        this.situacaoFiscalizacao = situacaoFiscalizacao;
         return this;
     }
 
@@ -106,13 +76,43 @@ public class Seleo {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código da situação da fiscalização. Composto por até 2 caracteres numéricos.
+     *
+     * @return situacaoFiscalizacao
+     **/
+    @JsonProperty("situacaoFiscalizacao")
+    public String getSituacaoFiscalizacao() {
+        return situacaoFiscalizacao;
+    }
+
+    public void setSituacaoFiscalizacao(String situacaoFiscalizacao) {
+        this.situacaoFiscalizacao = situacaoFiscalizacao;
+    }
+
+    public Seleo situacaoFiscalizacao(String situacaoFiscalizacao) {
+        this.situacaoFiscalizacao = situacaoFiscalizacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Seleo {\n" +
                 "    idOrgaoResponsavelSelecao: " + toIndentedString(idOrgaoResponsavelSelecao) + "\n" +
-                "    situacaoFiscalizacao: " + toIndentedString(situacaoFiscalizacao) + "\n" +
                 "    nomeFiscalResp: " + toIndentedString(nomeFiscalResp) + "\n" +
+                "    situacaoFiscalizacao: " + toIndentedString(situacaoFiscalizacao) + "\n" +
                 "}";
         return sb;
     }

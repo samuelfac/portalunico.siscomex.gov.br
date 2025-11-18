@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Destinatrio", propOrder =
-        {"endereco", "nome", "numeroCnpj"
+        {"numeroCnpj", "nome", "endereco"
         })
 
 @XmlRootElement(name = "Destinatrio")
@@ -22,12 +22,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do destinatário")
 public class Destinatrio {
 
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(example = "Endereço do destinatário estrangeiro", value = "Endereço do destinatário estrangeiro<br>Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.")
+    @XmlElement(name = "numeroCnpj")
+    @ApiModelProperty(example = "12345678901234", value = "CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro.")
     /**
-     * Endereço do destinatário estrangeiro<br>Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
+     * CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro.
      **/
-    private String endereco = null;
+    private String numeroCnpj = null;
 
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Nome do destinatário estrangeiro", value = "Nome do destinatário estrangeiro<br>Tamanho: 60<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.")
@@ -36,12 +36,12 @@ public class Destinatrio {
      **/
     private String nome = null;
 
-    @XmlElement(name = "numeroCnpj")
-    @ApiModelProperty(example = "12345678901234", value = "CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro.")
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(example = "Endereço do destinatário estrangeiro", value = "Endereço do destinatário estrangeiro<br>Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.")
     /**
-     * CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro.
+     * Endereço do destinatário estrangeiro<br>Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
      **/
-    private String numeroCnpj = null;
+    private String endereco = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -55,22 +55,17 @@ public class Destinatrio {
     }
 
     /**
-     * Endereço do destinatário estrangeiro&lt;br&gt;Tamanho: 120&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
+     * CNPJ do destinatário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro.
      *
-     * @return endereco
+     * @return numeroCnpj
      **/
-    @JsonProperty("endereco")
-    public String getEndereco() {
-        return endereco;
+    @JsonProperty("numeroCnpj")
+    public String getNumeroCnpj() {
+        return numeroCnpj;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public Destinatrio endereco(String endereco) {
-        this.endereco = endereco;
-        return this;
+    public void setNumeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
     }
 
     /**
@@ -92,22 +87,27 @@ public class Destinatrio {
         return this;
     }
 
-    /**
-     * CNPJ do destinatário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro.
-     *
-     * @return numeroCnpj
-     **/
-    @JsonProperty("numeroCnpj")
-    public String getNumeroCnpj() {
-        return numeroCnpj;
-    }
-
-    public void setNumeroCnpj(String numeroCnpj) {
-        this.numeroCnpj = numeroCnpj;
-    }
-
     public Destinatrio numeroCnpj(String numeroCnpj) {
         this.numeroCnpj = numeroCnpj;
+        return this;
+    }
+
+    /**
+     * Endereço do destinatário estrangeiro&lt;br&gt;Tamanho: 120&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Destinatrio endereco(String endereco) {
+        this.endereco = endereco;
         return this;
     }
 
@@ -115,9 +115,9 @@ public class Destinatrio {
     public String toString() {
 
         String sb = "class Destinatrio {\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroCnpj: " + toIndentedString(numeroCnpj) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
                 "}";
         return sb;
     }

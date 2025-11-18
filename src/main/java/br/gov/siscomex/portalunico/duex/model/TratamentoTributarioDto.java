@@ -14,16 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TratamentoTributarioDto", propOrder =
-        {"fundamentoLegal", "dataDoRegistro", "tributos", "regimeTributario"
+        {"dataDoRegistro", "fundamentoLegal", "regimeTributario", "tributos"
         })
 
 @XmlRootElement(name = "TratamentoTributarioDto")
 public class TratamentoTributarioDto {
-
-    @XmlElement(name = "fundamentoLegal")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FundamentoLegal fundamentoLegal = null;
 
     @XmlElement(name = "dataDoRegistro")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -32,15 +27,20 @@ public class TratamentoTributarioDto {
      **/
     private OffsetDateTime dataDoRegistro = null;
 
-    @XmlElement(name = "tributos")
+    @XmlElement(name = "fundamentoLegal")
     @ApiModelProperty(value = "")
     @Valid
-    private List<TratamentoTributoDto> tributos = null;
+    private FundamentoLegal fundamentoLegal = null;
 
     @XmlElement(name = "regimeTributario")
     @ApiModelProperty(value = "")
     @Valid
     private RegimeTributarioDto regimeTributario = null;
+
+    @XmlElement(name = "tributos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<TratamentoTributoDto> tributos = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -51,6 +51,20 @@ public class TratamentoTributarioDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data do registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     *
+     * @return dataDoRegistro
+     **/
+    @JsonProperty("dataDoRegistro")
+    public OffsetDateTime getDataDoRegistro() {
+        return dataDoRegistro;
+    }
+
+    public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
     }
 
     /**
@@ -72,23 +86,23 @@ public class TratamentoTributarioDto {
         return this;
     }
 
-    /**
-     * Data do registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataDoRegistro
-     **/
-    @JsonProperty("dataDoRegistro")
-    public OffsetDateTime getDataDoRegistro() {
-        return dataDoRegistro;
-    }
-
-    public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
-    }
-
     public TratamentoTributarioDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
         this.dataDoRegistro = dataDoRegistro;
         return this;
+    }
+
+    /**
+     * Get regimeTributario
+     *
+     * @return regimeTributario
+     **/
+    @JsonProperty("regimeTributario")
+    public RegimeTributarioDto getRegimeTributario() {
+        return regimeTributario;
+    }
+
+    public void setRegimeTributario(RegimeTributarioDto regimeTributario) {
+        this.regimeTributario = regimeTributario;
     }
 
     /**
@@ -115,20 +129,6 @@ public class TratamentoTributarioDto {
         return this;
     }
 
-    /**
-     * Get regimeTributario
-     *
-     * @return regimeTributario
-     **/
-    @JsonProperty("regimeTributario")
-    public RegimeTributarioDto getRegimeTributario() {
-        return regimeTributario;
-    }
-
-    public void setRegimeTributario(RegimeTributarioDto regimeTributario) {
-        this.regimeTributario = regimeTributario;
-    }
-
     public TratamentoTributarioDto regimeTributario(RegimeTributarioDto regimeTributario) {
         this.regimeTributario = regimeTributario;
         return this;
@@ -138,10 +138,10 @@ public class TratamentoTributarioDto {
     public String toString() {
 
         String sb = "class TratamentoTributarioDto {\n" +
-                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
                 "    dataDoRegistro: " + toIndentedString(dataDoRegistro) + "\n" +
-                "    tributos: " + toIndentedString(tributos) + "\n" +
+                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
                 "    regimeTributario: " + toIndentedString(regimeTributario) + "\n" +
+                "    tributos: " + toIndentedString(tributos) + "\n" +
                 "}";
         return sb;
     }

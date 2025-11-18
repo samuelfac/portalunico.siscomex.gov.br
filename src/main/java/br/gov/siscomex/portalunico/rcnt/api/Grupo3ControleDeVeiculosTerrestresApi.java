@@ -30,7 +30,7 @@ public interface Grupo3ControleDeVeiculosTerrestresApi {
 
     /**
      * Credenciamento de Veículos Terrestres
-     * <p>
+     *
      * Um evento para cada veículo credenciado para entrar/sair no recinto.&lt;br/&gt;Transmitir ao final do ato de credenciamento.&lt;br/&gt;Um evento deve ser transmitido para cada credenciamento de cavalo-trator, outro evento para cada semirreboque, outro para cada vagão…&lt;br/&gt;Um evento para cada PLACA credenciada.&lt;br/&gt;&lt;br/&gt;Obs.:  Quando do credenciamento inicial informar “credenciamentoAtivo:true” e validade do credenciamento caso existir.&lt;br/&gt;Casos em que a validade do credenciamento seja informada, a RFB vai considerar credenciamento inativo quando do vencimento do prazo.&lt;br/&gt;Para os casos que não exista validade do credenciamento o evento deve ser retificado para “credenciamentoAtivo:false” quando for o caso.
      *
      */
@@ -42,16 +42,16 @@ public interface Grupo3ControleDeVeiculosTerrestresApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST11(@ApiParam(value = "JSON do evento Credenciamento de Veículos", required = true) @Valid DadosCredenciamentoVeculo body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Posição de Veículo Terrestre no Pátio
-     * <p>
+     *
      * Um evento para cada mudança de posição de veículo no pátio. Evento comum em recintos do modal rodoviário.&lt;br/&gt;Transmitir imediatamente a finalização do posicionamento.&lt;br/&gt;Um evento para cada conjunto PLACA/CONTÊINER/CHASSI posicionada num box no pátio.
      *
      */
@@ -63,16 +63,16 @@ public interface Grupo3ControleDeVeiculosTerrestresApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST20(@ApiParam(value = "JSON do evento Posição Veículo Pátio", required = true) @Valid DadosPosioVeculoPtio body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Controle de Agendamento/Acesso de Veículo Terrestre
-     * <p>
+     *
      * Um evento para cada agendamento ou acesso (entrada ou saída) de veículo ao recinto. Transmitir imediatamente ao agendamento ou ao acesso (entrada ou saída).&lt;br/&gt;Um evento para cada agendamento/acesso PLACA/CHASSI/LOCOMOTIVA.&lt;br/&gt;&lt;br/&gt;Obs.: O manifesto e conhecimento de carga informado devem ser os internacionais sempre que existirem. Do contrário deve ser informado conhecimento interno. Exemplo: No ingresso de veículo com contêiner para exportação sem BL existente, tal evento deve constar a informação do CT-e.&lt;br/&gt;&lt;br/&gt;Este evento possui integração com Controle de Carga e Trânsito na Importação (CCT Importação) para a funcionalidade \&quot;chegada de veículo terrestre\&quot;  (Para mais informações,&lt;a href &#x3D;\&quot;https://www.gov.br/siscomex/pt-br/arquivos-e-imagens/manualcctimportao.pdf\&quot;&gt; clique aqui&lt;/a&gt;)
      *
      */
@@ -84,10 +84,10 @@ public interface Grupo3ControleDeVeiculosTerrestresApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST8(@ApiParam(value = "JSON do evento Acesso Veículo", required = true) @Valid DadosAcessoVeculo body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

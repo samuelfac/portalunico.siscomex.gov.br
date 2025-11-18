@@ -31,17 +31,6 @@ public class ItemFreteCover {
     private Double valor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor do frete em real de Duimp de situação especial de despacho, cujo motivo (da situação especial de despacho) possui o atributo &#39;Cálculo do frete e seguro&#39; preenchido com o valor &#39;2&#39; (Declarado pelo importador), na tabela &#39;Tabela Motivo da Situação Especial da Duimp&#39; do sistema TABX.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return valor
@@ -59,6 +48,18 @@ public class ItemFreteCover {
     public ItemFreteCover valor(Double valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -35,17 +35,6 @@ public class Veiculos {
     private List<TVeiculo> carga = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Dados de veículo
      *
      * @return carga
@@ -68,6 +57,18 @@ public class Veiculos {
     public Veiculos addCargaItem(TVeiculo cargaItem) {
         this.carga.add(cargaItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

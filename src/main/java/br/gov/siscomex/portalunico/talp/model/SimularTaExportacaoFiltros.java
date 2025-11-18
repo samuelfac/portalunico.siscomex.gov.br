@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SimularTaExportacaoFiltros", propOrder =
-        {"ncm", "situacaoEspecial", "enquadramento", "atributos", "pais"
+        {"pais", "enquadramento", "situacaoEspecial", "ncm", "atributos"
         })
 
 @XmlRootElement(name = "SimularTaExportacaoFiltros")
@@ -26,19 +26,12 @@ import java.util.List;
 @ApiModel(description = "Dados a serem informados para realizar a simulação de um Tratamento Administrativo de exportação")
 public class SimularTaExportacaoFiltros {
 
-    @XmlElement(name = "ncm", required = true)
-    @ApiModelProperty(example = "01012100", required = true, value = "NCM a ser buscado")
+    @XmlElement(name = "pais", required = true)
+    @ApiModelProperty(example = "80", required = true, value = "Código do país em Iso2")
     /**
-     * NCM a ser buscado
+     * Código do país em Iso2
      **/
-    private String ncm = null;
-
-    @XmlElement(name = "situacaoEspecial", required = true)
-    @ApiModelProperty(example = "2000", required = true, value = "Código da situação especial")
-    /**
-     * Código da situação especial
-     **/
-    private Integer situacaoEspecial = null;
+    private String pais = null;
 
     @XmlElement(name = "enquadramento", required = true)
     @ApiModelProperty(example = "80000", required = true, value = "Código do enquadramento")
@@ -47,6 +40,20 @@ public class SimularTaExportacaoFiltros {
      **/
     private String enquadramento = null;
 
+    @XmlElement(name = "situacaoEspecial", required = true)
+    @ApiModelProperty(example = "2000", required = true, value = "Código da situação especial")
+    /**
+     * Código da situação especial
+     **/
+    private Integer situacaoEspecial = null;
+
+    @XmlElement(name = "ncm", required = true)
+    @ApiModelProperty(example = "01012100", required = true, value = "NCM a ser buscado")
+    /**
+     * NCM a ser buscado
+     **/
+    private String ncm = null;
+
     @XmlElement(name = "atributos", required = true)
     @ApiModelProperty(required = true, value = "Lista de atributos do NCM")
     @Valid
@@ -54,13 +61,6 @@ public class SimularTaExportacaoFiltros {
      * Lista de atributos do NCM
      **/
     private List<AtributoNcmValorDTO> atributos = new ArrayList<>();
-
-    @XmlElement(name = "pais", required = true)
-    @ApiModelProperty(example = "80", required = true, value = "Código do país em Iso2")
-    /**
-     * Código do país em Iso2
-     **/
-    private String pais = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -74,23 +74,38 @@ public class SimularTaExportacaoFiltros {
     }
 
     /**
-     * NCM a ser buscado
+     * Código do país em Iso2
      *
-     * @return ncm
+     * @return pais
      **/
-    @JsonProperty("ncm")
+    @JsonProperty("pais")
     @NotNull
-    public String getNcm() {
-        return ncm;
+    public String getPais() {
+        return pais;
     }
 
-    public void setNcm(String ncm) {
-        this.ncm = ncm;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
-    public SimularTaExportacaoFiltros ncm(String ncm) {
-        this.ncm = ncm;
+    public SimularTaExportacaoFiltros pais(String pais) {
+        this.pais = pais;
         return this;
+    }
+
+    /**
+     * Código do enquadramento
+     *
+     * @return enquadramento
+     **/
+    @JsonProperty("enquadramento")
+    @NotNull
+    public String getEnquadramento() {
+        return enquadramento;
+    }
+
+    public void setEnquadramento(String enquadramento) {
+        this.enquadramento = enquadramento;
     }
 
     /**
@@ -113,24 +128,24 @@ public class SimularTaExportacaoFiltros {
         return this;
     }
 
-    /**
-     * Código do enquadramento
-     *
-     * @return enquadramento
-     **/
-    @JsonProperty("enquadramento")
-    @NotNull
-    public String getEnquadramento() {
-        return enquadramento;
-    }
-
-    public void setEnquadramento(String enquadramento) {
-        this.enquadramento = enquadramento;
-    }
-
     public SimularTaExportacaoFiltros enquadramento(String enquadramento) {
         this.enquadramento = enquadramento;
         return this;
+    }
+
+    /**
+     * NCM a ser buscado
+     *
+     * @return ncm
+     **/
+    @JsonProperty("ncm")
+    @NotNull
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
     }
 
     /**
@@ -158,23 +173,8 @@ public class SimularTaExportacaoFiltros {
         return this;
     }
 
-    /**
-     * Código do país em Iso2
-     *
-     * @return pais
-     **/
-    @JsonProperty("pais")
-    @NotNull
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public SimularTaExportacaoFiltros pais(String pais) {
-        this.pais = pais;
+    public SimularTaExportacaoFiltros ncm(String ncm) {
+        this.ncm = ncm;
         return this;
     }
 
@@ -182,11 +182,11 @@ public class SimularTaExportacaoFiltros {
     public String toString() {
 
         String sb = "class SimularTaExportacaoFiltros {\n" +
-                "    ncm: " + toIndentedString(ncm) + "\n" +
-                "    situacaoEspecial: " + toIndentedString(situacaoEspecial) + "\n" +
-                "    enquadramento: " + toIndentedString(enquadramento) + "\n" +
-                "    atributos: " + toIndentedString(atributos) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
+                "    enquadramento: " + toIndentedString(enquadramento) + "\n" +
+                "    situacaoEspecial: " + toIndentedString(situacaoEspecial) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    atributos: " + toIndentedString(atributos) + "\n" +
                 "}";
         return sb;
     }

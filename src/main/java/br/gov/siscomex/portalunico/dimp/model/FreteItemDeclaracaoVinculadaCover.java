@@ -28,17 +28,6 @@ public class FreteItemDeclaracaoVinculadaCover {
     private BigDecimal valorBRL = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor do frete (R$) do item.&lt;br&gt;O valor do frete (R$) do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \&quot;Duimp\&quot; e quando o frete foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do frete (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do frete (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.
      *
      * @return valorBRL
@@ -55,6 +44,18 @@ public class FreteItemDeclaracaoVinculadaCover {
     public FreteItemDeclaracaoVinculadaCover valorBRL(BigDecimal valorBRL) {
         this.valorBRL = valorBRL;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

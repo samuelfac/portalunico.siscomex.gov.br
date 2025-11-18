@@ -15,24 +15,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaEstoque", propOrder =
-        {"dataHoraSituacao", "quantidadeVolumes", "situacao", "detalhe", "divergencias", "tipoEmbalagem", "documentoSaida", "numeroConteiner", "pesoBruto", "responsavel", "chassiVeiculo", "tipoGranel"
+        {"chassiVeiculo", "dataHoraSituacao", "detalhe", "divergencias", "documentoSaida", "numeroConteiner", "pesoBruto", "quantidadeVolumes", "responsavel", "situacao", "tipoEmbalagem", "tipoGranel"
         })
 
 @XmlRootElement(name = "CargaRodoviariaEstoque")
 public class CargaRodoviariaEstoque {
 
+    @XmlElement(name = "chassiVeiculo")
+    @ApiModelProperty(value = "")
+    private String chassiVeiculo = null;
+
     @XmlElement(name = "dataHoraSituacao")
     @ApiModelProperty(value = "")
     private OffsetDateTime dataHoraSituacao = null;
-
-    @XmlElement(name = "quantidadeVolumes")
-    @ApiModelProperty(value = "")
-    private Integer quantidadeVolumes = null;
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Situacao situacao = null;
 
     @XmlElement(name = "detalhe")
     @ApiModelProperty(value = "")
@@ -43,11 +38,6 @@ public class CargaRodoviariaEstoque {
     @ApiModelProperty(value = "")
     @Valid
     private List<CargaRodoviariaDivergencia> divergencias = null;
-
-    @XmlElement(name = "tipoEmbalagem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoEmbalagem tipoEmbalagem = null;
 
     @XmlElement(name = "documentoSaida")
     @ApiModelProperty(value = "")
@@ -63,14 +53,24 @@ public class CargaRodoviariaEstoque {
     @Valid
     private BigDecimal pesoBruto = null;
 
+    @XmlElement(name = "quantidadeVolumes")
+    @ApiModelProperty(value = "")
+    private Integer quantidadeVolumes = null;
+
     @XmlElement(name = "responsavel")
     @ApiModelProperty(value = "")
     @Valid
     private Responsavel responsavel = null;
 
-    @XmlElement(name = "chassiVeiculo")
+    @XmlElement(name = "situacao")
     @ApiModelProperty(value = "")
-    private String chassiVeiculo = null;
+    @Valid
+    private Situacao situacao = null;
+
+    @XmlElement(name = "tipoEmbalagem")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoEmbalagem tipoEmbalagem = null;
 
     @XmlElement(name = "tipoGranel")
     @ApiModelProperty(value = "")
@@ -89,6 +89,20 @@ public class CargaRodoviariaEstoque {
     }
 
     /**
+     * Get chassiVeiculo
+     *
+     * @return chassiVeiculo
+     **/
+    @JsonProperty("chassiVeiculo")
+    public String getChassiVeiculo() {
+        return chassiVeiculo;
+    }
+
+    public void setChassiVeiculo(String chassiVeiculo) {
+        this.chassiVeiculo = chassiVeiculo;
+    }
+
+    /**
      * Get dataHoraSituacao
      *
      * @return dataHoraSituacao
@@ -104,44 +118,6 @@ public class CargaRodoviariaEstoque {
 
     public CargaRodoviariaEstoque dataHoraSituacao(OffsetDateTime dataHoraSituacao) {
         this.dataHoraSituacao = dataHoraSituacao;
-        return this;
-    }
-
-    /**
-     * Get quantidadeVolumes
-     *
-     * @return quantidadeVolumes
-     **/
-    @JsonProperty("quantidadeVolumes")
-    public Integer getQuantidadeVolumes() {
-        return quantidadeVolumes;
-    }
-
-    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-    }
-
-    public CargaRodoviariaEstoque quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-        return this;
-    }
-
-    /**
-     * Get situacao
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public Situacao getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Situacao situacao) {
-        this.situacao = situacao;
-    }
-
-    public CargaRodoviariaEstoque situacao(Situacao situacao) {
-        this.situacao = situacao;
         return this;
     }
 
@@ -185,25 +161,6 @@ public class CargaRodoviariaEstoque {
 
     public CargaRodoviariaEstoque addDivergenciasItem(CargaRodoviariaDivergencia divergenciasItem) {
         this.divergencias.add(divergenciasItem);
-        return this;
-    }
-
-    /**
-     * Get tipoEmbalagem
-     *
-     * @return tipoEmbalagem
-     **/
-    @JsonProperty("tipoEmbalagem")
-    public TipoEmbalagem getTipoEmbalagem() {
-        return tipoEmbalagem;
-    }
-
-    public void setTipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-    }
-
-    public CargaRodoviariaEstoque tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
         return this;
     }
 
@@ -269,9 +226,27 @@ public class CargaRodoviariaEstoque {
         return this;
     }
 
+    public CargaRodoviariaEstoque chassiVeiculo(String chassiVeiculo) {
+        this.chassiVeiculo = chassiVeiculo;
+        return this;
+    }
+
+    /**
+     * Get quantidadeVolumes
+     *
+     * @return quantidadeVolumes
+     **/
+    @JsonProperty("quantidadeVolumes")
+    public Integer getQuantidadeVolumes() {
+        return quantidadeVolumes;
+    }
+
+    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+    }
+
     /**
      * Get responsavel
-     *
      * @return responsavel
      **/
     @JsonProperty("responsavel")
@@ -288,28 +263,46 @@ public class CargaRodoviariaEstoque {
         return this;
     }
 
-    /**
-     * Get chassiVeiculo
-     *
-     * @return chassiVeiculo
-     **/
-    @JsonProperty("chassiVeiculo")
-    public String getChassiVeiculo() {
-        return chassiVeiculo;
-    }
-
-    public void setChassiVeiculo(String chassiVeiculo) {
-        this.chassiVeiculo = chassiVeiculo;
-    }
-
-    public CargaRodoviariaEstoque chassiVeiculo(String chassiVeiculo) {
-        this.chassiVeiculo = chassiVeiculo;
+    public CargaRodoviariaEstoque quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
         return this;
     }
 
     /**
-     * Get tipoGranel
+     * Get situacao
      *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public Situacao getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
+    }
+
+    public CargaRodoviariaEstoque situacao(Situacao situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Get tipoEmbalagem
+     *
+     * @return tipoEmbalagem
+     **/
+    @JsonProperty("tipoEmbalagem")
+    public TipoEmbalagem getTipoEmbalagem() {
+        return tipoEmbalagem;
+    }
+
+    public void setTipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
+    }
+
+    /**
+     * Get tipoGranel
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")
@@ -326,21 +319,26 @@ public class CargaRodoviariaEstoque {
         return this;
     }
 
+    public CargaRodoviariaEstoque tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CargaRodoviariaEstoque {\n" +
+                "    chassiVeiculo: " + toIndentedString(chassiVeiculo) + "\n" +
                 "    dataHoraSituacao: " + toIndentedString(dataHoraSituacao) + "\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    detalhe: " + toIndentedString(detalhe) + "\n" +
                 "    divergencias: " + toIndentedString(divergencias) + "\n" +
-                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
                 "    documentoSaida: " + toIndentedString(documentoSaida) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
                 "    responsavel: " + toIndentedString(responsavel) + "\n" +
-                "    chassiVeiculo: " + toIndentedString(chassiVeiculo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
                 "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "}";
         return sb;

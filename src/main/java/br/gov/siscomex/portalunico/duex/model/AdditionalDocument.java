@@ -15,39 +15,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AdditionalDocument", propOrder =
-        {"drawbackHsClassification", "itemID", "drawbackRecipientId", "quantityQuantity", "valueWithExchangeCoverAmount", "categoryCode", "id"
+        {"categoryCode", "drawbackHsClassification", "drawbackRecipientId", "id", "itemID", "quantityQuantity", "valueWithExchangeCoverAmount"
         })
 
 @XmlRootElement(name = "AdditionalDocument")
 public class AdditionalDocument {
 
-    @XmlElement(name = "drawbackHsClassification", required = true)
+
+    @XmlElement(name = "categoryCode", required = true)
     @ApiModelProperty(required = true, value = "")
-    @Valid
-    private AdditionalDocumentDrawbackHsClassificationTextType drawbackHsClassification = null;
-
-    @XmlElement(name = "itemID")
-    @ApiModelProperty(value = "")
-    @Valid
-    private AdditionalDocumentItemIDType itemID = null;
-
+    private CategoryCodeEnum categoryCode = null;
     @XmlElement(name = "drawbackRecipientId", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private AdditionalDocumentDrawbackRecipientIdTextType drawbackRecipientId = null;
 
-    @XmlElement(name = "quantityQuantity", required = true)
+    @XmlElement(name = "drawbackHsClassification", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private AdditionalDocumentQuantityQuantityType quantityQuantity = null;
-
-    @XmlElement(name = "valueWithExchangeCoverAmount", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private AdditionalDocumentValueWithExchangeCoverAmountType valueWithExchangeCoverAmount = null;
-    @XmlElement(name = "categoryCode", required = true)
-    @ApiModelProperty(required = true, value = "")
-    private CategoryCodeEnum categoryCode = null;
+    private AdditionalDocumentDrawbackHsClassificationTextType drawbackHsClassification = null;
     @XmlElement(name = "id", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
@@ -62,6 +48,44 @@ public class AdditionalDocument {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "itemID")
+    @ApiModelProperty(value = "")
+    @Valid
+    private AdditionalDocumentItemIDType itemID = null;
+
+    @XmlElement(name = "quantityQuantity", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private AdditionalDocumentQuantityQuantityType quantityQuantity = null;
+
+    @XmlElement(name = "valueWithExchangeCoverAmount", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private AdditionalDocumentValueWithExchangeCoverAmountType valueWithExchangeCoverAmount = null;
+
+    /**
+     * Get categoryCode
+     *
+     * @return categoryCode
+     **/
+    @JsonProperty("categoryCode")
+    @NotNull
+    public String getCategoryCode() {
+        if (categoryCode == null) {
+            return null;
+        }
+        return categoryCode.value();
+    }
+
+    public void setCategoryCode(CategoryCodeEnum categoryCode) {
+        this.categoryCode = categoryCode;
+    }
+
+    public AdditionalDocument categoryCode(CategoryCodeEnum categoryCode) {
+        this.categoryCode = categoryCode;
+        return this;
     }
 
     /**
@@ -85,25 +109,6 @@ public class AdditionalDocument {
     }
 
     /**
-     * Get itemID
-     *
-     * @return itemID
-     **/
-    @JsonProperty("itemID")
-    public AdditionalDocumentItemIDType getItemID() {
-        return itemID;
-    }
-
-    public void setItemID(AdditionalDocumentItemIDType itemID) {
-        this.itemID = itemID;
-    }
-
-    public AdditionalDocument itemID(AdditionalDocumentItemIDType itemID) {
-        this.itemID = itemID;
-        return this;
-    }
-
-    /**
      * Get drawbackRecipientId
      *
      * @return drawbackRecipientId
@@ -120,6 +125,45 @@ public class AdditionalDocument {
 
     public AdditionalDocument drawbackRecipientId(AdditionalDocumentDrawbackRecipientIdTextType drawbackRecipientId) {
         this.drawbackRecipientId = drawbackRecipientId;
+        return this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return id
+     **/
+    @JsonProperty("id")
+    @NotNull
+    public AdditionalDocumentIdentificationIDType getId() {
+        return id;
+    }
+
+    public void setId(AdditionalDocumentIdentificationIDType id) {
+        this.id = id;
+    }
+
+    public AdditionalDocument id(AdditionalDocumentIdentificationIDType id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get itemID
+     *
+     * @return itemID
+     **/
+    @JsonProperty("itemID")
+    public AdditionalDocumentItemIDType getItemID() {
+        return itemID;
+    }
+
+    public void setItemID(AdditionalDocumentItemIDType itemID) {
+        this.itemID = itemID;
+    }
+
+    public AdditionalDocument itemID(AdditionalDocumentItemIDType itemID) {
+        this.itemID = itemID;
         return this;
     }
 
@@ -163,61 +207,18 @@ public class AdditionalDocument {
         return this;
     }
 
-    /**
-     * Get categoryCode
-     *
-     * @return categoryCode
-     **/
-    @JsonProperty("categoryCode")
-    @NotNull
-    public String getCategoryCode() {
-        if (categoryCode == null) {
-            return null;
-        }
-        return categoryCode.value();
-    }
-
-    public void setCategoryCode(CategoryCodeEnum categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public AdditionalDocument categoryCode(CategoryCodeEnum categoryCode) {
-        this.categoryCode = categoryCode;
-        return this;
-    }
-
-    /**
-     * Get id
-     *
-     * @return id
-     **/
-    @JsonProperty("id")
-    @NotNull
-    public AdditionalDocumentIdentificationIDType getId() {
-        return id;
-    }
-
-    public void setId(AdditionalDocumentIdentificationIDType id) {
-        this.id = id;
-    }
-
-    public AdditionalDocument id(AdditionalDocumentIdentificationIDType id) {
-        this.id = id;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class AdditionalDocument {\n" +
+                "    categoryCode: " + toIndentedString(categoryCode) + "\n" +
                 "    drawbackHsClassification: " + toIndentedString(drawbackHsClassification) + "\n" +
-                "    itemID: " + toIndentedString(itemID) + "\n" +
                 "    drawbackRecipientId: " + toIndentedString(drawbackRecipientId) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    itemID: " + toIndentedString(itemID) + "\n" +
                 "    quantityQuantity: " + toIndentedString(quantityQuantity) + "\n" +
                 "    valueWithExchangeCoverAmount: " + toIndentedString(valueWithExchangeCoverAmount) + "\n" +
-                "    categoryCode: " + toIndentedString(categoryCode) + "\n" +
-                "    id: " + toIndentedString(id) + "\n" +
                 "}";
         return sb;
     }

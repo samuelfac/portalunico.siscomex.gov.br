@@ -15,11 +15,20 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoSaida", propOrder =
-        {"dataConclusaoTransitoDta", "dataVinculacao", "numero", "valorTotalMercadoriaLocalDescarga", "canalDuimp", "descricaoRaDestinoDta", "raDestinoDta", "tipoDocumentoSaida", "uaDestinoDta", "descricaoUaDestinoDta", "situacaoDuimp", "autorizacoesEntrega", "versaoDuimp", "dataVinculacaoLong"
+        {"autorizacoesEntrega", "canalDuimp", "dataConclusaoTransitoDta", "dataVinculacao", "dataVinculacaoLong", "descricaoRaDestinoDta", "descricaoUaDestinoDta", "numero", "raDestinoDta", "situacaoDuimp", "tipoDocumentoSaida", "uaDestinoDta", "valorTotalMercadoriaLocalDescarga", "versaoDuimp"
         })
 
 @XmlRootElement(name = "DocumentoSaida")
 public class DocumentoSaida {
+
+    @XmlElement(name = "autorizacoesEntrega")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DocumentoSaidaAutorizacaoEntrega> autorizacoesEntrega = null;
+
+    @XmlElement(name = "canalDuimp")
+    @ApiModelProperty(value = "")
+    private String canalDuimp = null;
 
     @XmlElement(name = "dataConclusaoTransitoDta")
     @ApiModelProperty(value = "")
@@ -29,26 +38,29 @@ public class DocumentoSaida {
     @ApiModelProperty(value = "")
     private String dataVinculacao = null;
 
-    @XmlElement(name = "numero")
+    @XmlElement(name = "dataVinculacaoLong")
     @ApiModelProperty(value = "")
-    private String numero = null;
-
-    @XmlElement(name = "valorTotalMercadoriaLocalDescarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal valorTotalMercadoriaLocalDescarga = null;
-
-    @XmlElement(name = "canalDuimp")
-    @ApiModelProperty(value = "")
-    private String canalDuimp = null;
+    private Long dataVinculacaoLong = null;
 
     @XmlElement(name = "descricaoRaDestinoDta")
     @ApiModelProperty(value = "")
     private String descricaoRaDestinoDta = null;
 
+    @XmlElement(name = "descricaoUaDestinoDta")
+    @ApiModelProperty(value = "")
+    private String descricaoUaDestinoDta = null;
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "")
+    private String numero = null;
+
     @XmlElement(name = "raDestinoDta")
     @ApiModelProperty(value = "")
     private String raDestinoDta = null;
+
+    @XmlElement(name = "situacaoDuimp")
+    @ApiModelProperty(value = "")
+    private String situacaoDuimp = null;
 
     @XmlElement(name = "tipoDocumentoSaida")
     @ApiModelProperty(value = "")
@@ -59,26 +71,14 @@ public class DocumentoSaida {
     @ApiModelProperty(value = "")
     private String uaDestinoDta = null;
 
-    @XmlElement(name = "descricaoUaDestinoDta")
-    @ApiModelProperty(value = "")
-    private String descricaoUaDestinoDta = null;
-
-    @XmlElement(name = "situacaoDuimp")
-    @ApiModelProperty(value = "")
-    private String situacaoDuimp = null;
-
-    @XmlElement(name = "autorizacoesEntrega")
+    @XmlElement(name = "valorTotalMercadoriaLocalDescarga")
     @ApiModelProperty(value = "")
     @Valid
-    private List<DocumentoSaidaAutorizacaoEntrega> autorizacoesEntrega = null;
+    private BigDecimal valorTotalMercadoriaLocalDescarga = null;
 
     @XmlElement(name = "versaoDuimp")
     @ApiModelProperty(value = "")
     private Integer versaoDuimp = null;
-
-    @XmlElement(name = "dataVinculacaoLong")
-    @ApiModelProperty(value = "")
-    private Long dataVinculacaoLong = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -89,6 +89,44 @@ public class DocumentoSaida {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get autorizacoesEntrega
+     *
+     * @return autorizacoesEntrega
+     **/
+    @JsonProperty("autorizacoesEntrega")
+    public List<DocumentoSaidaAutorizacaoEntrega> getAutorizacoesEntrega() {
+        return autorizacoesEntrega;
+    }
+
+    public void setAutorizacoesEntrega(List<DocumentoSaidaAutorizacaoEntrega> autorizacoesEntrega) {
+        this.autorizacoesEntrega = autorizacoesEntrega;
+    }
+
+    public DocumentoSaida autorizacoesEntrega(List<DocumentoSaidaAutorizacaoEntrega> autorizacoesEntrega) {
+        this.autorizacoesEntrega = autorizacoesEntrega;
+        return this;
+    }
+
+    public DocumentoSaida addAutorizacoesEntregaItem(DocumentoSaidaAutorizacaoEntrega autorizacoesEntregaItem) {
+        this.autorizacoesEntrega.add(autorizacoesEntregaItem);
+        return this;
+    }
+
+    /**
+     * Get canalDuimp
+     *
+     * @return canalDuimp
+     **/
+    @JsonProperty("canalDuimp")
+    public String getCanalDuimp() {
+        return canalDuimp;
+    }
+
+    public void setCanalDuimp(String canalDuimp) {
+        this.canalDuimp = canalDuimp;
     }
 
     /**
@@ -129,61 +167,23 @@ public class DocumentoSaida {
         return this;
     }
 
-    /**
-     * Get numero
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public DocumentoSaida numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Get valorTotalMercadoriaLocalDescarga
-     *
-     * @return valorTotalMercadoriaLocalDescarga
-     **/
-    @JsonProperty("valorTotalMercadoriaLocalDescarga")
-    public BigDecimal getValorTotalMercadoriaLocalDescarga() {
-        return valorTotalMercadoriaLocalDescarga;
-    }
-
-    public void setValorTotalMercadoriaLocalDescarga(BigDecimal valorTotalMercadoriaLocalDescarga) {
-        this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
-    }
-
-    public DocumentoSaida valorTotalMercadoriaLocalDescarga(BigDecimal valorTotalMercadoriaLocalDescarga) {
-        this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
-        return this;
-    }
-
-    /**
-     * Get canalDuimp
-     *
-     * @return canalDuimp
-     **/
-    @JsonProperty("canalDuimp")
-    public String getCanalDuimp() {
-        return canalDuimp;
-    }
-
-    public void setCanalDuimp(String canalDuimp) {
-        this.canalDuimp = canalDuimp;
-    }
-
     public DocumentoSaida canalDuimp(String canalDuimp) {
         this.canalDuimp = canalDuimp;
         return this;
+    }
+
+    /**
+     * Get dataVinculacaoLong
+     *
+     * @return dataVinculacaoLong
+     **/
+    @JsonProperty("dataVinculacaoLong")
+    public Long getDataVinculacaoLong() {
+        return dataVinculacaoLong;
+    }
+
+    public void setDataVinculacaoLong(Long dataVinculacaoLong) {
+        this.dataVinculacaoLong = dataVinculacaoLong;
     }
 
     /**
@@ -205,60 +205,8 @@ public class DocumentoSaida {
         return this;
     }
 
-    /**
-     * Get raDestinoDta
-     *
-     * @return raDestinoDta
-     **/
-    @JsonProperty("raDestinoDta")
-    public String getRaDestinoDta() {
-        return raDestinoDta;
-    }
-
-    public void setRaDestinoDta(String raDestinoDta) {
-        this.raDestinoDta = raDestinoDta;
-    }
-
-    public DocumentoSaida raDestinoDta(String raDestinoDta) {
-        this.raDestinoDta = raDestinoDta;
-        return this;
-    }
-
-    /**
-     * Get tipoDocumentoSaida
-     *
-     * @return tipoDocumentoSaida
-     **/
-    @JsonProperty("tipoDocumentoSaida")
-    public TipoDocumentoSaida getTipoDocumentoSaida() {
-        return tipoDocumentoSaida;
-    }
-
-    public void setTipoDocumentoSaida(TipoDocumentoSaida tipoDocumentoSaida) {
-        this.tipoDocumentoSaida = tipoDocumentoSaida;
-    }
-
-    public DocumentoSaida tipoDocumentoSaida(TipoDocumentoSaida tipoDocumentoSaida) {
-        this.tipoDocumentoSaida = tipoDocumentoSaida;
-        return this;
-    }
-
-    /**
-     * Get uaDestinoDta
-     *
-     * @return uaDestinoDta
-     **/
-    @JsonProperty("uaDestinoDta")
-    public String getUaDestinoDta() {
-        return uaDestinoDta;
-    }
-
-    public void setUaDestinoDta(String uaDestinoDta) {
-        this.uaDestinoDta = uaDestinoDta;
-    }
-
-    public DocumentoSaida uaDestinoDta(String uaDestinoDta) {
-        this.uaDestinoDta = uaDestinoDta;
+    public DocumentoSaida dataVinculacaoLong(Long dataVinculacaoLong) {
+        this.dataVinculacaoLong = dataVinculacaoLong;
         return this;
     }
 
@@ -282,6 +230,44 @@ public class DocumentoSaida {
     }
 
     /**
+     * Get numero
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * Get raDestinoDta
+     *
+     * @return raDestinoDta
+     **/
+    @JsonProperty("raDestinoDta")
+    public String getRaDestinoDta() {
+        return raDestinoDta;
+    }
+
+    public void setRaDestinoDta(String raDestinoDta) {
+        this.raDestinoDta = raDestinoDta;
+    }
+
+    public DocumentoSaida raDestinoDta(String raDestinoDta) {
+        this.raDestinoDta = raDestinoDta;
+        return this;
+    }
+
+    public DocumentoSaida numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    /**
      * Get situacaoDuimp
      *
      * @return situacaoDuimp
@@ -295,33 +281,59 @@ public class DocumentoSaida {
         this.situacaoDuimp = situacaoDuimp;
     }
 
+    /**
+     * Get tipoDocumentoSaida
+     * @return tipoDocumentoSaida
+     **/
+    @JsonProperty("tipoDocumentoSaida")
+    public TipoDocumentoSaida getTipoDocumentoSaida() {
+        return tipoDocumentoSaida;
+    }
+
+    public void setTipoDocumentoSaida(TipoDocumentoSaida tipoDocumentoSaida) {
+        this.tipoDocumentoSaida = tipoDocumentoSaida;
+    }
+
+    public DocumentoSaida tipoDocumentoSaida(TipoDocumentoSaida tipoDocumentoSaida) {
+        this.tipoDocumentoSaida = tipoDocumentoSaida;
+        return this;
+    }
+
+    /**
+     * Get uaDestinoDta
+     * @return uaDestinoDta
+     **/
+    @JsonProperty("uaDestinoDta")
+    public String getUaDestinoDta() {
+        return uaDestinoDta;
+    }
+
+    public void setUaDestinoDta(String uaDestinoDta) {
+        this.uaDestinoDta = uaDestinoDta;
+    }
+
+    public DocumentoSaida uaDestinoDta(String uaDestinoDta) {
+        this.uaDestinoDta = uaDestinoDta;
+        return this;
+    }
+
     public DocumentoSaida situacaoDuimp(String situacaoDuimp) {
         this.situacaoDuimp = situacaoDuimp;
         return this;
     }
 
     /**
-     * Get autorizacoesEntrega
+     * Get valorTotalMercadoriaLocalDescarga
      *
-     * @return autorizacoesEntrega
+     * @return valorTotalMercadoriaLocalDescarga
      **/
-    @JsonProperty("autorizacoesEntrega")
-    public List<DocumentoSaidaAutorizacaoEntrega> getAutorizacoesEntrega() {
-        return autorizacoesEntrega;
+    @JsonProperty("valorTotalMercadoriaLocalDescarga")
+    public BigDecimal getValorTotalMercadoriaLocalDescarga() {
+        return valorTotalMercadoriaLocalDescarga;
     }
 
-    public void setAutorizacoesEntrega(List<DocumentoSaidaAutorizacaoEntrega> autorizacoesEntrega) {
-        this.autorizacoesEntrega = autorizacoesEntrega;
-    }
-
-    public DocumentoSaida autorizacoesEntrega(List<DocumentoSaidaAutorizacaoEntrega> autorizacoesEntrega) {
-        this.autorizacoesEntrega = autorizacoesEntrega;
-        return this;
-    }
-
-    public DocumentoSaida addAutorizacoesEntregaItem(DocumentoSaidaAutorizacaoEntrega autorizacoesEntregaItem) {
-        this.autorizacoesEntrega.add(autorizacoesEntregaItem);
-        return this;
+    public void setValorTotalMercadoriaLocalDescarga(BigDecimal valorTotalMercadoriaLocalDescarga) {
+        this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
     }
 
     /**
@@ -343,22 +355,8 @@ public class DocumentoSaida {
         return this;
     }
 
-    /**
-     * Get dataVinculacaoLong
-     *
-     * @return dataVinculacaoLong
-     **/
-    @JsonProperty("dataVinculacaoLong")
-    public Long getDataVinculacaoLong() {
-        return dataVinculacaoLong;
-    }
-
-    public void setDataVinculacaoLong(Long dataVinculacaoLong) {
-        this.dataVinculacaoLong = dataVinculacaoLong;
-    }
-
-    public DocumentoSaida dataVinculacaoLong(Long dataVinculacaoLong) {
-        this.dataVinculacaoLong = dataVinculacaoLong;
+    public DocumentoSaida valorTotalMercadoriaLocalDescarga(BigDecimal valorTotalMercadoriaLocalDescarga) {
+        this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
         return this;
     }
 
@@ -366,20 +364,20 @@ public class DocumentoSaida {
     public String toString() {
 
         String sb = "class DocumentoSaida {\n" +
+                "    autorizacoesEntrega: " + toIndentedString(autorizacoesEntrega) + "\n" +
+                "    canalDuimp: " + toIndentedString(canalDuimp) + "\n" +
                 "    dataConclusaoTransitoDta: " + toIndentedString(dataConclusaoTransitoDta) + "\n" +
                 "    dataVinculacao: " + toIndentedString(dataVinculacao) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    valorTotalMercadoriaLocalDescarga: " + toIndentedString(valorTotalMercadoriaLocalDescarga) + "\n" +
-                "    canalDuimp: " + toIndentedString(canalDuimp) + "\n" +
+                "    dataVinculacaoLong: " + toIndentedString(dataVinculacaoLong) + "\n" +
                 "    descricaoRaDestinoDta: " + toIndentedString(descricaoRaDestinoDta) + "\n" +
+                "    descricaoUaDestinoDta: " + toIndentedString(descricaoUaDestinoDta) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "    raDestinoDta: " + toIndentedString(raDestinoDta) + "\n" +
+                "    situacaoDuimp: " + toIndentedString(situacaoDuimp) + "\n" +
                 "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
                 "    uaDestinoDta: " + toIndentedString(uaDestinoDta) + "\n" +
-                "    descricaoUaDestinoDta: " + toIndentedString(descricaoUaDestinoDta) + "\n" +
-                "    situacaoDuimp: " + toIndentedString(situacaoDuimp) + "\n" +
-                "    autorizacoesEntrega: " + toIndentedString(autorizacoesEntrega) + "\n" +
+                "    valorTotalMercadoriaLocalDescarga: " + toIndentedString(valorTotalMercadoriaLocalDescarga) + "\n" +
                 "    versaoDuimp: " + toIndentedString(versaoDuimp) + "\n" +
-                "    dataVinculacaoLong: " + toIndentedString(dataVinculacaoLong) + "\n" +
                 "}";
         return sb;
     }

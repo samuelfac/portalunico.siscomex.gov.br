@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DuimpCover", propOrder =
-        {"documentos", "identificacao", "carga"
+        {"identificacao", "carga", "documentos"
         })
 
 @XmlRootElement(name = "DuimpCover")
@@ -23,11 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados da capa da Duimp.")
 public class DuimpCover {
-
-    @XmlElement(name = "documentos", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DocumentosCover documentos = null;
 
     @XmlElement(name = "identificacao", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -39,36 +34,10 @@ public class DuimpCover {
     @Valid
     private CargaCover carga = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get documentos
-     *
-     * @return documentos
-     **/
-    @JsonProperty("documentos")
-    @NotNull
-    public DocumentosCover getDocumentos() {
-        return documentos;
-    }
-
-    public void setDocumentos(DocumentosCover documentos) {
-        this.documentos = documentos;
-    }
-
-    public DuimpCover documentos(DocumentosCover documentos) {
-        this.documentos = documentos;
-        return this;
-    }
+    @XmlElement(name = "documentos", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DocumentosCover documentos = null;
 
     /**
      * Get identificacao
@@ -110,13 +79,44 @@ public class DuimpCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get documentos
+     *
+     * @return documentos
+     **/
+    @JsonProperty("documentos")
+    @NotNull
+    public DocumentosCover getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(DocumentosCover documentos) {
+        this.documentos = documentos;
+    }
+
+    public DuimpCover documentos(DocumentosCover documentos) {
+        this.documentos = documentos;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DuimpCover {\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    carga: " + toIndentedString(carga) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
                 "}";
         return sb;
     }

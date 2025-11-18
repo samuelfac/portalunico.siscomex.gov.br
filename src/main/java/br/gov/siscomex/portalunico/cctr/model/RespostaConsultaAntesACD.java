@@ -17,7 +17,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaConsultaAntesACD", propOrder =
-        {"sequenciaDeposito", "tipo", "codigoURF", "latitude", "numeroNF", "codigoNCM", "anoDeposito", "codigoRA", "idResponsavel", "dataEmissaoNF", "existeConteiner", "numeroDocumento", "numeroItem", "dataCriacao", "nomeResponsavel", "longitude"
+        {"numeroDocumento", "tipo", "numeroNF", "dataEmissaoNF", "numeroItem", "codigoNCM", "codigoURF", "codigoRA", "latitude", "longitude", "idResponsavel", "nomeResponsavel", "anoDeposito", "sequenciaDeposito", "existeConteiner", "dataCriacao"
         })
 
 @XmlRootElement(name = "RespostaConsultaAntesACD")
@@ -27,82 +27,32 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Resposta da consulta antes ACD")
 public class RespostaConsultaAntesACD {
 
-    @XmlElement(name = "sequenciaDeposito")
-    @ApiModelProperty(example = "4210660.0", value = "Tamanho máximo: 10<br>Formato: NNNNNNNNNN")
-    @Valid
-    /**
-     * Tamanho máximo: 10<br>Formato: NNNNNNNNNN
-     **/
-    private BigDecimal sequenciaDeposito = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "NF-e", value = "Tipo do documento<br>Só pode ser DUE ou NF-e")
-    /**
-     * Tipo do documento<br>Só pode ser DUE ou NF-e
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "codigoURF")
-    @ApiModelProperty(example = "717700.0", value = "Código da Unidade de Região Fiscal<br>Tamanho Máximo: 7<br>Formato: NNNNNNN")
-    @Valid
-    /**
-     * Código da Unidade de Região Fiscal<br>Tamanho Máximo: 7<br>Formato: NNNNNNN
-     **/
-    private BigDecimal codigoURF = null;
-    @XmlElement(name = "latitude")
-    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN")
-    /**
-     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN
-     **/
-    private String latitude = null;
-    @XmlElement(name = "numeroNF")
-    @ApiModelProperty(example = "20544618", value = "Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
-    /**
-     * Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     **/
-    private Integer numeroNF = null;
-    @XmlElement(name = "codigoNCM")
-    @ApiModelProperty(example = "12011000", value = "Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN")
-    /**
-     * Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN
-     **/
-    private Integer codigoNCM = null;
-    @XmlElement(name = "anoDeposito")
-    @ApiModelProperty(example = "2024.0", value = "Tamanho: 4<br>Formato: NNNN")
-    @Valid
-    /**
-     * Tamanho: 4<br>Formato: NNNN
-     **/
-    private BigDecimal anoDeposito = null;
-    @XmlElement(name = "codigoRA")
-    @ApiModelProperty(example = "7911101.0", value = "Código do Recinto Aduaneiro<br>Tamanho: 7<br>Formato: NNNNNNN")
-    @Valid
-    /**
-     * Código do Recinto Aduaneiro<br>Tamanho: 7<br>Formato: NNNNNNN
-     **/
-    private BigDecimal codigoRA = null;
-    @XmlElement(name = "idResponsavel")
-    @ApiModelProperty(example = "07396865000168", value = "CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")
-    /**
-     * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
-     **/
-    private String idResponsavel = null;
-    @XmlElement(name = "dataEmissaoNF")
-    @ApiModelProperty(value = "Tamanho: 13<br>Formato: NNNNNNNNNNNNN")
-    /**
-     * Tamanho: 13<br>Formato: NNNNNNNNNNNNN
-     **/
-    private OffsetDateTime dataEmissaoNF = null;
-    @XmlElement(name = "existeConteiner")
-    @ApiModelProperty(example = "N", value = "Tamanho: 1")
-    /**
-     * Tamanho: 1
-     **/
-    private ExisteConteinerEnum existeConteiner = null;
     @XmlElement(name = "numeroDocumento")
     @ApiModelProperty(example = "20544618", value = "Número do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15<br>Formato: NNNNNNNNNNNNNNN")
     /**
      * Número do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho máximo: 15<br>Formato: NNNNNNNNNNNNNNN
      **/
     private String numeroDocumento = null;
+    @XmlElement(name = "dataEmissaoNF")
+    @ApiModelProperty(value = "Tamanho: 13<br>Formato: NNNNNNNNNNNNN")
+    /**
+     * Tamanho: 13<br>Formato: NNNNNNNNNNNNN
+     **/
+    private OffsetDateTime dataEmissaoNF = null;
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "NF-e", value = "Tipo do documento<br>Só pode ser DUE ou NF-e")
+    /**
+     * Tipo do documento<br>Só pode ser DUE ou NF-e
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "numeroNF")
+    @ApiModelProperty(example = "20544618", value = "Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
+    /**
+     * Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+     **/
+    private Integer numeroNF = null;
     @XmlElement(name = "numeroItem")
     @ApiModelProperty(example = "1.0", value = "Número do Item da Nota Fiscal Eletrônica<br>Tamanho máximo: 4<br>Formato: NNNN")
     @Valid
@@ -110,24 +60,67 @@ public class RespostaConsultaAntesACD {
      * Número do Item da Nota Fiscal Eletrônica<br>Tamanho máximo: 4<br>Formato: NNNN
      **/
     private BigDecimal numeroItem = null;
-    @XmlElement(name = "dataCriacao")
-    @ApiModelProperty(value = "Tamanho: 13<br>Formato: NNNNNNNNNNNNN")
+    @XmlElement(name = "codigoURF")
+    @ApiModelProperty(example = "717700.0", value = "Código da Unidade de Região Fiscal<br>Tamanho Máximo: 7<br>Formato: NNNNNNN")
+    @Valid
     /**
-     * Tamanho: 13<br>Formato: NNNNNNNNNNNNN
+     * Código da Unidade de Região Fiscal<br>Tamanho Máximo: 7<br>Formato: NNNNNNN
      **/
-    private OffsetDateTime dataCriacao = null;
-    @XmlElement(name = "nomeResponsavel")
-    @ApiModelProperty(example = "MOCK Testes Integrados", value = "Tamanho máximo: 60<br>Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    private BigDecimal codigoURF = null;
+
+    @XmlElement(name = "codigoNCM")
+    @ApiModelProperty(example = "12011000", value = "Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN")
     /**
-     * Tamanho máximo: 60<br>Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+     * Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN
      **/
-    private String nomeResponsavel = null;
+    private Integer codigoNCM = null;
+    @XmlElement(name = "latitude")
+    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN")
+    /**
+     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN
+     **/
+    private String latitude = null;
+
+    @XmlElement(name = "codigoRA")
+    @ApiModelProperty(example = "7911101.0", value = "Código do Recinto Aduaneiro<br>Tamanho: 7<br>Formato: NNNNNNN")
+    @Valid
+    /**
+     * Código do Recinto Aduaneiro<br>Tamanho: 7<br>Formato: NNNNNNN
+     **/
+    private BigDecimal codigoRA = null;
     @XmlElement(name = "longitude")
     @ApiModelProperty(example = "-43.248333", value = "Longitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN")
     /**
      * Longitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN
      **/
     private String longitude = null;
+    @XmlElement(name = "nomeResponsavel")
+    @ApiModelProperty(example = "MOCK Testes Integrados", value = "Tamanho máximo: 60<br>Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+    /**
+     * Tamanho máximo: 60<br>Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+     **/
+    private String nomeResponsavel = null;
+
+    @XmlElement(name = "idResponsavel")
+    @ApiModelProperty(example = "07396865000168", value = "CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")
+    /**
+     * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String idResponsavel = null;
+    @XmlElement(name = "anoDeposito")
+    @ApiModelProperty(example = "2024.0", value = "Tamanho: 4<br>Formato: NNNN")
+    @Valid
+    /**
+     * Tamanho: 4<br>Formato: NNNN
+     **/
+    private BigDecimal anoDeposito = null;
+    @XmlElement(name = "sequenciaDeposito")
+    @ApiModelProperty(example = "4210660.0", value = "Tamanho máximo: 10<br>Formato: NNNNNNNNNN")
+    @Valid
+    /**
+     * Tamanho máximo: 10<br>Formato: NNNNNNNNNN
+     **/
+    private BigDecimal sequenciaDeposito = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -141,22 +134,46 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Tamanho máximo: 10&lt;br&gt;Formato: NNNNNNNNNN
+     * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN
      *
-     * @return sequenciaDeposito
+     * @return numeroDocumento
      **/
-    @JsonProperty("sequenciaDeposito")
-    public BigDecimal getSequenciaDeposito() {
-        return sequenciaDeposito;
+    @JsonProperty("numeroDocumento")
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
-    public void setSequenciaDeposito(BigDecimal sequenciaDeposito) {
-        this.sequenciaDeposito = sequenciaDeposito;
+    @XmlElement(name = "existeConteiner")
+    @ApiModelProperty(example = "N", value = "Tamanho: 1")
+    /**
+     * Tamanho: 1
+     **/
+    private ExisteConteinerEnum existeConteiner = null;
+
+    @XmlElement(name = "dataCriacao")
+    @ApiModelProperty(value = "Tamanho: 13<br>Formato: NNNNNNNNNNNNN")
+    /**
+     * Tamanho: 13<br>Formato: NNNNNNNNNNNNN
+     **/
+    private OffsetDateTime dataCriacao = null;
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
 
-    public RespostaConsultaAntesACD sequenciaDeposito(BigDecimal sequenciaDeposito) {
-        this.sequenciaDeposito = sequenciaDeposito;
+    public RespostaConsultaAntesACD numeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
         return this;
+    }
+
+    /**
+     * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
+     *
+     * @return dataEmissaoNF
+     **/
+    @JsonProperty("dataEmissaoNF")
+    public OffsetDateTime getDataEmissaoNF() {
+        return dataEmissaoNF;
     }
 
     /**
@@ -182,44 +199,6 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho Máximo: 7&lt;br&gt;Formato: NNNNNNN
-     *
-     * @return codigoURF
-     **/
-    @JsonProperty("codigoURF")
-    public BigDecimal getCodigoURF() {
-        return codigoURF;
-    }
-
-    public void setCodigoURF(BigDecimal codigoURF) {
-        this.codigoURF = codigoURF;
-    }
-
-    public RespostaConsultaAntesACD codigoURF(BigDecimal codigoURF) {
-        this.codigoURF = codigoURF;
-        return this;
-    }
-
-    /**
-     * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
-     *
-     * @return latitude
-     **/
-    @JsonProperty("latitude")
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public RespostaConsultaAntesACD latitude(String latitude) {
-        this.latitude = latitude;
-        return this;
-    }
-
-    /**
      * Chave de Acesso da Nota Fiscal Eletrônica&lt;br&gt;Tamanho: 44&lt;br&gt;Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      *
      * @return numeroNF
@@ -238,139 +217,12 @@ public class RespostaConsultaAntesACD {
         return this;
     }
 
-    /**
-     * Código NCM do produto&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
-     *
-     * @return codigoNCM
-     **/
-    @JsonProperty("codigoNCM")
-    public Integer getCodigoNCM() {
-        return codigoNCM;
-    }
-
-    public void setCodigoNCM(Integer codigoNCM) {
-        this.codigoNCM = codigoNCM;
-    }
-
-    public RespostaConsultaAntesACD codigoNCM(Integer codigoNCM) {
-        this.codigoNCM = codigoNCM;
-        return this;
-    }
-
-    /**
-     * Tamanho: 4&lt;br&gt;Formato: NNNN
-     *
-     * @return anoDeposito
-     **/
-    @JsonProperty("anoDeposito")
-    public BigDecimal getAnoDeposito() {
-        return anoDeposito;
-    }
-
-    public void setAnoDeposito(BigDecimal anoDeposito) {
-        this.anoDeposito = anoDeposito;
-    }
-
-    public RespostaConsultaAntesACD anoDeposito(BigDecimal anoDeposito) {
-        this.anoDeposito = anoDeposito;
-        return this;
-    }
-
-    /**
-     * Código do Recinto Aduaneiro&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
-     *
-     * @return codigoRA
-     **/
-    @JsonProperty("codigoRA")
-    public BigDecimal getCodigoRA() {
-        return codigoRA;
-    }
-
-    public void setCodigoRA(BigDecimal codigoRA) {
-        this.codigoRA = codigoRA;
-    }
-
-    public RespostaConsultaAntesACD codigoRA(BigDecimal codigoRA) {
-        this.codigoRA = codigoRA;
-        return this;
-    }
-
-    /**
-     * CPF ou CNPJ do responsável pelo estoque&lt;br&gt;Tamanho máximo: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return idResponsavel
-     **/
-    @JsonProperty("idResponsavel")
-    public String getIdResponsavel() {
-        return idResponsavel;
-    }
-
-    public void setIdResponsavel(String idResponsavel) {
-        this.idResponsavel = idResponsavel;
-    }
-
-    public RespostaConsultaAntesACD idResponsavel(String idResponsavel) {
-        this.idResponsavel = idResponsavel;
-        return this;
-    }
-
-    /**
-     * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
-     *
-     * @return dataEmissaoNF
-     **/
-    @JsonProperty("dataEmissaoNF")
-    public OffsetDateTime getDataEmissaoNF() {
-        return dataEmissaoNF;
-    }
-
     public void setDataEmissaoNF(OffsetDateTime dataEmissaoNF) {
         this.dataEmissaoNF = dataEmissaoNF;
     }
 
     public RespostaConsultaAntesACD dataEmissaoNF(OffsetDateTime dataEmissaoNF) {
         this.dataEmissaoNF = dataEmissaoNF;
-        return this;
-    }
-
-    /**
-     * Tamanho: 1
-     *
-     * @return existeConteiner
-     **/
-    @JsonProperty("existeConteiner")
-    public String getExisteConteiner() {
-        if (existeConteiner == null) {
-            return null;
-        }
-        return existeConteiner.value();
-    }
-
-    public void setExisteConteiner(ExisteConteinerEnum existeConteiner) {
-        this.existeConteiner = existeConteiner;
-    }
-
-    public RespostaConsultaAntesACD existeConteiner(ExisteConteinerEnum existeConteiner) {
-        this.existeConteiner = existeConteiner;
-        return this;
-    }
-
-    /**
-     * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN
-     *
-     * @return numeroDocumento
-     **/
-    @JsonProperty("numeroDocumento")
-    public String getNumeroDocumento() {
-        return numeroDocumento;
-    }
-
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    public RespostaConsultaAntesACD numeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
         return this;
     }
 
@@ -394,40 +246,77 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
+     * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho Máximo: 7&lt;br&gt;Formato: NNNNNNN
      *
-     * @return dataCriacao
+     * @return codigoURF
      **/
-    @JsonProperty("dataCriacao")
-    public OffsetDateTime getDataCriacao() {
-        return dataCriacao;
+    @JsonProperty("codigoURF")
+    public BigDecimal getCodigoURF() {
+        return codigoURF;
     }
 
-    public void setDataCriacao(OffsetDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    /**
+     * Código NCM do produto&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
+     *
+     * @return codigoNCM
+     **/
+    @JsonProperty("codigoNCM")
+    public Integer getCodigoNCM() {
+        return codigoNCM;
     }
 
-    public RespostaConsultaAntesACD dataCriacao(OffsetDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setCodigoNCM(Integer codigoNCM) {
+        this.codigoNCM = codigoNCM;
+    }
+
+    public RespostaConsultaAntesACD codigoNCM(Integer codigoNCM) {
+        this.codigoNCM = codigoNCM;
+        return this;
+    }
+
+    public void setCodigoURF(BigDecimal codigoURF) {
+        this.codigoURF = codigoURF;
+    }
+
+    public RespostaConsultaAntesACD codigoURF(BigDecimal codigoURF) {
+        this.codigoURF = codigoURF;
         return this;
     }
 
     /**
-     * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+     * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
      *
-     * @return nomeResponsavel
+     * @return latitude
      **/
-    @JsonProperty("nomeResponsavel")
-    public String getNomeResponsavel() {
-        return nomeResponsavel;
+    @JsonProperty("latitude")
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setNomeResponsavel(String nomeResponsavel) {
-        this.nomeResponsavel = nomeResponsavel;
+    /**
+     * Código do Recinto Aduaneiro&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
+     * @return codigoRA
+     **/
+    @JsonProperty("codigoRA")
+    public BigDecimal getCodigoRA() {
+        return codigoRA;
     }
 
-    public RespostaConsultaAntesACD nomeResponsavel(String nomeResponsavel) {
-        this.nomeResponsavel = nomeResponsavel;
+    public void setCodigoRA(BigDecimal codigoRA) {
+        this.codigoRA = codigoRA;
+    }
+
+    public RespostaConsultaAntesACD codigoRA(BigDecimal codigoRA) {
+        this.codigoRA = codigoRA;
+        return this;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public RespostaConsultaAntesACD latitude(String latitude) {
+        this.latitude = latitude;
         return this;
     }
 
@@ -450,28 +339,143 @@ public class RespostaConsultaAntesACD {
         return this;
     }
 
+    /**
+     * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+     *
+     * @return nomeResponsavel
+     **/
+    @JsonProperty("nomeResponsavel")
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
+    }
+
+    /**
+     * CPF ou CNPJ do responsável pelo estoque&lt;br&gt;Tamanho máximo: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return idResponsavel
+     **/
+    @JsonProperty("idResponsavel")
+    public String getIdResponsavel() {
+        return idResponsavel;
+    }
+
+    public void setIdResponsavel(String idResponsavel) {
+        this.idResponsavel = idResponsavel;
+    }
+
+    public RespostaConsultaAntesACD idResponsavel(String idResponsavel) {
+        this.idResponsavel = idResponsavel;
+        return this;
+    }
+
+    public void setNomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
+    }
+
+    public RespostaConsultaAntesACD nomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
+        return this;
+    }
+
+    /**
+     * Tamanho: 4&lt;br&gt;Formato: NNNN
+     *
+     * @return anoDeposito
+     **/
+    @JsonProperty("anoDeposito")
+    public BigDecimal getAnoDeposito() {
+        return anoDeposito;
+    }
+
+    public void setAnoDeposito(BigDecimal anoDeposito) {
+        this.anoDeposito = anoDeposito;
+    }
+
+    public RespostaConsultaAntesACD anoDeposito(BigDecimal anoDeposito) {
+        this.anoDeposito = anoDeposito;
+        return this;
+    }
+
+    /**
+     * Tamanho máximo: 10&lt;br&gt;Formato: NNNNNNNNNN
+     *
+     * @return sequenciaDeposito
+     **/
+    @JsonProperty("sequenciaDeposito")
+    public BigDecimal getSequenciaDeposito() {
+        return sequenciaDeposito;
+    }
+
+    public void setSequenciaDeposito(BigDecimal sequenciaDeposito) {
+        this.sequenciaDeposito = sequenciaDeposito;
+    }
+
+    public RespostaConsultaAntesACD sequenciaDeposito(BigDecimal sequenciaDeposito) {
+        this.sequenciaDeposito = sequenciaDeposito;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RespostaConsultaAntesACD {\n" +
-                "    sequenciaDeposito: " + toIndentedString(sequenciaDeposito) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
-                "    latitude: " + toIndentedString(latitude) + "\n" +
-                "    numeroNF: " + toIndentedString(numeroNF) + "\n" +
-                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
-                "    anoDeposito: " + toIndentedString(anoDeposito) + "\n" +
-                "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
-                "    idResponsavel: " + toIndentedString(idResponsavel) + "\n" +
-                "    dataEmissaoNF: " + toIndentedString(dataEmissaoNF) + "\n" +
-                "    existeConteiner: " + toIndentedString(existeConteiner) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    numeroNF: " + toIndentedString(numeroNF) + "\n" +
+                "    dataEmissaoNF: " + toIndentedString(dataEmissaoNF) + "\n" +
                 "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "    dataCriacao: " + toIndentedString(dataCriacao) + "\n" +
-                "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
+                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
+                "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
+                "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
+                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    longitude: " + toIndentedString(longitude) + "\n" +
+                "    idResponsavel: " + toIndentedString(idResponsavel) + "\n" +
+                "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
+                "    anoDeposito: " + toIndentedString(anoDeposito) + "\n" +
+                "    sequenciaDeposito: " + toIndentedString(sequenciaDeposito) + "\n" +
+                "    existeConteiner: " + toIndentedString(existeConteiner) + "\n" +
+                "    dataCriacao: " + toIndentedString(dataCriacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Tamanho: 1
+     * @return existeConteiner
+     **/
+    @JsonProperty("existeConteiner")
+    public String getExisteConteiner() {
+        if (existeConteiner == null) {
+            return null;
+        }
+        return existeConteiner.value();
+    }
+
+    public void setExisteConteiner(ExisteConteinerEnum existeConteiner) {
+        this.existeConteiner = existeConteiner;
+    }
+
+    public RespostaConsultaAntesACD existeConteiner(ExisteConteinerEnum existeConteiner) {
+        this.existeConteiner = existeConteiner;
+        return this;
+    }
+
+    /**
+     * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
+     * @return dataCriacao
+     **/
+    @JsonProperty("dataCriacao")
+    public OffsetDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(OffsetDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public RespostaConsultaAntesACD dataCriacao(OffsetDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+        return this;
     }
 
 

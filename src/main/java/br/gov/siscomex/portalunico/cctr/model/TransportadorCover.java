@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TransportadorCover", propOrder =
-        {"cpf", "cnpj", "cpfCondutor", "nomeCondutorEstrangeiro", "nomeEstrangeiro"
+        {"cnpj", "cpf", "nomeEstrangeiro", "cpfCondutor", "nomeCondutorEstrangeiro"
         })
 
 @XmlRootElement(name = "TransportadorCover")
@@ -24,6 +24,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do Transportador")
 public class TransportadorCover {
 
+    @XmlElement(name = "cnpj")
+    @ApiModelProperty(example = "00000000000272", value = "CNPJ do transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.")
+    /**
+     * CNPJ do transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.
+     **/
+    private String cnpj = null;
+
     @XmlElement(name = "cpf")
     @ApiModelProperty(example = "10715312707", value = "CPF do transportador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Deve ser informado somente quando cnpj e nomeEstrangeiro não forem informados")
     /**
@@ -31,12 +38,12 @@ public class TransportadorCover {
      **/
     private String cpf = null;
 
-    @XmlElement(name = "cnpj")
-    @ApiModelProperty(example = "00000000000272", value = "CNPJ do transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.")
+    @XmlElement(name = "nomeEstrangeiro")
+    @ApiModelProperty(example = "Nome do transportador", value = "Nome do transportador quando for estrangeiro<br>Tamanho: 60<br>Deve ser informado somente quando cnpj e cpf não forem informados. ")
     /**
-     * CNPJ do transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.
+     * Nome do transportador quando for estrangeiro<br>Tamanho: 60<br>Deve ser informado somente quando cnpj e cpf não forem informados.
      **/
-    private String cnpj = null;
+    private String nomeEstrangeiro = null;
 
     @XmlElement(name = "cpfCondutor")
     @ApiModelProperty(example = "10715312707", value = "CPF do condutor<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Deve ser informado somente quando nomeCondutorEstrangeiro não for informado. ")
@@ -52,13 +59,6 @@ public class TransportadorCover {
      **/
     private String nomeCondutorEstrangeiro = null;
 
-    @XmlElement(name = "nomeEstrangeiro")
-    @ApiModelProperty(example = "Nome do transportador", value = "Nome do transportador quando for estrangeiro<br>Tamanho: 60<br>Deve ser informado somente quando cnpj e cpf não forem informados. ")
-    /**
-     * Nome do transportador quando for estrangeiro<br>Tamanho: 60<br>Deve ser informado somente quando cnpj e cpf não forem informados.
-     **/
-    private String nomeEstrangeiro = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -68,6 +68,21 @@ public class TransportadorCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ do transportador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.
+     *
+     * @return cnpj
+     **/
+    @JsonProperty("cnpj")
+    @Pattern(regexp = "\\d{14}")
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -90,24 +105,24 @@ public class TransportadorCover {
         return this;
     }
 
-    /**
-     * CNPJ do transportador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @Pattern(regexp = "\\d{14}")
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public TransportadorCover cnpj(String cnpj) {
         this.cnpj = cnpj;
         return this;
+    }
+
+    /**
+     * Nome do transportador quando for estrangeiro&lt;br&gt;Tamanho: 60&lt;br&gt;Deve ser informado somente quando cnpj e cpf não forem informados.
+     *
+     * @return nomeEstrangeiro
+     **/
+    @JsonProperty("nomeEstrangeiro")
+    @Size(min = 2, max = 60)
+    public String getNomeEstrangeiro() {
+        return nomeEstrangeiro;
+    }
+
+    public void setNomeEstrangeiro(String nomeEstrangeiro) {
+        this.nomeEstrangeiro = nomeEstrangeiro;
     }
 
     /**
@@ -150,21 +165,6 @@ public class TransportadorCover {
         return this;
     }
 
-    /**
-     * Nome do transportador quando for estrangeiro&lt;br&gt;Tamanho: 60&lt;br&gt;Deve ser informado somente quando cnpj e cpf não forem informados.
-     *
-     * @return nomeEstrangeiro
-     **/
-    @JsonProperty("nomeEstrangeiro")
-    @Size(min = 2, max = 60)
-    public String getNomeEstrangeiro() {
-        return nomeEstrangeiro;
-    }
-
-    public void setNomeEstrangeiro(String nomeEstrangeiro) {
-        this.nomeEstrangeiro = nomeEstrangeiro;
-    }
-
     public TransportadorCover nomeEstrangeiro(String nomeEstrangeiro) {
         this.nomeEstrangeiro = nomeEstrangeiro;
         return this;
@@ -174,11 +174,11 @@ public class TransportadorCover {
     public String toString() {
 
         String sb = "class TransportadorCover {\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
+                "    nomeEstrangeiro: " + toIndentedString(nomeEstrangeiro) + "\n" +
                 "    cpfCondutor: " + toIndentedString(cpfCondutor) + "\n" +
                 "    nomeCondutorEstrangeiro: " + toIndentedString(nomeCondutorEstrangeiro) + "\n" +
-                "    nomeEstrangeiro: " + toIndentedString(nomeEstrangeiro) + "\n" +
                 "}";
         return sb;
     }

@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UFCandidataIcmsDTO", propOrder =
-        {"siglaUF", "tiposDeclaracao", "tipoFavorecida"
+        {"siglaUF", "tipoFavorecida", "tiposDeclaracao"
         })
 
 @XmlRootElement(name = "UFCandidataIcmsDTO")
@@ -35,6 +35,12 @@ public class UFCandidataIcmsDTO {
      * Sigla da UF candidata à favorecida do ICMS
      **/
     private SiglaUFEnum siglaUF = null;
+    @XmlElement(name = "tipoFavorecida", required = true)
+    @ApiModelProperty(required = true, value = "Tipo da UF em relação à declaração de ICMS")
+    /**
+     * Tipo da UF em relação à declaração de ICMS
+     **/
+    private TipoFavorecidaEnum tipoFavorecida = null;
     @XmlElement(name = "tiposDeclaracao", required = true)
     @ApiModelProperty(required = true, value = "Lista de tipos de declaração/solicitação disponíveis para a UF")
     @Valid
@@ -42,12 +48,6 @@ public class UFCandidataIcmsDTO {
      * Lista de tipos de declaração/solicitação disponíveis para a UF
      **/
     private List<TipoDeclaracaoIcmsDTO> tiposDeclaracao = new ArrayList<>();
-    @XmlElement(name = "tipoFavorecida", required = true)
-    @ApiModelProperty(required = true, value = "Tipo da UF em relação à declaração de ICMS")
-    /**
-     * Tipo da UF em relação à declaração de ICMS
-     **/
-    private TipoFavorecidaEnum tipoFavorecida = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -84,6 +84,29 @@ public class UFCandidataIcmsDTO {
     }
 
     /**
+     * Tipo da UF em relação à declaração de ICMS
+     *
+     * @return tipoFavorecida
+     **/
+    @JsonProperty("tipoFavorecida")
+    @NotNull
+    public String getTipoFavorecida() {
+        if (tipoFavorecida == null) {
+            return null;
+        }
+        return tipoFavorecida.value();
+    }
+
+    public void setTipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
+        this.tipoFavorecida = tipoFavorecida;
+    }
+
+    public UFCandidataIcmsDTO tipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
+        this.tipoFavorecida = tipoFavorecida;
+        return this;
+    }
+
+    /**
      * Lista de tipos de declaração/solicitação disponíveis para a UF
      *
      * @return tiposDeclaracao
@@ -108,36 +131,13 @@ public class UFCandidataIcmsDTO {
         return this;
     }
 
-    /**
-     * Tipo da UF em relação à declaração de ICMS
-     *
-     * @return tipoFavorecida
-     **/
-    @JsonProperty("tipoFavorecida")
-    @NotNull
-    public String getTipoFavorecida() {
-        if (tipoFavorecida == null) {
-            return null;
-        }
-        return tipoFavorecida.value();
-    }
-
-    public void setTipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
-        this.tipoFavorecida = tipoFavorecida;
-    }
-
-    public UFCandidataIcmsDTO tipoFavorecida(TipoFavorecidaEnum tipoFavorecida) {
-        this.tipoFavorecida = tipoFavorecida;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class UFCandidataIcmsDTO {\n" +
                 "    siglaUF: " + toIndentedString(siglaUF) + "\n" +
-                "    tiposDeclaracao: " + toIndentedString(tiposDeclaracao) + "\n" +
                 "    tipoFavorecida: " + toIndentedString(tipoFavorecida) + "\n" +
+                "    tiposDeclaracao: " + toIndentedString(tiposDeclaracao) + "\n" +
                 "}";
         return sb;
     }
@@ -262,15 +262,6 @@ public class UFCandidataIcmsDTO {
             value = v;
         }
 
-        public static SiglaUFEnum fromValue(String v) {
-            for (SiglaUFEnum b : SiglaUFEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SiglaUFEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -278,6 +269,15 @@ public class UFCandidataIcmsDTO {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static SiglaUFEnum fromValue(String v) {
+            for (SiglaUFEnum b : SiglaUFEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SiglaUFEnum");
         }
     }
 
@@ -304,15 +304,6 @@ public class UFCandidataIcmsDTO {
             value = v;
         }
 
-        public static TipoFavorecidaEnum fromValue(String v) {
-            for (TipoFavorecidaEnum b : TipoFavorecidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoFavorecidaEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -320,6 +311,15 @@ public class UFCandidataIcmsDTO {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoFavorecidaEnum fromValue(String v) {
+            for (TipoFavorecidaEnum b : TipoFavorecidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoFavorecidaEnum");
         }
     }
 }

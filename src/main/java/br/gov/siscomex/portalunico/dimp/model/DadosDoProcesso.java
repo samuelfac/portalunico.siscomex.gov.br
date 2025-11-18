@@ -31,17 +31,6 @@ public class DadosDoProcesso {
     private String numeroProcesso = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tipo
      *
      * @return tipo
@@ -77,6 +66,18 @@ public class DadosDoProcesso {
     public DadosDoProcesso numeroProcesso(String numeroProcesso) {
         this.numeroProcesso = numeroProcesso;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

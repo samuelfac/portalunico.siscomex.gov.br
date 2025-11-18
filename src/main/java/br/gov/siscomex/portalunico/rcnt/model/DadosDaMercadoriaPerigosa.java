@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaMercadoriaPerigosa", propOrder =
-        {"idElemento", "codigoMercadoriaPerigosa"
+        {"codigoMercadoriaPerigosa", "idElemento"
         })
 
 @XmlRootElement(name = "DadosDaMercadoriaPerigosa")
 public class DadosDaMercadoriaPerigosa {
-
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 10")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 10
-     **/
-    private String idElemento = null;
 
     @XmlElement(name = "codigoMercadoriaPerigosa")
     @ApiModelProperty(example = "4", value = "<br/>Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do <a href=https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel=\"noopener noreferrer\" target=\"_blank\">Tabelas Aduaneiras</a><br/>Tamanho: 10")
@@ -31,6 +24,13 @@ public class DadosDaMercadoriaPerigosa {
      * <br/>Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do <a href=https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel=\"noopener noreferrer\" target=\"_blank\">Tabelas Aduaneiras</a><br/>Tamanho: 10
      **/
     private String codigoMercadoriaPerigosa = null;
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 10")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 10
+     **/
+    private String idElemento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -41,6 +41,20 @@ public class DadosDaMercadoriaPerigosa {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * &lt;br/&gt;Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do &lt;a href&#x3D;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Tabelas Aduaneiras&lt;/a&gt;&lt;br/&gt;Tamanho: 10
+     *
+     * @return codigoMercadoriaPerigosa
+     **/
+    @JsonProperty("codigoMercadoriaPerigosa")
+    public String getCodigoMercadoriaPerigosa() {
+        return codigoMercadoriaPerigosa;
+    }
+
+    public void setCodigoMercadoriaPerigosa(String codigoMercadoriaPerigosa) {
+        this.codigoMercadoriaPerigosa = codigoMercadoriaPerigosa;
     }
 
     /**
@@ -63,20 +77,6 @@ public class DadosDaMercadoriaPerigosa {
         return this;
     }
 
-    /**
-     * &lt;br/&gt;Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do &lt;a href&#x3D;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Tabelas Aduaneiras&lt;/a&gt;&lt;br/&gt;Tamanho: 10
-     *
-     * @return codigoMercadoriaPerigosa
-     **/
-    @JsonProperty("codigoMercadoriaPerigosa")
-    public String getCodigoMercadoriaPerigosa() {
-        return codigoMercadoriaPerigosa;
-    }
-
-    public void setCodigoMercadoriaPerigosa(String codigoMercadoriaPerigosa) {
-        this.codigoMercadoriaPerigosa = codigoMercadoriaPerigosa;
-    }
-
     public DadosDaMercadoriaPerigosa codigoMercadoriaPerigosa(String codigoMercadoriaPerigosa) {
         this.codigoMercadoriaPerigosa = codigoMercadoriaPerigosa;
         return this;
@@ -86,8 +86,8 @@ public class DadosDaMercadoriaPerigosa {
     public String toString() {
 
         String sb = "class DadosDaMercadoriaPerigosa {\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    codigoMercadoriaPerigosa: " + toIndentedString(codigoMercadoriaPerigosa) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "}";
         return sb;
     }

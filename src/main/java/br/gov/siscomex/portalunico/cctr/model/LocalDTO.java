@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LocalDTO", propOrder =
-        {"recinto", "latitude", "urf", "responsavel", "longitude"
+        {"urf", "recinto", "latitude", "longitude", "responsavel"
         })
 
 @XmlRootElement(name = "LocalDTO")
@@ -22,6 +22,11 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados que descrevem o local da carga")
 public class LocalDTO {
+
+    @XmlElement(name = "urf")
+    @ApiModelProperty(value = "")
+    @Valid
+    private UrfDTO urf = null;
 
     @XmlElement(name = "recinto")
     @ApiModelProperty(value = "")
@@ -35,22 +40,17 @@ public class LocalDTO {
      **/
     private String latitude = null;
 
-    @XmlElement(name = "urf")
-    @ApiModelProperty(value = "")
-    @Valid
-    private UrfDTO urf = null;
-
-    @XmlElement(name = "responsavel")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ResponsavelEstoqueDTO responsavel = null;
-
     @XmlElement(name = "longitude")
     @ApiModelProperty(example = "-40.248333", value = "Longitude")
     /**
      * Longitude
      **/
     private String longitude = null;
+
+    @XmlElement(name = "responsavel")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ResponsavelEstoqueDTO responsavel = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,6 +61,20 @@ public class LocalDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get urf
+     *
+     * @return urf
+     **/
+    @JsonProperty("urf")
+    public UrfDTO getUrf() {
+        return urf;
+    }
+
+    public void setUrf(UrfDTO urf) {
+        this.urf = urf;
     }
 
     /**
@@ -101,23 +115,23 @@ public class LocalDTO {
         return this;
     }
 
-    /**
-     * Get urf
-     *
-     * @return urf
-     **/
-    @JsonProperty("urf")
-    public UrfDTO getUrf() {
-        return urf;
-    }
-
-    public void setUrf(UrfDTO urf) {
-        this.urf = urf;
-    }
-
     public LocalDTO urf(UrfDTO urf) {
         this.urf = urf;
         return this;
+    }
+
+    /**
+     * Longitude
+     *
+     * @return longitude
+     **/
+    @JsonProperty("longitude")
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     /**
@@ -139,20 +153,6 @@ public class LocalDTO {
         return this;
     }
 
-    /**
-     * Longitude
-     *
-     * @return longitude
-     **/
-    @JsonProperty("longitude")
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
     public LocalDTO longitude(String longitude) {
         this.longitude = longitude;
         return this;
@@ -162,11 +162,11 @@ public class LocalDTO {
     public String toString() {
 
         String sb = "class LocalDTO {\n" +
+                "    urf: " + toIndentedString(urf) + "\n" +
                 "    recinto: " + toIndentedString(recinto) + "\n" +
                 "    latitude: " + toIndentedString(latitude) + "\n" +
-                "    urf: " + toIndentedString(urf) + "\n" +
-                "    responsavel: " + toIndentedString(responsavel) + "\n" +
                 "    longitude: " + toIndentedString(longitude) + "\n" +
+                "    responsavel: " + toIndentedString(responsavel) + "\n" +
                 "}";
         return sb;
     }

@@ -16,7 +16,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Vinculo", propOrder =
-        {"dataHoraVinculacao", "cpfVinculacao", "numeroOperacao", "tipoOperacao", "vinculadoPor"
+        {"cpfVinculacao", "dataHoraVinculacao", "numeroOperacao", "tipoOperacao", "vinculadoPor"
         })
 
 @XmlRootElement(name = "Vinculo")
@@ -26,13 +26,6 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Vinculo do dossiê  com operação.")
 public class Vinculo {
 
-    @XmlElement(name = "dataHoraVinculacao")
-    @ApiModelProperty(value = "Data/hora da vinculação do  dossiê à operação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
-    /**
-     * Data/hora da vinculação do  dossiê à operação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
-     **/
-    private OffsetDateTime dataHoraVinculacao = null;
-
     @XmlElement(name = "cpfVinculacao", required = true)
     @ApiModelProperty(example = "77777777777", required = true, value = "CPF do usuário que vinculou o dossiê sem formatação.<br/>Tamanho: 11")
     /**
@@ -40,24 +33,19 @@ public class Vinculo {
      **/
     private String cpfVinculacao = null;
 
+    @XmlElement(name = "dataHoraVinculacao")
+    @ApiModelProperty(value = "Data/hora da vinculação do  dossiê à operação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
+    /**
+     * Data/hora da vinculação do  dossiê à operação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
+     **/
+    private OffsetDateTime dataHoraVinculacao = null;
+
     @XmlElement(name = "numeroOperacao", required = true)
     @ApiModelProperty(example = "19BR0000000174", required = true, value = "Número da operação.<br/>Tamanho máximo: 255<br/>Formato: de acordo com o definido em cada sistema de origem do tipo de operação.<br/><br/>Para DI - Declaração de Importação<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2000004120<br/><br/>Para LI - Licença de Importação<br/>Formato: NNNNNNNNNNN - 11 dígitos numéricos<br/>Exemplo: 19000000235<br/><br/>Para RE - Registro de Exportação<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 190000005786<br/><br/>Para DT - Declaração de Trânsito<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2100003784<br/><br/>Para DIR - Declaração de Importação de Remessa<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 210000103657<br/><br/>Para LPCO - Tratamento Administrativo/LPCO<br/>Formato: XNNNNNNNNNN - X = \"E\" para exportação ou \"I\" para importação concatenado com 10 dígitos numéricos<br/>Exemplo: E1900002152 ou I1900000454<br/><br/>Para CATP - Catálogo de Produtos<br/>Formato: <CNPJ Raíz ou CPF>-<código do produto><br/>onde:<br/><CNPJ Raíz> = NNNNNNNN - 8 primeiros dígitos do CNPJ<br/>&lt;CPF&gt; = NNNNNNNNNNN - 11 dígitos do CPF. É utilizado quando o usuário se auto representa como importador/exportador.<br/><código do produto> = NNNNNNNNNN - 10 dígitos do código do produto gerado no CATP - Catálogo de Produtos<br/>Exemplo: para CNPJ 00000000-0000001049, para CPF 01646244907-0000000001<br/><br/>Para DUE - Declaração Única de Exportação<br/>Formato: NNBRNNNNNNNNNN - 2 dígitos numéricos concatenados com \"BR\" e 10 dígitos numéricos<br/>Exemplo: 19BR0000000530<br/><br/>Para DUIMP - Declaração Única de Importação,<br/>Formato: NNBRNNNNNNNNNNN - 2 dígitos numéricos concatenados com \"BR\" e 11 dígitos numéricos<br/>Exemplo: 21BR00000002386<br/>")
     /**
      * Número da operação.<br/>Tamanho máximo: 255<br/>Formato: de acordo com o definido em cada sistema de origem do tipo de operação.<br/><br/>Para DI - Declaração de Importação<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2000004120<br/><br/>Para LI - Licença de Importação<br/>Formato: NNNNNNNNNNN - 11 dígitos numéricos<br/>Exemplo: 19000000235<br/><br/>Para RE - Registro de Exportação<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 190000005786<br/><br/>Para DT - Declaração de Trânsito<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2100003784<br/><br/>Para DIR - Declaração de Importação de Remessa<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 210000103657<br/><br/>Para LPCO - Tratamento Administrativo/LPCO<br/>Formato: XNNNNNNNNNN - X = \"E\" para exportação ou \"I\" para importação concatenado com 10 dígitos numéricos<br/>Exemplo: E1900002152 ou I1900000454<br/><br/>Para CATP - Catálogo de Produtos<br/>Formato: <CNPJ Raíz ou CPF>-<código do produto><br/>onde:<br/><CNPJ Raíz> = NNNNNNNN - 8 primeiros dígitos do CNPJ<br/>&lt;CPF&gt; = NNNNNNNNNNN - 11 dígitos do CPF. É utilizado quando o usuário se auto representa como importador/exportador.<br/><código do produto> = NNNNNNNNNN - 10 dígitos do código do produto gerado no CATP - Catálogo de Produtos<br/>Exemplo: para CNPJ 00000000-0000001049, para CPF 01646244907-0000000001<br/><br/>Para DUE - Declaração Única de Exportação<br/>Formato: NNBRNNNNNNNNNN - 2 dígitos numéricos concatenados com \"BR\" e 10 dígitos numéricos<br/>Exemplo: 19BR0000000530<br/><br/>Para DUIMP - Declaração Única de Importação,<br/>Formato: NNBRNNNNNNNNNNN - 2 dígitos numéricos concatenados com \"BR\" e 11 dígitos numéricos<br/>Exemplo: 21BR00000002386<br/>
      **/
     private String numeroOperacao = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "DUE", required = true, value = "Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>")
-    /**
-     * Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "vinculadoPor", required = true)
-    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que vinculou o dossiê.")
-    /**
-     * Tipo de usuário/órgão que vinculou o dossiê.
-     **/
-    private VinculadoPorEnum vinculadoPor = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,6 +58,13 @@ public class Vinculo {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "DUE", required = true, value = "Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>")
+    /**
+     * Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
+
     /**
      * Data/hora da vinculação do  dossiê à operação.&lt;br/&gt;Formato ISO 8601: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz
      *
@@ -80,14 +75,12 @@ public class Vinculo {
         return dataHoraVinculacao;
     }
 
-    public void setDataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
-        this.dataHoraVinculacao = dataHoraVinculacao;
-    }
-
-    public Vinculo dataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
-        this.dataHoraVinculacao = dataHoraVinculacao;
-        return this;
-    }
+    @XmlElement(name = "vinculadoPor", required = true)
+    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que vinculou o dossiê.")
+    /**
+     * Tipo de usuário/órgão que vinculou o dossiê.
+     **/
+    private VinculadoPorEnum vinculadoPor = null;
 
     /**
      * CPF do usuário que vinculou o dossiê sem formatação.&lt;br/&gt;Tamanho: 11
@@ -107,6 +100,28 @@ public class Vinculo {
     public Vinculo cpfVinculacao(String cpfVinculacao) {
         this.cpfVinculacao = cpfVinculacao;
         return this;
+    }
+
+    public void setDataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
+        this.dataHoraVinculacao = dataHoraVinculacao;
+    }
+
+    public Vinculo dataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
+        this.dataHoraVinculacao = dataHoraVinculacao;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class Vinculo {\n" +
+                "    cpfVinculacao: " + toIndentedString(cpfVinculacao) + "\n" +
+                "    dataHoraVinculacao: " + toIndentedString(dataHoraVinculacao) + "\n" +
+                "    numeroOperacao: " + toIndentedString(numeroOperacao) + "\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    vinculadoPor: " + toIndentedString(vinculadoPor) + "\n" +
+                "}";
+        return sb;
     }
 
     /**
@@ -173,19 +188,6 @@ public class Vinculo {
     public Vinculo vinculadoPor(VinculadoPorEnum vinculadoPor) {
         this.vinculadoPor = vinculadoPor;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class Vinculo {\n" +
-                "    dataHoraVinculacao: " + toIndentedString(dataHoraVinculacao) + "\n" +
-                "    cpfVinculacao: " + toIndentedString(cpfVinculacao) + "\n" +
-                "    numeroOperacao: " + toIndentedString(numeroOperacao) + "\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    vinculadoPor: " + toIndentedString(vinculadoPor) + "\n" +
-                "}";
-        return sb;
     }
 
 

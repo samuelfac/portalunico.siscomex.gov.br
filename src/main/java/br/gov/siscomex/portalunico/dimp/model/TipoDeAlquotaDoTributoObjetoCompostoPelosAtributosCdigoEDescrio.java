@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoDeAlquotaDoTributoObjetoCompostoPelosAtributosCdigoEDescrio {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "1", value = "Tipo de alíquota.<br>Dominio: <br>1 - Ad valorem, <br>2 - Específica, <br>3 - Ambas, <br>4 - Maior entre as duas, <br>5 - Menor entre as duas<br>Tamanho: 1")
-    /**
-     * Tipo de alíquota.<br>Dominio: <br>1 - Ad valorem, <br>2 - Específica, <br>3 - Ambas, <br>4 - Maior entre as duas, <br>5 - Menor entre as duas<br>Tamanho: 1
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Ad valorem", value = "Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
-    /**
-     * Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 150
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoDeAlquotaDoTributoObjetoCompostoPelosAtributosCdigoEDescrio {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "1", value = "Tipo de alíquota.<br>Dominio: <br>1 - Ad valorem, <br>2 - Específica, <br>3 - Ambas, <br>4 - Maior entre as duas, <br>5 - Menor entre as duas<br>Tamanho: 1")
+    /**
+     * Tipo de alíquota.<br>Dominio: <br>1 - Ad valorem, <br>2 - Específica, <br>3 - Ambas, <br>4 - Maior entre as duas, <br>5 - Menor entre as duas<br>Tamanho: 1
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Ad valorem", value = "Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
+    /**
+     * Descrição correspondente ao valor informado no atributo 'codigo'. <br>Tamanho mínimo: 1<br>Tamanho máximo: 150
+     **/
+    private String descricao = null;
 
     /**
      * Tipo de alíquota.&lt;br&gt;Dominio: &lt;br&gt;1 - Ad valorem, &lt;br&gt;2 - Específica, &lt;br&gt;3 - Ambas, &lt;br&gt;4 - Maior entre as duas, &lt;br&gt;5 - Menor entre as duas&lt;br&gt;Tamanho: 1
@@ -84,7 +85,6 @@ public class TipoDeAlquotaDoTributoObjetoCompostoPelosAtributosCdigoEDescrio {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -11,18 +11,15 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NumeroIdentificacaoDTO", propOrder =
-        {"numero", "cpf", "nome", "cnpj"
+        {"cnpj", "cpf", "nome", "numero"
         })
 
 @XmlRootElement(name = "NumeroIdentificacaoDTO")
 public class NumeroIdentificacaoDTO {
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(example = "06297127000109", value = "Numero<br />Tamanho mínimo: 1<br />Tamanho máximo: 14")
-    /**
-     * Numero<br />Tamanho mínimo: 1<br />Tamanho máximo: 14
-     **/
-    private String numero = null;
+    @XmlElement(name = "cnpj")
+    @ApiModelProperty(value = "")
+    private Boolean cnpj = null;
 
     @XmlElement(name = "cpf")
     @ApiModelProperty(value = "")
@@ -35,9 +32,12 @@ public class NumeroIdentificacaoDTO {
      **/
     private String nome = null;
 
-    @XmlElement(name = "cnpj")
-    @ApiModelProperty(value = "")
-    private Boolean cnpj = null;
+    @XmlElement(name = "numero")
+    @ApiModelProperty(example = "06297127000109", value = "Numero<br />Tamanho mínimo: 1<br />Tamanho máximo: 14")
+    /**
+     * Numero<br />Tamanho mínimo: 1<br />Tamanho máximo: 14
+     **/
+    private String numero = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -51,22 +51,17 @@ public class NumeroIdentificacaoDTO {
     }
 
     /**
-     * Numero&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 14
+     * Get cnpj
      *
-     * @return numero
+     * @return cnpj
      **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
+    @JsonProperty("cnpj")
+    public Boolean isisCnpj() {
+        return cnpj;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public NumeroIdentificacaoDTO numero(String numero) {
-        this.numero = numero;
-        return this;
+    public void setCnpj(Boolean cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -107,22 +102,27 @@ public class NumeroIdentificacaoDTO {
         return this;
     }
 
-    /**
-     * Get cnpj
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    public Boolean isisCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(Boolean cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public NumeroIdentificacaoDTO cnpj(Boolean cnpj) {
         this.cnpj = cnpj;
+        return this;
+    }
+
+    /**
+     * Numero&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 14
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public NumeroIdentificacaoDTO numero(String numero) {
+        this.numero = numero;
         return this;
     }
 
@@ -130,10 +130,10 @@ public class NumeroIdentificacaoDTO {
     public String toString() {
 
         String sb = "class NumeroIdentificacaoDTO {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "}";
         return sb;
     }

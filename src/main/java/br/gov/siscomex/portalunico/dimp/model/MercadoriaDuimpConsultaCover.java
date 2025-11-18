@@ -13,11 +13,19 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MercadoriaDuimpConsultaCover", propOrder =
-        {"valorTotalLocalEmbarqueUSD", "valorTotalLocalEmbarqueBRL"
+        {"valorTotalLocalEmbarqueBRL", "valorTotalLocalEmbarqueUSD"
         })
 
 @XmlRootElement(name = "MercadoriaDuimpConsultaCover")
 public class MercadoriaDuimpConsultaCover {
+
+    @XmlElement(name = "valorTotalLocalEmbarqueBRL")
+    @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em R$ (Reais). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor total da mercadoria no local de embarque em R$ (Reais). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTotalLocalEmbarqueBRL = null;
 
     @XmlElement(name = "valorTotalLocalEmbarqueUSD")
     @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em US$ (Dólares). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -27,13 +35,24 @@ public class MercadoriaDuimpConsultaCover {
      **/
     private BigDecimal valorTotalLocalEmbarqueUSD = null;
 
-    @XmlElement(name = "valorTotalLocalEmbarqueBRL")
-    @ApiModelProperty(example = "20.366", value = "Valor total da mercadoria no local de embarque em R$ (Reais). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
     /**
-     * Valor total da mercadoria no local de embarque em R$ (Reais). <br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor total da mercadoria no local de embarque em R$ (Reais). &lt;br&gt; Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorTotalLocalEmbarqueBRL
      **/
-    private BigDecimal valorTotalLocalEmbarqueBRL = null;
+    @JsonProperty("valorTotalLocalEmbarqueBRL")
+    public BigDecimal getValorTotalLocalEmbarqueBRL() {
+        return valorTotalLocalEmbarqueBRL;
+    }
+
+    public void setValorTotalLocalEmbarqueBRL(BigDecimal valorTotalLocalEmbarqueBRL) {
+        this.valorTotalLocalEmbarqueBRL = valorTotalLocalEmbarqueBRL;
+    }
+
+    public MercadoriaDuimpConsultaCover valorTotalLocalEmbarqueBRL(BigDecimal valorTotalLocalEmbarqueBRL) {
+        this.valorTotalLocalEmbarqueBRL = valorTotalLocalEmbarqueBRL;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -65,31 +84,12 @@ public class MercadoriaDuimpConsultaCover {
         return this;
     }
 
-    /**
-     * Valor total da mercadoria no local de embarque em R$ (Reais). &lt;br&gt; Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorTotalLocalEmbarqueBRL
-     **/
-    @JsonProperty("valorTotalLocalEmbarqueBRL")
-    public BigDecimal getValorTotalLocalEmbarqueBRL() {
-        return valorTotalLocalEmbarqueBRL;
-    }
-
-    public void setValorTotalLocalEmbarqueBRL(BigDecimal valorTotalLocalEmbarqueBRL) {
-        this.valorTotalLocalEmbarqueBRL = valorTotalLocalEmbarqueBRL;
-    }
-
-    public MercadoriaDuimpConsultaCover valorTotalLocalEmbarqueBRL(BigDecimal valorTotalLocalEmbarqueBRL) {
-        this.valorTotalLocalEmbarqueBRL = valorTotalLocalEmbarqueBRL;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class MercadoriaDuimpConsultaCover {\n" +
-                "    valorTotalLocalEmbarqueUSD: " + toIndentedString(valorTotalLocalEmbarqueUSD) + "\n" +
                 "    valorTotalLocalEmbarqueBRL: " + toIndentedString(valorTotalLocalEmbarqueBRL) + "\n" +
+                "    valorTotalLocalEmbarqueUSD: " + toIndentedString(valorTotalLocalEmbarqueUSD) + "\n" +
                 "}";
         return sb;
     }

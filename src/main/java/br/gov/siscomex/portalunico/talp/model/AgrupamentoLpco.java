@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AgrupamentoLpco", propOrder =
-        {"itens", "chave"
+        {"chave", "itens"
         })
 
 @XmlRootElement(name = "AgrupamentoLpco")
@@ -26,6 +26,13 @@ import java.util.List;
 @ApiModel(description = "Dados do agrupamento de LPCOs (apenas LPCOs com LI vinculada)")
 public class AgrupamentoLpco {
 
+    @XmlElement(name = "chave", required = true)
+    @ApiModelProperty(example = "0123456789abcdef0123456789abcdef", required = true, value = "Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais")
+    /**
+     * Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais
+     **/
+    private String chave = null;
+
     @XmlElement(name = "itens", required = true)
     @ApiModelProperty(required = true, value = "Itens que identificam os LPCOs que fazem parte do agrupamento.")
     @Valid
@@ -33,13 +40,6 @@ public class AgrupamentoLpco {
      * Itens que identificam os LPCOs que fazem parte do agrupamento.
      **/
     private List<ItemAgrupamentoLpco> itens = new ArrayList<>();
-
-    @XmlElement(name = "chave", required = true)
-    @ApiModelProperty(example = "0123456789abcdef0123456789abcdef", required = true, value = "Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais")
-    /**
-     * Chave de identificação do agrupamento.<br>Tamanho: 32<br>Formato: caracteres hexadecimais
-     **/
-    private String chave = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -50,6 +50,21 @@ public class AgrupamentoLpco {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Chave de identificação do agrupamento.&lt;br&gt;Tamanho: 32&lt;br&gt;Formato: caracteres hexadecimais
+     *
+     * @return chave
+     **/
+    @JsonProperty("chave")
+    @NotNull
+    public String getChave() {
+        return chave;
+    }
+
+    public void setChave(String chave) {
+        this.chave = chave;
     }
 
     /**
@@ -77,21 +92,6 @@ public class AgrupamentoLpco {
         return this;
     }
 
-    /**
-     * Chave de identificação do agrupamento.&lt;br&gt;Tamanho: 32&lt;br&gt;Formato: caracteres hexadecimais
-     *
-     * @return chave
-     **/
-    @JsonProperty("chave")
-    @NotNull
-    public String getChave() {
-        return chave;
-    }
-
-    public void setChave(String chave) {
-        this.chave = chave;
-    }
-
     public AgrupamentoLpco chave(String chave) {
         this.chave = chave;
         return this;
@@ -101,8 +101,8 @@ public class AgrupamentoLpco {
     public String toString() {
 
         String sb = "class AgrupamentoLpco {\n" +
-                "    itens: " + toIndentedString(itens) + "\n" +
                 "    chave: " + toIndentedString(chave) + "\n" +
+                "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
     }

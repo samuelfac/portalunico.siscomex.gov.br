@@ -23,6 +23,8 @@ public class AdditionalInformation {
     @XmlElement(name = "statementCode")
     @ApiModelProperty(value = "")
     private String statementCode = null;
+
+
     @XmlElement(name = "statementTypeCode", required = true)
     @ApiModelProperty(required = true, value = "")
     private StatementTypeCodeEnum statementTypeCode = null;
@@ -158,15 +160,6 @@ public class AdditionalInformation {
             value = v;
         }
 
-        public static StatementTypeCodeEnum fromValue(String v) {
-            for (StatementTypeCodeEnum b : StatementTypeCodeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to StatementTypeCodeEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -174,6 +167,15 @@ public class AdditionalInformation {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static StatementTypeCodeEnum fromValue(String v) {
+            for (StatementTypeCodeEnum b : StatementTypeCodeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to StatementTypeCodeEnum");
         }
     }
 }

@@ -13,11 +13,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDosComponentesDeFreteDeUmaCargaArea", propOrder =
-        {"componentesFreteDestino", "componentesFreteOrigem"
+        {"componentesFreteOrigem", "componentesFreteDestino"
         })
 
 @XmlRootElement(name = "DadosDosComponentesDeFreteDeUmaCargaArea")
 public class DadosDosComponentesDeFreteDeUmaCargaArea {
+
+    @XmlElement(name = "componentesFreteOrigem")
+    @ApiModelProperty(value = "Lista dos  componentes do frete na origem ")
+    @Valid
+    /**
+     * Lista dos  componentes do frete na origem
+     **/
+    private List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteOrigem = null;
 
     @XmlElement(name = "componentesFreteDestino")
     @ApiModelProperty(value = "Lista dos componentes do frete no destino")
@@ -27,13 +35,29 @@ public class DadosDosComponentesDeFreteDeUmaCargaArea {
      **/
     private List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteDestino = null;
 
-    @XmlElement(name = "componentesFreteOrigem")
-    @ApiModelProperty(value = "Lista dos  componentes do frete na origem ")
-    @Valid
     /**
      * Lista dos  componentes do frete na origem
+     *
+     * @return componentesFreteOrigem
      **/
-    private List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteOrigem = null;
+    @JsonProperty("componentesFreteOrigem")
+    public List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> getComponentesFreteOrigem() {
+        return componentesFreteOrigem;
+    }
+
+    public void setComponentesFreteOrigem(List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteOrigem) {
+        this.componentesFreteOrigem = componentesFreteOrigem;
+    }
+
+    public DadosDosComponentesDeFreteDeUmaCargaArea componentesFreteOrigem(List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteOrigem) {
+        this.componentesFreteOrigem = componentesFreteOrigem;
+        return this;
+    }
+
+    public DadosDosComponentesDeFreteDeUmaCargaArea addComponentesFreteOrigemItem(DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao componentesFreteOrigemItem) {
+        this.componentesFreteOrigem.add(componentesFreteOrigemItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,36 +94,12 @@ public class DadosDosComponentesDeFreteDeUmaCargaArea {
         return this;
     }
 
-    /**
-     * Lista dos  componentes do frete na origem
-     *
-     * @return componentesFreteOrigem
-     **/
-    @JsonProperty("componentesFreteOrigem")
-    public List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> getComponentesFreteOrigem() {
-        return componentesFreteOrigem;
-    }
-
-    public void setComponentesFreteOrigem(List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteOrigem) {
-        this.componentesFreteOrigem = componentesFreteOrigem;
-    }
-
-    public DadosDosComponentesDeFreteDeUmaCargaArea componentesFreteOrigem(List<DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao> componentesFreteOrigem) {
-        this.componentesFreteOrigem = componentesFreteOrigem;
-        return this;
-    }
-
-    public DadosDosComponentesDeFreteDeUmaCargaArea addComponentesFreteOrigemItem(DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao componentesFreteOrigemItem) {
-        this.componentesFreteOrigem.add(componentesFreteOrigemItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosDosComponentesDeFreteDeUmaCargaArea {\n" +
-                "    componentesFreteDestino: " + toIndentedString(componentesFreteDestino) + "\n" +
                 "    componentesFreteOrigem: " + toIndentedString(componentesFreteOrigem) + "\n" +
+                "    componentesFreteDestino: " + toIndentedString(componentesFreteDestino) + "\n" +
                 "}";
         return sb;
     }

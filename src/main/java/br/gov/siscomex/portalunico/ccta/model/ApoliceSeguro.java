@@ -12,11 +12,18 @@ import java.time.LocalDate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ApoliceSeguro", propOrder =
-        {"numero", "dataVencimento"
+        {"dataVencimento", "numero"
         })
 
 @XmlRootElement(name = "ApoliceSeguro")
 public class ApoliceSeguro {
+
+    @XmlElement(name = "dataVencimento")
+    @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data de vencimento do seguro<br/>Formato: yyyy-MM-dd")
+    /**
+     * Data de vencimento do seguro<br/>Formato: yyyy-MM-dd
+     **/
+    private LocalDate dataVencimento = null;
 
     @XmlElement(name = "numero")
     @ApiModelProperty(example = "APOLICE123", value = "Apólice de seguro<br/> Tamanho Máximo: 20")
@@ -25,12 +32,24 @@ public class ApoliceSeguro {
      **/
     private String numero = null;
 
-    @XmlElement(name = "dataVencimento")
-    @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data de vencimento do seguro<br/>Formato: yyyy-MM-dd")
     /**
-     * Data de vencimento do seguro<br/>Formato: yyyy-MM-dd
+     * Data de vencimento do seguro&lt;br/&gt;Formato: yyyy-MM-dd
+     *
+     * @return dataVencimento
      **/
-    private LocalDate dataVencimento = null;
+    @JsonProperty("dataVencimento")
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public ApoliceSeguro dataVencimento(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,31 +81,12 @@ public class ApoliceSeguro {
         return this;
     }
 
-    /**
-     * Data de vencimento do seguro&lt;br/&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataVencimento
-     **/
-    @JsonProperty("dataVencimento")
-    public LocalDate getDataVencimento() {
-        return dataVencimento;
-    }
-
-    public void setDataVencimento(LocalDate dataVencimento) {
-        this.dataVencimento = dataVencimento;
-    }
-
-    public ApoliceSeguro dataVencimento(LocalDate dataVencimento) {
-        this.dataVencimento = dataVencimento;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ApoliceSeguro {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    dataVencimento: " + toIndentedString(dataVencimento) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "}";
         return sb;
     }

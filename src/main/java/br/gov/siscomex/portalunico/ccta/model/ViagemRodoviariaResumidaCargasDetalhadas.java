@@ -14,35 +14,16 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaResumidaCargasDetalhadas", propOrder =
-        {"tipoDocumento", "conhecimentosCargaViagem", "todasCargasEntregues", "numeroDocumentoViagem", "dataEmissao"
+        {"conhecimentosCargaViagem", "dataEmissao", "numeroDocumentoViagem", "tipoDocumento", "todasCargasEntregues"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaResumidaCargasDetalhadas")
 public class ViagemRodoviariaResumidaCargasDetalhadas {
 
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoManifestoViagem tipoDocumento = null;
-
     @XmlElement(name = "conhecimentosCargaViagem")
     @ApiModelProperty(value = "")
     @Valid
     private List<ViagemRodoviariaCargaDetalhada> conhecimentosCargaViagem = null;
-
-    @XmlElement(name = "todasCargasEntregues")
-    @ApiModelProperty(value = "Indicador que informa se todas as cargas já foram entregues")
-    /**
-     * Indicador que informa se todas as cargas já foram entregues
-     **/
-    private Boolean todasCargasEntregues = null;
-
-    @XmlElement(name = "numeroDocumentoViagem")
-    @ApiModelProperty(example = "AR123040104", value = "Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15")
-    /**
-     * Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15
-     **/
-    private String numeroDocumentoViagem = null;
 
     @XmlElement(name = "dataEmissao")
     @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd")
@@ -51,35 +32,24 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
      **/
     private LocalDate dataEmissao = null;
 
+    @XmlElement(name = "numeroDocumentoViagem")
+    @ApiModelProperty(example = "AR123040104", value = "Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get tipoDocumento
-     *
-     * @return tipoDocumento
+     * Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15
      **/
-    @JsonProperty("tipoDocumento")
-    public TipoManifestoViagem getTipoDocumento() {
-        return tipoDocumento;
-    }
+    private String numeroDocumentoViagem = null;
 
-    public void setTipoDocumento(TipoManifestoViagem tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoManifestoViagem tipoDocumento = null;
 
-    public ViagemRodoviariaResumidaCargasDetalhadas tipoDocumento(TipoManifestoViagem tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
+    @XmlElement(name = "todasCargasEntregues")
+    @ApiModelProperty(value = "Indicador que informa se todas as cargas já foram entregues")
+    /**
+     * Indicador que informa se todas as cargas já foram entregues
+     **/
+    private Boolean todasCargasEntregues = null;
 
     /**
      * Get conhecimentosCargaViagem
@@ -106,22 +76,28 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
     }
 
     /**
-     * Indicador que informa se todas as cargas já foram entregues
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
      *
-     * @return todasCargasEntregues
+     * @return dataEmissao
      **/
-    @JsonProperty("todasCargasEntregues")
-    public Boolean isisTodasCargasEntregues() {
-        return todasCargasEntregues;
+    @JsonProperty("dataEmissao")
+    public LocalDate getDataEmissao() {
+        return dataEmissao;
     }
 
-    public void setTodasCargasEntregues(Boolean todasCargasEntregues) {
-        this.todasCargasEntregues = todasCargasEntregues;
-    }
-
-    public ViagemRodoviariaResumidaCargasDetalhadas todasCargasEntregues(Boolean todasCargasEntregues) {
-        this.todasCargasEntregues = todasCargasEntregues;
-        return this;
+    public void setDataEmissao(LocalDate dataEmissao) {
+        this.dataEmissao = dataEmissao;
     }
 
     /**
@@ -143,22 +119,46 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
         return this;
     }
 
-    /**
-     * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public LocalDate getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(LocalDate dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
     public ViagemRodoviariaResumidaCargasDetalhadas dataEmissao(LocalDate dataEmissao) {
         this.dataEmissao = dataEmissao;
+        return this;
+    }
+
+    /**
+     * Get tipoDocumento
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public TipoManifestoViagem getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoManifestoViagem tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public ViagemRodoviariaResumidaCargasDetalhadas tipoDocumento(TipoManifestoViagem tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
+    /**
+     * Indicador que informa se todas as cargas já foram entregues
+     *
+     * @return todasCargasEntregues
+     **/
+    @JsonProperty("todasCargasEntregues")
+    public Boolean isisTodasCargasEntregues() {
+        return todasCargasEntregues;
+    }
+
+    public void setTodasCargasEntregues(Boolean todasCargasEntregues) {
+        this.todasCargasEntregues = todasCargasEntregues;
+    }
+
+    public ViagemRodoviariaResumidaCargasDetalhadas todasCargasEntregues(Boolean todasCargasEntregues) {
+        this.todasCargasEntregues = todasCargasEntregues;
         return this;
     }
 
@@ -166,11 +166,11 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
     public String toString() {
 
         String sb = "class ViagemRodoviariaResumidaCargasDetalhadas {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "    conhecimentosCargaViagem: " + toIndentedString(conhecimentosCargaViagem) + "\n" +
-                "    todasCargasEntregues: " + toIndentedString(todasCargasEntregues) + "\n" +
-                "    numeroDocumentoViagem: " + toIndentedString(numeroDocumentoViagem) + "\n" +
                 "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    numeroDocumentoViagem: " + toIndentedString(numeroDocumentoViagem) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
+                "    todasCargasEntregues: " + toIndentedString(todasCargasEntregues) + "\n" +
                 "}";
         return sb;
     }

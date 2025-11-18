@@ -35,17 +35,6 @@ public class Nfes {
     private List<Nfe> nfe = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista das notas fiscais eletrônicas
      *
      * @return nfe
@@ -68,6 +57,18 @@ public class Nfes {
     public Nfes addNfeItem(Nfe nfeItem) {
         this.nfe.add(nfeItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

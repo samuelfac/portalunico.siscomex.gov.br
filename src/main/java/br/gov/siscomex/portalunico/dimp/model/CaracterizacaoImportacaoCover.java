@@ -26,19 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class CaracterizacaoImportacaoCover {
 
 
-    @XmlElement(name = "indicador", required = true)
-    @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
-    /**
-     * Indicador de importação por terceiros.
-     **/
-    private IndicadorEnum indicador = null;
-    @XmlElement(name = "ni")
-    @ApiModelProperty(example = "00000000000191", value = "CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'")
-    /**
-     * CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'
-     **/
-    private String ni = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -49,6 +36,20 @@ public class CaracterizacaoImportacaoCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "indicador", required = true)
+    @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
+    /**
+     * Indicador de importação por terceiros.
+     **/
+    private IndicadorEnum indicador = null;
+
+    @XmlElement(name = "ni")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'")
+    /**
+     * CNPJ do adquirente ou encomendante.<br>Tamanho: 14<br>Formato: 'AAAAAAAAAAAANN'<br>Observação: Este atributo é informado apenas quando o atributo 'indicador' possui um dos seguintes valores: 'IMPORTACAO_POR_CONTA_E_ORDEM', 'IMPORTACAO_POR_ENCOMENDA'
+     **/
+    private String ni = null;
 
     /**
      * Indicador de importação por terceiros.
@@ -91,7 +92,6 @@ public class CaracterizacaoImportacaoCover {
         this.ni = ni;
         return this;
     }
-
 
     @Override
     public String toString() {

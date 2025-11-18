@@ -13,11 +13,23 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiDiagnosticoRegistro", propOrder =
-        {"situacao", "identificacao", "links", "message"
+        {"message", "identificacao", "situacao", "links"
         })
 
 @XmlRootElement(name = "RespostaApiDiagnosticoRegistro")
 public class RespostaApiDiagnosticoRegistro {
+
+    @XmlElement(name = "message")
+    @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
+    /**
+     * Mensagem de resposta do resultado da operação.
+     **/
+    private String message = null;
+
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private IdentificacaoDuimpRespostaApi identificacao = null;
 
     @XmlElement(name = "situacao")
     @ApiModelProperty(example = "Diagnóstico em processamento", value = "Descrição da situação inicial da solicitação de diagnóstico ou registro.<br>Tamanho mínimo: 1<br>Tamanho máximo: 80")
@@ -26,11 +38,6 @@ public class RespostaApiDiagnosticoRegistro {
      **/
     private String situacao = null;
 
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private IdentificacaoDuimpRespostaApi identificacao = null;
-
     @XmlElement(name = "links")
     @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
     @Valid
@@ -38,13 +45,6 @@ public class RespostaApiDiagnosticoRegistro {
      * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
      **/
     private List<LinkCover> links = null;
-
-    @XmlElement(name = "message")
-    @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
-    /**
-     * Mensagem de resposta do resultado da operação.
-     **/
-    private String message = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,22 +58,17 @@ public class RespostaApiDiagnosticoRegistro {
     }
 
     /**
-     * Descrição da situação inicial da solicitação de diagnóstico ou registro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
+     * Mensagem de resposta do resultado da operação.
      *
-     * @return situacao
+     * @return message
      **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        return situacao;
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
     }
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public RespostaApiDiagnosticoRegistro situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     /**
@@ -93,6 +88,25 @@ public class RespostaApiDiagnosticoRegistro {
     public RespostaApiDiagnosticoRegistro identificacao(IdentificacaoDuimpRespostaApi identificacao) {
         this.identificacao = identificacao;
         return this;
+    }
+
+    public RespostaApiDiagnosticoRegistro message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Descrição da situação inicial da solicitação de diagnóstico ou registro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
     /**
@@ -119,22 +133,8 @@ public class RespostaApiDiagnosticoRegistro {
         return this;
     }
 
-    /**
-     * Mensagem de resposta do resultado da operação.
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public RespostaApiDiagnosticoRegistro message(String message) {
-        this.message = message;
+    public RespostaApiDiagnosticoRegistro situacao(String situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -142,10 +142,10 @@ public class RespostaApiDiagnosticoRegistro {
     public String toString() {
 
         String sb = "class RespostaApiDiagnosticoRegistro {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    message: " + toIndentedString(message) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

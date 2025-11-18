@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoDocumento {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "J", value = "Tipo do documento de identificação")
-    /**
-     * Tipo do documento de identificação
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "CNPJ", value = "Nome  tipo do documento de identificação")
-    /**
-     * Nome  tipo do documento de identificação
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoDocumento {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "J", value = "Tipo do documento de identificação")
+    /**
+     * Tipo do documento de identificação
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "CNPJ", value = "Nome  tipo do documento de identificação")
+    /**
+     * Nome  tipo do documento de identificação
+     **/
+    private String descricao = null;
 
     /**
      * Tipo do documento de identificação
@@ -84,7 +85,6 @@ public class TipoDocumento {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

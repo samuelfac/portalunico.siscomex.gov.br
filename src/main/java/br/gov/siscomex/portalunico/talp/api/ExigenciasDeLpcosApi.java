@@ -32,7 +32,7 @@ public interface ExigenciasDeLpcosApi {
 
     /**
      * Cancelar uma exigência de LPCO.
-     * <p>
+     *
      * &lt;p&gt; Disponível apenas para a Administração Pública.&lt;/p&gt;
      *
      */
@@ -44,10 +44,10 @@ public interface ExigenciasDeLpcosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ExigenciaLpcoResponse.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ExigenciaLpcoResponse cancelar1(@ApiParam(value = "Número do LPCO que possui a exigência.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano", required = true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "Número sequencial da exigência sendo cancelada.", required = true) @PathParam("numeracaoExigencia") Long numeracaoExigencia, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "") @Valid ExigenciaLpcoRequest body);
 
     /**
@@ -62,15 +62,15 @@ public interface ExigenciasDeLpcosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ExigenciaLpcoResponse.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ExigenciaLpcoResponse cumprir1(@ApiParam(value = "Número do LPCO que possui a exigência.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano", required = true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "Número sequencial da exigência sendo cumprida.", required = true) @PathParam("numeracaoExigencia") Long numeracaoExigencia, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "") @Valid ExigenciaLpcoRequest body);
 
     /**
      * Incluir uma exigência para o LPCO.
-     * <p>
+     *
      * &lt;p&gt; Disponível apenas para a Administração Pública.&lt;/p&gt;
      *
      */
@@ -82,10 +82,10 @@ public interface ExigenciasDeLpcosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ExigenciaLpcoResponse.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ExigenciaLpcoResponse incluir1(@ApiParam(value = "Número do LPCO para o qual será incluída a exigência.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano", required = true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "") @Valid ExigenciaLpcoRequest body);
 
     /**
@@ -99,10 +99,10 @@ public interface ExigenciasDeLpcosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ExigenciaLpcoResponse.class, responseContainer = "List"),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     List<ExigenciaLpcoResponse> listar(@ApiParam(value = "Número do LPCO para o qual serão listadas as exigências.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano", required = true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
@@ -115,12 +115,12 @@ public interface ExigenciasDeLpcosApi {
     @ApiOperation(value = "Solicitar que um LPCO fique em exigência para que possa ser editado.", notes = "", tags = {"Exigencias de LPCOs"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso"),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nemhum conteúdo retornado"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     void solicitarAlteracao1(@ApiParam(value = "", required = true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "") @Valid Justificativa body);
 }
 

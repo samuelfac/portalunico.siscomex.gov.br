@@ -1,7 +1,6 @@
 package br.gov.siscomex.portalunico.cctr.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
@@ -19,29 +18,14 @@ import java.util.List;
         })
 
 @XmlRootElement(name = "Lacres")
-/**
- * Lacres aplicados
- **/
-@ApiModel(description = "Lacres aplicados")
 public class Lacres {
 
     @XmlElement(name = "lacre", required = true)
-    @ApiModelProperty(example = "[123456,654321]", required = true, value = "Lacre")
+    @ApiModelProperty(example = "ABC123", required = true, value = "Lacre")
     /**
      * Lacre
      **/
     private List<String> lacre = new ArrayList<>();
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Lacre
@@ -66,6 +50,17 @@ public class Lacres {
     public Lacres addLacreItem(String lacreItem) {
         this.lacre.add(lacreItem);
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

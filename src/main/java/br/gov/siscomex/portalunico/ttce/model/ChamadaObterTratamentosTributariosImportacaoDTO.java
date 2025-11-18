@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ChamadaObterTratamentosTributariosImportacaoDTO", propOrder =
-        {"fundamentosOpcionais", "ncm", "dataFatoGerador", "tipoOperacao", "codigoPais"
+        {"ncm", "codigoPais", "dataFatoGerador", "tipoOperacao", "fundamentosOpcionais"
         })
 
 @XmlRootElement(name = "ChamadaObterTratamentosTributariosImportacaoDTO")
@@ -25,20 +25,19 @@ import java.util.List;
 @ApiModel(description = "DTO de chamada do serviço que obtem os dados de Tratamentos Tributários de Importação.")
 public class ChamadaObterTratamentosTributariosImportacaoDTO {
 
-    @XmlElement(name = "fundamentosOpcionais")
-    @ApiModelProperty(value = "Opção de informar uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional ou uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional/Nomenclatura alternativa.")
-    @Valid
-    /**
-     * Opção de informar uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional ou uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional/Nomenclatura alternativa.
-     **/
-    private List<FundamentoLegalOpcionalDTO> fundamentosOpcionais = null;
-
     @XmlElement(name = "ncm", required = true)
     @ApiModelProperty(example = "30031012", required = true, value = "Número da NCM (Nomenclatura Comum do Mercosul) com 8 dígitos.")
     /**
      * Número da NCM (Nomenclatura Comum do Mercosul) com 8 dígitos.
      **/
     private String ncm = null;
+
+    @XmlElement(name = "codigoPais", required = true)
+    @ApiModelProperty(example = "23", required = true, value = "Código numérico identificador do país.<br/>Origem: <a href=\"https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\" target=\"blank\">Sistema de Tabelas Aduaneiras - País</a>")
+    /**
+     * Código numérico identificador do país.<br/>Origem: <a href=\"https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\" target=\"blank\">Sistema de Tabelas Aduaneiras - País</a>
+     **/
+    private Long codigoPais = null;
 
     @XmlElement(name = "dataFatoGerador")
     @ApiModelProperty(example = "2020-12-20", value = "Data do fato gerador, no formato aaaa-mm-dd. É um campo opcional (quando não informado o sistema assume a data atual).")
@@ -54,47 +53,13 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
      **/
     private String tipoOperacao = null;
 
-    @XmlElement(name = "codigoPais", required = true)
-    @ApiModelProperty(example = "23", required = true, value = "Código numérico identificador do país.<br/>Origem: <a href=\"https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\" target=\"blank\">Sistema de Tabelas Aduaneiras - País</a>")
-    /**
-     * Código numérico identificador do país.<br/>Origem: <a href=\"https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\" target=\"blank\">Sistema de Tabelas Aduaneiras - País</a>
-     **/
-    private Long codigoPais = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "fundamentosOpcionais")
+    @ApiModelProperty(value = "Opção de informar uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional ou uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional/Nomenclatura alternativa.")
+    @Valid
     /**
      * Opção de informar uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional ou uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional/Nomenclatura alternativa.
-     *
-     * @return fundamentosOpcionais
      **/
-    @JsonProperty("fundamentosOpcionais")
-    public List<FundamentoLegalOpcionalDTO> getFundamentosOpcionais() {
-        return fundamentosOpcionais;
-    }
-
-    public void setFundamentosOpcionais(List<FundamentoLegalOpcionalDTO> fundamentosOpcionais) {
-        this.fundamentosOpcionais = fundamentosOpcionais;
-    }
-
-    public ChamadaObterTratamentosTributariosImportacaoDTO fundamentosOpcionais(List<FundamentoLegalOpcionalDTO> fundamentosOpcionais) {
-        this.fundamentosOpcionais = fundamentosOpcionais;
-        return this;
-    }
-
-    public ChamadaObterTratamentosTributariosImportacaoDTO addFundamentosOpcionaisItem(FundamentoLegalOpcionalDTO fundamentosOpcionaisItem) {
-        this.fundamentosOpcionais.add(fundamentosOpcionaisItem);
-        return this;
-    }
+    private List<FundamentoLegalOpcionalDTO> fundamentosOpcionais = null;
 
     /**
      * Número da NCM (Nomenclatura Comum do Mercosul) com 8 dígitos.
@@ -114,6 +79,32 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
     public ChamadaObterTratamentosTributariosImportacaoDTO ncm(String ncm) {
         this.ncm = ncm;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código numérico identificador do país.&lt;br/&gt;Origem: &lt;a href&#x3D;\&quot;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\&quot; target&#x3D;\&quot;blank\&quot;&gt;Sistema de Tabelas Aduaneiras - País&lt;/a&gt;
+     *
+     * @return codigoPais
+     **/
+    @JsonProperty("codigoPais")
+    @NotNull
+    public Long getCodigoPais() {
+        return codigoPais;
+    }
+
+    public void setCodigoPais(Long codigoPais) {
+        this.codigoPais = codigoPais;
     }
 
     /**
@@ -155,23 +146,32 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
         return this;
     }
 
-    /**
-     * Código numérico identificador do país.&lt;br/&gt;Origem: &lt;a href&#x3D;\&quot;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\&quot; target&#x3D;\&quot;blank\&quot;&gt;Sistema de Tabelas Aduaneiras - País&lt;/a&gt;
-     *
-     * @return codigoPais
-     **/
-    @JsonProperty("codigoPais")
-    @NotNull
-    public Long getCodigoPais() {
-        return codigoPais;
-    }
-
-    public void setCodigoPais(Long codigoPais) {
-        this.codigoPais = codigoPais;
-    }
-
     public ChamadaObterTratamentosTributariosImportacaoDTO codigoPais(Long codigoPais) {
         this.codigoPais = codigoPais;
+        return this;
+    }
+
+    /**
+     * Opção de informar uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional ou uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional/Nomenclatura alternativa.
+     *
+     * @return fundamentosOpcionais
+     **/
+    @JsonProperty("fundamentosOpcionais")
+    public List<FundamentoLegalOpcionalDTO> getFundamentosOpcionais() {
+        return fundamentosOpcionais;
+    }
+
+    public void setFundamentosOpcionais(List<FundamentoLegalOpcionalDTO> fundamentosOpcionais) {
+        this.fundamentosOpcionais = fundamentosOpcionais;
+    }
+
+    public ChamadaObterTratamentosTributariosImportacaoDTO fundamentosOpcionais(List<FundamentoLegalOpcionalDTO> fundamentosOpcionais) {
+        this.fundamentosOpcionais = fundamentosOpcionais;
+        return this;
+    }
+
+    public ChamadaObterTratamentosTributariosImportacaoDTO addFundamentosOpcionaisItem(FundamentoLegalOpcionalDTO fundamentosOpcionaisItem) {
+        this.fundamentosOpcionais.add(fundamentosOpcionaisItem);
         return this;
     }
 
@@ -179,11 +179,11 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
     public String toString() {
 
         String sb = "class ChamadaObterTratamentosTributariosImportacaoDTO {\n" +
-                "    fundamentosOpcionais: " + toIndentedString(fundamentosOpcionais) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
                 "    dataFatoGerador: " + toIndentedString(dataFatoGerador) + "\n" +
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
+                "    fundamentosOpcionais: " + toIndentedString(fundamentosOpcionais) + "\n" +
                 "}";
         return sb;
     }

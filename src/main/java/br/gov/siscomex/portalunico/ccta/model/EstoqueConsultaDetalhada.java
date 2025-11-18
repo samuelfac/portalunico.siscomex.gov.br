@@ -15,19 +15,11 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EstoqueConsultaDetalhada", propOrder =
-        {"quantidadeVolumesEstoque", "cnpjResponsavelAtual", "identificacaoViagem", "numeroDocumentoSaida", "pesoBrutoEstoque", "tipoDocumentoSaida", "dataHoraSituacaoAtual", "recintoAduaneiro", "unidadeRfb", "situacaoAtual"
+        {"cnpjResponsavelAtual", "dataHoraSituacaoAtual", "identificacaoViagem", "numeroDocumentoSaida", "pesoBrutoEstoque", "quantidadeVolumesEstoque", "recintoAduaneiro", "situacaoAtual", "tipoDocumentoSaida", "unidadeRfb"
         })
 
 @XmlRootElement(name = "EstoqueConsultaDetalhada")
 public class EstoqueConsultaDetalhada {
-
-    @XmlElement(name = "quantidadeVolumesEstoque")
-    @ApiModelProperty(example = "780.348", value = "Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto. ")
-    @Valid
-    /**
-     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     **/
-    private BigDecimal quantidadeVolumesEstoque = null;
 
     @XmlElement(name = "cnpjResponsavelAtual")
     @ApiModelProperty(example = "00000000000191", value = "CNPJ responsável pelo estoque<br/> ")
@@ -35,6 +27,13 @@ public class EstoqueConsultaDetalhada {
      * CNPJ responsável pelo estoque<br/>
      **/
     private String cnpjResponsavelAtual = null;
+
+    @XmlElement(name = "dataHoraSituacaoAtual")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/> ")
+    /**
+     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/>
+     **/
+    private String dataHoraSituacaoAtual = null;
 
     @XmlElement(name = "identificacaoViagem")
     @ApiModelProperty(example = "XX099020200922MIA", value = "Número de identificação do manifesto<br/>Tamanho: 17")
@@ -57,36 +56,40 @@ public class EstoqueConsultaDetalhada {
      * Peso do volume transportado. Quando for granel, esse campo será nulo.<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoBrutoEstoque = null;
-    @XmlElement(name = "tipoDocumentoSaida")
-    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
+
+    @XmlElement(name = "quantidadeVolumesEstoque")
+    @ApiModelProperty(example = "780.348", value = "Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto. ")
+    @Valid
     /**
-     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
+     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
-    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
-    @XmlElement(name = "dataHoraSituacaoAtual")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/> ")
-    /**
-     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.<br/>
-     **/
-    private String dataHoraSituacaoAtual = null;
+    private BigDecimal quantidadeVolumesEstoque = null;
+
     @XmlElement(name = "recintoAduaneiro")
     @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
     /**
      * Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos
      **/
     private String recintoAduaneiro = null;
-    @XmlElement(name = "unidadeRfb")
-    @ApiModelProperty(example = "0817600", value = "Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA")
-    /**
-     * Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA
-     **/
-    private String unidadeRfb = null;
+
     @XmlElement(name = "situacaoAtual")
     @ApiModelProperty(example = "Em área de transferência", value = "Descrição da situação do estoque da carga<br/> ")
     /**
      * Descrição da situação do estoque da carga<br/>
      **/
     private String situacaoAtual = null;
+    @XmlElement(name = "tipoDocumentoSaida")
+    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
+    /**
+     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
+     **/
+    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+    @XmlElement(name = "unidadeRfb")
+    @ApiModelProperty(example = "0817600", value = "Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA")
+    /**
+     * Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA
+     **/
+    private String unidadeRfb = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -97,25 +100,6 @@ public class EstoqueConsultaDetalhada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
-     * @return quantidadeVolumesEstoque
-     **/
-    @JsonProperty("quantidadeVolumesEstoque")
-    public BigDecimal getQuantidadeVolumesEstoque() {
-        return quantidadeVolumesEstoque;
-    }
-
-    public void setQuantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
-        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
-    }
-
-    public EstoqueConsultaDetalhada quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
-        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
-        return this;
     }
 
     /**
@@ -134,6 +118,25 @@ public class EstoqueConsultaDetalhada {
 
     public EstoqueConsultaDetalhada cnpjResponsavelAtual(String cnpjResponsavelAtual) {
         this.cnpjResponsavelAtual = cnpjResponsavelAtual;
+        return this;
+    }
+
+    /**
+     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.&lt;br/&gt;
+     *
+     * @return dataHoraSituacaoAtual
+     **/
+    @JsonProperty("dataHoraSituacaoAtual")
+    public String getDataHoraSituacaoAtual() {
+        return dataHoraSituacaoAtual;
+    }
+
+    public void setDataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
+        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+    }
+
+    public EstoqueConsultaDetalhada dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
+        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
         return this;
     }
 
@@ -195,43 +198,21 @@ public class EstoqueConsultaDetalhada {
     }
 
     /**
-     * Tipo de documento de saída&lt;p&gt;Os documentos podem ser:&lt;/p&gt;10 – DI&lt;br/&gt;11 – Processo Digital/Processo Dossiê&lt;br/&gt;12 – E-DMOV&lt;br/&gt;20 – Outros&lt;br/&gt;21 – PMB&lt;br/&gt;22 – PDE/TR&lt;br/&gt;23 – DSI Eletrônica&lt;br/&gt;24 – DSI Formulário&lt;br/&gt;30 – DTA - Entrada comum&lt;br/&gt;31 – DTA - Entrada especial - bagagem desacompanhada&lt;br/&gt;32 – DTA - Entrada especial - mala diplomática&lt;br/&gt;33 – DTA - Entrada especial - urna funerária&lt;br/&gt;34 – DTA - Entrada especial - outras&lt;br/&gt;35 – DTA - Passagem comum&lt;br/&gt;36 – DTA - Passagem especial - bagagem desacompanhada&lt;br/&gt;37 – DTA - Passagem especial - mala diplomática&lt;br/&gt;38 – DTA - Passagem especial - partes e peças&lt;br/&gt;39 – DTA - Passagem especial - urna funerária&lt;br/&gt;40 – DTA - Passagem especial - outras&lt;br/&gt;50 – DTI&lt;br/&gt;99 – DUIMP&lt;br/&gt;
+     * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
      *
-     * @return tipoDocumentoSaida
+     * @return quantidadeVolumesEstoque
      **/
-    @JsonProperty("tipoDocumentoSaida")
-    public String getTipoDocumentoSaida() {
-        if (tipoDocumentoSaida == null) {
-            return null;
-        }
-        return tipoDocumentoSaida.value();
+    @JsonProperty("quantidadeVolumesEstoque")
+    public BigDecimal getQuantidadeVolumesEstoque() {
+        return quantidadeVolumesEstoque;
     }
 
-    public void setTipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
-        this.tipoDocumentoSaida = tipoDocumentoSaida;
+    public void setQuantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
+        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
     }
 
-    public EstoqueConsultaDetalhada tipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
-        this.tipoDocumentoSaida = tipoDocumentoSaida;
-        return this;
-    }
-
-    /**
-     * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.&lt;br/&gt;
-     *
-     * @return dataHoraSituacaoAtual
-     **/
-    @JsonProperty("dataHoraSituacaoAtual")
-    public String getDataHoraSituacaoAtual() {
-        return dataHoraSituacaoAtual;
-    }
-
-    public void setDataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
-        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
-    }
-
-    public EstoqueConsultaDetalhada dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
-        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+    public EstoqueConsultaDetalhada quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
+        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
         return this;
     }
 
@@ -255,25 +236,6 @@ public class EstoqueConsultaDetalhada {
     }
 
     /**
-     * Código da UL&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
-     *
-     * @return unidadeRfb
-     **/
-    @JsonProperty("unidadeRfb")
-    public String getUnidadeRfb() {
-        return unidadeRfb;
-    }
-
-    public void setUnidadeRfb(String unidadeRfb) {
-        this.unidadeRfb = unidadeRfb;
-    }
-
-    public EstoqueConsultaDetalhada unidadeRfb(String unidadeRfb) {
-        this.unidadeRfb = unidadeRfb;
-        return this;
-    }
-
-    /**
      * Descrição da situação do estoque da carga&lt;br/&gt;
      *
      * @return situacaoAtual
@@ -292,21 +254,61 @@ public class EstoqueConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Tipo de documento de saída&lt;p&gt;Os documentos podem ser:&lt;/p&gt;10 – DI&lt;br/&gt;11 – Processo Digital/Processo Dossiê&lt;br/&gt;12 – E-DMOV&lt;br/&gt;20 – Outros&lt;br/&gt;21 – PMB&lt;br/&gt;22 – PDE/TR&lt;br/&gt;23 – DSI Eletrônica&lt;br/&gt;24 – DSI Formulário&lt;br/&gt;30 – DTA - Entrada comum&lt;br/&gt;31 – DTA - Entrada especial - bagagem desacompanhada&lt;br/&gt;32 – DTA - Entrada especial - mala diplomática&lt;br/&gt;33 – DTA - Entrada especial - urna funerária&lt;br/&gt;34 – DTA - Entrada especial - outras&lt;br/&gt;35 – DTA - Passagem comum&lt;br/&gt;36 – DTA - Passagem especial - bagagem desacompanhada&lt;br/&gt;37 – DTA - Passagem especial - mala diplomática&lt;br/&gt;38 – DTA - Passagem especial - partes e peças&lt;br/&gt;39 – DTA - Passagem especial - urna funerária&lt;br/&gt;40 – DTA - Passagem especial - outras&lt;br/&gt;50 – DTI&lt;br/&gt;99 – DUIMP&lt;br/&gt;
+     *
+     * @return tipoDocumentoSaida
+     **/
+    @JsonProperty("tipoDocumentoSaida")
+    public String getTipoDocumentoSaida() {
+        if (tipoDocumentoSaida == null) {
+            return null;
+        }
+        return tipoDocumentoSaida.value();
+    }
+
+    public void setTipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
+        this.tipoDocumentoSaida = tipoDocumentoSaida;
+    }
+
+    public EstoqueConsultaDetalhada tipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
+        this.tipoDocumentoSaida = tipoDocumentoSaida;
+        return this;
+    }
+
+    /**
+     * Código da UL&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
+     * @return unidadeRfb
+     **/
+    @JsonProperty("unidadeRfb")
+    public String getUnidadeRfb() {
+        return unidadeRfb;
+    }
+
+    public void setUnidadeRfb(String unidadeRfb) {
+        this.unidadeRfb = unidadeRfb;
+    }
+
+    public EstoqueConsultaDetalhada unidadeRfb(String unidadeRfb) {
+        this.unidadeRfb = unidadeRfb;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class EstoqueConsultaDetalhada {\n" +
-                "    quantidadeVolumesEstoque: " + toIndentedString(quantidadeVolumesEstoque) + "\n" +
                 "    cnpjResponsavelAtual: " + toIndentedString(cnpjResponsavelAtual) + "\n" +
+                "    dataHoraSituacaoAtual: " + toIndentedString(dataHoraSituacaoAtual) + "\n" +
                 "    identificacaoViagem: " + toIndentedString(identificacaoViagem) + "\n" +
                 "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
                 "    pesoBrutoEstoque: " + toIndentedString(pesoBrutoEstoque) + "\n" +
-                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
-                "    dataHoraSituacaoAtual: " + toIndentedString(dataHoraSituacaoAtual) + "\n" +
+                "    quantidadeVolumesEstoque: " + toIndentedString(quantidadeVolumesEstoque) + "\n" +
                 "    recintoAduaneiro: " + toIndentedString(recintoAduaneiro) + "\n" +
-                "    unidadeRfb: " + toIndentedString(unidadeRfb) + "\n" +
                 "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
+                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
+                "    unidadeRfb: " + toIndentedString(unidadeRfb) + "\n" +
                 "}";
         return sb;
     }

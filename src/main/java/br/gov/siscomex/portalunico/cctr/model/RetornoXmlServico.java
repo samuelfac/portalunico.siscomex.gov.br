@@ -13,21 +13,45 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoXmlServico", propOrder =
-        {"mensagem", "listaOperacao"
+        {"listaOperacao", "mensagem"
         })
 
 @XmlRootElement(name = "RetornoXmlServico")
 public class RetornoXmlServico {
+
+    @XmlElement(name = "listaOperacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Operacao> listaOperacao = null;
 
     @XmlElement(name = "mensagem")
     @ApiModelProperty(value = "")
     @Valid
     private List<MensagemServico> mensagem = null;
 
-    @XmlElement(name = "listaOperacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Operacao> listaOperacao = null;
+    /**
+     * Get listaOperacao
+     *
+     * @return listaOperacao
+     **/
+    @JsonProperty("listaOperacao")
+    public List<Operacao> getListaOperacao() {
+        return listaOperacao;
+    }
+
+    public void setListaOperacao(List<Operacao> listaOperacao) {
+        this.listaOperacao = listaOperacao;
+    }
+
+    public RetornoXmlServico listaOperacao(List<Operacao> listaOperacao) {
+        this.listaOperacao = listaOperacao;
+        return this;
+    }
+
+    public RetornoXmlServico addListaOperacaoItem(Operacao listaOperacaoItem) {
+        this.listaOperacao.add(listaOperacaoItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,36 +88,12 @@ public class RetornoXmlServico {
         return this;
     }
 
-    /**
-     * Get listaOperacao
-     *
-     * @return listaOperacao
-     **/
-    @JsonProperty("listaOperacao")
-    public List<Operacao> getListaOperacao() {
-        return listaOperacao;
-    }
-
-    public void setListaOperacao(List<Operacao> listaOperacao) {
-        this.listaOperacao = listaOperacao;
-    }
-
-    public RetornoXmlServico listaOperacao(List<Operacao> listaOperacao) {
-        this.listaOperacao = listaOperacao;
-        return this;
-    }
-
-    public RetornoXmlServico addListaOperacaoItem(Operacao listaOperacaoItem) {
-        this.listaOperacao.add(listaOperacaoItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class RetornoXmlServico {\n" +
-                "    mensagem: " + toIndentedString(mensagem) + "\n" +
                 "    listaOperacao: " + toIndentedString(listaOperacao) + "\n" +
+                "    mensagem: " + toIndentedString(mensagem) + "\n" +
                 "}";
         return sb;
     }

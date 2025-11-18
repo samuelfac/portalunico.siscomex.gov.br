@@ -16,27 +16,24 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CertificadoDTO", propOrder =
-        {"qtdUnidadeEstatistica", "dataRegistro", "codigoCertificado", "tipoCertificadoMercosul"
+        {"codigoCertificado", "dataRegistro", "qtdUnidadeEstatistica", "tipoCertificadoMercosul"
         })
 
 @XmlRootElement(name = "CertificadoDTO")
 public class CertificadoDTO {
 
-    @XmlElement(name = "qtdUnidadeEstatistica")
+    @XmlElement(name = "codigoCertificado")
     @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal qtdUnidadeEstatistica = null;
+    private String codigoCertificado = null;
 
     @XmlElement(name = "dataRegistro")
     @ApiModelProperty(value = "")
     private OffsetDateTime dataRegistro = null;
 
-    @XmlElement(name = "codigoCertificado")
+    @XmlElement(name = "qtdUnidadeEstatistica")
     @ApiModelProperty(value = "")
-    private String codigoCertificado = null;
-    @XmlElement(name = "tipoCertificadoMercosul")
-    @ApiModelProperty(value = "")
-    private TipoCertificadoMercosulEnum tipoCertificadoMercosul = null;
+    @Valid
+    private BigDecimal qtdUnidadeEstatistica = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -49,22 +46,26 @@ public class CertificadoDTO {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "tipoCertificadoMercosul")
+    @ApiModelProperty(value = "")
+    private TipoCertificadoMercosulEnum tipoCertificadoMercosul = null;
+
     /**
-     * Get qtdUnidadeEstatistica
+     * Get codigoCertificado
      *
-     * @return qtdUnidadeEstatistica
+     * @return codigoCertificado
      **/
-    @JsonProperty("qtdUnidadeEstatistica")
-    public BigDecimal getQtdUnidadeEstatistica() {
-        return qtdUnidadeEstatistica;
+    @JsonProperty("codigoCertificado")
+    public String getCodigoCertificado() {
+        return codigoCertificado;
     }
 
-    public void setQtdUnidadeEstatistica(BigDecimal qtdUnidadeEstatistica) {
-        this.qtdUnidadeEstatistica = qtdUnidadeEstatistica;
+    public void setCodigoCertificado(String codigoCertificado) {
+        this.codigoCertificado = codigoCertificado;
     }
 
-    public CertificadoDTO qtdUnidadeEstatistica(BigDecimal qtdUnidadeEstatistica) {
-        this.qtdUnidadeEstatistica = qtdUnidadeEstatistica;
+    public CertificadoDTO codigoCertificado(String codigoCertificado) {
+        this.codigoCertificado = codigoCertificado;
         return this;
     }
 
@@ -88,21 +89,21 @@ public class CertificadoDTO {
     }
 
     /**
-     * Get codigoCertificado
+     * Get qtdUnidadeEstatistica
      *
-     * @return codigoCertificado
+     * @return qtdUnidadeEstatistica
      **/
-    @JsonProperty("codigoCertificado")
-    public String getCodigoCertificado() {
-        return codigoCertificado;
+    @JsonProperty("qtdUnidadeEstatistica")
+    public BigDecimal getQtdUnidadeEstatistica() {
+        return qtdUnidadeEstatistica;
     }
 
-    public void setCodigoCertificado(String codigoCertificado) {
-        this.codigoCertificado = codigoCertificado;
+    public void setQtdUnidadeEstatistica(BigDecimal qtdUnidadeEstatistica) {
+        this.qtdUnidadeEstatistica = qtdUnidadeEstatistica;
     }
 
-    public CertificadoDTO codigoCertificado(String codigoCertificado) {
-        this.codigoCertificado = codigoCertificado;
+    public CertificadoDTO qtdUnidadeEstatistica(BigDecimal qtdUnidadeEstatistica) {
+        this.qtdUnidadeEstatistica = qtdUnidadeEstatistica;
         return this;
     }
 
@@ -133,9 +134,9 @@ public class CertificadoDTO {
     public String toString() {
 
         String sb = "class CertificadoDTO {\n" +
-                "    qtdUnidadeEstatistica: " + toIndentedString(qtdUnidadeEstatistica) + "\n" +
-                "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "    codigoCertificado: " + toIndentedString(codigoCertificado) + "\n" +
+                "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
+                "    qtdUnidadeEstatistica: " + toIndentedString(qtdUnidadeEstatistica) + "\n" +
                 "    tipoCertificadoMercosul: " + toIndentedString(tipoCertificadoMercosul) + "\n" +
                 "}";
         return sb;

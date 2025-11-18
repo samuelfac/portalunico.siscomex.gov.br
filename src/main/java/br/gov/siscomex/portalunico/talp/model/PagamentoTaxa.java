@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PagamentoTaxa", propOrder =
-        {"observacao", "tipoTaxa", "tipoPagamento"
+        {"tipoPagamento", "tipoTaxa", "observacao"
         })
 
 @XmlRootElement(name = "PagamentoTaxa")
@@ -25,24 +25,26 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Indica se o pagamento de taxa já foli realizado para um LPCO")
 public class PagamentoTaxa {
 
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
-    /**
-     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.
-     **/
-    private String observacao = null;
+
     @XmlElement(name = "tipoTaxa", required = true)
     @ApiModelProperty(example = "REGISTRO_LPCO", required = true, value = "Tipo de taxa que foi paga.")
     /**
      * Tipo de taxa que foi paga.
      **/
     private TipoTaxaEnum tipoTaxa = null;
+
     @XmlElement(name = "tipoPagamento", required = true)
     @ApiModelProperty(example = "PAGAMENTO", required = true, value = "Indica se foi pagamento ou dispensa/isenção de pagamento.")
     /**
      * Indica se foi pagamento ou dispensa/isenção de pagamento.
      **/
     private TipoPagamentoEnum tipoPagamento = null;
+    @XmlElement(name = "observacao")
+    @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
+    /**
+     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.
+     **/
+    private String observacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,21 +58,25 @@ public class PagamentoTaxa {
     }
 
     /**
-     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento&#x3D;PAGAMENTO_REALIZADO ou  tipoPagamento&#x3D;DISPENSA_PAGAMENTO, dispensado nos demais casos.
+     * Indica se foi pagamento ou dispensa/isenção de pagamento.
      *
-     * @return observacao
+     * @return tipoPagamento
      **/
-    @JsonProperty("observacao")
-    public String getObservacao() {
-        return observacao;
+    @JsonProperty("tipoPagamento")
+    @NotNull
+    public String getTipoPagamento() {
+        if (tipoPagamento == null) {
+            return null;
+        }
+        return tipoPagamento.value();
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setTipoPagamento(TipoPagamentoEnum tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
     }
 
-    public PagamentoTaxa observacao(String observacao) {
-        this.observacao = observacao;
+    public PagamentoTaxa tipoPagamento(TipoPagamentoEnum tipoPagamento) {
+        this.tipoPagamento = tipoPagamento;
         return this;
     }
 
@@ -98,25 +104,21 @@ public class PagamentoTaxa {
     }
 
     /**
-     * Indica se foi pagamento ou dispensa/isenção de pagamento.
+     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento&#x3D;PAGAMENTO_REALIZADO ou  tipoPagamento&#x3D;DISPENSA_PAGAMENTO, dispensado nos demais casos.
      *
-     * @return tipoPagamento
+     * @return observacao
      **/
-    @JsonProperty("tipoPagamento")
-    @NotNull
-    public String getTipoPagamento() {
-        if (tipoPagamento == null) {
-            return null;
-        }
-        return tipoPagamento.value();
+    @JsonProperty("observacao")
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setTipoPagamento(TipoPagamentoEnum tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    public PagamentoTaxa tipoPagamento(TipoPagamentoEnum tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+    public PagamentoTaxa observacao(String observacao) {
+        this.observacao = observacao;
         return this;
     }
 
@@ -124,63 +126,13 @@ public class PagamentoTaxa {
     public String toString() {
 
         String sb = "class PagamentoTaxa {\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
-                "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
                 "    tipoPagamento: " + toIndentedString(tipoPagamento) + "\n" +
+                "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
                 "}";
         return sb;
     }
 
-
-    @XmlType(name = "TipoTaxaEnum")
-    @XmlEnum(String.class)
-    public enum TipoTaxaEnum {
-
-        @XmlEnumValue("REGISTRO_LPCO")
-        @JsonProperty("REGISTRO_LPCO")
-        REGISTRO_LPCO("REGISTRO_LPCO"),
-
-        @XmlEnumValue("RETIFICACAO")
-        @JsonProperty("RETIFICACAO")
-        RETIFICACAO("RETIFICACAO"),
-
-        @XmlEnumValue("PRORROGACAO")
-        @JsonProperty("PRORROGACAO")
-        PRORROGACAO("PRORROGACAO"),
-
-        @XmlEnumValue("COMPATIBILIZACAO")
-        @JsonProperty("COMPATIBILIZACAO")
-        COMPATIBILIZACAO("COMPATIBILIZACAO"),
-
-        @XmlEnumValue("RESPOSTA_EXIGENCIA")
-        @JsonProperty("RESPOSTA_EXIGENCIA")
-        RESPOSTA_EXIGENCIA("RESPOSTA_EXIGENCIA");
-
-
-        private final String value;
-
-        TipoTaxaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoTaxaEnum fromValue(String v) {
-            for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
 
     @XmlType(name = "TipoPagamentoEnum")
     @XmlEnum(String.class)
@@ -217,6 +169,56 @@ public class PagamentoTaxa {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "TipoTaxaEnum")
+    @XmlEnum(String.class)
+    public enum TipoTaxaEnum {
+
+        @XmlEnumValue("REGISTRO_LPCO")
+        @JsonProperty("REGISTRO_LPCO")
+        REGISTRO_LPCO("REGISTRO_LPCO"),
+
+        @XmlEnumValue("RETIFICACAO")
+        @JsonProperty("RETIFICACAO")
+        RETIFICACAO("RETIFICACAO"),
+
+        @XmlEnumValue("PRORROGACAO")
+        @JsonProperty("PRORROGACAO")
+        PRORROGACAO("PRORROGACAO"),
+
+        @XmlEnumValue("COMPATIBILIZACAO")
+        @JsonProperty("COMPATIBILIZACAO")
+        COMPATIBILIZACAO("COMPATIBILIZACAO"),
+
+        @XmlEnumValue("RESPOSTA_EXIGENCIA")
+        @JsonProperty("RESPOSTA_EXIGENCIA")
+        RESPOSTA_EXIGENCIA("RESPOSTA_EXIGENCIA");
+
+
+        private final String value;
+
+        TipoTaxaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoTaxaEnum fromValue(String v) {
+            for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
         }
     }
 }

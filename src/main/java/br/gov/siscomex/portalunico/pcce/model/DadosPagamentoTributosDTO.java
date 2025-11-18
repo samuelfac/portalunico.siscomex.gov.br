@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosPagamentoTributosDTO", propOrder =
-        {"nrOperacaoOrigem", "tpOperacaoOrigem", "linhaDigitavel", "tpGuiaPagamento", "dtPagamento"
+        {"dtPagamento", "linhaDigitavel", "nrOperacaoOrigem", "tpGuiaPagamento", "tpOperacaoOrigem"
         })
 
 @XmlRootElement(name = "DadosPagamentoTributosDTO")
@@ -24,6 +24,20 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados de pagamento da guia de pagamento de tributos")
 public class DadosPagamentoTributosDTO {
+
+    @XmlElement(name = "dtPagamento", required = true)
+    @ApiModelProperty(example = "2021-09-10", required = true, value = "Data de pagamento da guia<br>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data de pagamento da guia<br>Formato: 'yyyy-MM-dd'
+     **/
+    private String dtPagamento = null;
+
+    @XmlElement(name = "linhaDigitavel")
+    @ApiModelProperty(example = "85811.01725 74301.005612 17626.945772 0 00000005010003", value = "Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório se tpGuiaPagamento = GRU")
+    /**
+     * Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório se tpGuiaPagamento = GRU
+     **/
+    private String linhaDigitavel = null;
 
     @XmlElement(name = "nrOperacaoOrigem", required = true)
     @ApiModelProperty(example = "I2100001234", required = true, value = "Número da operação que deu origem à guia <br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
@@ -37,24 +51,13 @@ public class DadosPagamentoTributosDTO {
      * Tipo da operação que deu origem à guia
      **/
     private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
-    @XmlElement(name = "linhaDigitavel")
-    @ApiModelProperty(example = "85811.01725 74301.005612 17626.945772 0 00000005010003", value = "Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório se tpGuiaPagamento = GRU")
-    /**
-     * Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório se tpGuiaPagamento = GRU
-     **/
-    private String linhaDigitavel = null;
+
     @XmlElement(name = "tpGuiaPagamento", required = true)
     @ApiModelProperty(required = true, value = "Tipo de guia de pagamento")
     /**
      * Tipo de guia de pagamento
      **/
     private TpGuiaPagamentoEnum tpGuiaPagamento = null;
-    @XmlElement(name = "dtPagamento", required = true)
-    @ApiModelProperty(example = "2021-09-10", required = true, value = "Data de pagamento da guia<br>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data de pagamento da guia<br>Formato: 'yyyy-MM-dd'
-     **/
-    private String dtPagamento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -68,6 +71,26 @@ public class DadosPagamentoTributosDTO {
     }
 
     /**
+     * Data de pagamento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+     *
+     * @return dtPagamento
+     **/
+    @JsonProperty("dtPagamento")
+    @NotNull
+    public String getDtPagamento() {
+        return dtPagamento;
+    }
+
+    public void setDtPagamento(String dtPagamento) {
+        this.dtPagamento = dtPagamento;
+    }
+
+    public DadosPagamentoTributosDTO dtPagamento(String dtPagamento) {
+        this.dtPagamento = dtPagamento;
+        return this;
+    }
+
+    /**
      * Número da operação que deu origem à guia &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
      *
      * @return nrOperacaoOrigem
@@ -76,6 +99,25 @@ public class DadosPagamentoTributosDTO {
     @NotNull
     public String getNrOperacaoOrigem() {
         return nrOperacaoOrigem;
+    }
+
+    /**
+     * Linha digitável para pagamento &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório se tpGuiaPagamento &#x3D; GRU
+     *
+     * @return linhaDigitavel
+     **/
+    @JsonProperty("linhaDigitavel")
+    public String getLinhaDigitavel() {
+        return linhaDigitavel;
+    }
+
+    public void setLinhaDigitavel(String linhaDigitavel) {
+        this.linhaDigitavel = linhaDigitavel;
+    }
+
+    public DadosPagamentoTributosDTO linhaDigitavel(String linhaDigitavel) {
+        this.linhaDigitavel = linhaDigitavel;
+        return this;
     }
 
     public void setNrOperacaoOrigem(String nrOperacaoOrigem) {
@@ -101,34 +143,6 @@ public class DadosPagamentoTributosDTO {
         return tpOperacaoOrigem.value();
     }
 
-    public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
-        this.tpOperacaoOrigem = tpOperacaoOrigem;
-    }
-
-    public DadosPagamentoTributosDTO tpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
-        this.tpOperacaoOrigem = tpOperacaoOrigem;
-        return this;
-    }
-
-    /**
-     * Linha digitável para pagamento &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório se tpGuiaPagamento &#x3D; GRU
-     *
-     * @return linhaDigitavel
-     **/
-    @JsonProperty("linhaDigitavel")
-    public String getLinhaDigitavel() {
-        return linhaDigitavel;
-    }
-
-    public void setLinhaDigitavel(String linhaDigitavel) {
-        this.linhaDigitavel = linhaDigitavel;
-    }
-
-    public DadosPagamentoTributosDTO linhaDigitavel(String linhaDigitavel) {
-        this.linhaDigitavel = linhaDigitavel;
-        return this;
-    }
-
     /**
      * Tipo de guia de pagamento
      *
@@ -152,23 +166,12 @@ public class DadosPagamentoTributosDTO {
         return this;
     }
 
-    /**
-     * Data de pagamento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
-     * @return dtPagamento
-     **/
-    @JsonProperty("dtPagamento")
-    @NotNull
-    public String getDtPagamento() {
-        return dtPagamento;
+    public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
+        this.tpOperacaoOrigem = tpOperacaoOrigem;
     }
 
-    public void setDtPagamento(String dtPagamento) {
-        this.dtPagamento = dtPagamento;
-    }
-
-    public DadosPagamentoTributosDTO dtPagamento(String dtPagamento) {
-        this.dtPagamento = dtPagamento;
+    public DadosPagamentoTributosDTO tpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
+        this.tpOperacaoOrigem = tpOperacaoOrigem;
         return this;
     }
 
@@ -176,53 +179,15 @@ public class DadosPagamentoTributosDTO {
     public String toString() {
 
         String sb = "class DadosPagamentoTributosDTO {\n" +
-                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
-                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
-                "    linhaDigitavel: " + toIndentedString(linhaDigitavel) + "\n" +
-                "    tpGuiaPagamento: " + toIndentedString(tpGuiaPagamento) + "\n" +
                 "    dtPagamento: " + toIndentedString(dtPagamento) + "\n" +
+                "    linhaDigitavel: " + toIndentedString(linhaDigitavel) + "\n" +
+                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
+                "    tpGuiaPagamento: " + toIndentedString(tpGuiaPagamento) + "\n" +
+                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
                 "}";
         return sb;
     }
 
-
-    @XmlType(name = "TpOperacaoOrigemEnum")
-    @XmlEnum(String.class)
-    public enum TpOperacaoOrigemEnum {
-
-        @XmlEnumValue("LPCO")
-        @JsonProperty("LPCO")
-        LPCO("LPCO"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TpOperacaoOrigemEnum(String v) {
-            value = v;
-        }
-
-        public static TpOperacaoOrigemEnum fromValue(String v) {
-            for (TpOperacaoOrigemEnum b : TpOperacaoOrigemEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpOperacaoOrigemEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
 
     @XmlType(name = "TpGuiaPagamentoEnum")
     @XmlEnum(String.class)
@@ -250,6 +215,44 @@ public class DadosPagamentoTributosDTO {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TpGuiaPagamentoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlType(name = "TpOperacaoOrigemEnum")
+    @XmlEnum(String.class)
+    public enum TpOperacaoOrigemEnum {
+
+        @XmlEnumValue("LPCO")
+        @JsonProperty("LPCO")
+        LPCO("LPCO"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TpOperacaoOrigemEnum(String v) {
+            value = v;
+        }
+
+        public static TpOperacaoOrigemEnum fromValue(String v) {
+            for (TpOperacaoOrigemEnum b : TpOperacaoOrigemEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpOperacaoOrigemEnum");
         }
 
         public String value() {

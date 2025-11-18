@@ -30,12 +30,12 @@ public interface ConsultaProtocoloDeRecepcaoAssincronaPorNumeroDeProtocoloApi {
      */
     @GET
     @Path("/api/ext/recepcao/{numero}/extrato")
-    @Produces({"application/json", "*/*"})
+    @Produces({"*/*", "application/json"})
     @ApiOperation(value = "Consulta o extrato do protocolo de recepção", notes = "", tags = {"Consulta Protocolo de Recepcao Assincrona por Numero de Protocolo"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocoloVO.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ErroValidacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class)})
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocoloVO.class)})
     RetornoConsultaProtocoloVO extratoProtocoloExterno(@ApiParam(value = "Identificador do protocolo da recepção", required = true) @PathParam("numero") String numero);
 }
 

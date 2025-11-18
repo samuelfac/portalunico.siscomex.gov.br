@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTotalMoedaOrigem {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "P", value = "Código do total na moeda de origem.<br/>Tamanho: 1<br/>P - Por Peso<br/>V - Por Valor<br/>I - Impostos<br/>A - Outros Serviços (Agente de Carga)<br/>C - Outros Serviços (Transportador)<br/>T - Total")
-    /**
-     * Código do total na moeda de origem.<br/>Tamanho: 1<br/>P - Por Peso<br/>V - Por Valor<br/>I - Impostos<br/>A - Outros Serviços (Agente de Carga)<br/>C - Outros Serviços (Transportador)<br/>T - Total
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Por Peso", value = "Descrição do total na moeda de origem.<br/>Tamanho: 33")
-    /**
-     * Descrição do total na moeda de origem.<br/>Tamanho: 33
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoTotalMoedaOrigem {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "P", value = "Código do total na moeda de origem.<br/>Tamanho: 1<br/>P - Por Peso<br/>V - Por Valor<br/>I - Impostos<br/>A - Outros Serviços (Agente de Carga)<br/>C - Outros Serviços (Transportador)<br/>T - Total")
+    /**
+     * Código do total na moeda de origem.<br/>Tamanho: 1<br/>P - Por Peso<br/>V - Por Valor<br/>I - Impostos<br/>A - Outros Serviços (Agente de Carga)<br/>C - Outros Serviços (Transportador)<br/>T - Total
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Por Peso", value = "Descrição do total na moeda de origem.<br/>Tamanho: 33")
+    /**
+     * Descrição do total na moeda de origem.<br/>Tamanho: 33
+     **/
+    private String descricao = null;
 
     /**
      * Código do total na moeda de origem.&lt;br/&gt;Tamanho: 1&lt;br/&gt;P - Por Peso&lt;br/&gt;V - Por Valor&lt;br/&gt;I - Impostos&lt;br/&gt;A - Outros Serviços (Agente de Carga)&lt;br/&gt;C - Outros Serviços (Transportador)&lt;br/&gt;T - Total
@@ -84,7 +85,6 @@ public class TipoTotalMoedaOrigem {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

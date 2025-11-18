@@ -12,19 +12,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Warnings", propOrder =
-        {"warning", "empty"
+        {"empty", "warning"
         })
 
 @XmlRootElement(name = "Warnings")
 public class Warnings {
 
-    @XmlElement(name = "warning")
-    @ApiModelProperty(value = "")
-    private List<String> warning = null;
-
     @XmlElement(name = "empty")
     @ApiModelProperty(value = "")
     private Boolean empty = null;
+
+    @XmlElement(name = "warning")
+    @ApiModelProperty(value = "")
+    private List<String> warning = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -35,6 +35,20 @@ public class Warnings {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get empty
+     *
+     * @return empty
+     **/
+    @JsonProperty("empty")
+    public Boolean isisEmpty() {
+        return empty;
+    }
+
+    public void setEmpty(Boolean empty) {
+        this.empty = empty;
     }
 
     /**
@@ -61,20 +75,6 @@ public class Warnings {
         return this;
     }
 
-    /**
-     * Get empty
-     *
-     * @return empty
-     **/
-    @JsonProperty("empty")
-    public Boolean isisEmpty() {
-        return empty;
-    }
-
-    public void setEmpty(Boolean empty) {
-        this.empty = empty;
-    }
-
     public Warnings empty(Boolean empty) {
         this.empty = empty;
         return this;
@@ -84,8 +84,8 @@ public class Warnings {
     public String toString() {
 
         String sb = "class Warnings {\n" +
-                "    warning: " + toIndentedString(warning) + "\n" +
                 "    empty: " + toIndentedString(empty) + "\n" +
+                "    warning: " + toIndentedString(warning) + "\n" +
                 "}";
         return sb;
     }

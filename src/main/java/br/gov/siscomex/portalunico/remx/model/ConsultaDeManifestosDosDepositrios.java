@@ -14,18 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConsultaDeManifestosDosDepositrios", propOrder =
-        {"listaUaDespacho", "cnpjDeclarante", "dataInicioManifesto", "numeroMaster", "dataFimLote", "dataFimManifesto", "dataInicioLote", "listaOperadora"
+        {"cnpjDeclarante", "dataFimLote", "dataFimManifesto", "dataInicioLote", "dataInicioManifesto", "listaOperadora", "listaUaDespacho", "numeroMaster"
         })
 
 @XmlRootElement(name = "ConsultaDeManifestosDosDepositrios")
 public class ConsultaDeManifestosDosDepositrios {
-
-    @XmlElement(name = "listaUaDespacho")
-    @ApiModelProperty(value = "Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).")
-    /**
-     * Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
-     **/
-    private List<String> listaUaDespacho = null;
 
     @XmlElement(name = "cnpjDeclarante", required = true)
     @ApiModelProperty(example = "33683111000107", required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
@@ -33,20 +26,6 @@ public class ConsultaDeManifestosDosDepositrios {
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
      **/
     private String cnpjDeclarante = null;
-
-    @XmlElement(name = "dataInicioManifesto")
-    @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataInicioManifesto = null;
-
-    @XmlElement(name = "numeroMaster")
-    @ApiModelProperty(value = "Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).")
-    /**
-     * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
-     **/
-    private String numeroMaster = null;
 
     @XmlElement(name = "dataFimLote")
     @ApiModelProperty(value = "Data final relacionada ao filtro por período de registro de lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -69,6 +48,13 @@ public class ConsultaDeManifestosDosDepositrios {
      **/
     private OffsetDateTime dataInicioLote = null;
 
+    @XmlElement(name = "dataInicioManifesto")
+    @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataInicioManifesto = null;
+
     @XmlElement(name = "listaOperadora")
     @ApiModelProperty(value = "Lista de operadora. Cada item da lista contém:<br/>Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.")
     /**
@@ -76,40 +62,19 @@ public class ConsultaDeManifestosDosDepositrios {
      **/
     private List<String> listaOperadora = null;
 
+    @XmlElement(name = "listaUaDespacho")
+    @ApiModelProperty(value = "Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Lista de UA despacho. Cada item da lista contém:&lt;br/&gt;Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
-     *
-     * @return listaUaDespacho
+     * Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
      **/
-    @JsonProperty("listaUaDespacho")
-    public List<String> getListaUaDespacho() {
-        return listaUaDespacho;
-    }
+    private List<String> listaUaDespacho = null;
 
-    public void setListaUaDespacho(List<String> listaUaDespacho) {
-        this.listaUaDespacho = listaUaDespacho;
-    }
-
-    public ConsultaDeManifestosDosDepositrios listaUaDespacho(List<String> listaUaDespacho) {
-        this.listaUaDespacho = listaUaDespacho;
-        return this;
-    }
-
-    public ConsultaDeManifestosDosDepositrios addListaUaDespachoItem(String listaUaDespachoItem) {
-        this.listaUaDespacho.add(listaUaDespachoItem);
-        return this;
-    }
+    @XmlElement(name = "numeroMaster")
+    @ApiModelProperty(value = "Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).")
+    /**
+     * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
+     **/
+    private String numeroMaster = null;
 
     /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
@@ -128,44 +93,6 @@ public class ConsultaDeManifestosDosDepositrios {
 
     public ConsultaDeManifestosDosDepositrios cnpjDeclarante(String cnpjDeclarante) {
         this.cnpjDeclarante = cnpjDeclarante;
-        return this;
-    }
-
-    /**
-     * Data inicial relacionada ao filtro por período de registro de manifesto.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataInicioManifesto
-     **/
-    @JsonProperty("dataInicioManifesto")
-    public OffsetDateTime getDataInicioManifesto() {
-        return dataInicioManifesto;
-    }
-
-    public void setDataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
-    }
-
-    public ConsultaDeManifestosDosDepositrios dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
-        return this;
-    }
-
-    /**
-     * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
-     *
-     * @return numeroMaster
-     **/
-    @JsonProperty("numeroMaster")
-    public String getNumeroMaster() {
-        return numeroMaster;
-    }
-
-    public void setNumeroMaster(String numeroMaster) {
-        this.numeroMaster = numeroMaster;
-    }
-
-    public ConsultaDeManifestosDosDepositrios numeroMaster(String numeroMaster) {
-        this.numeroMaster = numeroMaster;
         return this;
     }
 
@@ -227,6 +154,31 @@ public class ConsultaDeManifestosDosDepositrios {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data inicial relacionada ao filtro por período de registro de manifesto.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataInicioManifesto
+     **/
+    @JsonProperty("dataInicioManifesto")
+    public OffsetDateTime getDataInicioManifesto() {
+        return dataInicioManifesto;
+    }
+
+    public void setDataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
+    }
+
+    /**
      * Lista de operadora. Cada item da lista contém:&lt;br/&gt;Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.
      *
      * @return listaOperadora
@@ -250,18 +202,66 @@ public class ConsultaDeManifestosDosDepositrios {
         return this;
     }
 
+    public ConsultaDeManifestosDosDepositrios dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
+        return this;
+    }
+
+    /**
+     * Lista de UA despacho. Cada item da lista contém:&lt;br/&gt;Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
+     *
+     * @return listaUaDespacho
+     **/
+    @JsonProperty("listaUaDespacho")
+    public List<String> getListaUaDespacho() {
+        return listaUaDespacho;
+    }
+
+    public void setListaUaDespacho(List<String> listaUaDespacho) {
+        this.listaUaDespacho = listaUaDespacho;
+    }
+
+    public ConsultaDeManifestosDosDepositrios listaUaDespacho(List<String> listaUaDespacho) {
+        this.listaUaDespacho = listaUaDespacho;
+        return this;
+    }
+
+    public ConsultaDeManifestosDosDepositrios addListaUaDespachoItem(String listaUaDespachoItem) {
+        this.listaUaDespacho.add(listaUaDespachoItem);
+        return this;
+    }
+
+    /**
+     * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
+     *
+     * @return numeroMaster
+     **/
+    @JsonProperty("numeroMaster")
+    public String getNumeroMaster() {
+        return numeroMaster;
+    }
+
+    public void setNumeroMaster(String numeroMaster) {
+        this.numeroMaster = numeroMaster;
+    }
+
+    public ConsultaDeManifestosDosDepositrios numeroMaster(String numeroMaster) {
+        this.numeroMaster = numeroMaster;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ConsultaDeManifestosDosDepositrios {\n" +
-                "    listaUaDespacho: " + toIndentedString(listaUaDespacho) + "\n" +
                 "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
-                "    dataInicioManifesto: " + toIndentedString(dataInicioManifesto) + "\n" +
-                "    numeroMaster: " + toIndentedString(numeroMaster) + "\n" +
                 "    dataFimLote: " + toIndentedString(dataFimLote) + "\n" +
                 "    dataFimManifesto: " + toIndentedString(dataFimManifesto) + "\n" +
                 "    dataInicioLote: " + toIndentedString(dataInicioLote) + "\n" +
+                "    dataInicioManifesto: " + toIndentedString(dataInicioManifesto) + "\n" +
                 "    listaOperadora: " + toIndentedString(listaOperadora) + "\n" +
+                "    listaUaDespacho: " + toIndentedString(listaUaDespacho) + "\n" +
+                "    numeroMaster: " + toIndentedString(numeroMaster) + "\n" +
                 "}";
         return sb;
     }

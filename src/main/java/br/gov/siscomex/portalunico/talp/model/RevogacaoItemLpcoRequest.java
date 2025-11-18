@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RevogacaoItemLpcoRequest", propOrder =
-        {"itens", "justificativa"
+        {"justificativa", "itens"
         })
 
 @XmlRootElement(name = "RevogacaoItemLpcoRequest")
@@ -25,19 +25,19 @@ import java.util.List;
 @ApiModel(description = "Dados para revogação de itens de LPCO")
 public class RevogacaoItemLpcoRequest {
 
-    @XmlElement(name = "itens", required = true)
-    @ApiModelProperty(example = "[\"1\", \"2\"]", required = true, value = "Lista dos itens que devem ser revogados de ofício.<br>")
-    /**
-     * Lista dos itens que devem ser revogados de ofício.<br>
-     **/
-    private List<Integer> itens = new ArrayList<>();
-
     @XmlElement(name = "justificativa", required = true)
     @ApiModelProperty(example = "Texto livre", required = true, value = "Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900")
     /**
      * Justificativa para a operação. Tamanho mínimo: 1<br>Tamanho máximo: 3900
      **/
     private String justificativa = null;
+
+    @XmlElement(name = "itens", required = true)
+    @ApiModelProperty(example = "[\"1\", \"2\"]", required = true, value = "Lista dos itens que devem ser revogados de ofício.<br>")
+    /**
+     * Lista dos itens que devem ser revogados de ofício.<br>
+     **/
+    private List<Integer> itens = new ArrayList<>();
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -48,6 +48,21 @@ public class RevogacaoItemLpcoRequest {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
+     *
+     * @return justificativa
+     **/
+    @JsonProperty("justificativa")
+    @NotNull
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
     }
 
     /**
@@ -75,21 +90,6 @@ public class RevogacaoItemLpcoRequest {
         return this;
     }
 
-    /**
-     * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
-     *
-     * @return justificativa
-     **/
-    @JsonProperty("justificativa")
-    @NotNull
-    public String getJustificativa() {
-        return justificativa;
-    }
-
-    public void setJustificativa(String justificativa) {
-        this.justificativa = justificativa;
-    }
-
     public RevogacaoItemLpcoRequest justificativa(String justificativa) {
         this.justificativa = justificativa;
         return this;
@@ -99,8 +99,8 @@ public class RevogacaoItemLpcoRequest {
     public String toString() {
 
         String sb = "class RevogacaoItemLpcoRequest {\n" +
-                "    itens: " + toIndentedString(itens) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
     }

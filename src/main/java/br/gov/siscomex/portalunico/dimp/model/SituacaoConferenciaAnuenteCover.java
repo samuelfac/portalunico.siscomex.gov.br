@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SituacaoConferenciaAnuenteCover", propOrder =
-        {"indicadorConclusaoDecisaoJudicial", "siglaOrgao", "situacao", "indicadorAutorizacaoProsseguimentoConferenciaAnuente"
+        {"siglaOrgao", "situacao", "indicadorAutorizacaoProsseguimentoConferenciaAnuente", "indicadorConclusaoDecisaoJudicial"
         })
 
 @XmlRootElement(name = "SituacaoConferenciaAnuenteCover")
@@ -24,19 +24,14 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Conferência do Anuente.")
 public class SituacaoConferenciaAnuenteCover {
 
-
-    @XmlElement(name = "indicadorConclusaoDecisaoJudicial")
-    @ApiModelProperty(example = "SIM", value = "Indicador de conclusão por decisão judicial.<br>Domínio:")
-    /**
-     * Indicador de conclusão por decisão judicial.<br>Domínio:
-     **/
-    private IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial = null;
     @XmlElement(name = "siglaOrgao")
     @ApiModelProperty(example = "ANVISA", value = "Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
      * Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
     private String siglaOrgao = null;
+
+
     @XmlElement(name = "situacao")
     @ApiModelProperty(example = "DESEMBARACO_AUTOMATICO", value = "Tipos de situações de conferência do anuente.<br>Domínio:")
     /**
@@ -49,6 +44,12 @@ public class SituacaoConferenciaAnuenteCover {
      * Indicador de autorização do prosseguimento da conferência do anuente.<br>Domínio:
      **/
     private IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum indicadorAutorizacaoProsseguimentoConferenciaAnuente = null;
+    @XmlElement(name = "indicadorConclusaoDecisaoJudicial")
+    @ApiModelProperty(example = "SIM", value = "Indicador de conclusão por decisão judicial.<br>Domínio:")
+    /**
+     * Indicador de conclusão por decisão judicial.<br>Domínio:
+     **/
+    private IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -59,28 +60,6 @@ public class SituacaoConferenciaAnuenteCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Indicador de conclusão por decisão judicial.&lt;br&gt;Domínio:
-     *
-     * @return indicadorConclusaoDecisaoJudicial
-     **/
-    @JsonProperty("indicadorConclusaoDecisaoJudicial")
-    public String getIndicadorConclusaoDecisaoJudicial() {
-        if (indicadorConclusaoDecisaoJudicial == null) {
-            return null;
-        }
-        return indicadorConclusaoDecisaoJudicial.value();
-    }
-
-    public void setIndicadorConclusaoDecisaoJudicial(IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial) {
-        this.indicadorConclusaoDecisaoJudicial = indicadorConclusaoDecisaoJudicial;
-    }
-
-    public SituacaoConferenciaAnuenteCover indicadorConclusaoDecisaoJudicial(IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial) {
-        this.indicadorConclusaoDecisaoJudicial = indicadorConclusaoDecisaoJudicial;
-        return this;
     }
 
     /**
@@ -146,60 +125,39 @@ public class SituacaoConferenciaAnuenteCover {
         return this;
     }
 
+    /**
+     * Indicador de conclusão por decisão judicial.&lt;br&gt;Domínio:
+     *
+     * @return indicadorConclusaoDecisaoJudicial
+     **/
+    @JsonProperty("indicadorConclusaoDecisaoJudicial")
+    public String getIndicadorConclusaoDecisaoJudicial() {
+        if (indicadorConclusaoDecisaoJudicial == null) {
+            return null;
+        }
+        return indicadorConclusaoDecisaoJudicial.value();
+    }
+
+    public void setIndicadorConclusaoDecisaoJudicial(IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial) {
+        this.indicadorConclusaoDecisaoJudicial = indicadorConclusaoDecisaoJudicial;
+    }
+
+    public SituacaoConferenciaAnuenteCover indicadorConclusaoDecisaoJudicial(IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial) {
+        this.indicadorConclusaoDecisaoJudicial = indicadorConclusaoDecisaoJudicial;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SituacaoConferenciaAnuenteCover {\n" +
-                "    indicadorConclusaoDecisaoJudicial: " + toIndentedString(indicadorConclusaoDecisaoJudicial) + "\n" +
                 "    siglaOrgao: " + toIndentedString(siglaOrgao) + "\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    indicadorAutorizacaoProsseguimentoConferenciaAnuente: " + toIndentedString(indicadorAutorizacaoProsseguimentoConferenciaAnuente) + "\n" +
+                "    indicadorConclusaoDecisaoJudicial: " + toIndentedString(indicadorConclusaoDecisaoJudicial) + "\n" +
                 "}";
         return sb;
     }
-
-    @XmlType(name = "IndicadorConclusaoDecisaoJudicialEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorConclusaoDecisaoJudicialEnum {
-
-        @XmlEnumValue("SIM")
-        @JsonProperty("SIM")
-        SIM("SIM"),
-
-        @XmlEnumValue("NAO")
-        @JsonProperty("NAO")
-        NAO("NAO"),
-
-        @XmlEnumValue("NA")
-        @JsonProperty("NA")
-        NA("NA");
-
-
-        private final String value;
-
-        IndicadorConclusaoDecisaoJudicialEnum(String v) {
-            value = v;
-        }
-
-        public static IndicadorConclusaoDecisaoJudicialEnum fromValue(String v) {
-            for (IndicadorConclusaoDecisaoJudicialEnum b : IndicadorConclusaoDecisaoJudicialEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorConclusaoDecisaoJudicialEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
 
     @XmlType(name = "SituacaoEnum")
     @XmlEnum(String.class)
@@ -252,15 +210,6 @@ public class SituacaoConferenciaAnuenteCover {
             value = v;
         }
 
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -269,7 +218,17 @@ public class SituacaoConferenciaAnuenteCover {
         public String toString() {
             return String.valueOf(value);
         }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
     }
+
 
     @XmlType(name = "IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum")
     @XmlEnum(String.class)
@@ -294,6 +253,15 @@ public class SituacaoConferenciaAnuenteCover {
             value = v;
         }
 
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
         public static IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum fromValue(String v) {
             for (IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum b : IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -301,6 +269,30 @@ public class SituacaoConferenciaAnuenteCover {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum");
+        }
+    }
+
+    @XmlType(name = "IndicadorConclusaoDecisaoJudicialEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorConclusaoDecisaoJudicialEnum {
+
+        @XmlEnumValue("SIM")
+        @JsonProperty("SIM")
+        SIM("SIM"),
+
+        @XmlEnumValue("NAO")
+        @JsonProperty("NAO")
+        NAO("NAO"),
+
+        @XmlEnumValue("NA")
+        @JsonProperty("NA")
+        NA("NA");
+
+
+        private final String value;
+
+        IndicadorConclusaoDecisaoJudicialEnum(String v) {
+            value = v;
         }
 
         public String value() {
@@ -310,6 +302,15 @@ public class SituacaoConferenciaAnuenteCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static IndicadorConclusaoDecisaoJudicialEnum fromValue(String v) {
+            for (IndicadorConclusaoDecisaoJudicialEnum b : IndicadorConclusaoDecisaoJudicialEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorConclusaoDecisaoJudicialEnum");
         }
     }
 }

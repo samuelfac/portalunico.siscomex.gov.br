@@ -13,11 +13,18 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RemessaConforme", propOrder =
-        {"codigoOND", "nomeECE", "valorProvII", "codigoECE", "nomeOND", "valorProvICMS"
+        {"codigoECE", "codigoOND", "nomeECE", "nomeOND", "valorProvICMS", "valorProvII"
         })
 
 @XmlRootElement(name = "RemessaConforme")
 public class RemessaConforme {
+
+    @XmlElement(name = "codigoECE")
+    @ApiModelProperty(value = "Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.")
+    /**
+     * Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.
+     **/
+    private String codigoECE = null;
 
     @XmlElement(name = "codigoOND")
     @ApiModelProperty(value = "Código Operador Não Designado. Máximo de 35 caracteres alfanuméricos.")
@@ -32,21 +39,6 @@ public class RemessaConforme {
      * Nome Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 250 caracteres alfanuméricos, além de quaisquer caracteres referentes a codificação UTF-8.
      **/
     private String nomeECE = null;
-
-    @XmlElement(name = "valorProvII")
-    @ApiModelProperty(value = "Valor Provisionado do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor Provisionado do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorProvII = null;
-
-    @XmlElement(name = "codigoECE")
-    @ApiModelProperty(value = "Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.")
-    /**
-     * Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.
-     **/
-    private String codigoECE = null;
 
     @XmlElement(name = "nomeOND")
     @ApiModelProperty(value = "Nome Operador Não Designado. Máximo de 250 caracteres alfanuméricos, além de quaisquer caracteres referentes a codificação UTF-8.")
@@ -63,6 +55,14 @@ public class RemessaConforme {
      **/
     private BigDecimal valorProvICMS = null;
 
+    @XmlElement(name = "valorProvII")
+    @ApiModelProperty(value = "Valor Provisionado do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor Provisionado do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorProvII = null;
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -72,6 +72,20 @@ public class RemessaConforme {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.
+     *
+     * @return codigoECE
+     **/
+    @JsonProperty("codigoECE")
+    public String getCodigoECE() {
+        return codigoECE;
+    }
+
+    public void setCodigoECE(String codigoECE) {
+        this.codigoECE = codigoECE;
     }
 
     /**
@@ -113,44 +127,6 @@ public class RemessaConforme {
     }
 
     /**
-     * Valor Provisionado do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorProvII
-     **/
-    @JsonProperty("valorProvII")
-    public BigDecimal getValorProvII() {
-        return valorProvII;
-    }
-
-    public void setValorProvII(BigDecimal valorProvII) {
-        this.valorProvII = valorProvII;
-    }
-
-    public RemessaConforme valorProvII(BigDecimal valorProvII) {
-        this.valorProvII = valorProvII;
-        return this;
-    }
-
-    /**
-     * Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.
-     *
-     * @return codigoECE
-     **/
-    @JsonProperty("codigoECE")
-    public String getCodigoECE() {
-        return codigoECE;
-    }
-
-    public void setCodigoECE(String codigoECE) {
-        this.codigoECE = codigoECE;
-    }
-
-    public RemessaConforme codigoECE(String codigoECE) {
-        this.codigoECE = codigoECE;
-        return this;
-    }
-
-    /**
      * Nome Operador Não Designado. Máximo de 250 caracteres alfanuméricos, além de quaisquer caracteres referentes a codificação UTF-8.
      *
      * @return nomeOND
@@ -188,16 +164,40 @@ public class RemessaConforme {
         return this;
     }
 
+    public RemessaConforme codigoECE(String codigoECE) {
+        this.codigoECE = codigoECE;
+        return this;
+    }
+
+    /**
+     * Valor Provisionado do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorProvII
+     **/
+    @JsonProperty("valorProvII")
+    public BigDecimal getValorProvII() {
+        return valorProvII;
+    }
+
+    public void setValorProvII(BigDecimal valorProvII) {
+        this.valorProvII = valorProvII;
+    }
+
+    public RemessaConforme valorProvII(BigDecimal valorProvII) {
+        this.valorProvII = valorProvII;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RemessaConforme {\n" +
+                "    codigoECE: " + toIndentedString(codigoECE) + "\n" +
                 "    codigoOND: " + toIndentedString(codigoOND) + "\n" +
                 "    nomeECE: " + toIndentedString(nomeECE) + "\n" +
-                "    valorProvII: " + toIndentedString(valorProvII) + "\n" +
-                "    codigoECE: " + toIndentedString(codigoECE) + "\n" +
                 "    nomeOND: " + toIndentedString(nomeOND) + "\n" +
                 "    valorProvICMS: " + toIndentedString(valorProvICMS) + "\n" +
+                "    valorProvII: " + toIndentedString(valorProvII) + "\n" +
                 "}";
         return sb;
     }

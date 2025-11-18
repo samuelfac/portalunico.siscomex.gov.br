@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosConsulta", propOrder =
-        {"permiteMovimentacao", "documentosCarga", "numeroMRUC"
+        {"numeroMRUC", "documentosCarga", "permiteMovimentacao"
         })
 
 @XmlRootElement(name = "DadosConsulta")
@@ -24,21 +24,21 @@ import java.util.List;
 @ApiModel(description = "Dados da consulta")
 public class DadosConsulta {
 
-    @XmlElement(name = "permiteMovimentacao")
-    @ApiModelProperty(example = "false", value = "")
-    private Boolean permiteMovimentacao = null;
-
-    @XmlElement(name = "documentosCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Documentos> documentosCarga = null;
-
     @XmlElement(name = "numeroMRUC")
     @ApiModelProperty(example = "7BR276574896791206600205675746307", value = "Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
     /**
      * Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      **/
     private String numeroMRUC = null;
+
+    @XmlElement(name = "documentosCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Documentos> documentosCarga = null;
+
+    @XmlElement(name = "permiteMovimentacao")
+    @ApiModelProperty(example = "false", value = "")
+    private Boolean permiteMovimentacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -52,22 +52,17 @@ public class DadosConsulta {
     }
 
     /**
-     * Get permiteMovimentacao
+     * Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      *
-     * @return permiteMovimentacao
+     * @return numeroMRUC
      **/
-    @JsonProperty("permiteMovimentacao")
-    public Boolean isisPermiteMovimentacao() {
-        return permiteMovimentacao;
+    @JsonProperty("numeroMRUC")
+    public String getNumeroMRUC() {
+        return numeroMRUC;
     }
 
-    public void setPermiteMovimentacao(Boolean permiteMovimentacao) {
-        this.permiteMovimentacao = permiteMovimentacao;
-    }
-
-    public DadosConsulta permiteMovimentacao(Boolean permiteMovimentacao) {
-        this.permiteMovimentacao = permiteMovimentacao;
-        return this;
+    public void setNumeroMRUC(String numeroMRUC) {
+        this.numeroMRUC = numeroMRUC;
     }
 
     /**
@@ -94,22 +89,27 @@ public class DadosConsulta {
         return this;
     }
 
-    /**
-     * Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     *
-     * @return numeroMRUC
-     **/
-    @JsonProperty("numeroMRUC")
-    public String getNumeroMRUC() {
-        return numeroMRUC;
-    }
-
-    public void setNumeroMRUC(String numeroMRUC) {
-        this.numeroMRUC = numeroMRUC;
-    }
-
     public DadosConsulta numeroMRUC(String numeroMRUC) {
         this.numeroMRUC = numeroMRUC;
+        return this;
+    }
+
+    /**
+     * Get permiteMovimentacao
+     *
+     * @return permiteMovimentacao
+     **/
+    @JsonProperty("permiteMovimentacao")
+    public Boolean isisPermiteMovimentacao() {
+        return permiteMovimentacao;
+    }
+
+    public void setPermiteMovimentacao(Boolean permiteMovimentacao) {
+        this.permiteMovimentacao = permiteMovimentacao;
+    }
+
+    public DadosConsulta permiteMovimentacao(Boolean permiteMovimentacao) {
+        this.permiteMovimentacao = permiteMovimentacao;
         return this;
     }
 
@@ -117,9 +117,9 @@ public class DadosConsulta {
     public String toString() {
 
         String sb = "class DadosConsulta {\n" +
-                "    permiteMovimentacao: " + toIndentedString(permiteMovimentacao) + "\n" +
-                "    documentosCarga: " + toIndentedString(documentosCarga) + "\n" +
                 "    numeroMRUC: " + toIndentedString(numeroMRUC) + "\n" +
+                "    documentosCarga: " + toIndentedString(documentosCarga) + "\n" +
+                "    permiteMovimentacao: " + toIndentedString(permiteMovimentacao) + "\n" +
                 "}";
         return sb;
     }

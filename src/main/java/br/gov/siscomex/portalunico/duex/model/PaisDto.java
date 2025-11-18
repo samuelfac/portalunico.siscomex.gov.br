@@ -39,17 +39,6 @@ public class PaisDto {
     private String nomeResumido = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código&lt;br /&gt;Formato: Inteiro, com até 3 digitos
      *
      * @return codigo
@@ -104,6 +93,18 @@ public class PaisDto {
     public PaisDto nomeResumido(String nomeResumido) {
         this.nomeResumido = nomeResumido;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

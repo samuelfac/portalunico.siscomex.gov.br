@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Endereco", propOrder =
-        {"uf", "logradouro", "bairro", "municipio", "cep"
+        {"logradouro", "bairro", "municipio", "cep", "uf"
         })
 
 @XmlRootElement(name = "Endereco")
@@ -22,13 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Endereço de uma pessoa física/jurídica")
 public class Endereco {
-
-    @XmlElement(name = "uf")
-    @ApiModelProperty(example = "SC", value = "Sigla de unidade federativa<br>Tamanho mínimo: 2<br>Tamanho máximo: 2")
-    /**
-     * Sigla de unidade federativa<br>Tamanho mínimo: 2<br>Tamanho máximo: 2
-     **/
-    private String uf = null;
 
     @XmlElement(name = "logradouro", required = true)
     @ApiModelProperty(example = "Rua das Acácias, 123", required = true, value = "Descrição do logradouro, com número")
@@ -58,35 +51,12 @@ public class Endereco {
      **/
     private String cep = null;
 
+    @XmlElement(name = "uf")
+    @ApiModelProperty(example = "SC", value = "Sigla de unidade federativa<br>Tamanho mínimo: 2<br>Tamanho máximo: 2")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Sigla de unidade federativa&lt;br&gt;Tamanho mínimo: 2&lt;br&gt;Tamanho máximo: 2
-     *
-     * @return uf
+     * Sigla de unidade federativa<br>Tamanho mínimo: 2<br>Tamanho máximo: 2
      **/
-    @JsonProperty("uf")
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public Endereco uf(String uf) {
-        this.uf = uf;
-        return this;
-    }
+    private String uf = null;
 
     /**
      * Descrição do logradouro, com número
@@ -165,15 +135,45 @@ public class Endereco {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Sigla de unidade federativa&lt;br&gt;Tamanho mínimo: 2&lt;br&gt;Tamanho máximo: 2
+     *
+     * @return uf
+     **/
+    @JsonProperty("uf")
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public Endereco uf(String uf) {
+        this.uf = uf;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Endereco {\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
                 "    logradouro: " + toIndentedString(logradouro) + "\n" +
                 "    bairro: " + toIndentedString(bairro) + "\n" +
                 "    municipio: " + toIndentedString(municipio) + "\n" +
                 "    cep: " + toIndentedString(cep) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
                 "}";
         return sb;
     }

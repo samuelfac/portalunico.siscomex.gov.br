@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazOperadorFabricanteCover", propOrder =
-        {"versaoOperadorFabricante", "niOperadorFabricante", "codigoOperadorFabricante", "paisOperadorFabricante"
+        {"codigoOperadorFabricante", "versaoOperadorFabricante", "paisOperadorFabricante", "niOperadorFabricante"
         })
 
 @XmlRootElement(name = "SefazOperadorFabricanteCover")
@@ -23,12 +23,24 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de Operador Fabricante")
 public class SefazOperadorFabricanteCover {
 
+    @XmlElement(name = "codigoOperadorFabricante")
+    @ApiModelProperty(example = "CN001", value = "Código do fabricante estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO")
+    /**
+     * Código do fabricante estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO
+     **/
+    private String codigoOperadorFabricante = null;
+
     @XmlElement(name = "versaoOperadorFabricante")
     @ApiModelProperty(example = "1.1", value = "Versão do cadastro do fabricante estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 6<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO")
     /**
      * Versão do cadastro do fabricante estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 6<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO
      **/
     private String versaoOperadorFabricante = null;
+
+    @XmlElement(name = "paisOperadorFabricante")
+    @ApiModelProperty(value = "")
+    @Valid
+    private PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorFabricante = null;
 
     @XmlElement(name = "niOperadorFabricante")
     @ApiModelProperty(value = "Identificação de quem cadastrou o fabricante no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)<br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO")
@@ -37,17 +49,24 @@ public class SefazOperadorFabricanteCover {
      **/
     private String niOperadorFabricante = null;
 
-    @XmlElement(name = "codigoOperadorFabricante")
-    @ApiModelProperty(example = "CN001", value = "Código do fabricante estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO")
     /**
-     * Código do fabricante estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35<br>Observação:<br>Quando o fabricante for desconhecido, este atributo será NULO
+     * Código do fabricante estrangeiro no Sistema Catalogo de Produtos&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Observação:&lt;br&gt;Quando o fabricante for desconhecido, este atributo será NULO
+     *
+     * @return codigoOperadorFabricante
      **/
-    private String codigoOperadorFabricante = null;
+    @JsonProperty("codigoOperadorFabricante")
+    public String getCodigoOperadorFabricante() {
+        return codigoOperadorFabricante;
+    }
 
-    @XmlElement(name = "paisOperadorFabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorFabricante = null;
+    public void setCodigoOperadorFabricante(String codigoOperadorFabricante) {
+        this.codigoOperadorFabricante = codigoOperadorFabricante;
+    }
+
+    public SefazOperadorFabricanteCover codigoOperadorFabricante(String codigoOperadorFabricante) {
+        this.codigoOperadorFabricante = codigoOperadorFabricante;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -74,6 +93,25 @@ public class SefazOperadorFabricanteCover {
         this.versaoOperadorFabricante = versaoOperadorFabricante;
     }
 
+    /**
+     * Get paisOperadorFabricante
+     *
+     * @return paisOperadorFabricante
+     **/
+    @JsonProperty("paisOperadorFabricante")
+    public PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio getPaisOperadorFabricante() {
+        return paisOperadorFabricante;
+    }
+
+    public void setPaisOperadorFabricante(PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorFabricante) {
+        this.paisOperadorFabricante = paisOperadorFabricante;
+    }
+
+    public SefazOperadorFabricanteCover paisOperadorFabricante(PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorFabricante) {
+        this.paisOperadorFabricante = paisOperadorFabricante;
+        return this;
+    }
+
     public SefazOperadorFabricanteCover versaoOperadorFabricante(String versaoOperadorFabricante) {
         this.versaoOperadorFabricante = versaoOperadorFabricante;
         return this;
@@ -98,52 +136,14 @@ public class SefazOperadorFabricanteCover {
         return this;
     }
 
-    /**
-     * Código do fabricante estrangeiro no Sistema Catalogo de Produtos&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Observação:&lt;br&gt;Quando o fabricante for desconhecido, este atributo será NULO
-     *
-     * @return codigoOperadorFabricante
-     **/
-    @JsonProperty("codigoOperadorFabricante")
-    public String getCodigoOperadorFabricante() {
-        return codigoOperadorFabricante;
-    }
-
-    public void setCodigoOperadorFabricante(String codigoOperadorFabricante) {
-        this.codigoOperadorFabricante = codigoOperadorFabricante;
-    }
-
-    public SefazOperadorFabricanteCover codigoOperadorFabricante(String codigoOperadorFabricante) {
-        this.codigoOperadorFabricante = codigoOperadorFabricante;
-        return this;
-    }
-
-    /**
-     * Get paisOperadorFabricante
-     *
-     * @return paisOperadorFabricante
-     **/
-    @JsonProperty("paisOperadorFabricante")
-    public PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio getPaisOperadorFabricante() {
-        return paisOperadorFabricante;
-    }
-
-    public void setPaisOperadorFabricante(PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorFabricante) {
-        this.paisOperadorFabricante = paisOperadorFabricante;
-    }
-
-    public SefazOperadorFabricanteCover paisOperadorFabricante(PasDoFabricanteObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorFabricante) {
-        this.paisOperadorFabricante = paisOperadorFabricante;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class SefazOperadorFabricanteCover {\n" +
-                "    versaoOperadorFabricante: " + toIndentedString(versaoOperadorFabricante) + "\n" +
-                "    niOperadorFabricante: " + toIndentedString(niOperadorFabricante) + "\n" +
                 "    codigoOperadorFabricante: " + toIndentedString(codigoOperadorFabricante) + "\n" +
+                "    versaoOperadorFabricante: " + toIndentedString(versaoOperadorFabricante) + "\n" +
                 "    paisOperadorFabricante: " + toIndentedString(paisOperadorFabricante) + "\n" +
+                "    niOperadorFabricante: " + toIndentedString(niOperadorFabricante) + "\n" +
                 "}";
         return sb;
     }

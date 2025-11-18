@@ -12,21 +12,40 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaDetalheFreteTotalMoedaDestino", propOrder =
-        {"valorCollect", "tipo"
+        {"tipo", "valorCollect"
         })
 
 @XmlRootElement(name = "CargaDetalheFreteTotalMoedaDestino")
 public class CargaDetalheFreteTotalMoedaDestino {
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoTotalMoedaDestino tipo = null;
 
     @XmlElement(name = "valorCollect")
     @ApiModelProperty(value = "")
     @Valid
     private ValorMonetario valorCollect = null;
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoTotalMoedaDestino tipo = null;
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoTotalMoedaDestino getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoTotalMoedaDestino tipo) {
+        this.tipo = tipo;
+    }
+
+    public CargaDetalheFreteTotalMoedaDestino tipo(TipoTotalMoedaDestino tipo) {
+        this.tipo = tipo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,31 +77,12 @@ public class CargaDetalheFreteTotalMoedaDestino {
         return this;
     }
 
-    /**
-     * Get tipo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public TipoTotalMoedaDestino getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoTotalMoedaDestino tipo) {
-        this.tipo = tipo;
-    }
-
-    public CargaDetalheFreteTotalMoedaDestino tipo(TipoTotalMoedaDestino tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CargaDetalheFreteTotalMoedaDestino {\n" +
-                "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
                 "}";
         return sb;
     }

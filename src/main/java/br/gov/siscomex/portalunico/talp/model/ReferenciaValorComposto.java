@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReferenciaValorComposto", propOrder =
-        {"fundamentoLegal", "exportadorEstrangeiro", "listaComposicaoAtributo", "indicacaoImportacaoTerceiros", "fabricante", "exportadorEFabricanteDoProduto"
+        {"indicacaoImportacaoTerceiros", "exportadorEstrangeiro", "exportadorEFabricanteDoProduto", "fabricante", "fundamentoLegal", "listaComposicaoAtributo"
         })
 
 @XmlRootElement(name = "ReferenciaValorComposto")
@@ -24,15 +24,30 @@ import java.util.List;
 @ApiModel(description = "Estrutura que guarda o valor de um campo composto de um LPCO. Apenas um dos campos desta estrutura estará preenchido, dependendo do tipo do campo.")
 public class ReferenciaValorComposto {
 
-    @XmlElement(name = "fundamentoLegal")
+    @XmlElement(name = "indicacaoImportacaoTerceiros")
     @ApiModelProperty(value = "")
     @Valid
-    private ReferenciaValorCampoFundamentoLegal fundamentoLegal = null;
+    private ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros = null;
 
     @XmlElement(name = "exportadorEstrangeiro")
     @ApiModelProperty(value = "")
     @Valid
     private ReferenciaOperadorEstrangeiro exportadorEstrangeiro = null;
+
+    @XmlElement(name = "exportadorEFabricanteDoProduto")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ReferenciaExportadorEFabricanteDoProduto exportadorEFabricanteDoProduto = null;
+
+    @XmlElement(name = "fabricante")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ReferenciaFabricante fabricante = null;
+
+    @XmlElement(name = "fundamentoLegal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ReferenciaValorCampoFundamentoLegal fundamentoLegal = null;
 
     @XmlElement(name = "listaComposicaoAtributo")
     @ApiModelProperty(value = "Lista de Atributos Compostos.<br>")
@@ -41,21 +56,6 @@ public class ReferenciaValorComposto {
      * Lista de Atributos Compostos.<br>
      **/
     private List<List<ReferenciaValorAtributoComposto>> listaComposicaoAtributo = null;
-
-    @XmlElement(name = "indicacaoImportacaoTerceiros")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros = null;
-
-    @XmlElement(name = "fabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ReferenciaFabricante fabricante = null;
-
-    @XmlElement(name = "exportadorEFabricanteDoProduto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ReferenciaExportadorEFabricanteDoProduto exportadorEFabricanteDoProduto = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,22 +69,17 @@ public class ReferenciaValorComposto {
     }
 
     /**
-     * Get fundamentoLegal
+     * Get indicacaoImportacaoTerceiros
      *
-     * @return fundamentoLegal
+     * @return indicacaoImportacaoTerceiros
      **/
-    @JsonProperty("fundamentoLegal")
-    public ReferenciaValorCampoFundamentoLegal getFundamentoLegal() {
-        return fundamentoLegal;
+    @JsonProperty("indicacaoImportacaoTerceiros")
+    public ReferenciaImportacaoTerceiro getIndicacaoImportacaoTerceiros() {
+        return indicacaoImportacaoTerceiros;
     }
 
-    public void setFundamentoLegal(ReferenciaValorCampoFundamentoLegal fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-    }
-
-    public ReferenciaValorComposto fundamentoLegal(ReferenciaValorCampoFundamentoLegal fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-        return this;
+    public void setIndicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
+        this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
     }
 
     /**
@@ -104,6 +99,63 @@ public class ReferenciaValorComposto {
     public ReferenciaValorComposto exportadorEstrangeiro(ReferenciaOperadorEstrangeiro exportadorEstrangeiro) {
         this.exportadorEstrangeiro = exportadorEstrangeiro;
         return this;
+    }
+
+    public ReferenciaValorComposto indicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
+        this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
+        return this;
+    }
+
+    /**
+     * Get exportadorEFabricanteDoProduto
+     *
+     * @return exportadorEFabricanteDoProduto
+     **/
+    @JsonProperty("exportadorEFabricanteDoProduto")
+    public ReferenciaExportadorEFabricanteDoProduto getExportadorEFabricanteDoProduto() {
+        return exportadorEFabricanteDoProduto;
+    }
+
+    public void setExportadorEFabricanteDoProduto(ReferenciaExportadorEFabricanteDoProduto exportadorEFabricanteDoProduto) {
+        this.exportadorEFabricanteDoProduto = exportadorEFabricanteDoProduto;
+    }
+
+    public ReferenciaValorComposto exportadorEFabricanteDoProduto(ReferenciaExportadorEFabricanteDoProduto exportadorEFabricanteDoProduto) {
+        this.exportadorEFabricanteDoProduto = exportadorEFabricanteDoProduto;
+        return this;
+    }
+
+    /**
+     * Get fabricante
+     *
+     * @return fabricante
+     **/
+    @JsonProperty("fabricante")
+    public ReferenciaFabricante getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(ReferenciaFabricante fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    public ReferenciaValorComposto fabricante(ReferenciaFabricante fabricante) {
+        this.fabricante = fabricante;
+        return this;
+    }
+
+    /**
+     * Get fundamentoLegal
+     *
+     * @return fundamentoLegal
+     **/
+    @JsonProperty("fundamentoLegal")
+    public ReferenciaValorCampoFundamentoLegal getFundamentoLegal() {
+        return fundamentoLegal;
+    }
+
+    public void setFundamentoLegal(ReferenciaValorCampoFundamentoLegal fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
     }
 
     /**
@@ -130,60 +182,8 @@ public class ReferenciaValorComposto {
         return this;
     }
 
-    /**
-     * Get indicacaoImportacaoTerceiros
-     *
-     * @return indicacaoImportacaoTerceiros
-     **/
-    @JsonProperty("indicacaoImportacaoTerceiros")
-    public ReferenciaImportacaoTerceiro getIndicacaoImportacaoTerceiros() {
-        return indicacaoImportacaoTerceiros;
-    }
-
-    public void setIndicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
-        this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
-    }
-
-    public ReferenciaValorComposto indicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
-        this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
-        return this;
-    }
-
-    /**
-     * Get fabricante
-     *
-     * @return fabricante
-     **/
-    @JsonProperty("fabricante")
-    public ReferenciaFabricante getFabricante() {
-        return fabricante;
-    }
-
-    public void setFabricante(ReferenciaFabricante fabricante) {
-        this.fabricante = fabricante;
-    }
-
-    public ReferenciaValorComposto fabricante(ReferenciaFabricante fabricante) {
-        this.fabricante = fabricante;
-        return this;
-    }
-
-    /**
-     * Get exportadorEFabricanteDoProduto
-     *
-     * @return exportadorEFabricanteDoProduto
-     **/
-    @JsonProperty("exportadorEFabricanteDoProduto")
-    public ReferenciaExportadorEFabricanteDoProduto getExportadorEFabricanteDoProduto() {
-        return exportadorEFabricanteDoProduto;
-    }
-
-    public void setExportadorEFabricanteDoProduto(ReferenciaExportadorEFabricanteDoProduto exportadorEFabricanteDoProduto) {
-        this.exportadorEFabricanteDoProduto = exportadorEFabricanteDoProduto;
-    }
-
-    public ReferenciaValorComposto exportadorEFabricanteDoProduto(ReferenciaExportadorEFabricanteDoProduto exportadorEFabricanteDoProduto) {
-        this.exportadorEFabricanteDoProduto = exportadorEFabricanteDoProduto;
+    public ReferenciaValorComposto fundamentoLegal(ReferenciaValorCampoFundamentoLegal fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
         return this;
     }
 
@@ -191,12 +191,12 @@ public class ReferenciaValorComposto {
     public String toString() {
 
         String sb = "class ReferenciaValorComposto {\n" +
-                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
-                "    exportadorEstrangeiro: " + toIndentedString(exportadorEstrangeiro) + "\n" +
-                "    listaComposicaoAtributo: " + toIndentedString(listaComposicaoAtributo) + "\n" +
                 "    indicacaoImportacaoTerceiros: " + toIndentedString(indicacaoImportacaoTerceiros) + "\n" +
-                "    fabricante: " + toIndentedString(fabricante) + "\n" +
+                "    exportadorEstrangeiro: " + toIndentedString(exportadorEstrangeiro) + "\n" +
                 "    exportadorEFabricanteDoProduto: " + toIndentedString(exportadorEFabricanteDoProduto) + "\n" +
+                "    fabricante: " + toIndentedString(fabricante) + "\n" +
+                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
+                "    listaComposicaoAtributo: " + toIndentedString(listaComposicaoAtributo) + "\n" +
                 "}";
         return sb;
     }

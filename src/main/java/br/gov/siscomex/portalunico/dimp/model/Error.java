@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Error", propOrder =
-        {"path", "trackerId", "details", "error", "message", "status", "timestamp"
+        {"details", "error", "message", "path", "status", "timestamp", "trackerId"
         })
 
 @XmlRootElement(name = "Error")
@@ -22,14 +22,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Representação de Erros")
 public class Error {
-
-    @XmlElement(name = "path")
-    @ApiModelProperty(value = "")
-    private String path = null;
-
-    @XmlElement(name = "trackerId")
-    @ApiModelProperty(value = "")
-    private String trackerId = null;
 
     @XmlElement(name = "details")
     @ApiModelProperty(value = "")
@@ -43,6 +35,10 @@ public class Error {
     @ApiModelProperty(value = "")
     private String message = null;
 
+    @XmlElement(name = "path")
+    @ApiModelProperty(value = "")
+    private String path = null;
+
     @XmlElement(name = "status")
     @ApiModelProperty(value = "")
     private Integer status = null;
@@ -51,54 +47,9 @@ public class Error {
     @ApiModelProperty(example = "yyyy-MM-dd HH:mm:ss", value = "")
     private String timestamp = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get path
-     *
-     * @return path
-     **/
-    @JsonProperty("path")
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public Error path(String path) {
-        this.path = path;
-        return this;
-    }
-
-    /**
-     * Get trackerId
-     *
-     * @return trackerId
-     **/
-    @JsonProperty("trackerId")
-    public String getTrackerId() {
-        return trackerId;
-    }
-
-    public void setTrackerId(String trackerId) {
-        this.trackerId = trackerId;
-    }
-
-    public Error trackerId(String trackerId) {
-        this.trackerId = trackerId;
-        return this;
-    }
+    @XmlElement(name = "trackerId")
+    @ApiModelProperty(value = "")
+    private String trackerId = null;
 
     /**
      * Get details
@@ -163,6 +114,31 @@ public class Error {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get path
+     *
+     * @return path
+     **/
+    @JsonProperty("path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    /**
      * Get status
      *
      * @return status
@@ -200,17 +176,41 @@ public class Error {
         return this;
     }
 
+    public Error path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    /**
+     * Get trackerId
+     *
+     * @return trackerId
+     **/
+    @JsonProperty("trackerId")
+    public String getTrackerId() {
+        return trackerId;
+    }
+
+    public void setTrackerId(String trackerId) {
+        this.trackerId = trackerId;
+    }
+
+    public Error trackerId(String trackerId) {
+        this.trackerId = trackerId;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Error {\n" +
-                "    path: " + toIndentedString(path) + "\n" +
-                "    trackerId: " + toIndentedString(trackerId) + "\n" +
                 "    details: " + toIndentedString(details) + "\n" +
                 "    error: " + toIndentedString(error) + "\n" +
                 "    message: " + toIndentedString(message) + "\n" +
+                "    path: " + toIndentedString(path) + "\n" +
                 "    status: " + toIndentedString(status) + "\n" +
                 "    timestamp: " + toIndentedString(timestamp) + "\n" +
+                "    trackerId: " + toIndentedString(trackerId) + "\n" +
                 "}";
         return sb;
     }

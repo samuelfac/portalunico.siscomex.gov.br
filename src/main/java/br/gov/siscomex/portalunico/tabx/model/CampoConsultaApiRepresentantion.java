@@ -13,16 +13,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CampoConsultaApiRepresentantion", propOrder =
-        {"dadosTabelaEstrangeira", "valor", "nome"
+        {"nome", "valor", "dadosTabelaEstrangeira"
         })
 
 @XmlRootElement(name = "CampoConsultaApiRepresentantion")
 public class CampoConsultaApiRepresentantion {
 
-    @XmlElement(name = "dadosTabelaEstrangeira")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosTabelaApiRepresentation dadosTabelaEstrangeira = null;
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "NOME", required = true, value = "Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40")
+    /**
+     * Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40
+     **/
+    private String nome = null;
 
     @XmlElement(name = "valor")
     @ApiModelProperty(example = "Grupo de exigência para material nacionalizado", value = "Valor atribuído ao campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: definido nos metadados da tabela")
@@ -31,12 +33,10 @@ public class CampoConsultaApiRepresentantion {
      **/
     private String valor = null;
 
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(example = "NOME", required = true, value = "Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40")
-    /**
-     * Nome do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 40
-     **/
-    private String nome = null;
+    @XmlElement(name = "dadosTabelaEstrangeira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosTabelaApiRepresentation dadosTabelaEstrangeira = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -50,22 +50,18 @@ public class CampoConsultaApiRepresentantion {
     }
 
     /**
-     * Get dadosTabelaEstrangeira
+     * Nome do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 40
      *
-     * @return dadosTabelaEstrangeira
+     * @return nome
      **/
-    @JsonProperty("dadosTabelaEstrangeira")
-    public DadosTabelaApiRepresentation getDadosTabelaEstrangeira() {
-        return dadosTabelaEstrangeira;
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
     }
 
-    public void setDadosTabelaEstrangeira(DadosTabelaApiRepresentation dadosTabelaEstrangeira) {
-        this.dadosTabelaEstrangeira = dadosTabelaEstrangeira;
-    }
-
-    public CampoConsultaApiRepresentantion dadosTabelaEstrangeira(DadosTabelaApiRepresentation dadosTabelaEstrangeira) {
-        this.dadosTabelaEstrangeira = dadosTabelaEstrangeira;
-        return this;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
@@ -87,23 +83,27 @@ public class CampoConsultaApiRepresentantion {
         return this;
     }
 
-    /**
-     * Nome do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 40
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public CampoConsultaApiRepresentantion nome(String nome) {
         this.nome = nome;
+        return this;
+    }
+
+    /**
+     * Get dadosTabelaEstrangeira
+     *
+     * @return dadosTabelaEstrangeira
+     **/
+    @JsonProperty("dadosTabelaEstrangeira")
+    public DadosTabelaApiRepresentation getDadosTabelaEstrangeira() {
+        return dadosTabelaEstrangeira;
+    }
+
+    public void setDadosTabelaEstrangeira(DadosTabelaApiRepresentation dadosTabelaEstrangeira) {
+        this.dadosTabelaEstrangeira = dadosTabelaEstrangeira;
+    }
+
+    public CampoConsultaApiRepresentantion dadosTabelaEstrangeira(DadosTabelaApiRepresentation dadosTabelaEstrangeira) {
+        this.dadosTabelaEstrangeira = dadosTabelaEstrangeira;
         return this;
     }
 
@@ -111,9 +111,9 @@ public class CampoConsultaApiRepresentantion {
     public String toString() {
 
         String sb = "class CampoConsultaApiRepresentantion {\n" +
-                "    dadosTabelaEstrangeira: " + toIndentedString(dadosTabelaEstrangeira) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
+                "    dadosTabelaEstrangeira: " + toIndentedString(dadosTabelaEstrangeira) + "\n" +
                 "}";
         return sb;
     }

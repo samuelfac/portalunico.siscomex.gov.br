@@ -30,6 +30,8 @@ public class SituacaoConferenciaAduaneiraCover {
      * Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
     private String siglaOrgao = null;
+
+
     @XmlElement(name = "situacao")
     @ApiModelProperty(example = "DESEMBARACO_AUTOMATICO", value = "Tipos de situações de conferência aduaneira.<br>Domínio:")
     /**
@@ -212,15 +214,6 @@ public class SituacaoConferenciaAduaneiraCover {
             value = v;
         }
 
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -228,6 +221,15 @@ public class SituacaoConferenciaAduaneiraCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
         }
     }
 
@@ -255,15 +257,6 @@ public class SituacaoConferenciaAduaneiraCover {
             value = v;
         }
 
-        public static IndicadorAutorizacaoEntregaEnum fromValue(String v) {
-            for (IndicadorAutorizacaoEntregaEnum b : IndicadorAutorizacaoEntregaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAutorizacaoEntregaEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -271,6 +264,15 @@ public class SituacaoConferenciaAduaneiraCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static IndicadorAutorizacaoEntregaEnum fromValue(String v) {
+            for (IndicadorAutorizacaoEntregaEnum b : IndicadorAutorizacaoEntregaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAutorizacaoEntregaEnum");
         }
     }
 
@@ -297,15 +299,6 @@ public class SituacaoConferenciaAduaneiraCover {
             value = v;
         }
 
-        public static IndicadorDesembaracoDecisaoJudicialEnum fromValue(String v) {
-            for (IndicadorDesembaracoDecisaoJudicialEnum b : IndicadorDesembaracoDecisaoJudicialEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorDesembaracoDecisaoJudicialEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -313,6 +306,15 @@ public class SituacaoConferenciaAduaneiraCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static IndicadorDesembaracoDecisaoJudicialEnum fromValue(String v) {
+            for (IndicadorDesembaracoDecisaoJudicialEnum b : IndicadorDesembaracoDecisaoJudicialEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorDesembaracoDecisaoJudicialEnum");
         }
     }
 }

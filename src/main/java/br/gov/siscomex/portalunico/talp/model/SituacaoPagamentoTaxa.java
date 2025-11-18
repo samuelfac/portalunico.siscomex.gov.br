@@ -26,19 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class SituacaoPagamentoTaxa {
 
 
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "SEM_ERRO", required = true, value = "Identificador da situação")
-    /**
-     * Identificador da situação
-     **/
-    private IdEnum id = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Sem erro", value = "Descrição da situação")
-    /**
-     * Descrição da situação
-     **/
-    private DescricaoEnum descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -49,6 +36,30 @@ public class SituacaoPagamentoTaxa {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "SEM_ERRO", required = true, value = "Identificador da situação")
+    /**
+     * Identificador da situação
+     **/
+    private IdEnum id = null;
+
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoPagamentoTaxa {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Sem erro", value = "Descrição da situação")
+    /**
+     * Descrição da situação
+     **/
+    private DescricaoEnum descricao = null;
 
     /**
      * Identificador da situação
@@ -93,16 +104,6 @@ public class SituacaoPagamentoTaxa {
     public SituacaoPagamentoTaxa descricao(DescricaoEnum descricao) {
         this.descricao = descricao;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoPagamentoTaxa {\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
     }
 
 

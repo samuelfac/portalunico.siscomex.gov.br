@@ -30,17 +30,6 @@ public class ConsultaEstoquePosResult {
     private List<MensagemErro> erros = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get lista
      *
      * @return lista
@@ -86,6 +75,18 @@ public class ConsultaEstoquePosResult {
     public ConsultaEstoquePosResult addErrosItem(MensagemErro errosItem) {
         this.erros.add(errosItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

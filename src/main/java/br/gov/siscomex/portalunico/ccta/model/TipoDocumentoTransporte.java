@@ -32,17 +32,6 @@ public class TipoDocumentoTransporte {
     private String descricao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do tipo do documento de transporte
      *
      * @return codigo
@@ -78,6 +67,18 @@ public class TipoDocumentoTransporte {
     public TipoDocumentoTransporte descricao(String descricao) {
         this.descricao = descricao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

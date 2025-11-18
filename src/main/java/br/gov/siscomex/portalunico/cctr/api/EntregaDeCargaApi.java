@@ -28,7 +28,7 @@ public interface EntregaDeCargaApi {
 
     /**
      * Entregar Carga por Duimp
-     * <p>
+     *
      * Entrega de carga através do número de uma Duimp transferindo a responsabilidade pelo estoque da carga
      *
      */
@@ -38,11 +38,11 @@ public interface EntregaDeCargaApi {
     @Produces({"application/xml"})
     @ApiOperation(value = "Entregar Carga por Duimp", notes = "Entrega de carga através do número de uma Duimp transferindo a responsabilidade pelo estoque da carga", tags = {"Entrega de Carga"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoXmlServico.class),
-            @ApiResponse(code = 400, message = "XML não atende as especificações definidas na API", response = RetornoXmlServico.class),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = BusinessExceptionCover.class),
             @ApiResponse(code = 500, message = "Erro interno no servidor", response = UnexpectedExceptionCover.class),
-            @ApiResponse(code = 403, message = "Acesso negado ao usuário logado", response = RetornoXmlServico.class)})
+            @ApiResponse(code = 403, message = "Acesso negado ao usuário logado", response = RetornoXmlServico.class),
+            @ApiResponse(code = 400, message = "XML não atende as especificações definidas na API", response = RetornoXmlServico.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoXmlServico.class),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = BusinessExceptionCover.class)})
     RetornoXmlServico entregar1(@ApiParam(value = "Dados da entrega", required = true) @Valid EntregasDocumentoCarga body);
 }
 

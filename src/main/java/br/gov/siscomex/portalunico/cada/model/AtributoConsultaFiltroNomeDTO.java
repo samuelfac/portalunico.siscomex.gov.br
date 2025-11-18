@@ -15,11 +15,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AtributoConsultaFiltroNomeDTO", propOrder =
-        {"data", "nomes"
+        {"nomes", "data"
         })
 
 @XmlRootElement(name = "AtributoConsultaFiltroNomeDTO")
 public class AtributoConsultaFiltroNomeDTO {
+
+    @XmlElement(name = "nomes", required = true)
+    @ApiModelProperty(required = true, value = "Lista de nomes de Atributos (Máximo 100 nomes.)<br>Tamanho mínimo: 0<br>Tamanho máximo: 200")
+    /**
+     * Lista de nomes de Atributos (Máximo 100 nomes.)<br>Tamanho mínimo: 0<br>Tamanho máximo: 200
+     **/
+    private List<String> nomes = new ArrayList<>();
 
     @XmlElement(name = "data", required = true)
     @ApiModelProperty(required = true, value = "Data de referência")
@@ -28,12 +35,30 @@ public class AtributoConsultaFiltroNomeDTO {
      **/
     private OffsetDateTime data = null;
 
-    @XmlElement(name = "nomes", required = true)
-    @ApiModelProperty(required = true, value = "Lista de nomes de Atributos (Máximo 100 nomes.)<br>Tamanho mínimo: 0<br>Tamanho máximo: 200")
     /**
-     * Lista de nomes de Atributos (Máximo 100 nomes.)<br>Tamanho mínimo: 0<br>Tamanho máximo: 200
+     * Lista de nomes de Atributos (Máximo 100 nomes.)&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 200
+     *
+     * @return nomes
      **/
-    private List<String> nomes = new ArrayList<>();
+    @JsonProperty("nomes")
+    @NotNull
+    public List<String> getNomes() {
+        return nomes;
+    }
+
+    public void setNomes(List<String> nomes) {
+        this.nomes = nomes;
+    }
+
+    public AtributoConsultaFiltroNomeDTO nomes(List<String> nomes) {
+        this.nomes = nomes;
+        return this;
+    }
+
+    public AtributoConsultaFiltroNomeDTO addNomesItem(String nomesItem) {
+        this.nomes.add(nomesItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,37 +91,12 @@ public class AtributoConsultaFiltroNomeDTO {
         return this;
     }
 
-    /**
-     * Lista de nomes de Atributos (Máximo 100 nomes.)&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 200
-     *
-     * @return nomes
-     **/
-    @JsonProperty("nomes")
-    @NotNull
-    public List<String> getNomes() {
-        return nomes;
-    }
-
-    public void setNomes(List<String> nomes) {
-        this.nomes = nomes;
-    }
-
-    public AtributoConsultaFiltroNomeDTO nomes(List<String> nomes) {
-        this.nomes = nomes;
-        return this;
-    }
-
-    public AtributoConsultaFiltroNomeDTO addNomesItem(String nomesItem) {
-        this.nomes.add(nomesItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class AtributoConsultaFiltroNomeDTO {\n" +
-                "    data: " + toIndentedString(data) + "\n" +
                 "    nomes: " + toIndentedString(nomes) + "\n" +
+                "    data: " + toIndentedString(data) + "\n" +
                 "}";
         return sb;
     }

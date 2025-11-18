@@ -14,33 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDeConsultaDeManifestosPelosDepositrios", propOrder =
-        {"situacao", "manifestos", "numeroProtocolo", "dataHoraProcessamento", "dataHorarioEnvio", "erros"
+        {"dataHoraProcessamento", "dataHorarioEnvio", "erros", "manifestos", "numeroProtocolo", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDeConsultaDeManifestosPelosDepositrios")
 public class ProcessamentoDeConsultaDeManifestosPelosDepositrios {
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
-    /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
-     **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "manifestos")
-    @ApiModelProperty(value = "Lista de manifestos.")
-    @Valid
-    /**
-     * Lista de manifestos.
-     **/
-    private List<ManifestoDaConsultaDeManifestosPelosDepositrios> manifestos = null;
-
-    @XmlElement(name = "numeroProtocolo")
-    @ApiModelProperty(value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -64,78 +42,27 @@ public class ProcessamentoDeConsultaDeManifestosPelosDepositrios {
      **/
     private List<ErroNoProcessamento> erros = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public Integer getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDeConsultaDeManifestosPelosDepositrios situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
+    @XmlElement(name = "manifestos")
+    @ApiModelProperty(value = "Lista de manifestos.")
+    @Valid
     /**
      * Lista de manifestos.
-     *
-     * @return manifestos
      **/
-    @JsonProperty("manifestos")
-    public List<ManifestoDaConsultaDeManifestosPelosDepositrios> getManifestos() {
-        return manifestos;
-    }
+    private List<ManifestoDaConsultaDeManifestosPelosDepositrios> manifestos = null;
 
-    public void setManifestos(List<ManifestoDaConsultaDeManifestosPelosDepositrios> manifestos) {
-        this.manifestos = manifestos;
-    }
-
-    public ProcessamentoDeConsultaDeManifestosPelosDepositrios manifestos(List<ManifestoDaConsultaDeManifestosPelosDepositrios> manifestos) {
-        this.manifestos = manifestos;
-        return this;
-    }
-
-    public ProcessamentoDeConsultaDeManifestosPelosDepositrios addManifestosItem(ManifestoDaConsultaDeManifestosPelosDepositrios manifestosItem) {
-        this.manifestos.add(manifestosItem);
-        return this;
-    }
-
+    @XmlElement(name = "numeroProtocolo")
+    @ApiModelProperty(value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
     /**
      * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
      **/
-    @JsonProperty("numeroProtocolo")
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
+    private String numeroProtocolo = null;
 
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDeConsultaDeManifestosPelosDepositrios numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
@@ -199,16 +126,89 @@ public class ProcessamentoDeConsultaDeManifestosPelosDepositrios {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista de manifestos.
+     *
+     * @return manifestos
+     **/
+    @JsonProperty("manifestos")
+    public List<ManifestoDaConsultaDeManifestosPelosDepositrios> getManifestos() {
+        return manifestos;
+    }
+
+    public void setManifestos(List<ManifestoDaConsultaDeManifestosPelosDepositrios> manifestos) {
+        this.manifestos = manifestos;
+    }
+
+    public ProcessamentoDeConsultaDeManifestosPelosDepositrios manifestos(List<ManifestoDaConsultaDeManifestosPelosDepositrios> manifestos) {
+        this.manifestos = manifestos;
+        return this;
+    }
+
+    public ProcessamentoDeConsultaDeManifestosPelosDepositrios addManifestosItem(ManifestoDaConsultaDeManifestosPelosDepositrios manifestosItem) {
+        this.manifestos.add(manifestosItem);
+        return this;
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDeConsultaDeManifestosPelosDepositrios numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDeConsultaDeManifestosPelosDepositrios situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProcessamentoDeConsultaDeManifestosPelosDepositrios {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    manifestos: " + toIndentedString(manifestos) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
                 "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
                 "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    manifestos: " + toIndentedString(manifestos) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

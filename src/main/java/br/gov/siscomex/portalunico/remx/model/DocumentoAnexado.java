@@ -33,17 +33,6 @@ public class DocumentoAnexado {
     private String documentoAnexado = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data da última atualização do Dossiê.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataUltimaAnexacao
@@ -79,6 +68,18 @@ public class DocumentoAnexado {
     public DocumentoAnexado documentoAnexado(String documentoAnexado) {
         this.documentoAnexado = documentoAnexado;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

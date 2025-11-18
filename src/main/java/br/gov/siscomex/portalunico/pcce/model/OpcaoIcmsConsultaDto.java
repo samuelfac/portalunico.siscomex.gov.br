@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OpcaoIcmsConsultaDto", propOrder =
-        {"uf", "descricaoOpcao", "tipoSolicitacao", "id", "ativa", "dataCadastro", "codigoOpcao"
+        {"ativa", "codigoOpcao", "dataCadastro", "descricaoOpcao", "id", "tipoSolicitacao", "uf"
         })
 
 @XmlRootElement(name = "OpcaoIcmsConsultaDto")
@@ -25,49 +25,52 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Opção de ICMS cadastrada no PCCE")
 public class OpcaoIcmsConsultaDto {
 
-
-    @XmlElement(name = "uf", required = true)
-    @ApiModelProperty(example = "RS", required = true, value = "UF à qual a opção está vinculada")
-    /**
-     * UF à qual a opção está vinculada
-     **/
-    private UfEnum uf = null;
-    @XmlElement(name = "descricaoOpcao", required = true)
-    @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String descricaoOpcao = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
-    /**
-     * Tipo de declaração de ICMS à qual a opção está vinculada
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "5", required = true, value = "Identificador único da opção no PCCE")
-    /**
-     * Identificador único da opção no PCCE
-     **/
-    private Long id = null;
     @XmlElement(name = "ativa", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador de que a opção está ativa e ficará disponível para uso pelo importador<br>Dominio:<br>true - Sim, <br>false - Não")
     /**
      * Indicador de que a opção está ativa e ficará disponível para uso pelo importador<br>Dominio:<br>true - Sim, <br>false - Não
      **/
     private Boolean ativa = null;
-    @XmlElement(name = "dataCadastro", required = true)
-    @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data e hora do cadastro da opção<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data e hora do cadastro da opção<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private String dataCadastro = null;
+
     @XmlElement(name = "codigoOpcao", required = true)
     @ApiModelProperty(example = "9999", required = true, value = "Codigo identificador da opção<br>Tamanho: 4")
     /**
      * Codigo identificador da opção<br>Tamanho: 4
      **/
     private String codigoOpcao = null;
+
+    @XmlElement(name = "dataCadastro", required = true)
+    @ApiModelProperty(example = "2021-08-31T09:11:06-0300", required = true, value = "Data e hora do cadastro da opção<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+    /**
+     * Data e hora do cadastro da opção<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private String dataCadastro = null;
+
+    @XmlElement(name = "descricaoOpcao", required = true)
+    @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String descricaoOpcao = null;
+
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "5", required = true, value = "Identificador único da opção no PCCE")
+    /**
+     * Identificador único da opção no PCCE
+     **/
+    private Long id = null;
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
+    /**
+     * Tipo de declaração de ICMS à qual a opção está vinculada
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+    @XmlElement(name = "uf", required = true)
+    @ApiModelProperty(example = "RS", required = true, value = "UF à qual a opção está vinculada")
+    /**
+     * UF à qual a opção está vinculada
+     **/
+    private UfEnum uf = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -81,25 +84,62 @@ public class OpcaoIcmsConsultaDto {
     }
 
     /**
-     * UF à qual a opção está vinculada
+     * Indicador de que a opção está ativa e ficará disponível para uso pelo importador&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
      *
-     * @return uf
+     * @return ativa
      **/
-    @JsonProperty("uf")
+    @JsonProperty("ativa")
     @NotNull
-    public String getUf() {
-        if (uf == null) {
-            return null;
-        }
-        return uf.value();
+    public Boolean isisAtiva() {
+        return ativa;
     }
 
-    public void setUf(UfEnum uf) {
-        this.uf = uf;
+    public void setAtiva(Boolean ativa) {
+        this.ativa = ativa;
     }
 
-    public OpcaoIcmsConsultaDto uf(UfEnum uf) {
-        this.uf = uf;
+    public OpcaoIcmsConsultaDto ativa(Boolean ativa) {
+        this.ativa = ativa;
+        return this;
+    }
+
+    /**
+     * Codigo identificador da opção&lt;br&gt;Tamanho: 4
+     *
+     * @return codigoOpcao
+     **/
+    @JsonProperty("codigoOpcao")
+    @NotNull
+    public String getCodigoOpcao() {
+        return codigoOpcao;
+    }
+
+    public void setCodigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+    }
+
+    public OpcaoIcmsConsultaDto codigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+        return this;
+    }
+
+    /**
+     * Data e hora do cadastro da opção&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataCadastro
+     **/
+    @JsonProperty("dataCadastro")
+    @NotNull
+    public String getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public OpcaoIcmsConsultaDto dataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
         return this;
     }
 
@@ -120,6 +160,26 @@ public class OpcaoIcmsConsultaDto {
 
     public OpcaoIcmsConsultaDto descricaoOpcao(String descricaoOpcao) {
         this.descricaoOpcao = descricaoOpcao;
+        return this;
+    }
+
+    /**
+     * Identificador único da opção no PCCE
+     *
+     * @return id
+     **/
+    @JsonProperty("id")
+    @NotNull
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public OpcaoIcmsConsultaDto id(Long id) {
+        this.id = id;
         return this;
     }
 
@@ -147,82 +207,25 @@ public class OpcaoIcmsConsultaDto {
     }
 
     /**
-     * Identificador único da opção no PCCE
+     * UF à qual a opção está vinculada
      *
-     * @return id
+     * @return uf
      **/
-    @JsonProperty("id")
+    @JsonProperty("uf")
     @NotNull
-    public Long getId() {
-        return id;
+    public String getUf() {
+        if (uf == null) {
+            return null;
+        }
+        return uf.value();
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUf(UfEnum uf) {
+        this.uf = uf;
     }
 
-    public OpcaoIcmsConsultaDto id(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * Indicador de que a opção está ativa e ficará disponível para uso pelo importador&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
-     *
-     * @return ativa
-     **/
-    @JsonProperty("ativa")
-    @NotNull
-    public Boolean isisAtiva() {
-        return ativa;
-    }
-
-    public void setAtiva(Boolean ativa) {
-        this.ativa = ativa;
-    }
-
-    public OpcaoIcmsConsultaDto ativa(Boolean ativa) {
-        this.ativa = ativa;
-        return this;
-    }
-
-    /**
-     * Data e hora do cadastro da opção&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataCadastro
-     **/
-    @JsonProperty("dataCadastro")
-    @NotNull
-    public String getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(String dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
-    public OpcaoIcmsConsultaDto dataCadastro(String dataCadastro) {
-        this.dataCadastro = dataCadastro;
-        return this;
-    }
-
-    /**
-     * Codigo identificador da opção&lt;br&gt;Tamanho: 4
-     *
-     * @return codigoOpcao
-     **/
-    @JsonProperty("codigoOpcao")
-    @NotNull
-    public String getCodigoOpcao() {
-        return codigoOpcao;
-    }
-
-    public void setCodigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
-    }
-
-    public OpcaoIcmsConsultaDto codigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
+    public OpcaoIcmsConsultaDto uf(UfEnum uf) {
+        this.uf = uf;
         return this;
     }
 
@@ -230,17 +233,67 @@ public class OpcaoIcmsConsultaDto {
     public String toString() {
 
         String sb = "class OpcaoIcmsConsultaDto {\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
-                "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    id: " + toIndentedString(id) + "\n" +
                 "    ativa: " + toIndentedString(ativa) + "\n" +
-                "    dataCadastro: " + toIndentedString(dataCadastro) + "\n" +
                 "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
+                "    dataCadastro: " + toIndentedString(dataCadastro) + "\n" +
+                "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
                 "}";
         return sb;
     }
 
+
+    @XmlType(name = "TipoSolicitacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoSolicitacaoEnum {
+
+        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
+        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
+        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
+        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
+        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
+        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
+        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
+        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
+        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
+        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
+        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
+
+
+        private final String value;
+
+        TipoSolicitacaoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
 
     @XmlType(name = "UfEnum")
     @XmlEnum(String.class)
@@ -361,6 +414,15 @@ public class OpcaoIcmsConsultaDto {
             value = v;
         }
 
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
         public static UfEnum fromValue(String v) {
             for (UfEnum b : UfEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -368,65 +430,6 @@ public class OpcaoIcmsConsultaDto {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to UfEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoSolicitacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoSolicitacaoEnum {
-
-        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
-        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
-        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
-        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
-        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
-        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
-        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
-        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
-        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
-        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
-        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
-
-
-        private final String value;
-
-        TipoSolicitacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
         }
     }
 }

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InfoGeral", propOrder =
-        {"cnpjManifestador", "docTransporte", "observacoes", "cidadeDestino", "cpfManifestador", "paisDestino", "indTransitoAduaneiroInternacional", "localSaida"
+        {"cpfManifestador", "cnpjManifestador", "paisDestino", "cidadeDestino", "indTransitoAduaneiroInternacional", "docTransporte", "localSaida", "observacoes"
         })
 
 @XmlRootElement(name = "InfoGeral")
@@ -26,24 +26,29 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados gerais da Manifestação")
 public class InfoGeral {
 
+    @XmlElement(name = "cpfManifestador")
+    @ApiModelProperty(example = "15573459106", value = "CPF do Manifestador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa física.")
+    /**
+     * CPF do Manifestador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa física.
+     **/
+    private String cpfManifestador = null;
+
     @XmlElement(name = "cnpjManifestador")
     @ApiModelProperty(example = "15573459000106", value = "CNPJ do Manifestador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa jurídica.")
     /**
      * CNPJ do Manifestador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa jurídica.
      **/
     private String cnpjManifestador = null;
-
+    @XmlElement(name = "paisDestino", required = true)
+    @ApiModelProperty(example = "AR", required = true, value = "Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)")
+    /**
+     * Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)
+     **/
+    private PaisDestinoEnum paisDestino = null;
     @XmlElement(name = "docTransporte", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private DocTransporte docTransporte = null;
-
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "MIC/DTA Pre-ACD", value = "Observações<br>Tamanho: 250")
-    /**
-     * Observações<br>Tamanho: 250
-     **/
-    private String observacoes = null;
 
     @XmlElement(name = "cidadeDestino", required = true)
     @ApiModelProperty(example = "BUENOS AIRES", required = true, value = "Nome da cidade de destino da carga<br>Tamanho: 60")
@@ -52,24 +57,19 @@ public class InfoGeral {
      **/
     private String cidadeDestino = null;
 
-    @XmlElement(name = "cpfManifestador")
-    @ApiModelProperty(example = "15573459106", value = "CPF do Manifestador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa física.")
-    /**
-     * CPF do Manifestador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa física.
-     **/
-    private String cpfManifestador = null;
-    @XmlElement(name = "paisDestino", required = true)
-    @ApiModelProperty(example = "AR", required = true, value = "Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)")
-    /**
-     * Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)
-     **/
-    private PaisDestinoEnum paisDestino = null;
     @XmlElement(name = "indTransitoAduaneiroInternacional", required = true)
     @ApiModelProperty(example = "S", required = true, value = "Indicador de transito aduaneiro internacional<br>Domínio: <br>S (Sim), <br>N(Não).")
     /**
      * Indicador de transito aduaneiro internacional<br>Domínio: <br>S (Sim), <br>N(Não).
      **/
     private String indTransitoAduaneiroInternacional = null;
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "MIC/DTA Pre-ACD", value = "Observações<br>Tamanho: 250")
+    /**
+     * Observações<br>Tamanho: 250
+     **/
+    private String observacoes = null;
+
     @XmlElement(name = "localSaida", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
@@ -84,84 +84,6 @@ public class InfoGeral {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * CNPJ do Manifestador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório apenas para transportador nacional do tipo pessoa jurídica.
-     *
-     * @return cnpjManifestador
-     **/
-    @JsonProperty("cnpjManifestador")
-    public String getCnpjManifestador() {
-        return cnpjManifestador;
-    }
-
-    public void setCnpjManifestador(String cnpjManifestador) {
-        this.cnpjManifestador = cnpjManifestador;
-    }
-
-    public InfoGeral cnpjManifestador(String cnpjManifestador) {
-        this.cnpjManifestador = cnpjManifestador;
-        return this;
-    }
-
-    /**
-     * Get docTransporte
-     *
-     * @return docTransporte
-     **/
-    @JsonProperty("docTransporte")
-    @NotNull
-    public DocTransporte getDocTransporte() {
-        return docTransporte;
-    }
-
-    public void setDocTransporte(DocTransporte docTransporte) {
-        this.docTransporte = docTransporte;
-    }
-
-    public InfoGeral docTransporte(DocTransporte docTransporte) {
-        this.docTransporte = docTransporte;
-        return this;
-    }
-
-    /**
-     * Observações&lt;br&gt;Tamanho: 250
-     *
-     * @return observacoes
-     **/
-    @JsonProperty("observacoes")
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
-    public InfoGeral observacoes(String observacoes) {
-        this.observacoes = observacoes;
-        return this;
-    }
-
-    /**
-     * Nome da cidade de destino da carga&lt;br&gt;Tamanho: 60
-     *
-     * @return cidadeDestino
-     **/
-    @JsonProperty("cidadeDestino")
-    @NotNull
-    public String getCidadeDestino() {
-        return cidadeDestino;
-    }
-
-    public void setCidadeDestino(String cidadeDestino) {
-        this.cidadeDestino = cidadeDestino;
-    }
-
-    public InfoGeral cidadeDestino(String cidadeDestino) {
-        this.cidadeDestino = cidadeDestino;
-        return this;
     }
 
     /**
@@ -180,6 +102,25 @@ public class InfoGeral {
 
     public InfoGeral cpfManifestador(String cpfManifestador) {
         this.cpfManifestador = cpfManifestador;
+        return this;
+    }
+
+    /**
+     * CNPJ do Manifestador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório apenas para transportador nacional do tipo pessoa jurídica.
+     *
+     * @return cnpjManifestador
+     **/
+    @JsonProperty("cnpjManifestador")
+    public String getCnpjManifestador() {
+        return cnpjManifestador;
+    }
+
+    public void setCnpjManifestador(String cnpjManifestador) {
+        this.cnpjManifestador = cnpjManifestador;
+    }
+
+    public InfoGeral cnpjManifestador(String cnpjManifestador) {
+        this.cnpjManifestador = cnpjManifestador;
         return this;
     }
 
@@ -207,6 +148,26 @@ public class InfoGeral {
     }
 
     /**
+     * Nome da cidade de destino da carga&lt;br&gt;Tamanho: 60
+     *
+     * @return cidadeDestino
+     **/
+    @JsonProperty("cidadeDestino")
+    @NotNull
+    public String getCidadeDestino() {
+        return cidadeDestino;
+    }
+
+    public void setCidadeDestino(String cidadeDestino) {
+        this.cidadeDestino = cidadeDestino;
+    }
+
+    public InfoGeral cidadeDestino(String cidadeDestino) {
+        this.cidadeDestino = cidadeDestino;
+        return this;
+    }
+
+    /**
      * Indicador de transito aduaneiro internacional&lt;br&gt;Domínio: &lt;br&gt;S (Sim), &lt;br&gt;N(Não).
      *
      * @return indTransitoAduaneiroInternacional
@@ -223,6 +184,26 @@ public class InfoGeral {
 
     public InfoGeral indTransitoAduaneiroInternacional(String indTransitoAduaneiroInternacional) {
         this.indTransitoAduaneiroInternacional = indTransitoAduaneiroInternacional;
+        return this;
+    }
+
+    /**
+     * Get docTransporte
+     *
+     * @return docTransporte
+     **/
+    @JsonProperty("docTransporte")
+    @NotNull
+    public DocTransporte getDocTransporte() {
+        return docTransporte;
+    }
+
+    public void setDocTransporte(DocTransporte docTransporte) {
+        this.docTransporte = docTransporte;
+    }
+
+    public InfoGeral docTransporte(DocTransporte docTransporte) {
+        this.docTransporte = docTransporte;
         return this;
     }
 
@@ -246,19 +227,38 @@ public class InfoGeral {
         return this;
     }
 
+    /**
+     * Observações&lt;br&gt;Tamanho: 250
+     *
+     * @return observacoes
+     **/
+    @JsonProperty("observacoes")
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public InfoGeral observacoes(String observacoes) {
+        this.observacoes = observacoes;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class InfoGeral {\n" +
-                "    cnpjManifestador: " + toIndentedString(cnpjManifestador) + "\n" +
-                "    docTransporte: " + toIndentedString(docTransporte) + "\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
-                "    cidadeDestino: " + toIndentedString(cidadeDestino) + "\n" +
                 "    cpfManifestador: " + toIndentedString(cpfManifestador) + "\n" +
+                "    cnpjManifestador: " + toIndentedString(cnpjManifestador) + "\n" +
                 "    paisDestino: " + toIndentedString(paisDestino) + "\n" +
+                "    cidadeDestino: " + toIndentedString(cidadeDestino) + "\n" +
                 "    indTransitoAduaneiroInternacional: " + toIndentedString(indTransitoAduaneiroInternacional) + "\n" +
+                "    docTransporte: " + toIndentedString(docTransporte) + "\n" +
                 "    localSaida: " + toIndentedString(localSaida) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
                 "}";
         return sb;
     }

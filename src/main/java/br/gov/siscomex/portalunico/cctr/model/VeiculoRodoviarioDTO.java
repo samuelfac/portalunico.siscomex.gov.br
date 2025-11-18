@@ -13,36 +13,55 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VeiculoRodoviarioDTO", propOrder =
-        {"numeroDocCondutorEstrangeiro", "veiculos", "indTtransportadorProprietario", "cpfCondutor", "cpjCnpjResponsavel", "nomeCondutorEstrangeiro"
+        {"indTtransportadorProprietario", "cpjCnpjResponsavel", "cpfCondutor", "numeroDocCondutorEstrangeiro", "nomeCondutorEstrangeiro", "veiculos"
         })
 
 @XmlRootElement(name = "VeiculoRodoviarioDTO")
 public class VeiculoRodoviarioDTO {
 
+    @XmlElement(name = "indTtransportadorProprietario")
+    @ApiModelProperty(value = "")
+    private String indTtransportadorProprietario = null;
+
+    @XmlElement(name = "cpjCnpjResponsavel")
+    @ApiModelProperty(value = "")
+    private String cpjCnpjResponsavel = null;
+
+    @XmlElement(name = "cpfCondutor")
+    @ApiModelProperty(value = "")
+    private String cpfCondutor = null;
+
     @XmlElement(name = "numeroDocCondutorEstrangeiro")
     @ApiModelProperty(value = "")
     private String numeroDocCondutorEstrangeiro = null;
+
+    @XmlElement(name = "nomeCondutorEstrangeiro")
+    @ApiModelProperty(value = "")
+    private String nomeCondutorEstrangeiro = null;
 
     @XmlElement(name = "veiculos")
     @ApiModelProperty(value = "")
     @Valid
     private List<VeiculoDTO> veiculos = null;
 
-    @XmlElement(name = "indTtransportadorProprietario")
-    @ApiModelProperty(value = "")
-    private String indTtransportadorProprietario = null;
+    /**
+     * Get indTtransportadorProprietario
+     *
+     * @return indTtransportadorProprietario
+     **/
+    @JsonProperty("indTtransportadorProprietario")
+    public String getIndTtransportadorProprietario() {
+        return indTtransportadorProprietario;
+    }
 
-    @XmlElement(name = "cpfCondutor")
-    @ApiModelProperty(value = "")
-    private String cpfCondutor = null;
+    public void setIndTtransportadorProprietario(String indTtransportadorProprietario) {
+        this.indTtransportadorProprietario = indTtransportadorProprietario;
+    }
 
-    @XmlElement(name = "cpjCnpjResponsavel")
-    @ApiModelProperty(value = "")
-    private String cpjCnpjResponsavel = null;
-
-    @XmlElement(name = "nomeCondutorEstrangeiro")
-    @ApiModelProperty(value = "")
-    private String nomeCondutorEstrangeiro = null;
+    public VeiculoRodoviarioDTO indTtransportadorProprietario(String indTtransportadorProprietario) {
+        this.indTtransportadorProprietario = indTtransportadorProprietario;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -53,6 +72,44 @@ public class VeiculoRodoviarioDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get cpjCnpjResponsavel
+     *
+     * @return cpjCnpjResponsavel
+     **/
+    @JsonProperty("cpjCnpjResponsavel")
+    public String getCpjCnpjResponsavel() {
+        return cpjCnpjResponsavel;
+    }
+
+    public void setCpjCnpjResponsavel(String cpjCnpjResponsavel) {
+        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
+    }
+
+    /**
+     * Get cpfCondutor
+     *
+     * @return cpfCondutor
+     **/
+    @JsonProperty("cpfCondutor")
+    public String getCpfCondutor() {
+        return cpfCondutor;
+    }
+
+    public void setCpfCondutor(String cpfCondutor) {
+        this.cpfCondutor = cpfCondutor;
+    }
+
+    public VeiculoRodoviarioDTO cpfCondutor(String cpfCondutor) {
+        this.cpfCondutor = cpfCondutor;
+        return this;
+    }
+
+    public VeiculoRodoviarioDTO cpjCnpjResponsavel(String cpjCnpjResponsavel) {
+        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
+        return this;
     }
 
     /**
@@ -67,6 +124,25 @@ public class VeiculoRodoviarioDTO {
 
     public void setNumeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
         this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
+    }
+
+    /**
+     * Get nomeCondutorEstrangeiro
+     *
+     * @return nomeCondutorEstrangeiro
+     **/
+    @JsonProperty("nomeCondutorEstrangeiro")
+    public String getNomeCondutorEstrangeiro() {
+        return nomeCondutorEstrangeiro;
+    }
+
+    public void setNomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
+        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
+    }
+
+    public VeiculoRodoviarioDTO nomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
+        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
+        return this;
     }
 
     public VeiculoRodoviarioDTO numeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
@@ -98,92 +174,16 @@ public class VeiculoRodoviarioDTO {
         return this;
     }
 
-    /**
-     * Get indTtransportadorProprietario
-     *
-     * @return indTtransportadorProprietario
-     **/
-    @JsonProperty("indTtransportadorProprietario")
-    public String getIndTtransportadorProprietario() {
-        return indTtransportadorProprietario;
-    }
-
-    public void setIndTtransportadorProprietario(String indTtransportadorProprietario) {
-        this.indTtransportadorProprietario = indTtransportadorProprietario;
-    }
-
-    public VeiculoRodoviarioDTO indTtransportadorProprietario(String indTtransportadorProprietario) {
-        this.indTtransportadorProprietario = indTtransportadorProprietario;
-        return this;
-    }
-
-    /**
-     * Get cpfCondutor
-     *
-     * @return cpfCondutor
-     **/
-    @JsonProperty("cpfCondutor")
-    public String getCpfCondutor() {
-        return cpfCondutor;
-    }
-
-    public void setCpfCondutor(String cpfCondutor) {
-        this.cpfCondutor = cpfCondutor;
-    }
-
-    public VeiculoRodoviarioDTO cpfCondutor(String cpfCondutor) {
-        this.cpfCondutor = cpfCondutor;
-        return this;
-    }
-
-    /**
-     * Get cpjCnpjResponsavel
-     *
-     * @return cpjCnpjResponsavel
-     **/
-    @JsonProperty("cpjCnpjResponsavel")
-    public String getCpjCnpjResponsavel() {
-        return cpjCnpjResponsavel;
-    }
-
-    public void setCpjCnpjResponsavel(String cpjCnpjResponsavel) {
-        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
-    }
-
-    public VeiculoRodoviarioDTO cpjCnpjResponsavel(String cpjCnpjResponsavel) {
-        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
-        return this;
-    }
-
-    /**
-     * Get nomeCondutorEstrangeiro
-     *
-     * @return nomeCondutorEstrangeiro
-     **/
-    @JsonProperty("nomeCondutorEstrangeiro")
-    public String getNomeCondutorEstrangeiro() {
-        return nomeCondutorEstrangeiro;
-    }
-
-    public void setNomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
-        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
-    }
-
-    public VeiculoRodoviarioDTO nomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
-        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class VeiculoRodoviarioDTO {\n" +
-                "    numeroDocCondutorEstrangeiro: " + toIndentedString(numeroDocCondutorEstrangeiro) + "\n" +
-                "    veiculos: " + toIndentedString(veiculos) + "\n" +
                 "    indTtransportadorProprietario: " + toIndentedString(indTtransportadorProprietario) + "\n" +
-                "    cpfCondutor: " + toIndentedString(cpfCondutor) + "\n" +
                 "    cpjCnpjResponsavel: " + toIndentedString(cpjCnpjResponsavel) + "\n" +
+                "    cpfCondutor: " + toIndentedString(cpfCondutor) + "\n" +
+                "    numeroDocCondutorEstrangeiro: " + toIndentedString(numeroDocCondutorEstrangeiro) + "\n" +
                 "    nomeCondutorEstrangeiro: " + toIndentedString(nomeCondutorEstrangeiro) + "\n" +
+                "    veiculos: " + toIndentedString(veiculos) + "\n" +
                 "}";
         return sb;
     }

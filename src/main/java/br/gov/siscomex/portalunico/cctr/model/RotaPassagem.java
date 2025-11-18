@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RotaPassagem", propOrder =
-        {"codigoCidadeSaida", "codigoAduanaEntrada", "ordemPrecedencia", "codigoAduanaSaida", "codigoLugarOperativoSaida", "codigoCidadeEntrada", "codigoPais", "codigoLugarOperativoEntrada"
+        {"codigoPais", "codigoCidadeEntrada", "codigoAduanaEntrada", "codigoLugarOperativoEntrada", "codigoCidadeSaida", "codigoAduanaSaida", "codigoLugarOperativoSaida", "ordemPrecedencia"
         })
 
 @XmlRootElement(name = "RotaPassagem")
@@ -24,12 +24,19 @@ import java.math.BigDecimal;
 @ApiModel(description = "Rotas de Passagem")
 public class RotaPassagem {
 
-    @XmlElement(name = "codigoCidadeSaida")
-    @ApiModelProperty(example = "10", value = "Cidade de saída (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
+    @XmlElement(name = "codigoPais")
+    @ApiModelProperty(example = "BR", value = "País de passagem.<br>Tamanho: 2<br>Formato: AA")
     /**
-     * Cidade de saída (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA
+     * País de passagem.<br>Tamanho: 2<br>Formato: AA
      **/
-    private String codigoCidadeSaida = null;
+    private String codigoPais = null;
+
+    @XmlElement(name = "codigoCidadeEntrada")
+    @ApiModelProperty(example = "30", value = "Cidade de entrada (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
+    /**
+     * Cidade de entrada (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA
+     **/
+    private String codigoCidadeEntrada = null;
 
     @XmlElement(name = "codigoAduanaEntrada")
     @ApiModelProperty(example = "555", value = "Aduana de entrada (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
@@ -38,13 +45,19 @@ public class RotaPassagem {
      **/
     private String codigoAduanaEntrada = null;
 
-    @XmlElement(name = "ordemPrecedencia")
-    @ApiModelProperty(example = "1.0", value = "Ordem de precedência.<br>Tamanho: 1<br>Formato: N")
-    @Valid
+    @XmlElement(name = "codigoLugarOperativoEntrada")
+    @ApiModelProperty(example = "1234567", value = "Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
     /**
-     * Ordem de precedência.<br>Tamanho: 1<br>Formato: N
+     * Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
      **/
-    private BigDecimal ordemPrecedencia = null;
+    private String codigoLugarOperativoEntrada = null;
+
+    @XmlElement(name = "codigoCidadeSaida")
+    @ApiModelProperty(example = "10", value = "Cidade de saída (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
+    /**
+     * Cidade de saída (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA
+     **/
+    private String codigoCidadeSaida = null;
 
     @XmlElement(name = "codigoAduanaSaida")
     @ApiModelProperty(example = "444", value = "Aduana de saída (ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
@@ -60,26 +73,13 @@ public class RotaPassagem {
      **/
     private String codigoLugarOperativoSaida = null;
 
-    @XmlElement(name = "codigoCidadeEntrada")
-    @ApiModelProperty(example = "30", value = "Cidade de entrada (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA")
+    @XmlElement(name = "ordemPrecedencia")
+    @ApiModelProperty(example = "1.0", value = "Ordem de precedência.<br>Tamanho: 1<br>Formato: N")
+    @Valid
     /**
-     * Cidade de entrada (UNLOCODE).<br>Tamanho: 5<br>Formato: AAAAA
+     * Ordem de precedência.<br>Tamanho: 1<br>Formato: N
      **/
-    private String codigoCidadeEntrada = null;
-
-    @XmlElement(name = "codigoPais")
-    @ApiModelProperty(example = "BR", value = "País de passagem.<br>Tamanho: 2<br>Formato: AA")
-    /**
-     * País de passagem.<br>Tamanho: 2<br>Formato: AA
-     **/
-    private String codigoPais = null;
-
-    @XmlElement(name = "codigoLugarOperativoEntrada")
-    @ApiModelProperty(example = "1234567", value = "Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA")
-    /**
-     * Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).<br>Tamanho: 9<br>Formato: AAAAAAAAA
-     **/
-    private String codigoLugarOperativoEntrada = null;
+    private BigDecimal ordemPrecedencia = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -93,22 +93,36 @@ public class RotaPassagem {
     }
 
     /**
-     * Cidade de saída (UNLOCODE).&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: AAAAA
+     * País de passagem.&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
      *
-     * @return codigoCidadeSaida
+     * @return codigoPais
      **/
-    @JsonProperty("codigoCidadeSaida")
-    public String getCodigoCidadeSaida() {
-        return codigoCidadeSaida;
+    @JsonProperty("codigoPais")
+    public String getCodigoPais() {
+        return codigoPais;
     }
 
-    public void setCodigoCidadeSaida(String codigoCidadeSaida) {
-        this.codigoCidadeSaida = codigoCidadeSaida;
+    public void setCodigoPais(String codigoPais) {
+        this.codigoPais = codigoPais;
     }
 
-    public RotaPassagem codigoCidadeSaida(String codigoCidadeSaida) {
-        this.codigoCidadeSaida = codigoCidadeSaida;
+    public RotaPassagem codigoPais(String codigoPais) {
+        this.codigoPais = codigoPais;
         return this;
+    }
+
+    /**
+     * Cidade de entrada (UNLOCODE).&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: AAAAA
+     *
+     * @return codigoCidadeEntrada
+     **/
+    @JsonProperty("codigoCidadeEntrada")
+    public String getCodigoCidadeEntrada() {
+        return codigoCidadeEntrada;
+    }
+
+    public void setCodigoCidadeEntrada(String codigoCidadeEntrada) {
+        this.codigoCidadeEntrada = codigoCidadeEntrada;
     }
 
     /**
@@ -130,23 +144,42 @@ public class RotaPassagem {
         return this;
     }
 
-    /**
-     * Ordem de precedência.&lt;br&gt;Tamanho: 1&lt;br&gt;Formato: N
-     *
-     * @return ordemPrecedencia
-     **/
-    @JsonProperty("ordemPrecedencia")
-    public BigDecimal getOrdemPrecedencia() {
-        return ordemPrecedencia;
-    }
-
-    public void setOrdemPrecedencia(BigDecimal ordemPrecedencia) {
-        this.ordemPrecedencia = ordemPrecedencia;
-    }
-
-    public RotaPassagem ordemPrecedencia(BigDecimal ordemPrecedencia) {
-        this.ordemPrecedencia = ordemPrecedencia;
+    public RotaPassagem codigoCidadeEntrada(String codigoCidadeEntrada) {
+        this.codigoCidadeEntrada = codigoCidadeEntrada;
         return this;
+    }
+
+    /**
+     * Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
+     *
+     * @return codigoLugarOperativoEntrada
+     **/
+    @JsonProperty("codigoLugarOperativoEntrada")
+    public String getCodigoLugarOperativoEntrada() {
+        return codigoLugarOperativoEntrada;
+    }
+
+    public void setCodigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
+        this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
+    }
+
+    public RotaPassagem codigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
+        this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
+        return this;
+    }
+
+    /**
+     * Cidade de saída (UNLOCODE).&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: AAAAA
+     *
+     * @return codigoCidadeSaida
+     **/
+    @JsonProperty("codigoCidadeSaida")
+    public String getCodigoCidadeSaida() {
+        return codigoCidadeSaida;
+    }
+
+    public void setCodigoCidadeSaida(String codigoCidadeSaida) {
+        this.codigoCidadeSaida = codigoCidadeSaida;
     }
 
     /**
@@ -187,60 +220,27 @@ public class RotaPassagem {
         return this;
     }
 
-    /**
-     * Cidade de entrada (UNLOCODE).&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: AAAAA
-     *
-     * @return codigoCidadeEntrada
-     **/
-    @JsonProperty("codigoCidadeEntrada")
-    public String getCodigoCidadeEntrada() {
-        return codigoCidadeEntrada;
-    }
-
-    public void setCodigoCidadeEntrada(String codigoCidadeEntrada) {
-        this.codigoCidadeEntrada = codigoCidadeEntrada;
-    }
-
-    public RotaPassagem codigoCidadeEntrada(String codigoCidadeEntrada) {
-        this.codigoCidadeEntrada = codigoCidadeEntrada;
+    public RotaPassagem codigoCidadeSaida(String codigoCidadeSaida) {
+        this.codigoCidadeSaida = codigoCidadeSaida;
         return this;
     }
 
     /**
-     * País de passagem.&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
+     * Ordem de precedência.&lt;br&gt;Tamanho: 1&lt;br&gt;Formato: N
      *
-     * @return codigoPais
+     * @return ordemPrecedencia
      **/
-    @JsonProperty("codigoPais")
-    public String getCodigoPais() {
-        return codigoPais;
+    @JsonProperty("ordemPrecedencia")
+    public BigDecimal getOrdemPrecedencia() {
+        return ordemPrecedencia;
     }
 
-    public void setCodigoPais(String codigoPais) {
-        this.codigoPais = codigoPais;
+    public void setOrdemPrecedencia(BigDecimal ordemPrecedencia) {
+        this.ordemPrecedencia = ordemPrecedencia;
     }
 
-    public RotaPassagem codigoPais(String codigoPais) {
-        this.codigoPais = codigoPais;
-        return this;
-    }
-
-    /**
-     * Lugar operativo de entrada (LUGAR OPERATIVOS ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
-     *
-     * @return codigoLugarOperativoEntrada
-     **/
-    @JsonProperty("codigoLugarOperativoEntrada")
-    public String getCodigoLugarOperativoEntrada() {
-        return codigoLugarOperativoEntrada;
-    }
-
-    public void setCodigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
-        this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
-    }
-
-    public RotaPassagem codigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
-        this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
+    public RotaPassagem ordemPrecedencia(BigDecimal ordemPrecedencia) {
+        this.ordemPrecedencia = ordemPrecedencia;
         return this;
     }
 
@@ -248,14 +248,14 @@ public class RotaPassagem {
     public String toString() {
 
         String sb = "class RotaPassagem {\n" +
-                "    codigoCidadeSaida: " + toIndentedString(codigoCidadeSaida) + "\n" +
+                "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
+                "    codigoCidadeEntrada: " + toIndentedString(codigoCidadeEntrada) + "\n" +
                 "    codigoAduanaEntrada: " + toIndentedString(codigoAduanaEntrada) + "\n" +
-                "    ordemPrecedencia: " + toIndentedString(ordemPrecedencia) + "\n" +
+                "    codigoLugarOperativoEntrada: " + toIndentedString(codigoLugarOperativoEntrada) + "\n" +
+                "    codigoCidadeSaida: " + toIndentedString(codigoCidadeSaida) + "\n" +
                 "    codigoAduanaSaida: " + toIndentedString(codigoAduanaSaida) + "\n" +
                 "    codigoLugarOperativoSaida: " + toIndentedString(codigoLugarOperativoSaida) + "\n" +
-                "    codigoCidadeEntrada: " + toIndentedString(codigoCidadeEntrada) + "\n" +
-                "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
-                "    codigoLugarOperativoEntrada: " + toIndentedString(codigoLugarOperativoEntrada) + "\n" +
+                "    ordemPrecedencia: " + toIndentedString(ordemPrecedencia) + "\n" +
                 "}";
         return sb;
     }

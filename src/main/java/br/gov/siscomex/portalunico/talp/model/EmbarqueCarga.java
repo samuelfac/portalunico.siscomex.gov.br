@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EmbarqueCarga", propOrder =
-        {"dataHoraEmbarque", "modalTransporte", "numeroConhecimento"
+        {"modalTransporte", "numeroConhecimento", "dataHoraEmbarque"
         })
 
 @XmlRootElement(name = "EmbarqueCarga")
@@ -25,18 +25,21 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados referentes ao embarque de carga associado a um LPCO com LI vinculada")
 public class EmbarqueCarga {
 
+
     @XmlElement(name = "dataHoraEmbarque", required = true)
     @ApiModelProperty(example = "2023-03-02T15:31Z", required = true, value = "Data e hora do embarque<br>Formato: dd-MM-yyyy'T'HH:mmZ")
     /**
      * Data e hora do embarque<br>Formato: dd-MM-yyyy'T'HH:mmZ
      **/
     private String dataHoraEmbarque = null;
+
     @XmlElement(name = "modalTransporte", required = true)
     @ApiModelProperty(example = "MARITIMO", required = true, value = "Modal de transporte da carga associada ao LPCO.<br>Tamanho máximo: 20")
     /**
      * Modal de transporte da carga associada ao LPCO.<br>Tamanho máximo: 20
      **/
     private ModalTransporteEnum modalTransporte = null;
+
     @XmlElement(name = "numeroConhecimento", required = true)
     @ApiModelProperty(example = "99999999999999999999", required = true, value = "Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
     /**
@@ -53,26 +56,6 @@ public class EmbarqueCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Data e hora do embarque&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
-     *
-     * @return dataHoraEmbarque
-     **/
-    @JsonProperty("dataHoraEmbarque")
-    @NotNull
-    public String getDataHoraEmbarque() {
-        return dataHoraEmbarque;
-    }
-
-    public void setDataHoraEmbarque(String dataHoraEmbarque) {
-        this.dataHoraEmbarque = dataHoraEmbarque;
-    }
-
-    public EmbarqueCarga dataHoraEmbarque(String dataHoraEmbarque) {
-        this.dataHoraEmbarque = dataHoraEmbarque;
-        return this;
     }
 
     /**
@@ -118,14 +101,34 @@ public class EmbarqueCarga {
         return this;
     }
 
+    /**
+     * Data e hora do embarque&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
+     *
+     * @return dataHoraEmbarque
+     **/
+    @JsonProperty("dataHoraEmbarque")
+    @NotNull
+    public String getDataHoraEmbarque() {
+        return dataHoraEmbarque;
+    }
+
+    public void setDataHoraEmbarque(String dataHoraEmbarque) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
+    }
+
+    public EmbarqueCarga dataHoraEmbarque(String dataHoraEmbarque) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class EmbarqueCarga {\n" +
-                "    dataHoraEmbarque: " + toIndentedString(dataHoraEmbarque) + "\n" +
                 "    modalTransporte: " + toIndentedString(modalTransporte) + "\n" +
                 "    numeroConhecimento: " + toIndentedString(numeroConhecimento) + "\n" +
+                "    dataHoraEmbarque: " + toIndentedString(dataHoraEmbarque) + "\n" +
                 "}";
         return sb;
     }

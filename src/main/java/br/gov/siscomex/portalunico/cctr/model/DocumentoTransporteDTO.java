@@ -1,193 +1,59 @@
 package br.gov.siscomex.portalunico.cctr.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.List;
-import java.util.Map;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoTransporteDTO", propOrder =
-        {"observacao", "tipoDocumentoTransporte", "cpfCnpjTransportador", "localDestinoPrevisto", "situacoesObservacao", "veiculoFerroviario", "conteineres", "dataEmissao", "codigoViaTransporte", "dataHoraInicioTransito", "descricaoAvaria", "cargaComDivergencia", "pesoBrutoTransportado", "cargaComAvaria", "dadosUnidadeTransporteConferem", "dadosEmbalagemConferem", "dataHoraChegadaTransito", "tipoDAT", "urlConsulta", "pesoAferido", "sequencia", "ano", "motivoNaoPesagem", "veiculoRodoviario", "dadosConteinerConferem", "descricaoViaDeTransporte", "nomeTransportador", "dadosVeiculoConferem", "numeroLicComplTETI", "descricaoTipoDocumentoTransporte", "numeroLicencaOriginaria", "localOrigem", "cargas", "dataSolicitacaoTransito", "numeroDocumentoTransporte", "situacaoAtual", "descricaoDivergencia", "localDestinoRealizado", "observacaoRecepcao", "identificacaoVeiculo"
+        {"id", "tipoDocumento", "numeroDocumento", "dataEmissao", "identificacaoVeiculo"
         })
 
 @XmlRootElement(name = "DocumentoTransporteDTO")
+/**
+ * Documento de transporte
+ **/
+@ApiModel(description = "Documento de transporte")
 public class DocumentoTransporteDTO {
 
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(value = "")
-    private String observacao = null;
-
-    @XmlElement(name = "tipoDocumentoTransporte")
-    @ApiModelProperty(value = "")
-    private Integer tipoDocumentoTransporte = null;
-
-    @XmlElement(name = "cpfCnpjTransportador")
-    @ApiModelProperty(value = "")
-    private String cpfCnpjTransportador = null;
-
-    @XmlElement(name = "localDestinoPrevisto")
+    @XmlElement(name = "id")
     @ApiModelProperty(value = "")
     @Valid
-    private LocalDTO localDestinoPrevisto = null;
+    private DocumentoTransportePK id = null;
 
-    @XmlElement(name = "situacoesObservacao")
-    @ApiModelProperty(value = "")
-    private Map<String, String> situacoesObservacao = null;
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(example = "1", value = "Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros")
+    /**
+     * Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros
+     **/
+    private String tipoDocumento = null;
 
-    @XmlElement(name = "veiculoFerroviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoFerroviarioDTO veiculoFerroviario = null;
-
-    @XmlElement(name = "conteineres")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<ConteinerDTO> conteineres = null;
+    @XmlElement(name = "numeroDocumento")
+    @ApiModelProperty(example = "123456", value = "Tamanho mínimo: 5<br>Tamanho máximo: 15")
+    /**
+     * Tamanho mínimo: 5<br>Tamanho máximo: 15
+     **/
+    private String numeroDocumento = null;
 
     @XmlElement(name = "dataEmissao")
-    @ApiModelProperty(value = "")
-    private OffsetDateTime dataEmissao = null;
+    @ApiModelProperty(example = "2019-12-30", value = "Formato: AAAA-MM-DD")
+    /**
+     * Formato: AAAA-MM-DD
+     **/
+    private String dataEmissao = null;
 
-    @XmlElement(name = "codigoViaTransporte")
-    @ApiModelProperty(value = "")
-    private Integer codigoViaTransporte = null;
-
-    @XmlElement(name = "dataHoraInicioTransito")
-    @ApiModelProperty(value = "")
-    private OffsetDateTime dataHoraInicioTransito = null;
-
-    @XmlElement(name = "descricaoAvaria")
-    @ApiModelProperty(value = "")
-    private String descricaoAvaria = null;
-
-    @XmlElement(name = "cargaComDivergencia")
-    @ApiModelProperty(value = "")
-    private String cargaComDivergencia = null;
-
-    @XmlElement(name = "pesoBrutoTransportado")
-    @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal pesoBrutoTransportado = null;
-
-    @XmlElement(name = "cargaComAvaria")
-    @ApiModelProperty(value = "")
-    private String cargaComAvaria = null;
-
-    @XmlElement(name = "dadosUnidadeTransporteConferem")
-    @ApiModelProperty(value = "")
-    private String dadosUnidadeTransporteConferem = null;
-
-    @XmlElement(name = "dadosEmbalagemConferem")
-    @ApiModelProperty(value = "")
-    private String dadosEmbalagemConferem = null;
-
-    @XmlElement(name = "dataHoraChegadaTransito")
-    @ApiModelProperty(value = "")
-    private OffsetDateTime dataHoraChegadaTransito = null;
-
-    @XmlElement(name = "tipoDAT")
-    @ApiModelProperty(value = "")
-    private Integer tipoDAT = null;
-
-    @XmlElement(name = "urlConsulta")
-    @ApiModelProperty(value = "")
-    private String urlConsulta = null;
-
-    @XmlElement(name = "pesoAferido")
-    @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal pesoAferido = null;
-
-    @XmlElement(name = "sequencia")
-    @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal sequencia = null;
-
-    @XmlElement(name = "ano")
-    @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal ano = null;
-
-    @XmlElement(name = "motivoNaoPesagem")
-    @ApiModelProperty(value = "")
-    private String motivoNaoPesagem = null;
-
-    @XmlElement(name = "veiculoRodoviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoRodoviarioDTO veiculoRodoviario = null;
-
-    @XmlElement(name = "dadosConteinerConferem")
-    @ApiModelProperty(value = "")
-    private String dadosConteinerConferem = null;
-
-    @XmlElement(name = "descricaoViaDeTransporte")
-    @ApiModelProperty(value = "")
-    private String descricaoViaDeTransporte = null;
-
-    @XmlElement(name = "nomeTransportador")
-    @ApiModelProperty(value = "")
-    private String nomeTransportador = null;
-
-    @XmlElement(name = "dadosVeiculoConferem")
-    @ApiModelProperty(value = "")
-    private String dadosVeiculoConferem = null;
-
-    @XmlElement(name = "numeroLicComplTETI")
-    @ApiModelProperty(value = "")
-    private String numeroLicComplTETI = null;
-
-    @XmlElement(name = "descricaoTipoDocumentoTransporte")
-    @ApiModelProperty(value = "")
-    private String descricaoTipoDocumentoTransporte = null;
-
-    @XmlElement(name = "numeroLicencaOriginaria")
-    @ApiModelProperty(value = "")
-    private String numeroLicencaOriginaria = null;
-
-    @XmlElement(name = "localOrigem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private LocalDTO localOrigem = null;
-
-    @XmlElement(name = "cargas")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaDTO> cargas = null;
-
-    @XmlElement(name = "dataSolicitacaoTransito")
-    @ApiModelProperty(value = "")
-    private OffsetDateTime dataSolicitacaoTransito = null;
-
-    @XmlElement(name = "numeroDocumentoTransporte")
-    @ApiModelProperty(value = "")
-    private String numeroDocumentoTransporte = null;
-    @XmlElement(name = "situacaoAtual")
-    @ApiModelProperty(value = "")
-    private SituacaoAtualEnum situacaoAtual = null;
-    @XmlElement(name = "descricaoDivergencia")
-    @ApiModelProperty(value = "")
-    private String descricaoDivergencia = null;
-    @XmlElement(name = "localDestinoRealizado")
-    @ApiModelProperty(value = "")
-    @Valid
-    private LocalDTO localDestinoRealizado = null;
-    @XmlElement(name = "observacaoRecepcao")
-    @ApiModelProperty(value = "")
-    private String observacaoRecepcao = null;
     @XmlElement(name = "identificacaoVeiculo")
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(example = "ABC1234", value = "Tamanho mínimo: 1<br>Tamanho máximo: 15")
+    /**
+     * Tamanho mínimo: 1<br>Tamanho máximo: 15
+     **/
     private String identificacaoVeiculo = null;
 
     /**
@@ -202,772 +68,79 @@ public class DocumentoTransporteDTO {
     }
 
     /**
-     * Get observacao
+     * Get id
      *
-     * @return observacao
+     * @return id
      **/
-    @JsonProperty("observacao")
-    public String getObservacao() {
-        return observacao;
+    @JsonProperty("id")
+    public DocumentoTransportePK getId() {
+        return id;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    public void setId(DocumentoTransportePK id) {
+        this.id = id;
     }
 
-    public DocumentoTransporteDTO observacao(String observacao) {
-        this.observacao = observacao;
+    public DocumentoTransporteDTO id(DocumentoTransportePK id) {
+        this.id = id;
         return this;
     }
 
     /**
-     * Get tipoDocumentoTransporte
+     * Domínio&lt;br&gt;01 - MIC/DTA&lt;br&gt;02 - TIF/DTA&lt;br&gt;03 - DTAI&lt;br&gt;04 - Outros
      *
-     * @return tipoDocumentoTransporte
+     * @return tipoDocumento
      **/
-    @JsonProperty("tipoDocumentoTransporte")
-    public Integer getTipoDocumentoTransporte() {
-        return tipoDocumentoTransporte;
+    @JsonProperty("tipoDocumento")
+    public String getTipoDocumento() {
+        return tipoDocumento;
     }
 
-    public void setTipoDocumentoTransporte(Integer tipoDocumentoTransporte) {
-        this.tipoDocumentoTransporte = tipoDocumentoTransporte;
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
     }
 
-    public DocumentoTransporteDTO tipoDocumentoTransporte(Integer tipoDocumentoTransporte) {
-        this.tipoDocumentoTransporte = tipoDocumentoTransporte;
+    public DocumentoTransporteDTO tipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
         return this;
     }
 
     /**
-     * Get cpfCnpjTransportador
+     * Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15
      *
-     * @return cpfCnpjTransportador
+     * @return numeroDocumento
      **/
-    @JsonProperty("cpfCnpjTransportador")
-    public String getCpfCnpjTransportador() {
-        return cpfCnpjTransportador;
+    @JsonProperty("numeroDocumento")
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
-    public void setCpfCnpjTransportador(String cpfCnpjTransportador) {
-        this.cpfCnpjTransportador = cpfCnpjTransportador;
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
     }
 
-    public DocumentoTransporteDTO cpfCnpjTransportador(String cpfCnpjTransportador) {
-        this.cpfCnpjTransportador = cpfCnpjTransportador;
+    public DocumentoTransporteDTO numeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
         return this;
     }
 
     /**
-     * Get localDestinoPrevisto
-     *
-     * @return localDestinoPrevisto
-     **/
-    @JsonProperty("localDestinoPrevisto")
-    public LocalDTO getLocalDestinoPrevisto() {
-        return localDestinoPrevisto;
-    }
-
-    public void setLocalDestinoPrevisto(LocalDTO localDestinoPrevisto) {
-        this.localDestinoPrevisto = localDestinoPrevisto;
-    }
-
-    public DocumentoTransporteDTO localDestinoPrevisto(LocalDTO localDestinoPrevisto) {
-        this.localDestinoPrevisto = localDestinoPrevisto;
-        return this;
-    }
-
-    /**
-     * Get situacoesObservacao
-     *
-     * @return situacoesObservacao
-     **/
-    @JsonProperty("situacoesObservacao")
-    public Map<String, String> getSituacoesObservacao() {
-        return situacoesObservacao;
-    }
-
-    public void setSituacoesObservacao(Map<String, String> situacoesObservacao) {
-        this.situacoesObservacao = situacoesObservacao;
-    }
-
-    public DocumentoTransporteDTO situacoesObservacao(Map<String, String> situacoesObservacao) {
-        this.situacoesObservacao = situacoesObservacao;
-        return this;
-    }
-
-    public DocumentoTransporteDTO putSituacoesObservacaoItem(String key, String situacoesObservacaoItem) {
-        this.situacoesObservacao.put(key, situacoesObservacaoItem);
-        return this;
-    }
-
-    /**
-     * Get veiculoFerroviario
-     *
-     * @return veiculoFerroviario
-     **/
-    @JsonProperty("veiculoFerroviario")
-    public VeiculoFerroviarioDTO getVeiculoFerroviario() {
-        return veiculoFerroviario;
-    }
-
-    public void setVeiculoFerroviario(VeiculoFerroviarioDTO veiculoFerroviario) {
-        this.veiculoFerroviario = veiculoFerroviario;
-    }
-
-    public DocumentoTransporteDTO veiculoFerroviario(VeiculoFerroviarioDTO veiculoFerroviario) {
-        this.veiculoFerroviario = veiculoFerroviario;
-        return this;
-    }
-
-    /**
-     * Get conteineres
-     *
-     * @return conteineres
-     **/
-    @JsonProperty("conteineres")
-    public List<ConteinerDTO> getConteineres() {
-        return conteineres;
-    }
-
-    public void setConteineres(List<ConteinerDTO> conteineres) {
-        this.conteineres = conteineres;
-    }
-
-    public DocumentoTransporteDTO conteineres(List<ConteinerDTO> conteineres) {
-        this.conteineres = conteineres;
-        return this;
-    }
-
-    public DocumentoTransporteDTO addConteineresItem(ConteinerDTO conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
-
-    /**
-     * Get dataEmissao
+     * Formato: AAAA-MM-DD
      *
      * @return dataEmissao
      **/
     @JsonProperty("dataEmissao")
-    public OffsetDateTime getDataEmissao() {
+    public String getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(OffsetDateTime dataEmissao) {
+    public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
-    public DocumentoTransporteDTO dataEmissao(OffsetDateTime dataEmissao) {
+    public DocumentoTransporteDTO dataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
         return this;
-    }
-
-    /**
-     * Get codigoViaTransporte
-     *
-     * @return codigoViaTransporte
-     **/
-    @JsonProperty("codigoViaTransporte")
-    public Integer getCodigoViaTransporte() {
-        return codigoViaTransporte;
-    }
-
-    public void setCodigoViaTransporte(Integer codigoViaTransporte) {
-        this.codigoViaTransporte = codigoViaTransporte;
-    }
-
-    public DocumentoTransporteDTO codigoViaTransporte(Integer codigoViaTransporte) {
-        this.codigoViaTransporte = codigoViaTransporte;
-        return this;
-    }
-
-    /**
-     * Get dataHoraInicioTransito
-     *
-     * @return dataHoraInicioTransito
-     **/
-    @JsonProperty("dataHoraInicioTransito")
-    public OffsetDateTime getDataHoraInicioTransito() {
-        return dataHoraInicioTransito;
-    }
-
-    public void setDataHoraInicioTransito(OffsetDateTime dataHoraInicioTransito) {
-        this.dataHoraInicioTransito = dataHoraInicioTransito;
-    }
-
-    public DocumentoTransporteDTO dataHoraInicioTransito(OffsetDateTime dataHoraInicioTransito) {
-        this.dataHoraInicioTransito = dataHoraInicioTransito;
-        return this;
-    }
-
-    /**
-     * Get descricaoAvaria
-     *
-     * @return descricaoAvaria
-     **/
-    @JsonProperty("descricaoAvaria")
-    public String getDescricaoAvaria() {
-        return descricaoAvaria;
-    }
-
-    public void setDescricaoAvaria(String descricaoAvaria) {
-        this.descricaoAvaria = descricaoAvaria;
-    }
-
-    public DocumentoTransporteDTO descricaoAvaria(String descricaoAvaria) {
-        this.descricaoAvaria = descricaoAvaria;
-        return this;
-    }
-
-    /**
-     * Get cargaComDivergencia
-     *
-     * @return cargaComDivergencia
-     **/
-    @JsonProperty("cargaComDivergencia")
-    public String getCargaComDivergencia() {
-        return cargaComDivergencia;
-    }
-
-    public void setCargaComDivergencia(String cargaComDivergencia) {
-        this.cargaComDivergencia = cargaComDivergencia;
-    }
-
-    public DocumentoTransporteDTO cargaComDivergencia(String cargaComDivergencia) {
-        this.cargaComDivergencia = cargaComDivergencia;
-        return this;
-    }
-
-    /**
-     * Get pesoBrutoTransportado
-     *
-     * @return pesoBrutoTransportado
-     **/
-    @JsonProperty("pesoBrutoTransportado")
-    public BigDecimal getPesoBrutoTransportado() {
-        return pesoBrutoTransportado;
-    }
-
-    public void setPesoBrutoTransportado(BigDecimal pesoBrutoTransportado) {
-        this.pesoBrutoTransportado = pesoBrutoTransportado;
-    }
-
-    public DocumentoTransporteDTO pesoBrutoTransportado(BigDecimal pesoBrutoTransportado) {
-        this.pesoBrutoTransportado = pesoBrutoTransportado;
-        return this;
-    }
-
-    /**
-     * Get cargaComAvaria
-     *
-     * @return cargaComAvaria
-     **/
-    @JsonProperty("cargaComAvaria")
-    public String getCargaComAvaria() {
-        return cargaComAvaria;
-    }
-
-    public void setCargaComAvaria(String cargaComAvaria) {
-        this.cargaComAvaria = cargaComAvaria;
-    }
-
-    public DocumentoTransporteDTO cargaComAvaria(String cargaComAvaria) {
-        this.cargaComAvaria = cargaComAvaria;
-        return this;
-    }
-
-    /**
-     * Get dadosUnidadeTransporteConferem
-     *
-     * @return dadosUnidadeTransporteConferem
-     **/
-    @JsonProperty("dadosUnidadeTransporteConferem")
-    public String getDadosUnidadeTransporteConferem() {
-        return dadosUnidadeTransporteConferem;
-    }
-
-    public void setDadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
-        this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
-    }
-
-    public DocumentoTransporteDTO dadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
-        this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
-        return this;
-    }
-
-    /**
-     * Get dadosEmbalagemConferem
-     *
-     * @return dadosEmbalagemConferem
-     **/
-    @JsonProperty("dadosEmbalagemConferem")
-    public String getDadosEmbalagemConferem() {
-        return dadosEmbalagemConferem;
-    }
-
-    public void setDadosEmbalagemConferem(String dadosEmbalagemConferem) {
-        this.dadosEmbalagemConferem = dadosEmbalagemConferem;
-    }
-
-    public DocumentoTransporteDTO dadosEmbalagemConferem(String dadosEmbalagemConferem) {
-        this.dadosEmbalagemConferem = dadosEmbalagemConferem;
-        return this;
-    }
-
-    /**
-     * Get dataHoraChegadaTransito
-     *
-     * @return dataHoraChegadaTransito
-     **/
-    @JsonProperty("dataHoraChegadaTransito")
-    public OffsetDateTime getDataHoraChegadaTransito() {
-        return dataHoraChegadaTransito;
-    }
-
-    public void setDataHoraChegadaTransito(OffsetDateTime dataHoraChegadaTransito) {
-        this.dataHoraChegadaTransito = dataHoraChegadaTransito;
-    }
-
-    public DocumentoTransporteDTO dataHoraChegadaTransito(OffsetDateTime dataHoraChegadaTransito) {
-        this.dataHoraChegadaTransito = dataHoraChegadaTransito;
-        return this;
-    }
-
-    /**
-     * Get tipoDAT
-     *
-     * @return tipoDAT
-     **/
-    @JsonProperty("tipoDAT")
-    public Integer getTipoDAT() {
-        return tipoDAT;
-    }
-
-    public void setTipoDAT(Integer tipoDAT) {
-        this.tipoDAT = tipoDAT;
-    }
-
-    public DocumentoTransporteDTO tipoDAT(Integer tipoDAT) {
-        this.tipoDAT = tipoDAT;
-        return this;
-    }
-
-    /**
-     * Get urlConsulta
-     *
-     * @return urlConsulta
-     **/
-    @JsonProperty("urlConsulta")
-    public String getUrlConsulta() {
-        return urlConsulta;
-    }
-
-    public void setUrlConsulta(String urlConsulta) {
-        this.urlConsulta = urlConsulta;
-    }
-
-    public DocumentoTransporteDTO urlConsulta(String urlConsulta) {
-        this.urlConsulta = urlConsulta;
-        return this;
-    }
-
-    /**
-     * Get pesoAferido
-     *
-     * @return pesoAferido
-     **/
-    @JsonProperty("pesoAferido")
-    public BigDecimal getPesoAferido() {
-        return pesoAferido;
-    }
-
-    public void setPesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-    }
-
-    public DocumentoTransporteDTO pesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-        return this;
-    }
-
-    /**
-     * Get sequencia
-     *
-     * @return sequencia
-     **/
-    @JsonProperty("sequencia")
-    public BigDecimal getSequencia() {
-        return sequencia;
-    }
-
-    public void setSequencia(BigDecimal sequencia) {
-        this.sequencia = sequencia;
-    }
-
-    public DocumentoTransporteDTO sequencia(BigDecimal sequencia) {
-        this.sequencia = sequencia;
-        return this;
-    }
-
-    /**
-     * Get ano
-     *
-     * @return ano
-     **/
-    @JsonProperty("ano")
-    public BigDecimal getAno() {
-        return ano;
-    }
-
-    public void setAno(BigDecimal ano) {
-        this.ano = ano;
-    }
-
-    public DocumentoTransporteDTO ano(BigDecimal ano) {
-        this.ano = ano;
-        return this;
-    }
-
-    /**
-     * Get motivoNaoPesagem
-     *
-     * @return motivoNaoPesagem
-     **/
-    @JsonProperty("motivoNaoPesagem")
-    public String getMotivoNaoPesagem() {
-        return motivoNaoPesagem;
-    }
-
-    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-    }
-
-    public DocumentoTransporteDTO motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-        return this;
-    }
-
-    /**
-     * Get veiculoRodoviario
-     *
-     * @return veiculoRodoviario
-     **/
-    @JsonProperty("veiculoRodoviario")
-    public VeiculoRodoviarioDTO getVeiculoRodoviario() {
-        return veiculoRodoviario;
-    }
-
-    public void setVeiculoRodoviario(VeiculoRodoviarioDTO veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
-    }
-
-    public DocumentoTransporteDTO veiculoRodoviario(VeiculoRodoviarioDTO veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
-        return this;
-    }
-
-    /**
-     * Get dadosConteinerConferem
-     *
-     * @return dadosConteinerConferem
-     **/
-    @JsonProperty("dadosConteinerConferem")
-    public String getDadosConteinerConferem() {
-        return dadosConteinerConferem;
-    }
-
-    public void setDadosConteinerConferem(String dadosConteinerConferem) {
-        this.dadosConteinerConferem = dadosConteinerConferem;
-    }
-
-    public DocumentoTransporteDTO dadosConteinerConferem(String dadosConteinerConferem) {
-        this.dadosConteinerConferem = dadosConteinerConferem;
-        return this;
-    }
-
-    /**
-     * Get descricaoViaDeTransporte
-     *
-     * @return descricaoViaDeTransporte
-     **/
-    @JsonProperty("descricaoViaDeTransporte")
-    public String getDescricaoViaDeTransporte() {
-        return descricaoViaDeTransporte;
-    }
-
-    public void setDescricaoViaDeTransporte(String descricaoViaDeTransporte) {
-        this.descricaoViaDeTransporte = descricaoViaDeTransporte;
-    }
-
-    public DocumentoTransporteDTO descricaoViaDeTransporte(String descricaoViaDeTransporte) {
-        this.descricaoViaDeTransporte = descricaoViaDeTransporte;
-        return this;
-    }
-
-    /**
-     * Get nomeTransportador
-     *
-     * @return nomeTransportador
-     **/
-    @JsonProperty("nomeTransportador")
-    public String getNomeTransportador() {
-        return nomeTransportador;
-    }
-
-    public void setNomeTransportador(String nomeTransportador) {
-        this.nomeTransportador = nomeTransportador;
-    }
-
-    public DocumentoTransporteDTO nomeTransportador(String nomeTransportador) {
-        this.nomeTransportador = nomeTransportador;
-        return this;
-    }
-
-    /**
-     * Get dadosVeiculoConferem
-     *
-     * @return dadosVeiculoConferem
-     **/
-    @JsonProperty("dadosVeiculoConferem")
-    public String getDadosVeiculoConferem() {
-        return dadosVeiculoConferem;
-    }
-
-    public void setDadosVeiculoConferem(String dadosVeiculoConferem) {
-        this.dadosVeiculoConferem = dadosVeiculoConferem;
-    }
-
-    public DocumentoTransporteDTO dadosVeiculoConferem(String dadosVeiculoConferem) {
-        this.dadosVeiculoConferem = dadosVeiculoConferem;
-        return this;
-    }
-
-    /**
-     * Get numeroLicComplTETI
-     *
-     * @return numeroLicComplTETI
-     **/
-    @JsonProperty("numeroLicComplTETI")
-    public String getNumeroLicComplTETI() {
-        return numeroLicComplTETI;
-    }
-
-    public void setNumeroLicComplTETI(String numeroLicComplTETI) {
-        this.numeroLicComplTETI = numeroLicComplTETI;
-    }
-
-    public DocumentoTransporteDTO numeroLicComplTETI(String numeroLicComplTETI) {
-        this.numeroLicComplTETI = numeroLicComplTETI;
-        return this;
-    }
-
-    /**
-     * Get descricaoTipoDocumentoTransporte
-     *
-     * @return descricaoTipoDocumentoTransporte
-     **/
-    @JsonProperty("descricaoTipoDocumentoTransporte")
-    public String getDescricaoTipoDocumentoTransporte() {
-        return descricaoTipoDocumentoTransporte;
-    }
-
-    public void setDescricaoTipoDocumentoTransporte(String descricaoTipoDocumentoTransporte) {
-        this.descricaoTipoDocumentoTransporte = descricaoTipoDocumentoTransporte;
-    }
-
-    public DocumentoTransporteDTO descricaoTipoDocumentoTransporte(String descricaoTipoDocumentoTransporte) {
-        this.descricaoTipoDocumentoTransporte = descricaoTipoDocumentoTransporte;
-        return this;
-    }
-
-    /**
-     * Get numeroLicencaOriginaria
-     *
-     * @return numeroLicencaOriginaria
-     **/
-    @JsonProperty("numeroLicencaOriginaria")
-    public String getNumeroLicencaOriginaria() {
-        return numeroLicencaOriginaria;
-    }
-
-    public void setNumeroLicencaOriginaria(String numeroLicencaOriginaria) {
-        this.numeroLicencaOriginaria = numeroLicencaOriginaria;
-    }
-
-    public DocumentoTransporteDTO numeroLicencaOriginaria(String numeroLicencaOriginaria) {
-        this.numeroLicencaOriginaria = numeroLicencaOriginaria;
-        return this;
-    }
-
-    /**
-     * Get localOrigem
-     *
-     * @return localOrigem
-     **/
-    @JsonProperty("localOrigem")
-    public LocalDTO getLocalOrigem() {
-        return localOrigem;
-    }
-
-    public void setLocalOrigem(LocalDTO localOrigem) {
-        this.localOrigem = localOrigem;
-    }
-
-    public DocumentoTransporteDTO localOrigem(LocalDTO localOrigem) {
-        this.localOrigem = localOrigem;
-        return this;
-    }
-
-    /**
-     * Get cargas
-     *
-     * @return cargas
-     **/
-    @JsonProperty("cargas")
-    public List<CargaDTO> getCargas() {
-        return cargas;
-    }
-
-    public void setCargas(List<CargaDTO> cargas) {
-        this.cargas = cargas;
-    }
-
-    public DocumentoTransporteDTO cargas(List<CargaDTO> cargas) {
-        this.cargas = cargas;
-        return this;
-    }
-
-    public DocumentoTransporteDTO addCargasItem(CargaDTO cargasItem) {
-        this.cargas.add(cargasItem);
-        return this;
-    }
-
-    /**
-     * Get dataSolicitacaoTransito
-     *
-     * @return dataSolicitacaoTransito
-     **/
-    @JsonProperty("dataSolicitacaoTransito")
-    public OffsetDateTime getDataSolicitacaoTransito() {
-        return dataSolicitacaoTransito;
-    }
-
-    public void setDataSolicitacaoTransito(OffsetDateTime dataSolicitacaoTransito) {
-        this.dataSolicitacaoTransito = dataSolicitacaoTransito;
-    }
-
-    public DocumentoTransporteDTO dataSolicitacaoTransito(OffsetDateTime dataSolicitacaoTransito) {
-        this.dataSolicitacaoTransito = dataSolicitacaoTransito;
-        return this;
-    }
-
-    /**
-     * Get numeroDocumentoTransporte
-     *
-     * @return numeroDocumentoTransporte
-     **/
-    @JsonProperty("numeroDocumentoTransporte")
-    public String getNumeroDocumentoTransporte() {
-        return numeroDocumentoTransporte;
-    }
-
-    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
-    }
-
-    public DocumentoTransporteDTO numeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
-        return this;
-    }
-
-    /**
-     * Get situacaoAtual
-     *
-     * @return situacaoAtual
-     **/
-    @JsonProperty("situacaoAtual")
-    public String getSituacaoAtual() {
-        if (situacaoAtual == null) {
-            return null;
-        }
-        return situacaoAtual.value();
-    }
-
-    public void setSituacaoAtual(SituacaoAtualEnum situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-    }
-
-    public DocumentoTransporteDTO situacaoAtual(SituacaoAtualEnum situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-        return this;
-    }
-
-    /**
-     * Get descricaoDivergencia
-     *
-     * @return descricaoDivergencia
-     **/
-    @JsonProperty("descricaoDivergencia")
-    public String getDescricaoDivergencia() {
-        return descricaoDivergencia;
-    }
-
-    public void setDescricaoDivergencia(String descricaoDivergencia) {
-        this.descricaoDivergencia = descricaoDivergencia;
-    }
-
-    public DocumentoTransporteDTO descricaoDivergencia(String descricaoDivergencia) {
-        this.descricaoDivergencia = descricaoDivergencia;
-        return this;
-    }
-
-    /**
-     * Get localDestinoRealizado
-     *
-     * @return localDestinoRealizado
-     **/
-    @JsonProperty("localDestinoRealizado")
-    public LocalDTO getLocalDestinoRealizado() {
-        return localDestinoRealizado;
-    }
-
-    public void setLocalDestinoRealizado(LocalDTO localDestinoRealizado) {
-        this.localDestinoRealizado = localDestinoRealizado;
-    }
-
-    public DocumentoTransporteDTO localDestinoRealizado(LocalDTO localDestinoRealizado) {
-        this.localDestinoRealizado = localDestinoRealizado;
-        return this;
-    }
-
-    /**
-     * Get observacaoRecepcao
-     *
-     * @return observacaoRecepcao
-     **/
-    @JsonProperty("observacaoRecepcao")
-    public String getObservacaoRecepcao() {
-        return observacaoRecepcao;
-    }
-
-    public void setObservacaoRecepcao(String observacaoRecepcao) {
-        this.observacaoRecepcao = observacaoRecepcao;
-    }
-
-    public DocumentoTransporteDTO observacaoRecepcao(String observacaoRecepcao) {
-        this.observacaoRecepcao = observacaoRecepcao;
-        return this;
-    }
-
-    /**
-     * Get identificacaoVeiculo
-     *
-     * @return identificacaoVeiculo
-     **/
-    @JsonProperty("identificacaoVeiculo")
-    public String getIdentificacaoVeiculo() {
-        return identificacaoVeiculo;
     }
 
     public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
@@ -979,126 +152,26 @@ public class DocumentoTransporteDTO {
         return this;
     }
 
+    /**
+     * Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 15
+     *
+     * @return identificacaoVeiculo
+     **/
+    @JsonProperty("identificacaoVeiculo")
+    public String getIdentificacaoVeiculo() {
+        return identificacaoVeiculo;
+    }
 
     @Override
     public String toString() {
 
         String sb = "class DocumentoTransporteDTO {\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
-                "    tipoDocumentoTransporte: " + toIndentedString(tipoDocumentoTransporte) + "\n" +
-                "    cpfCnpjTransportador: " + toIndentedString(cpfCnpjTransportador) + "\n" +
-                "    localDestinoPrevisto: " + toIndentedString(localDestinoPrevisto) + "\n" +
-                "    situacoesObservacao: " + toIndentedString(situacoesObservacao) + "\n" +
-                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
+                "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
                 "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    codigoViaTransporte: " + toIndentedString(codigoViaTransporte) + "\n" +
-                "    dataHoraInicioTransito: " + toIndentedString(dataHoraInicioTransito) + "\n" +
-                "    descricaoAvaria: " + toIndentedString(descricaoAvaria) + "\n" +
-                "    cargaComDivergencia: " + toIndentedString(cargaComDivergencia) + "\n" +
-                "    pesoBrutoTransportado: " + toIndentedString(pesoBrutoTransportado) + "\n" +
-                "    cargaComAvaria: " + toIndentedString(cargaComAvaria) + "\n" +
-                "    dadosUnidadeTransporteConferem: " + toIndentedString(dadosUnidadeTransporteConferem) + "\n" +
-                "    dadosEmbalagemConferem: " + toIndentedString(dadosEmbalagemConferem) + "\n" +
-                "    dataHoraChegadaTransito: " + toIndentedString(dataHoraChegadaTransito) + "\n" +
-                "    tipoDAT: " + toIndentedString(tipoDAT) + "\n" +
-                "    urlConsulta: " + toIndentedString(urlConsulta) + "\n" +
-                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
-                "    sequencia: " + toIndentedString(sequencia) + "\n" +
-                "    ano: " + toIndentedString(ano) + "\n" +
-                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
-                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
-                "    dadosConteinerConferem: " + toIndentedString(dadosConteinerConferem) + "\n" +
-                "    descricaoViaDeTransporte: " + toIndentedString(descricaoViaDeTransporte) + "\n" +
-                "    nomeTransportador: " + toIndentedString(nomeTransportador) + "\n" +
-                "    dadosVeiculoConferem: " + toIndentedString(dadosVeiculoConferem) + "\n" +
-                "    numeroLicComplTETI: " + toIndentedString(numeroLicComplTETI) + "\n" +
-                "    descricaoTipoDocumentoTransporte: " + toIndentedString(descricaoTipoDocumentoTransporte) + "\n" +
-                "    numeroLicencaOriginaria: " + toIndentedString(numeroLicencaOriginaria) + "\n" +
-                "    localOrigem: " + toIndentedString(localOrigem) + "\n" +
-                "    cargas: " + toIndentedString(cargas) + "\n" +
-                "    dataSolicitacaoTransito: " + toIndentedString(dataSolicitacaoTransito) + "\n" +
-                "    numeroDocumentoTransporte: " + toIndentedString(numeroDocumentoTransporte) + "\n" +
-                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
-                "    descricaoDivergencia: " + toIndentedString(descricaoDivergencia) + "\n" +
-                "    localDestinoRealizado: " + toIndentedString(localDestinoRealizado) + "\n" +
-                "    observacaoRecepcao: " + toIndentedString(observacaoRecepcao) + "\n" +
                 "    identificacaoVeiculo: " + toIndentedString(identificacaoVeiculo) + "\n" +
                 "}";
         return sb;
-    }
-
-    @XmlType(name = "SituacaoAtualEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoAtualEnum {
-
-        @XmlEnumValue("MANIFESTADO")
-        @JsonProperty("MANIFESTADO")
-        MANIFESTADO("MANIFESTADO"),
-
-        @XmlEnumValue("CONCEDIDO")
-        @JsonProperty("CONCEDIDO")
-        CONCEDIDO("CONCEDIDO"),
-
-        @XmlEnumValue("TRANSITO_INICIADO")
-        @JsonProperty("TRANSITO_INICIADO")
-        TRANSITO_INICIADO("TRANSITO_INICIADO"),
-
-        @XmlEnumValue("RECEBIDO_EM_TRANSITO")
-        @JsonProperty("RECEBIDO_EM_TRANSITO")
-        RECEBIDO_EM_TRANSITO("RECEBIDO_EM_TRANSITO"),
-
-        @XmlEnumValue("CONCLUIDO")
-        @JsonProperty("CONCLUIDO")
-        CONCLUIDO("CONCLUIDO"),
-
-        @XmlEnumValue("CANCELADO")
-        @JsonProperty("CANCELADO")
-        CANCELADO("CANCELADO"),
-
-        @XmlEnumValue("EM_ANALISE_PARA_CONCESSAO")
-        @JsonProperty("EM_ANALISE_PARA_CONCESSAO")
-        EM_ANALISE_PARA_CONCESSAO("EM_ANALISE_PARA_CONCESSAO"),
-
-        @XmlEnumValue("EM_ANALISE_PARA_CONCLUSAO")
-        @JsonProperty("EM_ANALISE_PARA_CONCLUSAO")
-        EM_ANALISE_PARA_CONCLUSAO("EM_ANALISE_PARA_CONCLUSAO"),
-
-        @XmlEnumValue("AGUARDANDO_ANALISE_PARA_CONCESSAO")
-        @JsonProperty("AGUARDANDO_ANALISE_PARA_CONCESSAO")
-        AGUARDANDO_ANALISE_PARA_CONCESSAO("AGUARDANDO_ANALISE_PARA_CONCESSAO"),
-
-        @XmlEnumValue("AGUARDANDO_ANALISE_PARA_CONCLUSAO")
-        @JsonProperty("AGUARDANDO_ANALISE_PARA_CONCLUSAO")
-        AGUARDANDO_ANALISE_PARA_CONCLUSAO("AGUARDANDO_ANALISE_PARA_CONCLUSAO"),
-
-        @XmlEnumValue("MANIFESTADO_DESPACHO")
-        @JsonProperty("MANIFESTADO_DESPACHO")
-        MANIFESTADO_DESPACHO("MANIFESTADO_DESPACHO");
-
-
-        private final String value;
-
-        SituacaoAtualEnum(String v) {
-            value = v;
-        }
-
-        public static SituacaoAtualEnum fromValue(String v) {
-            for (SituacaoAtualEnum b : SituacaoAtualEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoAtualEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
     }
 }

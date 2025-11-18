@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SoltaVeiculo", propOrder =
-        {"total", "tipoEmbalagem", "quantidade"
+        {"tipoEmbalagem", "total", "quantidade"
         })
 
 @XmlRootElement(name = "SoltaVeiculo")
@@ -23,13 +23,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de Carga Solta/Veículo")
 public class SoltaVeiculo {
 
-    @XmlElement(name = "total")
-    @ApiModelProperty(example = "9999999", value = "Total de embalagens deste tipo, caso não tenha sido informado ainda.<br>Tamanho: 7<br>Formato: NNNNNNN")
-    /**
-     * Total de embalagens deste tipo, caso não tenha sido informado ainda.<br>Tamanho: 7<br>Formato: NNNNNNN
-     **/
-    private Integer total = null;
-
     @XmlElement(name = "tipoEmbalagem")
     @ApiModelProperty(example = "10", value = "Tipo de embalagem conforme a tabela Tipo de Embalagem.<br>Tamanho: 2<br>Formato: NN")
     /**
@@ -37,12 +30,38 @@ public class SoltaVeiculo {
      **/
     private String tipoEmbalagem = null;
 
+    @XmlElement(name = "total")
+    @ApiModelProperty(example = "9999999", value = "Total de embalagens deste tipo, caso não tenha sido informado ainda.<br>Tamanho: 7<br>Formato: NNNNNNN")
+    /**
+     * Total de embalagens deste tipo, caso não tenha sido informado ainda.<br>Tamanho: 7<br>Formato: NNNNNNN
+     **/
+    private Integer total = null;
+
     @XmlElement(name = "quantidade", required = true)
     @ApiModelProperty(example = "9999999", required = true, value = "Quantidade de embalagens deste tipo.<br>Tamanho: 7<br>Formato: NNNNNNN")
     /**
      * Quantidade de embalagens deste tipo.<br>Tamanho: 7<br>Formato: NNNNNNN
      **/
     private Integer quantidade = null;
+
+    /**
+     * Tipo de embalagem conforme a tabela Tipo de Embalagem.&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
+     *
+     * @return tipoEmbalagem
+     **/
+    @JsonProperty("tipoEmbalagem")
+    public String getTipoEmbalagem() {
+        return tipoEmbalagem;
+    }
+
+    public void setTipoEmbalagem(String tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
+    }
+
+    public SoltaVeiculo tipoEmbalagem(String tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,30 +88,6 @@ public class SoltaVeiculo {
         this.total = total;
     }
 
-    public SoltaVeiculo total(Integer total) {
-        this.total = total;
-        return this;
-    }
-
-    /**
-     * Tipo de embalagem conforme a tabela Tipo de Embalagem.&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
-     *
-     * @return tipoEmbalagem
-     **/
-    @JsonProperty("tipoEmbalagem")
-    public String getTipoEmbalagem() {
-        return tipoEmbalagem;
-    }
-
-    public void setTipoEmbalagem(String tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-    }
-
-    public SoltaVeiculo tipoEmbalagem(String tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-        return this;
-    }
-
     /**
      * Quantidade de embalagens deste tipo.&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
      *
@@ -113,12 +108,17 @@ public class SoltaVeiculo {
         return this;
     }
 
+    public SoltaVeiculo total(Integer total) {
+        this.total = total;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SoltaVeiculo {\n" +
-                "    total: " + toIndentedString(total) + "\n" +
                 "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
+                "    total: " + toIndentedString(total) + "\n" +
                 "    quantidade: " + toIndentedString(quantidade) + "\n" +
                 "}";
         return sb;

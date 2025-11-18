@@ -38,12 +38,7 @@ public class ParametroVincularOperacaoAoDossie {
      * Número da operação.<br/>Tamanho máximo: 255<br/>Formato: de acordo com o definido em cada sistema de origem do tipo de operação.<br/><br/>Para DI - Declaração de Importação<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2000004120<br/><br/>Para LI - Licença de Importação<br/>Formato: NNNNNNNNNNN - 11 dígitos numéricos<br/>Exemplo: 19000000235<br/><br/>Para RE - Registro de Exportação<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 190000005786<br/><br/>Para DT - Declaração de Trânsito<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2100003784<br/>
      **/
     private String numeroOperacao = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "DI", required = true, value = "DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>")
-    /**
-     * DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -55,6 +50,13 @@ public class ParametroVincularOperacaoAoDossie {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "DI", required = true, value = "DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>")
+    /**
+     * DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
 
     /**
      * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
@@ -118,7 +120,6 @@ public class ParametroVincularOperacaoAoDossie {
         this.tipoOperacao = tipoOperacao;
         return this;
     }
-
 
     @Override
     public String toString() {

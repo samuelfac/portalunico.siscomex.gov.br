@@ -13,11 +13,16 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DuimpConsultaCover", propOrder =
-        {"situacao", "equipesTrabalho", "documentos", "itens", "tratamentoAdministrativo", "identificacao", "pagamentos", "adicoes", "quantidadeItens", "resultadoAnaliseRisco", "tributos", "carga"
+        {"identificacao", "situacao", "equipesTrabalho", "resultadoAnaliseRisco", "carga", "documentos", "adicoes", "tributos", "pagamentos", "tratamentoAdministrativo", "quantidadeItens", "itens"
         })
 
 @XmlRootElement(name = "DuimpConsultaCover")
 public class DuimpConsultaCover {
+
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private IdentificacaoDuimpConsultaCover identificacao = null;
 
     @XmlElement(name = "situacao")
     @ApiModelProperty(value = "")
@@ -29,38 +34,40 @@ public class DuimpConsultaCover {
     @Valid
     private List<EquipeTrabalhoDuimpConsultaCover> equipesTrabalho = null;
 
+    @XmlElement(name = "resultadoAnaliseRisco")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco = null;
+
+    @XmlElement(name = "carga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaDuimpConsultaCover carga = null;
+
     @XmlElement(name = "documentos")
     @ApiModelProperty(value = "")
     @Valid
     private DocumentosDuimpConsultaCover documentos = null;
 
-    @XmlElement(name = "itens")
-    @ApiModelProperty(value = "Lista contendo os links para os itens da Duimp")
-    @Valid
-    /**
-     * Lista contendo os links para os itens da Duimp
-     **/
-    private List<ItemConsultaDuimpCover> itens = null;
-
-    @XmlElement(name = "tratamentoAdministrativo")
+    @XmlElement(name = "adicoes")
     @ApiModelProperty(value = "")
     @Valid
-    private TratamentoAdministrativoCover tratamentoAdministrativo = null;
+    private List<AdicaoValoresCalculadosDuimpCover> adicoes = null;
 
-    @XmlElement(name = "identificacao")
+    @XmlElement(name = "tributos")
     @ApiModelProperty(value = "")
     @Valid
-    private IdentificacaoDuimpConsultaCover identificacao = null;
+    private TributoConsultaDuimpCover tributos = null;
 
     @XmlElement(name = "pagamentos")
     @ApiModelProperty(value = "")
     @Valid
     private List<PagamentoDuimpConsultaCover> pagamentos = null;
 
-    @XmlElement(name = "adicoes")
+    @XmlElement(name = "tratamentoAdministrativo")
     @ApiModelProperty(value = "")
     @Valid
-    private List<AdicaoValoresCalculadosDuimpCover> adicoes = null;
+    private TratamentoAdministrativoCover tratamentoAdministrativo = null;
 
     @XmlElement(name = "quantidadeItens")
     @ApiModelProperty(example = "100", value = "Quantidade total de Itens da Duimp.<br>Tamanho mínimo: 1<br>Tamanho máximo: 5")
@@ -69,20 +76,13 @@ public class DuimpConsultaCover {
      **/
     private Integer quantidadeItens = null;
 
-    @XmlElement(name = "resultadoAnaliseRisco")
-    @ApiModelProperty(value = "")
+    @XmlElement(name = "itens")
+    @ApiModelProperty(value = "Lista contendo os links para os itens da Duimp")
     @Valid
-    private ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco = null;
-
-    @XmlElement(name = "tributos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TributoConsultaDuimpCover tributos = null;
-
-    @XmlElement(name = "carga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaDuimpConsultaCover carga = null;
+    /**
+     * Lista contendo os links para os itens da Duimp
+     **/
+    private List<ItemConsultaDuimpCover> itens = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -93,6 +93,20 @@ public class DuimpConsultaCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get identificacao
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    public IdentificacaoDuimpConsultaCover getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
     }
 
     /**
@@ -138,6 +152,44 @@ public class DuimpConsultaCover {
         return this;
     }
 
+    public DuimpConsultaCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
+
+    /**
+     * Get resultadoAnaliseRisco
+     *
+     * @return resultadoAnaliseRisco
+     **/
+    @JsonProperty("resultadoAnaliseRisco")
+    public ResultadoAnaliseRiscoDuimpCover getResultadoAnaliseRisco() {
+        return resultadoAnaliseRisco;
+    }
+
+    public void setResultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
+        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
+    }
+
+    public DuimpConsultaCover resultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
+        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
+        return this;
+    }
+
+    /**
+     * Get carga
+     *
+     * @return carga
+     **/
+    @JsonProperty("carga")
+    public CargaDuimpConsultaCover getCarga() {
+        return carga;
+    }
+
+    public void setCarga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
+    }
+
     /**
      * Get documentos
      *
@@ -157,89 +209,8 @@ public class DuimpConsultaCover {
         return this;
     }
 
-    /**
-     * Lista contendo os links para os itens da Duimp
-     *
-     * @return itens
-     **/
-    @JsonProperty("itens")
-    public List<ItemConsultaDuimpCover> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<ItemConsultaDuimpCover> itens) {
-        this.itens = itens;
-    }
-
-    public DuimpConsultaCover itens(List<ItemConsultaDuimpCover> itens) {
-        this.itens = itens;
-        return this;
-    }
-
-    public DuimpConsultaCover addItensItem(ItemConsultaDuimpCover itensItem) {
-        this.itens.add(itensItem);
-        return this;
-    }
-
-    /**
-     * Get tratamentoAdministrativo
-     *
-     * @return tratamentoAdministrativo
-     **/
-    @JsonProperty("tratamentoAdministrativo")
-    public TratamentoAdministrativoCover getTratamentoAdministrativo() {
-        return tratamentoAdministrativo;
-    }
-
-    public void setTratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
-        this.tratamentoAdministrativo = tratamentoAdministrativo;
-    }
-
-    public DuimpConsultaCover tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
-        this.tratamentoAdministrativo = tratamentoAdministrativo;
-        return this;
-    }
-
-    /**
-     * Get identificacao
-     *
-     * @return identificacao
-     **/
-    @JsonProperty("identificacao")
-    public IdentificacaoDuimpConsultaCover getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public DuimpConsultaCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
-    /**
-     * Get pagamentos
-     *
-     * @return pagamentos
-     **/
-    @JsonProperty("pagamentos")
-    public List<PagamentoDuimpConsultaCover> getPagamentos() {
-        return pagamentos;
-    }
-
-    public void setPagamentos(List<PagamentoDuimpConsultaCover> pagamentos) {
-        this.pagamentos = pagamentos;
-    }
-
-    public DuimpConsultaCover pagamentos(List<PagamentoDuimpConsultaCover> pagamentos) {
-        this.pagamentos = pagamentos;
-        return this;
-    }
-
-    public DuimpConsultaCover addPagamentosItem(PagamentoDuimpConsultaCover pagamentosItem) {
-        this.pagamentos.add(pagamentosItem);
+    public DuimpConsultaCover carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
         return this;
     }
 
@@ -268,8 +239,64 @@ public class DuimpConsultaCover {
     }
 
     /**
-     * Quantidade total de Itens da Duimp.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 5
+     * Get tributos
      *
+     * @return tributos
+     **/
+    @JsonProperty("tributos")
+    public TributoConsultaDuimpCover getTributos() {
+        return tributos;
+    }
+
+    public void setTributos(TributoConsultaDuimpCover tributos) {
+        this.tributos = tributos;
+    }
+
+    /**
+     * Get pagamentos
+     *
+     * @return pagamentos
+     **/
+    @JsonProperty("pagamentos")
+    public List<PagamentoDuimpConsultaCover> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<PagamentoDuimpConsultaCover> pagamentos) {
+        this.pagamentos = pagamentos;
+    }
+
+    public DuimpConsultaCover pagamentos(List<PagamentoDuimpConsultaCover> pagamentos) {
+        this.pagamentos = pagamentos;
+        return this;
+    }
+
+    public DuimpConsultaCover addPagamentosItem(PagamentoDuimpConsultaCover pagamentosItem) {
+        this.pagamentos.add(pagamentosItem);
+        return this;
+    }
+
+    public DuimpConsultaCover tributos(TributoConsultaDuimpCover tributos) {
+        this.tributos = tributos;
+        return this;
+    }
+
+    /**
+     * Get tratamentoAdministrativo
+     *
+     * @return tratamentoAdministrativo
+     **/
+    @JsonProperty("tratamentoAdministrativo")
+    public TratamentoAdministrativoCover getTratamentoAdministrativo() {
+        return tratamentoAdministrativo;
+    }
+
+    public void setTratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
+        this.tratamentoAdministrativo = tratamentoAdministrativo;
+    }
+
+    /**
+     * Quantidade total de Itens da Duimp.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 5
      * @return quantidadeItens
      **/
     @JsonProperty("quantidadeItens")
@@ -286,60 +313,31 @@ public class DuimpConsultaCover {
         return this;
     }
 
-    /**
-     * Get resultadoAnaliseRisco
-     *
-     * @return resultadoAnaliseRisco
-     **/
-    @JsonProperty("resultadoAnaliseRisco")
-    public ResultadoAnaliseRiscoDuimpCover getResultadoAnaliseRisco() {
-        return resultadoAnaliseRisco;
-    }
-
-    public void setResultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
-        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
-    }
-
-    public DuimpConsultaCover resultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
-        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
+    public DuimpConsultaCover tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
+        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 
     /**
-     * Get tributos
-     *
-     * @return tributos
+     * Lista contendo os links para os itens da Duimp
+     * @return itens
      **/
-    @JsonProperty("tributos")
-    public TributoConsultaDuimpCover getTributos() {
-        return tributos;
+    @JsonProperty("itens")
+    public List<ItemConsultaDuimpCover> getItens() {
+        return itens;
     }
 
-    public void setTributos(TributoConsultaDuimpCover tributos) {
-        this.tributos = tributos;
+    public void setItens(List<ItemConsultaDuimpCover> itens) {
+        this.itens = itens;
     }
 
-    public DuimpConsultaCover tributos(TributoConsultaDuimpCover tributos) {
-        this.tributos = tributos;
+    public DuimpConsultaCover itens(List<ItemConsultaDuimpCover> itens) {
+        this.itens = itens;
         return this;
     }
 
-    /**
-     * Get carga
-     *
-     * @return carga
-     **/
-    @JsonProperty("carga")
-    public CargaDuimpConsultaCover getCarga() {
-        return carga;
-    }
-
-    public void setCarga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
-    }
-
-    public DuimpConsultaCover carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
+    public DuimpConsultaCover addItensItem(ItemConsultaDuimpCover itensItem) {
+        this.itens.add(itensItem);
         return this;
     }
 
@@ -347,18 +345,18 @@ public class DuimpConsultaCover {
     public String toString() {
 
         String sb = "class DuimpConsultaCover {\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    equipesTrabalho: " + toIndentedString(equipesTrabalho) + "\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
-                "    itens: " + toIndentedString(itens) + "\n" +
-                "    tratamentoAdministrativo: " + toIndentedString(tratamentoAdministrativo) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    pagamentos: " + toIndentedString(pagamentos) + "\n" +
-                "    adicoes: " + toIndentedString(adicoes) + "\n" +
-                "    quantidadeItens: " + toIndentedString(quantidadeItens) + "\n" +
                 "    resultadoAnaliseRisco: " + toIndentedString(resultadoAnaliseRisco) + "\n" +
-                "    tributos: " + toIndentedString(tributos) + "\n" +
                 "    carga: " + toIndentedString(carga) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
+                "    adicoes: " + toIndentedString(adicoes) + "\n" +
+                "    tributos: " + toIndentedString(tributos) + "\n" +
+                "    pagamentos: " + toIndentedString(pagamentos) + "\n" +
+                "    tratamentoAdministrativo: " + toIndentedString(tratamentoAdministrativo) + "\n" +
+                "    quantidadeItens: " + toIndentedString(quantidadeItens) + "\n" +
+                "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
     }

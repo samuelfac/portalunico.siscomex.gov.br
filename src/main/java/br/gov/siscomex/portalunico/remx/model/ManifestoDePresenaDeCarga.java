@@ -43,17 +43,6 @@ public class ManifestoDePresenaDeCarga {
     private List<InformaesDaRemessa> remessas = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpjDeclarante
@@ -115,6 +104,18 @@ public class ManifestoDePresenaDeCarga {
     public ManifestoDePresenaDeCarga addRemessasItem(InformaesDaRemessa remessasItem) {
         this.remessas.add(remessasItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

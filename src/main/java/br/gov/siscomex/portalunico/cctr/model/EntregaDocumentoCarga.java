@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EntregaDocumentoCarga", propOrder =
-        {"observacoes", "documentos", "identificacaoPessoaJuridica", "recebedor", "identificacaoEntrega", "local"
+        {"identificacaoEntrega", "identificacaoPessoaJuridica", "local", "documentos", "recebedor", "observacoes"
         })
 
 @XmlRootElement(name = "EntregaDocumentoCarga")
@@ -24,17 +24,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Entrega por Documento de Carga de Importação")
 public class EntregaDocumentoCarga {
 
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(value = "Dados do interveniente que está recebendo a carga")
+    @XmlElement(name = "identificacaoEntrega", required = true)
+    @ApiModelProperty(example = "ENT001", required = true, value = "Identificação da Entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
     /**
-     * Dados do interveniente que está recebendo a carga
+     * Identificação da Entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      **/
-    private String observacoes = null;
-
-    @XmlElement(name = "documentos", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Documentos documentos = null;
+    private String identificacaoEntrega = null;
 
     @XmlElement(name = "identificacaoPessoaJuridica", required = true)
     @ApiModelProperty(example = "15573459000106", required = true, value = "CNPJ do responsável pela Entrega<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
@@ -43,22 +38,27 @@ public class EntregaDocumentoCarga {
      **/
     private String identificacaoPessoaJuridica = null;
 
+    @XmlElement(name = "local", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Local local = null;
+
+    @XmlElement(name = "documentos", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Documentos documentos = null;
+
     @XmlElement(name = "recebedor", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private Recebedor recebedor = null;
 
-    @XmlElement(name = "identificacaoEntrega", required = true)
-    @ApiModelProperty(example = "ENT001", required = true, value = "Identificação da Entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(value = "Dados do interveniente que está recebendo a carga")
     /**
-     * Identificação da Entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
+     * Dados do interveniente que está recebendo a carga
      **/
-    private String identificacaoEntrega = null;
-
-    @XmlElement(name = "local", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Local local = null;
+    private String observacoes = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -72,42 +72,18 @@ public class EntregaDocumentoCarga {
     }
 
     /**
-     * Dados do interveniente que está recebendo a carga
+     * Identificação da Entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
-     * @return observacoes
+     * @return identificacaoEntrega
      **/
-    @JsonProperty("observacoes")
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
-    public EntregaDocumentoCarga observacoes(String observacoes) {
-        this.observacoes = observacoes;
-        return this;
-    }
-
-    /**
-     * Get documentos
-     *
-     * @return documentos
-     **/
-    @JsonProperty("documentos")
+    @JsonProperty("identificacaoEntrega")
     @NotNull
-    public Documentos getDocumentos() {
-        return documentos;
+    public String getIdentificacaoEntrega() {
+        return identificacaoEntrega;
     }
 
-    public void setDocumentos(Documentos documentos) {
-        this.documentos = documentos;
-    }
-
-    public EntregaDocumentoCarga documentos(Documentos documentos) {
-        this.documentos = documentos;
-        return this;
+    public void setIdentificacaoEntrega(String identificacaoEntrega) {
+        this.identificacaoEntrega = identificacaoEntrega;
     }
 
     /**
@@ -128,41 +104,6 @@ public class EntregaDocumentoCarga {
     public EntregaDocumentoCarga identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
         this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
         return this;
-    }
-
-    /**
-     * Get recebedor
-     *
-     * @return recebedor
-     **/
-    @JsonProperty("recebedor")
-    @NotNull
-    public Recebedor getRecebedor() {
-        return recebedor;
-    }
-
-    public void setRecebedor(Recebedor recebedor) {
-        this.recebedor = recebedor;
-    }
-
-    public EntregaDocumentoCarga recebedor(Recebedor recebedor) {
-        this.recebedor = recebedor;
-        return this;
-    }
-
-    /**
-     * Identificação da Entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
-     *
-     * @return identificacaoEntrega
-     **/
-    @JsonProperty("identificacaoEntrega")
-    @NotNull
-    public String getIdentificacaoEntrega() {
-        return identificacaoEntrega;
-    }
-
-    public void setIdentificacaoEntrega(String identificacaoEntrega) {
-        this.identificacaoEntrega = identificacaoEntrega;
     }
 
     public EntregaDocumentoCarga identificacaoEntrega(String identificacaoEntrega) {
@@ -190,16 +131,75 @@ public class EntregaDocumentoCarga {
         return this;
     }
 
+    /**
+     * Get documentos
+     *
+     * @return documentos
+     **/
+    @JsonProperty("documentos")
+    @NotNull
+    public Documentos getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(Documentos documentos) {
+        this.documentos = documentos;
+    }
+
+    /**
+     * Get recebedor
+     *
+     * @return recebedor
+     **/
+    @JsonProperty("recebedor")
+    @NotNull
+    public Recebedor getRecebedor() {
+        return recebedor;
+    }
+
+    public void setRecebedor(Recebedor recebedor) {
+        this.recebedor = recebedor;
+    }
+
+    public EntregaDocumentoCarga recebedor(Recebedor recebedor) {
+        this.recebedor = recebedor;
+        return this;
+    }
+
+    public EntregaDocumentoCarga documentos(Documentos documentos) {
+        this.documentos = documentos;
+        return this;
+    }
+
+    /**
+     * Dados do interveniente que está recebendo a carga
+     *
+     * @return observacoes
+     **/
+    @JsonProperty("observacoes")
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public EntregaDocumentoCarga observacoes(String observacoes) {
+        this.observacoes = observacoes;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class EntregaDocumentoCarga {\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
-                "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
-                "    recebedor: " + toIndentedString(recebedor) + "\n" +
                 "    identificacaoEntrega: " + toIndentedString(identificacaoEntrega) + "\n" +
+                "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
                 "    local: " + toIndentedString(local) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
+                "    recebedor: " + toIndentedString(recebedor) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
                 "}";
         return sb;
     }

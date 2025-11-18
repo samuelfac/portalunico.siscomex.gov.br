@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OperacaoUnitizacao", propOrder =
-        {"unitizacoes", "identificacaoResponsavelUnitizacao", "local"
+        {"identificacaoResponsavelUnitizacao", "local", "unitizacoes"
         })
 
 @XmlRootElement(name = "OperacaoUnitizacao")
@@ -25,14 +25,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Unitização de Carga<br>Máximo de ocorrências: 1")
 public class OperacaoUnitizacao {
-
-    @XmlElement(name = "unitizacoes", required = true)
-    @ApiModelProperty(required = true, value = "Dados das cargas unitizadas")
-    @Valid
-    /**
-     * Dados das cargas unitizadas
-     **/
-    private List<Unitizacoes> unitizacoes = new ArrayList<>();
 
     @XmlElement(name = "identificacaoResponsavelUnitizacao", required = true)
     @ApiModelProperty(example = "27657485000147", required = true, value = "CNPJ do responsável pela unitização<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
@@ -46,41 +38,13 @@ public class OperacaoUnitizacao {
     @Valid
     private Local local = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "unitizacoes", required = true)
+    @ApiModelProperty(required = true, value = "Dados das cargas unitizadas")
+    @Valid
     /**
      * Dados das cargas unitizadas
-     *
-     * @return unitizacoes
      **/
-    @JsonProperty("unitizacoes")
-    @NotNull
-    public List<Unitizacoes> getUnitizacoes() {
-        return unitizacoes;
-    }
-
-    public void setUnitizacoes(List<Unitizacoes> unitizacoes) {
-        this.unitizacoes = unitizacoes;
-    }
-
-    public OperacaoUnitizacao unitizacoes(List<Unitizacoes> unitizacoes) {
-        this.unitizacoes = unitizacoes;
-        return this;
-    }
-
-    public OperacaoUnitizacao addUnitizacoesItem(Unitizacoes unitizacoesItem) {
-        this.unitizacoes.add(unitizacoesItem);
-        return this;
-    }
+    private List<Unitizacoes> unitizacoes = new ArrayList<>();
 
     /**
      * CNPJ do responsável pela unitização&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
@@ -122,13 +86,49 @@ public class OperacaoUnitizacao {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Dados das cargas unitizadas
+     *
+     * @return unitizacoes
+     **/
+    @JsonProperty("unitizacoes")
+    @NotNull
+    public List<Unitizacoes> getUnitizacoes() {
+        return unitizacoes;
+    }
+
+    public void setUnitizacoes(List<Unitizacoes> unitizacoes) {
+        this.unitizacoes = unitizacoes;
+    }
+
+    public OperacaoUnitizacao unitizacoes(List<Unitizacoes> unitizacoes) {
+        this.unitizacoes = unitizacoes;
+        return this;
+    }
+
+    public OperacaoUnitizacao addUnitizacoesItem(Unitizacoes unitizacoesItem) {
+        this.unitizacoes.add(unitizacoesItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class OperacaoUnitizacao {\n" +
-                "    unitizacoes: " + toIndentedString(unitizacoes) + "\n" +
                 "    identificacaoResponsavelUnitizacao: " + toIndentedString(identificacaoResponsavelUnitizacao) + "\n" +
                 "    local: " + toIndentedString(local) + "\n" +
+                "    unitizacoes: " + toIndentedString(unitizacoes) + "\n" +
                 "}";
         return sb;
     }

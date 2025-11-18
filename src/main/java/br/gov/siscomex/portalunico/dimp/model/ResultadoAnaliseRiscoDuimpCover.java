@@ -102,15 +102,6 @@ public class ResultadoAnaliseRiscoDuimpCover {
             value = v;
         }
 
-        public static CanalConsolidadoEnum fromValue(String v) {
-            for (CanalConsolidadoEnum b : CanalConsolidadoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalConsolidadoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -118,6 +109,15 @@ public class ResultadoAnaliseRiscoDuimpCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static CanalConsolidadoEnum fromValue(String v) {
+            for (CanalConsolidadoEnum b : CanalConsolidadoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalConsolidadoEnum");
         }
     }
 }

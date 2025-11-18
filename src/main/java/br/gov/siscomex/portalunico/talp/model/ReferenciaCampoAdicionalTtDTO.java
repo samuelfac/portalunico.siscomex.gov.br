@@ -11,19 +11,38 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReferenciaCampoAdicionalTtDTO", propOrder =
-        {"valor", "codigoAtributo"
+        {"codigoAtributo", "valor"
         })
 
 @XmlRootElement(name = "ReferenciaCampoAdicionalTtDTO")
 public class ReferenciaCampoAdicionalTtDTO {
 
+    @XmlElement(name = "codigoAtributo")
+    @ApiModelProperty(value = "")
+    private String codigoAtributo = null;
+
     @XmlElement(name = "valor")
     @ApiModelProperty(value = "")
     private String valor = null;
 
-    @XmlElement(name = "codigoAtributo")
-    @ApiModelProperty(value = "")
-    private String codigoAtributo = null;
+    /**
+     * Get codigoAtributo
+     *
+     * @return codigoAtributo
+     **/
+    @JsonProperty("codigoAtributo")
+    public String getCodigoAtributo() {
+        return codigoAtributo;
+    }
+
+    public void setCodigoAtributo(String codigoAtributo) {
+        this.codigoAtributo = codigoAtributo;
+    }
+
+    public ReferenciaCampoAdicionalTtDTO codigoAtributo(String codigoAtributo) {
+        this.codigoAtributo = codigoAtributo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -55,31 +74,12 @@ public class ReferenciaCampoAdicionalTtDTO {
         return this;
     }
 
-    /**
-     * Get codigoAtributo
-     *
-     * @return codigoAtributo
-     **/
-    @JsonProperty("codigoAtributo")
-    public String getCodigoAtributo() {
-        return codigoAtributo;
-    }
-
-    public void setCodigoAtributo(String codigoAtributo) {
-        this.codigoAtributo = codigoAtributo;
-    }
-
-    public ReferenciaCampoAdicionalTtDTO codigoAtributo(String codigoAtributo) {
-        this.codigoAtributo = codigoAtributo;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ReferenciaCampoAdicionalTtDTO {\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    codigoAtributo: " + toIndentedString(codigoAtributo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
                 "}";
         return sb;
     }

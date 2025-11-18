@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Destinatario", propOrder =
-        {"cpf", "cnpj", "identificacaoEstrangeiro"
+        {"cnpj", "cpf", "identificacaoEstrangeiro"
         })
 
 @XmlRootElement(name = "Destinatario")
@@ -23,13 +23,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Destinatário")
 public class Destinatario {
 
-    @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "99999999999", value = "CPF do destinatário<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Deve ser informado somente quando cnpj e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.")
-    /**
-     * CPF do destinatário<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Deve ser informado somente quando cnpj e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.
-     **/
-    private String cpf = null;
-
     @XmlElement(name = "cnpj")
     @ApiModelProperty(example = "9999999999999", value = "CNPJ do destinatário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Deve ser informado somente quando cpf e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.")
     /**
@@ -37,10 +30,36 @@ public class Destinatario {
      **/
     private String cnpj = null;
 
+    @XmlElement(name = "cpf")
+    @ApiModelProperty(example = "99999999999", value = "CPF do destinatário<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Deve ser informado somente quando cnpj e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.")
+    /**
+     * CPF do destinatário<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Deve ser informado somente quando cnpj e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.
+     **/
+    private String cpf = null;
+
     @XmlElement(name = "identificacaoEstrangeiro")
     @ApiModelProperty(value = "")
     @Valid
     private IdentificacaoEstrangeiro identificacaoEstrangeiro = null;
+
+    /**
+     * CNPJ do destinatário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando cpf e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.
+     *
+     * @return cnpj
+     **/
+    @JsonProperty("cnpj")
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public Destinatario cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,30 +86,6 @@ public class Destinatario {
         this.cpf = cpf;
     }
 
-    public Destinatario cpf(String cpf) {
-        this.cpf = cpf;
-        return this;
-    }
-
-    /**
-     * CNPJ do destinatário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando cpf e identificacaoEstrangeiro não forem informados. Neste caso, é obrigatório.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public Destinatario cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Get identificacaoEstrangeiro
      *
@@ -110,12 +105,17 @@ public class Destinatario {
         return this;
     }
 
+    public Destinatario cpf(String cpf) {
+        this.cpf = cpf;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Destinatario {\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    identificacaoEstrangeiro: " + toIndentedString(identificacaoEstrangeiro) + "\n" +
                 "}";
         return sb;

@@ -30,17 +30,6 @@ public class MercadoriaLocalEmbarqueCover {
     private Double valorTotalBRL = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor total da mercadoria no local de embarque.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorTotalBRL
@@ -57,6 +46,18 @@ public class MercadoriaLocalEmbarqueCover {
     public MercadoriaLocalEmbarqueCover valorTotalBRL(Double valorTotalBRL) {
         this.valorTotalBRL = valorTotalBRL;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

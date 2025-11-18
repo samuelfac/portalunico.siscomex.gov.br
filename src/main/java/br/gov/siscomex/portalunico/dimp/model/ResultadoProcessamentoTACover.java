@@ -30,12 +30,7 @@ public class ResultadoProcessamentoTACover {
      * Data do diagnóstico que gerou o resultado.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
      **/
     private String dataProcessamento = null;
-    @XmlElement(name = "resultadoConsolidadoTA")
-    @ApiModelProperty(example = "DEFERIDO", value = "Resultado, dos itens, consolidado dos tratamentos administrativos.<br>Domínio:")
-    /**
-     * Resultado, dos itens, consolidado dos tratamentos administrativos.<br>Domínio:
-     **/
-    private ResultadoConsolidadoTAEnum resultadoConsolidadoTA = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -47,6 +42,13 @@ public class ResultadoProcessamentoTACover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "resultadoConsolidadoTA")
+    @ApiModelProperty(example = "DEFERIDO", value = "Resultado, dos itens, consolidado dos tratamentos administrativos.<br>Domínio:")
+    /**
+     * Resultado, dos itens, consolidado dos tratamentos administrativos.<br>Domínio:
+     **/
+    private ResultadoConsolidadoTAEnum resultadoConsolidadoTA = null;
 
     /**
      * Data do diagnóstico que gerou o resultado.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
@@ -88,7 +90,6 @@ public class ResultadoProcessamentoTACover {
         this.resultadoConsolidadoTA = resultadoConsolidadoTA;
         return this;
     }
-
 
     @Override
     public String toString() {

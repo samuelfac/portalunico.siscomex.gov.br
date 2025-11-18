@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Remetente", propOrder =
-        {"endereco", "numeroCpf", "registroFiscal", "nome", "numeroCnpj"
+        {"numeroCpf", "numeroCnpj", "nome", "endereco", "registroFiscal"
         })
 
 @XmlRootElement(name = "Remetente")
@@ -22,13 +22,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do remetente")
 public class Remetente {
 
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(example = "Endereço do remetente estrangeiro", value = "Endereço do remetente estrangeiro<br> Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.")
-    /**
-     * Endereço do remetente estrangeiro<br> Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
-     **/
-    private String endereco = null;
-
     @XmlElement(name = "numeroCpf")
     @ApiModelProperty(example = "12345678901", value = "CPF do remetente<br>Tamanho: 11<br>Formato: NNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro, e o CNPJ não foi informado.")
     /**
@@ -36,12 +29,12 @@ public class Remetente {
      **/
     private String numeroCpf = null;
 
-    @XmlElement(name = "registroFiscal")
-    @ApiModelProperty(value = "Registro Fiscal do Remetente")
+    @XmlElement(name = "numeroCnpj")
+    @ApiModelProperty(example = "12345678901234", value = "CNPJ do remetente<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.")
     /**
-     * Registro Fiscal do Remetente
+     * CNPJ do remetente<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.
      **/
-    private String registroFiscal = null;
+    private String numeroCnpj = null;
 
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Nome do remetente estrangeiro", value = "Nome do remetente estrangeiro<br>Tamanho: 60<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.")
@@ -50,12 +43,38 @@ public class Remetente {
      **/
     private String nome = null;
 
-    @XmlElement(name = "numeroCnpj")
-    @ApiModelProperty(example = "12345678901234", value = "CNPJ do remetente<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.")
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(example = "Endereço do remetente estrangeiro", value = "Endereço do remetente estrangeiro<br> Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.")
     /**
-     * CNPJ do remetente<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.
+     * Endereço do remetente estrangeiro<br> Tamanho: 120<br>Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
      **/
-    private String numeroCnpj = null;
+    private String endereco = null;
+
+    @XmlElement(name = "registroFiscal")
+    @ApiModelProperty(value = "Registro Fiscal do Remetente")
+    /**
+     * Registro Fiscal do Remetente
+     **/
+    private String registroFiscal = null;
+
+    /**
+     * CPF do remetente&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro, e o CNPJ não foi informado.
+     *
+     * @return numeroCpf
+     **/
+    @JsonProperty("numeroCpf")
+    public String getNumeroCpf() {
+        return numeroCpf;
+    }
+
+    public void setNumeroCpf(String numeroCpf) {
+        this.numeroCpf = numeroCpf;
+    }
+
+    public Remetente numeroCpf(String numeroCpf) {
+        this.numeroCpf = numeroCpf;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,6 +85,44 @@ public class Remetente {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ do remetente&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.
+     *
+     * @return numeroCnpj
+     **/
+    @JsonProperty("numeroCnpj")
+    public String getNumeroCnpj() {
+        return numeroCnpj;
+    }
+
+    public void setNumeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
+    }
+
+    /**
+     * Nome do remetente estrangeiro&lt;br&gt;Tamanho: 60&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Remetente nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    public Remetente numeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
+        return this;
     }
 
     /**
@@ -88,25 +145,6 @@ public class Remetente {
     }
 
     /**
-     * CPF do remetente&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro, e o CNPJ não foi informado.
-     *
-     * @return numeroCpf
-     **/
-    @JsonProperty("numeroCpf")
-    public String getNumeroCpf() {
-        return numeroCpf;
-    }
-
-    public void setNumeroCpf(String numeroCpf) {
-        this.numeroCpf = numeroCpf;
-    }
-
-    public Remetente numeroCpf(String numeroCpf) {
-        this.numeroCpf = numeroCpf;
-        return this;
-    }
-
-    /**
      * Registro Fiscal do Remetente
      *
      * @return registroFiscal
@@ -125,53 +163,15 @@ public class Remetente {
         return this;
     }
 
-    /**
-     * Nome do remetente estrangeiro&lt;br&gt;Tamanho: 60&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao nome do remetente estrangeiro.
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Remetente nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    /**
-     * CNPJ do remetente&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.
-     *
-     * @return numeroCnpj
-     **/
-    @JsonProperty("numeroCnpj")
-    public String getNumeroCnpj() {
-        return numeroCnpj;
-    }
-
-    public void setNumeroCnpj(String numeroCnpj) {
-        this.numeroCnpj = numeroCnpj;
-    }
-
-    public Remetente numeroCnpj(String numeroCnpj) {
-        this.numeroCnpj = numeroCnpj;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Remetente {\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
                 "    numeroCpf: " + toIndentedString(numeroCpf) + "\n" +
-                "    registroFiscal: " + toIndentedString(registroFiscal) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroCnpj: " + toIndentedString(numeroCnpj) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    registroFiscal: " + toIndentedString(registroFiscal) + "\n" +
                 "}";
         return sb;
     }

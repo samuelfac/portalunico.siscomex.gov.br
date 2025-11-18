@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SolicitacaoPagamentoTaxaDTO", propOrder =
-        {"momentoTaxa", "nrOperacaoOrigem", "tpOperacaoOrigem", "codigoReceita", "numeroReferencia", "valorTotal", "identificadorTaxa"
+        {"codigoReceita", "identificadorTaxa", "momentoTaxa", "nrOperacaoOrigem", "numeroReferencia", "tpOperacaoOrigem", "valorTotal"
         })
 
 @XmlRootElement(name = "SolicitacaoPagamentoTaxaDTO")
@@ -27,6 +27,25 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados da solicitação de pagamento de taxa de órgãos anuentes")
 public class SolicitacaoPagamentoTaxaDTO {
 
+    @XmlElement(name = "codigoReceita", required = true)
+    @ApiModelProperty(example = "9999", required = true, value = "Codigo de receita da taxa <br>Tamanho: 4")
+    /**
+     * Codigo de receita da taxa <br>Tamanho: 4
+     **/
+    private String codigoReceita = null;
+
+    @XmlElement(name = "identificadorTaxa", required = true)
+    @ApiModelProperty(example = "000001234567890", required = true, value = "Código único que identifica a taxa no órgão anuente (transação) <br>Tamanho: 15")
+    /**
+     * Código único que identifica a taxa no órgão anuente (transação) <br>Tamanho: 15
+     **/
+    private String identificadorTaxa = null;
+    @XmlElement(name = "tpOperacaoOrigem", required = true)
+    @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à taxa")
+    /**
+     * Tipo da operação que deu origem à taxa
+     **/
+    private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
 
     @XmlElement(name = "momentoTaxa")
     @ApiModelProperty(example = "EXIGENCIA", value = "Momento da taxa <br/>(*) Obrigatório se tpOperacaoOrigem=LPCO.")
@@ -34,43 +53,20 @@ public class SolicitacaoPagamentoTaxaDTO {
      * Momento da taxa <br/>(*) Obrigatório se tpOperacaoOrigem=LPCO.
      **/
     private MomentoTaxaEnum momentoTaxa = null;
+
     @XmlElement(name = "nrOperacaoOrigem", required = true)
     @ApiModelProperty(example = "I2100001234", required = true, value = "Número da operação que deu origem à taxa <br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
     /**
      * Número da operação que deu origem à taxa <br>Tamanho mínimo: 1<br>Tamanho máximo: 20
      **/
     private String nrOperacaoOrigem = null;
-    @XmlElement(name = "tpOperacaoOrigem", required = true)
-    @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à taxa")
-    /**
-     * Tipo da operação que deu origem à taxa
-     **/
-    private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
-    @XmlElement(name = "codigoReceita", required = true)
-    @ApiModelProperty(example = "9999", required = true, value = "Codigo de receita da taxa <br>Tamanho: 4")
-    /**
-     * Codigo de receita da taxa <br>Tamanho: 4
-     **/
-    private String codigoReceita = null;
+
     @XmlElement(name = "numeroReferencia")
     @ApiModelProperty(example = "1", value = "Número de referência do evento <br/>Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).<br/>(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO")
     /**
      * Número de referência do evento <br/>Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).<br/>(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
      **/
     private Integer numeroReferencia = null;
-    @XmlElement(name = "valorTotal", required = true)
-    @ApiModelProperty(example = "126.54", required = true, value = "Valor total a pagar <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor total a pagar <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorTotal = null;
-    @XmlElement(name = "identificadorTaxa", required = true)
-    @ApiModelProperty(example = "000001234567890", required = true, value = "Código único que identifica a taxa no órgão anuente (transação) <br>Tamanho: 15")
-    /**
-     * Código único que identifica a taxa no órgão anuente (transação) <br>Tamanho: 15
-     **/
-    private String identificadorTaxa = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -81,6 +77,63 @@ public class SolicitacaoPagamentoTaxaDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+    @XmlElement(name = "valorTotal", required = true)
+    @ApiModelProperty(example = "126.54", required = true, value = "Valor total a pagar <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor total a pagar <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorTotal = null;
+
+    /**
+     * Codigo de receita da taxa &lt;br&gt;Tamanho: 4
+     *
+     * @return codigoReceita
+     **/
+    @JsonProperty("codigoReceita")
+    @NotNull
+    public String getCodigoReceita() {
+        return codigoReceita;
+    }
+
+    public void setCodigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
+    }
+
+    public SolicitacaoPagamentoTaxaDTO codigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
+        return this;
+    }
+
+    /**
+     * Código único que identifica a taxa no órgão anuente (transação) &lt;br&gt;Tamanho: 15
+     *
+     * @return identificadorTaxa
+     **/
+    @JsonProperty("identificadorTaxa")
+    @NotNull
+    public String getIdentificadorTaxa() {
+        return identificadorTaxa;
+    }
+
+    public void setIdentificadorTaxa(String identificadorTaxa) {
+        this.identificadorTaxa = identificadorTaxa;
+    }
+
+    public SolicitacaoPagamentoTaxaDTO identificadorTaxa(String identificadorTaxa) {
+        this.identificadorTaxa = identificadorTaxa;
+        return this;
+    }
+
+    /**
+     * Número de referência do evento &lt;br/&gt;Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).&lt;br/&gt;(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
+     *
+     * @return numeroReferencia
+     **/
+    @JsonProperty("numeroReferencia")
+    public Integer getNumeroReferencia() {
+        return numeroReferencia;
     }
 
     /**
@@ -125,6 +178,30 @@ public class SolicitacaoPagamentoTaxaDTO {
         return this;
     }
 
+    public void setNumeroReferencia(Integer numeroReferencia) {
+        this.numeroReferencia = numeroReferencia;
+    }
+
+    public SolicitacaoPagamentoTaxaDTO numeroReferencia(Integer numeroReferencia) {
+        this.numeroReferencia = numeroReferencia;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class SolicitacaoPagamentoTaxaDTO {\n" +
+                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
+                "    identificadorTaxa: " + toIndentedString(identificadorTaxa) + "\n" +
+                "    momentoTaxa: " + toIndentedString(momentoTaxa) + "\n" +
+                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
+                "    numeroReferencia: " + toIndentedString(numeroReferencia) + "\n" +
+                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
+                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Tipo da operação que deu origem à taxa
      *
@@ -149,45 +226,6 @@ public class SolicitacaoPagamentoTaxaDTO {
     }
 
     /**
-     * Codigo de receita da taxa &lt;br&gt;Tamanho: 4
-     *
-     * @return codigoReceita
-     **/
-    @JsonProperty("codigoReceita")
-    @NotNull
-    public String getCodigoReceita() {
-        return codigoReceita;
-    }
-
-    public void setCodigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-    }
-
-    public SolicitacaoPagamentoTaxaDTO codigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-        return this;
-    }
-
-    /**
-     * Número de referência do evento &lt;br/&gt;Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).&lt;br/&gt;(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
-     *
-     * @return numeroReferencia
-     **/
-    @JsonProperty("numeroReferencia")
-    public Integer getNumeroReferencia() {
-        return numeroReferencia;
-    }
-
-    public void setNumeroReferencia(Integer numeroReferencia) {
-        this.numeroReferencia = numeroReferencia;
-    }
-
-    public SolicitacaoPagamentoTaxaDTO numeroReferencia(Integer numeroReferencia) {
-        this.numeroReferencia = numeroReferencia;
-        return this;
-    }
-
-    /**
      * Valor total a pagar &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
      *
      * @return valorTotal
@@ -205,41 +243,6 @@ public class SolicitacaoPagamentoTaxaDTO {
     public SolicitacaoPagamentoTaxaDTO valorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
         return this;
-    }
-
-    /**
-     * Código único que identifica a taxa no órgão anuente (transação) &lt;br&gt;Tamanho: 15
-     *
-     * @return identificadorTaxa
-     **/
-    @JsonProperty("identificadorTaxa")
-    @NotNull
-    public String getIdentificadorTaxa() {
-        return identificadorTaxa;
-    }
-
-    public void setIdentificadorTaxa(String identificadorTaxa) {
-        this.identificadorTaxa = identificadorTaxa;
-    }
-
-    public SolicitacaoPagamentoTaxaDTO identificadorTaxa(String identificadorTaxa) {
-        this.identificadorTaxa = identificadorTaxa;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SolicitacaoPagamentoTaxaDTO {\n" +
-                "    momentoTaxa: " + toIndentedString(momentoTaxa) + "\n" +
-                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
-                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
-                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
-                "    numeroReferencia: " + toIndentedString(numeroReferencia) + "\n" +
-                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
-                "    identificadorTaxa: " + toIndentedString(identificadorTaxa) + "\n" +
-                "}";
-        return sb;
     }
 
 

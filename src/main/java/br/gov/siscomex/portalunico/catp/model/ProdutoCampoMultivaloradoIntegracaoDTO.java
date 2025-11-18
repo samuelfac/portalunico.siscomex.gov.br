@@ -34,17 +34,6 @@ public class ProdutoCampoMultivaloradoIntegracaoDTO {
     private String atributo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de valores de atributos da NCM informada
      *
      * @return valores
@@ -86,6 +75,18 @@ public class ProdutoCampoMultivaloradoIntegracaoDTO {
     public ProdutoCampoMultivaloradoIntegracaoDTO atributo(String atributo) {
         this.atributo = atributo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -35,17 +35,6 @@ public class TratamentoAdministrativoCover {
     private List<ItemTratamentoAdministrativoCover> itensTratamentoAdministrativo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get resultadoProcessamentoTA
      *
      * @return resultadoProcessamentoTA
@@ -86,6 +75,18 @@ public class TratamentoAdministrativoCover {
     public TratamentoAdministrativoCover addItensTratamentoAdministrativoItem(ItemTratamentoAdministrativoCover itensTratamentoAdministrativoItem) {
         this.itensTratamentoAdministrativo.add(itensTratamentoAdministrativoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

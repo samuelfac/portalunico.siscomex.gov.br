@@ -30,17 +30,6 @@ public class IdentificacaoItemCriadoCover {
     private String numeroItem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do item da Duimp.
      *
      * @return numeroItem
@@ -57,6 +46,18 @@ public class IdentificacaoItemCriadoCover {
     public IdentificacaoItemCriadoCover numeroItem(String numeroItem) {
         this.numeroItem = numeroItem;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

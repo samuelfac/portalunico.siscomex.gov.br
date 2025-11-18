@@ -14,25 +14,18 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RemessaDaSolicitaoDeDevoluo", propOrder =
-        {"numeroRemessa", "observacao", "dtDocExportacao", "numeroDocumentoExportacao", "codigoMotivoDevolucao"
+        {"codigoMotivoDevolucao", "dtDocExportacao", "numeroDocumentoExportacao", "numeroRemessa", "observacao"
         })
 
 @XmlRootElement(name = "RemessaDaSolicitaoDeDevoluo")
 public class RemessaDaSolicitaoDeDevoluo {
 
-    @XmlElement(name = "numeroRemessa", required = true)
-    @ApiModelProperty(example = "1059756472772322", required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
+    @XmlElement(name = "codigoMotivoDevolucao", required = true)
+    @ApiModelProperty(required = true, value = "Código do motivo da solicitação de devolução. No máximo 3 dígitos.")
     /**
-     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     * Código do motivo da solicitação de devolução. No máximo 3 dígitos.
      **/
-    private String numeroRemessa = null;
-
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(value = "Observação relacionada ao processo de devolução. Máximo de 500 caracteres,que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
-    /**
-     * Observação relacionada ao processo de devolução. Máximo de 500 caracteres,que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
-     **/
-    private String observacao = null;
+    private String codigoMotivoDevolucao = null;
 
     @XmlElement(name = "dtDocExportacao", required = true)
     @ApiModelProperty(required = true, value = "Data relacionada ao documento de exportação. <br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -48,12 +41,19 @@ public class RemessaDaSolicitaoDeDevoluo {
      **/
     private String numeroDocumentoExportacao = null;
 
-    @XmlElement(name = "codigoMotivoDevolucao", required = true)
-    @ApiModelProperty(required = true, value = "Código do motivo da solicitação de devolução. No máximo 3 dígitos.")
+    @XmlElement(name = "numeroRemessa", required = true)
+    @ApiModelProperty(example = "1059756472772322", required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
     /**
-     * Código do motivo da solicitação de devolução. No máximo 3 dígitos.
+     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      **/
-    private String codigoMotivoDevolucao = null;
+    private String numeroRemessa = null;
+
+    @XmlElement(name = "observacao")
+    @ApiModelProperty(value = "Observação relacionada ao processo de devolução. Máximo de 500 caracteres,que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
+    /**
+     * Observação relacionada ao processo de devolução. Máximo de 500 caracteres,que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
+     **/
+    private String observacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,44 +67,19 @@ public class RemessaDaSolicitaoDeDevoluo {
     }
 
     /**
-     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     * Código do motivo da solicitação de devolução. No máximo 3 dígitos.
      *
-     * @return numeroRemessa
+     * @return codigoMotivoDevolucao
      **/
-    @JsonProperty("numeroRemessa")
+    @JsonProperty("codigoMotivoDevolucao")
     @NotNull
-    @Size(min = 1, max = 18)
-    public String getNumeroRemessa() {
-        return numeroRemessa;
+    @Size(min = 1, max = 3)
+    public String getCodigoMotivoDevolucao() {
+        return codigoMotivoDevolucao;
     }
 
-    public void setNumeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-    }
-
-    public RemessaDaSolicitaoDeDevoluo numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
-    }
-
-    /**
-     * Observação relacionada ao processo de devolução. Máximo de 500 caracteres,que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
-     *
-     * @return observacao
-     **/
-    @JsonProperty("observacao")
-    @Size(min = 1, max = 500)
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    public RemessaDaSolicitaoDeDevoluo observacao(String observacao) {
-        this.observacao = observacao;
-        return this;
+    public void setCodigoMotivoDevolucao(String codigoMotivoDevolucao) {
+        this.codigoMotivoDevolucao = codigoMotivoDevolucao;
     }
 
     /**
@@ -148,24 +123,49 @@ public class RemessaDaSolicitaoDeDevoluo {
         return this;
     }
 
-    /**
-     * Código do motivo da solicitação de devolução. No máximo 3 dígitos.
-     *
-     * @return codigoMotivoDevolucao
-     **/
-    @JsonProperty("codigoMotivoDevolucao")
-    @NotNull
-    @Size(min = 1, max = 3)
-    public String getCodigoMotivoDevolucao() {
-        return codigoMotivoDevolucao;
-    }
-
-    public void setCodigoMotivoDevolucao(String codigoMotivoDevolucao) {
-        this.codigoMotivoDevolucao = codigoMotivoDevolucao;
-    }
-
     public RemessaDaSolicitaoDeDevoluo codigoMotivoDevolucao(String codigoMotivoDevolucao) {
         this.codigoMotivoDevolucao = codigoMotivoDevolucao;
+        return this;
+    }
+
+    /**
+     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     *
+     * @return numeroRemessa
+     **/
+    @JsonProperty("numeroRemessa")
+    @NotNull
+    @Size(min = 1, max = 18)
+    public String getNumeroRemessa() {
+        return numeroRemessa;
+    }
+
+    public void setNumeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+    }
+
+    public RemessaDaSolicitaoDeDevoluo numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+        return this;
+    }
+
+    /**
+     * Observação relacionada ao processo de devolução. Máximo de 500 caracteres,que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
+     *
+     * @return observacao
+     **/
+    @JsonProperty("observacao")
+    @Size(min = 1, max = 500)
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public RemessaDaSolicitaoDeDevoluo observacao(String observacao) {
+        this.observacao = observacao;
         return this;
     }
 
@@ -173,11 +173,11 @@ public class RemessaDaSolicitaoDeDevoluo {
     public String toString() {
 
         String sb = "class RemessaDaSolicitaoDeDevoluo {\n" +
-                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
+                "    codigoMotivoDevolucao: " + toIndentedString(codigoMotivoDevolucao) + "\n" +
                 "    dtDocExportacao: " + toIndentedString(dtDocExportacao) + "\n" +
                 "    numeroDocumentoExportacao: " + toIndentedString(numeroDocumentoExportacao) + "\n" +
-                "    codigoMotivoDevolucao: " + toIndentedString(codigoMotivoDevolucao) + "\n" +
+                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
                 "}";
         return sb;
     }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ResultadoConsultaConteiner", propOrder =
-        {"lacres", "motivoNaoPesagem", "documentosTransporte", "numeroConteiner", "pesoBruto", "tara", "permiteMovimentacao", "documentosCarga"
+        {"numeroConteiner", "pesoBruto", "motivoNaoPesagem", "tara", "lacres", "documentosCarga", "documentosTransporte", "permiteMovimentacao"
         })
 
 @XmlRootElement(name = "ResultadoConsultaConteiner")
@@ -23,25 +23,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Resultado da consulta do contêiner")
 public class ResultadoConsultaConteiner {
-
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(example = "[ABC123,CDE456,EDR5676]", value = "Lacre<br>Tamanho: 15")
-    /**
-     * Lacre<br>Tamanho: 15
-     **/
-    private List<String> lacres = null;
-
-    @XmlElement(name = "motivoNaoPesagem")
-    @ApiModelProperty(example = "Motivo da não pesagem<br>Tamanho: 250", value = "Tamanho mínimo: 1<br>Tamanho máximo: 250")
-    /**
-     * Tamanho mínimo: 1<br>Tamanho máximo: 250
-     **/
-    private String motivoNaoPesagem = null;
-
-    @XmlElement(name = "documentosTransporte")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<DocumentoTransporteDTO> documentosTransporte = null;
 
     @XmlElement(name = "numeroConteiner")
     @ApiModelProperty(example = "SXYOU6BXDF", value = "Número Contêiner<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA")
@@ -57,6 +38,13 @@ public class ResultadoConsultaConteiner {
      **/
     private String pesoBruto = null;
 
+    @XmlElement(name = "motivoNaoPesagem")
+    @ApiModelProperty(example = "Motivo da não pesagem<br>Tamanho: 250", value = "Tamanho mínimo: 1<br>Tamanho máximo: 250")
+    /**
+     * Tamanho mínimo: 1<br>Tamanho máximo: 250
+     **/
+    private String motivoNaoPesagem = null;
+
     @XmlElement(name = "tara")
     @ApiModelProperty(example = "400.252", value = "Tara<br>Tamanho: 12.3<br>Formato: Decimal, com três casas decimais separadas por ponto")
     /**
@@ -64,92 +52,26 @@ public class ResultadoConsultaConteiner {
      **/
     private String tara = null;
 
-    @XmlElement(name = "permiteMovimentacao")
-    @ApiModelProperty(example = "true", value = "")
-    private Boolean permiteMovimentacao = null;
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(example = "[ABC123,CDE456,EDR5676]", value = "Lacre<br>Tamanho: 15")
+    /**
+     * Lacre<br>Tamanho: 15
+     **/
+    private List<String> lacres = null;
 
     @XmlElement(name = "documentosCarga")
     @ApiModelProperty(value = "")
     @Valid
     private List<DocumentosCarga> documentosCarga = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "documentosTransporte")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DocumentoTransporteDTO> documentosTransporte = null;
 
-    /**
-     * Lacre&lt;br&gt;Tamanho: 15
-     *
-     * @return lacres
-     **/
-    @JsonProperty("lacres")
-    public List<String> getLacres() {
-        return lacres;
-    }
-
-    public void setLacres(List<String> lacres) {
-        this.lacres = lacres;
-    }
-
-    public ResultadoConsultaConteiner lacres(List<String> lacres) {
-        this.lacres = lacres;
-        return this;
-    }
-
-    public ResultadoConsultaConteiner addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
-
-    /**
-     * Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 250
-     *
-     * @return motivoNaoPesagem
-     **/
-    @JsonProperty("motivoNaoPesagem")
-    public String getMotivoNaoPesagem() {
-        return motivoNaoPesagem;
-    }
-
-    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-    }
-
-    public ResultadoConsultaConteiner motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-        return this;
-    }
-
-    /**
-     * Get documentosTransporte
-     *
-     * @return documentosTransporte
-     **/
-    @JsonProperty("documentosTransporte")
-    public List<DocumentoTransporteDTO> getDocumentosTransporte() {
-        return documentosTransporte;
-    }
-
-    public void setDocumentosTransporte(List<DocumentoTransporteDTO> documentosTransporte) {
-        this.documentosTransporte = documentosTransporte;
-    }
-
-    public ResultadoConsultaConteiner documentosTransporte(List<DocumentoTransporteDTO> documentosTransporte) {
-        this.documentosTransporte = documentosTransporte;
-        return this;
-    }
-
-    public ResultadoConsultaConteiner addDocumentosTransporteItem(DocumentoTransporteDTO documentosTransporteItem) {
-        this.documentosTransporte.add(documentosTransporteItem);
-        return this;
-    }
+    @XmlElement(name = "permiteMovimentacao")
+    @ApiModelProperty(example = "true", value = "")
+    private Boolean permiteMovimentacao = null;
 
     /**
      * Número Contêiner&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAA
@@ -190,6 +112,31 @@ public class ResultadoConsultaConteiner {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 250
+     *
+     * @return motivoNaoPesagem
+     **/
+    @JsonProperty("motivoNaoPesagem")
+    public String getMotivoNaoPesagem() {
+        return motivoNaoPesagem;
+    }
+
+    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+    }
+
+    /**
      * Tara&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: Decimal, com três casas decimais separadas por ponto
      *
      * @return tara
@@ -208,22 +155,27 @@ public class ResultadoConsultaConteiner {
         return this;
     }
 
+    public ResultadoConsultaConteiner motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
+    }
+
     /**
-     * Get permiteMovimentacao
+     * Lacre&lt;br&gt;Tamanho: 15
      *
-     * @return permiteMovimentacao
+     * @return lacres
      **/
-    @JsonProperty("permiteMovimentacao")
-    public Boolean isisPermiteMovimentacao() {
-        return permiteMovimentacao;
+    @JsonProperty("lacres")
+    public List<String> getLacres() {
+        return lacres;
     }
 
-    public void setPermiteMovimentacao(Boolean permiteMovimentacao) {
-        this.permiteMovimentacao = permiteMovimentacao;
+    public void setLacres(List<String> lacres) {
+        this.lacres = lacres;
     }
 
-    public ResultadoConsultaConteiner permiteMovimentacao(Boolean permiteMovimentacao) {
-        this.permiteMovimentacao = permiteMovimentacao;
+    public ResultadoConsultaConteiner lacres(List<String> lacres) {
+        this.lacres = lacres;
         return this;
     }
 
@@ -251,18 +203,66 @@ public class ResultadoConsultaConteiner {
         return this;
     }
 
+    public ResultadoConsultaConteiner addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
+    }
+
+    /**
+     * Get documentosTransporte
+     *
+     * @return documentosTransporte
+     **/
+    @JsonProperty("documentosTransporte")
+    public List<DocumentoTransporteDTO> getDocumentosTransporte() {
+        return documentosTransporte;
+    }
+
+    public void setDocumentosTransporte(List<DocumentoTransporteDTO> documentosTransporte) {
+        this.documentosTransporte = documentosTransporte;
+    }
+
+    public ResultadoConsultaConteiner documentosTransporte(List<DocumentoTransporteDTO> documentosTransporte) {
+        this.documentosTransporte = documentosTransporte;
+        return this;
+    }
+
+    public ResultadoConsultaConteiner addDocumentosTransporteItem(DocumentoTransporteDTO documentosTransporteItem) {
+        this.documentosTransporte.add(documentosTransporteItem);
+        return this;
+    }
+
+    /**
+     * Get permiteMovimentacao
+     *
+     * @return permiteMovimentacao
+     **/
+    @JsonProperty("permiteMovimentacao")
+    public Boolean isisPermiteMovimentacao() {
+        return permiteMovimentacao;
+    }
+
+    public void setPermiteMovimentacao(Boolean permiteMovimentacao) {
+        this.permiteMovimentacao = permiteMovimentacao;
+    }
+
+    public ResultadoConsultaConteiner permiteMovimentacao(Boolean permiteMovimentacao) {
+        this.permiteMovimentacao = permiteMovimentacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ResultadoConsultaConteiner {\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
-                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
-                "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
-                "    permiteMovimentacao: " + toIndentedString(permiteMovimentacao) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    documentosCarga: " + toIndentedString(documentosCarga) + "\n" +
+                "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
+                "    permiteMovimentacao: " + toIndentedString(permiteMovimentacao) + "\n" +
                 "}";
         return sb;
     }

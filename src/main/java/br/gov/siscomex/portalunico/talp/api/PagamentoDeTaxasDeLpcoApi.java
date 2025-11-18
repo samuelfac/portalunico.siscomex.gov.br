@@ -28,7 +28,7 @@ public interface PagamentoDeTaxasDeLpcoApi {
 
     /**
      * Dispensar o pagamento de uma taxa do LPCO.
-     * <p>
+     *
      * &lt;p&gt; Disponível apenas para a Administração Pública.&lt;/p&gt;
      *
      */
@@ -40,10 +40,10 @@ public interface PagamentoDeTaxasDeLpcoApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = LpcoDetalhado.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     LpcoDetalhado dispensarPagamentoLpco(@ApiParam(value = "Número do LPCO para o qual será dispensado o pagamento de uma taxa.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano", required = true) @PathParam("numeroLpco") String numeroLpco, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "") @Valid DispensaPagamentoLpcoRequest body);
 }
 

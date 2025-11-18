@@ -33,12 +33,7 @@ public class CampoOrdenacaoApiRepresentation {
      * Nome do campo.
      **/
     private String nome = null;
-    @XmlElement(name = "tipoOrdenacao")
-    @ApiModelProperty(example = "DESC", value = "Tipo de ordenação.<br>Domínio:")
-    /**
-     * Tipo de ordenação.<br>Domínio:
-     **/
-    private TipoOrdenacaoEnum tipoOrdenacao = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -50,6 +45,13 @@ public class CampoOrdenacaoApiRepresentation {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoOrdenacao")
+    @ApiModelProperty(example = "DESC", value = "Tipo de ordenação.<br>Domínio:")
+    /**
+     * Tipo de ordenação.<br>Domínio:
+     **/
+    private TipoOrdenacaoEnum tipoOrdenacao = null;
 
     /**
      * Nome da tabela.
@@ -112,7 +114,6 @@ public class CampoOrdenacaoApiRepresentation {
         this.tipoOrdenacao = tipoOrdenacao;
         return this;
     }
-
 
     @Override
     public String toString() {

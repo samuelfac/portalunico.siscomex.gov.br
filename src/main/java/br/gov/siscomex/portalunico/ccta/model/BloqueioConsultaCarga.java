@@ -13,11 +13,28 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BloqueioConsultaCarga", propOrder =
-        {"justificativaBloqueio", "responsavelBloqueio", "motivo", "tipo", "dataBloqueio", "desbloquear", "justificativaDesbloqueio", "visibilidade", "responsavelDesbloqueio", "dataDesbloqueio", "modo", "alcance"
+        {"alcance", "dataBloqueio", "dataDesbloqueio", "desbloquear", "justificativaBloqueio", "justificativaDesbloqueio", "modo", "motivo", "responsavelBloqueio", "responsavelDesbloqueio", "tipo", "visibilidade"
         })
 
 @XmlRootElement(name = "BloqueioConsultaCarga")
 public class BloqueioConsultaCarga {
+
+    @XmlElement(name = "alcance")
+    @ApiModelProperty(value = "")
+    @Valid
+    private AlcanceBloqueio alcance = null;
+
+    @XmlElement(name = "dataBloqueio")
+    @ApiModelProperty(value = "")
+    private OffsetDateTime dataBloqueio = null;
+
+    @XmlElement(name = "dataDesbloqueio")
+    @ApiModelProperty(value = "")
+    private OffsetDateTime dataDesbloqueio = null;
+
+    @XmlElement(name = "desbloquear")
+    @ApiModelProperty(value = "")
+    private Boolean desbloquear = null;
 
     @XmlElement(name = "justificativaBloqueio")
     @ApiModelProperty(example = "Bloqueio visível", value = "Justificativa do bloqueio")
@@ -26,29 +43,6 @@ public class BloqueioConsultaCarga {
      **/
     private String justificativaBloqueio = null;
 
-    @XmlElement(name = "responsavelBloqueio")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ResponsavelRFBRepresentation responsavelBloqueio = null;
-
-    @XmlElement(name = "motivo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MotivoBloqueio motivo = null;
-
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoBloqueio tipo = null;
-
-    @XmlElement(name = "dataBloqueio")
-    @ApiModelProperty(value = "")
-    private OffsetDateTime dataBloqueio = null;
-
-    @XmlElement(name = "desbloquear")
-    @ApiModelProperty(value = "")
-    private Boolean desbloquear = null;
-
     @XmlElement(name = "justificativaDesbloqueio")
     @ApiModelProperty(example = "Desbloqueio visível", value = "Justificativa do desbloqueio")
     /**
@@ -56,29 +50,35 @@ public class BloqueioConsultaCarga {
      **/
     private String justificativaDesbloqueio = null;
 
-    @XmlElement(name = "visibilidade")
+    @XmlElement(name = "modo")
     @ApiModelProperty(value = "")
     @Valid
-    private VisibilidadeBloqueio visibilidade = null;
+    private TipoDivergencia modo = null;
+
+    @XmlElement(name = "motivo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MotivoBloqueio motivo = null;
+
+    @XmlElement(name = "responsavelBloqueio")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ResponsavelRFBRepresentation responsavelBloqueio = null;
 
     @XmlElement(name = "responsavelDesbloqueio")
     @ApiModelProperty(value = "")
     @Valid
     private ResponsavelRFBRepresentation responsavelDesbloqueio = null;
 
-    @XmlElement(name = "dataDesbloqueio")
-    @ApiModelProperty(value = "")
-    private OffsetDateTime dataDesbloqueio = null;
-
-    @XmlElement(name = "modo")
+    @XmlElement(name = "tipo")
     @ApiModelProperty(value = "")
     @Valid
-    private TipoDivergencia modo = null;
+    private TipoBloqueio tipo = null;
 
-    @XmlElement(name = "alcance")
+    @XmlElement(name = "visibilidade")
     @ApiModelProperty(value = "")
     @Valid
-    private AlcanceBloqueio alcance = null;
+    private VisibilidadeBloqueio visibilidade = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -92,79 +92,17 @@ public class BloqueioConsultaCarga {
     }
 
     /**
-     * Justificativa do bloqueio
+     * Get alcance
      *
-     * @return justificativaBloqueio
+     * @return alcance
      **/
-    @JsonProperty("justificativaBloqueio")
-    public String getJustificativaBloqueio() {
-        return justificativaBloqueio;
+    @JsonProperty("alcance")
+    public AlcanceBloqueio getAlcance() {
+        return alcance;
     }
 
-    public void setJustificativaBloqueio(String justificativaBloqueio) {
-        this.justificativaBloqueio = justificativaBloqueio;
-    }
-
-    public BloqueioConsultaCarga justificativaBloqueio(String justificativaBloqueio) {
-        this.justificativaBloqueio = justificativaBloqueio;
-        return this;
-    }
-
-    /**
-     * Get responsavelBloqueio
-     *
-     * @return responsavelBloqueio
-     **/
-    @JsonProperty("responsavelBloqueio")
-    public ResponsavelRFBRepresentation getResponsavelBloqueio() {
-        return responsavelBloqueio;
-    }
-
-    public void setResponsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
-        this.responsavelBloqueio = responsavelBloqueio;
-    }
-
-    public BloqueioConsultaCarga responsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
-        this.responsavelBloqueio = responsavelBloqueio;
-        return this;
-    }
-
-    /**
-     * Get motivo
-     *
-     * @return motivo
-     **/
-    @JsonProperty("motivo")
-    public MotivoBloqueio getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(MotivoBloqueio motivo) {
-        this.motivo = motivo;
-    }
-
-    public BloqueioConsultaCarga motivo(MotivoBloqueio motivo) {
-        this.motivo = motivo;
-        return this;
-    }
-
-    /**
-     * Get tipo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public TipoBloqueio getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoBloqueio tipo) {
-        this.tipo = tipo;
-    }
-
-    public BloqueioConsultaCarga tipo(TipoBloqueio tipo) {
-        this.tipo = tipo;
-        return this;
+    public void setAlcance(AlcanceBloqueio alcance) {
+        this.alcance = alcance;
     }
 
     /**
@@ -186,6 +124,25 @@ public class BloqueioConsultaCarga {
         return this;
     }
 
+    public BloqueioConsultaCarga alcance(AlcanceBloqueio alcance) {
+        this.alcance = alcance;
+        return this;
+    }
+
+    /**
+     * Get dataDesbloqueio
+     *
+     * @return dataDesbloqueio
+     **/
+    @JsonProperty("dataDesbloqueio")
+    public OffsetDateTime getDataDesbloqueio() {
+        return dataDesbloqueio;
+    }
+
+    public void setDataDesbloqueio(OffsetDateTime dataDesbloqueio) {
+        this.dataDesbloqueio = dataDesbloqueio;
+    }
+
     /**
      * Get desbloquear
      *
@@ -203,6 +160,25 @@ public class BloqueioConsultaCarga {
     public BloqueioConsultaCarga desbloquear(Boolean desbloquear) {
         this.desbloquear = desbloquear;
         return this;
+    }
+
+    public BloqueioConsultaCarga dataDesbloqueio(OffsetDateTime dataDesbloqueio) {
+        this.dataDesbloqueio = dataDesbloqueio;
+        return this;
+    }
+
+    /**
+     * Justificativa do bloqueio
+     *
+     * @return justificativaBloqueio
+     **/
+    @JsonProperty("justificativaBloqueio")
+    public String getJustificativaBloqueio() {
+        return justificativaBloqueio;
+    }
+
+    public void setJustificativaBloqueio(String justificativaBloqueio) {
+        this.justificativaBloqueio = justificativaBloqueio;
     }
 
     /**
@@ -224,60 +200,8 @@ public class BloqueioConsultaCarga {
         return this;
     }
 
-    /**
-     * Get visibilidade
-     *
-     * @return visibilidade
-     **/
-    @JsonProperty("visibilidade")
-    public VisibilidadeBloqueio getVisibilidade() {
-        return visibilidade;
-    }
-
-    public void setVisibilidade(VisibilidadeBloqueio visibilidade) {
-        this.visibilidade = visibilidade;
-    }
-
-    public BloqueioConsultaCarga visibilidade(VisibilidadeBloqueio visibilidade) {
-        this.visibilidade = visibilidade;
-        return this;
-    }
-
-    /**
-     * Get responsavelDesbloqueio
-     *
-     * @return responsavelDesbloqueio
-     **/
-    @JsonProperty("responsavelDesbloqueio")
-    public ResponsavelRFBRepresentation getResponsavelDesbloqueio() {
-        return responsavelDesbloqueio;
-    }
-
-    public void setResponsavelDesbloqueio(ResponsavelRFBRepresentation responsavelDesbloqueio) {
-        this.responsavelDesbloqueio = responsavelDesbloqueio;
-    }
-
-    public BloqueioConsultaCarga responsavelDesbloqueio(ResponsavelRFBRepresentation responsavelDesbloqueio) {
-        this.responsavelDesbloqueio = responsavelDesbloqueio;
-        return this;
-    }
-
-    /**
-     * Get dataDesbloqueio
-     *
-     * @return dataDesbloqueio
-     **/
-    @JsonProperty("dataDesbloqueio")
-    public OffsetDateTime getDataDesbloqueio() {
-        return dataDesbloqueio;
-    }
-
-    public void setDataDesbloqueio(OffsetDateTime dataDesbloqueio) {
-        this.dataDesbloqueio = dataDesbloqueio;
-    }
-
-    public BloqueioConsultaCarga dataDesbloqueio(OffsetDateTime dataDesbloqueio) {
-        this.dataDesbloqueio = dataDesbloqueio;
+    public BloqueioConsultaCarga justificativaBloqueio(String justificativaBloqueio) {
+        this.justificativaBloqueio = justificativaBloqueio;
         return this;
     }
 
@@ -301,21 +225,96 @@ public class BloqueioConsultaCarga {
     }
 
     /**
-     * Get alcance
+     * Get motivo
      *
-     * @return alcance
+     * @return motivo
      **/
-    @JsonProperty("alcance")
-    public AlcanceBloqueio getAlcance() {
-        return alcance;
+    @JsonProperty("motivo")
+    public MotivoBloqueio getMotivo() {
+        return motivo;
     }
 
-    public void setAlcance(AlcanceBloqueio alcance) {
-        this.alcance = alcance;
+    public void setMotivo(MotivoBloqueio motivo) {
+        this.motivo = motivo;
     }
 
-    public BloqueioConsultaCarga alcance(AlcanceBloqueio alcance) {
-        this.alcance = alcance;
+    public BloqueioConsultaCarga motivo(MotivoBloqueio motivo) {
+        this.motivo = motivo;
+        return this;
+    }
+
+    /**
+     * Get responsavelBloqueio
+     *
+     * @return responsavelBloqueio
+     **/
+    @JsonProperty("responsavelBloqueio")
+    public ResponsavelRFBRepresentation getResponsavelBloqueio() {
+        return responsavelBloqueio;
+    }
+
+    public void setResponsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
+        this.responsavelBloqueio = responsavelBloqueio;
+    }
+
+    /**
+     * Get responsavelDesbloqueio
+     *
+     * @return responsavelDesbloqueio
+     **/
+    @JsonProperty("responsavelDesbloqueio")
+    public ResponsavelRFBRepresentation getResponsavelDesbloqueio() {
+        return responsavelDesbloqueio;
+    }
+
+    public void setResponsavelDesbloqueio(ResponsavelRFBRepresentation responsavelDesbloqueio) {
+        this.responsavelDesbloqueio = responsavelDesbloqueio;
+    }
+
+    public BloqueioConsultaCarga responsavelDesbloqueio(ResponsavelRFBRepresentation responsavelDesbloqueio) {
+        this.responsavelDesbloqueio = responsavelDesbloqueio;
+        return this;
+    }
+
+    public BloqueioConsultaCarga responsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
+        this.responsavelBloqueio = responsavelBloqueio;
+        return this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoBloqueio getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoBloqueio tipo) {
+        this.tipo = tipo;
+    }
+
+    public BloqueioConsultaCarga tipo(TipoBloqueio tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Get visibilidade
+     * @return visibilidade
+     **/
+    @JsonProperty("visibilidade")
+    public VisibilidadeBloqueio getVisibilidade() {
+        return visibilidade;
+    }
+
+    public void setVisibilidade(VisibilidadeBloqueio visibilidade) {
+        this.visibilidade = visibilidade;
+    }
+
+    public BloqueioConsultaCarga visibilidade(VisibilidadeBloqueio visibilidade) {
+        this.visibilidade = visibilidade;
         return this;
     }
 
@@ -323,18 +322,18 @@ public class BloqueioConsultaCarga {
     public String toString() {
 
         String sb = "class BloqueioConsultaCarga {\n" +
-                "    justificativaBloqueio: " + toIndentedString(justificativaBloqueio) + "\n" +
-                "    responsavelBloqueio: " + toIndentedString(responsavelBloqueio) + "\n" +
-                "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    dataBloqueio: " + toIndentedString(dataBloqueio) + "\n" +
-                "    desbloquear: " + toIndentedString(desbloquear) + "\n" +
-                "    justificativaDesbloqueio: " + toIndentedString(justificativaDesbloqueio) + "\n" +
-                "    visibilidade: " + toIndentedString(visibilidade) + "\n" +
-                "    responsavelDesbloqueio: " + toIndentedString(responsavelDesbloqueio) + "\n" +
-                "    dataDesbloqueio: " + toIndentedString(dataDesbloqueio) + "\n" +
-                "    modo: " + toIndentedString(modo) + "\n" +
                 "    alcance: " + toIndentedString(alcance) + "\n" +
+                "    dataBloqueio: " + toIndentedString(dataBloqueio) + "\n" +
+                "    dataDesbloqueio: " + toIndentedString(dataDesbloqueio) + "\n" +
+                "    desbloquear: " + toIndentedString(desbloquear) + "\n" +
+                "    justificativaBloqueio: " + toIndentedString(justificativaBloqueio) + "\n" +
+                "    justificativaDesbloqueio: " + toIndentedString(justificativaDesbloqueio) + "\n" +
+                "    modo: " + toIndentedString(modo) + "\n" +
+                "    motivo: " + toIndentedString(motivo) + "\n" +
+                "    responsavelBloqueio: " + toIndentedString(responsavelBloqueio) + "\n" +
+                "    responsavelDesbloqueio: " + toIndentedString(responsavelDesbloqueio) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    visibilidade: " + toIndentedString(visibilidade) + "\n" +
                 "}";
         return sb;
     }

@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class Situacao {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(value = "Código<br />Formato: Inteiro, com 1 digito")
-    /**
-     * Código<br />Formato: Inteiro, com 1 digito
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(value = "Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
-    /**
-     * Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class Situacao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(value = "Código<br />Formato: Inteiro, com 1 digito")
+    /**
+     * Código<br />Formato: Inteiro, com 1 digito
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(value = "Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
+    /**
+     * Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50
+     **/
+    private String descricao = null;
 
     /**
      * Código&lt;br /&gt;Formato: Inteiro, com 1 digito
@@ -85,15 +86,15 @@ public class Situacao {
         return this;
     }
 
-
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class Situacao {\n");
 
-        String sb = "class Situacao {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
+        sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
+        sb.append("    descricao: ").append(toIndentedString(descricao)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
     @XmlType(name = "CodigoEnum")
@@ -102,15 +103,15 @@ public class Situacao {
 
         @XmlEnumValue("AGUARDANDO_VINCULO")
         @JsonProperty("AGUARDANDO_VINCULO")
-        AGUARDANDO_VINCULO("AGUARDANDO_VINCULO"),
+        AGUARDANDO_VINCULO(String.valueOf("AGUARDANDO_VINCULO")),
 
         @XmlEnumValue("VINCULADO")
         @JsonProperty("VINCULADO")
-        VINCULADO("VINCULADO"),
+        VINCULADO(String.valueOf("VINCULADO")),
 
         @XmlEnumValue("NAO_VINCULADO")
         @JsonProperty("NAO_VINCULADO")
-        NAO_VINCULADO("NAO_VINCULADO");
+        NAO_VINCULADO(String.valueOf("NAO_VINCULADO"));
 
 
         private final String value;

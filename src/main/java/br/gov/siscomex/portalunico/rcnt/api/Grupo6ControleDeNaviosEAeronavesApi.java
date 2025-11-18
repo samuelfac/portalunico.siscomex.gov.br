@@ -30,7 +30,7 @@ public interface Grupo6ControleDeNaviosEAeronavesApi {
 
     /**
      * Agenda/Operação de Navios/Aeronaves
-     * <p>
+     *
      * Um evento para cada inclusão / alteração no &#39;line up&#39; / &#39;agenda&#39; de navios / aeronaves com atracação / pouso previstos para o recinto.&lt;br/&gt;&lt;br/&gt;Transmitir a agenda (previsão), a chegada (atracação/desatracação pouso/decolagem) e a operação.&lt;br/&gt;&lt;br/&gt;Evento aplicável para recintos com atracadouro ou pista aeronáutica próprios.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Exemplo de eventos para Navio:&lt;br/&gt;&lt;br/&gt;Chegada  (informa a viagem e escala de chegada, dados da embarcação, dentre outros)&lt;br/&gt;&lt;br/&gt;evento 1 - previsão de atracação e desatracação;&lt;br/&gt;&lt;br/&gt;evento 2 - previsão + efetiva atracação&lt;br/&gt;&lt;br/&gt;evento 3 - previsão + efetiva atracação + início operação &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Saída (informa a viagem e escala de partida, dados da embarcação, dentre outros)&lt;br/&gt;&lt;br/&gt;evento 4 - previsão + efetiva atracação + início operação + final operação &lt;br/&gt;&lt;br/&gt;evento 5 - previsão + efetiva atracação + início operação + final operação + efetiva desatracação &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Exemplo de eventos para Aeronave:&lt;br/&gt;&lt;br/&gt;Chegada  (informa o VOO e viagem de chegada, dados da aeronave, dentre outros)&lt;br/&gt;&lt;br/&gt;evento 1 - previsão de pouso;&lt;br/&gt;&lt;br/&gt;evento 2 - previsão + efetivo pouso&lt;br/&gt;&lt;br/&gt;evento 3 - previsão + efetivo pouso + início operaçã&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Saída  (informa o VOO e viagem de partida, dados da aeronave, dentre outros)&lt;br/&gt;&lt;br/&gt;evento 4 - previsão + efetivo pouso + início operação  + previsão de partida;          &lt;br/&gt;&lt;br/&gt;evento 5 - previsão + efetivo pouso + início operação  + previsão + final operação   &lt;br/&gt;&lt;br/&gt;evento 6 - previsão + efetivo pouso + início operação  + previsão + final operação + efetiva partida&lt;br/&gt;&lt;br/&gt;&lt;strong&gt;Transmitir imediatamente a recepção da informação.&lt;/strong&gt;&lt;br/&gt;
      *
      */
@@ -42,16 +42,16 @@ public interface Grupo6ControleDeNaviosEAeronavesApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST(@ApiParam(value = "JSON do evento Agenda Operação Navios Aeronaves", required = true) @Valid DadosAgendaOperaoNaviosAeronaves body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Atribuição/Troca de Navio
-     * <p>
+     *
      * Um evento para cada alteração de navio em que a unidade de carga ou carga solta irá embarcar.&lt;br/&gt;Transmitir imediatamente a atribuição ou alteração.
      *
      */
@@ -63,16 +63,16 @@ public interface Grupo6ControleDeNaviosEAeronavesApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST2(@ApiParam(value = "JSON do evento Atribuição / Troca de Navio.", required = true) @Valid DadosAtribuioTrocaNavio body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Embarque/Desembarque no Navio
-     * <p>
+     *
      * Na API-Recintos entende-se por “navio” a embarcação utilizada para o transporte de cargas (vide tabela Embarcação do Mercante).&lt;br/&gt;Um evento para cada embarque ou desembarque de unidades de carga, carga solta ou granel no navio.&lt;br/&gt;Transmitir imediatamente ao encerramento do embarque / desembarque de cada navio.&lt;br/&gt;Transmitir também nos casos de transbordo/baldeação entre navios.&lt;br/&gt;Um evento por CONTÊINER/LOTE CARGA SOLTA/GRANEL embarcado ou desembarcado.&lt;br/&gt;Granel: um evento ao final da operação de carregamento/descarregamento total do navio graneleiro.&lt;br/&gt;Exemplos:&lt;br/&gt;Granel: informar N manifestos, N conhecimentos, N Portos carregamento, N Portos descarregamento, N Países destino final e demais atributos pertinentes.&lt;br/&gt;Contêiner: informar 1 manifesto, N conhecimentos, 1 Porto carregamento, 1 Porto descarregamento, N Países destino final e demais atributos pertinentes.&lt;br/&gt;Lote Carga solta: informar 1 manifesto, 1 conhecimento, 1 Porto carregamento, 1 Porto descarregamento, 1 País destino final e demais atributos pertinentes.
      *
      */
@@ -84,10 +84,10 @@ public interface Grupo6ControleDeNaviosEAeronavesApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST9(@ApiParam(value = "JSON do evento Controle de Embarque e Desembarque de Navios", required = true) @Valid DadosEmbarqueDesembarqueNavio body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

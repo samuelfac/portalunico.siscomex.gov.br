@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IdentificacaoDuimpConsultaCover", propOrder =
-        {"numero", "dataRegistro", "informacaoComplementar", "importador", "versao"
+        {"numero", "versao", "importador", "dataRegistro", "informacaoComplementar"
         })
 
 @XmlRootElement(name = "IdentificacaoDuimpConsultaCover")
@@ -31,6 +31,18 @@ public class IdentificacaoDuimpConsultaCover {
      **/
     private String numero = null;
 
+    @XmlElement(name = "versao")
+    @ApiModelProperty(example = "1", value = "Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999")
+    /**
+     * Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999
+     **/
+    private Integer versao = null;
+
+    @XmlElement(name = "importador")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ImportadorCover importador = null;
+
     @XmlElement(name = "dataRegistro")
     @ApiModelProperty(value = "Data e hora em que a Duimp foi registrada.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
     /**
@@ -44,29 +56,6 @@ public class IdentificacaoDuimpConsultaCover {
      * Descrição complementar da Duimp.<br>Tamanho mínimo: 0<br>Tamanho máximo: 7800
      **/
     private String informacaoComplementar = null;
-
-    @XmlElement(name = "importador")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ImportadorCover importador = null;
-
-    @XmlElement(name = "versao")
-    @ApiModelProperty(example = "1", value = "Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999")
-    /**
-     * Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999
-     **/
-    private Integer versao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * &lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;AABRSSSSSSSSSSD&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* AA &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* BR &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* SSSSSSSSSS &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
@@ -85,6 +74,50 @@ public class IdentificacaoDuimpConsultaCover {
     public IdentificacaoDuimpConsultaCover numero(String numero) {
         this.numero = numero;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Versão da Duimp.&lt;br&gt;Valor mínimo: 0&lt;br&gt;Valor máximo: 9999
+     *
+     * @return versao
+     **/
+    @JsonProperty("versao")
+    public Integer getVersao() {
+        return versao;
+    }
+
+    public void setVersao(Integer versao) {
+        this.versao = versao;
+    }
+
+    public IdentificacaoDuimpConsultaCover versao(Integer versao) {
+        this.versao = versao;
+        return this;
+    }
+
+    /**
+     * Get importador
+     *
+     * @return importador
+     **/
+    @JsonProperty("importador")
+    public ImportadorCover getImportador() {
+        return importador;
+    }
+
+    public void setImportador(ImportadorCover importador) {
+        this.importador = importador;
     }
 
     /**
@@ -125,41 +158,8 @@ public class IdentificacaoDuimpConsultaCover {
         return this;
     }
 
-    /**
-     * Get importador
-     *
-     * @return importador
-     **/
-    @JsonProperty("importador")
-    public ImportadorCover getImportador() {
-        return importador;
-    }
-
-    public void setImportador(ImportadorCover importador) {
-        this.importador = importador;
-    }
-
     public IdentificacaoDuimpConsultaCover importador(ImportadorCover importador) {
         this.importador = importador;
-        return this;
-    }
-
-    /**
-     * Versão da Duimp.&lt;br&gt;Valor mínimo: 0&lt;br&gt;Valor máximo: 9999
-     *
-     * @return versao
-     **/
-    @JsonProperty("versao")
-    public Integer getVersao() {
-        return versao;
-    }
-
-    public void setVersao(Integer versao) {
-        this.versao = versao;
-    }
-
-    public IdentificacaoDuimpConsultaCover versao(Integer versao) {
-        this.versao = versao;
         return this;
     }
 
@@ -168,10 +168,10 @@ public class IdentificacaoDuimpConsultaCover {
 
         String sb = "class IdentificacaoDuimpConsultaCover {\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    versao: " + toIndentedString(versao) + "\n" +
+                "    importador: " + toIndentedString(importador) + "\n" +
                 "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "    informacaoComplementar: " + toIndentedString(informacaoComplementar) + "\n" +
-                "    importador: " + toIndentedString(importador) + "\n" +
-                "    versao: " + toIndentedString(versao) + "\n" +
                 "}";
         return sb;
     }

@@ -12,16 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaOutrosCustos", propOrder =
-        {"valorTotal", "valorDestinatario", "valorRemetente"
+        {"valorDestinatario", "valorRemetente", "valorTotal"
         })
 
 @XmlRootElement(name = "CargaRodoviariaOutrosCustos")
 public class CargaRodoviariaOutrosCustos {
-
-    @XmlElement(name = "valorTotal")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValorMonetario valorTotal = null;
 
     @XmlElement(name = "valorDestinatario")
     @ApiModelProperty(value = "")
@@ -33,35 +28,10 @@ public class CargaRodoviariaOutrosCustos {
     @Valid
     private ValorMonetario valorRemetente = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get valorTotal
-     *
-     * @return valorTotal
-     **/
-    @JsonProperty("valorTotal")
-    public ValorMonetario getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(ValorMonetario valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public CargaRodoviariaOutrosCustos valorTotal(ValorMonetario valorTotal) {
-        this.valorTotal = valorTotal;
-        return this;
-    }
+    @XmlElement(name = "valorTotal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValorMonetario valorTotal = null;
 
     /**
      * Get valorDestinatario
@@ -101,13 +71,43 @@ public class CargaRodoviariaOutrosCustos {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get valorTotal
+     *
+     * @return valorTotal
+     **/
+    @JsonProperty("valorTotal")
+    public ValorMonetario getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(ValorMonetario valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public CargaRodoviariaOutrosCustos valorTotal(ValorMonetario valorTotal) {
+        this.valorTotal = valorTotal;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CargaRodoviariaOutrosCustos {\n" +
-                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "    valorDestinatario: " + toIndentedString(valorDestinatario) + "\n" +
                 "    valorRemetente: " + toIndentedString(valorRemetente) + "\n" +
+                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "}";
         return sb;
     }

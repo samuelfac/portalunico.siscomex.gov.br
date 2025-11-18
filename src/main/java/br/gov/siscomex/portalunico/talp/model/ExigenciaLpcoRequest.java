@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExigenciaLpcoRequest", propOrder =
-        {"motivoAnalise", "justificativa"
+        {"justificativa", "motivoAnalise"
         })
 
 @XmlRootElement(name = "ExigenciaLpcoRequest")
@@ -23,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Requisição para cadastrar uma nova exigência em um LPCO")
 public class ExigenciaLpcoRequest {
 
+    @XmlElement(name = "justificativa", required = true)
+    @ApiModelProperty(example = "Texto livre", required = true, value = "Justificativa para a operação sobre a exigência<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
+    /**
+     * Justificativa para a operação sobre a exigência<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
+     **/
+    private String justificativa = null;
+
     @XmlElement(name = "motivoAnalise")
     @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
     /**
@@ -30,12 +37,25 @@ public class ExigenciaLpcoRequest {
      **/
     private String motivoAnalise = null;
 
-    @XmlElement(name = "justificativa", required = true)
-    @ApiModelProperty(example = "Texto livre", required = true, value = "Justificativa para a operação sobre a exigência<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
     /**
-     * Justificativa para a operação sobre a exigência<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
+     * Justificativa para a operação sobre a exigência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
+     *
+     * @return justificativa
      **/
-    private String justificativa = null;
+    @JsonProperty("justificativa")
+    @NotNull
+    public String getJustificativa() {
+        return justificativa;
+    }
+
+    public void setJustificativa(String justificativa) {
+        this.justificativa = justificativa;
+    }
+
+    public ExigenciaLpcoRequest justificativa(String justificativa) {
+        this.justificativa = justificativa;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,32 +87,12 @@ public class ExigenciaLpcoRequest {
         return this;
     }
 
-    /**
-     * Justificativa para a operação sobre a exigência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
-     *
-     * @return justificativa
-     **/
-    @JsonProperty("justificativa")
-    @NotNull
-    public String getJustificativa() {
-        return justificativa;
-    }
-
-    public void setJustificativa(String justificativa) {
-        this.justificativa = justificativa;
-    }
-
-    public ExigenciaLpcoRequest justificativa(String justificativa) {
-        this.justificativa = justificativa;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ExigenciaLpcoRequest {\n" +
-                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "}";
         return sb;
     }

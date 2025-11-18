@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Divergncia", propOrder =
-        {"justificativa", "nomeFiscal", "codigoDivergencia", "vigente"
+        {"codigoDivergencia", "justificativa", "nomeFiscal", "vigente"
         })
 
 @XmlRootElement(name = "Divergncia")
 public class Divergncia {
+
+    @XmlElement(name = "codigoDivergencia")
+    @ApiModelProperty(value = "Código da divergência. O código da divergência é composto por até 2 dígitos.")
+    /**
+     * Código da divergência. O código da divergência é composto por até 2 dígitos.
+     **/
+    private Integer codigoDivergencia = null;
 
     @XmlElement(name = "justificativa")
     @ApiModelProperty(value = "Justificativa da divergência. Máximo de 500 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
@@ -30,13 +37,6 @@ public class Divergncia {
      * Nome do fiscal que aplicou a divergência. Máximo de 50 caracteres.
      **/
     private String nomeFiscal = null;
-
-    @XmlElement(name = "codigoDivergencia")
-    @ApiModelProperty(value = "Código da divergência. O código da divergência é composto por até 2 dígitos.")
-    /**
-     * Código da divergência. O código da divergência é composto por até 2 dígitos.
-     **/
-    private Integer codigoDivergencia = null;
 
     @XmlElement(name = "vigente")
     @ApiModelProperty(value = "Informação se a divergência está vigente. Valores pré-definidos:<br/>S: Vigente.<br/>N: Não vigente.")
@@ -54,6 +54,20 @@ public class Divergncia {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código da divergência. O código da divergência é composto por até 2 dígitos.
+     *
+     * @return codigoDivergencia
+     **/
+    @JsonProperty("codigoDivergencia")
+    public Integer getCodigoDivergencia() {
+        return codigoDivergencia;
+    }
+
+    public void setCodigoDivergencia(Integer codigoDivergencia) {
+        this.codigoDivergencia = codigoDivergencia;
     }
 
     /**
@@ -95,25 +109,6 @@ public class Divergncia {
     }
 
     /**
-     * Código da divergência. O código da divergência é composto por até 2 dígitos.
-     *
-     * @return codigoDivergencia
-     **/
-    @JsonProperty("codigoDivergencia")
-    public Integer getCodigoDivergencia() {
-        return codigoDivergencia;
-    }
-
-    public void setCodigoDivergencia(Integer codigoDivergencia) {
-        this.codigoDivergencia = codigoDivergencia;
-    }
-
-    public Divergncia codigoDivergencia(Integer codigoDivergencia) {
-        this.codigoDivergencia = codigoDivergencia;
-        return this;
-    }
-
-    /**
      * Informação se a divergência está vigente. Valores pré-definidos:&lt;br/&gt;S: Vigente.&lt;br/&gt;N: Não vigente.
      *
      * @return vigente
@@ -132,13 +127,18 @@ public class Divergncia {
         return this;
     }
 
+    public Divergncia codigoDivergencia(Integer codigoDivergencia) {
+        this.codigoDivergencia = codigoDivergencia;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Divergncia {\n" +
+                "    codigoDivergencia: " + toIndentedString(codigoDivergencia) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "    nomeFiscal: " + toIndentedString(nomeFiscal) + "\n" +
-                "    codigoDivergencia: " + toIndentedString(codigoDivergencia) + "\n" +
                 "    vigente: " + toIndentedString(vigente) + "\n" +
                 "}";
         return sb;

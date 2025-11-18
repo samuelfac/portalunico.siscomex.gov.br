@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaValoresCalculadosDuimpCover", propOrder =
-        {"seguro", "frete"
+        {"frete", "seguro"
         })
 
 @XmlRootElement(name = "CargaValoresCalculadosDuimpCover")
@@ -23,15 +23,34 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados da carga.")
 public class CargaValoresCalculadosDuimpCover {
 
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FreteValoresCalculadosDuimpCover frete = null;
+
     @XmlElement(name = "seguro")
     @ApiModelProperty(value = "")
     @Valid
     private SeguroValoresCalculadosDuimpCover seguro = null;
 
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FreteValoresCalculadosDuimpCover frete = null;
+    /**
+     * Get frete
+     *
+     * @return frete
+     **/
+    @JsonProperty("frete")
+    public FreteValoresCalculadosDuimpCover getFrete() {
+        return frete;
+    }
+
+    public void setFrete(FreteValoresCalculadosDuimpCover frete) {
+        this.frete = frete;
+    }
+
+    public CargaValoresCalculadosDuimpCover frete(FreteValoresCalculadosDuimpCover frete) {
+        this.frete = frete;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -63,31 +82,12 @@ public class CargaValoresCalculadosDuimpCover {
         return this;
     }
 
-    /**
-     * Get frete
-     *
-     * @return frete
-     **/
-    @JsonProperty("frete")
-    public FreteValoresCalculadosDuimpCover getFrete() {
-        return frete;
-    }
-
-    public void setFrete(FreteValoresCalculadosDuimpCover frete) {
-        this.frete = frete;
-    }
-
-    public CargaValoresCalculadosDuimpCover frete(FreteValoresCalculadosDuimpCover frete) {
-        this.frete = frete;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CargaValoresCalculadosDuimpCover {\n" +
-                "    seguro: " + toIndentedString(seguro) + "\n" +
                 "    frete: " + toIndentedString(frete) + "\n" +
+                "    seguro: " + toIndentedString(seguro) + "\n" +
                 "}";
         return sb;
     }

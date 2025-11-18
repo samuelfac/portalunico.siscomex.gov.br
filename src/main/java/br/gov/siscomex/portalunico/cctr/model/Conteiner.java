@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Conteiner", propOrder =
-        {"pesoAferido", "lacres", "motivoNaoPesagem"
+        {"pesoAferido", "motivoNaoPesagem", "lacres"
         })
 
 @XmlRootElement(name = "Conteiner")
@@ -35,13 +35,6 @@ public class Conteiner {
      **/
     private BigDecimal pesoAferido = null;
 
-    @XmlElement(name = "lacres", required = true)
-    @ApiModelProperty(example = "[123456,654321]", required = true, value = "Lista com os códigos dos lacres vinculados ao contêiner<br>Tamanho: 15")
-    /**
-     * Lista com os códigos dos lacres vinculados ao contêiner<br>Tamanho: 15
-     **/
-    private List<String> lacres = new ArrayList<>();
-
     @XmlElement(name = "motivoNaoPesagem")
     @ApiModelProperty(example = "balança quebrada", value = "Motivo da não pesagem<br>Tamanho: 250")
     /**
@@ -49,16 +42,12 @@ public class Conteiner {
      **/
     private String motivoNaoPesagem = null;
 
+    @XmlElement(name = "lacres", required = true)
+    @ApiModelProperty(example = "[123456,654321]", required = true, value = "Lista com os códigos dos lacres vinculados ao contêiner<br>Tamanho: 15")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Lista com os códigos dos lacres vinculados ao contêiner<br>Tamanho: 15
+     **/
+    private List<String> lacres = new ArrayList<>();
 
     /**
      * Peso aferido&lt;br&gt;Tamanho: 9,3
@@ -77,6 +66,31 @@ public class Conteiner {
     public Conteiner pesoAferido(BigDecimal pesoAferido) {
         this.pesoAferido = pesoAferido;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Motivo da não pesagem&lt;br&gt;Tamanho: 250
+     *
+     * @return motivoNaoPesagem
+     **/
+    @JsonProperty("motivoNaoPesagem")
+    public String getMotivoNaoPesagem() {
+        return motivoNaoPesagem;
+    }
+
+    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
     }
 
     /**
@@ -104,20 +118,6 @@ public class Conteiner {
         return this;
     }
 
-    /**
-     * Motivo da não pesagem&lt;br&gt;Tamanho: 250
-     *
-     * @return motivoNaoPesagem
-     **/
-    @JsonProperty("motivoNaoPesagem")
-    public String getMotivoNaoPesagem() {
-        return motivoNaoPesagem;
-    }
-
-    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-    }
-
     public Conteiner motivoNaoPesagem(String motivoNaoPesagem) {
         this.motivoNaoPesagem = motivoNaoPesagem;
         return this;
@@ -128,8 +128,8 @@ public class Conteiner {
 
         String sb = "class Conteiner {\n" +
                 "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "}";
         return sb;
     }

@@ -35,17 +35,6 @@ public class ManifestacoesExportacao {
     private List<Manifestacao> manifestacao = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Manifesto de Dados de Embarque para Exportação
      *
      * @return manifestacao
@@ -68,6 +57,18 @@ public class ManifestacoesExportacao {
     public ManifestacoesExportacao addManifestacaoItem(Manifestacao manifestacaoItem) {
         this.manifestacao.add(manifestacaoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

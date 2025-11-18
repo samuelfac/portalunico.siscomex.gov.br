@@ -17,43 +17,38 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DuimpUltimosEventosCover", propOrder =
-        {"dataEvento", "evento", "ufs", "numero", "versao"
+        {"numero", "versao", "evento", "dataEvento", "ufs"
         })
 
 @XmlRootElement(name = "DuimpUltimosEventosCover")
 public class DuimpUltimosEventosCover {
 
-    @XmlElement(name = "dataEvento", required = true)
-    @ApiModelProperty(example = "2024-12-31T23:59:01-0300", required = true, value = "Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private String dataEvento = null;
-    @XmlElement(name = "evento", required = true)
-    @ApiModelProperty(example = "DESEMBARACO_EFETUADO", required = true, value = "Evento no Histórico da Duimp <br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
-    /**
-     * Evento no Histórico da Duimp <br>Tamanho mínimo: 1<br>Tamanho máximo: 150
-     **/
-    private EventoEnum evento = null;
-    @XmlElement(name = "ufs", required = true)
-    @ApiModelProperty(required = true, value = "UFs de interesse da Sefaz")
-    @Valid
-    /**
-     * UFs de interesse da Sefaz
-     **/
-    private List<UfInteresseSefaz> ufs = new ArrayList<>();
     @XmlElement(name = "numero", required = true)
     @ApiModelProperty(example = "21BR00123456789", required = true, value = "Número da Duimp.<br>Tamanho: 15<br>Formato: 'AABRSSSSSSSSSSD'<br>Lei de formação. O número da Duimp é composto por: <br>* AA = Corresponde ao ano do registro da Declaração. <br>* BR = Corresponde à sigla do país de emissão do documento (BR).<br>* SSSSSSSSSS = 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.<br>* D = 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)")
     /**
      * Número da Duimp.<br>Tamanho: 15<br>Formato: 'AABRSSSSSSSSSSD'<br>Lei de formação. O número da Duimp é composto por: <br>* AA = Corresponde ao ano do registro da Declaração. <br>* BR = Corresponde à sigla do país de emissão do documento (BR).<br>* SSSSSSSSSS = 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.<br>* D = 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
      **/
     private String numero = null;
+
     @XmlElement(name = "versao", required = true)
     @ApiModelProperty(example = "2", required = true, value = "Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999")
     /**
      * Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999
      **/
     private Integer versao = null;
+    @XmlElement(name = "dataEvento", required = true)
+    @ApiModelProperty(example = "2024-12-31T23:59:01-0300", required = true, value = "Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+    /**
+     * Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private String dataEvento = null;
+
+    @XmlElement(name = "evento", required = true)
+    @ApiModelProperty(example = "DESEMBARACO_EFETUADO", required = true, value = "Evento no Histórico da Duimp <br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
+    /**
+     * Evento no Histórico da Duimp <br>Tamanho mínimo: 1<br>Tamanho máximo: 150
+     **/
+    private EventoEnum evento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,73 +61,13 @@ public class DuimpUltimosEventosCover {
         return o.toString().replace("\n", "\n    ");
     }
 
-    /**
-     * Data em que o evento foi gerado no histórico&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataEvento
-     **/
-    @JsonProperty("dataEvento")
-    @NotNull
-    public String getDataEvento() {
-        return dataEvento;
-    }
-
-    public void setDataEvento(String dataEvento) {
-        this.dataEvento = dataEvento;
-    }
-
-    public DuimpUltimosEventosCover dataEvento(String dataEvento) {
-        this.dataEvento = dataEvento;
-        return this;
-    }
-
-    /**
-     * Evento no Histórico da Duimp &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
-     *
-     * @return evento
-     **/
-    @JsonProperty("evento")
-    @NotNull
-    public String getEvento() {
-        if (evento == null) {
-            return null;
-        }
-        return evento.value();
-    }
-
-    public void setEvento(EventoEnum evento) {
-        this.evento = evento;
-    }
-
-    public DuimpUltimosEventosCover evento(EventoEnum evento) {
-        this.evento = evento;
-        return this;
-    }
-
+    @XmlElement(name = "ufs", required = true)
+    @ApiModelProperty(required = true, value = "UFs de interesse da Sefaz")
+    @Valid
     /**
      * UFs de interesse da Sefaz
-     *
-     * @return ufs
      **/
-    @JsonProperty("ufs")
-    @NotNull
-    public List<UfInteresseSefaz> getUfs() {
-        return ufs;
-    }
-
-    public void setUfs(List<UfInteresseSefaz> ufs) {
-        this.ufs = ufs;
-    }
-
-    public DuimpUltimosEventosCover ufs(List<UfInteresseSefaz> ufs) {
-        this.ufs = ufs;
-        return this;
-    }
-
-    public DuimpUltimosEventosCover addUfsItem(UfInteresseSefaz ufsItem) {
-        this.ufs.add(ufsItem);
-        return this;
-    }
+    private List<UfInteresseSefaz> ufs = new ArrayList<>();
 
     /**
      * Número da Duimp.&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;AABRSSSSSSSSSSD&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* AA &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* BR &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* SSSSSSSSSS &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
@@ -174,16 +109,84 @@ public class DuimpUltimosEventosCover {
         return this;
     }
 
+    /**
+     * Evento no Histórico da Duimp &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
+     *
+     * @return evento
+     **/
+    @JsonProperty("evento")
+    @NotNull
+    public String getEvento() {
+        if (evento == null) {
+            return null;
+        }
+        return evento.value();
+    }
+
+    public void setEvento(EventoEnum evento) {
+        this.evento = evento;
+    }
+
+    public DuimpUltimosEventosCover evento(EventoEnum evento) {
+        this.evento = evento;
+        return this;
+    }
+
+    /**
+     * Data em que o evento foi gerado no histórico&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataEvento
+     **/
+    @JsonProperty("dataEvento")
+    @NotNull
+    public String getDataEvento() {
+        return dataEvento;
+    }
+
+    public void setDataEvento(String dataEvento) {
+        this.dataEvento = dataEvento;
+    }
+
+    public DuimpUltimosEventosCover dataEvento(String dataEvento) {
+        this.dataEvento = dataEvento;
+        return this;
+    }
+
+    /**
+     * UFs de interesse da Sefaz
+     *
+     * @return ufs
+     **/
+    @JsonProperty("ufs")
+    @NotNull
+    public List<UfInteresseSefaz> getUfs() {
+        return ufs;
+    }
+
+    public void setUfs(List<UfInteresseSefaz> ufs) {
+        this.ufs = ufs;
+    }
+
+    public DuimpUltimosEventosCover ufs(List<UfInteresseSefaz> ufs) {
+        this.ufs = ufs;
+        return this;
+    }
+
+    public DuimpUltimosEventosCover addUfsItem(UfInteresseSefaz ufsItem) {
+        this.ufs.add(ufsItem);
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DuimpUltimosEventosCover {\n" +
-                "    dataEvento: " + toIndentedString(dataEvento) + "\n" +
-                "    evento: " + toIndentedString(evento) + "\n" +
-                "    ufs: " + toIndentedString(ufs) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
+                "    evento: " + toIndentedString(evento) + "\n" +
+                "    dataEvento: " + toIndentedString(dataEvento) + "\n" +
+                "    ufs: " + toIndentedString(ufs) + "\n" +
                 "}";
         return sb;
     }

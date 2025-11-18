@@ -13,25 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConsultaDeLoteDaRFB", propOrder =
-        {"listaUaDespacho", "listaCodOcorrencia", "dataFimAnexacao", "dataInicioManifesto", "dataInicioAnexacao", "listaSituacaoRemessa", "dataFimOcorrencia", "listaSituacaoLote", "dataFimLote", "dataFimManifesto", "dataInicioLote", "dataInicioOcorrencia", "listaOperadora", "listaSituacaoOcorrencia", "listaOrgaoFiscalizacao"
+        {"dataFimAnexacao", "dataFimLote", "dataFimManifesto", "dataFimOcorrencia", "dataInicioAnexacao", "dataInicioLote", "dataInicioManifesto", "dataInicioOcorrencia", "listaCodOcorrencia", "listaOperadora", "listaOrgaoFiscalizacao", "listaSituacaoLote", "listaSituacaoOcorrencia", "listaSituacaoRemessa", "listaUaDespacho"
         })
 
 @XmlRootElement(name = "ConsultaDeLoteDaRFB")
 public class ConsultaDeLoteDaRFB {
-
-    @XmlElement(name = "listaUaDespacho")
-    @ApiModelProperty(value = "Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).")
-    /**
-     * Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
-     **/
-    private List<String> listaUaDespacho = null;
-
-    @XmlElement(name = "listaCodOcorrencia")
-    @ApiModelProperty(value = "Lista de código de ocorrência. Cada item da lista contém:<br/>Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.")
-    /**
-     * Lista de código de ocorrência. Cada item da lista contém:<br/>Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
-     **/
-    private List<Integer> listaCodOcorrencia = null;
 
     @XmlElement(name = "dataFimAnexacao")
     @ApiModelProperty(value = "Data final relacionada ao filtro por período de anexação de documentos.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -39,41 +25,6 @@ public class ConsultaDeLoteDaRFB {
      * Data final relacionada ao filtro por período de anexação de documentos.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
     private OffsetDateTime dataFimAnexacao = null;
-
-    @XmlElement(name = "dataInicioManifesto")
-    @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataInicioManifesto = null;
-
-    @XmlElement(name = "dataInicioAnexacao")
-    @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de anexação de documentos.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data inicial relacionada ao filtro por período de anexação de documentos.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataInicioAnexacao = null;
-
-    @XmlElement(name = "listaSituacaoRemessa")
-    @ApiModelProperty(value = "Lista de situação de remessa. Cada item da lista contém:<br/>Código da situação da remessa. O código da situação é composto por 2 dígitos.<br/>18 - Manifestada;<br/>19 - Liberada;<br/>20 - Descaracterizada / Declaração Cancelada;<br/>21 - Em Perdimento;<br/>22 - Abandonada;<br/>23 - Destruída;<br/>24 - Devolvida / Declaração Cancelada;<br/>25 - Desembaraçada;<br/>26 - Em Seleção;<br/>27 - Em Fiscalização;<br/>28 - Cancelada;<br/>29 - Não Liberada;<br/>30 - Baixada - Presença de Carga em Outro Manifesto;<br/>31 - Baixada - Sem Presença de Carga;<br/>32 - Em Divergência por Abandono - Falta de Declaração;<br/>33 - Em Divergência por Abandono - Sem Pagamento;<br/>34 - Em Divergência por Abandono - Ocorrência Sem Resolução;<br/>35 - Devolvida;<br/>36 - Em Devolução / Declaração Cancelada;<br/>37 - Em Divergência de Manifesto;<br/>38 - Em Fiscalização por Revisão.")
-    /**
-     * Lista de situação de remessa. Cada item da lista contém:<br/>Código da situação da remessa. O código da situação é composto por 2 dígitos.<br/>18 - Manifestada;<br/>19 - Liberada;<br/>20 - Descaracterizada / Declaração Cancelada;<br/>21 - Em Perdimento;<br/>22 - Abandonada;<br/>23 - Destruída;<br/>24 - Devolvida / Declaração Cancelada;<br/>25 - Desembaraçada;<br/>26 - Em Seleção;<br/>27 - Em Fiscalização;<br/>28 - Cancelada;<br/>29 - Não Liberada;<br/>30 - Baixada - Presença de Carga em Outro Manifesto;<br/>31 - Baixada - Sem Presença de Carga;<br/>32 - Em Divergência por Abandono - Falta de Declaração;<br/>33 - Em Divergência por Abandono - Sem Pagamento;<br/>34 - Em Divergência por Abandono - Ocorrência Sem Resolução;<br/>35 - Devolvida;<br/>36 - Em Devolução / Declaração Cancelada;<br/>37 - Em Divergência de Manifesto;<br/>38 - Em Fiscalização por Revisão.
-     **/
-    private List<Integer> listaSituacaoRemessa = null;
-
-    @XmlElement(name = "dataFimOcorrencia")
-    @ApiModelProperty(value = "Data final relacionada ao filtro por período de inclusão da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data final relacionada ao filtro por período de inclusão da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataFimOcorrencia = null;
-
-    @XmlElement(name = "listaSituacaoLote")
-    @ApiModelProperty(value = "Lista de situação do lote. Cada item da lista contém:<br/>Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.<br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.")
-    /**
-     * Lista de situação do lote. Cada item da lista contém:<br/>Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.<br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.
-     **/
-    private List<Integer> listaSituacaoLote = null;
 
     @XmlElement(name = "dataFimLote")
     @ApiModelProperty(value = "Data final relacionada ao filtro por período de registro de lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -89,12 +40,33 @@ public class ConsultaDeLoteDaRFB {
      **/
     private OffsetDateTime dataFimManifesto = null;
 
+    @XmlElement(name = "dataFimOcorrencia")
+    @ApiModelProperty(value = "Data final relacionada ao filtro por período de inclusão da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data final relacionada ao filtro por período de inclusão da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataFimOcorrencia = null;
+
+    @XmlElement(name = "dataInicioAnexacao")
+    @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de anexação de documentos.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data inicial relacionada ao filtro por período de anexação de documentos.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataInicioAnexacao = null;
+
     @XmlElement(name = "dataInicioLote")
     @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de registro de lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
      * Data inicial relacionada ao filtro por período de registro de lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
     private OffsetDateTime dataInicioLote = null;
+
+    @XmlElement(name = "dataInicioManifesto")
+    @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data inicial relacionada ao filtro por período de registro de manifesto.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataInicioManifesto = null;
 
     @XmlElement(name = "dataInicioOcorrencia")
     @ApiModelProperty(value = "Data inicial relacionada ao filtro por período de inclusão da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -103,19 +75,19 @@ public class ConsultaDeLoteDaRFB {
      **/
     private OffsetDateTime dataInicioOcorrencia = null;
 
+    @XmlElement(name = "listaCodOcorrencia")
+    @ApiModelProperty(value = "Lista de código de ocorrência. Cada item da lista contém:<br/>Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.")
+    /**
+     * Lista de código de ocorrência. Cada item da lista contém:<br/>Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
+     **/
+    private List<Integer> listaCodOcorrencia = null;
+
     @XmlElement(name = "listaOperadora")
     @ApiModelProperty(value = "Lista de operadora. Cada item da lista contém:<br/>Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.")
     /**
      * Lista de operadora. Cada item da lista contém:<br/>Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.
      **/
     private List<String> listaOperadora = null;
-
-    @XmlElement(name = "listaSituacaoOcorrencia")
-    @ApiModelProperty(value = "Lista de situação de ocorrência. Cada item da lista contém:<br/>Código da situação da ocorrência. Composto por até 2 caracteres numéricos.<br/>1 - Exigência em aberto - Todas;<br/>2 - Interrompida pela RFB;<br/>3 - Resolvida;<br/>4 - Sem ocorrência;<br/>5 - Não resolvida;<br/>6 - Exigência em aberto - RCV - Retenção para comprovação de valor;<br/>7 - Exigência em aberto - RPE - Retenção para esclarecimentos;<br/>8 - Verificação física requisitada;<br/>9 - Verificação física realizada.")
-    /**
-     * Lista de situação de ocorrência. Cada item da lista contém:<br/>Código da situação da ocorrência. Composto por até 2 caracteres numéricos.<br/>1 - Exigência em aberto - Todas;<br/>2 - Interrompida pela RFB;<br/>3 - Resolvida;<br/>4 - Sem ocorrência;<br/>5 - Não resolvida;<br/>6 - Exigência em aberto - RCV - Retenção para comprovação de valor;<br/>7 - Exigência em aberto - RPE - Retenção para esclarecimentos;<br/>8 - Verificação física requisitada;<br/>9 - Verificação física realizada.
-     **/
-    private List<Integer> listaSituacaoOcorrencia = null;
 
     @XmlElement(name = "listaOrgaoFiscalizacao")
     @ApiModelProperty(value = "Lista de ID do órgão fiscalizador. Cada item da lista contém:<br/>Código do órgão (mneumônico) fiscalizador.  Máximo de 50 caracteres alfanuméricos.<br/>RFB;<br/>ANVISA;<br/>IBAMA;<br/>MAPA.")
@@ -124,64 +96,33 @@ public class ConsultaDeLoteDaRFB {
      **/
     private List<String> listaOrgaoFiscalizacao = null;
 
+    @XmlElement(name = "listaSituacaoLote")
+    @ApiModelProperty(value = "Lista de situação do lote. Cada item da lista contém:<br/>Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.<br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Lista de UA despacho. Cada item da lista contém:&lt;br/&gt;Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
-     *
-     * @return listaUaDespacho
+     * Lista de situação do lote. Cada item da lista contém:<br/>Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.<br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.
      **/
-    @JsonProperty("listaUaDespacho")
-    public List<String> getListaUaDespacho() {
-        return listaUaDespacho;
-    }
+    private List<Integer> listaSituacaoLote = null;
 
-    public void setListaUaDespacho(List<String> listaUaDespacho) {
-        this.listaUaDespacho = listaUaDespacho;
-    }
-
-    public ConsultaDeLoteDaRFB listaUaDespacho(List<String> listaUaDespacho) {
-        this.listaUaDespacho = listaUaDespacho;
-        return this;
-    }
-
-    public ConsultaDeLoteDaRFB addListaUaDespachoItem(String listaUaDespachoItem) {
-        this.listaUaDespacho.add(listaUaDespachoItem);
-        return this;
-    }
-
+    @XmlElement(name = "listaSituacaoOcorrencia")
+    @ApiModelProperty(value = "Lista de situação de ocorrência. Cada item da lista contém:<br/>Código da situação da ocorrência. Composto por até 2 caracteres numéricos.<br/>1 - Exigência em aberto - Todas;<br/>2 - Interrompida pela RFB;<br/>3 - Resolvida;<br/>4 - Sem ocorrência;<br/>5 - Não resolvida;<br/>6 - Exigência em aberto - RCV - Retenção para comprovação de valor;<br/>7 - Exigência em aberto - RPE - Retenção para esclarecimentos;<br/>8 - Verificação física requisitada;<br/>9 - Verificação física realizada.")
     /**
-     * Lista de código de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
-     *
-     * @return listaCodOcorrencia
+     * Lista de situação de ocorrência. Cada item da lista contém:<br/>Código da situação da ocorrência. Composto por até 2 caracteres numéricos.<br/>1 - Exigência em aberto - Todas;<br/>2 - Interrompida pela RFB;<br/>3 - Resolvida;<br/>4 - Sem ocorrência;<br/>5 - Não resolvida;<br/>6 - Exigência em aberto - RCV - Retenção para comprovação de valor;<br/>7 - Exigência em aberto - RPE - Retenção para esclarecimentos;<br/>8 - Verificação física requisitada;<br/>9 - Verificação física realizada.
      **/
-    @JsonProperty("listaCodOcorrencia")
-    public List<Integer> getListaCodOcorrencia() {
-        return listaCodOcorrencia;
-    }
+    private List<Integer> listaSituacaoOcorrencia = null;
 
-    public void setListaCodOcorrencia(List<Integer> listaCodOcorrencia) {
-        this.listaCodOcorrencia = listaCodOcorrencia;
-    }
+    @XmlElement(name = "listaSituacaoRemessa")
+    @ApiModelProperty(value = "Lista de situação de remessa. Cada item da lista contém:<br/>Código da situação da remessa. O código da situação é composto por 2 dígitos.<br/>18 - Manifestada;<br/>19 - Liberada;<br/>20 - Descaracterizada / Declaração Cancelada;<br/>21 - Em Perdimento;<br/>22 - Abandonada;<br/>23 - Destruída;<br/>24 - Devolvida / Declaração Cancelada;<br/>25 - Desembaraçada;<br/>26 - Em Seleção;<br/>27 - Em Fiscalização;<br/>28 - Cancelada;<br/>29 - Não Liberada;<br/>30 - Baixada - Presença de Carga em Outro Manifesto;<br/>31 - Baixada - Sem Presença de Carga;<br/>32 - Em Divergência por Abandono - Falta de Declaração;<br/>33 - Em Divergência por Abandono - Sem Pagamento;<br/>34 - Em Divergência por Abandono - Ocorrência Sem Resolução;<br/>35 - Devolvida;<br/>36 - Em Devolução / Declaração Cancelada;<br/>37 - Em Divergência de Manifesto;<br/>38 - Em Fiscalização por Revisão.")
+    /**
+     * Lista de situação de remessa. Cada item da lista contém:<br/>Código da situação da remessa. O código da situação é composto por 2 dígitos.<br/>18 - Manifestada;<br/>19 - Liberada;<br/>20 - Descaracterizada / Declaração Cancelada;<br/>21 - Em Perdimento;<br/>22 - Abandonada;<br/>23 - Destruída;<br/>24 - Devolvida / Declaração Cancelada;<br/>25 - Desembaraçada;<br/>26 - Em Seleção;<br/>27 - Em Fiscalização;<br/>28 - Cancelada;<br/>29 - Não Liberada;<br/>30 - Baixada - Presença de Carga em Outro Manifesto;<br/>31 - Baixada - Sem Presença de Carga;<br/>32 - Em Divergência por Abandono - Falta de Declaração;<br/>33 - Em Divergência por Abandono - Sem Pagamento;<br/>34 - Em Divergência por Abandono - Ocorrência Sem Resolução;<br/>35 - Devolvida;<br/>36 - Em Devolução / Declaração Cancelada;<br/>37 - Em Divergência de Manifesto;<br/>38 - Em Fiscalização por Revisão.
+     **/
+    private List<Integer> listaSituacaoRemessa = null;
 
-    public ConsultaDeLoteDaRFB listaCodOcorrencia(List<Integer> listaCodOcorrencia) {
-        this.listaCodOcorrencia = listaCodOcorrencia;
-        return this;
-    }
-
-    public ConsultaDeLoteDaRFB addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
-        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
-        return this;
-    }
+    @XmlElement(name = "listaUaDespacho")
+    @ApiModelProperty(value = "Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).")
+    /**
+     * Lista de UA despacho. Cada item da lista contém:<br/>Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
+     **/
+    private List<String> listaUaDespacho = null;
 
     /**
      * Data final relacionada ao filtro por período de anexação de documentos.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
@@ -199,111 +140,6 @@ public class ConsultaDeLoteDaRFB {
 
     public ConsultaDeLoteDaRFB dataFimAnexacao(OffsetDateTime dataFimAnexacao) {
         this.dataFimAnexacao = dataFimAnexacao;
-        return this;
-    }
-
-    /**
-     * Data inicial relacionada ao filtro por período de registro de manifesto.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataInicioManifesto
-     **/
-    @JsonProperty("dataInicioManifesto")
-    public OffsetDateTime getDataInicioManifesto() {
-        return dataInicioManifesto;
-    }
-
-    public void setDataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
-    }
-
-    public ConsultaDeLoteDaRFB dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
-        return this;
-    }
-
-    /**
-     * Data inicial relacionada ao filtro por período de anexação de documentos.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataInicioAnexacao
-     **/
-    @JsonProperty("dataInicioAnexacao")
-    public OffsetDateTime getDataInicioAnexacao() {
-        return dataInicioAnexacao;
-    }
-
-    public void setDataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
-        this.dataInicioAnexacao = dataInicioAnexacao;
-    }
-
-    public ConsultaDeLoteDaRFB dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
-        this.dataInicioAnexacao = dataInicioAnexacao;
-        return this;
-    }
-
-    /**
-     * Lista de situação de remessa. Cada item da lista contém:&lt;br/&gt;Código da situação da remessa. O código da situação é composto por 2 dígitos.&lt;br/&gt;18 - Manifestada;&lt;br/&gt;19 - Liberada;&lt;br/&gt;20 - Descaracterizada / Declaração Cancelada;&lt;br/&gt;21 - Em Perdimento;&lt;br/&gt;22 - Abandonada;&lt;br/&gt;23 - Destruída;&lt;br/&gt;24 - Devolvida / Declaração Cancelada;&lt;br/&gt;25 - Desembaraçada;&lt;br/&gt;26 - Em Seleção;&lt;br/&gt;27 - Em Fiscalização;&lt;br/&gt;28 - Cancelada;&lt;br/&gt;29 - Não Liberada;&lt;br/&gt;30 - Baixada - Presença de Carga em Outro Manifesto;&lt;br/&gt;31 - Baixada - Sem Presença de Carga;&lt;br/&gt;32 - Em Divergência por Abandono - Falta de Declaração;&lt;br/&gt;33 - Em Divergência por Abandono - Sem Pagamento;&lt;br/&gt;34 - Em Divergência por Abandono - Ocorrência Sem Resolução;&lt;br/&gt;35 - Devolvida;&lt;br/&gt;36 - Em Devolução / Declaração Cancelada;&lt;br/&gt;37 - Em Divergência de Manifesto;&lt;br/&gt;38 - Em Fiscalização por Revisão.
-     *
-     * @return listaSituacaoRemessa
-     **/
-    @JsonProperty("listaSituacaoRemessa")
-    public List<Integer> getListaSituacaoRemessa() {
-        return listaSituacaoRemessa;
-    }
-
-    public void setListaSituacaoRemessa(List<Integer> listaSituacaoRemessa) {
-        this.listaSituacaoRemessa = listaSituacaoRemessa;
-    }
-
-    public ConsultaDeLoteDaRFB listaSituacaoRemessa(List<Integer> listaSituacaoRemessa) {
-        this.listaSituacaoRemessa = listaSituacaoRemessa;
-        return this;
-    }
-
-    public ConsultaDeLoteDaRFB addListaSituacaoRemessaItem(Integer listaSituacaoRemessaItem) {
-        this.listaSituacaoRemessa.add(listaSituacaoRemessaItem);
-        return this;
-    }
-
-    /**
-     * Data final relacionada ao filtro por período de inclusão da ocorrência.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataFimOcorrencia
-     **/
-    @JsonProperty("dataFimOcorrencia")
-    public OffsetDateTime getDataFimOcorrencia() {
-        return dataFimOcorrencia;
-    }
-
-    public void setDataFimOcorrencia(OffsetDateTime dataFimOcorrencia) {
-        this.dataFimOcorrencia = dataFimOcorrencia;
-    }
-
-    public ConsultaDeLoteDaRFB dataFimOcorrencia(OffsetDateTime dataFimOcorrencia) {
-        this.dataFimOcorrencia = dataFimOcorrencia;
-        return this;
-    }
-
-    /**
-     * Lista de situação do lote. Cada item da lista contém:&lt;br/&gt;Situação do lote. Máximo de 2 caracteres numéricos. Domínio: &lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.&lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.
-     *
-     * @return listaSituacaoLote
-     **/
-    @JsonProperty("listaSituacaoLote")
-    public List<Integer> getListaSituacaoLote() {
-        return listaSituacaoLote;
-    }
-
-    public void setListaSituacaoLote(List<Integer> listaSituacaoLote) {
-        this.listaSituacaoLote = listaSituacaoLote;
-    }
-
-    public ConsultaDeLoteDaRFB listaSituacaoLote(List<Integer> listaSituacaoLote) {
-        this.listaSituacaoLote = listaSituacaoLote;
-        return this;
-    }
-
-    public ConsultaDeLoteDaRFB addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
-        this.listaSituacaoLote.add(listaSituacaoLoteItem);
         return this;
     }
 
@@ -346,6 +182,50 @@ public class ConsultaDeLoteDaRFB {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data final relacionada ao filtro por período de inclusão da ocorrência.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataFimOcorrencia
+     **/
+    @JsonProperty("dataFimOcorrencia")
+    public OffsetDateTime getDataFimOcorrencia() {
+        return dataFimOcorrencia;
+    }
+
+    public void setDataFimOcorrencia(OffsetDateTime dataFimOcorrencia) {
+        this.dataFimOcorrencia = dataFimOcorrencia;
+    }
+
+    public ConsultaDeLoteDaRFB dataFimOcorrencia(OffsetDateTime dataFimOcorrencia) {
+        this.dataFimOcorrencia = dataFimOcorrencia;
+        return this;
+    }
+
+    /**
+     * Data inicial relacionada ao filtro por período de anexação de documentos.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataInicioAnexacao
+     **/
+    @JsonProperty("dataInicioAnexacao")
+    public OffsetDateTime getDataInicioAnexacao() {
+        return dataInicioAnexacao;
+    }
+
+    public void setDataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
+        this.dataInicioAnexacao = dataInicioAnexacao;
+    }
+
+    /**
      * Data inicial relacionada ao filtro por período de registro de lote.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataInicioLote
@@ -362,6 +242,25 @@ public class ConsultaDeLoteDaRFB {
     public ConsultaDeLoteDaRFB dataInicioLote(OffsetDateTime dataInicioLote) {
         this.dataInicioLote = dataInicioLote;
         return this;
+    }
+
+    public ConsultaDeLoteDaRFB dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
+        this.dataInicioAnexacao = dataInicioAnexacao;
+        return this;
+    }
+
+    /**
+     * Data inicial relacionada ao filtro por período de registro de manifesto.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataInicioManifesto
+     **/
+    @JsonProperty("dataInicioManifesto")
+    public OffsetDateTime getDataInicioManifesto() {
+        return dataInicioManifesto;
+    }
+
+    public void setDataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
     }
 
     /**
@@ -383,9 +282,32 @@ public class ConsultaDeLoteDaRFB {
         return this;
     }
 
+    public ConsultaDeLoteDaRFB dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
+        return this;
+    }
+
+    /**
+     * Lista de código de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
+     *
+     * @return listaCodOcorrencia
+     **/
+    @JsonProperty("listaCodOcorrencia")
+    public List<Integer> getListaCodOcorrencia() {
+        return listaCodOcorrencia;
+    }
+
+    public void setListaCodOcorrencia(List<Integer> listaCodOcorrencia) {
+        this.listaCodOcorrencia = listaCodOcorrencia;
+    }
+
+    public ConsultaDeLoteDaRFB listaCodOcorrencia(List<Integer> listaCodOcorrencia) {
+        this.listaCodOcorrencia = listaCodOcorrencia;
+        return this;
+    }
+
     /**
      * Lista de operadora. Cada item da lista contém:&lt;br/&gt;Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.
-     *
      * @return listaOperadora
      **/
     @JsonProperty("listaOperadora")
@@ -407,27 +329,8 @@ public class ConsultaDeLoteDaRFB {
         return this;
     }
 
-    /**
-     * Lista de situação de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da situação da ocorrência. Composto por até 2 caracteres numéricos.&lt;br/&gt;1 - Exigência em aberto - Todas;&lt;br/&gt;2 - Interrompida pela RFB;&lt;br/&gt;3 - Resolvida;&lt;br/&gt;4 - Sem ocorrência;&lt;br/&gt;5 - Não resolvida;&lt;br/&gt;6 - Exigência em aberto - RCV - Retenção para comprovação de valor;&lt;br/&gt;7 - Exigência em aberto - RPE - Retenção para esclarecimentos;&lt;br/&gt;8 - Verificação física requisitada;&lt;br/&gt;9 - Verificação física realizada.
-     *
-     * @return listaSituacaoOcorrencia
-     **/
-    @JsonProperty("listaSituacaoOcorrencia")
-    public List<Integer> getListaSituacaoOcorrencia() {
-        return listaSituacaoOcorrencia;
-    }
-
-    public void setListaSituacaoOcorrencia(List<Integer> listaSituacaoOcorrencia) {
-        this.listaSituacaoOcorrencia = listaSituacaoOcorrencia;
-    }
-
-    public ConsultaDeLoteDaRFB listaSituacaoOcorrencia(List<Integer> listaSituacaoOcorrencia) {
-        this.listaSituacaoOcorrencia = listaSituacaoOcorrencia;
-        return this;
-    }
-
-    public ConsultaDeLoteDaRFB addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
-        this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
+    public ConsultaDeLoteDaRFB addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
+        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
         return this;
     }
 
@@ -455,25 +358,120 @@ public class ConsultaDeLoteDaRFB {
         return this;
     }
 
+    /**
+     * Lista de situação do lote. Cada item da lista contém:&lt;br/&gt;Situação do lote. Máximo de 2 caracteres numéricos. Domínio: &lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.&lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.
+     *
+     * @return listaSituacaoLote
+     **/
+    @JsonProperty("listaSituacaoLote")
+    public List<Integer> getListaSituacaoLote() {
+        return listaSituacaoLote;
+    }
+
+    public void setListaSituacaoLote(List<Integer> listaSituacaoLote) {
+        this.listaSituacaoLote = listaSituacaoLote;
+    }
+
+    public ConsultaDeLoteDaRFB listaSituacaoLote(List<Integer> listaSituacaoLote) {
+        this.listaSituacaoLote = listaSituacaoLote;
+        return this;
+    }
+
+    /**
+     * Lista de situação de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da situação da ocorrência. Composto por até 2 caracteres numéricos.&lt;br/&gt;1 - Exigência em aberto - Todas;&lt;br/&gt;2 - Interrompida pela RFB;&lt;br/&gt;3 - Resolvida;&lt;br/&gt;4 - Sem ocorrência;&lt;br/&gt;5 - Não resolvida;&lt;br/&gt;6 - Exigência em aberto - RCV - Retenção para comprovação de valor;&lt;br/&gt;7 - Exigência em aberto - RPE - Retenção para esclarecimentos;&lt;br/&gt;8 - Verificação física requisitada;&lt;br/&gt;9 - Verificação física realizada.
+     *
+     * @return listaSituacaoOcorrencia
+     **/
+    @JsonProperty("listaSituacaoOcorrencia")
+    public List<Integer> getListaSituacaoOcorrencia() {
+        return listaSituacaoOcorrencia;
+    }
+
+    public void setListaSituacaoOcorrencia(List<Integer> listaSituacaoOcorrencia) {
+        this.listaSituacaoOcorrencia = listaSituacaoOcorrencia;
+    }
+
+    public ConsultaDeLoteDaRFB listaSituacaoOcorrencia(List<Integer> listaSituacaoOcorrencia) {
+        this.listaSituacaoOcorrencia = listaSituacaoOcorrencia;
+        return this;
+    }
+
+    public ConsultaDeLoteDaRFB addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
+        this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
+        return this;
+    }
+
+    public ConsultaDeLoteDaRFB addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
+        this.listaSituacaoLote.add(listaSituacaoLoteItem);
+        return this;
+    }
+
+    /**
+     * Lista de situação de remessa. Cada item da lista contém:&lt;br/&gt;Código da situação da remessa. O código da situação é composto por 2 dígitos.&lt;br/&gt;18 - Manifestada;&lt;br/&gt;19 - Liberada;&lt;br/&gt;20 - Descaracterizada / Declaração Cancelada;&lt;br/&gt;21 - Em Perdimento;&lt;br/&gt;22 - Abandonada;&lt;br/&gt;23 - Destruída;&lt;br/&gt;24 - Devolvida / Declaração Cancelada;&lt;br/&gt;25 - Desembaraçada;&lt;br/&gt;26 - Em Seleção;&lt;br/&gt;27 - Em Fiscalização;&lt;br/&gt;28 - Cancelada;&lt;br/&gt;29 - Não Liberada;&lt;br/&gt;30 - Baixada - Presença de Carga em Outro Manifesto;&lt;br/&gt;31 - Baixada - Sem Presença de Carga;&lt;br/&gt;32 - Em Divergência por Abandono - Falta de Declaração;&lt;br/&gt;33 - Em Divergência por Abandono - Sem Pagamento;&lt;br/&gt;34 - Em Divergência por Abandono - Ocorrência Sem Resolução;&lt;br/&gt;35 - Devolvida;&lt;br/&gt;36 - Em Devolução / Declaração Cancelada;&lt;br/&gt;37 - Em Divergência de Manifesto;&lt;br/&gt;38 - Em Fiscalização por Revisão.
+     * @return listaSituacaoRemessa
+     **/
+    @JsonProperty("listaSituacaoRemessa")
+    public List<Integer> getListaSituacaoRemessa() {
+        return listaSituacaoRemessa;
+    }
+
+    public void setListaSituacaoRemessa(List<Integer> listaSituacaoRemessa) {
+        this.listaSituacaoRemessa = listaSituacaoRemessa;
+    }
+
+    public ConsultaDeLoteDaRFB listaSituacaoRemessa(List<Integer> listaSituacaoRemessa) {
+        this.listaSituacaoRemessa = listaSituacaoRemessa;
+        return this;
+    }
+
+    public ConsultaDeLoteDaRFB addListaSituacaoRemessaItem(Integer listaSituacaoRemessaItem) {
+        this.listaSituacaoRemessa.add(listaSituacaoRemessaItem);
+        return this;
+    }
+
+    /**
+     * Lista de UA despacho. Cada item da lista contém:&lt;br/&gt;Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
+     *
+     * @return listaUaDespacho
+     **/
+    @JsonProperty("listaUaDespacho")
+    public List<String> getListaUaDespacho() {
+        return listaUaDespacho;
+    }
+
+    public void setListaUaDespacho(List<String> listaUaDespacho) {
+        this.listaUaDespacho = listaUaDespacho;
+    }
+
+    public ConsultaDeLoteDaRFB listaUaDespacho(List<String> listaUaDespacho) {
+        this.listaUaDespacho = listaUaDespacho;
+        return this;
+    }
+
+    public ConsultaDeLoteDaRFB addListaUaDespachoItem(String listaUaDespachoItem) {
+        this.listaUaDespacho.add(listaUaDespachoItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ConsultaDeLoteDaRFB {\n" +
-                "    listaUaDespacho: " + toIndentedString(listaUaDespacho) + "\n" +
-                "    listaCodOcorrencia: " + toIndentedString(listaCodOcorrencia) + "\n" +
                 "    dataFimAnexacao: " + toIndentedString(dataFimAnexacao) + "\n" +
-                "    dataInicioManifesto: " + toIndentedString(dataInicioManifesto) + "\n" +
-                "    dataInicioAnexacao: " + toIndentedString(dataInicioAnexacao) + "\n" +
-                "    listaSituacaoRemessa: " + toIndentedString(listaSituacaoRemessa) + "\n" +
-                "    dataFimOcorrencia: " + toIndentedString(dataFimOcorrencia) + "\n" +
-                "    listaSituacaoLote: " + toIndentedString(listaSituacaoLote) + "\n" +
                 "    dataFimLote: " + toIndentedString(dataFimLote) + "\n" +
                 "    dataFimManifesto: " + toIndentedString(dataFimManifesto) + "\n" +
+                "    dataFimOcorrencia: " + toIndentedString(dataFimOcorrencia) + "\n" +
+                "    dataInicioAnexacao: " + toIndentedString(dataInicioAnexacao) + "\n" +
                 "    dataInicioLote: " + toIndentedString(dataInicioLote) + "\n" +
+                "    dataInicioManifesto: " + toIndentedString(dataInicioManifesto) + "\n" +
                 "    dataInicioOcorrencia: " + toIndentedString(dataInicioOcorrencia) + "\n" +
+                "    listaCodOcorrencia: " + toIndentedString(listaCodOcorrencia) + "\n" +
                 "    listaOperadora: " + toIndentedString(listaOperadora) + "\n" +
-                "    listaSituacaoOcorrencia: " + toIndentedString(listaSituacaoOcorrencia) + "\n" +
                 "    listaOrgaoFiscalizacao: " + toIndentedString(listaOrgaoFiscalizacao) + "\n" +
+                "    listaSituacaoLote: " + toIndentedString(listaSituacaoLote) + "\n" +
+                "    listaSituacaoOcorrencia: " + toIndentedString(listaSituacaoOcorrencia) + "\n" +
+                "    listaSituacaoRemessa: " + toIndentedString(listaSituacaoRemessa) + "\n" +
+                "    listaUaDespacho: " + toIndentedString(listaUaDespacho) + "\n" +
                 "}";
         return sb;
     }

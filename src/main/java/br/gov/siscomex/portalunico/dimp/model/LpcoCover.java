@@ -30,17 +30,6 @@ public class LpcoCover {
     private String numero = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do um LPCO.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;OAANNNNNNNN&#39;&lt;br&gt;Lei de formação. O número do LPCO é composto por: &lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação).&lt;br&gt;* AA &#x3D; Ano do registro do LPCO.&lt;br&gt;* NNNNNNNN &#x3D; 8 caracteres númericos. Número sequencial do LPCO no ano.
      *
      * @return numero
@@ -57,6 +46,18 @@ public class LpcoCover {
     public LpcoCover numero(String numero) {
         this.numero = numero;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

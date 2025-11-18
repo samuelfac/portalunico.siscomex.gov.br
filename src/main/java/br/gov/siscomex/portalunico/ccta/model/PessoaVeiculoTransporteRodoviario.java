@@ -15,44 +15,49 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PessoaVeiculoTransporteRodoviario", propOrder =
-        {"tipoDocumento", "tipo", "acompanhantes", "nacionalidadeBrasileira", "nome", "numeroDocumento"
+        {"acompanhantes", "nacionalidadeBrasileira", "nome", "numeroDocumento", "tipo", "tipoDocumento"
         })
 
 @XmlRootElement(name = "PessoaVeiculoTransporteRodoviario")
 public class PessoaVeiculoTransporteRodoviario {
 
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDocumento tipoDocumento = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "Classificação da pessoa do veículo")
-    /**
-     * Classificação da pessoa do veículo
-     **/
-    private TipoEnum tipo = null;
     @XmlElement(name = "acompanhantes")
     @ApiModelProperty(value = "")
     @Valid
     private List<PessoaVeiculoTransporteRodoviario> acompanhantes = null;
+
     @XmlElement(name = "nacionalidadeBrasileira")
     @ApiModelProperty(value = "Indicador de se a pessoa é brasileira ou não")
     /**
      * Indicador de se a pessoa é brasileira ou não
      **/
     private Boolean nacionalidadeBrasileira = null;
+
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "12345678901", value = "Nome da pessoa envolvida")
     /**
      * Nome da pessoa envolvida
      **/
     private String nome = null;
+
     @XmlElement(name = "numeroDocumento")
     @ApiModelProperty(example = "12345678901", value = "Número do Documento")
     /**
      * Número do Documento
      **/
     private String numeroDocumento = null;
+
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "Classificação da pessoa do veículo")
+    /**
+     * Classificação da pessoa do veículo
+     **/
+    private TipoEnum tipo = null;
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoDocumento tipoDocumento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -63,47 +68,6 @@ public class PessoaVeiculoTransporteRodoviario {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get tipoDocumento
-     *
-     * @return tipoDocumento
-     **/
-    @JsonProperty("tipoDocumento")
-    public TipoDocumento getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public PessoaVeiculoTransporteRodoviario tipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
-    /**
-     * Classificação da pessoa do veículo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public PessoaVeiculoTransporteRodoviario tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
     }
 
     /**
@@ -187,17 +151,58 @@ public class PessoaVeiculoTransporteRodoviario {
         return this;
     }
 
+    /**
+     * Classificação da pessoa do veículo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public PessoaVeiculoTransporteRodoviario tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Get tipoDocumento
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public PessoaVeiculoTransporteRodoviario tipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class PessoaVeiculoTransporteRodoviario {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    acompanhantes: " + toIndentedString(acompanhantes) + "\n" +
                 "    nacionalidadeBrasileira: " + toIndentedString(nacionalidadeBrasileira) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }

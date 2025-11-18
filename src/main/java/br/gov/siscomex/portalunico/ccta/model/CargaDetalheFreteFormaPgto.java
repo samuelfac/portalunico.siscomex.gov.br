@@ -29,17 +29,6 @@ public class CargaDetalheFreteFormaPgto {
     private FormaPagamento valorPorPesoValor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get valorOutrosEncargos
      *
      * @return valorOutrosEncargos
@@ -75,6 +64,18 @@ public class CargaDetalheFreteFormaPgto {
     public CargaDetalheFreteFormaPgto valorPorPesoValor(FormaPagamento valorPorPesoValor) {
         this.valorPorPesoValor = valorPorPesoValor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

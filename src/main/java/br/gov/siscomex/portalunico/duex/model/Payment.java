@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Payment", propOrder =
-        {"dueDateTime", "interest", "penalty", "paymentAmount"
+        {"dueDateTime", "interest", "paymentAmount", "penalty"
         })
 
 @XmlRootElement(name = "Payment")
@@ -29,26 +29,15 @@ public class Payment {
     @Valid
     private PaymentInterestType interest = null;
 
-    @XmlElement(name = "penalty", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private PaymentPenaltyType penalty = null;
-
     @XmlElement(name = "paymentAmount", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private PaymentPaymentAmountType paymentAmount = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "penalty", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private PaymentPenaltyType penalty = null;
 
     /**
      * Get dueDateTime
@@ -91,26 +80,6 @@ public class Payment {
     }
 
     /**
-     * Get penalty
-     *
-     * @return penalty
-     **/
-    @JsonProperty("penalty")
-    @NotNull
-    public PaymentPenaltyType getPenalty() {
-        return penalty;
-    }
-
-    public void setPenalty(PaymentPenaltyType penalty) {
-        this.penalty = penalty;
-    }
-
-    public Payment penalty(PaymentPenaltyType penalty) {
-        this.penalty = penalty;
-        return this;
-    }
-
-    /**
      * Get paymentAmount
      *
      * @return paymentAmount
@@ -130,14 +99,45 @@ public class Payment {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get penalty
+     *
+     * @return penalty
+     **/
+    @JsonProperty("penalty")
+    @NotNull
+    public PaymentPenaltyType getPenalty() {
+        return penalty;
+    }
+
+    public void setPenalty(PaymentPenaltyType penalty) {
+        this.penalty = penalty;
+    }
+
+    public Payment penalty(PaymentPenaltyType penalty) {
+        this.penalty = penalty;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Payment {\n" +
                 "    dueDateTime: " + toIndentedString(dueDateTime) + "\n" +
                 "    interest: " + toIndentedString(interest) + "\n" +
-                "    penalty: " + toIndentedString(penalty) + "\n" +
                 "    paymentAmount: " + toIndentedString(paymentAmount) + "\n" +
+                "    penalty: " + toIndentedString(penalty) + "\n" +
                 "}";
         return sb;
     }

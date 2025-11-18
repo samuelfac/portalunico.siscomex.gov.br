@@ -37,17 +37,6 @@ public class RetornoDownloadDocumento {
     private Documento documento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * String em BASE64 representando o conteúdo do arquivo no formato zip&lt;br/&gt;Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64
      *
      * @return arquivoZipBase64
@@ -85,6 +74,18 @@ public class RetornoDownloadDocumento {
     public RetornoDownloadDocumento documento(Documento documento) {
         this.documento = documento;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

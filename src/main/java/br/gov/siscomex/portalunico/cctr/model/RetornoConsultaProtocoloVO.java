@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultaProtocoloVO", propOrder =
-        {"protocolo", "situacao", "tipoRecepcao", "extrato", "situacoes", "dataCriacao", "responsavel", "nomeResponsavel"
+        {"protocolo", "dataCriacao", "tipoRecepcao", "nomeResponsavel", "responsavel", "situacao", "situacoes", "extrato"
         })
 
 @XmlRootElement(name = "RetornoConsultaProtocoloVO")
@@ -32,10 +32,12 @@ public class RetornoConsultaProtocoloVO {
      **/
     private String protocolo = null;
 
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SituacaoVO situacao = null;
+    @XmlElement(name = "dataCriacao")
+    @ApiModelProperty(example = "2024-04-15T12:46:54-03:00", value = "Data de criação do protocolo")
+    /**
+     * Data de criação do protocolo
+     **/
+    private OffsetDateTime dataCriacao = null;
 
     @XmlElement(name = "tipoRecepcao")
     @ApiModelProperty(example = "NF-e | MIC/DTA", value = "Tipo de Recepção Assíncrona")
@@ -44,13 +46,24 @@ public class RetornoConsultaProtocoloVO {
      **/
     private String tipoRecepcao = null;
 
-    @XmlElement(name = "extrato")
-    @ApiModelProperty(value = "Lista com as falhas encontradas durante o processamento")
-    @Valid
+    @XmlElement(name = "nomeResponsavel")
+    @ApiModelProperty(example = "NOME DO RESPONSÁVEL", value = "Nome do responsável pelo registro do protocolo")
     /**
-     * Lista com as falhas encontradas durante o processamento
+     * Nome do responsável pelo registro do protocolo
      **/
-    private List<ExtratoVO> extrato = null;
+    private String nomeResponsavel = null;
+
+    @XmlElement(name = "responsavel")
+    @ApiModelProperty(example = "99999999999 | 99999999999999", value = "Identificação do Responsável pelo registro do protocolo")
+    /**
+     * Identificação do Responsável pelo registro do protocolo
+     **/
+    private String responsavel = null;
+
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SituacaoVO situacao = null;
 
     @XmlElement(name = "situacoes")
     @ApiModelProperty(value = "Lista das situações (status) pelas quais o protocolo já passou")
@@ -60,37 +73,13 @@ public class RetornoConsultaProtocoloVO {
      **/
     private List<SituacaoVO> situacoes = null;
 
-    @XmlElement(name = "dataCriacao")
-    @ApiModelProperty(example = "2024-04-15T12:46:54-03:00", value = "Data de criação do protocolo")
+    @XmlElement(name = "extrato")
+    @ApiModelProperty(value = "Lista com as falhas encontradas durante o processamento")
+    @Valid
     /**
-     * Data de criação do protocolo
+     * Lista com as falhas encontradas durante o processamento
      **/
-    private OffsetDateTime dataCriacao = null;
-
-    @XmlElement(name = "responsavel")
-    @ApiModelProperty(example = "99999999999 | 99999999999999", value = "Identificação do Responsável pelo registro do protocolo")
-    /**
-     * Identificação do Responsável pelo registro do protocolo
-     **/
-    private String responsavel = null;
-
-    @XmlElement(name = "nomeResponsavel")
-    @ApiModelProperty(example = "NOME DO RESPONSÁVEL", value = "Nome do responsável pelo registro do protocolo")
-    /**
-     * Nome do responsável pelo registro do protocolo
-     **/
-    private String nomeResponsavel = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    private List<ExtratoVO> extrato = null;
 
     /**
      * Identificador do protocolo da recepção
@@ -112,22 +101,28 @@ public class RetornoConsultaProtocoloVO {
     }
 
     /**
-     * Get situacao
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data de criação do protocolo
      *
-     * @return situacao
+     * @return dataCriacao
      **/
-    @JsonProperty("situacao")
-    public SituacaoVO getSituacao() {
-        return situacao;
+    @JsonProperty("dataCriacao")
+    public OffsetDateTime getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setSituacao(SituacaoVO situacao) {
-        this.situacao = situacao;
-    }
-
-    public RetornoConsultaProtocoloVO situacao(SituacaoVO situacao) {
-        this.situacao = situacao;
-        return this;
+    public void setDataCriacao(OffsetDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
     /**
@@ -149,28 +144,61 @@ public class RetornoConsultaProtocoloVO {
         return this;
     }
 
+    public RetornoConsultaProtocoloVO dataCriacao(OffsetDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+        return this;
+    }
+
     /**
-     * Lista com as falhas encontradas durante o processamento
+     * Nome do responsável pelo registro do protocolo
      *
-     * @return extrato
+     * @return nomeResponsavel
      **/
-    @JsonProperty("extrato")
-    public List<ExtratoVO> getExtrato() {
-        return extrato;
+    @JsonProperty("nomeResponsavel")
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
     }
 
-    public void setExtrato(List<ExtratoVO> extrato) {
-        this.extrato = extrato;
+    public void setNomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
     }
 
-    public RetornoConsultaProtocoloVO extrato(List<ExtratoVO> extrato) {
-        this.extrato = extrato;
+    public RetornoConsultaProtocoloVO nomeResponsavel(String nomeResponsavel) {
+        this.nomeResponsavel = nomeResponsavel;
         return this;
     }
 
-    public RetornoConsultaProtocoloVO addExtratoItem(ExtratoVO extratoItem) {
-        this.extrato.add(extratoItem);
+    /**
+     * Identificação do Responsável pelo registro do protocolo
+     *
+     * @return responsavel
+     **/
+    @JsonProperty("responsavel")
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public RetornoConsultaProtocoloVO responsavel(String responsavel) {
+        this.responsavel = responsavel;
         return this;
+    }
+
+    /**
+     * Get situacao
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public SituacaoVO getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoVO situacao) {
+        this.situacao = situacao;
     }
 
     /**
@@ -197,60 +225,31 @@ public class RetornoConsultaProtocoloVO {
         return this;
     }
 
-    /**
-     * Data de criação do protocolo
-     *
-     * @return dataCriacao
-     **/
-    @JsonProperty("dataCriacao")
-    public OffsetDateTime getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(OffsetDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
-    public RetornoConsultaProtocoloVO dataCriacao(OffsetDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public RetornoConsultaProtocoloVO situacao(SituacaoVO situacao) {
+        this.situacao = situacao;
         return this;
     }
 
     /**
-     * Identificação do Responsável pelo registro do protocolo
-     *
-     * @return responsavel
+     * Lista com as falhas encontradas durante o processamento
+     * @return extrato
      **/
-    @JsonProperty("responsavel")
-    public String getResponsavel() {
-        return responsavel;
+    @JsonProperty("extrato")
+    public List<ExtratoVO> getExtrato() {
+        return extrato;
     }
 
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
+    public void setExtrato(List<ExtratoVO> extrato) {
+        this.extrato = extrato;
     }
 
-    public RetornoConsultaProtocoloVO responsavel(String responsavel) {
-        this.responsavel = responsavel;
+    public RetornoConsultaProtocoloVO extrato(List<ExtratoVO> extrato) {
+        this.extrato = extrato;
         return this;
     }
 
-    /**
-     * Nome do responsável pelo registro do protocolo
-     *
-     * @return nomeResponsavel
-     **/
-    @JsonProperty("nomeResponsavel")
-    public String getNomeResponsavel() {
-        return nomeResponsavel;
-    }
-
-    public void setNomeResponsavel(String nomeResponsavel) {
-        this.nomeResponsavel = nomeResponsavel;
-    }
-
-    public RetornoConsultaProtocoloVO nomeResponsavel(String nomeResponsavel) {
-        this.nomeResponsavel = nomeResponsavel;
+    public RetornoConsultaProtocoloVO addExtratoItem(ExtratoVO extratoItem) {
+        this.extrato.add(extratoItem);
         return this;
     }
 
@@ -259,13 +258,13 @@ public class RetornoConsultaProtocoloVO {
 
         String sb = "class RetornoConsultaProtocoloVO {\n" +
                 "    protocolo: " + toIndentedString(protocolo) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    tipoRecepcao: " + toIndentedString(tipoRecepcao) + "\n" +
-                "    extrato: " + toIndentedString(extrato) + "\n" +
-                "    situacoes: " + toIndentedString(situacoes) + "\n" +
                 "    dataCriacao: " + toIndentedString(dataCriacao) + "\n" +
-                "    responsavel: " + toIndentedString(responsavel) + "\n" +
+                "    tipoRecepcao: " + toIndentedString(tipoRecepcao) + "\n" +
                 "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
+                "    responsavel: " + toIndentedString(responsavel) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    situacoes: " + toIndentedString(situacoes) + "\n" +
+                "    extrato: " + toIndentedString(extrato) + "\n" +
                 "}";
         return sb;
     }

@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazDadosResumo", propOrder =
-        {"valorTotalMercadoriaLocalEmbarque", "pagamentosDebitoConta", "dadosTributos"
+        {"valorTotalMercadoriaLocalEmbarque", "dadosTributos", "pagamentosDebitoConta"
         })
 
 @XmlRootElement(name = "SefazDadosResumo")
@@ -24,6 +24,11 @@ public class SefazDadosResumo {
     @Valid
     private ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalEmbarque = null;
 
+    @XmlElement(name = "dadosTributos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private InformaesSobreOsTributos dadosTributos = null;
+
     @XmlElement(name = "pagamentosDebitoConta")
     @ApiModelProperty(value = "Lista de pagamentos realizados")
     @Valid
@@ -31,22 +36,6 @@ public class SefazDadosResumo {
      * Lista de pagamentos realizados
      **/
     private List<SefazPagamentoCover> pagamentosDebitoConta = null;
-
-    @XmlElement(name = "dadosTributos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private InformaesSobreOsTributos dadosTributos = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Get valorTotalMercadoriaLocalEmbarque
@@ -65,6 +54,31 @@ public class SefazDadosResumo {
     public SefazDadosResumo valorTotalMercadoriaLocalEmbarque(ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalEmbarque) {
         this.valorTotalMercadoriaLocalEmbarque = valorTotalMercadoriaLocalEmbarque;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get dadosTributos
+     *
+     * @return dadosTributos
+     **/
+    @JsonProperty("dadosTributos")
+    public InformaesSobreOsTributos getDadosTributos() {
+        return dadosTributos;
+    }
+
+    public void setDadosTributos(InformaesSobreOsTributos dadosTributos) {
+        this.dadosTributos = dadosTributos;
     }
 
     /**
@@ -91,20 +105,6 @@ public class SefazDadosResumo {
         return this;
     }
 
-    /**
-     * Get dadosTributos
-     *
-     * @return dadosTributos
-     **/
-    @JsonProperty("dadosTributos")
-    public InformaesSobreOsTributos getDadosTributos() {
-        return dadosTributos;
-    }
-
-    public void setDadosTributos(InformaesSobreOsTributos dadosTributos) {
-        this.dadosTributos = dadosTributos;
-    }
-
     public SefazDadosResumo dadosTributos(InformaesSobreOsTributos dadosTributos) {
         this.dadosTributos = dadosTributos;
         return this;
@@ -115,8 +115,8 @@ public class SefazDadosResumo {
 
         String sb = "class SefazDadosResumo {\n" +
                 "    valorTotalMercadoriaLocalEmbarque: " + toIndentedString(valorTotalMercadoriaLocalEmbarque) + "\n" +
-                "    pagamentosDebitoConta: " + toIndentedString(pagamentosDebitoConta) + "\n" +
                 "    dadosTributos: " + toIndentedString(dadosTributos) + "\n" +
+                "    pagamentosDebitoConta: " + toIndentedString(pagamentosDebitoConta) + "\n" +
                 "}";
         return sb;
     }

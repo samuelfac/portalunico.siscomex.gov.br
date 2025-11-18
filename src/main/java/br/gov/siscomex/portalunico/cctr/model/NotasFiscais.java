@@ -1,6 +1,7 @@
 package br.gov.siscomex.portalunico.cctr.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.Valid;
@@ -15,16 +16,23 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NotasFiscais", propOrder =
-        {"nfe"
+        {"nff"
         })
 
 @XmlRootElement(name = "NotasFiscais")
+/**
+ * Notas Fiscais Formulário
+ **/
+@ApiModel(description = "Notas Fiscais Formulário")
 public class NotasFiscais {
 
-    @XmlElement(name = "nfe", required = true)
-    @ApiModelProperty(required = true, value = "")
+    @XmlElement(name = "nff", required = true)
+    @ApiModelProperty(required = true, value = "Notas Fiscais Formulário")
     @Valid
-    private List<NotaFiscalEletronica> nfe = new ArrayList<>();
+    /**
+     * Notas Fiscais Formulário
+     **/
+    private List<NotaFiscalFormulario> nff = new ArrayList<>();
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -38,27 +46,27 @@ public class NotasFiscais {
     }
 
     /**
-     * Get nfe
+     * Notas Fiscais Formulário
      *
-     * @return nfe
+     * @return nff
      **/
-    @JsonProperty("nfe")
+    @JsonProperty("nff")
     @NotNull
-    public List<NotaFiscalEletronica> getNfe() {
-        return nfe;
+    public List<NotaFiscalFormulario> getNff() {
+        return nff;
     }
 
-    public void setNfe(List<NotaFiscalEletronica> nfe) {
-        this.nfe = nfe;
+    public void setNff(List<NotaFiscalFormulario> nff) {
+        this.nff = nff;
     }
 
-    public NotasFiscais nfe(List<NotaFiscalEletronica> nfe) {
-        this.nfe = nfe;
+    public NotasFiscais nff(List<NotaFiscalFormulario> nff) {
+        this.nff = nff;
         return this;
     }
 
-    public NotasFiscais addNfeItem(NotaFiscalEletronica nfeItem) {
-        this.nfe.add(nfeItem);
+    public NotasFiscais addNffItem(NotaFiscalFormulario nffItem) {
+        this.nff.add(nffItem);
         return this;
     }
 
@@ -66,7 +74,7 @@ public class NotasFiscais {
     public String toString() {
 
         String sb = "class NotasFiscais {\n" +
-                "    nfe: " + toIndentedString(nfe) + "\n" +
+                "    nff: " + toIndentedString(nff) + "\n" +
                 "}";
         return sb;
     }

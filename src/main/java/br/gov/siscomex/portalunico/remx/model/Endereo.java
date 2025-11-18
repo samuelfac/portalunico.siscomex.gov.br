@@ -11,18 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Endereo", propOrder =
-        {"estado", "complemento", "logradouro", "municipio", "cep", "pais"
+        {"cep", "complemento", "estado", "logradouro", "municipio", "pais"
         })
 
 @XmlRootElement(name = "Endereo")
 public class Endereo {
 
-    @XmlElement(name = "estado")
-    @ApiModelProperty(value = "Sigla do estado. Valores de acordo com a tabela de domínio.<br/>Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).")
+    @XmlElement(name = "cep")
+    @ApiModelProperty(value = "Código de endereçamento postal (CEP) do endereço.<br/>15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.<br/>Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.")
     /**
-     * Sigla do estado. Valores de acordo com a tabela de domínio.<br/>Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).
+     * Código de endereçamento postal (CEP) do endereço.<br/>15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.<br/>Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.
      **/
-    private String estado = null;
+    private String cep = null;
 
     @XmlElement(name = "complemento")
     @ApiModelProperty(value = "Coomplemento do endereço. 80 caracteres que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
@@ -30,6 +30,13 @@ public class Endereo {
      * Coomplemento do endereço. 80 caracteres que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      **/
     private String complemento = null;
+
+    @XmlElement(name = "estado")
+    @ApiModelProperty(value = "Sigla do estado. Valores de acordo com a tabela de domínio.<br/>Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).")
+    /**
+     * Sigla do estado. Valores de acordo com a tabela de domínio.<br/>Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).
+     **/
+    private String estado = null;
 
     @XmlElement(name = "logradouro")
     @ApiModelProperty(value = "Logradouro. 50 caracteres que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
@@ -44,13 +51,6 @@ public class Endereo {
      * Código do município.<br/>Obs1.: Para municípios do exterior o código é 9707 (conforme consta na tabela).<br/>Obs2.: Quando estado é nacional, o município deverá pertencer ao estado informado.
      **/
     private Integer municipio = null;
-
-    @XmlElement(name = "cep")
-    @ApiModelProperty(value = "Código de endereçamento postal (CEP) do endereço.<br/>15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.<br/>Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.")
-    /**
-     * Código de endereçamento postal (CEP) do endereço.<br/>15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.<br/>Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.
-     **/
-    private String cep = null;
 
     @XmlElement(name = "pais")
     @ApiModelProperty(value = "Código do país. Valores de acordo com a tabela de domínio.")
@@ -71,22 +71,17 @@ public class Endereo {
     }
 
     /**
-     * Sigla do estado. Valores de acordo com a tabela de domínio.&lt;br/&gt;Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).
+     * Código de endereçamento postal (CEP) do endereço.&lt;br/&gt;15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.&lt;br/&gt;Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.
      *
-     * @return estado
+     * @return cep
      **/
-    @JsonProperty("estado")
-    public String getEstado() {
-        return estado;
+    @JsonProperty("cep")
+    public String getCep() {
+        return cep;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public Endereo estado(String estado) {
-        this.estado = estado;
-        return this;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     /**
@@ -106,6 +101,25 @@ public class Endereo {
     public Endereo complemento(String complemento) {
         this.complemento = complemento;
         return this;
+    }
+
+    public Endereo cep(String cep) {
+        this.cep = cep;
+        return this;
+    }
+
+    /**
+     * Sigla do estado. Valores de acordo com a tabela de domínio.&lt;br/&gt;Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).
+     *
+     * @return estado
+     **/
+    @JsonProperty("estado")
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     /**
@@ -147,25 +161,6 @@ public class Endereo {
     }
 
     /**
-     * Código de endereçamento postal (CEP) do endereço.&lt;br/&gt;15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.&lt;br/&gt;Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.
-     *
-     * @return cep
-     **/
-    @JsonProperty("cep")
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public Endereo cep(String cep) {
-        this.cep = cep;
-        return this;
-    }
-
-    /**
      * Código do país. Valores de acordo com a tabela de domínio.
      *
      * @return pais
@@ -184,15 +179,20 @@ public class Endereo {
         return this;
     }
 
+    public Endereo estado(String estado) {
+        this.estado = estado;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Endereo {\n" +
-                "    estado: " + toIndentedString(estado) + "\n" +
+                "    cep: " + toIndentedString(cep) + "\n" +
                 "    complemento: " + toIndentedString(complemento) + "\n" +
+                "    estado: " + toIndentedString(estado) + "\n" +
                 "    logradouro: " + toIndentedString(logradouro) + "\n" +
                 "    municipio: " + toIndentedString(municipio) + "\n" +
-                "    cep: " + toIndentedString(cep) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
                 "}";
         return sb;

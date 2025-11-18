@@ -12,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaCoordenadaDeAlerta", propOrder =
-        {"x", "y", "y2", "x2", "idElemento"
+        {"idElemento", "x", "y", "x2", "y2"
         })
 
 @XmlRootElement(name = "DadosDaCoordenadaDeAlerta")
 public class DadosDaCoordenadaDeAlerta {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "x")
     @ApiModelProperty(example = "12", value = "Coordenada para marcar o alerta na posição X (largura)")
@@ -32,13 +39,6 @@ public class DadosDaCoordenadaDeAlerta {
      **/
     private Integer y = null;
 
-    @XmlElement(name = "y2")
-    @ApiModelProperty(example = "8", value = "Coordenada para marcar o alerta na posição Y2 (altura)")
-    /**
-     * Coordenada para marcar o alerta na posição Y2 (altura)
-     **/
-    private Integer y2 = null;
-
     @XmlElement(name = "x2")
     @ApiModelProperty(example = "0", value = "Coordenada para marcar o alerta na posição X2 (largura)")
     /**
@@ -46,12 +46,12 @@ public class DadosDaCoordenadaDeAlerta {
      **/
     private Integer x2 = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    @XmlElement(name = "y2")
+    @ApiModelProperty(example = "8", value = "Coordenada para marcar o alerta na posição Y2 (altura)")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Coordenada para marcar o alerta na posição Y2 (altura)
      **/
-    private String idElemento = null;
+    private Integer y2 = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,6 +62,21 @@ public class DadosDaCoordenadaDeAlerta {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
     }
 
     /**
@@ -103,25 +118,6 @@ public class DadosDaCoordenadaDeAlerta {
     }
 
     /**
-     * Coordenada para marcar o alerta na posição Y2 (altura)
-     *
-     * @return y2
-     **/
-    @JsonProperty("y2")
-    public Integer getY2() {
-        return y2;
-    }
-
-    public void setY2(Integer y2) {
-        this.y2 = y2;
-    }
-
-    public DadosDaCoordenadaDeAlerta y2(Integer y2) {
-        this.y2 = y2;
-        return this;
-    }
-
-    /**
      * Coordenada para marcar o alerta na posição X2 (largura)
      *
      * @return x2
@@ -140,23 +136,27 @@ public class DadosDaCoordenadaDeAlerta {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
     public DadosDaCoordenadaDeAlerta idElemento(String idElemento) {
         this.idElemento = idElemento;
+        return this;
+    }
+
+    /**
+     * Coordenada para marcar o alerta na posição Y2 (altura)
+     *
+     * @return y2
+     **/
+    @JsonProperty("y2")
+    public Integer getY2() {
+        return y2;
+    }
+
+    public void setY2(Integer y2) {
+        this.y2 = y2;
+    }
+
+    public DadosDaCoordenadaDeAlerta y2(Integer y2) {
+        this.y2 = y2;
         return this;
     }
 
@@ -164,11 +164,11 @@ public class DadosDaCoordenadaDeAlerta {
     public String toString() {
 
         String sb = "class DadosDaCoordenadaDeAlerta {\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    x: " + toIndentedString(x) + "\n" +
                 "    y: " + toIndentedString(y) + "\n" +
-                "    y2: " + toIndentedString(y2) + "\n" +
                 "    x2: " + toIndentedString(x2) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    y2: " + toIndentedString(y2) + "\n" +
                 "}";
         return sb;
     }

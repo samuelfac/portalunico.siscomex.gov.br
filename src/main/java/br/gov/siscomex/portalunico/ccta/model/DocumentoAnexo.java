@@ -14,19 +14,18 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoAnexo", propOrder =
-        {"tipoDocumento", "idDocumento", "descricaoDocumento"
+        {"descricaoDocumento", "idDocumento", "tipoDocumento"
         })
 
 @XmlRootElement(name = "DocumentoAnexo")
 public class DocumentoAnexo {
 
-    @XmlElement(name = "tipoDocumento", required = true)
-    @ApiModelProperty(example = "49.0", required = true, value = "Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.<br/> Pelo menos um tipo de documento deverá ser 49 (fatura comercial).<br/> Tamanho Máximo: 4")
-    @Valid
+    @XmlElement(name = "descricaoDocumento")
+    @ApiModelProperty(example = "Descrição do documento.", value = "Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50")
     /**
-     * Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.<br/> Pelo menos um tipo de documento deverá ser 49 (fatura comercial).<br/> Tamanho Máximo: 4
+     * Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50
      **/
-    private BigDecimal tipoDocumento = null;
+    private String descricaoDocumento = null;
 
     @XmlElement(name = "idDocumento", required = true)
     @ApiModelProperty(example = "US123456-543B", required = true, value = "Número do identificador do documento<br/> Tamanho Máximo: 20")
@@ -35,12 +34,13 @@ public class DocumentoAnexo {
      **/
     private String idDocumento = null;
 
-    @XmlElement(name = "descricaoDocumento")
-    @ApiModelProperty(example = "Descrição do documento.", value = "Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50")
+    @XmlElement(name = "tipoDocumento", required = true)
+    @ApiModelProperty(example = "49.0", required = true, value = "Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.<br/> Pelo menos um tipo de documento deverá ser 49 (fatura comercial).<br/> Tamanho Máximo: 4")
+    @Valid
     /**
-     * Descrição do documento que será apresentado na fronteira<br/> Tamanho Máximo: 50
+     * Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.<br/> Pelo menos um tipo de documento deverá ser 49 (fatura comercial).<br/> Tamanho Máximo: 4
      **/
-    private String descricaoDocumento = null;
+    private BigDecimal tipoDocumento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -54,23 +54,17 @@ public class DocumentoAnexo {
     }
 
     /**
-     * Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.&lt;br/&gt; Pelo menos um tipo de documento deverá ser 49 (fatura comercial).&lt;br/&gt; Tamanho Máximo: 4
+     * Descrição do documento que será apresentado na fronteira&lt;br/&gt; Tamanho Máximo: 50
      *
-     * @return tipoDocumento
+     * @return descricaoDocumento
      **/
-    @JsonProperty("tipoDocumento")
-    @NotNull
-    public BigDecimal getTipoDocumento() {
-        return tipoDocumento;
+    @JsonProperty("descricaoDocumento")
+    public String getDescricaoDocumento() {
+        return descricaoDocumento;
     }
 
-    public void setTipoDocumento(BigDecimal tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public DocumentoAnexo tipoDocumento(BigDecimal tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
+    public void setDescricaoDocumento(String descricaoDocumento) {
+        this.descricaoDocumento = descricaoDocumento;
     }
 
     /**
@@ -93,22 +87,28 @@ public class DocumentoAnexo {
         return this;
     }
 
-    /**
-     * Descrição do documento que será apresentado na fronteira&lt;br/&gt; Tamanho Máximo: 50
-     *
-     * @return descricaoDocumento
-     **/
-    @JsonProperty("descricaoDocumento")
-    public String getDescricaoDocumento() {
-        return descricaoDocumento;
-    }
-
-    public void setDescricaoDocumento(String descricaoDocumento) {
-        this.descricaoDocumento = descricaoDocumento;
-    }
-
     public DocumentoAnexo descricaoDocumento(String descricaoDocumento) {
         this.descricaoDocumento = descricaoDocumento;
+        return this;
+    }
+
+    /**
+     * Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.&lt;br/&gt; Pelo menos um tipo de documento deverá ser 49 (fatura comercial).&lt;br/&gt; Tamanho Máximo: 4
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    @NotNull
+    public BigDecimal getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(BigDecimal tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public DocumentoAnexo tipoDocumento(BigDecimal tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
         return this;
     }
 
@@ -116,9 +116,9 @@ public class DocumentoAnexo {
     public String toString() {
 
         String sb = "class DocumentoAnexo {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
-                "    idDocumento: " + toIndentedString(idDocumento) + "\n" +
                 "    descricaoDocumento: " + toIndentedString(descricaoDocumento) + "\n" +
+                "    idDocumento: " + toIndentedString(idDocumento) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }

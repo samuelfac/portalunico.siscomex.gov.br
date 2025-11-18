@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Declarante", propOrder =
-        {"tipo", "numero"
+        {"numero", "tipo"
         })
 
 @XmlRootElement(name = "Declarante")
 public class Declarante {
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "Número do documento<br />Tamanho mínimo: 1<br />Tamanho máximo: 20")
+    /**
+     * Número do documento<br />Tamanho mínimo: 1<br />Tamanho máximo: 20
+     **/
+    private String numero = null;
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(value = "Tipo<br />Domínio: <br />'PF' = Pessoa Física<br />'PJ' = Pessoa Jurídica<br />'ES' = Estrangeiro ")
@@ -24,12 +31,24 @@ public class Declarante {
      **/
     private String tipo = null;
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(value = "Número do documento<br />Tamanho mínimo: 1<br />Tamanho máximo: 20")
     /**
-     * Número do documento<br />Tamanho mínimo: 1<br />Tamanho máximo: 20
+     * Número do documento&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 20
+     *
+     * @return numero
      **/
-    private String numero = null;
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public Declarante numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class Declarante {
         return this;
     }
 
-    /**
-     * Número do documento&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 20
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public Declarante numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Declarante {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

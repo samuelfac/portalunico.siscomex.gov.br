@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConteinerCover", propOrder =
-        {"lacres", "numeroConteiner", "tara", "notasFiscais"
+        {"numeroConteiner", "tara", "notasFiscais", "lacres"
         })
 
 @XmlRootElement(name = "ConteinerCover")
@@ -26,14 +26,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Dados do contêiner")
 public class ConteinerCover {
-
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(value = "Lista com os lacres vinculados ao contêiner<br>Máximo 4 lacres diferentes entre si.")
-    @Valid
-    /**
-     * Lista com os lacres vinculados ao contêiner<br>Máximo 4 lacres diferentes entre si.
-     **/
-    private List<LacreCover> lacres = null;
 
     @XmlElement(name = "numeroConteiner", required = true)
     @ApiModelProperty(example = "CONT000001", required = true, value = "Número do contêiner<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA")
@@ -57,41 +49,13 @@ public class ConteinerCover {
      **/
     private List<NotaFiscalCover> notasFiscais = null;
 
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(value = "Lista com os lacres vinculados ao contêiner<br>Máximo 4 lacres diferentes entre si.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Lista com os lacres vinculados ao contêiner&lt;br&gt;Máximo 4 lacres diferentes entre si.
-     *
-     * @return lacres
+     * Lista com os lacres vinculados ao contêiner<br>Máximo 4 lacres diferentes entre si.
      **/
-    @JsonProperty("lacres")
-    @Size(min = 0, max = 4)
-    public List<LacreCover> getLacres() {
-        return lacres;
-    }
-
-    public void setLacres(List<LacreCover> lacres) {
-        this.lacres = lacres;
-    }
-
-    public ConteinerCover lacres(List<LacreCover> lacres) {
-        this.lacres = lacres;
-        return this;
-    }
-
-    public ConteinerCover addLacresItem(LacreCover lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
+    private List<LacreCover> lacres = null;
 
     /**
      * Número do contêiner&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAA
@@ -160,14 +124,50 @@ public class ConteinerCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista com os lacres vinculados ao contêiner&lt;br&gt;Máximo 4 lacres diferentes entre si.
+     *
+     * @return lacres
+     **/
+    @JsonProperty("lacres")
+    @Size(min = 0, max = 4)
+    public List<LacreCover> getLacres() {
+        return lacres;
+    }
+
+    public void setLacres(List<LacreCover> lacres) {
+        this.lacres = lacres;
+    }
+
+    public ConteinerCover lacres(List<LacreCover> lacres) {
+        this.lacres = lacres;
+        return this;
+    }
+
+    public ConteinerCover addLacresItem(LacreCover lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ConteinerCover {\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
                 "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "}";
         return sb;
     }

@@ -15,25 +15,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDeManifestoDePresenaDeCarga", propOrder =
-        {"situacao", "numeroProtocolo", "dataHoraProcessamento", "numeroManifesto", "dataHorarioEnvio", "cnpj", "erros", "remessas"
+        {"cnpj", "dataHoraProcessamento", "dataHorarioEnvio", "erros", "numeroManifesto", "numeroProtocolo", "remessas", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDeManifestoDePresenaDeCarga")
 public class ProcessamentoDeManifestoDePresenaDeCarga {
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    @XmlElement(name = "cnpj", required = true)
+    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
     /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
      **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "numeroProtocolo", required = true)
-    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
+    private String cnpj = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -42,26 +35,12 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
      **/
     private OffsetDateTime dataHoraProcessamento = null;
 
-    @XmlElement(name = "numeroManifesto", required = true)
-    @ApiModelProperty(required = true, value = "Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.")
-    /**
-     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
-     **/
-    private String numeroManifesto = null;
-
     @XmlElement(name = "dataHorarioEnvio", required = true)
     @ApiModelProperty(required = true, value = "Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
      * Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
     private OffsetDateTime dataHorarioEnvio = null;
-
-    @XmlElement(name = "cnpj", required = true)
-    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
-     **/
-    private String cnpj = null;
 
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
@@ -71,6 +50,20 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
      **/
     private List<ErroNoProcessamento> erros = null;
 
+    @XmlElement(name = "numeroManifesto", required = true)
+    @ApiModelProperty(required = true, value = "Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.")
+    /**
+     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
+     **/
+    private String numeroManifesto = null;
+
+    @XmlElement(name = "numeroProtocolo", required = true)
+    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     **/
+    private String numeroProtocolo = null;
+
     @XmlElement(name = "remessas")
     @ApiModelProperty(value = "Lista de remessas.")
     @Valid
@@ -78,6 +71,13 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
      * Lista de remessas.
      **/
     private List<DetalheDoProcessamentoDaRemessa> remessas = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -91,43 +91,18 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
     }
 
     /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
-     * @return situacao
+     * @return cnpj
      **/
-    @JsonProperty("situacao")
+    @JsonProperty("cnpj")
     @NotNull
-    public Integer getSituacao() {
-        return situacao;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDeManifestoDePresenaDeCarga situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    @NotNull
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDeManifestoDePresenaDeCarga numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -150,26 +125,6 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
     }
 
     /**
-     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
-     *
-     * @return numeroManifesto
-     **/
-    @JsonProperty("numeroManifesto")
-    @NotNull
-    public String getNumeroManifesto() {
-        return numeroManifesto;
-    }
-
-    public void setNumeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-    }
-
-    public ProcessamentoDeManifestoDePresenaDeCarga numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-        return this;
-    }
-
-    /**
      * Data e horário do envio do Json de consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataHorarioEnvio
@@ -186,26 +141,6 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
 
     public ProcessamentoDeManifestoDePresenaDeCarga dataHorarioEnvio(OffsetDateTime dataHorarioEnvio) {
         this.dataHorarioEnvio = dataHorarioEnvio;
-        return this;
-    }
-
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @NotNull
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public ProcessamentoDeManifestoDePresenaDeCarga cnpj(String cnpj) {
-        this.cnpj = cnpj;
         return this;
     }
 
@@ -233,6 +168,46 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
         return this;
     }
 
+    public ProcessamentoDeManifestoDePresenaDeCarga cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
+
+    /**
+     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
+     *
+     * @return numeroManifesto
+     **/
+    @JsonProperty("numeroManifesto")
+    @NotNull
+    public String getNumeroManifesto() {
+        return numeroManifesto;
+    }
+
+    public void setNumeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+    }
+
+    public ProcessamentoDeManifestoDePresenaDeCarga numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+        return this;
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    @NotNull
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
     /**
      * Lista de remessas.
      *
@@ -257,18 +232,43 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
         return this;
     }
 
+    public ProcessamentoDeManifestoDePresenaDeCarga numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDeManifestoDePresenaDeCarga situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProcessamentoDeManifestoDePresenaDeCarga {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
-                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
+                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
                 "    remessas: " + toIndentedString(remessas) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

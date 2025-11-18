@@ -33,17 +33,6 @@ public class ConsultaPorNmeroDeLote {
     private String numeroLote = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpjDeclarante
@@ -81,6 +70,18 @@ public class ConsultaPorNmeroDeLote {
     public ConsultaPorNmeroDeLote numeroLote(String numeroLote) {
         this.numeroLote = numeroLote;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

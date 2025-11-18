@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoNumeroManifestoViagem {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "1", value = "Tipo do número do documento de viagem")
-    /**
-     * Tipo do número do documento de viagem
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "ATIT", value = "Descrição do tipo do número do documento da viagem")
-    /**
-     * Descrição do tipo do número do documento da viagem
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoNumeroManifestoViagem {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "1", value = "Tipo do número do documento de viagem")
+    /**
+     * Tipo do número do documento de viagem
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "ATIT", value = "Descrição do tipo do número do documento da viagem")
+    /**
+     * Descrição do tipo do número do documento da viagem
+     **/
+    private String descricao = null;
 
     /**
      * Tipo do número do documento de viagem
@@ -84,7 +85,6 @@ public class TipoNumeroManifestoViagem {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

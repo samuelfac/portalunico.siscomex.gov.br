@@ -13,18 +13,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConsultaPorNmeroDeRemessa", propOrder =
-        {"numeroRemessa", "cnpjDeclarante", "numeroManifesto"
+        {"cnpjDeclarante", "numeroManifesto", "numeroRemessa"
         })
 
 @XmlRootElement(name = "ConsultaPorNmeroDeRemessa")
 public class ConsultaPorNmeroDeRemessa {
-
-    @XmlElement(name = "numeroRemessa", required = true)
-    @ApiModelProperty(example = "1059756472772322", required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
-    /**
-     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
-     **/
-    private String numeroRemessa = null;
 
     @XmlElement(name = "cnpjDeclarante", required = true)
     @ApiModelProperty(example = "63198378000161", required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
@@ -40,37 +33,12 @@ public class ConsultaPorNmeroDeRemessa {
      **/
     private String numeroManifesto = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "numeroRemessa", required = true)
+    @ApiModelProperty(example = "1059756472772322", required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
-     *
-     * @return numeroRemessa
      **/
-    @JsonProperty("numeroRemessa")
-    @NotNull
-    @Size(min = 1, max = 18)
-    public String getNumeroRemessa() {
-        return numeroRemessa;
-    }
-
-    public void setNumeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-    }
-
-    public ConsultaPorNmeroDeRemessa numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
-    }
+    private String numeroRemessa = null;
 
     /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
@@ -112,13 +80,45 @@ public class ConsultaPorNmeroDeRemessa {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     *
+     * @return numeroRemessa
+     **/
+    @JsonProperty("numeroRemessa")
+    @NotNull
+    @Size(min = 1, max = 18)
+    public String getNumeroRemessa() {
+        return numeroRemessa;
+    }
+
+    public void setNumeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+    }
+
+    public ConsultaPorNmeroDeRemessa numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ConsultaPorNmeroDeRemessa {\n" +
-                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
                 "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
                 "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
                 "}";
         return sb;
     }

@@ -26,17 +26,6 @@ public class DiagnosticoCover {
     private Integer totalItem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número total de itens já enviados e salvos.&lt;br&gt;Formato: Inteiro, com até 5 dígitos&lt;br&gt;Valor mínimo: 0&lt;br&gt;Valor máximo: 99999
      *
      * @return totalItem
@@ -54,6 +43,18 @@ public class DiagnosticoCover {
     public DiagnosticoCover totalItem(Integer totalItem) {
         this.totalItem = totalItem;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

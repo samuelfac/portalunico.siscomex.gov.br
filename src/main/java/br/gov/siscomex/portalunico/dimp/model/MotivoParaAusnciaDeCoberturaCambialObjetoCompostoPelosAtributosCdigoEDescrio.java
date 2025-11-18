@@ -32,17 +32,6 @@ public class MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdig
     private String descricao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do Motivo para ausência de cobertura cambial.&lt;br&gt;Dominio: Tabela de Motivos Sem Cobertura do Siscomex.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
      *
      * @return codigo
@@ -78,6 +67,18 @@ public class MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdig
     public MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio descricao(String descricao) {
         this.descricao = descricao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

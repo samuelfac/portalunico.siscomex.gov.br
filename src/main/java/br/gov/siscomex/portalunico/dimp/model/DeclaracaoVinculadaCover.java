@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclaracaoVinculadaCover", propOrder =
-        {"tipo", "numero", "chaveAcesso", "numeroItem"
+        {"tipo", "numero", "numeroItem", "chaveAcesso"
         })
 
 @XmlRootElement(name = "DeclaracaoVinculadaCover")
@@ -26,30 +26,26 @@ import javax.xml.bind.annotation.XmlType;
 public class DeclaracaoVinculadaCover {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo de declaração vinculada.<br>Domínio:")
-    /**
-     * Tipo de declaração vinculada.<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "numero", required = true)
-    @ApiModelProperty(example = "23BR00001010550", required = true, value = "Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15")
-    /**
-     * Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15
-     **/
-    private String numero = null;
-    @XmlElement(name = "chaveAcesso")
-    @ApiModelProperty(example = "23NcT000115501", value = "Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)")
-    /**
-     * Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)
-     **/
-    private String chaveAcesso = null;
     @XmlElement(name = "numeroItem", required = true)
     @ApiModelProperty(example = "10001", required = true, value = "Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999")
     /**
      * Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999
      **/
     private Integer numeroItem = null;
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo de declaração vinculada.<br>Domínio:")
+    /**
+     * Tipo de declaração vinculada.<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "numero", required = true)
+    @ApiModelProperty(example = "23BR00001010550", required = true, value = "Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15")
+    /**
+     * Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15
+     **/
+    private String numero = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,6 +57,13 @@ public class DeclaracaoVinculadaCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "chaveAcesso")
+    @ApiModelProperty(example = "23NcT000115501", value = "Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)")
+    /**
+     * Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)
+     **/
+    private String chaveAcesso = null;
 
     /**
      * Tipo de declaração vinculada.&lt;br&gt;Domínio:
@@ -106,25 +109,6 @@ public class DeclaracaoVinculadaCover {
     }
 
     /**
-     * Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;AALLLSSSSSSSSD&#39;&lt;br&gt;Lei de formação: &lt;br&gt;* AA &#x3D; Corresponde ao ano (2 caracteres).&lt;br&gt;* LLL &#x3D; 3 letras aleatórias.&lt;br&gt;* SSSSSSSS &#x3D; 8 caracteres númericos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)
-     *
-     * @return chaveAcesso
-     **/
-    @JsonProperty("chaveAcesso")
-    public String getChaveAcesso() {
-        return chaveAcesso;
-    }
-
-    public void setChaveAcesso(String chaveAcesso) {
-        this.chaveAcesso = chaveAcesso;
-    }
-
-    public DeclaracaoVinculadaCover chaveAcesso(String chaveAcesso) {
-        this.chaveAcesso = chaveAcesso;
-        return this;
-    }
-
-    /**
      * Número do item/adição da declaração.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
      *
      * @return numeroItem
@@ -144,6 +128,25 @@ public class DeclaracaoVinculadaCover {
         return this;
     }
 
+    /**
+     * Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;AALLLSSSSSSSSD&#39;&lt;br&gt;Lei de formação: &lt;br&gt;* AA &#x3D; Corresponde ao ano (2 caracteres).&lt;br&gt;* LLL &#x3D; 3 letras aleatórias.&lt;br&gt;* SSSSSSSS &#x3D; 8 caracteres númericos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)
+     *
+     * @return chaveAcesso
+     **/
+    @JsonProperty("chaveAcesso")
+    public String getChaveAcesso() {
+        return chaveAcesso;
+    }
+
+    public void setChaveAcesso(String chaveAcesso) {
+        this.chaveAcesso = chaveAcesso;
+    }
+
+    public DeclaracaoVinculadaCover chaveAcesso(String chaveAcesso) {
+        this.chaveAcesso = chaveAcesso;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -151,8 +154,8 @@ public class DeclaracaoVinculadaCover {
         String sb = "class DeclaracaoVinculadaCover {\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
-                "    chaveAcesso: " + toIndentedString(chaveAcesso) + "\n" +
                 "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
+                "    chaveAcesso: " + toIndentedString(chaveAcesso) + "\n" +
                 "}";
         return sb;
     }

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ModeloLpcoCompleto", propOrder =
-        {"codigo", "requerCatalogoProduto", "orgaoAnuente", "exibirInformacaoAdicional", "nome", "preenchimento", "informacoesAnuente", "informacoesExportadorImportador", "dataInicioVigencia"
+        {"orgaoAnuente", "codigo", "nome", "informacoesExportadorImportador", "informacoesAnuente", "exibirInformacaoAdicional", "requerCatalogoProduto", "dataInicioVigencia", "preenchimento"
         })
 
 @XmlRootElement(name = "ModeloLpcoCompleto")
@@ -23,20 +23,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados completos de um modelo de LPCO")
 public class ModeloLpcoCompleto {
 
-    @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "E00104", required = true, value = "Código do modelo de LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano")
-    /**
-     * Código do modelo de LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano
-     **/
-    private String codigo = null;
-
-    @XmlElement(name = "requerCatalogoProduto", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica se a informação de mercadorias será via Catálogo de Produtos")
-    /**
-     * Indica se a informação de mercadorias será via Catálogo de Produtos
-     **/
-    private Boolean requerCatalogoProduto = null;
-
     @XmlElement(name = "orgaoAnuente", required = true)
     @ApiModelProperty(example = "ANVISA", required = true, value = "Sigla do órgão anuente que gerencia o modelo LPCO")
     /**
@@ -44,12 +30,12 @@ public class ModeloLpcoCompleto {
      **/
     private String orgaoAnuente = null;
 
-    @XmlElement(name = "exibirInformacaoAdicional", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indica se o sistema permite que seja informado o campo informacaoAdicional durante o cadastro de LPCOs do modelo")
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "E00104", required = true, value = "Código do modelo de LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano")
     /**
-     * Indica se o sistema permite que seja informado o campo informacaoAdicional durante o cadastro de LPCOs do modelo
+     * Código do modelo de LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano
      **/
-    private Boolean exibirInformacaoAdicional = null;
+    private String codigo = null;
 
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "Certificação para Produtos de Origem Vegetal - Embarque Antecipado", required = true, value = "Nome do modelo de LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
@@ -58,12 +44,12 @@ public class ModeloLpcoCompleto {
      **/
     private String nome = null;
 
-    @XmlElement(name = "preenchimento", required = true)
-    @ApiModelProperty(required = true, value = "Forma de preenchimento do modelo, sem pelo importador/exportador, de ofício, ou ambos.")
+    @XmlElement(name = "informacoesExportadorImportador")
+    @ApiModelProperty(example = "Caso a carga esteja em contêiner, informe o número do contêiner ...", value = "Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000")
     /**
-     * Forma de preenchimento do modelo, sem pelo importador/exportador, de ofício, ou ambos.
+     * Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000
      **/
-    private String preenchimento = null;
+    private String informacoesExportadorImportador = null;
 
     @XmlElement(name = "informacoesAnuente")
     @ApiModelProperty(example = "Caso a carga esteja em contêiner, informe o número do contêiner ...", value = "Informações adicionais ao anuente para LPCOs do modelo<br>Tamanho mínimo: 1<br>Tamanho máximo: 2000")
@@ -72,12 +58,19 @@ public class ModeloLpcoCompleto {
      **/
     private String informacoesAnuente = null;
 
-    @XmlElement(name = "informacoesExportadorImportador")
-    @ApiModelProperty(example = "Caso a carga esteja em contêiner, informe o número do contêiner ...", value = "Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000")
+    @XmlElement(name = "exibirInformacaoAdicional", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indica se o sistema permite que seja informado o campo informacaoAdicional durante o cadastro de LPCOs do modelo")
     /**
-     * Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000
+     * Indica se o sistema permite que seja informado o campo informacaoAdicional durante o cadastro de LPCOs do modelo
      **/
-    private String informacoesExportadorImportador = null;
+    private Boolean exibirInformacaoAdicional = null;
+
+    @XmlElement(name = "requerCatalogoProduto", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica se a informação de mercadorias será via Catálogo de Produtos")
+    /**
+     * Indica se a informação de mercadorias será via Catálogo de Produtos
+     **/
+    private Boolean requerCatalogoProduto = null;
 
     @XmlElement(name = "dataInicioVigencia", required = true)
     @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", required = true, value = "Data de início de vigência do modelo<br> Formato: Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ")
@@ -85,6 +78,33 @@ public class ModeloLpcoCompleto {
      * Data de início de vigência do modelo<br> Formato: Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ
      **/
     private String dataInicioVigencia = null;
+
+    @XmlElement(name = "preenchimento", required = true)
+    @ApiModelProperty(required = true, value = "Forma de preenchimento do modelo, sem pelo importador/exportador, de ofício, ou ambos.")
+    /**
+     * Forma de preenchimento do modelo, sem pelo importador/exportador, de ofício, ou ambos.
+     **/
+    private String preenchimento = null;
+
+    /**
+     * Sigla do órgão anuente que gerencia o modelo LPCO
+     *
+     * @return orgaoAnuente
+     **/
+    @JsonProperty("orgaoAnuente")
+    @NotNull
+    public String getOrgaoAnuente() {
+        return orgaoAnuente;
+    }
+
+    public void setOrgaoAnuente(String orgaoAnuente) {
+        this.orgaoAnuente = orgaoAnuente;
+    }
+
+    public ModeloLpcoCompleto orgaoAnuente(String orgaoAnuente) {
+        this.orgaoAnuente = orgaoAnuente;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -112,48 +132,66 @@ public class ModeloLpcoCompleto {
         this.codigo = codigo;
     }
 
+    /**
+     * Nome do modelo de LPCO&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public ModeloLpcoCompleto nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
     public ModeloLpcoCompleto codigo(String codigo) {
         this.codigo = codigo;
         return this;
     }
 
     /**
-     * Indica se a informação de mercadorias será via Catálogo de Produtos
+     * Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
      *
-     * @return requerCatalogoProduto
+     * @return informacoesExportadorImportador
      **/
-    @JsonProperty("requerCatalogoProduto")
-    @NotNull
-    public Boolean isisRequerCatalogoProduto() {
-        return requerCatalogoProduto;
+    @JsonProperty("informacoesExportadorImportador")
+    public String getInformacoesExportadorImportador() {
+        return informacoesExportadorImportador;
     }
 
-    public void setRequerCatalogoProduto(Boolean requerCatalogoProduto) {
-        this.requerCatalogoProduto = requerCatalogoProduto;
-    }
-
-    public ModeloLpcoCompleto requerCatalogoProduto(Boolean requerCatalogoProduto) {
-        this.requerCatalogoProduto = requerCatalogoProduto;
-        return this;
+    public void setInformacoesExportadorImportador(String informacoesExportadorImportador) {
+        this.informacoesExportadorImportador = informacoesExportadorImportador;
     }
 
     /**
-     * Sigla do órgão anuente que gerencia o modelo LPCO
+     * Informações adicionais ao anuente para LPCOs do modelo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 2000
      *
-     * @return orgaoAnuente
+     * @return informacoesAnuente
      **/
-    @JsonProperty("orgaoAnuente")
-    @NotNull
-    public String getOrgaoAnuente() {
-        return orgaoAnuente;
+    @JsonProperty("informacoesAnuente")
+    public String getInformacoesAnuente() {
+        return informacoesAnuente;
     }
 
-    public void setOrgaoAnuente(String orgaoAnuente) {
-        this.orgaoAnuente = orgaoAnuente;
+    public void setInformacoesAnuente(String informacoesAnuente) {
+        this.informacoesAnuente = informacoesAnuente;
     }
 
-    public ModeloLpcoCompleto orgaoAnuente(String orgaoAnuente) {
-        this.orgaoAnuente = orgaoAnuente;
+    public ModeloLpcoCompleto informacoesAnuente(String informacoesAnuente) {
+        this.informacoesAnuente = informacoesAnuente;
+        return this;
+    }
+
+    public ModeloLpcoCompleto informacoesExportadorImportador(String informacoesExportadorImportador) {
+        this.informacoesExportadorImportador = informacoesExportadorImportador;
         return this;
     }
 
@@ -178,22 +216,42 @@ public class ModeloLpcoCompleto {
     }
 
     /**
-     * Nome do modelo de LPCO&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+     * Indica se a informação de mercadorias será via Catálogo de Produtos
      *
-     * @return nome
+     * @return requerCatalogoProduto
      **/
-    @JsonProperty("nome")
+    @JsonProperty("requerCatalogoProduto")
     @NotNull
-    public String getNome() {
-        return nome;
+    public Boolean isisRequerCatalogoProduto() {
+        return requerCatalogoProduto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setRequerCatalogoProduto(Boolean requerCatalogoProduto) {
+        this.requerCatalogoProduto = requerCatalogoProduto;
     }
 
-    public ModeloLpcoCompleto nome(String nome) {
-        this.nome = nome;
+    /**
+     * Data de início de vigência do modelo&lt;br&gt; Formato: Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
+     *
+     * @return dataInicioVigencia
+     **/
+    @JsonProperty("dataInicioVigencia")
+    @NotNull
+    public String getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public ModeloLpcoCompleto dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+        return this;
+    }
+
+    public ModeloLpcoCompleto requerCatalogoProduto(Boolean requerCatalogoProduto) {
+        this.requerCatalogoProduto = requerCatalogoProduto;
         return this;
     }
 
@@ -217,77 +275,19 @@ public class ModeloLpcoCompleto {
         return this;
     }
 
-    /**
-     * Informações adicionais ao anuente para LPCOs do modelo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 2000
-     *
-     * @return informacoesAnuente
-     **/
-    @JsonProperty("informacoesAnuente")
-    public String getInformacoesAnuente() {
-        return informacoesAnuente;
-    }
-
-    public void setInformacoesAnuente(String informacoesAnuente) {
-        this.informacoesAnuente = informacoesAnuente;
-    }
-
-    public ModeloLpcoCompleto informacoesAnuente(String informacoesAnuente) {
-        this.informacoesAnuente = informacoesAnuente;
-        return this;
-    }
-
-    /**
-     * Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
-     *
-     * @return informacoesExportadorImportador
-     **/
-    @JsonProperty("informacoesExportadorImportador")
-    public String getInformacoesExportadorImportador() {
-        return informacoesExportadorImportador;
-    }
-
-    public void setInformacoesExportadorImportador(String informacoesExportadorImportador) {
-        this.informacoesExportadorImportador = informacoesExportadorImportador;
-    }
-
-    public ModeloLpcoCompleto informacoesExportadorImportador(String informacoesExportadorImportador) {
-        this.informacoesExportadorImportador = informacoesExportadorImportador;
-        return this;
-    }
-
-    /**
-     * Data de início de vigência do modelo&lt;br&gt; Formato: Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
-     * @return dataInicioVigencia
-     **/
-    @JsonProperty("dataInicioVigencia")
-    @NotNull
-    public String getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
-    public ModeloLpcoCompleto dataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ModeloLpcoCompleto {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    requerCatalogoProduto: " + toIndentedString(requerCatalogoProduto) + "\n" +
                 "    orgaoAnuente: " + toIndentedString(orgaoAnuente) + "\n" +
-                "    exibirInformacaoAdicional: " + toIndentedString(exibirInformacaoAdicional) + "\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    preenchimento: " + toIndentedString(preenchimento) + "\n" +
-                "    informacoesAnuente: " + toIndentedString(informacoesAnuente) + "\n" +
                 "    informacoesExportadorImportador: " + toIndentedString(informacoesExportadorImportador) + "\n" +
+                "    informacoesAnuente: " + toIndentedString(informacoesAnuente) + "\n" +
+                "    exibirInformacaoAdicional: " + toIndentedString(exibirInformacaoAdicional) + "\n" +
+                "    requerCatalogoProduto: " + toIndentedString(requerCatalogoProduto) + "\n" +
                 "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
+                "    preenchimento: " + toIndentedString(preenchimento) + "\n" +
                 "}";
         return sb;
     }

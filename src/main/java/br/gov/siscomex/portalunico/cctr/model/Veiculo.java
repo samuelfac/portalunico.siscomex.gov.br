@@ -31,17 +31,6 @@ public class Veiculo {
     private String chassi = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Chassi do veículo&lt;br&gt;Tamanho: 20
      *
      * @return chassi
@@ -59,6 +48,18 @@ public class Veiculo {
     public Veiculo chassi(String chassi) {
         this.chassi = chassi;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

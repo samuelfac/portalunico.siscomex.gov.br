@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ImportacaoParaTerceirosDTO", propOrder =
-        {"tipo", "terceiro", "descricao"
+        {"terceiro", "descricao", "tipo"
         })
 
 @XmlRootElement(name = "ImportacaoParaTerceirosDTO")
@@ -22,13 +22,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Lista de caracterização da importação para terceiros")
 public class ImportacaoParaTerceirosDTO {
-
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "Encomendante", value = "Descrição do tipo de terceiro")
-    /**
-     * Descrição do tipo de terceiro
-     **/
-    private String tipo = null;
 
     @XmlElement(name = "terceiro")
     @ApiModelProperty(value = "")
@@ -42,35 +35,12 @@ public class ImportacaoParaTerceirosDTO {
      **/
     private String descricao = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "Encomendante", value = "Descrição do tipo de terceiro")
     /**
      * Descrição do tipo de terceiro
-     *
-     * @return tipo
      **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public ImportacaoParaTerceirosDTO tipo(String tipo) {
-        this.tipo = tipo;
-        return this;
-    }
+    private String tipo = null;
 
     /**
      * Get terceiro
@@ -110,13 +80,43 @@ public class ImportacaoParaTerceirosDTO {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Descrição do tipo de terceiro
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public ImportacaoParaTerceirosDTO tipo(String tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ImportacaoParaTerceirosDTO {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    terceiro: " + toIndentedString(terceiro) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

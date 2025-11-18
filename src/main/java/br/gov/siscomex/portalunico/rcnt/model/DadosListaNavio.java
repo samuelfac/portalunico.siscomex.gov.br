@@ -12,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosListaNavio", propOrder =
-        {"imo", "nome", "idElemento"
+        {"idElemento", "imo", "nome"
         })
 
 @XmlRootElement(name = "DadosListaNavio")
 public class DadosListaNavio {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "imo")
     @ApiModelProperty(value = "Código IMO do navio de embarque ou desembarque da carga conforme tabela de domínio EMBARCAÇÃO disponível no acesso público do sistema <a href=https://www.mercante.transportes.gov.br/g36127/servlet/serpro.siscomex.mercante.servlet.MercanteController rel=\"noopener noreferrer\" target=\"_blank\">Mercante</a><br/>Tamanho: 10")
@@ -32,13 +39,6 @@ public class DadosListaNavio {
      **/
     private String nome = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -48,6 +48,21 @@ public class DadosListaNavio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
     }
 
     /**
@@ -88,21 +103,6 @@ public class DadosListaNavio {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
     public DadosListaNavio idElemento(String idElemento) {
         this.idElemento = idElemento;
         return this;
@@ -112,9 +112,9 @@ public class DadosListaNavio {
     public String toString() {
 
         String sb = "class DadosListaNavio {\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    imo: " + toIndentedString(imo) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "}";
         return sb;
     }

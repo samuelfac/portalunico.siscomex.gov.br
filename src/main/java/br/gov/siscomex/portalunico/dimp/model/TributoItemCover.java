@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TributoItemCover", propOrder =
-        {"regime", "tributo", "fundamento", "atributos"
+        {"tributo", "regime", "fundamento", "atributos"
         })
 
 @XmlRootElement(name = "TributoItemCover")
@@ -24,15 +24,15 @@ import java.util.List;
 @ApiModel(description = "Lista de Tributos.<br>Origem: Sistema Tratamento Tributário - https://api-docs.portalunico.siscomex.gov.br/")
 public class TributoItemCover {
 
-    @XmlElement(name = "regime")
-    @ApiModelProperty(value = "")
-    @Valid
-    private RegimeCover regime = null;
-
     @XmlElement(name = "tributo")
     @ApiModelProperty(value = "")
     @Valid
     private TributoCover tributo = null;
+
+    @XmlElement(name = "regime")
+    @ApiModelProperty(value = "")
+    @Valid
+    private RegimeCover regime = null;
 
     @XmlElement(name = "fundamento")
     @ApiModelProperty(value = "")
@@ -43,6 +43,25 @@ public class TributoItemCover {
     @ApiModelProperty(value = "")
     @Valid
     private List<AtributoTributoCover> atributos = null;
+
+    /**
+     * Get tributo
+     *
+     * @return tributo
+     **/
+    @JsonProperty("tributo")
+    public TributoCover getTributo() {
+        return tributo;
+    }
+
+    public void setTributo(TributoCover tributo) {
+        this.tributo = tributo;
+    }
+
+    public TributoItemCover tributo(TributoCover tributo) {
+        this.tributo = tributo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,30 +86,6 @@ public class TributoItemCover {
 
     public void setRegime(RegimeCover regime) {
         this.regime = regime;
-    }
-
-    public TributoItemCover regime(RegimeCover regime) {
-        this.regime = regime;
-        return this;
-    }
-
-    /**
-     * Get tributo
-     *
-     * @return tributo
-     **/
-    @JsonProperty("tributo")
-    public TributoCover getTributo() {
-        return tributo;
-    }
-
-    public void setTributo(TributoCover tributo) {
-        this.tributo = tributo;
-    }
-
-    public TributoItemCover tributo(TributoCover tributo) {
-        this.tributo = tributo;
-        return this;
     }
 
     /**
@@ -136,12 +131,17 @@ public class TributoItemCover {
         return this;
     }
 
+    public TributoItemCover regime(RegimeCover regime) {
+        this.regime = regime;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class TributoItemCover {\n" +
-                "    regime: " + toIndentedString(regime) + "\n" +
                 "    tributo: " + toIndentedString(tributo) + "\n" +
+                "    regime: " + toIndentedString(regime) + "\n" +
                 "    fundamento: " + toIndentedString(fundamento) + "\n" +
                 "    atributos: " + toIndentedString(atributos) + "\n" +
                 "}";

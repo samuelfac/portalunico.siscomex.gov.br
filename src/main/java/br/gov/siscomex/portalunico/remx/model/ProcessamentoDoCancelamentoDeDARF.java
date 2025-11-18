@@ -15,46 +15,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDoCancelamentoDeDARF", propOrder =
-        {"situacao", "numeroProtocolo", "dataHoraProcessamento", "codigoBarrasDarf", "dataHorarioEnvio", "cnpj", "erros"
+        {"cnpj", "codigoBarrasDarf", "dataHoraProcessamento", "dataHorarioEnvio", "erros", "numeroProtocolo", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDoCancelamentoDeDARF")
 public class ProcessamentoDoCancelamentoDeDARF {
-
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
-    /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
-     **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "numeroProtocolo", required = true)
-    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
-
-    @XmlElement(name = "dataHoraProcessamento")
-    @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataHoraProcessamento = null;
-
-    @XmlElement(name = "codigoBarrasDarf", required = true)
-    @ApiModelProperty(required = true, value = "O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.")
-    /**
-     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
-     **/
-    private String codigoBarrasDarf = null;
-
-    @XmlElement(name = "dataHorarioEnvio", required = true)
-    @ApiModelProperty(required = true, value = "Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataHorarioEnvio = null;
 
     @XmlElement(name = "cnpj", required = true)
     @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
@@ -63,6 +28,27 @@ public class ProcessamentoDoCancelamentoDeDARF {
      **/
     private String cnpj = null;
 
+    @XmlElement(name = "codigoBarrasDarf", required = true)
+    @ApiModelProperty(required = true, value = "O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.")
+    /**
+     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
+     **/
+    private String codigoBarrasDarf = null;
+
+    @XmlElement(name = "dataHoraProcessamento")
+    @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataHoraProcessamento = null;
+
+    @XmlElement(name = "dataHorarioEnvio", required = true)
+    @ApiModelProperty(required = true, value = "Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataHorarioEnvio = null;
+
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
     @Valid
@@ -70,6 +56,20 @@ public class ProcessamentoDoCancelamentoDeDARF {
      * Lista de erros.
      **/
     private List<ErroNoProcessamento> erros = null;
+
+    @XmlElement(name = "numeroProtocolo", required = true)
+    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     **/
+    private String numeroProtocolo = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -83,62 +83,18 @@ public class ProcessamentoDoCancelamentoDeDARF {
     }
 
     /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
-     * @return situacao
+     * @return cnpj
      **/
-    @JsonProperty("situacao")
+    @JsonProperty("cnpj")
     @NotNull
-    public Integer getSituacao() {
-        return situacao;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDoCancelamentoDeDARF situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    @NotNull
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDoCancelamentoDeDARF numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
-
-    /**
-     * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataHoraProcessamento
-     **/
-    @JsonProperty("dataHoraProcessamento")
-    public OffsetDateTime getDataHoraProcessamento() {
-        return dataHoraProcessamento;
-    }
-
-    public void setDataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
-        this.dataHoraProcessamento = dataHoraProcessamento;
-    }
-
-    public ProcessamentoDoCancelamentoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
-        this.dataHoraProcessamento = dataHoraProcessamento;
-        return this;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -161,6 +117,25 @@ public class ProcessamentoDoCancelamentoDeDARF {
         return this;
     }
 
+    public ProcessamentoDoCancelamentoDeDARF cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
+
+    /**
+     * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataHoraProcessamento
+     **/
+    @JsonProperty("dataHoraProcessamento")
+    public OffsetDateTime getDataHoraProcessamento() {
+        return dataHoraProcessamento;
+    }
+
+    public void setDataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
+        this.dataHoraProcessamento = dataHoraProcessamento;
+    }
+
     /**
      * Data e horário do envio do Json de consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
@@ -178,26 +153,6 @@ public class ProcessamentoDoCancelamentoDeDARF {
 
     public ProcessamentoDoCancelamentoDeDARF dataHorarioEnvio(OffsetDateTime dataHorarioEnvio) {
         this.dataHorarioEnvio = dataHorarioEnvio;
-        return this;
-    }
-
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @NotNull
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public ProcessamentoDoCancelamentoDeDARF cnpj(String cnpj) {
-        this.cnpj = cnpj;
         return this;
     }
 
@@ -225,17 +180,62 @@ public class ProcessamentoDoCancelamentoDeDARF {
         return this;
     }
 
+    public ProcessamentoDoCancelamentoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
+        this.dataHoraProcessamento = dataHoraProcessamento;
+        return this;
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    @NotNull
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDoCancelamentoDeDARF numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDoCancelamentoDeDARF situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProcessamentoDoCancelamentoDeDARF {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
-                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
-                "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
-                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
+                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
+                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

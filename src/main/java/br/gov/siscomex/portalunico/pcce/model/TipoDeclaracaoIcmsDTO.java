@@ -18,7 +18,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TipoDeclaracaoIcmsDTO", propOrder =
-        {"tiposTratamento", "descTipoDeclaracao", "tipoDeclaracao"
+        {"descTipoDeclaracao", "tipoDeclaracao", "tiposTratamento"
         })
 
 @XmlRootElement(name = "TipoDeclaracaoIcmsDTO")
@@ -28,6 +28,14 @@ import java.util.List;
 @ApiModel(description = "Dados e configurações disponíveis para um tipo de declaração de ICMS de Duimp")
 public class TipoDeclaracaoIcmsDTO {
 
+    @XmlElement(name = "descTipoDeclaracao", required = true)
+    @ApiModelProperty(example = "Pagamento integral", required = true, value = "Descrição do tipo de declaração/solicitação de ICMS")
+    /**
+     * Descrição do tipo de declaração/solicitação de ICMS
+     **/
+    private String descTipoDeclaracao = null;
+
+
     @XmlElement(name = "tiposTratamento", required = true)
     @ApiModelProperty(required = true, value = "Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração")
     @Valid
@@ -36,12 +44,6 @@ public class TipoDeclaracaoIcmsDTO {
      **/
     private List<TipoTratamentoIcmsDTO> tiposTratamento = new ArrayList<>();
 
-    @XmlElement(name = "descTipoDeclaracao", required = true)
-    @ApiModelProperty(example = "Pagamento integral", required = true, value = "Descrição do tipo de declaração/solicitação de ICMS")
-    /**
-     * Descrição do tipo de declaração/solicitação de ICMS
-     **/
-    private String descTipoDeclaracao = null;
     @XmlElement(name = "tipoDeclaracao", required = true)
     @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de Pagamento/Exoneração de ICMS")
     /**
@@ -58,31 +60,6 @@ public class TipoDeclaracaoIcmsDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração
-     *
-     * @return tiposTratamento
-     **/
-    @JsonProperty("tiposTratamento")
-    @NotNull
-    public List<TipoTratamentoIcmsDTO> getTiposTratamento() {
-        return tiposTratamento;
-    }
-
-    public void setTiposTratamento(List<TipoTratamentoIcmsDTO> tiposTratamento) {
-        this.tiposTratamento = tiposTratamento;
-    }
-
-    public TipoDeclaracaoIcmsDTO tiposTratamento(List<TipoTratamentoIcmsDTO> tiposTratamento) {
-        this.tiposTratamento = tiposTratamento;
-        return this;
-    }
-
-    public TipoDeclaracaoIcmsDTO addTiposTratamentoItem(TipoTratamentoIcmsDTO tiposTratamentoItem) {
-        this.tiposTratamento.add(tiposTratamentoItem);
-        return this;
     }
 
     /**
@@ -128,14 +105,39 @@ public class TipoDeclaracaoIcmsDTO {
         return this;
     }
 
+    /**
+     * Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração
+     *
+     * @return tiposTratamento
+     **/
+    @JsonProperty("tiposTratamento")
+    @NotNull
+    public List<TipoTratamentoIcmsDTO> getTiposTratamento() {
+        return tiposTratamento;
+    }
+
+    public void setTiposTratamento(List<TipoTratamentoIcmsDTO> tiposTratamento) {
+        this.tiposTratamento = tiposTratamento;
+    }
+
+    public TipoDeclaracaoIcmsDTO tiposTratamento(List<TipoTratamentoIcmsDTO> tiposTratamento) {
+        this.tiposTratamento = tiposTratamento;
+        return this;
+    }
+
+    public TipoDeclaracaoIcmsDTO addTiposTratamentoItem(TipoTratamentoIcmsDTO tiposTratamentoItem) {
+        this.tiposTratamento.add(tiposTratamentoItem);
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class TipoDeclaracaoIcmsDTO {\n" +
-                "    tiposTratamento: " + toIndentedString(tiposTratamento) + "\n" +
                 "    descTipoDeclaracao: " + toIndentedString(descTipoDeclaracao) + "\n" +
                 "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tiposTratamento: " + toIndentedString(tiposTratamento) + "\n" +
                 "}";
         return sb;
     }

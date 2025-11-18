@@ -12,18 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RemessaDoProcessamentoDoPedidoDeReviso", propOrder =
-        {"numeroRemessa", "numeroLote", "novaSituacaoRemessa"
+        {"novaSituacaoRemessa", "numeroLote", "numeroRemessa"
         })
 
 @XmlRootElement(name = "RemessaDoProcessamentoDoPedidoDeReviso")
 public class RemessaDoProcessamentoDoPedidoDeReviso {
 
-    @XmlElement(name = "numeroRemessa", required = true)
-    @ApiModelProperty(required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
+    @XmlElement(name = "novaSituacaoRemessa", required = true)
+    @ApiModelProperty(required = true, value = "Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.")
     /**
-     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
      **/
-    private String numeroRemessa = null;
+    private Integer novaSituacaoRemessa = null;
 
     @XmlElement(name = "numeroLote", required = true)
     @ApiModelProperty(required = true, value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
@@ -32,12 +32,12 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
      **/
     private String numeroLote = null;
 
-    @XmlElement(name = "novaSituacaoRemessa", required = true)
-    @ApiModelProperty(required = true, value = "Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.")
+    @XmlElement(name = "numeroRemessa", required = true)
+    @ApiModelProperty(required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
     /**
-     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
+     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      **/
-    private Integer novaSituacaoRemessa = null;
+    private String numeroRemessa = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -51,23 +51,18 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
     }
 
     /**
-     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
      *
-     * @return numeroRemessa
+     * @return novaSituacaoRemessa
      **/
-    @JsonProperty("numeroRemessa")
+    @JsonProperty("novaSituacaoRemessa")
     @NotNull
-    public String getNumeroRemessa() {
-        return numeroRemessa;
+    public Integer getNovaSituacaoRemessa() {
+        return novaSituacaoRemessa;
     }
 
-    public void setNumeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-    }
-
-    public RemessaDoProcessamentoDoPedidoDeReviso numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
+    public void setNovaSituacaoRemessa(Integer novaSituacaoRemessa) {
+        this.novaSituacaoRemessa = novaSituacaoRemessa;
     }
 
     /**
@@ -90,23 +85,28 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
         return this;
     }
 
-    /**
-     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
-     *
-     * @return novaSituacaoRemessa
-     **/
-    @JsonProperty("novaSituacaoRemessa")
-    @NotNull
-    public Integer getNovaSituacaoRemessa() {
-        return novaSituacaoRemessa;
-    }
-
-    public void setNovaSituacaoRemessa(Integer novaSituacaoRemessa) {
-        this.novaSituacaoRemessa = novaSituacaoRemessa;
-    }
-
     public RemessaDoProcessamentoDoPedidoDeReviso novaSituacaoRemessa(Integer novaSituacaoRemessa) {
         this.novaSituacaoRemessa = novaSituacaoRemessa;
+        return this;
+    }
+
+    /**
+     * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
+     *
+     * @return numeroRemessa
+     **/
+    @JsonProperty("numeroRemessa")
+    @NotNull
+    public String getNumeroRemessa() {
+        return numeroRemessa;
+    }
+
+    public void setNumeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+    }
+
+    public RemessaDoProcessamentoDoPedidoDeReviso numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
         return this;
     }
 
@@ -114,9 +114,9 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
     public String toString() {
 
         String sb = "class RemessaDoProcessamentoDoPedidoDeReviso {\n" +
-                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    novaSituacaoRemessa: " + toIndentedString(novaSituacaoRemessa) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
                 "}";
         return sb;
     }

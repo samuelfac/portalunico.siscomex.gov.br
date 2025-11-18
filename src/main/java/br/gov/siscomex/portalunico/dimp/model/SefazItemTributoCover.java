@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazItemTributoCover", propOrder =
-        {"dadosMercadoria", "calculosTributos", "valorMercadoria", "tributosAplicados", "atributosFundamentoLegalDuimp"
+        {"dadosMercadoria", "valorMercadoria", "tributosAplicados", "calculosTributos", "atributosFundamentoLegalDuimp"
         })
 
 @XmlRootElement(name = "SefazItemTributoCover")
@@ -29,14 +29,6 @@ public class SefazItemTributoCover {
     @Valid
     private SefazDadosMercadoriaCover dadosMercadoria = null;
 
-    @XmlElement(name = "calculosTributos")
-    @ApiModelProperty(value = "Lista de tributos calculados")
-    @Valid
-    /**
-     * Lista de tributos calculados
-     **/
-    private List<SefazCalculoTributoCover> calculosTributos = null;
-
     @XmlElement(name = "valorMercadoria")
     @ApiModelProperty(value = "")
     @Valid
@@ -50,6 +42,14 @@ public class SefazItemTributoCover {
      **/
     private List<SefazTributoAplicadoCover> tributosAplicados = null;
 
+    @XmlElement(name = "calculosTributos")
+    @ApiModelProperty(value = "Lista de tributos calculados")
+    @Valid
+    /**
+     * Lista de tributos calculados
+     **/
+    private List<SefazCalculoTributoCover> calculosTributos = null;
+
     @XmlElement(name = "atributosFundamentoLegalDuimp")
     @ApiModelProperty(value = "Lista de atributos dinâmicos informativos de fundamento legal")
     @Valid
@@ -57,17 +57,6 @@ public class SefazItemTributoCover {
      * Lista de atributos dinâmicos informativos de fundamento legal
      **/
     private List<SefazAtributoCover> atributosFundamentoLegalDuimp = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Get dadosMercadoria
@@ -85,30 +74,6 @@ public class SefazItemTributoCover {
 
     public SefazItemTributoCover dadosMercadoria(SefazDadosMercadoriaCover dadosMercadoria) {
         this.dadosMercadoria = dadosMercadoria;
-        return this;
-    }
-
-    /**
-     * Lista de tributos calculados
-     *
-     * @return calculosTributos
-     **/
-    @JsonProperty("calculosTributos")
-    public List<SefazCalculoTributoCover> getCalculosTributos() {
-        return calculosTributos;
-    }
-
-    public void setCalculosTributos(List<SefazCalculoTributoCover> calculosTributos) {
-        this.calculosTributos = calculosTributos;
-    }
-
-    public SefazItemTributoCover calculosTributos(List<SefazCalculoTributoCover> calculosTributos) {
-        this.calculosTributos = calculosTributos;
-        return this;
-    }
-
-    public SefazItemTributoCover addCalculosTributosItem(SefazCalculoTributoCover calculosTributosItem) {
-        this.calculosTributos.add(calculosTributosItem);
         return this;
     }
 
@@ -156,6 +121,36 @@ public class SefazItemTributoCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista de tributos calculados
+     *
+     * @return calculosTributos
+     **/
+    @JsonProperty("calculosTributos")
+    public List<SefazCalculoTributoCover> getCalculosTributos() {
+        return calculosTributos;
+    }
+
+    public void setCalculosTributos(List<SefazCalculoTributoCover> calculosTributos) {
+        this.calculosTributos = calculosTributos;
+    }
+
+    public SefazItemTributoCover calculosTributos(List<SefazCalculoTributoCover> calculosTributos) {
+        this.calculosTributos = calculosTributos;
+        return this;
+    }
+
+    /**
      * Lista de atributos dinâmicos informativos de fundamento legal
      *
      * @return atributosFundamentoLegalDuimp
@@ -179,14 +174,19 @@ public class SefazItemTributoCover {
         return this;
     }
 
+    public SefazItemTributoCover addCalculosTributosItem(SefazCalculoTributoCover calculosTributosItem) {
+        this.calculosTributos.add(calculosTributosItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazItemTributoCover {\n" +
                 "    dadosMercadoria: " + toIndentedString(dadosMercadoria) + "\n" +
-                "    calculosTributos: " + toIndentedString(calculosTributos) + "\n" +
                 "    valorMercadoria: " + toIndentedString(valorMercadoria) + "\n" +
                 "    tributosAplicados: " + toIndentedString(tributosAplicados) + "\n" +
+                "    calculosTributos: " + toIndentedString(calculosTributos) + "\n" +
                 "    atributosFundamentoLegalDuimp: " + toIndentedString(atributosFundamentoLegalDuimp) + "\n" +
                 "}";
         return sb;

@@ -12,16 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaDetalhadaVeiculo", propOrder =
-        {"veiculo", "condutor", "proprietario"
+        {"condutor", "proprietario", "veiculo"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaDetalhadaVeiculo")
 public class ViagemRodoviariaDetalhadaVeiculo {
-
-    @XmlElement(name = "veiculo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoTransporteRodoviario veiculo = null;
 
     @XmlElement(name = "condutor")
     @ApiModelProperty(value = "")
@@ -33,35 +28,10 @@ public class ViagemRodoviariaDetalhadaVeiculo {
     @Valid
     private ProprietarioVeiculoTransporteRodoviario proprietario = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get veiculo
-     *
-     * @return veiculo
-     **/
-    @JsonProperty("veiculo")
-    public VeiculoTransporteRodoviario getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(VeiculoTransporteRodoviario veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public ViagemRodoviariaDetalhadaVeiculo veiculo(VeiculoTransporteRodoviario veiculo) {
-        this.veiculo = veiculo;
-        return this;
-    }
+    @XmlElement(name = "veiculo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private VeiculoTransporteRodoviario veiculo = null;
 
     /**
      * Get condutor
@@ -101,13 +71,43 @@ public class ViagemRodoviariaDetalhadaVeiculo {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get veiculo
+     *
+     * @return veiculo
+     **/
+    @JsonProperty("veiculo")
+    public VeiculoTransporteRodoviario getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(VeiculoTransporteRodoviario veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public ViagemRodoviariaDetalhadaVeiculo veiculo(VeiculoTransporteRodoviario veiculo) {
+        this.veiculo = veiculo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ViagemRodoviariaDetalhadaVeiculo {\n" +
-                "    veiculo: " + toIndentedString(veiculo) + "\n" +
                 "    condutor: " + toIndentedString(condutor) + "\n" +
                 "    proprietario: " + toIndentedString(proprietario) + "\n" +
+                "    veiculo: " + toIndentedString(veiculo) + "\n" +
                 "}";
         return sb;
     }

@@ -25,17 +25,6 @@ public class Beneficiario {
     private String cnpj = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
      *
      * @return cnpj
@@ -52,6 +41,18 @@ public class Beneficiario {
     public Beneficiario cnpj(String cnpj) {
         this.cnpj = cnpj;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Produto", propOrder =
-        {"codigo", "cnpjRaiz", "versao"
+        {"codigo", "versao", "cnpjRaiz"
         })
 
 @XmlRootElement(name = "Produto")
@@ -30,13 +30,6 @@ public class Produto {
      **/
     private Long codigo = null;
 
-    @XmlElement(name = "cnpjRaiz", required = true)
-    @ApiModelProperty(example = "33683111", required = true, value = "Raiz do CNPJ do fabricante do produto")
-    /**
-     * Raiz do CNPJ do fabricante do produto
-     **/
-    private String cnpjRaiz = null;
-
     @XmlElement(name = "versao", required = true)
     @ApiModelProperty(required = true, value = "Versão do produto")
     /**
@@ -44,16 +37,12 @@ public class Produto {
      **/
     private String versao = null;
 
+    @XmlElement(name = "cnpjRaiz", required = true)
+    @ApiModelProperty(example = "33683111", required = true, value = "Raiz do CNPJ do fabricante do produto")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Raiz do CNPJ do fabricante do produto
+     **/
+    private String cnpjRaiz = null;
 
     /**
      * Código do produto do item do LPCO
@@ -72,26 +61,6 @@ public class Produto {
 
     public Produto codigo(Long codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * Raiz do CNPJ do fabricante do produto
-     *
-     * @return cnpjRaiz
-     **/
-    @JsonProperty("cnpjRaiz")
-    @NotNull
-    public String getCnpjRaiz() {
-        return cnpjRaiz;
-    }
-
-    public void setCnpjRaiz(String cnpjRaiz) {
-        this.cnpjRaiz = cnpjRaiz;
-    }
-
-    public Produto cnpjRaiz(String cnpjRaiz) {
-        this.cnpjRaiz = cnpjRaiz;
         return this;
     }
 
@@ -115,13 +84,44 @@ public class Produto {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Raiz do CNPJ do fabricante do produto
+     *
+     * @return cnpjRaiz
+     **/
+    @JsonProperty("cnpjRaiz")
+    @NotNull
+    public String getCnpjRaiz() {
+        return cnpjRaiz;
+    }
+
+    public void setCnpjRaiz(String cnpjRaiz) {
+        this.cnpjRaiz = cnpjRaiz;
+    }
+
+    public Produto cnpjRaiz(String cnpjRaiz) {
+        this.cnpjRaiz = cnpjRaiz;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Produto {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    cnpjRaiz: " + toIndentedString(cnpjRaiz) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
+                "    cnpjRaiz: " + toIndentedString(cnpjRaiz) + "\n" +
                 "}";
         return sb;
     }

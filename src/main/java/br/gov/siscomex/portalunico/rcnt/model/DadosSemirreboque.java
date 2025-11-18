@@ -14,42 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosSemirreboque", propOrder =
-        {"listaNavio", "listaPortoDescarregamento", "listaCliente", "nomeEstabelecimentoEstufagem", "listaLacres", "cnpjEstabelecimentoEstufagem", "listaPaisDestinoFinalCarga", "ocrPlaca", "vazio", "idElemento", "avaria", "placa"
+        {"listaLacres", "placa", "idElemento", "ocrPlaca", "vazio", "avaria", "listaPortoDescarregamento", "listaPaisDestinoFinalCarga", "listaNavio", "listaCliente", "cnpjEstabelecimentoEstufagem", "nomeEstabelecimentoEstufagem"
         })
 
 @XmlRootElement(name = "DadosSemirreboque")
 public class DadosSemirreboque {
-
-    @XmlElement(name = "listaNavio")
-    @ApiModelProperty(value = "Lista de navios.")
-    @Valid
-    /**
-     * Lista de navios.
-     **/
-    private List<DadosListaNavio> listaNavio = null;
-
-    @XmlElement(name = "listaPortoDescarregamento")
-    @ApiModelProperty(value = "Lista de portos.")
-    @Valid
-    /**
-     * Lista de portos.
-     **/
-    private List<DadosDoPorto> listaPortoDescarregamento = null;
-
-    @XmlElement(name = "listaCliente")
-    @ApiModelProperty(value = "Lista de clientes.")
-    @Valid
-    /**
-     * Lista de clientes.
-     **/
-    private List<DadosCliente> listaCliente = null;
-
-    @XmlElement(name = "nomeEstabelecimentoEstufagem")
-    @ApiModelProperty(value = "Nome do estabelecimento onde a carga foi estufada.<br/>Tamanho: 200")
-    /**
-     * Nome do estabelecimento onde a carga foi estufada.<br/>Tamanho: 200
-     **/
-    private String nomeEstabelecimentoEstufagem = null;
 
     @XmlElement(name = "listaLacres")
     @ApiModelProperty(value = "Lista de Lacres.")
@@ -59,20 +28,19 @@ public class DadosSemirreboque {
      **/
     private List<DadosDoLacre> listaLacres = null;
 
-    @XmlElement(name = "cnpjEstabelecimentoEstufagem")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do estabelecimento onde a carga foi estufada.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
     /**
-     * CNPJ do estabelecimento onde a carga foi estufada.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     * Placa<br/>Tamanho: 50
      **/
-    private String cnpjEstabelecimentoEstufagem = null;
+    private String placa = null;
 
-    @XmlElement(name = "listaPaisDestinoFinalCarga")
-    @ApiModelProperty(value = "Lista de países.")
-    @Valid
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Lista de países.
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
-    private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
+    private String idElemento = null;
 
     @XmlElement(name = "ocrPlaca")
     @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'ocrPlaca' e 'vazio' quando o atributo 'operacao' for informado com valor 'C' e o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -88,13 +56,6 @@ public class DadosSemirreboque {
      **/
     private Boolean vazio = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
-
     @XmlElement(name = "avaria")
     @ApiModelProperty(example = "false", value = "Avaria.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
@@ -102,114 +63,51 @@ public class DadosSemirreboque {
      **/
     private Boolean avaria = null;
 
-    @XmlElement(name = "placa")
-    @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
-    /**
-     * Placa<br/>Tamanho: 50
-     **/
-    private String placa = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Lista de navios.
-     *
-     * @return listaNavio
-     **/
-    @JsonProperty("listaNavio")
-    public List<DadosListaNavio> getListaNavio() {
-        return listaNavio;
-    }
-
-    public void setListaNavio(List<DadosListaNavio> listaNavio) {
-        this.listaNavio = listaNavio;
-    }
-
-    public DadosSemirreboque listaNavio(List<DadosListaNavio> listaNavio) {
-        this.listaNavio = listaNavio;
-        return this;
-    }
-
-    public DadosSemirreboque addListaNavioItem(DadosListaNavio listaNavioItem) {
-        this.listaNavio.add(listaNavioItem);
-        return this;
-    }
-
+    @XmlElement(name = "listaPortoDescarregamento")
+    @ApiModelProperty(value = "Lista de portos.")
+    @Valid
     /**
      * Lista de portos.
-     *
-     * @return listaPortoDescarregamento
      **/
-    @JsonProperty("listaPortoDescarregamento")
-    public List<DadosDoPorto> getListaPortoDescarregamento() {
-        return listaPortoDescarregamento;
-    }
+    private List<DadosDoPorto> listaPortoDescarregamento = null;
 
-    public void setListaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
-        this.listaPortoDescarregamento = listaPortoDescarregamento;
-    }
+    @XmlElement(name = "listaPaisDestinoFinalCarga")
+    @ApiModelProperty(value = "Lista de países.")
+    @Valid
+    /**
+     * Lista de países.
+     **/
+    private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
 
-    public DadosSemirreboque listaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
-        this.listaPortoDescarregamento = listaPortoDescarregamento;
-        return this;
-    }
+    @XmlElement(name = "listaNavio")
+    @ApiModelProperty(value = "Lista de navios.")
+    @Valid
+    /**
+     * Lista de navios.
+     **/
+    private List<DadosListaNavio> listaNavio = null;
 
-    public DadosSemirreboque addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
-        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
-        return this;
-    }
-
+    @XmlElement(name = "listaCliente")
+    @ApiModelProperty(value = "Lista de clientes.")
+    @Valid
     /**
      * Lista de clientes.
-     *
-     * @return listaCliente
      **/
-    @JsonProperty("listaCliente")
-    public List<DadosCliente> getListaCliente() {
-        return listaCliente;
-    }
+    private List<DadosCliente> listaCliente = null;
 
-    public void setListaCliente(List<DadosCliente> listaCliente) {
-        this.listaCliente = listaCliente;
-    }
-
-    public DadosSemirreboque listaCliente(List<DadosCliente> listaCliente) {
-        this.listaCliente = listaCliente;
-        return this;
-    }
-
-    public DadosSemirreboque addListaClienteItem(DadosCliente listaClienteItem) {
-        this.listaCliente.add(listaClienteItem);
-        return this;
-    }
-
+    @XmlElement(name = "cnpjEstabelecimentoEstufagem")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do estabelecimento onde a carga foi estufada.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
     /**
-     * Nome do estabelecimento onde a carga foi estufada.&lt;br/&gt;Tamanho: 200
-     *
-     * @return nomeEstabelecimentoEstufagem
+     * CNPJ do estabelecimento onde a carga foi estufada.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
      **/
-    @JsonProperty("nomeEstabelecimentoEstufagem")
-    public String getNomeEstabelecimentoEstufagem() {
-        return nomeEstabelecimentoEstufagem;
-    }
+    private String cnpjEstabelecimentoEstufagem = null;
 
-    public void setNomeEstabelecimentoEstufagem(String nomeEstabelecimentoEstufagem) {
-        this.nomeEstabelecimentoEstufagem = nomeEstabelecimentoEstufagem;
-    }
-
-    public DadosSemirreboque nomeEstabelecimentoEstufagem(String nomeEstabelecimentoEstufagem) {
-        this.nomeEstabelecimentoEstufagem = nomeEstabelecimentoEstufagem;
-        return this;
-    }
+    @XmlElement(name = "nomeEstabelecimentoEstufagem")
+    @ApiModelProperty(value = "Nome do estabelecimento onde a carga foi estufada.<br/>Tamanho: 200")
+    /**
+     * Nome do estabelecimento onde a carga foi estufada.<br/>Tamanho: 200
+     **/
+    private String nomeEstabelecimentoEstufagem = null;
 
     /**
      * Lista de Lacres.
@@ -236,46 +134,48 @@ public class DadosSemirreboque {
     }
 
     /**
-     * CNPJ do estabelecimento onde a carga foi estufada.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Placa&lt;br/&gt;Tamanho: 50
      *
-     * @return cnpjEstabelecimentoEstufagem
+     * @return placa
      **/
-    @JsonProperty("cnpjEstabelecimentoEstufagem")
-    public String getCnpjEstabelecimentoEstufagem() {
-        return cnpjEstabelecimentoEstufagem;
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
     }
 
-    public void setCnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
-        this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
-    public DadosSemirreboque cnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
-        this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
+    public DadosSemirreboque placa(String placa) {
+        this.placa = placa;
         return this;
     }
 
     /**
-     * Lista de países.
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
-     * @return listaPaisDestinoFinalCarga
+     * @return idElemento
      **/
-    @JsonProperty("listaPaisDestinoFinalCarga")
-    public List<DadosDoPais> getListaPaisDestinoFinalCarga() {
-        return listaPaisDestinoFinalCarga;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
     }
 
-    public void setListaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
-        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
-    }
-
-    public DadosSemirreboque listaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
-        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
-        return this;
-    }
-
-    public DadosSemirreboque addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
-        this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
-        return this;
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
     }
 
     /**
@@ -317,26 +217,6 @@ public class DadosSemirreboque {
     }
 
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosSemirreboque idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
-    /**
      * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return avaria
@@ -355,22 +235,142 @@ public class DadosSemirreboque {
         return this;
     }
 
+    public DadosSemirreboque idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
     /**
-     * Placa&lt;br/&gt;Tamanho: 50
+     * Lista de portos.
      *
-     * @return placa
+     * @return listaPortoDescarregamento
      **/
-    @JsonProperty("placa")
-    public String getPlaca() {
-        return placa;
+    @JsonProperty("listaPortoDescarregamento")
+    public List<DadosDoPorto> getListaPortoDescarregamento() {
+        return listaPortoDescarregamento;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setListaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
+        this.listaPortoDescarregamento = listaPortoDescarregamento;
     }
 
-    public DadosSemirreboque placa(String placa) {
-        this.placa = placa;
+    public DadosSemirreboque listaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
+        this.listaPortoDescarregamento = listaPortoDescarregamento;
+        return this;
+    }
+
+    public DadosSemirreboque addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
+        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
+        return this;
+    }
+
+    /**
+     * Lista de países.
+     *
+     * @return listaPaisDestinoFinalCarga
+     **/
+    @JsonProperty("listaPaisDestinoFinalCarga")
+    public List<DadosDoPais> getListaPaisDestinoFinalCarga() {
+        return listaPaisDestinoFinalCarga;
+    }
+
+    public void setListaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
+    }
+
+    public DadosSemirreboque listaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
+        return this;
+    }
+
+    public DadosSemirreboque addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
+        this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
+        return this;
+    }
+
+    /**
+     * Lista de navios.
+     *
+     * @return listaNavio
+     **/
+    @JsonProperty("listaNavio")
+    public List<DadosListaNavio> getListaNavio() {
+        return listaNavio;
+    }
+
+    public void setListaNavio(List<DadosListaNavio> listaNavio) {
+        this.listaNavio = listaNavio;
+    }
+
+    public DadosSemirreboque listaNavio(List<DadosListaNavio> listaNavio) {
+        this.listaNavio = listaNavio;
+        return this;
+    }
+
+    public DadosSemirreboque addListaNavioItem(DadosListaNavio listaNavioItem) {
+        this.listaNavio.add(listaNavioItem);
+        return this;
+    }
+
+    /**
+     * Lista de clientes.
+     *
+     * @return listaCliente
+     **/
+    @JsonProperty("listaCliente")
+    public List<DadosCliente> getListaCliente() {
+        return listaCliente;
+    }
+
+    public void setListaCliente(List<DadosCliente> listaCliente) {
+        this.listaCliente = listaCliente;
+    }
+
+    public DadosSemirreboque listaCliente(List<DadosCliente> listaCliente) {
+        this.listaCliente = listaCliente;
+        return this;
+    }
+
+    public DadosSemirreboque addListaClienteItem(DadosCliente listaClienteItem) {
+        this.listaCliente.add(listaClienteItem);
+        return this;
+    }
+
+    /**
+     * CNPJ do estabelecimento onde a carga foi estufada.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     *
+     * @return cnpjEstabelecimentoEstufagem
+     **/
+    @JsonProperty("cnpjEstabelecimentoEstufagem")
+    public String getCnpjEstabelecimentoEstufagem() {
+        return cnpjEstabelecimentoEstufagem;
+    }
+
+    public void setCnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
+        this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
+    }
+
+    public DadosSemirreboque cnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
+        this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
+        return this;
+    }
+
+    /**
+     * Nome do estabelecimento onde a carga foi estufada.&lt;br/&gt;Tamanho: 200
+     *
+     * @return nomeEstabelecimentoEstufagem
+     **/
+    @JsonProperty("nomeEstabelecimentoEstufagem")
+    public String getNomeEstabelecimentoEstufagem() {
+        return nomeEstabelecimentoEstufagem;
+    }
+
+    public void setNomeEstabelecimentoEstufagem(String nomeEstabelecimentoEstufagem) {
+        this.nomeEstabelecimentoEstufagem = nomeEstabelecimentoEstufagem;
+    }
+
+    public DadosSemirreboque nomeEstabelecimentoEstufagem(String nomeEstabelecimentoEstufagem) {
+        this.nomeEstabelecimentoEstufagem = nomeEstabelecimentoEstufagem;
         return this;
     }
 
@@ -378,18 +378,18 @@ public class DadosSemirreboque {
     public String toString() {
 
         String sb = "class DadosSemirreboque {\n" +
-                "    listaNavio: " + toIndentedString(listaNavio) + "\n" +
-                "    listaPortoDescarregamento: " + toIndentedString(listaPortoDescarregamento) + "\n" +
-                "    listaCliente: " + toIndentedString(listaCliente) + "\n" +
-                "    nomeEstabelecimentoEstufagem: " + toIndentedString(nomeEstabelecimentoEstufagem) + "\n" +
                 "    listaLacres: " + toIndentedString(listaLacres) + "\n" +
-                "    cnpjEstabelecimentoEstufagem: " + toIndentedString(cnpjEstabelecimentoEstufagem) + "\n" +
-                "    listaPaisDestinoFinalCarga: " + toIndentedString(listaPaisDestinoFinalCarga) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    vazio: " + toIndentedString(vazio) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    avaria: " + toIndentedString(avaria) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
+                "    listaPortoDescarregamento: " + toIndentedString(listaPortoDescarregamento) + "\n" +
+                "    listaPaisDestinoFinalCarga: " + toIndentedString(listaPaisDestinoFinalCarga) + "\n" +
+                "    listaNavio: " + toIndentedString(listaNavio) + "\n" +
+                "    listaCliente: " + toIndentedString(listaCliente) + "\n" +
+                "    cnpjEstabelecimentoEstufagem: " + toIndentedString(cnpjEstabelecimentoEstufagem) + "\n" +
+                "    nomeEstabelecimentoEstufagem: " + toIndentedString(nomeEstabelecimentoEstufagem) + "\n" +
                 "}";
         return sb;
     }

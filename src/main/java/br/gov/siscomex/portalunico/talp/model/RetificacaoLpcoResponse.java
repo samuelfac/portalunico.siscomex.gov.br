@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetificacaoLpcoResponse", propOrder =
-        {"situacao", "listaAlteracoes", "numeroVersao", "dataRegistro", "justificativa", "situacaoPagamentoTaxa"
+        {"situacao", "dataRegistro", "justificativa", "listaAlteracoes", "situacaoPagamentoTaxa", "numeroVersao"
         })
 
 @XmlRootElement(name = "RetificacaoLpcoResponse")
@@ -30,21 +30,6 @@ public class RetificacaoLpcoResponse {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private SituacaoRetificacaoLpco situacao = null;
-
-    @XmlElement(name = "listaAlteracoes", required = true)
-    @ApiModelProperty(required = true, value = "Lista de alterações realizadas na retificação")
-    @Valid
-    /**
-     * Lista de alterações realizadas na retificação
-     **/
-    private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
-
-    @XmlElement(name = "numeroVersao", required = true)
-    @ApiModelProperty(example = "2", required = true, value = "Número da versão do LPCO com os dados retificados.")
-    /**
-     * Número da versão do LPCO com os dados retificados.
-     **/
-    private Integer numeroVersao = null;
 
     @XmlElement(name = "dataRegistro", required = true)
     @ApiModelProperty(example = "2019-09-02T12:10Z", required = true, value = "Data e hora em que o pedido de retificação foi registrado<br>Formato: dd-MM-yyyy'T'HH:mmZ")
@@ -60,21 +45,25 @@ public class RetificacaoLpcoResponse {
      **/
     private String justificativa = null;
 
+    @XmlElement(name = "listaAlteracoes", required = true)
+    @ApiModelProperty(required = true, value = "Lista de alterações realizadas na retificação")
+    @Valid
+    /**
+     * Lista de alterações realizadas na retificação
+     **/
+    private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
+
     @XmlElement(name = "situacaoPagamentoTaxa")
     @ApiModelProperty(value = "")
     @Valid
     private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
 
+    @XmlElement(name = "numeroVersao", required = true)
+    @ApiModelProperty(example = "2", required = true, value = "Número da versão do LPCO com os dados retificados.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número da versão do LPCO com os dados retificados.
+     **/
+    private Integer numeroVersao = null;
 
     /**
      * Get situacao
@@ -93,51 +82,6 @@ public class RetificacaoLpcoResponse {
 
     public RetificacaoLpcoResponse situacao(SituacaoRetificacaoLpco situacao) {
         this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista de alterações realizadas na retificação
-     *
-     * @return listaAlteracoes
-     **/
-    @JsonProperty("listaAlteracoes")
-    @NotNull
-    public List<DadosAlteracoesLpco> getListaAlteracoes() {
-        return listaAlteracoes;
-    }
-
-    public void setListaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
-        this.listaAlteracoes = listaAlteracoes;
-    }
-
-    public RetificacaoLpcoResponse listaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
-        this.listaAlteracoes = listaAlteracoes;
-        return this;
-    }
-
-    public RetificacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
-        this.listaAlteracoes.add(listaAlteracoesItem);
-        return this;
-    }
-
-    /**
-     * Número da versão do LPCO com os dados retificados.
-     *
-     * @return numeroVersao
-     **/
-    @JsonProperty("numeroVersao")
-    @NotNull
-    public Integer getNumeroVersao() {
-        return numeroVersao;
-    }
-
-    public void setNumeroVersao(Integer numeroVersao) {
-        this.numeroVersao = numeroVersao;
-    }
-
-    public RetificacaoLpcoResponse numeroVersao(Integer numeroVersao) {
-        this.numeroVersao = numeroVersao;
         return this;
     }
 
@@ -181,6 +125,37 @@ public class RetificacaoLpcoResponse {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista de alterações realizadas na retificação
+     *
+     * @return listaAlteracoes
+     **/
+    @JsonProperty("listaAlteracoes")
+    @NotNull
+    public List<DadosAlteracoesLpco> getListaAlteracoes() {
+        return listaAlteracoes;
+    }
+
+    public void setListaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
+        this.listaAlteracoes = listaAlteracoes;
+    }
+
+    public RetificacaoLpcoResponse listaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
+        this.listaAlteracoes = listaAlteracoes;
+        return this;
+    }
+
+    /**
      * Get situacaoPagamentoTaxa
      *
      * @return situacaoPagamentoTaxa
@@ -199,16 +174,41 @@ public class RetificacaoLpcoResponse {
         return this;
     }
 
+    public RetificacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
+        this.listaAlteracoes.add(listaAlteracoesItem);
+        return this;
+    }
+
+    /**
+     * Número da versão do LPCO com os dados retificados.
+     *
+     * @return numeroVersao
+     **/
+    @JsonProperty("numeroVersao")
+    @NotNull
+    public Integer getNumeroVersao() {
+        return numeroVersao;
+    }
+
+    public void setNumeroVersao(Integer numeroVersao) {
+        this.numeroVersao = numeroVersao;
+    }
+
+    public RetificacaoLpcoResponse numeroVersao(Integer numeroVersao) {
+        this.numeroVersao = numeroVersao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RetificacaoLpcoResponse {\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    listaAlteracoes: " + toIndentedString(listaAlteracoes) + "\n" +
-                "    numeroVersao: " + toIndentedString(numeroVersao) + "\n" +
                 "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    listaAlteracoes: " + toIndentedString(listaAlteracoes) + "\n" +
                 "    situacaoPagamentoTaxa: " + toIndentedString(situacaoPagamentoTaxa) + "\n" +
+                "    numeroVersao: " + toIndentedString(numeroVersao) + "\n" +
                 "}";
         return sb;
     }

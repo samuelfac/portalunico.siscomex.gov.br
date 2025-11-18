@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclarationNoNF", propOrder =
-        {"additionalInformation", "exitOffice", "ucr", "declarationOffice", "goodsShipment", "id", "declarant", "currencyExchange"
+        {"additionalInformation", "currencyExchange", "declarant", "declarationOffice", "exitOffice", "goodsShipment", "id", "ucr"
         })
 
 @XmlRootElement(name = "DeclarationNoNF")
@@ -26,20 +26,25 @@ public class DeclarationNoNF {
     @Valid
     private List<AdditionalInformation> additionalInformation = null;
 
-    @XmlElement(name = "exitOffice", required = true)
+    @XmlElement(name = "currencyExchange", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private ExitOffice exitOffice = null;
+    private CurrencyExchange currencyExchange = null;
 
-    @XmlElement(name = "ucr")
-    @ApiModelProperty(value = "")
+    @XmlElement(name = "declarant", required = true)
+    @ApiModelProperty(required = true, value = "")
     @Valid
-    private UCR ucr = null;
+    private Declarant declarant = null;
 
     @XmlElement(name = "declarationOffice", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private DeclarationOffice declarationOffice = null;
+
+    @XmlElement(name = "exitOffice", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ExitOffice exitOffice = null;
 
     @XmlElement(name = "goodsShipment", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -51,26 +56,10 @@ public class DeclarationNoNF {
     @Valid
     private DeclarationIdentificationIDType id = null;
 
-    @XmlElement(name = "declarant", required = true)
-    @ApiModelProperty(required = true, value = "")
+    @XmlElement(name = "ucr")
+    @ApiModelProperty(value = "")
     @Valid
-    private Declarant declarant = null;
-
-    @XmlElement(name = "currencyExchange", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private CurrencyExchange currencyExchange = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    private UCR ucr = null;
 
     /**
      * Get additionalInformation
@@ -97,42 +86,49 @@ public class DeclarationNoNF {
     }
 
     /**
-     * Get exitOffice
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get currencyExchange
      *
-     * @return exitOffice
+     * @return currencyExchange
      **/
-    @JsonProperty("exitOffice")
+    @JsonProperty("currencyExchange")
     @NotNull
-    public ExitOffice getExitOffice() {
-        return exitOffice;
+    public CurrencyExchange getCurrencyExchange() {
+        return currencyExchange;
     }
 
-    public void setExitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
+    public void setCurrencyExchange(CurrencyExchange currencyExchange) {
+        this.currencyExchange = currencyExchange;
     }
 
-    public DeclarationNoNF exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
+    public DeclarationNoNF currencyExchange(CurrencyExchange currencyExchange) {
+        this.currencyExchange = currencyExchange;
         return this;
     }
 
     /**
-     * Get ucr
+     * Get declarant
      *
-     * @return ucr
+     * @return declarant
      **/
-    @JsonProperty("ucr")
-    public UCR getUcr() {
-        return ucr;
+    @JsonProperty("declarant")
+    @NotNull
+    public Declarant getDeclarant() {
+        return declarant;
     }
 
-    public void setUcr(UCR ucr) {
-        this.ucr = ucr;
-    }
-
-    public DeclarationNoNF ucr(UCR ucr) {
-        this.ucr = ucr;
-        return this;
+    public void setDeclarant(Declarant declarant) {
+        this.declarant = declarant;
     }
 
     /**
@@ -153,6 +149,26 @@ public class DeclarationNoNF {
     public DeclarationNoNF declarationOffice(DeclarationOffice declarationOffice) {
         this.declarationOffice = declarationOffice;
         return this;
+    }
+
+    public DeclarationNoNF declarant(Declarant declarant) {
+        this.declarant = declarant;
+        return this;
+    }
+
+    /**
+     * Get exitOffice
+     *
+     * @return exitOffice
+     **/
+    @JsonProperty("exitOffice")
+    @NotNull
+    public ExitOffice getExitOffice() {
+        return exitOffice;
+    }
+
+    public void setExitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
     }
 
     /**
@@ -199,43 +215,26 @@ public class DeclarationNoNF {
         return this;
     }
 
-    /**
-     * Get declarant
-     *
-     * @return declarant
-     **/
-    @JsonProperty("declarant")
-    @NotNull
-    public Declarant getDeclarant() {
-        return declarant;
-    }
-
-    public void setDeclarant(Declarant declarant) {
-        this.declarant = declarant;
-    }
-
-    public DeclarationNoNF declarant(Declarant declarant) {
-        this.declarant = declarant;
+    public DeclarationNoNF exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 
     /**
-     * Get currencyExchange
-     *
-     * @return currencyExchange
+     * Get ucr
+     * @return ucr
      **/
-    @JsonProperty("currencyExchange")
-    @NotNull
-    public CurrencyExchange getCurrencyExchange() {
-        return currencyExchange;
+    @JsonProperty("ucr")
+    public UCR getUcr() {
+        return ucr;
     }
 
-    public void setCurrencyExchange(CurrencyExchange currencyExchange) {
-        this.currencyExchange = currencyExchange;
+    public void setUcr(UCR ucr) {
+        this.ucr = ucr;
     }
 
-    public DeclarationNoNF currencyExchange(CurrencyExchange currencyExchange) {
-        this.currencyExchange = currencyExchange;
+    public DeclarationNoNF ucr(UCR ucr) {
+        this.ucr = ucr;
         return this;
     }
 
@@ -244,13 +243,13 @@ public class DeclarationNoNF {
 
         String sb = "class DeclarationNoNF {\n" +
                 "    additionalInformation: " + toIndentedString(additionalInformation) + "\n" +
-                "    exitOffice: " + toIndentedString(exitOffice) + "\n" +
-                "    ucr: " + toIndentedString(ucr) + "\n" +
+                "    currencyExchange: " + toIndentedString(currencyExchange) + "\n" +
+                "    declarant: " + toIndentedString(declarant) + "\n" +
                 "    declarationOffice: " + toIndentedString(declarationOffice) + "\n" +
+                "    exitOffice: " + toIndentedString(exitOffice) + "\n" +
                 "    goodsShipment: " + toIndentedString(goodsShipment) + "\n" +
                 "    id: " + toIndentedString(id) + "\n" +
-                "    declarant: " + toIndentedString(declarant) + "\n" +
-                "    currencyExchange: " + toIndentedString(currencyExchange) + "\n" +
+                "    ucr: " + toIndentedString(ucr) + "\n" +
                 "}";
         return sb;
     }

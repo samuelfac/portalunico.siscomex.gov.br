@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Pessoa", propOrder =
-        {"endereco", "nome", "id"
+        {"id", "nome", "endereco"
         })
 
 @XmlRootElement(name = "Pessoa")
@@ -24,10 +24,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de uma pessoa física / jurídica")
 public class Pessoa {
 
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Endereco endereco = null;
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "12345678901", required = true, value = "Identificação (CPF/CNPJ) do interveniente<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)")
+    /**
+     * Identificação (CPF/CNPJ) do interveniente<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
+     **/
+    private String id = null;
 
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "Fulano da Silva", required = true, value = "Nome do interveniente")
@@ -36,12 +38,10 @@ public class Pessoa {
      **/
     private String nome = null;
 
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "12345678901", required = true, value = "Identificação (CPF/CNPJ) do interveniente<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)")
-    /**
-     * Identificação (CPF/CNPJ) do interveniente<br>Tamanho: 11 (CPF) ou 14 (CNPJ)<br>Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
-     **/
-    private String id = null;
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Endereco endereco = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -55,22 +55,18 @@ public class Pessoa {
     }
 
     /**
-     * Get endereco
+     * Identificação (CPF/CNPJ) do interveniente&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)&lt;br&gt;Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
      *
-     * @return endereco
+     * @return id
      **/
-    @JsonProperty("endereco")
-    public Endereco getEndereco() {
-        return endereco;
+    @JsonProperty("id")
+    @NotNull
+    public String getId() {
+        return id;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Pessoa endereco(Endereco endereco) {
-        this.endereco = endereco;
-        return this;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -93,23 +89,27 @@ public class Pessoa {
         return this;
     }
 
-    /**
-     * Identificação (CPF/CNPJ) do interveniente&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)&lt;br&gt;Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
-     *
-     * @return id
-     **/
-    @JsonProperty("id")
-    @NotNull
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public Pessoa id(String id) {
         this.id = id;
+        return this;
+    }
+
+    /**
+     * Get endereco
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Pessoa endereco(Endereco endereco) {
+        this.endereco = endereco;
         return this;
     }
 
@@ -117,9 +117,9 @@ public class Pessoa {
     public String toString() {
 
         String sb = "class Pessoa {\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    id: " + toIndentedString(id) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
                 "}";
         return sb;
     }

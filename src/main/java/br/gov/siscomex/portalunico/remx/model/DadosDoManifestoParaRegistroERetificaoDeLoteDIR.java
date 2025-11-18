@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDoManifestoParaRegistroERetificaoDeLoteDIR", propOrder =
-        {"numeroManifesto", "paisOrigem", "uaDespacho", "presencaCargaAutomatica", "remessas"
+        {"numeroManifesto", "paisOrigem", "presencaCargaAutomatica", "remessas", "uaDespacho"
         })
 
 @XmlRootElement(name = "DadosDoManifestoParaRegistroERetificaoDeLoteDIR")
@@ -34,13 +34,6 @@ public class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {
      **/
     private String paisOrigem = null;
 
-    @XmlElement(name = "uaDespacho")
-    @ApiModelProperty(value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.<br/>Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.")
-    /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.<br/>Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.
-     **/
-    private String uaDespacho = null;
-
     @XmlElement(name = "presencaCargaAutomatica")
     @ApiModelProperty(value = "Indica que houve a presença de carga. Apenas para remessa postal. Sim – 's' e Não – 'n'<br/>Para modalidade expressa não deve ser informado.<br/>Caso o campo não seja informado, o sistema assume o valor 'n' como padrão")
     /**
@@ -56,16 +49,12 @@ public class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {
      **/
     private List<DadosDaRemessaParaRegistroERetificaoDeLoteDIR> remessas = null;
 
+    @XmlElement(name = "uaDespacho")
+    @ApiModelProperty(value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.<br/>Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.<br/>Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.
+     **/
+    private String uaDespacho = null;
 
     /**
      * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
@@ -103,25 +92,6 @@ public class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {
 
     public DadosDoManifestoParaRegistroERetificaoDeLoteDIR paisOrigem(String paisOrigem) {
         this.paisOrigem = paisOrigem;
-        return this;
-    }
-
-    /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.&lt;br/&gt;Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.
-     *
-     * @return uaDespacho
-     **/
-    @JsonProperty("uaDespacho")
-    public String getUaDespacho() {
-        return uaDespacho;
-    }
-
-    public void setUaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-    }
-
-    public DadosDoManifestoParaRegistroERetificaoDeLoteDIR uaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
         return this;
     }
 
@@ -168,15 +138,45 @@ public class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.&lt;br/&gt;Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.
+     *
+     * @return uaDespacho
+     **/
+    @JsonProperty("uaDespacho")
+    public String getUaDespacho() {
+        return uaDespacho;
+    }
+
+    public void setUaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+    }
+
+    public DadosDoManifestoParaRegistroERetificaoDeLoteDIR uaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {\n" +
                 "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
                 "    paisOrigem: " + toIndentedString(paisOrigem) + "\n" +
-                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "    presencaCargaAutomatica: " + toIndentedString(presencaCargaAutomatica) + "\n" +
                 "    remessas: " + toIndentedString(remessas) + "\n" +
+                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "}";
         return sb;
     }

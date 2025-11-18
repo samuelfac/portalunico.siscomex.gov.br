@@ -31,7 +31,7 @@ public interface ServicosDeEntregaDaCargaApi {
 
     /**
      * Possibilitar a entrega da carga
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;Esse serviço tem por objetivo possibilitar a entrega da carga para o destinatário final, através do conhecimento de carga/DSIC e do documento de saída vinculado ao mesmo. A entrega poderá ser realizada de forma total ou parcial.&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;O processamento dessa entrega é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.&lt;/p&gt;
      *
      */
@@ -42,18 +42,18 @@ public interface ServicosDeEntregaDaCargaApi {
     @ApiOperation(value = "Possibilitar a entrega da carga", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Esse serviço tem por objetivo possibilitar a entrega da carga para o destinatário final, através do conhecimento de carga/DSIC e do documento de saída vinculado ao mesmo. A entrega poderá ser realizada de forma total ou parcial.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">O processamento dessa entrega é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.</p>", tags = {"Servicos de Entrega da Carga"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoSolicitacaEntregaImportador.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoSolicitacaEntregaImportador entregaImportadorUsingPOST1(@ApiParam(value = "Dados da entrega da carga", required = true) @Valid EntregaCarga body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Consultar a lista de impedimentos e condições para realização da entrega da carga
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;Esse serviço tem por objetivo retornar a lista de impedimentos e condições para a realização da entrega da carga.&lt;/p&gt;
      *
      */
@@ -63,13 +63,13 @@ public interface ServicosDeEntregaDaCargaApi {
     @ApiOperation(value = "Consultar a lista de impedimentos e condições para realização da entrega da carga", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Esse serviço tem por objetivo retornar a lista de impedimentos e condições para a realização da entrega da carga.</p>", tags = {"Servicos de Entrega da Carga"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaImpedimentosEntregaImportador.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoConsultaImpedimentosEntregaImportador impedimentosEntregaImportadorUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35", required = true) @QueryParam("identificacaoCarga") String identificacaoCarga, @NotNull @ApiParam(value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN", required = true) @QueryParam("numeroDocumentoSaida") String numeroDocumentoSaida, @NotNull @ApiParam(value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>", required = true, allowableValues = "740, 741, 703, 14, 13") @QueryParam("tipoCarga") String tipoCarga, @NotNull @ApiParam(value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).", required = true, allowableValues = "DI, PROCESSO, EDMOV, OUTROS, PMD, PDE_TR, DSI, DSI_FORMULARIO, DUIMP") @QueryParam("tipoDocumentoSaida") String tipoDocumentoSaida, @ApiParam(value = "CNPJ do responsável pelo arquivo do conhecimento de carga.<br/>Somente deve ser informado para conhecimentos do tipo HAWB<br/>Tamanho: 8<br/>Formato: NNNNNNNN ou <br/>Tamanho: 14<br/>Formato: NNNNNNNNNNNNNN") @QueryParam("cnpjResponsavelArquivo") String cnpjResponsavelArquivo, @ApiParam(value = "Data da emissão do conhecimento.<br/>Obrigatório para tipos de conhecimento AWB, MAWB, HAWB (conhecimentos do aéreo) e CRT (Conhecimento Rodoviário de Trânsito).<br/>Para o tipo DSIC não deve ser informado.<br/>Formato: yyyy-MM-dd") @QueryParam("dataEmissao") String dataEmissao);
 }
 

@@ -13,11 +13,18 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FabricanteIntegracaoDTO", propOrder =
-        {"cpfCnpjRaiz", "codigoOperadorEstrangeiro", "dataReferencia", "vincular", "codigoProduto", "cpfCnpjFabricante", "conhecido", "seq", "codigoPais"
+        {"seq", "cpfCnpjRaiz", "codigoOperadorEstrangeiro", "cpfCnpjFabricante", "conhecido", "codigoProduto", "vincular", "dataReferencia", "codigoPais"
         })
 
 @XmlRootElement(name = "FabricanteIntegracaoDTO")
 public class FabricanteIntegracaoDTO {
+
+    @XmlElement(name = "seq", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. <br>Tamanho máximo: 3. <br> Importante: A lista enviada deve conter, no máximo, 100 elementos.")
+    /**
+     * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. <br>Tamanho máximo: 3. <br> Importante: A lista enviada deve conter, no máximo, 100 elementos.
+     **/
+    private Integer seq = null;
 
     @XmlElement(name = "cpfCnpjRaiz", required = true)
     @ApiModelProperty(example = "00000000", required = true, value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
@@ -33,27 +40,6 @@ public class FabricanteIntegracaoDTO {
      **/
     private String codigoOperadorEstrangeiro = null;
 
-    @XmlElement(name = "dataReferencia")
-    @ApiModelProperty(value = " Data de referência, informar somente quando for vincular fabricante/produtor com data retroativa. Não é possível desvincular fabricante/produtor retroativamente. Caso o campo \"Data de referência\" não tenha sido informado, o sistema assume como sendo a data atual.<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'")
-    /**
-     *  Data de referência, informar somente quando for vincular fabricante/produtor com data retroativa. Não é possível desvincular fabricante/produtor retroativamente. Caso o campo \"Data de referência\" não tenha sido informado, o sistema assume como sendo a data atual.<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'
-     **/
-    private OffsetDateTime dataReferencia = null;
-
-    @XmlElement(name = "vincular", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "True para novo vínculo e False para desvincular fabricante/produtor existente <br>Formato: True/False")
-    /**
-     * True para novo vínculo e False para desvincular fabricante/produtor existente <br>Formato: True/False
-     **/
-    private Boolean vincular = false;
-
-    @XmlElement(name = "codigoProduto")
-    @ApiModelProperty(example = "1", value = "Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'")
-    /**
-     * Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'
-     **/
-    private Long codigoProduto = null;
-
     @XmlElement(name = "cpfCnpjFabricante")
     @ApiModelProperty(example = "00000000000000", value = "CPF/CNPJ do fabricante nacional<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
@@ -68,12 +54,26 @@ public class FabricanteIntegracaoDTO {
      **/
     private Boolean conhecido = false;
 
-    @XmlElement(name = "seq", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. <br>Tamanho máximo: 3. <br> Importante: A lista enviada deve conter, no máximo, 100 elementos.")
+    @XmlElement(name = "codigoProduto")
+    @ApiModelProperty(example = "1", value = "Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'")
     /**
-     * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. <br>Tamanho máximo: 3. <br> Importante: A lista enviada deve conter, no máximo, 100 elementos.
+     * Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'
      **/
-    private Integer seq = null;
+    private Long codigoProduto = null;
+
+    @XmlElement(name = "vincular", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "True para novo vínculo e False para desvincular fabricante/produtor existente <br>Formato: True/False")
+    /**
+     * True para novo vínculo e False para desvincular fabricante/produtor existente <br>Formato: True/False
+     **/
+    private Boolean vincular = false;
+
+    @XmlElement(name = "dataReferencia")
+    @ApiModelProperty(value = " Data de referência, informar somente quando for vincular fabricante/produtor com data retroativa. Não é possível desvincular fabricante/produtor retroativamente. Caso o campo \"Data de referência\" não tenha sido informado, o sistema assume como sendo a data atual.<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'")
+    /**
+     *  Data de referência, informar somente quando for vincular fabricante/produtor com data retroativa. Não é possível desvincular fabricante/produtor retroativamente. Caso o campo \"Data de referência\" não tenha sido informado, o sistema assume como sendo a data atual.<br>Tamanho: 10<br>Formato: 'yyyy-MM-dd'
+     **/
+    private OffsetDateTime dataReferencia = null;
 
     @XmlElement(name = "codigoPais", required = true)
     @ApiModelProperty(example = "DE", required = true, value = "Código do país de origem no formato ISO 3166<br>Tamanho: 2<br>Formato: 'AA'")
@@ -91,6 +91,21 @@ public class FabricanteIntegracaoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. &lt;br&gt;Tamanho máximo: 3. &lt;br&gt; Importante: A lista enviada deve conter, no máximo, 100 elementos.
+     *
+     * @return seq
+     **/
+    @JsonProperty("seq")
+    @NotNull
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
     /**
@@ -133,64 +148,6 @@ public class FabricanteIntegracaoDTO {
     }
 
     /**
-     * Data de referência, informar somente quando for vincular fabricante/produtor com data retroativa. Não é possível desvincular fabricante/produtor retroativamente. Caso o campo \&quot;Data de referência\&quot; não tenha sido informado, o sistema assume como sendo a data atual.&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
-     * @return dataReferencia
-     **/
-    @JsonProperty("dataReferencia")
-    public OffsetDateTime getDataReferencia() {
-        return dataReferencia;
-    }
-
-    public void setDataReferencia(OffsetDateTime dataReferencia) {
-        this.dataReferencia = dataReferencia;
-    }
-
-    public FabricanteIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
-        this.dataReferencia = dataReferencia;
-        return this;
-    }
-
-    /**
-     * True para novo vínculo e False para desvincular fabricante/produtor existente &lt;br&gt;Formato: True/False
-     *
-     * @return vincular
-     **/
-    @JsonProperty("vincular")
-    @NotNull
-    public Boolean isisVincular() {
-        return vincular;
-    }
-
-    public void setVincular(Boolean vincular) {
-        this.vincular = vincular;
-    }
-
-    public FabricanteIntegracaoDTO vincular(Boolean vincular) {
-        this.vincular = vincular;
-        return this;
-    }
-
-    /**
-     * Código do produto&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
-     *
-     * @return codigoProduto
-     **/
-    @JsonProperty("codigoProduto")
-    public Long getCodigoProduto() {
-        return codigoProduto;
-    }
-
-    public void setCodigoProduto(Long codigoProduto) {
-        this.codigoProduto = codigoProduto;
-    }
-
-    public FabricanteIntegracaoDTO codigoProduto(Long codigoProduto) {
-        this.codigoProduto = codigoProduto;
-        return this;
-    }
-
-    /**
      * CPF/CNPJ do fabricante nacional&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpfCnpjFabricante
@@ -229,29 +186,66 @@ public class FabricanteIntegracaoDTO {
         return this;
     }
 
-    /**
-     * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. &lt;br&gt;Tamanho máximo: 3. &lt;br&gt; Importante: A lista enviada deve conter, no máximo, 100 elementos.
-     *
-     * @return seq
-     **/
-    @JsonProperty("seq")
-    @NotNull
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
     public FabricanteIntegracaoDTO seq(Integer seq) {
         this.seq = seq;
         return this;
     }
 
     /**
-     * Código do país de origem no formato ISO 3166&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: &#39;AA&#39;
+     * Código do produto&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
      *
+     * @return codigoProduto
+     **/
+    @JsonProperty("codigoProduto")
+    public Long getCodigoProduto() {
+        return codigoProduto;
+    }
+
+    public void setCodigoProduto(Long codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
+
+    public FabricanteIntegracaoDTO codigoProduto(Long codigoProduto) {
+        this.codigoProduto = codigoProduto;
+        return this;
+    }
+
+    /**
+     * True para novo vínculo e False para desvincular fabricante/produtor existente &lt;br&gt;Formato: True/False
+     *
+     * @return vincular
+     **/
+    @JsonProperty("vincular")
+    @NotNull
+    public Boolean isisVincular() {
+        return vincular;
+    }
+
+    public void setVincular(Boolean vincular) {
+        this.vincular = vincular;
+    }
+
+    public FabricanteIntegracaoDTO vincular(Boolean vincular) {
+        this.vincular = vincular;
+        return this;
+    }
+
+    /**
+     * Data de referência, informar somente quando for vincular fabricante/produtor com data retroativa. Não é possível desvincular fabricante/produtor retroativamente. Caso o campo \&quot;Data de referência\&quot; não tenha sido informado, o sistema assume como sendo a data atual.&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+     *
+     * @return dataReferencia
+     **/
+    @JsonProperty("dataReferencia")
+    public OffsetDateTime getDataReferencia() {
+        return dataReferencia;
+    }
+
+    public void setDataReferencia(OffsetDateTime dataReferencia) {
+        this.dataReferencia = dataReferencia;
+    }
+
+    /**
+     * Código do país de origem no formato ISO 3166&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: &#39;AA&#39;
      * @return codigoPais
      **/
     @JsonProperty("codigoPais")
@@ -269,18 +263,23 @@ public class FabricanteIntegracaoDTO {
         return this;
     }
 
+    public FabricanteIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
+        this.dataReferencia = dataReferencia;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class FabricanteIntegracaoDTO {\n" +
+                "    seq: " + toIndentedString(seq) + "\n" +
                 "    cpfCnpjRaiz: " + toIndentedString(cpfCnpjRaiz) + "\n" +
                 "    codigoOperadorEstrangeiro: " + toIndentedString(codigoOperadorEstrangeiro) + "\n" +
-                "    dataReferencia: " + toIndentedString(dataReferencia) + "\n" +
-                "    vincular: " + toIndentedString(vincular) + "\n" +
-                "    codigoProduto: " + toIndentedString(codigoProduto) + "\n" +
                 "    cpfCnpjFabricante: " + toIndentedString(cpfCnpjFabricante) + "\n" +
                 "    conhecido: " + toIndentedString(conhecido) + "\n" +
-                "    seq: " + toIndentedString(seq) + "\n" +
+                "    codigoProduto: " + toIndentedString(codigoProduto) + "\n" +
+                "    vincular: " + toIndentedString(vincular) + "\n" +
+                "    dataReferencia: " + toIndentedString(dataReferencia) + "\n" +
                 "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
                 "}";
         return sb;

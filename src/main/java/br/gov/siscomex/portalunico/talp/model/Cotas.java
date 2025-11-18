@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cotas", propOrder =
-        {"saldoVMLE", "saldoValorFinanciado", "saldoQuantidadeEstatistica", "saldoQuantidadeComercial", "saldoValorCondicaoVenda", "titulo", "moedaValorCondicaoVenda", "moedaValorFinanciado", "saldoPesoLiquido", "moedaVmle"
+        {"titulo", "saldoQuantidadeComercial", "saldoQuantidadeEstatistica", "saldoVMLE", "saldoPesoLiquido", "saldoValorFinanciado", "saldoValorCondicaoVenda", "moedaVmle", "moedaValorFinanciado", "moedaValorCondicaoVenda"
         })
 
 @XmlRootElement(name = "Cotas")
@@ -25,29 +25,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Informações sobre as cotas de um LPCO")
 public class Cotas {
 
-    @XmlElement(name = "saldoVMLE")
-    @ApiModelProperty(example = "123.12", value = "Saldo disponível para o campo VMLE, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto")
-    @Valid
+    @XmlElement(name = "titulo", required = true)
+    @ApiModelProperty(example = "Item 1 - NCM 11223344", required = true, value = "Título da seção do LPCO ao qual os saldos estão vinculados<br>Formato: será 'LPCO' para campos de saldo na seção Dados Gerais, ou 'Item N - NCM NNNNNNNN' para campos vinculados a uma mercadoria do LPCO")
     /**
-     * Saldo disponível para o campo VMLE, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto
+     * Título da seção do LPCO ao qual os saldos estão vinculados<br>Formato: será 'LPCO' para campos de saldo na seção Dados Gerais, ou 'Item N - NCM NNNNNNNN' para campos vinculados a uma mercadoria do LPCO
      **/
-    private BigDecimal saldoVMLE = null;
-
-    @XmlElement(name = "saldoValorFinanciado")
-    @ApiModelProperty(example = "123.12", value = "Saldo disponível para o campo VALOR_FINANCIADO, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto")
-    @Valid
-    /**
-     * Saldo disponível para o campo VALOR_FINANCIADO, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto
-     **/
-    private BigDecimal saldoValorFinanciado = null;
-
-    @XmlElement(name = "saldoQuantidadeEstatistica")
-    @ApiModelProperty(example = "123.12345", value = "Saldo disponível para o campo QTDE_ESTATISTICA, se houver<br>Tamanho: 14,5 + <br>Formato: Decimal, com até 6 casas decimais separadas por ponto")
-    @Valid
-    /**
-     * Saldo disponível para o campo QTDE_ESTATISTICA, se houver<br>Tamanho: 14,5 + <br>Formato: Decimal, com até 6 casas decimais separadas por ponto
-     **/
-    private BigDecimal saldoQuantidadeEstatistica = null;
+    private String titulo = null;
 
     @XmlElement(name = "saldoQuantidadeComercial")
     @ApiModelProperty(example = "123.12345", value = "Saldo disponível para o campo QTDE_COMERCIALIZADA, se houver<br>Tamanho: 14,5 + <br>Formato: Decimal, com até 6 casas decimais separadas por ponto")
@@ -57,34 +40,21 @@ public class Cotas {
      **/
     private BigDecimal saldoQuantidadeComercial = null;
 
-    @XmlElement(name = "saldoValorCondicaoVenda")
-    @ApiModelProperty(example = "123.12", value = "Saldo disponível para o campo VALOR_CONDICAO_VENDA, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto")
+    @XmlElement(name = "saldoQuantidadeEstatistica")
+    @ApiModelProperty(example = "123.12345", value = "Saldo disponível para o campo QTDE_ESTATISTICA, se houver<br>Tamanho: 14,5 + <br>Formato: Decimal, com até 6 casas decimais separadas por ponto")
     @Valid
     /**
-     * Saldo disponível para o campo VALOR_CONDICAO_VENDA, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto
+     * Saldo disponível para o campo QTDE_ESTATISTICA, se houver<br>Tamanho: 14,5 + <br>Formato: Decimal, com até 6 casas decimais separadas por ponto
      **/
-    private BigDecimal saldoValorCondicaoVenda = null;
+    private BigDecimal saldoQuantidadeEstatistica = null;
 
-    @XmlElement(name = "titulo", required = true)
-    @ApiModelProperty(example = "Item 1 - NCM 11223344", required = true, value = "Título da seção do LPCO ao qual os saldos estão vinculados<br>Formato: será 'LPCO' para campos de saldo na seção Dados Gerais, ou 'Item N - NCM NNNNNNNN' para campos vinculados a uma mercadoria do LPCO")
+    @XmlElement(name = "saldoVMLE")
+    @ApiModelProperty(example = "123.12", value = "Saldo disponível para o campo VMLE, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto")
+    @Valid
     /**
-     * Título da seção do LPCO ao qual os saldos estão vinculados<br>Formato: será 'LPCO' para campos de saldo na seção Dados Gerais, ou 'Item N - NCM NNNNNNNN' para campos vinculados a uma mercadoria do LPCO
+     * Saldo disponível para o campo VMLE, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto
      **/
-    private String titulo = null;
-
-    @XmlElement(name = "moedaValorCondicaoVenda")
-    @ApiModelProperty(example = "USD", value = "Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda<br>Tamanho mínimo: 3<br>Tamanho máximo: 3")
-    /**
-     * Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda<br>Tamanho mínimo: 3<br>Tamanho máximo: 3
-     **/
-    private String moedaValorCondicaoVenda = null;
-
-    @XmlElement(name = "moedaValorFinanciado")
-    @ApiModelProperty(example = "USD", value = "Símbolo da moeda associada ao saldo do campo Valor Financiado<br>Tamanho mínimo: 3<br>Tamanho máximo: 3")
-    /**
-     * Símbolo da moeda associada ao saldo do campo Valor Financiado<br>Tamanho mínimo: 3<br>Tamanho máximo: 3
-     **/
-    private String moedaValorFinanciado = null;
+    private BigDecimal saldoVMLE = null;
 
     @XmlElement(name = "saldoPesoLiquido")
     @ApiModelProperty(example = "123.12345", value = "Saldo disponível para o campo PESO_LIQUIDO, se houver<br>Tamanho: 14,5 + <br>Formato: Decimal, com até 6 casas decimais separadas por ponto")
@@ -94,12 +64,42 @@ public class Cotas {
      **/
     private BigDecimal saldoPesoLiquido = null;
 
+    @XmlElement(name = "saldoValorFinanciado")
+    @ApiModelProperty(example = "123.12", value = "Saldo disponível para o campo VALOR_FINANCIADO, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto")
+    @Valid
+    /**
+     * Saldo disponível para o campo VALOR_FINANCIADO, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto
+     **/
+    private BigDecimal saldoValorFinanciado = null;
+
+    @XmlElement(name = "saldoValorCondicaoVenda")
+    @ApiModelProperty(example = "123.12", value = "Saldo disponível para o campo VALOR_CONDICAO_VENDA, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto")
+    @Valid
+    /**
+     * Saldo disponível para o campo VALOR_CONDICAO_VENDA, se houver<br>Tamanho: 15,2 + <br>Formato: Decimal, com até 2 casas decimais separadas por ponto
+     **/
+    private BigDecimal saldoValorCondicaoVenda = null;
+
     @XmlElement(name = "moedaVmle")
     @ApiModelProperty(example = "USD", value = "Símbolo da moeda associada ao saldo do campo VMLE<br>Tamanho mínimo: 3<br>Tamanho máximo: 3")
     /**
      * Símbolo da moeda associada ao saldo do campo VMLE<br>Tamanho mínimo: 3<br>Tamanho máximo: 3
      **/
     private String moedaVmle = null;
+
+    @XmlElement(name = "moedaValorFinanciado")
+    @ApiModelProperty(example = "USD", value = "Símbolo da moeda associada ao saldo do campo Valor Financiado<br>Tamanho mínimo: 3<br>Tamanho máximo: 3")
+    /**
+     * Símbolo da moeda associada ao saldo do campo Valor Financiado<br>Tamanho mínimo: 3<br>Tamanho máximo: 3
+     **/
+    private String moedaValorFinanciado = null;
+
+    @XmlElement(name = "moedaValorCondicaoVenda")
+    @ApiModelProperty(example = "USD", value = "Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda<br>Tamanho mínimo: 3<br>Tamanho máximo: 3")
+    /**
+     * Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda<br>Tamanho mínimo: 3<br>Tamanho máximo: 3
+     **/
+    private String moedaValorCondicaoVenda = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -110,101 +110,6 @@ public class Cotas {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Saldo disponível para o campo VMLE, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
-     *
-     * @return saldoVMLE
-     **/
-    @JsonProperty("saldoVMLE")
-    public BigDecimal getSaldoVMLE() {
-        return saldoVMLE;
-    }
-
-    public void setSaldoVMLE(BigDecimal saldoVMLE) {
-        this.saldoVMLE = saldoVMLE;
-    }
-
-    public Cotas saldoVMLE(BigDecimal saldoVMLE) {
-        this.saldoVMLE = saldoVMLE;
-        return this;
-    }
-
-    /**
-     * Saldo disponível para o campo VALOR_FINANCIADO, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
-     *
-     * @return saldoValorFinanciado
-     **/
-    @JsonProperty("saldoValorFinanciado")
-    public BigDecimal getSaldoValorFinanciado() {
-        return saldoValorFinanciado;
-    }
-
-    public void setSaldoValorFinanciado(BigDecimal saldoValorFinanciado) {
-        this.saldoValorFinanciado = saldoValorFinanciado;
-    }
-
-    public Cotas saldoValorFinanciado(BigDecimal saldoValorFinanciado) {
-        this.saldoValorFinanciado = saldoValorFinanciado;
-        return this;
-    }
-
-    /**
-     * Saldo disponível para o campo QTDE_ESTATISTICA, se houver&lt;br&gt;Tamanho: 14,5 + &lt;br&gt;Formato: Decimal, com até 6 casas decimais separadas por ponto
-     *
-     * @return saldoQuantidadeEstatistica
-     **/
-    @JsonProperty("saldoQuantidadeEstatistica")
-    public BigDecimal getSaldoQuantidadeEstatistica() {
-        return saldoQuantidadeEstatistica;
-    }
-
-    public void setSaldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
-        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
-    }
-
-    public Cotas saldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
-        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
-        return this;
-    }
-
-    /**
-     * Saldo disponível para o campo QTDE_COMERCIALIZADA, se houver&lt;br&gt;Tamanho: 14,5 + &lt;br&gt;Formato: Decimal, com até 6 casas decimais separadas por ponto
-     *
-     * @return saldoQuantidadeComercial
-     **/
-    @JsonProperty("saldoQuantidadeComercial")
-    public BigDecimal getSaldoQuantidadeComercial() {
-        return saldoQuantidadeComercial;
-    }
-
-    public void setSaldoQuantidadeComercial(BigDecimal saldoQuantidadeComercial) {
-        this.saldoQuantidadeComercial = saldoQuantidadeComercial;
-    }
-
-    public Cotas saldoQuantidadeComercial(BigDecimal saldoQuantidadeComercial) {
-        this.saldoQuantidadeComercial = saldoQuantidadeComercial;
-        return this;
-    }
-
-    /**
-     * Saldo disponível para o campo VALOR_CONDICAO_VENDA, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
-     *
-     * @return saldoValorCondicaoVenda
-     **/
-    @JsonProperty("saldoValorCondicaoVenda")
-    public BigDecimal getSaldoValorCondicaoVenda() {
-        return saldoValorCondicaoVenda;
-    }
-
-    public void setSaldoValorCondicaoVenda(BigDecimal saldoValorCondicaoVenda) {
-        this.saldoValorCondicaoVenda = saldoValorCondicaoVenda;
-    }
-
-    public Cotas saldoValorCondicaoVenda(BigDecimal saldoValorCondicaoVenda) {
-        this.saldoValorCondicaoVenda = saldoValorCondicaoVenda;
-        return this;
     }
 
     /**
@@ -228,40 +133,59 @@ public class Cotas {
     }
 
     /**
-     * Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
+     * Saldo disponível para o campo QTDE_COMERCIALIZADA, se houver&lt;br&gt;Tamanho: 14,5 + &lt;br&gt;Formato: Decimal, com até 6 casas decimais separadas por ponto
      *
-     * @return moedaValorCondicaoVenda
+     * @return saldoQuantidadeComercial
      **/
-    @JsonProperty("moedaValorCondicaoVenda")
-    public String getMoedaValorCondicaoVenda() {
-        return moedaValorCondicaoVenda;
+    @JsonProperty("saldoQuantidadeComercial")
+    public BigDecimal getSaldoQuantidadeComercial() {
+        return saldoQuantidadeComercial;
     }
 
-    public void setMoedaValorCondicaoVenda(String moedaValorCondicaoVenda) {
-        this.moedaValorCondicaoVenda = moedaValorCondicaoVenda;
+    public void setSaldoQuantidadeComercial(BigDecimal saldoQuantidadeComercial) {
+        this.saldoQuantidadeComercial = saldoQuantidadeComercial;
     }
 
-    public Cotas moedaValorCondicaoVenda(String moedaValorCondicaoVenda) {
-        this.moedaValorCondicaoVenda = moedaValorCondicaoVenda;
+    public Cotas saldoQuantidadeComercial(BigDecimal saldoQuantidadeComercial) {
+        this.saldoQuantidadeComercial = saldoQuantidadeComercial;
         return this;
     }
 
     /**
-     * Símbolo da moeda associada ao saldo do campo Valor Financiado&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
+     * Saldo disponível para o campo QTDE_ESTATISTICA, se houver&lt;br&gt;Tamanho: 14,5 + &lt;br&gt;Formato: Decimal, com até 6 casas decimais separadas por ponto
      *
-     * @return moedaValorFinanciado
+     * @return saldoQuantidadeEstatistica
      **/
-    @JsonProperty("moedaValorFinanciado")
-    public String getMoedaValorFinanciado() {
-        return moedaValorFinanciado;
+    @JsonProperty("saldoQuantidadeEstatistica")
+    public BigDecimal getSaldoQuantidadeEstatistica() {
+        return saldoQuantidadeEstatistica;
     }
 
-    public void setMoedaValorFinanciado(String moedaValorFinanciado) {
-        this.moedaValorFinanciado = moedaValorFinanciado;
+    public void setSaldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
+        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
     }
 
-    public Cotas moedaValorFinanciado(String moedaValorFinanciado) {
-        this.moedaValorFinanciado = moedaValorFinanciado;
+    /**
+     * Saldo disponível para o campo VMLE, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
+     *
+     * @return saldoVMLE
+     **/
+    @JsonProperty("saldoVMLE")
+    public BigDecimal getSaldoVMLE() {
+        return saldoVMLE;
+    }
+
+    public void setSaldoVMLE(BigDecimal saldoVMLE) {
+        this.saldoVMLE = saldoVMLE;
+    }
+
+    public Cotas saldoVMLE(BigDecimal saldoVMLE) {
+        this.saldoVMLE = saldoVMLE;
+        return this;
+    }
+
+    public Cotas saldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
+        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
         return this;
     }
 
@@ -277,6 +201,44 @@ public class Cotas {
 
     public void setSaldoPesoLiquido(BigDecimal saldoPesoLiquido) {
         this.saldoPesoLiquido = saldoPesoLiquido;
+    }
+
+    /**
+     * Saldo disponível para o campo VALOR_FINANCIADO, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
+     *
+     * @return saldoValorFinanciado
+     **/
+    @JsonProperty("saldoValorFinanciado")
+    public BigDecimal getSaldoValorFinanciado() {
+        return saldoValorFinanciado;
+    }
+
+    public void setSaldoValorFinanciado(BigDecimal saldoValorFinanciado) {
+        this.saldoValorFinanciado = saldoValorFinanciado;
+    }
+
+    public Cotas saldoValorFinanciado(BigDecimal saldoValorFinanciado) {
+        this.saldoValorFinanciado = saldoValorFinanciado;
+        return this;
+    }
+
+    /**
+     * Saldo disponível para o campo VALOR_CONDICAO_VENDA, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
+     *
+     * @return saldoValorCondicaoVenda
+     **/
+    @JsonProperty("saldoValorCondicaoVenda")
+    public BigDecimal getSaldoValorCondicaoVenda() {
+        return saldoValorCondicaoVenda;
+    }
+
+    public void setSaldoValorCondicaoVenda(BigDecimal saldoValorCondicaoVenda) {
+        this.saldoValorCondicaoVenda = saldoValorCondicaoVenda;
+    }
+
+    public Cotas saldoValorCondicaoVenda(BigDecimal saldoValorCondicaoVenda) {
+        this.saldoValorCondicaoVenda = saldoValorCondicaoVenda;
+        return this;
     }
 
     public Cotas saldoPesoLiquido(BigDecimal saldoPesoLiquido) {
@@ -298,8 +260,46 @@ public class Cotas {
         this.moedaVmle = moedaVmle;
     }
 
+    /**
+     * Símbolo da moeda associada ao saldo do campo Valor Financiado&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
+     *
+     * @return moedaValorFinanciado
+     **/
+    @JsonProperty("moedaValorFinanciado")
+    public String getMoedaValorFinanciado() {
+        return moedaValorFinanciado;
+    }
+
+    public void setMoedaValorFinanciado(String moedaValorFinanciado) {
+        this.moedaValorFinanciado = moedaValorFinanciado;
+    }
+
+    public Cotas moedaValorFinanciado(String moedaValorFinanciado) {
+        this.moedaValorFinanciado = moedaValorFinanciado;
+        return this;
+    }
+
     public Cotas moedaVmle(String moedaVmle) {
         this.moedaVmle = moedaVmle;
+        return this;
+    }
+
+    /**
+     * Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
+     *
+     * @return moedaValorCondicaoVenda
+     **/
+    @JsonProperty("moedaValorCondicaoVenda")
+    public String getMoedaValorCondicaoVenda() {
+        return moedaValorCondicaoVenda;
+    }
+
+    public void setMoedaValorCondicaoVenda(String moedaValorCondicaoVenda) {
+        this.moedaValorCondicaoVenda = moedaValorCondicaoVenda;
+    }
+
+    public Cotas moedaValorCondicaoVenda(String moedaValorCondicaoVenda) {
+        this.moedaValorCondicaoVenda = moedaValorCondicaoVenda;
         return this;
     }
 
@@ -307,16 +307,16 @@ public class Cotas {
     public String toString() {
 
         String sb = "class Cotas {\n" +
-                "    saldoVMLE: " + toIndentedString(saldoVMLE) + "\n" +
-                "    saldoValorFinanciado: " + toIndentedString(saldoValorFinanciado) + "\n" +
-                "    saldoQuantidadeEstatistica: " + toIndentedString(saldoQuantidadeEstatistica) + "\n" +
-                "    saldoQuantidadeComercial: " + toIndentedString(saldoQuantidadeComercial) + "\n" +
-                "    saldoValorCondicaoVenda: " + toIndentedString(saldoValorCondicaoVenda) + "\n" +
                 "    titulo: " + toIndentedString(titulo) + "\n" +
-                "    moedaValorCondicaoVenda: " + toIndentedString(moedaValorCondicaoVenda) + "\n" +
-                "    moedaValorFinanciado: " + toIndentedString(moedaValorFinanciado) + "\n" +
+                "    saldoQuantidadeComercial: " + toIndentedString(saldoQuantidadeComercial) + "\n" +
+                "    saldoQuantidadeEstatistica: " + toIndentedString(saldoQuantidadeEstatistica) + "\n" +
+                "    saldoVMLE: " + toIndentedString(saldoVMLE) + "\n" +
                 "    saldoPesoLiquido: " + toIndentedString(saldoPesoLiquido) + "\n" +
+                "    saldoValorFinanciado: " + toIndentedString(saldoValorFinanciado) + "\n" +
+                "    saldoValorCondicaoVenda: " + toIndentedString(saldoValorCondicaoVenda) + "\n" +
                 "    moedaVmle: " + toIndentedString(moedaVmle) + "\n" +
+                "    moedaValorFinanciado: " + toIndentedString(moedaValorFinanciado) + "\n" +
+                "    moedaValorCondicaoVenda: " + toIndentedString(moedaValorCondicaoVenda) + "\n" +
                 "}";
         return sb;
     }

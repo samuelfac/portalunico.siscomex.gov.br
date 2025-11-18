@@ -16,34 +16,33 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoDeTransformacao", propOrder =
-        {"tipo", "numero", "numeroDoItem", "numeroDoProcesso", "quantidadeUtilizada"
+        {"numero", "numeroDoItem", "numeroDoProcesso", "quantidadeUtilizada", "tipo"
         })
 
 @XmlRootElement(name = "DocumentoDeTransformacao")
 public class DocumentoDeTransformacao {
 
-
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    private TipoEnum tipo = null;
     @XmlElement(name = "numero", required = true)
     @ApiModelProperty(required = true, value = "Número<br />Tamanho mínimo: 1<br />Tamanho máximo: 30")
     /**
      * Número<br />Tamanho mínimo: 1<br />Tamanho máximo: 30
      **/
     private String numero = null;
+
     @XmlElement(name = "numeroDoItem")
     @ApiModelProperty(value = "Número<br />Tamanho mínimo: 0<br />Tamanho máximo: 20")
     /**
      * Número<br />Tamanho mínimo: 0<br />Tamanho máximo: 20
      **/
     private String numeroDoItem = null;
+
     @XmlElement(name = "numeroDoProcesso")
     @ApiModelProperty(value = "Número do processo<br />Formato: Inteiro, com até 17 digitos")
     /**
      * Número do processo<br />Formato: Inteiro, com até 17 digitos
      **/
     private Long numeroDoProcesso = null;
+
     @XmlElement(name = "quantidadeUtilizada")
     @ApiModelProperty(value = "Quantidade utilizada<br />Tamanho: 19,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     @Valid
@@ -51,6 +50,11 @@ public class DocumentoDeTransformacao {
      * Quantidade utilizada<br />Tamanho: 19,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal quantidadeUtilizada = null;
+
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    private TipoEnum tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,28 +65,6 @@ public class DocumentoDeTransformacao {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get tipo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public DocumentoDeTransformacao tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
     }
 
     /**
@@ -162,16 +144,38 @@ public class DocumentoDeTransformacao {
         return this;
     }
 
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public DocumentoDeTransformacao tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DocumentoDeTransformacao {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
                 "    numeroDoItem: " + toIndentedString(numeroDoItem) + "\n" +
                 "    numeroDoProcesso: " + toIndentedString(numeroDoProcesso) + "\n" +
                 "    quantidadeUtilizada: " + toIndentedString(quantidadeUtilizada) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

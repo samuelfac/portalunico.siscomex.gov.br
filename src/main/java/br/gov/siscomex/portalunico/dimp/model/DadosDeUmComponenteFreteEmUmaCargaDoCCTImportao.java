@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao", propOrder =
-        {"tipoTotalMoeda", "prepaid", "collect"
+        {"tipoTotalMoeda", "collect", "prepaid"
         })
 
 @XmlRootElement(name = "DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao")
@@ -27,14 +27,14 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
      * Tipo de totalizador do componente do frete
      **/
     private TipoTotalMoedaEnum tipoTotalMoeda = null;
-    @XmlElement(name = "prepaid")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid = null;
     @XmlElement(name = "collect")
     @ApiModelProperty(value = "")
     @Valid
     private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao collect = null;
+    @XmlElement(name = "prepaid")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,25 +70,6 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
     }
 
     /**
-     * Get prepaid
-     *
-     * @return prepaid
-     **/
-    @JsonProperty("prepaid")
-    public DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao getPrepaid() {
-        return prepaid;
-    }
-
-    public void setPrepaid(DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid) {
-        this.prepaid = prepaid;
-    }
-
-    public DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid(DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid) {
-        this.prepaid = prepaid;
-        return this;
-    }
-
-    /**
      * Get collect
      *
      * @return collect
@@ -107,14 +88,33 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
         return this;
     }
 
+    /**
+     * Get prepaid
+     *
+     * @return prepaid
+     **/
+    @JsonProperty("prepaid")
+    public DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao getPrepaid() {
+        return prepaid;
+    }
+
+    public void setPrepaid(DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid) {
+        this.prepaid = prepaid;
+    }
+
+    public DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid(DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid) {
+        this.prepaid = prepaid;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {\n" +
                 "    tipoTotalMoeda: " + toIndentedString(tipoTotalMoeda) + "\n" +
-                "    prepaid: " + toIndentedString(prepaid) + "\n" +
                 "    collect: " + toIndentedString(collect) + "\n" +
+                "    prepaid: " + toIndentedString(prepaid) + "\n" +
                 "}";
         return sb;
     }
@@ -170,15 +170,6 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
             value = v;
         }
 
-        public static TipoTotalMoedaEnum fromValue(String v) {
-            for (TipoTotalMoedaEnum b : TipoTotalMoedaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTotalMoedaEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -186,6 +177,15 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoTotalMoedaEnum fromValue(String v) {
+            for (TipoTotalMoedaEnum b : TipoTotalMoedaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTotalMoedaEnum");
         }
     }
 }

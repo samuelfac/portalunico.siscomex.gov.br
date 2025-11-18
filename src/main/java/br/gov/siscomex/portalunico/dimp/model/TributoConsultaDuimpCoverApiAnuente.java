@@ -35,17 +35,6 @@ public class TributoConsultaDuimpCoverApiAnuente {
     private List<TributoCalculadoDuimpConsultaCover> tributosCalculados = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get mercadoria
      *
      * @return mercadoria
@@ -86,6 +75,18 @@ public class TributoConsultaDuimpCoverApiAnuente {
     public TributoConsultaDuimpCoverApiAnuente addTributosCalculadosItem(TributoCalculadoDuimpConsultaCover tributosCalculadosItem) {
         this.tributosCalculados.add(tributosCalculadosItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

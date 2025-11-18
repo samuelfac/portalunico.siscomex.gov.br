@@ -16,49 +16,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConhecimentoViagemConsultaDetalhada", propOrder =
-        {"manuseiosEspeciaisManifestoVoo", "cnpjResponsavelArquivo", "solicitacoesServicosEspeciaisManifestoVoo", "outrasInfosServicoManifestoVoo", "identificacao", "classificacoesMercadoriaManifestoVoo", "quantidadeVolumesManifestoVoo", "descricaoMercadoriaManifestoVoo", "pesoBrutoManifestoVoo", "dataEmissao", "indicadorParcialidade", "tipoConhecimento"
+        {"classificacoesMercadoriaManifestoVoo", "cnpjResponsavelArquivo", "dataEmissao", "descricaoMercadoriaManifestoVoo", "identificacao", "indicadorParcialidade", "manuseiosEspeciaisManifestoVoo", "outrasInfosServicoManifestoVoo", "pesoBrutoManifestoVoo", "quantidadeVolumesManifestoVoo", "solicitacoesServicosEspeciaisManifestoVoo", "tipoConhecimento"
         })
 
 @XmlRootElement(name = "ConhecimentoViagemConsultaDetalhada")
 public class ConhecimentoViagemConsultaDetalhada {
-
-    @XmlElement(name = "manuseiosEspeciaisManifestoVoo")
-    @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo os manuseios especiais para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> manuseiosEspeciaisManifestoVoo = null;
-
-    @XmlElement(name = "cnpjResponsavelArquivo")
-    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjResponsavelArquivo = null;
-
-    @XmlElement(name = "solicitacoesServicosEspeciaisManifestoVoo")
-    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo = null;
-
-    @XmlElement(name = "outrasInfosServicoManifestoVoo")
-    @ApiModelProperty(value = "Lista contendo as outras informações de serviço para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo as outras informações de serviço para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> outrasInfosServicoManifestoVoo = null;
-
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
-    /**
-     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
-     **/
-    private String identificacao = null;
 
     @XmlElement(name = "classificacoesMercadoriaManifestoVoo")
     @ApiModelProperty(value = "Lista contendo os itens de carga contidos na carga / Dsic<br/>")
@@ -68,12 +30,19 @@ public class ConhecimentoViagemConsultaDetalhada {
      **/
     private List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoriaManifestoVoo = null;
 
-    @XmlElement(name = "quantidadeVolumesManifestoVoo")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    @XmlElement(name = "cnpjResponsavelArquivo")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
     /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
      **/
-    private Integer quantidadeVolumesManifestoVoo = null;
+    private String cnpjResponsavelArquivo = null;
+
+    @XmlElement(name = "dataEmissao")
+    @ApiModelProperty(example = "2020-05-07T17:43:18-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    /**
+     * Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     **/
+    private String dataEmissao = null;
 
     @XmlElement(name = "descricaoMercadoriaManifestoVoo")
     @ApiModelProperty(example = "Descrição resumida das mercadorias", value = "Descrição resumida das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
@@ -82,6 +51,25 @@ public class ConhecimentoViagemConsultaDetalhada {
      **/
     private String descricaoMercadoriaManifestoVoo = null;
 
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
+    /**
+     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
+     **/
+    private String identificacao = null;
+    @XmlElement(name = "indicadorParcialidade")
+    @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
+    /**
+     * Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas
+     **/
+    private IndicadorParcialidadeEnum indicadorParcialidade = null;
+    @XmlElement(name = "manuseiosEspeciaisManifestoVoo")
+    @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista contendo os manuseios especiais para a carga / Dsic<br/>
+     **/
+    private List<InfoManuseioConsultaDetalhada> manuseiosEspeciaisManifestoVoo = null;
     @XmlElement(name = "pesoBrutoManifestoVoo")
     @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
     @Valid
@@ -90,24 +78,27 @@ public class ConhecimentoViagemConsultaDetalhada {
      **/
     private BigDecimal pesoBrutoManifestoVoo = null;
 
-    @XmlElement(name = "dataEmissao")
-    @ApiModelProperty(example = "2020-05-07T17:43:18-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    @XmlElement(name = "outrasInfosServicoManifestoVoo")
+    @ApiModelProperty(value = "Lista contendo as outras informações de serviço para a carga / Dsic<br/>")
+    @Valid
     /**
-     * Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     * Lista contendo as outras informações de serviço para a carga / Dsic<br/>
      **/
-    private String dataEmissao = null;
-    @XmlElement(name = "indicadorParcialidade")
-    @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
+    private List<InfoManuseioConsultaDetalhada> outrasInfosServicoManifestoVoo = null;
+    @XmlElement(name = "solicitacoesServicosEspeciaisManifestoVoo")
+    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
+    @Valid
     /**
-     * Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
      **/
-    private IndicadorParcialidadeEnum indicadorParcialidade = null;
-    @XmlElement(name = "tipoConhecimento")
-    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
+    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo = null;
+
+    @XmlElement(name = "quantidadeVolumesManifestoVoo")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
     /**
-     * Tipo de carga.
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
      **/
-    private TipoConhecimentoEnum tipoConhecimento = null;
+    private Integer quantidadeVolumesManifestoVoo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -118,6 +109,134 @@ public class ConhecimentoViagemConsultaDetalhada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+    @XmlElement(name = "tipoConhecimento")
+    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
+    /**
+     * Tipo de carga.
+     **/
+    private TipoConhecimentoEnum tipoConhecimento = null;
+
+    /**
+     * Lista contendo os itens de carga contidos na carga / Dsic&lt;br/&gt;
+     *
+     * @return classificacoesMercadoriaManifestoVoo
+     **/
+    @JsonProperty("classificacoesMercadoriaManifestoVoo")
+    public List<ClassificacaoMercadoriaConsultaDetalhada> getClassificacoesMercadoriaManifestoVoo() {
+        return classificacoesMercadoriaManifestoVoo;
+    }
+
+    public void setClassificacoesMercadoriaManifestoVoo(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoriaManifestoVoo) {
+        this.classificacoesMercadoriaManifestoVoo = classificacoesMercadoriaManifestoVoo;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada classificacoesMercadoriaManifestoVoo(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoriaManifestoVoo) {
+        this.classificacoesMercadoriaManifestoVoo = classificacoesMercadoriaManifestoVoo;
+        return this;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada addClassificacoesMercadoriaManifestoVooItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaManifestoVooItem) {
+        this.classificacoesMercadoriaManifestoVoo.add(classificacoesMercadoriaManifestoVooItem);
+        return this;
+    }
+
+    /**
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
+     *
+     * @return cnpjResponsavelArquivo
+     **/
+    @JsonProperty("cnpjResponsavelArquivo")
+    public String getCnpjResponsavelArquivo() {
+        return cnpjResponsavelArquivo;
+    }
+
+    public void setCnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
+        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
+        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
+        return this;
+    }
+
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
+
+    /**
+     * Descrição resumida das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
+     *
+     * @return descricaoMercadoriaManifestoVoo
+     **/
+    @JsonProperty("descricaoMercadoriaManifestoVoo")
+    public String getDescricaoMercadoriaManifestoVoo() {
+        return descricaoMercadoriaManifestoVoo;
+    }
+
+    public void setDescricaoMercadoriaManifestoVoo(String descricaoMercadoriaManifestoVoo) {
+        this.descricaoMercadoriaManifestoVoo = descricaoMercadoriaManifestoVoo;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada descricaoMercadoriaManifestoVoo(String descricaoMercadoriaManifestoVoo) {
+        this.descricaoMercadoriaManifestoVoo = descricaoMercadoriaManifestoVoo;
+        return this;
+    }
+
+    /**
+     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     *
+     * @return indicadorParcialidade
+     **/
+    @JsonProperty("indicadorParcialidade")
+    public String getIndicadorParcialidade() {
+        if (indicadorParcialidade == null) {
+            return null;
+        }
+        return indicadorParcialidade.value();
+    }
+
+    public void setIndicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
+        this.indicadorParcialidade = indicadorParcialidade;
+    }
+
+    /**
+     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    public String getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada identificacao(String identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada indicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
+        this.indicadorParcialidade = indicadorParcialidade;
+        return this;
     }
 
     /**
@@ -141,49 +260,6 @@ public class ConhecimentoViagemConsultaDetalhada {
 
     public ConhecimentoViagemConsultaDetalhada addManuseiosEspeciaisManifestoVooItem(InfoManuseioConsultaDetalhada manuseiosEspeciaisManifestoVooItem) {
         this.manuseiosEspeciaisManifestoVoo.add(manuseiosEspeciaisManifestoVooItem);
-        return this;
-    }
-
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     *
-     * @return cnpjResponsavelArquivo
-     **/
-    @JsonProperty("cnpjResponsavelArquivo")
-    public String getCnpjResponsavelArquivo() {
-        return cnpjResponsavelArquivo;
-    }
-
-    public void setCnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
-        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
-        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-        return this;
-    }
-
-    /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
-     *
-     * @return solicitacoesServicosEspeciaisManifestoVoo
-     **/
-    @JsonProperty("solicitacoesServicosEspeciaisManifestoVoo")
-    public List<InfoManuseioConsultaDetalhada> getSolicitacoesServicosEspeciaisManifestoVoo() {
-        return solicitacoesServicosEspeciaisManifestoVoo;
-    }
-
-    public void setSolicitacoesServicosEspeciaisManifestoVoo(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo) {
-        this.solicitacoesServicosEspeciaisManifestoVoo = solicitacoesServicosEspeciaisManifestoVoo;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada solicitacoesServicosEspeciaisManifestoVoo(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo) {
-        this.solicitacoesServicosEspeciaisManifestoVoo = solicitacoesServicosEspeciaisManifestoVoo;
-        return this;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada addSolicitacoesServicosEspeciaisManifestoVooItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisManifestoVooItem) {
-        this.solicitacoesServicosEspeciaisManifestoVoo.add(solicitacoesServicosEspeciaisManifestoVooItem);
         return this;
     }
 
@@ -212,49 +288,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     }
 
     /**
-     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacao
-     **/
-    @JsonProperty("identificacao")
-    public String getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(String identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada identificacao(String identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
-    /**
-     * Lista contendo os itens de carga contidos na carga / Dsic&lt;br/&gt;
-     *
-     * @return classificacoesMercadoriaManifestoVoo
-     **/
-    @JsonProperty("classificacoesMercadoriaManifestoVoo")
-    public List<ClassificacaoMercadoriaConsultaDetalhada> getClassificacoesMercadoriaManifestoVoo() {
-        return classificacoesMercadoriaManifestoVoo;
-    }
-
-    public void setClassificacoesMercadoriaManifestoVoo(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoriaManifestoVoo) {
-        this.classificacoesMercadoriaManifestoVoo = classificacoesMercadoriaManifestoVoo;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada classificacoesMercadoriaManifestoVoo(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoriaManifestoVoo) {
-        this.classificacoesMercadoriaManifestoVoo = classificacoesMercadoriaManifestoVoo;
-        return this;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada addClassificacoesMercadoriaManifestoVooItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaManifestoVooItem) {
-        this.classificacoesMercadoriaManifestoVoo.add(classificacoesMercadoriaManifestoVooItem);
-        return this;
-    }
-
-    /**
      * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
      *
      * @return quantidadeVolumesManifestoVoo
@@ -262,34 +295,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     @JsonProperty("quantidadeVolumesManifestoVoo")
     public Integer getQuantidadeVolumesManifestoVoo() {
         return quantidadeVolumesManifestoVoo;
-    }
-
-    public void setQuantidadeVolumesManifestoVoo(Integer quantidadeVolumesManifestoVoo) {
-        this.quantidadeVolumesManifestoVoo = quantidadeVolumesManifestoVoo;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada quantidadeVolumesManifestoVoo(Integer quantidadeVolumesManifestoVoo) {
-        this.quantidadeVolumesManifestoVoo = quantidadeVolumesManifestoVoo;
-        return this;
-    }
-
-    /**
-     * Descrição resumida das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
-     *
-     * @return descricaoMercadoriaManifestoVoo
-     **/
-    @JsonProperty("descricaoMercadoriaManifestoVoo")
-    public String getDescricaoMercadoriaManifestoVoo() {
-        return descricaoMercadoriaManifestoVoo;
-    }
-
-    public void setDescricaoMercadoriaManifestoVoo(String descricaoMercadoriaManifestoVoo) {
-        this.descricaoMercadoriaManifestoVoo = descricaoMercadoriaManifestoVoo;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada descricaoMercadoriaManifestoVoo(String descricaoMercadoriaManifestoVoo) {
-        this.descricaoMercadoriaManifestoVoo = descricaoMercadoriaManifestoVoo;
-        return this;
     }
 
     /**
@@ -311,45 +316,57 @@ public class ConhecimentoViagemConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
+    public void setQuantidadeVolumesManifestoVoo(Integer quantidadeVolumesManifestoVoo) {
+        this.quantidadeVolumesManifestoVoo = quantidadeVolumesManifestoVoo;
     }
 
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public ConhecimentoViagemConsultaDetalhada dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public ConhecimentoViagemConsultaDetalhada quantidadeVolumesManifestoVoo(Integer quantidadeVolumesManifestoVoo) {
+        this.quantidadeVolumesManifestoVoo = quantidadeVolumesManifestoVoo;
         return this;
     }
 
     /**
-     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
      *
-     * @return indicadorParcialidade
+     * @return solicitacoesServicosEspeciaisManifestoVoo
      **/
-    @JsonProperty("indicadorParcialidade")
-    public String getIndicadorParcialidade() {
-        if (indicadorParcialidade == null) {
-            return null;
-        }
-        return indicadorParcialidade.value();
+    @JsonProperty("solicitacoesServicosEspeciaisManifestoVoo")
+    public List<InfoManuseioConsultaDetalhada> getSolicitacoesServicosEspeciaisManifestoVoo() {
+        return solicitacoesServicosEspeciaisManifestoVoo;
     }
 
-    public void setIndicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
-        this.indicadorParcialidade = indicadorParcialidade;
+    public void setSolicitacoesServicosEspeciaisManifestoVoo(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo) {
+        this.solicitacoesServicosEspeciaisManifestoVoo = solicitacoesServicosEspeciaisManifestoVoo;
     }
 
-    public ConhecimentoViagemConsultaDetalhada indicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
-        this.indicadorParcialidade = indicadorParcialidade;
+    public ConhecimentoViagemConsultaDetalhada solicitacoesServicosEspeciaisManifestoVoo(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo) {
+        this.solicitacoesServicosEspeciaisManifestoVoo = solicitacoesServicosEspeciaisManifestoVoo;
         return this;
+    }
+
+    public ConhecimentoViagemConsultaDetalhada addSolicitacoesServicosEspeciaisManifestoVooItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisManifestoVooItem) {
+        this.solicitacoesServicosEspeciaisManifestoVoo.add(solicitacoesServicosEspeciaisManifestoVooItem);
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ConhecimentoViagemConsultaDetalhada {\n" +
+                "    classificacoesMercadoriaManifestoVoo: " + toIndentedString(classificacoesMercadoriaManifestoVoo) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    descricaoMercadoriaManifestoVoo: " + toIndentedString(descricaoMercadoriaManifestoVoo) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
+                "    manuseiosEspeciaisManifestoVoo: " + toIndentedString(manuseiosEspeciaisManifestoVoo) + "\n" +
+                "    outrasInfosServicoManifestoVoo: " + toIndentedString(outrasInfosServicoManifestoVoo) + "\n" +
+                "    pesoBrutoManifestoVoo: " + toIndentedString(pesoBrutoManifestoVoo) + "\n" +
+                "    quantidadeVolumesManifestoVoo: " + toIndentedString(quantidadeVolumesManifestoVoo) + "\n" +
+                "    solicitacoesServicosEspeciaisManifestoVoo: " + toIndentedString(solicitacoesServicosEspeciaisManifestoVoo) + "\n" +
+                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "}";
+        return sb;
     }
 
     /**
@@ -372,26 +389,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     public ConhecimentoViagemConsultaDetalhada tipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
         this.tipoConhecimento = tipoConhecimento;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ConhecimentoViagemConsultaDetalhada {\n" +
-                "    manuseiosEspeciaisManifestoVoo: " + toIndentedString(manuseiosEspeciaisManifestoVoo) + "\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    solicitacoesServicosEspeciaisManifestoVoo: " + toIndentedString(solicitacoesServicosEspeciaisManifestoVoo) + "\n" +
-                "    outrasInfosServicoManifestoVoo: " + toIndentedString(outrasInfosServicoManifestoVoo) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    classificacoesMercadoriaManifestoVoo: " + toIndentedString(classificacoesMercadoriaManifestoVoo) + "\n" +
-                "    quantidadeVolumesManifestoVoo: " + toIndentedString(quantidadeVolumesManifestoVoo) + "\n" +
-                "    descricaoMercadoriaManifestoVoo: " + toIndentedString(descricaoMercadoriaManifestoVoo) + "\n" +
-                "    pesoBrutoManifestoVoo: " + toIndentedString(pesoBrutoManifestoVoo) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
-                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
-                "}";
-        return sb;
     }
 
 

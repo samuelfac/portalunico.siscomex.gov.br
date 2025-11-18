@@ -13,11 +13,18 @@ import java.time.LocalDate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaDetalhadaLocalChegada", propOrder =
-        {"horaChegada", "recintoAduaneiro", "unidadeRFB", "dataChegada"
+        {"dataChegada", "horaChegada", "recintoAduaneiro", "unidadeRFB"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaDetalhadaLocalChegada")
 public class ViagemRodoviariaDetalhadaLocalChegada {
+
+    @XmlElement(name = "dataChegada")
+    @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data em que ocorreu a chegada")
+    /**
+     * Data em que ocorreu a chegada
+     **/
+    private LocalDate dataChegada = null;
 
     @XmlElement(name = "horaChegada")
     @ApiModelProperty(example = "08:54:00", value = "Hora em que aconteceu a chegada")
@@ -36,13 +43,6 @@ public class ViagemRodoviariaDetalhadaLocalChegada {
     @Valid
     private UnidadeRfb unidadeRFB = null;
 
-    @XmlElement(name = "dataChegada")
-    @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data em que ocorreu a chegada")
-    /**
-     * Data em que ocorreu a chegada
-     **/
-    private LocalDate dataChegada = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -52,6 +52,20 @@ public class ViagemRodoviariaDetalhadaLocalChegada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data em que ocorreu a chegada
+     *
+     * @return dataChegada
+     **/
+    @JsonProperty("dataChegada")
+    public LocalDate getDataChegada() {
+        return dataChegada;
+    }
+
+    public void setDataChegada(LocalDate dataChegada) {
+        this.dataChegada = dataChegada;
     }
 
     /**
@@ -111,20 +125,6 @@ public class ViagemRodoviariaDetalhadaLocalChegada {
         return this;
     }
 
-    /**
-     * Data em que ocorreu a chegada
-     *
-     * @return dataChegada
-     **/
-    @JsonProperty("dataChegada")
-    public LocalDate getDataChegada() {
-        return dataChegada;
-    }
-
-    public void setDataChegada(LocalDate dataChegada) {
-        this.dataChegada = dataChegada;
-    }
-
     public ViagemRodoviariaDetalhadaLocalChegada dataChegada(LocalDate dataChegada) {
         this.dataChegada = dataChegada;
         return this;
@@ -134,10 +134,10 @@ public class ViagemRodoviariaDetalhadaLocalChegada {
     public String toString() {
 
         String sb = "class ViagemRodoviariaDetalhadaLocalChegada {\n" +
+                "    dataChegada: " + toIndentedString(dataChegada) + "\n" +
                 "    horaChegada: " + toIndentedString(horaChegada) + "\n" +
                 "    recintoAduaneiro: " + toIndentedString(recintoAduaneiro) + "\n" +
                 "    unidadeRFB: " + toIndentedString(unidadeRFB) + "\n" +
-                "    dataChegada: " + toIndentedString(dataChegada) + "\n" +
                 "}";
         return sb;
     }

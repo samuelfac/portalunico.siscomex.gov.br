@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProdutoConsultaItemCover", propOrder =
-        {"codigo", "niResponsavel", "ncm", "versao"
+        {"codigo", "versao", "niResponsavel", "ncm"
         })
 
 @XmlRootElement(name = "ProdutoConsultaItemCover")
@@ -29,6 +29,13 @@ public class ProdutoConsultaItemCover {
      **/
     private String codigo = null;
 
+    @XmlElement(name = "versao")
+    @ApiModelProperty(example = "1", value = "Versão do produto.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
+    /**
+     * Versão do produto.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
+     **/
+    private String versao = null;
+
     @XmlElement(name = "niResponsavel")
     @ApiModelProperty(example = "00000000", value = "<br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
@@ -42,24 +49,6 @@ public class ProdutoConsultaItemCover {
      * Código da NCM associada ao produto.<br>Tamanho: 8<br>Formato: 'NNNNNNNN'
      **/
     private String ncm = null;
-
-    @XmlElement(name = "versao")
-    @ApiModelProperty(example = "1", value = "Versão do produto.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
-    /**
-     * Versão do produto.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
-     **/
-    private String versao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Código do produto.&lt;br&gt;Formato: Inteiro, com até 10 dígitos
@@ -78,6 +67,31 @@ public class ProdutoConsultaItemCover {
     public ProdutoConsultaItemCover codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Versão do produto.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 7
+     *
+     * @return versao
+     **/
+    @JsonProperty("versao")
+    public String getVersao() {
+        return versao;
+    }
+
+    public void setVersao(String versao) {
+        this.versao = versao;
     }
 
     /**
@@ -118,20 +132,6 @@ public class ProdutoConsultaItemCover {
         return this;
     }
 
-    /**
-     * Versão do produto.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 7
-     *
-     * @return versao
-     **/
-    @JsonProperty("versao")
-    public String getVersao() {
-        return versao;
-    }
-
-    public void setVersao(String versao) {
-        this.versao = versao;
-    }
-
     public ProdutoConsultaItemCover versao(String versao) {
         this.versao = versao;
         return this;
@@ -142,9 +142,9 @@ public class ProdutoConsultaItemCover {
 
         String sb = "class ProdutoConsultaItemCover {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    versao: " + toIndentedString(versao) + "\n" +
                 "    niResponsavel: " + toIndentedString(niResponsavel) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
-                "    versao: " + toIndentedString(versao) + "\n" +
                 "}";
         return sb;
     }

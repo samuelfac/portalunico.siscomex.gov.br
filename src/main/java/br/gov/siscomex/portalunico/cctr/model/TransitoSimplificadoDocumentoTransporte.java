@@ -44,17 +44,6 @@ public class TransitoSimplificadoDocumentoTransporte {
     private String codigoRADestino = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da Unidade da Receita Federal do local de destino do trânsito&lt;br&gt;Deve ser informado junto com o CNPJ Responsável do Destino quando não for informado o Recinto Aduaneiro&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
      *
      * @return codigoURFDestino
@@ -109,6 +98,18 @@ public class TransitoSimplificadoDocumentoTransporte {
     public TransitoSimplificadoDocumentoTransporte codigoRADestino(String codigoRADestino) {
         this.codigoRADestino = codigoRADestino;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

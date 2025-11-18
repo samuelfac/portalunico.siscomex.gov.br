@@ -13,21 +13,45 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CalculoTributarioDto", propOrder =
-        {"tratamentosTributarios", "quadroDeCalculos"
+        {"quadroDeCalculos", "tratamentosTributarios"
         })
 
 @XmlRootElement(name = "CalculoTributarioDto")
 public class CalculoTributarioDto {
+
+    @XmlElement(name = "quadroDeCalculos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<QuadroCalculoDto> quadroDeCalculos = null;
 
     @XmlElement(name = "tratamentosTributarios")
     @ApiModelProperty(value = "")
     @Valid
     private List<TratamentoTributarioDto> tratamentosTributarios = null;
 
-    @XmlElement(name = "quadroDeCalculos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<QuadroCalculoDto> quadroDeCalculos = null;
+    /**
+     * Get quadroDeCalculos
+     *
+     * @return quadroDeCalculos
+     **/
+    @JsonProperty("quadroDeCalculos")
+    public List<QuadroCalculoDto> getQuadroDeCalculos() {
+        return quadroDeCalculos;
+    }
+
+    public void setQuadroDeCalculos(List<QuadroCalculoDto> quadroDeCalculos) {
+        this.quadroDeCalculos = quadroDeCalculos;
+    }
+
+    public CalculoTributarioDto quadroDeCalculos(List<QuadroCalculoDto> quadroDeCalculos) {
+        this.quadroDeCalculos = quadroDeCalculos;
+        return this;
+    }
+
+    public CalculoTributarioDto addQuadroDeCalculosItem(QuadroCalculoDto quadroDeCalculosItem) {
+        this.quadroDeCalculos.add(quadroDeCalculosItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,36 +88,12 @@ public class CalculoTributarioDto {
         return this;
     }
 
-    /**
-     * Get quadroDeCalculos
-     *
-     * @return quadroDeCalculos
-     **/
-    @JsonProperty("quadroDeCalculos")
-    public List<QuadroCalculoDto> getQuadroDeCalculos() {
-        return quadroDeCalculos;
-    }
-
-    public void setQuadroDeCalculos(List<QuadroCalculoDto> quadroDeCalculos) {
-        this.quadroDeCalculos = quadroDeCalculos;
-    }
-
-    public CalculoTributarioDto quadroDeCalculos(List<QuadroCalculoDto> quadroDeCalculos) {
-        this.quadroDeCalculos = quadroDeCalculos;
-        return this;
-    }
-
-    public CalculoTributarioDto addQuadroDeCalculosItem(QuadroCalculoDto quadroDeCalculosItem) {
-        this.quadroDeCalculos.add(quadroDeCalculosItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CalculoTributarioDto {\n" +
-                "    tratamentosTributarios: " + toIndentedString(tratamentosTributarios) + "\n" +
                 "    quadroDeCalculos: " + toIndentedString(quadroDeCalculos) + "\n" +
+                "    tratamentosTributarios: " + toIndentedString(tratamentosTributarios) + "\n" +
                 "}";
         return sb;
     }

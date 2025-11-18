@@ -17,11 +17,30 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Reboque", propOrder =
-        {"taraReboque", "tipoReboque", "reboquePropriaMercadoria", "lacresReboque", "placaReboque"
+        {"lacresReboque", "placaReboque", "reboquePropriaMercadoria", "taraReboque", "tipoReboque"
         })
 
 @XmlRootElement(name = "Reboque")
 public class Reboque {
+
+    @XmlElement(name = "lacresReboque")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Lacre> lacresReboque = null;
+
+    @XmlElement(name = "placaReboque")
+    @ApiModelProperty(example = "REB6789", value = "Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20")
+    /**
+     * Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20
+     **/
+    private String placaReboque = null;
+
+    @XmlElement(name = "reboquePropriaMercadoria", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o reboque é a própria mercadoria")
+    /**
+     * Indicador que informa se o reboque é a própria mercadoria
+     **/
+    private Boolean reboquePropriaMercadoria = null;
 
     @XmlElement(name = "taraReboque", required = true)
     @ApiModelProperty(example = "105.478", required = true, value = "Tara do reboque<br/> Obrigatória para cada reboque informado se tipoVeiculo é C1R, C2R ou C3R.<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
@@ -30,28 +49,6 @@ public class Reboque {
      * Tara do reboque<br/> Obrigatória para cada reboque informado se tipoVeiculo é C1R, C2R ou C3R.<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      **/
     private BigDecimal taraReboque = null;
-    @XmlElement(name = "tipoReboque", required = true)
-    @ApiModelProperty(example = "R", required = true, value = "Indicador que informa se é reboque ou semi reboque")
-    /**
-     * Indicador que informa se é reboque ou semi reboque
-     **/
-    private TipoReboqueEnum tipoReboque = null;
-    @XmlElement(name = "reboquePropriaMercadoria", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o reboque é a própria mercadoria")
-    /**
-     * Indicador que informa se o reboque é a própria mercadoria
-     **/
-    private Boolean reboquePropriaMercadoria = null;
-    @XmlElement(name = "lacresReboque")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Lacre> lacresReboque = null;
-    @XmlElement(name = "placaReboque")
-    @ApiModelProperty(example = "REB6789", value = "Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20")
-    /**
-     * Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20
-     **/
-    private String placaReboque = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,6 +59,76 @@ public class Reboque {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "tipoReboque", required = true)
+    @ApiModelProperty(example = "R", required = true, value = "Indicador que informa se é reboque ou semi reboque")
+    /**
+     * Indicador que informa se é reboque ou semi reboque
+     **/
+    private TipoReboqueEnum tipoReboque = null;
+
+    /**
+     * Get lacresReboque
+     *
+     * @return lacresReboque
+     **/
+    @JsonProperty("lacresReboque")
+    public List<Lacre> getLacresReboque() {
+        return lacresReboque;
+    }
+
+    public void setLacresReboque(List<Lacre> lacresReboque) {
+        this.lacresReboque = lacresReboque;
+    }
+
+    public Reboque lacresReboque(List<Lacre> lacresReboque) {
+        this.lacresReboque = lacresReboque;
+        return this;
+    }
+
+    public Reboque addLacresReboqueItem(Lacre lacresReboqueItem) {
+        this.lacresReboque.add(lacresReboqueItem);
+        return this;
+    }
+
+    /**
+     * Placa do reboque &lt;br/&gt;É obrigatória apenas se o reboquePropriaMercadoria for igual a \&quot;false\&quot;.&lt;br/&gt; Tamanho Máximo: 20
+     *
+     * @return placaReboque
+     **/
+    @JsonProperty("placaReboque")
+    public String getPlacaReboque() {
+        return placaReboque;
+    }
+
+    public void setPlacaReboque(String placaReboque) {
+        this.placaReboque = placaReboque;
+    }
+
+    public Reboque placaReboque(String placaReboque) {
+        this.placaReboque = placaReboque;
+        return this;
+    }
+
+    /**
+     * Indicador que informa se o reboque é a própria mercadoria
+     *
+     * @return reboquePropriaMercadoria
+     **/
+    @JsonProperty("reboquePropriaMercadoria")
+    @NotNull
+    public Boolean isisReboquePropriaMercadoria() {
+        return reboquePropriaMercadoria;
+    }
+
+    public void setReboquePropriaMercadoria(Boolean reboquePropriaMercadoria) {
+        this.reboquePropriaMercadoria = reboquePropriaMercadoria;
+    }
+
+    public Reboque reboquePropriaMercadoria(Boolean reboquePropriaMercadoria) {
+        this.reboquePropriaMercadoria = reboquePropriaMercadoria;
+        return this;
     }
 
     /**
@@ -107,79 +174,16 @@ public class Reboque {
         return this;
     }
 
-    /**
-     * Indicador que informa se o reboque é a própria mercadoria
-     *
-     * @return reboquePropriaMercadoria
-     **/
-    @JsonProperty("reboquePropriaMercadoria")
-    @NotNull
-    public Boolean isisReboquePropriaMercadoria() {
-        return reboquePropriaMercadoria;
-    }
-
-    public void setReboquePropriaMercadoria(Boolean reboquePropriaMercadoria) {
-        this.reboquePropriaMercadoria = reboquePropriaMercadoria;
-    }
-
-    public Reboque reboquePropriaMercadoria(Boolean reboquePropriaMercadoria) {
-        this.reboquePropriaMercadoria = reboquePropriaMercadoria;
-        return this;
-    }
-
-    /**
-     * Get lacresReboque
-     *
-     * @return lacresReboque
-     **/
-    @JsonProperty("lacresReboque")
-    public List<Lacre> getLacresReboque() {
-        return lacresReboque;
-    }
-
-    public void setLacresReboque(List<Lacre> lacresReboque) {
-        this.lacresReboque = lacresReboque;
-    }
-
-    public Reboque lacresReboque(List<Lacre> lacresReboque) {
-        this.lacresReboque = lacresReboque;
-        return this;
-    }
-
-    public Reboque addLacresReboqueItem(Lacre lacresReboqueItem) {
-        this.lacresReboque.add(lacresReboqueItem);
-        return this;
-    }
-
-    /**
-     * Placa do reboque &lt;br/&gt;É obrigatória apenas se o reboquePropriaMercadoria for igual a \&quot;false\&quot;.&lt;br/&gt; Tamanho Máximo: 20
-     *
-     * @return placaReboque
-     **/
-    @JsonProperty("placaReboque")
-    public String getPlacaReboque() {
-        return placaReboque;
-    }
-
-    public void setPlacaReboque(String placaReboque) {
-        this.placaReboque = placaReboque;
-    }
-
-    public Reboque placaReboque(String placaReboque) {
-        this.placaReboque = placaReboque;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class Reboque {\n" +
-                "    taraReboque: " + toIndentedString(taraReboque) + "\n" +
-                "    tipoReboque: " + toIndentedString(tipoReboque) + "\n" +
-                "    reboquePropriaMercadoria: " + toIndentedString(reboquePropriaMercadoria) + "\n" +
                 "    lacresReboque: " + toIndentedString(lacresReboque) + "\n" +
                 "    placaReboque: " + toIndentedString(placaReboque) + "\n" +
+                "    reboquePropriaMercadoria: " + toIndentedString(reboquePropriaMercadoria) + "\n" +
+                "    taraReboque: " + toIndentedString(taraReboque) + "\n" +
+                "    tipoReboque: " + toIndentedString(tipoReboque) + "\n" +
                 "}";
         return sb;
     }

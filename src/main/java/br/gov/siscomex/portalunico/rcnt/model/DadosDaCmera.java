@@ -12,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaCmera", propOrder =
-        {"protocoloCamera", "idElemento"
+        {"idElemento", "protocoloCamera"
         })
 
 @XmlRootElement(name = "DadosDaCmera")
 public class DadosDaCmera {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "protocoloCamera")
     @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
@@ -25,12 +32,25 @@ public class DadosDaCmera {
      **/
     private String protocoloCamera = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
      **/
-    private String idElemento = null;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDaCmera idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,32 +82,12 @@ public class DadosDaCmera {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosDaCmera idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosDaCmera {\n" +
-                "    protocoloCamera: " + toIndentedString(protocoloCamera) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    protocoloCamera: " + toIndentedString(protocoloCamera) + "\n" +
                 "}";
         return sb;
     }

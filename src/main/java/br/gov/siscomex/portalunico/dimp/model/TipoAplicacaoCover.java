@@ -108,15 +108,6 @@ public class TipoAplicacaoCover {
             value = v;
         }
 
-        public static CodigoEnum fromValue(String v) {
-            for (CodigoEnum b : CodigoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -124,6 +115,15 @@ public class TipoAplicacaoCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static CodigoEnum fromValue(String v) {
+            for (CodigoEnum b : CodigoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
         }
     }
 }

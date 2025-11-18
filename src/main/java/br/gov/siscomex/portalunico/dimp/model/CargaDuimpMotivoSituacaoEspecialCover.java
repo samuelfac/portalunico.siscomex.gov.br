@@ -30,17 +30,6 @@ public class CargaDuimpMotivoSituacaoEspecialCover {
     private String codigo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do motivo da situação especial de despacho no sistema.&lt;br&gt;Tamanho: 5&lt;br&gt;Formato: &#39;NNNNN&#39;&lt;br&gt;Origem: Sistema de Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/ Para Duimp SEM situação especial de despacho (atributo carga.identificacao preenchido), este atributo será retornado nulo
      *
      * @return codigo
@@ -57,6 +46,18 @@ public class CargaDuimpMotivoSituacaoEspecialCover {
     public CargaDuimpMotivoSituacaoEspecialCover codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

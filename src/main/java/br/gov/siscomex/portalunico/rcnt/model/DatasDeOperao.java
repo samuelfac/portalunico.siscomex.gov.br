@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DatasDeOperao", propOrder =
-        {"dtHrInicioConferenciaFisica", "dataHoraInicioPosicionamento", "dataHoraFimConferenciaFisica", "dataHoraInicioConferenciaFisica", "dataHoraFimPosicionamento"
+        {"dtHrInicioConferenciaFisica", "dataHoraInicioPosicionamento", "dataHoraFimPosicionamento", "dataHoraInicioConferenciaFisica", "dataHoraFimConferenciaFisica"
         })
 
 @XmlRootElement(name = "DatasDeOperao")
@@ -28,12 +28,12 @@ public class DatasDeOperao {
      **/
     private String dataHoraInicioPosicionamento = null;
 
-    @XmlElement(name = "dataHoraFimConferenciaFisica")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    @XmlElement(name = "dataHoraFimPosicionamento")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String dataHoraFimConferenciaFisica = null;
+    private String dataHoraFimPosicionamento = null;
 
     @XmlElement(name = "dataHoraInicioConferenciaFisica")
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Informar data e hora do início da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -42,23 +42,12 @@ public class DatasDeOperao {
      **/
     private String dataHoraInicioConferenciaFisica = null;
 
-    @XmlElement(name = "dataHoraFimPosicionamento")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    @XmlElement(name = "dataHoraFimConferenciaFisica")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String dataHoraFimPosicionamento = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    private String dataHoraFimConferenciaFisica = null;
 
     /**
      * Get dtHrInicioConferenciaFisica
@@ -99,22 +88,28 @@ public class DatasDeOperao {
     }
 
     /**
-     * Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return dataHoraFimConferenciaFisica
+     * @return dataHoraFimPosicionamento
      **/
-    @JsonProperty("dataHoraFimConferenciaFisica")
-    public String getDataHoraFimConferenciaFisica() {
-        return dataHoraFimConferenciaFisica;
+    @JsonProperty("dataHoraFimPosicionamento")
+    public String getDataHoraFimPosicionamento() {
+        return dataHoraFimPosicionamento;
     }
 
-    public void setDataHoraFimConferenciaFisica(String dataHoraFimConferenciaFisica) {
-        this.dataHoraFimConferenciaFisica = dataHoraFimConferenciaFisica;
-    }
-
-    public DatasDeOperao dataHoraFimConferenciaFisica(String dataHoraFimConferenciaFisica) {
-        this.dataHoraFimConferenciaFisica = dataHoraFimConferenciaFisica;
-        return this;
+    public void setDataHoraFimPosicionamento(String dataHoraFimPosicionamento) {
+        this.dataHoraFimPosicionamento = dataHoraFimPosicionamento;
     }
 
     /**
@@ -136,22 +131,27 @@ public class DatasDeOperao {
         return this;
     }
 
-    /**
-     * Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraFimPosicionamento
-     **/
-    @JsonProperty("dataHoraFimPosicionamento")
-    public String getDataHoraFimPosicionamento() {
-        return dataHoraFimPosicionamento;
-    }
-
-    public void setDataHoraFimPosicionamento(String dataHoraFimPosicionamento) {
-        this.dataHoraFimPosicionamento = dataHoraFimPosicionamento;
-    }
-
     public DatasDeOperao dataHoraFimPosicionamento(String dataHoraFimPosicionamento) {
         this.dataHoraFimPosicionamento = dataHoraFimPosicionamento;
+        return this;
+    }
+
+    /**
+     * Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraFimConferenciaFisica
+     **/
+    @JsonProperty("dataHoraFimConferenciaFisica")
+    public String getDataHoraFimConferenciaFisica() {
+        return dataHoraFimConferenciaFisica;
+    }
+
+    public void setDataHoraFimConferenciaFisica(String dataHoraFimConferenciaFisica) {
+        this.dataHoraFimConferenciaFisica = dataHoraFimConferenciaFisica;
+    }
+
+    public DatasDeOperao dataHoraFimConferenciaFisica(String dataHoraFimConferenciaFisica) {
+        this.dataHoraFimConferenciaFisica = dataHoraFimConferenciaFisica;
         return this;
     }
 
@@ -161,9 +161,9 @@ public class DatasDeOperao {
         String sb = "class DatasDeOperao {\n" +
                 "    dtHrInicioConferenciaFisica: " + toIndentedString(dtHrInicioConferenciaFisica) + "\n" +
                 "    dataHoraInicioPosicionamento: " + toIndentedString(dataHoraInicioPosicionamento) + "\n" +
-                "    dataHoraFimConferenciaFisica: " + toIndentedString(dataHoraFimConferenciaFisica) + "\n" +
-                "    dataHoraInicioConferenciaFisica: " + toIndentedString(dataHoraInicioConferenciaFisica) + "\n" +
                 "    dataHoraFimPosicionamento: " + toIndentedString(dataHoraFimPosicionamento) + "\n" +
+                "    dataHoraInicioConferenciaFisica: " + toIndentedString(dataHoraInicioConferenciaFisica) + "\n" +
+                "    dataHoraFimConferenciaFisica: " + toIndentedString(dataHoraFimConferenciaFisica) + "\n" +
                 "}";
         return sb;
     }

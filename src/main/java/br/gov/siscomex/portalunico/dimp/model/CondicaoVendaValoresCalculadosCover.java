@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CondicaoVendaValoresCalculadosCover", propOrder =
-        {"seguro", "frete", "valorBRL", "acrescimosDeducoes"
+        {"valorBRL", "frete", "seguro", "acrescimosDeducoes"
         })
 
 @XmlRootElement(name = "CondicaoVendaValoresCalculadosCover")
@@ -24,22 +24,22 @@ import java.util.List;
 @ApiModel(description = "Valor na Condição de Venda.")
 public class CondicaoVendaValoresCalculadosCover {
 
-    @XmlElement(name = "seguro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SeguroValoresCalculadosItemCover seguro = null;
-
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FreteValoresCalculadosItemCover frete = null;
-
     @XmlElement(name = "valorBRL")
     @ApiModelProperty(example = "10.4", value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     /**
      * Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private Double valorBRL = null;
+
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FreteValoresCalculadosItemCover frete = null;
+
+    @XmlElement(name = "seguro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SeguroValoresCalculadosItemCover seguro = null;
 
     @XmlElement(name = "acrescimosDeducoes")
     @ApiModelProperty(value = "")
@@ -58,22 +58,17 @@ public class CondicaoVendaValoresCalculadosCover {
     }
 
     /**
-     * Get seguro
+     * Valor unitário da mercadoria na condição de venda.&lt;br&gt;Tamanho: 13,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return seguro
+     * @return valorBRL
      **/
-    @JsonProperty("seguro")
-    public SeguroValoresCalculadosItemCover getSeguro() {
-        return seguro;
+    @JsonProperty("valorBRL")
+    public Double getValorBRL() {
+        return valorBRL;
     }
 
-    public void setSeguro(SeguroValoresCalculadosItemCover seguro) {
-        this.seguro = seguro;
-    }
-
-    public CondicaoVendaValoresCalculadosCover seguro(SeguroValoresCalculadosItemCover seguro) {
-        this.seguro = seguro;
-        return this;
+    public void setValorBRL(Double valorBRL) {
+        this.valorBRL = valorBRL;
     }
 
     /**
@@ -95,23 +90,23 @@ public class CondicaoVendaValoresCalculadosCover {
         return this;
     }
 
-    /**
-     * Valor unitário da mercadoria na condição de venda.&lt;br&gt;Tamanho: 13,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorBRL
-     **/
-    @JsonProperty("valorBRL")
-    public Double getValorBRL() {
-        return valorBRL;
-    }
-
-    public void setValorBRL(Double valorBRL) {
-        this.valorBRL = valorBRL;
-    }
-
     public CondicaoVendaValoresCalculadosCover valorBRL(Double valorBRL) {
         this.valorBRL = valorBRL;
         return this;
+    }
+
+    /**
+     * Get seguro
+     *
+     * @return seguro
+     **/
+    @JsonProperty("seguro")
+    public SeguroValoresCalculadosItemCover getSeguro() {
+        return seguro;
+    }
+
+    public void setSeguro(SeguroValoresCalculadosItemCover seguro) {
+        this.seguro = seguro;
     }
 
     /**
@@ -138,13 +133,18 @@ public class CondicaoVendaValoresCalculadosCover {
         return this;
     }
 
+    public CondicaoVendaValoresCalculadosCover seguro(SeguroValoresCalculadosItemCover seguro) {
+        this.seguro = seguro;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CondicaoVendaValoresCalculadosCover {\n" +
-                "    seguro: " + toIndentedString(seguro) + "\n" +
-                "    frete: " + toIndentedString(frete) + "\n" +
                 "    valorBRL: " + toIndentedString(valorBRL) + "\n" +
+                "    frete: " + toIndentedString(frete) + "\n" +
+                "    seguro: " + toIndentedString(seguro) + "\n" +
                 "    acrescimosDeducoes: " + toIndentedString(acrescimosDeducoes) + "\n" +
                 "}";
         return sb;

@@ -14,11 +14,18 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosSemirreboquePesagem", propOrder =
-        {"ocrPlaca", "tara", "idElemento", "placa"
+        {"idElemento", "ocrPlaca", "placa", "tara"
         })
 
 @XmlRootElement(name = "DadosSemirreboquePesagem")
 public class DadosSemirreboquePesagem {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "ocrPlaca")
     @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaSemirreboque.ocrPlaca' quando o atributo 'listaSemirreboque.placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -26,6 +33,13 @@ public class DadosSemirreboquePesagem {
      * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaSemirreboque.ocrPlaca' quando o atributo 'listaSemirreboque.placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean ocrPlaca = null;
+
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
+    /**
+     * Placa<br/>Tamanho: 50
+     **/
+    private String placa = null;
 
     @XmlElement(name = "tara")
     @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>tara, até 4 casas decimais.")
@@ -35,19 +49,25 @@ public class DadosSemirreboquePesagem {
      **/
     private BigDecimal tara = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
      **/
-    private String idElemento = null;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
 
-    @XmlElement(name = "placa")
-    @ApiModelProperty(value = "Placa<br/>Tamanho: 50")
-    /**
-     * Placa<br/>Tamanho: 50
-     **/
-    private String placa = null;
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosSemirreboquePesagem idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -74,6 +94,25 @@ public class DadosSemirreboquePesagem {
         this.ocrPlaca = ocrPlaca;
     }
 
+    /**
+     * Placa&lt;br/&gt;Tamanho: 50
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public DadosSemirreboquePesagem placa(String placa) {
+        this.placa = placa;
+        return this;
+    }
+
     public DadosSemirreboquePesagem ocrPlaca(Boolean ocrPlaca) {
         this.ocrPlaca = ocrPlaca;
         return this;
@@ -98,53 +137,14 @@ public class DadosSemirreboquePesagem {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosSemirreboquePesagem idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
-    /**
-     * Placa&lt;br/&gt;Tamanho: 50
-     *
-     * @return placa
-     **/
-    @JsonProperty("placa")
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public DadosSemirreboquePesagem placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosSemirreboquePesagem {\n" +
-                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
-                "    tara: " + toIndentedString(tara) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    tara: " + toIndentedString(tara) + "\n" +
                 "}";
         return sb;
     }

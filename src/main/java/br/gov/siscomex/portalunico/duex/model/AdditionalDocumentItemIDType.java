@@ -26,17 +26,6 @@ public class AdditionalDocumentItemIDType {
     private String value = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get schemeID
      *
      * @return schemeID
@@ -72,6 +61,18 @@ public class AdditionalDocumentItemIDType {
     public AdditionalDocumentItemIDType value(String value) {
         this.value = value;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

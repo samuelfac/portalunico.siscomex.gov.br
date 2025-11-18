@@ -13,11 +13,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecebedorEntregaCarga", propOrder =
-        {"tipoDocumento", "nome", "numeroDocumento"
+        {"nome", "numeroDocumento", "tipoDocumento"
         })
 
 @XmlRootElement(name = "RecebedorEntregaCarga")
 public class RecebedorEntregaCarga {
+
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Fulano da Silva", value = "Nome do recebedor da carga")
+    /**
+     * Nome do recebedor da carga
+     **/
+    private String nome = null;
+
+    @XmlElement(name = "numeroDocumento")
+    @ApiModelProperty(example = "12345678901", value = "Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>")
+    /**
+     * Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>
+     **/
+    private String numeroDocumento = null;
 
 
     @XmlElement(name = "tipoDocumento")
@@ -26,18 +40,6 @@ public class RecebedorEntregaCarga {
      * Tipo de documento do recebedor da carga
      **/
     private TipoDocumentoEnum tipoDocumento = null;
-    @XmlElement(name = "nome")
-    @ApiModelProperty(example = "Fulano da Silva", value = "Nome do recebedor da carga")
-    /**
-     * Nome do recebedor da carga
-     **/
-    private String nome = null;
-    @XmlElement(name = "numeroDocumento")
-    @ApiModelProperty(example = "12345678901", value = "Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>")
-    /**
-     * Número do documento do recebedor conforme tipo de documento:<br><ul><li><em>CPF</em> Número do CPF - Tamanho: 11 sem formatação</li><li><em>PASSAPORTE</em> Número do passaporte - Tamanho máximo: 35 sem formatação</li></ul>
-     **/
-    private String numeroDocumento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -48,28 +50,6 @@ public class RecebedorEntregaCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo de documento do recebedor da carga
-     *
-     * @return tipoDocumento
-     **/
-    @JsonProperty("tipoDocumento")
-    public String getTipoDocumento() {
-        if (tipoDocumento == null) {
-            return null;
-        }
-        return tipoDocumento.value();
-    }
-
-    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public RecebedorEntregaCarga tipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
     }
 
     /**
@@ -110,14 +90,36 @@ public class RecebedorEntregaCarga {
         return this;
     }
 
+    /**
+     * Tipo de documento do recebedor da carga
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public String getTipoDocumento() {
+        if (tipoDocumento == null) {
+            return null;
+        }
+        return tipoDocumento.value();
+    }
+
+    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public RecebedorEntregaCarga tipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class RecebedorEntregaCarga {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }

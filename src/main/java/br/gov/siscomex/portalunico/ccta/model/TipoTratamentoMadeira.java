@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTratamentoMadeira {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "2", value = "Tipo de tratamento de madeirra")
-    /**
-     * Tipo de tratamento de madeirra
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Tratada e certificada", value = "Descrição do tipo de tratamento de madeira")
-    /**
-     * Descrição do tipo de tratamento de madeira
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoTratamentoMadeira {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "2", value = "Tipo de tratamento de madeirra")
+    /**
+     * Tipo de tratamento de madeirra
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Tratada e certificada", value = "Descrição do tipo de tratamento de madeira")
+    /**
+     * Descrição do tipo de tratamento de madeira
+     **/
+    private String descricao = null;
 
     /**
      * Tipo de tratamento de madeirra
@@ -84,7 +85,6 @@ public class TipoTratamentoMadeira {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaCover", propOrder =
-        {"tipoIdentificacaoCarga", "seguro", "identificacao", "frete", "unidadeDeclarada", "motivoSituacaoEspecial", "paisProcedencia"
+        {"tipoIdentificacaoCarga", "identificacao", "unidadeDeclarada", "motivoSituacaoEspecial", "seguro", "frete", "paisProcedencia"
         })
 
 @XmlRootElement(name = "CargaCover")
@@ -27,40 +27,40 @@ import javax.xml.bind.annotation.XmlType;
 public class CargaCover {
 
 
+    @XmlElement(name = "seguro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SeguroCover seguro = null;
+
     @XmlElement(name = "tipoIdentificacaoCarga")
     @ApiModelProperty(example = "CE", value = "Descreve se a identificação da carga é do tipo CE ou RUC")
     /**
      * Descreve se a identificação da carga é do tipo CE ou RUC
      **/
     private TipoIdentificacaoCargaEnum tipoIdentificacaoCarga = null;
-    @XmlElement(name = "seguro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SeguroCover seguro = null;
+
     @XmlElement(name = "identificacao")
     @ApiModelProperty(value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
     /**
      * Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
      **/
     private String identificacao = null;
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FreteCover frete = null;
+
     @XmlElement(name = "unidadeDeclarada", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private UnidadeDeclaradaCover unidadeDeclarada = null;
+
     @XmlElement(name = "motivoSituacaoEspecial")
     @ApiModelProperty(value = "Código do motivo da situação especial de despacho no sistema.<br>Tamanho: 5<br>Formato: 'NNNNN'<br>Origem: Sistema de Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/")
     /**
      * Código do motivo da situação especial de despacho no sistema.<br>Tamanho: 5<br>Formato: 'NNNNN'<br>Origem: Sistema de Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/
      **/
     private String motivoSituacaoEspecial = null;
-    @XmlElement(name = "paisProcedencia")
+    @XmlElement(name = "frete")
     @ApiModelProperty(value = "")
     @Valid
-    private PaisProcedenciaCover paisProcedencia = null;
+    private FreteCover frete = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -72,6 +72,11 @@ public class CargaCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "paisProcedencia")
+    @ApiModelProperty(value = "")
+    @Valid
+    private PaisProcedenciaCover paisProcedencia = null;
 
     /**
      * Descreve se a identificação da carga é do tipo CE ou RUC
@@ -96,25 +101,6 @@ public class CargaCover {
     }
 
     /**
-     * Get seguro
-     *
-     * @return seguro
-     **/
-    @JsonProperty("seguro")
-    public SeguroCover getSeguro() {
-        return seguro;
-    }
-
-    public void setSeguro(SeguroCover seguro) {
-        this.seguro = seguro;
-    }
-
-    public CargaCover seguro(SeguroCover seguro) {
-        this.seguro = seguro;
-        return this;
-    }
-
-    /**
      * Número de Identificação da Carga.&lt;br&gt;Quando tipo de identificação da carga for CE: &lt;br&gt; - Tamanho: 15 &lt;br&gt; - Formato: NNNNNNNNNNNNNNN&lt;br&gt;Quando tipo de identificação da carga for RUC: &lt;br&gt; - Tamanho mínimo: 1&lt;br&gt; - Tamanho máximo: 32&lt;br&gt;Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind&#x3D;11&lt;br&gt;&lt;br&gt;Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/&lt;br&gt;Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
      *
      * @return identificacao
@@ -130,25 +116,6 @@ public class CargaCover {
 
     public CargaCover identificacao(String identificacao) {
         this.identificacao = identificacao;
-        return this;
-    }
-
-    /**
-     * Get frete
-     *
-     * @return frete
-     **/
-    @JsonProperty("frete")
-    public FreteCover getFrete() {
-        return frete;
-    }
-
-    public void setFrete(FreteCover frete) {
-        this.frete = frete;
-    }
-
-    public CargaCover frete(FreteCover frete) {
-        this.frete = frete;
         return this;
     }
 
@@ -192,6 +159,44 @@ public class CargaCover {
     }
 
     /**
+     * Get seguro
+     *
+     * @return seguro
+     **/
+    @JsonProperty("seguro")
+    public SeguroCover getSeguro() {
+        return seguro;
+    }
+
+    public void setSeguro(SeguroCover seguro) {
+        this.seguro = seguro;
+    }
+
+    public CargaCover seguro(SeguroCover seguro) {
+        this.seguro = seguro;
+        return this;
+    }
+
+    /**
+     * Get frete
+     *
+     * @return frete
+     **/
+    @JsonProperty("frete")
+    public FreteCover getFrete() {
+        return frete;
+    }
+
+    public void setFrete(FreteCover frete) {
+        this.frete = frete;
+    }
+
+    public CargaCover frete(FreteCover frete) {
+        this.frete = frete;
+        return this;
+    }
+
+    /**
      * Get paisProcedencia
      *
      * @return paisProcedencia
@@ -216,11 +221,11 @@ public class CargaCover {
 
         String sb = "class CargaCover {\n" +
                 "    tipoIdentificacaoCarga: " + toIndentedString(tipoIdentificacaoCarga) + "\n" +
-                "    seguro: " + toIndentedString(seguro) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    frete: " + toIndentedString(frete) + "\n" +
                 "    unidadeDeclarada: " + toIndentedString(unidadeDeclarada) + "\n" +
                 "    motivoSituacaoEspecial: " + toIndentedString(motivoSituacaoEspecial) + "\n" +
+                "    seguro: " + toIndentedString(seguro) + "\n" +
+                "    frete: " + toIndentedString(frete) + "\n" +
                 "    paisProcedencia: " + toIndentedString(paisProcedencia) + "\n" +
                 "}";
         return sb;

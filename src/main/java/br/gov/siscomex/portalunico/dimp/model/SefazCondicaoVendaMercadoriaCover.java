@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazCondicaoVendaMercadoriaCover", propOrder =
-        {"incoterm", "metodoValoracao", "acrescimosDeducoes"
+        {"metodoValoracao", "incoterm", "acrescimosDeducoes"
         })
 
 @XmlRootElement(name = "SefazCondicaoVendaMercadoriaCover")
@@ -24,19 +24,19 @@ import java.util.List;
 @ApiModel(description = "Condição de venda da mercadoria")
 public class SefazCondicaoVendaMercadoriaCover {
 
-    @XmlElement(name = "incoterm")
-    @ApiModelProperty(example = "FOB", value = "Condição de Venda (Código INCOTERM).<br>Dominio: Tabela de Códigos de Condição de Venda do Siscomex<br>Tamanho: 3")
-    /**
-     * Condição de Venda (Código INCOTERM).<br>Dominio: Tabela de Códigos de Condição de Venda do Siscomex<br>Tamanho: 3
-     **/
-    private String incoterm = null;
-
     @XmlElement(name = "metodoValoracao")
     @ApiModelProperty(example = "1", value = "Código do método de valoração.<br>Dominio: Tabela de Métodos de Valoração Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99999")
     /**
      * Código do método de valoração.<br>Dominio: Tabela de Métodos de Valoração Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99999
      **/
     private Integer metodoValoracao = null;
+
+    @XmlElement(name = "incoterm")
+    @ApiModelProperty(example = "FOB", value = "Condição de Venda (Código INCOTERM).<br>Dominio: Tabela de Códigos de Condição de Venda do Siscomex<br>Tamanho: 3")
+    /**
+     * Condição de Venda (Código INCOTERM).<br>Dominio: Tabela de Códigos de Condição de Venda do Siscomex<br>Tamanho: 3
+     **/
+    private String incoterm = null;
 
     @XmlElement(name = "acrescimosDeducoes")
     @ApiModelProperty(value = "Lista de acréscimos e deduções")
@@ -45,6 +45,25 @@ public class SefazCondicaoVendaMercadoriaCover {
      * Lista de acréscimos e deduções
      **/
     private List<SefazAcrescimoDeducaoCover> acrescimosDeducoes = null;
+
+    /**
+     * Código do método de valoração.&lt;br&gt;Dominio: Tabela de Métodos de Valoração Siscomex&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
+     *
+     * @return metodoValoracao
+     **/
+    @JsonProperty("metodoValoracao")
+    public Integer getMetodoValoracao() {
+        return metodoValoracao;
+    }
+
+    public void setMetodoValoracao(Integer metodoValoracao) {
+        this.metodoValoracao = metodoValoracao;
+    }
+
+    public SefazCondicaoVendaMercadoriaCover metodoValoracao(Integer metodoValoracao) {
+        this.metodoValoracao = metodoValoracao;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -71,30 +90,6 @@ public class SefazCondicaoVendaMercadoriaCover {
         this.incoterm = incoterm;
     }
 
-    public SefazCondicaoVendaMercadoriaCover incoterm(String incoterm) {
-        this.incoterm = incoterm;
-        return this;
-    }
-
-    /**
-     * Código do método de valoração.&lt;br&gt;Dominio: Tabela de Métodos de Valoração Siscomex&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
-     *
-     * @return metodoValoracao
-     **/
-    @JsonProperty("metodoValoracao")
-    public Integer getMetodoValoracao() {
-        return metodoValoracao;
-    }
-
-    public void setMetodoValoracao(Integer metodoValoracao) {
-        this.metodoValoracao = metodoValoracao;
-    }
-
-    public SefazCondicaoVendaMercadoriaCover metodoValoracao(Integer metodoValoracao) {
-        this.metodoValoracao = metodoValoracao;
-        return this;
-    }
-
     /**
      * Lista de acréscimos e deduções
      *
@@ -119,12 +114,17 @@ public class SefazCondicaoVendaMercadoriaCover {
         return this;
     }
 
+    public SefazCondicaoVendaMercadoriaCover incoterm(String incoterm) {
+        this.incoterm = incoterm;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazCondicaoVendaMercadoriaCover {\n" +
-                "    incoterm: " + toIndentedString(incoterm) + "\n" +
                 "    metodoValoracao: " + toIndentedString(metodoValoracao) + "\n" +
+                "    incoterm: " + toIndentedString(incoterm) + "\n" +
                 "    acrescimosDeducoes: " + toIndentedString(acrescimosDeducoes) + "\n" +
                 "}";
         return sb;

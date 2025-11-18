@@ -26,12 +26,7 @@ public class UfInteresseSefaz {
      * UF de interesse
      **/
     private String uf = null;
-    @XmlElement(name = "tipoInteresse", required = true)
-    @ApiModelProperty(example = "DESPACHO", required = true, value = "Tipo da UF de interesse")
-    /**
-     * Tipo da UF de interesse
-     **/
-    private TipoInteresseEnum tipoInteresse = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -43,6 +38,13 @@ public class UfInteresseSefaz {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoInteresse", required = true)
+    @ApiModelProperty(example = "DESPACHO", required = true, value = "Tipo da UF de interesse")
+    /**
+     * Tipo da UF de interesse
+     **/
+    private TipoInteresseEnum tipoInteresse = null;
 
     /**
      * UF de interesse
@@ -86,7 +88,6 @@ public class UfInteresseSefaz {
         this.tipoInteresse = tipoInteresse;
         return this;
     }
-
 
     @Override
     public String toString() {

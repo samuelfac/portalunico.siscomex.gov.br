@@ -37,17 +37,6 @@ public class ReferenciaExportadorEFabricanteDoProduto {
     private ReferenciaOperadorEstrangeiro operadorEstrangeiro = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indica se é o exportador é igual ao fabricante do produto.&lt;br&gt;
      *
      * @return exportadorIgualFabricante
@@ -84,6 +73,18 @@ public class ReferenciaExportadorEFabricanteDoProduto {
     public ReferenciaExportadorEFabricanteDoProduto operadorEstrangeiro(ReferenciaOperadorEstrangeiro operadorEstrangeiro) {
         this.operadorEstrangeiro = operadorEstrangeiro;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

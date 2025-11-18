@@ -13,35 +13,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DUEResumida", propOrder =
-        {"exportadores", "responsavelUADespacho", "declarante", "numeroRUC", "codigoRecintoAduaneiroEmbarque", "uaDespacho", "latitudeDespacho", "longitudeDespacho", "indicadorBloqueio", "numeroDUE", "situacaoDUE", "dataSituacaoDUE", "situacaoCarga", "uaEmbarque", "codigoRecintoAduaneiroDespacho", "controleAdministrativo"
+        {"codigoRecintoAduaneiroDespacho", "codigoRecintoAduaneiroEmbarque", "controleAdministrativo", "dataSituacaoDUE", "declarante", "exportadores", "indicadorBloqueio", "latitudeDespacho", "longitudeDespacho", "numeroDUE", "numeroRUC", "responsavelUADespacho", "situacaoCarga", "situacaoDUE", "uaDespacho", "uaEmbarque"
         })
 
 @XmlRootElement(name = "DUEResumida")
 public class DUEResumida {
 
-    @XmlElement(name = "exportadores")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Exportador> exportadores = null;
-
-    @XmlElement(name = "responsavelUADespacho")
-    @ApiModelProperty(value = "Responsável pela Unidade Aduaneira do Despacho<br />Tamanho mínimo: 1<br />Tamanho máximo: 14")
+    @XmlElement(name = "codigoRecintoAduaneiroDespacho")
+    @ApiModelProperty(example = "8911101", value = "Código do recinto aduaneiro de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
     /**
-     * Responsável pela Unidade Aduaneira do Despacho<br />Tamanho mínimo: 1<br />Tamanho máximo: 14
+     * Código do recinto aduaneiro de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'
      **/
-    private String responsavelUADespacho = null;
-
-    @XmlElement(name = "declarante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Declarante declarante = null;
-
-    @XmlElement(name = "numeroRUC")
-    @ApiModelProperty(example = "9BR00000000100000000000000000023366", value = "RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
-    /**
-     * RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
-     **/
-    private String numeroRUC = null;
+    private String codigoRecintoAduaneiroDespacho = null;
 
     @XmlElement(name = "codigoRecintoAduaneiroEmbarque")
     @ApiModelProperty(example = "7911101", value = "Código do recinto aduaneiro de embarque<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
@@ -50,12 +33,36 @@ public class DUEResumida {
      **/
     private String codigoRecintoAduaneiroEmbarque = null;
 
-    @XmlElement(name = "uaDespacho")
-    @ApiModelProperty(example = "0317900", value = "Unidade aduaneira de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
+    @XmlElement(name = "controleAdministrativo")
+    @ApiModelProperty(value = "Controle Administrativo<br />Domínio: <br />1 = Deferido<br /> 2 = Dispensado<br />3 = Pendente<br />4 = Em processamento<br />5 = Impedido")
     /**
-     * Unidade aduaneira de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'
+     * Controle Administrativo<br />Domínio: <br />1 = Deferido<br /> 2 = Dispensado<br />3 = Pendente<br />4 = Em processamento<br />5 = Impedido
      **/
-    private String uaDespacho = null;
+    private Integer controleAdministrativo = null;
+
+    @XmlElement(name = "dataSituacaoDUE")
+    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da situação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    /**
+     * Data da situação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     **/
+    private String dataSituacaoDUE = null;
+
+    @XmlElement(name = "declarante")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Declarante declarante = null;
+
+    @XmlElement(name = "exportadores")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Exportador> exportadores = null;
+
+    @XmlElement(name = "indicadorBloqueio")
+    @ApiModelProperty(value = "Indicador de bloqueio<br />Domínio: <br />1 = Bloqueado<br />2 = Desbloqueado")
+    /**
+     * Indicador de bloqueio<br />Domínio: <br />1 = Bloqueado<br />2 = Desbloqueado
+     **/
+    private Integer indicadorBloqueio = null;
 
     @XmlElement(name = "latitudeDespacho")
     @ApiModelProperty(value = "Latitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
@@ -71,13 +78,6 @@ public class DUEResumida {
      **/
     private String longitudeDespacho = null;
 
-    @XmlElement(name = "indicadorBloqueio")
-    @ApiModelProperty(value = "Indicador de bloqueio<br />Domínio: <br />1 = Bloqueado<br />2 = Desbloqueado")
-    /**
-     * Indicador de bloqueio<br />Domínio: <br />1 = Bloqueado<br />2 = Desbloqueado
-     **/
-    private Integer indicadorBloqueio = null;
-
     @XmlElement(name = "numeroDUE")
     @ApiModelProperty(example = "19BR0000056196", value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'")
     /**
@@ -85,19 +85,19 @@ public class DUEResumida {
      **/
     private String numeroDUE = null;
 
-    @XmlElement(name = "situacaoDUE")
-    @ApiModelProperty(value = "Situação<br />Domínio: <br />1 = Em elaboração<br /> 10 = Registrada<br />11 = Declaração apresentada para despacho<br /> 15 = ACD em processamento<br />20 = Liberada sem conferência aduaneira<br /> 21 = Selecionada para conferência aduaneira<br />24 = Embarque antecipado pendente de LPCO<br /> 25 = Embarque antecipado autorizado<br />26 = Embarque antecipado pendente de autorização<br /> 30 = Em análise fiscal<br />35 = Concluída análise fiscal<br /> 36 = Desembaraço pendente de LPCO<br /> 40 = Desembaraçada<br />70 = Averbada<br /> 80 = Cancelada pelo exportador<br /> 81 = Cancelada por expiração de prazo<br />82 = Cancelada pela RFB<br /> 83 = Cancelada pela RFB a pedido do exportador<br /> 86 = Interrompida")
+    @XmlElement(name = "numeroRUC")
+    @ApiModelProperty(example = "9BR00000000100000000000000000023366", value = "RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
     /**
-     * Situação<br />Domínio: <br />1 = Em elaboração<br /> 10 = Registrada<br />11 = Declaração apresentada para despacho<br /> 15 = ACD em processamento<br />20 = Liberada sem conferência aduaneira<br /> 21 = Selecionada para conferência aduaneira<br />24 = Embarque antecipado pendente de LPCO<br /> 25 = Embarque antecipado autorizado<br />26 = Embarque antecipado pendente de autorização<br /> 30 = Em análise fiscal<br />35 = Concluída análise fiscal<br /> 36 = Desembaraço pendente de LPCO<br /> 40 = Desembaraçada<br />70 = Averbada<br /> 80 = Cancelada pelo exportador<br /> 81 = Cancelada por expiração de prazo<br />82 = Cancelada pela RFB<br /> 83 = Cancelada pela RFB a pedido do exportador<br /> 86 = Interrompida
+     * RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
      **/
-    private Integer situacaoDUE = null;
+    private String numeroRUC = null;
 
-    @XmlElement(name = "dataSituacaoDUE")
-    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da situação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    @XmlElement(name = "responsavelUADespacho")
+    @ApiModelProperty(value = "Responsável pela Unidade Aduaneira do Despacho<br />Tamanho mínimo: 1<br />Tamanho máximo: 14")
     /**
-     * Data da situação<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     * Responsável pela Unidade Aduaneira do Despacho<br />Tamanho mínimo: 1<br />Tamanho máximo: 14
      **/
-    private String dataSituacaoDUE = null;
+    private String responsavelUADespacho = null;
 
     @XmlElement(name = "situacaoCarga")
     @ApiModelProperty(value = "Situação da Carga<br />Domínio: <br />1 = Estocada<br />2 = Em Trânsito<br />3 = Carga Completamente Exportada")
@@ -106,26 +106,26 @@ public class DUEResumida {
      **/
     private List<Integer> situacaoCarga = null;
 
+    @XmlElement(name = "situacaoDUE")
+    @ApiModelProperty(value = "Situação<br />Domínio: <br />1 = Em elaboração<br /> 10 = Registrada<br />11 = Declaração apresentada para despacho<br /> 15 = ACD em processamento<br />20 = Liberada sem conferência aduaneira<br /> 21 = Selecionada para conferência aduaneira<br />24 = Embarque antecipado pendente de LPCO<br /> 25 = Embarque antecipado autorizado<br />26 = Embarque antecipado pendente de autorização<br /> 30 = Em análise fiscal<br />35 = Concluída análise fiscal<br /> 36 = Desembaraço pendente de LPCO<br /> 40 = Desembaraçada<br />70 = Averbada<br /> 80 = Cancelada pelo exportador<br /> 81 = Cancelada por expiração de prazo<br />82 = Cancelada pela RFB<br /> 83 = Cancelada pela RFB a pedido do exportador<br /> 86 = Interrompida")
+    /**
+     * Situação<br />Domínio: <br />1 = Em elaboração<br /> 10 = Registrada<br />11 = Declaração apresentada para despacho<br /> 15 = ACD em processamento<br />20 = Liberada sem conferência aduaneira<br /> 21 = Selecionada para conferência aduaneira<br />24 = Embarque antecipado pendente de LPCO<br /> 25 = Embarque antecipado autorizado<br />26 = Embarque antecipado pendente de autorização<br /> 30 = Em análise fiscal<br />35 = Concluída análise fiscal<br /> 36 = Desembaraço pendente de LPCO<br /> 40 = Desembaraçada<br />70 = Averbada<br /> 80 = Cancelada pelo exportador<br /> 81 = Cancelada por expiração de prazo<br />82 = Cancelada pela RFB<br /> 83 = Cancelada pela RFB a pedido do exportador<br /> 86 = Interrompida
+     **/
+    private Integer situacaoDUE = null;
+
+    @XmlElement(name = "uaDespacho")
+    @ApiModelProperty(example = "0317900", value = "Unidade aduaneira de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
+    /**
+     * Unidade aduaneira de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'
+     **/
+    private String uaDespacho = null;
+
     @XmlElement(name = "uaEmbarque")
     @ApiModelProperty(example = "0317900", value = "Unidade aduaneira de Embarque<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
     /**
      * Unidade aduaneira de Embarque<br />Tamanho: 7<br />Formato: 'NNNNNNN'
      **/
     private String uaEmbarque = null;
-
-    @XmlElement(name = "codigoRecintoAduaneiroDespacho")
-    @ApiModelProperty(example = "8911101", value = "Código do recinto aduaneiro de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
-    /**
-     * Código do recinto aduaneiro de despacho<br />Tamanho: 7<br />Formato: 'NNNNNNN'
-     **/
-    private String codigoRecintoAduaneiroDespacho = null;
-
-    @XmlElement(name = "controleAdministrativo")
-    @ApiModelProperty(value = "Controle Administrativo<br />Domínio: <br />1 = Deferido<br /> 2 = Dispensado<br />3 = Pendente<br />4 = Em processamento<br />5 = Impedido")
-    /**
-     * Controle Administrativo<br />Domínio: <br />1 = Deferido<br /> 2 = Dispensado<br />3 = Pendente<br />4 = Em processamento<br />5 = Impedido
-     **/
-    private Integer controleAdministrativo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -136,6 +136,101 @@ public class DUEResumida {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do recinto aduaneiro de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
+     *
+     * @return codigoRecintoAduaneiroDespacho
+     **/
+    @JsonProperty("codigoRecintoAduaneiroDespacho")
+    public String getCodigoRecintoAduaneiroDespacho() {
+        return codigoRecintoAduaneiroDespacho;
+    }
+
+    public void setCodigoRecintoAduaneiroDespacho(String codigoRecintoAduaneiroDespacho) {
+        this.codigoRecintoAduaneiroDespacho = codigoRecintoAduaneiroDespacho;
+    }
+
+    public DUEResumida codigoRecintoAduaneiroDespacho(String codigoRecintoAduaneiroDespacho) {
+        this.codigoRecintoAduaneiroDespacho = codigoRecintoAduaneiroDespacho;
+        return this;
+    }
+
+    /**
+     * Código do recinto aduaneiro de embarque&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
+     *
+     * @return codigoRecintoAduaneiroEmbarque
+     **/
+    @JsonProperty("codigoRecintoAduaneiroEmbarque")
+    public String getCodigoRecintoAduaneiroEmbarque() {
+        return codigoRecintoAduaneiroEmbarque;
+    }
+
+    public void setCodigoRecintoAduaneiroEmbarque(String codigoRecintoAduaneiroEmbarque) {
+        this.codigoRecintoAduaneiroEmbarque = codigoRecintoAduaneiroEmbarque;
+    }
+
+    public DUEResumida codigoRecintoAduaneiroEmbarque(String codigoRecintoAduaneiroEmbarque) {
+        this.codigoRecintoAduaneiroEmbarque = codigoRecintoAduaneiroEmbarque;
+        return this;
+    }
+
+    /**
+     * Controle Administrativo&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Deferido&lt;br /&gt; 2 &#x3D; Dispensado&lt;br /&gt;3 &#x3D; Pendente&lt;br /&gt;4 &#x3D; Em processamento&lt;br /&gt;5 &#x3D; Impedido
+     *
+     * @return controleAdministrativo
+     **/
+    @JsonProperty("controleAdministrativo")
+    public Integer getControleAdministrativo() {
+        return controleAdministrativo;
+    }
+
+    public void setControleAdministrativo(Integer controleAdministrativo) {
+        this.controleAdministrativo = controleAdministrativo;
+    }
+
+    public DUEResumida controleAdministrativo(Integer controleAdministrativo) {
+        this.controleAdministrativo = controleAdministrativo;
+        return this;
+    }
+
+    /**
+     * Data da situação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     *
+     * @return dataSituacaoDUE
+     **/
+    @JsonProperty("dataSituacaoDUE")
+    public String getDataSituacaoDUE() {
+        return dataSituacaoDUE;
+    }
+
+    public void setDataSituacaoDUE(String dataSituacaoDUE) {
+        this.dataSituacaoDUE = dataSituacaoDUE;
+    }
+
+    /**
+     * Get declarante
+     *
+     * @return declarante
+     **/
+    @JsonProperty("declarante")
+    public Declarante getDeclarante() {
+        return declarante;
+    }
+
+    public void setDeclarante(Declarante declarante) {
+        this.declarante = declarante;
+    }
+
+    public DUEResumida declarante(Declarante declarante) {
+        this.declarante = declarante;
+        return this;
+    }
+
+    public DUEResumida dataSituacaoDUE(String dataSituacaoDUE) {
+        this.dataSituacaoDUE = dataSituacaoDUE;
+        return this;
     }
 
     /**
@@ -163,98 +258,17 @@ public class DUEResumida {
     }
 
     /**
-     * Responsável pela Unidade Aduaneira do Despacho&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 14
+     * Indicador de bloqueio&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Bloqueado&lt;br /&gt;2 &#x3D; Desbloqueado
      *
-     * @return responsavelUADespacho
+     * @return indicadorBloqueio
      **/
-    @JsonProperty("responsavelUADespacho")
-    public String getResponsavelUADespacho() {
-        return responsavelUADespacho;
+    @JsonProperty("indicadorBloqueio")
+    public Integer getIndicadorBloqueio() {
+        return indicadorBloqueio;
     }
 
-    public void setResponsavelUADespacho(String responsavelUADespacho) {
-        this.responsavelUADespacho = responsavelUADespacho;
-    }
-
-    public DUEResumida responsavelUADespacho(String responsavelUADespacho) {
-        this.responsavelUADespacho = responsavelUADespacho;
-        return this;
-    }
-
-    /**
-     * Get declarante
-     *
-     * @return declarante
-     **/
-    @JsonProperty("declarante")
-    public Declarante getDeclarante() {
-        return declarante;
-    }
-
-    public void setDeclarante(Declarante declarante) {
-        this.declarante = declarante;
-    }
-
-    public DUEResumida declarante(Declarante declarante) {
-        this.declarante = declarante;
-        return this;
-    }
-
-    /**
-     * RUC - Número da referência única de carga&lt;br /&gt;Tamanho: 35&lt;br /&gt;Formato: &#39;NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
-     *
-     * @return numeroRUC
-     **/
-    @JsonProperty("numeroRUC")
-    public String getNumeroRUC() {
-        return numeroRUC;
-    }
-
-    public void setNumeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-    }
-
-    public DUEResumida numeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-        return this;
-    }
-
-    /**
-     * Código do recinto aduaneiro de embarque&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
-     * @return codigoRecintoAduaneiroEmbarque
-     **/
-    @JsonProperty("codigoRecintoAduaneiroEmbarque")
-    public String getCodigoRecintoAduaneiroEmbarque() {
-        return codigoRecintoAduaneiroEmbarque;
-    }
-
-    public void setCodigoRecintoAduaneiroEmbarque(String codigoRecintoAduaneiroEmbarque) {
-        this.codigoRecintoAduaneiroEmbarque = codigoRecintoAduaneiroEmbarque;
-    }
-
-    public DUEResumida codigoRecintoAduaneiroEmbarque(String codigoRecintoAduaneiroEmbarque) {
-        this.codigoRecintoAduaneiroEmbarque = codigoRecintoAduaneiroEmbarque;
-        return this;
-    }
-
-    /**
-     * Unidade aduaneira de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
-     * @return uaDespacho
-     **/
-    @JsonProperty("uaDespacho")
-    public String getUaDespacho() {
-        return uaDespacho;
-    }
-
-    public void setUaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-    }
-
-    public DUEResumida uaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-        return this;
+    public void setIndicadorBloqueio(Integer indicadorBloqueio) {
+        this.indicadorBloqueio = indicadorBloqueio;
     }
 
     /**
@@ -296,27 +310,7 @@ public class DUEResumida {
     }
 
     /**
-     * Indicador de bloqueio&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Bloqueado&lt;br /&gt;2 &#x3D; Desbloqueado
-     *
-     * @return indicadorBloqueio
-     **/
-    @JsonProperty("indicadorBloqueio")
-    public Integer getIndicadorBloqueio() {
-        return indicadorBloqueio;
-    }
-
-    public void setIndicadorBloqueio(Integer indicadorBloqueio) {
-        this.indicadorBloqueio = indicadorBloqueio;
-    }
-
-    public DUEResumida indicadorBloqueio(Integer indicadorBloqueio) {
-        this.indicadorBloqueio = indicadorBloqueio;
-        return this;
-    }
-
-    /**
      * Número da DUE&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNAANNNNNNNNNN&#39;
-     *
      * @return numeroDUE
      **/
     @JsonProperty("numeroDUE")
@@ -330,6 +324,71 @@ public class DUEResumida {
 
     public DUEResumida numeroDUE(String numeroDUE) {
         this.numeroDUE = numeroDUE;
+        return this;
+    }
+
+    public DUEResumida indicadorBloqueio(Integer indicadorBloqueio) {
+        this.indicadorBloqueio = indicadorBloqueio;
+        return this;
+    }
+
+    /**
+     * RUC - Número da referência única de carga&lt;br /&gt;Tamanho: 35&lt;br /&gt;Formato: &#39;NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
+     * @return numeroRUC
+     **/
+    @JsonProperty("numeroRUC")
+    public String getNumeroRUC() {
+        return numeroRUC;
+    }
+
+    public void setNumeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
+    }
+
+    public DUEResumida numeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
+        return this;
+    }
+
+    /**
+     * Responsável pela Unidade Aduaneira do Despacho&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 14
+     *
+     * @return responsavelUADespacho
+     **/
+    @JsonProperty("responsavelUADespacho")
+    public String getResponsavelUADespacho() {
+        return responsavelUADespacho;
+    }
+
+    public void setResponsavelUADespacho(String responsavelUADespacho) {
+        this.responsavelUADespacho = responsavelUADespacho;
+    }
+
+    /**
+     * Situação da Carga&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Estocada&lt;br /&gt;2 &#x3D; Em Trânsito&lt;br /&gt;3 &#x3D; Carga Completamente Exportada
+     * @return situacaoCarga
+     **/
+    @JsonProperty("situacaoCarga")
+    public List<Integer> getSituacaoCarga() {
+        return situacaoCarga;
+    }
+
+    public void setSituacaoCarga(List<Integer> situacaoCarga) {
+        this.situacaoCarga = situacaoCarga;
+    }
+
+    public DUEResumida situacaoCarga(List<Integer> situacaoCarga) {
+        this.situacaoCarga = situacaoCarga;
+        return this;
+    }
+
+    public DUEResumida addSituacaoCargaItem(Integer situacaoCargaItem) {
+        this.situacaoCarga.add(situacaoCargaItem);
+        return this;
+    }
+
+    public DUEResumida responsavelUADespacho(String responsavelUADespacho) {
+        this.responsavelUADespacho = responsavelUADespacho;
         return this;
     }
 
@@ -353,51 +412,21 @@ public class DUEResumida {
     }
 
     /**
-     * Data da situação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     * Unidade aduaneira de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
      *
-     * @return dataSituacaoDUE
+     * @return uaDespacho
      **/
-    @JsonProperty("dataSituacaoDUE")
-    public String getDataSituacaoDUE() {
-        return dataSituacaoDUE;
+    @JsonProperty("uaDespacho")
+    public String getUaDespacho() {
+        return uaDespacho;
     }
 
-    public void setDataSituacaoDUE(String dataSituacaoDUE) {
-        this.dataSituacaoDUE = dataSituacaoDUE;
-    }
-
-    public DUEResumida dataSituacaoDUE(String dataSituacaoDUE) {
-        this.dataSituacaoDUE = dataSituacaoDUE;
-        return this;
-    }
-
-    /**
-     * Situação da Carga&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Estocada&lt;br /&gt;2 &#x3D; Em Trânsito&lt;br /&gt;3 &#x3D; Carga Completamente Exportada
-     *
-     * @return situacaoCarga
-     **/
-    @JsonProperty("situacaoCarga")
-    public List<Integer> getSituacaoCarga() {
-        return situacaoCarga;
-    }
-
-    public void setSituacaoCarga(List<Integer> situacaoCarga) {
-        this.situacaoCarga = situacaoCarga;
-    }
-
-    public DUEResumida situacaoCarga(List<Integer> situacaoCarga) {
-        this.situacaoCarga = situacaoCarga;
-        return this;
-    }
-
-    public DUEResumida addSituacaoCargaItem(Integer situacaoCargaItem) {
-        this.situacaoCarga.add(situacaoCargaItem);
-        return this;
+    public void setUaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
     }
 
     /**
      * Unidade aduaneira de Embarque&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
      * @return uaEmbarque
      **/
     @JsonProperty("uaEmbarque")
@@ -414,41 +443,8 @@ public class DUEResumida {
         return this;
     }
 
-    /**
-     * Código do recinto aduaneiro de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
-     * @return codigoRecintoAduaneiroDespacho
-     **/
-    @JsonProperty("codigoRecintoAduaneiroDespacho")
-    public String getCodigoRecintoAduaneiroDespacho() {
-        return codigoRecintoAduaneiroDespacho;
-    }
-
-    public void setCodigoRecintoAduaneiroDespacho(String codigoRecintoAduaneiroDespacho) {
-        this.codigoRecintoAduaneiroDespacho = codigoRecintoAduaneiroDespacho;
-    }
-
-    public DUEResumida codigoRecintoAduaneiroDespacho(String codigoRecintoAduaneiroDespacho) {
-        this.codigoRecintoAduaneiroDespacho = codigoRecintoAduaneiroDespacho;
-        return this;
-    }
-
-    /**
-     * Controle Administrativo&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Deferido&lt;br /&gt; 2 &#x3D; Dispensado&lt;br /&gt;3 &#x3D; Pendente&lt;br /&gt;4 &#x3D; Em processamento&lt;br /&gt;5 &#x3D; Impedido
-     *
-     * @return controleAdministrativo
-     **/
-    @JsonProperty("controleAdministrativo")
-    public Integer getControleAdministrativo() {
-        return controleAdministrativo;
-    }
-
-    public void setControleAdministrativo(Integer controleAdministrativo) {
-        this.controleAdministrativo = controleAdministrativo;
-    }
-
-    public DUEResumida controleAdministrativo(Integer controleAdministrativo) {
-        this.controleAdministrativo = controleAdministrativo;
+    public DUEResumida uaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
         return this;
     }
 
@@ -456,22 +452,22 @@ public class DUEResumida {
     public String toString() {
 
         String sb = "class DUEResumida {\n" +
-                "    exportadores: " + toIndentedString(exportadores) + "\n" +
-                "    responsavelUADespacho: " + toIndentedString(responsavelUADespacho) + "\n" +
-                "    declarante: " + toIndentedString(declarante) + "\n" +
-                "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
+                "    codigoRecintoAduaneiroDespacho: " + toIndentedString(codigoRecintoAduaneiroDespacho) + "\n" +
                 "    codigoRecintoAduaneiroEmbarque: " + toIndentedString(codigoRecintoAduaneiroEmbarque) + "\n" +
-                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
+                "    controleAdministrativo: " + toIndentedString(controleAdministrativo) + "\n" +
+                "    dataSituacaoDUE: " + toIndentedString(dataSituacaoDUE) + "\n" +
+                "    declarante: " + toIndentedString(declarante) + "\n" +
+                "    exportadores: " + toIndentedString(exportadores) + "\n" +
+                "    indicadorBloqueio: " + toIndentedString(indicadorBloqueio) + "\n" +
                 "    latitudeDespacho: " + toIndentedString(latitudeDespacho) + "\n" +
                 "    longitudeDespacho: " + toIndentedString(longitudeDespacho) + "\n" +
-                "    indicadorBloqueio: " + toIndentedString(indicadorBloqueio) + "\n" +
                 "    numeroDUE: " + toIndentedString(numeroDUE) + "\n" +
-                "    situacaoDUE: " + toIndentedString(situacaoDUE) + "\n" +
-                "    dataSituacaoDUE: " + toIndentedString(dataSituacaoDUE) + "\n" +
+                "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
+                "    responsavelUADespacho: " + toIndentedString(responsavelUADespacho) + "\n" +
                 "    situacaoCarga: " + toIndentedString(situacaoCarga) + "\n" +
+                "    situacaoDUE: " + toIndentedString(situacaoDUE) + "\n" +
+                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "    uaEmbarque: " + toIndentedString(uaEmbarque) + "\n" +
-                "    codigoRecintoAduaneiroDespacho: " + toIndentedString(codigoRecintoAduaneiroDespacho) + "\n" +
-                "    controleAdministrativo: " + toIndentedString(controleAdministrativo) + "\n" +
                 "}";
         return sb;
     }

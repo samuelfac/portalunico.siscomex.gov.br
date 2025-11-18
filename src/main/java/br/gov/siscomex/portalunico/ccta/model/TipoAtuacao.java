@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoAtuacao {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "C", value = "Código do tipo de atuação.<br/>Tamanho: 1<br/>C - Transportador<br/>A - Agente de Carga")
-    /**
-     * Código do tipo de atuação.<br/>Tamanho: 1<br/>C - Transportador<br/>A - Agente de Carga
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Transportador", value = "Descrição do tipo de atuação.<br/>Tamanho: 15")
-    /**
-     * Descrição do tipo de atuação.<br/>Tamanho: 15
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoAtuacao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "C", value = "Código do tipo de atuação.<br/>Tamanho: 1<br/>C - Transportador<br/>A - Agente de Carga")
+    /**
+     * Código do tipo de atuação.<br/>Tamanho: 1<br/>C - Transportador<br/>A - Agente de Carga
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Transportador", value = "Descrição do tipo de atuação.<br/>Tamanho: 15")
+    /**
+     * Descrição do tipo de atuação.<br/>Tamanho: 15
+     **/
+    private String descricao = null;
 
     /**
      * Código do tipo de atuação.&lt;br/&gt;Tamanho: 1&lt;br/&gt;C - Transportador&lt;br/&gt;A - Agente de Carga
@@ -84,7 +85,6 @@ public class TipoAtuacao {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DiagnosticInfo", propOrder =
-        {"mnemonico", "trackerId", "sistema", "ambiente", "fluxo", "usuario", "visao", "url"
+        {"mnemonico", "sistema", "ambiente", "visao", "usuario", "url", "fluxo", "trackerId"
         })
 
 @XmlRootElement(name = "DiagnosticInfo")
@@ -21,10 +21,6 @@ public class DiagnosticInfo {
     @ApiModelProperty(value = "")
     private String mnemonico = null;
 
-    @XmlElement(name = "trackerId")
-    @ApiModelProperty(value = "")
-    private String trackerId = null;
-
     @XmlElement(name = "sistema")
     @ApiModelProperty(value = "")
     private String sistema = null;
@@ -33,32 +29,25 @@ public class DiagnosticInfo {
     @ApiModelProperty(value = "")
     private String ambiente = null;
 
-    @XmlElement(name = "fluxo")
+    @XmlElement(name = "visao")
     @ApiModelProperty(value = "")
-    private String fluxo = null;
+    private String visao = null;
 
     @XmlElement(name = "usuario")
     @ApiModelProperty(value = "")
     private String usuario = null;
 
-    @XmlElement(name = "visao")
-    @ApiModelProperty(value = "")
-    private String visao = null;
-
     @XmlElement(name = "url")
     @ApiModelProperty(value = "")
     private String url = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "fluxo")
+    @ApiModelProperty(value = "")
+    private String fluxo = null;
+
+    @XmlElement(name = "trackerId")
+    @ApiModelProperty(value = "")
+    private String trackerId = null;
 
     /**
      * Get mnemonico
@@ -76,25 +65,6 @@ public class DiagnosticInfo {
 
     public DiagnosticInfo mnemonico(String mnemonico) {
         this.mnemonico = mnemonico;
-        return this;
-    }
-
-    /**
-     * Get trackerId
-     *
-     * @return trackerId
-     **/
-    @JsonProperty("trackerId")
-    public String getTrackerId() {
-        return trackerId;
-    }
-
-    public void setTrackerId(String trackerId) {
-        this.trackerId = trackerId;
-    }
-
-    public DiagnosticInfo trackerId(String trackerId) {
-        this.trackerId = trackerId;
         return this;
     }
 
@@ -137,22 +107,28 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Get fluxo
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get visao
      *
-     * @return fluxo
+     * @return visao
      **/
-    @JsonProperty("fluxo")
-    public String getFluxo() {
-        return fluxo;
+    @JsonProperty("visao")
+    public String getVisao() {
+        return visao;
     }
 
-    public void setFluxo(String fluxo) {
-        this.fluxo = fluxo;
-    }
-
-    public DiagnosticInfo fluxo(String fluxo) {
-        this.fluxo = fluxo;
-        return this;
+    public void setVisao(String visao) {
+        this.visao = visao;
     }
 
     /**
@@ -175,25 +151,6 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Get visao
-     *
-     * @return visao
-     **/
-    @JsonProperty("visao")
-    public String getVisao() {
-        return visao;
-    }
-
-    public void setVisao(String visao) {
-        this.visao = visao;
-    }
-
-    public DiagnosticInfo visao(String visao) {
-        this.visao = visao;
-        return this;
-    }
-
-    /**
      * Get url
      *
      * @return url
@@ -212,18 +169,61 @@ public class DiagnosticInfo {
         return this;
     }
 
+    public DiagnosticInfo visao(String visao) {
+        this.visao = visao;
+        return this;
+    }
+
+    /**
+     * Get fluxo
+     *
+     * @return fluxo
+     **/
+    @JsonProperty("fluxo")
+    public String getFluxo() {
+        return fluxo;
+    }
+
+    public void setFluxo(String fluxo) {
+        this.fluxo = fluxo;
+    }
+
+    public DiagnosticInfo fluxo(String fluxo) {
+        this.fluxo = fluxo;
+        return this;
+    }
+
+    /**
+     * Get trackerId
+     *
+     * @return trackerId
+     **/
+    @JsonProperty("trackerId")
+    public String getTrackerId() {
+        return trackerId;
+    }
+
+    public void setTrackerId(String trackerId) {
+        this.trackerId = trackerId;
+    }
+
+    public DiagnosticInfo trackerId(String trackerId) {
+        this.trackerId = trackerId;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DiagnosticInfo {\n" +
                 "    mnemonico: " + toIndentedString(mnemonico) + "\n" +
-                "    trackerId: " + toIndentedString(trackerId) + "\n" +
                 "    sistema: " + toIndentedString(sistema) + "\n" +
                 "    ambiente: " + toIndentedString(ambiente) + "\n" +
-                "    fluxo: " + toIndentedString(fluxo) + "\n" +
-                "    usuario: " + toIndentedString(usuario) + "\n" +
                 "    visao: " + toIndentedString(visao) + "\n" +
+                "    usuario: " + toIndentedString(usuario) + "\n" +
                 "    url: " + toIndentedString(url) + "\n" +
+                "    fluxo: " + toIndentedString(fluxo) + "\n" +
+                "    trackerId: " + toIndentedString(trackerId) + "\n" +
                 "}";
         return sb;
     }

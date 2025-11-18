@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemCover", propOrder =
-        {"atributosDuimp", "identificacao", "indicadorExportadorFabricante", "lpcos", "exportador", "declaracoesVinculadas", "mercadoria", "dadosCambiais", "condicaoVenda", "tributos", "produto", "certificadoMercosul", "caracterizacaoImportacao", "indicadorCompradorVendedor", "fabricante", "atributosFundamentoLegalDuimp"
+        {"identificacao", "produto", "caracterizacaoImportacao", "indicadorExportadorFabricante", "fabricante", "exportador", "indicadorCompradorVendedor", "mercadoria", "condicaoVenda", "lpcos", "certificadoMercosul", "declaracoesVinculadas", "dadosCambiais", "atributosDuimp", "atributosFundamentoLegalDuimp", "tributos"
         })
 
 @XmlRootElement(name = "ItemCover")
@@ -25,120 +25,85 @@ import java.util.List;
 @ApiModel(description = "Dados do item da Duimp.")
 public class ItemCover {
 
-    @XmlElement(name = "atributosDuimp")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<AtributoItemCover> atributosDuimp = null;
-
     @XmlElement(name = "identificacao", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private IdentificacaoItemCover identificacao = null;
-
-    @XmlElement(name = "indicadorExportadorFabricante", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private IndicadorExportadorFabricanteCover indicadorExportadorFabricante = null;
-
-    @XmlElement(name = "lpcos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<LpcoCover> lpcos = null;
-
-    @XmlElement(name = "exportador", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private ExportadorCover exportador = null;
-
-    @XmlElement(name = "declaracoesVinculadas")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<DeclaracaoVinculadaCover> declaracoesVinculadas = null;
-
-    @XmlElement(name = "mercadoria")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MercadoriaCover mercadoria = null;
-
-    @XmlElement(name = "dadosCambiais", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DadosCambiaisCover dadosCambiais = null;
-
-    @XmlElement(name = "condicaoVenda")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CondicaoVendaCover condicaoVenda = null;
-
-    @XmlElement(name = "tributos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<TributoItemCover> tributos = null;
 
     @XmlElement(name = "produto", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private ProdutoCover produto = null;
 
-    @XmlElement(name = "certificadoMercosul")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CertificadoMercosulCover> certificadoMercosul = null;
-
     @XmlElement(name = "caracterizacaoImportacao", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private CaracterizacaoImportacaoCover caracterizacaoImportacao = null;
 
-    @XmlElement(name = "indicadorCompradorVendedor", required = true)
+    @XmlElement(name = "indicadorExportadorFabricante", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private IndicadorCompradorVendedorCover indicadorCompradorVendedor = null;
+    private IndicadorExportadorFabricanteCover indicadorExportadorFabricante = null;
 
     @XmlElement(name = "fabricante", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private FabricanteCover fabricante = null;
 
+    @XmlElement(name = "exportador", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ExportadorCover exportador = null;
+
+    @XmlElement(name = "indicadorCompradorVendedor", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private IndicadorCompradorVendedorCover indicadorCompradorVendedor = null;
+
+    @XmlElement(name = "mercadoria")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MercadoriaCover mercadoria = null;
+
+    @XmlElement(name = "condicaoVenda")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CondicaoVendaCover condicaoVenda = null;
+
+    @XmlElement(name = "lpcos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<LpcoCover> lpcos = null;
+
+    @XmlElement(name = "certificadoMercosul")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CertificadoMercosulCover> certificadoMercosul = null;
+
+    @XmlElement(name = "declaracoesVinculadas")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DeclaracaoVinculadaCover> declaracoesVinculadas = null;
+
+    @XmlElement(name = "dadosCambiais", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DadosCambiaisCover dadosCambiais = null;
+
+    @XmlElement(name = "atributosDuimp")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<AtributoItemCover> atributosDuimp = null;
+
     @XmlElement(name = "atributosFundamentoLegalDuimp")
     @ApiModelProperty(value = "")
     @Valid
     private List<AtributoFundamentoLegalItemCover> atributosFundamentoLegalDuimp = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get atributosDuimp
-     *
-     * @return atributosDuimp
-     **/
-    @JsonProperty("atributosDuimp")
-    public List<AtributoItemCover> getAtributosDuimp() {
-        return atributosDuimp;
-    }
-
-    public void setAtributosDuimp(List<AtributoItemCover> atributosDuimp) {
-        this.atributosDuimp = atributosDuimp;
-    }
-
-    public ItemCover atributosDuimp(List<AtributoItemCover> atributosDuimp) {
-        this.atributosDuimp = atributosDuimp;
-        return this;
-    }
-
-    public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
-        this.atributosDuimp.add(atributosDuimpItem);
-        return this;
-    }
+    @XmlElement(name = "tributos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<TributoItemCover> tributos = null;
 
     /**
      * Get identificacao
@@ -161,6 +126,52 @@ public class ItemCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get produto
+     *
+     * @return produto
+     **/
+    @JsonProperty("produto")
+    @NotNull
+    public ProdutoCover getProduto() {
+        return produto;
+    }
+
+    public void setProduto(ProdutoCover produto) {
+        this.produto = produto;
+    }
+
+    public ItemCover produto(ProdutoCover produto) {
+        this.produto = produto;
+        return this;
+    }
+
+    /**
+     * Get caracterizacaoImportacao
+     *
+     * @return caracterizacaoImportacao
+     **/
+    @JsonProperty("caracterizacaoImportacao")
+    @NotNull
+    public CaracterizacaoImportacaoCover getCaracterizacaoImportacao() {
+        return caracterizacaoImportacao;
+    }
+
+    public void setCaracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
+        this.caracterizacaoImportacao = caracterizacaoImportacao;
+    }
+
+    /**
      * Get indicadorExportadorFabricante
      *
      * @return indicadorExportadorFabricante
@@ -177,6 +188,109 @@ public class ItemCover {
 
     public ItemCover indicadorExportadorFabricante(IndicadorExportadorFabricanteCover indicadorExportadorFabricante) {
         this.indicadorExportadorFabricante = indicadorExportadorFabricante;
+        return this;
+    }
+
+    public ItemCover caracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
+        this.caracterizacaoImportacao = caracterizacaoImportacao;
+        return this;
+    }
+
+    /**
+     * Get fabricante
+     *
+     * @return fabricante
+     **/
+    @JsonProperty("fabricante")
+    @NotNull
+    public FabricanteCover getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(FabricanteCover fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    /**
+     * Get exportador
+     *
+     * @return exportador
+     **/
+    @JsonProperty("exportador")
+    @NotNull
+    public ExportadorCover getExportador() {
+        return exportador;
+    }
+
+    public void setExportador(ExportadorCover exportador) {
+        this.exportador = exportador;
+    }
+
+    public ItemCover exportador(ExportadorCover exportador) {
+        this.exportador = exportador;
+        return this;
+    }
+
+    public ItemCover fabricante(FabricanteCover fabricante) {
+        this.fabricante = fabricante;
+        return this;
+    }
+
+    /**
+     * Get indicadorCompradorVendedor
+     *
+     * @return indicadorCompradorVendedor
+     **/
+    @JsonProperty("indicadorCompradorVendedor")
+    @NotNull
+    public IndicadorCompradorVendedorCover getIndicadorCompradorVendedor() {
+        return indicadorCompradorVendedor;
+    }
+
+    public void setIndicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
+        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
+    }
+
+    /**
+     * Get mercadoria
+     *
+     * @return mercadoria
+     **/
+    @JsonProperty("mercadoria")
+    public MercadoriaCover getMercadoria() {
+        return mercadoria;
+    }
+
+    public void setMercadoria(MercadoriaCover mercadoria) {
+        this.mercadoria = mercadoria;
+    }
+
+    public ItemCover mercadoria(MercadoriaCover mercadoria) {
+        this.mercadoria = mercadoria;
+        return this;
+    }
+
+    /**
+     * Get condicaoVenda
+     *
+     * @return condicaoVenda
+     **/
+    @JsonProperty("condicaoVenda")
+    public CondicaoVendaCover getCondicaoVenda() {
+        return condicaoVenda;
+    }
+
+    public void setCondicaoVenda(CondicaoVendaCover condicaoVenda) {
+        this.condicaoVenda = condicaoVenda;
+    }
+
+    public ItemCover condicaoVenda(CondicaoVendaCover condicaoVenda) {
+        this.condicaoVenda = condicaoVenda;
+        return this;
+    }
+
+    public ItemCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
+        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
         return this;
     }
 
@@ -199,28 +313,32 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover addLpcosItem(LpcoCover lpcosItem) {
-        this.lpcos.add(lpcosItem);
+    /**
+     * Get certificadoMercosul
+     *
+     * @return certificadoMercosul
+     **/
+    @JsonProperty("certificadoMercosul")
+    public List<CertificadoMercosulCover> getCertificadoMercosul() {
+        return certificadoMercosul;
+    }
+
+    public void setCertificadoMercosul(List<CertificadoMercosulCover> certificadoMercosul) {
+        this.certificadoMercosul = certificadoMercosul;
+    }
+
+    public ItemCover certificadoMercosul(List<CertificadoMercosulCover> certificadoMercosul) {
+        this.certificadoMercosul = certificadoMercosul;
         return this;
     }
 
-    /**
-     * Get exportador
-     *
-     * @return exportador
-     **/
-    @JsonProperty("exportador")
-    @NotNull
-    public ExportadorCover getExportador() {
-        return exportador;
+    public ItemCover addCertificadoMercosulItem(CertificadoMercosulCover certificadoMercosulItem) {
+        this.certificadoMercosul.add(certificadoMercosulItem);
+        return this;
     }
 
-    public void setExportador(ExportadorCover exportador) {
-        this.exportador = exportador;
-    }
-
-    public ItemCover exportador(ExportadorCover exportador) {
-        this.exportador = exportador;
+    public ItemCover addLpcosItem(LpcoCover lpcosItem) {
+        this.lpcos.add(lpcosItem);
         return this;
     }
 
@@ -249,25 +367,6 @@ public class ItemCover {
     }
 
     /**
-     * Get mercadoria
-     *
-     * @return mercadoria
-     **/
-    @JsonProperty("mercadoria")
-    public MercadoriaCover getMercadoria() {
-        return mercadoria;
-    }
-
-    public void setMercadoria(MercadoriaCover mercadoria) {
-        this.mercadoria = mercadoria;
-    }
-
-    public ItemCover mercadoria(MercadoriaCover mercadoria) {
-        this.mercadoria = mercadoria;
-        return this;
-    }
-
-    /**
      * Get dadosCambiais
      *
      * @return dadosCambiais
@@ -288,149 +387,21 @@ public class ItemCover {
     }
 
     /**
-     * Get condicaoVenda
+     * Get atributosDuimp
      *
-     * @return condicaoVenda
+     * @return atributosDuimp
      **/
-    @JsonProperty("condicaoVenda")
-    public CondicaoVendaCover getCondicaoVenda() {
-        return condicaoVenda;
+    @JsonProperty("atributosDuimp")
+    public List<AtributoItemCover> getAtributosDuimp() {
+        return atributosDuimp;
     }
 
-    public void setCondicaoVenda(CondicaoVendaCover condicaoVenda) {
-        this.condicaoVenda = condicaoVenda;
+    public void setAtributosDuimp(List<AtributoItemCover> atributosDuimp) {
+        this.atributosDuimp = atributosDuimp;
     }
 
-    public ItemCover condicaoVenda(CondicaoVendaCover condicaoVenda) {
-        this.condicaoVenda = condicaoVenda;
-        return this;
-    }
-
-    /**
-     * Get tributos
-     *
-     * @return tributos
-     **/
-    @JsonProperty("tributos")
-    public List<TributoItemCover> getTributos() {
-        return tributos;
-    }
-
-    public void setTributos(List<TributoItemCover> tributos) {
-        this.tributos = tributos;
-    }
-
-    public ItemCover tributos(List<TributoItemCover> tributos) {
-        this.tributos = tributos;
-        return this;
-    }
-
-    public ItemCover addTributosItem(TributoItemCover tributosItem) {
-        this.tributos.add(tributosItem);
-        return this;
-    }
-
-    /**
-     * Get produto
-     *
-     * @return produto
-     **/
-    @JsonProperty("produto")
-    @NotNull
-    public ProdutoCover getProduto() {
-        return produto;
-    }
-
-    public void setProduto(ProdutoCover produto) {
-        this.produto = produto;
-    }
-
-    public ItemCover produto(ProdutoCover produto) {
-        this.produto = produto;
-        return this;
-    }
-
-    /**
-     * Get certificadoMercosul
-     *
-     * @return certificadoMercosul
-     **/
-    @JsonProperty("certificadoMercosul")
-    public List<CertificadoMercosulCover> getCertificadoMercosul() {
-        return certificadoMercosul;
-    }
-
-    public void setCertificadoMercosul(List<CertificadoMercosulCover> certificadoMercosul) {
-        this.certificadoMercosul = certificadoMercosul;
-    }
-
-    public ItemCover certificadoMercosul(List<CertificadoMercosulCover> certificadoMercosul) {
-        this.certificadoMercosul = certificadoMercosul;
-        return this;
-    }
-
-    public ItemCover addCertificadoMercosulItem(CertificadoMercosulCover certificadoMercosulItem) {
-        this.certificadoMercosul.add(certificadoMercosulItem);
-        return this;
-    }
-
-    /**
-     * Get caracterizacaoImportacao
-     *
-     * @return caracterizacaoImportacao
-     **/
-    @JsonProperty("caracterizacaoImportacao")
-    @NotNull
-    public CaracterizacaoImportacaoCover getCaracterizacaoImportacao() {
-        return caracterizacaoImportacao;
-    }
-
-    public void setCaracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
-        this.caracterizacaoImportacao = caracterizacaoImportacao;
-    }
-
-    public ItemCover caracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
-        this.caracterizacaoImportacao = caracterizacaoImportacao;
-        return this;
-    }
-
-    /**
-     * Get indicadorCompradorVendedor
-     *
-     * @return indicadorCompradorVendedor
-     **/
-    @JsonProperty("indicadorCompradorVendedor")
-    @NotNull
-    public IndicadorCompradorVendedorCover getIndicadorCompradorVendedor() {
-        return indicadorCompradorVendedor;
-    }
-
-    public void setIndicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
-        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
-    }
-
-    public ItemCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
-        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
-        return this;
-    }
-
-    /**
-     * Get fabricante
-     *
-     * @return fabricante
-     **/
-    @JsonProperty("fabricante")
-    @NotNull
-    public FabricanteCover getFabricante() {
-        return fabricante;
-    }
-
-    public void setFabricante(FabricanteCover fabricante) {
-        this.fabricante = fabricante;
-    }
-
-    public ItemCover fabricante(FabricanteCover fabricante) {
-        this.fabricante = fabricante;
+    public ItemCover atributosDuimp(List<AtributoItemCover> atributosDuimp) {
+        this.atributosDuimp = atributosDuimp;
         return this;
     }
 
@@ -458,26 +429,55 @@ public class ItemCover {
         return this;
     }
 
+    public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
+        this.atributosDuimp.add(atributosDuimpItem);
+        return this;
+    }
+
+    /**
+     * Get tributos
+     *
+     * @return tributos
+     **/
+    @JsonProperty("tributos")
+    public List<TributoItemCover> getTributos() {
+        return tributos;
+    }
+
+    public void setTributos(List<TributoItemCover> tributos) {
+        this.tributos = tributos;
+    }
+
+    public ItemCover tributos(List<TributoItemCover> tributos) {
+        this.tributos = tributos;
+        return this;
+    }
+
+    public ItemCover addTributosItem(TributoItemCover tributosItem) {
+        this.tributos.add(tributosItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ItemCover {\n" +
-                "    atributosDuimp: " + toIndentedString(atributosDuimp) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    indicadorExportadorFabricante: " + toIndentedString(indicadorExportadorFabricante) + "\n" +
-                "    lpcos: " + toIndentedString(lpcos) + "\n" +
-                "    exportador: " + toIndentedString(exportador) + "\n" +
-                "    declaracoesVinculadas: " + toIndentedString(declaracoesVinculadas) + "\n" +
-                "    mercadoria: " + toIndentedString(mercadoria) + "\n" +
-                "    dadosCambiais: " + toIndentedString(dadosCambiais) + "\n" +
-                "    condicaoVenda: " + toIndentedString(condicaoVenda) + "\n" +
-                "    tributos: " + toIndentedString(tributos) + "\n" +
                 "    produto: " + toIndentedString(produto) + "\n" +
-                "    certificadoMercosul: " + toIndentedString(certificadoMercosul) + "\n" +
                 "    caracterizacaoImportacao: " + toIndentedString(caracterizacaoImportacao) + "\n" +
-                "    indicadorCompradorVendedor: " + toIndentedString(indicadorCompradorVendedor) + "\n" +
+                "    indicadorExportadorFabricante: " + toIndentedString(indicadorExportadorFabricante) + "\n" +
                 "    fabricante: " + toIndentedString(fabricante) + "\n" +
+                "    exportador: " + toIndentedString(exportador) + "\n" +
+                "    indicadorCompradorVendedor: " + toIndentedString(indicadorCompradorVendedor) + "\n" +
+                "    mercadoria: " + toIndentedString(mercadoria) + "\n" +
+                "    condicaoVenda: " + toIndentedString(condicaoVenda) + "\n" +
+                "    lpcos: " + toIndentedString(lpcos) + "\n" +
+                "    certificadoMercosul: " + toIndentedString(certificadoMercosul) + "\n" +
+                "    declaracoesVinculadas: " + toIndentedString(declaracoesVinculadas) + "\n" +
+                "    dadosCambiais: " + toIndentedString(dadosCambiais) + "\n" +
+                "    atributosDuimp: " + toIndentedString(atributosDuimp) + "\n" +
                 "    atributosFundamentoLegalDuimp: " + toIndentedString(atributosFundamentoLegalDuimp) + "\n" +
+                "    tributos: " + toIndentedString(tributos) + "\n" +
                 "}";
         return sb;
     }

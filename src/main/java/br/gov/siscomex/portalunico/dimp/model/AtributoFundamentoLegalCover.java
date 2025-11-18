@@ -32,17 +32,6 @@ public class AtributoFundamentoLegalCover {
     private String valor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do atributo Fundamento Legal da Duimp para regimes especiais de despacho
      *
      * @return codigo
@@ -78,6 +67,18 @@ public class AtributoFundamentoLegalCover {
     public AtributoFundamentoLegalCover valor(String valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

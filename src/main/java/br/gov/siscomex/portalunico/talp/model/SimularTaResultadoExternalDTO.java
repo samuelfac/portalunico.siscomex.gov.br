@@ -12,19 +12,15 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SimularTaResultadoExternalDTO", propOrder =
-        {"permiteInspecao", "lpcoPrevioEmbarque", "orgaoAnuente", "mensagem", "permiteRetificacao", "validoMultiplasOperacoes", "modelo", "impedeDesembaraco", "tipoTratamento"
+        {"tipoTratamento", "orgaoAnuente", "mensagem", "modelo", "validoMultiplasOperacoes", "permiteRetificacao", "impedeDesembaraco", "permiteInspecao", "lpcoPrevioEmbarque"
         })
 
 @XmlRootElement(name = "SimularTaResultadoExternalDTO")
 public class SimularTaResultadoExternalDTO {
 
-    @XmlElement(name = "permiteInspecao")
+    @XmlElement(name = "tipoTratamento")
     @ApiModelProperty(value = "")
-    private Boolean permiteInspecao = null;
-
-    @XmlElement(name = "lpcoPrevioEmbarque")
-    @ApiModelProperty(value = "")
-    private Boolean lpcoPrevioEmbarque = null;
+    private String tipoTratamento = null;
 
     @XmlElement(name = "orgaoAnuente")
     @ApiModelProperty(value = "")
@@ -34,26 +30,30 @@ public class SimularTaResultadoExternalDTO {
     @ApiModelProperty(value = "")
     private String mensagem = null;
 
-    @XmlElement(name = "permiteRetificacao")
-    @ApiModelProperty(value = "")
-    private String permiteRetificacao = null;
-
-    @XmlElement(name = "validoMultiplasOperacoes")
-    @ApiModelProperty(value = "")
-    private Boolean validoMultiplasOperacoes = null;
-
     @XmlElement(name = "modelo")
     @ApiModelProperty(value = "")
     @Valid
     private ModeloLpcoItemProcessaTaDTO modelo = null;
 
+    @XmlElement(name = "validoMultiplasOperacoes")
+    @ApiModelProperty(value = "")
+    private Boolean validoMultiplasOperacoes = null;
+
+    @XmlElement(name = "permiteRetificacao")
+    @ApiModelProperty(value = "")
+    private String permiteRetificacao = null;
+
     @XmlElement(name = "impedeDesembaraco")
     @ApiModelProperty(value = "")
     private Boolean impedeDesembaraco = null;
 
-    @XmlElement(name = "tipoTratamento")
+    @XmlElement(name = "permiteInspecao")
     @ApiModelProperty(value = "")
-    private String tipoTratamento = null;
+    private Boolean permiteInspecao = null;
+
+    @XmlElement(name = "lpcoPrevioEmbarque")
+    @ApiModelProperty(value = "")
+    private Boolean lpcoPrevioEmbarque = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,41 +67,17 @@ public class SimularTaResultadoExternalDTO {
     }
 
     /**
-     * Get permiteInspecao
+     * Get tipoTratamento
      *
-     * @return permiteInspecao
+     * @return tipoTratamento
      **/
-    @JsonProperty("permiteInspecao")
-    public Boolean isisPermiteInspecao() {
-        return permiteInspecao;
+    @JsonProperty("tipoTratamento")
+    public String getTipoTratamento() {
+        return tipoTratamento;
     }
 
-    public void setPermiteInspecao(Boolean permiteInspecao) {
-        this.permiteInspecao = permiteInspecao;
-    }
-
-    public SimularTaResultadoExternalDTO permiteInspecao(Boolean permiteInspecao) {
-        this.permiteInspecao = permiteInspecao;
-        return this;
-    }
-
-    /**
-     * Get lpcoPrevioEmbarque
-     *
-     * @return lpcoPrevioEmbarque
-     **/
-    @JsonProperty("lpcoPrevioEmbarque")
-    public Boolean isisLpcoPrevioEmbarque() {
-        return lpcoPrevioEmbarque;
-    }
-
-    public void setLpcoPrevioEmbarque(Boolean lpcoPrevioEmbarque) {
-        this.lpcoPrevioEmbarque = lpcoPrevioEmbarque;
-    }
-
-    public SimularTaResultadoExternalDTO lpcoPrevioEmbarque(Boolean lpcoPrevioEmbarque) {
-        this.lpcoPrevioEmbarque = lpcoPrevioEmbarque;
-        return this;
+    public void setTipoTratamento(String tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
     }
 
     /**
@@ -142,23 +118,23 @@ public class SimularTaResultadoExternalDTO {
         return this;
     }
 
-    /**
-     * Get permiteRetificacao
-     *
-     * @return permiteRetificacao
-     **/
-    @JsonProperty("permiteRetificacao")
-    public String getPermiteRetificacao() {
-        return permiteRetificacao;
-    }
-
-    public void setPermiteRetificacao(String permiteRetificacao) {
-        this.permiteRetificacao = permiteRetificacao;
-    }
-
-    public SimularTaResultadoExternalDTO permiteRetificacao(String permiteRetificacao) {
-        this.permiteRetificacao = permiteRetificacao;
+    public SimularTaResultadoExternalDTO tipoTratamento(String tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
         return this;
+    }
+
+    /**
+     * Get modelo
+     *
+     * @return modelo
+     **/
+    @JsonProperty("modelo")
+    public ModeloLpcoItemProcessaTaDTO getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(ModeloLpcoItemProcessaTaDTO modelo) {
+        this.modelo = modelo;
     }
 
     /**
@@ -180,23 +156,23 @@ public class SimularTaResultadoExternalDTO {
         return this;
     }
 
-    /**
-     * Get modelo
-     *
-     * @return modelo
-     **/
-    @JsonProperty("modelo")
-    public ModeloLpcoItemProcessaTaDTO getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(ModeloLpcoItemProcessaTaDTO modelo) {
-        this.modelo = modelo;
-    }
-
     public SimularTaResultadoExternalDTO modelo(ModeloLpcoItemProcessaTaDTO modelo) {
         this.modelo = modelo;
         return this;
+    }
+
+    /**
+     * Get permiteRetificacao
+     *
+     * @return permiteRetificacao
+     **/
+    @JsonProperty("permiteRetificacao")
+    public String getPermiteRetificacao() {
+        return permiteRetificacao;
+    }
+
+    public void setPermiteRetificacao(String permiteRetificacao) {
+        this.permiteRetificacao = permiteRetificacao;
     }
 
     /**
@@ -218,22 +194,46 @@ public class SimularTaResultadoExternalDTO {
         return this;
     }
 
+    public SimularTaResultadoExternalDTO permiteRetificacao(String permiteRetificacao) {
+        this.permiteRetificacao = permiteRetificacao;
+        return this;
+    }
+
     /**
-     * Get tipoTratamento
+     * Get permiteInspecao
      *
-     * @return tipoTratamento
+     * @return permiteInspecao
      **/
-    @JsonProperty("tipoTratamento")
-    public String getTipoTratamento() {
-        return tipoTratamento;
+    @JsonProperty("permiteInspecao")
+    public Boolean isisPermiteInspecao() {
+        return permiteInspecao;
     }
 
-    public void setTipoTratamento(String tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
+    public void setPermiteInspecao(Boolean permiteInspecao) {
+        this.permiteInspecao = permiteInspecao;
     }
 
-    public SimularTaResultadoExternalDTO tipoTratamento(String tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
+    public SimularTaResultadoExternalDTO permiteInspecao(Boolean permiteInspecao) {
+        this.permiteInspecao = permiteInspecao;
+        return this;
+    }
+
+    /**
+     * Get lpcoPrevioEmbarque
+     *
+     * @return lpcoPrevioEmbarque
+     **/
+    @JsonProperty("lpcoPrevioEmbarque")
+    public Boolean isisLpcoPrevioEmbarque() {
+        return lpcoPrevioEmbarque;
+    }
+
+    public void setLpcoPrevioEmbarque(Boolean lpcoPrevioEmbarque) {
+        this.lpcoPrevioEmbarque = lpcoPrevioEmbarque;
+    }
+
+    public SimularTaResultadoExternalDTO lpcoPrevioEmbarque(Boolean lpcoPrevioEmbarque) {
+        this.lpcoPrevioEmbarque = lpcoPrevioEmbarque;
         return this;
     }
 
@@ -241,15 +241,15 @@ public class SimularTaResultadoExternalDTO {
     public String toString() {
 
         String sb = "class SimularTaResultadoExternalDTO {\n" +
-                "    permiteInspecao: " + toIndentedString(permiteInspecao) + "\n" +
-                "    lpcoPrevioEmbarque: " + toIndentedString(lpcoPrevioEmbarque) + "\n" +
+                "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
                 "    orgaoAnuente: " + toIndentedString(orgaoAnuente) + "\n" +
                 "    mensagem: " + toIndentedString(mensagem) + "\n" +
-                "    permiteRetificacao: " + toIndentedString(permiteRetificacao) + "\n" +
-                "    validoMultiplasOperacoes: " + toIndentedString(validoMultiplasOperacoes) + "\n" +
                 "    modelo: " + toIndentedString(modelo) + "\n" +
+                "    validoMultiplasOperacoes: " + toIndentedString(validoMultiplasOperacoes) + "\n" +
+                "    permiteRetificacao: " + toIndentedString(permiteRetificacao) + "\n" +
                 "    impedeDesembaraco: " + toIndentedString(impedeDesembaraco) + "\n" +
-                "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
+                "    permiteInspecao: " + toIndentedString(permiteInspecao) + "\n" +
+                "    lpcoPrevioEmbarque: " + toIndentedString(lpcoPrevioEmbarque) + "\n" +
                 "}";
         return sb;
     }

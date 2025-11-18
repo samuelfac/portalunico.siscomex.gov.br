@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemLpcoRequest", propOrder =
-        {"listaCamposNcm", "produto", "listaAtributosNcm", "ncm", "numeroItem"
+        {"numeroItem", "ncm", "produto", "listaCamposNcm", "listaAtributosNcm"
         })
 
 @XmlRootElement(name = "ItemLpcoRequest")
@@ -25,26 +25,12 @@ import java.util.List;
 @ApiModel(description = "Dados de um item de um LPCO a ser alterado")
 public class ItemLpcoRequest {
 
-    @XmlElement(name = "listaCamposNcm")
-    @ApiModelProperty(value = "Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.")
-    @Valid
+    @XmlElement(name = "numeroItem", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número sequencial do item LPCO.")
     /**
-     * Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.
+     * Número sequencial do item LPCO.
      **/
-    private List<CampoLpcoRequest> listaCamposNcm = null;
-
-    @XmlElement(name = "produto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Produto produto = null;
-
-    @XmlElement(name = "listaAtributosNcm")
-    @ApiModelProperty(value = "Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.")
-    @Valid
-    /**
-     * Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.
-     **/
-    private List<CampoLpcoRequest> listaAtributosNcm = null;
+    private Integer numeroItem = null;
 
     @XmlElement(name = "ncm", required = true)
     @ApiModelProperty(example = "01012100", required = true, value = "Código da NCM do item do LPCO.<br>Tamanho: 8<br>Formato: NNNNNNNN")
@@ -53,12 +39,26 @@ public class ItemLpcoRequest {
      **/
     private String ncm = null;
 
-    @XmlElement(name = "numeroItem", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número sequencial do item LPCO.")
+    @XmlElement(name = "produto")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Produto produto = null;
+
+    @XmlElement(name = "listaCamposNcm")
+    @ApiModelProperty(value = "Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.")
+    @Valid
     /**
-     * Número sequencial do item LPCO.
+     * Lista de campos de cada item do LPCO exigidos pelo modelo. Para campos de valor composto (como Fabricante/Produtor, Exportador estrangeiro, Exportador é o fabricante do Produto, Fundamento legal, Indicação de importação para terceiros), verifique a estrutura específica de valor do campo.
      **/
-    private Integer numeroItem = null;
+    private List<CampoLpcoRequest> listaCamposNcm = null;
+
+    @XmlElement(name = "listaAtributosNcm")
+    @ApiModelProperty(value = "Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.")
+    @Valid
+    /**
+     * Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.
+     **/
+    private List<CampoLpcoRequest> listaAtributosNcm = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,6 +69,60 @@ public class ItemLpcoRequest {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número sequencial do item LPCO.
+     *
+     * @return numeroItem
+     **/
+    @JsonProperty("numeroItem")
+    @NotNull
+    public Integer getNumeroItem() {
+        return numeroItem;
+    }
+
+    public void setNumeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
+    }
+
+    public ItemLpcoRequest numeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
+        return this;
+    }
+
+    /**
+     * Código da NCM do item do LPCO.&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
+     *
+     * @return ncm
+     **/
+    @JsonProperty("ncm")
+    @NotNull
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
+    }
+
+    public ItemLpcoRequest ncm(String ncm) {
+        this.ncm = ncm;
+        return this;
+    }
+
+    /**
+     * Get produto
+     *
+     * @return produto
+     **/
+    @JsonProperty("produto")
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     /**
@@ -96,25 +150,6 @@ public class ItemLpcoRequest {
     }
 
     /**
-     * Get produto
-     *
-     * @return produto
-     **/
-    @JsonProperty("produto")
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public ItemLpcoRequest produto(Produto produto) {
-        this.produto = produto;
-        return this;
-    }
-
-    /**
      * Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.
      *
      * @return listaAtributosNcm
@@ -138,43 +173,8 @@ public class ItemLpcoRequest {
         return this;
     }
 
-    /**
-     * Código da NCM do item do LPCO.&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
-     *
-     * @return ncm
-     **/
-    @JsonProperty("ncm")
-    @NotNull
-    public String getNcm() {
-        return ncm;
-    }
-
-    public void setNcm(String ncm) {
-        this.ncm = ncm;
-    }
-
-    public ItemLpcoRequest ncm(String ncm) {
-        this.ncm = ncm;
-        return this;
-    }
-
-    /**
-     * Número sequencial do item LPCO.
-     *
-     * @return numeroItem
-     **/
-    @JsonProperty("numeroItem")
-    @NotNull
-    public Integer getNumeroItem() {
-        return numeroItem;
-    }
-
-    public void setNumeroItem(Integer numeroItem) {
-        this.numeroItem = numeroItem;
-    }
-
-    public ItemLpcoRequest numeroItem(Integer numeroItem) {
-        this.numeroItem = numeroItem;
+    public ItemLpcoRequest produto(Produto produto) {
+        this.produto = produto;
         return this;
     }
 
@@ -182,11 +182,11 @@ public class ItemLpcoRequest {
     public String toString() {
 
         String sb = "class ItemLpcoRequest {\n" +
-                "    listaCamposNcm: " + toIndentedString(listaCamposNcm) + "\n" +
-                "    produto: " + toIndentedString(produto) + "\n" +
-                "    listaAtributosNcm: " + toIndentedString(listaAtributosNcm) + "\n" +
-                "    ncm: " + toIndentedString(ncm) + "\n" +
                 "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    produto: " + toIndentedString(produto) + "\n" +
+                "    listaCamposNcm: " + toIndentedString(listaCamposNcm) + "\n" +
+                "    listaAtributosNcm: " + toIndentedString(listaAtributosNcm) + "\n" +
                 "}";
         return sb;
     }

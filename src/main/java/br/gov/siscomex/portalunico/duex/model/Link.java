@@ -13,40 +13,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Link", propOrder =
-        {"method", "rel", "href", "title", "type"
+        {"href", "method", "rel", "title", "type"
         })
 
 @XmlRootElement(name = "Link")
 public class Link {
 
-
-    @XmlElement(name = "method")
-    @ApiModelProperty(value = "")
-    private MethodEnum method = null;
-    @XmlElement(name = "rel")
-    @ApiModelProperty(value = "Rel<br />Tamanho mínimo: 0<br />Tamanho máximo: 200")
-    /**
-     * Rel<br />Tamanho mínimo: 0<br />Tamanho máximo: 200
-     **/
-    private String rel = null;
     @XmlElement(name = "href")
     @ApiModelProperty(value = "Href<br />Tamanho mínimo: 1<br />Tamanho máximo: 1024")
     /**
      * Href<br />Tamanho mínimo: 1<br />Tamanho máximo: 1024
      **/
     private String href = null;
-    @XmlElement(name = "title")
-    @ApiModelProperty(value = "Title<br />Tamanho mínimo: 0<br />Tamanho máximo: 200")
-    /**
-     * Title<br />Tamanho mínimo: 0<br />Tamanho máximo: 200
-     **/
-    private String title = null;
-    @XmlElement(name = "type")
-    @ApiModelProperty(value = "Media Type<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
-    /**
-     * Media Type<br />Tamanho mínimo: 0<br />Tamanho máximo: 50
-     **/
-    private String type = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,6 +35,50 @@ public class Link {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "method")
+    @ApiModelProperty(value = "")
+    private MethodEnum method = null;
+
+    @XmlElement(name = "rel")
+    @ApiModelProperty(value = "Rel<br />Tamanho mínimo: 0<br />Tamanho máximo: 200")
+    /**
+     * Rel<br />Tamanho mínimo: 0<br />Tamanho máximo: 200
+     **/
+    private String rel = null;
+
+    @XmlElement(name = "title")
+    @ApiModelProperty(value = "Title<br />Tamanho mínimo: 0<br />Tamanho máximo: 200")
+    /**
+     * Title<br />Tamanho mínimo: 0<br />Tamanho máximo: 200
+     **/
+    private String title = null;
+
+    @XmlElement(name = "type")
+    @ApiModelProperty(value = "Media Type<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
+    /**
+     * Media Type<br />Tamanho mínimo: 0<br />Tamanho máximo: 50
+     **/
+    private String type = null;
+
+    /**
+     * Href&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 1024
+     *
+     * @return href
+     **/
+    @JsonProperty("href")
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
+    public Link href(String href) {
+        this.href = href;
+        return this;
     }
 
     /**
@@ -97,25 +119,6 @@ public class Link {
 
     public Link rel(String rel) {
         this.rel = rel;
-        return this;
-    }
-
-    /**
-     * Href&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 1024
-     *
-     * @return href
-     **/
-    @JsonProperty("href")
-    public String getHref() {
-        return href;
-    }
-
-    public void setHref(String href) {
-        this.href = href;
-    }
-
-    public Link href(String href) {
-        this.href = href;
         return this;
     }
 
@@ -162,9 +165,9 @@ public class Link {
     public String toString() {
 
         String sb = "class Link {\n" +
+                "    href: " + toIndentedString(href) + "\n" +
                 "    method: " + toIndentedString(method) + "\n" +
                 "    rel: " + toIndentedString(rel) + "\n" +
-                "    href: " + toIndentedString(href) + "\n" +
                 "    title: " + toIndentedString(title) + "\n" +
                 "    type: " + toIndentedString(type) + "\n" +
                 "}";

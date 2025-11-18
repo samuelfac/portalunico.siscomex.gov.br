@@ -37,17 +37,6 @@ public class AtributoTributoCover {
     private String valor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do atributo no cadastro de atributos.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 14
      *
      * @return codigo
@@ -83,6 +72,18 @@ public class AtributoTributoCover {
     public AtributoTributoCover valor(String valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

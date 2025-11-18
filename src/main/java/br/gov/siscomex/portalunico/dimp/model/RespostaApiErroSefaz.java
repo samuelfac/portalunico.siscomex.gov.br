@@ -35,17 +35,6 @@ public class RespostaApiErroSefaz {
     private List<DuimpApiMessageCover> errors = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Mensagem de resposta do resultado da operação.
      *
      * @return message
@@ -86,6 +75,18 @@ public class RespostaApiErroSefaz {
     public RespostaApiErroSefaz addErrorsItem(DuimpApiMessageCover errorsItem) {
         this.errors.add(errorsItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -14,27 +14,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ImpostoDeImportao", propOrder =
-        {"valorRecolhido", "valorPendente", "valorDevido", "darfs"
+        {"darfs", "valorDevido", "valorPendente", "valorRecolhido"
         })
 
 @XmlRootElement(name = "ImpostoDeImportao")
 public class ImpostoDeImportao {
 
-    @XmlElement(name = "valorRecolhido")
-    @ApiModelProperty(value = "Valor que foi recolhido do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @XmlElement(name = "darfs")
+    @ApiModelProperty(value = "Lista de DARFS.")
     @Valid
     /**
-     * Valor que foi recolhido do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     * Lista de DARFS.
      **/
-    private BigDecimal valorRecolhido = null;
-
-    @XmlElement(name = "valorPendente")
-    @ApiModelProperty(value = "Valor pendente de pagamento do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor pendente de pagamento do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorPendente = null;
+    private List<DARF> darfs = null;
 
     @XmlElement(name = "valorDevido")
     @ApiModelProperty(value = "Valor devido de II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
@@ -44,13 +36,21 @@ public class ImpostoDeImportao {
      **/
     private BigDecimal valorDevido = null;
 
-    @XmlElement(name = "darfs")
-    @ApiModelProperty(value = "Lista de DARFS.")
+    @XmlElement(name = "valorPendente")
+    @ApiModelProperty(value = "Valor pendente de pagamento do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
     @Valid
     /**
-     * Lista de DARFS.
+     * Valor pendente de pagamento do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      **/
-    private List<DARF> darfs = null;
+    private BigDecimal valorPendente = null;
+
+    @XmlElement(name = "valorRecolhido")
+    @ApiModelProperty(value = "Valor que foi recolhido do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor que foi recolhido do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorRecolhido = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,21 +64,45 @@ public class ImpostoDeImportao {
     }
 
     /**
-     * Valor que foi recolhido do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     * Lista de DARFS.
      *
-     * @return valorRecolhido
+     * @return darfs
      **/
-    @JsonProperty("valorRecolhido")
-    public BigDecimal getValorRecolhido() {
-        return valorRecolhido;
+    @JsonProperty("darfs")
+    public List<DARF> getDarfs() {
+        return darfs;
     }
 
-    public void setValorRecolhido(BigDecimal valorRecolhido) {
-        this.valorRecolhido = valorRecolhido;
+    public void setDarfs(List<DARF> darfs) {
+        this.darfs = darfs;
     }
 
-    public ImpostoDeImportao valorRecolhido(BigDecimal valorRecolhido) {
-        this.valorRecolhido = valorRecolhido;
+    public ImpostoDeImportao darfs(List<DARF> darfs) {
+        this.darfs = darfs;
+        return this;
+    }
+
+    /**
+     * Valor devido de II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorDevido
+     **/
+    @JsonProperty("valorDevido")
+    public BigDecimal getValorDevido() {
+        return valorDevido;
+    }
+
+    public void setValorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
+    }
+
+    public ImpostoDeImportao valorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
+        return this;
+    }
+
+    public ImpostoDeImportao addDarfsItem(DARF darfsItem) {
+        this.darfs.add(darfsItem);
         return this;
     }
 
@@ -102,45 +126,21 @@ public class ImpostoDeImportao {
     }
 
     /**
-     * Valor devido de II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     * Valor que foi recolhido do II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      *
-     * @return valorDevido
+     * @return valorRecolhido
      **/
-    @JsonProperty("valorDevido")
-    public BigDecimal getValorDevido() {
-        return valorDevido;
+    @JsonProperty("valorRecolhido")
+    public BigDecimal getValorRecolhido() {
+        return valorRecolhido;
     }
 
-    public void setValorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
+    public void setValorRecolhido(BigDecimal valorRecolhido) {
+        this.valorRecolhido = valorRecolhido;
     }
 
-    public ImpostoDeImportao valorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
-        return this;
-    }
-
-    /**
-     * Lista de DARFS.
-     *
-     * @return darfs
-     **/
-    @JsonProperty("darfs")
-    public List<DARF> getDarfs() {
-        return darfs;
-    }
-
-    public void setDarfs(List<DARF> darfs) {
-        this.darfs = darfs;
-    }
-
-    public ImpostoDeImportao darfs(List<DARF> darfs) {
-        this.darfs = darfs;
-        return this;
-    }
-
-    public ImpostoDeImportao addDarfsItem(DARF darfsItem) {
-        this.darfs.add(darfsItem);
+    public ImpostoDeImportao valorRecolhido(BigDecimal valorRecolhido) {
+        this.valorRecolhido = valorRecolhido;
         return this;
     }
 
@@ -148,10 +148,10 @@ public class ImpostoDeImportao {
     public String toString() {
 
         String sb = "class ImpostoDeImportao {\n" +
-                "    valorRecolhido: " + toIndentedString(valorRecolhido) + "\n" +
-                "    valorPendente: " + toIndentedString(valorPendente) + "\n" +
-                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
                 "    darfs: " + toIndentedString(darfs) + "\n" +
+                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
+                "    valorPendente: " + toIndentedString(valorPendente) + "\n" +
+                "    valorRecolhido: " + toIndentedString(valorRecolhido) + "\n" +
                 "}";
         return sb;
     }

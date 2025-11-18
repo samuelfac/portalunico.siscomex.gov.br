@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReferenciaCampoAdicionalTt", propOrder =
-        {"valor", "codigoAtributo"
+        {"codigoAtributo", "valor"
         })
 
 @XmlRootElement(name = "ReferenciaCampoAdicionalTt")
@@ -23,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Valor de um campo adicional de um fundamento legal")
 public class ReferenciaCampoAdicionalTt {
 
+    @XmlElement(name = "codigoAtributo", required = true)
+    @ApiModelProperty(example = "ATT_2982", required = true, value = "Código do atributo relacionado ao campo adicional.<br>Tamanho mínimo: 5<br>Tamanho máximo: 40")
+    /**
+     * Código do atributo relacionado ao campo adicional.<br>Tamanho mínimo: 5<br>Tamanho máximo: 40
+     **/
+    private String codigoAtributo = null;
+
     @XmlElement(name = "valor", required = true)
     @ApiModelProperty(example = "32061100", required = true, value = "Valor do campo adicional.<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000")
     /**
@@ -30,12 +37,25 @@ public class ReferenciaCampoAdicionalTt {
      **/
     private String valor = null;
 
-    @XmlElement(name = "codigoAtributo", required = true)
-    @ApiModelProperty(example = "ATT_2982", required = true, value = "Código do atributo relacionado ao campo adicional.<br>Tamanho mínimo: 5<br>Tamanho máximo: 40")
     /**
-     * Código do atributo relacionado ao campo adicional.<br>Tamanho mínimo: 5<br>Tamanho máximo: 40
+     * Código do atributo relacionado ao campo adicional.&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 40
+     *
+     * @return codigoAtributo
      **/
-    private String codigoAtributo = null;
+    @JsonProperty("codigoAtributo")
+    @NotNull
+    public String getCodigoAtributo() {
+        return codigoAtributo;
+    }
+
+    public void setCodigoAtributo(String codigoAtributo) {
+        this.codigoAtributo = codigoAtributo;
+    }
+
+    public ReferenciaCampoAdicionalTt codigoAtributo(String codigoAtributo) {
+        this.codigoAtributo = codigoAtributo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -68,32 +88,12 @@ public class ReferenciaCampoAdicionalTt {
         return this;
     }
 
-    /**
-     * Código do atributo relacionado ao campo adicional.&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 40
-     *
-     * @return codigoAtributo
-     **/
-    @JsonProperty("codigoAtributo")
-    @NotNull
-    public String getCodigoAtributo() {
-        return codigoAtributo;
-    }
-
-    public void setCodigoAtributo(String codigoAtributo) {
-        this.codigoAtributo = codigoAtributo;
-    }
-
-    public ReferenciaCampoAdicionalTt codigoAtributo(String codigoAtributo) {
-        this.codigoAtributo = codigoAtributo;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ReferenciaCampoAdicionalTt {\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    codigoAtributo: " + toIndentedString(codigoAtributo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
                 "}";
         return sb;
     }

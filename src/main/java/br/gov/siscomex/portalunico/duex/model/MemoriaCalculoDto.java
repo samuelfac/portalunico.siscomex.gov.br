@@ -15,50 +15,12 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MemoriaCalculoDto", propOrder =
-        {"valorDaAliquota", "tipoDeAliquota", "valorBaseDeCalculo", "valorDaAliquotaReduzida", "valorBaseDeCalculoEspecifico", "percentualDeReducaoDaBaseCalculado", "percentualDeReducaoDaAliquota", "valorBaseDeCalculoReduzido", "valorDaAliquotaEspecifica"
+        {"percentualDeReducaoDaAliquota", "percentualDeReducaoDaBaseCalculado", "tipoDeAliquota", "valorBaseDeCalculo", "valorBaseDeCalculoEspecifico", "valorBaseDeCalculoReduzido", "valorDaAliquota", "valorDaAliquotaEspecifica", "valorDaAliquotaReduzida"
         })
 
 @XmlRootElement(name = "MemoriaCalculoDto")
 public class MemoriaCalculoDto {
 
-    @XmlElement(name = "valorDaAliquota")
-    @ApiModelProperty(value = "Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorDaAliquota = null;
-    @XmlElement(name = "tipoDeAliquota")
-    @ApiModelProperty(value = "")
-    private TipoDeAliquotaEnum tipoDeAliquota = null;
-    @XmlElement(name = "valorBaseDeCalculo")
-    @ApiModelProperty(value = "Valor da base de cálculo<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da base de cálculo<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorBaseDeCalculo = null;
-    @XmlElement(name = "valorDaAliquotaReduzida")
-    @ApiModelProperty(value = "Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorDaAliquotaReduzida = null;
-    @XmlElement(name = "valorBaseDeCalculoEspecifico")
-    @ApiModelProperty(value = "Valor da base de cálculo específica<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da base de cálculo específica<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorBaseDeCalculoEspecifico = null;
-    @XmlElement(name = "percentualDeReducaoDaBaseCalculado")
-    @ApiModelProperty(value = "Percentual da redução da base de cálculo<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Percentual da redução da base de cálculo<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private BigDecimal percentualDeReducaoDaBaseCalculado = null;
     @XmlElement(name = "percentualDeReducaoDaAliquota")
     @ApiModelProperty(value = "Percentual de redução da alíquota<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     @Valid
@@ -66,6 +28,42 @@ public class MemoriaCalculoDto {
      * Percentual de redução da alíquota<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal percentualDeReducaoDaAliquota = null;
+
+    @XmlElement(name = "percentualDeReducaoDaBaseCalculado")
+    @ApiModelProperty(value = "Percentual da redução da base de cálculo<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Percentual da redução da base de cálculo<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private BigDecimal percentualDeReducaoDaBaseCalculado = null;
+    @XmlElement(name = "valorDaAliquota")
+    @ApiModelProperty(value = "Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorDaAliquota = null;
+
+    @XmlElement(name = "tipoDeAliquota")
+    @ApiModelProperty(value = "")
+    private TipoDeAliquotaEnum tipoDeAliquota = null;
+
+    @XmlElement(name = "valorBaseDeCalculo")
+    @ApiModelProperty(value = "Valor da base de cálculo<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da base de cálculo<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorBaseDeCalculo = null;
+
+    @XmlElement(name = "valorBaseDeCalculoEspecifico")
+    @ApiModelProperty(value = "Valor da base de cálculo específica<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da base de cálculo específica<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorBaseDeCalculoEspecifico = null;
+
     @XmlElement(name = "valorBaseDeCalculoReduzido")
     @ApiModelProperty(value = "Valor da base de cálculo reduzido<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -73,6 +71,14 @@ public class MemoriaCalculoDto {
      * Valor da base de cálculo reduzido<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorBaseDeCalculoReduzido = null;
+    @XmlElement(name = "valorDaAliquotaReduzida")
+    @ApiModelProperty(value = "Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorDaAliquotaReduzida = null;
+
     @XmlElement(name = "valorDaAliquotaEspecifica")
     @ApiModelProperty(value = "Valor da alíquota específica<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -93,21 +99,40 @@ public class MemoriaCalculoDto {
     }
 
     /**
-     * Valor da alíquota&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Percentual de redução da alíquota&lt;br /&gt;Tamanho: 16,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
-     * @return valorDaAliquota
+     * @return percentualDeReducaoDaAliquota
      **/
-    @JsonProperty("valorDaAliquota")
-    public BigDecimal getValorDaAliquota() {
-        return valorDaAliquota;
+    @JsonProperty("percentualDeReducaoDaAliquota")
+    public BigDecimal getPercentualDeReducaoDaAliquota() {
+        return percentualDeReducaoDaAliquota;
     }
 
-    public void setValorDaAliquota(BigDecimal valorDaAliquota) {
-        this.valorDaAliquota = valorDaAliquota;
+    public void setPercentualDeReducaoDaAliquota(BigDecimal percentualDeReducaoDaAliquota) {
+        this.percentualDeReducaoDaAliquota = percentualDeReducaoDaAliquota;
     }
 
-    public MemoriaCalculoDto valorDaAliquota(BigDecimal valorDaAliquota) {
-        this.valorDaAliquota = valorDaAliquota;
+    public MemoriaCalculoDto percentualDeReducaoDaAliquota(BigDecimal percentualDeReducaoDaAliquota) {
+        this.percentualDeReducaoDaAliquota = percentualDeReducaoDaAliquota;
+        return this;
+    }
+
+    /**
+     * Percentual da redução da base de cálculo&lt;br /&gt;Tamanho: 16,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     *
+     * @return percentualDeReducaoDaBaseCalculado
+     **/
+    @JsonProperty("percentualDeReducaoDaBaseCalculado")
+    public BigDecimal getPercentualDeReducaoDaBaseCalculado() {
+        return percentualDeReducaoDaBaseCalculado;
+    }
+
+    public void setPercentualDeReducaoDaBaseCalculado(BigDecimal percentualDeReducaoDaBaseCalculado) {
+        this.percentualDeReducaoDaBaseCalculado = percentualDeReducaoDaBaseCalculado;
+    }
+
+    public MemoriaCalculoDto percentualDeReducaoDaBaseCalculado(BigDecimal percentualDeReducaoDaBaseCalculado) {
+        this.percentualDeReducaoDaBaseCalculado = percentualDeReducaoDaBaseCalculado;
         return this;
     }
 
@@ -153,25 +178,6 @@ public class MemoriaCalculoDto {
     }
 
     /**
-     * Valor da aliquota reduzida&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorDaAliquotaReduzida
-     **/
-    @JsonProperty("valorDaAliquotaReduzida")
-    public BigDecimal getValorDaAliquotaReduzida() {
-        return valorDaAliquotaReduzida;
-    }
-
-    public void setValorDaAliquotaReduzida(BigDecimal valorDaAliquotaReduzida) {
-        this.valorDaAliquotaReduzida = valorDaAliquotaReduzida;
-    }
-
-    public MemoriaCalculoDto valorDaAliquotaReduzida(BigDecimal valorDaAliquotaReduzida) {
-        this.valorDaAliquotaReduzida = valorDaAliquotaReduzida;
-        return this;
-    }
-
-    /**
      * Valor da base de cálculo específica&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorBaseDeCalculoEspecifico
@@ -187,44 +193,6 @@ public class MemoriaCalculoDto {
 
     public MemoriaCalculoDto valorBaseDeCalculoEspecifico(BigDecimal valorBaseDeCalculoEspecifico) {
         this.valorBaseDeCalculoEspecifico = valorBaseDeCalculoEspecifico;
-        return this;
-    }
-
-    /**
-     * Percentual da redução da base de cálculo&lt;br /&gt;Tamanho: 16,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return percentualDeReducaoDaBaseCalculado
-     **/
-    @JsonProperty("percentualDeReducaoDaBaseCalculado")
-    public BigDecimal getPercentualDeReducaoDaBaseCalculado() {
-        return percentualDeReducaoDaBaseCalculado;
-    }
-
-    public void setPercentualDeReducaoDaBaseCalculado(BigDecimal percentualDeReducaoDaBaseCalculado) {
-        this.percentualDeReducaoDaBaseCalculado = percentualDeReducaoDaBaseCalculado;
-    }
-
-    public MemoriaCalculoDto percentualDeReducaoDaBaseCalculado(BigDecimal percentualDeReducaoDaBaseCalculado) {
-        this.percentualDeReducaoDaBaseCalculado = percentualDeReducaoDaBaseCalculado;
-        return this;
-    }
-
-    /**
-     * Percentual de redução da alíquota&lt;br /&gt;Tamanho: 16,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return percentualDeReducaoDaAliquota
-     **/
-    @JsonProperty("percentualDeReducaoDaAliquota")
-    public BigDecimal getPercentualDeReducaoDaAliquota() {
-        return percentualDeReducaoDaAliquota;
-    }
-
-    public void setPercentualDeReducaoDaAliquota(BigDecimal percentualDeReducaoDaAliquota) {
-        this.percentualDeReducaoDaAliquota = percentualDeReducaoDaAliquota;
-    }
-
-    public MemoriaCalculoDto percentualDeReducaoDaAliquota(BigDecimal percentualDeReducaoDaAliquota) {
-        this.percentualDeReducaoDaAliquota = percentualDeReducaoDaAliquota;
         return this;
     }
 
@@ -248,6 +216,25 @@ public class MemoriaCalculoDto {
     }
 
     /**
+     * Valor da alíquota&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorDaAliquota
+     **/
+    @JsonProperty("valorDaAliquota")
+    public BigDecimal getValorDaAliquota() {
+        return valorDaAliquota;
+    }
+
+    public void setValorDaAliquota(BigDecimal valorDaAliquota) {
+        this.valorDaAliquota = valorDaAliquota;
+    }
+
+    public MemoriaCalculoDto valorDaAliquota(BigDecimal valorDaAliquota) {
+        this.valorDaAliquota = valorDaAliquota;
+        return this;
+    }
+
+    /**
      * Valor da alíquota específica&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorDaAliquotaEspecifica
@@ -266,20 +253,39 @@ public class MemoriaCalculoDto {
         return this;
     }
 
+    /**
+     * Valor da aliquota reduzida&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorDaAliquotaReduzida
+     **/
+    @JsonProperty("valorDaAliquotaReduzida")
+    public BigDecimal getValorDaAliquotaReduzida() {
+        return valorDaAliquotaReduzida;
+    }
+
+    public void setValorDaAliquotaReduzida(BigDecimal valorDaAliquotaReduzida) {
+        this.valorDaAliquotaReduzida = valorDaAliquotaReduzida;
+    }
+
+    public MemoriaCalculoDto valorDaAliquotaReduzida(BigDecimal valorDaAliquotaReduzida) {
+        this.valorDaAliquotaReduzida = valorDaAliquotaReduzida;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class MemoriaCalculoDto {\n" +
-                "    valorDaAliquota: " + toIndentedString(valorDaAliquota) + "\n" +
+                "    percentualDeReducaoDaAliquota: " + toIndentedString(percentualDeReducaoDaAliquota) + "\n" +
+                "    percentualDeReducaoDaBaseCalculado: " + toIndentedString(percentualDeReducaoDaBaseCalculado) + "\n" +
                 "    tipoDeAliquota: " + toIndentedString(tipoDeAliquota) + "\n" +
                 "    valorBaseDeCalculo: " + toIndentedString(valorBaseDeCalculo) + "\n" +
-                "    valorDaAliquotaReduzida: " + toIndentedString(valorDaAliquotaReduzida) + "\n" +
                 "    valorBaseDeCalculoEspecifico: " + toIndentedString(valorBaseDeCalculoEspecifico) + "\n" +
-                "    percentualDeReducaoDaBaseCalculado: " + toIndentedString(percentualDeReducaoDaBaseCalculado) + "\n" +
-                "    percentualDeReducaoDaAliquota: " + toIndentedString(percentualDeReducaoDaAliquota) + "\n" +
                 "    valorBaseDeCalculoReduzido: " + toIndentedString(valorBaseDeCalculoReduzido) + "\n" +
+                "    valorDaAliquota: " + toIndentedString(valorDaAliquota) + "\n" +
                 "    valorDaAliquotaEspecifica: " + toIndentedString(valorDaAliquotaEspecifica) + "\n" +
+                "    valorDaAliquotaReduzida: " + toIndentedString(valorDaAliquotaReduzida) + "\n" +
                 "}";
         return sb;
     }

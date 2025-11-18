@@ -31,17 +31,6 @@ public class UnidadeDeclaradaCover {
     private String codigo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da unidade da RFB na qual as mercadorias acobertadas pela Duimp serão submetidas a conferência aduaneira.&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;&lt;br&gt;Origem: Sistema de Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/
      *
      * @return codigo
@@ -59,6 +48,18 @@ public class UnidadeDeclaradaCover {
     public UnidadeDeclaradaCover codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

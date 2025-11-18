@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemDoAtoConcessorio", propOrder =
-        {"numero", "ncm"
+        {"ncm", "numero"
         })
 
 @XmlRootElement(name = "ItemDoAtoConcessorio")
 public class ItemDoAtoConcessorio {
+
+    @XmlElement(name = "ncm")
+    @ApiModelProperty(example = "01013000", value = "NCM<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")
+    /**
+     * NCM<br />Tamanho: 8<br />Formato: 'NNNNNNNN'
+     **/
+    private String ncm = null;
 
     @XmlElement(name = "numero")
     @ApiModelProperty(value = "Número<br />Formato: Inteiro, com até 5 digitos")
@@ -24,12 +31,24 @@ public class ItemDoAtoConcessorio {
      **/
     private String numero = null;
 
-    @XmlElement(name = "ncm")
-    @ApiModelProperty(example = "01013000", value = "NCM<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")
     /**
-     * NCM<br />Tamanho: 8<br />Formato: 'NNNNNNNN'
+     * NCM&lt;br /&gt;Tamanho: 8&lt;br /&gt;Formato: &#39;NNNNNNNN&#39;
+     *
+     * @return ncm
      **/
-    private String ncm = null;
+    @JsonProperty("ncm")
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
+    }
+
+    public ItemDoAtoConcessorio ncm(String ncm) {
+        this.ncm = ncm;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class ItemDoAtoConcessorio {
         return this;
     }
 
-    /**
-     * NCM&lt;br /&gt;Tamanho: 8&lt;br /&gt;Formato: &#39;NNNNNNNN&#39;
-     *
-     * @return ncm
-     **/
-    @JsonProperty("ncm")
-    public String getNcm() {
-        return ncm;
-    }
-
-    public void setNcm(String ncm) {
-        this.ncm = ncm;
-    }
-
-    public ItemDoAtoConcessorio ncm(String ncm) {
-        this.ncm = ncm;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ItemDoAtoConcessorio {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "}";
         return sb;
     }

@@ -13,18 +13,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaParaSucessoNaRecepoDeEventoAduaneiro", propOrder =
-        {"protocolo", "dataHoraTransmissao", "cabecalhoRequisicao"
+        {"cabecalhoRequisicao", "dataHoraTransmissao", "protocolo"
         })
 
 @XmlRootElement(name = "RespostaParaSucessoNaRecepoDeEventoAduaneiro")
 public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
 
-    @XmlElement(name = "protocolo", required = true)
-    @ApiModelProperty(required = true, value = "Protocolo do Evento<br/>Tamanho: 36")
-    /**
-     * Protocolo do Evento<br/>Tamanho: 36
-     **/
-    private String protocolo = null;
+    @XmlElement(name = "cabecalhoRequisicao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private CabealhoEnvioEventoAduaneiro cabecalhoRequisicao = null;
 
     @XmlElement(name = "dataHoraTransmissao", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora de transmissão <br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -33,10 +31,12 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
      **/
     private String dataHoraTransmissao = null;
 
-    @XmlElement(name = "cabecalhoRequisicao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private CabealhoEnvioEventoAduaneiro cabecalhoRequisicao = null;
+    @XmlElement(name = "protocolo", required = true)
+    @ApiModelProperty(required = true, value = "Protocolo do Evento<br/>Tamanho: 36")
+    /**
+     * Protocolo do Evento<br/>Tamanho: 36
+     **/
+    private String protocolo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -50,23 +50,18 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
     }
 
     /**
-     * Protocolo do Evento&lt;br/&gt;Tamanho: 36
+     * Get cabecalhoRequisicao
      *
-     * @return protocolo
+     * @return cabecalhoRequisicao
      **/
-    @JsonProperty("protocolo")
+    @JsonProperty("cabecalhoRequisicao")
     @NotNull
-    public String getProtocolo() {
-        return protocolo;
+    public CabealhoEnvioEventoAduaneiro getCabecalhoRequisicao() {
+        return cabecalhoRequisicao;
     }
 
-    public void setProtocolo(String protocolo) {
-        this.protocolo = protocolo;
-    }
-
-    public RespostaParaSucessoNaRecepoDeEventoAduaneiro protocolo(String protocolo) {
-        this.protocolo = protocolo;
-        return this;
+    public void setCabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
+        this.cabecalhoRequisicao = cabecalhoRequisicao;
     }
 
     /**
@@ -89,23 +84,28 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
         return this;
     }
 
-    /**
-     * Get cabecalhoRequisicao
-     *
-     * @return cabecalhoRequisicao
-     **/
-    @JsonProperty("cabecalhoRequisicao")
-    @NotNull
-    public CabealhoEnvioEventoAduaneiro getCabecalhoRequisicao() {
-        return cabecalhoRequisicao;
-    }
-
-    public void setCabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
-        this.cabecalhoRequisicao = cabecalhoRequisicao;
-    }
-
     public RespostaParaSucessoNaRecepoDeEventoAduaneiro cabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
         this.cabecalhoRequisicao = cabecalhoRequisicao;
+        return this;
+    }
+
+    /**
+     * Protocolo do Evento&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocolo
+     **/
+    @JsonProperty("protocolo")
+    @NotNull
+    public String getProtocolo() {
+        return protocolo;
+    }
+
+    public void setProtocolo(String protocolo) {
+        this.protocolo = protocolo;
+    }
+
+    public RespostaParaSucessoNaRecepoDeEventoAduaneiro protocolo(String protocolo) {
+        this.protocolo = protocolo;
         return this;
     }
 
@@ -113,9 +113,9 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
     public String toString() {
 
         String sb = "class RespostaParaSucessoNaRecepoDeEventoAduaneiro {\n" +
-                "    protocolo: " + toIndentedString(protocolo) + "\n" +
-                "    dataHoraTransmissao: " + toIndentedString(dataHoraTransmissao) + "\n" +
                 "    cabecalhoRequisicao: " + toIndentedString(cabecalhoRequisicao) + "\n" +
+                "    dataHoraTransmissao: " + toIndentedString(dataHoraTransmissao) + "\n" +
+                "    protocolo: " + toIndentedString(protocolo) + "\n" +
                 "}";
         return sb;
     }

@@ -26,25 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class CertificadoMercosulCover {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "CCPTC", required = true, value = "Tipo de certificado Mercosul.<br>Domínio:")
-    /**
-     * Tipo de certificado Mercosul.<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "numero", required = true)
-    @ApiModelProperty(example = "PY-06000AA0000A-0001", required = true, value = "Número do Certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
-    /**
-     * Número do Certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
-     **/
-    private String numero = null;
-    @XmlElement(name = "quantidade", required = true)
-    @ApiModelProperty(example = "1.12345", required = true, value = "Quantidade da mercadoria na unidade estatística.<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    /**
-     * Quantidade da mercadoria na unidade estatística.<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private String quantidade = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -55,6 +36,27 @@ public class CertificadoMercosulCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "CCPTC", required = true, value = "Tipo de certificado Mercosul.<br>Domínio:")
+    /**
+     * Tipo de certificado Mercosul.<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "numero", required = true)
+    @ApiModelProperty(example = "PY-06000AA0000A-0001", required = true, value = "Número do Certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
+    /**
+     * Número do Certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
+     **/
+    private String numero = null;
+
+    @XmlElement(name = "quantidade", required = true)
+    @ApiModelProperty(example = "1.12345", required = true, value = "Quantidade da mercadoria na unidade estatística.<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    /**
+     * Quantidade da mercadoria na unidade estatística.<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private String quantidade = null;
 
     /**
      * Tipo de certificado Mercosul.&lt;br&gt;Domínio:
@@ -118,7 +120,6 @@ public class CertificadoMercosulCover {
         this.quantidade = quantidade;
         return this;
     }
-
 
     @Override
     public String toString() {

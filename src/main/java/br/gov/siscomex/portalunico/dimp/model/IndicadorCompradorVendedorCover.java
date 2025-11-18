@@ -26,13 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class IndicadorCompradorVendedorCover {
 
 
-    @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "NAO_HA_VINCULACAO", required = true, value = "Tipo de vinculação 'comprador x vendedor' ou 'comprador/encomendante x vendedor'.<br>Domínio:")
-    /**
-     * Tipo de vinculação 'comprador x vendedor' ou 'comprador/encomendante x vendedor'.<br>Domínio:
-     **/
-    private CodigoEnum codigo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +36,13 @@ public class IndicadorCompradorVendedorCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "NAO_HA_VINCULACAO", required = true, value = "Tipo de vinculação 'comprador x vendedor' ou 'comprador/encomendante x vendedor'.<br>Domínio:")
+    /**
+     * Tipo de vinculação 'comprador x vendedor' ou 'comprador/encomendante x vendedor'.<br>Domínio:
+     **/
+    private CodigoEnum codigo = null;
 
     /**
      * Tipo de vinculação &#39;comprador x vendedor&#39; ou &#39;comprador/encomendante x vendedor&#39;.&lt;br&gt;Domínio:
@@ -66,7 +66,6 @@ public class IndicadorCompradorVendedorCover {
         this.codigo = codigo;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -25,9 +25,7 @@ public class Communication {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private CommunicationIdentificationIDType id = null;
-    @XmlElement(name = "typeCode", required = true)
-    @ApiModelProperty(required = true, value = "")
-    private TypeCodeEnum typeCode = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -39,6 +37,10 @@ public class Communication {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "typeCode", required = true)
+    @ApiModelProperty(required = true, value = "")
+    private TypeCodeEnum typeCode = null;
 
     /**
      * Get id
@@ -82,7 +84,6 @@ public class Communication {
         this.typeCode = typeCode;
         return this;
     }
-
 
     @Override
     public String toString() {

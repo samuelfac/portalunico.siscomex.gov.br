@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecepcaoDocumentoCarga", propOrder =
-        {"pesoAferido", "observacoes", "documentos", "identificacaoPessoaJuridica", "motivoNaoPesagem", "localArmazenamento", "entregador", "local", "identificacaoRecepcao"
+        {"identificacaoRecepcao", "identificacaoPessoaJuridica", "local", "documentos", "entregador", "pesoAferido", "motivoNaoPesagem", "localArmazenamento", "observacoes"
         })
 
 @XmlRootElement(name = "RecepcaoDocumentoCarga")
@@ -25,25 +25,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Recepção por Documento de Carga ")
 public class RecepcaoDocumentoCarga {
 
-    @XmlElement(name = "pesoAferido")
-    @ApiModelProperty(value = "Peso aferido na balança do recinto em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.")
-    @Valid
+    @XmlElement(name = "identificacaoRecepcao", required = true)
+    @ApiModelProperty(example = "REC001", required = true, value = "Identificação da Recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
     /**
-     * Peso aferido na balança do recinto em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.
+     * Identificação da Recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      **/
-    private BigDecimal pesoAferido = null;
-
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "Observações gerais", value = "Observações gerais<br>Tamanho: 250")
-    /**
-     * Observações gerais<br>Tamanho: 250
-     **/
-    private String observacoes = null;
-
-    @XmlElement(name = "documentos", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Documentos documentos = null;
+    private String identificacaoRecepcao = null;
 
     @XmlElement(name = "identificacaoPessoaJuridica", required = true)
     @ApiModelProperty(example = "07396865000168", required = true, value = "CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
@@ -51,6 +38,29 @@ public class RecepcaoDocumentoCarga {
      * CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
      **/
     private String identificacaoPessoaJuridica = null;
+
+    @XmlElement(name = "local", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Local local = null;
+
+    @XmlElement(name = "documentos", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Documentos documentos = null;
+
+    @XmlElement(name = "entregador", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Entregador entregador = null;
+
+    @XmlElement(name = "pesoAferido")
+    @ApiModelProperty(value = "Peso aferido na balança do recinto em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.")
+    @Valid
+    /**
+     * Peso aferido na balança do recinto em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.
+     **/
+    private BigDecimal pesoAferido = null;
 
     @XmlElement(name = "motivoNaoPesagem")
     @ApiModelProperty(example = "Motivo da não realização da pesagem", value = "Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.")
@@ -66,22 +76,12 @@ public class RecepcaoDocumentoCarga {
      **/
     private String localArmazenamento = null;
 
-    @XmlElement(name = "entregador", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Entregador entregador = null;
-
-    @XmlElement(name = "local", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Local local = null;
-
-    @XmlElement(name = "identificacaoRecepcao", required = true)
-    @ApiModelProperty(example = "REC001", required = true, value = "Identificação da Recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "Observações gerais", value = "Observações gerais<br>Tamanho: 250")
     /**
-     * Identificação da Recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
+     * Observações gerais<br>Tamanho: 250
      **/
-    private String identificacaoRecepcao = null;
+    private String observacoes = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -95,41 +95,58 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
-     * Peso aferido na balança do recinto em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.
+     * Identificação da Recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
-     * @return pesoAferido
+     * @return identificacaoRecepcao
      **/
-    @JsonProperty("pesoAferido")
-    public BigDecimal getPesoAferido() {
-        return pesoAferido;
+    @JsonProperty("identificacaoRecepcao")
+    @NotNull
+    public String getIdentificacaoRecepcao() {
+        return identificacaoRecepcao;
     }
 
-    public void setPesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
+    public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
     }
 
-    public RecepcaoDocumentoCarga pesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
+    public RecepcaoDocumentoCarga identificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
         return this;
     }
 
     /**
-     * Observações gerais&lt;br&gt;Tamanho: 250
+     * CNPJ do responsável pela recepção&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
      *
-     * @return observacoes
+     * @return identificacaoPessoaJuridica
      **/
-    @JsonProperty("observacoes")
-    public String getObservacoes() {
-        return observacoes;
+    @JsonProperty("identificacaoPessoaJuridica")
+    @NotNull
+    public String getIdentificacaoPessoaJuridica() {
+        return identificacaoPessoaJuridica;
     }
 
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+    public void setIdentificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
+        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
     }
 
-    public RecepcaoDocumentoCarga observacoes(String observacoes) {
-        this.observacoes = observacoes;
+    public RecepcaoDocumentoCarga identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
+        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
         return this;
+    }
+
+    /**
+     * Get local
+     *
+     * @return local
+     **/
+    @JsonProperty("local")
+    @NotNull
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     /**
@@ -152,24 +169,43 @@ public class RecepcaoDocumentoCarga {
         return this;
     }
 
-    /**
-     * CNPJ do responsável pela recepção&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return identificacaoPessoaJuridica
-     **/
-    @JsonProperty("identificacaoPessoaJuridica")
-    @NotNull
-    public String getIdentificacaoPessoaJuridica() {
-        return identificacaoPessoaJuridica;
-    }
-
-    public void setIdentificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
-        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
-    }
-
-    public RecepcaoDocumentoCarga identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
-        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
+    public RecepcaoDocumentoCarga local(Local local) {
+        this.local = local;
         return this;
+    }
+
+    /**
+     * Get entregador
+     *
+     * @return entregador
+     **/
+    @JsonProperty("entregador")
+    @NotNull
+    public Entregador getEntregador() {
+        return entregador;
+    }
+
+    public void setEntregador(Entregador entregador) {
+        this.entregador = entregador;
+    }
+
+    public RecepcaoDocumentoCarga entregador(Entregador entregador) {
+        this.entregador = entregador;
+        return this;
+    }
+
+    /**
+     * Peso aferido na balança do recinto em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.
+     *
+     * @return pesoAferido
+     **/
+    @JsonProperty("pesoAferido")
+    public BigDecimal getPesoAferido() {
+        return pesoAferido;
+    }
+
+    public void setPesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
     }
 
     /**
@@ -210,63 +246,26 @@ public class RecepcaoDocumentoCarga {
         return this;
     }
 
-    /**
-     * Get entregador
-     *
-     * @return entregador
-     **/
-    @JsonProperty("entregador")
-    @NotNull
-    public Entregador getEntregador() {
-        return entregador;
-    }
-
-    public void setEntregador(Entregador entregador) {
-        this.entregador = entregador;
-    }
-
-    public RecepcaoDocumentoCarga entregador(Entregador entregador) {
-        this.entregador = entregador;
+    public RecepcaoDocumentoCarga pesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
         return this;
     }
 
     /**
-     * Get local
-     *
-     * @return local
+     * Observações gerais&lt;br&gt;Tamanho: 250
+     * @return observacoes
      **/
-    @JsonProperty("local")
-    @NotNull
-    public Local getLocal() {
-        return local;
+    @JsonProperty("observacoes")
+    public String getObservacoes() {
+        return observacoes;
     }
 
-    public void setLocal(Local local) {
-        this.local = local;
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
-    public RecepcaoDocumentoCarga local(Local local) {
-        this.local = local;
-        return this;
-    }
-
-    /**
-     * Identificação da Recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
-     *
-     * @return identificacaoRecepcao
-     **/
-    @JsonProperty("identificacaoRecepcao")
-    @NotNull
-    public String getIdentificacaoRecepcao() {
-        return identificacaoRecepcao;
-    }
-
-    public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
-    }
-
-    public RecepcaoDocumentoCarga identificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
+    public RecepcaoDocumentoCarga observacoes(String observacoes) {
+        this.observacoes = observacoes;
         return this;
     }
 
@@ -274,15 +273,15 @@ public class RecepcaoDocumentoCarga {
     public String toString() {
 
         String sb = "class RecepcaoDocumentoCarga {\n" +
-                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
+                "    identificacaoRecepcao: " + toIndentedString(identificacaoRecepcao) + "\n" +
                 "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
+                "    local: " + toIndentedString(local) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
+                "    entregador: " + toIndentedString(entregador) + "\n" +
+                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
                 "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
                 "    localArmazenamento: " + toIndentedString(localArmazenamento) + "\n" +
-                "    entregador: " + toIndentedString(entregador) + "\n" +
-                "    local: " + toIndentedString(local) + "\n" +
-                "    identificacaoRecepcao: " + toIndentedString(identificacaoRecepcao) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
                 "}";
         return sb;
     }

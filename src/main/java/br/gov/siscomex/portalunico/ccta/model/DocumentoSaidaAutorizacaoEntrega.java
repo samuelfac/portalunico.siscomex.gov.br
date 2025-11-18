@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoSaidaAutorizacaoEntrega", propOrder =
-        {"cpfResponsavel", "tipoDocumento", "ulResponsavel", "identificacaoDocumento", "dataAutorizacao", "numeroDocumentoSaida", "justificativa", "lotacaoResponsavel", "tipoAutorizacao", "matriculaResponsavel", "nomeResponsavel"
+        {"cpfResponsavel", "dataAutorizacao", "identificacaoDocumento", "justificativa", "lotacaoResponsavel", "matriculaResponsavel", "nomeResponsavel", "numeroDocumentoSaida", "tipoAutorizacao", "tipoDocumento", "ulResponsavel"
         })
 
 @XmlRootElement(name = "DocumentoSaidaAutorizacaoEntrega")
@@ -22,25 +22,13 @@ public class DocumentoSaidaAutorizacaoEntrega {
     @ApiModelProperty(value = "")
     private String cpfResponsavel = null;
 
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "")
-    private String tipoDocumento = null;
-
-    @XmlElement(name = "ulResponsavel")
-    @ApiModelProperty(value = "")
-    private String ulResponsavel = null;
-
-    @XmlElement(name = "identificacaoDocumento")
-    @ApiModelProperty(value = "")
-    private String identificacaoDocumento = null;
-
     @XmlElement(name = "dataAutorizacao")
     @ApiModelProperty(value = "")
     private OffsetDateTime dataAutorizacao = null;
 
-    @XmlElement(name = "numeroDocumentoSaida")
+    @XmlElement(name = "identificacaoDocumento")
     @ApiModelProperty(value = "")
-    private String numeroDocumentoSaida = null;
+    private String identificacaoDocumento = null;
 
     @XmlElement(name = "justificativa")
     @ApiModelProperty(value = "")
@@ -50,10 +38,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
     @ApiModelProperty(value = "")
     private String lotacaoResponsavel = null;
 
-    @XmlElement(name = "tipoAutorizacao")
-    @ApiModelProperty(value = "")
-    private String tipoAutorizacao = null;
-
     @XmlElement(name = "matriculaResponsavel")
     @ApiModelProperty(value = "")
     private String matriculaResponsavel = null;
@@ -62,16 +46,21 @@ public class DocumentoSaidaAutorizacaoEntrega {
     @ApiModelProperty(value = "")
     private String nomeResponsavel = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "numeroDocumentoSaida")
+    @ApiModelProperty(value = "")
+    private String numeroDocumentoSaida = null;
+
+    @XmlElement(name = "tipoAutorizacao")
+    @ApiModelProperty(value = "")
+    private String tipoAutorizacao = null;
+
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "")
+    private String tipoDocumento = null;
+
+    @XmlElement(name = "ulResponsavel")
+    @ApiModelProperty(value = "")
+    private String ulResponsavel = null;
 
     /**
      * Get cpfResponsavel
@@ -89,63 +78,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
 
     public DocumentoSaidaAutorizacaoEntrega cpfResponsavel(String cpfResponsavel) {
         this.cpfResponsavel = cpfResponsavel;
-        return this;
-    }
-
-    /**
-     * Get tipoDocumento
-     *
-     * @return tipoDocumento
-     **/
-    @JsonProperty("tipoDocumento")
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public DocumentoSaidaAutorizacaoEntrega tipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
-    /**
-     * Get ulResponsavel
-     *
-     * @return ulResponsavel
-     **/
-    @JsonProperty("ulResponsavel")
-    public String getUlResponsavel() {
-        return ulResponsavel;
-    }
-
-    public void setUlResponsavel(String ulResponsavel) {
-        this.ulResponsavel = ulResponsavel;
-    }
-
-    public DocumentoSaidaAutorizacaoEntrega ulResponsavel(String ulResponsavel) {
-        this.ulResponsavel = ulResponsavel;
-        return this;
-    }
-
-    /**
-     * Get identificacaoDocumento
-     *
-     * @return identificacaoDocumento
-     **/
-    @JsonProperty("identificacaoDocumento")
-    public String getIdentificacaoDocumento() {
-        return identificacaoDocumento;
-    }
-
-    public void setIdentificacaoDocumento(String identificacaoDocumento) {
-        this.identificacaoDocumento = identificacaoDocumento;
-    }
-
-    public DocumentoSaidaAutorizacaoEntrega identificacaoDocumento(String identificacaoDocumento) {
-        this.identificacaoDocumento = identificacaoDocumento;
         return this;
     }
 
@@ -169,22 +101,28 @@ public class DocumentoSaidaAutorizacaoEntrega {
     }
 
     /**
-     * Get numeroDocumentoSaida
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get identificacaoDocumento
      *
-     * @return numeroDocumentoSaida
+     * @return identificacaoDocumento
      **/
-    @JsonProperty("numeroDocumentoSaida")
-    public String getNumeroDocumentoSaida() {
-        return numeroDocumentoSaida;
+    @JsonProperty("identificacaoDocumento")
+    public String getIdentificacaoDocumento() {
+        return identificacaoDocumento;
     }
 
-    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-    }
-
-    public DocumentoSaidaAutorizacaoEntrega numeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-        return this;
+    public void setIdentificacaoDocumento(String identificacaoDocumento) {
+        this.identificacaoDocumento = identificacaoDocumento;
     }
 
     /**
@@ -226,25 +164,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
     }
 
     /**
-     * Get tipoAutorizacao
-     *
-     * @return tipoAutorizacao
-     **/
-    @JsonProperty("tipoAutorizacao")
-    public String getTipoAutorizacao() {
-        return tipoAutorizacao;
-    }
-
-    public void setTipoAutorizacao(String tipoAutorizacao) {
-        this.tipoAutorizacao = tipoAutorizacao;
-    }
-
-    public DocumentoSaidaAutorizacaoEntrega tipoAutorizacao(String tipoAutorizacao) {
-        this.tipoAutorizacao = tipoAutorizacao;
-        return this;
-    }
-
-    /**
      * Get matriculaResponsavel
      *
      * @return matriculaResponsavel
@@ -282,21 +201,102 @@ public class DocumentoSaidaAutorizacaoEntrega {
         return this;
     }
 
+    public DocumentoSaidaAutorizacaoEntrega identificacaoDocumento(String identificacaoDocumento) {
+        this.identificacaoDocumento = identificacaoDocumento;
+        return this;
+    }
+
+    /**
+     * Get numeroDocumentoSaida
+     *
+     * @return numeroDocumentoSaida
+     **/
+    @JsonProperty("numeroDocumentoSaida")
+    public String getNumeroDocumentoSaida() {
+        return numeroDocumentoSaida;
+    }
+
+    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+    }
+
+    public DocumentoSaidaAutorizacaoEntrega numeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+        return this;
+    }
+
+    /**
+     * Get tipoAutorizacao
+     *
+     * @return tipoAutorizacao
+     **/
+    @JsonProperty("tipoAutorizacao")
+    public String getTipoAutorizacao() {
+        return tipoAutorizacao;
+    }
+
+    public void setTipoAutorizacao(String tipoAutorizacao) {
+        this.tipoAutorizacao = tipoAutorizacao;
+    }
+
+    public DocumentoSaidaAutorizacaoEntrega tipoAutorizacao(String tipoAutorizacao) {
+        this.tipoAutorizacao = tipoAutorizacao;
+        return this;
+    }
+
+    /**
+     * Get tipoDocumento
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public DocumentoSaidaAutorizacaoEntrega tipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
+    /**
+     * Get ulResponsavel
+     *
+     * @return ulResponsavel
+     **/
+    @JsonProperty("ulResponsavel")
+    public String getUlResponsavel() {
+        return ulResponsavel;
+    }
+
+    public void setUlResponsavel(String ulResponsavel) {
+        this.ulResponsavel = ulResponsavel;
+    }
+
+    public DocumentoSaidaAutorizacaoEntrega ulResponsavel(String ulResponsavel) {
+        this.ulResponsavel = ulResponsavel;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DocumentoSaidaAutorizacaoEntrega {\n" +
                 "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
-                "    ulResponsavel: " + toIndentedString(ulResponsavel) + "\n" +
-                "    identificacaoDocumento: " + toIndentedString(identificacaoDocumento) + "\n" +
                 "    dataAutorizacao: " + toIndentedString(dataAutorizacao) + "\n" +
-                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
+                "    identificacaoDocumento: " + toIndentedString(identificacaoDocumento) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "    lotacaoResponsavel: " + toIndentedString(lotacaoResponsavel) + "\n" +
-                "    tipoAutorizacao: " + toIndentedString(tipoAutorizacao) + "\n" +
                 "    matriculaResponsavel: " + toIndentedString(matriculaResponsavel) + "\n" +
                 "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
+                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
+                "    tipoAutorizacao: " + toIndentedString(tipoAutorizacao) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
+                "    ulResponsavel: " + toIndentedString(ulResponsavel) + "\n" +
                 "}";
         return sb;
     }

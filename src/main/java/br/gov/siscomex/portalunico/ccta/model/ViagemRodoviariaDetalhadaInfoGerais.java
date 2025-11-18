@@ -12,11 +12,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaDetalhadaInfoGerais", propOrder =
-        {"enLastre", "dadosViagem", "rota"
+        {"dadosViagem", "enLastre", "rota"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaDetalhadaInfoGerais")
 public class ViagemRodoviariaDetalhadaInfoGerais {
+
+    @XmlElement(name = "dadosViagem")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ViagemRodoviariaDetalhadaInfoGeraisDadosViagem dadosViagem = null;
 
     @XmlElement(name = "enLastre")
     @ApiModelProperty(value = "Indicador se a viagem é \"En Lastre\"")
@@ -25,15 +30,29 @@ public class ViagemRodoviariaDetalhadaInfoGerais {
      **/
     private Boolean enLastre = null;
 
-    @XmlElement(name = "dadosViagem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ViagemRodoviariaDetalhadaInfoGeraisDadosViagem dadosViagem = null;
-
     @XmlElement(name = "rota")
     @ApiModelProperty(value = "")
     @Valid
     private ViagemRodoviariaDetalhadaInfoGeraisRota rota = null;
+
+    /**
+     * Get dadosViagem
+     *
+     * @return dadosViagem
+     **/
+    @JsonProperty("dadosViagem")
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem getDadosViagem() {
+        return dadosViagem;
+    }
+
+    public void setDadosViagem(ViagemRodoviariaDetalhadaInfoGeraisDadosViagem dadosViagem) {
+        this.dadosViagem = dadosViagem;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGerais dadosViagem(ViagemRodoviariaDetalhadaInfoGeraisDadosViagem dadosViagem) {
+        this.dadosViagem = dadosViagem;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -60,30 +79,6 @@ public class ViagemRodoviariaDetalhadaInfoGerais {
         this.enLastre = enLastre;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGerais enLastre(Boolean enLastre) {
-        this.enLastre = enLastre;
-        return this;
-    }
-
-    /**
-     * Get dadosViagem
-     *
-     * @return dadosViagem
-     **/
-    @JsonProperty("dadosViagem")
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem getDadosViagem() {
-        return dadosViagem;
-    }
-
-    public void setDadosViagem(ViagemRodoviariaDetalhadaInfoGeraisDadosViagem dadosViagem) {
-        this.dadosViagem = dadosViagem;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGerais dadosViagem(ViagemRodoviariaDetalhadaInfoGeraisDadosViagem dadosViagem) {
-        this.dadosViagem = dadosViagem;
-        return this;
-    }
-
     /**
      * Get rota
      *
@@ -103,12 +98,17 @@ public class ViagemRodoviariaDetalhadaInfoGerais {
         return this;
     }
 
+    public ViagemRodoviariaDetalhadaInfoGerais enLastre(Boolean enLastre) {
+        this.enLastre = enLastre;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ViagemRodoviariaDetalhadaInfoGerais {\n" +
-                "    enLastre: " + toIndentedString(enLastre) + "\n" +
                 "    dadosViagem: " + toIndentedString(dadosViagem) + "\n" +
+                "    enLastre: " + toIndentedString(enLastre) + "\n" +
                 "    rota: " + toIndentedString(rota) + "\n" +
                 "}";
         return sb;

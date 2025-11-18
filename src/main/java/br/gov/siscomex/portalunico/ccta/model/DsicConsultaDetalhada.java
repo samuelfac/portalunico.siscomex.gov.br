@@ -16,11 +16,61 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DsicConsultaDetalhada", propOrder =
-        {"dataHoraEmissao", "numeroDocumentoViajante", "ruc", "motivo", "quantidadeVolumes", "situacao", "chegadasTerrestres", "nomeResponsavelGeracaoDsicDepositario", "tipoConhecimento", "documentosSaida", "numeroDocumentoRetencaoApreensao", "tipoDocumentoRetencaoApreensao", "bloqueiosBaixados", "viagemAssociada", "nomeViajante", "orgaoEmissorDocumentoViajante", "manuseiosEspeciais", "unidadeRfbGeracaoDsic", "descricaoMercadoria", "solicitacoesServicosEspeciais", "recepcoesComAvarias", "nomeConsignatario", "bloqueiosAtivos", "codigoAeroportoOrigemConhecimento", "partesEstoque", "unidadeResponsavelGeracaoDsicRfb", "outrasInfosServico", "identificacaoConhecimento", "setorResponsavelGeracaoDsicRfb", "tipoDocumentoConsignatario", "numeroAutorizacaoSobrevooDac", "valorArbitrado", "observacoes", "identificacaoDSIC", "codigoAeroportoDestinoConhecimento", "cnpjResponsavelGeracaoDsicDepositario", "pesoBruto", "conhecimentoApropriado", "recintoAduaneiroGeracaoDsic", "tipoDocumentoViajante", "identificacaoDocumentoConsignatario"
+        {"bloqueiosAtivos", "bloqueiosBaixados", "chegadasTerrestres", "cnpjResponsavelGeracaoDsicDepositario", "codigoAeroportoDestinoConhecimento", "codigoAeroportoOrigemConhecimento", "conhecimentoApropriado", "dataHoraEmissao", "descricaoMercadoria", "documentosSaida", "identificacaoConhecimento", "identificacaoDSIC", "identificacaoDocumentoConsignatario", "manuseiosEspeciais", "motivo", "nomeConsignatario", "nomeResponsavelGeracaoDsicDepositario", "nomeViajante", "numeroAutorizacaoSobrevooDac", "numeroDocumentoRetencaoApreensao", "numeroDocumentoViajante", "observacoes", "orgaoEmissorDocumentoViajante", "outrasInfosServico", "partesEstoque", "pesoBruto", "quantidadeVolumes", "recepcoesComAvarias", "recintoAduaneiroGeracaoDsic", "ruc", "setorResponsavelGeracaoDsicRfb", "situacao", "solicitacoesServicosEspeciais", "tipoConhecimento", "tipoDocumentoConsignatario", "tipoDocumentoRetencaoApreensao", "tipoDocumentoViajante", "unidadeResponsavelGeracaoDsicRfb", "unidadeRfbGeracaoDsic", "valorArbitrado", "viagemAssociada"
         })
 
 @XmlRootElement(name = "DsicConsultaDetalhada")
 public class DsicConsultaDetalhada {
+
+    @XmlElement(name = "bloqueiosAtivos")
+    @ApiModelProperty(value = "Lista os bloqueios ativos da carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista os bloqueios ativos da carga / Dsic<br/>
+     **/
+    private List<BloqueioConsultaDetalhada> bloqueiosAtivos = null;
+
+    @XmlElement(name = "bloqueiosBaixados")
+    @ApiModelProperty(value = "Lista os bloqueios baixados da carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista os bloqueios baixados da carga / Dsic<br/>
+     **/
+    private List<DesbloqueioConsultaDetalhada> bloqueiosBaixados = null;
+
+    @XmlElement(name = "chegadasTerrestres")
+    @ApiModelProperty(value = "Lista as chegadas de viagens terrestres associadas ao DSIC<br/>")
+    @Valid
+    /**
+     * Lista as chegadas de viagens terrestres associadas ao DSIC<br/>
+     **/
+    private List<CargaDetalheChegadaTerrestre> chegadasTerrestres = null;
+
+    @XmlElement(name = "cnpjResponsavelGeracaoDsicDepositario")
+    @ApiModelProperty(example = "00000000000000", value = "CNPJ responsável pela geração do DSIC<br/>Tamanho: 14<br/>Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ responsável pela geração do DSIC<br/>Tamanho: 14<br/>Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResponsavelGeracaoDsicDepositario = null;
+
+    @XmlElement(name = "codigoAeroportoDestinoConhecimento")
+    @ApiModelProperty(example = "GIG", value = "Código do Aeroporto de destino do conhecimento de carga associado ao DSIC<br/>Tamanho: 3")
+    /**
+     * Código do Aeroporto de destino do conhecimento de carga associado ao DSIC<br/>Tamanho: 3
+     **/
+    private String codigoAeroportoDestinoConhecimento = null;
+
+    @XmlElement(name = "codigoAeroportoOrigemConhecimento")
+    @ApiModelProperty(example = "GIG", value = "Código do Aeroporto de origem do conhecimento de carga associado ao DSIC<br/>Tamanho: 3")
+    /**
+     * Código do Aeroporto de origem do conhecimento de carga associado ao DSIC<br/>Tamanho: 3
+     **/
+    private String codigoAeroportoOrigemConhecimento = null;
+
+    @XmlElement(name = "conhecimentoApropriado")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ChaveConhecimento conhecimentoApropriado = null;
 
     @XmlElement(name = "dataHoraEmissao")
     @ApiModelProperty(example = "12/02/2021 21:21:21", value = "Data/Hora de emissão do DSIC.<br/> Formato: dd/MM/yyyy HH:mm:ss")
@@ -29,56 +79,13 @@ public class DsicConsultaDetalhada {
      **/
     private String dataHoraEmissao = null;
 
-    @XmlElement(name = "numeroDocumentoViajante")
-    @ApiModelProperty(example = "9840998BR65406", value = "Número do documento do passageiro<br/>Tamanho máximo: 20")
+    @XmlElement(name = "descricaoMercadoria")
+    @ApiModelProperty(example = "Descrição completa das mercadorias", value = "Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
     /**
-     * Número do documento do passageiro<br/>Tamanho máximo: 20
+     * Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
      **/
-    private String numeroDocumentoViajante = null;
+    private String descricaoMercadoria = null;
 
-    @XmlElement(name = "ruc")
-    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
-     **/
-    private String ruc = null;
-    @XmlElement(name = "motivo")
-    @ApiModelProperty(example = "5", value = "Motivo de geração do DSIC<br/>1 - Meios Próprios<br/>2 - Apreensão<br/>3 - Retenção<br/>4 - Descaracterização de Bagagem<br/>5 - Outros<br/>")
-    /**
-     * Motivo de geração do DSIC<br/>1 - Meios Próprios<br/>2 - Apreensão<br/>3 - Retenção<br/>4 - Descaracterização de Bagagem<br/>5 - Outros<br/>
-     **/
-    private MotivoEnum motivo = null;
-    @XmlElement(name = "quantidadeVolumes")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidadeVolumes = null;
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(example = "A", value = "Código da situação do DSIC<br>Tamanho: 1<br/>A - Ativo <br/>E - Excludído<br/>P - Apropriado<br/>")
-    /**
-     * Código da situação do DSIC<br>Tamanho: 1<br/>A - Ativo <br/>E - Excludído<br/>P - Apropriado<br/>
-     **/
-    private SituacaoEnum situacao = null;
-    @XmlElement(name = "chegadasTerrestres")
-    @ApiModelProperty(value = "Lista as chegadas de viagens terrestres associadas ao DSIC<br/>")
-    @Valid
-    /**
-     * Lista as chegadas de viagens terrestres associadas ao DSIC<br/>
-     **/
-    private List<CargaDetalheChegadaTerrestre> chegadasTerrestres = null;
-    @XmlElement(name = "nomeResponsavelGeracaoDsicDepositario")
-    @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do responsável pela geração do DSIC<br/>Tamanho: 70")
-    /**
-     * Nome do responsável pela geração do DSIC<br/>Tamanho: 70
-     **/
-    private String nomeResponsavelGeracaoDsicDepositario = null;
-    @XmlElement(name = "tipoConhecimento")
-    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
-    /**
-     * Tipo de carga.
-     **/
-    private TipoConhecimentoEnum tipoConhecimento = null;
     @XmlElement(name = "documentosSaida")
     @ApiModelProperty(value = "Lista contendo os documentos de saída associados a carga / Dsic<br/>")
     @Valid
@@ -86,41 +93,28 @@ public class DsicConsultaDetalhada {
      * Lista contendo os documentos de saída associados a carga / Dsic<br/>
      **/
     private List<DocumentoSaidaConsultaDetalhada> documentosSaida = null;
-    @XmlElement(name = "numeroDocumentoRetencaoApreensao")
-    @ApiModelProperty(example = "123456789012345", value = "Número do documento para retenção e apreensão<br/>Tamanho:15<br/>Formato: NNNNNNNNNNNNNNNN")
+
+    @XmlElement(name = "identificacaoConhecimento")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
     /**
-     * Número do documento para retenção e apreensão<br/>Tamanho:15<br/>Formato: NNNNNNNNNNNNNNNN
+     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
      **/
-    private String numeroDocumentoRetencaoApreensao = null;
-    @XmlElement(name = "tipoDocumentoRetencaoApreensao")
-    @ApiModelProperty(example = "1", value = "Tipo do documento dpara retenção e apreensão<br/>1 – Termo de retenção e guarda<br/>2 – Auto de infração<br/>")
+    private String identificacaoConhecimento = null;
+
+    @XmlElement(name = "identificacaoDSIC")
+    @ApiModelProperty(example = "D2000000035", value = "Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN")
     /**
-     * Tipo do documento dpara retenção e apreensão<br/>1 – Termo de retenção e guarda<br/>2 – Auto de infração<br/>
+     * Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN
      **/
-    private TipoDocumentoRetencaoApreensaoEnum tipoDocumentoRetencaoApreensao = null;
-    @XmlElement(name = "bloqueiosBaixados")
-    @ApiModelProperty(value = "Lista os bloqueios baixados da carga / Dsic<br/>")
-    @Valid
+    private String identificacaoDSIC = null;
+
+    @XmlElement(name = "identificacaoDocumentoConsignatario")
+    @ApiModelProperty(example = "99999999999", value = "Tipo de documento do consignatário da carga<br/>Tamanho máximo: 35")
     /**
-     * Lista os bloqueios baixados da carga / Dsic<br/>
+     * Tipo de documento do consignatário da carga<br/>Tamanho máximo: 35
      **/
-    private List<DesbloqueioConsultaDetalhada> bloqueiosBaixados = null;
-    @XmlElement(name = "viagemAssociada")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ChaveViagem viagemAssociada = null;
-    @XmlElement(name = "nomeViajante")
-    @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do passageiro<br/>Tamanho máximo: 40")
-    /**
-     * Nome do passageiro<br/>Tamanho máximo: 40
-     **/
-    private String nomeViajante = null;
-    @XmlElement(name = "orgaoEmissorDocumentoViajante")
-    @ApiModelProperty(example = "DETRAN RJ", value = "Número do documento do passageiro<br/>Tamanho máximo: 30")
-    /**
-     * Número do documento do passageiro<br/>Tamanho máximo: 30
-     **/
-    private String orgaoEmissorDocumentoViajante = null;
+    private String identificacaoDocumentoConsignatario = null;
+
     @XmlElement(name = "manuseiosEspeciais")
     @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
     @Valid
@@ -128,64 +122,57 @@ public class DsicConsultaDetalhada {
      * Lista contendo os manuseios especiais para a carga / Dsic<br/>
      **/
     private List<InfoManuseioConsultaDetalhada> manuseiosEspeciais = null;
-    @XmlElement(name = "unidadeRfbGeracaoDsic")
-    @ApiModelProperty(example = "0817600", value = "Código da UL de destino<br/> Tamanho: 7<br/> Formato: AAAAAAA")
-    /**
-     * Código da UL de destino<br/> Tamanho: 7<br/> Formato: AAAAAAA
-     **/
-    private String unidadeRfbGeracaoDsic = null;
-    @XmlElement(name = "descricaoMercadoria")
-    @ApiModelProperty(example = "Descrição completa das mercadorias", value = "Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
-    /**
-     * Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
-     **/
-    private String descricaoMercadoria = null;
-    @XmlElement(name = "solicitacoesServicosEspeciais")
-    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais = null;
-    @XmlElement(name = "recepcoesComAvarias")
-    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
-    @Valid
-    /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
-     **/
-    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
     @XmlElement(name = "nomeConsignatario")
     @ApiModelProperty(example = "Banco do Brasil", value = "Nome do consignatário<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 40")
     /**
      * Nome do consignatário<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 40
      **/
     private String nomeConsignatario = null;
-    @XmlElement(name = "bloqueiosAtivos")
-    @ApiModelProperty(value = "Lista os bloqueios ativos da carga / Dsic<br/>")
-    @Valid
+
+    @XmlElement(name = "motivo")
+    @ApiModelProperty(example = "5", value = "Motivo de geração do DSIC<br/>1 - Meios Próprios<br/>2 - Apreensão<br/>3 - Retenção<br/>4 - Descaracterização de Bagagem<br/>5 - Outros<br/>")
     /**
-     * Lista os bloqueios ativos da carga / Dsic<br/>
+     * Motivo de geração do DSIC<br/>1 - Meios Próprios<br/>2 - Apreensão<br/>3 - Retenção<br/>4 - Descaracterização de Bagagem<br/>5 - Outros<br/>
      **/
-    private List<BloqueioConsultaDetalhada> bloqueiosAtivos = null;
-    @XmlElement(name = "codigoAeroportoOrigemConhecimento")
-    @ApiModelProperty(example = "GIG", value = "Código do Aeroporto de origem do conhecimento de carga associado ao DSIC<br/>Tamanho: 3")
+    private MotivoEnum motivo = null;
+    @XmlElement(name = "nomeViajante")
+    @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do passageiro<br/>Tamanho máximo: 40")
     /**
-     * Código do Aeroporto de origem do conhecimento de carga associado ao DSIC<br/>Tamanho: 3
+     * Nome do passageiro<br/>Tamanho máximo: 40
      **/
-    private String codigoAeroportoOrigemConhecimento = null;
-    @XmlElement(name = "partesEstoque")
-    @ApiModelProperty(value = "Lista contendo as partes da carga<br/>")
-    @Valid
+    private String nomeViajante = null;
+
+    @XmlElement(name = "nomeResponsavelGeracaoDsicDepositario")
+    @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do responsável pela geração do DSIC<br/>Tamanho: 70")
     /**
-     * Lista contendo as partes da carga<br/>
+     * Nome do responsável pela geração do DSIC<br/>Tamanho: 70
      **/
-    private List<EstoqueConsultaDetalhada> partesEstoque = null;
-    @XmlElement(name = "unidadeResponsavelGeracaoDsicRfb")
-    @ApiModelProperty(example = "0817600", value = "Unidade de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 8")
+    private String nomeResponsavelGeracaoDsicDepositario = null;
+    @XmlElement(name = "numeroAutorizacaoSobrevooDac")
+    @ApiModelProperty(example = "97890798", value = "Número de autorização de sobrevoo DAC<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
     /**
-     * Unidade de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 8
+     * Número de autorização de sobrevoo DAC<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
      **/
-    private String unidadeResponsavelGeracaoDsicRfb = null;
+    private String numeroAutorizacaoSobrevooDac = null;
+    @XmlElement(name = "numeroDocumentoViajante")
+    @ApiModelProperty(example = "9840998BR65406", value = "Número do documento do passageiro<br/>Tamanho máximo: 20")
+    /**
+     * Número do documento do passageiro<br/>Tamanho máximo: 20
+     **/
+    private String numeroDocumentoViajante = null;
+
+    @XmlElement(name = "numeroDocumentoRetencaoApreensao")
+    @ApiModelProperty(example = "123456789012345", value = "Número do documento para retenção e apreensão<br/>Tamanho:15<br/>Formato: NNNNNNNNNNNNNNNN")
+    /**
+     * Número do documento para retenção e apreensão<br/>Tamanho:15<br/>Formato: NNNNNNNNNNNNNNNN
+     **/
+    private String numeroDocumentoRetencaoApreensao = null;
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "Observação do DSIC.", value = "Observação<br/>Tamanho máximo: 50")
+    /**
+     * Observação<br/>Tamanho máximo: 50
+     **/
+    private String observacoes = null;
     @XmlElement(name = "outrasInfosServico")
     @ApiModelProperty(value = "Lista contendo as outras informações de serviço para a carga / Dsic<br/>")
     @Valid
@@ -193,61 +180,20 @@ public class DsicConsultaDetalhada {
      * Lista contendo as outras informações de serviço para a carga / Dsic<br/>
      **/
     private List<InfoManuseioConsultaDetalhada> outrasInfosServico = null;
-    @XmlElement(name = "identificacaoConhecimento")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
+
+    @XmlElement(name = "orgaoEmissorDocumentoViajante")
+    @ApiModelProperty(example = "DETRAN RJ", value = "Número do documento do passageiro<br/>Tamanho máximo: 30")
     /**
-     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
+     * Número do documento do passageiro<br/>Tamanho máximo: 30
      **/
-    private String identificacaoConhecimento = null;
-    @XmlElement(name = "setorResponsavelGeracaoDsicRfb")
-    @ApiModelProperty(example = "PORTO DO RIO", value = "Setor de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 35")
-    /**
-     * Setor de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 35
-     **/
-    private String setorResponsavelGeracaoDsicRfb = null;
-    @XmlElement(name = "tipoDocumentoConsignatario")
-    @ApiModelProperty(example = "PASSAPORTE", value = "Tipo de documento do consignatário da carga<br/>Tamanho: 10")
-    /**
-     * Tipo de documento do consignatário da carga<br/>Tamanho: 10
-     **/
-    private TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario = null;
-    @XmlElement(name = "numeroAutorizacaoSobrevooDac")
-    @ApiModelProperty(example = "97890798", value = "Número de autorização de sobrevoo DAC<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
-    /**
-     * Número de autorização de sobrevoo DAC<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
-     **/
-    private String numeroAutorizacaoSobrevooDac = null;
-    @XmlElement(name = "valorArbitrado")
-    @ApiModelProperty(example = "34.58", value = "Valor arbitrado pela RFB.<br/>Tamanho: 9,2<br/>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    private String orgaoEmissorDocumentoViajante = null;
+    @XmlElement(name = "partesEstoque")
+    @ApiModelProperty(value = "Lista contendo as partes da carga<br/>")
     @Valid
     /**
-     * Valor arbitrado pela RFB.<br/>Tamanho: 9,2<br/>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     * Lista contendo as partes da carga<br/>
      **/
-    private BigDecimal valorArbitrado = null;
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "Observação do DSIC.", value = "Observação<br/>Tamanho máximo: 50")
-    /**
-     * Observação<br/>Tamanho máximo: 50
-     **/
-    private String observacoes = null;
-    @XmlElement(name = "identificacaoDSIC")
-    @ApiModelProperty(example = "D2000000035", value = "Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN")
-    /**
-     * Número de identificação do DSIC<br/>Tamanho: 11<br/> Formato: ANNNNNNNNNN
-     **/
-    private String identificacaoDSIC = null;
-    @XmlElement(name = "codigoAeroportoDestinoConhecimento")
-    @ApiModelProperty(example = "GIG", value = "Código do Aeroporto de destino do conhecimento de carga associado ao DSIC<br/>Tamanho: 3")
-    /**
-     * Código do Aeroporto de destino do conhecimento de carga associado ao DSIC<br/>Tamanho: 3
-     **/
-    private String codigoAeroportoDestinoConhecimento = null;
-    @XmlElement(name = "cnpjResponsavelGeracaoDsicDepositario")
-    @ApiModelProperty(example = "00000000000000", value = "CNPJ responsável pela geração do DSIC<br/>Tamanho: 14<br/>Formato: NNNNNNNNNNNNNN")
-    /**
-     * CNPJ responsável pela geração do DSIC<br/>Tamanho: 14<br/>Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjResponsavelGeracaoDsicDepositario = null;
+    private List<EstoqueConsultaDetalhada> partesEstoque = null;
     @XmlElement(name = "pesoBruto")
     @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
     @Valid
@@ -255,28 +201,93 @@ public class DsicConsultaDetalhada {
      * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoBruto = null;
-    @XmlElement(name = "conhecimentoApropriado")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ChaveConhecimento conhecimentoApropriado = null;
+    @XmlElement(name = "quantidadeVolumes")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer quantidadeVolumes = null;
     @XmlElement(name = "recintoAduaneiroGeracaoDsic")
     @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
     /**
      * Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos
      **/
     private String recintoAduaneiroGeracaoDsic = null;
+
+    @XmlElement(name = "recepcoesComAvarias")
+    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+    @Valid
+    /**
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+     **/
+    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
+    @XmlElement(name = "ruc")
+    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
+    /**
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
+     **/
+    private String ruc = null;
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(example = "A", value = "Código da situação do DSIC<br>Tamanho: 1<br/>A - Ativo <br/>E - Excludído<br/>P - Apropriado<br/>")
+    /**
+     * Código da situação do DSIC<br>Tamanho: 1<br/>A - Ativo <br/>E - Excludído<br/>P - Apropriado<br/>
+     **/
+    private SituacaoEnum situacao = null;
+
+    @XmlElement(name = "setorResponsavelGeracaoDsicRfb")
+    @ApiModelProperty(example = "PORTO DO RIO", value = "Setor de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 35")
+    /**
+     * Setor de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 35
+     **/
+    private String setorResponsavelGeracaoDsicRfb = null;
+    @XmlElement(name = "solicitacoesServicosEspeciais")
+    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
+     **/
+    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais = null;
+    @XmlElement(name = "tipoConhecimento")
+    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
+    /**
+     * Tipo de carga.
+     **/
+    private TipoConhecimentoEnum tipoConhecimento = null;
+    @XmlElement(name = "tipoDocumentoRetencaoApreensao")
+    @ApiModelProperty(example = "1", value = "Tipo do documento dpara retenção e apreensão<br/>1 – Termo de retenção e guarda<br/>2 – Auto de infração<br/>")
+    /**
+     * Tipo do documento dpara retenção e apreensão<br/>1 – Termo de retenção e guarda<br/>2 – Auto de infração<br/>
+     **/
+    private TipoDocumentoRetencaoApreensaoEnum tipoDocumentoRetencaoApreensao = null;
     @XmlElement(name = "tipoDocumentoViajante")
     @ApiModelProperty(example = "I", value = "Tipo de documento do passageiro<br/>P – Passaporte<br/>I – Carteira de identidade<br/>F – CPF<br/>O – Outros<br/>N – Nenhum<br/>")
     /**
      * Tipo de documento do passageiro<br/>P – Passaporte<br/>I – Carteira de identidade<br/>F – CPF<br/>O – Outros<br/>N – Nenhum<br/>
      **/
     private TipoDocumentoViajanteEnum tipoDocumentoViajante = null;
-    @XmlElement(name = "identificacaoDocumentoConsignatario")
-    @ApiModelProperty(example = "99999999999", value = "Tipo de documento do consignatário da carga<br/>Tamanho máximo: 35")
+    @XmlElement(name = "unidadeResponsavelGeracaoDsicRfb")
+    @ApiModelProperty(example = "0817600", value = "Unidade de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 8")
     /**
-     * Tipo de documento do consignatário da carga<br/>Tamanho máximo: 35
+     * Unidade de lotação do fiscal responsável pela geração do DSIC<br/>Tamanho: 8
      **/
-    private String identificacaoDocumentoConsignatario = null;
+    private String unidadeResponsavelGeracaoDsicRfb = null;
+    @XmlElement(name = "unidadeRfbGeracaoDsic")
+    @ApiModelProperty(example = "0817600", value = "Código da UL de destino<br/> Tamanho: 7<br/> Formato: AAAAAAA")
+    /**
+     * Código da UL de destino<br/> Tamanho: 7<br/> Formato: AAAAAAA
+     **/
+    private String unidadeRfbGeracaoDsic = null;
+
+    @XmlElement(name = "tipoDocumentoConsignatario")
+    @ApiModelProperty(example = "PASSAPORTE", value = "Tipo de documento do consignatário da carga<br/>Tamanho: 10")
+    /**
+     * Tipo de documento do consignatário da carga<br/>Tamanho: 10
+     **/
+    private TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario = null;
+    @XmlElement(name = "viagemAssociada")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ChaveViagem viagemAssociada = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -288,254 +299,35 @@ public class DsicConsultaDetalhada {
         }
         return o.toString().replace("\n", "\n    ");
     }
+    @XmlElement(name = "valorArbitrado")
+    @ApiModelProperty(example = "34.58", value = "Valor arbitrado pela RFB.<br/>Tamanho: 9,2<br/>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor arbitrado pela RFB.<br/>Tamanho: 9,2<br/>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorArbitrado = null;
 
     /**
-     * Data/Hora de emissão do DSIC.&lt;br/&gt; Formato: dd/MM/yyyy HH:mm:ss
+     * Lista os bloqueios ativos da carga / Dsic&lt;br/&gt;
      *
-     * @return dataHoraEmissao
+     * @return bloqueiosAtivos
      **/
-    @JsonProperty("dataHoraEmissao")
-    public String getDataHoraEmissao() {
-        return dataHoraEmissao;
+    @JsonProperty("bloqueiosAtivos")
+    public List<BloqueioConsultaDetalhada> getBloqueiosAtivos() {
+        return bloqueiosAtivos;
     }
 
-    public void setDataHoraEmissao(String dataHoraEmissao) {
-        this.dataHoraEmissao = dataHoraEmissao;
+    public void setBloqueiosAtivos(List<BloqueioConsultaDetalhada> bloqueiosAtivos) {
+        this.bloqueiosAtivos = bloqueiosAtivos;
     }
 
-    public DsicConsultaDetalhada dataHoraEmissao(String dataHoraEmissao) {
-        this.dataHoraEmissao = dataHoraEmissao;
+    public DsicConsultaDetalhada bloqueiosAtivos(List<BloqueioConsultaDetalhada> bloqueiosAtivos) {
+        this.bloqueiosAtivos = bloqueiosAtivos;
         return this;
     }
 
-    /**
-     * Número do documento do passageiro&lt;br/&gt;Tamanho máximo: 20
-     *
-     * @return numeroDocumentoViajante
-     **/
-    @JsonProperty("numeroDocumentoViajante")
-    public String getNumeroDocumentoViajante() {
-        return numeroDocumentoViajante;
-    }
-
-    public void setNumeroDocumentoViajante(String numeroDocumentoViajante) {
-        this.numeroDocumentoViajante = numeroDocumentoViajante;
-    }
-
-    public DsicConsultaDetalhada numeroDocumentoViajante(String numeroDocumentoViajante) {
-        this.numeroDocumentoViajante = numeroDocumentoViajante;
-        return this;
-    }
-
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
-     *
-     * @return ruc
-     **/
-    @JsonProperty("ruc")
-    public String getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
-    }
-
-    public DsicConsultaDetalhada ruc(String ruc) {
-        this.ruc = ruc;
-        return this;
-    }
-
-    /**
-     * Motivo de geração do DSIC&lt;br/&gt;1 - Meios Próprios&lt;br/&gt;2 - Apreensão&lt;br/&gt;3 - Retenção&lt;br/&gt;4 - Descaracterização de Bagagem&lt;br/&gt;5 - Outros&lt;br/&gt;
-     *
-     * @return motivo
-     **/
-    @JsonProperty("motivo")
-    public String getMotivo() {
-        if (motivo == null) {
-            return null;
-        }
-        return motivo.value();
-    }
-
-    public void setMotivo(MotivoEnum motivo) {
-        this.motivo = motivo;
-    }
-
-    public DsicConsultaDetalhada motivo(MotivoEnum motivo) {
-        this.motivo = motivo;
-        return this;
-    }
-
-    /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return quantidadeVolumes
-     **/
-    @JsonProperty("quantidadeVolumes")
-    public Integer getQuantidadeVolumes() {
-        return quantidadeVolumes;
-    }
-
-    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-    }
-
-    public DsicConsultaDetalhada quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-        return this;
-    }
-
-    /**
-     * Código da situação do DSIC&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excludído&lt;br/&gt;P - Apropriado&lt;br/&gt;
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        if (situacao == null) {
-            return null;
-        }
-        return situacao.value();
-    }
-
-    public void setSituacao(SituacaoEnum situacao) {
-        this.situacao = situacao;
-    }
-
-    public DsicConsultaDetalhada situacao(SituacaoEnum situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista as chegadas de viagens terrestres associadas ao DSIC&lt;br/&gt;
-     *
-     * @return chegadasTerrestres
-     **/
-    @JsonProperty("chegadasTerrestres")
-    public List<CargaDetalheChegadaTerrestre> getChegadasTerrestres() {
-        return chegadasTerrestres;
-    }
-
-    public void setChegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
-        this.chegadasTerrestres = chegadasTerrestres;
-    }
-
-    public DsicConsultaDetalhada chegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
-        this.chegadasTerrestres = chegadasTerrestres;
-        return this;
-    }
-
-    public DsicConsultaDetalhada addChegadasTerrestresItem(CargaDetalheChegadaTerrestre chegadasTerrestresItem) {
-        this.chegadasTerrestres.add(chegadasTerrestresItem);
-        return this;
-    }
-
-    /**
-     * Nome do responsável pela geração do DSIC&lt;br/&gt;Tamanho: 70
-     *
-     * @return nomeResponsavelGeracaoDsicDepositario
-     **/
-    @JsonProperty("nomeResponsavelGeracaoDsicDepositario")
-    public String getNomeResponsavelGeracaoDsicDepositario() {
-        return nomeResponsavelGeracaoDsicDepositario;
-    }
-
-    public void setNomeResponsavelGeracaoDsicDepositario(String nomeResponsavelGeracaoDsicDepositario) {
-        this.nomeResponsavelGeracaoDsicDepositario = nomeResponsavelGeracaoDsicDepositario;
-    }
-
-    public DsicConsultaDetalhada nomeResponsavelGeracaoDsicDepositario(String nomeResponsavelGeracaoDsicDepositario) {
-        this.nomeResponsavelGeracaoDsicDepositario = nomeResponsavelGeracaoDsicDepositario;
-        return this;
-    }
-
-    /**
-     * Tipo de carga.
-     *
-     * @return tipoConhecimento
-     **/
-    @JsonProperty("tipoConhecimento")
-    public String getTipoConhecimento() {
-        if (tipoConhecimento == null) {
-            return null;
-        }
-        return tipoConhecimento.value();
-    }
-
-    public void setTipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
-        this.tipoConhecimento = tipoConhecimento;
-    }
-
-    public DsicConsultaDetalhada tipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
-        this.tipoConhecimento = tipoConhecimento;
-        return this;
-    }
-
-    /**
-     * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
-     *
-     * @return documentosSaida
-     **/
-    @JsonProperty("documentosSaida")
-    public List<DocumentoSaidaConsultaDetalhada> getDocumentosSaida() {
-        return documentosSaida;
-    }
-
-    public void setDocumentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
-        this.documentosSaida = documentosSaida;
-    }
-
-    public DsicConsultaDetalhada documentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
-        this.documentosSaida = documentosSaida;
-        return this;
-    }
-
-    public DsicConsultaDetalhada addDocumentosSaidaItem(DocumentoSaidaConsultaDetalhada documentosSaidaItem) {
-        this.documentosSaida.add(documentosSaidaItem);
-        return this;
-    }
-
-    /**
-     * Número do documento para retenção e apreensão&lt;br/&gt;Tamanho:15&lt;br/&gt;Formato: NNNNNNNNNNNNNNNN
-     *
-     * @return numeroDocumentoRetencaoApreensao
-     **/
-    @JsonProperty("numeroDocumentoRetencaoApreensao")
-    public String getNumeroDocumentoRetencaoApreensao() {
-        return numeroDocumentoRetencaoApreensao;
-    }
-
-    public void setNumeroDocumentoRetencaoApreensao(String numeroDocumentoRetencaoApreensao) {
-        this.numeroDocumentoRetencaoApreensao = numeroDocumentoRetencaoApreensao;
-    }
-
-    public DsicConsultaDetalhada numeroDocumentoRetencaoApreensao(String numeroDocumentoRetencaoApreensao) {
-        this.numeroDocumentoRetencaoApreensao = numeroDocumentoRetencaoApreensao;
-        return this;
-    }
-
-    /**
-     * Tipo do documento dpara retenção e apreensão&lt;br/&gt;1 – Termo de retenção e guarda&lt;br/&gt;2 – Auto de infração&lt;br/&gt;
-     *
-     * @return tipoDocumentoRetencaoApreensao
-     **/
-    @JsonProperty("tipoDocumentoRetencaoApreensao")
-    public String getTipoDocumentoRetencaoApreensao() {
-        if (tipoDocumentoRetencaoApreensao == null) {
-            return null;
-        }
-        return tipoDocumentoRetencaoApreensao.value();
-    }
-
-    public void setTipoDocumentoRetencaoApreensao(TipoDocumentoRetencaoApreensaoEnum tipoDocumentoRetencaoApreensao) {
-        this.tipoDocumentoRetencaoApreensao = tipoDocumentoRetencaoApreensao;
-    }
-
-    public DsicConsultaDetalhada tipoDocumentoRetencaoApreensao(TipoDocumentoRetencaoApreensaoEnum tipoDocumentoRetencaoApreensao) {
-        this.tipoDocumentoRetencaoApreensao = tipoDocumentoRetencaoApreensao;
+    public DsicConsultaDetalhada addBloqueiosAtivosItem(BloqueioConsultaDetalhada bloqueiosAtivosItem) {
+        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
         return this;
     }
 
@@ -564,102 +356,121 @@ public class DsicConsultaDetalhada {
     }
 
     /**
-     * Get viagemAssociada
+     * CNPJ responsável pela geração do DSIC&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: NNNNNNNNNNNNNN
      *
-     * @return viagemAssociada
+     * @return cnpjResponsavelGeracaoDsicDepositario
      **/
-    @JsonProperty("viagemAssociada")
-    public ChaveViagem getViagemAssociada() {
-        return viagemAssociada;
+    @JsonProperty("cnpjResponsavelGeracaoDsicDepositario")
+    public String getCnpjResponsavelGeracaoDsicDepositario() {
+        return cnpjResponsavelGeracaoDsicDepositario;
     }
 
-    public void setViagemAssociada(ChaveViagem viagemAssociada) {
-        this.viagemAssociada = viagemAssociada;
+    public void setCnpjResponsavelGeracaoDsicDepositario(String cnpjResponsavelGeracaoDsicDepositario) {
+        this.cnpjResponsavelGeracaoDsicDepositario = cnpjResponsavelGeracaoDsicDepositario;
     }
 
-    public DsicConsultaDetalhada viagemAssociada(ChaveViagem viagemAssociada) {
-        this.viagemAssociada = viagemAssociada;
+    public DsicConsultaDetalhada cnpjResponsavelGeracaoDsicDepositario(String cnpjResponsavelGeracaoDsicDepositario) {
+        this.cnpjResponsavelGeracaoDsicDepositario = cnpjResponsavelGeracaoDsicDepositario;
         return this;
     }
 
     /**
-     * Nome do passageiro&lt;br/&gt;Tamanho máximo: 40
+     * Código do Aeroporto de destino do conhecimento de carga associado ao DSIC&lt;br/&gt;Tamanho: 3
      *
-     * @return nomeViajante
+     * @return codigoAeroportoDestinoConhecimento
      **/
-    @JsonProperty("nomeViajante")
-    public String getNomeViajante() {
-        return nomeViajante;
+    @JsonProperty("codigoAeroportoDestinoConhecimento")
+    public String getCodigoAeroportoDestinoConhecimento() {
+        return codigoAeroportoDestinoConhecimento;
     }
 
-    public void setNomeViajante(String nomeViajante) {
-        this.nomeViajante = nomeViajante;
+    public void setCodigoAeroportoDestinoConhecimento(String codigoAeroportoDestinoConhecimento) {
+        this.codigoAeroportoDestinoConhecimento = codigoAeroportoDestinoConhecimento;
     }
 
-    public DsicConsultaDetalhada nomeViajante(String nomeViajante) {
-        this.nomeViajante = nomeViajante;
+    /**
+     * Lista as chegadas de viagens terrestres associadas ao DSIC&lt;br/&gt;
+     *
+     * @return chegadasTerrestres
+     **/
+    @JsonProperty("chegadasTerrestres")
+    public List<CargaDetalheChegadaTerrestre> getChegadasTerrestres() {
+        return chegadasTerrestres;
+    }
+
+    public void setChegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
+        this.chegadasTerrestres = chegadasTerrestres;
+    }
+
+    public DsicConsultaDetalhada chegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
+        this.chegadasTerrestres = chegadasTerrestres;
+        return this;
+    }
+
+    public DsicConsultaDetalhada addChegadasTerrestresItem(CargaDetalheChegadaTerrestre chegadasTerrestresItem) {
+        this.chegadasTerrestres.add(chegadasTerrestresItem);
+        return this;
+    }
+
+    public DsicConsultaDetalhada codigoAeroportoDestinoConhecimento(String codigoAeroportoDestinoConhecimento) {
+        this.codigoAeroportoDestinoConhecimento = codigoAeroportoDestinoConhecimento;
         return this;
     }
 
     /**
-     * Número do documento do passageiro&lt;br/&gt;Tamanho máximo: 30
+     * Código do Aeroporto de origem do conhecimento de carga associado ao DSIC&lt;br/&gt;Tamanho: 3
      *
-     * @return orgaoEmissorDocumentoViajante
+     * @return codigoAeroportoOrigemConhecimento
      **/
-    @JsonProperty("orgaoEmissorDocumentoViajante")
-    public String getOrgaoEmissorDocumentoViajante() {
-        return orgaoEmissorDocumentoViajante;
+    @JsonProperty("codigoAeroportoOrigemConhecimento")
+    public String getCodigoAeroportoOrigemConhecimento() {
+        return codigoAeroportoOrigemConhecimento;
     }
 
-    public void setOrgaoEmissorDocumentoViajante(String orgaoEmissorDocumentoViajante) {
-        this.orgaoEmissorDocumentoViajante = orgaoEmissorDocumentoViajante;
+    public void setCodigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
+        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
     }
 
-    public DsicConsultaDetalhada orgaoEmissorDocumentoViajante(String orgaoEmissorDocumentoViajante) {
-        this.orgaoEmissorDocumentoViajante = orgaoEmissorDocumentoViajante;
+    public DsicConsultaDetalhada codigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
+        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
         return this;
     }
 
     /**
-     * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
+     * Get conhecimentoApropriado
      *
-     * @return manuseiosEspeciais
+     * @return conhecimentoApropriado
      **/
-    @JsonProperty("manuseiosEspeciais")
-    public List<InfoManuseioConsultaDetalhada> getManuseiosEspeciais() {
-        return manuseiosEspeciais;
+    @JsonProperty("conhecimentoApropriado")
+    public ChaveConhecimento getConhecimentoApropriado() {
+        return conhecimentoApropriado;
     }
 
-    public void setManuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
-        this.manuseiosEspeciais = manuseiosEspeciais;
+    public void setConhecimentoApropriado(ChaveConhecimento conhecimentoApropriado) {
+        this.conhecimentoApropriado = conhecimentoApropriado;
     }
 
-    public DsicConsultaDetalhada manuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
-        this.manuseiosEspeciais = manuseiosEspeciais;
-        return this;
-    }
-
-    public DsicConsultaDetalhada addManuseiosEspeciaisItem(InfoManuseioConsultaDetalhada manuseiosEspeciaisItem) {
-        this.manuseiosEspeciais.add(manuseiosEspeciaisItem);
+    public DsicConsultaDetalhada conhecimentoApropriado(ChaveConhecimento conhecimentoApropriado) {
+        this.conhecimentoApropriado = conhecimentoApropriado;
         return this;
     }
 
     /**
-     * Código da UL de destino&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
+     * Data/Hora de emissão do DSIC.&lt;br/&gt; Formato: dd/MM/yyyy HH:mm:ss
      *
-     * @return unidadeRfbGeracaoDsic
+     * @return dataHoraEmissao
      **/
-    @JsonProperty("unidadeRfbGeracaoDsic")
-    public String getUnidadeRfbGeracaoDsic() {
-        return unidadeRfbGeracaoDsic;
+    @JsonProperty("dataHoraEmissao")
+    public String getDataHoraEmissao() {
+        return dataHoraEmissao;
     }
 
-    public void setUnidadeRfbGeracaoDsic(String unidadeRfbGeracaoDsic) {
-        this.unidadeRfbGeracaoDsic = unidadeRfbGeracaoDsic;
+    public void setDataHoraEmissao(String dataHoraEmissao) {
+        this.dataHoraEmissao = dataHoraEmissao;
     }
 
-    public DsicConsultaDetalhada unidadeRfbGeracaoDsic(String unidadeRfbGeracaoDsic) {
-        this.unidadeRfbGeracaoDsic = unidadeRfbGeracaoDsic;
+    public DsicConsultaDetalhada dataHoraEmissao(String dataHoraEmissao) {
+        this.dataHoraEmissao = dataHoraEmissao;
         return this;
     }
 
@@ -683,56 +494,165 @@ public class DsicConsultaDetalhada {
     }
 
     /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
-     *
-     * @return solicitacoesServicosEspeciais
+     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     * @return identificacaoConhecimento
      **/
-    @JsonProperty("solicitacoesServicosEspeciais")
-    public List<InfoManuseioConsultaDetalhada> getSolicitacoesServicosEspeciais() {
-        return solicitacoesServicosEspeciais;
+    @JsonProperty("identificacaoConhecimento")
+    public String getIdentificacaoConhecimento() {
+        return identificacaoConhecimento;
     }
 
-    public void setSolicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
-        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
+    public void setIdentificacaoConhecimento(String identificacaoConhecimento) {
+        this.identificacaoConhecimento = identificacaoConhecimento;
     }
 
-    public DsicConsultaDetalhada solicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
-        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
-        return this;
-    }
-
-    public DsicConsultaDetalhada addSolicitacoesServicosEspeciaisItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisItem) {
-        this.solicitacoesServicosEspeciais.add(solicitacoesServicosEspeciaisItem);
+    public DsicConsultaDetalhada identificacaoConhecimento(String identificacaoConhecimento) {
+        this.identificacaoConhecimento = identificacaoConhecimento;
         return this;
     }
 
     /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
+     * Número de identificação do DSIC&lt;br/&gt;Tamanho: 11&lt;br/&gt; Formato: ANNNNNNNNNN
      *
-     * @return recepcoesComAvarias
+     * @return identificacaoDSIC
      **/
-    @JsonProperty("recepcoesComAvarias")
-    public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
-        return recepcoesComAvarias;
+    @JsonProperty("identificacaoDSIC")
+    public String getIdentificacaoDSIC() {
+        return identificacaoDSIC;
     }
 
-    public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
-        this.recepcoesComAvarias = recepcoesComAvarias;
+    public void setIdentificacaoDSIC(String identificacaoDSIC) {
+        this.identificacaoDSIC = identificacaoDSIC;
     }
 
-    public DsicConsultaDetalhada recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
-        this.recepcoesComAvarias = recepcoesComAvarias;
+    /**
+     * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
+     *
+     * @return documentosSaida
+     **/
+    @JsonProperty("documentosSaida")
+    public List<DocumentoSaidaConsultaDetalhada> getDocumentosSaida() {
+        return documentosSaida;
+    }
+
+    public void setDocumentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
+        this.documentosSaida = documentosSaida;
+    }
+
+    public DsicConsultaDetalhada documentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
+        this.documentosSaida = documentosSaida;
         return this;
     }
 
-    public DsicConsultaDetalhada addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
-        this.recepcoesComAvarias.add(recepcoesComAvariasItem);
+    public DsicConsultaDetalhada addDocumentosSaidaItem(DocumentoSaidaConsultaDetalhada documentosSaidaItem) {
+        this.documentosSaida.add(documentosSaidaItem);
         return this;
+    }
+
+    public DsicConsultaDetalhada identificacaoDSIC(String identificacaoDSIC) {
+        this.identificacaoDSIC = identificacaoDSIC;
+        return this;
+    }
+
+    /**
+     * Tipo de documento do consignatário da carga&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacaoDocumentoConsignatario
+     **/
+    @JsonProperty("identificacaoDocumentoConsignatario")
+    public String getIdentificacaoDocumentoConsignatario() {
+        return identificacaoDocumentoConsignatario;
+    }
+
+    public void setIdentificacaoDocumentoConsignatario(String identificacaoDocumentoConsignatario) {
+        this.identificacaoDocumentoConsignatario = identificacaoDocumentoConsignatario;
+    }
+
+    public DsicConsultaDetalhada identificacaoDocumentoConsignatario(String identificacaoDocumentoConsignatario) {
+        this.identificacaoDocumentoConsignatario = identificacaoDocumentoConsignatario;
+        return this;
+    }
+
+    /**
+     * Motivo de geração do DSIC&lt;br/&gt;1 - Meios Próprios&lt;br/&gt;2 - Apreensão&lt;br/&gt;3 - Retenção&lt;br/&gt;4 - Descaracterização de Bagagem&lt;br/&gt;5 - Outros&lt;br/&gt;
+     *
+     * @return motivo
+     **/
+    @JsonProperty("motivo")
+    public String getMotivo() {
+        if (motivo == null) {
+            return null;
+        }
+        return motivo.value();
+    }
+
+    public void setMotivo(MotivoEnum motivo) {
+        this.motivo = motivo;
+    }
+
+    public DsicConsultaDetalhada motivo(MotivoEnum motivo) {
+        this.motivo = motivo;
+        return this;
+    }
+
+    /**
+     * Nome do responsável pela geração do DSIC&lt;br/&gt;Tamanho: 70
+     *
+     * @return nomeResponsavelGeracaoDsicDepositario
+     **/
+    @JsonProperty("nomeResponsavelGeracaoDsicDepositario")
+    public String getNomeResponsavelGeracaoDsicDepositario() {
+        return nomeResponsavelGeracaoDsicDepositario;
+    }
+
+    public void setNomeResponsavelGeracaoDsicDepositario(String nomeResponsavelGeracaoDsicDepositario) {
+        this.nomeResponsavelGeracaoDsicDepositario = nomeResponsavelGeracaoDsicDepositario;
+    }
+
+    /**
+     * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
+     * @return manuseiosEspeciais
+     **/
+    @JsonProperty("manuseiosEspeciais")
+    public List<InfoManuseioConsultaDetalhada> getManuseiosEspeciais() {
+        return manuseiosEspeciais;
+    }
+
+    public void setManuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
+        this.manuseiosEspeciais = manuseiosEspeciais;
+    }
+
+    public DsicConsultaDetalhada manuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
+        this.manuseiosEspeciais = manuseiosEspeciais;
+        return this;
+    }
+
+    public DsicConsultaDetalhada addManuseiosEspeciaisItem(InfoManuseioConsultaDetalhada manuseiosEspeciaisItem) {
+        this.manuseiosEspeciais.add(manuseiosEspeciaisItem);
+        return this;
+    }
+
+    public DsicConsultaDetalhada nomeResponsavelGeracaoDsicDepositario(String nomeResponsavelGeracaoDsicDepositario) {
+        this.nomeResponsavelGeracaoDsicDepositario = nomeResponsavelGeracaoDsicDepositario;
+        return this;
+    }
+
+    /**
+     * Nome do passageiro&lt;br/&gt;Tamanho máximo: 40
+     *
+     * @return nomeViajante
+     **/
+    @JsonProperty("nomeViajante")
+    public String getNomeViajante() {
+        return nomeViajante;
+    }
+
+    public void setNomeViajante(String nomeViajante) {
+        this.nomeViajante = nomeViajante;
     }
 
     /**
      * Nome do consignatário&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 40
-     *
      * @return nomeConsignatario
      **/
     @JsonProperty("nomeConsignatario")
@@ -749,46 +669,124 @@ public class DsicConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Lista os bloqueios ativos da carga / Dsic&lt;br/&gt;
-     *
-     * @return bloqueiosAtivos
-     **/
-    @JsonProperty("bloqueiosAtivos")
-    public List<BloqueioConsultaDetalhada> getBloqueiosAtivos() {
-        return bloqueiosAtivos;
-    }
-
-    public void setBloqueiosAtivos(List<BloqueioConsultaDetalhada> bloqueiosAtivos) {
-        this.bloqueiosAtivos = bloqueiosAtivos;
-    }
-
-    public DsicConsultaDetalhada bloqueiosAtivos(List<BloqueioConsultaDetalhada> bloqueiosAtivos) {
-        this.bloqueiosAtivos = bloqueiosAtivos;
-        return this;
-    }
-
-    public DsicConsultaDetalhada addBloqueiosAtivosItem(BloqueioConsultaDetalhada bloqueiosAtivosItem) {
-        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+    public DsicConsultaDetalhada nomeViajante(String nomeViajante) {
+        this.nomeViajante = nomeViajante;
         return this;
     }
 
     /**
-     * Código do Aeroporto de origem do conhecimento de carga associado ao DSIC&lt;br/&gt;Tamanho: 3
+     * Número do documento para retenção e apreensão&lt;br/&gt;Tamanho:15&lt;br/&gt;Formato: NNNNNNNNNNNNNNNN
      *
-     * @return codigoAeroportoOrigemConhecimento
+     * @return numeroDocumentoRetencaoApreensao
      **/
-    @JsonProperty("codigoAeroportoOrigemConhecimento")
-    public String getCodigoAeroportoOrigemConhecimento() {
-        return codigoAeroportoOrigemConhecimento;
+    @JsonProperty("numeroDocumentoRetencaoApreensao")
+    public String getNumeroDocumentoRetencaoApreensao() {
+        return numeroDocumentoRetencaoApreensao;
     }
 
-    public void setCodigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
-        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
+    public void setNumeroDocumentoRetencaoApreensao(String numeroDocumentoRetencaoApreensao) {
+        this.numeroDocumentoRetencaoApreensao = numeroDocumentoRetencaoApreensao;
     }
 
-    public DsicConsultaDetalhada codigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
-        this.codigoAeroportoOrigemConhecimento = codigoAeroportoOrigemConhecimento;
+    public DsicConsultaDetalhada numeroDocumentoRetencaoApreensao(String numeroDocumentoRetencaoApreensao) {
+        this.numeroDocumentoRetencaoApreensao = numeroDocumentoRetencaoApreensao;
+        return this;
+    }
+
+    /**
+     * Número do documento do passageiro&lt;br/&gt;Tamanho máximo: 20
+     *
+     * @return numeroDocumentoViajante
+     **/
+    @JsonProperty("numeroDocumentoViajante")
+    public String getNumeroDocumentoViajante() {
+        return numeroDocumentoViajante;
+    }
+
+    public void setNumeroDocumentoViajante(String numeroDocumentoViajante) {
+        this.numeroDocumentoViajante = numeroDocumentoViajante;
+    }
+
+    /**
+     * Número de autorização de sobrevoo DAC&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     * @return numeroAutorizacaoSobrevooDac
+     **/
+    @JsonProperty("numeroAutorizacaoSobrevooDac")
+    public String getNumeroAutorizacaoSobrevooDac() {
+        return numeroAutorizacaoSobrevooDac;
+    }
+
+    public void setNumeroAutorizacaoSobrevooDac(String numeroAutorizacaoSobrevooDac) {
+        this.numeroAutorizacaoSobrevooDac = numeroAutorizacaoSobrevooDac;
+    }
+
+    public DsicConsultaDetalhada numeroAutorizacaoSobrevooDac(String numeroAutorizacaoSobrevooDac) {
+        this.numeroAutorizacaoSobrevooDac = numeroAutorizacaoSobrevooDac;
+        return this;
+    }
+
+    public DsicConsultaDetalhada numeroDocumentoViajante(String numeroDocumentoViajante) {
+        this.numeroDocumentoViajante = numeroDocumentoViajante;
+        return this;
+    }
+
+    /**
+     * Número do documento do passageiro&lt;br/&gt;Tamanho máximo: 30
+     * @return orgaoEmissorDocumentoViajante
+     **/
+    @JsonProperty("orgaoEmissorDocumentoViajante")
+    public String getOrgaoEmissorDocumentoViajante() {
+        return orgaoEmissorDocumentoViajante;
+    }
+
+    public void setOrgaoEmissorDocumentoViajante(String orgaoEmissorDocumentoViajante) {
+        this.orgaoEmissorDocumentoViajante = orgaoEmissorDocumentoViajante;
+    }
+
+    public DsicConsultaDetalhada orgaoEmissorDocumentoViajante(String orgaoEmissorDocumentoViajante) {
+        this.orgaoEmissorDocumentoViajante = orgaoEmissorDocumentoViajante;
+        return this;
+    }
+
+    /**
+     * Lista contendo as outras informações de serviço para a carga / Dsic&lt;br/&gt;
+     *
+     * @return outrasInfosServico
+     **/
+    @JsonProperty("outrasInfosServico")
+    public List<InfoManuseioConsultaDetalhada> getOutrasInfosServico() {
+        return outrasInfosServico;
+    }
+
+    public void setOutrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
+        this.outrasInfosServico = outrasInfosServico;
+    }
+
+    /**
+     * Observação&lt;br/&gt;Tamanho máximo: 50
+     * @return observacoes
+     **/
+    @JsonProperty("observacoes")
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public DsicConsultaDetalhada observacoes(String observacoes) {
+        this.observacoes = observacoes;
+        return this;
+    }
+
+    public DsicConsultaDetalhada outrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
+        this.outrasInfosServico = outrasInfosServico;
+        return this;
+    }
+
+    public DsicConsultaDetalhada addOutrasInfosServicoItem(InfoManuseioConsultaDetalhada outrasInfosServicoItem) {
+        this.outrasInfosServico.add(outrasInfosServicoItem);
         return this;
     }
 
@@ -817,64 +815,82 @@ public class DsicConsultaDetalhada {
     }
 
     /**
-     * Unidade de lotação do fiscal responsável pela geração do DSIC&lt;br/&gt;Tamanho: 8
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
      *
-     * @return unidadeResponsavelGeracaoDsicRfb
+     * @return quantidadeVolumes
      **/
-    @JsonProperty("unidadeResponsavelGeracaoDsicRfb")
-    public String getUnidadeResponsavelGeracaoDsicRfb() {
-        return unidadeResponsavelGeracaoDsicRfb;
+    @JsonProperty("quantidadeVolumes")
+    public Integer getQuantidadeVolumes() {
+        return quantidadeVolumes;
     }
 
-    public void setUnidadeResponsavelGeracaoDsicRfb(String unidadeResponsavelGeracaoDsicRfb) {
-        this.unidadeResponsavelGeracaoDsicRfb = unidadeResponsavelGeracaoDsicRfb;
+    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
     }
 
-    public DsicConsultaDetalhada unidadeResponsavelGeracaoDsicRfb(String unidadeResponsavelGeracaoDsicRfb) {
-        this.unidadeResponsavelGeracaoDsicRfb = unidadeResponsavelGeracaoDsicRfb;
+    public DsicConsultaDetalhada quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
         return this;
     }
 
     /**
-     * Lista contendo as outras informações de serviço para a carga / Dsic&lt;br/&gt;
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
      *
-     * @return outrasInfosServico
+     * @return recepcoesComAvarias
      **/
-    @JsonProperty("outrasInfosServico")
-    public List<InfoManuseioConsultaDetalhada> getOutrasInfosServico() {
-        return outrasInfosServico;
+    @JsonProperty("recepcoesComAvarias")
+    public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
+        return recepcoesComAvarias;
     }
 
-    public void setOutrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
-        this.outrasInfosServico = outrasInfosServico;
+    public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+        this.recepcoesComAvarias = recepcoesComAvarias;
     }
 
-    public DsicConsultaDetalhada outrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
-        this.outrasInfosServico = outrasInfosServico;
+    /**
+     * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * @return pesoBruto
+     **/
+    @JsonProperty("pesoBruto")
+    public BigDecimal getPesoBruto() {
+        return pesoBruto;
+    }
+
+    public void setPesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+    }
+
+    public DsicConsultaDetalhada pesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
         return this;
     }
 
-    public DsicConsultaDetalhada addOutrasInfosServicoItem(InfoManuseioConsultaDetalhada outrasInfosServicoItem) {
-        this.outrasInfosServico.add(outrasInfosServicoItem);
+    public DsicConsultaDetalhada recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+        this.recepcoesComAvarias = recepcoesComAvarias;
+        return this;
+    }
+
+    public DsicConsultaDetalhada addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
+        this.recepcoesComAvarias.add(recepcoesComAvariasItem);
         return this;
     }
 
     /**
-     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
      *
-     * @return identificacaoConhecimento
+     * @return ruc
      **/
-    @JsonProperty("identificacaoConhecimento")
-    public String getIdentificacaoConhecimento() {
-        return identificacaoConhecimento;
+    @JsonProperty("ruc")
+    public String getRuc() {
+        return ruc;
     }
 
-    public void setIdentificacaoConhecimento(String identificacaoConhecimento) {
-        this.identificacaoConhecimento = identificacaoConhecimento;
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
     }
 
-    public DsicConsultaDetalhada identificacaoConhecimento(String identificacaoConhecimento) {
-        this.identificacaoConhecimento = identificacaoConhecimento;
+    public DsicConsultaDetalhada ruc(String ruc) {
+        this.ruc = ruc;
         return this;
     }
 
@@ -892,8 +908,94 @@ public class DsicConsultaDetalhada {
         this.setorResponsavelGeracaoDsicRfb = setorResponsavelGeracaoDsicRfb;
     }
 
+    /**
+     * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
+     * @return recintoAduaneiroGeracaoDsic
+     **/
+    @JsonProperty("recintoAduaneiroGeracaoDsic")
+    public String getRecintoAduaneiroGeracaoDsic() {
+        return recintoAduaneiroGeracaoDsic;
+    }
+
+    public void setRecintoAduaneiroGeracaoDsic(String recintoAduaneiroGeracaoDsic) {
+        this.recintoAduaneiroGeracaoDsic = recintoAduaneiroGeracaoDsic;
+    }
+
+    public DsicConsultaDetalhada recintoAduaneiroGeracaoDsic(String recintoAduaneiroGeracaoDsic) {
+        this.recintoAduaneiroGeracaoDsic = recintoAduaneiroGeracaoDsic;
+        return this;
+    }
+
     public DsicConsultaDetalhada setorResponsavelGeracaoDsicRfb(String setorResponsavelGeracaoDsicRfb) {
         this.setorResponsavelGeracaoDsicRfb = setorResponsavelGeracaoDsicRfb;
+        return this;
+    }
+
+    /**
+     * Código da situação do DSIC&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excludído&lt;br/&gt;P - Apropriado&lt;br/&gt;
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        if (situacao == null) {
+            return null;
+        }
+        return situacao.value();
+    }
+
+    public void setSituacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
+    }
+
+    public DsicConsultaDetalhada situacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
+     *
+     * @return solicitacoesServicosEspeciais
+     **/
+    @JsonProperty("solicitacoesServicosEspeciais")
+    public List<InfoManuseioConsultaDetalhada> getSolicitacoesServicosEspeciais() {
+        return solicitacoesServicosEspeciais;
+    }
+
+    public void setSolicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
+        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
+    }
+
+    public DsicConsultaDetalhada solicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
+        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
+        return this;
+    }
+
+    public DsicConsultaDetalhada addSolicitacoesServicosEspeciaisItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisItem) {
+        this.solicitacoesServicosEspeciais.add(solicitacoesServicosEspeciaisItem);
+        return this;
+    }
+
+    /**
+     * Tipo de carga.
+     *
+     * @return tipoConhecimento
+     **/
+    @JsonProperty("tipoConhecimento")
+    public String getTipoConhecimento() {
+        if (tipoConhecimento == null) {
+            return null;
+        }
+        return tipoConhecimento.value();
+    }
+
+    public void setTipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
+        this.tipoConhecimento = tipoConhecimento;
+    }
+
+    public DsicConsultaDetalhada tipoConhecimento(TipoConhecimentoEnum tipoConhecimento) {
+        this.tipoConhecimento = tipoConhecimento;
         return this;
     }
 
@@ -920,21 +1022,83 @@ public class DsicConsultaDetalhada {
     }
 
     /**
-     * Número de autorização de sobrevoo DAC&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     * Tipo do documento dpara retenção e apreensão&lt;br/&gt;1 – Termo de retenção e guarda&lt;br/&gt;2 – Auto de infração&lt;br/&gt;
      *
-     * @return numeroAutorizacaoSobrevooDac
+     * @return tipoDocumentoRetencaoApreensao
      **/
-    @JsonProperty("numeroAutorizacaoSobrevooDac")
-    public String getNumeroAutorizacaoSobrevooDac() {
-        return numeroAutorizacaoSobrevooDac;
+    @JsonProperty("tipoDocumentoRetencaoApreensao")
+    public String getTipoDocumentoRetencaoApreensao() {
+        if (tipoDocumentoRetencaoApreensao == null) {
+            return null;
+        }
+        return tipoDocumentoRetencaoApreensao.value();
     }
 
-    public void setNumeroAutorizacaoSobrevooDac(String numeroAutorizacaoSobrevooDac) {
-        this.numeroAutorizacaoSobrevooDac = numeroAutorizacaoSobrevooDac;
+    public void setTipoDocumentoRetencaoApreensao(TipoDocumentoRetencaoApreensaoEnum tipoDocumentoRetencaoApreensao) {
+        this.tipoDocumentoRetencaoApreensao = tipoDocumentoRetencaoApreensao;
     }
 
-    public DsicConsultaDetalhada numeroAutorizacaoSobrevooDac(String numeroAutorizacaoSobrevooDac) {
-        this.numeroAutorizacaoSobrevooDac = numeroAutorizacaoSobrevooDac;
+    public DsicConsultaDetalhada tipoDocumentoRetencaoApreensao(TipoDocumentoRetencaoApreensaoEnum tipoDocumentoRetencaoApreensao) {
+        this.tipoDocumentoRetencaoApreensao = tipoDocumentoRetencaoApreensao;
+        return this;
+    }
+
+    /**
+     * Unidade de lotação do fiscal responsável pela geração do DSIC&lt;br/&gt;Tamanho: 8
+     *
+     * @return unidadeResponsavelGeracaoDsicRfb
+     **/
+    @JsonProperty("unidadeResponsavelGeracaoDsicRfb")
+    public String getUnidadeResponsavelGeracaoDsicRfb() {
+        return unidadeResponsavelGeracaoDsicRfb;
+    }
+
+    public void setUnidadeResponsavelGeracaoDsicRfb(String unidadeResponsavelGeracaoDsicRfb) {
+        this.unidadeResponsavelGeracaoDsicRfb = unidadeResponsavelGeracaoDsicRfb;
+    }
+
+    public DsicConsultaDetalhada unidadeResponsavelGeracaoDsicRfb(String unidadeResponsavelGeracaoDsicRfb) {
+        this.unidadeResponsavelGeracaoDsicRfb = unidadeResponsavelGeracaoDsicRfb;
+        return this;
+    }
+
+    /**
+     * Código da UL de destino&lt;br/&gt; Tamanho: 7&lt;br/&gt; Formato: AAAAAAA
+     *
+     * @return unidadeRfbGeracaoDsic
+     **/
+    @JsonProperty("unidadeRfbGeracaoDsic")
+    public String getUnidadeRfbGeracaoDsic() {
+        return unidadeRfbGeracaoDsic;
+    }
+
+    public void setUnidadeRfbGeracaoDsic(String unidadeRfbGeracaoDsic) {
+        this.unidadeRfbGeracaoDsic = unidadeRfbGeracaoDsic;
+    }
+
+    /**
+     * Tipo de documento do passageiro&lt;br/&gt;P – Passaporte&lt;br/&gt;I – Carteira de identidade&lt;br/&gt;F – CPF&lt;br/&gt;O – Outros&lt;br/&gt;N – Nenhum&lt;br/&gt;
+     * @return tipoDocumentoViajante
+     **/
+    @JsonProperty("tipoDocumentoViajante")
+    public String getTipoDocumentoViajante() {
+        if (tipoDocumentoViajante == null) {
+            return null;
+        }
+        return tipoDocumentoViajante.value();
+    }
+
+    public void setTipoDocumentoViajante(TipoDocumentoViajanteEnum tipoDocumentoViajante) {
+        this.tipoDocumentoViajante = tipoDocumentoViajante;
+    }
+
+    public DsicConsultaDetalhada tipoDocumentoViajante(TipoDocumentoViajanteEnum tipoDocumentoViajante) {
+        this.tipoDocumentoViajante = tipoDocumentoViajante;
+        return this;
+    }
+
+    public DsicConsultaDetalhada unidadeRfbGeracaoDsic(String unidadeRfbGeracaoDsic) {
+        this.unidadeRfbGeracaoDsic = unidadeRfbGeracaoDsic;
         return this;
     }
 
@@ -958,176 +1122,21 @@ public class DsicConsultaDetalhada {
     }
 
     /**
-     * Observação&lt;br/&gt;Tamanho máximo: 50
+     * Get viagemAssociada
      *
-     * @return observacoes
+     * @return viagemAssociada
      **/
-    @JsonProperty("observacoes")
-    public String getObservacoes() {
-        return observacoes;
+    @JsonProperty("viagemAssociada")
+    public ChaveViagem getViagemAssociada() {
+        return viagemAssociada;
     }
 
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+    public void setViagemAssociada(ChaveViagem viagemAssociada) {
+        this.viagemAssociada = viagemAssociada;
     }
 
-    public DsicConsultaDetalhada observacoes(String observacoes) {
-        this.observacoes = observacoes;
-        return this;
-    }
-
-    /**
-     * Número de identificação do DSIC&lt;br/&gt;Tamanho: 11&lt;br/&gt; Formato: ANNNNNNNNNN
-     *
-     * @return identificacaoDSIC
-     **/
-    @JsonProperty("identificacaoDSIC")
-    public String getIdentificacaoDSIC() {
-        return identificacaoDSIC;
-    }
-
-    public void setIdentificacaoDSIC(String identificacaoDSIC) {
-        this.identificacaoDSIC = identificacaoDSIC;
-    }
-
-    public DsicConsultaDetalhada identificacaoDSIC(String identificacaoDSIC) {
-        this.identificacaoDSIC = identificacaoDSIC;
-        return this;
-    }
-
-    /**
-     * Código do Aeroporto de destino do conhecimento de carga associado ao DSIC&lt;br/&gt;Tamanho: 3
-     *
-     * @return codigoAeroportoDestinoConhecimento
-     **/
-    @JsonProperty("codigoAeroportoDestinoConhecimento")
-    public String getCodigoAeroportoDestinoConhecimento() {
-        return codigoAeroportoDestinoConhecimento;
-    }
-
-    public void setCodigoAeroportoDestinoConhecimento(String codigoAeroportoDestinoConhecimento) {
-        this.codigoAeroportoDestinoConhecimento = codigoAeroportoDestinoConhecimento;
-    }
-
-    public DsicConsultaDetalhada codigoAeroportoDestinoConhecimento(String codigoAeroportoDestinoConhecimento) {
-        this.codigoAeroportoDestinoConhecimento = codigoAeroportoDestinoConhecimento;
-        return this;
-    }
-
-    /**
-     * CNPJ responsável pela geração do DSIC&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return cnpjResponsavelGeracaoDsicDepositario
-     **/
-    @JsonProperty("cnpjResponsavelGeracaoDsicDepositario")
-    public String getCnpjResponsavelGeracaoDsicDepositario() {
-        return cnpjResponsavelGeracaoDsicDepositario;
-    }
-
-    public void setCnpjResponsavelGeracaoDsicDepositario(String cnpjResponsavelGeracaoDsicDepositario) {
-        this.cnpjResponsavelGeracaoDsicDepositario = cnpjResponsavelGeracaoDsicDepositario;
-    }
-
-    public DsicConsultaDetalhada cnpjResponsavelGeracaoDsicDepositario(String cnpjResponsavelGeracaoDsicDepositario) {
-        this.cnpjResponsavelGeracaoDsicDepositario = cnpjResponsavelGeracaoDsicDepositario;
-        return this;
-    }
-
-    /**
-     * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
-     * @return pesoBruto
-     **/
-    @JsonProperty("pesoBruto")
-    public BigDecimal getPesoBruto() {
-        return pesoBruto;
-    }
-
-    public void setPesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
-    }
-
-    public DsicConsultaDetalhada pesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
-        return this;
-    }
-
-    /**
-     * Get conhecimentoApropriado
-     *
-     * @return conhecimentoApropriado
-     **/
-    @JsonProperty("conhecimentoApropriado")
-    public ChaveConhecimento getConhecimentoApropriado() {
-        return conhecimentoApropriado;
-    }
-
-    public void setConhecimentoApropriado(ChaveConhecimento conhecimentoApropriado) {
-        this.conhecimentoApropriado = conhecimentoApropriado;
-    }
-
-    public DsicConsultaDetalhada conhecimentoApropriado(ChaveConhecimento conhecimentoApropriado) {
-        this.conhecimentoApropriado = conhecimentoApropriado;
-        return this;
-    }
-
-    /**
-     * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
-     *
-     * @return recintoAduaneiroGeracaoDsic
-     **/
-    @JsonProperty("recintoAduaneiroGeracaoDsic")
-    public String getRecintoAduaneiroGeracaoDsic() {
-        return recintoAduaneiroGeracaoDsic;
-    }
-
-    public void setRecintoAduaneiroGeracaoDsic(String recintoAduaneiroGeracaoDsic) {
-        this.recintoAduaneiroGeracaoDsic = recintoAduaneiroGeracaoDsic;
-    }
-
-    public DsicConsultaDetalhada recintoAduaneiroGeracaoDsic(String recintoAduaneiroGeracaoDsic) {
-        this.recintoAduaneiroGeracaoDsic = recintoAduaneiroGeracaoDsic;
-        return this;
-    }
-
-    /**
-     * Tipo de documento do passageiro&lt;br/&gt;P – Passaporte&lt;br/&gt;I – Carteira de identidade&lt;br/&gt;F – CPF&lt;br/&gt;O – Outros&lt;br/&gt;N – Nenhum&lt;br/&gt;
-     *
-     * @return tipoDocumentoViajante
-     **/
-    @JsonProperty("tipoDocumentoViajante")
-    public String getTipoDocumentoViajante() {
-        if (tipoDocumentoViajante == null) {
-            return null;
-        }
-        return tipoDocumentoViajante.value();
-    }
-
-    public void setTipoDocumentoViajante(TipoDocumentoViajanteEnum tipoDocumentoViajante) {
-        this.tipoDocumentoViajante = tipoDocumentoViajante;
-    }
-
-    public DsicConsultaDetalhada tipoDocumentoViajante(TipoDocumentoViajanteEnum tipoDocumentoViajante) {
-        this.tipoDocumentoViajante = tipoDocumentoViajante;
-        return this;
-    }
-
-    /**
-     * Tipo de documento do consignatário da carga&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacaoDocumentoConsignatario
-     **/
-    @JsonProperty("identificacaoDocumentoConsignatario")
-    public String getIdentificacaoDocumentoConsignatario() {
-        return identificacaoDocumentoConsignatario;
-    }
-
-    public void setIdentificacaoDocumentoConsignatario(String identificacaoDocumentoConsignatario) {
-        this.identificacaoDocumentoConsignatario = identificacaoDocumentoConsignatario;
-    }
-
-    public DsicConsultaDetalhada identificacaoDocumentoConsignatario(String identificacaoDocumentoConsignatario) {
-        this.identificacaoDocumentoConsignatario = identificacaoDocumentoConsignatario;
+    public DsicConsultaDetalhada viagemAssociada(ChaveViagem viagemAssociada) {
+        this.viagemAssociada = viagemAssociada;
         return this;
     }
 
@@ -1135,50 +1144,50 @@ public class DsicConsultaDetalhada {
     public String toString() {
 
         String sb = "class DsicConsultaDetalhada {\n" +
-                "    dataHoraEmissao: " + toIndentedString(dataHoraEmissao) + "\n" +
-                "    numeroDocumentoViajante: " + toIndentedString(numeroDocumentoViajante) + "\n" +
-                "    ruc: " + toIndentedString(ruc) + "\n" +
-                "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    chegadasTerrestres: " + toIndentedString(chegadasTerrestres) + "\n" +
-                "    nomeResponsavelGeracaoDsicDepositario: " + toIndentedString(nomeResponsavelGeracaoDsicDepositario) + "\n" +
-                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
-                "    documentosSaida: " + toIndentedString(documentosSaida) + "\n" +
-                "    numeroDocumentoRetencaoApreensao: " + toIndentedString(numeroDocumentoRetencaoApreensao) + "\n" +
-                "    tipoDocumentoRetencaoApreensao: " + toIndentedString(tipoDocumentoRetencaoApreensao) + "\n" +
-                "    bloqueiosBaixados: " + toIndentedString(bloqueiosBaixados) + "\n" +
-                "    viagemAssociada: " + toIndentedString(viagemAssociada) + "\n" +
-                "    nomeViajante: " + toIndentedString(nomeViajante) + "\n" +
-                "    orgaoEmissorDocumentoViajante: " + toIndentedString(orgaoEmissorDocumentoViajante) + "\n" +
-                "    manuseiosEspeciais: " + toIndentedString(manuseiosEspeciais) + "\n" +
-                "    unidadeRfbGeracaoDsic: " + toIndentedString(unidadeRfbGeracaoDsic) + "\n" +
-                "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
-                "    solicitacoesServicosEspeciais: " + toIndentedString(solicitacoesServicosEspeciais) + "\n" +
-                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
-                "    nomeConsignatario: " + toIndentedString(nomeConsignatario) + "\n" +
                 "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
-                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
-                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
-                "    unidadeResponsavelGeracaoDsicRfb: " + toIndentedString(unidadeResponsavelGeracaoDsicRfb) + "\n" +
-                "    outrasInfosServico: " + toIndentedString(outrasInfosServico) + "\n" +
-                "    identificacaoConhecimento: " + toIndentedString(identificacaoConhecimento) + "\n" +
-                "    setorResponsavelGeracaoDsicRfb: " + toIndentedString(setorResponsavelGeracaoDsicRfb) + "\n" +
-                "    tipoDocumentoConsignatario: " + toIndentedString(tipoDocumentoConsignatario) + "\n" +
-                "    numeroAutorizacaoSobrevooDac: " + toIndentedString(numeroAutorizacaoSobrevooDac) + "\n" +
-                "    valorArbitrado: " + toIndentedString(valorArbitrado) + "\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
-                "    identificacaoDSIC: " + toIndentedString(identificacaoDSIC) + "\n" +
-                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
+                "    bloqueiosBaixados: " + toIndentedString(bloqueiosBaixados) + "\n" +
+                "    chegadasTerrestres: " + toIndentedString(chegadasTerrestres) + "\n" +
                 "    cnpjResponsavelGeracaoDsicDepositario: " + toIndentedString(cnpjResponsavelGeracaoDsicDepositario) + "\n" +
-                "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
+                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
                 "    conhecimentoApropriado: " + toIndentedString(conhecimentoApropriado) + "\n" +
-                "    recintoAduaneiroGeracaoDsic: " + toIndentedString(recintoAduaneiroGeracaoDsic) + "\n" +
-                "    tipoDocumentoViajante: " + toIndentedString(tipoDocumentoViajante) + "\n" +
+                "    dataHoraEmissao: " + toIndentedString(dataHoraEmissao) + "\n" +
+                "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
+                "    documentosSaida: " + toIndentedString(documentosSaida) + "\n" +
+                "    identificacaoConhecimento: " + toIndentedString(identificacaoConhecimento) + "\n" +
+                "    identificacaoDSIC: " + toIndentedString(identificacaoDSIC) + "\n" +
                 "    identificacaoDocumentoConsignatario: " + toIndentedString(identificacaoDocumentoConsignatario) + "\n" +
+                "    manuseiosEspeciais: " + toIndentedString(manuseiosEspeciais) + "\n" +
+                "    motivo: " + toIndentedString(motivo) + "\n" +
+                "    nomeConsignatario: " + toIndentedString(nomeConsignatario) + "\n" +
+                "    nomeResponsavelGeracaoDsicDepositario: " + toIndentedString(nomeResponsavelGeracaoDsicDepositario) + "\n" +
+                "    nomeViajante: " + toIndentedString(nomeViajante) + "\n" +
+                "    numeroAutorizacaoSobrevooDac: " + toIndentedString(numeroAutorizacaoSobrevooDac) + "\n" +
+                "    numeroDocumentoRetencaoApreensao: " + toIndentedString(numeroDocumentoRetencaoApreensao) + "\n" +
+                "    numeroDocumentoViajante: " + toIndentedString(numeroDocumentoViajante) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
+                "    orgaoEmissorDocumentoViajante: " + toIndentedString(orgaoEmissorDocumentoViajante) + "\n" +
+                "    outrasInfosServico: " + toIndentedString(outrasInfosServico) + "\n" +
+                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
+                "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
+                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
+                "    recintoAduaneiroGeracaoDsic: " + toIndentedString(recintoAduaneiroGeracaoDsic) + "\n" +
+                "    ruc: " + toIndentedString(ruc) + "\n" +
+                "    setorResponsavelGeracaoDsicRfb: " + toIndentedString(setorResponsavelGeracaoDsicRfb) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    solicitacoesServicosEspeciais: " + toIndentedString(solicitacoesServicosEspeciais) + "\n" +
+                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "    tipoDocumentoConsignatario: " + toIndentedString(tipoDocumentoConsignatario) + "\n" +
+                "    tipoDocumentoRetencaoApreensao: " + toIndentedString(tipoDocumentoRetencaoApreensao) + "\n" +
+                "    tipoDocumentoViajante: " + toIndentedString(tipoDocumentoViajante) + "\n" +
+                "    unidadeResponsavelGeracaoDsicRfb: " + toIndentedString(unidadeResponsavelGeracaoDsicRfb) + "\n" +
+                "    unidadeRfbGeracaoDsic: " + toIndentedString(unidadeRfbGeracaoDsic) + "\n" +
+                "    valorArbitrado: " + toIndentedString(valorArbitrado) + "\n" +
+                "    viagemAssociada: " + toIndentedString(viagemAssociada) + "\n" +
                 "}";
-        return sb;
-    }
+    return sb;
+  }
 
     @XmlType(name = "MotivoEnum")
     @XmlEnum(String.class)
@@ -1314,45 +1323,6 @@ public class DsicConsultaDetalhada {
         }
     }
 
-    @XmlType(name = "TipoDocumentoRetencaoApreensaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoRetencaoApreensaoEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2");
-
-
-        private final String value;
-
-        TipoDocumentoRetencaoApreensaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDocumentoRetencaoApreensaoEnum fromValue(String v) {
-            for (TipoDocumentoRetencaoApreensaoEnum b : TipoDocumentoRetencaoApreensaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoRetencaoApreensaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-
     @XmlType(name = "TipoDocumentoConsignatarioEnum")
     @XmlEnum(String.class)
     public enum TipoDocumentoConsignatarioEnum {
@@ -1383,6 +1353,45 @@ public class DsicConsultaDetalhada {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoConsignatarioEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+
+    @XmlType(name = "TipoDocumentoRetencaoApreensaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoRetencaoApreensaoEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2");
+
+
+        private final String value;
+
+        TipoDocumentoRetencaoApreensaoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoDocumentoRetencaoApreensaoEnum fromValue(String v) {
+            for (TipoDocumentoRetencaoApreensaoEnum b : TipoDocumentoRetencaoApreensaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoRetencaoApreensaoEnum");
         }
 
         public String value() {

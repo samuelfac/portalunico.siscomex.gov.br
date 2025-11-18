@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosAgendaOperaoNaviosAeronavesChegada", propOrder =
-        {"dataHoraSaida", "dataHoraChegada"
+        {"dataHoraChegada", "dataHoraSaida"
         })
 
 @XmlRootElement(name = "DadosAgendaOperaoNaviosAeronavesChegada")
 public class DadosAgendaOperaoNaviosAeronavesChegada {
+
+    @XmlElement(name = "dataHoraChegada")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora da atracação do navio ou pouso da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora da atracação do navio ou pouso da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraChegada = null;
 
     @XmlElement(name = "dataHoraSaida")
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora da desatracação do navio ou decolagem da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -24,12 +31,24 @@ public class DadosAgendaOperaoNaviosAeronavesChegada {
      **/
     private String dataHoraSaida = null;
 
-    @XmlElement(name = "dataHoraChegada")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora da atracação do navio ou pouso da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Data e hora da atracação do navio ou pouso da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Data e hora da atracação do navio ou pouso da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraChegada
      **/
-    private String dataHoraChegada = null;
+    @JsonProperty("dataHoraChegada")
+    public String getDataHoraChegada() {
+        return dataHoraChegada;
+    }
+
+    public void setDataHoraChegada(String dataHoraChegada) {
+        this.dataHoraChegada = dataHoraChegada;
+    }
+
+    public DadosAgendaOperaoNaviosAeronavesChegada dataHoraChegada(String dataHoraChegada) {
+        this.dataHoraChegada = dataHoraChegada;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class DadosAgendaOperaoNaviosAeronavesChegada {
         return this;
     }
 
-    /**
-     * Data e hora da atracação do navio ou pouso da aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraChegada
-     **/
-    @JsonProperty("dataHoraChegada")
-    public String getDataHoraChegada() {
-        return dataHoraChegada;
-    }
-
-    public void setDataHoraChegada(String dataHoraChegada) {
-        this.dataHoraChegada = dataHoraChegada;
-    }
-
-    public DadosAgendaOperaoNaviosAeronavesChegada dataHoraChegada(String dataHoraChegada) {
-        this.dataHoraChegada = dataHoraChegada;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosAgendaOperaoNaviosAeronavesChegada {\n" +
-                "    dataHoraSaida: " + toIndentedString(dataHoraSaida) + "\n" +
                 "    dataHoraChegada: " + toIndentedString(dataHoraChegada) + "\n" +
+                "    dataHoraSaida: " + toIndentedString(dataHoraSaida) + "\n" +
                 "}";
         return sb;
     }

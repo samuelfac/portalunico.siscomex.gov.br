@@ -35,17 +35,6 @@ public class ResultadoConsulta {
     private List<Mensagem> listaMensagem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get listaRetorno
      *
      * @return listaRetorno
@@ -91,6 +80,18 @@ public class ResultadoConsulta {
     public ResultadoConsulta addListaMensagemItem(Mensagem listaMensagemItem) {
         this.listaMensagem.add(listaMensagemItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

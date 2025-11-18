@@ -36,17 +36,6 @@ public class EnvioSolicitaoDeDevoluo {
     private List<ManifestoDaSolicitaoDeDevoluo> manifestos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpjDeclarante
@@ -88,6 +77,18 @@ public class EnvioSolicitaoDeDevoluo {
     public EnvioSolicitaoDeDevoluo addManifestosItem(ManifestoDaSolicitaoDeDevoluo manifestosItem) {
         this.manifestos.add(manifestosItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

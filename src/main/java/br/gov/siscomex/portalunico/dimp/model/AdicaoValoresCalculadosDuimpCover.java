@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AdicaoValoresCalculadosDuimpCover", propOrder =
-        {"itens", "numero"
+        {"numero", "itens"
         })
 
 @XmlRootElement(name = "AdicaoValoresCalculadosDuimpCover")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados da adição.")
 public class AdicaoValoresCalculadosDuimpCover {
 
+    @XmlElement(name = "numero")
+    @ApiModelProperty(example = "1.0", value = "Número total de adições.<br>Tamanho mínimo: 1<br>Tamanho máximo: 99")
+    /**
+     * Número total de adições.<br>Tamanho mínimo: 1<br>Tamanho máximo: 99
+     **/
+    private Double numero = null;
+
     @XmlElement(name = "itens")
     @ApiModelProperty(example = "1.0", value = "Número de identificação de cada item que compõe a Duimp.<br>Tamanho mínimo: 1<br>Tamanho máximo: 9999")
     /**
@@ -29,12 +36,24 @@ public class AdicaoValoresCalculadosDuimpCover {
      **/
     private Double itens = null;
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(example = "1.0", value = "Número total de adições.<br>Tamanho mínimo: 1<br>Tamanho máximo: 99")
     /**
-     * Número total de adições.<br>Tamanho mínimo: 1<br>Tamanho máximo: 99
+     * Número total de adições.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 99
+     *
+     * @return numero
      **/
-    private Double numero = null;
+    @JsonProperty("numero")
+    public Double getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Double numero) {
+        this.numero = numero;
+    }
+
+    public AdicaoValoresCalculadosDuimpCover numero(Double numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,31 +85,12 @@ public class AdicaoValoresCalculadosDuimpCover {
         return this;
     }
 
-    /**
-     * Número total de adições.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 99
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public Double getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Double numero) {
-        this.numero = numero;
-    }
-
-    public AdicaoValoresCalculadosDuimpCover numero(Double numero) {
-        this.numero = numero;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class AdicaoValoresCalculadosDuimpCover {\n" +
-                "    itens: " + toIndentedString(itens) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
     }

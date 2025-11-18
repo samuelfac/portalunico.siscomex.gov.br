@@ -13,11 +13,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LinkCover", propOrder =
-        {"_href", "_method", "_rel"
+        {"_rel", "_href", "_method"
         })
 
 @XmlRootElement(name = "LinkCover")
 public class LinkCover {
+
+    @XmlElement(name = "_rel")
+    @ApiModelProperty(value = "Descrição de uma URL que provê um operação relacionada ao serviço utilizado.")
+    /**
+     * Descrição de uma URL que provê um operação relacionada ao serviço utilizado.
+     **/
+    private String _rel = null;
 
     @XmlElement(name = "_href")
     @ApiModelProperty(value = "URL que deve ser utilizada para acessar o serviço descrito no atributo '_rel'")
@@ -25,18 +32,6 @@ public class LinkCover {
      * URL que deve ser utilizada para acessar o serviço descrito no atributo '_rel'
      **/
     private String _href = null;
-    @XmlElement(name = "_method")
-    @ApiModelProperty(value = "Método HTTP que deve ser utilizado para acessar o serviço")
-    /**
-     * Método HTTP que deve ser utilizado para acessar o serviço
-     **/
-    private MethodEnum _method = null;
-    @XmlElement(name = "_rel")
-    @ApiModelProperty(value = "Descrição de uma URL que provê um operação relacionada ao serviço utilizado.")
-    /**
-     * Descrição de uma URL que provê um operação relacionada ao serviço utilizado.
-     **/
-    private String _rel = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -47,6 +42,32 @@ public class LinkCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "_method")
+    @ApiModelProperty(value = "Método HTTP que deve ser utilizado para acessar o serviço")
+    /**
+     * Método HTTP que deve ser utilizado para acessar o serviço
+     **/
+    private MethodEnum _method = null;
+
+    /**
+     * Descrição de uma URL que provê um operação relacionada ao serviço utilizado.
+     *
+     * @return _rel
+     **/
+    @JsonProperty("_rel")
+    public String getRel() {
+        return _rel;
+    }
+
+    public void setRel(String _rel) {
+        this._rel = _rel;
+    }
+
+    public LinkCover _rel(String _rel) {
+        this._rel = _rel;
+        return this;
     }
 
     /**
@@ -90,33 +111,14 @@ public class LinkCover {
         return this;
     }
 
-    /**
-     * Descrição de uma URL que provê um operação relacionada ao serviço utilizado.
-     *
-     * @return _rel
-     **/
-    @JsonProperty("_rel")
-    public String getRel() {
-        return _rel;
-    }
-
-    public void setRel(String _rel) {
-        this._rel = _rel;
-    }
-
-    public LinkCover _rel(String _rel) {
-        this._rel = _rel;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class LinkCover {\n" +
+                "    _rel: " + toIndentedString(_rel) + "\n" +
                 "    _href: " + toIndentedString(_href) + "\n" +
                 "    _method: " + toIndentedString(_method) + "\n" +
-                "    _rel: " + toIndentedString(_rel) + "\n" +
                 "}";
         return sb;
     }

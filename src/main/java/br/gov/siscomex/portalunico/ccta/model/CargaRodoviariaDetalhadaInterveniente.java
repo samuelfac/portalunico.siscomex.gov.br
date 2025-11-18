@@ -12,11 +12,23 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaDetalhadaInterveniente", propOrder =
-        {"identificacaoFiscal", "telefone", "tipo", "endereco", "tipoIdentificacaoFiscal", "nacionalidadeBrasileira", "nome", "tipoTransporte", "numeroLicenca", "email"
+        {"email", "endereco", "identificacaoFiscal", "nacionalidadeBrasileira", "nome", "numeroLicenca", "telefone", "tipo", "tipoIdentificacaoFiscal", "tipoTransporte"
         })
 
 @XmlRootElement(name = "CargaRodoviariaDetalhadaInterveniente")
 public class CargaRodoviariaDetalhadaInterveniente {
+
+    @XmlElement(name = "email")
+    @ApiModelProperty(example = "nome.interveniente@gmail.com", value = "Email do interveniente")
+    /**
+     * Email do interveniente
+     **/
+    private String email = null;
+
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Endereco endereco = null;
 
     @XmlElement(name = "identificacaoFiscal")
     @ApiModelProperty(example = "CNPJ", value = "Identificacao fiscal interveniente")
@@ -24,6 +36,24 @@ public class CargaRodoviariaDetalhadaInterveniente {
      * Identificacao fiscal interveniente
      **/
     private String identificacaoFiscal = null;
+
+    @XmlElement(name = "nacionalidadeBrasileira")
+    @ApiModelProperty(value = "")
+    private Boolean nacionalidadeBrasileira = null;
+
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Nome do interveniente", value = "Nome do interveniente")
+    /**
+     * Nome do interveniente
+     **/
+    private String nome = null;
+
+    @XmlElement(name = "numeroLicenca")
+    @ApiModelProperty(example = "123424", value = "Número da licenca do interveniente")
+    /**
+     * Número da licenca do interveniente
+     **/
+    private String numeroLicenca = null;
 
     @XmlElement(name = "telefone")
     @ApiModelProperty(example = "+552199999999", value = "Email do interveniente")
@@ -39,45 +69,15 @@ public class CargaRodoviariaDetalhadaInterveniente {
      **/
     private String tipo = null;
 
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Endereco endereco = null;
-
     @XmlElement(name = "tipoIdentificacaoFiscal")
     @ApiModelProperty(value = "")
     @Valid
     private TipoIdentificacaoFiscal tipoIdentificacaoFiscal = null;
 
-    @XmlElement(name = "nacionalidadeBrasileira")
-    @ApiModelProperty(value = "")
-    private Boolean nacionalidadeBrasileira = null;
-
-    @XmlElement(name = "nome")
-    @ApiModelProperty(example = "Nome do interveniente", value = "Nome do interveniente")
-    /**
-     * Nome do interveniente
-     **/
-    private String nome = null;
-
     @XmlElement(name = "tipoTransporte")
     @ApiModelProperty(value = "")
     @Valid
     private TipoTransporte tipoTransporte = null;
-
-    @XmlElement(name = "numeroLicenca")
-    @ApiModelProperty(example = "123424", value = "Número da licenca do interveniente")
-    /**
-     * Número da licenca do interveniente
-     **/
-    private String numeroLicenca = null;
-
-    @XmlElement(name = "email")
-    @ApiModelProperty(example = "nome.interveniente@gmail.com", value = "Email do interveniente")
-    /**
-     * Email do interveniente
-     **/
-    private String email = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -88,6 +88,39 @@ public class CargaRodoviariaDetalhadaInterveniente {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Email do interveniente
+     *
+     * @return email
+     **/
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public CargaRodoviariaDetalhadaInterveniente email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    /**
+     * Get endereco
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     /**
@@ -109,79 +142,8 @@ public class CargaRodoviariaDetalhadaInterveniente {
         return this;
     }
 
-    /**
-     * Email do interveniente
-     *
-     * @return telefone
-     **/
-    @JsonProperty("telefone")
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public CargaRodoviariaDetalhadaInterveniente telefone(String telefone) {
-        this.telefone = telefone;
-        return this;
-    }
-
-    /**
-     * Descrição do tipo de interveniente
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public CargaRodoviariaDetalhadaInterveniente tipo(String tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Get endereco
-     *
-     * @return endereco
-     **/
-    @JsonProperty("endereco")
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
     public CargaRodoviariaDetalhadaInterveniente endereco(Endereco endereco) {
         this.endereco = endereco;
-        return this;
-    }
-
-    /**
-     * Get tipoIdentificacaoFiscal
-     *
-     * @return tipoIdentificacaoFiscal
-     **/
-    @JsonProperty("tipoIdentificacaoFiscal")
-    public TipoIdentificacaoFiscal getTipoIdentificacaoFiscal() {
-        return tipoIdentificacaoFiscal;
-    }
-
-    public void setTipoIdentificacaoFiscal(TipoIdentificacaoFiscal tipoIdentificacaoFiscal) {
-        this.tipoIdentificacaoFiscal = tipoIdentificacaoFiscal;
-    }
-
-    public CargaRodoviariaDetalhadaInterveniente tipoIdentificacaoFiscal(TipoIdentificacaoFiscal tipoIdentificacaoFiscal) {
-        this.tipoIdentificacaoFiscal = tipoIdentificacaoFiscal;
         return this;
     }
 
@@ -224,8 +186,77 @@ public class CargaRodoviariaDetalhadaInterveniente {
     }
 
     /**
-     * Get tipoTransporte
+     * Número da licenca do interveniente
      *
+     * @return numeroLicenca
+     **/
+    @JsonProperty("numeroLicenca")
+    public String getNumeroLicenca() {
+        return numeroLicenca;
+    }
+
+    public void setNumeroLicenca(String numeroLicenca) {
+        this.numeroLicenca = numeroLicenca;
+    }
+
+    /**
+     * Email do interveniente
+     *
+     * @return telefone
+     **/
+    @JsonProperty("telefone")
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public CargaRodoviariaDetalhadaInterveniente telefone(String telefone) {
+        this.telefone = telefone;
+        return this;
+    }
+
+    /**
+     * Descrição do tipo de interveniente
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public CargaRodoviariaDetalhadaInterveniente tipo(String tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Get tipoIdentificacaoFiscal
+     *
+     * @return tipoIdentificacaoFiscal
+     **/
+    @JsonProperty("tipoIdentificacaoFiscal")
+    public TipoIdentificacaoFiscal getTipoIdentificacaoFiscal() {
+        return tipoIdentificacaoFiscal;
+    }
+
+    public void setTipoIdentificacaoFiscal(TipoIdentificacaoFiscal tipoIdentificacaoFiscal) {
+        this.tipoIdentificacaoFiscal = tipoIdentificacaoFiscal;
+    }
+
+    public CargaRodoviariaDetalhadaInterveniente tipoIdentificacaoFiscal(TipoIdentificacaoFiscal tipoIdentificacaoFiscal) {
+        this.tipoIdentificacaoFiscal = tipoIdentificacaoFiscal;
+        return this;
+    }
+
+    /**
+     * Get tipoTransporte
      * @return tipoTransporte
      **/
     @JsonProperty("tipoTransporte")
@@ -242,41 +273,8 @@ public class CargaRodoviariaDetalhadaInterveniente {
         return this;
     }
 
-    /**
-     * Número da licenca do interveniente
-     *
-     * @return numeroLicenca
-     **/
-    @JsonProperty("numeroLicenca")
-    public String getNumeroLicenca() {
-        return numeroLicenca;
-    }
-
-    public void setNumeroLicenca(String numeroLicenca) {
-        this.numeroLicenca = numeroLicenca;
-    }
-
     public CargaRodoviariaDetalhadaInterveniente numeroLicenca(String numeroLicenca) {
         this.numeroLicenca = numeroLicenca;
-        return this;
-    }
-
-    /**
-     * Email do interveniente
-     *
-     * @return email
-     **/
-    @JsonProperty("email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public CargaRodoviariaDetalhadaInterveniente email(String email) {
-        this.email = email;
         return this;
     }
 
@@ -284,16 +282,16 @@ public class CargaRodoviariaDetalhadaInterveniente {
     public String toString() {
 
         String sb = "class CargaRodoviariaDetalhadaInterveniente {\n" +
-                "    identificacaoFiscal: " + toIndentedString(identificacaoFiscal) + "\n" +
-                "    telefone: " + toIndentedString(telefone) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    email: " + toIndentedString(email) + "\n" +
                 "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    tipoIdentificacaoFiscal: " + toIndentedString(tipoIdentificacaoFiscal) + "\n" +
+                "    identificacaoFiscal: " + toIndentedString(identificacaoFiscal) + "\n" +
                 "    nacionalidadeBrasileira: " + toIndentedString(nacionalidadeBrasileira) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    tipoTransporte: " + toIndentedString(tipoTransporte) + "\n" +
                 "    numeroLicenca: " + toIndentedString(numeroLicenca) + "\n" +
-                "    email: " + toIndentedString(email) + "\n" +
+                "    telefone: " + toIndentedString(telefone) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    tipoIdentificacaoFiscal: " + toIndentedString(tipoIdentificacaoFiscal) + "\n" +
+                "    tipoTransporte: " + toIndentedString(tipoTransporte) + "\n" +
                 "}";
         return sb;
     }

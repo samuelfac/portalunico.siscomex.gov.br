@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiMultiStatus", propOrder =
-        {"code", "identificacao", "links", "message", "errors"
+        {"code", "message", "identificacao", "errors", "links"
         })
 
 @XmlRootElement(name = "RespostaApiMultiStatus")
@@ -26,25 +26,17 @@ public class RespostaApiMultiStatus {
      **/
     private Integer code = null;
 
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private IdentificacaoItemCriadoCover identificacao = null;
-
-    @XmlElement(name = "links")
-    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.")
-    @Valid
-    /**
-     * Operações disponíveis sobre o recurso.
-     **/
-    private List<LinkCover> links = null;
-
     @XmlElement(name = "message")
     @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.")
     /**
      * Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.
      **/
     private String message = null;
+
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private IdentificacaoItemCriadoCover identificacao = null;
 
     @XmlElement(name = "errors")
     @ApiModelProperty(value = "Conjunto de erros de validação dos campos. Esta lista é devolvida apenas quando o atributo 'code' deste item é igual a 422. <br> Isto ocorrerá apenas quando a resposta da requisição http for 207")
@@ -54,16 +46,13 @@ public class RespostaApiMultiStatus {
      **/
     private List<DuimpApiMessageCover> errors = null;
 
+    @XmlElement(name = "links")
+    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Operações disponíveis sobre o recurso.
+     **/
+    private List<LinkCover> links = null;
 
     /**
      * Código da resposta individual para um dos itens que compõem a resposta.
@@ -85,6 +74,36 @@ public class RespostaApiMultiStatus {
     }
 
     /**
+     * Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.
+     *
+     * @return message
+     **/
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public RespostaApiMultiStatus message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get identificacao
      *
      * @return identificacao
@@ -96,6 +115,30 @@ public class RespostaApiMultiStatus {
 
     public void setIdentificacao(IdentificacaoItemCriadoCover identificacao) {
         this.identificacao = identificacao;
+    }
+
+    /**
+     * Conjunto de erros de validação dos campos. Esta lista é devolvida apenas quando o atributo &#39;code&#39; deste item é igual a 422. &lt;br&gt; Isto ocorrerá apenas quando a resposta da requisição http for 207
+     *
+     * @return errors
+     **/
+    @JsonProperty("errors")
+    public List<DuimpApiMessageCover> getErrors() {
+        return errors;
+    }
+
+    public void setErrors(List<DuimpApiMessageCover> errors) {
+        this.errors = errors;
+    }
+
+    public RespostaApiMultiStatus errors(List<DuimpApiMessageCover> errors) {
+        this.errors = errors;
+        return this;
+    }
+
+    public RespostaApiMultiStatus addErrorsItem(DuimpApiMessageCover errorsItem) {
+        this.errors.add(errorsItem);
+        return this;
     }
 
     public RespostaApiMultiStatus identificacao(IdentificacaoItemCriadoCover identificacao) {
@@ -127,58 +170,15 @@ public class RespostaApiMultiStatus {
         return this;
     }
 
-    /**
-     * Mensagem de resposta do resultado da operação individual para um dos itens da que compõem a resposta.
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public RespostaApiMultiStatus message(String message) {
-        this.message = message;
-        return this;
-    }
-
-    /**
-     * Conjunto de erros de validação dos campos. Esta lista é devolvida apenas quando o atributo &#39;code&#39; deste item é igual a 422. &lt;br&gt; Isto ocorrerá apenas quando a resposta da requisição http for 207
-     *
-     * @return errors
-     **/
-    @JsonProperty("errors")
-    public List<DuimpApiMessageCover> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(List<DuimpApiMessageCover> errors) {
-        this.errors = errors;
-    }
-
-    public RespostaApiMultiStatus errors(List<DuimpApiMessageCover> errors) {
-        this.errors = errors;
-        return this;
-    }
-
-    public RespostaApiMultiStatus addErrorsItem(DuimpApiMessageCover errorsItem) {
-        this.errors.add(errorsItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class RespostaApiMultiStatus {\n" +
                 "    code: " + toIndentedString(code) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    message: " + toIndentedString(message) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    errors: " + toIndentedString(errors) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

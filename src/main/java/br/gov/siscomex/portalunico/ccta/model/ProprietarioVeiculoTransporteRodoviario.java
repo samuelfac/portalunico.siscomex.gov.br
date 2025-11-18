@@ -12,21 +12,23 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProprietarioVeiculoTransporteRodoviario", propOrder =
-        {"tipoDocumento", "endereco", "nacionalidadeBrasileira", "nome", "numeroDocumento", "licenca"
+        {"endereco", "licenca", "nacionalidadeBrasileira", "nome", "numeroDocumento", "tipoDocumento"
         })
 
 @XmlRootElement(name = "ProprietarioVeiculoTransporteRodoviario")
 public class ProprietarioVeiculoTransporteRodoviario {
 
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDocumento tipoDocumento = null;
-
     @XmlElement(name = "endereco")
     @ApiModelProperty(value = "")
     @Valid
     private Endereco endereco = null;
+
+    @XmlElement(name = "licenca")
+    @ApiModelProperty(example = "123424", value = "Licenca do proprietário do veículo")
+    /**
+     * Licenca do proprietário do veículo
+     **/
+    private String licenca = null;
 
     @XmlElement(name = "nacionalidadeBrasileira")
     @ApiModelProperty(value = "Indicador que informa se o proprietário do veículo da viagem é de nacionalidade brasileira (true/false)")
@@ -49,42 +51,10 @@ public class ProprietarioVeiculoTransporteRodoviario {
      **/
     private String numeroDocumento = null;
 
-    @XmlElement(name = "licenca")
-    @ApiModelProperty(example = "123424", value = "Licenca do proprietário do veículo")
-    /**
-     * Licenca do proprietário do veículo
-     **/
-    private String licenca = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get tipoDocumento
-     *
-     * @return tipoDocumento
-     **/
-    @JsonProperty("tipoDocumento")
-    public TipoDocumento getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public ProprietarioVeiculoTransporteRodoviario tipoDocumento(TipoDocumento tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoDocumento tipoDocumento = null;
 
     /**
      * Get endereco
@@ -103,6 +73,31 @@ public class ProprietarioVeiculoTransporteRodoviario {
     public ProprietarioVeiculoTransporteRodoviario endereco(Endereco endereco) {
         this.endereco = endereco;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Licenca do proprietário do veículo
+     *
+     * @return licenca
+     **/
+    @JsonProperty("licenca")
+    public String getLicenca() {
+        return licenca;
+    }
+
+    public void setLicenca(String licenca) {
+        this.licenca = licenca;
     }
 
     /**
@@ -162,22 +157,27 @@ public class ProprietarioVeiculoTransporteRodoviario {
         return this;
     }
 
-    /**
-     * Licenca do proprietário do veículo
-     *
-     * @return licenca
-     **/
-    @JsonProperty("licenca")
-    public String getLicenca() {
-        return licenca;
-    }
-
-    public void setLicenca(String licenca) {
-        this.licenca = licenca;
-    }
-
     public ProprietarioVeiculoTransporteRodoviario licenca(String licenca) {
         this.licenca = licenca;
+        return this;
+    }
+
+    /**
+     * Get tipoDocumento
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public ProprietarioVeiculoTransporteRodoviario tipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
         return this;
     }
 
@@ -185,12 +185,12 @@ public class ProprietarioVeiculoTransporteRodoviario {
     public String toString() {
 
         String sb = "class ProprietarioVeiculoTransporteRodoviario {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    licenca: " + toIndentedString(licenca) + "\n" +
                 "    nacionalidadeBrasileira: " + toIndentedString(nacionalidadeBrasileira) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
-                "    licenca: " + toIndentedString(licenca) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }

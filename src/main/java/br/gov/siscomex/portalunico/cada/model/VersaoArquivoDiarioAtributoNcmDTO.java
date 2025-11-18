@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VersaoArquivoDiarioAtributoNcmDTO", propOrder =
-        {"adicionado", "excluido", "resumo", "versao", "alterado"
+        {"versao", "resumo", "adicionado", "excluido", "alterado"
         })
 
 @XmlRootElement(name = "VersaoArquivoDiarioAtributoNcmDTO")
@@ -23,6 +23,20 @@ import java.util.List;
  **/
 @ApiModel(description = "Informações sobre alterações no arquivo de atributos e NCM")
 public class VersaoArquivoDiarioAtributoNcmDTO {
+
+    @XmlElement(name = "versao")
+    @ApiModelProperty(value = "Versão do arquivo")
+    /**
+     * Versão do arquivo
+     **/
+    private String versao = null;
+
+    @XmlElement(name = "resumo")
+    @ApiModelProperty(value = "Resumo das alterações")
+    /**
+     * Resumo das alterações
+     **/
+    private String resumo = null;
 
     @XmlElement(name = "adicionado")
     @ApiModelProperty(value = "Lista de NCM adicionadas")
@@ -37,20 +51,6 @@ public class VersaoArquivoDiarioAtributoNcmDTO {
      * Lista de NCM excluídas
      **/
     private List<String> excluido = null;
-
-    @XmlElement(name = "resumo")
-    @ApiModelProperty(value = "Resumo das alterações")
-    /**
-     * Resumo das alterações
-     **/
-    private String resumo = null;
-
-    @XmlElement(name = "versao")
-    @ApiModelProperty(value = "Versão do arquivo")
-    /**
-     * Versão do arquivo
-     **/
-    private String versao = null;
 
     @XmlElement(name = "alterado")
     @ApiModelProperty(value = "Lista de NCM alteradas")
@@ -69,6 +69,39 @@ public class VersaoArquivoDiarioAtributoNcmDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Versão do arquivo
+     *
+     * @return versao
+     **/
+    @JsonProperty("versao")
+    public String getVersao() {
+        return versao;
+    }
+
+    public void setVersao(String versao) {
+        this.versao = versao;
+    }
+
+    public VersaoArquivoDiarioAtributoNcmDTO versao(String versao) {
+        this.versao = versao;
+        return this;
+    }
+
+    /**
+     * Resumo das alterações
+     *
+     * @return resumo
+     **/
+    @JsonProperty("resumo")
+    public String getResumo() {
+        return resumo;
+    }
+
+    public void setResumo(String resumo) {
+        this.resumo = resumo;
     }
 
     /**
@@ -120,44 +153,6 @@ public class VersaoArquivoDiarioAtributoNcmDTO {
     }
 
     /**
-     * Resumo das alterações
-     *
-     * @return resumo
-     **/
-    @JsonProperty("resumo")
-    public String getResumo() {
-        return resumo;
-    }
-
-    public void setResumo(String resumo) {
-        this.resumo = resumo;
-    }
-
-    public VersaoArquivoDiarioAtributoNcmDTO resumo(String resumo) {
-        this.resumo = resumo;
-        return this;
-    }
-
-    /**
-     * Versão do arquivo
-     *
-     * @return versao
-     **/
-    @JsonProperty("versao")
-    public String getVersao() {
-        return versao;
-    }
-
-    public void setVersao(String versao) {
-        this.versao = versao;
-    }
-
-    public VersaoArquivoDiarioAtributoNcmDTO versao(String versao) {
-        this.versao = versao;
-        return this;
-    }
-
-    /**
      * Lista de NCM alteradas
      *
      * @return alterado
@@ -181,14 +176,19 @@ public class VersaoArquivoDiarioAtributoNcmDTO {
         return this;
     }
 
+    public VersaoArquivoDiarioAtributoNcmDTO resumo(String resumo) {
+        this.resumo = resumo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class VersaoArquivoDiarioAtributoNcmDTO {\n" +
+                "    versao: " + toIndentedString(versao) + "\n" +
+                "    resumo: " + toIndentedString(resumo) + "\n" +
                 "    adicionado: " + toIndentedString(adicionado) + "\n" +
                 "    excluido: " + toIndentedString(excluido) + "\n" +
-                "    resumo: " + toIndentedString(resumo) + "\n" +
-                "    versao: " + toIndentedString(versao) + "\n" +
                 "    alterado: " + toIndentedString(alterado) + "\n" +
                 "}";
         return sb;

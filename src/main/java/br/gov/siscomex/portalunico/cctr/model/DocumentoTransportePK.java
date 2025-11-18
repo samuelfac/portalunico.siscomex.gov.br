@@ -13,21 +13,40 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoTransportePK", propOrder =
-        {"sequencia", "ano"
+        {"ano", "sequencia"
         })
 
 @XmlRootElement(name = "DocumentoTransportePK")
 public class DocumentoTransportePK {
+
+    @XmlElement(name = "ano")
+    @ApiModelProperty(value = "")
+    @Valid
+    private BigDecimal ano = null;
 
     @XmlElement(name = "sequencia")
     @ApiModelProperty(value = "")
     @Valid
     private BigDecimal sequencia = null;
 
-    @XmlElement(name = "ano")
-    @ApiModelProperty(value = "")
-    @Valid
-    private BigDecimal ano = null;
+    /**
+     * Get ano
+     *
+     * @return ano
+     **/
+    @JsonProperty("ano")
+    public BigDecimal getAno() {
+        return ano;
+    }
+
+    public void setAno(BigDecimal ano) {
+        this.ano = ano;
+    }
+
+    public DocumentoTransportePK ano(BigDecimal ano) {
+        this.ano = ano;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -59,31 +78,12 @@ public class DocumentoTransportePK {
         return this;
     }
 
-    /**
-     * Get ano
-     *
-     * @return ano
-     **/
-    @JsonProperty("ano")
-    public BigDecimal getAno() {
-        return ano;
-    }
-
-    public void setAno(BigDecimal ano) {
-        this.ano = ano;
-    }
-
-    public DocumentoTransportePK ano(BigDecimal ano) {
-        this.ano = ano;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DocumentoTransportePK {\n" +
-                "    sequencia: " + toIndentedString(sequencia) + "\n" +
                 "    ano: " + toIndentedString(ano) + "\n" +
+                "    sequencia: " + toIndentedString(sequencia) + "\n" +
                 "}";
         return sb;
     }

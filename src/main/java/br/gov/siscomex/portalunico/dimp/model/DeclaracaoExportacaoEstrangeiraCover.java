@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclaracaoExportacaoEstrangeiraCover", propOrder =
-        {"faixaInicio", "numero", "faixaFim"
+        {"numero", "faixaInicio", "faixaFim"
         })
 
 @XmlRootElement(name = "DeclaracaoExportacaoEstrangeiraCover")
@@ -23,13 +23,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Lista de declarações estrangeiras.<br>Observação: Os campos deste grupo são informados apenas quando a procedência da carga é de um país do Mercosul.")
 public class DeclaracaoExportacaoEstrangeiraCover {
 
-    @XmlElement(name = "faixaInicio", required = true)
-    @ApiModelProperty(example = "A-11", required = true, value = "Item inicial da faixa de itens.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
-    /**
-     * Item inicial da faixa de itens.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
-     **/
-    private String faixaInicio = null;
-
     @XmlElement(name = "numero", required = true)
     @ApiModelProperty(example = "19XY0000001-XYZ", required = true, value = "Número da declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
     /**
@@ -37,12 +30,39 @@ public class DeclaracaoExportacaoEstrangeiraCover {
      **/
     private String numero = null;
 
+    @XmlElement(name = "faixaInicio", required = true)
+    @ApiModelProperty(example = "A-11", required = true, value = "Item inicial da faixa de itens.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
+    /**
+     * Item inicial da faixa de itens.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
+     **/
+    private String faixaInicio = null;
+
     @XmlElement(name = "faixaFim", required = true)
     @ApiModelProperty(example = "B-20", required = true, value = "Item final da faixa de itens.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
     /**
      * Item final da faixa de itens.<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
      **/
     private String faixaFim = null;
+
+    /**
+     * Número da declaração.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 70
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    @NotNull
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public DeclaracaoExportacaoEstrangeiraCover numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,31 +90,6 @@ public class DeclaracaoExportacaoEstrangeiraCover {
         this.faixaInicio = faixaInicio;
     }
 
-    public DeclaracaoExportacaoEstrangeiraCover faixaInicio(String faixaInicio) {
-        this.faixaInicio = faixaInicio;
-        return this;
-    }
-
-    /**
-     * Número da declaração.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 70
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    @NotNull
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public DeclaracaoExportacaoEstrangeiraCover numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
     /**
      * Item final da faixa de itens.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 7
      *
@@ -115,12 +110,17 @@ public class DeclaracaoExportacaoEstrangeiraCover {
         return this;
     }
 
+    public DeclaracaoExportacaoEstrangeiraCover faixaInicio(String faixaInicio) {
+        this.faixaInicio = faixaInicio;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DeclaracaoExportacaoEstrangeiraCover {\n" +
-                "    faixaInicio: " + toIndentedString(faixaInicio) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    faixaInicio: " + toIndentedString(faixaInicio) + "\n" +
                 "    faixaFim: " + toIndentedString(faixaFim) + "\n" +
                 "}";
         return sb;

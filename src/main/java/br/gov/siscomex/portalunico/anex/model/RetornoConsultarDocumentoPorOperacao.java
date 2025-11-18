@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultarDocumentoPorOperacao", propOrder =
-        {"documentos", "dossiesVinculados", "numeroOperacao", "tipoOperacao", "dossies"
+        {"documentos", "dossies", "dossiesVinculados", "numeroOperacao", "tipoOperacao"
         })
 
 @XmlRootElement(name = "RetornoConsultarDocumentoPorOperacao")
@@ -35,6 +35,14 @@ public class RetornoConsultarDocumentoPorOperacao {
      **/
     private List<Documento> documentos = null;
 
+    @XmlElement(name = "dossies")
+    @ApiModelProperty(value = "\\* somente quando houver mais de um dossiê para a operação.<br/>Lista de dossiês.")
+    @Valid
+    /**
+     * \\* somente quando houver mais de um dossiê para a operação.<br/>Lista de dossiês.
+     **/
+    private List<DossieOperacao> dossies = null;
+
     @XmlElement(name = "dossiesVinculados")
     @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
     @Valid
@@ -49,19 +57,6 @@ public class RetornoConsultarDocumentoPorOperacao {
      * Número da operação.<br/>Tamanho máximo: 255<br/>Formato: de acordo com o definido em cada sistema de origem do tipo de operação.<br/><br/>Para DI - Declaração de Importação<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2000004120<br/><br/>Para LI - Licença de Importação<br/>Formato: NNNNNNNNNNN - 11 dígitos numéricos<br/>Exemplo: 19000000235<br/><br/>Para RE - Registro de Exportação<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 190000005786<br/><br/>Para DT - Declaração de Trânsito<br/>Formato: NNNNNNNNNN - 10 dígitos numéricos<br/>Exemplo: 2100003784<br/><br/>Para DIR - Declaração de Importação de Remessa<br/>Formato: NNNNNNNNNNNN - 12 dígitos numéricos<br/>Exemplo: 210000103657<br/><br/>Para LPCO - Tratamento Administrativo/LPCO<br/>Formato: XNNNNNNNNNN - X = \"E\" para exportação ou \"I\" para importação concatenado com 10 dígitos numéricos<br/>Exemplo: E1900002152 ou I1900000454<br/><br/>Para CATP - Catálogo de Produtos<br/>Formato: <CNPJ Raíz ou CPF>-<código do produto><br/>onde:<br/><CNPJ Raíz> = NNNNNNNN - 8 primeiros dígitos do CNPJ<br/>&lt;CPF&gt; = NNNNNNNNNNN - 11 dígitos do CPF. É utilizado quando o usuário se auto representa como importador/exportador.<br/><código do produto> = NNNNNNNNNN - 10 dígitos do código do produto gerado no CATP - Catálogo de Produtos<br/>Exemplo: para CNPJ 00000000-0000001049, para CPF 01646244907-0000000001<br/><br/>Para DUE - Declaração Única de Exportação<br/>Formato: NNBRNNNNNNNNNN - 2 dígitos numéricos concatenados com \"BR\" e 10 dígitos numéricos<br/>Exemplo: 19BR0000000530<br/><br/>Para DUIMP - Declaração Única de Importação,<br/>Formato: NNBRNNNNNNNNNNN - 2 dígitos numéricos concatenados com \"BR\" e 11 dígitos numéricos<br/>Exemplo: 21BR00000002386<br/>
      **/
     private String numeroOperacao = null;
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "DUE", required = true, value = "Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>")
-    /**
-     * Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "dossies")
-    @ApiModelProperty(value = "\\* somente quando houver mais de um dossiê para a operação.<br/>Lista de dossiês.")
-    @Valid
-    /**
-     * \\* somente quando houver mais de um dossiê para a operação.<br/>Lista de dossiês.
-     **/
-    private List<DossieOperacao> dossies = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -73,6 +68,13 @@ public class RetornoConsultarDocumentoPorOperacao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "DUE", required = true, value = "Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>")
+    /**
+     * Identifica o tipo de operação desejado:<br/>DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/>
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
 
     /**
      * \\* somente quando houver apenas um dossiê para a operação.&lt;br/&gt;Lista de documentos.
@@ -95,6 +97,30 @@ public class RetornoConsultarDocumentoPorOperacao {
 
     public RetornoConsultarDocumentoPorOperacao addDocumentosItem(Documento documentosItem) {
         this.documentos.add(documentosItem);
+        return this;
+    }
+
+    /**
+     * \\* somente quando houver mais de um dossiê para a operação.&lt;br/&gt;Lista de dossiês.
+     *
+     * @return dossies
+     **/
+    @JsonProperty("dossies")
+    public List<DossieOperacao> getDossies() {
+        return dossies;
+    }
+
+    public void setDossies(List<DossieOperacao> dossies) {
+        this.dossies = dossies;
+    }
+
+    public RetornoConsultarDocumentoPorOperacao dossies(List<DossieOperacao> dossies) {
+        this.dossies = dossies;
+        return this;
+    }
+
+    public RetornoConsultarDocumentoPorOperacao addDossiesItem(DossieOperacao dossiesItem) {
+        this.dossies.add(dossiesItem);
         return this;
     }
 
@@ -165,40 +191,16 @@ public class RetornoConsultarDocumentoPorOperacao {
         return this;
     }
 
-    /**
-     * \\* somente quando houver mais de um dossiê para a operação.&lt;br/&gt;Lista de dossiês.
-     *
-     * @return dossies
-     **/
-    @JsonProperty("dossies")
-    public List<DossieOperacao> getDossies() {
-        return dossies;
-    }
-
-    public void setDossies(List<DossieOperacao> dossies) {
-        this.dossies = dossies;
-    }
-
-    public RetornoConsultarDocumentoPorOperacao dossies(List<DossieOperacao> dossies) {
-        this.dossies = dossies;
-        return this;
-    }
-
-    public RetornoConsultarDocumentoPorOperacao addDossiesItem(DossieOperacao dossiesItem) {
-        this.dossies.add(dossiesItem);
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class RetornoConsultarDocumentoPorOperacao {\n" +
                 "    documentos: " + toIndentedString(documentos) + "\n" +
+                "    dossies: " + toIndentedString(dossies) + "\n" +
                 "    dossiesVinculados: " + toIndentedString(dossiesVinculados) + "\n" +
                 "    numeroOperacao: " + toIndentedString(numeroOperacao) + "\n" +
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    dossies: " + toIndentedString(dossies) + "\n" +
                 "}";
         return sb;
     }

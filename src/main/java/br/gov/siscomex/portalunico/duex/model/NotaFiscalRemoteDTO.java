@@ -13,18 +13,11 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NotaFiscalRemoteDTO", propOrder =
-        {"quantidadeDeItens", "chaveDeAcesso", "finalidade", "numeroDoDocumento", "notaFicalEletronica", "serie", "dataEmissao", "ufDoEmissor", "modelo", "identificacaoDoEmitente"
+        {"chaveDeAcesso", "dataEmissao", "finalidade", "identificacaoDoEmitente", "modelo", "notaFicalEletronica", "numeroDoDocumento", "quantidadeDeItens", "serie", "ufDoEmissor"
         })
 
 @XmlRootElement(name = "NotaFiscalRemoteDTO")
 public class NotaFiscalRemoteDTO {
-
-    @XmlElement(name = "quantidadeDeItens")
-    @ApiModelProperty(value = "Quantidade de itens<br />Formato: Inteiro, com até 3 digitos")
-    /**
-     * Quantidade de itens<br />Formato: Inteiro, com até 3 digitos
-     **/
-    private Integer quantidadeDeItens = null;
 
     @XmlElement(name = "chaveDeAcesso")
     @ApiModelProperty(value = "Chave de acesso<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
@@ -33,31 +26,6 @@ public class NotaFiscalRemoteDTO {
      **/
     private String chaveDeAcesso = null;
 
-    @XmlElement(name = "finalidade")
-    @ApiModelProperty(value = "Finalidade<br />Tamanho mínimo: 1<br />Tamanho máximo: 25")
-    /**
-     * Finalidade<br />Tamanho mínimo: 1<br />Tamanho máximo: 25
-     **/
-    private String finalidade = null;
-
-    @XmlElement(name = "numeroDoDocumento")
-    @ApiModelProperty(value = "Número do documento<br />Formato: Inteiro, com até 9 digitos")
-    /**
-     * Número do documento<br />Formato: Inteiro, com até 9 digitos
-     **/
-    private Integer numeroDoDocumento = null;
-
-    @XmlElement(name = "notaFicalEletronica")
-    @ApiModelProperty(value = "")
-    private Boolean notaFicalEletronica = null;
-
-    @XmlElement(name = "serie")
-    @ApiModelProperty(example = "90", value = "Serie<br />Formato: Inteiro, com até 3 digitos")
-    /**
-     * Serie<br />Formato: Inteiro, com até 3 digitos
-     **/
-    private Integer serie = null;
-
     @XmlElement(name = "dataEmissao")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de emissão da NF<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
     /**
@@ -65,12 +33,17 @@ public class NotaFiscalRemoteDTO {
      **/
     private OffsetDateTime dataEmissao = null;
 
-    @XmlElement(name = "ufDoEmissor")
-    @ApiModelProperty(example = "RJ", value = "UF do emissor<br />Tamanho: 2<br />Formato: 'AAS'")
+    @XmlElement(name = "finalidade")
+    @ApiModelProperty(value = "Finalidade<br />Tamanho mínimo: 1<br />Tamanho máximo: 25")
     /**
-     * UF do emissor<br />Tamanho: 2<br />Formato: 'AAS'
+     * Finalidade<br />Tamanho mínimo: 1<br />Tamanho máximo: 25
      **/
-    private String ufDoEmissor = null;
+    private String finalidade = null;
+
+    @XmlElement(name = "identificacaoDoEmitente")
+    @ApiModelProperty(value = "")
+    @Valid
+    private NumeroIdentificacaoDTO identificacaoDoEmitente = null;
 
     @XmlElement(name = "modelo")
     @ApiModelProperty(example = "01", value = "Modelo<br />Tamanho: 2<br />Formato: 'NN'")
@@ -79,40 +52,37 @@ public class NotaFiscalRemoteDTO {
      **/
     private String modelo = null;
 
-    @XmlElement(name = "identificacaoDoEmitente")
+    @XmlElement(name = "notaFicalEletronica")
     @ApiModelProperty(value = "")
-    @Valid
-    private NumeroIdentificacaoDTO identificacaoDoEmitente = null;
+    private Boolean notaFicalEletronica = null;
 
+    @XmlElement(name = "numeroDoDocumento")
+    @ApiModelProperty(value = "Número do documento<br />Formato: Inteiro, com até 9 digitos")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Quantidade de itens&lt;br /&gt;Formato: Inteiro, com até 3 digitos
-     *
-     * @return quantidadeDeItens
+     * Número do documento<br />Formato: Inteiro, com até 9 digitos
      **/
-    @JsonProperty("quantidadeDeItens")
-    public Integer getQuantidadeDeItens() {
-        return quantidadeDeItens;
-    }
+    private Integer numeroDoDocumento = null;
 
-    public void setQuantidadeDeItens(Integer quantidadeDeItens) {
-        this.quantidadeDeItens = quantidadeDeItens;
-    }
+    @XmlElement(name = "quantidadeDeItens")
+    @ApiModelProperty(value = "Quantidade de itens<br />Formato: Inteiro, com até 3 digitos")
+    /**
+     * Quantidade de itens<br />Formato: Inteiro, com até 3 digitos
+     **/
+    private Integer quantidadeDeItens = null;
 
-    public NotaFiscalRemoteDTO quantidadeDeItens(Integer quantidadeDeItens) {
-        this.quantidadeDeItens = quantidadeDeItens;
-        return this;
-    }
+    @XmlElement(name = "serie")
+    @ApiModelProperty(example = "90", value = "Serie<br />Formato: Inteiro, com até 3 digitos")
+    /**
+     * Serie<br />Formato: Inteiro, com até 3 digitos
+     **/
+    private Integer serie = null;
+
+    @XmlElement(name = "ufDoEmissor")
+    @ApiModelProperty(example = "RJ", value = "UF do emissor<br />Tamanho: 2<br />Formato: 'AAS'")
+    /**
+     * UF do emissor<br />Tamanho: 2<br />Formato: 'AAS'
+     **/
+    private String ufDoEmissor = null;
 
     /**
      * Chave de acesso&lt;br /&gt;Tamanho: 44&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
@@ -134,6 +104,31 @@ public class NotaFiscalRemoteDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data de emissão da NF&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    public OffsetDateTime getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(OffsetDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    /**
      * Finalidade&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 25
      *
      * @return finalidade
@@ -149,6 +144,68 @@ public class NotaFiscalRemoteDTO {
 
     public NotaFiscalRemoteDTO finalidade(String finalidade) {
         this.finalidade = finalidade;
+        return this;
+    }
+
+    public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
+
+    /**
+     * Get identificacaoDoEmitente
+     *
+     * @return identificacaoDoEmitente
+     **/
+    @JsonProperty("identificacaoDoEmitente")
+    public NumeroIdentificacaoDTO getIdentificacaoDoEmitente() {
+        return identificacaoDoEmitente;
+    }
+
+    public void setIdentificacaoDoEmitente(NumeroIdentificacaoDTO identificacaoDoEmitente) {
+        this.identificacaoDoEmitente = identificacaoDoEmitente;
+    }
+
+    public NotaFiscalRemoteDTO identificacaoDoEmitente(NumeroIdentificacaoDTO identificacaoDoEmitente) {
+        this.identificacaoDoEmitente = identificacaoDoEmitente;
+        return this;
+    }
+
+    /**
+     * Modelo&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;NN&#39;
+     *
+     * @return modelo
+     **/
+    @JsonProperty("modelo")
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * Get notaFicalEletronica
+     *
+     * @return notaFicalEletronica
+     **/
+    @JsonProperty("notaFicalEletronica")
+    public Boolean isisNotaFicalEletronica() {
+        return notaFicalEletronica;
+    }
+
+    public void setNotaFicalEletronica(Boolean notaFicalEletronica) {
+        this.notaFicalEletronica = notaFicalEletronica;
+    }
+
+    public NotaFiscalRemoteDTO notaFicalEletronica(Boolean notaFicalEletronica) {
+        this.notaFicalEletronica = notaFicalEletronica;
+        return this;
+    }
+
+    public NotaFiscalRemoteDTO modelo(String modelo) {
+        this.modelo = modelo;
         return this;
     }
 
@@ -172,27 +229,21 @@ public class NotaFiscalRemoteDTO {
     }
 
     /**
-     * Get notaFicalEletronica
+     * Quantidade de itens&lt;br /&gt;Formato: Inteiro, com até 3 digitos
      *
-     * @return notaFicalEletronica
+     * @return quantidadeDeItens
      **/
-    @JsonProperty("notaFicalEletronica")
-    public Boolean isisNotaFicalEletronica() {
-        return notaFicalEletronica;
+    @JsonProperty("quantidadeDeItens")
+    public Integer getQuantidadeDeItens() {
+        return quantidadeDeItens;
     }
 
-    public void setNotaFicalEletronica(Boolean notaFicalEletronica) {
-        this.notaFicalEletronica = notaFicalEletronica;
-    }
-
-    public NotaFiscalRemoteDTO notaFicalEletronica(Boolean notaFicalEletronica) {
-        this.notaFicalEletronica = notaFicalEletronica;
-        return this;
+    public void setQuantidadeDeItens(Integer quantidadeDeItens) {
+        this.quantidadeDeItens = quantidadeDeItens;
     }
 
     /**
      * Serie&lt;br /&gt;Formato: Inteiro, com até 3 digitos
-     *
      * @return serie
      **/
     @JsonProperty("serie")
@@ -210,27 +261,7 @@ public class NotaFiscalRemoteDTO {
     }
 
     /**
-     * Data de emissão da NF&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public OffsetDateTime getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(OffsetDateTime dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
-
-    /**
      * UF do emissor&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;AAS&#39;
-     *
      * @return ufDoEmissor
      **/
     @JsonProperty("ufDoEmissor")
@@ -247,41 +278,8 @@ public class NotaFiscalRemoteDTO {
         return this;
     }
 
-    /**
-     * Modelo&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;NN&#39;
-     *
-     * @return modelo
-     **/
-    @JsonProperty("modelo")
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public NotaFiscalRemoteDTO modelo(String modelo) {
-        this.modelo = modelo;
-        return this;
-    }
-
-    /**
-     * Get identificacaoDoEmitente
-     *
-     * @return identificacaoDoEmitente
-     **/
-    @JsonProperty("identificacaoDoEmitente")
-    public NumeroIdentificacaoDTO getIdentificacaoDoEmitente() {
-        return identificacaoDoEmitente;
-    }
-
-    public void setIdentificacaoDoEmitente(NumeroIdentificacaoDTO identificacaoDoEmitente) {
-        this.identificacaoDoEmitente = identificacaoDoEmitente;
-    }
-
-    public NotaFiscalRemoteDTO identificacaoDoEmitente(NumeroIdentificacaoDTO identificacaoDoEmitente) {
-        this.identificacaoDoEmitente = identificacaoDoEmitente;
+    public NotaFiscalRemoteDTO quantidadeDeItens(Integer quantidadeDeItens) {
+        this.quantidadeDeItens = quantidadeDeItens;
         return this;
     }
 
@@ -289,16 +287,16 @@ public class NotaFiscalRemoteDTO {
     public String toString() {
 
         String sb = "class NotaFiscalRemoteDTO {\n" +
-                "    quantidadeDeItens: " + toIndentedString(quantidadeDeItens) + "\n" +
                 "    chaveDeAcesso: " + toIndentedString(chaveDeAcesso) + "\n" +
-                "    finalidade: " + toIndentedString(finalidade) + "\n" +
-                "    numeroDoDocumento: " + toIndentedString(numeroDoDocumento) + "\n" +
-                "    notaFicalEletronica: " + toIndentedString(notaFicalEletronica) + "\n" +
-                "    serie: " + toIndentedString(serie) + "\n" +
                 "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    ufDoEmissor: " + toIndentedString(ufDoEmissor) + "\n" +
-                "    modelo: " + toIndentedString(modelo) + "\n" +
+                "    finalidade: " + toIndentedString(finalidade) + "\n" +
                 "    identificacaoDoEmitente: " + toIndentedString(identificacaoDoEmitente) + "\n" +
+                "    modelo: " + toIndentedString(modelo) + "\n" +
+                "    notaFicalEletronica: " + toIndentedString(notaFicalEletronica) + "\n" +
+                "    numeroDoDocumento: " + toIndentedString(numeroDoDocumento) + "\n" +
+                "    quantidadeDeItens: " + toIndentedString(quantidadeDeItens) + "\n" +
+                "    serie: " + toIndentedString(serie) + "\n" +
+                "    ufDoEmissor: " + toIndentedString(ufDoEmissor) + "\n" +
                 "}";
         return sb;
     }

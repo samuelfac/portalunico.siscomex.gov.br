@@ -25,17 +25,6 @@ public class ItemDeDUE {
     private String numero = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número&lt;br /&gt;Formato: Inteiro, com até 5 digitos
      *
      * @return numero
@@ -52,6 +41,18 @@ public class ItemDeDUE {
     public ItemDeDUE numero(String numero) {
         this.numero = numero;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -13,21 +13,45 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaDetalhadaSituacao", propOrder =
-        {"itensEstoque", "documentoSaida"
+        {"documentoSaida", "itensEstoque"
         })
 
 @XmlRootElement(name = "CargaRodoviariaDetalhadaSituacao")
 public class CargaRodoviariaDetalhadaSituacao {
+
+    @XmlElement(name = "documentoSaida")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DocumentoSaida> documentoSaida = null;
 
     @XmlElement(name = "itensEstoque")
     @ApiModelProperty(value = "")
     @Valid
     private List<CargaRodoviariaEstoque> itensEstoque = null;
 
-    @XmlElement(name = "documentoSaida")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<DocumentoSaida> documentoSaida = null;
+    /**
+     * Get documentoSaida
+     *
+     * @return documentoSaida
+     **/
+    @JsonProperty("documentoSaida")
+    public List<DocumentoSaida> getDocumentoSaida() {
+        return documentoSaida;
+    }
+
+    public void setDocumentoSaida(List<DocumentoSaida> documentoSaida) {
+        this.documentoSaida = documentoSaida;
+    }
+
+    public CargaRodoviariaDetalhadaSituacao documentoSaida(List<DocumentoSaida> documentoSaida) {
+        this.documentoSaida = documentoSaida;
+        return this;
+    }
+
+    public CargaRodoviariaDetalhadaSituacao addDocumentoSaidaItem(DocumentoSaida documentoSaidaItem) {
+        this.documentoSaida.add(documentoSaidaItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,36 +88,12 @@ public class CargaRodoviariaDetalhadaSituacao {
         return this;
     }
 
-    /**
-     * Get documentoSaida
-     *
-     * @return documentoSaida
-     **/
-    @JsonProperty("documentoSaida")
-    public List<DocumentoSaida> getDocumentoSaida() {
-        return documentoSaida;
-    }
-
-    public void setDocumentoSaida(List<DocumentoSaida> documentoSaida) {
-        this.documentoSaida = documentoSaida;
-    }
-
-    public CargaRodoviariaDetalhadaSituacao documentoSaida(List<DocumentoSaida> documentoSaida) {
-        this.documentoSaida = documentoSaida;
-        return this;
-    }
-
-    public CargaRodoviariaDetalhadaSituacao addDocumentoSaidaItem(DocumentoSaida documentoSaidaItem) {
-        this.documentoSaida.add(documentoSaidaItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CargaRodoviariaDetalhadaSituacao {\n" +
-                "    itensEstoque: " + toIndentedString(itensEstoque) + "\n" +
                 "    documentoSaida: " + toIndentedString(documentoSaida) + "\n" +
+                "    itensEstoque: " + toIndentedString(itensEstoque) + "\n" +
                 "}";
         return sb;
     }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentosUnitizacao", propOrder =
-        {"veiculo", "numeroDUE", "numeroRUC", "granel"
+        {"numeroDUE", "numeroRUC", "granel", "veiculo"
         })
 
 @XmlRootElement(name = "DocumentosUnitizacao")
@@ -23,14 +23,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Lista de documentos envolvidos na unitização")
 public class DocumentosUnitizacao {
-
-    @XmlElement(name = "veiculo")
-    @ApiModelProperty(value = "Dados informados para carga do tipo veículos<br>Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.")
-    @Valid
-    /**
-     * Dados informados para carga do tipo veículos<br>Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.
-     **/
-    private List<Veiculo> veiculo = null;
 
     @XmlElement(name = "numeroDUE")
     @ApiModelProperty(example = "17BR0000451567", value = "Número da DU-E<br>Formato: AABRSSSSSSSSSD<br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV<br>Obs: Ao informar o atributo numeroDUE, numeroRUC não poderá ser informado. O número da DU-E não pode ser repetir na lista.")
@@ -54,40 +46,13 @@ public class DocumentosUnitizacao {
      **/
     private List<Granel> granel = null;
 
+    @XmlElement(name = "veiculo")
+    @ApiModelProperty(value = "Dados informados para carga do tipo veículos<br>Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Dados informados para carga do tipo veículos&lt;br&gt;Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.
-     *
-     * @return veiculo
+     * Dados informados para carga do tipo veículos<br>Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.
      **/
-    @JsonProperty("veiculo")
-    public List<Veiculo> getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(List<Veiculo> veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public DocumentosUnitizacao veiculo(List<Veiculo> veiculo) {
-        this.veiculo = veiculo;
-        return this;
-    }
-
-    public DocumentosUnitizacao addVeiculoItem(Veiculo veiculoItem) {
-        this.veiculo.add(veiculoItem);
-        return this;
-    }
+    private List<Veiculo> veiculo = null;
 
     /**
      * Número da DU-E&lt;br&gt;Formato: AABRSSSSSSSSSD&lt;br&gt;Descrição Formato&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV&lt;br&gt;Obs: Ao informar o atributo numeroDUE, numeroRUC não poderá ser informado. O número da DU-E não pode ser repetir na lista.
@@ -151,14 +116,49 @@ public class DocumentosUnitizacao {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Dados informados para carga do tipo veículos&lt;br&gt;Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.
+     *
+     * @return veiculo
+     **/
+    @JsonProperty("veiculo")
+    public List<Veiculo> getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(List<Veiculo> veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public DocumentosUnitizacao veiculo(List<Veiculo> veiculo) {
+        this.veiculo = veiculo;
+        return this;
+    }
+
+    public DocumentosUnitizacao addVeiculoItem(Veiculo veiculoItem) {
+        this.veiculo.add(veiculoItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DocumentosUnitizacao {\n" +
-                "    veiculo: " + toIndentedString(veiculo) + "\n" +
                 "    numeroDUE: " + toIndentedString(numeroDUE) + "\n" +
                 "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
                 "    granel: " + toIndentedString(granel) + "\n" +
+                "    veiculo: " + toIndentedString(veiculo) + "\n" +
                 "}";
         return sb;
     }

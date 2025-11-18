@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Cavalo", propOrder =
-        {"tara", "placa"
+        {"placa", "tara"
         })
 
 @XmlRootElement(name = "Cavalo")
@@ -25,6 +25,13 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados do cavalo")
 public class Cavalo {
 
+    @XmlElement(name = "placa", required = true)
+    @ApiModelProperty(example = "7eZJQWu", required = true, value = "Placa do cavalo")
+    /**
+     * Placa do cavalo
+     **/
+    private String placa = null;
+
     @XmlElement(name = "tara", required = true)
     @ApiModelProperty(example = "500.0", required = true, value = "Tara do cavalo em kg")
     @Valid
@@ -32,13 +39,6 @@ public class Cavalo {
      * Tara do cavalo em kg
      **/
     private BigDecimal tara = null;
-
-    @XmlElement(name = "placa", required = true)
-    @ApiModelProperty(example = "7eZJQWu", required = true, value = "Placa do cavalo")
-    /**
-     * Placa do cavalo
-     **/
-    private String placa = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -49,6 +49,21 @@ public class Cavalo {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Placa do cavalo
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    @NotNull
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
     /**
@@ -71,21 +86,6 @@ public class Cavalo {
         return this;
     }
 
-    /**
-     * Placa do cavalo
-     *
-     * @return placa
-     **/
-    @JsonProperty("placa")
-    @NotNull
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
     public Cavalo placa(String placa) {
         this.placa = placa;
         return this;
@@ -95,8 +95,8 @@ public class Cavalo {
     public String toString() {
 
         String sb = "class Cavalo {\n" +
-                "    tara: " + toIndentedString(tara) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    tara: " + toIndentedString(tara) + "\n" +
                 "}";
         return sb;
     }

@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class FormaPagamento {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "P", value = "Código da forma de pagamento.<br/>Tamanho: 1<br/>P - Prepaid<br/>C - Collect")
-    /**
-     * Código da forma de pagamento.<br/>Tamanho: 1<br/>P - Prepaid<br/>C - Collect
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Prepaid", value = "Descrição da forma de pagamento.<br/>Tamanho: 7")
-    /**
-     * Descrição da forma de pagamento.<br/>Tamanho: 7
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class FormaPagamento {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "P", value = "Código da forma de pagamento.<br/>Tamanho: 1<br/>P - Prepaid<br/>C - Collect")
+    /**
+     * Código da forma de pagamento.<br/>Tamanho: 1<br/>P - Prepaid<br/>C - Collect
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Prepaid", value = "Descrição da forma de pagamento.<br/>Tamanho: 7")
+    /**
+     * Descrição da forma de pagamento.<br/>Tamanho: 7
+     **/
+    private String descricao = null;
 
     /**
      * Código da forma de pagamento.&lt;br/&gt;Tamanho: 1&lt;br/&gt;P - Prepaid&lt;br/&gt;C - Collect
@@ -84,7 +85,6 @@ public class FormaPagamento {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

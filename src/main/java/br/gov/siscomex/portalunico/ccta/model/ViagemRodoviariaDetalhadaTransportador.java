@@ -12,21 +12,21 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaDetalhadaTransportador", propOrder =
-        {"estrangeiro", "brasileiro", "nacionalidadeBrasileira"
+        {"brasileiro", "estrangeiro", "nacionalidadeBrasileira"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaDetalhadaTransportador")
 public class ViagemRodoviariaDetalhadaTransportador {
 
-    @XmlElement(name = "estrangeiro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TransportadorRodoviarioNacEstrangeira estrangeiro = null;
-
     @XmlElement(name = "brasileiro")
     @ApiModelProperty(value = "")
     @Valid
     private TransportadorRodoviarioNacBrasileira brasileiro = null;
+
+    @XmlElement(name = "estrangeiro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TransportadorRodoviarioNacEstrangeira estrangeiro = null;
 
     @XmlElement(name = "nacionalidadeBrasileira")
     @ApiModelProperty(value = "Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)")
@@ -34,6 +34,25 @@ public class ViagemRodoviariaDetalhadaTransportador {
      * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
      **/
     private Boolean nacionalidadeBrasileira = null;
+
+    /**
+     * Get brasileiro
+     *
+     * @return brasileiro
+     **/
+    @JsonProperty("brasileiro")
+    public TransportadorRodoviarioNacBrasileira getBrasileiro() {
+        return brasileiro;
+    }
+
+    public void setBrasileiro(TransportadorRodoviarioNacBrasileira brasileiro) {
+        this.brasileiro = brasileiro;
+    }
+
+    public ViagemRodoviariaDetalhadaTransportador brasileiro(TransportadorRodoviarioNacBrasileira brasileiro) {
+        this.brasileiro = brasileiro;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -60,30 +79,6 @@ public class ViagemRodoviariaDetalhadaTransportador {
         this.estrangeiro = estrangeiro;
     }
 
-    public ViagemRodoviariaDetalhadaTransportador estrangeiro(TransportadorRodoviarioNacEstrangeira estrangeiro) {
-        this.estrangeiro = estrangeiro;
-        return this;
-    }
-
-    /**
-     * Get brasileiro
-     *
-     * @return brasileiro
-     **/
-    @JsonProperty("brasileiro")
-    public TransportadorRodoviarioNacBrasileira getBrasileiro() {
-        return brasileiro;
-    }
-
-    public void setBrasileiro(TransportadorRodoviarioNacBrasileira brasileiro) {
-        this.brasileiro = brasileiro;
-    }
-
-    public ViagemRodoviariaDetalhadaTransportador brasileiro(TransportadorRodoviarioNacBrasileira brasileiro) {
-        this.brasileiro = brasileiro;
-        return this;
-    }
-
     /**
      * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
      *
@@ -103,12 +98,17 @@ public class ViagemRodoviariaDetalhadaTransportador {
         return this;
     }
 
+    public ViagemRodoviariaDetalhadaTransportador estrangeiro(TransportadorRodoviarioNacEstrangeira estrangeiro) {
+        this.estrangeiro = estrangeiro;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ViagemRodoviariaDetalhadaTransportador {\n" +
-                "    estrangeiro: " + toIndentedString(estrangeiro) + "\n" +
                 "    brasileiro: " + toIndentedString(brasileiro) + "\n" +
+                "    estrangeiro: " + toIndentedString(estrangeiro) + "\n" +
                 "    nacionalidadeBrasileira: " + toIndentedString(nacionalidadeBrasileira) + "\n" +
                 "}";
         return sb;

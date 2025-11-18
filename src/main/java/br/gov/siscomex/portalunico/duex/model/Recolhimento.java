@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Recolhimento", propOrder =
-        {"dataDoPagamento", "valorDoImpostoRecolhido", "valorDoJurosMora", "valorDaMulta", "dataDoRegistro"
+        {"dataDoPagamento", "dataDoRegistro", "valorDaMulta", "valorDoImpostoRecolhido", "valorDoJurosMora"
         })
 
 @XmlRootElement(name = "Recolhimento")
@@ -26,6 +26,21 @@ public class Recolhimento {
      * Data do pagamento<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
      **/
     private OffsetDateTime dataDoPagamento = null;
+
+    @XmlElement(name = "dataDoRegistro")
+    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    /**
+     * Data do Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     **/
+    private OffsetDateTime dataDoRegistro = null;
+
+    @XmlElement(name = "valorDaMulta")
+    @ApiModelProperty(value = "Valor da multa<br />Tamanho: 7,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da multa<br />Tamanho: 7,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorDaMulta = null;
 
     @XmlElement(name = "valorDoImpostoRecolhido")
     @ApiModelProperty(value = "Valor do imposto recolhido<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -42,32 +57,6 @@ public class Recolhimento {
      * Valor do Juros de Mora<br />Tamanho: 7,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorDoJurosMora = null;
-
-    @XmlElement(name = "valorDaMulta")
-    @ApiModelProperty(value = "Valor da multa<br />Tamanho: 7,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da multa<br />Tamanho: 7,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorDaMulta = null;
-
-    @XmlElement(name = "dataDoRegistro")
-    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
-    /**
-     * Data do Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
-     **/
-    private OffsetDateTime dataDoRegistro = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Data do pagamento&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
@@ -86,6 +75,50 @@ public class Recolhimento {
     public Recolhimento dataDoPagamento(OffsetDateTime dataDoPagamento) {
         this.dataDoPagamento = dataDoPagamento;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data do Registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     *
+     * @return dataDoRegistro
+     **/
+    @JsonProperty("dataDoRegistro")
+    public OffsetDateTime getDataDoRegistro() {
+        return dataDoRegistro;
+    }
+
+    public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
+    }
+
+    public Recolhimento dataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
+        return this;
+    }
+
+    /**
+     * Valor da multa&lt;br /&gt;Tamanho: 7,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorDaMulta
+     **/
+    @JsonProperty("valorDaMulta")
+    public BigDecimal getValorDaMulta() {
+        return valorDaMulta;
+    }
+
+    public void setValorDaMulta(BigDecimal valorDaMulta) {
+        this.valorDaMulta = valorDaMulta;
     }
 
     /**
@@ -126,41 +159,8 @@ public class Recolhimento {
         return this;
     }
 
-    /**
-     * Valor da multa&lt;br /&gt;Tamanho: 7,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorDaMulta
-     **/
-    @JsonProperty("valorDaMulta")
-    public BigDecimal getValorDaMulta() {
-        return valorDaMulta;
-    }
-
-    public void setValorDaMulta(BigDecimal valorDaMulta) {
-        this.valorDaMulta = valorDaMulta;
-    }
-
     public Recolhimento valorDaMulta(BigDecimal valorDaMulta) {
         this.valorDaMulta = valorDaMulta;
-        return this;
-    }
-
-    /**
-     * Data do Registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataDoRegistro
-     **/
-    @JsonProperty("dataDoRegistro")
-    public OffsetDateTime getDataDoRegistro() {
-        return dataDoRegistro;
-    }
-
-    public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
-    }
-
-    public Recolhimento dataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
         return this;
     }
 
@@ -169,10 +169,10 @@ public class Recolhimento {
 
         String sb = "class Recolhimento {\n" +
                 "    dataDoPagamento: " + toIndentedString(dataDoPagamento) + "\n" +
+                "    dataDoRegistro: " + toIndentedString(dataDoRegistro) + "\n" +
+                "    valorDaMulta: " + toIndentedString(valorDaMulta) + "\n" +
                 "    valorDoImpostoRecolhido: " + toIndentedString(valorDoImpostoRecolhido) + "\n" +
                 "    valorDoJurosMora: " + toIndentedString(valorDoJurosMora) + "\n" +
-                "    valorDaMulta: " + toIndentedString(valorDaMulta) + "\n" +
-                "    dataDoRegistro: " + toIndentedString(dataDoRegistro) + "\n" +
                 "}";
         return sb;
     }

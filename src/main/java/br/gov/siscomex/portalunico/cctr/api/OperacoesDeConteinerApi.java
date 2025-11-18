@@ -36,11 +36,11 @@ public interface OperacoesDeConteinerApi {
     @Produces({"application/xml"})
     @ApiOperation(value = "Desunitizar Contêiner", notes = "", tags = {"Operacoes de Conteiner"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoXmlServico.class),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = BusinessExceptionCover.class),
-            @ApiResponse(code = 400, message = "XML não atende as especificações definidas na API", response = RetornoXmlServico.class),
             @ApiResponse(code = 500, message = "Erro interno no servidor", response = UnexpectedExceptionCover.class),
-            @ApiResponse(code = 403, message = "Acesso negado ao usuário logado", response = RetornoXmlServico.class)})
+            @ApiResponse(code = 403, message = "Acesso negado ao usuário logado", response = RetornoXmlServico.class),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = BusinessExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoXmlServico.class),
+            @ApiResponse(code = 400, message = "XML não atende as especificações definidas na API", response = RetornoXmlServico.class)})
     RetornoXmlServico desunitizar(@ApiParam(value = "Dados da desunitização", required = true) @Valid OperacaoDesunitizacao body);
 }
 

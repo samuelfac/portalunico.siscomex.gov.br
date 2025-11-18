@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Documento", propOrder =
-        {"veiculo", "cargaSolta", "granel", "numeroDUIMP"
+        {"numeroDUIMP", "cargaSolta", "granel", "veiculo"
         })
 
 @XmlRootElement(name = "Documento")
@@ -24,10 +24,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Documento de carga de importação envolvido na entrega (DUIMP)<br>Para Desunitização, pelo menos 1 tipo (Carga Solta, Granel ou Veículo) é obrigatório.<br>Para Recepção e Entrega, os 3 tipos são opcionais.")
 public class Documento {
 
-    @XmlElement(name = "veiculo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Veiculos veiculo = null;
+    @XmlElement(name = "numeroDUIMP", required = true)
+    @ApiModelProperty(example = "24BR00001058587", required = true, value = "Número da DUIMP<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV")
+    /**
+     * Número da DUIMP<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV
+     **/
+    private String numeroDUIMP = null;
 
     @XmlElement(name = "cargaSolta")
     @ApiModelProperty(value = "")
@@ -39,12 +41,10 @@ public class Documento {
     @Valid
     private Granel granel = null;
 
-    @XmlElement(name = "numeroDUIMP", required = true)
-    @ApiModelProperty(example = "24BR00001058587", required = true, value = "Número da DUIMP<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV")
-    /**
-     * Número da DUIMP<br>Tamanho: 14<br>Formato: AABRSSSSSSSSSD <br>Descrição Formato<br>AA - Ano<br>BR - Brasil<br>SSSSSSSSS - Numeração sequencial<br>D - DV
-     **/
-    private String numeroDUIMP = null;
+    @XmlElement(name = "veiculo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Veiculos veiculo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,22 +58,18 @@ public class Documento {
     }
 
     /**
-     * Get veiculo
+     * Número da DUIMP&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD &lt;br&gt;Descrição Formato&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
      *
-     * @return veiculo
+     * @return numeroDUIMP
      **/
-    @JsonProperty("veiculo")
-    public Veiculos getVeiculo() {
-        return veiculo;
+    @JsonProperty("numeroDUIMP")
+    @NotNull
+    public String getNumeroDUIMP() {
+        return numeroDUIMP;
     }
 
-    public void setVeiculo(Veiculos veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public Documento veiculo(Veiculos veiculo) {
-        this.veiculo = veiculo;
-        return this;
+    public void setNumeroDUIMP(String numeroDUIMP) {
+        this.numeroDUIMP = numeroDUIMP;
     }
 
     /**
@@ -114,23 +110,27 @@ public class Documento {
         return this;
     }
 
-    /**
-     * Número da DUIMP&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD &lt;br&gt;Descrição Formato&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
-     *
-     * @return numeroDUIMP
-     **/
-    @JsonProperty("numeroDUIMP")
-    @NotNull
-    public String getNumeroDUIMP() {
-        return numeroDUIMP;
-    }
-
-    public void setNumeroDUIMP(String numeroDUIMP) {
-        this.numeroDUIMP = numeroDUIMP;
-    }
-
     public Documento numeroDUIMP(String numeroDUIMP) {
         this.numeroDUIMP = numeroDUIMP;
+        return this;
+    }
+
+    /**
+     * Get veiculo
+     *
+     * @return veiculo
+     **/
+    @JsonProperty("veiculo")
+    public Veiculos getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculos veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public Documento veiculo(Veiculos veiculo) {
+        this.veiculo = veiculo;
         return this;
     }
 
@@ -138,10 +138,10 @@ public class Documento {
     public String toString() {
 
         String sb = "class Documento {\n" +
-                "    veiculo: " + toIndentedString(veiculo) + "\n" +
+                "    numeroDUIMP: " + toIndentedString(numeroDUIMP) + "\n" +
                 "    cargaSolta: " + toIndentedString(cargaSolta) + "\n" +
                 "    granel: " + toIndentedString(granel) + "\n" +
-                "    numeroDUIMP: " + toIndentedString(numeroDUIMP) + "\n" +
+                "    veiculo: " + toIndentedString(veiculo) + "\n" +
                 "}";
         return sb;
     }

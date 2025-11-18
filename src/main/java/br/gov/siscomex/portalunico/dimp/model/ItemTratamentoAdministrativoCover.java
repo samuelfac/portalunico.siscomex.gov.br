@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemTratamentoAdministrativoCover", propOrder =
-        {"observacoes", "lpco", "orgao", "numeroItemDuimp", "tipoTratamento", "descricao"
+        {"numeroItemDuimp", "tipoTratamento", "descricao", "orgao", "lpco", "observacoes"
         })
 
 @XmlRootElement(name = "ItemTratamentoAdministrativoCover")
@@ -24,19 +24,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Lista de itens do tratamento administrativo.")
 public class ItemTratamentoAdministrativoCover {
 
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "Texto de observação.", value = "Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
+    @XmlElement(name = "numeroItemDuimp")
+    @ApiModelProperty(example = "1.0", value = "Identificação de cada item de Duimp que possui TA (número sequencial).<br>Tamanho: 15")
     /**
-     * Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
+     * Identificação de cada item de Duimp que possui TA (número sequencial).<br>Tamanho: 15
      **/
-    private String observacoes = null;
+    private Double numeroItemDuimp = null;
 
-    @XmlElement(name = "lpco")
-    @ApiModelProperty(example = "21255555555", value = "Número único do LPCO associado ao item de TA.<br>Tamanho: 11")
-    /**
-     * Número único do LPCO associado ao item de TA.<br>Tamanho: 11
-     **/
-    private String lpco = null;
 
     @XmlElement(name = "orgao")
     @ApiModelProperty(example = "DECEX", value = "Sigla do Órgão Anuente associado ao TA.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
@@ -45,24 +39,31 @@ public class ItemTratamentoAdministrativoCover {
      **/
     private String orgao = null;
 
-    @XmlElement(name = "numeroItemDuimp")
-    @ApiModelProperty(example = "1.0", value = "Identificação de cada item de Duimp que possui TA (número sequencial).<br>Tamanho: 15")
-    /**
-     * Identificação de cada item de Duimp que possui TA (número sequencial).<br>Tamanho: 15
-     **/
-    private Double numeroItemDuimp = null;
     @XmlElement(name = "tipoTratamento")
     @ApiModelProperty(example = "IMPEDE_REGISTRO", value = "Tipo de tratamento administrativo.<br>Domínio:")
     /**
      * Tipo de tratamento administrativo.<br>Domínio:
      **/
     private TipoTratamentoEnum tipoTratamento = null;
+
     @XmlElement(name = "descricao")
     @ApiModelProperty(example = "ALERTA", value = "Descrição do código de retorno do item do TA.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
     /**
      * Descrição do código de retorno do item do TA.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
      **/
     private String descricao = null;
+    @XmlElement(name = "lpco")
+    @ApiModelProperty(example = "21255555555", value = "Número único do LPCO associado ao item de TA.<br>Tamanho: 11")
+    /**
+     * Número único do LPCO associado ao item de TA.<br>Tamanho: 11
+     **/
+    private String lpco = null;
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "Texto de observação.", value = "Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
+    /**
+     * Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
+     **/
+    private String observacoes = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -73,63 +74,6 @@ public class ItemTratamentoAdministrativoCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 4000
-     *
-     * @return observacoes
-     **/
-    @JsonProperty("observacoes")
-    public String getObservacoes() {
-        return observacoes;
-    }
-
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
-
-    public ItemTratamentoAdministrativoCover observacoes(String observacoes) {
-        this.observacoes = observacoes;
-        return this;
-    }
-
-    /**
-     * Número único do LPCO associado ao item de TA.&lt;br&gt;Tamanho: 11
-     *
-     * @return lpco
-     **/
-    @JsonProperty("lpco")
-    public String getLpco() {
-        return lpco;
-    }
-
-    public void setLpco(String lpco) {
-        this.lpco = lpco;
-    }
-
-    public ItemTratamentoAdministrativoCover lpco(String lpco) {
-        this.lpco = lpco;
-        return this;
-    }
-
-    /**
-     * Sigla do Órgão Anuente associado ao TA.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
-     *
-     * @return orgao
-     **/
-    @JsonProperty("orgao")
-    public String getOrgao() {
-        return orgao;
-    }
-
-    public void setOrgao(String orgao) {
-        this.orgao = orgao;
-    }
-
-    public ItemTratamentoAdministrativoCover orgao(String orgao) {
-        this.orgao = orgao;
-        return this;
     }
 
     /**
@@ -192,17 +136,74 @@ public class ItemTratamentoAdministrativoCover {
         return this;
     }
 
+    /**
+     * Sigla do Órgão Anuente associado ao TA.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+     *
+     * @return orgao
+     **/
+    @JsonProperty("orgao")
+    public String getOrgao() {
+        return orgao;
+    }
+
+    public void setOrgao(String orgao) {
+        this.orgao = orgao;
+    }
+
+    public ItemTratamentoAdministrativoCover orgao(String orgao) {
+        this.orgao = orgao;
+        return this;
+    }
+
+    /**
+     * Número único do LPCO associado ao item de TA.&lt;br&gt;Tamanho: 11
+     *
+     * @return lpco
+     **/
+    @JsonProperty("lpco")
+    public String getLpco() {
+        return lpco;
+    }
+
+    public void setLpco(String lpco) {
+        this.lpco = lpco;
+    }
+
+    public ItemTratamentoAdministrativoCover lpco(String lpco) {
+        this.lpco = lpco;
+        return this;
+    }
+
+    /**
+     * Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 4000
+     *
+     * @return observacoes
+     **/
+    @JsonProperty("observacoes")
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
+    }
+
+    public ItemTratamentoAdministrativoCover observacoes(String observacoes) {
+        this.observacoes = observacoes;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class ItemTratamentoAdministrativoCover {\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
-                "    lpco: " + toIndentedString(lpco) + "\n" +
-                "    orgao: " + toIndentedString(orgao) + "\n" +
                 "    numeroItemDuimp: " + toIndentedString(numeroItemDuimp) + "\n" +
                 "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    orgao: " + toIndentedString(orgao) + "\n" +
+                "    lpco: " + toIndentedString(lpco) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
                 "}";
         return sb;
     }

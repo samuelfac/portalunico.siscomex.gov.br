@@ -16,11 +16,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDoManifestoDaCargaSimplificado", propOrder =
-        {"listaConhecimentos", "tipo", "numero", "idElemento"
+        {"idElemento", "listaConhecimentos", "numero", "tipo"
         })
 
 @XmlRootElement(name = "DadosDoManifestoDaCargaSimplificado")
 public class DadosDoManifestoDaCargaSimplificado {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "listaConhecimentos")
     @ApiModelProperty(value = "Lista de conhecimentos de carga.")
@@ -29,24 +36,19 @@ public class DadosDoManifestoDaCargaSimplificado {
      * Lista de conhecimentos de carga.
      **/
     private List<DadosDoConhecimentoDaCargaSimplificado> listaConhecimentos = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
-    /**
-     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
-     **/
-    private TipoEnum tipo = null;
+
     @XmlElement(name = "numero")
     @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
      **/
     private String numero = null;
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
      **/
-    private String idElemento = null;
+    private TipoEnum tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,6 +59,26 @@ public class DadosDoManifestoDaCargaSimplificado {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDoManifestoDaCargaSimplificado idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**
@@ -84,6 +106,25 @@ public class DadosDoManifestoDaCargaSimplificado {
     }
 
     /**
+     * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public DadosDoManifestoDaCargaSimplificado numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    /**
      * Tipo do manifesto conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;MICDTA - MicDTA&lt;br/&gt;TIFDTA - TifDTA&lt;br/&gt;MDFE - MDF-e&lt;br/&gt;MELET - Manifesto Eletrônico
      *
      * @return tipo
@@ -105,54 +146,15 @@ public class DadosDoManifestoDaCargaSimplificado {
         return this;
     }
 
-    /**
-     * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public DadosDoManifestoDaCargaSimplificado numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosDoManifestoDaCargaSimplificado idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class DadosDoManifestoDaCargaSimplificado {\n" +
-                "    listaConhecimentos: " + toIndentedString(listaConhecimentos) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    listaConhecimentos: " + toIndentedString(listaConhecimentos) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

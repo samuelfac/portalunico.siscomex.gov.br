@@ -35,17 +35,6 @@ public class ItensNFF {
     private List<ItemNFF> itemNFF = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de itens de nota fiscal
      *
      * @return itemNFF
@@ -68,6 +57,18 @@ public class ItensNFF {
     public ItensNFF addItemNFFItem(ItemNFF itemNFFItem) {
         this.itemNFF.add(itemNFFItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -15,32 +15,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga", propOrder =
-        {"situacao", "sequencialManifesto", "numeroProtocolo", "dataHoraProcessamento", "numeroManifesto", "dataHorarioEnvio", "cnpj", "erros", "dataHorarioRegistroManifesto"
+        {"cnpj", "dataHoraProcessamento", "dataHorarioEnvio", "dataHorarioRegistroManifesto", "erros", "numeroManifesto", "numeroProtocolo", "sequencialManifesto", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga")
 public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    @XmlElement(name = "cnpj", required = true)
+    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
     /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
      **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "sequencialManifesto", required = true)
-    @ApiModelProperty(required = true, value = "Número sequencial do manifesto enviado pelo operador para uma determinada UA de despacho em um determinado dia. O sequencial do manifesto é composto por 5 dígitos numéricos.")
-    /**
-     * Número sequencial do manifesto enviado pelo operador para uma determinada UA de despacho em um determinado dia. O sequencial do manifesto é composto por 5 dígitos numéricos.
-     **/
-    private String sequencialManifesto = null;
-
-    @XmlElement(name = "numeroProtocolo", required = true)
-    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
+    private String cnpj = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -49,13 +35,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
      **/
     private OffsetDateTime dataHoraProcessamento = null;
 
-    @XmlElement(name = "numeroManifesto", required = true)
-    @ApiModelProperty(required = true, value = "Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.")
-    /**
-     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
-     **/
-    private String numeroManifesto = null;
-
     @XmlElement(name = "dataHorarioEnvio", required = true)
     @ApiModelProperty(required = true, value = "Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
@@ -63,12 +42,12 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
      **/
     private OffsetDateTime dataHorarioEnvio = null;
 
-    @XmlElement(name = "cnpj", required = true)
-    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
+    @XmlElement(name = "dataHorarioRegistroManifesto")
+    @ApiModelProperty(value = "Data e horário do registro do manifesto de carga.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
+     * Data e horário do registro do manifesto de carga.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
-    private String cnpj = null;
+    private OffsetDateTime dataHorarioRegistroManifesto = null;
 
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
@@ -78,12 +57,33 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
      **/
     private List<ErroNoProcessamento> erros = null;
 
-    @XmlElement(name = "dataHorarioRegistroManifesto")
-    @ApiModelProperty(value = "Data e horário do registro do manifesto de carga.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @XmlElement(name = "numeroManifesto", required = true)
+    @ApiModelProperty(required = true, value = "Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.")
     /**
-     * Data e horário do registro do manifesto de carga.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
      **/
-    private OffsetDateTime dataHorarioRegistroManifesto = null;
+    private String numeroManifesto = null;
+
+    @XmlElement(name = "numeroProtocolo", required = true)
+    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     **/
+    private String numeroProtocolo = null;
+
+    @XmlElement(name = "sequencialManifesto", required = true)
+    @ApiModelProperty(required = true, value = "Número sequencial do manifesto enviado pelo operador para uma determinada UA de despacho em um determinado dia. O sequencial do manifesto é composto por 5 dígitos numéricos.")
+    /**
+     * Número sequencial do manifesto enviado pelo operador para uma determinada UA de despacho em um determinado dia. O sequencial do manifesto é composto por 5 dígitos numéricos.
+     **/
+    private String sequencialManifesto = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -97,63 +97,18 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
     }
 
     /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
-     * @return situacao
+     * @return cnpj
      **/
-    @JsonProperty("situacao")
+    @JsonProperty("cnpj")
     @NotNull
-    public Integer getSituacao() {
-        return situacao;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Número sequencial do manifesto enviado pelo operador para uma determinada UA de despacho em um determinado dia. O sequencial do manifesto é composto por 5 dígitos numéricos.
-     *
-     * @return sequencialManifesto
-     **/
-    @JsonProperty("sequencialManifesto")
-    @NotNull
-    public String getSequencialManifesto() {
-        return sequencialManifesto;
-    }
-
-    public void setSequencialManifesto(String sequencialManifesto) {
-        this.sequencialManifesto = sequencialManifesto;
-    }
-
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga sequencialManifesto(String sequencialManifesto) {
-        this.sequencialManifesto = sequencialManifesto;
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    @NotNull
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -172,26 +127,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
     public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
         this.dataHoraProcessamento = dataHoraProcessamento;
-        return this;
-    }
-
-    /**
-     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
-     *
-     * @return numeroManifesto
-     **/
-    @JsonProperty("numeroManifesto")
-    @NotNull
-    public String getNumeroManifesto() {
-        return numeroManifesto;
-    }
-
-    public void setNumeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-    }
-
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
         return this;
     }
 
@@ -215,24 +150,23 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
         return this;
     }
 
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @NotNull
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga cnpj(String cnpj) {
         this.cnpj = cnpj;
         return this;
+    }
+
+    /**
+     * Data e horário do registro do manifesto de carga.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataHorarioRegistroManifesto
+     **/
+    @JsonProperty("dataHorarioRegistroManifesto")
+    public OffsetDateTime getDataHorarioRegistroManifesto() {
+        return dataHorarioRegistroManifesto;
+    }
+
+    public void setDataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
+        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
     }
 
     /**
@@ -259,22 +193,88 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
         return this;
     }
 
-    /**
-     * Data e horário do registro do manifesto de carga.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataHorarioRegistroManifesto
-     **/
-    @JsonProperty("dataHorarioRegistroManifesto")
-    public OffsetDateTime getDataHorarioRegistroManifesto() {
-        return dataHorarioRegistroManifesto;
-    }
-
-    public void setDataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
-        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
-    }
-
     public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
         this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
+        return this;
+    }
+
+    /**
+     * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
+     *
+     * @return numeroManifesto
+     **/
+    @JsonProperty("numeroManifesto")
+    @NotNull
+    public String getNumeroManifesto() {
+        return numeroManifesto;
+    }
+
+    public void setNumeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+    }
+
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+        return this;
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    @NotNull
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Número sequencial do manifesto enviado pelo operador para uma determinada UA de despacho em um determinado dia. O sequencial do manifesto é composto por 5 dígitos numéricos.
+     *
+     * @return sequencialManifesto
+     **/
+    @JsonProperty("sequencialManifesto")
+    @NotNull
+    public String getSequencialManifesto() {
+        return sequencialManifesto;
+    }
+
+    public void setSequencialManifesto(String sequencialManifesto) {
+        this.sequencialManifesto = sequencialManifesto;
+    }
+
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga sequencialManifesto(String sequencialManifesto) {
+        this.sequencialManifesto = sequencialManifesto;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga situacao(Integer situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -282,15 +282,15 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
     public String toString() {
 
         String sb = "class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    sequencialManifesto: " + toIndentedString(sequencialManifesto) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
-                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
-                "    erros: " + toIndentedString(erros) + "\n" +
+                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
+                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
                 "    dataHorarioRegistroManifesto: " + toIndentedString(dataHorarioRegistroManifesto) + "\n" +
+                "    erros: " + toIndentedString(erros) + "\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    sequencialManifesto: " + toIndentedString(sequencialManifesto) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

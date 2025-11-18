@@ -13,68 +13,21 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaDetalhadaInfoGerais", propOrder =
-        {"seguro", "outrosCustos", "condicaoVendaMercadoriaLocalEmbarque", "itensCarga", "dadosBasicos", "instrucoesFormalidadesAlfandega", "valorMercadoriaLocalEmbarque", "mercadorias", "frete", "documentosAnexados", "valorReembolso", "declaracoesObservacoes", "valorMercadoriaDeclaradoRemetente"
+        {"condicaoVendaMercadoriaLocalEmbarque", "dadosBasicos", "declaracoesObservacoes", "documentosAnexados", "frete", "instrucoesFormalidadesAlfandega", "itensCarga", "mercadorias", "outrosCustos", "seguro", "valorMercadoriaDeclaradoRemetente", "valorMercadoriaLocalEmbarque", "valorReembolso"
         })
 
 @XmlRootElement(name = "CargaRodoviariaDetalhadaInfoGerais")
 public class CargaRodoviariaDetalhadaInfoGerais {
-
-    @XmlElement(name = "seguro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaRodoviariaSeguro seguro = null;
-
-    @XmlElement(name = "outrosCustos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaRodoviariaOutrosCustos outrosCustos = null;
 
     @XmlElement(name = "condicaoVendaMercadoriaLocalEmbarque")
     @ApiModelProperty(value = "")
     @Valid
     private CondicaoVendaMercadoria condicaoVendaMercadoriaLocalEmbarque = null;
 
-    @XmlElement(name = "itensCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaRodoviariaItemCarga> itensCarga = null;
-
     @XmlElement(name = "dadosBasicos")
     @ApiModelProperty(value = "")
     @Valid
     private CargaRodoviariaDetalhadaDadosBasicos dadosBasicos = null;
-
-    @XmlElement(name = "instrucoesFormalidadesAlfandega")
-    @ApiModelProperty(example = "Declarações e demais observações", value = "Declarações e demais observações")
-    /**
-     * Declarações e demais observações
-     **/
-    private String instrucoesFormalidadesAlfandega = null;
-
-    @XmlElement(name = "valorMercadoriaLocalEmbarque")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValorMonetario valorMercadoriaLocalEmbarque = null;
-
-    @XmlElement(name = "mercadorias")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaRodoviariaMercadoria> mercadorias = null;
-
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaRodoviariaFrete frete = null;
-
-    @XmlElement(name = "documentosAnexados")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaRodoviariaDocumentoAnexo> documentosAnexados = null;
-
-    @XmlElement(name = "valorReembolso")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValorMonetario valorReembolso = null;
 
     @XmlElement(name = "declaracoesObservacoes")
     @ApiModelProperty(example = "Declarações e demais observações", value = "Declarações e demais observações")
@@ -83,59 +36,57 @@ public class CargaRodoviariaDetalhadaInfoGerais {
      **/
     private String declaracoesObservacoes = null;
 
+    @XmlElement(name = "documentosAnexados")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CargaRodoviariaDocumentoAnexo> documentosAnexados = null;
+
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaRodoviariaFrete frete = null;
+
+    @XmlElement(name = "instrucoesFormalidadesAlfandega")
+    @ApiModelProperty(example = "Declarações e demais observações", value = "Declarações e demais observações")
+    /**
+     * Declarações e demais observações
+     **/
+    private String instrucoesFormalidadesAlfandega = null;
+
+    @XmlElement(name = "itensCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CargaRodoviariaItemCarga> itensCarga = null;
+
+    @XmlElement(name = "mercadorias")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CargaRodoviariaMercadoria> mercadorias = null;
+
+    @XmlElement(name = "outrosCustos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaRodoviariaOutrosCustos outrosCustos = null;
+
+    @XmlElement(name = "seguro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaRodoviariaSeguro seguro = null;
+
     @XmlElement(name = "valorMercadoriaDeclaradoRemetente")
     @ApiModelProperty(value = "")
     @Valid
     private ValorMonetario valorMercadoriaDeclaradoRemetente = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "valorMercadoriaLocalEmbarque")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValorMonetario valorMercadoriaLocalEmbarque = null;
 
-    /**
-     * Get seguro
-     *
-     * @return seguro
-     **/
-    @JsonProperty("seguro")
-    public CargaRodoviariaSeguro getSeguro() {
-        return seguro;
-    }
-
-    public void setSeguro(CargaRodoviariaSeguro seguro) {
-        this.seguro = seguro;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais seguro(CargaRodoviariaSeguro seguro) {
-        this.seguro = seguro;
-        return this;
-    }
-
-    /**
-     * Get outrosCustos
-     *
-     * @return outrosCustos
-     **/
-    @JsonProperty("outrosCustos")
-    public CargaRodoviariaOutrosCustos getOutrosCustos() {
-        return outrosCustos;
-    }
-
-    public void setOutrosCustos(CargaRodoviariaOutrosCustos outrosCustos) {
-        this.outrosCustos = outrosCustos;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais outrosCustos(CargaRodoviariaOutrosCustos outrosCustos) {
-        this.outrosCustos = outrosCustos;
-        return this;
-    }
+    @XmlElement(name = "valorReembolso")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValorMonetario valorReembolso = null;
 
     /**
      * Get condicaoVendaMercadoriaLocalEmbarque
@@ -153,30 +104,6 @@ public class CargaRodoviariaDetalhadaInfoGerais {
 
     public CargaRodoviariaDetalhadaInfoGerais condicaoVendaMercadoriaLocalEmbarque(CondicaoVendaMercadoria condicaoVendaMercadoriaLocalEmbarque) {
         this.condicaoVendaMercadoriaLocalEmbarque = condicaoVendaMercadoriaLocalEmbarque;
-        return this;
-    }
-
-    /**
-     * Get itensCarga
-     *
-     * @return itensCarga
-     **/
-    @JsonProperty("itensCarga")
-    public List<CargaRodoviariaItemCarga> getItensCarga() {
-        return itensCarga;
-    }
-
-    public void setItensCarga(List<CargaRodoviariaItemCarga> itensCarga) {
-        this.itensCarga = itensCarga;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais itensCarga(List<CargaRodoviariaItemCarga> itensCarga) {
-        this.itensCarga = itensCarga;
-        return this;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais addItensCargaItem(CargaRodoviariaItemCarga itensCargaItem) {
-        this.itensCarga.add(itensCargaItem);
         return this;
     }
 
@@ -200,83 +127,32 @@ public class CargaRodoviariaDetalhadaInfoGerais {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Declarações e demais observações
      *
-     * @return instrucoesFormalidadesAlfandega
+     * @return declaracoesObservacoes
      **/
-    @JsonProperty("instrucoesFormalidadesAlfandega")
-    public String getInstrucoesFormalidadesAlfandega() {
-        return instrucoesFormalidadesAlfandega;
+    @JsonProperty("declaracoesObservacoes")
+    public String getDeclaracoesObservacoes() {
+        return declaracoesObservacoes;
     }
 
-    public void setInstrucoesFormalidadesAlfandega(String instrucoesFormalidadesAlfandega) {
-        this.instrucoesFormalidadesAlfandega = instrucoesFormalidadesAlfandega;
+    public void setDeclaracoesObservacoes(String declaracoesObservacoes) {
+        this.declaracoesObservacoes = declaracoesObservacoes;
     }
 
-    public CargaRodoviariaDetalhadaInfoGerais instrucoesFormalidadesAlfandega(String instrucoesFormalidadesAlfandega) {
-        this.instrucoesFormalidadesAlfandega = instrucoesFormalidadesAlfandega;
-        return this;
-    }
-
-    /**
-     * Get valorMercadoriaLocalEmbarque
-     *
-     * @return valorMercadoriaLocalEmbarque
-     **/
-    @JsonProperty("valorMercadoriaLocalEmbarque")
-    public ValorMonetario getValorMercadoriaLocalEmbarque() {
-        return valorMercadoriaLocalEmbarque;
-    }
-
-    public void setValorMercadoriaLocalEmbarque(ValorMonetario valorMercadoriaLocalEmbarque) {
-        this.valorMercadoriaLocalEmbarque = valorMercadoriaLocalEmbarque;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais valorMercadoriaLocalEmbarque(ValorMonetario valorMercadoriaLocalEmbarque) {
-        this.valorMercadoriaLocalEmbarque = valorMercadoriaLocalEmbarque;
-        return this;
-    }
-
-    /**
-     * Get mercadorias
-     *
-     * @return mercadorias
-     **/
-    @JsonProperty("mercadorias")
-    public List<CargaRodoviariaMercadoria> getMercadorias() {
-        return mercadorias;
-    }
-
-    public void setMercadorias(List<CargaRodoviariaMercadoria> mercadorias) {
-        this.mercadorias = mercadorias;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais mercadorias(List<CargaRodoviariaMercadoria> mercadorias) {
-        this.mercadorias = mercadorias;
-        return this;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais addMercadoriasItem(CargaRodoviariaMercadoria mercadoriasItem) {
-        this.mercadorias.add(mercadoriasItem);
-        return this;
-    }
-
-    /**
-     * Get frete
-     *
-     * @return frete
-     **/
-    @JsonProperty("frete")
-    public CargaRodoviariaFrete getFrete() {
-        return frete;
-    }
-
-    public void setFrete(CargaRodoviariaFrete frete) {
-        this.frete = frete;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais frete(CargaRodoviariaFrete frete) {
-        this.frete = frete;
+    public CargaRodoviariaDetalhadaInfoGerais declaracoesObservacoes(String declaracoesObservacoes) {
+        this.declaracoesObservacoes = declaracoesObservacoes;
         return this;
     }
 
@@ -305,40 +181,126 @@ public class CargaRodoviariaDetalhadaInfoGerais {
     }
 
     /**
-     * Get valorReembolso
+     * Get frete
      *
-     * @return valorReembolso
+     * @return frete
      **/
-    @JsonProperty("valorReembolso")
-    public ValorMonetario getValorReembolso() {
-        return valorReembolso;
+    @JsonProperty("frete")
+    public CargaRodoviariaFrete getFrete() {
+        return frete;
     }
 
-    public void setValorReembolso(ValorMonetario valorReembolso) {
-        this.valorReembolso = valorReembolso;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais valorReembolso(ValorMonetario valorReembolso) {
-        this.valorReembolso = valorReembolso;
-        return this;
+    public void setFrete(CargaRodoviariaFrete frete) {
+        this.frete = frete;
     }
 
     /**
      * Declarações e demais observações
      *
-     * @return declaracoesObservacoes
+     * @return instrucoesFormalidadesAlfandega
      **/
-    @JsonProperty("declaracoesObservacoes")
-    public String getDeclaracoesObservacoes() {
-        return declaracoesObservacoes;
+    @JsonProperty("instrucoesFormalidadesAlfandega")
+    public String getInstrucoesFormalidadesAlfandega() {
+        return instrucoesFormalidadesAlfandega;
     }
 
-    public void setDeclaracoesObservacoes(String declaracoesObservacoes) {
-        this.declaracoesObservacoes = declaracoesObservacoes;
+    public void setInstrucoesFormalidadesAlfandega(String instrucoesFormalidadesAlfandega) {
+        this.instrucoesFormalidadesAlfandega = instrucoesFormalidadesAlfandega;
     }
 
-    public CargaRodoviariaDetalhadaInfoGerais declaracoesObservacoes(String declaracoesObservacoes) {
-        this.declaracoesObservacoes = declaracoesObservacoes;
+    public CargaRodoviariaDetalhadaInfoGerais instrucoesFormalidadesAlfandega(String instrucoesFormalidadesAlfandega) {
+        this.instrucoesFormalidadesAlfandega = instrucoesFormalidadesAlfandega;
+        return this;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais frete(CargaRodoviariaFrete frete) {
+        this.frete = frete;
+        return this;
+    }
+
+    /**
+     * Get itensCarga
+     *
+     * @return itensCarga
+     **/
+    @JsonProperty("itensCarga")
+    public List<CargaRodoviariaItemCarga> getItensCarga() {
+        return itensCarga;
+    }
+
+    public void setItensCarga(List<CargaRodoviariaItemCarga> itensCarga) {
+        this.itensCarga = itensCarga;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais itensCarga(List<CargaRodoviariaItemCarga> itensCarga) {
+        this.itensCarga = itensCarga;
+        return this;
+    }
+
+    /**
+     * Get mercadorias
+     *
+     * @return mercadorias
+     **/
+    @JsonProperty("mercadorias")
+    public List<CargaRodoviariaMercadoria> getMercadorias() {
+        return mercadorias;
+    }
+
+    public void setMercadorias(List<CargaRodoviariaMercadoria> mercadorias) {
+        this.mercadorias = mercadorias;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais mercadorias(List<CargaRodoviariaMercadoria> mercadorias) {
+        this.mercadorias = mercadorias;
+        return this;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais addMercadoriasItem(CargaRodoviariaMercadoria mercadoriasItem) {
+        this.mercadorias.add(mercadoriasItem);
+        return this;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais addItensCargaItem(CargaRodoviariaItemCarga itensCargaItem) {
+        this.itensCarga.add(itensCargaItem);
+        return this;
+    }
+
+    /**
+     * Get outrosCustos
+     *
+     * @return outrosCustos
+     **/
+    @JsonProperty("outrosCustos")
+    public CargaRodoviariaOutrosCustos getOutrosCustos() {
+        return outrosCustos;
+    }
+
+    public void setOutrosCustos(CargaRodoviariaOutrosCustos outrosCustos) {
+        this.outrosCustos = outrosCustos;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais outrosCustos(CargaRodoviariaOutrosCustos outrosCustos) {
+        this.outrosCustos = outrosCustos;
+        return this;
+    }
+
+    /**
+     * Get seguro
+     *
+     * @return seguro
+     **/
+    @JsonProperty("seguro")
+    public CargaRodoviariaSeguro getSeguro() {
+        return seguro;
+    }
+
+    public void setSeguro(CargaRodoviariaSeguro seguro) {
+        this.seguro = seguro;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais seguro(CargaRodoviariaSeguro seguro) {
+        this.seguro = seguro;
         return this;
     }
 
@@ -361,23 +323,60 @@ public class CargaRodoviariaDetalhadaInfoGerais {
         return this;
     }
 
+    /**
+     * Get valorMercadoriaLocalEmbarque
+     *
+     * @return valorMercadoriaLocalEmbarque
+     **/
+    @JsonProperty("valorMercadoriaLocalEmbarque")
+    public ValorMonetario getValorMercadoriaLocalEmbarque() {
+        return valorMercadoriaLocalEmbarque;
+    }
+
+    public void setValorMercadoriaLocalEmbarque(ValorMonetario valorMercadoriaLocalEmbarque) {
+        this.valorMercadoriaLocalEmbarque = valorMercadoriaLocalEmbarque;
+    }
+
+    /**
+     * Get valorReembolso
+     * @return valorReembolso
+     **/
+    @JsonProperty("valorReembolso")
+    public ValorMonetario getValorReembolso() {
+        return valorReembolso;
+    }
+
+    public void setValorReembolso(ValorMonetario valorReembolso) {
+        this.valorReembolso = valorReembolso;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais valorReembolso(ValorMonetario valorReembolso) {
+        this.valorReembolso = valorReembolso;
+        return this;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais valorMercadoriaLocalEmbarque(ValorMonetario valorMercadoriaLocalEmbarque) {
+        this.valorMercadoriaLocalEmbarque = valorMercadoriaLocalEmbarque;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CargaRodoviariaDetalhadaInfoGerais {\n" +
-                "    seguro: " + toIndentedString(seguro) + "\n" +
-                "    outrosCustos: " + toIndentedString(outrosCustos) + "\n" +
                 "    condicaoVendaMercadoriaLocalEmbarque: " + toIndentedString(condicaoVendaMercadoriaLocalEmbarque) + "\n" +
-                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
                 "    dadosBasicos: " + toIndentedString(dadosBasicos) + "\n" +
-                "    instrucoesFormalidadesAlfandega: " + toIndentedString(instrucoesFormalidadesAlfandega) + "\n" +
-                "    valorMercadoriaLocalEmbarque: " + toIndentedString(valorMercadoriaLocalEmbarque) + "\n" +
-                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
-                "    frete: " + toIndentedString(frete) + "\n" +
-                "    documentosAnexados: " + toIndentedString(documentosAnexados) + "\n" +
-                "    valorReembolso: " + toIndentedString(valorReembolso) + "\n" +
                 "    declaracoesObservacoes: " + toIndentedString(declaracoesObservacoes) + "\n" +
+                "    documentosAnexados: " + toIndentedString(documentosAnexados) + "\n" +
+                "    frete: " + toIndentedString(frete) + "\n" +
+                "    instrucoesFormalidadesAlfandega: " + toIndentedString(instrucoesFormalidadesAlfandega) + "\n" +
+                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
+                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
+                "    outrosCustos: " + toIndentedString(outrosCustos) + "\n" +
+                "    seguro: " + toIndentedString(seguro) + "\n" +
                 "    valorMercadoriaDeclaradoRemetente: " + toIndentedString(valorMercadoriaDeclaradoRemetente) + "\n" +
+                "    valorMercadoriaLocalEmbarque: " + toIndentedString(valorMercadoriaLocalEmbarque) + "\n" +
+                "    valorReembolso: " + toIndentedString(valorReembolso) + "\n" +
                 "}";
         return sb;
     }

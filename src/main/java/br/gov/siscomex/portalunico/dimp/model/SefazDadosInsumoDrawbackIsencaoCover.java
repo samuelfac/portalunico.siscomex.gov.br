@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazDadosInsumoDrawbackIsencaoCover", propOrder =
-        {"itemAtoDuimpInsumo", "numeroAtoDuimpInsumo"
+        {"numeroAtoDuimpInsumo", "itemAtoDuimpInsumo"
         })
 
 @XmlRootElement(name = "SefazDadosInsumoDrawbackIsencaoCover")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Informações relativas a Drawback para Duimps de insumo")
 public class SefazDadosInsumoDrawbackIsencaoCover {
 
+    @XmlElement(name = "numeroAtoDuimpInsumo")
+    @ApiModelProperty(value = "Número do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.<br>Tamanho: 9")
+    /**
+     * Número do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.<br>Tamanho: 9
+     **/
+    private String numeroAtoDuimpInsumo = null;
+
     @XmlElement(name = "itemAtoDuimpInsumo")
     @ApiModelProperty(value = "Número do Item do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.<br>Formato: Inteiro, com até 6 digitos")
     /**
@@ -29,12 +36,24 @@ public class SefazDadosInsumoDrawbackIsencaoCover {
      **/
     private Integer itemAtoDuimpInsumo = null;
 
-    @XmlElement(name = "numeroAtoDuimpInsumo")
-    @ApiModelProperty(value = "Número do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.<br>Tamanho: 9")
     /**
-     * Número do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.<br>Tamanho: 9
+     * Número do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.&lt;br&gt;Tamanho: 9
+     *
+     * @return numeroAtoDuimpInsumo
      **/
-    private String numeroAtoDuimpInsumo = null;
+    @JsonProperty("numeroAtoDuimpInsumo")
+    public String getNumeroAtoDuimpInsumo() {
+        return numeroAtoDuimpInsumo;
+    }
+
+    public void setNumeroAtoDuimpInsumo(String numeroAtoDuimpInsumo) {
+        this.numeroAtoDuimpInsumo = numeroAtoDuimpInsumo;
+    }
+
+    public SefazDadosInsumoDrawbackIsencaoCover numeroAtoDuimpInsumo(String numeroAtoDuimpInsumo) {
+        this.numeroAtoDuimpInsumo = numeroAtoDuimpInsumo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,31 +85,12 @@ public class SefazDadosInsumoDrawbackIsencaoCover {
         return this;
     }
 
-    /**
-     * Número do Ato vinculado a Duimp de insumo (originária) solicitada pelo Drawback Isenção.&lt;br&gt;Tamanho: 9
-     *
-     * @return numeroAtoDuimpInsumo
-     **/
-    @JsonProperty("numeroAtoDuimpInsumo")
-    public String getNumeroAtoDuimpInsumo() {
-        return numeroAtoDuimpInsumo;
-    }
-
-    public void setNumeroAtoDuimpInsumo(String numeroAtoDuimpInsumo) {
-        this.numeroAtoDuimpInsumo = numeroAtoDuimpInsumo;
-    }
-
-    public SefazDadosInsumoDrawbackIsencaoCover numeroAtoDuimpInsumo(String numeroAtoDuimpInsumo) {
-        this.numeroAtoDuimpInsumo = numeroAtoDuimpInsumo;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class SefazDadosInsumoDrawbackIsencaoCover {\n" +
-                "    itemAtoDuimpInsumo: " + toIndentedString(itemAtoDuimpInsumo) + "\n" +
                 "    numeroAtoDuimpInsumo: " + toIndentedString(numeroAtoDuimpInsumo) + "\n" +
+                "    itemAtoDuimpInsumo: " + toIndentedString(itemAtoDuimpInsumo) + "\n" +
                 "}";
         return sb;
     }

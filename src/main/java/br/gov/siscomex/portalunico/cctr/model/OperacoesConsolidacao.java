@@ -35,17 +35,6 @@ public class OperacoesConsolidacao {
     private List<OperacaoConsolidacao> operacaoConsolidacao = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Dados da consolidação
      *
      * @return operacaoConsolidacao
@@ -68,6 +57,18 @@ public class OperacoesConsolidacao {
     public OperacoesConsolidacao addOperacaoConsolidacaoItem(OperacaoConsolidacao operacaoConsolidacaoItem) {
         this.operacaoConsolidacao.add(operacaoConsolidacaoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -14,11 +14,27 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao", propOrder =
-        {"quantidadeVolumes", "valorOutrosCustosRemetente", "motivoDSIC", "valorOutrosCustosDestinatario", "tipoConhecimento", "resumoRUC"
+        {"tipoConhecimento", "motivoDSIC", "quantidadeVolumes", "resumoRUC", "valorOutrosCustosRemetente", "valorOutrosCustosDestinatario"
         })
 
 @XmlRootElement(name = "DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao")
 public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
+
+
+    @XmlElement(name = "tipoConhecimento")
+    @ApiModelProperty(example = "CRT", value = "Tipo de conhecimento de transporte de carga rodoviária")
+    /**
+     * Tipo de conhecimento de transporte de carga rodoviária
+     **/
+    private TipoConhecimentoEnum tipoConhecimento = null;
+    @XmlElement(name = "motivoDSIC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazMotivoDSICDTO motivoDSIC = null;
+    @XmlElement(name = "resumoRUC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazResumoRUCCover resumoRUC = null;
 
     @XmlElement(name = "quantidadeVolumes")
     @ApiModelProperty(example = "2000", value = "Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647")
@@ -26,31 +42,10 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
      * Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647
      **/
     private Integer quantidadeVolumes = null;
-
     @XmlElement(name = "valorOutrosCustosRemetente")
     @ApiModelProperty(value = "")
     @Valid
     private OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente = null;
-
-    @XmlElement(name = "motivoDSIC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazMotivoDSICDTO motivoDSIC = null;
-
-    @XmlElement(name = "valorOutrosCustosDestinatario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private OutrosCustosDoDestinatrioDeUmaCargaRodoviria valorOutrosCustosDestinatario = null;
-    @XmlElement(name = "tipoConhecimento")
-    @ApiModelProperty(example = "CRT", value = "Tipo de conhecimento de transporte de carga rodoviária")
-    /**
-     * Tipo de conhecimento de transporte de carga rodoviária
-     **/
-    private TipoConhecimentoEnum tipoConhecimento = null;
-    @XmlElement(name = "resumoRUC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazResumoRUCCover resumoRUC = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -63,81 +58,10 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
         return o.toString().replace("\n", "\n    ");
     }
 
-    /**
-     * Quantidade total de volumes.&lt;br&gt;Formato: Inteiro, com até 10 digitos&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 2.147.483.647
-     *
-     * @return quantidadeVolumes
-     **/
-    @JsonProperty("quantidadeVolumes")
-    public Integer getQuantidadeVolumes() {
-        return quantidadeVolumes;
-    }
-
-    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-    }
-
-    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-        return this;
-    }
-
-    /**
-     * Get valorOutrosCustosRemetente
-     *
-     * @return valorOutrosCustosRemetente
-     **/
-    @JsonProperty("valorOutrosCustosRemetente")
-    public OutrosCustosDoRemetenteDeUmaCargaRodoviria getValorOutrosCustosRemetente() {
-        return valorOutrosCustosRemetente;
-    }
-
-    public void setValorOutrosCustosRemetente(OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente) {
-        this.valorOutrosCustosRemetente = valorOutrosCustosRemetente;
-    }
-
-    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao valorOutrosCustosRemetente(OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente) {
-        this.valorOutrosCustosRemetente = valorOutrosCustosRemetente;
-        return this;
-    }
-
-    /**
-     * Get motivoDSIC
-     *
-     * @return motivoDSIC
-     **/
-    @JsonProperty("motivoDSIC")
-    public SefazMotivoDSICDTO getMotivoDSIC() {
-        return motivoDSIC;
-    }
-
-    public void setMotivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
-        this.motivoDSIC = motivoDSIC;
-    }
-
-    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao motivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
-        this.motivoDSIC = motivoDSIC;
-        return this;
-    }
-
-    /**
-     * Get valorOutrosCustosDestinatario
-     *
-     * @return valorOutrosCustosDestinatario
-     **/
-    @JsonProperty("valorOutrosCustosDestinatario")
-    public OutrosCustosDoDestinatrioDeUmaCargaRodoviria getValorOutrosCustosDestinatario() {
-        return valorOutrosCustosDestinatario;
-    }
-
-    public void setValorOutrosCustosDestinatario(OutrosCustosDoDestinatrioDeUmaCargaRodoviria valorOutrosCustosDestinatario) {
-        this.valorOutrosCustosDestinatario = valorOutrosCustosDestinatario;
-    }
-
-    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao valorOutrosCustosDestinatario(OutrosCustosDoDestinatrioDeUmaCargaRodoviria valorOutrosCustosDestinatario) {
-        this.valorOutrosCustosDestinatario = valorOutrosCustosDestinatario;
-        return this;
-    }
+    @XmlElement(name = "valorOutrosCustosDestinatario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private OutrosCustosDoDestinatrioDeUmaCargaRodoviria valorOutrosCustosDestinatario = null;
 
     /**
      * Tipo de conhecimento de transporte de carga rodoviária
@@ -162,6 +86,44 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
     }
 
     /**
+     * Get motivoDSIC
+     *
+     * @return motivoDSIC
+     **/
+    @JsonProperty("motivoDSIC")
+    public SefazMotivoDSICDTO getMotivoDSIC() {
+        return motivoDSIC;
+    }
+
+    public void setMotivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
+        this.motivoDSIC = motivoDSIC;
+    }
+
+    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao motivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
+        this.motivoDSIC = motivoDSIC;
+        return this;
+    }
+
+    /**
+     * Quantidade total de volumes.&lt;br&gt;Formato: Inteiro, com até 10 digitos&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 2.147.483.647
+     *
+     * @return quantidadeVolumes
+     **/
+    @JsonProperty("quantidadeVolumes")
+    public Integer getQuantidadeVolumes() {
+        return quantidadeVolumes;
+    }
+
+    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+    }
+
+    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+        return this;
+    }
+
+    /**
      * Get resumoRUC
      *
      * @return resumoRUC
@@ -180,17 +142,55 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
         return this;
     }
 
+    /**
+     * Get valorOutrosCustosRemetente
+     *
+     * @return valorOutrosCustosRemetente
+     **/
+    @JsonProperty("valorOutrosCustosRemetente")
+    public OutrosCustosDoRemetenteDeUmaCargaRodoviria getValorOutrosCustosRemetente() {
+        return valorOutrosCustosRemetente;
+    }
+
+    public void setValorOutrosCustosRemetente(OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente) {
+        this.valorOutrosCustosRemetente = valorOutrosCustosRemetente;
+    }
+
+    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao valorOutrosCustosRemetente(OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente) {
+        this.valorOutrosCustosRemetente = valorOutrosCustosRemetente;
+        return this;
+    }
+
+    /**
+     * Get valorOutrosCustosDestinatario
+     *
+     * @return valorOutrosCustosDestinatario
+     **/
+    @JsonProperty("valorOutrosCustosDestinatario")
+    public OutrosCustosDoDestinatrioDeUmaCargaRodoviria getValorOutrosCustosDestinatario() {
+        return valorOutrosCustosDestinatario;
+    }
+
+    public void setValorOutrosCustosDestinatario(OutrosCustosDoDestinatrioDeUmaCargaRodoviria valorOutrosCustosDestinatario) {
+        this.valorOutrosCustosDestinatario = valorOutrosCustosDestinatario;
+    }
+
+    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao valorOutrosCustosDestinatario(OutrosCustosDoDestinatrioDeUmaCargaRodoviria valorOutrosCustosDestinatario) {
+        this.valorOutrosCustosDestinatario = valorOutrosCustosDestinatario;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    valorOutrosCustosRemetente: " + toIndentedString(valorOutrosCustosRemetente) + "\n" +
-                "    motivoDSIC: " + toIndentedString(motivoDSIC) + "\n" +
-                "    valorOutrosCustosDestinatario: " + toIndentedString(valorOutrosCustosDestinatario) + "\n" +
                 "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "    motivoDSIC: " + toIndentedString(motivoDSIC) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
                 "    resumoRUC: " + toIndentedString(resumoRUC) + "\n" +
+                "    valorOutrosCustosRemetente: " + toIndentedString(valorOutrosCustosRemetente) + "\n" +
+                "    valorOutrosCustosDestinatario: " + toIndentedString(valorOutrosCustosDestinatario) + "\n" +
                 "}";
         return sb;
     }

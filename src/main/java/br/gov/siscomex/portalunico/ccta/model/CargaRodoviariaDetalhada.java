@@ -13,21 +13,21 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaDetalhada", propOrder =
-        {"intervenientes", "infoGerais", "transportadoresSucessivos"
+        {"infoGerais", "intervenientes", "transportadoresSucessivos"
         })
 
 @XmlRootElement(name = "CargaRodoviariaDetalhada")
 public class CargaRodoviariaDetalhada {
 
-    @XmlElement(name = "intervenientes")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaRodoviariaDetalhadaInterveniente> intervenientes = null;
-
     @XmlElement(name = "infoGerais")
     @ApiModelProperty(value = "")
     @Valid
     private CargaRodoviariaDetalhadaInfoGerais infoGerais = null;
+
+    @XmlElement(name = "intervenientes")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CargaRodoviariaDetalhadaInterveniente> intervenientes = null;
 
     @XmlElement(name = "transportadoresSucessivos")
     @ApiModelProperty(value = "")
@@ -43,6 +43,20 @@ public class CargaRodoviariaDetalhada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get infoGerais
+     *
+     * @return infoGerais
+     **/
+    @JsonProperty("infoGerais")
+    public CargaRodoviariaDetalhadaInfoGerais getInfoGerais() {
+        return infoGerais;
+    }
+
+    public void setInfoGerais(CargaRodoviariaDetalhadaInfoGerais infoGerais) {
+        this.infoGerais = infoGerais;
     }
 
     /**
@@ -70,25 +84,6 @@ public class CargaRodoviariaDetalhada {
     }
 
     /**
-     * Get infoGerais
-     *
-     * @return infoGerais
-     **/
-    @JsonProperty("infoGerais")
-    public CargaRodoviariaDetalhadaInfoGerais getInfoGerais() {
-        return infoGerais;
-    }
-
-    public void setInfoGerais(CargaRodoviariaDetalhadaInfoGerais infoGerais) {
-        this.infoGerais = infoGerais;
-    }
-
-    public CargaRodoviariaDetalhada infoGerais(CargaRodoviariaDetalhadaInfoGerais infoGerais) {
-        this.infoGerais = infoGerais;
-        return this;
-    }
-
-    /**
      * Get transportadoresSucessivos
      *
      * @return transportadoresSucessivos
@@ -112,12 +107,17 @@ public class CargaRodoviariaDetalhada {
         return this;
     }
 
+    public CargaRodoviariaDetalhada infoGerais(CargaRodoviariaDetalhadaInfoGerais infoGerais) {
+        this.infoGerais = infoGerais;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CargaRodoviariaDetalhada {\n" +
-                "    intervenientes: " + toIndentedString(intervenientes) + "\n" +
                 "    infoGerais: " + toIndentedString(infoGerais) + "\n" +
+                "    intervenientes: " + toIndentedString(intervenientes) + "\n" +
                 "    transportadoresSucessivos: " + toIndentedString(transportadoresSucessivos) + "\n" +
                 "}";
         return sb;

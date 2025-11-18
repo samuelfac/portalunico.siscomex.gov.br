@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NotaFiscalFormulario", propOrder =
-        {"modeloNF", "itensNFF", "identificacaoEmissor", "serieNF", "ufEmissor", "conteineres", "numeroNF", "dataEmissao", "aamm", "destinatario"
+        {"numeroNF", "serieNF", "modeloNF", "aamm", "ufEmissor", "dataEmissao", "identificacaoEmissor", "destinatario", "conteineres", "itensNFF"
         })
 
 @XmlRootElement(name = "NotaFiscalFormulario")
@@ -24,22 +24,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Nota Fiscal Formulário")
 public class NotaFiscalFormulario {
 
-    @XmlElement(name = "modeloNF", required = true)
-    @ApiModelProperty(example = "01", required = true, value = "Modelo da nota fiscal<br>Tamanho: 2<br>Domínio: 01 (modelo 01), 04 (produtor).")
+    @XmlElement(name = "numeroNF", required = true)
+    @ApiModelProperty(example = "30990001", required = true, value = "Número da nota fiscal<br>Tamanho: 9<br>Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).")
     /**
-     * Modelo da nota fiscal<br>Tamanho: 2<br>Domínio: 01 (modelo 01), 04 (produtor).
+     * Número da nota fiscal<br>Tamanho: 9<br>Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).
      **/
-    private String modeloNF = null;
-
-    @XmlElement(name = "itensNFF", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private ItensNFF itensNFF = null;
-
-    @XmlElement(name = "identificacaoEmissor", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private IdentificacaoEmissor identificacaoEmissor = null;
+    private String numeroNF = null;
 
     @XmlElement(name = "serieNF", required = true)
     @ApiModelProperty(example = "100", required = true, value = "Número de série<br>Tamanho: 3<br>Informar zero se não utilizada a série do documento fiscal.")
@@ -48,31 +38,12 @@ public class NotaFiscalFormulario {
      **/
     private String serieNF = null;
 
-    @XmlElement(name = "ufEmissor", required = true)
-    @ApiModelProperty(example = "BR-RJ", required = true, value = "Sigla da Unidade da Federação emitente<br>Tamanho: 4<br>Formato: AA<br>Consulte a tabela de domínios “UF” (vide a seção 6.2 deste documento). Exemplo: BR-RJ, BR-AM, BR-PA, etc")
+    @XmlElement(name = "modeloNF", required = true)
+    @ApiModelProperty(example = "01", required = true, value = "Modelo da nota fiscal<br>Tamanho: 2<br>Domínio: 01 (modelo 01), 04 (produtor).")
     /**
-     * Sigla da Unidade da Federação emitente<br>Tamanho: 4<br>Formato: AA<br>Consulte a tabela de domínios “UF” (vide a seção 6.2 deste documento). Exemplo: BR-RJ, BR-AM, BR-PA, etc
+     * Modelo da nota fiscal<br>Tamanho: 2<br>Domínio: 01 (modelo 01), 04 (produtor).
      **/
-    private String ufEmissor = null;
-
-    @XmlElement(name = "conteineres", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Conteineres conteineres = null;
-
-    @XmlElement(name = "numeroNF", required = true)
-    @ApiModelProperty(example = "30990001", required = true, value = "Número da nota fiscal<br>Tamanho: 9<br>Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).")
-    /**
-     * Número da nota fiscal<br>Tamanho: 9<br>Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).
-     **/
-    private String numeroNF = null;
-
-    @XmlElement(name = "dataEmissao", required = true)
-    @ApiModelProperty(example = "15-10-2016", required = true, value = "Data de emissão<br>Formato: AAAA-MM-DD")
-    /**
-     * Data de emissão<br>Formato: AAAA-MM-DD
-     **/
-    private String dataEmissao = null;
+    private String modeloNF = null;
 
     @XmlElement(name = "aamm", required = true)
     @ApiModelProperty(example = "1910", required = true, value = "Ano e mês de emissão<nr>Tamanho: 4<br>Formato: AAMM")
@@ -81,10 +52,39 @@ public class NotaFiscalFormulario {
      **/
     private String aamm = null;
 
+    @XmlElement(name = "ufEmissor", required = true)
+    @ApiModelProperty(example = "BR-RJ", required = true, value = "Sigla da Unidade da Federação emitente<br>Tamanho: 4<br>Formato: AA<br>Consulte a tabela de domínios “UF” (vide a seção 6.2 deste documento). Exemplo: BR-RJ, BR-AM, BR-PA, etc")
+    /**
+     * Sigla da Unidade da Federação emitente<br>Tamanho: 4<br>Formato: AA<br>Consulte a tabela de domínios “UF” (vide a seção 6.2 deste documento). Exemplo: BR-RJ, BR-AM, BR-PA, etc
+     **/
+    private String ufEmissor = null;
+
+    @XmlElement(name = "dataEmissao", required = true)
+    @ApiModelProperty(example = "15-10-2016", required = true, value = "Data de emissão<br>Formato: AAAA-MM-DD")
+    /**
+     * Data de emissão<br>Formato: AAAA-MM-DD
+     **/
+    private String dataEmissao = null;
+
+    @XmlElement(name = "identificacaoEmissor", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private IdentificacaoEmissor identificacaoEmissor = null;
+
     @XmlElement(name = "destinatario", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private Destinatario destinatario = null;
+
+    @XmlElement(name = "conteineres", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Conteineres conteineres = null;
+
+    @XmlElement(name = "itensNFF", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ItensNFF itensNFF = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -95,6 +95,46 @@ public class NotaFiscalFormulario {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número da nota fiscal&lt;br&gt;Tamanho: 9&lt;br&gt;Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).
+     *
+     * @return numeroNF
+     **/
+    @JsonProperty("numeroNF")
+    @NotNull
+    public String getNumeroNF() {
+        return numeroNF;
+    }
+
+    public void setNumeroNF(String numeroNF) {
+        this.numeroNF = numeroNF;
+    }
+
+    /**
+     * Número de série&lt;br&gt;Tamanho: 3&lt;br&gt;Informar zero se não utilizada a série do documento fiscal.
+     *
+     * @return serieNF
+     **/
+    @JsonProperty("serieNF")
+    @NotNull
+    public String getSerieNF() {
+        return serieNF;
+    }
+
+    public void setSerieNF(String serieNF) {
+        this.serieNF = serieNF;
+    }
+
+    public NotaFiscalFormulario serieNF(String serieNF) {
+        this.serieNF = serieNF;
+        return this;
+    }
+
+    public NotaFiscalFormulario numeroNF(String numeroNF) {
+        this.numeroNF = numeroNF;
+        return this;
     }
 
     /**
@@ -118,63 +158,18 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Get itensNFF
+     * Ano e mês de emissão&lt;nr&gt;Tamanho: 4&lt;br&gt;Formato: AAMM
      *
-     * @return itensNFF
+     * @return aamm
      **/
-    @JsonProperty("itensNFF")
+    @JsonProperty("aamm")
     @NotNull
-    public ItensNFF getItensNFF() {
-        return itensNFF;
+    public String getAamm() {
+        return aamm;
     }
 
-    public void setItensNFF(ItensNFF itensNFF) {
-        this.itensNFF = itensNFF;
-    }
-
-    public NotaFiscalFormulario itensNFF(ItensNFF itensNFF) {
-        this.itensNFF = itensNFF;
-        return this;
-    }
-
-    /**
-     * Get identificacaoEmissor
-     *
-     * @return identificacaoEmissor
-     **/
-    @JsonProperty("identificacaoEmissor")
-    @NotNull
-    public IdentificacaoEmissor getIdentificacaoEmissor() {
-        return identificacaoEmissor;
-    }
-
-    public void setIdentificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
-        this.identificacaoEmissor = identificacaoEmissor;
-    }
-
-    public NotaFiscalFormulario identificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
-        this.identificacaoEmissor = identificacaoEmissor;
-        return this;
-    }
-
-    /**
-     * Número de série&lt;br&gt;Tamanho: 3&lt;br&gt;Informar zero se não utilizada a série do documento fiscal.
-     *
-     * @return serieNF
-     **/
-    @JsonProperty("serieNF")
-    @NotNull
-    public String getSerieNF() {
-        return serieNF;
-    }
-
-    public void setSerieNF(String serieNF) {
-        this.serieNF = serieNF;
-    }
-
-    public NotaFiscalFormulario serieNF(String serieNF) {
-        this.serieNF = serieNF;
-        return this;
+    public void setAamm(String aamm) {
+        this.aamm = aamm;
     }
 
     /**
@@ -194,6 +189,71 @@ public class NotaFiscalFormulario {
 
     public NotaFiscalFormulario ufEmissor(String ufEmissor) {
         this.ufEmissor = ufEmissor;
+        return this;
+    }
+
+    /**
+     * Data de emissão&lt;br&gt;Formato: AAAA-MM-DD
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    @NotNull
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public NotaFiscalFormulario dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
+
+    public NotaFiscalFormulario aamm(String aamm) {
+        this.aamm = aamm;
+        return this;
+    }
+
+    /**
+     * Get identificacaoEmissor
+     *
+     * @return identificacaoEmissor
+     **/
+    @JsonProperty("identificacaoEmissor")
+    @NotNull
+    public IdentificacaoEmissor getIdentificacaoEmissor() {
+        return identificacaoEmissor;
+    }
+
+    public void setIdentificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
+        this.identificacaoEmissor = identificacaoEmissor;
+    }
+
+    /**
+     * Get destinatario
+     *
+     * @return destinatario
+     **/
+    @JsonProperty("destinatario")
+    @NotNull
+    public Destinatario getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(Destinatario destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public NotaFiscalFormulario destinatario(Destinatario destinatario) {
+        this.destinatario = destinatario;
+        return this;
+    }
+
+    public NotaFiscalFormulario identificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
+        this.identificacaoEmissor = identificacaoEmissor;
         return this;
     }
 
@@ -218,82 +278,22 @@ public class NotaFiscalFormulario {
     }
 
     /**
-     * Número da nota fiscal&lt;br&gt;Tamanho: 9&lt;br&gt;Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).
+     * Get itensNFF
      *
-     * @return numeroNF
+     * @return itensNFF
      **/
-    @JsonProperty("numeroNF")
+    @JsonProperty("itensNFF")
     @NotNull
-    public String getNumeroNF() {
-        return numeroNF;
+    public ItensNFF getItensNFF() {
+        return itensNFF;
     }
 
-    public void setNumeroNF(String numeroNF) {
-        this.numeroNF = numeroNF;
+    public void setItensNFF(ItensNFF itensNFF) {
+        this.itensNFF = itensNFF;
     }
 
-    public NotaFiscalFormulario numeroNF(String numeroNF) {
-        this.numeroNF = numeroNF;
-        return this;
-    }
-
-    /**
-     * Data de emissão&lt;br&gt;Formato: AAAA-MM-DD
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    @NotNull
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public NotaFiscalFormulario dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
-
-    /**
-     * Ano e mês de emissão&lt;nr&gt;Tamanho: 4&lt;br&gt;Formato: AAMM
-     *
-     * @return aamm
-     **/
-    @JsonProperty("aamm")
-    @NotNull
-    public String getAamm() {
-        return aamm;
-    }
-
-    public void setAamm(String aamm) {
-        this.aamm = aamm;
-    }
-
-    public NotaFiscalFormulario aamm(String aamm) {
-        this.aamm = aamm;
-        return this;
-    }
-
-    /**
-     * Get destinatario
-     *
-     * @return destinatario
-     **/
-    @JsonProperty("destinatario")
-    @NotNull
-    public Destinatario getDestinatario() {
-        return destinatario;
-    }
-
-    public void setDestinatario(Destinatario destinatario) {
-        this.destinatario = destinatario;
-    }
-
-    public NotaFiscalFormulario destinatario(Destinatario destinatario) {
-        this.destinatario = destinatario;
+    public NotaFiscalFormulario itensNFF(ItensNFF itensNFF) {
+        this.itensNFF = itensNFF;
         return this;
     }
 
@@ -301,16 +301,16 @@ public class NotaFiscalFormulario {
     public String toString() {
 
         String sb = "class NotaFiscalFormulario {\n" +
-                "    modeloNF: " + toIndentedString(modeloNF) + "\n" +
-                "    itensNFF: " + toIndentedString(itensNFF) + "\n" +
-                "    identificacaoEmissor: " + toIndentedString(identificacaoEmissor) + "\n" +
-                "    serieNF: " + toIndentedString(serieNF) + "\n" +
-                "    ufEmissor: " + toIndentedString(ufEmissor) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "    numeroNF: " + toIndentedString(numeroNF) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    serieNF: " + toIndentedString(serieNF) + "\n" +
+                "    modeloNF: " + toIndentedString(modeloNF) + "\n" +
                 "    aamm: " + toIndentedString(aamm) + "\n" +
+                "    ufEmissor: " + toIndentedString(ufEmissor) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    identificacaoEmissor: " + toIndentedString(identificacaoEmissor) + "\n" +
                 "    destinatario: " + toIndentedString(destinatario) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "    itensNFF: " + toIndentedString(itensNFF) + "\n" +
                 "}";
         return sb;
     }

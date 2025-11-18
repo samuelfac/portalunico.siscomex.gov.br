@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MemoriaCalculoItemCover", propOrder =
-        {"normal", "percentualReducaoAliquotaReduzida", "baseCalculoBRL", "baseCalculoReduzidaBRL", "percentualPagamento", "tipoAliquota", "tributado", "valorAliquotaEspecifica", "valorAliquota", "codigoFundamentoLegalNormal", "valorAliquotaReduzida", "baseCalculoEspecificaBRL", "percentualReducaoBaseCalculo"
+        {"codigoFundamentoLegalNormal", "baseCalculoBRL", "baseCalculoEspecificaBRL", "baseCalculoReduzidaBRL", "percentualReducaoBaseCalculo", "tipoAliquota", "percentualReducaoAliquotaReduzida", "valorAliquota", "valorAliquotaEspecifica", "valorAliquotaReduzida", "normal", "tributado", "percentualPagamento"
         })
 
 @XmlRootElement(name = "MemoriaCalculoItemCover")
@@ -26,21 +26,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Memória de cálculo por tipo de imposto.")
 public class MemoriaCalculoItemCover {
 
-    @XmlElement(name = "normal")
-    @ApiModelProperty(example = "4227.8", value = "Valor normal em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
+    @XmlElement(name = "codigoFundamentoLegalNormal")
+    @ApiModelProperty(example = "1001", value = "Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.")
     /**
-     * Valor normal em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
      **/
-    private BigDecimal normal = null;
-
-    @XmlElement(name = "percentualReducaoAliquotaReduzida")
-    @ApiModelProperty(example = "4227.8", value = "Percentual de redução da alíquota reduzida (%).<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Percentual de redução da alíquota reduzida (%).<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private BigDecimal percentualReducaoAliquotaReduzida = null;
+    private Long codigoFundamentoLegalNormal = null;
 
     @XmlElement(name = "baseCalculoBRL")
     @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -50,6 +41,14 @@ public class MemoriaCalculoItemCover {
      **/
     private BigDecimal baseCalculoBRL = null;
 
+    @XmlElement(name = "baseCalculoEspecificaBRL")
+    @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo específica em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da base de cálculo específica em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal baseCalculoEspecificaBRL = null;
+
     @XmlElement(name = "baseCalculoReduzidaBRL")
     @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo reduzida em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -58,59 +57,6 @@ public class MemoriaCalculoItemCover {
      **/
     private BigDecimal baseCalculoReduzidaBRL = null;
 
-    @XmlElement(name = "percentualPagamento")
-    @ApiModelProperty(example = "4227.8", value = "Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal percentualPagamento = null;
-    @XmlElement(name = "tipoAliquota")
-    @ApiModelProperty(example = "AD_VALOREM", value = "Tipo de alíquota do tributo.<br>Domínio:")
-    /**
-     * Tipo de alíquota do tributo.<br>Domínio:
-     **/
-    private TipoAliquotaEnum tipoAliquota = null;
-    @XmlElement(name = "tributado")
-    @ApiModelProperty(example = "true", value = "Indicador de tributação.")
-    /**
-     * Indicador de tributação.
-     **/
-    private Boolean tributado = null;
-    @XmlElement(name = "valorAliquotaEspecifica")
-    @ApiModelProperty(example = "4227.8", value = "Valor da alíquota específica (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da alíquota específica (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorAliquotaEspecifica = null;
-    @XmlElement(name = "valorAliquota")
-    @ApiModelProperty(example = "4227.8", value = "Valor da alíquota (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da alíquota (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorAliquota = null;
-    @XmlElement(name = "codigoFundamentoLegalNormal")
-    @ApiModelProperty(example = "1001", value = "Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.")
-    /**
-     * Código do fundamento legal do regime tributário de importação utilizado na declaração.<br>Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
-     **/
-    private Long codigoFundamentoLegalNormal = null;
-    @XmlElement(name = "valorAliquotaReduzida")
-    @ApiModelProperty(example = "4227.8", value = "Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorAliquotaReduzida = null;
-    @XmlElement(name = "baseCalculoEspecificaBRL")
-    @ApiModelProperty(example = "4567.8", value = "Valor da base de cálculo específica em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da base de cálculo específica em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal baseCalculoEspecificaBRL = null;
     @XmlElement(name = "percentualReducaoBaseCalculo")
     @ApiModelProperty(example = "4567.8", value = "Percentual de redução da base de cálculo.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     @Valid
@@ -118,6 +64,63 @@ public class MemoriaCalculoItemCover {
      * Percentual de redução da base de cálculo.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal percentualReducaoBaseCalculo = null;
+    @XmlElement(name = "percentualReducaoAliquotaReduzida")
+    @ApiModelProperty(example = "4227.8", value = "Percentual de redução da alíquota reduzida (%).<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Percentual de redução da alíquota reduzida (%).<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private BigDecimal percentualReducaoAliquotaReduzida = null;
+
+    @XmlElement(name = "tipoAliquota")
+    @ApiModelProperty(example = "AD_VALOREM", value = "Tipo de alíquota do tributo.<br>Domínio:")
+    /**
+     * Tipo de alíquota do tributo.<br>Domínio:
+     **/
+    private TipoAliquotaEnum tipoAliquota = null;
+    @XmlElement(name = "valorAliquotaEspecifica")
+    @ApiModelProperty(example = "4227.8", value = "Valor da alíquota específica (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da alíquota específica (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorAliquotaEspecifica = null;
+
+    @XmlElement(name = "valorAliquota")
+    @ApiModelProperty(example = "4227.8", value = "Valor da alíquota (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da alíquota (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorAliquota = null;
+    @XmlElement(name = "normal")
+    @ApiModelProperty(example = "4227.8", value = "Valor normal em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor normal em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal normal = null;
+
+    @XmlElement(name = "valorAliquotaReduzida")
+    @ApiModelProperty(example = "4227.8", value = "Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorAliquotaReduzida = null;
+    @XmlElement(name = "tributado")
+    @ApiModelProperty(example = "true", value = "Indicador de tributação.")
+    /**
+     * Indicador de tributação.
+     **/
+    private Boolean tributado = null;
+    @XmlElement(name = "percentualPagamento")
+    @ApiModelProperty(example = "4227.8", value = "Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal percentualPagamento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -131,40 +134,21 @@ public class MemoriaCalculoItemCover {
     }
 
     /**
-     * Valor normal em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
      *
-     * @return normal
+     * @return codigoFundamentoLegalNormal
      **/
-    @JsonProperty("normal")
-    public BigDecimal getNormal() {
-        return normal;
+    @JsonProperty("codigoFundamentoLegalNormal")
+    public Long getCodigoFundamentoLegalNormal() {
+        return codigoFundamentoLegalNormal;
     }
 
-    public void setNormal(BigDecimal normal) {
-        this.normal = normal;
+    public void setCodigoFundamentoLegalNormal(Long codigoFundamentoLegalNormal) {
+        this.codigoFundamentoLegalNormal = codigoFundamentoLegalNormal;
     }
 
-    public MemoriaCalculoItemCover normal(BigDecimal normal) {
-        this.normal = normal;
-        return this;
-    }
-
-    /**
-     * Percentual de redução da alíquota reduzida (%).&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return percentualReducaoAliquotaReduzida
-     **/
-    @JsonProperty("percentualReducaoAliquotaReduzida")
-    public BigDecimal getPercentualReducaoAliquotaReduzida() {
-        return percentualReducaoAliquotaReduzida;
-    }
-
-    public void setPercentualReducaoAliquotaReduzida(BigDecimal percentualReducaoAliquotaReduzida) {
-        this.percentualReducaoAliquotaReduzida = percentualReducaoAliquotaReduzida;
-    }
-
-    public MemoriaCalculoItemCover percentualReducaoAliquotaReduzida(BigDecimal percentualReducaoAliquotaReduzida) {
-        this.percentualReducaoAliquotaReduzida = percentualReducaoAliquotaReduzida;
+    public MemoriaCalculoItemCover codigoFundamentoLegalNormal(Long codigoFundamentoLegalNormal) {
+        this.codigoFundamentoLegalNormal = codigoFundamentoLegalNormal;
         return this;
     }
 
@@ -188,6 +172,25 @@ public class MemoriaCalculoItemCover {
     }
 
     /**
+     * Valor da base de cálculo específica em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return baseCalculoEspecificaBRL
+     **/
+    @JsonProperty("baseCalculoEspecificaBRL")
+    public BigDecimal getBaseCalculoEspecificaBRL() {
+        return baseCalculoEspecificaBRL;
+    }
+
+    public void setBaseCalculoEspecificaBRL(BigDecimal baseCalculoEspecificaBRL) {
+        this.baseCalculoEspecificaBRL = baseCalculoEspecificaBRL;
+    }
+
+    public MemoriaCalculoItemCover baseCalculoEspecificaBRL(BigDecimal baseCalculoEspecificaBRL) {
+        this.baseCalculoEspecificaBRL = baseCalculoEspecificaBRL;
+        return this;
+    }
+
+    /**
      * Valor da base de cálculo reduzida em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return baseCalculoReduzidaBRL
@@ -207,21 +210,21 @@ public class MemoriaCalculoItemCover {
     }
 
     /**
-     * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Percentual de redução da base de cálculo.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
-     * @return percentualPagamento
+     * @return percentualReducaoBaseCalculo
      **/
-    @JsonProperty("percentualPagamento")
-    public BigDecimal getPercentualPagamento() {
-        return percentualPagamento;
+    @JsonProperty("percentualReducaoBaseCalculo")
+    public BigDecimal getPercentualReducaoBaseCalculo() {
+        return percentualReducaoBaseCalculo;
     }
 
-    public void setPercentualPagamento(BigDecimal percentualPagamento) {
-        this.percentualPagamento = percentualPagamento;
+    public void setPercentualReducaoBaseCalculo(BigDecimal percentualReducaoBaseCalculo) {
+        this.percentualReducaoBaseCalculo = percentualReducaoBaseCalculo;
     }
 
-    public MemoriaCalculoItemCover percentualPagamento(BigDecimal percentualPagamento) {
-        this.percentualPagamento = percentualPagamento;
+    public MemoriaCalculoItemCover percentualReducaoBaseCalculo(BigDecimal percentualReducaoBaseCalculo) {
+        this.percentualReducaoBaseCalculo = percentualReducaoBaseCalculo;
         return this;
     }
 
@@ -248,40 +251,21 @@ public class MemoriaCalculoItemCover {
     }
 
     /**
-     * Indicador de tributação.
+     * Percentual de redução da alíquota reduzida (%).&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
-     * @return tributado
+     * @return percentualReducaoAliquotaReduzida
      **/
-    @JsonProperty("tributado")
-    public Boolean isisTributado() {
-        return tributado;
+    @JsonProperty("percentualReducaoAliquotaReduzida")
+    public BigDecimal getPercentualReducaoAliquotaReduzida() {
+        return percentualReducaoAliquotaReduzida;
     }
 
-    public void setTributado(Boolean tributado) {
-        this.tributado = tributado;
+    public void setPercentualReducaoAliquotaReduzida(BigDecimal percentualReducaoAliquotaReduzida) {
+        this.percentualReducaoAliquotaReduzida = percentualReducaoAliquotaReduzida;
     }
 
-    public MemoriaCalculoItemCover tributado(Boolean tributado) {
-        this.tributado = tributado;
-        return this;
-    }
-
-    /**
-     * Valor da alíquota específica (%).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorAliquotaEspecifica
-     **/
-    @JsonProperty("valorAliquotaEspecifica")
-    public BigDecimal getValorAliquotaEspecifica() {
-        return valorAliquotaEspecifica;
-    }
-
-    public void setValorAliquotaEspecifica(BigDecimal valorAliquotaEspecifica) {
-        this.valorAliquotaEspecifica = valorAliquotaEspecifica;
-    }
-
-    public MemoriaCalculoItemCover valorAliquotaEspecifica(BigDecimal valorAliquotaEspecifica) {
-        this.valorAliquotaEspecifica = valorAliquotaEspecifica;
+    public MemoriaCalculoItemCover percentualReducaoAliquotaReduzida(BigDecimal percentualReducaoAliquotaReduzida) {
+        this.percentualReducaoAliquotaReduzida = percentualReducaoAliquotaReduzida;
         return this;
     }
 
@@ -305,21 +289,21 @@ public class MemoriaCalculoItemCover {
     }
 
     /**
-     * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
+     * Valor da alíquota específica (%).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return codigoFundamentoLegalNormal
+     * @return valorAliquotaEspecifica
      **/
-    @JsonProperty("codigoFundamentoLegalNormal")
-    public Long getCodigoFundamentoLegalNormal() {
-        return codigoFundamentoLegalNormal;
+    @JsonProperty("valorAliquotaEspecifica")
+    public BigDecimal getValorAliquotaEspecifica() {
+        return valorAliquotaEspecifica;
     }
 
-    public void setCodigoFundamentoLegalNormal(Long codigoFundamentoLegalNormal) {
-        this.codigoFundamentoLegalNormal = codigoFundamentoLegalNormal;
+    public void setValorAliquotaEspecifica(BigDecimal valorAliquotaEspecifica) {
+        this.valorAliquotaEspecifica = valorAliquotaEspecifica;
     }
 
-    public MemoriaCalculoItemCover codigoFundamentoLegalNormal(Long codigoFundamentoLegalNormal) {
-        this.codigoFundamentoLegalNormal = codigoFundamentoLegalNormal;
+    public MemoriaCalculoItemCover valorAliquotaEspecifica(BigDecimal valorAliquotaEspecifica) {
+        this.valorAliquotaEspecifica = valorAliquotaEspecifica;
         return this;
     }
 
@@ -343,40 +327,59 @@ public class MemoriaCalculoItemCover {
     }
 
     /**
-     * Valor da base de cálculo específica em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor normal em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return baseCalculoEspecificaBRL
+     * @return normal
      **/
-    @JsonProperty("baseCalculoEspecificaBRL")
-    public BigDecimal getBaseCalculoEspecificaBRL() {
-        return baseCalculoEspecificaBRL;
+    @JsonProperty("normal")
+    public BigDecimal getNormal() {
+        return normal;
     }
 
-    public void setBaseCalculoEspecificaBRL(BigDecimal baseCalculoEspecificaBRL) {
-        this.baseCalculoEspecificaBRL = baseCalculoEspecificaBRL;
+    public void setNormal(BigDecimal normal) {
+        this.normal = normal;
     }
 
-    public MemoriaCalculoItemCover baseCalculoEspecificaBRL(BigDecimal baseCalculoEspecificaBRL) {
-        this.baseCalculoEspecificaBRL = baseCalculoEspecificaBRL;
+    public MemoriaCalculoItemCover normal(BigDecimal normal) {
+        this.normal = normal;
         return this;
     }
 
     /**
-     * Percentual de redução da base de cálculo.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     * Indicador de tributação.
      *
-     * @return percentualReducaoBaseCalculo
+     * @return tributado
      **/
-    @JsonProperty("percentualReducaoBaseCalculo")
-    public BigDecimal getPercentualReducaoBaseCalculo() {
-        return percentualReducaoBaseCalculo;
+    @JsonProperty("tributado")
+    public Boolean isisTributado() {
+        return tributado;
     }
 
-    public void setPercentualReducaoBaseCalculo(BigDecimal percentualReducaoBaseCalculo) {
-        this.percentualReducaoBaseCalculo = percentualReducaoBaseCalculo;
+    public void setTributado(Boolean tributado) {
+        this.tributado = tributado;
     }
 
-    public MemoriaCalculoItemCover percentualReducaoBaseCalculo(BigDecimal percentualReducaoBaseCalculo) {
-        this.percentualReducaoBaseCalculo = percentualReducaoBaseCalculo;
+    public MemoriaCalculoItemCover tributado(Boolean tributado) {
+        this.tributado = tributado;
+        return this;
+    }
+
+    /**
+     * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return percentualPagamento
+     **/
+    @JsonProperty("percentualPagamento")
+    public BigDecimal getPercentualPagamento() {
+        return percentualPagamento;
+    }
+
+    public void setPercentualPagamento(BigDecimal percentualPagamento) {
+        this.percentualPagamento = percentualPagamento;
+    }
+
+    public MemoriaCalculoItemCover percentualPagamento(BigDecimal percentualPagamento) {
+        this.percentualPagamento = percentualPagamento;
         return this;
     }
 
@@ -385,19 +388,19 @@ public class MemoriaCalculoItemCover {
     public String toString() {
 
         String sb = "class MemoriaCalculoItemCover {\n" +
-                "    normal: " + toIndentedString(normal) + "\n" +
-                "    percentualReducaoAliquotaReduzida: " + toIndentedString(percentualReducaoAliquotaReduzida) + "\n" +
-                "    baseCalculoBRL: " + toIndentedString(baseCalculoBRL) + "\n" +
-                "    baseCalculoReduzidaBRL: " + toIndentedString(baseCalculoReduzidaBRL) + "\n" +
-                "    percentualPagamento: " + toIndentedString(percentualPagamento) + "\n" +
-                "    tipoAliquota: " + toIndentedString(tipoAliquota) + "\n" +
-                "    tributado: " + toIndentedString(tributado) + "\n" +
-                "    valorAliquotaEspecifica: " + toIndentedString(valorAliquotaEspecifica) + "\n" +
-                "    valorAliquota: " + toIndentedString(valorAliquota) + "\n" +
                 "    codigoFundamentoLegalNormal: " + toIndentedString(codigoFundamentoLegalNormal) + "\n" +
-                "    valorAliquotaReduzida: " + toIndentedString(valorAliquotaReduzida) + "\n" +
+                "    baseCalculoBRL: " + toIndentedString(baseCalculoBRL) + "\n" +
                 "    baseCalculoEspecificaBRL: " + toIndentedString(baseCalculoEspecificaBRL) + "\n" +
+                "    baseCalculoReduzidaBRL: " + toIndentedString(baseCalculoReduzidaBRL) + "\n" +
                 "    percentualReducaoBaseCalculo: " + toIndentedString(percentualReducaoBaseCalculo) + "\n" +
+                "    tipoAliquota: " + toIndentedString(tipoAliquota) + "\n" +
+                "    percentualReducaoAliquotaReduzida: " + toIndentedString(percentualReducaoAliquotaReduzida) + "\n" +
+                "    valorAliquota: " + toIndentedString(valorAliquota) + "\n" +
+                "    valorAliquotaEspecifica: " + toIndentedString(valorAliquotaEspecifica) + "\n" +
+                "    valorAliquotaReduzida: " + toIndentedString(valorAliquotaReduzida) + "\n" +
+                "    normal: " + toIndentedString(normal) + "\n" +
+                "    tributado: " + toIndentedString(tributado) + "\n" +
+                "    percentualPagamento: " + toIndentedString(percentualPagamento) + "\n" +
                 "}";
         return sb;
     }

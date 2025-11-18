@@ -17,12 +17,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaCarga", propOrder =
-        {"tipoIdentificacaoCarga", "valorSeguroDolar", "moedaFreteTotal", "valorFreteTotalDestinoDolar", "uaDeclarada", "dadosCargaRodoviaria", "uaEntradaCarga", "valorFreteTotalDolar", "uaDestinoFinal", "moedaSeguro", "valorSeguroMoedaUtilizada", "ufEntradaCarga", "valorFreteTotalMoedaUtiliza", "dataChegada", "valorFreteTotalDestinoEmReal", "viaTransporte", "valorFreteTotalEmReal", "recintosLocalizacaoCarga", "dadosCargaAquaviaria", "valorSeguroEmReal", "dadosCargaAerea", "identificacaoCarga", "paisProcedencia", "ufDeclarada", "pesoLiquido"
+        {"tipoIdentificacaoCarga", "identificacaoCarga", "uaDeclarada", "ufDeclarada", "recintosLocalizacaoCarga", "uaDestinoFinal", "uaEntradaCarga", "ufEntradaCarga", "viaTransporte", "dataChegada", "paisProcedencia", "pesoLiquido", "moedaFreteTotal", "valorFreteTotalMoedaUtiliza", "valorFreteTotalEmReal", "valorFreteTotalDolar", "valorFreteTotalDestinoEmReal", "valorFreteTotalDestinoDolar", "moedaSeguro", "valorSeguroMoedaUtilizada", "valorSeguroEmReal", "valorSeguroDolar", "dadosCargaAquaviaria", "dadosCargaAerea", "dadosCargaRodoviaria"
         })
 
 @XmlRootElement(name = "DadosDaCarga")
 public class DadosDaCarga {
 
+
+    @XmlElement(name = "identificacaoCarga")
+    @ApiModelProperty(example = "131905000719512", value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32")
+    /**
+     * Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32
+     **/
+    private String identificacaoCarga = null;
 
     @XmlElement(name = "tipoIdentificacaoCarga")
     @ApiModelProperty(example = "CE", value = "Tipo de identificação da carga")
@@ -30,144 +37,61 @@ public class DadosDaCarga {
      * Tipo de identificação da carga
      **/
     private TipoIdentificacaoCargaEnum tipoIdentificacaoCarga = null;
-    @XmlElement(name = "valorSeguroDolar")
-    @ApiModelProperty(example = "120.48", value = "Valor do seguro em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor do seguro em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorSeguroDolar = null;
-    @XmlElement(name = "moedaFreteTotal")
-    @ApiModelProperty(example = "220", value = "Código da moeda do Valor total do Frete<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'")
-    /**
-     * Código da moeda do Valor total do Frete<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'
-     **/
-    private Integer moedaFreteTotal = null;
-    @XmlElement(name = "valorFreteTotalDestinoDolar")
-    @ApiModelProperty(example = "40.48", value = "Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete")
-    @Valid
-    /**
-     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete
-     **/
-    private BigDecimal valorFreteTotalDestinoDolar = null;
-    @XmlElement(name = "uaDeclarada")
-    @ApiModelProperty(example = "0717600", value = "Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
-    /**
-     * Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Tamanho: 7<br>Formato: 'NNNNNNN'
-     **/
-    private String uaDeclarada = null;
-    @XmlElement(name = "dadosCargaRodoviaria")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao dadosCargaRodoviaria = null;
-    @XmlElement(name = "uaEntradaCarga")
-    @ApiModelProperty(example = "0717600", value = "Unidade da Receita Federal que jurisdiciona o local de entrada da mercadoria no País<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
-    /**
-     * Unidade da Receita Federal que jurisdiciona o local de entrada da mercadoria no País<br>Tamanho: 7<br>Formato: 'NNNNNNN'
-     **/
-    private String uaEntradaCarga = null;
-    @XmlElement(name = "valorFreteTotalDolar")
-    @ApiModelProperty(example = "40.48", value = "Valor total do frete em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
-    @Valid
-    /**
-     * Valor total do frete em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     **/
-    private BigDecimal valorFreteTotalDolar = null;
-    @XmlElement(name = "uaDestinoFinal")
-    @ApiModelProperty(example = "0717600", value = "Código da unidade de destino final da carga<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
-    /**
-     * Código da unidade de destino final da carga<br>Tamanho: 7<br>Formato: 'NNNNNNN'
-     **/
-    private String uaDestinoFinal = null;
-    @XmlElement(name = "moedaSeguro")
-    @ApiModelProperty(example = "220", value = "Código da moeda negociada do seguro<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'")
-    /**
-     * Código da moeda negociada do seguro<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'
-     **/
-    private Integer moedaSeguro = null;
-    @XmlElement(name = "valorSeguroMoedaUtilizada")
-    @ApiModelProperty(example = "30.12", value = "Valor do seguro na moeda negociada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor do seguro na moeda negociada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorSeguroMoedaUtilizada = null;
-    @XmlElement(name = "ufEntradaCarga")
-    @ApiModelProperty(example = "RJ", value = "Unidade da federação de entrada da carga<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2")
-    /**
-     * Unidade da federação de entrada da carga<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2
-     **/
-    private String ufEntradaCarga = null;
-    @XmlElement(name = "valorFreteTotalMoedaUtiliza")
-    @ApiModelProperty(example = "10.12", value = "Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
-    @Valid
-    /**
-     * Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     **/
-    private BigDecimal valorFreteTotalMoedaUtiliza = null;
-    @XmlElement(name = "dataChegada")
-    @ApiModelProperty(value = "Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'
-     **/
-    private OffsetDateTime dataChegada = null;
-    @XmlElement(name = "valorFreteTotalDestinoEmReal")
-    @ApiModelProperty(example = "40.48", value = "Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete")
-    @Valid
-    /**
-     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete
-     **/
-    private BigDecimal valorFreteTotalDestinoEmReal = null;
-    @XmlElement(name = "viaTransporte")
-    @ApiModelProperty(example = "MARITMO", value = "Via utilizada no transporte internacional da carga")
-    /**
-     * Via utilizada no transporte internacional da carga
-     **/
-    private ViaTransporteEnum viaTransporte = null;
-    @XmlElement(name = "valorFreteTotalEmReal")
-    @ApiModelProperty(example = "40.48", value = "Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
-    @Valid
-    /**
-     * Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     **/
-    private BigDecimal valorFreteTotalEmReal = null;
-    @XmlElement(name = "recintosLocalizacaoCarga")
-    @ApiModelProperty(example = "[7912001]", value = "Lista de códigos de recinto alfandegado onde a mercadoria foi armazenada para verificação física. <br>Cada elemento é representado da seguinte forma:<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
-    /**
-     * Lista de códigos de recinto alfandegado onde a mercadoria foi armazenada para verificação física. <br>Cada elemento é representado da seguinte forma:<br>Tamanho: 7<br>Formato: 'NNNNNNN'
-     **/
-    private List<String> recintosLocalizacaoCarga = null;
-    @XmlElement(name = "dadosCargaAquaviaria")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga dadosCargaAquaviaria = null;
-    @XmlElement(name = "valorSeguroEmReal")
-    @ApiModelProperty(example = "120.48", value = "Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorSeguroEmReal = null;
-    @XmlElement(name = "dadosCargaAerea")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosEspecficosDeUmaCargaAreaNoCCTImportao dadosCargaAerea = null;
-    @XmlElement(name = "identificacaoCarga")
-    @ApiModelProperty(example = "131905000719512", value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32")
-    /**
-     * Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32
-     **/
-    private String identificacaoCarga = null;
-    @XmlElement(name = "paisProcedencia")
-    @ApiModelProperty(value = "")
-    @Valid
-    private PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia = null;
     @XmlElement(name = "ufDeclarada")
     @ApiModelProperty(example = "RJ", value = "Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2")
     /**
      * Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2
      **/
     private String ufDeclarada = null;
+
+    @XmlElement(name = "uaDeclarada")
+    @ApiModelProperty(example = "0717600", value = "Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
+    /**
+     * Código da unidade de despacho declarada pelo importador no registro/retificação da Duimp<br>Tamanho: 7<br>Formato: 'NNNNNNN'
+     **/
+    private String uaDeclarada = null;
+    @XmlElement(name = "recintosLocalizacaoCarga")
+    @ApiModelProperty(example = "[7912001]", value = "Lista de códigos de recinto alfandegado onde a mercadoria foi armazenada para verificação física. <br>Cada elemento é representado da seguinte forma:<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
+    /**
+     * Lista de códigos de recinto alfandegado onde a mercadoria foi armazenada para verificação física. <br>Cada elemento é representado da seguinte forma:<br>Tamanho: 7<br>Formato: 'NNNNNNN'
+     **/
+    private List<String> recintosLocalizacaoCarga = null;
+    @XmlElement(name = "uaEntradaCarga")
+    @ApiModelProperty(example = "0717600", value = "Unidade da Receita Federal que jurisdiciona o local de entrada da mercadoria no País<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
+    /**
+     * Unidade da Receita Federal que jurisdiciona o local de entrada da mercadoria no País<br>Tamanho: 7<br>Formato: 'NNNNNNN'
+     **/
+    private String uaEntradaCarga = null;
+
+    @XmlElement(name = "uaDestinoFinal")
+    @ApiModelProperty(example = "0717600", value = "Código da unidade de destino final da carga<br>Tamanho: 7<br>Formato: 'NNNNNNN'")
+    /**
+     * Código da unidade de destino final da carga<br>Tamanho: 7<br>Formato: 'NNNNNNN'
+     **/
+    private String uaDestinoFinal = null;
+    @XmlElement(name = "viaTransporte")
+    @ApiModelProperty(example = "MARITMO", value = "Via utilizada no transporte internacional da carga")
+    /**
+     * Via utilizada no transporte internacional da carga
+     **/
+    private ViaTransporteEnum viaTransporte = null;
+
+    @XmlElement(name = "ufEntradaCarga")
+    @ApiModelProperty(example = "RJ", value = "Unidade da federação de entrada da carga<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2")
+    /**
+     * Unidade da federação de entrada da carga<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2
+     **/
+    private String ufEntradaCarga = null;
+    @XmlElement(name = "dataChegada")
+    @ApiModelProperty(value = "Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data de Chegada da Carga na URF de Localização da Carga.<br>Formato: 'yyyy-MM-dd'
+     **/
+    private OffsetDateTime dataChegada = null;
+    @XmlElement(name = "paisProcedencia")
+    @ApiModelProperty(value = "")
+    @Valid
+    private PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia = null;
     @XmlElement(name = "pesoLiquido")
     @ApiModelProperty(example = "1234567890123456", value = "Peso líquido em quilogramas correspondente ao quantitativo total das mercadorias do item.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     @Valid
@@ -175,6 +99,85 @@ public class DadosDaCarga {
      * Peso líquido em quilogramas correspondente ao quantitativo total das mercadorias do item.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoLiquido = null;
+    @XmlElement(name = "moedaFreteTotal")
+    @ApiModelProperty(example = "220", value = "Código da moeda do Valor total do Frete<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'")
+    /**
+     * Código da moeda do Valor total do Frete<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'
+     **/
+    private Integer moedaFreteTotal = null;
+    @XmlElement(name = "valorFreteTotalEmReal")
+    @ApiModelProperty(example = "40.48", value = "Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
+    @Valid
+    /**
+     * Valor total do frete em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+     **/
+    private BigDecimal valorFreteTotalEmReal = null;
+    @XmlElement(name = "valorFreteTotalDolar")
+    @ApiModelProperty(example = "40.48", value = "Valor total do frete em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
+    @Valid
+    /**
+     * Valor total do frete em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+     **/
+    private BigDecimal valorFreteTotalDolar = null;
+
+    @XmlElement(name = "valorFreteTotalMoedaUtiliza")
+    @ApiModelProperty(example = "10.12", value = "Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte")
+    @Valid
+    /**
+     * Valor total do frete na moeda utilizada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+     **/
+    private BigDecimal valorFreteTotalMoedaUtiliza = null;
+    @XmlElement(name = "valorFreteTotalDestinoDolar")
+    @ApiModelProperty(example = "40.48", value = "Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete")
+    @Valid
+    /**
+     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete
+     **/
+    private BigDecimal valorFreteTotalDestinoDolar = null;
+    @XmlElement(name = "moedaSeguro")
+    @ApiModelProperty(example = "220", value = "Código da moeda negociada do seguro<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'")
+    /**
+     * Código da moeda negociada do seguro<br> Domínio: Tabela de Moedas do Siscomex.<br>Tamanho: 3<br>Formato: 'NNN'
+     **/
+    private Integer moedaSeguro = null;
+
+    @XmlElement(name = "valorFreteTotalDestinoEmReal")
+    @ApiModelProperty(example = "40.48", value = "Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete")
+    @Valid
+    /**
+     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte<br>Valor indisponível quando for uma carga do tipo 'ROVIARIA' devido a ausência dos componentes do frete
+     **/
+    private BigDecimal valorFreteTotalDestinoEmReal = null;
+    @XmlElement(name = "valorSeguroMoedaUtilizada")
+    @ApiModelProperty(example = "30.12", value = "Valor do seguro na moeda negociada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor do seguro na moeda negociada<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorSeguroMoedaUtilizada = null;
+    @XmlElement(name = "valorSeguroDolar")
+    @ApiModelProperty(example = "120.48", value = "Valor do seguro em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor do seguro em Dólares<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorSeguroDolar = null;
+    @XmlElement(name = "dadosCargaAquaviaria")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga dadosCargaAquaviaria = null;
+
+    @XmlElement(name = "valorSeguroEmReal")
+    @ApiModelProperty(example = "120.48", value = "Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorSeguroEmReal = null;
+    @XmlElement(name = "dadosCargaRodoviaria")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao dadosCargaRodoviaria = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -185,6 +188,21 @@ public class DadosDaCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "dadosCargaAerea")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosEspecficosDeUmaCargaAreaNoCCTImportao dadosCargaAerea = null;
+
+    /**
+     * Número de Identificação da Carga.&lt;br&gt;Quando tipo de identificação da carga for CE: &lt;br&gt; - Tamanho: 15 &lt;br&gt; - Formato: NNNNNNNNNNNNNNN&lt;br&gt;Quando tipo de identificação da carga for RUC: &lt;br&gt; - Tamanho mínimo: 1&lt;br&gt; - Tamanho máximo: 32
+     *
+     * @return identificacaoCarga
+     **/
+    @JsonProperty("identificacaoCarga")
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
     }
 
     /**
@@ -209,61 +227,23 @@ public class DadosDaCarga {
         return this;
     }
 
-    /**
-     * Valor do seguro em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorSeguroDolar
-     **/
-    @JsonProperty("valorSeguroDolar")
-    public BigDecimal getValorSeguroDolar() {
-        return valorSeguroDolar;
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
     }
 
-    public void setValorSeguroDolar(BigDecimal valorSeguroDolar) {
-        this.valorSeguroDolar = valorSeguroDolar;
-    }
-
-    public DadosDaCarga valorSeguroDolar(BigDecimal valorSeguroDolar) {
-        this.valorSeguroDolar = valorSeguroDolar;
+    public DadosDaCarga identificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
         return this;
     }
 
     /**
-     * Código da moeda do Valor total do Frete&lt;br&gt; Domínio: Tabela de Moedas do Siscomex.&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;NNN&#39;
+     * Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
      *
-     * @return moedaFreteTotal
+     * @return ufDeclarada
      **/
-    @JsonProperty("moedaFreteTotal")
-    public Integer getMoedaFreteTotal() {
-        return moedaFreteTotal;
-    }
-
-    public void setMoedaFreteTotal(Integer moedaFreteTotal) {
-        this.moedaFreteTotal = moedaFreteTotal;
-    }
-
-    public DadosDaCarga moedaFreteTotal(Integer moedaFreteTotal) {
-        this.moedaFreteTotal = moedaFreteTotal;
-        return this;
-    }
-
-    /**
-     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte&lt;br&gt;Valor indisponível quando for uma carga do tipo &#39;ROVIARIA&#39; devido a ausência dos componentes do frete
-     *
-     * @return valorFreteTotalDestinoDolar
-     **/
-    @JsonProperty("valorFreteTotalDestinoDolar")
-    public BigDecimal getValorFreteTotalDestinoDolar() {
-        return valorFreteTotalDestinoDolar;
-    }
-
-    public void setValorFreteTotalDestinoDolar(BigDecimal valorFreteTotalDestinoDolar) {
-        this.valorFreteTotalDestinoDolar = valorFreteTotalDestinoDolar;
-    }
-
-    public DadosDaCarga valorFreteTotalDestinoDolar(BigDecimal valorFreteTotalDestinoDolar) {
-        this.valorFreteTotalDestinoDolar = valorFreteTotalDestinoDolar;
-        return this;
+    @JsonProperty("ufDeclarada")
+    public String getUfDeclarada() {
+        return ufDeclarada;
     }
 
     /**
@@ -285,22 +265,36 @@ public class DadosDaCarga {
         return this;
     }
 
+    public void setUfDeclarada(String ufDeclarada) {
+        this.ufDeclarada = ufDeclarada;
+    }
+
+    public DadosDaCarga ufDeclarada(String ufDeclarada) {
+        this.ufDeclarada = ufDeclarada;
+        return this;
+    }
+
     /**
-     * Get dadosCargaRodoviaria
+     * Lista de códigos de recinto alfandegado onde a mercadoria foi armazenada para verificação física. &lt;br&gt;Cada elemento é representado da seguinte forma:&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;
      *
-     * @return dadosCargaRodoviaria
+     * @return recintosLocalizacaoCarga
      **/
-    @JsonProperty("dadosCargaRodoviaria")
-    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao getDadosCargaRodoviaria() {
-        return dadosCargaRodoviaria;
+    @JsonProperty("recintosLocalizacaoCarga")
+    public List<String> getRecintosLocalizacaoCarga() {
+        return recintosLocalizacaoCarga;
     }
 
-    public void setDadosCargaRodoviaria(DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao dadosCargaRodoviaria) {
-        this.dadosCargaRodoviaria = dadosCargaRodoviaria;
+    public void setRecintosLocalizacaoCarga(List<String> recintosLocalizacaoCarga) {
+        this.recintosLocalizacaoCarga = recintosLocalizacaoCarga;
     }
 
-    public DadosDaCarga dadosCargaRodoviaria(DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao dadosCargaRodoviaria) {
-        this.dadosCargaRodoviaria = dadosCargaRodoviaria;
+    public DadosDaCarga recintosLocalizacaoCarga(List<String> recintosLocalizacaoCarga) {
+        this.recintosLocalizacaoCarga = recintosLocalizacaoCarga;
+        return this;
+    }
+
+    public DadosDaCarga addRecintosLocalizacaoCargaItem(String recintosLocalizacaoCargaItem) {
+        this.recintosLocalizacaoCarga.add(recintosLocalizacaoCargaItem);
         return this;
     }
 
@@ -312,34 +306,6 @@ public class DadosDaCarga {
     @JsonProperty("uaEntradaCarga")
     public String getUaEntradaCarga() {
         return uaEntradaCarga;
-    }
-
-    public void setUaEntradaCarga(String uaEntradaCarga) {
-        this.uaEntradaCarga = uaEntradaCarga;
-    }
-
-    public DadosDaCarga uaEntradaCarga(String uaEntradaCarga) {
-        this.uaEntradaCarga = uaEntradaCarga;
-        return this;
-    }
-
-    /**
-     * Valor total do frete em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
-     * @return valorFreteTotalDolar
-     **/
-    @JsonProperty("valorFreteTotalDolar")
-    public BigDecimal getValorFreteTotalDolar() {
-        return valorFreteTotalDolar;
-    }
-
-    public void setValorFreteTotalDolar(BigDecimal valorFreteTotalDolar) {
-        this.valorFreteTotalDolar = valorFreteTotalDolar;
-    }
-
-    public DadosDaCarga valorFreteTotalDolar(BigDecimal valorFreteTotalDolar) {
-        this.valorFreteTotalDolar = valorFreteTotalDolar;
-        return this;
     }
 
     /**
@@ -358,6 +324,224 @@ public class DadosDaCarga {
 
     public DadosDaCarga uaDestinoFinal(String uaDestinoFinal) {
         this.uaDestinoFinal = uaDestinoFinal;
+        return this;
+    }
+
+    public void setUaEntradaCarga(String uaEntradaCarga) {
+        this.uaEntradaCarga = uaEntradaCarga;
+    }
+
+    public DadosDaCarga uaEntradaCarga(String uaEntradaCarga) {
+        this.uaEntradaCarga = uaEntradaCarga;
+        return this;
+    }
+
+    /**
+     * Via utilizada no transporte internacional da carga
+     *
+     * @return viaTransporte
+     **/
+    @JsonProperty("viaTransporte")
+    public String getViaTransporte() {
+        if (viaTransporte == null) {
+            return null;
+        }
+        return viaTransporte.value();
+    }
+
+    /**
+     * Unidade da federação de entrada da carga&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
+     *
+     * @return ufEntradaCarga
+     **/
+    @JsonProperty("ufEntradaCarga")
+    public String getUfEntradaCarga() {
+        return ufEntradaCarga;
+    }
+
+    public void setUfEntradaCarga(String ufEntradaCarga) {
+        this.ufEntradaCarga = ufEntradaCarga;
+    }
+
+    public DadosDaCarga ufEntradaCarga(String ufEntradaCarga) {
+        this.ufEntradaCarga = ufEntradaCarga;
+        return this;
+    }
+
+    public void setViaTransporte(ViaTransporteEnum viaTransporte) {
+        this.viaTransporte = viaTransporte;
+    }
+
+    public DadosDaCarga viaTransporte(ViaTransporteEnum viaTransporte) {
+        this.viaTransporte = viaTransporte;
+        return this;
+    }
+
+    /**
+     * Get paisProcedencia
+     *
+     * @return paisProcedencia
+     **/
+    @JsonProperty("paisProcedencia")
+    public PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio getPaisProcedencia() {
+        return paisProcedencia;
+    }
+
+    /**
+     * Data de Chegada da Carga na URF de Localização da Carga.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+     * @return dataChegada
+     **/
+    @JsonProperty("dataChegada")
+    public OffsetDateTime getDataChegada() {
+        return dataChegada;
+    }
+
+    public void setDataChegada(OffsetDateTime dataChegada) {
+        this.dataChegada = dataChegada;
+    }
+
+    public DadosDaCarga dataChegada(OffsetDateTime dataChegada) {
+        this.dataChegada = dataChegada;
+        return this;
+    }
+
+    public void setPaisProcedencia(PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
+        this.paisProcedencia = paisProcedencia;
+    }
+
+    public DadosDaCarga paisProcedencia(PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
+        this.paisProcedencia = paisProcedencia;
+        return this;
+    }
+
+    /**
+     * Peso líquido em quilogramas correspondente ao quantitativo total das mercadorias do item.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     *
+     * @return pesoLiquido
+     **/
+    @JsonProperty("pesoLiquido")
+    public BigDecimal getPesoLiquido() {
+        return pesoLiquido;
+    }
+
+    public void setPesoLiquido(BigDecimal pesoLiquido) {
+        this.pesoLiquido = pesoLiquido;
+    }
+
+    public DadosDaCarga pesoLiquido(BigDecimal pesoLiquido) {
+        this.pesoLiquido = pesoLiquido;
+        return this;
+    }
+
+    /**
+     * Código da moeda do Valor total do Frete&lt;br&gt; Domínio: Tabela de Moedas do Siscomex.&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;NNN&#39;
+     * @return moedaFreteTotal
+     **/
+    @JsonProperty("moedaFreteTotal")
+    public Integer getMoedaFreteTotal() {
+        return moedaFreteTotal;
+    }
+
+    public void setMoedaFreteTotal(Integer moedaFreteTotal) {
+        this.moedaFreteTotal = moedaFreteTotal;
+    }
+
+    public DadosDaCarga moedaFreteTotal(Integer moedaFreteTotal) {
+        this.moedaFreteTotal = moedaFreteTotal;
+        return this;
+    }
+
+    /**
+     * Valor total do frete na moeda utilizada&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+     *
+     * @return valorFreteTotalMoedaUtiliza
+     **/
+    @JsonProperty("valorFreteTotalMoedaUtiliza")
+    public BigDecimal getValorFreteTotalMoedaUtiliza() {
+        return valorFreteTotalMoedaUtiliza;
+    }
+
+    public void setValorFreteTotalMoedaUtiliza(BigDecimal valorFreteTotalMoedaUtiliza) {
+        this.valorFreteTotalMoedaUtiliza = valorFreteTotalMoedaUtiliza;
+    }
+
+    public DadosDaCarga valorFreteTotalMoedaUtiliza(BigDecimal valorFreteTotalMoedaUtiliza) {
+        this.valorFreteTotalMoedaUtiliza = valorFreteTotalMoedaUtiliza;
+        return this;
+    }
+
+    /**
+     * Valor total do frete em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+     *
+     * @return valorFreteTotalDolar
+     **/
+    @JsonProperty("valorFreteTotalDolar")
+    public BigDecimal getValorFreteTotalDolar() {
+        return valorFreteTotalDolar;
+    }
+
+    /**
+     * Valor total do frete em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
+     * @return valorFreteTotalEmReal
+     **/
+    @JsonProperty("valorFreteTotalEmReal")
+    public BigDecimal getValorFreteTotalEmReal() {
+        return valorFreteTotalEmReal;
+    }
+
+    public void setValorFreteTotalEmReal(BigDecimal valorFreteTotalEmReal) {
+        this.valorFreteTotalEmReal = valorFreteTotalEmReal;
+    }
+
+    public DadosDaCarga valorFreteTotalEmReal(BigDecimal valorFreteTotalEmReal) {
+        this.valorFreteTotalEmReal = valorFreteTotalEmReal;
+        return this;
+    }
+
+    public void setValorFreteTotalDolar(BigDecimal valorFreteTotalDolar) {
+        this.valorFreteTotalDolar = valorFreteTotalDolar;
+    }
+
+    public DadosDaCarga valorFreteTotalDolar(BigDecimal valorFreteTotalDolar) {
+        this.valorFreteTotalDolar = valorFreteTotalDolar;
+        return this;
+    }
+
+    /**
+     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte&lt;br&gt;Valor indisponível quando for uma carga do tipo &#39;ROVIARIA&#39; devido a ausência dos componentes do frete
+     *
+     * @return valorFreteTotalDestinoEmReal
+     **/
+    @JsonProperty("valorFreteTotalDestinoEmReal")
+    public BigDecimal getValorFreteTotalDestinoEmReal() {
+        return valorFreteTotalDestinoEmReal;
+    }
+
+    public void setValorFreteTotalDestinoEmReal(BigDecimal valorFreteTotalDestinoEmReal) {
+        this.valorFreteTotalDestinoEmReal = valorFreteTotalDestinoEmReal;
+    }
+
+    public DadosDaCarga valorFreteTotalDestinoEmReal(BigDecimal valorFreteTotalDestinoEmReal) {
+        this.valorFreteTotalDestinoEmReal = valorFreteTotalDestinoEmReal;
+        return this;
+    }
+
+    /**
+     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte&lt;br&gt;Valor indisponível quando for uma carga do tipo &#39;ROVIARIA&#39; devido a ausência dos componentes do frete
+     *
+     * @return valorFreteTotalDestinoDolar
+     **/
+    @JsonProperty("valorFreteTotalDestinoDolar")
+    public BigDecimal getValorFreteTotalDestinoDolar() {
+        return valorFreteTotalDestinoDolar;
+    }
+
+    public void setValorFreteTotalDestinoDolar(BigDecimal valorFreteTotalDestinoDolar) {
+        this.valorFreteTotalDestinoDolar = valorFreteTotalDestinoDolar;
+    }
+
+    public DadosDaCarga valorFreteTotalDestinoDolar(BigDecimal valorFreteTotalDestinoDolar) {
+        this.valorFreteTotalDestinoDolar = valorFreteTotalDestinoDolar;
         return this;
     }
 
@@ -400,143 +584,39 @@ public class DadosDaCarga {
     }
 
     /**
-     * Unidade da federação de entrada da carga&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
+     * Valor do seguro em Dólares&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return ufEntradaCarga
+     * @return valorSeguroDolar
      **/
-    @JsonProperty("ufEntradaCarga")
-    public String getUfEntradaCarga() {
-        return ufEntradaCarga;
-    }
-
-    public void setUfEntradaCarga(String ufEntradaCarga) {
-        this.ufEntradaCarga = ufEntradaCarga;
-    }
-
-    public DadosDaCarga ufEntradaCarga(String ufEntradaCarga) {
-        this.ufEntradaCarga = ufEntradaCarga;
-        return this;
+    @JsonProperty("valorSeguroDolar")
+    public BigDecimal getValorSeguroDolar() {
+        return valorSeguroDolar;
     }
 
     /**
-     * Valor total do frete na moeda utilizada&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
-     * @return valorFreteTotalMoedaUtiliza
+     * Valor do seguro em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * @return valorSeguroEmReal
      **/
-    @JsonProperty("valorFreteTotalMoedaUtiliza")
-    public BigDecimal getValorFreteTotalMoedaUtiliza() {
-        return valorFreteTotalMoedaUtiliza;
+    @JsonProperty("valorSeguroEmReal")
+    public BigDecimal getValorSeguroEmReal() {
+        return valorSeguroEmReal;
     }
 
-    public void setValorFreteTotalMoedaUtiliza(BigDecimal valorFreteTotalMoedaUtiliza) {
-        this.valorFreteTotalMoedaUtiliza = valorFreteTotalMoedaUtiliza;
+    public void setValorSeguroEmReal(BigDecimal valorSeguroEmReal) {
+        this.valorSeguroEmReal = valorSeguroEmReal;
     }
 
-    public DadosDaCarga valorFreteTotalMoedaUtiliza(BigDecimal valorFreteTotalMoedaUtiliza) {
-        this.valorFreteTotalMoedaUtiliza = valorFreteTotalMoedaUtiliza;
+    public DadosDaCarga valorSeguroEmReal(BigDecimal valorSeguroEmReal) {
+        this.valorSeguroEmReal = valorSeguroEmReal;
         return this;
     }
 
-    /**
-     * Data de Chegada da Carga na URF de Localização da Carga.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
-     * @return dataChegada
-     **/
-    @JsonProperty("dataChegada")
-    public OffsetDateTime getDataChegada() {
-        return dataChegada;
+    public void setValorSeguroDolar(BigDecimal valorSeguroDolar) {
+        this.valorSeguroDolar = valorSeguroDolar;
     }
 
-    public void setDataChegada(OffsetDateTime dataChegada) {
-        this.dataChegada = dataChegada;
-    }
-
-    public DadosDaCarga dataChegada(OffsetDateTime dataChegada) {
-        this.dataChegada = dataChegada;
-        return this;
-    }
-
-    /**
-     * Valor total do frete não utilizado no cálculo do valor aduaneiro da Duimp, em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte&lt;br&gt;Valor indisponível quando for uma carga do tipo &#39;ROVIARIA&#39; devido a ausência dos componentes do frete
-     *
-     * @return valorFreteTotalDestinoEmReal
-     **/
-    @JsonProperty("valorFreteTotalDestinoEmReal")
-    public BigDecimal getValorFreteTotalDestinoEmReal() {
-        return valorFreteTotalDestinoEmReal;
-    }
-
-    public void setValorFreteTotalDestinoEmReal(BigDecimal valorFreteTotalDestinoEmReal) {
-        this.valorFreteTotalDestinoEmReal = valorFreteTotalDestinoEmReal;
-    }
-
-    public DadosDaCarga valorFreteTotalDestinoEmReal(BigDecimal valorFreteTotalDestinoEmReal) {
-        this.valorFreteTotalDestinoEmReal = valorFreteTotalDestinoEmReal;
-        return this;
-    }
-
-    /**
-     * Via utilizada no transporte internacional da carga
-     *
-     * @return viaTransporte
-     **/
-    @JsonProperty("viaTransporte")
-    public String getViaTransporte() {
-        if (viaTransporte == null) {
-            return null;
-        }
-        return viaTransporte.value();
-    }
-
-    public void setViaTransporte(ViaTransporteEnum viaTransporte) {
-        this.viaTransporte = viaTransporte;
-    }
-
-    public DadosDaCarga viaTransporte(ViaTransporteEnum viaTransporte) {
-        this.viaTransporte = viaTransporte;
-        return this;
-    }
-
-    /**
-     * Valor total do frete em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.&lt;br&gt;Observação:&lt;br&gt;Para as Duimp registradas a partir de 08/06/2022, o valor do frete utilizado no cálculo do valor aduaneiro não inclui os gastos relativos à carga, à descarga e ao manuseio incorridos no território nacional e destacados do custo de transporte
-     *
-     * @return valorFreteTotalEmReal
-     **/
-    @JsonProperty("valorFreteTotalEmReal")
-    public BigDecimal getValorFreteTotalEmReal() {
-        return valorFreteTotalEmReal;
-    }
-
-    public void setValorFreteTotalEmReal(BigDecimal valorFreteTotalEmReal) {
-        this.valorFreteTotalEmReal = valorFreteTotalEmReal;
-    }
-
-    public DadosDaCarga valorFreteTotalEmReal(BigDecimal valorFreteTotalEmReal) {
-        this.valorFreteTotalEmReal = valorFreteTotalEmReal;
-        return this;
-    }
-
-    /**
-     * Lista de códigos de recinto alfandegado onde a mercadoria foi armazenada para verificação física. &lt;br&gt;Cada elemento é representado da seguinte forma:&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: &#39;NNNNNNN&#39;
-     *
-     * @return recintosLocalizacaoCarga
-     **/
-    @JsonProperty("recintosLocalizacaoCarga")
-    public List<String> getRecintosLocalizacaoCarga() {
-        return recintosLocalizacaoCarga;
-    }
-
-    public void setRecintosLocalizacaoCarga(List<String> recintosLocalizacaoCarga) {
-        this.recintosLocalizacaoCarga = recintosLocalizacaoCarga;
-    }
-
-    public DadosDaCarga recintosLocalizacaoCarga(List<String> recintosLocalizacaoCarga) {
-        this.recintosLocalizacaoCarga = recintosLocalizacaoCarga;
-        return this;
-    }
-
-    public DadosDaCarga addRecintosLocalizacaoCargaItem(String recintosLocalizacaoCargaItem) {
-        this.recintosLocalizacaoCarga.add(recintosLocalizacaoCargaItem);
+    public DadosDaCarga valorSeguroDolar(BigDecimal valorSeguroDolar) {
+        this.valorSeguroDolar = valorSeguroDolar;
         return this;
     }
 
@@ -560,22 +640,13 @@ public class DadosDaCarga {
     }
 
     /**
-     * Valor do seguro em R$ (Reais)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Get dadosCargaRodoviaria
      *
-     * @return valorSeguroEmReal
+     * @return dadosCargaRodoviaria
      **/
-    @JsonProperty("valorSeguroEmReal")
-    public BigDecimal getValorSeguroEmReal() {
-        return valorSeguroEmReal;
-    }
-
-    public void setValorSeguroEmReal(BigDecimal valorSeguroEmReal) {
-        this.valorSeguroEmReal = valorSeguroEmReal;
-    }
-
-    public DadosDaCarga valorSeguroEmReal(BigDecimal valorSeguroEmReal) {
-        this.valorSeguroEmReal = valorSeguroEmReal;
-        return this;
+    @JsonProperty("dadosCargaRodoviaria")
+    public DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao getDadosCargaRodoviaria() {
+        return dadosCargaRodoviaria;
     }
 
     /**
@@ -597,79 +668,12 @@ public class DadosDaCarga {
         return this;
     }
 
-    /**
-     * Número de Identificação da Carga.&lt;br&gt;Quando tipo de identificação da carga for CE: &lt;br&gt; - Tamanho: 15 &lt;br&gt; - Formato: NNNNNNNNNNNNNNN&lt;br&gt;Quando tipo de identificação da carga for RUC: &lt;br&gt; - Tamanho mínimo: 1&lt;br&gt; - Tamanho máximo: 32
-     *
-     * @return identificacaoCarga
-     **/
-    @JsonProperty("identificacaoCarga")
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
+    public void setDadosCargaRodoviaria(DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao dadosCargaRodoviaria) {
+        this.dadosCargaRodoviaria = dadosCargaRodoviaria;
     }
 
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-    }
-
-    public DadosDaCarga identificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
-    /**
-     * Get paisProcedencia
-     *
-     * @return paisProcedencia
-     **/
-    @JsonProperty("paisProcedencia")
-    public PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio getPaisProcedencia() {
-        return paisProcedencia;
-    }
-
-    public void setPaisProcedencia(PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
-        this.paisProcedencia = paisProcedencia;
-    }
-
-    public DadosDaCarga paisProcedencia(PasDoExportadorEstrangeiroObjetoCompostoPelosAtributosCdigoEDescrio paisProcedencia) {
-        this.paisProcedencia = paisProcedencia;
-        return this;
-    }
-
-    /**
-     * Unidade da federação correspondente à unidade de despacho declarada pelo importador no registro/retificação da Duimp&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2
-     *
-     * @return ufDeclarada
-     **/
-    @JsonProperty("ufDeclarada")
-    public String getUfDeclarada() {
-        return ufDeclarada;
-    }
-
-    public void setUfDeclarada(String ufDeclarada) {
-        this.ufDeclarada = ufDeclarada;
-    }
-
-    public DadosDaCarga ufDeclarada(String ufDeclarada) {
-        this.ufDeclarada = ufDeclarada;
-        return this;
-    }
-
-    /**
-     * Peso líquido em quilogramas correspondente ao quantitativo total das mercadorias do item.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return pesoLiquido
-     **/
-    @JsonProperty("pesoLiquido")
-    public BigDecimal getPesoLiquido() {
-        return pesoLiquido;
-    }
-
-    public void setPesoLiquido(BigDecimal pesoLiquido) {
-        this.pesoLiquido = pesoLiquido;
-    }
-
-    public DadosDaCarga pesoLiquido(BigDecimal pesoLiquido) {
-        this.pesoLiquido = pesoLiquido;
+    public DadosDaCarga dadosCargaRodoviaria(DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao dadosCargaRodoviaria) {
+        this.dadosCargaRodoviaria = dadosCargaRodoviaria;
         return this;
     }
 
@@ -678,30 +682,30 @@ public class DadosDaCarga {
 
         String sb = "class DadosDaCarga {\n" +
                 "    tipoIdentificacaoCarga: " + toIndentedString(tipoIdentificacaoCarga) + "\n" +
-                "    valorSeguroDolar: " + toIndentedString(valorSeguroDolar) + "\n" +
-                "    moedaFreteTotal: " + toIndentedString(moedaFreteTotal) + "\n" +
-                "    valorFreteTotalDestinoDolar: " + toIndentedString(valorFreteTotalDestinoDolar) + "\n" +
+                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
                 "    uaDeclarada: " + toIndentedString(uaDeclarada) + "\n" +
-                "    dadosCargaRodoviaria: " + toIndentedString(dadosCargaRodoviaria) + "\n" +
-                "    uaEntradaCarga: " + toIndentedString(uaEntradaCarga) + "\n" +
-                "    valorFreteTotalDolar: " + toIndentedString(valorFreteTotalDolar) + "\n" +
+                "    ufDeclarada: " + toIndentedString(ufDeclarada) + "\n" +
+                "    recintosLocalizacaoCarga: " + toIndentedString(recintosLocalizacaoCarga) + "\n" +
                 "    uaDestinoFinal: " + toIndentedString(uaDestinoFinal) + "\n" +
+                "    uaEntradaCarga: " + toIndentedString(uaEntradaCarga) + "\n" +
+                "    ufEntradaCarga: " + toIndentedString(ufEntradaCarga) + "\n" +
+                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
+                "    dataChegada: " + toIndentedString(dataChegada) + "\n" +
+                "    paisProcedencia: " + toIndentedString(paisProcedencia) + "\n" +
+                "    pesoLiquido: " + toIndentedString(pesoLiquido) + "\n" +
+                "    moedaFreteTotal: " + toIndentedString(moedaFreteTotal) + "\n" +
+                "    valorFreteTotalMoedaUtiliza: " + toIndentedString(valorFreteTotalMoedaUtiliza) + "\n" +
+                "    valorFreteTotalEmReal: " + toIndentedString(valorFreteTotalEmReal) + "\n" +
+                "    valorFreteTotalDolar: " + toIndentedString(valorFreteTotalDolar) + "\n" +
+                "    valorFreteTotalDestinoEmReal: " + toIndentedString(valorFreteTotalDestinoEmReal) + "\n" +
+                "    valorFreteTotalDestinoDolar: " + toIndentedString(valorFreteTotalDestinoDolar) + "\n" +
                 "    moedaSeguro: " + toIndentedString(moedaSeguro) + "\n" +
                 "    valorSeguroMoedaUtilizada: " + toIndentedString(valorSeguroMoedaUtilizada) + "\n" +
-                "    ufEntradaCarga: " + toIndentedString(ufEntradaCarga) + "\n" +
-                "    valorFreteTotalMoedaUtiliza: " + toIndentedString(valorFreteTotalMoedaUtiliza) + "\n" +
-                "    dataChegada: " + toIndentedString(dataChegada) + "\n" +
-                "    valorFreteTotalDestinoEmReal: " + toIndentedString(valorFreteTotalDestinoEmReal) + "\n" +
-                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
-                "    valorFreteTotalEmReal: " + toIndentedString(valorFreteTotalEmReal) + "\n" +
-                "    recintosLocalizacaoCarga: " + toIndentedString(recintosLocalizacaoCarga) + "\n" +
-                "    dadosCargaAquaviaria: " + toIndentedString(dadosCargaAquaviaria) + "\n" +
                 "    valorSeguroEmReal: " + toIndentedString(valorSeguroEmReal) + "\n" +
+                "    valorSeguroDolar: " + toIndentedString(valorSeguroDolar) + "\n" +
+                "    dadosCargaAquaviaria: " + toIndentedString(dadosCargaAquaviaria) + "\n" +
                 "    dadosCargaAerea: " + toIndentedString(dadosCargaAerea) + "\n" +
-                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
-                "    paisProcedencia: " + toIndentedString(paisProcedencia) + "\n" +
-                "    ufDeclarada: " + toIndentedString(ufDeclarada) + "\n" +
-                "    pesoLiquido: " + toIndentedString(pesoLiquido) + "\n" +
+                "    dadosCargaRodoviaria: " + toIndentedString(dadosCargaRodoviaria) + "\n" +
                 "}";
         return sb;
     }

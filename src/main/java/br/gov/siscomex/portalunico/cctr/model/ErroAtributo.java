@@ -37,17 +37,6 @@ public class ErroAtributo {
     private String mensagens = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Nome do campo (atributo) que viola as regras de validação
      *
      * @return atributo
@@ -83,6 +72,18 @@ public class ErroAtributo {
     public ErroAtributo mensagens(String mensagens) {
         this.mensagens = mensagens;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

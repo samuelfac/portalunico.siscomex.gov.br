@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Acondicionamento", propOrder =
-        {"listaCargaSolta", "listaEmbalagem", "listaGranel", "listaConteiner"
+        {"listaConteiner", "listaEmbalagem", "listaCargaSolta", "listaGranel"
         })
 
 @XmlRootElement(name = "Acondicionamento")
@@ -26,13 +26,13 @@ import java.util.List;
 @ApiModel(description = "Dados sobre o acondicionamento da carga")
 public class Acondicionamento {
 
-    @XmlElement(name = "listaCargaSolta", required = true)
-    @ApiModelProperty(required = true, value = "Cargas soltas sem embalagem ou veículos envolvidas na consolidação")
+    @XmlElement(name = "listaConteiner", required = true)
+    @ApiModelProperty(required = true, value = "Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas")
     @Valid
     /**
-     * Cargas soltas sem embalagem ou veículos envolvidas na consolidação
+     * Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas
      **/
-    private List<CargaSoltaVeiculo> listaCargaSolta = new ArrayList<>();
+    private List<Conteiner> listaConteiner = new ArrayList<>();
 
     @XmlElement(name = "listaEmbalagem", required = true)
     @ApiModelProperty(required = true, value = "Lista das embalagens onde as cargas a serem consolidadas estão acondicionadas<br>Obs: Não pode haver duplicata de códigos de tipos de embalagem na lista.")
@@ -42,6 +42,14 @@ public class Acondicionamento {
      **/
     private List<Embalagem> listaEmbalagem = new ArrayList<>();
 
+    @XmlElement(name = "listaCargaSolta", required = true)
+    @ApiModelProperty(required = true, value = "Cargas soltas sem embalagem ou veículos envolvidas na consolidação")
+    @Valid
+    /**
+     * Cargas soltas sem embalagem ou veículos envolvidas na consolidação
+     **/
+    private List<CargaSoltaVeiculo> listaCargaSolta = new ArrayList<>();
+
     @XmlElement(name = "listaGranel", required = true)
     @ApiModelProperty(required = true, value = "Granéis envolvidos na consolidação<br>Obs: Não pode haver duplicata de códigos de tipos de granel na lista.")
     @Valid
@@ -49,14 +57,6 @@ public class Acondicionamento {
      * Granéis envolvidos na consolidação<br>Obs: Não pode haver duplicata de códigos de tipos de granel na lista.
      **/
     private List<Granel> listaGranel = new ArrayList<>();
-
-    @XmlElement(name = "listaConteiner", required = true)
-    @ApiModelProperty(required = true, value = "Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas")
-    @Valid
-    /**
-     * Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas
-     **/
-    private List<Conteiner> listaConteiner = new ArrayList<>();
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,27 +70,22 @@ public class Acondicionamento {
     }
 
     /**
-     * Cargas soltas sem embalagem ou veículos envolvidas na consolidação
+     * Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas
      *
-     * @return listaCargaSolta
+     * @return listaConteiner
      **/
-    @JsonProperty("listaCargaSolta")
+    @JsonProperty("listaConteiner")
     @NotNull
-    public List<CargaSoltaVeiculo> getListaCargaSolta() {
-        return listaCargaSolta;
+    public List<Conteiner> getListaConteiner() {
+        return listaConteiner;
     }
 
-    public void setListaCargaSolta(List<CargaSoltaVeiculo> listaCargaSolta) {
-        this.listaCargaSolta = listaCargaSolta;
+    public void setListaConteiner(List<Conteiner> listaConteiner) {
+        this.listaConteiner = listaConteiner;
     }
 
-    public Acondicionamento listaCargaSolta(List<CargaSoltaVeiculo> listaCargaSolta) {
-        this.listaCargaSolta = listaCargaSolta;
-        return this;
-    }
-
-    public Acondicionamento addListaCargaSoltaItem(CargaSoltaVeiculo listaCargaSoltaItem) {
-        this.listaCargaSolta.add(listaCargaSoltaItem);
+    public Acondicionamento listaConteiner(List<Conteiner> listaConteiner) {
+        this.listaConteiner = listaConteiner;
         return this;
     }
 
@@ -119,6 +114,31 @@ public class Acondicionamento {
         return this;
     }
 
+    public Acondicionamento addListaConteinerItem(Conteiner listaConteinerItem) {
+        this.listaConteiner.add(listaConteinerItem);
+        return this;
+    }
+
+    /**
+     * Cargas soltas sem embalagem ou veículos envolvidas na consolidação
+     *
+     * @return listaCargaSolta
+     **/
+    @JsonProperty("listaCargaSolta")
+    @NotNull
+    public List<CargaSoltaVeiculo> getListaCargaSolta() {
+        return listaCargaSolta;
+    }
+
+    public void setListaCargaSolta(List<CargaSoltaVeiculo> listaCargaSolta) {
+        this.listaCargaSolta = listaCargaSolta;
+    }
+
+    public Acondicionamento listaCargaSolta(List<CargaSoltaVeiculo> listaCargaSolta) {
+        this.listaCargaSolta = listaCargaSolta;
+        return this;
+    }
+
     /**
      * Granéis envolvidos na consolidação&lt;br&gt;Obs: Não pode haver duplicata de códigos de tipos de granel na lista.
      *
@@ -144,28 +164,8 @@ public class Acondicionamento {
         return this;
     }
 
-    /**
-     * Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas
-     *
-     * @return listaConteiner
-     **/
-    @JsonProperty("listaConteiner")
-    @NotNull
-    public List<Conteiner> getListaConteiner() {
-        return listaConteiner;
-    }
-
-    public void setListaConteiner(List<Conteiner> listaConteiner) {
-        this.listaConteiner = listaConteiner;
-    }
-
-    public Acondicionamento listaConteiner(List<Conteiner> listaConteiner) {
-        this.listaConteiner = listaConteiner;
-        return this;
-    }
-
-    public Acondicionamento addListaConteinerItem(Conteiner listaConteinerItem) {
-        this.listaConteiner.add(listaConteinerItem);
+    public Acondicionamento addListaCargaSoltaItem(CargaSoltaVeiculo listaCargaSoltaItem) {
+        this.listaCargaSolta.add(listaCargaSoltaItem);
         return this;
     }
 
@@ -173,10 +173,10 @@ public class Acondicionamento {
     public String toString() {
 
         String sb = "class Acondicionamento {\n" +
-                "    listaCargaSolta: " + toIndentedString(listaCargaSolta) + "\n" +
-                "    listaEmbalagem: " + toIndentedString(listaEmbalagem) + "\n" +
-                "    listaGranel: " + toIndentedString(listaGranel) + "\n" +
                 "    listaConteiner: " + toIndentedString(listaConteiner) + "\n" +
+                "    listaEmbalagem: " + toIndentedString(listaEmbalagem) + "\n" +
+                "    listaCargaSolta: " + toIndentedString(listaCargaSolta) + "\n" +
+                "    listaGranel: " + toIndentedString(listaGranel) + "\n" +
                 "}";
         return sb;
     }

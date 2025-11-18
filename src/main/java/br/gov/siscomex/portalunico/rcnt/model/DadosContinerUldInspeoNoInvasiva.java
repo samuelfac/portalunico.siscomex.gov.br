@@ -12,25 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosContinerUldInspeoNoInvasiva", propOrder =
-        {"tipo", "identificacaoUld", "numeroConteiner", "idElemento", "ocrNumero"
+        {"idElemento", "numeroConteiner", "identificacaoUld", "tipo", "ocrNumero"
         })
 
 @XmlRootElement(name = "DadosContinerUldInspeoNoInvasiva")
 public class DadosContinerUldInspeoNoInvasiva {
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
-    private String tipo = null;
-
-    @XmlElement(name = "identificacaoUld")
-    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
-    /**
-     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
-     **/
-    private String identificacaoUld = null;
+    private String idElemento = null;
 
     @XmlElement(name = "numeroConteiner")
     @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
@@ -39,12 +32,19 @@ public class DadosContinerUldInspeoNoInvasiva {
      **/
     private String numeroConteiner = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    @XmlElement(name = "identificacaoUld")
+    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
      **/
-    private String idElemento = null;
+    private String identificacaoUld = null;
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
+    /**
+     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.
+     **/
+    private String tipo = null;
 
     @XmlElement(name = "ocrNumero")
     @ApiModelProperty(example = "false", value = "Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'ocrNumero' e 'tipo' sejam informados quando o atributo 'numeroConteiner' for informado.")
@@ -65,21 +65,41 @@ public class DadosContinerUldInspeoNoInvasiva {
     }
 
     /**
-     * Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;ocrNumero&#39; e &#39;tipo&#39; sejam informados quando o atributo &#39;numeroConteiner&#39; for informado.
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
-     * @return tipo
+     * @return idElemento
      **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        return tipo;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
     }
 
-    public DadosContinerUldInspeoNoInvasiva tipo(String tipo) {
-        this.tipo = tipo;
+    /**
+     * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
+     *
+     * @return numeroConteiner
+     **/
+    @JsonProperty("numeroConteiner")
+    public String getNumeroConteiner() {
+        return numeroConteiner;
+    }
+
+    public void setNumeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+    }
+
+    public DadosContinerUldInspeoNoInvasiva numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+        return this;
+    }
+
+    public DadosContinerUldInspeoNoInvasiva idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
 
@@ -103,42 +123,17 @@ public class DadosContinerUldInspeoNoInvasiva {
     }
 
     /**
-     * Identificação do número do contêiner.&lt;br/&gt;Tamanho: 200
+     * Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que os atributos &#39;ocrNumero&#39; e &#39;tipo&#39; sejam informados quando o atributo &#39;numeroConteiner&#39; for informado.
      *
-     * @return numeroConteiner
+     * @return tipo
      **/
-    @JsonProperty("numeroConteiner")
-    public String getNumeroConteiner() {
-        return numeroConteiner;
+    @JsonProperty("tipo")
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setNumeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-    }
-
-    public DadosContinerUldInspeoNoInvasiva numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosContinerUldInspeoNoInvasiva idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     /**
@@ -160,14 +155,19 @@ public class DadosContinerUldInspeoNoInvasiva {
         return this;
     }
 
+    public DadosContinerUldInspeoNoInvasiva tipo(String tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosContinerUldInspeoNoInvasiva {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    identificacaoUld: " + toIndentedString(identificacaoUld) + "\n" +
-                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
+                "    identificacaoUld: " + toIndentedString(identificacaoUld) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    ocrNumero: " + toIndentedString(ocrNumero) + "\n" +
                 "}";
         return sb;

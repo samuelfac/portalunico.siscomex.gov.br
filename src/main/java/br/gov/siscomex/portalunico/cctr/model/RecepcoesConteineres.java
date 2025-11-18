@@ -30,17 +30,6 @@ public class RecepcoesConteineres {
     private RecepcaoConteiner recepcaoConteiner = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get recepcaoConteiner
      *
      * @return recepcaoConteiner
@@ -58,6 +47,18 @@ public class RecepcoesConteineres {
     public RecepcoesConteineres recepcaoConteiner(RecepcaoConteiner recepcaoConteiner) {
         this.recepcaoConteiner = recepcaoConteiner;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

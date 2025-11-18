@@ -16,11 +16,12 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformaesSobreOsTributos", propOrder =
-        {"quantidadeAdicoes", "indicadorCumprimentoICMS", "tributosCalculados", "taxaUtilizacao"
+        {"indicadorCumprimentoICMS", "tributosCalculados", "quantidadeAdicoes", "taxaUtilizacao"
         })
 
 @XmlRootElement(name = "InformaesSobreOsTributos")
 public class InformaesSobreOsTributos {
+
 
     @XmlElement(name = "quantidadeAdicoes")
     @ApiModelProperty(example = "2", value = "Quantidade de adições (Equivalência da duimp com número de adições de uma DI)<br>Valor mínimo: 1<br>Valor máximo: 99999")
@@ -28,12 +29,14 @@ public class InformaesSobreOsTributos {
      * Quantidade de adições (Equivalência da duimp com número de adições de uma DI)<br>Valor mínimo: 1<br>Valor máximo: 99999
      **/
     private Integer quantidadeAdicoes = null;
+
     @XmlElement(name = "indicadorCumprimentoICMS")
     @ApiModelProperty(example = "1", value = "Indicador de cumprimento do ICMS.<br>Dominio:<br>1-ICMS Pago, <br>2-ICMS Cancelado<br>Tamanho: 1")
     /**
      * Indicador de cumprimento do ICMS.<br>Dominio:<br>1-ICMS Pago, <br>2-ICMS Cancelado<br>Tamanho: 1
      **/
     private IndicadorCumprimentoICMSEnum indicadorCumprimentoICMS = null;
+
     @XmlElement(name = "tributosCalculados")
     @ApiModelProperty(value = "Tributos calculados")
     @Valid
@@ -41,13 +44,6 @@ public class InformaesSobreOsTributos {
      * Tributos calculados
      **/
     private List<SefazTributoCalculadoCover> tributosCalculados = null;
-    @XmlElement(name = "taxaUtilizacao")
-    @ApiModelProperty(example = "214.5", value = "Valor total da taxa de utilização do Siscomex<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor total da taxa de utilização do Siscomex<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal taxaUtilizacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -60,24 +56,13 @@ public class InformaesSobreOsTributos {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "taxaUtilizacao")
+    @ApiModelProperty(example = "214.5", value = "Valor total da taxa de utilização do Siscomex<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Quantidade de adições (Equivalência da duimp com número de adições de uma DI)&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
-     *
-     * @return quantidadeAdicoes
+     * Valor total da taxa de utilização do Siscomex<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    @JsonProperty("quantidadeAdicoes")
-    public Integer getQuantidadeAdicoes() {
-        return quantidadeAdicoes;
-    }
-
-    public void setQuantidadeAdicoes(Integer quantidadeAdicoes) {
-        this.quantidadeAdicoes = quantidadeAdicoes;
-    }
-
-    public InformaesSobreOsTributos quantidadeAdicoes(Integer quantidadeAdicoes) {
-        this.quantidadeAdicoes = quantidadeAdicoes;
-        return this;
-    }
+    private BigDecimal taxaUtilizacao = null;
 
     /**
      * Indicador de cumprimento do ICMS.&lt;br&gt;Dominio:&lt;br&gt;1-ICMS Pago, &lt;br&gt;2-ICMS Cancelado&lt;br&gt;Tamanho: 1
@@ -126,6 +111,25 @@ public class InformaesSobreOsTributos {
     }
 
     /**
+     * Quantidade de adições (Equivalência da duimp com número de adições de uma DI)&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
+     *
+     * @return quantidadeAdicoes
+     **/
+    @JsonProperty("quantidadeAdicoes")
+    public Integer getQuantidadeAdicoes() {
+        return quantidadeAdicoes;
+    }
+
+    public void setQuantidadeAdicoes(Integer quantidadeAdicoes) {
+        this.quantidadeAdicoes = quantidadeAdicoes;
+    }
+
+    public InformaesSobreOsTributos quantidadeAdicoes(Integer quantidadeAdicoes) {
+        this.quantidadeAdicoes = quantidadeAdicoes;
+        return this;
+    }
+
+    /**
      * Valor total da taxa de utilização do Siscomex&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return taxaUtilizacao
@@ -149,9 +153,9 @@ public class InformaesSobreOsTributos {
     public String toString() {
 
         String sb = "class InformaesSobreOsTributos {\n" +
-                "    quantidadeAdicoes: " + toIndentedString(quantidadeAdicoes) + "\n" +
                 "    indicadorCumprimentoICMS: " + toIndentedString(indicadorCumprimentoICMS) + "\n" +
                 "    tributosCalculados: " + toIndentedString(tributosCalculados) + "\n" +
+                "    quantidadeAdicoes: " + toIndentedString(quantidadeAdicoes) + "\n" +
                 "    taxaUtilizacao: " + toIndentedString(taxaUtilizacao) + "\n" +
                 "}";
         return sb;

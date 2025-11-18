@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VeiculoRodovario", propOrder =
-        {"veiculo", "indTtransportadorProprietario", "reboques", "cpjCnpjResponsavel", "nomeResponsavel"
+        {"indTtransportadorProprietario", "cpjCnpjResponsavel", "nomeResponsavel", "veiculo", "reboques"
         })
 
 @XmlRootElement(name = "VeiculoRodovario")
@@ -24,25 +24,12 @@ import java.util.List;
 @ApiModel(description = "Informações sobre o veículo Rodoviário")
 public class VeiculoRodovario {
 
-    @XmlElement(name = "veiculo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Veiculo veiculo = null;
-
     @XmlElement(name = "indTtransportadorProprietario")
     @ApiModelProperty(example = "N", value = "Indicador para transportador proprietário do veículo")
     /**
      * Indicador para transportador proprietário do veículo
      **/
     private String indTtransportadorProprietario = null;
-
-    @XmlElement(name = "reboques")
-    @ApiModelProperty(value = "informações sobre os reboques")
-    @Valid
-    /**
-     * informações sobre os reboques
-     **/
-    private List<Veiculo> reboques = null;
 
     @XmlElement(name = "cpjCnpjResponsavel")
     @ApiModelProperty(example = "9999999999", value = "CPF ou CNPJ do responsável pelo veículo<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
@@ -58,35 +45,18 @@ public class VeiculoRodovario {
      **/
     private String nomeResponsavel = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "veiculo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Veiculo veiculo = null;
 
+    @XmlElement(name = "reboques")
+    @ApiModelProperty(value = "informações sobre os reboques")
+    @Valid
     /**
-     * Get veiculo
-     *
-     * @return veiculo
+     * informações sobre os reboques
      **/
-    @JsonProperty("veiculo")
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public VeiculoRodovario veiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-        return this;
-    }
+    private List<Veiculo> reboques = null;
 
     /**
      * Indicador para transportador proprietário do veículo
@@ -104,30 +74,6 @@ public class VeiculoRodovario {
 
     public VeiculoRodovario indTtransportadorProprietario(String indTtransportadorProprietario) {
         this.indTtransportadorProprietario = indTtransportadorProprietario;
-        return this;
-    }
-
-    /**
-     * informações sobre os reboques
-     *
-     * @return reboques
-     **/
-    @JsonProperty("reboques")
-    public List<Veiculo> getReboques() {
-        return reboques;
-    }
-
-    public void setReboques(List<Veiculo> reboques) {
-        this.reboques = reboques;
-    }
-
-    public VeiculoRodovario reboques(List<Veiculo> reboques) {
-        this.reboques = reboques;
-        return this;
-    }
-
-    public VeiculoRodovario addReboquesItem(Veiculo reboquesItem) {
-        this.reboques.add(reboquesItem);
         return this;
     }
 
@@ -169,15 +115,69 @@ public class VeiculoRodovario {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get veiculo
+     *
+     * @return veiculo
+     **/
+    @JsonProperty("veiculo")
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public VeiculoRodovario veiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+        return this;
+    }
+
+    /**
+     * informações sobre os reboques
+     *
+     * @return reboques
+     **/
+    @JsonProperty("reboques")
+    public List<Veiculo> getReboques() {
+        return reboques;
+    }
+
+    public void setReboques(List<Veiculo> reboques) {
+        this.reboques = reboques;
+    }
+
+    public VeiculoRodovario reboques(List<Veiculo> reboques) {
+        this.reboques = reboques;
+        return this;
+    }
+
+    public VeiculoRodovario addReboquesItem(Veiculo reboquesItem) {
+        this.reboques.add(reboquesItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class VeiculoRodovario {\n" +
-                "    veiculo: " + toIndentedString(veiculo) + "\n" +
                 "    indTtransportadorProprietario: " + toIndentedString(indTtransportadorProprietario) + "\n" +
-                "    reboques: " + toIndentedString(reboques) + "\n" +
                 "    cpjCnpjResponsavel: " + toIndentedString(cpjCnpjResponsavel) + "\n" +
                 "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
+                "    veiculo: " + toIndentedString(veiculo) + "\n" +
+                "    reboques: " + toIndentedString(reboques) + "\n" +
                 "}";
         return sb;
     }

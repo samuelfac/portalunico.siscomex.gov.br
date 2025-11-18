@@ -40,17 +40,6 @@ public class CargaDuimpFreteConsultaCover {
     private BigDecimal valorMoedaNegociada = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da moeda negociada do frete (ISO-4217).&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;AAA&#39; Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
      *
      * @return codigoMoedaNegociada
@@ -86,6 +75,18 @@ public class CargaDuimpFreteConsultaCover {
     public CargaDuimpFreteConsultaCover valorMoedaNegociada(BigDecimal valorMoedaNegociada) {
         this.valorMoedaNegociada = valorMoedaNegociada;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

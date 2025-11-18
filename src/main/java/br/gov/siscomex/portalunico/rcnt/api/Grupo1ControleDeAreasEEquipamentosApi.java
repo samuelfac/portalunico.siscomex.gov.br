@@ -29,7 +29,7 @@ public interface Grupo1ControleDeAreasEEquipamentosApi {
 
     /**
      * Georreferenciamento
-     * <p>
+     *
      * Neste evento devem ser enviadas as informações de georreferenciamento de áreas e equipamentos do recinto.&lt;br/&gt;As áreas e equipamentos considerados devem ser os constantes da lista de domínio “tipo”.&lt;br/&gt;As coordenadas de cada objeto definido podem ser um polígono ou ponto, por exemplo:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;O perímetro da área alfandegada e demais áreas... (polígono);&lt;br/&gt;&lt;/li&gt;&lt;li&gt;As câmeras do sistema de CFTV, inclusive dos Gates e que fazem parte do sistema de OCR (ponto);&lt;/li&gt;&lt;li&gt;As catracas, torniquetes e outros instrumentos de controle de acesso de pessoas (ponto);&lt;/li&gt;&lt;li&gt;As balanças, medidores e outros equipamentos utilizados para quantificação (ponto);&lt;/li&gt;&lt;li&gt;Os Portêiner, Shiploader e outros instrumentos de manipulação de unidades de carga em navios (ponto/polígono);&lt;/li&gt;&lt;li&gt;Os escâneres, tanto de contêineres, veículos ou volumes (ponto);&lt;/li&gt;&lt;li&gt;Os gates, portões e outros instrumentos de controle de acesso de veículos (ponto).&lt;/li&gt;&lt;/ul&gt;Obs.: Visando facilitar o preenchimento das coordenadas, os valores da Latitude e Longitude devem estar dentro dos seguintes limites:&lt;br/&gt;&lt;br/&gt;Latitude: entre +10.000000 e -38.000000 &lt;br/&gt;Longitude: entre -30.000000 e -78.000000
      *
      */
@@ -41,16 +41,16 @@ public interface Grupo1ControleDeAreasEEquipamentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST12(@ApiParam(value = "JSON do evento Georreferenciamento", required = true) @Valid DadosGeorreferenciamento body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Ocorrências de indisponibilidades de equipamentos
-     * <p>
+     *
      * Transmitir um evento para cada indisponibilidade e retorno à normalidade de cada equipamento definido.&lt;br/&gt;Não considerar indisponibilidades do tipo “house keeping”, casos de manutenção preventiva, rápida e, muitas vezes, diária de equipamentos (exemplo: trocas de óleo em Portêiner que é executada diariamente).
      *
      */
@@ -62,10 +62,10 @@ public interface Grupo1ControleDeAreasEEquipamentosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST17(@ApiParam(value = "JSON do evento Ocorrências Indisponibilidades Equipamentos", required = true) @Valid DadosIndisponibilidadeEquipamento body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

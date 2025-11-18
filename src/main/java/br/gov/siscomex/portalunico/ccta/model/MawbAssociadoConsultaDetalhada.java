@@ -13,25 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MawbAssociadoConsultaDetalhada", propOrder =
-        {"cnpjResponsavelArquivo", "identificacao", "chegadasTerrestres", "dataEmissao"
+        {"chegadasTerrestres", "cnpjResponsavelArquivo", "dataEmissao", "identificacao"
         })
 
 @XmlRootElement(name = "MawbAssociadoConsultaDetalhada")
 public class MawbAssociadoConsultaDetalhada {
-
-    @XmlElement(name = "cnpjResponsavelArquivo")
-    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjResponsavelArquivo = null;
-
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
-    /**
-     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
-     **/
-    private String identificacao = null;
 
     @XmlElement(name = "chegadasTerrestres")
     @ApiModelProperty(value = "Lista as chegadas de viagens terrestres associadas ao MAWB<br/>")
@@ -41,6 +27,13 @@ public class MawbAssociadoConsultaDetalhada {
      **/
     private List<CargaDetalheChegadaTerrestre> chegadasTerrestres = null;
 
+    @XmlElement(name = "cnpjResponsavelArquivo")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResponsavelArquivo = null;
+
     @XmlElement(name = "dataEmissao")
     @ApiModelProperty(example = "2020-04-08T11:00:00-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
     /**
@@ -48,54 +41,12 @@ public class MawbAssociadoConsultaDetalhada {
      **/
     private String dataEmissao = null;
 
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     *
-     * @return cnpjResponsavelArquivo
+     * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
      **/
-    @JsonProperty("cnpjResponsavelArquivo")
-    public String getCnpjResponsavelArquivo() {
-        return cnpjResponsavelArquivo;
-    }
-
-    public void setCnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
-        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-    }
-
-    public MawbAssociadoConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
-        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-        return this;
-    }
-
-    /**
-     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacao
-     **/
-    @JsonProperty("identificacao")
-    public String getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(String identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public MawbAssociadoConsultaDetalhada identificacao(String identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
+    private String identificacao = null;
 
     /**
      * Lista as chegadas de viagens terrestres associadas ao MAWB&lt;br/&gt;
@@ -122,6 +73,31 @@ public class MawbAssociadoConsultaDetalhada {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
+     *
+     * @return cnpjResponsavelArquivo
+     **/
+    @JsonProperty("cnpjResponsavelArquivo")
+    public String getCnpjResponsavelArquivo() {
+        return cnpjResponsavelArquivo;
+    }
+
+    public void setCnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
+        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
+    }
+
+    /**
      * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
      *
      * @return dataEmissao
@@ -140,14 +116,38 @@ public class MawbAssociadoConsultaDetalhada {
         return this;
     }
 
+    public MawbAssociadoConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
+        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
+        return this;
+    }
+
+    /**
+     * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    public String getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
+
+    public MawbAssociadoConsultaDetalhada identificacao(String identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class MawbAssociadoConsultaDetalhada {\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    chegadasTerrestres: " + toIndentedString(chegadasTerrestres) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
                 "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "}";
         return sb;
     }

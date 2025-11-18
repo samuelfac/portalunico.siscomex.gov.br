@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Consignatario", propOrder =
-        {"indConsignadoAOrdem", "endereco", "nome", "idEstrangeiro", "pais"
+        {"indConsignadoAOrdem", "pais", "nome", "endereco", "idEstrangeiro"
         })
 
 @XmlRootElement(name = "Consignatario")
@@ -30,12 +30,12 @@ public class Consignatario {
      **/
     private String indConsignadoAOrdem = null;
 
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(example = "Endereço do consignatário", value = "Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    @XmlElement(name = "pais")
+    @ApiModelProperty(example = "AR", value = "Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
     /**
-     * Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
      **/
-    private String endereco = null;
+    private String pais = null;
 
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Nome do consignatário", value = "Nome do consignatário<br>Tamanho: 60<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
@@ -44,30 +44,19 @@ public class Consignatario {
      **/
     private String nome = null;
 
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(example = "Endereço do consignatário", value = "Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
+    /**
+     * Endereço do consignatário<br>Tamanho: 260<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     **/
+    private String endereco = null;
+
     @XmlElement(name = "idEstrangeiro")
     @ApiModelProperty(example = "ABCD123456789", value = "Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)")
     /**
      * Identificação fiscal do consignatário estrangeiro<br>Tamanho: 14<br>Não deve ser informado quando o indicador to Order for marcado como S (Sim)
      **/
     private String idEstrangeiro = null;
-
-    @XmlElement(name = "pais")
-    @ApiModelProperty(example = "AR", value = "Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
-    /**
-     * Sigla do país de origem do consignatário<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
-     **/
-    private String pais = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Indicador To Order&lt;br&gt;Domínio: 1 (prepaid), 2 (collect).
@@ -90,22 +79,28 @@ public class Consignatario {
     }
 
     /**
-     * Endereço do consignatário&lt;br&gt;Tamanho: 260&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Sigla do país de origem do consignatário&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
      *
-     * @return endereco
+     * @return pais
      **/
-    @JsonProperty("endereco")
-    public String getEndereco() {
-        return endereco;
+    @JsonProperty("pais")
+    public String getPais() {
+        return pais;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public Consignatario endereco(String endereco) {
-        this.endereco = endereco;
-        return this;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     /**
@@ -127,6 +122,25 @@ public class Consignatario {
         return this;
     }
 
+    public Consignatario pais(String pais) {
+        this.pais = pais;
+        return this;
+    }
+
+    /**
+     * Endereço do consignatário&lt;br&gt;Tamanho: 260&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     /**
      * Identificação fiscal do consignatário estrangeiro&lt;br&gt;Tamanho: 14&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
      *
@@ -146,22 +160,8 @@ public class Consignatario {
         return this;
     }
 
-    /**
-     * Sigla do país de origem do consignatário&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
-     *
-     * @return pais
-     **/
-    @JsonProperty("pais")
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public Consignatario pais(String pais) {
-        this.pais = pais;
+    public Consignatario endereco(String endereco) {
+        this.endereco = endereco;
         return this;
     }
 
@@ -170,10 +170,10 @@ public class Consignatario {
 
         String sb = "class Consignatario {\n" +
                 "    indConsignadoAOrdem: " + toIndentedString(indConsignadoAOrdem) + "\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    idEstrangeiro: " + toIndentedString(idEstrangeiro) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
+                "    idEstrangeiro: " + toIndentedString(idEstrangeiro) + "\n" +
                 "}";
         return sb;
     }

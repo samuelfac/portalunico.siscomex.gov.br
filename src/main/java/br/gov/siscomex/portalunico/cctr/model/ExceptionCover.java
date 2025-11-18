@@ -15,41 +15,43 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExceptionCover", propOrder =
-        {"date", "severity", "path", "code", "field", "tag", "detail", "message", "info"
+        {"message", "code", "field", "path", "tag", "date", "detail", "severity", "info"
         })
 
 @XmlRootElement(name = "ExceptionCover")
 public class ExceptionCover {
 
-    @XmlElement(name = "date")
+    @XmlElement(name = "message")
     @ApiModelProperty(value = "")
-    private String date = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
-    @XmlElement(name = "path")
-    @ApiModelProperty(value = "")
-    private String path = null;
+    private String message = null;
+
     @XmlElement(name = "code")
     @ApiModelProperty(value = "")
     private String code = null;
+
     @XmlElement(name = "field")
     @ApiModelProperty(value = "")
     private String field = null;
+
+    @XmlElement(name = "path")
+    @ApiModelProperty(value = "")
+    private String path = null;
+
     @XmlElement(name = "tag")
     @ApiModelProperty(value = "")
     private String tag = null;
+
+    @XmlElement(name = "date")
+    @ApiModelProperty(value = "")
+    private String date = null;
+
     @XmlElement(name = "detail")
     @ApiModelProperty(value = "")
     @Valid
     private List<IExceptionCover> detail = null;
-    @XmlElement(name = "message")
+    @XmlElement(name = "severity")
     @ApiModelProperty(value = "")
-    private String message = null;
-    @XmlElement(name = "info")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DiagnosticInfo info = null;
+    private SeverityEnum severity = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,63 +64,27 @@ public class ExceptionCover {
         return o.toString().replace("\n", "\n    ");
     }
 
-    /**
-     * Get date
-     *
-     * @return date
-     **/
-    @JsonProperty("date")
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public ExceptionCover date(String date) {
-        this.date = date;
-        return this;
-    }
+    @XmlElement(name = "info")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DiagnosticInfo info = null;
 
     /**
-     * Get severity
+     * Get message
      *
-     * @return severity
+     * @return message
      **/
-    @JsonProperty("severity")
-    public String getSeverity() {
-        if (severity == null) {
-            return null;
-        }
-        return severity.value();
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
     }
 
-    public void setSeverity(SeverityEnum severity) {
-        this.severity = severity;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public ExceptionCover severity(SeverityEnum severity) {
-        this.severity = severity;
-        return this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return path
-     **/
-    @JsonProperty("path")
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public ExceptionCover path(String path) {
-        this.path = path;
+    public ExceptionCover message(String message) {
+        this.message = message;
         return this;
     }
 
@@ -161,6 +127,25 @@ public class ExceptionCover {
     }
 
     /**
+     * Get path
+     *
+     * @return path
+     **/
+    @JsonProperty("path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public ExceptionCover path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    /**
      * Get tag
      *
      * @return tag
@@ -176,6 +161,25 @@ public class ExceptionCover {
 
     public ExceptionCover tag(String tag) {
         this.tag = tag;
+        return this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return date
+     **/
+    @JsonProperty("date")
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public ExceptionCover date(String date) {
+        this.date = date;
         return this;
     }
 
@@ -204,27 +208,29 @@ public class ExceptionCover {
     }
 
     /**
-     * Get message
+     * Get severity
      *
-     * @return message
+     * @return severity
      **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
+    @JsonProperty("severity")
+    public String getSeverity() {
+        if (severity == null) {
+            return null;
+        }
+        return severity.value();
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setSeverity(SeverityEnum severity) {
+        this.severity = severity;
     }
 
-    public ExceptionCover message(String message) {
-        this.message = message;
+    public ExceptionCover severity(SeverityEnum severity) {
+        this.severity = severity;
         return this;
     }
 
     /**
      * Get info
-     *
      * @return info
      **/
     @JsonProperty("info")
@@ -246,14 +252,14 @@ public class ExceptionCover {
     public String toString() {
 
         String sb = "class ExceptionCover {\n" +
-                "    date: " + toIndentedString(date) + "\n" +
-                "    severity: " + toIndentedString(severity) + "\n" +
-                "    path: " + toIndentedString(path) + "\n" +
+                "    message: " + toIndentedString(message) + "\n" +
                 "    code: " + toIndentedString(code) + "\n" +
                 "    field: " + toIndentedString(field) + "\n" +
+                "    path: " + toIndentedString(path) + "\n" +
                 "    tag: " + toIndentedString(tag) + "\n" +
+                "    date: " + toIndentedString(date) + "\n" +
                 "    detail: " + toIndentedString(detail) + "\n" +
-                "    message: " + toIndentedString(message) + "\n" +
+                "    severity: " + toIndentedString(severity) + "\n" +
                 "    info: " + toIndentedString(info) + "\n" +
                 "}";
         return sb;

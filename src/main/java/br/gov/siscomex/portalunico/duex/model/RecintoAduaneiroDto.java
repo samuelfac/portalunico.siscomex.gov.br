@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecintoAduaneiroDto", propOrder =
-        {"zona", "codigo", "cooordenada", "unidadeLocalRFB", "descricao"
+        {"codigo", "cooordenada", "descricao", "unidadeLocalRFB", "zona"
         })
 
 @XmlRootElement(name = "RecintoAduaneiroDto")
 public class RecintoAduaneiroDto {
-
-    @XmlElement(name = "zona")
-    @ApiModelProperty(example = "1", value = "Zona<br />Domínio: <br />1 = Primária<br />2 = Secundária")
-    /**
-     * Zona<br />Domínio: <br />1 = Primária<br />2 = Secundária
-     **/
-    private String zona = null;
 
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "8911101", value = "Código<br />Tamanho: 7<br />Formato: 'NNNNNNN'")
@@ -37,11 +30,6 @@ public class RecintoAduaneiroDto {
     @Valid
     private CoordenadaGeograficaDto cooordenada = null;
 
-    @XmlElement(name = "unidadeLocalRFB")
-    @ApiModelProperty(value = "")
-    @Valid
-    private UnidadeLocalRFBDto unidadeLocalRFB = null;
-
     @XmlElement(name = "descricao")
     @ApiModelProperty(value = "Descrição<br />Tamanho mínimo: 0<br />Tamanho máximo: 50")
     /**
@@ -49,35 +37,17 @@ public class RecintoAduaneiroDto {
      **/
     private String descricao = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "unidadeLocalRFB")
+    @ApiModelProperty(value = "")
+    @Valid
+    private UnidadeLocalRFBDto unidadeLocalRFB = null;
 
+    @XmlElement(name = "zona")
+    @ApiModelProperty(example = "1", value = "Zona<br />Domínio: <br />1 = Primária<br />2 = Secundária")
     /**
-     * Zona&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Primária&lt;br /&gt;2 &#x3D; Secundária
-     *
-     * @return zona
+     * Zona<br />Domínio: <br />1 = Primária<br />2 = Secundária
      **/
-    @JsonProperty("zona")
-    public String getZona() {
-        return zona;
-    }
-
-    public void setZona(String zona) {
-        this.zona = zona;
-    }
-
-    public RecintoAduaneiroDto zona(String zona) {
-        this.zona = zona;
-        return this;
-    }
+    private String zona = null;
 
     /**
      * Código&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
@@ -118,6 +88,31 @@ public class RecintoAduaneiroDto {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Descrição&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 50
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    /**
      * Get unidadeLocalRFB
      *
      * @return unidadeLocalRFB
@@ -136,22 +131,27 @@ public class RecintoAduaneiroDto {
         return this;
     }
 
-    /**
-     * Descrição&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 50
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public RecintoAduaneiroDto descricao(String descricao) {
         this.descricao = descricao;
+        return this;
+    }
+
+    /**
+     * Zona&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Primária&lt;br /&gt;2 &#x3D; Secundária
+     *
+     * @return zona
+     **/
+    @JsonProperty("zona")
+    public String getZona() {
+        return zona;
+    }
+
+    public void setZona(String zona) {
+        this.zona = zona;
+    }
+
+    public RecintoAduaneiroDto zona(String zona) {
+        this.zona = zona;
         return this;
     }
 
@@ -159,11 +159,11 @@ public class RecintoAduaneiroDto {
     public String toString() {
 
         String sb = "class RecintoAduaneiroDto {\n" +
-                "    zona: " + toIndentedString(zona) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    cooordenada: " + toIndentedString(cooordenada) + "\n" +
-                "    unidadeLocalRFB: " + toIndentedString(unidadeLocalRFB) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    unidadeLocalRFB: " + toIndentedString(unidadeLocalRFB) + "\n" +
+                "    zona: " + toIndentedString(zona) + "\n" +
                 "}";
         return sb;
     }

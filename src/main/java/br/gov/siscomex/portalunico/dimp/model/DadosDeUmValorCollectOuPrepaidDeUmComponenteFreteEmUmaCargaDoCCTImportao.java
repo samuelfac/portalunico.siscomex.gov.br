@@ -35,17 +35,6 @@ public class DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImp
     private BigDecimal valor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da Moeda utilizada neste componente de frete  (ISO-4217).&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: &#39;AAA&#39;
      *
      * @return moeda
@@ -81,6 +70,18 @@ public class DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImp
     public DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao valor(BigDecimal valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

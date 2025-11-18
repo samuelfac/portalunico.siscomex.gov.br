@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiBuscaChaveMultiStatus", propOrder =
-        {"code", "links", "message", "duimp", "errors"
+        {"code", "message", "duimp", "errors", "links"
         })
 
 @XmlRootElement(name = "RespostaApiBuscaChaveMultiStatus")
@@ -25,14 +25,6 @@ public class RespostaApiBuscaChaveMultiStatus {
      * Código HTTP da resposta.
      **/
     private Integer code = null;
-
-    @XmlElement(name = "links")
-    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.")
-    @Valid
-    /**
-     * Operações disponíveis sobre o recurso.
-     **/
-    private List<LinkCover> links = null;
 
     @XmlElement(name = "message")
     @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
@@ -54,16 +46,13 @@ public class RespostaApiBuscaChaveMultiStatus {
      **/
     private List<DuimpApiMessageCover> errors = null;
 
+    @XmlElement(name = "links")
+    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Operações disponíveis sobre o recurso.
+     **/
+    private List<LinkCover> links = null;
 
     /**
      * Código HTTP da resposta.
@@ -81,30 +70,6 @@ public class RespostaApiBuscaChaveMultiStatus {
 
     public RespostaApiBuscaChaveMultiStatus code(Integer code) {
         this.code = code;
-        return this;
-    }
-
-    /**
-     * Operações disponíveis sobre o recurso.
-     *
-     * @return links
-     **/
-    @JsonProperty("links")
-    public List<LinkCover> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<LinkCover> links) {
-        this.links = links;
-    }
-
-    public RespostaApiBuscaChaveMultiStatus links(List<LinkCover> links) {
-        this.links = links;
-        return this;
-    }
-
-    public RespostaApiBuscaChaveMultiStatus addLinksItem(LinkCover linksItem) {
-        this.links.add(linksItem);
         return this;
     }
 
@@ -170,15 +135,50 @@ public class RespostaApiBuscaChaveMultiStatus {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Operações disponíveis sobre o recurso.
+     *
+     * @return links
+     **/
+    @JsonProperty("links")
+    public List<LinkCover> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<LinkCover> links) {
+        this.links = links;
+    }
+
+    public RespostaApiBuscaChaveMultiStatus links(List<LinkCover> links) {
+        this.links = links;
+        return this;
+    }
+
+    public RespostaApiBuscaChaveMultiStatus addLinksItem(LinkCover linksItem) {
+        this.links.add(linksItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RespostaApiBuscaChaveMultiStatus {\n" +
                 "    code: " + toIndentedString(code) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    message: " + toIndentedString(message) + "\n" +
                 "    duimp: " + toIndentedString(duimp) + "\n" +
                 "    errors: " + toIndentedString(errors) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

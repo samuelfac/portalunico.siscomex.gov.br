@@ -14,11 +14,18 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCoordenadasGeorreferenciamento", propOrder =
-        {"latitude", "idElemento", "longitude"
+        {"idElemento", "latitude", "longitude"
         })
 
 @XmlRootElement(name = "DadosCoordenadasGeorreferenciamento")
 public class DadosCoordenadasGeorreferenciamento {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "latitude", required = true)
     @ApiModelProperty(example = "9.123456", required = true, value = "Latitude (somente serão válidos valores entre: +10.000000 e -38.000000), 6 casas decimais")
@@ -28,13 +35,6 @@ public class DadosCoordenadasGeorreferenciamento {
      **/
     private BigDecimal latitude = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
-
     @XmlElement(name = "longitude", required = true)
     @ApiModelProperty(example = "-31.123456", required = true, value = "Longitude (somente serão válidos valores entre: -30.000000 e -78.000000) , 6 casas decimais")
     @Valid
@@ -42,6 +42,26 @@ public class DadosCoordenadasGeorreferenciamento {
      * Longitude (somente serão válidos valores entre: -30.000000 e -78.000000) , 6 casas decimais
      **/
     private BigDecimal longitude = null;
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosCoordenadasGeorreferenciamento idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,31 +89,6 @@ public class DadosCoordenadasGeorreferenciamento {
         this.latitude = latitude;
     }
 
-    public DadosCoordenadasGeorreferenciamento latitude(BigDecimal latitude) {
-        this.latitude = latitude;
-        return this;
-    }
-
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosCoordenadasGeorreferenciamento idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Longitude (somente serão válidos valores entre: -30.000000 e -78.000000) , 6 casas decimais
      *
@@ -114,12 +109,17 @@ public class DadosCoordenadasGeorreferenciamento {
         return this;
     }
 
+    public DadosCoordenadasGeorreferenciamento latitude(BigDecimal latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosCoordenadasGeorreferenciamento {\n" +
-                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    longitude: " + toIndentedString(longitude) + "\n" +
                 "}";
         return sb;

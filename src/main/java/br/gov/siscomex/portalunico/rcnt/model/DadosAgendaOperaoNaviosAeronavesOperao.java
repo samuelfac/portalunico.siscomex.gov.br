@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosAgendaOperaoNaviosAeronavesOperao", propOrder =
-        {"dataHoraFimOperacao", "dataHoraInicioOperacao"
+        {"dataHoraInicioOperacao", "dataHoraFimOperacao"
         })
 
 @XmlRootElement(name = "DadosAgendaOperaoNaviosAeronavesOperao")
 public class DadosAgendaOperaoNaviosAeronavesOperao {
+
+    @XmlElement(name = "dataHoraInicioOperacao")
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora do início da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora do início da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraInicioOperacao = null;
 
     @XmlElement(name = "dataHoraFimOperacao")
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora do final da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -24,12 +31,24 @@ public class DadosAgendaOperaoNaviosAeronavesOperao {
      **/
     private String dataHoraFimOperacao = null;
 
-    @XmlElement(name = "dataHoraInicioOperacao")
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "Data e hora do início da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Data e hora do início da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     * Data e hora do início da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraInicioOperacao
      **/
-    private String dataHoraInicioOperacao = null;
+    @JsonProperty("dataHoraInicioOperacao")
+    public String getDataHoraInicioOperacao() {
+        return dataHoraInicioOperacao;
+    }
+
+    public void setDataHoraInicioOperacao(String dataHoraInicioOperacao) {
+        this.dataHoraInicioOperacao = dataHoraInicioOperacao;
+    }
+
+    public DadosAgendaOperaoNaviosAeronavesOperao dataHoraInicioOperacao(String dataHoraInicioOperacao) {
+        this.dataHoraInicioOperacao = dataHoraInicioOperacao;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class DadosAgendaOperaoNaviosAeronavesOperao {
         return this;
     }
 
-    /**
-     * Data e hora do início da operação no navio ou aeronave. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraInicioOperacao
-     **/
-    @JsonProperty("dataHoraInicioOperacao")
-    public String getDataHoraInicioOperacao() {
-        return dataHoraInicioOperacao;
-    }
-
-    public void setDataHoraInicioOperacao(String dataHoraInicioOperacao) {
-        this.dataHoraInicioOperacao = dataHoraInicioOperacao;
-    }
-
-    public DadosAgendaOperaoNaviosAeronavesOperao dataHoraInicioOperacao(String dataHoraInicioOperacao) {
-        this.dataHoraInicioOperacao = dataHoraInicioOperacao;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosAgendaOperaoNaviosAeronavesOperao {\n" +
-                "    dataHoraFimOperacao: " + toIndentedString(dataHoraFimOperacao) + "\n" +
                 "    dataHoraInicioOperacao: " + toIndentedString(dataHoraInicioOperacao) + "\n" +
+                "    dataHoraFimOperacao: " + toIndentedString(dataHoraFimOperacao) + "\n" +
                 "}";
         return sb;
     }

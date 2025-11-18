@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExportadorCover", propOrder =
-        {"codigo", "niOperador", "versao", "pais"
+        {"codigo", "versao", "niOperador", "pais"
         })
 
 @XmlRootElement(name = "ExportadorCover")
@@ -31,13 +31,6 @@ public class ExportadorCover {
      **/
     private String codigo = null;
 
-    @XmlElement(name = "niOperador", required = true)
-    @ApiModelProperty(example = "00000000", required = true, value = "<br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
-    /**
-     * <br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
-     **/
-    private String niOperador = null;
-
     @XmlElement(name = "versao", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Versão do exportador.<br>Tamanho mínimo: 0<br>Tamanho máximo: 6")
     /**
@@ -45,21 +38,17 @@ public class ExportadorCover {
      **/
     private String versao = null;
 
+    @XmlElement(name = "niOperador", required = true)
+    @ApiModelProperty(example = "00000000", required = true, value = "<br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
+    /**
+     * <br>Número de Identificação: <br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'AAAAAAAA'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
+     **/
+    private String niOperador = null;
+
     @XmlElement(name = "pais", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private PaisExportadorCover pais = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Código do exportador estrangeiro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
@@ -78,26 +67,6 @@ public class ExportadorCover {
 
     public ExportadorCover codigo(String codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * &lt;br&gt;Número de Identificação: &lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;AAAAAAAA&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return niOperador
-     **/
-    @JsonProperty("niOperador")
-    @NotNull
-    public String getNiOperador() {
-        return niOperador;
-    }
-
-    public void setNiOperador(String niOperador) {
-        this.niOperador = niOperador;
-    }
-
-    public ExportadorCover niOperador(String niOperador) {
-        this.niOperador = niOperador;
         return this;
     }
 
@@ -122,6 +91,32 @@ public class ExportadorCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * &lt;br&gt;Número de Identificação: &lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;AAAAAAAA&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return niOperador
+     **/
+    @JsonProperty("niOperador")
+    @NotNull
+    public String getNiOperador() {
+        return niOperador;
+    }
+
+    public void setNiOperador(String niOperador) {
+        this.niOperador = niOperador;
+    }
+
+    /**
      * Get pais
      *
      * @return pais
@@ -141,13 +136,18 @@ public class ExportadorCover {
         return this;
     }
 
+    public ExportadorCover niOperador(String niOperador) {
+        this.niOperador = niOperador;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ExportadorCover {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    niOperador: " + toIndentedString(niOperador) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
+                "    niOperador: " + toIndentedString(niOperador) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
                 "}";
         return sb;

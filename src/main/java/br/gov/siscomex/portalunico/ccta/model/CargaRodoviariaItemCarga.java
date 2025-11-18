@@ -13,72 +13,18 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaItemCarga", propOrder =
-        {"embalagemVazia", "sequencial", "quantidadeVolumes", "tipoEmbalagem", "tipoTratamentoMadeiraBruta", "medidaConteiner", "contramarca", "numeroConteiner", "taraConteiner", "conteinerVazio", "descricao", "possuiEmbalagemSuporteMadeiraBruta", "marca", "chassi", "pesoBruto", "pesoConteiner", "pesoLiquido", "tipoGranel"
+        {"chassi", "conteinerVazio", "contramarca", "descricao", "embalagemVazia", "marca", "medidaConteiner", "numeroConteiner", "pesoBruto", "pesoConteiner", "pesoLiquido", "possuiEmbalagemSuporteMadeiraBruta", "quantidadeVolumes", "sequencial", "taraConteiner", "tipoEmbalagem", "tipoGranel", "tipoTratamentoMadeiraBruta"
         })
 
 @XmlRootElement(name = "CargaRodoviariaItemCarga")
 public class CargaRodoviariaItemCarga {
 
-    @XmlElement(name = "embalagemVazia")
-    @ApiModelProperty(example = "false", value = "Indicador de embalagem vazia de carga solta</br>Para item Carga Solta (2), campo obrigatório")
+    @XmlElement(name = "chassi")
+    @ApiModelProperty(example = "2WXR0U5O8S8SRRB8P", value = "Chassi do veículo da viagem<br/> Tamanho Máximo: 20")
     /**
-     * Indicador de embalagem vazia de carga solta</br>Para item Carga Solta (2), campo obrigatório
+     * Chassi do veículo da viagem<br/> Tamanho Máximo: 20
      **/
-    private Boolean embalagemVazia = null;
-
-    @XmlElement(name = "sequencial")
-    @ApiModelProperty(value = "Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20")
-    @Valid
-    /**
-     * Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20
-     **/
-    private BigDecimal sequencial = null;
-
-    @XmlElement(name = "quantidadeVolumes")
-    @ApiModelProperty(value = "Quantidade de volumes do item de carga transportado na viagempara tipocarga = 2 preenchimento obrigatório<br/> Tamanho Máximo: 4")
-    /**
-     * Quantidade de volumes do item de carga transportado na viagempara tipocarga = 2 preenchimento obrigatório<br/> Tamanho Máximo: 4
-     **/
-    private Integer quantidadeVolumes = null;
-
-    @XmlElement(name = "tipoEmbalagem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoEmbalagem tipoEmbalagem = null;
-
-    @XmlElement(name = "tipoTratamentoMadeiraBruta")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoTratamentoMadeira tipoTratamentoMadeiraBruta = null;
-
-    @XmlElement(name = "medidaConteiner")
-    @ApiModelProperty(example = "20", value = "Medida do conteiner<br/>para \"tipoItemCRT\" = 1 <br/>preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)<br/>Tamanho Máximo: 2")
-    /**
-     * Medida do conteiner<br/>para \"tipoItemCRT\" = 1 <br/>preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)<br/>Tamanho Máximo: 2
-     **/
-    private String medidaConteiner = null;
-
-    @XmlElement(name = "contramarca")
-    @ApiModelProperty(example = "TCROSS", value = "Nome da contramarca do item de carga<br/>para \"tipoItemCRT\" = 4 preenchimento obrigatório<br/> Tamanho Máximo: 55")
-    /**
-     * Nome da contramarca do item de carga<br/>para \"tipoItemCRT\" = 4 preenchimento obrigatório<br/> Tamanho Máximo: 55
-     **/
-    private String contramarca = null;
-
-    @XmlElement(name = "numeroConteiner")
-    @ApiModelProperty(example = "AG48569701", value = "Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11")
-    /**
-     * Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11
-     **/
-    private String numeroConteiner = null;
-
-    @XmlElement(name = "taraConteiner")
-    @ApiModelProperty(example = "20.0", value = "Tara do conteiner em Kg<br/>para \"tipoItemCRT\" = 1 preenchimento obrigatório<br/>Formato: Número Racional com 6 casas inteiras e 3 casas decimais")
-    @Valid
-    /**
-     * Tara do conteiner em Kg<br/>para \"tipoItemCRT\" = 1 preenchimento obrigatório<br/>Formato: Número Racional com 6 casas inteiras e 3 casas decimais
-     **/
-    private BigDecimal taraConteiner = null;
+    private String chassi = null;
 
     @XmlElement(name = "conteinerVazio")
     @ApiModelProperty(example = "false", value = "Indica se conteiner está vazio<br/>para \"tipoItemCRT\" = 1 preenchimento obrigatório")
@@ -87,6 +33,13 @@ public class CargaRodoviariaItemCarga {
      **/
     private Boolean conteinerVazio = null;
 
+    @XmlElement(name = "contramarca")
+    @ApiModelProperty(example = "TCROSS", value = "Nome da contramarca do item de carga<br/>para \"tipoItemCRT\" = 4 preenchimento obrigatório<br/> Tamanho Máximo: 55")
+    /**
+     * Nome da contramarca do item de carga<br/>para \"tipoItemCRT\" = 4 preenchimento obrigatório<br/> Tamanho Máximo: 55
+     **/
+    private String contramarca = null;
+
     @XmlElement(name = "descricao")
     @ApiModelProperty(value = "Descrição do tipo de item de carga do CRT")
     /**
@@ -94,12 +47,12 @@ public class CargaRodoviariaItemCarga {
      **/
     private String descricao = null;
 
-    @XmlElement(name = "possuiEmbalagemSuporteMadeiraBruta")
-    @ApiModelProperty(example = "false", value = "Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta")
+    @XmlElement(name = "embalagemVazia")
+    @ApiModelProperty(example = "false", value = "Indicador de embalagem vazia de carga solta</br>Para item Carga Solta (2), campo obrigatório")
     /**
-     * Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta
+     * Indicador de embalagem vazia de carga solta</br>Para item Carga Solta (2), campo obrigatório
      **/
-    private Boolean possuiEmbalagemSuporteMadeiraBruta = null;
+    private Boolean embalagemVazia = null;
 
     @XmlElement(name = "marca")
     @ApiModelProperty(example = "VW", value = "Marca do veículo da viagem<br/> Tamanho Máximo: 20")
@@ -108,12 +61,19 @@ public class CargaRodoviariaItemCarga {
      **/
     private String marca = null;
 
-    @XmlElement(name = "chassi")
-    @ApiModelProperty(example = "2WXR0U5O8S8SRRB8P", value = "Chassi do veículo da viagem<br/> Tamanho Máximo: 20")
+    @XmlElement(name = "medidaConteiner")
+    @ApiModelProperty(example = "20", value = "Medida do conteiner<br/>para \"tipoItemCRT\" = 1 <br/>preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)<br/>Tamanho Máximo: 2")
     /**
-     * Chassi do veículo da viagem<br/> Tamanho Máximo: 20
+     * Medida do conteiner<br/>para \"tipoItemCRT\" = 1 <br/>preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)<br/>Tamanho Máximo: 2
      **/
-    private String chassi = null;
+    private String medidaConteiner = null;
+
+    @XmlElement(name = "numeroConteiner")
+    @ApiModelProperty(example = "AG48569701", value = "Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11")
+    /**
+     * Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11
+     **/
+    private String numeroConteiner = null;
 
     @XmlElement(name = "pesoBruto")
     @ApiModelProperty(example = "105.478", value = "Peso bruto da carga em KG<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
@@ -139,10 +99,50 @@ public class CargaRodoviariaItemCarga {
      **/
     private BigDecimal pesoLiquido = null;
 
+    @XmlElement(name = "possuiEmbalagemSuporteMadeiraBruta")
+    @ApiModelProperty(example = "false", value = "Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta")
+    /**
+     * Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta
+     **/
+    private Boolean possuiEmbalagemSuporteMadeiraBruta = null;
+
+    @XmlElement(name = "quantidadeVolumes")
+    @ApiModelProperty(value = "Quantidade de volumes do item de carga transportado na viagempara tipocarga = 2 preenchimento obrigatório<br/> Tamanho Máximo: 4")
+    /**
+     * Quantidade de volumes do item de carga transportado na viagempara tipocarga = 2 preenchimento obrigatório<br/> Tamanho Máximo: 4
+     **/
+    private Integer quantidadeVolumes = null;
+
+    @XmlElement(name = "sequencial")
+    @ApiModelProperty(value = "Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20")
+    @Valid
+    /**
+     * Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20
+     **/
+    private BigDecimal sequencial = null;
+
+    @XmlElement(name = "taraConteiner")
+    @ApiModelProperty(example = "20.0", value = "Tara do conteiner em Kg<br/>para \"tipoItemCRT\" = 1 preenchimento obrigatório<br/>Formato: Número Racional com 6 casas inteiras e 3 casas decimais")
+    @Valid
+    /**
+     * Tara do conteiner em Kg<br/>para \"tipoItemCRT\" = 1 preenchimento obrigatório<br/>Formato: Número Racional com 6 casas inteiras e 3 casas decimais
+     **/
+    private BigDecimal taraConteiner = null;
+
+    @XmlElement(name = "tipoEmbalagem")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoEmbalagem tipoEmbalagem = null;
+
     @XmlElement(name = "tipoGranel")
     @ApiModelProperty(value = "")
     @Valid
     private TipoGranel tipoGranel = null;
+
+    @XmlElement(name = "tipoTratamentoMadeiraBruta")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoTratamentoMadeira tipoTratamentoMadeiraBruta = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -153,6 +153,82 @@ public class CargaRodoviariaItemCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Chassi do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
+     *
+     * @return chassi
+     **/
+    @JsonProperty("chassi")
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public CargaRodoviariaItemCarga chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
+    }
+
+    /**
+     * Indica se conteiner está vazio&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório
+     *
+     * @return conteinerVazio
+     **/
+    @JsonProperty("conteinerVazio")
+    public Boolean isisConteinerVazio() {
+        return conteinerVazio;
+    }
+
+    public void setConteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+    }
+
+    /**
+     * Nome da contramarca do item de carga&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 4 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 55
+     *
+     * @return contramarca
+     **/
+    @JsonProperty("contramarca")
+    public String getContramarca() {
+        return contramarca;
+    }
+
+    public void setContramarca(String contramarca) {
+        this.contramarca = contramarca;
+    }
+
+    public CargaRodoviariaItemCarga contramarca(String contramarca) {
+        this.contramarca = contramarca;
+        return this;
+    }
+
+    /**
+     * Descrição do tipo de item de carga do CRT
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public CargaRodoviariaItemCarga descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    public CargaRodoviariaItemCarga conteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+        return this;
     }
 
     /**
@@ -169,27 +245,138 @@ public class CargaRodoviariaItemCarga {
         this.embalagemVazia = embalagemVazia;
     }
 
+    /**
+     * Marca do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
+     *
+     * @return marca
+     **/
+    @JsonProperty("marca")
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public CargaRodoviariaItemCarga marca(String marca) {
+        this.marca = marca;
+        return this;
+    }
+
     public CargaRodoviariaItemCarga embalagemVazia(Boolean embalagemVazia) {
         this.embalagemVazia = embalagemVazia;
         return this;
     }
 
     /**
-     * Sequencial de item de carga da viagem&lt;br/&gt; Tamanho Máximo: 20
+     * Medida do conteiner&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 &lt;br/&gt;preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)&lt;br/&gt;Tamanho Máximo: 2
      *
-     * @return sequencial
+     * @return medidaConteiner
      **/
-    @JsonProperty("sequencial")
-    public BigDecimal getSequencial() {
-        return sequencial;
+    @JsonProperty("medidaConteiner")
+    public String getMedidaConteiner() {
+        return medidaConteiner;
     }
 
-    public void setSequencial(BigDecimal sequencial) {
-        this.sequencial = sequencial;
+    public void setMedidaConteiner(String medidaConteiner) {
+        this.medidaConteiner = medidaConteiner;
     }
 
-    public CargaRodoviariaItemCarga sequencial(BigDecimal sequencial) {
-        this.sequencial = sequencial;
+    public CargaRodoviariaItemCarga medidaConteiner(String medidaConteiner) {
+        this.medidaConteiner = medidaConteiner;
+        return this;
+    }
+
+    /**
+     * Identificação do conteiner transportado na viagem.para tipocarga &#x3D; 1 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 11
+     *
+     * @return numeroConteiner
+     **/
+    @JsonProperty("numeroConteiner")
+    public String getNumeroConteiner() {
+        return numeroConteiner;
+    }
+
+    public void setNumeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+    }
+
+    /**
+     * Peso bruto da carga em KG&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
+     * @return pesoBruto
+     **/
+    @JsonProperty("pesoBruto")
+    public BigDecimal getPesoBruto() {
+        return pesoBruto;
+    }
+
+    public void setPesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+    }
+
+    public CargaRodoviariaItemCarga pesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+        return this;
+    }
+
+    /**
+     * Peso do conteiner
+     * @return pesoConteiner
+     **/
+    @JsonProperty("pesoConteiner")
+    public BigDecimal getPesoConteiner() {
+        return pesoConteiner;
+    }
+
+    public void setPesoConteiner(BigDecimal pesoConteiner) {
+        this.pesoConteiner = pesoConteiner;
+    }
+
+    public CargaRodoviariaItemCarga pesoConteiner(BigDecimal pesoConteiner) {
+        this.pesoConteiner = pesoConteiner;
+        return this;
+    }
+
+    /**
+     * Peso líquido do item de carga em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
+     * @return pesoLiquido
+     **/
+    @JsonProperty("pesoLiquido")
+    public BigDecimal getPesoLiquido() {
+        return pesoLiquido;
+    }
+
+    public void setPesoLiquido(BigDecimal pesoLiquido) {
+        this.pesoLiquido = pesoLiquido;
+    }
+
+    public CargaRodoviariaItemCarga pesoLiquido(BigDecimal pesoLiquido) {
+        this.pesoLiquido = pesoLiquido;
+        return this;
+    }
+
+    public CargaRodoviariaItemCarga numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+        return this;
+    }
+
+    /**
+     * Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta
+     *
+     * @return possuiEmbalagemSuporteMadeiraBruta
+     **/
+    @JsonProperty("possuiEmbalagemSuporteMadeiraBruta")
+    public Boolean isisPossuiEmbalagemSuporteMadeiraBruta() {
+        return possuiEmbalagemSuporteMadeiraBruta;
+    }
+
+    public void setPossuiEmbalagemSuporteMadeiraBruta(Boolean possuiEmbalagemSuporteMadeiraBruta) {
+        this.possuiEmbalagemSuporteMadeiraBruta = possuiEmbalagemSuporteMadeiraBruta;
+    }
+
+    public CargaRodoviariaItemCarga possuiEmbalagemSuporteMadeiraBruta(Boolean possuiEmbalagemSuporteMadeiraBruta) {
+        this.possuiEmbalagemSuporteMadeiraBruta = possuiEmbalagemSuporteMadeiraBruta;
         return this;
     }
 
@@ -213,6 +400,44 @@ public class CargaRodoviariaItemCarga {
     }
 
     /**
+     * Sequencial de item de carga da viagem&lt;br/&gt; Tamanho Máximo: 20
+     *
+     * @return sequencial
+     **/
+    @JsonProperty("sequencial")
+    public BigDecimal getSequencial() {
+        return sequencial;
+    }
+
+    public void setSequencial(BigDecimal sequencial) {
+        this.sequencial = sequencial;
+    }
+
+    public CargaRodoviariaItemCarga sequencial(BigDecimal sequencial) {
+        this.sequencial = sequencial;
+        return this;
+    }
+
+    /**
+     * Tara do conteiner em Kg&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório&lt;br/&gt;Formato: Número Racional com 6 casas inteiras e 3 casas decimais
+     *
+     * @return taraConteiner
+     **/
+    @JsonProperty("taraConteiner")
+    public BigDecimal getTaraConteiner() {
+        return taraConteiner;
+    }
+
+    public void setTaraConteiner(BigDecimal taraConteiner) {
+        this.taraConteiner = taraConteiner;
+    }
+
+    public CargaRodoviariaItemCarga taraConteiner(BigDecimal taraConteiner) {
+        this.taraConteiner = taraConteiner;
+        return this;
+    }
+
+    /**
      * Get tipoEmbalagem
      *
      * @return tipoEmbalagem
@@ -224,6 +449,25 @@ public class CargaRodoviariaItemCarga {
 
     public void setTipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
         this.tipoEmbalagem = tipoEmbalagem;
+    }
+
+    /**
+     * Get tipoGranel
+     *
+     * @return tipoGranel
+     **/
+    @JsonProperty("tipoGranel")
+    public TipoGranel getTipoGranel() {
+        return tipoGranel;
+    }
+
+    public void setTipoGranel(TipoGranel tipoGranel) {
+        this.tipoGranel = tipoGranel;
+    }
+
+    public CargaRodoviariaItemCarga tipoGranel(TipoGranel tipoGranel) {
+        this.tipoGranel = tipoGranel;
+        return this;
     }
 
     public CargaRodoviariaItemCarga tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
@@ -250,275 +494,28 @@ public class CargaRodoviariaItemCarga {
         return this;
     }
 
-    /**
-     * Medida do conteiner&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 &lt;br/&gt;preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)&lt;br/&gt;Tamanho Máximo: 2
-     *
-     * @return medidaConteiner
-     **/
-    @JsonProperty("medidaConteiner")
-    public String getMedidaConteiner() {
-        return medidaConteiner;
-    }
-
-    public void setMedidaConteiner(String medidaConteiner) {
-        this.medidaConteiner = medidaConteiner;
-    }
-
-    public CargaRodoviariaItemCarga medidaConteiner(String medidaConteiner) {
-        this.medidaConteiner = medidaConteiner;
-        return this;
-    }
-
-    /**
-     * Nome da contramarca do item de carga&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 4 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 55
-     *
-     * @return contramarca
-     **/
-    @JsonProperty("contramarca")
-    public String getContramarca() {
-        return contramarca;
-    }
-
-    public void setContramarca(String contramarca) {
-        this.contramarca = contramarca;
-    }
-
-    public CargaRodoviariaItemCarga contramarca(String contramarca) {
-        this.contramarca = contramarca;
-        return this;
-    }
-
-    /**
-     * Identificação do conteiner transportado na viagem.para tipocarga &#x3D; 1 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 11
-     *
-     * @return numeroConteiner
-     **/
-    @JsonProperty("numeroConteiner")
-    public String getNumeroConteiner() {
-        return numeroConteiner;
-    }
-
-    public void setNumeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-    }
-
-    public CargaRodoviariaItemCarga numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
-    /**
-     * Tara do conteiner em Kg&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório&lt;br/&gt;Formato: Número Racional com 6 casas inteiras e 3 casas decimais
-     *
-     * @return taraConteiner
-     **/
-    @JsonProperty("taraConteiner")
-    public BigDecimal getTaraConteiner() {
-        return taraConteiner;
-    }
-
-    public void setTaraConteiner(BigDecimal taraConteiner) {
-        this.taraConteiner = taraConteiner;
-    }
-
-    public CargaRodoviariaItemCarga taraConteiner(BigDecimal taraConteiner) {
-        this.taraConteiner = taraConteiner;
-        return this;
-    }
-
-    /**
-     * Indica se conteiner está vazio&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório
-     *
-     * @return conteinerVazio
-     **/
-    @JsonProperty("conteinerVazio")
-    public Boolean isisConteinerVazio() {
-        return conteinerVazio;
-    }
-
-    public void setConteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
-    }
-
-    public CargaRodoviariaItemCarga conteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
-        return this;
-    }
-
-    /**
-     * Descrição do tipo de item de carga do CRT
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public CargaRodoviariaItemCarga descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
-    /**
-     * Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta
-     *
-     * @return possuiEmbalagemSuporteMadeiraBruta
-     **/
-    @JsonProperty("possuiEmbalagemSuporteMadeiraBruta")
-    public Boolean isisPossuiEmbalagemSuporteMadeiraBruta() {
-        return possuiEmbalagemSuporteMadeiraBruta;
-    }
-
-    public void setPossuiEmbalagemSuporteMadeiraBruta(Boolean possuiEmbalagemSuporteMadeiraBruta) {
-        this.possuiEmbalagemSuporteMadeiraBruta = possuiEmbalagemSuporteMadeiraBruta;
-    }
-
-    public CargaRodoviariaItemCarga possuiEmbalagemSuporteMadeiraBruta(Boolean possuiEmbalagemSuporteMadeiraBruta) {
-        this.possuiEmbalagemSuporteMadeiraBruta = possuiEmbalagemSuporteMadeiraBruta;
-        return this;
-    }
-
-    /**
-     * Marca do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
-     *
-     * @return marca
-     **/
-    @JsonProperty("marca")
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public CargaRodoviariaItemCarga marca(String marca) {
-        this.marca = marca;
-        return this;
-    }
-
-    /**
-     * Chassi do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
-     *
-     * @return chassi
-     **/
-    @JsonProperty("chassi")
-    public String getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
-    }
-
-    public CargaRodoviariaItemCarga chassi(String chassi) {
-        this.chassi = chassi;
-        return this;
-    }
-
-    /**
-     * Peso bruto da carga em KG&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
-     * @return pesoBruto
-     **/
-    @JsonProperty("pesoBruto")
-    public BigDecimal getPesoBruto() {
-        return pesoBruto;
-    }
-
-    public void setPesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
-    }
-
-    public CargaRodoviariaItemCarga pesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
-        return this;
-    }
-
-    /**
-     * Peso do conteiner
-     *
-     * @return pesoConteiner
-     **/
-    @JsonProperty("pesoConteiner")
-    public BigDecimal getPesoConteiner() {
-        return pesoConteiner;
-    }
-
-    public void setPesoConteiner(BigDecimal pesoConteiner) {
-        this.pesoConteiner = pesoConteiner;
-    }
-
-    public CargaRodoviariaItemCarga pesoConteiner(BigDecimal pesoConteiner) {
-        this.pesoConteiner = pesoConteiner;
-        return this;
-    }
-
-    /**
-     * Peso líquido do item de carga em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
-     * @return pesoLiquido
-     **/
-    @JsonProperty("pesoLiquido")
-    public BigDecimal getPesoLiquido() {
-        return pesoLiquido;
-    }
-
-    public void setPesoLiquido(BigDecimal pesoLiquido) {
-        this.pesoLiquido = pesoLiquido;
-    }
-
-    public CargaRodoviariaItemCarga pesoLiquido(BigDecimal pesoLiquido) {
-        this.pesoLiquido = pesoLiquido;
-        return this;
-    }
-
-    /**
-     * Get tipoGranel
-     *
-     * @return tipoGranel
-     **/
-    @JsonProperty("tipoGranel")
-    public TipoGranel getTipoGranel() {
-        return tipoGranel;
-    }
-
-    public void setTipoGranel(TipoGranel tipoGranel) {
-        this.tipoGranel = tipoGranel;
-    }
-
-    public CargaRodoviariaItemCarga tipoGranel(TipoGranel tipoGranel) {
-        this.tipoGranel = tipoGranel;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CargaRodoviariaItemCarga {\n" +
-                "    embalagemVazia: " + toIndentedString(embalagemVazia) + "\n" +
-                "    sequencial: " + toIndentedString(sequencial) + "\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
-                "    tipoTratamentoMadeiraBruta: " + toIndentedString(tipoTratamentoMadeiraBruta) + "\n" +
-                "    medidaConteiner: " + toIndentedString(medidaConteiner) + "\n" +
-                "    contramarca: " + toIndentedString(contramarca) + "\n" +
-                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
-                "    taraConteiner: " + toIndentedString(taraConteiner) + "\n" +
-                "    conteinerVazio: " + toIndentedString(conteinerVazio) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "    possuiEmbalagemSuporteMadeiraBruta: " + toIndentedString(possuiEmbalagemSuporteMadeiraBruta) + "\n" +
-                "    marca: " + toIndentedString(marca) + "\n" +
                 "    chassi: " + toIndentedString(chassi) + "\n" +
+                "    conteinerVazio: " + toIndentedString(conteinerVazio) + "\n" +
+                "    contramarca: " + toIndentedString(contramarca) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    embalagemVazia: " + toIndentedString(embalagemVazia) + "\n" +
+                "    marca: " + toIndentedString(marca) + "\n" +
+                "    medidaConteiner: " + toIndentedString(medidaConteiner) + "\n" +
+                "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
                 "    pesoConteiner: " + toIndentedString(pesoConteiner) + "\n" +
                 "    pesoLiquido: " + toIndentedString(pesoLiquido) + "\n" +
+                "    possuiEmbalagemSuporteMadeiraBruta: " + toIndentedString(possuiEmbalagemSuporteMadeiraBruta) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
+                "    sequencial: " + toIndentedString(sequencial) + "\n" +
+                "    taraConteiner: " + toIndentedString(taraConteiner) + "\n" +
+                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
                 "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
+                "    tipoTratamentoMadeiraBruta: " + toIndentedString(tipoTratamentoMadeiraBruta) + "\n" +
                 "}";
         return sb;
     }

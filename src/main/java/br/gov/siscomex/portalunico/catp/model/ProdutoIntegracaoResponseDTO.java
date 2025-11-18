@@ -13,40 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProdutoIntegracaoResponseDTO", propOrder =
-        {"codigo", "situacao", "atributosCompostosMultivalorados", "denominacao", "descricao", "atributosCompostos", "cpfCnpjRaiz", "codigosInterno", "ncm", "atributosMultivalorados", "atributos", "versao", "modalidade"
+        {"descricao", "denominacao", "modalidade", "ncm", "atributos", "atributosMultivalorados", "atributosCompostos", "atributosCompostosMultivalorados", "codigosInterno", "cpfCnpjRaiz", "codigo", "versao", "situacao"
         })
 
 @XmlRootElement(name = "ProdutoIntegracaoResponseDTO")
 public class ProdutoIntegracaoResponseDTO {
-
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "123", value = "Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'")
-    /**
-     * Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'
-     **/
-    private Long codigo = null;
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(example = "ATIVADO", value = "Código e descrição da situação do produto <br>Domínio: <br>(ATIVADO <br>DESATIVADO <br>RASCUNHO)")
-    /**
-     * Código e descrição da situação do produto <br>Domínio: <br>(ATIVADO <br>DESATIVADO <br>RASCUNHO)
-     **/
-    private String situacao = null;
-
-    @XmlElement(name = "atributosCompostosMultivalorados")
-    @ApiModelProperty(value = "Lista de atributos multivalorados compostos da NCM informada")
-    @Valid
-    /**
-     * Lista de atributos multivalorados compostos da NCM informada
-     **/
-    private List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados = null;
-
-    @XmlElement(name = "denominacao")
-    @ApiModelProperty(example = "Denominação Produto Teste", value = "Denominação do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 120")
-    /**
-     * Denominação do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 120
-     **/
-    private String denominacao = null;
 
     @XmlElement(name = "descricao")
     @ApiModelProperty(example = "Produto Teste", value = "Detalhamento complementar do produto<br>Tamanho: 3700")
@@ -55,27 +26,19 @@ public class ProdutoIntegracaoResponseDTO {
      **/
     private String descricao = null;
 
-    @XmlElement(name = "atributosCompostos")
-    @ApiModelProperty(value = "Lista de atributos compostos da NCM informada")
-    @Valid
+    @XmlElement(name = "denominacao")
+    @ApiModelProperty(example = "Denominação Produto Teste", value = "Denominação do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 120")
     /**
-     * Lista de atributos compostos da NCM informada
+     * Denominação do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 120
      **/
-    private List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos = null;
+    private String denominacao = null;
 
-    @XmlElement(name = "cpfCnpjRaiz")
-    @ApiModelProperty(example = "00000000", value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
+    @XmlElement(name = "modalidade")
+    @ApiModelProperty(example = "EXPORTACAO", value = "Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO)")
     /**
-     * CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
+     * Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO)
      **/
-    private String cpfCnpjRaiz = null;
-
-    @XmlElement(name = "codigosInterno")
-    @ApiModelProperty(value = "Lista de códigos internos do produto do Exportador/Importador<br>Tamanho: 60")
-    /**
-     * Lista de códigos internos do produto do Exportador/Importador<br>Tamanho: 60
-     **/
-    private List<String> codigosInterno = null;
+    private String modalidade = null;
 
     @XmlElement(name = "ncm")
     @ApiModelProperty(example = "02011000", value = "NCM do produto<br>Tamanho: 8<br>Formato: 'NNNNNNNN'")
@@ -83,14 +46,6 @@ public class ProdutoIntegracaoResponseDTO {
      * NCM do produto<br>Tamanho: 8<br>Formato: 'NNNNNNNN'
      **/
     private String ncm = null;
-
-    @XmlElement(name = "atributosMultivalorados")
-    @ApiModelProperty(value = "Lista de atributos multivalorados da NCM informada")
-    @Valid
-    /**
-     * Lista de atributos multivalorados da NCM informada
-     **/
-    private List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados = null;
 
     @XmlElement(name = "atributos")
     @ApiModelProperty(value = "Lista de atributos da NCM informada")
@@ -100,6 +55,51 @@ public class ProdutoIntegracaoResponseDTO {
      **/
     private List<ProdutoCampoSimplesIntegracaoDTO> atributos = null;
 
+    @XmlElement(name = "atributosMultivalorados")
+    @ApiModelProperty(value = "Lista de atributos multivalorados da NCM informada")
+    @Valid
+    /**
+     * Lista de atributos multivalorados da NCM informada
+     **/
+    private List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados = null;
+
+    @XmlElement(name = "atributosCompostos")
+    @ApiModelProperty(value = "Lista de atributos compostos da NCM informada")
+    @Valid
+    /**
+     * Lista de atributos compostos da NCM informada
+     **/
+    private List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos = null;
+
+    @XmlElement(name = "atributosCompostosMultivalorados")
+    @ApiModelProperty(value = "Lista de atributos multivalorados compostos da NCM informada")
+    @Valid
+    /**
+     * Lista de atributos multivalorados compostos da NCM informada
+     **/
+    private List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados = null;
+
+    @XmlElement(name = "codigosInterno")
+    @ApiModelProperty(value = "Lista de códigos internos do produto do Exportador/Importador<br>Tamanho: 60")
+    /**
+     * Lista de códigos internos do produto do Exportador/Importador<br>Tamanho: 60
+     **/
+    private List<String> codigosInterno = null;
+
+    @XmlElement(name = "cpfCnpjRaiz")
+    @ApiModelProperty(example = "00000000", value = "CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfCnpjRaiz = null;
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "123", value = "Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'")
+    /**
+     * Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'
+     **/
+    private Long codigo = null;
+
     @XmlElement(name = "versao")
     @ApiModelProperty(example = "1", value = "Versão do produto (exemplo: '1') ou versão retificada do produto (exemplo: '1.1'). <br>Tamanho máximo: 8")
     /**
@@ -107,12 +107,12 @@ public class ProdutoIntegracaoResponseDTO {
      **/
     private String versao = null;
 
-    @XmlElement(name = "modalidade")
-    @ApiModelProperty(example = "EXPORTACAO", value = "Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO)")
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(example = "ATIVADO", value = "Código e descrição da situação do produto <br>Domínio: <br>(ATIVADO <br>DESATIVADO <br>RASCUNHO)")
     /**
-     * Modalidade de operacao <br>Domínio: (IMPORTACAO <br>EXPORTACAO)
+     * Código e descrição da situação do produto <br>Domínio: <br>(ATIVADO <br>DESATIVADO <br>RASCUNHO)
      **/
-    private String modalidade = null;
+    private String situacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -126,65 +126,17 @@ public class ProdutoIntegracaoResponseDTO {
     }
 
     /**
-     * Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
+     * Detalhamento complementar do produto&lt;br&gt;Tamanho: 3700
      *
-     * @return codigo
+     * @return descricao
      **/
-    @JsonProperty("codigo")
-    public Long getCodigo() {
-        return codigo;
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
-    }
-
-    public ProdutoIntegracaoResponseDTO codigo(Long codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * Código e descrição da situação do produto &lt;br&gt;Domínio: &lt;br&gt;(ATIVADO &lt;br&gt;DESATIVADO &lt;br&gt;RASCUNHO)
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProdutoIntegracaoResponseDTO situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista de atributos multivalorados compostos da NCM informada
-     *
-     * @return atributosCompostosMultivalorados
-     **/
-    @JsonProperty("atributosCompostosMultivalorados")
-    public List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> getAtributosCompostosMultivalorados() {
-        return atributosCompostosMultivalorados;
-    }
-
-    public void setAtributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
-        this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
-    }
-
-    public ProdutoIntegracaoResponseDTO atributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
-        this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
-        return this;
-    }
-
-    public ProdutoIntegracaoResponseDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
-        this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
-        return this;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**
@@ -206,89 +158,27 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    /**
-     * Detalhamento complementar do produto&lt;br&gt;Tamanho: 3700
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public ProdutoIntegracaoResponseDTO descricao(String descricao) {
         this.descricao = descricao;
         return this;
     }
 
     /**
-     * Lista de atributos compostos da NCM informada
+     * Modalidade de operacao &lt;br&gt;Domínio: (IMPORTACAO &lt;br&gt;EXPORTACAO)
      *
-     * @return atributosCompostos
+     * @return modalidade
      **/
-    @JsonProperty("atributosCompostos")
-    public List<ProdutoCampoCompostoIntegracaoDTO> getAtributosCompostos() {
-        return atributosCompostos;
+    @JsonProperty("modalidade")
+    public String getModalidade() {
+        return modalidade;
     }
 
-    public void setAtributosCompostos(List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos) {
-        this.atributosCompostos = atributosCompostos;
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
     }
 
-    public ProdutoIntegracaoResponseDTO atributosCompostos(List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos) {
-        this.atributosCompostos = atributosCompostos;
-        return this;
-    }
-
-    public ProdutoIntegracaoResponseDTO addAtributosCompostosItem(ProdutoCampoCompostoIntegracaoDTO atributosCompostosItem) {
-        this.atributosCompostos.add(atributosCompostosItem);
-        return this;
-    }
-
-    /**
-     * CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfCnpjRaiz
-     **/
-    @JsonProperty("cpfCnpjRaiz")
-    public String getCpfCnpjRaiz() {
-        return cpfCnpjRaiz;
-    }
-
-    public void setCpfCnpjRaiz(String cpfCnpjRaiz) {
-        this.cpfCnpjRaiz = cpfCnpjRaiz;
-    }
-
-    public ProdutoIntegracaoResponseDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
-        this.cpfCnpjRaiz = cpfCnpjRaiz;
-        return this;
-    }
-
-    /**
-     * Lista de códigos internos do produto do Exportador/Importador&lt;br&gt;Tamanho: 60
-     *
-     * @return codigosInterno
-     **/
-    @JsonProperty("codigosInterno")
-    public List<String> getCodigosInterno() {
-        return codigosInterno;
-    }
-
-    public void setCodigosInterno(List<String> codigosInterno) {
-        this.codigosInterno = codigosInterno;
-    }
-
-    public ProdutoIntegracaoResponseDTO codigosInterno(List<String> codigosInterno) {
-        this.codigosInterno = codigosInterno;
-        return this;
-    }
-
-    public ProdutoIntegracaoResponseDTO addCodigosInternoItem(String codigosInternoItem) {
-        this.codigosInterno.add(codigosInternoItem);
+    public ProdutoIntegracaoResponseDTO modalidade(String modalidade) {
+        this.modalidade = modalidade;
         return this;
     }
 
@@ -308,30 +198,6 @@ public class ProdutoIntegracaoResponseDTO {
 
     public ProdutoIntegracaoResponseDTO ncm(String ncm) {
         this.ncm = ncm;
-        return this;
-    }
-
-    /**
-     * Lista de atributos multivalorados da NCM informada
-     *
-     * @return atributosMultivalorados
-     **/
-    @JsonProperty("atributosMultivalorados")
-    public List<ProdutoCampoMultivaloradoIntegracaoDTO> getAtributosMultivalorados() {
-        return atributosMultivalorados;
-    }
-
-    public void setAtributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
-        this.atributosMultivalorados = atributosMultivalorados;
-    }
-
-    public ProdutoIntegracaoResponseDTO atributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
-        this.atributosMultivalorados = atributosMultivalorados;
-        return this;
-    }
-
-    public ProdutoIntegracaoResponseDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
-        this.atributosMultivalorados.add(atributosMultivaloradosItem);
         return this;
     }
 
@@ -360,8 +226,134 @@ public class ProdutoIntegracaoResponseDTO {
     }
 
     /**
-     * Versão do produto (exemplo: &#39;1&#39;) ou versão retificada do produto (exemplo: &#39;1.1&#39;). &lt;br&gt;Tamanho máximo: 8
+     * Lista de atributos multivalorados da NCM informada
      *
+     * @return atributosMultivalorados
+     **/
+    @JsonProperty("atributosMultivalorados")
+    public List<ProdutoCampoMultivaloradoIntegracaoDTO> getAtributosMultivalorados() {
+        return atributosMultivalorados;
+    }
+
+    public void setAtributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
+        this.atributosMultivalorados = atributosMultivalorados;
+    }
+
+    public ProdutoIntegracaoResponseDTO atributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
+        this.atributosMultivalorados = atributosMultivalorados;
+        return this;
+    }
+
+    /**
+     * Lista de atributos compostos da NCM informada
+     *
+     * @return atributosCompostos
+     **/
+    @JsonProperty("atributosCompostos")
+    public List<ProdutoCampoCompostoIntegracaoDTO> getAtributosCompostos() {
+        return atributosCompostos;
+    }
+
+    public void setAtributosCompostos(List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos) {
+        this.atributosCompostos = atributosCompostos;
+    }
+
+    public ProdutoIntegracaoResponseDTO atributosCompostos(List<ProdutoCampoCompostoIntegracaoDTO> atributosCompostos) {
+        this.atributosCompostos = atributosCompostos;
+        return this;
+    }
+
+    public ProdutoIntegracaoResponseDTO addAtributosCompostosItem(ProdutoCampoCompostoIntegracaoDTO atributosCompostosItem) {
+        this.atributosCompostos.add(atributosCompostosItem);
+        return this;
+    }
+
+    public ProdutoIntegracaoResponseDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
+        this.atributosMultivalorados.add(atributosMultivaloradosItem);
+        return this;
+    }
+
+    /**
+     * Lista de atributos multivalorados compostos da NCM informada
+     *
+     * @return atributosCompostosMultivalorados
+     **/
+    @JsonProperty("atributosCompostosMultivalorados")
+    public List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> getAtributosCompostosMultivalorados() {
+        return atributosCompostosMultivalorados;
+    }
+
+    public void setAtributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
+        this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
+    }
+
+    public ProdutoIntegracaoResponseDTO atributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
+        this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
+        return this;
+    }
+
+    /**
+     * Lista de códigos internos do produto do Exportador/Importador&lt;br&gt;Tamanho: 60
+     * @return codigosInterno
+     **/
+    @JsonProperty("codigosInterno")
+    public List<String> getCodigosInterno() {
+        return codigosInterno;
+    }
+
+    public void setCodigosInterno(List<String> codigosInterno) {
+        this.codigosInterno = codigosInterno;
+    }
+
+    public ProdutoIntegracaoResponseDTO codigosInterno(List<String> codigosInterno) {
+        this.codigosInterno = codigosInterno;
+        return this;
+    }
+
+    public ProdutoIntegracaoResponseDTO addCodigosInternoItem(String codigosInternoItem) {
+        this.codigosInterno.add(codigosInternoItem);
+        return this;
+    }
+
+    public ProdutoIntegracaoResponseDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
+        this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
+        return this;
+    }
+
+    /**
+     * CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * @return cpfCnpjRaiz
+     **/
+    @JsonProperty("cpfCnpjRaiz")
+    public String getCpfCnpjRaiz() {
+        return cpfCnpjRaiz;
+    }
+
+    public void setCpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
+    }
+
+    public ProdutoIntegracaoResponseDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
+        return this;
+    }
+
+    /**
+     * Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    public Long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Long codigo) {
+        this.codigo = codigo;
+    }
+
+    /**
+     * Versão do produto (exemplo: &#39;1&#39;) ou versão retificada do produto (exemplo: &#39;1.1&#39;). &lt;br&gt;Tamanho máximo: 8
      * @return versao
      **/
     @JsonProperty("versao")
@@ -378,22 +370,26 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
+    public ProdutoIntegracaoResponseDTO codigo(Long codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
     /**
-     * Modalidade de operacao &lt;br&gt;Domínio: (IMPORTACAO &lt;br&gt;EXPORTACAO)
-     *
-     * @return modalidade
+     * Código e descrição da situação do produto &lt;br&gt;Domínio: &lt;br&gt;(ATIVADO &lt;br&gt;DESATIVADO &lt;br&gt;RASCUNHO)
+     * @return situacao
      **/
-    @JsonProperty("modalidade")
-    public String getModalidade() {
-        return modalidade;
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
-    public ProdutoIntegracaoResponseDTO modalidade(String modalidade) {
-        this.modalidade = modalidade;
+    public ProdutoIntegracaoResponseDTO situacao(String situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -401,19 +397,19 @@ public class ProdutoIntegracaoResponseDTO {
     public String toString() {
 
         String sb = "class ProdutoIntegracaoResponseDTO {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    atributosCompostosMultivalorados: " + toIndentedString(atributosCompostosMultivalorados) + "\n" +
-                "    denominacao: " + toIndentedString(denominacao) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
-                "    atributosCompostos: " + toIndentedString(atributosCompostos) + "\n" +
-                "    cpfCnpjRaiz: " + toIndentedString(cpfCnpjRaiz) + "\n" +
-                "    codigosInterno: " + toIndentedString(codigosInterno) + "\n" +
-                "    ncm: " + toIndentedString(ncm) + "\n" +
-                "    atributosMultivalorados: " + toIndentedString(atributosMultivalorados) + "\n" +
-                "    atributos: " + toIndentedString(atributos) + "\n" +
-                "    versao: " + toIndentedString(versao) + "\n" +
+                "    denominacao: " + toIndentedString(denominacao) + "\n" +
                 "    modalidade: " + toIndentedString(modalidade) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    atributos: " + toIndentedString(atributos) + "\n" +
+                "    atributosMultivalorados: " + toIndentedString(atributosMultivalorados) + "\n" +
+                "    atributosCompostos: " + toIndentedString(atributosCompostos) + "\n" +
+                "    atributosCompostosMultivalorados: " + toIndentedString(atributosCompostosMultivalorados) + "\n" +
+                "    codigosInterno: " + toIndentedString(codigosInterno) + "\n" +
+                "    cpfCnpjRaiz: " + toIndentedString(cpfCnpjRaiz) + "\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    versao: " + toIndentedString(versao) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

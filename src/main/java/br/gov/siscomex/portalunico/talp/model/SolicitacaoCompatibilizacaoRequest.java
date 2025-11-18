@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SolicitacaoCompatibilizacaoRequest", propOrder =
-        {"versaoCompatibilizacao", "justificativa", "numeroItemDocumento", "numeroDocumento"
+        {"numeroDocumento", "numeroItemDocumento", "versaoCompatibilizacao", "justificativa"
         })
 
 @XmlRootElement(name = "SolicitacaoCompatibilizacaoRequest")
@@ -22,6 +22,20 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados para realizar uma solicitação de compatiblização de versões de produtos de um LPCO")
 public class SolicitacaoCompatibilizacaoRequest {
+
+    @XmlElement(name = "numeroDocumento", required = true)
+    @ApiModelProperty(example = "20BR00000000000", required = true, value = "Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados<br>Tamanho: 15")
+    /**
+     * Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados<br>Tamanho: 15
+     **/
+    private String numeroDocumento = null;
+
+    @XmlElement(name = "numeroItemDocumento", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número do item da Duimp vinculado aos itens LPCO a serem compatilizados")
+    /**
+     * Número do item da Duimp vinculado aos itens LPCO a serem compatilizados
+     **/
+    private Integer numeroItemDocumento = null;
 
     @XmlElement(name = "versaoCompatibilizacao", required = true)
     @ApiModelProperty(example = "1.1", required = true, value = "Versão do produto a ser compatilizado<br>Tamanho mínimo: 1<br>Tamanho máximo: 3")
@@ -37,20 +51,6 @@ public class SolicitacaoCompatibilizacaoRequest {
      **/
     private String justificativa = null;
 
-    @XmlElement(name = "numeroItemDocumento", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número do item da Duimp vinculado aos itens LPCO a serem compatilizados")
-    /**
-     * Número do item da Duimp vinculado aos itens LPCO a serem compatilizados
-     **/
-    private Integer numeroItemDocumento = null;
-
-    @XmlElement(name = "numeroDocumento", required = true)
-    @ApiModelProperty(example = "20BR00000000000", required = true, value = "Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados<br>Tamanho: 15")
-    /**
-     * Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados<br>Tamanho: 15
-     **/
-    private String numeroDocumento = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -60,6 +60,41 @@ public class SolicitacaoCompatibilizacaoRequest {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados&lt;br&gt;Tamanho: 15
+     *
+     * @return numeroDocumento
+     **/
+    @JsonProperty("numeroDocumento")
+    @NotNull
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public SolicitacaoCompatibilizacaoRequest numeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+        return this;
+    }
+
+    /**
+     * Número do item da Duimp vinculado aos itens LPCO a serem compatilizados
+     *
+     * @return numeroItemDocumento
+     **/
+    @JsonProperty("numeroItemDocumento")
+    @NotNull
+    public Integer getNumeroItemDocumento() {
+        return numeroItemDocumento;
+    }
+
+    public void setNumeroItemDocumento(Integer numeroItemDocumento) {
+        this.numeroItemDocumento = numeroItemDocumento;
     }
 
     /**
@@ -101,43 +136,8 @@ public class SolicitacaoCompatibilizacaoRequest {
         return this;
     }
 
-    /**
-     * Número do item da Duimp vinculado aos itens LPCO a serem compatilizados
-     *
-     * @return numeroItemDocumento
-     **/
-    @JsonProperty("numeroItemDocumento")
-    @NotNull
-    public Integer getNumeroItemDocumento() {
-        return numeroItemDocumento;
-    }
-
-    public void setNumeroItemDocumento(Integer numeroItemDocumento) {
-        this.numeroItemDocumento = numeroItemDocumento;
-    }
-
     public SolicitacaoCompatibilizacaoRequest numeroItemDocumento(Integer numeroItemDocumento) {
         this.numeroItemDocumento = numeroItemDocumento;
-        return this;
-    }
-
-    /**
-     * Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados&lt;br&gt;Tamanho: 15
-     *
-     * @return numeroDocumento
-     **/
-    @JsonProperty("numeroDocumento")
-    @NotNull
-    public String getNumeroDocumento() {
-        return numeroDocumento;
-    }
-
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    public SolicitacaoCompatibilizacaoRequest numeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
         return this;
     }
 
@@ -145,10 +145,10 @@ public class SolicitacaoCompatibilizacaoRequest {
     public String toString() {
 
         String sb = "class SolicitacaoCompatibilizacaoRequest {\n" +
+                "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    numeroItemDocumento: " + toIndentedString(numeroItemDocumento) + "\n" +
                 "    versaoCompatibilizacao: " + toIndentedString(versaoCompatibilizacao) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
-                "    numeroItemDocumento: " + toIndentedString(numeroItemDocumento) + "\n" +
-                "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
                 "}";
         return sb;
     }

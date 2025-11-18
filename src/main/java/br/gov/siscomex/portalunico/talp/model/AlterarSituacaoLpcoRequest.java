@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AlterarSituacaoLpcoRequest", propOrder =
-        {"requerInspecao", "motivoAnalise", "situacao", "justificativa", "canal", "dataFinalVigencia", "faltaPagamentoTaxa", "dataInicioVigencia", "decisaoJudicial", "numeroOrgaoOrigem"
+        {"situacao", "justificativa", "dataInicioVigencia", "dataFinalVigencia", "numeroOrgaoOrigem", "requerInspecao", "decisaoJudicial", "faltaPagamentoTaxa", "canal", "motivoAnalise"
         })
 
 @XmlRootElement(name = "AlterarSituacaoLpcoRequest")
@@ -25,6 +25,34 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados a serem informados para realizar a alteração da situação de um LPCO")
 public class AlterarSituacaoLpcoRequest {
 
+
+    @XmlElement(name = "dataFinalVigencia")
+    @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+    /**
+     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+     **/
+    private String dataFinalVigencia = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(example = "EM_ANALISE", required = true, value = "Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50")
+    /**
+     * Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50
+     **/
+    private SituacaoEnum situacao = null;
+
+    @XmlElement(name = "justificativa")
+    @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
+    /**
+     * Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
+     **/
+    private String justificativa = null;
+
+    @XmlElement(name = "dataInicioVigencia")
+    @ApiModelProperty(example = "2019-09-02", value = "Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+    /**
+     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+     **/
+    private String dataInicioVigencia = null;
     @XmlElement(name = "requerInspecao")
     @ApiModelProperty(example = "false", value = "Indica se haverá necessidade de inspeção de carga")
     /**
@@ -32,60 +60,36 @@ public class AlterarSituacaoLpcoRequest {
      **/
     private Boolean requerInspecao = null;
 
-    @XmlElement(name = "motivoAnalise")
-    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
-    /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
-     **/
-    private String motivoAnalise = null;
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(example = "EM_ANALISE", required = true, value = "Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50")
-    /**
-     * Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50
-     **/
-    private SituacaoEnum situacao = null;
-    @XmlElement(name = "justificativa")
-    @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
-    /**
-     * Justificativa para a alteração da situação do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
-     **/
-    private String justificativa = null;
-    @XmlElement(name = "canal")
-    @ApiModelProperty(example = "VERDE", value = "Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>")
-    /**
-     * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>
-     **/
-    private CanalEnum canal = null;
-    @XmlElement(name = "dataFinalVigencia")
-    @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
-    /**
-     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
-     **/
-    private String dataFinalVigencia = null;
-    @XmlElement(name = "faltaPagamentoTaxa")
-    @ApiModelProperty(example = "false", value = "Indicador de pagamento de taxa não efetuado")
-    /**
-     * Indicador de pagamento de taxa não efetuado
-     **/
-    private Boolean faltaPagamentoTaxa = null;
-    @XmlElement(name = "dataInicioVigencia")
-    @ApiModelProperty(example = "2019-09-02", value = "Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
-    /**
-     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
-     **/
-    private String dataInicioVigencia = null;
-    @XmlElement(name = "decisaoJudicial")
-    @ApiModelProperty(example = "false", value = "Indicador de decisão judicial utilizado no deferimento")
-    /**
-     * Indicador de decisão judicial utilizado no deferimento
-     **/
-    private Boolean decisaoJudicial = null;
     @XmlElement(name = "numeroOrgaoOrigem")
     @ApiModelProperty(example = "EXA12345", value = "Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
      * Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
     private String numeroOrgaoOrigem = null;
+    @XmlElement(name = "decisaoJudicial")
+    @ApiModelProperty(example = "false", value = "Indicador de decisão judicial utilizado no deferimento")
+    /**
+     * Indicador de decisão judicial utilizado no deferimento
+     **/
+    private Boolean decisaoJudicial = null;
+    @XmlElement(name = "faltaPagamentoTaxa")
+    @ApiModelProperty(example = "false", value = "Indicador de pagamento de taxa não efetuado")
+    /**
+     * Indicador de pagamento de taxa não efetuado
+     **/
+    private Boolean faltaPagamentoTaxa = null;
+    @XmlElement(name = "canal")
+    @ApiModelProperty(example = "VERDE", value = "Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>")
+    /**
+     * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO<br>
+     **/
+    private CanalEnum canal = null;
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+     **/
+    private String motivoAnalise = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -99,41 +103,13 @@ public class AlterarSituacaoLpcoRequest {
     }
 
     /**
-     * Indica se haverá necessidade de inspeção de carga
+     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
      *
-     * @return requerInspecao
+     * @return dataInicioVigencia
      **/
-    @JsonProperty("requerInspecao")
-    public Boolean isisRequerInspecao() {
-        return requerInspecao;
-    }
-
-    public void setRequerInspecao(Boolean requerInspecao) {
-        this.requerInspecao = requerInspecao;
-    }
-
-    public AlterarSituacaoLpcoRequest requerInspecao(Boolean requerInspecao) {
-        this.requerInspecao = requerInspecao;
-        return this;
-    }
-
-    /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
-     *
-     * @return motivoAnalise
-     **/
-    @JsonProperty("motivoAnalise")
-    public String getMotivoAnalise() {
-        return motivoAnalise;
-    }
-
-    public void setMotivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-    }
-
-    public AlterarSituacaoLpcoRequest motivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-        return this;
+    @JsonProperty("dataInicioVigencia")
+    public String getDataInicioVigencia() {
+        return dataInicioVigencia;
     }
 
     /**
@@ -178,6 +154,110 @@ public class AlterarSituacaoLpcoRequest {
         return this;
     }
 
+    public void setDataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public AlterarSituacaoLpcoRequest dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+        return this;
+    }
+
+    /**
+     * Número do LPCO no órgão anuente, se houver&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+     *
+     * @return numeroOrgaoOrigem
+     **/
+    @JsonProperty("numeroOrgaoOrigem")
+    public String getNumeroOrgaoOrigem() {
+        return numeroOrgaoOrigem;
+    }
+
+    /**
+     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return dataFinalVigencia
+     **/
+    @JsonProperty("dataFinalVigencia")
+    public String getDataFinalVigencia() {
+        return dataFinalVigencia;
+    }
+
+    public void setDataFinalVigencia(String dataFinalVigencia) {
+        this.dataFinalVigencia = dataFinalVigencia;
+    }
+
+    public AlterarSituacaoLpcoRequest dataFinalVigencia(String dataFinalVigencia) {
+        this.dataFinalVigencia = dataFinalVigencia;
+        return this;
+    }
+
+    public void setNumeroOrgaoOrigem(String numeroOrgaoOrigem) {
+        this.numeroOrgaoOrigem = numeroOrgaoOrigem;
+    }
+
+    public AlterarSituacaoLpcoRequest numeroOrgaoOrigem(String numeroOrgaoOrigem) {
+        this.numeroOrgaoOrigem = numeroOrgaoOrigem;
+        return this;
+    }
+
+    /**
+     * Indica se haverá necessidade de inspeção de carga
+     *
+     * @return requerInspecao
+     **/
+    @JsonProperty("requerInspecao")
+    public Boolean isisRequerInspecao() {
+        return requerInspecao;
+    }
+
+    public void setRequerInspecao(Boolean requerInspecao) {
+        this.requerInspecao = requerInspecao;
+    }
+
+    public AlterarSituacaoLpcoRequest requerInspecao(Boolean requerInspecao) {
+        this.requerInspecao = requerInspecao;
+        return this;
+    }
+
+    /**
+     * Indicador de pagamento de taxa não efetuado
+     *
+     * @return faltaPagamentoTaxa
+     **/
+    @JsonProperty("faltaPagamentoTaxa")
+    public Boolean isisFaltaPagamentoTaxa() {
+        return faltaPagamentoTaxa;
+    }
+
+    /**
+     * Indicador de decisão judicial utilizado no deferimento
+     *
+     * @return decisaoJudicial
+     **/
+    @JsonProperty("decisaoJudicial")
+    public Boolean isisDecisaoJudicial() {
+        return decisaoJudicial;
+    }
+
+    public void setDecisaoJudicial(Boolean decisaoJudicial) {
+        this.decisaoJudicial = decisaoJudicial;
+    }
+
+    public AlterarSituacaoLpcoRequest decisaoJudicial(Boolean decisaoJudicial) {
+        this.decisaoJudicial = decisaoJudicial;
+        return this;
+    }
+
+    public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+    }
+
+    public AlterarSituacaoLpcoRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
+        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
+        return this;
+    }
+
     /**
      * Canal, só deve ser informado quando for LPCO com LI vinculada e a nova situação for PARAMETRIZACAO&lt;br&gt;
      *
@@ -201,97 +281,21 @@ public class AlterarSituacaoLpcoRequest {
     }
 
     /**
-     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
      *
-     * @return dataFinalVigencia
+     * @return motivoAnalise
      **/
-    @JsonProperty("dataFinalVigencia")
-    public String getDataFinalVigencia() {
-        return dataFinalVigencia;
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
     }
 
-    public void setDataFinalVigencia(String dataFinalVigencia) {
-        this.dataFinalVigencia = dataFinalVigencia;
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
     }
 
-    public AlterarSituacaoLpcoRequest dataFinalVigencia(String dataFinalVigencia) {
-        this.dataFinalVigencia = dataFinalVigencia;
-        return this;
-    }
-
-    /**
-     * Indicador de pagamento de taxa não efetuado
-     *
-     * @return faltaPagamentoTaxa
-     **/
-    @JsonProperty("faltaPagamentoTaxa")
-    public Boolean isisFaltaPagamentoTaxa() {
-        return faltaPagamentoTaxa;
-    }
-
-    public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
-        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
-    }
-
-    public AlterarSituacaoLpcoRequest faltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
-        this.faltaPagamentoTaxa = faltaPagamentoTaxa;
-        return this;
-    }
-
-    /**
-     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataInicioVigencia
-     **/
-    @JsonProperty("dataInicioVigencia")
-    public String getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
-    public AlterarSituacaoLpcoRequest dataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
-    /**
-     * Indicador de decisão judicial utilizado no deferimento
-     *
-     * @return decisaoJudicial
-     **/
-    @JsonProperty("decisaoJudicial")
-    public Boolean isisDecisaoJudicial() {
-        return decisaoJudicial;
-    }
-
-    public void setDecisaoJudicial(Boolean decisaoJudicial) {
-        this.decisaoJudicial = decisaoJudicial;
-    }
-
-    public AlterarSituacaoLpcoRequest decisaoJudicial(Boolean decisaoJudicial) {
-        this.decisaoJudicial = decisaoJudicial;
-        return this;
-    }
-
-    /**
-     * Número do LPCO no órgão anuente, se houver&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
-     *
-     * @return numeroOrgaoOrigem
-     **/
-    @JsonProperty("numeroOrgaoOrigem")
-    public String getNumeroOrgaoOrigem() {
-        return numeroOrgaoOrigem;
-    }
-
-    public void setNumeroOrgaoOrigem(String numeroOrgaoOrigem) {
-        this.numeroOrgaoOrigem = numeroOrgaoOrigem;
-    }
-
-    public AlterarSituacaoLpcoRequest numeroOrgaoOrigem(String numeroOrgaoOrigem) {
-        this.numeroOrgaoOrigem = numeroOrgaoOrigem;
+    public AlterarSituacaoLpcoRequest motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
         return this;
     }
 
@@ -299,16 +303,16 @@ public class AlterarSituacaoLpcoRequest {
     public String toString() {
 
         String sb = "class AlterarSituacaoLpcoRequest {\n" +
-                "    requerInspecao: " + toIndentedString(requerInspecao) + "\n" +
-                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
-                "    canal: " + toIndentedString(canal) + "\n" +
-                "    dataFinalVigencia: " + toIndentedString(dataFinalVigencia) + "\n" +
-                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
                 "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
-                "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
+                "    dataFinalVigencia: " + toIndentedString(dataFinalVigencia) + "\n" +
                 "    numeroOrgaoOrigem: " + toIndentedString(numeroOrgaoOrigem) + "\n" +
+                "    requerInspecao: " + toIndentedString(requerInspecao) + "\n" +
+                "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
+                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
+                "    canal: " + toIndentedString(canal) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "}";
         return sb;
     }

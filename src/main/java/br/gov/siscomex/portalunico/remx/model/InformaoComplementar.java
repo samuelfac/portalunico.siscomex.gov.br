@@ -25,17 +25,6 @@ public class InformaoComplementar {
     private String infoCompl = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da informação complementar.
      *
      * @return infoCompl
@@ -52,6 +41,18 @@ public class InformaoComplementar {
     public InformaoComplementar infoCompl(String infoCompl) {
         this.infoCompl = infoCompl;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

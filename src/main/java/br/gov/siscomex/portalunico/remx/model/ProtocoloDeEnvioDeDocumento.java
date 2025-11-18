@@ -34,17 +34,6 @@ public class ProtocoloDeEnvioDeDocumento {
     private String numeroProtocolo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e horário do transmissão.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataHoraTransmissao
@@ -82,6 +71,18 @@ public class ProtocoloDeEnvioDeDocumento {
     public ProtocoloDeEnvioDeDocumento numeroProtocolo(String numeroProtocolo) {
         this.numeroProtocolo = numeroProtocolo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

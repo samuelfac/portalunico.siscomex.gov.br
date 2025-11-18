@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TemplateItemLpco", propOrder =
-        {"unidadeMedidaEstatistica", "listaCamposNcm", "listaAtributosNcm", "ncm", "descricaoNcm"
+        {"ncm", "descricaoNcm", "listaCamposNcm", "listaAtributosNcm", "unidadeMedidaEstatistica"
         })
 
 @XmlRootElement(name = "TemplateItemLpco")
@@ -26,12 +26,19 @@ import java.util.List;
 @ApiModel(description = "Template que especifica a estrutura de um item de um formulário de um LPCO")
 public class TemplateItemLpco {
 
-    @XmlElement(name = "unidadeMedidaEstatistica")
-    @ApiModelProperty(value = "Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \"unidadeMedida\" do campo QTD_ESTATISTICA na inclusão/alteração do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 60")
+    @XmlElement(name = "ncm", required = true)
+    @ApiModelProperty(example = "08051000", required = true, value = "Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN")
     /**
-     * Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \"unidadeMedida\" do campo QTD_ESTATISTICA na inclusão/alteração do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 60
+     * Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN
      **/
-    private String unidadeMedidaEstatistica = null;
+    private String ncm = null;
+
+    @XmlElement(name = "descricaoNcm", required = true)
+    @ApiModelProperty(example = "- LARANJAS", required = true, value = "Descrição do NCM informado para pesquisa do modelo")
+    /**
+     * Descrição do NCM informado para pesquisa do modelo
+     **/
+    private String descricaoNcm = null;
 
     @XmlElement(name = "listaCamposNcm", required = true)
     @ApiModelProperty(required = true, value = "Lista de definições de campos a serem preenchidos por NCM")
@@ -49,19 +56,12 @@ public class TemplateItemLpco {
      **/
     private List<CampoFormulario> listaAtributosNcm = new ArrayList<>();
 
-    @XmlElement(name = "ncm", required = true)
-    @ApiModelProperty(example = "08051000", required = true, value = "Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN")
+    @XmlElement(name = "unidadeMedidaEstatistica")
+    @ApiModelProperty(value = "Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \"unidadeMedida\" do campo QTD_ESTATISTICA na inclusão/alteração do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 60")
     /**
-     * Código NCM informado para pesquisa do modelo<br>Tamanho: 8<br>Formato: NNNNNNNN
+     * Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \"unidadeMedida\" do campo QTD_ESTATISTICA na inclusão/alteração do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 60
      **/
-    private String ncm = null;
-
-    @XmlElement(name = "descricaoNcm", required = true)
-    @ApiModelProperty(example = "- LARANJAS", required = true, value = "Descrição do NCM informado para pesquisa do modelo")
-    /**
-     * Descrição do NCM informado para pesquisa do modelo
-     **/
-    private String descricaoNcm = null;
+    private String unidadeMedidaEstatistica = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -75,22 +75,38 @@ public class TemplateItemLpco {
     }
 
     /**
-     * Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \&quot;unidadeMedida\&quot; do campo QTD_ESTATISTICA na inclusão/alteração do LPCO&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 60
+     * Código NCM informado para pesquisa do modelo&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
      *
-     * @return unidadeMedidaEstatistica
+     * @return ncm
      **/
-    @JsonProperty("unidadeMedidaEstatistica")
-    public String getUnidadeMedidaEstatistica() {
-        return unidadeMedidaEstatistica;
+    @JsonProperty("ncm")
+    @NotNull
+    public String getNcm() {
+        return ncm;
     }
 
-    public void setUnidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
-        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
     }
 
-    public TemplateItemLpco unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
-        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
+    public TemplateItemLpco ncm(String ncm) {
+        this.ncm = ncm;
         return this;
+    }
+
+    /**
+     * Descrição do NCM informado para pesquisa do modelo
+     *
+     * @return descricaoNcm
+     **/
+    @JsonProperty("descricaoNcm")
+    @NotNull
+    public String getDescricaoNcm() {
+        return descricaoNcm;
+    }
+
+    public void setDescricaoNcm(String descricaoNcm) {
+        this.descricaoNcm = descricaoNcm;
     }
 
     /**
@@ -143,43 +159,27 @@ public class TemplateItemLpco {
         return this;
     }
 
-    /**
-     * Código NCM informado para pesquisa do modelo&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
-     *
-     * @return ncm
-     **/
-    @JsonProperty("ncm")
-    @NotNull
-    public String getNcm() {
-        return ncm;
-    }
-
-    public void setNcm(String ncm) {
-        this.ncm = ncm;
-    }
-
-    public TemplateItemLpco ncm(String ncm) {
-        this.ncm = ncm;
+    public TemplateItemLpco descricaoNcm(String descricaoNcm) {
+        this.descricaoNcm = descricaoNcm;
         return this;
     }
 
     /**
-     * Descrição do NCM informado para pesquisa do modelo
+     * Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \&quot;unidadeMedida\&quot; do campo QTD_ESTATISTICA na inclusão/alteração do LPCO&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 60
      *
-     * @return descricaoNcm
+     * @return unidadeMedidaEstatistica
      **/
-    @JsonProperty("descricaoNcm")
-    @NotNull
-    public String getDescricaoNcm() {
-        return descricaoNcm;
+    @JsonProperty("unidadeMedidaEstatistica")
+    public String getUnidadeMedidaEstatistica() {
+        return unidadeMedidaEstatistica;
     }
 
-    public void setDescricaoNcm(String descricaoNcm) {
-        this.descricaoNcm = descricaoNcm;
+    public void setUnidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
+        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
     }
 
-    public TemplateItemLpco descricaoNcm(String descricaoNcm) {
-        this.descricaoNcm = descricaoNcm;
+    public TemplateItemLpco unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
+        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
         return this;
     }
 
@@ -187,11 +187,11 @@ public class TemplateItemLpco {
     public String toString() {
 
         String sb = "class TemplateItemLpco {\n" +
-                "    unidadeMedidaEstatistica: " + toIndentedString(unidadeMedidaEstatistica) + "\n" +
-                "    listaCamposNcm: " + toIndentedString(listaCamposNcm) + "\n" +
-                "    listaAtributosNcm: " + toIndentedString(listaAtributosNcm) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
                 "    descricaoNcm: " + toIndentedString(descricaoNcm) + "\n" +
+                "    listaCamposNcm: " + toIndentedString(listaCamposNcm) + "\n" +
+                "    listaAtributosNcm: " + toIndentedString(listaAtributosNcm) + "\n" +
+                "    unidadeMedidaEstatistica: " + toIndentedString(unidadeMedidaEstatistica) + "\n" +
                 "}";
         return sb;
     }

@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultarTiposDocumentoComTiposDossie", propOrder =
-        {"retornoConsultarTiposDocumentoComTiposDossieTiposDocumento", "retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes", "tiposDossie"
+        {"retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes", "retornoConsultarTiposDocumentoComTiposDossieTiposDocumento", "tiposDossie"
         })
 
 
@@ -25,14 +25,6 @@ import java.util.List;
 @ApiModel(description = "Retorno da consulta de tipos de documentos, tipos de dossiê e de órgãos anuentes.")
 public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsultarTiposDocumento {
 
-    @XmlElement(name = "tiposDocumento")
-    @ApiModelProperty(value = "Lista de tipos de documento.<br/>Esta lista somente será retornada quando a operação consultada possuir um único tipo de dossiê associado.<br/>Caso contrário, os tipos de documento virão aninhados dentro da propriedade 'tiposDossie'.")
-    @Valid
-    /**
-     * Lista de tipos de documento.<br/>Esta lista somente será retornada quando a operação consultada possuir um único tipo de dossiê associado.<br/>Caso contrário, os tipos de documento virão aninhados dentro da propriedade 'tiposDossie'.
-     **/
-    private List<TipoDocumento> retornoConsultarTiposDocumentoComTiposDossieTiposDocumento = null;
-
     @XmlElement(name = "orgaosAnuentes", required = true)
     @ApiModelProperty(required = true, value = "Lista de órgãos anuentes.")
     @Valid
@@ -41,6 +33,14 @@ public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsult
      **/
     private List<OrgaoAnuente> retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes = new ArrayList<>();
 
+    @XmlElement(name = "tiposDocumento")
+    @ApiModelProperty(value = "Lista de tipos de documento.<br/>Esta lista somente será retornada quando a operação consultada possuir um único tipo de dossiê associado.<br/>Caso contrário, os tipos de documento virão aninhados dentro da propriedade 'tiposDossie'.")
+    @Valid
+    /**
+     * Lista de tipos de documento.<br/>Esta lista somente será retornada quando a operação consultada possuir um único tipo de dossiê associado.<br/>Caso contrário, os tipos de documento virão aninhados dentro da propriedade 'tiposDossie'.
+     **/
+    private List<TipoDocumento> retornoConsultarTiposDocumentoComTiposDossieTiposDocumento = null;
+
     @XmlElement(name = "tiposDossie")
     @ApiModelProperty(value = "Lista de tipos de dossiê.<br/>Esta lista somente será retornada quando a operação consultada possuir mais de um tipo de dossiê associado.<br/>As operações que permitem mais de um tipo de dossiê associado são: DI, LI, RE e DT.")
     @Valid
@@ -48,6 +48,31 @@ public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsult
      * Lista de tipos de dossiê.<br/>Esta lista somente será retornada quando a operação consultada possuir mais de um tipo de dossiê associado.<br/>As operações que permitem mais de um tipo de dossiê associado são: DI, LI, RE e DT.
      **/
     private List<TipoDossie> tiposDossie = null;
+
+    /**
+     * Lista de órgãos anuentes.
+     *
+     * @return retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes
+     **/
+    @JsonProperty("orgaosAnuentes")
+    @NotNull
+    public List<OrgaoAnuente> getRetornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes() {
+        return retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes;
+    }
+
+    public void setRetornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes(List<OrgaoAnuente> retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes) {
+        this.retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes = retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes;
+    }
+
+    public RetornoConsultarTiposDocumentoComTiposDossie retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes(List<OrgaoAnuente> retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes) {
+        this.retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes = retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes;
+        return this;
+    }
+
+    public RetornoConsultarTiposDocumentoComTiposDossie addRetornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentesItem(OrgaoAnuente retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentesItem) {
+        this.retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes.add(retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentesItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -79,36 +104,6 @@ public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsult
         return this;
     }
 
-    public RetornoConsultarTiposDocumentoComTiposDossie addRetornoConsultarTiposDocumentoComTiposDossieTiposDocumentoItem(TipoDocumento retornoConsultarTiposDocumentoComTiposDossieTiposDocumentoItem) {
-        this.retornoConsultarTiposDocumentoComTiposDossieTiposDocumento.add(retornoConsultarTiposDocumentoComTiposDossieTiposDocumentoItem);
-        return this;
-    }
-
-    /**
-     * Lista de órgãos anuentes.
-     *
-     * @return retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes
-     **/
-    @JsonProperty("orgaosAnuentes")
-    @NotNull
-    public List<OrgaoAnuente> getRetornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes() {
-        return retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes;
-    }
-
-    public void setRetornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes(List<OrgaoAnuente> retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes) {
-        this.retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes = retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes;
-    }
-
-    public RetornoConsultarTiposDocumentoComTiposDossie retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes(List<OrgaoAnuente> retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes) {
-        this.retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes = retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes;
-        return this;
-    }
-
-    public RetornoConsultarTiposDocumentoComTiposDossie addRetornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentesItem(OrgaoAnuente retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentesItem) {
-        this.retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes.add(retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentesItem);
-        return this;
-    }
-
     /**
      * Lista de tipos de dossiê.&lt;br/&gt;Esta lista somente será retornada quando a operação consultada possuir mais de um tipo de dossiê associado.&lt;br/&gt;As operações que permitem mais de um tipo de dossiê associado são: DI, LI, RE e DT.
      *
@@ -133,12 +128,17 @@ public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsult
         return this;
     }
 
+    public RetornoConsultarTiposDocumentoComTiposDossie addRetornoConsultarTiposDocumentoComTiposDossieTiposDocumentoItem(TipoDocumento retornoConsultarTiposDocumentoComTiposDossieTiposDocumentoItem) {
+        this.retornoConsultarTiposDocumentoComTiposDossieTiposDocumento.add(retornoConsultarTiposDocumentoComTiposDossieTiposDocumentoItem);
+        return this;
+    }
+
     @Override
     public String toString() {
         String sb = "class RetornoConsultarTiposDocumentoComTiposDossie {\n" +
                 "    " + toIndentedString(super.toString()) + "\n" +
-                "    retornoConsultarTiposDocumentoComTiposDossieTiposDocumento: " + toIndentedString(retornoConsultarTiposDocumentoComTiposDossieTiposDocumento) + "\n" +
                 "    retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes: " + toIndentedString(retornoConsultarTiposDocumentoComTiposDossieOrgaosAnuentes) + "\n" +
+                "    retornoConsultarTiposDocumentoComTiposDossieTiposDocumento: " + toIndentedString(retornoConsultarTiposDocumentoComTiposDossieTiposDocumento) + "\n" +
                 "    tiposDossie: " + toIndentedString(tiposDossie) + "\n" +
                 "}";
         return sb;

@@ -12,32 +12,11 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EventoDoHistoricoDTO", propOrder =
-        {"evento", "motivo", "informacoesAdicionais", "dataEHoraDoEvento", "responsavel", "detalhes"
+        {"dataEHoraDoEvento", "detalhes", "evento", "informacoesAdicionais", "motivo", "responsavel"
         })
 
 @XmlRootElement(name = "EventoDoHistoricoDTO")
 public class EventoDoHistoricoDTO {
-
-    @XmlElement(name = "evento")
-    @ApiModelProperty(value = "Evento<br />Tamanho mínimo: 1<br />Tamanho máximo: 150")
-    /**
-     * Evento<br />Tamanho mínimo: 1<br />Tamanho máximo: 150
-     **/
-    private String evento = null;
-
-    @XmlElement(name = "motivo")
-    @ApiModelProperty(value = "Motivo<br />Tamanho mínimo: 0<br />Tamanho máximo: 150")
-    /**
-     * Motivo<br />Tamanho mínimo: 0<br />Tamanho máximo: 150
-     **/
-    private String motivo = null;
-
-    @XmlElement(name = "informacoesAdicionais")
-    @ApiModelProperty(value = "Informações adicionais<br />Tamanho mínimo: 0<br />Tamanho máximo: 4000")
-    /**
-     * Informações adicionais<br />Tamanho mínimo: 0<br />Tamanho máximo: 4000
-     **/
-    private String informacoesAdicionais = null;
 
     @XmlElement(name = "dataEHoraDoEvento")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data e hora do evento<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -46,19 +25,40 @@ public class EventoDoHistoricoDTO {
      **/
     private OffsetDateTime dataEHoraDoEvento = null;
 
-    @XmlElement(name = "responsavel")
-    @ApiModelProperty(value = "Responsável<br />Tamanho mínimo: 1<br />Tamanho máximo: 100")
-    /**
-     * Responsável<br />Tamanho mínimo: 1<br />Tamanho máximo: 100
-     **/
-    private String responsavel = null;
-
     @XmlElement(name = "detalhes")
     @ApiModelProperty(value = "Detalhes<br />Tamanho mínimo: 0<br />Tamanho máximo: 400")
     /**
      * Detalhes<br />Tamanho mínimo: 0<br />Tamanho máximo: 400
      **/
     private String detalhes = null;
+
+    @XmlElement(name = "evento")
+    @ApiModelProperty(value = "Evento<br />Tamanho mínimo: 1<br />Tamanho máximo: 150")
+    /**
+     * Evento<br />Tamanho mínimo: 1<br />Tamanho máximo: 150
+     **/
+    private String evento = null;
+
+    @XmlElement(name = "informacoesAdicionais")
+    @ApiModelProperty(value = "Informações adicionais<br />Tamanho mínimo: 0<br />Tamanho máximo: 4000")
+    /**
+     * Informações adicionais<br />Tamanho mínimo: 0<br />Tamanho máximo: 4000
+     **/
+    private String informacoesAdicionais = null;
+
+    @XmlElement(name = "motivo")
+    @ApiModelProperty(value = "Motivo<br />Tamanho mínimo: 0<br />Tamanho máximo: 150")
+    /**
+     * Motivo<br />Tamanho mínimo: 0<br />Tamanho máximo: 150
+     **/
+    private String motivo = null;
+
+    @XmlElement(name = "responsavel")
+    @ApiModelProperty(value = "Responsável<br />Tamanho mínimo: 1<br />Tamanho máximo: 100")
+    /**
+     * Responsável<br />Tamanho mínimo: 1<br />Tamanho máximo: 100
+     **/
+    private String responsavel = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,63 +69,6 @@ public class EventoDoHistoricoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Evento&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 150
-     *
-     * @return evento
-     **/
-    @JsonProperty("evento")
-    public String getEvento() {
-        return evento;
-    }
-
-    public void setEvento(String evento) {
-        this.evento = evento;
-    }
-
-    public EventoDoHistoricoDTO evento(String evento) {
-        this.evento = evento;
-        return this;
-    }
-
-    /**
-     * Motivo&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 150
-     *
-     * @return motivo
-     **/
-    @JsonProperty("motivo")
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
-    }
-
-    public EventoDoHistoricoDTO motivo(String motivo) {
-        this.motivo = motivo;
-        return this;
-    }
-
-    /**
-     * Informações adicionais&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
-     *
-     * @return informacoesAdicionais
-     **/
-    @JsonProperty("informacoesAdicionais")
-    public String getInformacoesAdicionais() {
-        return informacoesAdicionais;
-    }
-
-    public void setInformacoesAdicionais(String informacoesAdicionais) {
-        this.informacoesAdicionais = informacoesAdicionais;
-    }
-
-    public EventoDoHistoricoDTO informacoesAdicionais(String informacoesAdicionais) {
-        this.informacoesAdicionais = informacoesAdicionais;
-        return this;
     }
 
     /**
@@ -148,6 +91,77 @@ public class EventoDoHistoricoDTO {
     }
 
     /**
+     * Detalhes&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 400
+     *
+     * @return detalhes
+     **/
+    @JsonProperty("detalhes")
+    public String getDetalhes() {
+        return detalhes;
+    }
+
+    public void setDetalhes(String detalhes) {
+        this.detalhes = detalhes;
+    }
+
+    /**
+     * Evento&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 150
+     *
+     * @return evento
+     **/
+    @JsonProperty("evento")
+    public String getEvento() {
+        return evento;
+    }
+
+    public void setEvento(String evento) {
+        this.evento = evento;
+    }
+
+    public EventoDoHistoricoDTO evento(String evento) {
+        this.evento = evento;
+        return this;
+    }
+
+    /**
+     * Informações adicionais&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
+     *
+     * @return informacoesAdicionais
+     **/
+    @JsonProperty("informacoesAdicionais")
+    public String getInformacoesAdicionais() {
+        return informacoesAdicionais;
+    }
+
+    public void setInformacoesAdicionais(String informacoesAdicionais) {
+        this.informacoesAdicionais = informacoesAdicionais;
+    }
+
+    public EventoDoHistoricoDTO informacoesAdicionais(String informacoesAdicionais) {
+        this.informacoesAdicionais = informacoesAdicionais;
+        return this;
+    }
+
+    public EventoDoHistoricoDTO detalhes(String detalhes) {
+        this.detalhes = detalhes;
+        return this;
+    }
+
+    /**
+     * Motivo&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 150
+     *
+     * @return motivo
+     **/
+    @JsonProperty("motivo")
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
+    /**
      * Responsável&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 100
      *
      * @return responsavel
@@ -166,22 +180,8 @@ public class EventoDoHistoricoDTO {
         return this;
     }
 
-    /**
-     * Detalhes&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 400
-     *
-     * @return detalhes
-     **/
-    @JsonProperty("detalhes")
-    public String getDetalhes() {
-        return detalhes;
-    }
-
-    public void setDetalhes(String detalhes) {
-        this.detalhes = detalhes;
-    }
-
-    public EventoDoHistoricoDTO detalhes(String detalhes) {
-        this.detalhes = detalhes;
+    public EventoDoHistoricoDTO motivo(String motivo) {
+        this.motivo = motivo;
         return this;
     }
 
@@ -189,12 +189,12 @@ public class EventoDoHistoricoDTO {
     public String toString() {
 
         String sb = "class EventoDoHistoricoDTO {\n" +
-                "    evento: " + toIndentedString(evento) + "\n" +
-                "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    informacoesAdicionais: " + toIndentedString(informacoesAdicionais) + "\n" +
                 "    dataEHoraDoEvento: " + toIndentedString(dataEHoraDoEvento) + "\n" +
-                "    responsavel: " + toIndentedString(responsavel) + "\n" +
                 "    detalhes: " + toIndentedString(detalhes) + "\n" +
+                "    evento: " + toIndentedString(evento) + "\n" +
+                "    informacoesAdicionais: " + toIndentedString(informacoesAdicionais) + "\n" +
+                "    motivo: " + toIndentedString(motivo) + "\n" +
+                "    responsavel: " + toIndentedString(responsavel) + "\n" +
                 "}";
         return sb;
     }

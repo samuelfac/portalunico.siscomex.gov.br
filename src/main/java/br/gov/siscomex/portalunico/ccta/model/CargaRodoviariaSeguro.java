@@ -29,17 +29,6 @@ public class CargaRodoviariaSeguro {
     private ValorMonetario valorRemetente = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get valorDestinatario
      *
      * @return valorDestinatario
@@ -75,6 +64,18 @@ public class CargaRodoviariaSeguro {
     public CargaRodoviariaSeguro valorRemetente(ValorMonetario valorRemetente) {
         this.valorRemetente = valorRemetente;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

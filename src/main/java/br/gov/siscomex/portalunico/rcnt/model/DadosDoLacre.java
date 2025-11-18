@@ -14,37 +14,38 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDoLacre", propOrder =
-        {"tipo", "numero", "idElemento", "localSif"
+        {"idElemento", "localSif", "numero", "tipo"
         })
 
 @XmlRootElement(name = "DadosDoLacre")
 public class DadosDoLacre {
 
-
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "REC", value = "Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro")
-    /**
-     * Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "numero")
-    @ApiModelProperty(example = "99", value = "Número do Lacre")
-    /**
-     * Número do Lacre
-     **/
-    private String numero = null;
     @XmlElement(name = "idElemento", required = true)
     @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
      **/
     private String idElemento = null;
+
     @XmlElement(name = "localSif")
     @ApiModelProperty(value = "Código da unidade de inspeção federal.<br/>Tamanho: 100")
     /**
      * Código da unidade de inspeção federal.<br/>Tamanho: 100
      **/
     private String localSif = null;
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(example = "99", value = "Número do Lacre")
+    /**
+     * Número do Lacre
+     **/
+    private String numero = null;
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "REC", value = "Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro")
+    /**
+     * Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -55,47 +56,6 @@ public class DadosDoLacre {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo de lacre conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;RFB - RFB&lt;br/&gt;SIF - SIF&lt;br/&gt;ARM - Armador&lt;br/&gt;REC - Recinto&lt;br/&gt;TRP - Transportador&lt;br/&gt;EST - Estrangeiro&lt;br/&gt;OUT - Outro
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public DadosDoLacre tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Número do Lacre
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public DadosDoLacre numero(String numero) {
-        this.numero = numero;
-        return this;
     }
 
     /**
@@ -137,15 +97,56 @@ public class DadosDoLacre {
         return this;
     }
 
+    /**
+     * Número do Lacre
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public DadosDoLacre numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    /**
+     * Tipo de lacre conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;RFB - RFB&lt;br/&gt;SIF - SIF&lt;br/&gt;ARM - Armador&lt;br/&gt;REC - Recinto&lt;br/&gt;TRP - Transportador&lt;br/&gt;EST - Estrangeiro&lt;br/&gt;OUT - Outro
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public DadosDoLacre tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DadosDoLacre {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    localSif: " + toIndentedString(localSif) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }
@@ -189,15 +190,6 @@ public class DadosDoLacre {
             value = v;
         }
 
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -205,6 +197,15 @@ public class DadosDoLacre {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
     }
 }

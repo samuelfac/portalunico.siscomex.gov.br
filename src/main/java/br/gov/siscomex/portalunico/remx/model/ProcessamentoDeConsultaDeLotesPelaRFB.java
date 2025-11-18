@@ -14,25 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDeConsultaDeLotesPelaRFB", propOrder =
-        {"situacao", "numeroProtocolo", "dataHoraProcessamento", "dataHorarioEnvio", "lotes", "erros"
+        {"dataHoraProcessamento", "dataHorarioEnvio", "erros", "lotes", "numeroProtocolo", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDeConsultaDeLotesPelaRFB")
 public class ProcessamentoDeConsultaDeLotesPelaRFB {
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
-    /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
-     **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "numeroProtocolo")
-    @ApiModelProperty(value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -48,14 +34,6 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
      **/
     private OffsetDateTime dataHorarioEnvio = null;
 
-    @XmlElement(name = "lotes")
-    @ApiModelProperty(value = "Lista de lotes.")
-    @Valid
-    /**
-     * Lista de lotes.
-     **/
-    private List<LoteDaConsultaDeLotesPelaRFB> lotes = null;
-
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
     @Valid
@@ -64,54 +42,27 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
      **/
     private List<ErroNoProcessamento> erros = null;
 
+    @XmlElement(name = "lotes")
+    @ApiModelProperty(value = "Lista de lotes.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
-     * @return situacao
+     * Lista de lotes.
      **/
-    @JsonProperty("situacao")
-    public Integer getSituacao() {
-        return situacao;
-    }
+    private List<LoteDaConsultaDeLotesPelaRFB> lotes = null;
 
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDeConsultaDeLotesPelaRFB situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
+    @XmlElement(name = "numeroProtocolo")
+    @ApiModelProperty(value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
     /**
      * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
      **/
-    @JsonProperty("numeroProtocolo")
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
+    private String numeroProtocolo = null;
 
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDeConsultaDeLotesPelaRFB numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
@@ -152,6 +103,36 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista de erros.
+     *
+     * @return erros
+     **/
+    @JsonProperty("erros")
+    public List<ErroNoProcessamento> getErros() {
+        return erros;
+    }
+
+    public void setErros(List<ErroNoProcessamento> erros) {
+        this.erros = erros;
+    }
+
+    public ProcessamentoDeConsultaDeLotesPelaRFB erros(List<ErroNoProcessamento> erros) {
+        this.erros = erros;
+        return this;
+    }
+
+    /**
      * Lista de lotes.
      *
      * @return lotes
@@ -175,27 +156,46 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
         return this;
     }
 
-    /**
-     * Lista de erros.
-     *
-     * @return erros
-     **/
-    @JsonProperty("erros")
-    public List<ErroNoProcessamento> getErros() {
-        return erros;
-    }
-
-    public void setErros(List<ErroNoProcessamento> erros) {
-        this.erros = erros;
-    }
-
-    public ProcessamentoDeConsultaDeLotesPelaRFB erros(List<ErroNoProcessamento> erros) {
-        this.erros = erros;
+    public ProcessamentoDeConsultaDeLotesPelaRFB addErrosItem(ErroNoProcessamento errosItem) {
+        this.erros.add(errosItem);
         return this;
     }
 
-    public ProcessamentoDeConsultaDeLotesPelaRFB addErrosItem(ErroNoProcessamento errosItem) {
-        this.erros.add(errosItem);
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDeConsultaDeLotesPelaRFB numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDeConsultaDeLotesPelaRFB situacao(Integer situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -203,12 +203,12 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
     public String toString() {
 
         String sb = "class ProcessamentoDeConsultaDeLotesPelaRFB {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
                 "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
                 "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
-                "    lotes: " + toIndentedString(lotes) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    lotes: " + toIndentedString(lotes) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

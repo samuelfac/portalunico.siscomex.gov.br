@@ -27,17 +27,6 @@ public class GoodsShipment {
     private List<GovernmentAgencyGoodsItem> governmentAgencyGoodsItem = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get governmentAgencyGoodsItem
      *
      * @return governmentAgencyGoodsItem
@@ -60,6 +49,18 @@ public class GoodsShipment {
     public GoodsShipment addGovernmentAgencyGoodsItemItem(GovernmentAgencyGoodsItem governmentAgencyGoodsItemItem) {
         this.governmentAgencyGoodsItem.add(governmentAgencyGoodsItemItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExigenciaLpcoResponse", propOrder =
-        {"exigencia", "dataExigencia", "situacao", "numero", "resposta", "situacaoPagamentoTaxa", "dataResposta", "numeroCancelado", "aviso"
+        {"numero", "exigencia", "dataExigencia", "resposta", "dataResposta", "situacao", "numeroCancelado", "aviso", "situacaoPagamentoTaxa"
         })
 
 @XmlRootElement(name = "ExigenciaLpcoResponse")
@@ -23,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados de uma exigência associada a um LPCO")
 public class ExigenciaLpcoResponse {
+
+    @XmlElement(name = "numero", required = true)
+    @ApiModelProperty(example = "2", required = true, value = "Número sequencial da exigência")
+    /**
+     * Número sequencial da exigência
+     **/
+    private Long numero = null;
 
     @XmlElement(name = "exigencia", required = true)
     @ApiModelProperty(example = "Enviar documentos XYZ", required = true, value = "Descrição da exigência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000")
@@ -38,18 +45,6 @@ public class ExigenciaLpcoResponse {
      **/
     private String dataExigencia = null;
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private SituacaoExigenciaLpco situacao = null;
-
-    @XmlElement(name = "numero", required = true)
-    @ApiModelProperty(example = "2", required = true, value = "Número sequencial da exigência")
-    /**
-     * Número sequencial da exigência
-     **/
-    private Long numero = null;
-
     @XmlElement(name = "resposta")
     @ApiModelProperty(example = "Documentos XYZ anexados ao LPCO", value = "Resposta dada à exigência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4000")
     /**
@@ -57,17 +52,17 @@ public class ExigenciaLpcoResponse {
      **/
     private String resposta = null;
 
-    @XmlElement(name = "situacaoPagamentoTaxa")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
-
     @XmlElement(name = "dataResposta")
     @ApiModelProperty(example = "14/09/2019", value = "Data em que a resposta foi dada<br>Formato: dd/MM/yyyy")
     /**
      * Data em que a resposta foi dada<br>Formato: dd/MM/yyyy
      **/
     private String dataResposta = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private SituacaoExigenciaLpco situacao = null;
 
     @XmlElement(name = "numeroCancelado")
     @ApiModelProperty(example = "1", value = "Número da exigência anterior cancelada")
@@ -83,6 +78,11 @@ public class ExigenciaLpcoResponse {
      **/
     private String aviso = null;
 
+    @XmlElement(name = "situacaoPagamentoTaxa")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -92,6 +92,21 @@ public class ExigenciaLpcoResponse {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número sequencial da exigência
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    @NotNull
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
     }
 
     /**
@@ -135,46 +150,6 @@ public class ExigenciaLpcoResponse {
     }
 
     /**
-     * Get situacao
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    @NotNull
-    public SituacaoExigenciaLpco getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(SituacaoExigenciaLpco situacao) {
-        this.situacao = situacao;
-    }
-
-    public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Número sequencial da exigência
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    @NotNull
-    public Long getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Long numero) {
-        this.numero = numero;
-    }
-
-    public ExigenciaLpcoResponse numero(Long numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    /**
      * Resposta dada à exigência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
      *
      * @return resposta
@@ -190,25 +165,6 @@ public class ExigenciaLpcoResponse {
 
     public ExigenciaLpcoResponse resposta(String resposta) {
         this.resposta = resposta;
-        return this;
-    }
-
-    /**
-     * Get situacaoPagamentoTaxa
-     *
-     * @return situacaoPagamentoTaxa
-     **/
-    @JsonProperty("situacaoPagamentoTaxa")
-    public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
-        return situacaoPagamentoTaxa;
-    }
-
-    public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
-        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
-    }
-
-    public ExigenciaLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
-        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
         return this;
     }
 
@@ -229,6 +185,26 @@ public class ExigenciaLpcoResponse {
     public ExigenciaLpcoResponse dataResposta(String dataResposta) {
         this.dataResposta = dataResposta;
         return this;
+    }
+
+    public ExigenciaLpcoResponse numero(Long numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    /**
+     * Get situacao
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public SituacaoExigenciaLpco getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoExigenciaLpco situacao) {
+        this.situacao = situacao;
     }
 
     /**
@@ -252,7 +228,6 @@ public class ExigenciaLpcoResponse {
 
     /**
      * Aviso sobre a operação realizada
-     *
      * @return aviso
      **/
     @JsonProperty("aviso")
@@ -269,19 +244,43 @@ public class ExigenciaLpcoResponse {
         return this;
     }
 
+    public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Get situacaoPagamentoTaxa
+     *
+     * @return situacaoPagamentoTaxa
+     **/
+    @JsonProperty("situacaoPagamentoTaxa")
+    public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+        return situacaoPagamentoTaxa;
+    }
+
+    public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    }
+
+    public ExigenciaLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ExigenciaLpcoResponse {\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "    exigencia: " + toIndentedString(exigencia) + "\n" +
                 "    dataExigencia: " + toIndentedString(dataExigencia) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    resposta: " + toIndentedString(resposta) + "\n" +
-                "    situacaoPagamentoTaxa: " + toIndentedString(situacaoPagamentoTaxa) + "\n" +
                 "    dataResposta: " + toIndentedString(dataResposta) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    numeroCancelado: " + toIndentedString(numeroCancelado) + "\n" +
                 "    aviso: " + toIndentedString(aviso) + "\n" +
+                "    situacaoPagamentoTaxa: " + toIndentedString(situacaoPagamentoTaxa) + "\n" +
                 "}";
         return sb;
     }

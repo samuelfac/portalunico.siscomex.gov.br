@@ -32,13 +32,13 @@ public interface RecepcaoPorNfeApi {
     @POST
     @Path("/api/ext/recepcao")
     @Consumes({"application/json"})
-    @Produces({"text/plain", "*/*", "application/json"})
+    @Produces({"*/*", "application/json", "text/plain"})
     @ApiOperation(value = "Cria novo protocolo de recepção de NFe", notes = "", tags = {"Recepcao por NFe"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = String.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ErroValidacao.class),
-            @ApiResponse(code = 400, message = "JSON não atende as especificações definidas na API", response = ErroValidacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class)})
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = String.class),
+            @ApiResponse(code = 400, message = "JSON não atende as especificações definidas na API", response = ErroValidacao.class)})
     String criarProtocolo(@ApiParam(value = "", required = true) @Valid RecepcaoNFECover body);
 }
 

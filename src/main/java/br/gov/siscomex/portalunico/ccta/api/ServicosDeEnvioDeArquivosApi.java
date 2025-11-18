@@ -30,7 +30,7 @@ public interface ServicosDeEnvioDeArquivosApi {
 
     /**
      * Informar Manifesto do CRT
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; Esse serviço tem por objetivo possibilitar a manifestação da carga pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; O processamento dessa manifestação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.&lt;/p&gt;
      *
      */
@@ -41,18 +41,18 @@ public interface ServicosDeEnvioDeArquivosApi {
     @ApiOperation(value = "Informar Manifesto do CRT", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\"> Esse serviço tem por objetivo possibilitar a manifestação da carga pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)</p><p style=\"margin-bottom: 1em; margin-top: 1em;\"> O processamento dessa manifestação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.</p>", tags = {"Servicos de Envio de Arquivos"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoManifestoCrt.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoManifestoCrt doPostUsingPOST(@ApiParam(value = "", required = true) @Valid ManifestoCrt body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Informar Manifesto do Viagem
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; Esse serviço tem por objetivo possibilitar a manifestação da viagem pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; O processamento dessa manifestação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.&lt;/p&gt;
      *
      */
@@ -63,18 +63,18 @@ public interface ServicosDeEnvioDeArquivosApi {
     @ApiOperation(value = "Informar Manifesto do Viagem", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\"> Esse serviço tem por objetivo possibilitar a manifestação da viagem pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)</p><p style=\"margin-bottom: 1em; margin-top: 1em;\"> O processamento dessa manifestação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.</p>", tags = {"Servicos de Envio de Arquivos"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoManifestoViagem.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoManifestoViagem manifestoViagemUsingPOST(@ApiParam(value = "", required = true) @Valid ManifestoViagem body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Retificar Manifesto do CRT
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; Esse serviço tem por objetivo possibilitar a retificação da carga pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; O processamento dessa retificação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.&lt;/p&gt;
      *
      */
@@ -85,18 +85,18 @@ public interface ServicosDeEnvioDeArquivosApi {
     @ApiOperation(value = "Retificar Manifesto do CRT", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\"> Esse serviço tem por objetivo possibilitar a retificação da carga pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)</p><p style=\"margin-bottom: 1em; margin-top: 1em;\"> O processamento dessa retificação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.</p>", tags = {"Servicos de Envio de Arquivos"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoManifestoCrt.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoManifestoCrt retificarUsingPUT(@ApiParam(value = "", required = true) @Valid ManifestoCrt body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Retificar Manifesto do Viagem
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; Esse serviço tem por objetivo possibilitar a retificação da viagem pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt; O processamento dessa retificação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.&lt;/p&gt;
      *
      */
@@ -107,13 +107,13 @@ public interface ServicosDeEnvioDeArquivosApi {
     @ApiOperation(value = "Retificar Manifesto do Viagem", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\"> Esse serviço tem por objetivo possibilitar a retificação da viagem pelo transportador nacional ou estrangeiro (este através de um representante CNPJ ou CPF)</p><p style=\"margin-bottom: 1em; margin-top: 1em;\"> O processamento dessa retificação é realizado de forma assíncrona, sendo retornado apenas o número de protocolo para consulta posterior.</p>", tags = {"Servicos de Envio de Arquivos"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoManifestoViagem.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoManifestoViagem retificarUsingPUT1(@ApiParam(value = "", required = true) @Valid ManifestoViagem body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

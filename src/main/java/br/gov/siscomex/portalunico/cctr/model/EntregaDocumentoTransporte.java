@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EntregaDocumentoTransporte", propOrder =
-        {"transitoSimplificado", "identificacaoPessoaJuridica", "documentosTransporte", "identificacaoEntrega", "identificacaoPessoaFisica", "local"
+        {"identificacaoEntrega", "identificacaoPessoaJuridica", "identificacaoPessoaFisica", "local", "documentosTransporte", "transitoSimplificado"
         })
 
 @XmlRootElement(name = "EntregaDocumentoTransporte")
@@ -26,10 +26,12 @@ import java.util.List;
 @ApiModel(description = "Entrega por Documento de Transporte")
 public class EntregaDocumentoTransporte {
 
-    @XmlElement(name = "transitoSimplificado")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TransitoSimplificadoDocumentoTransporte transitoSimplificado = null;
+    @XmlElement(name = "identificacaoEntrega", required = true)
+    @ApiModelProperty(example = "ENT001", required = true, value = "Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
+    /**
+     * Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
+     **/
+    private String identificacaoEntrega = null;
 
     @XmlElement(name = "identificacaoPessoaJuridica")
     @ApiModelProperty(example = "99999999999999", value = "CNPJ do responsável pela entrega<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
@@ -37,21 +39,6 @@ public class EntregaDocumentoTransporte {
      * CNPJ do responsável pela entrega<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
      **/
     private String identificacaoPessoaJuridica = null;
-
-    @XmlElement(name = "documentosTransporte", required = true)
-    @ApiModelProperty(required = true, value = "Dados dos documentos de transporte")
-    @Valid
-    /**
-     * Dados dos documentos de transporte
-     **/
-    private List<DocumentoTransporteCover> documentosTransporte = new ArrayList<>();
-
-    @XmlElement(name = "identificacaoEntrega", required = true)
-    @ApiModelProperty(example = "ENT001", required = true, value = "Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
-    /**
-     * Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
-     **/
-    private String identificacaoEntrega = null;
 
     @XmlElement(name = "identificacaoPessoaFisica")
     @ApiModelProperty(example = "99999999999", value = "CPF do responsável pela entrega<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
@@ -65,79 +52,18 @@ public class EntregaDocumentoTransporte {
     @Valid
     private Local local = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get transitoSimplificado
-     *
-     * @return transitoSimplificado
-     **/
-    @JsonProperty("transitoSimplificado")
-    public TransitoSimplificadoDocumentoTransporte getTransitoSimplificado() {
-        return transitoSimplificado;
-    }
-
-    public void setTransitoSimplificado(TransitoSimplificadoDocumentoTransporte transitoSimplificado) {
-        this.transitoSimplificado = transitoSimplificado;
-    }
-
-    public EntregaDocumentoTransporte transitoSimplificado(TransitoSimplificadoDocumentoTransporte transitoSimplificado) {
-        this.transitoSimplificado = transitoSimplificado;
-        return this;
-    }
-
-    /**
-     * CNPJ do responsável pela entrega&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return identificacaoPessoaJuridica
-     **/
-    @JsonProperty("identificacaoPessoaJuridica")
-    public String getIdentificacaoPessoaJuridica() {
-        return identificacaoPessoaJuridica;
-    }
-
-    public void setIdentificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
-        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
-    }
-
-    public EntregaDocumentoTransporte identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
-        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
-        return this;
-    }
-
+    @XmlElement(name = "documentosTransporte", required = true)
+    @ApiModelProperty(required = true, value = "Dados dos documentos de transporte")
+    @Valid
     /**
      * Dados dos documentos de transporte
-     *
-     * @return documentosTransporte
      **/
-    @JsonProperty("documentosTransporte")
-    @NotNull
-    public List<DocumentoTransporteCover> getDocumentosTransporte() {
-        return documentosTransporte;
-    }
+    private List<DocumentoTransporteCover> documentosTransporte = new ArrayList<>();
 
-    public void setDocumentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
-        this.documentosTransporte = documentosTransporte;
-    }
-
-    public EntregaDocumentoTransporte documentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
-        this.documentosTransporte = documentosTransporte;
-        return this;
-    }
-
-    public EntregaDocumentoTransporte addDocumentosTransporteItem(DocumentoTransporteCover documentosTransporteItem) {
-        this.documentosTransporte.add(documentosTransporteItem);
-        return this;
-    }
+    @XmlElement(name = "transitoSimplificado")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TransitoSimplificadoDocumentoTransporte transitoSimplificado = null;
 
     /**
      * Identificação da entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
@@ -157,6 +83,31 @@ public class EntregaDocumentoTransporte {
     public EntregaDocumentoTransporte identificacaoEntrega(String identificacaoEntrega) {
         this.identificacaoEntrega = identificacaoEntrega;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ do responsável pela entrega&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return identificacaoPessoaJuridica
+     **/
+    @JsonProperty("identificacaoPessoaJuridica")
+    public String getIdentificacaoPessoaJuridica() {
+        return identificacaoPessoaJuridica;
+    }
+
+    public void setIdentificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
+        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
     }
 
     /**
@@ -198,16 +149,65 @@ public class EntregaDocumentoTransporte {
         return this;
     }
 
+    public EntregaDocumentoTransporte identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
+        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
+        return this;
+    }
+
+    /**
+     * Dados dos documentos de transporte
+     *
+     * @return documentosTransporte
+     **/
+    @JsonProperty("documentosTransporte")
+    @NotNull
+    public List<DocumentoTransporteCover> getDocumentosTransporte() {
+        return documentosTransporte;
+    }
+
+    public void setDocumentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
+        this.documentosTransporte = documentosTransporte;
+    }
+
+    public EntregaDocumentoTransporte documentosTransporte(List<DocumentoTransporteCover> documentosTransporte) {
+        this.documentosTransporte = documentosTransporte;
+        return this;
+    }
+
+    public EntregaDocumentoTransporte addDocumentosTransporteItem(DocumentoTransporteCover documentosTransporteItem) {
+        this.documentosTransporte.add(documentosTransporteItem);
+        return this;
+    }
+
+    /**
+     * Get transitoSimplificado
+     *
+     * @return transitoSimplificado
+     **/
+    @JsonProperty("transitoSimplificado")
+    public TransitoSimplificadoDocumentoTransporte getTransitoSimplificado() {
+        return transitoSimplificado;
+    }
+
+    public void setTransitoSimplificado(TransitoSimplificadoDocumentoTransporte transitoSimplificado) {
+        this.transitoSimplificado = transitoSimplificado;
+    }
+
+    public EntregaDocumentoTransporte transitoSimplificado(TransitoSimplificadoDocumentoTransporte transitoSimplificado) {
+        this.transitoSimplificado = transitoSimplificado;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class EntregaDocumentoTransporte {\n" +
-                "    transitoSimplificado: " + toIndentedString(transitoSimplificado) + "\n" +
-                "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
-                "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
                 "    identificacaoEntrega: " + toIndentedString(identificacaoEntrega) + "\n" +
+                "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
                 "    identificacaoPessoaFisica: " + toIndentedString(identificacaoPessoaFisica) + "\n" +
                 "    local: " + toIndentedString(local) + "\n" +
+                "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
+                "    transitoSimplificado: " + toIndentedString(transitoSimplificado) + "\n" +
                 "}";
         return sb;
     }

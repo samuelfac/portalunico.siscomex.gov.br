@@ -13,31 +13,31 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaRodoviariaFluxoLogistico", propOrder =
-        {"bloqueiosBaixados", "viagens", "situacaoAtual", "bloqueiosAtivos"
+        {"bloqueiosAtivos", "bloqueiosBaixados", "situacaoAtual", "viagens"
         })
 
 @XmlRootElement(name = "CargaRodoviariaFluxoLogistico")
 public class CargaRodoviariaFluxoLogistico {
+
+    @XmlElement(name = "bloqueiosAtivos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<BloqueioConsultaCarga> bloqueiosAtivos = null;
 
     @XmlElement(name = "bloqueiosBaixados")
     @ApiModelProperty(value = "")
     @Valid
     private List<BloqueioConsultaCarga> bloqueiosBaixados = null;
 
-    @XmlElement(name = "viagens")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CargaRodoviariaDetalhadaViagem> viagens = null;
-
     @XmlElement(name = "situacaoAtual")
     @ApiModelProperty(value = "")
     @Valid
     private CargaRodoviariaDetalhadaSituacao situacaoAtual = null;
 
-    @XmlElement(name = "bloqueiosAtivos")
+    @XmlElement(name = "viagens")
     @ApiModelProperty(value = "")
     @Valid
-    private List<BloqueioConsultaCarga> bloqueiosAtivos = null;
+    private List<CargaRodoviariaDetalhadaViagem> viagens = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -48,6 +48,25 @@ public class CargaRodoviariaFluxoLogistico {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get bloqueiosAtivos
+     *
+     * @return bloqueiosAtivos
+     **/
+    @JsonProperty("bloqueiosAtivos")
+    public List<BloqueioConsultaCarga> getBloqueiosAtivos() {
+        return bloqueiosAtivos;
+    }
+
+    public void setBloqueiosAtivos(List<BloqueioConsultaCarga> bloqueiosAtivos) {
+        this.bloqueiosAtivos = bloqueiosAtivos;
+    }
+
+    public CargaRodoviariaFluxoLogistico bloqueiosAtivos(List<BloqueioConsultaCarga> bloqueiosAtivos) {
+        this.bloqueiosAtivos = bloqueiosAtivos;
+        return this;
     }
 
     /**
@@ -74,6 +93,25 @@ public class CargaRodoviariaFluxoLogistico {
         return this;
     }
 
+    public CargaRodoviariaFluxoLogistico addBloqueiosAtivosItem(BloqueioConsultaCarga bloqueiosAtivosItem) {
+        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+        return this;
+    }
+
+    /**
+     * Get situacaoAtual
+     *
+     * @return situacaoAtual
+     **/
+    @JsonProperty("situacaoAtual")
+    public CargaRodoviariaDetalhadaSituacao getSituacaoAtual() {
+        return situacaoAtual;
+    }
+
+    public void setSituacaoAtual(CargaRodoviariaDetalhadaSituacao situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+    }
+
     /**
      * Get viagens
      *
@@ -98,46 +136,8 @@ public class CargaRodoviariaFluxoLogistico {
         return this;
     }
 
-    /**
-     * Get situacaoAtual
-     *
-     * @return situacaoAtual
-     **/
-    @JsonProperty("situacaoAtual")
-    public CargaRodoviariaDetalhadaSituacao getSituacaoAtual() {
-        return situacaoAtual;
-    }
-
-    public void setSituacaoAtual(CargaRodoviariaDetalhadaSituacao situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-    }
-
     public CargaRodoviariaFluxoLogistico situacaoAtual(CargaRodoviariaDetalhadaSituacao situacaoAtual) {
         this.situacaoAtual = situacaoAtual;
-        return this;
-    }
-
-    /**
-     * Get bloqueiosAtivos
-     *
-     * @return bloqueiosAtivos
-     **/
-    @JsonProperty("bloqueiosAtivos")
-    public List<BloqueioConsultaCarga> getBloqueiosAtivos() {
-        return bloqueiosAtivos;
-    }
-
-    public void setBloqueiosAtivos(List<BloqueioConsultaCarga> bloqueiosAtivos) {
-        this.bloqueiosAtivos = bloqueiosAtivos;
-    }
-
-    public CargaRodoviariaFluxoLogistico bloqueiosAtivos(List<BloqueioConsultaCarga> bloqueiosAtivos) {
-        this.bloqueiosAtivos = bloqueiosAtivos;
-        return this;
-    }
-
-    public CargaRodoviariaFluxoLogistico addBloqueiosAtivosItem(BloqueioConsultaCarga bloqueiosAtivosItem) {
-        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
         return this;
     }
 
@@ -145,10 +145,10 @@ public class CargaRodoviariaFluxoLogistico {
     public String toString() {
 
         String sb = "class CargaRodoviariaFluxoLogistico {\n" +
-                "    bloqueiosBaixados: " + toIndentedString(bloqueiosBaixados) + "\n" +
-                "    viagens: " + toIndentedString(viagens) + "\n" +
-                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
                 "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
+                "    bloqueiosBaixados: " + toIndentedString(bloqueiosBaixados) + "\n" +
+                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
+                "    viagens: " + toIndentedString(viagens) + "\n" +
                 "}";
         return sb;
     }

@@ -14,15 +14,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConteinerDTO", propOrder =
-        {"lacres", "numeroConteiner", "tara", "pesoBruto"
+        {"numeroConteiner", "tara", "lacres", "pesoBruto"
         })
 
 @XmlRootElement(name = "ConteinerDTO")
 public class ConteinerDTO {
-
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(value = "")
-    private List<String> lacres = null;
 
     @XmlElement(name = "numeroConteiner")
     @ApiModelProperty(value = "")
@@ -33,45 +29,14 @@ public class ConteinerDTO {
     @Valid
     private BigDecimal tara = null;
 
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(value = "")
+    private List<String> lacres = null;
+
     @XmlElement(name = "pesoBruto")
     @ApiModelProperty(value = "")
     @Valid
     private BigDecimal pesoBruto = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get lacres
-     *
-     * @return lacres
-     **/
-    @JsonProperty("lacres")
-    public List<String> getLacres() {
-        return lacres;
-    }
-
-    public void setLacres(List<String> lacres) {
-        this.lacres = lacres;
-    }
-
-    public ConteinerDTO lacres(List<String> lacres) {
-        this.lacres = lacres;
-        return this;
-    }
-
-    public ConteinerDTO addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
 
     /**
      * Get numeroConteiner
@@ -112,6 +77,36 @@ public class ConteinerDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get lacres
+     *
+     * @return lacres
+     **/
+    @JsonProperty("lacres")
+    public List<String> getLacres() {
+        return lacres;
+    }
+
+    public void setLacres(List<String> lacres) {
+        this.lacres = lacres;
+    }
+
+    public ConteinerDTO lacres(List<String> lacres) {
+        this.lacres = lacres;
+        return this;
+    }
+
+    /**
      * Get pesoBruto
      *
      * @return pesoBruto
@@ -130,13 +125,18 @@ public class ConteinerDTO {
         return this;
     }
 
+    public ConteinerDTO addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ConteinerDTO {\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
                 "}";
         return sb;

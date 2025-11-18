@@ -14,11 +14,25 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ComplementoVeiculoRodoviario", propOrder =
-        {"propriaMercadoria", "sequencial", "tipo", "lacres", "tara", "placa"
+        {"lacres", "placa", "propriaMercadoria", "sequencial", "tara", "tipo"
         })
 
 @XmlRootElement(name = "ComplementoVeiculoRodoviario")
 public class ComplementoVeiculoRodoviario {
+
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(example = "[\"123\"]", value = "Lista de Lacres")
+    /**
+     * Lista de Lacres
+     **/
+    private List<String> lacres = null;
+
+    @XmlElement(name = "placa")
+    @ApiModelProperty(example = "REB6789", value = "Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20")
+    /**
+     * Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20
+     **/
+    private String placa = null;
 
     @XmlElement(name = "propriaMercadoria")
     @ApiModelProperty(value = "Indicador que informa se o reboque é a própria mercadoria")
@@ -34,18 +48,6 @@ public class ComplementoVeiculoRodoviario {
      **/
     private Integer sequencial = null;
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoComplementoVeiculo tipo = null;
-
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(example = "[\"123\"]", value = "Lista de Lacres")
-    /**
-     * Lista de Lacres
-     **/
-    private List<String> lacres = null;
-
     @XmlElement(name = "tara")
     @ApiModelProperty(example = "105.478", value = "Tara do reboque<br/> Obrigatória para cada reboque informado se tipoVeiculo é C1R, C2R ou C3R.<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
     @Valid
@@ -54,12 +56,10 @@ public class ComplementoVeiculoRodoviario {
      **/
     private BigDecimal tara = null;
 
-    @XmlElement(name = "placa")
-    @ApiModelProperty(example = "REB6789", value = "Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20")
-    /**
-     * Placa do reboque <br/>É obrigatória apenas se o reboquePropriaMercadoria for igual a \"false\".<br/> Tamanho Máximo: 20
-     **/
-    private String placa = null;
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoComplementoVeiculo tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,6 +70,44 @@ public class ComplementoVeiculoRodoviario {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Lista de Lacres
+     *
+     * @return lacres
+     **/
+    @JsonProperty("lacres")
+    public List<String> getLacres() {
+        return lacres;
+    }
+
+    public void setLacres(List<String> lacres) {
+        this.lacres = lacres;
+    }
+
+    public ComplementoVeiculoRodoviario lacres(List<String> lacres) {
+        this.lacres = lacres;
+        return this;
+    }
+
+    public ComplementoVeiculoRodoviario addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
+    }
+
+    /**
+     * Placa do reboque &lt;br/&gt;É obrigatória apenas se o reboquePropriaMercadoria for igual a \&quot;false\&quot;.&lt;br/&gt; Tamanho Máximo: 20
+     *
+     * @return placa
+     **/
+    @JsonProperty("placa")
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 
     /**
@@ -111,49 +149,6 @@ public class ComplementoVeiculoRodoviario {
     }
 
     /**
-     * Get tipo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public TipoComplementoVeiculo getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoComplementoVeiculo tipo) {
-        this.tipo = tipo;
-    }
-
-    public ComplementoVeiculoRodoviario tipo(TipoComplementoVeiculo tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Lista de Lacres
-     *
-     * @return lacres
-     **/
-    @JsonProperty("lacres")
-    public List<String> getLacres() {
-        return lacres;
-    }
-
-    public void setLacres(List<String> lacres) {
-        this.lacres = lacres;
-    }
-
-    public ComplementoVeiculoRodoviario lacres(List<String> lacres) {
-        this.lacres = lacres;
-        return this;
-    }
-
-    public ComplementoVeiculoRodoviario addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
-
-    /**
      * Tara do reboque&lt;br/&gt; Obrigatória para cada reboque informado se tipoVeiculo é C1R, C2R ou C3R.&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      *
      * @return tara
@@ -172,22 +167,27 @@ public class ComplementoVeiculoRodoviario {
         return this;
     }
 
-    /**
-     * Placa do reboque &lt;br/&gt;É obrigatória apenas se o reboquePropriaMercadoria for igual a \&quot;false\&quot;.&lt;br/&gt; Tamanho Máximo: 20
-     *
-     * @return placa
-     **/
-    @JsonProperty("placa")
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
     public ComplementoVeiculoRodoviario placa(String placa) {
         this.placa = placa;
+        return this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoComplementoVeiculo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoComplementoVeiculo tipo) {
+        this.tipo = tipo;
+    }
+
+    public ComplementoVeiculoRodoviario tipo(TipoComplementoVeiculo tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -195,12 +195,12 @@ public class ComplementoVeiculoRodoviario {
     public String toString() {
 
         String sb = "class ComplementoVeiculoRodoviario {\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
                 "    propriaMercadoria: " + toIndentedString(propriaMercadoria) + "\n" +
                 "    sequencial: " + toIndentedString(sequencial) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

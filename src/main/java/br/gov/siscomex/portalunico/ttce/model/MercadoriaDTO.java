@@ -35,17 +35,6 @@ public class MercadoriaDTO {
     private List<AtributoMercadoriaDTO> atributos = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Combinação de características (Atributos) que determinam o enquadramento de uma mercadoria neste Tratamento Tributário.
      *
      * @return atributos
@@ -68,6 +57,18 @@ public class MercadoriaDTO {
     public MercadoriaDTO addAtributosItem(AtributoMercadoriaDTO atributosItem) {
         this.atributos.add(atributosItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

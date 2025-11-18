@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ValoresCalculadosDuimpCover", propOrder =
-        {"identificacao", "adicoes", "mercadoriaLocalEmbarque", "tributosCalculados", "carga"
+        {"identificacao", "carga", "adicoes", "mercadoriaLocalEmbarque", "tributosCalculados"
         })
 
 @XmlRootElement(name = "ValoresCalculadosDuimpCover")
@@ -23,6 +23,11 @@ public class ValoresCalculadosDuimpCover {
     @ApiModelProperty(value = "")
     @Valid
     private IdentificadorDuimpCover identificacao = null;
+
+    @XmlElement(name = "carga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaValoresCalculadosDuimpCover carga = null;
 
     @XmlElement(name = "adicoes")
     @ApiModelProperty(value = "")
@@ -38,22 +43,6 @@ public class ValoresCalculadosDuimpCover {
     @ApiModelProperty(value = "")
     @Valid
     private List<TributoCalculadoDuimpCover> tributosCalculados = null;
-
-    @XmlElement(name = "carga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaValoresCalculadosDuimpCover carga = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Get identificacao
@@ -72,6 +61,31 @@ public class ValoresCalculadosDuimpCover {
     public ValoresCalculadosDuimpCover identificacao(IdentificadorDuimpCover identificacao) {
         this.identificacao = identificacao;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get carga
+     *
+     * @return carga
+     **/
+    @JsonProperty("carga")
+    public CargaValoresCalculadosDuimpCover getCarga() {
+        return carga;
+    }
+
+    public void setCarga(CargaValoresCalculadosDuimpCover carga) {
+        this.carga = carga;
     }
 
     /**
@@ -141,20 +155,6 @@ public class ValoresCalculadosDuimpCover {
         return this;
     }
 
-    /**
-     * Get carga
-     *
-     * @return carga
-     **/
-    @JsonProperty("carga")
-    public CargaValoresCalculadosDuimpCover getCarga() {
-        return carga;
-    }
-
-    public void setCarga(CargaValoresCalculadosDuimpCover carga) {
-        this.carga = carga;
-    }
-
     public ValoresCalculadosDuimpCover carga(CargaValoresCalculadosDuimpCover carga) {
         this.carga = carga;
         return this;
@@ -165,10 +165,10 @@ public class ValoresCalculadosDuimpCover {
 
         String sb = "class ValoresCalculadosDuimpCover {\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    carga: " + toIndentedString(carga) + "\n" +
                 "    adicoes: " + toIndentedString(adicoes) + "\n" +
                 "    mercadoriaLocalEmbarque: " + toIndentedString(mercadoriaLocalEmbarque) + "\n" +
                 "    tributosCalculados: " + toIndentedString(tributosCalculados) + "\n" +
-                "    carga: " + toIndentedString(carga) + "\n" +
                 "}";
         return sb;
     }

@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosSemirreboqueDaInspeoNoInvasiva", propOrder =
-        {"ocrPlaca", "idElemento", "placa"
+        {"idElemento", "ocrPlaca", "placa"
         })
 
 @XmlRootElement(name = "DadosSemirreboqueDaInspeoNoInvasiva")
 public class DadosSemirreboqueDaInspeoNoInvasiva {
-
-    @XmlElement(name = "ocrPlaca")
-    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.")
-    /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.
-     **/
-    private Boolean ocrPlaca = null;
 
     @XmlElement(name = "idElemento", required = true)
     @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
@@ -32,12 +25,39 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
      **/
     private String idElemento = null;
 
+    @XmlElement(name = "ocrPlaca")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.")
+    /**
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<br/>Domínio:<br/>true - Sim<br/>false - Não<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'ocrPlaca' seja informado quando o atributo 'placa' for informado.
+     **/
+    private Boolean ocrPlaca = null;
+
     @XmlElement(name = "placa")
     @ApiModelProperty(value = "Placa (semirreboque, vagão, truck)<br/>Tamanho: 50")
     /**
      * Placa (semirreboque, vagão, truck)<br/>Tamanho: 50
      **/
     private String placa = null;
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosSemirreboqueDaInspeoNoInvasiva idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,31 +84,6 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
         this.ocrPlaca = ocrPlaca;
     }
 
-    public DadosSemirreboqueDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
-        return this;
-    }
-
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosSemirreboqueDaInspeoNoInvasiva idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Placa (semirreboque, vagão, truck)&lt;br/&gt;Tamanho: 50
      *
@@ -108,12 +103,17 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
         return this;
     }
 
+    public DadosSemirreboqueDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosSemirreboqueDaInspeoNoInvasiva {\n" +
-                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
                 "}";
         return sb;

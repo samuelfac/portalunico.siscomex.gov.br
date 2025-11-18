@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaSituacaoResumida", propOrder =
-        {"dataHoraSituacao", "detalhe", "situacaoAtual", "responsavel"
+        {"dataHoraSituacao", "detalhe", "responsavel", "situacaoAtual"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaSituacaoResumida")
@@ -28,25 +28,14 @@ public class ViagemRodoviariaSituacaoResumida {
     @Valid
     private CargaDetalheSituacaoEstoqueViagem detalhe = null;
 
-    @XmlElement(name = "situacaoAtual")
-    @ApiModelProperty(value = "")
-    private String situacaoAtual = null;
-
     @XmlElement(name = "responsavel")
     @ApiModelProperty(value = "")
     @Valid
     private Responsavel responsavel = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "situacaoAtual")
+    @ApiModelProperty(value = "")
+    private String situacaoAtual = null;
 
     /**
      * Get dataHoraSituacao
@@ -87,25 +76,6 @@ public class ViagemRodoviariaSituacaoResumida {
     }
 
     /**
-     * Get situacaoAtual
-     *
-     * @return situacaoAtual
-     **/
-    @JsonProperty("situacaoAtual")
-    public String getSituacaoAtual() {
-        return situacaoAtual;
-    }
-
-    public void setSituacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-    }
-
-    public ViagemRodoviariaSituacaoResumida situacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-        return this;
-    }
-
-    /**
      * Get responsavel
      *
      * @return responsavel
@@ -124,14 +94,44 @@ public class ViagemRodoviariaSituacaoResumida {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get situacaoAtual
+     *
+     * @return situacaoAtual
+     **/
+    @JsonProperty("situacaoAtual")
+    public String getSituacaoAtual() {
+        return situacaoAtual;
+    }
+
+    public void setSituacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+    }
+
+    public ViagemRodoviariaSituacaoResumida situacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ViagemRodoviariaSituacaoResumida {\n" +
                 "    dataHoraSituacao: " + toIndentedString(dataHoraSituacao) + "\n" +
                 "    detalhe: " + toIndentedString(detalhe) + "\n" +
-                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
                 "    responsavel: " + toIndentedString(responsavel) + "\n" +
+                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
                 "}";
         return sb;
     }

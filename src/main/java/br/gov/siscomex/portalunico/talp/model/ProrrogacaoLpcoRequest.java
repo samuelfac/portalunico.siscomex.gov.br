@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProrrogacaoLpcoRequest", propOrder =
-        {"justificativa", "novaDataFimVigencia"
+        {"novaDataFimVigencia", "justificativa"
         })
 
 @XmlRootElement(name = "ProrrogacaoLpcoRequest")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de uma solicitação de prorrogação de um LPCO")
 public class ProrrogacaoLpcoRequest {
 
+    @XmlElement(name = "novaDataFimVigencia")
+    @ApiModelProperty(example = "2019-09-03", value = "Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd")
+    /**
+     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd
+     **/
+    private String novaDataFimVigencia = null;
+
     @XmlElement(name = "justificativa")
     @ApiModelProperty(example = "Texto livre", value = "Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
     /**
@@ -29,12 +36,24 @@ public class ProrrogacaoLpcoRequest {
      **/
     private String justificativa = null;
 
-    @XmlElement(name = "novaDataFimVigencia")
-    @ApiModelProperty(example = "2019-09-03", value = "Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd")
     /**
-     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd
+     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
+     *
+     * @return novaDataFimVigencia
      **/
-    private String novaDataFimVigencia = null;
+    @JsonProperty("novaDataFimVigencia")
+    public String getNovaDataFimVigencia() {
+        return novaDataFimVigencia;
+    }
+
+    public void setNovaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
+    }
+
+    public ProrrogacaoLpcoRequest novaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,31 +85,12 @@ public class ProrrogacaoLpcoRequest {
         return this;
     }
 
-    /**
-     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
-     *
-     * @return novaDataFimVigencia
-     **/
-    @JsonProperty("novaDataFimVigencia")
-    public String getNovaDataFimVigencia() {
-        return novaDataFimVigencia;
-    }
-
-    public void setNovaDataFimVigencia(String novaDataFimVigencia) {
-        this.novaDataFimVigencia = novaDataFimVigencia;
-    }
-
-    public ProrrogacaoLpcoRequest novaDataFimVigencia(String novaDataFimVigencia) {
-        this.novaDataFimVigencia = novaDataFimVigencia;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ProrrogacaoLpcoRequest {\n" +
-                "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "    novaDataFimVigencia: " + toIndentedString(novaDataFimVigencia) + "\n" +
+                "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "}";
         return sb;
     }

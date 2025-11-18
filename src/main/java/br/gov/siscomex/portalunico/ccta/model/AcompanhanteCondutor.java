@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AcompanhanteCondutor", propOrder =
-        {"tipoDocumento", "categoria", "nacionalidadeBrasileira", "nome", "numeroDocumento"
+        {"categoria", "nacionalidadeBrasileira", "nome", "numeroDocumento", "tipoDocumento"
         })
 
 @XmlRootElement(name = "AcompanhanteCondutor")
@@ -27,24 +27,28 @@ public class AcompanhanteCondutor {
      * Tipo do documento do acompanhante do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false, o tipo pode ser 'P' ou 'O'
      **/
     private TipoDocumentoEnum tipoDocumento = null;
+
     @XmlElement(name = "categoria", required = true)
     @ApiModelProperty(example = "A", required = true, value = "Categoria de quem está acompanhando o condutor na viagem<br/> A = Acompanhante, M = Motorista substituto")
     /**
      * Categoria de quem está acompanhando o condutor na viagem<br/> A = Acompanhante, M = Motorista substituto
      **/
     private CategoriaEnum categoria = null;
+
     @XmlElement(name = "nacionalidadeBrasileira", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se quem está acompanhando o condutor do veículo da viagem é de nacionalidade brasileira")
     /**
      * Indicador que informa se quem está acompanhando o condutor do veículo da viagem é de nacionalidade brasileira
      **/
     private Boolean nacionalidadeBrasileira = null;
+
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do acompanhante estrangeiro do condutor do veículo<br/> Se nacionalidadeBrasileira é N, esta informação é de preenchimento obrigatório.<br/> Tamanho Máximo: 150")
     /**
      * Nome do acompanhante estrangeiro do condutor do veículo<br/> Se nacionalidadeBrasileira é N, esta informação é de preenchimento obrigatório.<br/> Tamanho Máximo: 150
      **/
     private String nome = null;
+
     @XmlElement(name = "numeroDocumento", required = true)
     @ApiModelProperty(example = "12345678901", required = true, value = "Número do documento do acompanhante do condutor do veículo<br/> Se nacionalidadeBrasileira é true e o Tipo do documento do acompanhante for 'F', o número informado  deverá ser  validado no cadastro de CPFs.<br/> Tamanho Máximo: 20")
     /**
@@ -75,15 +79,6 @@ public class AcompanhanteCondutor {
             return null;
         }
         return tipoDocumento.value();
-    }
-
-    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public AcompanhanteCondutor tipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
     }
 
     /**
@@ -168,19 +163,66 @@ public class AcompanhanteCondutor {
         return this;
     }
 
+    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public AcompanhanteCondutor tipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class AcompanhanteCondutor {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "    categoria: " + toIndentedString(categoria) + "\n" +
                 "    nacionalidadeBrasileira: " + toIndentedString(nacionalidadeBrasileira) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }
 
+
+    @XmlType(name = "CategoriaEnum")
+    @XmlEnum(String.class)
+    public enum CategoriaEnum {
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A"),
+
+        @XmlEnumValue("M")
+        @JsonProperty("M")
+        M("M");
+
+
+        private final String value;
+
+        CategoriaEnum(String v) {
+            value = v;
+        }
+
+        public static CategoriaEnum fromValue(String v) {
+            for (CategoriaEnum b : CategoriaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoriaEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
 
     @XmlType(name = "TipoDocumentoEnum")
     @XmlEnum(String.class)
@@ -216,44 +258,6 @@ public class AcompanhanteCondutor {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "CategoriaEnum")
-    @XmlEnum(String.class)
-    public enum CategoriaEnum {
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A"),
-
-        @XmlEnumValue("M")
-        @JsonProperty("M")
-        M("M");
-
-
-        private final String value;
-
-        CategoriaEnum(String v) {
-            value = v;
-        }
-
-        public static CategoriaEnum fromValue(String v) {
-            for (CategoriaEnum b : CategoriaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoriaEnum");
         }
 
         public String value() {

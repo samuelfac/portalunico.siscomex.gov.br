@@ -13,20 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclaracaoTributaria", propOrder =
-        {"recolhimentos", "divergente", "compensacoes", "contestacoes"
+        {"compensacoes", "contestacoes", "divergente", "recolhimentos"
         })
 
 @XmlRootElement(name = "DeclaracaoTributaria")
 public class DeclaracaoTributaria {
-
-    @XmlElement(name = "recolhimentos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Recolhimento> recolhimentos = null;
-
-    @XmlElement(name = "divergente")
-    @ApiModelProperty(value = "")
-    private Boolean divergente = null;
 
     @XmlElement(name = "compensacoes")
     @ApiModelProperty(value = "")
@@ -38,59 +29,14 @@ public class DeclaracaoTributaria {
     @Valid
     private List<Contestacao> contestacoes = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "divergente")
+    @ApiModelProperty(value = "")
+    private Boolean divergente = null;
 
-    /**
-     * Get recolhimentos
-     *
-     * @return recolhimentos
-     **/
-    @JsonProperty("recolhimentos")
-    public List<Recolhimento> getRecolhimentos() {
-        return recolhimentos;
-    }
-
-    public void setRecolhimentos(List<Recolhimento> recolhimentos) {
-        this.recolhimentos = recolhimentos;
-    }
-
-    public DeclaracaoTributaria recolhimentos(List<Recolhimento> recolhimentos) {
-        this.recolhimentos = recolhimentos;
-        return this;
-    }
-
-    public DeclaracaoTributaria addRecolhimentosItem(Recolhimento recolhimentosItem) {
-        this.recolhimentos.add(recolhimentosItem);
-        return this;
-    }
-
-    /**
-     * Get divergente
-     *
-     * @return divergente
-     **/
-    @JsonProperty("divergente")
-    public Boolean isisDivergente() {
-        return divergente;
-    }
-
-    public void setDivergente(Boolean divergente) {
-        this.divergente = divergente;
-    }
-
-    public DeclaracaoTributaria divergente(Boolean divergente) {
-        this.divergente = divergente;
-        return this;
-    }
+    @XmlElement(name = "recolhimentos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Recolhimento> recolhimentos = null;
 
     /**
      * Get compensacoes
@@ -140,14 +86,68 @@ public class DeclaracaoTributaria {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get divergente
+     *
+     * @return divergente
+     **/
+    @JsonProperty("divergente")
+    public Boolean isisDivergente() {
+        return divergente;
+    }
+
+    public void setDivergente(Boolean divergente) {
+        this.divergente = divergente;
+    }
+
+    public DeclaracaoTributaria divergente(Boolean divergente) {
+        this.divergente = divergente;
+        return this;
+    }
+
+    /**
+     * Get recolhimentos
+     *
+     * @return recolhimentos
+     **/
+    @JsonProperty("recolhimentos")
+    public List<Recolhimento> getRecolhimentos() {
+        return recolhimentos;
+    }
+
+    public void setRecolhimentos(List<Recolhimento> recolhimentos) {
+        this.recolhimentos = recolhimentos;
+    }
+
+    public DeclaracaoTributaria recolhimentos(List<Recolhimento> recolhimentos) {
+        this.recolhimentos = recolhimentos;
+        return this;
+    }
+
+    public DeclaracaoTributaria addRecolhimentosItem(Recolhimento recolhimentosItem) {
+        this.recolhimentos.add(recolhimentosItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DeclaracaoTributaria {\n" +
-                "    recolhimentos: " + toIndentedString(recolhimentos) + "\n" +
-                "    divergente: " + toIndentedString(divergente) + "\n" +
                 "    compensacoes: " + toIndentedString(compensacoes) + "\n" +
                 "    contestacoes: " + toIndentedString(contestacoes) + "\n" +
+                "    divergente: " + toIndentedString(divergente) + "\n" +
+                "    recolhimentos: " + toIndentedString(recolhimentos) + "\n" +
                 "}";
         return sb;
     }

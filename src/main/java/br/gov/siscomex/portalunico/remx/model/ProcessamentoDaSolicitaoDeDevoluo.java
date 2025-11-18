@@ -16,40 +16,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDaSolicitaoDeDevoluo", propOrder =
-        {"dataHorarioRegistroDevolucao", "situacao", "manifestos", "numeroProtocolo", "dataHoraProcessamento", "dataHorarioEnvio", "numeroDevolucao", "cnpj", "erros"
+        {"cnpj", "dataHoraProcessamento", "dataHorarioEnvio", "dataHorarioRegistroDevolucao", "erros", "manifestos", "numeroDevolucao", "numeroProtocolo", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDaSolicitaoDeDevoluo")
 public class ProcessamentoDaSolicitaoDeDevoluo {
 
-    @XmlElement(name = "dataHorarioRegistroDevolucao", required = true)
-    @ApiModelProperty(required = true, value = "Data e horário do registro do pedido de devolução no sistema.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @XmlElement(name = "cnpj", required = true)
+    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
     /**
-     * Data e horário do registro do pedido de devolução no sistema.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
      **/
-    private OffsetDateTime dataHorarioRegistroDevolucao = null;
-
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
-    /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
-     **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "manifestos", required = true)
-    @ApiModelProperty(required = true, value = "Lista de manifestos.")
-    @Valid
-    /**
-     * Lista de manifestos.
-     **/
-    private List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> manifestos = new ArrayList<>();
-
-    @XmlElement(name = "numeroProtocolo", required = true)
-    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
+    private String cnpj = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -65,19 +43,12 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
      **/
     private OffsetDateTime dataHorarioEnvio = null;
 
-    @XmlElement(name = "numeroDevolucao", required = true)
-    @ApiModelProperty(required = true, value = "Número do registro de devolução gerado pelo sistema.")
+    @XmlElement(name = "dataHorarioRegistroDevolucao", required = true)
+    @ApiModelProperty(required = true, value = "Data e horário do registro do pedido de devolução no sistema.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
-     * Número do registro de devolução gerado pelo sistema.
+     * Data e horário do registro do pedido de devolução no sistema.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
-    private String numeroDevolucao = null;
-
-    @XmlElement(name = "cnpj", required = true)
-    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
-     **/
-    private String cnpj = null;
+    private OffsetDateTime dataHorarioRegistroDevolucao = null;
 
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
@@ -86,6 +57,35 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
      * Lista de erros.
      **/
     private List<ErroNoProcessamento> erros = null;
+
+    @XmlElement(name = "manifestos", required = true)
+    @ApiModelProperty(required = true, value = "Lista de manifestos.")
+    @Valid
+    /**
+     * Lista de manifestos.
+     **/
+    private List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> manifestos = new ArrayList<>();
+
+    @XmlElement(name = "numeroDevolucao", required = true)
+    @ApiModelProperty(required = true, value = "Número do registro de devolução gerado pelo sistema.")
+    /**
+     * Número do registro de devolução gerado pelo sistema.
+     **/
+    private String numeroDevolucao = null;
+
+    @XmlElement(name = "numeroProtocolo", required = true)
+    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     **/
+    private String numeroProtocolo = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -99,88 +99,18 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
     }
 
     /**
-     * Data e horário do registro do pedido de devolução no sistema.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
-     * @return dataHorarioRegistroDevolucao
+     * @return cnpj
      **/
-    @JsonProperty("dataHorarioRegistroDevolucao")
+    @JsonProperty("cnpj")
     @NotNull
-    public OffsetDateTime getDataHorarioRegistroDevolucao() {
-        return dataHorarioRegistroDevolucao;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setDataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
-        this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo dataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
-        this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
-        return this;
-    }
-
-    /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    @NotNull
-    public Integer getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista de manifestos.
-     *
-     * @return manifestos
-     **/
-    @JsonProperty("manifestos")
-    @NotNull
-    public List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> getManifestos() {
-        return manifestos;
-    }
-
-    public void setManifestos(List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> manifestos) {
-        this.manifestos = manifestos;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo manifestos(List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> manifestos) {
-        this.manifestos = manifestos;
-        return this;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo addManifestosItem(ManifestoDoProcessamentoDaSolicitaoDeDevoluo manifestosItem) {
-        this.manifestos.add(manifestosItem);
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    @NotNull
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -222,44 +152,24 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
         return this;
     }
 
-    /**
-     * Número do registro de devolução gerado pelo sistema.
-     *
-     * @return numeroDevolucao
-     **/
-    @JsonProperty("numeroDevolucao")
-    @NotNull
-    public String getNumeroDevolucao() {
-        return numeroDevolucao;
-    }
-
-    public void setNumeroDevolucao(String numeroDevolucao) {
-        this.numeroDevolucao = numeroDevolucao;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo numeroDevolucao(String numeroDevolucao) {
-        this.numeroDevolucao = numeroDevolucao;
-        return this;
-    }
-
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @NotNull
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public ProcessamentoDaSolicitaoDeDevoluo cnpj(String cnpj) {
         this.cnpj = cnpj;
         return this;
+    }
+
+    /**
+     * Data e horário do registro do pedido de devolução no sistema.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataHorarioRegistroDevolucao
+     **/
+    @JsonProperty("dataHorarioRegistroDevolucao")
+    @NotNull
+    public OffsetDateTime getDataHorarioRegistroDevolucao() {
+        return dataHorarioRegistroDevolucao;
+    }
+
+    public void setDataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
+        this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
     }
 
     /**
@@ -286,19 +196,109 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
         return this;
     }
 
+    public ProcessamentoDaSolicitaoDeDevoluo dataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
+        this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
+        return this;
+    }
+
+    /**
+     * Lista de manifestos.
+     *
+     * @return manifestos
+     **/
+    @JsonProperty("manifestos")
+    @NotNull
+    public List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> getManifestos() {
+        return manifestos;
+    }
+
+    public void setManifestos(List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> manifestos) {
+        this.manifestos = manifestos;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo manifestos(List<ManifestoDoProcessamentoDaSolicitaoDeDevoluo> manifestos) {
+        this.manifestos = manifestos;
+        return this;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo addManifestosItem(ManifestoDoProcessamentoDaSolicitaoDeDevoluo manifestosItem) {
+        this.manifestos.add(manifestosItem);
+        return this;
+    }
+
+    /**
+     * Número do registro de devolução gerado pelo sistema.
+     *
+     * @return numeroDevolucao
+     **/
+    @JsonProperty("numeroDevolucao")
+    @NotNull
+    public String getNumeroDevolucao() {
+        return numeroDevolucao;
+    }
+
+    public void setNumeroDevolucao(String numeroDevolucao) {
+        this.numeroDevolucao = numeroDevolucao;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo numeroDevolucao(String numeroDevolucao) {
+        this.numeroDevolucao = numeroDevolucao;
+        return this;
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    @NotNull
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProcessamentoDaSolicitaoDeDevoluo {\n" +
-                "    dataHorarioRegistroDevolucao: " + toIndentedString(dataHorarioRegistroDevolucao) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    manifestos: " + toIndentedString(manifestos) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
                 "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
-                "    numeroDevolucao: " + toIndentedString(numeroDevolucao) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    dataHorarioRegistroDevolucao: " + toIndentedString(dataHorarioRegistroDevolucao) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    manifestos: " + toIndentedString(manifestos) + "\n" +
+                "    numeroDevolucao: " + toIndentedString(numeroDevolucao) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

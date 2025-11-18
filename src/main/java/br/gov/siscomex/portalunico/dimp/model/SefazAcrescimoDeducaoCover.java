@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazAcrescimoDeducaoCover", propOrder =
-        {"codigo", "moeda", "valorReal", "valor", "tipoOperacao"
+        {"moeda", "tipoOperacao", "codigo", "valor", "valorReal"
         })
 
 @XmlRootElement(name = "SefazAcrescimoDeducaoCover")
@@ -26,25 +26,15 @@ import java.math.BigDecimal;
 @ApiModel(description = "Acréscimo ou Dedução")
 public class SefazAcrescimoDeducaoCover {
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "16", value = "Código do acréscimo ou da dedução.<br>Dominio: Tabela de Acréscimos / Deduções do Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99")
-    /**
-     * Código do acréscimo ou da dedução.<br>Dominio: Tabela de Acréscimos / Deduções do Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99
-     **/
-    private Integer codigo = null;
-
     @XmlElement(name = "moeda")
     @ApiModelProperty(value = "")
     private Integer moeda = null;
-
-    @XmlElement(name = "valorReal")
-    @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
+    @XmlElement(name = "tipoOperacao")
+    @ApiModelProperty(example = "1", value = "Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1")
     /**
-     * Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     * Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1
      **/
-    private BigDecimal valorReal = null;
-
+    private TipoOperacaoEnum tipoOperacao = null;
     @XmlElement(name = "valor")
     @ApiModelProperty(example = "100.12", value = "Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -52,12 +42,13 @@ public class SefazAcrescimoDeducaoCover {
      * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valor = null;
-    @XmlElement(name = "tipoOperacao")
-    @ApiModelProperty(example = "1", value = "Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1")
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "16", value = "Código do acréscimo ou da dedução.<br>Dominio: Tabela de Acréscimos / Deduções do Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99")
     /**
-     * Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1
+     * Código do acréscimo ou da dedução.<br>Dominio: Tabela de Acréscimos / Deduções do Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99
      **/
-    private TipoOperacaoEnum tipoOperacao = null;
+    private Integer codigo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -70,24 +61,13 @@ public class SefazAcrescimoDeducaoCover {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "valorReal")
+    @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Código do acréscimo ou da dedução.&lt;br&gt;Dominio: Tabela de Acréscimos / Deduções do Siscomex&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99
-     *
-     * @return codigo
+     * Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    @JsonProperty("codigo")
-    public Integer getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
-
-    public SefazAcrescimoDeducaoCover codigo(Integer codigo) {
-        this.codigo = codigo;
-        return this;
-    }
+    private BigDecimal valorReal = null;
 
     /**
      * Get moeda
@@ -105,44 +85,6 @@ public class SefazAcrescimoDeducaoCover {
 
     public SefazAcrescimoDeducaoCover moeda(Integer moeda) {
         this.moeda = moeda;
-        return this;
-    }
-
-    /**
-     * Valor do acréscimo/dedução em Real.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorReal
-     **/
-    @JsonProperty("valorReal")
-    public BigDecimal getValorReal() {
-        return valorReal;
-    }
-
-    public void setValorReal(BigDecimal valorReal) {
-        this.valorReal = valorReal;
-    }
-
-    public SefazAcrescimoDeducaoCover valorReal(BigDecimal valorReal) {
-        this.valorReal = valorReal;
-        return this;
-    }
-
-    /**
-     * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valor
-     **/
-    @JsonProperty("valor")
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public SefazAcrescimoDeducaoCover valor(BigDecimal valor) {
-        this.valor = valor;
         return this;
     }
 
@@ -168,16 +110,73 @@ public class SefazAcrescimoDeducaoCover {
         return this;
     }
 
+    /**
+     * Código do acréscimo ou da dedução.&lt;br&gt;Dominio: Tabela de Acréscimos / Deduções do Siscomex&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public SefazAcrescimoDeducaoCover codigo(Integer codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+    /**
+     * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valor
+     **/
+    @JsonProperty("valor")
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    public SefazAcrescimoDeducaoCover valor(BigDecimal valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    /**
+     * Valor do acréscimo/dedução em Real.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorReal
+     **/
+    @JsonProperty("valorReal")
+    public BigDecimal getValorReal() {
+        return valorReal;
+    }
+
+    public void setValorReal(BigDecimal valorReal) {
+        this.valorReal = valorReal;
+    }
+
+    public SefazAcrescimoDeducaoCover valorReal(BigDecimal valorReal) {
+        this.valorReal = valorReal;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class SefazAcrescimoDeducaoCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    moeda: " + toIndentedString(moeda) + "\n" +
-                "    valorReal: " + toIndentedString(valorReal) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
+                "    valorReal: " + toIndentedString(valorReal) + "\n" +
                 "}";
         return sb;
     }

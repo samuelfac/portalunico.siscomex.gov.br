@@ -27,17 +27,6 @@ public class RemessaDoPedidoDeReviso {
     private String numeroRemessa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
      * @return numeroRemessa
@@ -56,6 +45,18 @@ public class RemessaDoPedidoDeReviso {
     public RemessaDoPedidoDeReviso numeroRemessa(String numeroRemessa) {
         this.numeroRemessa = numeroRemessa;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

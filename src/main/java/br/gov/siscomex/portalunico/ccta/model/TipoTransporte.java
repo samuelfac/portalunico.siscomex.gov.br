@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTransporte {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "REG", value = "Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)")
-    /**
-     * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Nome do tipo de transporte", value = "Nome do tipo de transporte")
-    /**
-     * Nome do tipo de transporte
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoTransporte {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "REG", value = "Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)")
+    /**
+     * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Nome do tipo de transporte", value = "Nome do tipo de transporte")
+    /**
+     * Nome do tipo de transporte
+     **/
+    private String descricao = null;
 
     /**
      * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
@@ -84,7 +85,6 @@ public class TipoTransporte {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -31,17 +31,6 @@ public class DadosAnaliseSefazDTO {
     private String comentario = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Comentário que será enviado à Sefaz para justificar a Declaração&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 300
      *
      * @return comentario
@@ -59,6 +48,18 @@ public class DadosAnaliseSefazDTO {
     public DadosAnaliseSefazDTO comentario(String comentario) {
         this.comentario = comentario;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

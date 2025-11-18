@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Frete", propOrder =
-        {"formaPagamento", "valor", "codigoMoedaFrete"
+        {"codigoMoedaFrete", "formaPagamento", "valor"
         })
 
 @XmlRootElement(name = "Frete")
@@ -24,6 +24,13 @@ import java.math.BigDecimal;
  **/
 @ApiModel(description = "Dados do frete")
 public class Frete {
+
+    @XmlElement(name = "codigoMoedaFrete", required = true)
+    @ApiModelProperty(example = "USD", required = true, value = "Código da moeda do Frete<br>Domínio: Tabela Tipo de Moeda")
+    /**
+     * Código da moeda do Frete<br>Domínio: Tabela Tipo de Moeda
+     **/
+    private String codigoMoedaFrete = null;
 
     @XmlElement(name = "formaPagamento", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Forma de pagamento do frete<br>Domínio: 1 (prepaid), 2 (collect).")
@@ -40,13 +47,6 @@ public class Frete {
      **/
     private BigDecimal valor = null;
 
-    @XmlElement(name = "codigoMoedaFrete", required = true)
-    @ApiModelProperty(example = "USD", required = true, value = "Código da moeda do Frete<br>Domínio: Tabela Tipo de Moeda")
-    /**
-     * Código da moeda do Frete<br>Domínio: Tabela Tipo de Moeda
-     **/
-    private String codigoMoedaFrete = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -56,6 +56,21 @@ public class Frete {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código da moeda do Frete&lt;br&gt;Domínio: Tabela Tipo de Moeda
+     *
+     * @return codigoMoedaFrete
+     **/
+    @JsonProperty("codigoMoedaFrete")
+    @NotNull
+    public String getCodigoMoedaFrete() {
+        return codigoMoedaFrete;
+    }
+
+    public void setCodigoMoedaFrete(String codigoMoedaFrete) {
+        this.codigoMoedaFrete = codigoMoedaFrete;
     }
 
     /**
@@ -98,21 +113,6 @@ public class Frete {
         return this;
     }
 
-    /**
-     * Código da moeda do Frete&lt;br&gt;Domínio: Tabela Tipo de Moeda
-     *
-     * @return codigoMoedaFrete
-     **/
-    @JsonProperty("codigoMoedaFrete")
-    @NotNull
-    public String getCodigoMoedaFrete() {
-        return codigoMoedaFrete;
-    }
-
-    public void setCodigoMoedaFrete(String codigoMoedaFrete) {
-        this.codigoMoedaFrete = codigoMoedaFrete;
-    }
-
     public Frete codigoMoedaFrete(String codigoMoedaFrete) {
         this.codigoMoedaFrete = codigoMoedaFrete;
         return this;
@@ -122,9 +122,9 @@ public class Frete {
     public String toString() {
 
         String sb = "class Frete {\n" +
+                "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
                 "    formaPagamento: " + toIndentedString(formaPagamento) + "\n" +
                 "    valor: " + toIndentedString(valor) + "\n" +
-                "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
                 "}";
         return sb;
     }

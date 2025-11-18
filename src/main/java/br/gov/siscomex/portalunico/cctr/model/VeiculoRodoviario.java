@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VeiculoRodoviario", propOrder =
-        {"cpfProprietario", "veiculos", "documentoCondutorEstrangeiro", "cpfCondutor", "nomeCondutorEstrangeiro", "cnpjProprietario"
+        {"cpfCondutor", "documentoCondutorEstrangeiro", "nomeCondutorEstrangeiro", "cnpjProprietario", "cpfProprietario", "veiculos"
         })
 
 @XmlRootElement(name = "VeiculoRodoviario")
@@ -23,6 +23,34 @@ import java.util.List;
  **/
 @ApiModel(description = "Dados do veículo rodoviário")
 public class VeiculoRodoviario {
+
+    @XmlElement(name = "cpfCondutor")
+    @ApiModelProperty(example = "15573459106", value = "CPF do condutor<br>Informado quando o condutor for brasileiro<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
+    /**
+     * CPF do condutor<br>Informado quando o condutor for brasileiro<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
+     **/
+    private String cpfCondutor = null;
+
+    @XmlElement(name = "documentoCondutorEstrangeiro")
+    @ApiModelProperty(example = "15573459000106", value = "Documento de identificação do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o nome do condutor<br>Tamanho: 15")
+    /**
+     * Documento de identificação do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o nome do condutor<br>Tamanho: 15
+     **/
+    private String documentoCondutorEstrangeiro = null;
+
+    @XmlElement(name = "nomeCondutorEstrangeiro")
+    @ApiModelProperty(example = "Nome do Condutor", value = "Nome do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o documento do condutor<br>Tamanho: 60")
+    /**
+     * Nome do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o documento do condutor<br>Tamanho: 60
+     **/
+    private String nomeCondutorEstrangeiro = null;
+
+    @XmlElement(name = "cnpjProprietario")
+    @ApiModelProperty(example = "07396865000168", value = "Cnpj do proprietário do veículo<br>Informado quando o Transportador não for o proprietário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
+    /**
+     * Cnpj do proprietário do veículo<br>Informado quando o Transportador não for o proprietário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjProprietario = null;
 
     @XmlElement(name = "cpfProprietario")
     @ApiModelProperty(example = "00000000000", value = "CPF do proprietário do veículo<br>Informado quando o Transportador não for o proprietário<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
@@ -39,34 +67,6 @@ public class VeiculoRodoviario {
      **/
     private List<Veiculo> veiculos = null;
 
-    @XmlElement(name = "documentoCondutorEstrangeiro")
-    @ApiModelProperty(example = "15573459000106", value = "Documento de identificação do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o nome do condutor<br>Tamanho: 15")
-    /**
-     * Documento de identificação do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o nome do condutor<br>Tamanho: 15
-     **/
-    private String documentoCondutorEstrangeiro = null;
-
-    @XmlElement(name = "cpfCondutor")
-    @ApiModelProperty(example = "15573459106", value = "CPF do condutor<br>Informado quando o condutor for brasileiro<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
-    /**
-     * CPF do condutor<br>Informado quando o condutor for brasileiro<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
-     **/
-    private String cpfCondutor = null;
-
-    @XmlElement(name = "nomeCondutorEstrangeiro")
-    @ApiModelProperty(example = "Nome do Condutor", value = "Nome do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o documento do condutor<br>Tamanho: 60")
-    /**
-     * Nome do condutor estrangeiro<br>Informado quando o condutor for estrangeiro juntamente com o documento do condutor<br>Tamanho: 60
-     **/
-    private String nomeCondutorEstrangeiro = null;
-
-    @XmlElement(name = "cnpjProprietario")
-    @ApiModelProperty(example = "07396865000168", value = "Cnpj do proprietário do veículo<br>Informado quando o Transportador não for o proprietário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
-    /**
-     * Cnpj do proprietário do veículo<br>Informado quando o Transportador não for o proprietário<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjProprietario = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -76,6 +76,82 @@ public class VeiculoRodoviario {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CPF do condutor&lt;br&gt;Informado quando o condutor for brasileiro&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
+     *
+     * @return cpfCondutor
+     **/
+    @JsonProperty("cpfCondutor")
+    public String getCpfCondutor() {
+        return cpfCondutor;
+    }
+
+    public void setCpfCondutor(String cpfCondutor) {
+        this.cpfCondutor = cpfCondutor;
+    }
+
+    /**
+     * Documento de identificação do condutor estrangeiro&lt;br&gt;Informado quando o condutor for estrangeiro juntamente com o nome do condutor&lt;br&gt;Tamanho: 15
+     *
+     * @return documentoCondutorEstrangeiro
+     **/
+    @JsonProperty("documentoCondutorEstrangeiro")
+    public String getDocumentoCondutorEstrangeiro() {
+        return documentoCondutorEstrangeiro;
+    }
+
+    public void setDocumentoCondutorEstrangeiro(String documentoCondutorEstrangeiro) {
+        this.documentoCondutorEstrangeiro = documentoCondutorEstrangeiro;
+    }
+
+    public VeiculoRodoviario documentoCondutorEstrangeiro(String documentoCondutorEstrangeiro) {
+        this.documentoCondutorEstrangeiro = documentoCondutorEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Nome do condutor estrangeiro&lt;br&gt;Informado quando o condutor for estrangeiro juntamente com o documento do condutor&lt;br&gt;Tamanho: 60
+     *
+     * @return nomeCondutorEstrangeiro
+     **/
+    @JsonProperty("nomeCondutorEstrangeiro")
+    public String getNomeCondutorEstrangeiro() {
+        return nomeCondutorEstrangeiro;
+    }
+
+    public void setNomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
+        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
+    }
+
+    public VeiculoRodoviario nomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
+        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Cnpj do proprietário do veículo&lt;br&gt;Informado quando o Transportador não for o proprietário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return cnpjProprietario
+     **/
+    @JsonProperty("cnpjProprietario")
+    public String getCnpjProprietario() {
+        return cnpjProprietario;
+    }
+
+    public void setCnpjProprietario(String cnpjProprietario) {
+        this.cnpjProprietario = cnpjProprietario;
+    }
+
+    public VeiculoRodoviario cnpjProprietario(String cnpjProprietario) {
+        this.cnpjProprietario = cnpjProprietario;
+        return this;
+    }
+
+    public VeiculoRodoviario cpfCondutor(String cpfCondutor) {
+        this.cpfCondutor = cpfCondutor;
+        return this;
     }
 
     /**
@@ -121,92 +197,16 @@ public class VeiculoRodoviario {
         return this;
     }
 
-    /**
-     * Documento de identificação do condutor estrangeiro&lt;br&gt;Informado quando o condutor for estrangeiro juntamente com o nome do condutor&lt;br&gt;Tamanho: 15
-     *
-     * @return documentoCondutorEstrangeiro
-     **/
-    @JsonProperty("documentoCondutorEstrangeiro")
-    public String getDocumentoCondutorEstrangeiro() {
-        return documentoCondutorEstrangeiro;
-    }
-
-    public void setDocumentoCondutorEstrangeiro(String documentoCondutorEstrangeiro) {
-        this.documentoCondutorEstrangeiro = documentoCondutorEstrangeiro;
-    }
-
-    public VeiculoRodoviario documentoCondutorEstrangeiro(String documentoCondutorEstrangeiro) {
-        this.documentoCondutorEstrangeiro = documentoCondutorEstrangeiro;
-        return this;
-    }
-
-    /**
-     * CPF do condutor&lt;br&gt;Informado quando o condutor for brasileiro&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
-     *
-     * @return cpfCondutor
-     **/
-    @JsonProperty("cpfCondutor")
-    public String getCpfCondutor() {
-        return cpfCondutor;
-    }
-
-    public void setCpfCondutor(String cpfCondutor) {
-        this.cpfCondutor = cpfCondutor;
-    }
-
-    public VeiculoRodoviario cpfCondutor(String cpfCondutor) {
-        this.cpfCondutor = cpfCondutor;
-        return this;
-    }
-
-    /**
-     * Nome do condutor estrangeiro&lt;br&gt;Informado quando o condutor for estrangeiro juntamente com o documento do condutor&lt;br&gt;Tamanho: 60
-     *
-     * @return nomeCondutorEstrangeiro
-     **/
-    @JsonProperty("nomeCondutorEstrangeiro")
-    public String getNomeCondutorEstrangeiro() {
-        return nomeCondutorEstrangeiro;
-    }
-
-    public void setNomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
-        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
-    }
-
-    public VeiculoRodoviario nomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
-        this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Cnpj do proprietário do veículo&lt;br&gt;Informado quando o Transportador não for o proprietário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return cnpjProprietario
-     **/
-    @JsonProperty("cnpjProprietario")
-    public String getCnpjProprietario() {
-        return cnpjProprietario;
-    }
-
-    public void setCnpjProprietario(String cnpjProprietario) {
-        this.cnpjProprietario = cnpjProprietario;
-    }
-
-    public VeiculoRodoviario cnpjProprietario(String cnpjProprietario) {
-        this.cnpjProprietario = cnpjProprietario;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class VeiculoRodoviario {\n" +
-                "    cpfProprietario: " + toIndentedString(cpfProprietario) + "\n" +
-                "    veiculos: " + toIndentedString(veiculos) + "\n" +
-                "    documentoCondutorEstrangeiro: " + toIndentedString(documentoCondutorEstrangeiro) + "\n" +
                 "    cpfCondutor: " + toIndentedString(cpfCondutor) + "\n" +
+                "    documentoCondutorEstrangeiro: " + toIndentedString(documentoCondutorEstrangeiro) + "\n" +
                 "    nomeCondutorEstrangeiro: " + toIndentedString(nomeCondutorEstrangeiro) + "\n" +
                 "    cnpjProprietario: " + toIndentedString(cnpjProprietario) + "\n" +
+                "    cpfProprietario: " + toIndentedString(cpfProprietario) + "\n" +
+                "    veiculos: " + toIndentedString(veiculos) + "\n" +
                 "}";
         return sb;
     }

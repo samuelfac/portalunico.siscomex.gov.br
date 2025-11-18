@@ -31,17 +31,6 @@ public class PresencaCarga {
     private String dataHoraPresencaCarga = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e hora da presença de carga&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
      *
      * @return dataHoraPresencaCarga
@@ -59,6 +48,18 @@ public class PresencaCarga {
     public PresencaCarga dataHoraPresencaCarga(String dataHoraPresencaCarga) {
         this.dataHoraPresencaCarga = dataHoraPresencaCarga;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

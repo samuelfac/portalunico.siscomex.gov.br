@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentosDuimpConsultaCover", propOrder =
-        {"documentosInstrucao", "declaracoesExportacaoEstrangeira", "processos", "dossies"
+        {"documentosInstrucao", "processos", "declaracoesExportacaoEstrangeira", "dossies"
         })
 
 @XmlRootElement(name = "DocumentosDuimpConsultaCover")
@@ -26,31 +26,20 @@ public class DocumentosDuimpConsultaCover {
     @Valid
     private List<DocumentoInstrucaoCover> documentosInstrucao = new ArrayList<>();
 
-    @XmlElement(name = "declaracoesExportacaoEstrangeira")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira = null;
-
     @XmlElement(name = "processos")
     @ApiModelProperty(value = "")
     @Valid
     private List<ProcessoDocumentoInstrucaoCover> processos = null;
 
+    @XmlElement(name = "declaracoesExportacaoEstrangeira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira = null;
+
     @XmlElement(name = "dossies")
     @ApiModelProperty(value = "")
     @Valid
     private List<DossieCover> dossies = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Get documentosInstrucao
@@ -74,30 +63,6 @@ public class DocumentosDuimpConsultaCover {
 
     public DocumentosDuimpConsultaCover addDocumentosInstrucaoItem(DocumentoInstrucaoCover documentosInstrucaoItem) {
         this.documentosInstrucao.add(documentosInstrucaoItem);
-        return this;
-    }
-
-    /**
-     * Get declaracoesExportacaoEstrangeira
-     *
-     * @return declaracoesExportacaoEstrangeira
-     **/
-    @JsonProperty("declaracoesExportacaoEstrangeira")
-    public List<DeclaracaoExportacaoEstrangeiraCover> getDeclaracoesExportacaoEstrangeira() {
-        return declaracoesExportacaoEstrangeira;
-    }
-
-    public void setDeclaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
-        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
-    }
-
-    public DocumentosDuimpConsultaCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
-        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
-        return this;
-    }
-
-    public DocumentosDuimpConsultaCover addDeclaracoesExportacaoEstrangeiraItem(DeclaracaoExportacaoEstrangeiraCover declaracoesExportacaoEstrangeiraItem) {
-        this.declaracoesExportacaoEstrangeira.add(declaracoesExportacaoEstrangeiraItem);
         return this;
     }
 
@@ -126,6 +91,36 @@ public class DocumentosDuimpConsultaCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get declaracoesExportacaoEstrangeira
+     *
+     * @return declaracoesExportacaoEstrangeira
+     **/
+    @JsonProperty("declaracoesExportacaoEstrangeira")
+    public List<DeclaracaoExportacaoEstrangeiraCover> getDeclaracoesExportacaoEstrangeira() {
+        return declaracoesExportacaoEstrangeira;
+    }
+
+    public void setDeclaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
+        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
+    }
+
+    public DocumentosDuimpConsultaCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
+        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
+        return this;
+    }
+
+    /**
      * Get dossies
      *
      * @return dossies
@@ -149,13 +144,18 @@ public class DocumentosDuimpConsultaCover {
         return this;
     }
 
+    public DocumentosDuimpConsultaCover addDeclaracoesExportacaoEstrangeiraItem(DeclaracaoExportacaoEstrangeiraCover declaracoesExportacaoEstrangeiraItem) {
+        this.declaracoesExportacaoEstrangeira.add(declaracoesExportacaoEstrangeiraItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DocumentosDuimpConsultaCover {\n" +
                 "    documentosInstrucao: " + toIndentedString(documentosInstrucao) + "\n" +
-                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
                 "    processos: " + toIndentedString(processos) + "\n" +
+                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
                 "    dossies: " + toIndentedString(dossies) + "\n" +
                 "}";
         return sb;

@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProrrogacaoLpcoAceitarRequest", propOrder =
-        {"motivoAnalise", "justificativa", "decisaoJudicial", "novaDataFimVigencia"
+        {"novaDataFimVigencia", "justificativa", "decisaoJudicial", "motivoAnalise"
         })
 
 @XmlRootElement(name = "ProrrogacaoLpcoAceitarRequest")
@@ -22,12 +22,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de uma solicitação de prorrogação de um LPCO")
 public class ProrrogacaoLpcoAceitarRequest {
 
-    @XmlElement(name = "motivoAnalise")
-    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+    @XmlElement(name = "novaDataFimVigencia")
+    @ApiModelProperty(example = "2019-09-03", value = "Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd")
     /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd
      **/
-    private String motivoAnalise = null;
+    private String novaDataFimVigencia = null;
 
     @XmlElement(name = "justificativa")
     @ApiModelProperty(example = "Texto livre", value = "Justificativa para a solicitação de prorrogação<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
@@ -43,12 +43,12 @@ public class ProrrogacaoLpcoAceitarRequest {
      **/
     private Boolean decisaoJudicial = null;
 
-    @XmlElement(name = "novaDataFimVigencia")
-    @ApiModelProperty(example = "2019-09-03", value = "Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd")
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
     /**
-     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação<br>Formato: yyyy-MM-dd
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
      **/
-    private String novaDataFimVigencia = null;
+    private String motivoAnalise = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,22 +62,17 @@ public class ProrrogacaoLpcoAceitarRequest {
     }
 
     /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
      *
-     * @return motivoAnalise
+     * @return novaDataFimVigencia
      **/
-    @JsonProperty("motivoAnalise")
-    public String getMotivoAnalise() {
-        return motivoAnalise;
+    @JsonProperty("novaDataFimVigencia")
+    public String getNovaDataFimVigencia() {
+        return novaDataFimVigencia;
     }
 
-    public void setMotivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-    }
-
-    public ProrrogacaoLpcoAceitarRequest motivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-        return this;
+    public void setNovaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
     }
 
     /**
@@ -118,22 +113,27 @@ public class ProrrogacaoLpcoAceitarRequest {
         return this;
     }
 
-    /**
-     * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
-     *
-     * @return novaDataFimVigencia
-     **/
-    @JsonProperty("novaDataFimVigencia")
-    public String getNovaDataFimVigencia() {
-        return novaDataFimVigencia;
-    }
-
-    public void setNovaDataFimVigencia(String novaDataFimVigencia) {
-        this.novaDataFimVigencia = novaDataFimVigencia;
-    }
-
     public ProrrogacaoLpcoAceitarRequest novaDataFimVigencia(String novaDataFimVigencia) {
         this.novaDataFimVigencia = novaDataFimVigencia;
+        return this;
+    }
+
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
+     *
+     * @return motivoAnalise
+     **/
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
+    }
+
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
+    }
+
+    public ProrrogacaoLpcoAceitarRequest motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
         return this;
     }
 
@@ -141,10 +141,10 @@ public class ProrrogacaoLpcoAceitarRequest {
     public String toString() {
 
         String sb = "class ProrrogacaoLpcoAceitarRequest {\n" +
-                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
+                "    novaDataFimVigencia: " + toIndentedString(novaDataFimVigencia) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
-                "    novaDataFimVigencia: " + toIndentedString(novaDataFimVigencia) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
                 "}";
         return sb;
     }

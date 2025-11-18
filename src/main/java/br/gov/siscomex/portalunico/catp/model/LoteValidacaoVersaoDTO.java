@@ -13,11 +13,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LoteValidacaoVersaoDTO", propOrder =
-        {"codigo", "erros", "sucesso", "seq", "versao"
+        {"seq", "codigo", "erros", "sucesso", "versao"
         })
 
 @XmlRootElement(name = "LoteValidacaoVersaoDTO")
 public class LoteValidacaoVersaoDTO {
+
+    @XmlElement(name = "seq", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos")
+    /**
+     * Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos
+     **/
+    private Integer seq = null;
 
     @XmlElement(name = "codigo", required = true)
     @ApiModelProperty(required = true, value = "Código utilizado na operação<br>Tamanho: 35")
@@ -40,13 +47,6 @@ public class LoteValidacaoVersaoDTO {
      **/
     private Boolean sucesso = false;
 
-    @XmlElement(name = "seq", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos")
-    /**
-     * Número sequencial utilizado para identificar registro no lote<br>Formato: Inteiro, com até 3 digitos
-     **/
-    private Integer seq = null;
-
     @XmlElement(name = "versao")
     @ApiModelProperty(value = "Versão do produto  <br>Tamanho máximo: 8")
     /**
@@ -63,6 +63,21 @@ public class LoteValidacaoVersaoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número sequencial utilizado para identificar registro no lote&lt;br&gt;Formato: Inteiro, com até 3 digitos
+     *
+     * @return seq
+     **/
+    @JsonProperty("seq")
+    @NotNull
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
     /**
@@ -130,26 +145,6 @@ public class LoteValidacaoVersaoDTO {
     }
 
     /**
-     * Número sequencial utilizado para identificar registro no lote&lt;br&gt;Formato: Inteiro, com até 3 digitos
-     *
-     * @return seq
-     **/
-    @JsonProperty("seq")
-    @NotNull
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
-    public LoteValidacaoVersaoDTO seq(Integer seq) {
-        this.seq = seq;
-        return this;
-    }
-
-    /**
      * Versão do produto  &lt;br&gt;Tamanho máximo: 8
      *
      * @return versao
@@ -168,14 +163,19 @@ public class LoteValidacaoVersaoDTO {
         return this;
     }
 
+    public LoteValidacaoVersaoDTO seq(Integer seq) {
+        this.seq = seq;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class LoteValidacaoVersaoDTO {\n" +
+                "    seq: " + toIndentedString(seq) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
                 "    sucesso: " + toIndentedString(sucesso) + "\n" +
-                "    seq: " + toIndentedString(seq) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
                 "}";
         return sb;

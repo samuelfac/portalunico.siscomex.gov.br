@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TemplateLpco", propOrder =
-        {"exigeNumeroLI", "modelo", "listaCamposFormulario", "listaNcm"
+        {"modelo", "listaCamposFormulario", "listaNcm", "exigeNumeroLI"
         })
 
 @XmlRootElement(name = "TemplateLpco")
@@ -25,13 +25,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Template que especifica a estrutura de um formulário de um LPCO")
 public class TemplateLpco {
-
-    @XmlElement(name = "exigeNumeroLI")
-    @ApiModelProperty(value = "Indica que se é necessário ou não informar o campo \"numeroLI\" no cadastro de LPCO deste modelo.")
-    /**
-     * Indica que se é necessário ou não informar o campo \"numeroLI\" no cadastro de LPCO deste modelo.
-     **/
-    private Boolean exigeNumeroLI = null;
 
     @XmlElement(name = "modelo", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -51,35 +44,12 @@ public class TemplateLpco {
     @Valid
     private TemplateListaNcm listaNcm = null;
 
+    @XmlElement(name = "exigeNumeroLI")
+    @ApiModelProperty(value = "Indica que se é necessário ou não informar o campo \"numeroLI\" no cadastro de LPCO deste modelo.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Indica que se é necessário ou não informar o campo \&quot;numeroLI\&quot; no cadastro de LPCO deste modelo.
-     *
-     * @return exigeNumeroLI
+     * Indica que se é necessário ou não informar o campo \"numeroLI\" no cadastro de LPCO deste modelo.
      **/
-    @JsonProperty("exigeNumeroLI")
-    public Boolean isisExigeNumeroLI() {
-        return exigeNumeroLI;
-    }
-
-    public void setExigeNumeroLI(Boolean exigeNumeroLI) {
-        this.exigeNumeroLI = exigeNumeroLI;
-    }
-
-    public TemplateLpco exigeNumeroLI(Boolean exigeNumeroLI) {
-        this.exigeNumeroLI = exigeNumeroLI;
-        return this;
-    }
+    private Boolean exigeNumeroLI = null;
 
     /**
      * Get modelo
@@ -145,14 +115,44 @@ public class TemplateLpco {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Indica que se é necessário ou não informar o campo \&quot;numeroLI\&quot; no cadastro de LPCO deste modelo.
+     *
+     * @return exigeNumeroLI
+     **/
+    @JsonProperty("exigeNumeroLI")
+    public Boolean isisExigeNumeroLI() {
+        return exigeNumeroLI;
+    }
+
+    public void setExigeNumeroLI(Boolean exigeNumeroLI) {
+        this.exigeNumeroLI = exigeNumeroLI;
+    }
+
+    public TemplateLpco exigeNumeroLI(Boolean exigeNumeroLI) {
+        this.exigeNumeroLI = exigeNumeroLI;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class TemplateLpco {\n" +
-                "    exigeNumeroLI: " + toIndentedString(exigeNumeroLI) + "\n" +
                 "    modelo: " + toIndentedString(modelo) + "\n" +
                 "    listaCamposFormulario: " + toIndentedString(listaCamposFormulario) + "\n" +
                 "    listaNcm: " + toIndentedString(listaNcm) + "\n" +
+                "    exigeNumeroLI: " + toIndentedString(exigeNumeroLI) + "\n" +
                 "}";
         return sb;
     }

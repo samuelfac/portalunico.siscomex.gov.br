@@ -11,53 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ValoresTributoDuimpCover", propOrder =
-        {"suspenso", "devido", "juros", "aRecolher", "aReduzir", "recolhido", "calculado", "complementar"
+        {"calculado", "aReduzir", "devido", "suspenso", "aRecolher", "recolhido", "complementar", "juros"
         })
 
 @XmlRootElement(name = "ValoresTributoDuimpCover")
 public class ValoresTributoDuimpCover {
-
-    @XmlElement(name = "suspenso")
-    @ApiModelProperty(example = "16.7", value = "Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double suspenso = null;
-
-    @XmlElement(name = "devido")
-    @ApiModelProperty(example = "201.12", value = "Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double devido = null;
-
-    @XmlElement(name = "juros")
-    @ApiModelProperty(example = "16.7", value = "Valores de cálculo de juros.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valores de cálculo de juros.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double juros = null;
-
-    @XmlElement(name = "aRecolher")
-    @ApiModelProperty(example = "16.7", value = "Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double aRecolher = null;
-
-    @XmlElement(name = "aReduzir")
-    @ApiModelProperty(example = "135.7", value = "Valor a Reduzir do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor a Reduzir do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double aReduzir = null;
-
-    @XmlElement(name = "recolhido")
-    @ApiModelProperty(example = "16.7", value = "Valores Recolhidos (pagos) do Tributo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valores Recolhidos (pagos) do Tributo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private Double recolhido = null;
 
     @XmlElement(name = "calculado")
     @ApiModelProperty(example = "1598.73", value = "Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"originalmente devidos\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -66,12 +24,54 @@ public class ValoresTributoDuimpCover {
      **/
     private Double calculado = null;
 
+    @XmlElement(name = "aReduzir")
+    @ApiModelProperty(example = "135.7", value = "Valor a Reduzir do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valor a Reduzir do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double aReduzir = null;
+
+    @XmlElement(name = "devido")
+    @ApiModelProperty(example = "201.12", value = "Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \"a recolher\" dos itens.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double devido = null;
+
+    @XmlElement(name = "suspenso")
+    @ApiModelProperty(example = "16.7", value = "Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valor Suspenso do Tributo em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double suspenso = null;
+
+    @XmlElement(name = "aRecolher")
+    @ApiModelProperty(example = "16.7", value = "Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valor a Recolher do Imposto de Importação em R$ (Reais).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double aRecolher = null;
+
+    @XmlElement(name = "recolhido")
+    @ApiModelProperty(example = "16.7", value = "Valores Recolhidos (pagos) do Tributo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valores Recolhidos (pagos) do Tributo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double recolhido = null;
+
     @XmlElement(name = "complementar")
     @ApiModelProperty(example = "16.7", value = "Valores complementares para pagamento por tributos.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     /**
      * Valores complementares para pagamento por tributos.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private Double complementar = null;
+
+    @XmlElement(name = "juros")
+    @ApiModelProperty(example = "16.7", value = "Valores de cálculo de juros.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valores de cálculo de juros.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private Double juros = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -85,22 +85,36 @@ public class ValoresTributoDuimpCover {
     }
 
     /**
-     * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;originalmente devidos\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return suspenso
+     * @return calculado
      **/
-    @JsonProperty("suspenso")
-    public Double getSuspenso() {
-        return suspenso;
+    @JsonProperty("calculado")
+    public Double getCalculado() {
+        return calculado;
     }
 
-    public void setSuspenso(Double suspenso) {
-        this.suspenso = suspenso;
+    public void setCalculado(Double calculado) {
+        this.calculado = calculado;
     }
 
-    public ValoresTributoDuimpCover suspenso(Double suspenso) {
-        this.suspenso = suspenso;
+    public ValoresTributoDuimpCover calculado(Double calculado) {
+        this.calculado = calculado;
         return this;
+    }
+
+    /**
+     * Valor a Reduzir do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return aReduzir
+     **/
+    @JsonProperty("aReduzir")
+    public Double getAReduzir() {
+        return aReduzir;
+    }
+
+    public void setAReduzir(Double aReduzir) {
+        this.aReduzir = aReduzir;
     }
 
     /**
@@ -122,23 +136,23 @@ public class ValoresTributoDuimpCover {
         return this;
     }
 
-    /**
-     * Valores de cálculo de juros.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return juros
-     **/
-    @JsonProperty("juros")
-    public Double getJuros() {
-        return juros;
-    }
-
-    public void setJuros(Double juros) {
-        this.juros = juros;
-    }
-
-    public ValoresTributoDuimpCover juros(Double juros) {
-        this.juros = juros;
+    public ValoresTributoDuimpCover aReduzir(Double aReduzir) {
+        this.aReduzir = aReduzir;
         return this;
+    }
+
+    /**
+     * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return suspenso
+     **/
+    @JsonProperty("suspenso")
+    public Double getSuspenso() {
+        return suspenso;
+    }
+
+    public void setSuspenso(Double suspenso) {
+        this.suspenso = suspenso;
     }
 
     /**
@@ -157,25 +171,6 @@ public class ValoresTributoDuimpCover {
 
     public ValoresTributoDuimpCover aRecolher(Double aRecolher) {
         this.aRecolher = aRecolher;
-        return this;
-    }
-
-    /**
-     * Valor a Reduzir do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return aReduzir
-     **/
-    @JsonProperty("aReduzir")
-    public Double getAReduzir() {
-        return aReduzir;
-    }
-
-    public void setAReduzir(Double aReduzir) {
-        this.aReduzir = aReduzir;
-    }
-
-    public ValoresTributoDuimpCover aReduzir(Double aReduzir) {
-        this.aReduzir = aReduzir;
         return this;
     }
 
@@ -199,25 +194,6 @@ public class ValoresTributoDuimpCover {
     }
 
     /**
-     * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;originalmente devidos\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return calculado
-     **/
-    @JsonProperty("calculado")
-    public Double getCalculado() {
-        return calculado;
-    }
-
-    public void setCalculado(Double calculado) {
-        this.calculado = calculado;
-    }
-
-    public ValoresTributoDuimpCover calculado(Double calculado) {
-        this.calculado = calculado;
-        return this;
-    }
-
-    /**
      * Valores complementares para pagamento por tributos.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return complementar
@@ -236,18 +212,42 @@ public class ValoresTributoDuimpCover {
         return this;
     }
 
+    public ValoresTributoDuimpCover suspenso(Double suspenso) {
+        this.suspenso = suspenso;
+        return this;
+    }
+
+    /**
+     * Valores de cálculo de juros.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return juros
+     **/
+    @JsonProperty("juros")
+    public Double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(Double juros) {
+        this.juros = juros;
+    }
+
+    public ValoresTributoDuimpCover juros(Double juros) {
+        this.juros = juros;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ValoresTributoDuimpCover {\n" +
-                "    suspenso: " + toIndentedString(suspenso) + "\n" +
-                "    devido: " + toIndentedString(devido) + "\n" +
-                "    juros: " + toIndentedString(juros) + "\n" +
-                "    aRecolher: " + toIndentedString(aRecolher) + "\n" +
-                "    aReduzir: " + toIndentedString(aReduzir) + "\n" +
-                "    recolhido: " + toIndentedString(recolhido) + "\n" +
                 "    calculado: " + toIndentedString(calculado) + "\n" +
+                "    aReduzir: " + toIndentedString(aReduzir) + "\n" +
+                "    devido: " + toIndentedString(devido) + "\n" +
+                "    suspenso: " + toIndentedString(suspenso) + "\n" +
+                "    aRecolher: " + toIndentedString(aRecolher) + "\n" +
+                "    recolhido: " + toIndentedString(recolhido) + "\n" +
                 "    complementar: " + toIndentedString(complementar) + "\n" +
+                "    juros: " + toIndentedString(juros) + "\n" +
                 "}";
         return sb;
     }

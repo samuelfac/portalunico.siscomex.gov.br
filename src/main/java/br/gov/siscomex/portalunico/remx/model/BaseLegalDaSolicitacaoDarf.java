@@ -26,17 +26,6 @@ public class BaseLegalDaSolicitacaoDarf {
     private String baseLegalMulta = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Base legal da multa a ser paga para a remessa a ser incluída no DARF.
      *
      * @return baseLegalMulta
@@ -54,6 +43,18 @@ public class BaseLegalDaSolicitacaoDarf {
     public BaseLegalDaSolicitacaoDarf baseLegalMulta(String baseLegalMulta) {
         this.baseLegalMulta = baseLegalMulta;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RegistroERetificaoDeManifesto", propOrder =
-        {"cnpjDeclarante", "sequenciaManifesto", "numeroManifesto", "paisOrigem", "uaDespacho", "remessas", "modalidade"
+        {"cnpjDeclarante", "modalidade", "numeroManifesto", "paisOrigem", "remessas", "sequenciaManifesto", "uaDespacho"
         })
 
 @XmlRootElement(name = "RegistroERetificaoDeManifesto")
@@ -27,12 +27,12 @@ public class RegistroERetificaoDeManifesto {
      **/
     private String cnpjDeclarante = null;
 
-    @XmlElement(name = "sequenciaManifesto")
-    @ApiModelProperty(value = "Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.")
+    @XmlElement(name = "modalidade", required = true)
+    @ApiModelProperty(required = true, value = "Tipo da modalidade do manifesto.<br/>Valores pré-definidos:<br/>'E' para Remessa Expressa;<br/>'P' para Remessa Postal.")
     /**
-     * Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     * Tipo da modalidade do manifesto.<br/>Valores pré-definidos:<br/>'E' para Remessa Expressa;<br/>'P' para Remessa Postal.
      **/
-    private String sequenciaManifesto = null;
+    private String modalidade = null;
 
     @XmlElement(name = "numeroManifesto")
     @ApiModelProperty(value = "Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.Atributo  obrigatório  caso  seja uma retificação.")
@@ -48,13 +48,6 @@ public class RegistroERetificaoDeManifesto {
      **/
     private String paisOrigem = null;
 
-    @XmlElement(name = "uaDespacho", required = true)
-    @ApiModelProperty(required = true, value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.")
-    /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
-     **/
-    private String uaDespacho = null;
-
     @XmlElement(name = "remessas")
     @ApiModelProperty(value = "Lista de remessas.")
     @Valid
@@ -63,23 +56,19 @@ public class RegistroERetificaoDeManifesto {
      **/
     private List<DadosDaRemessaParaRegistroERetificaoDeManifesto> remessas = null;
 
-    @XmlElement(name = "modalidade", required = true)
-    @ApiModelProperty(required = true, value = "Tipo da modalidade do manifesto.<br/>Valores pré-definidos:<br/>'E' para Remessa Expressa;<br/>'P' para Remessa Postal.")
+    @XmlElement(name = "sequenciaManifesto")
+    @ApiModelProperty(value = "Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.")
     /**
-     * Tipo da modalidade do manifesto.<br/>Valores pré-definidos:<br/>'E' para Remessa Expressa;<br/>'P' para Remessa Postal.
+     * Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
      **/
-    private String modalidade = null;
+    private String sequenciaManifesto = null;
 
+    @XmlElement(name = "uaDespacho", required = true)
+    @ApiModelProperty(required = true, value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     **/
+    private String uaDespacho = null;
 
     /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
@@ -102,22 +91,29 @@ public class RegistroERetificaoDeManifesto {
     }
 
     /**
-     * Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tipo da modalidade do manifesto.&lt;br/&gt;Valores pré-definidos:&lt;br/&gt;&#39;E&#39; para Remessa Expressa;&lt;br/&gt;&#39;P&#39; para Remessa Postal.
      *
-     * @return sequenciaManifesto
+     * @return modalidade
      **/
-    @JsonProperty("sequenciaManifesto")
-    public String getSequenciaManifesto() {
-        return sequenciaManifesto;
+    @JsonProperty("modalidade")
+    @NotNull
+    public String getModalidade() {
+        return modalidade;
     }
 
-    public void setSequenciaManifesto(String sequenciaManifesto) {
-        this.sequenciaManifesto = sequenciaManifesto;
-    }
-
-    public RegistroERetificaoDeManifesto sequenciaManifesto(String sequenciaManifesto) {
-        this.sequenciaManifesto = sequenciaManifesto;
-        return this;
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
     }
 
     /**
@@ -160,26 +156,6 @@ public class RegistroERetificaoDeManifesto {
     }
 
     /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
-     *
-     * @return uaDespacho
-     **/
-    @JsonProperty("uaDespacho")
-    @NotNull
-    public String getUaDespacho() {
-        return uaDespacho;
-    }
-
-    public void setUaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-    }
-
-    public RegistroERetificaoDeManifesto uaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-        return this;
-    }
-
-    /**
      * Lista de remessas.
      *
      * @return remessas
@@ -203,23 +179,47 @@ public class RegistroERetificaoDeManifesto {
         return this;
     }
 
-    /**
-     * Tipo da modalidade do manifesto.&lt;br/&gt;Valores pré-definidos:&lt;br/&gt;&#39;E&#39; para Remessa Expressa;&lt;br/&gt;&#39;P&#39; para Remessa Postal.
-     *
-     * @return modalidade
-     **/
-    @JsonProperty("modalidade")
-    @NotNull
-    public String getModalidade() {
-        return modalidade;
-    }
-
-    public void setModalidade(String modalidade) {
-        this.modalidade = modalidade;
-    }
-
     public RegistroERetificaoDeManifesto modalidade(String modalidade) {
         this.modalidade = modalidade;
+        return this;
+    }
+
+    /**
+     * Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     *
+     * @return sequenciaManifesto
+     **/
+    @JsonProperty("sequenciaManifesto")
+    public String getSequenciaManifesto() {
+        return sequenciaManifesto;
+    }
+
+    public void setSequenciaManifesto(String sequenciaManifesto) {
+        this.sequenciaManifesto = sequenciaManifesto;
+    }
+
+    public RegistroERetificaoDeManifesto sequenciaManifesto(String sequenciaManifesto) {
+        this.sequenciaManifesto = sequenciaManifesto;
+        return this;
+    }
+
+    /**
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     *
+     * @return uaDespacho
+     **/
+    @JsonProperty("uaDespacho")
+    @NotNull
+    public String getUaDespacho() {
+        return uaDespacho;
+    }
+
+    public void setUaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+    }
+
+    public RegistroERetificaoDeManifesto uaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
         return this;
     }
 
@@ -228,12 +228,12 @@ public class RegistroERetificaoDeManifesto {
 
         String sb = "class RegistroERetificaoDeManifesto {\n" +
                 "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
-                "    sequenciaManifesto: " + toIndentedString(sequenciaManifesto) + "\n" +
+                "    modalidade: " + toIndentedString(modalidade) + "\n" +
                 "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
                 "    paisOrigem: " + toIndentedString(paisOrigem) + "\n" +
-                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "    remessas: " + toIndentedString(remessas) + "\n" +
-                "    modalidade: " + toIndentedString(modalidade) + "\n" +
+                "    sequenciaManifesto: " + toIndentedString(sequenciaManifesto) + "\n" +
+                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "}";
         return sb;
     }

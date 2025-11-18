@@ -26,19 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class SituacaoExigenciaLpco {
 
 
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "0", required = true, value = "Código da situação")
-    /**
-     * Código da situação
-     **/
-    private IdEnum id = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Pendente", value = "Descrição textual situação")
-    /**
-     * Descrição textual situação
-     **/
-    private DescricaoEnum descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -49,6 +36,30 @@ public class SituacaoExigenciaLpco {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "0", required = true, value = "Código da situação")
+    /**
+     * Código da situação
+     **/
+    private IdEnum id = null;
+
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoExigenciaLpco {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Pendente", value = "Descrição textual situação")
+    /**
+     * Descrição textual situação
+     **/
+    private DescricaoEnum descricao = null;
 
     /**
      * Código da situação
@@ -93,16 +104,6 @@ public class SituacaoExigenciaLpco {
     public SituacaoExigenciaLpco descricao(DescricaoEnum descricao) {
         this.descricao = descricao;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoExigenciaLpco {\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
     }
 
 

@@ -13,30 +13,32 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BloqueioCargaConsultaResumida", propOrder =
-        {"tipoBloqueio", "alcanceBloqueio", "dataHoraBloqueio"
+        {"alcanceBloqueio", "dataHoraBloqueio", "tipoBloqueio"
         })
 
 @XmlRootElement(name = "BloqueioCargaConsultaResumida")
 public class BloqueioCargaConsultaResumida {
 
-    @XmlElement(name = "tipoBloqueio")
-    @ApiModelProperty(example = "Impede vinculação a documento de saída DI, DSI eletrônica, DUIMP e/ou DTA", value = "Tipo do bloqueio aplicado<br>Tamanho: 100<br/>")
-    /**
-     * Tipo do bloqueio aplicado<br>Tamanho: 100<br/>
-     **/
-    private String tipoBloqueio = null;
-    @XmlElement(name = "alcanceBloqueio")
-    @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
-    /**
-     * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
-     **/
-    private AlcanceBloqueioEnum alcanceBloqueio = null;
+
     @XmlElement(name = "dataHoraBloqueio")
     @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o bloqueio foi aplicado<br/> ")
     /**
      * Data na qual a o bloqueio foi aplicado<br/>
      **/
     private String dataHoraBloqueio = null;
+
+    @XmlElement(name = "alcanceBloqueio")
+    @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
+    /**
+     * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
+     **/
+    private AlcanceBloqueioEnum alcanceBloqueio = null;
+    @XmlElement(name = "tipoBloqueio")
+    @ApiModelProperty(example = "Impede vinculação a documento de saída DI, DSI eletrônica, DUIMP e/ou DTA", value = "Tipo do bloqueio aplicado<br>Tamanho: 100<br/>")
+    /**
+     * Tipo do bloqueio aplicado<br>Tamanho: 100<br/>
+     **/
+    private String tipoBloqueio = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -47,25 +49,6 @@ public class BloqueioCargaConsultaResumida {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo do bloqueio aplicado&lt;br&gt;Tamanho: 100&lt;br/&gt;
-     *
-     * @return tipoBloqueio
-     **/
-    @JsonProperty("tipoBloqueio")
-    public String getTipoBloqueio() {
-        return tipoBloqueio;
-    }
-
-    public void setTipoBloqueio(String tipoBloqueio) {
-        this.tipoBloqueio = tipoBloqueio;
-    }
-
-    public BloqueioCargaConsultaResumida tipoBloqueio(String tipoBloqueio) {
-        this.tipoBloqueio = tipoBloqueio;
-        return this;
     }
 
     /**
@@ -109,14 +92,33 @@ public class BloqueioCargaConsultaResumida {
         return this;
     }
 
+    /**
+     * Tipo do bloqueio aplicado&lt;br&gt;Tamanho: 100&lt;br/&gt;
+     *
+     * @return tipoBloqueio
+     **/
+    @JsonProperty("tipoBloqueio")
+    public String getTipoBloqueio() {
+        return tipoBloqueio;
+    }
+
+    public void setTipoBloqueio(String tipoBloqueio) {
+        this.tipoBloqueio = tipoBloqueio;
+    }
+
+    public BloqueioCargaConsultaResumida tipoBloqueio(String tipoBloqueio) {
+        this.tipoBloqueio = tipoBloqueio;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class BloqueioCargaConsultaResumida {\n" +
-                "    tipoBloqueio: " + toIndentedString(tipoBloqueio) + "\n" +
                 "    alcanceBloqueio: " + toIndentedString(alcanceBloqueio) + "\n" +
                 "    dataHoraBloqueio: " + toIndentedString(dataHoraBloqueio) + "\n" +
+                "    tipoBloqueio: " + toIndentedString(tipoBloqueio) + "\n" +
                 "}";
         return sb;
     }

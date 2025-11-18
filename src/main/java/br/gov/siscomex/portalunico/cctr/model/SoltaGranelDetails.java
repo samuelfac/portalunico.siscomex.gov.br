@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SoltaGranelDetails", propOrder =
-        {"situacao", "unidadeMedida", "quantidade", "descricao"
+        {"descricao", "quantidade", "situacao", "unidadeMedida"
         })
 
 @XmlRootElement(name = "SoltaGranelDetails")
@@ -23,6 +23,21 @@ import java.math.BigDecimal;
  **/
 @ApiModel(description = "Lista de cargas, solta ou granel")
 public class SoltaGranelDetails {
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Caixa", value = "Descrição do Tipo da Carga")
+    /**
+     * Descrição do Tipo da Carga
+     **/
+    private String descricao = null;
+
+    @XmlElement(name = "quantidade")
+    @ApiModelProperty(example = "150", value = "Quantidade total de volumes estocada")
+    @Valid
+    /**
+     * Quantidade total de volumes estocada
+     **/
+    private BigDecimal quantidade = null;
 
     @XmlElement(name = "situacao")
     @ApiModelProperty(example = "Disponível", value = "Descrição da situação")
@@ -38,21 +53,6 @@ public class SoltaGranelDetails {
      **/
     private String unidadeMedida = null;
 
-    @XmlElement(name = "quantidade")
-    @ApiModelProperty(example = "150", value = "Quantidade total de volumes estocada")
-    @Valid
-    /**
-     * Quantidade total de volumes estocada
-     **/
-    private BigDecimal quantidade = null;
-
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Caixa", value = "Descrição do Tipo da Carga")
-    /**
-     * Descrição do Tipo da Carga
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -62,6 +62,39 @@ public class SoltaGranelDetails {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Descrição do Tipo da Carga
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public SoltaGranelDetails descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+    /**
+     * Quantidade total de volumes estocada
+     *
+     * @return quantidade
+     **/
+    @JsonProperty("quantidade")
+    public BigDecimal getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
     }
 
     /**
@@ -102,41 +135,8 @@ public class SoltaGranelDetails {
         return this;
     }
 
-    /**
-     * Quantidade total de volumes estocada
-     *
-     * @return quantidade
-     **/
-    @JsonProperty("quantidade")
-    public BigDecimal getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(BigDecimal quantidade) {
-        this.quantidade = quantidade;
-    }
-
     public SoltaGranelDetails quantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
-        return this;
-    }
-
-    /**
-     * Descrição do Tipo da Carga
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public SoltaGranelDetails descricao(String descricao) {
-        this.descricao = descricao;
         return this;
     }
 
@@ -144,10 +144,10 @@ public class SoltaGranelDetails {
     public String toString() {
 
         String sb = "class SoltaGranelDetails {\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    quantidade: " + toIndentedString(quantidade) + "\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    unidadeMedida: " + toIndentedString(unidadeMedida) + "\n" +
-                "    quantidade: " + toIndentedString(quantidade) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "}";
         return sb;
     }

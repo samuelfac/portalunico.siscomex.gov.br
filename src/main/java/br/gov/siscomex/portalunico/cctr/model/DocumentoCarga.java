@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoCarga", propOrder =
-        {"numeroDUE", "cargaSoltaVeiculo", "numeroRUC", "granel"
+        {"numeroDUE", "numeroRUC", "cargaSoltaVeiculo", "granel"
         })
 
 @XmlRootElement(name = "DocumentoCarga")
@@ -33,6 +33,13 @@ public class DocumentoCarga {
      **/
     private String numeroDUE = null;
 
+    @XmlElement(name = "numeroRUC", required = true)
+    @ApiModelProperty(example = "7BR276574827551833214353477473070", required = true, value = "Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
+    /**
+     * Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+     **/
+    private String numeroRUC = null;
+
     @XmlElement(name = "cargaSoltaVeiculo", required = true)
     @ApiModelProperty(required = true, value = "Lista de cargas soltas/veículos")
     @Valid
@@ -41,13 +48,6 @@ public class DocumentoCarga {
      **/
     private List<CargaSoltaVeiculo> cargaSoltaVeiculo = new ArrayList<>();
 
-    @XmlElement(name = "numeroRUC", required = true)
-    @ApiModelProperty(example = "7BR276574827551833214353477473070", required = true, value = "Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN")
-    /**
-     * Número da RUC ou RUC Master<br>Tamanho mínimo: 13<br>Tamanho máximo: 35<br>Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     **/
-    private String numeroRUC = null;
-
     @XmlElement(name = "granel", required = true)
     @ApiModelProperty(required = true, value = "Lista de graneis")
     @Valid
@@ -55,17 +55,6 @@ public class DocumentoCarga {
      * Lista de graneis
      **/
     private List<Granel> granel = new ArrayList<>();
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Número da DU-E&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD &lt;br&gt;Descrição Formato&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
@@ -85,6 +74,32 @@ public class DocumentoCarga {
     public DocumentoCarga numeroDUE(String numeroDUE) {
         this.numeroDUE = numeroDUE;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número da RUC ou RUC Master&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+     *
+     * @return numeroRUC
+     **/
+    @JsonProperty("numeroRUC")
+    @NotNull
+    public String getNumeroRUC() {
+        return numeroRUC;
+    }
+
+    public void setNumeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
     }
 
     /**
@@ -113,26 +128,6 @@ public class DocumentoCarga {
     }
 
     /**
-     * Número da RUC ou RUC Master&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-     *
-     * @return numeroRUC
-     **/
-    @JsonProperty("numeroRUC")
-    @NotNull
-    public String getNumeroRUC() {
-        return numeroRUC;
-    }
-
-    public void setNumeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-    }
-
-    public DocumentoCarga numeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-        return this;
-    }
-
-    /**
      * Lista de graneis
      *
      * @return granel
@@ -157,13 +152,18 @@ public class DocumentoCarga {
         return this;
     }
 
+    public DocumentoCarga numeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DocumentoCarga {\n" +
                 "    numeroDUE: " + toIndentedString(numeroDUE) + "\n" +
-                "    cargaSoltaVeiculo: " + toIndentedString(cargaSoltaVeiculo) + "\n" +
                 "    numeroRUC: " + toIndentedString(numeroRUC) + "\n" +
+                "    cargaSoltaVeiculo: " + toIndentedString(cargaSoltaVeiculo) + "\n" +
                 "    granel: " + toIndentedString(granel) + "\n" +
                 "}";
         return sb;

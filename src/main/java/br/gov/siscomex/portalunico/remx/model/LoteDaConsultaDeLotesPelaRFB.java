@@ -13,32 +13,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LoteDaConsultaDeLotesPelaRFB", propOrder =
-        {"situacaoLote", "qtdRemessasSelecionadas", "numeroLote", "identificadorLote", "listaNumeroRemessa", "uaDespacho", "dataHorarioRegistroLote", "operadora", "qtdRemessas"
+        {"dataHorarioRegistroLote", "identificadorLote", "listaNumeroRemessa", "numeroLote", "operadora", "qtdRemessas", "qtdRemessasSelecionadas", "situacaoLote", "uaDespacho"
         })
 
 @XmlRootElement(name = "LoteDaConsultaDeLotesPelaRFB")
 public class LoteDaConsultaDeLotesPelaRFB {
 
-    @XmlElement(name = "situacaoLote")
-    @ApiModelProperty(value = "Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.")
+    @XmlElement(name = "dataHorarioRegistroLote")
+    @ApiModelProperty(value = "Data e horário do registro do lote de declarações.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
-     * Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.
+     * Data e horário do registro do lote de declarações.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
-    private String situacaoLote = null;
-
-    @XmlElement(name = "qtdRemessasSelecionadas")
-    @ApiModelProperty(value = "Quantidade de remessas selecionadas. Número entre 0000 e 9999.")
-    /**
-     * Quantidade de remessas selecionadas. Número entre 0000 e 9999.
-     **/
-    private Integer qtdRemessasSelecionadas = null;
-
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     **/
-    private String numeroLote = null;
+    private OffsetDateTime dataHorarioRegistroLote = null;
 
     @XmlElement(name = "identificadorLote")
     @ApiModelProperty(value = "Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
@@ -54,19 +40,12 @@ public class LoteDaConsultaDeLotesPelaRFB {
      **/
     private List<String> listaNumeroRemessa = null;
 
-    @XmlElement(name = "uaDespacho")
-    @ApiModelProperty(value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.")
+    @XmlElement(name = "numeroLote")
+    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
     /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
      **/
-    private String uaDespacho = null;
-
-    @XmlElement(name = "dataHorarioRegistroLote")
-    @ApiModelProperty(value = "Data e horário do registro do lote de declarações.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data e horário do registro do lote de declarações.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataHorarioRegistroLote = null;
+    private String numeroLote = null;
 
     @XmlElement(name = "operadora")
     @ApiModelProperty(value = "Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.")
@@ -82,6 +61,27 @@ public class LoteDaConsultaDeLotesPelaRFB {
      **/
     private Integer qtdRemessas = null;
 
+    @XmlElement(name = "qtdRemessasSelecionadas")
+    @ApiModelProperty(value = "Quantidade de remessas selecionadas. Número entre 0000 e 9999.")
+    /**
+     * Quantidade de remessas selecionadas. Número entre 0000 e 9999.
+     **/
+    private Integer qtdRemessasSelecionadas = null;
+
+    @XmlElement(name = "situacaoLote")
+    @ApiModelProperty(value = "Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.")
+    /**
+     * Situação do lote. Máximo de 2 caracteres numéricos. Domínio: <br/>5 - Seleção em andamento;<br/>6 - Seleção encerrada.
+     **/
+    private String situacaoLote = null;
+
+    @XmlElement(name = "uaDespacho")
+    @ApiModelProperty(value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.")
+    /**
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     **/
+    private String uaDespacho = null;
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -94,60 +94,17 @@ public class LoteDaConsultaDeLotesPelaRFB {
     }
 
     /**
-     * Situação do lote. Máximo de 2 caracteres numéricos. Domínio: &lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.
+     * Data e horário do registro do lote de declarações.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
-     * @return situacaoLote
+     * @return dataHorarioRegistroLote
      **/
-    @JsonProperty("situacaoLote")
-    public String getSituacaoLote() {
-        return situacaoLote;
+    @JsonProperty("dataHorarioRegistroLote")
+    public OffsetDateTime getDataHorarioRegistroLote() {
+        return dataHorarioRegistroLote;
     }
 
-    public void setSituacaoLote(String situacaoLote) {
-        this.situacaoLote = situacaoLote;
-    }
-
-    public LoteDaConsultaDeLotesPelaRFB situacaoLote(String situacaoLote) {
-        this.situacaoLote = situacaoLote;
-        return this;
-    }
-
-    /**
-     * Quantidade de remessas selecionadas. Número entre 0000 e 9999.
-     *
-     * @return qtdRemessasSelecionadas
-     **/
-    @JsonProperty("qtdRemessasSelecionadas")
-    public Integer getQtdRemessasSelecionadas() {
-        return qtdRemessasSelecionadas;
-    }
-
-    public void setQtdRemessasSelecionadas(Integer qtdRemessasSelecionadas) {
-        this.qtdRemessasSelecionadas = qtdRemessasSelecionadas;
-    }
-
-    public LoteDaConsultaDeLotesPelaRFB qtdRemessasSelecionadas(Integer qtdRemessasSelecionadas) {
-        this.qtdRemessasSelecionadas = qtdRemessasSelecionadas;
-        return this;
-    }
-
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     *
-     * @return numeroLote
-     **/
-    @JsonProperty("numeroLote")
-    public String getNumeroLote() {
-        return numeroLote;
-    }
-
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-    }
-
-    public LoteDaConsultaDeLotesPelaRFB numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
+    public void setDataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
+        this.dataHorarioRegistroLote = dataHorarioRegistroLote;
     }
 
     /**
@@ -193,42 +150,23 @@ public class LoteDaConsultaDeLotesPelaRFB {
         return this;
     }
 
-    /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
-     *
-     * @return uaDespacho
-     **/
-    @JsonProperty("uaDespacho")
-    public String getUaDespacho() {
-        return uaDespacho;
-    }
-
-    public void setUaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-    }
-
-    public LoteDaConsultaDeLotesPelaRFB uaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-        return this;
-    }
-
-    /**
-     * Data e horário do registro do lote de declarações.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataHorarioRegistroLote
-     **/
-    @JsonProperty("dataHorarioRegistroLote")
-    public OffsetDateTime getDataHorarioRegistroLote() {
-        return dataHorarioRegistroLote;
-    }
-
-    public void setDataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
-        this.dataHorarioRegistroLote = dataHorarioRegistroLote;
-    }
-
     public LoteDaConsultaDeLotesPelaRFB dataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
         this.dataHorarioRegistroLote = dataHorarioRegistroLote;
         return this;
+    }
+
+    /**
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
+     *
+     * @return numeroLote
+     **/
+    @JsonProperty("numeroLote")
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
     }
 
     /**
@@ -269,19 +207,81 @@ public class LoteDaConsultaDeLotesPelaRFB {
         return this;
     }
 
+    public LoteDaConsultaDeLotesPelaRFB numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
+    }
+
+    /**
+     * Quantidade de remessas selecionadas. Número entre 0000 e 9999.
+     *
+     * @return qtdRemessasSelecionadas
+     **/
+    @JsonProperty("qtdRemessasSelecionadas")
+    public Integer getQtdRemessasSelecionadas() {
+        return qtdRemessasSelecionadas;
+    }
+
+    public void setQtdRemessasSelecionadas(Integer qtdRemessasSelecionadas) {
+        this.qtdRemessasSelecionadas = qtdRemessasSelecionadas;
+    }
+
+    public LoteDaConsultaDeLotesPelaRFB qtdRemessasSelecionadas(Integer qtdRemessasSelecionadas) {
+        this.qtdRemessasSelecionadas = qtdRemessasSelecionadas;
+        return this;
+    }
+
+    /**
+     * Situação do lote. Máximo de 2 caracteres numéricos. Domínio: &lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.
+     *
+     * @return situacaoLote
+     **/
+    @JsonProperty("situacaoLote")
+    public String getSituacaoLote() {
+        return situacaoLote;
+    }
+
+    public void setSituacaoLote(String situacaoLote) {
+        this.situacaoLote = situacaoLote;
+    }
+
+    public LoteDaConsultaDeLotesPelaRFB situacaoLote(String situacaoLote) {
+        this.situacaoLote = situacaoLote;
+        return this;
+    }
+
+    /**
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     *
+     * @return uaDespacho
+     **/
+    @JsonProperty("uaDespacho")
+    public String getUaDespacho() {
+        return uaDespacho;
+    }
+
+    public void setUaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+    }
+
+    public LoteDaConsultaDeLotesPelaRFB uaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class LoteDaConsultaDeLotesPelaRFB {\n" +
-                "    situacaoLote: " + toIndentedString(situacaoLote) + "\n" +
-                "    qtdRemessasSelecionadas: " + toIndentedString(qtdRemessasSelecionadas) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    dataHorarioRegistroLote: " + toIndentedString(dataHorarioRegistroLote) + "\n" +
                 "    identificadorLote: " + toIndentedString(identificadorLote) + "\n" +
                 "    listaNumeroRemessa: " + toIndentedString(listaNumeroRemessa) + "\n" +
-                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
-                "    dataHorarioRegistroLote: " + toIndentedString(dataHorarioRegistroLote) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    operadora: " + toIndentedString(operadora) + "\n" +
                 "    qtdRemessas: " + toIndentedString(qtdRemessas) + "\n" +
+                "    qtdRemessasSelecionadas: " + toIndentedString(qtdRemessasSelecionadas) + "\n" +
+                "    situacaoLote: " + toIndentedString(situacaoLote) + "\n" +
+                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "}";
         return sb;
     }

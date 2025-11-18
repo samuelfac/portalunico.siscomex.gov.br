@@ -30,17 +30,6 @@ public class RetificacaoLpcoCancelarRequest {
     private String justificativa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Justificativa para a operação. Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 3900
      *
      * @return justificativa
@@ -57,6 +46,18 @@ public class RetificacaoLpcoCancelarRequest {
     public RetificacaoLpcoCancelarRequest justificativa(String justificativa) {
         this.justificativa = justificativa;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

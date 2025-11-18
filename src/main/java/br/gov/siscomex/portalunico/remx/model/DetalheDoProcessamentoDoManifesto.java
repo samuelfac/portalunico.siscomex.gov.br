@@ -15,11 +15,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DetalheDoProcessamentoDoManifesto", propOrder =
-        {"dataHoraManifesto", "nomeEmpresa", "numeroManifesto", "uaEntrada", "paisOrigem", "cnpj", "remessas"
+        {"cnpj", "dataHoraManifesto", "nomeEmpresa", "numeroManifesto", "paisOrigem", "remessas", "uaEntrada"
         })
 
 @XmlRootElement(name = "DetalheDoProcessamentoDoManifesto")
 public class DetalheDoProcessamentoDoManifesto {
+
+    @XmlElement(name = "cnpj", required = true)
+    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
+    /**
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
+     **/
+    private String cnpj = null;
 
     @XmlElement(name = "dataHoraManifesto", required = true)
     @ApiModelProperty(required = true, value = "Data e horário do registro do manifesto de carga.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -42,26 +49,12 @@ public class DetalheDoProcessamentoDoManifesto {
      **/
     private String numeroManifesto = null;
 
-    @XmlElement(name = "uaEntrada", required = true)
-    @ApiModelProperty(required = true, value = "Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.")
-    /**
-     * Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.
-     **/
-    private String uaEntrada = null;
-
     @XmlElement(name = "paisOrigem", required = true)
     @ApiModelProperty(required = true, value = "Código do país de origem da carga. Valores de acordo com a tabela de domínio.")
     /**
      * Código do país de origem da carga. Valores de acordo com a tabela de domínio.
      **/
     private String paisOrigem = null;
-
-    @XmlElement(name = "cnpj", required = true)
-    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
-     **/
-    private String cnpj = null;
 
     @XmlElement(name = "remessas")
     @ApiModelProperty(value = "Lista de remessas.")
@@ -70,6 +63,13 @@ public class DetalheDoProcessamentoDoManifesto {
      * Lista de remessas.
      **/
     private List<DetalheDoProcessamentoDaRemessa> remessas = null;
+
+    @XmlElement(name = "uaEntrada", required = true)
+    @ApiModelProperty(required = true, value = "Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.")
+    /**
+     * Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.
+     **/
+    private String uaEntrada = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -80,6 +80,21 @@ public class DetalheDoProcessamentoDoManifesto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
+     *
+     * @return cnpj
+     **/
+    @JsonProperty("cnpj")
+    @NotNull
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -143,26 +158,6 @@ public class DetalheDoProcessamentoDoManifesto {
     }
 
     /**
-     * Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.
-     *
-     * @return uaEntrada
-     **/
-    @JsonProperty("uaEntrada")
-    @NotNull
-    public String getUaEntrada() {
-        return uaEntrada;
-    }
-
-    public void setUaEntrada(String uaEntrada) {
-        this.uaEntrada = uaEntrada;
-    }
-
-    public DetalheDoProcessamentoDoManifesto uaEntrada(String uaEntrada) {
-        this.uaEntrada = uaEntrada;
-        return this;
-    }
-
-    /**
      * Código do país de origem da carga. Valores de acordo com a tabela de domínio.
      *
      * @return paisOrigem
@@ -179,26 +174,6 @@ public class DetalheDoProcessamentoDoManifesto {
 
     public DetalheDoProcessamentoDoManifesto paisOrigem(String paisOrigem) {
         this.paisOrigem = paisOrigem;
-        return this;
-    }
-
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @NotNull
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public DetalheDoProcessamentoDoManifesto cnpj(String cnpj) {
-        this.cnpj = cnpj;
         return this;
     }
 
@@ -226,17 +201,42 @@ public class DetalheDoProcessamentoDoManifesto {
         return this;
     }
 
+    public DetalheDoProcessamentoDoManifesto cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
+
+    /**
+     * Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.
+     *
+     * @return uaEntrada
+     **/
+    @JsonProperty("uaEntrada")
+    @NotNull
+    public String getUaEntrada() {
+        return uaEntrada;
+    }
+
+    public void setUaEntrada(String uaEntrada) {
+        this.uaEntrada = uaEntrada;
+    }
+
+    public DetalheDoProcessamentoDoManifesto uaEntrada(String uaEntrada) {
+        this.uaEntrada = uaEntrada;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DetalheDoProcessamentoDoManifesto {\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    dataHoraManifesto: " + toIndentedString(dataHoraManifesto) + "\n" +
                 "    nomeEmpresa: " + toIndentedString(nomeEmpresa) + "\n" +
                 "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "    uaEntrada: " + toIndentedString(uaEntrada) + "\n" +
                 "    paisOrigem: " + toIndentedString(paisOrigem) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    remessas: " + toIndentedString(remessas) + "\n" +
+                "    uaEntrada: " + toIndentedString(uaEntrada) + "\n" +
                 "}";
         return sb;
     }

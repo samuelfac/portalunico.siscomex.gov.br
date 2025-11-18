@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConteinerDetails", propOrder =
-        {"situacao", "lacres", "numeroConteiner", "tara"
+        {"numeroConteiner", "tara", "lacres", "situacao"
         })
 
 @XmlRootElement(name = "ConteinerDetails")
@@ -24,20 +24,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Lista de contêineres")
 public class ConteinerDetails {
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(example = "Disponível", value = "Descrição da situação")
-    /**
-     * Descrição da situação
-     **/
-    private String situacao = null;
-
-    @XmlElement(name = "lacres")
-    @ApiModelProperty(example = "LACRE001", value = "Números dos Lacres")
-    /**
-     * Números dos Lacres
-     **/
-    private List<String> lacres = null;
 
     @XmlElement(name = "numeroConteiner")
     @ApiModelProperty(example = "CT00667010", value = "Número do contêiner")
@@ -54,59 +40,19 @@ public class ConteinerDetails {
      **/
     private BigDecimal tara = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Descrição da situação
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public ConteinerDetails situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
+    @XmlElement(name = "lacres")
+    @ApiModelProperty(example = "LACRE001", value = "Números dos Lacres")
     /**
      * Números dos Lacres
-     *
-     * @return lacres
      **/
-    @JsonProperty("lacres")
-    public List<String> getLacres() {
-        return lacres;
-    }
+    private List<String> lacres = null;
 
-    public void setLacres(List<String> lacres) {
-        this.lacres = lacres;
-    }
-
-    public ConteinerDetails lacres(List<String> lacres) {
-        this.lacres = lacres;
-        return this;
-    }
-
-    public ConteinerDetails addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(example = "Disponível", value = "Descrição da situação")
+    /**
+     * Descrição da situação
+     **/
+    private String situacao = null;
 
     /**
      * Número do contêiner
@@ -146,14 +92,68 @@ public class ConteinerDetails {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Números dos Lacres
+     *
+     * @return lacres
+     **/
+    @JsonProperty("lacres")
+    public List<String> getLacres() {
+        return lacres;
+    }
+
+    public void setLacres(List<String> lacres) {
+        this.lacres = lacres;
+    }
+
+    public ConteinerDetails lacres(List<String> lacres) {
+        this.lacres = lacres;
+        return this;
+    }
+
+    public ConteinerDetails addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
+    }
+
+    /**
+     * Descrição da situação
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public ConteinerDetails situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ConteinerDetails {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
                 "    tara: " + toIndentedString(tara) + "\n" +
+                "    lacres: " + toIndentedString(lacres) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

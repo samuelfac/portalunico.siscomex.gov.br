@@ -18,7 +18,7 @@ import java.util.Map;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoTransporte", propOrder =
-        {"observacao", "tipoDocumentoTransporte", "cpfCnpjTransportador", "localDestinoPrevisto", "situacoesObservacao", "veiculoFerroviario", "conteineres", "dataEmissao", "descricaoAvaria", "cargaComDivergencia", "pesoBrutoTransportado", "cargaComAvaria", "dadosUnidadeTransporteConferem", "dadosEmbalagemConferem", "localEstoque", "viaTransporte", "tipoDAT", "veiculoRodoviario", "dadosConteinerConferem", "localManifestacao", "nomeTransportador", "dadosVeiculoConferem", "localOrigem", "numeroRUT", "cargas", "numeroDocumentoTransporte", "situacaoAtual", "descricaoDivergencia", "localDestinoRealizado", "observacaoRecepcao"
+        {"numeroDocumentoTransporte", "tipoDocumentoTransporte", "numeroRUT", "viaTransporte", "situacaoAtual", "situacoesObservacao", "dataEmissao", "cpfCnpjTransportador", "nomeTransportador", "tipoDAT", "localOrigem", "localDestinoPrevisto", "localDestinoRealizado", "localManifestacao", "localEstoque", "veiculoFerroviario", "veiculoRodoviario", "conteineres", "cargas", "pesoBrutoTransportado", "observacao", "dadosVeiculoConferem", "dadosUnidadeTransporteConferem", "dadosConteinerConferem", "dadosEmbalagemConferem", "cargaComAvaria", "descricaoAvaria", "cargaComDivergencia", "descricaoDivergencia", "observacaoRecepcao"
         })
 
 @XmlRootElement(name = "DocumentoTransporte")
@@ -28,138 +28,91 @@ import java.util.Map;
 @ApiModel(description = "Documento de Transporte")
 public class DocumentoTransporte {
 
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(example = "Observações adicionais", value = "Observações adicionais")
+    @XmlElement(name = "numeroDocumentoTransporte")
+    @ApiModelProperty(example = "BR000000001", value = "Número do documento de transporte")
     /**
-     * Observações adicionais
+     * Número do documento de transporte
      **/
-    private String observacao = null;
-    @XmlElement(name = "tipoDocumentoTransporte")
-    @ApiModelProperty(value = "Tipo de documento de transporte")
-    /**
-     * Tipo de documento de transporte
-     **/
-    private TipoDocumentoTransporteEnum tipoDocumentoTransporte = null;
-    @XmlElement(name = "cpfCnpjTransportador")
-    @ApiModelProperty(example = "27657485000147", value = "CPF ou CNPJ do Transportador")
-    /**
-     * CPF ou CNPJ do Transportador
-     **/
-    private String cpfCnpjTransportador = null;
-    @XmlElement(name = "localDestinoPrevisto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Local localDestinoPrevisto = null;
-    @XmlElement(name = "situacoesObservacao")
-    @ApiModelProperty(value = "Situação do documento de transporte")
-    /**
-     * Situação do documento de transporte
-     **/
-    private Map<String, String> situacoesObservacao = null;
-    @XmlElement(name = "veiculoFerroviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoFerroviario veiculoFerroviario = null;
-    @XmlElement(name = "conteineres")
-    @ApiModelProperty(value = "Lista de Contêineres vinculados ao documento de transporte")
-    @Valid
-    /**
-     * Lista de Contêineres vinculados ao documento de transporte
-     **/
-    private List<Conteineres> conteineres = null;
-    @XmlElement(name = "dataEmissao")
-    @ApiModelProperty(example = "2019-01-04", value = "Data de Emissão do Documento de Transporte<br>No formato AAAA-MM-YY")
-    /**
-     * Data de Emissão do Documento de Transporte<br>No formato AAAA-MM-YY
-     **/
-    private String dataEmissao = null;
-    @XmlElement(name = "descricaoAvaria")
-    @ApiModelProperty(example = "Avarias identificadas", value = "Avarias identificadas")
-    /**
-     * Avarias identificadas
-     **/
-    private String descricaoAvaria = null;
-    @XmlElement(name = "cargaComDivergencia")
-    @ApiModelProperty(example = "N", value = "Indicador de divergências<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de divergências<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String cargaComDivergencia = null;
-    @XmlElement(name = "pesoBrutoTransportado")
-    @ApiModelProperty(example = "9999.99", value = "Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN")
-    @Valid
-    /**
-     * Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN
-     **/
-    private BigDecimal pesoBrutoTransportado = null;
-    @XmlElement(name = "cargaComAvaria")
-    @ApiModelProperty(example = "N", value = "Indicador de avarias<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de avarias<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String cargaComAvaria = null;
-    @XmlElement(name = "dadosUnidadeTransporteConferem")
-    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String dadosUnidadeTransporteConferem = null;
-    @XmlElement(name = "dadosEmbalagemConferem")
-    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String dadosEmbalagemConferem = null;
-    @XmlElement(name = "localEstoque")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Local localEstoque = null;
-    @XmlElement(name = "viaTransporte")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ViaDeTransporteCCTDTO viaTransporte = null;
-    @XmlElement(name = "tipoDAT")
-    @ApiModelProperty(value = "Tipo do DAT")
-    /**
-     * Tipo do DAT
-     **/
-    private TipoDATEnum tipoDAT = null;
-    @XmlElement(name = "veiculoRodoviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoRodovario veiculoRodoviario = null;
-    @XmlElement(name = "dadosConteinerConferem")
-    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados do contêiner com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de conferência dos dados do contêiner com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String dadosConteinerConferem = null;
-    @XmlElement(name = "localManifestacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Local localManifestacao = null;
-    @XmlElement(name = "nomeTransportador")
-    @ApiModelProperty(example = "IEYIQBEIWMVEU KXIXW DVNW", value = "Nome do Transportador")
-    /**
-     * Nome do Transportador
-     **/
-    private String nomeTransportador = null;
-    @XmlElement(name = "dadosVeiculoConferem")
-    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados do veículo com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de conferência dos dados do veículo com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String dadosVeiculoConferem = null;
-    @XmlElement(name = "localOrigem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Local localOrigem = null;
+    private String numeroDocumentoTransporte = null;
     @XmlElement(name = "numeroRUT")
     @ApiModelProperty(example = "24BR000064T", value = "Número do RUT")
     /**
      * Número do RUT
      **/
     private String numeroRUT = null;
+
+    @XmlElement(name = "tipoDocumentoTransporte")
+    @ApiModelProperty(value = "Tipo de documento de transporte")
+    /**
+     * Tipo de documento de transporte
+     **/
+    private TipoDocumentoTransporteEnum tipoDocumentoTransporte = null;
+    @XmlElement(name = "viaTransporte")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ViaDeTransporteCCTDTO viaTransporte = null;
+    @XmlElement(name = "situacaoAtual")
+    @ApiModelProperty(example = "Manifestado", value = "Situação do documento de transporte")
+    /**
+     * Situação do documento de transporte
+     **/
+    private String situacaoAtual = null;
+    @XmlElement(name = "situacoesObservacao")
+    @ApiModelProperty(value = "Situação do documento de transporte")
+    /**
+     * Situação do documento de transporte
+     **/
+    private Map<String, String> situacoesObservacao = null;
+    @XmlElement(name = "dataEmissao")
+    @ApiModelProperty(example = "2019-01-04", value = "Data de Emissão do Documento de Transporte<br>No formato AAAA-MM-YY")
+    /**
+     * Data de Emissão do Documento de Transporte<br>No formato AAAA-MM-YY
+     **/
+    private String dataEmissao = null;
+    @XmlElement(name = "nomeTransportador")
+    @ApiModelProperty(example = "IEYIQBEIWMVEU KXIXW DVNW", value = "Nome do Transportador")
+    /**
+     * Nome do Transportador
+     **/
+    private String nomeTransportador = null;
+
+    @XmlElement(name = "cpfCnpjTransportador")
+    @ApiModelProperty(example = "27657485000147", value = "CPF ou CNPJ do Transportador")
+    /**
+     * CPF ou CNPJ do Transportador
+     **/
+    private String cpfCnpjTransportador = null;
+    @XmlElement(name = "tipoDAT")
+    @ApiModelProperty(value = "Tipo do DAT")
+    /**
+     * Tipo do DAT
+     **/
+    private TipoDATEnum tipoDAT = null;
+    @XmlElement(name = "localOrigem")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Local localOrigem = null;
+    @XmlElement(name = "localDestinoRealizado")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Local localDestinoRealizado = null;
+    @XmlElement(name = "localManifestacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Local localManifestacao = null;
+
+    @XmlElement(name = "localDestinoPrevisto")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Local localDestinoPrevisto = null;
+    @XmlElement(name = "localEstoque")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Local localEstoque = null;
+    @XmlElement(name = "veiculoRodoviario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private VeiculoRodovario veiculoRodoviario = null;
     @XmlElement(name = "cargas")
     @ApiModelProperty(value = "Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte")
     @Valid
@@ -167,34 +120,77 @@ public class DocumentoTransporte {
      * Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte
      **/
     private List<Cargas> cargas = null;
-    @XmlElement(name = "numeroDocumentoTransporte")
-    @ApiModelProperty(example = "BR000000001", value = "Número do documento de transporte")
-    /**
-     * Número do documento de transporte
-     **/
-    private String numeroDocumentoTransporte = null;
-    @XmlElement(name = "situacaoAtual")
-    @ApiModelProperty(example = "Manifestado", value = "Situação do documento de transporte")
-    /**
-     * Situação do documento de transporte
-     **/
-    private String situacaoAtual = null;
-    @XmlElement(name = "descricaoDivergencia")
-    @ApiModelProperty(example = "Divergências identificadas", value = "Divergências identificadas")
-    /**
-     * Divergências identificadas
-     **/
-    private String descricaoDivergencia = null;
-    @XmlElement(name = "localDestinoRealizado")
+
+    @XmlElement(name = "veiculoFerroviario")
     @ApiModelProperty(value = "")
     @Valid
-    private Local localDestinoRealizado = null;
-    @XmlElement(name = "observacaoRecepcao")
+    private VeiculoFerroviario veiculoFerroviario = null;
+    @XmlElement(name = "observacao")
     @ApiModelProperty(example = "Observações adicionais", value = "Observações adicionais")
     /**
      * Observações adicionais
      **/
-    private String observacaoRecepcao = null;
+    private String observacao = null;
+
+    @XmlElement(name = "conteineres")
+    @ApiModelProperty(value = "Lista de Contêineres vinculados ao documento de transporte")
+    @Valid
+    /**
+     * Lista de Contêineres vinculados ao documento de transporte
+     **/
+    private List<Conteineres> conteineres = null;
+    @XmlElement(name = "dadosVeiculoConferem")
+    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados do veículo com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+    /**
+     * Indicador de conferência dos dados do veículo com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String dadosVeiculoConferem = null;
+
+    @XmlElement(name = "pesoBrutoTransportado")
+    @ApiModelProperty(example = "9999.99", value = "Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN")
+    @Valid
+    /**
+     * Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN
+     **/
+    private BigDecimal pesoBrutoTransportado = null;
+    @XmlElement(name = "dadosConteinerConferem")
+    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados do contêiner com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+    /**
+     * Indicador de conferência dos dados do contêiner com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String dadosConteinerConferem = null;
+    @XmlElement(name = "cargaComAvaria")
+    @ApiModelProperty(example = "N", value = "Indicador de avarias<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+    /**
+     * Indicador de avarias<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String cargaComAvaria = null;
+
+    @XmlElement(name = "dadosUnidadeTransporteConferem")
+    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+    /**
+     * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String dadosUnidadeTransporteConferem = null;
+    @XmlElement(name = "descricaoAvaria")
+    @ApiModelProperty(example = "Avarias identificadas", value = "Avarias identificadas")
+    /**
+     * Avarias identificadas
+     **/
+    private String descricaoAvaria = null;
+
+    @XmlElement(name = "dadosEmbalagemConferem")
+    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+    /**
+     * Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String dadosEmbalagemConferem = null;
+    @XmlElement(name = "cargaComDivergencia")
+    @ApiModelProperty(example = "N", value = "Indicador de divergências<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+    /**
+     * Indicador de divergências<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String cargaComDivergencia = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -208,22 +204,46 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Observações adicionais
+     * Número do documento de transporte
      *
-     * @return observacao
+     * @return numeroDocumentoTransporte
      **/
-    @JsonProperty("observacao")
-    public String getObservacao() {
-        return observacao;
+    @JsonProperty("numeroDocumentoTransporte")
+    public String getNumeroDocumentoTransporte() {
+        return numeroDocumentoTransporte;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
+    @XmlElement(name = "descricaoDivergencia")
+    @ApiModelProperty(example = "Divergências identificadas", value = "Divergências identificadas")
+    /**
+     * Divergências identificadas
+     **/
+    private String descricaoDivergencia = null;
+
+    @XmlElement(name = "observacaoRecepcao")
+    @ApiModelProperty(example = "Observações adicionais", value = "Observações adicionais")
+    /**
+     * Observações adicionais
+     **/
+    private String observacaoRecepcao = null;
+
+    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
+        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
     }
 
-    public DocumentoTransporte observacao(String observacao) {
-        this.observacao = observacao;
+    public DocumentoTransporte numeroDocumentoTransporte(String numeroDocumentoTransporte) {
+        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
         return this;
+    }
+
+    /**
+     * Número do RUT
+     *
+     * @return numeroRUT
+     **/
+    @JsonProperty("numeroRUT")
+    public String getNumeroRUT() {
+        return numeroRUT;
     }
 
     /**
@@ -248,41 +268,50 @@ public class DocumentoTransporte {
         return this;
     }
 
-    /**
-     * CPF ou CNPJ do Transportador
-     *
-     * @return cpfCnpjTransportador
-     **/
-    @JsonProperty("cpfCnpjTransportador")
-    public String getCpfCnpjTransportador() {
-        return cpfCnpjTransportador;
+    public void setNumeroRUT(String numeroRUT) {
+        this.numeroRUT = numeroRUT;
     }
 
-    public void setCpfCnpjTransportador(String cpfCnpjTransportador) {
-        this.cpfCnpjTransportador = cpfCnpjTransportador;
-    }
-
-    public DocumentoTransporte cpfCnpjTransportador(String cpfCnpjTransportador) {
-        this.cpfCnpjTransportador = cpfCnpjTransportador;
+    public DocumentoTransporte numeroRUT(String numeroRUT) {
+        this.numeroRUT = numeroRUT;
         return this;
     }
 
     /**
-     * Get localDestinoPrevisto
+     * Get viaTransporte
      *
-     * @return localDestinoPrevisto
+     * @return viaTransporte
      **/
-    @JsonProperty("localDestinoPrevisto")
-    public Local getLocalDestinoPrevisto() {
-        return localDestinoPrevisto;
+    @JsonProperty("viaTransporte")
+    public ViaDeTransporteCCTDTO getViaTransporte() {
+        return viaTransporte;
     }
 
-    public void setLocalDestinoPrevisto(Local localDestinoPrevisto) {
-        this.localDestinoPrevisto = localDestinoPrevisto;
+    public void setViaTransporte(ViaDeTransporteCCTDTO viaTransporte) {
+        this.viaTransporte = viaTransporte;
     }
 
-    public DocumentoTransporte localDestinoPrevisto(Local localDestinoPrevisto) {
-        this.localDestinoPrevisto = localDestinoPrevisto;
+    public DocumentoTransporte viaTransporte(ViaDeTransporteCCTDTO viaTransporte) {
+        this.viaTransporte = viaTransporte;
+        return this;
+    }
+
+    /**
+     * Situação do documento de transporte
+     *
+     * @return situacaoAtual
+     **/
+    @JsonProperty("situacaoAtual")
+    public String getSituacaoAtual() {
+        return situacaoAtual;
+    }
+
+    public void setSituacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
+    }
+
+    public DocumentoTransporte situacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
         return this;
     }
 
@@ -311,49 +340,6 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Get veiculoFerroviario
-     *
-     * @return veiculoFerroviario
-     **/
-    @JsonProperty("veiculoFerroviario")
-    public VeiculoFerroviario getVeiculoFerroviario() {
-        return veiculoFerroviario;
-    }
-
-    public void setVeiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
-        this.veiculoFerroviario = veiculoFerroviario;
-    }
-
-    public DocumentoTransporte veiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
-        this.veiculoFerroviario = veiculoFerroviario;
-        return this;
-    }
-
-    /**
-     * Lista de Contêineres vinculados ao documento de transporte
-     *
-     * @return conteineres
-     **/
-    @JsonProperty("conteineres")
-    public List<Conteineres> getConteineres() {
-        return conteineres;
-    }
-
-    public void setConteineres(List<Conteineres> conteineres) {
-        this.conteineres = conteineres;
-    }
-
-    public DocumentoTransporte conteineres(List<Conteineres> conteineres) {
-        this.conteineres = conteineres;
-        return this;
-    }
-
-    public DocumentoTransporte addConteineresItem(Conteineres conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
-
-    /**
      * Data de Emissão do Documento de Transporte&lt;br&gt;No formato AAAA-MM-YY
      *
      * @return dataEmissao
@@ -373,154 +359,40 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Avarias identificadas
+     * Nome do Transportador
      *
-     * @return descricaoAvaria
+     * @return nomeTransportador
      **/
-    @JsonProperty("descricaoAvaria")
-    public String getDescricaoAvaria() {
-        return descricaoAvaria;
-    }
-
-    public void setDescricaoAvaria(String descricaoAvaria) {
-        this.descricaoAvaria = descricaoAvaria;
-    }
-
-    public DocumentoTransporte descricaoAvaria(String descricaoAvaria) {
-        this.descricaoAvaria = descricaoAvaria;
-        return this;
+    @JsonProperty("nomeTransportador")
+    public String getNomeTransportador() {
+        return nomeTransportador;
     }
 
     /**
-     * Indicador de divergências&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * CPF ou CNPJ do Transportador
      *
-     * @return cargaComDivergencia
+     * @return cpfCnpjTransportador
      **/
-    @JsonProperty("cargaComDivergencia")
-    public String getCargaComDivergencia() {
-        return cargaComDivergencia;
+    @JsonProperty("cpfCnpjTransportador")
+    public String getCpfCnpjTransportador() {
+        return cpfCnpjTransportador;
     }
 
-    public void setCargaComDivergencia(String cargaComDivergencia) {
-        this.cargaComDivergencia = cargaComDivergencia;
+    public void setCpfCnpjTransportador(String cpfCnpjTransportador) {
+        this.cpfCnpjTransportador = cpfCnpjTransportador;
     }
 
-    public DocumentoTransporte cargaComDivergencia(String cargaComDivergencia) {
-        this.cargaComDivergencia = cargaComDivergencia;
+    public DocumentoTransporte cpfCnpjTransportador(String cpfCnpjTransportador) {
+        this.cpfCnpjTransportador = cpfCnpjTransportador;
         return this;
     }
 
-    /**
-     * Peso aferido na balança do recinto em Kg&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.&lt;br&gt;Tamanho: 4.2&lt;br&gt;Formato: NNNN.NN
-     *
-     * @return pesoBrutoTransportado
-     **/
-    @JsonProperty("pesoBrutoTransportado")
-    public BigDecimal getPesoBrutoTransportado() {
-        return pesoBrutoTransportado;
+    public void setNomeTransportador(String nomeTransportador) {
+        this.nomeTransportador = nomeTransportador;
     }
 
-    public void setPesoBrutoTransportado(BigDecimal pesoBrutoTransportado) {
-        this.pesoBrutoTransportado = pesoBrutoTransportado;
-    }
-
-    public DocumentoTransporte pesoBrutoTransportado(BigDecimal pesoBrutoTransportado) {
-        this.pesoBrutoTransportado = pesoBrutoTransportado;
-        return this;
-    }
-
-    /**
-     * Indicador de avarias&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
-     *
-     * @return cargaComAvaria
-     **/
-    @JsonProperty("cargaComAvaria")
-    public String getCargaComAvaria() {
-        return cargaComAvaria;
-    }
-
-    public void setCargaComAvaria(String cargaComAvaria) {
-        this.cargaComAvaria = cargaComAvaria;
-    }
-
-    public DocumentoTransporte cargaComAvaria(String cargaComAvaria) {
-        this.cargaComAvaria = cargaComAvaria;
-        return this;
-    }
-
-    /**
-     * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
-     *
-     * @return dadosUnidadeTransporteConferem
-     **/
-    @JsonProperty("dadosUnidadeTransporteConferem")
-    public String getDadosUnidadeTransporteConferem() {
-        return dadosUnidadeTransporteConferem;
-    }
-
-    public void setDadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
-        this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
-    }
-
-    public DocumentoTransporte dadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
-        this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
-        return this;
-    }
-
-    /**
-     * Indicador de conferência dos dados das embalagens com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
-     *
-     * @return dadosEmbalagemConferem
-     **/
-    @JsonProperty("dadosEmbalagemConferem")
-    public String getDadosEmbalagemConferem() {
-        return dadosEmbalagemConferem;
-    }
-
-    public void setDadosEmbalagemConferem(String dadosEmbalagemConferem) {
-        this.dadosEmbalagemConferem = dadosEmbalagemConferem;
-    }
-
-    public DocumentoTransporte dadosEmbalagemConferem(String dadosEmbalagemConferem) {
-        this.dadosEmbalagemConferem = dadosEmbalagemConferem;
-        return this;
-    }
-
-    /**
-     * Get localEstoque
-     *
-     * @return localEstoque
-     **/
-    @JsonProperty("localEstoque")
-    public Local getLocalEstoque() {
-        return localEstoque;
-    }
-
-    public void setLocalEstoque(Local localEstoque) {
-        this.localEstoque = localEstoque;
-    }
-
-    public DocumentoTransporte localEstoque(Local localEstoque) {
-        this.localEstoque = localEstoque;
-        return this;
-    }
-
-    /**
-     * Get viaTransporte
-     *
-     * @return viaTransporte
-     **/
-    @JsonProperty("viaTransporte")
-    public ViaDeTransporteCCTDTO getViaTransporte() {
-        return viaTransporte;
-    }
-
-    public void setViaTransporte(ViaDeTransporteCCTDTO viaTransporte) {
-        this.viaTransporte = viaTransporte;
-    }
-
-    public DocumentoTransporte viaTransporte(ViaDeTransporteCCTDTO viaTransporte) {
-        this.viaTransporte = viaTransporte;
+    public DocumentoTransporte nomeTransportador(String nomeTransportador) {
+        this.nomeTransportador = nomeTransportador;
         return this;
     }
 
@@ -547,40 +419,59 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Get veiculoRodoviario
+     * Get localOrigem
      *
-     * @return veiculoRodoviario
+     * @return localOrigem
      **/
-    @JsonProperty("veiculoRodoviario")
-    public VeiculoRodovario getVeiculoRodoviario() {
-        return veiculoRodoviario;
+    @JsonProperty("localOrigem")
+    public Local getLocalOrigem() {
+        return localOrigem;
     }
 
-    public void setVeiculoRodoviario(VeiculoRodovario veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
+    public void setLocalOrigem(Local localOrigem) {
+        this.localOrigem = localOrigem;
     }
 
-    public DocumentoTransporte veiculoRodoviario(VeiculoRodovario veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
+    public DocumentoTransporte localOrigem(Local localOrigem) {
+        this.localOrigem = localOrigem;
         return this;
     }
 
     /**
-     * Indicador de conferência dos dados do contêiner com os dados recepcionados&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * Get localDestinoRealizado
      *
-     * @return dadosConteinerConferem
+     * @return localDestinoRealizado
      **/
-    @JsonProperty("dadosConteinerConferem")
-    public String getDadosConteinerConferem() {
-        return dadosConteinerConferem;
+    @JsonProperty("localDestinoRealizado")
+    public Local getLocalDestinoRealizado() {
+        return localDestinoRealizado;
     }
 
-    public void setDadosConteinerConferem(String dadosConteinerConferem) {
-        this.dadosConteinerConferem = dadosConteinerConferem;
+    /**
+     * Get localDestinoPrevisto
+     *
+     * @return localDestinoPrevisto
+     **/
+    @JsonProperty("localDestinoPrevisto")
+    public Local getLocalDestinoPrevisto() {
+        return localDestinoPrevisto;
     }
 
-    public DocumentoTransporte dadosConteinerConferem(String dadosConteinerConferem) {
-        this.dadosConteinerConferem = dadosConteinerConferem;
+    public void setLocalDestinoPrevisto(Local localDestinoPrevisto) {
+        this.localDestinoPrevisto = localDestinoPrevisto;
+    }
+
+    public DocumentoTransporte localDestinoPrevisto(Local localDestinoPrevisto) {
+        this.localDestinoPrevisto = localDestinoPrevisto;
+        return this;
+    }
+
+    public void setLocalDestinoRealizado(Local localDestinoRealizado) {
+        this.localDestinoRealizado = localDestinoRealizado;
+    }
+
+    public DocumentoTransporte localDestinoRealizado(Local localDestinoRealizado) {
+        this.localDestinoRealizado = localDestinoRealizado;
         return this;
     }
 
@@ -604,21 +495,141 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Nome do Transportador
+     * Get localEstoque
      *
-     * @return nomeTransportador
+     * @return localEstoque
      **/
-    @JsonProperty("nomeTransportador")
-    public String getNomeTransportador() {
-        return nomeTransportador;
+    @JsonProperty("localEstoque")
+    public Local getLocalEstoque() {
+        return localEstoque;
     }
 
-    public void setNomeTransportador(String nomeTransportador) {
-        this.nomeTransportador = nomeTransportador;
+    public void setLocalEstoque(Local localEstoque) {
+        this.localEstoque = localEstoque;
     }
 
-    public DocumentoTransporte nomeTransportador(String nomeTransportador) {
-        this.nomeTransportador = nomeTransportador;
+    public DocumentoTransporte localEstoque(Local localEstoque) {
+        this.localEstoque = localEstoque;
+        return this;
+    }
+
+    /**
+     * Get veiculoRodoviario
+     *
+     * @return veiculoRodoviario
+     **/
+    @JsonProperty("veiculoRodoviario")
+    public VeiculoRodovario getVeiculoRodoviario() {
+        return veiculoRodoviario;
+    }
+
+    /**
+     * Get veiculoFerroviario
+     * @return veiculoFerroviario
+     **/
+    @JsonProperty("veiculoFerroviario")
+    public VeiculoFerroviario getVeiculoFerroviario() {
+        return veiculoFerroviario;
+    }
+
+    public void setVeiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
+        this.veiculoFerroviario = veiculoFerroviario;
+    }
+
+    public DocumentoTransporte veiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
+        this.veiculoFerroviario = veiculoFerroviario;
+        return this;
+    }
+
+    public void setVeiculoRodoviario(VeiculoRodovario veiculoRodoviario) {
+        this.veiculoRodoviario = veiculoRodoviario;
+    }
+
+    public DocumentoTransporte veiculoRodoviario(VeiculoRodovario veiculoRodoviario) {
+        this.veiculoRodoviario = veiculoRodoviario;
+        return this;
+    }
+
+    /**
+     * Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte
+     *
+     * @return cargas
+     **/
+    @JsonProperty("cargas")
+    public List<Cargas> getCargas() {
+        return cargas;
+    }
+
+    /**
+     * Lista de Contêineres vinculados ao documento de transporte
+     * @return conteineres
+     **/
+    @JsonProperty("conteineres")
+    public List<Conteineres> getConteineres() {
+        return conteineres;
+    }
+
+    public void setConteineres(List<Conteineres> conteineres) {
+        this.conteineres = conteineres;
+    }
+
+    public DocumentoTransporte conteineres(List<Conteineres> conteineres) {
+        this.conteineres = conteineres;
+        return this;
+    }
+
+    public DocumentoTransporte addConteineresItem(Conteineres conteineresItem) {
+        this.conteineres.add(conteineresItem);
+        return this;
+    }
+
+    public void setCargas(List<Cargas> cargas) {
+        this.cargas = cargas;
+    }
+
+    public DocumentoTransporte cargas(List<Cargas> cargas) {
+        this.cargas = cargas;
+        return this;
+    }
+
+    public DocumentoTransporte addCargasItem(Cargas cargasItem) {
+        this.cargas.add(cargasItem);
+        return this;
+    }
+
+    /**
+     * Observações adicionais
+     * @return observacao
+     **/
+    @JsonProperty("observacao")
+    public String getObservacao() {
+        return observacao;
+    }
+
+    /**
+     * Peso aferido na balança do recinto em Kg&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.&lt;br&gt;Tamanho: 4.2&lt;br&gt;Formato: NNNN.NN
+     * @return pesoBrutoTransportado
+     **/
+    @JsonProperty("pesoBrutoTransportado")
+    public BigDecimal getPesoBrutoTransportado() {
+        return pesoBrutoTransportado;
+    }
+
+    public void setPesoBrutoTransportado(BigDecimal pesoBrutoTransportado) {
+        this.pesoBrutoTransportado = pesoBrutoTransportado;
+    }
+
+    public DocumentoTransporte pesoBrutoTransportado(BigDecimal pesoBrutoTransportado) {
+        this.pesoBrutoTransportado = pesoBrutoTransportado;
+        return this;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public DocumentoTransporte observacao(String observacao) {
+        this.observacao = observacao;
         return this;
     }
 
@@ -642,103 +653,150 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Get localOrigem
+     * Indicador de conferência dos dados das embalagens com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
      *
-     * @return localOrigem
+     * @return dadosEmbalagemConferem
      **/
-    @JsonProperty("localOrigem")
-    public Local getLocalOrigem() {
-        return localOrigem;
+    @JsonProperty("dadosEmbalagemConferem")
+    public String getDadosEmbalagemConferem() {
+        return dadosEmbalagemConferem;
     }
 
-    public void setLocalOrigem(Local localOrigem) {
-        this.localOrigem = localOrigem;
+    /**
+     * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * @return dadosUnidadeTransporteConferem
+     **/
+    @JsonProperty("dadosUnidadeTransporteConferem")
+    public String getDadosUnidadeTransporteConferem() {
+        return dadosUnidadeTransporteConferem;
     }
 
-    public DocumentoTransporte localOrigem(Local localOrigem) {
-        this.localOrigem = localOrigem;
+    public void setDadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
+        this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
+    }
+
+    public DocumentoTransporte dadosUnidadeTransporteConferem(String dadosUnidadeTransporteConferem) {
+        this.dadosUnidadeTransporteConferem = dadosUnidadeTransporteConferem;
         return this;
     }
 
     /**
-     * Número do RUT
-     *
-     * @return numeroRUT
+     * Indicador de conferência dos dados do contêiner com os dados recepcionados&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * @return dadosConteinerConferem
      **/
-    @JsonProperty("numeroRUT")
-    public String getNumeroRUT() {
-        return numeroRUT;
+    @JsonProperty("dadosConteinerConferem")
+    public String getDadosConteinerConferem() {
+        return dadosConteinerConferem;
     }
 
-    public void setNumeroRUT(String numeroRUT) {
-        this.numeroRUT = numeroRUT;
+    public void setDadosConteinerConferem(String dadosConteinerConferem) {
+        this.dadosConteinerConferem = dadosConteinerConferem;
     }
 
-    public DocumentoTransporte numeroRUT(String numeroRUT) {
-        this.numeroRUT = numeroRUT;
+    public DocumentoTransporte dadosConteinerConferem(String dadosConteinerConferem) {
+        this.dadosConteinerConferem = dadosConteinerConferem;
+        return this;
+    }
+
+    public void setDadosEmbalagemConferem(String dadosEmbalagemConferem) {
+        this.dadosEmbalagemConferem = dadosEmbalagemConferem;
+    }
+
+    public DocumentoTransporte dadosEmbalagemConferem(String dadosEmbalagemConferem) {
+        this.dadosEmbalagemConferem = dadosEmbalagemConferem;
         return this;
     }
 
     /**
-     * Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte
-     *
-     * @return cargas
+     * Indicador de avarias&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * @return cargaComAvaria
      **/
-    @JsonProperty("cargas")
-    public List<Cargas> getCargas() {
-        return cargas;
+    @JsonProperty("cargaComAvaria")
+    public String getCargaComAvaria() {
+        return cargaComAvaria;
     }
 
-    public void setCargas(List<Cargas> cargas) {
-        this.cargas = cargas;
+    public void setCargaComAvaria(String cargaComAvaria) {
+        this.cargaComAvaria = cargaComAvaria;
     }
 
-    public DocumentoTransporte cargas(List<Cargas> cargas) {
-        this.cargas = cargas;
-        return this;
-    }
-
-    public DocumentoTransporte addCargasItem(Cargas cargasItem) {
-        this.cargas.add(cargasItem);
+    public DocumentoTransporte cargaComAvaria(String cargaComAvaria) {
+        this.cargaComAvaria = cargaComAvaria;
         return this;
     }
 
     /**
-     * Número do documento de transporte
-     *
-     * @return numeroDocumentoTransporte
+     * Avarias identificadas
+     * @return descricaoAvaria
      **/
-    @JsonProperty("numeroDocumentoTransporte")
-    public String getNumeroDocumentoTransporte() {
-        return numeroDocumentoTransporte;
+    @JsonProperty("descricaoAvaria")
+    public String getDescricaoAvaria() {
+        return descricaoAvaria;
     }
 
-    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+    public void setDescricaoAvaria(String descricaoAvaria) {
+        this.descricaoAvaria = descricaoAvaria;
     }
 
-    public DocumentoTransporte numeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+    public DocumentoTransporte descricaoAvaria(String descricaoAvaria) {
+        this.descricaoAvaria = descricaoAvaria;
         return this;
     }
 
     /**
-     * Situação do documento de transporte
-     *
-     * @return situacaoAtual
+     * Indicador de divergências&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * @return cargaComDivergencia
      **/
-    @JsonProperty("situacaoAtual")
-    public String getSituacaoAtual() {
-        return situacaoAtual;
+    @JsonProperty("cargaComDivergencia")
+    public String getCargaComDivergencia() {
+        return cargaComDivergencia;
     }
 
-    public void setSituacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
+    public void setCargaComDivergencia(String cargaComDivergencia) {
+        this.cargaComDivergencia = cargaComDivergencia;
     }
 
-    public DocumentoTransporte situacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
+    public DocumentoTransporte cargaComDivergencia(String cargaComDivergencia) {
+        this.cargaComDivergencia = cargaComDivergencia;
         return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentoTransporte {\n" +
+                "    numeroDocumentoTransporte: " + toIndentedString(numeroDocumentoTransporte) + "\n" +
+                "    tipoDocumentoTransporte: " + toIndentedString(tipoDocumentoTransporte) + "\n" +
+                "    numeroRUT: " + toIndentedString(numeroRUT) + "\n" +
+                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
+                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
+                "    situacoesObservacao: " + toIndentedString(situacoesObservacao) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    cpfCnpjTransportador: " + toIndentedString(cpfCnpjTransportador) + "\n" +
+                "    nomeTransportador: " + toIndentedString(nomeTransportador) + "\n" +
+                "    tipoDAT: " + toIndentedString(tipoDAT) + "\n" +
+                "    localOrigem: " + toIndentedString(localOrigem) + "\n" +
+                "    localDestinoPrevisto: " + toIndentedString(localDestinoPrevisto) + "\n" +
+                "    localDestinoRealizado: " + toIndentedString(localDestinoRealizado) + "\n" +
+                "    localManifestacao: " + toIndentedString(localManifestacao) + "\n" +
+                "    localEstoque: " + toIndentedString(localEstoque) + "\n" +
+                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
+                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "    cargas: " + toIndentedString(cargas) + "\n" +
+                "    pesoBrutoTransportado: " + toIndentedString(pesoBrutoTransportado) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
+                "    dadosVeiculoConferem: " + toIndentedString(dadosVeiculoConferem) + "\n" +
+                "    dadosUnidadeTransporteConferem: " + toIndentedString(dadosUnidadeTransporteConferem) + "\n" +
+                "    dadosConteinerConferem: " + toIndentedString(dadosConteinerConferem) + "\n" +
+                "    dadosEmbalagemConferem: " + toIndentedString(dadosEmbalagemConferem) + "\n" +
+                "    cargaComAvaria: " + toIndentedString(cargaComAvaria) + "\n" +
+                "    descricaoAvaria: " + toIndentedString(descricaoAvaria) + "\n" +
+                "    cargaComDivergencia: " + toIndentedString(cargaComDivergencia) + "\n" +
+                "    descricaoDivergencia: " + toIndentedString(descricaoDivergencia) + "\n" +
+                "    observacaoRecepcao: " + toIndentedString(observacaoRecepcao) + "\n" +
+                "}";
+        return sb;
     }
 
     /**
@@ -761,27 +819,7 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Get localDestinoRealizado
-     *
-     * @return localDestinoRealizado
-     **/
-    @JsonProperty("localDestinoRealizado")
-    public Local getLocalDestinoRealizado() {
-        return localDestinoRealizado;
-    }
-
-    public void setLocalDestinoRealizado(Local localDestinoRealizado) {
-        this.localDestinoRealizado = localDestinoRealizado;
-    }
-
-    public DocumentoTransporte localDestinoRealizado(Local localDestinoRealizado) {
-        this.localDestinoRealizado = localDestinoRealizado;
-        return this;
-    }
-
-    /**
      * Observações adicionais
-     *
      * @return observacaoRecepcao
      **/
     @JsonProperty("observacaoRecepcao")
@@ -796,44 +834,6 @@ public class DocumentoTransporte {
     public DocumentoTransporte observacaoRecepcao(String observacaoRecepcao) {
         this.observacaoRecepcao = observacaoRecepcao;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DocumentoTransporte {\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
-                "    tipoDocumentoTransporte: " + toIndentedString(tipoDocumentoTransporte) + "\n" +
-                "    cpfCnpjTransportador: " + toIndentedString(cpfCnpjTransportador) + "\n" +
-                "    localDestinoPrevisto: " + toIndentedString(localDestinoPrevisto) + "\n" +
-                "    situacoesObservacao: " + toIndentedString(situacoesObservacao) + "\n" +
-                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    descricaoAvaria: " + toIndentedString(descricaoAvaria) + "\n" +
-                "    cargaComDivergencia: " + toIndentedString(cargaComDivergencia) + "\n" +
-                "    pesoBrutoTransportado: " + toIndentedString(pesoBrutoTransportado) + "\n" +
-                "    cargaComAvaria: " + toIndentedString(cargaComAvaria) + "\n" +
-                "    dadosUnidadeTransporteConferem: " + toIndentedString(dadosUnidadeTransporteConferem) + "\n" +
-                "    dadosEmbalagemConferem: " + toIndentedString(dadosEmbalagemConferem) + "\n" +
-                "    localEstoque: " + toIndentedString(localEstoque) + "\n" +
-                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
-                "    tipoDAT: " + toIndentedString(tipoDAT) + "\n" +
-                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
-                "    dadosConteinerConferem: " + toIndentedString(dadosConteinerConferem) + "\n" +
-                "    localManifestacao: " + toIndentedString(localManifestacao) + "\n" +
-                "    nomeTransportador: " + toIndentedString(nomeTransportador) + "\n" +
-                "    dadosVeiculoConferem: " + toIndentedString(dadosVeiculoConferem) + "\n" +
-                "    localOrigem: " + toIndentedString(localOrigem) + "\n" +
-                "    numeroRUT: " + toIndentedString(numeroRUT) + "\n" +
-                "    cargas: " + toIndentedString(cargas) + "\n" +
-                "    numeroDocumentoTransporte: " + toIndentedString(numeroDocumentoTransporte) + "\n" +
-                "    situacaoAtual: " + toIndentedString(situacaoAtual) + "\n" +
-                "    descricaoDivergencia: " + toIndentedString(descricaoDivergencia) + "\n" +
-                "    localDestinoRealizado: " + toIndentedString(localDestinoRealizado) + "\n" +
-                "    observacaoRecepcao: " + toIndentedString(observacaoRecepcao) + "\n" +
-                "}";
-        return sb;
     }
 
 

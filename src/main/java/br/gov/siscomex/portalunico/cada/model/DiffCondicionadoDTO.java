@@ -13,11 +13,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DiffCondicionadoDTO", propOrder =
-        {"obrigatorio", "multivalorado", "condicao", "atributo", "dataFimVigencia", "dataInicioVigencia"
+        {"atributo", "obrigatorio", "multivalorado", "dataInicioVigencia", "dataFimVigencia", "condicao"
         })
 
 @XmlRootElement(name = "DiffCondicionadoDTO")
 public class DiffCondicionadoDTO {
+
+    @XmlElement(name = "atributo", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DiffArquivoDiarioAtributoDTO atributo = null;
 
     @XmlElement(name = "obrigatorio")
     @ApiModelProperty(value = "")
@@ -29,25 +34,20 @@ public class DiffCondicionadoDTO {
     @Valid
     private DiffValorDTO multivalorado = null;
 
-    @XmlElement(name = "condicao")
+    @XmlElement(name = "dataInicioVigencia")
     @ApiModelProperty(value = "")
     @Valid
-    private DiffValorDTO condicao = null;
-
-    @XmlElement(name = "atributo", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DiffArquivoDiarioAtributoDTO atributo = null;
+    private DiffValorDTO dataInicioVigencia = null;
 
     @XmlElement(name = "dataFimVigencia")
     @ApiModelProperty(value = "")
     @Valid
     private DiffValorDTO dataFimVigencia = null;
 
-    @XmlElement(name = "dataInicioVigencia")
+    @XmlElement(name = "condicao")
     @ApiModelProperty(value = "")
     @Valid
-    private DiffValorDTO dataInicioVigencia = null;
+    private DiffValorDTO condicao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,6 +58,21 @@ public class DiffCondicionadoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get atributo
+     *
+     * @return atributo
+     **/
+    @JsonProperty("atributo")
+    @NotNull
+    public DiffArquivoDiarioAtributoDTO getAtributo() {
+        return atributo;
+    }
+
+    public void setAtributo(DiffArquivoDiarioAtributoDTO atributo) {
+        this.atributo = atributo;
     }
 
     /**
@@ -98,43 +113,23 @@ public class DiffCondicionadoDTO {
         return this;
     }
 
-    /**
-     * Get condicao
-     *
-     * @return condicao
-     **/
-    @JsonProperty("condicao")
-    public DiffValorDTO getCondicao() {
-        return condicao;
-    }
-
-    public void setCondicao(DiffValorDTO condicao) {
-        this.condicao = condicao;
-    }
-
-    public DiffCondicionadoDTO condicao(DiffValorDTO condicao) {
-        this.condicao = condicao;
-        return this;
-    }
-
-    /**
-     * Get atributo
-     *
-     * @return atributo
-     **/
-    @JsonProperty("atributo")
-    @NotNull
-    public DiffArquivoDiarioAtributoDTO getAtributo() {
-        return atributo;
-    }
-
-    public void setAtributo(DiffArquivoDiarioAtributoDTO atributo) {
-        this.atributo = atributo;
-    }
-
     public DiffCondicionadoDTO atributo(DiffArquivoDiarioAtributoDTO atributo) {
         this.atributo = atributo;
         return this;
+    }
+
+    /**
+     * Get dataInicioVigencia
+     *
+     * @return dataInicioVigencia
+     **/
+    @JsonProperty("dataInicioVigencia")
+    public DiffValorDTO getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(DiffValorDTO dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
     }
 
     /**
@@ -156,22 +151,27 @@ public class DiffCondicionadoDTO {
         return this;
     }
 
-    /**
-     * Get dataInicioVigencia
-     *
-     * @return dataInicioVigencia
-     **/
-    @JsonProperty("dataInicioVigencia")
-    public DiffValorDTO getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(DiffValorDTO dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
     public DiffCondicionadoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
         this.dataInicioVigencia = dataInicioVigencia;
+        return this;
+    }
+
+    /**
+     * Get condicao
+     *
+     * @return condicao
+     **/
+    @JsonProperty("condicao")
+    public DiffValorDTO getCondicao() {
+        return condicao;
+    }
+
+    public void setCondicao(DiffValorDTO condicao) {
+        this.condicao = condicao;
+    }
+
+    public DiffCondicionadoDTO condicao(DiffValorDTO condicao) {
+        this.condicao = condicao;
         return this;
     }
 
@@ -179,12 +179,12 @@ public class DiffCondicionadoDTO {
     public String toString() {
 
         String sb = "class DiffCondicionadoDTO {\n" +
+                "    atributo: " + toIndentedString(atributo) + "\n" +
                 "    obrigatorio: " + toIndentedString(obrigatorio) + "\n" +
                 "    multivalorado: " + toIndentedString(multivalorado) + "\n" +
-                "    condicao: " + toIndentedString(condicao) + "\n" +
-                "    atributo: " + toIndentedString(atributo) + "\n" +
-                "    dataFimVigencia: " + toIndentedString(dataFimVigencia) + "\n" +
                 "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
+                "    dataFimVigencia: " + toIndentedString(dataFimVigencia) + "\n" +
+                "    condicao: " + toIndentedString(condicao) + "\n" +
                 "}";
         return sb;
     }

@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazPagamentoJurosCover", propOrder =
-        {"codigoReceita", "agenciaJuros", "bancoJuros", "contaJuros", "descricaoReceita", "valorJuros", "dataHoraPagamento"
+        {"bancoJuros", "agenciaJuros", "contaJuros", "codigoReceita", "descricaoReceita", "valorJuros", "dataHoraPagamento"
         })
 
 @XmlRootElement(name = "SefazPagamentoJurosCover")
@@ -25,12 +25,12 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Dados de um pagamento de juros")
 public class SefazPagamentoJurosCover {
 
-    @XmlElement(name = "codigoReceita")
-    @ApiModelProperty(example = "6542", value = "Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'")
+    @XmlElement(name = "bancoJuros")
+    @ApiModelProperty(example = "001", value = "Código do Banco<br>Valor mínimo: 1<br>Valor máximo: 999")
     /**
-     * Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'
+     * Código do Banco<br>Valor mínimo: 1<br>Valor máximo: 999
      **/
-    private String codigoReceita = null;
+    private String bancoJuros = null;
 
     @XmlElement(name = "agenciaJuros")
     @ApiModelProperty(example = "3521", value = "Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4")
@@ -39,19 +39,19 @@ public class SefazPagamentoJurosCover {
      **/
     private String agenciaJuros = null;
 
-    @XmlElement(name = "bancoJuros")
-    @ApiModelProperty(example = "001", value = "Código do Banco<br>Valor mínimo: 1<br>Valor máximo: 999")
-    /**
-     * Código do Banco<br>Valor mínimo: 1<br>Valor máximo: 999
-     **/
-    private String bancoJuros = null;
-
     @XmlElement(name = "contaJuros")
     @ApiModelProperty(example = "707070", value = "Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
     /**
      * Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
      **/
     private String contaJuros = null;
+
+    @XmlElement(name = "codigoReceita")
+    @ApiModelProperty(example = "6542", value = "Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'")
+    /**
+     * Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'
+     **/
+    private String codigoReceita = null;
 
     @XmlElement(name = "descricaoReceita")
     @ApiModelProperty(example = "Juros do imposto de importação", value = "Descrição da receita<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
@@ -87,22 +87,17 @@ public class SefazPagamentoJurosCover {
     }
 
     /**
-     * Código da receita&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
+     * Código do Banco&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
      *
-     * @return codigoReceita
+     * @return bancoJuros
      **/
-    @JsonProperty("codigoReceita")
-    public String getCodigoReceita() {
-        return codigoReceita;
+    @JsonProperty("bancoJuros")
+    public String getBancoJuros() {
+        return bancoJuros;
     }
 
-    public void setCodigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-    }
-
-    public SefazPagamentoJurosCover codigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-        return this;
+    public void setBancoJuros(String bancoJuros) {
+        this.bancoJuros = bancoJuros;
     }
 
     /**
@@ -125,25 +120,6 @@ public class SefazPagamentoJurosCover {
     }
 
     /**
-     * Código do Banco&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
-     *
-     * @return bancoJuros
-     **/
-    @JsonProperty("bancoJuros")
-    public String getBancoJuros() {
-        return bancoJuros;
-    }
-
-    public void setBancoJuros(String bancoJuros) {
-        this.bancoJuros = bancoJuros;
-    }
-
-    public SefazPagamentoJurosCover bancoJuros(String bancoJuros) {
-        this.bancoJuros = bancoJuros;
-        return this;
-    }
-
-    /**
      * Número da conta&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
      *
      * @return contaJuros
@@ -160,6 +136,25 @@ public class SefazPagamentoJurosCover {
     public SefazPagamentoJurosCover contaJuros(String contaJuros) {
         this.contaJuros = contaJuros;
         return this;
+    }
+
+    public SefazPagamentoJurosCover bancoJuros(String bancoJuros) {
+        this.bancoJuros = bancoJuros;
+        return this;
+    }
+
+    /**
+     * Código da receita&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
+     *
+     * @return codigoReceita
+     **/
+    @JsonProperty("codigoReceita")
+    public String getCodigoReceita() {
+        return codigoReceita;
+    }
+
+    public void setCodigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
     }
 
     /**
@@ -219,14 +214,19 @@ public class SefazPagamentoJurosCover {
         return this;
     }
 
+    public SefazPagamentoJurosCover codigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazPagamentoJurosCover {\n" +
-                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
-                "    agenciaJuros: " + toIndentedString(agenciaJuros) + "\n" +
                 "    bancoJuros: " + toIndentedString(bancoJuros) + "\n" +
+                "    agenciaJuros: " + toIndentedString(agenciaJuros) + "\n" +
                 "    contaJuros: " + toIndentedString(contaJuros) + "\n" +
+                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
                 "    descricaoReceita: " + toIndentedString(descricaoReceita) + "\n" +
                 "    valorJuros: " + toIndentedString(valorJuros) + "\n" +
                 "    dataHoraPagamento: " + toIndentedString(dataHoraPagamento) + "\n" +

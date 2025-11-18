@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OperacaoDesunitizacao", propOrder =
-        {"desunitizacoes", "identificacaoResponsavelDesunitizacao", "local"
+        {"identificacaoResponsavelDesunitizacao", "local", "desunitizacoes"
         })
 
 @XmlRootElement(name = "OperacaoDesunitizacao")
@@ -23,11 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Desunitização de carga<br>Máximo de ocorrências: 1")
 public class OperacaoDesunitizacao {
-
-    @XmlElement(name = "desunitizacoes", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Desunitizacoes desunitizacoes = null;
 
     @XmlElement(name = "identificacaoResponsavelDesunitizacao", required = true)
     @ApiModelProperty(example = "27657485000147", required = true, value = "CNPJ do responsável pela Desunitização<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
@@ -41,36 +36,10 @@ public class OperacaoDesunitizacao {
     @Valid
     private Local local = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get desunitizacoes
-     *
-     * @return desunitizacoes
-     **/
-    @JsonProperty("desunitizacoes")
-    @NotNull
-    public Desunitizacoes getDesunitizacoes() {
-        return desunitizacoes;
-    }
-
-    public void setDesunitizacoes(Desunitizacoes desunitizacoes) {
-        this.desunitizacoes = desunitizacoes;
-    }
-
-    public OperacaoDesunitizacao desunitizacoes(Desunitizacoes desunitizacoes) {
-        this.desunitizacoes = desunitizacoes;
-        return this;
-    }
+    @XmlElement(name = "desunitizacoes", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Desunitizacoes desunitizacoes = null;
 
     /**
      * CNPJ do responsável pela Desunitização&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
@@ -112,13 +81,44 @@ public class OperacaoDesunitizacao {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get desunitizacoes
+     *
+     * @return desunitizacoes
+     **/
+    @JsonProperty("desunitizacoes")
+    @NotNull
+    public Desunitizacoes getDesunitizacoes() {
+        return desunitizacoes;
+    }
+
+    public void setDesunitizacoes(Desunitizacoes desunitizacoes) {
+        this.desunitizacoes = desunitizacoes;
+    }
+
+    public OperacaoDesunitizacao desunitizacoes(Desunitizacoes desunitizacoes) {
+        this.desunitizacoes = desunitizacoes;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class OperacaoDesunitizacao {\n" +
-                "    desunitizacoes: " + toIndentedString(desunitizacoes) + "\n" +
                 "    identificacaoResponsavelDesunitizacao: " + toIndentedString(identificacaoResponsavelDesunitizacao) + "\n" +
                 "    local: " + toIndentedString(local) + "\n" +
+                "    desunitizacoes: " + toIndentedString(desunitizacoes) + "\n" +
                 "}";
         return sb;
     }

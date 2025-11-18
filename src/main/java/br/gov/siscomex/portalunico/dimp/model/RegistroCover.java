@@ -34,12 +34,7 @@ public class RegistroCover {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private List<PagamentoRegistroCover> pagamentos = new ArrayList<>();
-    @XmlElement(name = "confirmacaoAlertaErrosNaoImpeditivos", required = true)
-    @ApiModelProperty(example = "SIM", required = true, value = "Indica se a Duimp deve ser registrada mesmo com a existência de erros não impeditivos.<br>Domínio:")
-    /**
-     * Indica se a Duimp deve ser registrada mesmo com a existência de erros não impeditivos.<br>Domínio:
-     **/
-    private ConfirmacaoAlertaErrosNaoImpeditivosEnum confirmacaoAlertaErrosNaoImpeditivos = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -51,6 +46,13 @@ public class RegistroCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "confirmacaoAlertaErrosNaoImpeditivos", required = true)
+    @ApiModelProperty(example = "SIM", required = true, value = "Indica se a Duimp deve ser registrada mesmo com a existência de erros não impeditivos.<br>Domínio:")
+    /**
+     * Indica se a Duimp deve ser registrada mesmo com a existência de erros não impeditivos.<br>Domínio:
+     **/
+    private ConfirmacaoAlertaErrosNaoImpeditivosEnum confirmacaoAlertaErrosNaoImpeditivos = null;
 
     /**
      * Número total de itens já enviados e salvos.&lt;br&gt;Formato: Inteiro, com até 5 dígitos&lt;br&gt;Valor mínimo: 0&lt;br&gt;Valor máximo: 99999
@@ -119,7 +121,6 @@ public class RegistroCover {
         this.confirmacaoAlertaErrosNaoImpeditivos = confirmacaoAlertaErrosNaoImpeditivos;
         return this;
     }
-
 
     @Override
     public String toString() {

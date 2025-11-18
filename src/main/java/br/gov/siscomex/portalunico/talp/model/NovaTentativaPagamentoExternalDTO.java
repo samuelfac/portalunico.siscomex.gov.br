@@ -14,24 +14,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NovaTentativaPagamentoExternalDTO", propOrder =
-        {"observacao", "tipoTaxa"
+        {"tipoTaxa", "observacao"
         })
 
 @XmlRootElement(name = "NovaTentativaPagamentoExternalDTO")
 public class NovaTentativaPagamentoExternalDTO {
 
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
-    /**
-     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.
-     **/
-    private String observacao = null;
+
     @XmlElement(name = "tipoTaxa", required = true)
     @ApiModelProperty(example = "REGISTRO_LPCO", required = true, value = "Tipo de taxa que foi paga.")
     /**
      * Tipo de taxa que foi paga.
      **/
     private TipoTaxaEnum tipoTaxa = null;
+    @XmlElement(name = "observacao")
+    @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
+    /**
+     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.
+     **/
+    private String observacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -42,25 +43,6 @@ public class NovaTentativaPagamentoExternalDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento&#x3D;PAGAMENTO_REALIZADO ou  tipoPagamento&#x3D;DISPENSA_PAGAMENTO, dispensado nos demais casos.
-     *
-     * @return observacao
-     **/
-    @JsonProperty("observacao")
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    public NovaTentativaPagamentoExternalDTO observacao(String observacao) {
-        this.observacao = observacao;
-        return this;
     }
 
     /**
@@ -86,13 +68,32 @@ public class NovaTentativaPagamentoExternalDTO {
         return this;
     }
 
+    /**
+     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento&#x3D;PAGAMENTO_REALIZADO ou  tipoPagamento&#x3D;DISPENSA_PAGAMENTO, dispensado nos demais casos.
+     *
+     * @return observacao
+     **/
+    @JsonProperty("observacao")
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public NovaTentativaPagamentoExternalDTO observacao(String observacao) {
+        this.observacao = observacao;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class NovaTentativaPagamentoExternalDTO {\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
                 "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
                 "}";
         return sb;
     }
@@ -128,15 +129,6 @@ public class NovaTentativaPagamentoExternalDTO {
             value = v;
         }
 
-        public static TipoTaxaEnum fromValue(String v) {
-            for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -144,6 +136,15 @@ public class NovaTentativaPagamentoExternalDTO {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoTaxaEnum fromValue(String v) {
+            for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
         }
     }
 }

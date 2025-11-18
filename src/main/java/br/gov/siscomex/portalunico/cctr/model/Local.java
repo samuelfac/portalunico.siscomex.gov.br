@@ -43,17 +43,6 @@ public class Local {
     private Coordenadas coordenadas = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da unidade da Receita Federal onde a recepção está sendo efetuada&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB.&lt;br&gt;Deve ser informado apenas quando o receptor não for um depositário.
      *
      * @return codigoURF
@@ -108,6 +97,18 @@ public class Local {
     public Local coordenadas(Coordenadas coordenadas) {
         this.coordenadas = coordenadas;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

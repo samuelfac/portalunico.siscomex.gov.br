@@ -26,19 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class DispensaPagamentoLpcoRequest {
 
 
-    @XmlElement(name = "momentoTaxa", required = true)
-    @ApiModelProperty(example = "REGISTRO_LPCO", required = true, value = "Momento do LPCO que ocasionou a geração da taxa<br>Tamanho mínimo: 0 <br>Tamanho máximo: 20")
-    /**
-     * Momento do LPCO que ocasionou a geração da taxa<br>Tamanho mínimo: 0 <br>Tamanho máximo: 20
-     **/
-    private MomentoTaxaEnum momentoTaxa = null;
-    @XmlElement(name = "justificativa")
-    @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a dispensa do pagamento de taxa do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
-    /**
-     * Justificativa para a dispensa do pagamento de taxa do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
-     **/
-    private String justificativa = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -49,6 +36,20 @@ public class DispensaPagamentoLpcoRequest {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "momentoTaxa", required = true)
+    @ApiModelProperty(example = "REGISTRO_LPCO", required = true, value = "Momento do LPCO que ocasionou a geração da taxa<br>Tamanho mínimo: 0 <br>Tamanho máximo: 20")
+    /**
+     * Momento do LPCO que ocasionou a geração da taxa<br>Tamanho mínimo: 0 <br>Tamanho máximo: 20
+     **/
+    private MomentoTaxaEnum momentoTaxa = null;
+
+    @XmlElement(name = "justificativa")
+    @ApiModelProperty(example = "Texto livre.", value = "Justificativa para a dispensa do pagamento de taxa do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000")
+    /**
+     * Justificativa para a dispensa do pagamento de taxa do LPCO <br> Tamanho mínimo: 1<br>Tamanho máximo: 4000
+     **/
+    private String justificativa = null;
 
     /**
      * Momento do LPCO que ocasionou a geração da taxa&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 20
@@ -91,7 +92,6 @@ public class DispensaPagamentoLpcoRequest {
         this.justificativa = justificativa;
         return this;
     }
-
 
     @Override
     public String toString() {

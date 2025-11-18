@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTotalMoedaDestino {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "E", value = "Código do total na moeda de destino.<br/>Tamanho: 2<br/>M - Total na Moeda de Destino<br/>E - Encargos no Destino<br/>TC - Total Collect")
-    /**
-     * Código do total na moeda de destino.<br/>Tamanho: 2<br/>M - Total na Moeda de Destino<br/>E - Encargos no Destino<br/>TC - Total Collect
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Encargos no Destino", value = "Descrição do total na moeda de destino.<br/>Tamanho: 25")
-    /**
-     * Descrição do total na moeda de destino.<br/>Tamanho: 25
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoTotalMoedaDestino {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "E", value = "Código do total na moeda de destino.<br/>Tamanho: 2<br/>M - Total na Moeda de Destino<br/>E - Encargos no Destino<br/>TC - Total Collect")
+    /**
+     * Código do total na moeda de destino.<br/>Tamanho: 2<br/>M - Total na Moeda de Destino<br/>E - Encargos no Destino<br/>TC - Total Collect
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Encargos no Destino", value = "Descrição do total na moeda de destino.<br/>Tamanho: 25")
+    /**
+     * Descrição do total na moeda de destino.<br/>Tamanho: 25
+     **/
+    private String descricao = null;
 
     /**
      * Código do total na moeda de destino.&lt;br/&gt;Tamanho: 2&lt;br/&gt;M - Total na Moeda de Destino&lt;br/&gt;E - Encargos no Destino&lt;br/&gt;TC - Total Collect
@@ -84,7 +85,6 @@ public class TipoTotalMoedaDestino {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

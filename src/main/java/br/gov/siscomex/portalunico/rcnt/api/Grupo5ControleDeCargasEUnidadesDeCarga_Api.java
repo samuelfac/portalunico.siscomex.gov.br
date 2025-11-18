@@ -36,7 +36,7 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
 
     /**
      * Controle de Carga Solta - Posição de Lote
-     * <p>
+     *
      * Um evento para cada armazenamento/mudança de posição do lote dentro do armazém.&lt;br/&gt;Não considerar os movimentos do tipo “house keeping”, a exemplo do posicionamento para verificação ou inspeção física, casos em que a carga retorna, em pouco tempo, para a mesma posição.&lt;br/&gt;Não aplicar para granel.&lt;br/&gt;Transmitir imediatamente a finalização do armazenamento.&lt;br/&gt;Um evento para cada LOTE armazenado.
      *
      */
@@ -48,17 +48,17 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST1(@ApiParam(value = "JSON do evento Armazenamento de Lote.", required = true) @Valid DadosArmazenamentoLote body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Controle de Carga Solta - Geração de Lotes
-     * <p>
-     * Um evento para cada conjunto de LOTEs gerados por conhecimento.Não considerar os movimentos do tipo “house keeping”, a exemplo de desunitização para verificação ou inspeção física, casos em que a carga deve ser reunitizada após o processo.&lt;br/&gt;Exemplos de geração de lote; desunitização &#x3D; n... lotes; baldeação imediata &#x3D; n... lotes; depositada em armazém &#x3D; n... lotes;&lt;br/&gt;Baldeação, a transferência de mercadoria descarregada de um veículo e posteriormente carregada em outro. Nesse caso ocorre a geração lote e posterior carregamento lote.&lt;br/&gt;Não aplicar para granel.&lt;br/&gt;Transmitir imediatamente a geração de um conjunto de LOTEs por conhecimento.&lt;br/&gt;Pode repetir o conhecimento na transmissão de um novo evento no caso de cargas com chegada parcial.&lt;br/&gt;&lt;br/&gt;Este evento possui integração com Controle de Carga e Trânsito na Importação – modal aéreo (CCT Importação) para funcionalidade de \&quot;recepção de carga\&quot; (Para mais informações,&lt;a href &#x3D;\&quot;https://www.gov.br/siscomex/pt-br/arquivos-e-imagens/manualcctimportao.pdf\&quot;&gt; clique aqui&lt;/a&gt;).&lt;br/&gt;
+     *
+     * Um evento para cada conjunto de LOTEs gerados por conhecimento.Não considerar os movimentos do tipo “house keeping”, a exemplo de desunitização para verificação ou inspeção física, casos em que a carga deve ser reunitizada após o processo.&lt;br/&gt;Exemplos de geração de lote; desunitização &#x3D; n... lotes; baldeação imediata &#x3D; n... lotes; depositada em armazém &#x3D; n... lotes;&lt;br/&gt;Baldeação, a transferência de mercadoria descarregada de um veículo e posteriormente carregada em outro. Nesse caso ocorre a geração lote e posterior carregamento lote.&lt;br/&gt;Não aplicar para granel.&lt;br/&gt;Transmitir imediatamente a geração de um conjunto de LOTEs por conhecimento.&lt;br/&gt;Pode repetir o conhecimento na transmissão de um novo evento no caso de cargas com chegada parcial.&lt;br/&gt;&lt;br/&gt;Este evento possui integração com Controle de Carga e Trânsito na Importação – modal aéreo (CCT Importação) para funcionalidade de \&quot;recepção de carga\&quot; (Para mais informações,&lt;a href &#x3D;\&quot;https://www.gov.br/siscomex/pt-br/arquivos-e-imagens/manualcctimportao.pdf\&quot;&gt; clique aqui&lt;/a&gt;).&lt;br/&gt; 
      *
      */
     @POST
@@ -69,16 +69,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST13(@ApiParam(value = "JSON do evento Geração de Lotes", required = true) @Valid DadosGeraoLote body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Informação de Bloqueio/Desbloqueio de Veículo Terrestre /Carga / Unidade de Carga
-     * <p>
+     *
      * Um evento para cada bloqueio/desbloqueio de carga solicitado/efetuado diretamente no sistema do recinto.&lt;br/&gt;Não enviar os bloqueios/desbloqueios automáticos implementados no sistema do recinto.&lt;br/&gt;Não se trata do bloqueio no sistema Carga e/ou CCT.&lt;br/&gt;Transmitir um evento para cada solicitação de bloqueio ou desbloqueio efetivada no sistema privado do recinto para conhecimento, contêiner, veículo ou lote.
      *
      */
@@ -90,16 +90,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST14(@ApiParam(value = "JSON do evento Informação Bloqueio Desbloqueio Veículo Carga", required = true) @Valid DadosInformaoBloqueioDesbloqueioVeculoCarga body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Informação Prévia Trânsito Simplificado Contêiner
-     * <p>
+     *
      * Um evento para cada lista de unidades que serão removidas. Verificar a normatização local sobre os prazos para que os recintos de destino informem o recinto onde a carga vai atracar sobre a remoção da mesma.&lt;br/&gt;Transmitir imediatamente a recepção da lista de cargas a remover.&lt;br/&gt;Um evento por LISTA CARGAS.
      *
      */
@@ -111,16 +111,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST15(@ApiParam(value = "JSON do evento Informação Prévia Trânsito Simplificado Contêiner", required = true) @Valid DadosInformaoPrviaTrnsitoSimplificadoContiner body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Posição do Contêiner
-     * <p>
+     *
      * Um evento para cada mudança de posição da unidade de carga dentro do pátio.Não considerar os movimentos do tipo “house keeping”, quando a unidade retorna, em pouco tempo, para a mesma posição.&lt;br/&gt;Transmitir imediatamente a finalização do posicionamento.&lt;br/&gt;Um evento para cada CONTÊINER posicionado no pátio.&lt;br/&gt;
      *
      */
@@ -132,16 +132,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST19(@ApiParam(value = "JSON do evento Posição do Contêiner.", required = true) @Valid DadosPosioContiner body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Controle de Carga Solta - Avaria/Extravio de Lote
-     * <p>
+     *
      * Um evento para cada avaria ou extravio verificados em lote de carga.&lt;br/&gt;Transmitir imediatamente a verificação da avaria/extravio.&lt;br/&gt;Não aplicar para granel.&lt;br/&gt;Um evento para cada LOTE com avaria/extravio.
      *
      */
@@ -153,16 +153,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST3(@ApiParam(value = "JSON do evento Avaria / Extravio de Lote.", required = true) @Valid DadosAvariaExtravioLote body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Controle de Carga Solta - Carregamento/Entrega de Lotes
-     * <p>
+     *
      * Um evento para cada carregamento de lotes em unidade de carga – contêiner, caminhão, etc. Não considerar os movimentos do tipo &#39;house keeping&#39;, a exemplo do carregamento em caminhão para utilizar o scanner, casos em que a carga  retorna, em pouco tempo, para a mesma posição.&lt;br/&gt;O evento deve ser utilizado quando os lotes forem carregados em unidade de carga(caminhão, vagão, contêiner, ULD aeronave) ou entregue à companhia aérea.&lt;br/&gt;No caso de carga solta a ser carregada diretamente em navio, utilizar apenas o evento Embarque Navio informando o número do lote carregado.&lt;br/&gt;Transmitir imediatamente a finalização do carregamento ou da entrega física de um conjunto de lotes por conhecimento.&lt;br/&gt;Não aplicar para granel.&lt;br/&gt;Um evento para cada conjunto de LOTES carregados do mesmo conhecimento.&lt;br/&gt;Transmitir imediatamente ao carregamento de um conjunto de LOTEs por conhecimento.&lt;br/&gt;Pode repetir o conhecimento na transmissão de um novo evento no caso de cargas com saída parcial.
      *
      */
@@ -174,16 +174,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST4(@ApiParam(value = "JSON do evento Carregamento Entrega Lotes", required = true) @Valid DadosCarregamentoEntregaLotes body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Chegada ao Ponto Zero
-     * <p>
+     *
      * Neste evento o recinto deve informar as cargas que recebe da companhia aérea(transportadora) quando do ingresso em seu recinto.&lt;br/&gt;&lt;br/&gt;Transmitir quando existir ULD (Unit Load Device - Aéreo)
      *
      */
@@ -195,16 +195,16 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST5(@ApiParam(value = "JSON da Chegada ao Ponto Zero.", required = true) @Valid DadosDaChegadaAoPontoZero body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Controle de Conferência Física
-     * <p>
+     *
      * Um evento para cada agendamento ou conclusão de verificação ou inspeção física.&lt;br/&gt;Considerar todos os tipos de conferência solicitadas por qualquer anuente ou pelo proprietário da carga.&lt;br/&gt;&lt;br/&gt;Não transmitir para conferência de embalagem de madeira.&lt;br/&gt;&lt;br/&gt;Transmitir um evento para cada agendamento ou conclusão de conferência recebida.
      *
      */
@@ -216,10 +216,10 @@ public interface Grupo5ControleDeCargasEUnidadesDeCarga_Api {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST6(@ApiParam(value = "Conferência Física", required = true) @Valid DadosDaConfernciaFsica body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

@@ -130,15 +130,6 @@ public class SefazMotivoDSICDTO {
             value = v;
         }
 
-        public static MotivoEnum fromValue(String v) {
-            for (MotivoEnum b : MotivoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to MotivoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -146,6 +137,15 @@ public class SefazMotivoDSICDTO {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static MotivoEnum fromValue(String v) {
+            for (MotivoEnum b : MotivoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to MotivoEnum");
         }
     }
 
@@ -172,15 +172,6 @@ public class SefazMotivoDSICDTO {
             value = v;
         }
 
-        public static SubTipoMotivoEnum fromValue(String v) {
-            for (SubTipoMotivoEnum b : SubTipoMotivoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SubTipoMotivoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -188,6 +179,15 @@ public class SefazMotivoDSICDTO {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static SubTipoMotivoEnum fromValue(String v) {
+            for (SubTipoMotivoEnum b : SubTipoMotivoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SubTipoMotivoEnum");
         }
     }
 }

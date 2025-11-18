@@ -14,11 +14,27 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosEspecficosDeUmaCargaAreaNoCCTImportao", propOrder =
-        {"quantidadeVolumes", "motivoDSIC", "componentesFrete", "tipoConhecimento", "resumoRUC"
+        {"tipoConhecimento", "motivoDSIC", "quantidadeVolumes", "resumoRUC", "componentesFrete"
         })
 
 @XmlRootElement(name = "DadosEspecficosDeUmaCargaAreaNoCCTImportao")
 public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
+
+
+    @XmlElement(name = "tipoConhecimento")
+    @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento de transporte de carga aérea")
+    /**
+     * Tipo de conhecimento de transporte de carga aérea
+     **/
+    private TipoConhecimentoEnum tipoConhecimento = null;
+    @XmlElement(name = "motivoDSIC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazMotivoDSICDTO motivoDSIC = null;
+    @XmlElement(name = "resumoRUC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazResumoRUCCover resumoRUC = null;
 
     @XmlElement(name = "quantidadeVolumes")
     @ApiModelProperty(example = "2000", value = "Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647")
@@ -26,26 +42,6 @@ public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
      * Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647
      **/
     private Integer quantidadeVolumes = null;
-
-    @XmlElement(name = "motivoDSIC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazMotivoDSICDTO motivoDSIC = null;
-
-    @XmlElement(name = "componentesFrete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDosComponentesDeFreteDeUmaCargaArea componentesFrete = null;
-    @XmlElement(name = "tipoConhecimento")
-    @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento de transporte de carga aérea")
-    /**
-     * Tipo de conhecimento de transporte de carga aérea
-     **/
-    private TipoConhecimentoEnum tipoConhecimento = null;
-    @XmlElement(name = "resumoRUC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazResumoRUCCover resumoRUC = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,62 +54,10 @@ public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
         return o.toString().replace("\n", "\n    ");
     }
 
-    /**
-     * Quantidade total de volumes.&lt;br&gt;Formato: Inteiro, com até 10 digitos&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 2.147.483.647
-     *
-     * @return quantidadeVolumes
-     **/
-    @JsonProperty("quantidadeVolumes")
-    public Integer getQuantidadeVolumes() {
-        return quantidadeVolumes;
-    }
-
-    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-    }
-
-    public DadosEspecficosDeUmaCargaAreaNoCCTImportao quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-        return this;
-    }
-
-    /**
-     * Get motivoDSIC
-     *
-     * @return motivoDSIC
-     **/
-    @JsonProperty("motivoDSIC")
-    public SefazMotivoDSICDTO getMotivoDSIC() {
-        return motivoDSIC;
-    }
-
-    public void setMotivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
-        this.motivoDSIC = motivoDSIC;
-    }
-
-    public DadosEspecficosDeUmaCargaAreaNoCCTImportao motivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
-        this.motivoDSIC = motivoDSIC;
-        return this;
-    }
-
-    /**
-     * Get componentesFrete
-     *
-     * @return componentesFrete
-     **/
-    @JsonProperty("componentesFrete")
-    public DadosDosComponentesDeFreteDeUmaCargaArea getComponentesFrete() {
-        return componentesFrete;
-    }
-
-    public void setComponentesFrete(DadosDosComponentesDeFreteDeUmaCargaArea componentesFrete) {
-        this.componentesFrete = componentesFrete;
-    }
-
-    public DadosEspecficosDeUmaCargaAreaNoCCTImportao componentesFrete(DadosDosComponentesDeFreteDeUmaCargaArea componentesFrete) {
-        this.componentesFrete = componentesFrete;
-        return this;
-    }
+    @XmlElement(name = "componentesFrete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDosComponentesDeFreteDeUmaCargaArea componentesFrete = null;
 
     /**
      * Tipo de conhecimento de transporte de carga aérea
@@ -138,6 +82,44 @@ public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
     }
 
     /**
+     * Get motivoDSIC
+     *
+     * @return motivoDSIC
+     **/
+    @JsonProperty("motivoDSIC")
+    public SefazMotivoDSICDTO getMotivoDSIC() {
+        return motivoDSIC;
+    }
+
+    public void setMotivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
+        this.motivoDSIC = motivoDSIC;
+    }
+
+    public DadosEspecficosDeUmaCargaAreaNoCCTImportao motivoDSIC(SefazMotivoDSICDTO motivoDSIC) {
+        this.motivoDSIC = motivoDSIC;
+        return this;
+    }
+
+    /**
+     * Quantidade total de volumes.&lt;br&gt;Formato: Inteiro, com até 10 digitos&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 2.147.483.647
+     *
+     * @return quantidadeVolumes
+     **/
+    @JsonProperty("quantidadeVolumes")
+    public Integer getQuantidadeVolumes() {
+        return quantidadeVolumes;
+    }
+
+    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+    }
+
+    public DadosEspecficosDeUmaCargaAreaNoCCTImportao quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+        return this;
+    }
+
+    /**
      * Get resumoRUC
      *
      * @return resumoRUC
@@ -156,16 +138,35 @@ public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
         return this;
     }
 
+    /**
+     * Get componentesFrete
+     *
+     * @return componentesFrete
+     **/
+    @JsonProperty("componentesFrete")
+    public DadosDosComponentesDeFreteDeUmaCargaArea getComponentesFrete() {
+        return componentesFrete;
+    }
+
+    public void setComponentesFrete(DadosDosComponentesDeFreteDeUmaCargaArea componentesFrete) {
+        this.componentesFrete = componentesFrete;
+    }
+
+    public DadosEspecficosDeUmaCargaAreaNoCCTImportao componentesFrete(DadosDosComponentesDeFreteDeUmaCargaArea componentesFrete) {
+        this.componentesFrete = componentesFrete;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DadosEspecficosDeUmaCargaAreaNoCCTImportao {\n" +
-                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
-                "    motivoDSIC: " + toIndentedString(motivoDSIC) + "\n" +
-                "    componentesFrete: " + toIndentedString(componentesFrete) + "\n" +
                 "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "    motivoDSIC: " + toIndentedString(motivoDSIC) + "\n" +
+                "    quantidadeVolumes: " + toIndentedString(quantidadeVolumes) + "\n" +
                 "    resumoRUC: " + toIndentedString(resumoRUC) + "\n" +
+                "    componentesFrete: " + toIndentedString(componentesFrete) + "\n" +
                 "}";
         return sb;
     }

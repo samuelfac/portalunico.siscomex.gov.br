@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConsultarLpcoResponse", propOrder =
-        {"situacao", "numero", "codigoModelo", "dataRegistro", "nome", "dataFimVigencia", "retificacaoPendente", "dataSituacaoAtual", "prorrogacaoPendente", "dueVinculada", "canal", "dataInicioVigenciaModelo", "dataInicioVigencia"
+        {"numero", "dataRegistro", "situacao", "codigoModelo", "dataInicioVigenciaModelo", "nome", "dataInicioVigencia", "dataFimVigencia", "dueVinculada", "prorrogacaoPendente", "retificacaoPendente", "dataSituacaoAtual", "canal"
         })
 
 @XmlRootElement(name = "ConsultarLpcoResponse")
@@ -25,26 +25,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Informações resumidas de um LPCO retornadas pela consulta")
 public class ConsultarLpcoResponse {
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(example = "Para análise", required = true, value = "Descrição da situação atual do LPCO")
-    /**
-     * Descrição da situação atual do LPCO
-     **/
-    private String situacao = null;
-
     @XmlElement(name = "numero", required = true)
     @ApiModelProperty(example = "E1900000123", required = true, value = "Número do LPCO<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")
     /**
      * Número do LPCO<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano
      **/
     private String numero = null;
-
-    @XmlElement(name = "codigoModelo", required = true)
-    @ApiModelProperty(example = "E00104", required = true, value = "Código do modelo de formulário do LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano")
-    /**
-     * Código do modelo de formulário do LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano
-     **/
-    private String codigoModelo = null;
 
     @XmlElement(name = "dataRegistro", required = true)
     @ApiModelProperty(example = "02/09/2019", required = true, value = "Data em que o pedido do LPCO foi realizado<br>Formato: dd/MM/yyyy")
@@ -53,6 +39,27 @@ public class ConsultarLpcoResponse {
      **/
     private String dataRegistro = null;
 
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(example = "Para análise", required = true, value = "Descrição da situação atual do LPCO")
+    /**
+     * Descrição da situação atual do LPCO
+     **/
+    private String situacao = null;
+
+    @XmlElement(name = "codigoModelo", required = true)
+    @ApiModelProperty(example = "E00104", required = true, value = "Código do modelo de formulário do LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano")
+    /**
+     * Código do modelo de formulário do LPCO<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano
+     **/
+    private String codigoModelo = null;
+
+    @XmlElement(name = "dataInicioVigenciaModelo", required = true)
+    @ApiModelProperty(example = "2019-08-29T13:50Z", required = true, value = "Data em que a versão do modelo do LPCO entrou em vigência<br>Formato: dd-MM-yyyy'T'HH:mmZ")
+    /**
+     * Data em que a versão do modelo do LPCO entrou em vigência<br>Formato: dd-MM-yyyy'T'HH:mmZ
+     **/
+    private String dataInicioVigenciaModelo = null;
+
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "Certificação para Produtos de Origem Vegetal - Embarque Antecipado", required = true, value = "Nome do modelo do formulário do LPCO<br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
     /**
@@ -60,12 +67,33 @@ public class ConsultarLpcoResponse {
      **/
     private String nome = null;
 
+    @XmlElement(name = "dataInicioVigencia")
+    @ApiModelProperty(example = "01/01/2020", value = "Data de início da vigência do LPCO<br>Formato: dd/MM/yyyy")
+    /**
+     * Data de início da vigência do LPCO<br>Formato: dd/MM/yyyy
+     **/
+    private String dataInicioVigencia = null;
+
     @XmlElement(name = "dataFimVigencia")
     @ApiModelProperty(example = "25/11/2020", value = "Data de fim da vigência do LPCO<br>Formato: dd/MM/yyyy")
     /**
      * Data de fim da vigência do LPCO<br>Formato: dd/MM/yyyy
      **/
     private String dataFimVigencia = null;
+
+    @XmlElement(name = "dueVinculada")
+    @ApiModelProperty(example = "18BR0000001000,19BR0000002000", value = "Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )")
+    /**
+     * Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )
+     **/
+    private String dueVinculada = null;
+
+    @XmlElement(name = "prorrogacaoPendente", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.")
+    /**
+     * Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.
+     **/
+    private Boolean prorrogacaoPendente = null;
 
     @XmlElement(name = "retificacaoPendente", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica se existe uma solicitação de retificação deste LPCO que ainda não foi analisada pelo órgão anuente.")
@@ -81,38 +109,6 @@ public class ConsultarLpcoResponse {
      **/
     private String dataSituacaoAtual = null;
 
-    @XmlElement(name = "prorrogacaoPendente", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.")
-    /**
-     * Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.
-     **/
-    private Boolean prorrogacaoPendente = null;
-
-    @XmlElement(name = "dueVinculada")
-    @ApiModelProperty(example = "18BR0000001000,19BR0000002000", value = "Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )")
-    /**
-     * Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )
-     **/
-    private String dueVinculada = null;
-    @XmlElement(name = "canal")
-    @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
-    /**
-     * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
-     **/
-    private CanalEnum canal = null;
-    @XmlElement(name = "dataInicioVigenciaModelo", required = true)
-    @ApiModelProperty(example = "2019-08-29T13:50Z", required = true, value = "Data em que a versão do modelo do LPCO entrou em vigência<br>Formato: dd-MM-yyyy'T'HH:mmZ")
-    /**
-     * Data em que a versão do modelo do LPCO entrou em vigência<br>Formato: dd-MM-yyyy'T'HH:mmZ
-     **/
-    private String dataInicioVigenciaModelo = null;
-    @XmlElement(name = "dataInicioVigencia")
-    @ApiModelProperty(example = "01/01/2020", value = "Data de início da vigência do LPCO<br>Formato: dd/MM/yyyy")
-    /**
-     * Data de início da vigência do LPCO<br>Formato: dd/MM/yyyy
-     **/
-    private String dataInicioVigencia = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -124,25 +120,12 @@ public class ConsultarLpcoResponse {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "canal")
+    @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
     /**
-     * Descrição da situação atual do LPCO
-     *
-     * @return situacao
+     * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
      **/
-    @JsonProperty("situacao")
-    @NotNull
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public ConsultarLpcoResponse situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
+    private CanalEnum canal = null;
 
     /**
      * Número do LPCO&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
@@ -161,26 +144,6 @@ public class ConsultarLpcoResponse {
 
     public ConsultarLpcoResponse numero(String numero) {
         this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Código do modelo de formulário do LPCO&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do modelo no ano
-     *
-     * @return codigoModelo
-     **/
-    @JsonProperty("codigoModelo")
-    @NotNull
-    public String getCodigoModelo() {
-        return codigoModelo;
-    }
-
-    public void setCodigoModelo(String codigoModelo) {
-        this.codigoModelo = codigoModelo;
-    }
-
-    public ConsultarLpcoResponse codigoModelo(String codigoModelo) {
-        this.codigoModelo = codigoModelo;
         return this;
     }
 
@@ -205,6 +168,66 @@ public class ConsultarLpcoResponse {
     }
 
     /**
+     * Descrição da situação atual do LPCO
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public ConsultarLpcoResponse situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Código do modelo de formulário do LPCO&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do modelo no ano
+     *
+     * @return codigoModelo
+     **/
+    @JsonProperty("codigoModelo")
+    @NotNull
+    public String getCodigoModelo() {
+        return codigoModelo;
+    }
+
+    public void setCodigoModelo(String codigoModelo) {
+        this.codigoModelo = codigoModelo;
+    }
+
+    public ConsultarLpcoResponse codigoModelo(String codigoModelo) {
+        this.codigoModelo = codigoModelo;
+        return this;
+    }
+
+    /**
+     * Data em que a versão do modelo do LPCO entrou em vigência&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
+     *
+     * @return dataInicioVigenciaModelo
+     **/
+    @JsonProperty("dataInicioVigenciaModelo")
+    @NotNull
+    public String getDataInicioVigenciaModelo() {
+        return dataInicioVigenciaModelo;
+    }
+
+    public void setDataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
+        this.dataInicioVigenciaModelo = dataInicioVigenciaModelo;
+    }
+
+    public ConsultarLpcoResponse dataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
+        this.dataInicioVigenciaModelo = dataInicioVigenciaModelo;
+        return this;
+    }
+
+    /**
      * Nome do modelo do formulário do LPCO&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
      *
      * @return nome
@@ -225,6 +248,25 @@ public class ConsultarLpcoResponse {
     }
 
     /**
+     * Data de início da vigência do LPCO&lt;br&gt;Formato: dd/MM/yyyy
+     *
+     * @return dataInicioVigencia
+     **/
+    @JsonProperty("dataInicioVigencia")
+    public String getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public ConsultarLpcoResponse dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+        return this;
+    }
+
+    /**
      * Data de fim da vigência do LPCO&lt;br&gt;Formato: dd/MM/yyyy
      *
      * @return dataFimVigencia
@@ -240,6 +282,45 @@ public class ConsultarLpcoResponse {
 
     public ConsultarLpcoResponse dataFimVigencia(String dataFimVigencia) {
         this.dataFimVigencia = dataFimVigencia;
+        return this;
+    }
+
+    /**
+     * Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )
+     *
+     * @return dueVinculada
+     **/
+    @JsonProperty("dueVinculada")
+    public String getDueVinculada() {
+        return dueVinculada;
+    }
+
+    public void setDueVinculada(String dueVinculada) {
+        this.dueVinculada = dueVinculada;
+    }
+
+    public ConsultarLpcoResponse dueVinculada(String dueVinculada) {
+        this.dueVinculada = dueVinculada;
+        return this;
+    }
+
+    /**
+     * Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.
+     *
+     * @return prorrogacaoPendente
+     **/
+    @JsonProperty("prorrogacaoPendente")
+    @NotNull
+    public Boolean isisProrrogacaoPendente() {
+        return prorrogacaoPendente;
+    }
+
+    public void setProrrogacaoPendente(Boolean prorrogacaoPendente) {
+        this.prorrogacaoPendente = prorrogacaoPendente;
+    }
+
+    public ConsultarLpcoResponse prorrogacaoPendente(Boolean prorrogacaoPendente) {
+        this.prorrogacaoPendente = prorrogacaoPendente;
         return this;
     }
 
@@ -265,7 +346,6 @@ public class ConsultarLpcoResponse {
 
     /**
      * Data em que o LPCO passou para sua situação atual&lt;br&gt; Formato: Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
      * @return dataSituacaoAtual
      **/
     @JsonProperty("dataSituacaoAtual")
@@ -284,47 +364,7 @@ public class ConsultarLpcoResponse {
     }
 
     /**
-     * Indica se existe uma solicitação de prorrogação deste LPCO que ainda não foi analisada pelo órgão anuente.
-     *
-     * @return prorrogacaoPendente
-     **/
-    @JsonProperty("prorrogacaoPendente")
-    @NotNull
-    public Boolean isisProrrogacaoPendente() {
-        return prorrogacaoPendente;
-    }
-
-    public void setProrrogacaoPendente(Boolean prorrogacaoPendente) {
-        this.prorrogacaoPendente = prorrogacaoPendente;
-    }
-
-    public ConsultarLpcoResponse prorrogacaoPendente(Boolean prorrogacaoPendente) {
-        this.prorrogacaoPendente = prorrogacaoPendente;
-        return this;
-    }
-
-    /**
-     * Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )
-     *
-     * @return dueVinculada
-     **/
-    @JsonProperty("dueVinculada")
-    public String getDueVinculada() {
-        return dueVinculada;
-    }
-
-    public void setDueVinculada(String dueVinculada) {
-        this.dueVinculada = dueVinculada;
-    }
-
-    public ConsultarLpcoResponse dueVinculada(String dueVinculada) {
-        this.dueVinculada = dueVinculada;
-        return this;
-    }
-
-    /**
      * Canal. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
-     *
      * @return canal
      **/
     @JsonProperty("canal")
@@ -344,63 +384,24 @@ public class ConsultarLpcoResponse {
         return this;
     }
 
-    /**
-     * Data em que a versão do modelo do LPCO entrou em vigência&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
-     *
-     * @return dataInicioVigenciaModelo
-     **/
-    @JsonProperty("dataInicioVigenciaModelo")
-    @NotNull
-    public String getDataInicioVigenciaModelo() {
-        return dataInicioVigenciaModelo;
-    }
-
-    public void setDataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
-        this.dataInicioVigenciaModelo = dataInicioVigenciaModelo;
-    }
-
-    public ConsultarLpcoResponse dataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
-        this.dataInicioVigenciaModelo = dataInicioVigenciaModelo;
-        return this;
-    }
-
-    /**
-     * Data de início da vigência do LPCO&lt;br&gt;Formato: dd/MM/yyyy
-     *
-     * @return dataInicioVigencia
-     **/
-    @JsonProperty("dataInicioVigencia")
-    public String getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
-    public ConsultarLpcoResponse dataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class ConsultarLpcoResponse {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
-                "    codigoModelo: " + toIndentedString(codigoModelo) + "\n" +
                 "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    codigoModelo: " + toIndentedString(codigoModelo) + "\n" +
+                "    dataInicioVigenciaModelo: " + toIndentedString(dataInicioVigenciaModelo) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
                 "    dataFimVigencia: " + toIndentedString(dataFimVigencia) + "\n" +
+                "    dueVinculada: " + toIndentedString(dueVinculada) + "\n" +
+                "    prorrogacaoPendente: " + toIndentedString(prorrogacaoPendente) + "\n" +
                 "    retificacaoPendente: " + toIndentedString(retificacaoPendente) + "\n" +
                 "    dataSituacaoAtual: " + toIndentedString(dataSituacaoAtual) + "\n" +
-                "    prorrogacaoPendente: " + toIndentedString(prorrogacaoPendente) + "\n" +
-                "    dueVinculada: " + toIndentedString(dueVinculada) + "\n" +
                 "    canal: " + toIndentedString(canal) + "\n" +
-                "    dataInicioVigenciaModelo: " + toIndentedString(dataInicioVigenciaModelo) + "\n" +
-                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
                 "}";
         return sb;
     }

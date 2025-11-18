@@ -25,17 +25,6 @@ public class ChaveDsic {
     private String identificacaoDSIC = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número de identificação do DSIC&lt;br/&gt;Tamanho: 11&lt;br/&gt; Formato: ANNNNNNNNNN
      *
      * @return identificacaoDSIC
@@ -52,6 +41,18 @@ public class ChaveDsic {
     public ChaveDsic identificacaoDSIC(String identificacaoDSIC) {
         this.identificacaoDSIC = identificacaoDSIC;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

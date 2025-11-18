@@ -13,16 +13,18 @@ import java.time.LocalDate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaId", propOrder =
-        {"tipo", "numero", "dataEmissao", "tipoNumero"
+        {"dataEmissao", "numero", "tipo", "tipoNumero"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaId")
 public class ViagemRodoviariaId {
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoManifestoViagem tipo = null;
+    @XmlElement(name = "dataEmissao")
+    @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd")
+    /**
+     * Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd
+     **/
+    private LocalDate dataEmissao = null;
 
     @XmlElement(name = "numero")
     @ApiModelProperty(example = "AR123040104", value = "Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15")
@@ -31,12 +33,10 @@ public class ViagemRodoviariaId {
      **/
     private String numero = null;
 
-    @XmlElement(name = "dataEmissao")
-    @ApiModelProperty(example = "Fri Aug 07 02:00:00 CEST 2020", value = "Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd")
-    /**
-     * Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd
-     **/
-    private LocalDate dataEmissao = null;
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoManifestoViagem tipo = null;
 
     @XmlElement(name = "tipoNumero")
     @ApiModelProperty(value = "")
@@ -55,22 +55,17 @@ public class ViagemRodoviariaId {
     }
 
     /**
-     * Get tipo
+     * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
      *
-     * @return tipo
+     * @return dataEmissao
      **/
-    @JsonProperty("tipo")
-    public TipoManifestoViagem getTipo() {
-        return tipo;
+    @JsonProperty("dataEmissao")
+    public LocalDate getDataEmissao() {
+        return dataEmissao;
     }
 
-    public void setTipo(TipoManifestoViagem tipo) {
-        this.tipo = tipo;
-    }
-
-    public ViagemRodoviariaId tipo(TipoManifestoViagem tipo) {
-        this.tipo = tipo;
-        return this;
+    public void setDataEmissao(LocalDate dataEmissao) {
+        this.dataEmissao = dataEmissao;
     }
 
     /**
@@ -92,23 +87,23 @@ public class ViagemRodoviariaId {
         return this;
     }
 
-    /**
-     * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public LocalDate getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(LocalDate dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
     public ViagemRodoviariaId dataEmissao(LocalDate dataEmissao) {
         this.dataEmissao = dataEmissao;
         return this;
+    }
+
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoManifestoViagem getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoManifestoViagem tipo) {
+        this.tipo = tipo;
     }
 
     /**
@@ -130,13 +125,18 @@ public class ViagemRodoviariaId {
         return this;
     }
 
+    public ViagemRodoviariaId tipo(TipoManifestoViagem tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ViagemRodoviariaId {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
                 "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    tipoNumero: " + toIndentedString(tipoNumero) + "\n" +
                 "}";
         return sb;

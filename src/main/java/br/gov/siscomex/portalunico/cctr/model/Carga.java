@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Carga", propOrder =
-        {"remetente", "moedaValorFOT", "codigoAduanaDestino", "qtdeVolumes", "documentosAnexos", "valorSeguro", "consignatario", "destinatario", "moedaValorSeguro", "descricaoMercadorias", "paisOrigemMercadorias", "nomeTiposVolumes", "valorFOTMercadorias", "nfes", "pesoBruto", "nomeAduanaDestino", "codigoTiposVolumes"
+        {"consignatario", "remetente", "destinatario", "codigoAduanaDestino", "nomeAduanaDestino", "paisOrigemMercadorias", "valorFOTMercadorias", "moedaValorFOT", "valorSeguro", "moedaValorSeguro", "codigoTiposVolumes", "nomeTiposVolumes", "qtdeVolumes", "pesoBruto", "descricaoMercadorias", "documentosAnexos", "nfes"
         })
 
 @XmlRootElement(name = "Carga")
@@ -25,17 +25,20 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados da carga")
 public class Carga {
 
+    @XmlElement(name = "consignatario", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Consignatario consignatario = null;
+
     @XmlElement(name = "remetente", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private Remetente remetente = null;
 
-    @XmlElement(name = "moedaValorFOT", required = true)
-    @ApiModelProperty(example = "220", required = true, value = "Código da moeda FOT das mercadorias<br>Tamanho: 3<br>Formato: NNN")
-    /**
-     * Código da moeda FOT das mercadorias<br>Tamanho: 3<br>Formato: NNN
-     **/
-    private String moedaValorFOT = null;
+    @XmlElement(name = "destinatario", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Destinatrio destinatario = null;
 
     @XmlElement(name = "codigoAduanaDestino")
     @ApiModelProperty(example = "12AB567", value = "Código da aduana de destino<br>Tamanho: 7<br>Formato: AAAAAAA")
@@ -44,51 +47,12 @@ public class Carga {
      **/
     private String codigoAduanaDestino = null;
 
-    @XmlElement(name = "qtdeVolumes")
-    @ApiModelProperty(example = "123456", value = "Quantidade do volume<br>Tamanho: 6<br>Formato: NNNNNN")
+    @XmlElement(name = "nomeAduanaDestino", required = true)
+    @ApiModelProperty(example = "Buenos Aires Aduana", required = true, value = "Nome da aduana de destino<br>Tamanho: 60")
     /**
-     * Quantidade do volume<br>Tamanho: 6<br>Formato: NNNNNN
+     * Nome da aduana de destino<br>Tamanho: 60
      **/
-    private Integer qtdeVolumes = null;
-
-    @XmlElement(name = "documentosAnexos", required = true)
-    @ApiModelProperty(example = "Documento 1234", required = true, value = "Documentos anexos<br>Tamanho: 400")
-    /**
-     * Documentos anexos<br>Tamanho: 400
-     **/
-    private String documentosAnexos = null;
-
-    @XmlElement(name = "valorSeguro")
-    @ApiModelProperty(example = "1000.0", value = "Valor do seguro<br>Tamanho: 14.2<br>Formato: NNNNNNNNNNNNNN.NN")
-    @Valid
-    /**
-     * Valor do seguro<br>Tamanho: 14.2<br>Formato: NNNNNNNNNNNNNN.NN
-     **/
-    private BigDecimal valorSeguro = null;
-
-    @XmlElement(name = "consignatario", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Consignatario consignatario = null;
-
-    @XmlElement(name = "destinatario", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Destinatrio destinatario = null;
-
-    @XmlElement(name = "moedaValorSeguro")
-    @ApiModelProperty(example = "220", value = "Código da moeda do seguro<br>Tamanho: 3<br>Formato: NNN")
-    /**
-     * Código da moeda do seguro<br>Tamanho: 3<br>Formato: NNN
-     **/
-    private String moedaValorSeguro = null;
-
-    @XmlElement(name = "descricaoMercadorias", required = true)
-    @ApiModelProperty(example = "mercadoria", required = true, value = "Descrição das mercadoria<br>Tamanho: 520<br>Marcas e números dos volumes, descrição das mercadorias.")
-    /**
-     * Descrição das mercadoria<br>Tamanho: 520<br>Marcas e números dos volumes, descrição das mercadorias.
-     **/
-    private String descricaoMercadorias = null;
+    private String nomeAduanaDestino = null;
 
     @XmlElement(name = "paisOrigemMercadorias", required = true)
     @ApiModelProperty(example = "BR", required = true, value = "Sigla do país de origem das mercadorias<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
@@ -96,13 +60,6 @@ public class Carga {
      * Sigla do país de origem das mercadorias<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
      **/
     private String paisOrigemMercadorias = null;
-
-    @XmlElement(name = "nomeTiposVolumes", required = true)
-    @ApiModelProperty(example = "caixas", required = true, value = "Nome do tipo de volume<br>Tamanho: 15")
-    /**
-     * Nome do tipo de volume<br>Tamanho: 15
-     **/
-    private String nomeTiposVolumes = null;
 
     @XmlElement(name = "valorFOTMercadorias", required = true)
     @ApiModelProperty(example = "20000.0", required = true, value = "Valor FOT das mercadorias<br>Tamanho: 15.2<br>Formato: NNNNNNNNNNNNNNN.NN")
@@ -112,10 +69,48 @@ public class Carga {
      **/
     private BigDecimal valorFOTMercadorias = null;
 
-    @XmlElement(name = "nfes", required = true)
-    @ApiModelProperty(required = true, value = "")
+    @XmlElement(name = "moedaValorFOT", required = true)
+    @ApiModelProperty(example = "220", required = true, value = "Código da moeda FOT das mercadorias<br>Tamanho: 3<br>Formato: NNN")
+    /**
+     * Código da moeda FOT das mercadorias<br>Tamanho: 3<br>Formato: NNN
+     **/
+    private String moedaValorFOT = null;
+
+    @XmlElement(name = "valorSeguro")
+    @ApiModelProperty(example = "1000.0", value = "Valor do seguro<br>Tamanho: 14.2<br>Formato: NNNNNNNNNNNNNN.NN")
     @Valid
-    private Nfes nfes = null;
+    /**
+     * Valor do seguro<br>Tamanho: 14.2<br>Formato: NNNNNNNNNNNNNN.NN
+     **/
+    private BigDecimal valorSeguro = null;
+
+    @XmlElement(name = "moedaValorSeguro")
+    @ApiModelProperty(example = "220", value = "Código da moeda do seguro<br>Tamanho: 3<br>Formato: NNN")
+    /**
+     * Código da moeda do seguro<br>Tamanho: 3<br>Formato: NNN
+     **/
+    private String moedaValorSeguro = null;
+
+    @XmlElement(name = "codigoTiposVolumes")
+    @ApiModelProperty(example = "1", value = "Código do tipo de volume<br>Tamanho: 2<br>Formato: NN")
+    /**
+     * Código do tipo de volume<br>Tamanho: 2<br>Formato: NN
+     **/
+    private Integer codigoTiposVolumes = null;
+
+    @XmlElement(name = "nomeTiposVolumes", required = true)
+    @ApiModelProperty(example = "caixas", required = true, value = "Nome do tipo de volume<br>Tamanho: 15")
+    /**
+     * Nome do tipo de volume<br>Tamanho: 15
+     **/
+    private String nomeTiposVolumes = null;
+
+    @XmlElement(name = "qtdeVolumes")
+    @ApiModelProperty(example = "123456", value = "Quantidade do volume<br>Tamanho: 6<br>Formato: NNNNNN")
+    /**
+     * Quantidade do volume<br>Tamanho: 6<br>Formato: NNNNNN
+     **/
+    private Integer qtdeVolumes = null;
 
     @XmlElement(name = "pesoBruto", required = true)
     @ApiModelProperty(example = "100000.0", required = true, value = "Peso Bruto (kg) da mercadoria<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
@@ -125,19 +120,24 @@ public class Carga {
      **/
     private BigDecimal pesoBruto = null;
 
-    @XmlElement(name = "nomeAduanaDestino", required = true)
-    @ApiModelProperty(example = "Buenos Aires Aduana", required = true, value = "Nome da aduana de destino<br>Tamanho: 60")
+    @XmlElement(name = "descricaoMercadorias", required = true)
+    @ApiModelProperty(example = "mercadoria", required = true, value = "Descrição das mercadoria<br>Tamanho: 520<br>Marcas e números dos volumes, descrição das mercadorias.")
     /**
-     * Nome da aduana de destino<br>Tamanho: 60
+     * Descrição das mercadoria<br>Tamanho: 520<br>Marcas e números dos volumes, descrição das mercadorias.
      **/
-    private String nomeAduanaDestino = null;
+    private String descricaoMercadorias = null;
 
-    @XmlElement(name = "codigoTiposVolumes")
-    @ApiModelProperty(example = "1", value = "Código do tipo de volume<br>Tamanho: 2<br>Formato: NN")
+    @XmlElement(name = "documentosAnexos", required = true)
+    @ApiModelProperty(example = "Documento 1234", required = true, value = "Documentos anexos<br>Tamanho: 400")
     /**
-     * Código do tipo de volume<br>Tamanho: 2<br>Formato: NN
+     * Documentos anexos<br>Tamanho: 400
      **/
-    private Integer codigoTiposVolumes = null;
+    private String documentosAnexos = null;
+
+    @XmlElement(name = "nfes", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Nfes nfes = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -148,6 +148,21 @@ public class Carga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get consignatario
+     *
+     * @return consignatario
+     **/
+    @JsonProperty("consignatario")
+    @NotNull
+    public Consignatario getConsignatario() {
+        return consignatario;
+    }
+
+    public void setConsignatario(Consignatario consignatario) {
+        this.consignatario = consignatario;
     }
 
     /**
@@ -170,24 +185,24 @@ public class Carga {
         return this;
     }
 
-    /**
-     * Código da moeda FOT das mercadorias&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN
-     *
-     * @return moedaValorFOT
-     **/
-    @JsonProperty("moedaValorFOT")
-    @NotNull
-    public String getMoedaValorFOT() {
-        return moedaValorFOT;
-    }
-
-    public void setMoedaValorFOT(String moedaValorFOT) {
-        this.moedaValorFOT = moedaValorFOT;
-    }
-
-    public Carga moedaValorFOT(String moedaValorFOT) {
-        this.moedaValorFOT = moedaValorFOT;
+    public Carga consignatario(Consignatario consignatario) {
+        this.consignatario = consignatario;
         return this;
+    }
+
+    /**
+     * Get destinatario
+     *
+     * @return destinatario
+     **/
+    @JsonProperty("destinatario")
+    @NotNull
+    public Destinatrio getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(Destinatrio destinatario) {
+        this.destinatario = destinatario;
     }
 
     /**
@@ -209,240 +224,8 @@ public class Carga {
         return this;
     }
 
-    /**
-     * Quantidade do volume&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: NNNNNN
-     *
-     * @return qtdeVolumes
-     **/
-    @JsonProperty("qtdeVolumes")
-    public Integer getQtdeVolumes() {
-        return qtdeVolumes;
-    }
-
-    public void setQtdeVolumes(Integer qtdeVolumes) {
-        this.qtdeVolumes = qtdeVolumes;
-    }
-
-    public Carga qtdeVolumes(Integer qtdeVolumes) {
-        this.qtdeVolumes = qtdeVolumes;
-        return this;
-    }
-
-    /**
-     * Documentos anexos&lt;br&gt;Tamanho: 400
-     *
-     * @return documentosAnexos
-     **/
-    @JsonProperty("documentosAnexos")
-    @NotNull
-    public String getDocumentosAnexos() {
-        return documentosAnexos;
-    }
-
-    public void setDocumentosAnexos(String documentosAnexos) {
-        this.documentosAnexos = documentosAnexos;
-    }
-
-    public Carga documentosAnexos(String documentosAnexos) {
-        this.documentosAnexos = documentosAnexos;
-        return this;
-    }
-
-    /**
-     * Valor do seguro&lt;br&gt;Tamanho: 14.2&lt;br&gt;Formato: NNNNNNNNNNNNNN.NN
-     *
-     * @return valorSeguro
-     **/
-    @JsonProperty("valorSeguro")
-    public BigDecimal getValorSeguro() {
-        return valorSeguro;
-    }
-
-    public void setValorSeguro(BigDecimal valorSeguro) {
-        this.valorSeguro = valorSeguro;
-    }
-
-    public Carga valorSeguro(BigDecimal valorSeguro) {
-        this.valorSeguro = valorSeguro;
-        return this;
-    }
-
-    /**
-     * Get consignatario
-     *
-     * @return consignatario
-     **/
-    @JsonProperty("consignatario")
-    @NotNull
-    public Consignatario getConsignatario() {
-        return consignatario;
-    }
-
-    public void setConsignatario(Consignatario consignatario) {
-        this.consignatario = consignatario;
-    }
-
-    public Carga consignatario(Consignatario consignatario) {
-        this.consignatario = consignatario;
-        return this;
-    }
-
-    /**
-     * Get destinatario
-     *
-     * @return destinatario
-     **/
-    @JsonProperty("destinatario")
-    @NotNull
-    public Destinatrio getDestinatario() {
-        return destinatario;
-    }
-
-    public void setDestinatario(Destinatrio destinatario) {
-        this.destinatario = destinatario;
-    }
-
     public Carga destinatario(Destinatrio destinatario) {
         this.destinatario = destinatario;
-        return this;
-    }
-
-    /**
-     * Código da moeda do seguro&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN
-     *
-     * @return moedaValorSeguro
-     **/
-    @JsonProperty("moedaValorSeguro")
-    public String getMoedaValorSeguro() {
-        return moedaValorSeguro;
-    }
-
-    public void setMoedaValorSeguro(String moedaValorSeguro) {
-        this.moedaValorSeguro = moedaValorSeguro;
-    }
-
-    public Carga moedaValorSeguro(String moedaValorSeguro) {
-        this.moedaValorSeguro = moedaValorSeguro;
-        return this;
-    }
-
-    /**
-     * Descrição das mercadoria&lt;br&gt;Tamanho: 520&lt;br&gt;Marcas e números dos volumes, descrição das mercadorias.
-     *
-     * @return descricaoMercadorias
-     **/
-    @JsonProperty("descricaoMercadorias")
-    @NotNull
-    public String getDescricaoMercadorias() {
-        return descricaoMercadorias;
-    }
-
-    public void setDescricaoMercadorias(String descricaoMercadorias) {
-        this.descricaoMercadorias = descricaoMercadorias;
-    }
-
-    public Carga descricaoMercadorias(String descricaoMercadorias) {
-        this.descricaoMercadorias = descricaoMercadorias;
-        return this;
-    }
-
-    /**
-     * Sigla do país de origem das mercadorias&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
-     *
-     * @return paisOrigemMercadorias
-     **/
-    @JsonProperty("paisOrigemMercadorias")
-    @NotNull
-    public String getPaisOrigemMercadorias() {
-        return paisOrigemMercadorias;
-    }
-
-    public void setPaisOrigemMercadorias(String paisOrigemMercadorias) {
-        this.paisOrigemMercadorias = paisOrigemMercadorias;
-    }
-
-    public Carga paisOrigemMercadorias(String paisOrigemMercadorias) {
-        this.paisOrigemMercadorias = paisOrigemMercadorias;
-        return this;
-    }
-
-    /**
-     * Nome do tipo de volume&lt;br&gt;Tamanho: 15
-     *
-     * @return nomeTiposVolumes
-     **/
-    @JsonProperty("nomeTiposVolumes")
-    @NotNull
-    public String getNomeTiposVolumes() {
-        return nomeTiposVolumes;
-    }
-
-    public void setNomeTiposVolumes(String nomeTiposVolumes) {
-        this.nomeTiposVolumes = nomeTiposVolumes;
-    }
-
-    public Carga nomeTiposVolumes(String nomeTiposVolumes) {
-        this.nomeTiposVolumes = nomeTiposVolumes;
-        return this;
-    }
-
-    /**
-     * Valor FOT das mercadorias&lt;br&gt;Tamanho: 15.2&lt;br&gt;Formato: NNNNNNNNNNNNNNN.NN
-     *
-     * @return valorFOTMercadorias
-     **/
-    @JsonProperty("valorFOTMercadorias")
-    @NotNull
-    public BigDecimal getValorFOTMercadorias() {
-        return valorFOTMercadorias;
-    }
-
-    public void setValorFOTMercadorias(BigDecimal valorFOTMercadorias) {
-        this.valorFOTMercadorias = valorFOTMercadorias;
-    }
-
-    public Carga valorFOTMercadorias(BigDecimal valorFOTMercadorias) {
-        this.valorFOTMercadorias = valorFOTMercadorias;
-        return this;
-    }
-
-    /**
-     * Get nfes
-     *
-     * @return nfes
-     **/
-    @JsonProperty("nfes")
-    @NotNull
-    public Nfes getNfes() {
-        return nfes;
-    }
-
-    public void setNfes(Nfes nfes) {
-        this.nfes = nfes;
-    }
-
-    public Carga nfes(Nfes nfes) {
-        this.nfes = nfes;
-        return this;
-    }
-
-    /**
-     * Peso Bruto (kg) da mercadoria&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
-     *
-     * @return pesoBruto
-     **/
-    @JsonProperty("pesoBruto")
-    @NotNull
-    public BigDecimal getPesoBruto() {
-        return pesoBruto;
-    }
-
-    public void setPesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
-    }
-
-    public Carga pesoBruto(BigDecimal pesoBruto) {
-        this.pesoBruto = pesoBruto;
         return this;
     }
 
@@ -467,6 +250,102 @@ public class Carga {
     }
 
     /**
+     * Sigla do país de origem das mercadorias&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
+     *
+     * @return paisOrigemMercadorias
+     **/
+    @JsonProperty("paisOrigemMercadorias")
+    @NotNull
+    public String getPaisOrigemMercadorias() {
+        return paisOrigemMercadorias;
+    }
+
+    public void setPaisOrigemMercadorias(String paisOrigemMercadorias) {
+        this.paisOrigemMercadorias = paisOrigemMercadorias;
+    }
+
+    public Carga paisOrigemMercadorias(String paisOrigemMercadorias) {
+        this.paisOrigemMercadorias = paisOrigemMercadorias;
+        return this;
+    }
+
+    /**
+     * Valor FOT das mercadorias&lt;br&gt;Tamanho: 15.2&lt;br&gt;Formato: NNNNNNNNNNNNNNN.NN
+     *
+     * @return valorFOTMercadorias
+     **/
+    @JsonProperty("valorFOTMercadorias")
+    @NotNull
+    public BigDecimal getValorFOTMercadorias() {
+        return valorFOTMercadorias;
+    }
+
+    public void setValorFOTMercadorias(BigDecimal valorFOTMercadorias) {
+        this.valorFOTMercadorias = valorFOTMercadorias;
+    }
+
+    public Carga valorFOTMercadorias(BigDecimal valorFOTMercadorias) {
+        this.valorFOTMercadorias = valorFOTMercadorias;
+        return this;
+    }
+
+    /**
+     * Código da moeda FOT das mercadorias&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN
+     *
+     * @return moedaValorFOT
+     **/
+    @JsonProperty("moedaValorFOT")
+    @NotNull
+    public String getMoedaValorFOT() {
+        return moedaValorFOT;
+    }
+
+    public void setMoedaValorFOT(String moedaValorFOT) {
+        this.moedaValorFOT = moedaValorFOT;
+    }
+
+    /**
+     * Valor do seguro&lt;br&gt;Tamanho: 14.2&lt;br&gt;Formato: NNNNNNNNNNNNNN.NN
+     * @return valorSeguro
+     **/
+    @JsonProperty("valorSeguro")
+    public BigDecimal getValorSeguro() {
+        return valorSeguro;
+    }
+
+    public void setValorSeguro(BigDecimal valorSeguro) {
+        this.valorSeguro = valorSeguro;
+    }
+
+    public Carga valorSeguro(BigDecimal valorSeguro) {
+        this.valorSeguro = valorSeguro;
+        return this;
+    }
+
+    /**
+     * Código da moeda do seguro&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN
+     * @return moedaValorSeguro
+     **/
+    @JsonProperty("moedaValorSeguro")
+    public String getMoedaValorSeguro() {
+        return moedaValorSeguro;
+    }
+
+    public void setMoedaValorSeguro(String moedaValorSeguro) {
+        this.moedaValorSeguro = moedaValorSeguro;
+    }
+
+    public Carga moedaValorSeguro(String moedaValorSeguro) {
+        this.moedaValorSeguro = moedaValorSeguro;
+        return this;
+    }
+
+    public Carga moedaValorFOT(String moedaValorFOT) {
+        this.moedaValorFOT = moedaValorFOT;
+        return this;
+    }
+
+    /**
      * Código do tipo de volume&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
      *
      * @return codigoTiposVolumes
@@ -480,8 +359,125 @@ public class Carga {
         this.codigoTiposVolumes = codigoTiposVolumes;
     }
 
+    /**
+     * Nome do tipo de volume&lt;br&gt;Tamanho: 15
+     * @return nomeTiposVolumes
+     **/
+    @JsonProperty("nomeTiposVolumes")
+    @NotNull
+    public String getNomeTiposVolumes() {
+        return nomeTiposVolumes;
+    }
+
+    public void setNomeTiposVolumes(String nomeTiposVolumes) {
+        this.nomeTiposVolumes = nomeTiposVolumes;
+    }
+
+    public Carga nomeTiposVolumes(String nomeTiposVolumes) {
+        this.nomeTiposVolumes = nomeTiposVolumes;
+        return this;
+    }
+
     public Carga codigoTiposVolumes(Integer codigoTiposVolumes) {
         this.codigoTiposVolumes = codigoTiposVolumes;
+        return this;
+    }
+
+    /**
+     * Quantidade do volume&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: NNNNNN
+     *
+     * @return qtdeVolumes
+     **/
+    @JsonProperty("qtdeVolumes")
+    public Integer getQtdeVolumes() {
+        return qtdeVolumes;
+    }
+
+    public void setQtdeVolumes(Integer qtdeVolumes) {
+        this.qtdeVolumes = qtdeVolumes;
+    }
+
+    /**
+     * Peso Bruto (kg) da mercadoria&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
+     * @return pesoBruto
+     **/
+    @JsonProperty("pesoBruto")
+    @NotNull
+    public BigDecimal getPesoBruto() {
+        return pesoBruto;
+    }
+
+    public void setPesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+    }
+
+    public Carga pesoBruto(BigDecimal pesoBruto) {
+        this.pesoBruto = pesoBruto;
+        return this;
+    }
+
+    public Carga qtdeVolumes(Integer qtdeVolumes) {
+        this.qtdeVolumes = qtdeVolumes;
+        return this;
+    }
+
+    /**
+     * Descrição das mercadoria&lt;br&gt;Tamanho: 520&lt;br&gt;Marcas e números dos volumes, descrição das mercadorias.
+     *
+     * @return descricaoMercadorias
+     **/
+    @JsonProperty("descricaoMercadorias")
+    @NotNull
+    public String getDescricaoMercadorias() {
+        return descricaoMercadorias;
+    }
+
+    public void setDescricaoMercadorias(String descricaoMercadorias) {
+        this.descricaoMercadorias = descricaoMercadorias;
+    }
+
+    public Carga descricaoMercadorias(String descricaoMercadorias) {
+        this.descricaoMercadorias = descricaoMercadorias;
+        return this;
+    }
+
+    /**
+     * Documentos anexos&lt;br&gt;Tamanho: 400
+     *
+     * @return documentosAnexos
+     **/
+    @JsonProperty("documentosAnexos")
+    @NotNull
+    public String getDocumentosAnexos() {
+        return documentosAnexos;
+    }
+
+    public void setDocumentosAnexos(String documentosAnexos) {
+        this.documentosAnexos = documentosAnexos;
+    }
+
+    public Carga documentosAnexos(String documentosAnexos) {
+        this.documentosAnexos = documentosAnexos;
+        return this;
+    }
+
+    /**
+     * Get nfes
+     *
+     * @return nfes
+     **/
+    @JsonProperty("nfes")
+    @NotNull
+    public Nfes getNfes() {
+        return nfes;
+    }
+
+    public void setNfes(Nfes nfes) {
+        this.nfes = nfes;
+    }
+
+    public Carga nfes(Nfes nfes) {
+        this.nfes = nfes;
         return this;
     }
 
@@ -489,23 +485,23 @@ public class Carga {
     public String toString() {
 
         String sb = "class Carga {\n" +
-                "    remetente: " + toIndentedString(remetente) + "\n" +
-                "    moedaValorFOT: " + toIndentedString(moedaValorFOT) + "\n" +
-                "    codigoAduanaDestino: " + toIndentedString(codigoAduanaDestino) + "\n" +
-                "    qtdeVolumes: " + toIndentedString(qtdeVolumes) + "\n" +
-                "    documentosAnexos: " + toIndentedString(documentosAnexos) + "\n" +
-                "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
                 "    consignatario: " + toIndentedString(consignatario) + "\n" +
+                "    remetente: " + toIndentedString(remetente) + "\n" +
                 "    destinatario: " + toIndentedString(destinatario) + "\n" +
-                "    moedaValorSeguro: " + toIndentedString(moedaValorSeguro) + "\n" +
-                "    descricaoMercadorias: " + toIndentedString(descricaoMercadorias) + "\n" +
-                "    paisOrigemMercadorias: " + toIndentedString(paisOrigemMercadorias) + "\n" +
-                "    nomeTiposVolumes: " + toIndentedString(nomeTiposVolumes) + "\n" +
-                "    valorFOTMercadorias: " + toIndentedString(valorFOTMercadorias) + "\n" +
-                "    nfes: " + toIndentedString(nfes) + "\n" +
-                "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    codigoAduanaDestino: " + toIndentedString(codigoAduanaDestino) + "\n" +
                 "    nomeAduanaDestino: " + toIndentedString(nomeAduanaDestino) + "\n" +
+                "    paisOrigemMercadorias: " + toIndentedString(paisOrigemMercadorias) + "\n" +
+                "    valorFOTMercadorias: " + toIndentedString(valorFOTMercadorias) + "\n" +
+                "    moedaValorFOT: " + toIndentedString(moedaValorFOT) + "\n" +
+                "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
+                "    moedaValorSeguro: " + toIndentedString(moedaValorSeguro) + "\n" +
                 "    codigoTiposVolumes: " + toIndentedString(codigoTiposVolumes) + "\n" +
+                "    nomeTiposVolumes: " + toIndentedString(nomeTiposVolumes) + "\n" +
+                "    qtdeVolumes: " + toIndentedString(qtdeVolumes) + "\n" +
+                "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
+                "    descricaoMercadorias: " + toIndentedString(descricaoMercadorias) + "\n" +
+                "    documentosAnexos: " + toIndentedString(documentosAnexos) + "\n" +
+                "    nfes: " + toIndentedString(nfes) + "\n" +
                 "}";
         return sb;
     }

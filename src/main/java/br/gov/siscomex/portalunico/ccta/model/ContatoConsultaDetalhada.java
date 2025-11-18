@@ -11,18 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ContatoConsultaDetalhada", propOrder =
-        {"telefone", "nome", "email"
+        {"email", "nome", "telefone"
         })
 
 @XmlRootElement(name = "ContatoConsultaDetalhada")
 public class ContatoConsultaDetalhada {
 
-    @XmlElement(name = "telefone")
-    @ApiModelProperty(example = "+55 21 9999 99 99", value = "Telefone do contato<br/> Tamanho: 35<br/>")
+    @XmlElement(name = "email")
+    @ApiModelProperty(example = "email@provedor.com.br", value = "E-mail do contato<br/> Tamanho: 35<br/>")
     /**
-     * Telefone do contato<br/> Tamanho: 35<br/>
+     * E-mail do contato<br/> Tamanho: 35<br/>
      **/
-    private String telefone = null;
+    private String email = null;
 
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do contato<br/> Tamanho: 70<br/>")
@@ -31,12 +31,12 @@ public class ContatoConsultaDetalhada {
      **/
     private String nome = null;
 
-    @XmlElement(name = "email")
-    @ApiModelProperty(example = "email@provedor.com.br", value = "E-mail do contato<br/> Tamanho: 35<br/>")
+    @XmlElement(name = "telefone")
+    @ApiModelProperty(example = "+55 21 9999 99 99", value = "Telefone do contato<br/> Tamanho: 35<br/>")
     /**
-     * E-mail do contato<br/> Tamanho: 35<br/>
+     * Telefone do contato<br/> Tamanho: 35<br/>
      **/
-    private String email = null;
+    private String telefone = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -50,22 +50,17 @@ public class ContatoConsultaDetalhada {
     }
 
     /**
-     * Telefone do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
+     * E-mail do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
      *
-     * @return telefone
+     * @return email
      **/
-    @JsonProperty("telefone")
-    public String getTelefone() {
-        return telefone;
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public ContatoConsultaDetalhada telefone(String telefone) {
-        this.telefone = telefone;
-        return this;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -87,22 +82,27 @@ public class ContatoConsultaDetalhada {
         return this;
     }
 
-    /**
-     * E-mail do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
-     *
-     * @return email
-     **/
-    @JsonProperty("email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public ContatoConsultaDetalhada email(String email) {
         this.email = email;
+        return this;
+    }
+
+    /**
+     * Telefone do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
+     *
+     * @return telefone
+     **/
+    @JsonProperty("telefone")
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public ContatoConsultaDetalhada telefone(String telefone) {
+        this.telefone = telefone;
         return this;
     }
 
@@ -110,9 +110,9 @@ public class ContatoConsultaDetalhada {
     public String toString() {
 
         String sb = "class ContatoConsultaDetalhada {\n" +
-                "    telefone: " + toIndentedString(telefone) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    email: " + toIndentedString(email) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    telefone: " + toIndentedString(telefone) + "\n" +
                 "}";
         return sb;
     }

@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDeEquipeDeTrabalho", propOrder =
-        {"equipeTrabalho", "orgao"
+        {"orgao", "equipeTrabalho"
         })
 
 @XmlRootElement(name = "DadosDeEquipeDeTrabalho")
 public class DadosDeEquipeDeTrabalho {
+
+    @XmlElement(name = "orgao")
+    @ApiModelProperty(example = "RECEITA", value = "Sigla do Órgão associado a equipe de trabalho<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
+    /**
+     * Sigla do Órgão associado a equipe de trabalho<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
+     **/
+    private String orgao = null;
 
     @XmlElement(name = "equipeTrabalho")
     @ApiModelProperty(example = "08178001", value = "Código da equipe de trabalho de análise fiscal<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
@@ -24,12 +31,24 @@ public class DadosDeEquipeDeTrabalho {
      **/
     private String equipeTrabalho = null;
 
-    @XmlElement(name = "orgao")
-    @ApiModelProperty(example = "RECEITA", value = "Sigla do Órgão associado a equipe de trabalho<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
     /**
-     * Sigla do Órgão associado a equipe de trabalho<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
+     * Sigla do Órgão associado a equipe de trabalho&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
+     *
+     * @return orgao
      **/
-    private String orgao = null;
+    @JsonProperty("orgao")
+    public String getOrgao() {
+        return orgao;
+    }
+
+    public void setOrgao(String orgao) {
+        this.orgao = orgao;
+    }
+
+    public DadosDeEquipeDeTrabalho orgao(String orgao) {
+        this.orgao = orgao;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class DadosDeEquipeDeTrabalho {
         return this;
     }
 
-    /**
-     * Sigla do Órgão associado a equipe de trabalho&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
-     *
-     * @return orgao
-     **/
-    @JsonProperty("orgao")
-    public String getOrgao() {
-        return orgao;
-    }
-
-    public void setOrgao(String orgao) {
-        this.orgao = orgao;
-    }
-
-    public DadosDeEquipeDeTrabalho orgao(String orgao) {
-        this.orgao = orgao;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosDeEquipeDeTrabalho {\n" +
-                "    equipeTrabalho: " + toIndentedString(equipeTrabalho) + "\n" +
                 "    orgao: " + toIndentedString(orgao) + "\n" +
+                "    equipeTrabalho: " + toIndentedString(equipeTrabalho) + "\n" +
                 "}";
         return sb;
     }

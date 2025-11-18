@@ -11,11 +11,19 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MensagemServico", propOrder =
-        {"numero", "codigoErro", "idOperacao", "mensagem", "msgxsd"
+        {"idOperacao", "msgxsd", "numero", "codigoErro", "mensagem"
         })
 
 @XmlRootElement(name = "MensagemServico")
 public class MensagemServico {
+
+    @XmlElement(name = "idOperacao")
+    @ApiModelProperty(value = "")
+    private String idOperacao = null;
+
+    @XmlElement(name = "msgxsd")
+    @ApiModelProperty(value = "")
+    private String msgxsd = null;
 
     @XmlElement(name = "numero")
     @ApiModelProperty(value = "")
@@ -25,17 +33,9 @@ public class MensagemServico {
     @ApiModelProperty(value = "")
     private String codigoErro = null;
 
-    @XmlElement(name = "idOperacao")
-    @ApiModelProperty(value = "")
-    private String idOperacao = null;
-
     @XmlElement(name = "mensagem")
     @ApiModelProperty(value = "")
     private String mensagem = null;
-
-    @XmlElement(name = "msgxsd")
-    @ApiModelProperty(value = "")
-    private String msgxsd = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -46,6 +46,39 @@ public class MensagemServico {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get idOperacao
+     *
+     * @return idOperacao
+     **/
+    @JsonProperty("idOperacao")
+    public String getIdOperacao() {
+        return idOperacao;
+    }
+
+    public void setIdOperacao(String idOperacao) {
+        this.idOperacao = idOperacao;
+    }
+
+    public MensagemServico idOperacao(String idOperacao) {
+        this.idOperacao = idOperacao;
+        return this;
+    }
+
+    /**
+     * Get msgxsd
+     *
+     * @return msgxsd
+     **/
+    @JsonProperty("msgxsd")
+    public String getMsgxsd() {
+        return msgxsd;
+    }
+
+    public void setMsgxsd(String msgxsd) {
+        this.msgxsd = msgxsd;
     }
 
     /**
@@ -87,25 +120,6 @@ public class MensagemServico {
     }
 
     /**
-     * Get idOperacao
-     *
-     * @return idOperacao
-     **/
-    @JsonProperty("idOperacao")
-    public String getIdOperacao() {
-        return idOperacao;
-    }
-
-    public void setIdOperacao(String idOperacao) {
-        this.idOperacao = idOperacao;
-    }
-
-    public MensagemServico idOperacao(String idOperacao) {
-        this.idOperacao = idOperacao;
-        return this;
-    }
-
-    /**
      * Get mensagem
      *
      * @return mensagem
@@ -124,20 +138,6 @@ public class MensagemServico {
         return this;
     }
 
-    /**
-     * Get msgxsd
-     *
-     * @return msgxsd
-     **/
-    @JsonProperty("msgxsd")
-    public String getMsgxsd() {
-        return msgxsd;
-    }
-
-    public void setMsgxsd(String msgxsd) {
-        this.msgxsd = msgxsd;
-    }
-
     public MensagemServico msgxsd(String msgxsd) {
         this.msgxsd = msgxsd;
         return this;
@@ -147,11 +147,11 @@ public class MensagemServico {
     public String toString() {
 
         String sb = "class MensagemServico {\n" +
+                "    idOperacao: " + toIndentedString(idOperacao) + "\n" +
+                "    msgxsd: " + toIndentedString(msgxsd) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
                 "    codigoErro: " + toIndentedString(codigoErro) + "\n" +
-                "    idOperacao: " + toIndentedString(idOperacao) + "\n" +
                 "    mensagem: " + toIndentedString(mensagem) + "\n" +
-                "    msgxsd: " + toIndentedString(msgxsd) + "\n" +
                 "}";
         return sb;
     }

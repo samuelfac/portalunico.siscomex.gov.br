@@ -35,17 +35,6 @@ public class ConhecimentosCarga {
     private List<Conhecimento> conhecimento = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista dos conhecimento de carga
      *
      * @return conhecimento
@@ -68,6 +57,18 @@ public class ConhecimentosCarga {
     public ConhecimentosCarga addConhecimentoItem(Conhecimento conhecimentoItem) {
         this.conhecimento.add(conhecimentoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

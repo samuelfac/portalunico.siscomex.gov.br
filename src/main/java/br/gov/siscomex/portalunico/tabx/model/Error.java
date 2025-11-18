@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Error", propOrder =
-        {"path", "message", "timestamp"
+        {"timestamp", "message", "path"
         })
 
 @XmlRootElement(name = "Error")
@@ -23,12 +23,12 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Representação de Erros")
 public class Error {
 
-    @XmlElement(name = "path")
-    @ApiModelProperty(example = "caminho do erro", value = "Caminho do recurso com erro")
+    @XmlElement(name = "timestamp")
+    @ApiModelProperty(value = "Data e hora em que ocorreu o problema (<em>no formato ISO 8601</em>)")
     /**
-     * Caminho do recurso com erro
+     * Data e hora em que ocorreu o problema (<em>no formato ISO 8601</em>)
      **/
-    private String path = null;
+    private OffsetDateTime timestamp = null;
 
     @XmlElement(name = "message")
     @ApiModelProperty(example = "mensagen de erro", value = "Mensagem de erro")
@@ -37,12 +37,12 @@ public class Error {
      **/
     private String message = null;
 
-    @XmlElement(name = "timestamp")
-    @ApiModelProperty(value = "Data e hora em que ocorreu o problema (<em>no formato ISO 8601</em>)")
+    @XmlElement(name = "path")
+    @ApiModelProperty(example = "caminho do erro", value = "Caminho do recurso com erro")
     /**
-     * Data e hora em que ocorreu o problema (<em>no formato ISO 8601</em>)
+     * Caminho do recurso com erro
      **/
-    private OffsetDateTime timestamp = null;
+    private String path = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,22 +56,17 @@ public class Error {
     }
 
     /**
-     * Caminho do recurso com erro
+     * Data e hora em que ocorreu o problema (&lt;em&gt;no formato ISO 8601&lt;/em&gt;)
      *
-     * @return path
+     * @return timestamp
      **/
-    @JsonProperty("path")
-    public String getPath() {
-        return path;
+    @JsonProperty("timestamp")
+    public OffsetDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public Error path(String path) {
-        this.path = path;
-        return this;
+    public void setTimestamp(OffsetDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
     /**
@@ -93,22 +88,27 @@ public class Error {
         return this;
     }
 
-    /**
-     * Data e hora em que ocorreu o problema (&lt;em&gt;no formato ISO 8601&lt;/em&gt;)
-     *
-     * @return timestamp
-     **/
-    @JsonProperty("timestamp")
-    public OffsetDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(OffsetDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public Error timestamp(OffsetDateTime timestamp) {
         this.timestamp = timestamp;
+        return this;
+    }
+
+    /**
+     * Caminho do recurso com erro
+     *
+     * @return path
+     **/
+    @JsonProperty("path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Error path(String path) {
+        this.path = path;
         return this;
     }
 
@@ -116,9 +116,9 @@ public class Error {
     public String toString() {
 
         String sb = "class Error {\n" +
-                "    path: " + toIndentedString(path) + "\n" +
-                "    message: " + toIndentedString(message) + "\n" +
                 "    timestamp: " + toIndentedString(timestamp) + "\n" +
+                "    message: " + toIndentedString(message) + "\n" +
+                "    path: " + toIndentedString(path) + "\n" +
                 "}";
         return sb;
     }

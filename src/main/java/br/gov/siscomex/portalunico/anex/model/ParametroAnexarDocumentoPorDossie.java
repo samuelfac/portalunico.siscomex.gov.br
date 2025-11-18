@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParametroAnexarDocumentoPorDossie", propOrder =
-        {"acessivelSetorPrivado", "numeroDossie", "idTipoDocumento", "nomeArquivo", "arquivo", "palavrasChave", "orgaosAnuentes"
+        {"acessivelSetorPrivado", "arquivo", "idTipoDocumento", "nomeArquivo", "numeroDossie", "orgaosAnuentes", "palavrasChave"
         })
 
 @XmlRootElement(name = "ParametroAnexarDocumentoPorDossie")
@@ -33,12 +33,12 @@ public class ParametroAnexarDocumentoPorDossie {
      **/
     private Boolean acessivelSetorPrivado = null;
 
-    @XmlElement(name = "numeroDossie", required = true)
-    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
+    @XmlElement(name = "arquivo", required = true)
+    @ApiModelProperty(example = "dGVzdGUgZGUgYXJxdWl2byB0ZXh0by4K", required = true, value = "String em BASE64 representando o conteúdo do arquivo.<br/>Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64")
     /**
-     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
+     * String em BASE64 representando o conteúdo do arquivo.<br/>Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64
      **/
-    private String numeroDossie = null;
+    private String arquivo = null;
 
     @XmlElement(name = "idTipoDocumento", required = true)
     @ApiModelProperty(example = "87453", required = true, value = "Id do tipo de documento.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
@@ -54,17 +54,12 @@ public class ParametroAnexarDocumentoPorDossie {
      **/
     private String nomeArquivo = null;
 
-    @XmlElement(name = "arquivo", required = true)
-    @ApiModelProperty(example = "dGVzdGUgZGUgYXJxdWl2byB0ZXh0by4K", required = true, value = "String em BASE64 representando o conteúdo do arquivo.<br/>Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64")
+    @XmlElement(name = "numeroDossie", required = true)
+    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
     /**
-     * String em BASE64 representando o conteúdo do arquivo.<br/>Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64
+     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
      **/
-    private String arquivo = null;
-
-    @XmlElement(name = "palavrasChave", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave = new ArrayList<>();
+    private String numeroDossie = null;
 
     @XmlElement(name = "orgaosAnuentes")
     @ApiModelProperty(example = "[\"RECEITA\",\"SECEX\"]", value = "Lista com as siglas dos órgãos para os quais o documento deverá estar disponível.<br/><br/>As siglas devem ser obtidas pelos serviços /ext/tipos-documentos-dossie ou /ext/tipos-documentos-operacao<br/>(campo sigla da lista de orgaosAnuentes)<br/>")
@@ -73,16 +68,10 @@ public class ParametroAnexarDocumentoPorDossie {
      **/
     private List<String> orgaosAnuentes = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "palavrasChave", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave = new ArrayList<>();
 
     /**
      * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
@@ -104,23 +93,29 @@ public class ParametroAnexarDocumentoPorDossie {
     }
 
     /**
-     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * String em BASE64 representando o conteúdo do arquivo.&lt;br/&gt;Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64
      *
-     * @return numeroDossie
+     * @return arquivo
      **/
-    @JsonProperty("numeroDossie")
+    @JsonProperty("arquivo")
     @NotNull
-    public String getNumeroDossie() {
-        return numeroDossie;
+    public String getArquivo() {
+        return arquivo;
     }
 
-    public void setNumeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
-    }
-
-    public ParametroAnexarDocumentoPorDossie numeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
-        return this;
+    public void setArquivo(String arquivo) {
+        this.arquivo = arquivo;
     }
 
     /**
@@ -163,23 +158,47 @@ public class ParametroAnexarDocumentoPorDossie {
         return this;
     }
 
-    /**
-     * String em BASE64 representando o conteúdo do arquivo.&lt;br/&gt;Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64
-     *
-     * @return arquivo
-     **/
-    @JsonProperty("arquivo")
-    @NotNull
-    public String getArquivo() {
-        return arquivo;
-    }
-
-    public void setArquivo(String arquivo) {
-        this.arquivo = arquivo;
-    }
-
     public ParametroAnexarDocumentoPorDossie arquivo(String arquivo) {
         this.arquivo = arquivo;
+        return this;
+    }
+
+    /**
+     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     *
+     * @return numeroDossie
+     **/
+    @JsonProperty("numeroDossie")
+    @NotNull
+    public String getNumeroDossie() {
+        return numeroDossie;
+    }
+
+    public void setNumeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
+    }
+
+    public ParametroAnexarDocumentoPorDossie numeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
+        return this;
+    }
+
+    /**
+     * Lista com as siglas dos órgãos para os quais o documento deverá estar disponível.&lt;br/&gt;&lt;br/&gt;As siglas devem ser obtidas pelos serviços /ext/tipos-documentos-dossie ou /ext/tipos-documentos-operacao&lt;br/&gt;(campo sigla da lista de orgaosAnuentes)&lt;br/&gt;
+     *
+     * @return orgaosAnuentes
+     **/
+    @JsonProperty("orgaosAnuentes")
+    public List<String> getOrgaosAnuentes() {
+        return orgaosAnuentes;
+    }
+
+    public void setOrgaosAnuentes(List<String> orgaosAnuentes) {
+        this.orgaosAnuentes = orgaosAnuentes;
+    }
+
+    public ParametroAnexarDocumentoPorDossie orgaosAnuentes(List<String> orgaosAnuentes) {
+        this.orgaosAnuentes = orgaosAnuentes;
         return this;
     }
 
@@ -208,25 +227,6 @@ public class ParametroAnexarDocumentoPorDossie {
         return this;
     }
 
-    /**
-     * Lista com as siglas dos órgãos para os quais o documento deverá estar disponível.&lt;br/&gt;&lt;br/&gt;As siglas devem ser obtidas pelos serviços /ext/tipos-documentos-dossie ou /ext/tipos-documentos-operacao&lt;br/&gt;(campo sigla da lista de orgaosAnuentes)&lt;br/&gt;
-     *
-     * @return orgaosAnuentes
-     **/
-    @JsonProperty("orgaosAnuentes")
-    public List<String> getOrgaosAnuentes() {
-        return orgaosAnuentes;
-    }
-
-    public void setOrgaosAnuentes(List<String> orgaosAnuentes) {
-        this.orgaosAnuentes = orgaosAnuentes;
-    }
-
-    public ParametroAnexarDocumentoPorDossie orgaosAnuentes(List<String> orgaosAnuentes) {
-        this.orgaosAnuentes = orgaosAnuentes;
-        return this;
-    }
-
     public ParametroAnexarDocumentoPorDossie addOrgaosAnuentesItem(String orgaosAnuentesItem) {
         this.orgaosAnuentes.add(orgaosAnuentesItem);
         return this;
@@ -237,12 +237,12 @@ public class ParametroAnexarDocumentoPorDossie {
 
         String sb = "class ParametroAnexarDocumentoPorDossie {\n" +
                 "    acessivelSetorPrivado: " + toIndentedString(acessivelSetorPrivado) + "\n" +
-                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
+                "    arquivo: " + toIndentedString(arquivo) + "\n" +
                 "    idTipoDocumento: " + toIndentedString(idTipoDocumento) + "\n" +
                 "    nomeArquivo: " + toIndentedString(nomeArquivo) + "\n" +
-                "    arquivo: " + toIndentedString(arquivo) + "\n" +
-                "    palavrasChave: " + toIndentedString(palavrasChave) + "\n" +
+                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
                 "    orgaosAnuentes: " + toIndentedString(orgaosAnuentes) + "\n" +
+                "    palavrasChave: " + toIndentedString(palavrasChave) + "\n" +
                 "}";
         return sb;
     }

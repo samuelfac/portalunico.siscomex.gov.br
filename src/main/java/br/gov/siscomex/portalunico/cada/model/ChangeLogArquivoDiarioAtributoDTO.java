@@ -12,24 +12,43 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ChangeLogArquivoDiarioAtributoDTO", propOrder =
-        {"dataVersao", "numero", "alteracoes"
+        {"numero", "dataVersao", "alteracoes"
         })
 
 @XmlRootElement(name = "ChangeLogArquivoDiarioAtributoDTO")
 public class ChangeLogArquivoDiarioAtributoDTO {
 
-    @XmlElement(name = "dataVersao")
-    @ApiModelProperty(value = "")
-    private String dataVersao = null;
-
     @XmlElement(name = "numero")
     @ApiModelProperty(value = "")
     private Integer numero = null;
+
+    @XmlElement(name = "dataVersao")
+    @ApiModelProperty(value = "")
+    private String dataVersao = null;
 
     @XmlElement(name = "alteracoes")
     @ApiModelProperty(value = "")
     @Valid
     private VersaoArquivoDiarioAtributoDTO alteracoes = null;
+
+    /**
+     * Get numero
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public ChangeLogArquivoDiarioAtributoDTO numero(Integer numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,30 +75,6 @@ public class ChangeLogArquivoDiarioAtributoDTO {
         this.dataVersao = dataVersao;
     }
 
-    public ChangeLogArquivoDiarioAtributoDTO dataVersao(String dataVersao) {
-        this.dataVersao = dataVersao;
-        return this;
-    }
-
-    /**
-     * Get numero
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public Integer getNumero() {
-        return numero;
-    }
-
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public ChangeLogArquivoDiarioAtributoDTO numero(Integer numero) {
-        this.numero = numero;
-        return this;
-    }
-
     /**
      * Get alteracoes
      *
@@ -99,12 +94,17 @@ public class ChangeLogArquivoDiarioAtributoDTO {
         return this;
     }
 
+    public ChangeLogArquivoDiarioAtributoDTO dataVersao(String dataVersao) {
+        this.dataVersao = dataVersao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ChangeLogArquivoDiarioAtributoDTO {\n" +
-                "    dataVersao: " + toIndentedString(dataVersao) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    dataVersao: " + toIndentedString(dataVersao) + "\n" +
                 "    alteracoes: " + toIndentedString(alteracoes) + "\n" +
                 "}";
         return sb;

@@ -15,12 +15,17 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "InformaesRelacionadasSituaoEspecialDeDespacho", propOrder =
-        {"indSituacaoEspecialDespacho", "valorTotalFreteReal", "valorSeguroEmReal", "motivoSituacaoEspecial"
+        {"indSituacaoEspecialDespacho", "motivoSituacaoEspecial", "valorTotalFreteReal", "valorSeguroEmReal"
         })
 
 @XmlRootElement(name = "InformaesRelacionadasSituaoEspecialDeDespacho")
 public class InformaesRelacionadasSituaoEspecialDeDespacho {
 
+
+    @XmlElement(name = "motivoSituacaoEspecial")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial = null;
 
     @XmlElement(name = "indSituacaoEspecialDespacho")
     @ApiModelProperty(example = "S", value = "Indicador de Duimp com situação especial de despacho.<br>Dominio: <br>S - Sim, <br>N - Não<br>Tamanho: 1")
@@ -28,24 +33,6 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
      * Indicador de Duimp com situação especial de despacho.<br>Dominio: <br>S - Sim, <br>N - Não<br>Tamanho: 1
      **/
     private IndSituacaoEspecialDespachoEnum indSituacaoEspecialDespacho = null;
-    @XmlElement(name = "valorTotalFreteReal")
-    @ApiModelProperty(example = "3806.12", value = "Valor do total do frete em Real para situação especial de despacho. (Valor calculado pelo sistema)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'")
-    @Valid
-    /**
-     * Valor do total do frete em Real para situação especial de despacho. (Valor calculado pelo sistema)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'
-     **/
-    private BigDecimal valorTotalFreteReal = null;
-    @XmlElement(name = "valorSeguroEmReal")
-    @ApiModelProperty(example = "120.48", value = "Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'")
-    @Valid
-    /**
-     * Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'
-     **/
-    private BigDecimal valorSeguroEmReal = null;
-    @XmlElement(name = "motivoSituacaoEspecial")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,6 +44,22 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "valorTotalFreteReal")
+    @ApiModelProperty(example = "3806.12", value = "Valor do total do frete em Real para situação especial de despacho. (Valor calculado pelo sistema)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'")
+    @Valid
+    /**
+     * Valor do total do frete em Real para situação especial de despacho. (Valor calculado pelo sistema)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'
+     **/
+    private BigDecimal valorTotalFreteReal = null;
+
+    @XmlElement(name = "valorSeguroEmReal")
+    @ApiModelProperty(example = "120.48", value = "Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'")
+    @Valid
+    /**
+     * Valor do seguro em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'
+     **/
+    private BigDecimal valorSeguroEmReal = null;
 
     /**
      * Indicador de Duimp com situação especial de despacho.&lt;br&gt;Dominio: &lt;br&gt;S - Sim, &lt;br&gt;N - Não&lt;br&gt;Tamanho: 1
@@ -77,6 +80,25 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
 
     public InformaesRelacionadasSituaoEspecialDeDespacho indSituacaoEspecialDespacho(IndSituacaoEspecialDespachoEnum indSituacaoEspecialDespacho) {
         this.indSituacaoEspecialDespacho = indSituacaoEspecialDespacho;
+        return this;
+    }
+
+    /**
+     * Get motivoSituacaoEspecial
+     *
+     * @return motivoSituacaoEspecial
+     **/
+    @JsonProperty("motivoSituacaoEspecial")
+    public MotivoDaSituaoEspecialDeDespacho getMotivoSituacaoEspecial() {
+        return motivoSituacaoEspecial;
+    }
+
+    public void setMotivoSituacaoEspecial(MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial) {
+        this.motivoSituacaoEspecial = motivoSituacaoEspecial;
+    }
+
+    public InformaesRelacionadasSituaoEspecialDeDespacho motivoSituacaoEspecial(MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial) {
+        this.motivoSituacaoEspecial = motivoSituacaoEspecial;
         return this;
     }
 
@@ -118,34 +140,15 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
         return this;
     }
 
-    /**
-     * Get motivoSituacaoEspecial
-     *
-     * @return motivoSituacaoEspecial
-     **/
-    @JsonProperty("motivoSituacaoEspecial")
-    public MotivoDaSituaoEspecialDeDespacho getMotivoSituacaoEspecial() {
-        return motivoSituacaoEspecial;
-    }
-
-    public void setMotivoSituacaoEspecial(MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial) {
-        this.motivoSituacaoEspecial = motivoSituacaoEspecial;
-    }
-
-    public InformaesRelacionadasSituaoEspecialDeDespacho motivoSituacaoEspecial(MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial) {
-        this.motivoSituacaoEspecial = motivoSituacaoEspecial;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class InformaesRelacionadasSituaoEspecialDeDespacho {\n" +
                 "    indSituacaoEspecialDespacho: " + toIndentedString(indSituacaoEspecialDespacho) + "\n" +
+                "    motivoSituacaoEspecial: " + toIndentedString(motivoSituacaoEspecial) + "\n" +
                 "    valorTotalFreteReal: " + toIndentedString(valorTotalFreteReal) + "\n" +
                 "    valorSeguroEmReal: " + toIndentedString(valorSeguroEmReal) + "\n" +
-                "    motivoSituacaoEspecial: " + toIndentedString(motivoSituacaoEspecial) + "\n" +
                 "}";
         return sb;
     }

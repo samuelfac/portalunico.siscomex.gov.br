@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OperadorEstrangeiroRequestIntegracaoDTO", propOrder =
-        {"codigoSubdivisaoPais", "codigoInterno", "logradouro", "nomeCidade", "tin", "nome", "identificacoesAdicionais", "email", "cep"
+        {"tin", "nome", "logradouro", "nomeCidade", "codigoSubdivisaoPais", "cep", "codigoInterno", "email", "identificacoesAdicionais"
         })
 
 @XmlRootElement(name = "OperadorEstrangeiroRequestIntegracaoDTO")
@@ -24,34 +24,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Dados do operador estrangeiro.")
 public class OperadorEstrangeiroRequestIntegracaoDTO {
-
-    @XmlElement(name = "codigoSubdivisaoPais")
-    @ApiModelProperty(example = "AR-B", value = "Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho máximo: 6<br>Formato: 'AA-AAA'")
-    /**
-     * Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho máximo: 6<br>Formato: 'AA-AAA'
-     **/
-    private String codigoSubdivisaoPais = null;
-
-    @XmlElement(name = "codigoInterno")
-    @ApiModelProperty(example = "12345", value = "Código interno para uso em outros sitemas<br>Tamanho: 35")
-    /**
-     * Código interno para uso em outros sitemas<br>Tamanho: 35
-     **/
-    private String codigoInterno = null;
-
-    @XmlElement(name = "logradouro", required = true)
-    @ApiModelProperty(example = "Rua teste, 155, Bairro teste", required = true, value = "Logradouro do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
-    /**
-     * Logradouro do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70
-     **/
-    private String logradouro = null;
-
-    @XmlElement(name = "nomeCidade", required = true)
-    @ApiModelProperty(example = "Buenos Aires", required = true, value = "Nome da Cidade<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
-    /**
-     * Nome da Cidade<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
-     **/
-    private String nomeCidade = null;
 
     @XmlElement(name = "tin")
     @ApiModelProperty(example = "123", value = "TIN - Trade Identification Number (Número de Identificação do Operador)<br>Tamanho: 35")
@@ -67,13 +39,40 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
      **/
     private String nome = null;
 
-    @XmlElement(name = "identificacoesAdicionais")
-    @ApiModelProperty(value = "Lista de identificações adicionais do operador estrangeiro em agências internacionais.")
-    @Valid
+    @XmlElement(name = "logradouro", required = true)
+    @ApiModelProperty(example = "Rua teste, 155, Bairro teste", required = true, value = "Logradouro do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
     /**
-     * Lista de identificações adicionais do operador estrangeiro em agências internacionais.
+     * Logradouro do Operador Estrangeiro<br>Tamanho mínimo: 1<br>Tamanho máximo: 70
      **/
-    private List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais = null;
+    private String logradouro = null;
+
+    @XmlElement(name = "nomeCidade", required = true)
+    @ApiModelProperty(example = "Buenos Aires", required = true, value = "Nome da Cidade<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
+    /**
+     * Nome da Cidade<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
+     **/
+    private String nomeCidade = null;
+
+    @XmlElement(name = "codigoSubdivisaoPais")
+    @ApiModelProperty(example = "AR-B", value = "Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho máximo: 6<br>Formato: 'AA-AAA'")
+    /**
+     * Código da subdivisao do país. Usar tabela ISO 3166<br>Tamanho máximo: 6<br>Formato: 'AA-AAA'
+     **/
+    private String codigoSubdivisaoPais = null;
+
+    @XmlElement(name = "cep")
+    @ApiModelProperty(example = "12345", value = "Código postal<br>Tamanho: 9")
+    /**
+     * Código postal<br>Tamanho: 9
+     **/
+    private String cep = null;
+
+    @XmlElement(name = "codigoInterno")
+    @ApiModelProperty(example = "12345", value = "Código interno para uso em outros sitemas<br>Tamanho: 35")
+    /**
+     * Código interno para uso em outros sitemas<br>Tamanho: 35
+     **/
+    private String codigoInterno = null;
 
     @XmlElement(name = "email")
     @ApiModelProperty(example = "email@email.com", value = "E-mail do Operador Estrangeiro<br>Tamanho: 70")
@@ -82,12 +81,13 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
      **/
     private String email = null;
 
-    @XmlElement(name = "cep")
-    @ApiModelProperty(example = "12345", value = "Código postal<br>Tamanho: 9")
+    @XmlElement(name = "identificacoesAdicionais")
+    @ApiModelProperty(value = "Lista de identificações adicionais do operador estrangeiro em agências internacionais.")
+    @Valid
     /**
-     * Código postal<br>Tamanho: 9
+     * Lista de identificações adicionais do operador estrangeiro em agências internacionais.
      **/
-    private String cep = null;
+    private List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -101,41 +101,37 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
     }
 
     /**
-     * Código da subdivisao do país. Usar tabela ISO 3166&lt;br&gt;Tamanho máximo: 6&lt;br&gt;Formato: &#39;AA-AAA&#39;
+     * TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br&gt;Tamanho: 35
      *
-     * @return codigoSubdivisaoPais
+     * @return tin
      **/
-    @JsonProperty("codigoSubdivisaoPais")
-    public String getCodigoSubdivisaoPais() {
-        return codigoSubdivisaoPais;
+    @JsonProperty("tin")
+    public String getTin() {
+        return tin;
     }
 
-    public void setCodigoSubdivisaoPais(String codigoSubdivisaoPais) {
-        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+    public void setTin(String tin) {
+        this.tin = tin;
     }
 
-    public OperadorEstrangeiroRequestIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
-        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+    public OperadorEstrangeiroRequestIntegracaoDTO tin(String tin) {
+        this.tin = tin;
         return this;
     }
 
     /**
-     * Código interno para uso em outros sitemas&lt;br&gt;Tamanho: 35
+     * Nome/Razão Social do Operador Estrangeiro&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
      *
-     * @return codigoInterno
+     * @return nome
      **/
-    @JsonProperty("codigoInterno")
-    public String getCodigoInterno() {
-        return codigoInterno;
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
     }
 
-    public void setCodigoInterno(String codigoInterno) {
-        this.codigoInterno = codigoInterno;
-    }
-
-    public OperadorEstrangeiroRequestIntegracaoDTO codigoInterno(String codigoInterno) {
-        this.codigoInterno = codigoInterno;
-        return this;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
@@ -178,43 +174,80 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
         return this;
     }
 
-    /**
-     * TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br&gt;Tamanho: 35
-     *
-     * @return tin
-     **/
-    @JsonProperty("tin")
-    public String getTin() {
-        return tin;
-    }
-
-    public void setTin(String tin) {
-        this.tin = tin;
-    }
-
-    public OperadorEstrangeiroRequestIntegracaoDTO tin(String tin) {
-        this.tin = tin;
-        return this;
-    }
-
-    /**
-     * Nome/Razão Social do Operador Estrangeiro&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public OperadorEstrangeiroRequestIntegracaoDTO nome(String nome) {
         this.nome = nome;
         return this;
+    }
+
+    /**
+     * Código da subdivisao do país. Usar tabela ISO 3166&lt;br&gt;Tamanho máximo: 6&lt;br&gt;Formato: &#39;AA-AAA&#39;
+     *
+     * @return codigoSubdivisaoPais
+     **/
+    @JsonProperty("codigoSubdivisaoPais")
+    public String getCodigoSubdivisaoPais() {
+        return codigoSubdivisaoPais;
+    }
+
+    public void setCodigoSubdivisaoPais(String codigoSubdivisaoPais) {
+        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+    }
+
+    public OperadorEstrangeiroRequestIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
+        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+        return this;
+    }
+
+    /**
+     * Código postal&lt;br&gt;Tamanho: 9
+     *
+     * @return cep
+     **/
+    @JsonProperty("cep")
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public OperadorEstrangeiroRequestIntegracaoDTO cep(String cep) {
+        this.cep = cep;
+        return this;
+    }
+
+    /**
+     * Código interno para uso em outros sitemas&lt;br&gt;Tamanho: 35
+     *
+     * @return codigoInterno
+     **/
+    @JsonProperty("codigoInterno")
+    public String getCodigoInterno() {
+        return codigoInterno;
+    }
+
+    public void setCodigoInterno(String codigoInterno) {
+        this.codigoInterno = codigoInterno;
+    }
+
+    public OperadorEstrangeiroRequestIntegracaoDTO codigoInterno(String codigoInterno) {
+        this.codigoInterno = codigoInterno;
+        return this;
+    }
+
+    /**
+     * E-mail do Operador Estrangeiro&lt;br&gt;Tamanho: 70
+     *
+     * @return email
+     **/
+    @JsonProperty("email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
@@ -241,41 +274,8 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
         return this;
     }
 
-    /**
-     * E-mail do Operador Estrangeiro&lt;br&gt;Tamanho: 70
-     *
-     * @return email
-     **/
-    @JsonProperty("email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public OperadorEstrangeiroRequestIntegracaoDTO email(String email) {
         this.email = email;
-        return this;
-    }
-
-    /**
-     * Código postal&lt;br&gt;Tamanho: 9
-     *
-     * @return cep
-     **/
-    @JsonProperty("cep")
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public OperadorEstrangeiroRequestIntegracaoDTO cep(String cep) {
-        this.cep = cep;
         return this;
     }
 
@@ -283,15 +283,15 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
     public String toString() {
 
         String sb = "class OperadorEstrangeiroRequestIntegracaoDTO {\n" +
-                "    codigoSubdivisaoPais: " + toIndentedString(codigoSubdivisaoPais) + "\n" +
-                "    codigoInterno: " + toIndentedString(codigoInterno) + "\n" +
-                "    logradouro: " + toIndentedString(logradouro) + "\n" +
-                "    nomeCidade: " + toIndentedString(nomeCidade) + "\n" +
                 "    tin: " + toIndentedString(tin) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    identificacoesAdicionais: " + toIndentedString(identificacoesAdicionais) + "\n" +
-                "    email: " + toIndentedString(email) + "\n" +
+                "    logradouro: " + toIndentedString(logradouro) + "\n" +
+                "    nomeCidade: " + toIndentedString(nomeCidade) + "\n" +
+                "    codigoSubdivisaoPais: " + toIndentedString(codigoSubdivisaoPais) + "\n" +
                 "    cep: " + toIndentedString(cep) + "\n" +
+                "    codigoInterno: " + toIndentedString(codigoInterno) + "\n" +
+                "    email: " + toIndentedString(email) + "\n" +
+                "    identificacoesAdicionais: " + toIndentedString(identificacoesAdicionais) + "\n" +
                 "}";
         return sb;
     }

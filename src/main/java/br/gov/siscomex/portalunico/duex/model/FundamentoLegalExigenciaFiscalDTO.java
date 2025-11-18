@@ -32,17 +32,6 @@ public class FundamentoLegalExigenciaFiscalDTO {
     private String textoFundamentoLegal = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Link da norma &lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 500
      *
      * @return linkNorma
@@ -78,6 +67,18 @@ public class FundamentoLegalExigenciaFiscalDTO {
     public FundamentoLegalExigenciaFiscalDTO textoFundamentoLegal(String textoFundamentoLegal) {
         this.textoFundamentoLegal = textoFundamentoLegal;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

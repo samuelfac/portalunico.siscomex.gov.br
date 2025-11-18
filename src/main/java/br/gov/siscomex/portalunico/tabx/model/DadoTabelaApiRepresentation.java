@@ -28,17 +28,6 @@ public class DadoTabelaApiRepresentation {
     private List<CampoConsultaApiRepresentantion> campos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Campos da tabela.
      *
      * @return campos
@@ -60,6 +49,18 @@ public class DadoTabelaApiRepresentation {
     public DadoTabelaApiRepresentation addCamposItem(CampoConsultaApiRepresentantion camposItem) {
         this.campos.add(camposItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

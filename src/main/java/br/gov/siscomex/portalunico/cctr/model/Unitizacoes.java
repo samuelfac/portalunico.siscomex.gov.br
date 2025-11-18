@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Unitizacoes", propOrder =
-        {"conteineres", "documentosUnitizacao"
+        {"documentosUnitizacao", "conteineres"
         })
 
 @XmlRootElement(name = "Unitizacoes")
@@ -26,6 +26,14 @@ import java.util.List;
 @ApiModel(description = "Dados das cargas unitizadas")
 public class Unitizacoes {
 
+    @XmlElement(name = "documentosUnitizacao", required = true)
+    @ApiModelProperty(required = true, value = "Lista de documentos envolvidos na unitização")
+    @Valid
+    /**
+     * Lista de documentos envolvidos na unitização
+     **/
+    private List<DocumentosUnitizacao> documentosUnitizacao = new ArrayList<>();
+
     @XmlElement(name = "conteineres", required = true)
     @ApiModelProperty(required = true, value = "Lista dos contêineres envolvidos na unitização")
     @Valid
@@ -34,13 +42,30 @@ public class Unitizacoes {
      **/
     private List<Conteiner> conteineres = new ArrayList<>();
 
-    @XmlElement(name = "documentosUnitizacao", required = true)
-    @ApiModelProperty(required = true, value = "Lista de documentos envolvidos na unitização")
-    @Valid
     /**
      * Lista de documentos envolvidos na unitização
+     *
+     * @return documentosUnitizacao
      **/
-    private List<DocumentosUnitizacao> documentosUnitizacao = new ArrayList<>();
+    @JsonProperty("documentosUnitizacao")
+    @NotNull
+    public List<DocumentosUnitizacao> getDocumentosUnitizacao() {
+        return documentosUnitizacao;
+    }
+
+    public void setDocumentosUnitizacao(List<DocumentosUnitizacao> documentosUnitizacao) {
+        this.documentosUnitizacao = documentosUnitizacao;
+    }
+
+    public Unitizacoes documentosUnitizacao(List<DocumentosUnitizacao> documentosUnitizacao) {
+        this.documentosUnitizacao = documentosUnitizacao;
+        return this;
+    }
+
+    public Unitizacoes addDocumentosUnitizacaoItem(DocumentosUnitizacao documentosUnitizacaoItem) {
+        this.documentosUnitizacao.add(documentosUnitizacaoItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -78,37 +103,12 @@ public class Unitizacoes {
         return this;
     }
 
-    /**
-     * Lista de documentos envolvidos na unitização
-     *
-     * @return documentosUnitizacao
-     **/
-    @JsonProperty("documentosUnitizacao")
-    @NotNull
-    public List<DocumentosUnitizacao> getDocumentosUnitizacao() {
-        return documentosUnitizacao;
-    }
-
-    public void setDocumentosUnitizacao(List<DocumentosUnitizacao> documentosUnitizacao) {
-        this.documentosUnitizacao = documentosUnitizacao;
-    }
-
-    public Unitizacoes documentosUnitizacao(List<DocumentosUnitizacao> documentosUnitizacao) {
-        this.documentosUnitizacao = documentosUnitizacao;
-        return this;
-    }
-
-    public Unitizacoes addDocumentosUnitizacaoItem(DocumentosUnitizacao documentosUnitizacaoItem) {
-        this.documentosUnitizacao.add(documentosUnitizacaoItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Unitizacoes {\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "    documentosUnitizacao: " + toIndentedString(documentosUnitizacao) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "}";
         return sb;
     }

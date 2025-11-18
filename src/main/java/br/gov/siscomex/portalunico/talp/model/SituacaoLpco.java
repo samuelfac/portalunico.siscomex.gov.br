@@ -189,15 +189,6 @@ public class SituacaoLpco {
             value = v;
         }
 
-        public static IdEnum fromValue(String v) {
-            for (IdEnum b : IdEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -205,6 +196,15 @@ public class SituacaoLpco {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static IdEnum fromValue(String v) {
+            for (IdEnum b : IdEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdEnum");
         }
     }
 
@@ -291,15 +291,6 @@ public class SituacaoLpco {
             value = v;
         }
 
-        public static DescricaoEnum fromValue(String v) {
-            for (DescricaoEnum b : DescricaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -307,6 +298,15 @@ public class SituacaoLpco {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static DescricaoEnum fromValue(String v) {
+            for (DescricaoEnum b : DescricaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
         }
     }
 }

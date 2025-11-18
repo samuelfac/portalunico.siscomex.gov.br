@@ -155,15 +155,6 @@ public class TributoCalculadoDuimpConsultaCover {
             value = v;
         }
 
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -171,6 +162,15 @@ public class TributoCalculadoDuimpConsultaCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
     }
 }

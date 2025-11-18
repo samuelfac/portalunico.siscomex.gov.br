@@ -13,20 +13,20 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Operacao", propOrder =
-        {"listaMensagem", "id"
+        {"id", "listaMensagem"
         })
 
 @XmlRootElement(name = "Operacao")
 public class Operacao {
 
+    @XmlElement(name = "id")
+    @ApiModelProperty(value = "")
+    private String id = null;
+
     @XmlElement(name = "listaMensagem")
     @ApiModelProperty(value = "")
     @Valid
     private List<MensagemServico> listaMensagem = null;
-
-    @XmlElement(name = "id")
-    @ApiModelProperty(value = "")
-    private String id = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -37,6 +37,20 @@ public class Operacao {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get id
+     *
+     * @return id
+     **/
+    @JsonProperty("id")
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -63,20 +77,6 @@ public class Operacao {
         return this;
     }
 
-    /**
-     * Get id
-     *
-     * @return id
-     **/
-    @JsonProperty("id")
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public Operacao id(String id) {
         this.id = id;
         return this;
@@ -86,8 +86,8 @@ public class Operacao {
     public String toString() {
 
         String sb = "class Operacao {\n" +
-                "    listaMensagem: " + toIndentedString(listaMensagem) + "\n" +
                 "    id: " + toIndentedString(id) + "\n" +
+                "    listaMensagem: " + toIndentedString(listaMensagem) + "\n" +
                 "}";
         return sb;
     }

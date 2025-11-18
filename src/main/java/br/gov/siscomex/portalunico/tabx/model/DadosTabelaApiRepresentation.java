@@ -36,17 +36,6 @@ public class DadosTabelaApiRepresentation {
     private List<DadoTabelaApiRepresentation> dados = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Nome da tabela.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
      *
      * @return nomeTabela
@@ -88,6 +77,18 @@ public class DadosTabelaApiRepresentation {
     public DadosTabelaApiRepresentation addDadosItem(DadoTabelaApiRepresentation dadosItem) {
         this.dados.add(dadosItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

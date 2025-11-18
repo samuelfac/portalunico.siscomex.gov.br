@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazDadosCambiaisCover", propOrder =
-        {"valorCoberturaCambial", "instituicaoFinanceira", "motivoSemCobertura", "numeroROFBacen", "coberturaCambial"
+        {"coberturaCambial", "instituicaoFinanceira", "valorCoberturaCambial", "numeroROFBacen", "motivoSemCobertura"
         })
 
 @XmlRootElement(name = "SefazDadosCambiaisCover")
@@ -26,6 +26,13 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados cambiais")
 public class SefazDadosCambiaisCover {
 
+
+    @XmlElement(name = "coberturaCambial")
+    @ApiModelProperty(example = "1", value = "Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
+    /**
+     * Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1
+     **/
+    private CoberturaCambialEnum coberturaCambial = null;
     @XmlElement(name = "valorCoberturaCambial")
     @ApiModelProperty(example = "100.12", value = "Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -40,7 +47,6 @@ public class SefazDadosCambiaisCover {
      * Código da instituição financiadora.<br>Valor mínimo: 1<br>Valor máximo: 99
      **/
     private Integer instituicaoFinanceira = null;
-
     @XmlElement(name = "motivoSemCobertura")
     @ApiModelProperty(value = "")
     @Valid
@@ -52,12 +58,6 @@ public class SefazDadosCambiaisCover {
      * Número do ROF no BACEN<br>Tamanho mínimo: 1<br>Tamanho máximo: 8
      **/
     private String numeroROFBacen = null;
-    @XmlElement(name = "coberturaCambial")
-    @ApiModelProperty(example = "1", value = "Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
-    /**
-     * Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1
-     **/
-    private CoberturaCambialEnum coberturaCambial = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -68,82 +68,6 @@ public class SefazDadosCambiaisCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Valor da cobertura cambial.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorCoberturaCambial
-     **/
-    @JsonProperty("valorCoberturaCambial")
-    public BigDecimal getValorCoberturaCambial() {
-        return valorCoberturaCambial;
-    }
-
-    public void setValorCoberturaCambial(BigDecimal valorCoberturaCambial) {
-        this.valorCoberturaCambial = valorCoberturaCambial;
-    }
-
-    public SefazDadosCambiaisCover valorCoberturaCambial(BigDecimal valorCoberturaCambial) {
-        this.valorCoberturaCambial = valorCoberturaCambial;
-        return this;
-    }
-
-    /**
-     * Código da instituição financiadora.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99
-     *
-     * @return instituicaoFinanceira
-     **/
-    @JsonProperty("instituicaoFinanceira")
-    public Integer getInstituicaoFinanceira() {
-        return instituicaoFinanceira;
-    }
-
-    public void setInstituicaoFinanceira(Integer instituicaoFinanceira) {
-        this.instituicaoFinanceira = instituicaoFinanceira;
-    }
-
-    public SefazDadosCambiaisCover instituicaoFinanceira(Integer instituicaoFinanceira) {
-        this.instituicaoFinanceira = instituicaoFinanceira;
-        return this;
-    }
-
-    /**
-     * Get motivoSemCobertura
-     *
-     * @return motivoSemCobertura
-     **/
-    @JsonProperty("motivoSemCobertura")
-    public MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio getMotivoSemCobertura() {
-        return motivoSemCobertura;
-    }
-
-    public void setMotivoSemCobertura(MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura) {
-        this.motivoSemCobertura = motivoSemCobertura;
-    }
-
-    public SefazDadosCambiaisCover motivoSemCobertura(MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura) {
-        this.motivoSemCobertura = motivoSemCobertura;
-        return this;
-    }
-
-    /**
-     * Número do ROF no BACEN&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 8
-     *
-     * @return numeroROFBacen
-     **/
-    @JsonProperty("numeroROFBacen")
-    public String getNumeroROFBacen() {
-        return numeroROFBacen;
-    }
-
-    public void setNumeroROFBacen(String numeroROFBacen) {
-        this.numeroROFBacen = numeroROFBacen;
-    }
-
-    public SefazDadosCambiaisCover numeroROFBacen(String numeroROFBacen) {
-        this.numeroROFBacen = numeroROFBacen;
-        return this;
     }
 
     /**
@@ -168,16 +92,92 @@ public class SefazDadosCambiaisCover {
         return this;
     }
 
+    /**
+     * Código da instituição financiadora.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99
+     *
+     * @return instituicaoFinanceira
+     **/
+    @JsonProperty("instituicaoFinanceira")
+    public Integer getInstituicaoFinanceira() {
+        return instituicaoFinanceira;
+    }
+
+    public void setInstituicaoFinanceira(Integer instituicaoFinanceira) {
+        this.instituicaoFinanceira = instituicaoFinanceira;
+    }
+
+    public SefazDadosCambiaisCover instituicaoFinanceira(Integer instituicaoFinanceira) {
+        this.instituicaoFinanceira = instituicaoFinanceira;
+        return this;
+    }
+
+    /**
+     * Valor da cobertura cambial.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorCoberturaCambial
+     **/
+    @JsonProperty("valorCoberturaCambial")
+    public BigDecimal getValorCoberturaCambial() {
+        return valorCoberturaCambial;
+    }
+
+    public void setValorCoberturaCambial(BigDecimal valorCoberturaCambial) {
+        this.valorCoberturaCambial = valorCoberturaCambial;
+    }
+
+    public SefazDadosCambiaisCover valorCoberturaCambial(BigDecimal valorCoberturaCambial) {
+        this.valorCoberturaCambial = valorCoberturaCambial;
+        return this;
+    }
+
+    /**
+     * Número do ROF no BACEN&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 8
+     *
+     * @return numeroROFBacen
+     **/
+    @JsonProperty("numeroROFBacen")
+    public String getNumeroROFBacen() {
+        return numeroROFBacen;
+    }
+
+    public void setNumeroROFBacen(String numeroROFBacen) {
+        this.numeroROFBacen = numeroROFBacen;
+    }
+
+    public SefazDadosCambiaisCover numeroROFBacen(String numeroROFBacen) {
+        this.numeroROFBacen = numeroROFBacen;
+        return this;
+    }
+
+    /**
+     * Get motivoSemCobertura
+     *
+     * @return motivoSemCobertura
+     **/
+    @JsonProperty("motivoSemCobertura")
+    public MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio getMotivoSemCobertura() {
+        return motivoSemCobertura;
+    }
+
+    public void setMotivoSemCobertura(MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura) {
+        this.motivoSemCobertura = motivoSemCobertura;
+    }
+
+    public SefazDadosCambiaisCover motivoSemCobertura(MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura) {
+        this.motivoSemCobertura = motivoSemCobertura;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class SefazDadosCambiaisCover {\n" +
-                "    valorCoberturaCambial: " + toIndentedString(valorCoberturaCambial) + "\n" +
-                "    instituicaoFinanceira: " + toIndentedString(instituicaoFinanceira) + "\n" +
-                "    motivoSemCobertura: " + toIndentedString(motivoSemCobertura) + "\n" +
-                "    numeroROFBacen: " + toIndentedString(numeroROFBacen) + "\n" +
                 "    coberturaCambial: " + toIndentedString(coberturaCambial) + "\n" +
+                "    instituicaoFinanceira: " + toIndentedString(instituicaoFinanceira) + "\n" +
+                "    valorCoberturaCambial: " + toIndentedString(valorCoberturaCambial) + "\n" +
+                "    numeroROFBacen: " + toIndentedString(numeroROFBacen) + "\n" +
+                "    motivoSemCobertura: " + toIndentedString(motivoSemCobertura) + "\n" +
                 "}";
         return sb;
     }

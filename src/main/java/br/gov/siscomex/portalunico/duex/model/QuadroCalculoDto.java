@@ -14,11 +14,37 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "QuadroCalculoDto", propOrder =
-        {"valorARecolher", "tipo", "valorCalculado", "memoriaDeCalculo", "valorDevido", "tributo", "valorNormal", "dataDoRegistro", "valorSuspenso", "valorAReduzir", "tributado"
+        {"dataDoRegistro", "memoriaDeCalculo", "tipo", "tributado", "tributo", "valorARecolher", "valorAReduzir", "valorCalculado", "valorDevido", "valorNormal", "valorSuspenso"
         })
 
 @XmlRootElement(name = "QuadroCalculoDto")
 public class QuadroCalculoDto {
+
+    @XmlElement(name = "dataDoRegistro")
+    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    /**
+     * Data do registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     **/
+    private OffsetDateTime dataDoRegistro = null;
+
+    @XmlElement(name = "memoriaDeCalculo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MemoriaCalculoDto memoriaDeCalculo = null;
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoTributoDto tipo = null;
+
+    @XmlElement(name = "tributado")
+    @ApiModelProperty(value = "")
+    private Boolean tributado = null;
+
+    @XmlElement(name = "tributo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TributoDto tributo = null;
 
     @XmlElement(name = "valorARecolher")
     @ApiModelProperty(value = "Valor a recolher<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -28,10 +54,13 @@ public class QuadroCalculoDto {
      **/
     private BigDecimal valorARecolher = null;
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
+    @XmlElement(name = "valorAReduzir")
+    @ApiModelProperty(value = "Valor a reduzir<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
-    private TipoTributoDto tipo = null;
+    /**
+     * Valor a reduzir<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorAReduzir = null;
 
     @XmlElement(name = "valorCalculado")
     @ApiModelProperty(value = "Valor total da mercadoria<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -41,11 +70,6 @@ public class QuadroCalculoDto {
      **/
     private BigDecimal valorCalculado = null;
 
-    @XmlElement(name = "memoriaDeCalculo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MemoriaCalculoDto memoriaDeCalculo = null;
-
     @XmlElement(name = "valorDevido")
     @ApiModelProperty(value = "Valor devido<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -53,11 +77,6 @@ public class QuadroCalculoDto {
      * Valor devido<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorDevido = null;
-
-    @XmlElement(name = "tributo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TributoDto tributo = null;
 
     @XmlElement(name = "valorNormal")
     @ApiModelProperty(value = "Valor normal<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -67,13 +86,6 @@ public class QuadroCalculoDto {
      **/
     private BigDecimal valorNormal = null;
 
-    @XmlElement(name = "dataDoRegistro")
-    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
-    /**
-     * Data do registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
-     **/
-    private OffsetDateTime dataDoRegistro = null;
-
     @XmlElement(name = "valorSuspenso")
     @ApiModelProperty(value = "Valor suspenso<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -81,18 +93,6 @@ public class QuadroCalculoDto {
      * Valor suspenso<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorSuspenso = null;
-
-    @XmlElement(name = "valorAReduzir")
-    @ApiModelProperty(value = "Valor a reduzir<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor a reduzir<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorAReduzir = null;
-
-    @XmlElement(name = "tributado")
-    @ApiModelProperty(value = "")
-    private Boolean tributado = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -106,22 +106,36 @@ public class QuadroCalculoDto {
     }
 
     /**
-     * Valor a recolher&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Data do registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
-     * @return valorARecolher
+     * @return dataDoRegistro
      **/
-    @JsonProperty("valorARecolher")
-    public BigDecimal getValorARecolher() {
-        return valorARecolher;
+    @JsonProperty("dataDoRegistro")
+    public OffsetDateTime getDataDoRegistro() {
+        return dataDoRegistro;
     }
 
-    public void setValorARecolher(BigDecimal valorARecolher) {
-        this.valorARecolher = valorARecolher;
+    public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
     }
 
-    public QuadroCalculoDto valorARecolher(BigDecimal valorARecolher) {
-        this.valorARecolher = valorARecolher;
+    public QuadroCalculoDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
         return this;
+    }
+
+    /**
+     * Get memoriaDeCalculo
+     *
+     * @return memoriaDeCalculo
+     **/
+    @JsonProperty("memoriaDeCalculo")
+    public MemoriaCalculoDto getMemoriaDeCalculo() {
+        return memoriaDeCalculo;
+    }
+
+    public void setMemoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
+        this.memoriaDeCalculo = memoriaDeCalculo;
     }
 
     /**
@@ -143,60 +157,27 @@ public class QuadroCalculoDto {
         return this;
     }
 
-    /**
-     * Valor total da mercadoria&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorCalculado
-     **/
-    @JsonProperty("valorCalculado")
-    public BigDecimal getValorCalculado() {
-        return valorCalculado;
-    }
-
-    public void setValorCalculado(BigDecimal valorCalculado) {
-        this.valorCalculado = valorCalculado;
-    }
-
-    public QuadroCalculoDto valorCalculado(BigDecimal valorCalculado) {
-        this.valorCalculado = valorCalculado;
-        return this;
-    }
-
-    /**
-     * Get memoriaDeCalculo
-     *
-     * @return memoriaDeCalculo
-     **/
-    @JsonProperty("memoriaDeCalculo")
-    public MemoriaCalculoDto getMemoriaDeCalculo() {
-        return memoriaDeCalculo;
-    }
-
-    public void setMemoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
-        this.memoriaDeCalculo = memoriaDeCalculo;
-    }
-
     public QuadroCalculoDto memoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
         this.memoriaDeCalculo = memoriaDeCalculo;
         return this;
     }
 
     /**
-     * Valor devido&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Get tributado
      *
-     * @return valorDevido
+     * @return tributado
      **/
-    @JsonProperty("valorDevido")
-    public BigDecimal getValorDevido() {
-        return valorDevido;
+    @JsonProperty("tributado")
+    public Boolean isisTributado() {
+        return tributado;
     }
 
-    public void setValorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
+    public void setTributado(Boolean tributado) {
+        this.tributado = tributado;
     }
 
-    public QuadroCalculoDto valorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
+    public QuadroCalculoDto tributado(Boolean tributado) {
+        this.tributado = tributado;
         return this;
     }
 
@@ -220,59 +201,21 @@ public class QuadroCalculoDto {
     }
 
     /**
-     * Valor normal&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor a recolher&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
-     * @return valorNormal
+     * @return valorARecolher
      **/
-    @JsonProperty("valorNormal")
-    public BigDecimal getValorNormal() {
-        return valorNormal;
+    @JsonProperty("valorARecolher")
+    public BigDecimal getValorARecolher() {
+        return valorARecolher;
     }
 
-    public void setValorNormal(BigDecimal valorNormal) {
-        this.valorNormal = valorNormal;
+    public void setValorARecolher(BigDecimal valorARecolher) {
+        this.valorARecolher = valorARecolher;
     }
 
-    public QuadroCalculoDto valorNormal(BigDecimal valorNormal) {
-        this.valorNormal = valorNormal;
-        return this;
-    }
-
-    /**
-     * Data do registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataDoRegistro
-     **/
-    @JsonProperty("dataDoRegistro")
-    public OffsetDateTime getDataDoRegistro() {
-        return dataDoRegistro;
-    }
-
-    public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
-    }
-
-    public QuadroCalculoDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
-        return this;
-    }
-
-    /**
-     * Valor suspenso&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorSuspenso
-     **/
-    @JsonProperty("valorSuspenso")
-    public BigDecimal getValorSuspenso() {
-        return valorSuspenso;
-    }
-
-    public void setValorSuspenso(BigDecimal valorSuspenso) {
-        this.valorSuspenso = valorSuspenso;
-    }
-
-    public QuadroCalculoDto valorSuspenso(BigDecimal valorSuspenso) {
-        this.valorSuspenso = valorSuspenso;
+    public QuadroCalculoDto valorARecolher(BigDecimal valorARecolher) {
+        this.valorARecolher = valorARecolher;
         return this;
     }
 
@@ -290,27 +233,81 @@ public class QuadroCalculoDto {
         this.valorAReduzir = valorAReduzir;
     }
 
-    public QuadroCalculoDto valorAReduzir(BigDecimal valorAReduzir) {
-        this.valorAReduzir = valorAReduzir;
+    /**
+     * Valor total da mercadoria&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorCalculado
+     **/
+    @JsonProperty("valorCalculado")
+    public BigDecimal getValorCalculado() {
+        return valorCalculado;
+    }
+
+    public void setValorCalculado(BigDecimal valorCalculado) {
+        this.valorCalculado = valorCalculado;
+    }
+
+    public QuadroCalculoDto valorCalculado(BigDecimal valorCalculado) {
+        this.valorCalculado = valorCalculado;
         return this;
     }
 
     /**
-     * Get tributado
-     *
-     * @return tributado
+     * Valor devido&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * @return valorDevido
      **/
-    @JsonProperty("tributado")
-    public Boolean isisTributado() {
-        return tributado;
+    @JsonProperty("valorDevido")
+    public BigDecimal getValorDevido() {
+        return valorDevido;
     }
 
-    public void setTributado(Boolean tributado) {
-        this.tributado = tributado;
+    public void setValorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
     }
 
-    public QuadroCalculoDto tributado(Boolean tributado) {
-        this.tributado = tributado;
+    public QuadroCalculoDto valorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
+        return this;
+    }
+
+    /**
+     * Valor normal&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * @return valorNormal
+     **/
+    @JsonProperty("valorNormal")
+    public BigDecimal getValorNormal() {
+        return valorNormal;
+    }
+
+    public void setValorNormal(BigDecimal valorNormal) {
+        this.valorNormal = valorNormal;
+    }
+
+    public QuadroCalculoDto valorNormal(BigDecimal valorNormal) {
+        this.valorNormal = valorNormal;
+        return this;
+    }
+
+    /**
+     * Valor suspenso&lt;br /&gt;Tamanho: 16,7&lt;br /&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * @return valorSuspenso
+     **/
+    @JsonProperty("valorSuspenso")
+    public BigDecimal getValorSuspenso() {
+        return valorSuspenso;
+    }
+
+    public void setValorSuspenso(BigDecimal valorSuspenso) {
+        this.valorSuspenso = valorSuspenso;
+    }
+
+    public QuadroCalculoDto valorSuspenso(BigDecimal valorSuspenso) {
+        this.valorSuspenso = valorSuspenso;
+        return this;
+    }
+
+    public QuadroCalculoDto valorAReduzir(BigDecimal valorAReduzir) {
+        this.valorAReduzir = valorAReduzir;
         return this;
     }
 
@@ -318,17 +315,17 @@ public class QuadroCalculoDto {
     public String toString() {
 
         String sb = "class QuadroCalculoDto {\n" +
-                "    valorARecolher: " + toIndentedString(valorARecolher) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
-                "    memoriaDeCalculo: " + toIndentedString(memoriaDeCalculo) + "\n" +
-                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
-                "    tributo: " + toIndentedString(tributo) + "\n" +
-                "    valorNormal: " + toIndentedString(valorNormal) + "\n" +
                 "    dataDoRegistro: " + toIndentedString(dataDoRegistro) + "\n" +
-                "    valorSuspenso: " + toIndentedString(valorSuspenso) + "\n" +
-                "    valorAReduzir: " + toIndentedString(valorAReduzir) + "\n" +
+                "    memoriaDeCalculo: " + toIndentedString(memoriaDeCalculo) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    tributado: " + toIndentedString(tributado) + "\n" +
+                "    tributo: " + toIndentedString(tributo) + "\n" +
+                "    valorARecolher: " + toIndentedString(valorARecolher) + "\n" +
+                "    valorAReduzir: " + toIndentedString(valorAReduzir) + "\n" +
+                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
+                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
+                "    valorNormal: " + toIndentedString(valorNormal) + "\n" +
+                "    valorSuspenso: " + toIndentedString(valorSuspenso) + "\n" +
                 "}";
         return sb;
     }

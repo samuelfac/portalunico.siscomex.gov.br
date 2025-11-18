@@ -30,17 +30,6 @@ public class DenominacaoAcrescimoDeducaoCover {
     private String codigo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do acréscimo ou da dedução escolhida.&lt;br&gt;Domínio: Tabela de Acréscimos/Deduções do Siscomex&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99Origem: Sistema Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/
      *
      * @return codigo
@@ -57,6 +46,18 @@ public class DenominacaoAcrescimoDeducaoCover {
     public DenominacaoAcrescimoDeducaoCover codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -36,17 +36,6 @@ public class ManifestoDaSolicitaoDeDevoluo {
     private List<RemessaDaSolicitaoDeDevoluo> remessas = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
      *
      * @return numeroManifesto
@@ -88,6 +77,18 @@ public class ManifestoDaSolicitaoDeDevoluo {
     public ManifestoDaSolicitaoDeDevoluo addRemessasItem(RemessaDaSolicitaoDeDevoluo remessasItem) {
         this.remessas.add(remessasItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

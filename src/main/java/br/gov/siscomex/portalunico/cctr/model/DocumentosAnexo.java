@@ -33,17 +33,6 @@ public class DocumentosAnexo {
     private List<DocumentoAnexo> documentoAnexo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Documentos em Passagem
      *
      * @return documentoAnexo
@@ -65,6 +54,18 @@ public class DocumentosAnexo {
     public DocumentosAnexo addDocumentoAnexoItem(DocumentoAnexo documentoAnexoItem) {
         this.documentoAnexo.add(documentoAnexoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

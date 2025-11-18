@@ -42,17 +42,6 @@ public class DiffArquivoDiarioCondicionadoDTO {
     private List<DiffCondicionadoDTO> alterado = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de Atributos Condicionados adicionados
      *
      * @return adicionado
@@ -122,6 +111,18 @@ public class DiffArquivoDiarioCondicionadoDTO {
     public DiffArquivoDiarioCondicionadoDTO addAlteradoItem(DiffCondicionadoDTO alteradoItem) {
         this.alterado.add(alteradoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

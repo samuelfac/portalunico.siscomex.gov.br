@@ -38,17 +38,6 @@ public class LocalSaida {
     private String codigoRA = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
      *
      * @return codigoURF
@@ -86,6 +75,18 @@ public class LocalSaida {
     public LocalSaida codigoRA(String codigoRA) {
         this.codigoRA = codigoRA;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

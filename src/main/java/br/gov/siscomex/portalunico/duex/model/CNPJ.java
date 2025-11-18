@@ -11,18 +11,15 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CNPJ", propOrder =
-        {"numero", "cpf", "nome", "cnpj"
+        {"cnpj", "cpf", "nome", "numero"
         })
 
 @XmlRootElement(name = "CNPJ")
 public class CNPJ {
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(example = "84982428000177", value = "Numero<br />Tamanho: 14<br />Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * Numero<br />Tamanho: 14<br />Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String numero = null;
+    @XmlElement(name = "cnpj")
+    @ApiModelProperty(value = "")
+    private Boolean cnpj = null;
 
     @XmlElement(name = "cpf")
     @ApiModelProperty(value = "")
@@ -35,9 +32,12 @@ public class CNPJ {
      **/
     private String nome = null;
 
-    @XmlElement(name = "cnpj")
-    @ApiModelProperty(value = "")
-    private Boolean cnpj = null;
+    @XmlElement(name = "numero")
+    @ApiModelProperty(example = "84982428000177", value = "Numero<br />Tamanho: 14<br />Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * Numero<br />Tamanho: 14<br />Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String numero = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -51,22 +51,17 @@ public class CNPJ {
     }
 
     /**
-     * Numero&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     * Get cnpj
      *
-     * @return numero
+     * @return cnpj
      **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
+    @JsonProperty("cnpj")
+    public Boolean isisCnpj() {
+        return cnpj;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public CNPJ numero(String numero) {
-        this.numero = numero;
-        return this;
+    public void setCnpj(Boolean cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -107,22 +102,27 @@ public class CNPJ {
         return this;
     }
 
-    /**
-     * Get cnpj
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    public Boolean isisCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(Boolean cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public CNPJ cnpj(Boolean cnpj) {
         this.cnpj = cnpj;
+        return this;
+    }
+
+    /**
+     * Numero&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public CNPJ numero(String numero) {
+        this.numero = numero;
         return this;
     }
 
@@ -130,10 +130,10 @@ public class CNPJ {
     public String toString() {
 
         String sb = "class CNPJ {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "}";
         return sb;
     }

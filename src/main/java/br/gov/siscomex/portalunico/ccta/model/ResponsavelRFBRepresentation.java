@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ResponsavelRFBRepresentation", propOrder =
-        {"codigoSetor", "nomeSetor", "nomeLotacao", "cpf", "nome", "codigoLotacao"
+        {"codigoLotacao", "codigoSetor", "cpf", "nome", "nomeLotacao", "nomeSetor"
         })
 
 @XmlRootElement(name = "ResponsavelRFBRepresentation")
 public class ResponsavelRFBRepresentation {
+
+    @XmlElement(name = "codigoLotacao")
+    @ApiModelProperty(example = "717700", value = "Número do código da lotação")
+    /**
+     * Número do código da lotação
+     **/
+    private Integer codigoLotacao = null;
 
     @XmlElement(name = "codigoSetor")
     @ApiModelProperty(example = "717600", value = "Descrição do código do setor da lotação")
@@ -23,20 +30,6 @@ public class ResponsavelRFBRepresentation {
      * Descrição do código do setor da lotação
      **/
     private Integer codigoSetor = null;
-
-    @XmlElement(name = "nomeSetor")
-    @ApiModelProperty(example = "PORTO DO RIO", value = "Número do código do setor da lotação")
-    /**
-     * Número do código do setor da lotação
-     **/
-    private String nomeSetor = null;
-
-    @XmlElement(name = "nomeLotacao")
-    @ApiModelProperty(example = "AEROPORTO INTERNACIONAL DO RIO DE JANEIRO", value = "Descrição do nome da lotação")
-    /**
-     * Descrição do nome da lotação
-     **/
-    private String nomeLotacao = null;
 
     @XmlElement(name = "cpf")
     @ApiModelProperty(value = "")
@@ -46,12 +39,19 @@ public class ResponsavelRFBRepresentation {
     @ApiModelProperty(value = "")
     private String nome = null;
 
-    @XmlElement(name = "codigoLotacao")
-    @ApiModelProperty(example = "717700", value = "Número do código da lotação")
+    @XmlElement(name = "nomeLotacao")
+    @ApiModelProperty(example = "AEROPORTO INTERNACIONAL DO RIO DE JANEIRO", value = "Descrição do nome da lotação")
     /**
-     * Número do código da lotação
+     * Descrição do nome da lotação
      **/
-    private Integer codigoLotacao = null;
+    private String nomeLotacao = null;
+
+    @XmlElement(name = "nomeSetor")
+    @ApiModelProperty(example = "PORTO DO RIO", value = "Número do código do setor da lotação")
+    /**
+     * Número do código do setor da lotação
+     **/
+    private String nomeSetor = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,6 +62,20 @@ public class ResponsavelRFBRepresentation {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do código da lotação
+     *
+     * @return codigoLotacao
+     **/
+    @JsonProperty("codigoLotacao")
+    public Integer getCodigoLotacao() {
+        return codigoLotacao;
+    }
+
+    public void setCodigoLotacao(Integer codigoLotacao) {
+        this.codigoLotacao = codigoLotacao;
     }
 
     /**
@@ -80,44 +94,6 @@ public class ResponsavelRFBRepresentation {
 
     public ResponsavelRFBRepresentation codigoSetor(Integer codigoSetor) {
         this.codigoSetor = codigoSetor;
-        return this;
-    }
-
-    /**
-     * Número do código do setor da lotação
-     *
-     * @return nomeSetor
-     **/
-    @JsonProperty("nomeSetor")
-    public String getNomeSetor() {
-        return nomeSetor;
-    }
-
-    public void setNomeSetor(String nomeSetor) {
-        this.nomeSetor = nomeSetor;
-    }
-
-    public ResponsavelRFBRepresentation nomeSetor(String nomeSetor) {
-        this.nomeSetor = nomeSetor;
-        return this;
-    }
-
-    /**
-     * Descrição do nome da lotação
-     *
-     * @return nomeLotacao
-     **/
-    @JsonProperty("nomeLotacao")
-    public String getNomeLotacao() {
-        return nomeLotacao;
-    }
-
-    public void setNomeLotacao(String nomeLotacao) {
-        this.nomeLotacao = nomeLotacao;
-    }
-
-    public ResponsavelRFBRepresentation nomeLotacao(String nomeLotacao) {
-        this.nomeLotacao = nomeLotacao;
         return this;
     }
 
@@ -159,22 +135,46 @@ public class ResponsavelRFBRepresentation {
         return this;
     }
 
-    /**
-     * Número do código da lotação
-     *
-     * @return codigoLotacao
-     **/
-    @JsonProperty("codigoLotacao")
-    public Integer getCodigoLotacao() {
-        return codigoLotacao;
-    }
-
-    public void setCodigoLotacao(Integer codigoLotacao) {
-        this.codigoLotacao = codigoLotacao;
-    }
-
     public ResponsavelRFBRepresentation codigoLotacao(Integer codigoLotacao) {
         this.codigoLotacao = codigoLotacao;
+        return this;
+    }
+
+    /**
+     * Descrição do nome da lotação
+     *
+     * @return nomeLotacao
+     **/
+    @JsonProperty("nomeLotacao")
+    public String getNomeLotacao() {
+        return nomeLotacao;
+    }
+
+    public void setNomeLotacao(String nomeLotacao) {
+        this.nomeLotacao = nomeLotacao;
+    }
+
+    public ResponsavelRFBRepresentation nomeLotacao(String nomeLotacao) {
+        this.nomeLotacao = nomeLotacao;
+        return this;
+    }
+
+    /**
+     * Número do código do setor da lotação
+     *
+     * @return nomeSetor
+     **/
+    @JsonProperty("nomeSetor")
+    public String getNomeSetor() {
+        return nomeSetor;
+    }
+
+    public void setNomeSetor(String nomeSetor) {
+        this.nomeSetor = nomeSetor;
+    }
+
+    public ResponsavelRFBRepresentation nomeSetor(String nomeSetor) {
+        this.nomeSetor = nomeSetor;
         return this;
     }
 
@@ -182,12 +182,12 @@ public class ResponsavelRFBRepresentation {
     public String toString() {
 
         String sb = "class ResponsavelRFBRepresentation {\n" +
+                "    codigoLotacao: " + toIndentedString(codigoLotacao) + "\n" +
                 "    codigoSetor: " + toIndentedString(codigoSetor) + "\n" +
-                "    nomeSetor: " + toIndentedString(nomeSetor) + "\n" +
-                "    nomeLotacao: " + toIndentedString(nomeLotacao) + "\n" +
                 "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    codigoLotacao: " + toIndentedString(codigoLotacao) + "\n" +
+                "    nomeLotacao: " + toIndentedString(nomeLotacao) + "\n" +
+                "    nomeSetor: " + toIndentedString(nomeSetor) + "\n" +
                 "}";
         return sb;
     }

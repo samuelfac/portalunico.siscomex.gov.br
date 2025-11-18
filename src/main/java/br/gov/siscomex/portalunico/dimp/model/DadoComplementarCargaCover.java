@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadoComplementarCargaCover", propOrder =
-        {"tipoIdentificacaoCarga", "unidadeEntrada", "identificacao", "viaTransporte"
+        {"tipoIdentificacaoCarga", "identificacao", "viaTransporte", "unidadeEntrada"
         })
 
 @XmlRootElement(name = "DadoComplementarCargaCover")
@@ -25,24 +25,23 @@ import javax.xml.bind.annotation.XmlType;
 public class DadoComplementarCargaCover {
 
 
+    @XmlElement(name = "unidadeEntrada")
+    @ApiModelProperty(example = "0717600", value = "")
+    private String unidadeEntrada = null;
+
     @XmlElement(name = "tipoIdentificacaoCarga")
     @ApiModelProperty(example = "CE", value = "Descreve se a identificação da carga é do tipo CE ou RUC")
     /**
      * Descreve se a identificação da carga é do tipo CE ou RUC
      **/
     private TipoIdentificacaoCargaEnum tipoIdentificacaoCarga = null;
-    @XmlElement(name = "unidadeEntrada")
-    @ApiModelProperty(example = "0717600", value = "")
-    private String unidadeEntrada = null;
+
     @XmlElement(name = "identificacao")
     @ApiModelProperty(example = "132405005073923", value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
     /**
      * Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
      **/
     private String identificacao = null;
-    @XmlElement(name = "viaTransporte")
-    @ApiModelProperty(example = "AEREA", value = "")
-    private ViaTransporteEnum viaTransporte = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -53,6 +52,20 @@ public class DadoComplementarCargaCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "viaTransporte")
+    @ApiModelProperty(example = "AEREA", value = "")
+    private ViaTransporteEnum viaTransporte = null;
+
+    /**
+     * Get unidadeEntrada
+     *
+     * @return unidadeEntrada
+     **/
+    @JsonProperty("unidadeEntrada")
+    public String getUnidadeEntrada() {
+        return unidadeEntrada;
     }
 
     /**
@@ -74,25 +87,6 @@ public class DadoComplementarCargaCover {
 
     public DadoComplementarCargaCover tipoIdentificacaoCarga(TipoIdentificacaoCargaEnum tipoIdentificacaoCarga) {
         this.tipoIdentificacaoCarga = tipoIdentificacaoCarga;
-        return this;
-    }
-
-    /**
-     * Get unidadeEntrada
-     *
-     * @return unidadeEntrada
-     **/
-    @JsonProperty("unidadeEntrada")
-    public String getUnidadeEntrada() {
-        return unidadeEntrada;
-    }
-
-    public void setUnidadeEntrada(String unidadeEntrada) {
-        this.unidadeEntrada = unidadeEntrada;
-    }
-
-    public DadoComplementarCargaCover unidadeEntrada(String unidadeEntrada) {
-        this.unidadeEntrada = unidadeEntrada;
         return this;
     }
 
@@ -137,14 +131,23 @@ public class DadoComplementarCargaCover {
         return this;
     }
 
+    public void setUnidadeEntrada(String unidadeEntrada) {
+        this.unidadeEntrada = unidadeEntrada;
+    }
+
+    public DadoComplementarCargaCover unidadeEntrada(String unidadeEntrada) {
+        this.unidadeEntrada = unidadeEntrada;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadoComplementarCargaCover {\n" +
                 "    tipoIdentificacaoCarga: " + toIndentedString(tipoIdentificacaoCarga) + "\n" +
-                "    unidadeEntrada: " + toIndentedString(unidadeEntrada) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
+                "    unidadeEntrada: " + toIndentedString(unidadeEntrada) + "\n" +
                 "}";
         return sb;
     }

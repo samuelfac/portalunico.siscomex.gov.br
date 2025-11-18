@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CondicaoEntregaImportador", propOrder =
-        {"codigo", "descricaoUnidadeRFB", "unidadeRFB", "descricao"
+        {"codigo", "descricao", "descricaoUnidadeRFB", "unidadeRFB"
         })
 
 @XmlRootElement(name = "CondicaoEntregaImportador")
@@ -29,6 +29,13 @@ public class CondicaoEntregaImportador {
      **/
     private String codigo = null;
 
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Entrega autorizada por decisão administrativa ou mandado judicial com prosseguimento de despacho – entrega condicionada à apresentação de mandado judicial relativo ao ICMS.", value = "Descrição da condição<br/>Tamanho máximo: 300")
+    /**
+     * Descrição da condição<br/>Tamanho máximo: 300
+     **/
+    private String descricao = null;
+
     @XmlElement(name = "descricaoUnidadeRFB")
     @ApiModelProperty(example = "AEROPORTO INTERNACIONAL DO RIO DE JANEIRO", value = "Descrição da unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo somente é retornado para condições originadas no sistema Mantra")
     /**
@@ -42,24 +49,6 @@ public class CondicaoEntregaImportador {
      * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo somente é retornado para condições originadas no sistema Mantra
      **/
     private String unidadeRFB = null;
-
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Entrega autorizada por decisão administrativa ou mandado judicial com prosseguimento de despacho – entrega condicionada à apresentação de mandado judicial relativo ao ICMS.", value = "Descrição da condição<br/>Tamanho máximo: 300")
-    /**
-     * Descrição da condição<br/>Tamanho máximo: 300
-     **/
-    private String descricao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Código da condição.&lt;br/&gt;Tamanho: 11
@@ -78,6 +67,31 @@ public class CondicaoEntregaImportador {
     public CondicaoEntregaImportador codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Descrição da condição&lt;br/&gt;Tamanho máximo: 300
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**
@@ -118,20 +132,6 @@ public class CondicaoEntregaImportador {
         return this;
     }
 
-    /**
-     * Descrição da condição&lt;br/&gt;Tamanho máximo: 300
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public CondicaoEntregaImportador descricao(String descricao) {
         this.descricao = descricao;
         return this;
@@ -142,9 +142,9 @@ public class CondicaoEntregaImportador {
 
         String sb = "class CondicaoEntregaImportador {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "    descricaoUnidadeRFB: " + toIndentedString(descricaoUnidadeRFB) + "\n" +
                 "    unidadeRFB: " + toIndentedString(unidadeRFB) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "}";
         return sb;
     }

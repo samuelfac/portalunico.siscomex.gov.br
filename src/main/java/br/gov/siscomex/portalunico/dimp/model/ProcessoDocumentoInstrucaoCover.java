@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessoDocumentoInstrucaoCover", propOrder =
-        {"tipo", "identificacao"
+        {"identificacao", "tipo"
         })
 
 @XmlRootElement(name = "ProcessoDocumentoInstrucaoCover")
@@ -25,13 +25,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Lista de processos vinculados.")
 public class ProcessoDocumentoInstrucaoCover {
 
-
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "ADMINISTRATIVO", required = true, value = "Tipo de Processo Administrativo.<br>Domínio:")
-    /**
-     * Tipo de Processo Administrativo.<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
     @XmlElement(name = "identificacao", required = true)
     @ApiModelProperty(example = "15595720034201371", required = true, value = "Número do Processo vinculado à Duimp.")
     /**
@@ -48,6 +41,33 @@ public class ProcessoDocumentoInstrucaoCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "ADMINISTRATIVO", required = true, value = "Tipo de Processo Administrativo.<br>Domínio:")
+    /**
+     * Tipo de Processo Administrativo.<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    /**
+     * Número do Processo vinculado à Duimp.
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    @NotNull
+    public String getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(String identificacao) {
+        this.identificacao = identificacao;
+    }
+
+    public ProcessoDocumentoInstrucaoCover identificacao(String identificacao) {
+        this.identificacao = identificacao;
+        return this;
     }
 
     /**
@@ -73,33 +93,13 @@ public class ProcessoDocumentoInstrucaoCover {
         return this;
     }
 
-    /**
-     * Número do Processo vinculado à Duimp.
-     *
-     * @return identificacao
-     **/
-    @JsonProperty("identificacao")
-    @NotNull
-    public String getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(String identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public ProcessoDocumentoInstrucaoCover identificacao(String identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class ProcessoDocumentoInstrucaoCover {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

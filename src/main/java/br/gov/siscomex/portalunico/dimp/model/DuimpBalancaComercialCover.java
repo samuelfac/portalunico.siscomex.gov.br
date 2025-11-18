@@ -12,21 +12,36 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DuimpBalancaComercialCover", propOrder =
-        {"situacao", "identificacao", "quantidadeItens", "resultadoAnaliseRisco", "tributos", "carga"
+        {"identificacao", "situacao", "resultadoAnaliseRisco", "carga", "tributos", "quantidadeItens"
         })
 
 @XmlRootElement(name = "DuimpBalancaComercialCover")
 public class DuimpBalancaComercialCover {
+
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private IdentificacaoDuimpConsultaCover identificacao = null;
 
     @XmlElement(name = "situacao")
     @ApiModelProperty(value = "")
     @Valid
     private SituacaoDuimpConsultaCover situacao = null;
 
-    @XmlElement(name = "identificacao")
+    @XmlElement(name = "resultadoAnaliseRisco")
     @ApiModelProperty(value = "")
     @Valid
-    private IdentificacaoDuimpConsultaCover identificacao = null;
+    private ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco = null;
+
+    @XmlElement(name = "carga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaDuimpConsultaCover carga = null;
+
+    @XmlElement(name = "tributos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TributoConsultaDuimpCover tributos = null;
 
     @XmlElement(name = "quantidadeItens")
     @ApiModelProperty(example = "100", value = "Quantidade total de Itens da Duimp.<br>Tamanho mínimo: 1<br>Tamanho máximo: 5")
@@ -35,20 +50,24 @@ public class DuimpBalancaComercialCover {
      **/
     private Long quantidadeItens = null;
 
-    @XmlElement(name = "resultadoAnaliseRisco")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco = null;
+    /**
+     * Get identificacao
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    public IdentificacaoDuimpConsultaCover getIdentificacao() {
+        return identificacao;
+    }
 
-    @XmlElement(name = "tributos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TributoConsultaDuimpCover tributos = null;
+    public void setIdentificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+    }
 
-    @XmlElement(name = "carga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaDuimpConsultaCover carga = null;
+    public DuimpBalancaComercialCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -75,27 +94,65 @@ public class DuimpBalancaComercialCover {
         this.situacao = situacao;
     }
 
+    /**
+     * Get resultadoAnaliseRisco
+     *
+     * @return resultadoAnaliseRisco
+     **/
+    @JsonProperty("resultadoAnaliseRisco")
+    public ResultadoAnaliseRiscoDuimpCover getResultadoAnaliseRisco() {
+        return resultadoAnaliseRisco;
+    }
+
+    public void setResultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
+        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
+    }
+
+    public DuimpBalancaComercialCover resultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
+        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
+        return this;
+    }
+
     public DuimpBalancaComercialCover situacao(SituacaoDuimpConsultaCover situacao) {
         this.situacao = situacao;
         return this;
     }
 
     /**
-     * Get identificacao
+     * Get carga
      *
-     * @return identificacao
+     * @return carga
      **/
-    @JsonProperty("identificacao")
-    public IdentificacaoDuimpConsultaCover getIdentificacao() {
-        return identificacao;
+    @JsonProperty("carga")
+    public CargaDuimpConsultaCover getCarga() {
+        return carga;
     }
 
-    public void setIdentificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
+    public void setCarga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
     }
 
-    public DuimpBalancaComercialCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
+    /**
+     * Get tributos
+     *
+     * @return tributos
+     **/
+    @JsonProperty("tributos")
+    public TributoConsultaDuimpCover getTributos() {
+        return tributos;
+    }
+
+    public void setTributos(TributoConsultaDuimpCover tributos) {
+        this.tributos = tributos;
+    }
+
+    public DuimpBalancaComercialCover tributos(TributoConsultaDuimpCover tributos) {
+        this.tributos = tributos;
+        return this;
+    }
+
+    public DuimpBalancaComercialCover carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
         return this;
     }
 
@@ -118,73 +175,16 @@ public class DuimpBalancaComercialCover {
         return this;
     }
 
-    /**
-     * Get resultadoAnaliseRisco
-     *
-     * @return resultadoAnaliseRisco
-     **/
-    @JsonProperty("resultadoAnaliseRisco")
-    public ResultadoAnaliseRiscoDuimpCover getResultadoAnaliseRisco() {
-        return resultadoAnaliseRisco;
-    }
-
-    public void setResultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
-        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
-    }
-
-    public DuimpBalancaComercialCover resultadoAnaliseRisco(ResultadoAnaliseRiscoDuimpCover resultadoAnaliseRisco) {
-        this.resultadoAnaliseRisco = resultadoAnaliseRisco;
-        return this;
-    }
-
-    /**
-     * Get tributos
-     *
-     * @return tributos
-     **/
-    @JsonProperty("tributos")
-    public TributoConsultaDuimpCover getTributos() {
-        return tributos;
-    }
-
-    public void setTributos(TributoConsultaDuimpCover tributos) {
-        this.tributos = tributos;
-    }
-
-    public DuimpBalancaComercialCover tributos(TributoConsultaDuimpCover tributos) {
-        this.tributos = tributos;
-        return this;
-    }
-
-    /**
-     * Get carga
-     *
-     * @return carga
-     **/
-    @JsonProperty("carga")
-    public CargaDuimpConsultaCover getCarga() {
-        return carga;
-    }
-
-    public void setCarga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
-    }
-
-    public DuimpBalancaComercialCover carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DuimpBalancaComercialCover {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    quantidadeItens: " + toIndentedString(quantidadeItens) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    resultadoAnaliseRisco: " + toIndentedString(resultadoAnaliseRisco) + "\n" +
-                "    tributos: " + toIndentedString(tributos) + "\n" +
                 "    carga: " + toIndentedString(carga) + "\n" +
+                "    tributos: " + toIndentedString(tributos) + "\n" +
+                "    quantidadeItens: " + toIndentedString(quantidadeItens) + "\n" +
                 "}";
         return sb;
     }

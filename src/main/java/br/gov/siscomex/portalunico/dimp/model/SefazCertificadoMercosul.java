@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazCertificadoMercosul", propOrder =
-        {"numeroCertificado", "quantidadeUnidadeEstatisticaCertificado", "tipoCertificadoMercosul"
+        {"tipoCertificadoMercosul", "numeroCertificado", "quantidadeUnidadeEstatisticaCertificado"
         })
 
 @XmlRootElement(name = "SefazCertificadoMercosul")
@@ -26,20 +26,7 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados de um certificado do Mercosul")
 public class SefazCertificadoMercosul {
 
-    @XmlElement(name = "numeroCertificado")
-    @ApiModelProperty(example = "PY-06000AA00000000A-0001", value = "Número do Certificado MercosulNúmero do certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 23")
-    /**
-     * Número do Certificado MercosulNúmero do certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 23
-     **/
-    private String numeroCertificado = null;
 
-    @XmlElement(name = "quantidadeUnidadeEstatisticaCertificado")
-    @ApiModelProperty(example = "1.00345", value = "Quantidade da mercadoria na unidade estatistica<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Quantidade da mercadoria na unidade estatistica<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private BigDecimal quantidadeUnidadeEstatisticaCertificado = null;
     @XmlElement(name = "tipoCertificadoMercosul")
     @ApiModelProperty(example = "2", value = "Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1")
     /**
@@ -56,6 +43,43 @@ public class SefazCertificadoMercosul {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "numeroCertificado")
+    @ApiModelProperty(example = "PY-06000AA00000000A-0001", value = "Número do Certificado MercosulNúmero do certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 23")
+    /**
+     * Número do Certificado MercosulNúmero do certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 23
+     **/
+    private String numeroCertificado = null;
+
+    @XmlElement(name = "quantidadeUnidadeEstatisticaCertificado")
+    @ApiModelProperty(example = "1.00345", value = "Quantidade da mercadoria na unidade estatistica<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Quantidade da mercadoria na unidade estatistica<br>Tamanho: 11,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private BigDecimal quantidadeUnidadeEstatisticaCertificado = null;
+
+    /**
+     * Tipo de certificado Mercosul.&lt;br&gt;Dominio:&lt;br&gt;2 - CCPTC&lt;br&gt;3 - CCROM&lt;br&gt;Tamanho: 1
+     *
+     * @return tipoCertificadoMercosul
+     **/
+    @JsonProperty("tipoCertificadoMercosul")
+    public String getTipoCertificadoMercosul() {
+        if (tipoCertificadoMercosul == null) {
+            return null;
+        }
+        return tipoCertificadoMercosul.value();
+    }
+
+    public void setTipoCertificadoMercosul(TipoCertificadoMercosulEnum tipoCertificadoMercosul) {
+        this.tipoCertificadoMercosul = tipoCertificadoMercosul;
+    }
+
+    public SefazCertificadoMercosul tipoCertificadoMercosul(TipoCertificadoMercosulEnum tipoCertificadoMercosul) {
+        this.tipoCertificadoMercosul = tipoCertificadoMercosul;
+        return this;
     }
 
     /**
@@ -96,36 +120,14 @@ public class SefazCertificadoMercosul {
         return this;
     }
 
-    /**
-     * Tipo de certificado Mercosul.&lt;br&gt;Dominio:&lt;br&gt;2 - CCPTC&lt;br&gt;3 - CCROM&lt;br&gt;Tamanho: 1
-     *
-     * @return tipoCertificadoMercosul
-     **/
-    @JsonProperty("tipoCertificadoMercosul")
-    public String getTipoCertificadoMercosul() {
-        if (tipoCertificadoMercosul == null) {
-            return null;
-        }
-        return tipoCertificadoMercosul.value();
-    }
-
-    public void setTipoCertificadoMercosul(TipoCertificadoMercosulEnum tipoCertificadoMercosul) {
-        this.tipoCertificadoMercosul = tipoCertificadoMercosul;
-    }
-
-    public SefazCertificadoMercosul tipoCertificadoMercosul(TipoCertificadoMercosulEnum tipoCertificadoMercosul) {
-        this.tipoCertificadoMercosul = tipoCertificadoMercosul;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class SefazCertificadoMercosul {\n" +
+                "    tipoCertificadoMercosul: " + toIndentedString(tipoCertificadoMercosul) + "\n" +
                 "    numeroCertificado: " + toIndentedString(numeroCertificado) + "\n" +
                 "    quantidadeUnidadeEstatisticaCertificado: " + toIndentedString(quantidadeUnidadeEstatisticaCertificado) + "\n" +
-                "    tipoCertificadoMercosul: " + toIndentedString(tipoCertificadoMercosul) + "\n" +
                 "}";
         return sb;
     }

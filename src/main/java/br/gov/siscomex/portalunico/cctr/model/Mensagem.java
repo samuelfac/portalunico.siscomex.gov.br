@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Mensagem", propOrder =
-        {"codigo", "mensagem"
+        {"mensagem", "codigo"
         })
 
 @XmlRootElement(name = "Mensagem")
@@ -22,6 +22,10 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Mensagem de retorno")
 public class Mensagem {
 
+    @XmlElement(name = "mensagem")
+    @ApiModelProperty(value = "")
+    private String mensagem = null;
+
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "CCTR-ER0003", value = "Código da mensagem<br>Tamanho: 11")
     /**
@@ -29,9 +33,24 @@ public class Mensagem {
      **/
     private String codigo = null;
 
-    @XmlElement(name = "mensagem")
-    @ApiModelProperty(value = "")
-    private String mensagem = null;
+    /**
+     * Get mensagem
+     *
+     * @return mensagem
+     **/
+    @JsonProperty("mensagem")
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public Mensagem mensagem(String mensagem) {
+        this.mensagem = mensagem;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -63,31 +82,12 @@ public class Mensagem {
         return this;
     }
 
-    /**
-     * Get mensagem
-     *
-     * @return mensagem
-     **/
-    @JsonProperty("mensagem")
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
-    public Mensagem mensagem(String mensagem) {
-        this.mensagem = mensagem;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Mensagem {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    mensagem: " + toIndentedString(mensagem) + "\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
                 "}";
         return sb;
     }

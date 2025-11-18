@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FabricanteIntegracaoResponseDTO", propOrder =
-        {"cpfCnpjRaiz", "codigoOperadorEstrangeiro", "codigoProduto", "cpfCnpjFabricante", "conhecido", "codigoPais"
+        {"cpfCnpjRaiz", "codigoOperadorEstrangeiro", "cpfCnpjFabricante", "conhecido", "codigoProduto", "codigoPais"
         })
 
 @XmlRootElement(name = "FabricanteIntegracaoResponseDTO")
@@ -32,13 +32,6 @@ public class FabricanteIntegracaoResponseDTO {
      **/
     private String codigoOperadorEstrangeiro = null;
 
-    @XmlElement(name = "codigoProduto")
-    @ApiModelProperty(example = "1", value = "Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'")
-    /**
-     * Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'
-     **/
-    private Long codigoProduto = null;
-
     @XmlElement(name = "cpfCnpjFabricante")
     @ApiModelProperty(example = "00000000000000", value = "CPF/CNPJ do fabricante nacional<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
@@ -53,23 +46,19 @@ public class FabricanteIntegracaoResponseDTO {
      **/
     private Boolean conhecido = false;
 
+    @XmlElement(name = "codigoProduto")
+    @ApiModelProperty(example = "1", value = "Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'")
+    /**
+     * Código do produto<br>Tamanho: 10<br>Formato: 'NNNNNNNNNN'
+     **/
+    private Long codigoProduto = null;
+
     @XmlElement(name = "codigoPais", required = true)
     @ApiModelProperty(example = "DE", required = true, value = "Código do país de origem no formato ISO 3166<br>Tamanho: 2<br>Formato: 'AA'")
     /**
      * Código do país de origem no formato ISO 3166<br>Tamanho: 2<br>Formato: 'AA'
      **/
     private String codigoPais = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
@@ -107,25 +96,6 @@ public class FabricanteIntegracaoResponseDTO {
 
     public FabricanteIntegracaoResponseDTO codigoOperadorEstrangeiro(String codigoOperadorEstrangeiro) {
         this.codigoOperadorEstrangeiro = codigoOperadorEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Código do produto&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
-     *
-     * @return codigoProduto
-     **/
-    @JsonProperty("codigoProduto")
-    public Long getCodigoProduto() {
-        return codigoProduto;
-    }
-
-    public void setCodigoProduto(Long codigoProduto) {
-        this.codigoProduto = codigoProduto;
-    }
-
-    public FabricanteIntegracaoResponseDTO codigoProduto(Long codigoProduto) {
-        this.codigoProduto = codigoProduto;
         return this;
     }
 
@@ -169,6 +139,31 @@ public class FabricanteIntegracaoResponseDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do produto&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
+     *
+     * @return codigoProduto
+     **/
+    @JsonProperty("codigoProduto")
+    public Long getCodigoProduto() {
+        return codigoProduto;
+    }
+
+    public void setCodigoProduto(Long codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
+
+    /**
      * Código do país de origem no formato ISO 3166&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: &#39;AA&#39;
      *
      * @return codigoPais
@@ -188,15 +183,20 @@ public class FabricanteIntegracaoResponseDTO {
         return this;
     }
 
+    public FabricanteIntegracaoResponseDTO codigoProduto(Long codigoProduto) {
+        this.codigoProduto = codigoProduto;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class FabricanteIntegracaoResponseDTO {\n" +
                 "    cpfCnpjRaiz: " + toIndentedString(cpfCnpjRaiz) + "\n" +
                 "    codigoOperadorEstrangeiro: " + toIndentedString(codigoOperadorEstrangeiro) + "\n" +
-                "    codigoProduto: " + toIndentedString(codigoProduto) + "\n" +
                 "    cpfCnpjFabricante: " + toIndentedString(cpfCnpjFabricante) + "\n" +
                 "    conhecido: " + toIndentedString(conhecido) + "\n" +
+                "    codigoProduto: " + toIndentedString(codigoProduto) + "\n" +
                 "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
                 "}";
         return sb;

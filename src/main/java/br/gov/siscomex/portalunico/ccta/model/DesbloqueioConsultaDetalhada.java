@@ -13,19 +13,31 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DesbloqueioConsultaDetalhada", propOrder =
-        {"justificativaBloqueio", "responsavelBloqueio", "tipoBloqueio", "justificativaDesbloqueio", "motivoBloqueio", "responsavelDesbloqueio", "alcanceBloqueio", "dataHoraDesbloqueio", "dataHoraBloqueio"
+        {"alcanceBloqueio", "dataHoraBloqueio", "dataHoraDesbloqueio", "justificativaBloqueio", "justificativaDesbloqueio", "motivoBloqueio", "responsavelBloqueio", "responsavelDesbloqueio", "tipoBloqueio"
         })
 
 @XmlRootElement(name = "DesbloqueioConsultaDetalhada")
 public class DesbloqueioConsultaDetalhada {
 
-    @XmlElement(name = "justificativaBloqueio")
-    @ApiModelProperty(example = "Texto examplo de justificativa", value = "Justificativa para o bloqueio / desbloqueio aplicado<br>Tamanho: 512<br/>")
-    /**
-     * Justificativa para o bloqueio / desbloqueio aplicado<br>Tamanho: 512<br/>
-     **/
-    private String justificativaBloqueio = null;
 
+    @XmlElement(name = "alcanceBloqueio")
+    @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
+    /**
+     * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
+     **/
+    private AlcanceBloqueioEnum alcanceBloqueio = null;
+    @XmlElement(name = "dataHoraBloqueio")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o bloqueio foi aplicado<br/> ")
+    /**
+     * Data na qual a o bloqueio foi aplicado<br/>
+     **/
+    private String dataHoraBloqueio = null;
+    @XmlElement(name = "dataHoraDesbloqueio")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o desbloqueio foi aplicado<br/> ")
+    /**
+     * Data na qual a o desbloqueio foi aplicado<br/>
+     **/
+    private String dataHoraDesbloqueio = null;
     @XmlElement(name = "responsavelBloqueio")
     @ApiModelProperty(example = "PORTO DO RIO", value = "Setor responsável pela aplicação do bloqueio / desbloqueio<br>Tamanho: 50<br/>")
     /**
@@ -33,12 +45,12 @@ public class DesbloqueioConsultaDetalhada {
      **/
     private String responsavelBloqueio = null;
 
-    @XmlElement(name = "tipoBloqueio")
-    @ApiModelProperty(example = "Impede vinculação a documento de saída DI, DSI eletrônica, DUIMP e/ou DTA", value = "Tipo do bloqueio aplicado<br>Tamanho: 100<br/>")
+    @XmlElement(name = "justificativaBloqueio")
+    @ApiModelProperty(example = "Texto examplo de justificativa", value = "Justificativa para o bloqueio / desbloqueio aplicado<br>Tamanho: 512<br/>")
     /**
-     * Tipo do bloqueio aplicado<br>Tamanho: 100<br/>
+     * Justificativa para o bloqueio / desbloqueio aplicado<br>Tamanho: 512<br/>
      **/
-    private String tipoBloqueio = null;
+    private String justificativaBloqueio = null;
 
     @XmlElement(name = "justificativaDesbloqueio")
     @ApiModelProperty(example = "Texto examplo de justificativa", value = "Justificativa para o bloqueio / desbloqueio aplicado<br>Tamanho: 512<br/>")
@@ -53,6 +65,12 @@ public class DesbloqueioConsultaDetalhada {
      * Motivo do bloqueio aplicado<br>Tamanho: 100<br/>
      **/
     private String motivoBloqueio = null;
+    @XmlElement(name = "tipoBloqueio")
+    @ApiModelProperty(example = "Impede vinculação a documento de saída DI, DSI eletrônica, DUIMP e/ou DTA", value = "Tipo do bloqueio aplicado<br>Tamanho: 100<br/>")
+    /**
+     * Tipo do bloqueio aplicado<br>Tamanho: 100<br/>
+     **/
+    private String tipoBloqueio = null;
 
     @XmlElement(name = "responsavelDesbloqueio")
     @ApiModelProperty(example = "PORTO DO RIO", value = "Setor responsável pela aplicação do bloqueio / desbloqueio<br>Tamanho: 50<br/>")
@@ -60,24 +78,6 @@ public class DesbloqueioConsultaDetalhada {
      * Setor responsável pela aplicação do bloqueio / desbloqueio<br>Tamanho: 50<br/>
      **/
     private String responsavelDesbloqueio = null;
-    @XmlElement(name = "alcanceBloqueio")
-    @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
-    /**
-     * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
-     **/
-    private AlcanceBloqueioEnum alcanceBloqueio = null;
-    @XmlElement(name = "dataHoraDesbloqueio")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o desbloqueio foi aplicado<br/> ")
-    /**
-     * Data na qual a o desbloqueio foi aplicado<br/>
-     **/
-    private String dataHoraDesbloqueio = null;
-    @XmlElement(name = "dataHoraBloqueio")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o bloqueio foi aplicado<br/> ")
-    /**
-     * Data na qual a o bloqueio foi aplicado<br/>
-     **/
-    private String dataHoraBloqueio = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -88,6 +88,66 @@ public class DesbloqueioConsultaDetalhada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Indica o alcance do bloqueio.&lt;br/&gt; Tamanho: 1&lt;br/&gt;T - Total&lt;br/&gt;P - Parcial
+     *
+     * @return alcanceBloqueio
+     **/
+    @JsonProperty("alcanceBloqueio")
+    public String getAlcanceBloqueio() {
+        if (alcanceBloqueio == null) {
+            return null;
+        }
+        return alcanceBloqueio.value();
+    }
+
+    public void setAlcanceBloqueio(AlcanceBloqueioEnum alcanceBloqueio) {
+        this.alcanceBloqueio = alcanceBloqueio;
+    }
+
+    public DesbloqueioConsultaDetalhada alcanceBloqueio(AlcanceBloqueioEnum alcanceBloqueio) {
+        this.alcanceBloqueio = alcanceBloqueio;
+        return this;
+    }
+
+    /**
+     * Data na qual a o bloqueio foi aplicado&lt;br/&gt;
+     *
+     * @return dataHoraBloqueio
+     **/
+    @JsonProperty("dataHoraBloqueio")
+    public String getDataHoraBloqueio() {
+        return dataHoraBloqueio;
+    }
+
+    public void setDataHoraBloqueio(String dataHoraBloqueio) {
+        this.dataHoraBloqueio = dataHoraBloqueio;
+    }
+
+    public DesbloqueioConsultaDetalhada dataHoraBloqueio(String dataHoraBloqueio) {
+        this.dataHoraBloqueio = dataHoraBloqueio;
+        return this;
+    }
+
+    /**
+     * Data na qual a o desbloqueio foi aplicado&lt;br/&gt;
+     *
+     * @return dataHoraDesbloqueio
+     **/
+    @JsonProperty("dataHoraDesbloqueio")
+    public String getDataHoraDesbloqueio() {
+        return dataHoraDesbloqueio;
+    }
+
+    public void setDataHoraDesbloqueio(String dataHoraDesbloqueio) {
+        this.dataHoraDesbloqueio = dataHoraDesbloqueio;
+    }
+
+    public DesbloqueioConsultaDetalhada dataHoraDesbloqueio(String dataHoraDesbloqueio) {
+        this.dataHoraDesbloqueio = dataHoraDesbloqueio;
+        return this;
     }
 
     /**
@@ -106,44 +166,6 @@ public class DesbloqueioConsultaDetalhada {
 
     public DesbloqueioConsultaDetalhada justificativaBloqueio(String justificativaBloqueio) {
         this.justificativaBloqueio = justificativaBloqueio;
-        return this;
-    }
-
-    /**
-     * Setor responsável pela aplicação do bloqueio / desbloqueio&lt;br&gt;Tamanho: 50&lt;br/&gt;
-     *
-     * @return responsavelBloqueio
-     **/
-    @JsonProperty("responsavelBloqueio")
-    public String getResponsavelBloqueio() {
-        return responsavelBloqueio;
-    }
-
-    public void setResponsavelBloqueio(String responsavelBloqueio) {
-        this.responsavelBloqueio = responsavelBloqueio;
-    }
-
-    public DesbloqueioConsultaDetalhada responsavelBloqueio(String responsavelBloqueio) {
-        this.responsavelBloqueio = responsavelBloqueio;
-        return this;
-    }
-
-    /**
-     * Tipo do bloqueio aplicado&lt;br&gt;Tamanho: 100&lt;br/&gt;
-     *
-     * @return tipoBloqueio
-     **/
-    @JsonProperty("tipoBloqueio")
-    public String getTipoBloqueio() {
-        return tipoBloqueio;
-    }
-
-    public void setTipoBloqueio(String tipoBloqueio) {
-        this.tipoBloqueio = tipoBloqueio;
-    }
-
-    public DesbloqueioConsultaDetalhada tipoBloqueio(String tipoBloqueio) {
-        this.tipoBloqueio = tipoBloqueio;
         return this;
     }
 
@@ -188,6 +210,25 @@ public class DesbloqueioConsultaDetalhada {
     /**
      * Setor responsável pela aplicação do bloqueio / desbloqueio&lt;br&gt;Tamanho: 50&lt;br/&gt;
      *
+     * @return responsavelBloqueio
+     **/
+    @JsonProperty("responsavelBloqueio")
+    public String getResponsavelBloqueio() {
+        return responsavelBloqueio;
+    }
+
+    public void setResponsavelBloqueio(String responsavelBloqueio) {
+        this.responsavelBloqueio = responsavelBloqueio;
+    }
+
+    public DesbloqueioConsultaDetalhada responsavelBloqueio(String responsavelBloqueio) {
+        this.responsavelBloqueio = responsavelBloqueio;
+        return this;
+    }
+
+    /**
+     * Setor responsável pela aplicação do bloqueio / desbloqueio&lt;br&gt;Tamanho: 50&lt;br/&gt;
+     *
      * @return responsavelDesbloqueio
      **/
     @JsonProperty("responsavelDesbloqueio")
@@ -205,62 +246,20 @@ public class DesbloqueioConsultaDetalhada {
     }
 
     /**
-     * Indica o alcance do bloqueio.&lt;br/&gt; Tamanho: 1&lt;br/&gt;T - Total&lt;br/&gt;P - Parcial
-     *
-     * @return alcanceBloqueio
+     * Tipo do bloqueio aplicado&lt;br&gt;Tamanho: 100&lt;br/&gt;
+     * @return tipoBloqueio
      **/
-    @JsonProperty("alcanceBloqueio")
-    public String getAlcanceBloqueio() {
-        if (alcanceBloqueio == null) {
-            return null;
-        }
-        return alcanceBloqueio.value();
+    @JsonProperty("tipoBloqueio")
+    public String getTipoBloqueio() {
+        return tipoBloqueio;
     }
 
-    public void setAlcanceBloqueio(AlcanceBloqueioEnum alcanceBloqueio) {
-        this.alcanceBloqueio = alcanceBloqueio;
+    public void setTipoBloqueio(String tipoBloqueio) {
+        this.tipoBloqueio = tipoBloqueio;
     }
 
-    public DesbloqueioConsultaDetalhada alcanceBloqueio(AlcanceBloqueioEnum alcanceBloqueio) {
-        this.alcanceBloqueio = alcanceBloqueio;
-        return this;
-    }
-
-    /**
-     * Data na qual a o desbloqueio foi aplicado&lt;br/&gt;
-     *
-     * @return dataHoraDesbloqueio
-     **/
-    @JsonProperty("dataHoraDesbloqueio")
-    public String getDataHoraDesbloqueio() {
-        return dataHoraDesbloqueio;
-    }
-
-    public void setDataHoraDesbloqueio(String dataHoraDesbloqueio) {
-        this.dataHoraDesbloqueio = dataHoraDesbloqueio;
-    }
-
-    public DesbloqueioConsultaDetalhada dataHoraDesbloqueio(String dataHoraDesbloqueio) {
-        this.dataHoraDesbloqueio = dataHoraDesbloqueio;
-        return this;
-    }
-
-    /**
-     * Data na qual a o bloqueio foi aplicado&lt;br/&gt;
-     *
-     * @return dataHoraBloqueio
-     **/
-    @JsonProperty("dataHoraBloqueio")
-    public String getDataHoraBloqueio() {
-        return dataHoraBloqueio;
-    }
-
-    public void setDataHoraBloqueio(String dataHoraBloqueio) {
-        this.dataHoraBloqueio = dataHoraBloqueio;
-    }
-
-    public DesbloqueioConsultaDetalhada dataHoraBloqueio(String dataHoraBloqueio) {
-        this.dataHoraBloqueio = dataHoraBloqueio;
+    public DesbloqueioConsultaDetalhada tipoBloqueio(String tipoBloqueio) {
+        this.tipoBloqueio = tipoBloqueio;
         return this;
     }
 
@@ -269,15 +268,15 @@ public class DesbloqueioConsultaDetalhada {
     public String toString() {
 
         String sb = "class DesbloqueioConsultaDetalhada {\n" +
+                "    alcanceBloqueio: " + toIndentedString(alcanceBloqueio) + "\n" +
+                "    dataHoraBloqueio: " + toIndentedString(dataHoraBloqueio) + "\n" +
+                "    dataHoraDesbloqueio: " + toIndentedString(dataHoraDesbloqueio) + "\n" +
                 "    justificativaBloqueio: " + toIndentedString(justificativaBloqueio) + "\n" +
-                "    responsavelBloqueio: " + toIndentedString(responsavelBloqueio) + "\n" +
-                "    tipoBloqueio: " + toIndentedString(tipoBloqueio) + "\n" +
                 "    justificativaDesbloqueio: " + toIndentedString(justificativaDesbloqueio) + "\n" +
                 "    motivoBloqueio: " + toIndentedString(motivoBloqueio) + "\n" +
+                "    responsavelBloqueio: " + toIndentedString(responsavelBloqueio) + "\n" +
                 "    responsavelDesbloqueio: " + toIndentedString(responsavelDesbloqueio) + "\n" +
-                "    alcanceBloqueio: " + toIndentedString(alcanceBloqueio) + "\n" +
-                "    dataHoraDesbloqueio: " + toIndentedString(dataHoraDesbloqueio) + "\n" +
-                "    dataHoraBloqueio: " + toIndentedString(dataHoraBloqueio) + "\n" +
+                "    tipoBloqueio: " + toIndentedString(tipoBloqueio) + "\n" +
                 "}";
         return sb;
     }

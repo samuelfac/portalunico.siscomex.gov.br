@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CondicaoVendaConsultaItemCover", propOrder =
-        {"seguro", "incoterm", "metodoValoracao", "frete", "valorBRL", "valorMoedaNegociada", "acrescimosDeducoes"
+        {"metodoValoracao", "incoterm", "valorBRL", "valorMoedaNegociada", "frete", "seguro", "acrescimosDeducoes"
         })
 
 @XmlRootElement(name = "CondicaoVendaConsultaItemCover")
@@ -25,25 +25,15 @@ import java.util.List;
 @ApiModel(description = "<br>Condição de venda da mercadoria.<br> Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)")
 public class CondicaoVendaConsultaItemCover {
 
-    @XmlElement(name = "seguro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SeguroConsultaItemCover seguro = null;
-
-    @XmlElement(name = "incoterm")
-    @ApiModelProperty(value = "")
-    @Valid
-    private IncotermCover incoterm = null;
-
     @XmlElement(name = "metodoValoracao")
     @ApiModelProperty(value = "")
     @Valid
     private MetodoValoracaoCover metodoValoracao = null;
 
-    @XmlElement(name = "frete")
+    @XmlElement(name = "incoterm")
     @ApiModelProperty(value = "")
     @Valid
-    private FreteConsultaItemCover frete = null;
+    private IncotermCover incoterm = null;
 
     @XmlElement(name = "valorBRL")
     @ApiModelProperty(example = "1.0", value = "Valor na moeda negociada convertido em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -61,59 +51,20 @@ public class CondicaoVendaConsultaItemCover {
      **/
     private BigDecimal valorMoedaNegociada = null;
 
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FreteConsultaItemCover frete = null;
+
+    @XmlElement(name = "seguro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SeguroConsultaItemCover seguro = null;
+
     @XmlElement(name = "acrescimosDeducoes")
     @ApiModelProperty(value = "")
     @Valid
     private List<AcrescimoDeducaoConsultaItemCover> acrescimosDeducoes = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get seguro
-     *
-     * @return seguro
-     **/
-    @JsonProperty("seguro")
-    public SeguroConsultaItemCover getSeguro() {
-        return seguro;
-    }
-
-    public void setSeguro(SeguroConsultaItemCover seguro) {
-        this.seguro = seguro;
-    }
-
-    public CondicaoVendaConsultaItemCover seguro(SeguroConsultaItemCover seguro) {
-        this.seguro = seguro;
-        return this;
-    }
-
-    /**
-     * Get incoterm
-     *
-     * @return incoterm
-     **/
-    @JsonProperty("incoterm")
-    public IncotermCover getIncoterm() {
-        return incoterm;
-    }
-
-    public void setIncoterm(IncotermCover incoterm) {
-        this.incoterm = incoterm;
-    }
-
-    public CondicaoVendaConsultaItemCover incoterm(IncotermCover incoterm) {
-        this.incoterm = incoterm;
-        return this;
-    }
 
     /**
      * Get metodoValoracao
@@ -135,22 +86,28 @@ public class CondicaoVendaConsultaItemCover {
     }
 
     /**
-     * Get frete
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get incoterm
      *
-     * @return frete
+     * @return incoterm
      **/
-    @JsonProperty("frete")
-    public FreteConsultaItemCover getFrete() {
-        return frete;
+    @JsonProperty("incoterm")
+    public IncotermCover getIncoterm() {
+        return incoterm;
     }
 
-    public void setFrete(FreteConsultaItemCover frete) {
-        this.frete = frete;
-    }
-
-    public CondicaoVendaConsultaItemCover frete(FreteConsultaItemCover frete) {
-        this.frete = frete;
-        return this;
+    public void setIncoterm(IncotermCover incoterm) {
+        this.incoterm = incoterm;
     }
 
     /**
@@ -191,6 +148,44 @@ public class CondicaoVendaConsultaItemCover {
         return this;
     }
 
+    public CondicaoVendaConsultaItemCover incoterm(IncotermCover incoterm) {
+        this.incoterm = incoterm;
+        return this;
+    }
+
+    /**
+     * Get frete
+     *
+     * @return frete
+     **/
+    @JsonProperty("frete")
+    public FreteConsultaItemCover getFrete() {
+        return frete;
+    }
+
+    public void setFrete(FreteConsultaItemCover frete) {
+        this.frete = frete;
+    }
+
+    public CondicaoVendaConsultaItemCover frete(FreteConsultaItemCover frete) {
+        this.frete = frete;
+        return this;
+    }
+
+    /**
+     * Get seguro
+     *
+     * @return seguro
+     **/
+    @JsonProperty("seguro")
+    public SeguroConsultaItemCover getSeguro() {
+        return seguro;
+    }
+
+    public void setSeguro(SeguroConsultaItemCover seguro) {
+        this.seguro = seguro;
+    }
+
     /**
      * Get acrescimosDeducoes
      *
@@ -215,16 +210,21 @@ public class CondicaoVendaConsultaItemCover {
         return this;
     }
 
+    public CondicaoVendaConsultaItemCover seguro(SeguroConsultaItemCover seguro) {
+        this.seguro = seguro;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CondicaoVendaConsultaItemCover {\n" +
-                "    seguro: " + toIndentedString(seguro) + "\n" +
-                "    incoterm: " + toIndentedString(incoterm) + "\n" +
                 "    metodoValoracao: " + toIndentedString(metodoValoracao) + "\n" +
-                "    frete: " + toIndentedString(frete) + "\n" +
+                "    incoterm: " + toIndentedString(incoterm) + "\n" +
                 "    valorBRL: " + toIndentedString(valorBRL) + "\n" +
                 "    valorMoedaNegociada: " + toIndentedString(valorMoedaNegociada) + "\n" +
+                "    frete: " + toIndentedString(frete) + "\n" +
+                "    seguro: " + toIndentedString(seguro) + "\n" +
                 "    acrescimosDeducoes: " + toIndentedString(acrescimosDeducoes) + "\n" +
                 "}";
         return sb;

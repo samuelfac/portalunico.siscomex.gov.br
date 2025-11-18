@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RegistroERetificaoDeLoteDIR", propOrder =
-        {"cnpjDeclarante", "numeroLote", "manifestos", "sequenciaLote", "identificadorLote", "modalidade"
+        {"cnpjDeclarante", "identificadorLote", "manifestos", "modalidade", "numeroLote", "sequenciaLote"
         })
 
 @XmlRootElement(name = "RegistroERetificaoDeLoteDIR")
@@ -28,12 +28,12 @@ public class RegistroERetificaoDeLoteDIR {
      **/
     private String cnpjDeclarante = null;
 
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(example = "ABC2024010100001", value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.")
+    @XmlElement(name = "identificadorLote")
+    @ApiModelProperty(value = "Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
     /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     * Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      **/
-    private String numeroLote = null;
+    private String identificadorLote = null;
 
     @XmlElement(name = "manifestos")
     @ApiModelProperty(value = "Lista de manifestos.")
@@ -43,20 +43,6 @@ public class RegistroERetificaoDeLoteDIR {
      **/
     private List<DadosDoManifestoParaRegistroERetificaoDeLoteDIR> manifestos = null;
 
-    @XmlElement(name = "sequenciaLote")
-    @ApiModelProperty(example = "00051", value = "Número sequencial de declaração enviado por um operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do lote, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.")
-    /**
-     * Número sequencial de declaração enviado por um operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do lote, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
-     **/
-    private String sequenciaLote = null;
-
-    @XmlElement(name = "identificadorLote")
-    @ApiModelProperty(value = "Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
-    /**
-     * Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
-     **/
-    private String identificadorLote = null;
-
     @XmlElement(name = "modalidade", required = true)
     @ApiModelProperty(required = true, value = "Tipo da modalidade do manifesto.<br/>Valores pré-definidos:<br/>'E' para Remessa Expressa;<br/>'P' para Remessa Postal.")
     /**
@@ -64,16 +50,19 @@ public class RegistroERetificaoDeLoteDIR {
      **/
     private String modalidade = null;
 
+    @XmlElement(name = "numeroLote")
+    @ApiModelProperty(example = "ABC2024010100001", value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     **/
+    private String numeroLote = null;
+
+    @XmlElement(name = "sequenciaLote")
+    @ApiModelProperty(example = "00051", value = "Número sequencial de declaração enviado por um operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do lote, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.")
+    /**
+     * Número sequencial de declaração enviado por um operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do lote, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.<br/>Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     **/
+    private String sequenciaLote = null;
 
     /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
@@ -96,22 +85,29 @@ public class RegistroERetificaoDeLoteDIR {
     }
 
     /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
-     * @return numeroLote
+     * @return identificadorLote
      **/
-    @JsonProperty("numeroLote")
-    public String getNumeroLote() {
-        return numeroLote;
+    @JsonProperty("identificadorLote")
+    @Size(min = 0, max = 255)
+    public String getIdentificadorLote() {
+        return identificadorLote;
     }
 
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-    }
-
-    public RegistroERetificaoDeLoteDIR numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
+    public void setIdentificadorLote(String identificadorLote) {
+        this.identificadorLote = identificadorLote;
     }
 
     /**
@@ -139,45 +135,6 @@ public class RegistroERetificaoDeLoteDIR {
     }
 
     /**
-     * Número sequencial de declaração enviado por um operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do lote, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
-     *
-     * @return sequenciaLote
-     **/
-    @JsonProperty("sequenciaLote")
-    public String getSequenciaLote() {
-        return sequenciaLote;
-    }
-
-    public void setSequenciaLote(String sequenciaLote) {
-        this.sequenciaLote = sequenciaLote;
-    }
-
-    public RegistroERetificaoDeLoteDIR sequenciaLote(String sequenciaLote) {
-        this.sequenciaLote = sequenciaLote;
-        return this;
-    }
-
-    /**
-     * Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
-     *
-     * @return identificadorLote
-     **/
-    @JsonProperty("identificadorLote")
-    @Size(min = 0, max = 255)
-    public String getIdentificadorLote() {
-        return identificadorLote;
-    }
-
-    public void setIdentificadorLote(String identificadorLote) {
-        this.identificadorLote = identificadorLote;
-    }
-
-    public RegistroERetificaoDeLoteDIR identificadorLote(String identificadorLote) {
-        this.identificadorLote = identificadorLote;
-        return this;
-    }
-
-    /**
      * Tipo da modalidade do manifesto.&lt;br/&gt;Valores pré-definidos:&lt;br/&gt;&#39;E&#39; para Remessa Expressa;&lt;br/&gt;&#39;P&#39; para Remessa Postal.
      *
      * @return modalidade
@@ -197,16 +154,59 @@ public class RegistroERetificaoDeLoteDIR {
         return this;
     }
 
+    public RegistroERetificaoDeLoteDIR identificadorLote(String identificadorLote) {
+        this.identificadorLote = identificadorLote;
+        return this;
+    }
+
+    /**
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     *
+     * @return numeroLote
+     **/
+    @JsonProperty("numeroLote")
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+    }
+
+    public RegistroERetificaoDeLoteDIR numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
+    }
+
+    /**
+     * Número sequencial de declaração enviado por um operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do lote, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
+     *
+     * @return sequenciaLote
+     **/
+    @JsonProperty("sequenciaLote")
+    public String getSequenciaLote() {
+        return sequenciaLote;
+    }
+
+    public void setSequenciaLote(String sequenciaLote) {
+        this.sequenciaLote = sequenciaLote;
+    }
+
+    public RegistroERetificaoDeLoteDIR sequenciaLote(String sequenciaLote) {
+        this.sequenciaLote = sequenciaLote;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RegistroERetificaoDeLoteDIR {\n" +
                 "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
-                "    manifestos: " + toIndentedString(manifestos) + "\n" +
-                "    sequenciaLote: " + toIndentedString(sequenciaLote) + "\n" +
                 "    identificadorLote: " + toIndentedString(identificadorLote) + "\n" +
+                "    manifestos: " + toIndentedString(manifestos) + "\n" +
                 "    modalidade: " + toIndentedString(modalidade) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    sequenciaLote: " + toIndentedString(sequenciaLote) + "\n" +
                 "}";
         return sb;
     }

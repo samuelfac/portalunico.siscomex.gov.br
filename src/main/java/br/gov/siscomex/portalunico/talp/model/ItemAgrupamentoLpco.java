@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemAgrupamentoLpco", propOrder =
-        {"situacao", "dataExclusao", "numeroLi", "numeroConhecimento", "dataInclusao", "numeroLpco"
+        {"numeroLi", "numeroLpco", "situacao", "numeroConhecimento", "dataInclusao", "dataExclusao"
         })
 
 @XmlRootElement(name = "ItemAgrupamentoLpco")
@@ -23,26 +23,26 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Item que faz parte de um agrupamento de LPCOs (apenas LPCOs com LI vinculada). Permite identificar o LPCO que faz parte do agrupamento.")
 public class ItemAgrupamentoLpco {
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(example = "Para análise", required = true, value = "Descrição da situação na qual o LPCO agrupado se encontra.<br>Tamanho máximo: 30")
-    /**
-     * Descrição da situação na qual o LPCO agrupado se encontra.<br>Tamanho máximo: 30
-     **/
-    private String situacao = null;
-
-    @XmlElement(name = "dataExclusao")
-    @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data em que o LPCO foi excluído no agrupamento (se for o caso).<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ")
-    /**
-     * Data em que o LPCO foi excluído no agrupamento (se for o caso).<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ
-     **/
-    private String dataExclusao = null;
-
     @XmlElement(name = "numeroLi", required = true)
     @ApiModelProperty(example = "2300012349", required = true, value = "Número da LI a qual o LPCO que faz parte do agrupamento está vinculado.<br>Tamanho: 11<br>Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)<br>Lei de formação: O número da LI é composto por:<br>* AA = Ano do registro da LI<br>* NNNNNNN = Número sequencial da LI no ano* V = Dígito verificador")
     /**
      * Número da LI a qual o LPCO que faz parte do agrupamento está vinculado.<br>Tamanho: 11<br>Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)<br>Lei de formação: O número da LI é composto por:<br>* AA = Ano do registro da LI<br>* NNNNNNN = Número sequencial da LI no ano* V = Dígito verificador
      **/
     private String numeroLi = null;
+
+    @XmlElement(name = "numeroLpco", required = true)
+    @ApiModelProperty(example = "E1900000001", required = true, value = "Número do LPCO que faz parte do agrupamento está vinculado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")
+    /**
+     * Número do LPCO que faz parte do agrupamento está vinculado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano
+     **/
+    private String numeroLpco = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(example = "Para análise", required = true, value = "Descrição da situação na qual o LPCO agrupado se encontra.<br>Tamanho máximo: 30")
+    /**
+     * Descrição da situação na qual o LPCO agrupado se encontra.<br>Tamanho máximo: 30
+     **/
+    private String situacao = null;
 
     @XmlElement(name = "numeroConhecimento")
     @ApiModelProperty(example = "99999999999999999999", value = "Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
@@ -58,62 +58,12 @@ public class ItemAgrupamentoLpco {
      **/
     private String dataInclusao = null;
 
-    @XmlElement(name = "numeroLpco", required = true)
-    @ApiModelProperty(example = "E1900000001", required = true, value = "Número do LPCO que faz parte do agrupamento está vinculado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano")
+    @XmlElement(name = "dataExclusao")
+    @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data em que o LPCO foi excluído no agrupamento (se for o caso).<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ")
     /**
-     * Número do LPCO que faz parte do agrupamento está vinculado.<br>Tamanho: 11<br>Formato: OAANNNNNNNN<br>Lei de formação: O número do LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* AA = Ano do registro do LPCO<br>* NNNNNNNN = Número sequencial do LPCO no ano
+     * Data em que o LPCO foi excluído no agrupamento (se for o caso).<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ
      **/
-    private String numeroLpco = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Descrição da situação na qual o LPCO agrupado se encontra.&lt;br&gt;Tamanho máximo: 30
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    @NotNull
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public ItemAgrupamentoLpco situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Data em que o LPCO foi excluído no agrupamento (se for o caso).&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
-     * @return dataExclusao
-     **/
-    @JsonProperty("dataExclusao")
-    public String getDataExclusao() {
-        return dataExclusao;
-    }
-
-    public void setDataExclusao(String dataExclusao) {
-        this.dataExclusao = dataExclusao;
-    }
-
-    public ItemAgrupamentoLpco dataExclusao(String dataExclusao) {
-        this.dataExclusao = dataExclusao;
-        return this;
-    }
+    private String dataExclusao = null;
 
     /**
      * Número da LI a qual o LPCO que faz parte do agrupamento está vinculado.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: AANNNNNNNV (apenas dígitos, sem os caracteres separadores)&lt;br&gt;Lei de formação: O número da LI é composto por:&lt;br&gt;* AA &#x3D; Ano do registro da LI&lt;br&gt;* NNNNNNN &#x3D; Número sequencial da LI no ano* V &#x3D; Dígito verificador
@@ -133,6 +83,52 @@ public class ItemAgrupamentoLpco {
     public ItemAgrupamentoLpco numeroLi(String numeroLi) {
         this.numeroLi = numeroLi;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do LPCO que faz parte do agrupamento está vinculado.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
+     *
+     * @return numeroLpco
+     **/
+    @JsonProperty("numeroLpco")
+    @NotNull
+    public String getNumeroLpco() {
+        return numeroLpco;
+    }
+
+    public void setNumeroLpco(String numeroLpco) {
+        this.numeroLpco = numeroLpco;
+    }
+
+    public ItemAgrupamentoLpco numeroLpco(String numeroLpco) {
+        this.numeroLpco = numeroLpco;
+        return this;
+    }
+
+    /**
+     * Descrição da situação na qual o LPCO agrupado se encontra.&lt;br&gt;Tamanho máximo: 30
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 
     /**
@@ -174,23 +170,27 @@ public class ItemAgrupamentoLpco {
         return this;
     }
 
+    public ItemAgrupamentoLpco situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     /**
-     * Número do LPCO que faz parte do agrupamento está vinculado.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
+     * Data em que o LPCO foi excluído no agrupamento (se for o caso).&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
      *
-     * @return numeroLpco
+     * @return dataExclusao
      **/
-    @JsonProperty("numeroLpco")
-    @NotNull
-    public String getNumeroLpco() {
-        return numeroLpco;
+    @JsonProperty("dataExclusao")
+    public String getDataExclusao() {
+        return dataExclusao;
     }
 
-    public void setNumeroLpco(String numeroLpco) {
-        this.numeroLpco = numeroLpco;
+    public void setDataExclusao(String dataExclusao) {
+        this.dataExclusao = dataExclusao;
     }
 
-    public ItemAgrupamentoLpco numeroLpco(String numeroLpco) {
-        this.numeroLpco = numeroLpco;
+    public ItemAgrupamentoLpco dataExclusao(String dataExclusao) {
+        this.dataExclusao = dataExclusao;
         return this;
     }
 
@@ -198,12 +198,12 @@ public class ItemAgrupamentoLpco {
     public String toString() {
 
         String sb = "class ItemAgrupamentoLpco {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    dataExclusao: " + toIndentedString(dataExclusao) + "\n" +
                 "    numeroLi: " + toIndentedString(numeroLi) + "\n" +
+                "    numeroLpco: " + toIndentedString(numeroLpco) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    numeroConhecimento: " + toIndentedString(numeroConhecimento) + "\n" +
                 "    dataInclusao: " + toIndentedString(dataInclusao) + "\n" +
-                "    numeroLpco: " + toIndentedString(numeroLpco) + "\n" +
+                "    dataExclusao: " + toIndentedString(dataExclusao) + "\n" +
                 "}";
         return sb;
     }

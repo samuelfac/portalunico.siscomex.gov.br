@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExtratoVO", propOrder =
-        {"texto", "codigo"
+        {"codigo", "texto"
         })
 
 @XmlRootElement(name = "ExtratoVO")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Falha de processamento, devido regra de negócio ou erro de sistema")
 public class ExtratoVO {
 
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "CCTR-ER0126", value = "Código do erro encontrado durante o processamento")
+    /**
+     * Código do erro encontrado durante o processamento
+     **/
+    private String codigo = null;
+
     @XmlElement(name = "texto")
     @ApiModelProperty(example = "O usuário não representa o interveniente informado", value = "Descrição do erro encontrado durante o processamento")
     /**
@@ -29,12 +36,24 @@ public class ExtratoVO {
      **/
     private String texto = null;
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "CCTR-ER0126", value = "Código do erro encontrado durante o processamento")
     /**
      * Código do erro encontrado durante o processamento
+     *
+     * @return codigo
      **/
-    private String codigo = null;
+    @JsonProperty("codigo")
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public ExtratoVO codigo(String codigo) {
+        this.codigo = codigo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,31 +85,12 @@ public class ExtratoVO {
         return this;
     }
 
-    /**
-     * Código do erro encontrado durante o processamento
-     *
-     * @return codigo
-     **/
-    @JsonProperty("codigo")
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public ExtratoVO codigo(String codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ExtratoVO {\n" +
-                "    texto: " + toIndentedString(texto) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    texto: " + toIndentedString(texto) + "\n" +
                 "}";
         return sb;
     }

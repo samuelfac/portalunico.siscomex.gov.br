@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "BrasileiroProprio", propOrder =
-        {"dataVencimentoLicenca", "licencaTNTI"
+        {"licencaTNTI", "dataVencimentoLicenca"
         })
 
 @XmlRootElement(name = "BrasileiroProprio")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do transportador brasileiro próprio")
 public class BrasileiroProprio {
 
+    @XmlElement(name = "licencaTNTI")
+    @ApiModelProperty(example = "1234/17", value = "Número da licença TNTI<br>Formato: NNNN/NN")
+    /**
+     * Número da licença TNTI<br>Formato: NNNN/NN
+     **/
+    private String licencaTNTI = null;
+
     @XmlElement(name = "dataVencimentoLicenca")
     @ApiModelProperty(example = "2019-05-30", value = "Data de vencimento da licença TNTI<br>Formato: AAAA-MM-DD")
     /**
@@ -29,12 +36,24 @@ public class BrasileiroProprio {
      **/
     private String dataVencimentoLicenca = null;
 
-    @XmlElement(name = "licencaTNTI")
-    @ApiModelProperty(example = "1234/17", value = "Número da licença TNTI<br>Formato: NNNN/NN")
     /**
-     * Número da licença TNTI<br>Formato: NNNN/NN
+     * Número da licença TNTI&lt;br&gt;Formato: NNNN/NN
+     *
+     * @return licencaTNTI
      **/
-    private String licencaTNTI = null;
+    @JsonProperty("licencaTNTI")
+    public String getLicencaTNTI() {
+        return licencaTNTI;
+    }
+
+    public void setLicencaTNTI(String licencaTNTI) {
+        this.licencaTNTI = licencaTNTI;
+    }
+
+    public BrasileiroProprio licencaTNTI(String licencaTNTI) {
+        this.licencaTNTI = licencaTNTI;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,31 +85,12 @@ public class BrasileiroProprio {
         return this;
     }
 
-    /**
-     * Número da licença TNTI&lt;br&gt;Formato: NNNN/NN
-     *
-     * @return licencaTNTI
-     **/
-    @JsonProperty("licencaTNTI")
-    public String getLicencaTNTI() {
-        return licencaTNTI;
-    }
-
-    public void setLicencaTNTI(String licencaTNTI) {
-        this.licencaTNTI = licencaTNTI;
-    }
-
-    public BrasileiroProprio licencaTNTI(String licencaTNTI) {
-        this.licencaTNTI = licencaTNTI;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class BrasileiroProprio {\n" +
-                "    dataVencimentoLicenca: " + toIndentedString(dataVencimentoLicenca) + "\n" +
                 "    licencaTNTI: " + toIndentedString(licencaTNTI) + "\n" +
+                "    dataVencimentoLicenca: " + toIndentedString(dataVencimentoLicenca) + "\n" +
                 "}";
         return sb;
     }

@@ -28,7 +28,7 @@ public interface ServicosDeConsultaDeArquivosRecebidosApi {
 
     /**
      * Consultar Situação de Arquivos por Número de Protocolo
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;Consulta, para um determinado número de protocolo, a situação atual do processamento do arquivo enviado. O número de protocolo é aquele gerado pelo sistema após o recebimento do arquivo, quando o mesmo passa pela validação do XSD da IATA.&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;As situações podem ser:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;em&gt;Received&lt;/em&gt; – Aguardando processamento.&lt;/li&gt;&lt;li&gt;&lt;em&gt;Processed&lt;/em&gt; – Processamento realizado com sucesso, com gravação dos dados na base de dados.&lt;/li&gt;&lt;li&gt;&lt;em&gt;Rejected&lt;/em&gt; – Arquivo rejeitado por erro no processamento. Neste caso, a lista de erros encontrados é exibida.&lt;/li&gt;&lt;/ul&gt;
      *
      */
@@ -39,16 +39,16 @@ public interface ServicosDeConsultaDeArquivosRecebidosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = Recebimento.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     Recebimento consultarRecepcaoPorProtocoloUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Número do protocolo.<br/>Tamanho: 36<br/>Formato: AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA", required = true) @PathParam("protocolNumber") String protocolNumber);
 
     /**
      * Consultar Situação de Arquivos por Data
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;Consulta, para uma determinada data, a lista de arquivos enviados que passaram pela validação do XSD da IATA, tendo número de protocolo gerado. O retorno traz a situação atual do processamento de cada arquivo.&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;As situações podem ser:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;em&gt;Received&lt;/em&gt; – Aguardando processamento.&lt;/li&gt;&lt;li&gt;&lt;em&gt;Processed&lt;/em&gt; – Processamento realizado com sucesso, com gravação dos dados na base.&lt;/li&gt;&lt;li&gt;&lt;em&gt;Rejected&lt;/em&gt; – Arquivo rejeitado por erro no processamento. Neste caso, a lista de erros encontrados é exibida.&lt;/li&gt;&lt;/ul&gt;
      *
      */
@@ -58,13 +58,13 @@ public interface ServicosDeConsultaDeArquivosRecebidosApi {
     @ApiOperation(value = "Consultar Situação de Arquivos por Data", notes = "<p style=\"margin-bottom: 1em; margin-top: 1em;\">Consulta, para uma determinada data, a lista de arquivos enviados que passaram pela validação do XSD da IATA, tendo número de protocolo gerado. O retorno traz a situação atual do processamento de cada arquivo.</p><p style=\"margin-bottom: 1em; margin-top: 1em;\">As situações podem ser:</p><ul><li><em>Received</em> – Aguardando processamento.</li><li><em>Processed</em> – Processamento realizado com sucesso, com gravação dos dados na base.</li><li><em>Rejected</em> – Arquivo rejeitado por erro no processamento. Neste caso, a lista de erros encontrados é exibida.</li></ul>", tags = {"Servicos de Consulta de Arquivos Recebidos"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RespostaRecebimento.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RespostaRecebimento consultarRecepcaoUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "Data de término período recebimento do arquivo  Tamanho: 10  Formato YYYY-MM-DD ou YYYY-MM-DD'T'HH:MI:SS", required = true) @QueryParam("endDate") String endDate, @NotNull @ApiParam(value = "Data de início período recebimento do arquivo  Tamanho: 10  Formato YYYY-MM-DD ou YYYY-MM-DD'T'HH:MI:SS", required = true) @QueryParam("startDate") String startDate, @ApiParam(value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN") @QueryParam("cnpj") String cnpj);
 }
 

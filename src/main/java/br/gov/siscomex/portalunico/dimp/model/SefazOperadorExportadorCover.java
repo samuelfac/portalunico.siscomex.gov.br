@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazOperadorExportadorCover", propOrder =
-        {"versaoOperadorExportador", "niOperadorExportador", "paisOperadorExportador", "codigoOperadorExportador"
+        {"codigoOperadorExportador", "versaoOperadorExportador", "paisOperadorExportador", "niOperadorExportador"
         })
 
 @XmlRootElement(name = "SefazOperadorExportadorCover")
@@ -23,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados de Operador Exportador")
 public class SefazOperadorExportadorCover {
 
+    @XmlElement(name = "codigoOperadorExportador")
+    @ApiModelProperty(example = "CN001", value = "Código do exportador estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
+    /**
+     * Código do exportador estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
+     **/
+    private String codigoOperadorExportador = null;
+
     @XmlElement(name = "versaoOperadorExportador")
     @ApiModelProperty(example = "1.1", value = "Versão do cadastro do exportador estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 6")
     /**
@@ -30,24 +37,17 @@ public class SefazOperadorExportadorCover {
      **/
     private String versaoOperadorExportador = null;
 
+    @XmlElement(name = "paisOperadorExportador")
+    @ApiModelProperty(value = "")
+    @Valid
+    private PasDoExportadorObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorExportador = null;
+
     @XmlElement(name = "niOperadorExportador")
     @ApiModelProperty(value = "Identificação de quem cadastrou o exportador no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)<br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
      * Identificação de quem cadastrou o exportador no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)<br>Caso seja CNPJ (Raiz): <br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
      **/
     private String niOperadorExportador = null;
-
-    @XmlElement(name = "paisOperadorExportador")
-    @ApiModelProperty(value = "")
-    @Valid
-    private PasDoExportadorObjetoCompostoPelosAtributosCdigoEDescrio paisOperadorExportador = null;
-
-    @XmlElement(name = "codigoOperadorExportador")
-    @ApiModelProperty(example = "CN001", value = "Código do exportador estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35")
-    /**
-     * Código do exportador estrangeiro no Sistema Catalogo de Produtos<br>Tamanho mínimo: 1<br>Tamanho máximo: 35
-     **/
-    private String codigoOperadorExportador = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,6 +58,20 @@ public class SefazOperadorExportadorCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do exportador estrangeiro no Sistema Catalogo de Produtos&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
+     *
+     * @return codigoOperadorExportador
+     **/
+    @JsonProperty("codigoOperadorExportador")
+    public String getCodigoOperadorExportador() {
+        return codigoOperadorExportador;
+    }
+
+    public void setCodigoOperadorExportador(String codigoOperadorExportador) {
+        this.codigoOperadorExportador = codigoOperadorExportador;
     }
 
     /**
@@ -80,25 +94,6 @@ public class SefazOperadorExportadorCover {
     }
 
     /**
-     * Identificação de quem cadastrou o exportador no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)&lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return niOperadorExportador
-     **/
-    @JsonProperty("niOperadorExportador")
-    public String getNiOperadorExportador() {
-        return niOperadorExportador;
-    }
-
-    public void setNiOperadorExportador(String niOperadorExportador) {
-        this.niOperadorExportador = niOperadorExportador;
-    }
-
-    public SefazOperadorExportadorCover niOperadorExportador(String niOperadorExportador) {
-        this.niOperadorExportador = niOperadorExportador;
-        return this;
-    }
-
-    /**
      * Get paisOperadorExportador
      *
      * @return paisOperadorExportador
@@ -117,22 +112,27 @@ public class SefazOperadorExportadorCover {
         return this;
     }
 
-    /**
-     * Código do exportador estrangeiro no Sistema Catalogo de Produtos&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
-     *
-     * @return codigoOperadorExportador
-     **/
-    @JsonProperty("codigoOperadorExportador")
-    public String getCodigoOperadorExportador() {
-        return codigoOperadorExportador;
-    }
-
-    public void setCodigoOperadorExportador(String codigoOperadorExportador) {
-        this.codigoOperadorExportador = codigoOperadorExportador;
-    }
-
     public SefazOperadorExportadorCover codigoOperadorExportador(String codigoOperadorExportador) {
         this.codigoOperadorExportador = codigoOperadorExportador;
+        return this;
+    }
+
+    /**
+     * Identificação de quem cadastrou o exportador no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)&lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return niOperadorExportador
+     **/
+    @JsonProperty("niOperadorExportador")
+    public String getNiOperadorExportador() {
+        return niOperadorExportador;
+    }
+
+    public void setNiOperadorExportador(String niOperadorExportador) {
+        this.niOperadorExportador = niOperadorExportador;
+    }
+
+    public SefazOperadorExportadorCover niOperadorExportador(String niOperadorExportador) {
+        this.niOperadorExportador = niOperadorExportador;
         return this;
     }
 
@@ -140,10 +140,10 @@ public class SefazOperadorExportadorCover {
     public String toString() {
 
         String sb = "class SefazOperadorExportadorCover {\n" +
-                "    versaoOperadorExportador: " + toIndentedString(versaoOperadorExportador) + "\n" +
-                "    niOperadorExportador: " + toIndentedString(niOperadorExportador) + "\n" +
-                "    paisOperadorExportador: " + toIndentedString(paisOperadorExportador) + "\n" +
                 "    codigoOperadorExportador: " + toIndentedString(codigoOperadorExportador) + "\n" +
+                "    versaoOperadorExportador: " + toIndentedString(versaoOperadorExportador) + "\n" +
+                "    paisOperadorExportador: " + toIndentedString(paisOperadorExportador) + "\n" +
+                "    niOperadorExportador: " + toIndentedString(niOperadorExportador) + "\n" +
                 "}";
         return sb;
     }

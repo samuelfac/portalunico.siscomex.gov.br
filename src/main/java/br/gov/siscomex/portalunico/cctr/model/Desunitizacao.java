@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Desunitizacao", propOrder =
-        {"documentos", "numeroConteiner"
+        {"numeroConteiner", "documentos"
         })
 
 @XmlRootElement(name = "Desunitizacao")
@@ -24,17 +24,37 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados das cargas desunitizadas")
 public class Desunitizacao {
 
-    @XmlElement(name = "documentos", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Documentos documentos = null;
-
     @XmlElement(name = "numeroConteiner", required = true)
     @ApiModelProperty(example = "CONT0001", required = true, value = "Número do contêiner que será desunitizado<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA")
     /**
      * Número do contêiner que será desunitizado<br>Tamanho: 20<br>Formato: AAAAAAAAAAAAAAAAAAAA
      **/
     private String numeroConteiner = null;
+
+    @XmlElement(name = "documentos", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Documentos documentos = null;
+
+    /**
+     * Número do contêiner que será desunitizado&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAA
+     *
+     * @return numeroConteiner
+     **/
+    @JsonProperty("numeroConteiner")
+    @NotNull
+    public String getNumeroConteiner() {
+        return numeroConteiner;
+    }
+
+    public void setNumeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+    }
+
+    public Desunitizacao numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,32 +87,12 @@ public class Desunitizacao {
         return this;
     }
 
-    /**
-     * Número do contêiner que será desunitizado&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAA
-     *
-     * @return numeroConteiner
-     **/
-    @JsonProperty("numeroConteiner")
-    @NotNull
-    public String getNumeroConteiner() {
-        return numeroConteiner;
-    }
-
-    public void setNumeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-    }
-
-    public Desunitizacao numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Desunitizacao {\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
                 "    numeroConteiner: " + toIndentedString(numeroConteiner) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
                 "}";
         return sb;
     }

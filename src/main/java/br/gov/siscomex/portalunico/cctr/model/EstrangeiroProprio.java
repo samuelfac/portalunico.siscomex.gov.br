@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EstrangeiroProprio", propOrder =
-        {"idFiscal", "dataVencimentoLicencaOriginaria", "endereco", "licencaOriginaria", "licencaComplementarTETI", "nome", "pais"
+        {"idFiscal", "pais", "licencaOriginaria", "dataVencimentoLicencaOriginaria", "endereco", "nome", "licencaComplementarTETI"
         })
 
 @XmlRootElement(name = "EstrangeiroProprio")
@@ -30,6 +30,20 @@ public class EstrangeiroProprio {
      **/
     private String idFiscal = null;
 
+    @XmlElement(name = "pais")
+    @ApiModelProperty(example = "AR", value = "País do Transportador<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
+    /**
+     * País do Transportador<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
+     **/
+    private String pais = null;
+
+    @XmlElement(name = "licencaOriginaria")
+    @ApiModelProperty(example = "1234656517", value = "Número da licença originária<br>Tamanho: 20")
+    /**
+     * Número da licença originária<br>Tamanho: 20
+     **/
+    private String licencaOriginaria = null;
+
     @XmlElement(name = "dataVencimentoLicencaOriginaria")
     @ApiModelProperty(example = "2030-04-01", value = "Data de vencimento da licença originária<br>Formato: AAAA-MM-DD")
     /**
@@ -44,20 +58,6 @@ public class EstrangeiroProprio {
      **/
     private String endereco = null;
 
-    @XmlElement(name = "licencaOriginaria")
-    @ApiModelProperty(example = "1234656517", value = "Número da licença originária<br>Tamanho: 20")
-    /**
-     * Número da licença originária<br>Tamanho: 20
-     **/
-    private String licencaOriginaria = null;
-
-    @XmlElement(name = "licencaComplementarTETI")
-    @ApiModelProperty(example = "1234/17", value = "Número da licença complementar TETI<br>Formato: NNNN/NN")
-    /**
-     * Número da licença complementar TETI<br>Formato: NNNN/NN
-     **/
-    private String licencaComplementarTETI = null;
-
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "Nome do transportador", required = true, value = "Nome do transportador<br>Tamanho: 60")
     /**
@@ -65,23 +65,12 @@ public class EstrangeiroProprio {
      **/
     private String nome = null;
 
-    @XmlElement(name = "pais")
-    @ApiModelProperty(example = "AR", value = "País do Transportador<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país")
+    @XmlElement(name = "licencaComplementarTETI")
+    @ApiModelProperty(example = "1234/17", value = "Número da licença complementar TETI<br>Formato: NNNN/NN")
     /**
-     * País do Transportador<br>Tamanho: 2<br>Formato: AA<br>Sigla ISO/Alfa 2 do país
+     * Número da licença complementar TETI<br>Formato: NNNN/NN
      **/
-    private String pais = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    private String licencaComplementarTETI = null;
 
     /**
      * Identificação Fiscal do Transportador&lt;br&gt;Tamanho: 14
@@ -101,6 +90,50 @@ public class EstrangeiroProprio {
     public EstrangeiroProprio idFiscal(String idFiscal) {
         this.idFiscal = idFiscal;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * País do Transportador&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
+     *
+     * @return pais
+     **/
+    @JsonProperty("pais")
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public EstrangeiroProprio pais(String pais) {
+        this.pais = pais;
+        return this;
+    }
+
+    /**
+     * Número da licença originária&lt;br&gt;Tamanho: 20
+     *
+     * @return licencaOriginaria
+     **/
+    @JsonProperty("licencaOriginaria")
+    public String getLicencaOriginaria() {
+        return licencaOriginaria;
+    }
+
+    public void setLicencaOriginaria(String licencaOriginaria) {
+        this.licencaOriginaria = licencaOriginaria;
     }
 
     /**
@@ -143,17 +176,23 @@ public class EstrangeiroProprio {
     }
 
     /**
-     * Número da licença originária&lt;br&gt;Tamanho: 20
+     * Nome do transportador&lt;br&gt;Tamanho: 60
      *
-     * @return licencaOriginaria
+     * @return nome
      **/
-    @JsonProperty("licencaOriginaria")
-    public String getLicencaOriginaria() {
-        return licencaOriginaria;
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
     }
 
-    public void setLicencaOriginaria(String licencaOriginaria) {
-        this.licencaOriginaria = licencaOriginaria;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public EstrangeiroProprio nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     public EstrangeiroProprio licencaOriginaria(String licencaOriginaria) {
@@ -180,56 +219,17 @@ public class EstrangeiroProprio {
         return this;
     }
 
-    /**
-     * Nome do transportador&lt;br&gt;Tamanho: 60
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public EstrangeiroProprio nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    /**
-     * País do Transportador&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
-     *
-     * @return pais
-     **/
-    @JsonProperty("pais")
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public EstrangeiroProprio pais(String pais) {
-        this.pais = pais;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class EstrangeiroProprio {\n" +
                 "    idFiscal: " + toIndentedString(idFiscal) + "\n" +
+                "    pais: " + toIndentedString(pais) + "\n" +
+                "    licencaOriginaria: " + toIndentedString(licencaOriginaria) + "\n" +
                 "    dataVencimentoLicencaOriginaria: " + toIndentedString(dataVencimentoLicencaOriginaria) + "\n" +
                 "    endereco: " + toIndentedString(endereco) + "\n" +
-                "    licencaOriginaria: " + toIndentedString(licencaOriginaria) + "\n" +
-                "    licencaComplementarTETI: " + toIndentedString(licencaComplementarTETI) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
-                "    pais: " + toIndentedString(pais) + "\n" +
+                "    licencaComplementarTETI: " + toIndentedString(licencaComplementarTETI) + "\n" +
                 "}";
         return sb;
     }

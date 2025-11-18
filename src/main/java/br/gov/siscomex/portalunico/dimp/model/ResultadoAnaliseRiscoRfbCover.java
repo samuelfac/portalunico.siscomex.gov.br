@@ -25,12 +25,7 @@ public class ResultadoAnaliseRiscoRfbCover {
      * Sigla do órgão da administração pública.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
     private String orgao = null;
-    @XmlElement(name = "resultado")
-    @ApiModelProperty(example = "DESEMBARACO_AUTORIZADO", value = "Resultados para análise de risco da conferência aduaneira.<br>Domínio:")
-    /**
-     * Resultados para análise de risco da conferência aduaneira.<br>Domínio:
-     **/
-    private ResultadoEnum resultado = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -42,6 +37,13 @@ public class ResultadoAnaliseRiscoRfbCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "resultado")
+    @ApiModelProperty(example = "DESEMBARACO_AUTORIZADO", value = "Resultados para análise de risco da conferência aduaneira.<br>Domínio:")
+    /**
+     * Resultados para análise de risco da conferência aduaneira.<br>Domínio:
+     **/
+    private ResultadoEnum resultado = null;
 
     /**
      * Sigla do órgão da administração pública.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
@@ -83,7 +85,6 @@ public class ResultadoAnaliseRiscoRfbCover {
         this.resultado = resultado;
         return this;
     }
-
 
     @Override
     public String toString() {

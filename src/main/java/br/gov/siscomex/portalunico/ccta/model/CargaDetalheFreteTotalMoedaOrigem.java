@@ -12,26 +12,45 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaDetalheFreteTotalMoedaOrigem", propOrder =
-        {"valorCollect", "tipo", "valorPrepaid"
+        {"tipo", "valorCollect", "valorPrepaid"
         })
 
 @XmlRootElement(name = "CargaDetalheFreteTotalMoedaOrigem")
 public class CargaDetalheFreteTotalMoedaOrigem {
-
-    @XmlElement(name = "valorCollect")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValorMonetario valorCollect = null;
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(value = "")
     @Valid
     private TipoTotalMoedaOrigem tipo = null;
 
+    @XmlElement(name = "valorCollect")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValorMonetario valorCollect = null;
+
     @XmlElement(name = "valorPrepaid")
     @ApiModelProperty(value = "")
     @Valid
     private ValorMonetario valorPrepaid = null;
+
+    /**
+     * Get tipo
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public TipoTotalMoedaOrigem getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoTotalMoedaOrigem tipo) {
+        this.tipo = tipo;
+    }
+
+    public CargaDetalheFreteTotalMoedaOrigem tipo(TipoTotalMoedaOrigem tipo) {
+        this.tipo = tipo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,30 +77,6 @@ public class CargaDetalheFreteTotalMoedaOrigem {
         this.valorCollect = valorCollect;
     }
 
-    public CargaDetalheFreteTotalMoedaOrigem valorCollect(ValorMonetario valorCollect) {
-        this.valorCollect = valorCollect;
-        return this;
-    }
-
-    /**
-     * Get tipo
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public TipoTotalMoedaOrigem getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoTotalMoedaOrigem tipo) {
-        this.tipo = tipo;
-    }
-
-    public CargaDetalheFreteTotalMoedaOrigem tipo(TipoTotalMoedaOrigem tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
     /**
      * Get valorPrepaid
      *
@@ -101,12 +96,17 @@ public class CargaDetalheFreteTotalMoedaOrigem {
         return this;
     }
 
+    public CargaDetalheFreteTotalMoedaOrigem valorCollect(ValorMonetario valorCollect) {
+        this.valorCollect = valorCollect;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CargaDetalheFreteTotalMoedaOrigem {\n" +
-                "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
                 "    valorPrepaid: " + toIndentedString(valorPrepaid) + "\n" +
                 "}";
         return sb;

@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Condutor", propOrder =
-        {"tipoDocumento", "numeroCpf", "nome", "numeroDocumento"
+        {"numeroCpf", "nome", "numeroDocumento", "tipoDocumento"
         })
 
 @XmlRootElement(name = "Condutor")
@@ -21,13 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados do condutor")
 public class Condutor {
-
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "Tipo de documento do condutor")
-    /**
-     * Tipo de documento do condutor
-     **/
-    private String tipoDocumento = null;
 
     @XmlElement(name = "numeroCpf")
     @ApiModelProperty(example = "99999999999", value = "CPF do Condutor<br>Informado e obrigatório apenas para condutor brasileiro.<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
@@ -50,35 +43,12 @@ public class Condutor {
      **/
     private String numeroDocumento = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "Tipo de documento do condutor")
     /**
      * Tipo de documento do condutor
-     *
-     * @return tipoDocumento
      **/
-    @JsonProperty("tipoDocumento")
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public Condutor tipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
+    private String tipoDocumento = null;
 
     /**
      * CPF do Condutor&lt;br&gt;Informado e obrigatório apenas para condutor brasileiro.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
@@ -137,14 +107,44 @@ public class Condutor {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tipo de documento do condutor
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public Condutor tipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Condutor {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "    numeroCpf: " + toIndentedString(numeroCpf) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }

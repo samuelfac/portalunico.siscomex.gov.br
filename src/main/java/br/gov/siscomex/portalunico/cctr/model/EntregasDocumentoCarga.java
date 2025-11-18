@@ -35,17 +35,6 @@ public class EntregasDocumentoCarga {
     private List<EntregaDocumentoCarga> entregaDocumentoCarga = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Entrega por Documento de Carga de Importacao
      *
      * @return entregaDocumentoCarga
@@ -68,6 +57,18 @@ public class EntregasDocumentoCarga {
     public EntregasDocumentoCarga addEntregaDocumentoCargaItem(EntregaDocumentoCarga entregaDocumentoCargaItem) {
         this.entregaDocumentoCarga.add(entregaDocumentoCargaItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

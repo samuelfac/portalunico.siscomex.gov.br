@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DiffValorDTO", propOrder =
-        {"valorAtual", "valorAnterior"
+        {"valorAnterior", "valorAtual"
         })
 
 @XmlRootElement(name = "DiffValorDTO")
 public class DiffValorDTO {
+
+    @XmlElement(name = "valorAnterior")
+    @ApiModelProperty(value = "Valor da propriedade na versão anterior")
+    /**
+     * Valor da propriedade na versão anterior
+     **/
+    private String valorAnterior = null;
 
     @XmlElement(name = "valorAtual")
     @ApiModelProperty(value = "Valor da propriedade na versão atual")
@@ -24,12 +31,24 @@ public class DiffValorDTO {
      **/
     private String valorAtual = null;
 
-    @XmlElement(name = "valorAnterior")
-    @ApiModelProperty(value = "Valor da propriedade na versão anterior")
     /**
      * Valor da propriedade na versão anterior
+     *
+     * @return valorAnterior
      **/
-    private String valorAnterior = null;
+    @JsonProperty("valorAnterior")
+    public String getValorAnterior() {
+        return valorAnterior;
+    }
+
+    public void setValorAnterior(String valorAnterior) {
+        this.valorAnterior = valorAnterior;
+    }
+
+    public DiffValorDTO valorAnterior(String valorAnterior) {
+        this.valorAnterior = valorAnterior;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class DiffValorDTO {
         return this;
     }
 
-    /**
-     * Valor da propriedade na versão anterior
-     *
-     * @return valorAnterior
-     **/
-    @JsonProperty("valorAnterior")
-    public String getValorAnterior() {
-        return valorAnterior;
-    }
-
-    public void setValorAnterior(String valorAnterior) {
-        this.valorAnterior = valorAnterior;
-    }
-
-    public DiffValorDTO valorAnterior(String valorAnterior) {
-        this.valorAnterior = valorAnterior;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DiffValorDTO {\n" +
-                "    valorAtual: " + toIndentedString(valorAtual) + "\n" +
                 "    valorAnterior: " + toIndentedString(valorAnterior) + "\n" +
+                "    valorAtual: " + toIndentedString(valorAtual) + "\n" +
                 "}";
         return sb;
     }

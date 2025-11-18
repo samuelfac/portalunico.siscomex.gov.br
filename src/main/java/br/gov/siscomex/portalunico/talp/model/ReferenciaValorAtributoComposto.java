@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReferenciaValorAtributoComposto", propOrder =
-        {"valor", "atributo"
+        {"atributo", "valor"
         })
 
 @XmlRootElement(name = "ReferenciaValorAtributoComposto")
@@ -23,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Valor de um campo composto do tipo Atributo Composto")
 public class ReferenciaValorAtributoComposto {
 
+    @XmlElement(name = "atributo", required = true)
+    @ApiModelProperty(example = "ATT_1", required = true, value = "Código do atributo<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>")
+    /**
+     * Código do atributo<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>
+     **/
+    private String atributo = null;
+
     @XmlElement(name = "valor")
     @ApiModelProperty(example = "12345678901", value = "Valor declarado para o atributo<br>Tamanho mínimo: 1<br>Tamanho máximo: 10000")
     /**
@@ -30,12 +37,25 @@ public class ReferenciaValorAtributoComposto {
      **/
     private String valor = null;
 
-    @XmlElement(name = "atributo", required = true)
-    @ApiModelProperty(example = "ATT_1", required = true, value = "Código do atributo<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>")
     /**
-     * Código do atributo<BR>Tamanho máximo: 40<br>Formato: Código de atributo no formato ATT_NNNNNNNNN<br>
+     * Código do atributo&lt;BR&gt;Tamanho máximo: 40&lt;br&gt;Formato: Código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;
+     *
+     * @return atributo
      **/
-    private String atributo = null;
+    @JsonProperty("atributo")
+    @NotNull
+    public String getAtributo() {
+        return atributo;
+    }
+
+    public void setAtributo(String atributo) {
+        this.atributo = atributo;
+    }
+
+    public ReferenciaValorAtributoComposto atributo(String atributo) {
+        this.atributo = atributo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,32 +87,12 @@ public class ReferenciaValorAtributoComposto {
         return this;
     }
 
-    /**
-     * Código do atributo&lt;BR&gt;Tamanho máximo: 40&lt;br&gt;Formato: Código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;
-     *
-     * @return atributo
-     **/
-    @JsonProperty("atributo")
-    @NotNull
-    public String getAtributo() {
-        return atributo;
-    }
-
-    public void setAtributo(String atributo) {
-        this.atributo = atributo;
-    }
-
-    public ReferenciaValorAtributoComposto atributo(String atributo) {
-        this.atributo = atributo;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ReferenciaValorAtributoComposto {\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    atributo: " + toIndentedString(atributo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
                 "}";
         return sb;
     }

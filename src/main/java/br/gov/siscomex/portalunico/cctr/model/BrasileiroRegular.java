@@ -30,17 +30,6 @@ public class BrasileiroRegular {
     private String licencaTNTI = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da licença TNTI&lt;br&gt;Formato: NNNN/NN
      *
      * @return licencaTNTI
@@ -57,6 +46,18 @@ public class BrasileiroRegular {
     public BrasileiroRegular licencaTNTI(String licencaTNTI) {
         this.licencaTNTI = licencaTNTI;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

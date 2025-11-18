@@ -14,11 +14,46 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UnexpectedExceptionCover", propOrder =
-        {"date", "severity", "path", "code", "field", "tag", "message", "info"
+        {"message", "code", "field", "path", "tag", "date", "severity", "info"
         })
 
 @XmlRootElement(name = "UnexpectedExceptionCover")
 public class UnexpectedExceptionCover {
+
+    @XmlElement(name = "message")
+    @ApiModelProperty(example = "Ocorreu um erro inesperado. Por favor, tente novamente. Se o problema persistir, acione a Central Serpro de Atendimento anexando todo o conteúdo do response.", value = "Mensagem descritiva do erro")
+    /**
+     * Mensagem descritiva do erro
+     **/
+    private String message = null;
+
+    @XmlElement(name = "code")
+    @ApiModelProperty(example = "PUCX-ER0001", value = "Código do erro")
+    /**
+     * Código do erro
+     **/
+    private String code = null;
+
+    @XmlElement(name = "field")
+    @ApiModelProperty(value = "Não aplicável neste contexto de negócio")
+    /**
+     * Não aplicável neste contexto de negócio
+     **/
+    private String field = null;
+
+    @XmlElement(name = "path")
+    @ApiModelProperty(value = "Não aplicável neste contexto de negócio")
+    /**
+     * Não aplicável neste contexto de negócio
+     **/
+    private String path = null;
+
+    @XmlElement(name = "tag")
+    @ApiModelProperty(example = "[CCTR-AWCEGJ2248]", value = "Identificador único do erro")
+    /**
+     * Identificador único do erro
+     **/
+    private String tag = null;
 
     @XmlElement(name = "date")
     @ApiModelProperty(example = "2024-08-16T16:43:52", value = "Data e hora do erro")
@@ -32,40 +67,6 @@ public class UnexpectedExceptionCover {
      * Severidade da falha
      **/
     private SeverityEnum severity = null;
-    @XmlElement(name = "path")
-    @ApiModelProperty(value = "Não aplicável neste contexto de negócio")
-    /**
-     * Não aplicável neste contexto de negócio
-     **/
-    private String path = null;
-    @XmlElement(name = "code")
-    @ApiModelProperty(example = "PUCX-ER0001", value = "Código do erro")
-    /**
-     * Código do erro
-     **/
-    private String code = null;
-    @XmlElement(name = "field")
-    @ApiModelProperty(value = "Não aplicável neste contexto de negócio")
-    /**
-     * Não aplicável neste contexto de negócio
-     **/
-    private String field = null;
-    @XmlElement(name = "tag")
-    @ApiModelProperty(example = "[CCTR-AWCEGJ2248]", value = "Identificador único do erro")
-    /**
-     * Identificador único do erro
-     **/
-    private String tag = null;
-    @XmlElement(name = "message")
-    @ApiModelProperty(example = "Ocorreu um erro inesperado. Por favor, tente novamente. Se o problema persistir, acione a Central Serpro de Atendimento anexando todo o conteúdo do response.", value = "Mensagem descritiva do erro")
-    /**
-     * Mensagem descritiva do erro
-     **/
-    private String message = null;
-    @XmlElement(name = "info")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DiagnosticInfo info = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -76,6 +77,106 @@ public class UnexpectedExceptionCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "info")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DiagnosticInfo info = null;
+
+    /**
+     * Mensagem descritiva do erro
+     *
+     * @return message
+     **/
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public UnexpectedExceptionCover message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Código do erro
+     *
+     * @return code
+     **/
+    @JsonProperty("code")
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public UnexpectedExceptionCover code(String code) {
+        this.code = code;
+        return this;
+    }
+
+    /**
+     * Não aplicável neste contexto de negócio
+     *
+     * @return field
+     **/
+    @JsonProperty("field")
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
+
+    public UnexpectedExceptionCover field(String field) {
+        this.field = field;
+        return this;
+    }
+
+    /**
+     * Não aplicável neste contexto de negócio
+     *
+     * @return path
+     **/
+    @JsonProperty("path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public UnexpectedExceptionCover path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    /**
+     * Identificador único do erro
+     *
+     * @return tag
+     **/
+    @JsonProperty("tag")
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public UnexpectedExceptionCover tag(String tag) {
+        this.tag = tag;
+        return this;
     }
 
     /**
@@ -120,103 +221,7 @@ public class UnexpectedExceptionCover {
     }
 
     /**
-     * Não aplicável neste contexto de negócio
-     *
-     * @return path
-     **/
-    @JsonProperty("path")
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public UnexpectedExceptionCover path(String path) {
-        this.path = path;
-        return this;
-    }
-
-    /**
-     * Código do erro
-     *
-     * @return code
-     **/
-    @JsonProperty("code")
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public UnexpectedExceptionCover code(String code) {
-        this.code = code;
-        return this;
-    }
-
-    /**
-     * Não aplicável neste contexto de negócio
-     *
-     * @return field
-     **/
-    @JsonProperty("field")
-    public String getField() {
-        return field;
-    }
-
-    public void setField(String field) {
-        this.field = field;
-    }
-
-    public UnexpectedExceptionCover field(String field) {
-        this.field = field;
-        return this;
-    }
-
-    /**
-     * Identificador único do erro
-     *
-     * @return tag
-     **/
-    @JsonProperty("tag")
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public UnexpectedExceptionCover tag(String tag) {
-        this.tag = tag;
-        return this;
-    }
-
-    /**
-     * Mensagem descritiva do erro
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public UnexpectedExceptionCover message(String message) {
-        this.message = message;
-        return this;
-    }
-
-    /**
      * Get info
-     *
      * @return info
      **/
     @JsonProperty("info")
@@ -238,13 +243,13 @@ public class UnexpectedExceptionCover {
     public String toString() {
 
         String sb = "class UnexpectedExceptionCover {\n" +
-                "    date: " + toIndentedString(date) + "\n" +
-                "    severity: " + toIndentedString(severity) + "\n" +
-                "    path: " + toIndentedString(path) + "\n" +
+                "    message: " + toIndentedString(message) + "\n" +
                 "    code: " + toIndentedString(code) + "\n" +
                 "    field: " + toIndentedString(field) + "\n" +
+                "    path: " + toIndentedString(path) + "\n" +
                 "    tag: " + toIndentedString(tag) + "\n" +
-                "    message: " + toIndentedString(message) + "\n" +
+                "    date: " + toIndentedString(date) + "\n" +
+                "    severity: " + toIndentedString(severity) + "\n" +
                 "    info: " + toIndentedString(info) + "\n" +
                 "}";
         return sb;

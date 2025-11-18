@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CodigoNomeTipoFundamentoOpcionalDTO", propOrder =
-        {"codigo", "tipo", "nome"
+        {"codigo", "nome", "tipo"
         })
 
 @XmlRootElement(name = "CodigoNomeTipoFundamentoOpcionalDTO")
@@ -31,18 +31,21 @@ public class CodigoNomeTipoFundamentoOpcionalDTO {
      * Código identificador do Fundamento Legal, com 4 dígitos.
      **/
     private String codigo = null;
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "Opcional", required = true, value = "Tipo de Uso. Nesse contexto o valor sempre será Opcional.")
-    /**
-     * Tipo de Uso. Nesse contexto o valor sempre será Opcional.
-     **/
-    private TipoEnum tipo = null;
+
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "ACE 72 MERCOSUL X COLÔMBIA", required = true, value = "Nome do Fundamento Legal.")
     /**
      * Nome do Fundamento Legal.
      **/
     private String nome = null;
+
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "Opcional", required = true, value = "Tipo de Uso. Nesse contexto o valor sempre será Opcional.")
+    /**
+     * Tipo de Uso. Nesse contexto o valor sempre será Opcional.
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -76,6 +79,26 @@ public class CodigoNomeTipoFundamentoOpcionalDTO {
     }
 
     /**
+     * Nome do Fundamento Legal.
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public CodigoNomeTipoFundamentoOpcionalDTO nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    /**
      * Tipo de Uso. Nesse contexto o valor sempre será Opcional.
      *
      * @return tipo
@@ -98,34 +121,14 @@ public class CodigoNomeTipoFundamentoOpcionalDTO {
         return this;
     }
 
-    /**
-     * Nome do Fundamento Legal.
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public CodigoNomeTipoFundamentoOpcionalDTO nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class CodigoNomeTipoFundamentoOpcionalDTO {\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

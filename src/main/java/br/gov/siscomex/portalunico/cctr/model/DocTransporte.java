@@ -38,17 +38,6 @@ public class DocTransporte {
     private String dataEmissao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho Máximo: 15&lt;br&gt;Formato: BRNNNNNNNNNNNNN, onde 999999999 é um número sequencial.
      *
      * @return numero
@@ -86,6 +75,18 @@ public class DocTransporte {
     public DocTransporte dataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

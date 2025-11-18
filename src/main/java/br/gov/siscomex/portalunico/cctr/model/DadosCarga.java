@@ -43,17 +43,6 @@ public class DadosCarga {
     private List<Conteiner> conteiner = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista das cargas do tipo solta e granel
      *
      * @return documentos
@@ -101,6 +90,18 @@ public class DadosCarga {
     public DadosCarga addConteinerItem(Conteiner conteinerItem) {
         this.conteiner.add(conteinerItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

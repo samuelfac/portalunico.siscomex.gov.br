@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaDetalheFrete", propOrder =
-        {"formaPgto", "somatorioFretePorItemCarga", "totaisMoedaOrigem", "totaisMoedaDestino", "pendenciaPagamento", "moedaOrigem", "outrosEncargos"
+        {"formaPgto", "moedaOrigem", "outrosEncargos", "pendenciaPagamento", "somatorioFretePorItemCarga", "totaisMoedaDestino", "totaisMoedaOrigem"
         })
 
 @XmlRootElement(name = "CargaDetalheFrete")
@@ -26,36 +26,11 @@ public class CargaDetalheFrete {
     @Valid
     private CargaDetalheFreteFormaPgto formaPgto = null;
 
-    @XmlElement(name = "somatorioFretePorItemCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValorMonetario somatorioFretePorItemCarga = null;
-
-    @XmlElement(name = "totaisMoedaOrigem")
-    @ApiModelProperty(value = "Lista de totais na moeda de origem")
-    @Valid
-    /**
-     * Lista de totais na moeda de origem
-     **/
-    private List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem = null;
-
-    @XmlElement(name = "totaisMoedaDestino")
-    @ApiModelProperty(value = "Lista de totais na moeda de destino")
-    @Valid
-    /**
-     * Lista de totais na moeda de destino
-     **/
-    private List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino = null;
-    @XmlElement(name = "pendenciaPagamento")
-    @ApiModelProperty(example = "S", value = "Indicador de pendência de pagamento de frete.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não")
-    /**
-     * Indicador de pendência de pagamento de frete.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não
-     **/
-    private PendenciaPagamentoEnum pendenciaPagamento = null;
     @XmlElement(name = "moedaOrigem")
     @ApiModelProperty(value = "")
     @Valid
     private Moeda moedaOrigem = null;
+
     @XmlElement(name = "outrosEncargos")
     @ApiModelProperty(value = "Lista de outros encargos")
     @Valid
@@ -63,6 +38,31 @@ public class CargaDetalheFrete {
      * Lista de outros encargos
      **/
     private List<CargaDetalheFreteOutroEncargo> outrosEncargos = null;
+    @XmlElement(name = "somatorioFretePorItemCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValorMonetario somatorioFretePorItemCarga = null;
+
+    @XmlElement(name = "pendenciaPagamento")
+    @ApiModelProperty(example = "S", value = "Indicador de pendência de pagamento de frete.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não")
+    /**
+     * Indicador de pendência de pagamento de frete.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não
+     **/
+    private PendenciaPagamentoEnum pendenciaPagamento = null;
+    @XmlElement(name = "totaisMoedaDestino")
+    @ApiModelProperty(value = "Lista de totais na moeda de destino")
+    @Valid
+    /**
+     * Lista de totais na moeda de destino
+     **/
+    private List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino = null;
+    @XmlElement(name = "totaisMoedaOrigem")
+    @ApiModelProperty(value = "Lista de totais na moeda de origem")
+    @Valid
+    /**
+     * Lista de totais na moeda de origem
+     **/
+    private List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -91,95 +91,6 @@ public class CargaDetalheFrete {
 
     public CargaDetalheFrete formaPgto(CargaDetalheFreteFormaPgto formaPgto) {
         this.formaPgto = formaPgto;
-        return this;
-    }
-
-    /**
-     * Get somatorioFretePorItemCarga
-     *
-     * @return somatorioFretePorItemCarga
-     **/
-    @JsonProperty("somatorioFretePorItemCarga")
-    public ValorMonetario getSomatorioFretePorItemCarga() {
-        return somatorioFretePorItemCarga;
-    }
-
-    public void setSomatorioFretePorItemCarga(ValorMonetario somatorioFretePorItemCarga) {
-        this.somatorioFretePorItemCarga = somatorioFretePorItemCarga;
-    }
-
-    public CargaDetalheFrete somatorioFretePorItemCarga(ValorMonetario somatorioFretePorItemCarga) {
-        this.somatorioFretePorItemCarga = somatorioFretePorItemCarga;
-        return this;
-    }
-
-    /**
-     * Lista de totais na moeda de origem
-     *
-     * @return totaisMoedaOrigem
-     **/
-    @JsonProperty("totaisMoedaOrigem")
-    public List<CargaDetalheFreteTotalMoedaOrigem> getTotaisMoedaOrigem() {
-        return totaisMoedaOrigem;
-    }
-
-    public void setTotaisMoedaOrigem(List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem) {
-        this.totaisMoedaOrigem = totaisMoedaOrigem;
-    }
-
-    public CargaDetalheFrete totaisMoedaOrigem(List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem) {
-        this.totaisMoedaOrigem = totaisMoedaOrigem;
-        return this;
-    }
-
-    public CargaDetalheFrete addTotaisMoedaOrigemItem(CargaDetalheFreteTotalMoedaOrigem totaisMoedaOrigemItem) {
-        this.totaisMoedaOrigem.add(totaisMoedaOrigemItem);
-        return this;
-    }
-
-    /**
-     * Lista de totais na moeda de destino
-     *
-     * @return totaisMoedaDestino
-     **/
-    @JsonProperty("totaisMoedaDestino")
-    public List<CargaDetalheFreteTotalMoedaDestino> getTotaisMoedaDestino() {
-        return totaisMoedaDestino;
-    }
-
-    public void setTotaisMoedaDestino(List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino) {
-        this.totaisMoedaDestino = totaisMoedaDestino;
-    }
-
-    public CargaDetalheFrete totaisMoedaDestino(List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino) {
-        this.totaisMoedaDestino = totaisMoedaDestino;
-        return this;
-    }
-
-    public CargaDetalheFrete addTotaisMoedaDestinoItem(CargaDetalheFreteTotalMoedaDestino totaisMoedaDestinoItem) {
-        this.totaisMoedaDestino.add(totaisMoedaDestinoItem);
-        return this;
-    }
-
-    /**
-     * Indicador de pendência de pagamento de frete.&lt;br/&gt;Tamanho: 1&lt;br/&gt;S - Sim&lt;br/&gt;N - Não
-     *
-     * @return pendenciaPagamento
-     **/
-    @JsonProperty("pendenciaPagamento")
-    public String getPendenciaPagamento() {
-        if (pendenciaPagamento == null) {
-            return null;
-        }
-        return pendenciaPagamento.value();
-    }
-
-    public void setPendenciaPagamento(PendenciaPagamentoEnum pendenciaPagamento) {
-        this.pendenciaPagamento = pendenciaPagamento;
-    }
-
-    public CargaDetalheFrete pendenciaPagamento(PendenciaPagamentoEnum pendenciaPagamento) {
-        this.pendenciaPagamento = pendenciaPagamento;
         return this;
     }
 
@@ -226,18 +137,107 @@ public class CargaDetalheFrete {
         return this;
     }
 
+    /**
+     * Indicador de pendência de pagamento de frete.&lt;br/&gt;Tamanho: 1&lt;br/&gt;S - Sim&lt;br/&gt;N - Não
+     *
+     * @return pendenciaPagamento
+     **/
+    @JsonProperty("pendenciaPagamento")
+    public String getPendenciaPagamento() {
+        if (pendenciaPagamento == null) {
+            return null;
+        }
+        return pendenciaPagamento.value();
+    }
+
+    public void setPendenciaPagamento(PendenciaPagamentoEnum pendenciaPagamento) {
+        this.pendenciaPagamento = pendenciaPagamento;
+    }
+
+    public CargaDetalheFrete pendenciaPagamento(PendenciaPagamentoEnum pendenciaPagamento) {
+        this.pendenciaPagamento = pendenciaPagamento;
+        return this;
+    }
+
+    /**
+     * Get somatorioFretePorItemCarga
+     *
+     * @return somatorioFretePorItemCarga
+     **/
+    @JsonProperty("somatorioFretePorItemCarga")
+    public ValorMonetario getSomatorioFretePorItemCarga() {
+        return somatorioFretePorItemCarga;
+    }
+
+    public void setSomatorioFretePorItemCarga(ValorMonetario somatorioFretePorItemCarga) {
+        this.somatorioFretePorItemCarga = somatorioFretePorItemCarga;
+    }
+
+    public CargaDetalheFrete somatorioFretePorItemCarga(ValorMonetario somatorioFretePorItemCarga) {
+        this.somatorioFretePorItemCarga = somatorioFretePorItemCarga;
+        return this;
+    }
+
+    /**
+     * Lista de totais na moeda de destino
+     *
+     * @return totaisMoedaDestino
+     **/
+    @JsonProperty("totaisMoedaDestino")
+    public List<CargaDetalheFreteTotalMoedaDestino> getTotaisMoedaDestino() {
+        return totaisMoedaDestino;
+    }
+
+    public void setTotaisMoedaDestino(List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino) {
+        this.totaisMoedaDestino = totaisMoedaDestino;
+    }
+
+    public CargaDetalheFrete totaisMoedaDestino(List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino) {
+        this.totaisMoedaDestino = totaisMoedaDestino;
+        return this;
+    }
+
+    public CargaDetalheFrete addTotaisMoedaDestinoItem(CargaDetalheFreteTotalMoedaDestino totaisMoedaDestinoItem) {
+        this.totaisMoedaDestino.add(totaisMoedaDestinoItem);
+        return this;
+    }
+
+    /**
+     * Lista de totais na moeda de origem
+     *
+     * @return totaisMoedaOrigem
+     **/
+    @JsonProperty("totaisMoedaOrigem")
+    public List<CargaDetalheFreteTotalMoedaOrigem> getTotaisMoedaOrigem() {
+        return totaisMoedaOrigem;
+    }
+
+    public void setTotaisMoedaOrigem(List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem) {
+        this.totaisMoedaOrigem = totaisMoedaOrigem;
+    }
+
+    public CargaDetalheFrete totaisMoedaOrigem(List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem) {
+        this.totaisMoedaOrigem = totaisMoedaOrigem;
+        return this;
+    }
+
+    public CargaDetalheFrete addTotaisMoedaOrigemItem(CargaDetalheFreteTotalMoedaOrigem totaisMoedaOrigemItem) {
+        this.totaisMoedaOrigem.add(totaisMoedaOrigemItem);
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class CargaDetalheFrete {\n" +
                 "    formaPgto: " + toIndentedString(formaPgto) + "\n" +
-                "    somatorioFretePorItemCarga: " + toIndentedString(somatorioFretePorItemCarga) + "\n" +
-                "    totaisMoedaOrigem: " + toIndentedString(totaisMoedaOrigem) + "\n" +
-                "    totaisMoedaDestino: " + toIndentedString(totaisMoedaDestino) + "\n" +
-                "    pendenciaPagamento: " + toIndentedString(pendenciaPagamento) + "\n" +
                 "    moedaOrigem: " + toIndentedString(moedaOrigem) + "\n" +
                 "    outrosEncargos: " + toIndentedString(outrosEncargos) + "\n" +
+                "    pendenciaPagamento: " + toIndentedString(pendenciaPagamento) + "\n" +
+                "    somatorioFretePorItemCarga: " + toIndentedString(somatorioFretePorItemCarga) + "\n" +
+                "    totaisMoedaDestino: " + toIndentedString(totaisMoedaDestino) + "\n" +
+                "    totaisMoedaOrigem: " + toIndentedString(totaisMoedaOrigem) + "\n" +
                 "}";
         return sb;
     }

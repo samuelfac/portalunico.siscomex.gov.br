@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OpcaoIcmsDto", propOrder =
-        {"descricaoOpcao", "tipoSolicitacao", "codigoOpcao"
+        {"codigoOpcao", "descricaoOpcao", "tipoSolicitacao"
         })
 
 @XmlRootElement(name = "OpcaoIcmsDto")
@@ -25,24 +25,19 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Opção de ICMS a ser cadastrada pela Sefaz")
 public class OpcaoIcmsDto {
 
-    @XmlElement(name = "descricaoOpcao", required = true)
-    @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String descricaoOpcao = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
-    /**
-     * Tipo de declaração de ICMS à qual a opção está vinculada
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
     @XmlElement(name = "codigoOpcao", required = true)
     @ApiModelProperty(example = "9999", required = true, value = "Codigo identificador da opção<br>Tamanho: 4")
     /**
      * Codigo identificador da opção<br>Tamanho: 4
      **/
     private String codigoOpcao = null;
+
+    @XmlElement(name = "descricaoOpcao", required = true)
+    @ApiModelProperty(example = "Id eu nisl nunc mi", required = true, value = "Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Descrição da opção que será exibida para o importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String descricaoOpcao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -53,6 +48,33 @@ public class OpcaoIcmsDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
+    /**
+     * Tipo de declaração de ICMS à qual a opção está vinculada
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+
+    /**
+     * Codigo identificador da opção&lt;br&gt;Tamanho: 4
+     *
+     * @return codigoOpcao
+     **/
+    @JsonProperty("codigoOpcao")
+    @NotNull
+    public String getCodigoOpcao() {
+        return codigoOpcao;
+    }
+
+    public void setCodigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+    }
+
+    public OpcaoIcmsDto codigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+        return this;
     }
 
     /**
@@ -98,34 +120,14 @@ public class OpcaoIcmsDto {
         return this;
     }
 
-    /**
-     * Codigo identificador da opção&lt;br&gt;Tamanho: 4
-     *
-     * @return codigoOpcao
-     **/
-    @JsonProperty("codigoOpcao")
-    @NotNull
-    public String getCodigoOpcao() {
-        return codigoOpcao;
-    }
-
-    public void setCodigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
-    }
-
-    public OpcaoIcmsDto codigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class OpcaoIcmsDto {\n" +
+                "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
                 "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
                 "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
                 "}";
         return sb;
     }

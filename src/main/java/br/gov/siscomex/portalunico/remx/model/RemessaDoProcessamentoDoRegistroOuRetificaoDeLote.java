@@ -16,18 +16,25 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RemessaDoProcessamentoDoRegistroOuRetificaoDeLote", propOrder =
-        {"versaoDIR", "numeroRemessa", "ocorrencias", "txCambioDtRegistro", "valorFreteUSD", "valorTributavelUSD", "valorTotalBRL", "valorIIBRL", "valorFreteBRL", "valorTotalUSD", "valorMultasBRL", "novaSituacaoRemessa", "numeroDIR", "valorTributavelBRL"
+        {"novaSituacaoRemessa", "numeroDIR", "numeroRemessa", "ocorrencias", "txCambioDtRegistro", "valorFreteBRL", "valorFreteUSD", "valorIIBRL", "valorMultasBRL", "valorTotalBRL", "valorTotalUSD", "valorTributavelBRL", "valorTributavelUSD", "versaoDIR"
         })
 
 @XmlRootElement(name = "RemessaDoProcessamentoDoRegistroOuRetificaoDeLote")
 public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
-    @XmlElement(name = "versaoDIR", required = true)
-    @ApiModelProperty(required = true, value = "Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).")
+    @XmlElement(name = "novaSituacaoRemessa", required = true)
+    @ApiModelProperty(required = true, value = "Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.")
     /**
-     * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
      **/
-    private String versaoDIR = null;
+    private Integer novaSituacaoRemessa = null;
+
+    @XmlElement(name = "numeroDIR", required = true)
+    @ApiModelProperty(required = true, value = "Número da DIR gerado pelo sistema. O número da DIR é composto por 12 caracteres numéricos.")
+    /**
+     * Número da DIR gerado pelo sistema. O número da DIR é composto por 12 caracteres numéricos.
+     **/
+    private String numeroDIR = null;
 
     @XmlElement(name = "numeroRemessa", required = true)
     @ApiModelProperty(required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
@@ -52,6 +59,14 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
      **/
     private BigDecimal txCambioDtRegistro = null;
 
+    @XmlElement(name = "valorFreteBRL", required = true)
+    @ApiModelProperty(required = true, value = "Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorFreteBRL = null;
+
     @XmlElement(name = "valorFreteUSD", required = true)
     @ApiModelProperty(required = true, value = "Valor do Frete da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
     @Valid
@@ -59,22 +74,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
      * Valor do Frete da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      **/
     private BigDecimal valorFreteUSD = null;
-
-    @XmlElement(name = "valorTributavelUSD", required = true)
-    @ApiModelProperty(required = true, value = "Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorTributavelUSD = null;
-
-    @XmlElement(name = "valorTotalBRL", required = true)
-    @ApiModelProperty(required = true, value = "Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorTotalBRL = null;
 
     @XmlElement(name = "valorIIBRL", required = true)
     @ApiModelProperty(required = true, value = "Valor total do Imposto de Importação em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
@@ -84,13 +83,21 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
      **/
     private BigDecimal valorIIBRL = null;
 
-    @XmlElement(name = "valorFreteBRL", required = true)
-    @ApiModelProperty(required = true, value = "Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @XmlElement(name = "valorMultasBRL", required = true)
+    @ApiModelProperty(required = true, value = "Valor total das multas da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
     @Valid
     /**
-     * Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     * Valor total das multas da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      **/
-    private BigDecimal valorFreteBRL = null;
+    private BigDecimal valorMultasBRL = null;
+
+    @XmlElement(name = "valorTotalBRL", required = true)
+    @ApiModelProperty(required = true, value = "Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorTotalBRL = null;
 
     @XmlElement(name = "valorTotalUSD", required = true)
     @ApiModelProperty(required = true, value = "Valor total da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
@@ -100,28 +107,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
      **/
     private BigDecimal valorTotalUSD = null;
 
-    @XmlElement(name = "valorMultasBRL", required = true)
-    @ApiModelProperty(required = true, value = "Valor total das multas da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor total das multas da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorMultasBRL = null;
-
-    @XmlElement(name = "novaSituacaoRemessa", required = true)
-    @ApiModelProperty(required = true, value = "Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.")
-    /**
-     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
-     **/
-    private Integer novaSituacaoRemessa = null;
-
-    @XmlElement(name = "numeroDIR", required = true)
-    @ApiModelProperty(required = true, value = "Número da DIR gerado pelo sistema. O número da DIR é composto por 12 caracteres numéricos.")
-    /**
-     * Número da DIR gerado pelo sistema. O número da DIR é composto por 12 caracteres numéricos.
-     **/
-    private String numeroDIR = null;
-
     @XmlElement(name = "valorTributavelBRL", required = true)
     @ApiModelProperty(required = true, value = "Valor tributável da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
     @Valid
@@ -129,6 +114,21 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
      * Valor tributável da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      **/
     private BigDecimal valorTributavelBRL = null;
+
+    @XmlElement(name = "valorTributavelUSD", required = true)
+    @ApiModelProperty(required = true, value = "Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorTributavelUSD = null;
+
+    @XmlElement(name = "versaoDIR", required = true)
+    @ApiModelProperty(required = true, value = "Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).")
+    /**
+     * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     **/
+    private String versaoDIR = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -142,23 +142,38 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
     }
 
     /**
-     * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
      *
-     * @return versaoDIR
+     * @return novaSituacaoRemessa
      **/
-    @JsonProperty("versaoDIR")
+    @JsonProperty("novaSituacaoRemessa")
     @NotNull
-    public String getVersaoDIR() {
-        return versaoDIR;
+    public Integer getNovaSituacaoRemessa() {
+        return novaSituacaoRemessa;
     }
 
-    public void setVersaoDIR(String versaoDIR) {
-        this.versaoDIR = versaoDIR;
+    public void setNovaSituacaoRemessa(Integer novaSituacaoRemessa) {
+        this.novaSituacaoRemessa = novaSituacaoRemessa;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote versaoDIR(String versaoDIR) {
-        this.versaoDIR = versaoDIR;
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote novaSituacaoRemessa(Integer novaSituacaoRemessa) {
+        this.novaSituacaoRemessa = novaSituacaoRemessa;
         return this;
+    }
+
+    /**
+     * Número da DIR gerado pelo sistema. O número da DIR é composto por 12 caracteres numéricos.
+     *
+     * @return numeroDIR
+     **/
+    @JsonProperty("numeroDIR")
+    @NotNull
+    public String getNumeroDIR() {
+        return numeroDIR;
+    }
+
+    public void setNumeroDIR(String numeroDIR) {
+        this.numeroDIR = numeroDIR;
     }
 
     /**
@@ -226,6 +241,26 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote numeroDIR(String numeroDIR) {
+        this.numeroDIR = numeroDIR;
+        return this;
+    }
+
+    /**
+     * Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorFreteBRL
+     **/
+    @JsonProperty("valorFreteBRL")
+    @NotNull
+    public BigDecimal getValorFreteBRL() {
+        return valorFreteBRL;
+    }
+
+    public void setValorFreteBRL(BigDecimal valorFreteBRL) {
+        this.valorFreteBRL = valorFreteBRL;
+    }
+
     /**
      * Valor do Frete da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      *
@@ -243,46 +278,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteUSD(BigDecimal valorFreteUSD) {
         this.valorFreteUSD = valorFreteUSD;
-        return this;
-    }
-
-    /**
-     * Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorTributavelUSD
-     **/
-    @JsonProperty("valorTributavelUSD")
-    @NotNull
-    public BigDecimal getValorTributavelUSD() {
-        return valorTributavelUSD;
-    }
-
-    public void setValorTributavelUSD(BigDecimal valorTributavelUSD) {
-        this.valorTributavelUSD = valorTributavelUSD;
-    }
-
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTributavelUSD(BigDecimal valorTributavelUSD) {
-        this.valorTributavelUSD = valorTributavelUSD;
-        return this;
-    }
-
-    /**
-     * Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorTotalBRL
-     **/
-    @JsonProperty("valorTotalBRL")
-    @NotNull
-    public BigDecimal getValorTotalBRL() {
-        return valorTotalBRL;
-    }
-
-    public void setValorTotalBRL(BigDecimal valorTotalBRL) {
-        this.valorTotalBRL = valorTotalBRL;
-    }
-
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalBRL(BigDecimal valorTotalBRL) {
-        this.valorTotalBRL = valorTotalBRL;
         return this;
     }
 
@@ -307,46 +302,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
     }
 
     /**
-     * Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorFreteBRL
-     **/
-    @JsonProperty("valorFreteBRL")
-    @NotNull
-    public BigDecimal getValorFreteBRL() {
-        return valorFreteBRL;
-    }
-
-    public void setValorFreteBRL(BigDecimal valorFreteBRL) {
-        this.valorFreteBRL = valorFreteBRL;
-    }
-
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteBRL(BigDecimal valorFreteBRL) {
-        this.valorFreteBRL = valorFreteBRL;
-        return this;
-    }
-
-    /**
-     * Valor total da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorTotalUSD
-     **/
-    @JsonProperty("valorTotalUSD")
-    @NotNull
-    public BigDecimal getValorTotalUSD() {
-        return valorTotalUSD;
-    }
-
-    public void setValorTotalUSD(BigDecimal valorTotalUSD) {
-        this.valorTotalUSD = valorTotalUSD;
-    }
-
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalUSD(BigDecimal valorTotalUSD) {
-        this.valorTotalUSD = valorTotalUSD;
-        return this;
-    }
-
-    /**
      * Valor total das multas da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      *
      * @return valorMultasBRL
@@ -366,44 +321,43 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
-    /**
-     * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
-     *
-     * @return novaSituacaoRemessa
-     **/
-    @JsonProperty("novaSituacaoRemessa")
-    @NotNull
-    public Integer getNovaSituacaoRemessa() {
-        return novaSituacaoRemessa;
-    }
-
-    public void setNovaSituacaoRemessa(Integer novaSituacaoRemessa) {
-        this.novaSituacaoRemessa = novaSituacaoRemessa;
-    }
-
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote novaSituacaoRemessa(Integer novaSituacaoRemessa) {
-        this.novaSituacaoRemessa = novaSituacaoRemessa;
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteBRL(BigDecimal valorFreteBRL) {
+        this.valorFreteBRL = valorFreteBRL;
         return this;
     }
 
     /**
-     * Número da DIR gerado pelo sistema. O número da DIR é composto por 12 caracteres numéricos.
-     *
-     * @return numeroDIR
+     * Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     * @return valorTotalBRL
      **/
-    @JsonProperty("numeroDIR")
+    @JsonProperty("valorTotalBRL")
     @NotNull
-    public String getNumeroDIR() {
-        return numeroDIR;
+    public BigDecimal getValorTotalBRL() {
+        return valorTotalBRL;
     }
 
-    public void setNumeroDIR(String numeroDIR) {
-        this.numeroDIR = numeroDIR;
+    public void setValorTotalBRL(BigDecimal valorTotalBRL) {
+        this.valorTotalBRL = valorTotalBRL;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote numeroDIR(String numeroDIR) {
-        this.numeroDIR = numeroDIR;
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalBRL(BigDecimal valorTotalBRL) {
+        this.valorTotalBRL = valorTotalBRL;
         return this;
+    }
+
+    /**
+     * Valor total da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorTotalUSD
+     **/
+    @JsonProperty("valorTotalUSD")
+    @NotNull
+    public BigDecimal getValorTotalUSD() {
+        return valorTotalUSD;
+    }
+
+    public void setValorTotalUSD(BigDecimal valorTotalUSD) {
+        this.valorTotalUSD = valorTotalUSD;
     }
 
     /**
@@ -426,24 +380,69 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalUSD(BigDecimal valorTotalUSD) {
+        this.valorTotalUSD = valorTotalUSD;
+        return this;
+    }
+
+    /**
+     * Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorTributavelUSD
+     **/
+    @JsonProperty("valorTributavelUSD")
+    @NotNull
+    public BigDecimal getValorTributavelUSD() {
+        return valorTributavelUSD;
+    }
+
+    public void setValorTributavelUSD(BigDecimal valorTributavelUSD) {
+        this.valorTributavelUSD = valorTributavelUSD;
+    }
+
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTributavelUSD(BigDecimal valorTributavelUSD) {
+        this.valorTributavelUSD = valorTributavelUSD;
+        return this;
+    }
+
+    /**
+     * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     *
+     * @return versaoDIR
+     **/
+    @JsonProperty("versaoDIR")
+    @NotNull
+    public String getVersaoDIR() {
+        return versaoDIR;
+    }
+
+    public void setVersaoDIR(String versaoDIR) {
+        this.versaoDIR = versaoDIR;
+    }
+
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote versaoDIR(String versaoDIR) {
+        this.versaoDIR = versaoDIR;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {\n" +
-                "    versaoDIR: " + toIndentedString(versaoDIR) + "\n" +
+                "    novaSituacaoRemessa: " + toIndentedString(novaSituacaoRemessa) + "\n" +
+                "    numeroDIR: " + toIndentedString(numeroDIR) + "\n" +
                 "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
                 "    ocorrencias: " + toIndentedString(ocorrencias) + "\n" +
                 "    txCambioDtRegistro: " + toIndentedString(txCambioDtRegistro) + "\n" +
-                "    valorFreteUSD: " + toIndentedString(valorFreteUSD) + "\n" +
-                "    valorTributavelUSD: " + toIndentedString(valorTributavelUSD) + "\n" +
-                "    valorTotalBRL: " + toIndentedString(valorTotalBRL) + "\n" +
-                "    valorIIBRL: " + toIndentedString(valorIIBRL) + "\n" +
                 "    valorFreteBRL: " + toIndentedString(valorFreteBRL) + "\n" +
-                "    valorTotalUSD: " + toIndentedString(valorTotalUSD) + "\n" +
+                "    valorFreteUSD: " + toIndentedString(valorFreteUSD) + "\n" +
+                "    valorIIBRL: " + toIndentedString(valorIIBRL) + "\n" +
                 "    valorMultasBRL: " + toIndentedString(valorMultasBRL) + "\n" +
-                "    novaSituacaoRemessa: " + toIndentedString(novaSituacaoRemessa) + "\n" +
-                "    numeroDIR: " + toIndentedString(numeroDIR) + "\n" +
+                "    valorTotalBRL: " + toIndentedString(valorTotalBRL) + "\n" +
+                "    valorTotalUSD: " + toIndentedString(valorTotalUSD) + "\n" +
                 "    valorTributavelBRL: " + toIndentedString(valorTributavelBRL) + "\n" +
+                "    valorTributavelUSD: " + toIndentedString(valorTributavelUSD) + "\n" +
+                "    versaoDIR: " + toIndentedString(versaoDIR) + "\n" +
                 "}";
         return sb;
     }

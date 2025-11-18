@@ -29,7 +29,7 @@ public interface ServicosDeConsultaDeViagemAereaApi {
 
     /**
      * Retorna lista de viagens
-     * <p>
+     *
      * Lista de viagens
      *
      */
@@ -39,18 +39,18 @@ public interface ServicosDeConsultaDeViagemAereaApi {
     @ApiOperation(value = "Retorna lista de viagens", notes = "Lista de viagens", tags = {"Servicos de Consulta de Viagem Aerea"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ChaveViagem.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     List<ChaveViagem> listarChegadasUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "Código IATA do aeroporto<br/>Tamanho: 3", required = true) @QueryParam("codigoAeroportoChegada") String codigoAeroportoChegada, @NotNull @ApiParam(value = "Data final de chegada prevista ou efetiva.", required = true) @QueryParam("dataFinal") String dataFinal, @NotNull @ApiParam(value = "Data inicial de chegada prevista ou efetiva.", required = true) @QueryParam("dataInicial") String dataInicial, @NotNull @ApiParam(value = "Código da situação da partida ou chegada<br>Tamanho: 1<br/>", required = true, allowableValues = "E - Efetiva, P - Prevista") @QueryParam("situacaoChegada") String situacaoChegada, @NotNull @ApiParam(value = "Código da situação da viagem<br>Tamanho: 1<br/>A - Ativa <br/>C - Cancelada<br/>", required = true, allowableValues = "A - Ativo, C - Cancelada") @QueryParam("situacaoViagem") String situacaoViagem, @NotNull @ApiParam(value = "R - Regular", required = true, allowableValues = "R - Regular") @QueryParam("tipoVoo") String tipoVoo, @ApiParam(value = "Identificação da compania aérea<br/>Tamanho: 2<br/>") @QueryParam("ciaAerea") String ciaAerea, @ApiParam(value = "Código IATA do aeroporto<br/>Tamanho: 3") @QueryParam("codigoAeroportoPartida") String codigoAeroportoPartida, @ApiParam(value = "Código do voo, formado por 2 caracteres da sigla IATA da CIA aérea e 4 caracteres do número de voo. Quando o número do voo contiver menos de 4 caracteres numéricos, são exibidos zeros à esquerda.<br/> Formato: AANNNN") @QueryParam("codigoVoo") String codigoVoo, @ApiParam(value = "Prefixo da aeronave<br/>Tamanho máximo: 70") @QueryParam("prefixoAeronave") String prefixoAeronave);
 
     /**
      * Retorna lista de viagens
-     * <p>
+     *
      * Lista de viagens
      *
      */
@@ -60,18 +60,18 @@ public interface ServicosDeConsultaDeViagemAereaApi {
     @ApiOperation(value = "Retorna lista de viagens", notes = "Lista de viagens", tags = {"Servicos de Consulta de Viagem Aerea"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ChaveViagem.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     List<ChaveViagem> listarPartidasUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @NotNull @ApiParam(value = "Código IATA do aeroporto<br/>Tamanho: 3", required = true) @QueryParam("codigoAeroportoPartida") String codigoAeroportoPartida, @NotNull @ApiParam(value = "Data final de partida prevista ou efetiva.", required = true) @QueryParam("dataFinal") String dataFinal, @NotNull @ApiParam(value = "Data inicial de partida prevista ou efetiva.", required = true) @QueryParam("dataInicial") String dataInicial, @NotNull @ApiParam(value = "Código da situação da partida ou chegada<br>Tamanho: 1<br/>", required = true, allowableValues = "E - Efetiva, P - Prevista") @QueryParam("situacaoPartida") String situacaoPartida, @NotNull @ApiParam(value = "Código da situação da viagem<br>Tamanho: 1<br/>A - Ativa <br/>C - Cancelada<br/>", required = true, allowableValues = "A - Ativo, C - Cancelada") @QueryParam("situacaoViagem") String situacaoViagem, @NotNull @ApiParam(value = "R - Regular", required = true, allowableValues = "R - Regular") @QueryParam("tipoVoo") String tipoVoo, @ApiParam(value = "Identificação da compania aérea<br/>Tamanho: 2<br/>") @QueryParam("ciaAerea") String ciaAerea, @ApiParam(value = "Código IATA do aeroporto<br/>Tamanho: 3") @QueryParam("codigoAeroportoChegada") String codigoAeroportoChegada, @ApiParam(value = "Código do voo, formado por 2 caracteres da sigla IATA da CIA aérea e 4 caracteres do número de voo. Quando o número do voo contiver menos de 4 caracteres numéricos, são exibidos zeros à esquerda.<br/> Formato: AANNNN") @QueryParam("codigoVoo") String codigoVoo, @ApiParam(value = "Prefixo da aeronave<br/>Tamanho máximo: 70") @QueryParam("prefixoAeronave") String prefixoAeronave);
 
     /**
      * Retorna o detalhamento de uma viagem.
-     * <p>
+     *
      * Retorna o detalhamento de uma viagem.
      *
      */
@@ -82,11 +82,11 @@ public interface ServicosDeConsultaDeViagemAereaApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ViagemConsultaDetalhada.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     ViagemConsultaDetalhada obterViagemCargaDetalhadaPorIdentificacaoManifestoUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Número de identificação do manifesto<br/>Tamanho: 17", required = true) @PathParam("numeroManifesto") String numeroManifesto);
 }
 

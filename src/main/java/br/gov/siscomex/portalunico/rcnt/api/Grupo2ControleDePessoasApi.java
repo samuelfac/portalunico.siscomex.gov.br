@@ -30,7 +30,7 @@ public interface Grupo2ControleDePessoasApi {
 
     /**
      * Credenciamento de Pessoas
-     * <p>
+     *
      * Um evento para cada pessoa credenciada para acesso ao recinto (entrada/saída).&lt;br/&gt;Considerar acesso às áreas alfandegadas apenas.&lt;br/&gt;Transmitir logo que encerrar o ato de credenciamento.&lt;br/&gt;Um evento para cada CPF credenciado.&lt;br/&gt;&lt;br/&gt;Obs.:  Quando do credenciamento inicial informar “credenciamentoAtivo:true”  e validade do credenciamento caso existir.&lt;br/&gt;Casos em que a validade do credenciamento seja informada, a RFB vai considerar credenciamento inativo quando do vencimento do prazo.&lt;br/&gt;Para os casos que não exista validade do credenciamento o evento deve ser retificado para “credenciamentoAtivo:false” quando for o caso.&lt;br/&gt;(por exemplo: no caso de funcionários não há validade de credenciamento logo no caso de demissão o evento de credenciamento deve ser retificado para status &#x3D; inativo).
      *
      */
@@ -42,16 +42,16 @@ public interface Grupo2ControleDePessoasApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST10(@ApiParam(value = "JSON do evento Credenciamento Pessoas", required = true) @Valid DadosCredenciamentoPessoa body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Representantes
-     * <p>
+     *
      * Lista de pessoas que acessam o sistema do recinto em nome de cada cliente ou que possuam representação via procuração. Diferente do cadastro de representação do Siscomex. Toda representação via sistema ou papel deve ser informada. Transmitir um evento para cada representação CPF/CNPJ.
      *
      */
@@ -63,16 +63,16 @@ public interface Grupo2ControleDePessoasApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST21(@ApiParam(value = "JSON do evento Representantes", required = true) @Valid DadosRepresentante body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Controle de Acesso de Pessoas
-     * <p>
+     *
      * Um evento para cada acesso (entrada ou saída) de pessoa ao recinto. Transmitir imediatamente ao acesso (entrada ou saída).&lt;br/&gt;Um evento para cada acesso de CPF;
      *
      */
@@ -84,10 +84,10 @@ public interface Grupo2ControleDePessoasApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST7(@ApiParam(value = "JSON do evento Acesso Pessoa", required = true) @Valid DadosAcessoPessoa body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExportacaoTemporaria", propOrder =
-        {"prazo", "numeroDoProcesso", "temporaria"
+        {"numeroDoProcesso", "prazo", "temporaria"
         })
 
 @XmlRootElement(name = "ExportacaoTemporaria")
 public class ExportacaoTemporaria {
-
-    @XmlElement(name = "prazo")
-    @ApiModelProperty(value = "Prazo<br />Formato: Inteiro, com até 4 digitos")
-    /**
-     * Prazo<br />Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer prazo = null;
 
     @XmlElement(name = "numeroDoProcesso")
     @ApiModelProperty(value = "Número do processo<br />Tamanho mínimo: 0<br />Tamanho máximo: 17")
@@ -32,9 +25,35 @@ public class ExportacaoTemporaria {
      **/
     private String numeroDoProcesso = null;
 
+    @XmlElement(name = "prazo")
+    @ApiModelProperty(value = "Prazo<br />Formato: Inteiro, com até 4 digitos")
+    /**
+     * Prazo<br />Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer prazo = null;
+
     @XmlElement(name = "temporaria", required = true)
     @ApiModelProperty(required = true, value = "")
     private Boolean temporaria = null;
+
+    /**
+     * Número do processo&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 17
+     *
+     * @return numeroDoProcesso
+     **/
+    @JsonProperty("numeroDoProcesso")
+    public String getNumeroDoProcesso() {
+        return numeroDoProcesso;
+    }
+
+    public void setNumeroDoProcesso(String numeroDoProcesso) {
+        this.numeroDoProcesso = numeroDoProcesso;
+    }
+
+    public ExportacaoTemporaria numeroDoProcesso(String numeroDoProcesso) {
+        this.numeroDoProcesso = numeroDoProcesso;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,30 +80,6 @@ public class ExportacaoTemporaria {
         this.prazo = prazo;
     }
 
-    public ExportacaoTemporaria prazo(Integer prazo) {
-        this.prazo = prazo;
-        return this;
-    }
-
-    /**
-     * Número do processo&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 17
-     *
-     * @return numeroDoProcesso
-     **/
-    @JsonProperty("numeroDoProcesso")
-    public String getNumeroDoProcesso() {
-        return numeroDoProcesso;
-    }
-
-    public void setNumeroDoProcesso(String numeroDoProcesso) {
-        this.numeroDoProcesso = numeroDoProcesso;
-    }
-
-    public ExportacaoTemporaria numeroDoProcesso(String numeroDoProcesso) {
-        this.numeroDoProcesso = numeroDoProcesso;
-        return this;
-    }
-
     /**
      * Get temporaria
      *
@@ -105,12 +100,17 @@ public class ExportacaoTemporaria {
         return this;
     }
 
+    public ExportacaoTemporaria prazo(Integer prazo) {
+        this.prazo = prazo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ExportacaoTemporaria {\n" +
-                "    prazo: " + toIndentedString(prazo) + "\n" +
                 "    numeroDoProcesso: " + toIndentedString(numeroDoProcesso) + "\n" +
+                "    prazo: " + toIndentedString(prazo) + "\n" +
                 "    temporaria: " + toIndentedString(temporaria) + "\n" +
                 "}";
         return sb;

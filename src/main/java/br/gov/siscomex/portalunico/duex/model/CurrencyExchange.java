@@ -704,15 +704,6 @@ public class CurrencyExchange {
             value = v;
         }
 
-        public static CurrencyTypeCodeEnum fromValue(String v) {
-            for (CurrencyTypeCodeEnum b : CurrencyTypeCodeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CurrencyTypeCodeEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -720,6 +711,15 @@ public class CurrencyExchange {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static CurrencyTypeCodeEnum fromValue(String v) {
+            for (CurrencyTypeCodeEnum b : CurrencyTypeCodeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CurrencyTypeCodeEnum");
         }
     }
 }

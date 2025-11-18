@@ -35,17 +35,6 @@ public class Documentos {
     private List<Documento> documento = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Documentos de carga de importação envolvidos na entrega (DUIMP)
      *
      * @return documento
@@ -68,6 +57,18 @@ public class Documentos {
     public Documentos addDocumentoItem(Documento documentoItem) {
         this.documento.add(documentoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

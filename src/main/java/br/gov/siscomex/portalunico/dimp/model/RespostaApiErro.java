@@ -13,24 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiErro", propOrder =
-        {"identificacao", "links", "message", "errors"
+        {"message", "identificacao", "errors", "links"
         })
 
 @XmlRootElement(name = "RespostaApiErro")
 public class RespostaApiErro {
-
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private IdentificacaoDuimpRespostaApi identificacao = null;
-
-    @XmlElement(name = "links")
-    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
-    @Valid
-    /**
-     * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
-     **/
-    private List<LinkCover> links = null;
 
     @XmlElement(name = "message")
     @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
@@ -39,6 +26,11 @@ public class RespostaApiErro {
      **/
     private String message = null;
 
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private IdentificacaoDuimpRespostaApi identificacao = null;
+
     @XmlElement(name = "errors")
     @ApiModelProperty(value = "Conjunto de erros de validação dos campos. Devolvido apenas para erros HTTP 422. <br> Esta é uma lista opcional e fornece o detalhamento de todos os erros que deram origem ao erro 422<br> Quando houver mais de um erro, essa lista será preenchida com cada um dos erros<br> <b>Exemplo:</b> A lista detalhada dos problemas encontrados em um item, quando for gerado um erro 422 ao validar a inclusão de um item.")
     @Valid
@@ -46,6 +38,14 @@ public class RespostaApiErro {
      * Conjunto de erros de validação dos campos. Devolvido apenas para erros HTTP 422. <br> Esta é uma lista opcional e fornece o detalhamento de todos os erros que deram origem ao erro 422<br> Quando houver mais de um erro, essa lista será preenchida com cada um dos erros<br> <b>Exemplo:</b> A lista detalhada dos problemas encontrados em um item, quando for gerado um erro 422 ao validar a inclusão de um item.
      **/
     private List<DuimpApiMessageCover> errors = null;
+
+    @XmlElement(name = "links")
+    @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
+    @Valid
+    /**
+     * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
+     **/
+    private List<LinkCover> links = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,6 +56,20 @@ public class RespostaApiErro {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Mensagem de resposta do resultado da operação.
+     *
+     * @return message
+     **/
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     /**
@@ -74,49 +88,6 @@ public class RespostaApiErro {
 
     public RespostaApiErro identificacao(IdentificacaoDuimpRespostaApi identificacao) {
         this.identificacao = identificacao;
-        return this;
-    }
-
-    /**
-     * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
-     *
-     * @return links
-     **/
-    @JsonProperty("links")
-    public List<LinkCover> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<LinkCover> links) {
-        this.links = links;
-    }
-
-    public RespostaApiErro links(List<LinkCover> links) {
-        this.links = links;
-        return this;
-    }
-
-    public RespostaApiErro addLinksItem(LinkCover linksItem) {
-        this.links.add(linksItem);
-        return this;
-    }
-
-    /**
-     * Mensagem de resposta do resultado da operação.
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public RespostaApiErro message(String message) {
-        this.message = message;
         return this;
     }
 
@@ -144,14 +115,43 @@ public class RespostaApiErro {
         return this;
     }
 
+    public RespostaApiErro message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
+     *
+     * @return links
+     **/
+    @JsonProperty("links")
+    public List<LinkCover> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<LinkCover> links) {
+        this.links = links;
+    }
+
+    public RespostaApiErro links(List<LinkCover> links) {
+        this.links = links;
+        return this;
+    }
+
+    public RespostaApiErro addLinksItem(LinkCover linksItem) {
+        this.links.add(linksItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RespostaApiErro {\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    message: " + toIndentedString(message) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    errors: " + toIndentedString(errors) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

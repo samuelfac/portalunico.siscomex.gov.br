@@ -12,21 +12,40 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CargaDetalheSituacaoEstoqueViagem", propOrder =
-        {"ul", "ra"
+        {"ra", "ul"
         })
 
 @XmlRootElement(name = "CargaDetalheSituacaoEstoqueViagem")
 public class CargaDetalheSituacaoEstoqueViagem {
+
+    @XmlElement(name = "ra")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Recinto ra = null;
 
     @XmlElement(name = "ul")
     @ApiModelProperty(value = "")
     @Valid
     private UnidadeRfb ul = null;
 
-    @XmlElement(name = "ra")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Recinto ra = null;
+    /**
+     * Get ra
+     *
+     * @return ra
+     **/
+    @JsonProperty("ra")
+    public Recinto getRa() {
+        return ra;
+    }
+
+    public void setRa(Recinto ra) {
+        this.ra = ra;
+    }
+
+    public CargaDetalheSituacaoEstoqueViagem ra(Recinto ra) {
+        this.ra = ra;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,31 +77,12 @@ public class CargaDetalheSituacaoEstoqueViagem {
         return this;
     }
 
-    /**
-     * Get ra
-     *
-     * @return ra
-     **/
-    @JsonProperty("ra")
-    public Recinto getRa() {
-        return ra;
-    }
-
-    public void setRa(Recinto ra) {
-        this.ra = ra;
-    }
-
-    public CargaDetalheSituacaoEstoqueViagem ra(Recinto ra) {
-        this.ra = ra;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CargaDetalheSituacaoEstoqueViagem {\n" +
-                "    ul: " + toIndentedString(ul) + "\n" +
                 "    ra: " + toIndentedString(ra) + "\n" +
+                "    ul: " + toIndentedString(ul) + "\n" +
                 "}";
         return sb;
     }

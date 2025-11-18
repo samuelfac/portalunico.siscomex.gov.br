@@ -38,17 +38,6 @@ public class ConteudoPalavraChaveDocumentoCommandApi {
     private Integer idPalavraChave = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Conteúdo informado para a palavra-chave.&lt;br/&gt;Tamanho máximo: 255&lt;br/&gt;Formato conforme tipoDado (DATA, DATA_HORA, NUMERO_INTEIRO, NUMERO_REAL, LISTA, TEXTO):&lt;br/&gt;Formato TEXTO: conforme máscara definida para a palavra-chave&lt;br/&gt;Formato DATA: dd/MM/yyyy ou yyyy-MM-dd&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 15/02/2021 ou 2021-02-15&lt;br/&gt;Formato DATA_HORA: dd/MM/yyyy HH:mm:ss ou formato ISO 8601 yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 15/02/2021 15:48:25, 2021-02-15T15:48:25 ou 2019-05-03T15:38:11.855BRT&lt;br/&gt;Formato NUMERO_INTEIRO: 99.999 (com ou sem ponto como separador de milhar)&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 1234 ou 1.234&lt;br/&gt;Formato NUMERO_REAL: 99.999,99 (pode ser enviado em três formatos diferentes:&lt;br/&gt;&amp;emsp;&amp;emsp;1) com ponto como separador de milhar e vírgula como separador decimal;&lt;br/&gt;&amp;emsp;&amp;emsp;2) apenas vírgula como separador decimal, sem separador de milhar; ou&lt;br/&gt;&amp;emsp;&amp;emsp;3) apenas ponto como separador decimal, sem separador de milhar)&lt;br/&gt;&amp;emsp;&amp;emsp;Exemplos: 1.234.478,65 ou 1234478.65 ou 1234478,65&lt;br/&gt;
      *
      * @return conteudo
@@ -86,6 +75,18 @@ public class ConteudoPalavraChaveDocumentoCommandApi {
     public ConteudoPalavraChaveDocumentoCommandApi idPalavraChave(Integer idPalavraChave) {
         this.idPalavraChave = idPalavraChave;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

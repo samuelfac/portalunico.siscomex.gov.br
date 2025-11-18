@@ -12,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ConteinerVazio", propOrder =
-        {"medidaConteinerVazio", "taraConteinerVazio", "identificacaoConteinerVazio"
+        {"identificacaoConteinerVazio", "medidaConteinerVazio", "taraConteinerVazio"
         })
 
 @XmlRootElement(name = "ConteinerVazio")
 public class ConteinerVazio {
+
+    @XmlElement(name = "identificacaoConteinerVazio", required = true)
+    @ApiModelProperty(example = "AG48569701", required = true, value = "Identificação do conteiner vazio transportado na viagem.<br/> Tamanho Máximo: 11")
+    /**
+     * Identificação do conteiner vazio transportado na viagem.<br/> Tamanho Máximo: 11
+     **/
+    private String identificacaoConteinerVazio = null;
 
     @XmlElement(name = "medidaConteinerVazio")
     @ApiModelProperty(example = "20", value = "Medidas do conteiner vazio transportado na viagem<BR/> 20 (20 pés) ou 40 (40 pés)<br/> Tamanho Máximo: 2")
@@ -32,13 +39,6 @@ public class ConteinerVazio {
      **/
     private String taraConteinerVazio = null;
 
-    @XmlElement(name = "identificacaoConteinerVazio", required = true)
-    @ApiModelProperty(example = "AG48569701", required = true, value = "Identificação do conteiner vazio transportado na viagem.<br/> Tamanho Máximo: 11")
-    /**
-     * Identificação do conteiner vazio transportado na viagem.<br/> Tamanho Máximo: 11
-     **/
-    private String identificacaoConteinerVazio = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -48,6 +48,21 @@ public class ConteinerVazio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação do conteiner vazio transportado na viagem.&lt;br/&gt; Tamanho Máximo: 11
+     *
+     * @return identificacaoConteinerVazio
+     **/
+    @JsonProperty("identificacaoConteinerVazio")
+    @NotNull
+    public String getIdentificacaoConteinerVazio() {
+        return identificacaoConteinerVazio;
+    }
+
+    public void setIdentificacaoConteinerVazio(String identificacaoConteinerVazio) {
+        this.identificacaoConteinerVazio = identificacaoConteinerVazio;
     }
 
     /**
@@ -89,21 +104,6 @@ public class ConteinerVazio {
         return this;
     }
 
-    /**
-     * Identificação do conteiner vazio transportado na viagem.&lt;br/&gt; Tamanho Máximo: 11
-     *
-     * @return identificacaoConteinerVazio
-     **/
-    @JsonProperty("identificacaoConteinerVazio")
-    @NotNull
-    public String getIdentificacaoConteinerVazio() {
-        return identificacaoConteinerVazio;
-    }
-
-    public void setIdentificacaoConteinerVazio(String identificacaoConteinerVazio) {
-        this.identificacaoConteinerVazio = identificacaoConteinerVazio;
-    }
-
     public ConteinerVazio identificacaoConteinerVazio(String identificacaoConteinerVazio) {
         this.identificacaoConteinerVazio = identificacaoConteinerVazio;
         return this;
@@ -113,9 +113,9 @@ public class ConteinerVazio {
     public String toString() {
 
         String sb = "class ConteinerVazio {\n" +
+                "    identificacaoConteinerVazio: " + toIndentedString(identificacaoConteinerVazio) + "\n" +
                 "    medidaConteinerVazio: " + toIndentedString(medidaConteinerVazio) + "\n" +
                 "    taraConteinerVazio: " + toIndentedString(taraConteinerVazio) + "\n" +
-                "    identificacaoConteinerVazio: " + toIndentedString(identificacaoConteinerVazio) + "\n" +
                 "}";
         return sb;
     }

@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosClienteConteinerOuULD", propOrder =
-        {"cpfCliente", "cnpjCliente", "idElemento", "nomeCliente"
+        {"cnpjCliente", "cpfCliente", "idElemento", "nomeCliente"
         })
 
 @XmlRootElement(name = "DadosClienteConteinerOuULD")
 public class DadosClienteConteinerOuULD {
-
-    @XmlElement(name = "cpfCliente")
-    @ApiModelProperty(example = "55555555555", value = "CPF do cliente do armazenamento. Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF do cliente do armazenamento. Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfCliente = null;
 
     @XmlElement(name = "cnpjCliente")
     @ApiModelProperty(example = "44444444444444", value = "CNPJ do cliente do armazenamento.<br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
@@ -31,6 +24,13 @@ public class DadosClienteConteinerOuULD {
      * CNPJ do cliente do armazenamento.<br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
      **/
     private String cnpjCliente = null;
+
+    @XmlElement(name = "cpfCliente")
+    @ApiModelProperty(example = "55555555555", value = "CPF do cliente do armazenamento. Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF do cliente do armazenamento. Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfCliente = null;
 
     @XmlElement(name = "idElemento", required = true)
     @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
@@ -45,6 +45,25 @@ public class DadosClienteConteinerOuULD {
      * Nome do cliente do armazenamento. <br/>Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.<br/>Tamanho: 100
      **/
     private String nomeCliente = null;
+
+    /**
+     * CNPJ do cliente do armazenamento.&lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     *
+     * @return cnpjCliente
+     **/
+    @JsonProperty("cnpjCliente")
+    public String getCnpjCliente() {
+        return cnpjCliente;
+    }
+
+    public void setCnpjCliente(String cnpjCliente) {
+        this.cnpjCliente = cnpjCliente;
+    }
+
+    public DadosClienteConteinerOuULD cnpjCliente(String cnpjCliente) {
+        this.cnpjCliente = cnpjCliente;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,30 +88,6 @@ public class DadosClienteConteinerOuULD {
 
     public void setCpfCliente(String cpfCliente) {
         this.cpfCliente = cpfCliente;
-    }
-
-    public DadosClienteConteinerOuULD cpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
-        return this;
-    }
-
-    /**
-     * CNPJ do cliente do armazenamento.&lt;br/&gt;Cliente que contratou o serviço de armazenagem do recinto para o qual será emitida a fatura.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
-     * @return cnpjCliente
-     **/
-    @JsonProperty("cnpjCliente")
-    public String getCnpjCliente() {
-        return cnpjCliente;
-    }
-
-    public void setCnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
-    }
-
-    public DadosClienteConteinerOuULD cnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
-        return this;
     }
 
     /**
@@ -134,12 +129,17 @@ public class DadosClienteConteinerOuULD {
         return this;
     }
 
+    public DadosClienteConteinerOuULD cpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosClienteConteinerOuULD {\n" +
-                "    cpfCliente: " + toIndentedString(cpfCliente) + "\n" +
                 "    cnpjCliente: " + toIndentedString(cnpjCliente) + "\n" +
+                "    cpfCliente: " + toIndentedString(cpfCliente) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    nomeCliente: " + toIndentedString(nomeCliente) + "\n" +
                 "}";

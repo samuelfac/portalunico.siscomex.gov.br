@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LocalCover", propOrder =
-        {"codigoURF", "latitude", "codigoRA", "longitude"
+        {"codigoURF", "codigoRA", "latitude", "longitude"
         })
 
 @XmlRootElement(name = "LocalCover")
@@ -31,13 +31,6 @@ public class LocalCover {
      **/
     private String codigoURF = null;
 
-    @XmlElement(name = "latitude")
-    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN")
-    /**
-     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN
-     **/
-    private String latitude = null;
-
     @XmlElement(name = "codigoRA")
     @ApiModelProperty(example = "8911101", value = "Código do Recinto Alfandegado<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.<br>Deve ser informado somente quando o atributo coordenadas não for informado.")
     /**
@@ -45,23 +38,19 @@ public class LocalCover {
      **/
     private String codigoRA = null;
 
+    @XmlElement(name = "latitude")
+    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN")
+    /**
+     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN
+     **/
+    private String latitude = null;
+
     @XmlElement(name = "longitude")
     @ApiModelProperty(example = "-43.248333", value = "Longitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN")
     /**
      * Longitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNNN ou -NN.NNNNNNN
      **/
     private String longitude = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Código da Unidade da Receita Federal de Despacho&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB de Despacho
@@ -81,26 +70,6 @@ public class LocalCover {
 
     public LocalCover codigoURF(String codigoURF) {
         this.codigoURF = codigoURF;
-        return this;
-    }
-
-    /**
-     * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNNN ou -NN.NNNNNNN
-     *
-     * @return latitude
-     **/
-    @JsonProperty("latitude")
-    @Pattern(regexp = "\\-?(90\\.0{1,6}|[1-8]?\\d\\.\\d{1,6})")
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public LocalCover latitude(String latitude) {
-        this.latitude = latitude;
         return this;
     }
 
@@ -125,6 +94,32 @@ public class LocalCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNNN ou -NN.NNNNNNN
+     *
+     * @return latitude
+     **/
+    @JsonProperty("latitude")
+    @Pattern(regexp = "\\-?(90\\.0{1,6}|[1-8]?\\d\\.\\d{1,6})")
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    /**
      * Longitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNNN ou -NN.NNNNNNN
      *
      * @return longitude
@@ -144,13 +139,18 @@ public class LocalCover {
         return this;
     }
 
+    public LocalCover latitude(String latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class LocalCover {\n" +
                 "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
-                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
+                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    longitude: " + toIndentedString(longitude) + "\n" +
                 "}";
         return sb;

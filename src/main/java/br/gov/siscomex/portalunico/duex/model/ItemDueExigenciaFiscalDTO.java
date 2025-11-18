@@ -11,25 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemDueExigenciaFiscalDTO", propOrder =
-        {"numeroItemNotaFiscal", "numeroNotaFiscal", "descricaoMercadoria", "numeroItemDue", "codigoNCM"
+        {"codigoNCM", "descricaoMercadoria", "numeroItemDue", "numeroItemNotaFiscal", "numeroNotaFiscal"
         })
 
 @XmlRootElement(name = "ItemDueExigenciaFiscalDTO")
 public class ItemDueExigenciaFiscalDTO {
 
-    @XmlElement(name = "numeroItemNotaFiscal")
-    @ApiModelProperty(value = "Número<br />Tamanho: 3,0<br />Formato: Decimal, com 0 casas decimais.")
+    @XmlElement(name = "codigoNCM")
+    @ApiModelProperty(value = "NCM <br />Tamanho: 8")
     /**
-     * Número<br />Tamanho: 3,0<br />Formato: Decimal, com 0 casas decimais.
+     * NCM <br />Tamanho: 8
      **/
-    private String numeroItemNotaFiscal = null;
-
-    @XmlElement(name = "numeroNotaFiscal")
-    @ApiModelProperty(value = "Chave de acesso<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
-    /**
-     * Chave de acesso<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
-     **/
-    private String numeroNotaFiscal = null;
+    private String codigoNCM = null;
 
     @XmlElement(name = "descricaoMercadoria")
     @ApiModelProperty(value = "Descrição da mercadoria ou descrição do item de nota fiscal<br />Tamanho máximo: 256")
@@ -45,12 +38,19 @@ public class ItemDueExigenciaFiscalDTO {
      **/
     private String numeroItemDue = null;
 
-    @XmlElement(name = "codigoNCM")
-    @ApiModelProperty(value = "NCM <br />Tamanho: 8")
+    @XmlElement(name = "numeroItemNotaFiscal")
+    @ApiModelProperty(value = "Número<br />Tamanho: 3,0<br />Formato: Decimal, com 0 casas decimais.")
     /**
-     * NCM <br />Tamanho: 8
+     * Número<br />Tamanho: 3,0<br />Formato: Decimal, com 0 casas decimais.
      **/
-    private String codigoNCM = null;
+    private String numeroItemNotaFiscal = null;
+
+    @XmlElement(name = "numeroNotaFiscal")
+    @ApiModelProperty(value = "Chave de acesso<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
+    /**
+     * Chave de acesso<br />Tamanho: 44<br />Formato: 'NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
+     **/
+    private String numeroNotaFiscal = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,41 +64,17 @@ public class ItemDueExigenciaFiscalDTO {
     }
 
     /**
-     * Número&lt;br /&gt;Tamanho: 3,0&lt;br /&gt;Formato: Decimal, com 0 casas decimais.
+     * NCM &lt;br /&gt;Tamanho: 8
      *
-     * @return numeroItemNotaFiscal
+     * @return codigoNCM
      **/
-    @JsonProperty("numeroItemNotaFiscal")
-    public String getNumeroItemNotaFiscal() {
-        return numeroItemNotaFiscal;
+    @JsonProperty("codigoNCM")
+    public String getCodigoNCM() {
+        return codigoNCM;
     }
 
-    public void setNumeroItemNotaFiscal(String numeroItemNotaFiscal) {
-        this.numeroItemNotaFiscal = numeroItemNotaFiscal;
-    }
-
-    public ItemDueExigenciaFiscalDTO numeroItemNotaFiscal(String numeroItemNotaFiscal) {
-        this.numeroItemNotaFiscal = numeroItemNotaFiscal;
-        return this;
-    }
-
-    /**
-     * Chave de acesso&lt;br /&gt;Tamanho: 44&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
-     *
-     * @return numeroNotaFiscal
-     **/
-    @JsonProperty("numeroNotaFiscal")
-    public String getNumeroNotaFiscal() {
-        return numeroNotaFiscal;
-    }
-
-    public void setNumeroNotaFiscal(String numeroNotaFiscal) {
-        this.numeroNotaFiscal = numeroNotaFiscal;
-    }
-
-    public ItemDueExigenciaFiscalDTO numeroNotaFiscal(String numeroNotaFiscal) {
-        this.numeroNotaFiscal = numeroNotaFiscal;
-        return this;
+    public void setCodigoNCM(String codigoNCM) {
+        this.codigoNCM = codigoNCM;
     }
 
     /**
@@ -139,22 +115,46 @@ public class ItemDueExigenciaFiscalDTO {
         return this;
     }
 
-    /**
-     * NCM &lt;br /&gt;Tamanho: 8
-     *
-     * @return codigoNCM
-     **/
-    @JsonProperty("codigoNCM")
-    public String getCodigoNCM() {
-        return codigoNCM;
-    }
-
-    public void setCodigoNCM(String codigoNCM) {
-        this.codigoNCM = codigoNCM;
-    }
-
     public ItemDueExigenciaFiscalDTO codigoNCM(String codigoNCM) {
         this.codigoNCM = codigoNCM;
+        return this;
+    }
+
+    /**
+     * Número&lt;br /&gt;Tamanho: 3,0&lt;br /&gt;Formato: Decimal, com 0 casas decimais.
+     *
+     * @return numeroItemNotaFiscal
+     **/
+    @JsonProperty("numeroItemNotaFiscal")
+    public String getNumeroItemNotaFiscal() {
+        return numeroItemNotaFiscal;
+    }
+
+    public void setNumeroItemNotaFiscal(String numeroItemNotaFiscal) {
+        this.numeroItemNotaFiscal = numeroItemNotaFiscal;
+    }
+
+    public ItemDueExigenciaFiscalDTO numeroItemNotaFiscal(String numeroItemNotaFiscal) {
+        this.numeroItemNotaFiscal = numeroItemNotaFiscal;
+        return this;
+    }
+
+    /**
+     * Chave de acesso&lt;br /&gt;Tamanho: 44&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
+     *
+     * @return numeroNotaFiscal
+     **/
+    @JsonProperty("numeroNotaFiscal")
+    public String getNumeroNotaFiscal() {
+        return numeroNotaFiscal;
+    }
+
+    public void setNumeroNotaFiscal(String numeroNotaFiscal) {
+        this.numeroNotaFiscal = numeroNotaFiscal;
+    }
+
+    public ItemDueExigenciaFiscalDTO numeroNotaFiscal(String numeroNotaFiscal) {
+        this.numeroNotaFiscal = numeroNotaFiscal;
         return this;
     }
 
@@ -162,11 +162,11 @@ public class ItemDueExigenciaFiscalDTO {
     public String toString() {
 
         String sb = "class ItemDueExigenciaFiscalDTO {\n" +
-                "    numeroItemNotaFiscal: " + toIndentedString(numeroItemNotaFiscal) + "\n" +
-                "    numeroNotaFiscal: " + toIndentedString(numeroNotaFiscal) + "\n" +
+                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
                 "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
                 "    numeroItemDue: " + toIndentedString(numeroItemDue) + "\n" +
-                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
+                "    numeroItemNotaFiscal: " + toIndentedString(numeroItemNotaFiscal) + "\n" +
+                "    numeroNotaFiscal: " + toIndentedString(numeroNotaFiscal) + "\n" +
                 "}";
         return sb;
     }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultaProtocolo", propOrder =
-        {"situacao", "tipoAcao", "tipoEvento", "cnpjResponsavelEvento", "cpfResponsavelEvento", "dataRecebimento", "detalhes"
+        {"cnpjResponsavelEvento", "cpfResponsavelEvento", "dataRecebimento", "detalhes", "situacao", "tipoAcao", "tipoEvento"
         })
 
 @XmlRootElement(name = "RetornoConsultaProtocolo")
@@ -23,27 +23,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Retorno da consulta por número de protocolo.")
 public class RetornoConsultaProtocolo {
-
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(example = "Rejeitado", value = "Consultar a situação do processamento do protocolo.")
-    /**
-     * Consultar a situação do processamento do protocolo.
-     **/
-    private String situacao = null;
-
-    @XmlElement(name = "tipoAcao")
-    @ApiModelProperty(example = "Retificação", value = "Descrição do tipo de ação da origem do protocolo.")
-    /**
-     * Descrição do tipo de ação da origem do protocolo.
-     **/
-    private String tipoAcao = null;
-
-    @XmlElement(name = "tipoEvento")
-    @ApiModelProperty(example = "Recepção", value = "Descrição do tipo de evento da origem do protocolo.")
-    /**
-     * Descrição do tipo de evento da origem do protocolo.
-     **/
-    private String tipoEvento = null;
 
     @XmlElement(name = "cnpjResponsavelEvento")
     @ApiModelProperty(example = "00000000000191", value = "CNPJ que originou o evento<br/>Tamanho: 14<br/>Formato: NNNNNNNNNNNNNN")
@@ -74,73 +53,26 @@ public class RetornoConsultaProtocolo {
      **/
     private List<Detalhe> detalhes = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(example = "Rejeitado", value = "Consultar a situação do processamento do protocolo.")
     /**
      * Consultar a situação do processamento do protocolo.
-     *
-     * @return situacao
      **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        return situacao;
-    }
+    private String situacao = null;
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public RetornoConsultaProtocolo situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
+    @XmlElement(name = "tipoAcao")
+    @ApiModelProperty(example = "Retificação", value = "Descrição do tipo de ação da origem do protocolo.")
     /**
      * Descrição do tipo de ação da origem do protocolo.
-     *
-     * @return tipoAcao
      **/
-    @JsonProperty("tipoAcao")
-    public String getTipoAcao() {
-        return tipoAcao;
-    }
+    private String tipoAcao = null;
 
-    public void setTipoAcao(String tipoAcao) {
-        this.tipoAcao = tipoAcao;
-    }
-
-    public RetornoConsultaProtocolo tipoAcao(String tipoAcao) {
-        this.tipoAcao = tipoAcao;
-        return this;
-    }
-
+    @XmlElement(name = "tipoEvento")
+    @ApiModelProperty(example = "Recepção", value = "Descrição do tipo de evento da origem do protocolo.")
     /**
      * Descrição do tipo de evento da origem do protocolo.
-     *
-     * @return tipoEvento
      **/
-    @JsonProperty("tipoEvento")
-    public String getTipoEvento() {
-        return tipoEvento;
-    }
-
-    public void setTipoEvento(String tipoEvento) {
-        this.tipoEvento = tipoEvento;
-    }
-
-    public RetornoConsultaProtocolo tipoEvento(String tipoEvento) {
-        this.tipoEvento = tipoEvento;
-        return this;
-    }
+    private String tipoEvento = null;
 
     /**
      * CNPJ que originou o evento&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: NNNNNNNNNNNNNN
@@ -223,17 +155,85 @@ public class RetornoConsultaProtocolo {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Consultar a situação do processamento do protocolo.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
+    public RetornoConsultaProtocolo situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Descrição do tipo de ação da origem do protocolo.
+     *
+     * @return tipoAcao
+     **/
+    @JsonProperty("tipoAcao")
+    public String getTipoAcao() {
+        return tipoAcao;
+    }
+
+    public void setTipoAcao(String tipoAcao) {
+        this.tipoAcao = tipoAcao;
+    }
+
+    public RetornoConsultaProtocolo tipoAcao(String tipoAcao) {
+        this.tipoAcao = tipoAcao;
+        return this;
+    }
+
+    /**
+     * Descrição do tipo de evento da origem do protocolo.
+     *
+     * @return tipoEvento
+     **/
+    @JsonProperty("tipoEvento")
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(String tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
+
+    public RetornoConsultaProtocolo tipoEvento(String tipoEvento) {
+        this.tipoEvento = tipoEvento;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RetornoConsultaProtocolo {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    tipoAcao: " + toIndentedString(tipoAcao) + "\n" +
-                "    tipoEvento: " + toIndentedString(tipoEvento) + "\n" +
                 "    cnpjResponsavelEvento: " + toIndentedString(cnpjResponsavelEvento) + "\n" +
                 "    cpfResponsavelEvento: " + toIndentedString(cpfResponsavelEvento) + "\n" +
                 "    dataRecebimento: " + toIndentedString(dataRecebimento) + "\n" +
                 "    detalhes: " + toIndentedString(detalhes) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    tipoAcao: " + toIndentedString(tipoAcao) + "\n" +
+                "    tipoEvento: " + toIndentedString(tipoEvento) + "\n" +
                 "}";
         return sb;
     }

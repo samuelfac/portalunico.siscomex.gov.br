@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EntregaConteiner", propOrder =
-        {"identificacaoPessoaJuridica", "avariasIdentificadas", "recebedor", "conteineres", "identificacaoEntrega", "identificacaoPessoaFisica", "divergenciasIdentificadas", "observacoesGerais", "local"
+        {"identificacaoEntrega", "identificacaoPessoaJuridica", "identificacaoPessoaFisica", "local", "conteineres", "recebedor", "avariasIdentificadas", "divergenciasIdentificadas", "observacoesGerais"
         })
 
 @XmlRootElement(name = "EntregaConteiner")
@@ -26,6 +26,13 @@ import java.util.List;
 @ApiModel(description = "Entrega por Contêiner")
 public class EntregaConteiner {
 
+    @XmlElement(name = "identificacaoEntrega", required = true)
+    @ApiModelProperty(example = "611504718", required = true, value = "Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas<br>Tamanho: 50")
+    /**
+     * Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas<br>Tamanho: 50
+     **/
+    private String identificacaoEntrega = null;
+
     @XmlElement(name = "identificacaoPessoaJuridica", required = true)
     @ApiModelProperty(example = "07396865000168", required = true, value = "CNPJ do responsável pela entrega<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
     /**
@@ -33,17 +40,17 @@ public class EntregaConteiner {
      **/
     private String identificacaoPessoaJuridica = null;
 
-    @XmlElement(name = "avariasIdentificadas")
-    @ApiModelProperty(example = "quebrado", value = "Avarias identificadas<br>Tamanho: 250")
+    @XmlElement(name = "identificacaoPessoaFisica", required = true)
+    @ApiModelProperty(example = "15573459106", required = true, value = "CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
     /**
-     * Avarias identificadas<br>Tamanho: 250
+     * CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
      **/
-    private String avariasIdentificadas = null;
+    private String identificacaoPessoaFisica = null;
 
-    @XmlElement(name = "recebedor", required = true)
+    @XmlElement(name = "local", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private Recebedor recebedor = null;
+    private Local local = null;
 
     @XmlElement(name = "conteineres", required = true)
     @ApiModelProperty(required = true, value = "Lista dos contêineres a serem entregues")
@@ -53,19 +60,17 @@ public class EntregaConteiner {
      **/
     private List<Conteiner> conteineres = new ArrayList<>();
 
-    @XmlElement(name = "identificacaoEntrega", required = true)
-    @ApiModelProperty(example = "611504718", required = true, value = "Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas<br>Tamanho: 50")
-    /**
-     * Identificação da entrega<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas<br>Tamanho: 50
-     **/
-    private String identificacaoEntrega = null;
+    @XmlElement(name = "recebedor", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Recebedor recebedor = null;
 
-    @XmlElement(name = "identificacaoPessoaFisica", required = true)
-    @ApiModelProperty(example = "15573459106", required = true, value = "CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
+    @XmlElement(name = "avariasIdentificadas")
+    @ApiModelProperty(example = "quebrado", value = "Avarias identificadas<br>Tamanho: 250")
     /**
-     * CPF do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
+     * Avarias identificadas<br>Tamanho: 250
      **/
-    private String identificacaoPessoaFisica = null;
+    private String avariasIdentificadas = null;
 
     @XmlElement(name = "divergenciasIdentificadas")
     @ApiModelProperty(example = "faltando um lacre", value = "Divergências identificadas<br>Tamanho: 250")
@@ -81,11 +86,6 @@ public class EntregaConteiner {
      **/
     private String observacoesGerais = null;
 
-    @XmlElement(name = "local", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Local local = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -95,6 +95,21 @@ public class EntregaConteiner {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação da entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas&lt;br&gt;Tamanho: 50
+     *
+     * @return identificacaoEntrega
+     **/
+    @JsonProperty("identificacaoEntrega")
+    @NotNull
+    public String getIdentificacaoEntrega() {
+        return identificacaoEntrega;
+    }
+
+    public void setIdentificacaoEntrega(String identificacaoEntrega) {
+        this.identificacaoEntrega = identificacaoEntrega;
     }
 
     /**
@@ -117,43 +132,44 @@ public class EntregaConteiner {
         return this;
     }
 
-    /**
-     * Avarias identificadas&lt;br&gt;Tamanho: 250
-     *
-     * @return avariasIdentificadas
-     **/
-    @JsonProperty("avariasIdentificadas")
-    public String getAvariasIdentificadas() {
-        return avariasIdentificadas;
-    }
-
-    public void setAvariasIdentificadas(String avariasIdentificadas) {
-        this.avariasIdentificadas = avariasIdentificadas;
-    }
-
-    public EntregaConteiner avariasIdentificadas(String avariasIdentificadas) {
-        this.avariasIdentificadas = avariasIdentificadas;
+    public EntregaConteiner identificacaoEntrega(String identificacaoEntrega) {
+        this.identificacaoEntrega = identificacaoEntrega;
         return this;
     }
 
     /**
-     * Get recebedor
+     * CPF do responsável pela recepção&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
-     * @return recebedor
+     * @return identificacaoPessoaFisica
      **/
-    @JsonProperty("recebedor")
+    @JsonProperty("identificacaoPessoaFisica")
     @NotNull
-    public Recebedor getRecebedor() {
-        return recebedor;
+    public String getIdentificacaoPessoaFisica() {
+        return identificacaoPessoaFisica;
     }
 
-    public void setRecebedor(Recebedor recebedor) {
-        this.recebedor = recebedor;
+    public void setIdentificacaoPessoaFisica(String identificacaoPessoaFisica) {
+        this.identificacaoPessoaFisica = identificacaoPessoaFisica;
     }
 
-    public EntregaConteiner recebedor(Recebedor recebedor) {
-        this.recebedor = recebedor;
+    public EntregaConteiner identificacaoPessoaFisica(String identificacaoPessoaFisica) {
+        this.identificacaoPessoaFisica = identificacaoPessoaFisica;
         return this;
+    }
+
+    /**
+     * Get local
+     *
+     * @return local
+     **/
+    @JsonProperty("local")
+    @NotNull
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     /**
@@ -181,44 +197,43 @@ public class EntregaConteiner {
         return this;
     }
 
-    /**
-     * Identificação da entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas&lt;br&gt;Tamanho: 50
-     *
-     * @return identificacaoEntrega
-     **/
-    @JsonProperty("identificacaoEntrega")
-    @NotNull
-    public String getIdentificacaoEntrega() {
-        return identificacaoEntrega;
-    }
-
-    public void setIdentificacaoEntrega(String identificacaoEntrega) {
-        this.identificacaoEntrega = identificacaoEntrega;
-    }
-
-    public EntregaConteiner identificacaoEntrega(String identificacaoEntrega) {
-        this.identificacaoEntrega = identificacaoEntrega;
+    public EntregaConteiner local(Local local) {
+        this.local = local;
         return this;
     }
 
     /**
-     * CPF do responsável pela recepção&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
+     * Get recebedor
      *
-     * @return identificacaoPessoaFisica
+     * @return recebedor
      **/
-    @JsonProperty("identificacaoPessoaFisica")
+    @JsonProperty("recebedor")
     @NotNull
-    public String getIdentificacaoPessoaFisica() {
-        return identificacaoPessoaFisica;
+    public Recebedor getRecebedor() {
+        return recebedor;
     }
 
-    public void setIdentificacaoPessoaFisica(String identificacaoPessoaFisica) {
-        this.identificacaoPessoaFisica = identificacaoPessoaFisica;
+    public void setRecebedor(Recebedor recebedor) {
+        this.recebedor = recebedor;
     }
 
-    public EntregaConteiner identificacaoPessoaFisica(String identificacaoPessoaFisica) {
-        this.identificacaoPessoaFisica = identificacaoPessoaFisica;
+    public EntregaConteiner recebedor(Recebedor recebedor) {
+        this.recebedor = recebedor;
         return this;
+    }
+
+    /**
+     * Avarias identificadas&lt;br&gt;Tamanho: 250
+     *
+     * @return avariasIdentificadas
+     **/
+    @JsonProperty("avariasIdentificadas")
+    public String getAvariasIdentificadas() {
+        return avariasIdentificadas;
+    }
+
+    public void setAvariasIdentificadas(String avariasIdentificadas) {
+        this.avariasIdentificadas = avariasIdentificadas;
     }
 
     /**
@@ -259,23 +274,8 @@ public class EntregaConteiner {
         return this;
     }
 
-    /**
-     * Get local
-     *
-     * @return local
-     **/
-    @JsonProperty("local")
-    @NotNull
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
-    }
-
-    public EntregaConteiner local(Local local) {
-        this.local = local;
+    public EntregaConteiner avariasIdentificadas(String avariasIdentificadas) {
+        this.avariasIdentificadas = avariasIdentificadas;
         return this;
     }
 
@@ -283,15 +283,15 @@ public class EntregaConteiner {
     public String toString() {
 
         String sb = "class EntregaConteiner {\n" +
-                "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
-                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
-                "    recebedor: " + toIndentedString(recebedor) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "    identificacaoEntrega: " + toIndentedString(identificacaoEntrega) + "\n" +
+                "    identificacaoPessoaJuridica: " + toIndentedString(identificacaoPessoaJuridica) + "\n" +
                 "    identificacaoPessoaFisica: " + toIndentedString(identificacaoPessoaFisica) + "\n" +
+                "    local: " + toIndentedString(local) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "    recebedor: " + toIndentedString(recebedor) + "\n" +
+                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
                 "    divergenciasIdentificadas: " + toIndentedString(divergenciasIdentificadas) + "\n" +
                 "    observacoesGerais: " + toIndentedString(observacoesGerais) + "\n" +
-                "    local: " + toIndentedString(local) + "\n" +
                 "}";
         return sb;
     }

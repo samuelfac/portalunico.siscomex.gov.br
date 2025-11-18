@@ -12,18 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosSemirreboquePosioVeculoPtio", propOrder =
-        {"vazio", "idElemento", "placa"
+        {"idElemento", "placa", "vazio"
         })
 
 @XmlRootElement(name = "DadosSemirreboquePosioVeculoPtio")
 public class DadosSemirreboquePosioVeculoPtio {
-
-    @XmlElement(name = "vazio")
-    @ApiModelProperty(example = "false", value = "Vazio<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Vazio<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean vazio = null;
 
     @XmlElement(name = "idElemento", required = true)
     @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
@@ -39,35 +32,12 @@ public class DadosSemirreboquePosioVeculoPtio {
      **/
     private String placa = null;
 
+    @XmlElement(name = "vazio")
+    @ApiModelProperty(example = "false", value = "Vazio<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Vazio&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return vazio
+     * Vazio<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
-    @JsonProperty("vazio")
-    public Boolean isisVazio() {
-        return vazio;
-    }
-
-    public void setVazio(Boolean vazio) {
-        this.vazio = vazio;
-    }
-
-    public DadosSemirreboquePosioVeculoPtio vazio(Boolean vazio) {
-        this.vazio = vazio;
-        return this;
-    }
+    private Boolean vazio = null;
 
     /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
@@ -108,13 +78,43 @@ public class DadosSemirreboquePosioVeculoPtio {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Vazio&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return vazio
+     **/
+    @JsonProperty("vazio")
+    public Boolean isisVazio() {
+        return vazio;
+    }
+
+    public void setVazio(Boolean vazio) {
+        this.vazio = vazio;
+    }
+
+    public DadosSemirreboquePosioVeculoPtio vazio(Boolean vazio) {
+        this.vazio = vazio;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosSemirreboquePosioVeculoPtio {\n" +
-                "    vazio: " + toIndentedString(vazio) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "    placa: " + toIndentedString(placa) + "\n" +
+                "    vazio: " + toIndentedString(vazio) + "\n" +
                 "}";
         return sb;
     }

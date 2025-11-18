@@ -12,11 +12,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Declaration", propOrder =
-        {"declarationNFe", "declarationNoNF", "declarationNoNFSimplified", "declarationDrawbackIsencao"
+        {"declarationDrawbackIsencao", "declarationNFe", "declarationNoNF", "declarationNoNFSimplified"
         })
 
 @XmlRootElement(name = "Declaration")
 public class Declaration {
+
+    @XmlElement(name = "declarationDrawbackIsencao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DeclarationDrawbackIsencao declarationDrawbackIsencao = null;
 
     @XmlElement(name = "declarationNFe")
     @ApiModelProperty(value = "")
@@ -33,11 +38,6 @@ public class Declaration {
     @Valid
     private DeclarationNoNFSimplified declarationNoNFSimplified = null;
 
-    @XmlElement(name = "declarationDrawbackIsencao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DeclarationDrawbackIsencao declarationDrawbackIsencao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -47,6 +47,20 @@ public class Declaration {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get declarationDrawbackIsencao
+     *
+     * @return declarationDrawbackIsencao
+     **/
+    @JsonProperty("declarationDrawbackIsencao")
+    public DeclarationDrawbackIsencao getDeclarationDrawbackIsencao() {
+        return declarationDrawbackIsencao;
+    }
+
+    public void setDeclarationDrawbackIsencao(DeclarationDrawbackIsencao declarationDrawbackIsencao) {
+        this.declarationDrawbackIsencao = declarationDrawbackIsencao;
     }
 
     /**
@@ -106,20 +120,6 @@ public class Declaration {
         return this;
     }
 
-    /**
-     * Get declarationDrawbackIsencao
-     *
-     * @return declarationDrawbackIsencao
-     **/
-    @JsonProperty("declarationDrawbackIsencao")
-    public DeclarationDrawbackIsencao getDeclarationDrawbackIsencao() {
-        return declarationDrawbackIsencao;
-    }
-
-    public void setDeclarationDrawbackIsencao(DeclarationDrawbackIsencao declarationDrawbackIsencao) {
-        this.declarationDrawbackIsencao = declarationDrawbackIsencao;
-    }
-
     public Declaration declarationDrawbackIsencao(DeclarationDrawbackIsencao declarationDrawbackIsencao) {
         this.declarationDrawbackIsencao = declarationDrawbackIsencao;
         return this;
@@ -129,10 +129,10 @@ public class Declaration {
     public String toString() {
 
         String sb = "class Declaration {\n" +
+                "    declarationDrawbackIsencao: " + toIndentedString(declarationDrawbackIsencao) + "\n" +
                 "    declarationNFe: " + toIndentedString(declarationNFe) + "\n" +
                 "    declarationNoNF: " + toIndentedString(declarationNoNF) + "\n" +
                 "    declarationNoNFSimplified: " + toIndentedString(declarationNoNFSimplified) + "\n" +
-                "    declarationDrawbackIsencao: " + toIndentedString(declarationDrawbackIsencao) + "\n" +
                 "}";
         return sb;
     }

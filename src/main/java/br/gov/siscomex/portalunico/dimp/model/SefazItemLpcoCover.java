@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazItemLpcoCover", propOrder =
-        {"orgao", "numero", "modelo"
+        {"numero", "modelo", "orgao"
         })
 
 @XmlRootElement(name = "SefazItemLpcoCover")
@@ -21,13 +21,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados do LPCO")
 public class SefazItemLpcoCover {
-
-    @XmlElement(name = "orgao")
-    @ApiModelProperty(example = "DECEX", value = "Sigla do Órgão Anuente<br><br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Sigla do Órgão Anuente<br><br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String orgao = null;
 
     @XmlElement(name = "numero")
     @ApiModelProperty(example = "I2000000007", value = "Número do LPCO<br><br>Tamanho: 11<br>Formato: 'IAANNNNNNNN'<br>Lei de formação. O número do LPCO é composto por: <br>* I = Prefixo para modelos utilizados na Importação.<br>* AA = Ano do registro do LPCO.<br>* NNNNNNNN = 8 caracteres númericos. Número sequencial do modelo.")
@@ -43,35 +36,12 @@ public class SefazItemLpcoCover {
      **/
     private String modelo = null;
 
+    @XmlElement(name = "orgao")
+    @ApiModelProperty(example = "DECEX", value = "Sigla do Órgão Anuente<br><br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Sigla do Órgão Anuente&lt;br&gt;&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
-     *
-     * @return orgao
+     * Sigla do Órgão Anuente<br><br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
-    @JsonProperty("orgao")
-    public String getOrgao() {
-        return orgao;
-    }
-
-    public void setOrgao(String orgao) {
-        this.orgao = orgao;
-    }
-
-    public SefazItemLpcoCover orgao(String orgao) {
-        this.orgao = orgao;
-        return this;
-    }
+    private String orgao = null;
 
     /**
      * Número do LPCO&lt;br&gt;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;IAANNNNNNNN&#39;&lt;br&gt;Lei de formação. O número do LPCO é composto por: &lt;br&gt;* I &#x3D; Prefixo para modelos utilizados na Importação.&lt;br&gt;* AA &#x3D; Ano do registro do LPCO.&lt;br&gt;* NNNNNNNN &#x3D; 8 caracteres númericos. Número sequencial do modelo.
@@ -111,13 +81,43 @@ public class SefazItemLpcoCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Sigla do Órgão Anuente&lt;br&gt;&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+     *
+     * @return orgao
+     **/
+    @JsonProperty("orgao")
+    public String getOrgao() {
+        return orgao;
+    }
+
+    public void setOrgao(String orgao) {
+        this.orgao = orgao;
+    }
+
+    public SefazItemLpcoCover orgao(String orgao) {
+        this.orgao = orgao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazItemLpcoCover {\n" +
-                "    orgao: " + toIndentedString(orgao) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
                 "    modelo: " + toIndentedString(modelo) + "\n" +
+                "    orgao: " + toIndentedString(orgao) + "\n" +
                 "}";
         return sb;
     }

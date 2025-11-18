@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TipoDossie", propOrder =
-        {"idTipoDossie", "tiposDocumento", "nomeTipoDossie", "tipoRepresentacao"
+        {"idTipoDossie", "nomeTipoDossie", "tipoRepresentacao", "tiposDocumento"
         })
 
 @XmlRootElement(name = "TipoDossie")
@@ -34,6 +34,14 @@ public class TipoDossie {
      **/
     private Long idTipoDossie = null;
 
+    @XmlElement(name = "nomeTipoDossie")
+    @ApiModelProperty(example = "Dossiê de Importação", value = "Nome do tipo de dossiê.<br/>Tamanho máximo: 255")
+    /**
+     * Nome do tipo de dossiê.<br/>Tamanho máximo: 255
+     **/
+    private String nomeTipoDossie = null;
+
+
     @XmlElement(name = "tiposDocumento")
     @ApiModelProperty(value = "Lista de tipos de documento.")
     @Valid
@@ -42,12 +50,6 @@ public class TipoDossie {
      **/
     private List<TipoDocumento> tiposDocumento = null;
 
-    @XmlElement(name = "nomeTipoDossie")
-    @ApiModelProperty(example = "Dossiê de Importação", value = "Nome do tipo de dossiê.<br/>Tamanho máximo: 255")
-    /**
-     * Nome do tipo de dossiê.<br/>Tamanho máximo: 255
-     **/
-    private String nomeTipoDossie = null;
     @XmlElement(name = "tipoRepresentacao")
     @ApiModelProperty(example = "IMPORTACAO", value = "IMPORTACAO, EXPORTACAO, AMBOS")
     /**
@@ -83,30 +85,6 @@ public class TipoDossie {
 
     public TipoDossie idTipoDossie(Long idTipoDossie) {
         this.idTipoDossie = idTipoDossie;
-        return this;
-    }
-
-    /**
-     * Lista de tipos de documento.
-     *
-     * @return tiposDocumento
-     **/
-    @JsonProperty("tiposDocumento")
-    public List<TipoDocumento> getTiposDocumento() {
-        return tiposDocumento;
-    }
-
-    public void setTiposDocumento(List<TipoDocumento> tiposDocumento) {
-        this.tiposDocumento = tiposDocumento;
-    }
-
-    public TipoDossie tiposDocumento(List<TipoDocumento> tiposDocumento) {
-        this.tiposDocumento = tiposDocumento;
-        return this;
-    }
-
-    public TipoDossie addTiposDocumentoItem(TipoDocumento tiposDocumentoItem) {
-        this.tiposDocumento.add(tiposDocumentoItem);
         return this;
     }
 
@@ -153,15 +131,39 @@ public class TipoDossie {
         return this;
     }
 
+    /**
+     * Lista de tipos de documento.
+     *
+     * @return tiposDocumento
+     **/
+    @JsonProperty("tiposDocumento")
+    public List<TipoDocumento> getTiposDocumento() {
+        return tiposDocumento;
+    }
+
+    public void setTiposDocumento(List<TipoDocumento> tiposDocumento) {
+        this.tiposDocumento = tiposDocumento;
+    }
+
+    public TipoDossie tiposDocumento(List<TipoDocumento> tiposDocumento) {
+        this.tiposDocumento = tiposDocumento;
+        return this;
+    }
+
+    public TipoDossie addTiposDocumentoItem(TipoDocumento tiposDocumentoItem) {
+        this.tiposDocumento.add(tiposDocumentoItem);
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class TipoDossie {\n" +
                 "    idTipoDossie: " + toIndentedString(idTipoDossie) + "\n" +
-                "    tiposDocumento: " + toIndentedString(tiposDocumento) + "\n" +
                 "    nomeTipoDossie: " + toIndentedString(nomeTipoDossie) + "\n" +
                 "    tipoRepresentacao: " + toIndentedString(tipoRepresentacao) + "\n" +
+                "    tiposDocumento: " + toIndentedString(tiposDocumento) + "\n" +
                 "}";
         return sb;
     }

@@ -11,11 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CnpjCPf", propOrder =
-        {"numeroIdentificacao", "nome"
+        {"nome", "numeroIdentificacao"
         })
 
 @XmlRootElement(name = "CnpjCPf")
 public class CnpjCPf {
+
+    @XmlElement(name = "nome")
+    @ApiModelProperty(value = "Nome pessoa fisica ou jurídica")
+    /**
+     * Nome pessoa fisica ou jurídica
+     **/
+    private String nome = null;
 
     @XmlElement(name = "numeroIdentificacao")
     @ApiModelProperty(example = "00000000000191", value = "Número do CNPJ")
@@ -24,12 +31,24 @@ public class CnpjCPf {
      **/
     private String numeroIdentificacao = null;
 
-    @XmlElement(name = "nome")
-    @ApiModelProperty(value = "Nome pessoa fisica ou jurídica")
     /**
      * Nome pessoa fisica ou jurídica
+     *
+     * @return nome
      **/
-    private String nome = null;
+    @JsonProperty("nome")
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public CnpjCPf nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,31 +80,12 @@ public class CnpjCPf {
         return this;
     }
 
-    /**
-     * Nome pessoa fisica ou jurídica
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public CnpjCPf nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class CnpjCPf {\n" +
-                "    numeroIdentificacao: " + toIndentedString(numeroIdentificacao) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    numeroIdentificacao: " + toIndentedString(numeroIdentificacao) + "\n" +
                 "}";
         return sb;
     }

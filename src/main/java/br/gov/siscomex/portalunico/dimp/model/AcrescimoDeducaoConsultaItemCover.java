@@ -23,28 +23,6 @@ import java.math.BigDecimal;
 public class AcrescimoDeducaoConsultaItemCover {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "ACRESCIMO", required = true, value = "Tipo de Operação (acreścimo ou dedução).<br>Domínio:")
-    /**
-     * Tipo de Operação (acreścimo ou dedução).<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "moeda", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private MoedaAcrescimoDeducaoCover moeda = null;
-    @XmlElement(name = "denominacao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DenominacaoAcrescimoDeducaoCover denominacao = null;
-    @XmlElement(name = "valorBRL")
-    @ApiModelProperty(example = "33.45", value = "Valor na moeda negociada convertido em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor na moeda negociada convertido em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorBRL = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -55,6 +33,31 @@ public class AcrescimoDeducaoConsultaItemCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "ACRESCIMO", required = true, value = "Tipo de Operação (acreścimo ou dedução).<br>Domínio:")
+    /**
+     * Tipo de Operação (acreścimo ou dedução).<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "moeda", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private MoedaAcrescimoDeducaoCover moeda = null;
+
+    @XmlElement(name = "denominacao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DenominacaoAcrescimoDeducaoCover denominacao = null;
+
+    @XmlElement(name = "valorBRL")
+    @ApiModelProperty(example = "33.45", value = "Valor na moeda negociada convertido em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor na moeda negociada convertido em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorBRL = null;
 
     /**
      * Tipo de Operação (acreścimo ou dedução).&lt;br&gt;Domínio:
@@ -137,7 +140,6 @@ public class AcrescimoDeducaoConsultaItemCover {
         this.valorBRL = valorBRL;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -37,12 +37,12 @@ public interface ModelosETemplatesDeLpcosApi {
     @ApiOperation(value = "Consultar lista de modelos de LPCO de um órgão anuente.", notes = "", tags = {"Modelos e templates de LPCOs"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = ModeloLpcoResumido.class, responseContainer = "List"),
-            @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nemhum conteúdo retornado"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 400, message = "Requisição mal formatada"),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     List<ModeloLpcoResumido> consulta(@ApiParam(value = "Código do órgão anuente responsável pelo modelo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30", required = true) @PathParam("codigoOrgao") String codigoOrgao, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Data de referência opcional que serve para retornar o estado do modelo LPCO em um momento do passado. Se não informada, utiliza-se o momento atual. A data deve ser informada no padrão ISO 8601 com precisão mínima de minutos.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ") @QueryParam("dataReferencia") String dataReferencia);
 
     /**
@@ -56,10 +56,10 @@ public interface ModelosETemplatesDeLpcosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = TemplateLpco.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     TemplateLpco obterTemplateFormulario(@ApiParam(value = "Código do modelo de LPCO.<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano", required = true) @PathParam("codigoModelo") String codigoModelo, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Data de referência opcional que serve para retornar o estado do modelo LPCO em um momento do passado. Se não informada, utiliza-se o momento atual. A data deve ser informada no padrão ISO 8601 com precisão mínima de minutos.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ") @QueryParam("dataReferencia") String dataReferencia, @ApiParam(value = "Indica se devem ser retornados registros que o início de vigência é uma data futura. ") @QueryParam("vigenciaFutura") Boolean vigenciaFutura);
 
     /**
@@ -73,10 +73,10 @@ public interface ModelosETemplatesDeLpcosApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = TemplateItemLpco.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
-            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso")})
+            @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     TemplateItemLpco obterTemplateNcm(@ApiParam(value = "Código do modelo de LPCO.<br>Tamanho: 6<br>Formato: ONNNNN<br>Lei de formação: O número do modelo de LPCO é composto por:<br>* O = Operação (E para exportação, I para importação)<br>* NNNNN = Número sequencial do modelo no ano", required = true) @PathParam("codigoModelo") String codigoModelo, @ApiParam(value = "Código numérico da NCM da mercadoria, sem pontos separadores.", required = true) @PathParam("ncm") String ncm, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Data de referência opcional que serve para retornar o estado do modelo LPCO em um momento do passado. Se não informada, utiliza-se o momento atual. A data deve ser informada no padrão ISO 8601 com precisão mínima de minutos.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ") @QueryParam("dataReferencia") String dataReferencia, @ApiParam(value = "Indica se devem ser retornados registros que o início de vigência é uma data futura. ") @QueryParam("vigenciaFutura") Boolean vigenciaFutura);
 }
 

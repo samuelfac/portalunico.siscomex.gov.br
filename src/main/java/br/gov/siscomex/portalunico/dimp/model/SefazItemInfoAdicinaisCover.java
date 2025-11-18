@@ -32,17 +32,6 @@ public class SefazItemInfoAdicinaisCover {
     private OffsetDateTime dataHoraFatoGerador = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data do fato gerador associado à Duimp para efeito de conversão de valores.
      *
      * @return dataHoraFatoGerador
@@ -60,6 +49,18 @@ public class SefazItemInfoAdicinaisCover {
     public SefazItemInfoAdicinaisCover dataHoraFatoGerador(OffsetDateTime dataHoraFatoGerador) {
         this.dataHoraFatoGerador = dataHoraFatoGerador;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -26,19 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class SituacaoRetificacaoLpco {
 
 
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "PARA_ANALISE", required = true, value = "Identificador da situação")
-    /**
-     * Identificador da situação
-     **/
-    private IdEnum id = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Para análise", value = "Descrição da situação")
-    /**
-     * Descrição da situação
-     **/
-    private DescricaoEnum descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -49,6 +36,30 @@ public class SituacaoRetificacaoLpco {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "PARA_ANALISE", required = true, value = "Identificador da situação")
+    /**
+     * Identificador da situação
+     **/
+    private IdEnum id = null;
+
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoRetificacaoLpco {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Para análise", value = "Descrição da situação")
+    /**
+     * Descrição da situação
+     **/
+    private DescricaoEnum descricao = null;
 
     /**
      * Identificador da situação
@@ -93,16 +104,6 @@ public class SituacaoRetificacaoLpco {
     public SituacaoRetificacaoLpco descricao(DescricaoEnum descricao) {
         this.descricao = descricao;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoRetificacaoLpco {\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
     }
 
 

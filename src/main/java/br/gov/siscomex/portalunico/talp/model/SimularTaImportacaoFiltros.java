@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SimularTaImportacaoFiltros", propOrder =
-        {"fundamentoLegal", "condicaoMercadoria", "camposAdicionais", "ncm", "atributos", "pais"
+        {"pais", "condicaoMercadoria", "ncm", "atributos", "fundamentoLegal", "camposAdicionais"
         })
 
 @XmlRootElement(name = "SimularTaImportacaoFiltros")
@@ -26,12 +26,12 @@ import java.util.List;
 @ApiModel(description = "Dados a serem informados para realizar a simulação de um Tratamento Administrativo de importação")
 public class SimularTaImportacaoFiltros {
 
-    @XmlElement(name = "fundamentoLegal")
-    @ApiModelProperty(example = "00617050920", value = "Código do fundamento legal")
+    @XmlElement(name = "pais", required = true)
+    @ApiModelProperty(example = "80", required = true, value = "Código do país em Iso2")
     /**
-     * Código do fundamento legal
+     * Código do país em Iso2
      **/
-    private String fundamentoLegal = null;
+    private String pais = null;
 
     @XmlElement(name = "condicaoMercadoria", required = true)
     @ApiModelProperty(example = "NOVA", required = true, value = "Código da condição da mercadoria")
@@ -39,14 +39,6 @@ public class SimularTaImportacaoFiltros {
      * Código da condição da mercadoria
      **/
     private String condicaoMercadoria = null;
-
-    @XmlElement(name = "camposAdicionais", required = true)
-    @ApiModelProperty(required = true, value = "Campo adicional do TT")
-    @Valid
-    /**
-     * Campo adicional do TT
-     **/
-    private List<ReferenciaCampoAdicionalTtDTO> camposAdicionais = new ArrayList<>();
 
     @XmlElement(name = "ncm", required = true)
     @ApiModelProperty(example = "01012100", required = true, value = "NCM a ser buscado")
@@ -63,12 +55,20 @@ public class SimularTaImportacaoFiltros {
      **/
     private List<AtributoNcmValorDTO> atributos = new ArrayList<>();
 
-    @XmlElement(name = "pais", required = true)
-    @ApiModelProperty(example = "80", required = true, value = "Código do país em Iso2")
+    @XmlElement(name = "fundamentoLegal")
+    @ApiModelProperty(example = "00617050920", value = "Código do fundamento legal")
     /**
-     * Código do país em Iso2
+     * Código do fundamento legal
      **/
-    private String pais = null;
+    private String fundamentoLegal = null;
+
+    @XmlElement(name = "camposAdicionais", required = true)
+    @ApiModelProperty(required = true, value = "Campo adicional do TT")
+    @Valid
+    /**
+     * Campo adicional do TT
+     **/
+    private List<ReferenciaCampoAdicionalTtDTO> camposAdicionais = new ArrayList<>();
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -82,22 +82,18 @@ public class SimularTaImportacaoFiltros {
     }
 
     /**
-     * Código do fundamento legal
+     * Código do país em Iso2
      *
-     * @return fundamentoLegal
+     * @return pais
      **/
-    @JsonProperty("fundamentoLegal")
-    public String getFundamentoLegal() {
-        return fundamentoLegal;
+    @JsonProperty("pais")
+    @NotNull
+    public String getPais() {
+        return pais;
     }
 
-    public void setFundamentoLegal(String fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-    }
-
-    public SimularTaImportacaoFiltros fundamentoLegal(String fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-        return this;
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 
     /**
@@ -117,31 +113,6 @@ public class SimularTaImportacaoFiltros {
 
     public SimularTaImportacaoFiltros condicaoMercadoria(String condicaoMercadoria) {
         this.condicaoMercadoria = condicaoMercadoria;
-        return this;
-    }
-
-    /**
-     * Campo adicional do TT
-     *
-     * @return camposAdicionais
-     **/
-    @JsonProperty("camposAdicionais")
-    @NotNull
-    public List<ReferenciaCampoAdicionalTtDTO> getCamposAdicionais() {
-        return camposAdicionais;
-    }
-
-    public void setCamposAdicionais(List<ReferenciaCampoAdicionalTtDTO> camposAdicionais) {
-        this.camposAdicionais = camposAdicionais;
-    }
-
-    public SimularTaImportacaoFiltros camposAdicionais(List<ReferenciaCampoAdicionalTtDTO> camposAdicionais) {
-        this.camposAdicionais = camposAdicionais;
-        return this;
-    }
-
-    public SimularTaImportacaoFiltros addCamposAdicionaisItem(ReferenciaCampoAdicionalTtDTO camposAdicionaisItem) {
-        this.camposAdicionais.add(camposAdicionaisItem);
         return this;
     }
 
@@ -190,23 +161,52 @@ public class SimularTaImportacaoFiltros {
         return this;
     }
 
-    /**
-     * Código do país em Iso2
-     *
-     * @return pais
-     **/
-    @JsonProperty("pais")
-    @NotNull
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
     public SimularTaImportacaoFiltros pais(String pais) {
         this.pais = pais;
+        return this;
+    }
+
+    /**
+     * Código do fundamento legal
+     *
+     * @return fundamentoLegal
+     **/
+    @JsonProperty("fundamentoLegal")
+    public String getFundamentoLegal() {
+        return fundamentoLegal;
+    }
+
+    public void setFundamentoLegal(String fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
+    }
+
+    public SimularTaImportacaoFiltros fundamentoLegal(String fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
+        return this;
+    }
+
+    /**
+     * Campo adicional do TT
+     *
+     * @return camposAdicionais
+     **/
+    @JsonProperty("camposAdicionais")
+    @NotNull
+    public List<ReferenciaCampoAdicionalTtDTO> getCamposAdicionais() {
+        return camposAdicionais;
+    }
+
+    public void setCamposAdicionais(List<ReferenciaCampoAdicionalTtDTO> camposAdicionais) {
+        this.camposAdicionais = camposAdicionais;
+    }
+
+    public SimularTaImportacaoFiltros camposAdicionais(List<ReferenciaCampoAdicionalTtDTO> camposAdicionais) {
+        this.camposAdicionais = camposAdicionais;
+        return this;
+    }
+
+    public SimularTaImportacaoFiltros addCamposAdicionaisItem(ReferenciaCampoAdicionalTtDTO camposAdicionaisItem) {
+        this.camposAdicionais.add(camposAdicionaisItem);
         return this;
     }
 
@@ -214,12 +214,12 @@ public class SimularTaImportacaoFiltros {
     public String toString() {
 
         String sb = "class SimularTaImportacaoFiltros {\n" +
-                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
+                "    pais: " + toIndentedString(pais) + "\n" +
                 "    condicaoMercadoria: " + toIndentedString(condicaoMercadoria) + "\n" +
-                "    camposAdicionais: " + toIndentedString(camposAdicionais) + "\n" +
                 "    ncm: " + toIndentedString(ncm) + "\n" +
                 "    atributos: " + toIndentedString(atributos) + "\n" +
-                "    pais: " + toIndentedString(pais) + "\n" +
+                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
+                "    camposAdicionais: " + toIndentedString(camposAdicionais) + "\n" +
                 "}";
         return sb;
     }

@@ -31,17 +31,6 @@ public class FundamentoCover {
     private String codigo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Dominio: Fundamentos legais existentes no sistema Tratamento Tributário.
      *
      * @return codigo
@@ -59,6 +48,18 @@ public class FundamentoCover {
     public FundamentoCover codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

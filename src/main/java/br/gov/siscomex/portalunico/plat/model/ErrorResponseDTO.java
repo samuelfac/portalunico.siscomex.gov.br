@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ErrorResponseDTO", propOrder =
-        {"code", "tag", "message", "status"
+        {"status", "message", "tag", "code"
         })
 
 @XmlRootElement(name = "ErrorResponseDTO")
@@ -23,19 +23,12 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "DTO de resposta de erro")
 public class ErrorResponseDTO {
 
-    @XmlElement(name = "code", required = true)
-    @ApiModelProperty(required = true, value = "Código de erro. Na seção inicial, estão listados os erros de negócio mapeados.")
+    @XmlElement(name = "status", required = true)
+    @ApiModelProperty(required = true, value = "Código de status HTTP.")
     /**
-     * Código de erro. Na seção inicial, estão listados os erros de negócio mapeados.
+     * Código de status HTTP.
      **/
-    private String code = null;
-
-    @XmlElement(name = "tag", required = true)
-    @ApiModelProperty(required = true, value = "Tag de erro. Usada para rastreio em logs em caso de acionamento.")
-    /**
-     * Tag de erro. Usada para rastreio em logs em caso de acionamento.
-     **/
-    private String tag = null;
+    private Integer status = null;
 
     @XmlElement(name = "message", required = true)
     @ApiModelProperty(required = true, value = "Mensagem descrevendo o erro.")
@@ -44,12 +37,19 @@ public class ErrorResponseDTO {
      **/
     private String message = null;
 
-    @XmlElement(name = "status", required = true)
-    @ApiModelProperty(required = true, value = "Código de status HTTP.")
+    @XmlElement(name = "tag", required = true)
+    @ApiModelProperty(required = true, value = "Tag de erro. Usada para rastreio em logs em caso de acionamento.")
     /**
-     * Código de status HTTP.
+     * Tag de erro. Usada para rastreio em logs em caso de acionamento.
      **/
-    private Integer status = null;
+    private String tag = null;
+
+    @XmlElement(name = "code", required = true)
+    @ApiModelProperty(required = true, value = "Código de erro. Na seção inicial, estão listados os erros de negócio mapeados.")
+    /**
+     * Código de erro. Na seção inicial, estão listados os erros de negócio mapeados.
+     **/
+    private String code = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -63,22 +63,42 @@ public class ErrorResponseDTO {
     }
 
     /**
-     * Código de erro. Na seção inicial, estão listados os erros de negócio mapeados.
+     * Código de status HTTP.
      *
-     * @return code
+     * @return status
      **/
-    @JsonProperty("code")
+    @JsonProperty("status")
     @NotNull
-    public String getCode() {
-        return code;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public ErrorResponseDTO code(String code) {
-        this.code = code;
+    /**
+     * Mensagem descrevendo o erro.
+     *
+     * @return message
+     **/
+    @JsonProperty("message")
+    @NotNull
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public ErrorResponseDTO message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public ErrorResponseDTO status(Integer status) {
+        this.status = status;
         return this;
     }
 
@@ -103,42 +123,22 @@ public class ErrorResponseDTO {
     }
 
     /**
-     * Mensagem descrevendo o erro.
+     * Código de erro. Na seção inicial, estão listados os erros de negócio mapeados.
      *
-     * @return message
+     * @return code
      **/
-    @JsonProperty("message")
+    @JsonProperty("code")
     @NotNull
-    public String getMessage() {
-        return message;
+    public String getCode() {
+        return code;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public ErrorResponseDTO message(String message) {
-        this.message = message;
-        return this;
-    }
-
-    /**
-     * Código de status HTTP.
-     *
-     * @return status
-     **/
-    @JsonProperty("status")
-    @NotNull
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public ErrorResponseDTO status(Integer status) {
-        this.status = status;
+    public ErrorResponseDTO code(String code) {
+        this.code = code;
         return this;
     }
 
@@ -146,10 +146,10 @@ public class ErrorResponseDTO {
     public String toString() {
 
         String sb = "class ErrorResponseDTO {\n" +
-                "    code: " + toIndentedString(code) + "\n" +
-                "    tag: " + toIndentedString(tag) + "\n" +
-                "    message: " + toIndentedString(message) + "\n" +
                 "    status: " + toIndentedString(status) + "\n" +
+                "    message: " + toIndentedString(message) + "\n" +
+                "    tag: " + toIndentedString(tag) + "\n" +
+                "    code: " + toIndentedString(code) + "\n" +
                 "}";
         return sb;
     }

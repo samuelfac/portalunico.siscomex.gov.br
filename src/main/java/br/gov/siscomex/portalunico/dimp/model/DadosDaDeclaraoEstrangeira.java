@@ -11,18 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDaDeclaraoEstrangeira", propOrder =
-        {"faixaItemFinal", "numeroDeclaracao", "faixaItemInicial"
+        {"numeroDeclaracao", "faixaItemInicial", "faixaItemFinal"
         })
 
 @XmlRootElement(name = "DadosDaDeclaraoEstrangeira")
 public class DadosDaDeclaraoEstrangeira {
-
-    @XmlElement(name = "faixaItemFinal")
-    @ApiModelProperty(example = "B-20", value = "Item final da faixa de itens<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
-    /**
-     * Item final da faixa de itens<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
-     **/
-    private String faixaItemFinal = null;
 
     @XmlElement(name = "numeroDeclaracao")
     @ApiModelProperty(example = "19XY0000001-XYZ", value = "Número da declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 70")
@@ -38,35 +31,12 @@ public class DadosDaDeclaraoEstrangeira {
      **/
     private String faixaItemInicial = null;
 
+    @XmlElement(name = "faixaItemFinal")
+    @ApiModelProperty(example = "B-20", value = "Item final da faixa de itens<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Item final da faixa de itens&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 7
-     *
-     * @return faixaItemFinal
+     * Item final da faixa de itens<br>Tamanho mínimo: 1<br>Tamanho máximo: 7
      **/
-    @JsonProperty("faixaItemFinal")
-    public String getFaixaItemFinal() {
-        return faixaItemFinal;
-    }
-
-    public void setFaixaItemFinal(String faixaItemFinal) {
-        this.faixaItemFinal = faixaItemFinal;
-    }
-
-    public DadosDaDeclaraoEstrangeira faixaItemFinal(String faixaItemFinal) {
-        this.faixaItemFinal = faixaItemFinal;
-        return this;
-    }
+    private String faixaItemFinal = null;
 
     /**
      * Número da declaração.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 70
@@ -106,13 +76,43 @@ public class DadosDaDeclaraoEstrangeira {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Item final da faixa de itens&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 7
+     *
+     * @return faixaItemFinal
+     **/
+    @JsonProperty("faixaItemFinal")
+    public String getFaixaItemFinal() {
+        return faixaItemFinal;
+    }
+
+    public void setFaixaItemFinal(String faixaItemFinal) {
+        this.faixaItemFinal = faixaItemFinal;
+    }
+
+    public DadosDaDeclaraoEstrangeira faixaItemFinal(String faixaItemFinal) {
+        this.faixaItemFinal = faixaItemFinal;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DadosDaDeclaraoEstrangeira {\n" +
-                "    faixaItemFinal: " + toIndentedString(faixaItemFinal) + "\n" +
                 "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
                 "    faixaItemInicial: " + toIndentedString(faixaItemInicial) + "\n" +
+                "    faixaItemFinal: " + toIndentedString(faixaItemFinal) + "\n" +
                 "}";
         return sb;
     }

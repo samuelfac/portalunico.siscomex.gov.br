@@ -15,11 +15,32 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemCargaViagem", propOrder =
-        {"embalagemVazia", "sequencial", "tipoEmbalagem", "lacresConteiner", "pesoBrutoKG", "quantidadeVolumesTransportado", "chassi", "identificacaoConteiner", "conteinerVazio", "descricao", "tipoGranel"
+        {"chassi", "conteinerVazio", "descricao", "embalagemVazia", "identificacaoConteiner", "lacresConteiner", "pesoBrutoKG", "quantidadeVolumesTransportado", "sequencial", "tipoEmbalagem", "tipoGranel"
         })
 
 @XmlRootElement(name = "ItemCargaViagem")
 public class ItemCargaViagem {
+
+    @XmlElement(name = "chassi")
+    @ApiModelProperty(example = "2WXR0U5O8S8SRRB8P", value = "Chassi do veículo transportado na viagem.para tipocarga = 4 preenchimento obrigatório<br/>Tamanho Máximo: 30")
+    /**
+     * Chassi do veículo transportado na viagem.para tipocarga = 4 preenchimento obrigatório<br/>Tamanho Máximo: 30
+     **/
+    private String chassi = null;
+
+    @XmlElement(name = "conteinerVazio", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o item de carga contém contêiner vazio.")
+    /**
+     * Indicador que informa se o item de carga contém contêiner vazio.
+     **/
+    private Boolean conteinerVazio = null;
+
+    @XmlElement(name = "descricao", required = true)
+    @ApiModelProperty(example = "Descrição completa dos itens do CRT.", required = true, value = "Descrição do item do CRT.")
+    /**
+     * Descrição do item do CRT.
+     **/
+    private String descricao = null;
 
     @XmlElement(name = "embalagemVazia", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o item de carga contém embalagem vazia.")
@@ -28,20 +49,12 @@ public class ItemCargaViagem {
      **/
     private Boolean embalagemVazia = null;
 
-    @XmlElement(name = "sequencial", required = true)
-    @ApiModelProperty(example = "1.0", required = true, value = "Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20")
-    @Valid
+    @XmlElement(name = "identificacaoConteiner")
+    @ApiModelProperty(example = "AG48569701", value = "Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11")
     /**
-     * Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20
+     * Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11
      **/
-    private BigDecimal sequencial = null;
-
-    @XmlElement(name = "tipoEmbalagem")
-    @ApiModelProperty(example = "01", value = "Tipo de embalagem da carga solta transportada na viagem.para tipocarga = 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)<br/> Tamanho Máximo: 2")
-    /**
-     * Tipo de embalagem da carga solta transportada na viagem.para tipocarga = 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)<br/> Tamanho Máximo: 2
-     **/
-    private String tipoEmbalagem = null;
+    private String identificacaoConteiner = null;
 
     @XmlElement(name = "lacresConteiner")
     @ApiModelProperty(value = "")
@@ -63,33 +76,20 @@ public class ItemCargaViagem {
      **/
     private String quantidadeVolumesTransportado = null;
 
-    @XmlElement(name = "chassi")
-    @ApiModelProperty(example = "2WXR0U5O8S8SRRB8P", value = "Chassi do veículo transportado na viagem.para tipocarga = 4 preenchimento obrigatório<br/>Tamanho Máximo: 30")
+    @XmlElement(name = "sequencial", required = true)
+    @ApiModelProperty(example = "1.0", required = true, value = "Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20")
+    @Valid
     /**
-     * Chassi do veículo transportado na viagem.para tipocarga = 4 preenchimento obrigatório<br/>Tamanho Máximo: 30
+     * Sequencial de item de carga da viagem<br/> Tamanho Máximo: 20
      **/
-    private String chassi = null;
+    private BigDecimal sequencial = null;
 
-    @XmlElement(name = "identificacaoConteiner")
-    @ApiModelProperty(example = "AG48569701", value = "Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11")
+    @XmlElement(name = "tipoEmbalagem")
+    @ApiModelProperty(example = "01", value = "Tipo de embalagem da carga solta transportada na viagem.para tipocarga = 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)<br/> Tamanho Máximo: 2")
     /**
-     * Identificação do conteiner transportado na viagem.para tipocarga = 1 preenchimento obrigatório<br/> Tamanho Máximo: 11
+     * Tipo de embalagem da carga solta transportada na viagem.para tipocarga = 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)<br/> Tamanho Máximo: 2
      **/
-    private String identificacaoConteiner = null;
-
-    @XmlElement(name = "conteinerVazio", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o item de carga contém contêiner vazio.")
-    /**
-     * Indicador que informa se o item de carga contém contêiner vazio.
-     **/
-    private Boolean conteinerVazio = null;
-
-    @XmlElement(name = "descricao", required = true)
-    @ApiModelProperty(example = "Descrição completa dos itens do CRT.", required = true, value = "Descrição do item do CRT.")
-    /**
-     * Descrição do item do CRT.
-     **/
-    private String descricao = null;
+    private String tipoEmbalagem = null;
 
     @XmlElement(name = "tipoGranel")
     @ApiModelProperty(example = "01", value = "Tipo de granel do item de carga transportado na viagempara tipocarga = 3 preenchimento obrigatório conforme Tabela de tipos de granel(TabX)<br/>Tamanho Máximo: 2")
@@ -107,6 +107,60 @@ public class ItemCargaViagem {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Chassi do veículo transportado na viagem.para tipocarga &#x3D; 4 preenchimento obrigatório&lt;br/&gt;Tamanho Máximo: 30
+     *
+     * @return chassi
+     **/
+    @JsonProperty("chassi")
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public ItemCargaViagem chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
+    }
+
+    /**
+     * Indicador que informa se o item de carga contém contêiner vazio.
+     *
+     * @return conteinerVazio
+     **/
+    @JsonProperty("conteinerVazio")
+    @NotNull
+    public Boolean isisConteinerVazio() {
+        return conteinerVazio;
+    }
+
+    public void setConteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+    }
+
+    public ItemCargaViagem conteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+        return this;
+    }
+
+    /**
+     * Descrição do item do CRT.
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    @NotNull
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     /**
@@ -129,43 +183,23 @@ public class ItemCargaViagem {
         return this;
     }
 
-    /**
-     * Sequencial de item de carga da viagem&lt;br/&gt; Tamanho Máximo: 20
-     *
-     * @return sequencial
-     **/
-    @JsonProperty("sequencial")
-    @NotNull
-    public BigDecimal getSequencial() {
-        return sequencial;
-    }
-
-    public void setSequencial(BigDecimal sequencial) {
-        this.sequencial = sequencial;
-    }
-
-    public ItemCargaViagem sequencial(BigDecimal sequencial) {
-        this.sequencial = sequencial;
+    public ItemCargaViagem descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 
     /**
-     * Tipo de embalagem da carga solta transportada na viagem.para tipocarga &#x3D; 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)&lt;br/&gt; Tamanho Máximo: 2
+     * Identificação do conteiner transportado na viagem.para tipocarga &#x3D; 1 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 11
      *
-     * @return tipoEmbalagem
+     * @return identificacaoConteiner
      **/
-    @JsonProperty("tipoEmbalagem")
-    public String getTipoEmbalagem() {
-        return tipoEmbalagem;
+    @JsonProperty("identificacaoConteiner")
+    public String getIdentificacaoConteiner() {
+        return identificacaoConteiner;
     }
 
-    public void setTipoEmbalagem(String tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-    }
-
-    public ItemCargaViagem tipoEmbalagem(String tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-        return this;
+    public void setIdentificacaoConteiner(String identificacaoConteiner) {
+        this.identificacaoConteiner = identificacaoConteiner;
     }
 
     /**
@@ -231,87 +265,46 @@ public class ItemCargaViagem {
         return this;
     }
 
-    /**
-     * Chassi do veículo transportado na viagem.para tipocarga &#x3D; 4 preenchimento obrigatório&lt;br/&gt;Tamanho Máximo: 30
-     *
-     * @return chassi
-     **/
-    @JsonProperty("chassi")
-    public String getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
-    }
-
-    public ItemCargaViagem chassi(String chassi) {
-        this.chassi = chassi;
-        return this;
-    }
-
-    /**
-     * Identificação do conteiner transportado na viagem.para tipocarga &#x3D; 1 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 11
-     *
-     * @return identificacaoConteiner
-     **/
-    @JsonProperty("identificacaoConteiner")
-    public String getIdentificacaoConteiner() {
-        return identificacaoConteiner;
-    }
-
-    public void setIdentificacaoConteiner(String identificacaoConteiner) {
-        this.identificacaoConteiner = identificacaoConteiner;
-    }
-
     public ItemCargaViagem identificacaoConteiner(String identificacaoConteiner) {
         this.identificacaoConteiner = identificacaoConteiner;
         return this;
     }
 
     /**
-     * Indicador que informa se o item de carga contém contêiner vazio.
-     *
-     * @return conteinerVazio
+     * Sequencial de item de carga da viagem&lt;br/&gt; Tamanho Máximo: 20
+     * @return sequencial
      **/
-    @JsonProperty("conteinerVazio")
+    @JsonProperty("sequencial")
     @NotNull
-    public Boolean isisConteinerVazio() {
-        return conteinerVazio;
+    public BigDecimal getSequencial() {
+        return sequencial;
     }
 
-    public void setConteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
+    public void setSequencial(BigDecimal sequencial) {
+        this.sequencial = sequencial;
     }
 
-    public ItemCargaViagem conteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
+    public ItemCargaViagem sequencial(BigDecimal sequencial) {
+        this.sequencial = sequencial;
         return this;
     }
 
     /**
-     * Descrição do item do CRT.
+     * Tipo de embalagem da carga solta transportada na viagem.para tipocarga &#x3D; 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)&lt;br/&gt; Tamanho Máximo: 2
      *
-     * @return descricao
+     * @return tipoEmbalagem
      **/
-    @JsonProperty("descricao")
-    @NotNull
-    public String getDescricao() {
-        return descricao;
+    @JsonProperty("tipoEmbalagem")
+    public String getTipoEmbalagem() {
+        return tipoEmbalagem;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public ItemCargaViagem descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
+    public void setTipoEmbalagem(String tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
     }
 
     /**
      * Tipo de granel do item de carga transportado na viagempara tipocarga &#x3D; 3 preenchimento obrigatório conforme Tabela de tipos de granel(TabX)&lt;br/&gt;Tamanho Máximo: 2
-     *
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")
@@ -328,20 +321,25 @@ public class ItemCargaViagem {
         return this;
     }
 
+    public ItemCargaViagem tipoEmbalagem(String tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ItemCargaViagem {\n" +
+                "    chassi: " + toIndentedString(chassi) + "\n" +
+                "    conteinerVazio: " + toIndentedString(conteinerVazio) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
                 "    embalagemVazia: " + toIndentedString(embalagemVazia) + "\n" +
-                "    sequencial: " + toIndentedString(sequencial) + "\n" +
-                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
+                "    identificacaoConteiner: " + toIndentedString(identificacaoConteiner) + "\n" +
                 "    lacresConteiner: " + toIndentedString(lacresConteiner) + "\n" +
                 "    pesoBrutoKG: " + toIndentedString(pesoBrutoKG) + "\n" +
                 "    quantidadeVolumesTransportado: " + toIndentedString(quantidadeVolumesTransportado) + "\n" +
-                "    chassi: " + toIndentedString(chassi) + "\n" +
-                "    identificacaoConteiner: " + toIndentedString(identificacaoConteiner) + "\n" +
-                "    conteinerVazio: " + toIndentedString(conteinerVazio) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    sequencial: " + toIndentedString(sequencial) + "\n" +
+                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
                 "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "}";
         return sb;

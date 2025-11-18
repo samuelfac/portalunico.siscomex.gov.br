@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazCaracterizacaoImportacaoCover", propOrder =
-        {"indicadorImportacaoTerceiros", "uf", "tipoIdentificacaoTerceiro", "identificacaoTerceiro", "nome"
+        {"indicadorImportacaoTerceiros", "tipoIdentificacaoTerceiro", "identificacaoTerceiro", "uf", "nome"
         })
 
 @XmlRootElement(name = "SefazCaracterizacaoImportacaoCover")
@@ -26,36 +26,19 @@ import javax.xml.bind.annotation.XmlType;
 public class SefazCaracterizacaoImportacaoCover {
 
 
-    @XmlElement(name = "indicadorImportacaoTerceiros", required = true)
-    @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
-    /**
-     * Indicador de importação por terceiros.
-     **/
-    private IndicadorImportacaoTerceirosEnum indicadorImportacaoTerceiros = null;
     @XmlElement(name = "uf")
     @ApiModelProperty(example = "RJ", value = "UF do adquirente ou encomendante<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
     /**
      * UF do adquirente ou encomendante<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
      **/
     private String uf = null;
-    @XmlElement(name = "tipoIdentificacaoTerceiro", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Tipo do Adquirente ou Encomendante. Indica se ele  é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país<br>Observação: Por enquanto será retornado apenas CNPJ")
+
+    @XmlElement(name = "indicadorImportacaoTerceiros", required = true)
+    @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
     /**
-     * Tipo do Adquirente ou Encomendante. Indica se ele  é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país<br>Observação: Por enquanto será retornado apenas CNPJ
+     * Indicador de importação por terceiros.
      **/
-    private TipoIdentificacaoTerceiroEnum tipoIdentificacaoTerceiro = null;
-    @XmlElement(name = "identificacaoTerceiro")
-    @ApiModelProperty(example = "00000000000191", value = "Identificação  do adquirente ou encomendante<br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
-    /**
-     * Identificação  do adquirente ou encomendante<br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
-     **/
-    private String identificacaoTerceiro = null;
-    @XmlElement(name = "nome")
-    @ApiModelProperty(example = "Nome do CNPJ ou CPF informado", value = "Nome do adquirente ou encomendante<br>Tamanho mínimo: 1<br>Tamanho máximo: 150<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
-    /**
-     * Nome do adquirente ou encomendante<br>Tamanho mínimo: 1<br>Tamanho máximo: 150<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
-     **/
-    private String nome = null;
+    private IndicadorImportacaoTerceirosEnum indicadorImportacaoTerceiros = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,6 +50,37 @@ public class SefazCaracterizacaoImportacaoCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoIdentificacaoTerceiro", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Tipo do Adquirente ou Encomendante. Indica se ele  é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país<br>Observação: Por enquanto será retornado apenas CNPJ")
+    /**
+     * Tipo do Adquirente ou Encomendante. Indica se ele  é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país<br>Observação: Por enquanto será retornado apenas CNPJ
+     **/
+    private TipoIdentificacaoTerceiroEnum tipoIdentificacaoTerceiro = null;
+
+    @XmlElement(name = "identificacaoTerceiro")
+    @ApiModelProperty(example = "00000000000191", value = "Identificação  do adquirente ou encomendante<br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
+    /**
+     * Identificação  do adquirente ou encomendante<br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
+     **/
+    private String identificacaoTerceiro = null;
+
+    /**
+     * UF do adquirente ou encomendante&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2&lt;br&gt;Observação:&lt;br&gt;Apenas quando o atributo &#39;indicadorImportacaoTerceiros&#39; for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
+     *
+     * @return uf
+     **/
+    @JsonProperty("uf")
+    public String getUf() {
+        return uf;
+    }
+
+    @XmlElement(name = "nome")
+    @ApiModelProperty(example = "Nome do CNPJ ou CPF informado", value = "Nome do adquirente ou encomendante<br>Tamanho mínimo: 1<br>Tamanho máximo: 150<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
+    /**
+     * Nome do adquirente ou encomendante<br>Tamanho mínimo: 1<br>Tamanho máximo: 150<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
+     **/
+    private String nome = null;
 
     /**
      * Indicador de importação por terceiros.
@@ -88,25 +102,6 @@ public class SefazCaracterizacaoImportacaoCover {
 
     public SefazCaracterizacaoImportacaoCover indicadorImportacaoTerceiros(IndicadorImportacaoTerceirosEnum indicadorImportacaoTerceiros) {
         this.indicadorImportacaoTerceiros = indicadorImportacaoTerceiros;
-        return this;
-    }
-
-    /**
-     * UF do adquirente ou encomendante&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2&lt;br&gt;Observação:&lt;br&gt;Apenas quando o atributo &#39;indicadorImportacaoTerceiros&#39; for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
-     *
-     * @return uf
-     **/
-    @JsonProperty("uf")
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public SefazCaracterizacaoImportacaoCover uf(String uf) {
-        this.uf = uf;
         return this;
     }
 
@@ -152,6 +147,28 @@ public class SefazCaracterizacaoImportacaoCover {
         return this;
     }
 
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public SefazCaracterizacaoImportacaoCover uf(String uf) {
+        this.uf = uf;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class SefazCaracterizacaoImportacaoCover {\n" +
+                "    indicadorImportacaoTerceiros: " + toIndentedString(indicadorImportacaoTerceiros) + "\n" +
+                "    tipoIdentificacaoTerceiro: " + toIndentedString(tipoIdentificacaoTerceiro) + "\n" +
+                "    identificacaoTerceiro: " + toIndentedString(identificacaoTerceiro) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Nome do adquirente ou encomendante&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150&lt;br&gt;Observação:&lt;br&gt;Apenas quando o atributo &#39;indicadorImportacaoTerceiros&#39; for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
      *
@@ -169,19 +186,6 @@ public class SefazCaracterizacaoImportacaoCover {
     public SefazCaracterizacaoImportacaoCover nome(String nome) {
         this.nome = nome;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazCaracterizacaoImportacaoCover {\n" +
-                "    indicadorImportacaoTerceiros: " + toIndentedString(indicadorImportacaoTerceiros) + "\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
-                "    tipoIdentificacaoTerceiro: " + toIndentedString(tipoIdentificacaoTerceiro) + "\n" +
-                "    identificacaoTerceiro: " + toIndentedString(identificacaoTerceiro) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "}";
-        return sb;
     }
 
 

@@ -14,11 +14,25 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DARF", propOrder =
-        {"dataRecolhido", "valorTotalRecolhido", "codigoBarrasDarf", "darfRecolhido"
+        {"codigoBarrasDarf", "darfRecolhido", "dataRecolhido", "valorTotalRecolhido"
         })
 
 @XmlRootElement(name = "DARF")
 public class DARF {
+
+    @XmlElement(name = "codigoBarrasDarf")
+    @ApiModelProperty(value = "O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.")
+    /**
+     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
+     **/
+    private String codigoBarrasDarf = null;
+
+    @XmlElement(name = "darfRecolhido")
+    @ApiModelProperty(value = "Indicativo de pagamento de DARF. Domínio: 'S' - DARF pago, 'N' - DARF não pago.")
+    /**
+     * Indicativo de pagamento de DARF. Domínio: 'S' - DARF pago, 'N' - DARF não pago.
+     **/
+    private String darfRecolhido = null;
 
     @XmlElement(name = "dataRecolhido")
     @ApiModelProperty(value = "Data do recolhimento do DARF.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -35,20 +49,6 @@ public class DARF {
      **/
     private BigDecimal valorTotalRecolhido = null;
 
-    @XmlElement(name = "codigoBarrasDarf")
-    @ApiModelProperty(value = "O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.")
-    /**
-     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
-     **/
-    private String codigoBarrasDarf = null;
-
-    @XmlElement(name = "darfRecolhido")
-    @ApiModelProperty(value = "Indicativo de pagamento de DARF. Domínio: 'S' - DARF pago, 'N' - DARF não pago.")
-    /**
-     * Indicativo de pagamento de DARF. Domínio: 'S' - DARF pago, 'N' - DARF não pago.
-     **/
-    private String darfRecolhido = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -58,6 +58,39 @@ public class DARF {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
+     *
+     * @return codigoBarrasDarf
+     **/
+    @JsonProperty("codigoBarrasDarf")
+    public String getCodigoBarrasDarf() {
+        return codigoBarrasDarf;
+    }
+
+    public void setCodigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+    }
+
+    public DARF codigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+        return this;
+    }
+
+    /**
+     * Indicativo de pagamento de DARF. Domínio: &#39;S&#39; - DARF pago, &#39;N&#39; - DARF não pago.
+     *
+     * @return darfRecolhido
+     **/
+    @JsonProperty("darfRecolhido")
+    public String getDarfRecolhido() {
+        return darfRecolhido;
+    }
+
+    public void setDarfRecolhido(String darfRecolhido) {
+        this.darfRecolhido = darfRecolhido;
     }
 
     /**
@@ -98,39 +131,6 @@ public class DARF {
         return this;
     }
 
-    /**
-     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
-     *
-     * @return codigoBarrasDarf
-     **/
-    @JsonProperty("codigoBarrasDarf")
-    public String getCodigoBarrasDarf() {
-        return codigoBarrasDarf;
-    }
-
-    public void setCodigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
-    }
-
-    public DARF codigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
-        return this;
-    }
-
-    /**
-     * Indicativo de pagamento de DARF. Domínio: &#39;S&#39; - DARF pago, &#39;N&#39; - DARF não pago.
-     *
-     * @return darfRecolhido
-     **/
-    @JsonProperty("darfRecolhido")
-    public String getDarfRecolhido() {
-        return darfRecolhido;
-    }
-
-    public void setDarfRecolhido(String darfRecolhido) {
-        this.darfRecolhido = darfRecolhido;
-    }
-
     public DARF darfRecolhido(String darfRecolhido) {
         this.darfRecolhido = darfRecolhido;
         return this;
@@ -140,10 +140,10 @@ public class DARF {
     public String toString() {
 
         String sb = "class DARF {\n" +
-                "    dataRecolhido: " + toIndentedString(dataRecolhido) + "\n" +
-                "    valorTotalRecolhido: " + toIndentedString(valorTotalRecolhido) + "\n" +
                 "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
                 "    darfRecolhido: " + toIndentedString(darfRecolhido) + "\n" +
+                "    dataRecolhido: " + toIndentedString(dataRecolhido) + "\n" +
+                "    valorTotalRecolhido: " + toIndentedString(valorTotalRecolhido) + "\n" +
                 "}";
         return sb;
     }

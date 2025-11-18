@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Multa", propOrder =
-        {"baseLegal", "valorRecolhido", "valorPendente", "valorDevido", "darfs", "responsavel"
+        {"baseLegal", "darfs", "responsavel", "valorDevido", "valorPendente", "valorRecolhido"
         })
 
 @XmlRootElement(name = "Multa")
@@ -26,30 +26,6 @@ public class Multa {
      * Base legal da multa a ser paga para a remessa a ser incluída no DARF.
      **/
     private String baseLegal = null;
-
-    @XmlElement(name = "valorRecolhido")
-    @ApiModelProperty(value = "Valor total recolhido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor total recolhido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorRecolhido = null;
-
-    @XmlElement(name = "valorPendente")
-    @ApiModelProperty(value = "Valor total pendente de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor total pendente de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorPendente = null;
-
-    @XmlElement(name = "valorDevido")
-    @ApiModelProperty(value = "Valor total devido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
-    /**
-     * Valor total devido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     **/
-    private BigDecimal valorDevido = null;
 
     @XmlElement(name = "darfs")
     @ApiModelProperty(value = "Lista de DARFS.")
@@ -66,16 +42,29 @@ public class Multa {
      **/
     private String responsavel = null;
 
+    @XmlElement(name = "valorDevido")
+    @ApiModelProperty(value = "Valor total devido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Valor total devido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorDevido = null;
+
+    @XmlElement(name = "valorPendente")
+    @ApiModelProperty(value = "Valor total pendente de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor total pendente de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorPendente = null;
+
+    @XmlElement(name = "valorRecolhido")
+    @ApiModelProperty(value = "Valor total recolhido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor total recolhido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorRecolhido = null;
 
     /**
      * Base legal da multa a ser paga para a remessa a ser incluída no DARF.
@@ -93,63 +82,6 @@ public class Multa {
 
     public Multa baseLegal(String baseLegal) {
         this.baseLegal = baseLegal;
-        return this;
-    }
-
-    /**
-     * Valor total recolhido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorRecolhido
-     **/
-    @JsonProperty("valorRecolhido")
-    public BigDecimal getValorRecolhido() {
-        return valorRecolhido;
-    }
-
-    public void setValorRecolhido(BigDecimal valorRecolhido) {
-        this.valorRecolhido = valorRecolhido;
-    }
-
-    public Multa valorRecolhido(BigDecimal valorRecolhido) {
-        this.valorRecolhido = valorRecolhido;
-        return this;
-    }
-
-    /**
-     * Valor total pendente de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorPendente
-     **/
-    @JsonProperty("valorPendente")
-    public BigDecimal getValorPendente() {
-        return valorPendente;
-    }
-
-    public void setValorPendente(BigDecimal valorPendente) {
-        this.valorPendente = valorPendente;
-    }
-
-    public Multa valorPendente(BigDecimal valorPendente) {
-        this.valorPendente = valorPendente;
-        return this;
-    }
-
-    /**
-     * Valor total devido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorDevido
-     **/
-    @JsonProperty("valorDevido")
-    public BigDecimal getValorDevido() {
-        return valorDevido;
-    }
-
-    public void setValorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
-    }
-
-    public Multa valorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
         return this;
     }
 
@@ -196,16 +128,84 @@ public class Multa {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Valor total devido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorDevido
+     **/
+    @JsonProperty("valorDevido")
+    public BigDecimal getValorDevido() {
+        return valorDevido;
+    }
+
+    public void setValorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
+    }
+
+    public Multa valorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
+        return this;
+    }
+
+    /**
+     * Valor total pendente de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorPendente
+     **/
+    @JsonProperty("valorPendente")
+    public BigDecimal getValorPendente() {
+        return valorPendente;
+    }
+
+    public void setValorPendente(BigDecimal valorPendente) {
+        this.valorPendente = valorPendente;
+    }
+
+    public Multa valorPendente(BigDecimal valorPendente) {
+        this.valorPendente = valorPendente;
+        return this;
+    }
+
+    /**
+     * Valor total recolhido de multas. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     *
+     * @return valorRecolhido
+     **/
+    @JsonProperty("valorRecolhido")
+    public BigDecimal getValorRecolhido() {
+        return valorRecolhido;
+    }
+
+    public void setValorRecolhido(BigDecimal valorRecolhido) {
+        this.valorRecolhido = valorRecolhido;
+    }
+
+    public Multa valorRecolhido(BigDecimal valorRecolhido) {
+        this.valorRecolhido = valorRecolhido;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Multa {\n" +
                 "    baseLegal: " + toIndentedString(baseLegal) + "\n" +
-                "    valorRecolhido: " + toIndentedString(valorRecolhido) + "\n" +
-                "    valorPendente: " + toIndentedString(valorPendente) + "\n" +
-                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
                 "    darfs: " + toIndentedString(darfs) + "\n" +
                 "    responsavel: " + toIndentedString(responsavel) + "\n" +
+                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
+                "    valorPendente: " + toIndentedString(valorPendente) + "\n" +
+                "    valorRecolhido: " + toIndentedString(valorRecolhido) + "\n" +
                 "}";
         return sb;
     }

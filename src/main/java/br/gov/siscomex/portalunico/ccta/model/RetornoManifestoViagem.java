@@ -30,17 +30,6 @@ public class RetornoManifestoViagem {
     private String numeroProtocolo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do protocolo referente a entrega da viagem rodoviária. &lt;br/&gt;O número do protocolo deverá ser utilizado no serviço de consulta da situação do processamento da entrega da carga para recuperar o resultado da solicitação.&lt;br/&gt;Tamanho: 36
      *
      * @return numeroProtocolo
@@ -57,6 +46,18 @@ public class RetornoManifestoViagem {
     public RetornoManifestoViagem numeroProtocolo(String numeroProtocolo) {
         this.numeroProtocolo = numeroProtocolo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

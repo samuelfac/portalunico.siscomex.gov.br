@@ -12,11 +12,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Endereco", propOrder =
-        {"cidade", "estado", "bairro", "logradouro", "cep", "pais"
+        {"bairro", "cep", "cidade", "estado", "logradouro", "pais"
         })
 
 @XmlRootElement(name = "Endereco")
 public class Endereco {
+
+    @XmlElement(name = "bairro")
+    @ApiModelProperty(value = "Bairro do endereço")
+    /**
+     * Bairro do endereço
+     **/
+    private String bairro = null;
+
+    @XmlElement(name = "cep")
+    @ApiModelProperty(value = "CEP do endereço")
+    /**
+     * CEP do endereço
+     **/
+    private String cep = null;
 
     @XmlElement(name = "cidade")
     @ApiModelProperty(value = "")
@@ -30,26 +44,12 @@ public class Endereco {
      **/
     private String estado = null;
 
-    @XmlElement(name = "bairro")
-    @ApiModelProperty(value = "Bairro do endereço")
-    /**
-     * Bairro do endereço
-     **/
-    private String bairro = null;
-
     @XmlElement(name = "logradouro")
     @ApiModelProperty(value = "Logadouro do endereço")
     /**
      * Logadouro do endereço
      **/
     private String logradouro = null;
-
-    @XmlElement(name = "cep")
-    @ApiModelProperty(value = "CEP do endereço")
-    /**
-     * CEP do endereço
-     **/
-    private String cep = null;
 
     @XmlElement(name = "pais")
     @ApiModelProperty(value = "")
@@ -65,6 +65,39 @@ public class Endereco {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Bairro do endereço
+     *
+     * @return bairro
+     **/
+    @JsonProperty("bairro")
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Endereco bairro(String bairro) {
+        this.bairro = bairro;
+        return this;
+    }
+
+    /**
+     * CEP do endereço
+     *
+     * @return cep
+     **/
+    @JsonProperty("cep")
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
     /**
@@ -106,25 +139,6 @@ public class Endereco {
     }
 
     /**
-     * Bairro do endereço
-     *
-     * @return bairro
-     **/
-    @JsonProperty("bairro")
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public Endereco bairro(String bairro) {
-        this.bairro = bairro;
-        return this;
-    }
-
-    /**
      * Logadouro do endereço
      *
      * @return logradouro
@@ -140,25 +154,6 @@ public class Endereco {
 
     public Endereco logradouro(String logradouro) {
         this.logradouro = logradouro;
-        return this;
-    }
-
-    /**
-     * CEP do endereço
-     *
-     * @return cep
-     **/
-    @JsonProperty("cep")
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public Endereco cep(String cep) {
-        this.cep = cep;
         return this;
     }
 
@@ -181,15 +176,20 @@ public class Endereco {
         return this;
     }
 
+    public Endereco cep(String cep) {
+        this.cep = cep;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Endereco {\n" +
+                "    bairro: " + toIndentedString(bairro) + "\n" +
+                "    cep: " + toIndentedString(cep) + "\n" +
                 "    cidade: " + toIndentedString(cidade) + "\n" +
                 "    estado: " + toIndentedString(estado) + "\n" +
-                "    bairro: " + toIndentedString(bairro) + "\n" +
                 "    logradouro: " + toIndentedString(logradouro) + "\n" +
-                "    cep: " + toIndentedString(cep) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
                 "}";
         return sb;

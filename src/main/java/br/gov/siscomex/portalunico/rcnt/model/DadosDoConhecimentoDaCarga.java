@@ -12,11 +12,25 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDoConhecimentoDaCarga", propOrder =
-        {"numeroConhecimentoMAWB", "tipo", "numero", "idElemento"
+        {"idElemento", "numero", "numeroConhecimentoMAWB", "tipo"
         })
 
 @XmlRootElement(name = "DadosDoConhecimentoDaCarga")
 public class DadosDoConhecimentoDaCarga {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
+    /**
+     * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
+     **/
+    private String numero = null;
 
     @XmlElement(name = "numeroConhecimentoMAWB")
     @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100")
@@ -32,20 +46,6 @@ public class DadosDoConhecimentoDaCarga {
      **/
     private String tipo = null;
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
-    /**
-     * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
-     **/
-    private String numero = null;
-
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -55,6 +55,40 @@ public class DadosDoConhecimentoDaCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDoConhecimentoDaCarga idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
+    /**
+     * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     /**
@@ -95,42 +129,8 @@ public class DadosDoConhecimentoDaCarga {
         return this;
     }
 
-    /**
-     * Identificação do conhecimento de carga ou do DSIC. &lt;br/&gt;No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. &lt;br/&gt;No modal aéreo, na exportação, não deve ser preenchido.  &lt;br/&gt;No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.&lt;br/&gt; Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;. &lt;br/&gt;Tamanho: 100
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
     public DadosDoConhecimentoDaCarga numero(String numero) {
         this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosDoConhecimentoDaCarga idElemento(String idElemento) {
-        this.idElemento = idElemento;
         return this;
     }
 
@@ -138,10 +138,10 @@ public class DadosDoConhecimentoDaCarga {
     public String toString() {
 
         String sb = "class DadosDoConhecimentoDaCarga {\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
                 "    numeroConhecimentoMAWB: " + toIndentedString(numeroConhecimentoMAWB) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
                 "}";
         return sb;
     }

@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDocumentoDeEstrangeiroRepresentado", propOrder =
-        {"tipo", "numero", "paisEmissor", "validade"
+        {"numero", "paisEmissor", "tipo", "validade"
         })
 
 @XmlRootElement(name = "DadosDocumentoDeEstrangeiroRepresentado")
@@ -24,6 +24,20 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Documento de estrangeiro. Informar apenas no caso de estrangeiro sem CPF.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado:  cpfRepresentado OU cnpjRepresentado OU  documentoEstrangeiroRepresentado (número, tipo, país) OU  operadorEstrangeiroRepresentado'.")
 public class DadosDocumentoDeEstrangeiroRepresentado {
 
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "Número do documento<br/>Tamanho: 50")
+    /**
+     * Número do documento<br/>Tamanho: 50
+     **/
+    private String numero = null;
+
+    @XmlElement(name = "paisEmissor")
+    @ApiModelProperty(example = "DE", value = "País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    /**
+     * País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     **/
+    private String paisEmissor = null;
+
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte")
@@ -31,24 +45,6 @@ public class DadosDocumentoDeEstrangeiroRepresentado {
      * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte
      **/
     private TipoEnum tipo = null;
-    @XmlElement(name = "numero")
-    @ApiModelProperty(value = "Número do documento<br/>Tamanho: 50")
-    /**
-     * Número do documento<br/>Tamanho: 50
-     **/
-    private String numero = null;
-    @XmlElement(name = "paisEmissor")
-    @ApiModelProperty(example = "DE", value = "País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
-    /**
-     * País emissor do documento. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
-     **/
-    private String paisEmissor = null;
-    @XmlElement(name = "validade")
-    @ApiModelProperty(example = "2020-04-01", value = "Validade do documento<br/>Formato: 'yyyy-MM-dd'")
-    /**
-     * Validade do documento<br/>Formato: 'yyyy-MM-dd'
-     **/
-    private String validade = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -61,27 +57,12 @@ public class DadosDocumentoDeEstrangeiroRepresentado {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "validade")
+    @ApiModelProperty(example = "2020-04-01", value = "Validade do documento<br/>Formato: 'yyyy-MM-dd'")
     /**
-     * Tipo de documento&lt;br/&gt;Domínio:&lt;br/&gt;I - Identidade&lt;br/&gt;P - Passaporte
-     *
-     * @return tipo
+     * Validade do documento<br/>Formato: 'yyyy-MM-dd'
      **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public DadosDocumentoDeEstrangeiroRepresentado tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
+    private String validade = null;
 
     /**
      * Número do documento&lt;br/&gt;Tamanho: 50
@@ -122,6 +103,28 @@ public class DadosDocumentoDeEstrangeiroRepresentado {
     }
 
     /**
+     * Tipo de documento&lt;br/&gt;Domínio:&lt;br/&gt;I - Identidade&lt;br/&gt;P - Passaporte
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public DadosDocumentoDeEstrangeiroRepresentado tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
      * Validade do documento&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
      *
      * @return validade
@@ -145,9 +148,9 @@ public class DadosDocumentoDeEstrangeiroRepresentado {
     public String toString() {
 
         String sb = "class DadosDocumentoDeEstrangeiroRepresentado {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
                 "    paisEmissor: " + toIndentedString(paisEmissor) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    validade: " + toIndentedString(validade) + "\n" +
                 "}";
         return sb;

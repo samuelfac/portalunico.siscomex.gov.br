@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Entregador", propOrder =
-        {"cpf", "cnpj", "nomeEstrangeiro"
+        {"cnpj", "cpf", "nomeEstrangeiro"
         })
 
 @XmlRootElement(name = "Entregador")
@@ -22,13 +22,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do Entregador<br>É obrigatório informar apenas um dos dois: CNPJ ou CPF.")
 public class Entregador {
 
-    @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "99999999999", value = "CPF do entregador<br>Tamanho: 11<br><br>Formato: NNNNNNNNNNN<br>Informado apenas quando o recebedor for nacional e pessoa física.")
-    /**
-     * CPF do entregador<br>Tamanho: 11<br><br>Formato: NNNNNNNNNNN<br>Informado apenas quando o recebedor for nacional e pessoa física.
-     **/
-    private String cpf = null;
-
     @XmlElement(name = "cnpj")
     @ApiModelProperty(example = "99999999999999", value = "CNPJ do entregador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado apenas quando o entregador for nacional e pessoa jurídica.")
     /**
@@ -36,12 +29,38 @@ public class Entregador {
      **/
     private String cnpj = null;
 
+    @XmlElement(name = "cpf")
+    @ApiModelProperty(example = "99999999999", value = "CPF do entregador<br>Tamanho: 11<br><br>Formato: NNNNNNNNNNN<br>Informado apenas quando o recebedor for nacional e pessoa física.")
+    /**
+     * CPF do entregador<br>Tamanho: 11<br><br>Formato: NNNNNNNNNNN<br>Informado apenas quando o recebedor for nacional e pessoa física.
+     **/
+    private String cpf = null;
+
     @XmlElement(name = "nomeEstrangeiro")
     @ApiModelProperty(example = "Nome do entregador", value = "Nome do entregador<br>Tamanho: 60")
     /**
      * Nome do entregador<br>Tamanho: 60
      **/
     private String nomeEstrangeiro = null;
+
+    /**
+     * CNPJ do entregador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado apenas quando o entregador for nacional e pessoa jurídica.
+     *
+     * @return cnpj
+     **/
+    @JsonProperty("cnpj")
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public Entregador cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -68,30 +87,6 @@ public class Entregador {
         this.cpf = cpf;
     }
 
-    public Entregador cpf(String cpf) {
-        this.cpf = cpf;
-        return this;
-    }
-
-    /**
-     * CNPJ do entregador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado apenas quando o entregador for nacional e pessoa jurídica.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public Entregador cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Nome do entregador&lt;br&gt;Tamanho: 60
      *
@@ -111,12 +106,17 @@ public class Entregador {
         return this;
     }
 
+    public Entregador cpf(String cpf) {
+        this.cpf = cpf;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Entregador {\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
                 "    nomeEstrangeiro: " + toIndentedString(nomeEstrangeiro) + "\n" +
                 "}";
         return sb;

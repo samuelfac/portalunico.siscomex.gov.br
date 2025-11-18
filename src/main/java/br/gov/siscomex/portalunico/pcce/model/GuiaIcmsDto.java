@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GuiaIcmsDto", propOrder =
-        {"dataPagamento", "valorCalculado", "codigoBarrasGuia", "codigoReceita", "dataLimitePagamento", "geradorGuia", "valorJuros", "descricaoCodigoReceita", "valorAtualizacaoMonetaria", "dataCancelamento", "valorDevido", "dataVencimento", "linhaDigitavel", "valorTotal", "numeroControle", "valorMulta"
+        {"codigoBarrasGuia", "codigoReceita", "dataCancelamento", "dataLimitePagamento", "dataPagamento", "dataVencimento", "descricaoCodigoReceita", "geradorGuia", "linhaDigitavel", "numeroControle", "valorAtualizacaoMonetaria", "valorCalculado", "valorDevido", "valorJuros", "valorMulta", "valorTotal"
         })
 
 @XmlRootElement(name = "GuiaIcmsDto")
@@ -26,21 +26,6 @@ import java.math.BigDecimal;
  **/
 @ApiModel(description = "Dados da guia de pagamento de ICMS")
 public class GuiaIcmsDto {
-
-    @XmlElement(name = "dataPagamento")
-    @ApiModelProperty(example = "2021-08-31T09:11:06-0300", value = "Data de pagamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data de pagamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private String dataPagamento = null;
-
-    @XmlElement(name = "valorCalculado", required = true)
-    @ApiModelProperty(example = "8.54", required = true, value = "Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorCalculado = null;
 
     @XmlElement(name = "codigoBarrasGuia", required = true)
     @ApiModelProperty(example = "85810000000050100031017274301005611762694577", required = true, value = "Codigo de barras da guia (Portal GNRE ou do próprio Estado) <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
@@ -56,31 +41,66 @@ public class GuiaIcmsDto {
      **/
     private String codigoReceita = null;
 
+    @XmlElement(name = "dataCancelamento")
+    @ApiModelProperty(example = "2021-11-12T11:00:06-0300", value = "Data de cancelamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+    /**
+     * Data de cancelamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private String dataCancelamento = null;
+
     @XmlElement(name = "dataLimitePagamento", required = true)
     @ApiModelProperty(example = "2021-11-10", required = true, value = "Data limite para pagamento da guia<br>Formato: 'yyyy-MM-dd'")
     /**
      * Data limite para pagamento da guia<br>Formato: 'yyyy-MM-dd'
      **/
     private String dataLimitePagamento = null;
-    @XmlElement(name = "geradorGuia", required = true)
-    @ApiModelProperty(example = "ESTADO", required = true, value = "Responsável pela geração da guia")
+
+    @XmlElement(name = "dataPagamento")
+    @ApiModelProperty(example = "2021-08-31T09:11:06-0300", value = "Data de pagamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
     /**
-     * Responsável pela geração da guia
+     * Data de pagamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
      **/
-    private GeradorGuiaEnum geradorGuia = null;
-    @XmlElement(name = "valorJuros")
-    @ApiModelProperty(example = "1.28", value = "Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
+    private String dataPagamento = null;
+
+    @XmlElement(name = "dataVencimento", required = true)
+    @ApiModelProperty(example = "2021-11-10", required = true, value = "Data de vencimento da guia<br>Formato: 'yyyy-MM-dd'")
     /**
-     * Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Data de vencimento da guia<br>Formato: 'yyyy-MM-dd'
      **/
-    private BigDecimal valorJuros = null;
+    private String dataVencimento = null;
+
     @XmlElement(name = "descricaoCodigoReceita")
     @ApiModelProperty(example = "Id eu nisl nunc mi", value = "Descrição do código da Receita <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
     /**
      * Descrição do código da Receita <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
      **/
     private String descricaoCodigoReceita = null;
+    @XmlElement(name = "geradorGuia", required = true)
+    @ApiModelProperty(example = "ESTADO", required = true, value = "Responsável pela geração da guia")
+    /**
+     * Responsável pela geração da guia
+     **/
+    private GeradorGuiaEnum geradorGuia = null;
+    @XmlElement(name = "linhaDigitavel", required = true)
+    @ApiModelProperty(example = "85811.01725 74301.005612 17626.945772 0 00000005010003", required = true, value = "Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
+    /**
+     * Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
+     **/
+    private String linhaDigitavel = null;
+    @XmlElement(name = "numeroControle")
+    @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
+    /**
+     * Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
+     **/
+    private String numeroControle = null;
+    @XmlElement(name = "valorCalculado", required = true)
+    @ApiModelProperty(example = "8.54", required = true, value = "Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorCalculado = null;
+
     @XmlElement(name = "valorAtualizacaoMonetaria")
     @ApiModelProperty(example = "0.52", value = "Valor da atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -88,12 +108,14 @@ public class GuiaIcmsDto {
      * Valor da atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorAtualizacaoMonetaria = null;
-    @XmlElement(name = "dataCancelamento")
-    @ApiModelProperty(example = "2021-11-12T11:00:06-0300", value = "Data de cancelamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+    @XmlElement(name = "valorJuros")
+    @ApiModelProperty(example = "1.28", value = "Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
     /**
-     * Data de cancelamento da Guia de ICMS<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     * Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
-    private String dataCancelamento = null;
+    private BigDecimal valorJuros = null;
+
     @XmlElement(name = "valorDevido", required = true)
     @ApiModelProperty(example = "8.0", required = true, value = "Valor devido efetivamente <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -101,18 +123,6 @@ public class GuiaIcmsDto {
      * Valor devido efetivamente <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorDevido = null;
-    @XmlElement(name = "dataVencimento", required = true)
-    @ApiModelProperty(example = "2021-11-10", required = true, value = "Data de vencimento da guia<br>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data de vencimento da guia<br>Formato: 'yyyy-MM-dd'
-     **/
-    private String dataVencimento = null;
-    @XmlElement(name = "linhaDigitavel", required = true)
-    @ApiModelProperty(example = "85811.01725 74301.005612 17626.945772 0 00000005010003", required = true, value = "Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
-    /**
-     * Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
-     **/
-    private String linhaDigitavel = null;
     @XmlElement(name = "valorTotal", required = true)
     @ApiModelProperty(example = "10.8", required = true, value = "Somatório dos valores devidos + juros + multa + atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -120,12 +130,7 @@ public class GuiaIcmsDto {
      * Somatório dos valores devidos + juros + multa + atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorTotal = null;
-    @XmlElement(name = "numeroControle")
-    @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
-    /**
-     * Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
-     **/
-    private String numeroControle = null;
+
     @XmlElement(name = "valorMulta")
     @ApiModelProperty(example = "1.0", value = "Valor da multa <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -143,45 +148,6 @@ public class GuiaIcmsDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Data de pagamento da Guia de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataPagamento
-     **/
-    @JsonProperty("dataPagamento")
-    public String getDataPagamento() {
-        return dataPagamento;
-    }
-
-    public void setDataPagamento(String dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
-
-    public GuiaIcmsDto dataPagamento(String dataPagamento) {
-        this.dataPagamento = dataPagamento;
-        return this;
-    }
-
-    /**
-     * Valor calculado sem benefícios/onerações para o código de receita &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
-     * @return valorCalculado
-     **/
-    @JsonProperty("valorCalculado")
-    @NotNull
-    public BigDecimal getValorCalculado() {
-        return valorCalculado;
-    }
-
-    public void setValorCalculado(BigDecimal valorCalculado) {
-        this.valorCalculado = valorCalculado;
-    }
-
-    public GuiaIcmsDto valorCalculado(BigDecimal valorCalculado) {
-        this.valorCalculado = valorCalculado;
-        return this;
     }
 
     /**
@@ -225,6 +191,25 @@ public class GuiaIcmsDto {
     }
 
     /**
+     * Data de cancelamento da Guia de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataCancelamento
+     **/
+    @JsonProperty("dataCancelamento")
+    public String getDataCancelamento() {
+        return dataCancelamento;
+    }
+
+    public void setDataCancelamento(String dataCancelamento) {
+        this.dataCancelamento = dataCancelamento;
+    }
+
+    public GuiaIcmsDto dataCancelamento(String dataCancelamento) {
+        this.dataCancelamento = dataCancelamento;
+        return this;
+    }
+
+    /**
      * Data limite para pagamento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
      *
      * @return dataLimitePagamento
@@ -241,6 +226,64 @@ public class GuiaIcmsDto {
 
     public GuiaIcmsDto dataLimitePagamento(String dataLimitePagamento) {
         this.dataLimitePagamento = dataLimitePagamento;
+        return this;
+    }
+
+    /**
+     * Data de pagamento da Guia de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataPagamento
+     **/
+    @JsonProperty("dataPagamento")
+    public String getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public void setDataPagamento(String dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+
+    public GuiaIcmsDto dataPagamento(String dataPagamento) {
+        this.dataPagamento = dataPagamento;
+        return this;
+    }
+
+    /**
+     * Data de vencimento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
+     *
+     * @return dataVencimento
+     **/
+    @JsonProperty("dataVencimento")
+    @NotNull
+    public String getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(String dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public GuiaIcmsDto dataVencimento(String dataVencimento) {
+        this.dataVencimento = dataVencimento;
+        return this;
+    }
+
+    /**
+     * Descrição do código da Receita &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+     *
+     * @return descricaoCodigoReceita
+     **/
+    @JsonProperty("descricaoCodigoReceita")
+    public String getDescricaoCodigoReceita() {
+        return descricaoCodigoReceita;
+    }
+
+    public void setDescricaoCodigoReceita(String descricaoCodigoReceita) {
+        this.descricaoCodigoReceita = descricaoCodigoReceita;
+    }
+
+    public GuiaIcmsDto descricaoCodigoReceita(String descricaoCodigoReceita) {
+        this.descricaoCodigoReceita = descricaoCodigoReceita;
         return this;
     }
 
@@ -268,40 +311,40 @@ public class GuiaIcmsDto {
     }
 
     /**
-     * Valor dos juros &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * Linha digitável para pagamento &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
      *
-     * @return valorJuros
+     * @return linhaDigitavel
      **/
-    @JsonProperty("valorJuros")
-    public BigDecimal getValorJuros() {
-        return valorJuros;
+    @JsonProperty("linhaDigitavel")
+    @NotNull
+    public String getLinhaDigitavel() {
+        return linhaDigitavel;
     }
 
-    public void setValorJuros(BigDecimal valorJuros) {
-        this.valorJuros = valorJuros;
+    public void setLinhaDigitavel(String linhaDigitavel) {
+        this.linhaDigitavel = linhaDigitavel;
     }
 
-    public GuiaIcmsDto valorJuros(BigDecimal valorJuros) {
-        this.valorJuros = valorJuros;
+    public GuiaIcmsDto linhaDigitavel(String linhaDigitavel) {
+        this.linhaDigitavel = linhaDigitavel;
         return this;
     }
 
     /**
-     * Descrição do código da Receita &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
-     *
-     * @return descricaoCodigoReceita
+     * Número de Controle da Sefaz (Nosso Número)&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
+     * @return numeroControle
      **/
-    @JsonProperty("descricaoCodigoReceita")
-    public String getDescricaoCodigoReceita() {
-        return descricaoCodigoReceita;
+    @JsonProperty("numeroControle")
+    public String getNumeroControle() {
+        return numeroControle;
     }
 
-    public void setDescricaoCodigoReceita(String descricaoCodigoReceita) {
-        this.descricaoCodigoReceita = descricaoCodigoReceita;
+    public void setNumeroControle(String numeroControle) {
+        this.numeroControle = numeroControle;
     }
 
-    public GuiaIcmsDto descricaoCodigoReceita(String descricaoCodigoReceita) {
-        this.descricaoCodigoReceita = descricaoCodigoReceita;
+    public GuiaIcmsDto numeroControle(String numeroControle) {
+        this.numeroControle = numeroControle;
         return this;
     }
 
@@ -325,27 +368,26 @@ public class GuiaIcmsDto {
     }
 
     /**
-     * Data de cancelamento da Guia de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataCancelamento
+     * Valor calculado sem benefícios/onerações para o código de receita &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * @return valorCalculado
      **/
-    @JsonProperty("dataCancelamento")
-    public String getDataCancelamento() {
-        return dataCancelamento;
+    @JsonProperty("valorCalculado")
+    @NotNull
+    public BigDecimal getValorCalculado() {
+        return valorCalculado;
     }
 
-    public void setDataCancelamento(String dataCancelamento) {
-        this.dataCancelamento = dataCancelamento;
+    public void setValorCalculado(BigDecimal valorCalculado) {
+        this.valorCalculado = valorCalculado;
     }
 
-    public GuiaIcmsDto dataCancelamento(String dataCancelamento) {
-        this.dataCancelamento = dataCancelamento;
+    public GuiaIcmsDto valorCalculado(BigDecimal valorCalculado) {
+        this.valorCalculado = valorCalculado;
         return this;
     }
 
     /**
      * Valor devido efetivamente &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorDevido
      **/
     @JsonProperty("valorDevido")
@@ -364,48 +406,43 @@ public class GuiaIcmsDto {
     }
 
     /**
-     * Data de vencimento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
-     * @return dataVencimento
+     * Valor dos juros &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * @return valorJuros
      **/
-    @JsonProperty("dataVencimento")
-    @NotNull
-    public String getDataVencimento() {
-        return dataVencimento;
+    @JsonProperty("valorJuros")
+    public BigDecimal getValorJuros() {
+        return valorJuros;
     }
 
-    public void setDataVencimento(String dataVencimento) {
-        this.dataVencimento = dataVencimento;
+    public void setValorJuros(BigDecimal valorJuros) {
+        this.valorJuros = valorJuros;
     }
 
-    public GuiaIcmsDto dataVencimento(String dataVencimento) {
-        this.dataVencimento = dataVencimento;
+    public GuiaIcmsDto valorJuros(BigDecimal valorJuros) {
+        this.valorJuros = valorJuros;
         return this;
     }
 
     /**
-     * Linha digitável para pagamento &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
-     *
-     * @return linhaDigitavel
+     * Valor da multa &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * @return valorMulta
      **/
-    @JsonProperty("linhaDigitavel")
-    @NotNull
-    public String getLinhaDigitavel() {
-        return linhaDigitavel;
+    @JsonProperty("valorMulta")
+    public BigDecimal getValorMulta() {
+        return valorMulta;
     }
 
-    public void setLinhaDigitavel(String linhaDigitavel) {
-        this.linhaDigitavel = linhaDigitavel;
+    public void setValorMulta(BigDecimal valorMulta) {
+        this.valorMulta = valorMulta;
     }
 
-    public GuiaIcmsDto linhaDigitavel(String linhaDigitavel) {
-        this.linhaDigitavel = linhaDigitavel;
+    public GuiaIcmsDto valorMulta(BigDecimal valorMulta) {
+        this.valorMulta = valorMulta;
         return this;
     }
 
     /**
      * Somatório dos valores devidos + juros + multa + atualização monetária &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotal
      **/
     @JsonProperty("valorTotal")
@@ -423,65 +460,27 @@ public class GuiaIcmsDto {
         return this;
     }
 
-    /**
-     * Número de Controle da Sefaz (Nosso Número)&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
-     *
-     * @return numeroControle
-     **/
-    @JsonProperty("numeroControle")
-    public String getNumeroControle() {
-        return numeroControle;
-    }
-
-    public void setNumeroControle(String numeroControle) {
-        this.numeroControle = numeroControle;
-    }
-
-    public GuiaIcmsDto numeroControle(String numeroControle) {
-        this.numeroControle = numeroControle;
-        return this;
-    }
-
-    /**
-     * Valor da multa &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
-     * @return valorMulta
-     **/
-    @JsonProperty("valorMulta")
-    public BigDecimal getValorMulta() {
-        return valorMulta;
-    }
-
-    public void setValorMulta(BigDecimal valorMulta) {
-        this.valorMulta = valorMulta;
-    }
-
-    public GuiaIcmsDto valorMulta(BigDecimal valorMulta) {
-        this.valorMulta = valorMulta;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class GuiaIcmsDto {\n" +
-                "    dataPagamento: " + toIndentedString(dataPagamento) + "\n" +
-                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
                 "    codigoBarrasGuia: " + toIndentedString(codigoBarrasGuia) + "\n" +
                 "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
-                "    dataLimitePagamento: " + toIndentedString(dataLimitePagamento) + "\n" +
-                "    geradorGuia: " + toIndentedString(geradorGuia) + "\n" +
-                "    valorJuros: " + toIndentedString(valorJuros) + "\n" +
-                "    descricaoCodigoReceita: " + toIndentedString(descricaoCodigoReceita) + "\n" +
-                "    valorAtualizacaoMonetaria: " + toIndentedString(valorAtualizacaoMonetaria) + "\n" +
                 "    dataCancelamento: " + toIndentedString(dataCancelamento) + "\n" +
-                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
+                "    dataLimitePagamento: " + toIndentedString(dataLimitePagamento) + "\n" +
+                "    dataPagamento: " + toIndentedString(dataPagamento) + "\n" +
                 "    dataVencimento: " + toIndentedString(dataVencimento) + "\n" +
+                "    descricaoCodigoReceita: " + toIndentedString(descricaoCodigoReceita) + "\n" +
+                "    geradorGuia: " + toIndentedString(geradorGuia) + "\n" +
                 "    linhaDigitavel: " + toIndentedString(linhaDigitavel) + "\n" +
-                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "    numeroControle: " + toIndentedString(numeroControle) + "\n" +
+                "    valorAtualizacaoMonetaria: " + toIndentedString(valorAtualizacaoMonetaria) + "\n" +
+                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
+                "    valorDevido: " + toIndentedString(valorDevido) + "\n" +
+                "    valorJuros: " + toIndentedString(valorJuros) + "\n" +
                 "    valorMulta: " + toIndentedString(valorMulta) + "\n" +
+                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "}";
         return sb;
     }

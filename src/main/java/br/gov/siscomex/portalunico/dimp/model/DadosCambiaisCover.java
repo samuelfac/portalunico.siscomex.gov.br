@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosCambiaisCover", propOrder =
-        {"numeroROF", "instituicaoFinanciadora", "valorCoberturaCambial", "motivoSemCobertura", "coberturaCambial"
+        {"coberturaCambial", "numeroROF", "instituicaoFinanciadora", "valorCoberturaCambial", "motivoSemCobertura"
         })
 
 @XmlRootElement(name = "DadosCambiaisCover")
@@ -23,6 +23,11 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados cambiais.")
 public class DadosCambiaisCover {
+
+    @XmlElement(name = "coberturaCambial", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private CoberturaCambialCover coberturaCambial = null;
 
     @XmlElement(name = "numeroROF")
     @ApiModelProperty(example = "180A0A0A", value = "Número do ROF no BACEN.<br>Observação: Deve ser preenchido quando a cobertura cambial estiver acima de 360 dias ou quando o motivo selecionado no atributo \"motivoSemCobertura\" admitir a utilização do ROF.<br>Tamanho mínimo: 1<br>Tamanho máximo: 8")
@@ -48,11 +53,6 @@ public class DadosCambiaisCover {
     @Valid
     private MotivoSemCoberturaCambialCover motivoSemCobertura = null;
 
-    @XmlElement(name = "coberturaCambial", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private CoberturaCambialCover coberturaCambial = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -62,6 +62,21 @@ public class DadosCambiaisCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get coberturaCambial
+     *
+     * @return coberturaCambial
+     **/
+    @JsonProperty("coberturaCambial")
+    @NotNull
+    public CoberturaCambialCover getCoberturaCambial() {
+        return coberturaCambial;
+    }
+
+    public void setCoberturaCambial(CoberturaCambialCover coberturaCambial) {
+        this.coberturaCambial = coberturaCambial;
     }
 
     /**
@@ -140,21 +155,6 @@ public class DadosCambiaisCover {
         return this;
     }
 
-    /**
-     * Get coberturaCambial
-     *
-     * @return coberturaCambial
-     **/
-    @JsonProperty("coberturaCambial")
-    @NotNull
-    public CoberturaCambialCover getCoberturaCambial() {
-        return coberturaCambial;
-    }
-
-    public void setCoberturaCambial(CoberturaCambialCover coberturaCambial) {
-        this.coberturaCambial = coberturaCambial;
-    }
-
     public DadosCambiaisCover coberturaCambial(CoberturaCambialCover coberturaCambial) {
         this.coberturaCambial = coberturaCambial;
         return this;
@@ -164,11 +164,11 @@ public class DadosCambiaisCover {
     public String toString() {
 
         String sb = "class DadosCambiaisCover {\n" +
+                "    coberturaCambial: " + toIndentedString(coberturaCambial) + "\n" +
                 "    numeroROF: " + toIndentedString(numeroROF) + "\n" +
                 "    instituicaoFinanciadora: " + toIndentedString(instituicaoFinanciadora) + "\n" +
                 "    valorCoberturaCambial: " + toIndentedString(valorCoberturaCambial) + "\n" +
                 "    motivoSemCobertura: " + toIndentedString(motivoSemCobertura) + "\n" +
-                "    coberturaCambial: " + toIndentedString(coberturaCambial) + "\n" +
                 "}";
         return sb;
     }

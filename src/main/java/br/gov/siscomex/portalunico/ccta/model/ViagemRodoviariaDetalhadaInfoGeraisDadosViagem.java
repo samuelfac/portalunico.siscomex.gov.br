@@ -13,50 +13,31 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaDetalhadaInfoGeraisDadosViagem", propOrder =
-        {"conteineresVazios", "lacresAplicados", "tipoTratamentoMadeira", "transportandoPecasOuPartesMadeira", "documentoTransporte", "transitoAduaneiroInternacional", "apoliceSeguro", "observacoesGerais", "visualizacaoDepositario", "transportadorImportador"
+        {"apoliceSeguro", "conteineresVazios", "documentoTransporte", "lacresAplicados", "observacoesGerais", "tipoTratamentoMadeira", "transitoAduaneiroInternacional", "transportadorImportador", "transportandoPecasOuPartesMadeira", "visualizacaoDepositario"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaDetalhadaInfoGeraisDadosViagem")
 public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
+
+    @XmlElement(name = "apoliceSeguro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ApoliceSeguro apoliceSeguro = null;
 
     @XmlElement(name = "conteineresVazios")
     @ApiModelProperty(value = "")
     @Valid
     private List<Conteiner> conteineresVazios = null;
 
-    @XmlElement(name = "lacresAplicados")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoAplicacaoLacre lacresAplicados = null;
-
-    @XmlElement(name = "tipoTratamentoMadeira")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoTratamentoMadeira tipoTratamentoMadeira = null;
-
-    @XmlElement(name = "transportandoPecasOuPartesMadeira")
-    @ApiModelProperty(value = "Indica se o veículo está transportando itens em embalagem/suporte de madeira ")
-    /**
-     * Indica se o veículo está transportando itens em embalagem/suporte de madeira
-     **/
-    private Boolean transportandoPecasOuPartesMadeira = null;
-
     @XmlElement(name = "documentoTransporte")
     @ApiModelProperty(value = "")
     @Valid
     private ViagemRodoviariaId documentoTransporte = null;
 
-    @XmlElement(name = "transitoAduaneiroInternacional")
-    @ApiModelProperty(value = "Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)")
-    /**
-     * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
-     **/
-    private Boolean transitoAduaneiroInternacional = null;
-
-    @XmlElement(name = "apoliceSeguro")
+    @XmlElement(name = "lacresAplicados")
     @ApiModelProperty(value = "")
     @Valid
-    private ApoliceSeguro apoliceSeguro = null;
+    private TipoAplicacaoLacre lacresAplicados = null;
 
     @XmlElement(name = "observacoesGerais")
     @ApiModelProperty(example = "Observações gerais.", value = "Observações gerais da viagem<br/> Tamanho Máximo: 500")
@@ -65,12 +46,17 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
      **/
     private String observacoesGerais = null;
 
-    @XmlElement(name = "visualizacaoDepositario")
-    @ApiModelProperty(value = "Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.")
+    @XmlElement(name = "tipoTratamentoMadeira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoTratamentoMadeira tipoTratamentoMadeira = null;
+
+    @XmlElement(name = "transitoAduaneiroInternacional")
+    @ApiModelProperty(value = "Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)")
     /**
-     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
+     * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
      **/
-    private Boolean visualizacaoDepositario = null;
+    private Boolean transitoAduaneiroInternacional = null;
 
     @XmlElement(name = "transportadorImportador")
     @ApiModelProperty(value = "Indicador que informa se o transportador é o importador")
@@ -78,6 +64,20 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
      * Indicador que informa se o transportador é o importador
      **/
     private Boolean transportadorImportador = null;
+
+    @XmlElement(name = "transportandoPecasOuPartesMadeira")
+    @ApiModelProperty(value = "Indica se o veículo está transportando itens em embalagem/suporte de madeira ")
+    /**
+     * Indica se o veículo está transportando itens em embalagem/suporte de madeira
+     **/
+    private Boolean transportandoPecasOuPartesMadeira = null;
+
+    @XmlElement(name = "visualizacaoDepositario")
+    @ApiModelProperty(value = "Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.")
+    /**
+     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
+     **/
+    private Boolean visualizacaoDepositario = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -88,6 +88,20 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get apoliceSeguro
+     *
+     * @return apoliceSeguro
+     **/
+    @JsonProperty("apoliceSeguro")
+    public ApoliceSeguro getApoliceSeguro() {
+        return apoliceSeguro;
+    }
+
+    public void setApoliceSeguro(ApoliceSeguro apoliceSeguro) {
+        this.apoliceSeguro = apoliceSeguro;
     }
 
     /**
@@ -114,6 +128,25 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem apoliceSeguro(ApoliceSeguro apoliceSeguro) {
+        this.apoliceSeguro = apoliceSeguro;
+        return this;
+    }
+
+    /**
+     * Get documentoTransporte
+     *
+     * @return documentoTransporte
+     **/
+    @JsonProperty("documentoTransporte")
+    public ViagemRodoviariaId getDocumentoTransporte() {
+        return documentoTransporte;
+    }
+
+    public void setDocumentoTransporte(ViagemRodoviariaId documentoTransporte) {
+        this.documentoTransporte = documentoTransporte;
+    }
+
     /**
      * Get lacresAplicados
      *
@@ -131,6 +164,25 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
     public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem lacresAplicados(TipoAplicacaoLacre lacresAplicados) {
         this.lacresAplicados = lacresAplicados;
         return this;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem documentoTransporte(ViagemRodoviariaId documentoTransporte) {
+        this.documentoTransporte = documentoTransporte;
+        return this;
+    }
+
+    /**
+     * Observações gerais da viagem&lt;br/&gt; Tamanho Máximo: 500
+     *
+     * @return observacoesGerais
+     **/
+    @JsonProperty("observacoesGerais")
+    public String getObservacoesGerais() {
+        return observacoesGerais;
+    }
+
+    public void setObservacoesGerais(String observacoesGerais) {
+        this.observacoesGerais = observacoesGerais;
     }
 
     /**
@@ -153,44 +205,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
     }
 
     /**
-     * Indica se o veículo está transportando itens em embalagem/suporte de madeira
-     *
-     * @return transportandoPecasOuPartesMadeira
-     **/
-    @JsonProperty("transportandoPecasOuPartesMadeira")
-    public Boolean isisTransportandoPecasOuPartesMadeira() {
-        return transportandoPecasOuPartesMadeira;
-    }
-
-    public void setTransportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
-        this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem transportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
-        this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
-        return this;
-    }
-
-    /**
-     * Get documentoTransporte
-     *
-     * @return documentoTransporte
-     **/
-    @JsonProperty("documentoTransporte")
-    public ViagemRodoviariaId getDocumentoTransporte() {
-        return documentoTransporte;
-    }
-
-    public void setDocumentoTransporte(ViagemRodoviariaId documentoTransporte) {
-        this.documentoTransporte = documentoTransporte;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem documentoTransporte(ViagemRodoviariaId documentoTransporte) {
-        this.documentoTransporte = documentoTransporte;
-        return this;
-    }
-
-    /**
      * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
      *
      * @return transitoAduaneiroInternacional
@@ -209,60 +223,8 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
-    /**
-     * Get apoliceSeguro
-     *
-     * @return apoliceSeguro
-     **/
-    @JsonProperty("apoliceSeguro")
-    public ApoliceSeguro getApoliceSeguro() {
-        return apoliceSeguro;
-    }
-
-    public void setApoliceSeguro(ApoliceSeguro apoliceSeguro) {
-        this.apoliceSeguro = apoliceSeguro;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem apoliceSeguro(ApoliceSeguro apoliceSeguro) {
-        this.apoliceSeguro = apoliceSeguro;
-        return this;
-    }
-
-    /**
-     * Observações gerais da viagem&lt;br/&gt; Tamanho Máximo: 500
-     *
-     * @return observacoesGerais
-     **/
-    @JsonProperty("observacoesGerais")
-    public String getObservacoesGerais() {
-        return observacoesGerais;
-    }
-
-    public void setObservacoesGerais(String observacoesGerais) {
-        this.observacoesGerais = observacoesGerais;
-    }
-
     public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem observacoesGerais(String observacoesGerais) {
         this.observacoesGerais = observacoesGerais;
-        return this;
-    }
-
-    /**
-     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
-     *
-     * @return visualizacaoDepositario
-     **/
-    @JsonProperty("visualizacaoDepositario")
-    public Boolean isisVisualizacaoDepositario() {
-        return visualizacaoDepositario;
-    }
-
-    public void setVisualizacaoDepositario(Boolean visualizacaoDepositario) {
-        this.visualizacaoDepositario = visualizacaoDepositario;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem visualizacaoDepositario(Boolean visualizacaoDepositario) {
-        this.visualizacaoDepositario = visualizacaoDepositario;
         return this;
     }
 
@@ -285,20 +247,58 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
+    /**
+     * Indica se o veículo está transportando itens em embalagem/suporte de madeira
+     *
+     * @return transportandoPecasOuPartesMadeira
+     **/
+    @JsonProperty("transportandoPecasOuPartesMadeira")
+    public Boolean isisTransportandoPecasOuPartesMadeira() {
+        return transportandoPecasOuPartesMadeira;
+    }
+
+    public void setTransportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
+        this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
+    }
+
+    /**
+     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
+     *
+     * @return visualizacaoDepositario
+     **/
+    @JsonProperty("visualizacaoDepositario")
+    public Boolean isisVisualizacaoDepositario() {
+        return visualizacaoDepositario;
+    }
+
+    public void setVisualizacaoDepositario(Boolean visualizacaoDepositario) {
+        this.visualizacaoDepositario = visualizacaoDepositario;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem visualizacaoDepositario(Boolean visualizacaoDepositario) {
+        this.visualizacaoDepositario = visualizacaoDepositario;
+        return this;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem transportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
+        this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {\n" +
-                "    conteineresVazios: " + toIndentedString(conteineresVazios) + "\n" +
-                "    lacresAplicados: " + toIndentedString(lacresAplicados) + "\n" +
-                "    tipoTratamentoMadeira: " + toIndentedString(tipoTratamentoMadeira) + "\n" +
-                "    transportandoPecasOuPartesMadeira: " + toIndentedString(transportandoPecasOuPartesMadeira) + "\n" +
-                "    documentoTransporte: " + toIndentedString(documentoTransporte) + "\n" +
-                "    transitoAduaneiroInternacional: " + toIndentedString(transitoAduaneiroInternacional) + "\n" +
                 "    apoliceSeguro: " + toIndentedString(apoliceSeguro) + "\n" +
+                "    conteineresVazios: " + toIndentedString(conteineresVazios) + "\n" +
+                "    documentoTransporte: " + toIndentedString(documentoTransporte) + "\n" +
+                "    lacresAplicados: " + toIndentedString(lacresAplicados) + "\n" +
                 "    observacoesGerais: " + toIndentedString(observacoesGerais) + "\n" +
-                "    visualizacaoDepositario: " + toIndentedString(visualizacaoDepositario) + "\n" +
+                "    tipoTratamentoMadeira: " + toIndentedString(tipoTratamentoMadeira) + "\n" +
+                "    transitoAduaneiroInternacional: " + toIndentedString(transitoAduaneiroInternacional) + "\n" +
                 "    transportadorImportador: " + toIndentedString(transportadorImportador) + "\n" +
+                "    transportandoPecasOuPartesMadeira: " + toIndentedString(transportandoPecasOuPartesMadeira) + "\n" +
+                "    visualizacaoDepositario: " + toIndentedString(visualizacaoDepositario) + "\n" +
                 "}";
         return sb;
     }

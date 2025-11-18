@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultaImpedimentosEntregaImportador", propOrder =
-        {"condicoes", "identificacaoCarga", "entregaAutorizada", "impedimentos", "tipoCarga", "numeroDocumentoSaida", "tipoDocumentoSaida"
+        {"condicoes", "entregaAutorizada", "identificacaoCarga", "impedimentos", "numeroDocumentoSaida", "tipoCarga", "tipoDocumentoSaida"
         })
 
 @XmlRootElement(name = "RetornoConsultaImpedimentosEntregaImportador")
@@ -34,19 +34,19 @@ public class RetornoConsultaImpedimentosEntregaImportador {
      **/
     private List<CondicaoEntregaImportador> condicoes = null;
 
-    @XmlElement(name = "identificacaoCarga")
-    @ApiModelProperty(example = "43NQKMM8KNT", value = "Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
-    /**
-     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
-     **/
-    private String identificacaoCarga = null;
-
     @XmlElement(name = "entregaAutorizada")
     @ApiModelProperty(example = "false", value = "Indicador informando que a entrega esta autorizada")
     /**
      * Indicador informando que a entrega esta autorizada
      **/
     private Boolean entregaAutorizada = null;
+
+    @XmlElement(name = "identificacaoCarga")
+    @ApiModelProperty(example = "43NQKMM8KNT", value = "Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
+    /**
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
+     **/
+    private String identificacaoCarga = null;
 
     @XmlElement(name = "impedimentos")
     @ApiModelProperty(value = "Lista de impedimentos da entrega da carga ao importador")
@@ -55,24 +55,19 @@ public class RetornoConsultaImpedimentosEntregaImportador {
      * Lista de impedimentos da entrega da carga ao importador
      **/
     private List<ImpedimentoEntregaImportador> impedimentos = null;
-    @XmlElement(name = "tipoCarga")
-    @ApiModelProperty(example = "740", value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
-    /**
-     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
-     **/
-    private TipoCargaEnum tipoCarga = null;
+
     @XmlElement(name = "numeroDocumentoSaida")
     @ApiModelProperty(example = "5490178901", value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN")
     /**
      * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
      **/
     private String numeroDocumentoSaida = null;
-    @XmlElement(name = "tipoDocumentoSaida")
-    @ApiModelProperty(example = "PROCESSO", value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
+    @XmlElement(name = "tipoCarga")
+    @ApiModelProperty(example = "740", value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
     /**
-     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
      **/
-    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+    private TipoCargaEnum tipoCarga = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -83,6 +78,22 @@ public class RetornoConsultaImpedimentosEntregaImportador {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+    @XmlElement(name = "tipoDocumentoSaida")
+    @ApiModelProperty(example = "PROCESSO", value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
+    /**
+     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     **/
+    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+
+    /**
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacaoCarga
+     **/
+    @JsonProperty("identificacaoCarga")
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
     }
 
     /**
@@ -110,25 +121,6 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     }
 
     /**
-     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacaoCarga
-     **/
-    @JsonProperty("identificacaoCarga")
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
-    }
-
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador identificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
-    /**
      * Indicador informando que a entrega esta autorizada
      *
      * @return entregaAutorizada
@@ -145,6 +137,25 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     public RetornoConsultaImpedimentosEntregaImportador entregaAutorizada(Boolean entregaAutorizada) {
         this.entregaAutorizada = entregaAutorizada;
         return this;
+    }
+
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador identificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+        return this;
+    }
+
+    /**
+     * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
+     *
+     * @return numeroDocumentoSaida
+     **/
+    @JsonProperty("numeroDocumentoSaida")
+    public String getNumeroDocumentoSaida() {
+        return numeroDocumentoSaida;
     }
 
     /**
@@ -171,6 +182,30 @@ public class RetornoConsultaImpedimentosEntregaImportador {
         return this;
     }
 
+    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador numeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class RetornoConsultaImpedimentosEntregaImportador {\n" +
+                "    condicoes: " + toIndentedString(condicoes) + "\n" +
+                "    entregaAutorizada: " + toIndentedString(entregaAutorizada) + "\n" +
+                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
+                "    impedimentos: " + toIndentedString(impedimentos) + "\n" +
+                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
+                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
+                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Tipo de carga. &lt;p&gt;Os tipos podem ser:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;em&gt;740&lt;/em&gt; – Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;741&lt;/em&gt; – Master Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;703&lt;/em&gt; – House Air Waybill.&lt;/li&gt;&lt;li&gt;&lt;em&gt;14&lt;/em&gt; – DSIC - Documento Subsidiário de Identificação de Carga.&lt;/li&gt;&lt;li&gt;&lt;em&gt;13&lt;/em&gt; – CRT - Conhecimento Rodoviário de Trânsito.&lt;/li&gt;&lt;/ul&gt;
      *
@@ -194,25 +229,6 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     }
 
     /**
-     * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
-     *
-     * @return numeroDocumentoSaida
-     **/
-    @JsonProperty("numeroDocumentoSaida")
-    public String getNumeroDocumentoSaida() {
-        return numeroDocumentoSaida;
-    }
-
-    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador numeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-        return this;
-    }
-
-    /**
      * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
      *
      * @return tipoDocumentoSaida
@@ -232,21 +248,6 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     public RetornoConsultaImpedimentosEntregaImportador tipoDocumentoSaida(TipoDocumentoSaidaEnum tipoDocumentoSaida) {
         this.tipoDocumentoSaida = tipoDocumentoSaida;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoConsultaImpedimentosEntregaImportador {\n" +
-                "    condicoes: " + toIndentedString(condicoes) + "\n" +
-                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
-                "    entregaAutorizada: " + toIndentedString(entregaAutorizada) + "\n" +
-                "    impedimentos: " + toIndentedString(impedimentos) + "\n" +
-                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
-                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
-                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
-                "}";
-        return sb;
     }
 
 

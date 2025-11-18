@@ -30,17 +30,6 @@ public class RetornoConsultarDocumentoPorDossie {
     private Dossie dossie = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get dossie
      *
      * @return dossie
@@ -58,6 +47,18 @@ public class RetornoConsultarDocumentoPorDossie {
     public RetornoConsultarDocumentoPorDossie dossie(Dossie dossie) {
         this.dossie = dossie;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

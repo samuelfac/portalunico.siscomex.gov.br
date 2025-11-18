@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecepcaoNFECover", propOrder =
-        {"pesoAferido", "motivoNaoPesagem", "codigoIdentCarga", "cnpjResp", "conteineres", "notasFiscais", "divergenciasIdentificadas", "local", "transportador", "referenciaLocalRecepcao", "avariasIdentificadas", "localArmazenamento", "observacoesGerais"
+        {"cnpjResp", "local", "notasFiscais", "conteineres", "transportador", "referenciaLocalRecepcao", "localArmazenamento", "avariasIdentificadas", "divergenciasIdentificadas", "observacoesGerais", "codigoIdentCarga", "pesoAferido", "motivoNaoPesagem"
         })
 
 @XmlRootElement(name = "RecepcaoNFECover")
@@ -26,6 +26,81 @@ import java.util.List;
  **/
 @ApiModel(description = "Recepção de Nota Fiscal Eletrônica")
 public class RecepcaoNFECover {
+
+    @XmlElement(name = "cnpjResp", required = true)
+    @ApiModelProperty(example = "15573459000106", required = true, value = "CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResp = null;
+
+    @XmlElement(name = "local", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private LocalCover local = null;
+
+    @XmlElement(name = "notasFiscais")
+    @ApiModelProperty(value = "Notas Fiscais Eletrônicas<br>Coleção de NotaFiscalCover")
+    @Valid
+    /**
+     * Notas Fiscais Eletrônicas<br>Coleção de NotaFiscalCover
+     **/
+    private List<NotaFiscalCover> notasFiscais = null;
+
+    @XmlElement(name = "conteineres")
+    @ApiModelProperty(value = "Lista de conteineres")
+    @Valid
+    /**
+     * Lista de conteineres
+     **/
+    private List<ConteinerCover> conteineres = null;
+
+    @XmlElement(name = "transportador", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private TransportadorCover transportador = null;
+
+    @XmlElement(name = "referenciaLocalRecepcao")
+    @ApiModelProperty(value = "Informação de referência do local da recepção<br>Tamanho: 150")
+    /**
+     * Informação de referência do local da recepção<br>Tamanho: 150
+     **/
+    private String referenciaLocalRecepcao = null;
+
+    @XmlElement(name = "localArmazenamento")
+    @ApiModelProperty(value = "Local de armazenamento da carga<br>Tamanho: 150")
+    /**
+     * Local de armazenamento da carga<br>Tamanho: 150
+     **/
+    private String localArmazenamento = null;
+
+    @XmlElement(name = "avariasIdentificadas")
+    @ApiModelProperty(value = "Avarias identificadas<br>Tamanho: 250")
+    /**
+     * Avarias identificadas<br>Tamanho: 250
+     **/
+    private String avariasIdentificadas = null;
+
+    @XmlElement(name = "divergenciasIdentificadas")
+    @ApiModelProperty(value = "Divergências identificadas<br>Tamanho: 250")
+    /**
+     * Divergências identificadas<br>Tamanho: 250
+     **/
+    private String divergenciasIdentificadas = null;
+
+    @XmlElement(name = "observacoesGerais")
+    @ApiModelProperty(value = "Observações adicionais<br>Tamanho: 250")
+    /**
+     * Observações adicionais<br>Tamanho: 250
+     **/
+    private String observacoesGerais = null;
+
+    @XmlElement(name = "codigoIdentCarga")
+    @ApiModelProperty(example = "CARGA 0001 TESTE", value = "Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35")
+    /**
+     * Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35
+     **/
+    private String codigoIdentCarga = null;
 
     @XmlElement(name = "pesoAferido")
     @ApiModelProperty(example = "100.0", value = "Peso aferido na balança do recinto em Kg<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN<br>Deve ser informado somente quando há informação de pesagem.")
@@ -40,152 +115,6 @@ public class RecepcaoNFECover {
      * Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem.
      **/
     private String motivoNaoPesagem = null;
-
-    @XmlElement(name = "codigoIdentCarga")
-    @ApiModelProperty(example = "CARGA 0001 TESTE", value = "Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35")
-    /**
-     * Código de identificação da carga<br>Tamanho mínimo: 13<br>Tamanho máximo: 35
-     **/
-    private String codigoIdentCarga = null;
-
-    @XmlElement(name = "cnpjResp", required = true)
-    @ApiModelProperty(example = "15573459000106", required = true, value = "CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
-    /**
-     * CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjResp = null;
-
-    @XmlElement(name = "conteineres")
-    @ApiModelProperty(value = "Lista de conteineres")
-    @Valid
-    /**
-     * Lista de conteineres
-     **/
-    private List<ConteinerCover> conteineres = null;
-
-    @XmlElement(name = "notasFiscais")
-    @ApiModelProperty(value = "Notas Fiscais Eletrônicas<br>Coleção de NotaFiscalCover")
-    @Valid
-    /**
-     * Notas Fiscais Eletrônicas<br>Coleção de NotaFiscalCover
-     **/
-    private List<NotaFiscalCover> notasFiscais = null;
-
-    @XmlElement(name = "divergenciasIdentificadas")
-    @ApiModelProperty(value = "Divergências identificadas<br>Tamanho: 250")
-    /**
-     * Divergências identificadas<br>Tamanho: 250
-     **/
-    private String divergenciasIdentificadas = null;
-
-    @XmlElement(name = "local", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private LocalCover local = null;
-
-    @XmlElement(name = "transportador", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private TransportadorCover transportador = null;
-
-    @XmlElement(name = "referenciaLocalRecepcao")
-    @ApiModelProperty(value = "Informação de referência do local da recepção<br>Tamanho: 150")
-    /**
-     * Informação de referência do local da recepção<br>Tamanho: 150
-     **/
-    private String referenciaLocalRecepcao = null;
-
-    @XmlElement(name = "avariasIdentificadas")
-    @ApiModelProperty(value = "Avarias identificadas<br>Tamanho: 250")
-    /**
-     * Avarias identificadas<br>Tamanho: 250
-     **/
-    private String avariasIdentificadas = null;
-
-    @XmlElement(name = "localArmazenamento")
-    @ApiModelProperty(value = "Local de armazenamento da carga<br>Tamanho: 150")
-    /**
-     * Local de armazenamento da carga<br>Tamanho: 150
-     **/
-    private String localArmazenamento = null;
-
-    @XmlElement(name = "observacoesGerais")
-    @ApiModelProperty(value = "Observações adicionais<br>Tamanho: 250")
-    /**
-     * Observações adicionais<br>Tamanho: 250
-     **/
-    private String observacoesGerais = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Peso aferido na balança do recinto em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN&lt;br&gt;Deve ser informado somente quando há informação de pesagem.
-     *
-     * @return pesoAferido
-     **/
-    @JsonProperty("pesoAferido")
-    @Pattern(regexp = "0\\.\\d{3}|[1-9]\\d{0,8}\\.\\d{3}")
-    public String getPesoAferido() {
-        return pesoAferido;
-    }
-
-    public void setPesoAferido(String pesoAferido) {
-        this.pesoAferido = pesoAferido;
-    }
-
-    public RecepcaoNFECover pesoAferido(String pesoAferido) {
-        this.pesoAferido = pesoAferido;
-        return this;
-    }
-
-    /**
-     * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem.
-     *
-     * @return motivoNaoPesagem
-     **/
-    @JsonProperty("motivoNaoPesagem")
-    @Size(min = 2, max = 250)
-    public String getMotivoNaoPesagem() {
-        return motivoNaoPesagem;
-    }
-
-    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-    }
-
-    public RecepcaoNFECover motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-        return this;
-    }
-
-    /**
-     * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
-     *
-     * @return codigoIdentCarga
-     **/
-    @JsonProperty("codigoIdentCarga")
-    @Pattern(regexp = "(\\dBR\\d{8}\\d[0-9a-zA-Z]{1,23})|(\\d]BR\\d{11}\\d[0-9a-zA-Z]{1,20})")
-    public String getCodigoIdentCarga() {
-        return codigoIdentCarga;
-    }
-
-    public void setCodigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
-    }
-
-    public RecepcaoNFECover codigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
-        return this;
-    }
 
     /**
      * CNPJ do responsável pela recepção&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
@@ -209,28 +138,29 @@ public class RecepcaoNFECover {
     }
 
     /**
-     * Lista de conteineres
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get local
      *
-     * @return conteineres
+     * @return local
      **/
-    @JsonProperty("conteineres")
-    @Size(min = 0, max = 1000)
-    public List<ConteinerCover> getConteineres() {
-        return conteineres;
+    @JsonProperty("local")
+    @NotNull
+    public LocalCover getLocal() {
+        return local;
     }
 
-    public void setConteineres(List<ConteinerCover> conteineres) {
-        this.conteineres = conteineres;
-    }
-
-    public RecepcaoNFECover conteineres(List<ConteinerCover> conteineres) {
-        this.conteineres = conteineres;
-        return this;
-    }
-
-    public RecepcaoNFECover addConteineresItem(ConteinerCover conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
+    public void setLocal(LocalCover local) {
+        this.local = local;
     }
 
     /**
@@ -258,43 +188,28 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    /**
-     * Divergências identificadas&lt;br&gt;Tamanho: 250
-     *
-     * @return divergenciasIdentificadas
-     **/
-    @JsonProperty("divergenciasIdentificadas")
-    @Size(min = 2, max = 250)
-    public String getDivergenciasIdentificadas() {
-        return divergenciasIdentificadas;
-    }
-
-    public void setDivergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
-    }
-
-    public RecepcaoNFECover divergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
+    public RecepcaoNFECover local(LocalCover local) {
+        this.local = local;
         return this;
     }
 
     /**
-     * Get local
+     * Lista de conteineres
      *
-     * @return local
+     * @return conteineres
      **/
-    @JsonProperty("local")
-    @NotNull
-    public LocalCover getLocal() {
-        return local;
+    @JsonProperty("conteineres")
+    @Size(min = 0, max = 1000)
+    public List<ConteinerCover> getConteineres() {
+        return conteineres;
     }
 
-    public void setLocal(LocalCover local) {
-        this.local = local;
+    public void setConteineres(List<ConteinerCover> conteineres) {
+        this.conteineres = conteineres;
     }
 
-    public RecepcaoNFECover local(LocalCover local) {
-        this.local = local;
+    public RecepcaoNFECover conteineres(List<ConteinerCover> conteineres) {
+        this.conteineres = conteineres;
         return this;
     }
 
@@ -338,6 +253,26 @@ public class RecepcaoNFECover {
         return this;
     }
 
+    public RecepcaoNFECover addConteineresItem(ConteinerCover conteineresItem) {
+        this.conteineres.add(conteineresItem);
+        return this;
+    }
+
+    /**
+     * Local de armazenamento da carga&lt;br&gt;Tamanho: 150
+     *
+     * @return localArmazenamento
+     **/
+    @JsonProperty("localArmazenamento")
+    @Size(min = 2, max = 150)
+    public String getLocalArmazenamento() {
+        return localArmazenamento;
+    }
+
+    public void setLocalArmazenamento(String localArmazenamento) {
+        this.localArmazenamento = localArmazenamento;
+    }
+
     /**
      * Avarias identificadas&lt;br&gt;Tamanho: 250
      *
@@ -358,24 +293,24 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    /**
-     * Local de armazenamento da carga&lt;br&gt;Tamanho: 150
-     *
-     * @return localArmazenamento
-     **/
-    @JsonProperty("localArmazenamento")
-    @Size(min = 2, max = 150)
-    public String getLocalArmazenamento() {
-        return localArmazenamento;
-    }
-
-    public void setLocalArmazenamento(String localArmazenamento) {
-        this.localArmazenamento = localArmazenamento;
-    }
-
     public RecepcaoNFECover localArmazenamento(String localArmazenamento) {
         this.localArmazenamento = localArmazenamento;
         return this;
+    }
+
+    /**
+     * Divergências identificadas&lt;br&gt;Tamanho: 250
+     *
+     * @return divergenciasIdentificadas
+     **/
+    @JsonProperty("divergenciasIdentificadas")
+    @Size(min = 2, max = 250)
+    public String getDivergenciasIdentificadas() {
+        return divergenciasIdentificadas;
+    }
+
+    public void setDivergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
     }
 
     /**
@@ -398,23 +333,88 @@ public class RecepcaoNFECover {
         return this;
     }
 
+    public RecepcaoNFECover divergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
+        return this;
+    }
+
+    /**
+     * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
+     *
+     * @return codigoIdentCarga
+     **/
+    @JsonProperty("codigoIdentCarga")
+    @Pattern(regexp = "(\\dBR\\d{8}\\d[0-9a-zA-Z]{1,23})|(\\d]BR\\d{11}\\d[0-9a-zA-Z]{1,20})")
+    public String getCodigoIdentCarga() {
+        return codigoIdentCarga;
+    }
+
+    public void setCodigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
+    }
+
+    public RecepcaoNFECover codigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
+        return this;
+    }
+
+    /**
+     * Peso aferido na balança do recinto em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN&lt;br&gt;Deve ser informado somente quando há informação de pesagem.
+     *
+     * @return pesoAferido
+     **/
+    @JsonProperty("pesoAferido")
+    @Pattern(regexp = "0\\.\\d{3}|[1-9]\\d{0,8}\\.\\d{3}")
+    public String getPesoAferido() {
+        return pesoAferido;
+    }
+
+    public void setPesoAferido(String pesoAferido) {
+        this.pesoAferido = pesoAferido;
+    }
+
+    public RecepcaoNFECover pesoAferido(String pesoAferido) {
+        this.pesoAferido = pesoAferido;
+        return this;
+    }
+
+    /**
+     * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem.
+     *
+     * @return motivoNaoPesagem
+     **/
+    @JsonProperty("motivoNaoPesagem")
+    @Size(min = 2, max = 250)
+    public String getMotivoNaoPesagem() {
+        return motivoNaoPesagem;
+    }
+
+    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+    }
+
+    public RecepcaoNFECover motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RecepcaoNFECover {\n" +
-                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
-                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
-                "    codigoIdentCarga: " + toIndentedString(codigoIdentCarga) + "\n" +
                 "    cnpjResp: " + toIndentedString(cnpjResp) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
-                "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
-                "    divergenciasIdentificadas: " + toIndentedString(divergenciasIdentificadas) + "\n" +
                 "    local: " + toIndentedString(local) + "\n" +
+                "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "    transportador: " + toIndentedString(transportador) + "\n" +
                 "    referenciaLocalRecepcao: " + toIndentedString(referenciaLocalRecepcao) + "\n" +
-                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
                 "    localArmazenamento: " + toIndentedString(localArmazenamento) + "\n" +
+                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
+                "    divergenciasIdentificadas: " + toIndentedString(divergenciasIdentificadas) + "\n" +
                 "    observacoesGerais: " + toIndentedString(observacoesGerais) + "\n" +
+                "    codigoIdentCarga: " + toIndentedString(codigoIdentCarga) + "\n" +
+                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
+                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
                 "}";
         return sb;
     }

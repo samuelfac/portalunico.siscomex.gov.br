@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VeiculoDetails", propOrder =
-        {"situacao", "chassi"
+        {"chassi", "situacao"
         })
 
 @XmlRootElement(name = "VeiculoDetails")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Lista de veículos")
 public class VeiculoDetails {
 
+    @XmlElement(name = "chassi")
+    @ApiModelProperty(example = "CONT000001", value = "Número do chassi")
+    /**
+     * Número do chassi
+     **/
+    private String chassi = null;
+
     @XmlElement(name = "situacao")
     @ApiModelProperty(example = "Disponível", value = "Descrição da situação")
     /**
@@ -29,12 +36,24 @@ public class VeiculoDetails {
      **/
     private String situacao = null;
 
-    @XmlElement(name = "chassi")
-    @ApiModelProperty(example = "CONT000001", value = "Número do chassi")
     /**
      * Número do chassi
+     *
+     * @return chassi
      **/
-    private String chassi = null;
+    @JsonProperty("chassi")
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
+    }
+
+    public VeiculoDetails chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -66,31 +85,12 @@ public class VeiculoDetails {
         return this;
     }
 
-    /**
-     * Número do chassi
-     *
-     * @return chassi
-     **/
-    @JsonProperty("chassi")
-    public String getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
-    }
-
-    public VeiculoDetails chassi(String chassi) {
-        this.chassi = chassi;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class VeiculoDetails {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    chassi: " + toIndentedString(chassi) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

@@ -31,17 +31,6 @@ public class SefazNotaFiscalDto {
     private String chaveAcessoNotaFiscal = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da chave de acesso da nota fiscal &lt;br&gt;Tamanho: 44
      *
      * @return chaveAcessoNotaFiscal
@@ -59,6 +48,18 @@ public class SefazNotaFiscalDto {
     public SefazNotaFiscalDto chaveAcessoNotaFiscal(String chaveAcessoNotaFiscal) {
         this.chaveAcessoNotaFiscal = chaveAcessoNotaFiscal;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

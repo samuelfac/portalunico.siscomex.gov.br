@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazValorMercadoriaCover", propOrder =
-        {"valorMercadoria", "valorFreteRateado", "valorAduaneiro", "valorSeguroRateado"
+        {"valorMercadoria", "valorFreteRateado", "valorSeguroRateado", "valorAduaneiro"
         })
 
 @XmlRootElement(name = "SefazValorMercadoriaCover")
@@ -40,14 +40,6 @@ public class SefazValorMercadoriaCover {
      **/
     private BigDecimal valorFreteRateado = null;
 
-    @XmlElement(name = "valorAduaneiro")
-    @ApiModelProperty(example = "4567.8", value = "Valor aduaneiro em reais (VMDL).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor aduaneiro em reais (VMDL).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorAduaneiro = null;
-
     @XmlElement(name = "valorSeguroRateado")
     @ApiModelProperty(example = "380.65", value = "Valor do seguro em reais (rateado).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -56,16 +48,13 @@ public class SefazValorMercadoriaCover {
      **/
     private BigDecimal valorSeguroRateado = null;
 
+    @XmlElement(name = "valorAduaneiro")
+    @ApiModelProperty(example = "4567.8", value = "Valor aduaneiro em reais (VMDL).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Valor aduaneiro em reais (VMDL).<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorAduaneiro = null;
 
     /**
      * Valor da mercadoria no local de embarque.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
@@ -106,25 +95,6 @@ public class SefazValorMercadoriaCover {
     }
 
     /**
-     * Valor aduaneiro em reais (VMDL).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorAduaneiro
-     **/
-    @JsonProperty("valorAduaneiro")
-    public BigDecimal getValorAduaneiro() {
-        return valorAduaneiro;
-    }
-
-    public void setValorAduaneiro(BigDecimal valorAduaneiro) {
-        this.valorAduaneiro = valorAduaneiro;
-    }
-
-    public SefazValorMercadoriaCover valorAduaneiro(BigDecimal valorAduaneiro) {
-        this.valorAduaneiro = valorAduaneiro;
-        return this;
-    }
-
-    /**
      * Valor do seguro em reais (rateado).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return valorSeguroRateado
@@ -143,14 +113,44 @@ public class SefazValorMercadoriaCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Valor aduaneiro em reais (VMDL).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorAduaneiro
+     **/
+    @JsonProperty("valorAduaneiro")
+    public BigDecimal getValorAduaneiro() {
+        return valorAduaneiro;
+    }
+
+    public void setValorAduaneiro(BigDecimal valorAduaneiro) {
+        this.valorAduaneiro = valorAduaneiro;
+    }
+
+    public SefazValorMercadoriaCover valorAduaneiro(BigDecimal valorAduaneiro) {
+        this.valorAduaneiro = valorAduaneiro;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazValorMercadoriaCover {\n" +
                 "    valorMercadoria: " + toIndentedString(valorMercadoria) + "\n" +
                 "    valorFreteRateado: " + toIndentedString(valorFreteRateado) + "\n" +
-                "    valorAduaneiro: " + toIndentedString(valorAduaneiro) + "\n" +
                 "    valorSeguroRateado: " + toIndentedString(valorSeguroRateado) + "\n" +
+                "    valorAduaneiro: " + toIndentedString(valorAduaneiro) + "\n" +
                 "}";
         return sb;
     }

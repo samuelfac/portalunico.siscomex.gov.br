@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazPagamentoCover", propOrder =
-        {"valorTributo", "codigoReceita", "conta", "banco", "descricaoReceita", "dataHoraPagamento", "versaoDuimpPagamento", "agencia", "pagamentoJuros"
+        {"versaoDuimpPagamento", "banco", "agencia", "conta", "codigoReceita", "descricaoReceita", "valorTributo", "dataHoraPagamento", "pagamentoJuros"
         })
 
 @XmlRootElement(name = "SefazPagamentoCover")
@@ -25,27 +25,12 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Dados de um pagamento")
 public class SefazPagamentoCover {
 
-    @XmlElement(name = "valorTributo")
-    @ApiModelProperty(example = "1000.0", value = "Valor pago<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
+    @XmlElement(name = "versaoDuimpPagamento")
+    @ApiModelProperty(example = "1", value = "Versão da Duimp em que este pagamento foi realizado.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
     /**
-     * Valor pago<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     * Versão da Duimp em que este pagamento foi realizado.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
      **/
-    private BigDecimal valorTributo = null;
-
-    @XmlElement(name = "codigoReceita")
-    @ApiModelProperty(example = "5602", value = "Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'")
-    /**
-     * Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'
-     **/
-    private String codigoReceita = null;
-
-    @XmlElement(name = "conta")
-    @ApiModelProperty(example = "707070", value = "Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
-    /**
-     * Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
-     **/
-    private String conta = null;
+    private String versaoDuimpPagamento = null;
 
     @XmlElement(name = "banco")
     @ApiModelProperty(example = "001", value = "Código do Banco<br>Valor mínimo: 1<br>Valor máximo: 999")
@@ -54,6 +39,27 @@ public class SefazPagamentoCover {
      **/
     private String banco = null;
 
+    @XmlElement(name = "agencia")
+    @ApiModelProperty(example = "3521", value = "Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4")
+    /**
+     * Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4
+     **/
+    private String agencia = null;
+
+    @XmlElement(name = "conta")
+    @ApiModelProperty(example = "707070", value = "Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
+    /**
+     * Número da conta<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
+     **/
+    private String conta = null;
+
+    @XmlElement(name = "codigoReceita")
+    @ApiModelProperty(example = "5602", value = "Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'")
+    /**
+     * Código da receita<br>Tamanho: 4<br>Formato: 'NNNN'
+     **/
+    private String codigoReceita = null;
+
     @XmlElement(name = "descricaoReceita")
     @ApiModelProperty(example = "Taxa de Utilização", value = "Descrição da receita<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
     /**
@@ -61,26 +67,20 @@ public class SefazPagamentoCover {
      **/
     private String descricaoReceita = null;
 
+    @XmlElement(name = "valorTributo")
+    @ApiModelProperty(example = "1000.0", value = "Valor pago<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor pago<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTributo = null;
+
     @XmlElement(name = "dataHoraPagamento")
     @ApiModelProperty(value = "Data e hora do pagamento<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
     /**
      * Data e hora do pagamento<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
      **/
     private OffsetDateTime dataHoraPagamento = null;
-
-    @XmlElement(name = "versaoDuimpPagamento")
-    @ApiModelProperty(example = "1", value = "Versão da Duimp em que este pagamento foi realizado.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
-    /**
-     * Versão da Duimp em que este pagamento foi realizado.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
-     **/
-    private String versaoDuimpPagamento = null;
-
-    @XmlElement(name = "agencia")
-    @ApiModelProperty(example = "3521", value = "Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4")
-    /**
-     * Número da agência<br>Tamanho mínimo: 1<br>Tamanho máximo: 4
-     **/
-    private String agencia = null;
 
     @XmlElement(name = "pagamentoJuros")
     @ApiModelProperty(value = "")
@@ -99,59 +99,21 @@ public class SefazPagamentoCover {
     }
 
     /**
-     * Valor pago&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
      *
-     * @return valorTributo
+     * @return versaoDuimpPagamento
      **/
-    @JsonProperty("valorTributo")
-    public BigDecimal getValorTributo() {
-        return valorTributo;
+    @JsonProperty("versaoDuimpPagamento")
+    public String getVersaoDuimpPagamento() {
+        return versaoDuimpPagamento;
     }
 
-    public void setValorTributo(BigDecimal valorTributo) {
-        this.valorTributo = valorTributo;
+    public void setVersaoDuimpPagamento(String versaoDuimpPagamento) {
+        this.versaoDuimpPagamento = versaoDuimpPagamento;
     }
 
-    public SefazPagamentoCover valorTributo(BigDecimal valorTributo) {
-        this.valorTributo = valorTributo;
-        return this;
-    }
-
-    /**
-     * Código da receita&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
-     *
-     * @return codigoReceita
-     **/
-    @JsonProperty("codigoReceita")
-    public String getCodigoReceita() {
-        return codigoReceita;
-    }
-
-    public void setCodigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-    }
-
-    public SefazPagamentoCover codigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-        return this;
-    }
-
-    /**
-     * Número da conta&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
-     *
-     * @return conta
-     **/
-    @JsonProperty("conta")
-    public String getConta() {
-        return conta;
-    }
-
-    public void setConta(String conta) {
-        this.conta = conta;
-    }
-
-    public SefazPagamentoCover conta(String conta) {
-        this.conta = conta;
+    public SefazPagamentoCover versaoDuimpPagamento(String versaoDuimpPagamento) {
+        this.versaoDuimpPagamento = versaoDuimpPagamento;
         return this;
     }
 
@@ -175,6 +137,58 @@ public class SefazPagamentoCover {
     }
 
     /**
+     * Número da agência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4
+     *
+     * @return agencia
+     **/
+    @JsonProperty("agencia")
+    public String getAgencia() {
+        return agencia;
+    }
+
+    public void setAgencia(String agencia) {
+        this.agencia = agencia;
+    }
+
+    /**
+     * Número da conta&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
+     *
+     * @return conta
+     **/
+    @JsonProperty("conta")
+    public String getConta() {
+        return conta;
+    }
+
+    public void setConta(String conta) {
+        this.conta = conta;
+    }
+
+    public SefazPagamentoCover conta(String conta) {
+        this.conta = conta;
+        return this;
+    }
+
+    public SefazPagamentoCover agencia(String agencia) {
+        this.agencia = agencia;
+        return this;
+    }
+
+    /**
+     * Código da receita&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
+     *
+     * @return codigoReceita
+     **/
+    @JsonProperty("codigoReceita")
+    public String getCodigoReceita() {
+        return codigoReceita;
+    }
+
+    public void setCodigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
+    }
+
+    /**
      * Descrição da receita&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
      *
      * @return descricaoReceita
@@ -191,6 +205,25 @@ public class SefazPagamentoCover {
     public SefazPagamentoCover descricaoReceita(String descricaoReceita) {
         this.descricaoReceita = descricaoReceita;
         return this;
+    }
+
+    public SefazPagamentoCover codigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
+        return this;
+    }
+
+    /**
+     * Valor pago&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorTributo
+     **/
+    @JsonProperty("valorTributo")
+    public BigDecimal getValorTributo() {
+        return valorTributo;
+    }
+
+    public void setValorTributo(BigDecimal valorTributo) {
+        this.valorTributo = valorTributo;
     }
 
     /**
@@ -213,44 +246,6 @@ public class SefazPagamentoCover {
     }
 
     /**
-     * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
-     *
-     * @return versaoDuimpPagamento
-     **/
-    @JsonProperty("versaoDuimpPagamento")
-    public String getVersaoDuimpPagamento() {
-        return versaoDuimpPagamento;
-    }
-
-    public void setVersaoDuimpPagamento(String versaoDuimpPagamento) {
-        this.versaoDuimpPagamento = versaoDuimpPagamento;
-    }
-
-    public SefazPagamentoCover versaoDuimpPagamento(String versaoDuimpPagamento) {
-        this.versaoDuimpPagamento = versaoDuimpPagamento;
-        return this;
-    }
-
-    /**
-     * Número da agência&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4
-     *
-     * @return agencia
-     **/
-    @JsonProperty("agencia")
-    public String getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
-
-    public SefazPagamentoCover agencia(String agencia) {
-        this.agencia = agencia;
-        return this;
-    }
-
-    /**
      * Get pagamentoJuros
      *
      * @return pagamentoJuros
@@ -269,18 +264,23 @@ public class SefazPagamentoCover {
         return this;
     }
 
+    public SefazPagamentoCover valorTributo(BigDecimal valorTributo) {
+        this.valorTributo = valorTributo;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazPagamentoCover {\n" +
-                "    valorTributo: " + toIndentedString(valorTributo) + "\n" +
-                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
-                "    conta: " + toIndentedString(conta) + "\n" +
-                "    banco: " + toIndentedString(banco) + "\n" +
-                "    descricaoReceita: " + toIndentedString(descricaoReceita) + "\n" +
-                "    dataHoraPagamento: " + toIndentedString(dataHoraPagamento) + "\n" +
                 "    versaoDuimpPagamento: " + toIndentedString(versaoDuimpPagamento) + "\n" +
+                "    banco: " + toIndentedString(banco) + "\n" +
                 "    agencia: " + toIndentedString(agencia) + "\n" +
+                "    conta: " + toIndentedString(conta) + "\n" +
+                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
+                "    descricaoReceita: " + toIndentedString(descricaoReceita) + "\n" +
+                "    valorTributo: " + toIndentedString(valorTributo) + "\n" +
+                "    dataHoraPagamento: " + toIndentedString(dataHoraPagamento) + "\n" +
                 "    pagamentoJuros: " + toIndentedString(pagamentoJuros) + "\n" +
                 "}";
         return sb;

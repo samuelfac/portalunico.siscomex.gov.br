@@ -38,17 +38,6 @@ public class TipoDocumento {
     private String nomeTipoDocumento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Id do tipo de documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
      *
      * @return idTipoDocumento
@@ -86,6 +75,18 @@ public class TipoDocumento {
     public TipoDocumento nomeTipoDocumento(String nomeTipoDocumento) {
         this.nomeTipoDocumento = nomeTipoDocumento;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

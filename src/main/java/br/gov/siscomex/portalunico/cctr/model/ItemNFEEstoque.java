@@ -49,17 +49,6 @@ public class ItemNFEEstoque {
     private BigDecimal saldo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do Item da Nota Fiscal Eletrônica&lt;br&gt;Tamanho máximo: 4&lt;br&gt;Formato: NNNN
      *
      * @return item
@@ -114,6 +103,18 @@ public class ItemNFEEstoque {
     public ItemNFEEstoque saldo(BigDecimal saldo) {
         this.saldo = saldo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

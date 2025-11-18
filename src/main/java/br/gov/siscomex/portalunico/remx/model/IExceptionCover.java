@@ -15,41 +15,48 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IExceptionCover", propOrder =
-        {"date", "severity", "path", "code", "field", "detail", "tag", "message", "info", "status"
+        {"code", "date", "detail", "field", "info", "message", "path", "severity", "status", "tag"
         })
 
 @XmlRootElement(name = "IExceptionCover")
 public class IExceptionCover {
 
-    @XmlElement(name = "date")
-    @ApiModelProperty(value = "")
-    private String date = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
-    @XmlElement(name = "path")
-    @ApiModelProperty(value = "")
-    private String path = null;
     @XmlElement(name = "code")
     @ApiModelProperty(value = "")
     private String code = null;
-    @XmlElement(name = "field")
+
+    @XmlElement(name = "date")
     @ApiModelProperty(value = "")
-    private String field = null;
+    private String date = null;
+
     @XmlElement(name = "detail")
     @ApiModelProperty(value = "")
     @Valid
     private List<IExceptionCover> detail = null;
-    @XmlElement(name = "tag")
+
+    @XmlElement(name = "field")
     @ApiModelProperty(value = "")
-    private String tag = null;
-    @XmlElement(name = "message")
-    @ApiModelProperty(value = "")
-    private String message = null;
+    private String field = null;
+
     @XmlElement(name = "info")
     @ApiModelProperty(value = "")
     @Valid
     private DiagnosticInfo info = null;
+
+    @XmlElement(name = "message")
+    @ApiModelProperty(value = "")
+    private String message = null;
+
+    @XmlElement(name = "path")
+    @ApiModelProperty(value = "")
+    private String path = null;
+    @XmlElement(name = "severity")
+    @ApiModelProperty(value = "")
+    private SeverityEnum severity = null;
+    @XmlElement(name = "tag")
+    @ApiModelProperty(value = "")
+    private String tag = null;
+
     @XmlElement(name = "status")
     @ApiModelProperty(value = "")
     private Integer status = null;
@@ -63,66 +70,6 @@ public class IExceptionCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get date
-     *
-     * @return date
-     **/
-    @JsonProperty("date")
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public IExceptionCover date(String date) {
-        this.date = date;
-        return this;
-    }
-
-    /**
-     * Get severity
-     *
-     * @return severity
-     **/
-    @JsonProperty("severity")
-    public String getSeverity() {
-        if (severity == null) {
-            return null;
-        }
-        return severity.value();
-    }
-
-    public void setSeverity(SeverityEnum severity) {
-        this.severity = severity;
-    }
-
-    public IExceptionCover severity(SeverityEnum severity) {
-        this.severity = severity;
-        return this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return path
-     **/
-    @JsonProperty("path")
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public IExceptionCover path(String path) {
-        this.path = path;
-        return this;
     }
 
     /**
@@ -145,21 +92,21 @@ public class IExceptionCover {
     }
 
     /**
-     * Get field
+     * Get date
      *
-     * @return field
+     * @return date
      **/
-    @JsonProperty("field")
-    public String getField() {
-        return field;
+    @JsonProperty("date")
+    public String getDate() {
+        return date;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public IExceptionCover field(String field) {
-        this.field = field;
+    public IExceptionCover date(String date) {
+        this.date = date;
         return this;
     }
 
@@ -188,40 +135,21 @@ public class IExceptionCover {
     }
 
     /**
-     * Get tag
+     * Get field
      *
-     * @return tag
+     * @return field
      **/
-    @JsonProperty("tag")
-    public String getTag() {
-        return tag;
+    @JsonProperty("field")
+    public String getField() {
+        return field;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setField(String field) {
+        this.field = field;
     }
 
-    public IExceptionCover tag(String tag) {
-        this.tag = tag;
-        return this;
-    }
-
-    /**
-     * Get message
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public IExceptionCover message(String message) {
-        this.message = message;
+    public IExceptionCover field(String field) {
+        this.field = field;
         return this;
     }
 
@@ -245,8 +173,66 @@ public class IExceptionCover {
     }
 
     /**
-     * Get status
+     * Get message
      *
+     * @return message
+     **/
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public IExceptionCover message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Get path
+     * @return path
+     **/
+    @JsonProperty("path")
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public IExceptionCover path(String path) {
+        this.path = path;
+        return this;
+    }
+
+    /**
+     * Get severity
+     *
+     * @return severity
+     **/
+    @JsonProperty("severity")
+    public String getSeverity() {
+        if (severity == null) {
+            return null;
+        }
+        return severity.value();
+    }
+
+    public void setSeverity(SeverityEnum severity) {
+        this.severity = severity;
+    }
+
+    public IExceptionCover severity(SeverityEnum severity) {
+        this.severity = severity;
+        return this;
+    }
+
+    /**
+     * Get status
      * @return status
      **/
     @JsonProperty("status")
@@ -263,21 +249,40 @@ public class IExceptionCover {
         return this;
     }
 
+    /**
+     * Get tag
+     *
+     * @return tag
+     **/
+    @JsonProperty("tag")
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public IExceptionCover tag(String tag) {
+        this.tag = tag;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class IExceptionCover {\n" +
-                "    date: " + toIndentedString(date) + "\n" +
-                "    severity: " + toIndentedString(severity) + "\n" +
-                "    path: " + toIndentedString(path) + "\n" +
                 "    code: " + toIndentedString(code) + "\n" +
-                "    field: " + toIndentedString(field) + "\n" +
+                "    date: " + toIndentedString(date) + "\n" +
                 "    detail: " + toIndentedString(detail) + "\n" +
-                "    tag: " + toIndentedString(tag) + "\n" +
-                "    message: " + toIndentedString(message) + "\n" +
+                "    field: " + toIndentedString(field) + "\n" +
                 "    info: " + toIndentedString(info) + "\n" +
+                "    message: " + toIndentedString(message) + "\n" +
+                "    path: " + toIndentedString(path) + "\n" +
+                "    severity: " + toIndentedString(severity) + "\n" +
                 "    status: " + toIndentedString(status) + "\n" +
+                "    tag: " + toIndentedString(tag) + "\n" +
                 "}";
         return sb;
     }

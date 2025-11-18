@@ -27,24 +27,24 @@ public interface ServicosParaOImportadorApi {
 
     /**
      * Serviço que retorna os dados para auxiliar o importador a preencher a lista de &#39;tributos&#39; no JSON do serviço para inclusão de itens na DUIMP. O retorno deste serviço contém os Fundamentos Legais de tipo de uso normal e teto que contenham atributos adicionais e todos os Fundamentos Legais de tipo de uso opcional (com ou sem atributos).
-     * <p>
+     *
      * Serviço que retorna os dados para auxiliar o importador a preencher a lista de &#39;tributos&#39; no JSON do serviço para inclusão de itens na DUIMP. O retorno deste serviço contém os Fundamentos Legais de tipo de uso normal e teto que contenham atributos adicionais e todos os Fundamentos Legais de tipo de uso opcional (com ou sem atributos).
      *
      */
     @POST
     @Path("/api/ext/tratamentos-tributarios/importacao/")
     @Consumes({"application/json"})
-    @Produces({"application/json", "*/*"})
+    @Produces({"*/*", "application/json"})
     @ApiOperation(value = "Serviço que retorna os dados para auxiliar o importador a preencher a lista de 'tributos' no JSON do serviço para inclusão de itens na DUIMP. O retorno deste serviço contém os Fundamentos Legais de tipo de uso normal e teto que contenham atributos adicionais e todos os Fundamentos Legais de tipo de uso opcional (com ou sem atributos).", notes = "Serviço que retorna os dados para auxiliar o importador a preencher a lista de 'tributos' no JSON do serviço para inclusão de itens na DUIMP. O retorno deste serviço contém os Fundamentos Legais de tipo de uso normal e teto que contenham atributos adicionais e todos os Fundamentos Legais de tipo de uso opcional (com ou sem atributos).", tags = {"Servicos para o importador"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RespostaObterTratamentosTributariosImportacaoDTO.class),
-            @ApiResponse(code = 400, message = "Requisição mal formatada", response = ExceptionCover.class),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCover.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class),
-            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCover.class),
             @ApiResponse(code = 204, message = "Operação realizada com sucesso. Nenhum conteúdo retornado"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso", response = ExceptionCover.class),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ExceptionCover.class),
+            @ApiResponse(code = 400, message = "Requisição mal formatada", response = ExceptionCover.class),
+            @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCover.class),
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RespostaObterTratamentosTributariosImportacaoDTO.class),
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCover.class)})
     RespostaObterTratamentosTributariosImportacaoDTO gerarJson(@ApiParam(value = "", required = true) @Valid ChamadaObterTratamentosTributariosImportacaoDTO body);
 }
 

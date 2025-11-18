@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IdentificadorItemDuimpCover", propOrder =
-        {"numero", "numeroItem", "versao"
+        {"numero", "versao", "numeroItem"
         })
 
 @XmlRootElement(name = "IdentificadorItemDuimpCover")
@@ -29,13 +29,6 @@ public class IdentificadorItemDuimpCover {
      **/
     private String numero = null;
 
-    @XmlElement(name = "numeroItem")
-    @ApiModelProperty(example = "1", value = "Número do item da Duimp.<br>Formato: Inteiro, com até 5 dígitos")
-    /**
-     * Número do item da Duimp.<br>Formato: Inteiro, com até 5 dígitos
-     **/
-    private Integer numeroItem = null;
-
     @XmlElement(name = "versao")
     @ApiModelProperty(example = "1", value = "Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999")
     /**
@@ -43,16 +36,12 @@ public class IdentificadorItemDuimpCover {
      **/
     private Integer versao = null;
 
+    @XmlElement(name = "numeroItem")
+    @ApiModelProperty(example = "1", value = "Número do item da Duimp.<br>Formato: Inteiro, com até 5 dígitos")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número do item da Duimp.<br>Formato: Inteiro, com até 5 dígitos
+     **/
+    private Integer numeroItem = null;
 
     /**
      * Número da Duimp.&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;AABRSSSSSSSSSSD&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* AA &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* BR &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* SSSSSSSSSS &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* D &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
@@ -70,25 +59,6 @@ public class IdentificadorItemDuimpCover {
 
     public IdentificadorItemDuimpCover numero(String numero) {
         this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Número do item da Duimp.&lt;br&gt;Formato: Inteiro, com até 5 dígitos
-     *
-     * @return numeroItem
-     **/
-    @JsonProperty("numeroItem")
-    public Integer getNumeroItem() {
-        return numeroItem;
-    }
-
-    public void setNumeroItem(Integer numeroItem) {
-        this.numeroItem = numeroItem;
-    }
-
-    public IdentificadorItemDuimpCover numeroItem(Integer numeroItem) {
-        this.numeroItem = numeroItem;
         return this;
     }
 
@@ -111,13 +81,43 @@ public class IdentificadorItemDuimpCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do item da Duimp.&lt;br&gt;Formato: Inteiro, com até 5 dígitos
+     *
+     * @return numeroItem
+     **/
+    @JsonProperty("numeroItem")
+    public Integer getNumeroItem() {
+        return numeroItem;
+    }
+
+    public void setNumeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
+    }
+
+    public IdentificadorItemDuimpCover numeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class IdentificadorItemDuimpCover {\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
-                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
                 "    versao: " + toIndentedString(versao) + "\n" +
+                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
                 "}";
         return sb;
     }

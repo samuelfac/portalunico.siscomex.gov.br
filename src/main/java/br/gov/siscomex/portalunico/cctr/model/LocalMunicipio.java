@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LocalMunicipio", propOrder =
-        {"cpfResponsavel", "cidade", "codigoURF", "cnpjResponsavel", "coordenadas", "codigoRA"
+        {"codigoURF", "coordenadas", "cnpjResponsavel", "cpfResponsavel", "codigoRA", "cidade"
         })
 
 @XmlRootElement(name = "LocalMunicipio")
@@ -24,26 +24,17 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Local incluindo o código do município")
 public class LocalMunicipio {
 
-    @XmlElement(name = "cpfResponsavel")
-    @ApiModelProperty(example = "00000000000", value = "CPF do responsável pelo local<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
-    /**
-     * CPF do responsável pelo local<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
-     **/
-    private String cpfResponsavel = null;
-
-    @XmlElement(name = "cidade", required = true)
-    @ApiModelProperty(example = "1234", required = true, value = "Código do Município<br>Tamanho: 4<br>Formato: NNNN")
-    /**
-     * Código do Município<br>Tamanho: 4<br>Formato: NNNN
-     **/
-    private Integer cidade = null;
-
     @XmlElement(name = "codigoURF", required = true)
     @ApiModelProperty(example = "0717700", required = true, value = "Código da Unidade de Região Fiscal<br>Tamanho: 7<br>Formato: NNNNNNN")
     /**
      * Código da Unidade de Região Fiscal<br>Tamanho: 7<br>Formato: NNNNNNN
      **/
     private String codigoURF = null;
+
+    @XmlElement(name = "coordenadas")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Coordenadas coordenadas = null;
 
     @XmlElement(name = "cnpjResponsavel")
     @ApiModelProperty(example = "15573459000106", value = "Cnpj do responsável pelo local<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Deve ser informado somente quando codigoRA não for informado.")
@@ -52,10 +43,12 @@ public class LocalMunicipio {
      **/
     private String cnpjResponsavel = null;
 
-    @XmlElement(name = "coordenadas")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Coordenadas coordenadas = null;
+    @XmlElement(name = "cpfResponsavel")
+    @ApiModelProperty(example = "00000000000", value = "CPF do responsável pelo local<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
+    /**
+     * CPF do responsável pelo local<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
+     **/
+    private String cpfResponsavel = null;
 
     @XmlElement(name = "codigoRA")
     @ApiModelProperty(example = "8911101", value = "Código do Recinto Alfandegado<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.<br>Deve ser informado somente quando o atributo coordenadas não for informado.")
@@ -63,6 +56,33 @@ public class LocalMunicipio {
      * Código do Recinto Alfandegado<br>Tamanho: 7<br>Formato: NNNNNNN<br>Domínio: Tabela de Recintos Alfandegados.<br>Deve ser informado somente quando o atributo coordenadas não for informado.
      **/
     private String codigoRA = null;
+
+    @XmlElement(name = "cidade", required = true)
+    @ApiModelProperty(example = "1234", required = true, value = "Código do Município<br>Tamanho: 4<br>Formato: NNNN")
+    /**
+     * Código do Município<br>Tamanho: 4<br>Formato: NNNN
+     **/
+    private Integer cidade = null;
+
+    /**
+     * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
+     *
+     * @return codigoURF
+     **/
+    @JsonProperty("codigoURF")
+    @NotNull
+    public String getCodigoURF() {
+        return codigoURF;
+    }
+
+    public void setCodigoURF(String codigoURF) {
+        this.codigoURF = codigoURF;
+    }
+
+    public LocalMunicipio codigoURF(String codigoURF) {
+        this.codigoURF = codigoURF;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -73,6 +93,44 @@ public class LocalMunicipio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get coordenadas
+     *
+     * @return coordenadas
+     **/
+    @JsonProperty("coordenadas")
+    public Coordenadas getCoordenadas() {
+        return coordenadas;
+    }
+
+    public void setCoordenadas(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
+    }
+
+    /**
+     * Cnpj do responsável pelo local&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando codigoRA não for informado.
+     *
+     * @return cnpjResponsavel
+     **/
+    @JsonProperty("cnpjResponsavel")
+    public String getCnpjResponsavel() {
+        return cnpjResponsavel;
+    }
+
+    public void setCnpjResponsavel(String cnpjResponsavel) {
+        this.cnpjResponsavel = cnpjResponsavel;
+    }
+
+    public LocalMunicipio cnpjResponsavel(String cnpjResponsavel) {
+        this.cnpjResponsavel = cnpjResponsavel;
+        return this;
+    }
+
+    public LocalMunicipio coordenadas(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
+        return this;
     }
 
     /**
@@ -87,6 +145,25 @@ public class LocalMunicipio {
 
     public void setCpfResponsavel(String cpfResponsavel) {
         this.cpfResponsavel = cpfResponsavel;
+    }
+
+    /**
+     * Código do Recinto Alfandegado&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Recintos Alfandegados.&lt;br&gt;Deve ser informado somente quando o atributo coordenadas não for informado.
+     *
+     * @return codigoRA
+     **/
+    @JsonProperty("codigoRA")
+    public String getCodigoRA() {
+        return codigoRA;
+    }
+
+    public void setCodigoRA(String codigoRA) {
+        this.codigoRA = codigoRA;
+    }
+
+    public LocalMunicipio codigoRA(String codigoRA) {
+        this.codigoRA = codigoRA;
+        return this;
     }
 
     public LocalMunicipio cpfResponsavel(String cpfResponsavel) {
@@ -114,93 +191,16 @@ public class LocalMunicipio {
         return this;
     }
 
-    /**
-     * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN
-     *
-     * @return codigoURF
-     **/
-    @JsonProperty("codigoURF")
-    @NotNull
-    public String getCodigoURF() {
-        return codigoURF;
-    }
-
-    public void setCodigoURF(String codigoURF) {
-        this.codigoURF = codigoURF;
-    }
-
-    public LocalMunicipio codigoURF(String codigoURF) {
-        this.codigoURF = codigoURF;
-        return this;
-    }
-
-    /**
-     * Cnpj do responsável pelo local&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando codigoRA não for informado.
-     *
-     * @return cnpjResponsavel
-     **/
-    @JsonProperty("cnpjResponsavel")
-    public String getCnpjResponsavel() {
-        return cnpjResponsavel;
-    }
-
-    public void setCnpjResponsavel(String cnpjResponsavel) {
-        this.cnpjResponsavel = cnpjResponsavel;
-    }
-
-    public LocalMunicipio cnpjResponsavel(String cnpjResponsavel) {
-        this.cnpjResponsavel = cnpjResponsavel;
-        return this;
-    }
-
-    /**
-     * Get coordenadas
-     *
-     * @return coordenadas
-     **/
-    @JsonProperty("coordenadas")
-    public Coordenadas getCoordenadas() {
-        return coordenadas;
-    }
-
-    public void setCoordenadas(Coordenadas coordenadas) {
-        this.coordenadas = coordenadas;
-    }
-
-    public LocalMunicipio coordenadas(Coordenadas coordenadas) {
-        this.coordenadas = coordenadas;
-        return this;
-    }
-
-    /**
-     * Código do Recinto Alfandegado&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Recintos Alfandegados.&lt;br&gt;Deve ser informado somente quando o atributo coordenadas não for informado.
-     *
-     * @return codigoRA
-     **/
-    @JsonProperty("codigoRA")
-    public String getCodigoRA() {
-        return codigoRA;
-    }
-
-    public void setCodigoRA(String codigoRA) {
-        this.codigoRA = codigoRA;
-    }
-
-    public LocalMunicipio codigoRA(String codigoRA) {
-        this.codigoRA = codigoRA;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class LocalMunicipio {\n" +
-                "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
-                "    cidade: " + toIndentedString(cidade) + "\n" +
                 "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
-                "    cnpjResponsavel: " + toIndentedString(cnpjResponsavel) + "\n" +
                 "    coordenadas: " + toIndentedString(coordenadas) + "\n" +
+                "    cnpjResponsavel: " + toIndentedString(cnpjResponsavel) + "\n" +
+                "    cpfResponsavel: " + toIndentedString(cpfResponsavel) + "\n" +
                 "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
+                "    cidade: " + toIndentedString(cidade) + "\n" +
                 "}";
         return sb;
     }

@@ -17,7 +17,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RemessaDaSolicitaoDarf", propOrder =
-        {"bases", "valorJurosOficio", "numeroRemessa", "valorJurosMora", "valorMultaMora", "impostoImportacao"
+        {"bases", "impostoImportacao", "numeroRemessa", "valorJurosMora", "valorJurosOficio", "valorMultaMora"
         })
 
 @XmlRootElement(name = "RemessaDaSolicitaoDarf")
@@ -31,13 +31,12 @@ public class RemessaDaSolicitaoDarf {
      **/
     private List<BaseLegalDaSolicitacaoDarf> bases = null;
 
-    @XmlElement(name = "valorJurosOficio")
-    @ApiModelProperty(value = "Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
+    @XmlElement(name = "impostoImportacao", required = true)
+    @ApiModelProperty(required = true, value = "Indicação que se deseja pagar o II<br/>Domínio:<br/>S - Sim;<br/>N - Não.")
     /**
-     * Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     * Indicação que se deseja pagar o II<br/>Domínio:<br/>S - Sim;<br/>N - Não.
      **/
-    private BigDecimal valorJurosOficio = null;
+    private String impostoImportacao = null;
 
     @XmlElement(name = "numeroRemessa", required = true)
     @ApiModelProperty(example = "1059756472772322", required = true, value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
@@ -54,6 +53,14 @@ public class RemessaDaSolicitaoDarf {
      **/
     private BigDecimal valorJurosMora = null;
 
+    @XmlElement(name = "valorJurosOficio")
+    @ApiModelProperty(value = "Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
+    /**
+     * Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     **/
+    private BigDecimal valorJurosOficio = null;
+
     @XmlElement(name = "valorMultaMora")
     @ApiModelProperty(value = "Valor de multa de mora para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.")
     @Valid
@@ -61,24 +68,6 @@ public class RemessaDaSolicitaoDarf {
      * Valor de multa de mora para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      **/
     private BigDecimal valorMultaMora = null;
-
-    @XmlElement(name = "impostoImportacao", required = true)
-    @ApiModelProperty(required = true, value = "Indicação que se deseja pagar o II<br/>Domínio:<br/>S - Sim;<br/>N - Não.")
-    /**
-     * Indicação que se deseja pagar o II<br/>Domínio:<br/>S - Sim;<br/>N - Não.
-     **/
-    private String impostoImportacao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Lista de bases legais.
@@ -105,24 +94,29 @@ public class RemessaDaSolicitaoDarf {
     }
 
     /**
-     * Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
-     * minimum: 0
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Indicação que se deseja pagar o II&lt;br/&gt;Domínio:&lt;br/&gt;S - Sim;&lt;br/&gt;N - Não.
      *
-     * @return valorJurosOficio
+     * @return impostoImportacao
      **/
-    @JsonProperty("valorJurosOficio")
-    @DecimalMin("0")
-    public BigDecimal getValorJurosOficio() {
-        return valorJurosOficio;
+    @JsonProperty("impostoImportacao")
+    @NotNull
+    public String getImpostoImportacao() {
+        return impostoImportacao;
     }
 
-    public void setValorJurosOficio(BigDecimal valorJurosOficio) {
-        this.valorJurosOficio = valorJurosOficio;
-    }
-
-    public RemessaDaSolicitaoDarf valorJurosOficio(BigDecimal valorJurosOficio) {
-        this.valorJurosOficio = valorJurosOficio;
-        return this;
+    public void setImpostoImportacao(String impostoImportacao) {
+        this.impostoImportacao = impostoImportacao;
     }
 
     /**
@@ -167,6 +161,27 @@ public class RemessaDaSolicitaoDarf {
         return this;
     }
 
+    public RemessaDaSolicitaoDarf impostoImportacao(String impostoImportacao) {
+        this.impostoImportacao = impostoImportacao;
+        return this;
+    }
+
+    /**
+     * Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
+     * minimum: 0
+     *
+     * @return valorJurosOficio
+     **/
+    @JsonProperty("valorJurosOficio")
+    @DecimalMin("0")
+    public BigDecimal getValorJurosOficio() {
+        return valorJurosOficio;
+    }
+
+    public void setValorJurosOficio(BigDecimal valorJurosOficio) {
+        this.valorJurosOficio = valorJurosOficio;
+    }
+
     /**
      * Valor de multa de mora para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      * minimum: 0
@@ -188,23 +203,8 @@ public class RemessaDaSolicitaoDarf {
         return this;
     }
 
-    /**
-     * Indicação que se deseja pagar o II&lt;br/&gt;Domínio:&lt;br/&gt;S - Sim;&lt;br/&gt;N - Não.
-     *
-     * @return impostoImportacao
-     **/
-    @JsonProperty("impostoImportacao")
-    @NotNull
-    public String getImpostoImportacao() {
-        return impostoImportacao;
-    }
-
-    public void setImpostoImportacao(String impostoImportacao) {
-        this.impostoImportacao = impostoImportacao;
-    }
-
-    public RemessaDaSolicitaoDarf impostoImportacao(String impostoImportacao) {
-        this.impostoImportacao = impostoImportacao;
+    public RemessaDaSolicitaoDarf valorJurosOficio(BigDecimal valorJurosOficio) {
+        this.valorJurosOficio = valorJurosOficio;
         return this;
     }
 
@@ -213,11 +213,11 @@ public class RemessaDaSolicitaoDarf {
 
         String sb = "class RemessaDaSolicitaoDarf {\n" +
                 "    bases: " + toIndentedString(bases) + "\n" +
-                "    valorJurosOficio: " + toIndentedString(valorJurosOficio) + "\n" +
+                "    impostoImportacao: " + toIndentedString(impostoImportacao) + "\n" +
                 "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
                 "    valorJurosMora: " + toIndentedString(valorJurosMora) + "\n" +
+                "    valorJurosOficio: " + toIndentedString(valorJurosOficio) + "\n" +
                 "    valorMultaMora: " + toIndentedString(valorMultaMora) + "\n" +
-                "    impostoImportacao: " + toIndentedString(impostoImportacao) + "\n" +
                 "}";
         return sb;
     }

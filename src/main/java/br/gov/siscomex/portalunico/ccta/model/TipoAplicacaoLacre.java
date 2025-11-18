@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoAplicacaoLacre {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "VEIC", value = "Aplicação dos lacres")
-    /**
-     * Aplicação dos lacres
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Veículo", value = "Descrição do tipo de paplicação de lacres")
-    /**
-     * Descrição do tipo de paplicação de lacres
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoAplicacaoLacre {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "VEIC", value = "Aplicação dos lacres")
+    /**
+     * Aplicação dos lacres
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Veículo", value = "Descrição do tipo de paplicação de lacres")
+    /**
+     * Descrição do tipo de paplicação de lacres
+     **/
+    private String descricao = null;
 
     /**
      * Aplicação dos lacres
@@ -84,7 +85,6 @@ public class TipoAplicacaoLacre {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

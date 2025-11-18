@@ -12,11 +12,16 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TransportadorRodoviarioNacBrasileira", propOrder =
-        {"endereco", "numeroLicencaOriginaria", "cnpj", "tipoTransporte"
+        {"cnpj", "endereco", "numeroLicencaOriginaria", "tipoTransporte"
         })
 
 @XmlRootElement(name = "TransportadorRodoviarioNacBrasileira")
 public class TransportadorRodoviarioNacBrasileira {
+
+    @XmlElement(name = "cnpj")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CnpjCPf cnpj = null;
 
     @XmlElement(name = "endereco")
     @ApiModelProperty(value = "")
@@ -29,11 +34,6 @@ public class TransportadorRodoviarioNacBrasileira {
      * Licença originária do proprietário do veículo<br/>campo obrigatório se tipoTransporte é REG ou OCA.<br/> Tamanho Máximo: 6
      **/
     private Integer numeroLicencaOriginaria = null;
-
-    @XmlElement(name = "cnpj")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CnpjCPf cnpj = null;
 
     @XmlElement(name = "tipoTransporte")
     @ApiModelProperty(value = "")
@@ -49,6 +49,20 @@ public class TransportadorRodoviarioNacBrasileira {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get cnpj
+     *
+     * @return cnpj
+     **/
+    @JsonProperty("cnpj")
+    public CnpjCPf getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(CnpjCPf cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -90,25 +104,6 @@ public class TransportadorRodoviarioNacBrasileira {
     }
 
     /**
-     * Get cnpj
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    public CnpjCPf getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(CnpjCPf cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public TransportadorRodoviarioNacBrasileira cnpj(CnpjCPf cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
-    /**
      * Get tipoTransporte
      *
      * @return tipoTransporte
@@ -127,13 +122,18 @@ public class TransportadorRodoviarioNacBrasileira {
         return this;
     }
 
+    public TransportadorRodoviarioNacBrasileira cnpj(CnpjCPf cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class TransportadorRodoviarioNacBrasileira {\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    endereco: " + toIndentedString(endereco) + "\n" +
                 "    numeroLicencaOriginaria: " + toIndentedString(numeroLicencaOriginaria) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    tipoTransporte: " + toIndentedString(tipoTransporte) + "\n" +
                 "}";
         return sb;

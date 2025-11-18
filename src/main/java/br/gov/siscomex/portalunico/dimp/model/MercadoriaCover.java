@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MercadoriaCover", propOrder =
-        {"valorUnitarioMoedaNegociada", "condicao", "quantidadeComercial", "moedaNegociada", "tipoAplicacao", "unidadeComercial", "quantidadeMedidaEstatistica", "pesoLiquido", "descricao"
+        {"tipoAplicacao", "condicao", "unidadeComercial", "quantidadeComercial", "quantidadeMedidaEstatistica", "pesoLiquido", "moedaNegociada", "valorUnitarioMoedaNegociada", "descricao"
         })
 
 @XmlRootElement(name = "MercadoriaCover")
@@ -26,28 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados da Mercadoria.")
 public class MercadoriaCover {
 
-    @XmlElement(name = "valorUnitarioMoedaNegociada", required = true)
-    @ApiModelProperty(example = "10", required = true, value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private String valorUnitarioMoedaNegociada = null;
-    @XmlElement(name = "condicao", required = true)
-    @ApiModelProperty(example = "NOVA", required = true, value = "Indica se a mercadoria é nova ou usada.<br>Domínio:")
-    /**
-     * Indica se a mercadoria é nova ou usada.<br>Domínio:
-     **/
-    private CondicaoEnum condicao = null;
-    @XmlElement(name = "quantidadeComercial", required = true)
-    @ApiModelProperty(example = "100.5", required = true, value = "Quantidade da mercadoria na unidade de medida comercial.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    /**
-     * Quantidade da mercadoria na unidade de medida comercial.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private String quantidadeComercial = null;
-    @XmlElement(name = "moedaNegociada", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private MoedaNegociadaCover moedaNegociada = null;
     @XmlElement(name = "tipoAplicacao", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
@@ -58,24 +36,44 @@ public class MercadoriaCover {
      * Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
      **/
     private String unidadeComercial = null;
+
+    @XmlElement(name = "condicao", required = true)
+    @ApiModelProperty(example = "NOVA", required = true, value = "Indica se a mercadoria é nova ou usada.<br>Domínio:")
+    /**
+     * Indica se a mercadoria é nova ou usada.<br>Domínio:
+     **/
+    private CondicaoEnum condicao = null;
+    @XmlElement(name = "moedaNegociada", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private MoedaNegociadaCover moedaNegociada = null;
+
+    @XmlElement(name = "quantidadeComercial", required = true)
+    @ApiModelProperty(example = "100.5", required = true, value = "Quantidade da mercadoria na unidade de medida comercial.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    /**
+     * Quantidade da mercadoria na unidade de medida comercial.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private String quantidadeComercial = null;
+
     @XmlElement(name = "quantidadeMedidaEstatistica", required = true)
     @ApiModelProperty(example = "12.12345", required = true, value = "Quantidade na unidade de medida estatística associada à NCM do produto.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     /**
      * Quantidade na unidade de medida estatística associada à NCM do produto.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private String quantidadeMedidaEstatistica = null;
+
     @XmlElement(name = "pesoLiquido", required = true)
     @ApiModelProperty(example = "100", required = true, value = "Peso líquido, em quilogramas, que corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     /**
      * Peso líquido, em quilogramas, que corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private String pesoLiquido = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Texto de exemplo.", value = "Descrição complementar da mercadoria.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
+    @XmlElement(name = "valorUnitarioMoedaNegociada", required = true)
+    @ApiModelProperty(example = "10", required = true, value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     /**
-     * Descrição complementar da mercadoria.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
+     * Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
-    private String descricao = null;
+    private String valorUnitarioMoedaNegociada = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -88,23 +86,30 @@ public class MercadoriaCover {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Texto de exemplo.", value = "Descrição complementar da mercadoria.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
     /**
-     * Valor unitário da mercadoria na condição de venda.&lt;br&gt;Tamanho: 13,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
-     * @return valorUnitarioMoedaNegociada
+     * Descrição complementar da mercadoria.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
      **/
-    @JsonProperty("valorUnitarioMoedaNegociada")
+    private String descricao = null;
+
+    /**
+     * Get tipoAplicacao
+     *
+     * @return tipoAplicacao
+     **/
+    @JsonProperty("tipoAplicacao")
     @NotNull
-    public String getValorUnitarioMoedaNegociada() {
-        return valorUnitarioMoedaNegociada;
+    public TipoAplicacaoCover getTipoAplicacao() {
+        return tipoAplicacao;
     }
 
-    public void setValorUnitarioMoedaNegociada(String valorUnitarioMoedaNegociada) {
-        this.valorUnitarioMoedaNegociada = valorUnitarioMoedaNegociada;
+    public void setTipoAplicacao(TipoAplicacaoCover tipoAplicacao) {
+        this.tipoAplicacao = tipoAplicacao;
     }
 
-    public MercadoriaCover valorUnitarioMoedaNegociada(String valorUnitarioMoedaNegociada) {
-        this.valorUnitarioMoedaNegociada = valorUnitarioMoedaNegociada;
+    public MercadoriaCover tipoAplicacao(TipoAplicacaoCover tipoAplicacao) {
+        this.tipoAplicacao = tipoAplicacao;
         return this;
     }
 
@@ -132,66 +137,6 @@ public class MercadoriaCover {
     }
 
     /**
-     * Quantidade da mercadoria na unidade de medida comercial.&lt;br&gt;Tamanho: 9,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return quantidadeComercial
-     **/
-    @JsonProperty("quantidadeComercial")
-    @NotNull
-    public String getQuantidadeComercial() {
-        return quantidadeComercial;
-    }
-
-    public void setQuantidadeComercial(String quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
-    }
-
-    public MercadoriaCover quantidadeComercial(String quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
-        return this;
-    }
-
-    /**
-     * Get moedaNegociada
-     *
-     * @return moedaNegociada
-     **/
-    @JsonProperty("moedaNegociada")
-    @NotNull
-    public MoedaNegociadaCover getMoedaNegociada() {
-        return moedaNegociada;
-    }
-
-    public void setMoedaNegociada(MoedaNegociadaCover moedaNegociada) {
-        this.moedaNegociada = moedaNegociada;
-    }
-
-    public MercadoriaCover moedaNegociada(MoedaNegociadaCover moedaNegociada) {
-        this.moedaNegociada = moedaNegociada;
-        return this;
-    }
-
-    /**
-     * Get tipoAplicacao
-     *
-     * @return tipoAplicacao
-     **/
-    @JsonProperty("tipoAplicacao")
-    @NotNull
-    public TipoAplicacaoCover getTipoAplicacao() {
-        return tipoAplicacao;
-    }
-
-    public void setTipoAplicacao(TipoAplicacaoCover tipoAplicacao) {
-        this.tipoAplicacao = tipoAplicacao;
-    }
-
-    public MercadoriaCover tipoAplicacao(TipoAplicacaoCover tipoAplicacao) {
-        this.tipoAplicacao = tipoAplicacao;
-        return this;
-    }
-
-    /**
      * Unidade de medida utilizada na comercialização da mercadoria.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
      *
      * @return unidadeComercial
@@ -208,6 +153,26 @@ public class MercadoriaCover {
 
     public MercadoriaCover unidadeComercial(String unidadeComercial) {
         this.unidadeComercial = unidadeComercial;
+        return this;
+    }
+
+    /**
+     * Quantidade da mercadoria na unidade de medida comercial.&lt;br&gt;Tamanho: 9,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     *
+     * @return quantidadeComercial
+     **/
+    @JsonProperty("quantidadeComercial")
+    @NotNull
+    public String getQuantidadeComercial() {
+        return quantidadeComercial;
+    }
+
+    public void setQuantidadeComercial(String quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
+    }
+
+    public MercadoriaCover quantidadeComercial(String quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
         return this;
     }
 
@@ -252,8 +217,47 @@ public class MercadoriaCover {
     }
 
     /**
-     * Descrição complementar da mercadoria.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 4000
+     * Get moedaNegociada
      *
+     * @return moedaNegociada
+     **/
+    @JsonProperty("moedaNegociada")
+    @NotNull
+    public MoedaNegociadaCover getMoedaNegociada() {
+        return moedaNegociada;
+    }
+
+    public void setMoedaNegociada(MoedaNegociadaCover moedaNegociada) {
+        this.moedaNegociada = moedaNegociada;
+    }
+
+    public MercadoriaCover moedaNegociada(MoedaNegociadaCover moedaNegociada) {
+        this.moedaNegociada = moedaNegociada;
+        return this;
+    }
+
+    /**
+     * Valor unitário da mercadoria na condição de venda.&lt;br&gt;Tamanho: 13,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     *
+     * @return valorUnitarioMoedaNegociada
+     **/
+    @JsonProperty("valorUnitarioMoedaNegociada")
+    @NotNull
+    public String getValorUnitarioMoedaNegociada() {
+        return valorUnitarioMoedaNegociada;
+    }
+
+    public void setValorUnitarioMoedaNegociada(String valorUnitarioMoedaNegociada) {
+        this.valorUnitarioMoedaNegociada = valorUnitarioMoedaNegociada;
+    }
+
+    public MercadoriaCover valorUnitarioMoedaNegociada(String valorUnitarioMoedaNegociada) {
+        this.valorUnitarioMoedaNegociada = valorUnitarioMoedaNegociada;
+        return this;
+    }
+
+    /**
+     * Descrição complementar da mercadoria.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 4000
      * @return descricao
      **/
     @JsonProperty("descricao")
@@ -275,14 +279,14 @@ public class MercadoriaCover {
     public String toString() {
 
         String sb = "class MercadoriaCover {\n" +
-                "    valorUnitarioMoedaNegociada: " + toIndentedString(valorUnitarioMoedaNegociada) + "\n" +
-                "    condicao: " + toIndentedString(condicao) + "\n" +
-                "    quantidadeComercial: " + toIndentedString(quantidadeComercial) + "\n" +
-                "    moedaNegociada: " + toIndentedString(moedaNegociada) + "\n" +
                 "    tipoAplicacao: " + toIndentedString(tipoAplicacao) + "\n" +
+                "    condicao: " + toIndentedString(condicao) + "\n" +
                 "    unidadeComercial: " + toIndentedString(unidadeComercial) + "\n" +
+                "    quantidadeComercial: " + toIndentedString(quantidadeComercial) + "\n" +
                 "    quantidadeMedidaEstatistica: " + toIndentedString(quantidadeMedidaEstatistica) + "\n" +
                 "    pesoLiquido: " + toIndentedString(pesoLiquido) + "\n" +
+                "    moedaNegociada: " + toIndentedString(moedaNegociada) + "\n" +
+                "    valorUnitarioMoedaNegociada: " + toIndentedString(valorUnitarioMoedaNegociada) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
                 "}";
         return sb;

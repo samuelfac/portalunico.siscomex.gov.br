@@ -38,17 +38,6 @@ public class VeiculoFerroviario {
     private Integer quantidadeVagoes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação do trem&lt;br&gt;Tamanho: 15
      *
      * @return prefixoTrem
@@ -86,6 +75,18 @@ public class VeiculoFerroviario {
     public VeiculoFerroviario quantidadeVagoes(Integer quantidadeVagoes) {
         this.quantidadeVagoes = quantidadeVagoes;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

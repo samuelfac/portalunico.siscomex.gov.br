@@ -25,7 +25,7 @@ public interface RecepcaoPorDocumentoDeTransporteApi {
 
     /**
      * Recepcionar Documento de Transporte
-     * <p>
+     *
      * &lt;p&gt;&lt;a rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;../../pages/exemplos/cctr/recepcao-documento-transporte/\&quot;&gt;Exemplos de Recepções de Documentos de Transporte&lt;/a&gt;&lt;br&gt;&lt;br&gt;&lt;a href&#x3D;\&quot;../../pages/exemplos/cctr/xsd-cct-exp.zip\&quot;&gt;XSD para download&lt;/a&gt;&lt;/p&gt;
      *
      */
@@ -36,11 +36,11 @@ public interface RecepcaoPorDocumentoDeTransporteApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Operação realizada com sucesso"),
             @ApiResponse(code = 400, message = "XML não atende as especificações definidas no XSD (requisições com envio de arquivos xml)"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     void recepcionarDocumentoTransporteAsync(@ApiParam(value = "", required = true) @Valid RecepcoesDocumentoTransporte body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

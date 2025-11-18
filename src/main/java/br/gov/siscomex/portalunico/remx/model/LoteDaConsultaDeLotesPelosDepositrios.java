@@ -12,18 +12,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "LoteDaConsultaDeLotesPelosDepositrios", propOrder =
-        {"numeroLote", "listaNumeroRemessa", "uaDespacho", "operadora", "qtdRemessas"
+        {"listaNumeroRemessa", "numeroLote", "operadora", "qtdRemessas", "uaDespacho"
         })
 
 @XmlRootElement(name = "LoteDaConsultaDeLotesPelosDepositrios")
 public class LoteDaConsultaDeLotesPelosDepositrios {
-
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     **/
-    private String numeroLote = null;
 
     @XmlElement(name = "listaNumeroRemessa")
     @ApiModelProperty(value = "Lista de números de remessas. Cada item da lista contém: <br/>Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
@@ -32,12 +25,12 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
      **/
     private List<String> listaNumeroRemessa = null;
 
-    @XmlElement(name = "uaDespacho")
-    @ApiModelProperty(value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.")
+    @XmlElement(name = "numeroLote")
+    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
     /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
      **/
-    private String uaDespacho = null;
+    private String numeroLote = null;
 
     @XmlElement(name = "operadora")
     @ApiModelProperty(value = "Código da empresa operadora de remessa (mneumônico). Composto por 3 caracteres alfanuméricos. Valores de acordo com a tabela de domínio.")
@@ -53,35 +46,12 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
      **/
     private Integer qtdRemessas = null;
 
+    @XmlElement(name = "uaDespacho")
+    @ApiModelProperty(value = "Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     *
-     * @return numeroLote
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
      **/
-    @JsonProperty("numeroLote")
-    public String getNumeroLote() {
-        return numeroLote;
-    }
-
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-    }
-
-    public LoteDaConsultaDeLotesPelosDepositrios numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
+    private String uaDespacho = null;
 
     /**
      * Lista de números de remessas. Cada item da lista contém: &lt;br/&gt;Número da remessa composto por no máximo 18 caracteres alfanuméricos.
@@ -108,22 +78,28 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
     }
 
     /**
-     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
      *
-     * @return uaDespacho
+     * @return numeroLote
      **/
-    @JsonProperty("uaDespacho")
-    public String getUaDespacho() {
-        return uaDespacho;
+    @JsonProperty("numeroLote")
+    public String getNumeroLote() {
+        return numeroLote;
     }
 
-    public void setUaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-    }
-
-    public LoteDaConsultaDeLotesPelosDepositrios uaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-        return this;
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
     }
 
     /**
@@ -164,15 +140,39 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
         return this;
     }
 
+    public LoteDaConsultaDeLotesPelosDepositrios numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
+    }
+
+    /**
+     * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
+     *
+     * @return uaDespacho
+     **/
+    @JsonProperty("uaDespacho")
+    public String getUaDespacho() {
+        return uaDespacho;
+    }
+
+    public void setUaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+    }
+
+    public LoteDaConsultaDeLotesPelosDepositrios uaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class LoteDaConsultaDeLotesPelosDepositrios {\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    listaNumeroRemessa: " + toIndentedString(listaNumeroRemessa) + "\n" +
-                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    operadora: " + toIndentedString(operadora) + "\n" +
                 "    qtdRemessas: " + toIndentedString(qtdRemessas) + "\n" +
+                "    uaDespacho: " + toIndentedString(uaDespacho) + "\n" +
                 "}";
         return sb;
     }

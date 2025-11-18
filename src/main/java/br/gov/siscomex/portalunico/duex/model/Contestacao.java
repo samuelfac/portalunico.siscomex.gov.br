@@ -14,19 +14,11 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Contestacao", propOrder =
-        {"valorContestado", "dataDoRegistro", "numeroDoProcesso"
+        {"dataDoRegistro", "numeroDoProcesso", "valorContestado"
         })
 
 @XmlRootElement(name = "Contestacao")
 public class Contestacao {
-
-    @XmlElement(name = "valorContestado")
-    @ApiModelProperty(value = "Valor contestado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor contestado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorContestado = null;
 
     @XmlElement(name = "dataDoRegistro")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data do Registro<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -42,35 +34,13 @@ public class Contestacao {
      **/
     private String numeroDoProcesso = null;
 
+    @XmlElement(name = "valorContestado")
+    @ApiModelProperty(value = "Valor contestado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Valor contestado&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorContestado
+     * Valor contestado<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    @JsonProperty("valorContestado")
-    public BigDecimal getValorContestado() {
-        return valorContestado;
-    }
-
-    public void setValorContestado(BigDecimal valorContestado) {
-        this.valorContestado = valorContestado;
-    }
-
-    public Contestacao valorContestado(BigDecimal valorContestado) {
-        this.valorContestado = valorContestado;
-        return this;
-    }
+    private BigDecimal valorContestado = null;
 
     /**
      * Data do Registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
@@ -110,13 +80,43 @@ public class Contestacao {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Valor contestado&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorContestado
+     **/
+    @JsonProperty("valorContestado")
+    public BigDecimal getValorContestado() {
+        return valorContestado;
+    }
+
+    public void setValorContestado(BigDecimal valorContestado) {
+        this.valorContestado = valorContestado;
+    }
+
+    public Contestacao valorContestado(BigDecimal valorContestado) {
+        this.valorContestado = valorContestado;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Contestacao {\n" +
-                "    valorContestado: " + toIndentedString(valorContestado) + "\n" +
                 "    dataDoRegistro: " + toIndentedString(dataDoRegistro) + "\n" +
                 "    numeroDoProcesso: " + toIndentedString(numeroDoProcesso) + "\n" +
+                "    valorContestado: " + toIndentedString(valorContestado) + "\n" +
                 "}";
         return sb;
     }

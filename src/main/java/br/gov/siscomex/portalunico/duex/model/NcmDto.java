@@ -11,18 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "NcmDto", propOrder =
-        {"unidadeMedidaEstatistica", "codigo", "descricao"
+        {"codigo", "descricao", "unidadeMedidaEstatistica"
         })
 
 @XmlRootElement(name = "NcmDto")
 public class NcmDto {
-
-    @XmlElement(name = "unidadeMedidaEstatistica")
-    @ApiModelProperty(example = "KG", value = "Unidade de Medida Estatística<br />Tamanho: 2<br />Formato: 'AA'")
-    /**
-     * Unidade de Medida Estatística<br />Tamanho: 2<br />Formato: 'AA'
-     **/
-    private String unidadeMedidaEstatistica = null;
 
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "01013000", value = "Código<br />Tamanho: 8<br />Formato: 'NNNNNNNN'")
@@ -38,35 +31,12 @@ public class NcmDto {
      **/
     private String descricao = null;
 
+    @XmlElement(name = "unidadeMedidaEstatistica")
+    @ApiModelProperty(example = "KG", value = "Unidade de Medida Estatística<br />Tamanho: 2<br />Formato: 'AA'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Unidade de Medida Estatística&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;AA&#39;
-     *
-     * @return unidadeMedidaEstatistica
+     * Unidade de Medida Estatística<br />Tamanho: 2<br />Formato: 'AA'
      **/
-    @JsonProperty("unidadeMedidaEstatistica")
-    public String getUnidadeMedidaEstatistica() {
-        return unidadeMedidaEstatistica;
-    }
-
-    public void setUnidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
-        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
-    }
-
-    public NcmDto unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
-        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
-        return this;
-    }
+    private String unidadeMedidaEstatistica = null;
 
     /**
      * Código&lt;br /&gt;Tamanho: 8&lt;br /&gt;Formato: &#39;NNNNNNNN&#39;
@@ -106,13 +76,43 @@ public class NcmDto {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Unidade de Medida Estatística&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;AA&#39;
+     *
+     * @return unidadeMedidaEstatistica
+     **/
+    @JsonProperty("unidadeMedidaEstatistica")
+    public String getUnidadeMedidaEstatistica() {
+        return unidadeMedidaEstatistica;
+    }
+
+    public void setUnidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
+        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
+    }
+
+    public NcmDto unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
+        this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class NcmDto {\n" +
-                "    unidadeMedidaEstatistica: " + toIndentedString(unidadeMedidaEstatistica) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    unidadeMedidaEstatistica: " + toIndentedString(unidadeMedidaEstatistica) + "\n" +
                 "}";
         return sb;
     }

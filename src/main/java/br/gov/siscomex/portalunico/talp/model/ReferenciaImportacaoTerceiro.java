@@ -38,17 +38,6 @@ public class ReferenciaImportacaoTerceiro {
     private String cpfCnpj = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do indicador: 0: Importação Direta, 1: Importação por Conta e Ordem, 2: Importação por Encomenda.&lt;br&gt;Tamanho: 1
      *
      * @return codigoIndicador
@@ -85,6 +74,18 @@ public class ReferenciaImportacaoTerceiro {
     public ReferenciaImportacaoTerceiro cpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

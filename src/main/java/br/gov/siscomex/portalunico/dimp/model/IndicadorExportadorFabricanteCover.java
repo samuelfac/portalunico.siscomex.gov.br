@@ -26,13 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class IndicadorExportadorFabricanteCover {
 
 
-    @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "EXPORTADOR_DIFERENTE_FABRICANTE", required = true, value = "Código da relação exportador x fabricante.<br>Domínio:")
-    /**
-     * Código da relação exportador x fabricante.<br>Domínio:
-     **/
-    private CodigoEnum codigo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +36,13 @@ public class IndicadorExportadorFabricanteCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "EXPORTADOR_DIFERENTE_FABRICANTE", required = true, value = "Código da relação exportador x fabricante.<br>Domínio:")
+    /**
+     * Código da relação exportador x fabricante.<br>Domínio:
+     **/
+    private CodigoEnum codigo = null;
 
     /**
      * Código da relação exportador x fabricante.&lt;br&gt;Domínio:
@@ -66,7 +66,6 @@ public class IndicadorExportadorFabricanteCover {
         this.codigo = codigo;
         return this;
     }
-
 
     @Override
     public String toString() {

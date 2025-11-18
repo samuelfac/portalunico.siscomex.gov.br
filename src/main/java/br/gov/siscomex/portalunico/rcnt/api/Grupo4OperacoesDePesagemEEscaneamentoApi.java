@@ -29,7 +29,7 @@ public interface Grupo4OperacoesDePesagemEEscaneamentoApi {
 
     /**
      * Inspeção não invasiva
-     * <p>
+     *
      * Um evento para cada inspeção não invasiva efetuada em unidades de carga ou volumes (carga solta). Transmitir imediatamente após a finalização da inspeção. Um evento para cada PLACA/CONTÊINER/VOLUME escaneados.&lt;br/&gt;
      *
      */
@@ -41,16 +41,16 @@ public interface Grupo4OperacoesDePesagemEEscaneamentoApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST16(@ApiParam(value = "Inspeção não invasiva", required = true) @Valid DadosDaInspeoNoInvasiva body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 
     /**
      * Pesagem de Veículo/Carga
-     * <p>
+     *
      * Um evento para cada pesagem de unidades de carga ou carga.&lt;br/&gt; &lt;br/&gt;A utilização deste evento inclui as situações:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Pesagem em balança rodoviária ou ferroviária;&lt;br/&gt;&lt;/li&gt;&lt;li&gt;Pesagem efetuada em equipamentos de movimentação de Contêineres (RTG, etc) e, neste caso, não informar placas (veículos e semirreboques) e tampouco as taras do conjunto transportador;&lt;br/&gt;&lt;/li&gt;&lt;li&gt;Granel que ingressar ou sair do recinto via dutos ou correias transportadoras. Granel gasoso ou líquido: informar a quantificação do medidor de fluxo(volume em metros cúbicos) aferido ao final da operação. Granel sólido: informar na pesagem a soma das bateladas da balança de fluxo ao final da operação.&lt;br/&gt;&lt;/li&gt;&lt;/ul&gt; &lt;br/&gt;Outras pesagens:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Caso a pesagem ocorra via Portâiner, dutos ou balança de fluxo na operação de embarque/desembarque navio, informar o peso aferido no evento “Embarque/Desembarque Navio”;&lt;br/&gt;&lt;/li&gt;&lt;li&gt;A pesagem dos volumes, nos casos de geração de lotes, deve ser informada no evento “Controle de Carga Solta-Geração Lotes”.&lt;br/&gt;&lt;/li&gt;&lt;/ul&gt; Um evento para cada conjunto de PLACA/CONTÊINER/VOLUME pesado.&lt;br/&gt;Transmitir após a pesagem.&lt;br/&gt;&lt;br/&gt;Obs. 1: As taras de veículo e semirreboque podem ser informadas em separado ou em conjunto e são excludentes, ou seja, caso o recinto opere com a tara do conjunto (cavalo / semirreboque) ,comum no modal aquaviário, informar esta e ignorar a tara em separado, conforme determinação unidade local.&lt;br/&gt;As taras devem ser informadas em separado nos casos de recintos que possuem cadastro de taras, conforme determinação da unidade local. Esse tipo de cadastro é comum no modal rodoviário em que cargas de importação ou exportação ingressam no recinto e permanecem sob rodas até o desembaraço.&lt;br/&gt;&lt;br/&gt;Obs. 2: Para os casos em que a pesagem é feita no gate (ou balança interna), comum no modal aquaviário, usar a tara aferida na última pesagem do conjunto vazio.&lt;br/&gt;Caso o conjunto realize a primeira passagem no recinto “carregado / cheio”, retificar o evento assim que obter a tara do conjunto vazio.&lt;br/&gt;&lt;br/&gt;Obs. 3: Pesagens de veículos vazios, conforme determinação da unidade local, devem ser transmitidas com valores iguais para os atributos peso bruto da balança e tara individual ou tara do conjunto, conforme o caso.
      *
      */
@@ -62,10 +62,10 @@ public interface Grupo4OperacoesDePesagemEEscaneamentoApi {
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Recurso criado com sucesso", response = RespostaParaSucessoNaRecepoDeEventoAduaneiro.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida", response = ExceptionCoverDocumentacao.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCoverDocumentacao.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 503, message = "Serviço indisponível")})
     RespostaParaSucessoNaRecepoDeEventoAduaneiro incluirUsingPOST18(@ApiParam(value = "JSON do evento Pesagem de Veículos/Cargas", required = true) @Valid DadosPesagemVeculo body, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token deve ser preenchido com o conteúdo do header Set-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). Este token deve ser preenchido com o conteúdo do header X-CSRF-Token, retornado no response headers da chamada ao serviço de autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }

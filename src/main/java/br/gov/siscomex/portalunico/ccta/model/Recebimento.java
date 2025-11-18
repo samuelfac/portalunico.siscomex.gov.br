@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Recebimento", propOrder =
-        {"dateTime", "errorList", "protocolNumber", "cpf", "cnpj", "fileType", "status"
+        {"protocolNumber", "dateTime", "fileType", "status", "cpf", "cnpj", "errorList"
         })
 
 @XmlRootElement(name = "Recebimento")
@@ -26,21 +26,6 @@ import java.util.List;
 @ApiModel(description = "Resposta para a consulta da situação atual do processamento do arquivo enviado")
 public class Recebimento {
 
-    @XmlElement(name = "dateTime")
-    @ApiModelProperty(example = "2020-04-14T18:00:000-03:00", value = "Data/hora de recebimento do arquivo, no fuso horário de Brasília<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss:SSS-03:00'")
-    /**
-     * Data/hora de recebimento do arquivo, no fuso horário de Brasília<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss:SSS-03:00'
-     **/
-    private String dateTime = null;
-
-    @XmlElement(name = "errorList")
-    @ApiModelProperty(value = "Lista de erros encontrados no processamento do arquivo")
-    @Valid
-    /**
-     * Lista de erros encontrados no processamento do arquivo
-     **/
-    private List<ErroArquivo> errorList = null;
-
     @XmlElement(name = "protocolNumber")
     @ApiModelProperty(example = "123e4567-e89b-12d3-a456-426655440000", value = "Número de protocolo gerado no recebimento do arquivo<br>Tamanho: 17<br>Formato: 'AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA'")
     /**
@@ -48,6 +33,12 @@ public class Recebimento {
      **/
     private String protocolNumber = null;
 
+    @XmlElement(name = "dateTime")
+    @ApiModelProperty(example = "2020-04-14T18:00:000-03:00", value = "Data/hora de recebimento do arquivo, no fuso horário de Brasília<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss:SSS-03:00'")
+    /**
+     * Data/hora de recebimento do arquivo, no fuso horário de Brasília<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss:SSS-03:00'
+     **/
+    private String dateTime = null;
     @XmlElement(name = "cpf")
     @ApiModelProperty(example = "99999999999", value = "CPF do usuário autenticado que enviou o arquivo<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
@@ -55,24 +46,32 @@ public class Recebimento {
      **/
     private String cpf = null;
 
-    @XmlElement(name = "cnpj")
-    @ApiModelProperty(example = "99999999999999", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpj = null;
     @XmlElement(name = "fileType")
     @ApiModelProperty(example = "XFFM", value = "Tipo de arquivo recebido")
     /**
      * Tipo de arquivo recebido
      **/
     private FileTypeEnum fileType = null;
+    @XmlElement(name = "cnpj")
+    @ApiModelProperty(example = "99999999999999", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String cnpj = null;
+
     @XmlElement(name = "status")
     @ApiModelProperty(example = "Rejected", value = "Situação atual do processamento do arquivo")
     /**
      * Situação atual do processamento do arquivo
      **/
     private StatusEnum status = null;
+    @XmlElement(name = "errorList")
+    @ApiModelProperty(value = "Lista de erros encontrados no processamento do arquivo")
+    @Valid
+    /**
+     * Lista de erros encontrados no processamento do arquivo
+     **/
+    private List<ErroArquivo> errorList = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -95,39 +94,6 @@ public class Recebimento {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public Recebimento dateTime(String dateTime) {
-        this.dateTime = dateTime;
-        return this;
-    }
-
-    /**
-     * Lista de erros encontrados no processamento do arquivo
-     *
-     * @return errorList
-     **/
-    @JsonProperty("errorList")
-    public List<ErroArquivo> getErrorList() {
-        return errorList;
-    }
-
-    public void setErrorList(List<ErroArquivo> errorList) {
-        this.errorList = errorList;
-    }
-
-    public Recebimento errorList(List<ErroArquivo> errorList) {
-        this.errorList = errorList;
-        return this;
-    }
-
-    public Recebimento addErrorListItem(ErroArquivo errorListItem) {
-        this.errorList.add(errorListItem);
-        return this;
-    }
-
     /**
      * Número de protocolo gerado no recebimento do arquivo&lt;br&gt;Tamanho: 17&lt;br&gt;Formato: &#39;AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA&#39;
      *
@@ -147,6 +113,15 @@ public class Recebimento {
         return this;
     }
 
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Recebimento dateTime(String dateTime) {
+        this.dateTime = dateTime;
+        return this;
+    }
+
     /**
      * CPF do usuário autenticado que enviou o arquivo&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
@@ -155,34 +130,6 @@ public class Recebimento {
     @JsonProperty("cpf")
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Recebimento cpf(String cpf) {
-        this.cpf = cpf;
-        return this;
-    }
-
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public Recebimento cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
     }
 
     /**
@@ -229,17 +176,69 @@ public class Recebimento {
         return this;
     }
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Recebimento cpf(String cpf) {
+        this.cpf = cpf;
+        return this;
+    }
+
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
+     *
+     * @return cnpj
+     **/
+    @JsonProperty("cnpj")
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public Recebimento cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
+
+    /**
+     * Lista de erros encontrados no processamento do arquivo
+     *
+     * @return errorList
+     **/
+    @JsonProperty("errorList")
+    public List<ErroArquivo> getErrorList() {
+        return errorList;
+    }
+
+    public void setErrorList(List<ErroArquivo> errorList) {
+        this.errorList = errorList;
+    }
+
+    public Recebimento errorList(List<ErroArquivo> errorList) {
+        this.errorList = errorList;
+        return this;
+    }
+
+    public Recebimento addErrorListItem(ErroArquivo errorListItem) {
+        this.errorList.add(errorListItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Recebimento {\n" +
-                "    dateTime: " + toIndentedString(dateTime) + "\n" +
-                "    errorList: " + toIndentedString(errorList) + "\n" +
                 "    protocolNumber: " + toIndentedString(protocolNumber) + "\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    dateTime: " + toIndentedString(dateTime) + "\n" +
                 "    fileType: " + toIndentedString(fileType) + "\n" +
                 "    status: " + toIndentedString(status) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    errorList: " + toIndentedString(errorList) + "\n" +
                 "}";
         return sb;
     }

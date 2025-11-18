@@ -26,21 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TributoCalculadoItemCover {
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "II", value = "Tipo de impostos (códigos de receita principal únicos).<br>Domínio:")
-    /**
-     * Tipo de impostos (códigos de receita principal únicos).<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "valoresBRL")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValoresTributoItemCover valoresBRL = null;
-    @XmlElement(name = "memoriaCalculo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MemoriaCalculoItemCover memoriaCalculo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -51,6 +36,23 @@ public class TributoCalculadoItemCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "II", value = "Tipo de impostos (códigos de receita principal únicos).<br>Domínio:")
+    /**
+     * Tipo de impostos (códigos de receita principal únicos).<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "valoresBRL")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValoresTributoItemCover valoresBRL = null;
+
+    @XmlElement(name = "memoriaCalculo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MemoriaCalculoItemCover memoriaCalculo = null;
 
     /**
      * Tipo de impostos (códigos de receita principal únicos).&lt;br&gt;Domínio:
@@ -111,7 +113,6 @@ public class TributoCalculadoItemCover {
         this.memoriaCalculo = memoriaCalculo;
         return this;
     }
-
 
     @Override
     public String toString() {

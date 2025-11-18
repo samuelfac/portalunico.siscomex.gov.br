@@ -14,7 +14,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoDisponivelParaOrgao", propOrder =
-        {"siglaOrgao", "dataHoraDisponibilizacao", "descricaoOrgao"
+        {"dataHoraDisponibilizacao", "descricaoOrgao", "siglaOrgao"
         })
 
 @XmlRootElement(name = "DocumentoDisponivelParaOrgao")
@@ -23,13 +23,6 @@ import java.time.OffsetDateTime;
  **/
 @ApiModel(description = "Disponibilização do documento para o órgão anuente.")
 public class DocumentoDisponivelParaOrgao {
-
-    @XmlElement(name = "siglaOrgao", required = true)
-    @ApiModelProperty(example = "RECEITA", required = true, value = "Sigla do órgão anuente.<br/>Tamanho máximo: 255")
-    /**
-     * Sigla do órgão anuente.<br/>Tamanho máximo: 255
-     **/
-    private String siglaOrgao = null;
 
     @XmlElement(name = "dataHoraDisponibilizacao", required = true)
     @ApiModelProperty(required = true, value = "Data/hora em que o documento foi disponibilizado para o órgão.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
@@ -45,36 +38,12 @@ public class DocumentoDisponivelParaOrgao {
      **/
     private String descricaoOrgao = null;
 
+    @XmlElement(name = "siglaOrgao", required = true)
+    @ApiModelProperty(example = "RECEITA", required = true, value = "Sigla do órgão anuente.<br/>Tamanho máximo: 255")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Sigla do órgão anuente.&lt;br/&gt;Tamanho máximo: 255
-     *
-     * @return siglaOrgao
+     * Sigla do órgão anuente.<br/>Tamanho máximo: 255
      **/
-    @JsonProperty("siglaOrgao")
-    @NotNull
-    public String getSiglaOrgao() {
-        return siglaOrgao;
-    }
-
-    public void setSiglaOrgao(String siglaOrgao) {
-        this.siglaOrgao = siglaOrgao;
-    }
-
-    public DocumentoDisponivelParaOrgao siglaOrgao(String siglaOrgao) {
-        this.siglaOrgao = siglaOrgao;
-        return this;
-    }
+    private String siglaOrgao = null;
 
     /**
      * Data/hora em que o documento foi disponibilizado para o órgão.&lt;br/&gt;Formato ISO 8601: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz
@@ -116,13 +85,44 @@ public class DocumentoDisponivelParaOrgao {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Sigla do órgão anuente.&lt;br/&gt;Tamanho máximo: 255
+     *
+     * @return siglaOrgao
+     **/
+    @JsonProperty("siglaOrgao")
+    @NotNull
+    public String getSiglaOrgao() {
+        return siglaOrgao;
+    }
+
+    public void setSiglaOrgao(String siglaOrgao) {
+        this.siglaOrgao = siglaOrgao;
+    }
+
+    public DocumentoDisponivelParaOrgao siglaOrgao(String siglaOrgao) {
+        this.siglaOrgao = siglaOrgao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DocumentoDisponivelParaOrgao {\n" +
-                "    siglaOrgao: " + toIndentedString(siglaOrgao) + "\n" +
                 "    dataHoraDisponibilizacao: " + toIndentedString(dataHoraDisponibilizacao) + "\n" +
                 "    descricaoOrgao: " + toIndentedString(descricaoOrgao) + "\n" +
+                "    siglaOrgao: " + toIndentedString(siglaOrgao) + "\n" +
                 "}";
         return sb;
     }

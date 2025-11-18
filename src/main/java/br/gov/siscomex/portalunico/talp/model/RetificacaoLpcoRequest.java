@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetificacaoLpcoRequest", propOrder =
-        {"numeroLI", "justificativa", "informacaoAdicional", "listaCamposFormulario", "listaNcm"
+        {"justificativa", "informacaoAdicional", "listaCamposFormulario", "listaNcm", "numeroLI"
         })
 
 @XmlRootElement(name = "RetificacaoLpcoRequest")
@@ -25,13 +25,6 @@ import java.util.List;
  **/
 @ApiModel(description = "Dados a serem informados para a alteração de um LPCO")
 public class RetificacaoLpcoRequest {
-
-    @XmlElement(name = "numeroLI")
-    @ApiModelProperty(example = "2200002094", value = "Número da LI")
-    /**
-     * Número da LI
-     **/
-    private Long numeroLI = null;
 
     @XmlElement(name = "justificativa")
     @ApiModelProperty(example = "Complemento de informações", value = "Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido.<br>Tamanho mínimo: 0<br>Tamanho máximo: 3900")
@@ -63,35 +56,12 @@ public class RetificacaoLpcoRequest {
      **/
     private List<ItemLpcoRequest> listaNcm = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
+    @XmlElement(name = "numeroLI")
+    @ApiModelProperty(example = "2200002094", value = "Número da LI")
     /**
      * Número da LI
-     *
-     * @return numeroLI
      **/
-    @JsonProperty("numeroLI")
-    public Long getNumeroLI() {
-        return numeroLI;
-    }
-
-    public void setNumeroLI(Long numeroLI) {
-        this.numeroLI = numeroLI;
-    }
-
-    public RetificacaoLpcoRequest numeroLI(Long numeroLI) {
-        this.numeroLI = numeroLI;
-        return this;
-    }
+    private Long numeroLI = null;
 
     /**
      * Justificativa da solicitação de retificação. Este campo é ignorado no caso de uma alteração de um pedido de LPCO ainda não deferido.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 3900
@@ -180,15 +150,45 @@ public class RetificacaoLpcoRequest {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número da LI
+     *
+     * @return numeroLI
+     **/
+    @JsonProperty("numeroLI")
+    public Long getNumeroLI() {
+        return numeroLI;
+    }
+
+    public void setNumeroLI(Long numeroLI) {
+        this.numeroLI = numeroLI;
+    }
+
+    public RetificacaoLpcoRequest numeroLI(Long numeroLI) {
+        this.numeroLI = numeroLI;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class RetificacaoLpcoRequest {\n" +
-                "    numeroLI: " + toIndentedString(numeroLI) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
                 "    informacaoAdicional: " + toIndentedString(informacaoAdicional) + "\n" +
                 "    listaCamposFormulario: " + toIndentedString(listaCamposFormulario) + "\n" +
                 "    listaNcm: " + toIndentedString(listaNcm) + "\n" +
+                "    numeroLI: " + toIndentedString(numeroLI) + "\n" +
                 "}";
         return sb;
     }

@@ -12,19 +12,19 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AtributoNcmValorDTO", propOrder =
-        {"listaValores", "codigoAtributoNCM"
+        {"codigoAtributoNCM", "listaValores"
         })
 
 @XmlRootElement(name = "AtributoNcmValorDTO")
 public class AtributoNcmValorDTO {
 
-    @XmlElement(name = "listaValores")
-    @ApiModelProperty(value = "")
-    private List<String> listaValores = null;
-
     @XmlElement(name = "codigoAtributoNCM")
     @ApiModelProperty(value = "")
     private String codigoAtributoNCM = null;
+
+    @XmlElement(name = "listaValores")
+    @ApiModelProperty(value = "")
+    private List<String> listaValores = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -35,6 +35,20 @@ public class AtributoNcmValorDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get codigoAtributoNCM
+     *
+     * @return codigoAtributoNCM
+     **/
+    @JsonProperty("codigoAtributoNCM")
+    public String getCodigoAtributoNCM() {
+        return codigoAtributoNCM;
+    }
+
+    public void setCodigoAtributoNCM(String codigoAtributoNCM) {
+        this.codigoAtributoNCM = codigoAtributoNCM;
     }
 
     /**
@@ -61,20 +75,6 @@ public class AtributoNcmValorDTO {
         return this;
     }
 
-    /**
-     * Get codigoAtributoNCM
-     *
-     * @return codigoAtributoNCM
-     **/
-    @JsonProperty("codigoAtributoNCM")
-    public String getCodigoAtributoNCM() {
-        return codigoAtributoNCM;
-    }
-
-    public void setCodigoAtributoNCM(String codigoAtributoNCM) {
-        this.codigoAtributoNCM = codigoAtributoNCM;
-    }
-
     public AtributoNcmValorDTO codigoAtributoNCM(String codigoAtributoNCM) {
         this.codigoAtributoNCM = codigoAtributoNCM;
         return this;
@@ -84,8 +84,8 @@ public class AtributoNcmValorDTO {
     public String toString() {
 
         String sb = "class AtributoNcmValorDTO {\n" +
-                "    listaValores: " + toIndentedString(listaValores) + "\n" +
                 "    codigoAtributoNCM: " + toIndentedString(codigoAtributoNCM) + "\n" +
+                "    listaValores: " + toIndentedString(listaValores) + "\n" +
                 "}";
         return sb;
     }

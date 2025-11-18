@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "FundamentoLegalOpcionalDTO", propOrder =
-        {"codigoRegime", "codigoTributo", "codigoFundamentoLegal", "codigoNomenclaturaAlternativa"
+        {"codigoTributo", "codigoRegime", "codigoFundamentoLegal", "codigoNomenclaturaAlternativa"
         })
 
 @XmlRootElement(name = "FundamentoLegalOpcionalDTO")
@@ -23,19 +23,19 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "DTO que representa um Fundamento Legal opcional.")
 public class FundamentoLegalOpcionalDTO {
 
-    @XmlElement(name = "codigoRegime", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Código identificador do Regime Tributário.")
-    /**
-     * Código identificador do Regime Tributário.
-     **/
-    private Long codigoRegime = null;
-
     @XmlElement(name = "codigoTributo", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Código do Tributo.")
     /**
      * Código do Tributo.
      **/
     private Long codigoTributo = null;
+
+    @XmlElement(name = "codigoRegime", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Código identificador do Regime Tributário.")
+    /**
+     * Código identificador do Regime Tributário.
+     **/
+    private Long codigoRegime = null;
 
     @XmlElement(name = "codigoFundamentoLegal", required = true)
     @ApiModelProperty(example = "15", required = true, value = "Código identificador do Fundamento Legal, com até 4 dígitos.")
@@ -50,6 +50,26 @@ public class FundamentoLegalOpcionalDTO {
      * Código da nomenclatura alternativa, pode ser uma NALADI ou NCM SH. É um campo opcional.
      **/
     private String codigoNomenclaturaAlternativa = null;
+
+    /**
+     * Código do Tributo.
+     *
+     * @return codigoTributo
+     **/
+    @JsonProperty("codigoTributo")
+    @NotNull
+    public Long getCodigoTributo() {
+        return codigoTributo;
+    }
+
+    public void setCodigoTributo(Long codigoTributo) {
+        this.codigoTributo = codigoTributo;
+    }
+
+    public FundamentoLegalOpcionalDTO codigoTributo(Long codigoTributo) {
+        this.codigoTributo = codigoTributo;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -75,31 +95,6 @@ public class FundamentoLegalOpcionalDTO {
 
     public void setCodigoRegime(Long codigoRegime) {
         this.codigoRegime = codigoRegime;
-    }
-
-    public FundamentoLegalOpcionalDTO codigoRegime(Long codigoRegime) {
-        this.codigoRegime = codigoRegime;
-        return this;
-    }
-
-    /**
-     * Código do Tributo.
-     *
-     * @return codigoTributo
-     **/
-    @JsonProperty("codigoTributo")
-    @NotNull
-    public Long getCodigoTributo() {
-        return codigoTributo;
-    }
-
-    public void setCodigoTributo(Long codigoTributo) {
-        this.codigoTributo = codigoTributo;
-    }
-
-    public FundamentoLegalOpcionalDTO codigoTributo(Long codigoTributo) {
-        this.codigoTributo = codigoTributo;
-        return this;
     }
 
     /**
@@ -141,12 +136,17 @@ public class FundamentoLegalOpcionalDTO {
         return this;
     }
 
+    public FundamentoLegalOpcionalDTO codigoRegime(Long codigoRegime) {
+        this.codigoRegime = codigoRegime;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class FundamentoLegalOpcionalDTO {\n" +
-                "    codigoRegime: " + toIndentedString(codigoRegime) + "\n" +
                 "    codigoTributo: " + toIndentedString(codigoTributo) + "\n" +
+                "    codigoRegime: " + toIndentedString(codigoRegime) + "\n" +
                 "    codigoFundamentoLegal: " + toIndentedString(codigoFundamentoLegal) + "\n" +
                 "    codigoNomenclaturaAlternativa: " + toIndentedString(codigoNomenclaturaAlternativa) + "\n" +
                 "}";

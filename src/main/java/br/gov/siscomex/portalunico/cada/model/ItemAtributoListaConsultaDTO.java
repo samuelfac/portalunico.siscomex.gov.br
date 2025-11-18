@@ -11,15 +11,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemAtributoListaConsultaDTO", propOrder =
-        {"filtro", "codigo", "descricao"
+        {"codigo", "descricao", "filtro"
         })
 
 @XmlRootElement(name = "ItemAtributoListaConsultaDTO")
 public class ItemAtributoListaConsultaDTO {
-
-    @XmlElement(name = "filtro")
-    @ApiModelProperty(value = "")
-    private String filtro = null;
 
     @XmlElement(name = "codigo")
     @ApiModelProperty(value = "")
@@ -29,35 +25,9 @@ public class ItemAtributoListaConsultaDTO {
     @ApiModelProperty(value = "")
     private String descricao = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get filtro
-     *
-     * @return filtro
-     **/
-    @JsonProperty("filtro")
-    public String getFiltro() {
-        return filtro;
-    }
-
-    public void setFiltro(String filtro) {
-        this.filtro = filtro;
-    }
-
-    public ItemAtributoListaConsultaDTO filtro(String filtro) {
-        this.filtro = filtro;
-        return this;
-    }
+    @XmlElement(name = "filtro")
+    @ApiModelProperty(value = "")
+    private String filtro = null;
 
     /**
      * Get codigo
@@ -97,13 +67,43 @@ public class ItemAtributoListaConsultaDTO {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get filtro
+     *
+     * @return filtro
+     **/
+    @JsonProperty("filtro")
+    public String getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(String filtro) {
+        this.filtro = filtro;
+    }
+
+    public ItemAtributoListaConsultaDTO filtro(String filtro) {
+        this.filtro = filtro;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ItemAtributoListaConsultaDTO {\n" +
-                "    filtro: " + toIndentedString(filtro) + "\n" +
                 "    codigo: " + toIndentedString(codigo) + "\n" +
                 "    descricao: " + toIndentedString(descricao) + "\n" +
+                "    filtro: " + toIndentedString(filtro) + "\n" +
                 "}";
         return sb;
     }

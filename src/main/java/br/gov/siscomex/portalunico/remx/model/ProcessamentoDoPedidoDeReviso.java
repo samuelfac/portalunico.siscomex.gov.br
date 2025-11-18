@@ -16,33 +16,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDoPedidoDeReviso", propOrder =
-        {"situacao", "manifestos", "numeroProtocolo", "dataHoraProcessamento", "dataHorarioEnvio", "cnpj", "dataHorarioRegistroPedidoRevisao", "numeroPedidoRevisao", "erros"
+        {"cnpj", "dataHoraProcessamento", "dataHorarioEnvio", "dataHorarioRegistroPedidoRevisao", "erros", "manifestos", "numeroPedidoRevisao", "numeroProtocolo", "situacao"
         })
 
 @XmlRootElement(name = "ProcessamentoDoPedidoDeReviso")
 public class ProcessamentoDoPedidoDeReviso {
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    @XmlElement(name = "cnpj", required = true)
+    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
     /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
      **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "manifestos", required = true)
-    @ApiModelProperty(required = true, value = "Lista de manifestos.")
-    @Valid
-    /**
-     * Lista de manifestos.
-     **/
-    private List<ManifestoDoProcessamentoDoPedidoDeReviso> manifestos = new ArrayList<>();
-
-    @XmlElement(name = "numeroProtocolo", required = true)
-    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     **/
-    private String numeroProtocolo = null;
+    private String cnpj = null;
 
     @XmlElement(name = "dataHoraProcessamento")
     @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -58,26 +43,12 @@ public class ProcessamentoDoPedidoDeReviso {
      **/
     private OffsetDateTime dataHorarioEnvio = null;
 
-    @XmlElement(name = "cnpj", required = true)
-    @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
-    /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.
-     **/
-    private String cnpj = null;
-
     @XmlElement(name = "dataHorarioRegistroPedidoRevisao", required = true)
     @ApiModelProperty(required = true, value = "Data e horário do registro do pedido de revisão no sistema.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
     /**
      * Data e horário do registro do pedido de revisão no sistema.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
     private OffsetDateTime dataHorarioRegistroPedidoRevisao = null;
-
-    @XmlElement(name = "numeroPedidoRevisao", required = true)
-    @ApiModelProperty(required = true, value = "Número do pedido de revisão gerado pelo sistema.")
-    /**
-     * Número do pedido de revisão gerado pelo sistema.
-     **/
-    private String numeroPedidoRevisao = null;
 
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
@@ -86,6 +57,35 @@ public class ProcessamentoDoPedidoDeReviso {
      * Lista de erros.
      **/
     private List<ErroNoProcessamento> erros = null;
+
+    @XmlElement(name = "manifestos", required = true)
+    @ApiModelProperty(required = true, value = "Lista de manifestos.")
+    @Valid
+    /**
+     * Lista de manifestos.
+     **/
+    private List<ManifestoDoProcessamentoDoPedidoDeReviso> manifestos = new ArrayList<>();
+
+    @XmlElement(name = "numeroPedidoRevisao", required = true)
+    @ApiModelProperty(required = true, value = "Número do pedido de revisão gerado pelo sistema.")
+    /**
+     * Número do pedido de revisão gerado pelo sistema.
+     **/
+    private String numeroPedidoRevisao = null;
+
+    @XmlElement(name = "numeroProtocolo", required = true)
+    @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     **/
+    private String numeroProtocolo = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
+    /**
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
+     **/
+    private Integer situacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -99,68 +99,18 @@ public class ProcessamentoDoPedidoDeReviso {
     }
 
     /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
-     * @return situacao
+     * @return cnpj
      **/
-    @JsonProperty("situacao")
+    @JsonProperty("cnpj")
     @NotNull
-    public Integer getSituacao() {
-        return situacao;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDoPedidoDeReviso situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista de manifestos.
-     *
-     * @return manifestos
-     **/
-    @JsonProperty("manifestos")
-    @NotNull
-    public List<ManifestoDoProcessamentoDoPedidoDeReviso> getManifestos() {
-        return manifestos;
-    }
-
-    public void setManifestos(List<ManifestoDoProcessamentoDoPedidoDeReviso> manifestos) {
-        this.manifestos = manifestos;
-    }
-
-    public ProcessamentoDoPedidoDeReviso manifestos(List<ManifestoDoProcessamentoDoPedidoDeReviso> manifestos) {
-        this.manifestos = manifestos;
-        return this;
-    }
-
-    public ProcessamentoDoPedidoDeReviso addManifestosItem(ManifestoDoProcessamentoDoPedidoDeReviso manifestosItem) {
-        this.manifestos.add(manifestosItem);
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    @NotNull
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDoPedidoDeReviso numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     /**
@@ -203,26 +153,6 @@ public class ProcessamentoDoPedidoDeReviso {
     }
 
     /**
-     * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
-     *
-     * @return cnpj
-     **/
-    @JsonProperty("cnpj")
-    @NotNull
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public ProcessamentoDoPedidoDeReviso cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
-    /**
      * Data e horário do registro do pedido de revisão no sistema.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataHorarioRegistroPedidoRevisao
@@ -242,23 +172,8 @@ public class ProcessamentoDoPedidoDeReviso {
         return this;
     }
 
-    /**
-     * Número do pedido de revisão gerado pelo sistema.
-     *
-     * @return numeroPedidoRevisao
-     **/
-    @JsonProperty("numeroPedidoRevisao")
-    @NotNull
-    public String getNumeroPedidoRevisao() {
-        return numeroPedidoRevisao;
-    }
-
-    public void setNumeroPedidoRevisao(String numeroPedidoRevisao) {
-        this.numeroPedidoRevisao = numeroPedidoRevisao;
-    }
-
-    public ProcessamentoDoPedidoDeReviso numeroPedidoRevisao(String numeroPedidoRevisao) {
-        this.numeroPedidoRevisao = numeroPedidoRevisao;
+    public ProcessamentoDoPedidoDeReviso cnpj(String cnpj) {
+        this.cnpj = cnpj;
         return this;
     }
 
@@ -286,19 +201,104 @@ public class ProcessamentoDoPedidoDeReviso {
         return this;
     }
 
+    /**
+     * Lista de manifestos.
+     *
+     * @return manifestos
+     **/
+    @JsonProperty("manifestos")
+    @NotNull
+    public List<ManifestoDoProcessamentoDoPedidoDeReviso> getManifestos() {
+        return manifestos;
+    }
+
+    public void setManifestos(List<ManifestoDoProcessamentoDoPedidoDeReviso> manifestos) {
+        this.manifestos = manifestos;
+    }
+
+    public ProcessamentoDoPedidoDeReviso manifestos(List<ManifestoDoProcessamentoDoPedidoDeReviso> manifestos) {
+        this.manifestos = manifestos;
+        return this;
+    }
+
+    /**
+     * Número do pedido de revisão gerado pelo sistema.
+     *
+     * @return numeroPedidoRevisao
+     **/
+    @JsonProperty("numeroPedidoRevisao")
+    @NotNull
+    public String getNumeroPedidoRevisao() {
+        return numeroPedidoRevisao;
+    }
+
+    public void setNumeroPedidoRevisao(String numeroPedidoRevisao) {
+        this.numeroPedidoRevisao = numeroPedidoRevisao;
+    }
+
+    public ProcessamentoDoPedidoDeReviso numeroPedidoRevisao(String numeroPedidoRevisao) {
+        this.numeroPedidoRevisao = numeroPedidoRevisao;
+        return this;
+    }
+
+    public ProcessamentoDoPedidoDeReviso addManifestosItem(ManifestoDoProcessamentoDoPedidoDeReviso manifestosItem) {
+        this.manifestos.add(manifestosItem);
+        return this;
+    }
+
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     *
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    @NotNull
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDoPedidoDeReviso numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     *
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDoPedidoDeReviso situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ProcessamentoDoPedidoDeReviso {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    manifestos: " + toIndentedString(manifestos) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
                 "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
                 "    dataHorarioRegistroPedidoRevisao: " + toIndentedString(dataHorarioRegistroPedidoRevisao) + "\n" +
-                "    numeroPedidoRevisao: " + toIndentedString(numeroPedidoRevisao) + "\n" +
                 "    erros: " + toIndentedString(erros) + "\n" +
+                "    manifestos: " + toIndentedString(manifestos) + "\n" +
+                "    numeroPedidoRevisao: " + toIndentedString(numeroPedidoRevisao) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
     }

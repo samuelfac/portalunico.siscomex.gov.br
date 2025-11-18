@@ -16,53 +16,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ProcessamentoDaSolicitaoDeDARF", propOrder =
-        {"dataHoraEmissao", "situacao", "codigoBarrasCampo4", "dataHoraProcessamento", "codigoBarrasDarf", "dataLimitePagamento", "cnpj", "contribuinte", "erros", "valorTotalPagamento", "numeroProtocolo", "codigoBarrasCampo2", "dataHorarioEnvio", "codigoBarrasCampo3", "codigoBarrasCampo1", "numeroDocumento"
+        {"cnpj", "codigoBarrasCampo1", "codigoBarrasCampo2", "codigoBarrasCampo3", "codigoBarrasCampo4", "codigoBarrasDarf", "contribuinte", "dataHoraEmissao", "dataHoraProcessamento", "dataHorarioEnvio", "dataLimitePagamento", "erros", "numeroDocumento", "numeroProtocolo", "situacao", "valorTotalPagamento"
         })
 
 @XmlRootElement(name = "ProcessamentoDaSolicitaoDeDARF")
 public class ProcessamentoDaSolicitaoDeDARF {
-
-    @XmlElement(name = "dataHoraEmissao")
-    @ApiModelProperty(value = "Data/Hora do momento da emissão do documento pelo SENDA. <br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data/Hora do momento da emissão do documento pelo SENDA. <br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataHoraEmissao = null;
-
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
-    /**
-     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
-     **/
-    private Integer situacao = null;
-
-    @XmlElement(name = "codigoBarrasCampo4")
-    @ApiModelProperty(value = " Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.")
-    /**
-     *  Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     **/
-    private String codigoBarrasCampo4 = null;
-
-    @XmlElement(name = "dataHoraProcessamento")
-    @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
-    /**
-     * Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
-     **/
-    private OffsetDateTime dataHoraProcessamento = null;
-
-    @XmlElement(name = "codigoBarrasDarf")
-    @ApiModelProperty(value = "O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.")
-    /**
-     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
-     **/
-    private String codigoBarrasDarf = null;
-
-    @XmlElement(name = "dataLimitePagamento")
-    @ApiModelProperty(value = "Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.")
-    /**
-     * Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.
-     **/
-    private OffsetDateTime dataLimitePagamento = null;
 
     @XmlElement(name = "cnpj", required = true)
     @ApiModelProperty(required = true, value = "CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como '.', '-' e '/'.")
@@ -71,12 +29,75 @@ public class ProcessamentoDaSolicitaoDeDARF {
      **/
     private String cnpj = null;
 
+    @XmlElement(name = "codigoBarrasCampo1")
+    @ApiModelProperty(value = " Primeira parte do código de barras do DARF, composto por 12 caracteres numéricos.")
+    /**
+     *  Primeira parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     **/
+    private String codigoBarrasCampo1 = null;
+
+    @XmlElement(name = "codigoBarrasCampo2")
+    @ApiModelProperty(value = " Segunda parte do código de barras do DARF, composto por 12 caracteres numéricos.")
+    /**
+     *  Segunda parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     **/
+    private String codigoBarrasCampo2 = null;
+
+    @XmlElement(name = "codigoBarrasCampo3")
+    @ApiModelProperty(value = " Terceira parte do código de barras do DARF, composto por 12 caracteres numéricos.")
+    /**
+     *  Terceira parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     **/
+    private String codigoBarrasCampo3 = null;
+
+    @XmlElement(name = "codigoBarrasCampo4")
+    @ApiModelProperty(value = " Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.")
+    /**
+     *  Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     **/
+    private String codigoBarrasCampo4 = null;
+
+    @XmlElement(name = "codigoBarrasDarf")
+    @ApiModelProperty(value = "O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.")
+    /**
+     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
+     **/
+    private String codigoBarrasDarf = null;
+
     @XmlElement(name = "contribuinte", required = true)
     @ApiModelProperty(required = true, value = "CPF ou CNPJ do contribuinte. Composto por onze (11) para CPF ou quatorze (14) caracteres numéricos para CNPJ. Não deve conter caracteres como ‘.’,’-‘ e ‘/’.")
     /**
      * CPF ou CNPJ do contribuinte. Composto por onze (11) para CPF ou quatorze (14) caracteres numéricos para CNPJ. Não deve conter caracteres como ‘.’,’-‘ e ‘/’.
      **/
     private String contribuinte = null;
+
+    @XmlElement(name = "dataHoraEmissao")
+    @ApiModelProperty(value = "Data/Hora do momento da emissão do documento pelo SENDA. <br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data/Hora do momento da emissão do documento pelo SENDA. <br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataHoraEmissao = null;
+
+    @XmlElement(name = "dataHoraProcessamento")
+    @ApiModelProperty(value = "Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data e horário do processamento da consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataHoraProcessamento = null;
+
+    @XmlElement(name = "dataHorarioEnvio", required = true)
+    @ApiModelProperty(required = true, value = "Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataHorarioEnvio = null;
+
+    @XmlElement(name = "dataLimitePagamento")
+    @ApiModelProperty(value = "Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.")
+    /**
+     * Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.
+     **/
+    private OffsetDateTime dataLimitePagamento = null;
 
     @XmlElement(name = "erros")
     @ApiModelProperty(value = "Lista de erros.")
@@ -86,13 +107,12 @@ public class ProcessamentoDaSolicitaoDeDARF {
      **/
     private List<ErroNoProcessamento> erros = null;
 
-    @XmlElement(name = "valorTotalPagamento", required = true)
-    @ApiModelProperty(required = true, value = "Valor total a ser pago pelo DARF. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
-    @Valid
+    @XmlElement(name = "numeroDocumento", required = true)
+    @ApiModelProperty(required = true, value = "Número do documento gerado pelo SENDA.  O número do documento é composto por 17 caracteres numéricos.")
     /**
-     * Valor total a ser pago pelo DARF. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     * Número do documento gerado pelo SENDA.  O número do documento é composto por 17 caracteres numéricos.
      **/
-    private BigDecimal valorTotalPagamento = null;
+    private String numeroDocumento = null;
 
     @XmlElement(name = "numeroProtocolo", required = true)
     @ApiModelProperty(required = true, value = "Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.")
@@ -101,40 +121,20 @@ public class ProcessamentoDaSolicitaoDeDARF {
      **/
     private String numeroProtocolo = null;
 
-    @XmlElement(name = "codigoBarrasCampo2")
-    @ApiModelProperty(value = " Segunda parte do código de barras do DARF, composto por 12 caracteres numéricos.")
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.")
     /**
-     *  Segunda parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     * Situacao do processamento. Valores pré-definidos:<br/>0 - Aguardando processamento;<br/>1 - Processamento concluído.
      **/
-    private String codigoBarrasCampo2 = null;
+    private Integer situacao = null;
 
-    @XmlElement(name = "dataHorarioEnvio", required = true)
-    @ApiModelProperty(required = true, value = "Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @XmlElement(name = "valorTotalPagamento", required = true)
+    @ApiModelProperty(required = true, value = "Valor total a ser pago pelo DARF. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.")
+    @Valid
     /**
-     * Data e horário do envio do Json de consulta.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     * Valor total a ser pago pelo DARF. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      **/
-    private OffsetDateTime dataHorarioEnvio = null;
-
-    @XmlElement(name = "codigoBarrasCampo3")
-    @ApiModelProperty(value = " Terceira parte do código de barras do DARF, composto por 12 caracteres numéricos.")
-    /**
-     *  Terceira parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     **/
-    private String codigoBarrasCampo3 = null;
-
-    @XmlElement(name = "codigoBarrasCampo1")
-    @ApiModelProperty(value = " Primeira parte do código de barras do DARF, composto por 12 caracteres numéricos.")
-    /**
-     *  Primeira parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     **/
-    private String codigoBarrasCampo1 = null;
-
-    @XmlElement(name = "numeroDocumento", required = true)
-    @ApiModelProperty(required = true, value = "Número do documento gerado pelo SENDA.  O número do documento é composto por 17 caracteres numéricos.")
-    /**
-     * Número do documento gerado pelo SENDA.  O número do documento é composto por 17 caracteres numéricos.
-     **/
-    private String numeroDocumento = null;
+    private BigDecimal valorTotalPagamento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -145,121 +145,6 @@ public class ProcessamentoDaSolicitaoDeDARF {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Data/Hora do momento da emissão do documento pelo SENDA. &lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataHoraEmissao
-     **/
-    @JsonProperty("dataHoraEmissao")
-    public OffsetDateTime getDataHoraEmissao() {
-        return dataHoraEmissao;
-    }
-
-    public void setDataHoraEmissao(OffsetDateTime dataHoraEmissao) {
-        this.dataHoraEmissao = dataHoraEmissao;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF dataHoraEmissao(OffsetDateTime dataHoraEmissao) {
-        this.dataHoraEmissao = dataHoraEmissao;
-        return this;
-    }
-
-    /**
-     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    @NotNull
-    public Integer getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(Integer situacao) {
-        this.situacao = situacao;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF situacao(Integer situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     *
-     * @return codigoBarrasCampo4
-     **/
-    @JsonProperty("codigoBarrasCampo4")
-    public String getCodigoBarrasCampo4() {
-        return codigoBarrasCampo4;
-    }
-
-    public void setCodigoBarrasCampo4(String codigoBarrasCampo4) {
-        this.codigoBarrasCampo4 = codigoBarrasCampo4;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo4(String codigoBarrasCampo4) {
-        this.codigoBarrasCampo4 = codigoBarrasCampo4;
-        return this;
-    }
-
-    /**
-     * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataHoraProcessamento
-     **/
-    @JsonProperty("dataHoraProcessamento")
-    public OffsetDateTime getDataHoraProcessamento() {
-        return dataHoraProcessamento;
-    }
-
-    public void setDataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
-        this.dataHoraProcessamento = dataHoraProcessamento;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
-        this.dataHoraProcessamento = dataHoraProcessamento;
-        return this;
-    }
-
-    /**
-     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
-     *
-     * @return codigoBarrasDarf
-     **/
-    @JsonProperty("codigoBarrasDarf")
-    public String getCodigoBarrasDarf() {
-        return codigoBarrasDarf;
-    }
-
-    public void setCodigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
-        return this;
-    }
-
-    /**
-     * Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.
-     *
-     * @return dataLimitePagamento
-     **/
-    @JsonProperty("dataLimitePagamento")
-    public OffsetDateTime getDataLimitePagamento() {
-        return dataLimitePagamento;
-    }
-
-    public void setDataLimitePagamento(OffsetDateTime dataLimitePagamento) {
-        this.dataLimitePagamento = dataLimitePagamento;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF dataLimitePagamento(OffsetDateTime dataLimitePagamento) {
-        this.dataLimitePagamento = dataLimitePagamento;
-        return this;
     }
 
     /**
@@ -283,6 +168,96 @@ public class ProcessamentoDaSolicitaoDeDARF {
     }
 
     /**
+     * Primeira parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     *
+     * @return codigoBarrasCampo1
+     **/
+    @JsonProperty("codigoBarrasCampo1")
+    public String getCodigoBarrasCampo1() {
+        return codigoBarrasCampo1;
+    }
+
+    public void setCodigoBarrasCampo1(String codigoBarrasCampo1) {
+        this.codigoBarrasCampo1 = codigoBarrasCampo1;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo1(String codigoBarrasCampo1) {
+        this.codigoBarrasCampo1 = codigoBarrasCampo1;
+        return this;
+    }
+
+    /**
+     * Segunda parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     *
+     * @return codigoBarrasCampo2
+     **/
+    @JsonProperty("codigoBarrasCampo2")
+    public String getCodigoBarrasCampo2() {
+        return codigoBarrasCampo2;
+    }
+
+    public void setCodigoBarrasCampo2(String codigoBarrasCampo2) {
+        this.codigoBarrasCampo2 = codigoBarrasCampo2;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo2(String codigoBarrasCampo2) {
+        this.codigoBarrasCampo2 = codigoBarrasCampo2;
+        return this;
+    }
+
+    /**
+     * Terceira parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     *
+     * @return codigoBarrasCampo3
+     **/
+    @JsonProperty("codigoBarrasCampo3")
+    public String getCodigoBarrasCampo3() {
+        return codigoBarrasCampo3;
+    }
+
+    public void setCodigoBarrasCampo3(String codigoBarrasCampo3) {
+        this.codigoBarrasCampo3 = codigoBarrasCampo3;
+    }
+
+    /**
+     * Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.
+     *
+     * @return codigoBarrasCampo4
+     **/
+    @JsonProperty("codigoBarrasCampo4")
+    public String getCodigoBarrasCampo4() {
+        return codigoBarrasCampo4;
+    }
+
+    public void setCodigoBarrasCampo4(String codigoBarrasCampo4) {
+        this.codigoBarrasCampo4 = codigoBarrasCampo4;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo4(String codigoBarrasCampo4) {
+        this.codigoBarrasCampo4 = codigoBarrasCampo4;
+        return this;
+    }
+
+    /**
+     * O número do código de barras completo é composto por 44 caracteres numéricos, ou seja, sem os DV dos quatro campos da barra.
+     *
+     * @return codigoBarrasDarf
+     **/
+    @JsonProperty("codigoBarrasDarf")
+    public String getCodigoBarrasDarf() {
+        return codigoBarrasDarf;
+    }
+
+    public void setCodigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+        return this;
+    }
+
+    /**
      * CPF ou CNPJ do contribuinte. Composto por onze (11) para CPF ou quatorze (14) caracteres numéricos para CNPJ. Não deve conter caracteres como ‘.’,’-‘ e ‘/’.
      *
      * @return contribuinte
@@ -300,6 +275,83 @@ public class ProcessamentoDaSolicitaoDeDARF {
     public ProcessamentoDaSolicitaoDeDARF contribuinte(String contribuinte) {
         this.contribuinte = contribuinte;
         return this;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo3(String codigoBarrasCampo3) {
+        this.codigoBarrasCampo3 = codigoBarrasCampo3;
+        return this;
+    }
+
+    /**
+     * Data/Hora do momento da emissão do documento pelo SENDA. &lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataHoraEmissao
+     **/
+    @JsonProperty("dataHoraEmissao")
+    public OffsetDateTime getDataHoraEmissao() {
+        return dataHoraEmissao;
+    }
+
+    public void setDataHoraEmissao(OffsetDateTime dataHoraEmissao) {
+        this.dataHoraEmissao = dataHoraEmissao;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF dataHoraEmissao(OffsetDateTime dataHoraEmissao) {
+        this.dataHoraEmissao = dataHoraEmissao;
+        return this;
+    }
+
+    /**
+     * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataHoraProcessamento
+     **/
+    @JsonProperty("dataHoraProcessamento")
+    public OffsetDateTime getDataHoraProcessamento() {
+        return dataHoraProcessamento;
+    }
+
+    public void setDataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
+        this.dataHoraProcessamento = dataHoraProcessamento;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
+        this.dataHoraProcessamento = dataHoraProcessamento;
+        return this;
+    }
+
+    /**
+     * Data e horário do envio do Json de consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataHorarioEnvio
+     **/
+    @JsonProperty("dataHorarioEnvio")
+    @NotNull
+    public OffsetDateTime getDataHorarioEnvio() {
+        return dataHorarioEnvio;
+    }
+
+    public void setDataHorarioEnvio(OffsetDateTime dataHorarioEnvio) {
+        this.dataHorarioEnvio = dataHorarioEnvio;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF dataHorarioEnvio(OffsetDateTime dataHorarioEnvio) {
+        this.dataHorarioEnvio = dataHorarioEnvio;
+        return this;
+    }
+
+    /**
+     * Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.
+     *
+     * @return dataLimitePagamento
+     **/
+    @JsonProperty("dataLimitePagamento")
+    public OffsetDateTime getDataLimitePagamento() {
+        return dataLimitePagamento;
+    }
+
+    public void setDataLimitePagamento(OffsetDateTime dataLimitePagamento) {
+        this.dataLimitePagamento = dataLimitePagamento;
     }
 
     /**
@@ -326,120 +378,8 @@ public class ProcessamentoDaSolicitaoDeDARF {
         return this;
     }
 
-    /**
-     * Valor total a ser pago pelo DARF. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
-     * @return valorTotalPagamento
-     **/
-    @JsonProperty("valorTotalPagamento")
-    @NotNull
-    public BigDecimal getValorTotalPagamento() {
-        return valorTotalPagamento;
-    }
-
-    public void setValorTotalPagamento(BigDecimal valorTotalPagamento) {
-        this.valorTotalPagamento = valorTotalPagamento;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF valorTotalPagamento(BigDecimal valorTotalPagamento) {
-        this.valorTotalPagamento = valorTotalPagamento;
-        return this;
-    }
-
-    /**
-     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
-     *
-     * @return numeroProtocolo
-     **/
-    @JsonProperty("numeroProtocolo")
-    @NotNull
-    public String getNumeroProtocolo() {
-        return numeroProtocolo;
-    }
-
-    public void setNumeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
-
-    /**
-     * Segunda parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     *
-     * @return codigoBarrasCampo2
-     **/
-    @JsonProperty("codigoBarrasCampo2")
-    public String getCodigoBarrasCampo2() {
-        return codigoBarrasCampo2;
-    }
-
-    public void setCodigoBarrasCampo2(String codigoBarrasCampo2) {
-        this.codigoBarrasCampo2 = codigoBarrasCampo2;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo2(String codigoBarrasCampo2) {
-        this.codigoBarrasCampo2 = codigoBarrasCampo2;
-        return this;
-    }
-
-    /**
-     * Data e horário do envio do Json de consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataHorarioEnvio
-     **/
-    @JsonProperty("dataHorarioEnvio")
-    @NotNull
-    public OffsetDateTime getDataHorarioEnvio() {
-        return dataHorarioEnvio;
-    }
-
-    public void setDataHorarioEnvio(OffsetDateTime dataHorarioEnvio) {
-        this.dataHorarioEnvio = dataHorarioEnvio;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF dataHorarioEnvio(OffsetDateTime dataHorarioEnvio) {
-        this.dataHorarioEnvio = dataHorarioEnvio;
-        return this;
-    }
-
-    /**
-     * Terceira parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     *
-     * @return codigoBarrasCampo3
-     **/
-    @JsonProperty("codigoBarrasCampo3")
-    public String getCodigoBarrasCampo3() {
-        return codigoBarrasCampo3;
-    }
-
-    public void setCodigoBarrasCampo3(String codigoBarrasCampo3) {
-        this.codigoBarrasCampo3 = codigoBarrasCampo3;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo3(String codigoBarrasCampo3) {
-        this.codigoBarrasCampo3 = codigoBarrasCampo3;
-        return this;
-    }
-
-    /**
-     * Primeira parte do código de barras do DARF, composto por 12 caracteres numéricos.
-     *
-     * @return codigoBarrasCampo1
-     **/
-    @JsonProperty("codigoBarrasCampo1")
-    public String getCodigoBarrasCampo1() {
-        return codigoBarrasCampo1;
-    }
-
-    public void setCodigoBarrasCampo1(String codigoBarrasCampo1) {
-        this.codigoBarrasCampo1 = codigoBarrasCampo1;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo1(String codigoBarrasCampo1) {
-        this.codigoBarrasCampo1 = codigoBarrasCampo1;
+    public ProcessamentoDaSolicitaoDeDARF dataLimitePagamento(OffsetDateTime dataLimitePagamento) {
+        this.dataLimitePagamento = dataLimitePagamento;
         return this;
     }
 
@@ -458,8 +398,65 @@ public class ProcessamentoDaSolicitaoDeDARF {
         this.numeroDocumento = numeroDocumento;
     }
 
+    /**
+     * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
+     * @return numeroProtocolo
+     **/
+    @JsonProperty("numeroProtocolo")
+    @NotNull
+    public String getNumeroProtocolo() {
+        return numeroProtocolo;
+    }
+
+    public void setNumeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
+        return this;
+    }
+
     public ProcessamentoDaSolicitaoDeDARF numeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
+        return this;
+    }
+
+    /**
+     * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    @NotNull
+    public Integer getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Integer situacao) {
+        this.situacao = situacao;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF situacao(Integer situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Valor total a ser pago pelo DARF. Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
+     * @return valorTotalPagamento
+     **/
+    @JsonProperty("valorTotalPagamento")
+    @NotNull
+    public BigDecimal getValorTotalPagamento() {
+        return valorTotalPagamento;
+    }
+
+    public void setValorTotalPagamento(BigDecimal valorTotalPagamento) {
+        this.valorTotalPagamento = valorTotalPagamento;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF valorTotalPagamento(BigDecimal valorTotalPagamento) {
+        this.valorTotalPagamento = valorTotalPagamento;
         return this;
     }
 
@@ -467,22 +464,22 @@ public class ProcessamentoDaSolicitaoDeDARF {
     public String toString() {
 
         String sb = "class ProcessamentoDaSolicitaoDeDARF {\n" +
-                "    dataHoraEmissao: " + toIndentedString(dataHoraEmissao) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    codigoBarrasCampo4: " + toIndentedString(codigoBarrasCampo4) + "\n" +
-                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
-                "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
-                "    dataLimitePagamento: " + toIndentedString(dataLimitePagamento) + "\n" +
                 "    cnpj: " + toIndentedString(cnpj) + "\n" +
-                "    contribuinte: " + toIndentedString(contribuinte) + "\n" +
-                "    erros: " + toIndentedString(erros) + "\n" +
-                "    valorTotalPagamento: " + toIndentedString(valorTotalPagamento) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
-                "    codigoBarrasCampo2: " + toIndentedString(codigoBarrasCampo2) + "\n" +
-                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
-                "    codigoBarrasCampo3: " + toIndentedString(codigoBarrasCampo3) + "\n" +
                 "    codigoBarrasCampo1: " + toIndentedString(codigoBarrasCampo1) + "\n" +
+                "    codigoBarrasCampo2: " + toIndentedString(codigoBarrasCampo2) + "\n" +
+                "    codigoBarrasCampo3: " + toIndentedString(codigoBarrasCampo3) + "\n" +
+                "    codigoBarrasCampo4: " + toIndentedString(codigoBarrasCampo4) + "\n" +
+                "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
+                "    contribuinte: " + toIndentedString(contribuinte) + "\n" +
+                "    dataHoraEmissao: " + toIndentedString(dataHoraEmissao) + "\n" +
+                "    dataHoraProcessamento: " + toIndentedString(dataHoraProcessamento) + "\n" +
+                "    dataHorarioEnvio: " + toIndentedString(dataHorarioEnvio) + "\n" +
+                "    dataLimitePagamento: " + toIndentedString(dataLimitePagamento) + "\n" +
+                "    erros: " + toIndentedString(erros) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    valorTotalPagamento: " + toIndentedString(valorTotalPagamento) + "\n" +
                 "}";
         return sb;
     }

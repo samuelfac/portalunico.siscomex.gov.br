@@ -20,19 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoDeConhecimentoDaCargaAquaviria {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "10", value = "Código do Tipo de conhecimento de transporte de carga.<br>Dominio: <br>10 - BL, <br>12 - HBL")
-    /**
-     * Código do Tipo de conhecimento de transporte de carga.<br>Dominio: <br>10 - BL, <br>12 - HBL
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "BL", value = "Descrição do Tipo de conhecimento de transporte de carga")
-    /**
-     * Descrição do Tipo de conhecimento de transporte de carga
-     **/
-    private String descricao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -43,6 +30,20 @@ public class TipoDeConhecimentoDaCargaAquaviria {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "10", value = "Código do Tipo de conhecimento de transporte de carga.<br>Dominio: <br>10 - BL, <br>12 - HBL")
+    /**
+     * Código do Tipo de conhecimento de transporte de carga.<br>Dominio: <br>10 - BL, <br>12 - HBL
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "BL", value = "Descrição do Tipo de conhecimento de transporte de carga")
+    /**
+     * Descrição do Tipo de conhecimento de transporte de carga
+     **/
+    private String descricao = null;
 
     /**
      * Código do Tipo de conhecimento de transporte de carga.&lt;br&gt;Dominio: &lt;br&gt;10 - BL, &lt;br&gt;12 - HBL
@@ -84,7 +85,6 @@ public class TipoDeConhecimentoDaCargaAquaviria {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

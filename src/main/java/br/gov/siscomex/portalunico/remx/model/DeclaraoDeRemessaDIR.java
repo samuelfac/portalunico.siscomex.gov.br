@@ -12,18 +12,11 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DeclaraoDeRemessaDIR", propOrder =
-        {"versaoDIR", "dataHoraEncerramentoLote", "numeroLote", "dataRegistro", "identificadorLote", "numeroDeclaracao"
+        {"dataHoraEncerramentoLote", "dataRegistro", "identificadorLote", "numeroDeclaracao", "numeroLote", "versaoDIR"
         })
 
 @XmlRootElement(name = "DeclaraoDeRemessaDIR")
 public class DeclaraoDeRemessaDIR {
-
-    @XmlElement(name = "versaoDIR")
-    @ApiModelProperty(value = "Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).")
-    /**
-     * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     **/
-    private String versaoDIR = null;
 
     @XmlElement(name = "dataHoraEncerramentoLote")
     @ApiModelProperty(value = "Data e horário do encerramento de seleção do lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -31,13 +24,6 @@ public class DeclaraoDeRemessaDIR {
      * Data e horário do encerramento de seleção do lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
      **/
     private OffsetDateTime dataHoraEncerramentoLote = null;
-
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     **/
-    private String numeroLote = null;
 
     @XmlElement(name = "dataRegistro")
     @ApiModelProperty(value = "Data e horário do registro do lote.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
@@ -60,35 +46,19 @@ public class DeclaraoDeRemessaDIR {
      **/
     private String numeroDeclaracao = null;
 
+    @XmlElement(name = "numeroLote")
+    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
+     **/
+    private String numeroLote = null;
 
+    @XmlElement(name = "versaoDIR")
+    @ApiModelProperty(value = "Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).")
     /**
      * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     *
-     * @return versaoDIR
      **/
-    @JsonProperty("versaoDIR")
-    public String getVersaoDIR() {
-        return versaoDIR;
-    }
-
-    public void setVersaoDIR(String versaoDIR) {
-        this.versaoDIR = versaoDIR;
-    }
-
-    public DeclaraoDeRemessaDIR versaoDIR(String versaoDIR) {
-        this.versaoDIR = versaoDIR;
-        return this;
-    }
+    private String versaoDIR = null;
 
     /**
      * Data e horário do encerramento de seleção do lote.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
@@ -106,25 +76,6 @@ public class DeclaraoDeRemessaDIR {
 
     public DeclaraoDeRemessaDIR dataHoraEncerramentoLote(OffsetDateTime dataHoraEncerramentoLote) {
         this.dataHoraEncerramentoLote = dataHoraEncerramentoLote;
-        return this;
-    }
-
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     *
-     * @return numeroLote
-     **/
-    @JsonProperty("numeroLote")
-    public String getNumeroLote() {
-        return numeroLote;
-    }
-
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-    }
-
-    public DeclaraoDeRemessaDIR numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
         return this;
     }
 
@@ -185,16 +136,65 @@ public class DeclaraoDeRemessaDIR {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
+     *
+     * @return numeroLote
+     **/
+    @JsonProperty("numeroLote")
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+    }
+
+    public DeclaraoDeRemessaDIR numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
+    }
+
+    /**
+     * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     *
+     * @return versaoDIR
+     **/
+    @JsonProperty("versaoDIR")
+    public String getVersaoDIR() {
+        return versaoDIR;
+    }
+
+    public void setVersaoDIR(String versaoDIR) {
+        this.versaoDIR = versaoDIR;
+    }
+
+    public DeclaraoDeRemessaDIR versaoDIR(String versaoDIR) {
+        this.versaoDIR = versaoDIR;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DeclaraoDeRemessaDIR {\n" +
-                "    versaoDIR: " + toIndentedString(versaoDIR) + "\n" +
                 "    dataHoraEncerramentoLote: " + toIndentedString(dataHoraEncerramentoLote) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
                 "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "    identificadorLote: " + toIndentedString(identificadorLote) + "\n" +
                 "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    versaoDIR: " + toIndentedString(versaoDIR) + "\n" +
                 "}";
         return sb;
     }

@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TransitoSimplificado", propOrder =
-        {"codigoURFDestino", "cnpjRespDestino", "veiculoRodoviario", "veiculoFerroviario", "indEscaneamento", "codigoRADestino"
+        {"codigoURFDestino", "cnpjRespDestino", "codigoRADestino", "veiculoFerroviario", "veiculoRodoviario", "indEscaneamento"
         })
 
 @XmlRootElement(name = "TransitoSimplificado")
@@ -37,23 +37,6 @@ public class TransitoSimplificado {
      **/
     private String cnpjRespDestino = null;
 
-    @XmlElement(name = "veiculoRodoviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoRodoviario veiculoRodoviario = null;
-
-    @XmlElement(name = "veiculoFerroviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoFerroviario veiculoFerroviario = null;
-
-    @XmlElement(name = "indEscaneamento")
-    @ApiModelProperty(example = "N", value = "Indicador de escaneamento<br>Domínio: S (Sim), N (Não)")
-    /**
-     * Indicador de escaneamento<br>Domínio: S (Sim), N (Não)
-     **/
-    private String indEscaneamento = null;
-
     @XmlElement(name = "codigoRADestino")
     @ApiModelProperty(example = "7911101", value = "Código do Recinto Aduaneiro do local de destino do trânsito<br>Tamanho: 7<br>Formato: NNNNNNN<br>Deve ser informado quando não for informada a Unidade da Receita Federal de destino")
     /**
@@ -61,16 +44,22 @@ public class TransitoSimplificado {
      **/
     private String codigoRADestino = null;
 
+    @XmlElement(name = "veiculoFerroviario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private VeiculoFerroviario veiculoFerroviario = null;
+
+    @XmlElement(name = "veiculoRodoviario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private VeiculoRodoviario veiculoRodoviario = null;
+
+    @XmlElement(name = "indEscaneamento")
+    @ApiModelProperty(example = "N", value = "Indicador de escaneamento<br>Domínio: S (Sim), N (Não)")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Indicador de escaneamento<br>Domínio: S (Sim), N (Não)
+     **/
+    private String indEscaneamento = null;
 
     /**
      * Código da Unidade da Receita Federal do local de destino do trânsito&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Deve ser informado junto com o CNPJ Responsável do Destino quando não for informado o Recinto Aduaneiro
@@ -111,22 +100,28 @@ public class TransitoSimplificado {
     }
 
     /**
-     * Get veiculoRodoviario
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código do Recinto Aduaneiro do local de destino do trânsito&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Deve ser informado quando não for informada a Unidade da Receita Federal de destino
      *
-     * @return veiculoRodoviario
+     * @return codigoRADestino
      **/
-    @JsonProperty("veiculoRodoviario")
-    public VeiculoRodoviario getVeiculoRodoviario() {
-        return veiculoRodoviario;
+    @JsonProperty("codigoRADestino")
+    public String getCodigoRADestino() {
+        return codigoRADestino;
     }
 
-    public void setVeiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
-    }
-
-    public TransitoSimplificado veiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
-        return this;
+    public void setCodigoRADestino(String codigoRADestino) {
+        this.codigoRADestino = codigoRADestino;
     }
 
     /**
@@ -148,6 +143,25 @@ public class TransitoSimplificado {
         return this;
     }
 
+    public TransitoSimplificado codigoRADestino(String codigoRADestino) {
+        this.codigoRADestino = codigoRADestino;
+        return this;
+    }
+
+    /**
+     * Get veiculoRodoviario
+     *
+     * @return veiculoRodoviario
+     **/
+    @JsonProperty("veiculoRodoviario")
+    public VeiculoRodoviario getVeiculoRodoviario() {
+        return veiculoRodoviario;
+    }
+
+    public void setVeiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
+        this.veiculoRodoviario = veiculoRodoviario;
+    }
+
     /**
      * Indicador de escaneamento&lt;br&gt;Domínio: S (Sim), N (Não)
      *
@@ -167,22 +181,8 @@ public class TransitoSimplificado {
         return this;
     }
 
-    /**
-     * Código do Recinto Aduaneiro do local de destino do trânsito&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Deve ser informado quando não for informada a Unidade da Receita Federal de destino
-     *
-     * @return codigoRADestino
-     **/
-    @JsonProperty("codigoRADestino")
-    public String getCodigoRADestino() {
-        return codigoRADestino;
-    }
-
-    public void setCodigoRADestino(String codigoRADestino) {
-        this.codigoRADestino = codigoRADestino;
-    }
-
-    public TransitoSimplificado codigoRADestino(String codigoRADestino) {
-        this.codigoRADestino = codigoRADestino;
+    public TransitoSimplificado veiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
+        this.veiculoRodoviario = veiculoRodoviario;
         return this;
     }
 
@@ -192,10 +192,10 @@ public class TransitoSimplificado {
         String sb = "class TransitoSimplificado {\n" +
                 "    codigoURFDestino: " + toIndentedString(codigoURFDestino) + "\n" +
                 "    cnpjRespDestino: " + toIndentedString(cnpjRespDestino) + "\n" +
-                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
-                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
-                "    indEscaneamento: " + toIndentedString(indEscaneamento) + "\n" +
                 "    codigoRADestino: " + toIndentedString(codigoRADestino) + "\n" +
+                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
+                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
+                "    indEscaneamento: " + toIndentedString(indEscaneamento) + "\n" +
                 "}";
         return sb;
     }

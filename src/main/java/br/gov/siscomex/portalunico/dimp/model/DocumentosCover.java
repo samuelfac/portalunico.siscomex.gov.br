@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentosCover", propOrder =
-        {"documentosInstrucao", "declaracoesExportacaoEstrangeira", "processos"
+        {"documentosInstrucao", "processos", "declaracoesExportacaoEstrangeira"
         })
 
 @XmlRootElement(name = "DocumentosCover")
@@ -31,26 +31,15 @@ public class DocumentosCover {
     @Valid
     private List<DocumentoInstrucaoCover> documentosInstrucao = new ArrayList<>();
 
-    @XmlElement(name = "declaracoesExportacaoEstrangeira")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira = null;
-
     @XmlElement(name = "processos")
     @ApiModelProperty(value = "")
     @Valid
     private List<ProcessoDocumentoInstrucaoCover> processos = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "declaracoesExportacaoEstrangeira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira = null;
 
     /**
      * Get documentosInstrucao
@@ -78,30 +67,6 @@ public class DocumentosCover {
     }
 
     /**
-     * Get declaracoesExportacaoEstrangeira
-     *
-     * @return declaracoesExportacaoEstrangeira
-     **/
-    @JsonProperty("declaracoesExportacaoEstrangeira")
-    public List<DeclaracaoExportacaoEstrangeiraCover> getDeclaracoesExportacaoEstrangeira() {
-        return declaracoesExportacaoEstrangeira;
-    }
-
-    public void setDeclaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
-        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
-    }
-
-    public DocumentosCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
-        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
-        return this;
-    }
-
-    public DocumentosCover addDeclaracoesExportacaoEstrangeiraItem(DeclaracaoExportacaoEstrangeiraCover declaracoesExportacaoEstrangeiraItem) {
-        this.declaracoesExportacaoEstrangeira.add(declaracoesExportacaoEstrangeiraItem);
-        return this;
-    }
-
-    /**
      * Get processos
      *
      * @return processos
@@ -125,13 +90,48 @@ public class DocumentosCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get declaracoesExportacaoEstrangeira
+     *
+     * @return declaracoesExportacaoEstrangeira
+     **/
+    @JsonProperty("declaracoesExportacaoEstrangeira")
+    public List<DeclaracaoExportacaoEstrangeiraCover> getDeclaracoesExportacaoEstrangeira() {
+        return declaracoesExportacaoEstrangeira;
+    }
+
+    public void setDeclaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
+        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
+    }
+
+    public DocumentosCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
+        this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
+        return this;
+    }
+
+    public DocumentosCover addDeclaracoesExportacaoEstrangeiraItem(DeclaracaoExportacaoEstrangeiraCover declaracoesExportacaoEstrangeiraItem) {
+        this.declaracoesExportacaoEstrangeira.add(declaracoesExportacaoEstrangeiraItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class DocumentosCover {\n" +
                 "    documentosInstrucao: " + toIndentedString(documentosInstrucao) + "\n" +
-                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
                 "    processos: " + toIndentedString(processos) + "\n" +
+                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
                 "}";
         return sb;
     }

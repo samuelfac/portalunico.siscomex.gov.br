@@ -25,39 +25,39 @@ public interface ServicosDeAutenticacaoApi {
 
     /**
      * Autentica o usuário a partir do par de chaves de acesso gerado no portal
-     * <p>
+     *
      * Efetua a autenticação básica do par de chaves. O par de chaves deve ser fornecido pelo usuário que deseja compartilhar sua credencial.
      *
      */
     @POST
     @Path("/api/autenticar/chave-acesso")
-    @Produces({"application/json", "*/*"})
+    @Produces({"*/*", "application/json"})
     @ApiOperation(value = "Autentica o usuário a partir do par de chaves de acesso gerado no portal", notes = "Efetua a autenticação básica do par de chaves. O par de chaves deve ser fornecido pelo usuário que deseja compartilhar sua credencial.", tags = {"Servicos de autenticacao"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ErrorResponseDTO.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ErrorResponseDTO.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ErrorResponseDTO.class)})
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class)})
     AuthResponseDTO autenticarChaveAcesso(@ApiParam(value = "Chave de identificação do usuário", required = true) @HeaderParam("Client-Id") String clientId, @ApiParam(value = "Chave secreta", required = true) @HeaderParam("Client-Secret") String clientSecret, @ApiParam(value = "Perfil de atuação do usuário", required = true) @HeaderParam("Role-Type") String roleType);
 
     /**
      * Autentica o sistema a partir do par de chaves de acesso gerado no portal
-     * <p>
+     *
      * Efetua a autenticação básica do par de chaves. O par de chaves deve ser fornecido por algum usuário cadastrado como responsável pelo sistema integrado. Esse tipo de autenticação é de uso restrito dos órgãos da administração pública.
      *
      */
     @POST
     @Path("/api/autenticar/chave-acesso/sistema")
-    @Produces({"application/json", "*/*"})
+    @Produces({"*/*", "application/json"})
     @ApiOperation(value = "Autentica o sistema a partir do par de chaves de acesso gerado no portal", notes = "Efetua a autenticação básica do par de chaves. O par de chaves deve ser fornecido por algum usuário cadastrado como responsável pelo sistema integrado. Esse tipo de autenticação é de uso restrito dos órgãos da administração pública.", tags = {"Servicos de autenticacao"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ErrorResponseDTO.class),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ErrorResponseDTO.class),
-            @ApiResponse(code = 500, message = "Erro interno no servidor", response = ErrorResponseDTO.class)})
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class)})
     AuthResponseDTO autenticarChaveAcessoSistema(@ApiParam(value = "Chave de identificação do usuário", required = true) @HeaderParam("Client-Id") String clientId, @ApiParam(value = "Chave secreta", required = true) @HeaderParam("Client-Secret") String clientSecret, @ApiParam(value = "Chave de identificação do sistema integrado", required = true) @HeaderParam("System-Code") String systemCode);
 
     /**
      * Autentica o sistema a partir do certificado digital de equipamento previamente habilitado
-     * <p>
+     *
      * Efetua a autenticação mútua (mTLS) do certificado digital de equipamento (SSL). O certificado deve ser previamente habilitado por um usuário cadastrador de sistemas integrados do portal. Esse tipo de autenticação é de uso restrito dos órgãos da administração pública.
      *
      */
@@ -66,14 +66,14 @@ public interface ServicosDeAutenticacaoApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Autentica o sistema a partir do certificado digital de equipamento previamente habilitado", notes = "Efetua a autenticação mútua (mTLS) do certificado digital de equipamento (SSL). O certificado deve ser previamente habilitado por um usuário cadastrador de sistemas integrados do portal. Esse tipo de autenticação é de uso restrito dos órgãos da administração pública.", tags = {"Servicos de autenticacao"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor")})
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class)})
     AuthResponseDTO autenticarSistema(@ApiParam(value = "Chave que identifica o sistema integrado associado à um órgão da administração pública", required = true) @HeaderParam("System-Code") String systemCode);
 
     /**
      * Autentica o usuário a partir do certificado digital de pessoa física ou jurídica
-     * <p>
+     *
      * Efetua a autenticação mútua (mTLS) do certificado digital e-CPF ou e-CNPJ padrão ICP Brasil.
      *
      */
@@ -82,9 +82,9 @@ public interface ServicosDeAutenticacaoApi {
     @Produces({"application/json"})
     @ApiOperation(value = "Autentica o usuário a partir do certificado digital de pessoa física ou jurídica", notes = "Efetua a autenticação mútua (mTLS) do certificado digital e-CPF ou e-CNPJ padrão ICP Brasil.", tags = {"Servicos de autenticacao"})
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class),
+            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor")})
+            @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = AuthResponseDTO.class)})
     AuthResponseDTO autenticarUsuario(@ApiParam(value = "Perfil de atuação do usuário. A lista de perfis está descrita na tabela de **Perfis de Acesso** na seção acima.", required = true) @HeaderParam("Role-Type") String roleType);
 }
 

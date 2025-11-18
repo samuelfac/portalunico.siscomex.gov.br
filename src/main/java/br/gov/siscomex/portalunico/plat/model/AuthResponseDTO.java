@@ -31,17 +31,6 @@ public class AuthResponseDTO {
     private String token = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Token de prevenção contra ataques CSRF (Cross-Site Request Forgery). O conteúdo é o mesmo recebido no response header &#39;X-CSRF-Token&#39;.
      *
      * @return token
@@ -59,6 +48,18 @@ public class AuthResponseDTO {
     public AuthResponseDTO token(String token) {
         this.token = token;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

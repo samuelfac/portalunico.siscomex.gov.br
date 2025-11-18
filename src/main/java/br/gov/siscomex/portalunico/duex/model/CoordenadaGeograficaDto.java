@@ -12,11 +12,15 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CoordenadaGeograficaDto", propOrder =
-        {"latitude", "coordenadaArrayLatitudeLongitude", "longitude"
+        {"coordenadaArrayLatitudeLongitude", "latitude", "longitude"
         })
 
 @XmlRootElement(name = "CoordenadaGeograficaDto")
 public class CoordenadaGeograficaDto {
+
+    @XmlElement(name = "coordenadaArrayLatitudeLongitude")
+    @ApiModelProperty(value = "")
+    private List<String> coordenadaArrayLatitudeLongitude = null;
 
     @XmlElement(name = "latitude")
     @ApiModelProperty(value = "Latitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
@@ -25,46 +29,12 @@ public class CoordenadaGeograficaDto {
      **/
     private String latitude = null;
 
-    @XmlElement(name = "coordenadaArrayLatitudeLongitude")
-    @ApiModelProperty(value = "")
-    private List<String> coordenadaArrayLatitudeLongitude = null;
-
     @XmlElement(name = "longitude")
     @ApiModelProperty(value = "Longitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
     /**
      * Longitude<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
      **/
     private String longitude = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Latitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
-     *
-     * @return latitude
-     **/
-    @JsonProperty("latitude")
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public CoordenadaGeograficaDto latitude(String latitude) {
-        this.latitude = latitude;
-        return this;
-    }
 
     /**
      * Get coordenadaArrayLatitudeLongitude
@@ -91,6 +61,31 @@ public class CoordenadaGeograficaDto {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Latitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
+     *
+     * @return latitude
+     **/
+    @JsonProperty("latitude")
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    /**
      * Longitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
      *
      * @return longitude
@@ -109,12 +104,17 @@ public class CoordenadaGeograficaDto {
         return this;
     }
 
+    public CoordenadaGeograficaDto latitude(String latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CoordenadaGeograficaDto {\n" +
-                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    coordenadaArrayLatitudeLongitude: " + toIndentedString(coordenadaArrayLatitudeLongitude) + "\n" +
+                "    latitude: " + toIndentedString(latitude) + "\n" +
                 "    longitude: " + toIndentedString(longitude) + "\n" +
                 "}";
         return sb;

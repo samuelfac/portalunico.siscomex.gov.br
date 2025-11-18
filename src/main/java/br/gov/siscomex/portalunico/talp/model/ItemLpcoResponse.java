@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemLpcoResponse", propOrder =
-        {"identificadorCota", "listaCamposNcm", "produto", "listaAtributosNcm", "ncm", "numeroItem", "parcelaDistribuicaoCota", "criterioDistribuicaoCota"
+        {"numeroItem", "ncm", "listaCamposNcm", "listaAtributosNcm", "produto", "identificadorCota", "criterioDistribuicaoCota", "parcelaDistribuicaoCota"
         })
 
 @XmlRootElement(name = "ItemLpcoResponse")
@@ -25,12 +25,19 @@ import java.util.List;
 @ApiModel(description = "Dados de um item de um LPCO")
 public class ItemLpcoResponse {
 
-    @XmlElement(name = "identificadorCota")
-    @ApiModelProperty(example = "I00085-01-01", value = "Identificador da cota")
+    @XmlElement(name = "numeroItem", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número sequencial do item do LPCO.")
     /**
-     * Identificador da cota
+     * Número sequencial do item do LPCO.
      **/
-    private String identificadorCota = null;
+    private Integer numeroItem = null;
+
+    @XmlElement(name = "ncm", required = true)
+    @ApiModelProperty(example = "01012100", required = true, value = "Código da NCM do item do LPCO.<br>Tamanho: 8<br>Formato: NNNNNNNN")
+    /**
+     * Código da NCM do item do LPCO.<br>Tamanho: 8<br>Formato: NNNNNNNN
+     **/
+    private String ncm = null;
 
     @XmlElement(name = "listaCamposNcm")
     @ApiModelProperty(value = " Lista de campos de cada item do LPCO exigidos pelo modelo.")
@@ -40,11 +47,6 @@ public class ItemLpcoResponse {
      **/
     private List<CampoLpcoResponse> listaCamposNcm = null;
 
-    @XmlElement(name = "produto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Produto produto = null;
-
     @XmlElement(name = "listaAtributosNcm")
     @ApiModelProperty(value = "Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.")
     @Valid
@@ -53,26 +55,17 @@ public class ItemLpcoResponse {
      **/
     private List<CampoLpcoResponse> listaAtributosNcm = null;
 
-    @XmlElement(name = "ncm", required = true)
-    @ApiModelProperty(example = "01012100", required = true, value = "Código da NCM do item do LPCO.<br>Tamanho: 8<br>Formato: NNNNNNNN")
-    /**
-     * Código da NCM do item do LPCO.<br>Tamanho: 8<br>Formato: NNNNNNNN
-     **/
-    private String ncm = null;
+    @XmlElement(name = "produto")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Produto produto = null;
 
-    @XmlElement(name = "numeroItem", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número sequencial do item do LPCO.")
+    @XmlElement(name = "identificadorCota")
+    @ApiModelProperty(example = "I00085-01-01", value = "Identificador da cota")
     /**
-     * Número sequencial do item do LPCO.
+     * Identificador da cota
      **/
-    private Integer numeroItem = null;
-
-    @XmlElement(name = "parcelaDistribuicaoCota")
-    @ApiModelProperty(example = "Ordem de registro", value = "Parcela de distribuição da cota")
-    /**
-     * Parcela de distribuição da cota
-     **/
-    private String parcelaDistribuicaoCota = null;
+    private String identificadorCota = null;
 
     @XmlElement(name = "criterioDistribuicaoCota")
     @ApiModelProperty(example = "Performance", value = "Critério de distribuição da cota")
@@ -80,6 +73,13 @@ public class ItemLpcoResponse {
      * Critério de distribuição da cota
      **/
     private String criterioDistribuicaoCota = null;
+
+    @XmlElement(name = "parcelaDistribuicaoCota")
+    @ApiModelProperty(example = "Ordem de registro", value = "Parcela de distribuição da cota")
+    /**
+     * Parcela de distribuição da cota
+     **/
+    private String parcelaDistribuicaoCota = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -93,22 +93,38 @@ public class ItemLpcoResponse {
     }
 
     /**
-     * Identificador da cota
+     * Número sequencial do item do LPCO.
      *
-     * @return identificadorCota
+     * @return numeroItem
      **/
-    @JsonProperty("identificadorCota")
-    public String getIdentificadorCota() {
-        return identificadorCota;
+    @JsonProperty("numeroItem")
+    @NotNull
+    public Integer getNumeroItem() {
+        return numeroItem;
     }
 
-    public void setIdentificadorCota(String identificadorCota) {
-        this.identificadorCota = identificadorCota;
+    public void setNumeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
     }
 
-    public ItemLpcoResponse identificadorCota(String identificadorCota) {
-        this.identificadorCota = identificadorCota;
+    public ItemLpcoResponse numeroItem(Integer numeroItem) {
+        this.numeroItem = numeroItem;
         return this;
+    }
+
+    /**
+     * Código da NCM do item do LPCO.&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
+     *
+     * @return ncm
+     **/
+    @JsonProperty("ncm")
+    @NotNull
+    public String getNcm() {
+        return ncm;
+    }
+
+    public void setNcm(String ncm) {
+        this.ncm = ncm;
     }
 
     /**
@@ -136,25 +152,6 @@ public class ItemLpcoResponse {
     }
 
     /**
-     * Get produto
-     *
-     * @return produto
-     **/
-    @JsonProperty("produto")
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
-    public ItemLpcoResponse produto(Produto produto) {
-        this.produto = produto;
-        return this;
-    }
-
-    /**
      * Lista de atributos dinâmicos da NCM (varia de NCM para NCM). Essa lista de atributos da NCM pode ser obtida no endpoint /ext/lpco/modelo/{codigoModelo}/{ncm}.
      *
      * @return listaAtributosNcm
@@ -178,44 +175,61 @@ public class ItemLpcoResponse {
         return this;
     }
 
-    /**
-     * Código da NCM do item do LPCO.&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
-     *
-     * @return ncm
-     **/
-    @JsonProperty("ncm")
-    @NotNull
-    public String getNcm() {
-        return ncm;
-    }
-
-    public void setNcm(String ncm) {
-        this.ncm = ncm;
-    }
-
     public ItemLpcoResponse ncm(String ncm) {
         this.ncm = ncm;
         return this;
     }
 
     /**
-     * Número sequencial do item do LPCO.
+     * Get produto
      *
-     * @return numeroItem
+     * @return produto
      **/
-    @JsonProperty("numeroItem")
-    @NotNull
-    public Integer getNumeroItem() {
-        return numeroItem;
+    @JsonProperty("produto")
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setNumeroItem(Integer numeroItem) {
-        this.numeroItem = numeroItem;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
-    public ItemLpcoResponse numeroItem(Integer numeroItem) {
-        this.numeroItem = numeroItem;
+    public ItemLpcoResponse produto(Produto produto) {
+        this.produto = produto;
         return this;
+    }
+
+    /**
+     * Identificador da cota
+     *
+     * @return identificadorCota
+     **/
+    @JsonProperty("identificadorCota")
+    public String getIdentificadorCota() {
+        return identificadorCota;
+    }
+
+    public void setIdentificadorCota(String identificadorCota) {
+        this.identificadorCota = identificadorCota;
+    }
+
+    public ItemLpcoResponse identificadorCota(String identificadorCota) {
+        this.identificadorCota = identificadorCota;
+        return this;
+    }
+
+    /**
+     * Critério de distribuição da cota
+     *
+     * @return criterioDistribuicaoCota
+     **/
+    @JsonProperty("criterioDistribuicaoCota")
+    public String getCriterioDistribuicaoCota() {
+        return criterioDistribuicaoCota;
+    }
+
+    public void setCriterioDistribuicaoCota(String criterioDistribuicaoCota) {
+        this.criterioDistribuicaoCota = criterioDistribuicaoCota;
     }
 
     /**
@@ -237,20 +251,6 @@ public class ItemLpcoResponse {
         return this;
     }
 
-    /**
-     * Critério de distribuição da cota
-     *
-     * @return criterioDistribuicaoCota
-     **/
-    @JsonProperty("criterioDistribuicaoCota")
-    public String getCriterioDistribuicaoCota() {
-        return criterioDistribuicaoCota;
-    }
-
-    public void setCriterioDistribuicaoCota(String criterioDistribuicaoCota) {
-        this.criterioDistribuicaoCota = criterioDistribuicaoCota;
-    }
-
     public ItemLpcoResponse criterioDistribuicaoCota(String criterioDistribuicaoCota) {
         this.criterioDistribuicaoCota = criterioDistribuicaoCota;
         return this;
@@ -260,14 +260,14 @@ public class ItemLpcoResponse {
     public String toString() {
 
         String sb = "class ItemLpcoResponse {\n" +
-                "    identificadorCota: " + toIndentedString(identificadorCota) + "\n" +
-                "    listaCamposNcm: " + toIndentedString(listaCamposNcm) + "\n" +
-                "    produto: " + toIndentedString(produto) + "\n" +
-                "    listaAtributosNcm: " + toIndentedString(listaAtributosNcm) + "\n" +
-                "    ncm: " + toIndentedString(ncm) + "\n" +
                 "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "    parcelaDistribuicaoCota: " + toIndentedString(parcelaDistribuicaoCota) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    listaCamposNcm: " + toIndentedString(listaCamposNcm) + "\n" +
+                "    listaAtributosNcm: " + toIndentedString(listaAtributosNcm) + "\n" +
+                "    produto: " + toIndentedString(produto) + "\n" +
+                "    identificadorCota: " + toIndentedString(identificadorCota) + "\n" +
                 "    criterioDistribuicaoCota: " + toIndentedString(criterioDistribuicaoCota) + "\n" +
+                "    parcelaDistribuicaoCota: " + toIndentedString(parcelaDistribuicaoCota) + "\n" +
                 "}";
         return sb;
     }

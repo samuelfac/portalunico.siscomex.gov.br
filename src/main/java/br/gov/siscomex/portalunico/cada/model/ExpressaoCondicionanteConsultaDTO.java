@@ -12,28 +12,28 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ExpressaoCondicionanteConsultaDTO", propOrder =
-        {"condicao", "composicao", "valor", "operador"
+        {"operador", "valor", "composicao", "condicao"
         })
 
 @XmlRootElement(name = "ExpressaoCondicionanteConsultaDTO")
 public class ExpressaoCondicionanteConsultaDTO {
 
-    @XmlElement(name = "condicao")
+    @XmlElement(name = "operador")
     @ApiModelProperty(value = "")
-    @Valid
-    private ExpressaoCondicionanteConsultaDTO condicao = null;
-
-    @XmlElement(name = "composicao")
-    @ApiModelProperty(value = "")
-    private String composicao = null;
+    private String operador = null;
 
     @XmlElement(name = "valor")
     @ApiModelProperty(value = "")
     private String valor = null;
 
-    @XmlElement(name = "operador")
+    @XmlElement(name = "composicao")
     @ApiModelProperty(value = "")
-    private String operador = null;
+    private String composicao = null;
+
+    @XmlElement(name = "condicao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ExpressaoCondicionanteConsultaDTO condicao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -47,21 +47,40 @@ public class ExpressaoCondicionanteConsultaDTO {
     }
 
     /**
-     * Get condicao
+     * Get operador
      *
-     * @return condicao
+     * @return operador
      **/
-    @JsonProperty("condicao")
-    public ExpressaoCondicionanteConsultaDTO getCondicao() {
-        return condicao;
+    @JsonProperty("operador")
+    public String getOperador() {
+        return operador;
     }
 
-    public void setCondicao(ExpressaoCondicionanteConsultaDTO condicao) {
-        this.condicao = condicao;
+    public void setOperador(String operador) {
+        this.operador = operador;
     }
 
-    public ExpressaoCondicionanteConsultaDTO condicao(ExpressaoCondicionanteConsultaDTO condicao) {
-        this.condicao = condicao;
+    /**
+     * Get valor
+     *
+     * @return valor
+     **/
+    @JsonProperty("valor")
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public ExpressaoCondicionanteConsultaDTO valor(String valor) {
+        this.valor = valor;
+        return this;
+    }
+
+    public ExpressaoCondicionanteConsultaDTO operador(String operador) {
+        this.operador = operador;
         return this;
     }
 
@@ -85,40 +104,21 @@ public class ExpressaoCondicionanteConsultaDTO {
     }
 
     /**
-     * Get valor
+     * Get condicao
      *
-     * @return valor
+     * @return condicao
      **/
-    @JsonProperty("valor")
-    public String getValor() {
-        return valor;
+    @JsonProperty("condicao")
+    public ExpressaoCondicionanteConsultaDTO getCondicao() {
+        return condicao;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setCondicao(ExpressaoCondicionanteConsultaDTO condicao) {
+        this.condicao = condicao;
     }
 
-    public ExpressaoCondicionanteConsultaDTO valor(String valor) {
-        this.valor = valor;
-        return this;
-    }
-
-    /**
-     * Get operador
-     *
-     * @return operador
-     **/
-    @JsonProperty("operador")
-    public String getOperador() {
-        return operador;
-    }
-
-    public void setOperador(String operador) {
-        this.operador = operador;
-    }
-
-    public ExpressaoCondicionanteConsultaDTO operador(String operador) {
-        this.operador = operador;
+    public ExpressaoCondicionanteConsultaDTO condicao(ExpressaoCondicionanteConsultaDTO condicao) {
+        this.condicao = condicao;
         return this;
     }
 
@@ -126,10 +126,10 @@ public class ExpressaoCondicionanteConsultaDTO {
     public String toString() {
 
         String sb = "class ExpressaoCondicionanteConsultaDTO {\n" +
-                "    condicao: " + toIndentedString(condicao) + "\n" +
-                "    composicao: " + toIndentedString(composicao) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
                 "    operador: " + toIndentedString(operador) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
+                "    composicao: " + toIndentedString(composicao) + "\n" +
+                "    condicao: " + toIndentedString(condicao) + "\n" +
                 "}";
         return sb;
     }

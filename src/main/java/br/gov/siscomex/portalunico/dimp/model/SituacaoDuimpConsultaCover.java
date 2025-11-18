@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SituacaoDuimpConsultaCover", propOrder =
-        {"dataDesembaraco", "situacaoDuimp"
+        {"situacaoDuimp", "dataDesembaraco"
         })
 
 @XmlRootElement(name = "SituacaoDuimpConsultaCover")
@@ -25,18 +25,19 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Tipos de situações e controles da declaração única de importação.")
 public class SituacaoDuimpConsultaCover {
 
-    @XmlElement(name = "dataDesembaraco")
-    @ApiModelProperty(value = "Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private OffsetDateTime dataDesembaraco = null;
+
     @XmlElement(name = "situacaoDuimp")
     @ApiModelProperty(example = "REGISTRADA_AGUARDANDO_CANAL", value = "Situação da versão vigente da Duimp.<br>Domínio:")
     /**
      * Situação da versão vigente da Duimp.<br>Domínio:
      **/
     private SituacaoDuimpEnum situacaoDuimp = null;
+    @XmlElement(name = "dataDesembaraco")
+    @ApiModelProperty(value = "Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+    /**
+     * Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private OffsetDateTime dataDesembaraco = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -47,25 +48,6 @@ public class SituacaoDuimpConsultaCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Data e hora do desembaraço.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataDesembaraco
-     **/
-    @JsonProperty("dataDesembaraco")
-    public OffsetDateTime getDataDesembaraco() {
-        return dataDesembaraco;
-    }
-
-    public void setDataDesembaraco(OffsetDateTime dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-    }
-
-    public SituacaoDuimpConsultaCover dataDesembaraco(OffsetDateTime dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-        return this;
     }
 
     /**
@@ -90,13 +72,32 @@ public class SituacaoDuimpConsultaCover {
         return this;
     }
 
+    /**
+     * Data e hora do desembaraço.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataDesembaraco
+     **/
+    @JsonProperty("dataDesembaraco")
+    public OffsetDateTime getDataDesembaraco() {
+        return dataDesembaraco;
+    }
+
+    public void setDataDesembaraco(OffsetDateTime dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
+    }
+
+    public SituacaoDuimpConsultaCover dataDesembaraco(OffsetDateTime dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class SituacaoDuimpConsultaCover {\n" +
-                "    dataDesembaraco: " + toIndentedString(dataDesembaraco) + "\n" +
                 "    situacaoDuimp: " + toIndentedString(situacaoDuimp) + "\n" +
+                "    dataDesembaraco: " + toIndentedString(dataDesembaraco) + "\n" +
                 "}";
         return sb;
     }
@@ -212,15 +213,6 @@ public class SituacaoDuimpConsultaCover {
             value = v;
         }
 
-        public static SituacaoDuimpEnum fromValue(String v) {
-            for (SituacaoDuimpEnum b : SituacaoDuimpEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoDuimpEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -228,6 +220,15 @@ public class SituacaoDuimpConsultaCover {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static SituacaoDuimpEnum fromValue(String v) {
+            for (SituacaoDuimpEnum b : SituacaoDuimpEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoDuimpEnum");
         }
     }
 }

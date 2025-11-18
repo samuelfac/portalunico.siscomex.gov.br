@@ -35,17 +35,6 @@ public class Reboques {
     private List<Reboque> reboque = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de reboques
      *
      * @return reboque
@@ -68,6 +57,18 @@ public class Reboques {
     public Reboques addReboqueItem(Reboque reboqueItem) {
         this.reboque.add(reboqueItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

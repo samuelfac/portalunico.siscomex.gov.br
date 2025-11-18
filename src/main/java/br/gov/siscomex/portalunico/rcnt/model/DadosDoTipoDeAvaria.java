@@ -14,11 +14,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDoTipoDeAvaria", propOrder =
-        {"tipoAvaria", "idElemento"
+        {"idElemento", "tipoAvaria"
         })
 
 @XmlRootElement(name = "DadosDoTipoDeAvaria")
 public class DadosDoTipoDeAvaria {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
 
     @XmlElement(name = "tipoAvaria")
@@ -27,12 +34,6 @@ public class DadosDoTipoDeAvaria {
      * Tipo de Avaria.<br/>Domínio:<br/>A - Diferença de peso<br/>B - Lacre violado<br/>C - Amassado<br/>D - Vazamento<br/>E - Quebrado<br/>F - Rasgado<br/>G - Refitado<br/>H - Furado<br/>I - Aberto<br/>J - Molhado<br/>K - Despregado<br/>L - Repregado<br/>M - Indícios de violação<br/>N - Riscado<br/>O - Sensor de Impacto Ativado<br/>P - Sensor de Inclinação Ativado<br/>Q - Carga Recebida com Alteração de Informação<br/>R - Indícios de Deterioração<br/>S - Carga Lacrada Pelo Fiel Depositário
      **/
     private TipoAvariaEnum tipoAvaria = null;
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
-     **/
-    private String idElemento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -43,6 +44,26 @@ public class DadosDoTipoDeAvaria {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
+     **/
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDoTipoDeAvaria idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**
@@ -67,33 +88,13 @@ public class DadosDoTipoDeAvaria {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosDoTipoDeAvaria idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
 
     @Override
     public String toString() {
 
         String sb = "class DadosDoTipoDeAvaria {\n" +
-                "    tipoAvaria: " + toIndentedString(tipoAvaria) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    tipoAvaria: " + toIndentedString(tipoAvaria) + "\n" +
                 "}";
         return sb;
     }
@@ -185,15 +186,6 @@ public class DadosDoTipoDeAvaria {
             value = v;
         }
 
-        public static TipoAvariaEnum fromValue(String v) {
-            for (TipoAvariaEnum b : TipoAvariaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoAvariaEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -201,6 +193,15 @@ public class DadosDoTipoDeAvaria {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoAvariaEnum fromValue(String v) {
+            for (TipoAvariaEnum b : TipoAvariaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoAvariaEnum");
         }
     }
 }

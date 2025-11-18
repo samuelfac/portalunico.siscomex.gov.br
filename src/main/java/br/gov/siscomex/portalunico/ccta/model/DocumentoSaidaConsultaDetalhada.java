@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoSaidaConsultaDetalhada", propOrder =
-        {"canalDuimp", "tipo", "numero", "raDestinoDta", "uaDestinoDta", "dataHoraVinculacao", "dataConclusaoDta", "situacaoDuimp", "versaoDuimp", "valorTotalMercadoriaLocalDescarga"
+        {"canalDuimp", "dataConclusaoDta", "dataHoraVinculacao", "numero", "raDestinoDta", "situacaoDuimp", "tipo", "uaDestinoDta", "valorTotalMercadoriaLocalDescarga", "versaoDuimp"
         })
 
 @XmlRootElement(name = "DocumentoSaidaConsultaDetalhada")
@@ -27,54 +27,60 @@ public class DocumentoSaidaConsultaDetalhada {
      * Tipo de canal em que caiu a Duimp
      **/
     private String canalDuimp = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
-    /**
-     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "numero")
-    @ApiModelProperty(example = "5490178901", value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN")
-    /**
-     * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
-     **/
-    private String numero = null;
-    @XmlElement(name = "raDestinoDta")
-    @ApiModelProperty(example = "7911101", value = "Recinto Aduaneiro de destino da DTA.")
-    /**
-     * Recinto Aduaneiro de destino da DTA.
-     **/
-    private String raDestinoDta = null;
-    @XmlElement(name = "uaDestinoDta")
-    @ApiModelProperty(example = "0717700", value = "Unidade da RFB de destino da DTA.")
-    /**
-     * Unidade da RFB de destino da DTA.
-     **/
-    private String uaDestinoDta = null;
-    @XmlElement(name = "dataHoraVinculacao")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora do registro<br/> ")
-    /**
-     * Data / Hora do registro<br/>
-     **/
-    private String dataHoraVinculacao = null;
+
     @XmlElement(name = "dataConclusaoDta")
     @ApiModelProperty(example = "2020-04-08T15:30:00-03:00", value = "Data de conclusão de DTA.")
     /**
      * Data de conclusão de DTA.
      **/
     private String dataConclusaoDta = null;
+
+    @XmlElement(name = "dataHoraVinculacao")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data / Hora do registro<br/> ")
+    /**
+     * Data / Hora do registro<br/>
+     **/
+    private String dataHoraVinculacao = null;
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(example = "5490178901", value = "Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN")
+    /**
+     * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
+     **/
+    private String numero = null;
+
+    @XmlElement(name = "raDestinoDta")
+    @ApiModelProperty(example = "7911101", value = "Recinto Aduaneiro de destino da DTA.")
+    /**
+     * Recinto Aduaneiro de destino da DTA.
+     **/
+    private String raDestinoDta = null;
+
     @XmlElement(name = "situacaoDuimp")
     @ApiModelProperty(example = "Desembaraçada", value = "Descrição da situação Duimp")
     /**
      * Descrição da situação Duimp
      **/
     private String situacaoDuimp = null;
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
+    /**
+     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
+     **/
+    private TipoEnum tipo = null;
+    @XmlElement(name = "uaDestinoDta")
+    @ApiModelProperty(example = "0717700", value = "Unidade da RFB de destino da DTA.")
+    /**
+     * Unidade da RFB de destino da DTA.
+     **/
+    private String uaDestinoDta = null;
     @XmlElement(name = "versaoDuimp")
-    @ApiModelProperty(example = "1", value = "Versão da Duimp")
+    @ApiModelProperty(value = "Versão da Duimp")
     /**
      * Versão da Duimp
      **/
     private Integer versaoDuimp = null;
+
     @XmlElement(name = "valorTotalMercadoriaLocalDescarga")
     @ApiModelProperty(example = "5866.26", value = "Valor total da mercadoria no local de descarga")
     @Valid
@@ -114,24 +120,40 @@ public class DocumentoSaidaConsultaDetalhada {
     }
 
     /**
-     * Tipo de documento de saída&lt;p&gt;Os documentos podem ser:&lt;/p&gt;10 – DI&lt;br/&gt;11 – Processo Digital/Processo Dossiê&lt;br/&gt;12 – E-DMOV&lt;br/&gt;20 – Outros&lt;br/&gt;21 – PMB&lt;br/&gt;22 – PDE/TR&lt;br/&gt;23 – DSI Eletrônica&lt;br/&gt;24 – DSI Formulário&lt;br/&gt;30 – DTA - Entrada comum&lt;br/&gt;31 – DTA - Entrada especial - bagagem desacompanhada&lt;br/&gt;32 – DTA - Entrada especial - mala diplomática&lt;br/&gt;33 – DTA - Entrada especial - urna funerária&lt;br/&gt;34 – DTA - Entrada especial - outras&lt;br/&gt;35 – DTA - Passagem comum&lt;br/&gt;36 – DTA - Passagem especial - bagagem desacompanhada&lt;br/&gt;37 – DTA - Passagem especial - mala diplomática&lt;br/&gt;38 – DTA - Passagem especial - partes e peças&lt;br/&gt;39 – DTA - Passagem especial - urna funerária&lt;br/&gt;40 – DTA - Passagem especial - outras&lt;br/&gt;50 – DTI&lt;br/&gt;99 – DUIMP&lt;br/&gt;
+     * Data de conclusão de DTA.
      *
-     * @return tipo
+     * @return dataConclusaoDta
      **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
+    @JsonProperty("dataConclusaoDta")
+    public String getDataConclusaoDta() {
+        return dataConclusaoDta;
     }
 
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public void setDataConclusaoDta(String dataConclusaoDta) {
+        this.dataConclusaoDta = dataConclusaoDta;
     }
 
-    public DocumentoSaidaConsultaDetalhada tipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public DocumentoSaidaConsultaDetalhada dataConclusaoDta(String dataConclusaoDta) {
+        this.dataConclusaoDta = dataConclusaoDta;
+        return this;
+    }
+
+    /**
+     * Data / Hora do registro&lt;br/&gt;
+     *
+     * @return dataHoraVinculacao
+     **/
+    @JsonProperty("dataHoraVinculacao")
+    public String getDataHoraVinculacao() {
+        return dataHoraVinculacao;
+    }
+
+    public void setDataHoraVinculacao(String dataHoraVinculacao) {
+        this.dataHoraVinculacao = dataHoraVinculacao;
+    }
+
+    public DocumentoSaidaConsultaDetalhada dataHoraVinculacao(String dataHoraVinculacao) {
+        this.dataHoraVinculacao = dataHoraVinculacao;
         return this;
     }
 
@@ -174,63 +196,6 @@ public class DocumentoSaidaConsultaDetalhada {
     }
 
     /**
-     * Unidade da RFB de destino da DTA.
-     *
-     * @return uaDestinoDta
-     **/
-    @JsonProperty("uaDestinoDta")
-    public String getUaDestinoDta() {
-        return uaDestinoDta;
-    }
-
-    public void setUaDestinoDta(String uaDestinoDta) {
-        this.uaDestinoDta = uaDestinoDta;
-    }
-
-    public DocumentoSaidaConsultaDetalhada uaDestinoDta(String uaDestinoDta) {
-        this.uaDestinoDta = uaDestinoDta;
-        return this;
-    }
-
-    /**
-     * Data / Hora do registro&lt;br/&gt;
-     *
-     * @return dataHoraVinculacao
-     **/
-    @JsonProperty("dataHoraVinculacao")
-    public String getDataHoraVinculacao() {
-        return dataHoraVinculacao;
-    }
-
-    public void setDataHoraVinculacao(String dataHoraVinculacao) {
-        this.dataHoraVinculacao = dataHoraVinculacao;
-    }
-
-    public DocumentoSaidaConsultaDetalhada dataHoraVinculacao(String dataHoraVinculacao) {
-        this.dataHoraVinculacao = dataHoraVinculacao;
-        return this;
-    }
-
-    /**
-     * Data de conclusão de DTA.
-     *
-     * @return dataConclusaoDta
-     **/
-    @JsonProperty("dataConclusaoDta")
-    public String getDataConclusaoDta() {
-        return dataConclusaoDta;
-    }
-
-    public void setDataConclusaoDta(String dataConclusaoDta) {
-        this.dataConclusaoDta = dataConclusaoDta;
-    }
-
-    public DocumentoSaidaConsultaDetalhada dataConclusaoDta(String dataConclusaoDta) {
-        this.dataConclusaoDta = dataConclusaoDta;
-        return this;
-    }
-
-    /**
      * Descrição da situação Duimp
      *
      * @return situacaoDuimp
@@ -250,21 +215,43 @@ public class DocumentoSaidaConsultaDetalhada {
     }
 
     /**
-     * Versão da Duimp
+     * Tipo de documento de saída&lt;p&gt;Os documentos podem ser:&lt;/p&gt;10 – DI&lt;br/&gt;11 – Processo Digital/Processo Dossiê&lt;br/&gt;12 – E-DMOV&lt;br/&gt;20 – Outros&lt;br/&gt;21 – PMB&lt;br/&gt;22 – PDE/TR&lt;br/&gt;23 – DSI Eletrônica&lt;br/&gt;24 – DSI Formulário&lt;br/&gt;30 – DTA - Entrada comum&lt;br/&gt;31 – DTA - Entrada especial - bagagem desacompanhada&lt;br/&gt;32 – DTA - Entrada especial - mala diplomática&lt;br/&gt;33 – DTA - Entrada especial - urna funerária&lt;br/&gt;34 – DTA - Entrada especial - outras&lt;br/&gt;35 – DTA - Passagem comum&lt;br/&gt;36 – DTA - Passagem especial - bagagem desacompanhada&lt;br/&gt;37 – DTA - Passagem especial - mala diplomática&lt;br/&gt;38 – DTA - Passagem especial - partes e peças&lt;br/&gt;39 – DTA - Passagem especial - urna funerária&lt;br/&gt;40 – DTA - Passagem especial - outras&lt;br/&gt;50 – DTI&lt;br/&gt;99 – DUIMP&lt;br/&gt;
      *
-     * @return versaoDuimp
+     * @return tipo
      **/
-    @JsonProperty("versaoDuimp")
-    public Integer getVersaoDuimp() {
-        return versaoDuimp;
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
     }
 
-    public void setVersaoDuimp(Integer versaoDuimp) {
-        this.versaoDuimp = versaoDuimp;
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
     }
 
-    public DocumentoSaidaConsultaDetalhada versaoDuimp(Integer versaoDuimp) {
-        this.versaoDuimp = versaoDuimp;
+    public DocumentoSaidaConsultaDetalhada tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Unidade da RFB de destino da DTA.
+     *
+     * @return uaDestinoDta
+     **/
+    @JsonProperty("uaDestinoDta")
+    public String getUaDestinoDta() {
+        return uaDestinoDta;
+    }
+
+    public void setUaDestinoDta(String uaDestinoDta) {
+        this.uaDestinoDta = uaDestinoDta;
+    }
+
+    public DocumentoSaidaConsultaDetalhada uaDestinoDta(String uaDestinoDta) {
+        this.uaDestinoDta = uaDestinoDta;
         return this;
     }
 
@@ -287,21 +274,40 @@ public class DocumentoSaidaConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Versão da Duimp
+     *
+     * @return versaoDuimp
+     **/
+    @JsonProperty("versaoDuimp")
+    public Integer getVersaoDuimp() {
+        return versaoDuimp;
+    }
+
+    public void setVersaoDuimp(Integer versaoDuimp) {
+        this.versaoDuimp = versaoDuimp;
+    }
+
+    public DocumentoSaidaConsultaDetalhada versaoDuimp(Integer versaoDuimp) {
+        this.versaoDuimp = versaoDuimp;
+        return this;
+    }
+
 
     @Override
     public String toString() {
 
         String sb = "class DocumentoSaidaConsultaDetalhada {\n" +
                 "    canalDuimp: " + toIndentedString(canalDuimp) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    dataConclusaoDta: " + toIndentedString(dataConclusaoDta) + "\n" +
+                "    dataHoraVinculacao: " + toIndentedString(dataHoraVinculacao) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
                 "    raDestinoDta: " + toIndentedString(raDestinoDta) + "\n" +
-                "    uaDestinoDta: " + toIndentedString(uaDestinoDta) + "\n" +
-                "    dataHoraVinculacao: " + toIndentedString(dataHoraVinculacao) + "\n" +
-                "    dataConclusaoDta: " + toIndentedString(dataConclusaoDta) + "\n" +
                 "    situacaoDuimp: " + toIndentedString(situacaoDuimp) + "\n" +
-                "    versaoDuimp: " + toIndentedString(versaoDuimp) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    uaDestinoDta: " + toIndentedString(uaDestinoDta) + "\n" +
                 "    valorTotalMercadoriaLocalDescarga: " + toIndentedString(valorTotalMercadoriaLocalDescarga) + "\n" +
+                "    versaoDuimp: " + toIndentedString(versaoDuimp) + "\n" +
                 "}";
         return sb;
     }

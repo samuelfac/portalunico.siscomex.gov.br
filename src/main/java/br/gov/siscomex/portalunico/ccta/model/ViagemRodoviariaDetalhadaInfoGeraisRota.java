@@ -14,23 +14,21 @@ import java.time.LocalDate;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ViagemRodoviariaDetalhadaInfoGeraisRota", propOrder =
-        {"cidadeDestinoFinal", "numeroDTAExterior", "cidadePartida", "dataPrevistaDestinoFinal", "dataPrevistaEntrada", "paisDestinoFinal", "paisPartida", "recintoAduaneiroEntrada", "descricaoRotaInternacional", "unidadeRFBEntrada", "alfandegaPartida"
+        {"alfandegaPartida", "cidadeDestinoFinal", "cidadePartida", "dataPrevistaDestinoFinal", "dataPrevistaEntrada", "descricaoRotaInternacional", "numeroDTAExterior", "paisDestinoFinal", "paisPartida", "recintoAduaneiroEntrada", "unidadeRFBEntrada"
         })
 
 @XmlRootElement(name = "ViagemRodoviariaDetalhadaInfoGeraisRota")
 public class ViagemRodoviariaDetalhadaInfoGeraisRota {
 
+    @XmlElement(name = "alfandegaPartida")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Recinto alfandegaPartida = null;
+
     @XmlElement(name = "cidadeDestinoFinal")
     @ApiModelProperty(value = "")
     @Valid
     private Cidade cidadeDestinoFinal = null;
-
-    @XmlElement(name = "numeroDTAExterior")
-    @ApiModelProperty(example = "15656489854988", value = "Número da declaração de trânsito no exterior, quando ocorrer<br/> Tamanho Máximo: 20")
-    /**
-     * Número da declaração de trânsito no exterior, quando ocorrer<br/> Tamanho Máximo: 20
-     **/
-    private String numeroDTAExterior = null;
 
     @XmlElement(name = "cidadePartida")
     @ApiModelProperty(value = "")
@@ -51,6 +49,20 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
      **/
     private LocalDate dataPrevistaEntrada = null;
 
+    @XmlElement(name = "descricaoRotaInternacional", required = true)
+    @ApiModelProperty(example = "Descrição da rota internacional", required = true, value = "Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500")
+    /**
+     * Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500
+     **/
+    private String descricaoRotaInternacional = null;
+
+    @XmlElement(name = "numeroDTAExterior")
+    @ApiModelProperty(example = "15656489854988", value = "Número da declaração de trânsito no exterior, quando ocorrer<br/> Tamanho Máximo: 20")
+    /**
+     * Número da declaração de trânsito no exterior, quando ocorrer<br/> Tamanho Máximo: 20
+     **/
+    private String numeroDTAExterior = null;
+
     @XmlElement(name = "paisDestinoFinal")
     @ApiModelProperty(value = "")
     @Valid
@@ -66,22 +78,10 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
     @Valid
     private Recinto recintoAduaneiroEntrada = null;
 
-    @XmlElement(name = "descricaoRotaInternacional", required = true)
-    @ApiModelProperty(example = "Descrição da rota internacional", required = true, value = "Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500")
-    /**
-     * Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500
-     **/
-    private String descricaoRotaInternacional = null;
-
     @XmlElement(name = "unidadeRFBEntrada")
     @ApiModelProperty(value = "")
     @Valid
     private UnidadeRfb unidadeRFBEntrada = null;
-
-    @XmlElement(name = "alfandegaPartida")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Recinto alfandegaPartida = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -92,6 +92,20 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get alfandegaPartida
+     *
+     * @return alfandegaPartida
+     **/
+    @JsonProperty("alfandegaPartida")
+    public Recinto getAlfandegaPartida() {
+        return alfandegaPartida;
+    }
+
+    public void setAlfandegaPartida(Recinto alfandegaPartida) {
+        this.alfandegaPartida = alfandegaPartida;
     }
 
     /**
@@ -110,25 +124,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
 
     public ViagemRodoviariaDetalhadaInfoGeraisRota cidadeDestinoFinal(Cidade cidadeDestinoFinal) {
         this.cidadeDestinoFinal = cidadeDestinoFinal;
-        return this;
-    }
-
-    /**
-     * Número da declaração de trânsito no exterior, quando ocorrer&lt;br/&gt; Tamanho Máximo: 20
-     *
-     * @return numeroDTAExterior
-     **/
-    @JsonProperty("numeroDTAExterior")
-    public String getNumeroDTAExterior() {
-        return numeroDTAExterior;
-    }
-
-    public void setNumeroDTAExterior(String numeroDTAExterior) {
-        this.numeroDTAExterior = numeroDTAExterior;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisRota numeroDTAExterior(String numeroDTAExterior) {
-        this.numeroDTAExterior = numeroDTAExterior;
         return this;
     }
 
@@ -189,6 +184,45 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
         return this;
     }
 
+    public ViagemRodoviariaDetalhadaInfoGeraisRota alfandegaPartida(Recinto alfandegaPartida) {
+        this.alfandegaPartida = alfandegaPartida;
+        return this;
+    }
+
+    /**
+     * Descrição da rota internacional desde local de partida até a cidade de destino final&lt;br/&gt; Tamanho Máximo: 500
+     *
+     * @return descricaoRotaInternacional
+     **/
+    @JsonProperty("descricaoRotaInternacional")
+    @NotNull
+    public String getDescricaoRotaInternacional() {
+        return descricaoRotaInternacional;
+    }
+
+    public void setDescricaoRotaInternacional(String descricaoRotaInternacional) {
+        this.descricaoRotaInternacional = descricaoRotaInternacional;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisRota descricaoRotaInternacional(String descricaoRotaInternacional) {
+        this.descricaoRotaInternacional = descricaoRotaInternacional;
+        return this;
+    }
+
+    /**
+     * Número da declaração de trânsito no exterior, quando ocorrer&lt;br/&gt; Tamanho Máximo: 20
+     *
+     * @return numeroDTAExterior
+     **/
+    @JsonProperty("numeroDTAExterior")
+    public String getNumeroDTAExterior() {
+        return numeroDTAExterior;
+    }
+
+    public void setNumeroDTAExterior(String numeroDTAExterior) {
+        this.numeroDTAExterior = numeroDTAExterior;
+    }
+
     /**
      * Get paisDestinoFinal
      *
@@ -210,7 +244,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
 
     /**
      * Get paisPartida
-     *
      * @return paisPartida
      **/
     @JsonProperty("paisPartida")
@@ -247,28 +280,7 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
     }
 
     /**
-     * Descrição da rota internacional desde local de partida até a cidade de destino final&lt;br/&gt; Tamanho Máximo: 500
-     *
-     * @return descricaoRotaInternacional
-     **/
-    @JsonProperty("descricaoRotaInternacional")
-    @NotNull
-    public String getDescricaoRotaInternacional() {
-        return descricaoRotaInternacional;
-    }
-
-    public void setDescricaoRotaInternacional(String descricaoRotaInternacional) {
-        this.descricaoRotaInternacional = descricaoRotaInternacional;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisRota descricaoRotaInternacional(String descricaoRotaInternacional) {
-        this.descricaoRotaInternacional = descricaoRotaInternacional;
-        return this;
-    }
-
-    /**
      * Get unidadeRFBEntrada
-     *
      * @return unidadeRFBEntrada
      **/
     @JsonProperty("unidadeRFBEntrada")
@@ -285,22 +297,8 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
         return this;
     }
 
-    /**
-     * Get alfandegaPartida
-     *
-     * @return alfandegaPartida
-     **/
-    @JsonProperty("alfandegaPartida")
-    public Recinto getAlfandegaPartida() {
-        return alfandegaPartida;
-    }
-
-    public void setAlfandegaPartida(Recinto alfandegaPartida) {
-        this.alfandegaPartida = alfandegaPartida;
-    }
-
-    public ViagemRodoviariaDetalhadaInfoGeraisRota alfandegaPartida(Recinto alfandegaPartida) {
-        this.alfandegaPartida = alfandegaPartida;
+    public ViagemRodoviariaDetalhadaInfoGeraisRota numeroDTAExterior(String numeroDTAExterior) {
+        this.numeroDTAExterior = numeroDTAExterior;
         return this;
     }
 
@@ -308,17 +306,17 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
     public String toString() {
 
         String sb = "class ViagemRodoviariaDetalhadaInfoGeraisRota {\n" +
+                "    alfandegaPartida: " + toIndentedString(alfandegaPartida) + "\n" +
                 "    cidadeDestinoFinal: " + toIndentedString(cidadeDestinoFinal) + "\n" +
-                "    numeroDTAExterior: " + toIndentedString(numeroDTAExterior) + "\n" +
                 "    cidadePartida: " + toIndentedString(cidadePartida) + "\n" +
                 "    dataPrevistaDestinoFinal: " + toIndentedString(dataPrevistaDestinoFinal) + "\n" +
                 "    dataPrevistaEntrada: " + toIndentedString(dataPrevistaEntrada) + "\n" +
+                "    descricaoRotaInternacional: " + toIndentedString(descricaoRotaInternacional) + "\n" +
+                "    numeroDTAExterior: " + toIndentedString(numeroDTAExterior) + "\n" +
                 "    paisDestinoFinal: " + toIndentedString(paisDestinoFinal) + "\n" +
                 "    paisPartida: " + toIndentedString(paisPartida) + "\n" +
                 "    recintoAduaneiroEntrada: " + toIndentedString(recintoAduaneiroEntrada) + "\n" +
-                "    descricaoRotaInternacional: " + toIndentedString(descricaoRotaInternacional) + "\n" +
                 "    unidadeRFBEntrada: " + toIndentedString(unidadeRFBEntrada) + "\n" +
-                "    alfandegaPartida: " + toIndentedString(alfandegaPartida) + "\n" +
                 "}";
         return sb;
     }

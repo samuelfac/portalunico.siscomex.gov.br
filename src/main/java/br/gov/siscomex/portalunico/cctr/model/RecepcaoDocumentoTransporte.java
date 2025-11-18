@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RecepcaoDocumentoTransporte", propOrder =
-        {"transportador", "cpfResp", "referenciaLocalRecepcao", "documentosTransporte", "avariasIdentificadas", "codigoIdentCarga", "cnpjResp", "localArmazenamento", "divergenciasIdentificadas", "observacoesGerais", "local", "identificacaoRecepcao"
+        {"identificacaoRecepcao", "cnpjResp", "cpfResp", "local", "referenciaLocalRecepcao", "documentosTransporte", "transportador", "localArmazenamento", "codigoIdentCarga", "avariasIdentificadas", "divergenciasIdentificadas", "observacoesGerais"
         })
 
 @XmlRootElement(name = "RecepcaoDocumentoTransporte")
@@ -26,10 +26,19 @@ import java.util.List;
 @ApiModel(description = "Recepção por Documento de Transporte")
 public class RecepcaoDocumentoTransporte {
 
-    @XmlElement(name = "transportador", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Transportador transportador = null;
+    @XmlElement(name = "identificacaoRecepcao", required = true)
+    @ApiModelProperty(example = "REC001", required = true, value = "Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
+    /**
+     * Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
+     **/
+    private String identificacaoRecepcao = null;
+
+    @XmlElement(name = "cnpjResp")
+    @ApiModelProperty(example = "99999999999999", value = "CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResp = null;
 
     @XmlElement(name = "cpfResp")
     @ApiModelProperty(example = "99999999999", value = "CNPJ do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
@@ -37,6 +46,11 @@ public class RecepcaoDocumentoTransporte {
      * CNPJ do responsável pela recepção<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
      **/
     private String cpfResp = null;
+
+    @XmlElement(name = "local", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Local local = null;
 
     @XmlElement(name = "referenciaLocalRecepcao")
     @ApiModelProperty(example = "Referência do Local de recepção", value = "Referência do Local de recepção")
@@ -53,12 +67,17 @@ public class RecepcaoDocumentoTransporte {
      **/
     private List<DocumentoTransporteCover> documentosTransporte = new ArrayList<>();
 
-    @XmlElement(name = "avariasIdentificadas")
-    @ApiModelProperty(example = "Avarias identificadas", value = "Avarias identificadas<br>Tamanho: 250")
+    @XmlElement(name = "transportador", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private Transportador transportador = null;
+
+    @XmlElement(name = "localArmazenamento")
+    @ApiModelProperty(example = "Local de armazenamento da carga", value = "Local de armazenamento da carga<br>Tamanho: 150")
     /**
-     * Avarias identificadas<br>Tamanho: 250
+     * Local de armazenamento da carga<br>Tamanho: 150
      **/
-    private String avariasIdentificadas = null;
+    private String localArmazenamento = null;
 
     @XmlElement(name = "codigoIdentCarga")
     @ApiModelProperty(example = "id123456", value = "Código de identificação da carga")
@@ -67,19 +86,12 @@ public class RecepcaoDocumentoTransporte {
      **/
     private String codigoIdentCarga = null;
 
-    @XmlElement(name = "cnpjResp")
-    @ApiModelProperty(example = "99999999999999", value = "CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
+    @XmlElement(name = "avariasIdentificadas")
+    @ApiModelProperty(example = "Avarias identificadas", value = "Avarias identificadas<br>Tamanho: 250")
     /**
-     * CNPJ do responsável pela recepção<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
+     * Avarias identificadas<br>Tamanho: 250
      **/
-    private String cnpjResp = null;
-
-    @XmlElement(name = "localArmazenamento")
-    @ApiModelProperty(example = "Local de armazenamento da carga", value = "Local de armazenamento da carga<br>Tamanho: 150")
-    /**
-     * Local de armazenamento da carga<br>Tamanho: 150
-     **/
-    private String localArmazenamento = null;
+    private String avariasIdentificadas = null;
 
     @XmlElement(name = "divergenciasIdentificadas")
     @ApiModelProperty(example = "Divergências identificadas", value = "Divergências identificadas<br>Tamanho: 250")
@@ -95,18 +107,6 @@ public class RecepcaoDocumentoTransporte {
      **/
     private String observacoesGerais = null;
 
-    @XmlElement(name = "local", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private Local local = null;
-
-    @XmlElement(name = "identificacaoRecepcao", required = true)
-    @ApiModelProperty(example = "REC001", required = true, value = "Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.")
-    /**
-     * Identificação da recepção<br>Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
-     **/
-    private String identificacaoRecepcao = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -119,23 +119,37 @@ public class RecepcaoDocumentoTransporte {
     }
 
     /**
-     * Get transportador
+     * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
-     * @return transportador
+     * @return identificacaoRecepcao
      **/
-    @JsonProperty("transportador")
+    @JsonProperty("identificacaoRecepcao")
     @NotNull
-    public Transportador getTransportador() {
-        return transportador;
+    public String getIdentificacaoRecepcao() {
+        return identificacaoRecepcao;
     }
 
-    public void setTransportador(Transportador transportador) {
-        this.transportador = transportador;
+    public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
     }
 
-    public RecepcaoDocumentoTransporte transportador(Transportador transportador) {
-        this.transportador = transportador;
+    public RecepcaoDocumentoTransporte identificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
         return this;
+    }
+
+    /**
+     * CNPJ do responsável pela recepção&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return cnpjResp
+     **/
+    @JsonProperty("cnpjResp")
+    public String getCnpjResp() {
+        return cnpjResp;
+    }
+
+    public void setCnpjResp(String cnpjResp) {
+        this.cnpjResp = cnpjResp;
     }
 
     /**
@@ -155,6 +169,26 @@ public class RecepcaoDocumentoTransporte {
     public RecepcaoDocumentoTransporte cpfResp(String cpfResp) {
         this.cpfResp = cpfResp;
         return this;
+    }
+
+    public RecepcaoDocumentoTransporte cnpjResp(String cnpjResp) {
+        this.cnpjResp = cnpjResp;
+        return this;
+    }
+
+    /**
+     * Get local
+     *
+     * @return local
+     **/
+    @JsonProperty("local")
+    @NotNull
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 
     /**
@@ -201,60 +235,28 @@ public class RecepcaoDocumentoTransporte {
         return this;
     }
 
-    /**
-     * Avarias identificadas&lt;br&gt;Tamanho: 250
-     *
-     * @return avariasIdentificadas
-     **/
-    @JsonProperty("avariasIdentificadas")
-    public String getAvariasIdentificadas() {
-        return avariasIdentificadas;
-    }
-
-    public void setAvariasIdentificadas(String avariasIdentificadas) {
-        this.avariasIdentificadas = avariasIdentificadas;
-    }
-
-    public RecepcaoDocumentoTransporte avariasIdentificadas(String avariasIdentificadas) {
-        this.avariasIdentificadas = avariasIdentificadas;
+    public RecepcaoDocumentoTransporte local(Local local) {
+        this.local = local;
         return this;
     }
 
     /**
-     * Código de identificação da carga
+     * Get transportador
      *
-     * @return codigoIdentCarga
+     * @return transportador
      **/
-    @JsonProperty("codigoIdentCarga")
-    public String getCodigoIdentCarga() {
-        return codigoIdentCarga;
+    @JsonProperty("transportador")
+    @NotNull
+    public Transportador getTransportador() {
+        return transportador;
     }
 
-    public void setCodigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
+    public void setTransportador(Transportador transportador) {
+        this.transportador = transportador;
     }
 
-    public RecepcaoDocumentoTransporte codigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
-        return this;
-    }
-
-    /**
-     * CNPJ do responsável pela recepção&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return cnpjResp
-     **/
-    @JsonProperty("cnpjResp")
-    public String getCnpjResp() {
-        return cnpjResp;
-    }
-
-    public void setCnpjResp(String cnpjResp) {
-        this.cnpjResp = cnpjResp;
-    }
-
-    public RecepcaoDocumentoTransporte cnpjResp(String cnpjResp) {
-        this.cnpjResp = cnpjResp;
+    public RecepcaoDocumentoTransporte transportador(Transportador transportador) {
+        this.transportador = transportador;
         return this;
     }
 
@@ -272,9 +274,41 @@ public class RecepcaoDocumentoTransporte {
         this.localArmazenamento = localArmazenamento;
     }
 
+    /**
+     * Código de identificação da carga
+     * @return codigoIdentCarga
+     **/
+    @JsonProperty("codigoIdentCarga")
+    public String getCodigoIdentCarga() {
+        return codigoIdentCarga;
+    }
+
+    public void setCodigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
+    }
+
+    public RecepcaoDocumentoTransporte codigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
+        return this;
+    }
+
     public RecepcaoDocumentoTransporte localArmazenamento(String localArmazenamento) {
         this.localArmazenamento = localArmazenamento;
         return this;
+    }
+
+    /**
+     * Avarias identificadas&lt;br&gt;Tamanho: 250
+     *
+     * @return avariasIdentificadas
+     **/
+    @JsonProperty("avariasIdentificadas")
+    public String getAvariasIdentificadas() {
+        return avariasIdentificadas;
+    }
+
+    public void setAvariasIdentificadas(String avariasIdentificadas) {
+        this.avariasIdentificadas = avariasIdentificadas;
     }
 
     /**
@@ -298,7 +332,6 @@ public class RecepcaoDocumentoTransporte {
 
     /**
      * Observações adicionais&lt;br&gt;Tamanho: 250
-     *
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")
@@ -315,43 +348,8 @@ public class RecepcaoDocumentoTransporte {
         return this;
     }
 
-    /**
-     * Get local
-     *
-     * @return local
-     **/
-    @JsonProperty("local")
-    @NotNull
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
-    }
-
-    public RecepcaoDocumentoTransporte local(Local local) {
-        this.local = local;
-        return this;
-    }
-
-    /**
-     * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
-     *
-     * @return identificacaoRecepcao
-     **/
-    @JsonProperty("identificacaoRecepcao")
-    @NotNull
-    public String getIdentificacaoRecepcao() {
-        return identificacaoRecepcao;
-    }
-
-    public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
-    }
-
-    public RecepcaoDocumentoTransporte identificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
+    public RecepcaoDocumentoTransporte avariasIdentificadas(String avariasIdentificadas) {
+        this.avariasIdentificadas = avariasIdentificadas;
         return this;
     }
 
@@ -359,18 +357,18 @@ public class RecepcaoDocumentoTransporte {
     public String toString() {
 
         String sb = "class RecepcaoDocumentoTransporte {\n" +
-                "    transportador: " + toIndentedString(transportador) + "\n" +
+                "    identificacaoRecepcao: " + toIndentedString(identificacaoRecepcao) + "\n" +
+                "    cnpjResp: " + toIndentedString(cnpjResp) + "\n" +
                 "    cpfResp: " + toIndentedString(cpfResp) + "\n" +
+                "    local: " + toIndentedString(local) + "\n" +
                 "    referenciaLocalRecepcao: " + toIndentedString(referenciaLocalRecepcao) + "\n" +
                 "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
-                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
-                "    codigoIdentCarga: " + toIndentedString(codigoIdentCarga) + "\n" +
-                "    cnpjResp: " + toIndentedString(cnpjResp) + "\n" +
+                "    transportador: " + toIndentedString(transportador) + "\n" +
                 "    localArmazenamento: " + toIndentedString(localArmazenamento) + "\n" +
+                "    codigoIdentCarga: " + toIndentedString(codigoIdentCarga) + "\n" +
+                "    avariasIdentificadas: " + toIndentedString(avariasIdentificadas) + "\n" +
                 "    divergenciasIdentificadas: " + toIndentedString(divergenciasIdentificadas) + "\n" +
                 "    observacoesGerais: " + toIndentedString(observacoesGerais) + "\n" +
-                "    local: " + toIndentedString(local) + "\n" +
-                "    identificacaoRecepcao: " + toIndentedString(identificacaoRecepcao) + "\n" +
                 "}";
         return sb;
     }

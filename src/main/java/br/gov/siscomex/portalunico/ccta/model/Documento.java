@@ -12,20 +12,39 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Documento", propOrder =
-        {"tipo", "numero"
+        {"numero", "tipo"
         })
 
 @XmlRootElement(name = "Documento")
 public class Documento {
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "")
+    private String numero = null;
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(value = "")
     @Valid
     private TipoDocumento tipo = null;
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(value = "")
-    private String numero = null;
+    /**
+     * Get numero
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public Documento numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,31 +76,12 @@ public class Documento {
         return this;
     }
 
-    /**
-     * Get numero
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public Documento numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Documento {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

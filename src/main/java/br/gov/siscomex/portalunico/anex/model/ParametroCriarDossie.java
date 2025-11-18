@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ParametroCriarDossie", propOrder =
-        {"descricaoDossie", "idTipoDossie", "cnpjCpfDeclarante"
+        {"cnpjCpfDeclarante", "descricaoDossie", "idTipoDossie"
         })
 
 @XmlRootElement(name = "ParametroCriarDossie")
@@ -22,6 +22,13 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Parâmetros para criar um dossiê.")
 public class ParametroCriarDossie {
+
+    @XmlElement(name = "cnpjCpfDeclarante", required = true)
+    @ApiModelProperty(example = "88888888888888", required = true, value = "CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)")
+    /**
+     * CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)
+     **/
+    private String cnpjCpfDeclarante = null;
 
     @XmlElement(name = "descricaoDossie", required = true)
     @ApiModelProperty(example = "Dossiê de exemplo", required = true, value = "Descrição do dossiê.<br/>Tamanho máximo: 255")
@@ -37,13 +44,6 @@ public class ParametroCriarDossie {
      **/
     private Long idTipoDossie = null;
 
-    @XmlElement(name = "cnpjCpfDeclarante", required = true)
-    @ApiModelProperty(example = "88888888888888", required = true, value = "CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)")
-    /**
-     * CNPJ ou CPF do dossiê sem formatação.<br/>Tamanho: 14(CNPJ) ou 11(CPF)
-     **/
-    private String cnpjCpfDeclarante = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -53,6 +53,21 @@ public class ParametroCriarDossie {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CNPJ ou CPF do dossiê sem formatação.&lt;br/&gt;Tamanho: 14(CNPJ) ou 11(CPF)
+     *
+     * @return cnpjCpfDeclarante
+     **/
+    @JsonProperty("cnpjCpfDeclarante")
+    @NotNull
+    public String getCnpjCpfDeclarante() {
+        return cnpjCpfDeclarante;
+    }
+
+    public void setCnpjCpfDeclarante(String cnpjCpfDeclarante) {
+        this.cnpjCpfDeclarante = cnpjCpfDeclarante;
     }
 
     /**
@@ -95,21 +110,6 @@ public class ParametroCriarDossie {
         return this;
     }
 
-    /**
-     * CNPJ ou CPF do dossiê sem formatação.&lt;br/&gt;Tamanho: 14(CNPJ) ou 11(CPF)
-     *
-     * @return cnpjCpfDeclarante
-     **/
-    @JsonProperty("cnpjCpfDeclarante")
-    @NotNull
-    public String getCnpjCpfDeclarante() {
-        return cnpjCpfDeclarante;
-    }
-
-    public void setCnpjCpfDeclarante(String cnpjCpfDeclarante) {
-        this.cnpjCpfDeclarante = cnpjCpfDeclarante;
-    }
-
     public ParametroCriarDossie cnpjCpfDeclarante(String cnpjCpfDeclarante) {
         this.cnpjCpfDeclarante = cnpjCpfDeclarante;
         return this;
@@ -119,9 +119,9 @@ public class ParametroCriarDossie {
     public String toString() {
 
         String sb = "class ParametroCriarDossie {\n" +
+                "    cnpjCpfDeclarante: " + toIndentedString(cnpjCpfDeclarante) + "\n" +
                 "    descricaoDossie: " + toIndentedString(descricaoDossie) + "\n" +
                 "    idTipoDossie: " + toIndentedString(idTipoDossie) + "\n" +
-                "    cnpjCpfDeclarante: " + toIndentedString(cnpjCpfDeclarante) + "\n" +
                 "}";
         return sb;
     }

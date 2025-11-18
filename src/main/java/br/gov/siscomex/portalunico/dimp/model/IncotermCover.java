@@ -37,17 +37,6 @@ public class IncotermCover {
     private String complemento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da Condição de Venda (Código INCOTERM).&lt;br&gt;Tamanho: 3&lt;br&gt;Domínio: EXW, FAS, FCA, FOB, OCV, C+F, CFR, CPT, C+I, DAT, CIF, CIP, DAP
      *
      * @return codigo
@@ -83,6 +72,18 @@ public class IncotermCover {
     public IncotermCover complemento(String complemento) {
         this.complemento = complemento;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

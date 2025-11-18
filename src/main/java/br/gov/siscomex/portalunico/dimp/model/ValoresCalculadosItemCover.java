@@ -13,7 +13,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ValoresCalculadosItemCover", propOrder =
-        {"identificacao", "mercadoria", "tributosCalculados", "condicaoVenda"
+        {"identificacao", "condicaoVenda", "mercadoria", "tributosCalculados"
         })
 
 @XmlRootElement(name = "ValoresCalculadosItemCover")
@@ -24,6 +24,11 @@ public class ValoresCalculadosItemCover {
     @Valid
     private IdentificadorItemDuimpCover identificacao = null;
 
+    @XmlElement(name = "condicaoVenda")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CondicaoVendaValoresCalculadosCover condicaoVenda = null;
+
     @XmlElement(name = "mercadoria")
     @ApiModelProperty(value = "")
     @Valid
@@ -33,22 +38,6 @@ public class ValoresCalculadosItemCover {
     @ApiModelProperty(value = "")
     @Valid
     private List<TributoCalculadoItemCover> tributosCalculados = null;
-
-    @XmlElement(name = "condicaoVenda")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CondicaoVendaValoresCalculadosCover condicaoVenda = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Get identificacao
@@ -67,6 +56,31 @@ public class ValoresCalculadosItemCover {
     public ValoresCalculadosItemCover identificacao(IdentificadorItemDuimpCover identificacao) {
         this.identificacao = identificacao;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get condicaoVenda
+     *
+     * @return condicaoVenda
+     **/
+    @JsonProperty("condicaoVenda")
+    public CondicaoVendaValoresCalculadosCover getCondicaoVenda() {
+        return condicaoVenda;
+    }
+
+    public void setCondicaoVenda(CondicaoVendaValoresCalculadosCover condicaoVenda) {
+        this.condicaoVenda = condicaoVenda;
     }
 
     /**
@@ -112,20 +126,6 @@ public class ValoresCalculadosItemCover {
         return this;
     }
 
-    /**
-     * Get condicaoVenda
-     *
-     * @return condicaoVenda
-     **/
-    @JsonProperty("condicaoVenda")
-    public CondicaoVendaValoresCalculadosCover getCondicaoVenda() {
-        return condicaoVenda;
-    }
-
-    public void setCondicaoVenda(CondicaoVendaValoresCalculadosCover condicaoVenda) {
-        this.condicaoVenda = condicaoVenda;
-    }
-
     public ValoresCalculadosItemCover condicaoVenda(CondicaoVendaValoresCalculadosCover condicaoVenda) {
         this.condicaoVenda = condicaoVenda;
         return this;
@@ -136,9 +136,9 @@ public class ValoresCalculadosItemCover {
 
         String sb = "class ValoresCalculadosItemCover {\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    condicaoVenda: " + toIndentedString(condicaoVenda) + "\n" +
                 "    mercadoria: " + toIndentedString(mercadoria) + "\n" +
                 "    tributosCalculados: " + toIndentedString(tributosCalculados) + "\n" +
-                "    condicaoVenda: " + toIndentedString(condicaoVenda) + "\n" +
                 "}";
         return sb;
     }

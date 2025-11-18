@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ValorPagamentoRegistroCover", propOrder =
-        {"juros", "tributo", "valor"
+        {"tributo", "valor", "juros"
         })
 
 @XmlRootElement(name = "ValorPagamentoRegistroCover")
@@ -23,13 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  **/
 @ApiModel(description = "Dados do tributo principal.")
 public class ValorPagamentoRegistroCover {
-
-    @XmlElement(name = "juros")
-    @ApiModelProperty(example = "10.12", value = "Valor do pagamento de juros em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    /**
-     * Valor do pagamento de juros em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private Double juros = null;
 
     @XmlElement(name = "tributo", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -43,35 +36,12 @@ public class ValorPagamentoRegistroCover {
      **/
     private Double valor = null;
 
+    @XmlElement(name = "juros")
+    @ApiModelProperty(example = "10.12", value = "Valor do pagamento de juros em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Valor do pagamento de juros em R$ (Reais).&lt;br&gt;Tamanho: 13,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return juros
+     * Valor do pagamento de juros em R$ (Reais).<br>Tamanho: 13,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    @JsonProperty("juros")
-    public Double getJuros() {
-        return juros;
-    }
-
-    public void setJuros(Double juros) {
-        this.juros = juros;
-    }
-
-    public ValorPagamentoRegistroCover juros(Double juros) {
-        this.juros = juros;
-        return this;
-    }
+    private Double juros = null;
 
     /**
      * Get tributo
@@ -113,13 +83,43 @@ public class ValorPagamentoRegistroCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Valor do pagamento de juros em R$ (Reais).&lt;br&gt;Tamanho: 13,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return juros
+     **/
+    @JsonProperty("juros")
+    public Double getJuros() {
+        return juros;
+    }
+
+    public void setJuros(Double juros) {
+        this.juros = juros;
+    }
+
+    public ValorPagamentoRegistroCover juros(Double juros) {
+        this.juros = juros;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class ValorPagamentoRegistroCover {\n" +
-                "    juros: " + toIndentedString(juros) + "\n" +
                 "    tributo: " + toIndentedString(tributo) + "\n" +
                 "    valor: " + toIndentedString(valor) + "\n" +
+                "    juros: " + toIndentedString(juros) + "\n" +
                 "}";
         return sb;
     }

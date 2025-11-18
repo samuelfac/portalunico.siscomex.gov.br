@@ -16,7 +16,7 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DossieVinculado", propOrder =
-        {"numeroDossie", "dataHoraVinculacao", "cpfVinculacao", "vinculadoPor"
+        {"cpfVinculacao", "dataHoraVinculacao", "numeroDossie", "vinculadoPor"
         })
 
 @XmlRootElement(name = "DossieVinculado")
@@ -26,12 +26,12 @@ import java.time.OffsetDateTime;
 @ApiModel(description = "Dossiê vinculado ao dossiê.")
 public class DossieVinculado {
 
-    @XmlElement(name = "numeroDossie", required = true)
-    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
+    @XmlElement(name = "cpfVinculacao", required = true)
+    @ApiModelProperty(example = "77777777777", required = true, value = "CPF do usuário que vinculou o dossiê sem formatação.<br/>Tamanho: 11")
     /**
-     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
+     * CPF do usuário que vinculou o dossiê sem formatação.<br/>Tamanho: 11
      **/
-    private String numeroDossie = null;
+    private String cpfVinculacao = null;
 
     @XmlElement(name = "dataHoraVinculacao")
     @ApiModelProperty(value = "Data/hora da vinculação do  dossiê à operação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
@@ -40,18 +40,12 @@ public class DossieVinculado {
      **/
     private OffsetDateTime dataHoraVinculacao = null;
 
-    @XmlElement(name = "cpfVinculacao", required = true)
-    @ApiModelProperty(example = "77777777777", required = true, value = "CPF do usuário que vinculou o dossiê sem formatação.<br/>Tamanho: 11")
+    @XmlElement(name = "numeroDossie", required = true)
+    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
     /**
-     * CPF do usuário que vinculou o dossiê sem formatação.<br/>Tamanho: 11
+     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
      **/
-    private String cpfVinculacao = null;
-    @XmlElement(name = "vinculadoPor", required = true)
-    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que vinculou o dossiê.")
-    /**
-     * Tipo de usuário/órgão que vinculou o dossiê.
-     **/
-    private VinculadoPorEnum vinculadoPor = null;
+    private String numeroDossie = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -64,23 +58,30 @@ public class DossieVinculado {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "vinculadoPor", required = true)
+    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que vinculou o dossiê.")
     /**
-     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-     *
-     * @return numeroDossie
+     * Tipo de usuário/órgão que vinculou o dossiê.
      **/
-    @JsonProperty("numeroDossie")
+    private VinculadoPorEnum vinculadoPor = null;
+
+    /**
+     * CPF do usuário que vinculou o dossiê sem formatação.&lt;br/&gt;Tamanho: 11
+     *
+     * @return cpfVinculacao
+     **/
+    @JsonProperty("cpfVinculacao")
     @NotNull
-    public String getNumeroDossie() {
-        return numeroDossie;
+    public String getCpfVinculacao() {
+        return cpfVinculacao;
     }
 
-    public void setNumeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
+    public void setCpfVinculacao(String cpfVinculacao) {
+        this.cpfVinculacao = cpfVinculacao;
     }
 
-    public DossieVinculado numeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
+    public DossieVinculado cpfVinculacao(String cpfVinculacao) {
+        this.cpfVinculacao = cpfVinculacao;
         return this;
     }
 
@@ -104,22 +105,22 @@ public class DossieVinculado {
     }
 
     /**
-     * CPF do usuário que vinculou o dossiê sem formatação.&lt;br/&gt;Tamanho: 11
+     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
      *
-     * @return cpfVinculacao
+     * @return numeroDossie
      **/
-    @JsonProperty("cpfVinculacao")
+    @JsonProperty("numeroDossie")
     @NotNull
-    public String getCpfVinculacao() {
-        return cpfVinculacao;
+    public String getNumeroDossie() {
+        return numeroDossie;
     }
 
-    public void setCpfVinculacao(String cpfVinculacao) {
-        this.cpfVinculacao = cpfVinculacao;
+    public void setNumeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
     }
 
-    public DossieVinculado cpfVinculacao(String cpfVinculacao) {
-        this.cpfVinculacao = cpfVinculacao;
+    public DossieVinculado numeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
         return this;
     }
 
@@ -151,9 +152,9 @@ public class DossieVinculado {
     public String toString() {
 
         String sb = "class DossieVinculado {\n" +
-                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
-                "    dataHoraVinculacao: " + toIndentedString(dataHoraVinculacao) + "\n" +
                 "    cpfVinculacao: " + toIndentedString(cpfVinculacao) + "\n" +
+                "    dataHoraVinculacao: " + toIndentedString(dataHoraVinculacao) + "\n" +
+                "    numeroDossie: " + toIndentedString(numeroDossie) + "\n" +
                 "    vinculadoPor: " + toIndentedString(vinculadoPor) + "\n" +
                 "}";
         return sb;

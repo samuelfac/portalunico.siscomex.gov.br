@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazProdutoCover", propOrder =
-        {"codigoProduto", "paisOrigem", "codigoNCM", "versaoProduto", "niResponsavelProduto"
+        {"codigoProduto", "versaoProduto", "niResponsavelProduto", "codigoNCM", "paisOrigem"
         })
 
 @XmlRootElement(name = "SefazProdutoCover")
@@ -30,18 +30,6 @@ public class SefazProdutoCover {
      **/
     private String codigoProduto = null;
 
-    @XmlElement(name = "paisOrigem")
-    @ApiModelProperty(value = "")
-    @Valid
-    private PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem = null;
-
-    @XmlElement(name = "codigoNCM")
-    @ApiModelProperty(example = "49019100", value = "Código NCM<br>Tamanho: 8<br>Formato: 'NNNNNNNN'")
-    /**
-     * Código NCM<br>Tamanho: 8<br>Formato: 'NNNNNNNN'
-     **/
-    private String codigoNCM = null;
-
     @XmlElement(name = "versaoProduto")
     @ApiModelProperty(example = "1", value = "Versão do produto<br>Tamanho mínimo: 1<br>Tamanho máximo: 7")
     /**
@@ -56,16 +44,17 @@ public class SefazProdutoCover {
      **/
     private String niResponsavelProduto = null;
 
+    @XmlElement(name = "codigoNCM")
+    @ApiModelProperty(example = "49019100", value = "Código NCM<br>Tamanho: 8<br>Formato: 'NNNNNNNN'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Código NCM<br>Tamanho: 8<br>Formato: 'NNNNNNNN'
+     **/
+    private String codigoNCM = null;
+
+    @XmlElement(name = "paisOrigem")
+    @ApiModelProperty(value = "")
+    @Valid
+    private PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem = null;
 
     /**
      * Código do produto&lt;br&gt;Formato: Inteiro, com até 10 digitos
@@ -83,44 +72,6 @@ public class SefazProdutoCover {
 
     public SefazProdutoCover codigoProduto(String codigoProduto) {
         this.codigoProduto = codigoProduto;
-        return this;
-    }
-
-    /**
-     * Get paisOrigem
-     *
-     * @return paisOrigem
-     **/
-    @JsonProperty("paisOrigem")
-    public PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio getPaisOrigem() {
-        return paisOrigem;
-    }
-
-    public void setPaisOrigem(PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem) {
-        this.paisOrigem = paisOrigem;
-    }
-
-    public SefazProdutoCover paisOrigem(PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem) {
-        this.paisOrigem = paisOrigem;
-        return this;
-    }
-
-    /**
-     * Código NCM&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;
-     *
-     * @return codigoNCM
-     **/
-    @JsonProperty("codigoNCM")
-    public String getCodigoNCM() {
-        return codigoNCM;
-    }
-
-    public void setCodigoNCM(String codigoNCM) {
-        this.codigoNCM = codigoNCM;
-    }
-
-    public SefazProdutoCover codigoNCM(String codigoNCM) {
-        this.codigoNCM = codigoNCM;
         return this;
     }
 
@@ -162,15 +113,64 @@ public class SefazProdutoCover {
         return this;
     }
 
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código NCM&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;
+     *
+     * @return codigoNCM
+     **/
+    @JsonProperty("codigoNCM")
+    public String getCodigoNCM() {
+        return codigoNCM;
+    }
+
+    public void setCodigoNCM(String codigoNCM) {
+        this.codigoNCM = codigoNCM;
+    }
+
+    public SefazProdutoCover codigoNCM(String codigoNCM) {
+        this.codigoNCM = codigoNCM;
+        return this;
+    }
+
+    /**
+     * Get paisOrigem
+     *
+     * @return paisOrigem
+     **/
+    @JsonProperty("paisOrigem")
+    public PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio getPaisOrigem() {
+        return paisOrigem;
+    }
+
+    public void setPaisOrigem(PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem) {
+        this.paisOrigem = paisOrigem;
+    }
+
+    public SefazProdutoCover paisOrigem(PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem) {
+        this.paisOrigem = paisOrigem;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class SefazProdutoCover {\n" +
                 "    codigoProduto: " + toIndentedString(codigoProduto) + "\n" +
-                "    paisOrigem: " + toIndentedString(paisOrigem) + "\n" +
-                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
                 "    versaoProduto: " + toIndentedString(versaoProduto) + "\n" +
                 "    niResponsavelProduto: " + toIndentedString(niResponsavelProduto) + "\n" +
+                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
+                "    paisOrigem: " + toIndentedString(paisOrigem) + "\n" +
                 "}";
         return sb;
     }

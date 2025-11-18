@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "IdentificacaoEstrangeiro", propOrder =
-        {"nome", "pais"
+        {"pais", "nome"
         })
 
 @XmlRootElement(name = "IdentificacaoEstrangeiro")
@@ -23,6 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 @ApiModel(description = "Dados do Destinatário Estrangeiro")
 public class IdentificacaoEstrangeiro {
 
+    @XmlElement(name = "pais", required = true)
+    @ApiModelProperty(example = "AR", required = true, value = "País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA")
+    /**
+     * País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA
+     **/
+    private String pais = null;
+
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(example = "Nome do destinatário", required = true, value = "Nome do destinatário<br>Tamanho: 60")
     /**
@@ -30,12 +37,25 @@ public class IdentificacaoEstrangeiro {
      **/
     private String nome = null;
 
-    @XmlElement(name = "pais", required = true)
-    @ApiModelProperty(example = "AR", required = true, value = "País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA")
     /**
-     * País do Transportador<br>Sigla ISO/Alfa 2 do país<br>Tamanho: 2<br>Formato: AA
+     * País do Transportador&lt;br&gt;Sigla ISO/Alfa 2 do país&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
+     *
+     * @return pais
      **/
-    private String pais = null;
+    @JsonProperty("pais")
+    @NotNull
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public IdentificacaoEstrangeiro pais(String pais) {
+        this.pais = pais;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -68,32 +88,12 @@ public class IdentificacaoEstrangeiro {
         return this;
     }
 
-    /**
-     * País do Transportador&lt;br&gt;Sigla ISO/Alfa 2 do país&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
-     *
-     * @return pais
-     **/
-    @JsonProperty("pais")
-    @NotNull
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public IdentificacaoEstrangeiro pais(String pais) {
-        this.pais = pais;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class IdentificacaoEstrangeiro {\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
                 "    pais: " + toIndentedString(pais) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
                 "}";
         return sb;
     }

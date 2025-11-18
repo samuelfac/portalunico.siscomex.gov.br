@@ -35,17 +35,6 @@ public class RecepcoesDocumentoCarga {
     private List<RecepcaoDocumentoCarga> recepcaoDocumentoCarga = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de recepções por Documento de Carga
      *
      * @return recepcaoDocumentoCarga
@@ -68,6 +57,18 @@ public class RecepcoesDocumentoCarga {
     public RecepcoesDocumentoCarga addRecepcaoDocumentoCargaItem(RecepcaoDocumentoCarga recepcaoDocumentoCargaItem) {
         this.recepcaoDocumentoCarga.add(recepcaoDocumentoCargaItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

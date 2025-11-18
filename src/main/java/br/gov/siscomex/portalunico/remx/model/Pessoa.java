@@ -12,23 +12,11 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Pessoa", propOrder =
-        {"tipoDocumento", "endereco", "conta", "documento", "nome"
+        {"conta", "documento", "endereco", "nome", "tipoDocumento"
         })
 
 @XmlRootElement(name = "Pessoa")
 public class Pessoa {
-
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "Tipo do documento de identificação fiscal.<br/>1 – CPF.<br/>2 – CNPJ.<br/>3 – Passaporte<br/>Sempre que o atributo 'documento' for inserido no Json, o atributo 'tipoDocumento' deve acompanhá-lo.")
-    /**
-     * Tipo do documento de identificação fiscal.<br/>1 – CPF.<br/>2 – CNPJ.<br/>3 – Passaporte<br/>Sempre que o atributo 'documento' for inserido no Json, o atributo 'tipoDocumento' deve acompanhá-lo.
-     **/
-    private String tipoDocumento = null;
-
-    @XmlElement(name = "endereco")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Endereo endereco = null;
 
     @XmlElement(name = "conta")
     @ApiModelProperty(value = "Código da conta da pessoa com o operador. Máximo de 10 caracteres alfanuméricos.")
@@ -44,6 +32,11 @@ public class Pessoa {
      **/
     private String documento = null;
 
+    @XmlElement(name = "endereco")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Endereo endereco = null;
+
     @XmlElement(name = "nome")
     @ApiModelProperty(value = "Nome da pessoa física ou jurídica. 255 caracteres que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
     /**
@@ -51,54 +44,12 @@ public class Pessoa {
      **/
     private String nome = null;
 
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "Tipo do documento de identificação fiscal.<br/>1 – CPF.<br/>2 – CNPJ.<br/>3 – Passaporte<br/>Sempre que o atributo 'documento' for inserido no Json, o atributo 'tipoDocumento' deve acompanhá-lo.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo do documento de identificação fiscal.&lt;br/&gt;1 – CPF.&lt;br/&gt;2 – CNPJ.&lt;br/&gt;3 – Passaporte&lt;br/&gt;Sempre que o atributo &#39;documento&#39; for inserido no Json, o atributo &#39;tipoDocumento&#39; deve acompanhá-lo.
-     *
-     * @return tipoDocumento
+     * Tipo do documento de identificação fiscal.<br/>1 – CPF.<br/>2 – CNPJ.<br/>3 – Passaporte<br/>Sempre que o atributo 'documento' for inserido no Json, o atributo 'tipoDocumento' deve acompanhá-lo.
      **/
-    @JsonProperty("tipoDocumento")
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public Pessoa tipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
-    /**
-     * Get endereco
-     *
-     * @return endereco
-     **/
-    @JsonProperty("endereco")
-    public Endereo getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereo endereco) {
-        this.endereco = endereco;
-    }
-
-    public Pessoa endereco(Endereo endereco) {
-        this.endereco = endereco;
-        return this;
-    }
+    private String tipoDocumento = null;
 
     /**
      * Código da conta da pessoa com o operador. Máximo de 10 caracteres alfanuméricos.
@@ -139,6 +90,31 @@ public class Pessoa {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get endereco
+     *
+     * @return endereco
+     **/
+    @JsonProperty("endereco")
+    public Endereo getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereo endereco) {
+        this.endereco = endereco;
+    }
+
+    /**
      * Nome da pessoa física ou jurídica. 255 caracteres que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
      * @return nome
@@ -157,15 +133,39 @@ public class Pessoa {
         return this;
     }
 
+    public Pessoa endereco(Endereo endereco) {
+        this.endereco = endereco;
+        return this;
+    }
+
+    /**
+     * Tipo do documento de identificação fiscal.&lt;br/&gt;1 – CPF.&lt;br/&gt;2 – CNPJ.&lt;br/&gt;3 – Passaporte&lt;br/&gt;Sempre que o atributo &#39;documento&#39; for inserido no Json, o atributo &#39;tipoDocumento&#39; deve acompanhá-lo.
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public Pessoa tipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class Pessoa {\n" +
-                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
-                "    endereco: " + toIndentedString(endereco) + "\n" +
                 "    conta: " + toIndentedString(conta) + "\n" +
                 "    documento: " + toIndentedString(documento) + "\n" +
+                "    endereco: " + toIndentedString(endereco) + "\n" +
                 "    nome: " + toIndentedString(nome) + "\n" +
+                "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
     }

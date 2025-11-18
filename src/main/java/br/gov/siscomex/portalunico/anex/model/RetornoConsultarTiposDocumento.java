@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultarTiposDocumento", propOrder =
-        {"tiposDocumento", "orgaosAnuentes"
+        {"orgaosAnuentes", "tiposDocumento"
         })
 
 @XmlRootElement(name = "RetornoConsultarTiposDocumento")
@@ -26,6 +26,14 @@ import java.util.List;
 @ApiModel(description = "Retorno da consulta de tipos de documentos e de órgãos anuentes.")
 public class RetornoConsultarTiposDocumento {
 
+    @XmlElement(name = "orgaosAnuentes", required = true)
+    @ApiModelProperty(required = true, value = "Lista de órgãos anuentes.")
+    @Valid
+    /**
+     * Lista de órgãos anuentes.
+     **/
+    private List<OrgaoAnuente> orgaosAnuentes = new ArrayList<>();
+
     @XmlElement(name = "tiposDocumento")
     @ApiModelProperty(value = "Lista de tipos de documento.")
     @Valid
@@ -34,13 +42,30 @@ public class RetornoConsultarTiposDocumento {
      **/
     private List<TipoDocumento> tiposDocumento = null;
 
-    @XmlElement(name = "orgaosAnuentes", required = true)
-    @ApiModelProperty(required = true, value = "Lista de órgãos anuentes.")
-    @Valid
     /**
      * Lista de órgãos anuentes.
+     *
+     * @return orgaosAnuentes
      **/
-    private List<OrgaoAnuente> orgaosAnuentes = new ArrayList<>();
+    @JsonProperty("orgaosAnuentes")
+    @NotNull
+    public List<OrgaoAnuente> getOrgaosAnuentes() {
+        return orgaosAnuentes;
+    }
+
+    public void setOrgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
+        this.orgaosAnuentes = orgaosAnuentes;
+    }
+
+    public RetornoConsultarTiposDocumento orgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
+        this.orgaosAnuentes = orgaosAnuentes;
+        return this;
+    }
+
+    public RetornoConsultarTiposDocumento addOrgaosAnuentesItem(OrgaoAnuente orgaosAnuentesItem) {
+        this.orgaosAnuentes.add(orgaosAnuentesItem);
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -77,37 +102,12 @@ public class RetornoConsultarTiposDocumento {
         return this;
     }
 
-    /**
-     * Lista de órgãos anuentes.
-     *
-     * @return orgaosAnuentes
-     **/
-    @JsonProperty("orgaosAnuentes")
-    @NotNull
-    public List<OrgaoAnuente> getOrgaosAnuentes() {
-        return orgaosAnuentes;
-    }
-
-    public void setOrgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
-        this.orgaosAnuentes = orgaosAnuentes;
-    }
-
-    public RetornoConsultarTiposDocumento orgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
-        this.orgaosAnuentes = orgaosAnuentes;
-        return this;
-    }
-
-    public RetornoConsultarTiposDocumento addOrgaosAnuentesItem(OrgaoAnuente orgaosAnuentesItem) {
-        this.orgaosAnuentes.add(orgaosAnuentesItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class RetornoConsultarTiposDocumento {\n" +
-                "    tiposDocumento: " + toIndentedString(tiposDocumento) + "\n" +
                 "    orgaosAnuentes: " + toIndentedString(orgaosAnuentes) + "\n" +
+                "    tiposDocumento: " + toIndentedString(tiposDocumento) + "\n" +
                 "}";
         return sb;
     }

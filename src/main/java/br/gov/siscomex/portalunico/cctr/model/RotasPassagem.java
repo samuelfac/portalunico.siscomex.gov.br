@@ -33,17 +33,6 @@ public class RotasPassagem {
     private List<RotaPassagem> rotaPassagem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Rotas de Passagem
      *
      * @return rotaPassagem
@@ -65,6 +54,18 @@ public class RotasPassagem {
     public RotasPassagem addRotaPassagemItem(RotaPassagem rotaPassagemItem) {
         this.rotaPassagem.add(rotaPassagemItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

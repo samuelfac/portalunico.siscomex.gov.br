@@ -11,18 +11,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ErroNoProcessamento", propOrder =
-        {"numeroRemessa", "codigoMensagem", "numeroLote", "mensagem", "numeroManifesto", "codigoBarrasDarf"
+        {"codigoBarrasDarf", "codigoMensagem", "mensagem", "numeroLote", "numeroManifesto", "numeroRemessa"
         })
 
 @XmlRootElement(name = "ErroNoProcessamento")
 public class ErroNoProcessamento {
 
-    @XmlElement(name = "numeroRemessa")
+    @XmlElement(name = "codigoBarrasDarf")
     @ApiModelProperty(value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      **/
-    private String numeroRemessa = null;
+    private String codigoBarrasDarf = null;
 
     @XmlElement(name = "codigoMensagem")
     @ApiModelProperty(value = "Código da mensagem de erro, composto de 5 caracteres, sendo 2 caracteres referentes ao tipo da mensagem e 3 referentes à mensagem de erro.")
@@ -31,19 +31,19 @@ public class ErroNoProcessamento {
      **/
     private String codigoMensagem = null;
 
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
-    /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     **/
-    private String numeroLote = null;
-
     @XmlElement(name = "mensagem")
     @ApiModelProperty(value = "Mensagem de erro. Até 300 caracteres alfanuméricos, incluindo '.', '-' e '/'.")
     /**
      * Mensagem de erro. Até 300 caracteres alfanuméricos, incluindo '.', '-' e '/'.
      **/
     private String mensagem = null;
+
+    @XmlElement(name = "numeroLote")
+    @ApiModelProperty(value = "Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.")
+    /**
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
+     **/
+    private String numeroLote = null;
 
     @XmlElement(name = "numeroManifesto")
     @ApiModelProperty(value = "Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.")
@@ -52,12 +52,12 @@ public class ErroNoProcessamento {
      **/
     private String numeroManifesto = null;
 
-    @XmlElement(name = "codigoBarrasDarf")
+    @XmlElement(name = "numeroRemessa")
     @ApiModelProperty(value = "Número da remessa composto por no máximo 18 caracteres alfanuméricos.")
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      **/
-    private String codigoBarrasDarf = null;
+    private String numeroRemessa = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -73,20 +73,15 @@ public class ErroNoProcessamento {
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
-     * @return numeroRemessa
+     * @return codigoBarrasDarf
      **/
-    @JsonProperty("numeroRemessa")
-    public String getNumeroRemessa() {
-        return numeroRemessa;
+    @JsonProperty("codigoBarrasDarf")
+    public String getCodigoBarrasDarf() {
+        return codigoBarrasDarf;
     }
 
-    public void setNumeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-    }
-
-    public ErroNoProcessamento numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
+    public void setCodigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
     }
 
     /**
@@ -109,25 +104,6 @@ public class ErroNoProcessamento {
     }
 
     /**
-     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
-     *
-     * @return numeroLote
-     **/
-    @JsonProperty("numeroLote")
-    public String getNumeroLote() {
-        return numeroLote;
-    }
-
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-    }
-
-    public ErroNoProcessamento numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
-
-    /**
      * Mensagem de erro. Até 300 caracteres alfanuméricos, incluindo &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return mensagem
@@ -144,6 +120,25 @@ public class ErroNoProcessamento {
     public ErroNoProcessamento mensagem(String mensagem) {
         this.mensagem = mensagem;
         return this;
+    }
+
+    public ErroNoProcessamento codigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+        return this;
+    }
+
+    /**
+     * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
+     *
+     * @return numeroLote
+     **/
+    @JsonProperty("numeroLote")
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
     }
 
     /**
@@ -165,22 +160,27 @@ public class ErroNoProcessamento {
         return this;
     }
 
+    public ErroNoProcessamento numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
+    }
+
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
-     * @return codigoBarrasDarf
+     * @return numeroRemessa
      **/
-    @JsonProperty("codigoBarrasDarf")
-    public String getCodigoBarrasDarf() {
-        return codigoBarrasDarf;
+    @JsonProperty("numeroRemessa")
+    public String getNumeroRemessa() {
+        return numeroRemessa;
     }
 
-    public void setCodigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
+    public void setNumeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
     }
 
-    public ErroNoProcessamento codigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
+    public ErroNoProcessamento numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
         return this;
     }
 
@@ -188,12 +188,12 @@ public class ErroNoProcessamento {
     public String toString() {
 
         String sb = "class ErroNoProcessamento {\n" +
-                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
-                "    codigoMensagem: " + toIndentedString(codigoMensagem) + "\n" +
-                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
-                "    mensagem: " + toIndentedString(mensagem) + "\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
                 "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
+                "    codigoMensagem: " + toIndentedString(codigoMensagem) + "\n" +
+                "    mensagem: " + toIndentedString(mensagem) + "\n" +
+                "    numeroLote: " + toIndentedString(numeroLote) + "\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
                 "}";
         return sb;
     }

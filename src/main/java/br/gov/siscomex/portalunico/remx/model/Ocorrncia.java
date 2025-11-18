@@ -12,32 +12,11 @@ import java.time.OffsetDateTime;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Ocorrncia", propOrder =
-        {"idOrgaoResponsavelOcorrencia", "observacao", "resolvida", "codOcorrencia", "idOcorrencia", "dataInsercao", "nomeFiscalRespOcorrencia", "nomeOcorrencia"
+        {"codOcorrencia", "dataInsercao", "idOcorrencia", "idOrgaoResponsavelOcorrencia", "nomeFiscalRespOcorrencia", "nomeOcorrencia", "observacao", "resolvida"
         })
 
 @XmlRootElement(name = "Ocorrncia")
 public class Ocorrncia {
-
-    @XmlElement(name = "idOrgaoResponsavelOcorrencia")
-    @ApiModelProperty(value = "Sigla do órgão responsável pela ocorrência. Máximo de 50 caracteres.")
-    /**
-     * Sigla do órgão responsável pela ocorrência. Máximo de 50 caracteres.
-     **/
-    private String idOrgaoResponsavelOcorrencia = null;
-
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(value = "Observação relacionada à ocorrência. Máximo de 4000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
-    /**
-     * Observação relacionada à ocorrência. Máximo de 4000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
-     **/
-    private String observacao = null;
-
-    @XmlElement(name = "resolvida")
-    @ApiModelProperty(value = "Indicador de resolução da ocorrência.<br/>Valores pré-definidos:<br/>0 - Ocorrência não resolvida<br/>1 - Ocorrência resolvida<br/>2 - Interrompida RFB")
-    /**
-     * Indicador de resolução da ocorrência.<br/>Valores pré-definidos:<br/>0 - Ocorrência não resolvida<br/>1 - Ocorrência resolvida<br/>2 - Interrompida RFB
-     **/
-    private String resolvida = null;
 
     @XmlElement(name = "codOcorrencia")
     @ApiModelProperty(value = "Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.")
@@ -46,6 +25,13 @@ public class Ocorrncia {
      **/
     private Integer codOcorrencia = null;
 
+    @XmlElement(name = "dataInsercao")
+    @ApiModelProperty(value = "Data e horário da inserção da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    /**
+     * Data e horário da inserção da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     **/
+    private OffsetDateTime dataInsercao = null;
+
     @XmlElement(name = "idOcorrencia")
     @ApiModelProperty(value = "Identificador da ocorrência. Utilizado para identificar qual ocorrência está sendo alterada ou resolvida. Máximo de 10 caracteres numéricos.")
     /**
@@ -53,12 +39,12 @@ public class Ocorrncia {
      **/
     private Integer idOcorrencia = null;
 
-    @XmlElement(name = "dataInsercao")
-    @ApiModelProperty(value = "Data e horário da inserção da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @XmlElement(name = "idOrgaoResponsavelOcorrencia")
+    @ApiModelProperty(value = "Sigla do órgão responsável pela ocorrência. Máximo de 50 caracteres.")
     /**
-     * Data e horário da inserção da ocorrência.<br/>Formato: yyyy-MM-dd'T'HH:mm:ss.SSS
+     * Sigla do órgão responsável pela ocorrência. Máximo de 50 caracteres.
      **/
-    private OffsetDateTime dataInsercao = null;
+    private String idOrgaoResponsavelOcorrencia = null;
 
     @XmlElement(name = "nomeFiscalRespOcorrencia")
     @ApiModelProperty(value = "Nome do fiscal responsável pela ocorrência. Máximo de 50 caracteres.")
@@ -74,6 +60,39 @@ public class Ocorrncia {
      **/
     private String nomeOcorrencia = null;
 
+    @XmlElement(name = "observacao")
+    @ApiModelProperty(value = "Observação relacionada à ocorrência. Máximo de 4000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.")
+    /**
+     * Observação relacionada à ocorrência. Máximo de 4000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
+     **/
+    private String observacao = null;
+
+    @XmlElement(name = "resolvida")
+    @ApiModelProperty(value = "Indicador de resolução da ocorrência.<br/>Valores pré-definidos:<br/>0 - Ocorrência não resolvida<br/>1 - Ocorrência resolvida<br/>2 - Interrompida RFB")
+    /**
+     * Indicador de resolução da ocorrência.<br/>Valores pré-definidos:<br/>0 - Ocorrência não resolvida<br/>1 - Ocorrência resolvida<br/>2 - Interrompida RFB
+     **/
+    private String resolvida = null;
+
+    /**
+     * Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
+     *
+     * @return codOcorrencia
+     **/
+    @JsonProperty("codOcorrencia")
+    public Integer getCodOcorrencia() {
+        return codOcorrencia;
+    }
+
+    public void setCodOcorrencia(Integer codOcorrencia) {
+        this.codOcorrencia = codOcorrencia;
+    }
+
+    public Ocorrncia codOcorrencia(Integer codOcorrencia) {
+        this.codOcorrencia = codOcorrencia;
+        return this;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -83,6 +102,44 @@ public class Ocorrncia {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Data e horário da inserção da ocorrência.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
+     *
+     * @return dataInsercao
+     **/
+    @JsonProperty("dataInsercao")
+    public OffsetDateTime getDataInsercao() {
+        return dataInsercao;
+    }
+
+    public void setDataInsercao(OffsetDateTime dataInsercao) {
+        this.dataInsercao = dataInsercao;
+    }
+
+    /**
+     * Identificador da ocorrência. Utilizado para identificar qual ocorrência está sendo alterada ou resolvida. Máximo de 10 caracteres numéricos.
+     *
+     * @return idOcorrencia
+     **/
+    @JsonProperty("idOcorrencia")
+    public Integer getIdOcorrencia() {
+        return idOcorrencia;
+    }
+
+    public void setIdOcorrencia(Integer idOcorrencia) {
+        this.idOcorrencia = idOcorrencia;
+    }
+
+    public Ocorrncia idOcorrencia(Integer idOcorrencia) {
+        this.idOcorrencia = idOcorrencia;
+        return this;
+    }
+
+    public Ocorrncia dataInsercao(OffsetDateTime dataInsercao) {
+        this.dataInsercao = dataInsercao;
+        return this;
     }
 
     /**
@@ -97,6 +154,44 @@ public class Ocorrncia {
 
     public void setIdOrgaoResponsavelOcorrencia(String idOrgaoResponsavelOcorrencia) {
         this.idOrgaoResponsavelOcorrencia = idOrgaoResponsavelOcorrencia;
+    }
+
+    /**
+     * Nome do fiscal responsável pela ocorrência. Máximo de 50 caracteres.
+     *
+     * @return nomeFiscalRespOcorrencia
+     **/
+    @JsonProperty("nomeFiscalRespOcorrencia")
+    public String getNomeFiscalRespOcorrencia() {
+        return nomeFiscalRespOcorrencia;
+    }
+
+    public void setNomeFiscalRespOcorrencia(String nomeFiscalRespOcorrencia) {
+        this.nomeFiscalRespOcorrencia = nomeFiscalRespOcorrencia;
+    }
+
+    public Ocorrncia nomeFiscalRespOcorrencia(String nomeFiscalRespOcorrencia) {
+        this.nomeFiscalRespOcorrencia = nomeFiscalRespOcorrencia;
+        return this;
+    }
+
+    /**
+     * Descrição da ocorrência, conforme regra do sistema Remessa &#39;Lista de ocorrências permitidas em função do usuário logado no sistema&#39;.
+     *
+     * @return nomeOcorrencia
+     **/
+    @JsonProperty("nomeOcorrencia")
+    public String getNomeOcorrencia() {
+        return nomeOcorrencia;
+    }
+
+    public void setNomeOcorrencia(String nomeOcorrencia) {
+        this.nomeOcorrencia = nomeOcorrencia;
+    }
+
+    public Ocorrncia nomeOcorrencia(String nomeOcorrencia) {
+        this.nomeOcorrencia = nomeOcorrencia;
+        return this;
     }
 
     public Ocorrncia idOrgaoResponsavelOcorrencia(String idOrgaoResponsavelOcorrencia) {
@@ -142,113 +237,18 @@ public class Ocorrncia {
         return this;
     }
 
-    /**
-     * Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
-     *
-     * @return codOcorrencia
-     **/
-    @JsonProperty("codOcorrencia")
-    public Integer getCodOcorrencia() {
-        return codOcorrencia;
-    }
-
-    public void setCodOcorrencia(Integer codOcorrencia) {
-        this.codOcorrencia = codOcorrencia;
-    }
-
-    public Ocorrncia codOcorrencia(Integer codOcorrencia) {
-        this.codOcorrencia = codOcorrencia;
-        return this;
-    }
-
-    /**
-     * Identificador da ocorrência. Utilizado para identificar qual ocorrência está sendo alterada ou resolvida. Máximo de 10 caracteres numéricos.
-     *
-     * @return idOcorrencia
-     **/
-    @JsonProperty("idOcorrencia")
-    public Integer getIdOcorrencia() {
-        return idOcorrencia;
-    }
-
-    public void setIdOcorrencia(Integer idOcorrencia) {
-        this.idOcorrencia = idOcorrencia;
-    }
-
-    public Ocorrncia idOcorrencia(Integer idOcorrencia) {
-        this.idOcorrencia = idOcorrencia;
-        return this;
-    }
-
-    /**
-     * Data e horário da inserção da ocorrência.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
-     *
-     * @return dataInsercao
-     **/
-    @JsonProperty("dataInsercao")
-    public OffsetDateTime getDataInsercao() {
-        return dataInsercao;
-    }
-
-    public void setDataInsercao(OffsetDateTime dataInsercao) {
-        this.dataInsercao = dataInsercao;
-    }
-
-    public Ocorrncia dataInsercao(OffsetDateTime dataInsercao) {
-        this.dataInsercao = dataInsercao;
-        return this;
-    }
-
-    /**
-     * Nome do fiscal responsável pela ocorrência. Máximo de 50 caracteres.
-     *
-     * @return nomeFiscalRespOcorrencia
-     **/
-    @JsonProperty("nomeFiscalRespOcorrencia")
-    public String getNomeFiscalRespOcorrencia() {
-        return nomeFiscalRespOcorrencia;
-    }
-
-    public void setNomeFiscalRespOcorrencia(String nomeFiscalRespOcorrencia) {
-        this.nomeFiscalRespOcorrencia = nomeFiscalRespOcorrencia;
-    }
-
-    public Ocorrncia nomeFiscalRespOcorrencia(String nomeFiscalRespOcorrencia) {
-        this.nomeFiscalRespOcorrencia = nomeFiscalRespOcorrencia;
-        return this;
-    }
-
-    /**
-     * Descrição da ocorrência, conforme regra do sistema Remessa &#39;Lista de ocorrências permitidas em função do usuário logado no sistema&#39;.
-     *
-     * @return nomeOcorrencia
-     **/
-    @JsonProperty("nomeOcorrencia")
-    public String getNomeOcorrencia() {
-        return nomeOcorrencia;
-    }
-
-    public void setNomeOcorrencia(String nomeOcorrencia) {
-        this.nomeOcorrencia = nomeOcorrencia;
-    }
-
-    public Ocorrncia nomeOcorrencia(String nomeOcorrencia) {
-        this.nomeOcorrencia = nomeOcorrencia;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Ocorrncia {\n" +
-                "    idOrgaoResponsavelOcorrencia: " + toIndentedString(idOrgaoResponsavelOcorrencia) + "\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
-                "    resolvida: " + toIndentedString(resolvida) + "\n" +
                 "    codOcorrencia: " + toIndentedString(codOcorrencia) + "\n" +
-                "    idOcorrencia: " + toIndentedString(idOcorrencia) + "\n" +
                 "    dataInsercao: " + toIndentedString(dataInsercao) + "\n" +
+                "    idOcorrencia: " + toIndentedString(idOcorrencia) + "\n" +
+                "    idOrgaoResponsavelOcorrencia: " + toIndentedString(idOrgaoResponsavelOcorrencia) + "\n" +
                 "    nomeFiscalRespOcorrencia: " + toIndentedString(nomeFiscalRespOcorrencia) + "\n" +
                 "    nomeOcorrencia: " + toIndentedString(nomeOcorrencia) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
+                "    resolvida: " + toIndentedString(resolvida) + "\n" +
                 "}";
         return sb;
     }

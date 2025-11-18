@@ -13,11 +13,18 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApi", propOrder =
-        {"identificacao", "links", "message"
+        {"message", "identificacao", "links"
         })
 
 @XmlRootElement(name = "RespostaApi")
 public class RespostaApi {
+
+    @XmlElement(name = "message")
+    @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
+    /**
+     * Mensagem de resposta do resultado da operação.
+     **/
+    private String message = null;
 
     @XmlElement(name = "identificacao")
     @ApiModelProperty(value = "")
@@ -32,13 +39,6 @@ public class RespostaApi {
      **/
     private List<LinkCover> links = null;
 
-    @XmlElement(name = "message")
-    @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
-    /**
-     * Mensagem de resposta do resultado da operação.
-     **/
-    private String message = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -48,6 +48,20 @@ public class RespostaApi {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Mensagem de resposta do resultado da operação.
+     *
+     * @return message
+     **/
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     /**
@@ -93,20 +107,6 @@ public class RespostaApi {
         return this;
     }
 
-    /**
-     * Mensagem de resposta do resultado da operação.
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public RespostaApi message(String message) {
         this.message = message;
         return this;
@@ -116,9 +116,9 @@ public class RespostaApi {
     public String toString() {
 
         String sb = "class RespostaApi {\n" +
+                "    message: " + toIndentedString(message) + "\n" +
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "    links: " + toIndentedString(links) + "\n" +
-                "    message: " + toIndentedString(message) + "\n" +
                 "}";
         return sb;
     }

@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentosCarga", propOrder =
-        {"documentos", "nivel"
+        {"nivel", "documentos"
         })
 
 @XmlRootElement(name = "DocumentosCarga")
@@ -24,14 +24,14 @@ import java.util.List;
 @ApiModel(description = "Documentos de carga")
 public class DocumentosCarga {
 
+    @XmlElement(name = "nivel")
+    @ApiModelProperty(value = "")
+    private String nivel = null;
+
     @XmlElement(name = "documentos")
     @ApiModelProperty(value = "")
     @Valid
     private List<DocumentoCarga> documentos = null;
-
-    @XmlElement(name = "nivel")
-    @ApiModelProperty(value = "")
-    private String nivel = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -42,6 +42,20 @@ public class DocumentosCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return nivel
+     **/
+    @JsonProperty("nivel")
+    public String getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 
     /**
@@ -68,20 +82,6 @@ public class DocumentosCarga {
         return this;
     }
 
-    /**
-     * Get nivel
-     *
-     * @return nivel
-     **/
-    @JsonProperty("nivel")
-    public String getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
-
     public DocumentosCarga nivel(String nivel) {
         this.nivel = nivel;
         return this;
@@ -91,8 +91,8 @@ public class DocumentosCarga {
     public String toString() {
 
         String sb = "class DocumentosCarga {\n" +
-                "    documentos: " + toIndentedString(documentos) + "\n" +
                 "    nivel: " + toIndentedString(nivel) + "\n" +
+                "    documentos: " + toIndentedString(documentos) + "\n" +
                 "}";
         return sb;
     }

@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "CompatibilizacaoLpcoResponse", propOrder =
-        {"situacao", "listaAlteracoes", "numero", "dataRegistro", "justificativa", "situacaoPagamentoTaxa"
+        {"numero", "situacao", "dataRegistro", "justificativa", "listaAlteracoes", "situacaoPagamentoTaxa"
         })
 
 @XmlRootElement(name = "CompatibilizacaoLpcoResponse")
@@ -26,25 +26,17 @@ import java.util.List;
 @ApiModel(description = "Dados de pedido de compatibilidação de versão de produto no LPCO")
 public class CompatibilizacaoLpcoResponse {
 
-    @XmlElement(name = "situacao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private SituacaoCompatibilizacaoLpco situacao = null;
-
-    @XmlElement(name = "listaAlteracoes", required = true)
-    @ApiModelProperty(required = true, value = "Lista de alterações realizadas na compatibilização")
-    @Valid
-    /**
-     * Lista de alterações realizadas na compatibilização
-     **/
-    private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
-
     @XmlElement(name = "numero", required = true)
     @ApiModelProperty(example = "002", required = true, value = "Número do pedido de compatibilização")
     /**
      * Número do pedido de compatibilização
      **/
     private String numero = null;
+
+    @XmlElement(name = "situacao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private SituacaoCompatibilizacaoLpco situacao = null;
 
     @XmlElement(name = "dataRegistro", required = true)
     @ApiModelProperty(example = "2019-09-02T12:10Z", required = true, value = "Data e hora em que o pedido de compatibilização foi registrado<br>Formato: dd-MM-yyyy'T'HH:mmZ")
@@ -60,10 +52,38 @@ public class CompatibilizacaoLpcoResponse {
      **/
     private String justificativa = null;
 
+    @XmlElement(name = "listaAlteracoes", required = true)
+    @ApiModelProperty(required = true, value = "Lista de alterações realizadas na compatibilização")
+    @Valid
+    /**
+     * Lista de alterações realizadas na compatibilização
+     **/
+    private List<DadosAlteracoesLpco> listaAlteracoes = new ArrayList<>();
+
     @XmlElement(name = "situacaoPagamentoTaxa")
     @ApiModelProperty(value = "")
     @Valid
     private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
+
+    /**
+     * Número do pedido de compatibilização
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    @NotNull
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public CompatibilizacaoLpcoResponse numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -89,56 +109,6 @@ public class CompatibilizacaoLpcoResponse {
 
     public void setSituacao(SituacaoCompatibilizacaoLpco situacao) {
         this.situacao = situacao;
-    }
-
-    public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista de alterações realizadas na compatibilização
-     *
-     * @return listaAlteracoes
-     **/
-    @JsonProperty("listaAlteracoes")
-    @NotNull
-    public List<DadosAlteracoesLpco> getListaAlteracoes() {
-        return listaAlteracoes;
-    }
-
-    public void setListaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
-        this.listaAlteracoes = listaAlteracoes;
-    }
-
-    public CompatibilizacaoLpcoResponse listaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
-        this.listaAlteracoes = listaAlteracoes;
-        return this;
-    }
-
-    public CompatibilizacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
-        this.listaAlteracoes.add(listaAlteracoesItem);
-        return this;
-    }
-
-    /**
-     * Número do pedido de compatibilização
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    @NotNull
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public CompatibilizacaoLpcoResponse numero(String numero) {
-        this.numero = numero;
-        return this;
     }
 
     /**
@@ -180,6 +150,31 @@ public class CompatibilizacaoLpcoResponse {
         return this;
     }
 
+    public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Lista de alterações realizadas na compatibilização
+     *
+     * @return listaAlteracoes
+     **/
+    @JsonProperty("listaAlteracoes")
+    @NotNull
+    public List<DadosAlteracoesLpco> getListaAlteracoes() {
+        return listaAlteracoes;
+    }
+
+    public void setListaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
+        this.listaAlteracoes = listaAlteracoes;
+    }
+
+    public CompatibilizacaoLpcoResponse listaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
+        this.listaAlteracoes = listaAlteracoes;
+        return this;
+    }
+
     /**
      * Get situacaoPagamentoTaxa
      *
@@ -199,15 +194,20 @@ public class CompatibilizacaoLpcoResponse {
         return this;
     }
 
+    public CompatibilizacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
+        this.listaAlteracoes.add(listaAlteracoesItem);
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class CompatibilizacaoLpcoResponse {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    listaAlteracoes: " + toIndentedString(listaAlteracoes) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    dataRegistro: " + toIndentedString(dataRegistro) + "\n" +
                 "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    listaAlteracoes: " + toIndentedString(listaAlteracoes) + "\n" +
                 "    situacaoPagamentoTaxa: " + toIndentedString(situacaoPagamentoTaxa) + "\n" +
                 "}";
         return sb;

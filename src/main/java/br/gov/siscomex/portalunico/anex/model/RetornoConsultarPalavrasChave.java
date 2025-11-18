@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RetornoConsultarPalavrasChave", propOrder =
-        {"idTipoDocumento", "palavrasChave", "nomeTipoDocumento"
+        {"idTipoDocumento", "nomeTipoDocumento", "palavrasChave"
         })
 
 @XmlRootElement(name = "RetornoConsultarPalavrasChave")
@@ -32,11 +32,6 @@ public class RetornoConsultarPalavrasChave {
      **/
     private Long idTipoDocumento = null;
 
-    @XmlElement(name = "palavrasChave")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<PalavraChave> palavrasChave = null;
-
     @XmlElement(name = "nomeTipoDocumento", required = true)
     @ApiModelProperty(example = "Fatura Comercial", required = true, value = "Nome do tipo de documento.<br/>Tamanho máximo: 255")
     /**
@@ -44,16 +39,10 @@ public class RetornoConsultarPalavrasChave {
      **/
     private String nomeTipoDocumento = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "palavrasChave")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<PalavraChave> palavrasChave = null;
 
     /**
      * Id do tipo de documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
@@ -73,6 +62,32 @@ public class RetornoConsultarPalavrasChave {
     public RetornoConsultarPalavrasChave idTipoDocumento(Long idTipoDocumento) {
         this.idTipoDocumento = idTipoDocumento;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Nome do tipo de documento.&lt;br/&gt;Tamanho máximo: 255
+     *
+     * @return nomeTipoDocumento
+     **/
+    @JsonProperty("nomeTipoDocumento")
+    @NotNull
+    public String getNomeTipoDocumento() {
+        return nomeTipoDocumento;
+    }
+
+    public void setNomeTipoDocumento(String nomeTipoDocumento) {
+        this.nomeTipoDocumento = nomeTipoDocumento;
     }
 
     /**
@@ -99,21 +114,6 @@ public class RetornoConsultarPalavrasChave {
         return this;
     }
 
-    /**
-     * Nome do tipo de documento.&lt;br/&gt;Tamanho máximo: 255
-     *
-     * @return nomeTipoDocumento
-     **/
-    @JsonProperty("nomeTipoDocumento")
-    @NotNull
-    public String getNomeTipoDocumento() {
-        return nomeTipoDocumento;
-    }
-
-    public void setNomeTipoDocumento(String nomeTipoDocumento) {
-        this.nomeTipoDocumento = nomeTipoDocumento;
-    }
-
     public RetornoConsultarPalavrasChave nomeTipoDocumento(String nomeTipoDocumento) {
         this.nomeTipoDocumento = nomeTipoDocumento;
         return this;
@@ -124,8 +124,8 @@ public class RetornoConsultarPalavrasChave {
 
         String sb = "class RetornoConsultarPalavrasChave {\n" +
                 "    idTipoDocumento: " + toIndentedString(idTipoDocumento) + "\n" +
-                "    palavrasChave: " + toIndentedString(palavrasChave) + "\n" +
                 "    nomeTipoDocumento: " + toIndentedString(nomeTipoDocumento) + "\n" +
+                "    palavrasChave: " + toIndentedString(palavrasChave) + "\n" +
                 "}";
         return sb;
     }

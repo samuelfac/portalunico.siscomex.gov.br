@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "VinculoDocLpco", propOrder =
-        {"dataDesembaraco", "quantidadeUnidadeEstatistica", "quantidadeComercial", "dataDesvinculacao", "vmle", "dataAverbacao", "dataVinculo", "numeroDocumentoItem", "numeroDocumento", "dataACD", "dataCCE"
+        {"dataVinculo", "numeroDocumento", "numeroDocumentoItem", "dataACD", "dataDesembaraco", "dataCCE", "dataAverbacao", "dataDesvinculacao", "quantidadeComercial", "quantidadeUnidadeEstatistica", "vmle"
         })
 
 @XmlRootElement(name = "VinculoDocLpco")
@@ -25,6 +25,34 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados de um vínculo entre um LPCO e uma DU-E / DUIMP")
 public class VinculoDocLpco {
 
+    @XmlElement(name = "dataVinculo", required = true)
+    @ApiModelProperty(example = "25/11/2020", required = true, value = "Data em que o vínculo entre o LPCO e a DU-E foi criado<br>Formato: dd/MM/yyyy")
+    /**
+     * Data em que o vínculo entre o LPCO e a DU-E foi criado<br>Formato: dd/MM/yyyy
+     **/
+    private String dataVinculo = null;
+
+    @XmlElement(name = "numeroDocumento", required = true)
+    @ApiModelProperty(example = "19BR0000001234", required = true, value = "Número da DU-E vinculada ao LPCO<br>Tamanho mínimo: 14<br>Tamanho máximo: 14")
+    /**
+     * Número da DU-E vinculada ao LPCO<br>Tamanho mínimo: 14<br>Tamanho máximo: 14
+     **/
+    private String numeroDocumento = null;
+
+    @XmlElement(name = "numeroDocumentoItem", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Número do item da DU-E ao qual o LPCO foi vinculado")
+    /**
+     * Número do item da DU-E ao qual o LPCO foi vinculado
+     **/
+    private Long numeroDocumentoItem = null;
+
+    @XmlElement(name = "dataACD")
+    @ApiModelProperty(example = "25/11/2020", value = "Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
+    /**
+     * Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
+     **/
+    private String dataACD = null;
+
     @XmlElement(name = "dataDesembaraco")
     @ApiModelProperty(example = "25/11/2020", value = "Data de desembaraço da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
     /**
@@ -32,13 +60,26 @@ public class VinculoDocLpco {
      **/
     private String dataDesembaraco = null;
 
-    @XmlElement(name = "quantidadeUnidadeEstatistica")
-    @ApiModelProperty(example = "100.001122", value = "Se o LPCO  tiver um campo com código QTDE_ESTATISTICA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 6 casas decimais")
-    @Valid
+    @XmlElement(name = "dataCCE")
+    @ApiModelProperty(example = "25/11/2020", value = "Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
     /**
-     * Se o LPCO  tiver um campo com código QTDE_ESTATISTICA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 6 casas decimais
+     * Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
      **/
-    private BigDecimal quantidadeUnidadeEstatistica = null;
+    private String dataCCE = null;
+
+    @XmlElement(name = "dataAverbacao")
+    @ApiModelProperty(example = "25/11/2020", value = "Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
+    /**
+     * Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
+     **/
+    private String dataAverbacao = null;
+
+    @XmlElement(name = "dataDesvinculacao")
+    @ApiModelProperty(example = "25/11/2020", value = "Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy")
+    /**
+     * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy
+     **/
+    private String dataDesvinculacao = null;
 
     @XmlElement(name = "quantidadeComercial")
     @ApiModelProperty(example = "100.001122", value = "Se o LPCO  tiver um campo com código QTDE_COMERCIALIZADA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 6 casas decimais")
@@ -48,12 +89,13 @@ public class VinculoDocLpco {
      **/
     private BigDecimal quantidadeComercial = null;
 
-    @XmlElement(name = "dataDesvinculacao")
-    @ApiModelProperty(example = "25/11/2020", value = "Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy")
+    @XmlElement(name = "quantidadeUnidadeEstatistica")
+    @ApiModelProperty(example = "100.001122", value = "Se o LPCO  tiver um campo com código QTDE_ESTATISTICA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 6 casas decimais")
+    @Valid
     /**
-     * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido<br>Formato: dd/MM/yyyy
+     * Se o LPCO  tiver um campo com código QTDE_ESTATISTICA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 6 casas decimais
      **/
-    private String dataDesvinculacao = null;
+    private BigDecimal quantidadeUnidadeEstatistica = null;
 
     @XmlElement(name = "vmle")
     @ApiModelProperty(example = "100.01", value = "Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 2 casas decimais")
@@ -62,173 +104,6 @@ public class VinculoDocLpco {
      * Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo<br>Formato: número com precisão máxima de 2 casas decimais
      **/
     private BigDecimal vmle = null;
-
-    @XmlElement(name = "dataAverbacao")
-    @ApiModelProperty(example = "25/11/2020", value = "Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
-    /**
-     * Data de averbação da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-     **/
-    private String dataAverbacao = null;
-
-    @XmlElement(name = "dataVinculo", required = true)
-    @ApiModelProperty(example = "25/11/2020", required = true, value = "Data em que o vínculo entre o LPCO e a DU-E foi criado<br>Formato: dd/MM/yyyy")
-    /**
-     * Data em que o vínculo entre o LPCO e a DU-E foi criado<br>Formato: dd/MM/yyyy
-     **/
-    private String dataVinculo = null;
-
-    @XmlElement(name = "numeroDocumentoItem", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Número do item da DU-E ao qual o LPCO foi vinculado")
-    /**
-     * Número do item da DU-E ao qual o LPCO foi vinculado
-     **/
-    private Long numeroDocumentoItem = null;
-
-    @XmlElement(name = "numeroDocumento", required = true)
-    @ApiModelProperty(example = "19BR0000001234", required = true, value = "Número da DU-E vinculada ao LPCO<br>Tamanho mínimo: 14<br>Tamanho máximo: 14")
-    /**
-     * Número da DU-E vinculada ao LPCO<br>Tamanho mínimo: 14<br>Tamanho máximo: 14
-     **/
-    private String numeroDocumento = null;
-
-    @XmlElement(name = "dataACD")
-    @ApiModelProperty(example = "25/11/2020", value = "Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
-    /**
-     * Data de ACD da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-     **/
-    private String dataACD = null;
-
-    @XmlElement(name = "dataCCE")
-    @ApiModelProperty(example = "25/11/2020", value = "Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy")
-    /**
-     * Data de CCE da DU-E vinculada ao LPCO<br>Formato: dd/MM/yyyy
-     **/
-    private String dataCCE = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Data de desembaraço da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
-     *
-     * @return dataDesembaraco
-     **/
-    @JsonProperty("dataDesembaraco")
-    public String getDataDesembaraco() {
-        return dataDesembaraco;
-    }
-
-    public void setDataDesembaraco(String dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-    }
-
-    public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-        return this;
-    }
-
-    /**
-     * Se o LPCO  tiver um campo com código QTDE_ESTATISTICA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 6 casas decimais
-     *
-     * @return quantidadeUnidadeEstatistica
-     **/
-    @JsonProperty("quantidadeUnidadeEstatistica")
-    public BigDecimal getQuantidadeUnidadeEstatistica() {
-        return quantidadeUnidadeEstatistica;
-    }
-
-    public void setQuantidadeUnidadeEstatistica(BigDecimal quantidadeUnidadeEstatistica) {
-        this.quantidadeUnidadeEstatistica = quantidadeUnidadeEstatistica;
-    }
-
-    public VinculoDocLpco quantidadeUnidadeEstatistica(BigDecimal quantidadeUnidadeEstatistica) {
-        this.quantidadeUnidadeEstatistica = quantidadeUnidadeEstatistica;
-        return this;
-    }
-
-    /**
-     * Se o LPCO  tiver um campo com código QTDE_COMERCIALIZADA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 6 casas decimais
-     *
-     * @return quantidadeComercial
-     **/
-    @JsonProperty("quantidadeComercial")
-    public BigDecimal getQuantidadeComercial() {
-        return quantidadeComercial;
-    }
-
-    public void setQuantidadeComercial(BigDecimal quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
-    }
-
-    public VinculoDocLpco quantidadeComercial(BigDecimal quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
-        return this;
-    }
-
-    /**
-     * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido&lt;br&gt;Formato: dd/MM/yyyy
-     *
-     * @return dataDesvinculacao
-     **/
-    @JsonProperty("dataDesvinculacao")
-    public String getDataDesvinculacao() {
-        return dataDesvinculacao;
-    }
-
-    public void setDataDesvinculacao(String dataDesvinculacao) {
-        this.dataDesvinculacao = dataDesvinculacao;
-    }
-
-    public VinculoDocLpco dataDesvinculacao(String dataDesvinculacao) {
-        this.dataDesvinculacao = dataDesvinculacao;
-        return this;
-    }
-
-    /**
-     * Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 2 casas decimais
-     *
-     * @return vmle
-     **/
-    @JsonProperty("vmle")
-    public BigDecimal getVmle() {
-        return vmle;
-    }
-
-    public void setVmle(BigDecimal vmle) {
-        this.vmle = vmle;
-    }
-
-    public VinculoDocLpco vmle(BigDecimal vmle) {
-        this.vmle = vmle;
-        return this;
-    }
-
-    /**
-     * Data de averbação da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
-     *
-     * @return dataAverbacao
-     **/
-    @JsonProperty("dataAverbacao")
-    public String getDataAverbacao() {
-        return dataAverbacao;
-    }
-
-    public void setDataAverbacao(String dataAverbacao) {
-        this.dataAverbacao = dataAverbacao;
-    }
-
-    public VinculoDocLpco dataAverbacao(String dataAverbacao) {
-        this.dataAverbacao = dataAverbacao;
-        return this;
-    }
 
     /**
      * Data em que o vínculo entre o LPCO e a DU-E foi criado&lt;br&gt;Formato: dd/MM/yyyy
@@ -247,26 +122,6 @@ public class VinculoDocLpco {
 
     public VinculoDocLpco dataVinculo(String dataVinculo) {
         this.dataVinculo = dataVinculo;
-        return this;
-    }
-
-    /**
-     * Número do item da DU-E ao qual o LPCO foi vinculado
-     *
-     * @return numeroDocumentoItem
-     **/
-    @JsonProperty("numeroDocumentoItem")
-    @NotNull
-    public Long getNumeroDocumentoItem() {
-        return numeroDocumentoItem;
-    }
-
-    public void setNumeroDocumentoItem(Long numeroDocumentoItem) {
-        this.numeroDocumentoItem = numeroDocumentoItem;
-    }
-
-    public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
-        this.numeroDocumentoItem = numeroDocumentoItem;
         return this;
     }
 
@@ -291,6 +146,32 @@ public class VinculoDocLpco {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Número do item da DU-E ao qual o LPCO foi vinculado
+     *
+     * @return numeroDocumentoItem
+     **/
+    @JsonProperty("numeroDocumentoItem")
+    @NotNull
+    public Long getNumeroDocumentoItem() {
+        return numeroDocumentoItem;
+    }
+
+    public void setNumeroDocumentoItem(Long numeroDocumentoItem) {
+        this.numeroDocumentoItem = numeroDocumentoItem;
+    }
+
+    /**
      * Data de ACD da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
      *
      * @return dataACD
@@ -307,6 +188,25 @@ public class VinculoDocLpco {
     public VinculoDocLpco dataACD(String dataACD) {
         this.dataACD = dataACD;
         return this;
+    }
+
+    public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
+        this.numeroDocumentoItem = numeroDocumentoItem;
+        return this;
+    }
+
+    /**
+     * Data de desembaraço da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
+     *
+     * @return dataDesembaraco
+     **/
+    @JsonProperty("dataDesembaraco")
+    public String getDataDesembaraco() {
+        return dataDesembaraco;
+    }
+
+    public void setDataDesembaraco(String dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
     }
 
     /**
@@ -328,21 +228,121 @@ public class VinculoDocLpco {
         return this;
     }
 
+    public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
+        return this;
+    }
+
+    /**
+     * Data de averbação da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
+     *
+     * @return dataAverbacao
+     **/
+    @JsonProperty("dataAverbacao")
+    public String getDataAverbacao() {
+        return dataAverbacao;
+    }
+
+    public void setDataAverbacao(String dataAverbacao) {
+        this.dataAverbacao = dataAverbacao;
+    }
+
+    public VinculoDocLpco dataAverbacao(String dataAverbacao) {
+        this.dataAverbacao = dataAverbacao;
+        return this;
+    }
+
+    /**
+     * Se preenchido, este campo indica a data em que o vínculo entre a DU-E deixou de ser válido.Se este campo estiver vazio, significa que o vínculo ainda é válido&lt;br&gt;Formato: dd/MM/yyyy
+     *
+     * @return dataDesvinculacao
+     **/
+    @JsonProperty("dataDesvinculacao")
+    public String getDataDesvinculacao() {
+        return dataDesvinculacao;
+    }
+
+    public void setDataDesvinculacao(String dataDesvinculacao) {
+        this.dataDesvinculacao = dataDesvinculacao;
+    }
+
+    public VinculoDocLpco dataDesvinculacao(String dataDesvinculacao) {
+        this.dataDesvinculacao = dataDesvinculacao;
+        return this;
+    }
+
+    /**
+     * Se o LPCO  tiver um campo com código QTDE_COMERCIALIZADA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 6 casas decimais
+     *
+     * @return quantidadeComercial
+     **/
+    @JsonProperty("quantidadeComercial")
+    public BigDecimal getQuantidadeComercial() {
+        return quantidadeComercial;
+    }
+
+    public void setQuantidadeComercial(BigDecimal quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
+    }
+
+    public VinculoDocLpco quantidadeComercial(BigDecimal quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
+        return this;
+    }
+
+    /**
+     * Se o LPCO  tiver um campo com código QTDE_ESTATISTICA, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 6 casas decimais
+     *
+     * @return quantidadeUnidadeEstatistica
+     **/
+    @JsonProperty("quantidadeUnidadeEstatistica")
+    public BigDecimal getQuantidadeUnidadeEstatistica() {
+        return quantidadeUnidadeEstatistica;
+    }
+
+    public void setQuantidadeUnidadeEstatistica(BigDecimal quantidadeUnidadeEstatistica) {
+        this.quantidadeUnidadeEstatistica = quantidadeUnidadeEstatistica;
+    }
+
+    public VinculoDocLpco quantidadeUnidadeEstatistica(BigDecimal quantidadeUnidadeEstatistica) {
+        this.quantidadeUnidadeEstatistica = quantidadeUnidadeEstatistica;
+        return this;
+    }
+
+    /**
+     * Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 2 casas decimais
+     *
+     * @return vmle
+     **/
+    @JsonProperty("vmle")
+    public BigDecimal getVmle() {
+        return vmle;
+    }
+
+    public void setVmle(BigDecimal vmle) {
+        this.vmle = vmle;
+    }
+
+    public VinculoDocLpco vmle(BigDecimal vmle) {
+        this.vmle = vmle;
+        return this;
+    }
+
     @Override
     public String toString() {
 
         String sb = "class VinculoDocLpco {\n" +
-                "    dataDesembaraco: " + toIndentedString(dataDesembaraco) + "\n" +
-                "    quantidadeUnidadeEstatistica: " + toIndentedString(quantidadeUnidadeEstatistica) + "\n" +
-                "    quantidadeComercial: " + toIndentedString(quantidadeComercial) + "\n" +
-                "    dataDesvinculacao: " + toIndentedString(dataDesvinculacao) + "\n" +
-                "    vmle: " + toIndentedString(vmle) + "\n" +
-                "    dataAverbacao: " + toIndentedString(dataAverbacao) + "\n" +
                 "    dataVinculo: " + toIndentedString(dataVinculo) + "\n" +
-                "    numeroDocumentoItem: " + toIndentedString(numeroDocumentoItem) + "\n" +
                 "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    numeroDocumentoItem: " + toIndentedString(numeroDocumentoItem) + "\n" +
                 "    dataACD: " + toIndentedString(dataACD) + "\n" +
+                "    dataDesembaraco: " + toIndentedString(dataDesembaraco) + "\n" +
                 "    dataCCE: " + toIndentedString(dataCCE) + "\n" +
+                "    dataAverbacao: " + toIndentedString(dataAverbacao) + "\n" +
+                "    dataDesvinculacao: " + toIndentedString(dataDesvinculacao) + "\n" +
+                "    quantidadeComercial: " + toIndentedString(quantidadeComercial) + "\n" +
+                "    quantidadeUnidadeEstatistica: " + toIndentedString(quantidadeUnidadeEstatistica) + "\n" +
+                "    vmle: " + toIndentedString(vmle) + "\n" +
                 "}";
         return sb;
     }

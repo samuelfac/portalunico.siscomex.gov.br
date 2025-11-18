@@ -14,7 +14,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SefazTributoAplicadoCover", propOrder =
-        {"fundamentoLegal", "regime", "atributosDinamicos", "tributo"
+        {"tributo", "regime", "fundamentoLegal", "atributosDinamicos"
         })
 
 @XmlRootElement(name = "SefazTributoAplicadoCover")
@@ -24,15 +24,20 @@ import java.util.List;
 @ApiModel(description = "Dados de um tributo aplicado")
 public class SefazTributoAplicadoCover {
 
-    @XmlElement(name = "fundamentoLegal")
+    @XmlElement(name = "tributo")
     @ApiModelProperty(value = "")
     @Valid
-    private FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal = null;
+    private TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo = null;
 
     @XmlElement(name = "regime")
     @ApiModelProperty(value = "")
     @Valid
     private RegimeTributrioObjetoCompostoPelosAtributosCdigoEDescrio regime = null;
+
+    @XmlElement(name = "fundamentoLegal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal = null;
 
     @XmlElement(name = "atributosDinamicos")
     @ApiModelProperty(value = "Lista de atributos dinâmicos dos tributos")
@@ -41,11 +46,6 @@ public class SefazTributoAplicadoCover {
      * Lista de atributos dinâmicos dos tributos
      **/
     private List<SefazAtributoTributoCover> atributosDinamicos = null;
-
-    @XmlElement(name = "tributo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -59,22 +59,17 @@ public class SefazTributoAplicadoCover {
     }
 
     /**
-     * Get fundamentoLegal
+     * Get tributo
      *
-     * @return fundamentoLegal
+     * @return tributo
      **/
-    @JsonProperty("fundamentoLegal")
-    public FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio getFundamentoLegal() {
-        return fundamentoLegal;
+    @JsonProperty("tributo")
+    public TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio getTributo() {
+        return tributo;
     }
 
-    public void setFundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-    }
-
-    public SefazTributoAplicadoCover fundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-        return this;
+    public void setTributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
+        this.tributo = tributo;
     }
 
     /**
@@ -94,6 +89,25 @@ public class SefazTributoAplicadoCover {
     public SefazTributoAplicadoCover regime(RegimeTributrioObjetoCompostoPelosAtributosCdigoEDescrio regime) {
         this.regime = regime;
         return this;
+    }
+
+    public SefazTributoAplicadoCover tributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
+        this.tributo = tributo;
+        return this;
+    }
+
+    /**
+     * Get fundamentoLegal
+     *
+     * @return fundamentoLegal
+     **/
+    @JsonProperty("fundamentoLegal")
+    public FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio getFundamentoLegal() {
+        return fundamentoLegal;
+    }
+
+    public void setFundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
     }
 
     /**
@@ -120,22 +134,8 @@ public class SefazTributoAplicadoCover {
         return this;
     }
 
-    /**
-     * Get tributo
-     *
-     * @return tributo
-     **/
-    @JsonProperty("tributo")
-    public TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio getTributo() {
-        return tributo;
-    }
-
-    public void setTributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
-        this.tributo = tributo;
-    }
-
-    public SefazTributoAplicadoCover tributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
-        this.tributo = tributo;
+    public SefazTributoAplicadoCover fundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
         return this;
     }
 
@@ -143,10 +143,10 @@ public class SefazTributoAplicadoCover {
     public String toString() {
 
         String sb = "class SefazTributoAplicadoCover {\n" +
-                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
-                "    regime: " + toIndentedString(regime) + "\n" +
-                "    atributosDinamicos: " + toIndentedString(atributosDinamicos) + "\n" +
                 "    tributo: " + toIndentedString(tributo) + "\n" +
+                "    regime: " + toIndentedString(regime) + "\n" +
+                "    fundamentoLegal: " + toIndentedString(fundamentoLegal) + "\n" +
+                "    atributosDinamicos: " + toIndentedString(atributosDinamicos) + "\n" +
                 "}";
         return sb;
     }

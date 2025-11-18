@@ -16,7 +16,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Manifestacao", propOrder =
-        {"identificacaoManifestacao", "pesoBrutoTotalTransportado", "observacoes", "cpfTransportador", "localDestino", "veiculoRodoviario", "veiculoFerroviario", "cnpjTransportador", "conteineres", "documentosCarga", "viaTransporte", "tipoDAT"
+        {"identificacaoManifestacao", "tipoDAT", "viaTransporte", "cnpjTransportador", "cpfTransportador", "localDestino", "documentosCarga", "conteineres", "pesoBrutoTotalTransportado", "observacoes", "veiculoFerroviario", "veiculoRodoviario"
         })
 
 @XmlRootElement(name = "Manifestacao")
@@ -33,6 +33,55 @@ public class Manifestacao {
      **/
     private String identificacaoManifestacao = null;
 
+    @XmlElement(name = "tipoDAT", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Tipo do DAT<br>Tamanho: 1<br>Formato: N<br>Domínio: 1 = Completo, 2 = Simplificado")
+    /**
+     * Tipo do DAT<br>Tamanho: 1<br>Formato: N<br>Domínio: 1 = Completo, 2 = Simplificado
+     **/
+    private Integer tipoDAT = null;
+
+    @XmlElement(name = "viaTransporte", required = true)
+    @ApiModelProperty(example = "06", required = true, value = "Via de Transporte<br>Tamanho: 2<br>Formato: NN")
+    /**
+     * Via de Transporte<br>Tamanho: 2<br>Formato: NN
+     **/
+    private String viaTransporte = null;
+
+    @XmlElement(name = "cnpjTransportador")
+    @ApiModelProperty(example = "07396865000168", value = "Cnpj do Transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
+    /**
+     * Cnpj do Transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjTransportador = null;
+
+    @XmlElement(name = "cpfTransportador")
+    @ApiModelProperty(example = "00000000000", value = "CPF do Transportador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
+    /**
+     * CPF do Transportador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
+     **/
+    private String cpfTransportador = null;
+
+    @XmlElement(name = "localDestino", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private LocalMunicipio localDestino = null;
+
+    @XmlElement(name = "documentosCarga")
+    @ApiModelProperty(value = "Informação referente a documentos de carga")
+    @Valid
+    /**
+     * Informação referente a documentos de carga
+     **/
+    private List<Documento> documentosCarga = null;
+
+    @XmlElement(name = "conteineres")
+    @ApiModelProperty(value = "Informação de contêiner(es)")
+    @Valid
+    /**
+     * Informação de contêiner(es)
+     **/
+    private List<Conteiner> conteineres = null;
+
     @XmlElement(name = "pesoBrutoTotalTransportado", required = true)
     @ApiModelProperty(example = "100.0", required = true, value = "Peso das cargas(sem o veículo)<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
     @Valid
@@ -48,75 +97,15 @@ public class Manifestacao {
      **/
     private String observacoes = null;
 
-    @XmlElement(name = "cpfTransportador")
-    @ApiModelProperty(example = "00000000000", value = "CPF do Transportador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN")
-    /**
-     * CPF do Transportador<br>Tamanho: 11<br>Formato: NNNNNNNNNNN
-     **/
-    private String cpfTransportador = null;
-
-    @XmlElement(name = "localDestino", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private LocalMunicipio localDestino = null;
-
-    @XmlElement(name = "veiculoRodoviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoRodoviario veiculoRodoviario = null;
-
     @XmlElement(name = "veiculoFerroviario")
     @ApiModelProperty(value = "")
     @Valid
     private VeiculoFerroviario veiculoFerroviario = null;
 
-    @XmlElement(name = "cnpjTransportador")
-    @ApiModelProperty(example = "07396865000168", value = "Cnpj do Transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN")
-    /**
-     * Cnpj do Transportador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjTransportador = null;
-
-    @XmlElement(name = "conteineres")
-    @ApiModelProperty(value = "Informação de contêiner(es)")
+    @XmlElement(name = "veiculoRodoviario")
+    @ApiModelProperty(value = "")
     @Valid
-    /**
-     * Informação de contêiner(es)
-     **/
-    private List<Conteiner> conteineres = null;
-
-    @XmlElement(name = "documentosCarga")
-    @ApiModelProperty(value = "Informação referente a documentos de carga")
-    @Valid
-    /**
-     * Informação referente a documentos de carga
-     **/
-    private List<Documento> documentosCarga = null;
-
-    @XmlElement(name = "viaTransporte", required = true)
-    @ApiModelProperty(example = "06", required = true, value = "Via de Transporte<br>Tamanho: 2<br>Formato: NN")
-    /**
-     * Via de Transporte<br>Tamanho: 2<br>Formato: NN
-     **/
-    private String viaTransporte = null;
-
-    @XmlElement(name = "tipoDAT", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Tipo do DAT<br>Tamanho: 1<br>Formato: N<br>Domínio: 1 = Completo, 2 = Simplificado")
-    /**
-     * Tipo do DAT<br>Tamanho: 1<br>Formato: N<br>Domínio: 1 = Completo, 2 = Simplificado
-     **/
-    private Integer tipoDAT = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    private VeiculoRodoviario veiculoRodoviario = null;
 
     /**
      * Identificação da Manifestação&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada manifesto no momento da exibição de eventuais mensagens de erro. Este campo é uma chave dentro do arquivo XML, não admitindo duplicatas.
@@ -135,6 +124,163 @@ public class Manifestacao {
 
     public Manifestacao identificacaoManifestacao(String identificacaoManifestacao) {
         this.identificacaoManifestacao = identificacaoManifestacao;
+        return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Tipo do DAT&lt;br&gt;Tamanho: 1&lt;br&gt;Formato: N&lt;br&gt;Domínio: 1 &#x3D; Completo, 2 &#x3D; Simplificado
+     *
+     * @return tipoDAT
+     **/
+    @JsonProperty("tipoDAT")
+    @NotNull
+    public Integer getTipoDAT() {
+        return tipoDAT;
+    }
+
+    public void setTipoDAT(Integer tipoDAT) {
+        this.tipoDAT = tipoDAT;
+    }
+
+    public Manifestacao tipoDAT(Integer tipoDAT) {
+        this.tipoDAT = tipoDAT;
+        return this;
+    }
+
+    /**
+     * Via de Transporte&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
+     *
+     * @return viaTransporte
+     **/
+    @JsonProperty("viaTransporte")
+    @NotNull
+    public String getViaTransporte() {
+        return viaTransporte;
+    }
+
+    public void setViaTransporte(String viaTransporte) {
+        this.viaTransporte = viaTransporte;
+    }
+
+    public Manifestacao viaTransporte(String viaTransporte) {
+        this.viaTransporte = viaTransporte;
+        return this;
+    }
+
+    /**
+     * Cnpj do Transportador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
+     * @return cnpjTransportador
+     **/
+    @JsonProperty("cnpjTransportador")
+    public String getCnpjTransportador() {
+        return cnpjTransportador;
+    }
+
+    public void setCnpjTransportador(String cnpjTransportador) {
+        this.cnpjTransportador = cnpjTransportador;
+    }
+
+    /**
+     * CPF do Transportador&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
+     *
+     * @return cpfTransportador
+     **/
+    @JsonProperty("cpfTransportador")
+    public String getCpfTransportador() {
+        return cpfTransportador;
+    }
+
+    public void setCpfTransportador(String cpfTransportador) {
+        this.cpfTransportador = cpfTransportador;
+    }
+
+    public Manifestacao cpfTransportador(String cpfTransportador) {
+        this.cpfTransportador = cpfTransportador;
+        return this;
+    }
+
+    /**
+     * Get localDestino
+     *
+     * @return localDestino
+     **/
+    @JsonProperty("localDestino")
+    @NotNull
+    public LocalMunicipio getLocalDestino() {
+        return localDestino;
+    }
+
+    public void setLocalDestino(LocalMunicipio localDestino) {
+        this.localDestino = localDestino;
+    }
+
+    public Manifestacao localDestino(LocalMunicipio localDestino) {
+        this.localDestino = localDestino;
+        return this;
+    }
+
+    public Manifestacao cnpjTransportador(String cnpjTransportador) {
+        this.cnpjTransportador = cnpjTransportador;
+        return this;
+    }
+
+    /**
+     * Informação referente a documentos de carga
+     *
+     * @return documentosCarga
+     **/
+    @JsonProperty("documentosCarga")
+    public List<Documento> getDocumentosCarga() {
+        return documentosCarga;
+    }
+
+    public void setDocumentosCarga(List<Documento> documentosCarga) {
+        this.documentosCarga = documentosCarga;
+    }
+
+    public Manifestacao documentosCarga(List<Documento> documentosCarga) {
+        this.documentosCarga = documentosCarga;
+        return this;
+    }
+
+    /**
+     * Informação de contêiner(es)
+     *
+     * @return conteineres
+     **/
+    @JsonProperty("conteineres")
+    public List<Conteiner> getConteineres() {
+        return conteineres;
+    }
+
+    public void setConteineres(List<Conteiner> conteineres) {
+        this.conteineres = conteineres;
+    }
+
+    public Manifestacao conteineres(List<Conteiner> conteineres) {
+        this.conteineres = conteineres;
+        return this;
+    }
+
+    public Manifestacao addConteineresItem(Conteiner conteineresItem) {
+        this.conteineres.add(conteineresItem);
+        return this;
+    }
+
+    public Manifestacao addDocumentosCargaItem(Documento documentosCargaItem) {
+        this.documentosCarga.add(documentosCargaItem);
         return this;
     }
 
@@ -178,41 +324,21 @@ public class Manifestacao {
     }
 
     /**
-     * CPF do Transportador&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
+     * Get veiculoFerroviario
      *
-     * @return cpfTransportador
+     * @return veiculoFerroviario
      **/
-    @JsonProperty("cpfTransportador")
-    public String getCpfTransportador() {
-        return cpfTransportador;
+    @JsonProperty("veiculoFerroviario")
+    public VeiculoFerroviario getVeiculoFerroviario() {
+        return veiculoFerroviario;
     }
 
-    public void setCpfTransportador(String cpfTransportador) {
-        this.cpfTransportador = cpfTransportador;
+    public void setVeiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
+        this.veiculoFerroviario = veiculoFerroviario;
     }
 
-    public Manifestacao cpfTransportador(String cpfTransportador) {
-        this.cpfTransportador = cpfTransportador;
-        return this;
-    }
-
-    /**
-     * Get localDestino
-     *
-     * @return localDestino
-     **/
-    @JsonProperty("localDestino")
-    @NotNull
-    public LocalMunicipio getLocalDestino() {
-        return localDestino;
-    }
-
-    public void setLocalDestino(LocalMunicipio localDestino) {
-        this.localDestino = localDestino;
-    }
-
-    public Manifestacao localDestino(LocalMunicipio localDestino) {
-        this.localDestino = localDestino;
+    public Manifestacao veiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
+        this.veiculoFerroviario = veiculoFerroviario;
         return this;
     }
 
@@ -235,148 +361,22 @@ public class Manifestacao {
         return this;
     }
 
-    /**
-     * Get veiculoFerroviario
-     *
-     * @return veiculoFerroviario
-     **/
-    @JsonProperty("veiculoFerroviario")
-    public VeiculoFerroviario getVeiculoFerroviario() {
-        return veiculoFerroviario;
-    }
-
-    public void setVeiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
-        this.veiculoFerroviario = veiculoFerroviario;
-    }
-
-    public Manifestacao veiculoFerroviario(VeiculoFerroviario veiculoFerroviario) {
-        this.veiculoFerroviario = veiculoFerroviario;
-        return this;
-    }
-
-    /**
-     * Cnpj do Transportador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
-     *
-     * @return cnpjTransportador
-     **/
-    @JsonProperty("cnpjTransportador")
-    public String getCnpjTransportador() {
-        return cnpjTransportador;
-    }
-
-    public void setCnpjTransportador(String cnpjTransportador) {
-        this.cnpjTransportador = cnpjTransportador;
-    }
-
-    public Manifestacao cnpjTransportador(String cnpjTransportador) {
-        this.cnpjTransportador = cnpjTransportador;
-        return this;
-    }
-
-    /**
-     * Informação de contêiner(es)
-     *
-     * @return conteineres
-     **/
-    @JsonProperty("conteineres")
-    public List<Conteiner> getConteineres() {
-        return conteineres;
-    }
-
-    public void setConteineres(List<Conteiner> conteineres) {
-        this.conteineres = conteineres;
-    }
-
-    public Manifestacao conteineres(List<Conteiner> conteineres) {
-        this.conteineres = conteineres;
-        return this;
-    }
-
-    public Manifestacao addConteineresItem(Conteiner conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
-
-    /**
-     * Informação referente a documentos de carga
-     *
-     * @return documentosCarga
-     **/
-    @JsonProperty("documentosCarga")
-    public List<Documento> getDocumentosCarga() {
-        return documentosCarga;
-    }
-
-    public void setDocumentosCarga(List<Documento> documentosCarga) {
-        this.documentosCarga = documentosCarga;
-    }
-
-    public Manifestacao documentosCarga(List<Documento> documentosCarga) {
-        this.documentosCarga = documentosCarga;
-        return this;
-    }
-
-    public Manifestacao addDocumentosCargaItem(Documento documentosCargaItem) {
-        this.documentosCarga.add(documentosCargaItem);
-        return this;
-    }
-
-    /**
-     * Via de Transporte&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
-     *
-     * @return viaTransporte
-     **/
-    @JsonProperty("viaTransporte")
-    @NotNull
-    public String getViaTransporte() {
-        return viaTransporte;
-    }
-
-    public void setViaTransporte(String viaTransporte) {
-        this.viaTransporte = viaTransporte;
-    }
-
-    public Manifestacao viaTransporte(String viaTransporte) {
-        this.viaTransporte = viaTransporte;
-        return this;
-    }
-
-    /**
-     * Tipo do DAT&lt;br&gt;Tamanho: 1&lt;br&gt;Formato: N&lt;br&gt;Domínio: 1 &#x3D; Completo, 2 &#x3D; Simplificado
-     *
-     * @return tipoDAT
-     **/
-    @JsonProperty("tipoDAT")
-    @NotNull
-    public Integer getTipoDAT() {
-        return tipoDAT;
-    }
-
-    public void setTipoDAT(Integer tipoDAT) {
-        this.tipoDAT = tipoDAT;
-    }
-
-    public Manifestacao tipoDAT(Integer tipoDAT) {
-        this.tipoDAT = tipoDAT;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class Manifestacao {\n" +
                 "    identificacaoManifestacao: " + toIndentedString(identificacaoManifestacao) + "\n" +
-                "    pesoBrutoTotalTransportado: " + toIndentedString(pesoBrutoTotalTransportado) + "\n" +
-                "    observacoes: " + toIndentedString(observacoes) + "\n" +
+                "    tipoDAT: " + toIndentedString(tipoDAT) + "\n" +
+                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
+                "    cnpjTransportador: " + toIndentedString(cnpjTransportador) + "\n" +
                 "    cpfTransportador: " + toIndentedString(cpfTransportador) + "\n" +
                 "    localDestino: " + toIndentedString(localDestino) + "\n" +
-                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
-                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
-                "    cnpjTransportador: " + toIndentedString(cnpjTransportador) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
                 "    documentosCarga: " + toIndentedString(documentosCarga) + "\n" +
-                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
-                "    tipoDAT: " + toIndentedString(tipoDAT) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "    pesoBrutoTotalTransportado: " + toIndentedString(pesoBrutoTotalTransportado) + "\n" +
+                "    observacoes: " + toIndentedString(observacoes) + "\n" +
+                "    veiculoFerroviario: " + toIndentedString(veiculoFerroviario) + "\n" +
+                "    veiculoRodoviario: " + toIndentedString(veiculoRodoviario) + "\n" +
                 "}";
         return sb;
     }

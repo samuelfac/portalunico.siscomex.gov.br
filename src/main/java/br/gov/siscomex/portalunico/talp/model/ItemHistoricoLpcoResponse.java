@@ -15,7 +15,7 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemHistoricoLpcoResponse", propOrder =
-        {"solicitacao", "motivoAnalise", "situacao", "justificativa", "usuario", "situacaoSolicitacao", "alteracoes", "dataAlteracao"
+        {"dataAlteracao", "situacao", "situacaoSolicitacao", "solicitacao", "usuario", "justificativa", "motivoAnalise", "alteracoes"
         })
 
 @XmlRootElement(name = "ItemHistoricoLpcoResponse")
@@ -25,19 +25,12 @@ import java.util.List;
 @ApiModel(description = "Dados de um item do histórico do LPCO")
 public class ItemHistoricoLpcoResponse {
 
-    @XmlElement(name = "solicitacao")
-    @ApiModelProperty(example = "002", value = "Número da solicitação de retificação do LPCO.")
+    @XmlElement(name = "dataAlteracao", required = true)
+    @ApiModelProperty(example = "2019-08-29T14:03:52.123Z", required = true, value = "Momento em que ocorreu o evento sobre o LPCO.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ")
     /**
-     * Número da solicitação de retificação do LPCO.
+     * Momento em que ocorreu o evento sobre o LPCO.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ
      **/
-    private String solicitacao = null;
-
-    @XmlElement(name = "motivoAnalise")
-    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
-    /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
-     **/
-    private String motivoAnalise = null;
+    private String dataAlteracao = null;
 
     @XmlElement(name = "situacao", required = true)
     @ApiModelProperty(example = "Deferido", required = true, value = "Situação do LPCO no momento do evento.")
@@ -46,12 +39,19 @@ public class ItemHistoricoLpcoResponse {
      **/
     private String situacao = null;
 
-    @XmlElement(name = "justificativa")
-    @ApiModelProperty(example = "Texto livre", value = "Justificativa utilizada para o evento no LPCO.<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
+    @XmlElement(name = "situacaoSolicitacao")
+    @ApiModelProperty(example = "Para Análise", value = "Descrição da situação da solicitação realizada no LPCO.")
     /**
-     * Justificativa utilizada para o evento no LPCO.<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
+     * Descrição da situação da solicitação realizada no LPCO.
      **/
-    private String justificativa = null;
+    private String situacaoSolicitacao = null;
+
+    @XmlElement(name = "solicitacao")
+    @ApiModelProperty(example = "002", value = "Número da solicitação de retificação do LPCO.")
+    /**
+     * Número da solicitação de retificação do LPCO.
+     **/
+    private String solicitacao = null;
 
     @XmlElement(name = "usuario")
     @ApiModelProperty(example = "00000000000", value = "Identificação do usuário que realizou o evento sobre o LPCO. Visível apenas para anuentes.")
@@ -60,12 +60,19 @@ public class ItemHistoricoLpcoResponse {
      **/
     private String usuario = null;
 
-    @XmlElement(name = "situacaoSolicitacao")
-    @ApiModelProperty(example = "Para Análise", value = "Descrição da situação da solicitação realizada no LPCO.")
+    @XmlElement(name = "justificativa")
+    @ApiModelProperty(example = "Texto livre", value = "Justificativa utilizada para o evento no LPCO.<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900")
     /**
-     * Descrição da situação da solicitação realizada no LPCO.
+     * Justificativa utilizada para o evento no LPCO.<br>Tamanho mínimo: 1<br>Tamanho máximo: 3900
      **/
-    private String situacaoSolicitacao = null;
+    private String justificativa = null;
+
+    @XmlElement(name = "motivoAnalise")
+    @ApiModelProperty(example = "A01", value = "Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>")
+    /**
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.<br>
+     **/
+    private String motivoAnalise = null;
 
     @XmlElement(name = "alteracoes")
     @ApiModelProperty(value = "Lista de alterações realizadas no evento do LPCO.")
@@ -74,13 +81,6 @@ public class ItemHistoricoLpcoResponse {
      * Lista de alterações realizadas no evento do LPCO.
      **/
     private List<DadosAlteracoesLpco> alteracoes = null;
-
-    @XmlElement(name = "dataAlteracao", required = true)
-    @ApiModelProperty(example = "2019-08-29T14:03:52.123Z", required = true, value = "Momento em que ocorreu o evento sobre o LPCO.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ")
-    /**
-     * Momento em que ocorreu o evento sobre o LPCO.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ
-     **/
-    private String dataAlteracao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -94,41 +94,18 @@ public class ItemHistoricoLpcoResponse {
     }
 
     /**
-     * Número da solicitação de retificação do LPCO.
+     * Momento em que ocorreu o evento sobre o LPCO.&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
      *
-     * @return solicitacao
+     * @return dataAlteracao
      **/
-    @JsonProperty("solicitacao")
-    public String getSolicitacao() {
-        return solicitacao;
+    @JsonProperty("dataAlteracao")
+    @NotNull
+    public String getDataAlteracao() {
+        return dataAlteracao;
     }
 
-    public void setSolicitacao(String solicitacao) {
-        this.solicitacao = solicitacao;
-    }
-
-    public ItemHistoricoLpcoResponse solicitacao(String solicitacao) {
-        this.solicitacao = solicitacao;
-        return this;
-    }
-
-    /**
-     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
-     *
-     * @return motivoAnalise
-     **/
-    @JsonProperty("motivoAnalise")
-    public String getMotivoAnalise() {
-        return motivoAnalise;
-    }
-
-    public void setMotivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-    }
-
-    public ItemHistoricoLpcoResponse motivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-        return this;
+    public void setDataAlteracao(String dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
     }
 
     /**
@@ -148,6 +125,68 @@ public class ItemHistoricoLpcoResponse {
 
     public ItemHistoricoLpcoResponse situacao(String situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ItemHistoricoLpcoResponse dataAlteracao(String dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
+        return this;
+    }
+
+    /**
+     * Descrição da situação da solicitação realizada no LPCO.
+     *
+     * @return situacaoSolicitacao
+     **/
+    @JsonProperty("situacaoSolicitacao")
+    public String getSituacaoSolicitacao() {
+        return situacaoSolicitacao;
+    }
+
+    public void setSituacaoSolicitacao(String situacaoSolicitacao) {
+        this.situacaoSolicitacao = situacaoSolicitacao;
+    }
+
+    public ItemHistoricoLpcoResponse situacaoSolicitacao(String situacaoSolicitacao) {
+        this.situacaoSolicitacao = situacaoSolicitacao;
+        return this;
+    }
+
+    /**
+     * Número da solicitação de retificação do LPCO.
+     *
+     * @return solicitacao
+     **/
+    @JsonProperty("solicitacao")
+    public String getSolicitacao() {
+        return solicitacao;
+    }
+
+    public void setSolicitacao(String solicitacao) {
+        this.solicitacao = solicitacao;
+    }
+
+    /**
+     * Identificação do usuário que realizou o evento sobre o LPCO. Visível apenas para anuentes.
+     *
+     * @return usuario
+     **/
+    @JsonProperty("usuario")
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public ItemHistoricoLpcoResponse usuario(String usuario) {
+        this.usuario = usuario;
+        return this;
+    }
+
+    public ItemHistoricoLpcoResponse solicitacao(String solicitacao) {
+        this.solicitacao = solicitacao;
         return this;
     }
 
@@ -171,41 +210,17 @@ public class ItemHistoricoLpcoResponse {
     }
 
     /**
-     * Identificação do usuário que realizou o evento sobre o LPCO. Visível apenas para anuentes.
+     * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
      *
-     * @return usuario
+     * @return motivoAnalise
      **/
-    @JsonProperty("usuario")
-    public String getUsuario() {
-        return usuario;
+    @JsonProperty("motivoAnalise")
+    public String getMotivoAnalise() {
+        return motivoAnalise;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public ItemHistoricoLpcoResponse usuario(String usuario) {
-        this.usuario = usuario;
-        return this;
-    }
-
-    /**
-     * Descrição da situação da solicitação realizada no LPCO.
-     *
-     * @return situacaoSolicitacao
-     **/
-    @JsonProperty("situacaoSolicitacao")
-    public String getSituacaoSolicitacao() {
-        return situacaoSolicitacao;
-    }
-
-    public void setSituacaoSolicitacao(String situacaoSolicitacao) {
-        this.situacaoSolicitacao = situacaoSolicitacao;
-    }
-
-    public ItemHistoricoLpcoResponse situacaoSolicitacao(String situacaoSolicitacao) {
-        this.situacaoSolicitacao = situacaoSolicitacao;
-        return this;
+    public void setMotivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
     }
 
     /**
@@ -232,23 +247,8 @@ public class ItemHistoricoLpcoResponse {
         return this;
     }
 
-    /**
-     * Momento em que ocorreu o evento sobre o LPCO.&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
-     * @return dataAlteracao
-     **/
-    @JsonProperty("dataAlteracao")
-    @NotNull
-    public String getDataAlteracao() {
-        return dataAlteracao;
-    }
-
-    public void setDataAlteracao(String dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
-    }
-
-    public ItemHistoricoLpcoResponse dataAlteracao(String dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
+    public ItemHistoricoLpcoResponse motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
         return this;
     }
 
@@ -256,14 +256,14 @@ public class ItemHistoricoLpcoResponse {
     public String toString() {
 
         String sb = "class ItemHistoricoLpcoResponse {\n" +
-                "    solicitacao: " + toIndentedString(solicitacao) + "\n" +
-                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    justificativa: " + toIndentedString(justificativa) + "\n" +
-                "    usuario: " + toIndentedString(usuario) + "\n" +
-                "    situacaoSolicitacao: " + toIndentedString(situacaoSolicitacao) + "\n" +
-                "    alteracoes: " + toIndentedString(alteracoes) + "\n" +
                 "    dataAlteracao: " + toIndentedString(dataAlteracao) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    situacaoSolicitacao: " + toIndentedString(situacaoSolicitacao) + "\n" +
+                "    solicitacao: " + toIndentedString(solicitacao) + "\n" +
+                "    usuario: " + toIndentedString(usuario) + "\n" +
+                "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
+                "    alteracoes: " + toIndentedString(alteracoes) + "\n" +
                 "}";
         return sb;
     }

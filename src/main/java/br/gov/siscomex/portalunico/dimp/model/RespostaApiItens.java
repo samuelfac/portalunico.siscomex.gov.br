@@ -13,11 +13,23 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RespostaApiItens", propOrder =
-        {"multiStatus", "identificacao", "links", "message"
+        {"message", "identificacao", "multiStatus", "links"
         })
 
 @XmlRootElement(name = "RespostaApiItens")
 public class RespostaApiItens {
+
+    @XmlElement(name = "message")
+    @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
+    /**
+     * Mensagem de resposta do resultado da operação.
+     **/
+    private String message = null;
+
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private IdentificacaoDuimpRespostaApi identificacao = null;
 
     @XmlElement(name = "multiStatus")
     @ApiModelProperty(value = "Lista que conterá o status individual de cada item da Duimp submetido pelos métodos PUT e POST. <br>Cada elemento desta lista possuí um atributo 'code' informando o código da resposta para um item específico.<br>Este atributo poderá ter o valor 200 ou 201 em caso de sucesso (dependendo da operação) ou um código diferente em caso de erro")
@@ -27,11 +39,6 @@ public class RespostaApiItens {
      **/
     private List<RespostaApiMultiStatus> multiStatus = null;
 
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private IdentificacaoDuimpRespostaApi identificacao = null;
-
     @XmlElement(name = "links")
     @ApiModelProperty(value = "Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.")
     @Valid
@@ -39,13 +46,6 @@ public class RespostaApiItens {
      * Operações disponíveis sobre o recurso.<br>Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
      **/
     private List<LinkCover> links = null;
-
-    @XmlElement(name = "message")
-    @ApiModelProperty(example = "Mensagem de exemplo.", value = "Mensagem de resposta do resultado da operação.")
-    /**
-     * Mensagem de resposta do resultado da operação.
-     **/
-    private String message = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,6 +56,39 @@ public class RespostaApiItens {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Mensagem de resposta do resultado da operação.
+     *
+     * @return message
+     **/
+    @JsonProperty("message")
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public RespostaApiItens message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    /**
+     * Get identificacao
+     *
+     * @return identificacao
+     **/
+    @JsonProperty("identificacao")
+    public IdentificacaoDuimpRespostaApi getIdentificacao() {
+        return identificacao;
+    }
+
+    public void setIdentificacao(IdentificacaoDuimpRespostaApi identificacao) {
+        this.identificacao = identificacao;
     }
 
     /**
@@ -83,25 +116,6 @@ public class RespostaApiItens {
     }
 
     /**
-     * Get identificacao
-     *
-     * @return identificacao
-     **/
-    @JsonProperty("identificacao")
-    public IdentificacaoDuimpRespostaApi getIdentificacao() {
-        return identificacao;
-    }
-
-    public void setIdentificacao(IdentificacaoDuimpRespostaApi identificacao) {
-        this.identificacao = identificacao;
-    }
-
-    public RespostaApiItens identificacao(IdentificacaoDuimpRespostaApi identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
-    /**
      * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
      *
      * @return links
@@ -125,22 +139,8 @@ public class RespostaApiItens {
         return this;
     }
 
-    /**
-     * Mensagem de resposta do resultado da operação.
-     *
-     * @return message
-     **/
-    @JsonProperty("message")
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public RespostaApiItens message(String message) {
-        this.message = message;
+    public RespostaApiItens identificacao(IdentificacaoDuimpRespostaApi identificacao) {
+        this.identificacao = identificacao;
         return this;
     }
 
@@ -148,10 +148,10 @@ public class RespostaApiItens {
     public String toString() {
 
         String sb = "class RespostaApiItens {\n" +
-                "    multiStatus: " + toIndentedString(multiStatus) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    links: " + toIndentedString(links) + "\n" +
                 "    message: " + toIndentedString(message) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    multiStatus: " + toIndentedString(multiStatus) + "\n" +
+                "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
     }

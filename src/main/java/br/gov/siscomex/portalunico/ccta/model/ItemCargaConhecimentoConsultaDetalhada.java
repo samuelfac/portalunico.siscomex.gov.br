@@ -13,26 +13,11 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ItemCargaConhecimentoConsultaDetalhada", propOrder =
-        {"ulds", "descricaoMercadoria", "classificacoesMercadoria"
+        {"classificacoesMercadoria", "descricaoMercadoria", "ulds"
         })
 
 @XmlRootElement(name = "ItemCargaConhecimentoConsultaDetalhada")
 public class ItemCargaConhecimentoConsultaDetalhada {
-
-    @XmlElement(name = "ulds")
-    @ApiModelProperty(value = "Lista contendo as Ulds da carga<br/>")
-    @Valid
-    /**
-     * Lista contendo as Ulds da carga<br/>
-     **/
-    private List<UldBlkConsultaDetalhada> ulds = null;
-
-    @XmlElement(name = "descricaoMercadoria")
-    @ApiModelProperty(example = "Descrição completa das mercadorias", value = "Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
-    /**
-     * Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
-     **/
-    private String descricaoMercadoria = null;
 
     @XmlElement(name = "classificacoesMercadoria")
     @ApiModelProperty(example = "877887", value = "Código de classificação da mercadoria<br/>Tamanho: 18")
@@ -41,6 +26,21 @@ public class ItemCargaConhecimentoConsultaDetalhada {
      * Código de classificação da mercadoria<br/>Tamanho: 18
      **/
     private List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria = null;
+
+    @XmlElement(name = "descricaoMercadoria")
+    @ApiModelProperty(example = "Descrição completa das mercadorias", value = "Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
+    /**
+     * Descrição completa das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
+     **/
+    private String descricaoMercadoria = null;
+
+    @XmlElement(name = "ulds")
+    @ApiModelProperty(value = "Lista contendo as Ulds da carga<br/>")
+    @Valid
+    /**
+     * Lista contendo as Ulds da carga<br/>
+     **/
+    private List<UldBlkConsultaDetalhada> ulds = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -51,6 +51,49 @@ public class ItemCargaConhecimentoConsultaDetalhada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Código de classificação da mercadoria&lt;br/&gt;Tamanho: 18
+     *
+     * @return classificacoesMercadoria
+     **/
+    @JsonProperty("classificacoesMercadoria")
+    public List<ClassificacaoMercadoriaConsultaDetalhada> getClassificacoesMercadoria() {
+        return classificacoesMercadoria;
+    }
+
+    public void setClassificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
+        this.classificacoesMercadoria = classificacoesMercadoria;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada classificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
+        this.classificacoesMercadoria = classificacoesMercadoria;
+        return this;
+    }
+
+    /**
+     * Descrição completa das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
+     *
+     * @return descricaoMercadoria
+     **/
+    @JsonProperty("descricaoMercadoria")
+    public String getDescricaoMercadoria() {
+        return descricaoMercadoria;
+    }
+
+    public void setDescricaoMercadoria(String descricaoMercadoria) {
+        this.descricaoMercadoria = descricaoMercadoria;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada descricaoMercadoria(String descricaoMercadoria) {
+        this.descricaoMercadoria = descricaoMercadoria;
+        return this;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
+        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
+        return this;
     }
 
     /**
@@ -77,56 +120,13 @@ public class ItemCargaConhecimentoConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Descrição completa das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
-     *
-     * @return descricaoMercadoria
-     **/
-    @JsonProperty("descricaoMercadoria")
-    public String getDescricaoMercadoria() {
-        return descricaoMercadoria;
-    }
-
-    public void setDescricaoMercadoria(String descricaoMercadoria) {
-        this.descricaoMercadoria = descricaoMercadoria;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada descricaoMercadoria(String descricaoMercadoria) {
-        this.descricaoMercadoria = descricaoMercadoria;
-        return this;
-    }
-
-    /**
-     * Código de classificação da mercadoria&lt;br/&gt;Tamanho: 18
-     *
-     * @return classificacoesMercadoria
-     **/
-    @JsonProperty("classificacoesMercadoria")
-    public List<ClassificacaoMercadoriaConsultaDetalhada> getClassificacoesMercadoria() {
-        return classificacoesMercadoria;
-    }
-
-    public void setClassificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
-        this.classificacoesMercadoria = classificacoesMercadoria;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada classificacoesMercadoria(List<ClassificacaoMercadoriaConsultaDetalhada> classificacoesMercadoria) {
-        this.classificacoesMercadoria = classificacoesMercadoria;
-        return this;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
-        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class ItemCargaConhecimentoConsultaDetalhada {\n" +
-                "    ulds: " + toIndentedString(ulds) + "\n" +
-                "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
                 "    classificacoesMercadoria: " + toIndentedString(classificacoesMercadoria) + "\n" +
+                "    descricaoMercadoria: " + toIndentedString(descricaoMercadoria) + "\n" +
+                "    ulds: " + toIndentedString(ulds) + "\n" +
                 "}";
         return sb;
     }

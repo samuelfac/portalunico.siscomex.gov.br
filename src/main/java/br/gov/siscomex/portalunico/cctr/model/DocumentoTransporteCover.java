@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoTransporteCover", propOrder =
-        {"pesoAferido", "dataEmissaoDocumentoTransporte", "tipoDocumentoTransporte", "dadosVeiculoConferem", "motivoNaoPesagem", "dadosUnidadeTransporteConferem", "dadosConteinerConferem", "dadosEmbalagemConferem", "identificacaoDocumentoTransporte"
+        {"identificacaoDocumentoTransporte", "tipoDocumentoTransporte", "dataEmissaoDocumentoTransporte", "dadosVeiculoConferem", "dadosUnidadeTransporteConferem", "dadosConteinerConferem", "dadosEmbalagemConferem", "pesoAferido", "motivoNaoPesagem"
         })
 
 @XmlRootElement(name = "DocumentoTransporteCover")
@@ -25,20 +25,12 @@ import java.math.BigDecimal;
 @ApiModel(description = "Dados dos documentos de transporte")
 public class DocumentoTransporteCover {
 
-    @XmlElement(name = "pesoAferido")
-    @ApiModelProperty(example = "100", value = "Peso aferido na balança do recinto em Kg.<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
-    @Valid
+    @XmlElement(name = "identificacaoDocumentoTransporte", required = true)
+    @ApiModelProperty(example = "16BR0008093", required = true, value = "Identificação do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA")
     /**
-     * Peso aferido na balança do recinto em Kg.<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
+     * Identificação do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA
      **/
-    private BigDecimal pesoAferido = null;
-
-    @XmlElement(name = "dataEmissaoDocumentoTransporte", required = true)
-    @ApiModelProperty(example = "2018-04-01", required = true, value = "Data de emissão do documento de transporte<br>Formato: AAAA-MM-DD")
-    /**
-     * Data de emissão do documento de transporte<br>Formato: AAAA-MM-DD
-     **/
-    private String dataEmissaoDocumentoTransporte = null;
+    private String identificacaoDocumentoTransporte = null;
 
     @XmlElement(name = "tipoDocumentoTransporte", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Tipo do documento de transporte<br>Tamanho: 2<br>Domínio<br>01 - MIC/DTA<br>02 - TIF/DTA<br>03 - DTAI<br>04 - Outros")
@@ -47,19 +39,19 @@ public class DocumentoTransporteCover {
      **/
     private Integer tipoDocumentoTransporte = null;
 
+    @XmlElement(name = "dataEmissaoDocumentoTransporte", required = true)
+    @ApiModelProperty(example = "2018-04-01", required = true, value = "Data de emissão do documento de transporte<br>Formato: AAAA-MM-DD")
+    /**
+     * Data de emissão do documento de transporte<br>Formato: AAAA-MM-DD
+     **/
+    private String dataEmissaoDocumentoTransporte = null;
+
     @XmlElement(name = "dadosVeiculoConferem", required = true)
     @ApiModelProperty(example = "N", required = true, value = "Indicador de conferência dos dados do veículo com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
     /**
      * Indicador de conferência dos dados do veículo com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
      **/
     private String dadosVeiculoConferem = null;
-
-    @XmlElement(name = "motivoNaoPesagem")
-    @ApiModelProperty(example = "Motivo da não realização da pesagem", value = "Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.")
-    /**
-     * Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
-     **/
-    private String motivoNaoPesagem = null;
 
     @XmlElement(name = "dadosUnidadeTransporteConferem", required = true)
     @ApiModelProperty(example = "N", required = true, value = "Indicador de conferência dos dados da unidade de transporte com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
@@ -82,12 +74,20 @@ public class DocumentoTransporteCover {
      **/
     private String dadosEmbalagemConferem = null;
 
-    @XmlElement(name = "identificacaoDocumentoTransporte", required = true)
-    @ApiModelProperty(example = "16BR0008093", required = true, value = "Identificação do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA")
+    @XmlElement(name = "pesoAferido")
+    @ApiModelProperty(example = "100.0", value = "Peso aferido na balança do recinto em Kg.<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN")
+    @Valid
     /**
-     * Identificação do documento de transporte<br>Tamanho mínimo: 5<br>Tamanho Máximo: 15<br>Formato: AAAAAAAAAAAAAAA
+     * Peso aferido na balança do recinto em Kg.<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 12.3<br>Formato: NNNNNNNNNNNN.NNN
      **/
-    private String identificacaoDocumentoTransporte = null;
+    private BigDecimal pesoAferido = null;
+
+    @XmlElement(name = "motivoNaoPesagem")
+    @ApiModelProperty(example = "Motivo da não realização da pesagem", value = "Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.")
+    /**
+     * Motivo da não realização da pesagem<br>Tamanho: 250<br>Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
+     **/
+    private String motivoNaoPesagem = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -101,42 +101,18 @@ public class DocumentoTransporteCover {
     }
 
     /**
-     * Peso aferido na balança do recinto em Kg.&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
+     * Identificação do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho Máximo: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
      *
-     * @return pesoAferido
+     * @return identificacaoDocumentoTransporte
      **/
-    @JsonProperty("pesoAferido")
-    public BigDecimal getPesoAferido() {
-        return pesoAferido;
-    }
-
-    public void setPesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-    }
-
-    public DocumentoTransporteCover pesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-        return this;
-    }
-
-    /**
-     * Data de emissão do documento de transporte&lt;br&gt;Formato: AAAA-MM-DD
-     *
-     * @return dataEmissaoDocumentoTransporte
-     **/
-    @JsonProperty("dataEmissaoDocumentoTransporte")
+    @JsonProperty("identificacaoDocumentoTransporte")
     @NotNull
-    public String getDataEmissaoDocumentoTransporte() {
-        return dataEmissaoDocumentoTransporte;
+    public String getIdentificacaoDocumentoTransporte() {
+        return identificacaoDocumentoTransporte;
     }
 
-    public void setDataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
-        this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
-    }
-
-    public DocumentoTransporteCover dataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
-        this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
-        return this;
+    public void setIdentificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
+        this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
     }
 
     /**
@@ -159,6 +135,26 @@ public class DocumentoTransporteCover {
         return this;
     }
 
+    public DocumentoTransporteCover identificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
+        this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
+        return this;
+    }
+
+    /**
+     * Data de emissão do documento de transporte&lt;br&gt;Formato: AAAA-MM-DD
+     *
+     * @return dataEmissaoDocumentoTransporte
+     **/
+    @JsonProperty("dataEmissaoDocumentoTransporte")
+    @NotNull
+    public String getDataEmissaoDocumentoTransporte() {
+        return dataEmissaoDocumentoTransporte;
+    }
+
+    public void setDataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
+        this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
+    }
+
     /**
      * Indicador de conferência dos dados do veículo com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
      *
@@ -176,25 +172,6 @@ public class DocumentoTransporteCover {
 
     public DocumentoTransporteCover dadosVeiculoConferem(String dadosVeiculoConferem) {
         this.dadosVeiculoConferem = dadosVeiculoConferem;
-        return this;
-    }
-
-    /**
-     * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
-     *
-     * @return motivoNaoPesagem
-     **/
-    @JsonProperty("motivoNaoPesagem")
-    public String getMotivoNaoPesagem() {
-        return motivoNaoPesagem;
-    }
-
-    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-    }
-
-    public DocumentoTransporteCover motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
         return this;
     }
 
@@ -258,23 +235,46 @@ public class DocumentoTransporteCover {
         return this;
     }
 
+    public DocumentoTransporteCover dataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
+        this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
+        return this;
+    }
+
     /**
-     * Identificação do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho Máximo: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
+     * Peso aferido na balança do recinto em Kg.&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
      *
-     * @return identificacaoDocumentoTransporte
+     * @return pesoAferido
      **/
-    @JsonProperty("identificacaoDocumentoTransporte")
-    @NotNull
-    public String getIdentificacaoDocumentoTransporte() {
-        return identificacaoDocumentoTransporte;
+    @JsonProperty("pesoAferido")
+    public BigDecimal getPesoAferido() {
+        return pesoAferido;
     }
 
-    public void setIdentificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
-        this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
+    public void setPesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
     }
 
-    public DocumentoTransporteCover identificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
-        this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
+    public DocumentoTransporteCover pesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
+        return this;
+    }
+
+    /**
+     * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
+     *
+     * @return motivoNaoPesagem
+     **/
+    @JsonProperty("motivoNaoPesagem")
+    public String getMotivoNaoPesagem() {
+        return motivoNaoPesagem;
+    }
+
+    public void setMotivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+    }
+
+    public DocumentoTransporteCover motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
         return this;
     }
 
@@ -282,15 +282,15 @@ public class DocumentoTransporteCover {
     public String toString() {
 
         String sb = "class DocumentoTransporteCover {\n" +
-                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
-                "    dataEmissaoDocumentoTransporte: " + toIndentedString(dataEmissaoDocumentoTransporte) + "\n" +
+                "    identificacaoDocumentoTransporte: " + toIndentedString(identificacaoDocumentoTransporte) + "\n" +
                 "    tipoDocumentoTransporte: " + toIndentedString(tipoDocumentoTransporte) + "\n" +
+                "    dataEmissaoDocumentoTransporte: " + toIndentedString(dataEmissaoDocumentoTransporte) + "\n" +
                 "    dadosVeiculoConferem: " + toIndentedString(dadosVeiculoConferem) + "\n" +
-                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
                 "    dadosUnidadeTransporteConferem: " + toIndentedString(dadosUnidadeTransporteConferem) + "\n" +
                 "    dadosConteinerConferem: " + toIndentedString(dadosConteinerConferem) + "\n" +
                 "    dadosEmbalagemConferem: " + toIndentedString(dadosEmbalagemConferem) + "\n" +
-                "    identificacaoDocumentoTransporte: " + toIndentedString(identificacaoDocumentoTransporte) + "\n" +
+                "    pesoAferido: " + toIndentedString(pesoAferido) + "\n" +
+                "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
                 "}";
         return sb;
     }

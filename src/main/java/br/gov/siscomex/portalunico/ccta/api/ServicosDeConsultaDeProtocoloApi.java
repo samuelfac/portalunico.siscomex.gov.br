@@ -25,7 +25,7 @@ public interface ServicosDeConsultaDeProtocoloApi {
 
     /**
      * Consultar a situação do processamento do protocolo.
-     * <p>
+     *
      * &lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;A identificação da consulta é o número do protocolo gerado pelo sistema.&lt;/p&gt;&lt;p style&#x3D;\&quot;margin-bottom: 1em; margin-top: 1em;\&quot;&gt;As situações retornadas podem ser:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;em&gt;EM_PROCESSAMENTO&lt;/em&gt; – Aguardando processamento.&lt;/li&gt;&lt;li&gt;&lt;em&gt;PROCESSADO&lt;/em&gt; – Processamento realizado com sucesso.&lt;/li&gt;&lt;li&gt;&lt;em&gt;REJEITADO&lt;/em&gt; – Processamento rejeitado. Neste caso, a lista de erros encontrados é retornada no resultado.&lt;/li&gt;&lt;/ul&gt;
      *
      */
@@ -36,11 +36,11 @@ public interface ServicosDeConsultaDeProtocoloApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Operação realizada com sucesso", response = RetornoConsultaProtocolo.class),
             @ApiResponse(code = 400, message = "Requisição mal formatada"),
-            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
             @ApiResponse(code = 401, message = "Usuário não autenticado ou autenticação inválida"),
-            @ApiResponse(code = 500, message = "Erro interno no servidor"),
             @ApiResponse(code = 403, message = "Usuário não tem permissão de acesso ao recurso"),
-            @ApiResponse(code = 404, message = "Recurso não encontrado")})
+            @ApiResponse(code = 404, message = "Recurso não encontrado"),
+            @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")})
     RetornoConsultaProtocolo consultarProtocoloUsingGET1(@ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Este token é recuperado no parâmetro Set-Token no response da autenticação", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Este token é recuperado no parâmetro X-CSRF-Token no response da autenticação", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken, @ApiParam(value = "Número do protocolo.<br/>Tamanho: 36<br/>Formato: AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA", required = true) @PathParam("numeroProtocolo") String numeroProtocolo);
 }
 

@@ -16,26 +16,26 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GovernmentAgencyGoodsItem", propOrder =
-        {"sequenceNumeric", "governmentProcedure", "additionalDocument"
+        {"additionalDocument", "governmentProcedure", "sequenceNumeric"
         })
 
 @XmlRootElement(name = "GovernmentAgencyGoodsItem")
 public class GovernmentAgencyGoodsItem {
 
-    @XmlElement(name = "sequenceNumeric", required = true)
+    @XmlElement(name = "additionalDocument", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private BigDecimal sequenceNumeric = null;
+    private List<AdditionalDocument> additionalDocument = new ArrayList<>();
 
     @XmlElement(name = "governmentProcedure", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private List<GovernmentProcedure> governmentProcedure = new ArrayList<>();
 
-    @XmlElement(name = "additionalDocument", required = true)
+    @XmlElement(name = "sequenceNumeric", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
-    private List<AdditionalDocument> additionalDocument = new ArrayList<>();
+    private BigDecimal sequenceNumeric = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -49,22 +49,22 @@ public class GovernmentAgencyGoodsItem {
     }
 
     /**
-     * Get sequenceNumeric
+     * Get additionalDocument
      *
-     * @return sequenceNumeric
+     * @return additionalDocument
      **/
-    @JsonProperty("sequenceNumeric")
+    @JsonProperty("additionalDocument")
     @NotNull
-    public BigDecimal getSequenceNumeric() {
-        return sequenceNumeric;
+    public List<AdditionalDocument> getAdditionalDocument() {
+        return additionalDocument;
     }
 
-    public void setSequenceNumeric(BigDecimal sequenceNumeric) {
-        this.sequenceNumeric = sequenceNumeric;
+    public void setAdditionalDocument(List<AdditionalDocument> additionalDocument) {
+        this.additionalDocument = additionalDocument;
     }
 
-    public GovernmentAgencyGoodsItem sequenceNumeric(BigDecimal sequenceNumeric) {
-        this.sequenceNumeric = sequenceNumeric;
+    public GovernmentAgencyGoodsItem additionalDocument(List<AdditionalDocument> additionalDocument) {
+        this.additionalDocument = additionalDocument;
         return this;
     }
 
@@ -93,28 +93,28 @@ public class GovernmentAgencyGoodsItem {
         return this;
     }
 
-    /**
-     * Get additionalDocument
-     *
-     * @return additionalDocument
-     **/
-    @JsonProperty("additionalDocument")
-    @NotNull
-    public List<AdditionalDocument> getAdditionalDocument() {
-        return additionalDocument;
-    }
-
-    public void setAdditionalDocument(List<AdditionalDocument> additionalDocument) {
-        this.additionalDocument = additionalDocument;
-    }
-
-    public GovernmentAgencyGoodsItem additionalDocument(List<AdditionalDocument> additionalDocument) {
-        this.additionalDocument = additionalDocument;
+    public GovernmentAgencyGoodsItem addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
+        this.additionalDocument.add(additionalDocumentItem);
         return this;
     }
 
-    public GovernmentAgencyGoodsItem addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
-        this.additionalDocument.add(additionalDocumentItem);
+    /**
+     * Get sequenceNumeric
+     *
+     * @return sequenceNumeric
+     **/
+    @JsonProperty("sequenceNumeric")
+    @NotNull
+    public BigDecimal getSequenceNumeric() {
+        return sequenceNumeric;
+    }
+
+    public void setSequenceNumeric(BigDecimal sequenceNumeric) {
+        this.sequenceNumeric = sequenceNumeric;
+    }
+
+    public GovernmentAgencyGoodsItem sequenceNumeric(BigDecimal sequenceNumeric) {
+        this.sequenceNumeric = sequenceNumeric;
         return this;
     }
 
@@ -122,9 +122,9 @@ public class GovernmentAgencyGoodsItem {
     public String toString() {
 
         String sb = "class GovernmentAgencyGoodsItem {\n" +
-                "    sequenceNumeric: " + toIndentedString(sequenceNumeric) + "\n" +
-                "    governmentProcedure: " + toIndentedString(governmentProcedure) + "\n" +
                 "    additionalDocument: " + toIndentedString(additionalDocument) + "\n" +
+                "    governmentProcedure: " + toIndentedString(governmentProcedure) + "\n" +
+                "    sequenceNumeric: " + toIndentedString(sequenceNumeric) + "\n" +
                 "}";
         return sb;
     }

@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DocumentoAnexo", propOrder =
-        {"tipo", "numero"
+        {"numero", "tipo"
         })
 
 @XmlRootElement(name = "DocumentoAnexo")
@@ -25,6 +25,13 @@ import java.math.BigDecimal;
 @ApiModel(description = "Documentos Anexo")
 public class DocumentoAnexo {
 
+    @XmlElement(name = "numero", required = true)
+    @ApiModelProperty(example = "1223123123", required = true, value = "Número de Documento Anexo.<br>Tamanho: 39<br>Formato: AAA..AA")
+    /**
+     * Número de Documento Anexo.<br>Tamanho: 39<br>Formato: AAA..AA
+     **/
+    private String numero = null;
+
     @XmlElement(name = "tipo", required = true)
     @ApiModelProperty(required = true, value = "Tipo de Documento Anexo.<br>Tamanho: 16<br>Formato: AAA..AA")
     @Valid
@@ -33,12 +40,25 @@ public class DocumentoAnexo {
      **/
     private BigDecimal tipo = null;
 
-    @XmlElement(name = "numero", required = true)
-    @ApiModelProperty(example = "1223123123", required = true, value = "Número de Documento Anexo.<br>Tamanho: 39<br>Formato: AAA..AA")
     /**
-     * Número de Documento Anexo.<br>Tamanho: 39<br>Formato: AAA..AA
+     * Número de Documento Anexo.&lt;br&gt;Tamanho: 39&lt;br&gt;Formato: AAA..AA
+     *
+     * @return numero
      **/
-    private String numero = null;
+    @JsonProperty("numero")
+    @NotNull
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public DocumentoAnexo numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -71,32 +91,12 @@ public class DocumentoAnexo {
         return this;
     }
 
-    /**
-     * Número de Documento Anexo.&lt;br&gt;Tamanho: 39&lt;br&gt;Formato: AAA..AA
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    @NotNull
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public DocumentoAnexo numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DocumentoAnexo {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
     }

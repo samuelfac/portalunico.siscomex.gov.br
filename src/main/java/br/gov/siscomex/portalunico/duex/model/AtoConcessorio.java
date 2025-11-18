@@ -14,16 +14,46 @@ import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AtoConcessorio", propOrder =
-        {"item", "situacao", "tipo", "numero", "motivosDeNaoVinculacao", "quantidadeExportada", "itemDeDUE", "valorComCoberturaCambial", "beneficiario"
+        {"beneficiario", "item", "itemDeDUE", "motivosDeNaoVinculacao", "numero", "quantidadeExportada", "situacao", "tipo", "valorComCoberturaCambial"
         })
 
 @XmlRootElement(name = "AtoConcessorio")
 public class AtoConcessorio {
 
+    @XmlElement(name = "beneficiario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Beneficiario beneficiario = null;
+
     @XmlElement(name = "item")
     @ApiModelProperty(value = "")
     @Valid
     private ItemDoAtoConcessorio item = null;
+
+    @XmlElement(name = "itemDeDUE")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ItemDeDUE itemDeDUE = null;
+
+    @XmlElement(name = "motivosDeNaoVinculacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao = null;
+
+    @XmlElement(name = "numero")
+    @ApiModelProperty(value = "Número <br />Tamanho mínimo: 1<br />Tamanho máximo: 11")
+    /**
+     * Número <br />Tamanho mínimo: 1<br />Tamanho máximo: 11
+     **/
+    private String numero = null;
+
+    @XmlElement(name = "quantidadeExportada")
+    @ApiModelProperty(value = "Quantidade exportada<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Quantidade exportada<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private BigDecimal quantidadeExportada = null;
 
     @XmlElement(name = "situacao")
     @ApiModelProperty(value = "")
@@ -35,31 +65,6 @@ public class AtoConcessorio {
     @Valid
     private TipoDeAtoConcessorio tipo = null;
 
-    @XmlElement(name = "numero")
-    @ApiModelProperty(value = "Número <br />Tamanho mínimo: 1<br />Tamanho máximo: 11")
-    /**
-     * Número <br />Tamanho mínimo: 1<br />Tamanho máximo: 11
-     **/
-    private String numero = null;
-
-    @XmlElement(name = "motivosDeNaoVinculacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao = null;
-
-    @XmlElement(name = "quantidadeExportada")
-    @ApiModelProperty(value = "Quantidade exportada<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Quantidade exportada<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private BigDecimal quantidadeExportada = null;
-
-    @XmlElement(name = "itemDeDUE")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ItemDeDUE itemDeDUE = null;
-
     @XmlElement(name = "valorComCoberturaCambial")
     @ApiModelProperty(value = "Valor com cobertura cambial<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -67,11 +72,6 @@ public class AtoConcessorio {
      * Valor com cobertura cambial<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorComCoberturaCambial = null;
-
-    @XmlElement(name = "beneficiario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Beneficiario beneficiario = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -82,6 +82,20 @@ public class AtoConcessorio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Get beneficiario
+     *
+     * @return beneficiario
+     **/
+    @JsonProperty("beneficiario")
+    public Beneficiario getBeneficiario() {
+        return beneficiario;
+    }
+
+    public void setBeneficiario(Beneficiario beneficiario) {
+        this.beneficiario = beneficiario;
     }
 
     /**
@@ -100,6 +114,92 @@ public class AtoConcessorio {
 
     public AtoConcessorio item(ItemDoAtoConcessorio item) {
         this.item = item;
+        return this;
+    }
+
+    public AtoConcessorio beneficiario(Beneficiario beneficiario) {
+        this.beneficiario = beneficiario;
+        return this;
+    }
+
+    /**
+     * Get itemDeDUE
+     *
+     * @return itemDeDUE
+     **/
+    @JsonProperty("itemDeDUE")
+    public ItemDeDUE getItemDeDUE() {
+        return itemDeDUE;
+    }
+
+    public void setItemDeDUE(ItemDeDUE itemDeDUE) {
+        this.itemDeDUE = itemDeDUE;
+    }
+
+    /**
+     * Get motivosDeNaoVinculacao
+     *
+     * @return motivosDeNaoVinculacao
+     **/
+    @JsonProperty("motivosDeNaoVinculacao")
+    public List<MotivoDeNaoVinculacao> getMotivosDeNaoVinculacao() {
+        return motivosDeNaoVinculacao;
+    }
+
+    public void setMotivosDeNaoVinculacao(List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao) {
+        this.motivosDeNaoVinculacao = motivosDeNaoVinculacao;
+    }
+
+    public AtoConcessorio motivosDeNaoVinculacao(List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao) {
+        this.motivosDeNaoVinculacao = motivosDeNaoVinculacao;
+        return this;
+    }
+
+    public AtoConcessorio addMotivosDeNaoVinculacaoItem(MotivoDeNaoVinculacao motivosDeNaoVinculacaoItem) {
+        this.motivosDeNaoVinculacao.add(motivosDeNaoVinculacaoItem);
+        return this;
+    }
+
+    public AtoConcessorio itemDeDUE(ItemDeDUE itemDeDUE) {
+        this.itemDeDUE = itemDeDUE;
+        return this;
+    }
+
+    /**
+     * Número &lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 11
+     *
+     * @return numero
+     **/
+    @JsonProperty("numero")
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    /**
+     * Quantidade exportada&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     *
+     * @return quantidadeExportada
+     **/
+    @JsonProperty("quantidadeExportada")
+    public BigDecimal getQuantidadeExportada() {
+        return quantidadeExportada;
+    }
+
+    public void setQuantidadeExportada(BigDecimal quantidadeExportada) {
+        this.quantidadeExportada = quantidadeExportada;
+    }
+
+    public AtoConcessorio quantidadeExportada(BigDecimal quantidadeExportada) {
+        this.quantidadeExportada = quantidadeExportada;
+        return this;
+    }
+
+    public AtoConcessorio numero(String numero) {
+        this.numero = numero;
         return this;
     }
 
@@ -136,92 +236,6 @@ public class AtoConcessorio {
         this.tipo = tipo;
     }
 
-    public AtoConcessorio tipo(TipoDeAtoConcessorio tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Número &lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 11
-     *
-     * @return numero
-     **/
-    @JsonProperty("numero")
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public AtoConcessorio numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
-    /**
-     * Get motivosDeNaoVinculacao
-     *
-     * @return motivosDeNaoVinculacao
-     **/
-    @JsonProperty("motivosDeNaoVinculacao")
-    public List<MotivoDeNaoVinculacao> getMotivosDeNaoVinculacao() {
-        return motivosDeNaoVinculacao;
-    }
-
-    public void setMotivosDeNaoVinculacao(List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao) {
-        this.motivosDeNaoVinculacao = motivosDeNaoVinculacao;
-    }
-
-    public AtoConcessorio motivosDeNaoVinculacao(List<MotivoDeNaoVinculacao> motivosDeNaoVinculacao) {
-        this.motivosDeNaoVinculacao = motivosDeNaoVinculacao;
-        return this;
-    }
-
-    public AtoConcessorio addMotivosDeNaoVinculacaoItem(MotivoDeNaoVinculacao motivosDeNaoVinculacaoItem) {
-        this.motivosDeNaoVinculacao.add(motivosDeNaoVinculacaoItem);
-        return this;
-    }
-
-    /**
-     * Quantidade exportada&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return quantidadeExportada
-     **/
-    @JsonProperty("quantidadeExportada")
-    public BigDecimal getQuantidadeExportada() {
-        return quantidadeExportada;
-    }
-
-    public void setQuantidadeExportada(BigDecimal quantidadeExportada) {
-        this.quantidadeExportada = quantidadeExportada;
-    }
-
-    public AtoConcessorio quantidadeExportada(BigDecimal quantidadeExportada) {
-        this.quantidadeExportada = quantidadeExportada;
-        return this;
-    }
-
-    /**
-     * Get itemDeDUE
-     *
-     * @return itemDeDUE
-     **/
-    @JsonProperty("itemDeDUE")
-    public ItemDeDUE getItemDeDUE() {
-        return itemDeDUE;
-    }
-
-    public void setItemDeDUE(ItemDeDUE itemDeDUE) {
-        this.itemDeDUE = itemDeDUE;
-    }
-
-    public AtoConcessorio itemDeDUE(ItemDeDUE itemDeDUE) {
-        this.itemDeDUE = itemDeDUE;
-        return this;
-    }
-
     /**
      * Valor com cobertura cambial&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
@@ -241,22 +255,8 @@ public class AtoConcessorio {
         return this;
     }
 
-    /**
-     * Get beneficiario
-     *
-     * @return beneficiario
-     **/
-    @JsonProperty("beneficiario")
-    public Beneficiario getBeneficiario() {
-        return beneficiario;
-    }
-
-    public void setBeneficiario(Beneficiario beneficiario) {
-        this.beneficiario = beneficiario;
-    }
-
-    public AtoConcessorio beneficiario(Beneficiario beneficiario) {
-        this.beneficiario = beneficiario;
+    public AtoConcessorio tipo(TipoDeAtoConcessorio tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -264,15 +264,15 @@ public class AtoConcessorio {
     public String toString() {
 
         String sb = "class AtoConcessorio {\n" +
+                "    beneficiario: " + toIndentedString(beneficiario) + "\n" +
                 "    item: " + toIndentedString(item) + "\n" +
+                "    itemDeDUE: " + toIndentedString(itemDeDUE) + "\n" +
+                "    motivosDeNaoVinculacao: " + toIndentedString(motivosDeNaoVinculacao) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    quantidadeExportada: " + toIndentedString(quantidadeExportada) + "\n" +
                 "    situacao: " + toIndentedString(situacao) + "\n" +
                 "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    motivosDeNaoVinculacao: " + toIndentedString(motivosDeNaoVinculacao) + "\n" +
-                "    quantidadeExportada: " + toIndentedString(quantidadeExportada) + "\n" +
-                "    itemDeDUE: " + toIndentedString(itemDeDUE) + "\n" +
                 "    valorComCoberturaCambial: " + toIndentedString(valorComCoberturaCambial) + "\n" +
-                "    beneficiario: " + toIndentedString(beneficiario) + "\n" +
                 "}";
         return sb;
     }

@@ -12,11 +12,18 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DadosDoTelefone", propOrder =
-        {"numeroTelefone", "idElemento"
+        {"idElemento", "numeroTelefone"
         })
 
 @XmlRootElement(name = "DadosDoTelefone")
 public class DadosDoTelefone {
+
+    @XmlElement(name = "idElemento", required = true)
+    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
+    /**
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     **/
+    private String idElemento = null;
 
     @XmlElement(name = "numeroTelefone")
     @ApiModelProperty(example = "+55 (21)9999-9999", value = "Número do telefone.<br/>Tamanho: 100")
@@ -25,12 +32,25 @@ public class DadosDoTelefone {
      **/
     private String numeroTelefone = null;
 
-    @XmlElement(name = "idElemento", required = true)
-    @ApiModelProperty(required = true, value = "Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40")
     /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.<br/>Tamanho: 40
+     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
+     *
+     * @return idElemento
      **/
-    private String idElemento = null;
+    @JsonProperty("idElemento")
+    @NotNull
+    public String getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(String idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public DadosDoTelefone idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,32 +82,12 @@ public class DadosDoTelefone {
         return this;
     }
 
-    /**
-     * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
-     *
-     * @return idElemento
-     **/
-    @JsonProperty("idElemento")
-    @NotNull
-    public String getIdElemento() {
-        return idElemento;
-    }
-
-    public void setIdElemento(String idElemento) {
-        this.idElemento = idElemento;
-    }
-
-    public DadosDoTelefone idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     @Override
     public String toString() {
 
         String sb = "class DadosDoTelefone {\n" +
-                "    numeroTelefone: " + toIndentedString(numeroTelefone) + "\n" +
                 "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    numeroTelefone: " + toIndentedString(numeroTelefone) + "\n" +
                 "}";
         return sb;
     }
