@@ -29,7 +29,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<cxf-version>3.6.4</cxf-version>
+		<cxf-version>3.6.11</cxf-version>
 		<jackson-jaxrs-version>2.16.2</jackson-jaxrs-version>
 		<github.global.server>github</github.global.server>
 	</properties>
