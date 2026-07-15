@@ -30,7 +30,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<cxf-version>3.6.11</cxf-version>
-		<jackson-jaxrs-version>2.22.0</jackson-jaxrs-version>
+		<jackson-jaxrs-version>2.22.1</jackson-jaxrs-version>
 		<github.global.server>github</github.global.server>
 	</properties>
 
