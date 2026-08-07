@@ -50,6 +50,7 @@ public class Reboque {
      **/
     private BigDecimal taraReboque = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -173,7 +174,6 @@ public class Reboque {
         this.tipoReboque = tipoReboque;
         return this;
     }
-
 
     @Override
     public String toString() {

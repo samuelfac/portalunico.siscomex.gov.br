@@ -58,18 +58,21 @@ public class ConhecimentoConsultaDetalhada {
      * Endereço postal do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
      **/
     private String caixaPostalEmbarcadorEstrangeiro = null;
-    @XmlElement(name = "categoriaCarga")
-    @ApiModelProperty(example = "I", value = "Código da categoria da carga<br>Tamanho: 1<br/>E - Exportada <br/>I - Importada<br/>N - Nacional<br/>P - Passagem<br/>")
-    /**
-     * Código da categoria da carga<br>Tamanho: 1<br/>E - Exportada <br/>I - Importada<br/>N - Nacional<br/>P - Passagem<br/>
-     **/
-    private CategoriaCargaEnum categoriaCarga = null;
+
+
     @XmlElement(name = "cidadeAgenteDeCargaConsolidadorEstrang")
     @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
     /**
      * Cidade do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
      **/
     private String cidadeAgenteDeCargaConsolidadorEstrang = null;
+
+    @XmlElement(name = "categoriaCarga")
+    @ApiModelProperty(example = "I", value = "Código da categoria da carga<br>Tamanho: 1<br/>E - Exportada <br/>I - Importada<br/>N - Nacional<br/>P - Passagem<br/>")
+    /**
+     * Código da categoria da carga<br>Tamanho: 1<br/>E - Exportada <br/>I - Importada<br/>N - Nacional<br/>P - Passagem<br/>
+     **/
+    private CategoriaCargaEnum categoriaCarga = null;
 
     @XmlElement(name = "chegadasTerrestres")
     @ApiModelProperty(value = "Lista as chegadas de viagens terrestres associadas ao conhecimento<br/>")
@@ -78,43 +81,6 @@ public class ConhecimentoConsultaDetalhada {
      * Lista as chegadas de viagens terrestres associadas ao conhecimento<br/>
      **/
     private List<CargaDetalheChegadaTerrestre> chegadasTerrestres = null;
-    @XmlElement(name = "cidadeConsignatarioConhecimento")
-    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
-    /**
-     * Cidade do consignatário no conhecimento de carga<br/>Tamanho máximo: 70
-     **/
-    private String cidadeConsignatarioConhecimento = null;
-    @XmlElement(name = "cidadeEmbarcadorEstrangeiro")
-    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
-    /**
-     * Cidade do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
-     **/
-    private String cidadeEmbarcadorEstrangeiro = null;
-    @XmlElement(name = "cnpjResponsavelArquivo")
-    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     **/
-    private String cnpjResponsavelArquivo = null;
-    @XmlElement(name = "codigoAeroportoDestinoConhecimento")
-    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
-    /**
-     * Código IATA do aeroporto<br/>Tamanho: 3
-     **/
-    private String codigoAeroportoDestinoConhecimento = null;
-    @XmlElement(name = "codigoAeroportoOrigemConhecimento")
-    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
-    /**
-     * Código IATA do aeroporto<br/>Tamanho: 3
-     **/
-    private String codigoAeroportoOrigemConhecimento = null;
-    @XmlElement(name = "contatosAgenteDeCargaConsolidadorEstrang")
-    @ApiModelProperty(value = "Lista de contatos do agente de carga consolidador estrangeiro.")
-    @Valid
-    /**
-     * Lista de contatos do agente de carga consolidador estrangeiro.
-     **/
-    private List<ContatoConsultaDetalhada> contatosAgenteDeCargaConsolidadorEstrang = null;
     @XmlElement(name = "contatosEmbarcadorEstrangeiro")
     @ApiModelProperty(value = "Lista de contatos do embarcador estrangeiro.")
     @Valid
@@ -123,6 +89,49 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private List<ContatoConsultaDetalhada> contatosEmbarcadorEstrangeiro = null;
 
+    @XmlElement(name = "cidadeConsignatarioConhecimento")
+    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
+    /**
+     * Cidade do consignatário no conhecimento de carga<br/>Tamanho máximo: 70
+     **/
+    private String cidadeConsignatarioConhecimento = null;
+
+    @XmlElement(name = "cidadeEmbarcadorEstrangeiro")
+    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
+    /**
+     * Cidade do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
+     **/
+    private String cidadeEmbarcadorEstrangeiro = null;
+
+    @XmlElement(name = "cnpjResponsavelArquivo")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN")
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
+     **/
+    private String cnpjResponsavelArquivo = null;
+
+    @XmlElement(name = "codigoAeroportoDestinoConhecimento")
+    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
+    /**
+     * Código IATA do aeroporto<br/>Tamanho: 3
+     **/
+    private String codigoAeroportoDestinoConhecimento = null;
+
+    @XmlElement(name = "codigoAeroportoOrigemConhecimento")
+    @ApiModelProperty(example = "GIG", value = "Código IATA do aeroporto<br/>Tamanho: 3")
+    /**
+     * Código IATA do aeroporto<br/>Tamanho: 3
+     **/
+    private String codigoAeroportoOrigemConhecimento = null;
+
+    @XmlElement(name = "contatosAgenteDeCargaConsolidadorEstrang")
+    @ApiModelProperty(value = "Lista de contatos do agente de carga consolidador estrangeiro.")
+    @Valid
+    /**
+     * Lista de contatos do agente de carga consolidador estrangeiro.
+     **/
+    private List<ContatoConsultaDetalhada> contatosAgenteDeCargaConsolidadorEstrang = null;
+
     @XmlElement(name = "contatosConsignatarioConhecimento")
     @ApiModelProperty(value = "Lista de contatos do consignatário.")
     @Valid
@@ -130,32 +139,12 @@ public class ConhecimentoConsultaDetalhada {
      * Lista de contatos do consignatário.
      **/
     private List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento = null;
-    @XmlElement(name = "dataHoraAssinaturaTransportador")
-    @ApiModelProperty(value = "Data/Hora de emissao do XFWB pelo transportador.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
-    /**
-     * Data/Hora de emissao do XFWB pelo transportador.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
-     **/
-    private String dataHoraAssinaturaTransportador = null;
-
     @XmlElement(name = "dataEmissao")
     @ApiModelProperty(example = "2020-05-07T17:43:18-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
     /**
      * Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
      **/
     private String dataEmissao = null;
-    @XmlElement(name = "descricaoResumida")
-    @ApiModelProperty(example = "Descrição resumida das mercadorias", value = "Descrição resumida das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
-    /**
-     * Descrição resumida das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
-     **/
-    private String descricaoResumida = null;
-    @XmlElement(name = "divergencias")
-    @ApiModelProperty(value = "Lista as divergências ativos da carga<br/>")
-    @Valid
-    /**
-     * Lista as divergências ativos da carga<br/>
-     **/
-    private List<DivergenciaConsultaDetalhada> divergencias = null;
     @XmlElement(name = "dsicsApropriados")
     @ApiModelProperty(value = "Lista contendo os Dsics apropriados a carga<br/>")
     @Valid
@@ -164,6 +153,28 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private List<ChaveDsic> dsicsApropriados = null;
 
+    @XmlElement(name = "dataHoraAssinaturaTransportador")
+    @ApiModelProperty(value = "Data/Hora de emissao do XFWB pelo transportador.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
+    /**
+     * Data/Hora de emissao do XFWB pelo transportador.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
+     **/
+    private String dataHoraAssinaturaTransportador = null;
+
+    @XmlElement(name = "descricaoResumida")
+    @ApiModelProperty(example = "Descrição resumida das mercadorias", value = "Descrição resumida das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>")
+    /**
+     * Descrição resumida das mercadorias que estão sendo transportadas<br>Tamanho: 600<br/>
+     **/
+    private String descricaoResumida = null;
+
+    @XmlElement(name = "divergencias")
+    @ApiModelProperty(value = "Lista as divergências ativos da carga<br/>")
+    @Valid
+    /**
+     * Lista as divergências ativos da carga<br/>
+     **/
+    private List<DivergenciaConsultaDetalhada> divergencias = null;
+
     @XmlElement(name = "documentosSaida")
     @ApiModelProperty(value = "Lista contendo os documentos de saída associados a carga / Dsic<br/>")
     @Valid
@@ -171,16 +182,17 @@ public class ConhecimentoConsultaDetalhada {
      * Lista contendo os documentos de saída associados a carga / Dsic<br/>
      **/
     private List<DocumentoSaidaConsultaDetalhada> documentosSaida = null;
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaDetalheFrete frete = null;
+
     @XmlElement(name = "enderecoAgenteDeCargaConsolidadorEstrang")
     @ApiModelProperty(example = "CZIFFLAF, 3394", value = "Endereco do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
     /**
      * Endereco do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
      **/
     private String enderecoAgenteDeCargaConsolidadorEstrang = null;
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CargaDetalheFrete frete = null;
 
     @XmlElement(name = "enderecoConsignatarioConhecimento")
     @ApiModelProperty(example = "CZIFFLAF, 3394", value = "Endereco do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
@@ -195,6 +207,13 @@ public class ConhecimentoConsultaDetalhada {
      * Endereco do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
      **/
     private String enderecoEmbarcadorEstrangeiro = null;
+    @XmlElement(name = "localAssinaturaTransportador")
+    @ApiModelProperty(example = "Rio de Janeiro", value = "Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>")
+    /**
+     * Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>
+     **/
+    private String localAssinaturaTransportador = null;
+
     @XmlElement(name = "hawbAssociados")
     @ApiModelProperty(value = "Lista contendo as cargas HAWB<br/>")
     @Valid
@@ -202,77 +221,20 @@ public class ConhecimentoConsultaDetalhada {
      * Lista contendo as cargas HAWB<br/>
      **/
     private List<HawbMawbAssociadoConsultaDetalhada> hawbAssociados = null;
+
     @XmlElement(name = "identificacao")
     @ApiModelProperty(example = "43NQKMM8KNT", value = "Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35")
     /**
      * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
      **/
     private String identificacao = null;
+
     @XmlElement(name = "identificacaoDocumentoConsignatario")
     @ApiModelProperty(example = "00000000000191", value = "CNPJ do consignatário<br/>Tamanho: 14<br/>")
     /**
      * CNPJ do consignatário<br/>Tamanho: 14<br/>
      **/
     private String identificacaoDocumentoConsignatario = null;
-    @XmlElement(name = "indicadorNaoRecepcaoHawbAssociados")
-    @ApiModelProperty(example = "S", value = "Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.")
-    /**
-     * Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.
-     **/
-    private IndicadorNaoRecepcaoHawbAssociadosEnum indicadorNaoRecepcaoHawbAssociados = null;
-    @XmlElement(name = "indicadorPartesMadeira")
-    @ApiModelProperty(example = "S", value = "Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>")
-    /**
-     * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>
-     **/
-    private IndicadorPartesMadeiraEnum indicadorPartesMadeira = null;
-    @XmlElement(name = "itensCarga")
-    @ApiModelProperty(value = "Lista contendo os itens de carga contidos na carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo os itens de carga contidos na carga / Dsic<br/>
-     **/
-    private List<ItemCargaConhecimentoConsultaDetalhada> itensCarga = null;
-    @XmlElement(name = "manuseiosEspeciais")
-    @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo os manuseios especiais para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> manuseiosEspeciais = null;
-    @XmlElement(name = "mawbAwbAssociados")
-    @ApiModelProperty(value = "Lista contendo as cargas MAWB<br/>")
-    @Valid
-    /**
-     * Lista contendo as cargas MAWB<br/>
-     **/
-    private List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados = null;
-    @XmlElement(name = "nomeConsignatarioConhecimento")
-    @ApiModelProperty(example = "Banco do Brasil", value = "Nome do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
-    /**
-     * Nome do consignatário no conhecimento de carga<br/>Tamanho máximo: 70
-     **/
-    private String nomeConsignatarioConhecimento = null;
-
-    @XmlElement(name = "localAssinaturaTransportador")
-    @ApiModelProperty(example = "Rio de Janeiro", value = "Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>")
-    /**
-     * Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>
-     **/
-    private String localAssinaturaTransportador = null;
-    @XmlElement(name = "nomeDocumentoConsignatario")
-    @ApiModelProperty(example = "Banco do Brasil", value = "Nome do consignatário no documento<br/>Tamanho máximo: 70")
-    /**
-     * Nome do consignatário no documento<br/>Tamanho máximo: 70
-     **/
-    private String nomeDocumentoConsignatario = null;
-    @XmlElement(name = "nomeEmbarcadorEstrangeiro")
-    @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do embarcador estrangeiro<br>Tamanho: 70<br/>")
-    /**
-     * Nome do embarcador estrangeiro<br>Tamanho: 70<br/>
-     **/
-    private String nomeEmbarcadorEstrangeiro = null;
-
     @XmlElement(name = "nomeAgenteDeCargaConsolidadorEstrang")
     @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do agente de carga consolidador estrangeiro<br>Tamanho: 70<br/>")
     /**
@@ -280,6 +242,12 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private String nomeAgenteDeCargaConsolidadorEstrang = null;
 
+    @XmlElement(name = "indicadorNaoRecepcaoHawbAssociados")
+    @ApiModelProperty(example = "S", value = "Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.")
+    /**
+     * Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.
+     **/
+    private IndicadorNaoRecepcaoHawbAssociadosEnum indicadorNaoRecepcaoHawbAssociados = null;
     @XmlElement(name = "nomeAssinaturaEmbarcadorEstrangeiro")
     @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do responsável pelo embarque<br>Tamanho: 70<br/>")
     /**
@@ -287,121 +255,42 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private String nomeAssinaturaEmbarcadorEstrangeiro = null;
 
+    @XmlElement(name = "indicadorPartesMadeira")
+    @ApiModelProperty(example = "S", value = "Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>")
+    /**
+     * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>
+     **/
+    private IndicadorPartesMadeiraEnum indicadorPartesMadeira = null;
+
+    @XmlElement(name = "itensCarga")
+    @ApiModelProperty(value = "Lista contendo os itens de carga contidos na carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista contendo os itens de carga contidos na carga / Dsic<br/>
+     **/
+    private List<ItemCargaConhecimentoConsultaDetalhada> itensCarga = null;
     @XmlElement(name = "nomeAssinaturaTransportador")
     @ApiModelProperty(example = "Transportation Transport LTD.", value = "Assinatura transportador<br/>Tamanho: 35<br/>")
     /**
      * Assinatura transportador<br/>Tamanho: 35<br/>
      **/
     private String nomeAssinaturaTransportador = null;
-    @XmlElement(name = "outrasInfosServico")
-    @ApiModelProperty(value = "Lista contendo as outras informações de serviço para a carga / Dsic<br/>")
+
+    @XmlElement(name = "manuseiosEspeciais")
+    @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
     @Valid
     /**
-     * Lista contendo as outras informações de serviço para a carga / Dsic<br/>
+     * Lista contendo os manuseios especiais para a carga / Dsic<br/>
      **/
-    private List<InfoManuseioConsultaDetalhada> outrasInfosServico = null;
-    @XmlElement(name = "outrasPartesInteressadas")
-    @ApiModelProperty(value = "Lista das partes interessadas.")
+    private List<InfoManuseioConsultaDetalhada> manuseiosEspeciais = null;
+
+    @XmlElement(name = "mawbAwbAssociados")
+    @ApiModelProperty(value = "Lista contendo as cargas MAWB<br/>")
     @Valid
     /**
-     * Lista das partes interessadas.
+     * Lista contendo as cargas MAWB<br/>
      **/
-    private List<ParteInteressadaConsultaDetalhada> outrasPartesInteressadas = null;
-    @XmlElement(name = "paisAgenteDeCargaConsolidadorEstrang")
-    @ApiModelProperty(example = "BR", value = "País do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA")
-    /**
-     * País do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA
-     **/
-    private String paisAgenteDeCargaConsolidadorEstrang = null;
-    @XmlElement(name = "paisConsignatarioConhecimento")
-    @ApiModelProperty(example = "BR", value = "País do consignatário no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA")
-    /**
-     * País do consignatário no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA
-     **/
-    private String paisConsignatarioConhecimento = null;
-    @XmlElement(name = "paisEmbarcadorEstrangeiro")
-    @ApiModelProperty(example = "BR", value = "País do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA")
-    /**
-     * País do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA
-     **/
-    private String paisEmbarcadorEstrangeiro = null;
-    @XmlElement(name = "partesEstoque")
-    @ApiModelProperty(value = "Lista contendo as partes da carga<br/>")
-    @Valid
-    /**
-     * Lista contendo as partes da carga<br/>
-     **/
-    private List<EstoqueConsultaDetalhada> partesEstoque = null;
-    @XmlElement(name = "pesoBrutoConhecimento")
-    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     **/
-    private BigDecimal pesoBrutoConhecimento = null;
-    @XmlElement(name = "quantidadeVolumesConhecimento")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidadeVolumesConhecimento = null;
-    @XmlElement(name = "razaoSocialDocumentoConsignatario")
-    @ApiModelProperty(example = "Banco do Brasil", value = "Razão social do consignatário<br/>Tamanho máximo: 70")
-    /**
-     * Razão social do consignatário<br/>Tamanho máximo: 70
-     **/
-    private String razaoSocialDocumentoConsignatario = null;
-    @XmlElement(name = "recepcoesComAvarias")
-    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
-    @Valid
-    /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
-     **/
-    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
-    @XmlElement(name = "recintoAduaneiroDestino")
-    @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
-    /**
-     * Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos
-     **/
-    private String recintoAduaneiroDestino = null;
-    @XmlElement(name = "ruc")
-    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
-     **/
-    private String ruc = null;
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(example = "A, E", value = "Código da situação do Conhecimento<br>Tamanho: 1<br/>A - Ativo <br/>E - Excluído<br/>")
-    /**
-     * Código da situação do Conhecimento<br>Tamanho: 1<br/>A - Ativo <br/>E - Excluído<br/>
-     **/
-    private SituacaoEnum situacao = null;
-    @XmlElement(name = "solicitacoesServicosEspeciais")
-    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
-    /**
-     * Tipo de carga.
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "tipoDocumentoConsignatario")
-    @ApiModelProperty(example = "PASSAPORTE", value = "Tipo de documento do consignatário da carga<br/>Tamanho: 10")
-    /**
-     * Tipo de documento do consignatário da carga<br/>Tamanho: 10
-     **/
-    private TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario = null;
-    @XmlElement(name = "viagensAssociadas")
-    @ApiModelProperty(value = "Lista contendo as viagens as quais a carga / Dsic está associada<br/>")
-    @Valid
-    /**
-     * Lista contendo as viagens as quais a carga / Dsic está associada<br/>
-     **/
-    private List<ChaveViagem> viagensAssociadas = null;
+    private List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -413,6 +302,186 @@ public class ConhecimentoConsultaDetalhada {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    /**
+     * Endereço postal do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
+     *
+     * @return caixaPostalConsignatarioConhecimento
+     **/
+    @JsonProperty("caixaPostalConsignatarioConhecimento")
+    public String getCaixaPostalConsignatarioConhecimento() {
+        return caixaPostalConsignatarioConhecimento;
+    }
+
+    public void setCaixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
+        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
+    }
+
+    @XmlElement(name = "nomeConsignatarioConhecimento")
+    @ApiModelProperty(example = "Banco do Brasil", value = "Nome do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
+    /**
+     * Nome do consignatário no conhecimento de carga<br/>Tamanho máximo: 70
+     **/
+    private String nomeConsignatarioConhecimento = null;
+
+    @XmlElement(name = "nomeDocumentoConsignatario")
+    @ApiModelProperty(example = "Banco do Brasil", value = "Nome do consignatário no documento<br/>Tamanho máximo: 70")
+    /**
+     * Nome do consignatário no documento<br/>Tamanho máximo: 70
+     **/
+    private String nomeDocumentoConsignatario = null;
+
+    @XmlElement(name = "nomeEmbarcadorEstrangeiro")
+    @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do embarcador estrangeiro<br>Tamanho: 70<br/>")
+    /**
+     * Nome do embarcador estrangeiro<br>Tamanho: 70<br/>
+     **/
+    private String nomeEmbarcadorEstrangeiro = null;
+
+    @XmlElement(name = "outrasInfosServico")
+    @ApiModelProperty(value = "Lista contendo as outras informações de serviço para a carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista contendo as outras informações de serviço para a carga / Dsic<br/>
+     **/
+    private List<InfoManuseioConsultaDetalhada> outrasInfosServico = null;
+
+    @XmlElement(name = "outrasPartesInteressadas")
+    @ApiModelProperty(value = "Lista das partes interessadas.")
+    @Valid
+    /**
+     * Lista das partes interessadas.
+     **/
+    private List<ParteInteressadaConsultaDetalhada> outrasPartesInteressadas = null;
+
+    @XmlElement(name = "paisAgenteDeCargaConsolidadorEstrang")
+    @ApiModelProperty(example = "BR", value = "País do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA")
+    /**
+     * País do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA
+     **/
+    private String paisAgenteDeCargaConsolidadorEstrang = null;
+
+    @XmlElement(name = "paisConsignatarioConhecimento")
+    @ApiModelProperty(example = "BR", value = "País do consignatário no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA")
+    /**
+     * País do consignatário no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA
+     **/
+    private String paisConsignatarioConhecimento = null;
+
+    @XmlElement(name = "paisEmbarcadorEstrangeiro")
+    @ApiModelProperty(example = "BR", value = "País do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA")
+    /**
+     * País do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 2<br/>Formato: AA
+     **/
+    private String paisEmbarcadorEstrangeiro = null;
+
+    @XmlElement(name = "partesEstoque")
+    @ApiModelProperty(value = "Lista contendo as partes da carga<br/>")
+    @Valid
+    /**
+     * Lista contendo as partes da carga<br/>
+     **/
+    private List<EstoqueConsultaDetalhada> partesEstoque = null;
+
+    @XmlElement(name = "pesoBrutoConhecimento")
+    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     **/
+    private BigDecimal pesoBrutoConhecimento = null;
+
+    @XmlElement(name = "quantidadeVolumesConhecimento")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer quantidadeVolumesConhecimento = null;
+
+    @XmlElement(name = "razaoSocialDocumentoConsignatario")
+    @ApiModelProperty(example = "Banco do Brasil", value = "Razão social do consignatário<br/>Tamanho máximo: 70")
+    /**
+     * Razão social do consignatário<br/>Tamanho máximo: 70
+     **/
+    private String razaoSocialDocumentoConsignatario = null;
+
+    @XmlElement(name = "recepcoesComAvarias")
+    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+    @Valid
+    /**
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+     **/
+    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
+
+    @XmlElement(name = "recintoAduaneiroDestino")
+    @ApiModelProperty(example = "8911101", value = "Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos")
+    /**
+     * Código do Recinto Aduaneiro.<br/>Tamanho: 7<br/> Formato: inteiro com até 7 dígitos
+     **/
+    private String recintoAduaneiroDestino = null;
+
+    @XmlElement(name = "ruc")
+    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
+    /**
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
+     **/
+    private String ruc = null;
+
+    public ConhecimentoConsultaDetalhada caixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
+        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
+        return this;
+    }
+
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(example = "A, E", value = "Código da situação do Conhecimento<br>Tamanho: 1<br/>A - Ativo <br/>E - Excluído<br/>")
+    /**
+     * Código da situação do Conhecimento<br>Tamanho: 1<br/>A - Ativo <br/>E - Excluído<br/>
+     **/
+    private SituacaoEnum situacao = null;
+
+    @XmlElement(name = "solicitacoesServicosEspeciais")
+    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
+     **/
+    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais = null;
+
+    /**
+     * Lista as chegadas de viagens terrestres associadas ao conhecimento&lt;br/&gt;
+     *
+     * @return chegadasTerrestres
+     **/
+    @JsonProperty("chegadasTerrestres")
+    public List<CargaDetalheChegadaTerrestre> getChegadasTerrestres() {
+        return chegadasTerrestres;
+    }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
+    /**
+     * Tipo de carga.
+     **/
+    private TipoEnum tipo = null;
+
+    public void setChegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
+        this.chegadasTerrestres = chegadasTerrestres;
+    }
+
+    @XmlElement(name = "tipoDocumentoConsignatario")
+    @ApiModelProperty(example = "PASSAPORTE", value = "Tipo de documento do consignatário da carga<br/>Tamanho: 10")
+    /**
+     * Tipo de documento do consignatário da carga<br/>Tamanho: 10
+     **/
+    private TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario = null;
+
+    @XmlElement(name = "viagensAssociadas")
+    @ApiModelProperty(value = "Lista contendo as viagens as quais a carga / Dsic está associada<br/>")
+    @Valid
+    /**
+     * Lista contendo as viagens as quais a carga / Dsic está associada<br/>
+     **/
+    private List<ChaveViagem> viagensAssociadas = null;
 
     /**
      * Lista os bloqueios ativos da carga / Dsic&lt;br/&gt;
@@ -481,6 +550,26 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
+    public ConhecimentoConsultaDetalhada chegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
+        this.chegadasTerrestres = chegadasTerrestres;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addChegadasTerrestresItem(CargaDetalheChegadaTerrestre chegadasTerrestresItem) {
+        this.chegadasTerrestres.add(chegadasTerrestresItem);
+        return this;
+    }
+
+    /**
+     * Lista de contatos do consignatário.
+     *
+     * @return contatosConsignatarioConhecimento
+     **/
+    @JsonProperty("contatosConsignatarioConhecimento")
+    public List<ContatoConsultaDetalhada> getContatosConsignatarioConhecimento() {
+        return contatosConsignatarioConhecimento;
+    }
+
     /**
      * Endereço postal do embarcador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
      *
@@ -517,28 +606,33 @@ public class ConhecimentoConsultaDetalhada {
         this.categoriaCarga = categoriaCarga;
     }
 
-    /**
-     * Endereço postal do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return caixaPostalConsignatarioConhecimento
-     **/
-    @JsonProperty("caixaPostalConsignatarioConhecimento")
-    public String getCaixaPostalConsignatarioConhecimento() {
-        return caixaPostalConsignatarioConhecimento;
-    }
-
-    public void setCaixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
-        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
-    }
-
-    public ConhecimentoConsultaDetalhada caixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
-        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
-        return this;
-    }
-
     public ConhecimentoConsultaDetalhada categoriaCarga(CategoriaCargaEnum categoriaCarga) {
         this.categoriaCarga = categoriaCarga;
         return this;
+    }
+
+    public void setContatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
+        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
+    }
+
+    public ConhecimentoConsultaDetalhada contatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
+        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addContatosConsignatarioConhecimentoItem(ContatoConsultaDetalhada contatosConsignatarioConhecimentoItem) {
+        this.contatosConsignatarioConhecimento.add(contatosConsignatarioConhecimentoItem);
+        return this;
+    }
+
+    /**
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
     }
 
     /**
@@ -574,30 +668,6 @@ public class ConhecimentoConsultaDetalhada {
         this.cidadeConsignatarioConhecimento = cidadeConsignatarioConhecimento;
     }
 
-    /**
-     * Lista as chegadas de viagens terrestres associadas ao conhecimento&lt;br/&gt;
-     *
-     * @return chegadasTerrestres
-     **/
-    @JsonProperty("chegadasTerrestres")
-    public List<CargaDetalheChegadaTerrestre> getChegadasTerrestres() {
-        return chegadasTerrestres;
-    }
-
-    public void setChegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
-        this.chegadasTerrestres = chegadasTerrestres;
-    }
-
-    public ConhecimentoConsultaDetalhada chegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
-        this.chegadasTerrestres = chegadasTerrestres;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addChegadasTerrestresItem(CargaDetalheChegadaTerrestre chegadasTerrestresItem) {
-        this.chegadasTerrestres.add(chegadasTerrestresItem);
-        return this;
-    }
-
     public ConhecimentoConsultaDetalhada cidadeConsignatarioConhecimento(String cidadeConsignatarioConhecimento) {
         this.cidadeConsignatarioConhecimento = cidadeConsignatarioConhecimento;
         return this;
@@ -624,7 +694,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
-     *
      * @return cnpjResponsavelArquivo
      **/
     @JsonProperty("cnpjResponsavelArquivo")
@@ -703,9 +772,31 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public ConhecimentoConsultaDetalhada dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
+
+    /**
+     * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
+     *
+     * @return documentosSaida
+     **/
+    @JsonProperty("documentosSaida")
+    public List<DocumentoSaidaConsultaDetalhada> getDocumentosSaida() {
+        return documentosSaida;
+    }
+
+    public void setDocumentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
+        this.documentosSaida = documentosSaida;
+    }
+
     /**
      * Lista de contatos do embarcador estrangeiro.
-     *
      * @return contatosEmbarcadorEstrangeiro
      **/
     @JsonProperty("contatosEmbarcadorEstrangeiro")
@@ -727,38 +818,33 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
+    public ConhecimentoConsultaDetalhada documentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
+        this.documentosSaida = documentosSaida;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addDocumentosSaidaItem(DocumentoSaidaConsultaDetalhada documentosSaidaItem) {
+        this.documentosSaida.add(documentosSaidaItem);
+        return this;
+    }
+
+    /**
+     * Lista contendo os Dsics apropriados a carga&lt;br/&gt;
+     *
+     * @return dsicsApropriados
+     **/
+    @JsonProperty("dsicsApropriados")
+    public List<ChaveDsic> getDsicsApropriados() {
+        return dsicsApropriados;
+    }
+
     /**
      * Data/Hora de emissao do XFWB pelo transportador.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
      * @return dataHoraAssinaturaTransportador
      **/
     @JsonProperty("dataHoraAssinaturaTransportador")
     public String getDataHoraAssinaturaTransportador() {
         return dataHoraAssinaturaTransportador;
-    }
-
-    /**
-     * Lista de contatos do consignatário.
-     *
-     * @return contatosConsignatarioConhecimento
-     **/
-    @JsonProperty("contatosConsignatarioConhecimento")
-    public List<ContatoConsultaDetalhada> getContatosConsignatarioConhecimento() {
-        return contatosConsignatarioConhecimento;
-    }
-
-    public void setContatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
-        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
-    }
-
-    public ConhecimentoConsultaDetalhada contatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
-        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addContatosConsignatarioConhecimentoItem(ContatoConsultaDetalhada contatosConsignatarioConhecimentoItem) {
-        this.contatosConsignatarioConhecimento.add(contatosConsignatarioConhecimentoItem);
-        return this;
     }
 
     public void setDataHoraAssinaturaTransportador(String dataHoraAssinaturaTransportador) {
@@ -772,7 +858,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Descrição resumida das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
-     *
      * @return descricaoResumida
      **/
     @JsonProperty("descricaoResumida")
@@ -784,24 +869,6 @@ public class ConhecimentoConsultaDetalhada {
         this.descricaoResumida = descricaoResumida;
     }
 
-    /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public ConhecimentoConsultaDetalhada dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
-
     public ConhecimentoConsultaDetalhada descricaoResumida(String descricaoResumida) {
         this.descricaoResumida = descricaoResumida;
         return this;
@@ -809,7 +876,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista as divergências ativos da carga&lt;br/&gt;
-     *
      * @return divergencias
      **/
     @JsonProperty("divergencias")
@@ -828,72 +894,6 @@ public class ConhecimentoConsultaDetalhada {
 
     public ConhecimentoConsultaDetalhada addDivergenciasItem(DivergenciaConsultaDetalhada divergenciasItem) {
         this.divergencias.add(divergenciasItem);
-        return this;
-    }
-
-    /**
-     * Lista contendo os Dsics apropriados a carga&lt;br/&gt;
-     * @return dsicsApropriados
-     **/
-    @JsonProperty("dsicsApropriados")
-    public List<ChaveDsic> getDsicsApropriados() {
-        return dsicsApropriados;
-    }
-
-    public void setDsicsApropriados(List<ChaveDsic> dsicsApropriados) {
-        this.dsicsApropriados = dsicsApropriados;
-    }
-
-    public ConhecimentoConsultaDetalhada dsicsApropriados(List<ChaveDsic> dsicsApropriados) {
-        this.dsicsApropriados = dsicsApropriados;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addDsicsApropriadosItem(ChaveDsic dsicsApropriadosItem) {
-        this.dsicsApropriados.add(dsicsApropriadosItem);
-        return this;
-    }
-
-    /**
-     * Endereco do agente de carga consolidador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return enderecoAgenteDeCargaConsolidadorEstrang
-     **/
-    @JsonProperty("enderecoAgenteDeCargaConsolidadorEstrang")
-    public String getEnderecoAgenteDeCargaConsolidadorEstrang() {
-        return enderecoAgenteDeCargaConsolidadorEstrang;
-    }
-
-    /**
-     * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
-     *
-     * @return documentosSaida
-     **/
-    @JsonProperty("documentosSaida")
-    public List<DocumentoSaidaConsultaDetalhada> getDocumentosSaida() {
-        return documentosSaida;
-    }
-
-    public void setDocumentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
-        this.documentosSaida = documentosSaida;
-    }
-
-    public ConhecimentoConsultaDetalhada documentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
-        this.documentosSaida = documentosSaida;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addDocumentosSaidaItem(DocumentoSaidaConsultaDetalhada documentosSaidaItem) {
-        this.documentosSaida.add(documentosSaidaItem);
-        return this;
-    }
-
-    public void setEnderecoAgenteDeCargaConsolidadorEstrang(String enderecoAgenteDeCargaConsolidadorEstrang) {
-        this.enderecoAgenteDeCargaConsolidadorEstrang = enderecoAgenteDeCargaConsolidadorEstrang;
-    }
-
-    public ConhecimentoConsultaDetalhada enderecoAgenteDeCargaConsolidadorEstrang(String enderecoAgenteDeCargaConsolidadorEstrang) {
-        this.enderecoAgenteDeCargaConsolidadorEstrang = enderecoAgenteDeCargaConsolidadorEstrang;
         return this;
     }
 
@@ -930,9 +930,40 @@ public class ConhecimentoConsultaDetalhada {
         this.hawbAssociados = hawbAssociados;
     }
 
+    public void setDsicsApropriados(List<ChaveDsic> dsicsApropriados) {
+        this.dsicsApropriados = dsicsApropriados;
+    }
+
+    public ConhecimentoConsultaDetalhada dsicsApropriados(List<ChaveDsic> dsicsApropriados) {
+        this.dsicsApropriados = dsicsApropriados;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addDsicsApropriadosItem(ChaveDsic dsicsApropriadosItem) {
+        this.dsicsApropriados.add(dsicsApropriadosItem);
+        return this;
+    }
+
+    /**
+     * Endereco do agente de carga consolidador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
+     * @return enderecoAgenteDeCargaConsolidadorEstrang
+     **/
+    @JsonProperty("enderecoAgenteDeCargaConsolidadorEstrang")
+    public String getEnderecoAgenteDeCargaConsolidadorEstrang() {
+        return enderecoAgenteDeCargaConsolidadorEstrang;
+    }
+
+    public void setEnderecoAgenteDeCargaConsolidadorEstrang(String enderecoAgenteDeCargaConsolidadorEstrang) {
+        this.enderecoAgenteDeCargaConsolidadorEstrang = enderecoAgenteDeCargaConsolidadorEstrang;
+    }
+
+    public ConhecimentoConsultaDetalhada enderecoAgenteDeCargaConsolidadorEstrang(String enderecoAgenteDeCargaConsolidadorEstrang) {
+        this.enderecoAgenteDeCargaConsolidadorEstrang = enderecoAgenteDeCargaConsolidadorEstrang;
+        return this;
+    }
+
     /**
      * Endereco do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return enderecoConsignatarioConhecimento
      **/
     @JsonProperty("enderecoConsignatarioConhecimento")
@@ -951,7 +982,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Endereco do embarcador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
      * @return enderecoEmbarcadorEstrangeiro
      **/
     @JsonProperty("enderecoEmbarcadorEstrangeiro")
@@ -968,6 +998,45 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Local de emissao do XFWB pelo transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
+     *
+     * @return localAssinaturaTransportador
+     **/
+    @JsonProperty("localAssinaturaTransportador")
+    public String getLocalAssinaturaTransportador() {
+        return localAssinaturaTransportador;
+    }
+
+    public void setLocalAssinaturaTransportador(String localAssinaturaTransportador) {
+        this.localAssinaturaTransportador = localAssinaturaTransportador;
+    }
+
+    public ConhecimentoConsultaDetalhada localAssinaturaTransportador(String localAssinaturaTransportador) {
+        this.localAssinaturaTransportador = localAssinaturaTransportador;
+        return this;
+    }
+
+    /**
+     * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
+     *
+     * @return manuseiosEspeciais
+     **/
+    @JsonProperty("manuseiosEspeciais")
+    public List<InfoManuseioConsultaDetalhada> getManuseiosEspeciais() {
+        return manuseiosEspeciais;
+    }
+
+    /**
+     * Assinatura transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
+     *
+     * @return nomeAssinaturaTransportador
+     **/
+    @JsonProperty("nomeAssinaturaTransportador")
+    public String getNomeAssinaturaTransportador() {
+        return nomeAssinaturaTransportador;
+    }
+
     public ConhecimentoConsultaDetalhada hawbAssociados(List<HawbMawbAssociadoConsultaDetalhada> hawbAssociados) {
         this.hawbAssociados = hawbAssociados;
         return this;
@@ -980,7 +1049,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
      * @return identificacao
      **/
     @JsonProperty("identificacao")
@@ -999,7 +1067,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * CNPJ do consignatário&lt;br/&gt;Tamanho: 14&lt;br/&gt;
-     *
      * @return identificacaoDocumentoConsignatario
      **/
     @JsonProperty("identificacaoDocumentoConsignatario")
@@ -1082,71 +1149,6 @@ public class ConhecimentoConsultaDetalhada {
     }
 
     /**
-     * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
-     * @return manuseiosEspeciais
-     **/
-    @JsonProperty("manuseiosEspeciais")
-    public List<InfoManuseioConsultaDetalhada> getManuseiosEspeciais() {
-        return manuseiosEspeciais;
-    }
-
-    public void setManuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
-        this.manuseiosEspeciais = manuseiosEspeciais;
-    }
-
-    public ConhecimentoConsultaDetalhada manuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
-        this.manuseiosEspeciais = manuseiosEspeciais;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addManuseiosEspeciaisItem(InfoManuseioConsultaDetalhada manuseiosEspeciaisItem) {
-        this.manuseiosEspeciais.add(manuseiosEspeciaisItem);
-        return this;
-    }
-
-    /**
-     * Lista contendo as cargas MAWB&lt;br/&gt;
-     *
-     * @return mawbAwbAssociados
-     **/
-    @JsonProperty("mawbAwbAssociados")
-    public List<MawbAssociadoConsultaDetalhada> getMawbAwbAssociados() {
-        return mawbAwbAssociados;
-    }
-
-    /**
-     * Local de emissao do XFWB pelo transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
-     * @return localAssinaturaTransportador
-     **/
-    @JsonProperty("localAssinaturaTransportador")
-    public String getLocalAssinaturaTransportador() {
-        return localAssinaturaTransportador;
-    }
-
-    public void setLocalAssinaturaTransportador(String localAssinaturaTransportador) {
-        this.localAssinaturaTransportador = localAssinaturaTransportador;
-    }
-
-    public ConhecimentoConsultaDetalhada localAssinaturaTransportador(String localAssinaturaTransportador) {
-        this.localAssinaturaTransportador = localAssinaturaTransportador;
-        return this;
-    }
-
-    public void setMawbAwbAssociados(List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados) {
-        this.mawbAwbAssociados = mawbAwbAssociados;
-    }
-
-    public ConhecimentoConsultaDetalhada mawbAwbAssociados(List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados) {
-        this.mawbAwbAssociados = mawbAwbAssociados;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addMawbAwbAssociadosItem(MawbAssociadoConsultaDetalhada mawbAwbAssociadosItem) {
-        this.mawbAwbAssociados.add(mawbAwbAssociadosItem);
-        return this;
-    }
-
-    /**
      * Nome do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
      *
      * @return nomeConsignatarioConhecimento
@@ -1175,13 +1177,45 @@ public class ConhecimentoConsultaDetalhada {
         return nomeDocumentoConsignatario;
     }
 
-    public void setNomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
-        this.nomeDocumentoConsignatario = nomeDocumentoConsignatario;
+    public void setManuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
+        this.manuseiosEspeciais = manuseiosEspeciais;
+    }
+
+    public ConhecimentoConsultaDetalhada manuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
+        this.manuseiosEspeciais = manuseiosEspeciais;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addManuseiosEspeciaisItem(InfoManuseioConsultaDetalhada manuseiosEspeciaisItem) {
+        this.manuseiosEspeciais.add(manuseiosEspeciaisItem);
+        return this;
+    }
+
+    /**
+     * Lista contendo as cargas MAWB&lt;br/&gt;
+     * @return mawbAwbAssociados
+     **/
+    @JsonProperty("mawbAwbAssociados")
+    public List<MawbAssociadoConsultaDetalhada> getMawbAwbAssociados() {
+        return mawbAwbAssociados;
+    }
+
+    public void setMawbAwbAssociados(List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados) {
+        this.mawbAwbAssociados = mawbAwbAssociados;
+    }
+
+    public ConhecimentoConsultaDetalhada mawbAwbAssociados(List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados) {
+        this.mawbAwbAssociados = mawbAwbAssociados;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addMawbAwbAssociadosItem(MawbAssociadoConsultaDetalhada mawbAwbAssociadosItem) {
+        this.mawbAwbAssociados.add(mawbAwbAssociadosItem);
+        return this;
     }
 
     /**
      * Nome do agente de carga consolidador estrangeiro&lt;br&gt;Tamanho: 70&lt;br/&gt;
-     *
      * @return nomeAgenteDeCargaConsolidadorEstrang
      **/
     @JsonProperty("nomeAgenteDeCargaConsolidadorEstrang")
@@ -1200,7 +1234,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Nome do responsável pelo embarque&lt;br&gt;Tamanho: 70&lt;br/&gt;
-     *
      * @return nomeAssinaturaEmbarcadorEstrangeiro
      **/
     @JsonProperty("nomeAssinaturaEmbarcadorEstrangeiro")
@@ -1217,13 +1250,8 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Assinatura transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
-     * @return nomeAssinaturaTransportador
-     **/
-    @JsonProperty("nomeAssinaturaTransportador")
-    public String getNomeAssinaturaTransportador() {
-        return nomeAssinaturaTransportador;
+    public void setNomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
+        this.nomeDocumentoConsignatario = nomeDocumentoConsignatario;
     }
 
     public void setNomeAssinaturaTransportador(String nomeAssinaturaTransportador) {
@@ -1232,392 +1260,6 @@ public class ConhecimentoConsultaDetalhada {
 
     public ConhecimentoConsultaDetalhada nomeAssinaturaTransportador(String nomeAssinaturaTransportador) {
         this.nomeAssinaturaTransportador = nomeAssinaturaTransportador;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada nomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
-        this.nomeDocumentoConsignatario = nomeDocumentoConsignatario;
-        return this;
-    }
-
-    /**
-     * Nome do embarcador estrangeiro&lt;br&gt;Tamanho: 70&lt;br/&gt;
-     *
-     * @return nomeEmbarcadorEstrangeiro
-     **/
-    @JsonProperty("nomeEmbarcadorEstrangeiro")
-    public String getNomeEmbarcadorEstrangeiro() {
-        return nomeEmbarcadorEstrangeiro;
-    }
-
-    public void setNomeEmbarcadorEstrangeiro(String nomeEmbarcadorEstrangeiro) {
-        this.nomeEmbarcadorEstrangeiro = nomeEmbarcadorEstrangeiro;
-    }
-
-    public ConhecimentoConsultaDetalhada nomeEmbarcadorEstrangeiro(String nomeEmbarcadorEstrangeiro) {
-        this.nomeEmbarcadorEstrangeiro = nomeEmbarcadorEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Lista contendo as outras informações de serviço para a carga / Dsic&lt;br/&gt;
-     *
-     * @return outrasInfosServico
-     **/
-    @JsonProperty("outrasInfosServico")
-    public List<InfoManuseioConsultaDetalhada> getOutrasInfosServico() {
-        return outrasInfosServico;
-    }
-
-    public void setOutrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
-        this.outrasInfosServico = outrasInfosServico;
-    }
-
-    public ConhecimentoConsultaDetalhada outrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
-        this.outrasInfosServico = outrasInfosServico;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addOutrasInfosServicoItem(InfoManuseioConsultaDetalhada outrasInfosServicoItem) {
-        this.outrasInfosServico.add(outrasInfosServicoItem);
-        return this;
-    }
-
-    /**
-     * Lista das partes interessadas.
-     *
-     * @return outrasPartesInteressadas
-     **/
-    @JsonProperty("outrasPartesInteressadas")
-    public List<ParteInteressadaConsultaDetalhada> getOutrasPartesInteressadas() {
-        return outrasPartesInteressadas;
-    }
-
-    public void setOutrasPartesInteressadas(List<ParteInteressadaConsultaDetalhada> outrasPartesInteressadas) {
-        this.outrasPartesInteressadas = outrasPartesInteressadas;
-    }
-
-    public ConhecimentoConsultaDetalhada outrasPartesInteressadas(List<ParteInteressadaConsultaDetalhada> outrasPartesInteressadas) {
-        this.outrasPartesInteressadas = outrasPartesInteressadas;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addOutrasPartesInteressadasItem(ParteInteressadaConsultaDetalhada outrasPartesInteressadasItem) {
-        this.outrasPartesInteressadas.add(outrasPartesInteressadasItem);
-        return this;
-    }
-
-    /**
-     * País do agente de carga consolidador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
-     *
-     * @return paisAgenteDeCargaConsolidadorEstrang
-     **/
-    @JsonProperty("paisAgenteDeCargaConsolidadorEstrang")
-    public String getPaisAgenteDeCargaConsolidadorEstrang() {
-        return paisAgenteDeCargaConsolidadorEstrang;
-    }
-
-    public void setPaisAgenteDeCargaConsolidadorEstrang(String paisAgenteDeCargaConsolidadorEstrang) {
-        this.paisAgenteDeCargaConsolidadorEstrang = paisAgenteDeCargaConsolidadorEstrang;
-    }
-
-    public ConhecimentoConsultaDetalhada paisAgenteDeCargaConsolidadorEstrang(String paisAgenteDeCargaConsolidadorEstrang) {
-        this.paisAgenteDeCargaConsolidadorEstrang = paisAgenteDeCargaConsolidadorEstrang;
-        return this;
-    }
-
-    /**
-     * País do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
-     *
-     * @return paisConsignatarioConhecimento
-     **/
-    @JsonProperty("paisConsignatarioConhecimento")
-    public String getPaisConsignatarioConhecimento() {
-        return paisConsignatarioConhecimento;
-    }
-
-    public void setPaisConsignatarioConhecimento(String paisConsignatarioConhecimento) {
-        this.paisConsignatarioConhecimento = paisConsignatarioConhecimento;
-    }
-
-    public ConhecimentoConsultaDetalhada paisConsignatarioConhecimento(String paisConsignatarioConhecimento) {
-        this.paisConsignatarioConhecimento = paisConsignatarioConhecimento;
-        return this;
-    }
-
-    /**
-     * País do embarcador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
-     *
-     * @return paisEmbarcadorEstrangeiro
-     **/
-    @JsonProperty("paisEmbarcadorEstrangeiro")
-    public String getPaisEmbarcadorEstrangeiro() {
-        return paisEmbarcadorEstrangeiro;
-    }
-
-    public void setPaisEmbarcadorEstrangeiro(String paisEmbarcadorEstrangeiro) {
-        this.paisEmbarcadorEstrangeiro = paisEmbarcadorEstrangeiro;
-    }
-
-    public ConhecimentoConsultaDetalhada paisEmbarcadorEstrangeiro(String paisEmbarcadorEstrangeiro) {
-        this.paisEmbarcadorEstrangeiro = paisEmbarcadorEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Lista contendo as partes da carga&lt;br/&gt;
-     *
-     * @return partesEstoque
-     **/
-    @JsonProperty("partesEstoque")
-    public List<EstoqueConsultaDetalhada> getPartesEstoque() {
-        return partesEstoque;
-    }
-
-    public void setPartesEstoque(List<EstoqueConsultaDetalhada> partesEstoque) {
-        this.partesEstoque = partesEstoque;
-    }
-
-    public ConhecimentoConsultaDetalhada partesEstoque(List<EstoqueConsultaDetalhada> partesEstoque) {
-        this.partesEstoque = partesEstoque;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addPartesEstoqueItem(EstoqueConsultaDetalhada partesEstoqueItem) {
-        this.partesEstoque.add(partesEstoqueItem);
-        return this;
-    }
-
-    /**
-     * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
-     * @return pesoBrutoConhecimento
-     **/
-    @JsonProperty("pesoBrutoConhecimento")
-    public BigDecimal getPesoBrutoConhecimento() {
-        return pesoBrutoConhecimento;
-    }
-
-    public void setPesoBrutoConhecimento(BigDecimal pesoBrutoConhecimento) {
-        this.pesoBrutoConhecimento = pesoBrutoConhecimento;
-    }
-
-    public ConhecimentoConsultaDetalhada pesoBrutoConhecimento(BigDecimal pesoBrutoConhecimento) {
-        this.pesoBrutoConhecimento = pesoBrutoConhecimento;
-        return this;
-    }
-
-    /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return quantidadeVolumesConhecimento
-     **/
-    @JsonProperty("quantidadeVolumesConhecimento")
-    public Integer getQuantidadeVolumesConhecimento() {
-        return quantidadeVolumesConhecimento;
-    }
-
-    public void setQuantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
-        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
-    }
-
-    public ConhecimentoConsultaDetalhada quantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
-        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
-        return this;
-    }
-
-    /**
-     * Razão social do consignatário&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return razaoSocialDocumentoConsignatario
-     **/
-    @JsonProperty("razaoSocialDocumentoConsignatario")
-    public String getRazaoSocialDocumentoConsignatario() {
-        return razaoSocialDocumentoConsignatario;
-    }
-
-    public void setRazaoSocialDocumentoConsignatario(String razaoSocialDocumentoConsignatario) {
-        this.razaoSocialDocumentoConsignatario = razaoSocialDocumentoConsignatario;
-    }
-
-    public ConhecimentoConsultaDetalhada razaoSocialDocumentoConsignatario(String razaoSocialDocumentoConsignatario) {
-        this.razaoSocialDocumentoConsignatario = razaoSocialDocumentoConsignatario;
-        return this;
-    }
-
-    /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
-     *
-     * @return recepcoesComAvarias
-     **/
-    @JsonProperty("recepcoesComAvarias")
-    public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
-        return recepcoesComAvarias;
-    }
-
-    public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
-        this.recepcoesComAvarias = recepcoesComAvarias;
-    }
-
-    public ConhecimentoConsultaDetalhada recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
-        this.recepcoesComAvarias = recepcoesComAvarias;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
-        this.recepcoesComAvarias.add(recepcoesComAvariasItem);
-        return this;
-    }
-
-    /**
-     * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
-     *
-     * @return recintoAduaneiroDestino
-     **/
-    @JsonProperty("recintoAduaneiroDestino")
-    public String getRecintoAduaneiroDestino() {
-        return recintoAduaneiroDestino;
-    }
-
-    public void setRecintoAduaneiroDestino(String recintoAduaneiroDestino) {
-        this.recintoAduaneiroDestino = recintoAduaneiroDestino;
-    }
-
-    public ConhecimentoConsultaDetalhada recintoAduaneiroDestino(String recintoAduaneiroDestino) {
-        this.recintoAduaneiroDestino = recintoAduaneiroDestino;
-        return this;
-    }
-
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
-     *
-     * @return ruc
-     **/
-    @JsonProperty("ruc")
-    public String getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
-    }
-
-    public ConhecimentoConsultaDetalhada ruc(String ruc) {
-        this.ruc = ruc;
-        return this;
-    }
-
-    /**
-     * Código da situação do Conhecimento&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excluído&lt;br/&gt;
-     *
-     * @return situacao
-     **/
-    @JsonProperty("situacao")
-    public String getSituacao() {
-        if (situacao == null) {
-            return null;
-        }
-        return situacao.value();
-    }
-
-    public void setSituacao(SituacaoEnum situacao) {
-        this.situacao = situacao;
-    }
-
-    public ConhecimentoConsultaDetalhada situacao(SituacaoEnum situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
-    /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
-     *
-     * @return solicitacoesServicosEspeciais
-     **/
-    @JsonProperty("solicitacoesServicosEspeciais")
-    public List<InfoManuseioConsultaDetalhada> getSolicitacoesServicosEspeciais() {
-        return solicitacoesServicosEspeciais;
-    }
-
-    public void setSolicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
-        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
-    }
-
-    public ConhecimentoConsultaDetalhada solicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
-        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addSolicitacoesServicosEspeciaisItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisItem) {
-        this.solicitacoesServicosEspeciais.add(solicitacoesServicosEspeciaisItem);
-        return this;
-    }
-
-    /**
-     * Tipo de carga.
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public ConhecimentoConsultaDetalhada tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Tipo de documento do consignatário da carga&lt;br/&gt;Tamanho: 10
-     *
-     * @return tipoDocumentoConsignatario
-     **/
-    @JsonProperty("tipoDocumentoConsignatario")
-    public String getTipoDocumentoConsignatario() {
-        if (tipoDocumentoConsignatario == null) {
-            return null;
-        }
-        return tipoDocumentoConsignatario.value();
-    }
-
-    public void setTipoDocumentoConsignatario(TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario) {
-        this.tipoDocumentoConsignatario = tipoDocumentoConsignatario;
-    }
-
-    public ConhecimentoConsultaDetalhada tipoDocumentoConsignatario(TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario) {
-        this.tipoDocumentoConsignatario = tipoDocumentoConsignatario;
-        return this;
-    }
-
-    /**
-     * Lista contendo as viagens as quais a carga / Dsic está associada&lt;br/&gt;
-     *
-     * @return viagensAssociadas
-     **/
-    @JsonProperty("viagensAssociadas")
-    public List<ChaveViagem> getViagensAssociadas() {
-        return viagensAssociadas;
-    }
-
-    public void setViagensAssociadas(List<ChaveViagem> viagensAssociadas) {
-        this.viagensAssociadas = viagensAssociadas;
-    }
-
-    public ConhecimentoConsultaDetalhada viagensAssociadas(List<ChaveViagem> viagensAssociadas) {
-        this.viagensAssociadas = viagensAssociadas;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addViagensAssociadasItem(ChaveViagem viagensAssociadasItem) {
-        this.viagensAssociadas.add(viagensAssociadasItem);
         return this;
     }
 
@@ -1847,6 +1489,380 @@ public class ConhecimentoConsultaDetalhada {
         }
     }
 
+    public ConhecimentoConsultaDetalhada nomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
+        this.nomeDocumentoConsignatario = nomeDocumentoConsignatario;
+        return this;
+    }
+
+    /**
+     * Nome do embarcador estrangeiro&lt;br&gt;Tamanho: 70&lt;br/&gt;
+     * @return nomeEmbarcadorEstrangeiro
+     **/
+    @JsonProperty("nomeEmbarcadorEstrangeiro")
+    public String getNomeEmbarcadorEstrangeiro() {
+        return nomeEmbarcadorEstrangeiro;
+    }
+
+    public void setNomeEmbarcadorEstrangeiro(String nomeEmbarcadorEstrangeiro) {
+        this.nomeEmbarcadorEstrangeiro = nomeEmbarcadorEstrangeiro;
+    }
+
+    public ConhecimentoConsultaDetalhada nomeEmbarcadorEstrangeiro(String nomeEmbarcadorEstrangeiro) {
+        this.nomeEmbarcadorEstrangeiro = nomeEmbarcadorEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Lista contendo as outras informações de serviço para a carga / Dsic&lt;br/&gt;
+     * @return outrasInfosServico
+     **/
+    @JsonProperty("outrasInfosServico")
+    public List<InfoManuseioConsultaDetalhada> getOutrasInfosServico() {
+        return outrasInfosServico;
+    }
+
+    public void setOutrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
+        this.outrasInfosServico = outrasInfosServico;
+    }
+
+    public ConhecimentoConsultaDetalhada outrasInfosServico(List<InfoManuseioConsultaDetalhada> outrasInfosServico) {
+        this.outrasInfosServico = outrasInfosServico;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addOutrasInfosServicoItem(InfoManuseioConsultaDetalhada outrasInfosServicoItem) {
+        this.outrasInfosServico.add(outrasInfosServicoItem);
+        return this;
+    }
+
+    /**
+     * Lista das partes interessadas.
+     *
+     * @return outrasPartesInteressadas
+     **/
+    @JsonProperty("outrasPartesInteressadas")
+    public List<ParteInteressadaConsultaDetalhada> getOutrasPartesInteressadas() {
+        return outrasPartesInteressadas;
+    }
+
+    public void setOutrasPartesInteressadas(List<ParteInteressadaConsultaDetalhada> outrasPartesInteressadas) {
+        this.outrasPartesInteressadas = outrasPartesInteressadas;
+    }
+
+    public ConhecimentoConsultaDetalhada outrasPartesInteressadas(List<ParteInteressadaConsultaDetalhada> outrasPartesInteressadas) {
+        this.outrasPartesInteressadas = outrasPartesInteressadas;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addOutrasPartesInteressadasItem(ParteInteressadaConsultaDetalhada outrasPartesInteressadasItem) {
+        this.outrasPartesInteressadas.add(outrasPartesInteressadasItem);
+        return this;
+    }
+
+    /**
+     * País do agente de carga consolidador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
+     * @return paisAgenteDeCargaConsolidadorEstrang
+     **/
+    @JsonProperty("paisAgenteDeCargaConsolidadorEstrang")
+    public String getPaisAgenteDeCargaConsolidadorEstrang() {
+        return paisAgenteDeCargaConsolidadorEstrang;
+    }
+
+    public void setPaisAgenteDeCargaConsolidadorEstrang(String paisAgenteDeCargaConsolidadorEstrang) {
+        this.paisAgenteDeCargaConsolidadorEstrang = paisAgenteDeCargaConsolidadorEstrang;
+    }
+
+    public ConhecimentoConsultaDetalhada paisAgenteDeCargaConsolidadorEstrang(String paisAgenteDeCargaConsolidadorEstrang) {
+        this.paisAgenteDeCargaConsolidadorEstrang = paisAgenteDeCargaConsolidadorEstrang;
+        return this;
+    }
+
+    /**
+     * País do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
+     * @return paisConsignatarioConhecimento
+     **/
+    @JsonProperty("paisConsignatarioConhecimento")
+    public String getPaisConsignatarioConhecimento() {
+        return paisConsignatarioConhecimento;
+    }
+
+    public void setPaisConsignatarioConhecimento(String paisConsignatarioConhecimento) {
+        this.paisConsignatarioConhecimento = paisConsignatarioConhecimento;
+    }
+
+    public ConhecimentoConsultaDetalhada paisConsignatarioConhecimento(String paisConsignatarioConhecimento) {
+        this.paisConsignatarioConhecimento = paisConsignatarioConhecimento;
+        return this;
+    }
+
+    /**
+     * País do embarcador estrangeiro no conhecimento de carga&lt;br/&gt;Tamanho máximo: 2&lt;br/&gt;Formato: AA
+     * @return paisEmbarcadorEstrangeiro
+     **/
+    @JsonProperty("paisEmbarcadorEstrangeiro")
+    public String getPaisEmbarcadorEstrangeiro() {
+        return paisEmbarcadorEstrangeiro;
+    }
+
+    public void setPaisEmbarcadorEstrangeiro(String paisEmbarcadorEstrangeiro) {
+        this.paisEmbarcadorEstrangeiro = paisEmbarcadorEstrangeiro;
+    }
+
+    public ConhecimentoConsultaDetalhada paisEmbarcadorEstrangeiro(String paisEmbarcadorEstrangeiro) {
+        this.paisEmbarcadorEstrangeiro = paisEmbarcadorEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Lista contendo as partes da carga&lt;br/&gt;
+     *
+     * @return partesEstoque
+     **/
+    @JsonProperty("partesEstoque")
+    public List<EstoqueConsultaDetalhada> getPartesEstoque() {
+        return partesEstoque;
+    }
+
+    public void setPartesEstoque(List<EstoqueConsultaDetalhada> partesEstoque) {
+        this.partesEstoque = partesEstoque;
+    }
+
+    public ConhecimentoConsultaDetalhada partesEstoque(List<EstoqueConsultaDetalhada> partesEstoque) {
+        this.partesEstoque = partesEstoque;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addPartesEstoqueItem(EstoqueConsultaDetalhada partesEstoqueItem) {
+        this.partesEstoque.add(partesEstoqueItem);
+        return this;
+    }
+
+    /**
+     * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * @return pesoBrutoConhecimento
+     **/
+    @JsonProperty("pesoBrutoConhecimento")
+    public BigDecimal getPesoBrutoConhecimento() {
+        return pesoBrutoConhecimento;
+    }
+
+    public void setPesoBrutoConhecimento(BigDecimal pesoBrutoConhecimento) {
+        this.pesoBrutoConhecimento = pesoBrutoConhecimento;
+    }
+
+    public ConhecimentoConsultaDetalhada pesoBrutoConhecimento(BigDecimal pesoBrutoConhecimento) {
+        this.pesoBrutoConhecimento = pesoBrutoConhecimento;
+        return this;
+    }
+
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     * @return quantidadeVolumesConhecimento
+     **/
+    @JsonProperty("quantidadeVolumesConhecimento")
+    public Integer getQuantidadeVolumesConhecimento() {
+        return quantidadeVolumesConhecimento;
+    }
+
+    public void setQuantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
+        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
+    }
+
+    public ConhecimentoConsultaDetalhada quantidadeVolumesConhecimento(Integer quantidadeVolumesConhecimento) {
+        this.quantidadeVolumesConhecimento = quantidadeVolumesConhecimento;
+        return this;
+    }
+
+    /**
+     * Razão social do consignatário&lt;br/&gt;Tamanho máximo: 70
+     * @return razaoSocialDocumentoConsignatario
+     **/
+    @JsonProperty("razaoSocialDocumentoConsignatario")
+    public String getRazaoSocialDocumentoConsignatario() {
+        return razaoSocialDocumentoConsignatario;
+    }
+
+    public void setRazaoSocialDocumentoConsignatario(String razaoSocialDocumentoConsignatario) {
+        this.razaoSocialDocumentoConsignatario = razaoSocialDocumentoConsignatario;
+    }
+
+    public ConhecimentoConsultaDetalhada razaoSocialDocumentoConsignatario(String razaoSocialDocumentoConsignatario) {
+        this.razaoSocialDocumentoConsignatario = razaoSocialDocumentoConsignatario;
+        return this;
+    }
+
+    /**
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
+     * @return recepcoesComAvarias
+     **/
+    @JsonProperty("recepcoesComAvarias")
+    public List<RecepcaoComAvaria> getRecepcoesComAvarias() {
+        return recepcoesComAvarias;
+    }
+
+    public void setRecepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+        this.recepcoesComAvarias = recepcoesComAvarias;
+    }
+
+    public ConhecimentoConsultaDetalhada recepcoesComAvarias(List<RecepcaoComAvaria> recepcoesComAvarias) {
+        this.recepcoesComAvarias = recepcoesComAvarias;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
+        this.recepcoesComAvarias.add(recepcoesComAvariasItem);
+        return this;
+    }
+
+    /**
+     * Código do Recinto Aduaneiro.&lt;br/&gt;Tamanho: 7&lt;br/&gt; Formato: inteiro com até 7 dígitos
+     * @return recintoAduaneiroDestino
+     **/
+    @JsonProperty("recintoAduaneiroDestino")
+    public String getRecintoAduaneiroDestino() {
+        return recintoAduaneiroDestino;
+    }
+
+    public void setRecintoAduaneiroDestino(String recintoAduaneiroDestino) {
+        this.recintoAduaneiroDestino = recintoAduaneiroDestino;
+    }
+
+    public ConhecimentoConsultaDetalhada recintoAduaneiroDestino(String recintoAduaneiroDestino) {
+        this.recintoAduaneiroDestino = recintoAduaneiroDestino;
+        return this;
+    }
+
+    /**
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
+     * @return ruc
+     **/
+    @JsonProperty("ruc")
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
+    public ConhecimentoConsultaDetalhada ruc(String ruc) {
+        this.ruc = ruc;
+        return this;
+    }
+
+    /**
+     * Código da situação do Conhecimento&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excluído&lt;br/&gt;
+     * @return situacao
+     **/
+    @JsonProperty("situacao")
+    public String getSituacao() {
+        if (situacao == null) {
+            return null;
+        }
+        return situacao.value();
+    }
+
+    public void setSituacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
+    }
+
+    public ConhecimentoConsultaDetalhada situacao(SituacaoEnum situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
+    /**
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
+     *
+     * @return solicitacoesServicosEspeciais
+     **/
+    @JsonProperty("solicitacoesServicosEspeciais")
+    public List<InfoManuseioConsultaDetalhada> getSolicitacoesServicosEspeciais() {
+        return solicitacoesServicosEspeciais;
+    }
+
+    public void setSolicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
+        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
+    }
+
+    public ConhecimentoConsultaDetalhada solicitacoesServicosEspeciais(List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais) {
+        this.solicitacoesServicosEspeciais = solicitacoesServicosEspeciais;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addSolicitacoesServicosEspeciaisItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisItem) {
+        this.solicitacoesServicosEspeciais.add(solicitacoesServicosEspeciaisItem);
+        return this;
+    }
+
+    /**
+     * Tipo de carga.
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public ConhecimentoConsultaDetalhada tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Tipo de documento do consignatário da carga&lt;br/&gt;Tamanho: 10
+     *
+     * @return tipoDocumentoConsignatario
+     **/
+    @JsonProperty("tipoDocumentoConsignatario")
+    public String getTipoDocumentoConsignatario() {
+        if (tipoDocumentoConsignatario == null) {
+            return null;
+        }
+        return tipoDocumentoConsignatario.value();
+    }
+
+    public void setTipoDocumentoConsignatario(TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario) {
+        this.tipoDocumentoConsignatario = tipoDocumentoConsignatario;
+    }
+
+    public ConhecimentoConsultaDetalhada tipoDocumentoConsignatario(TipoDocumentoConsignatarioEnum tipoDocumentoConsignatario) {
+        this.tipoDocumentoConsignatario = tipoDocumentoConsignatario;
+        return this;
+    }
+
+    /**
+     * Lista contendo as viagens as quais a carga / Dsic está associada&lt;br/&gt;
+     *
+     * @return viagensAssociadas
+     **/
+    @JsonProperty("viagensAssociadas")
+    public List<ChaveViagem> getViagensAssociadas() {
+        return viagensAssociadas;
+    }
+
+    public void setViagensAssociadas(List<ChaveViagem> viagensAssociadas) {
+        this.viagensAssociadas = viagensAssociadas;
+    }
+
+    public ConhecimentoConsultaDetalhada viagensAssociadas(List<ChaveViagem> viagensAssociadas) {
+        this.viagensAssociadas = viagensAssociadas;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addViagensAssociadasItem(ChaveViagem viagensAssociadasItem) {
+        this.viagensAssociadas.add(viagensAssociadasItem);
+        return this;
+    }
+
 
     @XmlType(name = "TipoEnum")
     @XmlEnum(String.class)
@@ -1869,7 +1885,7 @@ public class ConhecimentoConsultaDetalhada {
 
         TipoEnum(String v) {
             value = v;
-    }
+        }
 
         public static TipoEnum fromValue(String v) {
             for (TipoEnum b : TipoEnum.values()) {
@@ -1878,7 +1894,7 @@ public class ConhecimentoConsultaDetalhada {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-    }
+        }
 
         public String value() {
             return value;
@@ -1920,15 +1936,15 @@ public class ConhecimentoConsultaDetalhada {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoConsignatarioEnum");
-    }
+        }
 
         public String value() {
             return value;
-    }
+        }
 
         @Override
         public String toString() {
             return String.valueOf(value);
-    }
+        }
     }
 }

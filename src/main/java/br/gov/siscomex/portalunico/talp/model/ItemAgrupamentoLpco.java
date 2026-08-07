@@ -86,17 +86,6 @@ public class ItemAgrupamentoLpco {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do LPCO que faz parte do agrupamento está vinculado.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
      *
      * @return numeroLpco
@@ -129,6 +118,17 @@ public class ItemAgrupamentoLpco {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -170,11 +170,6 @@ public class ItemAgrupamentoLpco {
         return this;
     }
 
-    public ItemAgrupamentoLpco situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
     /**
      * Data em que o LPCO foi excluído no agrupamento (se for o caso).&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
      *
@@ -191,6 +186,11 @@ public class ItemAgrupamentoLpco {
 
     public ItemAgrupamentoLpco dataExclusao(String dataExclusao) {
         this.dataExclusao = dataExclusao;
+        return this;
+    }
+
+    public ItemAgrupamentoLpco situacao(String situacao) {
+        this.situacao = situacao;
         return this;
     }
 

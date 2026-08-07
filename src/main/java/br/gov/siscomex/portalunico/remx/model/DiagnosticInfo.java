@@ -88,17 +88,6 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get mnemonico
      *
      * @return mnemonico
@@ -110,6 +99,17 @@ public class DiagnosticInfo {
 
     public void setMnemonico(String mnemonico) {
         this.mnemonico = mnemonico;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -131,11 +131,6 @@ public class DiagnosticInfo {
         return this;
     }
 
-    public DiagnosticInfo mnemonico(String mnemonico) {
-        this.mnemonico = mnemonico;
-        return this;
-    }
-
     /**
      * Get trackerId
      *
@@ -148,6 +143,11 @@ public class DiagnosticInfo {
 
     public void setTrackerId(String trackerId) {
         this.trackerId = trackerId;
+    }
+
+    public DiagnosticInfo mnemonico(String mnemonico) {
+        this.mnemonico = mnemonico;
+        return this;
     }
 
     /**
@@ -169,14 +169,8 @@ public class DiagnosticInfo {
         return this;
     }
 
-    public DiagnosticInfo trackerId(String trackerId) {
-        this.trackerId = trackerId;
-        return this;
-    }
-
     /**
      * Get usuario
-     *
      * @return usuario
      **/
     @JsonProperty("usuario")
@@ -186,6 +180,11 @@ public class DiagnosticInfo {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public DiagnosticInfo trackerId(String trackerId) {
+        this.trackerId = trackerId;
+        return this;
     }
 
     /**

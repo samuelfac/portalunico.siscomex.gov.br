@@ -50,12 +50,7 @@ public class RetornoDeErro {
     @XmlElement(name = "path")
     @ApiModelProperty(value = "")
     private String path = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
-    @XmlElement(name = "tag")
-    @ApiModelProperty(value = "")
-    private String tag = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,6 +62,14 @@ public class RetornoDeErro {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "severity")
+    @ApiModelProperty(value = "")
+    private SeverityEnum severity = null;
+
+    @XmlElement(name = "tag")
+    @ApiModelProperty(value = "")
+    private String tag = null;
 
     /**
      * Get code
@@ -229,7 +232,6 @@ public class RetornoDeErro {
 
     /**
      * Get tag
-     *
      * @return tag
      **/
     @JsonProperty("tag")
@@ -245,7 +247,6 @@ public class RetornoDeErro {
         this.tag = tag;
         return this;
     }
-
 
     @Override
     public String toString() {

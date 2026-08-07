@@ -113,17 +113,6 @@ public class ViagemConsultaDetalhada {
     private String situacaoViagem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código IATA do aeroporto&lt;br/&gt;Tamanho: 3
      *
      * @return aeroportoPartida
@@ -181,6 +170,17 @@ public class ViagemConsultaDetalhada {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * CNPJ do responsável pelo manifesto.&lt;br/&gt;Tamanho: 8&lt;br/&gt;Formato: NNNNNNNN ou &lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: NNNNNNNNNNNNNN
      *
      * @return cnpjResponsavelManifestoVoo
@@ -199,11 +199,6 @@ public class ViagemConsultaDetalhada {
         return this;
     }
 
-    public ViagemConsultaDetalhada ciaAerea(String ciaAerea) {
-        this.ciaAerea = ciaAerea;
-        return this;
-    }
-
     /**
      * Código do voo, formado por 2 caracteres da sigla IATA da CIA aérea e 4 caracteres do número de voo. Quando o número do voo contiver menos de 4 caracteres numéricos, são exibidos zeros à esquerda.&lt;br/&gt; Formato: AANNNN
      *
@@ -216,6 +211,11 @@ public class ViagemConsultaDetalhada {
 
     public void setCodigoVoo(String codigoVoo) {
         this.codigoVoo = codigoVoo;
+    }
+
+    public ViagemConsultaDetalhada ciaAerea(String ciaAerea) {
+        this.ciaAerea = ciaAerea;
+        return this;
     }
 
     /**
@@ -234,11 +234,6 @@ public class ViagemConsultaDetalhada {
 
     public ViagemConsultaDetalhada dataHoraEnvioManifestoVoo(String dataHoraEnvioManifestoVoo) {
         this.dataHoraEnvioManifestoVoo = dataHoraEnvioManifestoVoo;
-        return this;
-    }
-
-    public ViagemConsultaDetalhada codigoVoo(String codigoVoo) {
-        this.codigoVoo = codigoVoo;
         return this;
     }
 
@@ -273,6 +268,11 @@ public class ViagemConsultaDetalhada {
 
     public void setDataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
         this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
+    }
+
+    public ViagemConsultaDetalhada codigoVoo(String codigoVoo) {
+        this.codigoVoo = codigoVoo;
+        return this;
     }
 
     /**
@@ -355,11 +355,6 @@ public class ViagemConsultaDetalhada {
         return this;
     }
 
-    public ViagemConsultaDetalhada dataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
-        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
-        return this;
-    }
-
     /**
      * Código da situação da viagem&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativa &lt;br/&gt;C - Cancelada&lt;br/&gt;
      * @return situacaoViagem
@@ -375,6 +370,11 @@ public class ViagemConsultaDetalhada {
 
     public ViagemConsultaDetalhada situacaoViagem(String situacaoViagem) {
         this.situacaoViagem = situacaoViagem;
+        return this;
+    }
+
+    public ViagemConsultaDetalhada dataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
+        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
         return this;
     }
 

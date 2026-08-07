@@ -29,19 +29,7 @@ public class SefazAcrescimoDeducaoCover {
     @XmlElement(name = "moeda")
     @ApiModelProperty(value = "")
     private Integer moeda = null;
-    @XmlElement(name = "tipoOperacao")
-    @ApiModelProperty(example = "1", value = "Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1")
-    /**
-     * Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "valor")
-    @ApiModelProperty(example = "100.12", value = "Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valor = null;
+
 
     @XmlElement(name = "codigo")
     @ApiModelProperty(example = "16", value = "Código do acréscimo ou da dedução.<br>Dominio: Tabela de Acréscimos / Deduções do Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99")
@@ -49,6 +37,13 @@ public class SefazAcrescimoDeducaoCover {
      * Código do acréscimo ou da dedução.<br>Dominio: Tabela de Acréscimos / Deduções do Siscomex<br>Valor mínimo: 1<br>Valor máximo: 99
      **/
     private Integer codigo = null;
+
+    @XmlElement(name = "tipoOperacao")
+    @ApiModelProperty(example = "1", value = "Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1")
+    /**
+     * Tipo de operação.<br>Dominio:<br>1 - acréscimo,<br>2 - dedução<br>Tamanho: 1
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -60,6 +55,14 @@ public class SefazAcrescimoDeducaoCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "valor")
+    @ApiModelProperty(example = "100.12", value = "Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor do acréscimo/dedução na moeda negociada ao valor na condição de venda.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valor = null;
 
     @XmlElement(name = "valorReal")
     @ApiModelProperty(example = "400.48", value = "Valor do acréscimo/dedução em Real.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -166,7 +169,6 @@ public class SefazAcrescimoDeducaoCover {
         this.valorReal = valorReal;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -78,17 +78,6 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
      *
      * @return numeroLote
@@ -100,6 +89,17 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
 
     public void setNumeroLote(String numeroLote) {
         this.numeroLote = numeroLote;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -140,11 +140,6 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
         return this;
     }
 
-    public LoteDaConsultaDeLotesPelosDepositrios numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
-
     /**
      * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
      *
@@ -161,6 +156,11 @@ public class LoteDaConsultaDeLotesPelosDepositrios {
 
     public LoteDaConsultaDeLotesPelosDepositrios uaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
+        return this;
+    }
+
+    public LoteDaConsultaDeLotesPelosDepositrios numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
         return this;
     }
 

@@ -46,17 +46,6 @@ public class Reboque {
     private Lacres lacres = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Placa do cavalo
      *
      * @return placa
@@ -69,6 +58,17 @@ public class Reboque {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -91,11 +91,6 @@ public class Reboque {
         return this;
     }
 
-    public Reboque placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
-
     /**
      * Get lacres
      *
@@ -112,6 +107,11 @@ public class Reboque {
 
     public Reboque lacres(Lacres lacres) {
         this.lacres = lacres;
+        return this;
+    }
+
+    public Reboque placa(String placa) {
+        this.placa = placa;
         return this;
     }
 

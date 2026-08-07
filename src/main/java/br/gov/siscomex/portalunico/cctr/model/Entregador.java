@@ -63,17 +63,6 @@ public class Entregador {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CPF do entregador&lt;br&gt;Tamanho: 11&lt;br&gt;&lt;br&gt;Formato: NNNNNNNNNNN&lt;br&gt;Informado apenas quando o recebedor for nacional e pessoa física.
      *
      * @return cpf
@@ -85,6 +74,17 @@ public class Entregador {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

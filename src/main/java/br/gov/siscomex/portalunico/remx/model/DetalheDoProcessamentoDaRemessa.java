@@ -277,17 +277,6 @@ public class DetalheDoProcessamentoDaRemessa {
     private Integer volumes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da remessa. Máximo de 4.000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
      * @return descricao
@@ -451,7 +440,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return freteReal
      **/
     @JsonProperty("freteReal")
@@ -470,7 +458,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Get ii
-     *
      * @return ii
      **/
     @JsonProperty("ii")
@@ -489,7 +476,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Informações de fiscalização. Máximo de 500 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
-     *
      * @return infoFiscalizacao
      **/
     @JsonProperty("infoFiscalizacao")
@@ -532,7 +518,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
-     *
      * @return master
      **/
     @JsonProperty("master")
@@ -551,7 +536,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Lista de mercadorias.
-     *
      * @return mercadorias
      **/
     @JsonProperty("mercadorias")
@@ -566,6 +550,17 @@ public class DetalheDoProcessamentoDaRemessa {
     public DetalheDoProcessamentoDaRemessa mercadorias(List<Mercadoria> mercadorias) {
         this.mercadorias = mercadorias;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -591,14 +586,8 @@ public class DetalheDoProcessamentoDaRemessa {
         return this;
     }
 
-    public DetalheDoProcessamentoDaRemessa addMercadoriasItem(Mercadoria mercadoriasItem) {
-        this.mercadorias.add(mercadoriasItem);
-        return this;
-    }
-
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
-     *
      * @return numeroRemessa
      **/
     @JsonProperty("numeroRemessa")
@@ -609,6 +598,11 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public void setNumeroRemessa(String numeroRemessa) {
         this.numeroRemessa = numeroRemessa;
+    }
+
+    public DetalheDoProcessamentoDaRemessa addMercadoriasItem(Mercadoria mercadoriasItem) {
+        this.mercadorias.add(mercadoriasItem);
+        return this;
     }
 
     /**
@@ -657,14 +651,8 @@ public class DetalheDoProcessamentoDaRemessa {
         return this;
     }
 
-    public DetalheDoProcessamentoDaRemessa numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
-    }
-
     /**
      * Peso em quilogramas da remessa. Número fracionário, maior que zero, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto. O peso da remessa deve ser maior ou igual ao somatório dos pesos das suas mercadorias.
-     *
      * @return peso
      **/
     @JsonProperty("peso")
@@ -676,9 +664,13 @@ public class DetalheDoProcessamentoDaRemessa {
         this.peso = peso;
     }
 
+    public DetalheDoProcessamentoDaRemessa numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+        return this;
+    }
+
     /**
      * Get remessaConforme
-     *
      * @return remessaConforme
      **/
     @JsonProperty("remessaConforme")
@@ -736,14 +728,8 @@ public class DetalheDoProcessamentoDaRemessa {
         return this;
     }
 
-    public DetalheDoProcessamentoDaRemessa peso(BigDecimal peso) {
-        this.peso = peso;
-        return this;
-    }
-
     /**
      * Código da situação da remessa. O código da situação é composto por 2 dígitos.
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -762,7 +748,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Quantidade de volumes que foram recebidos. Máximo de quatro caracteres numéricos (de 1 a 9999).
-     *
      * @return totalVolumesRecebidos
      **/
     @JsonProperty("totalVolumesRecebidos")
@@ -772,6 +757,11 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public void setTotalVolumesRecebidos(Integer totalVolumesRecebidos) {
         this.totalVolumesRecebidos = totalVolumesRecebidos;
+    }
+
+    public DetalheDoProcessamentoDaRemessa peso(BigDecimal peso) {
+        this.peso = peso;
+        return this;
     }
 
     /**
@@ -792,14 +782,8 @@ public class DetalheDoProcessamentoDaRemessa {
         return this;
     }
 
-    public DetalheDoProcessamentoDaRemessa totalVolumesRecebidos(Integer totalVolumesRecebidos) {
-        this.totalVolumesRecebidos = totalVolumesRecebidos;
-        return this;
-    }
-
     /**
      * Valor total do Imposto de Importação em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorIIReal
      **/
     @JsonProperty("valorIIReal")
@@ -809,6 +793,11 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public void setValorIIReal(BigDecimal valorIIReal) {
         this.valorIIReal = valorIIReal;
+    }
+
+    public DetalheDoProcessamentoDaRemessa totalVolumesRecebidos(Integer totalVolumesRecebidos) {
+        this.totalVolumesRecebidos = totalVolumesRecebidos;
+        return this;
     }
 
     /**
@@ -826,11 +815,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public DetalheDoProcessamentoDaRemessa valorJurosMora(BigDecimal valorJurosMora) {
         this.valorJurosMora = valorJurosMora;
-        return this;
-    }
-
-    public DetalheDoProcessamentoDaRemessa valorIIReal(BigDecimal valorIIReal) {
-        this.valorIIReal = valorIIReal;
         return this;
     }
 
@@ -854,7 +838,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Valor de multa de mora para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorMultaMora
      **/
     @JsonProperty("valorMultaMora")
@@ -873,7 +856,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Valor total das multas da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorMultasReal
      **/
     @JsonProperty("valorMultasReal")
@@ -883,6 +865,11 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public void setValorMultasReal(BigDecimal valorMultasReal) {
         this.valorMultasReal = valorMultasReal;
+    }
+
+    public DetalheDoProcessamentoDaRemessa valorIIReal(BigDecimal valorIIReal) {
+        this.valorIIReal = valorIIReal;
+        return this;
     }
 
     /**
@@ -900,11 +887,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public DetalheDoProcessamentoDaRemessa valorRemessaDolar(BigDecimal valorRemessaDolar) {
         this.valorRemessaDolar = valorRemessaDolar;
-        return this;
-    }
-
-    public DetalheDoProcessamentoDaRemessa valorMultasReal(BigDecimal valorMultasReal) {
-        this.valorMultasReal = valorMultasReal;
         return this;
     }
 
@@ -928,7 +910,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorTributavelDolar
      **/
     @JsonProperty("valorTributavelDolar")
@@ -947,7 +928,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Valor tributável da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorTributavelReal
      **/
     @JsonProperty("valorTributavelReal")
@@ -966,7 +946,6 @@ public class DetalheDoProcessamentoDaRemessa {
 
     /**
      * Quantidade de volumes da remessa. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     *
      * @return volumes
      **/
     @JsonProperty("volumes")
@@ -980,6 +959,11 @@ public class DetalheDoProcessamentoDaRemessa {
 
     public DetalheDoProcessamentoDaRemessa volumes(Integer volumes) {
         this.volumes = volumes;
+        return this;
+    }
+
+    public DetalheDoProcessamentoDaRemessa valorMultasReal(BigDecimal valorMultasReal) {
+        this.valorMultasReal = valorMultasReal;
         return this;
     }
 

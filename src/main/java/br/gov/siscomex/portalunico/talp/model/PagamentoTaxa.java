@@ -39,12 +39,6 @@ public class PagamentoTaxa {
      * Indica se foi pagamento ou dispensa/isenção de pagamento.
      **/
     private TipoPagamentoEnum tipoPagamento = null;
-    @XmlElement(name = "observacao")
-    @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
-    /**
-     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.
-     **/
-    private String observacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,6 +50,24 @@ public class PagamentoTaxa {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @Override
+    public String toString() {
+
+        String sb = "class PagamentoTaxa {\n" +
+                "    tipoPagamento: " + toIndentedString(tipoPagamento) + "\n" +
+                "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlElement(name = "observacao")
+    @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
+    /**
+     * Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.
+     **/
+    private String observacao = null;
 
     /**
      * Indica se foi pagamento ou dispensa/isenção de pagamento.
@@ -120,17 +132,6 @@ public class PagamentoTaxa {
     public PagamentoTaxa observacao(String observacao) {
         this.observacao = observacao;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class PagamentoTaxa {\n" +
-                "    tipoPagamento: " + toIndentedString(tipoPagamento) + "\n" +
-                "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
-                "}";
-        return sb;
     }
 
 
@@ -203,15 +204,6 @@ public class PagamentoTaxa {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoTaxaEnum fromValue(String v) {
             for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -219,6 +211,15 @@ public class PagamentoTaxa {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

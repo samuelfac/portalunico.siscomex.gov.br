@@ -64,6 +64,16 @@ public class AddressLineTextType {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class AddressLineTextType {\n" +
+                "    languageID: " + toIndentedString(languageID) + "\n" +
+                "    value: " + toIndentedString(value) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -73,15 +83,5 @@ public class AddressLineTextType {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class AddressLineTextType {\n" +
-                "    languageID: " + toIndentedString(languageID) + "\n" +
-                "    value: " + toIndentedString(value) + "\n" +
-                "}";
-        return sb;
     }
 }

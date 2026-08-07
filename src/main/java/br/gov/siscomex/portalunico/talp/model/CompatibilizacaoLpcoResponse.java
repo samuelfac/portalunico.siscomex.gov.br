@@ -86,17 +86,6 @@ public class CompatibilizacaoLpcoResponse {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get situacao
      *
      * @return situacao
@@ -109,6 +98,17 @@ public class CompatibilizacaoLpcoResponse {
 
     public void setSituacao(SituacaoCompatibilizacaoLpco situacao) {
         this.situacao = situacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -150,11 +150,6 @@ public class CompatibilizacaoLpcoResponse {
         return this;
     }
 
-    public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
     /**
      * Lista de alterações realizadas na compatibilização
      *
@@ -172,6 +167,11 @@ public class CompatibilizacaoLpcoResponse {
 
     public CompatibilizacaoLpcoResponse listaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
         this.listaAlteracoes = listaAlteracoes;
+        return this;
+    }
+
+    public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
+        this.situacao = situacao;
         return this;
     }
 

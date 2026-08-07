@@ -87,17 +87,6 @@ public class EntregaConteiner {
     private String observacoesGerais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas&lt;br&gt;Tamanho: 50
      *
      * @return identificacaoEntrega
@@ -110,6 +99,17 @@ public class EntregaConteiner {
 
     public void setIdentificacaoEntrega(String identificacaoEntrega) {
         this.identificacaoEntrega = identificacaoEntrega;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -129,11 +129,6 @@ public class EntregaConteiner {
 
     public EntregaConteiner identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
         this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
-        return this;
-    }
-
-    public EntregaConteiner identificacaoEntrega(String identificacaoEntrega) {
-        this.identificacaoEntrega = identificacaoEntrega;
         return this;
     }
 
@@ -172,6 +167,11 @@ public class EntregaConteiner {
         this.local = local;
     }
 
+    public EntregaConteiner identificacaoEntrega(String identificacaoEntrega) {
+        this.identificacaoEntrega = identificacaoEntrega;
+        return this;
+    }
+
     /**
      * Lista dos contêineres a serem entregues
      *
@@ -194,11 +194,6 @@ public class EntregaConteiner {
 
     public EntregaConteiner addConteineresItem(Conteiner conteineresItem) {
         this.conteineres.add(conteineresItem);
-        return this;
-    }
-
-    public EntregaConteiner local(Local local) {
-        this.local = local;
         return this;
     }
 
@@ -234,6 +229,11 @@ public class EntregaConteiner {
 
     public void setAvariasIdentificadas(String avariasIdentificadas) {
         this.avariasIdentificadas = avariasIdentificadas;
+    }
+
+    public EntregaConteiner local(Local local) {
+        this.local = local;
+        return this;
     }
 
     /**

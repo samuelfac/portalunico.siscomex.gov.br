@@ -52,6 +52,15 @@ public class SefazItemInfoAdicinaisCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class SefazItemInfoAdicinaisCover {\n" +
+                "    dataHoraFatoGerador: " + toIndentedString(dataHoraFatoGerador) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -61,14 +70,5 @@ public class SefazItemInfoAdicinaisCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazItemInfoAdicinaisCover {\n" +
-                "    dataHoraFatoGerador: " + toIndentedString(dataHoraFatoGerador) + "\n" +
-                "}";
-        return sb;
     }
 }

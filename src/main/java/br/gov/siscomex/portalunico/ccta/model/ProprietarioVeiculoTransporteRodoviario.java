@@ -76,17 +76,6 @@ public class ProprietarioVeiculoTransporteRodoviario {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Licenca do proprietário do veículo
      *
      * @return licenca
@@ -98,6 +87,17 @@ public class ProprietarioVeiculoTransporteRodoviario {
 
     public void setLicenca(String licenca) {
         this.licenca = licenca;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -157,11 +157,6 @@ public class ProprietarioVeiculoTransporteRodoviario {
         return this;
     }
 
-    public ProprietarioVeiculoTransporteRodoviario licenca(String licenca) {
-        this.licenca = licenca;
-        return this;
-    }
-
     /**
      * Get tipoDocumento
      *
@@ -178,6 +173,11 @@ public class ProprietarioVeiculoTransporteRodoviario {
 
     public ProprietarioVeiculoTransporteRodoviario tipoDocumento(TipoDocumento tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
+    public ProprietarioVeiculoTransporteRodoviario licenca(String licenca) {
+        this.licenca = licenca;
         return this;
     }
 

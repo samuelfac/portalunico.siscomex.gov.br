@@ -64,17 +64,6 @@ public class DadosContinerUldPesagemVeculo {
     private BigDecimal tara = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
      * @return idElemento
@@ -87,6 +76,17 @@ public class DadosContinerUldPesagemVeculo {
 
     public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -105,11 +105,6 @@ public class DadosContinerUldPesagemVeculo {
 
     public DadosContinerUldPesagemVeculo numeroConteiner(String numeroConteiner) {
         this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
-    public DadosContinerUldPesagemVeculo idElemento(String idElemento) {
-        this.idElemento = idElemento;
         return this;
     }
 
@@ -146,6 +141,11 @@ public class DadosContinerUldPesagemVeculo {
         this.tipo = tipo;
     }
 
+    public DadosContinerUldPesagemVeculo idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
     /**
      * Captura automática do número do contêiner ou ULD via OCR (Optical Character Recognition).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;listaConteineresUld.ocrNumero&#39; quando pelo menos um dos seguintes atributos estiver informado: &#39;listaConteineresUld.identificacaoUld&#39;, &#39;listaConteineresUld.numeroConteiner&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
@@ -165,11 +165,6 @@ public class DadosContinerUldPesagemVeculo {
         return this;
     }
 
-    public DadosContinerUldPesagemVeculo tipo(String tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
     /**
      * Tara do contêiner ou ULD&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;tara&#39; quando pelo menos um dos seguintes atributos estiver informado: &#39;numeroConteiner&#39;, &#39;identificacaoULD&#39;.&lt;br/&gt;tara, até 4 casas decimais.
      *
@@ -186,6 +181,11 @@ public class DadosContinerUldPesagemVeculo {
 
     public DadosContinerUldPesagemVeculo tara(BigDecimal tara) {
         this.tara = tara;
+        return this;
+    }
+
+    public DadosContinerUldPesagemVeculo tipo(String tipo) {
+        this.tipo = tipo;
         return this;
     }
 

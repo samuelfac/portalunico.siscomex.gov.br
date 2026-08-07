@@ -51,17 +51,6 @@ public class CondicaoVendaCover {
     private List<AcrescimoDeducaoCover> acrescimosDeducoes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get metodoValoracao
      *
      * @return metodoValoracao
@@ -74,6 +63,17 @@ public class CondicaoVendaCover {
 
     public void setMetodoValoracao(MetodoValoracaoCover metodoValoracao) {
         this.metodoValoracao = metodoValoracao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -115,11 +115,6 @@ public class CondicaoVendaCover {
         return this;
     }
 
-    public CondicaoVendaCover metodoValoracao(MetodoValoracaoCover metodoValoracao) {
-        this.metodoValoracao = metodoValoracao;
-        return this;
-    }
-
     /**
      * Get seguro
      *
@@ -132,6 +127,11 @@ public class CondicaoVendaCover {
 
     public void setSeguro(ItemSeguroCover seguro) {
         this.seguro = seguro;
+    }
+
+    public CondicaoVendaCover metodoValoracao(MetodoValoracaoCover metodoValoracao) {
+        this.metodoValoracao = metodoValoracao;
+        return this;
     }
 
     /**

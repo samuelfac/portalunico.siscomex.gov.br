@@ -67,17 +67,6 @@ public class DadosVolumeVerificado {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Informar se a embalagem contém madeira. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return madeira
@@ -89,6 +78,17 @@ public class DadosVolumeVerificado {
 
     public void setMadeira(Boolean madeira) {
         this.madeira = madeira;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -111,11 +111,6 @@ public class DadosVolumeVerificado {
         return this;
     }
 
-    public DadosVolumeVerificado madeira(Boolean madeira) {
-        this.madeira = madeira;
-        return this;
-    }
-
     /**
      * Tipo de volumes/embalagens. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;01 - AMARRADO/ATADO/FEIXE&lt;br/&gt;02 - BARRICA DE FERRO&lt;br/&gt;03 - BARRICA DE FIBRA DE VIDRO&lt;br/&gt;04 - BARRICA DE PAPELAO&lt;br/&gt;05 - BARRICA DE PLASTICO&lt;br/&gt;06 - BARRICA DE OUTROS MATERIAIS&lt;br/&gt;07 - BAU DE MADEIRA&lt;br/&gt;08 - BAU DE METAL&lt;br/&gt;09 - BAU DE OUTROS MATERIAIS&lt;br/&gt;10 - BIG BAG&lt;br/&gt;11 - BLOCO&lt;br/&gt;12 - BOBINA&lt;br/&gt;13 - BOMBONA&lt;br/&gt;14 - BOTIJAO&lt;br/&gt;15 - CAIXA CORRUGADA&lt;br/&gt;16 - CAIXA DE ISOPOR&lt;br/&gt;17 - CAIXA DE MADEIRA&lt;br/&gt;18 - CAIXA DE METAL&lt;br/&gt;19 - CAIXA DE PAPELAO&lt;br/&gt;20 - CAIXA DE PLASTICO&lt;br/&gt;21 - CAIXA DE OUTROS MATERIAIS&lt;br/&gt;22 - CANUDO&lt;br/&gt;23 - CARRETEL&lt;br/&gt;24 - CILINDRO&lt;br/&gt;25 - CINTADO&lt;br/&gt;26 - ENGRADADO DE MADEIRA&lt;br/&gt;27 - ENGRADADO DE PLASTICO&lt;br/&gt;28 - ENGRADADO DE OUTROS MATERIAIS&lt;br/&gt;29 - ENVELOPE&lt;br/&gt;30 - ESTOJO&lt;br/&gt;31 - ESTRADO&lt;br/&gt;32 - FARDO&lt;br/&gt;33 - FRASCO&lt;br/&gt;34 - GALAO DE METAL&lt;br/&gt;35 - GALAO DE PLASTICO&lt;br/&gt;36 - GALAO DE OUTROS MATERIAIS&lt;br/&gt;37 - GRANEL&lt;br/&gt;38 - LATA&lt;br/&gt;39 - MALA&lt;br/&gt;40 - MALETA&lt;br/&gt;41 - PACOTE&lt;br/&gt;42 - PECA&lt;br/&gt;43 - QUARTOLA&lt;br/&gt;44 - ROLO&lt;br/&gt;45 - SACA&lt;br/&gt;46 - SACO DE ANIAGEM&lt;br/&gt;47 - SACO DE COURO&lt;br/&gt;48 - SACO DE LONA&lt;br/&gt;49 - SACO DE NYLON&lt;br/&gt;50 - SACO DE PAPEL&lt;br/&gt;51 - SACO DE PAPELAO&lt;br/&gt;52 - SACO DE PLASTICO&lt;br/&gt;53 - SACO DE OUTROS MATERIAIS&lt;br/&gt;54 - SACOLA&lt;br/&gt;55 - SAN BAG&lt;br/&gt;56 - TAMBOR DE METAL&lt;br/&gt;57 - TAMBOR DE PAPELAO&lt;br/&gt;58 - TAMBOR DE PLASTICO&lt;br/&gt;59 - TAMBOR DE OUTROS MATERIAIS&lt;br/&gt;60 - PALLETS&lt;br/&gt;99 - OUTROS
      *
@@ -133,6 +128,11 @@ public class DadosVolumeVerificado {
 
     public DadosVolumeVerificado tipo(String tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public DadosVolumeVerificado madeira(Boolean madeira) {
+        this.madeira = madeira;
         return this;
     }
 

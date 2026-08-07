@@ -21,18 +21,19 @@ import javax.xml.bind.annotation.XmlType;
 public class CabealhoEnvioEventoAduaneiro {
 
 
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
     @XmlElement(name = "dataHoraRegistro", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e Hora do Registro de Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e Hora do Registro de Evento<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraRegistro = null;
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
+    /**
+     * Tipo da Operação<br/>Tamanho: 1<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
 
     @XmlElement(name = "idEvento", required = true)
     @ApiModelProperty(required = true, value = "Identificador do Evento no Sistema do Recinto<br/>Tamanho: 50")
@@ -255,7 +256,6 @@ public class CabealhoEnvioEventoAduaneiro {
 
     /**
      * Código do Recinto Aduaneiro&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -272,7 +272,6 @@ public class CabealhoEnvioEventoAduaneiro {
         this.codigoRecinto = codigoRecinto;
         return this;
     }
-
 
     @Override
     public String toString() {

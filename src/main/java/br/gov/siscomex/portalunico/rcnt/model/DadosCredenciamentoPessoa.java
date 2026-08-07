@@ -22,37 +22,26 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosCredenciamentoPessoa {
 
 
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "idEvento", required = true)
-    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
-     **/
-    private String idEvento = null;
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
-
     @XmlElement(name = "dataHoraOcorrencia", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
     /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
      **/
-    private String cpfOperadorOcorrencia = null;
+    private TipoOperacaoEnum tipoOperacao = null;
+
+    @XmlElement(name = "idEvento", required = true)
+    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
+     **/
+    private String idEvento = null;
     @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
     @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
     /**
@@ -60,22 +49,37 @@ public class DadosCredenciamentoPessoa {
      **/
     private String protocoloEventoRetificadoOuExcluido = null;
 
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraRegistro = null;
+
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorOcorrencia = null;
+
     @XmlElement(name = "cpfOperadorRegistro")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
+    @XmlElement(name = "documentoEstrangeiro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
+
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean contingencia = null;
-    @XmlElement(name = "documentoEstrangeiro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
 
     @XmlElement(name = "codigoRecinto", required = true)
     @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
@@ -90,37 +94,65 @@ public class DadosCredenciamentoPessoa {
      * CPF de pessoa credenciada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'cpf' seja informado quando os atributos 'documentoEstrangeiro.numero', documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' não forem informados.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
-    @XmlElement(name = "paisNacionalidade")
-    @ApiModelProperty(example = "DE", value = "País Nacionalidade. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
-    /**
-     * País Nacionalidade. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
-     **/
-    private String paisNacionalidade = null;
-    @XmlElement(name = "sexo")
-    @ApiModelProperty(example = "F", value = "Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1")
-    /**
-     * Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1
-     **/
-    private SexoEnum sexo = null;
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(required = true, value = "Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
-    /**
-     * Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
-     **/
-    private String nome = null;
-    @XmlElement(name = "fone")
-    @ApiModelProperty(value = "Telefone<br/>Tamanho: 20")
-    /**
-     * Telefone<br/>Tamanho: 20
-     **/
-    private String fone = null;
-
     @XmlElement(name = "cnh")
     @ApiModelProperty(value = "CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50")
     /**
      * CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50
      **/
     private String cnh = null;
+
+    @XmlElement(name = "paisNacionalidade")
+    @ApiModelProperty(example = "DE", value = "País Nacionalidade. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    /**
+     * País Nacionalidade. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     **/
+    private String paisNacionalidade = null;
+    @XmlElement(name = "dataNascimento")
+    @ApiModelProperty(example = "2020-04-01", value = "Data de nascimento<br/>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data de nascimento<br/>Formato: 'yyyy-MM-dd'
+     **/
+    private String dataNascimento = null;
+
+    @XmlElement(name = "sexo")
+    @ApiModelProperty(example = "F", value = "Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1")
+    /**
+     * Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1
+     **/
+    private SexoEnum sexo = null;
+    @XmlElement(name = "cnpjRepresentado")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String cnpjRepresentado = null;
+
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(required = true, value = "Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
+    /**
+     * Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
+     **/
+    private String nome = null;
+    @XmlElement(name = "dataInicioValidade")
+    @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'
+     **/
+    private String dataInicioValidade = null;
+
+    @XmlElement(name = "fone")
+    @ApiModelProperty(value = "Telefone<br/>Tamanho: 20")
+    /**
+     * Telefone<br/>Tamanho: 20
+     **/
+    private String fone = null;
+    @XmlElement(name = "horaPrevistaSaida")
+    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
+    /**
+     * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
+     **/
+    private String horaPrevistaSaida = null;
+
     @XmlElement(name = "cpfRepresentado")
     @ApiModelProperty(example = "55555555555", value = "CPF do representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
@@ -128,12 +160,6 @@ public class DadosCredenciamentoPessoa {
      **/
     private String cpfRepresentado = null;
 
-    @XmlElement(name = "dataNascimento")
-    @ApiModelProperty(example = "2020-04-01", value = "Data de nascimento<br/>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data de nascimento<br/>Formato: 'yyyy-MM-dd'
-     **/
-    private String dataNascimento = null;
     @XmlElement(name = "operadorEstrangeiroRepresentado")
     @ApiModelProperty(example = "TIN - Trade Identification Number (Número de Identificação do Operador)", value = "Identificação fiscal de empresa estrangeira representada<br/>Tamanho: 50")
     /**
@@ -141,78 +167,31 @@ public class DadosCredenciamentoPessoa {
      **/
     private String operadorEstrangeiroRepresentado = null;
 
-    @XmlElement(name = "cnpjRepresentado")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpjRepresentado = null;
     @XmlElement(name = "documentoEstrangeiroRepresentado")
     @ApiModelProperty(value = "")
     @Valid
     private DadosDocumentoEstrangeiroRepresentado documentoEstrangeiroRepresentado = null;
+
     @XmlElement(name = "nomeRepresentado")
     @ApiModelProperty(value = "Nome do representado<br/>Tamanho: 100")
     /**
      * Nome do representado<br/>Tamanho: 100
      **/
     private String nomeRepresentado = null;
+
     @XmlElement(name = "qualificacao")
     @ApiModelProperty(value = "Qualificação (Funcionários, Ajudante despachante, Visitante, Prestador de Serviços, Autoridade Pública, etc)<br/>Tamanho: 50")
     /**
      * Qualificação (Funcionários, Ajudante despachante, Visitante, Prestador de Serviços, Autoridade Pública, etc)<br/>Tamanho: 50
      **/
     private String qualificacao = null;
+
     @XmlElement(name = "funcao")
     @ApiModelProperty(value = "Função na empresa representada<br/>Tamanho: 50")
     /**
      * Função na empresa representada<br/>Tamanho: 50
      **/
     private String funcao = null;
-    @XmlElement(name = "dataFimValidade")
-    @ApiModelProperty(example = "2020-04-01", value = "Data do final da validade do credenciamento, se houver<br/>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data do final da validade do credenciamento, se houver<br/>Formato: 'yyyy-MM-dd'
-     **/
-    private String dataFimValidade = null;
-    @XmlElement(name = "horaPrevistaEntrada")
-    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
-    /**
-     * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
-     **/
-    private String horaPrevistaEntrada = null;
-
-    @XmlElement(name = "dataInicioValidade")
-    @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'
-     **/
-    private String dataInicioValidade = null;
-    @XmlElement(name = "areas")
-    @ApiModelProperty(value = "Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200")
-    /**
-     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200
-     **/
-    private String areas = null;
-    @XmlElement(name = "materiaisFerramentas")
-    @ApiModelProperty(value = "Materiais e ferramentas de trabalho. Comum para prestadores de serviço.<br/>Tamanho: 100")
-    /**
-     * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.<br/>Tamanho: 100
-     **/
-    private String materiaisFerramentas = null;
-
-    @XmlElement(name = "horaPrevistaSaida")
-    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
-    /**
-     * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
-     **/
-    private String horaPrevistaSaida = null;
-    @XmlElement(name = "credenciamentoAtivo", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean credenciamentoAtivo = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -224,6 +203,53 @@ public class DadosCredenciamentoPessoa {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "dataFimValidade")
+    @ApiModelProperty(example = "2020-04-01", value = "Data do final da validade do credenciamento, se houver<br/>Formato: 'yyyy-MM-dd'")
+    /**
+     * Data do final da validade do credenciamento, se houver<br/>Formato: 'yyyy-MM-dd'
+     **/
+    private String dataFimValidade = null;
+
+    @XmlElement(name = "horaPrevistaEntrada")
+    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
+    /**
+     * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
+     **/
+    private String horaPrevistaEntrada = null;
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
+    @XmlElement(name = "areas")
+    @ApiModelProperty(value = "Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200")
+    /**
+     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200
+     **/
+    private String areas = null;
+
+    @XmlElement(name = "materiaisFerramentas")
+    @ApiModelProperty(value = "Materiais e ferramentas de trabalho. Comum para prestadores de serviço.<br/>Tamanho: 100")
+    /**
+     * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.<br/>Tamanho: 100
+     **/
+    private String materiaisFerramentas = null;
+
+    @XmlElement(name = "credenciamentoAtivo", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Credenciamento Ativo<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean credenciamentoAtivo = null;
+
     @XmlElement(name = "motivacao")
     @ApiModelProperty(value = "Motivação do credenciamento.<br/>Tamanho: 100")
     /**
@@ -275,17 +301,6 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraOcorrencia
@@ -303,6 +318,16 @@ public class DadosCredenciamentoPessoa {
     public DadosCredenciamentoPessoa dataHoraOcorrencia(String dataHoraOcorrencia) {
         this.dataHoraOcorrencia = dataHoraOcorrencia;
         return this;
+    }
+
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocoloEventoRetificadoOuExcluido
+     **/
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
     }
 
     public void setDataHoraRegistro(String dataHoraRegistro) {
@@ -334,16 +359,6 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
-     *
-     * @return protocoloEventoRetificadoOuExcluido
-     **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
-    }
-
-    /**
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpfOperadorRegistro
@@ -360,6 +375,16 @@ public class DadosCredenciamentoPessoa {
     public DadosCredenciamentoPessoa cpfOperadorRegistro(String cpfOperadorRegistro) {
         this.cpfOperadorRegistro = cpfOperadorRegistro;
         return this;
+    }
+
+    /**
+     * Get documentoEstrangeiro
+     *
+     * @return documentoEstrangeiro
+     **/
+    @JsonProperty("documentoEstrangeiro")
+    public DadosDocumentoEstrangeiro getDocumentoEstrangeiro() {
+        return documentoEstrangeiro;
     }
 
     public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
@@ -389,16 +414,6 @@ public class DadosCredenciamentoPessoa {
     public DadosCredenciamentoPessoa contingencia(Boolean contingencia) {
         this.contingencia = contingencia;
         return this;
-    }
-
-    /**
-     * Get documentoEstrangeiro
-     *
-     * @return documentoEstrangeiro
-     **/
-    @JsonProperty("documentoEstrangeiro")
-    public DadosDocumentoEstrangeiro getDocumentoEstrangeiro() {
-        return documentoEstrangeiro;
     }
 
     /**
@@ -438,6 +453,17 @@ public class DadosCredenciamentoPessoa {
         return this;
     }
 
+    /**
+     * Nome. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
     public void setDocumentoEstrangeiro(DadosDocumentoEstrangeiro documentoEstrangeiro) {
         this.documentoEstrangeiro = documentoEstrangeiro;
     }
@@ -449,7 +475,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * País Nacionalidade. Conforme tabela de domínio País disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return paisNacionalidade
      **/
     @JsonProperty("paisNacionalidade")
@@ -489,17 +514,6 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Nome. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    /**
      * CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.&lt;br/&gt;Tamanho: 50
      * @return cnh
      **/
@@ -517,15 +531,6 @@ public class DadosCredenciamentoPessoa {
         return this;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public DadosCredenciamentoPessoa nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
     /**
      * Telefone&lt;br/&gt;Tamanho: 20
      *
@@ -534,6 +539,15 @@ public class DadosCredenciamentoPessoa {
     @JsonProperty("fone")
     public String getFone() {
         return fone;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public DadosCredenciamentoPessoa nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     /**
@@ -554,15 +568,6 @@ public class DadosCredenciamentoPessoa {
         return this;
     }
 
-    public void setFone(String fone) {
-        this.fone = fone;
-    }
-
-    public DadosCredenciamentoPessoa fone(String fone) {
-        this.fone = fone;
-        return this;
-    }
-
     /**
      * CPF do representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
@@ -571,6 +576,15 @@ public class DadosCredenciamentoPessoa {
     @JsonProperty("cpfRepresentado")
     public String getCpfRepresentado() {
         return cpfRepresentado;
+    }
+
+    public void setFone(String fone) {
+        this.fone = fone;
+    }
+
+    public DadosCredenciamentoPessoa fone(String fone) {
+        this.fone = fone;
+        return this;
     }
 
     /**
@@ -591,6 +605,16 @@ public class DadosCredenciamentoPessoa {
         return this;
     }
 
+    /**
+     * Data do final da validade do credenciamento, se houver&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
+     *
+     * @return dataFimValidade
+     **/
+    @JsonProperty("dataFimValidade")
+    public String getDataFimValidade() {
+        return dataFimValidade;
+    }
+
     public void setCpfRepresentado(String cpfRepresentado) {
         this.cpfRepresentado = cpfRepresentado;
     }
@@ -602,7 +626,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Identificação fiscal de empresa estrangeira representada&lt;br/&gt;Tamanho: 50
-     *
      * @return operadorEstrangeiroRepresentado
      **/
     @JsonProperty("operadorEstrangeiroRepresentado")
@@ -640,7 +663,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Nome do representado&lt;br/&gt;Tamanho: 100
-     *
      * @return nomeRepresentado
      **/
     @JsonProperty("nomeRepresentado")
@@ -659,7 +681,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Qualificação (Funcionários, Ajudante despachante, Visitante, Prestador de Serviços, Autoridade Pública, etc)&lt;br/&gt;Tamanho: 50
-     *
      * @return qualificacao
      **/
     @JsonProperty("qualificacao")
@@ -678,7 +699,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Função na empresa representada&lt;br/&gt;Tamanho: 50
-     *
      * @return funcao
      **/
     @JsonProperty("funcao")
@@ -693,16 +713,6 @@ public class DadosCredenciamentoPessoa {
     public DadosCredenciamentoPessoa funcao(String funcao) {
         this.funcao = funcao;
         return this;
-    }
-
-    /**
-     * Data do final da validade do credenciamento, se houver&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
-     * @return dataFimValidade
-     **/
-    @JsonProperty("dataFimValidade")
-    public String getDataFimValidade() {
-        return dataFimValidade;
     }
 
     /**
@@ -723,6 +733,16 @@ public class DadosCredenciamentoPessoa {
         return this;
     }
 
+    /**
+     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 200
+     *
+     * @return areas
+     **/
+    @JsonProperty("areas")
+    public String getAreas() {
+        return areas;
+    }
+
     public void setDataFimValidade(String dataFimValidade) {
         this.dataFimValidade = dataFimValidade;
     }
@@ -734,7 +754,6 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Hora prevista para entrada no recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
-     *
      * @return horaPrevistaEntrada
      **/
     @JsonProperty("horaPrevistaEntrada")
@@ -752,16 +771,6 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 200
-     *
-     * @return areas
-     **/
-    @JsonProperty("areas")
-    public String getAreas() {
-        return areas;
-    }
-
-    /**
      * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.&lt;br/&gt;Formato: &#39;HH:mm:ssZ&#39;
      * @return horaPrevistaSaida
      **/
@@ -776,52 +785,6 @@ public class DadosCredenciamentoPessoa {
 
     public DadosCredenciamentoPessoa horaPrevistaSaida(String horaPrevistaSaida) {
         this.horaPrevistaSaida = horaPrevistaSaida;
-        return this;
-    }
-
-    public void setAreas(String areas) {
-        this.areas = areas;
-    }
-
-    public DadosCredenciamentoPessoa areas(String areas) {
-        this.areas = areas;
-        return this;
-    }
-
-    /**
-     * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.&lt;br/&gt;Tamanho: 100
-     * @return materiaisFerramentas
-     **/
-    @JsonProperty("materiaisFerramentas")
-    public String getMateriaisFerramentas() {
-        return materiaisFerramentas;
-    }
-
-    public void setMateriaisFerramentas(String materiaisFerramentas) {
-        this.materiaisFerramentas = materiaisFerramentas;
-    }
-
-    public DadosCredenciamentoPessoa materiaisFerramentas(String materiaisFerramentas) {
-        this.materiaisFerramentas = materiaisFerramentas;
-        return this;
-    }
-
-    /**
-     * Credenciamento Ativo&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     * @return credenciamentoAtivo
-     **/
-    @JsonProperty("credenciamentoAtivo")
-    @NotNull
-    public Boolean isisCredenciamentoAtivo() {
-        return credenciamentoAtivo;
-    }
-
-    public void setCredenciamentoAtivo(Boolean credenciamentoAtivo) {
-        this.credenciamentoAtivo = credenciamentoAtivo;
-    }
-
-    public DadosCredenciamentoPessoa credenciamentoAtivo(Boolean credenciamentoAtivo) {
-        this.credenciamentoAtivo = credenciamentoAtivo;
         return this;
     }
 
@@ -865,9 +828,56 @@ public class DadosCredenciamentoPessoa {
         return sb;
     }
 
+    public void setAreas(String areas) {
+        this.areas = areas;
+    }
+
+    public DadosCredenciamentoPessoa areas(String areas) {
+        this.areas = areas;
+        return this;
+    }
+
+    /**
+     * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.&lt;br/&gt;Tamanho: 100
+     *
+     * @return materiaisFerramentas
+     **/
+    @JsonProperty("materiaisFerramentas")
+    public String getMateriaisFerramentas() {
+        return materiaisFerramentas;
+    }
+
+    public void setMateriaisFerramentas(String materiaisFerramentas) {
+        this.materiaisFerramentas = materiaisFerramentas;
+    }
+
+    public DadosCredenciamentoPessoa materiaisFerramentas(String materiaisFerramentas) {
+        this.materiaisFerramentas = materiaisFerramentas;
+        return this;
+    }
+
+    /**
+     * Credenciamento Ativo&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return credenciamentoAtivo
+     **/
+    @JsonProperty("credenciamentoAtivo")
+    @NotNull
+    public Boolean isisCredenciamentoAtivo() {
+        return credenciamentoAtivo;
+    }
+
+    public void setCredenciamentoAtivo(Boolean credenciamentoAtivo) {
+        this.credenciamentoAtivo = credenciamentoAtivo;
+    }
+
+    public DadosCredenciamentoPessoa credenciamentoAtivo(Boolean credenciamentoAtivo) {
+        this.credenciamentoAtivo = credenciamentoAtivo;
+        return this;
+    }
+
     /**
      * Motivação do credenciamento.&lt;br/&gt;Tamanho: 100
-     *
      * @return motivacao
      **/
     @JsonProperty("motivacao")

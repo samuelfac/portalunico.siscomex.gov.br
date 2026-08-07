@@ -41,23 +41,19 @@ public class IExceptionCover {
     @XmlElement(name = "date")
     @ApiModelProperty(value = "")
     private String date = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
-    @XmlElement(name = "tag")
-    @ApiModelProperty(value = "")
-    private String tag = null;
-    @XmlElement(name = "code")
-    @ApiModelProperty(value = "")
-    private String code = null;
+
 
     @XmlElement(name = "status")
     @ApiModelProperty(value = "")
     private Integer status = null;
-    @XmlElement(name = "detail")
+
+    @XmlElement(name = "severity")
     @ApiModelProperty(value = "")
-    @Valid
-    private List<IExceptionCover> detail = null;
+    private SeverityEnum severity = null;
+
+    @XmlElement(name = "tag")
+    @ApiModelProperty(value = "")
+    private String tag = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -69,6 +65,15 @@ public class IExceptionCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "code")
+    @ApiModelProperty(value = "")
+    private String code = null;
+
+    @XmlElement(name = "detail")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<IExceptionCover> detail = null;
 
     /**
      * Get path
@@ -189,7 +194,6 @@ public class IExceptionCover {
 
     /**
      * Get tag
-     *
      * @return tag
      **/
     @JsonProperty("tag")
@@ -208,7 +212,6 @@ public class IExceptionCover {
 
     /**
      * Get status
-     *
      * @return status
      **/
     @JsonProperty("status")
@@ -245,6 +248,7 @@ public class IExceptionCover {
 
     /**
      * Get detail
+     *
      * @return detail
      **/
     @JsonProperty("detail")

@@ -148,17 +148,6 @@ public class Rota {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Aduana de entrada (ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
      *
      * @return codigoAduanaEntrada
@@ -171,6 +160,17 @@ public class Rota {
 
     public void setCodigoAduanaEntrada(String codigoAduanaEntrada) {
         this.codigoAduanaEntrada = codigoAduanaEntrada;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -190,11 +190,6 @@ public class Rota {
 
     public Rota codigoLugarOperativoEntrada(String codigoLugarOperativoEntrada) {
         this.codigoLugarOperativoEntrada = codigoLugarOperativoEntrada;
-        return this;
-    }
-
-    public Rota codigoAduanaEntrada(String codigoAduanaEntrada) {
-        this.codigoAduanaEntrada = codigoAduanaEntrada;
         return this;
     }
 
@@ -260,7 +255,6 @@ public class Rota {
 
     /**
      * Get rotasPassagem
-     *
      * @return rotasPassagem
      **/
     @JsonProperty("rotasPassagem")
@@ -274,6 +268,11 @@ public class Rota {
 
     public Rota rotasPassagem(RotasPassagem rotasPassagem) {
         this.rotasPassagem = rotasPassagem;
+        return this;
+    }
+
+    public Rota codigoAduanaEntrada(String codigoAduanaEntrada) {
+        this.codigoAduanaEntrada = codigoAduanaEntrada;
         return this;
     }
 

@@ -61,17 +61,6 @@ public class EventoDoHistoricoDTO {
     private String responsavel = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e hora do evento&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataEHoraDoEvento
@@ -102,6 +91,17 @@ public class EventoDoHistoricoDTO {
 
     public void setDetalhes(String detalhes) {
         this.detalhes = detalhes;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -142,11 +142,6 @@ public class EventoDoHistoricoDTO {
         return this;
     }
 
-    public EventoDoHistoricoDTO detalhes(String detalhes) {
-        this.detalhes = detalhes;
-        return this;
-    }
-
     /**
      * Motivo&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 150
      *
@@ -159,6 +154,11 @@ public class EventoDoHistoricoDTO {
 
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    public EventoDoHistoricoDTO detalhes(String detalhes) {
+        this.detalhes = detalhes;
+        return this;
     }
 
     /**

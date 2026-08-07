@@ -61,17 +61,6 @@ public class EntregaDocumentoCarga {
     private String observacoes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da Entrega&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada entrega no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
      * @return identificacaoEntrega
@@ -84,6 +73,17 @@ public class EntregaDocumentoCarga {
 
     public void setIdentificacaoEntrega(String identificacaoEntrega) {
         this.identificacaoEntrega = identificacaoEntrega;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -103,11 +103,6 @@ public class EntregaDocumentoCarga {
 
     public EntregaDocumentoCarga identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
         this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
-        return this;
-    }
-
-    public EntregaDocumentoCarga identificacaoEntrega(String identificacaoEntrega) {
-        this.identificacaoEntrega = identificacaoEntrega;
         return this;
     }
 
@@ -146,6 +141,11 @@ public class EntregaDocumentoCarga {
         this.documentos = documentos;
     }
 
+    public EntregaDocumentoCarga identificacaoEntrega(String identificacaoEntrega) {
+        this.identificacaoEntrega = identificacaoEntrega;
+        return this;
+    }
+
     /**
      * Get recebedor
      *
@@ -166,11 +166,6 @@ public class EntregaDocumentoCarga {
         return this;
     }
 
-    public EntregaDocumentoCarga documentos(Documentos documentos) {
-        this.documentos = documentos;
-        return this;
-    }
-
     /**
      * Dados do interveniente que está recebendo a carga
      *
@@ -187,6 +182,11 @@ public class EntregaDocumentoCarga {
 
     public EntregaDocumentoCarga observacoes(String observacoes) {
         this.observacoes = observacoes;
+        return this;
+    }
+
+    public EntregaDocumentoCarga documentos(Documentos documentos) {
+        this.documentos = documentos;
         return this;
     }
 

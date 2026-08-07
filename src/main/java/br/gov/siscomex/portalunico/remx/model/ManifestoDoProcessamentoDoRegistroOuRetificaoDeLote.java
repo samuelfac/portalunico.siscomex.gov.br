@@ -82,6 +82,16 @@ public class ManifestoDoProcessamentoDoRegistroOuRetificaoDeLote {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ManifestoDoProcessamentoDoRegistroOuRetificaoDeLote {\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    remessas: " + toIndentedString(remessas) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -91,15 +101,5 @@ public class ManifestoDoProcessamentoDoRegistroOuRetificaoDeLote {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ManifestoDoProcessamentoDoRegistroOuRetificaoDeLote {\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "    remessas: " + toIndentedString(remessas) + "\n" +
-                "}";
-        return sb;
     }
 }

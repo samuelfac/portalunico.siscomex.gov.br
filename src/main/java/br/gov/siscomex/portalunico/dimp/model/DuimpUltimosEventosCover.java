@@ -36,6 +36,8 @@ public class DuimpUltimosEventosCover {
      * Versão da Duimp.<br>Valor mínimo: 0<br>Valor máximo: 9999
      **/
     private Integer versao = null;
+
+
     @XmlElement(name = "dataEvento", required = true)
     @ApiModelProperty(example = "2024-12-31T23:59:01-0300", required = true, value = "Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
     /**
@@ -176,7 +178,6 @@ public class DuimpUltimosEventosCover {
         this.ufs.add(ufsItem);
         return this;
     }
-
 
     @Override
     public String toString() {

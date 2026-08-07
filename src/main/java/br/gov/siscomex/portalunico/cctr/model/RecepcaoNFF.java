@@ -112,17 +112,6 @@ public class RecepcaoNFF {
     private String observacoesGerais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
      * @return identificacaoRecepcao
@@ -135,6 +124,17 @@ public class RecepcaoNFF {
 
     public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
         this.identificacaoRecepcao = identificacaoRecepcao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -177,11 +177,6 @@ public class RecepcaoNFF {
         return this;
     }
 
-    public RecepcaoNFF identificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
-        return this;
-    }
-
     /**
      * Informação de referência do local da recepção
      *
@@ -216,6 +211,11 @@ public class RecepcaoNFF {
         this.notasFiscais = notasFiscais;
     }
 
+    public RecepcaoNFF identificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
+        return this;
+    }
+
     /**
      * Get transportador
      *
@@ -233,11 +233,6 @@ public class RecepcaoNFF {
 
     public RecepcaoNFF transportador(Transportador transportador) {
         this.transportador = transportador;
-        return this;
-    }
-
-    public RecepcaoNFF notasFiscais(NotasFiscais notasFiscais) {
-        this.notasFiscais = notasFiscais;
         return this;
     }
 
@@ -300,7 +295,6 @@ public class RecepcaoNFF {
 
     /**
      * Código de identificação da carga
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -312,9 +306,13 @@ public class RecepcaoNFF {
         this.codigoIdentCarga = codigoIdentCarga;
     }
 
+    public RecepcaoNFF notasFiscais(NotasFiscais notasFiscais) {
+        this.notasFiscais = notasFiscais;
+        return this;
+    }
+
     /**
      * Avarias identificadas&lt;br&gt;Tamanho: 250
-     *
      * @return avariasIdentificadas
      **/
     @JsonProperty("avariasIdentificadas")
@@ -331,11 +329,6 @@ public class RecepcaoNFF {
         return this;
     }
 
-    public RecepcaoNFF codigoIdentCarga(String codigoIdentCarga) {
-        this.codigoIdentCarga = codigoIdentCarga;
-        return this;
-    }
-
     /**
      * Divergências identificadas&lt;br&gt;Tamanho: 250
      *
@@ -348,6 +341,11 @@ public class RecepcaoNFF {
 
     public void setDivergenciasIdentificadas(String divergenciasIdentificadas) {
         this.divergenciasIdentificadas = divergenciasIdentificadas;
+    }
+
+    public RecepcaoNFF codigoIdentCarga(String codigoIdentCarga) {
+        this.codigoIdentCarga = codigoIdentCarga;
+        return this;
     }
 
     /**

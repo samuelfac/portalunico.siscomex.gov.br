@@ -82,17 +82,6 @@ public class SefazItemLpcoCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Sigla do Órgão Anuente&lt;br&gt;&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
      *
      * @return orgao
@@ -109,6 +98,18 @@ public class SefazItemLpcoCover {
     public SefazItemLpcoCover orgao(String orgao) {
         this.orgao = orgao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

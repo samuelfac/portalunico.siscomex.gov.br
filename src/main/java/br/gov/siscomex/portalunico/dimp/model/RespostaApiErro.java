@@ -48,17 +48,6 @@ public class RespostaApiErro {
     private List<LinkCover> links = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Mensagem de resposta do resultado da operação.
      *
      * @return message
@@ -70,6 +59,17 @@ public class RespostaApiErro {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -115,11 +115,6 @@ public class RespostaApiErro {
         return this;
     }
 
-    public RespostaApiErro message(String message) {
-        this.message = message;
-        return this;
-    }
-
     /**
      * Operações disponíveis sobre o recurso.&lt;br&gt;Lista devolvida apenas quando a operação realizada sobre um recurso permite a realização de operações relacionadas.
      *
@@ -141,6 +136,11 @@ public class RespostaApiErro {
 
     public RespostaApiErro addLinksItem(LinkCover linksItem) {
         this.links.add(linksItem);
+        return this;
+    }
+
+    public RespostaApiErro message(String message) {
+        this.message = message;
         return this;
     }
 

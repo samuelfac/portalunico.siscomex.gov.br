@@ -43,12 +43,7 @@ public class DadosDoManifestoDaCargaSimplificado {
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
      **/
     private String numero = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
-    /**
-     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
-     **/
-    private TipoEnum tipo = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -60,6 +55,13 @@ public class DadosDoManifestoDaCargaSimplificado {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
+    /**
+     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
@@ -145,7 +147,6 @@ public class DadosDoManifestoDaCargaSimplificado {
         this.tipo = tipo;
         return this;
     }
-
 
     @Override
     public String toString() {

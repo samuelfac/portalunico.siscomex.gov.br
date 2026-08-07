@@ -138,17 +138,6 @@ public class RecepcaoNFECover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get local
      *
      * @return local
@@ -161,6 +150,17 @@ public class RecepcaoNFECover {
 
     public void setLocal(LocalCover local) {
         this.local = local;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -188,11 +188,6 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    public RecepcaoNFECover local(LocalCover local) {
-        this.local = local;
-        return this;
-    }
-
     /**
      * Lista de conteineres
      *
@@ -210,6 +205,11 @@ public class RecepcaoNFECover {
 
     public RecepcaoNFECover conteineres(List<ConteinerCover> conteineres) {
         this.conteineres = conteineres;
+        return this;
+    }
+
+    public RecepcaoNFECover local(LocalCover local) {
+        this.local = local;
         return this;
     }
 
@@ -253,11 +253,6 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    public RecepcaoNFECover addConteineresItem(ConteinerCover conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
-
     /**
      * Local de armazenamento da carga&lt;br&gt;Tamanho: 150
      *
@@ -271,6 +266,11 @@ public class RecepcaoNFECover {
 
     public void setLocalArmazenamento(String localArmazenamento) {
         this.localArmazenamento = localArmazenamento;
+    }
+
+    public RecepcaoNFECover addConteineresItem(ConteinerCover conteineresItem) {
+        this.conteineres.add(conteineresItem);
+        return this;
     }
 
     /**
@@ -293,11 +293,6 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    public RecepcaoNFECover localArmazenamento(String localArmazenamento) {
-        this.localArmazenamento = localArmazenamento;
-        return this;
-    }
-
     /**
      * Divergências identificadas&lt;br&gt;Tamanho: 250
      *
@@ -311,6 +306,11 @@ public class RecepcaoNFECover {
 
     public void setDivergenciasIdentificadas(String divergenciasIdentificadas) {
         this.divergenciasIdentificadas = divergenciasIdentificadas;
+    }
+
+    public RecepcaoNFECover localArmazenamento(String localArmazenamento) {
+        this.localArmazenamento = localArmazenamento;
+        return this;
     }
 
     /**
@@ -330,11 +330,6 @@ public class RecepcaoNFECover {
 
     public RecepcaoNFECover observacoesGerais(String observacoesGerais) {
         this.observacoesGerais = observacoesGerais;
-        return this;
-    }
-
-    public RecepcaoNFECover divergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
         return this;
     }
 
@@ -360,7 +355,6 @@ public class RecepcaoNFECover {
 
     /**
      * Peso aferido na balança do recinto em Kg&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN&lt;br&gt;Deve ser informado somente quando há informação de pesagem.
-     *
      * @return pesoAferido
      **/
     @JsonProperty("pesoAferido")
@@ -380,7 +374,6 @@ public class RecepcaoNFECover {
 
     /**
      * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem.
-     *
      * @return motivoNaoPesagem
      **/
     @JsonProperty("motivoNaoPesagem")
@@ -395,6 +388,11 @@ public class RecepcaoNFECover {
 
     public RecepcaoNFECover motivoNaoPesagem(String motivoNaoPesagem) {
         this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
+    }
+
+    public RecepcaoNFECover divergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
         return this;
     }
 

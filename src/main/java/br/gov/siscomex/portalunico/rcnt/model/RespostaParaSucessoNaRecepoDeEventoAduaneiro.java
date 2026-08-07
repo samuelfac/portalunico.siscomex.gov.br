@@ -39,17 +39,6 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
     private String protocolo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get cabecalhoRequisicao
      *
      * @return cabecalhoRequisicao
@@ -62,6 +51,17 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
 
     public void setCabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
         this.cabecalhoRequisicao = cabecalhoRequisicao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -84,11 +84,6 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
         return this;
     }
 
-    public RespostaParaSucessoNaRecepoDeEventoAduaneiro cabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
-        this.cabecalhoRequisicao = cabecalhoRequisicao;
-        return this;
-    }
-
     /**
      * Protocolo do Evento&lt;br/&gt;Tamanho: 36
      *
@@ -106,6 +101,11 @@ public class RespostaParaSucessoNaRecepoDeEventoAduaneiro {
 
     public RespostaParaSucessoNaRecepoDeEventoAduaneiro protocolo(String protocolo) {
         this.protocolo = protocolo;
+        return this;
+    }
+
+    public RespostaParaSucessoNaRecepoDeEventoAduaneiro cabecalhoRequisicao(CabealhoEnvioEventoAduaneiro cabecalhoRequisicao) {
+        this.cabecalhoRequisicao = cabecalhoRequisicao;
         return this;
     }
 

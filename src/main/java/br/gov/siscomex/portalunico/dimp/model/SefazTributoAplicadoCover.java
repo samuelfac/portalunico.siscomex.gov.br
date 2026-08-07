@@ -48,17 +48,6 @@ public class SefazTributoAplicadoCover {
     private List<SefazAtributoTributoCover> atributosDinamicos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tributo
      *
      * @return tributo
@@ -70,6 +59,17 @@ public class SefazTributoAplicadoCover {
 
     public void setTributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
         this.tributo = tributo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -91,11 +91,6 @@ public class SefazTributoAplicadoCover {
         return this;
     }
 
-    public SefazTributoAplicadoCover tributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
-        this.tributo = tributo;
-        return this;
-    }
-
     /**
      * Get fundamentoLegal
      *
@@ -108,6 +103,11 @@ public class SefazTributoAplicadoCover {
 
     public void setFundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
         this.fundamentoLegal = fundamentoLegal;
+    }
+
+    public SefazTributoAplicadoCover tributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
+        this.tributo = tributo;
+        return this;
     }
 
     /**

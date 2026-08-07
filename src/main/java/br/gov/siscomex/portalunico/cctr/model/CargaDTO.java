@@ -81,17 +81,6 @@ public class CargaDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get numeroRuc
      *
      * @return numeroRuc
@@ -103,6 +92,17 @@ public class CargaDTO {
 
     public void setNumeroRuc(String numeroRuc) {
         this.numeroRuc = numeroRuc;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -143,11 +143,6 @@ public class CargaDTO {
         return this;
     }
 
-    public CargaDTO numeroRuc(String numeroRuc) {
-        this.numeroRuc = numeroRuc;
-        return this;
-    }
-
     /**
      * Get codigoTipoGranel
      *
@@ -181,6 +176,11 @@ public class CargaDTO {
         this.descricaoTipoGranel = descricaoTipoGranel;
     }
 
+    public CargaDTO numeroRuc(String numeroRuc) {
+        this.numeroRuc = numeroRuc;
+        return this;
+    }
+
     /**
      * Get siglaUnidadeMedida
      *
@@ -197,11 +197,6 @@ public class CargaDTO {
 
     public CargaDTO siglaUnidadeMedida(String siglaUnidadeMedida) {
         this.siglaUnidadeMedida = siglaUnidadeMedida;
-        return this;
-    }
-
-    public CargaDTO descricaoTipoGranel(String descricaoTipoGranel) {
-        this.descricaoTipoGranel = descricaoTipoGranel;
         return this;
     }
 
@@ -226,7 +221,6 @@ public class CargaDTO {
 
     /**
      * Get descricaoCarga
-     *
      * @return descricaoCarga
      **/
     @JsonProperty("descricaoCarga")
@@ -245,7 +239,6 @@ public class CargaDTO {
 
     /**
      * Get pesoBruto
-     *
      * @return pesoBruto
      **/
     @JsonProperty("pesoBruto")
@@ -259,6 +252,11 @@ public class CargaDTO {
 
     public CargaDTO pesoBruto(BigDecimal pesoBruto) {
         this.pesoBruto = pesoBruto;
+        return this;
+    }
+
+    public CargaDTO descricaoTipoGranel(String descricaoTipoGranel) {
+        this.descricaoTipoGranel = descricaoTipoGranel;
         return this;
     }
 

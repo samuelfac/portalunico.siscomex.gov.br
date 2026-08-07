@@ -67,6 +67,16 @@ public class CargaDetalheFreteFormaPgto {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CargaDetalheFreteFormaPgto {\n" +
+                "    valorOutrosEncargos: " + toIndentedString(valorOutrosEncargos) + "\n" +
+                "    valorPorPesoValor: " + toIndentedString(valorPorPesoValor) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -76,15 +86,5 @@ public class CargaDetalheFreteFormaPgto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CargaDetalheFreteFormaPgto {\n" +
-                "    valorOutrosEncargos: " + toIndentedString(valorOutrosEncargos) + "\n" +
-                "    valorPorPesoValor: " + toIndentedString(valorPorPesoValor) + "\n" +
-                "}";
-        return sb;
     }
 }

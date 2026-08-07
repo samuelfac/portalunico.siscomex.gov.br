@@ -41,17 +41,6 @@ public class DadosConsulta {
     private Boolean permiteMovimentacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      *
      * @return numeroMRUC
@@ -63,6 +52,17 @@ public class DadosConsulta {
 
     public void setNumeroMRUC(String numeroMRUC) {
         this.numeroMRUC = numeroMRUC;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -89,11 +89,6 @@ public class DadosConsulta {
         return this;
     }
 
-    public DadosConsulta numeroMRUC(String numeroMRUC) {
-        this.numeroMRUC = numeroMRUC;
-        return this;
-    }
-
     /**
      * Get permiteMovimentacao
      *
@@ -110,6 +105,11 @@ public class DadosConsulta {
 
     public DadosConsulta permiteMovimentacao(Boolean permiteMovimentacao) {
         this.permiteMovimentacao = permiteMovimentacao;
+        return this;
+    }
+
+    public DadosConsulta numeroMRUC(String numeroMRUC) {
+        this.numeroMRUC = numeroMRUC;
         return this;
     }
 

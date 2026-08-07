@@ -103,17 +103,6 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de erros.
      *
      * @return erros
@@ -130,6 +119,17 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
     public ProcessamentoDeConsultaDeLotesPelaRFB erros(List<ErroNoProcessamento> erros) {
         this.erros = erros;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -153,11 +153,6 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
 
     public ProcessamentoDeConsultaDeLotesPelaRFB addLotesItem(LoteDaConsultaDeLotesPelaRFB lotesItem) {
         this.lotes.add(lotesItem);
-        return this;
-    }
-
-    public ProcessamentoDeConsultaDeLotesPelaRFB addErrosItem(ErroNoProcessamento errosItem) {
-        this.erros.add(errosItem);
         return this;
     }
 
@@ -196,6 +191,11 @@ public class ProcessamentoDeConsultaDeLotesPelaRFB {
 
     public ProcessamentoDeConsultaDeLotesPelaRFB situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDeConsultaDeLotesPelaRFB addErrosItem(ErroNoProcessamento errosItem) {
+        this.erros.add(errosItem);
         return this;
     }
 

@@ -53,17 +53,6 @@ public class LocalDTO {
     private ResponsavelEstoqueDTO responsavel = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get urf
      *
      * @return urf
@@ -75,6 +64,17 @@ public class LocalDTO {
 
     public void setUrf(UrfDTO urf) {
         this.urf = urf;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -115,11 +115,6 @@ public class LocalDTO {
         return this;
     }
 
-    public LocalDTO urf(UrfDTO urf) {
-        this.urf = urf;
-        return this;
-    }
-
     /**
      * Longitude
      *
@@ -132,6 +127,11 @@ public class LocalDTO {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public LocalDTO urf(UrfDTO urf) {
+        this.urf = urf;
+        return this;
     }
 
     /**

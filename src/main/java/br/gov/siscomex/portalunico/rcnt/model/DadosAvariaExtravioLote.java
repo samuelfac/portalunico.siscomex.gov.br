@@ -23,18 +23,19 @@ import java.util.List;
 public class DadosAvariaExtravioLote {
 
 
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
     @XmlElement(name = "dataHoraOcorrencia", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
+    /**
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
 
     @XmlElement(name = "idEvento", required = true)
     @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
@@ -75,36 +76,33 @@ public class DadosAvariaExtravioLote {
      * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
      **/
     private String protocoloEventoRetificadoOuExcluido = null;
-    @XmlElement(name = "codigoRecinto", required = true)
-    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
-     **/
-    private String codigoRecinto = null;
-    @XmlElement(name = "numeroLote", required = true)
-    @ApiModelProperty(required = true, value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100")
-    /**
-     * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100
-     **/
-    private String numeroLote = null;
-    @XmlElement(name = "numeroTermoFiscalAvaria")
-    @ApiModelProperty(value = "Número do termo fiscal de avaria (TFA)<br/>Tamanho: 50")
-    /**
-     * Número do termo fiscal de avaria (TFA)<br/>Tamanho: 50
-     **/
-    private String numeroTermoFiscalAvaria = null;
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "E", required = true, value = "Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio")
-    /**
-     * Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio
-     **/
-    private TipoEnum tipo = null;
     @XmlElement(name = "quantidadeVolumes", required = true)
     @ApiModelProperty(required = true, value = "Quantidade de volumes avariados, extraviados ou furtados.")
     /**
      * Quantidade de volumes avariados, extraviados ou furtados.
      **/
     private Integer quantidadeVolumes = null;
+
+    @XmlElement(name = "codigoRecinto", required = true)
+    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
+     **/
+    private String codigoRecinto = null;
+
+    @XmlElement(name = "numeroLote", required = true)
+    @ApiModelProperty(required = true, value = "Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100")
+    /**
+     * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.<br/>Tamanho: 100
+     **/
+    private String numeroLote = null;
+
+    @XmlElement(name = "numeroTermoFiscalAvaria")
+    @ApiModelProperty(value = "Número do termo fiscal de avaria (TFA)<br/>Tamanho: 50")
+    /**
+     * Número do termo fiscal de avaria (TFA)<br/>Tamanho: 50
+     **/
+    private String numeroTermoFiscalAvaria = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -117,6 +115,13 @@ public class DadosAvariaExtravioLote {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "E", required = true, value = "Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio")
+    /**
+     * Tipo de evento (Avaria/Extravio)<br/>Domínio:<br/>A - Avaria<br/>E - Extravio
+     **/
+    private TipoEnum tipo = null;
+
     @XmlElement(name = "listaTipoAvaria")
     @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
     @Valid
@@ -124,6 +129,18 @@ public class DadosAvariaExtravioLote {
      * Lista dos Tipos de Avarias.
      **/
     private List<DadosDoTipoDeAvariaExtravio> listaTipoAvaria = null;
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
     @XmlElement(name = "observacoes")
     @ApiModelProperty(value = "Observações<br/>Tamanho: 100")
     /**
@@ -152,17 +169,6 @@ public class DadosAvariaExtravioLote {
     public DadosAvariaExtravioLote tipoOperacao(TipoOperacaoEnum tipoOperacao) {
         this.tipoOperacao = tipoOperacao;
         return this;
-    }
-
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
     }
 
     /**
@@ -205,6 +211,17 @@ public class DadosAvariaExtravioLote {
         return this;
     }
 
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     *
+     * @return contingencia
+     **/
+    @JsonProperty("contingencia")
+    @NotNull
+    public Boolean isisContingencia() {
+        return contingencia;
+    }
+
     public void setDataHoraRegistro(String dataHoraRegistro) {
         this.dataHoraRegistro = dataHoraRegistro;
     }
@@ -231,17 +248,6 @@ public class DadosAvariaExtravioLote {
     public DadosAvariaExtravioLote cpfOperadorOcorrencia(String cpfOperadorOcorrencia) {
         this.cpfOperadorOcorrencia = cpfOperadorOcorrencia;
         return this;
-    }
-
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return contingencia
-     **/
-    @JsonProperty("contingencia")
-    @NotNull
-    public Boolean isisContingencia() {
-        return contingencia;
     }
 
     /**
@@ -282,6 +288,17 @@ public class DadosAvariaExtravioLote {
         return this;
     }
 
+    /**
+     * Quantidade de volumes avariados, extraviados ou furtados.
+     *
+     * @return quantidadeVolumes
+     **/
+    @JsonProperty("quantidadeVolumes")
+    @NotNull
+    public Integer getQuantidadeVolumes() {
+        return quantidadeVolumes;
+    }
+
     public void setContingencia(Boolean contingencia) {
         this.contingencia = contingencia;
     }
@@ -293,7 +310,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -313,7 +329,6 @@ public class DadosAvariaExtravioLote {
 
     /**
      * Lote interno gerado pelo recinto. Usar o mesmo número gerado no evento Geração de Lote.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroLote
      **/
     @JsonProperty("numeroLote")
@@ -374,23 +389,7 @@ public class DadosAvariaExtravioLote {
     }
 
     /**
-     * Quantidade de volumes avariados, extraviados ou furtados.
-     *
-     * @return quantidadeVolumes
-     **/
-    @JsonProperty("quantidadeVolumes")
-    @NotNull
-    public Integer getQuantidadeVolumes() {
-        return quantidadeVolumes;
-    }
-
-    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-    }
-
-    /**
      * Lista dos Tipos de Avarias.
-     *
      * @return listaTipoAvaria
      **/
     @JsonProperty("listaTipoAvaria")
@@ -412,9 +411,8 @@ public class DadosAvariaExtravioLote {
         return this;
     }
 
-    public DadosAvariaExtravioLote quantidadeVolumes(Integer quantidadeVolumes) {
+    public void setQuantidadeVolumes(Integer quantidadeVolumes) {
         this.quantidadeVolumes = quantidadeVolumes;
-        return this;
     }
 
     @Override
@@ -440,9 +438,13 @@ public class DadosAvariaExtravioLote {
         return sb;
     }
 
+    public DadosAvariaExtravioLote quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+        return this;
+    }
+
     /**
      * Observações&lt;br/&gt;Tamanho: 100
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")

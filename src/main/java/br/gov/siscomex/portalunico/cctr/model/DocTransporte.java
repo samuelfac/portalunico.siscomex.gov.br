@@ -78,6 +78,16 @@ public class DocTransporte {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DocTransporte {\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class DocTransporte {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DocTransporte {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "}";
-        return sb;
     }
 }

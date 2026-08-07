@@ -176,12 +176,7 @@ public class SefazCalculoTributoCover {
      * Valor calculado do pagamento proporcional em Real. Valor aplicável para Duimp de situação especial de despacho cujo motivo de situação especial de despacho possua o 'Indicador de cobrança do tributo suspenso' = Sim.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorCalculadoPagamentoProporcional = null;
-    @XmlElement(name = "indicadorTributado")
-    @ApiModelProperty(example = "1", value = "Indicador de tributação<br>Dominio: <br>1 - Sim, <br>2 - Não<br>Tamanho: 1")
-    /**
-     * Indicador de tributação<br>Dominio: <br>1 - Sim, <br>2 - Não<br>Tamanho: 1
-     **/
-    private IndicadorTributadoEnum indicadorTributado = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -193,6 +188,13 @@ public class SefazCalculoTributoCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "indicadorTributado")
+    @ApiModelProperty(example = "1", value = "Indicador de tributação<br>Dominio: <br>1 - Sim, <br>2 - Não<br>Tamanho: 1")
+    /**
+     * Indicador de tributação<br>Dominio: <br>1 - Sim, <br>2 - Não<br>Tamanho: 1
+     **/
+    private IndicadorTributadoEnum indicadorTributado = null;
 
     /**
      * Get imposto
@@ -405,7 +407,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor calculado em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorCalculado
      **/
     @JsonProperty("valorCalculado")
@@ -424,7 +425,6 @@ public class SefazCalculoTributoCover {
 
     /**
      * Valor a reduzir em reais.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorAReduzir
      **/
     @JsonProperty("valorAReduzir")
@@ -533,6 +533,7 @@ public class SefazCalculoTributoCover {
 
     /**
      * Percentual de pagamento (para a admissão temporária com pagamento proporcional)&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
      * @return percentualPagamentoProporcional
      **/
     @JsonProperty("percentualPagamentoProporcional")

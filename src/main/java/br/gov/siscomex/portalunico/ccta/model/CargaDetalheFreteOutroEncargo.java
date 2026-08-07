@@ -46,17 +46,6 @@ public class CargaDetalheFreteOutroEncargo {
     private ValorMonetario valorTotal = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get formaPgto
      *
      * @return formaPgto
@@ -68,6 +57,17 @@ public class CargaDetalheFreteOutroEncargo {
 
     public void setFormaPgto(FormaPagamento formaPgto) {
         this.formaPgto = formaPgto;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -89,11 +89,6 @@ public class CargaDetalheFreteOutroEncargo {
         return this;
     }
 
-    public CargaDetalheFreteOutroEncargo formaPgto(FormaPagamento formaPgto) {
-        this.formaPgto = formaPgto;
-        return this;
-    }
-
     /**
      * Get recebedor
      *
@@ -106,6 +101,11 @@ public class CargaDetalheFreteOutroEncargo {
 
     public void setRecebedor(TipoAtuacao recebedor) {
         this.recebedor = recebedor;
+    }
+
+    public CargaDetalheFreteOutroEncargo formaPgto(FormaPagamento formaPgto) {
+        this.formaPgto = formaPgto;
+        return this;
     }
 
     /**

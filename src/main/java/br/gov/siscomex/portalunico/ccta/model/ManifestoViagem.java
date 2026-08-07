@@ -41,6 +41,8 @@ public class ManifestoViagem {
      * Ano de fabricação do veículo da viagem<br/> Tamanho: 4<br/> Formato: inteiro de 4 dígitos
      **/
     private String anoFabricacaoVeiculo = null;
+
+
     @XmlElement(name = "apoliceSeguro", required = true)
     @ApiModelProperty(example = "APOLICE123", required = true, value = "Apólice de seguro<br/> Tamanho Máximo: 20")
     /**
@@ -54,18 +56,27 @@ public class ManifestoViagem {
      * Indica se o lacre será aplicado no container da carga (CONT), no próprio veículo (VEIC) ou dispensada (DISP)
      **/
     private AplicacaoLacresEnum aplicacaoLacres = null;
+    @XmlElement(name = "cavaloPropriaMercadoria", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indica se o cavalo é a própria mercadoria")
+    /**
+     * Indica se o cavalo é a própria mercadoria
+     **/
+    private Boolean cavaloPropriaMercadoria = null;
+
     @XmlElement(name = "bairroProprietarioVeiculoEstrangeiro")
     @ApiModelProperty(example = "Nome do bairro", value = "Bairro do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50")
     /**
      * Bairro do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50
      **/
     private String bairroProprietarioVeiculoEstrangeiro = null;
+
     @XmlElement(name = "bairroTransportadorEstrangeiro")
     @ApiModelProperty(example = "Nome do bairro", value = "Bairro do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50")
     /**
      * Bairro do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50
      **/
     private String bairroTransportadorEstrangeiro = null;
+
     @XmlElement(name = "capacidadeTracaoVeiculo", required = true)
     @ApiModelProperty(required = true, value = "Capacidade de tração do veículo em toneladas<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
     @Valid
@@ -73,119 +84,32 @@ public class ManifestoViagem {
      * Capacidade de tração do veículo em toneladas<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      **/
     private BigDecimal capacidadeTracaoVeiculo = null;
-    @XmlElement(name = "chassiVeiculo", required = true)
-    @ApiModelProperty(example = "2WXR0U5O8S8SRRB8P", required = true, value = "Chassi do veículo da viagem<br/> Tamanho Máximo: 20")
-    /**
-     * Chassi do veículo da viagem<br/> Tamanho Máximo: 20
-     **/
-    private String chassiVeiculo = null;
-
-    @XmlElement(name = "cavaloPropriaMercadoria", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indica se o cavalo é a própria mercadoria")
-    /**
-     * Indica se o cavalo é a própria mercadoria
-     **/
-    private Boolean cavaloPropriaMercadoria = null;
-    @XmlElement(name = "cidadePartida", required = true)
-    @ApiModelProperty(example = "BRRIO", required = true, value = "Cidade de partida da viagem<br/> Formato: AAAAA")
-    /**
-     * Cidade de partida da viagem<br/> Formato: AAAAA
-     **/
-    private String cidadePartida = null;
-
     @XmlElement(name = "cidadeDestinoFinal", required = true)
     @ApiModelProperty(example = "BRRIO", required = true, value = "Cidade de destino final da viagem<br/> Formato: AAAAA")
     /**
      * Cidade de destino final da viagem<br/> Formato: AAAAA
      **/
     private String cidadeDestinoFinal = null;
-    @XmlElement(name = "cidadeTransportadorEstrangeiro")
-    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50")
-    /**
-     * Cidade do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50
-     **/
-    private String cidadeTransportadorEstrangeiro = null;
 
+    @XmlElement(name = "chassiVeiculo", required = true)
+    @ApiModelProperty(example = "2WXR0U5O8S8SRRB8P", required = true, value = "Chassi do veículo da viagem<br/> Tamanho Máximo: 20")
+    /**
+     * Chassi do veículo da viagem<br/> Tamanho Máximo: 20
+     **/
+    private String chassiVeiculo = null;
     @XmlElement(name = "cidadeProprietarioVeiculoEstrangeiro")
     @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50")
     /**
      * Cidade do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50
      **/
     private String cidadeProprietarioVeiculoEstrangeiro = null;
-    @XmlElement(name = "codigoPostalProprietarioVeiculoEstrangeiro")
-    @ApiModelProperty(example = "01001000", value = "Código postal do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 8")
+
+    @XmlElement(name = "cidadePartida", required = true)
+    @ApiModelProperty(example = "BRRIO", required = true, value = "Cidade de partida da viagem<br/> Formato: AAAAA")
     /**
-     * Código postal do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 8
+     * Cidade de partida da viagem<br/> Formato: AAAAA
      **/
-    private String codigoPostalProprietarioVeiculoEstrangeiro = null;
-    @XmlElement(name = "codigoPostalTransportadorEstrangeiro")
-    @ApiModelProperty(example = "01001000", value = "Código postal do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 8")
-    /**
-     * Código postal do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 8
-     **/
-    private String codigoPostalTransportadorEstrangeiro = null;
-    @XmlElement(name = "condutorBrasileiro", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o condutor do veículo da viagem é de nacionalidade brasileira")
-    /**
-     * Indicador que informa se o condutor do veículo da viagem é de nacionalidade brasileira
-     **/
-    private Boolean condutorBrasileiro = null;
-    @XmlElement(name = "conteineresVazios")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<ConteinerVazio> conteineresVazios = null;
-    @XmlElement(name = "crts")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<CrtViagem> crts = null;
-    @XmlElement(name = "dataEmissao", required = true)
-    @ApiModelProperty(example = "2020-08-07", required = true, value = "Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd")
-    /**
-     * Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd
-     **/
-    private String dataEmissao = null;
-    @XmlElement(name = "dataPrevistaDestinoFinal")
-    @ApiModelProperty(example = "2020-08-07", value = "Data prevista de chegada do veículo na cidade de destino final viagem<br/>Formato: yyyy-MM-dd")
-    /**
-     * Data prevista de chegada do veículo na cidade de destino final viagem<br/>Formato: yyyy-MM-dd
-     **/
-    private String dataPrevistaDestinoFinal = null;
-    @XmlElement(name = "dataPrevistaEntrada")
-    @ApiModelProperty(example = "2020-08-07", value = "Data prevista de chegada do veículo na Aduana de entrada no Brasil<br/>Formato: yyyy-MM-dd")
-    /**
-     * Data prevista de chegada do veículo na Aduana de entrada no Brasil<br/>Formato: yyyy-MM-dd
-     **/
-    private String dataPrevistaEntrada = null;
-    @XmlElement(name = "dataVencimentoSeguro", required = true)
-    @ApiModelProperty(example = "2020-08-07", required = true, value = "Data de vencimento do seguro<br/>Formato: yyyy-MM-dd")
-    /**
-     * Data de vencimento do seguro<br/>Formato: yyyy-MM-dd
-     **/
-    private String dataVencimentoSeguro = null;
-    @XmlElement(name = "descricaoRotaInternacional", required = true)
-    @ApiModelProperty(example = "Descrição da rota internacional", required = true, value = "Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500")
-    /**
-     * Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500
-     **/
-    private String descricaoRotaInternacional = null;
-    @XmlElement(name = "estadoProprietarioVeiculoEstrangeiro")
-    @ApiModelProperty(example = "RJ", value = "Estado ou província do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50")
-    /**
-     * Estado ou província do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50
-     **/
-    private String estadoProprietarioVeiculoEstrangeiro = null;
-    @XmlElement(name = "estadoTransportadorEstrangeiro")
-    @ApiModelProperty(example = "RJ", value = "Estado ou província do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50")
-    /**
-     * Estado ou província do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50
-     **/
-    private String estadoTransportadorEstrangeiro = null;
-    @XmlElement(name = "identificacaoProprietarioVeiculo", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Identificação fiscal do proprietário do veículo da viagem<br/>Se proprietarioVeiculoBrasileiro é S, o CPF ou CNPJ preenchido neste campo será validado na tabela de CPF ou CNPJ.<br/> Tamanho: 14")
-    /**
-     * Identificação fiscal do proprietário do veículo da viagem<br/>Se proprietarioVeiculoBrasileiro é S, o CPF ou CNPJ preenchido neste campo será validado na tabela de CPF ou CNPJ.<br/> Tamanho: 14
-     **/
-    private String identificacaoProprietarioVeiculo = null;
+    private String cidadePartida = null;
     @XmlElement(name = "identificacaoTransportadorEstrangeiro")
     @ApiModelProperty(example = "00000000000191", value = "Número de identificação do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho: 14")
     /**
@@ -193,35 +117,124 @@ public class ManifestoViagem {
      **/
     private String identificacaoTransportadorEstrangeiro = null;
 
+    @XmlElement(name = "cidadeTransportadorEstrangeiro")
+    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50")
+    /**
+     * Cidade do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50
+     **/
+    private String cidadeTransportadorEstrangeiro = null;
+
+    @XmlElement(name = "codigoPostalProprietarioVeiculoEstrangeiro")
+    @ApiModelProperty(example = "01001000", value = "Código postal do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 8")
+    /**
+     * Código postal do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 8
+     **/
+    private String codigoPostalProprietarioVeiculoEstrangeiro = null;
+
+    @XmlElement(name = "codigoPostalTransportadorEstrangeiro")
+    @ApiModelProperty(example = "01001000", value = "Código postal do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 8")
+    /**
+     * Código postal do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 8
+     **/
+    private String codigoPostalTransportadorEstrangeiro = null;
+
+    @XmlElement(name = "condutorBrasileiro", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o condutor do veículo da viagem é de nacionalidade brasileira")
+    /**
+     * Indicador que informa se o condutor do veículo da viagem é de nacionalidade brasileira
+     **/
+    private Boolean condutorBrasileiro = null;
+
+    @XmlElement(name = "conteineresVazios")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<ConteinerVazio> conteineresVazios = null;
+
+    @XmlElement(name = "crts")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<CrtViagem> crts = null;
+
+    @XmlElement(name = "dataEmissao", required = true)
+    @ApiModelProperty(example = "2020-08-07", required = true, value = "Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd")
+    /**
+     * Data de emissão do documento de transporte<br/>Formato: yyyy-MM-dd
+     **/
+    private String dataEmissao = null;
+
+    @XmlElement(name = "dataPrevistaDestinoFinal")
+    @ApiModelProperty(example = "2020-08-07", value = "Data prevista de chegada do veículo na cidade de destino final viagem<br/>Formato: yyyy-MM-dd")
+    /**
+     * Data prevista de chegada do veículo na cidade de destino final viagem<br/>Formato: yyyy-MM-dd
+     **/
+    private String dataPrevistaDestinoFinal = null;
+
+    @XmlElement(name = "dataPrevistaEntrada")
+    @ApiModelProperty(example = "2020-08-07", value = "Data prevista de chegada do veículo na Aduana de entrada no Brasil<br/>Formato: yyyy-MM-dd")
+    /**
+     * Data prevista de chegada do veículo na Aduana de entrada no Brasil<br/>Formato: yyyy-MM-dd
+     **/
+    private String dataPrevistaEntrada = null;
+
+    @XmlElement(name = "dataVencimentoSeguro", required = true)
+    @ApiModelProperty(example = "2020-08-07", required = true, value = "Data de vencimento do seguro<br/>Formato: yyyy-MM-dd")
+    /**
+     * Data de vencimento do seguro<br/>Formato: yyyy-MM-dd
+     **/
+    private String dataVencimentoSeguro = null;
+
+    @XmlElement(name = "descricaoRotaInternacional", required = true)
+    @ApiModelProperty(example = "Descrição da rota internacional", required = true, value = "Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500")
+    /**
+     * Descrição da rota internacional desde local de partida até a cidade de destino final<br/> Tamanho Máximo: 500
+     **/
+    private String descricaoRotaInternacional = null;
+
+    @XmlElement(name = "estadoProprietarioVeiculoEstrangeiro")
+    @ApiModelProperty(example = "RJ", value = "Estado ou província do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50")
+    /**
+     * Estado ou província do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 50
+     **/
+    private String estadoProprietarioVeiculoEstrangeiro = null;
+
+    @XmlElement(name = "estadoTransportadorEstrangeiro")
+    @ApiModelProperty(example = "RJ", value = "Estado ou província do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50")
+    /**
+     * Estado ou província do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 50
+     **/
+    private String estadoTransportadorEstrangeiro = null;
+
+    @XmlElement(name = "identificacaoProprietarioVeiculo", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Identificação fiscal do proprietário do veículo da viagem<br/>Se proprietarioVeiculoBrasileiro é S, o CPF ou CNPJ preenchido neste campo será validado na tabela de CPF ou CNPJ.<br/> Tamanho: 14")
+    /**
+     * Identificação fiscal do proprietário do veículo da viagem<br/>Se proprietarioVeiculoBrasileiro é S, o CPF ou CNPJ preenchido neste campo será validado na tabela de CPF ou CNPJ.<br/> Tamanho: 14
+     **/
+    private String identificacaoProprietarioVeiculo = null;
+
     @XmlElement(name = "identificacaoRepresentanteTransportadorEstrangeiro")
     @ApiModelProperty(value = "CPF/CNPJ do representante do transportador estrangeiro<br/>Se campo transportadorNacBrasileira  igual a \"false\" ( Transportador estrangeiro) é obrigatório o preenchimento desse campo. <br/>O CPF/CNPJ deve estar ativo no cadastro de CPF/CNPJ<br/> Tamanho: 14")
     /**
      * CPF/CNPJ do representante do transportador estrangeiro<br/>Se campo transportadorNacBrasileira  igual a \"false\" ( Transportador estrangeiro) é obrigatório o preenchimento desse campo. <br/>O CPF/CNPJ deve estar ativo no cadastro de CPF/CNPJ<br/> Tamanho: 14
      **/
     private String identificacaoRepresentanteTransportadorEstrangeiro = null;
-    @XmlElement(name = "identificacaoTransportadorNacional")
-    @ApiModelProperty(example = "00000000000191", value = "CNPJ do transportador nacional<br/> Se transportadorNacBrasileira é true, este campo é de preenchimento obrigatório e válido no cadastro de CNPJ<br/> Tamanho: 14")
-    /**
-     * CNPJ do transportador nacional<br/> Se transportadorNacBrasileira é true, este campo é de preenchimento obrigatório e válido no cadastro de CNPJ<br/> Tamanho: 14
-     **/
-    private String identificacaoTransportadorNacional = null;
-    @XmlElement(name = "lacresVeiculo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Lacre> lacresVeiculo = null;
-    @XmlElement(name = "licencaComplementarTransportador")
-    @ApiModelProperty(example = "123424", value = "Licença complementar<br/>campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.<br/> Tamanho Máximo: 6")
-    /**
-     * Licença complementar<br/>campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.<br/> Tamanho Máximo: 6
-     **/
-    private String licencaComplementarTransportador = null;
-
     @XmlElement(name = "licencaComplementarProprietario")
     @ApiModelProperty(example = "123424", value = "Licença complementar do proprietário do veículo<br/>campo obrigatório se tipoTransporte é REG ou OCA.<br/> Tamanho Máximo: 6")
     /**
      * Licença complementar do proprietário do veículo<br/>campo obrigatório se tipoTransporte é REG ou OCA.<br/> Tamanho Máximo: 6
      **/
     private String licencaComplementarProprietario = null;
+
+    @XmlElement(name = "identificacaoTransportadorNacional")
+    @ApiModelProperty(example = "00000000000191", value = "CNPJ do transportador nacional<br/> Se transportadorNacBrasileira é true, este campo é de preenchimento obrigatório e válido no cadastro de CNPJ<br/> Tamanho: 14")
+    /**
+     * CNPJ do transportador nacional<br/> Se transportadorNacBrasileira é true, este campo é de preenchimento obrigatório e válido no cadastro de CNPJ<br/> Tamanho: 14
+     **/
+    private String identificacaoTransportadorNacional = null;
+
+    @XmlElement(name = "lacresVeiculo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Lacre> lacresVeiculo = null;
     @XmlElement(name = "licencaOriginariaTransportador")
     @ApiModelProperty(example = "123424", value = "Licença originária<br/>campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é true.<br/> Tamanho Máximo: 6")
     /**
@@ -229,78 +242,109 @@ public class ManifestoViagem {
      **/
     private String licencaOriginariaTransportador = null;
 
+    @XmlElement(name = "licencaComplementarTransportador")
+    @ApiModelProperty(example = "123424", value = "Licença complementar<br/>campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.<br/> Tamanho Máximo: 6")
+    /**
+     * Licença complementar<br/>campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.<br/> Tamanho Máximo: 6
+     **/
+    private String licencaComplementarTransportador = null;
+
     @XmlElement(name = "licencaOriginariaProprietario")
     @ApiModelProperty(example = "123424", value = "Licença originária do proprietário do veículo<br/>campo obrigatório se tipoTransporte é REG ou OCA.<br/> Tamanho Máximo: 6")
     /**
      * Licença originária do proprietário do veículo<br/>campo obrigatório se tipoTransporte é REG ou OCA.<br/> Tamanho Máximo: 6
      **/
     private String licencaOriginariaProprietario = null;
+    @XmlElement(name = "paisDestinoFinal", required = true)
+    @ApiModelProperty(example = "BR", required = true, value = "País de destino final da viagem<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
+    /**
+     * País de destino final da viagem<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
+     **/
+    private String paisDestinoFinal = null;
+
     @XmlElement(name = "localAssinaturaTransportador", required = true)
     @ApiModelProperty(required = true, value = "Local de assinatura do transportador<br/> Tamanho Máximo: 35")
     /**
      * Local de assinatura do transportador<br/> Tamanho Máximo: 35
      **/
     private String localAssinaturaTransportador = null;
+
     @XmlElement(name = "marcaVeiculo", required = true)
     @ApiModelProperty(example = "VW", required = true, value = "Marca do veículo da viagem<br/> Tamanho Máximo: 20")
     /**
      * Marca do veículo da viagem<br/> Tamanho Máximo: 20
      **/
     private String marcaVeiculo = null;
+
     @XmlElement(name = "nomeAssinaturaTransportador", required = true)
     @ApiModelProperty(required = true, value = "Nome do transportador que assinou o documento<br/> Tamanho Máximo: 35")
     /**
      * Nome do transportador que assinou o documento<br/> Tamanho Máximo: 35
      **/
     private String nomeAssinaturaTransportador = null;
+
     @XmlElement(name = "nomeCondutorVeiculoEstrangeiro")
     @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do condutor estrangeiro do veículo</br>Obrigatorio se condutor do veículo for estrangeiro (\"condutorBrasileiro\" = false)<br/> Tamanho Máximo: 50")
     /**
      * Nome do condutor estrangeiro do veículo</br>Obrigatorio se condutor do veículo for estrangeiro (\"condutorBrasileiro\" = false)<br/> Tamanho Máximo: 50
      **/
     private String nomeCondutorVeiculoEstrangeiro = null;
+
     @XmlElement(name = "nomeProprietarioVeiculoEstrangeiro")
     @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do proprietário estrangeiro do veículo </br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 60")
     /**
      * Nome do proprietário estrangeiro do veículo </br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 60
      **/
     private String nomeProprietarioVeiculoEstrangeiro = null;
+
     @XmlElement(name = "nomeTransportadorEstrangeiro")
     @ApiModelProperty(example = "Nome e Sobrenome", value = "Nome do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 150")
     /**
      * Nome do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 150
      **/
     private String nomeTransportadorEstrangeiro = null;
+
     @XmlElement(name = "numeroDTAExterior")
     @ApiModelProperty(example = "15656489854988", value = "Número da declaração de trânsito no exterior, quando ocorrer<br/> Tamanho Máximo: 20")
     /**
      * Número da declaração de trânsito no exterior, quando ocorrer<br/> Tamanho Máximo: 20
      **/
     private String numeroDTAExterior = null;
+
     @XmlElement(name = "numeroDocumentoCondutorVeiculo", required = true)
     @ApiModelProperty(example = "12345678901", required = true, value = "Número do documento do condutor do veículo (relacionado ao Tipo do documento informado no campo anterior)<br/> Tamanho Máximo: 20")
     /**
      * Número do documento do condutor do veículo (relacionado ao Tipo do documento informado no campo anterior)<br/> Tamanho Máximo: 20
      **/
     private String numeroDocumentoCondutorVeiculo = null;
+
     @XmlElement(name = "numeroDocumentoTransporte", required = true)
     @ApiModelProperty(example = "AR123040104", required = true, value = "Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15")
     /**
      * Número do documento de transporte.<br/>Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.<br/> Tamanho Máximo: 15
      **/
     private String numeroDocumentoTransporte = null;
+
     @XmlElement(name = "observacoesGerais")
     @ApiModelProperty(example = "Observações gerais.", value = "Observações gerais da viagem<br/> Tamanho Máximo: 500")
     /**
      * Observações gerais da viagem<br/> Tamanho Máximo: 500
      **/
     private String observacoesGerais = null;
+
     @XmlElement(name = "observacoesVeiculo")
     @ApiModelProperty(example = "Observações adicionais.", value = "Observações adicionais a serem reportadas sobre o veículo<br/> Tamanho Máximo: 200")
     /**
      * Observações adicionais a serem reportadas sobre o veículo<br/> Tamanho Máximo: 200
      **/
     private String observacoesVeiculo = null;
+    @XmlElement(name = "paisTransportadorEstrangeiro")
+    @ApiModelProperty(example = "BR", value = "Pais do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
+    /**
+     * Pais do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
+     **/
+    private String paisTransportadorEstrangeiro = null;
+
     @XmlElement(name = "paisPartida", required = true)
     @ApiModelProperty(example = "BR", required = true, value = "País de partida da viagem<br/> Se tipoDocumentoTransporte é DTAI, o país preenchido deverá ser Venezuela.<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
     /**
@@ -308,18 +352,19 @@ public class ManifestoViagem {
      **/
     private String paisPartida = null;
 
-    @XmlElement(name = "paisDestinoFinal", required = true)
-    @ApiModelProperty(example = "BR", required = true, value = "País de destino final da viagem<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
-    /**
-     * País de destino final da viagem<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
-     **/
-    private String paisDestinoFinal = null;
     @XmlElement(name = "paisProprietarioVeiculoEstrangeiro")
     @ApiModelProperty(example = "BR", value = "País do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
     /**
      * País do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
      **/
     private String paisProprietarioVeiculoEstrangeiro = null;
+    @XmlElement(name = "recintoEntrada", required = true)
+    @ApiModelProperty(example = "8911101", required = true, value = "Local de entrada na fronteira (Recinto alfandegado)<br/> Tamanho Máximo: 7")
+    /**
+     * Local de entrada na fronteira (Recinto alfandegado)<br/> Tamanho Máximo: 7
+     **/
+    private String recintoEntrada = null;
+
     @XmlElement(name = "placaCavalo", required = true)
     @ApiModelProperty(example = "CAV3456", required = true, value = "Placa do cavalo <br/>Obrigatória apenas se o cavalo não for a própria mercadoria.<br/> Tamanho Máximo: 20")
     /**
@@ -327,28 +372,31 @@ public class ManifestoViagem {
      **/
     private String placaCavalo = null;
 
-    @XmlElement(name = "paisTransportadorEstrangeiro")
-    @ApiModelProperty(example = "BR", value = "Pais do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
-    /**
-     * Pais do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
-     **/
-    private String paisTransportadorEstrangeiro = null;
     @XmlElement(name = "possuiEmbalagemSuporteMadeiraBruta", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indica se o veículo está transportando itens em embalagem/suporte de madeira ")
     /**
      * Indica se o veículo está transportando itens em embalagem/suporte de madeira
      **/
     private Boolean possuiEmbalagemSuporteMadeiraBruta = null;
+
     @XmlElement(name = "proprietarioVeiculoBrasileiro", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indicador que informa se o proprietário do veículo da viagem é de nacionalidade brasileira (true/false)")
     /**
      * Indicador que informa se o proprietário do veículo da viagem é de nacionalidade brasileira (true/false)
      **/
     private Boolean proprietarioVeiculoBrasileiro = null;
+
     @XmlElement(name = "reboques")
     @ApiModelProperty(value = "")
     @Valid
     private List<Reboque> reboques = null;
+    @XmlElement(name = "tipoDocumentoCondutorVeiculo", required = true)
+    @ApiModelProperty(example = "F", required = true, value = "Tipo do documento do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser 'P' ou 'O'")
+    /**
+     * Tipo do documento do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser 'P' ou 'O'
+     **/
+    private TipoDocumentoCondutorVeiculoEnum tipoDocumentoCondutorVeiculo = null;
+
     @XmlElement(name = "ruaProprietarioVeiculoEstrangeiro")
     @ApiModelProperty(example = "Nome da rua", value = "Rua do endereço do proprietário estrangeiro do veículo</br>Obrigatorio se proprietário do veículo for estrangeiro (\"proprietárioVeiculoBrasileiro\" = false)<br/> Tamanho Máximo: 150")
     /**
@@ -356,24 +404,12 @@ public class ManifestoViagem {
      **/
     private String ruaProprietarioVeiculoEstrangeiro = null;
 
-    @XmlElement(name = "recintoEntrada", required = true)
-    @ApiModelProperty(example = "8911101", required = true, value = "Local de entrada na fronteira (Recinto alfandegado)<br/> Tamanho Máximo: 7")
-    /**
-     * Local de entrada na fronteira (Recinto alfandegado)<br/> Tamanho Máximo: 7
-     **/
-    private String recintoEntrada = null;
     @XmlElement(name = "ruaTransportadorEstrangeiro")
     @ApiModelProperty(example = "Nome da rua", value = "Rua do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 150")
     /**
      * Rua do endereço do transportador estrangeiro</br>Obrigatorio se transportador for estrangeiro (\"transportadorNacBrasileira\" = false)<br/> Tamanho Máximo: 150
      **/
     private String ruaTransportadorEstrangeiro = null;
-    @XmlElement(name = "tipoDocumentoCondutorVeiculo", required = true)
-    @ApiModelProperty(example = "F", required = true, value = "Tipo do documento do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser 'P' ou 'O'")
-    /**
-     * Tipo do documento do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser 'P' ou 'O'
-     **/
-    private TipoDocumentoCondutorVeiculoEnum tipoDocumentoCondutorVeiculo = null;
 
     @XmlElement(name = "taraCavalo")
     @ApiModelProperty(example = "105.478", value = "Tara do cavalo<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
@@ -382,66 +418,12 @@ public class ManifestoViagem {
      * Tara do cavalo<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      **/
     private BigDecimal taraCavalo = null;
-    @XmlElement(name = "tipoDocumentoTransporte", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Tipo de documento de transporte<br/>Deve ser MIC/DTA(1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela <br/>ou \"Outros\"(4) se paisPartida for qualquer outro país.")
+    @XmlElement(name = "transitoInternacional", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)")
     /**
-     * Tipo de documento de transporte<br/>Deve ser MIC/DTA(1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela <br/>ou \"Outros\"(4) se paisPartida for qualquer outro país.
+     * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
      **/
-    private TipoDocumentoTransporteEnum tipoDocumentoTransporte = null;
-    @XmlElement(name = "tipoNumeroDocumentoViagem", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Tipo de numero de documento de viagem<br/>Deve ser ATIT(1) ou RUT(2).")
-    /**
-     * Tipo de numero de documento de viagem<br/>Deve ser ATIT(1) ou RUT(2).
-     **/
-    private TipoNumeroDocumentoViagemEnum tipoNumeroDocumentoViagem = null;
-    @XmlElement(name = "tipoTransporte", required = true)
-    @ApiModelProperty(example = "REG", required = true, value = "Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)")
-    /**
-     * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
-     **/
-    private TipoTransporteEnum tipoTransporte = null;
-    @XmlElement(name = "tipoTratamentoMadeiraBruta")
-    @ApiModelProperty(example = "2", value = "Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;")
-    /**
-     * Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;
-     **/
-    private TipoTratamentoMadeiraBrutaEnum tipoTratamentoMadeiraBruta = null;
-    @XmlElement(name = "tipoVeiculo", required = true)
-    @ApiModelProperty(example = "TRU", required = true, value = "Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.")
-    /**
-     * Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.
-     **/
-    private TipoVeiculoEnum tipoVeiculo = null;
-    @XmlElement(name = "transportadorImportador", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o transportador é o importador")
-    /**
-     * Indicador que informa se o transportador é o importador
-     **/
-    private Boolean transportadorImportador = null;
-    @XmlElement(name = "transportadorNacBrasileira", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)")
-    /**
-     * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
-     **/
-    private Boolean transportadorNacBrasileira = null;
-    @XmlElement(name = "transportadorProprietarioVeiculo", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o transportador é o proprietário do veículo")
-    /**
-     * Indicador que informa se o transportador é o proprietário do veículo
-     **/
-    private Boolean transportadorProprietarioVeiculo = null;
-    @XmlElement(name = "ulEntrada", required = true)
-    @ApiModelProperty(example = "0817600", required = true, value = "Local de entrada na fronteira (Unidade da Receita Federal)<br/> Tamanho Máximo: 7")
-    /**
-     * Local de entrada na fronteira (Unidade da Receita Federal)<br/> Tamanho Máximo: 7
-     **/
-    private String ulEntrada = null;
-    @XmlElement(name = "visualizacaoDepositario", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.")
-    /**
-     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
-     **/
-    private Boolean visualizacaoDepositario = null;
+    private Boolean transitoInternacional = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -453,12 +435,119 @@ public class ManifestoViagem {
         }
         return o.toString().replace("\n", "\n    ");
     }
-    @XmlElement(name = "transitoInternacional", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)")
+
     /**
-     * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
+     * Indica se o lacre será aplicado no container da carga (CONT), no próprio veículo (VEIC) ou dispensada (DISP)
+     *
+     * @return aplicacaoLacres
      **/
-    private Boolean transitoInternacional = null;
+    @JsonProperty("aplicacaoLacres")
+    @NotNull
+    public String getAplicacaoLacres() {
+        if (aplicacaoLacres == null) {
+            return null;
+        }
+        return aplicacaoLacres.value();
+    }
+
+    @XmlElement(name = "tipoDocumentoTransporte", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Tipo de documento de transporte<br/>Deve ser MIC/DTA(1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela <br/>ou \"Outros\"(4) se paisPartida for qualquer outro país.")
+    /**
+     * Tipo de documento de transporte<br/>Deve ser MIC/DTA(1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela <br/>ou \"Outros\"(4) se paisPartida for qualquer outro país.
+     **/
+    private TipoDocumentoTransporteEnum tipoDocumentoTransporte = null;
+
+    public void setAplicacaoLacres(AplicacaoLacresEnum aplicacaoLacres) {
+        this.aplicacaoLacres = aplicacaoLacres;
+    }
+
+    @XmlElement(name = "tipoNumeroDocumentoViagem", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Tipo de numero de documento de viagem<br/>Deve ser ATIT(1) ou RUT(2).")
+    /**
+     * Tipo de numero de documento de viagem<br/>Deve ser ATIT(1) ou RUT(2).
+     **/
+    private TipoNumeroDocumentoViagemEnum tipoNumeroDocumentoViagem = null;
+
+    public ManifestoViagem aplicacaoLacres(AplicacaoLacresEnum aplicacaoLacres) {
+        this.aplicacaoLacres = aplicacaoLacres;
+        return this;
+    }
+
+    @XmlElement(name = "tipoTransporte", required = true)
+    @ApiModelProperty(example = "REG", required = true, value = "Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)")
+    /**
+     * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
+     **/
+    private TipoTransporteEnum tipoTransporte = null;
+
+    /**
+     * Indica se o cavalo é a própria mercadoria
+     *
+     * @return cavaloPropriaMercadoria
+     **/
+    @JsonProperty("cavaloPropriaMercadoria")
+    @NotNull
+    public Boolean isisCavaloPropriaMercadoria() {
+        return cavaloPropriaMercadoria;
+    }
+
+    @XmlElement(name = "tipoTratamentoMadeiraBruta")
+    @ApiModelProperty(example = "2", value = "Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;")
+    /**
+     * Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;
+     **/
+    private TipoTratamentoMadeiraBrutaEnum tipoTratamentoMadeiraBruta = null;
+
+    public void setCavaloPropriaMercadoria(Boolean cavaloPropriaMercadoria) {
+        this.cavaloPropriaMercadoria = cavaloPropriaMercadoria;
+    }
+
+    @XmlElement(name = "tipoVeiculo", required = true)
+    @ApiModelProperty(example = "TRU", required = true, value = "Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.")
+    /**
+     * Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.
+     **/
+    private TipoVeiculoEnum tipoVeiculo = null;
+
+    public ManifestoViagem cavaloPropriaMercadoria(Boolean cavaloPropriaMercadoria) {
+        this.cavaloPropriaMercadoria = cavaloPropriaMercadoria;
+        return this;
+    }
+
+    @XmlElement(name = "transportadorImportador", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o transportador é o importador")
+    /**
+     * Indicador que informa se o transportador é o importador
+     **/
+    private Boolean transportadorImportador = null;
+
+    @XmlElement(name = "transportadorNacBrasileira", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)")
+    /**
+     * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
+     **/
+    private Boolean transportadorNacBrasileira = null;
+
+    @XmlElement(name = "transportadorProprietarioVeiculo", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o transportador é o proprietário do veículo")
+    /**
+     * Indicador que informa se o transportador é o proprietário do veículo
+     **/
+    private Boolean transportadorProprietarioVeiculo = null;
+
+    @XmlElement(name = "ulEntrada", required = true)
+    @ApiModelProperty(example = "0817600", required = true, value = "Local de entrada na fronteira (Unidade da Receita Federal)<br/> Tamanho Máximo: 7")
+    /**
+     * Local de entrada na fronteira (Unidade da Receita Federal)<br/> Tamanho Máximo: 7
+     **/
+    private String ulEntrada = null;
+
+    @XmlElement(name = "visualizacaoDepositario", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.")
+    /**
+     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
+     **/
+    private Boolean visualizacaoDepositario = null;
 
     /**
      * Get acompanhantesCondutor
@@ -524,6 +613,26 @@ public class ManifestoViagem {
     }
 
     /**
+     * Cidade de destino final da viagem&lt;br/&gt; Formato: AAAAA
+     *
+     * @return cidadeDestinoFinal
+     **/
+    @JsonProperty("cidadeDestinoFinal")
+    @NotNull
+    public String getCidadeDestinoFinal() {
+        return cidadeDestinoFinal;
+    }
+
+    public void setCidadeDestinoFinal(String cidadeDestinoFinal) {
+        this.cidadeDestinoFinal = cidadeDestinoFinal;
+    }
+
+    public ManifestoViagem cidadeDestinoFinal(String cidadeDestinoFinal) {
+        this.cidadeDestinoFinal = cidadeDestinoFinal;
+        return this;
+    }
+
+    /**
      * Apólice de seguro&lt;br/&gt; Tamanho Máximo: 20
      *
      * @return apoliceSeguro
@@ -559,29 +668,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem bairroProprietarioVeiculoEstrangeiro(String bairroProprietarioVeiculoEstrangeiro) {
         this.bairroProprietarioVeiculoEstrangeiro = bairroProprietarioVeiculoEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Indica se o lacre será aplicado no container da carga (CONT), no próprio veículo (VEIC) ou dispensada (DISP)
-     *
-     * @return aplicacaoLacres
-     **/
-    @JsonProperty("aplicacaoLacres")
-    @NotNull
-    public String getAplicacaoLacres() {
-        if (aplicacaoLacres == null) {
-            return null;
-        }
-        return aplicacaoLacres.value();
-    }
-
-    public void setAplicacaoLacres(AplicacaoLacresEnum aplicacaoLacres) {
-        this.aplicacaoLacres = aplicacaoLacres;
-    }
-
-    public ManifestoViagem aplicacaoLacres(AplicacaoLacresEnum aplicacaoLacres) {
-        this.aplicacaoLacres = aplicacaoLacres;
         return this;
     }
 
@@ -625,8 +711,26 @@ public class ManifestoViagem {
     }
 
     /**
-     * Chassi do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
+     * Cidade do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
      *
+     * @return cidadeProprietarioVeiculoEstrangeiro
+     **/
+    @JsonProperty("cidadeProprietarioVeiculoEstrangeiro")
+    public String getCidadeProprietarioVeiculoEstrangeiro() {
+        return cidadeProprietarioVeiculoEstrangeiro;
+    }
+
+    public void setCidadeProprietarioVeiculoEstrangeiro(String cidadeProprietarioVeiculoEstrangeiro) {
+        this.cidadeProprietarioVeiculoEstrangeiro = cidadeProprietarioVeiculoEstrangeiro;
+    }
+
+    public ManifestoViagem cidadeProprietarioVeiculoEstrangeiro(String cidadeProprietarioVeiculoEstrangeiro) {
+        this.cidadeProprietarioVeiculoEstrangeiro = cidadeProprietarioVeiculoEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Chassi do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
      * @return chassiVeiculo
      **/
     @JsonProperty("chassiVeiculo")
@@ -645,8 +749,26 @@ public class ManifestoViagem {
     }
 
     /**
-     * Cidade de partida da viagem&lt;br/&gt; Formato: AAAAA
+     * CPF/CNPJ do representante do transportador estrangeiro&lt;br/&gt;Se campo transportadorNacBrasileira  igual a \&quot;false\&quot; ( Transportador estrangeiro) é obrigatório o preenchimento desse campo. &lt;br/&gt;O CPF/CNPJ deve estar ativo no cadastro de CPF/CNPJ&lt;br/&gt; Tamanho: 14
      *
+     * @return identificacaoRepresentanteTransportadorEstrangeiro
+     **/
+    @JsonProperty("identificacaoRepresentanteTransportadorEstrangeiro")
+    public String getIdentificacaoRepresentanteTransportadorEstrangeiro() {
+        return identificacaoRepresentanteTransportadorEstrangeiro;
+    }
+
+    public void setIdentificacaoRepresentanteTransportadorEstrangeiro(String identificacaoRepresentanteTransportadorEstrangeiro) {
+        this.identificacaoRepresentanteTransportadorEstrangeiro = identificacaoRepresentanteTransportadorEstrangeiro;
+    }
+
+    public ManifestoViagem identificacaoRepresentanteTransportadorEstrangeiro(String identificacaoRepresentanteTransportadorEstrangeiro) {
+        this.identificacaoRepresentanteTransportadorEstrangeiro = identificacaoRepresentanteTransportadorEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Cidade de partida da viagem&lt;br/&gt; Formato: AAAAA
      * @return cidadePartida
      **/
     @JsonProperty("cidadePartida")
@@ -665,28 +787,26 @@ public class ManifestoViagem {
     }
 
     /**
-     * Indica se o cavalo é a própria mercadoria
+     * Licença complementar do proprietário do veículo&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA.&lt;br/&gt; Tamanho Máximo: 6
      *
-     * @return cavaloPropriaMercadoria
+     * @return licencaComplementarProprietario
      **/
-    @JsonProperty("cavaloPropriaMercadoria")
-    @NotNull
-    public Boolean isisCavaloPropriaMercadoria() {
-        return cavaloPropriaMercadoria;
+    @JsonProperty("licencaComplementarProprietario")
+    public String getLicencaComplementarProprietario() {
+        return licencaComplementarProprietario;
     }
 
-    public void setCavaloPropriaMercadoria(Boolean cavaloPropriaMercadoria) {
-        this.cavaloPropriaMercadoria = cavaloPropriaMercadoria;
+    public void setLicencaComplementarProprietario(String licencaComplementarProprietario) {
+        this.licencaComplementarProprietario = licencaComplementarProprietario;
     }
 
-    public ManifestoViagem cavaloPropriaMercadoria(Boolean cavaloPropriaMercadoria) {
-        this.cavaloPropriaMercadoria = cavaloPropriaMercadoria;
+    public ManifestoViagem licencaComplementarProprietario(String licencaComplementarProprietario) {
+        this.licencaComplementarProprietario = licencaComplementarProprietario;
         return this;
     }
 
     /**
      * Cidade do endereço do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return cidadeTransportadorEstrangeiro
      **/
     @JsonProperty("cidadeTransportadorEstrangeiro")
@@ -700,26 +820,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem cidadeTransportadorEstrangeiro(String cidadeTransportadorEstrangeiro) {
         this.cidadeTransportadorEstrangeiro = cidadeTransportadorEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Cidade de destino final da viagem&lt;br/&gt; Formato: AAAAA
-     *
-     * @return cidadeDestinoFinal
-     **/
-    @JsonProperty("cidadeDestinoFinal")
-    @NotNull
-    public String getCidadeDestinoFinal() {
-        return cidadeDestinoFinal;
-    }
-
-    public void setCidadeDestinoFinal(String cidadeDestinoFinal) {
-        this.cidadeDestinoFinal = cidadeDestinoFinal;
-    }
-
-    public ManifestoViagem cidadeDestinoFinal(String cidadeDestinoFinal) {
-        this.cidadeDestinoFinal = cidadeDestinoFinal;
         return this;
     }
 
@@ -739,25 +839,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem codigoPostalProprietarioVeiculoEstrangeiro(String codigoPostalProprietarioVeiculoEstrangeiro) {
         this.codigoPostalProprietarioVeiculoEstrangeiro = codigoPostalProprietarioVeiculoEstrangeiro;
-        return this;
-    }
-
-    /**
-     * Cidade do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
-     * @return cidadeProprietarioVeiculoEstrangeiro
-     **/
-    @JsonProperty("cidadeProprietarioVeiculoEstrangeiro")
-    public String getCidadeProprietarioVeiculoEstrangeiro() {
-        return cidadeProprietarioVeiculoEstrangeiro;
-    }
-
-    public void setCidadeProprietarioVeiculoEstrangeiro(String cidadeProprietarioVeiculoEstrangeiro) {
-        this.cidadeProprietarioVeiculoEstrangeiro = cidadeProprietarioVeiculoEstrangeiro;
-    }
-
-    public ManifestoViagem cidadeProprietarioVeiculoEstrangeiro(String cidadeProprietarioVeiculoEstrangeiro) {
-        this.cidadeProprietarioVeiculoEstrangeiro = cidadeProprietarioVeiculoEstrangeiro;
         return this;
     }
 
@@ -782,7 +863,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informa se o condutor do veículo da viagem é de nacionalidade brasileira
-     *
      * @return condutorBrasileiro
      **/
     @JsonProperty("condutorBrasileiro")
@@ -802,7 +882,6 @@ public class ManifestoViagem {
 
     /**
      * Get conteineresVazios
-     *
      * @return conteineresVazios
      **/
     @JsonProperty("conteineresVazios")
@@ -826,7 +905,6 @@ public class ManifestoViagem {
 
     /**
      * Get crts
-     *
      * @return crts
      **/
     @JsonProperty("crts")
@@ -850,7 +928,6 @@ public class ManifestoViagem {
 
     /**
      * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataEmissao
      **/
     @JsonProperty("dataEmissao")
@@ -870,7 +947,6 @@ public class ManifestoViagem {
 
     /**
      * Data prevista de chegada do veículo na cidade de destino final viagem&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataPrevistaDestinoFinal
      **/
     @JsonProperty("dataPrevistaDestinoFinal")
@@ -889,7 +965,6 @@ public class ManifestoViagem {
 
     /**
      * Data prevista de chegada do veículo na Aduana de entrada no Brasil&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataPrevistaEntrada
      **/
     @JsonProperty("dataPrevistaEntrada")
@@ -908,7 +983,6 @@ public class ManifestoViagem {
 
     /**
      * Data de vencimento do seguro&lt;br/&gt;Formato: yyyy-MM-dd
-     *
      * @return dataVencimentoSeguro
      **/
     @JsonProperty("dataVencimentoSeguro")
@@ -928,7 +1002,6 @@ public class ManifestoViagem {
 
     /**
      * Descrição da rota internacional desde local de partida até a cidade de destino final&lt;br/&gt; Tamanho Máximo: 500
-     *
      * @return descricaoRotaInternacional
      **/
     @JsonProperty("descricaoRotaInternacional")
@@ -948,7 +1021,6 @@ public class ManifestoViagem {
 
     /**
      * Estado ou província do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoProprietarioVeiculoEstrangeiro
      **/
     @JsonProperty("estadoProprietarioVeiculoEstrangeiro")
@@ -967,7 +1039,6 @@ public class ManifestoViagem {
 
     /**
      * Estado ou província do endereço do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return estadoTransportadorEstrangeiro
      **/
     @JsonProperty("estadoTransportadorEstrangeiro")
@@ -986,7 +1057,6 @@ public class ManifestoViagem {
 
     /**
      * Identificação fiscal do proprietário do veículo da viagem&lt;br/&gt;Se proprietarioVeiculoBrasileiro é S, o CPF ou CNPJ preenchido neste campo será validado na tabela de CPF ou CNPJ.&lt;br/&gt; Tamanho: 14
-     *
      * @return identificacaoProprietarioVeiculo
      **/
     @JsonProperty("identificacaoProprietarioVeiculo")
@@ -1005,8 +1075,26 @@ public class ManifestoViagem {
     }
 
     /**
-     * Número de identificação do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho: 14
+     * Licença originária do proprietário do veículo&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA.&lt;br/&gt; Tamanho Máximo: 6
      *
+     * @return licencaOriginariaProprietario
+     **/
+    @JsonProperty("licencaOriginariaProprietario")
+    public String getLicencaOriginariaProprietario() {
+        return licencaOriginariaProprietario;
+    }
+
+    public void setLicencaOriginariaProprietario(String licencaOriginariaProprietario) {
+        this.licencaOriginariaProprietario = licencaOriginariaProprietario;
+    }
+
+    public ManifestoViagem licencaOriginariaProprietario(String licencaOriginariaProprietario) {
+        this.licencaOriginariaProprietario = licencaOriginariaProprietario;
+        return this;
+    }
+
+    /**
+     * Número de identificação do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho: 14
      * @return identificacaoTransportadorEstrangeiro
      **/
     @JsonProperty("identificacaoTransportadorEstrangeiro")
@@ -1025,7 +1113,6 @@ public class ManifestoViagem {
 
     /**
      * CNPJ do transportador nacional&lt;br/&gt; Se transportadorNacBrasileira é true, este campo é de preenchimento obrigatório e válido no cadastro de CNPJ&lt;br/&gt; Tamanho: 14
-     *
      * @return identificacaoTransportadorNacional
      **/
     @JsonProperty("identificacaoTransportadorNacional")
@@ -1039,24 +1126,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem identificacaoTransportadorNacional(String identificacaoTransportadorNacional) {
         this.identificacaoTransportadorNacional = identificacaoTransportadorNacional;
-        return this;
-    }
-
-    /**
-     * CPF/CNPJ do representante do transportador estrangeiro&lt;br/&gt;Se campo transportadorNacBrasileira  igual a \&quot;false\&quot; ( Transportador estrangeiro) é obrigatório o preenchimento desse campo. &lt;br/&gt;O CPF/CNPJ deve estar ativo no cadastro de CPF/CNPJ&lt;br/&gt; Tamanho: 14
-     * @return identificacaoRepresentanteTransportadorEstrangeiro
-     **/
-    @JsonProperty("identificacaoRepresentanteTransportadorEstrangeiro")
-    public String getIdentificacaoRepresentanteTransportadorEstrangeiro() {
-        return identificacaoRepresentanteTransportadorEstrangeiro;
-    }
-
-    public void setIdentificacaoRepresentanteTransportadorEstrangeiro(String identificacaoRepresentanteTransportadorEstrangeiro) {
-        this.identificacaoRepresentanteTransportadorEstrangeiro = identificacaoRepresentanteTransportadorEstrangeiro;
-    }
-
-    public ManifestoViagem identificacaoRepresentanteTransportadorEstrangeiro(String identificacaoRepresentanteTransportadorEstrangeiro) {
-        this.identificacaoRepresentanteTransportadorEstrangeiro = identificacaoRepresentanteTransportadorEstrangeiro;
         return this;
     }
 
@@ -1085,8 +1154,26 @@ public class ManifestoViagem {
     }
 
     /**
-     * Licença complementar&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.&lt;br/&gt; Tamanho Máximo: 6
+     * Nome do proprietário estrangeiro do veículo &lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 60
      *
+     * @return nomeProprietarioVeiculoEstrangeiro
+     **/
+    @JsonProperty("nomeProprietarioVeiculoEstrangeiro")
+    public String getNomeProprietarioVeiculoEstrangeiro() {
+        return nomeProprietarioVeiculoEstrangeiro;
+    }
+
+    public void setNomeProprietarioVeiculoEstrangeiro(String nomeProprietarioVeiculoEstrangeiro) {
+        this.nomeProprietarioVeiculoEstrangeiro = nomeProprietarioVeiculoEstrangeiro;
+    }
+
+    public ManifestoViagem nomeProprietarioVeiculoEstrangeiro(String nomeProprietarioVeiculoEstrangeiro) {
+        this.nomeProprietarioVeiculoEstrangeiro = nomeProprietarioVeiculoEstrangeiro;
+        return this;
+    }
+
+    /**
+     * Licença complementar&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.&lt;br/&gt; Tamanho Máximo: 6
      * @return licencaComplementarTransportador
      **/
     @JsonProperty("licencaComplementarTransportador")
@@ -1104,8 +1191,27 @@ public class ManifestoViagem {
     }
 
     /**
-     * Licença originária&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é true.&lt;br/&gt; Tamanho Máximo: 6
+     * Número do documento de transporte.&lt;br/&gt;Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.&lt;br/&gt; Tamanho Máximo: 15
      *
+     * @return numeroDocumentoTransporte
+     **/
+    @JsonProperty("numeroDocumentoTransporte")
+    @NotNull
+    public String getNumeroDocumentoTransporte() {
+        return numeroDocumentoTransporte;
+    }
+
+    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
+        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+    }
+
+    public ManifestoViagem numeroDocumentoTransporte(String numeroDocumentoTransporte) {
+        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
+        return this;
+    }
+
+    /**
+     * Licença originária&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é true.&lt;br/&gt; Tamanho Máximo: 6
      * @return licencaOriginariaTransportador
      **/
     @JsonProperty("licencaOriginariaTransportador")
@@ -1119,24 +1225,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem licencaOriginariaTransportador(String licencaOriginariaTransportador) {
         this.licencaOriginariaTransportador = licencaOriginariaTransportador;
-        return this;
-    }
-
-    /**
-     * Licença complementar do proprietário do veículo&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA.&lt;br/&gt; Tamanho Máximo: 6
-     * @return licencaComplementarProprietario
-     **/
-    @JsonProperty("licencaComplementarProprietario")
-    public String getLicencaComplementarProprietario() {
-        return licencaComplementarProprietario;
-    }
-
-    public void setLicencaComplementarProprietario(String licencaComplementarProprietario) {
-        this.licencaComplementarProprietario = licencaComplementarProprietario;
-    }
-
-    public ManifestoViagem licencaComplementarProprietario(String licencaComplementarProprietario) {
-        this.licencaComplementarProprietario = licencaComplementarProprietario;
         return this;
     }
 
@@ -1156,24 +1244,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem localAssinaturaTransportador(String localAssinaturaTransportador) {
         this.localAssinaturaTransportador = localAssinaturaTransportador;
-        return this;
-    }
-
-    /**
-     * Licença originária do proprietário do veículo&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA.&lt;br/&gt; Tamanho Máximo: 6
-     * @return licencaOriginariaProprietario
-     **/
-    @JsonProperty("licencaOriginariaProprietario")
-    public String getLicencaOriginariaProprietario() {
-        return licencaOriginariaProprietario;
-    }
-
-    public void setLicencaOriginariaProprietario(String licencaOriginariaProprietario) {
-        this.licencaOriginariaProprietario = licencaOriginariaProprietario;
-    }
-
-    public ManifestoViagem licencaOriginariaProprietario(String licencaOriginariaProprietario) {
-        this.licencaOriginariaProprietario = licencaOriginariaProprietario;
         return this;
     }
 
@@ -1198,7 +1268,6 @@ public class ManifestoViagem {
 
     /**
      * Nome do transportador que assinou o documento&lt;br/&gt; Tamanho Máximo: 35
-     *
      * @return nomeAssinaturaTransportador
      **/
     @JsonProperty("nomeAssinaturaTransportador")
@@ -1218,7 +1287,6 @@ public class ManifestoViagem {
 
     /**
      * Nome do condutor estrangeiro do veículo&lt;/br&gt;Obrigatorio se condutor do veículo for estrangeiro (\&quot;condutorBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 50
-     *
      * @return nomeCondutorVeiculoEstrangeiro
      **/
     @JsonProperty("nomeCondutorVeiculoEstrangeiro")
@@ -1236,8 +1304,27 @@ public class ManifestoViagem {
     }
 
     /**
-     * Nome do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
+     * Local de entrada na fronteira (Recinto alfandegado)&lt;br/&gt; Tamanho Máximo: 7
      *
+     * @return recintoEntrada
+     **/
+    @JsonProperty("recintoEntrada")
+    @NotNull
+    public String getRecintoEntrada() {
+        return recintoEntrada;
+    }
+
+    public void setRecintoEntrada(String recintoEntrada) {
+        this.recintoEntrada = recintoEntrada;
+    }
+
+    public ManifestoViagem recintoEntrada(String recintoEntrada) {
+        this.recintoEntrada = recintoEntrada;
+        return this;
+    }
+
+    /**
+     * Nome do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
      * @return nomeTransportadorEstrangeiro
      **/
     @JsonProperty("nomeTransportadorEstrangeiro")
@@ -1256,7 +1343,6 @@ public class ManifestoViagem {
 
     /**
      * Número da declaração de trânsito no exterior, quando ocorrer&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return numeroDTAExterior
      **/
     @JsonProperty("numeroDTAExterior")
@@ -1274,26 +1360,7 @@ public class ManifestoViagem {
     }
 
     /**
-     * Nome do proprietário estrangeiro do veículo &lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 60
-     * @return nomeProprietarioVeiculoEstrangeiro
-     **/
-    @JsonProperty("nomeProprietarioVeiculoEstrangeiro")
-    public String getNomeProprietarioVeiculoEstrangeiro() {
-        return nomeProprietarioVeiculoEstrangeiro;
-    }
-
-    public void setNomeProprietarioVeiculoEstrangeiro(String nomeProprietarioVeiculoEstrangeiro) {
-        this.nomeProprietarioVeiculoEstrangeiro = nomeProprietarioVeiculoEstrangeiro;
-    }
-
-    public ManifestoViagem nomeProprietarioVeiculoEstrangeiro(String nomeProprietarioVeiculoEstrangeiro) {
-        this.nomeProprietarioVeiculoEstrangeiro = nomeProprietarioVeiculoEstrangeiro;
-        return this;
-    }
-
-    /**
      * Número do documento do condutor do veículo (relacionado ao Tipo do documento informado no campo anterior)&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return numeroDocumentoCondutorVeiculo
      **/
     @JsonProperty("numeroDocumentoCondutorVeiculo")
@@ -1312,8 +1379,26 @@ public class ManifestoViagem {
     }
 
     /**
-     * Observações gerais da viagem&lt;br/&gt; Tamanho Máximo: 500
+     * Tara do cavalo&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      *
+     * @return taraCavalo
+     **/
+    @JsonProperty("taraCavalo")
+    public BigDecimal getTaraCavalo() {
+        return taraCavalo;
+    }
+
+    public void setTaraCavalo(BigDecimal taraCavalo) {
+        this.taraCavalo = taraCavalo;
+    }
+
+    public ManifestoViagem taraCavalo(BigDecimal taraCavalo) {
+        this.taraCavalo = taraCavalo;
+        return this;
+    }
+
+    /**
+     * Observações gerais da viagem&lt;br/&gt; Tamanho Máximo: 500
      * @return observacoesGerais
      **/
     @JsonProperty("observacoesGerais")
@@ -1332,7 +1417,6 @@ public class ManifestoViagem {
 
     /**
      * Observações adicionais a serem reportadas sobre o veículo&lt;br/&gt; Tamanho Máximo: 200
-     *
      * @return observacoesVeiculo
      **/
     @JsonProperty("observacoesVeiculo")
@@ -1346,25 +1430,6 @@ public class ManifestoViagem {
 
     public ManifestoViagem observacoesVeiculo(String observacoesVeiculo) {
         this.observacoesVeiculo = observacoesVeiculo;
-        return this;
-    }
-
-    /**
-     * Número do documento de transporte.&lt;br/&gt;Não pode haver outro documento de transporte com a mesma chave tipoDocumentoTransporte, numeroDocumentoTransporte e dataEmissao.&lt;br/&gt; Tamanho Máximo: 15
-     * @return numeroDocumentoTransporte
-     **/
-    @JsonProperty("numeroDocumentoTransporte")
-    @NotNull
-    public String getNumeroDocumentoTransporte() {
-        return numeroDocumentoTransporte;
-    }
-
-    public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
-    }
-
-    public ManifestoViagem numeroDocumentoTransporte(String numeroDocumentoTransporte) {
-        this.numeroDocumentoTransporte = numeroDocumentoTransporte;
         return this;
     }
 
@@ -1408,7 +1473,6 @@ public class ManifestoViagem {
 
     /**
      * País do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
      * @return paisProprietarioVeiculoEstrangeiro
      **/
     @JsonProperty("paisProprietarioVeiculoEstrangeiro")
@@ -1445,7 +1509,6 @@ public class ManifestoViagem {
 
     /**
      * Placa do cavalo &lt;br/&gt;Obrigatória apenas se o cavalo não for a própria mercadoria.&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return placaCavalo
      **/
     @JsonProperty("placaCavalo")
@@ -1465,7 +1528,6 @@ public class ManifestoViagem {
 
     /**
      * Indica se o veículo está transportando itens em embalagem/suporte de madeira
-     *
      * @return possuiEmbalagemSuporteMadeiraBruta
      **/
     @JsonProperty("possuiEmbalagemSuporteMadeiraBruta")
@@ -1485,7 +1547,6 @@ public class ManifestoViagem {
 
     /**
      * Indicador que informa se o proprietário do veículo da viagem é de nacionalidade brasileira (true/false)
-     *
      * @return proprietarioVeiculoBrasileiro
      **/
     @JsonProperty("proprietarioVeiculoBrasileiro")
@@ -1528,6 +1589,26 @@ public class ManifestoViagem {
     }
 
     /**
+     * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
+     *
+     * @return transitoInternacional
+     **/
+    @JsonProperty("transitoInternacional")
+    @NotNull
+    public Boolean isisTransitoInternacional() {
+        return transitoInternacional;
+    }
+
+    public void setTransitoInternacional(Boolean transitoInternacional) {
+        this.transitoInternacional = transitoInternacional;
+    }
+
+    public ManifestoViagem transitoInternacional(Boolean transitoInternacional) {
+        this.transitoInternacional = transitoInternacional;
+        return this;
+    }
+
+    /**
      * Rua do endereço do proprietário estrangeiro do veículo&lt;/br&gt;Obrigatorio se proprietário do veículo for estrangeiro (\&quot;proprietárioVeiculoBrasileiro\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
      * @return ruaProprietarioVeiculoEstrangeiro
      **/
@@ -1564,294 +1645,14 @@ public class ManifestoViagem {
     }
 
     /**
-     * Local de entrada na fronteira (Recinto alfandegado)&lt;br/&gt; Tamanho Máximo: 7
-     *
-     * @return recintoEntrada
-     **/
-    @JsonProperty("recintoEntrada")
-    @NotNull
-    public String getRecintoEntrada() {
-        return recintoEntrada;
-    }
-
-    public void setRecintoEntrada(String recintoEntrada) {
-        this.recintoEntrada = recintoEntrada;
-    }
-
-    public ManifestoViagem recintoEntrada(String recintoEntrada) {
-        this.recintoEntrada = recintoEntrada;
-        return this;
-    }
-
-    /**
-     * Tipo do documento do condutor do veículo.&lt;br/&gt; \&quot;F\&quot; (CPF), \&quot;J\&quot; (CNPJ),\&quot;P\&quot; (passaporte), \&quot;O\&quot; (outros)&lt;br/&gt;Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \&quot;F\&quot; ou \&quot;H\&quot;.&lt;br/&gt;Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser &#39;P&#39; ou &#39;O&#39;
-     *
-     * @return tipoDocumentoCondutorVeiculo
-     **/
-    @JsonProperty("tipoDocumentoCondutorVeiculo")
-    @NotNull
-    public String getTipoDocumentoCondutorVeiculo() {
-        if (tipoDocumentoCondutorVeiculo == null) {
-            return null;
-        }
-        return tipoDocumentoCondutorVeiculo.value();
-    }
-
-    public void setTipoDocumentoCondutorVeiculo(TipoDocumentoCondutorVeiculoEnum tipoDocumentoCondutorVeiculo) {
-        this.tipoDocumentoCondutorVeiculo = tipoDocumentoCondutorVeiculo;
-    }
-
-    public ManifestoViagem tipoDocumentoCondutorVeiculo(TipoDocumentoCondutorVeiculoEnum tipoDocumentoCondutorVeiculo) {
-        this.tipoDocumentoCondutorVeiculo = tipoDocumentoCondutorVeiculo;
-        return this;
-    }
-
-    /**
-     * Tipo de documento de transporte&lt;br/&gt;Deve ser MIC/DTA(1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela &lt;br/&gt;ou \&quot;Outros\&quot;(4) se paisPartida for qualquer outro país.
-     * @return tipoDocumentoTransporte
-     **/
-    @JsonProperty("tipoDocumentoTransporte")
-    @NotNull
-    public String getTipoDocumentoTransporte() {
-        if (tipoDocumentoTransporte == null) {
-            return null;
-        }
-        return tipoDocumentoTransporte.value();
-    }
-
-    public void setTipoDocumentoTransporte(TipoDocumentoTransporteEnum tipoDocumentoTransporte) {
-        this.tipoDocumentoTransporte = tipoDocumentoTransporte;
-    }
-
-    public ManifestoViagem tipoDocumentoTransporte(TipoDocumentoTransporteEnum tipoDocumentoTransporte) {
-        this.tipoDocumentoTransporte = tipoDocumentoTransporte;
-        return this;
-    }
-
-    /**
-     * Tara do cavalo&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
-     * @return taraCavalo
-     **/
-    @JsonProperty("taraCavalo")
-    public BigDecimal getTaraCavalo() {
-        return taraCavalo;
-    }
-
-    public void setTaraCavalo(BigDecimal taraCavalo) {
-        this.taraCavalo = taraCavalo;
-    }
-
-    public ManifestoViagem taraCavalo(BigDecimal taraCavalo) {
-        this.taraCavalo = taraCavalo;
-        return this;
-    }
-
-    /**
-     * Tipo de numero de documento de viagem&lt;br/&gt;Deve ser ATIT(1) ou RUT(2).
-     * @return tipoNumeroDocumentoViagem
-     **/
-    @JsonProperty("tipoNumeroDocumentoViagem")
-    @NotNull
-    public String getTipoNumeroDocumentoViagem() {
-        if (tipoNumeroDocumentoViagem == null) {
-            return null;
-        }
-        return tipoNumeroDocumentoViagem.value();
-    }
-
-    public void setTipoNumeroDocumentoViagem(TipoNumeroDocumentoViagemEnum tipoNumeroDocumentoViagem) {
-        this.tipoNumeroDocumentoViagem = tipoNumeroDocumentoViagem;
-    }
-
-    public ManifestoViagem tipoNumeroDocumentoViagem(TipoNumeroDocumentoViagemEnum tipoNumeroDocumentoViagem) {
-        this.tipoNumeroDocumentoViagem = tipoNumeroDocumentoViagem;
-        return this;
-    }
-
-    /**
-     * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
-     *
-     * @return tipoTransporte
-     **/
-    @JsonProperty("tipoTransporte")
-    @NotNull
-    public String getTipoTransporte() {
-        if (tipoTransporte == null) {
-            return null;
-        }
-        return tipoTransporte.value();
-    }
-
-    public void setTipoTransporte(TipoTransporteEnum tipoTransporte) {
-        this.tipoTransporte = tipoTransporte;
-    }
-
-    public ManifestoViagem tipoTransporte(TipoTransporteEnum tipoTransporte) {
-        this.tipoTransporte = tipoTransporte;
-        return this;
-    }
-
-    /**
-     * Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;
-     * @return tipoTratamentoMadeiraBruta
-     **/
-    @JsonProperty("tipoTratamentoMadeiraBruta")
-    public String getTipoTratamentoMadeiraBruta() {
-        if (tipoTratamentoMadeiraBruta == null) {
-            return null;
-        }
-        return tipoTratamentoMadeiraBruta.value();
-    }
-
-    public void setTipoTratamentoMadeiraBruta(TipoTratamentoMadeiraBrutaEnum tipoTratamentoMadeiraBruta) {
-        this.tipoTratamentoMadeiraBruta = tipoTratamentoMadeiraBruta;
-    }
-
-    public ManifestoViagem tipoTratamentoMadeiraBruta(TipoTratamentoMadeiraBrutaEnum tipoTratamentoMadeiraBruta) {
-        this.tipoTratamentoMadeiraBruta = tipoTratamentoMadeiraBruta;
-        return this;
-    }
-
-    /**
-     * Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.
-     *
-     * @return tipoVeiculo
-     **/
-    @JsonProperty("tipoVeiculo")
-    @NotNull
-    public String getTipoVeiculo() {
-        if (tipoVeiculo == null) {
-            return null;
-        }
-        return tipoVeiculo.value();
-    }
-
-    public void setTipoVeiculo(TipoVeiculoEnum tipoVeiculo) {
-        this.tipoVeiculo = tipoVeiculo;
-    }
-
-    public ManifestoViagem tipoVeiculo(TipoVeiculoEnum tipoVeiculo) {
-        this.tipoVeiculo = tipoVeiculo;
-        return this;
-    }
-
-    /**
-     * Indicador que informa se o transportador é o importador
-     *
-     * @return transportadorImportador
-     **/
-    @JsonProperty("transportadorImportador")
-    @NotNull
-    public Boolean isisTransportadorImportador() {
-        return transportadorImportador;
-    }
-
-    public void setTransportadorImportador(Boolean transportadorImportador) {
-        this.transportadorImportador = transportadorImportador;
-    }
-
-    public ManifestoViagem transportadorImportador(Boolean transportadorImportador) {
-        this.transportadorImportador = transportadorImportador;
-        return this;
-    }
-
-    /**
-     * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
-     *
-     * @return transportadorNacBrasileira
-     **/
-    @JsonProperty("transportadorNacBrasileira")
-    @NotNull
-    public Boolean isisTransportadorNacBrasileira() {
-        return transportadorNacBrasileira;
-    }
-
-    public void setTransportadorNacBrasileira(Boolean transportadorNacBrasileira) {
-        this.transportadorNacBrasileira = transportadorNacBrasileira;
-    }
-
-    public ManifestoViagem transportadorNacBrasileira(Boolean transportadorNacBrasileira) {
-        this.transportadorNacBrasileira = transportadorNacBrasileira;
-        return this;
-    }
-
-    /**
-     * Indicador que informa se é trânsito aduaneiro internacional, ou seja, se haverá desembaraço na fronteira (false) ou seguirá por trânsito (true)
-     *
-     * @return transitoInternacional
-     **/
-    @JsonProperty("transitoInternacional")
-    @NotNull
-    public Boolean isisTransitoInternacional() {
-        return transitoInternacional;
-    }
-
-    public void setTransitoInternacional(Boolean transitoInternacional) {
-        this.transitoInternacional = transitoInternacional;
-    }
-
-    public ManifestoViagem transitoInternacional(Boolean transitoInternacional) {
-        this.transitoInternacional = transitoInternacional;
-        return this;
-    }
-
-    /**
      * Indicador que informa se o transportador é o proprietário do veículo
+     *
      * @return transportadorProprietarioVeiculo
      **/
     @JsonProperty("transportadorProprietarioVeiculo")
     @NotNull
     public Boolean isisTransportadorProprietarioVeiculo() {
         return transportadorProprietarioVeiculo;
-    }
-
-    public void setTransportadorProprietarioVeiculo(Boolean transportadorProprietarioVeiculo) {
-        this.transportadorProprietarioVeiculo = transportadorProprietarioVeiculo;
-    }
-
-    public ManifestoViagem transportadorProprietarioVeiculo(Boolean transportadorProprietarioVeiculo) {
-        this.transportadorProprietarioVeiculo = transportadorProprietarioVeiculo;
-        return this;
-    }
-
-    /**
-     * Local de entrada na fronteira (Unidade da Receita Federal)&lt;br/&gt; Tamanho Máximo: 7
-     * @return ulEntrada
-     **/
-    @JsonProperty("ulEntrada")
-    @NotNull
-    public String getUlEntrada() {
-        return ulEntrada;
-    }
-
-    public void setUlEntrada(String ulEntrada) {
-        this.ulEntrada = ulEntrada;
-    }
-
-    public ManifestoViagem ulEntrada(String ulEntrada) {
-        this.ulEntrada = ulEntrada;
-        return this;
-    }
-
-    /**
-     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
-     *
-     * @return visualizacaoDepositario
-     **/
-    @JsonProperty("visualizacaoDepositario")
-    @NotNull
-    public Boolean isisVisualizacaoDepositario() {
-        return visualizacaoDepositario;
-    }
-
-    public void setVisualizacaoDepositario(Boolean visualizacaoDepositario) {
-        this.visualizacaoDepositario = visualizacaoDepositario;
-    }
-
-    public ManifestoViagem visualizacaoDepositario(Boolean visualizacaoDepositario) {
-        this.visualizacaoDepositario = visualizacaoDepositario;
-        return this;
     }
 
     @Override
@@ -1929,8 +1730,8 @@ public class ManifestoViagem {
                 "    ulEntrada: " + toIndentedString(ulEntrada) + "\n" +
                 "    visualizacaoDepositario: " + toIndentedString(visualizacaoDepositario) + "\n" +
                 "}";
-    return sb;
-  }
+        return sb;
+    }
 
     @XmlType(name = "AplicacaoLacresEnum")
     @XmlEnum(String.class)
@@ -1972,6 +1773,143 @@ public class ManifestoViagem {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    /**
+     * Tipo do documento do condutor do veículo.&lt;br/&gt; \&quot;F\&quot; (CPF), \&quot;J\&quot; (CNPJ),\&quot;P\&quot; (passaporte), \&quot;O\&quot; (outros)&lt;br/&gt;Se condutorBrasileiro é true (condutor brasieliro), é obrigatório o preenchimento do valor \&quot;F\&quot; ou \&quot;H\&quot;.&lt;br/&gt;Se condutorBrasileiro é false (condutor estrangeiro), o tipo pode ser &#39;P&#39; ou &#39;O&#39;
+     *
+     * @return tipoDocumentoCondutorVeiculo
+     **/
+    @JsonProperty("tipoDocumentoCondutorVeiculo")
+    @NotNull
+    public String getTipoDocumentoCondutorVeiculo() {
+        if (tipoDocumentoCondutorVeiculo == null) {
+            return null;
+        }
+        return tipoDocumentoCondutorVeiculo.value();
+    }
+
+    public void setTipoDocumentoCondutorVeiculo(TipoDocumentoCondutorVeiculoEnum tipoDocumentoCondutorVeiculo) {
+        this.tipoDocumentoCondutorVeiculo = tipoDocumentoCondutorVeiculo;
+    }
+
+    public ManifestoViagem tipoDocumentoCondutorVeiculo(TipoDocumentoCondutorVeiculoEnum tipoDocumentoCondutorVeiculo) {
+        this.tipoDocumentoCondutorVeiculo = tipoDocumentoCondutorVeiculo;
+        return this;
+    }
+
+    /**
+     * Tipo de documento de transporte&lt;br/&gt;Deve ser MIC/DTA(1) se paisPartida for ATIT, DTAI(3) se paisPartida for Venezuela &lt;br/&gt;ou \&quot;Outros\&quot;(4) se paisPartida for qualquer outro país.
+     *
+     * @return tipoDocumentoTransporte
+     **/
+    @JsonProperty("tipoDocumentoTransporte")
+    @NotNull
+    public String getTipoDocumentoTransporte() {
+        if (tipoDocumentoTransporte == null) {
+            return null;
+        }
+        return tipoDocumentoTransporte.value();
+    }
+
+    public void setTipoDocumentoTransporte(TipoDocumentoTransporteEnum tipoDocumentoTransporte) {
+        this.tipoDocumentoTransporte = tipoDocumentoTransporte;
+    }
+
+    public ManifestoViagem tipoDocumentoTransporte(TipoDocumentoTransporteEnum tipoDocumentoTransporte) {
+        this.tipoDocumentoTransporte = tipoDocumentoTransporte;
+        return this;
+    }
+
+    /**
+     * Tipo de numero de documento de viagem&lt;br/&gt;Deve ser ATIT(1) ou RUT(2).
+     *
+     * @return tipoNumeroDocumentoViagem
+     **/
+    @JsonProperty("tipoNumeroDocumentoViagem")
+    @NotNull
+    public String getTipoNumeroDocumentoViagem() {
+        if (tipoNumeroDocumentoViagem == null) {
+            return null;
+        }
+        return tipoNumeroDocumentoViagem.value();
+    }
+
+    public void setTipoNumeroDocumentoViagem(TipoNumeroDocumentoViagemEnum tipoNumeroDocumentoViagem) {
+        this.tipoNumeroDocumentoViagem = tipoNumeroDocumentoViagem;
+    }
+
+    public ManifestoViagem tipoNumeroDocumentoViagem(TipoNumeroDocumentoViagemEnum tipoNumeroDocumentoViagem) {
+        this.tipoNumeroDocumentoViagem = tipoNumeroDocumentoViagem;
+        return this;
+    }
+
+    /**
+     * Indicador do tipo de transporte que pode ser regular(REG), próprio(PRO) ou ocasional(OCA)
+     *
+     * @return tipoTransporte
+     **/
+    @JsonProperty("tipoTransporte")
+    @NotNull
+    public String getTipoTransporte() {
+        if (tipoTransporte == null) {
+            return null;
+        }
+        return tipoTransporte.value();
+    }
+
+    public void setTipoTransporte(TipoTransporteEnum tipoTransporte) {
+        this.tipoTransporte = tipoTransporte;
+    }
+
+    public ManifestoViagem tipoTransporte(TipoTransporteEnum tipoTransporte) {
+        this.tipoTransporte = tipoTransporte;
+        return this;
+    }
+
+    /**
+     * Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;
+     *
+     * @return tipoTratamentoMadeiraBruta
+     **/
+    @JsonProperty("tipoTratamentoMadeiraBruta")
+    public String getTipoTratamentoMadeiraBruta() {
+        if (tipoTratamentoMadeiraBruta == null) {
+            return null;
+        }
+        return tipoTratamentoMadeiraBruta.value();
+    }
+
+    public void setTipoTratamentoMadeiraBruta(TipoTratamentoMadeiraBrutaEnum tipoTratamentoMadeiraBruta) {
+        this.tipoTratamentoMadeiraBruta = tipoTratamentoMadeiraBruta;
+    }
+
+    public ManifestoViagem tipoTratamentoMadeiraBruta(TipoTratamentoMadeiraBrutaEnum tipoTratamentoMadeiraBruta) {
+        this.tipoTratamentoMadeiraBruta = tipoTratamentoMadeiraBruta;
+        return this;
+    }
+
+    /**
+     * Tipo do veículo, ou seja, se é Truck (TRU)  ou Cavalo com 1 (C1R), 2 (C2R) ou 3 (C3R) reboques.
+     *
+     * @return tipoVeiculo
+     **/
+    @JsonProperty("tipoVeiculo")
+    @NotNull
+    public String getTipoVeiculo() {
+        if (tipoVeiculo == null) {
+            return null;
+        }
+        return tipoVeiculo.value();
+    }
+
+    public void setTipoVeiculo(TipoVeiculoEnum tipoVeiculo) {
+        this.tipoVeiculo = tipoVeiculo;
+    }
+
+    public ManifestoViagem tipoVeiculo(TipoVeiculoEnum tipoVeiculo) {
+        this.tipoVeiculo = tipoVeiculo;
+        return this;
     }
 
     @XmlType(name = "TipoDocumentoCondutorVeiculoEnum")
@@ -2100,6 +2038,46 @@ public class ManifestoViagem {
         }
     }
 
+    /**
+     * Indicador que informa se o transportador é o importador
+     *
+     * @return transportadorImportador
+     **/
+    @JsonProperty("transportadorImportador")
+    @NotNull
+    public Boolean isisTransportadorImportador() {
+        return transportadorImportador;
+    }
+
+    public void setTransportadorImportador(Boolean transportadorImportador) {
+        this.transportadorImportador = transportadorImportador;
+    }
+
+    public ManifestoViagem transportadorImportador(Boolean transportadorImportador) {
+        this.transportadorImportador = transportadorImportador;
+        return this;
+    }
+
+    /**
+     * Indicador que informa se o transportador é nacional (true) ou estrangeiro (false)
+     *
+     * @return transportadorNacBrasileira
+     **/
+    @JsonProperty("transportadorNacBrasileira")
+    @NotNull
+    public Boolean isisTransportadorNacBrasileira() {
+        return transportadorNacBrasileira;
+    }
+
+    public void setTransportadorNacBrasileira(Boolean transportadorNacBrasileira) {
+        this.transportadorNacBrasileira = transportadorNacBrasileira;
+    }
+
+    public ManifestoViagem transportadorNacBrasileira(Boolean transportadorNacBrasileira) {
+        this.transportadorNacBrasileira = transportadorNacBrasileira;
+        return this;
+    }
+
     @XmlType(name = "TipoTransporteEnum")
     @XmlEnum(String.class)
     public enum TipoTransporteEnum {
@@ -2140,6 +2118,55 @@ public class ManifestoViagem {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public void setTransportadorProprietarioVeiculo(Boolean transportadorProprietarioVeiculo) {
+        this.transportadorProprietarioVeiculo = transportadorProprietarioVeiculo;
+    }
+
+    public ManifestoViagem transportadorProprietarioVeiculo(Boolean transportadorProprietarioVeiculo) {
+        this.transportadorProprietarioVeiculo = transportadorProprietarioVeiculo;
+        return this;
+    }
+
+    /**
+     * Local de entrada na fronteira (Unidade da Receita Federal)&lt;br/&gt; Tamanho Máximo: 7
+     *
+     * @return ulEntrada
+     **/
+    @JsonProperty("ulEntrada")
+    @NotNull
+    public String getUlEntrada() {
+        return ulEntrada;
+    }
+
+    public void setUlEntrada(String ulEntrada) {
+        this.ulEntrada = ulEntrada;
+    }
+
+    public ManifestoViagem ulEntrada(String ulEntrada) {
+        this.ulEntrada = ulEntrada;
+        return this;
+    }
+
+    /**
+     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
+     *
+     * @return visualizacaoDepositario
+     **/
+    @JsonProperty("visualizacaoDepositario")
+    @NotNull
+    public Boolean isisVisualizacaoDepositario() {
+        return visualizacaoDepositario;
+    }
+
+    public void setVisualizacaoDepositario(Boolean visualizacaoDepositario) {
+        this.visualizacaoDepositario = visualizacaoDepositario;
+    }
+
+    public ManifestoViagem visualizacaoDepositario(Boolean visualizacaoDepositario) {
+        this.visualizacaoDepositario = visualizacaoDepositario;
+        return this;
     }
 
 

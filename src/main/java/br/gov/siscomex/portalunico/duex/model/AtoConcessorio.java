@@ -74,17 +74,6 @@ public class AtoConcessorio {
     private BigDecimal valorComCoberturaCambial = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get beneficiario
      *
      * @return beneficiario
@@ -96,6 +85,17 @@ public class AtoConcessorio {
 
     public void setBeneficiario(Beneficiario beneficiario) {
         this.beneficiario = beneficiario;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -117,11 +117,6 @@ public class AtoConcessorio {
         return this;
     }
 
-    public AtoConcessorio beneficiario(Beneficiario beneficiario) {
-        this.beneficiario = beneficiario;
-        return this;
-    }
-
     /**
      * Get itemDeDUE
      *
@@ -134,6 +129,11 @@ public class AtoConcessorio {
 
     public void setItemDeDUE(ItemDeDUE itemDeDUE) {
         this.itemDeDUE = itemDeDUE;
+    }
+
+    public AtoConcessorio beneficiario(Beneficiario beneficiario) {
+        this.beneficiario = beneficiario;
+        return this;
     }
 
     /**
@@ -160,11 +160,6 @@ public class AtoConcessorio {
         return this;
     }
 
-    public AtoConcessorio itemDeDUE(ItemDeDUE itemDeDUE) {
-        this.itemDeDUE = itemDeDUE;
-        return this;
-    }
-
     /**
      * Número &lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 11
      *
@@ -177,6 +172,11 @@ public class AtoConcessorio {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public AtoConcessorio itemDeDUE(ItemDeDUE itemDeDUE) {
+        this.itemDeDUE = itemDeDUE;
+        return this;
     }
 
     /**
@@ -195,11 +195,6 @@ public class AtoConcessorio {
 
     public AtoConcessorio quantidadeExportada(BigDecimal quantidadeExportada) {
         this.quantidadeExportada = quantidadeExportada;
-        return this;
-    }
-
-    public AtoConcessorio numero(String numero) {
-        this.numero = numero;
         return this;
     }
 
@@ -224,7 +219,6 @@ public class AtoConcessorio {
 
     /**
      * Get tipo
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")
@@ -234,6 +228,11 @@ public class AtoConcessorio {
 
     public void setTipo(TipoDeAtoConcessorio tipo) {
         this.tipo = tipo;
+    }
+
+    public AtoConcessorio numero(String numero) {
+        this.numero = numero;
+        return this;
     }
 
     /**

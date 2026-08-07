@@ -36,17 +36,6 @@ public class ExpressaoCondicionanteConsultaDTO {
     private ExpressaoCondicionanteConsultaDTO condicao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get operador
      *
      * @return operador
@@ -58,6 +47,17 @@ public class ExpressaoCondicionanteConsultaDTO {
 
     public void setOperador(String operador) {
         this.operador = operador;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -76,11 +76,6 @@ public class ExpressaoCondicionanteConsultaDTO {
 
     public ExpressaoCondicionanteConsultaDTO valor(String valor) {
         this.valor = valor;
-        return this;
-    }
-
-    public ExpressaoCondicionanteConsultaDTO operador(String operador) {
-        this.operador = operador;
         return this;
     }
 
@@ -119,6 +114,11 @@ public class ExpressaoCondicionanteConsultaDTO {
 
     public ExpressaoCondicionanteConsultaDTO condicao(ExpressaoCondicionanteConsultaDTO condicao) {
         this.condicao = condicao;
+        return this;
+    }
+
+    public ExpressaoCondicionanteConsultaDTO operador(String operador) {
+        this.operador = operador;
         return this;
     }
 

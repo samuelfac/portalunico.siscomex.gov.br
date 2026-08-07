@@ -58,17 +58,6 @@ public class Transportador {
     private String nomeCondutorEstrangeiro = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do transportador&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Deve ser informado somente quando cpf e nomeEstrangeiro não forem informados.
      *
      * @return cnpj
@@ -80,6 +69,17 @@ public class Transportador {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -101,11 +101,6 @@ public class Transportador {
         return this;
     }
 
-    public Transportador cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Nome do transportador quando for estrangeiro&lt;br&gt;Tamanho: 60&lt;br&gt;Deve ser informado somente quando cnpj e cpf não forem informados.
      *
@@ -118,6 +113,11 @@ public class Transportador {
 
     public void setNomeEstrangeiro(String nomeEstrangeiro) {
         this.nomeEstrangeiro = nomeEstrangeiro;
+    }
+
+    public Transportador cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**

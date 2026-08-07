@@ -49,12 +49,7 @@ public class SefazCreditoIcmsDto {
      * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
      **/
     private String numeroDeclaracao = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
-    /**
-     * Tipo de solicitação
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
+
 
     @XmlElement(name = "tipoDeclaracao", required = true)
     @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
@@ -62,25 +57,13 @@ public class SefazCreditoIcmsDto {
      * Tipo da declaração no Comércio Exterior
      **/
     private TipoDeclaracaoEnum tipoDeclaracao = null;
-    @XmlElement(name = "ufFavorecida", required = true)
-    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
+
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
     /**
-     * UF favorecida
+     * Tipo de solicitação
      **/
-    private UfFavorecidaEnum ufFavorecida = null;
-    @XmlElement(name = "valorTotalCredito", required = true)
-    @ApiModelProperty(example = "103.2", required = true, value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorTotalCredito = null;
-    @XmlElement(name = "versaoDeclaracao", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
-    /**
-     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
-     **/
-    private String versaoDeclaracao = null;
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -92,6 +75,79 @@ public class SefazCreditoIcmsDto {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @Override
+    public String toString() {
+
+        String sb = "class SefazCreditoIcmsDto {\n" +
+                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
+                "    guias: " + toIndentedString(guias) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
+                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
+                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
+                "}";
+        return sb;
+    }
+
+
+    @XmlType(name = "TipoDeclaracaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDeclaracaoEnum {
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TipoDeclaracaoEnum(String v) {
+            value = v;
+        }
+
+        public static TipoDeclaracaoEnum fromValue(String v) {
+            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+    }
+
+    @XmlElement(name = "ufFavorecida", required = true)
+    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
+    /**
+     * UF favorecida
+     **/
+    private UfFavorecidaEnum ufFavorecida = null;
+
+    @XmlElement(name = "valorTotalCredito", required = true)
+    @ApiModelProperty(example = "103.2", required = true, value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorTotalCredito = null;
+
+    @XmlElement(name = "versaoDeclaracao", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
+    /**
+     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
+     **/
+    private String versaoDeclaracao = null;
 
     /**
      * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
@@ -266,56 +322,6 @@ public class SefazCreditoIcmsDto {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SefazCreditoIcmsDto {\n" +
-                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
-                "    guias: " + toIndentedString(guias) + "\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
-                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
-                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
-                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
-                "}";
-        return sb;
-    }
-
-    @XmlType(name = "TipoDeclaracaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDeclaracaoEnum {
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TipoDeclaracaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDeclaracaoEnum fromValue(String v) {
-            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
 
     @XmlType(name = "TipoSolicitacaoEnum")
     @XmlEnum(String.class)
@@ -348,15 +354,6 @@ public class SefazCreditoIcmsDto {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoSolicitacaoEnum fromValue(String v) {
             for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -364,6 +361,15 @@ public class SefazCreditoIcmsDto {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 
@@ -486,15 +492,6 @@ public class SefazCreditoIcmsDto {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static UfFavorecidaEnum fromValue(String v) {
             for (UfFavorecidaEnum b : UfFavorecidaEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -502,6 +499,15 @@ public class SefazCreditoIcmsDto {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to UfFavorecidaEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

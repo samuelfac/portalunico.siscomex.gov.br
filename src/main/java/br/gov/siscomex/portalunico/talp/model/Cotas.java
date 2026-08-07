@@ -102,17 +102,6 @@ public class Cotas {
     private String moedaValorCondicaoVenda = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Título da seção do LPCO ao qual os saldos estão vinculados&lt;br&gt;Formato: será &#39;LPCO&#39; para campos de saldo na seção Dados Gerais, ou &#39;Item N - NCM NNNNNNNN&#39; para campos vinculados a uma mercadoria do LPCO
      *
      * @return titulo
@@ -166,6 +155,17 @@ public class Cotas {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Saldo disponível para o campo VMLE, se houver&lt;br&gt;Tamanho: 15,2 + &lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto
      *
      * @return saldoVMLE
@@ -184,11 +184,6 @@ public class Cotas {
         return this;
     }
 
-    public Cotas saldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
-        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
-        return this;
-    }
-
     /**
      * Saldo disponível para o campo PESO_LIQUIDO, se houver&lt;br&gt;Tamanho: 14,5 + &lt;br&gt;Formato: Decimal, com até 6 casas decimais separadas por ponto
      *
@@ -201,6 +196,11 @@ public class Cotas {
 
     public void setSaldoPesoLiquido(BigDecimal saldoPesoLiquido) {
         this.saldoPesoLiquido = saldoPesoLiquido;
+    }
+
+    public Cotas saldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
+        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
+        return this;
     }
 
     /**
@@ -241,14 +241,8 @@ public class Cotas {
         return this;
     }
 
-    public Cotas saldoPesoLiquido(BigDecimal saldoPesoLiquido) {
-        this.saldoPesoLiquido = saldoPesoLiquido;
-        return this;
-    }
-
     /**
      * Símbolo da moeda associada ao saldo do campo VMLE&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
-     *
      * @return moedaVmle
      **/
     @JsonProperty("moedaVmle")
@@ -258,6 +252,11 @@ public class Cotas {
 
     public void setMoedaVmle(String moedaVmle) {
         this.moedaVmle = moedaVmle;
+    }
+
+    public Cotas saldoPesoLiquido(BigDecimal saldoPesoLiquido) {
+        this.saldoPesoLiquido = saldoPesoLiquido;
+        return this;
     }
 
     /**
@@ -279,11 +278,6 @@ public class Cotas {
         return this;
     }
 
-    public Cotas moedaVmle(String moedaVmle) {
-        this.moedaVmle = moedaVmle;
-        return this;
-    }
-
     /**
      * Símbolo da moeda associada ao saldo do campo Valor na Condição de Venda&lt;br&gt;Tamanho mínimo: 3&lt;br&gt;Tamanho máximo: 3
      *
@@ -300,6 +294,11 @@ public class Cotas {
 
     public Cotas moedaValorCondicaoVenda(String moedaValorCondicaoVenda) {
         this.moedaValorCondicaoVenda = moedaValorCondicaoVenda;
+        return this;
+    }
+
+    public Cotas moedaVmle(String moedaVmle) {
+        this.moedaVmle = moedaVmle;
         return this;
     }
 

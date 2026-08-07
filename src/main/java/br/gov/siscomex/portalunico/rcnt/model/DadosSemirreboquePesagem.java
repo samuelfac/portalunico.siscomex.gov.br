@@ -70,17 +70,6 @@ public class DadosSemirreboquePesagem {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;listaSemirreboque.ocrPlaca&#39; quando o atributo &#39;listaSemirreboque.placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return ocrPlaca
@@ -92,6 +81,17 @@ public class DadosSemirreboquePesagem {
 
     public void setOcrPlaca(Boolean ocrPlaca) {
         this.ocrPlaca = ocrPlaca;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -113,11 +113,6 @@ public class DadosSemirreboquePesagem {
         return this;
     }
 
-    public DadosSemirreboquePesagem ocrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
-        return this;
-    }
-
     /**
      * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar pelo menos um dos seguintes atributos: &#39;taraConjunto&#39;, &#39;listaSemirreboque.tara&#39;, quando o atributo &#39;listaSemirreboque.placa&#39; estiver informado.&lt;br/&gt;tara, até 4 casas decimais.
      *
@@ -134,6 +129,11 @@ public class DadosSemirreboquePesagem {
 
     public DadosSemirreboquePesagem tara(BigDecimal tara) {
         this.tara = tara;
+        return this;
+    }
+
+    public DadosSemirreboquePesagem ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
         return this;
     }
 

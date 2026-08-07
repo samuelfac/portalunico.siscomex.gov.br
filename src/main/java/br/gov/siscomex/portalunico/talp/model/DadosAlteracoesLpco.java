@@ -79,17 +79,6 @@ public class DadosAlteracoesLpco {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indica o a qual item de NCM ao qual o campo está vinculado, ou se campo está vinculado aos Dados Gerais do LPCO&lt;br&gt;Tamanho mínimo:1&lt;br&gt;Tamanho máximo:30
      *
      * @return origem
@@ -102,6 +91,17 @@ public class DadosAlteracoesLpco {
 
     public void setOrigem(String origem) {
         this.origem = origem;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -124,11 +124,6 @@ public class DadosAlteracoesLpco {
         return this;
     }
 
-    public DadosAlteracoesLpco origem(String origem) {
-        this.origem = origem;
-        return this;
-    }
-
     /**
      * Valor original do campo antes da solicitação de retificação&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10000
      *
@@ -141,6 +136,11 @@ public class DadosAlteracoesLpco {
 
     public void setValorOriginal(String valorOriginal) {
         this.valorOriginal = valorOriginal;
+    }
+
+    public DadosAlteracoesLpco origem(String origem) {
+        this.origem = origem;
+        return this;
     }
 
     /**

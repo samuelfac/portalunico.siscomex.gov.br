@@ -67,6 +67,16 @@ public class TratamentoTributoDto {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class TratamentoTributoDto {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    tributo: " + toIndentedString(tributo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -76,15 +86,5 @@ public class TratamentoTributoDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class TratamentoTributoDto {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    tributo: " + toIndentedString(tributo) + "\n" +
-                "}";
-        return sb;
     }
 }

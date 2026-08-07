@@ -125,17 +125,6 @@ public class RetificacaoLpcoResponse {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de alterações realizadas na retificação
      *
      * @return listaAlteracoes
@@ -153,6 +142,17 @@ public class RetificacaoLpcoResponse {
     public RetificacaoLpcoResponse listaAlteracoes(List<DadosAlteracoesLpco> listaAlteracoes) {
         this.listaAlteracoes = listaAlteracoes;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -174,11 +174,6 @@ public class RetificacaoLpcoResponse {
         return this;
     }
 
-    public RetificacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
-        this.listaAlteracoes.add(listaAlteracoesItem);
-        return this;
-    }
-
     /**
      * Número da versão do LPCO com os dados retificados.
      *
@@ -196,6 +191,11 @@ public class RetificacaoLpcoResponse {
 
     public RetificacaoLpcoResponse numeroVersao(Integer numeroVersao) {
         this.numeroVersao = numeroVersao;
+        return this;
+    }
+
+    public RetificacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
+        this.listaAlteracoes.add(listaAlteracoesItem);
         return this;
     }
 

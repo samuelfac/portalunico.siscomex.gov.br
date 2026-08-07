@@ -48,6 +48,8 @@ public class DossieOperacao {
      * CPF do usuário que vinculou o dossiê sem formatação.<br/>Tamanho: 11
      **/
     private String cpfVinculacao = null;
+
+
     @XmlElement(name = "descricaoDossie", required = true)
     @ApiModelProperty(example = "Dossiê de exemplo", required = true, value = "Descrição do dossiê.<br/>Tamanho máximo: 255")
     /**
@@ -75,35 +77,6 @@ public class DossieOperacao {
      * Data/hora da vinculação do  dossiê à operação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
      **/
     private OffsetDateTime dataHoraVinculacao = null;
-    @XmlElement(name = "documentos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Documento> documentos = null;
-    @XmlElement(name = "dossiesVinculados")
-    @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
-    @Valid
-    /**
-     * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação.
-     **/
-    private List<DossieVinculado> dossiesVinculados = null;
-    @XmlElement(name = "idTipoDossie", required = true)
-    @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
-    /**
-     * Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
-     **/
-    private Long idTipoDossie = null;
-    @XmlElement(name = "nomeTipoDossie")
-    @ApiModelProperty(example = "Dossiê de Importação", value = "Nome do tipo de dossiê.<br/>Tamanho máximo: 255")
-    /**
-     * Nome do tipo de dossiê.<br/>Tamanho máximo: 255
-     **/
-    private String nomeTipoDossie = null;
-    @XmlElement(name = "numeroDossie", required = true)
-    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
-    /**
-     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
-     **/
-    private String numeroDossie = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -115,6 +88,51 @@ public class DossieOperacao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "documentos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Documento> documentos = null;
+
+    @XmlElement(name = "dossiesVinculados")
+    @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
+    @Valid
+    /**
+     * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação.
+     **/
+    private List<DossieVinculado> dossiesVinculados = null;
+
+    @XmlElement(name = "idTipoDossie", required = true)
+    @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
+    /**
+     * Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
+     **/
+    private Long idTipoDossie = null;
+
+    @XmlElement(name = "nomeTipoDossie")
+    @ApiModelProperty(example = "Dossiê de Importação", value = "Nome do tipo de dossiê.<br/>Tamanho máximo: 255")
+    /**
+     * Nome do tipo de dossiê.<br/>Tamanho máximo: 255
+     **/
+    private String nomeTipoDossie = null;
+
+    @XmlElement(name = "numeroDossie", required = true)
+    @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
+    /**
+     * Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN
+     **/
+    private String numeroDossie = null;
+
+    /**
+     * Data/hora da vinculação do  dossiê à operação.&lt;br/&gt;Formato ISO 8601: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz
+     *
+     * @return dataHoraVinculacao
+     **/
+    @JsonProperty("dataHoraVinculacao")
+    public OffsetDateTime getDataHoraVinculacao() {
+        return dataHoraVinculacao;
+    }
+
     @XmlElement(name = "vinculadoPor", required = true)
     @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que vinculou o dossiê.")
     /**
@@ -183,16 +201,6 @@ public class DossieOperacao {
     }
 
     /**
-     * Data/hora da vinculação do  dossiê à operação.&lt;br/&gt;Formato ISO 8601: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSz
-     *
-     * @return dataHoraVinculacao
-     **/
-    @JsonProperty("dataHoraVinculacao")
-    public OffsetDateTime getDataHoraVinculacao() {
-        return dataHoraVinculacao;
-    }
-
-    /**
      * Tipo de usuário/órgão que criou o documento.
      *
      * @return criadoPor
@@ -235,6 +243,17 @@ public class DossieOperacao {
         return this;
     }
 
+    /**
+     * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
+     *
+     * @return idTipoDossie
+     **/
+    @JsonProperty("idTipoDossie")
+    @NotNull
+    public Long getIdTipoDossie() {
+        return idTipoDossie;
+    }
+
     public void setDataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
         this.dataHoraVinculacao = dataHoraVinculacao;
     }
@@ -262,17 +281,6 @@ public class DossieOperacao {
     public DossieOperacao descricaoDossie(String descricaoDossie) {
         this.descricaoDossie = descricaoDossie;
         return this;
-    }
-
-    /**
-     * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
-     *
-     * @return idTipoDossie
-     **/
-    @JsonProperty("idTipoDossie")
-    @NotNull
-    public Long getIdTipoDossie() {
-        return idTipoDossie;
     }
 
     /**
@@ -323,6 +331,17 @@ public class DossieOperacao {
         return this;
     }
 
+    /**
+     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     *
+     * @return numeroDossie
+     **/
+    @JsonProperty("numeroDossie")
+    @NotNull
+    public String getNumeroDossie() {
+        return numeroDossie;
+    }
+
     public void setIdTipoDossie(Long idTipoDossie) {
         this.idTipoDossie = idTipoDossie;
     }
@@ -351,25 +370,6 @@ public class DossieOperacao {
         return this;
     }
 
-    /**
-     * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
-     * @return numeroDossie
-     **/
-    @JsonProperty("numeroDossie")
-    @NotNull
-    public String getNumeroDossie() {
-        return numeroDossie;
-    }
-
-    public void setNumeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
-    }
-
-    public DossieOperacao numeroDossie(String numeroDossie) {
-        this.numeroDossie = numeroDossie;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -389,6 +389,15 @@ public class DossieOperacao {
                 "    vinculadoPor: " + toIndentedString(vinculadoPor) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setNumeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
+    }
+
+    public DossieOperacao numeroDossie(String numeroDossie) {
+        this.numeroDossie = numeroDossie;
+        return this;
     }
 
     /**

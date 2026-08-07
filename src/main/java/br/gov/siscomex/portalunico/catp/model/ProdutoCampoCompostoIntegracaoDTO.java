@@ -80,6 +80,16 @@ public class ProdutoCampoCompostoIntegracaoDTO {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ProdutoCampoCompostoIntegracaoDTO {\n" +
+                "    valores: " + toIndentedString(valores) + "\n" +
+                "    atributo: " + toIndentedString(atributo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -89,15 +99,5 @@ public class ProdutoCampoCompostoIntegracaoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ProdutoCampoCompostoIntegracaoDTO {\n" +
-                "    valores: " + toIndentedString(valores) + "\n" +
-                "    atributo: " + toIndentedString(atributo) + "\n" +
-                "}";
-        return sb;
     }
 }

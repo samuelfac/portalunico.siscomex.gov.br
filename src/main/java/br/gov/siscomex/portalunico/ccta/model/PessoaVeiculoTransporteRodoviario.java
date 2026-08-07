@@ -48,17 +48,6 @@ public class PessoaVeiculoTransporteRodoviario {
     private String numeroDocumento = null;
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "Classificação da pessoa do veículo")
-    /**
-     * Classificação da pessoa do veículo
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoDocumento tipoDocumento = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -69,6 +58,18 @@ public class PessoaVeiculoTransporteRodoviario {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "Classificação da pessoa do veículo")
+    /**
+     * Classificação da pessoa do veículo
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoDocumento tipoDocumento = null;
 
     /**
      * Get acompanhantes
@@ -191,7 +192,6 @@ public class PessoaVeiculoTransporteRodoviario {
         this.tipoDocumento = tipoDocumento;
         return this;
     }
-
 
     @Override
     public String toString() {

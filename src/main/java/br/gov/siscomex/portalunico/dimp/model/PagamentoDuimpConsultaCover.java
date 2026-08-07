@@ -55,17 +55,6 @@ public class PagamentoDuimpConsultaCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get principal
      *
      * @return principal
@@ -82,6 +71,18 @@ public class PagamentoDuimpConsultaCover {
     public PagamentoDuimpConsultaCover principal(DadosPagamentoCover principal) {
         this.principal = principal;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

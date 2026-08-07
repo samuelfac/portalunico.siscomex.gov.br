@@ -49,6 +49,15 @@ public class RetornoManifestoCrt {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class RetornoManifestoCrt {\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -58,14 +67,5 @@ public class RetornoManifestoCrt {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoManifestoCrt {\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
-                "}";
-        return sb;
     }
 }

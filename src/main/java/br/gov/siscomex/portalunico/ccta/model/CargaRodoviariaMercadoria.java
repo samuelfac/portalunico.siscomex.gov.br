@@ -75,17 +75,6 @@ public class CargaRodoviariaMercadoria {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da mercadoria&lt;br/&gt; Tamanho Máximo: 500
      *
      * @return descricao
@@ -97,6 +86,17 @@ public class CargaRodoviariaMercadoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -115,11 +115,6 @@ public class CargaRodoviariaMercadoria {
 
     public CargaRodoviariaMercadoria pesoBruto(BigDecimal pesoBruto) {
         this.pesoBruto = pesoBruto;
-        return this;
-    }
-
-    public CargaRodoviariaMercadoria descricao(String descricao) {
-        this.descricao = descricao;
         return this;
     }
 
@@ -158,6 +153,11 @@ public class CargaRodoviariaMercadoria {
 
     public CargaRodoviariaMercadoria sequencial(BigDecimal sequencial) {
         this.sequencial = sequencial;
+        return this;
+    }
+
+    public CargaRodoviariaMercadoria descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 

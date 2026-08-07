@@ -70,17 +70,6 @@ public class CondicaoEntregaImportador {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da condição&lt;br/&gt;Tamanho máximo: 300
      *
      * @return descricao
@@ -92,6 +81,17 @@ public class CondicaoEntregaImportador {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

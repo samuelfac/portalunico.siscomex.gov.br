@@ -47,6 +47,7 @@ public class ComponenteDeFrete {
      **/
     private BigDecimal valorMoeda = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -162,7 +163,6 @@ public class ComponenteDeFrete {
         this.pagamento = pagamento;
         return this;
     }
-
 
     @Override
     public String toString() {

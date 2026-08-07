@@ -58,6 +58,7 @@ public class RetornoConsultarDocumentoPorOperacao {
      **/
     private String numeroOperacao = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -190,7 +191,6 @@ public class RetornoConsultarDocumentoPorOperacao {
         this.tipoOperacao = tipoOperacao;
         return this;
     }
-
 
     @Override
     public String toString() {

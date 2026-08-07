@@ -82,17 +82,6 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código numérico identificador do país.&lt;br/&gt;Origem: &lt;a href&#x3D;\&quot;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf\&quot; target&#x3D;\&quot;blank\&quot;&gt;Sistema de Tabelas Aduaneiras - País&lt;/a&gt;
      *
      * @return codigoPais
@@ -105,6 +94,17 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
 
     public void setCodigoPais(Long codigoPais) {
         this.codigoPais = codigoPais;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -146,11 +146,6 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
         return this;
     }
 
-    public ChamadaObterTratamentosTributariosImportacaoDTO codigoPais(Long codigoPais) {
-        this.codigoPais = codigoPais;
-        return this;
-    }
-
     /**
      * Opção de informar uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional ou uma Lista de Tributo/Regime/Fundamento Legal de tipo de uso Opcional/Nomenclatura alternativa.
      *
@@ -172,6 +167,11 @@ public class ChamadaObterTratamentosTributariosImportacaoDTO {
 
     public ChamadaObterTratamentosTributariosImportacaoDTO addFundamentosOpcionaisItem(FundamentoLegalOpcionalDTO fundamentosOpcionaisItem) {
         this.fundamentosOpcionais.add(fundamentosOpcionaisItem);
+        return this;
+    }
+
+    public ChamadaObterTratamentosTributariosImportacaoDTO codigoPais(Long codigoPais) {
+        this.codigoPais = codigoPais;
         return this;
     }
 

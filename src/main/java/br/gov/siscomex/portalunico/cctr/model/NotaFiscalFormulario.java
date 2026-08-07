@@ -87,17 +87,6 @@ public class NotaFiscalFormulario {
     private ItensNFF itensNFF = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da nota fiscal&lt;br&gt;Tamanho: 9&lt;br&gt;Não será permitida a inclusão de notas fiscais duplicadas (Atributos idênticos para: numeroNF, serieNF, modeloNF, AAMM, ufEmissor, dataEmissao e identificacaoEmissor).
      *
      * @return numeroNF
@@ -110,6 +99,17 @@ public class NotaFiscalFormulario {
 
     public void setNumeroNF(String numeroNF) {
         this.numeroNF = numeroNF;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -129,11 +129,6 @@ public class NotaFiscalFormulario {
 
     public NotaFiscalFormulario serieNF(String serieNF) {
         this.serieNF = serieNF;
-        return this;
-    }
-
-    public NotaFiscalFormulario numeroNF(String numeroNF) {
-        this.numeroNF = numeroNF;
         return this;
     }
 
@@ -170,6 +165,11 @@ public class NotaFiscalFormulario {
 
     public void setAamm(String aamm) {
         this.aamm = aamm;
+    }
+
+    public NotaFiscalFormulario numeroNF(String numeroNF) {
+        this.numeroNF = numeroNF;
+        return this;
     }
 
     /**
@@ -212,11 +212,6 @@ public class NotaFiscalFormulario {
         return this;
     }
 
-    public NotaFiscalFormulario aamm(String aamm) {
-        this.aamm = aamm;
-        return this;
-    }
-
     /**
      * Get identificacaoEmissor
      *
@@ -230,6 +225,11 @@ public class NotaFiscalFormulario {
 
     public void setIdentificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
         this.identificacaoEmissor = identificacaoEmissor;
+    }
+
+    public NotaFiscalFormulario aamm(String aamm) {
+        this.aamm = aamm;
+        return this;
     }
 
     /**
@@ -252,14 +252,8 @@ public class NotaFiscalFormulario {
         return this;
     }
 
-    public NotaFiscalFormulario identificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
-        this.identificacaoEmissor = identificacaoEmissor;
-        return this;
-    }
-
     /**
      * Get conteineres
-     *
      * @return conteineres
      **/
     @JsonProperty("conteineres")
@@ -279,7 +273,6 @@ public class NotaFiscalFormulario {
 
     /**
      * Get itensNFF
-     *
      * @return itensNFF
      **/
     @JsonProperty("itensNFF")
@@ -294,6 +287,11 @@ public class NotaFiscalFormulario {
 
     public NotaFiscalFormulario itensNFF(ItensNFF itensNFF) {
         this.itensNFF = itensNFF;
+        return this;
+    }
+
+    public NotaFiscalFormulario identificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
+        this.identificacaoEmissor = identificacaoEmissor;
         return this;
     }
 

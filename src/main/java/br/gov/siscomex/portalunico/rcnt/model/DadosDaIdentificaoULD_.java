@@ -53,17 +53,6 @@ public class DadosDaIdentificaoULD_ {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da ULD &lt;br/&gt;Tamanho: 10
      *
      * @return identificacaoUld
@@ -80,6 +69,18 @@ public class DadosDaIdentificaoULD_ {
     public DadosDaIdentificaoULD_ identificacaoUld(String identificacaoUld) {
         this.identificacaoUld = identificacaoUld;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

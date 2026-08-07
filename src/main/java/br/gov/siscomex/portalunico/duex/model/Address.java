@@ -45,6 +45,15 @@ public class Address {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class Address {\n" +
+                "    line: " + toIndentedString(line) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -54,14 +63,5 @@ public class Address {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class Address {\n" +
-                "    line: " + toIndentedString(line) + "\n" +
-                "}";
-        return sb;
     }
 }

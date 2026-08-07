@@ -69,17 +69,6 @@ public class ValidacaoCampoLpco {
     private List<IdDescricao> dominios = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indica se o campo é obrigatório. Caso seja um atributo condicionado e esteja marcado como obrigatório, ele deverá ser preenchido se a condição for cumprida.
      *
      * @return obrigatorio
@@ -92,6 +81,17 @@ public class ValidacaoCampoLpco {
 
     public void setObrigatorio(Boolean obrigatorio) {
         this.obrigatorio = obrigatorio;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -111,11 +111,6 @@ public class ValidacaoCampoLpco {
 
     public ValidacaoCampoLpco permiteMultiplosValores(Boolean permiteMultiplosValores) {
         this.permiteMultiplosValores = permiteMultiplosValores;
-        return this;
-    }
-
-    public ValidacaoCampoLpco obrigatorio(Boolean obrigatorio) {
-        this.obrigatorio = obrigatorio;
         return this;
     }
 
@@ -150,6 +145,11 @@ public class ValidacaoCampoLpco {
 
     public void setTamanhoMaximo(Integer tamanhoMaximo) {
         this.tamanhoMaximo = tamanhoMaximo;
+    }
+
+    public ValidacaoCampoLpco obrigatorio(Boolean obrigatorio) {
+        this.obrigatorio = obrigatorio;
+        return this;
     }
 
     /**

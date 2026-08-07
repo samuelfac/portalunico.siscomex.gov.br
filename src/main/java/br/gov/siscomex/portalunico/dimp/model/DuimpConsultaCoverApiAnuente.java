@@ -96,17 +96,6 @@ public class DuimpConsultaCoverApiAnuente {
     private List<ItemConsultaDuimpCover> itens = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get identificacao
      *
      * @return identificacao
@@ -118,6 +107,17 @@ public class DuimpConsultaCoverApiAnuente {
 
     public void setIdentificacao(IdentificacaoDuimpConsultaCover identificacao) {
         this.identificacao = identificacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -163,11 +163,6 @@ public class DuimpConsultaCoverApiAnuente {
         return this;
     }
 
-    public DuimpConsultaCoverApiAnuente identificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
     /**
      * Get resultadoAnaliseRisco
      *
@@ -201,6 +196,11 @@ public class DuimpConsultaCoverApiAnuente {
         this.carga = carga;
     }
 
+    public DuimpConsultaCoverApiAnuente identificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
+
     /**
      * Get documentos
      *
@@ -217,11 +217,6 @@ public class DuimpConsultaCoverApiAnuente {
 
     public DuimpConsultaCoverApiAnuente documentos(DocumentosDuimpConsultaCover documentos) {
         this.documentos = documentos;
-        return this;
-    }
-
-    public DuimpConsultaCoverApiAnuente carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
         return this;
     }
 
@@ -263,6 +258,11 @@ public class DuimpConsultaCoverApiAnuente {
         this.tributos = tributos;
     }
 
+    public DuimpConsultaCoverApiAnuente carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
+        return this;
+    }
+
     /**
      * Dados dos Pagamentos.&lt;br&gt;Estes dados fazem parte da aba &#39;Resumo&#39; da Duimp.&lt;br&gt;Eles são retornados apenas para o Gestor (SECEX)
      *
@@ -287,11 +287,6 @@ public class DuimpConsultaCoverApiAnuente {
         return this;
     }
 
-    public DuimpConsultaCoverApiAnuente tributos(TributoConsultaDuimpCoverApiAnuente tributos) {
-        this.tributos = tributos;
-        return this;
-    }
-
     /**
      * Get tratamentoAdministrativo
      *
@@ -304,6 +299,11 @@ public class DuimpConsultaCoverApiAnuente {
 
     public void setTratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
         this.tratamentoAdministrativo = tratamentoAdministrativo;
+    }
+
+    public DuimpConsultaCoverApiAnuente tributos(TributoConsultaDuimpCoverApiAnuente tributos) {
+        this.tributos = tributos;
+        return this;
     }
 
     /**
@@ -321,11 +321,6 @@ public class DuimpConsultaCoverApiAnuente {
 
     public DuimpConsultaCoverApiAnuente quantidadeItens(Integer quantidadeItens) {
         this.quantidadeItens = quantidadeItens;
-        return this;
-    }
-
-    public DuimpConsultaCoverApiAnuente tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
-        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 
@@ -349,6 +344,11 @@ public class DuimpConsultaCoverApiAnuente {
 
     public DuimpConsultaCoverApiAnuente addItensItem(ItemConsultaDuimpCover itensItem) {
         this.itens.add(itensItem);
+        return this;
+    }
+
+    public DuimpConsultaCoverApiAnuente tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
+        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 

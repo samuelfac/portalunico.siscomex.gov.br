@@ -76,17 +76,6 @@ public class ItemNFF {
     private String quantidadeMedidaEstatistica = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do item&lt;br&gt;Tamanho: 3&lt;br&gt;Formato: NNN&lt;br&gt;Não será permitida a inclusão de itens duplicados.
      *
      * @return numeroItem
@@ -99,6 +88,17 @@ public class ItemNFF {
 
     public void setNumeroItem(String numeroItem) {
         this.numeroItem = numeroItem;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -141,11 +141,6 @@ public class ItemNFF {
         return this;
     }
 
-    public ItemNFF numeroItem(String numeroItem) {
-        this.numeroItem = numeroItem;
-        return this;
-    }
-
     /**
      * Descrição do produto&lt;br&gt;Tamanho: 256
      *
@@ -159,6 +154,11 @@ public class ItemNFF {
 
     public void setDescricaoProduto(String descricaoProduto) {
         this.descricaoProduto = descricaoProduto;
+    }
+
+    public ItemNFF numeroItem(String numeroItem) {
+        this.numeroItem = numeroItem;
+        return this;
     }
 
     /**
@@ -181,11 +181,6 @@ public class ItemNFF {
         return this;
     }
 
-    public ItemNFF descricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
-        return this;
-    }
-
     /**
      * Valor total&lt;br&gt;Tamanho: 15.2&lt;br&gt;Formato: Decimal, com duas casas decimais separadas por ponto
      *
@@ -199,6 +194,11 @@ public class ItemNFF {
 
     public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public ItemNFF descricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
+        return this;
     }
 
     /**

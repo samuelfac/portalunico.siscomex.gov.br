@@ -30,6 +30,8 @@ public class MercadoriaCover {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private TipoAplicacaoCover tipoAplicacao = null;
+
+
     @XmlElement(name = "unidadeComercial", required = true)
     @ApiModelProperty(example = "SACAS", required = true, value = "Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
     /**
@@ -68,12 +70,6 @@ public class MercadoriaCover {
      * Peso líquido, em quilogramas, que corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private String pesoLiquido = null;
-    @XmlElement(name = "valorUnitarioMoedaNegociada", required = true)
-    @ApiModelProperty(example = "10", required = true, value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    /**
-     * Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private String valorUnitarioMoedaNegociada = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -85,6 +81,13 @@ public class MercadoriaCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "valorUnitarioMoedaNegociada", required = true)
+    @ApiModelProperty(example = "10", required = true, value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    /**
+     * Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private String valorUnitarioMoedaNegociada = null;
 
     @XmlElement(name = "descricao")
     @ApiModelProperty(example = "Texto de exemplo.", value = "Descrição complementar da mercadoria.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
@@ -273,7 +276,6 @@ public class MercadoriaCover {
         this.descricao = descricao;
         return this;
     }
-
 
     @Override
     public String toString() {

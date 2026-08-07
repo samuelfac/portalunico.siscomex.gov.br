@@ -59,17 +59,6 @@ public class Mercadoria {
     private BigDecimal sequencial = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da mercadoria&lt;br/&gt; Tamanho Máximo: 500
      *
      * @return descricao
@@ -82,6 +71,17 @@ public class Mercadoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -103,11 +103,6 @@ public class Mercadoria {
         return this;
     }
 
-    public Mercadoria descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Peso da mercadoria em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      *
@@ -120,6 +115,11 @@ public class Mercadoria {
 
     public void setPesoKg(BigDecimal pesoKg) {
         this.pesoKg = pesoKg;
+    }
+
+    public Mercadoria descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -141,11 +141,6 @@ public class Mercadoria {
         return this;
     }
 
-    public Mercadoria pesoKg(BigDecimal pesoKg) {
-        this.pesoKg = pesoKg;
-        return this;
-    }
-
     /**
      * Número sequencial da mercadoria&lt;br&gt;Pelo menos uma mercadoria é obrigatória&lt;br/&gt; Tamanho Máximo: 4
      *
@@ -163,6 +158,11 @@ public class Mercadoria {
 
     public Mercadoria sequencial(BigDecimal sequencial) {
         this.sequencial = sequencial;
+        return this;
+    }
+
+    public Mercadoria pesoKg(BigDecimal pesoKg) {
+        this.pesoKg = pesoKg;
         return this;
     }
 

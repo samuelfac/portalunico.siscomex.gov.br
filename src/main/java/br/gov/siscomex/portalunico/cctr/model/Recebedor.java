@@ -52,17 +52,6 @@ public class Recebedor {
     private Integer viaTransporte = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do recebedor&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado apenas quando o recebedor for nacional e pessoa jurídica.
      *
      * @return cnpj
@@ -74,6 +63,17 @@ public class Recebedor {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -95,11 +95,6 @@ public class Recebedor {
         return this;
     }
 
-    public Recebedor cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Nome do recebedor&lt;br&gt;Tamanho: 60&lt;br&gt;Informado apenas quando o recebedor for estrangeiro.
      *
@@ -112,6 +107,11 @@ public class Recebedor {
 
     public void setNomeEstrangeiro(String nomeEstrangeiro) {
         this.nomeEstrangeiro = nomeEstrangeiro;
+    }
+
+    public Recebedor cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**

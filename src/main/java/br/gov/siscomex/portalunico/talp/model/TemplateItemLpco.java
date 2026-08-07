@@ -64,17 +64,6 @@ public class TemplateItemLpco {
     private String unidadeMedidaEstatistica = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código NCM informado para pesquisa do modelo&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: NNNNNNNN
      *
      * @return ncm
@@ -107,6 +96,17 @@ public class TemplateItemLpco {
 
     public void setDescricaoNcm(String descricaoNcm) {
         this.descricaoNcm = descricaoNcm;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -159,11 +159,6 @@ public class TemplateItemLpco {
         return this;
     }
 
-    public TemplateItemLpco descricaoNcm(String descricaoNcm) {
-        this.descricaoNcm = descricaoNcm;
-        return this;
-    }
-
     /**
      * Unidade de medida estatística utilizada para esta NCM. É um campo apenas informativo, e não precisa ser enviado no atributo \&quot;unidadeMedida\&quot; do campo QTD_ESTATISTICA na inclusão/alteração do LPCO&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 60
      *
@@ -180,6 +175,11 @@ public class TemplateItemLpco {
 
     public TemplateItemLpco unidadeMedidaEstatistica(String unidadeMedidaEstatistica) {
         this.unidadeMedidaEstatistica = unidadeMedidaEstatistica;
+        return this;
+    }
+
+    public TemplateItemLpco descricaoNcm(String descricaoNcm) {
+        this.descricaoNcm = descricaoNcm;
         return this;
     }
 

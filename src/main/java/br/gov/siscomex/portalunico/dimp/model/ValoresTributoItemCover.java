@@ -81,17 +81,6 @@ public class ValoresTributoItemCover {
     private BigDecimal calculadoPagProporcional = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor Calculado do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return calculado
@@ -125,6 +114,17 @@ public class ValoresTributoItemCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Valor Devido do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return devido
@@ -143,11 +143,6 @@ public class ValoresTributoItemCover {
         return this;
     }
 
-    public ValoresTributoItemCover aReduzir(BigDecimal aReduzir) {
-        this.aReduzir = aReduzir;
-        return this;
-    }
-
     /**
      * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
@@ -160,6 +155,11 @@ public class ValoresTributoItemCover {
 
     public void setSuspenso(BigDecimal suspenso) {
         this.suspenso = suspenso;
+    }
+
+    public ValoresTributoItemCover aReduzir(BigDecimal aReduzir) {
+        this.aReduzir = aReduzir;
+        return this;
     }
 
     /**
@@ -200,11 +200,6 @@ public class ValoresTributoItemCover {
         return this;
     }
 
-    public ValoresTributoItemCover suspenso(BigDecimal suspenso) {
-        this.suspenso = suspenso;
-        return this;
-    }
-
     /**
      * Valor do Tributo Calculado do Pagamento Proporcional em R$ (Reais), para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
@@ -221,6 +216,11 @@ public class ValoresTributoItemCover {
 
     public ValoresTributoItemCover calculadoPagProporcional(BigDecimal calculadoPagProporcional) {
         this.calculadoPagProporcional = calculadoPagProporcional;
+        return this;
+    }
+
+    public ValoresTributoItemCover suspenso(BigDecimal suspenso) {
+        this.suspenso = suspenso;
         return this;
     }
 

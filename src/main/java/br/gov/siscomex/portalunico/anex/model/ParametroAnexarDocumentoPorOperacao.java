@@ -74,6 +74,8 @@ public class ParametroAnexarDocumentoPorOperacao {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave = new ArrayList<>();
+
+
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "DI", required = true, value = "DI - Declaração de Importação<br/>LI - Licença de Importação<br/>RE - Registro de Exportação<br/>DT - Declaração de Trânsito<br/>DIR - Declaração de Importação de Remessa<br/>CATP - Catálogo de Produtos<br/>DUE - Declaração Única de Exportação<br/>DUIMP - Declaração Única de Importação,<br/>LPCO - Tratamento Administrativo/LPCO<br/></br>")
     /**
@@ -129,15 +131,6 @@ public class ParametroAnexarDocumentoPorOperacao {
         return this;
     }
 
-    public void setArquivo(String arquivo) {
-        this.arquivo = arquivo;
-    }
-
-    public ParametroAnexarDocumentoPorOperacao arquivo(String arquivo) {
-        this.arquivo = arquivo;
-        return this;
-    }
-
     /**
      * Get palavrasChave
      *
@@ -147,6 +140,15 @@ public class ParametroAnexarDocumentoPorOperacao {
     @NotNull
     public List<ConteudoPalavraChaveDocumentoCommandApi> getPalavrasChave() {
         return palavrasChave;
+    }
+
+    public void setArquivo(String arquivo) {
+        this.arquivo = arquivo;
+    }
+
+    public ParametroAnexarDocumentoPorOperacao arquivo(String arquivo) {
+        this.arquivo = arquivo;
+        return this;
     }
 
     /**
@@ -233,20 +235,6 @@ public class ParametroAnexarDocumentoPorOperacao {
         return this;
     }
 
-    public void setPalavrasChave(List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave) {
-        this.palavrasChave = palavrasChave;
-    }
-
-    public ParametroAnexarDocumentoPorOperacao palavrasChave(List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave) {
-        this.palavrasChave = palavrasChave;
-        return this;
-    }
-
-    public ParametroAnexarDocumentoPorOperacao addPalavrasChaveItem(ConteudoPalavraChaveDocumentoCommandApi palavrasChaveItem) {
-        this.palavrasChave.add(palavrasChaveItem);
-        return this;
-    }
-
     /**
      * DI - Declaração de Importação&lt;br/&gt;LI - Licença de Importação&lt;br/&gt;RE - Registro de Exportação&lt;br/&gt;DT - Declaração de Trânsito&lt;br/&gt;DIR - Declaração de Importação de Remessa&lt;br/&gt;CATP - Catálogo de Produtos&lt;br/&gt;DUE - Declaração Única de Exportação&lt;br/&gt;DUIMP - Declaração Única de Importação,&lt;br/&gt;LPCO - Tratamento Administrativo/LPCO&lt;br/&gt;&lt;/br&gt;
      *
@@ -259,6 +247,20 @@ public class ParametroAnexarDocumentoPorOperacao {
             return null;
         }
         return tipoOperacao.value();
+    }
+
+    public void setPalavrasChave(List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave) {
+        this.palavrasChave = palavrasChave;
+    }
+
+    public ParametroAnexarDocumentoPorOperacao palavrasChave(List<ConteudoPalavraChaveDocumentoCommandApi> palavrasChave) {
+        this.palavrasChave = palavrasChave;
+        return this;
+    }
+
+    public ParametroAnexarDocumentoPorOperacao addPalavrasChaveItem(ConteudoPalavraChaveDocumentoCommandApi palavrasChaveItem) {
+        this.palavrasChave.add(palavrasChaveItem);
+        return this;
     }
 
     /**
@@ -283,15 +285,6 @@ public class ParametroAnexarDocumentoPorOperacao {
         return this;
     }
 
-    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
-    }
-
-    public ParametroAnexarDocumentoPorOperacao tipoOperacao(TipoOperacaoEnum tipoOperacao) {
-        this.tipoOperacao = tipoOperacao;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -307,6 +300,15 @@ public class ParametroAnexarDocumentoPorOperacao {
                 "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setTipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+    }
+
+    public ParametroAnexarDocumentoPorOperacao tipoOperacao(TipoOperacaoEnum tipoOperacao) {
+        this.tipoOperacao = tipoOperacao;
+        return this;
     }
 
 

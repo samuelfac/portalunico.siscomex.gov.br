@@ -134,17 +134,6 @@ public class DadosSemirreboque {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Placa&lt;br/&gt;Tamanho: 50
      *
      * @return placa
@@ -176,6 +165,17 @@ public class DadosSemirreboque {
 
     public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -235,11 +235,6 @@ public class DadosSemirreboque {
         return this;
     }
 
-    public DadosSemirreboque idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Lista de portos.
      *
@@ -290,7 +285,6 @@ public class DadosSemirreboque {
 
     /**
      * Lista de navios.
-     *
      * @return listaNavio
      **/
     @JsonProperty("listaNavio")
@@ -314,7 +308,6 @@ public class DadosSemirreboque {
 
     /**
      * Lista de clientes.
-     *
      * @return listaCliente
      **/
     @JsonProperty("listaCliente")
@@ -371,6 +364,11 @@ public class DadosSemirreboque {
 
     public DadosSemirreboque nomeEstabelecimentoEstufagem(String nomeEstabelecimentoEstufagem) {
         this.nomeEstabelecimentoEstufagem = nomeEstabelecimentoEstufagem;
+        return this;
+    }
+
+    public DadosSemirreboque idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
 

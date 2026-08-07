@@ -44,6 +44,15 @@ public class SituacaoExigenciaFiscalDTO {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoExigenciaFiscalDTO {\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -53,14 +62,5 @@ public class SituacaoExigenciaFiscalDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoExigenciaFiscalDTO {\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
     }
 }

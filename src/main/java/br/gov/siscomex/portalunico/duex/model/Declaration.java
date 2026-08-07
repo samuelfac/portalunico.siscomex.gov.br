@@ -39,17 +39,6 @@ public class Declaration {
     private DeclarationNoNFSimplified declarationNoNFSimplified = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get declarationDrawbackIsencao
      *
      * @return declarationDrawbackIsencao
@@ -61,6 +50,17 @@ public class Declaration {
 
     public void setDeclarationDrawbackIsencao(DeclarationDrawbackIsencao declarationDrawbackIsencao) {
         this.declarationDrawbackIsencao = declarationDrawbackIsencao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

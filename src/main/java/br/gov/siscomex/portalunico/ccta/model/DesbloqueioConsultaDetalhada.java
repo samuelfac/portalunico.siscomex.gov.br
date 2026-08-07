@@ -20,30 +20,33 @@ import javax.xml.bind.annotation.XmlType;
 public class DesbloqueioConsultaDetalhada {
 
 
-    @XmlElement(name = "alcanceBloqueio")
-    @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
-    /**
-     * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
-     **/
-    private AlcanceBloqueioEnum alcanceBloqueio = null;
-    @XmlElement(name = "dataHoraBloqueio")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o bloqueio foi aplicado<br/> ")
-    /**
-     * Data na qual a o bloqueio foi aplicado<br/>
-     **/
-    private String dataHoraBloqueio = null;
-    @XmlElement(name = "dataHoraDesbloqueio")
-    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o desbloqueio foi aplicado<br/> ")
-    /**
-     * Data na qual a o desbloqueio foi aplicado<br/>
-     **/
-    private String dataHoraDesbloqueio = null;
     @XmlElement(name = "responsavelBloqueio")
     @ApiModelProperty(example = "PORTO DO RIO", value = "Setor responsável pela aplicação do bloqueio / desbloqueio<br>Tamanho: 50<br/>")
     /**
      * Setor responsável pela aplicação do bloqueio / desbloqueio<br>Tamanho: 50<br/>
      **/
     private String responsavelBloqueio = null;
+
+    @XmlElement(name = "alcanceBloqueio")
+    @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
+    /**
+     * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
+     **/
+    private AlcanceBloqueioEnum alcanceBloqueio = null;
+
+    @XmlElement(name = "dataHoraBloqueio")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o bloqueio foi aplicado<br/> ")
+    /**
+     * Data na qual a o bloqueio foi aplicado<br/>
+     **/
+    private String dataHoraBloqueio = null;
+
+    @XmlElement(name = "dataHoraDesbloqueio")
+    @ApiModelProperty(example = "12/02/2021 21:21", value = "Data na qual a o desbloqueio foi aplicado<br/> ")
+    /**
+     * Data na qual a o desbloqueio foi aplicado<br/>
+     **/
+    private String dataHoraDesbloqueio = null;
 
     @XmlElement(name = "justificativaBloqueio")
     @ApiModelProperty(example = "Texto examplo de justificativa", value = "Justificativa para o bloqueio / desbloqueio aplicado<br>Tamanho: 512<br/>")
@@ -262,7 +265,6 @@ public class DesbloqueioConsultaDetalhada {
         this.tipoBloqueio = tipoBloqueio;
         return this;
     }
-
 
     @Override
     public String toString() {

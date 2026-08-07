@@ -85,17 +85,6 @@ public class DuimpConsultaCover {
     private List<ItemConsultaDuimpCover> itens = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get identificacao
      *
      * @return identificacao
@@ -107,6 +96,17 @@ public class DuimpConsultaCover {
 
     public void setIdentificacao(IdentificacaoDuimpConsultaCover identificacao) {
         this.identificacao = identificacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -152,11 +152,6 @@ public class DuimpConsultaCover {
         return this;
     }
 
-    public DuimpConsultaCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
     /**
      * Get resultadoAnaliseRisco
      *
@@ -190,6 +185,11 @@ public class DuimpConsultaCover {
         this.carga = carga;
     }
 
+    public DuimpConsultaCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
+    }
+
     /**
      * Get documentos
      *
@@ -206,11 +206,6 @@ public class DuimpConsultaCover {
 
     public DuimpConsultaCover documentos(DocumentosDuimpConsultaCover documentos) {
         this.documentos = documentos;
-        return this;
-    }
-
-    public DuimpConsultaCover carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
         return this;
     }
 
@@ -252,6 +247,11 @@ public class DuimpConsultaCover {
         this.tributos = tributos;
     }
 
+    public DuimpConsultaCover carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
+        return this;
+    }
+
     /**
      * Get pagamentos
      *
@@ -276,11 +276,6 @@ public class DuimpConsultaCover {
         return this;
     }
 
-    public DuimpConsultaCover tributos(TributoConsultaDuimpCover tributos) {
-        this.tributos = tributos;
-        return this;
-    }
-
     /**
      * Get tratamentoAdministrativo
      *
@@ -293,6 +288,11 @@ public class DuimpConsultaCover {
 
     public void setTratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
         this.tratamentoAdministrativo = tratamentoAdministrativo;
+    }
+
+    public DuimpConsultaCover tributos(TributoConsultaDuimpCover tributos) {
+        this.tributos = tributos;
+        return this;
     }
 
     /**
@@ -310,11 +310,6 @@ public class DuimpConsultaCover {
 
     public DuimpConsultaCover quantidadeItens(Integer quantidadeItens) {
         this.quantidadeItens = quantidadeItens;
-        return this;
-    }
-
-    public DuimpConsultaCover tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
-        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 
@@ -338,6 +333,11 @@ public class DuimpConsultaCover {
 
     public DuimpConsultaCover addItensItem(ItemConsultaDuimpCover itensItem) {
         this.itens.add(itensItem);
+        return this;
+    }
+
+    public DuimpConsultaCover tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
+        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 

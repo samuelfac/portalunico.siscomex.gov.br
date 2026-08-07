@@ -93,17 +93,6 @@ public class ParametroAnexarDocumentoPorDossie {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * String em BASE64 representando o conteúdo do arquivo.&lt;br/&gt;Tamanho máximo do arquivo original: equivalente a 15MB, aproximadamente 20MB em BASE64
      *
      * @return arquivo
@@ -116,6 +105,17 @@ public class ParametroAnexarDocumentoPorDossie {
 
     public void setArquivo(String arquivo) {
         this.arquivo = arquivo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -158,11 +158,6 @@ public class ParametroAnexarDocumentoPorDossie {
         return this;
     }
 
-    public ParametroAnexarDocumentoPorDossie arquivo(String arquivo) {
-        this.arquivo = arquivo;
-        return this;
-    }
-
     /**
      * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
      *
@@ -199,6 +194,11 @@ public class ParametroAnexarDocumentoPorDossie {
 
     public ParametroAnexarDocumentoPorDossie orgaosAnuentes(List<String> orgaosAnuentes) {
         this.orgaosAnuentes = orgaosAnuentes;
+        return this;
+    }
+
+    public ParametroAnexarDocumentoPorDossie arquivo(String arquivo) {
+        this.arquivo = arquivo;
         return this;
     }
 

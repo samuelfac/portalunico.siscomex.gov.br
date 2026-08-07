@@ -84,17 +84,6 @@ public class RecepcaoDocumentoCarga {
     private String observacoes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da Recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
      * @return identificacaoRecepcao
@@ -150,6 +139,17 @@ public class RecepcaoDocumentoCarga {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get documentos
      *
      * @return documentos
@@ -166,11 +166,6 @@ public class RecepcaoDocumentoCarga {
 
     public RecepcaoDocumentoCarga documentos(Documentos documentos) {
         this.documentos = documentos;
-        return this;
-    }
-
-    public RecepcaoDocumentoCarga local(Local local) {
-        this.local = local;
         return this;
     }
 
@@ -206,6 +201,11 @@ public class RecepcaoDocumentoCarga {
 
     public void setPesoAferido(BigDecimal pesoAferido) {
         this.pesoAferido = pesoAferido;
+    }
+
+    public RecepcaoDocumentoCarga local(Local local) {
+        this.local = local;
+        return this;
     }
 
     /**
@@ -246,11 +246,6 @@ public class RecepcaoDocumentoCarga {
         return this;
     }
 
-    public RecepcaoDocumentoCarga pesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-        return this;
-    }
-
     /**
      * Observações gerais&lt;br&gt;Tamanho: 250
      * @return observacoes
@@ -266,6 +261,11 @@ public class RecepcaoDocumentoCarga {
 
     public RecepcaoDocumentoCarga observacoes(String observacoes) {
         this.observacoes = observacoes;
+        return this;
+    }
+
+    public RecepcaoDocumentoCarga pesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
         return this;
     }
 

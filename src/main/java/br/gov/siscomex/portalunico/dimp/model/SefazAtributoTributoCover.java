@@ -96,17 +96,6 @@ public class SefazAtributoTributoCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição do atributo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 150
      *
      * @return descricao
@@ -118,6 +107,17 @@ public class SefazAtributoTributoCover {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -139,11 +139,6 @@ public class SefazAtributoTributoCover {
         return this;
     }
 
-    public SefazAtributoTributoCover descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Tipo de campo adicional no sistema Tratamento Tributário&lt;br&gt;Dominio: EX&lt;br&gt;NALADI&lt;br&gt;NCM&lt;br&gt;OUTROS&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 25
      *
@@ -160,6 +155,11 @@ public class SefazAtributoTributoCover {
 
     public SefazAtributoTributoCover tipoCampoAdicional(String tipoCampoAdicional) {
         this.tipoCampoAdicional = tipoCampoAdicional;
+        return this;
+    }
+
+    public SefazAtributoTributoCover descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 

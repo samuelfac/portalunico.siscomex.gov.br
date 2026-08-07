@@ -70,37 +70,7 @@ public class EntregaIntermediaria {
      * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
      **/
     private String identificacaoCarga = null;
-    @XmlElement(name = "motivoEntregaIntermediaria", required = true)
-    @ApiModelProperty(example = "TRANSITO_INTERNACIONAL", required = true, value = "Motivo da entrega intermediária.<br/>Na entrega intermediária entre depositário e transportador terrestre, os motivos escolhidos são obrigatoriamente TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.")
-    /**
-     * Motivo da entrega intermediária.<br/>Na entrega intermediária entre depositário e transportador terrestre, os motivos escolhidos são obrigatoriamente TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.
-     **/
-    private MotivoEntregaIntermediariaEnum motivoEntregaIntermediaria = null;
-    @XmlElement(name = "numeroDTA")
-    @ApiModelProperty(example = "2000017171", value = "Número do DTA<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>Tamanho mínimo: 8<br/>Tamanho máximo: 15<br/> Formato: AAAAAAAAAAAAAAA<br/><br/>")
-    /**
-     * Número do DTA<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>Tamanho mínimo: 8<br/>Tamanho máximo: 15<br/> Formato: AAAAAAAAAAAAAAA<br/><br/>
-     **/
-    private String numeroDTA = null;
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "Qualquer observação sobre a entrega intermediária", value = "Observações sobre a entrega intermediária<br/>Tamanho máximo: 1000")
-    /**
-     * Observações sobre a entrega intermediária<br/>Tamanho máximo: 1000
-     **/
-    private String observacoes = null;
-    @XmlElement(name = "pesoEntrega", required = true)
-    @ApiModelProperty(example = "105.478", required = true, value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     **/
-    private BigDecimal pesoEntrega = null;
-    @XmlElement(name = "tipoCarga", required = true)
-    @ApiModelProperty(example = "740", required = true, value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
-    /**
-     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
-     **/
-    private TipoCargaEnum tipoCarga = null;
+
 
     @XmlElement(name = "recintoAduaneiro")
     @ApiModelProperty(example = "7911101", value = "Recinto Aduaneiro do Depositário responsável pela entrega intermediária.<br/>Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.")
@@ -108,24 +78,41 @@ public class EntregaIntermediaria {
      * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.<br/>Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
      **/
     private String recintoAduaneiro = null;
-    @XmlElement(name = "tipoDTA")
-    @ApiModelProperty(example = "30", value = "Tipos de DTA.<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>30 - Entrada comum<br/>31 - Entrada especial - bagagem desacompanhada<br/>32 - Entrada especial - mala diplomática<br/>33 - Entrada especial - urna funerária<br/>34 - Entrada especial - outras<br/>35 - Passagem comum<br/>36 - Passagem especial - bagagem desacompanhada<br/>37 - Passagem especial - mala diplomática<br/>38 - Passagem especial - partes e peças<br/>39 - Passagem especial - urna funerária<br/>40 - Passagem especial - outras<br/>")
+
+    @XmlElement(name = "motivoEntregaIntermediaria", required = true)
+    @ApiModelProperty(example = "TRANSITO_INTERNACIONAL", required = true, value = "Motivo da entrega intermediária.<br/>Na entrega intermediária entre depositário e transportador terrestre, os motivos escolhidos são obrigatoriamente TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.")
     /**
-     * Tipos de DTA.<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>30 - Entrada comum<br/>31 - Entrada especial - bagagem desacompanhada<br/>32 - Entrada especial - mala diplomática<br/>33 - Entrada especial - urna funerária<br/>34 - Entrada especial - outras<br/>35 - Passagem comum<br/>36 - Passagem especial - bagagem desacompanhada<br/>37 - Passagem especial - mala diplomática<br/>38 - Passagem especial - partes e peças<br/>39 - Passagem especial - urna funerária<br/>40 - Passagem especial - outras<br/>
+     * Motivo da entrega intermediária.<br/>Na entrega intermediária entre depositário e transportador terrestre, os motivos escolhidos são obrigatoriamente TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.
      **/
-    private TipoDTAEnum tipoDTA = null;
-    @XmlElement(name = "tipoRecebedor", required = true)
-    @ApiModelProperty(example = "OPERADOR_REMESSA_POSTAL", required = true, value = "Tipo do recebedor da entrega intermediária que será realizada.<br/><br/>Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.<br/>Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.")
+    private MotivoEntregaIntermediariaEnum motivoEntregaIntermediaria = null;
+
+    @XmlElement(name = "numeroDTA")
+    @ApiModelProperty(example = "2000017171", value = "Número do DTA<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>Tamanho mínimo: 8<br/>Tamanho máximo: 15<br/> Formato: AAAAAAAAAAAAAAA<br/><br/>")
     /**
-     * Tipo do recebedor da entrega intermediária que será realizada.<br/><br/>Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.<br/>Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.
+     * Número do DTA<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>Tamanho mínimo: 8<br/>Tamanho máximo: 15<br/> Formato: AAAAAAAAAAAAAAA<br/><br/>
      **/
-    private TipoRecebedorEnum tipoRecebedor = null;
-    @XmlElement(name = "volumeEntrega", required = true)
-    @ApiModelProperty(example = "5", required = true, value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    private String numeroDTA = null;
+
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "Qualquer observação sobre a entrega intermediária", value = "Observações sobre a entrega intermediária<br/>Tamanho máximo: 1000")
     /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     * Observações sobre a entrega intermediária<br/>Tamanho máximo: 1000
      **/
-    private Long volumeEntrega = null;
+    private String observacoes = null;
+
+    @XmlElement(name = "pesoEntrega", required = true)
+    @ApiModelProperty(example = "105.478", required = true, value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     **/
+    private BigDecimal pesoEntrega = null;
+    @XmlElement(name = "unidadeRFB", required = true)
+    @ApiModelProperty(example = "0717700", required = true, value = "Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>")
+    /**
+     * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>
+     **/
+    private String unidadeRFB = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -137,12 +124,53 @@ public class EntregaIntermediaria {
         }
         return o.toString().replace("\n", "\n    ");
     }
-    @XmlElement(name = "unidadeRFB", required = true)
-    @ApiModelProperty(example = "0717700", required = true, value = "Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>")
+
+    @XmlElement(name = "tipoCarga", required = true)
+    @ApiModelProperty(example = "740", required = true, value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
     /**
-     * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>
+     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
      **/
-    private String unidadeRFB = null;
+    private TipoCargaEnum tipoCarga = null;
+
+    /**
+     * Detalhe do motivo da entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o motivo OUTROS e não deve ser informado para os demais motivos.&lt;br/&gt;Tamanho máximo: 1000
+     *
+     * @return detalheMotivo
+     **/
+    @JsonProperty("detalheMotivo")
+    public String getDetalheMotivo() {
+        return detalheMotivo;
+    }
+
+    @XmlElement(name = "tipoDTA")
+    @ApiModelProperty(example = "30", value = "Tipos de DTA.<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>30 - Entrada comum<br/>31 - Entrada especial - bagagem desacompanhada<br/>32 - Entrada especial - mala diplomática<br/>33 - Entrada especial - urna funerária<br/>34 - Entrada especial - outras<br/>35 - Passagem comum<br/>36 - Passagem especial - bagagem desacompanhada<br/>37 - Passagem especial - mala diplomática<br/>38 - Passagem especial - partes e peças<br/>39 - Passagem especial - urna funerária<br/>40 - Passagem especial - outras<br/>")
+    /**
+     * Tipos de DTA.<br/>Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.</br>Para os demais motivos não deve ser informado.<br/><br/>30 - Entrada comum<br/>31 - Entrada especial - bagagem desacompanhada<br/>32 - Entrada especial - mala diplomática<br/>33 - Entrada especial - urna funerária<br/>34 - Entrada especial - outras<br/>35 - Passagem comum<br/>36 - Passagem especial - bagagem desacompanhada<br/>37 - Passagem especial - mala diplomática<br/>38 - Passagem especial - partes e peças<br/>39 - Passagem especial - urna funerária<br/>40 - Passagem especial - outras<br/>
+     **/
+    private TipoDTAEnum tipoDTA = null;
+
+    public void setDetalheMotivo(String detalheMotivo) {
+        this.detalheMotivo = detalheMotivo;
+    }
+
+    @XmlElement(name = "tipoRecebedor", required = true)
+    @ApiModelProperty(example = "OPERADOR_REMESSA_POSTAL", required = true, value = "Tipo do recebedor da entrega intermediária que será realizada.<br/><br/>Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.<br/>Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.")
+    /**
+     * Tipo do recebedor da entrega intermediária que será realizada.<br/><br/>Quando o interveniente de origem for CIA_AEREA, apenas os intervenientes CIA_AEREA, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.<br/>Quando o interveniente de origem for DEPOSITÁRIO, os intervenientes CIA_AEREA, DEPOSITARIO, TRANSPORTADOR_TERRESTRE, OPERADOR_REMESSA_POSTAL e OPERADOR_REMESSA_EXPRESSA serão permitidos como recebedores da entrega intermediária.
+     **/
+    private TipoRecebedorEnum tipoRecebedor = null;
+
+    public EntregaIntermediaria detalheMotivo(String detalheMotivo) {
+        this.detalheMotivo = detalheMotivo;
+        return this;
+    }
+
+    @XmlElement(name = "volumeEntrega", required = true)
+    @ApiModelProperty(example = "5", required = true, value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Long volumeEntrega = null;
 
     /**
      * CNPJ do recebedor da entrega intermediária da carga.&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: NNNNNNNNNNNNNN
@@ -205,25 +233,6 @@ public class EntregaIntermediaria {
     }
 
     /**
-     * Detalhe do motivo da entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o motivo OUTROS e não deve ser informado para os demais motivos.&lt;br/&gt;Tamanho máximo: 1000
-     *
-     * @return detalheMotivo
-     **/
-    @JsonProperty("detalheMotivo")
-    public String getDetalheMotivo() {
-        return detalheMotivo;
-    }
-
-    public void setDetalheMotivo(String detalheMotivo) {
-        this.detalheMotivo = detalheMotivo;
-    }
-
-    public EntregaIntermediaria detalheMotivo(String detalheMotivo) {
-        this.detalheMotivo = detalheMotivo;
-        return this;
-    }
-
-    /**
      * CPF da Pessoa física que recebeu a mercadoria&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: NNNNNNNNNNN
      *
      * @return cpfRecebedor
@@ -263,6 +272,45 @@ public class EntregaIntermediaria {
     }
 
     /**
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacaoCarga
+     **/
+    @JsonProperty("identificacaoCarga")
+    @NotNull
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
+    }
+
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+    }
+
+    public EntregaIntermediaria identificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+        return this;
+    }
+
+    /**
+     * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
+     *
+     * @return recintoAduaneiro
+     **/
+    @JsonProperty("recintoAduaneiro")
+    public String getRecintoAduaneiro() {
+        return recintoAduaneiro;
+    }
+
+    public void setRecintoAduaneiro(String recintoAduaneiro) {
+        this.recintoAduaneiro = recintoAduaneiro;
+    }
+
+    public EntregaIntermediaria recintoAduaneiro(String recintoAduaneiro) {
+        this.recintoAduaneiro = recintoAduaneiro;
+        return this;
+    }
+
+    /**
      * Motivo da entrega intermediária.&lt;br/&gt;Na entrega intermediária entre depositário e transportador terrestre, os motivos escolhidos são obrigatoriamente TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.
      *
      * @return motivoEntregaIntermediaria
@@ -286,28 +334,7 @@ public class EntregaIntermediaria {
     }
 
     /**
-     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacaoCarga
-     **/
-    @JsonProperty("identificacaoCarga")
-    @NotNull
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
-    }
-
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-    }
-
-    public EntregaIntermediaria identificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
-    /**
      * Número do DTA&lt;br/&gt;Este campo é obrigatório na entrega intermediária entre depositário e transportador terrestre e opcional para as demais entregas intermediárias que escolham os motivos TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.&lt;/br&gt;Para os demais motivos não deve ser informado.&lt;br/&gt;&lt;br/&gt;Tamanho mínimo: 8&lt;br/&gt;Tamanho máximo: 15&lt;br/&gt; Formato: AAAAAAAAAAAAAAA&lt;br/&gt;&lt;br/&gt;
-     *
      * @return numeroDTA
      **/
     @JsonProperty("numeroDTA")
@@ -326,7 +353,6 @@ public class EntregaIntermediaria {
 
     /**
      * Observações sobre a entrega intermediária&lt;br/&gt;Tamanho máximo: 1000
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")
@@ -345,7 +371,6 @@ public class EntregaIntermediaria {
 
     /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
      * @return pesoEntrega
      **/
     @JsonProperty("pesoEntrega")
@@ -360,6 +385,26 @@ public class EntregaIntermediaria {
 
     public EntregaIntermediaria pesoEntrega(BigDecimal pesoEntrega) {
         this.pesoEntrega = pesoEntrega;
+        return this;
+    }
+
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return volumeEntrega
+     **/
+    @JsonProperty("volumeEntrega")
+    @NotNull
+    public Long getVolumeEntrega() {
+        return volumeEntrega;
+    }
+
+    public void setVolumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
+    }
+
+    public EntregaIntermediaria volumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
         return this;
     }
 
@@ -383,24 +428,6 @@ public class EntregaIntermediaria {
 
     public EntregaIntermediaria tipoCarga(TipoCargaEnum tipoCarga) {
         this.tipoCarga = tipoCarga;
-        return this;
-    }
-
-    /**
-     * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
-     * @return recintoAduaneiro
-     **/
-    @JsonProperty("recintoAduaneiro")
-    public String getRecintoAduaneiro() {
-        return recintoAduaneiro;
-    }
-
-    public void setRecintoAduaneiro(String recintoAduaneiro) {
-        this.recintoAduaneiro = recintoAduaneiro;
-    }
-
-    public EntregaIntermediaria recintoAduaneiro(String recintoAduaneiro) {
-        this.recintoAduaneiro = recintoAduaneiro;
         return this;
     }
 
@@ -446,26 +473,6 @@ public class EntregaIntermediaria {
 
     public EntregaIntermediaria tipoRecebedor(TipoRecebedorEnum tipoRecebedor) {
         this.tipoRecebedor = tipoRecebedor;
-        return this;
-    }
-
-    /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return volumeEntrega
-     **/
-    @JsonProperty("volumeEntrega")
-    @NotNull
-    public Long getVolumeEntrega() {
-        return volumeEntrega;
-    }
-
-    public void setVolumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
-    }
-
-    public EntregaIntermediaria volumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
         return this;
     }
 

@@ -69,17 +69,6 @@ public class ManifestoDaConsultaDeManifestosPelosRgosAnuentes {
     private String uaDespacho = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e horário do registro do manifesto de carga.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataHorarioRegistroManifesto
@@ -91,6 +80,17 @@ public class ManifestoDaConsultaDeManifestosPelosRgosAnuentes {
 
     public void setDataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
         this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -117,11 +117,6 @@ public class ManifestoDaConsultaDeManifestosPelosRgosAnuentes {
         return this;
     }
 
-    public ManifestoDaConsultaDeManifestosPelosRgosAnuentes dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
-        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
-        return this;
-    }
-
     /**
      * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
      *
@@ -134,6 +129,11 @@ public class ManifestoDaConsultaDeManifestosPelosRgosAnuentes {
 
     public void setNumeroManifesto(String numeroManifesto) {
         this.numeroManifesto = numeroManifesto;
+    }
+
+    public ManifestoDaConsultaDeManifestosPelosRgosAnuentes dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
+        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
+        return this;
     }
 
     /**
@@ -174,11 +174,6 @@ public class ManifestoDaConsultaDeManifestosPelosRgosAnuentes {
         return this;
     }
 
-    public ManifestoDaConsultaDeManifestosPelosRgosAnuentes numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-        return this;
-    }
-
     /**
      * Quantidade de remessas selecionadas. Número entre 0000 e 9999.
      *
@@ -214,6 +209,11 @@ public class ManifestoDaConsultaDeManifestosPelosRgosAnuentes {
 
     public ManifestoDaConsultaDeManifestosPelosRgosAnuentes uaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
+        return this;
+    }
+
+    public ManifestoDaConsultaDeManifestosPelosRgosAnuentes numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
         return this;
     }
 

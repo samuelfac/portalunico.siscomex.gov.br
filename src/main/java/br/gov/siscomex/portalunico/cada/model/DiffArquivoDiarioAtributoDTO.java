@@ -160,17 +160,6 @@ public class DiffArquivoDiarioAtributoDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get nome
      *
      * @return nome
@@ -242,6 +231,17 @@ public class DiffArquivoDiarioAtributoDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get brid
      *
      * @return brid
@@ -278,11 +278,6 @@ public class DiffArquivoDiarioAtributoDTO {
         return this;
     }
 
-    public DiffArquivoDiarioAtributoDTO tipoAtributo(DiffValorDTO tipoAtributo) {
-        this.tipoAtributo = tipoAtributo;
-        return this;
-    }
-
     /**
      * Get orientacaoPreenchimento
      *
@@ -295,6 +290,11 @@ public class DiffArquivoDiarioAtributoDTO {
 
     public void setOrientacaoPreenchimento(DiffValorDTO orientacaoPreenchimento) {
         this.orientacaoPreenchimento = orientacaoPreenchimento;
+    }
+
+    public DiffArquivoDiarioAtributoDTO tipoAtributo(DiffValorDTO tipoAtributo) {
+        this.tipoAtributo = tipoAtributo;
+        return this;
     }
 
     /**
@@ -313,11 +313,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     public DiffArquivoDiarioAtributoDTO formaPreenchimento(DiffValorDTO formaPreenchimento) {
         this.formaPreenchimento = formaPreenchimento;
-        return this;
-    }
-
-    public DiffArquivoDiarioAtributoDTO orientacaoPreenchimento(DiffValorDTO orientacaoPreenchimento) {
-        this.orientacaoPreenchimento = orientacaoPreenchimento;
         return this;
     }
 
@@ -359,7 +354,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get casasDecimais
-     *
      * @return casasDecimais
      **/
     @JsonProperty("casasDecimais")
@@ -378,7 +372,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get modalidade
-     *
      * @return modalidade
      **/
     @JsonProperty("modalidade")
@@ -397,7 +390,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get obrigatorio
-     *
      * @return obrigatorio
      **/
     @JsonProperty("obrigatorio")
@@ -428,6 +420,11 @@ public class DiffArquivoDiarioAtributoDTO {
         this.dataInicioVigencia = dataInicioVigencia;
     }
 
+    public DiffArquivoDiarioAtributoDTO orientacaoPreenchimento(DiffValorDTO orientacaoPreenchimento) {
+        this.orientacaoPreenchimento = orientacaoPreenchimento;
+        return this;
+    }
+
     /**
      * Get dataFimVigencia
      * @return dataFimVigencia
@@ -446,14 +443,8 @@ public class DiffArquivoDiarioAtributoDTO {
         return this;
     }
 
-    public DiffArquivoDiarioAtributoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
     /**
      * Get informacaoAdicional
-     *
      * @return informacaoAdicional
      **/
     @JsonProperty("informacaoAdicional")
@@ -472,7 +463,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get dominio
-     *
      * @return dominio
      **/
     @JsonProperty("dominio")
@@ -491,7 +481,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get objetivos
-     *
      * @return objetivos
      **/
     @JsonProperty("objetivos")
@@ -510,7 +499,6 @@ public class DiffArquivoDiarioAtributoDTO {
 
     /**
      * Get orgaos
-     *
      * @return orgaos
      **/
     @JsonProperty("orgaos")
@@ -541,9 +529,13 @@ public class DiffArquivoDiarioAtributoDTO {
         this.atributoCondicionante = atributoCondicionante;
     }
 
+    public DiffArquivoDiarioAtributoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+        return this;
+    }
+
     /**
      * Get condicionados
-     *
      * @return condicionados
      **/
     @JsonProperty("condicionados")
@@ -560,14 +552,8 @@ public class DiffArquivoDiarioAtributoDTO {
         return this;
     }
 
-    public DiffArquivoDiarioAtributoDTO atributoCondicionante(DiffValorDTO atributoCondicionante) {
-        this.atributoCondicionante = atributoCondicionante;
-        return this;
-    }
-
     /**
      * Get listaSubatributos
-     *
      * @return listaSubatributos
      **/
     @JsonProperty("listaSubatributos")
@@ -577,6 +563,11 @@ public class DiffArquivoDiarioAtributoDTO {
 
     public void setListaSubatributos(DiffArquivoDiarioSubatributoDTO listaSubatributos) {
         this.listaSubatributos = listaSubatributos;
+    }
+
+    public DiffArquivoDiarioAtributoDTO atributoCondicionante(DiffValorDTO atributoCondicionante) {
+        this.atributoCondicionante = atributoCondicionante;
+        return this;
     }
 
     /**

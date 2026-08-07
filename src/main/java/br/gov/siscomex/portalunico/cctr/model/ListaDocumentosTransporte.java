@@ -89,6 +89,16 @@ public class ListaDocumentosTransporte {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ListaDocumentosTransporte {\n" +
+                "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
+                "    mensagens: " + toIndentedString(mensagens) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -98,15 +108,5 @@ public class ListaDocumentosTransporte {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ListaDocumentosTransporte {\n" +
-                "    documentosTransporte: " + toIndentedString(documentosTransporte) + "\n" +
-                "    mensagens: " + toIndentedString(mensagens) + "\n" +
-                "}";
-        return sb;
     }
 }

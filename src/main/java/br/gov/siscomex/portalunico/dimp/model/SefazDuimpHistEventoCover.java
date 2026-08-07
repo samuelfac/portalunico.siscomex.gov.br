@@ -89,17 +89,6 @@ public class SefazDuimpHistEventoCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get evento
      *
      * @return evento
@@ -111,6 +100,17 @@ public class SefazDuimpHistEventoCover {
 
     public void setEvento(TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio evento) {
         this.evento = evento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

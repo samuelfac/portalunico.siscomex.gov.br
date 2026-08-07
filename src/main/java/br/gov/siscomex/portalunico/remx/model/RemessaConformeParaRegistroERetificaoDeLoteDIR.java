@@ -65,17 +65,6 @@ public class RemessaConformeParaRegistroERetificaoDeLoteDIR {
     private BigDecimal valorProvII = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código Empresa de Comércio Eletrônico. TIN number ou CNPJ (quando for empresa brasileira). Máximo de 35 caracteres alfanuméricos.
      *
      * @return codigoECE
@@ -88,6 +77,17 @@ public class RemessaConformeParaRegistroERetificaoDeLoteDIR {
 
     public void setCodigoECE(String codigoECE) {
         this.codigoECE = codigoECE;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -169,11 +169,6 @@ public class RemessaConformeParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    public RemessaConformeParaRegistroERetificaoDeLoteDIR codigoECE(String codigoECE) {
-        this.codigoECE = codigoECE;
-        return this;
-    }
-
     /**
      * Valor Provisionado do ICMS. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      *
@@ -190,6 +185,11 @@ public class RemessaConformeParaRegistroERetificaoDeLoteDIR {
 
     public RemessaConformeParaRegistroERetificaoDeLoteDIR valorProvII(BigDecimal valorProvII) {
         this.valorProvII = valorProvII;
+        return this;
+    }
+
+    public RemessaConformeParaRegistroERetificaoDeLoteDIR codigoECE(String codigoECE) {
+        this.codigoECE = codigoECE;
         return this;
     }
 

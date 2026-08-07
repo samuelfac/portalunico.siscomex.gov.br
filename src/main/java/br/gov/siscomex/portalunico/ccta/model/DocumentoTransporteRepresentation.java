@@ -30,17 +30,6 @@ public class DocumentoTransporteRepresentation {
     private String tipo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get dataEmissao
      *
      * @return dataEmissao
@@ -52,6 +41,17 @@ public class DocumentoTransporteRepresentation {
 
     public void setDataEmissao(String dataEmissao) {
         this.dataEmissao = dataEmissao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -73,11 +73,6 @@ public class DocumentoTransporteRepresentation {
         return this;
     }
 
-    public DocumentoTransporteRepresentation dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
-
     /**
      * Get tipo
      *
@@ -94,6 +89,11 @@ public class DocumentoTransporteRepresentation {
 
     public DocumentoTransporteRepresentation tipo(String tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public DocumentoTransporteRepresentation dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
         return this;
     }
 

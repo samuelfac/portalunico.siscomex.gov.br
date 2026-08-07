@@ -72,17 +72,6 @@ public class DetalheDoProcessamentoDoManifesto {
     private String uaEntrada = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -95,6 +84,17 @@ public class DetalheDoProcessamentoDoManifesto {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -201,11 +201,6 @@ public class DetalheDoProcessamentoDoManifesto {
         return this;
     }
 
-    public DetalheDoProcessamentoDoManifesto cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Código da unidade administrativa de entrada da carga. Valores de acordo com a tabela de domínio.
      *
@@ -223,6 +218,11 @@ public class DetalheDoProcessamentoDoManifesto {
 
     public DetalheDoProcessamentoDoManifesto uaEntrada(String uaEntrada) {
         this.uaEntrada = uaEntrada;
+        return this;
+    }
+
+    public DetalheDoProcessamentoDoManifesto cnpj(String cnpj) {
+        this.cnpj = cnpj;
         return this;
     }
 

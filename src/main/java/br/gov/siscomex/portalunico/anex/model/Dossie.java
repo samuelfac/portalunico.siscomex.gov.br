@@ -41,6 +41,8 @@ public class Dossie {
      * CPF do usuário que criou o dossiê sem formatação.<br/>Tamanho: 11
      **/
     private String cpfCriacao = null;
+
+
     @XmlElement(name = "descricaoDossie", required = true)
     @ApiModelProperty(example = "Dossiê de exemplo", required = true, value = "Descrição do dossiê.<br/>Tamanho máximo: 255")
     /**
@@ -61,23 +63,6 @@ public class Dossie {
      * Data/hora da criação.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
      **/
     private OffsetDateTime dataHoraCriacao = null;
-    @XmlElement(name = "documentos")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Documento> documentos = null;
-    @XmlElement(name = "dossiesVinculados")
-    @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
-    @Valid
-    /**
-     * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação.
-     **/
-    private List<DossieVinculado> dossiesVinculados = null;
-    @XmlElement(name = "idTipoDossie", required = true)
-    @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
-    /**
-     * Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
-     **/
-    private Long idTipoDossie = null;
     @XmlElement(name = "numeroDossie", required = true)
     @ApiModelProperty(example = "201900012345678", required = true, value = "Número do dossiê.<br/>Tamanho: 15<br/>Formato: NNNNNNNNNNNNNNN")
     /**
@@ -85,19 +70,32 @@ public class Dossie {
      **/
     private String numeroDossie = null;
 
+    @XmlElement(name = "documentos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Documento> documentos = null;
+
+    @XmlElement(name = "dossiesVinculados")
+    @ApiModelProperty(value = "\\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação. ")
+    @Valid
+    /**
+     * \\*Somente se exitirem dossiês vinculados ao dossiê da operação.<br/>Lista de dossiês vinculados ao dossiê da operação.
+     **/
+    private List<DossieVinculado> dossiesVinculados = null;
+
+    @XmlElement(name = "idTipoDossie", required = true)
+    @ApiModelProperty(example = "538797", required = true, value = "Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
+    /**
+     * Id do tipo de dossiê.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647
+     **/
+    private Long idTipoDossie = null;
+
     @XmlElement(name = "nomeTipoDossie")
     @ApiModelProperty(example = "Dossiê de Importação", value = "Nome do tipo de dossiê.<br/>Tamanho máximo: 255")
     /**
      * Nome do tipo de dossiê.<br/>Tamanho máximo: 255
      **/
     private String nomeTipoDossie = null;
-    @XmlElement(name = "vinculos")
-    @ApiModelProperty(value = "Lista de vinculos do dossiê com operações.")
-    @Valid
-    /**
-     * Lista de vinculos do dossiê com operações.
-     **/
-    private List<Vinculo> vinculos = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -109,6 +107,14 @@ public class Dossie {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "vinculos")
+    @ApiModelProperty(value = "Lista de vinculos do dossiê com operações.")
+    @Valid
+    /**
+     * Lista de vinculos do dossiê com operações.
+     **/
+    private List<Vinculo> vinculos = null;
 
     /**
      * CNPJ ou CPF do dossiê sem formatação.&lt;br/&gt;Tamanho: 14(CNPJ) ou 11(CPF)
@@ -283,6 +289,7 @@ public class Dossie {
 
     /**
      * Nome do tipo de dossiê.&lt;br/&gt;Tamanho máximo: 255
+     *
      * @return nomeTipoDossie
      **/
     @JsonProperty("nomeTipoDossie")
@@ -301,6 +308,7 @@ public class Dossie {
 
     /**
      * Número do dossiê.&lt;br/&gt;Tamanho: 15&lt;br/&gt;Formato: NNNNNNNNNNNNNNN
+     *
      * @return numeroDossie
      **/
     @JsonProperty("numeroDossie")

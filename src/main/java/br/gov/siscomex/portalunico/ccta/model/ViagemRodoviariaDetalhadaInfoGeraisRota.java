@@ -84,17 +84,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
     private UnidadeRfb unidadeRFBEntrada = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get alfandegaPartida
      *
      * @return alfandegaPartida
@@ -106,6 +95,17 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
 
     public void setAlfandegaPartida(Recinto alfandegaPartida) {
         this.alfandegaPartida = alfandegaPartida;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -184,11 +184,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisRota alfandegaPartida(Recinto alfandegaPartida) {
-        this.alfandegaPartida = alfandegaPartida;
-        return this;
-    }
-
     /**
      * Descrição da rota internacional desde local de partida até a cidade de destino final&lt;br/&gt; Tamanho Máximo: 500
      *
@@ -221,6 +216,11 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
 
     public void setNumeroDTAExterior(String numeroDTAExterior) {
         this.numeroDTAExterior = numeroDTAExterior;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisRota alfandegaPartida(Recinto alfandegaPartida) {
+        this.alfandegaPartida = alfandegaPartida;
+        return this;
     }
 
     /**

@@ -131,17 +131,6 @@ public class DadosContinerUldAcessoVeculo {
     private String nomeEstabelecimentoEstufagem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
      * @return idElemento
@@ -195,6 +184,17 @@ public class DadosContinerUldAcessoVeculo {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Conforme tabela de domínio Tipo de Conteiner disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;tipo&#39;, &#39;ocrNumero&#39; e &#39;vazio&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39; e o atributo &#39;numeroConteiner&#39; for informado.
      *
      * @return tipo
@@ -210,11 +210,6 @@ public class DadosContinerUldAcessoVeculo {
 
     public DadosContinerUldAcessoVeculo tipo(String tipo) {
         this.tipo = tipo;
-        return this;
-    }
-
-    public DadosContinerUldAcessoVeculo identificacaoUld(String identificacaoUld) {
-        this.identificacaoUld = identificacaoUld;
         return this;
     }
 
@@ -270,6 +265,11 @@ public class DadosContinerUldAcessoVeculo {
         this.numeroBooking = numeroBooking;
     }
 
+    public DadosContinerUldAcessoVeculo identificacaoUld(String identificacaoUld) {
+        this.identificacaoUld = identificacaoUld;
+        return this;
+    }
+
     /**
      * Lista de Lacres.
      *
@@ -294,14 +294,8 @@ public class DadosContinerUldAcessoVeculo {
         return this;
     }
 
-    public DadosContinerUldAcessoVeculo numeroBooking(String numeroBooking) {
-        this.numeroBooking = numeroBooking;
-        return this;
-    }
-
     /**
      * Avaria.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return avaria
      **/
     @JsonProperty("avaria")
@@ -337,6 +331,11 @@ public class DadosContinerUldAcessoVeculo {
         return this;
     }
 
+    public DadosContinerUldAcessoVeculo numeroBooking(String numeroBooking) {
+        this.numeroBooking = numeroBooking;
+        return this;
+    }
+
     /**
      * Lista de países.
      *
@@ -358,11 +357,6 @@ public class DadosContinerUldAcessoVeculo {
 
     public DadosContinerUldAcessoVeculo addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
         this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
-        return this;
-    }
-
-    public DadosContinerUldAcessoVeculo addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
-        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
         return this;
     }
 
@@ -391,7 +385,6 @@ public class DadosContinerUldAcessoVeculo {
 
     /**
      * Lista de clientes.
-     *
      * @return listaCliente
      **/
     @JsonProperty("listaCliente")
@@ -425,6 +418,11 @@ public class DadosContinerUldAcessoVeculo {
 
     public void setCnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
         this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
+    }
+
+    public DadosContinerUldAcessoVeculo addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
+        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
+        return this;
     }
 
     /**

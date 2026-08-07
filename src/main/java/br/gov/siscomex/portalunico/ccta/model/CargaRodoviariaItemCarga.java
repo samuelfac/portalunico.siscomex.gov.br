@@ -145,17 +145,6 @@ public class CargaRodoviariaItemCarga {
     private TipoTratamentoMadeira tipoTratamentoMadeiraBruta = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Chassi do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
      *
      * @return chassi
@@ -186,6 +175,17 @@ public class CargaRodoviariaItemCarga {
 
     public void setConteinerVazio(Boolean conteinerVazio) {
         this.conteinerVazio = conteinerVazio;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -226,11 +226,6 @@ public class CargaRodoviariaItemCarga {
         return this;
     }
 
-    public CargaRodoviariaItemCarga conteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
-        return this;
-    }
-
     /**
      * Indicador de embalagem vazia de carga solta&lt;/br&gt;Para item Carga Solta (2), campo obrigatório
      *
@@ -243,6 +238,11 @@ public class CargaRodoviariaItemCarga {
 
     public void setEmbalagemVazia(Boolean embalagemVazia) {
         this.embalagemVazia = embalagemVazia;
+    }
+
+    public CargaRodoviariaItemCarga conteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+        return this;
     }
 
     /**
@@ -261,11 +261,6 @@ public class CargaRodoviariaItemCarga {
 
     public CargaRodoviariaItemCarga marca(String marca) {
         this.marca = marca;
-        return this;
-    }
-
-    public CargaRodoviariaItemCarga embalagemVazia(Boolean embalagemVazia) {
-        this.embalagemVazia = embalagemVazia;
         return this;
     }
 
@@ -300,6 +295,11 @@ public class CargaRodoviariaItemCarga {
 
     public void setNumeroConteiner(String numeroConteiner) {
         this.numeroConteiner = numeroConteiner;
+    }
+
+    public CargaRodoviariaItemCarga embalagemVazia(Boolean embalagemVazia) {
+        this.embalagemVazia = embalagemVazia;
+        return this;
     }
 
     /**
@@ -356,11 +356,6 @@ public class CargaRodoviariaItemCarga {
         return this;
     }
 
-    public CargaRodoviariaItemCarga numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
     /**
      * Indica se o item de carga está sendo transportado em embalagem/suporte de madeira bruta
      *
@@ -382,7 +377,6 @@ public class CargaRodoviariaItemCarga {
 
     /**
      * Quantidade de volumes do item de carga transportado na viagempara tipocarga &#x3D; 2 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 4
-     *
      * @return quantidadeVolumes
      **/
     @JsonProperty("quantidadeVolumes")
@@ -401,7 +395,6 @@ public class CargaRodoviariaItemCarga {
 
     /**
      * Sequencial de item de carga da viagem&lt;br/&gt; Tamanho Máximo: 20
-     *
      * @return sequencial
      **/
     @JsonProperty("sequencial")
@@ -420,7 +413,6 @@ public class CargaRodoviariaItemCarga {
 
     /**
      * Tara do conteiner em Kg&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório&lt;br/&gt;Formato: Número Racional com 6 casas inteiras e 3 casas decimais
-     *
      * @return taraConteiner
      **/
     @JsonProperty("taraConteiner")
@@ -439,7 +431,6 @@ public class CargaRodoviariaItemCarga {
 
     /**
      * Get tipoEmbalagem
-     *
      * @return tipoEmbalagem
      **/
     @JsonProperty("tipoEmbalagem")
@@ -451,9 +442,13 @@ public class CargaRodoviariaItemCarga {
         this.tipoEmbalagem = tipoEmbalagem;
     }
 
+    public CargaRodoviariaItemCarga numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+        return this;
+    }
+
     /**
      * Get tipoGranel
-     *
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")
@@ -467,11 +462,6 @@ public class CargaRodoviariaItemCarga {
 
     public CargaRodoviariaItemCarga tipoGranel(TipoGranel tipoGranel) {
         this.tipoGranel = tipoGranel;
-        return this;
-    }
-
-    public CargaRodoviariaItemCarga tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
         return this;
     }
 
@@ -491,6 +481,11 @@ public class CargaRodoviariaItemCarga {
 
     public CargaRodoviariaItemCarga tipoTratamentoMadeiraBruta(TipoTratamentoMadeira tipoTratamentoMadeiraBruta) {
         this.tipoTratamentoMadeiraBruta = tipoTratamentoMadeiraBruta;
+        return this;
+    }
+
+    public CargaRodoviariaItemCarga tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
         return this;
     }
 

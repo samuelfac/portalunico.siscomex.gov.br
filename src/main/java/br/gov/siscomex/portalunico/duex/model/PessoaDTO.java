@@ -42,9 +42,7 @@ public class PessoaDTO {
      * Número do documento<br />Tamanho mínimo: 1<br />Tamanho máximo: 20
      **/
     private String numeroDoDocumento = null;
-    @XmlElement(name = "tipoDoDocumento")
-    @ApiModelProperty(value = "")
-    private TipoDoDocumentoEnum tipoDoDocumento = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -56,6 +54,10 @@ public class PessoaDTO {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoDoDocumento")
+    @ApiModelProperty(value = "")
+    private TipoDoDocumentoEnum tipoDoDocumento = null;
 
     /**
      * Get estrangeiro
@@ -154,7 +156,6 @@ public class PessoaDTO {
         this.tipoDoDocumento = tipoDoDocumento;
         return this;
     }
-
 
     @Override
     public String toString() {

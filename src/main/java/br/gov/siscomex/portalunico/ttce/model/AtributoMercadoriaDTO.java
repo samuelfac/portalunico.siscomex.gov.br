@@ -119,17 +119,6 @@ public class AtributoMercadoriaDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor atribuido ao Atributo.
      *
      * @return valor
@@ -165,6 +154,18 @@ public class AtributoMercadoriaDTO {
     public AtributoMercadoriaDTO descricaoValor(String descricaoValor) {
         this.descricaoValor = descricaoValor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

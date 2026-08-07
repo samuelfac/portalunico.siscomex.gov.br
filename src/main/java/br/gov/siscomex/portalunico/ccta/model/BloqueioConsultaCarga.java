@@ -81,17 +81,6 @@ public class BloqueioConsultaCarga {
     private VisibilidadeBloqueio visibilidade = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get alcance
      *
      * @return alcance
@@ -103,6 +92,17 @@ public class BloqueioConsultaCarga {
 
     public void setAlcance(AlcanceBloqueio alcance) {
         this.alcance = alcance;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -124,11 +124,6 @@ public class BloqueioConsultaCarga {
         return this;
     }
 
-    public BloqueioConsultaCarga alcance(AlcanceBloqueio alcance) {
-        this.alcance = alcance;
-        return this;
-    }
-
     /**
      * Get dataDesbloqueio
      *
@@ -141,6 +136,11 @@ public class BloqueioConsultaCarga {
 
     public void setDataDesbloqueio(OffsetDateTime dataDesbloqueio) {
         this.dataDesbloqueio = dataDesbloqueio;
+    }
+
+    public BloqueioConsultaCarga alcance(AlcanceBloqueio alcance) {
+        this.alcance = alcance;
+        return this;
     }
 
     /**
@@ -162,11 +162,6 @@ public class BloqueioConsultaCarga {
         return this;
     }
 
-    public BloqueioConsultaCarga dataDesbloqueio(OffsetDateTime dataDesbloqueio) {
-        this.dataDesbloqueio = dataDesbloqueio;
-        return this;
-    }
-
     /**
      * Justificativa do bloqueio
      *
@@ -179,6 +174,11 @@ public class BloqueioConsultaCarga {
 
     public void setJustificativaBloqueio(String justificativaBloqueio) {
         this.justificativaBloqueio = justificativaBloqueio;
+    }
+
+    public BloqueioConsultaCarga dataDesbloqueio(OffsetDateTime dataDesbloqueio) {
+        this.dataDesbloqueio = dataDesbloqueio;
+        return this;
     }
 
     /**
@@ -200,14 +200,8 @@ public class BloqueioConsultaCarga {
         return this;
     }
 
-    public BloqueioConsultaCarga justificativaBloqueio(String justificativaBloqueio) {
-        this.justificativaBloqueio = justificativaBloqueio;
-        return this;
-    }
-
     /**
      * Get modo
-     *
      * @return modo
      **/
     @JsonProperty("modo")
@@ -257,6 +251,11 @@ public class BloqueioConsultaCarga {
         this.responsavelBloqueio = responsavelBloqueio;
     }
 
+    public BloqueioConsultaCarga justificativaBloqueio(String justificativaBloqueio) {
+        this.justificativaBloqueio = justificativaBloqueio;
+        return this;
+    }
+
     /**
      * Get responsavelDesbloqueio
      *
@@ -273,11 +272,6 @@ public class BloqueioConsultaCarga {
 
     public BloqueioConsultaCarga responsavelDesbloqueio(ResponsavelRFBRepresentation responsavelDesbloqueio) {
         this.responsavelDesbloqueio = responsavelDesbloqueio;
-        return this;
-    }
-
-    public BloqueioConsultaCarga responsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
-        this.responsavelBloqueio = responsavelBloqueio;
         return this;
     }
 
@@ -315,6 +309,11 @@ public class BloqueioConsultaCarga {
 
     public BloqueioConsultaCarga visibilidade(VisibilidadeBloqueio visibilidade) {
         this.visibilidade = visibilidade;
+        return this;
+    }
+
+    public BloqueioConsultaCarga responsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
+        this.responsavelBloqueio = responsavelBloqueio;
         return this;
     }
 

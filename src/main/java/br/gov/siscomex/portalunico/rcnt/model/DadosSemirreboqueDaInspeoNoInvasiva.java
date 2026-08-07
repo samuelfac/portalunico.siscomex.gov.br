@@ -60,17 +60,6 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que o atributo &#39;ocrPlaca&#39; seja informado quando o atributo &#39;placa&#39; for informado.
      *
      * @return ocrPlaca
@@ -82,6 +71,17 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
 
     public void setOcrPlaca(Boolean ocrPlaca) {
         this.ocrPlaca = ocrPlaca;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

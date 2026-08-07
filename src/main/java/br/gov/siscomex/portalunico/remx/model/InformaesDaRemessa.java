@@ -91,28 +91,23 @@ public class InformaesDaRemessa {
         return o.toString().replace("\n", "\n    ");
     }
 
-    public InformaesDaRemessa indicadorOver(Integer indicadorOver) {
+    public void setIndicadorOver(Integer indicadorOver) {
         this.indicadorOver = indicadorOver;
-        return this;
     }
 
     /**
      * Indicador para sinalizar uma remessa over. &lt;br/&gt;Domínio:&lt;br/&gt;0 - Remessa manifestada &lt;br/&gt;1 - Remessa Over (apenas para remessa expressa).
      * minimum: 0
-     * maximum: 1
+     * maximum: 9223372036854775807
      *
      * @return indicadorOver
      **/
     @JsonProperty("indicadorOver")
     @NotNull
     @Min(0)
-    @Max(1)
+    @Max(Integer.MAX_VALUE)
     public Integer getIndicadorOver() {
         return indicadorOver;
-    }
-
-    public void setIndicadorOver(Integer indicadorOver) {
-        this.indicadorOver = indicadorOver;
     }
 
     /**
@@ -128,6 +123,11 @@ public class InformaesDaRemessa {
 
     public void setInfoFiscalizacao(String infoFiscalizacao) {
         this.infoFiscalizacao = infoFiscalizacao;
+    }
+
+    public InformaesDaRemessa indicadorOver(Integer indicadorOver) {
+        this.indicadorOver = indicadorOver;
+        return this;
     }
 
     /**
@@ -150,11 +150,6 @@ public class InformaesDaRemessa {
         return this;
     }
 
-    public InformaesDaRemessa infoFiscalizacao(String infoFiscalizacao) {
-        this.infoFiscalizacao = infoFiscalizacao;
-        return this;
-    }
-
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
@@ -169,6 +164,11 @@ public class InformaesDaRemessa {
 
     public void setNumeroRemessa(String numeroRemessa) {
         this.numeroRemessa = numeroRemessa;
+    }
+
+    public InformaesDaRemessa infoFiscalizacao(String infoFiscalizacao) {
+        this.infoFiscalizacao = infoFiscalizacao;
+        return this;
     }
 
     /**
@@ -195,20 +195,6 @@ public class InformaesDaRemessa {
         return this;
     }
 
-    /**
-     * Especifica se a mercadoria necessita de tratamento administrativo, encaminhando a mesma para seleção do órgão desejado.&lt;br/&gt;1- Fiscalização ANVISA&lt;br/&gt;2 - Fiscalização VIGIAGRO/MAPA&lt;br/&gt;3 - Fiscalização RFB&lt;br/&gt;4 - Fiscalização VIGIAGRO/MAPA e Anvisa&lt;br/&gt;5 - Fiscalização VIGIAGRO/MAPA e RFB&lt;br/&gt;6 - Fiscalização Anvisa e RFB&lt;br/&gt;7 - Fiscalização VIGIAGRO/MAPA, Anvisa e RFB&lt;br/&gt;8 - Fiscalização IBAMA&lt;br/&gt;9 - Fiscalização IBAMA e ANVISA&lt;br/&gt;10 - Fiscalização IBAMA e VIGIAGRO/MAPA&lt;br/&gt;11 - Fiscalização IBAMA e RFB&lt;br/&gt;12 - Fiscalização IBAMA, VIGIAGRO/MAPA e ANVISA&lt;br/&gt;13 - Fiscalização IBAMA, VIGIAGRO/MAPA e RFB&lt;br/&gt;14 - Fiscalização IBAMA, ANVISA e RFB&lt;br/&gt;15 - Fiscalização IBAMA, ANVISA, VIGIAGRO/MAPA e RFB
-     * minimum: 0
-     * maximum: 15
-     *
-     * @return tratamentoAdm
-     **/
-    @JsonProperty("tratamentoAdm")
-    @Min(0)
-    @Max(15)
-    public Integer getTratamentoAdm() {
-        return tratamentoAdm;
-    }
-
     public void setTratamentoAdm(Integer tratamentoAdm) {
         this.tratamentoAdm = tratamentoAdm;
     }
@@ -218,51 +204,65 @@ public class InformaesDaRemessa {
         return this;
     }
 
-    public InformaesDaRemessa volumesRecebidos(Integer volumesRecebidos) {
-        this.volumesRecebidos = volumesRecebidos;
-        return this;
-    }
-
     /**
-     * Total de volumes recebidos da remessa. Máximo de 4 caracteres numéricos (0 até 9999).
+     * Especifica se a mercadoria necessita de tratamento administrativo, encaminhando a mesma para seleção do órgão desejado.&lt;br/&gt;1- Fiscalização ANVISA&lt;br/&gt;2 - Fiscalização VIGIAGRO/MAPA&lt;br/&gt;3 - Fiscalização RFB&lt;br/&gt;4 - Fiscalização VIGIAGRO/MAPA e Anvisa&lt;br/&gt;5 - Fiscalização VIGIAGRO/MAPA e RFB&lt;br/&gt;6 - Fiscalização Anvisa e RFB&lt;br/&gt;7 - Fiscalização VIGIAGRO/MAPA, Anvisa e RFB&lt;br/&gt;8 - Fiscalização IBAMA&lt;br/&gt;9 - Fiscalização IBAMA e ANVISA&lt;br/&gt;10 - Fiscalização IBAMA e VIGIAGRO/MAPA&lt;br/&gt;11 - Fiscalização IBAMA e RFB&lt;br/&gt;12 - Fiscalização IBAMA, VIGIAGRO/MAPA e ANVISA&lt;br/&gt;13 - Fiscalização IBAMA, VIGIAGRO/MAPA e RFB&lt;br/&gt;14 - Fiscalização IBAMA, ANVISA e RFB&lt;br/&gt;15 - Fiscalização IBAMA, ANVISA, VIGIAGRO/MAPA e RFB
      * minimum: 0
-     * maximum: 9999
+     * maximum: 9223372036854775807
      *
-     * @return volumesRecebidos
+     * @return tratamentoAdm
      **/
-    @JsonProperty("volumesRecebidos")
-    @NotNull
+    @JsonProperty("tratamentoAdm")
     @Min(0)
-    @Max(9999)
-    public Integer getVolumesRecebidos() {
-        return volumesRecebidos;
+    @Max(Integer.MAX_VALUE)
+    public Integer getTratamentoAdm() {
+        return tratamentoAdm;
     }
 
     public void setVolumesRecebidos(Integer volumesRecebidos) {
         this.volumesRecebidos = volumesRecebidos;
     }
 
-    public InformaesDaRemessa volumesRemessa(Integer volumesRemessa) {
-        this.volumesRemessa = volumesRemessa;
+    /**
+     * Total de volumes recebidos da remessa. Máximo de 4 caracteres numéricos (0 até 9999).
+     * minimum: 0
+     * maximum: 9223372036854775807
+     *
+     * @return volumesRecebidos
+     **/
+    @JsonProperty("volumesRecebidos")
+    @NotNull
+    @Min(0)
+    @Max(Integer.MAX_VALUE)
+    public Integer getVolumesRecebidos() {
+        return volumesRecebidos;
+    }
+
+    public InformaesDaRemessa volumesRecebidos(Integer volumesRecebidos) {
+        this.volumesRecebidos = volumesRecebidos;
         return this;
+    }
+
+    public void setVolumesRemessa(Integer volumesRemessa) {
+        this.volumesRemessa = volumesRemessa;
     }
 
     /**
      * Quantidade de volumes da remessa. Para remessas over é a quantidade de volumes informados na primeira presença de carga.  Máximo de 4 caracteres numéricos (1 até 9999).
      * minimum: 0
-     * maximum: 9999
+     * maximum: 9223372036854775807
      *
      * @return volumesRemessa
      **/
     @JsonProperty("volumesRemessa")
     @Min(0)
-    @Max(9999)
+    @Max(Integer.MAX_VALUE)
     public Integer getVolumesRemessa() {
         return volumesRemessa;
     }
 
-    public void setVolumesRemessa(Integer volumesRemessa) {
+    public InformaesDaRemessa volumesRemessa(Integer volumesRemessa) {
         this.volumesRemessa = volumesRemessa;
+        return this;
     }
 
     @Override

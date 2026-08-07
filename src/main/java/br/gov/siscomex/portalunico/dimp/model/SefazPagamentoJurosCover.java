@@ -76,17 +76,6 @@ public class SefazPagamentoJurosCover {
     private OffsetDateTime dataHoraPagamento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do Banco&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
      *
      * @return bancoJuros
@@ -98,6 +87,17 @@ public class SefazPagamentoJurosCover {
 
     public void setBancoJuros(String bancoJuros) {
         this.bancoJuros = bancoJuros;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -138,11 +138,6 @@ public class SefazPagamentoJurosCover {
         return this;
     }
 
-    public SefazPagamentoJurosCover bancoJuros(String bancoJuros) {
-        this.bancoJuros = bancoJuros;
-        return this;
-    }
-
     /**
      * Código da receita&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
      *
@@ -155,6 +150,11 @@ public class SefazPagamentoJurosCover {
 
     public void setCodigoReceita(String codigoReceita) {
         this.codigoReceita = codigoReceita;
+    }
+
+    public SefazPagamentoJurosCover bancoJuros(String bancoJuros) {
+        this.bancoJuros = bancoJuros;
+        return this;
     }
 
     /**

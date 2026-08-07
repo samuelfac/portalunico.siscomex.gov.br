@@ -112,6 +112,8 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
      * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
      **/
     private String ruc = null;
+
+
     @XmlElement(name = "tipo")
     @ApiModelProperty(value = "")
     @Valid
@@ -123,23 +125,6 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
      * Código da situação do Conhecimento<br>Tamanho: 1<br/>A - Ativo <br/>E - Excluído<br/>
      **/
     private SituacaoCargaEnum situacaoCarga = null;
-    @XmlElement(name = "tipoCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoItemCargaCrt tipoCarga = null;
-    @XmlElement(name = "visualizaDepositario")
-    @ApiModelProperty(example = "true", value = "Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.")
-    /**
-     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
-     **/
-    private Boolean visualizaDepositario = null;
-    @XmlElement(name = "volumeMetrosCubicos")
-    @ApiModelProperty(example = "435.498", value = "Volume da carga em metros cúbicos<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
-    @Valid
-    /**
-     * Volume da carga em metros cúbicos<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     **/
-    private BigDecimal volumeMetrosCubicos = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -151,6 +136,26 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoItemCargaCrt tipoCarga = null;
+
+    @XmlElement(name = "visualizaDepositario")
+    @ApiModelProperty(example = "true", value = "Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.")
+    /**
+     * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
+     **/
+    private Boolean visualizaDepositario = null;
+
+    @XmlElement(name = "volumeMetrosCubicos")
+    @ApiModelProperty(example = "435.498", value = "Volume da carga em metros cúbicos<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais")
+    @Valid
+    /**
+     * Volume da carga em metros cúbicos<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais
+     **/
+    private BigDecimal volumeMetrosCubicos = null;
 
     /**
      * Get categoriaCarga
@@ -362,7 +367,6 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
 
     /**
      * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira&lt;br/&gt; S - Sim &lt;br/&gt;N - Não&lt;br/&gt;
-     *
      * @return partesPecasMadeira
      **/
     @JsonProperty("partesPecasMadeira")
@@ -381,7 +385,6 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
 
     /**
      * Peso bruto da carga em KG&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return pesoBrutoKg
      **/
     @JsonProperty("pesoBrutoKg")
@@ -418,7 +421,6 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
 
     /**
      * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -437,6 +439,7 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
 
     /**
      * Código da situação do Conhecimento&lt;br&gt;Tamanho: 1&lt;br/&gt;A - Ativo &lt;br/&gt;E - Excluído&lt;br/&gt;
+     *
      * @return situacaoCarga
      **/
     @JsonProperty("situacaoCarga")
@@ -496,7 +499,6 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
 
     /**
      * Indicador que informa se o depositário pode visualizar os dados de valor do frete, valor FCA e seguro informados nos CRTs da viagem.
-     *
      * @return visualizaDepositario
      **/
     @JsonProperty("visualizaDepositario")
@@ -515,7 +517,6 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
 
     /**
      * Volume da carga em metros cúbicos&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return volumeMetrosCubicos
      **/
     @JsonProperty("volumeMetrosCubicos")

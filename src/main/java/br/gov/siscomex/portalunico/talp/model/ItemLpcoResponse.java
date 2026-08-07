@@ -82,17 +82,6 @@ public class ItemLpcoResponse {
     private String parcelaDistribuicaoCota = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número sequencial do item do LPCO.
      *
      * @return numeroItem
@@ -125,6 +114,17 @@ public class ItemLpcoResponse {
 
     public void setNcm(String ncm) {
         this.ncm = ncm;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -172,11 +172,6 @@ public class ItemLpcoResponse {
 
     public ItemLpcoResponse addListaAtributosNcmItem(CampoLpcoResponse listaAtributosNcmItem) {
         this.listaAtributosNcm.add(listaAtributosNcmItem);
-        return this;
-    }
-
-    public ItemLpcoResponse ncm(String ncm) {
-        this.ncm = ncm;
         return this;
     }
 
@@ -230,6 +225,11 @@ public class ItemLpcoResponse {
 
     public void setCriterioDistribuicaoCota(String criterioDistribuicaoCota) {
         this.criterioDistribuicaoCota = criterioDistribuicaoCota;
+    }
+
+    public ItemLpcoResponse ncm(String ncm) {
+        this.ncm = ncm;
+        return this;
     }
 
     /**

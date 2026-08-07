@@ -90,17 +90,6 @@ public class Pessoa {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get endereco
      *
      * @return endereco
@@ -112,6 +101,17 @@ public class Pessoa {
 
     public void setEndereco(Endereo endereco) {
         this.endereco = endereco;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -133,11 +133,6 @@ public class Pessoa {
         return this;
     }
 
-    public Pessoa endereco(Endereo endereco) {
-        this.endereco = endereco;
-        return this;
-    }
-
     /**
      * Tipo do documento de identificação fiscal.&lt;br/&gt;1 – CPF.&lt;br/&gt;2 – CNPJ.&lt;br/&gt;3 – Passaporte&lt;br/&gt;Sempre que o atributo &#39;documento&#39; for inserido no Json, o atributo &#39;tipoDocumento&#39; deve acompanhá-lo.
      *
@@ -154,6 +149,11 @@ public class Pessoa {
 
     public Pessoa tipoDocumento(String tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
+    public Pessoa endereco(Endereo endereco) {
+        this.endereco = endereco;
         return this;
     }
 

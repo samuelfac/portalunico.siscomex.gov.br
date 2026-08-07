@@ -86,17 +86,6 @@ public class DeclarationNoNFSimplified {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get currencyExchange
      *
      * @return currencyExchange
@@ -132,6 +121,17 @@ public class DeclarationNoNFSimplified {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get declarationOffice
      *
      * @return declarationOffice
@@ -151,11 +151,6 @@ public class DeclarationNoNFSimplified {
         return this;
     }
 
-    public DeclarationNoNFSimplified declarant(Declarant declarant) {
-        this.declarant = declarant;
-        return this;
-    }
-
     /**
      * Get exitOffice
      *
@@ -169,6 +164,11 @@ public class DeclarationNoNFSimplified {
 
     public void setExitOffice(ExitOffice exitOffice) {
         this.exitOffice = exitOffice;
+    }
+
+    public DeclarationNoNFSimplified declarant(Declarant declarant) {
+        this.declarant = declarant;
+        return this;
     }
 
     /**
@@ -216,11 +216,6 @@ public class DeclarationNoNFSimplified {
         return this;
     }
 
-    public DeclarationNoNFSimplified exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
-        return this;
-    }
-
     /**
      * Get ucr
      * @return ucr
@@ -236,6 +231,11 @@ public class DeclarationNoNFSimplified {
 
     public DeclarationNoNFSimplified ucr(UCR ucr) {
         this.ucr = ucr;
+        return this;
+    }
+
+    public DeclarationNoNFSimplified exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 

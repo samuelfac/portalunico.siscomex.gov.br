@@ -69,6 +69,16 @@ public class Declarant {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class Declarant {\n" +
+                "    contact: " + toIndentedString(contact) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -78,15 +88,5 @@ public class Declarant {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class Declarant {\n" +
-                "    contact: " + toIndentedString(contact) + "\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "}";
-        return sb;
     }
 }

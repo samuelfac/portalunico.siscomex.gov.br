@@ -109,6 +109,7 @@ public class ConsultarLpcoResponse {
      **/
     private String dataSituacaoAtual = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -287,7 +288,6 @@ public class ConsultarLpcoResponse {
 
     /**
      * Números das DU-Es às quais o LPCO já está vinculado, separados por vírgula ( , )
-     *
      * @return dueVinculada
      **/
     @JsonProperty("dueVinculada")
@@ -383,7 +383,6 @@ public class ConsultarLpcoResponse {
         this.canal = canal;
         return this;
     }
-
 
     @Override
     public String toString() {

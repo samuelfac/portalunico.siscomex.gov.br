@@ -43,17 +43,6 @@ public class TratamentoTributarioDto {
     private List<TratamentoTributoDto> tributos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data do registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataDoRegistro
@@ -65,6 +54,17 @@ public class TratamentoTributarioDto {
 
     public void setDataDoRegistro(OffsetDateTime dataDoRegistro) {
         this.dataDoRegistro = dataDoRegistro;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -86,11 +86,6 @@ public class TratamentoTributarioDto {
         return this;
     }
 
-    public TratamentoTributarioDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
-        return this;
-    }
-
     /**
      * Get regimeTributario
      *
@@ -103,6 +98,11 @@ public class TratamentoTributarioDto {
 
     public void setRegimeTributario(RegimeTributarioDto regimeTributario) {
         this.regimeTributario = regimeTributario;
+    }
+
+    public TratamentoTributarioDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
+        return this;
     }
 
     /**

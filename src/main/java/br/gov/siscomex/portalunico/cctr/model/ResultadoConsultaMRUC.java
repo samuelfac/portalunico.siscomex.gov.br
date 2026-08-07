@@ -83,6 +83,16 @@ public class ResultadoConsultaMRUC {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ResultadoConsultaMRUC {\n" +
+                "    listaRetorno: " + toIndentedString(listaRetorno) + "\n" +
+                "    listaMensagem: " + toIndentedString(listaMensagem) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -92,15 +102,5 @@ public class ResultadoConsultaMRUC {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ResultadoConsultaMRUC {\n" +
-                "    listaRetorno: " + toIndentedString(listaRetorno) + "\n" +
-                "    listaMensagem: " + toIndentedString(listaMensagem) + "\n" +
-                "}";
-        return sb;
     }
 }

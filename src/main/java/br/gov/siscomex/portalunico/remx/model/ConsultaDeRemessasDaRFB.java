@@ -156,17 +156,6 @@ public class ConsultaDeRemessasDaRFB {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de ID do órgão fiscalizador. Cada item da lista contém:&lt;br/&gt;Código do órgão (mneumônico) fiscalizador.  Máximo de 50 caracteres alfanuméricos.&lt;br/&gt;RFB;&lt;br/&gt;ANVISA;&lt;br/&gt;IBAMA;&lt;br/&gt;MAPA.
      *
      * @return listaOrgaoFiscalizacao
@@ -183,6 +172,17 @@ public class ConsultaDeRemessasDaRFB {
     public ConsultaDeRemessasDaRFB listaOrgaoFiscalizacao(List<String> listaOrgaoFiscalizacao) {
         this.listaOrgaoFiscalizacao = listaOrgaoFiscalizacao;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -209,11 +209,6 @@ public class ConsultaDeRemessasDaRFB {
         return this;
     }
 
-    public ConsultaDeRemessasDaRFB addListaOrgaoFiscalizacaoItem(String listaOrgaoFiscalizacaoItem) {
-        this.listaOrgaoFiscalizacao.add(listaOrgaoFiscalizacaoItem);
-        return this;
-    }
-
     /**
      * Lista de situação de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da situação da ocorrência. Composto por até 2 caracteres numéricos.&lt;br/&gt;1 - Exigência em aberto - Todas;&lt;br/&gt;2 - Interrompida pela RFB;&lt;br/&gt;3 - Resolvida;&lt;br/&gt;4 - Sem ocorrência;&lt;br/&gt;5 - Não resolvida;&lt;br/&gt;6 - Exigência em aberto - RCV - Retenção para comprovação de valor;&lt;br/&gt;7 - Exigência em aberto - RPE - Retenção para esclarecimentos;&lt;br/&gt;8 - Verificação física requisitada;&lt;br/&gt;9 - Verificação física realizada.
      *
@@ -230,6 +225,11 @@ public class ConsultaDeRemessasDaRFB {
 
     public ConsultaDeRemessasDaRFB listaSituacaoOcorrencia(List<Integer> listaSituacaoOcorrencia) {
         this.listaSituacaoOcorrencia = listaSituacaoOcorrencia;
+        return this;
+    }
+
+    public ConsultaDeRemessasDaRFB addListaOrgaoFiscalizacaoItem(String listaOrgaoFiscalizacaoItem) {
+        this.listaOrgaoFiscalizacao.add(listaOrgaoFiscalizacaoItem);
         return this;
     }
 
@@ -254,11 +254,6 @@ public class ConsultaDeRemessasDaRFB {
 
     public ConsultaDeRemessasDaRFB addListaSituacaoRemessaItem(Integer listaSituacaoRemessaItem) {
         this.listaSituacaoRemessa.add(listaSituacaoRemessaItem);
-        return this;
-    }
-
-    public ConsultaDeRemessasDaRFB addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
-        this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
         return this;
     }
 
@@ -301,7 +296,6 @@ public class ConsultaDeRemessasDaRFB {
 
     /**
      * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     *
      * @return versaoDIR
      **/
     @JsonProperty("versaoDIR")
@@ -315,6 +309,11 @@ public class ConsultaDeRemessasDaRFB {
 
     public ConsultaDeRemessasDaRFB versaoDIR(String versaoDIR) {
         this.versaoDIR = versaoDIR;
+        return this;
+    }
+
+    public ConsultaDeRemessasDaRFB addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
+        this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
         return this;
     }
 

@@ -62,12 +62,7 @@ public class RetornoConsultaImpedimentosEntregaImportador {
      * Número de documento de saída<br/>Tamanho mínimo: 1<br/>Tamanho máximo:17<br/> Formato: NNNNNNNNNNNNNNNNN
      **/
     private String numeroDocumentoSaida = null;
-    @XmlElement(name = "tipoCarga")
-    @ApiModelProperty(example = "740", value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
-    /**
-     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
-     **/
-    private TipoCargaEnum tipoCarga = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -79,12 +74,13 @@ public class RetornoConsultaImpedimentosEntregaImportador {
         }
         return o.toString().replace("\n", "\n    ");
     }
-    @XmlElement(name = "tipoDocumentoSaida")
-    @ApiModelProperty(example = "PROCESSO", value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
+
+    @XmlElement(name = "tipoCarga")
+    @ApiModelProperty(example = "740", value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
     /**
-     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
      **/
-    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+    private TipoCargaEnum tipoCarga = null;
 
     /**
      * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
@@ -95,6 +91,13 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     public String getIdentificacaoCarga() {
         return identificacaoCarga;
     }
+
+    @XmlElement(name = "tipoDocumentoSaida")
+    @ApiModelProperty(example = "PROCESSO", value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
+    /**
+     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     **/
+    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
 
     /**
      * Lista de condições da entrega de carga ao importador
@@ -139,15 +142,6 @@ public class RetornoConsultaImpedimentosEntregaImportador {
         return this;
     }
 
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador identificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
     /**
      * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
      *
@@ -156,6 +150,15 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     @JsonProperty("numeroDocumentoSaida")
     public String getNumeroDocumentoSaida() {
         return numeroDocumentoSaida;
+    }
+
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador identificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+        return this;
     }
 
     /**
@@ -182,15 +185,6 @@ public class RetornoConsultaImpedimentosEntregaImportador {
         return this;
     }
 
-    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-    }
-
-    public RetornoConsultaImpedimentosEntregaImportador numeroDocumentoSaida(String numeroDocumentoSaida) {
-        this.numeroDocumentoSaida = numeroDocumentoSaida;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -204,6 +198,15 @@ public class RetornoConsultaImpedimentosEntregaImportador {
                 "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+    }
+
+    public RetornoConsultaImpedimentosEntregaImportador numeroDocumentoSaida(String numeroDocumentoSaida) {
+        this.numeroDocumentoSaida = numeroDocumentoSaida;
+        return this;
     }
 
     /**

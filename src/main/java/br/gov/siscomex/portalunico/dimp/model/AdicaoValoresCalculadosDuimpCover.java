@@ -56,17 +56,6 @@ public class AdicaoValoresCalculadosDuimpCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número de identificação de cada item que compõe a Duimp.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 9999
      *
      * @return itens
@@ -83,6 +72,18 @@ public class AdicaoValoresCalculadosDuimpCover {
     public AdicaoValoresCalculadosDuimpCover itens(Double itens) {
         this.itens = itens;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

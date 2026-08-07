@@ -78,6 +78,16 @@ public class ConsultaEstoquePosResult {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ConsultaEstoquePosResult {\n" +
+                "    lista: " + toIndentedString(lista) + "\n" +
+                "    erros: " + toIndentedString(erros) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class ConsultaEstoquePosResult {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ConsultaEstoquePosResult {\n" +
-                "    lista: " + toIndentedString(lista) + "\n" +
-                "    erros: " + toIndentedString(erros) + "\n" +
-                "}";
-        return sb;
     }
 }

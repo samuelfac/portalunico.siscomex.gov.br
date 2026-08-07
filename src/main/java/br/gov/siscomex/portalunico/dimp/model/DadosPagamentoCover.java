@@ -114,17 +114,6 @@ public class DadosPagamentoCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do banco.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 999
      *
      * @return banco
@@ -155,6 +144,17 @@ public class DadosPagamentoCover {
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -213,11 +213,6 @@ public class DadosPagamentoCover {
         return this;
     }
 
-    public DadosPagamentoCover agencia(String agencia) {
-        this.agencia = agencia;
-        return this;
-    }
-
     /**
      * Get juros
      *
@@ -234,6 +229,11 @@ public class DadosPagamentoCover {
 
     public DadosPagamentoCover juros(JurosPagamentoCover juros) {
         this.juros = juros;
+        return this;
+    }
+
+    public DadosPagamentoCover agencia(String agencia) {
+        this.agencia = agencia;
         return this;
     }
 

@@ -51,17 +51,6 @@ public class ReferenciaFabricante {
     private ReferenciaOperadorEstrangeiro operadorEstrangeiro = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código na Tabela ISO2 do país do fabricante.&lt;br&gt;Tamanho: 2
      *
      * @return codigoPais
@@ -74,6 +63,17 @@ public class ReferenciaFabricante {
 
     public void setCodigoPais(String codigoPais) {
         this.codigoPais = codigoPais;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -96,11 +96,6 @@ public class ReferenciaFabricante {
         return this;
     }
 
-    public ReferenciaFabricante codigoPais(String codigoPais) {
-        this.codigoPais = codigoPais;
-        return this;
-    }
-
     /**
      * CPF / CNPJ do fabricante. Só deve ser informado se for um fabricante nacional (codigoPais &#x3D; BR).&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)
      *
@@ -113,6 +108,11 @@ public class ReferenciaFabricante {
 
     public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
+    }
+
+    public ReferenciaFabricante codigoPais(String codigoPais) {
+        this.codigoPais = codigoPais;
+        return this;
     }
 
     /**

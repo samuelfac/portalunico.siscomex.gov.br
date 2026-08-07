@@ -118,17 +118,6 @@ public class EstoqueNFE {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da unidade da Receita Federal onde está estocada a nota&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Domínio: Tabela de Unidades da RFB de Despacho
      *
      * @return urf
@@ -140,6 +129,17 @@ public class EstoqueNFE {
 
     public void setUrf(String urf) {
         this.urf = urf;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -218,11 +218,6 @@ public class EstoqueNFE {
         return this;
     }
 
-    public EstoqueNFE urf(String urf) {
-        this.urf = urf;
-        return this;
-    }
-
     /**
      * CPF ou CNPJ do responsável pelo estoque&lt;br&gt;Tamanho máximo: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
      *
@@ -263,7 +258,6 @@ public class EstoqueNFE {
 
     /**
      * Motivo da não pesagem na recepção&lt;br&gt;Tamanho: 250
-     *
      * @return motivoNaoPesagem
      **/
     @JsonProperty("motivoNaoPesagem")
@@ -282,7 +276,6 @@ public class EstoqueNFE {
 
     /**
      * Itens da Nota Fiscal
-     *
      * @return itens
      **/
     @JsonProperty("itens")
@@ -301,6 +294,11 @@ public class EstoqueNFE {
 
     public EstoqueNFE addItensItem(ItemNFEEstoque itensItem) {
         this.itens.add(itensItem);
+        return this;
+    }
+
+    public EstoqueNFE urf(String urf) {
+        this.urf = urf;
         return this;
     }
 

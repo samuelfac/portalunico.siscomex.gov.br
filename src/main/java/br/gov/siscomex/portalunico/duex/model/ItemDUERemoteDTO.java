@@ -240,17 +240,6 @@ public class ItemDUERemoteDTO {
     private BigDecimal valorTotal = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Atributo de destaque da NCM&lt;br /&gt;Tamanho: 2&lt;br /&gt;Formato: &#39;NN&#39;
      *
      * @return atributoDestaqueNcmBD
@@ -438,7 +427,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Endereço do importador&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 380
-     *
      * @return enderecoImportador
      **/
     @JsonProperty("enderecoImportador")
@@ -470,8 +458,18 @@ public class ItemDUERemoteDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get exportador
-     *
      * @return exportador
      **/
     @JsonProperty("exportador")
@@ -488,11 +486,6 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    public ItemDUERemoteDTO exportacaoTemporaria(ExportacaoTemporaria exportacaoTemporaria) {
-        this.exportacaoTemporaria = exportacaoTemporaria;
-        return this;
-    }
-
     /**
      * Get itemDaNotaFiscalDeExportacao
      *
@@ -505,6 +498,11 @@ public class ItemDUERemoteDTO {
 
     public void setItemDaNotaFiscalDeExportacao(ItemDaNotaFiscalRemoteDTO itemDaNotaFiscalDeExportacao) {
         this.itemDaNotaFiscalDeExportacao = itemDaNotaFiscalDeExportacao;
+    }
+
+    public ItemDUERemoteDTO exportacaoTemporaria(ExportacaoTemporaria exportacaoTemporaria) {
+        this.exportacaoTemporaria = exportacaoTemporaria;
+        return this;
     }
 
     /**
@@ -535,8 +533,14 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
+    public ItemDUERemoteDTO itensDeNotaComplementar(List<ItemDaNotaFiscalRemoteDTO> itensDeNotaComplementar) {
+        this.itensDeNotaComplementar = itensDeNotaComplementar;
+        return this;
+    }
+
     /**
      * Get itensDeNotaComplementar
+     *
      * @return itensDeNotaComplementar
      **/
     @JsonProperty("itensDeNotaComplementar")
@@ -546,11 +550,6 @@ public class ItemDUERemoteDTO {
 
     public void setItensDeNotaComplementar(List<ItemDaNotaFiscalRemoteDTO> itensDeNotaComplementar) {
         this.itensDeNotaComplementar = itensDeNotaComplementar;
-    }
-
-    public ItemDUERemoteDTO itensDeNotaComplementar(List<ItemDaNotaFiscalRemoteDTO> itensDeNotaComplementar) {
-        this.itensDeNotaComplementar = itensDeNotaComplementar;
-        return this;
     }
 
     /**
@@ -573,11 +572,6 @@ public class ItemDUERemoteDTO {
 
     public ItemDUERemoteDTO addListaCertificadoItem(CertificadoDTO listaCertificadoItem) {
         this.listaCertificado.add(listaCertificadoItem);
-        return this;
-    }
-
-    public ItemDUERemoteDTO addItensDeNotaComplementarItem(ItemDaNotaFiscalRemoteDTO itensDeNotaComplementarItem) {
-        this.itensDeNotaComplementar.add(itensDeNotaComplementarItem);
         return this;
     }
 
@@ -629,7 +623,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Motivo do Tratamento prioritário&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Carga viva&lt;br /&gt;2 &#x3D; Carga perecível&lt;br /&gt;3 &#x3D; Carga perigosa&lt;br /&gt;4 &#x3D; Urna funerária&lt;br /&gt;5 &#x3D; Órgãos humano&lt;br /&gt;6 &#x3D; Partes/peças de aeronave
-     *
      * @return motivoDoTratamentoPrioritario
      **/
     @JsonProperty("motivoDoTratamentoPrioritario")
@@ -641,9 +634,13 @@ public class ItemDUERemoteDTO {
         this.motivoDoTratamentoPrioritario = motivoDoTratamentoPrioritario;
     }
 
+    public ItemDUERemoteDTO addItensDeNotaComplementarItem(ItemDaNotaFiscalRemoteDTO itensDeNotaComplementarItem) {
+        this.itensDeNotaComplementar.add(itensDeNotaComplementarItem);
+        return this;
+    }
+
     /**
      * Get ncm
-     *
      * @return ncm
      **/
     @JsonProperty("ncm")
@@ -678,14 +675,8 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    public ItemDUERemoteDTO motivoDoTratamentoPrioritario(String motivoDoTratamentoPrioritario) {
-        this.motivoDoTratamentoPrioritario = motivoDoTratamentoPrioritario;
-        return this;
-    }
-
     /**
      * Número do item&lt;br /&gt;Formato: Inteiro, com até 5 digitos
-     *
      * @return numero
      **/
     @JsonProperty("numero")
@@ -697,9 +688,13 @@ public class ItemDUERemoteDTO {
         this.numero = numero;
     }
 
+    public ItemDUERemoteDTO motivoDoTratamentoPrioritario(String motivoDoTratamentoPrioritario) {
+        this.motivoDoTratamentoPrioritario = motivoDoTratamentoPrioritario;
+        return this;
+    }
+
     /**
      * Percentual de comissão do Agente&lt;br /&gt;Tamanho: 3,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return percentualDeComissaoDoAgente
      **/
     @JsonProperty("percentualDeComissaoDoAgente")
@@ -713,11 +708,6 @@ public class ItemDUERemoteDTO {
 
     public ItemDUERemoteDTO percentualDeComissaoDoAgente(BigDecimal percentualDeComissaoDoAgente) {
         this.percentualDeComissaoDoAgente = percentualDeComissaoDoAgente;
-        return this;
-    }
-
-    public ItemDUERemoteDTO numero(Integer numero) {
-        this.numero = numero;
         return this;
     }
 
@@ -750,6 +740,11 @@ public class ItemDUERemoteDTO {
 
     public void setQuantidadeNaUnidadeComercializada(BigDecimal quantidadeNaUnidadeComercializada) {
         this.quantidadeNaUnidadeComercializada = quantidadeNaUnidadeComercializada;
+    }
+
+    public ItemDUERemoteDTO numero(Integer numero) {
+        this.numero = numero;
+        return this;
     }
 
     /**
@@ -793,11 +788,6 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    public ItemDUERemoteDTO quantidadeNaUnidadeComercializada(BigDecimal quantidadeNaUnidadeComercializada) {
-        this.quantidadeNaUnidadeComercializada = quantidadeNaUnidadeComercializada;
-        return this;
-    }
-
     /**
      * Unidade comercializada&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 20
      * @return unidadeComercializada
@@ -818,7 +808,6 @@ public class ItemDUERemoteDTO {
 
     /**
      * Valor da mercadoria na condição de venda&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorDaMercadoriaNaCondicaoDeVenda
      **/
     @JsonProperty("valorDaMercadoriaNaCondicaoDeVenda")
@@ -835,13 +824,9 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    /**
-     * Get valorDaMercadoriaNaCondicaoDeVendaEmReais
-     * @return valorDaMercadoriaNaCondicaoDeVendaEmReais
-     **/
-    @JsonProperty("valorDaMercadoriaNaCondicaoDeVendaEmReais")
-    public BigDecimal getValorDaMercadoriaNaCondicaoDeVendaEmReais() {
-        return valorDaMercadoriaNaCondicaoDeVendaEmReais;
+    public ItemDUERemoteDTO quantidadeNaUnidadeComercializada(BigDecimal quantidadeNaUnidadeComercializada) {
+        this.quantidadeNaUnidadeComercializada = quantidadeNaUnidadeComercializada;
+        return this;
     }
 
     public void setValorDaMercadoriaNaCondicaoDeVendaEmReais(BigDecimal valorDaMercadoriaNaCondicaoDeVendaEmReais) {
@@ -886,6 +871,16 @@ public class ItemDUERemoteDTO {
     }
 
     /**
+     * Get valorDaMercadoriaNaCondicaoDeVendaEmReais
+     *
+     * @return valorDaMercadoriaNaCondicaoDeVendaEmReais
+     **/
+    @JsonProperty("valorDaMercadoriaNaCondicaoDeVendaEmReais")
+    public BigDecimal getValorDaMercadoriaNaCondicaoDeVendaEmReais() {
+        return valorDaMercadoriaNaCondicaoDeVendaEmReais;
+    }
+
+    /**
      * Valor Financiado&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      * @return valorFinanciado
      **/
@@ -900,11 +895,6 @@ public class ItemDUERemoteDTO {
 
     public ItemDUERemoteDTO valorFinanciado(BigDecimal valorFinanciado) {
         this.valorFinanciado = valorFinanciado;
-        return this;
-    }
-
-    public ItemDUERemoteDTO valorDaMercadoriaNoLocalDeEmbarqueEmReais(BigDecimal valorDaMercadoriaNoLocalDeEmbarqueEmReais) {
-        this.valorDaMercadoriaNoLocalDeEmbarqueEmReais = valorDaMercadoriaNoLocalDeEmbarqueEmReais;
         return this;
     }
 
@@ -923,6 +913,11 @@ public class ItemDUERemoteDTO {
 
     public ItemDUERemoteDTO valorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
+        return this;
+    }
+
+    public ItemDUERemoteDTO valorDaMercadoriaNoLocalDeEmbarqueEmReais(BigDecimal valorDaMercadoriaNoLocalDeEmbarqueEmReais) {
+        this.valorDaMercadoriaNoLocalDeEmbarqueEmReais = valorDaMercadoriaNoLocalDeEmbarqueEmReais;
         return this;
     }
 

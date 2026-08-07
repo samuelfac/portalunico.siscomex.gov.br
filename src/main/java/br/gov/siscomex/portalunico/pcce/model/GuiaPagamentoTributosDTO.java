@@ -75,6 +75,8 @@ public class GuiaPagamentoTributosDTO {
      * Número da operação que deu origem à guia <br>Tamanho mínimo: 1<br>Tamanho máximo: 20
      **/
     private String nrOperacaoOrigem = null;
+
+
     @XmlElement(name = "tpOperacaoOrigem", required = true)
     @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à guia")
     /**
@@ -88,13 +90,6 @@ public class GuiaPagamentoTributosDTO {
      * Tipo de guia de pagamento
      **/
     private TpGuiaPagamentoEnum tpGuiaPagamento = null;
-    @XmlElement(name = "valorTotal", required = true)
-    @ApiModelProperty(example = "126.54", required = true, value = "Valor total da guia <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor total da guia <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorTotal = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -116,6 +111,14 @@ public class GuiaPagamentoTributosDTO {
     public String getDtVencimento() {
         return dtVencimento;
     }
+
+    @XmlElement(name = "valorTotal", required = true)
+    @ApiModelProperty(example = "126.54", required = true, value = "Valor total da guia <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor total da guia <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorTotal = null;
 
     /**
      * Codigo de barras da guia &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
@@ -155,6 +158,16 @@ public class GuiaPagamentoTributosDTO {
         return this;
     }
 
+    /**
+     * Link para o PDF da guia &lt;br&gt;Tamanho máximo: 400&lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem &#x3D; LPCO e tpGuiaPagamento &#x3D; GRU
+     *
+     * @return linkPdf
+     **/
+    @JsonProperty("linkPdf")
+    public String getLinkPdf() {
+        return linkPdf;
+    }
+
     public void setDtVencimento(String dtVencimento) {
         this.dtVencimento = dtVencimento;
     }
@@ -184,16 +197,6 @@ public class GuiaPagamentoTributosDTO {
     }
 
     /**
-     * Link para o PDF da guia &lt;br&gt;Tamanho máximo: 400&lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem &#x3D; LPCO e tpGuiaPagamento &#x3D; GRU
-     *
-     * @return linkPdf
-     **/
-    @JsonProperty("linkPdf")
-    public String getLinkPdf() {
-        return linkPdf;
-    }
-
-    /**
      * Linha digitável para pagamento &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório se tpGuiaPagamento &#x3D; GRU
      *
      * @return linhaDigitavel
@@ -210,6 +213,20 @@ public class GuiaPagamentoTributosDTO {
     public GuiaPagamentoTributosDTO linhaDigitavel(String linhaDigitavel) {
         this.linhaDigitavel = linhaDigitavel;
         return this;
+    }
+
+    /**
+     * Tipo da operação que deu origem à guia
+     *
+     * @return tpOperacaoOrigem
+     **/
+    @JsonProperty("tpOperacaoOrigem")
+    @NotNull
+    public String getTpOperacaoOrigem() {
+        if (tpOperacaoOrigem == null) {
+            return null;
+        }
+        return tpOperacaoOrigem.value();
     }
 
     public void setLinkPdf(String linkPdf) {
@@ -242,20 +259,6 @@ public class GuiaPagamentoTributosDTO {
     }
 
     /**
-     * Tipo da operação que deu origem à guia
-     *
-     * @return tpOperacaoOrigem
-     **/
-    @JsonProperty("tpOperacaoOrigem")
-    @NotNull
-    public String getTpOperacaoOrigem() {
-        if (tpOperacaoOrigem == null) {
-            return null;
-        }
-        return tpOperacaoOrigem.value();
-    }
-
-    /**
      * Tipo de guia de pagamento
      *
      * @return tpGuiaPagamento
@@ -278,35 +281,6 @@ public class GuiaPagamentoTributosDTO {
         return this;
     }
 
-    public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
-        this.tpOperacaoOrigem = tpOperacaoOrigem;
-    }
-
-    public GuiaPagamentoTributosDTO tpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
-        this.tpOperacaoOrigem = tpOperacaoOrigem;
-        return this;
-    }
-
-    /**
-     * Valor total da guia &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
-     * @return valorTotal
-     **/
-    @JsonProperty("valorTotal")
-    @NotNull
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public GuiaPagamentoTributosDTO valorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -323,6 +297,34 @@ public class GuiaPagamentoTributosDTO {
                 "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
+        this.tpOperacaoOrigem = tpOperacaoOrigem;
+    }
+
+    public GuiaPagamentoTributosDTO tpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
+        this.tpOperacaoOrigem = tpOperacaoOrigem;
+        return this;
+    }
+
+    /**
+     * Valor total da guia &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * @return valorTotal
+     **/
+    @JsonProperty("valorTotal")
+    @NotNull
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public GuiaPagamentoTributosDTO valorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+        return this;
     }
 
 
@@ -394,11 +396,11 @@ public class GuiaPagamentoTributosDTO {
 
         public String value() {
             return value;
-    }
+        }
 
         @Override
         public String toString() {
             return String.valueOf(value);
-    }
+        }
     }
 }

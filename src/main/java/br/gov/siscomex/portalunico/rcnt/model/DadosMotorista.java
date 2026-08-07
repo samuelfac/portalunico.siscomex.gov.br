@@ -66,17 +66,6 @@ public class DadosMotorista {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do documento de estrangeiro. Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;motorista.cpf&#39;, &#39;motorista.identidadeEstrangeiro&#39;, quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 50
      *
      * @return identidadeEstrangeiro
@@ -88,6 +77,17 @@ public class DadosMotorista {
 
     public void setIdentidadeEstrangeiro(String identidadeEstrangeiro) {
         this.identidadeEstrangeiro = identidadeEstrangeiro;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -110,11 +110,6 @@ public class DadosMotorista {
         return this;
     }
 
-    public DadosMotorista identidadeEstrangeiro(String identidadeEstrangeiro) {
-        this.identidadeEstrangeiro = identidadeEstrangeiro;
-        return this;
-    }
-
     /**
      * Protocolo do credenciamento de pessoas (evento 5.1)&lt;br/&gt;Tamanho: 36
      *
@@ -131,6 +126,11 @@ public class DadosMotorista {
 
     public DadosMotorista protocoloCredenciamento(String protocoloCredenciamento) {
         this.protocoloCredenciamento = protocoloCredenciamento;
+        return this;
+    }
+
+    public DadosMotorista identidadeEstrangeiro(String identidadeEstrangeiro) {
+        this.identidadeEstrangeiro = identidadeEstrangeiro;
         return this;
     }
 

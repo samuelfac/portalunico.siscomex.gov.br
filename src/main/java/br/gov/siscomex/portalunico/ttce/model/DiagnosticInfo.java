@@ -107,17 +107,6 @@ public class DiagnosticInfo {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get visao
      *
      * @return visao
@@ -129,6 +118,17 @@ public class DiagnosticInfo {
 
     public void setVisao(String visao) {
         this.visao = visao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -169,14 +169,8 @@ public class DiagnosticInfo {
         return this;
     }
 
-    public DiagnosticInfo visao(String visao) {
-        this.visao = visao;
-        return this;
-    }
-
     /**
      * Get fluxo
-     *
      * @return fluxo
      **/
     @JsonProperty("fluxo")
@@ -209,6 +203,11 @@ public class DiagnosticInfo {
 
     public DiagnosticInfo trackerId(String trackerId) {
         this.trackerId = trackerId;
+        return this;
+    }
+
+    public DiagnosticInfo visao(String visao) {
+        this.visao = visao;
         return this;
     }
 

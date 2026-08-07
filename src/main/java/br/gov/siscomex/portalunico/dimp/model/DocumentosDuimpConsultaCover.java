@@ -91,17 +91,6 @@ public class DocumentosDuimpConsultaCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get declaracoesExportacaoEstrangeira
      *
      * @return declaracoesExportacaoEstrangeira
@@ -118,6 +107,17 @@ public class DocumentosDuimpConsultaCover {
     public DocumentosDuimpConsultaCover declaracoesExportacaoEstrangeira(List<DeclaracaoExportacaoEstrangeiraCover> declaracoesExportacaoEstrangeira) {
         this.declaracoesExportacaoEstrangeira = declaracoesExportacaoEstrangeira;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

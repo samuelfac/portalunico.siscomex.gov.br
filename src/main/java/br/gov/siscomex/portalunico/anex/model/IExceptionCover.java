@@ -50,12 +50,15 @@ public class IExceptionCover {
     @XmlElement(name = "path")
     @ApiModelProperty(value = "")
     private String path = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
+
+
     @XmlElement(name = "tag")
     @ApiModelProperty(value = "")
     private String tag = null;
+
+    @XmlElement(name = "severity")
+    @ApiModelProperty(value = "")
+    private SeverityEnum severity = null;
 
     @XmlElement(name = "status")
     @ApiModelProperty(value = "")
@@ -193,6 +196,7 @@ public class IExceptionCover {
 
     /**
      * Get path
+     *
      * @return path
      **/
     @JsonProperty("path")
@@ -233,6 +237,7 @@ public class IExceptionCover {
 
     /**
      * Get status
+     *
      * @return status
      **/
     @JsonProperty("status")

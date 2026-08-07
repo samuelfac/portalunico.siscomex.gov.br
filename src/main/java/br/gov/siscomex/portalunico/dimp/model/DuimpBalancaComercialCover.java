@@ -70,17 +70,6 @@ public class DuimpBalancaComercialCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get situacao
      *
      * @return situacao
@@ -92,6 +81,17 @@ public class DuimpBalancaComercialCover {
 
     public void setSituacao(SituacaoDuimpConsultaCover situacao) {
         this.situacao = situacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -113,11 +113,6 @@ public class DuimpBalancaComercialCover {
         return this;
     }
 
-    public DuimpBalancaComercialCover situacao(SituacaoDuimpConsultaCover situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
     /**
      * Get carga
      *
@@ -130,6 +125,11 @@ public class DuimpBalancaComercialCover {
 
     public void setCarga(CargaDuimpConsultaCover carga) {
         this.carga = carga;
+    }
+
+    public DuimpBalancaComercialCover situacao(SituacaoDuimpConsultaCover situacao) {
+        this.situacao = situacao;
+        return this;
     }
 
     /**
@@ -151,11 +151,6 @@ public class DuimpBalancaComercialCover {
         return this;
     }
 
-    public DuimpBalancaComercialCover carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
-        return this;
-    }
-
     /**
      * Quantidade total de Itens da Duimp.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 5
      *
@@ -172,6 +167,11 @@ public class DuimpBalancaComercialCover {
 
     public DuimpBalancaComercialCover quantidadeItens(Long quantidadeItens) {
         this.quantidadeItens = quantidadeItens;
+        return this;
+    }
+
+    public DuimpBalancaComercialCover carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
         return this;
     }
 

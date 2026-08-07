@@ -140,7 +140,6 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
         return this;
     }
 
-
     @Override
     public String toString() {
 

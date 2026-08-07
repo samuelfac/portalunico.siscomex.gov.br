@@ -113,17 +113,6 @@ public class RecepcaoConteiner {
     private TransitoSimplificado transitoSimplificado = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
      * @return identificacaoRecepcao
@@ -136,6 +125,17 @@ public class RecepcaoConteiner {
 
     public void setIdentificacaoRecepcao(String identificacaoRecepcao) {
         this.identificacaoRecepcao = identificacaoRecepcao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -157,11 +157,6 @@ public class RecepcaoConteiner {
         return this;
     }
 
-    public RecepcaoConteiner identificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
-        return this;
-    }
-
     /**
      * CPF do responsável pela recepção&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
@@ -174,6 +169,11 @@ public class RecepcaoConteiner {
 
     public void setCpfResp(String cpfResp) {
         this.cpfResp = cpfResp;
+    }
+
+    public RecepcaoConteiner identificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
+        return this;
     }
 
     /**
@@ -212,11 +212,6 @@ public class RecepcaoConteiner {
 
     public RecepcaoConteiner referenciaLocalRecepcao(String referenciaLocalRecepcao) {
         this.referenciaLocalRecepcao = referenciaLocalRecepcao;
-        return this;
-    }
-
-    public RecepcaoConteiner cpfResp(String cpfResp) {
-        this.cpfResp = cpfResp;
         return this;
     }
 
@@ -260,6 +255,11 @@ public class RecepcaoConteiner {
         return this;
     }
 
+    public RecepcaoConteiner cpfResp(String cpfResp) {
+        this.cpfResp = cpfResp;
+        return this;
+    }
+
     /**
      * Local de armazenamento da carga&lt;br&gt;Tamanho&gt; 150
      *
@@ -279,14 +279,8 @@ public class RecepcaoConteiner {
         return this;
     }
 
-    public RecepcaoConteiner addConteineresItem(Conteiner conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
-
     /**
      * Código de identificação da carga&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35
-     *
      * @return codigoIdentCarga
      **/
     @JsonProperty("codigoIdentCarga")
@@ -336,6 +330,11 @@ public class RecepcaoConteiner {
         this.divergenciasIdentificadas = divergenciasIdentificadas;
     }
 
+    public RecepcaoConteiner addConteineresItem(Conteiner conteineresItem) {
+        this.conteineres.add(conteineresItem);
+        return this;
+    }
+
     /**
      * Observações adicionais&lt;br&gt;Tamanho&gt; 250
      * @return observacoesGerais
@@ -354,14 +353,8 @@ public class RecepcaoConteiner {
         return this;
     }
 
-    public RecepcaoConteiner divergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
-        return this;
-    }
-
     /**
      * Get transitoSimplificado
-     *
      * @return transitoSimplificado
      **/
     @JsonProperty("transitoSimplificado")
@@ -375,6 +368,11 @@ public class RecepcaoConteiner {
 
     public RecepcaoConteiner transitoSimplificado(TransitoSimplificado transitoSimplificado) {
         this.transitoSimplificado = transitoSimplificado;
+        return this;
+    }
+
+    public RecepcaoConteiner divergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
         return this;
     }
 

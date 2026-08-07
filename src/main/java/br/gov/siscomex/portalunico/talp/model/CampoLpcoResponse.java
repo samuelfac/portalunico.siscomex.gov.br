@@ -88,17 +88,6 @@ public class CampoLpcoResponse {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do atributo condicionante&lt;BR&gt;Tamanho máximo: 40&lt;br&gt;Formato: Código de atributo no formato ATT_NNNNNNNNN&lt;br&gt;
      *
      * @return codigoAtributoPai
@@ -110,6 +99,17 @@ public class CampoLpcoResponse {
 
     public void setCodigoAtributoPai(String codigoAtributoPai) {
         this.codigoAtributoPai = codigoAtributoPai;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -137,11 +137,6 @@ public class CampoLpcoResponse {
         return this;
     }
 
-    public CampoLpcoResponse codigoAtributoPai(String codigoAtributoPai) {
-        this.codigoAtributoPai = codigoAtributoPai;
-        return this;
-    }
-
     /**
      * Get valorComposto
      *
@@ -154,6 +149,11 @@ public class CampoLpcoResponse {
 
     public void setValorComposto(ReferenciaValorComposto valorComposto) {
         this.valorComposto = valorComposto;
+    }
+
+    public CampoLpcoResponse codigoAtributoPai(String codigoAtributoPai) {
+        this.codigoAtributoPai = codigoAtributoPai;
+        return this;
     }
 
     /**
@@ -172,11 +172,6 @@ public class CampoLpcoResponse {
 
     public CampoLpcoResponse unidadeMedida(String unidadeMedida) {
         this.unidadeMedida = unidadeMedida;
-        return this;
-    }
-
-    public CampoLpcoResponse valorComposto(ReferenciaValorComposto valorComposto) {
-        this.valorComposto = valorComposto;
         return this;
     }
 
@@ -201,6 +196,11 @@ public class CampoLpcoResponse {
 
     public CampoLpcoResponse addIntervenientesItem(Pessoa intervenientesItem) {
         this.intervenientes.add(intervenientesItem);
+        return this;
+    }
+
+    public CampoLpcoResponse valorComposto(ReferenciaValorComposto valorComposto) {
+        this.valorComposto = valorComposto;
         return this;
     }
 

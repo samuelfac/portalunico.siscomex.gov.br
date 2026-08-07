@@ -78,17 +78,6 @@ public class CargaRodoviariaEstoque {
     private TipoGranel tipoGranel = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get chassiVeiculo
      *
      * @return chassiVeiculo
@@ -100,6 +89,17 @@ public class CargaRodoviariaEstoque {
 
     public void setChassiVeiculo(String chassiVeiculo) {
         this.chassiVeiculo = chassiVeiculo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -226,11 +226,6 @@ public class CargaRodoviariaEstoque {
         return this;
     }
 
-    public CargaRodoviariaEstoque chassiVeiculo(String chassiVeiculo) {
-        this.chassiVeiculo = chassiVeiculo;
-        return this;
-    }
-
     /**
      * Get quantidadeVolumes
      *
@@ -243,6 +238,11 @@ public class CargaRodoviariaEstoque {
 
     public void setQuantidadeVolumes(Integer quantidadeVolumes) {
         this.quantidadeVolumes = quantidadeVolumes;
+    }
+
+    public CargaRodoviariaEstoque chassiVeiculo(String chassiVeiculo) {
+        this.chassiVeiculo = chassiVeiculo;
+        return this;
     }
 
     /**
@@ -263,14 +263,8 @@ public class CargaRodoviariaEstoque {
         return this;
     }
 
-    public CargaRodoviariaEstoque quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
-        return this;
-    }
-
     /**
      * Get situacao
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -289,7 +283,6 @@ public class CargaRodoviariaEstoque {
 
     /**
      * Get tipoEmbalagem
-     *
      * @return tipoEmbalagem
      **/
     @JsonProperty("tipoEmbalagem")
@@ -299,6 +292,11 @@ public class CargaRodoviariaEstoque {
 
     public void setTipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
         this.tipoEmbalagem = tipoEmbalagem;
+    }
+
+    public CargaRodoviariaEstoque quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
+        return this;
     }
 
     /**

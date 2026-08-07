@@ -124,17 +124,6 @@ public class IncluirLpcoRequest {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de referência para emissão do pedido. Se não informada, utiliza-se o momento atual&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
      *
      * @return dataReferencia
@@ -146,6 +135,17 @@ public class IncluirLpcoRequest {
 
     public void setDataReferencia(String dataReferencia) {
         this.dataReferencia = dataReferencia;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -197,11 +197,6 @@ public class IncluirLpcoRequest {
         return this;
     }
 
-    public IncluirLpcoRequest dataReferencia(String dataReferencia) {
-        this.dataReferencia = dataReferencia;
-        return this;
-    }
-
     /**
      * Número da LI. É obrigatório quando o campo \&quot;exigeNumeroLI\&quot; do modelo for true.
      *
@@ -214,6 +209,11 @@ public class IncluirLpcoRequest {
 
     public void setNumeroLI(Long numeroLI) {
         this.numeroLI = numeroLI;
+    }
+
+    public IncluirLpcoRequest dataReferencia(String dataReferencia) {
+        this.dataReferencia = dataReferencia;
+        return this;
     }
 
     /**
@@ -235,11 +235,6 @@ public class IncluirLpcoRequest {
         return this;
     }
 
-    public IncluirLpcoRequest numeroLI(Long numeroLI) {
-        this.numeroLI = numeroLI;
-        return this;
-    }
-
     /**
      * Justificativa da Dispensa de Taxa. É obrigatório quando o campo \&quot;dispensaTaxa\&quot; for true.
      *
@@ -256,6 +251,11 @@ public class IncluirLpcoRequest {
 
     public IncluirLpcoRequest justificativaDispensaTaxa(String justificativaDispensaTaxa) {
         this.justificativaDispensaTaxa = justificativaDispensaTaxa;
+        return this;
+    }
+
+    public IncluirLpcoRequest numeroLI(Long numeroLI) {
+        this.numeroLI = numeroLI;
         return this;
     }
 

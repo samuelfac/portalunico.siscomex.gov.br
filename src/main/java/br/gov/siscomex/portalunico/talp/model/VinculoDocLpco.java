@@ -146,17 +146,6 @@ public class VinculoDocLpco {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do item da DU-E ao qual o LPCO foi vinculado
      *
      * @return numeroDocumentoItem
@@ -169,6 +158,17 @@ public class VinculoDocLpco {
 
     public void setNumeroDocumentoItem(Long numeroDocumentoItem) {
         this.numeroDocumentoItem = numeroDocumentoItem;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -190,11 +190,6 @@ public class VinculoDocLpco {
         return this;
     }
 
-    public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
-        this.numeroDocumentoItem = numeroDocumentoItem;
-        return this;
-    }
-
     /**
      * Data de desembaraço da DU-E vinculada ao LPCO&lt;br&gt;Formato: dd/MM/yyyy
      *
@@ -207,6 +202,11 @@ public class VinculoDocLpco {
 
     public void setDataDesembaraco(String dataDesembaraco) {
         this.dataDesembaraco = dataDesembaraco;
+    }
+
+    public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
+        this.numeroDocumentoItem = numeroDocumentoItem;
+        return this;
     }
 
     /**
@@ -225,11 +225,6 @@ public class VinculoDocLpco {
 
     public VinculoDocLpco dataCCE(String dataCCE) {
         this.dataCCE = dataCCE;
-        return this;
-    }
-
-    public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
         return this;
     }
 
@@ -311,7 +306,6 @@ public class VinculoDocLpco {
 
     /**
      * Se o LPCO  tiver um campo com código VMLE, este campo indicará qual é a quantidade da cota definida pelo LPCO que foi consumida por este vínculo&lt;br&gt;Formato: número com precisão máxima de 2 casas decimais
-     *
      * @return vmle
      **/
     @JsonProperty("vmle")
@@ -325,6 +319,11 @@ public class VinculoDocLpco {
 
     public VinculoDocLpco vmle(BigDecimal vmle) {
         this.vmle = vmle;
+        return this;
+    }
+
+    public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
         return this;
     }
 

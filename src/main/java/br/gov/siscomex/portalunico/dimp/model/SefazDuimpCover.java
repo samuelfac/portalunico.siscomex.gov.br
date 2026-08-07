@@ -82,12 +82,8 @@ public class SefazDuimpCover {
      * CPF do responsável pela declaração.<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfResponsavel = null;
-    @XmlElement(name = "tipoImportador", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país")
-    /**
-     * Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país
-     **/
-    private TipoImportadorEnum tipoImportador = null;
+
+
     @XmlElement(name = "nomeImportador", required = true)
     @ApiModelProperty(example = "Importador Exemplo XYZ", required = true, value = "Nome do importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
     /**
@@ -95,31 +91,19 @@ public class SefazDuimpCover {
      **/
     private String nomeImportador = null;
 
+    @XmlElement(name = "tipoImportador", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país")
+    /**
+     * Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país
+     **/
+    private TipoImportadorEnum tipoImportador = null;
+
     @XmlElement(name = "niImportador", required = true)
     @ApiModelProperty(example = "191", required = true, value = "<br>Número de indentificação do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
      * <br>Número de indentificação do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
      **/
     private Long niImportador = null;
-    @XmlElement(name = "ufImportador", required = true)
-    @ApiModelProperty(example = "RJ", required = true, value = "UF do importador<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO")
-    /**
-     * UF do importador<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO
-     **/
-    private String ufImportador = null;
-    @XmlElement(name = "canalSelecao", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Canal da declaração. <br>Dominio: <br>1 - verde, <br>12 - amarelo, <br>3 - vermelho, <br>15 - cinza")
-    /**
-     * Canal da declaração. <br>Dominio: <br>1 - verde, <br>12 - amarelo, <br>3 - vermelho, <br>15 - cinza
-     **/
-    private CanalSelecaoEnum canalSelecao = null;
-    @XmlElement(name = "equipesTrabalho", required = true)
-    @ApiModelProperty(required = true, value = "Lista de equipes de trabalho")
-    @Valid
-    /**
-     * Lista de equipes de trabalho
-     **/
-    private List<DadosDeEquipeDeTrabalho> equipesTrabalho = new ArrayList<>();
     @XmlElement(name = "processosVinculados")
     @ApiModelProperty(value = "Lista de processos vinculados")
     @Valid
@@ -127,10 +111,32 @@ public class SefazDuimpCover {
      * Lista de processos vinculados
      **/
     private List<DadosDoProcesso> processosVinculados = null;
+
+    @XmlElement(name = "ufImportador", required = true)
+    @ApiModelProperty(example = "RJ", required = true, value = "UF do importador<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO")
+    /**
+     * UF do importador<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO
+     **/
+    private String ufImportador = null;
     @XmlElement(name = "sefazDadosResumo", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private SefazDadosResumo sefazDadosResumo = null;
+
+    @XmlElement(name = "canalSelecao", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Canal da declaração. <br>Dominio: <br>1 - verde, <br>12 - amarelo, <br>3 - vermelho, <br>15 - cinza")
+    /**
+     * Canal da declaração. <br>Dominio: <br>1 - verde, <br>12 - amarelo, <br>3 - vermelho, <br>15 - cinza
+     **/
+    private CanalSelecaoEnum canalSelecao = null;
+
+    @XmlElement(name = "equipesTrabalho", required = true)
+    @ApiModelProperty(required = true, value = "Lista de equipes de trabalho")
+    @Valid
+    /**
+     * Lista de equipes de trabalho
+     **/
+    private List<DadosDeEquipeDeTrabalho> equipesTrabalho = new ArrayList<>();
 
     @XmlElement(name = "informacoesSituacaoEspecialDespacho", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -183,6 +189,20 @@ public class SefazDuimpCover {
      * Lista de eventos no histórico de operações
      **/
     private List<SefazDuimpHistEventoCover> itensHistorico = null;
+
+    /**
+     * Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  &lt;br&gt;Dominio: &lt;br&gt;1 - Pessoa Jurídica, &lt;br&gt;2 - Pessoa Física residente no país
+     *
+     * @return tipoImportador
+     **/
+    @JsonProperty("tipoImportador")
+    @NotNull
+    public String getTipoImportador() {
+        if (tipoImportador == null) {
+            return null;
+        }
+        return tipoImportador.value();
+    }
 
     /**
      * Número da Duimp&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* NN &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* AA &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* NNNNNNNNNN &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* N &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
@@ -325,20 +345,6 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  &lt;br&gt;Dominio: &lt;br&gt;1 - Pessoa Jurídica, &lt;br&gt;2 - Pessoa Física residente no país
-     *
-     * @return tipoImportador
-     **/
-    @JsonProperty("tipoImportador")
-    @NotNull
-    public String getTipoImportador() {
-        if (tipoImportador == null) {
-            return null;
-        }
-        return tipoImportador.value();
-    }
-
-    /**
      * CPF do responsável pela declaração.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpfResponsavel
@@ -358,15 +364,6 @@ public class SefazDuimpCover {
         return this;
     }
 
-    public void setTipoImportador(TipoImportadorEnum tipoImportador) {
-        this.tipoImportador = tipoImportador;
-    }
-
-    public SefazDuimpCover tipoImportador(TipoImportadorEnum tipoImportador) {
-        this.tipoImportador = tipoImportador;
-        return this;
-    }
-
     /**
      * Nome do importador &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
      *
@@ -376,6 +373,15 @@ public class SefazDuimpCover {
     @NotNull
     public String getNomeImportador() {
         return nomeImportador;
+    }
+
+    public void setTipoImportador(TipoImportadorEnum tipoImportador) {
+        this.tipoImportador = tipoImportador;
+    }
+
+    public SefazDuimpCover tipoImportador(TipoImportadorEnum tipoImportador) {
+        this.tipoImportador = tipoImportador;
+        return this;
     }
 
     /**
@@ -397,6 +403,17 @@ public class SefazDuimpCover {
         return this;
     }
 
+    /**
+     * Lista de documentos instrutivos do despacho
+     *
+     * @return documentosInstrutivoDespacho
+     **/
+    @JsonProperty("documentosInstrutivoDespacho")
+    @NotNull
+    public List<DocumentoInstrutivoDoDespacho> getDocumentosInstrutivoDespacho() {
+        return documentosInstrutivoDespacho;
+    }
+
     public void setNomeImportador(String nomeImportador) {
         this.nomeImportador = nomeImportador;
     }
@@ -408,7 +425,6 @@ public class SefazDuimpCover {
 
     /**
      * UF do importador&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO
-     *
      * @return ufImportador
      **/
     @JsonProperty("ufImportador")
@@ -451,7 +467,6 @@ public class SefazDuimpCover {
 
     /**
      * Lista de equipes de trabalho
-     *
      * @return equipesTrabalho
      **/
     @JsonProperty("equipesTrabalho")
@@ -472,16 +487,6 @@ public class SefazDuimpCover {
     public SefazDuimpCover addEquipesTrabalhoItem(DadosDeEquipeDeTrabalho equipesTrabalhoItem) {
         this.equipesTrabalho.add(equipesTrabalhoItem);
         return this;
-    }
-
-    /**
-     * Lista de processos vinculados
-     *
-     * @return processosVinculados
-     **/
-    @JsonProperty("processosVinculados")
-    public List<DadosDoProcesso> getProcessosVinculados() {
-        return processosVinculados;
     }
 
     /**
@@ -525,13 +530,13 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Lista de documentos instrutivos do despacho
-     * @return documentosInstrutivoDespacho
+     * Lista de processos vinculados
+     *
+     * @return processosVinculados
      **/
-    @JsonProperty("documentosInstrutivoDespacho")
-    @NotNull
-    public List<DocumentoInstrutivoDoDespacho> getDocumentosInstrutivoDespacho() {
-        return documentosInstrutivoDespacho;
+    @JsonProperty("processosVinculados")
+    public List<DadosDoProcesso> getProcessosVinculados() {
+        return processosVinculados;
     }
 
     public void setDocumentosInstrutivoDespacho(List<DocumentoInstrutivoDoDespacho> documentosInstrutivoDespacho) {
@@ -548,6 +553,17 @@ public class SefazDuimpCover {
         return this;
     }
 
+    /**
+     * Get sefazDadosResumo
+     *
+     * @return sefazDadosResumo
+     **/
+    @JsonProperty("sefazDadosResumo")
+    @NotNull
+    public SefazDadosResumo getSefazDadosResumo() {
+        return sefazDadosResumo;
+    }
+
     public void setProcessosVinculados(List<DadosDoProcesso> processosVinculados) {
         this.processosVinculados = processosVinculados;
     }
@@ -560,17 +576,6 @@ public class SefazDuimpCover {
     public SefazDuimpCover addProcessosVinculadosItem(DadosDoProcesso processosVinculadosItem) {
         this.processosVinculados.add(processosVinculadosItem);
         return this;
-    }
-
-    /**
-     * Get sefazDadosResumo
-     *
-     * @return sefazDadosResumo
-     **/
-    @JsonProperty("sefazDadosResumo")
-    @NotNull
-    public SefazDadosResumo getSefazDadosResumo() {
-        return sefazDadosResumo;
     }
 
     /**
@@ -596,15 +601,6 @@ public class SefazDuimpCover {
         return this;
     }
 
-    public void setSefazDadosResumo(SefazDadosResumo sefazDadosResumo) {
-        this.sefazDadosResumo = sefazDadosResumo;
-    }
-
-    public SefazDuimpCover sefazDadosResumo(SefazDadosResumo sefazDadosResumo) {
-        this.sefazDadosResumo = sefazDadosResumo;
-        return this;
-    }
-
     /**
      * Lista de itens de Duimp
      *
@@ -614,6 +610,15 @@ public class SefazDuimpCover {
     @NotNull
     public List<SefazItemCover> getItens() {
         return itens;
+    }
+
+    public void setSefazDadosResumo(SefazDadosResumo sefazDadosResumo) {
+        this.sefazDadosResumo = sefazDadosResumo;
+    }
+
+    public SefazDuimpCover sefazDadosResumo(SefazDadosResumo sefazDadosResumo) {
+        this.sefazDadosResumo = sefazDadosResumo;
+        return this;
     }
 
     /**
@@ -637,20 +642,6 @@ public class SefazDuimpCover {
 
     public SefazDuimpCover addItensHistoricoItem(SefazDuimpHistEventoCover itensHistoricoItem) {
         this.itensHistorico.add(itensHistoricoItem);
-        return this;
-    }
-
-    public void setItens(List<SefazItemCover> itens) {
-        this.itens = itens;
-    }
-
-    public SefazDuimpCover itens(List<SefazItemCover> itens) {
-        this.itens = itens;
-        return this;
-    }
-
-    public SefazDuimpCover addItensItem(SefazItemCover itensItem) {
-        this.itens.add(itensItem);
         return this;
     }
 
@@ -682,6 +673,20 @@ public class SefazDuimpCover {
                 "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setItens(List<SefazItemCover> itens) {
+        this.itens = itens;
+    }
+
+    public SefazDuimpCover itens(List<SefazItemCover> itens) {
+        this.itens = itens;
+        return this;
+    }
+
+    public SefazDuimpCover addItensItem(SefazItemCover itensItem) {
+        this.itens.add(itensItem);
+        return this;
     }
 
 

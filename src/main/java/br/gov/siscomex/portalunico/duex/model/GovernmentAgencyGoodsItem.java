@@ -38,17 +38,6 @@ public class GovernmentAgencyGoodsItem {
     private BigDecimal sequenceNumeric = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get additionalDocument
      *
      * @return additionalDocument
@@ -66,6 +55,17 @@ public class GovernmentAgencyGoodsItem {
     public GovernmentAgencyGoodsItem additionalDocument(List<AdditionalDocument> additionalDocument) {
         this.additionalDocument = additionalDocument;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -93,11 +93,6 @@ public class GovernmentAgencyGoodsItem {
         return this;
     }
 
-    public GovernmentAgencyGoodsItem addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
-        this.additionalDocument.add(additionalDocumentItem);
-        return this;
-    }
-
     /**
      * Get sequenceNumeric
      *
@@ -115,6 +110,11 @@ public class GovernmentAgencyGoodsItem {
 
     public GovernmentAgencyGoodsItem sequenceNumeric(BigDecimal sequenceNumeric) {
         this.sequenceNumeric = sequenceNumeric;
+        return this;
+    }
+
+    public GovernmentAgencyGoodsItem addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
+        this.additionalDocument.add(additionalDocumentItem);
         return this;
     }
 

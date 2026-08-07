@@ -82,6 +82,8 @@ public class ArquivoDiarioAtributoDTO {
      * Orientação de preenchimento<br>Tamanho mínimo: 0<br>Tamanho máximo: 200
      **/
     private String orientacaoPreenchimento = null;
+
+
     @XmlElement(name = "tamanhoMaximo")
     @ApiModelProperty(example = "100", value = "Tamanho máximo<br>Tamanho mínimo: 0<br>Tamanho máximo: 10")
     /**
@@ -95,12 +97,6 @@ public class ArquivoDiarioAtributoDTO {
      * Forma de preenchimento.<br>Tamanho máximo: 20<br>Domínio:<br>LISTA_ESTATICA<br>BOOLEANO<br>DATA<br>DATA_HORA<br>NUMERO_INTEIRO<br>NUMERO_REAL<br>TEXTO<br>DOMINIO_DINAMICO<br>COMPOSTO
      **/
     private FormaPreenchimentoEnum formaPreenchimento = null;
-    @XmlElement(name = "mascara")
-    @ApiModelProperty(example = "99999", value = "Máscara<br>Tamanho mínimo: 0<br>Tamanho máximo: 50")
-    /**
-     * Máscara<br>Tamanho mínimo: 0<br>Tamanho máximo: 50
-     **/
-    private String mascara = null;
     @XmlElement(name = "modalidade", required = true)
     @ApiModelProperty(example = "Exportação", required = true, value = "Modalidade de operação.<br>Tamanho máximo: 20<br>Domínio:<br>Exportação<br>Importação")
     /**
@@ -108,36 +104,54 @@ public class ArquivoDiarioAtributoDTO {
      **/
     private String modalidade = null;
 
+    @XmlElement(name = "mascara")
+    @ApiModelProperty(example = "99999", value = "Máscara<br>Tamanho mínimo: 0<br>Tamanho máximo: 50")
+    /**
+     * Máscara<br>Tamanho mínimo: 0<br>Tamanho máximo: 50
+     **/
+    private String mascara = null;
+
     @XmlElement(name = "casasDecimais")
     @ApiModelProperty(example = "5", value = "Casas Decimais<br>Tamanho mínimo: 0<br>Tamanho máximo: 10")
     /**
      * Casas Decimais<br>Tamanho mínimo: 0<br>Tamanho máximo: 10
      **/
     private Integer casasDecimais = null;
+    @XmlElement(name = "orgaos")
+    @ApiModelProperty(value = "Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
+    /**
+     * Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
+     **/
+    private List<String> orgaos = null;
+
     @XmlElement(name = "obrigatorio", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Preenchimento obrigatório.<br>Domínio:<br>true<br>false")
     /**
      * Preenchimento obrigatório.<br>Domínio:<br>true<br>false
      **/
     private Boolean obrigatorio = false;
+
     @XmlElement(name = "dataInicioVigencia", required = true)
     @ApiModelProperty(example = "2019-01-01", required = true, value = "Data de início de vigência<br>Formato: yyyy-MM-dd")
     /**
      * Data de início de vigência<br>Formato: yyyy-MM-dd
      **/
     private String dataInicioVigencia = null;
+
     @XmlElement(name = "dataFimVigencia")
     @ApiModelProperty(example = "2019-08-29", value = "Data de fim de vigência<br>Formato: yyyy-MM-dd")
     /**
      * Data de fim de vigência<br>Formato: yyyy-MM-dd
      **/
     private String dataFimVigencia = null;
+
     @XmlElement(name = "informacaoAdicional")
     @ApiModelProperty(example = "Texto livre", value = "Informação adicional de preenchimento para o vínculo<br>Tamanho mínimo: 0<br>Tamanho máximo: 1000")
     /**
      * Informação adicional de preenchimento para o vínculo<br>Tamanho mínimo: 0<br>Tamanho máximo: 1000
      **/
     private String informacaoAdicional = null;
+
     @XmlElement(name = "dominio")
     @ApiModelProperty(value = "Lista de domínio do atributo")
     @Valid
@@ -145,16 +159,11 @@ public class ArquivoDiarioAtributoDTO {
      * Lista de domínio do atributo
      **/
     private List<ItemAtributoListaConsultaDTO> dominio = null;
+
     @XmlElement(name = "atributoFiltro")
     @ApiModelProperty(value = "")
     @Valid
     private ArquivoDiarioAtributoDTO atributoFiltro = null;
-    @XmlElement(name = "orgaos")
-    @ApiModelProperty(value = "Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
-    /**
-     * Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
-     **/
-    private List<String> orgaos = null;
 
     @XmlElement(name = "objetivos")
     @ApiModelProperty(value = "Lista de objetivos do atributo")
@@ -163,12 +172,20 @@ public class ArquivoDiarioAtributoDTO {
      * Lista de objetivos do atributo
      **/
     private List<ObjetivoAtributoConsultaDTO> objetivos = null;
+    @XmlElement(name = "multivalorado", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Campo multivalorado.<br>Domínio:<br>true<br>false")
+    /**
+     * Campo multivalorado.<br>Domínio:<br>true<br>false
+     **/
+    private Boolean multivalorado = false;
+
     @XmlElement(name = "atributoCondicionante", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Atributos possui atributos condicionados.<br>Domínio:<br>true<br>false")
     /**
      * Atributos possui atributos condicionados.<br>Domínio:<br>true<br>false
      **/
     private Boolean atributoCondicionante = false;
+
     @XmlElement(name = "condicionados")
     @ApiModelProperty(value = "Lista de atributos condicionados")
     @Valid
@@ -176,12 +193,6 @@ public class ArquivoDiarioAtributoDTO {
      * Lista de atributos condicionados
      **/
     private List<ArquivoDiarioCondicionadoDTO> condicionados = null;
-    @XmlElement(name = "multivalorado", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Campo multivalorado.<br>Domínio:<br>true<br>false")
-    /**
-     * Campo multivalorado.<br>Domínio:<br>true<br>false
-     **/
-    private Boolean multivalorado = false;
 
     @XmlElement(name = "listaSubatributos")
     @ApiModelProperty(value = "Lista de subatributos")
@@ -510,7 +521,6 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Informação adicional de preenchimento para o vínculo&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 1000
-     *
      * @return informacaoAdicional
      **/
     @JsonProperty("informacaoAdicional")
@@ -529,7 +539,6 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Lista de domínio do atributo
-     *
      * @return dominio
      **/
     @JsonProperty("dominio")
@@ -617,6 +626,7 @@ public class ArquivoDiarioAtributoDTO {
 
     /**
      * Atributos possui atributos condicionados.&lt;br&gt;Domínio:&lt;br&gt;true&lt;br&gt;false
+     *
      * @return atributoCondicionante
      **/
     @JsonProperty("atributoCondicionante")

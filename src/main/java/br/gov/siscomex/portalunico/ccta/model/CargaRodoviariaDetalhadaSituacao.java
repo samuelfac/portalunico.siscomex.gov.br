@@ -54,17 +54,6 @@ public class CargaRodoviariaDetalhadaSituacao {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get itensEstoque
      *
      * @return itensEstoque
@@ -86,6 +75,18 @@ public class CargaRodoviariaDetalhadaSituacao {
     public CargaRodoviariaDetalhadaSituacao addItensEstoqueItem(CargaRodoviariaEstoque itensEstoqueItem) {
         this.itensEstoque.add(itensEstoqueItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

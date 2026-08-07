@@ -75,6 +75,16 @@ public class IdentificacaoDuimpRespostaApi {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class IdentificacaoDuimpRespostaApi {\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    versao: " + toIndentedString(versao) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -84,15 +94,5 @@ public class IdentificacaoDuimpRespostaApi {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class IdentificacaoDuimpRespostaApi {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    versao: " + toIndentedString(versao) + "\n" +
-                "}";
-        return sb;
     }
 }

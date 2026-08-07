@@ -27,12 +27,6 @@ import java.math.BigDecimal;
 public class SefazDadosCambiaisCover {
 
 
-    @XmlElement(name = "coberturaCambial")
-    @ApiModelProperty(example = "1", value = "Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
-    /**
-     * Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1
-     **/
-    private CoberturaCambialEnum coberturaCambial = null;
     @XmlElement(name = "valorCoberturaCambial")
     @ApiModelProperty(example = "100.12", value = "Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -40,6 +34,13 @@ public class SefazDadosCambiaisCover {
      * Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorCoberturaCambial = null;
+
+    @XmlElement(name = "coberturaCambial")
+    @ApiModelProperty(example = "1", value = "Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
+    /**
+     * Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1
+     **/
+    private CoberturaCambialEnum coberturaCambial = null;
 
     @XmlElement(name = "instituicaoFinanceira")
     @ApiModelProperty(value = "Código da instituição financiadora.<br>Valor mínimo: 1<br>Valor máximo: 99")
@@ -167,7 +168,6 @@ public class SefazDadosCambiaisCover {
         this.motivoSemCobertura = motivoSemCobertura;
         return this;
     }
-
 
     @Override
     public String toString() {

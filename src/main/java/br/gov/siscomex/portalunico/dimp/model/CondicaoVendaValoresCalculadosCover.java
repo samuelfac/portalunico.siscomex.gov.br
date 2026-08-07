@@ -47,17 +47,6 @@ public class CondicaoVendaValoresCalculadosCover {
     private List<AcrescimoDeducaoValoresCalculadosCover> acrescimosDeducoes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor unitário da mercadoria na condição de venda.&lt;br&gt;Tamanho: 13,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorBRL
@@ -69,6 +58,17 @@ public class CondicaoVendaValoresCalculadosCover {
 
     public void setValorBRL(Double valorBRL) {
         this.valorBRL = valorBRL;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -90,11 +90,6 @@ public class CondicaoVendaValoresCalculadosCover {
         return this;
     }
 
-    public CondicaoVendaValoresCalculadosCover valorBRL(Double valorBRL) {
-        this.valorBRL = valorBRL;
-        return this;
-    }
-
     /**
      * Get seguro
      *
@@ -107,6 +102,11 @@ public class CondicaoVendaValoresCalculadosCover {
 
     public void setSeguro(SeguroValoresCalculadosItemCover seguro) {
         this.seguro = seguro;
+    }
+
+    public CondicaoVendaValoresCalculadosCover valorBRL(Double valorBRL) {
+        this.valorBRL = valorBRL;
+        return this;
     }
 
     /**

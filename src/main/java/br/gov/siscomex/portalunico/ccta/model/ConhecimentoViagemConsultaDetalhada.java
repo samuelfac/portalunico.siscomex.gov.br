@@ -57,19 +57,8 @@ public class ConhecimentoViagemConsultaDetalhada {
      * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
      **/
     private String identificacao = null;
-    @XmlElement(name = "indicadorParcialidade")
-    @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
-    /**
-     * Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas
-     **/
-    private IndicadorParcialidadeEnum indicadorParcialidade = null;
-    @XmlElement(name = "manuseiosEspeciaisManifestoVoo")
-    @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
-    @Valid
-    /**
-     * Lista contendo os manuseios especiais para a carga / Dsic<br/>
-     **/
-    private List<InfoManuseioConsultaDetalhada> manuseiosEspeciaisManifestoVoo = null;
+
+
     @XmlElement(name = "pesoBrutoManifestoVoo")
     @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
     @Valid
@@ -77,6 +66,21 @@ public class ConhecimentoViagemConsultaDetalhada {
      * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoBrutoManifestoVoo = null;
+
+    @XmlElement(name = "indicadorParcialidade")
+    @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
+    /**
+     * Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas
+     **/
+    private IndicadorParcialidadeEnum indicadorParcialidade = null;
+
+    @XmlElement(name = "manuseiosEspeciaisManifestoVoo")
+    @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
+    @Valid
+    /**
+     * Lista contendo os manuseios especiais para a carga / Dsic<br/>
+     **/
+    private List<InfoManuseioConsultaDetalhada> manuseiosEspeciaisManifestoVoo = null;
 
     @XmlElement(name = "outrasInfosServicoManifestoVoo")
     @ApiModelProperty(value = "Lista contendo as outras informações de serviço para a carga / Dsic<br/>")
@@ -110,6 +114,17 @@ public class ConhecimentoViagemConsultaDetalhada {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    /**
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     *
+     * @return dataEmissao
+     **/
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
     @XmlElement(name = "tipoConhecimento")
     @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
     /**
@@ -142,16 +157,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     }
 
     /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    /**
      * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
      *
      * @return cnpjResponsavelArquivo
@@ -168,6 +173,19 @@ public class ConhecimentoViagemConsultaDetalhada {
     public ConhecimentoViagemConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
         this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
         return this;
+    }
+
+    /**
+     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     *
+     * @return indicadorParcialidade
+     **/
+    @JsonProperty("indicadorParcialidade")
+    public String getIndicadorParcialidade() {
+        if (indicadorParcialidade == null) {
+            return null;
+        }
+        return indicadorParcialidade.value();
     }
 
     public void setDataEmissao(String dataEmissao) {
@@ -199,23 +217,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     }
 
     /**
-     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
-     *
-     * @return indicadorParcialidade
-     **/
-    @JsonProperty("indicadorParcialidade")
-    public String getIndicadorParcialidade() {
-        if (indicadorParcialidade == null) {
-            return null;
-        }
-        return indicadorParcialidade.value();
-    }
-
-    public void setIndicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
-        this.indicadorParcialidade = indicadorParcialidade;
-    }
-
-    /**
      * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
      *
      * @return identificacao
@@ -232,6 +233,20 @@ public class ConhecimentoViagemConsultaDetalhada {
     public ConhecimentoViagemConsultaDetalhada identificacao(String identificacao) {
         this.identificacao = identificacao;
         return this;
+    }
+
+    public void setIndicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
+        this.indicadorParcialidade = indicadorParcialidade;
+    }
+
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return quantidadeVolumesManifestoVoo
+     **/
+    @JsonProperty("quantidadeVolumesManifestoVoo")
+    public Integer getQuantidadeVolumesManifestoVoo() {
+        return quantidadeVolumesManifestoVoo;
     }
 
     public ConhecimentoViagemConsultaDetalhada indicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
@@ -288,16 +303,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     }
 
     /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return quantidadeVolumesManifestoVoo
-     **/
-    @JsonProperty("quantidadeVolumesManifestoVoo")
-    public Integer getQuantidadeVolumesManifestoVoo() {
-        return quantidadeVolumesManifestoVoo;
-    }
-
-    /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
      *
      * @return pesoBrutoManifestoVoo
@@ -314,6 +319,26 @@ public class ConhecimentoViagemConsultaDetalhada {
     public ConhecimentoViagemConsultaDetalhada pesoBrutoManifestoVoo(BigDecimal pesoBrutoManifestoVoo) {
         this.pesoBrutoManifestoVoo = pesoBrutoManifestoVoo;
         return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ConhecimentoViagemConsultaDetalhada {\n" +
+                "    classificacoesMercadoriaManifestoVoo: " + toIndentedString(classificacoesMercadoriaManifestoVoo) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    descricaoMercadoriaManifestoVoo: " + toIndentedString(descricaoMercadoriaManifestoVoo) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
+                "    manuseiosEspeciaisManifestoVoo: " + toIndentedString(manuseiosEspeciaisManifestoVoo) + "\n" +
+                "    outrasInfosServicoManifestoVoo: " + toIndentedString(outrasInfosServicoManifestoVoo) + "\n" +
+                "    pesoBrutoManifestoVoo: " + toIndentedString(pesoBrutoManifestoVoo) + "\n" +
+                "    quantidadeVolumesManifestoVoo: " + toIndentedString(quantidadeVolumesManifestoVoo) + "\n" +
+                "    solicitacoesServicosEspeciaisManifestoVoo: " + toIndentedString(solicitacoesServicosEspeciaisManifestoVoo) + "\n" +
+                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "}";
+        return sb;
     }
 
     public void setQuantidadeVolumesManifestoVoo(Integer quantidadeVolumesManifestoVoo) {
@@ -347,26 +372,6 @@ public class ConhecimentoViagemConsultaDetalhada {
     public ConhecimentoViagemConsultaDetalhada addSolicitacoesServicosEspeciaisManifestoVooItem(InfoManuseioConsultaDetalhada solicitacoesServicosEspeciaisManifestoVooItem) {
         this.solicitacoesServicosEspeciaisManifestoVoo.add(solicitacoesServicosEspeciaisManifestoVooItem);
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ConhecimentoViagemConsultaDetalhada {\n" +
-                "    classificacoesMercadoriaManifestoVoo: " + toIndentedString(classificacoesMercadoriaManifestoVoo) + "\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    descricaoMercadoriaManifestoVoo: " + toIndentedString(descricaoMercadoriaManifestoVoo) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
-                "    manuseiosEspeciaisManifestoVoo: " + toIndentedString(manuseiosEspeciaisManifestoVoo) + "\n" +
-                "    outrasInfosServicoManifestoVoo: " + toIndentedString(outrasInfosServicoManifestoVoo) + "\n" +
-                "    pesoBrutoManifestoVoo: " + toIndentedString(pesoBrutoManifestoVoo) + "\n" +
-                "    quantidadeVolumesManifestoVoo: " + toIndentedString(quantidadeVolumesManifestoVoo) + "\n" +
-                "    solicitacoesServicosEspeciaisManifestoVoo: " + toIndentedString(solicitacoesServicosEspeciaisManifestoVoo) + "\n" +
-                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
-                "}";
-        return sb;
     }
 
     /**

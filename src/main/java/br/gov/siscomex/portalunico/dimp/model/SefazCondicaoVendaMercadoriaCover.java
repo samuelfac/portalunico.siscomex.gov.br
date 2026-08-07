@@ -66,17 +66,6 @@ public class SefazCondicaoVendaMercadoriaCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Condição de Venda (Código INCOTERM).&lt;br&gt;Dominio: Tabela de Códigos de Condição de Venda do Siscomex&lt;br&gt;Tamanho: 3
      *
      * @return incoterm
@@ -88,6 +77,17 @@ public class SefazCondicaoVendaMercadoriaCover {
 
     public void setIncoterm(String incoterm) {
         this.incoterm = incoterm;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

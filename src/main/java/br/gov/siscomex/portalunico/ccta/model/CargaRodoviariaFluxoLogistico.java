@@ -40,17 +40,6 @@ public class CargaRodoviariaFluxoLogistico {
     private List<CargaRodoviariaDetalhadaViagem> viagens = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get bloqueiosAtivos
      *
      * @return bloqueiosAtivos
@@ -67,6 +56,17 @@ public class CargaRodoviariaFluxoLogistico {
     public CargaRodoviariaFluxoLogistico bloqueiosAtivos(List<BloqueioConsultaCarga> bloqueiosAtivos) {
         this.bloqueiosAtivos = bloqueiosAtivos;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -93,11 +93,6 @@ public class CargaRodoviariaFluxoLogistico {
         return this;
     }
 
-    public CargaRodoviariaFluxoLogistico addBloqueiosAtivosItem(BloqueioConsultaCarga bloqueiosAtivosItem) {
-        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
-        return this;
-    }
-
     /**
      * Get situacaoAtual
      *
@@ -110,6 +105,11 @@ public class CargaRodoviariaFluxoLogistico {
 
     public void setSituacaoAtual(CargaRodoviariaDetalhadaSituacao situacaoAtual) {
         this.situacaoAtual = situacaoAtual;
+    }
+
+    public CargaRodoviariaFluxoLogistico addBloqueiosAtivosItem(BloqueioConsultaCarga bloqueiosAtivosItem) {
+        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+        return this;
     }
 
     /**

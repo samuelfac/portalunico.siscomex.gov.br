@@ -69,6 +69,16 @@ public class DiffArquivoDiarioNcmDTO {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DiffArquivoDiarioNcmDTO {\n" +
+                "    codigoNcm: " + toIndentedString(codigoNcm) + "\n" +
+                "    atributos: " + toIndentedString(atributos) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -78,15 +88,5 @@ public class DiffArquivoDiarioNcmDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DiffArquivoDiarioNcmDTO {\n" +
-                "    codigoNcm: " + toIndentedString(codigoNcm) + "\n" +
-                "    atributos: " + toIndentedString(atributos) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -39,16 +39,19 @@ public class InfoGeral {
      * CNPJ do Manifestador<br>Tamanho: 14<br>Formato: NNNNNNNNNNNNNN<br>Informado e obrigatório apenas para transportador nacional do tipo pessoa jurídica.
      **/
     private String cnpjManifestador = null;
+
+
+    @XmlElement(name = "docTransporte", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DocTransporte docTransporte = null;
+
     @XmlElement(name = "paisDestino", required = true)
     @ApiModelProperty(example = "AR", required = true, value = "Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)")
     /**
      * Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)
      **/
     private PaisDestinoEnum paisDestino = null;
-    @XmlElement(name = "docTransporte", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DocTransporte docTransporte = null;
 
     @XmlElement(name = "cidadeDestino", required = true)
     @ApiModelProperty(example = "BUENOS AIRES", required = true, value = "Nome da cidade de destino da carga<br>Tamanho: 60")
@@ -229,7 +232,6 @@ public class InfoGeral {
 
     /**
      * Observações&lt;br&gt;Tamanho: 250
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")
@@ -245,7 +247,6 @@ public class InfoGeral {
         this.observacoes = observacoes;
         return this;
     }
-
 
     @Override
     public String toString() {

@@ -51,6 +51,15 @@ public class IdentificacaoItemCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class IdentificacaoItemCover {\n" +
+                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -60,14 +69,5 @@ public class IdentificacaoItemCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class IdentificacaoItemCover {\n" +
-                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "}";
-        return sb;
     }
 }

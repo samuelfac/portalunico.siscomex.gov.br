@@ -62,24 +62,28 @@ public class DocumentoSaidaConsultaDetalhada {
      * Descrição da situação Duimp
      **/
     private String situacaoDuimp = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
-    /**
-     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "uaDestinoDta")
-    @ApiModelProperty(example = "0717700", value = "Unidade da RFB de destino da DTA.")
-    /**
-     * Unidade da RFB de destino da DTA.
-     **/
-    private String uaDestinoDta = null;
+
+
     @XmlElement(name = "versaoDuimp")
     @ApiModelProperty(value = "Versão da Duimp")
     /**
      * Versão da Duimp
      **/
     private Integer versaoDuimp = null;
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
+    /**
+     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "uaDestinoDta")
+    @ApiModelProperty(example = "0717700", value = "Unidade da RFB de destino da DTA.")
+    /**
+     * Unidade da RFB de destino da DTA.
+     **/
+    private String uaDestinoDta = null;
 
     @XmlElement(name = "valorTotalMercadoriaLocalDescarga")
     @ApiModelProperty(example = "5866.26", value = "Valor total da mercadoria no local de descarga")
@@ -276,7 +280,6 @@ public class DocumentoSaidaConsultaDetalhada {
 
     /**
      * Versão da Duimp
-     *
      * @return versaoDuimp
      **/
     @JsonProperty("versaoDuimp")
@@ -292,7 +295,6 @@ public class DocumentoSaidaConsultaDetalhada {
         this.versaoDuimp = versaoDuimp;
         return this;
     }
-
 
     @Override
     public String toString() {

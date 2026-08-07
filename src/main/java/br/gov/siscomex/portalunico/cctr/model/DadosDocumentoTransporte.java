@@ -50,6 +50,15 @@ public class DadosDocumentoTransporte {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosDocumentoTransporte {\n" +
+                "    localSaida: " + toIndentedString(localSaida) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -59,14 +68,5 @@ public class DadosDocumentoTransporte {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosDocumentoTransporte {\n" +
-                "    localSaida: " + toIndentedString(localSaida) + "\n" +
-                "}";
-        return sb;
     }
 }

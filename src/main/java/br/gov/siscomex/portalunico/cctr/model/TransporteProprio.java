@@ -50,6 +50,15 @@ public class TransporteProprio {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class TransporteProprio {\n" +
+                "    consignatario: " + toIndentedString(consignatario) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -59,14 +68,5 @@ public class TransporteProprio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class TransporteProprio {\n" +
-                "    consignatario: " + toIndentedString(consignatario) + "\n" +
-                "}";
-        return sb;
     }
 }

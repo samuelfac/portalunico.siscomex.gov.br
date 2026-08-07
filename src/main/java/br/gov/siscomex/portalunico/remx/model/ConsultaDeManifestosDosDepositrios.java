@@ -154,17 +154,6 @@ public class ConsultaDeManifestosDosDepositrios {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data inicial relacionada ao filtro por período de registro de manifesto.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataInicioManifesto
@@ -176,6 +165,17 @@ public class ConsultaDeManifestosDosDepositrios {
 
     public void setDataInicioManifesto(OffsetDateTime dataInicioManifesto) {
         this.dataInicioManifesto = dataInicioManifesto;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -199,11 +199,6 @@ public class ConsultaDeManifestosDosDepositrios {
 
     public ConsultaDeManifestosDosDepositrios addListaOperadoraItem(String listaOperadoraItem) {
         this.listaOperadora.add(listaOperadoraItem);
-        return this;
-    }
-
-    public ConsultaDeManifestosDosDepositrios dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
         return this;
     }
 
@@ -233,7 +228,6 @@ public class ConsultaDeManifestosDosDepositrios {
 
     /**
      * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
-     *
      * @return numeroMaster
      **/
     @JsonProperty("numeroMaster")
@@ -247,6 +241,11 @@ public class ConsultaDeManifestosDosDepositrios {
 
     public ConsultaDeManifestosDosDepositrios numeroMaster(String numeroMaster) {
         this.numeroMaster = numeroMaster;
+        return this;
+    }
+
+    public ConsultaDeManifestosDosDepositrios dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
         return this;
     }
 

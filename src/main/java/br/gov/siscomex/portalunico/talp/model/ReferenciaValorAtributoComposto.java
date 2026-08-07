@@ -58,17 +58,6 @@ public class ReferenciaValorAtributoComposto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor declarado para o atributo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10000
      *
      * @return valor
@@ -85,6 +74,18 @@ public class ReferenciaValorAtributoComposto {
     public ReferenciaValorAtributoComposto valor(String valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

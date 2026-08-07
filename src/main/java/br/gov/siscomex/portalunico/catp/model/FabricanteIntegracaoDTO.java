@@ -83,17 +83,6 @@ public class FabricanteIntegracaoDTO {
     private String codigoPais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. &lt;br&gt;Tamanho máximo: 3. &lt;br&gt; Importante: A lista enviada deve conter, no máximo, 100 elementos.
      *
      * @return seq
@@ -106,6 +95,17 @@ public class FabricanteIntegracaoDTO {
 
     public void setSeq(Integer seq) {
         this.seq = seq;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -186,11 +186,6 @@ public class FabricanteIntegracaoDTO {
         return this;
     }
 
-    public FabricanteIntegracaoDTO seq(Integer seq) {
-        this.seq = seq;
-        return this;
-    }
-
     /**
      * Código do produto&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
      *
@@ -242,6 +237,11 @@ public class FabricanteIntegracaoDTO {
 
     public void setDataReferencia(OffsetDateTime dataReferencia) {
         this.dataReferencia = dataReferencia;
+    }
+
+    public FabricanteIntegracaoDTO seq(Integer seq) {
+        this.seq = seq;
+        return this;
     }
 
     /**

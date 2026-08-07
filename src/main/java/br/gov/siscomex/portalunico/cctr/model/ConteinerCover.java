@@ -125,17 +125,6 @@ public class ConteinerCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista com os lacres vinculados ao contêiner&lt;br&gt;Máximo 4 lacres diferentes entre si.
      *
      * @return lacres
@@ -158,6 +147,18 @@ public class ConteinerCover {
     public ConteinerCover addLacresItem(LacreCover lacresItem) {
         this.lacres.add(lacresItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

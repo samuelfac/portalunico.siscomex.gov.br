@@ -41,18 +41,19 @@ public class SefazDeclaracaoVinculada {
      * Tipo de declaração vinculada.<br>Dominio:<br>1 - Duimp, <br>2 - DU-E, <br>3 - DI, <br>4 - DE<br>Tamanho: 1
      **/
     private TipoEnum tipo = null;
-    @XmlElement(name = "versaoDeclaracaoVinculada")
-    @ApiModelProperty(example = "0001", value = "Versão da Declaração vinculada.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
-    /**
-     * Versão da Declaração vinculada.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
-     **/
-    private String versaoDeclaracaoVinculada = null;
     @XmlElement(name = "versaoDeclaracaoOriginal")
     @ApiModelProperty(example = "0001", value = "Versão da declaração original relacionada à declaração vinculada.<br>A versão da declaração original é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: a versão da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou a versão da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999")
     /**
      * Versão da declaração original relacionada à declaração vinculada.<br>A versão da declaração original é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: a versão da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou a versão da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999
      **/
     private String versaoDeclaracaoOriginal = null;
+
+    @XmlElement(name = "versaoDeclaracaoVinculada")
+    @ApiModelProperty(example = "0001", value = "Versão da Declaração vinculada.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
+    /**
+     * Versão da Declaração vinculada.<br>Tamanho: 4<br>Valor mínimo: 0001<br>Valor máximo: 9999<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
+     **/
+    private String versaoDeclaracaoVinculada = null;
 
     @XmlElement(name = "numeroDeclaracaoOriginal")
     @ApiModelProperty(example = "19BR00000004936", value = "Número da declaração original relacionada à declaração vinculada.<br>O número da declaração original é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o número da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o número da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.<br><br>Tamanho: 15<br>Formato: 'NNAANNNNNNNNNNN'<br>Lei de formação. O número da Duimp é composto por: <br>* NN = Corresponde ao ano do registro da Declaração. <br>* AA = Corresponde à sigla do país de emissão do documento (BR).<br>* NNNNNNNNNN = 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.<br>* N = 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)")
@@ -117,24 +118,36 @@ public class SefazDeclaracaoVinculada {
      * Quantidade na unidade estatística do item.<br>A quantidade na unidade estatística do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \"Duimp\" e quando o frete foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: quantidade na unidade estatística do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou quantidade na unidade estatística do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal qtdMercadoriaUnidadeEstatistica = null;
-    @XmlElement(name = "itemCodigoFundamento")
-    @ApiModelProperty(example = "1031", value = "Fundamento Aplicado ao Item da Declaração Vinculada<br>Dominio: Fundamentos legais existentes no sistema Tratamento Tributário<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
-    /**
-     * Fundamento Aplicado ao Item da Declaração Vinculada<br>Dominio: Fundamentos legais existentes no sistema Tratamento Tributário<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
-     **/
-    private Integer itemCodigoFundamento = null;
-    @XmlElement(name = "itemNcmAssociada")
-    @ApiModelProperty(example = "02013000", value = "Código da NCM associada ao item da Declaração Vinculada.<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
-    /**
-     * Código da NCM associada ao item da Declaração Vinculada.<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
-     **/
-    private String itemNcmAssociada = null;
     @XmlElement(name = "mnemonicoSistemaControle")
     @ApiModelProperty(example = "DRAW_ISENCAO", value = "Mnemonico do sistema de controle Associado ao Fundamento Aplicado ao Item da Declaração Vinculada.<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
     /**
      * Mnemonico do sistema de controle Associado ao Fundamento Aplicado ao Item da Declaração Vinculada.<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
      **/
     private MnemonicoSistemaControleEnum mnemonicoSistemaControle = null;
+
+    @XmlElement(name = "itemCodigoFundamento")
+    @ApiModelProperty(example = "1031", value = "Fundamento Aplicado ao Item da Declaração Vinculada<br>Dominio: Fundamentos legais existentes no sistema Tratamento Tributário<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
+    /**
+     * Fundamento Aplicado ao Item da Declaração Vinculada<br>Dominio: Fundamentos legais existentes no sistema Tratamento Tributário<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
+     **/
+    private Integer itemCodigoFundamento = null;
+
+    @XmlElement(name = "itemNcmAssociada")
+    @ApiModelProperty(example = "02013000", value = "Código da NCM associada ao item da Declaração Vinculada.<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.")
+    /**
+     * Código da NCM associada ao item da Declaração Vinculada.<br>Tamanho: 8<br>Formato: 'NNNNNNNN'<br>Observação:<br>Apenas quando a declaração vinculada for uma Duimp.
+     **/
+    private String itemNcmAssociada = null;
+
+    /**
+     * Número da Declaração vinculada.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 15
+     *
+     * @return numeroDeclaracaoVinculada
+     **/
+    @JsonProperty("numeroDeclaracaoVinculada")
+    public String getNumeroDeclaracaoVinculada() {
+        return numeroDeclaracaoVinculada;
+    }
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -145,16 +158,6 @@ public class SefazDeclaracaoVinculada {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Número da Declaração vinculada.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 15
-     *
-     * @return numeroDeclaracaoVinculada
-     **/
-    @JsonProperty("numeroDeclaracaoVinculada")
-    public String getNumeroDeclaracaoVinculada() {
-        return numeroDeclaracaoVinculada;
     }
 
     /**
@@ -177,6 +180,16 @@ public class SefazDeclaracaoVinculada {
     public SefazDeclaracaoVinculada tipo(TipoEnum tipo) {
         this.tipo = tipo;
         return this;
+    }
+
+    /**
+     * Versão da declaração original relacionada à declaração vinculada.&lt;br&gt;A versão da declaração original é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \&quot;Duimp\&quot;, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: a versão da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou a versão da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
+     *
+     * @return versaoDeclaracaoOriginal
+     **/
+    @JsonProperty("versaoDeclaracaoOriginal")
+    public String getVersaoDeclaracaoOriginal() {
+        return versaoDeclaracaoOriginal;
     }
 
     public void setNumeroDeclaracaoVinculada(String numeroDeclaracaoVinculada) {
@@ -208,16 +221,6 @@ public class SefazDeclaracaoVinculada {
     }
 
     /**
-     * Versão da declaração original relacionada à declaração vinculada.&lt;br&gt;A versão da declaração original é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \&quot;Duimp\&quot;, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: a versão da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou a versão da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
-     *
-     * @return versaoDeclaracaoOriginal
-     **/
-    @JsonProperty("versaoDeclaracaoOriginal")
-    public String getVersaoDeclaracaoOriginal() {
-        return versaoDeclaracaoOriginal;
-    }
-
-    /**
      * Número da declaração original relacionada à declaração vinculada.&lt;br&gt;O número da declaração original é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \&quot;Duimp\&quot;, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o número da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o número da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* NN &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* AA &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* NNNNNNNNNN &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* N &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
      *
      * @return numeroDeclaracaoOriginal
@@ -236,15 +239,6 @@ public class SefazDeclaracaoVinculada {
         return this;
     }
 
-    public void setVersaoDeclaracaoOriginal(String versaoDeclaracaoOriginal) {
-        this.versaoDeclaracaoOriginal = versaoDeclaracaoOriginal;
-    }
-
-    public SefazDeclaracaoVinculada versaoDeclaracaoOriginal(String versaoDeclaracaoOriginal) {
-        this.versaoDeclaracaoOriginal = versaoDeclaracaoOriginal;
-        return this;
-    }
-
     /**
      * Valor do seguro (R$) do item.&lt;br&gt;O valor do seguro (R$) item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \&quot;Duimp\&quot; e quando o seguro foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: o valor do seguro (R$) do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou o valor do seguro (R$) do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
@@ -253,6 +247,15 @@ public class SefazDeclaracaoVinculada {
     @JsonProperty("valorSeguroReal")
     public BigDecimal getValorSeguroReal() {
         return valorSeguroReal;
+    }
+
+    public void setVersaoDeclaracaoOriginal(String versaoDeclaracaoOriginal) {
+        this.versaoDeclaracaoOriginal = versaoDeclaracaoOriginal;
+    }
+
+    public SefazDeclaracaoVinculada versaoDeclaracaoOriginal(String versaoDeclaracaoOriginal) {
+        this.versaoDeclaracaoOriginal = versaoDeclaracaoOriginal;
+        return this;
     }
 
     /**
@@ -330,15 +333,6 @@ public class SefazDeclaracaoVinculada {
         return this;
     }
 
-    public void setValorSeguroReal(BigDecimal valorSeguroReal) {
-        this.valorSeguroReal = valorSeguroReal;
-    }
-
-    public SefazDeclaracaoVinculada valorSeguroReal(BigDecimal valorSeguroReal) {
-        this.valorSeguroReal = valorSeguroReal;
-        return this;
-    }
-
     /**
      * Quantidade na unidade estatística do item.&lt;br&gt;A quantidade na unidade estatística do item é informado apenas quando a Duimp consultada for COM situação especial de despacho, o tipo da declaração vinculada for \&quot;Duimp\&quot; e quando o frete foi calculado durante a elaboração/registro da Duimp consultada, caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: quantidade na unidade estatística do item da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou quantidade na unidade estatística do item da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
@@ -347,6 +341,15 @@ public class SefazDeclaracaoVinculada {
     @JsonProperty("qtdMercadoriaUnidadeEstatistica")
     public BigDecimal getQtdMercadoriaUnidadeEstatistica() {
         return qtdMercadoriaUnidadeEstatistica;
+    }
+
+    public void setValorSeguroReal(BigDecimal valorSeguroReal) {
+        this.valorSeguroReal = valorSeguroReal;
+    }
+
+    public SefazDeclaracaoVinculada valorSeguroReal(BigDecimal valorSeguroReal) {
+        this.valorSeguroReal = valorSeguroReal;
+        return this;
     }
 
     /**
@@ -368,15 +371,6 @@ public class SefazDeclaracaoVinculada {
         return this;
     }
 
-    public void setQtdMercadoriaUnidadeEstatistica(BigDecimal qtdMercadoriaUnidadeEstatistica) {
-        this.qtdMercadoriaUnidadeEstatistica = qtdMercadoriaUnidadeEstatistica;
-    }
-
-    public SefazDeclaracaoVinculada qtdMercadoriaUnidadeEstatistica(BigDecimal qtdMercadoriaUnidadeEstatistica) {
-        this.qtdMercadoriaUnidadeEstatistica = qtdMercadoriaUnidadeEstatistica;
-        return this;
-    }
-
     /**
      * Fundamento Aplicado ao Item da Declaração Vinculada&lt;br&gt;Dominio: Fundamentos legais existentes no sistema Tratamento Tributário&lt;br&gt;Observação:&lt;br&gt;Apenas quando a declaração vinculada for uma Duimp.
      *
@@ -385,6 +379,15 @@ public class SefazDeclaracaoVinculada {
     @JsonProperty("itemCodigoFundamento")
     public Integer getItemCodigoFundamento() {
         return itemCodigoFundamento;
+    }
+
+    public void setQtdMercadoriaUnidadeEstatistica(BigDecimal qtdMercadoriaUnidadeEstatistica) {
+        this.qtdMercadoriaUnidadeEstatistica = qtdMercadoriaUnidadeEstatistica;
+    }
+
+    public SefazDeclaracaoVinculada qtdMercadoriaUnidadeEstatistica(BigDecimal qtdMercadoriaUnidadeEstatistica) {
+        this.qtdMercadoriaUnidadeEstatistica = qtdMercadoriaUnidadeEstatistica;
+        return this;
     }
 
     /**
@@ -403,6 +406,30 @@ public class SefazDeclaracaoVinculada {
     public SefazDeclaracaoVinculada itemCodigoRegime(Integer itemCodigoRegime) {
         this.itemCodigoRegime = itemCodigoRegime;
         return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class SefazDeclaracaoVinculada {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    numeroDeclaracaoVinculada: " + toIndentedString(numeroDeclaracaoVinculada) + "\n" +
+                "    versaoDeclaracaoVinculada: " + toIndentedString(versaoDeclaracaoVinculada) + "\n" +
+                "    numeroDeclaracaoOriginal: " + toIndentedString(numeroDeclaracaoOriginal) + "\n" +
+                "    versaoDeclaracaoOriginal: " + toIndentedString(versaoDeclaracaoOriginal) + "\n" +
+                "    numeroItemDeclaracaoOriginal: " + toIndentedString(numeroItemDeclaracaoOriginal) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    numeroItemDeclaracaoVinculada: " + toIndentedString(numeroItemDeclaracaoVinculada) + "\n" +
+                "    valorFreteReal: " + toIndentedString(valorFreteReal) + "\n" +
+                "    valorSeguroReal: " + toIndentedString(valorSeguroReal) + "\n" +
+                "    unidadeMedidaEstatistica: " + toIndentedString(unidadeMedidaEstatistica) + "\n" +
+                "    qtdMercadoriaUnidadeEstatistica: " + toIndentedString(qtdMercadoriaUnidadeEstatistica) + "\n" +
+                "    itemCodigoRegime: " + toIndentedString(itemCodigoRegime) + "\n" +
+                "    itemCodigoFundamento: " + toIndentedString(itemCodigoFundamento) + "\n" +
+                "    itemNcmAssociada: " + toIndentedString(itemNcmAssociada) + "\n" +
+                "    mnemonicoSistemaControle: " + toIndentedString(mnemonicoSistemaControle) + "\n" +
+                "}";
+        return sb;
     }
 
     public void setItemCodigoFundamento(Integer itemCodigoFundamento) {
@@ -452,30 +479,6 @@ public class SefazDeclaracaoVinculada {
     public SefazDeclaracaoVinculada mnemonicoSistemaControle(MnemonicoSistemaControleEnum mnemonicoSistemaControle) {
         this.mnemonicoSistemaControle = mnemonicoSistemaControle;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazDeclaracaoVinculada {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numeroDeclaracaoVinculada: " + toIndentedString(numeroDeclaracaoVinculada) + "\n" +
-                "    versaoDeclaracaoVinculada: " + toIndentedString(versaoDeclaracaoVinculada) + "\n" +
-                "    numeroDeclaracaoOriginal: " + toIndentedString(numeroDeclaracaoOriginal) + "\n" +
-                "    versaoDeclaracaoOriginal: " + toIndentedString(versaoDeclaracaoOriginal) + "\n" +
-                "    numeroItemDeclaracaoOriginal: " + toIndentedString(numeroItemDeclaracaoOriginal) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    numeroItemDeclaracaoVinculada: " + toIndentedString(numeroItemDeclaracaoVinculada) + "\n" +
-                "    valorFreteReal: " + toIndentedString(valorFreteReal) + "\n" +
-                "    valorSeguroReal: " + toIndentedString(valorSeguroReal) + "\n" +
-                "    unidadeMedidaEstatistica: " + toIndentedString(unidadeMedidaEstatistica) + "\n" +
-                "    qtdMercadoriaUnidadeEstatistica: " + toIndentedString(qtdMercadoriaUnidadeEstatistica) + "\n" +
-                "    itemCodigoRegime: " + toIndentedString(itemCodigoRegime) + "\n" +
-                "    itemCodigoFundamento: " + toIndentedString(itemCodigoFundamento) + "\n" +
-                "    itemNcmAssociada: " + toIndentedString(itemNcmAssociada) + "\n" +
-                "    mnemonicoSistemaControle: " + toIndentedString(mnemonicoSistemaControle) + "\n" +
-                "}";
-        return sb;
     }
 
 
@@ -567,11 +570,11 @@ public class SefazDeclaracaoVinculada {
 
         public String value() {
             return value;
-    }
+        }
 
         @Override
         public String toString() {
             return String.valueOf(value);
-    }
+        }
     }
 }

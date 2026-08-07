@@ -72,17 +72,6 @@ public class ReferenciaOperadorEstrangeiro {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ raiz do operador estrangeiro.&lt;br&gt;Tamanho: 8
      *
      * @return cpfCnpjRaiz
@@ -95,6 +84,17 @@ public class ReferenciaOperadorEstrangeiro {
 
     public void setCpfCnpjRaiz(String cpfCnpjRaiz) {
         this.cpfCnpjRaiz = cpfCnpjRaiz;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -117,11 +117,6 @@ public class ReferenciaOperadorEstrangeiro {
         return this;
     }
 
-    public ReferenciaOperadorEstrangeiro cpfCnpjRaiz(String cpfCnpjRaiz) {
-        this.cpfCnpjRaiz = cpfCnpjRaiz;
-        return this;
-    }
-
     /**
      * Versão do operador estrangeiro.&lt;br&gt;
      *
@@ -139,6 +134,11 @@ public class ReferenciaOperadorEstrangeiro {
 
     public ReferenciaOperadorEstrangeiro versao(String versao) {
         this.versao = versao;
+        return this;
+    }
+
+    public ReferenciaOperadorEstrangeiro cpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
         return this;
     }
 

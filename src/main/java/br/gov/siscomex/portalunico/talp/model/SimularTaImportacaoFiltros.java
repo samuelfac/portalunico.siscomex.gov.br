@@ -71,17 +71,6 @@ public class SimularTaImportacaoFiltros {
     private List<ReferenciaCampoAdicionalTtDTO> camposAdicionais = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do país em Iso2
      *
      * @return pais
@@ -94,6 +83,17 @@ public class SimularTaImportacaoFiltros {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -161,11 +161,6 @@ public class SimularTaImportacaoFiltros {
         return this;
     }
 
-    public SimularTaImportacaoFiltros pais(String pais) {
-        this.pais = pais;
-        return this;
-    }
-
     /**
      * Código do fundamento legal
      *
@@ -207,6 +202,11 @@ public class SimularTaImportacaoFiltros {
 
     public SimularTaImportacaoFiltros addCamposAdicionaisItem(ReferenciaCampoAdicionalTtDTO camposAdicionaisItem) {
         this.camposAdicionais.add(camposAdicionaisItem);
+        return this;
+    }
+
+    public SimularTaImportacaoFiltros pais(String pais) {
+        this.pais = pais;
         return this;
     }
 

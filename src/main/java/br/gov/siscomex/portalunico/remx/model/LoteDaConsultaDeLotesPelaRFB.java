@@ -83,17 +83,6 @@ public class LoteDaConsultaDeLotesPelaRFB {
     private String uaDespacho = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e horário do registro do lote de declarações.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataHorarioRegistroLote
@@ -105,6 +94,17 @@ public class LoteDaConsultaDeLotesPelaRFB {
 
     public void setDataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
         this.dataHorarioRegistroLote = dataHorarioRegistroLote;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -150,11 +150,6 @@ public class LoteDaConsultaDeLotesPelaRFB {
         return this;
     }
 
-    public LoteDaConsultaDeLotesPelaRFB dataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
-        this.dataHorarioRegistroLote = dataHorarioRegistroLote;
-        return this;
-    }
-
     /**
      * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
      *
@@ -167,6 +162,11 @@ public class LoteDaConsultaDeLotesPelaRFB {
 
     public void setNumeroLote(String numeroLote) {
         this.numeroLote = numeroLote;
+    }
+
+    public LoteDaConsultaDeLotesPelaRFB dataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
+        this.dataHorarioRegistroLote = dataHorarioRegistroLote;
+        return this;
     }
 
     /**
@@ -207,11 +207,6 @@ public class LoteDaConsultaDeLotesPelaRFB {
         return this;
     }
 
-    public LoteDaConsultaDeLotesPelaRFB numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
-
     /**
      * Quantidade de remessas selecionadas. Número entre 0000 e 9999.
      *
@@ -233,7 +228,6 @@ public class LoteDaConsultaDeLotesPelaRFB {
 
     /**
      * Situação do lote. Máximo de 2 caracteres numéricos. Domínio: &lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.
-     *
      * @return situacaoLote
      **/
     @JsonProperty("situacaoLote")
@@ -252,7 +246,6 @@ public class LoteDaConsultaDeLotesPelaRFB {
 
     /**
      * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
-     *
      * @return uaDespacho
      **/
     @JsonProperty("uaDespacho")
@@ -266,6 +259,11 @@ public class LoteDaConsultaDeLotesPelaRFB {
 
     public LoteDaConsultaDeLotesPelaRFB uaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
+        return this;
+    }
+
+    public LoteDaConsultaDeLotesPelaRFB numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
         return this;
     }
 

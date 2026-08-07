@@ -127,17 +127,6 @@ public class CargaRodoviariaDetalhadaInfoGerais {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Declarações e demais observações
      *
      * @return declaracoesObservacoes
@@ -195,6 +184,17 @@ public class CargaRodoviariaDetalhadaInfoGerais {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Declarações e demais observações
      *
      * @return instrucoesFormalidadesAlfandega
@@ -210,11 +210,6 @@ public class CargaRodoviariaDetalhadaInfoGerais {
 
     public CargaRodoviariaDetalhadaInfoGerais instrucoesFormalidadesAlfandega(String instrucoesFormalidadesAlfandega) {
         this.instrucoesFormalidadesAlfandega = instrucoesFormalidadesAlfandega;
-        return this;
-    }
-
-    public CargaRodoviariaDetalhadaInfoGerais frete(CargaRodoviariaFrete frete) {
-        this.frete = frete;
         return this;
     }
 
@@ -234,6 +229,11 @@ public class CargaRodoviariaDetalhadaInfoGerais {
 
     public CargaRodoviariaDetalhadaInfoGerais itensCarga(List<CargaRodoviariaItemCarga> itensCarga) {
         this.itensCarga = itensCarga;
+        return this;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais frete(CargaRodoviariaFrete frete) {
+        this.frete = frete;
         return this;
     }
 
@@ -261,11 +261,6 @@ public class CargaRodoviariaDetalhadaInfoGerais {
         return this;
     }
 
-    public CargaRodoviariaDetalhadaInfoGerais addItensCargaItem(CargaRodoviariaItemCarga itensCargaItem) {
-        this.itensCarga.add(itensCargaItem);
-        return this;
-    }
-
     /**
      * Get outrosCustos
      *
@@ -287,7 +282,6 @@ public class CargaRodoviariaDetalhadaInfoGerais {
 
     /**
      * Get seguro
-     *
      * @return seguro
      **/
     @JsonProperty("seguro")
@@ -335,6 +329,11 @@ public class CargaRodoviariaDetalhadaInfoGerais {
 
     public void setValorMercadoriaLocalEmbarque(ValorMonetario valorMercadoriaLocalEmbarque) {
         this.valorMercadoriaLocalEmbarque = valorMercadoriaLocalEmbarque;
+    }
+
+    public CargaRodoviariaDetalhadaInfoGerais addItensCargaItem(CargaRodoviariaItemCarga itensCargaItem) {
+        this.itensCarga.add(itensCargaItem);
+        return this;
     }
 
     /**

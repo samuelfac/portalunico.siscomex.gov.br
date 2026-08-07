@@ -77,17 +77,6 @@ public class Remetente {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do remetente&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro, e o CPF não foi informado.
      *
      * @return numeroCnpj
@@ -99,6 +88,17 @@ public class Remetente {
 
     public void setNumeroCnpj(String numeroCnpj) {
         this.numeroCnpj = numeroCnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -117,11 +117,6 @@ public class Remetente {
 
     public Remetente nome(String nome) {
         this.nome = nome;
-        return this;
-    }
-
-    public Remetente numeroCnpj(String numeroCnpj) {
-        this.numeroCnpj = numeroCnpj;
         return this;
     }
 
@@ -160,6 +155,11 @@ public class Remetente {
 
     public Remetente registroFiscal(String registroFiscal) {
         this.registroFiscal = registroFiscal;
+        return this;
+    }
+
+    public Remetente numeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
         return this;
     }
 

@@ -53,17 +53,6 @@ public class DadosDoCnpjDoCliente {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do importador ou do exportador&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
      *
      * @return cnpjCliente
@@ -80,6 +69,18 @@ public class DadosDoCnpjDoCliente {
     public DadosDoCnpjDoCliente cnpjCliente(String cnpjCliente) {
         this.cnpjCliente = cnpjCliente;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

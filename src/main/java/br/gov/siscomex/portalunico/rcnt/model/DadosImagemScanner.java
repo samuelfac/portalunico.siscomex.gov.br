@@ -75,17 +75,6 @@ public class DadosImagemScanner {
     private String idChaveLocalizacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e Hora do escaneamento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraScaneamento
@@ -116,6 +105,17 @@ public class DadosImagemScanner {
 
     public void setDataHoraUltimaModificacaoArquivo(String dataHoraUltimaModificacaoArquivo) {
         this.dataHoraUltimaModificacaoArquivo = dataHoraUltimaModificacaoArquivo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -156,11 +156,6 @@ public class DadosImagemScanner {
         return this;
     }
 
-    public DadosImagemScanner dataHoraUltimaModificacaoArquivo(String dataHoraUltimaModificacaoArquivo) {
-        this.dataHoraUltimaModificacaoArquivo = dataHoraUltimaModificacaoArquivo;
-        return this;
-    }
-
     /**
      * Lista de coordenadas de alerta no formato (x, y, x2, y2) para marcar o alerta. Trata-se dos alertas desenhados pelo operador de scanner na imagem.Os pontos (x, y, x2, y2) devem ser proporcionais ao tamanho (dimensões), em pixels, do arquivo de imagem enviado. Considerar o “x” (largura) e “y” (altura) do plano cartesiano.
      *
@@ -177,6 +172,11 @@ public class DadosImagemScanner {
 
     public DadosImagemScanner listaCoordenadasAlerta(List<DadosDaCoordenadaDeAlerta> listaCoordenadasAlerta) {
         this.listaCoordenadasAlerta = listaCoordenadasAlerta;
+        return this;
+    }
+
+    public DadosImagemScanner dataHoraUltimaModificacaoArquivo(String dataHoraUltimaModificacaoArquivo) {
+        this.dataHoraUltimaModificacaoArquivo = dataHoraUltimaModificacaoArquivo;
         return this;
     }
 
@@ -199,11 +199,6 @@ public class DadosImagemScanner {
         return this;
     }
 
-    public DadosImagemScanner addListaCoordenadasAlertaItem(DadosDaCoordenadaDeAlerta listaCoordenadasAlertaItem) {
-        this.listaCoordenadasAlerta.add(listaCoordenadasAlertaItem);
-        return this;
-    }
-
     /**
      * Referência ao código (truck id, ref id, etc) gerado pelo sistema de inspeção não invasiva e que permite acessar os dados diretamente no equipamento utilizando o software proprietário. Omitir caso o sistema implantado no recinto permita localizar estes dados usando o número da unidade de carga / ou dados do veículo transportador.&lt;br/&gt;Tamanho: 200
      *
@@ -220,6 +215,11 @@ public class DadosImagemScanner {
 
     public DadosImagemScanner idChaveLocalizacao(String idChaveLocalizacao) {
         this.idChaveLocalizacao = idChaveLocalizacao;
+        return this;
+    }
+
+    public DadosImagemScanner addListaCoordenadasAlertaItem(DadosDaCoordenadaDeAlerta listaCoordenadasAlertaItem) {
+        this.listaCoordenadasAlerta.add(listaCoordenadasAlertaItem);
         return this;
     }
 

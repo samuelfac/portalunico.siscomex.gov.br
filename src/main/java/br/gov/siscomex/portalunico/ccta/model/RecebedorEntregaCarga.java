@@ -34,13 +34,6 @@ public class RecebedorEntregaCarga {
     private String numeroDocumento = null;
 
 
-    @XmlElement(name = "tipoDocumento")
-    @ApiModelProperty(example = "CPF", value = "Tipo de documento do recebedor da carga")
-    /**
-     * Tipo de documento do recebedor da carga
-     **/
-    private TipoDocumentoEnum tipoDocumento = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -51,6 +44,13 @@ public class RecebedorEntregaCarga {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoDocumento")
+    @ApiModelProperty(example = "CPF", value = "Tipo de documento do recebedor da carga")
+    /**
+     * Tipo de documento do recebedor da carga
+     **/
+    private TipoDocumentoEnum tipoDocumento = null;
 
     /**
      * Nome do recebedor da carga
@@ -111,7 +111,6 @@ public class RecebedorEntregaCarga {
         this.tipoDocumento = tipoDocumento;
         return this;
     }
-
 
     @Override
     public String toString() {

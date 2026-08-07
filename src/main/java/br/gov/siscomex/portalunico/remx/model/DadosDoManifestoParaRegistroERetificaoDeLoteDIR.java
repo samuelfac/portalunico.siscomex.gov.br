@@ -139,17 +139,6 @@ public class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.&lt;br/&gt;Obrigatório para modalidade Postal e não obrigatório para modalidade expressa.
      *
      * @return uaDespacho
@@ -166,6 +155,18 @@ public class DadosDoManifestoParaRegistroERetificaoDeLoteDIR {
     public DadosDoManifestoParaRegistroERetificaoDeLoteDIR uaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

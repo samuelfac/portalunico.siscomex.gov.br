@@ -58,17 +58,6 @@ public class IdentificacaoEstrangeiro {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Nome do destinatário&lt;br&gt;Tamanho: 60
      *
      * @return nome
@@ -86,6 +75,18 @@ public class IdentificacaoEstrangeiro {
     public IdentificacaoEstrangeiro nome(String nome) {
         this.nome = nome;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -76,6 +76,16 @@ public class NotaFiscalEletronica {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class NotaFiscalEletronica {\n" +
+                "    chaveAcesso: " + toIndentedString(chaveAcesso) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -85,15 +95,5 @@ public class NotaFiscalEletronica {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class NotaFiscalEletronica {\n" +
-                "    chaveAcesso: " + toIndentedString(chaveAcesso) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
-                "}";
-        return sb;
     }
 }

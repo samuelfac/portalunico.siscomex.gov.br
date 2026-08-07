@@ -74,6 +74,16 @@ public class ProtocoloDeEnvioDeDocumento {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ProtocoloDeEnvioDeDocumento {\n" +
+                "    dataHoraTransmissao: " + toIndentedString(dataHoraTransmissao) + "\n" +
+                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -83,15 +93,5 @@ public class ProtocoloDeEnvioDeDocumento {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ProtocoloDeEnvioDeDocumento {\n" +
-                "    dataHoraTransmissao: " + toIndentedString(dataHoraTransmissao) + "\n" +
-                "    numeroProtocolo: " + toIndentedString(numeroProtocolo) + "\n" +
-                "}";
-        return sb;
     }
 }

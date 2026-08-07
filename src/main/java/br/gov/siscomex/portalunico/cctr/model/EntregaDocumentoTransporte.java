@@ -86,17 +86,6 @@ public class EntregaDocumentoTransporte {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do responsável pela entrega&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
      *
      * @return identificacaoPessoaJuridica
@@ -108,6 +97,17 @@ public class EntregaDocumentoTransporte {
 
     public void setIdentificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
         this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -146,11 +146,6 @@ public class EntregaDocumentoTransporte {
 
     public EntregaDocumentoTransporte local(Local local) {
         this.local = local;
-        return this;
-    }
-
-    public EntregaDocumentoTransporte identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
-        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
         return this;
     }
 
@@ -195,6 +190,11 @@ public class EntregaDocumentoTransporte {
 
     public EntregaDocumentoTransporte transitoSimplificado(TransitoSimplificadoDocumentoTransporte transitoSimplificado) {
         this.transitoSimplificado = transitoSimplificado;
+        return this;
+    }
+
+    public EntregaDocumentoTransporte identificacaoPessoaJuridica(String identificacaoPessoaJuridica) {
+        this.identificacaoPessoaJuridica = identificacaoPessoaJuridica;
         return this;
     }
 

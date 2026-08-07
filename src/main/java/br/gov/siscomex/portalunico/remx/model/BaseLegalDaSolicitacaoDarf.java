@@ -46,6 +46,15 @@ public class BaseLegalDaSolicitacaoDarf {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class BaseLegalDaSolicitacaoDarf {\n" +
+                "    baseLegalMulta: " + toIndentedString(baseLegalMulta) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -55,14 +64,5 @@ public class BaseLegalDaSolicitacaoDarf {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class BaseLegalDaSolicitacaoDarf {\n" +
-                "    baseLegalMulta: " + toIndentedString(baseLegalMulta) + "\n" +
-                "}";
-        return sb;
     }
 }

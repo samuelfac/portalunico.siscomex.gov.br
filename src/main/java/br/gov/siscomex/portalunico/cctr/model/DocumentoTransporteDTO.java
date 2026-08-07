@@ -57,17 +57,6 @@ public class DocumentoTransporteDTO {
     private String identificacaoVeiculo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get id
      *
      * @return id
@@ -143,15 +132,6 @@ public class DocumentoTransporteDTO {
         return this;
     }
 
-    public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
-        this.identificacaoVeiculo = identificacaoVeiculo;
-    }
-
-    public DocumentoTransporteDTO identificacaoVeiculo(String identificacaoVeiculo) {
-        this.identificacaoVeiculo = identificacaoVeiculo;
-        return this;
-    }
-
     /**
      * Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 15
      *
@@ -160,6 +140,26 @@ public class DocumentoTransporteDTO {
     @JsonProperty("identificacaoVeiculo")
     public String getIdentificacaoVeiculo() {
         return identificacaoVeiculo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
+        this.identificacaoVeiculo = identificacaoVeiculo;
+    }
+
+    public DocumentoTransporteDTO identificacaoVeiculo(String identificacaoVeiculo) {
+        this.identificacaoVeiculo = identificacaoVeiculo;
+        return this;
     }
 
     @Override

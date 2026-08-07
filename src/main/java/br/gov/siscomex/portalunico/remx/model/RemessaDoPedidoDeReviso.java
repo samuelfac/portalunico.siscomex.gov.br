@@ -48,6 +48,15 @@ public class RemessaDoPedidoDeReviso {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class RemessaDoPedidoDeReviso {\n" +
+                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -57,14 +66,5 @@ public class RemessaDoPedidoDeReviso {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RemessaDoPedidoDeReviso {\n" +
-                "    numeroRemessa: " + toIndentedString(numeroRemessa) + "\n" +
-                "}";
-        return sb;
     }
 }

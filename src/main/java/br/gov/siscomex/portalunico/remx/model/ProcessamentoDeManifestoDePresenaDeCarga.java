@@ -80,17 +80,6 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
     private Integer situacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -103,6 +92,17 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -168,11 +168,6 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
         return this;
     }
 
-    public ProcessamentoDeManifestoDePresenaDeCarga cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
      *
@@ -208,6 +203,11 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
         this.numeroProtocolo = numeroProtocolo;
     }
 
+    public ProcessamentoDeManifestoDePresenaDeCarga cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
+    }
+
     /**
      * Lista de remessas.
      *
@@ -232,14 +232,8 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
         return this;
     }
 
-    public ProcessamentoDeManifestoDePresenaDeCarga numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
-
     /**
      * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -254,6 +248,11 @@ public class ProcessamentoDeManifestoDePresenaDeCarga {
 
     public ProcessamentoDeManifestoDePresenaDeCarga situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDeManifestoDePresenaDeCarga numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
         return this;
     }
 

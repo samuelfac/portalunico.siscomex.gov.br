@@ -85,17 +85,6 @@ public class Produto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Raiz do CNPJ do fabricante do produto
      *
      * @return cnpjRaiz
@@ -113,6 +102,18 @@ public class Produto {
     public Produto cnpjRaiz(String cnpjRaiz) {
         this.cnpjRaiz = cnpjRaiz;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

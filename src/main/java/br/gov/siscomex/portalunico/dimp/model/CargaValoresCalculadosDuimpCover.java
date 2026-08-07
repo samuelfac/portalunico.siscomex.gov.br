@@ -53,17 +53,6 @@ public class CargaValoresCalculadosDuimpCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get seguro
      *
      * @return seguro
@@ -80,6 +69,18 @@ public class CargaValoresCalculadosDuimpCover {
     public CargaValoresCalculadosDuimpCover seguro(SeguroValoresCalculadosDuimpCover seguro) {
         this.seguro = seguro;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

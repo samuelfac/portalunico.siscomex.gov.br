@@ -38,17 +38,6 @@ public class CargaRodoviariaDocumentoAnexo {
     private TipoDocumentoApresentado tipo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição do documento que será apresentado na fronteira&lt;br/&gt; Tamanho Máximo: 50
      *
      * @return descricao
@@ -60,6 +49,17 @@ public class CargaRodoviariaDocumentoAnexo {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -81,11 +81,6 @@ public class CargaRodoviariaDocumentoAnexo {
         return this;
     }
 
-    public CargaRodoviariaDocumentoAnexo descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Get tipo
      *
@@ -102,6 +97,11 @@ public class CargaRodoviariaDocumentoAnexo {
 
     public CargaRodoviariaDocumentoAnexo tipo(TipoDocumentoApresentado tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public CargaRodoviariaDocumentoAnexo descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 

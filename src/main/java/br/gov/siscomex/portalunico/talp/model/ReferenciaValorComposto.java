@@ -58,17 +58,6 @@ public class ReferenciaValorComposto {
     private List<List<ReferenciaValorAtributoComposto>> listaComposicaoAtributo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get indicacaoImportacaoTerceiros
      *
      * @return indicacaoImportacaoTerceiros
@@ -80,6 +69,17 @@ public class ReferenciaValorComposto {
 
     public void setIndicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
         this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -98,11 +98,6 @@ public class ReferenciaValorComposto {
 
     public ReferenciaValorComposto exportadorEstrangeiro(ReferenciaOperadorEstrangeiro exportadorEstrangeiro) {
         this.exportadorEstrangeiro = exportadorEstrangeiro;
-        return this;
-    }
-
-    public ReferenciaValorComposto indicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
-        this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
         return this;
     }
 
@@ -156,6 +151,11 @@ public class ReferenciaValorComposto {
 
     public void setFundamentoLegal(ReferenciaValorCampoFundamentoLegal fundamentoLegal) {
         this.fundamentoLegal = fundamentoLegal;
+    }
+
+    public ReferenciaValorComposto indicacaoImportacaoTerceiros(ReferenciaImportacaoTerceiro indicacaoImportacaoTerceiros) {
+        this.indicacaoImportacaoTerceiros = indicacaoImportacaoTerceiros;
+        return this;
     }
 
     /**

@@ -56,17 +56,6 @@ public class BrasileiroProprio {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de vencimento da licença TNTI&lt;br&gt;Formato: AAAA-MM-DD
      *
      * @return dataVencimentoLicenca
@@ -83,6 +72,18 @@ public class BrasileiroProprio {
     public BrasileiroProprio dataVencimentoLicenca(String dataVencimentoLicenca) {
         this.dataVencimentoLicenca = dataVencimentoLicenca;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

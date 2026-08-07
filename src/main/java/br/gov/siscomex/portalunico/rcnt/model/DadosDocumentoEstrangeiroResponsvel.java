@@ -39,13 +39,6 @@ public class DadosDocumentoEstrangeiroResponsvel {
     private String paisEmissor = null;
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte")
-    /**
-     * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte
-     **/
-    private TipoEnum tipo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -56,6 +49,13 @@ public class DadosDocumentoEstrangeiroResponsvel {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte")
+    /**
+     * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte
+     **/
+    private TipoEnum tipo = null;
 
     @XmlElement(name = "validade")
     @ApiModelProperty(example = "2020-04-01", value = "Validade do documento<br/>Formato: 'yyyy-MM-dd'")
@@ -142,7 +142,6 @@ public class DadosDocumentoEstrangeiroResponsvel {
         this.validade = validade;
         return this;
     }
-
 
     @Override
     public String toString() {

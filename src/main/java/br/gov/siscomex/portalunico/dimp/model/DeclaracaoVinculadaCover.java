@@ -147,7 +147,6 @@ public class DeclaracaoVinculadaCover {
         return this;
     }
 
-
     @Override
     public String toString() {
 

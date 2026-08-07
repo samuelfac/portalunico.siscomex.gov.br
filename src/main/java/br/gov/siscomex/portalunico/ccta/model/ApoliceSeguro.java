@@ -52,17 +52,6 @@ public class ApoliceSeguro {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Apólice de seguro&lt;br/&gt; Tamanho Máximo: 20
      *
      * @return numero
@@ -79,6 +68,18 @@ public class ApoliceSeguro {
     public ApoliceSeguro numero(String numero) {
         this.numero = numero;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

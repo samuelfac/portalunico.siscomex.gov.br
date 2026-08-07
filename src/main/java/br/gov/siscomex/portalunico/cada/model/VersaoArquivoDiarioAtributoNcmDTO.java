@@ -61,17 +61,6 @@ public class VersaoArquivoDiarioAtributoNcmDTO {
     private List<DiffArquivoDiarioNcmDTO> alterado = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Versão do arquivo
      *
      * @return versao
@@ -102,6 +91,17 @@ public class VersaoArquivoDiarioAtributoNcmDTO {
 
     public void setResumo(String resumo) {
         this.resumo = resumo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

@@ -21,20 +21,22 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
 
 
+    @XmlElement(name = "resumoRUC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazResumoRUCCover resumoRUC = null;
+
     @XmlElement(name = "tipoConhecimento")
     @ApiModelProperty(example = "CRT", value = "Tipo de conhecimento de transporte de carga rodoviária")
     /**
      * Tipo de conhecimento de transporte de carga rodoviária
      **/
     private TipoConhecimentoEnum tipoConhecimento = null;
+
     @XmlElement(name = "motivoDSIC")
     @ApiModelProperty(value = "")
     @Valid
     private SefazMotivoDSICDTO motivoDSIC = null;
-    @XmlElement(name = "resumoRUC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazResumoRUCCover resumoRUC = null;
 
     @XmlElement(name = "quantidadeVolumes")
     @ApiModelProperty(example = "2000", value = "Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647")
@@ -42,10 +44,6 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
      * Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647
      **/
     private Integer quantidadeVolumes = null;
-    @XmlElement(name = "valorOutrosCustosRemetente")
-    @ApiModelProperty(value = "")
-    @Valid
-    private OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,6 +55,11 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "valorOutrosCustosRemetente")
+    @ApiModelProperty(value = "")
+    @Valid
+    private OutrosCustosDoRemetenteDeUmaCargaRodoviria valorOutrosCustosRemetente = null;
 
     @XmlElement(name = "valorOutrosCustosDestinatario")
     @ApiModelProperty(value = "")
@@ -179,7 +182,6 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
         this.valorOutrosCustosDestinatario = valorOutrosCustosDestinatario;
         return this;
     }
-
 
     @Override
     public String toString() {

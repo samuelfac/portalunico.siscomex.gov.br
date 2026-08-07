@@ -82,17 +82,6 @@ public class OperacaoDesunitizacao {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get desunitizacoes
      *
      * @return desunitizacoes
@@ -110,6 +99,18 @@ public class OperacaoDesunitizacao {
     public OperacaoDesunitizacao desunitizacoes(Desunitizacoes desunitizacoes) {
         this.desunitizacoes = desunitizacoes;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -51,17 +51,6 @@ public class ProrrogacaoLpcoNegarRequest {
     private String motivoAnalise = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Novo fim de vigência a ser solicitado para o LPCO se for uma solicitação de prorrogação&lt;br&gt;Formato: yyyy-MM-dd
      *
      * @return novaDataFimVigencia
@@ -73,6 +62,17 @@ public class ProrrogacaoLpcoNegarRequest {
 
     public void setNovaDataFimVigencia(String novaDataFimVigencia) {
         this.novaDataFimVigencia = novaDataFimVigencia;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -113,11 +113,6 @@ public class ProrrogacaoLpcoNegarRequest {
         return this;
     }
 
-    public ProrrogacaoLpcoNegarRequest novaDataFimVigencia(String novaDataFimVigencia) {
-        this.novaDataFimVigencia = novaDataFimVigencia;
-        return this;
-    }
-
     /**
      * Código do motivo de análise. Pode ser informado somente se existirem motivos de análise cadastrados no Tabelas Comex. Caso contrário, deve ser nulo.&lt;br&gt;
      *
@@ -134,6 +129,11 @@ public class ProrrogacaoLpcoNegarRequest {
 
     public ProrrogacaoLpcoNegarRequest motivoAnalise(String motivoAnalise) {
         this.motivoAnalise = motivoAnalise;
+        return this;
+    }
+
+    public ProrrogacaoLpcoNegarRequest novaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
         return this;
     }
 

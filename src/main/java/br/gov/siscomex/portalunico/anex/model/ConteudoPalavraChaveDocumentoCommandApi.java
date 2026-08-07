@@ -78,6 +78,16 @@ public class ConteudoPalavraChaveDocumentoCommandApi {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ConteudoPalavraChaveDocumentoCommandApi {\n" +
+                "    conteudo: " + toIndentedString(conteudo) + "\n" +
+                "    idPalavraChave: " + toIndentedString(idPalavraChave) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class ConteudoPalavraChaveDocumentoCommandApi {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ConteudoPalavraChaveDocumentoCommandApi {\n" +
-                "    conteudo: " + toIndentedString(conteudo) + "\n" +
-                "    idPalavraChave: " + toIndentedString(idPalavraChave) + "\n" +
-                "}";
-        return sb;
     }
 }

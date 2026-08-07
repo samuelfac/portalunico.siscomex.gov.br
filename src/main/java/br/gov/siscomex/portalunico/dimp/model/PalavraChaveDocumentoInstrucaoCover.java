@@ -78,6 +78,16 @@ public class PalavraChaveDocumentoInstrucaoCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class PalavraChaveDocumentoInstrucaoCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class PalavraChaveDocumentoInstrucaoCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class PalavraChaveDocumentoInstrucaoCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
-                "}";
-        return sb;
     }
 }

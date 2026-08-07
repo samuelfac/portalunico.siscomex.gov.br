@@ -101,17 +101,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get identificacaoDocumento
      *
      * @return identificacaoDocumento
@@ -123,6 +112,17 @@ public class DocumentoSaidaAutorizacaoEntrega {
 
     public void setIdentificacaoDocumento(String identificacaoDocumento) {
         this.identificacaoDocumento = identificacaoDocumento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -201,11 +201,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
         return this;
     }
 
-    public DocumentoSaidaAutorizacaoEntrega identificacaoDocumento(String identificacaoDocumento) {
-        this.identificacaoDocumento = identificacaoDocumento;
-        return this;
-    }
-
     /**
      * Get numeroDocumentoSaida
      *
@@ -227,7 +222,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
 
     /**
      * Get tipoAutorizacao
-     *
      * @return tipoAutorizacao
      **/
     @JsonProperty("tipoAutorizacao")
@@ -246,7 +240,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
 
     /**
      * Get tipoDocumento
-     *
      * @return tipoDocumento
      **/
     @JsonProperty("tipoDocumento")
@@ -265,7 +258,6 @@ public class DocumentoSaidaAutorizacaoEntrega {
 
     /**
      * Get ulResponsavel
-     *
      * @return ulResponsavel
      **/
     @JsonProperty("ulResponsavel")
@@ -279,6 +271,11 @@ public class DocumentoSaidaAutorizacaoEntrega {
 
     public DocumentoSaidaAutorizacaoEntrega ulResponsavel(String ulResponsavel) {
         this.ulResponsavel = ulResponsavel;
+        return this;
+    }
+
+    public DocumentoSaidaAutorizacaoEntrega identificacaoDocumento(String identificacaoDocumento) {
+        this.identificacaoDocumento = identificacaoDocumento;
         return this;
     }
 

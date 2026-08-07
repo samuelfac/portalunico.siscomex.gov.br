@@ -80,6 +80,16 @@ public class DadosTabelaApiRepresentation {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosTabelaApiRepresentation {\n" +
+                "    nomeTabela: " + toIndentedString(nomeTabela) + "\n" +
+                "    dados: " + toIndentedString(dados) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -89,15 +99,5 @@ public class DadosTabelaApiRepresentation {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosTabelaApiRepresentation {\n" +
-                "    nomeTabela: " + toIndentedString(nomeTabela) + "\n" +
-                "    dados: " + toIndentedString(dados) + "\n" +
-                "}";
-        return sb;
     }
 }

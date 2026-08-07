@@ -36,14 +36,6 @@ public class TipoDeclaracaoIcmsDTO {
     private String descTipoDeclaracao = null;
 
 
-    @XmlElement(name = "tiposTratamento", required = true)
-    @ApiModelProperty(required = true, value = "Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração")
-    @Valid
-    /**
-     * Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração
-     **/
-    private List<TipoTratamentoIcmsDTO> tiposTratamento = new ArrayList<>();
-
     @XmlElement(name = "tipoDeclaracao", required = true)
     @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de Pagamento/Exoneração de ICMS")
     /**
@@ -61,6 +53,14 @@ public class TipoDeclaracaoIcmsDTO {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tiposTratamento", required = true)
+    @ApiModelProperty(required = true, value = "Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração")
+    @Valid
+    /**
+     * Lista dos tipos de tratamento disponibilizados pela Sefaz para esse tipo de declaração
+     **/
+    private List<TipoTratamentoIcmsDTO> tiposTratamento = new ArrayList<>();
 
     /**
      * Descrição do tipo de declaração/solicitação de ICMS
@@ -129,7 +129,6 @@ public class TipoDeclaracaoIcmsDTO {
         this.tiposTratamento.add(tiposTratamentoItem);
         return this;
     }
-
 
     @Override
     public String toString() {

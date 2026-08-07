@@ -145,17 +145,6 @@ public class ItemCrt {
     private String tipoTratamentoMadeiraBruta = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indica se conteiner está vazio&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório
      *
      * @return conteinerVazio
@@ -167,6 +156,17 @@ public class ItemCrt {
 
     public void setConteinerVazio(Boolean conteinerVazio) {
         this.conteinerVazio = conteinerVazio;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -208,11 +208,6 @@ public class ItemCrt {
         return this;
     }
 
-    public ItemCrt conteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
-        return this;
-    }
-
     /**
      * Indicador de embalagem vazia de carga solta&lt;/br&gt;Para item Carga Solta (2), campo obrigatório
      *
@@ -225,6 +220,11 @@ public class ItemCrt {
 
     public void setEmbalagemVazia(Boolean embalagemVazia) {
         this.embalagemVazia = embalagemVazia;
+    }
+
+    public ItemCrt conteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+        return this;
     }
 
     /**
@@ -246,11 +246,6 @@ public class ItemCrt {
         return this;
     }
 
-    public ItemCrt embalagemVazia(Boolean embalagemVazia) {
-        this.embalagemVazia = embalagemVazia;
-        return this;
-    }
-
     /**
      * Medida do conteiner&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 &lt;br/&gt;preenchimento obrigatório 20 (20 pés) ou 40 (40 pés)&lt;br/&gt;Tamanho Máximo: 2
      *
@@ -263,6 +258,11 @@ public class ItemCrt {
 
     public void setMedidaConteiner(String medidaConteiner) {
         this.medidaConteiner = medidaConteiner;
+    }
+
+    public ItemCrt embalagemVazia(Boolean embalagemVazia) {
+        this.embalagemVazia = embalagemVazia;
+        return this;
     }
 
     /**
@@ -284,11 +284,6 @@ public class ItemCrt {
         return this;
     }
 
-    public ItemCrt medidaConteiner(String medidaConteiner) {
-        this.medidaConteiner = medidaConteiner;
-        return this;
-    }
-
     /**
      * Número de identificação do conteiner&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório&lt;br/&gt; Se o número do conteiner preenchido com 11 posições, o DV deverá estar válido&lt;br/&gt; Tamanho Máximo: 11
      *
@@ -303,9 +298,13 @@ public class ItemCrt {
         this.numeroConteiner = numeroConteiner;
     }
 
+    public ItemCrt medidaConteiner(String medidaConteiner) {
+        this.medidaConteiner = medidaConteiner;
+        return this;
+    }
+
     /**
      * Peso bruto do item de carga em Kg&lt;br/&gt;Formato: Número Racional com 9 casas inteiras e 3 casas decimais
-     *
      * @return pesoBrutoKg
      **/
     @JsonProperty("pesoBrutoKg")
@@ -338,11 +337,6 @@ public class ItemCrt {
 
     public ItemCrt pesoLiquido(BigDecimal pesoLiquido) {
         this.pesoLiquido = pesoLiquido;
-        return this;
-    }
-
-    public ItemCrt numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
         return this;
     }
 
@@ -387,7 +381,6 @@ public class ItemCrt {
 
     /**
      * Número sequencial do item de carga&lt;br/&gt; Tamanho Máximo: 4
-     *
      * @return sequencial
      **/
     @JsonProperty("sequencial")
@@ -407,7 +400,6 @@ public class ItemCrt {
 
     /**
      * Tara do conteiner em Kg&lt;br/&gt;para \&quot;tipoItemCRT\&quot; &#x3D; 1 preenchimento obrigatório&lt;br/&gt;Formato: Número Racional com 6 casas inteiras e 3 casas decimais
-     *
      * @return taraConteiner
      **/
     @JsonProperty("taraConteiner")
@@ -426,7 +418,6 @@ public class ItemCrt {
 
     /**
      * Tipo de embalagem de carga solta&lt;/br&gt;Para item Carga Solta (2), campo obrigatório, recuperar de tabela&lt;br/&gt; Tamanho Máximo: 2
-     *
      * @return tipoEmbalagem
      **/
     @JsonProperty("tipoEmbalagem")
@@ -436,6 +427,11 @@ public class ItemCrt {
 
     public void setTipoEmbalagem(String tipoEmbalagem) {
         this.tipoEmbalagem = tipoEmbalagem;
+    }
+
+    public ItemCrt numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
+        return this;
     }
 
     /**
@@ -456,14 +452,8 @@ public class ItemCrt {
         return this;
     }
 
-    public ItemCrt tipoEmbalagem(String tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-        return this;
-    }
-
     /**
      * Tipo de tratamento para madeira bruta (Obrigatório quando houver indicação de embalagem/suporte de madeira bruta). 1: Madeira processada; 2: Madeira tratada e certificada; e 3: Não tratada e não certificada;
-     *
      * @return tipoTratamentoMadeiraBruta
      **/
     @JsonProperty("tipoTratamentoMadeiraBruta")
@@ -477,6 +467,11 @@ public class ItemCrt {
 
     public ItemCrt tipoTratamentoMadeiraBruta(String tipoTratamentoMadeiraBruta) {
         this.tipoTratamentoMadeiraBruta = tipoTratamentoMadeiraBruta;
+        return this;
+    }
+
+    public ItemCrt tipoEmbalagem(String tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
         return this;
     }
 

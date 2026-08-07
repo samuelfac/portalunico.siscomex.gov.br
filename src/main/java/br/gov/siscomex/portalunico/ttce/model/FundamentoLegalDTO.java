@@ -40,13 +40,6 @@ public class FundamentoLegalDTO {
     private String nome = null;
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "Normal", required = true, value = "Tipo de Uso do Fundamento Legal. Valores possíveis: Normal, Teto ou Opcional")
-    /**
-     * Tipo de Uso do Fundamento Legal. Valores possíveis: Normal, Teto ou Opcional
-     **/
-    private TipoEnum tipo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -57,6 +50,13 @@ public class FundamentoLegalDTO {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "Normal", required = true, value = "Tipo de Uso do Fundamento Legal. Valores possíveis: Normal, Teto ou Opcional")
+    /**
+     * Tipo de Uso do Fundamento Legal. Valores possíveis: Normal, Teto ou Opcional
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Código identificador do Fundamento Legal, com 4 dígitos.
@@ -120,7 +120,6 @@ public class FundamentoLegalDTO {
         this.tipo = tipo;
         return this;
     }
-
 
     @Override
     public String toString() {

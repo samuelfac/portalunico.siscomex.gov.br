@@ -27,28 +27,32 @@ import java.util.List;
 public class ItemConsultaCoverApiAnuente {
 
 
+    @XmlElement(name = "fabricante")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FabricanteCover fabricante = null;
+
     @XmlElement(name = "status")
     @ApiModelProperty(example = "ATIVO", value = "Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).<br>Domínio:")
     /**
      * Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).<br>Domínio:
      **/
     private StatusEnum status = null;
+
     @XmlElement(name = "identificacao")
     @ApiModelProperty(value = "")
     @Valid
     private IdentificadorItemDuimpCover identificacao = null;
+
     @XmlElement(name = "produto")
     @ApiModelProperty(value = "")
     @Valid
     private ProdutoConsultaItemCover produto = null;
+
     @XmlElement(name = "caracterizacaoImportacao")
     @ApiModelProperty(value = "")
     @Valid
     private CaracterizacaoImportacaoConsultaItemCover caracterizacaoImportacao = null;
-    @XmlElement(name = "fabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FabricanteCover fabricante = null;
 
     @XmlElement(name = "indicadorExportadorFabricante")
     @ApiModelProperty(value = "")
@@ -86,27 +90,25 @@ public class ItemConsultaCoverApiAnuente {
     @ApiModelProperty(value = "")
     @Valid
     private List<CertificadoMercosulCover> certificadoMercosul = null;
-    @XmlElement(name = "dadosCambiais")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosCambiaisCover dadosCambiais = null;
-    @XmlElement(name = "atributosDuimp")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<AtributoItemCover> atributosDuimp = null;
     @XmlElement(name = "tributos")
     @ApiModelProperty(value = "")
     @Valid
     private TributosConsultaItemCoverApiAnuente tributos = null;
 
+    @XmlElement(name = "dadosCambiais")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosCambiaisCover dadosCambiais = null;
+
+    @XmlElement(name = "atributosDuimp")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<AtributoItemCover> atributosDuimp = null;
+
     @XmlElement(name = "atributosFundamentoLegalDuimp")
     @ApiModelProperty(value = "")
     @Valid
     private List<AtributoFundamentoLegalCover> atributosFundamentoLegalDuimp = null;
-    @XmlElement(name = "dadosInsumoDrawbackIsencao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DrawbackConsultaItemCover dadosInsumoDrawbackIsencao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -118,6 +120,11 @@ public class ItemConsultaCoverApiAnuente {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "dadosInsumoDrawbackIsencao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DrawbackConsultaItemCover dadosInsumoDrawbackIsencao = null;
 
     /**
      * Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).&lt;br&gt;Domínio:
@@ -384,7 +391,6 @@ public class ItemConsultaCoverApiAnuente {
 
     /**
      * Get dadosCambiais
-     *
      * @return dadosCambiais
      **/
     @JsonProperty("dadosCambiais")
@@ -469,7 +475,6 @@ public class ItemConsultaCoverApiAnuente {
 
     /**
      * Get dadosInsumoDrawbackIsencao
-     *
      * @return dadosInsumoDrawbackIsencao
      **/
     @JsonProperty("dadosInsumoDrawbackIsencao")
@@ -485,7 +490,6 @@ public class ItemConsultaCoverApiAnuente {
         this.dadosInsumoDrawbackIsencao = dadosInsumoDrawbackIsencao;
         return this;
     }
-
 
     @Override
     public String toString() {

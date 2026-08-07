@@ -24,37 +24,26 @@ import java.util.List;
 public class DadosGeraoLote {
 
 
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
-    @XmlElement(name = "idEvento", required = true)
-    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
-    /**
-     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
-     **/
-    private String idEvento = null;
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
-
     @XmlElement(name = "dataHoraOcorrencia", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
     /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
      **/
-    private String cpfOperadorOcorrencia = null;
+    private TipoOperacaoEnum tipoOperacao = null;
+
+    @XmlElement(name = "idEvento", required = true)
+    @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
+    /**
+     * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
+     **/
+    private String idEvento = null;
     @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
     @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
     /**
@@ -62,34 +51,51 @@ public class DadosGeraoLote {
      **/
     private String protocoloEventoRetificadoOuExcluido = null;
 
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraRegistro = null;
+
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorOcorrencia = null;
+
     @XmlElement(name = "cpfOperadorRegistro")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
+    @XmlElement(name = "declaracaoAduaneira")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DeclaraoAduaneira declaracaoAduaneira = null;
+
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean contingencia = null;
+
     @XmlElement(name = "codigoRecinto", required = true)
     @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
      **/
     private String codigoRecinto = null;
+
     @XmlElement(name = "placa")
     @ApiModelProperty(value = "Placa do Veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
     /**
      * Placa do Veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
      **/
     private String placa = null;
-    @XmlElement(name = "declaracaoAduaneira")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DeclaraoAduaneira declaracaoAduaneira = null;
 
     @XmlElement(name = "listaNfe")
     @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
@@ -112,24 +118,52 @@ public class DadosGeraoLote {
      * Lista de declarações aduaneiras associadas à carga (art. 17A, IN rfb 1702)
      **/
     private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
+    @XmlElement(name = "numeroConhecimento")
+    @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
+    /**
+     * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
+     **/
+    private String numeroConhecimento = null;
+    @XmlElement(name = "numeroRUC")
+    @ApiModelProperty(value = "Número da RUC (Referência Única da Carga) / UCR (Unique Consignment Reference).<br/>Tamanho: 35")
+    /**
+     * Número da RUC (Referência Única da Carga) / UCR (Unique Consignment Reference).<br/>Tamanho: 35
+     **/
+    private String numeroRUC = null;
+
     @XmlElement(name = "tipoManifesto")
     @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
     /**
      * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
      **/
     private TipoManifestoEnum tipoManifesto = null;
+
     @XmlElement(name = "numeroConhecimentoMAWB")
     @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100")
     /**
      * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100
      **/
     private String numeroConhecimentoMAWB = null;
+    @XmlElement(name = "cnpjResponsavelAnterior")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String cnpjResponsavelAnterior = null;
+
     @XmlElement(name = "tipoConhecimento")
     @ApiModelProperty(example = "AWB", value = "Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
     /**
      * Conforme tabela de domínio Tipo de Conhecimento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
     private String tipoConhecimento = null;
+    @XmlElement(name = "identificacaoUld")
+    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
+    /**
+     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
+     **/
+    private String identificacaoUld = null;
+
     @XmlElement(name = "listaMalas")
     @ApiModelProperty(value = "Lista com as malas postais. Utilizar apenas para remessa postal internacional.")
     @Valid
@@ -137,13 +171,13 @@ public class DadosGeraoLote {
      * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
      **/
     private List<DadosDaMala> listaMalas = null;
-
-    @XmlElement(name = "numeroConhecimento")
-    @ApiModelProperty(example = "131805000071025", value = "Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100")
+    @XmlElement(name = "iataAeronave")
+    @ApiModelProperty(value = "Código IATA da aeronave<br/>Tamanho: 50")
     /**
-     * Identificação do conhecimento de carga ou do DSIC. <br/>No modal aéreo, na importação, deve ser preenchido quando se tratar de AWB direto, ou HAWB, ou DSIC. <br/>No modal aéreo, na exportação, não deve ser preenchido.  <br/>No aquaviário deve ser preenchido com CE Mercante na importação e na exportação com o conhecimento internacional ou, quando ainda não emitido, com o CT-e que amparou a chegada da carga. No caso de CT-e informar a chave de acesso.<br/> Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\". <br/>Tamanho: 100
+     * Código IATA da aeronave<br/>Tamanho: 50
      **/
-    private String numeroConhecimento = null;
+    private String iataAeronave = null;
+
     @XmlElement(name = "codigoRecintoOrigem")
     @ApiModelProperty(example = "1111111", value = "Código Siscomex do recinto de origem. No modal aéreo, deve ser preenchido na troca de responsabilidade entre depositários.<br/>Tamanho: 15")
     /**
@@ -151,12 +185,6 @@ public class DadosGeraoLote {
      **/
     private String codigoRecintoOrigem = null;
 
-    @XmlElement(name = "numeroRUC")
-    @ApiModelProperty(value = "Número da RUC (Referência Única da Carga) / UCR (Unique Consignment Reference).<br/>Tamanho: 35")
-    /**
-     * Número da RUC (Referência Única da Carga) / UCR (Unique Consignment Reference).<br/>Tamanho: 35
-     **/
-    private String numeroRUC = null;
     @XmlElement(name = "pesoManifesto")
     @ApiModelProperty(example = "15.5", value = "Peso manifestado total da carga, ou seja, do conhecimento.<br/><br/>pesoManifesto, até 4 casas decimais.")
     @Valid
@@ -165,12 +193,6 @@ public class DadosGeraoLote {
      **/
     private BigDecimal pesoManifesto = null;
 
-    @XmlElement(name = "cnpjResponsavelAnterior")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do responsável pela carga anteriormente à troca de responsabilidade para o depositário.<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpjResponsavelAnterior = null;
     @XmlElement(name = "listaVolumesManifesto")
     @ApiModelProperty(value = "Lista de Volumes Manifestados")
     @Valid
@@ -178,12 +200,20 @@ public class DadosGeraoLote {
      * Lista de Volumes Manifestados
      **/
     private List<DadosVolumeManifestado> listaVolumesManifesto = null;
+
     @XmlElement(name = "numeroConteiner")
     @ApiModelProperty(value = "Identificação do número do contêiner.<br/>Tamanho: 200")
     /**
      * Identificação do número do contêiner.<br/>Tamanho: 200
      **/
     private String numeroConteiner = null;
+    @XmlElement(name = "prefixoAeronave")
+    @ApiModelProperty(value = "Prefixo da Aeronave<br/>Tamanho: 20")
+    /**
+     * Prefixo da Aeronave<br/>Tamanho: 20
+     **/
+    private String prefixoAeronave = null;
+
     @XmlElement(name = "listaChassi")
     @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50")
     @Valid
@@ -191,100 +221,17 @@ public class DadosGeraoLote {
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). <br/><br/>Tamanho: 50
      **/
     private List<DadosDoChassiEmbarque> listaChassi = null;
+
     @XmlElement(name = "navio")
     @ApiModelProperty(value = "")
     @Valid
     private DadosNavio navio = null;
-
-    @XmlElement(name = "identificacaoUld")
-    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
+    @XmlElement(name = "observacaoRecepcao")
+    @ApiModelProperty(value = "Observações da recepção da carga<br/>Tamanho: 200")
     /**
-     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
+     * Observações da recepção da carga<br/>Tamanho: 200
      **/
-    private String identificacaoUld = null;
-    @XmlElement(name = "viagem")
-    @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", value = "Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.")
-    /**
-     * Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
-     **/
-    private String viagem = null;
-    @XmlElement(name = "escala")
-    @ApiModelProperty(value = "Escala<br/>Tamanho: 20")
-    /**
-     * Escala<br/>Tamanho: 20
-     **/
-    private String escala = null;
-
-    @XmlElement(name = "iataAeronave")
-    @ApiModelProperty(value = "Código IATA da aeronave<br/>Tamanho: 50")
-    /**
-     * Código IATA da aeronave<br/>Tamanho: 50
-     **/
-    private String iataAeronave = null;
-
-    @XmlElement(name = "prefixoAeronave")
-    @ApiModelProperty(value = "Prefixo da Aeronave<br/>Tamanho: 20")
-    /**
-     * Prefixo da Aeronave<br/>Tamanho: 20
-     **/
-    private String prefixoAeronave = null;
-    @XmlElement(name = "aeroportoOrigem")
-    @ApiModelProperty(value = "Aeroporto de origem da carga - Código IATA<br/>Tamanho: 3")
-    /**
-     * Aeroporto de origem da carga - Código IATA<br/>Tamanho: 3
-     **/
-    private String aeroportoOrigem = null;
-    @XmlElement(name = "placaSemirreboque")
-    @ApiModelProperty(value = "Placa semirreboque/vagão.<br/>Tamanho: 50")
-    /**
-     * Placa semirreboque/vagão.<br/>Tamanho: 50
-     **/
-    private String placaSemirreboque = null;
-    @XmlElement(name = "listaMercadoriaPerigosa")
-    @ApiModelProperty(value = "Lista de códigos da mercadoria perigosa.")
-    @Valid
-    /**
-     * Lista de códigos da mercadoria perigosa.
-     **/
-    private List<DadosDaMercadoriaPerigosa> listaMercadoriaPerigosa = null;
-    @XmlElement(name = "perecivel")
-    @ApiModelProperty(example = "false", value = "Mercadoria Perecível<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Mercadoria Perecível<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean perecivel = null;
-    @XmlElement(name = "cargaSolta")
-    @ApiModelProperty(example = "false", value = "Carga Solta<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Carga Solta<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean cargaSolta = null;
-    @XmlElement(name = "areaCargaSolta", required = true)
-    @ApiModelProperty(required = true, value = "Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
-    /**
-     * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
-     **/
-    private String areaCargaSolta = null;
-    @XmlElement(name = "indicadorDeRemessaInternacional")
-    @ApiModelProperty(example = "E", value = "Indicador de remessa internacional expressa ou postal.<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL")
-    /**
-     * Indicador de remessa internacional expressa ou postal.<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL
-     **/
-    private IndicadorDeRemessaInternacionalEnum indicadorDeRemessaInternacional = null;
-    @XmlElement(name = "listaCameras")
-    @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.")
-    @Valid
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.
-     **/
-    private List<DadosDaCmera> listaCameras = null;
-    @XmlElement(name = "lotes")
-    @ApiModelProperty(value = "Lista de lotes")
-    @Valid
-    /**
-     * Lista de lotes
-     **/
-    private List<DadosLote> lotes = null;
+    private String observacaoRecepcao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -295,13 +242,102 @@ public class DadosGeraoLote {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-    @XmlElement(name = "observacaoRecepcao")
-    @ApiModelProperty(value = "Observações da recepção da carga<br/>Tamanho: 200")
+  }
+
+    @XmlElement(name = "viagem")
+    @ApiModelProperty(example = "AA090520191209MIA', onde vôo = 'AA0905', data de partida prevista = '20191209' e aeroporto da partida = 'MIA", value = "Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.")
     /**
-     * Observações da recepção da carga<br/>Tamanho: 200
+     * Identificação da viagem.<br/>Tamanho: 20<br/>No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
      **/
-    private String observacaoRecepcao = null;
+    private String viagem = null;
+
+    @XmlElement(name = "escala")
+    @ApiModelProperty(value = "Escala<br/>Tamanho: 20")
+    /**
+     * Escala<br/>Tamanho: 20
+     **/
+    private String escala = null;
+
+    @XmlElement(name = "aeroportoOrigem")
+    @ApiModelProperty(value = "Aeroporto de origem da carga - Código IATA<br/>Tamanho: 3")
+    /**
+     * Aeroporto de origem da carga - Código IATA<br/>Tamanho: 3
+     **/
+    private String aeroportoOrigem = null;
+
+    @XmlElement(name = "placaSemirreboque")
+    @ApiModelProperty(value = "Placa semirreboque/vagão.<br/>Tamanho: 50")
+    /**
+     * Placa semirreboque/vagão.<br/>Tamanho: 50
+     **/
+    private String placaSemirreboque = null;
+
+    @XmlElement(name = "listaMercadoriaPerigosa")
+    @ApiModelProperty(value = "Lista de códigos da mercadoria perigosa.")
+    @Valid
+    /**
+     * Lista de códigos da mercadoria perigosa.
+     **/
+    private List<DadosDaMercadoriaPerigosa> listaMercadoriaPerigosa = null;
+
+    @XmlElement(name = "perecivel")
+    @ApiModelProperty(example = "false", value = "Mercadoria Perecível<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Mercadoria Perecível<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean perecivel = null;
+
+    @XmlElement(name = "cargaSolta")
+    @ApiModelProperty(example = "false", value = "Carga Solta<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Carga Solta<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean cargaSolta = null;
+
+    @XmlElement(name = "areaCargaSolta", required = true)
+    @ApiModelProperty(required = true, value = "Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36")
+    /**
+     * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.<br/>Tamanho: 36
+     **/
+    private String areaCargaSolta = null;
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
+    @XmlElement(name = "indicadorDeRemessaInternacional")
+    @ApiModelProperty(example = "E", value = "Indicador de remessa internacional expressa ou postal.<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL")
+    /**
+     * Indicador de remessa internacional expressa ou postal.<br/>Domínio:<br/>E - EXPRESSA<br/>P - POSTAL
+     **/
+    private IndicadorDeRemessaInternacionalEnum indicadorDeRemessaInternacional = null;
+
+    @XmlElement(name = "listaCameras")
+    @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.")
+    @Valid
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.
+     **/
+    private List<DadosDaCmera> listaCameras = null;
+
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    @XmlElement(name = "lotes")
+    @ApiModelProperty(value = "Lista de lotes")
+    @Valid
+    /**
+     * Lista de lotes
+     **/
+    private List<DadosLote> lotes = null;
 
     /**
      * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
@@ -347,21 +383,6 @@ public class DadosGeraoLote {
     }
 
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraOcorrencia
@@ -379,6 +400,20 @@ public class DadosGeraoLote {
     public DadosGeraoLote dataHoraOcorrencia(String dataHoraOcorrencia) {
         this.dataHoraOcorrencia = dataHoraOcorrencia;
         return this;
+    }
+
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocoloEventoRetificadoOuExcluido
+     **/
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
+    }
+
+    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
     }
 
     public DadosGeraoLote dataHoraRegistro(String dataHoraRegistro) {
@@ -406,20 +441,6 @@ public class DadosGeraoLote {
     }
 
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
-     *
-     * @return protocoloEventoRetificadoOuExcluido
-     **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
-    }
-
-    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
-    }
-
-    /**
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpfOperadorRegistro
@@ -436,6 +457,26 @@ public class DadosGeraoLote {
     public DadosGeraoLote cpfOperadorRegistro(String cpfOperadorRegistro) {
         this.cpfOperadorRegistro = cpfOperadorRegistro;
         return this;
+    }
+
+    /**
+     * Lista de chaves das NFE que amparam o transporte.
+     *
+     * @return listaNfe
+     **/
+    @JsonProperty("listaNfe")
+    public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+        return listaNfe;
+    }
+
+    /**
+     * Get declaracaoAduaneira
+     *
+     * @return declaracaoAduaneira
+     **/
+    @JsonProperty("declaracaoAduaneira")
+    public DeclaraoAduaneira getDeclaracaoAduaneira() {
+        return declaracaoAduaneira;
     }
 
     public DadosGeraoLote protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
@@ -465,7 +506,6 @@ public class DadosGeraoLote {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -485,7 +525,6 @@ public class DadosGeraoLote {
 
     /**
      * Placa do Veículo (Cavalo-trator/truck/automóvel/locomotiva). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 50
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -502,27 +541,8 @@ public class DadosGeraoLote {
         return this;
     }
 
-    /**
-     * Get declaracaoAduaneira
-     *
-     * @return declaracaoAduaneira
-     **/
-    @JsonProperty("declaracaoAduaneira")
-    public DeclaraoAduaneira getDeclaracaoAduaneira() {
-        return declaracaoAduaneira;
-    }
-
     public void setDeclaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
         this.declaracaoAduaneira = declaracaoAduaneira;
-    }
-
-    /**
-     * Lista de chaves das NFE que amparam o transporte.
-     * @return listaNfe
-     **/
-    @JsonProperty("listaNfe")
-    public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
-        return listaNfe;
     }
 
     public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
@@ -536,11 +556,6 @@ public class DadosGeraoLote {
 
     public DadosGeraoLote addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
         this.listaNfe.add(listaNfeItem);
-        return this;
-    }
-
-    public DadosGeraoLote declaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
-        this.declaracaoAduaneira = declaracaoAduaneira;
         return this;
     }
 
@@ -559,6 +574,11 @@ public class DadosGeraoLote {
 
     public void setTipoManifesto(TipoManifestoEnum tipoManifesto) {
         this.tipoManifesto = tipoManifesto;
+    }
+
+    public DadosGeraoLote declaracaoAduaneira(DeclaraoAduaneira declaracaoAduaneira) {
+        this.declaracaoAduaneira = declaracaoAduaneira;
+        return this;
     }
 
     /**
@@ -587,7 +607,6 @@ public class DadosGeraoLote {
 
     /**
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroManifesto
      **/
     @JsonProperty("numeroManifesto")
@@ -604,6 +623,20 @@ public class DadosGeraoLote {
         return this;
     }
 
+    /**
+     * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
+     *
+     * @return listaMalas
+     **/
+    @JsonProperty("listaMalas")
+    public List<DadosDaMala> getListaMalas() {
+        return listaMalas;
+    }
+
+    public void setListaMalas(List<DadosDaMala> listaMalas) {
+        this.listaMalas = listaMalas;
+    }
+
     public DadosGeraoLote tipoManifesto(TipoManifestoEnum tipoManifesto) {
         this.tipoManifesto = tipoManifesto;
         return this;
@@ -611,7 +644,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. &lt;br/&gt;Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo &#39;Conhecimento de carga&#39; deve ser deixado vazio. &lt;br/&gt;Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo &#39;Conhecimento de carga&#39; &lt;br/&gt; deve ser preenchido com o HOUSE.&lt;br/&gt;Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \&quot;-\&quot;.&lt;br/&gt;Tamanho: 100
-     *
      * @return numeroConhecimentoMAWB
      **/
     @JsonProperty("numeroConhecimentoMAWB")
@@ -648,7 +680,6 @@ public class DadosGeraoLote {
 
     /**
      * Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipoConhecimento
      **/
     @JsonProperty("tipoConhecimento")
@@ -663,20 +694,6 @@ public class DadosGeraoLote {
     public DadosGeraoLote tipoConhecimento(String tipoConhecimento) {
         this.tipoConhecimento = tipoConhecimento;
         return this;
-    }
-
-    /**
-     * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
-     *
-     * @return listaMalas
-     **/
-    @JsonProperty("listaMalas")
-    public List<DadosDaMala> getListaMalas() {
-        return listaMalas;
-    }
-
-    public void setListaMalas(List<DadosDaMala> listaMalas) {
-        this.listaMalas = listaMalas;
     }
 
     /**
@@ -697,16 +714,6 @@ public class DadosGeraoLote {
         return this;
     }
 
-    public DadosGeraoLote listaMalas(List<DadosDaMala> listaMalas) {
-        this.listaMalas = listaMalas;
-        return this;
-    }
-
-    public DadosGeraoLote addListaMalasItem(DadosDaMala listaMalasItem) {
-        this.listaMalas.add(listaMalasItem);
-        return this;
-    }
-
     /**
      * Código Siscomex do recinto de origem. No modal aéreo, deve ser preenchido na troca de responsabilidade entre depositários.&lt;br/&gt;Tamanho: 15
      *
@@ -719,6 +726,16 @@ public class DadosGeraoLote {
 
     public void setCodigoRecintoOrigem(String codigoRecintoOrigem) {
         this.codigoRecintoOrigem = codigoRecintoOrigem;
+    }
+
+    public DadosGeraoLote listaMalas(List<DadosDaMala> listaMalas) {
+        this.listaMalas = listaMalas;
+        return this;
+    }
+
+    public DadosGeraoLote addListaMalasItem(DadosDaMala listaMalasItem) {
+        this.listaMalas.add(listaMalasItem);
+        return this;
     }
 
     /**
@@ -739,6 +756,20 @@ public class DadosGeraoLote {
         return this;
     }
 
+    /**
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
+     *
+     * @return listaChassi
+     **/
+    @JsonProperty("listaChassi")
+    public List<DadosDoChassiEmbarque> getListaChassi() {
+        return listaChassi;
+    }
+
+    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
+        this.listaChassi = listaChassi;
+    }
+
     public DadosGeraoLote codigoRecintoOrigem(String codigoRecintoOrigem) {
         this.codigoRecintoOrigem = codigoRecintoOrigem;
         return this;
@@ -746,7 +777,6 @@ public class DadosGeraoLote {
 
     /**
      * Peso manifestado total da carga, ou seja, do conhecimento.&lt;br/&gt;&lt;br/&gt;pesoManifesto, até 4 casas decimais.
-     *
      * @return pesoManifesto
      **/
     @JsonProperty("pesoManifesto")
@@ -765,7 +795,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de Volumes Manifestados
-     *
      * @return listaVolumesManifesto
      **/
     @JsonProperty("listaVolumesManifesto")
@@ -806,20 +835,6 @@ public class DadosGeraoLote {
     }
 
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...). &lt;br/&gt;&lt;br/&gt;Tamanho: 50
-     *
-     * @return listaChassi
-     **/
-    @JsonProperty("listaChassi")
-    public List<DadosDoChassiEmbarque> getListaChassi() {
-        return listaChassi;
-    }
-
-    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
-        this.listaChassi = listaChassi;
-    }
-
-    /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
      * @return identificacaoUld
      **/
@@ -835,6 +850,20 @@ public class DadosGeraoLote {
     public DadosGeraoLote identificacaoUld(String identificacaoUld) {
         this.identificacaoUld = identificacaoUld;
         return this;
+    }
+
+    /**
+     * Identificação da viagem.&lt;br/&gt;Tamanho: 20&lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
+     *
+     * @return viagem
+     **/
+    @JsonProperty("viagem")
+    public String getViagem() {
+        return viagem;
+    }
+
+    public void setViagem(String viagem) {
+        this.viagem = viagem;
     }
 
     public DadosGeraoLote listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
@@ -864,20 +893,6 @@ public class DadosGeraoLote {
     public DadosGeraoLote navio(DadosNavio navio) {
         this.navio = navio;
         return this;
-    }
-
-    /**
-     * Identificação da viagem.&lt;br/&gt;Tamanho: 20&lt;br/&gt;No aéreo a composição da viagem é: vôo + data da partida prevista + aeroporto da partida.No aquaviário também deve ser informado o campo viagem no formato disponível.
-     *
-     * @return viagem
-     **/
-    @JsonProperty("viagem")
-    public String getViagem() {
-        return viagem;
-    }
-
-    public void setViagem(String viagem) {
-        this.viagem = viagem;
     }
 
     /**
@@ -916,6 +931,20 @@ public class DadosGeraoLote {
         return this;
     }
 
+    /**
+     * Lista de lotes
+     *
+     * @return lotes
+     **/
+    @JsonProperty("lotes")
+    public List<DadosLote> getLotes() {
+        return lotes;
+    }
+
+    public void setLotes(List<DadosLote> lotes) {
+        this.lotes = lotes;
+    }
+
     public DadosGeraoLote viagem(String viagem) {
         this.viagem = viagem;
         return this;
@@ -942,7 +971,6 @@ public class DadosGeraoLote {
 
     /**
      * Aeroporto de origem da carga - Código IATA&lt;br/&gt;Tamanho: 3
-     *
      * @return aeroportoOrigem
      **/
     @JsonProperty("aeroportoOrigem")
@@ -961,7 +989,6 @@ public class DadosGeraoLote {
 
     /**
      * Placa semirreboque/vagão.&lt;br/&gt;Tamanho: 50
-     *
      * @return placaSemirreboque
      **/
     @JsonProperty("placaSemirreboque")
@@ -1004,7 +1031,6 @@ public class DadosGeraoLote {
 
     /**
      * Mercadoria Perecível&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return perecivel
      **/
     @JsonProperty("perecivel")
@@ -1023,7 +1049,6 @@ public class DadosGeraoLote {
 
     /**
      * Carga Solta&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
      * @return cargaSolta
      **/
     @JsonProperty("cargaSolta")
@@ -1042,7 +1067,6 @@ public class DadosGeraoLote {
 
     /**
      * Identificação da área de controle de carga solta. Usar o protocolo do evento de georreferenciamento.&lt;br/&gt;Tamanho: 36
-     *
      * @return areaCargaSolta
      **/
     @JsonProperty("areaCargaSolta")
@@ -1062,7 +1086,6 @@ public class DadosGeraoLote {
 
     /**
      * Indicador de remessa internacional expressa ou postal.&lt;br/&gt;Domínio:&lt;br/&gt;E - EXPRESSA&lt;br/&gt;P - POSTAL
-     *
      * @return indicadorDeRemessaInternacional
      **/
     @JsonProperty("indicadorDeRemessaInternacional")
@@ -1084,7 +1107,6 @@ public class DadosGeraoLote {
 
     /**
      * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área.
-     *
      * @return listaCameras
      **/
     @JsonProperty("listaCameras")
@@ -1107,20 +1129,6 @@ public class DadosGeraoLote {
     }
 
     /**
-     * Lista de lotes
-     *
-     * @return lotes
-     **/
-    @JsonProperty("lotes")
-    public List<DadosLote> getLotes() {
-        return lotes;
-    }
-
-    public void setLotes(List<DadosLote> lotes) {
-        this.lotes = lotes;
-    }
-
-    /**
      * Observações da recepção da carga&lt;br/&gt;Tamanho: 200
      * @return observacaoRecepcao
      **/
@@ -1135,16 +1143,6 @@ public class DadosGeraoLote {
 
     public DadosGeraoLote observacaoRecepcao(String observacaoRecepcao) {
         this.observacaoRecepcao = observacaoRecepcao;
-        return this;
-    }
-
-    public DadosGeraoLote lotes(List<DadosLote> lotes) {
-        this.lotes = lotes;
-        return this;
-    }
-
-    public DadosGeraoLote addLotesItem(DadosLote lotesItem) {
-        this.lotes.add(lotesItem);
         return this;
     }
 
@@ -1195,8 +1193,8 @@ public class DadosGeraoLote {
                 "    observacaoRecepcao: " + toIndentedString(observacaoRecepcao) + "\n" +
                 "    lotes: " + toIndentedString(lotes) + "\n" +
                 "}";
-    return sb;
-  }
+        return sb;
+    }
 
     @XmlType(name = "TipoOperacaoEnum")
     @XmlEnum(String.class)
@@ -1238,6 +1236,16 @@ public class DadosGeraoLote {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public DadosGeraoLote lotes(List<DadosLote> lotes) {
+        this.lotes = lotes;
+        return this;
+    }
+
+    public DadosGeraoLote addLotesItem(DadosLote lotesItem) {
+        this.lotes.add(lotesItem);
+        return this;
     }
 
 

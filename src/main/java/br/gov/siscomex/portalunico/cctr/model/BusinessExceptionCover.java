@@ -61,12 +61,7 @@ public class BusinessExceptionCover {
      * Data e hora do erro
      **/
     private String date = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(example = "ERROR", value = "Severidade da falha")
-    /**
-     * Severidade da falha
-     **/
-    private SeverityEnum severity = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -78,6 +73,13 @@ public class BusinessExceptionCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "severity")
+    @ApiModelProperty(example = "ERROR", value = "Severidade da falha")
+    /**
+     * Severidade da falha
+     **/
+    private SeverityEnum severity = null;
 
     @XmlElement(name = "info")
     @ApiModelProperty(value = "")
@@ -237,7 +239,6 @@ public class BusinessExceptionCover {
         this.info = info;
         return this;
     }
-
 
     @Override
     public String toString() {

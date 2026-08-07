@@ -54,17 +54,6 @@ public class DadosContinerUldInspeoNoInvasiva {
     private Boolean ocrNumero = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
      * @return idElemento
@@ -77,6 +66,17 @@ public class DadosContinerUldInspeoNoInvasiva {
 
     public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -95,11 +95,6 @@ public class DadosContinerUldInspeoNoInvasiva {
 
     public DadosContinerUldInspeoNoInvasiva numeroConteiner(String numeroConteiner) {
         this.numeroConteiner = numeroConteiner;
-        return this;
-    }
-
-    public DadosContinerUldInspeoNoInvasiva idElemento(String idElemento) {
-        this.idElemento = idElemento;
         return this;
     }
 
@@ -134,6 +129,11 @@ public class DadosContinerUldInspeoNoInvasiva {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public DadosContinerUldInspeoNoInvasiva idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**

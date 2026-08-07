@@ -107,17 +107,6 @@ public class SefazResumoRUCCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Total de Volumes Entreques&lt;br&gt;Formato: Inteiro, com até 10 digitos&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 2.147.483.647
      *
      * @return totalVolumesEntregues
@@ -134,6 +123,18 @@ public class SefazResumoRUCCover {
     public SefazResumoRUCCover totalVolumesEntregues(Integer totalVolumesEntregues) {
         this.totalVolumesEntregues = totalVolumesEntregues;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

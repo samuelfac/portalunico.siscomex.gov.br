@@ -42,13 +42,7 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
      * Valor Pago do AFRMM e da TUM em R$ (Reais)<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorAFRMMPago = null;
-    @XmlElement(name = "componentesFrete")
-    @ApiModelProperty(value = "Lista de Componentes do Frete")
-    @Valid
-    /**
-     * Lista de Componentes do Frete
-     **/
-    private List<ComponenteDeFrete> componentesFrete = null;
+
 
     @XmlElement(name = "indicadorAFRMMQuitado")
     @ApiModelProperty(example = "1", value = "Indica se o AFRMM encontra-se quitado ou exonerado.<br>Dominio: <br>1 - Sim,<br>2 - Não,<br>0 - informação não recebida do sistema de controle de Carga")
@@ -67,6 +61,14 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "componentesFrete")
+    @ApiModelProperty(value = "Lista de Componentes do Frete")
+    @Valid
+    /**
+     * Lista de Componentes do Frete
+     **/
+    private List<ComponenteDeFrete> componentesFrete = null;
 
     /**
      * Get tipoConhecimento
@@ -170,7 +172,6 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
         this.componentesFrete.add(componentesFreteItem);
         return this;
     }
-
 
     @Override
     public String toString() {

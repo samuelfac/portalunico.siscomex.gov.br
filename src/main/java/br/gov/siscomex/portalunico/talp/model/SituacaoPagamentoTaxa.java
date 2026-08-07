@@ -186,7 +186,7 @@ public class SituacaoPagamentoTaxa {
         }
 
         @Override
-        public String toString() {
+    public String toString() {
             return String.valueOf(value);
         }
     }

@@ -58,17 +58,6 @@ public class OpcaoIcmsAlteracaoDto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da opção que será exibida para o importador &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
      *
      * @return descricaoOpcao
@@ -86,6 +75,18 @@ public class OpcaoIcmsAlteracaoDto {
     public OpcaoIcmsAlteracaoDto descricaoOpcao(String descricaoOpcao) {
         this.descricaoOpcao = descricaoOpcao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

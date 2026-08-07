@@ -39,6 +39,8 @@ public class Recebimento {
      * Data/hora de recebimento do arquivo, no fuso horário de Brasília<br>Formato: 'yyyy-MM-dd'T'HH:mm:ss:SSS-03:00'
      **/
     private String dateTime = null;
+
+
     @XmlElement(name = "cpf")
     @ApiModelProperty(example = "99999999999", value = "CPF do usuário autenticado que enviou o arquivo<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
@@ -65,13 +67,6 @@ public class Recebimento {
      * Situação atual do processamento do arquivo
      **/
     private StatusEnum status = null;
-    @XmlElement(name = "errorList")
-    @ApiModelProperty(value = "Lista de erros encontrados no processamento do arquivo")
-    @Valid
-    /**
-     * Lista de erros encontrados no processamento do arquivo
-     **/
-    private List<ErroArquivo> errorList = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -94,6 +89,14 @@ public class Recebimento {
         return dateTime;
     }
 
+    @XmlElement(name = "errorList")
+    @ApiModelProperty(value = "Lista de erros encontrados no processamento do arquivo")
+    @Valid
+    /**
+     * Lista de erros encontrados no processamento do arquivo
+     **/
+    private List<ErroArquivo> errorList = null;
+
     /**
      * Número de protocolo gerado no recebimento do arquivo&lt;br&gt;Tamanho: 17&lt;br&gt;Formato: &#39;AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA&#39;
      *
@@ -113,15 +116,6 @@ public class Recebimento {
         return this;
     }
 
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public Recebimento dateTime(String dateTime) {
-        this.dateTime = dateTime;
-        return this;
-    }
-
     /**
      * CPF do usuário autenticado que enviou o arquivo&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
@@ -130,6 +124,15 @@ public class Recebimento {
     @JsonProperty("cpf")
     public String getCpf() {
         return cpf;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Recebimento dateTime(String dateTime) {
+        this.dateTime = dateTime;
+        return this;
     }
 
     /**
@@ -174,6 +177,21 @@ public class Recebimento {
     public Recebimento status(StatusEnum status) {
         this.status = status;
         return this;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class Recebimento {\n" +
+                "    protocolNumber: " + toIndentedString(protocolNumber) + "\n" +
+                "    dateTime: " + toIndentedString(dateTime) + "\n" +
+                "    fileType: " + toIndentedString(fileType) + "\n" +
+                "    status: " + toIndentedString(status) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    errorList: " + toIndentedString(errorList) + "\n" +
+                "}";
+        return sb;
     }
 
     public void setCpf(String cpf) {
@@ -226,21 +244,6 @@ public class Recebimento {
     public Recebimento addErrorListItem(ErroArquivo errorListItem) {
         this.errorList.add(errorListItem);
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class Recebimento {\n" +
-                "    protocolNumber: " + toIndentedString(protocolNumber) + "\n" +
-                "    dateTime: " + toIndentedString(dateTime) + "\n" +
-                "    fileType: " + toIndentedString(fileType) + "\n" +
-                "    status: " + toIndentedString(status) + "\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
-                "    errorList: " + toIndentedString(errorList) + "\n" +
-                "}";
-        return sb;
     }
 
 

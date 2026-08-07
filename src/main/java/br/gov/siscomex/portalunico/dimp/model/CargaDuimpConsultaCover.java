@@ -29,6 +29,8 @@ public class CargaDuimpConsultaCover {
     @ApiModelProperty(value = "")
     @Valid
     private UnidadeDeclaradaCover unidadeDeclarada = null;
+
+
     @XmlElement(name = "identificacao")
     @ApiModelProperty(value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
     /**
@@ -209,7 +211,6 @@ public class CargaDuimpConsultaCover {
         this.motivoSituacaoEspecial = motivoSituacaoEspecial;
         return this;
     }
-
 
     @Override
     public String toString() {

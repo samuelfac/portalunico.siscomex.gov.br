@@ -77,17 +77,6 @@ public class ChegadaConsultaDetalhada {
     private List<UldBlkViagemConsultaDetalhada> uldBlks = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código IATA do aeroporto&lt;br/&gt;Tamanho: 3
      *
      * @return codigoAeroportoChegada
@@ -121,6 +110,17 @@ public class ChegadaConsultaDetalhada {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Data/Hora de chegada prevista.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
      *
      * @return dataHoraChegadaPrevista
@@ -139,11 +139,6 @@ public class ChegadaConsultaDetalhada {
         return this;
     }
 
-    public ChegadaConsultaDetalhada dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
-        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
-        return this;
-    }
-
     /**
      * Data/Hora de partida prevista.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
      *
@@ -156,6 +151,11 @@ public class ChegadaConsultaDetalhada {
 
     public void setDataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
         this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
+    }
+
+    public ChegadaConsultaDetalhada dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
+        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+        return this;
     }
 
     /**

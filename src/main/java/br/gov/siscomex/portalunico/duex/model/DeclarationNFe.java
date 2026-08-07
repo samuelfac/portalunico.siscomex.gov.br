@@ -72,17 +72,6 @@ public class DeclarationNFe {
     private UCR ucr = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get additionalDocument
      *
      * @return additionalDocument
@@ -99,6 +88,17 @@ public class DeclarationNFe {
     public DeclarationNFe additionalDocument(List<AdditionalDocument> additionalDocument) {
         this.additionalDocument = additionalDocument;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -122,11 +122,6 @@ public class DeclarationNFe {
 
     public DeclarationNFe addAdditionalInformationItem(AdditionalInformation additionalInformationItem) {
         this.additionalInformation.add(additionalInformationItem);
-        return this;
-    }
-
-    public DeclarationNFe addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
-        this.additionalDocument.add(additionalDocumentItem);
         return this;
     }
 
@@ -163,6 +158,11 @@ public class DeclarationNFe {
 
     public void setDeclarant(Declarant declarant) {
         this.declarant = declarant;
+    }
+
+    public DeclarationNFe addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
+        this.additionalDocument.add(additionalDocumentItem);
+        return this;
     }
 
     /**
@@ -209,11 +209,6 @@ public class DeclarationNFe {
         return this;
     }
 
-    public DeclarationNFe declarant(Declarant declarant) {
-        this.declarant = declarant;
-        return this;
-    }
-
     /**
      * Get exitOffice
      *
@@ -227,6 +222,11 @@ public class DeclarationNFe {
 
     public void setExitOffice(ExitOffice exitOffice) {
         this.exitOffice = exitOffice;
+    }
+
+    public DeclarationNFe declarant(Declarant declarant) {
+        this.declarant = declarant;
+        return this;
     }
 
     /**
@@ -272,11 +272,6 @@ public class DeclarationNFe {
         return this;
     }
 
-    public DeclarationNFe exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
-        return this;
-    }
-
     /**
      * Get ucr
      *
@@ -293,6 +288,11 @@ public class DeclarationNFe {
 
     public DeclarationNFe ucr(UCR ucr) {
         this.ucr = ucr;
+        return this;
+    }
+
+    public DeclarationNFe exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 

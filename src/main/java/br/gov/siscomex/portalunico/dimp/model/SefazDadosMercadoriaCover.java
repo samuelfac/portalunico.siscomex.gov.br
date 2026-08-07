@@ -27,38 +27,6 @@ import java.math.BigDecimal;
 public class SefazDadosMercadoriaCover {
 
 
-    @XmlElement(name = "tipoAplicacao")
-    @ApiModelProperty(example = "1", value = "Destinação da mercadoria de acordo com o domínio a seguir: .<br>Dominio:<br>1 - consumo,<br>2 - revenda,<br>3 - Incorporação ao Ativo Fixo,<br>4 - Industrialização,<br>9 - Outra<br>Tamanho: 1")
-    /**
-     * Destinação da mercadoria de acordo com o domínio a seguir: .<br>Dominio:<br>1 - consumo,<br>2 - revenda,<br>3 - Incorporação ao Ativo Fixo,<br>4 - Industrialização,<br>9 - Outra<br>Tamanho: 1
-     **/
-    private TipoAplicacaoEnum tipoAplicacao = null;
-    @XmlElement(name = "condicao")
-    @ApiModelProperty(example = "1", value = "Indica se a mercadoria é nova ou usada.<br>Dominio:<br>1 = Nova, <br>2 = Usada<br>Tamanho: 1")
-    /**
-     * Indica se a mercadoria é nova ou usada.<br>Dominio:<br>1 = Nova, <br>2 = Usada<br>Tamanho: 1
-     **/
-    private CondicaoEnum condicao = null;
-    @XmlElement(name = "unidadeEstatistica")
-    @ApiModelProperty(example = "KG", value = "Unidade de medida estatística associada à NCM do produto<br>Dominio: Tabela de Unidades Estatísticas de Valoração Siscomex<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Unidade de medida estatística associada à NCM do produto<br>Dominio: Tabela de Unidades Estatísticas de Valoração Siscomex<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String unidadeEstatistica = null;
-    @XmlElement(name = "pesoLiquido")
-    @ApiModelProperty(example = "100.0", value = "Peso líquido em quilogramas corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Peso líquido em quilogramas corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     **/
-    private BigDecimal pesoLiquido = null;
-    @XmlElement(name = "unidadeComercializada")
-    @ApiModelProperty(example = "Sacas", value = "Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String unidadeComercializada = null;
-
     @XmlElement(name = "quantidadeUnidadeEstatistica")
     @ApiModelProperty(value = "Quantidade na unidade de medida estatística associada à NCM do produto;<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     @Valid
@@ -66,6 +34,13 @@ public class SefazDadosMercadoriaCover {
      * Quantidade na unidade de medida estatística associada à NCM do produto;<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal quantidadeUnidadeEstatistica = null;
+
+    @XmlElement(name = "tipoAplicacao")
+    @ApiModelProperty(example = "1", value = "Destinação da mercadoria de acordo com o domínio a seguir: .<br>Dominio:<br>1 - consumo,<br>2 - revenda,<br>3 - Incorporação ao Ativo Fixo,<br>4 - Industrialização,<br>9 - Outra<br>Tamanho: 1")
+    /**
+     * Destinação da mercadoria de acordo com o domínio a seguir: .<br>Dominio:<br>1 - consumo,<br>2 - revenda,<br>3 - Incorporação ao Ativo Fixo,<br>4 - Industrialização,<br>9 - Outra<br>Tamanho: 1
+     **/
+    private TipoAplicacaoEnum tipoAplicacao = null;
     @XmlElement(name = "valorUnitarioCondicaoVenda")
     @ApiModelProperty(example = "10.0", value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -73,6 +48,20 @@ public class SefazDadosMercadoriaCover {
      * Valor unitário da mercadoria na condição de venda.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorUnitarioCondicaoVenda = null;
+
+    @XmlElement(name = "condicao")
+    @ApiModelProperty(example = "1", value = "Indica se a mercadoria é nova ou usada.<br>Dominio:<br>1 = Nova, <br>2 = Usada<br>Tamanho: 1")
+    /**
+     * Indica se a mercadoria é nova ou usada.<br>Dominio:<br>1 = Nova, <br>2 = Usada<br>Tamanho: 1
+     **/
+    private CondicaoEnum condicao = null;
+
+    @XmlElement(name = "unidadeEstatistica")
+    @ApiModelProperty(example = "KG", value = "Unidade de medida estatística associada à NCM do produto<br>Dominio: Tabela de Unidades Estatísticas de Valoração Siscomex<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Unidade de medida estatística associada à NCM do produto<br>Dominio: Tabela de Unidades Estatísticas de Valoração Siscomex<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String unidadeEstatistica = null;
     @XmlElement(name = "valorMercadoriaCondicaoVendaReal")
     @ApiModelProperty(example = "3806.5", value = "Valor total do item na Condição de Venda em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
@@ -80,6 +69,21 @@ public class SefazDadosMercadoriaCover {
      * Valor total do item na Condição de Venda em reais.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorMercadoriaCondicaoVendaReal = null;
+
+    @XmlElement(name = "pesoLiquido")
+    @ApiModelProperty(example = "100.0", value = "Peso líquido em quilogramas corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Peso líquido em quilogramas corresponde ao quantitativo total das mercadorias do item.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     **/
+    private BigDecimal pesoLiquido = null;
+
+    @XmlElement(name = "unidadeComercializada")
+    @ApiModelProperty(example = "Sacas", value = "Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
+    /**
+     * Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String unidadeComercializada = null;
 
     @XmlElement(name = "quantidadeUnidadeComercializada")
     @ApiModelProperty(example = "100.0", value = "Quantidade da mercadoria na unidade de medida comercial.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
@@ -114,6 +118,16 @@ public class SefazDadosMercadoriaCover {
      * Valor total do item na Condição de Venda na moeda negociada.<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal valorMercadoriaCondicaoVendaMoedaNegociada = null;
+
+    /**
+     * Peso líquido em quilogramas corresponde ao quantitativo total das mercadorias do item.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
+     *
+     * @return pesoLiquido
+     **/
+    @JsonProperty("pesoLiquido")
+    public BigDecimal getPesoLiquido() {
+        return pesoLiquido;
+    }
 
     /**
      * Destinação da mercadoria de acordo com o domínio a seguir: .&lt;br&gt;Dominio:&lt;br&gt;1 - consumo,&lt;br&gt;2 - revenda,&lt;br&gt;3 - Incorporação ao Ativo Fixo,&lt;br&gt;4 - Industrialização,&lt;br&gt;9 - Outra&lt;br&gt;Tamanho: 1
@@ -179,16 +193,6 @@ public class SefazDadosMercadoriaCover {
     }
 
     /**
-     * Peso líquido em quilogramas corresponde ao quantitativo total das mercadorias do item.&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
-     *
-     * @return pesoLiquido
-     **/
-    @JsonProperty("pesoLiquido")
-    public BigDecimal getPesoLiquido() {
-        return pesoLiquido;
-    }
-
-    /**
      * Quantidade na unidade de medida estatística associada à NCM do produto;&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
      * @return quantidadeUnidadeEstatistica
@@ -205,6 +209,16 @@ public class SefazDadosMercadoriaCover {
     public SefazDadosMercadoriaCover quantidadeUnidadeEstatistica(BigDecimal quantidadeUnidadeEstatistica) {
         this.quantidadeUnidadeEstatistica = quantidadeUnidadeEstatistica;
         return this;
+    }
+
+    /**
+     * Valor total do item na Condição de Venda na moeda negociada.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorMercadoriaCondicaoVendaMoedaNegociada
+     **/
+    @JsonProperty("valorMercadoriaCondicaoVendaMoedaNegociada")
+    public BigDecimal getValorMercadoriaCondicaoVendaMoedaNegociada() {
+        return valorMercadoriaCondicaoVendaMoedaNegociada;
     }
 
     public void setPesoLiquido(BigDecimal pesoLiquido) {
@@ -233,16 +247,6 @@ public class SefazDadosMercadoriaCover {
     public SefazDadosMercadoriaCover unidadeComercializada(String unidadeComercializada) {
         this.unidadeComercializada = unidadeComercializada;
         return this;
-    }
-
-    /**
-     * Valor total do item na Condição de Venda na moeda negociada.&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorMercadoriaCondicaoVendaMoedaNegociada
-     **/
-    @JsonProperty("valorMercadoriaCondicaoVendaMoedaNegociada")
-    public BigDecimal getValorMercadoriaCondicaoVendaMoedaNegociada() {
-        return valorMercadoriaCondicaoVendaMoedaNegociada;
     }
 
     /**
@@ -302,6 +306,25 @@ public class SefazDadosMercadoriaCover {
         return this;
     }
 
+    @Override
+    public String toString() {
+
+        String sb = "class SefazDadosMercadoriaCover {\n" +
+                "    tipoAplicacao: " + toIndentedString(tipoAplicacao) + "\n" +
+                "    condicao: " + toIndentedString(condicao) + "\n" +
+                "    unidadeEstatistica: " + toIndentedString(unidadeEstatistica) + "\n" +
+                "    quantidadeUnidadeEstatistica: " + toIndentedString(quantidadeUnidadeEstatistica) + "\n" +
+                "    pesoLiquido: " + toIndentedString(pesoLiquido) + "\n" +
+                "    unidadeComercializada: " + toIndentedString(unidadeComercializada) + "\n" +
+                "    quantidadeUnidadeComercializada: " + toIndentedString(quantidadeUnidadeComercializada) + "\n" +
+                "    moedaNegociada: " + toIndentedString(moedaNegociada) + "\n" +
+                "    valorUnitarioCondicaoVenda: " + toIndentedString(valorUnitarioCondicaoVenda) + "\n" +
+                "    valorMercadoriaCondicaoVendaMoedaNegociada: " + toIndentedString(valorMercadoriaCondicaoVendaMoedaNegociada) + "\n" +
+                "    valorMercadoriaCondicaoVendaReal: " + toIndentedString(valorMercadoriaCondicaoVendaReal) + "\n" +
+                "}";
+        return sb;
+    }
+
     public void setValorMercadoriaCondicaoVendaMoedaNegociada(BigDecimal valorMercadoriaCondicaoVendaMoedaNegociada) {
         this.valorMercadoriaCondicaoVendaMoedaNegociada = valorMercadoriaCondicaoVendaMoedaNegociada;
     }
@@ -328,25 +351,6 @@ public class SefazDadosMercadoriaCover {
     public SefazDadosMercadoriaCover valorMercadoriaCondicaoVendaReal(BigDecimal valorMercadoriaCondicaoVendaReal) {
         this.valorMercadoriaCondicaoVendaReal = valorMercadoriaCondicaoVendaReal;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazDadosMercadoriaCover {\n" +
-                "    tipoAplicacao: " + toIndentedString(tipoAplicacao) + "\n" +
-                "    condicao: " + toIndentedString(condicao) + "\n" +
-                "    unidadeEstatistica: " + toIndentedString(unidadeEstatistica) + "\n" +
-                "    quantidadeUnidadeEstatistica: " + toIndentedString(quantidadeUnidadeEstatistica) + "\n" +
-                "    pesoLiquido: " + toIndentedString(pesoLiquido) + "\n" +
-                "    unidadeComercializada: " + toIndentedString(unidadeComercializada) + "\n" +
-                "    quantidadeUnidadeComercializada: " + toIndentedString(quantidadeUnidadeComercializada) + "\n" +
-                "    moedaNegociada: " + toIndentedString(moedaNegociada) + "\n" +
-                "    valorUnitarioCondicaoVenda: " + toIndentedString(valorUnitarioCondicaoVenda) + "\n" +
-                "    valorMercadoriaCondicaoVendaMoedaNegociada: " + toIndentedString(valorMercadoriaCondicaoVendaMoedaNegociada) + "\n" +
-                "    valorMercadoriaCondicaoVendaReal: " + toIndentedString(valorMercadoriaCondicaoVendaReal) + "\n" +
-                "}";
-        return sb;
     }
 
 

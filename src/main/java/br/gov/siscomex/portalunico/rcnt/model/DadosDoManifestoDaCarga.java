@@ -50,12 +50,7 @@ public class DadosDoManifestoDaCarga {
      * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
      **/
     private String numero = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
-    /**
-     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
-     **/
-    private TipoEnum tipo = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,6 +62,13 @@ public class DadosDoManifestoDaCarga {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
+    /**
+     * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Data de emissão&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
@@ -171,7 +173,6 @@ public class DadosDoManifestoDaCarga {
         this.tipo = tipo;
         return this;
     }
-
 
     @Override
     public String toString() {

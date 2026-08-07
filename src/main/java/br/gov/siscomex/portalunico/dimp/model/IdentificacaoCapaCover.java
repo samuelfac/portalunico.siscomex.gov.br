@@ -57,17 +57,6 @@ public class IdentificacaoCapaCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição complementar da Duimp.&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 7800
      *
      * @return informacaoComplementar
@@ -84,6 +73,18 @@ public class IdentificacaoCapaCover {
     public IdentificacaoCapaCover informacaoComplementar(String informacaoComplementar) {
         this.informacaoComplementar = informacaoComplementar;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -60,17 +60,6 @@ public class ErroNoProcessamento {
     private String numeroRemessa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
      * @return codigoBarrasDarf
@@ -82,6 +71,17 @@ public class ErroNoProcessamento {
 
     public void setCodigoBarrasDarf(String codigoBarrasDarf) {
         this.codigoBarrasDarf = codigoBarrasDarf;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -122,11 +122,6 @@ public class ErroNoProcessamento {
         return this;
     }
 
-    public ErroNoProcessamento codigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
-        return this;
-    }
-
     /**
      * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.
      *
@@ -139,6 +134,11 @@ public class ErroNoProcessamento {
 
     public void setNumeroLote(String numeroLote) {
         this.numeroLote = numeroLote;
+    }
+
+    public ErroNoProcessamento codigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+        return this;
     }
 
     /**
@@ -160,11 +160,6 @@ public class ErroNoProcessamento {
         return this;
     }
 
-    public ErroNoProcessamento numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
-
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
@@ -181,6 +176,11 @@ public class ErroNoProcessamento {
 
     public ErroNoProcessamento numeroRemessa(String numeroRemessa) {
         this.numeroRemessa = numeroRemessa;
+        return this;
+    }
+
+    public ErroNoProcessamento numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
         return this;
     }
 

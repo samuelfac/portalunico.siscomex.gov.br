@@ -64,6 +64,16 @@ public class ItemConsultaDuimpCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ItemConsultaDuimpCover {\n" +
+                "    indice: " + toIndentedString(indice) + "\n" +
+                "    link: " + toIndentedString(link) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -73,15 +83,5 @@ public class ItemConsultaDuimpCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ItemConsultaDuimpCover {\n" +
-                "    indice: " + toIndentedString(indice) + "\n" +
-                "    link: " + toIndentedString(link) + "\n" +
-                "}";
-        return sb;
     }
 }

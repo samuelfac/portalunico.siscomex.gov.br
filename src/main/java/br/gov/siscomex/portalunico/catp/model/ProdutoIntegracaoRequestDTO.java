@@ -87,17 +87,6 @@ public class ProdutoIntegracaoRequestDTO {
     private List<String> codigosInterno = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Detalhamento complementar do produto&lt;br&gt;Tamanho: 3700
      *
      * @return descricao
@@ -109,6 +98,17 @@ public class ProdutoIntegracaoRequestDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -130,11 +130,6 @@ public class ProdutoIntegracaoRequestDTO {
         return this;
     }
 
-    public ProdutoIntegracaoRequestDTO descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Modalidade de operacao &lt;br&gt;Domínio: (IMPORTACAO &lt;br&gt;EXPORTACAO)
      *
@@ -147,6 +142,11 @@ public class ProdutoIntegracaoRequestDTO {
 
     public void setModalidade(String modalidade) {
         this.modalidade = modalidade;
+    }
+
+    public ProdutoIntegracaoRequestDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -192,11 +192,6 @@ public class ProdutoIntegracaoRequestDTO {
         return this;
     }
 
-    public ProdutoIntegracaoRequestDTO modalidade(String modalidade) {
-        this.modalidade = modalidade;
-        return this;
-    }
-
     /**
      * Lista de atributos multivalorados da NCM informada
      *
@@ -213,6 +208,11 @@ public class ProdutoIntegracaoRequestDTO {
 
     public ProdutoIntegracaoRequestDTO atributosMultivalorados(List<ProdutoCampoMultivaloradoIntegracaoDTO> atributosMultivalorados) {
         this.atributosMultivalorados = atributosMultivalorados;
+        return this;
+    }
+
+    public ProdutoIntegracaoRequestDTO modalidade(String modalidade) {
+        this.modalidade = modalidade;
         return this;
     }
 
@@ -237,11 +237,6 @@ public class ProdutoIntegracaoRequestDTO {
 
     public ProdutoIntegracaoRequestDTO addAtributosCompostosItem(ProdutoCampoCompostoIntegracaoDTO atributosCompostosItem) {
         this.atributosCompostos.add(atributosCompostosItem);
-        return this;
-    }
-
-    public ProdutoIntegracaoRequestDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
-        this.atributosMultivalorados.add(atributosMultivaloradosItem);
         return this;
     }
 
@@ -271,7 +266,6 @@ public class ProdutoIntegracaoRequestDTO {
 
     /**
      * Lista de códigos internos do produto do Exportador/Importador&lt;br&gt;Tamanho: 60
-     *
      * @return codigosInterno
      **/
     @JsonProperty("codigosInterno")
@@ -290,6 +284,11 @@ public class ProdutoIntegracaoRequestDTO {
 
     public ProdutoIntegracaoRequestDTO addCodigosInternoItem(String codigosInternoItem) {
         this.codigosInterno.add(codigosInternoItem);
+        return this;
+    }
+
+    public ProdutoIntegracaoRequestDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
+        this.atributosMultivalorados.add(atributosMultivaloradosItem);
         return this;
     }
 

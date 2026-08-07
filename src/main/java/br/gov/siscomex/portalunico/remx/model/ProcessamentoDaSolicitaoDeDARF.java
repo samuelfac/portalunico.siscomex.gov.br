@@ -137,17 +137,6 @@ public class ProcessamentoDaSolicitaoDeDARF {
     private BigDecimal valorTotalPagamento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -220,6 +209,17 @@ public class ProcessamentoDaSolicitaoDeDARF {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Quarta parte do código de barras do DARF, composto por 12 caracteres numéricos.
      *
      * @return codigoBarrasCampo4
@@ -274,11 +274,6 @@ public class ProcessamentoDaSolicitaoDeDARF {
 
     public ProcessamentoDaSolicitaoDeDARF contribuinte(String contribuinte) {
         this.contribuinte = contribuinte;
-        return this;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo3(String codigoBarrasCampo3) {
-        this.codigoBarrasCampo3 = codigoBarrasCampo3;
         return this;
     }
 
@@ -342,7 +337,6 @@ public class ProcessamentoDaSolicitaoDeDARF {
 
     /**
      * Data limite para pagamento do DARF, preenchida com o valor idêntico à data de venciomento.
-     *
      * @return dataLimitePagamento
      **/
     @JsonProperty("dataLimitePagamento")
@@ -354,9 +348,13 @@ public class ProcessamentoDaSolicitaoDeDARF {
         this.dataLimitePagamento = dataLimitePagamento;
     }
 
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo3(String codigoBarrasCampo3) {
+        this.codigoBarrasCampo3 = codigoBarrasCampo3;
+        return this;
+    }
+
     /**
      * Lista de erros.
-     *
      * @return erros
      **/
     @JsonProperty("erros")
@@ -378,14 +376,8 @@ public class ProcessamentoDaSolicitaoDeDARF {
         return this;
     }
 
-    public ProcessamentoDaSolicitaoDeDARF dataLimitePagamento(OffsetDateTime dataLimitePagamento) {
-        this.dataLimitePagamento = dataLimitePagamento;
-        return this;
-    }
-
     /**
      * Número do documento gerado pelo SENDA.  O número do documento é composto por 17 caracteres numéricos.
-     *
      * @return numeroDocumento
      **/
     @JsonProperty("numeroDocumento")
@@ -396,6 +388,11 @@ public class ProcessamentoDaSolicitaoDeDARF {
 
     public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF dataLimitePagamento(OffsetDateTime dataLimitePagamento) {
+        this.dataLimitePagamento = dataLimitePagamento;
+        return this;
     }
 
     /**
@@ -414,11 +411,6 @@ public class ProcessamentoDaSolicitaoDeDARF {
 
     public ProcessamentoDaSolicitaoDeDARF numeroProtocolo(String numeroProtocolo) {
         this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
-
-    public ProcessamentoDaSolicitaoDeDARF numeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
         return this;
     }
 
@@ -457,6 +449,11 @@ public class ProcessamentoDaSolicitaoDeDARF {
 
     public ProcessamentoDaSolicitaoDeDARF valorTotalPagamento(BigDecimal valorTotalPagamento) {
         this.valorTotalPagamento = valorTotalPagamento;
+        return this;
+    }
+
+    public ProcessamentoDaSolicitaoDeDARF numeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
         return this;
     }
 

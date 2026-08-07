@@ -92,17 +92,6 @@ public class RetornoConsulta {
     private List<DadosGranel> listaGraneis = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número RUC&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      *
      * @return numeroRUC
@@ -174,6 +163,17 @@ public class RetornoConsulta {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Indicador se carga RUC Master&lt;br&gt;Domínio:  S (Sim), N (Não)
      *
      * @return indicadorSeCargaRUCMaster
@@ -211,11 +211,6 @@ public class RetornoConsulta {
         return this;
     }
 
-    public RetornoConsulta existeImpedimentoEmbarque(Boolean existeImpedimentoEmbarque) {
-        this.existeImpedimentoEmbarque = existeImpedimentoEmbarque;
-        return this;
-    }
-
     /**
      * Contêiner&lt;br&gt;Tamanho: 20&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAA
      *
@@ -232,6 +227,11 @@ public class RetornoConsulta {
 
     public RetornoConsulta conteineres(List<String> conteineres) {
         this.conteineres = conteineres;
+        return this;
+    }
+
+    public RetornoConsulta existeImpedimentoEmbarque(Boolean existeImpedimentoEmbarque) {
+        this.existeImpedimentoEmbarque = existeImpedimentoEmbarque;
         return this;
     }
 

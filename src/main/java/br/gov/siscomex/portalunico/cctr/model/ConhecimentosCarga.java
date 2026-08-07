@@ -60,6 +60,15 @@ public class ConhecimentosCarga {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ConhecimentosCarga {\n" +
+                "    conhecimento: " + toIndentedString(conhecimento) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -69,14 +78,5 @@ public class ConhecimentosCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ConhecimentosCarga {\n" +
-                "    conhecimento: " + toIndentedString(conhecimento) + "\n" +
-                "}";
-        return sb;
     }
 }

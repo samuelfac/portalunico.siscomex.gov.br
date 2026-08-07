@@ -112,17 +112,6 @@ public class ResultadoConsultaConteiner {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 250
      *
      * @return motivoNaoPesagem
@@ -134,6 +123,17 @@ public class ResultadoConsultaConteiner {
 
     public void setMotivoNaoPesagem(String motivoNaoPesagem) {
         this.motivoNaoPesagem = motivoNaoPesagem;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -155,11 +155,6 @@ public class ResultadoConsultaConteiner {
         return this;
     }
 
-    public ResultadoConsultaConteiner motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-        return this;
-    }
-
     /**
      * Lacre&lt;br&gt;Tamanho: 15
      *
@@ -176,6 +171,11 @@ public class ResultadoConsultaConteiner {
 
     public ResultadoConsultaConteiner lacres(List<String> lacres) {
         this.lacres = lacres;
+        return this;
+    }
+
+    public ResultadoConsultaConteiner motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
         return this;
     }
 
@@ -200,11 +200,6 @@ public class ResultadoConsultaConteiner {
 
     public ResultadoConsultaConteiner addDocumentosCargaItem(DocumentosCarga documentosCargaItem) {
         this.documentosCarga.add(documentosCargaItem);
-        return this;
-    }
-
-    public ResultadoConsultaConteiner addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
         return this;
     }
 
@@ -248,6 +243,11 @@ public class ResultadoConsultaConteiner {
 
     public ResultadoConsultaConteiner permiteMovimentacao(Boolean permiteMovimentacao) {
         this.permiteMovimentacao = permiteMovimentacao;
+        return this;
+    }
+
+    public ResultadoConsultaConteiner addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
         return this;
     }
 

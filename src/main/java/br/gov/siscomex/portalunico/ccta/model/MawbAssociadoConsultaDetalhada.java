@@ -73,17 +73,6 @@ public class MawbAssociadoConsultaDetalhada {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo  Tamanho mínimo: 8  Tamanho máximo: 14  Formato: NNNNNNNNNNNNNN
      *
      * @return cnpjResponsavelArquivo
@@ -95,6 +84,17 @@ public class MawbAssociadoConsultaDetalhada {
 
     public void setCnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
         this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -116,11 +116,6 @@ public class MawbAssociadoConsultaDetalhada {
         return this;
     }
 
-    public MawbAssociadoConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
-        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-        return this;
-    }
-
     /**
      * Número do conhecimento&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
      *
@@ -137,6 +132,11 @@ public class MawbAssociadoConsultaDetalhada {
 
     public MawbAssociadoConsultaDetalhada identificacao(String identificacao) {
         this.identificacao = identificacao;
+        return this;
+    }
+
+    public MawbAssociadoConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
+        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
         return this;
     }
 

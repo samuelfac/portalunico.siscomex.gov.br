@@ -54,17 +54,6 @@ public class DadosDaCoordenadaDeAlerta {
     private Integer y2 = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
      * @return idElemento
@@ -77,6 +66,17 @@ public class DadosDaCoordenadaDeAlerta {
 
     public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -136,11 +136,6 @@ public class DadosDaCoordenadaDeAlerta {
         return this;
     }
 
-    public DadosDaCoordenadaDeAlerta idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Coordenada para marcar o alerta na posição Y2 (altura)
      *
@@ -157,6 +152,11 @@ public class DadosDaCoordenadaDeAlerta {
 
     public DadosDaCoordenadaDeAlerta y2(Integer y2) {
         this.y2 = y2;
+        return this;
+    }
+
+    public DadosDaCoordenadaDeAlerta idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
 

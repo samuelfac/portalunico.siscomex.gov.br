@@ -49,17 +49,6 @@ public class InfoCargaTransitoDTO {
     private List<String> viaDeTransporte = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get cargas
      *
      * @return cargas
@@ -103,6 +92,17 @@ public class InfoCargaTransitoDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get documentosTransporteNacional
      *
      * @return documentosTransporteNacional
@@ -126,11 +126,6 @@ public class InfoCargaTransitoDTO {
         return this;
     }
 
-    public InfoCargaTransitoDTO addConteinersItem(ConteinerDTO conteinersItem) {
-        this.conteiners.add(conteinersItem);
-        return this;
-    }
-
     /**
      * Get conhecimentos
      *
@@ -147,6 +142,11 @@ public class InfoCargaTransitoDTO {
 
     public InfoCargaTransitoDTO conhecimentos(List<ConsultaDTO> conhecimentos) {
         this.conhecimentos = conhecimentos;
+        return this;
+    }
+
+    public InfoCargaTransitoDTO addConteinersItem(ConteinerDTO conteinersItem) {
+        this.conteiners.add(conteinersItem);
         return this;
     }
 

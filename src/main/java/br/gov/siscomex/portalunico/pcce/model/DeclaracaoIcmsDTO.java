@@ -73,6 +73,8 @@ public class DeclaracaoIcmsDTO {
      * Período de referência<br>Formato: 'yyyy-MM'
      **/
     private String periodoReferencia = null;
+
+
     @XmlElement(name = "status")
     @ApiModelProperty(example = "Entrega da carga não permitida. ICMS não declarado ou não foi solicitado pagamento/exoneração do ICMS no Portal Único Siscomex.", value = "Observação, conforme o tipo de tratamento")
     /**
@@ -86,25 +88,12 @@ public class DeclaracaoIcmsDTO {
      * Descrição da situação da solicitação
      **/
     private SituacaoSolicitacaoEnum situacaoSolicitacao = null;
-    @XmlElement(name = "tipoDeclaracao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de Pagamento/Exoneração de ICMS")
+    @XmlElement(name = "ufFavorecida", required = true)
+    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
     /**
-     * Tipo de declaração de Pagamento/Exoneração de ICMS
+     * UF favorecida
      **/
-    private TipoDeclaracaoEnum tipoDeclaracao = null;
-    @XmlElement(name = "tipoTratamento", required = true)
-    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de tratamento usado na declaração")
-    /**
-     * Tipo de tratamento usado na declaração
-     **/
-    private TipoTratamentoEnum tipoTratamento = null;
-    @XmlElement(name = "valorAfrmm")
-    @ApiModelProperty(example = "95.8", value = "Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo.")
-    @Valid
-    /**
-     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo.
-     **/
-    private BigDecimal valorAfrmm = null;
+    private UfFavorecidaEnum ufFavorecida = null;
     @XmlElement(name = "valorDespesasAduaneiras")
     @ApiModelProperty(example = "162.57", value = "Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -112,6 +101,13 @@ public class DeclaracaoIcmsDTO {
      * Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorDespesasAduaneiras = null;
+
+    @XmlElement(name = "tipoDeclaracao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de Pagamento/Exoneração de ICMS")
+    /**
+     * Tipo de declaração de Pagamento/Exoneração de ICMS
+     **/
+    private TipoDeclaracaoEnum tipoDeclaracao = null;
     @XmlElement(name = "valorPagoIcms", required = true)
     @ApiModelProperty(example = "103.2", required = true, value = "Valor total já pago do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -119,6 +115,13 @@ public class DeclaracaoIcmsDTO {
      * Valor total já pago do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorPagoIcms = null;
+
+    @XmlElement(name = "tipoTratamento", required = true)
+    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de tratamento usado na declaração")
+    /**
+     * Tipo de tratamento usado na declaração
+     **/
+    private TipoTratamentoEnum tipoTratamento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -131,13 +134,6 @@ public class DeclaracaoIcmsDTO {
         return o.toString().replace("\n", "\n    ");
     }
 
-    @XmlElement(name = "ufFavorecida", required = true)
-    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
-    /**
-     * UF favorecida
-     **/
-    private UfFavorecidaEnum ufFavorecida = null;
-
     /**
      * Texto livre com informações complementares pertinentes &lt;br&gt;Tamanho máximo: 400
      *
@@ -147,6 +143,14 @@ public class DeclaracaoIcmsDTO {
     public String getInformacoesComplementares() {
         return informacoesComplementares;
     }
+
+    @XmlElement(name = "valorAfrmm")
+    @ApiModelProperty(example = "95.8", value = "Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo.")
+    @Valid
+    /**
+     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo.
+     **/
+    private BigDecimal valorAfrmm = null;
 
     @XmlElement(name = "valorCIFExonerado")
     @ApiModelProperty(example = "60.33", value = "Valor CIF considerado para exoneração (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = 'EXONERACAO_PAG_PARCIAL_DUIMP' ou 'EXONERACAO_INTEGRAL_DUIMP' e tipo de tratamento != 'CALCULO_SEFAZ'.")
@@ -294,6 +298,25 @@ public class DeclaracaoIcmsDTO {
     }
 
     /**
+     * Observação, conforme o tipo de tratamento
+     *
+     * @return status
+     **/
+    @JsonProperty("status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public DeclaracaoIcmsDTO status(String status) {
+        this.status = status;
+        return this;
+    }
+
+    /**
      * Período de referência&lt;br&gt;Formato: &#39;yyyy-MM&#39;
      *
      * @return periodoReferencia
@@ -310,25 +333,6 @@ public class DeclaracaoIcmsDTO {
 
     public DeclaracaoIcmsDTO periodoReferencia(String periodoReferencia) {
         this.periodoReferencia = periodoReferencia;
-        return this;
-    }
-
-    /**
-     * Observação, conforme o tipo de tratamento
-     *
-     * @return status
-     **/
-    @JsonProperty("status")
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public DeclaracaoIcmsDTO status(String status) {
-        this.status = status;
         return this;
     }
 
@@ -352,6 +356,25 @@ public class DeclaracaoIcmsDTO {
 
     public DeclaracaoIcmsDTO situacaoSolicitacao(SituacaoSolicitacaoEnum situacaoSolicitacao) {
         this.situacaoSolicitacao = situacaoSolicitacao;
+        return this;
+    }
+
+    /**
+     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo.
+     *
+     * @return valorAfrmm
+     **/
+    @JsonProperty("valorAfrmm")
+    public BigDecimal getValorAfrmm() {
+        return valorAfrmm;
+    }
+
+    public void setValorAfrmm(BigDecimal valorAfrmm) {
+        this.valorAfrmm = valorAfrmm;
+    }
+
+    public DeclaracaoIcmsDTO valorAfrmm(BigDecimal valorAfrmm) {
+        this.valorAfrmm = valorAfrmm;
         return this;
     }
 
@@ -402,25 +425,6 @@ public class DeclaracaoIcmsDTO {
     }
 
     /**
-     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo.
-     *
-     * @return valorAfrmm
-     **/
-    @JsonProperty("valorAfrmm")
-    public BigDecimal getValorAfrmm() {
-        return valorAfrmm;
-    }
-
-    public void setValorAfrmm(BigDecimal valorAfrmm) {
-        this.valorAfrmm = valorAfrmm;
-    }
-
-    public DeclaracaoIcmsDTO valorAfrmm(BigDecimal valorAfrmm) {
-        this.valorAfrmm = valorAfrmm;
-        return this;
-    }
-
-    /**
      * UF favorecida
      *
      * @return ufFavorecida
@@ -445,7 +449,6 @@ public class DeclaracaoIcmsDTO {
 
     /**
      * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorDespesasAduaneiras
      **/
     @JsonProperty("valorDespesasAduaneiras")
@@ -673,26 +676,6 @@ public class DeclaracaoIcmsDTO {
         }
     }
 
-    /**
-     * Versão da Duimp&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
-     * @return versaoDuimp
-     **/
-    @JsonProperty("versaoDuimp")
-    @NotNull
-    public String getVersaoDuimp() {
-        return versaoDuimp;
-    }
-
-    public void setVersaoDuimp(String versaoDuimp) {
-        this.versaoDuimp = versaoDuimp;
-    }
-
-    public DeclaracaoIcmsDTO versaoDuimp(String versaoDuimp) {
-        this.versaoDuimp = versaoDuimp;
-        return this;
-    }
-
     @XmlType(name = "TipoDeclaracaoEnum")
     @XmlEnum(String.class)
     public enum TipoDeclaracaoEnum {
@@ -741,6 +724,26 @@ public class DeclaracaoIcmsDTO {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    /**
+     * Versão da Duimp&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+     *
+     * @return versaoDuimp
+     **/
+    @JsonProperty("versaoDuimp")
+    @NotNull
+    public String getVersaoDuimp() {
+        return versaoDuimp;
+    }
+
+    public void setVersaoDuimp(String versaoDuimp) {
+        this.versaoDuimp = versaoDuimp;
+    }
+
+    public DeclaracaoIcmsDTO versaoDuimp(String versaoDuimp) {
+        this.versaoDuimp = versaoDuimp;
+        return this;
     }
 
 

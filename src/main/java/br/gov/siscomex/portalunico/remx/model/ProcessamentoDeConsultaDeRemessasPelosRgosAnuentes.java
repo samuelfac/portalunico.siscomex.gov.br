@@ -127,17 +127,6 @@ public class ProcessamentoDeConsultaDeRemessasPelosRgosAnuentes {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de manifestos.
      *
      * @return manifestos
@@ -197,6 +186,18 @@ public class ProcessamentoDeConsultaDeRemessasPelosRgosAnuentes {
     public ProcessamentoDeConsultaDeRemessasPelosRgosAnuentes situacao(Integer situacao) {
         this.situacao = situacao;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

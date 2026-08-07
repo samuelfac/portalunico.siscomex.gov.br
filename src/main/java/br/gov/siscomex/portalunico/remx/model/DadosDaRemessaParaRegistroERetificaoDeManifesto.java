@@ -108,17 +108,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
     private Integer volumes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição da remessa. Máximo de 4.000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
      * @return descricao
@@ -174,6 +163,17 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Modo de pagamento do frete. Valores pré-definidos: &#39;PREPAID&#39; ou &#39;COLLECT&#39;.
      *
      * @return freteModoPagto
@@ -190,11 +190,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
 
     public DadosDaRemessaParaRegistroERetificaoDeManifesto freteModoPagto(String freteModoPagto) {
         this.freteModoPagto = freteModoPagto;
-        return this;
-    }
-
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto frete(BigDecimal frete) {
-        this.frete = frete;
         return this;
     }
 
@@ -233,6 +228,11 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         this.moedaValorTotal = moedaValorTotal;
     }
 
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto frete(BigDecimal frete) {
+        this.frete = frete;
+        return this;
+    }
+
     /**
      * Número do Master (11 caracteres numéricos) ou o número da Mala Postal (29 caracteres alfanuméricos).
      *
@@ -254,11 +254,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         return this;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto moedaValorTotal(String moedaValorTotal) {
-        this.moedaValorTotal = moedaValorTotal;
-        return this;
-    }
-
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
@@ -273,6 +268,11 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
 
     public void setNumeroRemessa(String numeroRemessa) {
         this.numeroRemessa = numeroRemessa;
+    }
+
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto moedaValorTotal(String moedaValorTotal) {
+        this.moedaValorTotal = moedaValorTotal;
+        return this;
     }
 
     /**
@@ -294,11 +294,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         return this;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
-    }
-
     /**
      * Get remetente
      *
@@ -312,6 +307,11 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
 
     public void setRemetente(PessoaParaRegistroERetificaoDeManifesto remetente) {
         this.remetente = remetente;
+    }
+
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
+        return this;
     }
 
     /**
@@ -340,28 +340,28 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         return this;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto volumes(Integer volumes) {
+    public void setVolumes(Integer volumes) {
         this.volumes = volumes;
-        return this;
     }
 
     /**
      * Quantidade de volumes da remessa manifestada. Máximo de 4 caracteres numéricos (de 0 a 9999).
      * minimum: 0
-     * maximum: 9999
+     * maximum: 9223372036854775807
      *
      * @return volumes
      **/
     @JsonProperty("volumes")
     @NotNull
     @Min(0)
-    @Max(9999)
+    @Max(Integer.MAX_VALUE)
     public Integer getVolumes() {
         return volumes;
     }
 
-    public void setVolumes(Integer volumes) {
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto volumes(Integer volumes) {
         this.volumes = volumes;
+        return this;
     }
 
     @Override

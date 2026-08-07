@@ -71,17 +71,6 @@ public class SituacaoDaCargaDTO {
     private String urfDeDespacho = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get cargaOperada
      *
      * @return cargaOperada
@@ -93,6 +82,17 @@ public class SituacaoDaCargaDTO {
 
     public void setCargaOperada(Boolean cargaOperada) {
         this.cargaOperada = cargaOperada;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -111,11 +111,6 @@ public class SituacaoDaCargaDTO {
 
     public SituacaoDaCargaDTO codigo(Integer codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    public SituacaoDaCargaDTO cargaOperada(Boolean cargaOperada) {
-        this.cargaOperada = cargaOperada;
         return this;
     }
 
@@ -152,6 +147,11 @@ public class SituacaoDaCargaDTO {
         this.descricao = descricao;
     }
 
+    public SituacaoDaCargaDTO cargaOperada(Boolean cargaOperada) {
+        this.cargaOperada = cargaOperada;
+        return this;
+    }
+
     /**
      * Latitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
      *
@@ -171,11 +171,6 @@ public class SituacaoDaCargaDTO {
         return this;
     }
 
-    public SituacaoDaCargaDTO descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Longitude&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
      *
@@ -188,6 +183,11 @@ public class SituacaoDaCargaDTO {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public SituacaoDaCargaDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**

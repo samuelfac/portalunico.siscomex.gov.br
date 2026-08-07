@@ -52,17 +52,6 @@ public class ErrorResponseDTO {
     private String code = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código de status HTTP.
      *
      * @return status
@@ -75,6 +64,17 @@ public class ErrorResponseDTO {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -94,11 +94,6 @@ public class ErrorResponseDTO {
 
     public ErrorResponseDTO message(String message) {
         this.message = message;
-        return this;
-    }
-
-    public ErrorResponseDTO status(Integer status) {
-        this.status = status;
         return this;
     }
 
@@ -139,6 +134,11 @@ public class ErrorResponseDTO {
 
     public ErrorResponseDTO code(String code) {
         this.code = code;
+        return this;
+    }
+
+    public ErrorResponseDTO status(Integer status) {
+        this.status = status;
         return this;
     }
 

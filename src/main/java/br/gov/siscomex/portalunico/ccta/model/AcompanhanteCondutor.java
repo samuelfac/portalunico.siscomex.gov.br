@@ -163,15 +163,6 @@ public class AcompanhanteCondutor {
         return this;
     }
 
-    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public AcompanhanteCondutor tipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -183,6 +174,15 @@ public class AcompanhanteCondutor {
                 "    tipoDocumento: " + toIndentedString(tipoDocumento) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public AcompanhanteCondutor tipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
     }
 
 

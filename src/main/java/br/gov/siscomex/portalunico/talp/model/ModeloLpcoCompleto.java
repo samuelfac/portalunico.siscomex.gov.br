@@ -107,17 +107,6 @@ public class ModeloLpcoCompleto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do modelo de LPCO&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: ONNNNN&lt;br&gt;Lei de formação: O número do modelo de LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* NNNNN &#x3D; Número sequencial do modelo no ano
      *
      * @return codigo
@@ -130,6 +119,17 @@ public class ModeloLpcoCompleto {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -152,11 +152,6 @@ public class ModeloLpcoCompleto {
         return this;
     }
 
-    public ModeloLpcoCompleto codigo(String codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
     /**
      * Informações adicionais ao exportador/importador para preenchimento dos LPCOs do modelo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 4000
      *
@@ -169,6 +164,11 @@ public class ModeloLpcoCompleto {
 
     public void setInformacoesExportadorImportador(String informacoesExportadorImportador) {
         this.informacoesExportadorImportador = informacoesExportadorImportador;
+    }
+
+    public ModeloLpcoCompleto codigo(String codigo) {
+        this.codigo = codigo;
+        return this;
     }
 
     /**
@@ -187,11 +187,6 @@ public class ModeloLpcoCompleto {
 
     public ModeloLpcoCompleto informacoesAnuente(String informacoesAnuente) {
         this.informacoesAnuente = informacoesAnuente;
-        return this;
-    }
-
-    public ModeloLpcoCompleto informacoesExportadorImportador(String informacoesExportadorImportador) {
-        this.informacoesExportadorImportador = informacoesExportadorImportador;
         return this;
     }
 
@@ -230,6 +225,11 @@ public class ModeloLpcoCompleto {
         this.requerCatalogoProduto = requerCatalogoProduto;
     }
 
+    public ModeloLpcoCompleto informacoesExportadorImportador(String informacoesExportadorImportador) {
+        this.informacoesExportadorImportador = informacoesExportadorImportador;
+        return this;
+    }
+
     /**
      * Data de início de vigência do modelo&lt;br&gt; Formato: Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
      *
@@ -250,14 +250,8 @@ public class ModeloLpcoCompleto {
         return this;
     }
 
-    public ModeloLpcoCompleto requerCatalogoProduto(Boolean requerCatalogoProduto) {
-        this.requerCatalogoProduto = requerCatalogoProduto;
-        return this;
-    }
-
     /**
      * Forma de preenchimento do modelo, sem pelo importador/exportador, de ofício, ou ambos.
-     *
      * @return preenchimento
      **/
     @JsonProperty("preenchimento")
@@ -272,6 +266,11 @@ public class ModeloLpcoCompleto {
 
     public ModeloLpcoCompleto preenchimento(String preenchimento) {
         this.preenchimento = preenchimento;
+        return this;
+    }
+
+    public ModeloLpcoCompleto requerCatalogoProduto(Boolean requerCatalogoProduto) {
+        this.requerCatalogoProduto = requerCatalogoProduto;
         return this;
     }
 

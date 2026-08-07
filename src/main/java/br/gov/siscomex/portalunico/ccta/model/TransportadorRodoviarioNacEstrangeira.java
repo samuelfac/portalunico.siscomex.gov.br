@@ -74,17 +74,6 @@ public class TransportadorRodoviarioNacEstrangeira {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número de identificação do transportador estrangeiro&lt;/br&gt;Obrigatorio se transportador for estrangeiro (\&quot;transportadorNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho: 14
      *
      * @return identificacaoFiscal
@@ -118,6 +107,17 @@ public class TransportadorRodoviarioNacEstrangeira {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Licença complementar&lt;br/&gt;campo obrigatório se tipoTransporte é REG ou OCA e transportadorNacBrasileira é false.&lt;br/&gt; Tamanho Máximo: 6
      *
      * @return numeroLicencaComplementar
@@ -136,11 +136,6 @@ public class TransportadorRodoviarioNacEstrangeira {
         return this;
     }
 
-    public TransportadorRodoviarioNacEstrangeira nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
     /**
      * Get representante
      *
@@ -153,6 +148,11 @@ public class TransportadorRodoviarioNacEstrangeira {
 
     public void setRepresentante(CnpjCPf representante) {
         this.representante = representante;
+    }
+
+    public TransportadorRodoviarioNacEstrangeira nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     /**

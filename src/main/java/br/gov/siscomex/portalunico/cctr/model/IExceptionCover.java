@@ -31,16 +31,20 @@ public class IExceptionCover {
     @XmlElement(name = "path")
     @ApiModelProperty(value = "")
     private String path = null;
+
+
+    @XmlElement(name = "field")
+    @ApiModelProperty(value = "")
+    private String field = null;
+
     @XmlElement(name = "severity")
     @ApiModelProperty(value = "")
     private SeverityEnum severity = null;
+
     @XmlElement(name = "info")
     @ApiModelProperty(value = "")
     @Valid
     private DiagnosticInfo info = null;
-    @XmlElement(name = "field")
-    @ApiModelProperty(value = "")
-    private String field = null;
 
     @XmlElement(name = "tag")
     @ApiModelProperty(value = "")
@@ -234,7 +238,6 @@ public class IExceptionCover {
         this.code = code;
         return this;
     }
-
 
     @Override
     public String toString() {

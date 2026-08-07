@@ -68,6 +68,8 @@ public class GuiaIcmsCreditoDto {
      * Descrição do código da Receita <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
      **/
     private String descricaoCodigoReceita = null;
+
+
     @XmlElement(name = "linhaDigitavel", required = true)
     @ApiModelProperty(example = "85811.01725 74301.005612 17626.945772 0 00000005010003", required = true, value = "Linha digitável para pagamento <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
     /**
@@ -81,12 +83,6 @@ public class GuiaIcmsCreditoDto {
      * Responsável pela geração da guia
      **/
     private GeradorGuiaEnum geradorGuia = null;
-    @XmlElement(name = "numeroControle")
-    @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
-    /**
-     * Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
-     **/
-    private String numeroControle = null;
     @XmlElement(name = "valorCalculado", required = true)
     @ApiModelProperty(example = "8.54", required = true, value = "Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -94,6 +90,13 @@ public class GuiaIcmsCreditoDto {
      * Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorCalculado = null;
+
+    @XmlElement(name = "numeroControle")
+    @ApiModelProperty(example = "99999999999999999999", value = "Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
+    /**
+     * Número de Controle da Sefaz (Nosso Número)<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
+     **/
+    private String numeroControle = null;
 
     @XmlElement(name = "valorAtualizacaoMonetaria")
     @ApiModelProperty(example = "0.52", value = "Valor da atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
@@ -344,7 +347,6 @@ public class GuiaIcmsCreditoDto {
 
     /**
      * Valor calculado sem benefícios/onerações para o código de receita &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorCalculado
      **/
     @JsonProperty("valorCalculado")
@@ -435,7 +437,6 @@ public class GuiaIcmsCreditoDto {
         this.valorTotal = valorTotal;
         return this;
     }
-
 
     @Override
     public String toString() {

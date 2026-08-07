@@ -45,17 +45,6 @@ public class ParametroCriarDossie {
     private Long idTipoDossie = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ ou CPF do dossiê sem formatação.&lt;br/&gt;Tamanho: 14(CNPJ) ou 11(CPF)
      *
      * @return cnpjCpfDeclarante
@@ -68,6 +57,17 @@ public class ParametroCriarDossie {
 
     public void setCnpjCpfDeclarante(String cnpjCpfDeclarante) {
         this.cnpjCpfDeclarante = cnpjCpfDeclarante;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

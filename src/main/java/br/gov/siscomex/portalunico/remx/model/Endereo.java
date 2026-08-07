@@ -60,17 +60,6 @@ public class Endereo {
     private Integer pais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código de endereçamento postal (CEP) do endereço.&lt;br/&gt;15 caracteres, sendo possível qualquer caracter alfanumérico já que podemos ter casos de CEP internacional formatado.&lt;br/&gt;Para CEPs nacionais, até 8 caracteres, sendo possível apenas hífen e pontos como caracteres especiais.
      *
      * @return cep
@@ -82,6 +71,17 @@ public class Endereo {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -103,11 +103,6 @@ public class Endereo {
         return this;
     }
 
-    public Endereo cep(String cep) {
-        this.cep = cep;
-        return this;
-    }
-
     /**
      * Sigla do estado. Valores de acordo com a tabela de domínio.&lt;br/&gt;Obs.: Para estados no exterior, a sigla é EX (conforme consta na tabela).
      *
@@ -120,6 +115,11 @@ public class Endereo {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Endereo cep(String cep) {
+        this.cep = cep;
+        return this;
     }
 
     /**

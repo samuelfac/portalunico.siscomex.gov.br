@@ -91,17 +91,6 @@ public class RegistroERetificaoDeManifesto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Tipo da modalidade do manifesto.&lt;br/&gt;Valores pré-definidos:&lt;br/&gt;&#39;E&#39; para Remessa Expressa;&lt;br/&gt;&#39;P&#39; para Remessa Postal.
      *
      * @return modalidade
@@ -114,6 +103,17 @@ public class RegistroERetificaoDeManifesto {
 
     public void setModalidade(String modalidade) {
         this.modalidade = modalidade;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -179,11 +179,6 @@ public class RegistroERetificaoDeManifesto {
         return this;
     }
 
-    public RegistroERetificaoDeManifesto modalidade(String modalidade) {
-        this.modalidade = modalidade;
-        return this;
-    }
-
     /**
      * Número sequencial de manifesto enviado pelo operador numa determinada UA de despacho para um determinado dia. Este número é importante pois ele será enviado junto com o número do manifesto, que é criado automaticamente pelo sistema. Valor sequencial, diário, com 5 dígitos numéricos.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
      *
@@ -220,6 +215,11 @@ public class RegistroERetificaoDeManifesto {
 
     public RegistroERetificaoDeManifesto uaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
+        return this;
+    }
+
+    public RegistroERetificaoDeManifesto modalidade(String modalidade) {
+        this.modalidade = modalidade;
         return this;
     }
 

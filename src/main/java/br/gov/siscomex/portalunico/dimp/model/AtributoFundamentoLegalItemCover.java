@@ -77,6 +77,16 @@ public class AtributoFundamentoLegalItemCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class AtributoFundamentoLegalItemCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    valor: " + toIndentedString(valor) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -86,15 +96,5 @@ public class AtributoFundamentoLegalItemCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class AtributoFundamentoLegalItemCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    valor: " + toIndentedString(valor) + "\n" +
-                "}";
-        return sb;
     }
 }

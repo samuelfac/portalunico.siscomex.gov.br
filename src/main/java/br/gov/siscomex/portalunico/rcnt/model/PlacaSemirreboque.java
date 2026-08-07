@@ -72,6 +72,16 @@ public class PlacaSemirreboque {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class PlacaSemirreboque {\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -81,15 +91,5 @@ public class PlacaSemirreboque {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class PlacaSemirreboque {\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -84,17 +84,6 @@ public class ExigenciaLpcoResponse {
     private SituacaoPagamentoTaxa situacaoPagamentoTaxa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número sequencial da exigência
      *
      * @return numero
@@ -107,6 +96,17 @@ public class ExigenciaLpcoResponse {
 
     public void setNumero(Long numero) {
         this.numero = numero;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -187,11 +187,6 @@ public class ExigenciaLpcoResponse {
         return this;
     }
 
-    public ExigenciaLpcoResponse numero(Long numero) {
-        this.numero = numero;
-        return this;
-    }
-
     /**
      * Get situacao
      *
@@ -205,6 +200,11 @@ public class ExigenciaLpcoResponse {
 
     public void setSituacao(SituacaoExigenciaLpco situacao) {
         this.situacao = situacao;
+    }
+
+    public ExigenciaLpcoResponse numero(Long numero) {
+        this.numero = numero;
+        return this;
     }
 
     /**
@@ -244,11 +244,6 @@ public class ExigenciaLpcoResponse {
         return this;
     }
 
-    public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
     /**
      * Get situacaoPagamentoTaxa
      *
@@ -265,6 +260,11 @@ public class ExigenciaLpcoResponse {
 
     public ExigenciaLpcoResponse situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
         this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+        return this;
+    }
+
+    public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
+        this.situacao = situacao;
         return this;
     }
 

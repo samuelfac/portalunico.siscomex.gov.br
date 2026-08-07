@@ -77,17 +77,6 @@ public class ViagemRodoviariaDetalhada {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get transportador
      *
      * @return transportador
@@ -123,6 +112,18 @@ public class ViagemRodoviariaDetalhada {
     public ViagemRodoviariaDetalhada veiculo(ViagemRodoviariaDetalhadaVeiculo veiculo) {
         this.veiculo = veiculo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

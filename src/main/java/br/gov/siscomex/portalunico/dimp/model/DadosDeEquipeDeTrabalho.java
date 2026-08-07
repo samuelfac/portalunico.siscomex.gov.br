@@ -51,17 +51,6 @@ public class DadosDeEquipeDeTrabalho {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da equipe de trabalho de análise fiscal&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
      *
      * @return equipeTrabalho
@@ -78,6 +67,18 @@ public class DadosDeEquipeDeTrabalho {
     public DadosDeEquipeDeTrabalho equipeTrabalho(String equipeTrabalho) {
         this.equipeTrabalho = equipeTrabalho;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

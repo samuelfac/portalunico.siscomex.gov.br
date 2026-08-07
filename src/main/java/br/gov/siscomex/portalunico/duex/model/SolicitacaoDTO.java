@@ -55,6 +55,7 @@ public class SolicitacaoDTO {
      **/
     private String numeroDoComprot = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -98,15 +99,6 @@ public class SolicitacaoDTO {
      **/
     private String usuarioResponsavel = null;
 
-    public void setDataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
-        this.dataDaSolicitacao = dataDaSolicitacao;
-    }
-
-    public SolicitacaoDTO dataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
-        this.dataDaSolicitacao = dataDaSolicitacao;
-        return this;
-    }
-
     /**
      * Motivo do indeferimento&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
      *
@@ -115,6 +107,15 @@ public class SolicitacaoDTO {
     @JsonProperty("motivoDoIndeferimento")
     public String getMotivoDoIndeferimento() {
         return motivoDoIndeferimento;
+    }
+
+    public void setDataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
+        this.dataDaSolicitacao = dataDaSolicitacao;
+    }
+
+    public SolicitacaoDTO dataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
+        this.dataDaSolicitacao = dataDaSolicitacao;
+        return this;
     }
 
     /**
@@ -155,15 +156,6 @@ public class SolicitacaoDTO {
         return this;
     }
 
-    public void setMotivoDoIndeferimento(String motivoDoIndeferimento) {
-        this.motivoDoIndeferimento = motivoDoIndeferimento;
-    }
-
-    public SolicitacaoDTO motivoDoIndeferimento(String motivoDoIndeferimento) {
-        this.motivoDoIndeferimento = motivoDoIndeferimento;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -179,6 +171,15 @@ public class SolicitacaoDTO {
                 "    usuarioResponsavel: " + toIndentedString(usuarioResponsavel) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setMotivoDoIndeferimento(String motivoDoIndeferimento) {
+        this.motivoDoIndeferimento = motivoDoIndeferimento;
+    }
+
+    public SolicitacaoDTO motivoDoIndeferimento(String motivoDoIndeferimento) {
+        this.motivoDoIndeferimento = motivoDoIndeferimento;
+        return this;
     }
 
     /**

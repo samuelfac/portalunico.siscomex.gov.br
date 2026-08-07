@@ -83,17 +83,6 @@ public class ItemHistoricoLpcoResponse {
     private List<DadosAlteracoesLpco> alteracoes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Momento em que ocorreu o evento sobre o LPCO.&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
      *
      * @return dataAlteracao
@@ -106,6 +95,17 @@ public class ItemHistoricoLpcoResponse {
 
     public void setDataAlteracao(String dataAlteracao) {
         this.dataAlteracao = dataAlteracao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -125,11 +125,6 @@ public class ItemHistoricoLpcoResponse {
 
     public ItemHistoricoLpcoResponse situacao(String situacao) {
         this.situacao = situacao;
-        return this;
-    }
-
-    public ItemHistoricoLpcoResponse dataAlteracao(String dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
         return this;
     }
 
@@ -166,6 +161,11 @@ public class ItemHistoricoLpcoResponse {
         this.solicitacao = solicitacao;
     }
 
+    public ItemHistoricoLpcoResponse dataAlteracao(String dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
+        return this;
+    }
+
     /**
      * Identificação do usuário que realizou o evento sobre o LPCO. Visível apenas para anuentes.
      *
@@ -182,11 +182,6 @@ public class ItemHistoricoLpcoResponse {
 
     public ItemHistoricoLpcoResponse usuario(String usuario) {
         this.usuario = usuario;
-        return this;
-    }
-
-    public ItemHistoricoLpcoResponse solicitacao(String solicitacao) {
-        this.solicitacao = solicitacao;
         return this;
     }
 
@@ -221,6 +216,11 @@ public class ItemHistoricoLpcoResponse {
 
     public void setMotivoAnalise(String motivoAnalise) {
         this.motivoAnalise = motivoAnalise;
+    }
+
+    public ItemHistoricoLpcoResponse solicitacao(String solicitacao) {
+        this.solicitacao = solicitacao;
+        return this;
     }
 
     /**

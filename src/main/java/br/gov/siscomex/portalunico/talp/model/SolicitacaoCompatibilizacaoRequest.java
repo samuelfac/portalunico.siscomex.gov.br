@@ -52,17 +52,6 @@ public class SolicitacaoCompatibilizacaoRequest {
     private String justificativa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do documento de importação (Duimp) vinculado aos itens LPCO a serem compatilizados&lt;br&gt;Tamanho: 15
      *
      * @return numeroDocumento
@@ -95,6 +84,17 @@ public class SolicitacaoCompatibilizacaoRequest {
 
     public void setNumeroItemDocumento(Integer numeroItemDocumento) {
         this.numeroItemDocumento = numeroItemDocumento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

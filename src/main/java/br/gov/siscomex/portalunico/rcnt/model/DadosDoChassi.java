@@ -72,6 +72,16 @@ public class DadosDoChassi {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosDoChassi {\n" +
+                "    chassi: " + toIndentedString(chassi) + "\n" +
+                "    idElemento: " + toIndentedString(idElemento) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -81,15 +91,5 @@ public class DadosDoChassi {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosDoChassi {\n" +
-                "    chassi: " + toIndentedString(chassi) + "\n" +
-                "    idElemento: " + toIndentedString(idElemento) + "\n" +
-                "}";
-        return sb;
     }
 }

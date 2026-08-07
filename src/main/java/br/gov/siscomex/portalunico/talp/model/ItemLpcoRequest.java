@@ -61,17 +61,6 @@ public class ItemLpcoRequest {
     private List<CampoLpcoRequest> listaAtributosNcm = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número sequencial do item LPCO.
      *
      * @return numeroItem
@@ -123,6 +112,17 @@ public class ItemLpcoRequest {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

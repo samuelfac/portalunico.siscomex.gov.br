@@ -90,17 +90,6 @@ public class DocumentoTransporteCover {
     private String motivoNaoPesagem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho Máximo: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
      *
      * @return identificacaoDocumentoTransporte
@@ -113,6 +102,17 @@ public class DocumentoTransporteCover {
 
     public void setIdentificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
         this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -135,11 +135,6 @@ public class DocumentoTransporteCover {
         return this;
     }
 
-    public DocumentoTransporteCover identificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
-        this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
-        return this;
-    }
-
     /**
      * Data de emissão do documento de transporte&lt;br&gt;Formato: AAAA-MM-DD
      *
@@ -153,6 +148,11 @@ public class DocumentoTransporteCover {
 
     public void setDataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
         this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
+    }
+
+    public DocumentoTransporteCover identificacaoDocumentoTransporte(String identificacaoDocumentoTransporte) {
+        this.identificacaoDocumentoTransporte = identificacaoDocumentoTransporte;
+        return this;
     }
 
     /**
@@ -235,11 +235,6 @@ public class DocumentoTransporteCover {
         return this;
     }
 
-    public DocumentoTransporteCover dataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
-        this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
-        return this;
-    }
-
     /**
      * Peso aferido na balança do recinto em Kg.&lt;br&gt;Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
      *
@@ -261,7 +256,6 @@ public class DocumentoTransporteCover {
 
     /**
      * Motivo da não realização da pesagem&lt;br&gt;Tamanho: 250&lt;br&gt;Deve ser informado somente quando não há informação de pesagem. Neste caso, é obrigatório.
-     *
      * @return motivoNaoPesagem
      **/
     @JsonProperty("motivoNaoPesagem")
@@ -275,6 +269,11 @@ public class DocumentoTransporteCover {
 
     public DocumentoTransporteCover motivoNaoPesagem(String motivoNaoPesagem) {
         this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
+    }
+
+    public DocumentoTransporteCover dataEmissaoDocumentoTransporte(String dataEmissaoDocumentoTransporte) {
+        this.dataEmissaoDocumentoTransporte = dataEmissaoDocumentoTransporte;
         return this;
     }
 

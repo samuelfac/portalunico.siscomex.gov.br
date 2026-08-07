@@ -104,17 +104,6 @@ public class PucomexReturn {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return date
@@ -148,6 +137,17 @@ public class PucomexReturn {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Mensagem&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 500
      *
      * @return message
@@ -163,11 +163,6 @@ public class PucomexReturn {
 
     public PucomexReturn message(String message) {
         this.message = message;
-        return this;
-    }
-
-    public PucomexReturn due(String due) {
-        this.due = due;
         return this;
     }
 
@@ -206,6 +201,11 @@ public class PucomexReturn {
 
     public PucomexReturn warnings(Warnings warnings) {
         this.warnings = warnings;
+        return this;
+    }
+
+    public PucomexReturn due(String due) {
+        this.due = due;
         return this;
     }
 

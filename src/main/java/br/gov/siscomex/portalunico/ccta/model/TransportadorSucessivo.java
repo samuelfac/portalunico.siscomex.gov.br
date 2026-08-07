@@ -87,17 +87,6 @@ public class TransportadorSucessivo {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação do transportador sucessivo Nacional&lt;br/&gt; Se campo nacionalidadeBrasileira do transportador sucessivo  igual a \&quot;true\&quot; (Transportador Nacional) é obrigatório o preenchimento do CNPJ. Este CNPJ deve estar ativo no cadastro de CNPJ e ser validado no Cadastro de Transportadores.&lt;br/&gt; Tamanho: 14
      *
      * @return identificacaoTransportadorNacional
@@ -128,6 +117,17 @@ public class TransportadorSucessivo {
 
     public void setLicencaComplementar(String licencaComplementar) {
         this.licencaComplementar = licencaComplementar;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -169,11 +169,6 @@ public class TransportadorSucessivo {
         return this;
     }
 
-    public TransportadorSucessivo licencaComplementar(String licencaComplementar) {
-        this.licencaComplementar = licencaComplementar;
-        return this;
-    }
-
     /**
      * Nome do transportador estrangeiro sucessivo&lt;br/&gt;Se campo nacionalidadeBrasileira do transportador sucessivo  igual a \&quot;false\&quot; ( Transportador Estrangeiro) é obrigatório o preenchimento. &lt;br/&gt; Tamanho Máximo: 60
      *
@@ -186,6 +181,11 @@ public class TransportadorSucessivo {
 
     public void setNomeTransportadorEstrangeiro(String nomeTransportadorEstrangeiro) {
         this.nomeTransportadorEstrangeiro = nomeTransportadorEstrangeiro;
+    }
+
+    public TransportadorSucessivo licencaComplementar(String licencaComplementar) {
+        this.licencaComplementar = licencaComplementar;
+        return this;
     }
 
     /**

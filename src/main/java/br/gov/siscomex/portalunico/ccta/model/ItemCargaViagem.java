@@ -99,17 +99,6 @@ public class ItemCargaViagem {
     private String tipoGranel = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Chassi do veículo transportado na viagem.para tipocarga &#x3D; 4 preenchimento obrigatório&lt;br/&gt;Tamanho Máximo: 30
      *
      * @return chassi
@@ -164,6 +153,17 @@ public class ItemCargaViagem {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Indicador que informa se o item de carga contém embalagem vazia.
      *
      * @return embalagemVazia
@@ -183,11 +183,6 @@ public class ItemCargaViagem {
         return this;
     }
 
-    public ItemCargaViagem descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Identificação do conteiner transportado na viagem.para tipocarga &#x3D; 1 preenchimento obrigatório&lt;br/&gt; Tamanho Máximo: 11
      *
@@ -200,6 +195,11 @@ public class ItemCargaViagem {
 
     public void setIdentificacaoConteiner(String identificacaoConteiner) {
         this.identificacaoConteiner = identificacaoConteiner;
+    }
+
+    public ItemCargaViagem descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -265,11 +265,6 @@ public class ItemCargaViagem {
         return this;
     }
 
-    public ItemCargaViagem identificacaoConteiner(String identificacaoConteiner) {
-        this.identificacaoConteiner = identificacaoConteiner;
-        return this;
-    }
-
     /**
      * Sequencial de item de carga da viagem&lt;br/&gt; Tamanho Máximo: 20
      * @return sequencial
@@ -291,7 +286,6 @@ public class ItemCargaViagem {
 
     /**
      * Tipo de embalagem da carga solta transportada na viagem.para tipocarga &#x3D; 3 preenchimento obrigatório (utilizar tabela de embalagem (Tabx?)&lt;br/&gt; Tamanho Máximo: 2
-     *
      * @return tipoEmbalagem
      **/
     @JsonProperty("tipoEmbalagem")
@@ -301,6 +295,11 @@ public class ItemCargaViagem {
 
     public void setTipoEmbalagem(String tipoEmbalagem) {
         this.tipoEmbalagem = tipoEmbalagem;
+    }
+
+    public ItemCargaViagem identificacaoConteiner(String identificacaoConteiner) {
+        this.identificacaoConteiner = identificacaoConteiner;
+        return this;
     }
 
     /**

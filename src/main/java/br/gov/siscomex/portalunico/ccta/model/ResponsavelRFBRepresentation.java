@@ -54,17 +54,6 @@ public class ResponsavelRFBRepresentation {
     private String nomeSetor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do código da lotação
      *
      * @return codigoLotacao
@@ -76,6 +65,17 @@ public class ResponsavelRFBRepresentation {
 
     public void setCodigoLotacao(Integer codigoLotacao) {
         this.codigoLotacao = codigoLotacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -135,11 +135,6 @@ public class ResponsavelRFBRepresentation {
         return this;
     }
 
-    public ResponsavelRFBRepresentation codigoLotacao(Integer codigoLotacao) {
-        this.codigoLotacao = codigoLotacao;
-        return this;
-    }
-
     /**
      * Descrição do nome da lotação
      *
@@ -175,6 +170,11 @@ public class ResponsavelRFBRepresentation {
 
     public ResponsavelRFBRepresentation nomeSetor(String nomeSetor) {
         this.nomeSetor = nomeSetor;
+        return this;
+    }
+
+    public ResponsavelRFBRepresentation codigoLotacao(Integer codigoLotacao) {
+        this.codigoLotacao = codigoLotacao;
         return this;
     }
 

@@ -78,17 +78,6 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do manifesto composto por 15 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do manifesto de carga para modalidade expressa ou registro do lote de declaração para modalidade postal.
      *
      * @return numeroManifesto
@@ -100,6 +89,17 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
 
     public void setNumeroManifesto(String numeroManifesto) {
         this.numeroManifesto = numeroManifesto;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -140,11 +140,6 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
         return this;
     }
 
-    public ManifestoDaConsultaDeManifestosPelosDepositrios numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-        return this;
-    }
-
     /**
      * Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio.
      *
@@ -161,6 +156,11 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
 
     public ManifestoDaConsultaDeManifestosPelosDepositrios uaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
+        return this;
+    }
+
+    public ManifestoDaConsultaDeManifestosPelosDepositrios numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
         return this;
     }
 

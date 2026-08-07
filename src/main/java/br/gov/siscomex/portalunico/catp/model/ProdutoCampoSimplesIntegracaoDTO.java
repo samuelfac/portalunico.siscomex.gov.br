@@ -53,17 +53,6 @@ public class ProdutoCampoSimplesIntegracaoDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor do atributo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
      *
      * @return valor
@@ -81,6 +70,18 @@ public class ProdutoCampoSimplesIntegracaoDTO {
     public ProdutoCampoSimplesIntegracaoDTO valor(String valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

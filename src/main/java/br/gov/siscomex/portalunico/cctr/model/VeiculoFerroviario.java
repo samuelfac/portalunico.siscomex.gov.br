@@ -78,6 +78,16 @@ public class VeiculoFerroviario {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class VeiculoFerroviario {\n" +
+                "    prefixoTrem: " + toIndentedString(prefixoTrem) + "\n" +
+                "    quantidadeVagoes: " + toIndentedString(quantidadeVagoes) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class VeiculoFerroviario {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class VeiculoFerroviario {\n" +
-                "    prefixoTrem: " + toIndentedString(prefixoTrem) + "\n" +
-                "    quantidadeVagoes: " + toIndentedString(quantidadeVagoes) + "\n" +
-                "}";
-        return sb;
     }
 }

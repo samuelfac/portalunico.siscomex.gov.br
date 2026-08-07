@@ -88,17 +88,6 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
     private Integer situacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -111,6 +100,17 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -152,11 +152,6 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
         return this;
     }
 
-    public ProcessamentoDaSolicitaoDeDevoluo cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Data e horário do registro do pedido de devolução no sistema.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
@@ -170,6 +165,11 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
 
     public void setDataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
         this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -193,11 +193,6 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
 
     public ProcessamentoDaSolicitaoDeDevoluo addErrosItem(ErroNoProcessamento errosItem) {
         this.erros.add(errosItem);
-        return this;
-    }
-
-    public ProcessamentoDaSolicitaoDeDevoluo dataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
-        this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
         return this;
     }
 
@@ -268,7 +263,6 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
 
     /**
      * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -283,6 +277,11 @@ public class ProcessamentoDaSolicitaoDeDevoluo {
 
     public ProcessamentoDaSolicitaoDeDevoluo situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDaSolicitaoDeDevoluo dataHorarioRegistroDevolucao(OffsetDateTime dataHorarioRegistroDevolucao) {
+        this.dataHorarioRegistroDevolucao = dataHorarioRegistroDevolucao;
         return this;
     }
 

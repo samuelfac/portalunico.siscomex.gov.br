@@ -50,17 +50,6 @@ public class TratamentoTributarioDTO {
     private List<MercadoriaDTO> mercadorias = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tributo
      *
      * @return tributo
@@ -73,6 +62,17 @@ public class TratamentoTributarioDTO {
 
     public void setTributo(CodigoNomeTributoDTO tributo) {
         this.tributo = tributo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -95,11 +95,6 @@ public class TratamentoTributarioDTO {
         return this;
     }
 
-    public TratamentoTributarioDTO tributo(CodigoNomeTributoDTO tributo) {
-        this.tributo = tributo;
-        return this;
-    }
-
     /**
      * Get fundamentoLegal
      *
@@ -113,6 +108,11 @@ public class TratamentoTributarioDTO {
 
     public void setFundamentoLegal(FundamentoLegalDTO fundamentoLegal) {
         this.fundamentoLegal = fundamentoLegal;
+    }
+
+    public TratamentoTributarioDTO tributo(CodigoNomeTributoDTO tributo) {
+        this.tributo = tributo;
+        return this;
     }
 
     /**

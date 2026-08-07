@@ -153,17 +153,6 @@ public class ConsultaEstoquePosDetails {
     private String entregaAutorizadaPeloSiscomexCarga = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get local
      *
      * @return local
@@ -175,6 +164,17 @@ public class ConsultaEstoquePosDetails {
 
     public void setLocal(LocalDTO local) {
         this.local = local;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -193,11 +193,6 @@ public class ConsultaEstoquePosDetails {
 
     public ConsultaEstoquePosDetails numeroRUC(String numeroRUC) {
         this.numeroRUC = numeroRUC;
-        return this;
-    }
-
-    public ConsultaEstoquePosDetails local(LocalDTO local) {
-        this.local = local;
         return this;
     }
 
@@ -234,6 +229,11 @@ public class ConsultaEstoquePosDetails {
         this.numeroCEMercante = numeroCEMercante;
     }
 
+    public ConsultaEstoquePosDetails local(LocalDTO local) {
+        this.local = local;
+        return this;
+    }
+
     /**
      * Indica se existe contêiner associado
      *
@@ -253,11 +253,6 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails numeroCEMercante(String numeroCEMercante) {
-        this.numeroCEMercante = numeroCEMercante;
-        return this;
-    }
-
     /**
      * Lista de contêineres
      *
@@ -274,6 +269,11 @@ public class ConsultaEstoquePosDetails {
 
     public ConsultaEstoquePosDetails conteineres(List<ConteinerDetails> conteineres) {
         this.conteineres = conteineres;
+        return this;
+    }
+
+    public ConsultaEstoquePosDetails numeroCEMercante(String numeroCEMercante) {
+        this.numeroCEMercante = numeroCEMercante;
         return this;
     }
 
@@ -301,11 +301,6 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails addConteineresItem(ConteinerDetails conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
-
     /**
      * Lista de veículos
      *
@@ -322,6 +317,11 @@ public class ConsultaEstoquePosDetails {
 
     public ConsultaEstoquePosDetails veiculos(List<VeiculoDetails> veiculos) {
         this.veiculos = veiculos;
+        return this;
+    }
+
+    public ConsultaEstoquePosDetails addConteineresItem(ConteinerDetails conteineresItem) {
+        this.conteineres.add(conteineresItem);
         return this;
     }
 
@@ -343,14 +343,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails addVeiculosItem(VeiculoDetails veiculosItem) {
-        this.veiculos.add(veiculosItem);
-        return this;
-    }
-
     /**
      * Descrição da situação da Duimp
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -360,6 +354,11 @@ public class ConsultaEstoquePosDetails {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public ConsultaEstoquePosDetails addVeiculosItem(VeiculoDetails veiculosItem) {
+        this.veiculos.add(veiculosItem);
+        return this;
     }
 
     /**
@@ -380,14 +379,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
     /**
      * Get importador
-     *
      * @return importador
      **/
     @JsonProperty("importador")
@@ -423,6 +416,11 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
+    public ConsultaEstoquePosDetails situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
+    }
+
     /**
      * Valor total da mercadoria no local de descarregamento em reais
      *
@@ -442,14 +440,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails addIndicacaoDeImportacaoParaTerceirosItem(ImportacaoParaTerceirosDTO indicacaoDeImportacaoParaTerceirosItem) {
-        this.indicacaoDeImportacaoParaTerceiros.add(indicacaoDeImportacaoParaTerceirosItem);
-        return this;
-    }
-
     /**
      * Get destinoFinalCarga
-     *
      * @return destinoFinalCarga
      **/
     @JsonProperty("destinoFinalCarga")
@@ -459,6 +451,11 @@ public class ConsultaEstoquePosDetails {
 
     public void setDestinoFinalCarga(UrfDTO destinoFinalCarga) {
         this.destinoFinalCarga = destinoFinalCarga;
+    }
+
+    public ConsultaEstoquePosDetails addIndicacaoDeImportacaoParaTerceirosItem(ImportacaoParaTerceirosDTO indicacaoDeImportacaoParaTerceirosItem) {
+        this.indicacaoDeImportacaoParaTerceiros.add(indicacaoDeImportacaoParaTerceirosItem);
+        return this;
     }
 
     /**
@@ -479,14 +476,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails destinoFinalCarga(UrfDTO destinoFinalCarga) {
-        this.destinoFinalCarga = destinoFinalCarga;
-        return this;
-    }
-
     /**
      * Nome do país de origem da carga
-     *
      * @return paisOrigemCarga
      **/
     @JsonProperty("paisOrigemCarga")
@@ -505,7 +496,6 @@ public class ConsultaEstoquePosDetails {
 
     /**
      * Indica se existe autorização no Sistema DIMP para entrega da carga
-     *
      * @return entregaAutorizadaPelaDuimp
      **/
     @JsonProperty("entregaAutorizadaPelaDuimp")
@@ -538,6 +528,11 @@ public class ConsultaEstoquePosDetails {
 
     public ConsultaEstoquePosDetails entregaAutorizadaPeloSiscomexCarga(String entregaAutorizadaPeloSiscomexCarga) {
         this.entregaAutorizadaPeloSiscomexCarga = entregaAutorizadaPeloSiscomexCarga;
+        return this;
+    }
+
+    public ConsultaEstoquePosDetails destinoFinalCarga(UrfDTO destinoFinalCarga) {
+        this.destinoFinalCarga = destinoFinalCarga;
         return this;
     }
 

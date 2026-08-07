@@ -84,17 +84,6 @@ public class Proprietrio {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do proprietário&lt;br&gt;Informado e obrigatório apenas se o transportador não for o proprietário do veículo, e o proprietário for brasileiro.&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
      *
      * @return numeroCnpj
@@ -128,6 +117,17 @@ public class Proprietrio {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Nome do proprietário estrangeiro&lt;br&gt;Informado e obrigatório apenas quando o transportador não for o proprietário do veículo e o proprietário for estrangeiro. Este campo ser refere ao nome do transportador estrangeiro.&lt;br&gt;Tamanho: 60
      *
      * @return nome
@@ -146,11 +146,6 @@ public class Proprietrio {
         return this;
     }
 
-    public Proprietrio idFiscal(String idFiscal) {
-        this.idFiscal = idFiscal;
-        return this;
-    }
-
     /**
      * Endereço do proprietário estrangeiro&lt;br&gt;Informado e obrigatório apenas quando o transportador não for o proprietário do veículo e o proprietário for estrangeiro. Este campo ser refere ao endereço do transportador estrangeiro.&lt;br&gt;Tamanho: 120
      *
@@ -163,6 +158,11 @@ public class Proprietrio {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public Proprietrio idFiscal(String idFiscal) {
+        this.idFiscal = idFiscal;
+        return this;
     }
 
     /**

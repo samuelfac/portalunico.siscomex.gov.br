@@ -44,6 +44,15 @@ public class ChaveDsic {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ChaveDsic {\n" +
+                "    identificacaoDSIC: " + toIndentedString(identificacaoDSIC) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -53,14 +62,5 @@ public class ChaveDsic {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ChaveDsic {\n" +
-                "    identificacaoDSIC: " + toIndentedString(identificacaoDSIC) + "\n" +
-                "}";
-        return sb;
     }
 }

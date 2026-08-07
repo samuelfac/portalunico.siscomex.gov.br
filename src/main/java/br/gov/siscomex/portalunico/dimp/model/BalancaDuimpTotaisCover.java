@@ -70,6 +70,16 @@ public class BalancaDuimpTotaisCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class BalancaDuimpTotaisCover {\n" +
+                "    quantidadeTotalDuimp: " + toIndentedString(quantidadeTotalDuimp) + "\n" +
+                "    quantidadeTotaltensDuimp: " + toIndentedString(quantidadeTotaltensDuimp) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -79,15 +89,5 @@ public class BalancaDuimpTotaisCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class BalancaDuimpTotaisCover {\n" +
-                "    quantidadeTotalDuimp: " + toIndentedString(quantidadeTotalDuimp) + "\n" +
-                "    quantidadeTotaltensDuimp: " + toIndentedString(quantidadeTotaltensDuimp) + "\n" +
-                "}";
-        return sb;
     }
 }

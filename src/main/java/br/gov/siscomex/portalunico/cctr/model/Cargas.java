@@ -97,17 +97,6 @@ public class Cargas {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tipoCarga
      *
      * @return tipoCarga
@@ -119,6 +108,17 @@ public class Cargas {
 
     public void setTipoCarga(ItemDTO tipoCarga) {
         this.tipoCarga = tipoCarga;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -140,11 +140,6 @@ public class Cargas {
         return this;
     }
 
-    public Cargas tipoCarga(ItemDTO tipoCarga) {
-        this.tipoCarga = tipoCarga;
-        return this;
-    }
-
     /**
      * quantidade Manifestada
      *
@@ -161,6 +156,11 @@ public class Cargas {
 
     public Cargas quantidadeManifestada(BigDecimal quantidadeManifestada) {
         this.quantidadeManifestada = quantidadeManifestada;
+        return this;
+    }
+
+    public Cargas tipoCarga(ItemDTO tipoCarga) {
+        this.tipoCarga = tipoCarga;
         return this;
     }
 

@@ -72,17 +72,6 @@ public class ProcessamentoDoCancelamentoDeDARF {
     private Integer situacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -95,6 +84,17 @@ public class ProcessamentoDoCancelamentoDeDARF {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -117,11 +117,6 @@ public class ProcessamentoDoCancelamentoDeDARF {
         return this;
     }
 
-    public ProcessamentoDoCancelamentoDeDARF cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Data e horário do processamento da consulta.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
@@ -134,6 +129,11 @@ public class ProcessamentoDoCancelamentoDeDARF {
 
     public void setDataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
         this.dataHoraProcessamento = dataHoraProcessamento;
+    }
+
+    public ProcessamentoDoCancelamentoDeDARF cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -180,11 +180,6 @@ public class ProcessamentoDoCancelamentoDeDARF {
         return this;
     }
 
-    public ProcessamentoDoCancelamentoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
-        this.dataHoraProcessamento = dataHoraProcessamento;
-        return this;
-    }
-
     /**
      * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
      *
@@ -222,6 +217,11 @@ public class ProcessamentoDoCancelamentoDeDARF {
 
     public ProcessamentoDoCancelamentoDeDARF situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDoCancelamentoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
+        this.dataHoraProcessamento = dataHoraProcessamento;
         return this;
     }
 

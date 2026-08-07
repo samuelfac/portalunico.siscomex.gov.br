@@ -47,17 +47,6 @@ public class Documento {
     private Veiculos veiculo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da DUIMP&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD &lt;br&gt;Descrição Formato&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
      *
      * @return numeroDUIMP
@@ -70,6 +59,17 @@ public class Documento {
 
     public void setNumeroDUIMP(String numeroDUIMP) {
         this.numeroDUIMP = numeroDUIMP;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -110,11 +110,6 @@ public class Documento {
         return this;
     }
 
-    public Documento numeroDUIMP(String numeroDUIMP) {
-        this.numeroDUIMP = numeroDUIMP;
-        return this;
-    }
-
     /**
      * Get veiculo
      *
@@ -131,6 +126,11 @@ public class Documento {
 
     public Documento veiculo(Veiculos veiculo) {
         this.veiculo = veiculo;
+        return this;
+    }
+
+    public Documento numeroDUIMP(String numeroDUIMP) {
+        this.numeroDUIMP = numeroDUIMP;
         return this;
     }
 

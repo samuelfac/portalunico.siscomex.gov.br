@@ -109,17 +109,6 @@ public class DuimpItemBalancaComercialCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get produto
      *
      * @return produto
@@ -153,6 +142,17 @@ public class DuimpItemBalancaComercialCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get indicadorExportadorFabricante
      *
      * @return indicadorExportadorFabricante
@@ -171,11 +171,6 @@ public class DuimpItemBalancaComercialCover {
         return this;
     }
 
-    public DuimpItemBalancaComercialCover caracterizacaoImportacao(CaracterizacaoImportacaoConsultaItemCover caracterizacaoImportacao) {
-        this.caracterizacaoImportacao = caracterizacaoImportacao;
-        return this;
-    }
-
     /**
      * Get fabricante
      *
@@ -188,6 +183,11 @@ public class DuimpItemBalancaComercialCover {
 
     public void setFabricante(FabricanteCover fabricante) {
         this.fabricante = fabricante;
+    }
+
+    public DuimpItemBalancaComercialCover caracterizacaoImportacao(CaracterizacaoImportacaoConsultaItemCover caracterizacaoImportacao) {
+        this.caracterizacaoImportacao = caracterizacaoImportacao;
+        return this;
     }
 
     /**
@@ -209,11 +209,6 @@ public class DuimpItemBalancaComercialCover {
         return this;
     }
 
-    public DuimpItemBalancaComercialCover fabricante(FabricanteCover fabricante) {
-        this.fabricante = fabricante;
-        return this;
-    }
-
     /**
      * Get indicadorCompradorVendedor
      *
@@ -226,6 +221,11 @@ public class DuimpItemBalancaComercialCover {
 
     public void setIndicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
         this.indicadorCompradorVendedor = indicadorCompradorVendedor;
+    }
+
+    public DuimpItemBalancaComercialCover fabricante(FabricanteCover fabricante) {
+        this.fabricante = fabricante;
+        return this;
     }
 
     /**
@@ -263,11 +263,6 @@ public class DuimpItemBalancaComercialCover {
 
     public DuimpItemBalancaComercialCover condicaoVenda(CondicaoVendaConsultaItemCover condicaoVenda) {
         this.condicaoVenda = condicaoVenda;
-        return this;
-    }
-
-    public DuimpItemBalancaComercialCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
-        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
         return this;
     }
 
@@ -330,6 +325,11 @@ public class DuimpItemBalancaComercialCover {
         return this;
     }
 
+    public DuimpItemBalancaComercialCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
+        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
+        return this;
+    }
+
     /**
      * Get atributosFundamentoLegalDuimp
      *
@@ -354,14 +354,8 @@ public class DuimpItemBalancaComercialCover {
         return this;
     }
 
-    public DuimpItemBalancaComercialCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
-        this.atributosDuimp.add(atributosDuimpItem);
-        return this;
-    }
-
     /**
      * Get tributos
-     *
      * @return tributos
      **/
     @JsonProperty("tributos")
@@ -375,6 +369,11 @@ public class DuimpItemBalancaComercialCover {
 
     public DuimpItemBalancaComercialCover tributos(TributosConsultaItemCover tributos) {
         this.tributos = tributos;
+        return this;
+    }
+
+    public DuimpItemBalancaComercialCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
+        this.atributosDuimp.add(atributosDuimpItem);
         return this;
     }
 

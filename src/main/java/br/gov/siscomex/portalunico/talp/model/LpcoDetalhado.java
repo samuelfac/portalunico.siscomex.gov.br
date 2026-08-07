@@ -162,18 +162,21 @@ public class LpcoDetalhado {
      * Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
      **/
     private String numeroConhecimento = null;
-    @XmlElement(name = "modalTransporte")
-    @ApiModelProperty(example = "MARITIMO", value = "Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
-    /**
-     * Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
-     **/
-    private ModalTransporteEnum modalTransporte = null;
+
+
     @XmlElement(name = "canal")
     @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
     /**
      * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
      **/
     private CanalEnum canal = null;
+
+    @XmlElement(name = "modalTransporte")
+    @ApiModelProperty(example = "MARITIMO", value = "Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
+    /**
+     * Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
+     **/
+    private ModalTransporteEnum modalTransporte = null;
 
     @XmlElement(name = "dataHoraEmbarque")
     @ApiModelProperty(example = "2019-09-02T10:04:38.123Z", value = "Data de hora do embarque de carga. Disponível apenas em LPCOs com LI vinculada.<br>Formato: YYYY-MM-DD'T'HH:MI:SS.SSSZ")
@@ -199,6 +202,18 @@ public class LpcoDetalhado {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    /**
+     * Data em que a versão do modelo do LPCO entrou em vigência&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
+     *
+     * @return dataInicioVigenciaModelo
+     **/
+    @JsonProperty("dataInicioVigenciaModelo")
+    @NotNull
+    public String getDataInicioVigenciaModelo() {
+        return dataInicioVigenciaModelo;
+    }
+
     @XmlElement(name = "situacaoPagamentoTaxa")
     @ApiModelProperty(value = "")
     @Valid
@@ -262,17 +277,6 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Data em que a versão do modelo do LPCO entrou em vigência&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
-     *
-     * @return dataInicioVigenciaModelo
-     **/
-    @JsonProperty("dataInicioVigenciaModelo")
-    @NotNull
-    public String getDataInicioVigenciaModelo() {
-        return dataInicioVigenciaModelo;
-    }
-
-    /**
      * Número do LPCO&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: OAANNNNNNNN&lt;br&gt;Lei de formação: O número do LPCO é composto por:&lt;br&gt;* O &#x3D; Operação (E para exportação, I para importação)&lt;br&gt;* AA &#x3D; Ano do registro do LPCO&lt;br&gt;* NNNNNNNN &#x3D; Número sequencial do LPCO no ano
      *
      * @return numero
@@ -310,6 +314,16 @@ public class LpcoDetalhado {
     public LpcoDetalhado codigoModelo(String codigoModelo) {
         this.codigoModelo = codigoModelo;
         return this;
+    }
+
+    /**
+     * Informações adicionais prestadas pelo importador/exportador
+     *
+     * @return informacaoAdicional
+     **/
+    @JsonProperty("informacaoAdicional")
+    public String getInformacaoAdicional() {
+        return informacaoAdicional;
     }
 
     public void setDataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
@@ -362,16 +376,6 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Informações adicionais prestadas pelo importador/exportador
-     *
-     * @return informacaoAdicional
-     **/
-    @JsonProperty("informacaoAdicional")
-    public String getInformacaoAdicional() {
-        return informacaoAdicional;
-    }
-
-    /**
      * Momento no qual o LPCO entrou na sua situação atual&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
      *
      * @return dataSituacaoAtual
@@ -391,6 +395,17 @@ public class LpcoDetalhado {
         return this;
     }
 
+    /**
+     * Momento no qual o LPCO foi registrado&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
+     *
+     * @return dataRegistro
+     **/
+    @JsonProperty("dataRegistro")
+    @NotNull
+    public String getDataRegistro() {
+        return dataRegistro;
+    }
+
     public void setInformacaoAdicional(String informacaoAdicional) {
         this.informacaoAdicional = informacaoAdicional;
     }
@@ -402,7 +417,6 @@ public class LpcoDetalhado {
 
     /**
      * Chave de acesso do LPCO para Acesso Público&lt;br&gt;Tamanho mínimo: 32&lt;br&gt;Tamanho máximo:32&lt;br&gt;Formato: valor hexadecimal
-     *
      * @return chaveAcesso
      **/
     @JsonProperty("chaveAcesso")
@@ -422,7 +436,6 @@ public class LpcoDetalhado {
 
     /**
      * Indica se há um pedido de prorrogação do LPCO ainda pendente
-     *
      * @return prorrogacaoPendente
      **/
     @JsonProperty("prorrogacaoPendente")
@@ -438,17 +451,6 @@ public class LpcoDetalhado {
     public LpcoDetalhado prorrogacaoPendente(Boolean prorrogacaoPendente) {
         this.prorrogacaoPendente = prorrogacaoPendente;
         return this;
-    }
-
-    /**
-     * Momento no qual o LPCO foi registrado&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
-     * @return dataRegistro
-     **/
-    @JsonProperty("dataRegistro")
-    @NotNull
-    public String getDataRegistro() {
-        return dataRegistro;
     }
 
     /**
@@ -470,15 +472,6 @@ public class LpcoDetalhado {
         return this;
     }
 
-    public void setDataRegistro(String dataRegistro) {
-        this.dataRegistro = dataRegistro;
-    }
-
-    public LpcoDetalhado dataRegistro(String dataRegistro) {
-        this.dataRegistro = dataRegistro;
-        return this;
-    }
-
     /**
      * Lista de documentos \&quot;DU-E\&quot; ou \&quot;Duimp\&quot; que estão vinculados ao LPCO.
      *
@@ -487,6 +480,15 @@ public class LpcoDetalhado {
     @JsonProperty("listaVinculos")
     public List<VinculoDocLpco> getListaVinculos() {
         return listaVinculos;
+    }
+
+    public void setDataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
+    }
+
+    public LpcoDetalhado dataRegistro(String dataRegistro) {
+        this.dataRegistro = dataRegistro;
+        return this;
     }
 
     /**
@@ -536,6 +538,16 @@ public class LpcoDetalhado {
         return this;
     }
 
+    /**
+     * Get situacaoPagamentoTaxa
+     *
+     * @return situacaoPagamentoTaxa
+     **/
+    @JsonProperty("situacaoPagamentoTaxa")
+    public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+        return situacaoPagamentoTaxa;
+    }
+
     public void setListaVinculos(List<VinculoDocLpco> listaVinculos) {
         this.listaVinculos = listaVinculos;
     }
@@ -552,7 +564,6 @@ public class LpcoDetalhado {
 
     /**
      * Saldos restantes do LPCO, caso o LPCO tenha cotas.
-     *
      * @return saldos
      **/
     @JsonProperty("saldos")
@@ -576,7 +587,6 @@ public class LpcoDetalhado {
 
     /**
      * Número do conhecimento de carga do LPCO, se houver. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Tamanho máximo: 20
-     *
      * @return numeroConhecimento
      **/
     @JsonProperty("numeroConhecimento")
@@ -616,18 +626,7 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Get situacaoPagamentoTaxa
-     *
-     * @return situacaoPagamentoTaxa
-     **/
-    @JsonProperty("situacaoPagamentoTaxa")
-    public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
-        return situacaoPagamentoTaxa;
-    }
-
-    /**
      * Data de hora do embarque de carga. Disponível apenas em LPCOs com LI vinculada.&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
      * @return dataHoraEmbarque
      **/
     @JsonProperty("dataHoraEmbarque")
@@ -683,15 +682,6 @@ public class LpcoDetalhado {
         return this;
     }
 
-    public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
-        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
-    }
-
-    public LpcoDetalhado situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
-        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -722,6 +712,15 @@ public class LpcoDetalhado {
                 "    situacaoPagamentoTaxa: " + toIndentedString(situacaoPagamentoTaxa) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    }
+
+    public LpcoDetalhado situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+        return this;
     }
 
 
@@ -795,9 +794,9 @@ public class LpcoDetalhado {
                 if (String.valueOf(b.value).equals(v)) {
                     return b;
                 }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
         }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+    }
 
         public String value() {
             return value;

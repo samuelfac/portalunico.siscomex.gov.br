@@ -86,17 +86,6 @@ public class CondicaoVendaConsultaItemCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get incoterm
      *
      * @return incoterm
@@ -108,6 +97,17 @@ public class CondicaoVendaConsultaItemCover {
 
     public void setIncoterm(IncotermCover incoterm) {
         this.incoterm = incoterm;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -148,11 +148,6 @@ public class CondicaoVendaConsultaItemCover {
         return this;
     }
 
-    public CondicaoVendaConsultaItemCover incoterm(IncotermCover incoterm) {
-        this.incoterm = incoterm;
-        return this;
-    }
-
     /**
      * Get frete
      *
@@ -184,6 +179,11 @@ public class CondicaoVendaConsultaItemCover {
 
     public void setSeguro(SeguroConsultaItemCover seguro) {
         this.seguro = seguro;
+    }
+
+    public CondicaoVendaConsultaItemCover incoterm(IncotermCover incoterm) {
+        this.incoterm = incoterm;
+        return this;
     }
 
     /**

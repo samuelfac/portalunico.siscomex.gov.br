@@ -49,17 +49,6 @@ public class DocumentoTransportePK {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get sequencia
      *
      * @return sequencia
@@ -76,6 +65,18 @@ public class DocumentoTransportePK {
     public DocumentoTransportePK sequencia(BigDecimal sequencia) {
         this.sequencia = sequencia;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

@@ -95,17 +95,6 @@ public class CargaRodoviariaDivergencia {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get momento
      *
      * @return momento
@@ -117,6 +106,17 @@ public class CargaRodoviariaDivergencia {
 
     public void setMomento(Momento momento) {
         this.momento = momento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -138,11 +138,6 @@ public class CargaRodoviariaDivergencia {
         return this;
     }
 
-    public CargaRodoviariaDivergencia momento(Momento momento) {
-        this.momento = momento;
-        return this;
-    }
-
     /**
      * Get percDivergenciaPesoBrutoKg
      *
@@ -155,6 +150,11 @@ public class CargaRodoviariaDivergencia {
 
     public void setPercDivergenciaPesoBrutoKg(BigDecimal percDivergenciaPesoBrutoKg) {
         this.percDivergenciaPesoBrutoKg = percDivergenciaPesoBrutoKg;
+    }
+
+    public CargaRodoviariaDivergencia momento(Momento momento) {
+        this.momento = momento;
+        return this;
     }
 
     /**
@@ -211,11 +211,6 @@ public class CargaRodoviariaDivergencia {
 
     public CargaRodoviariaDivergencia pesoBrutoKgDivergentes(BigDecimal pesoBrutoKgDivergentes) {
         this.pesoBrutoKgDivergentes = pesoBrutoKgDivergentes;
-        return this;
-    }
-
-    public CargaRodoviariaDivergencia percDivergenciaPesoBrutoKg(BigDecimal percDivergenciaPesoBrutoKg) {
-        this.percDivergenciaPesoBrutoKg = percDivergenciaPesoBrutoKg;
         return this;
     }
 
@@ -278,7 +273,6 @@ public class CargaRodoviariaDivergencia {
 
     /**
      * Get quantidadeVolumesViagem
-     *
      * @return quantidadeVolumesViagem
      **/
     @JsonProperty("quantidadeVolumesViagem")
@@ -288,6 +282,11 @@ public class CargaRodoviariaDivergencia {
 
     public void setQuantidadeVolumesViagem(Integer quantidadeVolumesViagem) {
         this.quantidadeVolumesViagem = quantidadeVolumesViagem;
+    }
+
+    public CargaRodoviariaDivergencia percDivergenciaPesoBrutoKg(BigDecimal percDivergenciaPesoBrutoKg) {
+        this.percDivergenciaPesoBrutoKg = percDivergenciaPesoBrutoKg;
+        return this;
     }
 
     /**

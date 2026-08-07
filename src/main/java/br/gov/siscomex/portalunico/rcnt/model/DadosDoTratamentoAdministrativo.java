@@ -38,12 +38,7 @@ public class DadosDoTratamentoAdministrativo {
      * Número de identificação do tratamento administrativo. <br/><br/>Tamanho: 100
      **/
     private String numero = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "LI", value = "Tipo de tratamento administrativo conforme tabela de domínio.<br/>Domínio:<br/>LI - Licença de Importação<br/>LPCO - Licenças, Permissões, Certificados, Outros ")
-    /**
-     * Tipo de tratamento administrativo conforme tabela de domínio.<br/>Domínio:<br/>LI - Licença de Importação<br/>LPCO - Licenças, Permissões, Certificados, Outros
-     **/
-    private TipoEnum tipo = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -55,6 +50,13 @@ public class DadosDoTratamentoAdministrativo {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "LI", value = "Tipo de tratamento administrativo conforme tabela de domínio.<br/>Domínio:<br/>LI - Licença de Importação<br/>LPCO - Licenças, Permissões, Certificados, Outros ")
+    /**
+     * Tipo de tratamento administrativo conforme tabela de domínio.<br/>Domínio:<br/>LI - Licença de Importação<br/>LPCO - Licenças, Permissões, Certificados, Outros
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
@@ -117,7 +119,6 @@ public class DadosDoTratamentoAdministrativo {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -148,15 +149,6 @@ public class DadosDoTratamentoAdministrativo {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoEnum fromValue(String v) {
             for (TipoEnum b : TipoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -164,6 +156,15 @@ public class DadosDoTratamentoAdministrativo {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

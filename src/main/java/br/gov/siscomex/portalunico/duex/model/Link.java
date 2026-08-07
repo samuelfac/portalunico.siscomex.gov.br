@@ -26,6 +26,7 @@ public class Link {
      **/
     private String href = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -159,7 +160,6 @@ public class Link {
         this.type = type;
         return this;
     }
-
 
     @Override
     public String toString() {

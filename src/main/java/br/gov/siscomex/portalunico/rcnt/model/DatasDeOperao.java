@@ -88,17 +88,6 @@ public class DatasDeOperao {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Informar data e hora do final do posicionamento da carga. Após esse momento é possível efetivar a conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraFimPosicionamento
@@ -110,6 +99,17 @@ public class DatasDeOperao {
 
     public void setDataHoraFimPosicionamento(String dataHoraFimPosicionamento) {
         this.dataHoraFimPosicionamento = dataHoraFimPosicionamento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -131,11 +131,6 @@ public class DatasDeOperao {
         return this;
     }
 
-    public DatasDeOperao dataHoraFimPosicionamento(String dataHoraFimPosicionamento) {
-        this.dataHoraFimPosicionamento = dataHoraFimPosicionamento;
-        return this;
-    }
-
     /**
      * Informar data e hora do final da conferência física. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar os atributos &#39;dataHoraInicioPosicionamento&#39;, &#39;dataHoraFimPosicionamento&#39;, &#39;dataHoraInicioConferenciaFisica&#39;, &#39;dataHoraFimConferenciaFisica&#39;, &#39;listaOperadoresPosicionamento (cpf, nome&#39;), &#39;retiradaAmostras&#39;, &#39;divergenciaQualificacao&#39;, &#39;divergenciaQuantidade&#39;, &#39;areaConferenciaFisica&#39;, quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39;.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
@@ -152,6 +147,11 @@ public class DatasDeOperao {
 
     public DatasDeOperao dataHoraFimConferenciaFisica(String dataHoraFimConferenciaFisica) {
         this.dataHoraFimConferenciaFisica = dataHoraFimConferenciaFisica;
+        return this;
+    }
+
+    public DatasDeOperao dataHoraFimPosicionamento(String dataHoraFimPosicionamento) {
+        this.dataHoraFimPosicionamento = dataHoraFimPosicionamento;
         return this;
     }
 

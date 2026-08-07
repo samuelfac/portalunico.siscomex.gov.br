@@ -131,17 +131,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
     private String versaoDIR = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
      *
      * @return novaSituacaoRemessa
@@ -174,6 +163,17 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     public void setNumeroDIR(String numeroDIR) {
         this.numeroDIR = numeroDIR;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -241,11 +241,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote numeroDIR(String numeroDIR) {
-        this.numeroDIR = numeroDIR;
-        return this;
-    }
-
     /**
      * Valor do Frete da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      *
@@ -259,6 +254,11 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     public void setValorFreteBRL(BigDecimal valorFreteBRL) {
         this.valorFreteBRL = valorFreteBRL;
+    }
+
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote numeroDIR(String numeroDIR) {
+        this.numeroDIR = numeroDIR;
+        return this;
     }
 
     /**
@@ -321,11 +321,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteBRL(BigDecimal valorFreteBRL) {
-        this.valorFreteBRL = valorFreteBRL;
-        return this;
-    }
-
     /**
      * Valor total da remessa em Reais (BRL). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
      * @return valorTotalBRL
@@ -347,7 +342,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     /**
      * Valor total da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorTotalUSD
      **/
     @JsonProperty("valorTotalUSD")
@@ -358,6 +352,11 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     public void setValorTotalUSD(BigDecimal valorTotalUSD) {
         this.valorTotalUSD = valorTotalUSD;
+    }
+
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteBRL(BigDecimal valorFreteBRL) {
+        this.valorFreteBRL = valorFreteBRL;
+        return this;
     }
 
     /**
@@ -380,14 +379,8 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalUSD(BigDecimal valorTotalUSD) {
-        this.valorTotalUSD = valorTotalUSD;
-        return this;
-    }
-
     /**
      * Valor tributável da remessa em Dólares Americanos (USD). Número fracionário, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto.
-     *
      * @return valorTributavelUSD
      **/
     @JsonProperty("valorTributavelUSD")
@@ -407,7 +400,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     /**
      * Número da versão da DIR. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     *
      * @return versaoDIR
      **/
     @JsonProperty("versaoDIR")
@@ -422,6 +414,11 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
 
     public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote versaoDIR(String versaoDIR) {
         this.versaoDIR = versaoDIR;
+        return this;
+    }
+
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalUSD(BigDecimal valorTotalUSD) {
+        this.valorTotalUSD = valorTotalUSD;
         return this;
     }
 

@@ -42,14 +42,6 @@ public class TipoDossie {
     private String nomeTipoDossie = null;
 
 
-    @XmlElement(name = "tiposDocumento")
-    @ApiModelProperty(value = "Lista de tipos de documento.")
-    @Valid
-    /**
-     * Lista de tipos de documento.
-     **/
-    private List<TipoDocumento> tiposDocumento = null;
-
     @XmlElement(name = "tipoRepresentacao")
     @ApiModelProperty(example = "IMPORTACAO", value = "IMPORTACAO, EXPORTACAO, AMBOS")
     /**
@@ -67,6 +59,14 @@ public class TipoDossie {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tiposDocumento")
+    @ApiModelProperty(value = "Lista de tipos de documento.")
+    @Valid
+    /**
+     * Lista de tipos de documento.
+     **/
+    private List<TipoDocumento> tiposDocumento = null;
 
     /**
      * Id do tipo de dossiê.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 2147483647
@@ -154,7 +154,6 @@ public class TipoDossie {
         this.tiposDocumento.add(tiposDocumentoItem);
         return this;
     }
-
 
     @Override
     public String toString() {

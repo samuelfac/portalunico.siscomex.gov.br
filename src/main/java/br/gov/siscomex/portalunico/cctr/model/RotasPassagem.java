@@ -57,6 +57,15 @@ public class RotasPassagem {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class RotasPassagem {\n" +
+                "    rotaPassagem: " + toIndentedString(rotaPassagem) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -66,14 +75,5 @@ public class RotasPassagem {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RotasPassagem {\n" +
-                "    rotaPassagem: " + toIndentedString(rotaPassagem) + "\n" +
-                "}";
-        return sb;
     }
 }

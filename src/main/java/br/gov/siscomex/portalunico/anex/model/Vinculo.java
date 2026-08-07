@@ -47,6 +47,7 @@ public class Vinculo {
      **/
     private String numeroOperacao = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -102,15 +103,6 @@ public class Vinculo {
         return this;
     }
 
-    public void setDataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
-        this.dataHoraVinculacao = dataHoraVinculacao;
-    }
-
-    public Vinculo dataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
-        this.dataHoraVinculacao = dataHoraVinculacao;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -122,6 +114,15 @@ public class Vinculo {
                 "    vinculadoPor: " + toIndentedString(vinculadoPor) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setDataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
+        this.dataHoraVinculacao = dataHoraVinculacao;
+    }
+
+    public Vinculo dataHoraVinculacao(OffsetDateTime dataHoraVinculacao) {
+        this.dataHoraVinculacao = dataHoraVinculacao;
+        return this;
     }
 
     /**

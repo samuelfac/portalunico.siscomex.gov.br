@@ -96,17 +96,6 @@ public class ProrrogacaoLpcoResponse {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Nova data solicitada para fim de vigência&lt;br&gt;Formato: yyyy-MM-dd
      *
      * @return novaDataFimVigencia
@@ -197,6 +186,17 @@ public class ProrrogacaoLpcoResponse {
 
     public void setDataUltimaAlteracao(String dataUltimaAlteracao) {
         this.dataUltimaAlteracao = dataUltimaAlteracao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

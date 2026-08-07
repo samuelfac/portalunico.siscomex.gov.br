@@ -40,17 +40,6 @@ public class CNPJ {
     private String numero = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get cnpj
      *
      * @return cnpj
@@ -62,6 +51,17 @@ public class CNPJ {
 
     public void setCnpj(Boolean cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -102,11 +102,6 @@ public class CNPJ {
         return this;
     }
 
-    public CNPJ cnpj(Boolean cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Numero&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
      *
@@ -123,6 +118,11 @@ public class CNPJ {
 
     public CNPJ numero(String numero) {
         this.numero = numero;
+        return this;
+    }
+
+    public CNPJ cnpj(Boolean cnpj) {
+        this.cnpj = cnpj;
         return this;
     }
 

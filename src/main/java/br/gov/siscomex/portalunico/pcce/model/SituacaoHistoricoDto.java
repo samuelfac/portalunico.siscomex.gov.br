@@ -45,12 +45,7 @@ public class SituacaoHistoricoDto {
      * Data da situação<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
      **/
     private String dataSituacao = null;
-    @XmlElement(name = "descricaoSituacao", required = true)
-    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
-    /**
-     * Descrição da situação da solicitação
-     **/
-    private DescricaoSituacaoEnum descricaoSituacao = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -62,6 +57,13 @@ public class SituacaoHistoricoDto {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "descricaoSituacao", required = true)
+    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
+    /**
+     * Descrição da situação da solicitação
+     **/
+    private DescricaoSituacaoEnum descricaoSituacao = null;
 
     /**
      * Justificativa do pedido ou resposta do importador/sefaz
@@ -144,7 +146,6 @@ public class SituacaoHistoricoDto {
         this.descricaoSituacao = descricaoSituacao;
         return this;
     }
-
 
     @Override
     public String toString() {
@@ -229,15 +230,6 @@ public class SituacaoHistoricoDto {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static DescricaoSituacaoEnum fromValue(String v) {
             for (DescricaoSituacaoEnum b : DescricaoSituacaoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -245,6 +237,15 @@ public class SituacaoHistoricoDto {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoSituacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

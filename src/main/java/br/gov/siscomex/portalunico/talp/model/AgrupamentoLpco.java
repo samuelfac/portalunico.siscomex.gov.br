@@ -42,17 +42,6 @@ public class AgrupamentoLpco {
     private List<ItemAgrupamentoLpco> itens = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Chave de identificação do agrupamento.&lt;br&gt;Tamanho: 32&lt;br&gt;Formato: caracteres hexadecimais
      *
      * @return chave
@@ -65,6 +54,17 @@ public class AgrupamentoLpco {
 
     public void setChave(String chave) {
         this.chave = chave;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

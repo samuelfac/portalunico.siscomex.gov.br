@@ -85,17 +85,6 @@ public class LocalMunicipio {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get coordenadas
      *
      * @return coordenadas
@@ -107,6 +96,17 @@ public class LocalMunicipio {
 
     public void setCoordenadas(Coordenadas coordenadas) {
         this.coordenadas = coordenadas;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -128,11 +128,6 @@ public class LocalMunicipio {
         return this;
     }
 
-    public LocalMunicipio coordenadas(Coordenadas coordenadas) {
-        this.coordenadas = coordenadas;
-        return this;
-    }
-
     /**
      * CPF do responsável pelo local&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
@@ -145,6 +140,11 @@ public class LocalMunicipio {
 
     public void setCpfResponsavel(String cpfResponsavel) {
         this.cpfResponsavel = cpfResponsavel;
+    }
+
+    public LocalMunicipio coordenadas(Coordenadas coordenadas) {
+        this.coordenadas = coordenadas;
+        return this;
     }
 
     /**
@@ -166,11 +166,6 @@ public class LocalMunicipio {
         return this;
     }
 
-    public LocalMunicipio cpfResponsavel(String cpfResponsavel) {
-        this.cpfResponsavel = cpfResponsavel;
-        return this;
-    }
-
     /**
      * Código do Município&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: NNNN
      *
@@ -188,6 +183,11 @@ public class LocalMunicipio {
 
     public LocalMunicipio cidade(Integer cidade) {
         this.cidade = cidade;
+        return this;
+    }
+
+    public LocalMunicipio cpfResponsavel(String cpfResponsavel) {
+        this.cpfResponsavel = cpfResponsavel;
         return this;
     }
 

@@ -114,17 +114,6 @@ public class SefazProdutoCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código NCM&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;
      *
      * @return codigoNCM
@@ -160,6 +149,18 @@ public class SefazProdutoCover {
     public SefazProdutoCover paisOrigem(PasDeOrigemDoProdutoObjetoCompostoPelosAtributosCdigoEDescrio paisOrigem) {
         this.paisOrigem = paisOrigem;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

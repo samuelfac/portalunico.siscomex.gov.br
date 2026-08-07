@@ -24,18 +24,33 @@ import java.util.List;
 public class DadosEmbarqueDesembarqueNavio {
 
 
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
+    /**
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
+     **/
+    private String dataHoraOcorrencia = null;
+
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
     /**
      * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
      **/
     private TipoOperacaoEnum tipoOperacao = null;
+
     @XmlElement(name = "idEvento", required = true)
     @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
     /**
      * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
      **/
     private String idEvento = null;
+    @XmlElement(name = "cpfOperadorRegistro")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorRegistro = null;
+
     @XmlElement(name = "dataHoraRegistro", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
@@ -43,58 +58,12 @@ public class DadosEmbarqueDesembarqueNavio {
      **/
     private String dataHoraRegistro = null;
 
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
     @XmlElement(name = "cpfOperadorOcorrencia")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
      * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorOcorrencia = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
-    /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
-     **/
-    private String protocoloEventoRetificadoOuExcluido = null;
-
-    @XmlElement(name = "cpfOperadorRegistro")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorRegistro = null;
-    @XmlElement(name = "contingencia", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean contingencia = null;
-    @XmlElement(name = "codigoRecinto", required = true)
-    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
-    /**
-     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
-     **/
-    private String codigoRecinto = null;
-    @XmlElement(name = "listaManifestos")
-    @ApiModelProperty(value = "Lista de manifestos.")
-    @Valid
-    /**
-     * Lista de manifestos.
-     **/
-    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
-    @XmlElement(name = "listaNfe")
-    @ApiModelProperty(value = "Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.")
-    @Valid
-    /**
-     * Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.
-     **/
-    private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
-
     @XmlElement(name = "listaDeclaracaoAduaneira")
     @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
     @Valid
@@ -102,53 +71,49 @@ public class DadosEmbarqueDesembarqueNavio {
      * Lista de declarações aduaneiras associadas à carga.
      **/
     private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
-    @XmlElement(name = "numeroConteiner")
-    @ApiModelProperty(value = "Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200")
-    /**
-     * Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200
-     **/
-    private String numeroConteiner = null;
-    @XmlElement(name = "tipoConteiner")
-    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.")
-    /**
-     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.
-     **/
-    private String tipoConteiner = null;
 
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     **/
+    private String protocoloEventoRetificadoOuExcluido = null;
+
+    @XmlElement(name = "contingencia", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean contingencia = null;
+
+    @XmlElement(name = "codigoRecinto", required = true)
+    @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
+    /**
+     * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
+     **/
+    private String codigoRecinto = null;
+
+    @XmlElement(name = "listaManifestos")
+    @ApiModelProperty(value = "Lista de manifestos.")
+    @Valid
+    /**
+     * Lista de manifestos.
+     **/
+    private List<DadosDoManifestoDaCargaSimplificado> listaManifestos = null;
     @XmlElement(name = "embarqueDesembarque", required = true)
     @ApiModelProperty(example = "E", required = true, value = "Tipo de evento: embarque ou desembarque. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Embarque<br/>D - Desembarque")
     /**
      * Tipo de evento: embarque ou desembarque. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Embarque<br/>D - Desembarque
      **/
     private EmbarqueDesembarqueEnum embarqueDesembarque = null;
-    @XmlElement(name = "taraConteiner")
-    @ApiModelProperty(example = "15.5", value = "Tara do contêiner (KG).<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
-    @Valid
-    /**
-     * Tara do contêiner (KG).<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
-     **/
-    private BigDecimal taraConteiner = null;
-    @XmlElement(name = "pesoBrutoManifesto")
-    @ApiModelProperty(example = "15.5", value = "Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
-    @Valid
-    /**
-     * Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.
-     **/
-    private BigDecimal pesoBrutoManifesto = null;
-    @XmlElement(name = "pesoArqueacao")
-    @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.")
-    @Valid
-    /**
-     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.
-     **/
-    private BigDecimal pesoArqueacao = null;
-    @XmlElement(name = "tipoGranel")
-    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
-    /**
-     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
-     **/
-    private TipoGranelEnum tipoGranel = null;
 
+    @XmlElement(name = "listaNfe")
+    @ApiModelProperty(value = "Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.")
+    @Valid
+    /**
+     * Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.
+     **/
+    private List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe = null;
     @XmlElement(name = "pesoBrutoBalanca")
     @ApiModelProperty(example = "15.5", value = "Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.")
     @Valid
@@ -156,52 +121,42 @@ public class DadosEmbarqueDesembarqueNavio {
      * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.
      **/
     private BigDecimal pesoBrutoBalanca = null;
-    @XmlElement(name = "volume")
-    @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.")
-    @Valid
-    /**
-     * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.
-     **/
-    private BigDecimal volume = null;
-    @XmlElement(name = "ncm")
-    @ApiModelProperty(value = "Informar a NCM apenas no caso de embarque ou desembarque de granel.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'NCM' quando o atributo  'tipoGranel' for informado.<br/>Tamanho: 8")
-    /**
-     * Informar a NCM apenas no caso de embarque ou desembarque de granel.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'NCM' quando o atributo  'tipoGranel' for informado.<br/>Tamanho: 8
-     **/
-    private String ncm = null;
-    @XmlElement(name = "numeroLote")
-    @ApiModelProperty(value = "<br/>Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/><br/>Tamanho: 100")
-    /**
-     * <br/>Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/><br/>Tamanho: 100
-     **/
-    private String numeroLote = null;
-    @XmlElement(name = "listaChassi")
-    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
-    @Valid
-    /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
-     **/
-    private List<DadosDoChassiEmbarque> listaChassi = null;
-    @XmlElement(name = "viagem", required = true)
-    @ApiModelProperty(required = true, value = "Viagem Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20")
-    /**
-     * Viagem Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20
-     **/
-    private String viagem = null;
-
     @XmlElement(name = "cargaSolta", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indicador de carga solta.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Indicador de carga solta.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean cargaSolta = null;
-    @XmlElement(name = "escala", required = true)
-    @ApiModelProperty(required = true, value = "Escala Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20")
-    /**
-     * Escala Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20
-     **/
-    private String escala = null;
 
+    @XmlElement(name = "numeroConteiner")
+    @ApiModelProperty(value = "Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200")
+    /**
+     * Identificação do número do contêiner.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.<br/>Tamanho: 200
+     **/
+    private String numeroConteiner = null;
+
+    @XmlElement(name = "tipoConteiner")
+    @ApiModelProperty(example = "12U0", value = " Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.")
+    /**
+     *  Conforme tabela de domínio Tipo de Conteiner disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a><font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'tipoConteiner' quando o atributo 'numeroConteiner' for informado.
+     **/
+    private String tipoConteiner = null;
+
+    @XmlElement(name = "taraConteiner")
+    @ApiModelProperty(example = "15.5", value = "Tara do contêiner (KG).<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.")
+    @Valid
+    /**
+     * Tara do contêiner (KG).<br/> Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.<br/><br/>taraConteiner, até 4 casas decimais.
+     **/
+    private BigDecimal taraConteiner = null;
+
+    @XmlElement(name = "pesoBrutoManifesto")
+    @ApiModelProperty(example = "15.5", value = "Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.")
+    @Valid
+    /**
+     * Peso bruto manifesto / VGM (Kg).<br/><br/>pesoBrutoManifesto, até 4 casas decimais.
+     **/
+    private BigDecimal pesoBrutoManifesto = null;
     @XmlElement(name = "listaVolumes")
     @ApiModelProperty(value = "Informar no caso de carregamento ou descarregamento de carga solta.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
     @Valid
@@ -209,55 +164,40 @@ public class DadosEmbarqueDesembarqueNavio {
      * Informar no caso de carregamento ou descarregamento de carga solta.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
      **/
     private List<DadosVolumeVerificado> listaVolumes = null;
-    @XmlElement(name = "listaPortoCarregamento")
-    @ApiModelProperty(value = "Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada. ")
+
+    @XmlElement(name = "pesoArqueacao")
+    @ApiModelProperty(example = "15.5", value = "Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.")
     @Valid
     /**
-     * Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada.
+     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>pesoArqueacao, até 4 casas decimais.
      **/
-    private List<DadosDoPorto> listaPortoCarregamento = null;
-
+    private BigDecimal pesoArqueacao = null;
     @XmlElement(name = "navio", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private DadosNavioObrigatorio navio = null;
-    @XmlElement(name = "listaPortoDescarregamento")
-    @ApiModelProperty(value = "Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.")
+
+    @XmlElement(name = "tipoGranel")
+    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
+    /**
+     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
+     **/
+    private TipoGranelEnum tipoGranel = null;
+
+    @XmlElement(name = "volume")
+    @ApiModelProperty(example = "15.5", value = "Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.")
     @Valid
     /**
-     * Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.
+     * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'pesoBrutoBalanca', 'pesoArqueacao', 'volume', quando o atributo 'tipoGranel' for informado.<br/>volume, até 4 casas decimais.
      **/
-    private List<DadosDoPorto> listaPortoDescarregamento = null;
-    @XmlElement(name = "listaPaisDestinoFinalCarga")
-    @ApiModelProperty(value = "Lista de países de destino final da carga conforme tabela de domínio.")
-    @Valid
+    private BigDecimal volume = null;
+
+    @XmlElement(name = "ncm")
+    @ApiModelProperty(value = "Informar a NCM apenas no caso de embarque ou desembarque de granel.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'NCM' quando o atributo  'tipoGranel' for informado.<br/>Tamanho: 8")
     /**
-     * Lista de países de destino final da carga conforme tabela de domínio.
+     * Informar a NCM apenas no caso de embarque ou desembarque de granel.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'NCM' quando o atributo  'tipoGranel' for informado.<br/>Tamanho: 8
      **/
-    private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
-    @XmlElement(name = "posicaoNavio")
-    @ApiModelProperty(value = "Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20")
-    /**
-     * Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20
-     **/
-    private String posicaoNavio = null;
-    @XmlElement(name = "proximoNavio")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosPrximoNavio proximoNavio = null;
-    @XmlElement(name = "portainer")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36")
-    /**
-     * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36
-     **/
-    private String portainer = null;
-    @XmlElement(name = "listaCameras")
-    @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).")
-    @Valid
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).
-     **/
-    private List<DadosDaCmera> listaCameras = null;
+    private String ncm = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -269,6 +209,101 @@ public class DadosEmbarqueDesembarqueNavio {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "numeroLote")
+    @ApiModelProperty(value = "<br/>Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/><br/>Tamanho: 100")
+    /**
+     * <br/>Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.<br/>Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). <br/><br/>Tamanho: 100
+     **/
+    private String numeroLote = null;
+
+    /**
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
+     *
+     * @return dataHoraRegistro
+     **/
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
+    }
+
+    @XmlElement(name = "listaChassi")
+    @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.")
+    @Valid
+    /**
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que pelo menos um dos seguintes atributos seja informado: 'tipoGranel', 'numeroConteiner', 'listaVolumes (quantidade/tipo)', 'listaChassi.chassi'.
+     **/
+    private List<DadosDoChassiEmbarque> listaChassi = null;
+
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    @XmlElement(name = "viagem", required = true)
+    @ApiModelProperty(required = true, value = "Viagem Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20")
+    /**
+     * Viagem Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20
+     **/
+    private String viagem = null;
+
+    @XmlElement(name = "escala", required = true)
+    @ApiModelProperty(required = true, value = "Escala Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20")
+    /**
+     * Escala Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 20
+     **/
+    private String escala = null;
+
+    @XmlElement(name = "listaPortoCarregamento")
+    @ApiModelProperty(value = "Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada. ")
+    @Valid
+    /**
+     * Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada.
+     **/
+    private List<DadosDoPorto> listaPortoCarregamento = null;
+
+    @XmlElement(name = "listaPortoDescarregamento")
+    @ApiModelProperty(value = "Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.")
+    @Valid
+    /**
+     * Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.
+     **/
+    private List<DadosDoPorto> listaPortoDescarregamento = null;
+
+    @XmlElement(name = "listaPaisDestinoFinalCarga")
+    @ApiModelProperty(value = "Lista de países de destino final da carga conforme tabela de domínio.")
+    @Valid
+    /**
+     * Lista de países de destino final da carga conforme tabela de domínio.
+     **/
+    private List<DadosDoPais> listaPaisDestinoFinalCarga = null;
+
+    @XmlElement(name = "posicaoNavio")
+    @ApiModelProperty(value = "Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20")
+    /**
+     * Posição do contêiner ou volume dentro do navio.<br/>Tamanho: 20
+     **/
+    private String posicaoNavio = null;
+
+    @XmlElement(name = "proximoNavio")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosPrximoNavio proximoNavio = null;
+
+    @XmlElement(name = "portainer")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36")
+    /**
+     * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.<br/>No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. <br/><br/>Tamanho: 36
+     **/
+    private String portainer = null;
+
+    @XmlElement(name = "listaCameras")
+    @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).")
+    @Valid
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).
+     **/
+    private List<DadosDaCmera> listaCameras = null;
 
     /**
      * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
@@ -314,21 +349,6 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
-     **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
-
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
-
-    /**
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
      * @return dataHoraOcorrencia
@@ -346,6 +366,20 @@ public class DadosEmbarqueDesembarqueNavio {
     public DadosEmbarqueDesembarqueNavio dataHoraOcorrencia(String dataHoraOcorrencia) {
         this.dataHoraOcorrencia = dataHoraOcorrencia;
         return this;
+    }
+
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     *
+     * @return protocoloEventoRetificadoOuExcluido
+     **/
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
+    }
+
+    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
     }
 
     public DadosEmbarqueDesembarqueNavio dataHoraRegistro(String dataHoraRegistro) {
@@ -373,20 +407,6 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
-     *
-     * @return protocoloEventoRetificadoOuExcluido
-     **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
-    }
-
-    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
-    }
-
-    /**
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
      * @return cpfOperadorRegistro
@@ -403,6 +423,20 @@ public class DadosEmbarqueDesembarqueNavio {
     public DadosEmbarqueDesembarqueNavio cpfOperadorRegistro(String cpfOperadorRegistro) {
         this.cpfOperadorRegistro = cpfOperadorRegistro;
         return this;
+    }
+
+    /**
+     * Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.
+     *
+     * @return listaNfe
+     **/
+    @JsonProperty("listaNfe")
+    public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
+        return listaNfe;
+    }
+
+    public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+        this.listaNfe = listaNfe;
     }
 
     public DadosEmbarqueDesembarqueNavio protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
@@ -432,7 +466,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.&lt;br/&gt;Tamanho: 15
-     *
      * @return codigoRecinto
      **/
     @JsonProperty("codigoRecinto")
@@ -475,19 +508,6 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Lista de Notas Fiscais. Informar obrigatoriamente nos casos de Despachos a Posteriori.
-     * @return listaNfe
-     **/
-    @JsonProperty("listaNfe")
-    public List<DadosDaNotaFiscalEmbarqueDesembarque> getListaNfe() {
-        return listaNfe;
-    }
-
-    public void setListaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
-        this.listaNfe = listaNfe;
-    }
-
-    /**
      * Lista de declarações aduaneiras associadas à carga.
      *
      * @return listaDeclaracaoAduaneira
@@ -511,18 +531,9 @@ public class DadosEmbarqueDesembarqueNavio {
         return this;
     }
 
-    public DadosEmbarqueDesembarqueNavio listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
-        this.listaNfe = listaNfe;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
-        this.listaNfe.add(listaNfeItem);
-        return this;
-    }
-
     /**
      * Identificação do número do contêiner.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.&lt;br/&gt;Tamanho: 200
+     *
      * @return numeroConteiner
      **/
     @JsonProperty("numeroConteiner")
@@ -532,6 +543,16 @@ public class DadosEmbarqueDesembarqueNavio {
 
     public void setNumeroConteiner(String numeroConteiner) {
         this.numeroConteiner = numeroConteiner;
+    }
+
+    public DadosEmbarqueDesembarqueNavio listaNfe(List<DadosDaNotaFiscalEmbarqueDesembarque> listaNfe) {
+        this.listaNfe = listaNfe;
+        return this;
+    }
+
+    public DadosEmbarqueDesembarqueNavio addListaNfeItem(DadosDaNotaFiscalEmbarqueDesembarque listaNfeItem) {
+        this.listaNfe.add(listaNfeItem);
+        return this;
     }
 
     /**
@@ -555,6 +576,20 @@ public class DadosEmbarqueDesembarqueNavio {
     public DadosEmbarqueDesembarqueNavio embarqueDesembarque(EmbarqueDesembarqueEnum embarqueDesembarque) {
         this.embarqueDesembarque = embarqueDesembarque;
         return this;
+    }
+
+    /**
+     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
+     *
+     * @return pesoArqueacao
+     **/
+    @JsonProperty("pesoArqueacao")
+    public BigDecimal getPesoArqueacao() {
+        return pesoArqueacao;
+    }
+
+    public void setPesoArqueacao(BigDecimal pesoArqueacao) {
+        this.pesoArqueacao = pesoArqueacao;
     }
 
     public DadosEmbarqueDesembarqueNavio numeroConteiner(String numeroConteiner) {
@@ -582,7 +617,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Tara do contêiner (KG).&lt;br/&gt; Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.&lt;br/&gt;&lt;br/&gt;taraConteiner, até 4 casas decimais.
-     *
      * @return taraConteiner
      **/
     @JsonProperty("taraConteiner")
@@ -618,20 +652,6 @@ public class DadosEmbarqueDesembarqueNavio {
     }
 
     /**
-     * Peso Arqueação (kg). Informar peso apurado em quantificação por arqueação de granéis. Observar que no caso de granel há um único evento de carregamento/descarregamento do navio.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoArqueacao, até 4 casas decimais.
-     *
-     * @return pesoArqueacao
-     **/
-    @JsonProperty("pesoArqueacao")
-    public BigDecimal getPesoArqueacao() {
-        return pesoArqueacao;
-    }
-
-    public void setPesoArqueacao(BigDecimal pesoArqueacao) {
-        this.pesoArqueacao = pesoArqueacao;
-    }
-
-    /**
      * Peso da carga na balança (kg). Informar esse atributo nos casos em que a pesagem for efetuada em equipamentos de movimentação de Contêineres (Portainer, etc) no embarque/desembarque.No caso de granel informar um único evento de carregamento/descarregamento do navio com a soma das bateladas da balança de fluxo que compõe o peso total do granel embarcado ou desembarcado.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;pesoBrutoBalanca, até 4 casas decimais.
      * @return pesoBrutoBalanca
      **/
@@ -649,6 +669,20 @@ public class DadosEmbarqueDesembarqueNavio {
         return this;
     }
 
+    /**
+     * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;&lt;br/&gt;Tamanho: 100
+     *
+     * @return numeroLote
+     **/
+    @JsonProperty("numeroLote")
+    public String getNumeroLote() {
+        return numeroLote;
+    }
+
+    public void setNumeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+    }
+
     public DadosEmbarqueDesembarqueNavio pesoArqueacao(BigDecimal pesoArqueacao) {
         this.pesoArqueacao = pesoArqueacao;
         return this;
@@ -656,7 +690,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
-     *
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")
@@ -678,7 +711,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Volume (metros cúbicos). Especificamente no caso de granel líquido ou gasoso.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;pesoBrutoBalanca&#39;, &#39;pesoArqueacao&#39;, &#39;volume&#39;, quando o atributo &#39;tipoGranel&#39; for informado.&lt;br/&gt;volume, até 4 casas decimais.
-     *
      * @return volume
      **/
     @JsonProperty("volume")
@@ -697,7 +729,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     /**
      * Informar a NCM apenas no caso de embarque ou desembarque de granel.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;NCM&#39; quando o atributo  &#39;tipoGranel&#39; for informado.&lt;br/&gt;Tamanho: 8
-     *
      * @return ncm
      **/
     @JsonProperty("ncm")
@@ -712,20 +743,6 @@ public class DadosEmbarqueDesembarqueNavio {
     public DadosEmbarqueDesembarqueNavio ncm(String ncm) {
         this.ncm = ncm;
         return this;
-    }
-
-    /**
-     * &lt;br/&gt;Número de Lote. Usar o mesmo número gerado no evento Controle de Carga Solta-Geração de Lotes.&lt;br/&gt;Esse número será informado somente nos casos de carregamento de lote de carga solta diretamente em navio, ou seja, sem unidade de carga (contêiner). &lt;br/&gt;&lt;br/&gt;Tamanho: 100
-     *
-     * @return numeroLote
-     **/
-    @JsonProperty("numeroLote")
-    public String getNumeroLote() {
-        return numeroLote;
-    }
-
-    public void setNumeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
     }
 
     /**
@@ -747,11 +764,6 @@ public class DadosEmbarqueDesembarqueNavio {
         return this;
     }
 
-    public DadosEmbarqueDesembarqueNavio numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
-
     /**
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;tipoGranel&#39;, &#39;numeroConteiner&#39;, &#39;listaVolumes (quantidade/tipo)&#39;, &#39;listaChassi.chassi&#39;.
      *
@@ -764,6 +776,11 @@ public class DadosEmbarqueDesembarqueNavio {
 
     public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
         this.listaChassi = listaChassi;
+    }
+
+    public DadosEmbarqueDesembarqueNavio numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
+        return this;
     }
 
     /**
@@ -789,16 +806,6 @@ public class DadosEmbarqueDesembarqueNavio {
         return this;
     }
 
-    public DadosEmbarqueDesembarqueNavio listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
-        this.listaChassi = listaChassi;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
-        this.listaChassi.add(listaChassiItem);
-        return this;
-    }
-
     /**
      * Viagem Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
      *
@@ -812,6 +819,16 @@ public class DadosEmbarqueDesembarqueNavio {
 
     public void setViagem(String viagem) {
         this.viagem = viagem;
+    }
+
+    public DadosEmbarqueDesembarqueNavio listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
+        this.listaChassi = listaChassi;
+        return this;
+    }
+
+    public DadosEmbarqueDesembarqueNavio addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
+        this.listaChassi.add(listaChassiItem);
+        return this;
     }
 
     /**
@@ -830,182 +847,6 @@ public class DadosEmbarqueDesembarqueNavio {
 
     public DadosEmbarqueDesembarqueNavio navio(DadosNavioObrigatorio navio) {
         this.navio = navio;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio viagem(String viagem) {
-        this.viagem = viagem;
-        return this;
-    }
-
-    /**
-     * Escala Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
-     *
-     * @return escala
-     **/
-    @JsonProperty("escala")
-    @NotNull
-    public String getEscala() {
-        return escala;
-    }
-
-    public void setEscala(String escala) {
-        this.escala = escala;
-    }
-
-    public DadosEmbarqueDesembarqueNavio escala(String escala) {
-        this.escala = escala;
-        return this;
-    }
-
-    /**
-     * Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada.
-     *
-     * @return listaPortoCarregamento
-     **/
-    @JsonProperty("listaPortoCarregamento")
-    public List<DadosDoPorto> getListaPortoCarregamento() {
-        return listaPortoCarregamento;
-    }
-
-    public void setListaPortoCarregamento(List<DadosDoPorto> listaPortoCarregamento) {
-        this.listaPortoCarregamento = listaPortoCarregamento;
-    }
-
-    public DadosEmbarqueDesembarqueNavio listaPortoCarregamento(List<DadosDoPorto> listaPortoCarregamento) {
-        this.listaPortoCarregamento = listaPortoCarregamento;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio addListaPortoCarregamentoItem(DadosDoPorto listaPortoCarregamentoItem) {
-        this.listaPortoCarregamento.add(listaPortoCarregamentoItem);
-        return this;
-    }
-
-    /**
-     * Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.
-     *
-     * @return listaPortoDescarregamento
-     **/
-    @JsonProperty("listaPortoDescarregamento")
-    public List<DadosDoPorto> getListaPortoDescarregamento() {
-        return listaPortoDescarregamento;
-    }
-
-    public void setListaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
-        this.listaPortoDescarregamento = listaPortoDescarregamento;
-    }
-
-    public DadosEmbarqueDesembarqueNavio listaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
-        this.listaPortoDescarregamento = listaPortoDescarregamento;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
-        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
-        return this;
-    }
-
-    /**
-     * Lista de países de destino final da carga conforme tabela de domínio.
-     *
-     * @return listaPaisDestinoFinalCarga
-     **/
-    @JsonProperty("listaPaisDestinoFinalCarga")
-    public List<DadosDoPais> getListaPaisDestinoFinalCarga() {
-        return listaPaisDestinoFinalCarga;
-    }
-
-    public void setListaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
-        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
-    }
-
-    public DadosEmbarqueDesembarqueNavio listaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
-        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
-        this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
-        return this;
-    }
-
-    /**
-     * Posição do contêiner ou volume dentro do navio.&lt;br/&gt;Tamanho: 20
-     *
-     * @return posicaoNavio
-     **/
-    @JsonProperty("posicaoNavio")
-    public String getPosicaoNavio() {
-        return posicaoNavio;
-    }
-
-    public void setPosicaoNavio(String posicaoNavio) {
-        this.posicaoNavio = posicaoNavio;
-    }
-
-    public DadosEmbarqueDesembarqueNavio posicaoNavio(String posicaoNavio) {
-        this.posicaoNavio = posicaoNavio;
-        return this;
-    }
-
-    /**
-     * Get proximoNavio
-     *
-     * @return proximoNavio
-     **/
-    @JsonProperty("proximoNavio")
-    public DadosPrximoNavio getProximoNavio() {
-        return proximoNavio;
-    }
-
-    public void setProximoNavio(DadosPrximoNavio proximoNavio) {
-        this.proximoNavio = proximoNavio;
-    }
-
-    public DadosEmbarqueDesembarqueNavio proximoNavio(DadosPrximoNavio proximoNavio) {
-        this.proximoNavio = proximoNavio;
-        return this;
-    }
-
-    /**
-     * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.&lt;br/&gt;No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. &lt;br/&gt;&lt;br/&gt;Tamanho: 36
-     * @return portainer
-     **/
-    @JsonProperty("portainer")
-    public String getPortainer() {
-        return portainer;
-    }
-
-    public void setPortainer(String portainer) {
-        this.portainer = portainer;
-    }
-
-    public DadosEmbarqueDesembarqueNavio portainer(String portainer) {
-        this.portainer = portainer;
-        return this;
-    }
-
-    /**
-     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).
-     * @return listaCameras
-     **/
-    @JsonProperty("listaCameras")
-    public List<DadosDaCmera> getListaCameras() {
-        return listaCameras;
-    }
-
-    public void setListaCameras(List<DadosDaCmera> listaCameras) {
-        this.listaCameras = listaCameras;
-    }
-
-    public DadosEmbarqueDesembarqueNavio listaCameras(List<DadosDaCmera> listaCameras) {
-        this.listaCameras = listaCameras;
-        return this;
-    }
-
-    public DadosEmbarqueDesembarqueNavio addListaCamerasItem(DadosDaCmera listaCamerasItem) {
-        this.listaCameras.add(listaCamerasItem);
         return this;
     }
 
@@ -1093,6 +934,176 @@ public class DadosEmbarqueDesembarqueNavio {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public DadosEmbarqueDesembarqueNavio viagem(String viagem) {
+        this.viagem = viagem;
+        return this;
+    }
+
+    /**
+     * Escala Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 20
+     * @return escala
+     **/
+    @JsonProperty("escala")
+    @NotNull
+    public String getEscala() {
+        return escala;
+    }
+
+    public void setEscala(String escala) {
+        this.escala = escala;
+    }
+
+    public DadosEmbarqueDesembarqueNavio escala(String escala) {
+        this.escala = escala;
+        return this;
+    }
+
+    /**
+     * Lista de portos de carregamento conforme tabela de domínio. No caso de desembarque da carga, indicar o porto em que a carga foi carregada.
+     * @return listaPortoCarregamento
+     **/
+    @JsonProperty("listaPortoCarregamento")
+    public List<DadosDoPorto> getListaPortoCarregamento() {
+        return listaPortoCarregamento;
+    }
+
+    public void setListaPortoCarregamento(List<DadosDoPorto> listaPortoCarregamento) {
+        this.listaPortoCarregamento = listaPortoCarregamento;
+    }
+
+    public DadosEmbarqueDesembarqueNavio listaPortoCarregamento(List<DadosDoPorto> listaPortoCarregamento) {
+        this.listaPortoCarregamento = listaPortoCarregamento;
+        return this;
+    }
+
+    public DadosEmbarqueDesembarqueNavio addListaPortoCarregamentoItem(DadosDoPorto listaPortoCarregamentoItem) {
+        this.listaPortoCarregamento.add(listaPortoCarregamentoItem);
+        return this;
+    }
+
+    /**
+     * Lista de portos de descarregamento conforme tabela de domínio. No caso de embarque, indicar o porto previsto para descarregamento.
+     * @return listaPortoDescarregamento
+     **/
+    @JsonProperty("listaPortoDescarregamento")
+    public List<DadosDoPorto> getListaPortoDescarregamento() {
+        return listaPortoDescarregamento;
+    }
+
+    public void setListaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
+        this.listaPortoDescarregamento = listaPortoDescarregamento;
+    }
+
+    public DadosEmbarqueDesembarqueNavio listaPortoDescarregamento(List<DadosDoPorto> listaPortoDescarregamento) {
+        this.listaPortoDescarregamento = listaPortoDescarregamento;
+        return this;
+    }
+
+    public DadosEmbarqueDesembarqueNavio addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
+        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
+        return this;
+    }
+
+    /**
+     * Lista de países de destino final da carga conforme tabela de domínio.
+     * @return listaPaisDestinoFinalCarga
+     **/
+    @JsonProperty("listaPaisDestinoFinalCarga")
+    public List<DadosDoPais> getListaPaisDestinoFinalCarga() {
+        return listaPaisDestinoFinalCarga;
+    }
+
+    public void setListaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
+    }
+
+    public DadosEmbarqueDesembarqueNavio listaPaisDestinoFinalCarga(List<DadosDoPais> listaPaisDestinoFinalCarga) {
+        this.listaPaisDestinoFinalCarga = listaPaisDestinoFinalCarga;
+        return this;
+    }
+
+    public DadosEmbarqueDesembarqueNavio addListaPaisDestinoFinalCargaItem(DadosDoPais listaPaisDestinoFinalCargaItem) {
+        this.listaPaisDestinoFinalCarga.add(listaPaisDestinoFinalCargaItem);
+        return this;
+    }
+
+    /**
+     * Posição do contêiner ou volume dentro do navio.&lt;br/&gt;Tamanho: 20
+     * @return posicaoNavio
+     **/
+    @JsonProperty("posicaoNavio")
+    public String getPosicaoNavio() {
+        return posicaoNavio;
+    }
+
+    public void setPosicaoNavio(String posicaoNavio) {
+        this.posicaoNavio = posicaoNavio;
+    }
+
+    public DadosEmbarqueDesembarqueNavio posicaoNavio(String posicaoNavio) {
+        this.posicaoNavio = posicaoNavio;
+        return this;
+    }
+
+    /**
+     * Get proximoNavio
+     * @return proximoNavio
+     **/
+    @JsonProperty("proximoNavio")
+    public DadosPrximoNavio getProximoNavio() {
+        return proximoNavio;
+    }
+
+    public void setProximoNavio(DadosPrximoNavio proximoNavio) {
+        this.proximoNavio = proximoNavio;
+    }
+
+    public DadosEmbarqueDesembarqueNavio proximoNavio(DadosPrximoNavio proximoNavio) {
+        this.proximoNavio = proximoNavio;
+        return this;
+    }
+
+    /**
+     * Identificação do portainer ou outro equipamento do recinto utilizado no embarque ou desembarque.&lt;br/&gt;No caso de uso de equipamento do navio ou elemento móvel, não informar. Usar o protocolo do evento de georreferenciamento. &lt;br/&gt;&lt;br/&gt;Tamanho: 36
+     * @return portainer
+     **/
+    @JsonProperty("portainer")
+    public String getPortainer() {
+        return portainer;
+    }
+
+    public void setPortainer(String portainer) {
+        this.portainer = portainer;
+    }
+
+    public DadosEmbarqueDesembarqueNavio portainer(String portainer) {
+        this.portainer = portainer;
+        return this;
+    }
+
+    /**
+     * Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem a área onde ocorreu a operação da embarcação (cais).
+     * @return listaCameras
+     **/
+    @JsonProperty("listaCameras")
+    public List<DadosDaCmera> getListaCameras() {
+        return listaCameras;
+    }
+
+    public void setListaCameras(List<DadosDaCmera> listaCameras) {
+        this.listaCameras = listaCameras;
+    }
+
+    public DadosEmbarqueDesembarqueNavio listaCameras(List<DadosDaCmera> listaCameras) {
+        this.listaCameras = listaCameras;
+        return this;
+    }
+
+    public DadosEmbarqueDesembarqueNavio addListaCamerasItem(DadosDaCmera listaCamerasItem) {
+        this.listaCameras.add(listaCamerasItem);
+        return this;
     }
 
 

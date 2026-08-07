@@ -53,17 +53,6 @@ public class IdentificacaoAdicionalIntegracaoDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da agência emissora da identificação. Os valores admitidos estão listados no campo \&quot;Code\&quot;, na página a seguir: https://service.unece.org/trade/untdid/d20b/tred/tred3055.htm&lt;br&gt;Tamanho: 3
      *
      * @return codigo
@@ -81,6 +70,18 @@ public class IdentificacaoAdicionalIntegracaoDTO {
     public IdentificacaoAdicionalIntegracaoDTO codigo(String codigo) {
         this.codigo = codigo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

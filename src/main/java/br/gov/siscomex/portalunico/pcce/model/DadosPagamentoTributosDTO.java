@@ -45,6 +45,8 @@ public class DadosPagamentoTributosDTO {
      * Número da operação que deu origem à guia <br>Tamanho mínimo: 1<br>Tamanho máximo: 20
      **/
     private String nrOperacaoOrigem = null;
+
+
     @XmlElement(name = "tpOperacaoOrigem", required = true)
     @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à guia")
     /**
@@ -71,6 +73,17 @@ public class DadosPagamentoTributosDTO {
     }
 
     /**
+     * Número da operação que deu origem à guia &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
+     *
+     * @return nrOperacaoOrigem
+     **/
+    @JsonProperty("nrOperacaoOrigem")
+    @NotNull
+    public String getNrOperacaoOrigem() {
+        return nrOperacaoOrigem;
+    }
+
+    /**
      * Data de pagamento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
      *
      * @return dtPagamento
@@ -88,17 +101,6 @@ public class DadosPagamentoTributosDTO {
     public DadosPagamentoTributosDTO dtPagamento(String dtPagamento) {
         this.dtPagamento = dtPagamento;
         return this;
-    }
-
-    /**
-     * Número da operação que deu origem à guia &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 20
-     *
-     * @return nrOperacaoOrigem
-     **/
-    @JsonProperty("nrOperacaoOrigem")
-    @NotNull
-    public String getNrOperacaoOrigem() {
-        return nrOperacaoOrigem;
     }
 
     /**
@@ -120,15 +122,6 @@ public class DadosPagamentoTributosDTO {
         return this;
     }
 
-    public void setNrOperacaoOrigem(String nrOperacaoOrigem) {
-        this.nrOperacaoOrigem = nrOperacaoOrigem;
-    }
-
-    public DadosPagamentoTributosDTO nrOperacaoOrigem(String nrOperacaoOrigem) {
-        this.nrOperacaoOrigem = nrOperacaoOrigem;
-        return this;
-    }
-
     /**
      * Tipo da operação que deu origem à guia
      *
@@ -141,6 +134,15 @@ public class DadosPagamentoTributosDTO {
             return null;
         }
         return tpOperacaoOrigem.value();
+    }
+
+    public void setNrOperacaoOrigem(String nrOperacaoOrigem) {
+        this.nrOperacaoOrigem = nrOperacaoOrigem;
+    }
+
+    public DadosPagamentoTributosDTO nrOperacaoOrigem(String nrOperacaoOrigem) {
+        this.nrOperacaoOrigem = nrOperacaoOrigem;
+        return this;
     }
 
     /**
@@ -166,15 +168,6 @@ public class DadosPagamentoTributosDTO {
         return this;
     }
 
-    public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
-        this.tpOperacaoOrigem = tpOperacaoOrigem;
-    }
-
-    public DadosPagamentoTributosDTO tpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
-        this.tpOperacaoOrigem = tpOperacaoOrigem;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -186,6 +179,15 @@ public class DadosPagamentoTributosDTO {
                 "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
+        this.tpOperacaoOrigem = tpOperacaoOrigem;
+    }
+
+    public DadosPagamentoTributosDTO tpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
+        this.tpOperacaoOrigem = tpOperacaoOrigem;
+        return this;
     }
 
 

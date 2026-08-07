@@ -49,9 +49,7 @@ public class ExceptionCover {
     @ApiModelProperty(value = "")
     @Valid
     private List<IExceptionCover> detail = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -63,6 +61,10 @@ public class ExceptionCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "severity")
+    @ApiModelProperty(value = "")
+    private SeverityEnum severity = null;
 
     @XmlElement(name = "info")
     @ApiModelProperty(value = "")
@@ -246,7 +248,6 @@ public class ExceptionCover {
         this.info = info;
         return this;
     }
-
 
     @Override
     public String toString() {

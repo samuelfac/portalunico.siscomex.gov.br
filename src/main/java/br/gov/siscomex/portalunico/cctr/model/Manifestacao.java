@@ -128,17 +128,6 @@ public class Manifestacao {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Tipo do DAT&lt;br&gt;Tamanho: 1&lt;br&gt;Formato: N&lt;br&gt;Domínio: 1 &#x3D; Completo, 2 &#x3D; Simplificado
      *
      * @return tipoDAT
@@ -193,6 +182,17 @@ public class Manifestacao {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * CPF do Transportador&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
      * @return cpfTransportador
@@ -231,11 +231,6 @@ public class Manifestacao {
         return this;
     }
 
-    public Manifestacao cnpjTransportador(String cnpjTransportador) {
-        this.cnpjTransportador = cnpjTransportador;
-        return this;
-    }
-
     /**
      * Informação referente a documentos de carga
      *
@@ -252,6 +247,11 @@ public class Manifestacao {
 
     public Manifestacao documentosCarga(List<Documento> documentosCarga) {
         this.documentosCarga = documentosCarga;
+        return this;
+    }
+
+    public Manifestacao cnpjTransportador(String cnpjTransportador) {
+        this.cnpjTransportador = cnpjTransportador;
         return this;
     }
 
@@ -279,11 +279,6 @@ public class Manifestacao {
         return this;
     }
 
-    public Manifestacao addDocumentosCargaItem(Documento documentosCargaItem) {
-        this.documentosCarga.add(documentosCargaItem);
-        return this;
-    }
-
     /**
      * Peso das cargas(sem o veículo)&lt;br&gt;Tamanho: 12.3&lt;br&gt;Formato: NNNNNNNNNNNN.NNN
      *
@@ -306,7 +301,6 @@ public class Manifestacao {
 
     /**
      * Observações&lt;br&gt;Tamanho: 250
-     *
      * @return observacoes
      **/
     @JsonProperty("observacoes")
@@ -344,7 +338,6 @@ public class Manifestacao {
 
     /**
      * Get veiculoRodoviario
-     *
      * @return veiculoRodoviario
      **/
     @JsonProperty("veiculoRodoviario")
@@ -358,6 +351,11 @@ public class Manifestacao {
 
     public Manifestacao veiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
         this.veiculoRodoviario = veiculoRodoviario;
+        return this;
+    }
+
+    public Manifestacao addDocumentosCargaItem(Documento documentosCargaItem) {
+        this.documentosCarga.add(documentosCargaItem);
         return this;
     }
 

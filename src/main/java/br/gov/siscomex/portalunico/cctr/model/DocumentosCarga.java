@@ -34,17 +34,6 @@ public class DocumentosCarga {
     private List<DocumentoCarga> documentos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get nivel
      *
      * @return nivel
@@ -56,6 +45,17 @@ public class DocumentosCarga {
 
     public void setNivel(String nivel) {
         this.nivel = nivel;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

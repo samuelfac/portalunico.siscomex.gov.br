@@ -95,17 +95,6 @@ public class QuadroCalculoDto {
     private BigDecimal valorSuspenso = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data do registro&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataDoRegistro
@@ -139,6 +128,17 @@ public class QuadroCalculoDto {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get tipo
      *
      * @return tipo
@@ -154,11 +154,6 @@ public class QuadroCalculoDto {
 
     public QuadroCalculoDto tipo(TipoTributoDto tipo) {
         this.tipo = tipo;
-        return this;
-    }
-
-    public QuadroCalculoDto memoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
-        this.memoriaDeCalculo = memoriaDeCalculo;
         return this;
     }
 
@@ -231,6 +226,11 @@ public class QuadroCalculoDto {
 
     public void setValorAReduzir(BigDecimal valorAReduzir) {
         this.valorAReduzir = valorAReduzir;
+    }
+
+    public QuadroCalculoDto memoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
+        this.memoriaDeCalculo = memoriaDeCalculo;
+        return this;
     }
 
     /**

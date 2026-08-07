@@ -43,16 +43,19 @@ public class SefazItemCover {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private SefazProdutoCover dadosProduto = null;
+
+
+    @XmlElement(name = "dadosOperadorFabricante")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazOperadorFabricanteCover dadosOperadorFabricante = null;
+
     @XmlElement(name = "relacaoExportadorFabricante")
     @ApiModelProperty(example = "1", value = "Relação exportador x fabricante.<br>Dominio:<br>0 - Exportador é diferente do fabricante,<br>1 - exportador é fabricante")
     /**
      * Relação exportador x fabricante.<br>Dominio:<br>0 - Exportador é diferente do fabricante,<br>1 - exportador é fabricante
      **/
     private RelacaoExportadorFabricanteEnum relacaoExportadorFabricante = null;
-    @XmlElement(name = "dadosOperadorFabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazOperadorFabricanteCover dadosOperadorFabricante = null;
     @XmlElement(name = "informacoesComplementares")
     @ApiModelProperty(value = "")
     @Valid
@@ -110,10 +113,6 @@ public class SefazItemCover {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private SefazItemTributoCover itemTributo = null;
-    @XmlElement(name = "informacoesAdicionais", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private SefazItemInfoAdicinaisCover informacoesAdicionais = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -124,6 +123,20 @@ public class SefazItemCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+    @XmlElement(name = "informacoesAdicionais", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private SefazItemInfoAdicinaisCover informacoesAdicionais = null;
+
+    /**
+     * Get dadosOperadorFabricante
+     *
+     * @return dadosOperadorFabricante
+     **/
+    @JsonProperty("dadosOperadorFabricante")
+    public SefazOperadorFabricanteCover getDadosOperadorFabricante() {
+        return dadosOperadorFabricante;
     }
 
     /**
@@ -208,16 +221,6 @@ public class SefazItemCover {
     }
 
     /**
-     * Get dadosOperadorFabricante
-     *
-     * @return dadosOperadorFabricante
-     **/
-    @JsonProperty("dadosOperadorFabricante")
-    public SefazOperadorFabricanteCover getDadosOperadorFabricante() {
-        return dadosOperadorFabricante;
-    }
-
-    /**
      * Vinculação comprador x vendedor.&lt;br&gt;Dominio:&lt;br&gt;1 - Não há vinculação, &lt;br&gt;2 - Vinculação sem influência no preço,&lt;br&gt; 3 - Vinculação com influência no preço
      *
      * @return vinculacaoCompradorVendedor
@@ -258,6 +261,17 @@ public class SefazItemCover {
         return this;
     }
 
+    /**
+     * Get dadosCambiais
+     *
+     * @return dadosCambiais
+     **/
+    @JsonProperty("dadosCambiais")
+    @NotNull
+    public SefazDadosCambiaisCover getDadosCambiais() {
+        return dadosCambiais;
+    }
+
     public void setDadosOperadorFabricante(SefazOperadorFabricanteCover dadosOperadorFabricante) {
         this.dadosOperadorFabricante = dadosOperadorFabricante;
     }
@@ -284,17 +298,6 @@ public class SefazItemCover {
     public SefazItemCover informacoesComplementares(SefazInformacaoComplementarCover informacoesComplementares) {
         this.informacoesComplementares = informacoesComplementares;
         return this;
-    }
-
-    /**
-     * Get dadosCambiais
-     *
-     * @return dadosCambiais
-     **/
-    @JsonProperty("dadosCambiais")
-    @NotNull
-    public SefazDadosCambiaisCover getDadosCambiais() {
-        return dadosCambiais;
     }
 
     /**
@@ -364,15 +367,6 @@ public class SefazItemCover {
         return this;
     }
 
-    public void setDadosCambiais(SefazDadosCambiaisCover dadosCambiais) {
-        this.dadosCambiais = dadosCambiais;
-    }
-
-    public SefazItemCover dadosCambiais(SefazDadosCambiaisCover dadosCambiais) {
-        this.dadosCambiais = dadosCambiais;
-        return this;
-    }
-
     /**
      * Lista de LPCOs do item
      *
@@ -381,6 +375,15 @@ public class SefazItemCover {
     @JsonProperty("lpcos")
     public List<SefazItemLpcoCover> getLpcos() {
         return lpcos;
+    }
+
+    public void setDadosCambiais(SefazDadosCambiaisCover dadosCambiais) {
+        this.dadosCambiais = dadosCambiais;
+    }
+
+    public SefazItemCover dadosCambiais(SefazDadosCambiaisCover dadosCambiais) {
+        this.dadosCambiais = dadosCambiais;
+        return this;
     }
 
     /**
@@ -402,6 +405,30 @@ public class SefazItemCover {
         return this;
     }
 
+    @Override
+    public String toString() {
+
+        String sb = "class SefazItemCover {\n" +
+                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
+                "    caracterizacaoImportacao: " + toIndentedString(caracterizacaoImportacao) + "\n" +
+                "    dadosProduto: " + toIndentedString(dadosProduto) + "\n" +
+                "    relacaoExportadorFabricante: " + toIndentedString(relacaoExportadorFabricante) + "\n" +
+                "    vinculacaoCompradorVendedor: " + toIndentedString(vinculacaoCompradorVendedor) + "\n" +
+                "    dadosOperadorExportador: " + toIndentedString(dadosOperadorExportador) + "\n" +
+                "    dadosOperadorFabricante: " + toIndentedString(dadosOperadorFabricante) + "\n" +
+                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
+                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
+                "    declaracoesVinculadas: " + toIndentedString(declaracoesVinculadas) + "\n" +
+                "    condicaoVendaMercadoria: " + toIndentedString(condicaoVendaMercadoria) + "\n" +
+                "    dadosCambiais: " + toIndentedString(dadosCambiais) + "\n" +
+                "    itemTributo: " + toIndentedString(itemTributo) + "\n" +
+                "    lpcos: " + toIndentedString(lpcos) + "\n" +
+                "    dadosInsumoDrawbackIsencao: " + toIndentedString(dadosInsumoDrawbackIsencao) + "\n" +
+                "    informacoesAdicionais: " + toIndentedString(informacoesAdicionais) + "\n" +
+                "}";
+        return sb;
+    }
+
     public void setLpcos(List<SefazItemLpcoCover> lpcos) {
         this.lpcos = lpcos;
     }
@@ -418,7 +445,6 @@ public class SefazItemCover {
 
     /**
      * Get dadosInsumoDrawbackIsencao
-     *
      * @return dadosInsumoDrawbackIsencao
      **/
     @JsonProperty("dadosInsumoDrawbackIsencao")
@@ -452,30 +478,6 @@ public class SefazItemCover {
     public SefazItemCover informacoesAdicionais(SefazItemInfoAdicinaisCover informacoesAdicionais) {
         this.informacoesAdicionais = informacoesAdicionais;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazItemCover {\n" +
-                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "    caracterizacaoImportacao: " + toIndentedString(caracterizacaoImportacao) + "\n" +
-                "    dadosProduto: " + toIndentedString(dadosProduto) + "\n" +
-                "    relacaoExportadorFabricante: " + toIndentedString(relacaoExportadorFabricante) + "\n" +
-                "    vinculacaoCompradorVendedor: " + toIndentedString(vinculacaoCompradorVendedor) + "\n" +
-                "    dadosOperadorExportador: " + toIndentedString(dadosOperadorExportador) + "\n" +
-                "    dadosOperadorFabricante: " + toIndentedString(dadosOperadorFabricante) + "\n" +
-                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
-                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
-                "    declaracoesVinculadas: " + toIndentedString(declaracoesVinculadas) + "\n" +
-                "    condicaoVendaMercadoria: " + toIndentedString(condicaoVendaMercadoria) + "\n" +
-                "    dadosCambiais: " + toIndentedString(dadosCambiais) + "\n" +
-                "    itemTributo: " + toIndentedString(itemTributo) + "\n" +
-                "    lpcos: " + toIndentedString(lpcos) + "\n" +
-                "    dadosInsumoDrawbackIsencao: " + toIndentedString(dadosInsumoDrawbackIsencao) + "\n" +
-                "    informacoesAdicionais: " + toIndentedString(informacoesAdicionais) + "\n" +
-                "}";
-        return sb;
     }
 
 

@@ -92,17 +92,6 @@ public class Enquadramento {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 50
      *
      * @return descricao
@@ -114,6 +103,17 @@ public class Enquadramento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -135,11 +135,6 @@ public class Enquadramento {
         return this;
     }
 
-    public Enquadramento descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Código&lt;br /&gt;Formato: Inteiro, com 1 digito
      *
@@ -156,6 +151,11 @@ public class Enquadramento {
 
     public Enquadramento tipo(Integer tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public Enquadramento descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 

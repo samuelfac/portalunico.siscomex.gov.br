@@ -85,17 +85,6 @@ public class RegistroERetificaoDeLoteDIR {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Contém o identificador do lote.  Máximo de 255 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
      * @return identificadorLote
@@ -108,6 +97,17 @@ public class RegistroERetificaoDeLoteDIR {
 
     public void setIdentificadorLote(String identificadorLote) {
         this.identificadorLote = identificadorLote;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -154,11 +154,6 @@ public class RegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    public RegistroERetificaoDeLoteDIR identificadorLote(String identificadorLote) {
-        this.identificadorLote = identificadorLote;
-        return this;
-    }
-
     /**
      * Número do lote composto por 16 caracteres alfanuméricos. Este campo é criado pelo sistema quando é feito o registro do lote de declaração.&lt;br/&gt;Caso o documento enviado seja uma retificação, este campo deve ser enviado com valor nulo.
      *
@@ -194,6 +189,11 @@ public class RegistroERetificaoDeLoteDIR {
 
     public RegistroERetificaoDeLoteDIR sequenciaLote(String sequenciaLote) {
         this.sequenciaLote = sequenciaLote;
+        return this;
+    }
+
+    public RegistroERetificaoDeLoteDIR identificadorLote(String identificadorLote) {
+        this.identificadorLote = identificadorLote;
         return this;
     }
 

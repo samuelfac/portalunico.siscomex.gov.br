@@ -38,17 +38,6 @@ public class MensagemServico {
     private String mensagem = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get idOperacao
      *
      * @return idOperacao
@@ -79,6 +68,17 @@ public class MensagemServico {
 
     public void setMsgxsd(String msgxsd) {
         this.msgxsd = msgxsd;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

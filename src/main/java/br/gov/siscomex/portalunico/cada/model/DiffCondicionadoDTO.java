@@ -50,17 +50,6 @@ public class DiffCondicionadoDTO {
     private DiffValorDTO condicao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get atributo
      *
      * @return atributo
@@ -73,6 +62,17 @@ public class DiffCondicionadoDTO {
 
     public void setAtributo(DiffArquivoDiarioAtributoDTO atributo) {
         this.atributo = atributo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -113,11 +113,6 @@ public class DiffCondicionadoDTO {
         return this;
     }
 
-    public DiffCondicionadoDTO atributo(DiffArquivoDiarioAtributoDTO atributo) {
-        this.atributo = atributo;
-        return this;
-    }
-
     /**
      * Get dataInicioVigencia
      *
@@ -130,6 +125,11 @@ public class DiffCondicionadoDTO {
 
     public void setDataInicioVigencia(DiffValorDTO dataInicioVigencia) {
         this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public DiffCondicionadoDTO atributo(DiffArquivoDiarioAtributoDTO atributo) {
+        this.atributo = atributo;
+        return this;
     }
 
     /**
@@ -151,11 +151,6 @@ public class DiffCondicionadoDTO {
         return this;
     }
 
-    public DiffCondicionadoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
     /**
      * Get condicao
      *
@@ -172,6 +167,11 @@ public class DiffCondicionadoDTO {
 
     public DiffCondicionadoDTO condicao(DiffValorDTO condicao) {
         this.condicao = condicao;
+        return this;
+    }
+
+    public DiffCondicionadoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
         return this;
     }
 

@@ -77,6 +77,16 @@ public class RetornoDownloadDocumento {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class RetornoDownloadDocumento {\n" +
+                "    arquivoZipBase64: " + toIndentedString(arquivoZipBase64) + "\n" +
+                "    documento: " + toIndentedString(documento) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -86,15 +96,5 @@ public class RetornoDownloadDocumento {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoDownloadDocumento {\n" +
-                "    arquivoZipBase64: " + toIndentedString(arquivoZipBase64) + "\n" +
-                "    documento: " + toIndentedString(documento) + "\n" +
-                "}";
-        return sb;
     }
 }

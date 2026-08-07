@@ -57,10 +57,6 @@ public class CargaCover {
      * Código do motivo da situação especial de despacho no sistema.<br>Tamanho: 5<br>Formato: 'NNNNN'<br>Origem: Sistema de Tabelas Aduaneiras - https://api-docs.portalunico.siscomex.gov.br/
      **/
     private String motivoSituacaoEspecial = null;
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FreteCover frete = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -72,6 +68,11 @@ public class CargaCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FreteCover frete = null;
 
     @XmlElement(name = "paisProcedencia")
     @ApiModelProperty(value = "")
@@ -214,7 +215,6 @@ public class CargaCover {
         this.paisProcedencia = paisProcedencia;
         return this;
     }
-
 
     @Override
     public String toString() {

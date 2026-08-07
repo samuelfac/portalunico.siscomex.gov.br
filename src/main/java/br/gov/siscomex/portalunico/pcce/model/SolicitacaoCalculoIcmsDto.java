@@ -80,12 +80,7 @@ public class SolicitacaoCalculoIcmsDto {
     @ApiModelProperty(value = "")
     @Valid
     private OpcaoIcmsConsultaDto opcaoIcms = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
-    /**
-     * Tipo de solicitação
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
+
 
     @XmlElement(name = "tipoDeclaracao", required = true)
     @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
@@ -93,6 +88,18 @@ public class SolicitacaoCalculoIcmsDto {
      * Tipo da declaração no Comércio Exterior
      **/
     private TipoDeclaracaoEnum tipoDeclaracao = null;
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
+    /**
+     * Tipo de solicitação
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+    @XmlElement(name = "tipoTratamento", required = true)
+    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de solicitação")
+    /**
+     * Tipo de solicitação
+     **/
+    private TipoTratamentoEnum tipoTratamento = null;
     @XmlElement(name = "ufAdquirente")
     @ApiModelProperty(example = "SC", value = "UF favorecida")
     /**
@@ -111,13 +118,6 @@ public class SolicitacaoCalculoIcmsDto {
      * UF importador
      **/
     private UfImportadorEnum ufImportador = null;
-
-    @XmlElement(name = "tipoTratamento", required = true)
-    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de solicitação")
-    /**
-     * Tipo de solicitação
-     **/
-    private TipoTratamentoEnum tipoTratamento = null;
     @XmlElement(name = "valorAfrmm", required = true)
     @ApiModelProperty(example = "103.2", required = true, value = "Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -541,15 +541,6 @@ public class SolicitacaoCalculoIcmsDto {
             value = v;
         }
 
-        public static TipoDeclaracaoEnum fromValue(String v) {
-            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -557,6 +548,15 @@ public class SolicitacaoCalculoIcmsDto {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoDeclaracaoEnum fromValue(String v) {
+            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
         }
     }
 
@@ -591,15 +591,6 @@ public class SolicitacaoCalculoIcmsDto {
             value = v;
         }
 
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -607,6 +598,15 @@ public class SolicitacaoCalculoIcmsDto {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
         }
     }
 
@@ -637,15 +637,6 @@ public class SolicitacaoCalculoIcmsDto {
             value = v;
         }
 
-        public static TipoTratamentoEnum fromValue(String v) {
-            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -653,6 +644,15 @@ public class SolicitacaoCalculoIcmsDto {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static TipoTratamentoEnum fromValue(String v) {
+            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
         }
     }
 

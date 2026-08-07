@@ -51,6 +51,15 @@ public class FundamentoCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class FundamentoCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -60,14 +69,5 @@ public class FundamentoCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class FundamentoCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "}";
-        return sb;
     }
 }

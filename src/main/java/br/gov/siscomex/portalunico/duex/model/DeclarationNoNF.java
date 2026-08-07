@@ -86,17 +86,6 @@ public class DeclarationNoNF {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get currencyExchange
      *
      * @return currencyExchange
@@ -132,6 +121,17 @@ public class DeclarationNoNF {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get declarationOffice
      *
      * @return declarationOffice
@@ -151,11 +151,6 @@ public class DeclarationNoNF {
         return this;
     }
 
-    public DeclarationNoNF declarant(Declarant declarant) {
-        this.declarant = declarant;
-        return this;
-    }
-
     /**
      * Get exitOffice
      *
@@ -169,6 +164,11 @@ public class DeclarationNoNF {
 
     public void setExitOffice(ExitOffice exitOffice) {
         this.exitOffice = exitOffice;
+    }
+
+    public DeclarationNoNF declarant(Declarant declarant) {
+        this.declarant = declarant;
+        return this;
     }
 
     /**
@@ -215,11 +215,6 @@ public class DeclarationNoNF {
         return this;
     }
 
-    public DeclarationNoNF exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
-        return this;
-    }
-
     /**
      * Get ucr
      * @return ucr
@@ -235,6 +230,11 @@ public class DeclarationNoNF {
 
     public DeclarationNoNF ucr(UCR ucr) {
         this.ucr = ucr;
+        return this;
+    }
+
+    public DeclarationNoNF exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 

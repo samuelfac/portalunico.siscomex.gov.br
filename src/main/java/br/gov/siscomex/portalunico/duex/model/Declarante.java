@@ -51,17 +51,6 @@ public class Declarante {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Tipo&lt;br /&gt;Domínio: &lt;br /&gt;&#39;PF&#39; &#x3D; Pessoa Física&lt;br /&gt;&#39;PJ&#39; &#x3D; Pessoa Jurídica&lt;br /&gt;&#39;ES&#39; &#x3D; Estrangeiro
      *
      * @return tipo
@@ -78,6 +67,18 @@ public class Declarante {
     public Declarante tipo(String tipo) {
         this.tipo = tipo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

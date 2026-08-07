@@ -36,6 +36,8 @@ public class MemoriaCalculoDto {
      * Percentual da redução da base de cálculo<br />Tamanho: 16,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal percentualDeReducaoDaBaseCalculado = null;
+
+
     @XmlElement(name = "valorDaAliquota")
     @ApiModelProperty(value = "Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
@@ -271,7 +273,6 @@ public class MemoriaCalculoDto {
         this.valorDaAliquotaReduzida = valorDaAliquotaReduzida;
         return this;
     }
-
 
     @Override
     public String toString() {

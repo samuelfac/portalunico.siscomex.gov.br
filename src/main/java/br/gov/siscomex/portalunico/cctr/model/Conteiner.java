@@ -69,17 +69,6 @@ public class Conteiner {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Motivo da não pesagem&lt;br&gt;Tamanho: 250
      *
      * @return motivoNaoPesagem
@@ -91,6 +80,17 @@ public class Conteiner {
 
     public void setMotivoNaoPesagem(String motivoNaoPesagem) {
         this.motivoNaoPesagem = motivoNaoPesagem;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

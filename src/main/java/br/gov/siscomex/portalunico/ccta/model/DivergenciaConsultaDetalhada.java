@@ -27,19 +27,7 @@ public class DivergenciaConsultaDetalhada {
      * Data na qual a divergência foi criada.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
      **/
     private String dataDivergencia = null;
-    @XmlElement(name = "momentoDivergencia")
-    @ApiModelProperty(example = "Viagem", value = "Descrição do evento motivador da divergência<br/> ")
-    /**
-     * Descrição do evento motivador da divergência<br/>
-     **/
-    private MomentoDivergenciaEnum momentoDivergencia = null;
-    @XmlElement(name = "percentualDiferencaVolumes")
-    @ApiModelProperty(example = "50.0", value = "Percentual de quantidade de volumes divergentes<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Percentual de quantidade de volumes divergentes<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal percentualDiferencaVolumes = null;
+
 
     @XmlElement(name = "percentualDiferencaPeso")
     @ApiModelProperty(example = "50.0", value = "Percentual de peso bruto (KG) divergente<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -48,14 +36,13 @@ public class DivergenciaConsultaDetalhada {
      * Percentual de peso bruto (KG) divergente<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
     private BigDecimal percentualDiferencaPeso = null;
-    @XmlElement(name = "pesoDivergente")
-    @ApiModelProperty(example = "105.478", value = "Peso bruto (kg) divergente<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Peso bruto (kg) divergente<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     **/
-    private BigDecimal pesoDivergente = null;
 
+    @XmlElement(name = "momentoDivergencia")
+    @ApiModelProperty(example = "Viagem", value = "Descrição do evento motivador da divergência<br/> ")
+    /**
+     * Descrição do evento motivador da divergência<br/>
+     **/
+    private MomentoDivergenciaEnum momentoDivergencia = null;
     @XmlElement(name = "pesoConhecimento")
     @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
     @Valid
@@ -63,43 +50,14 @@ public class DivergenciaConsultaDetalhada {
      * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoConhecimento = null;
-    @XmlElement(name = "pesoManifestoVoo")
-    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+
+    @XmlElement(name = "percentualDiferencaVolumes")
+    @ApiModelProperty(example = "50.0", value = "Percentual de quantidade de volumes divergentes<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
     /**
-     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * Percentual de quantidade de volumes divergentes<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    private BigDecimal pesoManifestoVoo = null;
-    @XmlElement(name = "quantidadeVolumesConhecimento")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidadeVolumesConhecimento = null;
-    @XmlElement(name = "quantidadeVolumesDivergentes")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes divergentes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes divergentes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidadeVolumesDivergentes = null;
-    @XmlElement(name = "quantidadeVolumesManifestoVoo")
-    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Integer quantidadeVolumesManifestoVoo = null;
-    @XmlElement(name = "tipoDivergencia")
-    @ApiModelProperty(example = "Divergência de Peso", value = "Descrição do tipo da divergência<br/> ")
-    /**
-     * Descrição do tipo da divergência<br/>
-     **/
-    private TipoDivergenciaEnum tipoDivergencia = null;
-    @XmlElement(name = "totalParcial")
-    @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
-    /**
-     * Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas
-     **/
-    private TotalParcialEnum totalParcial = null;
+    private BigDecimal percentualDiferencaVolumes = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -112,6 +70,43 @@ public class DivergenciaConsultaDetalhada {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "pesoDivergente")
+    @ApiModelProperty(example = "105.478", value = "Peso bruto (kg) divergente<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Peso bruto (kg) divergente<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     **/
+    private BigDecimal pesoDivergente = null;
+
+    @XmlElement(name = "pesoManifestoVoo")
+    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     **/
+    private BigDecimal pesoManifestoVoo = null;
+
+    @XmlElement(name = "quantidadeVolumesConhecimento")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer quantidadeVolumesConhecimento = null;
+
+    @XmlElement(name = "quantidadeVolumesDivergentes")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes divergentes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes divergentes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer quantidadeVolumesDivergentes = null;
+
+    @XmlElement(name = "quantidadeVolumesManifestoVoo")
+    @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Integer quantidadeVolumesManifestoVoo = null;
+
     /**
      * Percentual de quantidade de volumes divergentes&lt;br/&gt;Tamanho: 2,2&lt;br/&gt; Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
@@ -122,9 +117,23 @@ public class DivergenciaConsultaDetalhada {
         return percentualDiferencaVolumes;
     }
 
+    @XmlElement(name = "tipoDivergencia")
+    @ApiModelProperty(example = "Divergência de Peso", value = "Descrição do tipo da divergência<br/> ")
+    /**
+     * Descrição do tipo da divergência<br/>
+     **/
+    private TipoDivergenciaEnum tipoDivergencia = null;
+
     public void setPercentualDiferencaVolumes(BigDecimal percentualDiferencaVolumes) {
         this.percentualDiferencaVolumes = percentualDiferencaVolumes;
     }
+
+    @XmlElement(name = "totalParcial")
+    @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
+    /**
+     * Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas
+     **/
+    private TotalParcialEnum totalParcial = null;
 
     /**
      * Data na qual a divergência foi criada.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
@@ -186,11 +195,6 @@ public class DivergenciaConsultaDetalhada {
         return this;
     }
 
-    public DivergenciaConsultaDetalhada percentualDiferencaVolumes(BigDecimal percentualDiferencaVolumes) {
-        this.percentualDiferencaVolumes = percentualDiferencaVolumes;
-        return this;
-    }
-
     /**
      * Peso bruto (kg) divergente&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
      *
@@ -203,6 +207,11 @@ public class DivergenciaConsultaDetalhada {
 
     public void setPesoDivergente(BigDecimal pesoDivergente) {
         this.pesoDivergente = pesoDivergente;
+    }
+
+    public DivergenciaConsultaDetalhada percentualDiferencaVolumes(BigDecimal percentualDiferencaVolumes) {
+        this.percentualDiferencaVolumes = percentualDiferencaVolumes;
+        return this;
     }
 
     /**
@@ -222,6 +231,23 @@ public class DivergenciaConsultaDetalhada {
     public DivergenciaConsultaDetalhada pesoConhecimento(BigDecimal pesoConhecimento) {
         this.pesoConhecimento = pesoConhecimento;
         return this;
+    }
+
+    /**
+     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     *
+     * @return totalParcial
+     **/
+    @JsonProperty("totalParcial")
+    public String getTotalParcial() {
+        if (totalParcial == null) {
+            return null;
+        }
+        return totalParcial.value();
+    }
+
+    public void setTotalParcial(TotalParcialEnum totalParcial) {
+        this.totalParcial = totalParcial;
     }
 
     public DivergenciaConsultaDetalhada pesoDivergente(BigDecimal pesoDivergente) {
@@ -306,23 +332,6 @@ public class DivergenciaConsultaDetalhada {
     }
 
     /**
-     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
-     *
-     * @return totalParcial
-     **/
-    @JsonProperty("totalParcial")
-    public String getTotalParcial() {
-        if (totalParcial == null) {
-            return null;
-        }
-        return totalParcial.value();
-    }
-
-    public void setTotalParcial(TotalParcialEnum totalParcial) {
-        this.totalParcial = totalParcial;
-    }
-
-    /**
      * Descrição do tipo da divergência&lt;br/&gt;
      *
      * @return tipoDivergencia
@@ -341,11 +350,6 @@ public class DivergenciaConsultaDetalhada {
 
     public DivergenciaConsultaDetalhada tipoDivergencia(TipoDivergenciaEnum tipoDivergencia) {
         this.tipoDivergencia = tipoDivergencia;
-        return this;
-    }
-
-    public DivergenciaConsultaDetalhada totalParcial(TotalParcialEnum totalParcial) {
-        this.totalParcial = totalParcial;
         return this;
     }
 
@@ -413,6 +417,11 @@ public class DivergenciaConsultaDetalhada {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public DivergenciaConsultaDetalhada totalParcial(TotalParcialEnum totalParcial) {
+        this.totalParcial = totalParcial;
+        return this;
     }
 
 

@@ -54,17 +54,6 @@ public class DadosCambiaisCover {
     private MotivoSemCoberturaCambialCover motivoSemCobertura = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get coberturaCambial
      *
      * @return coberturaCambial
@@ -77,6 +66,17 @@ public class DadosCambiaisCover {
 
     public void setCoberturaCambial(CoberturaCambialCover coberturaCambial) {
         this.coberturaCambial = coberturaCambial;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

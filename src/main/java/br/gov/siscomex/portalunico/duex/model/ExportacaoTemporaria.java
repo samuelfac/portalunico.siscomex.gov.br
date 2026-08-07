@@ -56,17 +56,6 @@ public class ExportacaoTemporaria {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Prazo&lt;br /&gt;Formato: Inteiro, com até 4 digitos
      *
      * @return prazo
@@ -78,6 +67,17 @@ public class ExportacaoTemporaria {
 
     public void setPrazo(Integer prazo) {
         this.prazo = prazo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

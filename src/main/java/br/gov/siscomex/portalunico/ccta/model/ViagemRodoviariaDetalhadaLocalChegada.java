@@ -44,17 +44,6 @@ public class ViagemRodoviariaDetalhadaLocalChegada {
     private UnidadeRfb unidadeRFB = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data em que ocorreu a chegada
      *
      * @return dataChegada
@@ -66,6 +55,17 @@ public class ViagemRodoviariaDetalhadaLocalChegada {
 
     public void setDataChegada(LocalDate dataChegada) {
         this.dataChegada = dataChegada;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

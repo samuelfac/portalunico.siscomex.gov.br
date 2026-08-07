@@ -87,17 +87,6 @@ public class OperacaoUnitizacao {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Dados das cargas unitizadas
      *
      * @return unitizacoes
@@ -120,6 +109,18 @@ public class OperacaoUnitizacao {
     public OperacaoUnitizacao addUnitizacoesItem(Unitizacoes unitizacoesItem) {
         this.unitizacoes.add(unitizacoesItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

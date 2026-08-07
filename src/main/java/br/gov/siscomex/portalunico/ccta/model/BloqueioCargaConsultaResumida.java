@@ -33,12 +33,6 @@ public class BloqueioCargaConsultaResumida {
      * Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial
      **/
     private AlcanceBloqueioEnum alcanceBloqueio = null;
-    @XmlElement(name = "tipoBloqueio")
-    @ApiModelProperty(example = "Impede vinculação a documento de saída DI, DSI eletrônica, DUIMP e/ou DTA", value = "Tipo do bloqueio aplicado<br>Tamanho: 100<br/>")
-    /**
-     * Tipo do bloqueio aplicado<br>Tamanho: 100<br/>
-     **/
-    private String tipoBloqueio = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -50,6 +44,13 @@ public class BloqueioCargaConsultaResumida {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoBloqueio")
+    @ApiModelProperty(example = "Impede vinculação a documento de saída DI, DSI eletrônica, DUIMP e/ou DTA", value = "Tipo do bloqueio aplicado<br>Tamanho: 100<br/>")
+    /**
+     * Tipo do bloqueio aplicado<br>Tamanho: 100<br/>
+     **/
+    private String tipoBloqueio = null;
 
     /**
      * Indica o alcance do bloqueio.&lt;br/&gt; Tamanho: 1&lt;br/&gt;T - Total&lt;br/&gt;P - Parcial
@@ -110,7 +111,6 @@ public class BloqueioCargaConsultaResumida {
         this.tipoBloqueio = tipoBloqueio;
         return this;
     }
-
 
     @Override
     public String toString() {

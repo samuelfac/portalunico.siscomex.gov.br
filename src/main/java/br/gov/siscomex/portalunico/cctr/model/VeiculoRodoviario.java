@@ -68,17 +68,6 @@ public class VeiculoRodoviario {
     private List<Veiculo> veiculos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CPF do condutor&lt;br&gt;Informado quando o condutor for brasileiro&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
      * @return cpfCondutor
@@ -90,6 +79,17 @@ public class VeiculoRodoviario {
 
     public void setCpfCondutor(String cpfCondutor) {
         this.cpfCondutor = cpfCondutor;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -149,11 +149,6 @@ public class VeiculoRodoviario {
         return this;
     }
 
-    public VeiculoRodoviario cpfCondutor(String cpfCondutor) {
-        this.cpfCondutor = cpfCondutor;
-        return this;
-    }
-
     /**
      * CPF do proprietário do veículo&lt;br&gt;Informado quando o Transportador não for o proprietário&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
@@ -194,6 +189,11 @@ public class VeiculoRodoviario {
 
     public VeiculoRodoviario addVeiculosItem(Veiculo veiculosItem) {
         this.veiculos.add(veiculosItem);
+        return this;
+    }
+
+    public VeiculoRodoviario cpfCondutor(String cpfCondutor) {
+        this.cpfCondutor = cpfCondutor;
         return this;
     }
 

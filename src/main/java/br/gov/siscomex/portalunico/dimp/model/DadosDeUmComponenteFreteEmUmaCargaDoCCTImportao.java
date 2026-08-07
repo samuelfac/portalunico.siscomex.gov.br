@@ -21,21 +21,6 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
 
 
-    @XmlElement(name = "tipoTotalMoeda")
-    @ApiModelProperty(value = "Tipo de totalizador do componente do frete ")
-    /**
-     * Tipo de totalizador do componente do frete
-     **/
-    private TipoTotalMoedaEnum tipoTotalMoeda = null;
-    @XmlElement(name = "collect")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao collect = null;
-    @XmlElement(name = "prepaid")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -46,6 +31,23 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoTotalMoeda")
+    @ApiModelProperty(value = "Tipo de totalizador do componente do frete ")
+    /**
+     * Tipo de totalizador do componente do frete
+     **/
+    private TipoTotalMoedaEnum tipoTotalMoeda = null;
+
+    @XmlElement(name = "collect")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao collect = null;
+
+    @XmlElement(name = "prepaid")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDeUmValorCollectOuPrepaidDeUmComponenteFreteEmUmaCargaDoCCTImportao prepaid = null;
 
     /**
      * Tipo de totalizador do componente do frete
@@ -106,7 +108,6 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
         this.prepaid = prepaid;
         return this;
     }
-
 
     @Override
     public String toString() {
@@ -170,15 +171,6 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoTotalMoedaEnum fromValue(String v) {
             for (TipoTotalMoedaEnum b : TipoTotalMoedaEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -186,6 +178,15 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTotalMoedaEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

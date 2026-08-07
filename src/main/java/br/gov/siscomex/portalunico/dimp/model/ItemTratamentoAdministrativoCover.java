@@ -52,18 +52,6 @@ public class ItemTratamentoAdministrativoCover {
      * Descrição do código de retorno do item do TA.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
      **/
     private String descricao = null;
-    @XmlElement(name = "lpco")
-    @ApiModelProperty(example = "21255555555", value = "Número único do LPCO associado ao item de TA.<br>Tamanho: 11")
-    /**
-     * Número único do LPCO associado ao item de TA.<br>Tamanho: 11
-     **/
-    private String lpco = null;
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "Texto de observação.", value = "Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
-    /**
-     * Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
-     **/
-    private String observacoes = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -75,6 +63,20 @@ public class ItemTratamentoAdministrativoCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "lpco")
+    @ApiModelProperty(example = "21255555555", value = "Número único do LPCO associado ao item de TA.<br>Tamanho: 11")
+    /**
+     * Número único do LPCO associado ao item de TA.<br>Tamanho: 11
+     **/
+    private String lpco = null;
+
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "Texto de observação.", value = "Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000")
+    /**
+     * Observação cadastrada no Sistema TA/LPCO para este tratamento admnistrativo.<br>Tamanho mínimo: 0<br>Tamanho máximo: 4000
+     **/
+    private String observacoes = null;
 
     /**
      * Identificação de cada item de Duimp que possui TA (número sequencial).&lt;br&gt;Tamanho: 15
@@ -192,7 +194,6 @@ public class ItemTratamentoAdministrativoCover {
         this.observacoes = observacoes;
         return this;
     }
-
 
     @Override
     public String toString() {

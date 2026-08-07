@@ -43,17 +43,6 @@ public class ItemCargaConhecimentoConsultaDetalhada {
     private List<UldBlkConsultaDetalhada> ulds = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código de classificação da mercadoria&lt;br/&gt;Tamanho: 18
      *
      * @return classificacoesMercadoria
@@ -73,6 +62,17 @@ public class ItemCargaConhecimentoConsultaDetalhada {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Descrição completa das mercadorias que estão sendo transportadas&lt;br&gt;Tamanho: 600&lt;br/&gt;
      *
      * @return descricaoMercadoria
@@ -88,11 +88,6 @@ public class ItemCargaConhecimentoConsultaDetalhada {
 
     public ItemCargaConhecimentoConsultaDetalhada descricaoMercadoria(String descricaoMercadoria) {
         this.descricaoMercadoria = descricaoMercadoria;
-        return this;
-    }
-
-    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
-        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
         return this;
     }
 
@@ -117,6 +112,11 @@ public class ItemCargaConhecimentoConsultaDetalhada {
 
     public ItemCargaConhecimentoConsultaDetalhada addUldsItem(UldBlkConsultaDetalhada uldsItem) {
         this.ulds.add(uldsItem);
+        return this;
+    }
+
+    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
+        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
         return this;
     }
 

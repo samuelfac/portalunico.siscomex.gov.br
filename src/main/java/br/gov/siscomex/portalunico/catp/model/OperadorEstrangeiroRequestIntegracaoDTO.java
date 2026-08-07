@@ -90,17 +90,6 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
     private List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * TIN - Trade Identification Number (Número de Identificação do Operador)&lt;br&gt;Tamanho: 35
      *
      * @return tin
@@ -132,6 +121,17 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -171,11 +171,6 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
 
     public OperadorEstrangeiroRequestIntegracaoDTO nomeCidade(String nomeCidade) {
         this.nomeCidade = nomeCidade;
-        return this;
-    }
-
-    public OperadorEstrangeiroRequestIntegracaoDTO nome(String nome) {
-        this.nome = nome;
         return this;
     }
 
@@ -238,7 +233,6 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
 
     /**
      * E-mail do Operador Estrangeiro&lt;br&gt;Tamanho: 70
-     *
      * @return email
      **/
     @JsonProperty("email")
@@ -248,6 +242,11 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public OperadorEstrangeiroRequestIntegracaoDTO nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     /**

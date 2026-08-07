@@ -151,15 +151,7 @@ public class RespostaConsultaPosACD {
      * Tamanho: 30<br>Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
      **/
     private String nomeSituacaoEspecial = null;
-    @XmlElement(name = "existeConteiner")
-    @ApiModelProperty(example = "N", value = "Tamanho: 1")
-    /**
-     * Tamanho: 1
-     **/
-    private ExisteConteinerEnum existeConteiner = null;
-    @XmlElement(name = "nrConhecimento")
-    @ApiModelProperty(value = "")
-    private String nrConhecimento = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -171,6 +163,17 @@ public class RespostaConsultaPosACD {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "existeConteiner")
+    @ApiModelProperty(example = "N", value = "Tamanho: 1")
+    /**
+     * Tamanho: 1
+     **/
+    private ExisteConteinerEnum existeConteiner = null;
+
+    @XmlElement(name = "nrConhecimento")
+    @ApiModelProperty(value = "")
+    private String nrConhecimento = null;
 
     @XmlElement(name = "numeroCEMercante")
     @ApiModelProperty(value = "")
@@ -329,7 +332,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Longitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
-     *
      * @return longitude
      **/
     @JsonProperty("longitude")
@@ -367,7 +369,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-     *
      * @return nomeResponsavel
      **/
     @JsonProperty("nomeResponsavel")
@@ -386,7 +387,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho: 14&lt;br&gt;Formato: AABRSSSSSSSSSD&lt;br&gt;Descrição do Formato:&lt;br&gt;AA - Ano&lt;br&gt;BR - Brasil&lt;br&gt;SSSSSSSSS - Numeração sequencial&lt;br&gt;D - DV
-     *
      * @return numeroDUE
      **/
     @JsonProperty("numeroDUE")
@@ -405,7 +405,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho: 14&lt;br&gt;Formato: AAAAAAAAAAAAAA
-     *
      * @return numeroDUIMP
      **/
     @JsonProperty("numeroDUIMP")
@@ -442,6 +441,7 @@ public class RespostaConsultaPosACD {
 
     /**
      * Tamanho: 3&lt;br&gt;Formato: NNN
+     *
      * @return codigoPaisImportador
      **/
     @JsonProperty("codigoPaisImportador")
@@ -478,6 +478,7 @@ public class RespostaConsultaPosACD {
 
     /**
      * Get codigoSituacaoEspecial
+     *
      * @return codigoSituacaoEspecial
      **/
     @JsonProperty("codigoSituacaoEspecial")
@@ -536,7 +537,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Get nrConhecimento
-     *
      * @return nrConhecimento
      **/
     @JsonProperty("nrConhecimento")
@@ -555,7 +555,6 @@ public class RespostaConsultaPosACD {
 
     /**
      * Get numeroCEMercante
-     *
      * @return numeroCEMercante
      **/
     @JsonProperty("numeroCEMercante")

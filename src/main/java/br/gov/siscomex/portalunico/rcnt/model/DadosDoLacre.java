@@ -40,12 +40,7 @@ public class DadosDoLacre {
      * Número do Lacre
      **/
     private String numero = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "REC", value = "Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro")
-    /**
-     * Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro
-     **/
-    private TipoEnum tipo = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -57,6 +52,13 @@ public class DadosDoLacre {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "REC", value = "Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro")
+    /**
+     * Tipo de lacre conforme tabela de domínio.<br/>Domínio:<br/>RFB - RFB<br/>SIF - SIF<br/>ARM - Armador<br/>REC - Recinto<br/>TRP - Transportador<br/>EST - Estrangeiro<br/>OUT - Outro
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
@@ -138,7 +140,6 @@ public class DadosDoLacre {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -190,15 +191,6 @@ public class DadosDoLacre {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static TipoEnum fromValue(String v) {
             for (TipoEnum b : TipoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -206,6 +198,15 @@ public class DadosDoLacre {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

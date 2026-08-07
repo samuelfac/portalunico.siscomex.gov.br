@@ -55,17 +55,6 @@ public class MercadoriaDuimpConsultaCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor total da mercadoria no local de embarque em US$ (Dólares). &lt;br&gt; Para Duimps com situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, será retornado o valor nulo (**null**)&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valorTotalLocalEmbarqueUSD
@@ -82,6 +71,18 @@ public class MercadoriaDuimpConsultaCover {
     public MercadoriaDuimpConsultaCover valorTotalLocalEmbarqueUSD(BigDecimal valorTotalLocalEmbarqueUSD) {
         this.valorTotalLocalEmbarqueUSD = valorTotalLocalEmbarqueUSD;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

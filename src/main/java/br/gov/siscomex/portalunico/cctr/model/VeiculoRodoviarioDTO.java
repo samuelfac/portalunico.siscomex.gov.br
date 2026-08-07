@@ -64,17 +64,6 @@ public class VeiculoRodoviarioDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get cpjCnpjResponsavel
      *
      * @return cpjCnpjResponsavel
@@ -86,6 +75,17 @@ public class VeiculoRodoviarioDTO {
 
     public void setCpjCnpjResponsavel(String cpjCnpjResponsavel) {
         this.cpjCnpjResponsavel = cpjCnpjResponsavel;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -107,11 +107,6 @@ public class VeiculoRodoviarioDTO {
         return this;
     }
 
-    public VeiculoRodoviarioDTO cpjCnpjResponsavel(String cpjCnpjResponsavel) {
-        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
-        return this;
-    }
-
     /**
      * Get numeroDocCondutorEstrangeiro
      *
@@ -124,6 +119,11 @@ public class VeiculoRodoviarioDTO {
 
     public void setNumeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
         this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
+    }
+
+    public VeiculoRodoviarioDTO cpjCnpjResponsavel(String cpjCnpjResponsavel) {
+        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
+        return this;
     }
 
     /**
@@ -142,11 +142,6 @@ public class VeiculoRodoviarioDTO {
 
     public VeiculoRodoviarioDTO nomeCondutorEstrangeiro(String nomeCondutorEstrangeiro) {
         this.nomeCondutorEstrangeiro = nomeCondutorEstrangeiro;
-        return this;
-    }
-
-    public VeiculoRodoviarioDTO numeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
-        this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
         return this;
     }
 
@@ -171,6 +166,11 @@ public class VeiculoRodoviarioDTO {
 
     public VeiculoRodoviarioDTO addVeiculosItem(VeiculoDTO veiculosItem) {
         this.veiculos.add(veiculosItem);
+        return this;
+    }
+
+    public VeiculoRodoviarioDTO numeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
+        this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
         return this;
     }
 

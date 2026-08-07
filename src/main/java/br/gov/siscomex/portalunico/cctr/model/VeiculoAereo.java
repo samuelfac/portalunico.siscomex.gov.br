@@ -92,17 +92,6 @@ public class VeiculoAereo {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do vôo&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
      *
      * @return numeroVoo
@@ -115,6 +104,17 @@ public class VeiculoAereo {
 
     public void setNumeroVoo(String numeroVoo) {
         this.numeroVoo = numeroVoo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

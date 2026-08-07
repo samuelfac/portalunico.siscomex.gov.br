@@ -108,17 +108,6 @@ public class Conhecimento {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data Emissão Conhecimento&lt;br&gt;Formato: AAAA-MM-DD.
      *
      * @return dataEmissao
@@ -131,6 +120,17 @@ public class Conhecimento {
 
     public void setDataEmissao(OffsetDateTime dataEmissao) {
         this.dataEmissao = dataEmissao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -150,11 +150,6 @@ public class Conhecimento {
 
     public Conhecimento codigoMoedaSwift(String codigoMoedaSwift) {
         this.codigoMoedaSwift = codigoMoedaSwift;
-        return this;
-    }
-
-    public Conhecimento dataEmissao(OffsetDateTime dataEmissao) {
-        this.dataEmissao = dataEmissao;
         return this;
     }
 
@@ -193,6 +188,11 @@ public class Conhecimento {
         this.valorFrete = valorFrete;
     }
 
+    public Conhecimento dataEmissao(OffsetDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
+
     /**
      * Código do país de destino da carga&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Domínio: Tabela de Países - código ISO/ALFA2.
      *
@@ -213,11 +213,6 @@ public class Conhecimento {
         return this;
     }
 
-    public Conhecimento valorFrete(Double valorFrete) {
-        this.valorFrete = valorFrete;
-        return this;
-    }
-
     /**
      * Indicador de consignação à ordem&lt;br&gt;Domínio: Domínio: S (Sim), N(Não).
      *
@@ -231,6 +226,11 @@ public class Conhecimento {
 
     public void setToOrder(Boolean toOrder) {
         this.toOrder = toOrder;
+    }
+
+    public Conhecimento valorFrete(Double valorFrete) {
+        this.valorFrete = valorFrete;
+        return this;
     }
 
     /**
@@ -252,11 +252,6 @@ public class Conhecimento {
         return this;
     }
 
-    public Conhecimento toOrder(Boolean toOrder) {
-        this.toOrder = toOrder;
-        return this;
-    }
-
     /**
      * Endereço do consignatário&lt;br&gt;Tamanho: 260&lt;br&gt;Informado apenas se indicador de consignação à ordem igual a Não.
      *
@@ -273,6 +268,11 @@ public class Conhecimento {
 
     public Conhecimento enderecoConsignatario(String enderecoConsignatario) {
         this.enderecoConsignatario = enderecoConsignatario;
+        return this;
+    }
+
+    public Conhecimento toOrder(Boolean toOrder) {
+        this.toOrder = toOrder;
         return this;
     }
 

@@ -71,6 +71,16 @@ public class DocumentoAnexado {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentoAnexado {\n" +
+                "    dataUltimaAnexacao: " + toIndentedString(dataUltimaAnexacao) + "\n" +
+                "    documentoAnexado: " + toIndentedString(documentoAnexado) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -80,15 +90,5 @@ public class DocumentoAnexado {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DocumentoAnexado {\n" +
-                "    dataUltimaAnexacao: " + toIndentedString(dataUltimaAnexacao) + "\n" +
-                "    documentoAnexado: " + toIndentedString(documentoAnexado) + "\n" +
-                "}";
-        return sb;
     }
 }

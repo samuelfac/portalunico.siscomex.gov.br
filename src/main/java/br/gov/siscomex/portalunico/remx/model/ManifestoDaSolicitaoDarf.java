@@ -82,6 +82,16 @@ public class ManifestoDaSolicitaoDarf {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ManifestoDaSolicitaoDarf {\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "    remessas: " + toIndentedString(remessas) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -91,15 +101,5 @@ public class ManifestoDaSolicitaoDarf {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ManifestoDaSolicitaoDarf {\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "    remessas: " + toIndentedString(remessas) + "\n" +
-                "}";
-        return sb;
     }
 }

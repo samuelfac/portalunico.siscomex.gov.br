@@ -70,6 +70,16 @@ public class DadosAgendaOperaoNaviosAeronavesAgendamento {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosAgendaOperaoNaviosAeronavesAgendamento {\n" +
+                "    dataHoraPrevisaoChegada: " + toIndentedString(dataHoraPrevisaoChegada) + "\n" +
+                "    dataHoraPrevisaoSaida: " + toIndentedString(dataHoraPrevisaoSaida) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -79,15 +89,5 @@ public class DadosAgendaOperaoNaviosAeronavesAgendamento {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosAgendaOperaoNaviosAeronavesAgendamento {\n" +
-                "    dataHoraPrevisaoChegada: " + toIndentedString(dataHoraPrevisaoChegada) + "\n" +
-                "    dataHoraPrevisaoSaida: " + toIndentedString(dataHoraPrevisaoSaida) + "\n" +
-                "}";
-        return sb;
     }
 }

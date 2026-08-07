@@ -114,17 +114,6 @@ public class Error {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get path
      *
      * @return path
@@ -136,6 +125,17 @@ public class Error {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -176,11 +176,6 @@ public class Error {
         return this;
     }
 
-    public Error path(String path) {
-        this.path = path;
-        return this;
-    }
-
     /**
      * Get trackerId
      *
@@ -197,6 +192,11 @@ public class Error {
 
     public Error trackerId(String trackerId) {
         this.trackerId = trackerId;
+        return this;
+    }
+
+    public Error path(String path) {
+        this.path = path;
         return this;
     }
 

@@ -53,17 +53,6 @@ public class DadosLocalizaoArmazenamentoLote {
     private String setor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Box&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
      * @return box
@@ -75,6 +64,17 @@ public class DadosLocalizaoArmazenamentoLote {
 
     public void setBox(String box) {
         this.box = box;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -96,11 +96,6 @@ public class DadosLocalizaoArmazenamentoLote {
         return this;
     }
 
-    public DadosLocalizaoArmazenamentoLote box(String box) {
-        this.box = box;
-        return this;
-    }
-
     /**
      * Prateleira&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 20
      *
@@ -113,6 +108,11 @@ public class DadosLocalizaoArmazenamentoLote {
 
     public void setPrateleira(String prateleira) {
         this.prateleira = prateleira;
+    }
+
+    public DadosLocalizaoArmazenamentoLote box(String box) {
+        this.box = box;
+        return this;
     }
 
     /**
@@ -134,11 +134,6 @@ public class DadosLocalizaoArmazenamentoLote {
         return this;
     }
 
-    public DadosLocalizaoArmazenamentoLote prateleira(String prateleira) {
-        this.prateleira = prateleira;
-        return this;
-    }
-
     /**
      * Setor&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório que pelo menos um dos seguintes atributos seja informado: &#39;setor&#39;, &#39;rua&#39;, &#39;estante&#39;, &#39;prateleira&#39;, &#39;box&#39;.&lt;br/&gt;Tamanho: 100
      *
@@ -155,6 +150,11 @@ public class DadosLocalizaoArmazenamentoLote {
 
     public DadosLocalizaoArmazenamentoLote setor(String setor) {
         this.setor = setor;
+        return this;
+    }
+
+    public DadosLocalizaoArmazenamentoLote prateleira(String prateleira) {
+        this.prateleira = prateleira;
         return this;
     }
 

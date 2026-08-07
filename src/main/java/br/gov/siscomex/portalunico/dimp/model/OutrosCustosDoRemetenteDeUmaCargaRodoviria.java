@@ -54,17 +54,6 @@ public class OutrosCustosDoRemetenteDeUmaCargaRodoviria {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor associado a outros custos de uma carga rodoviária. &lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return valor
@@ -81,6 +70,18 @@ public class OutrosCustosDoRemetenteDeUmaCargaRodoviria {
     public OutrosCustosDoRemetenteDeUmaCargaRodoviria valor(BigDecimal valor) {
         this.valor = valor;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

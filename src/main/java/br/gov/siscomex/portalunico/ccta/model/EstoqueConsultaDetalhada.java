@@ -78,18 +78,7 @@ public class EstoqueConsultaDetalhada {
      * Descrição da situação do estoque da carga<br/>
      **/
     private String situacaoAtual = null;
-    @XmlElement(name = "tipoDocumentoSaida")
-    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
-    /**
-     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
-     **/
-    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
-    @XmlElement(name = "unidadeRfb")
-    @ApiModelProperty(example = "0817600", value = "Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA")
-    /**
-     * Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA
-     **/
-    private String unidadeRfb = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -101,6 +90,20 @@ public class EstoqueConsultaDetalhada {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoDocumentoSaida")
+    @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
+    /**
+     * Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>
+     **/
+    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+
+    @XmlElement(name = "unidadeRfb")
+    @ApiModelProperty(example = "0817600", value = "Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA")
+    /**
+     * Código da UL<br/> Tamanho: 7<br/> Formato: AAAAAAA
+     **/
+    private String unidadeRfb = null;
 
     /**
      * CNPJ responsável pelo estoque&lt;br/&gt;
@@ -293,7 +296,6 @@ public class EstoqueConsultaDetalhada {
         this.unidadeRfb = unidadeRfb;
         return this;
     }
-
 
     @Override
     public String toString() {

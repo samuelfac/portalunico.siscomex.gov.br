@@ -83,17 +83,6 @@ public class SituacaoVO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de conclusão da situação
      *
      * @return dataFim
@@ -110,6 +99,18 @@ public class SituacaoVO {
     public SituacaoVO dataFim(OffsetDateTime dataFim) {
         this.dataFim = dataFim;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

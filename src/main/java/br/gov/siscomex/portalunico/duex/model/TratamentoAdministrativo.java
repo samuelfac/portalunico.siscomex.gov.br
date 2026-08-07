@@ -44,9 +44,7 @@ public class TratamentoAdministrativo {
      * Órgãos<br />Tamanho mínimo: 0<br />Tamanho máximo: 15
      **/
     private List<String> orgaos = null;
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "")
-    private SituacaoEnum situacao = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -58,6 +56,10 @@ public class TratamentoAdministrativo {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(value = "")
+    private SituacaoEnum situacao = null;
 
     /**
      * Código LPCO&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 11
@@ -161,7 +163,6 @@ public class TratamentoAdministrativo {
         this.situacao = situacao;
         return this;
     }
-
 
     @Override
     public String toString() {
@@ -271,15 +272,6 @@ public class TratamentoAdministrativo {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static SituacaoEnum fromValue(String v) {
             for (SituacaoEnum b : SituacaoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -287,6 +279,15 @@ public class TratamentoAdministrativo {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

@@ -93,17 +93,6 @@ public class Mercadoria {
     private BigDecimal valor = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Classificação da mercadoria segundo a NCM. Caracteres numéricos com 6 ou 8 dígitos.
      *
      * @return codElementoNcm
@@ -134,6 +123,17 @@ public class Mercadoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -174,11 +174,6 @@ public class Mercadoria {
         return this;
     }
 
-    public Mercadoria descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Define o número de itens presentes da mercadoria. Número fracionário, maior que zero, aceitando no máximo até 6 dígitos antes do ponto e 2 dígitos após o ponto.
      *
@@ -191,6 +186,11 @@ public class Mercadoria {
 
     public void setQuantidade(BigDecimal quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Mercadoria descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -209,11 +209,6 @@ public class Mercadoria {
 
     public Mercadoria regimeTributacao(Integer regimeTributacao) {
         this.regimeTributacao = regimeTributacao;
-        return this;
-    }
-
-    public Mercadoria quantidade(BigDecimal quantidade) {
-        this.quantidade = quantidade;
         return this;
     }
 
@@ -250,6 +245,11 @@ public class Mercadoria {
         this.tratamentoAdm = tratamentoAdm;
     }
 
+    public Mercadoria quantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
+        return this;
+    }
+
     /**
      * Define a unidade de medida em que a mercadoria é mensurada. Valores de acordo com a tabela de domínio Unidade de Medida do Mercosul do sistema Siscomex Tabelas.
      * @return unidade
@@ -268,11 +268,6 @@ public class Mercadoria {
         return this;
     }
 
-    public Mercadoria tratamentoAdm(Integer tratamentoAdm) {
-        this.tratamentoAdm = tratamentoAdm;
-        return this;
-    }
-
     /**
      * Valor total da mercadoria. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      * @return valor
@@ -288,6 +283,11 @@ public class Mercadoria {
 
     public Mercadoria valor(BigDecimal valor) {
         this.valor = valor;
+        return this;
+    }
+
+    public Mercadoria tratamentoAdm(Integer tratamentoAdm) {
+        this.tratamentoAdm = tratamentoAdm;
         return this;
     }
 

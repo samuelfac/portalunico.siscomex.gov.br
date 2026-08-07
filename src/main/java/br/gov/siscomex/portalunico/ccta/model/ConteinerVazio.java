@@ -40,17 +40,6 @@ public class ConteinerVazio {
     private String taraConteinerVazio = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação do conteiner vazio transportado na viagem.&lt;br/&gt; Tamanho Máximo: 11
      *
      * @return identificacaoConteinerVazio
@@ -63,6 +52,17 @@ public class ConteinerVazio {
 
     public void setIdentificacaoConteinerVazio(String identificacaoConteinerVazio) {
         this.identificacaoConteinerVazio = identificacaoConteinerVazio;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

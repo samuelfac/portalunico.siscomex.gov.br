@@ -78,17 +78,6 @@ public class OutroModal {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-    }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificacao Veículo&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: AAAAAAAAAAAAAAA
      *
      * @return identificacaoVeiculo
@@ -101,6 +90,17 @@ public class OutroModal {
 
     public void setIdentificacaoVeiculo(String identificacaoVeiculo) {
         this.identificacaoVeiculo = identificacaoVeiculo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -120,11 +120,6 @@ public class OutroModal {
 
     public OutroModal numeroDocumentoTransporte(String numeroDocumentoTransporte) {
         this.numeroDocumentoTransporte = numeroDocumentoTransporte;
-        return this;
-    }
-
-    public OutroModal identificacaoVeiculo(String identificacaoVeiculo) {
-        this.identificacaoVeiculo = identificacaoVeiculo;
         return this;
     }
 
@@ -165,6 +160,11 @@ public class OutroModal {
 
     public OutroModal dadosDocumentoTransporte(DadosDocumentoTransporte dadosDocumentoTransporte) {
         this.dadosDocumentoTransporte = dadosDocumentoTransporte;
+        return this;
+    }
+
+    public OutroModal identificacaoVeiculo(String identificacaoVeiculo) {
+        this.identificacaoVeiculo = identificacaoVeiculo;
         return this;
     }
 

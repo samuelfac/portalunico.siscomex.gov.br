@@ -73,17 +73,6 @@ public class ProcessamentoDeConsulta {
     private Integer situacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -96,6 +85,17 @@ public class ProcessamentoDeConsulta {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -161,11 +161,6 @@ public class ProcessamentoDeConsulta {
         return this;
     }
 
-    public ProcessamentoDeConsulta cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Lista de manifestos.
      *
@@ -227,6 +222,11 @@ public class ProcessamentoDeConsulta {
 
     public ProcessamentoDeConsulta situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDeConsulta cnpj(String cnpj) {
+        this.cnpj = cnpj;
         return this;
     }
 

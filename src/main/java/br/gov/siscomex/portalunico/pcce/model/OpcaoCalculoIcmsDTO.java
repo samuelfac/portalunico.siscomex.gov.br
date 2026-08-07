@@ -45,17 +45,6 @@ public class OpcaoCalculoIcmsDTO {
     private Long opcaoIcms = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Codigo identificador da opção&lt;br&gt;Tamanho: 4
      *
      * @return codigoOpcao
@@ -68,6 +57,17 @@ public class OpcaoCalculoIcmsDTO {
 
     public void setCodigoOpcao(String codigoOpcao) {
         this.codigoOpcao = codigoOpcao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

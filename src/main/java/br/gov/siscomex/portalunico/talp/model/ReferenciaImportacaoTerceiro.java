@@ -77,6 +77,16 @@ public class ReferenciaImportacaoTerceiro {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ReferenciaImportacaoTerceiro {\n" +
+                "    codigoIndicador: " + toIndentedString(codigoIndicador) + "\n" +
+                "    cpfCnpj: " + toIndentedString(cpfCnpj) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -86,15 +96,5 @@ public class ReferenciaImportacaoTerceiro {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ReferenciaImportacaoTerceiro {\n" +
-                "    codigoIndicador: " + toIndentedString(codigoIndicador) + "\n" +
-                "    cpfCnpj: " + toIndentedString(cpfCnpj) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -131,17 +131,6 @@ public class ProdutoIntegracaoDTO {
     private OffsetDateTime dataReferencia = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. &lt;br&gt;Tamanho máximo: 3. &lt;br&gt; Importante: A lista enviada deve conter, no máximo, 100 elementos.
      *
      * @return seq
@@ -154,6 +143,17 @@ public class ProdutoIntegracaoDTO {
 
     public void setSeq(Integer seq) {
         this.seq = seq;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -194,11 +194,6 @@ public class ProdutoIntegracaoDTO {
         return this;
     }
 
-    public ProdutoIntegracaoDTO seq(Integer seq) {
-        this.seq = seq;
-        return this;
-    }
-
     /**
      * Denominação do produto&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 120
      *
@@ -211,6 +206,11 @@ public class ProdutoIntegracaoDTO {
 
     public void setDenominacao(String denominacao) {
         this.denominacao = denominacao;
+    }
+
+    public ProdutoIntegracaoDTO seq(Integer seq) {
+        this.seq = seq;
+        return this;
     }
 
     /**
@@ -229,11 +229,6 @@ public class ProdutoIntegracaoDTO {
 
     public ProdutoIntegracaoDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
         this.cpfCnpjRaiz = cpfCnpjRaiz;
-        return this;
-    }
-
-    public ProdutoIntegracaoDTO denominacao(String denominacao) {
-        this.denominacao = denominacao;
         return this;
     }
 
@@ -268,6 +263,11 @@ public class ProdutoIntegracaoDTO {
 
     public void setModalidade(String modalidade) {
         this.modalidade = modalidade;
+    }
+
+    public ProdutoIntegracaoDTO denominacao(String denominacao) {
+        this.denominacao = denominacao;
+        return this;
     }
 
     /**
@@ -327,11 +327,6 @@ public class ProdutoIntegracaoDTO {
 
     public ProdutoIntegracaoDTO addAtributosItem(ProdutoCampoSimplesIntegracaoDTO atributosItem) {
         this.atributos.add(atributosItem);
-        return this;
-    }
-
-    public ProdutoIntegracaoDTO modalidade(String modalidade) {
-        this.modalidade = modalidade;
         return this;
     }
 
@@ -409,7 +404,6 @@ public class ProdutoIntegracaoDTO {
 
     /**
      * Lista de códigos internos do produto do Exportador/Importador&lt;br&gt;Tamanho: 60
-     *
      * @return codigosInterno
      **/
     @JsonProperty("codigosInterno")
@@ -433,7 +427,6 @@ public class ProdutoIntegracaoDTO {
 
     /**
      * Data de referência, informar somente quando for criar produto com data retroativa&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataReferencia
      **/
     @JsonProperty("dataReferencia")
@@ -447,6 +440,11 @@ public class ProdutoIntegracaoDTO {
 
     public ProdutoIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
         this.dataReferencia = dataReferencia;
+        return this;
+    }
+
+    public ProdutoIntegracaoDTO modalidade(String modalidade) {
+        this.modalidade = modalidade;
         return this;
     }
 

@@ -70,17 +70,6 @@ public class ParteInteressadaConsultaDetalhada {
     private String tipo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Endereço postal da parte interessada&lt;br/&gt;Tamanho máximo: 70
      *
      * @return caixaPostal
@@ -92,6 +81,17 @@ public class ParteInteressadaConsultaDetalhada {
 
     public void setCaixaPostal(String caixaPostal) {
         this.caixaPostal = caixaPostal;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -194,14 +194,8 @@ public class ParteInteressadaConsultaDetalhada {
         return this;
     }
 
-    public ParteInteressadaConsultaDetalhada caixaPostal(String caixaPostal) {
-        this.caixaPostal = caixaPostal;
-        return this;
-    }
-
     /**
      * Tipo da parte interessada&lt;br/&gt; Tamanho: 1&lt;br/&gt;1 - Consignatário&lt;br/&gt;2 - Embarcador&lt;br/&gt;3 - Agente de carga&lt;br/&gt;4 - Outras partes interessadas&lt;br/&gt;
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")
@@ -215,6 +209,11 @@ public class ParteInteressadaConsultaDetalhada {
 
     public ParteInteressadaConsultaDetalhada tipo(String tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public ParteInteressadaConsultaDetalhada caixaPostal(String caixaPostal) {
+        this.caixaPostal = caixaPostal;
         return this;
     }
 

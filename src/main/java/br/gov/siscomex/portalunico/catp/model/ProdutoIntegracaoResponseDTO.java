@@ -115,17 +115,6 @@ public class ProdutoIntegracaoResponseDTO {
     private String situacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Detalhamento complementar do produto&lt;br&gt;Tamanho: 3700
      *
      * @return descricao
@@ -137,6 +126,17 @@ public class ProdutoIntegracaoResponseDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -155,11 +155,6 @@ public class ProdutoIntegracaoResponseDTO {
 
     public ProdutoIntegracaoResponseDTO denominacao(String denominacao) {
         this.denominacao = denominacao;
-        return this;
-    }
-
-    public ProdutoIntegracaoResponseDTO descricao(String descricao) {
-        this.descricao = descricao;
         return this;
     }
 
@@ -244,6 +239,11 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
+    public ProdutoIntegracaoResponseDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
     /**
      * Lista de atributos compostos da NCM informada
      *
@@ -268,11 +268,6 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    public ProdutoIntegracaoResponseDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
-        this.atributosMultivalorados.add(atributosMultivaloradosItem);
-        return this;
-    }
-
     /**
      * Lista de atributos multivalorados compostos da NCM informada
      *
@@ -289,6 +284,11 @@ public class ProdutoIntegracaoResponseDTO {
 
     public ProdutoIntegracaoResponseDTO atributosCompostosMultivalorados(List<ProdutoCampoCompostoMultivaloradoIntegracaoDTO> atributosCompostosMultivalorados) {
         this.atributosCompostosMultivalorados = atributosCompostosMultivalorados;
+        return this;
+    }
+
+    public ProdutoIntegracaoResponseDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
+        this.atributosMultivalorados.add(atributosMultivaloradosItem);
         return this;
     }
 
@@ -315,11 +315,6 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    public ProdutoIntegracaoResponseDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
-        this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
-        return this;
-    }
-
     /**
      * CPF ou CNPJ raiz da empresa responsável. Informar os 8 primeiros dígitos do CNPJ, suprimindo os pontos&lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
      * @return cpfCnpjRaiz
@@ -340,7 +335,6 @@ public class ProdutoIntegracaoResponseDTO {
 
     /**
      * Código do produto. Informar somente quando for alterar/retificar um produto já cadastrado&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;NNNNNNNNNN&#39;
-     *
      * @return codigo
      **/
     @JsonProperty("codigo")
@@ -350,6 +344,11 @@ public class ProdutoIntegracaoResponseDTO {
 
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
+    }
+
+    public ProdutoIntegracaoResponseDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
+        this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
+        return this;
     }
 
     /**
@@ -370,11 +369,6 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    public ProdutoIntegracaoResponseDTO codigo(Long codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
     /**
      * Código e descrição da situação do produto &lt;br&gt;Domínio: &lt;br&gt;(ATIVADO &lt;br&gt;DESATIVADO &lt;br&gt;RASCUNHO)
      * @return situacao
@@ -390,6 +384,11 @@ public class ProdutoIntegracaoResponseDTO {
 
     public ProdutoIntegracaoResponseDTO situacao(String situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProdutoIntegracaoResponseDTO codigo(Long codigo) {
+        this.codigo = codigo;
         return this;
     }
 

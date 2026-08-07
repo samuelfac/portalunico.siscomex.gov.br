@@ -68,17 +68,6 @@ public class ItemAtributoListaConsultaDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get filtro
      *
      * @return filtro
@@ -95,6 +84,18 @@ public class ItemAtributoListaConsultaDTO {
     public ItemAtributoListaConsultaDTO filtro(String filtro) {
         this.filtro = filtro;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

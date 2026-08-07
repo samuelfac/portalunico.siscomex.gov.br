@@ -35,6 +35,7 @@ public class CertificadoDTO {
     @Valid
     private BigDecimal qtdUnidadeEstatistica = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -128,7 +129,6 @@ public class CertificadoDTO {
         this.tipoCertificadoMercosul = tipoCertificadoMercosul;
         return this;
     }
-
 
     @Override
     public String toString() {

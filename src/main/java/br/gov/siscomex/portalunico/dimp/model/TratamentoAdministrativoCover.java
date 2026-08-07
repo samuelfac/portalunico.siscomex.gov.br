@@ -78,6 +78,16 @@ public class TratamentoAdministrativoCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class TratamentoAdministrativoCover {\n" +
+                "    resultadoProcessamentoTA: " + toIndentedString(resultadoProcessamentoTA) + "\n" +
+                "    itensTratamentoAdministrativo: " + toIndentedString(itensTratamentoAdministrativo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class TratamentoAdministrativoCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class TratamentoAdministrativoCover {\n" +
-                "    resultadoProcessamentoTA: " + toIndentedString(resultadoProcessamentoTA) + "\n" +
-                "    itensTratamentoAdministrativo: " + toIndentedString(itensTratamentoAdministrativo) + "\n" +
-                "}";
-        return sb;
     }
 }

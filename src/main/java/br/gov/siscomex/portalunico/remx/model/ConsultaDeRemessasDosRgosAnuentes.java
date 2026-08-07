@@ -123,17 +123,6 @@ public class ConsultaDeRemessasDosRgosAnuentes {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de ID do órgão fiscalizador. Cada item da lista contém:&lt;br/&gt;Código do órgão (mneumônico) fiscalizador.  Máximo de 50 caracteres alfanuméricos.&lt;br/&gt;RFB;&lt;br/&gt;ANVISA;&lt;br/&gt;IBAMA;&lt;br/&gt;MAPA.
      *
      * @return listaOrgaoFiscalizacao
@@ -150,6 +139,17 @@ public class ConsultaDeRemessasDosRgosAnuentes {
     public ConsultaDeRemessasDosRgosAnuentes listaOrgaoFiscalizacao(List<String> listaOrgaoFiscalizacao) {
         this.listaOrgaoFiscalizacao = listaOrgaoFiscalizacao;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -197,11 +197,6 @@ public class ConsultaDeRemessasDosRgosAnuentes {
 
     public ConsultaDeRemessasDosRgosAnuentes addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
         this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
-        return this;
-    }
-
-    public ConsultaDeRemessasDosRgosAnuentes addListaOrgaoFiscalizacaoItem(String listaOrgaoFiscalizacaoItem) {
-        this.listaOrgaoFiscalizacao.add(listaOrgaoFiscalizacaoItem);
         return this;
     }
 
@@ -264,6 +259,11 @@ public class ConsultaDeRemessasDosRgosAnuentes {
 
     public ConsultaDeRemessasDosRgosAnuentes numeroManifesto(String numeroManifesto) {
         this.numeroManifesto = numeroManifesto;
+        return this;
+    }
+
+    public ConsultaDeRemessasDosRgosAnuentes addListaOrgaoFiscalizacaoItem(String listaOrgaoFiscalizacaoItem) {
+        this.listaOrgaoFiscalizacao.add(listaOrgaoFiscalizacaoItem);
         return this;
     }
 

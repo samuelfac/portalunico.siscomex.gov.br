@@ -88,17 +88,6 @@ public class RecintoAduaneiroDto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 50
      *
      * @return descricao
@@ -110,6 +99,17 @@ public class RecintoAduaneiroDto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -131,11 +131,6 @@ public class RecintoAduaneiroDto {
         return this;
     }
 
-    public RecintoAduaneiroDto descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
     /**
      * Zona&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Primária&lt;br /&gt;2 &#x3D; Secundária
      *
@@ -152,6 +147,11 @@ public class RecintoAduaneiroDto {
 
     public RecintoAduaneiroDto zona(String zona) {
         this.zona = zona;
+        return this;
+    }
+
+    public RecintoAduaneiroDto descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 

@@ -114,30 +114,21 @@ public class EntregaCarga {
      * Recinto Aduaneiro do Depositário responsável pela entrega.<br/>Este campo é obrigatório para o Depositário e não deve ser informado para outros intervenientes.
      **/
     private String recintoAduaneiro = null;
-    @XmlElement(name = "tipoCarga", required = true)
-    @ApiModelProperty(example = "740", required = true, value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
-    /**
-     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
-     **/
-    private TipoCargaEnum tipoCarga = null;
-    @XmlElement(name = "tipoDocumentoSaida", required = true)
-    @ApiModelProperty(example = "PROCESSO", required = true, value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
-    /**
-     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
-     **/
-    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
-    @XmlElement(name = "tipoEntrega", required = true)
-    @ApiModelProperty(example = "TOTAL", required = true, value = "Indicador para entrega parcial ou total")
-    /**
-     * Indicador para entrega parcial ou total
-     **/
-    private TipoEntregaEnum tipoEntrega = null;
+
+
     @XmlElement(name = "volumeEntrega", required = true)
     @ApiModelProperty(example = "5", required = true, value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
     /**
      * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
      **/
     private Long volumeEntrega = null;
+
+    @XmlElement(name = "tipoCarga", required = true)
+    @ApiModelProperty(example = "740", required = true, value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
+    /**
+     * Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>
+     **/
+    private TipoCargaEnum tipoCarga = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -150,6 +141,13 @@ public class EntregaCarga {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "tipoDocumentoSaida", required = true)
+    @ApiModelProperty(example = "PROCESSO", required = true, value = "Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).")
+    /**
+     * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
+     **/
+    private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
+
     /**
      * Indica a apresentação de comprovante de pagamento/exoneração do ICMS
      *
@@ -160,6 +158,13 @@ public class EntregaCarga {
     public Boolean isisComprovanteIcmsApresentado() {
         return comprovanteIcmsApresentado;
     }
+
+    @XmlElement(name = "tipoEntrega", required = true)
+    @ApiModelProperty(example = "TOTAL", required = true, value = "Indicador para entrega parcial ou total")
+    /**
+     * Indicador para entrega parcial ou total
+     **/
+    private TipoEntregaEnum tipoEntrega = null;
 
     @XmlElement(name = "unidadeRFB")
     @ApiModelProperty(example = "0717700", value = "Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega<br/>Este campo é obrigatório para Cia. Aérea e opcional para o Depositário.")
@@ -209,6 +214,21 @@ public class EntregaCarga {
     public EntregaCarga cnpjResponsavelEntrega(String cnpjResponsavelEntrega) {
         this.cnpjResponsavelEntrega = cnpjResponsavelEntrega;
         return this;
+    }
+
+    /**
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     *
+     * @return identificacaoCarga
+     **/
+    @JsonProperty("identificacaoCarga")
+    @NotNull
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
+    }
+
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
     }
 
     public EntregaCarga comprovanteIcmsApresentado(Boolean comprovanteIcmsApresentado) {
@@ -275,21 +295,6 @@ public class EntregaCarga {
     }
 
     /**
-     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacaoCarga
-     **/
-    @JsonProperty("identificacaoCarga")
-    @NotNull
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
-    }
-
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-    }
-
-    /**
      * Lista de identificação MIC/DTA - Manifesto Internacional de Carga / Declaração de Trânsito Aduaneiro.
      *
      * @return documentosTransporte
@@ -313,11 +318,6 @@ public class EntregaCarga {
         return this;
     }
 
-    public EntregaCarga identificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
     /**
      * Observações sobre a entrega&lt;br/&gt;Tamanho máximo: 300
      *
@@ -330,6 +330,11 @@ public class EntregaCarga {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
+    }
+
+    public EntregaCarga identificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
+        return this;
     }
 
     /**
@@ -352,6 +357,24 @@ public class EntregaCarga {
         return this;
     }
 
+    /**
+     * Indicador para entrega parcial ou total
+     *
+     * @return tipoEntrega
+     **/
+    @JsonProperty("tipoEntrega")
+    @NotNull
+    public String getTipoEntrega() {
+        if (tipoEntrega == null) {
+            return null;
+        }
+        return tipoEntrega.value();
+    }
+
+    public void setTipoEntrega(TipoEntregaEnum tipoEntrega) {
+        this.tipoEntrega = tipoEntrega;
+    }
+
     public EntregaCarga observacoes(String observacoes) {
         this.observacoes = observacoes;
         return this;
@@ -359,7 +382,6 @@ public class EntregaCarga {
 
     /**
      * Peso em Kg&lt;br/&gt;Tamanho: 7,3&lt;br/&gt;Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     *
      * @return pesoEntrega
      **/
     @JsonProperty("pesoEntrega")
@@ -378,7 +400,6 @@ public class EntregaCarga {
 
     /**
      * Get recebedor
-     *
      * @return recebedor
      **/
     @JsonProperty("recebedor")
@@ -398,7 +419,6 @@ public class EntregaCarga {
 
     /**
      * Recinto Aduaneiro do Depositário responsável pela entrega.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado para outros intervenientes.
-     *
      * @return recintoAduaneiro
      **/
     @JsonProperty("recintoAduaneiro")
@@ -439,24 +459,6 @@ public class EntregaCarga {
     }
 
     /**
-     * Indicador para entrega parcial ou total
-     *
-     * @return tipoEntrega
-     **/
-    @JsonProperty("tipoEntrega")
-    @NotNull
-    public String getTipoEntrega() {
-        if (tipoEntrega == null) {
-            return null;
-        }
-        return tipoEntrega.value();
-    }
-
-    public void setTipoEntrega(TipoEntregaEnum tipoEntrega) {
-        this.tipoEntrega = tipoEntrega;
-    }
-
-    /**
      * Tipo de documento de saída. O CRT não pode ser vinculado ao documento de saída DI (vinculação automática).
      *
      * @return tipoDocumentoSaida
@@ -479,11 +481,6 @@ public class EntregaCarga {
         return this;
     }
 
-    public EntregaCarga tipoEntrega(TipoEntregaEnum tipoEntrega) {
-        this.tipoEntrega = tipoEntrega;
-        return this;
-    }
-
     /**
      * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
      *
@@ -497,6 +494,11 @@ public class EntregaCarga {
 
     public void setVolumeEntrega(Long volumeEntrega) {
         this.volumeEntrega = volumeEntrega;
+    }
+
+    public EntregaCarga tipoEntrega(TipoEntregaEnum tipoEntrega) {
+        this.tipoEntrega = tipoEntrega;
+        return this;
     }
 
     /**
@@ -514,11 +516,6 @@ public class EntregaCarga {
 
     public EntregaCarga unidadeRFB(String unidadeRFB) {
         this.unidadeRFB = unidadeRFB;
-        return this;
-    }
-
-    public EntregaCarga volumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
         return this;
     }
 
@@ -596,6 +593,11 @@ public class EntregaCarga {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public EntregaCarga volumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
+        return this;
     }
 
 

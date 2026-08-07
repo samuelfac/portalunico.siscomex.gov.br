@@ -105,17 +105,6 @@ public class ArquivoDiarioCondicionadoDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de início de vigência&lt;br&gt;Formato: yyyy-MM-dd
      *
      * @return dataInicioVigencia
@@ -128,6 +117,17 @@ public class ArquivoDiarioCondicionadoDTO {
 
     public void setDataInicioVigencia(String dataInicioVigencia) {
         this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -168,11 +168,6 @@ public class ArquivoDiarioCondicionadoDTO {
         return this;
     }
 
-    public ArquivoDiarioCondicionadoDTO dataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
-
     /**
      * Get condicao
      *
@@ -210,6 +205,11 @@ public class ArquivoDiarioCondicionadoDTO {
 
     public ArquivoDiarioCondicionadoDTO atributo(ArquivoDiarioAtributoDTO atributo) {
         this.atributo = atributo;
+        return this;
+    }
+
+    public ArquivoDiarioCondicionadoDTO dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
         return this;
     }
 

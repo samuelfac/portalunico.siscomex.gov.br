@@ -112,17 +112,6 @@ public class VeiculoAquaviario {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de encerramento do manifesto&lt;br&gt;Formato: AAAA-MM-DD
      *
      * @return dataEncerramentoManifesto
@@ -140,6 +129,18 @@ public class VeiculoAquaviario {
     public VeiculoAquaviario dataEncerramentoManifesto(String dataEncerramentoManifesto) {
         this.dataEncerramentoManifesto = dataEncerramentoManifesto;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

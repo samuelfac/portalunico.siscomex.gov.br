@@ -33,17 +33,6 @@ public class DadosDaMercadoriaPerigosa {
     private String idElemento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * &lt;br/&gt;Código da mercadoria perigosa conforme tabela de domínio MERCADORIA PERIGOSA disponível no acesso público do &lt;a href&#x3D;https://www35.receita.fazenda.gov.br/tabaduaneiras-web/private/pages/telaInicial.jsf rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Tabelas Aduaneiras&lt;/a&gt;&lt;br/&gt;Tamanho: 10
      *
      * @return codigoMercadoriaPerigosa
@@ -55,6 +44,17 @@ public class DadosDaMercadoriaPerigosa {
 
     public void setCodigoMercadoriaPerigosa(String codigoMercadoriaPerigosa) {
         this.codigoMercadoriaPerigosa = codigoMercadoriaPerigosa;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

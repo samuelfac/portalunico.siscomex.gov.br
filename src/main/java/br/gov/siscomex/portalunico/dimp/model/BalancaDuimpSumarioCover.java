@@ -89,17 +89,6 @@ public class BalancaDuimpSumarioCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Quantidade de duimps desembaraçadas na data.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999999999
      *
      * @return quantidadeTotalDuimp
@@ -130,6 +119,17 @@ public class BalancaDuimpSumarioCover {
 
     public void setQuantidadeTotaltensDuimp(Long quantidadeTotaltensDuimp) {
         this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -170,11 +170,6 @@ public class BalancaDuimpSumarioCover {
         return this;
     }
 
-    public BalancaDuimpSumarioCover quantidadeTotaltensDuimp(Long quantidadeTotaltensDuimp) {
-        this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
-        return this;
-    }
-
     /**
      * Soma do peso líquido dos itens das Duimps selecionadas da data&lt;br&gt;Atributo de origem no item: item.mercadoria.pesoLiquido&lt;br&gt;Tamanho: 16,5&lt;br&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
@@ -191,6 +186,11 @@ public class BalancaDuimpSumarioCover {
 
     public BalancaDuimpSumarioCover somatorioPesoItensDuimp(BigDecimal somatorioPesoItensDuimp) {
         this.somatorioPesoItensDuimp = somatorioPesoItensDuimp;
+        return this;
+    }
+
+    public BalancaDuimpSumarioCover quantidadeTotaltensDuimp(Long quantidadeTotaltensDuimp) {
+        this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
         return this;
     }
 

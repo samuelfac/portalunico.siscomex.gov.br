@@ -80,17 +80,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
     private Boolean visualizacaoDepositario = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get apoliceSeguro
      *
      * @return apoliceSeguro
@@ -102,6 +91,17 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
 
     public void setApoliceSeguro(ApoliceSeguro apoliceSeguro) {
         this.apoliceSeguro = apoliceSeguro;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -128,11 +128,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem apoliceSeguro(ApoliceSeguro apoliceSeguro) {
-        this.apoliceSeguro = apoliceSeguro;
-        return this;
-    }
-
     /**
      * Get documentoTransporte
      *
@@ -145,6 +140,11 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
 
     public void setDocumentoTransporte(ViagemRodoviariaId documentoTransporte) {
         this.documentoTransporte = documentoTransporte;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem apoliceSeguro(ApoliceSeguro apoliceSeguro) {
+        this.apoliceSeguro = apoliceSeguro;
+        return this;
     }
 
     /**
@@ -166,11 +166,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem documentoTransporte(ViagemRodoviariaId documentoTransporte) {
-        this.documentoTransporte = documentoTransporte;
-        return this;
-    }
-
     /**
      * Observações gerais da viagem&lt;br/&gt; Tamanho Máximo: 500
      *
@@ -183,6 +178,11 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
 
     public void setObservacoesGerais(String observacoesGerais) {
         this.observacoesGerais = observacoesGerais;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem documentoTransporte(ViagemRodoviariaId documentoTransporte) {
+        this.documentoTransporte = documentoTransporte;
+        return this;
     }
 
     /**
@@ -223,11 +223,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem observacoesGerais(String observacoesGerais) {
-        this.observacoesGerais = observacoesGerais;
-        return this;
-    }
-
     /**
      * Indicador que informa se o transportador é o importador
      *
@@ -259,6 +254,11 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
 
     public void setTransportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
         this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
+    }
+
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem observacoesGerais(String observacoesGerais) {
+        this.observacoesGerais = observacoesGerais;
+        return this;
     }
 
     /**

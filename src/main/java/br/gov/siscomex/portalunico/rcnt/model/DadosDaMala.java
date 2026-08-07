@@ -53,17 +53,6 @@ public class DadosDaMala {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número da mala.&lt;br/&gt;Tamanho: 100
      *
      * @return numeroMala
@@ -80,6 +69,18 @@ public class DadosDaMala {
     public DadosDaMala numeroMala(String numeroMala) {
         this.numeroMala = numeroMala;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

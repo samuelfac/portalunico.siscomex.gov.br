@@ -93,17 +93,6 @@ public class RespostaApiMultiStatus {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get identificacao
      *
      * @return identificacao
@@ -115,6 +104,17 @@ public class RespostaApiMultiStatus {
 
     public void setIdentificacao(IdentificacaoItemCriadoCover identificacao) {
         this.identificacao = identificacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -141,11 +141,6 @@ public class RespostaApiMultiStatus {
         return this;
     }
 
-    public RespostaApiMultiStatus identificacao(IdentificacaoItemCriadoCover identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
-
     /**
      * Operações disponíveis sobre o recurso.
      *
@@ -167,6 +162,11 @@ public class RespostaApiMultiStatus {
 
     public RespostaApiMultiStatus addLinksItem(LinkCover linksItem) {
         this.links.add(linksItem);
+        return this;
+    }
+
+    public RespostaApiMultiStatus identificacao(IdentificacaoItemCriadoCover identificacao) {
+        this.identificacao = identificacao;
         return this;
     }
 

@@ -84,17 +84,6 @@ public class ChaveViagem {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número de identificação do manifesto&lt;br/&gt;Tamanho: 17
      *
      * @return identificacaoViagem
@@ -130,6 +119,18 @@ public class ChaveViagem {
     public ChaveViagem termoEntrada(String termoEntrada) {
         this.termoEntrada = termoEntrada;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

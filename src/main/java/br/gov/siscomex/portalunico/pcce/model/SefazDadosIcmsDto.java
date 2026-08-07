@@ -62,6 +62,8 @@ public class SefazDadosIcmsDto {
      * Descrição das demais despesas aduaneiras <br>Tamanho máximo: 400<br/>(*) Obrigatório se for informado valor para o campo 'valorDespesasAduaneiras'.
      **/
     private String descricaoDespesasAduaneiras = null;
+
+
     @XmlElement(name = "iniciativaSefaz", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador de que a solicitação foi originada na Sefaz<br>Dominio:<br>true - Sim, <br>false - Não")
     /**
@@ -103,100 +105,51 @@ public class SefazDadosIcmsDto {
      * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
      **/
     private String numeroDeclaracao = null;
-    @XmlElement(name = "numeroMandadoJudicial")
-    @ApiModelProperty(example = "11111111111111111111", value = "Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP e tipoRetorno != INDEFERIDO")
-    /**
-     * Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP e tipoRetorno != INDEFERIDO
-     **/
-    private String numeroMandadoJudicial = null;
-    @XmlElement(name = "periodoReferencia")
-    @ApiModelProperty(example = "2024-04", value = "Período de referência <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: 'yyyy-MM'")
-    /**
-     * Período de referência <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: 'yyyy-MM'
-     **/
-    private String periodoReferencia = null;
-
     @XmlElement(name = "pagamentoFracionado")
     @ApiModelProperty(example = "true", value = "Indicador de que o pagamento do ICMS será fracionado<br>Dominio:<br>true - Sim, <br>false - Não")
     /**
      * Indicador de que o pagamento do ICMS será fracionado<br>Dominio:<br>true - Sim, <br>false - Não
      **/
     private Boolean pagamentoFracionado = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
-    /**
-     * Tipo de solicitação
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-    @XmlElement(name = "ufFavorecida", required = true)
-    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
-    /**
-     * UF favorecida
-     **/
-    private UfFavorecidaEnum ufFavorecida = null;
 
+    @XmlElement(name = "numeroMandadoJudicial")
+    @ApiModelProperty(example = "11111111111111111111", value = "Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP e tipoRetorno != INDEFERIDO")
+    /**
+     * Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP e tipoRetorno != INDEFERIDO
+     **/
+    private String numeroMandadoJudicial = null;
     @XmlElement(name = "tipoDeclaracao", required = true)
     @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
     /**
      * Tipo da declaração no Comércio Exterior
      **/
     private TipoDeclaracaoEnum tipoDeclaracao = null;
-    @XmlElement(name = "valorAfrmm")
-    @ApiModelProperty(example = "95.8", value = "Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo e tipoRetorno != INDEFERIDO.")
-    @Valid
-    /**
-     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo e tipoRetorno != INDEFERIDO.
-     **/
-    private BigDecimal valorAfrmm = null;
 
+    @XmlElement(name = "periodoReferencia")
+    @ApiModelProperty(example = "2024-04", value = "Período de referência <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: 'yyyy-MM'")
+    /**
+     * Período de referência <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: 'yyyy-MM'
+     **/
+    private String periodoReferencia = null;
     @XmlElement(name = "tipoRetorno", required = true)
     @ApiModelProperty(example = "CALCULADO_A_PAGAR", required = true, value = "Tipo de retorno")
     /**
      * Tipo de retorno
      **/
     private TipoRetornoEnum tipoRetorno = null;
-    @XmlElement(name = "valorCIFExonerado")
-    @ApiModelProperty(example = "60.33", value = "Valor CIF Exonerado (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.")
+    @XmlElement(name = "valorTotalDevido")
+    @ApiModelProperty(example = "90.45", value = "Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
     /**
-     * Valor CIF Exonerado (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.
+     * Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
-    private BigDecimal valorCIFExonerado = null;
-    @XmlElement(name = "valorCalculado")
-    @ApiModelProperty(example = "100.12", value = "Valor calculado sem benefícios <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
+    private BigDecimal valorTotalDevido = null;
+    @XmlElement(name = "versaoDeclaracao", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
     /**
-     * Valor calculado sem benefícios <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
      **/
-    private BigDecimal valorCalculado = null;
-    @XmlElement(name = "valorCifPagamento")
-    @ApiModelProperty(example = "162.57", value = "Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno != INDEFERIDO.")
-    @Valid
-    /**
-     * Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno != INDEFERIDO.
-     **/
-    private BigDecimal valorCifPagamento = null;
-    @XmlElement(name = "valorDespesasAduaneiras")
-    @ApiModelProperty(example = "162.57", value = "Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorDespesasAduaneiras = null;
-    @XmlElement(name = "valorTotalCredito")
-    @ApiModelProperty(example = "103.2", value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP")
-    @Valid
-    /**
-     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP
-     **/
-    private BigDecimal valorTotalCredito = null;
-    @XmlElement(name = "valorTotalaRecolher")
-    @ApiModelProperty(example = "42.87", value = "Somatório dos valores devidos + juros + multa + atualização monetária<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.")
-    @Valid
-    /**
-     * Somatório dos valores devidos + juros + multa + atualização monetária<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.
-     **/
-    private BigDecimal valorTotalaRecolher = null;
+    private String versaoDeclaracao = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -207,6 +160,106 @@ public class SefazDadosIcmsDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * CPF do responsável pela declaração de ICMS&lt;br/&gt;(*) Obrigatório se iniciativaSefaz &#x3D; true.&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11
+     *
+     * @return cpfSolicitante
+     **/
+    @JsonProperty("cpfSolicitante")
+    public String getCpfSolicitante() {
+        return cpfSolicitante;
+    }
+
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
+    /**
+     * Tipo de solicitação
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+
+    public void setCpfSolicitante(String cpfSolicitante) {
+        this.cpfSolicitante = cpfSolicitante;
+    }
+
+    @XmlElement(name = "ufFavorecida", required = true)
+    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
+    /**
+     * UF favorecida
+     **/
+    private UfFavorecidaEnum ufFavorecida = null;
+
+    @XmlElement(name = "valorAfrmm")
+    @ApiModelProperty(example = "95.8", value = "Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo e tipoRetorno != INDEFERIDO.")
+    @Valid
+    /**
+     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório para Duimp de modal marítmo e tipoRetorno != INDEFERIDO.
+     **/
+    private BigDecimal valorAfrmm = null;
+
+    @XmlElement(name = "valorCIFExonerado")
+    @ApiModelProperty(example = "60.33", value = "Valor CIF Exonerado (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.")
+    @Valid
+    /**
+     * Valor CIF Exonerado (abatido da base de cálculo de ICMS)<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.
+     **/
+    private BigDecimal valorCIFExonerado = null;
+
+    @XmlElement(name = "valorCalculado")
+    @ApiModelProperty(example = "100.12", value = "Valor calculado sem benefícios <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor calculado sem benefícios <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorCalculado = null;
+
+    @XmlElement(name = "valorCifPagamento")
+    @ApiModelProperty(example = "162.57", value = "Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno != INDEFERIDO.")
+    @Valid
+    /**
+     * Valor considerado para a base de cálculo do ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno != INDEFERIDO.
+     **/
+    private BigDecimal valorCifPagamento = null;
+
+    @XmlElement(name = "valorDespesasAduaneiras")
+    @ApiModelProperty(example = "162.57", value = "Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor das demais despesas aduaneiras<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorDespesasAduaneiras = null;
+
+    @XmlElement(name = "valorTotalCredito")
+    @ApiModelProperty(example = "103.2", value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP")
+    @Valid
+    /**
+     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR e tipoSolicitacao != EXONERACAO_INTEGRAL_DUIMP
+     **/
+    private BigDecimal valorTotalCredito = null;
+
+    public SefazDadosIcmsDto cpfSolicitante(String cpfSolicitante) {
+        this.cpfSolicitante = cpfSolicitante;
+        return this;
+    }
+
+    @XmlElement(name = "valorTotalaRecolher")
+    @ApiModelProperty(example = "42.87", value = "Somatório dos valores devidos + juros + multa + atualização monetária<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.")
+    @Valid
+    /**
+     * Somatório dos valores devidos + juros + multa + atualização monetária<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.
+     **/
+    private BigDecimal valorTotalaRecolher = null;
+
+    /**
+     * Indicador de que a solicitação foi originada na Sefaz&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
+     *
+     * @return iniciativaSefaz
+     **/
+    @JsonProperty("iniciativaSefaz")
+    @NotNull
+    public Boolean isisIniciativaSefaz() {
+        return iniciativaSefaz;
     }
 
     /**
@@ -228,13 +281,24 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    @XmlElement(name = "valorTotalDevido")
-    @ApiModelProperty(example = "90.45", value = "Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
+    public void setIniciativaSefaz(Boolean iniciativaSefaz) {
+        this.iniciativaSefaz = iniciativaSefaz;
+    }
+
+    public SefazDadosIcmsDto iniciativaSefaz(Boolean iniciativaSefaz) {
+        this.iniciativaSefaz = iniciativaSefaz;
+        return this;
+    }
+
     /**
-     * Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Número da GLME &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
+     *
+     * @return numeroGlme
      **/
-    private BigDecimal valorTotalDevido = null;
+    @JsonProperty("numeroGlme")
+    public String getNumeroGlme() {
+        return numeroGlme;
+    }
 
     /**
      * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR e tipoSolicitacao !&#x3D; EXONERACAO_INTEGRAL_DUIMP
@@ -245,13 +309,6 @@ public class SefazDadosIcmsDto {
     public String getDataConfirmacaoCredito() {
         return dataConfirmacaoCredito;
     }
-
-    @XmlElement(name = "versaoDeclaracao", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
-    /**
-     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
-     **/
-    private String versaoDeclaracao = null;
 
     public void setDataConfirmacaoCredito(String dataConfirmacaoCredito) {
         this.dataConfirmacaoCredito = dataConfirmacaoCredito;
@@ -270,25 +327,6 @@ public class SefazDadosIcmsDto {
     @JsonProperty("dataLimiteGeracaoGuiaGnre")
     public String getDataLimiteGeracaoGuiaGnre() {
         return dataLimiteGeracaoGuiaGnre;
-    }
-
-    /**
-     * CPF do responsável pela declaração de ICMS&lt;br/&gt;(*) Obrigatório se iniciativaSefaz &#x3D; true.&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11
-     *
-     * @return cpfSolicitante
-     **/
-    @JsonProperty("cpfSolicitante")
-    public String getCpfSolicitante() {
-        return cpfSolicitante;
-    }
-
-    public void setCpfSolicitante(String cpfSolicitante) {
-        this.cpfSolicitante = cpfSolicitante;
-    }
-
-    public SefazDadosIcmsDto cpfSolicitante(String cpfSolicitante) {
-        this.cpfSolicitante = cpfSolicitante;
-        return this;
     }
 
     public void setDataLimiteGeracaoGuiaGnre(String dataLimiteGeracaoGuiaGnre) {
@@ -317,36 +355,6 @@ public class SefazDadosIcmsDto {
     public SefazDadosIcmsDto descricaoDespesasAduaneiras(String descricaoDespesasAduaneiras) {
         this.descricaoDespesasAduaneiras = descricaoDespesasAduaneiras;
         return this;
-    }
-
-    /**
-     * Indicador de que a solicitação foi originada na Sefaz&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
-     *
-     * @return iniciativaSefaz
-     **/
-    @JsonProperty("iniciativaSefaz")
-    @NotNull
-    public Boolean isisIniciativaSefaz() {
-        return iniciativaSefaz;
-    }
-
-    public void setIniciativaSefaz(Boolean iniciativaSefaz) {
-        this.iniciativaSefaz = iniciativaSefaz;
-    }
-
-    public SefazDadosIcmsDto iniciativaSefaz(Boolean iniciativaSefaz) {
-        this.iniciativaSefaz = iniciativaSefaz;
-        return this;
-    }
-
-    /**
-     * Número da GLME &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
-     *
-     * @return numeroGlme
-     **/
-    @JsonProperty("numeroGlme")
-    public String getNumeroGlme() {
-        return numeroGlme;
     }
 
     /**
@@ -433,10 +441,6 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    public void setNumeroMandadoJudicial(String numeroMandadoJudicial) {
-        this.numeroMandadoJudicial = numeroMandadoJudicial;
-    }
-
     /**
      * Número da declaração&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 15
      * @return numeroDeclaracao
@@ -456,9 +460,8 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    public SefazDadosIcmsDto numeroMandadoJudicial(String numeroMandadoJudicial) {
+    public void setNumeroMandadoJudicial(String numeroMandadoJudicial) {
         this.numeroMandadoJudicial = numeroMandadoJudicial;
-        return this;
     }
 
     /**
@@ -492,6 +495,11 @@ public class SefazDadosIcmsDto {
             return null;
         }
         return tipoSolicitacao.value();
+    }
+
+    public SefazDadosIcmsDto numeroMandadoJudicial(String numeroMandadoJudicial) {
+        this.numeroMandadoJudicial = numeroMandadoJudicial;
+        return this;
     }
 
     /**
@@ -560,7 +568,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Tipo de retorno
-     *
      * @return tipoRetorno
      **/
     @JsonProperty("tipoRetorno")
@@ -578,129 +585,6 @@ public class SefazDadosIcmsDto {
 
     public SefazDadosIcmsDto tipoRetorno(TipoRetornoEnum tipoRetorno) {
         this.tipoRetorno = tipoRetorno;
-        return this;
-    }
-
-    public void setUfFavorecida(UfFavorecidaEnum ufFavorecida) {
-        this.ufFavorecida = ufFavorecida;
-    }
-
-    public SefazDadosIcmsDto ufFavorecida(UfFavorecidaEnum ufFavorecida) {
-        this.ufFavorecida = ufFavorecida;
-        return this;
-    }
-
-    /**
-     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo e tipoRetorno !&#x3D; INDEFERIDO.
-     *
-     * @return valorAfrmm
-     **/
-    @JsonProperty("valorAfrmm")
-    public BigDecimal getValorAfrmm() {
-        return valorAfrmm;
-    }
-
-    public void setValorAfrmm(BigDecimal valorAfrmm) {
-        this.valorAfrmm = valorAfrmm;
-    }
-
-    public SefazDadosIcmsDto valorAfrmm(BigDecimal valorAfrmm) {
-        this.valorAfrmm = valorAfrmm;
-        return this;
-    }
-
-    /**
-     * Valor CIF Exonerado (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
-     *
-     * @return valorCIFExonerado
-     **/
-    @JsonProperty("valorCIFExonerado")
-    public BigDecimal getValorCIFExonerado() {
-        return valorCIFExonerado;
-    }
-
-    public void setValorCIFExonerado(BigDecimal valorCIFExonerado) {
-        this.valorCIFExonerado = valorCIFExonerado;
-    }
-
-    public SefazDadosIcmsDto valorCIFExonerado(BigDecimal valorCIFExonerado) {
-        this.valorCIFExonerado = valorCIFExonerado;
-        return this;
-    }
-
-    /**
-     * Valor calculado sem benefícios &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
-     * @return valorCalculado
-     **/
-    @JsonProperty("valorCalculado")
-    public BigDecimal getValorCalculado() {
-        return valorCalculado;
-    }
-
-    public void setValorCalculado(BigDecimal valorCalculado) {
-        this.valorCalculado = valorCalculado;
-    }
-
-    public SefazDadosIcmsDto valorCalculado(BigDecimal valorCalculado) {
-        this.valorCalculado = valorCalculado;
-        return this;
-    }
-
-    /**
-     * Valor considerado para a base de cálculo do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
-     *
-     * @return valorCifPagamento
-     **/
-    @JsonProperty("valorCifPagamento")
-    public BigDecimal getValorCifPagamento() {
-        return valorCifPagamento;
-    }
-
-    public void setValorCifPagamento(BigDecimal valorCifPagamento) {
-        this.valorCifPagamento = valorCifPagamento;
-    }
-
-    public SefazDadosIcmsDto valorCifPagamento(BigDecimal valorCifPagamento) {
-        this.valorCifPagamento = valorCifPagamento;
-        return this;
-    }
-
-    /**
-     * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
-     * @return valorDespesasAduaneiras
-     **/
-    @JsonProperty("valorDespesasAduaneiras")
-    public BigDecimal getValorDespesasAduaneiras() {
-        return valorDespesasAduaneiras;
-    }
-
-    public void setValorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
-        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
-    }
-
-    public SefazDadosIcmsDto valorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
-        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
-        return this;
-    }
-
-    /**
-     * Valor total do crédito de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR e tipoSolicitacao !&#x3D; EXONERACAO_INTEGRAL_DUIMP
-     *
-     * @return valorTotalCredito
-     **/
-    @JsonProperty("valorTotalCredito")
-    public BigDecimal getValorTotalCredito() {
-        return valorTotalCredito;
-    }
-
-    public void setValorTotalCredito(BigDecimal valorTotalCredito) {
-        this.valorTotalCredito = valorTotalCredito;
-    }
-
-    public SefazDadosIcmsDto valorTotalCredito(BigDecimal valorTotalCredito) {
-        this.valorTotalCredito = valorTotalCredito;
         return this;
     }
 
@@ -758,6 +642,123 @@ public class SefazDadosIcmsDto {
         return sb;
     }
 
+    public void setUfFavorecida(UfFavorecidaEnum ufFavorecida) {
+        this.ufFavorecida = ufFavorecida;
+    }
+
+    public SefazDadosIcmsDto ufFavorecida(UfFavorecidaEnum ufFavorecida) {
+        this.ufFavorecida = ufFavorecida;
+        return this;
+    }
+
+    /**
+     * Equivale ao somatório dos valores do AFRMM e da TUM que foram efetivamente considerados na base de cálculo do ICMS &lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório para Duimp de modal marítmo e tipoRetorno !&#x3D; INDEFERIDO.
+     * @return valorAfrmm
+     **/
+    @JsonProperty("valorAfrmm")
+    public BigDecimal getValorAfrmm() {
+        return valorAfrmm;
+    }
+
+    public void setValorAfrmm(BigDecimal valorAfrmm) {
+        this.valorAfrmm = valorAfrmm;
+    }
+
+    public SefazDadosIcmsDto valorAfrmm(BigDecimal valorAfrmm) {
+        this.valorAfrmm = valorAfrmm;
+        return this;
+    }
+
+    /**
+     * Valor CIF Exonerado (abatido da base de cálculo de ICMS)&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
+     * @return valorCIFExonerado
+     **/
+    @JsonProperty("valorCIFExonerado")
+    public BigDecimal getValorCIFExonerado() {
+        return valorCIFExonerado;
+    }
+
+    public void setValorCIFExonerado(BigDecimal valorCIFExonerado) {
+        this.valorCIFExonerado = valorCIFExonerado;
+    }
+
+    public SefazDadosIcmsDto valorCIFExonerado(BigDecimal valorCIFExonerado) {
+        this.valorCIFExonerado = valorCIFExonerado;
+        return this;
+    }
+
+    /**
+     * Valor calculado sem benefícios &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * @return valorCalculado
+     **/
+    @JsonProperty("valorCalculado")
+    public BigDecimal getValorCalculado() {
+        return valorCalculado;
+    }
+
+    public void setValorCalculado(BigDecimal valorCalculado) {
+        this.valorCalculado = valorCalculado;
+    }
+
+    public SefazDadosIcmsDto valorCalculado(BigDecimal valorCalculado) {
+        this.valorCalculado = valorCalculado;
+        return this;
+    }
+
+    /**
+     * Valor considerado para a base de cálculo do ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
+     * @return valorCifPagamento
+     **/
+    @JsonProperty("valorCifPagamento")
+    public BigDecimal getValorCifPagamento() {
+        return valorCifPagamento;
+    }
+
+    public void setValorCifPagamento(BigDecimal valorCifPagamento) {
+        this.valorCifPagamento = valorCifPagamento;
+    }
+
+    public SefazDadosIcmsDto valorCifPagamento(BigDecimal valorCifPagamento) {
+        this.valorCifPagamento = valorCifPagamento;
+        return this;
+    }
+
+    /**
+     * Valor das demais despesas aduaneiras&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
+     * @return valorDespesasAduaneiras
+     **/
+    @JsonProperty("valorDespesasAduaneiras")
+    public BigDecimal getValorDespesasAduaneiras() {
+        return valorDespesasAduaneiras;
+    }
+
+    public void setValorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
+        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
+    }
+
+    public SefazDadosIcmsDto valorDespesasAduaneiras(BigDecimal valorDespesasAduaneiras) {
+        this.valorDespesasAduaneiras = valorDespesasAduaneiras;
+        return this;
+    }
+
+    /**
+     * Valor total do crédito de ICMS&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR e tipoSolicitacao !&#x3D; EXONERACAO_INTEGRAL_DUIMP
+     * @return valorTotalCredito
+     **/
+    @JsonProperty("valorTotalCredito")
+    public BigDecimal getValorTotalCredito() {
+        return valorTotalCredito;
+    }
+
+    public void setValorTotalCredito(BigDecimal valorTotalCredito) {
+        this.valorTotalCredito = valorTotalCredito;
+    }
+
+    public SefazDadosIcmsDto valorTotalCredito(BigDecimal valorTotalCredito) {
+        this.valorTotalCredito = valorTotalCredito;
+        return this;
+    }
+
     /**
      * Valor total devido (a pagar ou pago) &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
      *
@@ -774,26 +775,6 @@ public class SefazDadosIcmsDto {
 
     public SefazDadosIcmsDto valorTotalDevido(BigDecimal valorTotalDevido) {
         this.valorTotalDevido = valorTotalDevido;
-        return this;
-    }
-
-    /**
-     * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
-     * @return versaoDeclaracao
-     **/
-    @JsonProperty("versaoDeclaracao")
-    @NotNull
-    public String getVersaoDeclaracao() {
-        return versaoDeclaracao;
-    }
-
-    public void setVersaoDeclaracao(String versaoDeclaracao) {
-        this.versaoDeclaracao = versaoDeclaracao;
-    }
-
-    public SefazDadosIcmsDto versaoDeclaracao(String versaoDeclaracao) {
-        this.versaoDeclaracao = versaoDeclaracao;
         return this;
     }
 
@@ -909,6 +890,26 @@ public class SefazDadosIcmsDto {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    /**
+     * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
+     *
+     * @return versaoDeclaracao
+     **/
+    @JsonProperty("versaoDeclaracao")
+    @NotNull
+    public String getVersaoDeclaracao() {
+        return versaoDeclaracao;
+    }
+
+    public void setVersaoDeclaracao(String versaoDeclaracao) {
+        this.versaoDeclaracao = versaoDeclaracao;
+    }
+
+    public SefazDadosIcmsDto versaoDeclaracao(String versaoDeclaracao) {
+        this.versaoDeclaracao = versaoDeclaracao;
+        return this;
     }
 
 

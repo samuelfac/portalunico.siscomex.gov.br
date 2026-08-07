@@ -35,30 +35,35 @@ public class Documento {
      * Indica que este documento esta disponível para usuários do setor privado. (Se aplica apenas nos perfis RFB, Anuentes e SEFAZ)
      **/
     private Boolean acessivelSetorPrivado = null;
-    @XmlElement(name = "anexadoPor", required = true)
-    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
-    /**
-     * Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30
-     **/
-    private AnexadoPorEnum anexadoPor = null;
-    @XmlElement(name = "cpfAnexacao")
-    @ApiModelProperty(example = "77777777777", value = "CPF do usuário da anexação sem formatação.<br/>Tamanho: 11")
-    /**
-     * CPF do usuário da anexação sem formatação.<br/>Tamanho: 11
-     **/
-    private String cpfAnexacao = null;
-    @XmlElement(name = "dataHoraAnexacao", required = true)
-    @ApiModelProperty(required = true, value = "Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
-    /**
-     * Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
-     **/
-    private OffsetDateTime dataHoraAnexacao = null;
+
+
     @XmlElement(name = "documentoLido", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.")
     /**
      * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
      **/
     private Boolean documentoLido = null;
+
+    @XmlElement(name = "anexadoPor", required = true)
+    @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
+    /**
+     * Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30
+     **/
+    private AnexadoPorEnum anexadoPor = null;
+
+    @XmlElement(name = "cpfAnexacao")
+    @ApiModelProperty(example = "77777777777", value = "CPF do usuário da anexação sem formatação.<br/>Tamanho: 11")
+    /**
+     * CPF do usuário da anexação sem formatação.<br/>Tamanho: 11
+     **/
+    private String cpfAnexacao = null;
+
+    @XmlElement(name = "dataHoraAnexacao", required = true)
+    @ApiModelProperty(required = true, value = "Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz")
+    /**
+     * Data/hora da anexação do documento.<br/>Formato ISO 8601: yyyy-MM-dd'T'HH:mm:ss.SSSz
+     **/
+    private OffsetDateTime dataHoraAnexacao = null;
 
     @XmlElement(name = "disponivelParaOrgaos")
     @ApiModelProperty(value = "Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>")
@@ -116,6 +121,18 @@ public class Documento {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    /**
+     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
+     *
+     * @return documentoLido
+     **/
+    @JsonProperty("documentoLido")
+    @NotNull
+    public Boolean isisDocumentoLido() {
+        return documentoLido;
+    }
+
     @XmlElement(name = "tipoAcesso")
     @ApiModelProperty(example = "1", value = "Tipo de acesso ao documento.<br/><br/>Somente será retornado para dossiês de operações CATP, DU-E, DUIMP e LPCO.<br/><br/>1 - Acessível para todos os órgãos da operação<br/>2 - Restringir a disponibilização para RFB e SEFAZ<br/>3 - Acessível apenas para RFB<br/><br/>")
     /**
@@ -205,17 +222,6 @@ public class Documento {
     }
 
     /**
-     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
-     *
-     * @return documentoLido
-     **/
-    @JsonProperty("documentoLido")
-    @NotNull
-    public Boolean isisDocumentoLido() {
-        return documentoLido;
-    }
-
-    /**
      * Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR&lt;br/&gt;
      *
      * @return disponivelParaOrgaos
@@ -239,15 +245,6 @@ public class Documento {
         return this;
     }
 
-    public void setDocumentoLido(Boolean documentoLido) {
-        this.documentoLido = documentoLido;
-    }
-
-    public Documento documentoLido(Boolean documentoLido) {
-        this.documentoLido = documentoLido;
-        return this;
-    }
-
     /**
      * Id do documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 9223372036854775807
      *
@@ -257,6 +254,15 @@ public class Documento {
     @NotNull
     public Long getId() {
         return id;
+    }
+
+    public void setDocumentoLido(Boolean documentoLido) {
+        this.documentoLido = documentoLido;
+    }
+
+    public Documento documentoLido(Boolean documentoLido) {
+        this.documentoLido = documentoLido;
+        return this;
     }
 
     /**
@@ -284,6 +290,17 @@ public class Documento {
         return this;
     }
 
+    /**
+     * Nome do arquivo&lt;br/&gt;Tamanho máximo: 255
+     *
+     * @return nomeArquivo
+     **/
+    @JsonProperty("nomeArquivo")
+    @NotNull
+    public String getNomeArquivo() {
+        return nomeArquivo;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -291,17 +308,6 @@ public class Documento {
     public Documento id(Long id) {
         this.id = id;
         return this;
-    }
-
-    /**
-     * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
-     *
-     * @return sha256
-     **/
-    @JsonProperty("sha256")
-    @NotNull
-    public String getSha256() {
-        return sha256;
     }
 
     /**
@@ -325,13 +331,14 @@ public class Documento {
     }
 
     /**
-     * Nome do arquivo&lt;br/&gt;Tamanho máximo: 255
-     * @return nomeArquivo
+     * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
+     *
+     * @return sha256
      **/
-    @JsonProperty("nomeArquivo")
+    @JsonProperty("sha256")
     @NotNull
-    public String getNomeArquivo() {
-        return nomeArquivo;
+    public String getSha256() {
+        return sha256;
     }
 
     public void setNomeArquivo(String nomeArquivo) {
@@ -363,15 +370,6 @@ public class Documento {
         return this;
     }
 
-    public void setSha256(String sha256) {
-        this.sha256 = sha256;
-    }
-
-    public Documento sha256(String sha256) {
-        this.sha256 = sha256;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -391,6 +389,15 @@ public class Documento {
                 "    tipoAcesso: " + toIndentedString(tipoAcesso) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setSha256(String sha256) {
+        this.sha256 = sha256;
+    }
+
+    public Documento sha256(String sha256) {
+        this.sha256 = sha256;
+        return this;
     }
 
     /**

@@ -21,20 +21,22 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
 
 
+    @XmlElement(name = "resumoRUC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazResumoRUCCover resumoRUC = null;
+
     @XmlElement(name = "tipoConhecimento")
     @ApiModelProperty(example = "AWB", value = "Tipo de conhecimento de transporte de carga aérea")
     /**
      * Tipo de conhecimento de transporte de carga aérea
      **/
     private TipoConhecimentoEnum tipoConhecimento = null;
+
     @XmlElement(name = "motivoDSIC")
     @ApiModelProperty(value = "")
     @Valid
     private SefazMotivoDSICDTO motivoDSIC = null;
-    @XmlElement(name = "resumoRUC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazResumoRUCCover resumoRUC = null;
 
     @XmlElement(name = "quantidadeVolumes")
     @ApiModelProperty(example = "2000", value = "Quantidade total de volumes.<br>Formato: Inteiro, com até 10 digitos<br>Valor mínimo: 1<br>Valor máximo: 2.147.483.647")
@@ -156,7 +158,6 @@ public class DadosEspecficosDeUmaCargaAreaNoCCTImportao {
         this.componentesFrete = componentesFrete;
         return this;
     }
-
 
     @Override
     public String toString() {

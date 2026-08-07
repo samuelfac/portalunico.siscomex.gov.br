@@ -69,6 +69,16 @@ public class DadosDoProcesso {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosDoProcesso {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    numeroProcesso: " + toIndentedString(numeroProcesso) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -78,15 +88,5 @@ public class DadosDoProcesso {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosDoProcesso {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numeroProcesso: " + toIndentedString(numeroProcesso) + "\n" +
-                "}";
-        return sb;
     }
 }

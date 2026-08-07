@@ -104,17 +104,6 @@ public class NotaFiscalRemoteDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de emissão da NF&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataEmissao
@@ -126,6 +115,17 @@ public class NotaFiscalRemoteDTO {
 
     public void setDataEmissao(OffsetDateTime dataEmissao) {
         this.dataEmissao = dataEmissao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -144,11 +144,6 @@ public class NotaFiscalRemoteDTO {
 
     public NotaFiscalRemoteDTO finalidade(String finalidade) {
         this.finalidade = finalidade;
-        return this;
-    }
-
-    public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
-        this.dataEmissao = dataEmissao;
         return this;
     }
 
@@ -185,6 +180,11 @@ public class NotaFiscalRemoteDTO {
         this.modelo = modelo;
     }
 
+    public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
+    }
+
     /**
      * Get notaFicalEletronica
      *
@@ -201,11 +201,6 @@ public class NotaFiscalRemoteDTO {
 
     public NotaFiscalRemoteDTO notaFicalEletronica(Boolean notaFicalEletronica) {
         this.notaFicalEletronica = notaFicalEletronica;
-        return this;
-    }
-
-    public NotaFiscalRemoteDTO modelo(String modelo) {
-        this.modelo = modelo;
         return this;
     }
 
@@ -240,6 +235,11 @@ public class NotaFiscalRemoteDTO {
 
     public void setQuantidadeDeItens(Integer quantidadeDeItens) {
         this.quantidadeDeItens = quantidadeDeItens;
+    }
+
+    public NotaFiscalRemoteDTO modelo(String modelo) {
+        this.modelo = modelo;
+        return this;
     }
 
     /**

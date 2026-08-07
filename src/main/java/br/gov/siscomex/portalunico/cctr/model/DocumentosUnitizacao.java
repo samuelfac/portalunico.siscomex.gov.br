@@ -117,17 +117,6 @@ public class DocumentosUnitizacao {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Dados informados para carga do tipo veículos&lt;br&gt;Informado apenas se houve sobra de solta/veiculo ou granel fora do contêiner.
      *
      * @return veiculo
@@ -149,6 +138,18 @@ public class DocumentosUnitizacao {
     public DocumentosUnitizacao addVeiculoItem(Veiculo veiculoItem) {
         this.veiculo.add(veiculoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

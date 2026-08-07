@@ -27,13 +27,6 @@ import java.math.BigDecimal;
 public class SefazCertificadoMercosul {
 
 
-    @XmlElement(name = "tipoCertificadoMercosul")
-    @ApiModelProperty(example = "2", value = "Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1")
-    /**
-     * Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1
-     **/
-    private TipoCertificadoMercosulEnum tipoCertificadoMercosul = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -44,6 +37,13 @@ public class SefazCertificadoMercosul {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoCertificadoMercosul")
+    @ApiModelProperty(example = "2", value = "Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1")
+    /**
+     * Tipo de certificado Mercosul.<br>Dominio:<br>2 - CCPTC<br>3 - CCROM<br>Tamanho: 1
+     **/
+    private TipoCertificadoMercosulEnum tipoCertificadoMercosul = null;
 
     @XmlElement(name = "numeroCertificado")
     @ApiModelProperty(example = "PY-06000AA00000000A-0001", value = "Número do Certificado MercosulNúmero do certificado Mercosul.<br>Tamanho mínimo: 1<br>Tamanho máximo: 23")
@@ -119,7 +119,6 @@ public class SefazCertificadoMercosul {
         this.quantidadeUnidadeEstatisticaCertificado = quantidadeUnidadeEstatisticaCertificado;
         return this;
     }
-
 
     @Override
     public String toString() {

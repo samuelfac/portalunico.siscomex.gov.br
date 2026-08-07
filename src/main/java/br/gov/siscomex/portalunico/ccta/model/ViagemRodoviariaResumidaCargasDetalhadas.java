@@ -76,17 +76,6 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de emissão do documento de transporte&lt;br/&gt;Formato: yyyy-MM-dd
      *
      * @return dataEmissao
@@ -98,6 +87,17 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
 
     public void setDataEmissao(LocalDate dataEmissao) {
         this.dataEmissao = dataEmissao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -116,11 +116,6 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
 
     public ViagemRodoviariaResumidaCargasDetalhadas numeroDocumentoViagem(String numeroDocumentoViagem) {
         this.numeroDocumentoViagem = numeroDocumentoViagem;
-        return this;
-    }
-
-    public ViagemRodoviariaResumidaCargasDetalhadas dataEmissao(LocalDate dataEmissao) {
-        this.dataEmissao = dataEmissao;
         return this;
     }
 
@@ -159,6 +154,11 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
 
     public ViagemRodoviariaResumidaCargasDetalhadas todasCargasEntregues(Boolean todasCargasEntregues) {
         this.todasCargasEntregues = todasCargasEntregues;
+        return this;
+    }
+
+    public ViagemRodoviariaResumidaCargasDetalhadas dataEmissao(LocalDate dataEmissao) {
+        this.dataEmissao = dataEmissao;
         return this;
     }
 

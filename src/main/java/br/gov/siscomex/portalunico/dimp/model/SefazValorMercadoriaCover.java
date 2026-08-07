@@ -114,17 +114,6 @@ public class SefazValorMercadoriaCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor aduaneiro em reais (VMDL).&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return valorAduaneiro
@@ -141,6 +130,18 @@ public class SefazValorMercadoriaCover {
     public SefazValorMercadoriaCover valorAduaneiro(BigDecimal valorAduaneiro) {
         this.valorAduaneiro = valorAduaneiro;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

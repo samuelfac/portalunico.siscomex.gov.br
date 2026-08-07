@@ -79,6 +79,16 @@ public class MercadoriaValoresCalculadosItemCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class MercadoriaValoresCalculadosItemCover {\n" +
+                "    valorLocalEmbarqueBRL: " + toIndentedString(valorLocalEmbarqueBRL) + "\n" +
+                "    valorAduaneiroBRL: " + toIndentedString(valorAduaneiroBRL) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -88,15 +98,5 @@ public class MercadoriaValoresCalculadosItemCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class MercadoriaValoresCalculadosItemCover {\n" +
-                "    valorLocalEmbarqueBRL: " + toIndentedString(valorLocalEmbarqueBRL) + "\n" +
-                "    valorAduaneiroBRL: " + toIndentedString(valorAduaneiroBRL) + "\n" +
-                "}";
-        return sb;
     }
 }

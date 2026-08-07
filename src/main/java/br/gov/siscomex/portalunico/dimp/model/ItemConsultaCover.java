@@ -22,28 +22,32 @@ import java.util.List;
 public class ItemConsultaCover {
 
 
+    @XmlElement(name = "fabricante")
+    @ApiModelProperty(value = "")
+    @Valid
+    private FabricanteCover fabricante = null;
+
     @XmlElement(name = "status")
     @ApiModelProperty(example = "ATIVO", value = "Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).<br>Domínio:")
     /**
      * Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).<br>Domínio:
      **/
     private StatusEnum status = null;
+
     @XmlElement(name = "identificacao")
     @ApiModelProperty(value = "")
     @Valid
     private IdentificadorItemDuimpCover identificacao = null;
+
     @XmlElement(name = "produto")
     @ApiModelProperty(value = "")
     @Valid
     private ProdutoConsultaItemCover produto = null;
+
     @XmlElement(name = "caracterizacaoImportacao")
     @ApiModelProperty(value = "")
     @Valid
     private CaracterizacaoImportacaoConsultaItemCover caracterizacaoImportacao = null;
-    @XmlElement(name = "fabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FabricanteCover fabricante = null;
 
     @XmlElement(name = "indicadorExportadorFabricante")
     @ApiModelProperty(value = "")
@@ -81,18 +85,20 @@ public class ItemConsultaCover {
     @ApiModelProperty(value = "")
     @Valid
     private List<CertificadoMercosulCover> certificadoMercosul = null;
-    @XmlElement(name = "dadosCambiais")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosCambiaisCover dadosCambiais = null;
-    @XmlElement(name = "atributosDuimp")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<AtributoItemCover> atributosDuimp = null;
     @XmlElement(name = "tributos")
     @ApiModelProperty(value = "")
     @Valid
     private TributosConsultaItemCover tributos = null;
+
+    @XmlElement(name = "dadosCambiais")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosCambiaisCover dadosCambiais = null;
+
+    @XmlElement(name = "atributosDuimp")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<AtributoItemCover> atributosDuimp = null;
 
     @XmlElement(name = "atributosFundamentoLegalDuimp")
     @ApiModelProperty(value = "")
@@ -375,7 +381,6 @@ public class ItemConsultaCover {
 
     /**
      * Get dadosCambiais
-     *
      * @return dadosCambiais
      **/
     @JsonProperty("dadosCambiais")
@@ -394,7 +399,6 @@ public class ItemConsultaCover {
 
     /**
      * Get atributosDuimp
-     *
      * @return atributosDuimp
      **/
     @JsonProperty("atributosDuimp")
@@ -458,7 +462,6 @@ public class ItemConsultaCover {
         this.tributos = tributos;
         return this;
     }
-
 
     @Override
     public String toString() {

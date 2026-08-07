@@ -40,17 +40,6 @@ public class DadosDoConhecimentoDaCargaSimplificado {
     private String tipo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
      * @return idElemento
@@ -63,6 +52,17 @@ public class DadosDoConhecimentoDaCargaSimplificado {
 
     public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -84,11 +84,6 @@ public class DadosDoConhecimentoDaCargaSimplificado {
         return this;
     }
 
-    public DadosDoConhecimentoDaCargaSimplificado idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Tipo de conhecimento. Conforme tabela de domínio Tipo de Conhecimento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
      *
@@ -105,6 +100,11 @@ public class DadosDoConhecimentoDaCargaSimplificado {
 
     public DadosDoConhecimentoDaCargaSimplificado tipo(String tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public DadosDoConhecimentoDaCargaSimplificado idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
 

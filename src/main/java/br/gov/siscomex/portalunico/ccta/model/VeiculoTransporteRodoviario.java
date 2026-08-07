@@ -62,17 +62,6 @@ public class VeiculoTransporteRodoviario {
     private Boolean transportadorProprietarioVeiculo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Ano de fabricação do veículo da viagem&lt;br/&gt; Tamanho: 4&lt;br/&gt; Formato: inteiro de 4 dígitos
      *
      * @return anoFabricacao
@@ -125,6 +114,17 @@ public class VeiculoTransporteRodoviario {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get complementos
      *
      * @return complementos
@@ -148,11 +148,6 @@ public class VeiculoTransporteRodoviario {
         return this;
     }
 
-    public VeiculoTransporteRodoviario chassi(String chassi) {
-        this.chassi = chassi;
-        return this;
-    }
-
     /**
      * Marca do veículo da viagem&lt;br/&gt; Tamanho Máximo: 20
      *
@@ -165,6 +160,11 @@ public class VeiculoTransporteRodoviario {
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public VeiculoTransporteRodoviario chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
     }
 
     /**

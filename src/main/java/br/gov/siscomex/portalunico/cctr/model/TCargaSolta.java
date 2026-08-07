@@ -77,6 +77,16 @@ public class TCargaSolta {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class TCargaSolta {\n" +
+                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
+                "    quantidade: " + toIndentedString(quantidade) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -86,15 +96,5 @@ public class TCargaSolta {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class TCargaSolta {\n" +
-                "    tipoEmbalagem: " + toIndentedString(tipoEmbalagem) + "\n" +
-                "    quantidade: " + toIndentedString(quantidade) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -64,6 +64,16 @@ public class AdditionalDocumentItemIDType {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class AdditionalDocumentItemIDType {\n" +
+                "    schemeID: " + toIndentedString(schemeID) + "\n" +
+                "    value: " + toIndentedString(value) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -73,15 +83,5 @@ public class AdditionalDocumentItemIDType {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class AdditionalDocumentItemIDType {\n" +
-                "    schemeID: " + toIndentedString(schemeID) + "\n" +
-                "    value: " + toIndentedString(value) + "\n" +
-                "}";
-        return sb;
     }
 }

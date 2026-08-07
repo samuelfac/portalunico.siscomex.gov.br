@@ -62,17 +62,6 @@ public class ComplementoVeiculoRodoviario {
     private TipoComplementoVeiculo tipo = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de Lacres
      *
      * @return lacres
@@ -108,6 +97,17 @@ public class ComplementoVeiculoRodoviario {
 
     public void setPlaca(String placa) {
         this.placa = placa;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -167,11 +167,6 @@ public class ComplementoVeiculoRodoviario {
         return this;
     }
 
-    public ComplementoVeiculoRodoviario placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
-
     /**
      * Get tipo
      *
@@ -188,6 +183,11 @@ public class ComplementoVeiculoRodoviario {
 
     public ComplementoVeiculoRodoviario tipo(TipoComplementoVeiculo tipo) {
         this.tipo = tipo;
+        return this;
+    }
+
+    public ComplementoVeiculoRodoviario placa(String placa) {
+        this.placa = placa;
         return this;
     }
 

@@ -82,17 +82,6 @@ public class ValoresDaMercadoriaNosLocais {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor total da mercadoria no local de descarga em reais&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return valorTotalMercadoriaLocalDescargaReal
@@ -109,6 +98,18 @@ public class ValoresDaMercadoriaNosLocais {
     public ValoresDaMercadoriaNosLocais valorTotalMercadoriaLocalDescargaReal(BigDecimal valorTotalMercadoriaLocalDescargaReal) {
         this.valorTotalMercadoriaLocalDescargaReal = valorTotalMercadoriaLocalDescargaReal;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

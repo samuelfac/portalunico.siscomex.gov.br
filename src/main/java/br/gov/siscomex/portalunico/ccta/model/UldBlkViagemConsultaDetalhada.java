@@ -35,18 +35,21 @@ public class UldBlkViagemConsultaDetalhada {
      * Lista contendo os conhecimentos manifestados para este manifesto<br/>
      **/
     private List<ConhecimentoViagemConsultaDetalhada> conhecimentos = null;
-    @XmlElement(name = "formaTransporte")
-    @ApiModelProperty(example = "BLK", value = "Forma de transporte<br/>Tamanho 3<br/> Formato: AAA")
-    /**
-     * Forma de transporte<br/>Tamanho 3<br/> Formato: AAA
-     **/
-    private FormaTransporteEnum formaTransporte = null;
+
+
     @XmlElement(name = "tipoULD")
     @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
     /**
      * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
      **/
     private String tipoULD = null;
+
+    @XmlElement(name = "formaTransporte")
+    @ApiModelProperty(example = "BLK", value = "Forma de transporte<br/>Tamanho 3<br/> Formato: AAA")
+    /**
+     * Forma de transporte<br/>Tamanho 3<br/> Formato: AAA
+     **/
+    private FormaTransporteEnum formaTransporte = null;
 
     @XmlElement(name = "numeroSerieULD")
     @ApiModelProperty(example = "AS123", value = "Número de série de uma ULD registrado pelo seu proprietário<br/>Tamanho: 5<br/> Formato: AAAAA")
@@ -168,7 +171,6 @@ public class UldBlkViagemConsultaDetalhada {
         this.tipoULD = tipoULD;
         return this;
     }
-
 
     @Override
     public String toString() {

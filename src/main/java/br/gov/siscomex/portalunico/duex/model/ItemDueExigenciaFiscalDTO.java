@@ -53,17 +53,6 @@ public class ItemDueExigenciaFiscalDTO {
     private String numeroNotaFiscal = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * NCM &lt;br /&gt;Tamanho: 8
      *
      * @return codigoNCM
@@ -75,6 +64,17 @@ public class ItemDueExigenciaFiscalDTO {
 
     public void setCodigoNCM(String codigoNCM) {
         this.codigoNCM = codigoNCM;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -115,11 +115,6 @@ public class ItemDueExigenciaFiscalDTO {
         return this;
     }
 
-    public ItemDueExigenciaFiscalDTO codigoNCM(String codigoNCM) {
-        this.codigoNCM = codigoNCM;
-        return this;
-    }
-
     /**
      * Número&lt;br /&gt;Tamanho: 3,0&lt;br /&gt;Formato: Decimal, com 0 casas decimais.
      *
@@ -155,6 +150,11 @@ public class ItemDueExigenciaFiscalDTO {
 
     public ItemDueExigenciaFiscalDTO numeroNotaFiscal(String numeroNotaFiscal) {
         this.numeroNotaFiscal = numeroNotaFiscal;
+        return this;
+    }
+
+    public ItemDueExigenciaFiscalDTO codigoNCM(String codigoNCM) {
+        this.codigoNCM = codigoNCM;
         return this;
     }
 

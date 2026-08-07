@@ -148,17 +148,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indica se a remessa tem destinação comercial ou não. Sim – &#39;s&#39; e Não – &#39;n&#39;.
      *
      * @return destinacaoComercial
@@ -171,6 +160,17 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     public void setDestinacaoComercial(String destinacaoComercial) {
         this.destinacaoComercial = destinacaoComercial;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -190,11 +190,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     public DadosDaRemessaParaRegistroERetificaoDeLoteDIR destinatario(PessoaParaRegistroERetificaoDeLoteDIR destinatario) {
         this.destinatario = destinatario;
-        return this;
-    }
-
-    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR destinacaoComercial(String destinacaoComercial) {
-        this.destinacaoComercial = destinacaoComercial;
         return this;
     }
 
@@ -233,6 +228,11 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         this.freteModoPagto = freteModoPagto;
     }
 
+    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR destinacaoComercial(String destinacaoComercial) {
+        this.destinacaoComercial = destinacaoComercial;
+        return this;
+    }
+
     /**
      * Informações complementares referentes à remessa. Máximo de 4.000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
@@ -250,11 +250,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     public DadosDaRemessaParaRegistroERetificaoDeLoteDIR infoCompl(String infoCompl) {
         this.infoCompl = infoCompl;
-        return this;
-    }
-
-    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR freteModoPagto(String freteModoPagto) {
-        this.freteModoPagto = freteModoPagto;
         return this;
     }
 
@@ -305,7 +300,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     /**
      * Código da moeda referente ao valor do frete. Valores de acordo com a tabela de domínio. O código de moeda contido no arquivo deve ter exatamente 3 dígitos.
-     *
      * @return moedaFrete
      **/
     @JsonProperty("moedaFrete")
@@ -316,6 +310,11 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     public void setMoedaFrete(String moedaFrete) {
         this.moedaFrete = moedaFrete;
+    }
+
+    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR freteModoPagto(String freteModoPagto) {
+        this.freteModoPagto = freteModoPagto;
+        return this;
     }
 
     /**
@@ -336,11 +335,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     public DadosDaRemessaParaRegistroERetificaoDeLoteDIR numeroMaster(String numeroMaster) {
         this.numeroMaster = numeroMaster;
-        return this;
-    }
-
-    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR moedaFrete(String moedaFrete) {
-        this.moedaFrete = moedaFrete;
         return this;
     }
 
@@ -367,7 +361,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     /**
      * Peso em quilogramas da remessa. Número fracionário, maior que zero, aceitando no máximo até 10 dígitos antes do ponto e 2 dígitos após o ponto. O peso da remessa deve ser maior ou igual ao somatório dos pesos das suas mercadorias.
-     *
      * @return peso
      **/
     @JsonProperty("peso")
@@ -406,7 +399,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
 
     /**
      * Get remetente
-     *
      * @return remetente
      **/
     @JsonProperty("remetente")
@@ -424,18 +416,9 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    /**
-     * Quantidade de volumes da remessa. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     * minimum: 0
-     * maximum: 9999
-     * @return volumes
-     **/
-    @JsonProperty("volumes")
-    @NotNull
-    @Min(0)
-    @Max(9999)
-    public Integer getVolumes() {
-        return volumes;
+    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR moedaFrete(String moedaFrete) {
+        this.moedaFrete = moedaFrete;
+        return this;
     }
 
     public void setVolumes(Integer volumes) {
@@ -445,6 +428,20 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
     public DadosDaRemessaParaRegistroERetificaoDeLoteDIR volumes(Integer volumes) {
         this.volumes = volumes;
         return this;
+    }
+
+    /**
+     * Quantidade de volumes da remessa. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     * minimum: 0
+     * maximum: 9223372036854775807
+     * @return volumes
+     **/
+    @JsonProperty("volumes")
+    @NotNull
+    @Min(0)
+    @Max(Integer.MAX_VALUE)
+    public Integer getVolumes() {
+        return volumes;
     }
 
     @Override

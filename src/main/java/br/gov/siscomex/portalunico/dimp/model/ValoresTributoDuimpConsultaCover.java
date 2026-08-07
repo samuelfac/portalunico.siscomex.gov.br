@@ -73,17 +73,6 @@ public class ValoresTributoDuimpConsultaCover {
     private BigDecimal recolhido = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;originalmente devidos\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return calculado
@@ -117,6 +106,17 @@ public class ValoresTributoDuimpConsultaCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;a recolher\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return devido
@@ -135,11 +135,6 @@ public class ValoresTributoDuimpConsultaCover {
         return this;
     }
 
-    public ValoresTributoDuimpConsultaCover aReduzir(BigDecimal aReduzir) {
-        this.aReduzir = aReduzir;
-        return this;
-    }
-
     /**
      * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
@@ -152,6 +147,11 @@ public class ValoresTributoDuimpConsultaCover {
 
     public void setSuspenso(BigDecimal suspenso) {
         this.suspenso = suspenso;
+    }
+
+    public ValoresTributoDuimpConsultaCover aReduzir(BigDecimal aReduzir) {
+        this.aReduzir = aReduzir;
+        return this;
     }
 
     /**

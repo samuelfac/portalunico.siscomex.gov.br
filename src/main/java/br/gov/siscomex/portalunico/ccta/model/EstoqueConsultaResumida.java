@@ -71,17 +71,6 @@ public class EstoqueConsultaResumida {
     private String unidadeRfb = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data / Hora de atualização do registro na tabela de estoque. A cada momento em que o registro é alterado, esta data é atualizada.&lt;br/&gt;
      *
      * @return dataHoraSituacaoAtual
@@ -93,6 +82,17 @@ public class EstoqueConsultaResumida {
 
     public void setDataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
         this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -133,11 +133,6 @@ public class EstoqueConsultaResumida {
         return this;
     }
 
-    public EstoqueConsultaResumida dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
-        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
-        return this;
-    }
-
     /**
      * Quantidade total de volumes transportados. Quando for granel, aqui constará o peso do produto&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
      *
@@ -150,6 +145,11 @@ public class EstoqueConsultaResumida {
 
     public void setQuantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
         this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
+    }
+
+    public EstoqueConsultaResumida dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
+        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+        return this;
     }
 
     /**
@@ -171,11 +171,6 @@ public class EstoqueConsultaResumida {
         return this;
     }
 
-    public EstoqueConsultaResumida quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
-        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
-        return this;
-    }
-
     /**
      * Descrição da situação do estoque da carga&lt;br/&gt;
      *
@@ -188,6 +183,11 @@ public class EstoqueConsultaResumida {
 
     public void setSituacaoAtual(String situacaoAtual) {
         this.situacaoAtual = situacaoAtual;
+    }
+
+    public EstoqueConsultaResumida quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
+        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
+        return this;
     }
 
     /**

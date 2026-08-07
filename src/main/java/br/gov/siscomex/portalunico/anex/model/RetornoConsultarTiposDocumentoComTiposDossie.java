@@ -75,17 +75,6 @@ public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsult
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de tipos de documento.&lt;br/&gt;Esta lista somente será retornada quando a operação consultada possuir um único tipo de dossiê associado.&lt;br/&gt;Caso contrário, os tipos de documento virão aninhados dentro da propriedade &#39;tiposDossie&#39;.
      *
      * @return retornoConsultarTiposDocumentoComTiposDossieTiposDocumento
@@ -102,6 +91,17 @@ public class RetornoConsultarTiposDocumentoComTiposDossie extends RetornoConsult
     public RetornoConsultarTiposDocumentoComTiposDossie retornoConsultarTiposDocumentoComTiposDossieTiposDocumento(List<TipoDocumento> retornoConsultarTiposDocumentoComTiposDossieTiposDocumento) {
         this.retornoConsultarTiposDocumentoComTiposDossieTiposDocumento = retornoConsultarTiposDocumentoComTiposDossieTiposDocumento;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

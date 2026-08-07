@@ -43,17 +43,6 @@ public class DocumentoAnexo {
     private BigDecimal tipoDocumento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição do documento que será apresentado na fronteira&lt;br/&gt; Tamanho Máximo: 50
      *
      * @return descricaoDocumento
@@ -65,6 +54,17 @@ public class DocumentoAnexo {
 
     public void setDescricaoDocumento(String descricaoDocumento) {
         this.descricaoDocumento = descricaoDocumento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -87,11 +87,6 @@ public class DocumentoAnexo {
         return this;
     }
 
-    public DocumentoAnexo descricaoDocumento(String descricaoDocumento) {
-        this.descricaoDocumento = descricaoDocumento;
-        return this;
-    }
-
     /**
      * Código do Tipo do documento que será apresentado na fronteira para esta carga nesta viagem.&lt;br/&gt; Pelo menos um tipo de documento deverá ser 49 (fatura comercial).&lt;br/&gt; Tamanho Máximo: 4
      *
@@ -109,6 +104,11 @@ public class DocumentoAnexo {
 
     public DocumentoAnexo tipoDocumento(BigDecimal tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
+    public DocumentoAnexo descricaoDocumento(String descricaoDocumento) {
+        this.descricaoDocumento = descricaoDocumento;
         return this;
     }
 

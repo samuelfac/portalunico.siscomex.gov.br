@@ -143,17 +143,6 @@ public class DadosLote {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Divergência de qualificação de mercadoria/volumes. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
      * @return divergenciaQualificacao
@@ -166,6 +155,17 @@ public class DadosLote {
 
     public void setDivergenciaQualificacao(Boolean divergenciaQualificacao) {
         this.divergenciaQualificacao = divergenciaQualificacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -185,11 +185,6 @@ public class DadosLote {
 
     public DadosLote divergenciaQuantidade(Boolean divergenciaQuantidade) {
         this.divergenciaQuantidade = divergenciaQuantidade;
-        return this;
-    }
-
-    public DadosLote divergenciaQualificacao(Boolean divergenciaQualificacao) {
-        this.divergenciaQualificacao = divergenciaQualificacao;
         return this;
     }
 
@@ -227,6 +222,11 @@ public class DadosLote {
         this.idElemento = idElemento;
     }
 
+    public DadosLote divergenciaQualificacao(Boolean divergenciaQualificacao) {
+        this.divergenciaQualificacao = divergenciaQualificacao;
+        return this;
+    }
+
     /**
      * Lista dos Tipos de Avarias.
      *
@@ -251,11 +251,6 @@ public class DadosLote {
         return this;
     }
 
-    public DadosLote idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Lista de volumes verificados e recepcionados.
      *
@@ -276,6 +271,11 @@ public class DadosLote {
         return this;
     }
 
+    public DadosLote idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
+    }
+
     /**
      * Marca visível&lt;br/&gt;Tamanho: 100
      * @return marca
@@ -291,11 +291,6 @@ public class DadosLote {
 
     public DadosLote marca(String marca) {
         this.marca = marca;
-        return this;
-    }
-
-    public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
-        this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
         return this;
     }
 
@@ -321,7 +316,6 @@ public class DadosLote {
 
     /**
      * Observações da avaria&lt;br/&gt;Tamanho: 200
-     *
      * @return observacaoAvaria
      **/
     @JsonProperty("observacaoAvaria")
@@ -331,6 +325,11 @@ public class DadosLote {
 
     public void setObservacaoAvaria(String observacaoAvaria) {
         this.observacaoAvaria = observacaoAvaria;
+    }
+
+    public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
+        this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
+        return this;
     }
 
     /**
@@ -352,14 +351,8 @@ public class DadosLote {
         return this;
     }
 
-    public DadosLote observacaoAvaria(String observacaoAvaria) {
-        this.observacaoAvaria = observacaoAvaria;
-        return this;
-    }
-
     /**
      * Peso do lote na balança (Kg).&lt;br/&gt;&lt;br/&gt;pesoLoteBalanca, até 4 casas decimais.
-     *
      * @return pesoLoteBalanca
      **/
     @JsonProperty("pesoLoteBalanca")
@@ -388,6 +381,11 @@ public class DadosLote {
 
     public void setQuantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
         this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
+    }
+
+    public DadosLote observacaoAvaria(String observacaoAvaria) {
+        this.observacaoAvaria = observacaoAvaria;
+        return this;
     }
 
     /**

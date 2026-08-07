@@ -71,6 +71,16 @@ public class MotivoDeNaoVinculacao {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class MotivoDeNaoVinculacao {\n" +
+                "    dataDeRecebimentoDaAnaliseDoDrawback: " + toIndentedString(dataDeRecebimentoDaAnaliseDoDrawback) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -80,15 +90,5 @@ public class MotivoDeNaoVinculacao {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class MotivoDeNaoVinculacao {\n" +
-                "    dataDeRecebimentoDaAnaliseDoDrawback: " + toIndentedString(dataDeRecebimentoDaAnaliseDoDrawback) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
     }
 }

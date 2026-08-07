@@ -94,17 +94,6 @@ public class RemessaDaSolicitaoDarf {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indicação que se deseja pagar o II&lt;br/&gt;Domínio:&lt;br/&gt;S - Sim;&lt;br/&gt;N - Não.
      *
      * @return impostoImportacao
@@ -117,6 +106,17 @@ public class RemessaDaSolicitaoDarf {
 
     public void setImpostoImportacao(String impostoImportacao) {
         this.impostoImportacao = impostoImportacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -161,11 +161,6 @@ public class RemessaDaSolicitaoDarf {
         return this;
     }
 
-    public RemessaDaSolicitaoDarf impostoImportacao(String impostoImportacao) {
-        this.impostoImportacao = impostoImportacao;
-        return this;
-    }
-
     /**
      * Valor de juros de ofício para a remessa. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      * minimum: 0
@@ -180,6 +175,11 @@ public class RemessaDaSolicitaoDarf {
 
     public void setValorJurosOficio(BigDecimal valorJurosOficio) {
         this.valorJurosOficio = valorJurosOficio;
+    }
+
+    public RemessaDaSolicitaoDarf impostoImportacao(String impostoImportacao) {
+        this.impostoImportacao = impostoImportacao;
+        return this;
     }
 
     /**

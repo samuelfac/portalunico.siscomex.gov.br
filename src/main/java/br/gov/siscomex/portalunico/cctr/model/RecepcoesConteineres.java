@@ -50,6 +50,15 @@ public class RecepcoesConteineres {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class RecepcoesConteineres {\n" +
+                "    recepcaoConteiner: " + toIndentedString(recepcaoConteiner) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -59,14 +68,5 @@ public class RecepcoesConteineres {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RecepcoesConteineres {\n" +
-                "    recepcaoConteiner: " + toIndentedString(recepcaoConteiner) + "\n" +
-                "}";
-        return sb;
     }
 }

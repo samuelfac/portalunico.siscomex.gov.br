@@ -126,17 +126,6 @@ public class ItemCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get produto
      *
      * @return produto
@@ -172,6 +161,17 @@ public class ItemCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get indicadorExportadorFabricante
      *
      * @return indicadorExportadorFabricante
@@ -191,11 +191,6 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover caracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
-        this.caracterizacaoImportacao = caracterizacaoImportacao;
-        return this;
-    }
-
     /**
      * Get fabricante
      *
@@ -209,6 +204,11 @@ public class ItemCover {
 
     public void setFabricante(FabricanteCover fabricante) {
         this.fabricante = fabricante;
+    }
+
+    public ItemCover caracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
+        this.caracterizacaoImportacao = caracterizacaoImportacao;
+        return this;
     }
 
     /**
@@ -231,11 +231,6 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover fabricante(FabricanteCover fabricante) {
-        this.fabricante = fabricante;
-        return this;
-    }
-
     /**
      * Get indicadorCompradorVendedor
      *
@@ -249,6 +244,11 @@ public class ItemCover {
 
     public void setIndicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
         this.indicadorCompradorVendedor = indicadorCompradorVendedor;
+    }
+
+    public ItemCover fabricante(FabricanteCover fabricante) {
+        this.fabricante = fabricante;
+        return this;
     }
 
     /**
@@ -289,14 +289,8 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
-        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
-        return this;
-    }
-
     /**
      * Get lpcos
-     *
      * @return lpcos
      **/
     @JsonProperty("lpcos")
@@ -310,6 +304,11 @@ public class ItemCover {
 
     public ItemCover lpcos(List<LpcoCover> lpcos) {
         this.lpcos = lpcos;
+        return this;
+    }
+
+    public ItemCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
+        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
         return this;
     }
 
@@ -334,11 +333,6 @@ public class ItemCover {
 
     public ItemCover addCertificadoMercosulItem(CertificadoMercosulCover certificadoMercosulItem) {
         this.certificadoMercosul.add(certificadoMercosulItem);
-        return this;
-    }
-
-    public ItemCover addLpcosItem(LpcoCover lpcosItem) {
-        this.lpcos.add(lpcosItem);
         return this;
     }
 
@@ -368,7 +362,6 @@ public class ItemCover {
 
     /**
      * Get dadosCambiais
-     *
      * @return dadosCambiais
      **/
     @JsonProperty("dadosCambiais")
@@ -388,7 +381,6 @@ public class ItemCover {
 
     /**
      * Get atributosDuimp
-     *
      * @return atributosDuimp
      **/
     @JsonProperty("atributosDuimp")
@@ -402,6 +394,11 @@ public class ItemCover {
 
     public ItemCover atributosDuimp(List<AtributoItemCover> atributosDuimp) {
         this.atributosDuimp = atributosDuimp;
+        return this;
+    }
+
+    public ItemCover addLpcosItem(LpcoCover lpcosItem) {
+        this.lpcos.add(lpcosItem);
         return this;
     }
 
@@ -429,11 +426,6 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
-        this.atributosDuimp.add(atributosDuimpItem);
-        return this;
-    }
-
     /**
      * Get tributos
      *
@@ -455,6 +447,11 @@ public class ItemCover {
 
     public ItemCover addTributosItem(TributoItemCover tributosItem) {
         this.tributos.add(tributosItem);
+        return this;
+    }
+
+    public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
+        this.atributosDuimp.add(atributosDuimpItem);
         return this;
     }
 

@@ -73,17 +73,6 @@ public class DadosCargaContiner {
     private String numeroConteiner = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do transportador&lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: &#39;NNNNNNNNNNNNNN&#39;
      *
      * @return cnpjTransportador
@@ -137,6 +126,17 @@ public class DadosCargaContiner {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Lista CNPJ Cliente
      *
      * @return listaCnpjCliente
@@ -184,11 +184,6 @@ public class DadosCargaContiner {
         return this;
     }
 
-    public DadosCargaContiner idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Lista de manifestos.
      *
@@ -205,6 +200,11 @@ public class DadosCargaContiner {
 
     public DadosCargaContiner listaManifestos(List<DadosDoManifestoDaCargaSimplificado> listaManifestos) {
         this.listaManifestos = listaManifestos;
+        return this;
+    }
+
+    public DadosCargaContiner idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
 

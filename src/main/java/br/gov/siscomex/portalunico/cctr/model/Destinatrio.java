@@ -44,17 +44,6 @@ public class Destinatrio {
     private String endereco = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ do destinatário&lt;br&gt;Tamanho: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN&lt;br&gt;Informado e obrigatório para remetente brasileiro.
      *
      * @return numeroCnpj
@@ -66,6 +55,17 @@ public class Destinatrio {
 
     public void setNumeroCnpj(String numeroCnpj) {
         this.numeroCnpj = numeroCnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -87,11 +87,6 @@ public class Destinatrio {
         return this;
     }
 
-    public Destinatrio numeroCnpj(String numeroCnpj) {
-        this.numeroCnpj = numeroCnpj;
-        return this;
-    }
-
     /**
      * Endereço do destinatário estrangeiro&lt;br&gt;Tamanho: 120&lt;br&gt;Informado e obrigatório para remetente estrangeiro. Este campo ser refere ao endereço do remetente estrangeiro.
      *
@@ -108,6 +103,11 @@ public class Destinatrio {
 
     public Destinatrio endereco(String endereco) {
         this.endereco = endereco;
+        return this;
+    }
+
+    public Destinatrio numeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
         return this;
     }
 

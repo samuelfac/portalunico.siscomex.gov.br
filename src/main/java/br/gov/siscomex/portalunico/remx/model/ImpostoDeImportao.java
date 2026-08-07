@@ -53,17 +53,6 @@ public class ImpostoDeImportao {
     private BigDecimal valorRecolhido = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de DARFS.
      *
      * @return darfs
@@ -83,6 +72,17 @@ public class ImpostoDeImportao {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Valor devido de II. Número fracionário, aceitando no máximo até 9 dígitos antes do ponto e 2 dígitos após o ponto.
      *
      * @return valorDevido
@@ -98,11 +98,6 @@ public class ImpostoDeImportao {
 
     public ImpostoDeImportao valorDevido(BigDecimal valorDevido) {
         this.valorDevido = valorDevido;
-        return this;
-    }
-
-    public ImpostoDeImportao addDarfsItem(DARF darfsItem) {
-        this.darfs.add(darfsItem);
         return this;
     }
 
@@ -141,6 +136,11 @@ public class ImpostoDeImportao {
 
     public ImpostoDeImportao valorRecolhido(BigDecimal valorRecolhido) {
         this.valorRecolhido = valorRecolhido;
+        return this;
+    }
+
+    public ImpostoDeImportao addDarfsItem(DARF darfsItem) {
+        this.darfs.add(darfsItem);
         return this;
     }
 

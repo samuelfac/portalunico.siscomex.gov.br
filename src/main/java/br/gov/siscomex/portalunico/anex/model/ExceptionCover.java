@@ -50,12 +50,7 @@ public class ExceptionCover {
     @XmlElement(name = "path")
     @ApiModelProperty(value = "")
     private String path = null;
-    @XmlElement(name = "severity")
-    @ApiModelProperty(value = "")
-    private SeverityEnum severity = null;
-    @XmlElement(name = "tag")
-    @ApiModelProperty(value = "")
-    private String tag = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -67,6 +62,14 @@ public class ExceptionCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "severity")
+    @ApiModelProperty(value = "")
+    private SeverityEnum severity = null;
+
+    @XmlElement(name = "tag")
+    @ApiModelProperty(value = "")
+    private String tag = null;
 
     /**
      * Get code
@@ -189,6 +192,7 @@ public class ExceptionCover {
 
     /**
      * Get path
+     *
      * @return path
      **/
     @JsonProperty("path")

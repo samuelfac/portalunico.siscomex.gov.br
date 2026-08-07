@@ -40,16 +40,17 @@ public class DeclaracaoVinculadaCoverConsulta {
      * Tipo de declaração vinculada.<br>Domínio:
      **/
     private TipoEnum tipo = null;
+    @XmlElement(name = "item")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ItemDeclaracaoVinculadaCover item = null;
+
     @XmlElement(name = "versaoDeclaracaoVinculada")
     @ApiModelProperty(example = "1", value = "Versão da declaração vinculada vigente no registro da Duimp consultada. Este atributo é informado apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo")
     /**
      * Versão da declaração vinculada vigente no registro da Duimp consultada. Este atributo é informado apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo
      **/
     private String versaoDeclaracaoVinculada = null;
-    @XmlElement(name = "item")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ItemDeclaracaoVinculadaCover item = null;
 
     @XmlElement(name = "dataRegistro")
     @ApiModelProperty(value = "Data de Registro<br>A data de registro é informada apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo. O conteúdo será preenchido da seguinte forma: a data/hora de registro da Duimp informada como vinculada, quando esta for SEM situação especial de despacho ou a data/hora de registro da Duimp original (Duimp de admissão em regime especial), quando a Duimp informada como vinculada for COM situação especial de despacho")
@@ -243,7 +244,6 @@ public class DeclaracaoVinculadaCoverConsulta {
         this.item = item;
         return this;
     }
-
 
     @Override
     public String toString() {

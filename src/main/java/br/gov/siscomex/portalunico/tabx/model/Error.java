@@ -45,17 +45,6 @@ public class Error {
     private String path = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e hora em que ocorreu o problema (&lt;em&gt;no formato ISO 8601&lt;/em&gt;)
      *
      * @return timestamp
@@ -67,6 +56,17 @@ public class Error {
 
     public void setTimestamp(OffsetDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -88,11 +88,6 @@ public class Error {
         return this;
     }
 
-    public Error timestamp(OffsetDateTime timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
-
     /**
      * Caminho do recurso com erro
      *
@@ -109,6 +104,11 @@ public class Error {
 
     public Error path(String path) {
         this.path = path;
+        return this;
+    }
+
+    public Error timestamp(OffsetDateTime timestamp) {
+        this.timestamp = timestamp;
         return this;
     }
 

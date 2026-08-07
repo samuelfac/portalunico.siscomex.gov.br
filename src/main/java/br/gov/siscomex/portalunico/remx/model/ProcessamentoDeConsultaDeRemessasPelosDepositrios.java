@@ -127,17 +127,6 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do protocolo composto por 36 caracteres alfanuméricos. Este campo é criado pelo sistema e deve ser usado para consulta do resultado.
      *
      * @return numeroProtocolo
@@ -149,6 +138,17 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
 
     public void setNumeroProtocolo(String numeroProtocolo) {
         this.numeroProtocolo = numeroProtocolo;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -175,11 +175,6 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
         return this;
     }
 
-    public ProcessamentoDeConsultaDeRemessasPelosDepositrios numeroProtocolo(String numeroProtocolo) {
-        this.numeroProtocolo = numeroProtocolo;
-        return this;
-    }
-
     /**
      * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
      *
@@ -196,6 +191,11 @@ public class ProcessamentoDeConsultaDeRemessasPelosDepositrios {
 
     public ProcessamentoDeConsultaDeRemessasPelosDepositrios situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDeConsultaDeRemessasPelosDepositrios numeroProtocolo(String numeroProtocolo) {
+        this.numeroProtocolo = numeroProtocolo;
         return this;
     }
 

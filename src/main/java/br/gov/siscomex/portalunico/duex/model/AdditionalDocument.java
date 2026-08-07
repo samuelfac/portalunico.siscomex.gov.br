@@ -22,6 +22,11 @@ import javax.xml.bind.annotation.XmlType;
 public class AdditionalDocument {
 
 
+    @XmlElement(name = "drawbackHsClassification", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private AdditionalDocumentDrawbackHsClassificationTextType drawbackHsClassification = null;
+
     @XmlElement(name = "categoryCode", required = true)
     @ApiModelProperty(required = true, value = "")
     private CategoryCodeEnum categoryCode = null;
@@ -29,15 +34,6 @@ public class AdditionalDocument {
     @ApiModelProperty(required = true, value = "")
     @Valid
     private AdditionalDocumentDrawbackRecipientIdTextType drawbackRecipientId = null;
-
-    @XmlElement(name = "drawbackHsClassification", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private AdditionalDocumentDrawbackHsClassificationTextType drawbackHsClassification = null;
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private AdditionalDocumentIdentificationIDType id = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -49,6 +45,11 @@ public class AdditionalDocument {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private AdditionalDocumentIdentificationIDType id = null;
 
     @XmlElement(name = "itemID")
     @ApiModelProperty(value = "")
@@ -206,7 +207,6 @@ public class AdditionalDocument {
         this.valueWithExchangeCoverAmount = valueWithExchangeCoverAmount;
         return this;
     }
-
 
     @Override
     public String toString() {

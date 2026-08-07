@@ -65,17 +65,6 @@ public class OperacaoConsolidacao {
     private List<Documento> documentosConsolidacao = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tipoDeCarga
      *
      * @return tipoDeCarga
@@ -87,6 +76,17 @@ public class OperacaoConsolidacao {
 
     public void setTipoDeCarga(Integer tipoDeCarga) {
         this.tipoDeCarga = tipoDeCarga;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -109,11 +109,6 @@ public class OperacaoConsolidacao {
         return this;
     }
 
-    public OperacaoConsolidacao tipoDeCarga(Integer tipoDeCarga) {
-        this.tipoDeCarga = tipoDeCarga;
-        return this;
-    }
-
     /**
      * Número da RUC Master que identificará esta consolidação&lt;br&gt;Mesmo formato de uma RUC.&lt;br&gt;Tamanho mínimo: 13&lt;br&gt;Tamanho máximo: 35&lt;br&gt;Formato: NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      *
@@ -126,6 +121,11 @@ public class OperacaoConsolidacao {
 
     public void setNumeroMRUC(String numeroMRUC) {
         this.numeroMRUC = numeroMRUC;
+    }
+
+    public OperacaoConsolidacao tipoDeCarga(Integer tipoDeCarga) {
+        this.tipoDeCarga = tipoDeCarga;
+        return this;
     }
 
     /**
@@ -168,11 +168,6 @@ public class OperacaoConsolidacao {
         return this;
     }
 
-    public OperacaoConsolidacao numeroMRUC(String numeroMRUC) {
-        this.numeroMRUC = numeroMRUC;
-        return this;
-    }
-
     /**
      * Lista de documentos envolvidos na consolidação&lt;br&gt;OBS: uma DU-E/RUC não pode repetir na lista de documentos. Devem ser incluídos ao menos dois documentos na lista.
      *
@@ -195,6 +190,11 @@ public class OperacaoConsolidacao {
 
     public OperacaoConsolidacao addDocumentosConsolidacaoItem(Documento documentosConsolidacaoItem) {
         this.documentosConsolidacao.add(documentosConsolidacaoItem);
+        return this;
+    }
+
+    public OperacaoConsolidacao numeroMRUC(String numeroMRUC) {
+        this.numeroMRUC = numeroMRUC;
         return this;
     }
 

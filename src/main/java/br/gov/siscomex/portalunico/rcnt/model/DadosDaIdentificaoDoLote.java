@@ -53,17 +53,6 @@ public class DadosDaIdentificaoDoLote {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do Lote.&lt;br/&gt;Tamanho: 100
      *
      * @return numeroLote
@@ -80,6 +69,18 @@ public class DadosDaIdentificaoDoLote {
     public DadosDaIdentificaoDoLote numeroLote(String numeroLote) {
         this.numeroLote = numeroLote;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

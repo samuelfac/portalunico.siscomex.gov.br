@@ -81,17 +81,6 @@ public class ImportacaoParaTerceirosDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Descrição do tipo de terceiro
      *
      * @return tipo
@@ -108,6 +97,18 @@ public class ImportacaoParaTerceirosDTO {
     public ImportacaoParaTerceirosDTO tipo(String tipo) {
         this.tipo = tipo;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

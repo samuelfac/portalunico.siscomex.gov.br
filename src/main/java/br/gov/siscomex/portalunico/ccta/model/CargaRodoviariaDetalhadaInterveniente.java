@@ -80,17 +80,6 @@ public class CargaRodoviariaDetalhadaInterveniente {
     private TipoTransporte tipoTransporte = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Email do interveniente
      *
      * @return email
@@ -124,6 +113,17 @@ public class CargaRodoviariaDetalhadaInterveniente {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Identificacao fiscal interveniente
      *
      * @return identificacaoFiscal
@@ -139,11 +139,6 @@ public class CargaRodoviariaDetalhadaInterveniente {
 
     public CargaRodoviariaDetalhadaInterveniente identificacaoFiscal(String identificacaoFiscal) {
         this.identificacaoFiscal = identificacaoFiscal;
-        return this;
-    }
-
-    public CargaRodoviariaDetalhadaInterveniente endereco(Endereco endereco) {
-        this.endereco = endereco;
         return this;
     }
 
@@ -197,6 +192,11 @@ public class CargaRodoviariaDetalhadaInterveniente {
 
     public void setNumeroLicenca(String numeroLicenca) {
         this.numeroLicenca = numeroLicenca;
+    }
+
+    public CargaRodoviariaDetalhadaInterveniente endereco(Endereco endereco) {
+        this.endereco = endereco;
+        return this;
     }
 
     /**

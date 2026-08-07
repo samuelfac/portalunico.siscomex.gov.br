@@ -40,6 +40,8 @@ public class SolicitacaoPagamentoTaxaDTO {
      * Código único que identifica a taxa no órgão anuente (transação) <br>Tamanho: 15
      **/
     private String identificadorTaxa = null;
+
+
     @XmlElement(name = "tpOperacaoOrigem", required = true)
     @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à taxa")
     /**
@@ -78,6 +80,17 @@ public class SolicitacaoPagamentoTaxaDTO {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    /**
+     * Número de referência do evento &lt;br/&gt;Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).&lt;br/&gt;(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
+     *
+     * @return numeroReferencia
+     **/
+    @JsonProperty("numeroReferencia")
+    public Integer getNumeroReferencia() {
+        return numeroReferencia;
+    }
+
     @XmlElement(name = "valorTotal", required = true)
     @ApiModelProperty(example = "126.54", required = true, value = "Valor total a pagar <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
@@ -127,16 +140,6 @@ public class SolicitacaoPagamentoTaxaDTO {
     }
 
     /**
-     * Número de referência do evento &lt;br/&gt;Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).&lt;br/&gt;(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
-     *
-     * @return numeroReferencia
-     **/
-    @JsonProperty("numeroReferencia")
-    public Integer getNumeroReferencia() {
-        return numeroReferencia;
-    }
-
-    /**
      * Momento da taxa &lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem&#x3D;LPCO.
      *
      * @return momentoTaxa
@@ -178,15 +181,6 @@ public class SolicitacaoPagamentoTaxaDTO {
         return this;
     }
 
-    public void setNumeroReferencia(Integer numeroReferencia) {
-        this.numeroReferencia = numeroReferencia;
-    }
-
-    public SolicitacaoPagamentoTaxaDTO numeroReferencia(Integer numeroReferencia) {
-        this.numeroReferencia = numeroReferencia;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -200,6 +194,15 @@ public class SolicitacaoPagamentoTaxaDTO {
                 "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setNumeroReferencia(Integer numeroReferencia) {
+        this.numeroReferencia = numeroReferencia;
+    }
+
+    public SolicitacaoPagamentoTaxaDTO numeroReferencia(Integer numeroReferencia) {
+        this.numeroReferencia = numeroReferencia;
+        return this;
     }
 
     /**

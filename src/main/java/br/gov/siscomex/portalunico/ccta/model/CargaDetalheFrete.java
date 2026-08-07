@@ -38,6 +38,8 @@ public class CargaDetalheFrete {
      * Lista de outros encargos
      **/
     private List<CargaDetalheFreteOutroEncargo> outrosEncargos = null;
+
+
     @XmlElement(name = "somatorioFretePorItemCarga")
     @ApiModelProperty(value = "")
     @Valid
@@ -49,20 +51,6 @@ public class CargaDetalheFrete {
      * Indicador de pendência de pagamento de frete.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não
      **/
     private PendenciaPagamentoEnum pendenciaPagamento = null;
-    @XmlElement(name = "totaisMoedaDestino")
-    @ApiModelProperty(value = "Lista de totais na moeda de destino")
-    @Valid
-    /**
-     * Lista de totais na moeda de destino
-     **/
-    private List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino = null;
-    @XmlElement(name = "totaisMoedaOrigem")
-    @ApiModelProperty(value = "Lista de totais na moeda de origem")
-    @Valid
-    /**
-     * Lista de totais na moeda de origem
-     **/
-    private List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -74,6 +62,22 @@ public class CargaDetalheFrete {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "totaisMoedaDestino")
+    @ApiModelProperty(value = "Lista de totais na moeda de destino")
+    @Valid
+    /**
+     * Lista de totais na moeda de destino
+     **/
+    private List<CargaDetalheFreteTotalMoedaDestino> totaisMoedaDestino = null;
+
+    @XmlElement(name = "totaisMoedaOrigem")
+    @ApiModelProperty(value = "Lista de totais na moeda de origem")
+    @Valid
+    /**
+     * Lista de totais na moeda de origem
+     **/
+    private List<CargaDetalheFreteTotalMoedaOrigem> totaisMoedaOrigem = null;
 
     /**
      * Get formaPgto
@@ -225,7 +229,6 @@ public class CargaDetalheFrete {
         this.totaisMoedaOrigem.add(totaisMoedaOrigemItem);
         return this;
     }
-
 
     @Override
     public String toString() {

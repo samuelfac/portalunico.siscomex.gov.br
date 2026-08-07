@@ -70,17 +70,6 @@ public class ProdutoConsultaItemCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Versão do produto.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 7
      *
      * @return versao
@@ -92,6 +81,17 @@ public class ProdutoConsultaItemCover {
 
     public void setVersao(String versao) {
         this.versao = versao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

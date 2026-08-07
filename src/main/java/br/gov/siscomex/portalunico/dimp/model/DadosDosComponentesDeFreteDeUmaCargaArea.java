@@ -60,17 +60,6 @@ public class DadosDosComponentesDeFreteDeUmaCargaArea {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista dos componentes do frete no destino
      *
      * @return componentesFreteDestino
@@ -92,6 +81,18 @@ public class DadosDosComponentesDeFreteDeUmaCargaArea {
     public DadosDosComponentesDeFreteDeUmaCargaArea addComponentesFreteDestinoItem(DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao componentesFreteDestinoItem) {
         this.componentesFreteDestino.add(componentesFreteDestinoItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

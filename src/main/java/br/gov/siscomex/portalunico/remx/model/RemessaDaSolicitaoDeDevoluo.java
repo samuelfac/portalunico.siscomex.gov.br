@@ -56,17 +56,6 @@ public class RemessaDaSolicitaoDeDevoluo {
     private String observacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do motivo da solicitação de devolução. No máximo 3 dígitos.
      *
      * @return codigoMotivoDevolucao
@@ -80,6 +69,17 @@ public class RemessaDaSolicitaoDeDevoluo {
 
     public void setCodigoMotivoDevolucao(String codigoMotivoDevolucao) {
         this.codigoMotivoDevolucao = codigoMotivoDevolucao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -123,11 +123,6 @@ public class RemessaDaSolicitaoDeDevoluo {
         return this;
     }
 
-    public RemessaDaSolicitaoDeDevoluo codigoMotivoDevolucao(String codigoMotivoDevolucao) {
-        this.codigoMotivoDevolucao = codigoMotivoDevolucao;
-        return this;
-    }
-
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
@@ -166,6 +161,11 @@ public class RemessaDaSolicitaoDeDevoluo {
 
     public RemessaDaSolicitaoDeDevoluo observacao(String observacao) {
         this.observacao = observacao;
+        return this;
+    }
+
+    public RemessaDaSolicitaoDeDevoluo codigoMotivoDevolucao(String codigoMotivoDevolucao) {
+        this.codigoMotivoDevolucao = codigoMotivoDevolucao;
         return this;
     }
 

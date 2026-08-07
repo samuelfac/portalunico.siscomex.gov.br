@@ -59,17 +59,6 @@ public class EstrangeiroOcasional {
     private String nome = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de vencimento da autorização ocasional&lt;br&gt;Formato: AAAA-MM-DD
      *
      * @return dataVencimentoAutorizacao
@@ -103,6 +92,17 @@ public class EstrangeiroOcasional {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Número da licença originária&lt;br&gt;Tamanho: 20
      *
      * @return licencaOriginaria
@@ -121,11 +121,6 @@ public class EstrangeiroOcasional {
         return this;
     }
 
-    public EstrangeiroOcasional pais(String pais) {
-        this.pais = pais;
-        return this;
-    }
-
     /**
      * Endereço do transportador&lt;br&gt;Tamanho: 120
      *
@@ -139,6 +134,11 @@ public class EstrangeiroOcasional {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public EstrangeiroOcasional pais(String pais) {
+        this.pais = pais;
+        return this;
     }
 
     /**

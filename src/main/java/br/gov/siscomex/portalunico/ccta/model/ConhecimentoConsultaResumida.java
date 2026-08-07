@@ -64,18 +64,21 @@ public class ConhecimentoConsultaResumida {
      * Número do conhecimento<br/>Tamanho mínimo: 1<br/>Tamanho máximo: 35
      **/
     private String identificacao = null;
-    @XmlElement(name = "indicadorPartesMadeira")
-    @ApiModelProperty(example = "S", value = "Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>")
-    /**
-     * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>
-     **/
-    private IndicadorPartesMadeiraEnum indicadorPartesMadeira = null;
+
+
     @XmlElement(name = "quantidadeVolumesConhecimento")
     @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
     /**
      * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
      **/
     private Integer quantidadeVolumesConhecimento = null;
+
+    @XmlElement(name = "indicadorPartesMadeira")
+    @ApiModelProperty(example = "S", value = "Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>")
+    /**
+     * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>
+     **/
+    private IndicadorPartesMadeiraEnum indicadorPartesMadeira = null;
 
     @XmlElement(name = "partesEstoque")
     @ApiModelProperty(value = "Lista os estoques ativos da carga<br/>")
@@ -92,32 +95,6 @@ public class ConhecimentoConsultaResumida {
      * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoBrutoConhecimento = null;
-    @XmlElement(name = "recepcoesComAvarias")
-    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
-    @Valid
-    /**
-     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
-     **/
-    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
-    @XmlElement(name = "ruc")
-    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
-    /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
-     **/
-    private String ruc = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
-    /**
-     * Tipo de carga.
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "viagensAssociadas")
-    @ApiModelProperty(value = "Lista contendo as viagens às quais a carga está associada<br/>")
-    @Valid
-    /**
-     * Lista contendo as viagens às quais a carga está associada<br/>
-     **/
-    private List<ChaveViagem> viagensAssociadas = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -129,6 +106,46 @@ public class ConhecimentoConsultaResumida {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "recepcoesComAvarias")
+    @ApiModelProperty(value = "Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>")
+    @Valid
+    /**
+     * Lista de recepções com avarias agrupadas por recinto aduaneiro<br/>
+     **/
+    private List<RecepcaoComAvaria> recepcoesComAvarias = null;
+
+    @XmlElement(name = "ruc")
+    @ApiModelProperty(example = "0BRIMP000555552000100DGXKKI9LMCG", value = "Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35")
+    /**
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga<br>Tamanho: 35
+     **/
+    private String ruc = null;
+
+    /**
+     * Código IATA do aeroporto de origem do conhecimento&lt;br/&gt;Tamanho: 3
+     *
+     * @return codigoAeroportoOrigemConhecimento
+     **/
+    @JsonProperty("codigoAeroportoOrigemConhecimento")
+    public String getCodigoAeroportoOrigemConhecimento() {
+        return codigoAeroportoOrigemConhecimento;
+    }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "HAWB", value = "Tipo de carga.")
+    /**
+     * Tipo de carga.
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "viagensAssociadas")
+    @ApiModelProperty(value = "Lista contendo as viagens às quais a carga está associada<br/>")
+    @Valid
+    /**
+     * Lista contendo as viagens às quais a carga está associada<br/>
+     **/
+    private List<ChaveViagem> viagensAssociadas = null;
 
     /**
      * Lista os bloqueios ativos da carga&lt;br/&gt;
@@ -152,16 +169,6 @@ public class ConhecimentoConsultaResumida {
     public ConhecimentoConsultaResumida addBloqueiosAtivosItem(BloqueioCargaConsultaResumida bloqueiosAtivosItem) {
         this.bloqueiosAtivos.add(bloqueiosAtivosItem);
         return this;
-    }
-
-    /**
-     * Código IATA do aeroporto de origem do conhecimento&lt;br/&gt;Tamanho: 3
-     *
-     * @return codigoAeroportoOrigemConhecimento
-     **/
-    @JsonProperty("codigoAeroportoOrigemConhecimento")
-    public String getCodigoAeroportoOrigemConhecimento() {
-        return codigoAeroportoOrigemConhecimento;
     }
 
     /**
@@ -200,6 +207,16 @@ public class ConhecimentoConsultaResumida {
     public ConhecimentoConsultaResumida codigoAeroportoDestinoConhecimento(String codigoAeroportoDestinoConhecimento) {
         this.codigoAeroportoDestinoConhecimento = codigoAeroportoDestinoConhecimento;
         return this;
+    }
+
+    /**
+     * Lista os estoques ativos da carga&lt;br/&gt;
+     *
+     * @return partesEstoque
+     **/
+    @JsonProperty("partesEstoque")
+    public List<EstoqueConsultaResumida> getPartesEstoque() {
+        return partesEstoque;
     }
 
     public void setCodigoAeroportoOrigemConhecimento(String codigoAeroportoOrigemConhecimento) {
@@ -250,16 +267,6 @@ public class ConhecimentoConsultaResumida {
     }
 
     /**
-     * Lista os estoques ativos da carga&lt;br/&gt;
-     *
-     * @return partesEstoque
-     **/
-    @JsonProperty("partesEstoque")
-    public List<EstoqueConsultaResumida> getPartesEstoque() {
-        return partesEstoque;
-    }
-
-    /**
      * Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira&lt;br/&gt; S - Sim &lt;br/&gt;N - Não&lt;br/&gt;
      *
      * @return indicadorPartesMadeira
@@ -279,6 +286,16 @@ public class ConhecimentoConsultaResumida {
     public ConhecimentoConsultaResumida indicadorPartesMadeira(IndicadorPartesMadeiraEnum indicadorPartesMadeira) {
         this.indicadorPartesMadeira = indicadorPartesMadeira;
         return this;
+    }
+
+    /**
+     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
+     *
+     * @return ruc
+     **/
+    @JsonProperty("ruc")
+    public String getRuc() {
+        return ruc;
     }
 
     public void setPartesEstoque(List<EstoqueConsultaResumida> partesEstoque) {
@@ -334,22 +351,7 @@ public class ConhecimentoConsultaResumida {
     }
 
     /**
-     * Número único de referencia da carga que atende à recomendação da Organização Mundial de Aduanas (OMA) para a Unique Consignment Reference (UCR). Utilizado para o rastreamento de uma carga, servindo para o controle da armazenagem e movimentação da carga&lt;br&gt;Tamanho: 35
-     *
-     * @return ruc
-     **/
-    @JsonProperty("ruc")
-    public String getRuc() {
-        return ruc;
-    }
-
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
-    }
-
-    /**
      * Lista de recepções com avarias agrupadas por recinto aduaneiro&lt;br/&gt;
-     *
      * @return recepcoesComAvarias
      **/
     @JsonProperty("recepcoesComAvarias")
@@ -369,6 +371,32 @@ public class ConhecimentoConsultaResumida {
     public ConhecimentoConsultaResumida addRecepcoesComAvariasItem(RecepcaoComAvaria recepcoesComAvariasItem) {
         this.recepcoesComAvarias.add(recepcoesComAvariasItem);
         return this;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
+    @Override
+    public String toString() {
+
+        String sb = "class ConhecimentoConsultaResumida {\n" +
+                "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
+                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
+                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    indicadorPartesMadeira: " + toIndentedString(indicadorPartesMadeira) + "\n" +
+                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
+                "    pesoBrutoConhecimento: " + toIndentedString(pesoBrutoConhecimento) + "\n" +
+                "    quantidadeVolumesConhecimento: " + toIndentedString(quantidadeVolumesConhecimento) + "\n" +
+                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
+                "    ruc: " + toIndentedString(ruc) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    viagensAssociadas: " + toIndentedString(viagensAssociadas) + "\n" +
+                "}";
+        return sb;
     }
 
     public ConhecimentoConsultaResumida ruc(String ruc) {
@@ -398,31 +426,8 @@ public class ConhecimentoConsultaResumida {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class ConhecimentoConsultaResumida {\n" +
-                "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
-                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    indicadorPartesMadeira: " + toIndentedString(indicadorPartesMadeira) + "\n" +
-                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
-                "    pesoBrutoConhecimento: " + toIndentedString(pesoBrutoConhecimento) + "\n" +
-                "    quantidadeVolumesConhecimento: " + toIndentedString(quantidadeVolumesConhecimento) + "\n" +
-                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
-                "    ruc: " + toIndentedString(ruc) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    viagensAssociadas: " + toIndentedString(viagensAssociadas) + "\n" +
-                "}";
-        return sb;
-    }
-
     /**
      * Lista contendo as viagens às quais a carga está associada&lt;br/&gt;
-     *
      * @return viagensAssociadas
      **/
     @JsonProperty("viagensAssociadas")
@@ -504,7 +509,7 @@ public class ConhecimentoConsultaResumida {
 
         TipoEnum(String v) {
             value = v;
-    }
+        }
 
         public static TipoEnum fromValue(String v) {
             for (TipoEnum b : TipoEnum.values()) {
@@ -517,11 +522,11 @@ public class ConhecimentoConsultaResumida {
 
         public String value() {
             return value;
-    }
+        }
 
         @Override
         public String toString() {
             return String.valueOf(value);
-    }
+        }
     }
 }

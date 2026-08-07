@@ -73,6 +73,16 @@ public class DadosNavioObrigatorio {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosNavioObrigatorio {\n" +
+                "    imo: " + toIndentedString(imo) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -82,15 +92,5 @@ public class DadosNavioObrigatorio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosNavioObrigatorio {\n" +
-                "    imo: " + toIndentedString(imo) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "}";
-        return sb;
     }
 }

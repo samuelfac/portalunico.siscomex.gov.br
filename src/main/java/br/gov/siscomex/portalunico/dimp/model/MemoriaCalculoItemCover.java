@@ -64,6 +64,8 @@ public class MemoriaCalculoItemCover {
      * Percentual de redução da base de cálculo.<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal percentualReducaoBaseCalculo = null;
+
+
     @XmlElement(name = "percentualReducaoAliquotaReduzida")
     @ApiModelProperty(example = "4227.8", value = "Percentual de redução da alíquota reduzida (%).<br>Tamanho: 16,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
     @Valid
@@ -108,19 +110,6 @@ public class MemoriaCalculoItemCover {
      * Valor da alíquota reduzida (%).<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorAliquotaReduzida = null;
-    @XmlElement(name = "tributado")
-    @ApiModelProperty(example = "true", value = "Indicador de tributação.")
-    /**
-     * Indicador de tributação.
-     **/
-    private Boolean tributado = null;
-    @XmlElement(name = "percentualPagamento")
-    @ApiModelProperty(example = "4227.8", value = "Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal percentualPagamento = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -132,6 +121,21 @@ public class MemoriaCalculoItemCover {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tributado")
+    @ApiModelProperty(example = "true", value = "Indicador de tributação.")
+    /**
+     * Indicador de tributação.
+     **/
+    private Boolean tributado = null;
+
+    @XmlElement(name = "percentualPagamento")
+    @ApiModelProperty(example = "4227.8", value = "Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal percentualPagamento = null;
 
     /**
      * Código do fundamento legal do regime tributário de importação utilizado na declaração.&lt;br&gt;Domínio: Fundamentos legais existentes no sistema Tratamento Tributário.
@@ -328,7 +332,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Valor normal em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return normal
      **/
     @JsonProperty("normal")
@@ -347,7 +350,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Indicador de tributação.
-     *
      * @return tributado
      **/
     @JsonProperty("tributado")
@@ -366,7 +368,6 @@ public class MemoriaCalculoItemCover {
 
     /**
      * Percentual de pagamento, preenchido no caso de item com fundamento legal correspondente à admissão temporária com pagamento proporcional (ATUE). Para as demais Duimp será retornado nulo.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return percentualPagamento
      **/
     @JsonProperty("percentualPagamento")
@@ -382,7 +383,6 @@ public class MemoriaCalculoItemCover {
         this.percentualPagamento = percentualPagamento;
         return this;
     }
-
 
     @Override
     public String toString() {

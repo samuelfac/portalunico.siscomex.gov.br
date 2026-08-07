@@ -88,17 +88,6 @@ public class SefazPagamentoCover {
     private SefazPagamentoJurosCover pagamentoJuros = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Versão da Duimp em que este pagamento foi realizado.&lt;br&gt;Tamanho: 4&lt;br&gt;Valor mínimo: 0001&lt;br&gt;Valor máximo: 9999
      *
      * @return versaoDuimpPagamento
@@ -151,6 +140,17 @@ public class SefazPagamentoCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Número da conta&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 10
      *
      * @return conta
@@ -169,11 +169,6 @@ public class SefazPagamentoCover {
         return this;
     }
 
-    public SefazPagamentoCover agencia(String agencia) {
-        this.agencia = agencia;
-        return this;
-    }
-
     /**
      * Código da receita&lt;br&gt;Tamanho: 4&lt;br&gt;Formato: &#39;NNNN&#39;
      *
@@ -186,6 +181,11 @@ public class SefazPagamentoCover {
 
     public void setCodigoReceita(String codigoReceita) {
         this.codigoReceita = codigoReceita;
+    }
+
+    public SefazPagamentoCover agencia(String agencia) {
+        this.agencia = agencia;
+        return this;
     }
 
     /**
@@ -207,11 +207,6 @@ public class SefazPagamentoCover {
         return this;
     }
 
-    public SefazPagamentoCover codigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-        return this;
-    }
-
     /**
      * Valor pago&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
@@ -224,6 +219,11 @@ public class SefazPagamentoCover {
 
     public void setValorTributo(BigDecimal valorTributo) {
         this.valorTributo = valorTributo;
+    }
+
+    public SefazPagamentoCover codigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
+        return this;
     }
 
     /**

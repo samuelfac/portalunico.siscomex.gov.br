@@ -36,39 +36,47 @@ public class DUE {
     @XmlElement(name = "bloqueio")
     @ApiModelProperty(value = "")
     private Boolean bloqueio = null;
-    @XmlElement(name = "canal")
-    @ApiModelProperty(value = "")
-    private CanalEnum canal = null;
-    @XmlElement(name = "chaveDeAcesso")
-    @ApiModelProperty(example = "17AAA101000", value = "Chave de acesso<br />Tamanho: 11<br />Formato: 'NNAAANNNNNN'")
-    /**
-     * Chave de acesso<br />Tamanho: 11<br />Formato: 'NNAAANNNNNN'
-     **/
-    private String chaveDeAcesso = null;
-    @XmlElement(name = "consorciada")
-    @ApiModelProperty(value = "")
-    private Boolean consorciada = null;
-    @XmlElement(name = "dat")
-    @ApiModelProperty(value = "")
-    private Boolean dat = null;
-    @XmlElement(name = "dataDaAverbacao")
-    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da averbação da DU-E.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
-    /**
-     * Data da averbação da DU-E.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
-     **/
-    private OffsetDateTime dataDaAverbacao = null;
-    @XmlElement(name = "dataDeCriacao")
-    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
-    /**
-     * Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
-     **/
-    private OffsetDateTime dataDeCriacao = null;
+
+
     @XmlElement(name = "dataDoCCE")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data em que a carga foi completamente exportada(CCE).<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
     /**
      * Data em que a carga foi completamente exportada(CCE).<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
      **/
     private OffsetDateTime dataDoCCE = null;
+
+    @XmlElement(name = "canal")
+    @ApiModelProperty(value = "")
+    private CanalEnum canal = null;
+
+    @XmlElement(name = "chaveDeAcesso")
+    @ApiModelProperty(example = "17AAA101000", value = "Chave de acesso<br />Tamanho: 11<br />Formato: 'NNAAANNNNNN'")
+    /**
+     * Chave de acesso<br />Tamanho: 11<br />Formato: 'NNAAANNNNNN'
+     **/
+    private String chaveDeAcesso = null;
+
+    @XmlElement(name = "consorciada")
+    @ApiModelProperty(value = "")
+    private Boolean consorciada = null;
+
+    @XmlElement(name = "dat")
+    @ApiModelProperty(value = "")
+    private Boolean dat = null;
+
+    @XmlElement(name = "dataDaAverbacao")
+    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data da averbação da DU-E.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    /**
+     * Data da averbação da DU-E.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     **/
+    private OffsetDateTime dataDaAverbacao = null;
+
+    @XmlElement(name = "dataDeCriacao")
+    @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
+    /**
+     * Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
+     **/
+    private OffsetDateTime dataDeCriacao = null;
 
     @XmlElement(name = "dataDeRegistro")
     @ApiModelProperty(example = "2019-09-20T14:13:46.966Z", value = "Data de registro da DU-E. Esta data é atualizada quando a DU-E recebe qualquer tipo de movimentação.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'")
@@ -94,187 +102,129 @@ public class DUE {
      * Data do desembaraço da DU-E.<br />Formato:'yyyy-MM-dd'T'HH:mm:ss.SSSZ'
      **/
     private OffsetDateTime dataDoDesembaraco = null;
+    @XmlElement(name = "despachoEmRecintoAlfandegado")
+    @ApiModelProperty(value = "")
+    private Boolean despachoEmRecintoAlfandegado = null;
+
     @XmlElement(name = "declarante")
     @ApiModelProperty(value = "")
     @Valid
     private PessoaDTO declarante = null;
-    @XmlElement(name = "despachoEmRecintoDomiciliar")
-    @ApiModelProperty(value = "")
-    private Boolean despachoEmRecintoDomiciliar = null;
-
-    @XmlElement(name = "despachoEmRecintoAlfandegado")
-    @ApiModelProperty(value = "")
-    private Boolean despachoEmRecintoAlfandegado = null;
-    @XmlElement(name = "embarqueEmRecintoAlfandegado")
-    @ApiModelProperty(value = "")
-    private Boolean embarqueEmRecintoAlfandegado = null;
-    @XmlElement(name = "enderecoDoEstabelecimentoDoLocalDeDespacho")
-    @ApiModelProperty(value = "Endereço do estabelecimento do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
-    /**
-     * Endereço do estabelecimento do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
-     **/
-    private String enderecoDoEstabelecimentoDoLocalDeDespacho = null;
-    @XmlElement(name = "enderecoDoEstabelecimentoDoLocalDeEmbarque")
-    @ApiModelProperty(value = "Endereço do estabelecimento do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
-    /**
-     * Endereço do estabelecimento do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
-     **/
-    private String enderecoDoEstabelecimentoDoLocalDeEmbarque = null;
-    @XmlElement(name = "estabelecimentoDoLocalDeDespacho")
-    @ApiModelProperty(value = "")
-    @Valid
-    private CNPJ estabelecimentoDoLocalDeDespacho = null;
-    @XmlElement(name = "eventosDoHistorico")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<EventoDoHistoricoDTO> eventosDoHistorico = null;
-    @XmlElement(name = "exigenciaAtiva")
-    @ApiModelProperty(value = "")
-    private Boolean exigenciaAtiva = null;
-    @XmlElement(name = "exigenciasFiscaisEstruturadas")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Link exigenciasFiscaisEstruturadas = null;
-    @XmlElement(name = "impedidoDeEmbarque")
-    @ApiModelProperty(value = "")
-    private Boolean impedidoDeEmbarque = null;
-    @XmlElement(name = "inclusaoNotaFiscal")
-    @ApiModelProperty(value = "")
-    private Boolean inclusaoNotaFiscal = null;
-
     @XmlElement(name = "formaDeExportacao")
     @ApiModelProperty(value = "Forma de Exportação da DU-E")
     /**
      * Forma de Exportação da DU-E
      **/
     private FormaDeExportacaoEnum formaDeExportacao = null;
-    @XmlElement(name = "informacoesComplementares")
-    @ApiModelProperty(value = "Informações complementares<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000")
-    /**
-     * Informações complementares<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000
-     **/
-    private String informacoesComplementares = null;
-    @XmlElement(name = "itens")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<ItemDUERemoteDTO> itens = null;
-    @XmlElement(name = "justificativaDeDispensaDaNotaFiscal")
-    @ApiModelProperty(value = "Justificativa de dispensa da Nota Fiscal<br />Tamanho mínimo: 0<br />Tamanho máximo: 1000")
-    /**
-     * Justificativa de dispensa da Nota Fiscal<br />Tamanho mínimo: 0<br />Tamanho máximo: 1000
-     **/
-    private String justificativaDeDispensaDaNotaFiscal = null;
-    @XmlElement(name = "latitudeDoLocalDeDespacho")
-    @ApiModelProperty(value = "Latitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
-    /**
-     * Latitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
-     **/
-    private String latitudeDoLocalDeDespacho = null;
-    @XmlElement(name = "moeda")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MoedaDto moeda = null;
-    @XmlElement(name = "motivoDeDispensaDaNotaFiscal")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MotivoDispensaNotaFiscalDTO motivoDeDispensaDaNotaFiscal = null;
 
+    @XmlElement(name = "despachoEmRecintoDomiciliar")
+    @ApiModelProperty(value = "")
+    private Boolean despachoEmRecintoDomiciliar = null;
+
+    @XmlElement(name = "embarqueEmRecintoAlfandegado")
+    @ApiModelProperty(value = "")
+    private Boolean embarqueEmRecintoAlfandegado = null;
+
+    @XmlElement(name = "enderecoDoEstabelecimentoDoLocalDeDespacho")
+    @ApiModelProperty(value = "Endereço do estabelecimento do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
+    /**
+     * Endereço do estabelecimento do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
+     **/
+    private String enderecoDoEstabelecimentoDoLocalDeDespacho = null;
+
+    @XmlElement(name = "enderecoDoEstabelecimentoDoLocalDeEmbarque")
+    @ApiModelProperty(value = "Endereço do estabelecimento do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
+    /**
+     * Endereço do estabelecimento do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
+     **/
+    private String enderecoDoEstabelecimentoDoLocalDeEmbarque = null;
+
+    @XmlElement(name = "estabelecimentoDoLocalDeDespacho")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CNPJ estabelecimentoDoLocalDeDespacho = null;
+
+    @XmlElement(name = "eventosDoHistorico")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<EventoDoHistoricoDTO> eventosDoHistorico = null;
+
+    @XmlElement(name = "exigenciaAtiva")
+    @ApiModelProperty(value = "")
+    private Boolean exigenciaAtiva = null;
+
+    @XmlElement(name = "exigenciasFiscaisEstruturadas")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Link exigenciasFiscaisEstruturadas = null;
     @XmlElement(name = "longitudeDoLocalDeDespacho")
     @ApiModelProperty(value = "Longitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
     /**
      * Longitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
      **/
     private String longitudeDoLocalDeDespacho = null;
+    @XmlElement(name = "paisImportador")
+    @ApiModelProperty(value = "")
+    @Valid
+    private PaisDto paisImportador = null;
+
+    @XmlElement(name = "impedidoDeEmbarque")
+    @ApiModelProperty(value = "")
+    private Boolean impedidoDeEmbarque = null;
+
+    @XmlElement(name = "inclusaoNotaFiscal")
+    @ApiModelProperty(value = "")
+    private Boolean inclusaoNotaFiscal = null;
+
+    @XmlElement(name = "informacoesComplementares")
+    @ApiModelProperty(value = "Informações complementares<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000")
+    /**
+     * Informações complementares<br />Tamanho mínimo: 0<br />Tamanho máximo: 2000
+     **/
+    private String informacoesComplementares = null;
+
+    @XmlElement(name = "itens")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<ItemDUERemoteDTO> itens = null;
+
+    @XmlElement(name = "justificativaDeDispensaDaNotaFiscal")
+    @ApiModelProperty(value = "Justificativa de dispensa da Nota Fiscal<br />Tamanho mínimo: 0<br />Tamanho máximo: 1000")
+    /**
+     * Justificativa de dispensa da Nota Fiscal<br />Tamanho mínimo: 0<br />Tamanho máximo: 1000
+     **/
+    private String justificativaDeDispensaDaNotaFiscal = null;
+
+    @XmlElement(name = "latitudeDoLocalDeDespacho")
+    @ApiModelProperty(value = "Latitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"")
+    /**
+     * Latitude do Local de Despacho<br />Regex: \"^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\"
+     **/
+    private String latitudeDoLocalDeDespacho = null;
+    @XmlElement(name = "situacaoDoTratamentoAdministrativo")
+    @ApiModelProperty(value = "")
+    private SituacaoDoTratamentoAdministrativoEnum situacaoDoTratamentoAdministrativo = null;
+
+    @XmlElement(name = "moeda")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MoedaDto moeda = null;
+
+    @XmlElement(name = "motivoDeDispensaDaNotaFiscal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MotivoDispensaNotaFiscalDTO motivoDeDispensaDaNotaFiscal = null;
+
     @XmlElement(name = "numero")
     @ApiModelProperty(example = "19BR0000056196", value = "Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'")
     /**
      * Número da DUE<br />Tamanho: 14<br />Formato: 'NNAANNNNNNNNNN'
      **/
     private String numero = null;
+
     @XmlElement(name = "oea")
     @ApiModelProperty(value = "")
     private Boolean oea = null;
-    @XmlElement(name = "recintoAduaneiroDeDespacho")
-    @ApiModelProperty(value = "")
-    @Valid
-    private RecintoAduaneiroDto recintoAduaneiroDeDespacho = null;
-    @XmlElement(name = "recintoAduaneiroDeEmbarque")
-    @ApiModelProperty(value = "")
-    @Valid
-    private RecintoAduaneiroDto recintoAduaneiroDeEmbarque = null;
-
-    @XmlElement(name = "paisImportador")
-    @ApiModelProperty(value = "")
-    @Valid
-    private PaisDto paisImportador = null;
-    @XmlElement(name = "referenciaDoEnderecoDoLocalDeDespacho")
-    @ApiModelProperty(value = "Referência do endereço do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
-    /**
-     * Referência do endereço do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
-     **/
-    private String referenciaDoEnderecoDoLocalDeDespacho = null;
-    @XmlElement(name = "referenciaDoEnderecoDoLocalDeEmbarque")
-    @ApiModelProperty(value = "Referência do endereço do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
-    /**
-     * Referência do endereço do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
-     **/
-    private String referenciaDoEnderecoDoLocalDeEmbarque = null;
-    @XmlElement(name = "responsavelPeloACD")
-    @ApiModelProperty(value = "")
-    private ResponsavelPeloACDEnum responsavelPeloACD = null;
-    @XmlElement(name = "ruc")
-    @ApiModelProperty(example = "9BR00000000100000000000000000023366", value = "RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
-    /**
-     * RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
-     **/
-    private String ruc = null;
-    @XmlElement(name = "situacao")
-    @ApiModelProperty(value = "")
-    private SituacaoEnum situacao = null;
-    @XmlElement(name = "situacaoEspecial")
-    @ApiModelProperty(value = "")
-    private SituacaoEspecialEnum situacaoEspecial = null;
-    @XmlElement(name = "situacoesDaCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<SituacaoDaCargaDTO> situacoesDaCarga = null;
-    @XmlElement(name = "solicitacoes")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<SolicitacaoDTO> solicitacoes = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    private TipoEnum tipo = null;
-    @XmlElement(name = "tratamentoPrioritario")
-    @ApiModelProperty(value = "")
-    private Boolean tratamentoPrioritario = null;
-
-    @XmlElement(name = "situacaoDoTratamentoAdministrativo")
-    @ApiModelProperty(value = "")
-    private SituacaoDoTratamentoAdministrativoEnum situacaoDoTratamentoAdministrativo = null;
-    @XmlElement(name = "unidadeLocalDeAnaliseFiscal")
-    @ApiModelProperty(value = "")
-    @Valid
-    private UnidadeLocalRFBDto unidadeLocalDeAnaliseFiscal = null;
-    @XmlElement(name = "unidadeLocalDeDespacho")
-    @ApiModelProperty(value = "")
-    @Valid
-    private UnidadeLocalRFBDto unidadeLocalDeDespacho = null;
-    @XmlElement(name = "unidadeLocalDeEmbarque")
-    @ApiModelProperty(value = "")
-    @Valid
-    private UnidadeLocalRFBDto unidadeLocalDeEmbarque = null;
-    @XmlElement(name = "valorTotalMercadoria")
-    @ApiModelProperty(value = "Valor total da mercadoria<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor total da mercadoria<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorTotalMercadoria = null;
-    @XmlElement(name = "viaDeTransporteEspecial")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ViaTransporteEspecialDTO viaDeTransporteEspecial = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -286,6 +236,133 @@ public class DUE {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "recintoAduaneiroDeDespacho")
+    @ApiModelProperty(value = "")
+    @Valid
+    private RecintoAduaneiroDto recintoAduaneiroDeDespacho = null;
+
+    @XmlElement(name = "recintoAduaneiroDeEmbarque")
+    @ApiModelProperty(value = "")
+    @Valid
+    private RecintoAduaneiroDto recintoAduaneiroDeEmbarque = null;
+
+    @XmlElement(name = "referenciaDoEnderecoDoLocalDeDespacho")
+    @ApiModelProperty(value = "Referência do endereço do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
+    /**
+     * Referência do endereço do local de despacho<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
+     **/
+    private String referenciaDoEnderecoDoLocalDeDespacho = null;
+
+    @XmlElement(name = "referenciaDoEnderecoDoLocalDeEmbarque")
+    @ApiModelProperty(value = "Referência do endereço do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240")
+    /**
+     * Referência do endereço do local de embarque<br />Tamanho mínimo: 0<br />Tamanho máximo: 240
+     **/
+    private String referenciaDoEnderecoDoLocalDeEmbarque = null;
+
+    /**
+     * Get dat
+     *
+     * @return dat
+     **/
+    @JsonProperty("dat")
+    public Boolean isisDat() {
+        return dat;
+    }
+
+    @XmlElement(name = "responsavelPeloACD")
+    @ApiModelProperty(value = "")
+    private ResponsavelPeloACDEnum responsavelPeloACD = null;
+
+    @XmlElement(name = "ruc")
+    @ApiModelProperty(example = "9BR00000000100000000000000000023366", value = "RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'")
+    /**
+     * RUC - Número da referência única de carga<br />Tamanho: 35<br />Formato: 'NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN'
+     **/
+    private String ruc = null;
+
+    public void setDat(Boolean dat) {
+        this.dat = dat;
+    }
+
+    @XmlElement(name = "situacao")
+    @ApiModelProperty(value = "")
+    private SituacaoEnum situacao = null;
+
+    public DUE dat(Boolean dat) {
+        this.dat = dat;
+        return this;
+    }
+
+    /**
+     * Data em que a carga foi completamente exportada(CCE).&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
+     *
+     * @return dataDoCCE
+     **/
+    @JsonProperty("dataDoCCE")
+    public OffsetDateTime getDataDoCCE() {
+        return dataDoCCE;
+    }
+
+    public void setDataDoCCE(OffsetDateTime dataDoCCE) {
+        this.dataDoCCE = dataDoCCE;
+    }
+
+    @XmlElement(name = "situacaoEspecial")
+    @ApiModelProperty(value = "")
+    private SituacaoEspecialEnum situacaoEspecial = null;
+
+    @XmlElement(name = "situacoesDaCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<SituacaoDaCargaDTO> situacoesDaCarga = null;
+
+    @XmlElement(name = "solicitacoes")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<SolicitacaoDTO> solicitacoes = null;
+
+    public DUE dataDoCCE(OffsetDateTime dataDoCCE) {
+        this.dataDoCCE = dataDoCCE;
+        return this;
+    }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "tratamentoPrioritario")
+    @ApiModelProperty(value = "")
+    private Boolean tratamentoPrioritario = null;
+
+    @XmlElement(name = "unidadeLocalDeAnaliseFiscal")
+    @ApiModelProperty(value = "")
+    @Valid
+    private UnidadeLocalRFBDto unidadeLocalDeAnaliseFiscal = null;
+
+    @XmlElement(name = "unidadeLocalDeDespacho")
+    @ApiModelProperty(value = "")
+    @Valid
+    private UnidadeLocalRFBDto unidadeLocalDeDespacho = null;
+
+    @XmlElement(name = "unidadeLocalDeEmbarque")
+    @ApiModelProperty(value = "")
+    @Valid
+    private UnidadeLocalRFBDto unidadeLocalDeEmbarque = null;
+
+    @XmlElement(name = "valorTotalMercadoria")
+    @ApiModelProperty(value = "Valor total da mercadoria<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.")
+    @Valid
+    /**
+     * Valor total da mercadoria<br />Tamanho: 15,2<br />Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorTotalMercadoria = null;
+
+    @XmlElement(name = "viaDeTransporteEspecial")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ViaTransporteEspecialDTO viaDeTransporteEspecial = null;
 
     /**
      * Get atosConcessoriosIsencao
@@ -405,6 +482,25 @@ public class DUE {
     }
 
     /**
+     * Get declaracaoTributaria
+     *
+     * @return declaracaoTributaria
+     **/
+    @JsonProperty("declaracaoTributaria")
+    public DeclaracaoTributaria getDeclaracaoTributaria() {
+        return declaracaoTributaria;
+    }
+
+    public void setDeclaracaoTributaria(DeclaracaoTributaria declaracaoTributaria) {
+        this.declaracaoTributaria = declaracaoTributaria;
+    }
+
+    public DUE declaracaoTributaria(DeclaracaoTributaria declaracaoTributaria) {
+        this.declaracaoTributaria = declaracaoTributaria;
+        return this;
+    }
+
+    /**
      * Data da averbação da DU-E.&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataDaAverbacao
@@ -425,7 +521,6 @@ public class DUE {
 
     /**
      * Data de criação da DU-E. Esta data é atualizada apenas uma vez quando o documento DU-E é criado.&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
      * @return dataDeCriacao
      **/
     @JsonProperty("dataDeCriacao")
@@ -439,62 +534,6 @@ public class DUE {
 
     public DUE dataDeCriacao(OffsetDateTime dataDeCriacao) {
         this.dataDeCriacao = dataDeCriacao;
-        return this;
-    }
-
-    /**
-     * Get dat
-     * @return dat
-     **/
-    @JsonProperty("dat")
-    public Boolean isisDat() {
-        return dat;
-    }
-
-    public void setDat(Boolean dat) {
-        this.dat = dat;
-    }
-
-    public DUE dat(Boolean dat) {
-        this.dat = dat;
-        return this;
-    }
-
-    /**
-     * Data em que a carga foi completamente exportada(CCE).&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataDoCCE
-     **/
-    @JsonProperty("dataDoCCE")
-    public OffsetDateTime getDataDoCCE() {
-        return dataDoCCE;
-    }
-
-    public void setDataDoCCE(OffsetDateTime dataDoCCE) {
-        this.dataDoCCE = dataDoCCE;
-    }
-
-    public DUE dataDoCCE(OffsetDateTime dataDoCCE) {
-        this.dataDoCCE = dataDoCCE;
-        return this;
-    }
-
-    /**
-     * Get declaracaoTributaria
-     *
-     * @return declaracaoTributaria
-     **/
-    @JsonProperty("declaracaoTributaria")
-    public DeclaracaoTributaria getDeclaracaoTributaria() {
-        return declaracaoTributaria;
-    }
-
-    public void setDeclaracaoTributaria(DeclaracaoTributaria declaracaoTributaria) {
-        this.declaracaoTributaria = declaracaoTributaria;
-    }
-
-    public DUE declaracaoTributaria(DeclaracaoTributaria declaracaoTributaria) {
-        this.declaracaoTributaria = declaracaoTributaria;
         return this;
     }
 
@@ -573,8 +612,45 @@ public class DUE {
     }
 
     /**
-     * Get despachoEmRecintoAlfandegado
+     * Get embarqueEmRecintoAlfandegado
      *
+     * @return embarqueEmRecintoAlfandegado
+     **/
+    @JsonProperty("embarqueEmRecintoAlfandegado")
+    public Boolean isisEmbarqueEmRecintoAlfandegado() {
+        return embarqueEmRecintoAlfandegado;
+    }
+
+    public void setEmbarqueEmRecintoAlfandegado(Boolean embarqueEmRecintoAlfandegado) {
+        this.embarqueEmRecintoAlfandegado = embarqueEmRecintoAlfandegado;
+    }
+
+    public DUE embarqueEmRecintoAlfandegado(Boolean embarqueEmRecintoAlfandegado) {
+        this.embarqueEmRecintoAlfandegado = embarqueEmRecintoAlfandegado;
+        return this;
+    }
+
+    /**
+     * Get exigenciaAtiva
+     *
+     * @return exigenciaAtiva
+     **/
+    @JsonProperty("exigenciaAtiva")
+    public Boolean isisExigenciaAtiva() {
+        return exigenciaAtiva;
+    }
+
+    public void setExigenciaAtiva(Boolean exigenciaAtiva) {
+        this.exigenciaAtiva = exigenciaAtiva;
+    }
+
+    public DUE exigenciaAtiva(Boolean exigenciaAtiva) {
+        this.exigenciaAtiva = exigenciaAtiva;
+        return this;
+    }
+
+    /**
+     * Get despachoEmRecintoAlfandegado
      * @return despachoEmRecintoAlfandegado
      **/
     @JsonProperty("despachoEmRecintoAlfandegado")
@@ -593,7 +669,6 @@ public class DUE {
 
     /**
      * Get despachoEmRecintoDomiciliar
-     *
      * @return despachoEmRecintoDomiciliar
      **/
     @JsonProperty("despachoEmRecintoDomiciliar")
@@ -607,6 +682,25 @@ public class DUE {
 
     public DUE despachoEmRecintoDomiciliar(Boolean despachoEmRecintoDomiciliar) {
         this.despachoEmRecintoDomiciliar = despachoEmRecintoDomiciliar;
+        return this;
+    }
+
+    /**
+     * Get inclusaoNotaFiscal
+     *
+     * @return inclusaoNotaFiscal
+     **/
+    @JsonProperty("inclusaoNotaFiscal")
+    public Boolean isisInclusaoNotaFiscal() {
+        return inclusaoNotaFiscal;
+    }
+
+    public void setInclusaoNotaFiscal(Boolean inclusaoNotaFiscal) {
+        this.inclusaoNotaFiscal = inclusaoNotaFiscal;
+    }
+
+    public DUE inclusaoNotaFiscal(Boolean inclusaoNotaFiscal) {
+        this.inclusaoNotaFiscal = inclusaoNotaFiscal;
         return this;
     }
 
@@ -649,26 +743,7 @@ public class DUE {
     }
 
     /**
-     * Get embarqueEmRecintoAlfandegado
-     * @return embarqueEmRecintoAlfandegado
-     **/
-    @JsonProperty("embarqueEmRecintoAlfandegado")
-    public Boolean isisEmbarqueEmRecintoAlfandegado() {
-        return embarqueEmRecintoAlfandegado;
-    }
-
-    public void setEmbarqueEmRecintoAlfandegado(Boolean embarqueEmRecintoAlfandegado) {
-        this.embarqueEmRecintoAlfandegado = embarqueEmRecintoAlfandegado;
-    }
-
-    public DUE embarqueEmRecintoAlfandegado(Boolean embarqueEmRecintoAlfandegado) {
-        this.embarqueEmRecintoAlfandegado = embarqueEmRecintoAlfandegado;
-        return this;
-    }
-
-    /**
      * Get estabelecimentoDoLocalDeDespacho
-     *
      * @return estabelecimentoDoLocalDeDespacho
      **/
     @JsonProperty("estabelecimentoDoLocalDeDespacho")
@@ -687,7 +762,6 @@ public class DUE {
 
     /**
      * Get eventosDoHistorico
-     *
      * @return eventosDoHistorico
      **/
     @JsonProperty("eventosDoHistorico")
@@ -706,6 +780,25 @@ public class DUE {
 
     public DUE addEventosDoHistoricoItem(EventoDoHistoricoDTO eventosDoHistoricoItem) {
         this.eventosDoHistorico.add(eventosDoHistoricoItem);
+        return this;
+    }
+
+    /**
+     * Get oea
+     *
+     * @return oea
+     **/
+    @JsonProperty("oea")
+    public Boolean isisOea() {
+        return oea;
+    }
+
+    public void setOea(Boolean oea) {
+        this.oea = oea;
+    }
+
+    public DUE oea(Boolean oea) {
+        this.oea = oea;
         return this;
     }
 
@@ -729,7 +822,6 @@ public class DUE {
 
     /**
      * Forma de Exportação da DU-E
-     *
      * @return formaDeExportacao
      **/
     @JsonProperty("formaDeExportacao")
@@ -746,24 +838,6 @@ public class DUE {
 
     public DUE formaDeExportacao(FormaDeExportacaoEnum formaDeExportacao) {
         this.formaDeExportacao = formaDeExportacao;
-        return this;
-    }
-
-    /**
-     * Get exigenciaAtiva
-     * @return exigenciaAtiva
-     **/
-    @JsonProperty("exigenciaAtiva")
-    public Boolean isisExigenciaAtiva() {
-        return exigenciaAtiva;
-    }
-
-    public void setExigenciaAtiva(Boolean exigenciaAtiva) {
-        this.exigenciaAtiva = exigenciaAtiva;
-    }
-
-    public DUE exigenciaAtiva(Boolean exigenciaAtiva) {
-        this.exigenciaAtiva = exigenciaAtiva;
         return this;
     }
 
@@ -787,8 +861,26 @@ public class DUE {
     }
 
     /**
-     * Informações complementares&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 2000
+     * Get recintoAduaneiroDeEmbarque
      *
+     * @return recintoAduaneiroDeEmbarque
+     **/
+    @JsonProperty("recintoAduaneiroDeEmbarque")
+    public RecintoAduaneiroDto getRecintoAduaneiroDeEmbarque() {
+        return recintoAduaneiroDeEmbarque;
+    }
+
+    public void setRecintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
+        this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
+    }
+
+    public DUE recintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
+        this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
+        return this;
+    }
+
+    /**
+     * Informações complementares&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 2000
      * @return informacoesComplementares
      **/
     @JsonProperty("informacoesComplementares")
@@ -824,24 +916,6 @@ public class DUE {
         return this;
     }
 
-    /**
-     * Get inclusaoNotaFiscal
-     * @return inclusaoNotaFiscal
-     **/
-    @JsonProperty("inclusaoNotaFiscal")
-    public Boolean isisInclusaoNotaFiscal() {
-        return inclusaoNotaFiscal;
-    }
-
-    public void setInclusaoNotaFiscal(Boolean inclusaoNotaFiscal) {
-        this.inclusaoNotaFiscal = inclusaoNotaFiscal;
-    }
-
-    public DUE inclusaoNotaFiscal(Boolean inclusaoNotaFiscal) {
-        this.inclusaoNotaFiscal = inclusaoNotaFiscal;
-        return this;
-    }
-
     public DUE addItensItem(ItemDUERemoteDTO itensItem) {
         this.itens.add(itensItem);
         return this;
@@ -867,7 +941,6 @@ public class DUE {
 
     /**
      * Latitude do Local de Despacho&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
-     *
      * @return latitudeDoLocalDeDespacho
      **/
     @JsonProperty("latitudeDoLocalDeDespacho")
@@ -886,7 +959,6 @@ public class DUE {
 
     /**
      * Longitude do Local de Despacho&lt;br /&gt;Regex: \&quot;^((-)?90(\\\\.[0]{6}))|((-)?([0-9]|[1-8][0-9])(\\\\.[0-9]{6}))$\&quot;
-     *
      * @return longitudeDoLocalDeDespacho
      **/
     @JsonProperty("longitudeDoLocalDeDespacho")
@@ -905,7 +977,6 @@ public class DUE {
 
     /**
      * Get moeda
-     *
      * @return moeda
      **/
     @JsonProperty("moeda")
@@ -924,7 +995,6 @@ public class DUE {
 
     /**
      * Get motivoDeDispensaDaNotaFiscal
-     *
      * @return motivoDeDispensaDaNotaFiscal
      **/
     @JsonProperty("motivoDeDispensaDaNotaFiscal")
@@ -943,7 +1013,6 @@ public class DUE {
 
     /**
      * Número da DUE&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNAANNNNNNNNNN&#39;
-     *
      * @return numero
      **/
     @JsonProperty("numero")
@@ -961,8 +1030,37 @@ public class DUE {
     }
 
     /**
-     * Get paisImportador
+     * Get responsavelPeloACD
      *
+     * @return responsavelPeloACD
+     **/
+    @JsonProperty("responsavelPeloACD")
+    public String getResponsavelPeloACD() {
+        if (responsavelPeloACD == null) {
+            return null;
+        }
+        return responsavelPeloACD.value();
+    }
+
+    /**
+     * Get situacaoEspecial
+     *
+     * @return situacaoEspecial
+     **/
+    @JsonProperty("situacaoEspecial")
+    public String getSituacaoEspecial() {
+        if (situacaoEspecial == null) {
+            return null;
+        }
+        return situacaoEspecial.value();
+    }
+
+    public void setSituacaoEspecial(SituacaoEspecialEnum situacaoEspecial) {
+        this.situacaoEspecial = situacaoEspecial;
+    }
+
+    /**
+     * Get paisImportador
      * @return paisImportador
      **/
     @JsonProperty("paisImportador")
@@ -998,28 +1096,33 @@ public class DUE {
         return this;
     }
 
-    /**
-     * Get oea
-     *
-     * @return oea
-     **/
-    @JsonProperty("oea")
-    public Boolean isisOea() {
-        return oea;
-    }
-
-    public void setOea(Boolean oea) {
-        this.oea = oea;
-    }
-
-    public DUE oea(Boolean oea) {
-        this.oea = oea;
+    public DUE situacaoEspecial(SituacaoEspecialEnum situacaoEspecial) {
+        this.situacaoEspecial = situacaoEspecial;
         return this;
     }
 
     /**
-     * Referência do endereço do local de despacho&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 240
+     * Get tratamentoPrioritario
      *
+     * @return tratamentoPrioritario
+     **/
+    @JsonProperty("tratamentoPrioritario")
+    public Boolean isisTratamentoPrioritario() {
+        return tratamentoPrioritario;
+    }
+
+    /**
+     * Get unidadeLocalDeDespacho
+     *
+     * @return unidadeLocalDeDespacho
+     **/
+    @JsonProperty("unidadeLocalDeDespacho")
+    public UnidadeLocalRFBDto getUnidadeLocalDeDespacho() {
+        return unidadeLocalDeDespacho;
+    }
+
+    /**
+     * Referência do endereço do local de despacho&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 240
      * @return referenciaDoEnderecoDoLocalDeDespacho
      **/
     @JsonProperty("referenciaDoEnderecoDoLocalDeDespacho")
@@ -1038,7 +1141,6 @@ public class DUE {
 
     /**
      * Referência do endereço do local de embarque&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 240
-     *
      * @return referenciaDoEnderecoDoLocalDeEmbarque
      **/
     @JsonProperty("referenciaDoEnderecoDoLocalDeEmbarque")
@@ -1055,34 +1157,8 @@ public class DUE {
         return this;
     }
 
-    /**
-     * Get recintoAduaneiroDeEmbarque
-     * @return recintoAduaneiroDeEmbarque
-     **/
-    @JsonProperty("recintoAduaneiroDeEmbarque")
-    public RecintoAduaneiroDto getRecintoAduaneiroDeEmbarque() {
-        return recintoAduaneiroDeEmbarque;
-    }
-
-    public void setRecintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
-        this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
-    }
-
-    public DUE recintoAduaneiroDeEmbarque(RecintoAduaneiroDto recintoAduaneiroDeEmbarque) {
-        this.recintoAduaneiroDeEmbarque = recintoAduaneiroDeEmbarque;
-        return this;
-    }
-
-    /**
-     * Get responsavelPeloACD
-     * @return responsavelPeloACD
-     **/
-    @JsonProperty("responsavelPeloACD")
-    public String getResponsavelPeloACD() {
-        if (responsavelPeloACD == null) {
-            return null;
-        }
-        return responsavelPeloACD.value();
+    public void setUnidadeLocalDeDespacho(UnidadeLocalRFBDto unidadeLocalDeDespacho) {
+        this.unidadeLocalDeDespacho = unidadeLocalDeDespacho;
     }
 
     public void setResponsavelPeloACD(ResponsavelPeloACDEnum responsavelPeloACD) {
@@ -1096,7 +1172,6 @@ public class DUE {
 
     /**
      * RUC - Número da referência única de carga&lt;br /&gt;Tamanho: 35&lt;br /&gt;Formato: &#39;NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
-     *
      * @return ruc
      **/
     @JsonProperty("ruc")
@@ -1137,7 +1212,6 @@ public class DUE {
 
     /**
      * Get situacaoDoTratamentoAdministrativo
-     *
      * @return situacaoDoTratamentoAdministrativo
      **/
     @JsonProperty("situacaoDoTratamentoAdministrativo")
@@ -1154,6 +1228,25 @@ public class DUE {
 
     public DUE situacaoDoTratamentoAdministrativo(SituacaoDoTratamentoAdministrativoEnum situacaoDoTratamentoAdministrativo) {
         this.situacaoDoTratamentoAdministrativo = situacaoDoTratamentoAdministrativo;
+        return this;
+    }
+
+    /**
+     * Get unidadeLocalDeEmbarque
+     *
+     * @return unidadeLocalDeEmbarque
+     **/
+    @JsonProperty("unidadeLocalDeEmbarque")
+    public UnidadeLocalRFBDto getUnidadeLocalDeEmbarque() {
+        return unidadeLocalDeEmbarque;
+    }
+
+    public void setUnidadeLocalDeEmbarque(UnidadeLocalRFBDto unidadeLocalDeEmbarque) {
+        this.unidadeLocalDeEmbarque = unidadeLocalDeEmbarque;
+    }
+
+    public DUE unidadeLocalDeEmbarque(UnidadeLocalRFBDto unidadeLocalDeEmbarque) {
+        this.unidadeLocalDeEmbarque = unidadeLocalDeEmbarque;
         return this;
     }
 
@@ -1183,7 +1276,6 @@ public class DUE {
 
     /**
      * Get solicitacoes
-     *
      * @return solicitacoes
      **/
     @JsonProperty("solicitacoes")
@@ -1193,28 +1285,6 @@ public class DUE {
 
     public void setSolicitacoes(List<SolicitacaoDTO> solicitacoes) {
         this.solicitacoes = solicitacoes;
-    }
-
-    /**
-     * Get situacaoEspecial
-     *
-     * @return situacaoEspecial
-     **/
-    @JsonProperty("situacaoEspecial")
-    public String getSituacaoEspecial() {
-        if (situacaoEspecial == null) {
-            return null;
-        }
-        return situacaoEspecial.value();
-    }
-
-    public void setSituacaoEspecial(SituacaoEspecialEnum situacaoEspecial) {
-        this.situacaoEspecial = situacaoEspecial;
-    }
-
-    public DUE situacaoEspecial(SituacaoEspecialEnum situacaoEspecial) {
-        this.situacaoEspecial = situacaoEspecial;
-        return this;
     }
 
     public DUE solicitacoes(List<SolicitacaoDTO> solicitacoes) {
@@ -1246,116 +1316,6 @@ public class DUE {
 
     public DUE tipo(TipoEnum tipo) {
         this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Get tratamentoPrioritario
-     * @return tratamentoPrioritario
-     **/
-    @JsonProperty("tratamentoPrioritario")
-    public Boolean isisTratamentoPrioritario() {
-        return tratamentoPrioritario;
-    }
-
-    public void setTratamentoPrioritario(Boolean tratamentoPrioritario) {
-        this.tratamentoPrioritario = tratamentoPrioritario;
-    }
-
-    public DUE tratamentoPrioritario(Boolean tratamentoPrioritario) {
-        this.tratamentoPrioritario = tratamentoPrioritario;
-        return this;
-    }
-
-    /**
-     * Get unidadeLocalDeAnaliseFiscal
-     *
-     * @return unidadeLocalDeAnaliseFiscal
-     **/
-    @JsonProperty("unidadeLocalDeAnaliseFiscal")
-    public UnidadeLocalRFBDto getUnidadeLocalDeAnaliseFiscal() {
-        return unidadeLocalDeAnaliseFiscal;
-    }
-
-    public void setUnidadeLocalDeAnaliseFiscal(UnidadeLocalRFBDto unidadeLocalDeAnaliseFiscal) {
-        this.unidadeLocalDeAnaliseFiscal = unidadeLocalDeAnaliseFiscal;
-    }
-
-    public DUE unidadeLocalDeAnaliseFiscal(UnidadeLocalRFBDto unidadeLocalDeAnaliseFiscal) {
-        this.unidadeLocalDeAnaliseFiscal = unidadeLocalDeAnaliseFiscal;
-        return this;
-    }
-
-    /**
-     * Get unidadeLocalDeDespacho
-     * @return unidadeLocalDeDespacho
-     **/
-    @JsonProperty("unidadeLocalDeDespacho")
-    public UnidadeLocalRFBDto getUnidadeLocalDeDespacho() {
-        return unidadeLocalDeDespacho;
-    }
-
-    public void setUnidadeLocalDeDespacho(UnidadeLocalRFBDto unidadeLocalDeDespacho) {
-        this.unidadeLocalDeDespacho = unidadeLocalDeDespacho;
-    }
-
-    public DUE unidadeLocalDeDespacho(UnidadeLocalRFBDto unidadeLocalDeDespacho) {
-        this.unidadeLocalDeDespacho = unidadeLocalDeDespacho;
-        return this;
-    }
-
-    /**
-     * Valor total da mercadoria&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return valorTotalMercadoria
-     **/
-    @JsonProperty("valorTotalMercadoria")
-    public BigDecimal getValorTotalMercadoria() {
-        return valorTotalMercadoria;
-    }
-
-    public void setValorTotalMercadoria(BigDecimal valorTotalMercadoria) {
-        this.valorTotalMercadoria = valorTotalMercadoria;
-    }
-
-    public DUE valorTotalMercadoria(BigDecimal valorTotalMercadoria) {
-        this.valorTotalMercadoria = valorTotalMercadoria;
-        return this;
-    }
-
-    /**
-     * Get viaDeTransporteEspecial
-     * @return viaDeTransporteEspecial
-     **/
-    @JsonProperty("viaDeTransporteEspecial")
-    public ViaTransporteEspecialDTO getViaDeTransporteEspecial() {
-        return viaDeTransporteEspecial;
-    }
-
-    public void setViaDeTransporteEspecial(ViaTransporteEspecialDTO viaDeTransporteEspecial) {
-        this.viaDeTransporteEspecial = viaDeTransporteEspecial;
-    }
-
-    public DUE viaDeTransporteEspecial(ViaTransporteEspecialDTO viaDeTransporteEspecial) {
-        this.viaDeTransporteEspecial = viaDeTransporteEspecial;
-        return this;
-    }
-
-    /**
-     * Get unidadeLocalDeEmbarque
-     * @return unidadeLocalDeEmbarque
-     **/
-    @JsonProperty("unidadeLocalDeEmbarque")
-    public UnidadeLocalRFBDto getUnidadeLocalDeEmbarque() {
-        return unidadeLocalDeEmbarque;
-    }
-
-    public void setUnidadeLocalDeEmbarque(UnidadeLocalRFBDto unidadeLocalDeEmbarque) {
-        this.unidadeLocalDeEmbarque = unidadeLocalDeEmbarque;
-    }
-
-    public DUE unidadeLocalDeEmbarque(UnidadeLocalRFBDto unidadeLocalDeEmbarque) {
-        this.unidadeLocalDeEmbarque = unidadeLocalDeEmbarque;
         return this;
     }
 
@@ -1422,6 +1382,39 @@ public class DUE {
         return sb;
     }
 
+    /**
+     * Get viaDeTransporteEspecial
+     *
+     * @return viaDeTransporteEspecial
+     **/
+    @JsonProperty("viaDeTransporteEspecial")
+    public ViaTransporteEspecialDTO getViaDeTransporteEspecial() {
+        return viaDeTransporteEspecial;
+    }
+
+    public void setViaDeTransporteEspecial(ViaTransporteEspecialDTO viaDeTransporteEspecial) {
+        this.viaDeTransporteEspecial = viaDeTransporteEspecial;
+    }
+
+    public void setTratamentoPrioritario(Boolean tratamentoPrioritario) {
+        this.tratamentoPrioritario = tratamentoPrioritario;
+    }
+
+    public DUE tratamentoPrioritario(Boolean tratamentoPrioritario) {
+        this.tratamentoPrioritario = tratamentoPrioritario;
+        return this;
+    }
+
+    /**
+     * Get unidadeLocalDeAnaliseFiscal
+     *
+     * @return unidadeLocalDeAnaliseFiscal
+     **/
+    @JsonProperty("unidadeLocalDeAnaliseFiscal")
+    public UnidadeLocalRFBDto getUnidadeLocalDeAnaliseFiscal() {
+        return unidadeLocalDeAnaliseFiscal;
+    }
+
     @XmlType(name = "CanalEnum")
     @XmlEnum(String.class)
     public enum CanalEnum {
@@ -1462,6 +1455,15 @@ public class DUE {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public void setUnidadeLocalDeAnaliseFiscal(UnidadeLocalRFBDto unidadeLocalDeAnaliseFiscal) {
+        this.unidadeLocalDeAnaliseFiscal = unidadeLocalDeAnaliseFiscal;
+    }
+
+    public DUE unidadeLocalDeAnaliseFiscal(UnidadeLocalRFBDto unidadeLocalDeAnaliseFiscal) {
+        this.unidadeLocalDeAnaliseFiscal = unidadeLocalDeAnaliseFiscal;
+        return this;
     }
 
     @XmlType(name = "FormaDeExportacaoEnum")
@@ -1650,6 +1652,25 @@ public class DUE {
         }
     }
 
+    public DUE unidadeLocalDeDespacho(UnidadeLocalRFBDto unidadeLocalDeDespacho) {
+        this.unidadeLocalDeDespacho = unidadeLocalDeDespacho;
+        return this;
+    }
+
+    /**
+     * Valor total da mercadoria&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
+     *
+     * @return valorTotalMercadoria
+     **/
+    @JsonProperty("valorTotalMercadoria")
+    public BigDecimal getValorTotalMercadoria() {
+        return valorTotalMercadoria;
+    }
+
+    public void setValorTotalMercadoria(BigDecimal valorTotalMercadoria) {
+        this.valorTotalMercadoria = valorTotalMercadoria;
+    }
+
     @XmlType(name = "SituacaoDoTratamentoAdministrativoEnum")
     @XmlEnum(String.class)
     public enum SituacaoDoTratamentoAdministrativoEnum {
@@ -1698,6 +1719,16 @@ public class DUE {
         public String toString() {
             return String.valueOf(value);
         }
+    }
+
+    public DUE valorTotalMercadoria(BigDecimal valorTotalMercadoria) {
+        this.valorTotalMercadoria = valorTotalMercadoria;
+        return this;
+    }
+
+    public DUE viaDeTransporteEspecial(ViaTransporteEspecialDTO viaDeTransporteEspecial) {
+        this.viaDeTransporteEspecial = viaDeTransporteEspecial;
+        return this;
     }
 
 

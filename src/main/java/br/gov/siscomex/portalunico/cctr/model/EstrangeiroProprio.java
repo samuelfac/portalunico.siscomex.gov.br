@@ -93,17 +93,6 @@ public class EstrangeiroProprio {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * País do Transportador&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
      *
      * @return pais
@@ -134,6 +123,17 @@ public class EstrangeiroProprio {
 
     public void setLicencaOriginaria(String licencaOriginaria) {
         this.licencaOriginaria = licencaOriginaria;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -195,11 +195,6 @@ public class EstrangeiroProprio {
         return this;
     }
 
-    public EstrangeiroProprio licencaOriginaria(String licencaOriginaria) {
-        this.licencaOriginaria = licencaOriginaria;
-        return this;
-    }
-
     /**
      * Número da licença complementar TETI&lt;br&gt;Formato: NNNN/NN
      *
@@ -216,6 +211,11 @@ public class EstrangeiroProprio {
 
     public EstrangeiroProprio licencaComplementarTETI(String licencaComplementarTETI) {
         this.licencaComplementarTETI = licencaComplementarTETI;
+        return this;
+    }
+
+    public EstrangeiroProprio licencaOriginaria(String licencaOriginaria) {
+        this.licencaOriginaria = licencaOriginaria;
         return this;
     }
 

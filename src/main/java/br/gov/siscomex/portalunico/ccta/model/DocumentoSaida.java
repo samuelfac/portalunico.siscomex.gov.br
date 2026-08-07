@@ -81,17 +81,6 @@ public class DocumentoSaida {
     private Integer versaoDuimp = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get autorizacoesEntrega
      *
      * @return autorizacoesEntrega
@@ -127,6 +116,17 @@ public class DocumentoSaida {
 
     public void setCanalDuimp(String canalDuimp) {
         this.canalDuimp = canalDuimp;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -167,11 +167,6 @@ public class DocumentoSaida {
         return this;
     }
 
-    public DocumentoSaida canalDuimp(String canalDuimp) {
-        this.canalDuimp = canalDuimp;
-        return this;
-    }
-
     /**
      * Get dataVinculacaoLong
      *
@@ -184,6 +179,11 @@ public class DocumentoSaida {
 
     public void setDataVinculacaoLong(Long dataVinculacaoLong) {
         this.dataVinculacaoLong = dataVinculacaoLong;
+    }
+
+    public DocumentoSaida canalDuimp(String canalDuimp) {
+        this.canalDuimp = canalDuimp;
+        return this;
     }
 
     /**
@@ -202,11 +202,6 @@ public class DocumentoSaida {
 
     public DocumentoSaida descricaoRaDestinoDta(String descricaoRaDestinoDta) {
         this.descricaoRaDestinoDta = descricaoRaDestinoDta;
-        return this;
-    }
-
-    public DocumentoSaida dataVinculacaoLong(Long dataVinculacaoLong) {
-        this.dataVinculacaoLong = dataVinculacaoLong;
         return this;
     }
 
@@ -231,7 +226,6 @@ public class DocumentoSaida {
 
     /**
      * Get numero
-     *
      * @return numero
      **/
     @JsonProperty("numero")
@@ -243,9 +237,13 @@ public class DocumentoSaida {
         this.numero = numero;
     }
 
+    public DocumentoSaida dataVinculacaoLong(Long dataVinculacaoLong) {
+        this.dataVinculacaoLong = dataVinculacaoLong;
+        return this;
+    }
+
     /**
      * Get raDestinoDta
-     *
      * @return raDestinoDta
      **/
     @JsonProperty("raDestinoDta")
@@ -259,11 +257,6 @@ public class DocumentoSaida {
 
     public DocumentoSaida raDestinoDta(String raDestinoDta) {
         this.raDestinoDta = raDestinoDta;
-        return this;
-    }
-
-    public DocumentoSaida numero(String numero) {
-        this.numero = numero;
         return this;
     }
 
@@ -281,13 +274,14 @@ public class DocumentoSaida {
         this.situacaoDuimp = situacaoDuimp;
     }
 
-    /**
-     * Get tipoDocumentoSaida
-     * @return tipoDocumentoSaida
-     **/
-    @JsonProperty("tipoDocumentoSaida")
-    public TipoDocumentoSaida getTipoDocumentoSaida() {
-        return tipoDocumentoSaida;
+    public DocumentoSaida numero(String numero) {
+        this.numero = numero;
+        return this;
+    }
+
+    public DocumentoSaida situacaoDuimp(String situacaoDuimp) {
+        this.situacaoDuimp = situacaoDuimp;
+        return this;
     }
 
     public void setTipoDocumentoSaida(TipoDocumentoSaida tipoDocumentoSaida) {
@@ -317,11 +311,6 @@ public class DocumentoSaida {
         return this;
     }
 
-    public DocumentoSaida situacaoDuimp(String situacaoDuimp) {
-        this.situacaoDuimp = situacaoDuimp;
-        return this;
-    }
-
     /**
      * Get valorTotalMercadoriaLocalDescarga
      *
@@ -337,8 +326,17 @@ public class DocumentoSaida {
     }
 
     /**
-     * Get versaoDuimp
+     * Get tipoDocumentoSaida
      *
+     * @return tipoDocumentoSaida
+     **/
+    @JsonProperty("tipoDocumentoSaida")
+    public TipoDocumentoSaida getTipoDocumentoSaida() {
+        return tipoDocumentoSaida;
+    }
+
+    /**
+     * Get versaoDuimp
      * @return versaoDuimp
      **/
     @JsonProperty("versaoDuimp")

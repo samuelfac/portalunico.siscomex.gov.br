@@ -94,17 +94,6 @@ public class Ocorrncia {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data e horário da inserção da ocorrência.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataInsercao
@@ -116,6 +105,17 @@ public class Ocorrncia {
 
     public void setDataInsercao(OffsetDateTime dataInsercao) {
         this.dataInsercao = dataInsercao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -137,11 +137,6 @@ public class Ocorrncia {
         return this;
     }
 
-    public Ocorrncia dataInsercao(OffsetDateTime dataInsercao) {
-        this.dataInsercao = dataInsercao;
-        return this;
-    }
-
     /**
      * Sigla do órgão responsável pela ocorrência. Máximo de 50 caracteres.
      *
@@ -154,6 +149,11 @@ public class Ocorrncia {
 
     public void setIdOrgaoResponsavelOcorrencia(String idOrgaoResponsavelOcorrencia) {
         this.idOrgaoResponsavelOcorrencia = idOrgaoResponsavelOcorrencia;
+    }
+
+    public Ocorrncia dataInsercao(OffsetDateTime dataInsercao) {
+        this.dataInsercao = dataInsercao;
+        return this;
     }
 
     /**
@@ -194,11 +194,6 @@ public class Ocorrncia {
         return this;
     }
 
-    public Ocorrncia idOrgaoResponsavelOcorrencia(String idOrgaoResponsavelOcorrencia) {
-        this.idOrgaoResponsavelOcorrencia = idOrgaoResponsavelOcorrencia;
-        return this;
-    }
-
     /**
      * Observação relacionada à ocorrência. Máximo de 4000 caracteres, que podem ser letras, números, além de quaisquer caracteres referentes a codificação UTF-8.
      *
@@ -220,7 +215,6 @@ public class Ocorrncia {
 
     /**
      * Indicador de resolução da ocorrência.&lt;br/&gt;Valores pré-definidos:&lt;br/&gt;0 - Ocorrência não resolvida&lt;br/&gt;1 - Ocorrência resolvida&lt;br/&gt;2 - Interrompida RFB
-     *
      * @return resolvida
      **/
     @JsonProperty("resolvida")
@@ -234,6 +228,11 @@ public class Ocorrncia {
 
     public Ocorrncia resolvida(String resolvida) {
         this.resolvida = resolvida;
+        return this;
+    }
+
+    public Ocorrncia idOrgaoResponsavelOcorrencia(String idOrgaoResponsavelOcorrencia) {
+        this.idOrgaoResponsavelOcorrencia = idOrgaoResponsavelOcorrencia;
         return this;
     }
 

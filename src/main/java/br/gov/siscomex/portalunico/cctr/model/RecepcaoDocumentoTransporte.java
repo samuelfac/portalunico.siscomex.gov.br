@@ -108,17 +108,6 @@ public class RecepcaoDocumentoTransporte {
     private String observacoesGerais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação da recepção&lt;br&gt;Esta informação não será armazenada pelo sistema, servindo apenas como uma identificação de cada recepção no momento da exibição de eventuais mensagens de erro. Este campo não admite duplicatas.
      *
      * @return identificacaoRecepcao
@@ -153,6 +142,17 @@ public class RecepcaoDocumentoTransporte {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * CNPJ do responsável pela recepção&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN
      *
      * @return cpfResp
@@ -171,11 +171,6 @@ public class RecepcaoDocumentoTransporte {
         return this;
     }
 
-    public RecepcaoDocumentoTransporte cnpjResp(String cnpjResp) {
-        this.cnpjResp = cnpjResp;
-        return this;
-    }
-
     /**
      * Get local
      *
@@ -189,6 +184,11 @@ public class RecepcaoDocumentoTransporte {
 
     public void setLocal(Local local) {
         this.local = local;
+    }
+
+    public RecepcaoDocumentoTransporte cnpjResp(String cnpjResp) {
+        this.cnpjResp = cnpjResp;
+        return this;
     }
 
     /**
@@ -235,11 +235,6 @@ public class RecepcaoDocumentoTransporte {
         return this;
     }
 
-    public RecepcaoDocumentoTransporte local(Local local) {
-        this.local = local;
-        return this;
-    }
-
     /**
      * Get transportador
      *
@@ -274,6 +269,11 @@ public class RecepcaoDocumentoTransporte {
         this.localArmazenamento = localArmazenamento;
     }
 
+    public RecepcaoDocumentoTransporte local(Local local) {
+        this.local = local;
+        return this;
+    }
+
     /**
      * Código de identificação da carga
      * @return codigoIdentCarga
@@ -292,11 +292,6 @@ public class RecepcaoDocumentoTransporte {
         return this;
     }
 
-    public RecepcaoDocumentoTransporte localArmazenamento(String localArmazenamento) {
-        this.localArmazenamento = localArmazenamento;
-        return this;
-    }
-
     /**
      * Avarias identificadas&lt;br&gt;Tamanho: 250
      *
@@ -309,6 +304,11 @@ public class RecepcaoDocumentoTransporte {
 
     public void setAvariasIdentificadas(String avariasIdentificadas) {
         this.avariasIdentificadas = avariasIdentificadas;
+    }
+
+    public RecepcaoDocumentoTransporte localArmazenamento(String localArmazenamento) {
+        this.localArmazenamento = localArmazenamento;
+        return this;
     }
 
     /**

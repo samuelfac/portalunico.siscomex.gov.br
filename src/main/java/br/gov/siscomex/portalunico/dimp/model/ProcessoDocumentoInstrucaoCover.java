@@ -32,6 +32,7 @@ public class ProcessoDocumentoInstrucaoCover {
      **/
     private String identificacao = null;
 
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -92,7 +93,6 @@ public class ProcessoDocumentoInstrucaoCover {
         this.tipo = tipo;
         return this;
     }
-
 
     @Override
     public String toString() {

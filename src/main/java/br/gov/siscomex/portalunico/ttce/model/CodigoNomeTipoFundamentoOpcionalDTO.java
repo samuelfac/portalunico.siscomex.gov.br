@@ -40,13 +40,6 @@ public class CodigoNomeTipoFundamentoOpcionalDTO {
     private String nome = null;
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "Opcional", required = true, value = "Tipo de Uso. Nesse contexto o valor sempre será Opcional.")
-    /**
-     * Tipo de Uso. Nesse contexto o valor sempre será Opcional.
-     **/
-    private TipoEnum tipo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -57,6 +50,13 @@ public class CodigoNomeTipoFundamentoOpcionalDTO {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "Opcional", required = true, value = "Tipo de Uso. Nesse contexto o valor sempre será Opcional.")
+    /**
+     * Tipo de Uso. Nesse contexto o valor sempre será Opcional.
+     **/
+    private TipoEnum tipo = null;
 
     /**
      * Código identificador do Fundamento Legal, com 4 dígitos.
@@ -120,7 +120,6 @@ public class CodigoNomeTipoFundamentoOpcionalDTO {
         this.tipo = tipo;
         return this;
     }
-
 
     @Override
     public String toString() {

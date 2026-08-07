@@ -63,17 +63,6 @@ public class SimularTaExportacaoFiltros {
     private List<AtributoNcmValorDTO> atributos = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do país em Iso2
      *
      * @return pais
@@ -109,6 +98,17 @@ public class SimularTaExportacaoFiltros {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Código da situação especial
      *
      * @return situacaoEspecial
@@ -128,11 +128,6 @@ public class SimularTaExportacaoFiltros {
         return this;
     }
 
-    public SimularTaExportacaoFiltros enquadramento(String enquadramento) {
-        this.enquadramento = enquadramento;
-        return this;
-    }
-
     /**
      * NCM a ser buscado
      *
@@ -146,6 +141,11 @@ public class SimularTaExportacaoFiltros {
 
     public void setNcm(String ncm) {
         this.ncm = ncm;
+    }
+
+    public SimularTaExportacaoFiltros enquadramento(String enquadramento) {
+        this.enquadramento = enquadramento;
+        return this;
     }
 
     /**

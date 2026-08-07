@@ -89,17 +89,6 @@ public class SefazTributoCalculadoCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor calculado do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return valorCalculado
@@ -133,6 +122,17 @@ public class SefazTributoCalculadoCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Valor suspenso do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
      * @return valorSuspenso
@@ -151,11 +151,6 @@ public class SefazTributoCalculadoCover {
         return this;
     }
 
-    public SefazTributoCalculadoCover valorAReduzir(BigDecimal valorAReduzir) {
-        this.valorAReduzir = valorAReduzir;
-        return this;
-    }
-
     /**
      * Valor devido do tributo&lt;br&gt;Tamanho: 17,2&lt;br&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
@@ -168,6 +163,11 @@ public class SefazTributoCalculadoCover {
 
     public void setValorDevido(BigDecimal valorDevido) {
         this.valorDevido = valorDevido;
+    }
+
+    public SefazTributoCalculadoCover valorAReduzir(BigDecimal valorAReduzir) {
+        this.valorAReduzir = valorAReduzir;
+        return this;
     }
 
     /**

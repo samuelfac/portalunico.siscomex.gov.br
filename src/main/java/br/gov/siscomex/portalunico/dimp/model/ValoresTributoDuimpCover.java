@@ -74,17 +74,6 @@ public class ValoresTributoDuimpCover {
     private Double juros = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Valor do tributo calculado em R$ (Reais).Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;originalmente devidos\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return calculado
@@ -118,6 +107,17 @@ public class ValoresTributoDuimpCover {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Valor do tributo devido em R$ (Reais). Para Duimp COM situação especial de despacho, cujo motivo (da situação especial de despacho) indique cobrança de tributo suspenso, este valor corresponde ao somatório dos valores \&quot;a recolher\&quot; dos itens.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
      * @return devido
@@ -136,11 +136,6 @@ public class ValoresTributoDuimpCover {
         return this;
     }
 
-    public ValoresTributoDuimpCover aReduzir(Double aReduzir) {
-        this.aReduzir = aReduzir;
-        return this;
-    }
-
     /**
      * Valor Suspenso do Tributo em R$ (Reais).&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
      *
@@ -153,6 +148,11 @@ public class ValoresTributoDuimpCover {
 
     public void setSuspenso(Double suspenso) {
         this.suspenso = suspenso;
+    }
+
+    public ValoresTributoDuimpCover aReduzir(Double aReduzir) {
+        this.aReduzir = aReduzir;
+        return this;
     }
 
     /**
@@ -212,14 +212,8 @@ public class ValoresTributoDuimpCover {
         return this;
     }
 
-    public ValoresTributoDuimpCover suspenso(Double suspenso) {
-        this.suspenso = suspenso;
-        return this;
-    }
-
     /**
      * Valores de cálculo de juros.&lt;br&gt;Tamanho: 16,7&lt;br&gt;Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     *
      * @return juros
      **/
     @JsonProperty("juros")
@@ -233,6 +227,11 @@ public class ValoresTributoDuimpCover {
 
     public ValoresTributoDuimpCover juros(Double juros) {
         this.juros = juros;
+        return this;
+    }
+
+    public ValoresTributoDuimpCover suspenso(Double suspenso) {
+        this.suspenso = suspenso;
         return this;
     }
 

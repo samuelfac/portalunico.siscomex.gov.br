@@ -54,17 +54,6 @@ public class CalculoTributarioDto {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tratamentosTributarios
      *
      * @return tratamentosTributarios
@@ -86,6 +75,18 @@ public class CalculoTributarioDto {
     public CalculoTributarioDto addTratamentosTributariosItem(TratamentoTributarioDto tratamentosTributariosItem) {
         this.tratamentosTributarios.add(tratamentosTributariosItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

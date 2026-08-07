@@ -82,9 +82,7 @@ public class DocumentoImportacao {
      * Valor da mercadoria na condição de venda<br />Tamanho: 14,5<br />Formato: Decimal, com até 5 casas decimais separadas por ponto.
      **/
     private BigDecimal quantidadeUtilizada = null;
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    private TipoEnum tipo = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -96,6 +94,10 @@ public class DocumentoImportacao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    private TipoEnum tipo = null;
 
     /**
      * Informação complementar&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 20
@@ -290,7 +292,6 @@ public class DocumentoImportacao {
         return this;
     }
 
-
     @Override
     public String toString() {
 
@@ -354,7 +355,7 @@ public class DocumentoImportacao {
 
         TipoEnum(String v) {
             value = v;
-    }
+        }
 
         public static TipoEnum fromValue(String v) {
             for (TipoEnum b : TipoEnum.values()) {
@@ -363,15 +364,15 @@ public class DocumentoImportacao {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-    }
+        }
 
         public String value() {
             return value;
-    }
+        }
 
         @Override
         public String toString() {
             return String.valueOf(value);
-    }
+        }
     }
 }

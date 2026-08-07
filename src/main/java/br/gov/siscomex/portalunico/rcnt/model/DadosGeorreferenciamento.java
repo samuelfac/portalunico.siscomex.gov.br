@@ -24,18 +24,19 @@ import java.util.List;
 public class DadosGeorreferenciamento {
 
 
-    @XmlElement(name = "tipoOperacao", required = true)
-    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
-    /**
-     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
-     **/
-    private TipoOperacaoEnum tipoOperacao = null;
     @XmlElement(name = "dataHoraRegistro", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
      * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraRegistro = null;
+
+    @XmlElement(name = "tipoOperacao", required = true)
+    @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
+    /**
+     * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir
+     **/
+    private TipoOperacaoEnum tipoOperacao = null;
 
     @XmlElement(name = "idEvento", required = true)
     @ApiModelProperty(required = true, value = "Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100")
@@ -50,18 +51,19 @@ public class DadosGeorreferenciamento {
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-    @XmlElement(name = "cpfOperadorOcorrencia")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpfOperadorOcorrencia = null;
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
      * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
     private Boolean contingencia = null;
+
+    @XmlElement(name = "cpfOperadorOcorrencia")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+    /**
+     * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     **/
+    private String cpfOperadorOcorrencia = null;
 
     @XmlElement(name = "cpfOperadorRegistro")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -96,31 +98,6 @@ public class DadosGeorreferenciamento {
      * Chave interna do recinto para registrar uma área ou equipamento<br/>Tamanho: 50
      **/
     private String idAreaEquipamento = null;
-    @XmlElement(name = "areaEquipamentoAtivo", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
-    /**
-     * Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
-     **/
-    private Boolean areaEquipamentoAtivo = null;
-    @XmlElement(name = "azimuteCamera")
-    @ApiModelProperty(example = "180", value = "Azimute da câmera.<br/>Azimute em relação ao norte geográfico (número inteiro que representa o ângulo de 0 a 360 graus a partir do norte geográfico em sentido horário). Informar apenas para as câmeras fixas.<br/>Tamanho: 3")
-    /**
-     * Azimute da câmera.<br/>Azimute em relação ao norte geográfico (número inteiro que representa o ângulo de 0 a 360 graus a partir do norte geográfico em sentido horário). Informar apenas para as câmeras fixas.<br/>Tamanho: 3
-     **/
-    private Integer azimuteCamera = null;
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "6", required = true, value = "Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
-    /**
-     * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
-     **/
-    private String tipo = null;
-    @XmlElement(name = "listaCoordenadas", required = true)
-    @ApiModelProperty(required = true, value = "Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.")
-    @Valid
-    /**
-     * Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.
-     **/
-    private List<DadosCoordenadasGeorreferenciamento> listaCoordenadas = new ArrayList<>();
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -132,6 +109,35 @@ public class DadosGeorreferenciamento {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "areaEquipamentoAtivo", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Área ou equipamento ativo.<br/>Informar como inativo quando houver, por exemplo, desalfandegamento de área, desligamento definitivo de câmeras, gates, catracas e/ou outros equipamentos. Para a simples mudança de local basta enviar um evento retificador. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean areaEquipamentoAtivo = null;
+
+    @XmlElement(name = "azimuteCamera")
+    @ApiModelProperty(example = "180", value = "Azimute da câmera.<br/>Azimute em relação ao norte geográfico (número inteiro que representa o ângulo de 0 a 360 graus a partir do norte geográfico em sentido horário). Informar apenas para as câmeras fixas.<br/>Tamanho: 3")
+    /**
+     * Azimute da câmera.<br/>Azimute em relação ao norte geográfico (número inteiro que representa o ângulo de 0 a 360 graus a partir do norte geográfico em sentido horário). Informar apenas para as câmeras fixas.<br/>Tamanho: 3
+     **/
+    private Integer azimuteCamera = null;
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "6", required = true, value = "Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
+    /**
+     * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
+     **/
+    private String tipo = null;
+
+    @XmlElement(name = "listaCoordenadas", required = true)
+    @ApiModelProperty(required = true, value = "Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.")
+    @Valid
+    /**
+     * Lista de Coordenadas.<br/>Ponto (uma latitude e longitude) ou lista em sequência dos pontos para desenhar um polígono.
+     **/
+    private List<DadosCoordenadasGeorreferenciamento> listaCoordenadas = new ArrayList<>();
 
     /**
      * Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.&lt;br/&gt;Domínio:&lt;br/&gt;I - Incluir&lt;br/&gt;R - Retificar&lt;br/&gt;E - Excluir
@@ -333,7 +339,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Nome da área ou equipamento. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
-     *
      * @return nome
      **/
     @JsonProperty("nome")
@@ -373,7 +378,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Azimute da câmera.&lt;br/&gt;Azimute em relação ao norte geográfico (número inteiro que representa o ângulo de 0 a 360 graus a partir do norte geográfico em sentido horário). Informar apenas para as câmeras fixas.&lt;br/&gt;Tamanho: 3
-     *
      * @return azimuteCamera
      **/
     @JsonProperty("azimuteCamera")
@@ -392,7 +396,6 @@ public class DadosGeorreferenciamento {
 
     /**
      * Tipo de área ou equipamento. Pode ser nulo quando o evento for de exclusão. Conforme tabela de domínio Tipo de Área ou Equipamento disponível no &lt;a href&#x3D;https://portalunico.siscomex.gov.br/tabx/#/tabelas rel&#x3D;\&quot;noopener noreferrer\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Portal Único Siscomex.&lt;/a&gt;
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")
@@ -434,7 +437,6 @@ public class DadosGeorreferenciamento {
         this.listaCoordenadas.add(listaCoordenadasItem);
         return this;
     }
-
 
     @Override
     public String toString() {

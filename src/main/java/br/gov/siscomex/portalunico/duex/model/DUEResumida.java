@@ -128,17 +128,6 @@ public class DUEResumida {
     private String uaEmbarque = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do recinto aduaneiro de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
      *
      * @return codigoRecintoAduaneiroDespacho
@@ -210,6 +199,17 @@ public class DUEResumida {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get declarante
      *
      * @return declarante
@@ -225,11 +225,6 @@ public class DUEResumida {
 
     public DUEResumida declarante(Declarante declarante) {
         this.declarante = declarante;
-        return this;
-    }
-
-    public DUEResumida dataSituacaoDUE(String dataSituacaoDUE) {
-        this.dataSituacaoDUE = dataSituacaoDUE;
         return this;
     }
 
@@ -269,6 +264,11 @@ public class DUEResumida {
 
     public void setIndicadorBloqueio(Integer indicadorBloqueio) {
         this.indicadorBloqueio = indicadorBloqueio;
+    }
+
+    public DUEResumida dataSituacaoDUE(String dataSituacaoDUE) {
+        this.dataSituacaoDUE = dataSituacaoDUE;
+        return this;
     }
 
     /**
@@ -327,11 +327,6 @@ public class DUEResumida {
         return this;
     }
 
-    public DUEResumida indicadorBloqueio(Integer indicadorBloqueio) {
-        this.indicadorBloqueio = indicadorBloqueio;
-        return this;
-    }
-
     /**
      * RUC - Número da referência única de carga&lt;br /&gt;Tamanho: 35&lt;br /&gt;Formato: &#39;NAANNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN&#39;
      * @return numeroRUC
@@ -352,7 +347,6 @@ public class DUEResumida {
 
     /**
      * Responsável pela Unidade Aduaneira do Despacho&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 14
-     *
      * @return responsavelUADespacho
      **/
     @JsonProperty("responsavelUADespacho")
@@ -362,6 +356,11 @@ public class DUEResumida {
 
     public void setResponsavelUADespacho(String responsavelUADespacho) {
         this.responsavelUADespacho = responsavelUADespacho;
+    }
+
+    public DUEResumida indicadorBloqueio(Integer indicadorBloqueio) {
+        this.indicadorBloqueio = indicadorBloqueio;
+        return this;
     }
 
     /**
@@ -387,14 +386,8 @@ public class DUEResumida {
         return this;
     }
 
-    public DUEResumida responsavelUADespacho(String responsavelUADespacho) {
-        this.responsavelUADespacho = responsavelUADespacho;
-        return this;
-    }
-
     /**
      * Situação&lt;br /&gt;Domínio: &lt;br /&gt;1 &#x3D; Em elaboração&lt;br /&gt; 10 &#x3D; Registrada&lt;br /&gt;11 &#x3D; Declaração apresentada para despacho&lt;br /&gt; 15 &#x3D; ACD em processamento&lt;br /&gt;20 &#x3D; Liberada sem conferência aduaneira&lt;br /&gt; 21 &#x3D; Selecionada para conferência aduaneira&lt;br /&gt;24 &#x3D; Embarque antecipado pendente de LPCO&lt;br /&gt; 25 &#x3D; Embarque antecipado autorizado&lt;br /&gt;26 &#x3D; Embarque antecipado pendente de autorização&lt;br /&gt; 30 &#x3D; Em análise fiscal&lt;br /&gt;35 &#x3D; Concluída análise fiscal&lt;br /&gt; 36 &#x3D; Desembaraço pendente de LPCO&lt;br /&gt; 40 &#x3D; Desembaraçada&lt;br /&gt;70 &#x3D; Averbada&lt;br /&gt; 80 &#x3D; Cancelada pelo exportador&lt;br /&gt; 81 &#x3D; Cancelada por expiração de prazo&lt;br /&gt;82 &#x3D; Cancelada pela RFB&lt;br /&gt; 83 &#x3D; Cancelada pela RFB a pedido do exportador&lt;br /&gt; 86 &#x3D; Interrompida
-     *
      * @return situacaoDUE
      **/
     @JsonProperty("situacaoDUE")
@@ -413,7 +406,6 @@ public class DUEResumida {
 
     /**
      * Unidade aduaneira de despacho&lt;br /&gt;Tamanho: 7&lt;br /&gt;Formato: &#39;NNNNNNN&#39;
-     *
      * @return uaDespacho
      **/
     @JsonProperty("uaDespacho")
@@ -423,6 +415,11 @@ public class DUEResumida {
 
     public void setUaDespacho(String uaDespacho) {
         this.uaDespacho = uaDespacho;
+    }
+
+    public DUEResumida responsavelUADespacho(String responsavelUADespacho) {
+        this.responsavelUADespacho = responsavelUADespacho;
+        return this;
     }
 
     /**

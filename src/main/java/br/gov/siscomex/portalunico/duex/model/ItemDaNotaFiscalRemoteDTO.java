@@ -103,17 +103,6 @@ public class ItemDaNotaFiscalRemoteDTO {
     private BigDecimal valorTotalCalculado = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get apresentadaParaDespacho
      *
      * @return apresentadaParaDespacho
@@ -144,6 +133,17 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     public void setCfop(Integer cfop) {
         this.cfop = cfop;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -203,11 +203,6 @@ public class ItemDaNotaFiscalRemoteDTO {
         return this;
     }
 
-    public ItemDaNotaFiscalRemoteDTO cfop(Integer cfop) {
-        this.cfop = cfop;
-        return this;
-    }
-
     /**
      * Número&lt;br /&gt;Tamanho: 3,0&lt;br /&gt;Formato: Decimal, com 0 casas decimais.
      *
@@ -241,6 +236,11 @@ public class ItemDaNotaFiscalRemoteDTO {
         this.quantidadeComercial = quantidadeComercial;
     }
 
+    public ItemDaNotaFiscalRemoteDTO cfop(Integer cfop) {
+        this.cfop = cfop;
+        return this;
+    }
+
     /**
      * Quantidade consumida&lt;br /&gt;Tamanho: 14,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
      *
@@ -257,11 +257,6 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     public ItemDaNotaFiscalRemoteDTO quantidadeConsumida(BigDecimal quantidadeConsumida) {
         this.quantidadeConsumida = quantidadeConsumida;
-        return this;
-    }
-
-    public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
         return this;
     }
 
@@ -286,7 +281,6 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     /**
      * Unidade comercial&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 6
-     *
      * @return unidadeComercial
      **/
     @JsonProperty("unidadeComercial")
@@ -296,6 +290,11 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     public void setUnidadeComercial(String unidadeComercial) {
         this.unidadeComercial = unidadeComercial;
+    }
+
+    public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
+        return this;
     }
 
     /**
@@ -316,14 +315,8 @@ public class ItemDaNotaFiscalRemoteDTO {
         return this;
     }
 
-    public ItemDaNotaFiscalRemoteDTO unidadeComercial(String unidadeComercial) {
-        this.unidadeComercial = unidadeComercial;
-        return this;
-    }
-
     /**
      * Valor total calculado&lt;br /&gt;Tamanho: 13,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorTotalCalculado
      **/
     @JsonProperty("valorTotalCalculado")
@@ -337,6 +330,11 @@ public class ItemDaNotaFiscalRemoteDTO {
 
     public ItemDaNotaFiscalRemoteDTO valorTotalCalculado(BigDecimal valorTotalCalculado) {
         this.valorTotalCalculado = valorTotalCalculado;
+        return this;
+    }
+
+    public ItemDaNotaFiscalRemoteDTO unidadeComercial(String unidadeComercial) {
+        this.unidadeComercial = unidadeComercial;
         return this;
     }
 

@@ -35,17 +35,6 @@ public class CargaRodoviariaDetalhada {
     private List<CargaRodoviariaDetalhadaInterveniente> transportadoresSucessivos = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get infoGerais
      *
      * @return infoGerais
@@ -57,6 +46,17 @@ public class CargaRodoviariaDetalhada {
 
     public void setInfoGerais(CargaRodoviariaDetalhadaInfoGerais infoGerais) {
         this.infoGerais = infoGerais;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

@@ -101,17 +101,6 @@ public class RetornoConsultaProtocoloVO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data de criação do protocolo
      *
      * @return dataCriacao
@@ -123,6 +112,17 @@ public class RetornoConsultaProtocoloVO {
 
     public void setDataCriacao(OffsetDateTime dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -141,11 +141,6 @@ public class RetornoConsultaProtocoloVO {
 
     public RetornoConsultaProtocoloVO tipoRecepcao(String tipoRecepcao) {
         this.tipoRecepcao = tipoRecepcao;
-        return this;
-    }
-
-    public RetornoConsultaProtocoloVO dataCriacao(OffsetDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
         return this;
     }
 
@@ -201,6 +196,11 @@ public class RetornoConsultaProtocoloVO {
         this.situacao = situacao;
     }
 
+    public RetornoConsultaProtocoloVO dataCriacao(OffsetDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+        return this;
+    }
+
     /**
      * Lista das situações (status) pelas quais o protocolo já passou
      *
@@ -225,11 +225,6 @@ public class RetornoConsultaProtocoloVO {
         return this;
     }
 
-    public RetornoConsultaProtocoloVO situacao(SituacaoVO situacao) {
-        this.situacao = situacao;
-        return this;
-    }
-
     /**
      * Lista com as falhas encontradas durante o processamento
      * @return extrato
@@ -250,6 +245,11 @@ public class RetornoConsultaProtocoloVO {
 
     public RetornoConsultaProtocoloVO addExtratoItem(ExtratoVO extratoItem) {
         this.extrato.add(extratoItem);
+        return this;
+    }
+
+    public RetornoConsultaProtocoloVO situacao(SituacaoVO situacao) {
+        this.situacao = situacao;
         return this;
     }
 

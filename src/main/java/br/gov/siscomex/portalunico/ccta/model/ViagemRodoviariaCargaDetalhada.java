@@ -135,17 +135,6 @@ public class ViagemRodoviariaCargaDetalhada {
     private ValorMonetario valorSeguro = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Indica se a carga está fracionada. (Cargas francionadas podem ser divididas em mais de uma viagem)
      *
      * @return cargaFracionada
@@ -179,6 +168,17 @@ public class ViagemRodoviariaCargaDetalhada {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get cidadeTransportadorResponsabilizaCarga
      *
      * @return cidadeTransportadorResponsabilizaCarga
@@ -197,11 +197,6 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada cidadeEntrega(Cidade cidadeEntrega) {
-        this.cidadeEntrega = cidadeEntrega;
-        return this;
-    }
-
     /**
      * Get conhecimentoManifestado
      *
@@ -214,6 +209,11 @@ public class ViagemRodoviariaCargaDetalhada {
 
     public void setConhecimentoManifestado(Boolean conhecimentoManifestado) {
         this.conhecimentoManifestado = conhecimentoManifestado;
+    }
+
+    public ViagemRodoviariaCargaDetalhada cidadeEntrega(Cidade cidadeEntrega) {
+        this.cidadeEntrega = cidadeEntrega;
+        return this;
     }
 
     /**
@@ -259,11 +259,6 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada conhecimentoManifestado(Boolean conhecimentoManifestado) {
-        this.conhecimentoManifestado = conhecimentoManifestado;
-        return this;
-    }
-
     /**
      * Get estoque
      *
@@ -297,6 +292,11 @@ public class ViagemRodoviariaCargaDetalhada {
         this.identificacaoConsignatario = identificacaoConsignatario;
     }
 
+    public ViagemRodoviariaCargaDetalhada conhecimentoManifestado(Boolean conhecimentoManifestado) {
+        this.conhecimentoManifestado = conhecimentoManifestado;
+        return this;
+    }
+
     /**
      * Get itensCarga
      *
@@ -321,14 +321,8 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada identificacaoConsignatario(String identificacaoConsignatario) {
-        this.identificacaoConsignatario = identificacaoConsignatario;
-        return this;
-    }
-
     /**
      * Get mercadorias
-     *
      * @return mercadorias
      **/
     @JsonProperty("mercadorias")
@@ -352,7 +346,6 @@ public class ViagemRodoviariaCargaDetalhada {
 
     /**
      * Nome do consignatario
-     *
      * @return nomeConsignatario
      **/
     @JsonProperty("nomeConsignatario")
@@ -362,6 +355,11 @@ public class ViagemRodoviariaCargaDetalhada {
 
     public void setNomeConsignatario(String nomeConsignatario) {
         this.nomeConsignatario = nomeConsignatario;
+    }
+
+    public ViagemRodoviariaCargaDetalhada identificacaoConsignatario(String identificacaoConsignatario) {
+        this.identificacaoConsignatario = identificacaoConsignatario;
+        return this;
     }
 
     /**
@@ -382,14 +380,8 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada nomeConsignatario(String nomeConsignatario) {
-        this.nomeConsignatario = nomeConsignatario;
-        return this;
-    }
-
     /**
      * Get paisEntrega
-     *
      * @return paisEntrega
      **/
     @JsonProperty("paisEntrega")
@@ -406,8 +398,14 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
+    public ViagemRodoviariaCargaDetalhada nomeConsignatario(String nomeConsignatario) {
+        this.nomeConsignatario = nomeConsignatario;
+        return this;
+    }
+
     /**
      * Get paisTransportadorResponsabilizaCarga
+     *
      * @return paisTransportadorResponsabilizaCarga
      **/
     @JsonProperty("paisTransportadorResponsabilizaCarga")
@@ -438,11 +436,6 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada paisTransportadorResponsabilizaCarga(Pais paisTransportadorResponsabilizaCarga) {
-        this.paisTransportadorResponsabilizaCarga = paisTransportadorResponsabilizaCarga;
-        return this;
-    }
-
     /**
      * Get tipoCarga
      *
@@ -455,6 +448,11 @@ public class ViagemRodoviariaCargaDetalhada {
 
     public void setTipoCarga(TipoItemCargaCrt tipoCarga) {
         this.tipoCarga = tipoCarga;
+    }
+
+    public ViagemRodoviariaCargaDetalhada paisTransportadorResponsabilizaCarga(Pais paisTransportadorResponsabilizaCarga) {
+        this.paisTransportadorResponsabilizaCarga = paisTransportadorResponsabilizaCarga;
+        return this;
     }
 
     /**
@@ -475,14 +473,8 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada tipoCarga(TipoItemCargaCrt tipoCarga) {
-        this.tipoCarga = tipoCarga;
-        return this;
-    }
-
     /**
      * Get unidadeAlfandegaDestinoFinal
-     *
      * @return unidadeAlfandegaDestinoFinal
      **/
     @JsonProperty("unidadeAlfandegaDestinoFinal")
@@ -513,13 +505,14 @@ public class ViagemRodoviariaCargaDetalhada {
         this.valorFca = valorFca;
     }
 
-    /**
-     * Get valorFrete
-     * @return valorFrete
-     **/
-    @JsonProperty("valorFrete")
-    public ValorMonetario getValorFrete() {
-        return valorFrete;
+    public ViagemRodoviariaCargaDetalhada tipoCarga(TipoItemCargaCrt tipoCarga) {
+        this.tipoCarga = tipoCarga;
+        return this;
+    }
+
+    public ViagemRodoviariaCargaDetalhada valorFca(ValorMonetario valorFca) {
+        this.valorFca = valorFca;
+        return this;
     }
 
     public void setValorFrete(ValorMonetario valorFrete) {
@@ -531,13 +524,24 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada valorFca(ValorMonetario valorFca) {
-        this.valorFca = valorFca;
+    /**
+     * Get valorFrete
+     *
+     * @return valorFrete
+     **/
+    @JsonProperty("valorFrete")
+    public ValorMonetario getValorFrete() {
+        return valorFrete;
+    }
+
+    public ViagemRodoviariaCargaDetalhada valorSeguro(ValorMonetario valorSeguro) {
+        this.valorSeguro = valorSeguro;
         return this;
     }
 
     /**
      * Get valorSeguro
+     *
      * @return valorSeguro
      **/
     @JsonProperty("valorSeguro")
@@ -547,11 +551,6 @@ public class ViagemRodoviariaCargaDetalhada {
 
     public void setValorSeguro(ValorMonetario valorSeguro) {
         this.valorSeguro = valorSeguro;
-    }
-
-    public ViagemRodoviariaCargaDetalhada valorSeguro(ValorMonetario valorSeguro) {
-        this.valorSeguro = valorSeguro;
-        return this;
     }
 
     @Override

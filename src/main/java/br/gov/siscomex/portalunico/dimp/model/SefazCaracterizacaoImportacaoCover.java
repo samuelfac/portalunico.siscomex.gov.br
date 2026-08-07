@@ -147,15 +147,6 @@ public class SefazCaracterizacaoImportacaoCover {
         return this;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public SefazCaracterizacaoImportacaoCover uf(String uf) {
-        this.uf = uf;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -167,6 +158,15 @@ public class SefazCaracterizacaoImportacaoCover {
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public SefazCaracterizacaoImportacaoCover uf(String uf) {
+        this.uf = uf;
+        return this;
     }
 
     /**

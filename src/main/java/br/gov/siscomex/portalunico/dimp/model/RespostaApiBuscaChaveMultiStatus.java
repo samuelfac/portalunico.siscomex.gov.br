@@ -136,17 +136,6 @@ public class RespostaApiBuscaChaveMultiStatus {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Operações disponíveis sobre o recurso.
      *
      * @return links
@@ -168,6 +157,18 @@ public class RespostaApiBuscaChaveMultiStatus {
     public RespostaApiBuscaChaveMultiStatus addLinksItem(LinkCover linksItem) {
         this.links.add(linksItem);
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

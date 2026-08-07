@@ -44,17 +44,6 @@ public class Pessoa {
     private Endereco endereco = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação (CPF/CNPJ) do interveniente&lt;br&gt;Tamanho: 11 (CPF) ou 14 (CNPJ)&lt;br&gt;Formato: NNNNNNNNNNN (CPF) ou NNNNNNNNNNNNNN (CNPJ)
      *
      * @return id
@@ -67,6 +56,17 @@ public class Pessoa {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -89,11 +89,6 @@ public class Pessoa {
         return this;
     }
 
-    public Pessoa id(String id) {
-        this.id = id;
-        return this;
-    }
-
     /**
      * Get endereco
      *
@@ -110,6 +105,11 @@ public class Pessoa {
 
     public Pessoa endereco(Endereco endereco) {
         this.endereco = endereco;
+        return this;
+    }
+
+    public Pessoa id(String id) {
+        this.id = id;
         return this;
     }
 

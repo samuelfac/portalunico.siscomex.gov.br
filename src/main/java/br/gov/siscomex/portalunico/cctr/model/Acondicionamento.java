@@ -59,17 +59,6 @@ public class Acondicionamento {
     private List<Granel> listaGranel = new ArrayList<>();
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista dos contêineres onde as cargas a serem consolidadas estão acondicionadas
      *
      * @return listaConteiner
@@ -87,6 +76,17 @@ public class Acondicionamento {
     public Acondicionamento listaConteiner(List<Conteiner> listaConteiner) {
         this.listaConteiner = listaConteiner;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -114,11 +114,6 @@ public class Acondicionamento {
         return this;
     }
 
-    public Acondicionamento addListaConteinerItem(Conteiner listaConteinerItem) {
-        this.listaConteiner.add(listaConteinerItem);
-        return this;
-    }
-
     /**
      * Cargas soltas sem embalagem ou veículos envolvidas na consolidação
      *
@@ -136,6 +131,11 @@ public class Acondicionamento {
 
     public Acondicionamento listaCargaSolta(List<CargaSoltaVeiculo> listaCargaSolta) {
         this.listaCargaSolta = listaCargaSolta;
+        return this;
+    }
+
+    public Acondicionamento addListaConteinerItem(Conteiner listaConteinerItem) {
+        this.listaConteiner.add(listaConteinerItem);
         return this;
     }
 

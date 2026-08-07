@@ -52,10 +52,6 @@ public class DocumentoDeTransformacao {
     private BigDecimal quantidadeUtilizada = null;
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    private TipoEnum tipo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -66,6 +62,10 @@ public class DocumentoDeTransformacao {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    private TipoEnum tipo = null;
 
     /**
      * Número&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 30
@@ -165,7 +165,6 @@ public class DocumentoDeTransformacao {
         this.tipo = tipo;
         return this;
     }
-
 
     @Override
     public String toString() {

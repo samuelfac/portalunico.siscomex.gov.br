@@ -47,17 +47,6 @@ public class DadosContinerUldPosioVeculoPtio {
     private Boolean vazio = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Identificação de cada elemento da lista. Este atributo é obrigatório e deve ser único dentro da lista correspondente.&lt;br/&gt;Tamanho: 40
      *
      * @return idElemento
@@ -70,6 +59,17 @@ public class DadosContinerUldPosioVeculoPtio {
 
     public void setIdElemento(String idElemento) {
         this.idElemento = idElemento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -91,11 +91,6 @@ public class DadosContinerUldPosioVeculoPtio {
         return this;
     }
 
-    public DadosContinerUldPosioVeculoPtio idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
-
     /**
      * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \&quot;_\&quot;) e Código do proprietário da ULD (2 caracteres - PP).&lt;br/&gt;Tamanho: 10
      *
@@ -108,6 +103,11 @@ public class DadosContinerUldPosioVeculoPtio {
 
     public void setIdentificacaoUld(String identificacaoUld) {
         this.identificacaoUld = identificacaoUld;
+    }
+
+    public DadosContinerUldPosioVeculoPtio idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**

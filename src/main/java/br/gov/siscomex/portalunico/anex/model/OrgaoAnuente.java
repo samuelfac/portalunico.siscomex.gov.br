@@ -58,17 +58,6 @@ public class OrgaoAnuente {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Sigla do órgão anuente.&lt;br/&gt;Tamanho máximo: 255
      *
      * @return sigla
@@ -86,6 +75,18 @@ public class OrgaoAnuente {
     public OrgaoAnuente sigla(String sigla) {
         this.sigla = sigla;
         return this;
+    }
+
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     @Override

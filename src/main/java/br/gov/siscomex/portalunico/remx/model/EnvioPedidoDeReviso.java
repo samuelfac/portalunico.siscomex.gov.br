@@ -73,6 +73,16 @@ public class EnvioPedidoDeReviso {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class EnvioPedidoDeReviso {\n" +
+                "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
+                "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -82,15 +92,5 @@ public class EnvioPedidoDeReviso {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class EnvioPedidoDeReviso {\n" +
-                "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
-                "    codigoBarrasDarf: " + toIndentedString(codigoBarrasDarf) + "\n" +
-                "}";
-        return sb;
     }
 }

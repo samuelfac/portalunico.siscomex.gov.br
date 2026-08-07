@@ -69,40 +69,24 @@ public class CrtViagem {
     @ApiModelProperty(value = "")
     @Valid
     private List<DocumentoAnexo> documentosAnexos = null;
+
+
+    @XmlElement(name = "mercadorias")
+    @ApiModelProperty(value = "")
+    @Valid
+    private List<Mercadoria> mercadorias = null;
+
     @XmlElement(name = "indicadorParcialidade", required = true)
     @ApiModelProperty(example = "T", required = true, value = "Indicador se a viagem está transportando total ou parcialmente este CRT<br/> Tamanho: 1")
     /**
      * Indicador se a viagem está transportando total ou parcialmente este CRT<br/> Tamanho: 1
      **/
     private IndicadorParcialidadeEnum indicadorParcialidade = null;
-    @XmlElement(name = "mercadorias")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Mercadoria> mercadorias = null;
 
     @XmlElement(name = "itensCarga")
     @ApiModelProperty(value = "")
     @Valid
     private List<ItemCargaViagem> itensCarga = null;
-    @XmlElement(name = "numeroCrt", required = true)
-    @ApiModelProperty(example = "UY172911152", required = true, value = "Número do CRT<br/> Tamanho Máximo: 15")
-    /**
-     * Número do CRT<br/> Tamanho Máximo: 15
-     **/
-    private String numeroCrt = null;
-    @XmlElement(name = "tipoCarga", required = true)
-    @ApiModelProperty(example = "3", required = true, value = "Tipo da carga (Granel(3), Veículo(4), Carga Solta(2), Conteiner (1))")
-    /**
-     * Tipo da carga (Granel(3), Veículo(4), Carga Solta(2), Conteiner (1))
-     **/
-    private TipoCargaEnum tipoCarga = null;
-    @XmlElement(name = "valorFCA", required = true)
-    @ApiModelProperty(example = "3284.58", required = true, value = "Valor do frete FCA.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
-    @Valid
-    /**
-     * Valor do frete FCA.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     **/
-    private BigDecimal valorFCA = null;
     @XmlElement(name = "valorSeguro", required = true)
     @ApiModelProperty(example = "3284.58", required = true, value = "Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
     @Valid
@@ -110,6 +94,13 @@ public class CrtViagem {
      * Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
      **/
     private BigDecimal valorSeguro = null;
+
+    @XmlElement(name = "numeroCrt", required = true)
+    @ApiModelProperty(example = "UY172911152", required = true, value = "Número do CRT<br/> Tamanho Máximo: 15")
+    /**
+     * Número do CRT<br/> Tamanho Máximo: 15
+     **/
+    private String numeroCrt = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -122,6 +113,21 @@ public class CrtViagem {
         return o.toString().replace("\n", "\n    ");
     }
 
+    @XmlElement(name = "tipoCarga", required = true)
+    @ApiModelProperty(example = "3", required = true, value = "Tipo da carga (Granel(3), Veículo(4), Carga Solta(2), Conteiner (1))")
+    /**
+     * Tipo da carga (Granel(3), Veículo(4), Carga Solta(2), Conteiner (1))
+     **/
+    private TipoCargaEnum tipoCarga = null;
+
+    @XmlElement(name = "valorFCA", required = true)
+    @ApiModelProperty(example = "3284.58", required = true, value = "Valor do frete FCA.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
+    @Valid
+    /**
+     * Valor do frete FCA.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
+     **/
+    private BigDecimal valorFCA = null;
+
     @XmlElement(name = "valorFrete", required = true)
     @ApiModelProperty(example = "3284.58", required = true, value = "Valor do frete cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
     @Valid
@@ -129,6 +135,17 @@ public class CrtViagem {
      * Valor do frete cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
      **/
     private BigDecimal valorFrete = null;
+
+    /**
+     * Código da moeda do frete&lt;br/&gt; Deverá ser um código na tabela de moedas (TABX)&lt;br/&gt;Formato: AAA
+     *
+     * @return codigoMoedaFrete
+     **/
+    @JsonProperty("codigoMoedaFrete")
+    @NotNull
+    public String getCodigoMoedaFrete() {
+        return codigoMoedaFrete;
+    }
 
     /**
      * Recinto da Alfândega de destino final da carga&lt;br/&gt; Obrigatório caso campo País  de destino final da viagem seja Brasil&lt;br/&gt; Tamanho Máximo: 7
@@ -150,17 +167,6 @@ public class CrtViagem {
     }
 
     /**
-     * Código da moeda do frete&lt;br/&gt; Deverá ser um código na tabela de moedas (TABX)&lt;br/&gt;Formato: AAA
-     *
-     * @return codigoMoedaFrete
-     **/
-    @JsonProperty("codigoMoedaFrete")
-    @NotNull
-    public String getCodigoMoedaFrete() {
-        return codigoMoedaFrete;
-    }
-
-    /**
      * UL da Alfândega de destino final da carga&lt;br/&gt; Obrigatório caso campo País  de destino final da viagem seja Brasil&lt;br/&gt; Tamanho Máximo: 7
      *
      * @return alfandegaDestinoUL
@@ -177,6 +183,16 @@ public class CrtViagem {
     public CrtViagem alfandegaDestinoUL(String alfandegaDestinoUL) {
         this.alfandegaDestinoUL = alfandegaDestinoUL;
         return this;
+    }
+
+    /**
+     * Get documentosAnexos
+     *
+     * @return documentosAnexos
+     **/
+    @JsonProperty("documentosAnexos")
+    public List<DocumentoAnexo> getDocumentosAnexos() {
+        return documentosAnexos;
     }
 
     public void setCodigoMoedaFrete(String codigoMoedaFrete) {
@@ -206,16 +222,6 @@ public class CrtViagem {
     public CrtViagem codigoMoedaSeguro(String codigoMoedaSeguro) {
         this.codigoMoedaSeguro = codigoMoedaSeguro;
         return this;
-    }
-
-    /**
-     * Get documentosAnexos
-     *
-     * @return documentosAnexos
-     **/
-    @JsonProperty("documentosAnexos")
-    public List<DocumentoAnexo> getDocumentosAnexos() {
-        return documentosAnexos;
     }
 
     /**
@@ -258,6 +264,17 @@ public class CrtViagem {
         return this;
     }
 
+    /**
+     * Número do CRT&lt;br/&gt; Tamanho Máximo: 15
+     *
+     * @return numeroCrt
+     **/
+    @JsonProperty("numeroCrt")
+    @NotNull
+    public String getNumeroCrt() {
+        return numeroCrt;
+    }
+
     public void setDocumentosAnexos(List<DocumentoAnexo> documentosAnexos) {
         this.documentosAnexos = documentosAnexos;
     }
@@ -293,17 +310,6 @@ public class CrtViagem {
     public CrtViagem indicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
         this.indicadorParcialidade = indicadorParcialidade;
         return this;
-    }
-
-    /**
-     * Número do CRT&lt;br/&gt; Tamanho Máximo: 15
-     *
-     * @return numeroCrt
-     **/
-    @JsonProperty("numeroCrt")
-    @NotNull
-    public String getNumeroCrt() {
-        return numeroCrt;
     }
 
     /**
@@ -352,6 +358,29 @@ public class CrtViagem {
         return this;
     }
 
+    @Override
+    public String toString() {
+
+        String sb = "class CrtViagem {\n" +
+                "    alfandegaDestinoRA: " + toIndentedString(alfandegaDestinoRA) + "\n" +
+                "    alfandegaDestinoUL: " + toIndentedString(alfandegaDestinoUL) + "\n" +
+                "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
+                "    codigoMoedaSeguro: " + toIndentedString(codigoMoedaSeguro) + "\n" +
+                "    codigoMoedaValorFCA: " + toIndentedString(codigoMoedaValorFCA) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    documentosAnexos: " + toIndentedString(documentosAnexos) + "\n" +
+                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
+                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
+                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
+                "    numeroCrt: " + toIndentedString(numeroCrt) + "\n" +
+                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
+                "    valorFCA: " + toIndentedString(valorFCA) + "\n" +
+                "    valorFrete: " + toIndentedString(valorFrete) + "\n" +
+                "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
+                "}";
+        return sb;
+    }
+
     public void setNumeroCrt(String numeroCrt) {
         this.numeroCrt = numeroCrt;
     }
@@ -386,7 +415,6 @@ public class CrtViagem {
 
     /**
      * Valor do frete FCA.&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFCA
      **/
     @JsonProperty("valorFCA")
@@ -406,7 +434,6 @@ public class CrtViagem {
 
     /**
      * Valor do frete cobrado na parte da carga que está sendo transportada em uma viagem.&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorFrete
      **/
     @JsonProperty("valorFrete")
@@ -426,7 +453,6 @@ public class CrtViagem {
 
     /**
      * Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.&lt;br/&gt;Moeda informada deverá ser um código  na tabela de moedas (TABX)&lt;br/&gt;Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     *
      * @return valorSeguro
      **/
     @JsonProperty("valorSeguro")
@@ -442,29 +468,6 @@ public class CrtViagem {
     public CrtViagem valorSeguro(BigDecimal valorSeguro) {
         this.valorSeguro = valorSeguro;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CrtViagem {\n" +
-                "    alfandegaDestinoRA: " + toIndentedString(alfandegaDestinoRA) + "\n" +
-                "    alfandegaDestinoUL: " + toIndentedString(alfandegaDestinoUL) + "\n" +
-                "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
-                "    codigoMoedaSeguro: " + toIndentedString(codigoMoedaSeguro) + "\n" +
-                "    codigoMoedaValorFCA: " + toIndentedString(codigoMoedaValorFCA) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    documentosAnexos: " + toIndentedString(documentosAnexos) + "\n" +
-                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
-                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
-                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
-                "    numeroCrt: " + toIndentedString(numeroCrt) + "\n" +
-                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
-                "    valorFCA: " + toIndentedString(valorFCA) + "\n" +
-                "    valorFrete: " + toIndentedString(valorFrete) + "\n" +
-                "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
-                "}";
-        return sb;
     }
 
 

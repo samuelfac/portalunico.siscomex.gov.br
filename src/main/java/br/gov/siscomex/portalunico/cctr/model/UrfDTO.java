@@ -70,6 +70,16 @@ public class UrfDTO {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class UrfDTO {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -79,15 +89,5 @@ public class UrfDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class UrfDTO {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
     }
 }

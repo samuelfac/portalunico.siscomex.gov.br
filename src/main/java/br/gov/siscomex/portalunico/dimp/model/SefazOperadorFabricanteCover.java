@@ -69,17 +69,6 @@ public class SefazOperadorFabricanteCover {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Versão do cadastro do fabricante estrangeiro no Sistema Catalogo de Produtos&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 6&lt;br&gt;Observação:&lt;br&gt;Quando o fabricante for desconhecido, este atributo será NULO
      *
      * @return versaoOperadorFabricante
@@ -91,6 +80,17 @@ public class SefazOperadorFabricanteCover {
 
     public void setVersaoOperadorFabricante(String versaoOperadorFabricante) {
         this.versaoOperadorFabricante = versaoOperadorFabricante;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -112,11 +112,6 @@ public class SefazOperadorFabricanteCover {
         return this;
     }
 
-    public SefazOperadorFabricanteCover versaoOperadorFabricante(String versaoOperadorFabricante) {
-        this.versaoOperadorFabricante = versaoOperadorFabricante;
-        return this;
-    }
-
     /**
      * Identificação de quem cadastrou o fabricante no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)&lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Observação:&lt;br&gt;Quando o fabricante for desconhecido, este atributo será NULO
      *
@@ -133,6 +128,11 @@ public class SefazOperadorFabricanteCover {
 
     public SefazOperadorFabricanteCover niOperadorFabricante(String niOperadorFabricante) {
         this.niOperadorFabricante = niOperadorFabricante;
+        return this;
+    }
+
+    public SefazOperadorFabricanteCover versaoOperadorFabricante(String versaoOperadorFabricante) {
+        this.versaoOperadorFabricante = versaoOperadorFabricante;
         return this;
     }
 

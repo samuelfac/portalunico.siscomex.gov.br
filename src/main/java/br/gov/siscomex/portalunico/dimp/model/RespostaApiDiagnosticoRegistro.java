@@ -47,17 +47,6 @@ public class RespostaApiDiagnosticoRegistro {
     private List<LinkCover> links = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Mensagem de resposta do resultado da operação.
      *
      * @return message
@@ -69,6 +58,17 @@ public class RespostaApiDiagnosticoRegistro {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -90,11 +90,6 @@ public class RespostaApiDiagnosticoRegistro {
         return this;
     }
 
-    public RespostaApiDiagnosticoRegistro message(String message) {
-        this.message = message;
-        return this;
-    }
-
     /**
      * Descrição da situação inicial da solicitação de diagnóstico ou registro.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 80
      *
@@ -107,6 +102,11 @@ public class RespostaApiDiagnosticoRegistro {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public RespostaApiDiagnosticoRegistro message(String message) {
+        this.message = message;
+        return this;
     }
 
     /**

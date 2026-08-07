@@ -50,12 +50,7 @@ public class SefazIcmsFracionadoDto {
      * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
      **/
     private String numeroDeclaracao = null;
-    @XmlElement(name = "tipoDeclaracao", required = true)
-    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
-    /**
-     * Tipo da declaração no Comércio Exterior
-     **/
-    private TipoDeclaracaoEnum tipoDeclaracao = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -68,25 +63,12 @@ public class SefazIcmsFracionadoDto {
         return o.toString().replace("\n", "\n    ");
     }
 
-    @XmlElement(name = "tipoRetorno", required = true)
-    @ApiModelProperty(example = "SEM_VALOR_A_PAGAR", required = true, value = "Tipo de retorno<br/> - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação<br/> - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas<br/>")
+    @XmlElement(name = "tipoDeclaracao", required = true)
+    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
     /**
-     * Tipo de retorno<br/> - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação<br/> - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas<br/>
+     * Tipo da declaração no Comércio Exterior
      **/
-    private TipoRetornoEnum tipoRetorno = null;
-    @XmlElement(name = "valorTotalCredito")
-    @ApiModelProperty(example = "103.2", value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR")
-    @Valid
-    /**
-     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR
-     **/
-    private BigDecimal valorTotalCredito = null;
-    @XmlElement(name = "versaoDeclaracao", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
-    /**
-     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
-     **/
-    private String versaoDeclaracao = null;
+    private TipoDeclaracaoEnum tipoDeclaracao = null;
 
     /**
      * Tipo de retorno&lt;br/&gt; - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação&lt;br/&gt; - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas&lt;br/&gt;
@@ -101,6 +83,28 @@ public class SefazIcmsFracionadoDto {
         }
         return tipoRetorno.value();
     }
+
+    @XmlElement(name = "tipoRetorno", required = true)
+    @ApiModelProperty(example = "SEM_VALOR_A_PAGAR", required = true, value = "Tipo de retorno<br/> - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação<br/> - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas<br/>")
+    /**
+     * Tipo de retorno<br/> - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação<br/> - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas<br/>
+     **/
+    private TipoRetornoEnum tipoRetorno = null;
+
+    @XmlElement(name = "valorTotalCredito")
+    @ApiModelProperty(example = "103.2", value = "Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR")
+    @Valid
+    /**
+     * Valor total do crédito de ICMS<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/> (*) Obrigatório se tipoRetorno = SEM_VALOR_A_PAGAR
+     **/
+    private BigDecimal valorTotalCredito = null;
+
+    @XmlElement(name = "versaoDeclaracao", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
+    /**
+     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
+     **/
+    private String versaoDeclaracao = null;
 
     /**
      * Data e hora da confirmação do crédito de ICMS&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;&lt;br/&gt; (*) Obrigatório se tipoRetorno &#x3D; SEM_VALOR_A_PAGAR
@@ -189,6 +193,21 @@ public class SefazIcmsFracionadoDto {
         return this;
     }
 
+    @Override
+    public String toString() {
+
+        String sb = "class SefazIcmsFracionadoDto {\n" +
+                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
+                "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tipoRetorno: " + toIndentedString(tipoRetorno) + "\n" +
+                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
+                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
+                "}";
+        return sb;
+    }
+
     public void setTipoRetorno(TipoRetornoEnum tipoRetorno) {
         this.tipoRetorno = tipoRetorno;
     }
@@ -235,21 +254,6 @@ public class SefazIcmsFracionadoDto {
     public SefazIcmsFracionadoDto versaoDeclaracao(String versaoDeclaracao) {
         this.versaoDeclaracao = versaoDeclaracao;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazIcmsFracionadoDto {\n" +
-                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
-                "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
-                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
-                "    tipoRetorno: " + toIndentedString(tipoRetorno) + "\n" +
-                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
-                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
-                "}";
-        return sb;
     }
 
 

@@ -100,17 +100,6 @@ public class TransitoSimplificado {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do Recinto Aduaneiro do local de destino do trânsito&lt;br&gt;Tamanho: 7&lt;br&gt;Formato: NNNNNNN&lt;br&gt;Deve ser informado quando não for informada a Unidade da Receita Federal de destino
      *
      * @return codigoRADestino
@@ -122,6 +111,17 @@ public class TransitoSimplificado {
 
     public void setCodigoRADestino(String codigoRADestino) {
         this.codigoRADestino = codigoRADestino;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -143,11 +143,6 @@ public class TransitoSimplificado {
         return this;
     }
 
-    public TransitoSimplificado codigoRADestino(String codigoRADestino) {
-        this.codigoRADestino = codigoRADestino;
-        return this;
-    }
-
     /**
      * Get veiculoRodoviario
      *
@@ -160,6 +155,11 @@ public class TransitoSimplificado {
 
     public void setVeiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
         this.veiculoRodoviario = veiculoRodoviario;
+    }
+
+    public TransitoSimplificado codigoRADestino(String codigoRADestino) {
+        this.codigoRADestino = codigoRADestino;
+        return this;
     }
 
     /**

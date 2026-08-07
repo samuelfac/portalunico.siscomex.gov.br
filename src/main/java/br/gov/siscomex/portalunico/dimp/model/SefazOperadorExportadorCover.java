@@ -50,17 +50,6 @@ public class SefazOperadorExportadorCover {
     private String niOperadorExportador = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do exportador estrangeiro no Sistema Catalogo de Produtos&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 35
      *
      * @return codigoOperadorExportador
@@ -72,6 +61,17 @@ public class SefazOperadorExportadorCover {
 
     public void setCodigoOperadorExportador(String codigoOperadorExportador) {
         this.codigoOperadorExportador = codigoOperadorExportador;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -112,11 +112,6 @@ public class SefazOperadorExportadorCover {
         return this;
     }
 
-    public SefazOperadorExportadorCover codigoOperadorExportador(String codigoOperadorExportador) {
-        this.codigoOperadorExportador = codigoOperadorExportador;
-        return this;
-    }
-
     /**
      * Identificação de quem cadastrou o exportador no sistema Catalogo de Produtos (CPF ou CNPJ Raiz)&lt;br&gt;Caso seja CNPJ (Raiz): &lt;br&gt;Tamanho: 8&lt;br&gt;Formato: &#39;NNNNNNNN&#39;&lt;br&gt;Caso seja CPF: &lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
@@ -133,6 +128,11 @@ public class SefazOperadorExportadorCover {
 
     public SefazOperadorExportadorCover niOperadorExportador(String niOperadorExportador) {
         this.niOperadorExportador = niOperadorExportador;
+        return this;
+    }
+
+    public SefazOperadorExportadorCover codigoOperadorExportador(String codigoOperadorExportador) {
+        this.codigoOperadorExportador = codigoOperadorExportador;
         return this;
     }
 

@@ -42,18 +42,21 @@ public class CampoApiRepresentation {
      * Descrição do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 100
      **/
     private String descricao = null;
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "STRING", required = true, value = "Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
-    /**
-     * Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
-     **/
-    private TipoEnum tipo = null;
+
+
     @XmlElement(name = "formato")
     @ApiModelProperty(value = "Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
      * Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
     private String formato = null;
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "STRING", required = true, value = "Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
+    /**
+     * Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
+     **/
+    private TipoEnum tipo = null;
 
     @XmlElement(name = "tamanho")
     @ApiModelProperty(example = "1", value = "Tamanho do campo.<br>Valor mínimo: 1<br>Valor máximo: 9999")
@@ -68,30 +71,6 @@ public class CampoApiRepresentation {
      * Casas decimais do campo.<br>Valor: 0 ou 1
      **/
     private Integer casasDecimais = null;
-    @XmlElement(name = "obrigatorio", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Obrigatoriedade do campo.")
-    /**
-     * Obrigatoriedade do campo.
-     **/
-    private Boolean obrigatorio = null;
-    @XmlElement(name = "autoNumerado", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador de autonumerado.")
-    /**
-     * Indicador de autonumerado.
-     **/
-    private Boolean autoNumerado = null;
-    @XmlElement(name = "chaveNegocio", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indicador de chave de negócio.")
-    /**
-     * Indicador de chave de negócio.
-     **/
-    private Boolean chaveNegocio = null;
-    @XmlElement(name = "campoEstrangeiro", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indicador de campo estrangeiro.")
-    /**
-     * Indicador de campo estrangeiro.
-     **/
-    private Boolean campoEstrangeiro = null;
     @XmlElement(name = "possuiDominio", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador de existência de domínio.")
     /**
@@ -99,25 +78,40 @@ public class CampoApiRepresentation {
      **/
     private Boolean possuiDominio = null;
 
+    @XmlElement(name = "obrigatorio", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Obrigatoriedade do campo.")
+    /**
+     * Obrigatoriedade do campo.
+     **/
+    private Boolean obrigatorio = null;
+
+    @XmlElement(name = "autoNumerado", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador de autonumerado.")
+    /**
+     * Indicador de autonumerado.
+     **/
+    private Boolean autoNumerado = null;
+
+    @XmlElement(name = "chaveNegocio", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indicador de chave de negócio.")
+    /**
+     * Indicador de chave de negócio.
+     **/
+    private Boolean chaveNegocio = null;
+
+    @XmlElement(name = "campoEstrangeiro", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indicador de campo estrangeiro.")
+    /**
+     * Indicador de campo estrangeiro.
+     **/
+    private Boolean campoEstrangeiro = null;
+
     @XmlElement(name = "restricaoUnicidade", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Indicador de restrição por unicidade.")
     /**
      * Indicador de restrição por unicidade.
      **/
     private Boolean restricaoUnicidade = null;
-    @XmlElement(name = "nomeTabelaEstrangeira")
-    @ApiModelProperty(value = "Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
-    /**
-     * Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
-     **/
-    private String nomeTabelaEstrangeira = null;
-    @XmlElement(name = "dominios")
-    @ApiModelProperty(value = "Domínios do campo.")
-    @Valid
-    /**
-     * Domínios do campo.
-     **/
-    private List<DominioCampoApiRepresentation> dominios = null;
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -129,6 +123,21 @@ public class CampoApiRepresentation {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "nomeTabelaEstrangeira")
+    @ApiModelProperty(value = "Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
+    /**
+     * Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50
+     **/
+    private String nomeTabelaEstrangeira = null;
+
+    @XmlElement(name = "dominios")
+    @ApiModelProperty(value = "Domínios do campo.")
+    @Valid
+    /**
+     * Domínios do campo.
+     **/
+    private List<DominioCampoApiRepresentation> dominios = null;
 
     /**
      * Nome do campo.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 40
@@ -309,7 +318,6 @@ public class CampoApiRepresentation {
 
     /**
      * Indicador de chave de negócio.
-     *
      * @return chaveNegocio
      **/
     @JsonProperty("chaveNegocio")
@@ -369,7 +377,6 @@ public class CampoApiRepresentation {
 
     /**
      * Indicador de existência de domínio.
-     *
      * @return possuiDominio
      **/
     @JsonProperty("possuiDominio")
@@ -389,7 +396,6 @@ public class CampoApiRepresentation {
 
     /**
      * Nome da tabela estrangeira.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 50
-     *
      * @return nomeTabelaEstrangeira
      **/
     @JsonProperty("nomeTabelaEstrangeira")
@@ -408,7 +414,6 @@ public class CampoApiRepresentation {
 
     /**
      * Domínios do campo.
-     *
      * @return dominios
      **/
     @JsonProperty("dominios")
@@ -429,7 +434,6 @@ public class CampoApiRepresentation {
         this.dominios.add(dominiosItem);
         return this;
     }
-
 
     @Override
     public String toString() {

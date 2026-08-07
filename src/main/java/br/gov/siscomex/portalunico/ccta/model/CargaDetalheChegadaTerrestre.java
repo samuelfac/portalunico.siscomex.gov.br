@@ -81,18 +81,7 @@ public class CargaDetalheChegadaTerrestre {
      * Número do termo gerado no sistema Mantra<br/>Tamanho: 9<br/>Formato: NNNNNNNNN
      **/
     private String termo = null;
-    @XmlElement(name = "uf")
-    @ApiModelProperty(example = "RJ", value = "Unidade da Federação (UF) da placa do veículo terrestre.<br/>Tamanho: 2")
-    /**
-     * Unidade da Federação (UF) da placa do veículo terrestre.<br/>Tamanho: 2
-     **/
-    private UfEnum uf = null;
-    @XmlElement(name = "veiculoRegistradoNoMantra")
-    @ApiModelProperty(example = "S", value = "Indicador de veículo informado no Siscomex trânsito.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não")
-    /**
-     * Indicador de veículo informado no Siscomex trânsito.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não
-     **/
-    private VeiculoRegistradoNoMantraEnum veiculoRegistradoNoMantra = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -104,6 +93,39 @@ public class CargaDetalheChegadaTerrestre {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "uf")
+    @ApiModelProperty(example = "RJ", value = "Unidade da Federação (UF) da placa do veículo terrestre.<br/>Tamanho: 2")
+    /**
+     * Unidade da Federação (UF) da placa do veículo terrestre.<br/>Tamanho: 2
+     **/
+    private UfEnum uf = null;
+
+    @Override
+    public String toString() {
+
+        String sb = "class CargaDetalheChegadaTerrestre {\n" +
+                "    codigoRecintoChegada: " + toIndentedString(codigoRecintoChegada) + "\n" +
+                "    codigoRecintoPartida: " + toIndentedString(codigoRecintoPartida) + "\n" +
+                "    codigoUaChegada: " + toIndentedString(codigoUaChegada) + "\n" +
+                "    codigoUaPartida: " + toIndentedString(codigoUaPartida) + "\n" +
+                "    dataHoraChegada: " + toIndentedString(dataHoraChegada) + "\n" +
+                "    dataHoraPartida: " + toIndentedString(dataHoraPartida) + "\n" +
+                "    numeroDta: " + toIndentedString(numeroDta) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    termo: " + toIndentedString(termo) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
+                "    veiculoRegistradoNoMantra: " + toIndentedString(veiculoRegistradoNoMantra) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlElement(name = "veiculoRegistradoNoMantra")
+    @ApiModelProperty(example = "S", value = "Indicador de veículo informado no Siscomex trânsito.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não")
+    /**
+     * Indicador de veículo informado no Siscomex trânsito.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não
+     **/
+    private VeiculoRegistradoNoMantraEnum veiculoRegistradoNoMantra = null;
 
     /**
      * Código do Recinto Aduaneiro de chegada.&lt;br/&gt;Tamanho: 7&lt;br/&gt;Formato: inteiro com até 7 dígitos
@@ -240,7 +262,6 @@ public class CargaDetalheChegadaTerrestre {
 
     /**
      * Placa do veículo terrestre.&lt;br/&gt;Tamanho: 7&lt;br/&gt;Formato: AAANNNN ou AAANANN
-     *
      * @return placa
      **/
     @JsonProperty("placa")
@@ -259,7 +280,6 @@ public class CargaDetalheChegadaTerrestre {
 
     /**
      * Número do termo gerado no sistema Mantra&lt;br/&gt;Tamanho: 9&lt;br/&gt;Formato: NNNNNNNNN
-     *
      * @return termo
      **/
     @JsonProperty("termo")
@@ -318,25 +338,6 @@ public class CargaDetalheChegadaTerrestre {
     public CargaDetalheChegadaTerrestre veiculoRegistradoNoMantra(VeiculoRegistradoNoMantraEnum veiculoRegistradoNoMantra) {
         this.veiculoRegistradoNoMantra = veiculoRegistradoNoMantra;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CargaDetalheChegadaTerrestre {\n" +
-                "    codigoRecintoChegada: " + toIndentedString(codigoRecintoChegada) + "\n" +
-                "    codigoRecintoPartida: " + toIndentedString(codigoRecintoPartida) + "\n" +
-                "    codigoUaChegada: " + toIndentedString(codigoUaChegada) + "\n" +
-                "    codigoUaPartida: " + toIndentedString(codigoUaPartida) + "\n" +
-                "    dataHoraChegada: " + toIndentedString(dataHoraChegada) + "\n" +
-                "    dataHoraPartida: " + toIndentedString(dataHoraPartida) + "\n" +
-                "    numeroDta: " + toIndentedString(numeroDta) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    termo: " + toIndentedString(termo) + "\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
-                "    veiculoRegistradoNoMantra: " + toIndentedString(veiculoRegistradoNoMantra) + "\n" +
-                "}";
-        return sb;
     }
 
 
@@ -459,15 +460,6 @@ public class CargaDetalheChegadaTerrestre {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static UfEnum fromValue(String v) {
             for (UfEnum b : UfEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -475,6 +467,15 @@ public class CargaDetalheChegadaTerrestre {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to UfEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 
@@ -497,15 +498,6 @@ public class CargaDetalheChegadaTerrestre {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static VeiculoRegistradoNoMantraEnum fromValue(String v) {
             for (VeiculoRegistradoNoMantraEnum b : VeiculoRegistradoNoMantraEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -513,6 +505,15 @@ public class CargaDetalheChegadaTerrestre {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to VeiculoRegistradoNoMantraEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

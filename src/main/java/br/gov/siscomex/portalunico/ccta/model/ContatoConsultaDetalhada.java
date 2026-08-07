@@ -39,17 +39,6 @@ public class ContatoConsultaDetalhada {
     private String telefone = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * E-mail do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
      *
      * @return email
@@ -61,6 +50,17 @@ public class ContatoConsultaDetalhada {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -82,11 +82,6 @@ public class ContatoConsultaDetalhada {
         return this;
     }
 
-    public ContatoConsultaDetalhada email(String email) {
-        this.email = email;
-        return this;
-    }
-
     /**
      * Telefone do contato&lt;br/&gt; Tamanho: 35&lt;br/&gt;
      *
@@ -103,6 +98,11 @@ public class ContatoConsultaDetalhada {
 
     public ContatoConsultaDetalhada telefone(String telefone) {
         this.telefone = telefone;
+        return this;
+    }
+
+    public ContatoConsultaDetalhada email(String email) {
+        this.email = email;
         return this;
     }
 

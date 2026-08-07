@@ -39,13 +39,6 @@ public class DadosDocumentoEstrangeiro {
     private String paisEmissor = null;
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.")
-    /**
-     * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.
-     **/
-    private TipoEnum tipo = null;
-
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -56,6 +49,13 @@ public class DadosDocumentoEstrangeiro {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "I", value = "Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.")
+    /**
+     * Tipo de documento<br/>Domínio:<br/>I - Identidade<br/>P - Passaporte<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que os atributos 'documentoEstrangeiro.numero', 'documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' sejam informados quando o atributo 'cpf' não for informado.
+     **/
+    private TipoEnum tipo = null;
 
     @XmlElement(name = "validade")
     @ApiModelProperty(example = "2020-04-01", value = "Validade do documento<br/>Formato: 'yyyy-MM-dd'")
@@ -142,7 +142,6 @@ public class DadosDocumentoEstrangeiro {
         this.validade = validade;
         return this;
     }
-
 
     @Override
     public String toString() {

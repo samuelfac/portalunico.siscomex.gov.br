@@ -56,17 +56,6 @@ public class SimularTaResultadoExternalDTO {
     private Boolean lpcoPrevioEmbarque = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get tipoTratamento
      *
      * @return tipoTratamento
@@ -78,6 +67,17 @@ public class SimularTaResultadoExternalDTO {
 
     public void setTipoTratamento(String tipoTratamento) {
         this.tipoTratamento = tipoTratamento;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -118,11 +118,6 @@ public class SimularTaResultadoExternalDTO {
         return this;
     }
 
-    public SimularTaResultadoExternalDTO tipoTratamento(String tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
-        return this;
-    }
-
     /**
      * Get modelo
      *
@@ -135,6 +130,11 @@ public class SimularTaResultadoExternalDTO {
 
     public void setModelo(ModeloLpcoItemProcessaTaDTO modelo) {
         this.modelo = modelo;
+    }
+
+    public SimularTaResultadoExternalDTO tipoTratamento(String tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
+        return this;
     }
 
     /**
@@ -156,11 +156,6 @@ public class SimularTaResultadoExternalDTO {
         return this;
     }
 
-    public SimularTaResultadoExternalDTO modelo(ModeloLpcoItemProcessaTaDTO modelo) {
-        this.modelo = modelo;
-        return this;
-    }
-
     /**
      * Get permiteRetificacao
      *
@@ -173,6 +168,11 @@ public class SimularTaResultadoExternalDTO {
 
     public void setPermiteRetificacao(String permiteRetificacao) {
         this.permiteRetificacao = permiteRetificacao;
+    }
+
+    public SimularTaResultadoExternalDTO modelo(ModeloLpcoItemProcessaTaDTO modelo) {
+        this.modelo = modelo;
+        return this;
     }
 
     /**
@@ -191,11 +191,6 @@ public class SimularTaResultadoExternalDTO {
 
     public SimularTaResultadoExternalDTO impedeDesembaraco(Boolean impedeDesembaraco) {
         this.impedeDesembaraco = impedeDesembaraco;
-        return this;
-    }
-
-    public SimularTaResultadoExternalDTO permiteRetificacao(String permiteRetificacao) {
-        this.permiteRetificacao = permiteRetificacao;
         return this;
     }
 
@@ -234,6 +229,11 @@ public class SimularTaResultadoExternalDTO {
 
     public SimularTaResultadoExternalDTO lpcoPrevioEmbarque(Boolean lpcoPrevioEmbarque) {
         this.lpcoPrevioEmbarque = lpcoPrevioEmbarque;
+        return this;
+    }
+
+    public SimularTaResultadoExternalDTO permiteRetificacao(String permiteRetificacao) {
+        this.permiteRetificacao = permiteRetificacao;
         return this;
     }
 

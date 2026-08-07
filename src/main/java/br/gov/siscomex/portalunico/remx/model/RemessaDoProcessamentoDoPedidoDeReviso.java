@@ -40,17 +40,6 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
     private String numeroRemessa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código da nova situação da remessa. O código da situação é composto por até 2 dígitos.
      *
      * @return novaSituacaoRemessa
@@ -63,6 +52,17 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
 
     public void setNovaSituacaoRemessa(Integer novaSituacaoRemessa) {
         this.novaSituacaoRemessa = novaSituacaoRemessa;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -85,11 +85,6 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
         return this;
     }
 
-    public RemessaDoProcessamentoDoPedidoDeReviso novaSituacaoRemessa(Integer novaSituacaoRemessa) {
-        this.novaSituacaoRemessa = novaSituacaoRemessa;
-        return this;
-    }
-
     /**
      * Número da remessa composto por no máximo 18 caracteres alfanuméricos.
      *
@@ -107,6 +102,11 @@ public class RemessaDoProcessamentoDoPedidoDeReviso {
 
     public RemessaDoProcessamentoDoPedidoDeReviso numeroRemessa(String numeroRemessa) {
         this.numeroRemessa = numeroRemessa;
+        return this;
+    }
+
+    public RemessaDoProcessamentoDoPedidoDeReviso novaSituacaoRemessa(Integer novaSituacaoRemessa) {
+        this.novaSituacaoRemessa = novaSituacaoRemessa;
         return this;
     }
 

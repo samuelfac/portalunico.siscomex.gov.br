@@ -59,18 +59,7 @@ public class OpcaoIcmsConsultaDto {
      * Identificador único da opção no PCCE
      **/
     private Long id = null;
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
-    /**
-     * Tipo de declaração de ICMS à qual a opção está vinculada
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-    @XmlElement(name = "uf", required = true)
-    @ApiModelProperty(example = "RS", required = true, value = "UF à qual a opção está vinculada")
-    /**
-     * UF à qual a opção está vinculada
-     **/
-    private UfEnum uf = null;
+
 
     /**
      * Convert the given object to string with each line indented by 4 spaces
@@ -82,6 +71,35 @@ public class OpcaoIcmsConsultaDto {
         }
         return o.toString().replace("\n", "\n    ");
     }
+
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de declaração de ICMS à qual a opção está vinculada")
+    /**
+     * Tipo de declaração de ICMS à qual a opção está vinculada
+     **/
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
+
+    @Override
+    public String toString() {
+
+        String sb = "class OpcaoIcmsConsultaDto {\n" +
+                "    ativa: " + toIndentedString(ativa) + "\n" +
+                "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
+                "    dataCadastro: " + toIndentedString(dataCadastro) + "\n" +
+                "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
+                "}";
+        return sb;
+    }
+
+    @XmlElement(name = "uf", required = true)
+    @ApiModelProperty(example = "RS", required = true, value = "UF à qual a opção está vinculada")
+    /**
+     * UF à qual a opção está vinculada
+     **/
+    private UfEnum uf = null;
 
     /**
      * Indicador de que a opção está ativa e ficará disponível para uso pelo importador&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
@@ -227,21 +245,6 @@ public class OpcaoIcmsConsultaDto {
     public OpcaoIcmsConsultaDto uf(UfEnum uf) {
         this.uf = uf;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class OpcaoIcmsConsultaDto {\n" +
-                "    ativa: " + toIndentedString(ativa) + "\n" +
-                "    codigoOpcao: " + toIndentedString(codigoOpcao) + "\n" +
-                "    dataCadastro: " + toIndentedString(dataCadastro) + "\n" +
-                "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
-                "}";
-        return sb;
     }
 
 
@@ -414,15 +417,6 @@ public class OpcaoIcmsConsultaDto {
             value = v;
         }
 
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
         public static UfEnum fromValue(String v) {
             for (UfEnum b : UfEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -430,6 +424,15 @@ public class OpcaoIcmsConsultaDto {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to UfEnum");
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 }

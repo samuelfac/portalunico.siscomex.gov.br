@@ -140,17 +140,6 @@ public class Carga {
     private Nfes nfes = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Get consignatario
      *
      * @return consignatario
@@ -163,6 +152,17 @@ public class Carga {
 
     public void setConsignatario(Consignatario consignatario) {
         this.consignatario = consignatario;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -185,11 +185,6 @@ public class Carga {
         return this;
     }
 
-    public Carga consignatario(Consignatario consignatario) {
-        this.consignatario = consignatario;
-        return this;
-    }
-
     /**
      * Get destinatario
      *
@@ -203,6 +198,11 @@ public class Carga {
 
     public void setDestinatario(Destinatrio destinatario) {
         this.destinatario = destinatario;
+    }
+
+    public Carga consignatario(Consignatario consignatario) {
+        this.consignatario = consignatario;
+        return this;
     }
 
     /**
@@ -221,11 +221,6 @@ public class Carga {
 
     public Carga codigoAduanaDestino(String codigoAduanaDestino) {
         this.codigoAduanaDestino = codigoAduanaDestino;
-        return this;
-    }
-
-    public Carga destinatario(Destinatrio destinatario) {
-        this.destinatario = destinatario;
         return this;
     }
 
@@ -304,6 +299,11 @@ public class Carga {
         this.moedaValorFOT = moedaValorFOT;
     }
 
+    public Carga destinatario(Destinatrio destinatario) {
+        this.destinatario = destinatario;
+        return this;
+    }
+
     /**
      * Valor do seguro&lt;br&gt;Tamanho: 14.2&lt;br&gt;Formato: NNNNNNNNNNNNNN.NN
      * @return valorSeguro
@@ -340,11 +340,6 @@ public class Carga {
         return this;
     }
 
-    public Carga moedaValorFOT(String moedaValorFOT) {
-        this.moedaValorFOT = moedaValorFOT;
-        return this;
-    }
-
     /**
      * Código do tipo de volume&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: NN
      *
@@ -357,6 +352,11 @@ public class Carga {
 
     public void setCodigoTiposVolumes(Integer codigoTiposVolumes) {
         this.codigoTiposVolumes = codigoTiposVolumes;
+    }
+
+    public Carga moedaValorFOT(String moedaValorFOT) {
+        this.moedaValorFOT = moedaValorFOT;
+        return this;
     }
 
     /**
@@ -378,14 +378,8 @@ public class Carga {
         return this;
     }
 
-    public Carga codigoTiposVolumes(Integer codigoTiposVolumes) {
-        this.codigoTiposVolumes = codigoTiposVolumes;
-        return this;
-    }
-
     /**
      * Quantidade do volume&lt;br&gt;Tamanho: 6&lt;br&gt;Formato: NNNNNN
-     *
      * @return qtdeVolumes
      **/
     @JsonProperty("qtdeVolumes")
@@ -395,6 +389,11 @@ public class Carga {
 
     public void setQtdeVolumes(Integer qtdeVolumes) {
         this.qtdeVolumes = qtdeVolumes;
+    }
+
+    public Carga codigoTiposVolumes(Integer codigoTiposVolumes) {
+        this.codigoTiposVolumes = codigoTiposVolumes;
+        return this;
     }
 
     /**
@@ -413,11 +412,6 @@ public class Carga {
 
     public Carga pesoBruto(BigDecimal pesoBruto) {
         this.pesoBruto = pesoBruto;
-        return this;
-    }
-
-    public Carga qtdeVolumes(Integer qtdeVolumes) {
-        this.qtdeVolumes = qtdeVolumes;
         return this;
     }
 
@@ -443,7 +437,6 @@ public class Carga {
 
     /**
      * Documentos anexos&lt;br&gt;Tamanho: 400
-     *
      * @return documentosAnexos
      **/
     @JsonProperty("documentosAnexos")
@@ -478,6 +471,11 @@ public class Carga {
 
     public Carga nfes(Nfes nfes) {
         this.nfes = nfes;
+        return this;
+    }
+
+    public Carga qtdeVolumes(Integer qtdeVolumes) {
+        this.qtdeVolumes = qtdeVolumes;
         return this;
     }
 

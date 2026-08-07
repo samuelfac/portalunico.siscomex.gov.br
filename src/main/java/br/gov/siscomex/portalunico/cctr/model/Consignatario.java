@@ -79,17 +79,6 @@ public class Consignatario {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Sigla do país de origem do consignatário&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA&lt;br&gt;Sigla ISO/Alfa 2 do país
      *
      * @return pais
@@ -101,6 +90,17 @@ public class Consignatario {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -122,11 +122,6 @@ public class Consignatario {
         return this;
     }
 
-    public Consignatario pais(String pais) {
-        this.pais = pais;
-        return this;
-    }
-
     /**
      * Endereço do consignatário&lt;br&gt;Tamanho: 260&lt;br&gt;Não deve ser informado quando o indicador to Order for marcado como S (Sim)
      *
@@ -139,6 +134,11 @@ public class Consignatario {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public Consignatario pais(String pais) {
+        this.pais = pais;
+        return this;
     }
 
     /**

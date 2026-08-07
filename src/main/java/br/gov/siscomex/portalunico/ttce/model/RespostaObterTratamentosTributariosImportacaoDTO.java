@@ -90,17 +90,6 @@ public class RespostaObterTratamentosTributariosImportacaoDTO {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do país informado na chamada do serviço.
      *
      * @return codigoPais
@@ -113,6 +102,17 @@ public class RespostaObterTratamentosTributariosImportacaoDTO {
 
     public void setCodigoPais(Long codigoPais) {
         this.codigoPais = codigoPais;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -152,11 +152,6 @@ public class RespostaObterTratamentosTributariosImportacaoDTO {
 
     public RespostaObterTratamentosTributariosImportacaoDTO tipoOperacao(String tipoOperacao) {
         this.tipoOperacao = tipoOperacao;
-        return this;
-    }
-
-    public RespostaObterTratamentosTributariosImportacaoDTO codigoPais(Long codigoPais) {
-        this.codigoPais = codigoPais;
         return this;
     }
 
@@ -205,6 +200,11 @@ public class RespostaObterTratamentosTributariosImportacaoDTO {
 
     public RespostaObterTratamentosTributariosImportacaoDTO addFundamentosOpcionaisDisponiveisItem(FundamentoLegalOpcionalDisponivelDTO fundamentosOpcionaisDisponiveisItem) {
         this.fundamentosOpcionaisDisponiveis.add(fundamentosOpcionaisDisponiveisItem);
+        return this;
+    }
+
+    public RespostaObterTratamentosTributariosImportacaoDTO codigoPais(Long codigoPais) {
+        this.codigoPais = codigoPais;
         return this;
     }
 

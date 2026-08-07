@@ -136,17 +136,6 @@ public class ExigenciaFiscalEstruturada {
     private Integer versaoDocumento = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data do atendimento ou dispensa da exigência&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
      * @return dataLiberacao
@@ -218,6 +207,17 @@ public class ExigenciaFiscalEstruturada {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Get itemDue
      *
      * @return itemDue
@@ -236,11 +236,6 @@ public class ExigenciaFiscalEstruturada {
         return this;
     }
 
-    public ExigenciaFiscalEstruturada descricaoExigencia(String descricaoExigencia) {
-        this.descricaoExigencia = descricaoExigencia;
-        return this;
-    }
-
     /**
      * Justificativa do servidor ao dispensar uma exigência&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
      *
@@ -253,6 +248,11 @@ public class ExigenciaFiscalEstruturada {
 
     public void setJustificativaDispensa(String justificativaDispensa) {
         this.justificativaDispensa = justificativaDispensa;
+    }
+
+    public ExigenciaFiscalEstruturada descricaoExigencia(String descricaoExigencia) {
+        this.descricaoExigencia = descricaoExigencia;
+        return this;
     }
 
     /**
@@ -298,11 +298,6 @@ public class ExigenciaFiscalEstruturada {
         return this;
     }
 
-    public ExigenciaFiscalEstruturada justificativaDispensa(String justificativaDispensa) {
-        this.justificativaDispensa = justificativaDispensa;
-        return this;
-    }
-
     /**
      * Matrícula servidor do servidor responsável pela dispensa ou atendimento da exigência&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 15
      *
@@ -324,7 +319,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * NCM sugerida&lt;br /&gt;Tamanho: 8
-     *
      * @return ncmSugerida
      **/
     @JsonProperty("ncmSugerida")
@@ -343,7 +337,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Número da DU-E&lt;br /&gt;Tamanho: 14&lt;br /&gt;Formato: &#39;NNAANNNNNNNNNN&#39;
-     *
      * @return numeroDocumento
      **/
     @JsonProperty("numeroDocumento")
@@ -362,7 +355,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Número de ordem da exigência&lt;br /&gt;Formato: Inteiro, com até 3 digitos
-     *
      * @return numeroExigencia
      **/
     @JsonProperty("numeroExigencia")
@@ -372,6 +364,11 @@ public class ExigenciaFiscalEstruturada {
 
     public void setNumeroExigencia(Integer numeroExigencia) {
         this.numeroExigencia = numeroExigencia;
+    }
+
+    public ExigenciaFiscalEstruturada justificativaDispensa(String justificativaDispensa) {
+        this.justificativaDispensa = justificativaDispensa;
+        return this;
     }
 
     /**
@@ -392,14 +389,8 @@ public class ExigenciaFiscalEstruturada {
         return this;
     }
 
-    public ExigenciaFiscalEstruturada numeroExigencia(Integer numeroExigencia) {
-        this.numeroExigencia = numeroExigencia;
-        return this;
-    }
-
     /**
      * Órgão responsável pela criação da exigência&lt;br /&gt;Tamanho mínimo: 1&lt;br /&gt;Tamanho máximo: 10
-     *
      * @return orgao
      **/
     @JsonProperty("orgao")
@@ -418,7 +409,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Get situacao
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -437,7 +427,6 @@ public class ExigenciaFiscalEstruturada {
 
     /**
      * Valor a recolher de Multa&lt;br /&gt;Tamanho: 15,2&lt;br /&gt;Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
      * @return valorRecolherMulta
      **/
     @JsonProperty("valorRecolherMulta")
@@ -447,6 +436,11 @@ public class ExigenciaFiscalEstruturada {
 
     public void setValorRecolherMulta(BigDecimal valorRecolherMulta) {
         this.valorRecolherMulta = valorRecolherMulta;
+    }
+
+    public ExigenciaFiscalEstruturada numeroExigencia(Integer numeroExigencia) {
+        this.numeroExigencia = numeroExigencia;
+        return this;
     }
 
     /**

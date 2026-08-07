@@ -140,17 +140,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
     private List<IdentificacaoAdicionalIntegracaoDTO> identificacoesAdicionais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número sequencial utilizado para identificar o item na lista. O retorno da validação se dará através desse número. &lt;br&gt;Tamanho máximo: 3. &lt;br&gt; Importante: A lista enviada deve conter, no máximo, 100 elementos.
      *
      * @return seq
@@ -186,6 +175,17 @@ public class OperadorEstrangeiroIntegracaoDTO {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Código do Operador Estrangeiro (utilizado somente para retorno de valor)&lt;br&gt;Tamanho: 35
      *
      * @return codigo
@@ -202,11 +202,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     public OperadorEstrangeiroIntegracaoDTO codigo(String codigo) {
         this.codigo = codigo;
-        return this;
-    }
-
-    public OperadorEstrangeiroIntegracaoDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
-        this.cpfCnpjRaiz = cpfCnpjRaiz;
         return this;
     }
 
@@ -263,6 +258,11 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.nome = nome;
     }
 
+    public OperadorEstrangeiroIntegracaoDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
+        return this;
+    }
+
     /**
      * Situação do Operador Estrangeiro&lt;br&gt;ATIVADO, DESATIVADO
      *
@@ -282,11 +282,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
         return this;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
     /**
      * Logradouro do Operador Estrangeiro&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 70
      *
@@ -300,6 +295,11 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
+    }
+
+    public OperadorEstrangeiroIntegracaoDTO nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     /**
@@ -321,11 +321,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
         return this;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO logradouro(String logradouro) {
-        this.logradouro = logradouro;
-        return this;
-    }
-
     /**
      * Código da subdivisao do país. Usar tabela ISO 3166&lt;br&gt;Tamanho máximo: 6&lt;br&gt;Formato: &#39;AA-AAA&#39;
      *
@@ -338,6 +333,11 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     public void setCodigoSubdivisaoPais(String codigoSubdivisaoPais) {
         this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+    }
+
+    public OperadorEstrangeiroIntegracaoDTO logradouro(String logradouro) {
+        this.logradouro = logradouro;
+        return this;
     }
 
     /**
@@ -377,14 +377,8 @@ public class OperadorEstrangeiroIntegracaoDTO {
         return this;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
-        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
-        return this;
-    }
-
     /**
      * Código interno para uso em outros sitemas&lt;br&gt;Tamanho: 35
-     *
      * @return codigoInterno
      **/
     @JsonProperty("codigoInterno")
@@ -414,9 +408,13 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.email = email;
     }
 
+    public OperadorEstrangeiroIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
+        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+        return this;
+    }
+
     /**
      * Data de referência, informar somente quando for criar Operador Estrangeiro com data retroativa&lt;br&gt;Tamanho: 10&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
      * @return dataReferencia
      **/
     @JsonProperty("dataReferencia")
@@ -430,11 +428,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     public OperadorEstrangeiroIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
         this.dataReferencia = dataReferencia;
-        return this;
-    }
-
-    public OperadorEstrangeiroIntegracaoDTO email(String email) {
-        this.email = email;
         return this;
     }
 
@@ -459,6 +452,11 @@ public class OperadorEstrangeiroIntegracaoDTO {
 
     public OperadorEstrangeiroIntegracaoDTO addIdentificacoesAdicionaisItem(IdentificacaoAdicionalIntegracaoDTO identificacoesAdicionaisItem) {
         this.identificacoesAdicionais.add(identificacoesAdicionaisItem);
+        return this;
+    }
+
+    public OperadorEstrangeiroIntegracaoDTO email(String email) {
+        this.email = email;
         return this;
     }
 

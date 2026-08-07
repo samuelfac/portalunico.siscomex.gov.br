@@ -52,17 +52,6 @@ public class ItemDeclaracaoVinculadaCover {
     private String ncm = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Número do item/adição da declaração.&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
      *
      * @return numeroItemDeclaracaoVinculada
@@ -93,6 +82,17 @@ public class ItemDeclaracaoVinculadaCover {
 
     public void setFrete(FreteItemDeclaracaoVinculadaCover frete) {
         this.frete = frete;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

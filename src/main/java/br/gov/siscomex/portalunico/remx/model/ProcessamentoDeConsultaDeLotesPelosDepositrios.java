@@ -103,17 +103,6 @@ public class ProcessamentoDeConsultaDeLotesPelosDepositrios {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Lista de erros.
      *
      * @return erros
@@ -130,6 +119,17 @@ public class ProcessamentoDeConsultaDeLotesPelosDepositrios {
     public ProcessamentoDeConsultaDeLotesPelosDepositrios erros(List<ErroNoProcessamento> erros) {
         this.erros = erros;
         return this;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -153,11 +153,6 @@ public class ProcessamentoDeConsultaDeLotesPelosDepositrios {
 
     public ProcessamentoDeConsultaDeLotesPelosDepositrios addLotesItem(LoteDaConsultaDeLotesPelosDepositrios lotesItem) {
         this.lotes.add(lotesItem);
-        return this;
-    }
-
-    public ProcessamentoDeConsultaDeLotesPelosDepositrios addErrosItem(ErroNoProcessamento errosItem) {
-        this.erros.add(errosItem);
         return this;
     }
 
@@ -196,6 +191,11 @@ public class ProcessamentoDeConsultaDeLotesPelosDepositrios {
 
     public ProcessamentoDeConsultaDeLotesPelosDepositrios situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDeConsultaDeLotesPelosDepositrios addErrosItem(ErroNoProcessamento errosItem) {
+        this.erros.add(errosItem);
         return this;
     }
 

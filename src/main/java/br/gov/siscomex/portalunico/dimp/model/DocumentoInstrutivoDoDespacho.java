@@ -76,6 +76,16 @@ public class DocumentoInstrutivoDoDespacho {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentoInstrutivoDoDespacho {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    palavrasChave: " + toIndentedString(palavrasChave) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -85,15 +95,5 @@ public class DocumentoInstrutivoDoDespacho {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DocumentoInstrutivoDoDespacho {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    palavrasChave: " + toIndentedString(palavrasChave) + "\n" +
-                "}";
-        return sb;
     }
 }

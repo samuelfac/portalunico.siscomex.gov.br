@@ -78,6 +78,16 @@ public class CargaDuimpSeguroConsultaCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CargaDuimpSeguroConsultaCover {\n" +
+                "    codigoMoedaNegociada: " + toIndentedString(codigoMoedaNegociada) + "\n" +
+                "    valorMoedaNegociada: " + toIndentedString(valorMoedaNegociada) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class CargaDuimpSeguroConsultaCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CargaDuimpSeguroConsultaCover {\n" +
-                "    codigoMoedaNegociada: " + toIndentedString(codigoMoedaNegociada) + "\n" +
-                "    valorMoedaNegociada: " + toIndentedString(valorMoedaNegociada) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -48,17 +48,6 @@ public class ReferenciaValorCampoFundamentoLegal {
     private List<ReferenciaCampoAdicionalTt> camposAdicionais = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Código do fundamento legal.&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: 0CCTTRRFFFF, onde CC &#x3D; Código da agregação, TT&#x3D;Tipo da Agregação, RR&#x3D;Regime, FFFF&#x3D;Fundamento legal
      *
      * @return codigoFundamento
@@ -90,6 +79,17 @@ public class ReferenciaValorCampoFundamentoLegal {
 
     public void setNcm(String ncm) {
         this.ncm = ncm;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**

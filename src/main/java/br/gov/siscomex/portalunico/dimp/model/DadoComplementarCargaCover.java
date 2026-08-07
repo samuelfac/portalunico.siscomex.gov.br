@@ -131,15 +131,6 @@ public class DadoComplementarCargaCover {
         return this;
     }
 
-    public void setUnidadeEntrada(String unidadeEntrada) {
-        this.unidadeEntrada = unidadeEntrada;
-    }
-
-    public DadoComplementarCargaCover unidadeEntrada(String unidadeEntrada) {
-        this.unidadeEntrada = unidadeEntrada;
-        return this;
-    }
-
     @Override
     public String toString() {
 
@@ -150,6 +141,15 @@ public class DadoComplementarCargaCover {
                 "    unidadeEntrada: " + toIndentedString(unidadeEntrada) + "\n" +
                 "}";
         return sb;
+    }
+
+    public void setUnidadeEntrada(String unidadeEntrada) {
+        this.unidadeEntrada = unidadeEntrada;
+    }
+
+    public DadoComplementarCargaCover unidadeEntrada(String unidadeEntrada) {
+        this.unidadeEntrada = unidadeEntrada;
+        return this;
     }
 
 

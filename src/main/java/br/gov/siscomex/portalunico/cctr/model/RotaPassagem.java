@@ -82,17 +82,6 @@ public class RotaPassagem {
     private BigDecimal ordemPrecedencia = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * País de passagem.&lt;br&gt;Tamanho: 2&lt;br&gt;Formato: AA
      *
      * @return codigoPais
@@ -126,6 +115,17 @@ public class RotaPassagem {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Aduana de entrada (ADUANAS ESTRANGEIRAS).&lt;br&gt;Tamanho: 9&lt;br&gt;Formato: AAAAAAAAA
      *
      * @return codigoAduanaEntrada
@@ -141,11 +141,6 @@ public class RotaPassagem {
 
     public RotaPassagem codigoAduanaEntrada(String codigoAduanaEntrada) {
         this.codigoAduanaEntrada = codigoAduanaEntrada;
-        return this;
-    }
-
-    public RotaPassagem codigoCidadeEntrada(String codigoCidadeEntrada) {
-        this.codigoCidadeEntrada = codigoCidadeEntrada;
         return this;
     }
 
@@ -180,6 +175,11 @@ public class RotaPassagem {
 
     public void setCodigoCidadeSaida(String codigoCidadeSaida) {
         this.codigoCidadeSaida = codigoCidadeSaida;
+    }
+
+    public RotaPassagem codigoCidadeEntrada(String codigoCidadeEntrada) {
+        this.codigoCidadeEntrada = codigoCidadeEntrada;
+        return this;
     }
 
     /**
@@ -220,11 +220,6 @@ public class RotaPassagem {
         return this;
     }
 
-    public RotaPassagem codigoCidadeSaida(String codigoCidadeSaida) {
-        this.codigoCidadeSaida = codigoCidadeSaida;
-        return this;
-    }
-
     /**
      * Ordem de precedência.&lt;br&gt;Tamanho: 1&lt;br&gt;Formato: N
      *
@@ -241,6 +236,11 @@ public class RotaPassagem {
 
     public RotaPassagem ordemPrecedencia(BigDecimal ordemPrecedencia) {
         this.ordemPrecedencia = ordemPrecedencia;
+        return this;
+    }
+
+    public RotaPassagem codigoCidadeSaida(String codigoCidadeSaida) {
+        this.codigoCidadeSaida = codigoCidadeSaida;
         return this;
     }
 

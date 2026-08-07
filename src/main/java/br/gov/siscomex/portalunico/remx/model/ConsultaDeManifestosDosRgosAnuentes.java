@@ -182,17 +182,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
     }
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * Data final relacionada ao filtro por período de inclusão da ocorrência.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataFimOcorrencia
@@ -226,6 +215,17 @@ public class ConsultaDeManifestosDosRgosAnuentes {
     }
 
     /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
      * Data inicial relacionada ao filtro por período de registro de lote.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
      * @return dataInicioLote
@@ -244,11 +244,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeManifestosDosRgosAnuentes dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
-        this.dataInicioAnexacao = dataInicioAnexacao;
-        return this;
-    }
-
     /**
      * Data inicial relacionada ao filtro por período de registro de manifesto.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
@@ -261,6 +256,11 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     public void setDataInicioManifesto(OffsetDateTime dataInicioManifesto) {
         this.dataInicioManifesto = dataInicioManifesto;
+    }
+
+    public ConsultaDeManifestosDosRgosAnuentes dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
+        this.dataInicioAnexacao = dataInicioAnexacao;
+        return this;
     }
 
     /**
@@ -282,11 +282,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeManifestosDosRgosAnuentes dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
-        return this;
-    }
-
     /**
      * Lista de código de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da ocorrência. O código da ocorrência é composto por 3 caracteres numéricos.
      *
@@ -303,6 +298,11 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     public ConsultaDeManifestosDosRgosAnuentes listaCodOcorrencia(List<Integer> listaCodOcorrencia) {
         this.listaCodOcorrencia = listaCodOcorrencia;
+        return this;
+    }
+
+    public ConsultaDeManifestosDosRgosAnuentes dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
         return this;
     }
 
@@ -326,11 +326,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     public ConsultaDeManifestosDosRgosAnuentes addListaOperadoraItem(String listaOperadoraItem) {
         this.listaOperadora.add(listaOperadoraItem);
-        return this;
-    }
-
-    public ConsultaDeManifestosDosRgosAnuentes addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
-        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
         return this;
     }
 
@@ -360,7 +355,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     /**
      * Lista de situação do lote. Cada item da lista contém:&lt;br/&gt;Situação do lote. Máximo de 2 caracteres numéricos. Domínio: &lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.&lt;br/&gt;5 - Seleção em andamento;&lt;br/&gt;6 - Seleção encerrada.
-     *
      * @return listaSituacaoLote
      **/
     @JsonProperty("listaSituacaoLote")
@@ -377,9 +371,13 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         return this;
     }
 
+    public ConsultaDeManifestosDosRgosAnuentes addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
+        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
+        return this;
+    }
+
     /**
      * Lista de situação de ocorrência. Cada item da lista contém:&lt;br/&gt;Código da situação da ocorrência. Composto por até 2 caracteres numéricos.&lt;br/&gt;1 - Exigência em aberto - Todas;&lt;br/&gt;2 - Interrompida pela RFB;&lt;br/&gt;3 - Resolvida;&lt;br/&gt;4 - Sem ocorrência;&lt;br/&gt;5 - Não resolvida.
-     *
      * @return listaSituacaoOcorrencia
      **/
     @JsonProperty("listaSituacaoOcorrencia")
@@ -398,11 +396,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     public ConsultaDeManifestosDosRgosAnuentes addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
         this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
-        return this;
-    }
-
-    public ConsultaDeManifestosDosRgosAnuentes addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
-        this.listaSituacaoLote.add(listaSituacaoLoteItem);
         return this;
     }
 
@@ -431,7 +424,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     /**
      * Lista de UA despacho. Cada item da lista contém:&lt;br/&gt;Código da unidade administrativa de despacho da carga. Composto por 7 caracteres numéricos. Valores de acordo com a tabela de domínio. O sistema permitirá o preenchimento de uaDespacho sem o zero à esquerda (com 6 caracteres).
-     *
      * @return listaUaDespacho
      **/
     @JsonProperty("listaUaDespacho")
@@ -450,6 +442,11 @@ public class ConsultaDeManifestosDosRgosAnuentes {
 
     public ConsultaDeManifestosDosRgosAnuentes addListaUaDespachoItem(String listaUaDespachoItem) {
         this.listaUaDespacho.add(listaUaDespachoItem);
+        return this;
+    }
+
+    public ConsultaDeManifestosDosRgosAnuentes addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
+        this.listaSituacaoLote.add(listaSituacaoLoteItem);
         return this;
     }
 

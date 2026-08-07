@@ -86,17 +86,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
     private Integer situacao = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
      * CNPJ da empresa responsável composto por 14 caracteres numéricos. Não deve conter caracteres como &#39;.&#39;, &#39;-&#39; e &#39;/&#39;.
      *
      * @return cnpj
@@ -109,6 +98,17 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 
     /**
@@ -150,11 +150,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
         return this;
     }
 
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
-
     /**
      * Data e horário do registro do manifesto de carga.&lt;br/&gt;Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSS
      *
@@ -167,6 +162,11 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
     public void setDataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
         this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
+    }
+
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -190,11 +190,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
     public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga addErrosItem(ErroNoProcessamento errosItem) {
         this.erros.add(errosItem);
-        return this;
-    }
-
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
-        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
         return this;
     }
 
@@ -260,7 +255,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
     /**
      * Situacao do processamento. Valores pré-definidos:&lt;br/&gt;0 - Aguardando processamento;&lt;br/&gt;1 - Processamento concluído.
-     *
      * @return situacao
      **/
     @JsonProperty("situacao")
@@ -275,6 +269,11 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
 
     public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga situacao(Integer situacao) {
         this.situacao = situacao;
+        return this;
+    }
+
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
+        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
         return this;
     }
 

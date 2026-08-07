@@ -76,6 +76,16 @@ public class ReferenciaExportadorEFabricanteDoProduto {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ReferenciaExportadorEFabricanteDoProduto {\n" +
+                "    exportadorIgualFabricante: " + toIndentedString(exportadorIgualFabricante) + "\n" +
+                "    operadorEstrangeiro: " + toIndentedString(operadorEstrangeiro) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -85,15 +95,5 @@ public class ReferenciaExportadorEFabricanteDoProduto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ReferenciaExportadorEFabricanteDoProduto {\n" +
-                "    exportadorIgualFabricante: " + toIndentedString(exportadorIgualFabricante) + "\n" +
-                "    operadorEstrangeiro: " + toIndentedString(operadorEstrangeiro) + "\n" +
-                "}";
-        return sb;
     }
 }

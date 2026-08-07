@@ -73,6 +73,16 @@ public class ConsultaPorNmeroDeManifesto {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ConsultaPorNmeroDeManifesto {\n" +
+                "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
+                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -82,15 +92,5 @@ public class ConsultaPorNmeroDeManifesto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ConsultaPorNmeroDeManifesto {\n" +
-                "    cnpjDeclarante: " + toIndentedString(cnpjDeclarante) + "\n" +
-                "    numeroManifesto: " + toIndentedString(numeroManifesto) + "\n" +
-                "}";
-        return sb;
     }
 }
