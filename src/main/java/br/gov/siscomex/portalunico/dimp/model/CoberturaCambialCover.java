@@ -26,57 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class CoberturaCambialCover {
 
 
-    @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "ATE_180_DIAS", required = true, value = "Código da cobertura cambial.<br>Domínio:")
-    /**
-     * Código da cobertura cambial.<br>Domínio:
-     **/
-    private CodigoEnum codigo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código da cobertura cambial.&lt;br&gt;Domínio:
-     *
-     * @return codigo
-     **/
-    @JsonProperty("codigo")
-    @NotNull
-    public String getCodigo() {
-        if (codigo == null) {
-            return null;
-        }
-        return codigo.value();
-    }
-
-    public void setCodigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-    }
-
-    public CoberturaCambialCover codigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class CoberturaCambialCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "CodigoEnum")
     @XmlEnum(String.class)
     public enum CodigoEnum {
@@ -121,5 +70,56 @@ public class CoberturaCambialCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
         }
+    }
+
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "ATE_180_DIAS", required = true, value = "Código da cobertura cambial.<br>Domínio:")
+    /**
+     * Código da cobertura cambial.<br>Domínio:
+     **/
+    private CodigoEnum codigo = null;
+
+    /**
+     * Código da cobertura cambial.&lt;br&gt;Domínio:
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    @NotNull
+    public String getCodigo() {
+        if (codigo == null) {
+            return null;
+        }
+        return codigo.value();
+    }
+
+    public void setCodigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+    }
+
+    public CoberturaCambialCover codigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class CoberturaCambialCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -77,13 +77,43 @@ public class GuiaIcmsDto {
     private String descricaoCodigoReceita = null;
 
 
-    @XmlElement(name = "valorCalculado", required = true)
-    @ApiModelProperty(example = "8.54", required = true, value = "Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorCalculado = null;
+    @XmlType(name = "GeradorGuiaEnum")
+    @XmlEnum(String.class)
+    public enum GeradorGuiaEnum {
+
+        @XmlEnumValue("ESTADO")
+        @JsonProperty("ESTADO")
+        ESTADO("ESTADO"),
+
+        @XmlEnumValue("GNRE")
+        @JsonProperty("GNRE")
+        GNRE("GNRE");
+
+
+        private final String value;
+
+        GeradorGuiaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static GeradorGuiaEnum fromValue(String v) {
+            for (GeradorGuiaEnum b : GeradorGuiaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to GeradorGuiaEnum");
+        }
+    }
 
     @XmlElement(name = "geradorGuia", required = true)
     @ApiModelProperty(example = "ESTADO", required = true, value = "Responsável pela geração da guia")
@@ -113,13 +143,14 @@ public class GuiaIcmsDto {
      * Valor da atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorAtualizacaoMonetaria = null;
-    @XmlElement(name = "valorJuros")
-    @ApiModelProperty(example = "1.28", value = "Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+
+    @XmlElement(name = "valorCalculado", required = true)
+    @ApiModelProperty(example = "8.54", required = true, value = "Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
     /**
-     * Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Valor calculado sem benefícios/onerações para o código de receita <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
-    private BigDecimal valorJuros = null;
+    private BigDecimal valorCalculado = null;
 
     @XmlElement(name = "valorDevido", required = true)
     @ApiModelProperty(example = "8.0", required = true, value = "Valor devido efetivamente <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
@@ -128,13 +159,14 @@ public class GuiaIcmsDto {
      * Valor devido efetivamente <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
     private BigDecimal valorDevido = null;
-    @XmlElement(name = "valorTotal", required = true)
-    @ApiModelProperty(example = "10.8", required = true, value = "Somatório dos valores devidos + juros + multa + atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+
+    @XmlElement(name = "valorJuros")
+    @ApiModelProperty(example = "1.28", value = "Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
     @Valid
     /**
-     * Somatório dos valores devidos + juros + multa + atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     * Valor dos juros <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
      **/
-    private BigDecimal valorTotal = null;
+    private BigDecimal valorJuros = null;
 
     @XmlElement(name = "valorMulta")
     @ApiModelProperty(example = "1.0", value = "Valor da multa <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
@@ -144,16 +176,13 @@ public class GuiaIcmsDto {
      **/
     private BigDecimal valorMulta = null;
 
+    @XmlElement(name = "valorTotal", required = true)
+    @ApiModelProperty(example = "10.8", required = true, value = "Somatório dos valores devidos + juros + multa + atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Somatório dos valores devidos + juros + multa + atualização monetária <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorTotal = null;
 
     /**
      * Codigo de barras da guia (Portal GNRE ou do próprio Estado) &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
@@ -465,6 +494,7 @@ public class GuiaIcmsDto {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -489,41 +519,14 @@ public class GuiaIcmsDto {
         return sb;
     }
 
-    @XmlType(name = "GeradorGuiaEnum")
-    @XmlEnum(String.class)
-    public enum GeradorGuiaEnum {
-
-        @XmlEnumValue("ESTADO")
-        @JsonProperty("ESTADO")
-        ESTADO("ESTADO"),
-
-        @XmlEnumValue("GNRE")
-        @JsonProperty("GNRE")
-        GNRE("GNRE");
-
-
-        private final String value;
-
-        GeradorGuiaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static GeradorGuiaEnum fromValue(String v) {
-            for (GeradorGuiaEnum b : GeradorGuiaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to GeradorGuiaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

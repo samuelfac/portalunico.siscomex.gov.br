@@ -114,10 +114,43 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
     private String ruc = null;
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(value = "")
-    @Valid
-    private TipoConhecimento tipo = null;
+    @XmlType(name = "SituacaoCargaEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoCargaEnum {
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A"),
+
+        @XmlEnumValue("E")
+        @JsonProperty("E")
+        E("E");
+
+
+        private final String value;
+
+        SituacaoCargaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SituacaoCargaEnum fromValue(String v) {
+            for (SituacaoCargaEnum b : SituacaoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoCargaEnum");
+        }
+    }
 
     @XmlElement(name = "situacaoCarga")
     @ApiModelProperty(example = "A, E", value = "Código da situação do Conhecimento<br>Tamanho: 1<br/>A - Ativo <br/>E - Excluído<br/>")
@@ -126,16 +159,10 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
      **/
     private SituacaoCargaEnum situacaoCarga = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TipoConhecimento tipo = null;
 
     @XmlElement(name = "tipoCarga")
     @ApiModelProperty(value = "")
@@ -562,41 +589,14 @@ public class CargaRodoviariaDetalhadaDadosBasicos {
         return sb;
     }
 
-    @XmlType(name = "SituacaoCargaEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoCargaEnum {
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A"),
-
-        @XmlEnumValue("E")
-        @JsonProperty("E")
-        E("E");
-
-
-        private final String value;
-
-        SituacaoCargaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static SituacaoCargaEnum fromValue(String v) {
-            for (SituacaoCargaEnum b : SituacaoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

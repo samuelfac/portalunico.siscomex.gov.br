@@ -119,15 +119,9 @@ public class ArquivoDiarioCondicionadoDTO {
         this.dataInicioVigencia = dataInicioVigencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ArquivoDiarioCondicionadoDTO dataInicioVigencia(String dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+        return this;
     }
 
     /**
@@ -208,10 +202,6 @@ public class ArquivoDiarioCondicionadoDTO {
         return this;
     }
 
-    public ArquivoDiarioCondicionadoDTO dataInicioVigencia(String dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -226,5 +216,16 @@ public class ArquivoDiarioCondicionadoDTO {
                 "    atributo: " + toIndentedString(atributo) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

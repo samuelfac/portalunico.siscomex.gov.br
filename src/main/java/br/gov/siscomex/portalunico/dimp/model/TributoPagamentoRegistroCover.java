@@ -26,57 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TributoPagamentoRegistroCover {
 
 
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "IPI", required = true, value = "Código do tipo de tributo.<br>Domínio:")
-    /**
-     * Código do tipo de tributo.<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código do tipo de tributo.&lt;br&gt;Domínio:
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    @NotNull
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public TributoPagamentoRegistroCover tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class TributoPagamentoRegistroCover {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "TipoEnum")
     @XmlEnum(String.class)
     public enum TipoEnum {
@@ -149,5 +98,56 @@ public class TributoPagamentoRegistroCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
+    }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "IPI", required = true, value = "Código do tipo de tributo.<br>Domínio:")
+    /**
+     * Código do tipo de tributo.<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    /**
+     * Código do tipo de tributo.&lt;br&gt;Domínio:
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    @NotNull
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public TributoPagamentoRegistroCover tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TributoPagamentoRegistroCover {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

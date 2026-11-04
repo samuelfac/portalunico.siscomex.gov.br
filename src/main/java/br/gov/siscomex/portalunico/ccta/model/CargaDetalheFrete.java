@@ -40,10 +40,43 @@ public class CargaDetalheFrete {
     private List<CargaDetalheFreteOutroEncargo> outrosEncargos = null;
 
 
-    @XmlElement(name = "somatorioFretePorItemCarga")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValorMonetario somatorioFretePorItemCarga = null;
+    @XmlType(name = "PendenciaPagamentoEnum")
+    @XmlEnum(String.class)
+    public enum PendenciaPagamentoEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        PendenciaPagamentoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static PendenciaPagamentoEnum fromValue(String v) {
+            for (PendenciaPagamentoEnum b : PendenciaPagamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to PendenciaPagamentoEnum");
+        }
+    }
 
     @XmlElement(name = "pendenciaPagamento")
     @ApiModelProperty(example = "S", value = "Indicador de pendência de pagamento de frete.<br/>Tamanho: 1<br/>S - Sim<br/>N - Não")
@@ -52,16 +85,10 @@ public class CargaDetalheFrete {
      **/
     private PendenciaPagamentoEnum pendenciaPagamento = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "somatorioFretePorItemCarga")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValorMonetario somatorioFretePorItemCarga = null;
 
     @XmlElement(name = "totaisMoedaDestino")
     @ApiModelProperty(value = "Lista de totais na moeda de destino")
@@ -230,6 +257,7 @@ public class CargaDetalheFrete {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -245,41 +273,14 @@ public class CargaDetalheFrete {
         return sb;
     }
 
-    @XmlType(name = "PendenciaPagamentoEnum")
-    @XmlEnum(String.class)
-    public enum PendenciaPagamentoEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        PendenciaPagamentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static PendenciaPagamentoEnum fromValue(String v) {
-            for (PendenciaPagamentoEnum b : PendenciaPagamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to PendenciaPagamentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -71,15 +71,9 @@ public class RemessaDaSolicitaoDeDevoluo {
         this.codigoMotivoDevolucao = codigoMotivoDevolucao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RemessaDaSolicitaoDeDevoluo codigoMotivoDevolucao(String codigoMotivoDevolucao) {
+        this.codigoMotivoDevolucao = codigoMotivoDevolucao;
+        return this;
     }
 
     /**
@@ -164,10 +158,6 @@ public class RemessaDaSolicitaoDeDevoluo {
         return this;
     }
 
-    public RemessaDaSolicitaoDeDevoluo codigoMotivoDevolucao(String codigoMotivoDevolucao) {
-        this.codigoMotivoDevolucao = codigoMotivoDevolucao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -181,4 +171,15 @@ public class RemessaDaSolicitaoDeDevoluo {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -26,12 +26,43 @@ import javax.xml.bind.annotation.XmlType;
 public class PagamentoTaxa {
 
 
-    @XmlElement(name = "tipoTaxa", required = true)
-    @ApiModelProperty(example = "REGISTRO_LPCO", required = true, value = "Tipo de taxa que foi paga.")
-    /**
-     * Tipo de taxa que foi paga.
-     **/
-    private TipoTaxaEnum tipoTaxa = null;
+    @XmlType(name = "TipoPagamentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoPagamentoEnum {
+
+        @XmlEnumValue("PAGAMENTO")
+        @JsonProperty("PAGAMENTO")
+        PAGAMENTO("PAGAMENTO"),
+
+        @XmlEnumValue("DISPENSA")
+        @JsonProperty("DISPENSA")
+        DISPENSA("DISPENSA");
+
+
+        private final String value;
+
+        TipoPagamentoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoPagamentoEnum fromValue(String v) {
+            for (TipoPagamentoEnum b : TipoPagamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoPagamentoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoPagamento", required = true)
     @ApiModelProperty(example = "PAGAMENTO", required = true, value = "Indica se foi pagamento ou dispensa/isenção de pagamento.")
@@ -40,27 +71,63 @@ public class PagamentoTaxa {
      **/
     private TipoPagamentoEnum tipoPagamento = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoTaxaEnum")
+    @XmlEnum(String.class)
+    public enum TipoTaxaEnum {
+
+        @XmlEnumValue("REGISTRO_LPCO")
+        @JsonProperty("REGISTRO_LPCO")
+        REGISTRO_LPCO("REGISTRO_LPCO"),
+
+        @XmlEnumValue("RETIFICACAO")
+        @JsonProperty("RETIFICACAO")
+        RETIFICACAO("RETIFICACAO"),
+
+        @XmlEnumValue("PRORROGACAO")
+        @JsonProperty("PRORROGACAO")
+        PRORROGACAO("PRORROGACAO"),
+
+        @XmlEnumValue("COMPATIBILIZACAO")
+        @JsonProperty("COMPATIBILIZACAO")
+        COMPATIBILIZACAO("COMPATIBILIZACAO"),
+
+        @XmlEnumValue("RESPOSTA_EXIGENCIA")
+        @JsonProperty("RESPOSTA_EXIGENCIA")
+        RESPOSTA_EXIGENCIA("RESPOSTA_EXIGENCIA");
+
+
+        private final String value;
+
+        TipoTaxaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
     }
 
     @Override
     public String toString() {
-
-        String sb = "class PagamentoTaxa {\n" +
-                "    tipoPagamento: " + toIndentedString(tipoPagamento) + "\n" +
-                "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
-                "    observacao: " + toIndentedString(observacao) + "\n" +
-                "}";
-        return sb;
+        return String.valueOf(value);
     }
+
+        public static TipoTaxaEnum fromValue(String v) {
+            for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
+        }
+    }
+
+    @XmlElement(name = "tipoTaxa", required = true)
+    @ApiModelProperty(example = "REGISTRO_LPCO", required = true, value = "Tipo de taxa que foi paga.")
+    /**
+     * Tipo de taxa que foi paga.
+     **/
+    private TipoTaxaEnum tipoTaxa = null;
 
     @XmlElement(name = "observacao")
     @ApiModelProperty(example = "Pagamento realizado", value = "Observação associada ao pagamento. Obrigatório quando para tipoPagamento=PAGAMENTO_REALIZADO ou  tipoPagamento=DISPENSA_PAGAMENTO, dispensado nos demais casos.")
@@ -135,91 +202,25 @@ public class PagamentoTaxa {
     }
 
 
-    @XmlType(name = "TipoPagamentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoPagamentoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("PAGAMENTO")
-        @JsonProperty("PAGAMENTO")
-        PAGAMENTO("PAGAMENTO"),
-
-        @XmlEnumValue("DISPENSA")
-        @JsonProperty("DISPENSA")
-        DISPENSA("DISPENSA");
-
-
-        private final String value;
-
-        TipoPagamentoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoPagamentoEnum fromValue(String v) {
-            for (TipoPagamentoEnum b : TipoPagamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoPagamentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class PagamentoTaxa {\n" +
+                "    tipoPagamento: " + toIndentedString(tipoPagamento) + "\n" +
+                "    tipoTaxa: " + toIndentedString(tipoTaxa) + "\n" +
+                "    observacao: " + toIndentedString(observacao) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoTaxaEnum")
-    @XmlEnum(String.class)
-    public enum TipoTaxaEnum {
-
-        @XmlEnumValue("REGISTRO_LPCO")
-        @JsonProperty("REGISTRO_LPCO")
-        REGISTRO_LPCO("REGISTRO_LPCO"),
-
-        @XmlEnumValue("RETIFICACAO")
-        @JsonProperty("RETIFICACAO")
-        RETIFICACAO("RETIFICACAO"),
-
-        @XmlEnumValue("PRORROGACAO")
-        @JsonProperty("PRORROGACAO")
-        PRORROGACAO("PRORROGACAO"),
-
-        @XmlEnumValue("COMPATIBILIZACAO")
-        @JsonProperty("COMPATIBILIZACAO")
-        COMPATIBILIZACAO("COMPATIBILIZACAO"),
-
-        @XmlEnumValue("RESPOSTA_EXIGENCIA")
-        @JsonProperty("RESPOSTA_EXIGENCIA")
-        RESPOSTA_EXIGENCIA("RESPOSTA_EXIGENCIA");
-
-
-        private final String value;
-
-        TipoTaxaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoTaxaEnum fromValue(String v) {
-            for (TipoTaxaEnum b : TipoTaxaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTaxaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

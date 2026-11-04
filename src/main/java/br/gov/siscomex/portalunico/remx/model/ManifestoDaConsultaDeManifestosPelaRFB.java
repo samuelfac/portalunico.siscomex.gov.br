@@ -82,15 +82,9 @@ public class ManifestoDaConsultaDeManifestosPelaRFB {
         this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ManifestoDaConsultaDeManifestosPelaRFB dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
+        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
+        return this;
     }
 
     /**
@@ -131,8 +125,8 @@ public class ManifestoDaConsultaDeManifestosPelaRFB {
         this.numeroManifesto = numeroManifesto;
     }
 
-    public ManifestoDaConsultaDeManifestosPelaRFB dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
-        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
+    public ManifestoDaConsultaDeManifestosPelaRFB numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
         return this;
     }
 
@@ -212,10 +206,6 @@ public class ManifestoDaConsultaDeManifestosPelaRFB {
         return this;
     }
 
-    public ManifestoDaConsultaDeManifestosPelaRFB numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -231,4 +221,15 @@ public class ManifestoDaConsultaDeManifestosPelaRFB {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -100,15 +100,9 @@ public class CompatibilizacaoLpcoResponse {
         this.situacao = situacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
+        this.situacao = situacao;
+        return this;
     }
 
     /**
@@ -170,8 +164,8 @@ public class CompatibilizacaoLpcoResponse {
         return this;
     }
 
-    public CompatibilizacaoLpcoResponse situacao(SituacaoCompatibilizacaoLpco situacao) {
-        this.situacao = situacao;
+    public CompatibilizacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
+        this.listaAlteracoes.add(listaAlteracoesItem);
         return this;
     }
 
@@ -194,10 +188,6 @@ public class CompatibilizacaoLpcoResponse {
         return this;
     }
 
-    public CompatibilizacaoLpcoResponse addListaAlteracoesItem(DadosAlteracoesLpco listaAlteracoesItem) {
-        this.listaAlteracoes.add(listaAlteracoesItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -212,4 +202,15 @@ public class CompatibilizacaoLpcoResponse {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

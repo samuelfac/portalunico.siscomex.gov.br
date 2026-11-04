@@ -119,15 +119,9 @@ public class EstrangeiroRegular {
         this.licencaOriginaria = licencaOriginaria;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EstrangeiroRegular licencaOriginaria(String licencaOriginaria) {
+        this.licencaOriginaria = licencaOriginaria;
+        return this;
     }
 
     /**
@@ -187,10 +181,6 @@ public class EstrangeiroRegular {
         return this;
     }
 
-    public EstrangeiroRegular licencaOriginaria(String licencaOriginaria) {
-        this.licencaOriginaria = licencaOriginaria;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -204,5 +194,16 @@ public class EstrangeiroRegular {
                 "    licencaComplementarTETI: " + toIndentedString(licencaComplementarTETI) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

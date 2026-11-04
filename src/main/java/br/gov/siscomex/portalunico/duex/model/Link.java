@@ -27,15 +27,66 @@ public class Link {
     private String href = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "MethodEnum")
+    @XmlEnum(String.class)
+    public enum MethodEnum {
+
+        @XmlEnumValue("GET")
+        @JsonProperty("GET")
+        GET("GET"),
+
+        @XmlEnumValue("HEAD")
+        @JsonProperty("HEAD")
+        HEAD("HEAD"),
+
+        @XmlEnumValue("POST")
+        @JsonProperty("POST")
+        POST("POST"),
+
+        @XmlEnumValue("PUT")
+        @JsonProperty("PUT")
+        PUT("PUT"),
+
+        @XmlEnumValue("DELETE")
+        @JsonProperty("DELETE")
+        DELETE("DELETE"),
+
+        @XmlEnumValue("OPTIONS")
+        @JsonProperty("OPTIONS")
+        OPTIONS("OPTIONS"),
+
+        @XmlEnumValue("TRACE")
+        @JsonProperty("TRACE")
+        TRACE("TRACE"),
+
+        @XmlEnumValue("PATCH")
+        @JsonProperty("PATCH")
+        PATCH("PATCH");
+
+
+        private final String value;
+
+        MethodEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static MethodEnum fromValue(String v) {
+            for (MethodEnum b : MethodEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to MethodEnum");
+        }
     }
 
     @XmlElement(name = "method")
@@ -161,6 +212,7 @@ public class Link {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -174,65 +226,14 @@ public class Link {
         return sb;
     }
 
-    @XmlType(name = "MethodEnum")
-    @XmlEnum(String.class)
-    public enum MethodEnum {
-
-        @XmlEnumValue("GET")
-        @JsonProperty("GET")
-        GET("GET"),
-
-        @XmlEnumValue("HEAD")
-        @JsonProperty("HEAD")
-        HEAD("HEAD"),
-
-        @XmlEnumValue("POST")
-        @JsonProperty("POST")
-        POST("POST"),
-
-        @XmlEnumValue("PUT")
-        @JsonProperty("PUT")
-        PUT("PUT"),
-
-        @XmlEnumValue("DELETE")
-        @JsonProperty("DELETE")
-        DELETE("DELETE"),
-
-        @XmlEnumValue("OPTIONS")
-        @JsonProperty("OPTIONS")
-        OPTIONS("OPTIONS"),
-
-        @XmlEnumValue("TRACE")
-        @JsonProperty("TRACE")
-        TRACE("TRACE"),
-
-        @XmlEnumValue("PATCH")
-        @JsonProperty("PATCH")
-        PATCH("PATCH");
-
-
-        private final String value;
-
-        MethodEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static MethodEnum fromValue(String v) {
-            for (MethodEnum b : MethodEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to MethodEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -25,56 +25,6 @@ import javax.xml.bind.annotation.XmlType;
 public class ResultadoAnaliseRiscoDuimpCover {
 
 
-    @XmlElement(name = "canalConsolidado")
-    @ApiModelProperty(example = "VERDE", value = "Canais da análise de risco.<br>Domínio:")
-    /**
-     * Canais da análise de risco.<br>Domínio:
-     **/
-    private CanalConsolidadoEnum canalConsolidado = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Canais da análise de risco.&lt;br&gt;Domínio:
-     *
-     * @return canalConsolidado
-     **/
-    @JsonProperty("canalConsolidado")
-    public String getCanalConsolidado() {
-        if (canalConsolidado == null) {
-            return null;
-        }
-        return canalConsolidado.value();
-    }
-
-    public void setCanalConsolidado(CanalConsolidadoEnum canalConsolidado) {
-        this.canalConsolidado = canalConsolidado;
-    }
-
-    public ResultadoAnaliseRiscoDuimpCover canalConsolidado(CanalConsolidadoEnum canalConsolidado) {
-        this.canalConsolidado = canalConsolidado;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class ResultadoAnaliseRiscoDuimpCover {\n" +
-                "    canalConsolidado: " + toIndentedString(canalConsolidado) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "CanalConsolidadoEnum")
     @XmlEnum(String.class)
     public enum CanalConsolidadoEnum {
@@ -119,5 +69,55 @@ public class ResultadoAnaliseRiscoDuimpCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalConsolidadoEnum");
         }
+    }
+
+    @XmlElement(name = "canalConsolidado")
+    @ApiModelProperty(example = "VERDE", value = "Canais da análise de risco.<br>Domínio:")
+    /**
+     * Canais da análise de risco.<br>Domínio:
+     **/
+    private CanalConsolidadoEnum canalConsolidado = null;
+
+    /**
+     * Canais da análise de risco.&lt;br&gt;Domínio:
+     *
+     * @return canalConsolidado
+     **/
+    @JsonProperty("canalConsolidado")
+    public String getCanalConsolidado() {
+        if (canalConsolidado == null) {
+            return null;
+        }
+        return canalConsolidado.value();
+    }
+
+    public void setCanalConsolidado(CanalConsolidadoEnum canalConsolidado) {
+        this.canalConsolidado = canalConsolidado;
+    }
+
+    public ResultadoAnaliseRiscoDuimpCover canalConsolidado(CanalConsolidadoEnum canalConsolidado) {
+        this.canalConsolidado = canalConsolidado;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class ResultadoAnaliseRiscoDuimpCover {\n" +
+                "    canalConsolidado: " + toIndentedString(canalConsolidado) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

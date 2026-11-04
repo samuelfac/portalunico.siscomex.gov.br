@@ -23,12 +23,43 @@ import java.util.List;
 public class InformaesSobreOsTributos {
 
 
-    @XmlElement(name = "quantidadeAdicoes")
-    @ApiModelProperty(example = "2", value = "Quantidade de adições (Equivalência da duimp com número de adições de uma DI)<br>Valor mínimo: 1<br>Valor máximo: 99999")
-    /**
-     * Quantidade de adições (Equivalência da duimp com número de adições de uma DI)<br>Valor mínimo: 1<br>Valor máximo: 99999
-     **/
-    private Integer quantidadeAdicoes = null;
+    @XmlType(name = "IndicadorCumprimentoICMSEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorCumprimentoICMSEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2");
+
+
+        private final String value;
+
+        IndicadorCumprimentoICMSEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorCumprimentoICMSEnum fromValue(String v) {
+            for (IndicadorCumprimentoICMSEnum b : IndicadorCumprimentoICMSEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorCumprimentoICMSEnum");
+        }
+    }
 
     @XmlElement(name = "indicadorCumprimentoICMS")
     @ApiModelProperty(example = "1", value = "Indicador de cumprimento do ICMS.<br>Dominio:<br>1-ICMS Pago, <br>2-ICMS Cancelado<br>Tamanho: 1")
@@ -45,16 +76,12 @@ public class InformaesSobreOsTributos {
      **/
     private List<SefazTributoCalculadoCover> tributosCalculados = null;
 
+    @XmlElement(name = "quantidadeAdicoes")
+    @ApiModelProperty(example = "2", value = "Quantidade de adições (Equivalência da duimp com número de adições de uma DI)<br>Valor mínimo: 1<br>Valor máximo: 99999")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Quantidade de adições (Equivalência da duimp com número de adições de uma DI)<br>Valor mínimo: 1<br>Valor máximo: 99999
+     **/
+    private Integer quantidadeAdicoes = null;
 
     @XmlElement(name = "taxaUtilizacao")
     @ApiModelProperty(example = "214.5", value = "Valor total da taxa de utilização do Siscomex<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -148,6 +175,7 @@ public class InformaesSobreOsTributos {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -160,41 +188,14 @@ public class InformaesSobreOsTributos {
         return sb;
     }
 
-    @XmlType(name = "IndicadorCumprimentoICMSEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorCumprimentoICMSEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2");
-
-
-        private final String value;
-
-        IndicadorCumprimentoICMSEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static IndicadorCumprimentoICMSEnum fromValue(String v) {
-            for (IndicadorCumprimentoICMSEnum b : IndicadorCumprimentoICMSEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorCumprimentoICMSEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

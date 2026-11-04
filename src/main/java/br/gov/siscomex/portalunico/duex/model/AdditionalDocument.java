@@ -22,29 +22,145 @@ import javax.xml.bind.annotation.XmlType;
 public class AdditionalDocument {
 
 
+    @XmlType(name = "CategoryCodeEnum")
+    @XmlEnum(String.class)
+    public enum CategoryCodeEnum {
+
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
+
+        @XmlEnumValue("DSG")
+        @JsonProperty("DSG")
+        DSG("DSG"),
+
+        @XmlEnumValue("DBSI")
+        @JsonProperty("DBSI")
+        DBSI("DBSI"),
+
+        @XmlEnumValue("DSIG")
+        @JsonProperty("DSIG")
+        DSIG("DSIG"),
+
+        @XmlEnumValue("DSEC")
+        @JsonProperty("DSEC")
+        DSEC("DSEC"),
+
+        @XmlEnumValue("DSEG")
+        @JsonProperty("DSEG")
+        DSEG("DSEG"),
+
+        @XmlEnumValue("DSMC")
+        @JsonProperty("DSMC")
+        DSMC("DSMC"),
+
+        @XmlEnumValue("DSMG")
+        @JsonProperty("DSMG")
+        DSMG("DSMG"),
+
+        @XmlEnumValue("DBI")
+        @JsonProperty("DBI")
+        DBI("DBI"),
+
+        @XmlEnumValue("DBII")
+        @JsonProperty("DBII")
+        DBII("DBII"),
+
+        @XmlEnumValue("LPCO")
+        @JsonProperty("LPCO")
+        LPCO("LPCO"),
+
+        @XmlEnumValue("DSI")
+        @JsonProperty("DSI")
+        DSI("DSI"),
+
+        @XmlEnumValue("DSIF")
+        @JsonProperty("DSIF")
+        DSIF("DSIF"),
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("EDBV")
+        @JsonProperty("EDBV")
+        EDBV("EDBV"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP"),
+
+        @XmlEnumValue("DDE")
+        @JsonProperty("DDE")
+        DDE("DDE"),
+
+        @XmlEnumValue("DE")
+        @JsonProperty("DE")
+        DE("DE"),
+
+        @XmlEnumValue("DSE")
+        @JsonProperty("DSE")
+        DSE("DSE"),
+
+        @XmlEnumValue("DSEF")
+        @JsonProperty("DSEF")
+        DSEF("DSEF"),
+
+        @XmlEnumValue("RE")
+        @JsonProperty("RE")
+        RE("RE"),
+
+        @XmlEnumValue("DUE")
+        @JsonProperty("DUE")
+        DUE("DUE"),
+
+        @XmlEnumValue("COM")
+        @JsonProperty("COM")
+        COM("COM"),
+
+        @XmlEnumValue("CON")
+        @JsonProperty("CON")
+        CON("CON");
+
+
+        private final String value;
+
+        CategoryCodeEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CategoryCodeEnum fromValue(String v) {
+            for (CategoryCodeEnum b : CategoryCodeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoryCodeEnum");
+        }
+    }
+
+    @XmlElement(name = "categoryCode", required = true)
+    @ApiModelProperty(required = true, value = "")
+    private CategoryCodeEnum categoryCode = null;
+
     @XmlElement(name = "drawbackHsClassification", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private AdditionalDocumentDrawbackHsClassificationTextType drawbackHsClassification = null;
 
-    @XmlElement(name = "categoryCode", required = true)
-    @ApiModelProperty(required = true, value = "")
-    private CategoryCodeEnum categoryCode = null;
     @XmlElement(name = "drawbackRecipientId", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private AdditionalDocumentDrawbackRecipientIdTextType drawbackRecipientId = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     @XmlElement(name = "id", required = true)
     @ApiModelProperty(required = true, value = "")
@@ -208,6 +324,7 @@ public class AdditionalDocument {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -223,129 +340,14 @@ public class AdditionalDocument {
         return sb;
     }
 
-    @XmlType(name = "CategoryCodeEnum")
-    @XmlEnum(String.class)
-    public enum CategoryCodeEnum {
-
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
-
-        @XmlEnumValue("DSG")
-        @JsonProperty("DSG")
-        DSG("DSG"),
-
-        @XmlEnumValue("DBSI")
-        @JsonProperty("DBSI")
-        DBSI("DBSI"),
-
-        @XmlEnumValue("DSIG")
-        @JsonProperty("DSIG")
-        DSIG("DSIG"),
-
-        @XmlEnumValue("DSEC")
-        @JsonProperty("DSEC")
-        DSEC("DSEC"),
-
-        @XmlEnumValue("DSEG")
-        @JsonProperty("DSEG")
-        DSEG("DSEG"),
-
-        @XmlEnumValue("DSMC")
-        @JsonProperty("DSMC")
-        DSMC("DSMC"),
-
-        @XmlEnumValue("DSMG")
-        @JsonProperty("DSMG")
-        DSMG("DSMG"),
-
-        @XmlEnumValue("DBI")
-        @JsonProperty("DBI")
-        DBI("DBI"),
-
-        @XmlEnumValue("DBII")
-        @JsonProperty("DBII")
-        DBII("DBII"),
-
-        @XmlEnumValue("LPCO")
-        @JsonProperty("LPCO")
-        LPCO("LPCO"),
-
-        @XmlEnumValue("DSI")
-        @JsonProperty("DSI")
-        DSI("DSI"),
-
-        @XmlEnumValue("DSIF")
-        @JsonProperty("DSIF")
-        DSIF("DSIF"),
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("EDBV")
-        @JsonProperty("EDBV")
-        EDBV("EDBV"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP"),
-
-        @XmlEnumValue("DDE")
-        @JsonProperty("DDE")
-        DDE("DDE"),
-
-        @XmlEnumValue("DE")
-        @JsonProperty("DE")
-        DE("DE"),
-
-        @XmlEnumValue("DSE")
-        @JsonProperty("DSE")
-        DSE("DSE"),
-
-        @XmlEnumValue("DSEF")
-        @JsonProperty("DSEF")
-        DSEF("DSEF"),
-
-        @XmlEnumValue("RE")
-        @JsonProperty("RE")
-        RE("RE"),
-
-        @XmlEnumValue("DUE")
-        @JsonProperty("DUE")
-        DUE("DUE"),
-
-        @XmlEnumValue("COM")
-        @JsonProperty("COM")
-        COM("COM"),
-
-        @XmlEnumValue("CON")
-        @JsonProperty("CON")
-        CON("CON");
-
-
-        private final String value;
-
-        CategoryCodeEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static CategoryCodeEnum fromValue(String v) {
-            for (CategoryCodeEnum b : CategoryCodeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoryCodeEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

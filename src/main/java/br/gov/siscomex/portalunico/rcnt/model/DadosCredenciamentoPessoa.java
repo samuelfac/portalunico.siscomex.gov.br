@@ -22,12 +22,47 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosCredenciamentoPessoa {
 
 
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
@@ -42,12 +77,13 @@ public class DadosCredenciamentoPessoa {
      * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
      **/
     private String idEvento = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String protocoloEventoRetificadoOuExcluido = null;
+    private String dataHoraOcorrencia = null;
 
     @XmlElement(name = "dataHoraRegistro", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -69,10 +105,13 @@ public class DadosCredenciamentoPessoa {
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
-    @XmlElement(name = "documentoEstrangeiro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
+
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+    /**
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     **/
+    private String protocoloEventoRetificadoOuExcluido = null;
 
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -94,12 +133,11 @@ public class DadosCredenciamentoPessoa {
      * CPF de pessoa credenciada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório que o atributo 'cpf' seja informado quando os atributos 'documentoEstrangeiro.numero', documentoEstrangeiro.tipo' e 'documentoEstrangeiro.paisEmissor' não forem informados.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
-    @XmlElement(name = "cnh")
-    @ApiModelProperty(value = "CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50")
-    /**
-     * CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50
-     **/
-    private String cnh = null;
+
+    @XmlElement(name = "documentoEstrangeiro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosDocumentoEstrangeiro documentoEstrangeiro = null;
 
     @XmlElement(name = "paisNacionalidade")
     @ApiModelProperty(example = "DE", value = "País Nacionalidade. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>")
@@ -107,12 +145,45 @@ public class DadosCredenciamentoPessoa {
      * País Nacionalidade. Conforme tabela de domínio País disponível no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
     private String paisNacionalidade = null;
-    @XmlElement(name = "dataNascimento")
-    @ApiModelProperty(example = "2020-04-01", value = "Data de nascimento<br/>Formato: 'yyyy-MM-dd'")
-    /**
-     * Data de nascimento<br/>Formato: 'yyyy-MM-dd'
-     **/
-    private String dataNascimento = null;
+
+
+    @XmlType(name = "SexoEnum")
+    @XmlEnum(String.class)
+    public enum SexoEnum {
+
+        @XmlEnumValue("'F'")
+        @JsonProperty("'F'")
+        F_("'F'"),
+
+        @XmlEnumValue("'M'")
+        @JsonProperty("'M'")
+        M_("'M'");
+
+
+        private final String value;
+
+        SexoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SexoEnum fromValue(String v) {
+            for (SexoEnum b : SexoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SexoEnum");
+        }
+    }
 
     @XmlElement(name = "sexo")
     @ApiModelProperty(example = "F", value = "Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1")
@@ -120,12 +191,13 @@ public class DadosCredenciamentoPessoa {
      * Sexo conforme tabela de domínio<br/>Domínio:<br/>F - Feminino<br/>M - Masculino<br/>Tamanho: 1
      **/
     private SexoEnum sexo = null;
-    @XmlElement(name = "cnpjRepresentado")
-    @ApiModelProperty(example = "44444444444444", value = "CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
+
+    @XmlElement(name = "cnh")
+    @ApiModelProperty(value = "CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50")
     /**
-     * CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
+     * CNH de motoristas. Obrigatório informar no caso de credenciamento de motoristas que acessam o recinto com veículos.<br/>Tamanho: 50
      **/
-    private String cnpjRepresentado = null;
+    private String cnh = null;
 
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(required = true, value = "Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
@@ -133,12 +205,13 @@ public class DadosCredenciamentoPessoa {
      * Nome. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100
      **/
     private String nome = null;
-    @XmlElement(name = "dataInicioValidade")
-    @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
+
+    @XmlElement(name = "dataNascimento")
+    @ApiModelProperty(example = "2020-04-01", value = "Data de nascimento<br/>Formato: 'yyyy-MM-dd'")
     /**
-     * Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'
+     * Data de nascimento<br/>Formato: 'yyyy-MM-dd'
      **/
-    private String dataInicioValidade = null;
+    private String dataNascimento = null;
 
     @XmlElement(name = "fone")
     @ApiModelProperty(value = "Telefone<br/>Tamanho: 20")
@@ -146,12 +219,13 @@ public class DadosCredenciamentoPessoa {
      * Telefone<br/>Tamanho: 20
      **/
     private String fone = null;
-    @XmlElement(name = "horaPrevistaSaida")
-    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
+
+    @XmlElement(name = "cnpjRepresentado")
+    @ApiModelProperty(example = "44444444444444", value = "CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'")
     /**
-     * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
+     * CNPJ do representado<br/>Tamanho: 14<br/>Formato: 'NNNNNNNNNNNNNN'
      **/
-    private String horaPrevistaSaida = null;
+    private String cnpjRepresentado = null;
 
     @XmlElement(name = "cpfRepresentado")
     @ApiModelProperty(example = "55555555555", value = "CPF do representado<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -193,16 +267,12 @@ public class DadosCredenciamentoPessoa {
      **/
     private String funcao = null;
 
+    @XmlElement(name = "dataInicioValidade")
+    @ApiModelProperty(example = "2020-04-01", value = "Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Data do início da validade do credenciamento<br/>Formato: 'yyyy-MM-dd'
+     **/
+    private String dataInicioValidade = null;
 
     @XmlElement(name = "dataFimValidade")
     @ApiModelProperty(example = "2020-04-01", value = "Data do final da validade do credenciamento, se houver<br/>Formato: 'yyyy-MM-dd'")
@@ -218,16 +288,12 @@ public class DadosCredenciamentoPessoa {
      **/
     private String horaPrevistaEntrada = null;
 
+    @XmlElement(name = "horaPrevistaSaida")
+    @ApiModelProperty(example = "12:30:15-0300", value = "Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'")
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
+     * Hora prevista para saída do recinto. Somente para os casos em que a pessoa foi credenciada para entrar/sair em determinados períodos.<br/>Formato: 'HH:mm:ssZ'
      **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
+    private String horaPrevistaSaida = null;
 
     @XmlElement(name = "areas")
     @ApiModelProperty(value = "Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.<br/>Tamanho: 200")
@@ -321,13 +387,14 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return protocoloEventoRetificadoOuExcluido
+     * @return dataHoraRegistro
      **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
     }
 
     public void setDataHoraRegistro(String dataHoraRegistro) {
@@ -378,13 +445,13 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Get documentoEstrangeiro
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
      *
-     * @return documentoEstrangeiro
+     * @return protocoloEventoRetificadoOuExcluido
      **/
-    @JsonProperty("documentoEstrangeiro")
-    public DadosDocumentoEstrangeiro getDocumentoEstrangeiro() {
-        return documentoEstrangeiro;
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
     }
 
     public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
@@ -454,14 +521,13 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Nome. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     * Get documentoEstrangeiro
      *
-     * @return nome
+     * @return documentoEstrangeiro
      **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
+    @JsonProperty("documentoEstrangeiro")
+    public DadosDocumentoEstrangeiro getDocumentoEstrangeiro() {
+        return documentoEstrangeiro;
     }
 
     public void setDocumentoEstrangeiro(DadosDocumentoEstrangeiro documentoEstrangeiro) {
@@ -532,13 +598,13 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Telefone&lt;br/&gt;Tamanho: 20
-     *
-     * @return fone
+     * Nome. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     * @return nome
      **/
-    @JsonProperty("fone")
-    public String getFone() {
-        return fone;
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -569,13 +635,12 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * CPF do representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfRepresentado
+     * Telefone&lt;br/&gt;Tamanho: 20
+     * @return fone
      **/
-    @JsonProperty("cpfRepresentado")
-    public String getCpfRepresentado() {
-        return cpfRepresentado;
+    @JsonProperty("fone")
+    public String getFone() {
+        return fone;
     }
 
     public void setFone(String fone) {
@@ -606,13 +671,12 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Data do final da validade do credenciamento, se houver&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
-     *
-     * @return dataFimValidade
+     * CPF do representado&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * @return cpfRepresentado
      **/
-    @JsonProperty("dataFimValidade")
-    public String getDataFimValidade() {
-        return dataFimValidade;
+    @JsonProperty("cpfRepresentado")
+    public String getCpfRepresentado() {
+        return cpfRepresentado;
     }
 
     public void setCpfRepresentado(String cpfRepresentado) {
@@ -626,6 +690,7 @@ public class DadosCredenciamentoPessoa {
 
     /**
      * Identificação fiscal de empresa estrangeira representada&lt;br/&gt;Tamanho: 50
+     *
      * @return operadorEstrangeiroRepresentado
      **/
     @JsonProperty("operadorEstrangeiroRepresentado")
@@ -734,13 +799,12 @@ public class DadosCredenciamentoPessoa {
     }
 
     /**
-     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 200
-     *
-     * @return areas
+     * Data do final da validade do credenciamento, se houver&lt;br/&gt;Formato: &#39;yyyy-MM-dd&#39;
+     * @return dataFimValidade
      **/
-    @JsonProperty("areas")
-    public String getAreas() {
-        return areas;
+    @JsonProperty("dataFimValidade")
+    public String getDataFimValidade() {
+        return dataFimValidade;
     }
 
     public void setDataFimValidade(String dataFimValidade) {
@@ -788,6 +852,80 @@ public class DadosCredenciamentoPessoa {
         return this;
     }
 
+    /**
+     * Áreas permitidas de acesso. Somente para os casos em que o usuário foi credenciado para acessar apenas algumas áreas.&lt;br/&gt;Tamanho: 200
+     * @return areas
+     **/
+    @JsonProperty("areas")
+    public String getAreas() {
+        return areas;
+    }
+
+    public void setAreas(String areas) {
+        this.areas = areas;
+    }
+
+    public DadosCredenciamentoPessoa areas(String areas) {
+        this.areas = areas;
+        return this;
+    }
+
+    /**
+     * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.&lt;br/&gt;Tamanho: 100
+     * @return materiaisFerramentas
+     **/
+    @JsonProperty("materiaisFerramentas")
+    public String getMateriaisFerramentas() {
+        return materiaisFerramentas;
+    }
+
+    public void setMateriaisFerramentas(String materiaisFerramentas) {
+        this.materiaisFerramentas = materiaisFerramentas;
+    }
+
+    public DadosCredenciamentoPessoa materiaisFerramentas(String materiaisFerramentas) {
+        this.materiaisFerramentas = materiaisFerramentas;
+        return this;
+    }
+
+    /**
+     * Credenciamento Ativo&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * @return credenciamentoAtivo
+     **/
+    @JsonProperty("credenciamentoAtivo")
+    @NotNull
+    public Boolean isisCredenciamentoAtivo() {
+        return credenciamentoAtivo;
+    }
+
+    public void setCredenciamentoAtivo(Boolean credenciamentoAtivo) {
+        this.credenciamentoAtivo = credenciamentoAtivo;
+    }
+
+    public DadosCredenciamentoPessoa credenciamentoAtivo(Boolean credenciamentoAtivo) {
+        this.credenciamentoAtivo = credenciamentoAtivo;
+        return this;
+    }
+
+    /**
+     * Motivação do credenciamento.&lt;br/&gt;Tamanho: 100
+     * @return motivacao
+     **/
+    @JsonProperty("motivacao")
+    public String getMotivacao() {
+        return motivacao;
+    }
+
+    public void setMotivacao(String motivacao) {
+        this.motivacao = motivacao;
+    }
+
+    public DadosCredenciamentoPessoa motivacao(String motivacao) {
+        this.motivacao = motivacao;
+        return this;
+    }
+
+
     @Override
     public String toString() {
 
@@ -828,150 +966,14 @@ public class DadosCredenciamentoPessoa {
         return sb;
     }
 
-    public void setAreas(String areas) {
-        this.areas = areas;
-    }
-
-    public DadosCredenciamentoPessoa areas(String areas) {
-        this.areas = areas;
-        return this;
-    }
-
     /**
-     * Materiais e ferramentas de trabalho. Comum para prestadores de serviço.&lt;br/&gt;Tamanho: 100
-     *
-     * @return materiaisFerramentas
-     **/
-    @JsonProperty("materiaisFerramentas")
-    public String getMateriaisFerramentas() {
-        return materiaisFerramentas;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public void setMateriaisFerramentas(String materiaisFerramentas) {
-        this.materiaisFerramentas = materiaisFerramentas;
-    }
-
-    public DadosCredenciamentoPessoa materiaisFerramentas(String materiaisFerramentas) {
-        this.materiaisFerramentas = materiaisFerramentas;
-        return this;
-    }
-
-    /**
-     * Credenciamento Ativo&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return credenciamentoAtivo
-     **/
-    @JsonProperty("credenciamentoAtivo")
-    @NotNull
-    public Boolean isisCredenciamentoAtivo() {
-        return credenciamentoAtivo;
-    }
-
-    public void setCredenciamentoAtivo(Boolean credenciamentoAtivo) {
-        this.credenciamentoAtivo = credenciamentoAtivo;
-    }
-
-    public DadosCredenciamentoPessoa credenciamentoAtivo(Boolean credenciamentoAtivo) {
-        this.credenciamentoAtivo = credenciamentoAtivo;
-        return this;
-    }
-
-    /**
-     * Motivação do credenciamento.&lt;br/&gt;Tamanho: 100
-     * @return motivacao
-     **/
-    @JsonProperty("motivacao")
-    public String getMotivacao() {
-        return motivacao;
-    }
-
-    public void setMotivacao(String motivacao) {
-        this.motivacao = motivacao;
-    }
-
-    public DadosCredenciamentoPessoa motivacao(String motivacao) {
-        this.motivacao = motivacao;
-        return this;
-    }
-
-
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "SexoEnum")
-    @XmlEnum(String.class)
-    public enum SexoEnum {
-
-        @XmlEnumValue("'F'")
-        @JsonProperty("'F'")
-        F_("'F'"),
-
-        @XmlEnumValue("'M'")
-        @JsonProperty("'M'")
-        M_("'M'");
-
-
-        private final String value;
-
-        SexoEnum(String v) {
-            value = v;
-        }
-
-        public static SexoEnum fromValue(String v) {
-            for (SexoEnum b : SexoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SexoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -48,15 +48,42 @@ public class ComponenteDeFrete {
     private BigDecimal valorMoeda = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "PagamentoEnum")
+    @XmlEnum(String.class)
+    public enum PagamentoEnum {
+
+        @XmlEnumValue("PREPAID")
+        @JsonProperty("PREPAID")
+        PREPAID("PREPAID"),
+
+        @XmlEnumValue("COLLECT")
+        @JsonProperty("COLLECT")
+        COLLECT("COLLECT");
+
+
+        private final String value;
+
+        PagamentoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static PagamentoEnum fromValue(String v) {
+            for (PagamentoEnum b : PagamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to PagamentoEnum");
+        }
     }
 
     @XmlElement(name = "pagamento")
@@ -164,6 +191,7 @@ public class ComponenteDeFrete {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -177,41 +205,14 @@ public class ComponenteDeFrete {
         return sb;
     }
 
-    @XmlType(name = "PagamentoEnum")
-    @XmlEnum(String.class)
-    public enum PagamentoEnum {
-
-        @XmlEnumValue("PREPAID")
-        @JsonProperty("PREPAID")
-        PREPAID("PREPAID"),
-
-        @XmlEnumValue("COLLECT")
-        @JsonProperty("COLLECT")
-        COLLECT("COLLECT");
-
-
-        private final String value;
-
-        PagamentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static PagamentoEnum fromValue(String v) {
-            for (PagamentoEnum b : PagamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to PagamentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

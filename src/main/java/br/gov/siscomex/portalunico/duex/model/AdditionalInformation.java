@@ -25,74 +25,6 @@ public class AdditionalInformation {
     private String statementCode = null;
 
 
-    @XmlElement(name = "statementTypeCode", required = true)
-    @ApiModelProperty(required = true, value = "")
-    private StatementTypeCodeEnum statementTypeCode = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get statementCode
-     *
-     * @return statementCode
-     **/
-    @JsonProperty("statementCode")
-    public String getStatementCode() {
-        return statementCode;
-    }
-
-    public void setStatementCode(String statementCode) {
-        this.statementCode = statementCode;
-    }
-
-    public AdditionalInformation statementCode(String statementCode) {
-        this.statementCode = statementCode;
-        return this;
-    }
-
-    /**
-     * Get statementTypeCode
-     *
-     * @return statementTypeCode
-     **/
-    @JsonProperty("statementTypeCode")
-    @NotNull
-    public String getStatementTypeCode() {
-        if (statementTypeCode == null) {
-            return null;
-        }
-        return statementTypeCode.value();
-    }
-
-    public void setStatementTypeCode(StatementTypeCodeEnum statementTypeCode) {
-        this.statementTypeCode = statementTypeCode;
-    }
-
-    public AdditionalInformation statementTypeCode(StatementTypeCodeEnum statementTypeCode) {
-        this.statementTypeCode = statementTypeCode;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class AdditionalInformation {\n" +
-                "    statementCode: " + toIndentedString(statementCode) + "\n" +
-                "    statementTypeCode: " + toIndentedString(statementTypeCode) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "StatementTypeCodeEnum")
     @XmlEnum(String.class)
     public enum StatementTypeCodeEnum {
@@ -177,5 +109,73 @@ public class AdditionalInformation {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to StatementTypeCodeEnum");
         }
+    }
+
+    @XmlElement(name = "statementTypeCode", required = true)
+    @ApiModelProperty(required = true, value = "")
+    private StatementTypeCodeEnum statementTypeCode = null;
+
+    /**
+     * Get statementCode
+     *
+     * @return statementCode
+     **/
+    @JsonProperty("statementCode")
+    public String getStatementCode() {
+        return statementCode;
+    }
+
+    public void setStatementCode(String statementCode) {
+        this.statementCode = statementCode;
+    }
+
+    public AdditionalInformation statementCode(String statementCode) {
+        this.statementCode = statementCode;
+        return this;
+    }
+
+    /**
+     * Get statementTypeCode
+     *
+     * @return statementTypeCode
+     **/
+    @JsonProperty("statementTypeCode")
+    @NotNull
+    public String getStatementTypeCode() {
+        if (statementTypeCode == null) {
+            return null;
+        }
+        return statementTypeCode.value();
+    }
+
+    public void setStatementTypeCode(StatementTypeCodeEnum statementTypeCode) {
+        this.statementTypeCode = statementTypeCode;
+    }
+
+    public AdditionalInformation statementTypeCode(StatementTypeCodeEnum statementTypeCode) {
+        this.statementTypeCode = statementTypeCode;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class AdditionalInformation {\n" +
+                "    statementCode: " + toIndentedString(statementCode) + "\n" +
+                "    statementTypeCode: " + toIndentedString(statementTypeCode) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

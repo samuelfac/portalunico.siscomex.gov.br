@@ -81,15 +81,9 @@ public class FundamentoLegalOpcionalDisponivelDTO {
         this.regime = regime;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public FundamentoLegalOpcionalDisponivelDTO regime(CodigoNomeRegimeDTO regime) {
+        this.regime = regime;
+        return this;
     }
 
     /**
@@ -132,10 +126,6 @@ public class FundamentoLegalOpcionalDisponivelDTO {
         return this;
     }
 
-    public FundamentoLegalOpcionalDisponivelDTO regime(CodigoNomeRegimeDTO regime) {
-        this.regime = regime;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -148,4 +138,15 @@ public class FundamentoLegalOpcionalDisponivelDTO {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

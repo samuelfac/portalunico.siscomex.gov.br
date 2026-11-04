@@ -44,15 +44,50 @@ public class PessoaDTO {
     private String numeroDoDocumento = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoDoDocumentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDoDocumentoEnum {
+
+        @XmlEnumValue("CPF")
+        @JsonProperty("CPF")
+        CPF("CPF"),
+
+        @XmlEnumValue("CNPJ")
+        @JsonProperty("CNPJ")
+        CNPJ("CNPJ"),
+
+        @XmlEnumValue("PASSAPORTE")
+        @JsonProperty("PASSAPORTE")
+        PASSAPORTE("PASSAPORTE"),
+
+        @XmlEnumValue("ID")
+        @JsonProperty("ID")
+        ID("ID");
+
+
+        private final String value;
+
+        TipoDoDocumentoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDoDocumentoEnum fromValue(String v) {
+            for (TipoDoDocumentoEnum b : TipoDoDocumentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDoDocumentoEnum");
+        }
     }
 
     @XmlElement(name = "tipoDoDocumento")
@@ -157,6 +192,7 @@ public class PessoaDTO {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -170,49 +206,14 @@ public class PessoaDTO {
         return sb;
     }
 
-    @XmlType(name = "TipoDoDocumentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDoDocumentoEnum {
-
-        @XmlEnumValue("CPF")
-        @JsonProperty("CPF")
-        CPF("CPF"),
-
-        @XmlEnumValue("CNPJ")
-        @JsonProperty("CNPJ")
-        CNPJ("CNPJ"),
-
-        @XmlEnumValue("PASSAPORTE")
-        @JsonProperty("PASSAPORTE")
-        PASSAPORTE("PASSAPORTE"),
-
-        @XmlEnumValue("ID")
-        @JsonProperty("ID")
-        ID("ID");
-
-
-        private final String value;
-
-        TipoDoDocumentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDoDocumentoEnum fromValue(String v) {
-            for (TipoDoDocumentoEnum b : TipoDoDocumentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDoDocumentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

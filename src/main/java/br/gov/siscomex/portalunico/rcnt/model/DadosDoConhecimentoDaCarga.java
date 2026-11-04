@@ -80,15 +80,9 @@ public class DadosDoConhecimentoDaCarga {
         this.numero = numero;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosDoConhecimentoDaCarga numero(String numero) {
+        this.numero = numero;
+        return this;
     }
 
     /**
@@ -129,10 +123,6 @@ public class DadosDoConhecimentoDaCarga {
         return this;
     }
 
-    public DadosDoConhecimentoDaCarga numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -145,4 +135,15 @@ public class DadosDoConhecimentoDaCarga {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

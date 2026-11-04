@@ -21,54 +21,6 @@ import javax.xml.bind.annotation.XmlType;
 public class CurrencyExchange {
 
 
-    @XmlElement(name = "currencyTypeCode", required = true)
-    @ApiModelProperty(required = true, value = "")
-    private CurrencyTypeCodeEnum currencyTypeCode = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Get currencyTypeCode
-     *
-     * @return currencyTypeCode
-     **/
-    @JsonProperty("currencyTypeCode")
-    @NotNull
-    public String getCurrencyTypeCode() {
-        if (currencyTypeCode == null) {
-            return null;
-        }
-        return currencyTypeCode.value();
-    }
-
-    public void setCurrencyTypeCode(CurrencyTypeCodeEnum currencyTypeCode) {
-        this.currencyTypeCode = currencyTypeCode;
-    }
-
-    public CurrencyExchange currencyTypeCode(CurrencyTypeCodeEnum currencyTypeCode) {
-        this.currencyTypeCode = currencyTypeCode;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class CurrencyExchange {\n" +
-                "    currencyTypeCode: " + toIndentedString(currencyTypeCode) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "CurrencyTypeCodeEnum")
     @XmlEnum(String.class)
     public enum CurrencyTypeCodeEnum {
@@ -721,5 +673,53 @@ public class CurrencyExchange {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to CurrencyTypeCodeEnum");
         }
+    }
+
+    @XmlElement(name = "currencyTypeCode", required = true)
+    @ApiModelProperty(required = true, value = "")
+    private CurrencyTypeCodeEnum currencyTypeCode = null;
+
+    /**
+     * Get currencyTypeCode
+     *
+     * @return currencyTypeCode
+     **/
+    @JsonProperty("currencyTypeCode")
+    @NotNull
+    public String getCurrencyTypeCode() {
+        if (currencyTypeCode == null) {
+            return null;
+        }
+        return currencyTypeCode.value();
+    }
+
+    public void setCurrencyTypeCode(CurrencyTypeCodeEnum currencyTypeCode) {
+        this.currencyTypeCode = currencyTypeCode;
+    }
+
+    public CurrencyExchange currencyTypeCode(CurrencyTypeCodeEnum currencyTypeCode) {
+        this.currencyTypeCode = currencyTypeCode;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class CurrencyExchange {\n" +
+                "    currencyTypeCode: " + toIndentedString(currencyTypeCode) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

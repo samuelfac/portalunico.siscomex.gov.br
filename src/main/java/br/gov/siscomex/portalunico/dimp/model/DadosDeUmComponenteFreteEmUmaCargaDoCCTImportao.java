@@ -21,15 +21,74 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoTotalMoedaEnum")
+    @XmlEnum(String.class)
+    public enum TipoTotalMoedaEnum {
+
+        @XmlEnumValue("POR_PESO")
+        @JsonProperty("POR_PESO")
+        POR_PESO("POR_PESO"),
+
+        @XmlEnumValue("POR_VALOR")
+        @JsonProperty("POR_VALOR")
+        POR_VALOR("POR_VALOR"),
+
+        @XmlEnumValue("IMPOSTOS")
+        @JsonProperty("IMPOSTOS")
+        IMPOSTOS("IMPOSTOS"),
+
+        @XmlEnumValue("OUTROS_SERVICOS_AGENTE_CARGA")
+        @JsonProperty("OUTROS_SERVICOS_AGENTE_CARGA")
+        OUTROS_SERVICOS_AGENTE_CARGA("OUTROS_SERVICOS_AGENTE_CARGA"),
+
+        @XmlEnumValue("OUTROS_SERVICOS_TRANSPORTADOR")
+        @JsonProperty("OUTROS_SERVICOS_TRANSPORTADOR")
+        OUTROS_SERVICOS_TRANSPORTADOR("OUTROS_SERVICOS_TRANSPORTADOR"),
+
+        @XmlEnumValue("TOTAL_MOEDA_ORIGEM")
+        @JsonProperty("TOTAL_MOEDA_ORIGEM")
+        TOTAL_MOEDA_ORIGEM("TOTAL_MOEDA_ORIGEM"),
+
+        @XmlEnumValue("TOTAL_MOEDA_DESTINO")
+        @JsonProperty("TOTAL_MOEDA_DESTINO")
+        TOTAL_MOEDA_DESTINO("TOTAL_MOEDA_DESTINO"),
+
+        @XmlEnumValue("ENCARGOS")
+        @JsonProperty("ENCARGOS")
+        ENCARGOS("ENCARGOS"),
+
+        @XmlEnumValue("TOTAL_COLLECT")
+        @JsonProperty("TOTAL_COLLECT")
+        TOTAL_COLLECT("TOTAL_COLLECT"),
+
+        @XmlEnumValue("INVALIDO")
+        @JsonProperty("INVALIDO")
+        INVALIDO("INVALIDO");
+
+
+        private final String value;
+
+        TipoTotalMoedaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoTotalMoedaEnum fromValue(String v) {
+            for (TipoTotalMoedaEnum b : TipoTotalMoedaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTotalMoedaEnum");
+        }
     }
 
     @XmlElement(name = "tipoTotalMoeda")
@@ -109,6 +168,7 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -120,73 +180,14 @@ public class DadosDeUmComponenteFreteEmUmaCargaDoCCTImportao {
         return sb;
     }
 
-    @XmlType(name = "TipoTotalMoedaEnum")
-    @XmlEnum(String.class)
-    public enum TipoTotalMoedaEnum {
-
-        @XmlEnumValue("POR_PESO")
-        @JsonProperty("POR_PESO")
-        POR_PESO("POR_PESO"),
-
-        @XmlEnumValue("POR_VALOR")
-        @JsonProperty("POR_VALOR")
-        POR_VALOR("POR_VALOR"),
-
-        @XmlEnumValue("IMPOSTOS")
-        @JsonProperty("IMPOSTOS")
-        IMPOSTOS("IMPOSTOS"),
-
-        @XmlEnumValue("OUTROS_SERVICOS_AGENTE_CARGA")
-        @JsonProperty("OUTROS_SERVICOS_AGENTE_CARGA")
-        OUTROS_SERVICOS_AGENTE_CARGA("OUTROS_SERVICOS_AGENTE_CARGA"),
-
-        @XmlEnumValue("OUTROS_SERVICOS_TRANSPORTADOR")
-        @JsonProperty("OUTROS_SERVICOS_TRANSPORTADOR")
-        OUTROS_SERVICOS_TRANSPORTADOR("OUTROS_SERVICOS_TRANSPORTADOR"),
-
-        @XmlEnumValue("TOTAL_MOEDA_ORIGEM")
-        @JsonProperty("TOTAL_MOEDA_ORIGEM")
-        TOTAL_MOEDA_ORIGEM("TOTAL_MOEDA_ORIGEM"),
-
-        @XmlEnumValue("TOTAL_MOEDA_DESTINO")
-        @JsonProperty("TOTAL_MOEDA_DESTINO")
-        TOTAL_MOEDA_DESTINO("TOTAL_MOEDA_DESTINO"),
-
-        @XmlEnumValue("ENCARGOS")
-        @JsonProperty("ENCARGOS")
-        ENCARGOS("ENCARGOS"),
-
-        @XmlEnumValue("TOTAL_COLLECT")
-        @JsonProperty("TOTAL_COLLECT")
-        TOTAL_COLLECT("TOTAL_COLLECT"),
-
-        @XmlEnumValue("INVALIDO")
-        @JsonProperty("INVALIDO")
-        INVALIDO("INVALIDO");
-
-
-        private final String value;
-
-        TipoTotalMoedaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoTotalMoedaEnum fromValue(String v) {
-            for (TipoTotalMoedaEnum b : TipoTotalMoedaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTotalMoedaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

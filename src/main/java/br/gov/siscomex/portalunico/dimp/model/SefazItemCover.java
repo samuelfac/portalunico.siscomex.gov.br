@@ -45,10 +45,43 @@ public class SefazItemCover {
     private SefazProdutoCover dadosProduto = null;
 
 
-    @XmlElement(name = "dadosOperadorFabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazOperadorFabricanteCover dadosOperadorFabricante = null;
+    @XmlType(name = "RelacaoExportadorFabricanteEnum")
+    @XmlEnum(String.class)
+    public enum RelacaoExportadorFabricanteEnum {
+
+        @XmlEnumValue("0")
+        @JsonProperty("0")
+        _0("0"),
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1");
+
+
+        private final String value;
+
+        RelacaoExportadorFabricanteEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static RelacaoExportadorFabricanteEnum fromValue(String v) {
+            for (RelacaoExportadorFabricanteEnum b : RelacaoExportadorFabricanteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to RelacaoExportadorFabricanteEnum");
+        }
+    }
 
     @XmlElement(name = "relacaoExportadorFabricante")
     @ApiModelProperty(example = "1", value = "Relação exportador x fabricante.<br>Dominio:<br>0 - Exportador é diferente do fabricante,<br>1 - exportador é fabricante")
@@ -56,10 +89,49 @@ public class SefazItemCover {
      * Relação exportador x fabricante.<br>Dominio:<br>0 - Exportador é diferente do fabricante,<br>1 - exportador é fabricante
      **/
     private RelacaoExportadorFabricanteEnum relacaoExportadorFabricante = null;
-    @XmlElement(name = "informacoesComplementares")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazInformacaoComplementarCover informacoesComplementares = null;
+
+
+    @XmlType(name = "VinculacaoCompradorVendedorEnum")
+    @XmlEnum(String.class)
+    public enum VinculacaoCompradorVendedorEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2"),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        _3("3");
+
+
+        private final String value;
+
+        VinculacaoCompradorVendedorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static VinculacaoCompradorVendedorEnum fromValue(String v) {
+            for (VinculacaoCompradorVendedorEnum b : VinculacaoCompradorVendedorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to VinculacaoCompradorVendedorEnum");
+        }
+    }
 
     @XmlElement(name = "vinculacaoCompradorVendedor")
     @ApiModelProperty(example = "1", value = "Vinculação comprador x vendedor.<br>Dominio:<br>1 - Não há vinculação, <br>2 - Vinculação sem influência no preço,<br> 3 - Vinculação com influência no preço")
@@ -72,17 +144,16 @@ public class SefazItemCover {
     @ApiModelProperty(value = "")
     @Valid
     private SefazOperadorExportadorCover dadosOperadorExportador = null;
-    @XmlElement(name = "dadosCambiais", required = true)
-    @ApiModelProperty(required = true, value = "")
+
+    @XmlElement(name = "dadosOperadorFabricante")
+    @ApiModelProperty(value = "")
     @Valid
-    private SefazDadosCambiaisCover dadosCambiais = null;
-    @XmlElement(name = "lpcos")
-    @ApiModelProperty(value = "Lista de LPCOs do item")
+    private SefazOperadorFabricanteCover dadosOperadorFabricante = null;
+
+    @XmlElement(name = "informacoesComplementares")
+    @ApiModelProperty(value = "")
     @Valid
-    /**
-     * Lista de LPCOs do item
-     **/
-    private List<SefazItemLpcoCover> lpcos = null;
+    private SefazInformacaoComplementarCover informacoesComplementares = null;
 
     @XmlElement(name = "declaracoesExportacaoEstrangeira")
     @ApiModelProperty(value = "Lista de declarações estrangeiras")
@@ -104,40 +175,34 @@ public class SefazItemCover {
     @ApiModelProperty(value = "")
     @Valid
     private SefazCondicaoVendaMercadoriaCover condicaoVendaMercadoria = null;
-    @XmlElement(name = "dadosInsumoDrawbackIsencao")
-    @ApiModelProperty(value = "")
+
+    @XmlElement(name = "dadosCambiais", required = true)
+    @ApiModelProperty(required = true, value = "")
     @Valid
-    private SefazDadosInsumoDrawbackIsencaoCover dadosInsumoDrawbackIsencao = null;
+    private SefazDadosCambiaisCover dadosCambiais = null;
 
     @XmlElement(name = "itemTributo", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private SefazItemTributoCover itemTributo = null;
 
+    @XmlElement(name = "lpcos")
+    @ApiModelProperty(value = "Lista de LPCOs do item")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Lista de LPCOs do item
+     **/
+    private List<SefazItemLpcoCover> lpcos = null;
+
+    @XmlElement(name = "dadosInsumoDrawbackIsencao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazDadosInsumoDrawbackIsencaoCover dadosInsumoDrawbackIsencao = null;
+
     @XmlElement(name = "informacoesAdicionais", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private SefazItemInfoAdicinaisCover informacoesAdicionais = null;
-
-    /**
-     * Get dadosOperadorFabricante
-     *
-     * @return dadosOperadorFabricante
-     **/
-    @JsonProperty("dadosOperadorFabricante")
-    public SefazOperadorFabricanteCover getDadosOperadorFabricante() {
-        return dadosOperadorFabricante;
-    }
 
     /**
      * Número do item&lt;br&gt;Formato: Inteiro, com até 5 digitos&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 99999
@@ -262,14 +327,13 @@ public class SefazItemCover {
     }
 
     /**
-     * Get dadosCambiais
+     * Get dadosOperadorFabricante
      *
-     * @return dadosCambiais
+     * @return dadosOperadorFabricante
      **/
-    @JsonProperty("dadosCambiais")
-    @NotNull
-    public SefazDadosCambiaisCover getDadosCambiais() {
-        return dadosCambiais;
+    @JsonProperty("dadosOperadorFabricante")
+    public SefazOperadorFabricanteCover getDadosOperadorFabricante() {
+        return dadosOperadorFabricante;
     }
 
     public void setDadosOperadorFabricante(SefazOperadorFabricanteCover dadosOperadorFabricante) {
@@ -368,13 +432,13 @@ public class SefazItemCover {
     }
 
     /**
-     * Lista de LPCOs do item
-     *
-     * @return lpcos
+     * Get dadosCambiais
+     * @return dadosCambiais
      **/
-    @JsonProperty("lpcos")
-    public List<SefazItemLpcoCover> getLpcos() {
-        return lpcos;
+    @JsonProperty("dadosCambiais")
+    @NotNull
+    public SefazDadosCambiaisCover getDadosCambiais() {
+        return dadosCambiais;
     }
 
     public void setDadosCambiais(SefazDadosCambiaisCover dadosCambiais) {
@@ -405,28 +469,14 @@ public class SefazItemCover {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SefazItemCover {\n" +
-                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "    caracterizacaoImportacao: " + toIndentedString(caracterizacaoImportacao) + "\n" +
-                "    dadosProduto: " + toIndentedString(dadosProduto) + "\n" +
-                "    relacaoExportadorFabricante: " + toIndentedString(relacaoExportadorFabricante) + "\n" +
-                "    vinculacaoCompradorVendedor: " + toIndentedString(vinculacaoCompradorVendedor) + "\n" +
-                "    dadosOperadorExportador: " + toIndentedString(dadosOperadorExportador) + "\n" +
-                "    dadosOperadorFabricante: " + toIndentedString(dadosOperadorFabricante) + "\n" +
-                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
-                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
-                "    declaracoesVinculadas: " + toIndentedString(declaracoesVinculadas) + "\n" +
-                "    condicaoVendaMercadoria: " + toIndentedString(condicaoVendaMercadoria) + "\n" +
-                "    dadosCambiais: " + toIndentedString(dadosCambiais) + "\n" +
-                "    itemTributo: " + toIndentedString(itemTributo) + "\n" +
-                "    lpcos: " + toIndentedString(lpcos) + "\n" +
-                "    dadosInsumoDrawbackIsencao: " + toIndentedString(dadosInsumoDrawbackIsencao) + "\n" +
-                "    informacoesAdicionais: " + toIndentedString(informacoesAdicionais) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Lista de LPCOs do item
+     *
+     * @return lpcos
+     **/
+    @JsonProperty("lpcos")
+    public List<SefazItemLpcoCover> getLpcos() {
+        return lpcos;
     }
 
     public void setLpcos(List<SefazItemLpcoCover> lpcos) {
@@ -445,6 +495,7 @@ public class SefazItemCover {
 
     /**
      * Get dadosInsumoDrawbackIsencao
+     *
      * @return dadosInsumoDrawbackIsencao
      **/
     @JsonProperty("dadosInsumoDrawbackIsencao")
@@ -481,83 +532,38 @@ public class SefazItemCover {
     }
 
 
-    @XmlType(name = "RelacaoExportadorFabricanteEnum")
-    @XmlEnum(String.class)
-    public enum RelacaoExportadorFabricanteEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("0")
-        @JsonProperty("0")
-        _0("0"),
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1");
-
-
-        private final String value;
-
-        RelacaoExportadorFabricanteEnum(String v) {
-            value = v;
-        }
-
-        public static RelacaoExportadorFabricanteEnum fromValue(String v) {
-            for (RelacaoExportadorFabricanteEnum b : RelacaoExportadorFabricanteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to RelacaoExportadorFabricanteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SefazItemCover {\n" +
+                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
+                "    caracterizacaoImportacao: " + toIndentedString(caracterizacaoImportacao) + "\n" +
+                "    dadosProduto: " + toIndentedString(dadosProduto) + "\n" +
+                "    relacaoExportadorFabricante: " + toIndentedString(relacaoExportadorFabricante) + "\n" +
+                "    vinculacaoCompradorVendedor: " + toIndentedString(vinculacaoCompradorVendedor) + "\n" +
+                "    dadosOperadorExportador: " + toIndentedString(dadosOperadorExportador) + "\n" +
+                "    dadosOperadorFabricante: " + toIndentedString(dadosOperadorFabricante) + "\n" +
+                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
+                "    declaracoesExportacaoEstrangeira: " + toIndentedString(declaracoesExportacaoEstrangeira) + "\n" +
+                "    declaracoesVinculadas: " + toIndentedString(declaracoesVinculadas) + "\n" +
+                "    condicaoVendaMercadoria: " + toIndentedString(condicaoVendaMercadoria) + "\n" +
+                "    dadosCambiais: " + toIndentedString(dadosCambiais) + "\n" +
+                "    itemTributo: " + toIndentedString(itemTributo) + "\n" +
+                "    lpcos: " + toIndentedString(lpcos) + "\n" +
+                "    dadosInsumoDrawbackIsencao: " + toIndentedString(dadosInsumoDrawbackIsencao) + "\n" +
+                "    informacoesAdicionais: " + toIndentedString(informacoesAdicionais) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "VinculacaoCompradorVendedorEnum")
-    @XmlEnum(String.class)
-    public enum VinculacaoCompradorVendedorEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2"),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        _3("3");
-
-
-        private final String value;
-
-        VinculacaoCompradorVendedorEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static VinculacaoCompradorVendedorEnum fromValue(String v) {
-            for (VinculacaoCompradorVendedorEnum b : VinculacaoCompradorVendedorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to VinculacaoCompradorVendedorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

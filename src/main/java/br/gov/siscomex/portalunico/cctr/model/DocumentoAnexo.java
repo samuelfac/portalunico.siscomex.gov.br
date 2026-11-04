@@ -81,6 +81,16 @@ public class DocumentoAnexo {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DocumentoAnexo {\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -90,15 +100,5 @@ public class DocumentoAnexo {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DocumentoAnexo {\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "}";
-        return sb;
     }
 }

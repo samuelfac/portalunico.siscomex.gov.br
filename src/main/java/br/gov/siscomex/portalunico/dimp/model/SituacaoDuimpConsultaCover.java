@@ -26,82 +26,6 @@ import java.time.OffsetDateTime;
 public class SituacaoDuimpConsultaCover {
 
 
-    @XmlElement(name = "situacaoDuimp")
-    @ApiModelProperty(example = "REGISTRADA_AGUARDANDO_CANAL", value = "Situação da versão vigente da Duimp.<br>Domínio:")
-    /**
-     * Situação da versão vigente da Duimp.<br>Domínio:
-     **/
-    private SituacaoDuimpEnum situacaoDuimp = null;
-    @XmlElement(name = "dataDesembaraco")
-    @ApiModelProperty(value = "Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private OffsetDateTime dataDesembaraco = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Situação da versão vigente da Duimp.&lt;br&gt;Domínio:
-     *
-     * @return situacaoDuimp
-     **/
-    @JsonProperty("situacaoDuimp")
-    public String getSituacaoDuimp() {
-        if (situacaoDuimp == null) {
-            return null;
-        }
-        return situacaoDuimp.value();
-    }
-
-    public void setSituacaoDuimp(SituacaoDuimpEnum situacaoDuimp) {
-        this.situacaoDuimp = situacaoDuimp;
-    }
-
-    public SituacaoDuimpConsultaCover situacaoDuimp(SituacaoDuimpEnum situacaoDuimp) {
-        this.situacaoDuimp = situacaoDuimp;
-        return this;
-    }
-
-    /**
-     * Data e hora do desembaraço.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
-     *
-     * @return dataDesembaraco
-     **/
-    @JsonProperty("dataDesembaraco")
-    public OffsetDateTime getDataDesembaraco() {
-        return dataDesembaraco;
-    }
-
-    public void setDataDesembaraco(OffsetDateTime dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-    }
-
-    public SituacaoDuimpConsultaCover dataDesembaraco(OffsetDateTime dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoDuimpConsultaCover {\n" +
-                "    situacaoDuimp: " + toIndentedString(situacaoDuimp) + "\n" +
-                "    dataDesembaraco: " + toIndentedString(dataDesembaraco) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "SituacaoDuimpEnum")
     @XmlEnum(String.class)
     public enum SituacaoDuimpEnum {
@@ -230,5 +154,82 @@ public class SituacaoDuimpConsultaCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoDuimpEnum");
         }
+    }
+
+    @XmlElement(name = "situacaoDuimp")
+    @ApiModelProperty(example = "REGISTRADA_AGUARDANDO_CANAL", value = "Situação da versão vigente da Duimp.<br>Domínio:")
+    /**
+     * Situação da versão vigente da Duimp.<br>Domínio:
+     **/
+    private SituacaoDuimpEnum situacaoDuimp = null;
+
+    @XmlElement(name = "dataDesembaraco")
+    @ApiModelProperty(value = "Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
+    /**
+     * Data e hora do desembaraço.<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private OffsetDateTime dataDesembaraco = null;
+
+    /**
+     * Situação da versão vigente da Duimp.&lt;br&gt;Domínio:
+     *
+     * @return situacaoDuimp
+     **/
+    @JsonProperty("situacaoDuimp")
+    public String getSituacaoDuimp() {
+        if (situacaoDuimp == null) {
+            return null;
+        }
+        return situacaoDuimp.value();
+    }
+
+    public void setSituacaoDuimp(SituacaoDuimpEnum situacaoDuimp) {
+        this.situacaoDuimp = situacaoDuimp;
+    }
+
+    public SituacaoDuimpConsultaCover situacaoDuimp(SituacaoDuimpEnum situacaoDuimp) {
+        this.situacaoDuimp = situacaoDuimp;
+        return this;
+    }
+
+    /**
+     * Data e hora do desembaraço.&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ssZ&#39;
+     *
+     * @return dataDesembaraco
+     **/
+    @JsonProperty("dataDesembaraco")
+    public OffsetDateTime getDataDesembaraco() {
+        return dataDesembaraco;
+    }
+
+    public void setDataDesembaraco(OffsetDateTime dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
+    }
+
+    public SituacaoDuimpConsultaCover dataDesembaraco(OffsetDateTime dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoDuimpConsultaCover {\n" +
+                "    situacaoDuimp: " + toIndentedString(situacaoDuimp) + "\n" +
+                "    dataDesembaraco: " + toIndentedString(dataDesembaraco) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

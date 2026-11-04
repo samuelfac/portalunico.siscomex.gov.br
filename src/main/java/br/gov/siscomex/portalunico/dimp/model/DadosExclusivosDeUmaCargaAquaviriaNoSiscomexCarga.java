@@ -44,23 +44,54 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
     private BigDecimal valorAFRMMPago = null;
 
 
+    @XmlType(name = "IndicadorAFRMMQuitadoEnum")
+    @XmlEnum(Integer.class)
+    public enum IndicadorAFRMMQuitadoEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        NUMBER_1(Integer.valueOf(1)),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        NUMBER_2(Integer.valueOf(2)),
+
+        @XmlEnumValue("0")
+        @JsonProperty("0")
+        NUMBER_0(Integer.valueOf(0));
+
+
+        private final Integer value;
+
+        IndicadorAFRMMQuitadoEnum(Integer v) {
+            value = v;
+        }
+
+        public Integer value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorAFRMMQuitadoEnum fromValue(String v) {
+            for (IndicadorAFRMMQuitadoEnum b : IndicadorAFRMMQuitadoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAFRMMQuitadoEnum");
+        }
+    }
+
     @XmlElement(name = "indicadorAFRMMQuitado")
     @ApiModelProperty(example = "1", value = "Indica se o AFRMM encontra-se quitado ou exonerado.<br>Dominio: <br>1 - Sim,<br>2 - Não,<br>0 - informação não recebida do sistema de controle de Carga")
     /**
      * Indica se o AFRMM encontra-se quitado ou exonerado.<br>Dominio: <br>1 - Sim,<br>2 - Não,<br>0 - informação não recebida do sistema de controle de Carga
      **/
     private IndicadorAFRMMQuitadoEnum indicadorAFRMMQuitado = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     @XmlElement(name = "componentesFrete")
     @ApiModelProperty(value = "Lista de Componentes do Frete")
@@ -173,6 +204,7 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -186,45 +218,14 @@ public class DadosExclusivosDeUmaCargaAquaviriaNoSiscomexCarga {
         return sb;
     }
 
-    @XmlType(name = "IndicadorAFRMMQuitadoEnum")
-    @XmlEnum(Integer.class)
-    public enum IndicadorAFRMMQuitadoEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        NUMBER_1(Integer.valueOf(1)),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        NUMBER_2(Integer.valueOf(2)),
-
-        @XmlEnumValue("0")
-        @JsonProperty("0")
-        NUMBER_0(Integer.valueOf(0));
-
-
-        private final Integer value;
-
-        IndicadorAFRMMQuitadoEnum(Integer v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static IndicadorAFRMMQuitadoEnum fromValue(String v) {
-            for (IndicadorAFRMMQuitadoEnum b : IndicadorAFRMMQuitadoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAFRMMQuitadoEnum");
-        }
-
-        public Integer value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -66,5 +66,5 @@ public class RemessaDoPedidoDeReviso {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

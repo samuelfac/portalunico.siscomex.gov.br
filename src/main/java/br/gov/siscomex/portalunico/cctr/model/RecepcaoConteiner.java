@@ -127,15 +127,9 @@ public class RecepcaoConteiner {
         this.identificacaoRecepcao = identificacaoRecepcao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RecepcaoConteiner identificacaoRecepcao(String identificacaoRecepcao) {
+        this.identificacaoRecepcao = identificacaoRecepcao;
+        return this;
     }
 
     /**
@@ -171,8 +165,8 @@ public class RecepcaoConteiner {
         this.cpfResp = cpfResp;
     }
 
-    public RecepcaoConteiner identificacaoRecepcao(String identificacaoRecepcao) {
-        this.identificacaoRecepcao = identificacaoRecepcao;
+    public RecepcaoConteiner cpfResp(String cpfResp) {
+        this.cpfResp = cpfResp;
         return this;
     }
 
@@ -255,8 +249,8 @@ public class RecepcaoConteiner {
         return this;
     }
 
-    public RecepcaoConteiner cpfResp(String cpfResp) {
-        this.cpfResp = cpfResp;
+    public RecepcaoConteiner addConteineresItem(Conteiner conteineresItem) {
+        this.conteineres.add(conteineresItem);
         return this;
     }
 
@@ -330,8 +324,8 @@ public class RecepcaoConteiner {
         this.divergenciasIdentificadas = divergenciasIdentificadas;
     }
 
-    public RecepcaoConteiner addConteineresItem(Conteiner conteineresItem) {
-        this.conteineres.add(conteineresItem);
+    public RecepcaoConteiner divergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
         return this;
     }
 
@@ -371,10 +365,6 @@ public class RecepcaoConteiner {
         return this;
     }
 
-    public RecepcaoConteiner divergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -395,5 +385,16 @@ public class RecepcaoConteiner {
                 "    transitoSimplificado: " + toIndentedString(transitoSimplificado) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

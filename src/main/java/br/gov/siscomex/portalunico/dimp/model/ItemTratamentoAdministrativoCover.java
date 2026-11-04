@@ -32,12 +32,47 @@ public class ItemTratamentoAdministrativoCover {
     private Double numeroItemDuimp = null;
 
 
-    @XmlElement(name = "orgao")
-    @ApiModelProperty(example = "DECEX", value = "Sigla do Órgão Anuente associado ao TA.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Sigla do Órgão Anuente associado ao TA.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String orgao = null;
+    @XmlType(name = "TipoTratamentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoTratamentoEnum {
+
+        @XmlEnumValue("IMPEDE_REGISTRO")
+        @JsonProperty("IMPEDE_REGISTRO")
+        IMPEDE_REGISTRO("IMPEDE_REGISTRO"),
+
+        @XmlEnumValue("REQUER_LPCO")
+        @JsonProperty("REQUER_LPCO")
+        REQUER_LPCO("REQUER_LPCO"),
+
+        @XmlEnumValue("ALERTA")
+        @JsonProperty("ALERTA")
+        ALERTA("ALERTA");
+
+
+        private final String value;
+
+        TipoTratamentoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoTratamentoEnum fromValue(String v) {
+            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoTratamento")
     @ApiModelProperty(example = "IMPEDE_REGISTRO", value = "Tipo de tratamento administrativo.<br>Domínio:")
@@ -53,16 +88,12 @@ public class ItemTratamentoAdministrativoCover {
      **/
     private String descricao = null;
 
+    @XmlElement(name = "orgao")
+    @ApiModelProperty(example = "DECEX", value = "Sigla do Órgão Anuente associado ao TA.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Sigla do Órgão Anuente associado ao TA.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
+     **/
+    private String orgao = null;
 
     @XmlElement(name = "lpco")
     @ApiModelProperty(example = "21255555555", value = "Número único do LPCO associado ao item de TA.<br>Tamanho: 11")
@@ -195,6 +226,7 @@ public class ItemTratamentoAdministrativoCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -209,45 +241,14 @@ public class ItemTratamentoAdministrativoCover {
         return sb;
     }
 
-    @XmlType(name = "TipoTratamentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoTratamentoEnum {
-
-        @XmlEnumValue("IMPEDE_REGISTRO")
-        @JsonProperty("IMPEDE_REGISTRO")
-        IMPEDE_REGISTRO("IMPEDE_REGISTRO"),
-
-        @XmlEnumValue("REQUER_LPCO")
-        @JsonProperty("REQUER_LPCO")
-        REQUER_LPCO("REQUER_LPCO"),
-
-        @XmlEnumValue("ALERTA")
-        @JsonProperty("ALERTA")
-        ALERTA("ALERTA");
-
-
-        private final String value;
-
-        TipoTratamentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoTratamentoEnum fromValue(String v) {
-            for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

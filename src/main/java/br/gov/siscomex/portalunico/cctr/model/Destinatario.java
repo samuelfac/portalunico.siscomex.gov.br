@@ -75,15 +75,9 @@ public class Destinatario {
         this.cpf = cpf;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Destinatario cpf(String cpf) {
+        this.cpf = cpf;
+        return this;
     }
 
     /**
@@ -105,10 +99,6 @@ public class Destinatario {
         return this;
     }
 
-    public Destinatario cpf(String cpf) {
-        this.cpf = cpf;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -119,5 +109,16 @@ public class Destinatario {
                 "    identificacaoEstrangeiro: " + toIndentedString(identificacaoEstrangeiro) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

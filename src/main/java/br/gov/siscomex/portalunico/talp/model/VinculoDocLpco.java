@@ -160,15 +160,9 @@ public class VinculoDocLpco {
         this.numeroDocumentoItem = numeroDocumentoItem;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
+        this.numeroDocumentoItem = numeroDocumentoItem;
+        return this;
     }
 
     /**
@@ -204,8 +198,8 @@ public class VinculoDocLpco {
         this.dataDesembaraco = dataDesembaraco;
     }
 
-    public VinculoDocLpco numeroDocumentoItem(Long numeroDocumentoItem) {
-        this.numeroDocumentoItem = numeroDocumentoItem;
+    public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
+        this.dataDesembaraco = dataDesembaraco;
         return this;
     }
 
@@ -322,10 +316,6 @@ public class VinculoDocLpco {
         return this;
     }
 
-    public VinculoDocLpco dataDesembaraco(String dataDesembaraco) {
-        this.dataDesembaraco = dataDesembaraco;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -345,4 +335,15 @@ public class VinculoDocLpco {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

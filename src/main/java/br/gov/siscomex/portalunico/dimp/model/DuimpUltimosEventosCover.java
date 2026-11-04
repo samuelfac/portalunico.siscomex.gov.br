@@ -38,12 +38,63 @@ public class DuimpUltimosEventosCover {
     private Integer versao = null;
 
 
-    @XmlElement(name = "dataEvento", required = true)
-    @ApiModelProperty(example = "2024-12-31T23:59:01-0300", required = true, value = "Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
-    /**
-     * Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
-     **/
-    private String dataEvento = null;
+    @XmlType(name = "EventoEnum")
+    @XmlEnum(String.class)
+    public enum EventoEnum {
+
+        @XmlEnumValue("DESEMBARACO_EFETUADO(419 : Desembaraço efetuado) ")
+        @JsonProperty("DESEMBARACO_EFETUADO(419 : Desembaraço efetuado) ")
+        DESEMBARACO_EFETUADO_419_DESEMBARA_O_EFETUADO_("DESEMBARACO_EFETUADO(419 : Desembaraço efetuado) "),
+
+        @XmlEnumValue("DESEMBARACO_EFETUADO_DECISAO_JUDICIAL(428 : Desembaraço efetuado por decisão judicial) ")
+        @JsonProperty("DESEMBARACO_EFETUADO_DECISAO_JUDICIAL(428 : Desembaraço efetuado por decisão judicial) ")
+        DESEMBARACO_EFETUADO_DECISAO_JUDICIAL_428_DESEMBARA_O_EFETUADO_POR_DECIS_O_JUDICIAL_("DESEMBARACO_EFETUADO_DECISAO_JUDICIAL(428 : Desembaraço efetuado por decisão judicial) "),
+
+        @XmlEnumValue("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA(418 : Declaração desembaraçada sem conferência aduaneira) ")
+        @JsonProperty("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA(418 : Declaração desembaraçada sem conferência aduaneira) ")
+        DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_418_DECLARA_O_DESEMBARA_ADA_SEM_CONFER_NCIA_ADUANEIRA_("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA(418 : Declaração desembaraçada sem conferência aduaneira) "),
+
+        @XmlEnumValue("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO(427 : Declaração desembaraçada sem conferência aduaneira e conferência do anuente) ")
+        @JsonProperty("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO(427 : Declaração desembaraçada sem conferência aduaneira e conferência do anuente) ")
+        DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO_427_DECLARA_O_DESEMBARA_ADA_SEM_CONFER_NCIA_ADUANEIRA_E_CONFER_NCIA_DO_ANUENTE_("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO(427 : Declaração desembaraçada sem conferência aduaneira e conferência do anuente) "),
+
+        @XmlEnumValue("ENTREGA_CARGA(13 : Carga totalmente entregue) ")
+        @JsonProperty("ENTREGA_CARGA(13 : Carga totalmente entregue) ")
+        ENTREGA_CARGA_13_CARGA_TOTALMENTE_ENTREGUE_("ENTREGA_CARGA(13 : Carga totalmente entregue) "),
+
+        @XmlEnumValue("RETIFICACAO(4 : Declaração retificada) ")
+        @JsonProperty("RETIFICACAO(4 : Declaração retificada) ")
+        RETIFICACAO_4_DECLARA_O_RETIFICADA_("RETIFICACAO(4 : Declaração retificada) "),
+
+        @XmlEnumValue("DECLARACAO_CANCELADA(71 : Declaração cancelada) ")
+        @JsonProperty("DECLARACAO_CANCELADA(71 : Declaração cancelada) ")
+        DECLARACAO_CANCELADA_71_DECLARA_O_CANCELADA_("DECLARACAO_CANCELADA(71 : Declaração cancelada) ");
+
+
+        private final String value;
+
+        EventoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static EventoEnum fromValue(String v) {
+            for (EventoEnum b : EventoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to EventoEnum");
+        }
+    }
 
     @XmlElement(name = "evento", required = true)
     @ApiModelProperty(example = "DESEMBARACO_EFETUADO", required = true, value = "Evento no Histórico da Duimp <br>Tamanho mínimo: 1<br>Tamanho máximo: 150")
@@ -52,16 +103,12 @@ public class DuimpUltimosEventosCover {
      **/
     private EventoEnum evento = null;
 
+    @XmlElement(name = "dataEvento", required = true)
+    @ApiModelProperty(example = "2024-12-31T23:59:01-0300", required = true, value = "Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Data em que o evento foi gerado no histórico<br>Formato: 'yyyy-MM-dd'T'HH:mm:ssZ'
+     **/
+    private String dataEvento = null;
 
     @XmlElement(name = "ufs", required = true)
     @ApiModelProperty(required = true, value = "UFs de interesse da Sefaz")
@@ -179,6 +226,7 @@ public class DuimpUltimosEventosCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -192,61 +240,14 @@ public class DuimpUltimosEventosCover {
         return sb;
     }
 
-    @XmlType(name = "EventoEnum")
-    @XmlEnum(String.class)
-    public enum EventoEnum {
-
-        @XmlEnumValue("DESEMBARACO_EFETUADO(419 : Desembaraço efetuado) ")
-        @JsonProperty("DESEMBARACO_EFETUADO(419 : Desembaraço efetuado) ")
-        DESEMBARACO_EFETUADO_419_DESEMBARA_O_EFETUADO_("DESEMBARACO_EFETUADO(419 : Desembaraço efetuado) "),
-
-        @XmlEnumValue("DESEMBARACO_EFETUADO_DECISAO_JUDICIAL(428 : Desembaraço efetuado por decisão judicial) ")
-        @JsonProperty("DESEMBARACO_EFETUADO_DECISAO_JUDICIAL(428 : Desembaraço efetuado por decisão judicial) ")
-        DESEMBARACO_EFETUADO_DECISAO_JUDICIAL_428_DESEMBARA_O_EFETUADO_POR_DECIS_O_JUDICIAL_("DESEMBARACO_EFETUADO_DECISAO_JUDICIAL(428 : Desembaraço efetuado por decisão judicial) "),
-
-        @XmlEnumValue("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA(418 : Declaração desembaraçada sem conferência aduaneira) ")
-        @JsonProperty("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA(418 : Declaração desembaraçada sem conferência aduaneira) ")
-        DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_418_DECLARA_O_DESEMBARA_ADA_SEM_CONFER_NCIA_ADUANEIRA_("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA(418 : Declaração desembaraçada sem conferência aduaneira) "),
-
-        @XmlEnumValue("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO(427 : Declaração desembaraçada sem conferência aduaneira e conferência do anuente) ")
-        @JsonProperty("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO(427 : Declaração desembaraçada sem conferência aduaneira e conferência do anuente) ")
-        DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO_427_DECLARA_O_DESEMBARA_ADA_SEM_CONFER_NCIA_ADUANEIRA_E_CONFER_NCIA_DO_ANUENTE_("DESEMBARACO_AUTOMATICO_SEM_CONFERENCIA_SEM_INSPECAO(427 : Declaração desembaraçada sem conferência aduaneira e conferência do anuente) "),
-
-        @XmlEnumValue("ENTREGA_CARGA(13 : Carga totalmente entregue) ")
-        @JsonProperty("ENTREGA_CARGA(13 : Carga totalmente entregue) ")
-        ENTREGA_CARGA_13_CARGA_TOTALMENTE_ENTREGUE_("ENTREGA_CARGA(13 : Carga totalmente entregue) "),
-
-        @XmlEnumValue("RETIFICACAO(4 : Declaração retificada) ")
-        @JsonProperty("RETIFICACAO(4 : Declaração retificada) ")
-        RETIFICACAO_4_DECLARA_O_RETIFICADA_("RETIFICACAO(4 : Declaração retificada) "),
-
-        @XmlEnumValue("DECLARACAO_CANCELADA(71 : Declaração cancelada) ")
-        @JsonProperty("DECLARACAO_CANCELADA(71 : Declaração cancelada) ")
-        DECLARACAO_CANCELADA_71_DECLARA_O_CANCELADA_("DECLARACAO_CANCELADA(71 : Declaração cancelada) ");
-
-
-        private final String value;
-
-        EventoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static EventoEnum fromValue(String v) {
-            for (EventoEnum b : EventoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to EventoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

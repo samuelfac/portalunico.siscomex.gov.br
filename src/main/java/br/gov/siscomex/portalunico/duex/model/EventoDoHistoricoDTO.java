@@ -93,15 +93,9 @@ public class EventoDoHistoricoDTO {
         this.detalhes = detalhes;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EventoDoHistoricoDTO detalhes(String detalhes) {
+        this.detalhes = detalhes;
+        return this;
     }
 
     /**
@@ -156,8 +150,8 @@ public class EventoDoHistoricoDTO {
         this.motivo = motivo;
     }
 
-    public EventoDoHistoricoDTO detalhes(String detalhes) {
-        this.detalhes = detalhes;
+    public EventoDoHistoricoDTO motivo(String motivo) {
+        this.motivo = motivo;
         return this;
     }
 
@@ -180,10 +174,6 @@ public class EventoDoHistoricoDTO {
         return this;
     }
 
-    public EventoDoHistoricoDTO motivo(String motivo) {
-        this.motivo = motivo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -197,5 +187,16 @@ public class EventoDoHistoricoDTO {
                 "    responsavel: " + toIndentedString(responsavel) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

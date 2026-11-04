@@ -97,15 +97,9 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
         this.alfandegaPartida = alfandegaPartida;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ViagemRodoviariaDetalhadaInfoGeraisRota alfandegaPartida(Recinto alfandegaPartida) {
+        this.alfandegaPartida = alfandegaPartida;
+        return this;
     }
 
     /**
@@ -218,8 +212,8 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
         this.numeroDTAExterior = numeroDTAExterior;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisRota alfandegaPartida(Recinto alfandegaPartida) {
-        this.alfandegaPartida = alfandegaPartida;
+    public ViagemRodoviariaDetalhadaInfoGeraisRota numeroDTAExterior(String numeroDTAExterior) {
+        this.numeroDTAExterior = numeroDTAExterior;
         return this;
     }
 
@@ -297,10 +291,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisRota numeroDTAExterior(String numeroDTAExterior) {
-        this.numeroDTAExterior = numeroDTAExterior;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -319,5 +309,16 @@ public class ViagemRodoviariaDetalhadaInfoGeraisRota {
                 "    unidadeRFBEntrada: " + toIndentedString(unidadeRFBEntrada) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

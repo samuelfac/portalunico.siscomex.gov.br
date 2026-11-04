@@ -78,15 +78,58 @@ public class PalavraChave {
     private Integer tamanhoCampo = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoDadoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDadoEnum {
+
+        @XmlEnumValue("DATA")
+        @JsonProperty("DATA")
+        DATA("DATA"),
+
+        @XmlEnumValue("DATA_HORA")
+        @JsonProperty("DATA_HORA")
+        DATA_HORA("DATA_HORA"),
+
+        @XmlEnumValue("NUMERO_INTEIRO")
+        @JsonProperty("NUMERO_INTEIRO")
+        NUMERO_INTEIRO("NUMERO_INTEIRO"),
+
+        @XmlEnumValue("NUMERO_REAL")
+        @JsonProperty("NUMERO_REAL")
+        NUMERO_REAL("NUMERO_REAL"),
+
+        @XmlEnumValue("LISTA")
+        @JsonProperty("LISTA")
+        LISTA("LISTA"),
+
+        @XmlEnumValue("TEXTO")
+        @JsonProperty("TEXTO")
+        TEXTO("TEXTO");
+
+
+        private final String value;
+
+        TipoDadoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDadoEnum fromValue(String v) {
+            for (TipoDadoEnum b : TipoDadoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDadoEnum");
+        }
     }
 
     @XmlElement(name = "tipoDado", required = true)
@@ -261,6 +304,7 @@ public class PalavraChave {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -277,57 +321,14 @@ public class PalavraChave {
         return sb;
     }
 
-    @XmlType(name = "TipoDadoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDadoEnum {
-
-        @XmlEnumValue("DATA")
-        @JsonProperty("DATA")
-        DATA("DATA"),
-
-        @XmlEnumValue("DATA_HORA")
-        @JsonProperty("DATA_HORA")
-        DATA_HORA("DATA_HORA"),
-
-        @XmlEnumValue("NUMERO_INTEIRO")
-        @JsonProperty("NUMERO_INTEIRO")
-        NUMERO_INTEIRO("NUMERO_INTEIRO"),
-
-        @XmlEnumValue("NUMERO_REAL")
-        @JsonProperty("NUMERO_REAL")
-        NUMERO_REAL("NUMERO_REAL"),
-
-        @XmlEnumValue("LISTA")
-        @JsonProperty("LISTA")
-        LISTA("LISTA"),
-
-        @XmlEnumValue("TEXTO")
-        @JsonProperty("TEXTO")
-        TEXTO("TEXTO");
-
-
-        private final String value;
-
-        TipoDadoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDadoEnum fromValue(String v) {
-            for (TipoDadoEnum b : TipoDadoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDadoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

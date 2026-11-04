@@ -91,5 +91,5 @@ public class PlacaSemirreboque {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

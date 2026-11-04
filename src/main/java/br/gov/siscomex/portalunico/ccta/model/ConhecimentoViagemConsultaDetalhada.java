@@ -59,13 +59,55 @@ public class ConhecimentoViagemConsultaDetalhada {
     private String identificacao = null;
 
 
-    @XmlElement(name = "pesoBrutoManifestoVoo")
-    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
-     **/
-    private BigDecimal pesoBrutoManifestoVoo = null;
+    @XmlType(name = "IndicadorParcialidadeEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorParcialidadeEnum {
+
+        @XmlEnumValue("D")
+        @JsonProperty("D")
+        D("D"),
+
+        @XmlEnumValue("M")
+        @JsonProperty("M")
+        M("M"),
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("T")
+        @JsonProperty("T")
+        T("T");
+
+
+        private final String value;
+
+        IndicadorParcialidadeEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorParcialidadeEnum fromValue(String v) {
+            for (IndicadorParcialidadeEnum b : IndicadorParcialidadeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorParcialidadeEnum");
+        }
+    }
 
     @XmlElement(name = "indicadorParcialidade")
     @ApiModelProperty(example = "P", value = "Indicador de parcialidade de carga<br/>Tamanho: 1<br/>T - Remessa total<br/>P - Remessa de peça<br/>S - Remessa dividida em único voo<br/>D - Remessa dividida em vários voos<br/>M - Múltiplas remessas")
@@ -89,13 +131,14 @@ public class ConhecimentoViagemConsultaDetalhada {
      * Lista contendo as outras informações de serviço para a carga / Dsic<br/>
      **/
     private List<InfoManuseioConsultaDetalhada> outrasInfosServicoManifestoVoo = null;
-    @XmlElement(name = "solicitacoesServicosEspeciaisManifestoVoo")
-    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
+
+    @XmlElement(name = "pesoBrutoManifestoVoo")
+    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
     @Valid
     /**
-     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
+     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
-    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo = null;
+    private BigDecimal pesoBrutoManifestoVoo = null;
 
     @XmlElement(name = "quantidadeVolumesManifestoVoo")
     @ApiModelProperty(example = "5", value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
@@ -104,25 +147,55 @@ public class ConhecimentoViagemConsultaDetalhada {
      **/
     private Integer quantidadeVolumesManifestoVoo = null;
 
+    @XmlElement(name = "solicitacoesServicosEspeciaisManifestoVoo")
+    @ApiModelProperty(value = "Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+     * Lista contendo as solicitações de serviços especiaos para a carga / Dsic<br/>
+     **/
+    private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciaisManifestoVoo = null;
+
+
+    @XmlType(name = "TipoConhecimentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoConhecimentoEnum {
+
+        @XmlEnumValue("AWB")
+        @JsonProperty("AWB")
+        AWB("AWB"),
+
+        @XmlEnumValue("DSIC")
+        @JsonProperty("DSIC")
+        DSIC("DSIC"),
+
+        @XmlEnumValue("HAWB ou MAWB")
+        @JsonProperty("HAWB ou MAWB")
+        HAWB_OU_MAWB("HAWB ou MAWB");
+
+
+        private final String value;
+
+        TipoConhecimentoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
     }
 
-    /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoConhecimentoEnum fromValue(String v) {
+            for (TipoConhecimentoEnum b : TipoConhecimentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoConhecimentoEnum");
+        }
     }
 
     @XmlElement(name = "tipoConhecimento")
@@ -176,16 +249,13 @@ public class ConhecimentoViagemConsultaDetalhada {
     }
 
     /**
-     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
      *
-     * @return indicadorParcialidade
+     * @return dataEmissao
      **/
-    @JsonProperty("indicadorParcialidade")
-    public String getIndicadorParcialidade() {
-        if (indicadorParcialidade == null) {
-            return null;
-        }
-        return indicadorParcialidade.value();
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
     }
 
     public void setDataEmissao(String dataEmissao) {
@@ -235,18 +305,21 @@ public class ConhecimentoViagemConsultaDetalhada {
         return this;
     }
 
-    public void setIndicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
-        this.indicadorParcialidade = indicadorParcialidade;
+    /**
+     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     *
+     * @return indicadorParcialidade
+     **/
+    @JsonProperty("indicadorParcialidade")
+    public String getIndicadorParcialidade() {
+        if (indicadorParcialidade == null) {
+            return null;
+        }
+        return indicadorParcialidade.value();
     }
 
-    /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return quantidadeVolumesManifestoVoo
-     **/
-    @JsonProperty("quantidadeVolumesManifestoVoo")
-    public Integer getQuantidadeVolumesManifestoVoo() {
-        return quantidadeVolumesManifestoVoo;
+    public void setIndicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
+        this.indicadorParcialidade = indicadorParcialidade;
     }
 
     public ConhecimentoViagemConsultaDetalhada indicadorParcialidade(IndicadorParcialidadeEnum indicadorParcialidade) {
@@ -321,24 +394,14 @@ public class ConhecimentoViagemConsultaDetalhada {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class ConhecimentoViagemConsultaDetalhada {\n" +
-                "    classificacoesMercadoriaManifestoVoo: " + toIndentedString(classificacoesMercadoriaManifestoVoo) + "\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    descricaoMercadoriaManifestoVoo: " + toIndentedString(descricaoMercadoriaManifestoVoo) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
-                "    manuseiosEspeciaisManifestoVoo: " + toIndentedString(manuseiosEspeciaisManifestoVoo) + "\n" +
-                "    outrasInfosServicoManifestoVoo: " + toIndentedString(outrasInfosServicoManifestoVoo) + "\n" +
-                "    pesoBrutoManifestoVoo: " + toIndentedString(pesoBrutoManifestoVoo) + "\n" +
-                "    quantidadeVolumesManifestoVoo: " + toIndentedString(quantidadeVolumesManifestoVoo) + "\n" +
-                "    solicitacoesServicosEspeciaisManifestoVoo: " + toIndentedString(solicitacoesServicosEspeciaisManifestoVoo) + "\n" +
-                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return quantidadeVolumesManifestoVoo
+     **/
+    @JsonProperty("quantidadeVolumesManifestoVoo")
+    public Integer getQuantidadeVolumesManifestoVoo() {
+        return quantidadeVolumesManifestoVoo;
     }
 
     public void setQuantidadeVolumesManifestoVoo(Integer quantidadeVolumesManifestoVoo) {
@@ -397,95 +460,34 @@ public class ConhecimentoViagemConsultaDetalhada {
     }
 
 
-    @XmlType(name = "IndicadorParcialidadeEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorParcialidadeEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("D")
-        @JsonProperty("D")
-        D("D"),
-
-        @XmlEnumValue("M")
-        @JsonProperty("M")
-        M("M"),
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("T")
-        @JsonProperty("T")
-        T("T");
-
-
-        private final String value;
-
-        IndicadorParcialidadeEnum(String v) {
-            value = v;
-        }
-
-        public static IndicadorParcialidadeEnum fromValue(String v) {
-            for (IndicadorParcialidadeEnum b : IndicadorParcialidadeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorParcialidadeEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class ConhecimentoViagemConsultaDetalhada {\n" +
+                "    classificacoesMercadoriaManifestoVoo: " + toIndentedString(classificacoesMercadoriaManifestoVoo) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    descricaoMercadoriaManifestoVoo: " + toIndentedString(descricaoMercadoriaManifestoVoo) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
+                "    manuseiosEspeciaisManifestoVoo: " + toIndentedString(manuseiosEspeciaisManifestoVoo) + "\n" +
+                "    outrasInfosServicoManifestoVoo: " + toIndentedString(outrasInfosServicoManifestoVoo) + "\n" +
+                "    pesoBrutoManifestoVoo: " + toIndentedString(pesoBrutoManifestoVoo) + "\n" +
+                "    quantidadeVolumesManifestoVoo: " + toIndentedString(quantidadeVolumesManifestoVoo) + "\n" +
+                "    solicitacoesServicosEspeciaisManifestoVoo: " + toIndentedString(solicitacoesServicosEspeciaisManifestoVoo) + "\n" +
+                "    tipoConhecimento: " + toIndentedString(tipoConhecimento) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoConhecimentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoConhecimentoEnum {
-
-        @XmlEnumValue("AWB")
-        @JsonProperty("AWB")
-        AWB("AWB"),
-
-        @XmlEnumValue("DSIC")
-        @JsonProperty("DSIC")
-        DSIC("DSIC"),
-
-        @XmlEnumValue("HAWB ou MAWB")
-        @JsonProperty("HAWB ou MAWB")
-        HAWB_OU_MAWB("HAWB ou MAWB");
-
-
-        private final String value;
-
-        TipoConhecimentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoConhecimentoEnum fromValue(String v) {
-            for (TipoConhecimentoEnum b : TipoConhecimentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoConhecimentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

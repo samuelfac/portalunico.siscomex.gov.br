@@ -94,15 +94,9 @@ public class BloqueioConsultaCarga {
         this.alcance = alcance;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public BloqueioConsultaCarga alcance(AlcanceBloqueio alcance) {
+        this.alcance = alcance;
+        return this;
     }
 
     /**
@@ -138,8 +132,8 @@ public class BloqueioConsultaCarga {
         this.dataDesbloqueio = dataDesbloqueio;
     }
 
-    public BloqueioConsultaCarga alcance(AlcanceBloqueio alcance) {
-        this.alcance = alcance;
+    public BloqueioConsultaCarga dataDesbloqueio(OffsetDateTime dataDesbloqueio) {
+        this.dataDesbloqueio = dataDesbloqueio;
         return this;
     }
 
@@ -176,8 +170,8 @@ public class BloqueioConsultaCarga {
         this.justificativaBloqueio = justificativaBloqueio;
     }
 
-    public BloqueioConsultaCarga dataDesbloqueio(OffsetDateTime dataDesbloqueio) {
-        this.dataDesbloqueio = dataDesbloqueio;
+    public BloqueioConsultaCarga justificativaBloqueio(String justificativaBloqueio) {
+        this.justificativaBloqueio = justificativaBloqueio;
         return this;
     }
 
@@ -251,8 +245,8 @@ public class BloqueioConsultaCarga {
         this.responsavelBloqueio = responsavelBloqueio;
     }
 
-    public BloqueioConsultaCarga justificativaBloqueio(String justificativaBloqueio) {
-        this.justificativaBloqueio = justificativaBloqueio;
+    public BloqueioConsultaCarga responsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
+        this.responsavelBloqueio = responsavelBloqueio;
         return this;
     }
 
@@ -312,10 +306,6 @@ public class BloqueioConsultaCarga {
         return this;
     }
 
-    public BloqueioConsultaCarga responsavelBloqueio(ResponsavelRFBRepresentation responsavelBloqueio) {
-        this.responsavelBloqueio = responsavelBloqueio;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -335,5 +325,16 @@ public class BloqueioConsultaCarga {
                 "    visibilidade: " + toIndentedString(visibilidade) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

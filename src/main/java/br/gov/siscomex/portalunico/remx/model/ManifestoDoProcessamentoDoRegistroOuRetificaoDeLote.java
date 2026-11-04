@@ -101,5 +101,5 @@ public class ManifestoDoProcessamentoDoRegistroOuRetificaoDeLote {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

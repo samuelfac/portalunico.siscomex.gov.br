@@ -23,12 +23,47 @@ import java.util.List;
 public class DadosAcessoPessoa {
 
 
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
@@ -50,12 +85,13 @@ public class DadosAcessoPessoa {
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-    @XmlElement(name = "contingencia", required = true)
-    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private Boolean contingencia = null;
+    private String dataHoraRegistro = null;
 
     @XmlElement(name = "cpfOperadorOcorrencia")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -77,12 +113,13 @@ public class DadosAcessoPessoa {
      * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
      **/
     private String protocoloEventoRetificadoOuExcluido = null;
-    @XmlElement(name = "direcao", required = true)
-    @ApiModelProperty(example = "E", required = true, value = "Direção do acesso. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
+
+    @XmlElement(name = "contingencia", required = true)
+    @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Direção do acesso. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
-    private DirecaoEnum direcao = null;
+    private Boolean contingencia = null;
 
     @XmlElement(name = "codigoRecinto", required = true)
     @ApiModelProperty(example = "1111111", required = true, value = "Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15")
@@ -97,28 +134,98 @@ public class DadosAcessoPessoa {
      * CPF da pessoa que está acessando o recinto (entrada ou saída).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'cpf' quando o atributo 'identidadeEstrangeiro' não for informado.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpf = null;
-    @XmlElement(name = "identidadeEstrangeiro")
-    @ApiModelProperty(example = "FB000001", value = "Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50")
-    /**
-     * Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50
-     **/
-    private String identidadeEstrangeiro = null;
-    @XmlElement(name = "reserva")
-    @ApiModelProperty(value = "Número da reserva do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50")
-    /**
-     * Número da reserva do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50
-     **/
-    private String reserva = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "DirecaoEnum")
+    @XmlEnum(String.class)
+    public enum DirecaoEnum {
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'"),
+
+        @XmlEnumValue("'S'")
+        @JsonProperty("'S'")
+        S_("'S'");
+
+
+        private final String value;
+
+        DirecaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static DirecaoEnum fromValue(String v) {
+            for (DirecaoEnum b : DirecaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DirecaoEnum");
+        }
+    }
+
+    @XmlElement(name = "direcao", required = true)
+    @ApiModelProperty(example = "E", required = true, value = "Direção do acesso. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
+    /**
+     * Direção do acesso. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída
+     **/
+    private DirecaoEnum direcao = null;
+
+
+    @XmlType(name = "IdentificacaoEnum")
+    @XmlEnum(String.class)
+    public enum IdentificacaoEnum {
+
+        @XmlEnumValue("'1'")
+        @JsonProperty("'1'")
+        _1_("'1'"),
+
+        @XmlEnumValue("'2'")
+        @JsonProperty("'2'")
+        _2_("'2'"),
+
+        @XmlEnumValue("'3'")
+        @JsonProperty("'3'")
+        _3_("'3'"),
+
+        @XmlEnumValue("'4'")
+        @JsonProperty("'4'")
+        _4_("'4'");
+
+
+        private final String value;
+
+        IdentificacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IdentificacaoEnum fromValue(String v) {
+            for (IdentificacaoEnum b : IdentificacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdentificacaoEnum");
+        }
     }
 
     @XmlElement(name = "identificacao", required = true)
@@ -128,16 +235,12 @@ public class DadosAcessoPessoa {
      **/
     private IdentificacaoEnum identificacao = null;
 
+    @XmlElement(name = "identidadeEstrangeiro")
+    @ApiModelProperty(example = "FB000001", value = "Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50")
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
+     * Número do documento de estrangeiro. <br/> Informar apenas no caso de estrangeiro sem CPF. Usar o passaporte sempre que possível.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'identidadeEstrangeiro' quando o atributo 'cpf' não for informado.<br/>Tamanho: 50
      **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
+    private String identidadeEstrangeiro = null;
 
     @XmlElement(name = "nome", required = true)
     @ApiModelProperty(required = true, value = "Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 100")
@@ -146,9 +249,12 @@ public class DadosAcessoPessoa {
      **/
     private String nome = null;
 
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
+    @XmlElement(name = "reserva")
+    @ApiModelProperty(value = "Número da reserva do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50")
+    /**
+     * Número da reserva do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos<br/>Tamanho: 50
+     **/
+    private String reserva = null;
 
     @XmlElement(name = "voo")
     @ApiModelProperty(value = "Número do vôo do passageiro.<br/>Acesso de pessoas em áreas alfandegadas de aeroportos.<br/>Tamanho: 20")
@@ -236,18 +342,18 @@ public class DadosAcessoPessoa {
     }
 
     /**
-     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return contingencia
+     * @return dataHoraRegistro
      **/
-    @JsonProperty("contingencia")
+    @JsonProperty("dataHoraRegistro")
     @NotNull
-    public Boolean isisContingencia() {
-        return contingencia;
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
     }
 
-    public void setContingencia(Boolean contingencia) {
-        this.contingencia = contingencia;
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
     }
 
     public DadosAcessoPessoa dataHoraRegistro(String dataHoraRegistro) {
@@ -313,21 +419,18 @@ public class DadosAcessoPessoa {
     }
 
     /**
-     * Direção do acesso. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
+     * Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
      *
-     * @return direcao
+     * @return contingencia
      **/
-    @JsonProperty("direcao")
+    @JsonProperty("contingencia")
     @NotNull
-    public String getDirecao() {
-        if (direcao == null) {
-            return null;
-        }
-        return direcao.value();
+    public Boolean isisContingencia() {
+        return contingencia;
     }
 
-    public void setDirecao(DirecaoEnum direcao) {
-        this.direcao = direcao;
+    public void setContingencia(Boolean contingencia) {
+        this.contingencia = contingencia;
     }
 
     public DadosAcessoPessoa contingencia(Boolean contingencia) {
@@ -373,18 +476,21 @@ public class DadosAcessoPessoa {
     }
 
     /**
-     * Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     * Direção do acesso. Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada&lt;br/&gt;S - Saída
      *
-     * @return nome
+     * @return direcao
      **/
-    @JsonProperty("nome")
+    @JsonProperty("direcao")
     @NotNull
-    public String getNome() {
-        return nome;
+    public String getDirecao() {
+        if (direcao == null) {
+            return null;
+        }
+        return direcao.value();
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDirecao(DirecaoEnum direcao) {
+        this.direcao = direcao;
     }
 
     public DadosAcessoPessoa direcao(DirecaoEnum direcao) {
@@ -434,17 +540,17 @@ public class DadosAcessoPessoa {
     }
 
     /**
-     * Número do vôo do passageiro.&lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos.&lt;br/&gt;Tamanho: 20
-     *
-     * @return voo
+     * Nome da pessoa que está acessando o recinto (entrada ou saída). Pode ser nulo quando o evento for de exclusão.&lt;br/&gt;Tamanho: 100
+     * @return nome
      **/
-    @JsonProperty("voo")
-    public String getVoo() {
-        return voo;
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
     }
 
-    public void setVoo(String voo) {
-        this.voo = voo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public DadosAcessoPessoa nome(String nome) {
@@ -470,72 +576,17 @@ public class DadosAcessoPessoa {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class DadosAcessoPessoa {\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
-                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
-                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
-                "    direcao: " + toIndentedString(direcao) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    identidadeEstrangeiro: " + toIndentedString(identidadeEstrangeiro) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    reserva: " + toIndentedString(reserva) + "\n" +
-                "    voo: " + toIndentedString(voo) + "\n" +
-                "    catraca: " + toIndentedString(catraca) + "\n" +
-                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Número do vôo do passageiro.&lt;br/&gt;Acesso de pessoas em áreas alfandegadas de aeroportos.&lt;br/&gt;Tamanho: 20
+     * @return voo
+     **/
+    @JsonProperty("voo")
+    public String getVoo() {
+        return voo;
     }
 
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setVoo(String voo) {
+        this.voo = voo;
     }
 
     public DadosAcessoPessoa voo(String voo) {
@@ -586,87 +637,40 @@ public class DadosAcessoPessoa {
     }
 
 
-    @XmlType(name = "DirecaoEnum")
-    @XmlEnum(String.class)
-    public enum DirecaoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'"),
-
-        @XmlEnumValue("'S'")
-        @JsonProperty("'S'")
-        S_("'S'");
-
-
-        private final String value;
-
-        DirecaoEnum(String v) {
-            value = v;
-        }
-
-        public static DirecaoEnum fromValue(String v) {
-            for (DirecaoEnum b : DirecaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DirecaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class DadosAcessoPessoa {\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
+                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
+                "    direcao: " + toIndentedString(direcao) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    identidadeEstrangeiro: " + toIndentedString(identidadeEstrangeiro) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    reserva: " + toIndentedString(reserva) + "\n" +
+                "    voo: " + toIndentedString(voo) + "\n" +
+                "    catraca: " + toIndentedString(catraca) + "\n" +
+                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "IdentificacaoEnum")
-    @XmlEnum(String.class)
-    public enum IdentificacaoEnum {
-
-        @XmlEnumValue("'1'")
-        @JsonProperty("'1'")
-        _1_("'1'"),
-
-        @XmlEnumValue("'2'")
-        @JsonProperty("'2'")
-        _2_("'2'"),
-
-        @XmlEnumValue("'3'")
-        @JsonProperty("'3'")
-        _3_("'3'"),
-
-        @XmlEnumValue("'4'")
-        @JsonProperty("'4'")
-        _4_("'4'");
-
-
-        private final String value;
-
-        IdentificacaoEnum(String v) {
-            value = v;
-        }
-
-        public static IdentificacaoEnum fromValue(String v) {
-            for (IdentificacaoEnum b : IdentificacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdentificacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

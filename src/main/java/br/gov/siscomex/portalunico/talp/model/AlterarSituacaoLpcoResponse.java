@@ -96,5 +96,5 @@ public class AlterarSituacaoLpcoResponse {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

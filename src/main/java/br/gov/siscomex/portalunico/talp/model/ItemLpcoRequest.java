@@ -114,15 +114,9 @@ public class ItemLpcoRequest {
         this.produto = produto;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemLpcoRequest produto(Produto produto) {
+        this.produto = produto;
+        return this;
     }
 
     /**
@@ -173,10 +167,6 @@ public class ItemLpcoRequest {
         return this;
     }
 
-    public ItemLpcoRequest produto(Produto produto) {
-        this.produto = produto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -190,4 +180,15 @@ public class ItemLpcoRequest {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

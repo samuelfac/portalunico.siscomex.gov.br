@@ -40,15 +40,50 @@ public class ParametroVincularOperacaoAoDossie {
     private String numeroOperacao = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("LI")
+        @JsonProperty("LI")
+        LI("LI"),
+
+        @XmlEnumValue("RE")
+        @JsonProperty("RE")
+        RE("RE"),
+
+        @XmlEnumValue("DT")
+        @JsonProperty("DT")
+        DT("DT");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
     }
 
     @XmlElement(name = "tipoOperacao", required = true)
@@ -121,6 +156,7 @@ public class ParametroVincularOperacaoAoDossie {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -132,49 +168,14 @@ public class ParametroVincularOperacaoAoDossie {
         return sb;
     }
 
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("LI")
-        @JsonProperty("LI")
-        LI("LI"),
-
-        @XmlEnumValue("RE")
-        @JsonProperty("RE")
-        RE("RE"),
-
-        @XmlEnumValue("DT")
-        @JsonProperty("DT")
-        DT("DT");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

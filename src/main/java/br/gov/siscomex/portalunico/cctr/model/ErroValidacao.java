@@ -105,15 +105,9 @@ public class ErroValidacao {
         this.referencia = referencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ErroValidacao referencia(String referencia) {
+        this.referencia = referencia;
+        return this;
     }
 
     /**
@@ -140,10 +134,6 @@ public class ErroValidacao {
         return this;
     }
 
-    public ErroValidacao referencia(String referencia) {
-        this.referencia = referencia;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -155,5 +145,16 @@ public class ErroValidacao {
                 "    erros: " + toIndentedString(erros) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -114,15 +114,9 @@ public class RetornoConsultaProtocoloVO {
         this.dataCriacao = dataCriacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RetornoConsultaProtocoloVO dataCriacao(OffsetDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
+        return this;
     }
 
     /**
@@ -196,8 +190,8 @@ public class RetornoConsultaProtocoloVO {
         this.situacao = situacao;
     }
 
-    public RetornoConsultaProtocoloVO dataCriacao(OffsetDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public RetornoConsultaProtocoloVO situacao(SituacaoVO situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -248,10 +242,6 @@ public class RetornoConsultaProtocoloVO {
         return this;
     }
 
-    public RetornoConsultaProtocoloVO situacao(SituacaoVO situacao) {
-        this.situacao = situacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -267,5 +257,16 @@ public class RetornoConsultaProtocoloVO {
                 "    extrato: " + toIndentedString(extrato) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

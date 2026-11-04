@@ -90,15 +90,9 @@ public class ItemNFF {
         this.numeroItem = numeroItem;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemNFF numeroItem(String numeroItem) {
+        this.numeroItem = numeroItem;
+        return this;
     }
 
     /**
@@ -156,8 +150,8 @@ public class ItemNFF {
         this.descricaoProduto = descricaoProduto;
     }
 
-    public ItemNFF numeroItem(String numeroItem) {
-        this.numeroItem = numeroItem;
+    public ItemNFF descricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
         return this;
     }
 
@@ -196,8 +190,8 @@ public class ItemNFF {
         this.valorTotal = valorTotal;
     }
 
-    public ItemNFF descricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
+    public ItemNFF valorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
         return this;
     }
 
@@ -221,10 +215,6 @@ public class ItemNFF {
         return this;
     }
 
-    public ItemNFF valorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -239,5 +229,16 @@ public class ItemNFF {
                 "    quantidadeMedidaEstatistica: " + toIndentedString(quantidadeMedidaEstatistica) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

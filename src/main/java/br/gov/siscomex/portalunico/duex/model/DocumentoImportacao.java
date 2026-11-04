@@ -84,15 +84,70 @@ public class DocumentoImportacao {
     private BigDecimal quantidadeUtilizada = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("DSI_ELETRONICA")
+        @JsonProperty("DSI_ELETRONICA")
+        DSI_ELETRONICA("DSI_ELETRONICA"),
+
+        @XmlEnumValue("DSI_FORMULARIO")
+        @JsonProperty("DSI_FORMULARIO")
+        DSI_FORMULARIO("DSI_FORMULARIO"),
+
+        @XmlEnumValue("E_DBV")
+        @JsonProperty("E_DBV")
+        E_DBV("E_DBV"),
+
+        @XmlEnumValue("DUE_ITEM")
+        @JsonProperty("DUE_ITEM")
+        DUE_ITEM("DUE_ITEM"),
+
+        @XmlEnumValue("DSE")
+        @JsonProperty("DSE")
+        DSE("DSE"),
+
+        @XmlEnumValue("RE")
+        @JsonProperty("RE")
+        RE("RE"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP"),
+
+        @XmlEnumValue("DSE_FORMULARIO")
+        @JsonProperty("DSE_FORMULARIO")
+        DSE_FORMULARIO("DSE_FORMULARIO");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
     }
 
     @XmlElement(name = "tipo")
@@ -292,6 +347,7 @@ public class DocumentoImportacao {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -310,69 +366,14 @@ public class DocumentoImportacao {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("DSI_ELETRONICA")
-        @JsonProperty("DSI_ELETRONICA")
-        DSI_ELETRONICA("DSI_ELETRONICA"),
-
-        @XmlEnumValue("DSI_FORMULARIO")
-        @JsonProperty("DSI_FORMULARIO")
-        DSI_FORMULARIO("DSI_FORMULARIO"),
-
-        @XmlEnumValue("E_DBV")
-        @JsonProperty("E_DBV")
-        E_DBV("E_DBV"),
-
-        @XmlEnumValue("DUE_ITEM")
-        @JsonProperty("DUE_ITEM")
-        DUE_ITEM("DUE_ITEM"),
-
-        @XmlEnumValue("DSE")
-        @JsonProperty("DSE")
-        DSE("DSE"),
-
-        @XmlEnumValue("RE")
-        @JsonProperty("RE")
-        RE("RE"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP"),
-
-        @XmlEnumValue("DSE_FORMULARIO")
-        @JsonProperty("DSE_FORMULARIO")
-        DSE_FORMULARIO("DSE_FORMULARIO");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -154,15 +154,9 @@ public class Cotas {
         this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Cotas saldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
+        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
+        return this;
     }
 
     /**
@@ -198,8 +192,8 @@ public class Cotas {
         this.saldoPesoLiquido = saldoPesoLiquido;
     }
 
-    public Cotas saldoQuantidadeEstatistica(BigDecimal saldoQuantidadeEstatistica) {
-        this.saldoQuantidadeEstatistica = saldoQuantidadeEstatistica;
+    public Cotas saldoPesoLiquido(BigDecimal saldoPesoLiquido) {
+        this.saldoPesoLiquido = saldoPesoLiquido;
         return this;
     }
 
@@ -254,8 +248,8 @@ public class Cotas {
         this.moedaVmle = moedaVmle;
     }
 
-    public Cotas saldoPesoLiquido(BigDecimal saldoPesoLiquido) {
-        this.saldoPesoLiquido = saldoPesoLiquido;
+    public Cotas moedaVmle(String moedaVmle) {
+        this.moedaVmle = moedaVmle;
         return this;
     }
 
@@ -297,10 +291,6 @@ public class Cotas {
         return this;
     }
 
-    public Cotas moedaVmle(String moedaVmle) {
-        this.moedaVmle = moedaVmle;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -319,4 +309,15 @@ public class Cotas {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

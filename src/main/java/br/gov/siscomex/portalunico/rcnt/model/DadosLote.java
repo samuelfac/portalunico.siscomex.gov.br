@@ -157,15 +157,9 @@ public class DadosLote {
         this.divergenciaQualificacao = divergenciaQualificacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosLote divergenciaQualificacao(Boolean divergenciaQualificacao) {
+        this.divergenciaQualificacao = divergenciaQualificacao;
+        return this;
     }
 
     /**
@@ -222,8 +216,8 @@ public class DadosLote {
         this.idElemento = idElemento;
     }
 
-    public DadosLote divergenciaQualificacao(Boolean divergenciaQualificacao) {
-        this.divergenciaQualificacao = divergenciaQualificacao;
+    public DadosLote idElemento(String idElemento) {
+        this.idElemento = idElemento;
         return this;
     }
 
@@ -271,8 +265,8 @@ public class DadosLote {
         return this;
     }
 
-    public DadosLote idElemento(String idElemento) {
-        this.idElemento = idElemento;
+    public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
+        this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
         return this;
     }
 
@@ -327,8 +321,8 @@ public class DadosLote {
         this.observacaoAvaria = observacaoAvaria;
     }
 
-    public DadosLote addListaVolumesVerificadosItem(DadosVolumeVerificadoMadeiraObrigatorio listaVolumesVerificadosItem) {
-        this.listaVolumesVerificados.add(listaVolumesVerificadosItem);
+    public DadosLote observacaoAvaria(String observacaoAvaria) {
+        this.observacaoAvaria = observacaoAvaria;
         return this;
     }
 
@@ -383,8 +377,8 @@ public class DadosLote {
         this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
     }
 
-    public DadosLote observacaoAvaria(String observacaoAvaria) {
-        this.observacaoAvaria = observacaoAvaria;
+    public DadosLote quantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
+        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
         return this;
     }
 
@@ -407,10 +401,6 @@ public class DadosLote {
         return this;
     }
 
-    public DadosLote quantidadeVolumesAvariados(Integer quantidadeVolumesAvariados) {
-        this.quantidadeVolumesAvariados = quantidadeVolumesAvariados;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -433,4 +423,15 @@ public class DadosLote {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

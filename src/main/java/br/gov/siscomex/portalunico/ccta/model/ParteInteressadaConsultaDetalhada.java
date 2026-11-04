@@ -83,15 +83,9 @@ public class ParteInteressadaConsultaDetalhada {
         this.caixaPostal = caixaPostal;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ParteInteressadaConsultaDetalhada caixaPostal(String caixaPostal) {
+        this.caixaPostal = caixaPostal;
+        return this;
     }
 
     /**
@@ -212,10 +206,6 @@ public class ParteInteressadaConsultaDetalhada {
         return this;
     }
 
-    public ParteInteressadaConsultaDetalhada caixaPostal(String caixaPostal) {
-        this.caixaPostal = caixaPostal;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -230,5 +220,16 @@ public class ParteInteressadaConsultaDetalhada {
                 "    tipo: " + toIndentedString(tipo) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

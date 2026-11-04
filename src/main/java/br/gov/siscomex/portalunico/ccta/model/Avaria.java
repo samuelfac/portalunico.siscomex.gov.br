@@ -20,82 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class Avaria {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "A", value = "Código da avaria<br>Tamanho: 1")
-    /**
-     * Código da avaria<br>Tamanho: 1
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Diferença de peso", value = "Descrição da avaria<br>Tamanho: 60")
-    /**
-     * Descrição da avaria<br>Tamanho: 60
-     **/
-    private String descricao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código da avaria&lt;br&gt;Tamanho: 1
-     *
-     * @return codigo
-     **/
-    @JsonProperty("codigo")
-    public String getCodigo() {
-        if (codigo == null) {
-            return null;
-        }
-        return codigo.value();
-    }
-
-    public void setCodigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-    }
-
-    public Avaria codigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * Descrição da avaria&lt;br&gt;Tamanho: 60
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Avaria descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class Avaria {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "CodigoEnum")
     @XmlEnum(String.class)
     public enum CodigoEnum {
@@ -200,5 +124,82 @@ public class Avaria {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
         }
+    }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "A", value = "Código da avaria<br>Tamanho: 1")
+    /**
+     * Código da avaria<br>Tamanho: 1
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Diferença de peso", value = "Descrição da avaria<br>Tamanho: 60")
+    /**
+     * Descrição da avaria<br>Tamanho: 60
+     **/
+    private String descricao = null;
+
+    /**
+     * Código da avaria&lt;br&gt;Tamanho: 1
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    public String getCodigo() {
+        if (codigo == null) {
+            return null;
+        }
+        return codigo.value();
+    }
+
+    public void setCodigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+    }
+
+    public Avaria codigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+    /**
+     * Descrição da avaria&lt;br&gt;Tamanho: 60
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Avaria descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class Avaria {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

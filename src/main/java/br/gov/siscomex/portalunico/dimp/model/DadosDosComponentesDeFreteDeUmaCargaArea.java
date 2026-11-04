@@ -84,6 +84,16 @@ public class DadosDosComponentesDeFreteDeUmaCargaArea {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DadosDosComponentesDeFreteDeUmaCargaArea {\n" +
+                "    componentesFreteOrigem: " + toIndentedString(componentesFreteOrigem) + "\n" +
+                "    componentesFreteDestino: " + toIndentedString(componentesFreteDestino) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -93,15 +103,5 @@ public class DadosDosComponentesDeFreteDeUmaCargaArea {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DadosDosComponentesDeFreteDeUmaCargaArea {\n" +
-                "    componentesFreteOrigem: " + toIndentedString(componentesFreteOrigem) + "\n" +
-                "    componentesFreteDestino: " + toIndentedString(componentesFreteDestino) + "\n" +
-                "}";
-        return sb;
     }
 }

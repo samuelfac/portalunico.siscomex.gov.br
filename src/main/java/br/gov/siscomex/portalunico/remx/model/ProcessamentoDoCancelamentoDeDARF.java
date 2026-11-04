@@ -86,15 +86,9 @@ public class ProcessamentoDoCancelamentoDeDARF {
         this.cnpj = cnpj;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProcessamentoDoCancelamentoDeDARF cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -131,8 +125,8 @@ public class ProcessamentoDoCancelamentoDeDARF {
         this.dataHoraProcessamento = dataHoraProcessamento;
     }
 
-    public ProcessamentoDoCancelamentoDeDARF cnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public ProcessamentoDoCancelamentoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
+        this.dataHoraProcessamento = dataHoraProcessamento;
         return this;
     }
 
@@ -220,10 +214,6 @@ public class ProcessamentoDoCancelamentoDeDARF {
         return this;
     }
 
-    public ProcessamentoDoCancelamentoDeDARF dataHoraProcessamento(OffsetDateTime dataHoraProcessamento) {
-        this.dataHoraProcessamento = dataHoraProcessamento;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -239,4 +229,15 @@ public class ProcessamentoDoCancelamentoDeDARF {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

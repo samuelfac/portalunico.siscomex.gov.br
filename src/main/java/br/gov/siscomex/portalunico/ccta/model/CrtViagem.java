@@ -71,10 +71,47 @@ public class CrtViagem {
     private List<DocumentoAnexo> documentosAnexos = null;
 
 
-    @XmlElement(name = "mercadorias")
-    @ApiModelProperty(value = "")
-    @Valid
-    private List<Mercadoria> mercadorias = null;
+    @XmlType(name = "IndicadorParcialidadeEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorParcialidadeEnum {
+
+        @XmlEnumValue("T")
+        @JsonProperty("T")
+        T("T"),
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("F")
+        @JsonProperty("F")
+        F("F");
+
+
+        private final String value;
+
+        IndicadorParcialidadeEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorParcialidadeEnum fromValue(String v) {
+            for (IndicadorParcialidadeEnum b : IndicadorParcialidadeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorParcialidadeEnum");
+        }
+    }
 
     @XmlElement(name = "indicadorParcialidade", required = true)
     @ApiModelProperty(example = "T", required = true, value = "Indicador se a viagem está transportando total ou parcialmente este CRT<br/> Tamanho: 1")
@@ -87,13 +124,11 @@ public class CrtViagem {
     @ApiModelProperty(value = "")
     @Valid
     private List<ItemCargaViagem> itensCarga = null;
-    @XmlElement(name = "valorSeguro", required = true)
-    @ApiModelProperty(example = "3284.58", required = true, value = "Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
+
+    @XmlElement(name = "mercadorias")
+    @ApiModelProperty(value = "")
     @Valid
-    /**
-     * Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     **/
-    private BigDecimal valorSeguro = null;
+    private List<Mercadoria> mercadorias = null;
 
     @XmlElement(name = "numeroCrt", required = true)
     @ApiModelProperty(example = "UY172911152", required = true, value = "Número do CRT<br/> Tamanho Máximo: 15")
@@ -102,15 +137,51 @@ public class CrtViagem {
      **/
     private String numeroCrt = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoCargaEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2"),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        _3("3"),
+
+        @XmlEnumValue("4")
+        @JsonProperty("4")
+        _4("4");
+
+
+        private final String value;
+
+        TipoCargaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoCargaEnum fromValue(String v) {
+            for (TipoCargaEnum b : TipoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
+        }
     }
 
     @XmlElement(name = "tipoCarga", required = true)
@@ -136,16 +207,13 @@ public class CrtViagem {
      **/
     private BigDecimal valorFrete = null;
 
+    @XmlElement(name = "valorSeguro", required = true)
+    @ApiModelProperty(example = "3284.58", required = true, value = "Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
+    @Valid
     /**
-     * Código da moeda do frete&lt;br/&gt; Deverá ser um código na tabela de moedas (TABX)&lt;br/&gt;Formato: AAA
-     *
-     * @return codigoMoedaFrete
+     * Valor do seguro cobrado na parte da carga que está sendo transportada em uma viagem.<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
      **/
-    @JsonProperty("codigoMoedaFrete")
-    @NotNull
-    public String getCodigoMoedaFrete() {
-        return codigoMoedaFrete;
-    }
+    private BigDecimal valorSeguro = null;
 
     /**
      * Recinto da Alfândega de destino final da carga&lt;br/&gt; Obrigatório caso campo País  de destino final da viagem seja Brasil&lt;br/&gt; Tamanho Máximo: 7
@@ -186,13 +254,14 @@ public class CrtViagem {
     }
 
     /**
-     * Get documentosAnexos
+     * Código da moeda do frete&lt;br/&gt; Deverá ser um código na tabela de moedas (TABX)&lt;br/&gt;Formato: AAA
      *
-     * @return documentosAnexos
+     * @return codigoMoedaFrete
      **/
-    @JsonProperty("documentosAnexos")
-    public List<DocumentoAnexo> getDocumentosAnexos() {
-        return documentosAnexos;
+    @JsonProperty("codigoMoedaFrete")
+    @NotNull
+    public String getCodigoMoedaFrete() {
+        return codigoMoedaFrete;
     }
 
     public void setCodigoMoedaFrete(String codigoMoedaFrete) {
@@ -265,14 +334,13 @@ public class CrtViagem {
     }
 
     /**
-     * Número do CRT&lt;br/&gt; Tamanho Máximo: 15
+     * Get documentosAnexos
      *
-     * @return numeroCrt
+     * @return documentosAnexos
      **/
-    @JsonProperty("numeroCrt")
-    @NotNull
-    public String getNumeroCrt() {
-        return numeroCrt;
+    @JsonProperty("documentosAnexos")
+    public List<DocumentoAnexo> getDocumentosAnexos() {
+        return documentosAnexos;
     }
 
     public void setDocumentosAnexos(List<DocumentoAnexo> documentosAnexos) {
@@ -358,27 +426,15 @@ public class CrtViagem {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class CrtViagem {\n" +
-                "    alfandegaDestinoRA: " + toIndentedString(alfandegaDestinoRA) + "\n" +
-                "    alfandegaDestinoUL: " + toIndentedString(alfandegaDestinoUL) + "\n" +
-                "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
-                "    codigoMoedaSeguro: " + toIndentedString(codigoMoedaSeguro) + "\n" +
-                "    codigoMoedaValorFCA: " + toIndentedString(codigoMoedaValorFCA) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    documentosAnexos: " + toIndentedString(documentosAnexos) + "\n" +
-                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
-                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
-                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
-                "    numeroCrt: " + toIndentedString(numeroCrt) + "\n" +
-                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
-                "    valorFCA: " + toIndentedString(valorFCA) + "\n" +
-                "    valorFrete: " + toIndentedString(valorFrete) + "\n" +
-                "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Número do CRT&lt;br/&gt; Tamanho Máximo: 15
+     *
+     * @return numeroCrt
+     **/
+    @JsonProperty("numeroCrt")
+    @NotNull
+    public String getNumeroCrt() {
+        return numeroCrt;
     }
 
     public void setNumeroCrt(String numeroCrt) {
@@ -471,91 +527,37 @@ public class CrtViagem {
     }
 
 
-    @XmlType(name = "IndicadorParcialidadeEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorParcialidadeEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("T")
-        @JsonProperty("T")
-        T("T"),
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("F")
-        @JsonProperty("F")
-        F("F");
-
-
-        private final String value;
-
-        IndicadorParcialidadeEnum(String v) {
-            value = v;
-        }
-
-        public static IndicadorParcialidadeEnum fromValue(String v) {
-            for (IndicadorParcialidadeEnum b : IndicadorParcialidadeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorParcialidadeEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class CrtViagem {\n" +
+                "    alfandegaDestinoRA: " + toIndentedString(alfandegaDestinoRA) + "\n" +
+                "    alfandegaDestinoUL: " + toIndentedString(alfandegaDestinoUL) + "\n" +
+                "    codigoMoedaFrete: " + toIndentedString(codigoMoedaFrete) + "\n" +
+                "    codigoMoedaSeguro: " + toIndentedString(codigoMoedaSeguro) + "\n" +
+                "    codigoMoedaValorFCA: " + toIndentedString(codigoMoedaValorFCA) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    documentosAnexos: " + toIndentedString(documentosAnexos) + "\n" +
+                "    indicadorParcialidade: " + toIndentedString(indicadorParcialidade) + "\n" +
+                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
+                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
+                "    numeroCrt: " + toIndentedString(numeroCrt) + "\n" +
+                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
+                "    valorFCA: " + toIndentedString(valorFCA) + "\n" +
+                "    valorFrete: " + toIndentedString(valorFrete) + "\n" +
+                "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoCargaEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2"),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        _3("3"),
-
-        @XmlEnumValue("4")
-        @JsonProperty("4")
-        _4("4");
-
-
-        private final String value;
-
-        TipoCargaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoCargaEnum fromValue(String v) {
-            for (TipoCargaEnum b : TipoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

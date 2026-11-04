@@ -64,15 +64,9 @@ public class ProrrogacaoLpcoAceitarRequest {
         this.novaDataFimVigencia = novaDataFimVigencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProrrogacaoLpcoAceitarRequest novaDataFimVigencia(String novaDataFimVigencia) {
+        this.novaDataFimVigencia = novaDataFimVigencia;
+        return this;
     }
 
     /**
@@ -132,10 +126,6 @@ public class ProrrogacaoLpcoAceitarRequest {
         return this;
     }
 
-    public ProrrogacaoLpcoAceitarRequest novaDataFimVigencia(String novaDataFimVigencia) {
-        this.novaDataFimVigencia = novaDataFimVigencia;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -148,4 +138,15 @@ public class ProrrogacaoLpcoAceitarRequest {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

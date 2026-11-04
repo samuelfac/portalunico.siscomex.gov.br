@@ -91,15 +91,9 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
         this.numeroManifesto = numeroManifesto;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ManifestoDaConsultaDeManifestosPelosDepositrios numeroManifesto(String numeroManifesto) {
+        this.numeroManifesto = numeroManifesto;
+        return this;
     }
 
     /**
@@ -159,10 +153,6 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
         return this;
     }
 
-    public ManifestoDaConsultaDeManifestosPelosDepositrios numeroManifesto(String numeroManifesto) {
-        this.numeroManifesto = numeroManifesto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -176,4 +166,15 @@ public class ManifestoDaConsultaDeManifestosPelosDepositrios {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

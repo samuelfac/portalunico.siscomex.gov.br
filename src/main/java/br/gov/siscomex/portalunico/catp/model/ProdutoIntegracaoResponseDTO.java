@@ -128,15 +128,9 @@ public class ProdutoIntegracaoResponseDTO {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProdutoIntegracaoResponseDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -239,8 +233,8 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    public ProdutoIntegracaoResponseDTO descricao(String descricao) {
-        this.descricao = descricao;
+    public ProdutoIntegracaoResponseDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
+        this.atributosMultivalorados.add(atributosMultivaloradosItem);
         return this;
     }
 
@@ -287,8 +281,8 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    public ProdutoIntegracaoResponseDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
-        this.atributosMultivalorados.add(atributosMultivaloradosItem);
+    public ProdutoIntegracaoResponseDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
+        this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
         return this;
     }
 
@@ -346,8 +340,8 @@ public class ProdutoIntegracaoResponseDTO {
         this.codigo = codigo;
     }
 
-    public ProdutoIntegracaoResponseDTO addAtributosCompostosMultivaloradosItem(ProdutoCampoCompostoMultivaloradoIntegracaoDTO atributosCompostosMultivaloradosItem) {
-        this.atributosCompostosMultivalorados.add(atributosCompostosMultivaloradosItem);
+    public ProdutoIntegracaoResponseDTO codigo(Long codigo) {
+        this.codigo = codigo;
         return this;
     }
 
@@ -387,10 +381,6 @@ public class ProdutoIntegracaoResponseDTO {
         return this;
     }
 
-    public ProdutoIntegracaoResponseDTO codigo(Long codigo) {
-        this.codigo = codigo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -411,5 +401,16 @@ public class ProdutoIntegracaoResponseDTO {
                 "    situacao: " + toIndentedString(situacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

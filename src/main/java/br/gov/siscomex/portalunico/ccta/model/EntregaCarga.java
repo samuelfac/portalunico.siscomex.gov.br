@@ -116,12 +116,55 @@ public class EntregaCarga {
     private String recintoAduaneiro = null;
 
 
-    @XmlElement(name = "volumeEntrega", required = true)
-    @ApiModelProperty(example = "5", required = true, value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
-    /**
-     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
-     **/
-    private Long volumeEntrega = null;
+    @XmlType(name = "TipoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoCargaEnum {
+
+        @XmlEnumValue("740")
+        @JsonProperty("740")
+        _740("740"),
+
+        @XmlEnumValue("741")
+        @JsonProperty("741")
+        _741("741"),
+
+        @XmlEnumValue("703")
+        @JsonProperty("703")
+        _703("703"),
+
+        @XmlEnumValue("14")
+        @JsonProperty("14")
+        _14("14"),
+
+        @XmlEnumValue("13")
+        @JsonProperty("13")
+        _13("13");
+
+
+        private final String value;
+
+        TipoCargaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoCargaEnum fromValue(String v) {
+            for (TipoCargaEnum b : TipoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
+        }
+    }
 
     @XmlElement(name = "tipoCarga", required = true)
     @ApiModelProperty(example = "740", required = true, value = "Tipo de carga. <p>Os tipos podem ser:</p><ul><li><em>740</em> – Air Waybill.</li><li><em>741</em> – Master Air Waybill.</li><li><em>703</em> – House Air Waybill.</li><li><em>14</em> – DSIC - Documento Subsidiário de Identificação de Carga.</li><li><em>13</em> – CRT - Conhecimento Rodoviário de Trânsito.</li></ul>")
@@ -130,15 +173,71 @@ public class EntregaCarga {
      **/
     private TipoCargaEnum tipoCarga = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoDocumentoSaidaEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoSaidaEnum {
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("PROCESSO")
+        @JsonProperty("PROCESSO")
+        PROCESSO("PROCESSO"),
+
+        @XmlEnumValue("EDMOV")
+        @JsonProperty("EDMOV")
+        EDMOV("EDMOV"),
+
+        @XmlEnumValue("OUTROS")
+        @JsonProperty("OUTROS")
+        OUTROS("OUTROS"),
+
+        @XmlEnumValue("PMD")
+        @JsonProperty("PMD")
+        PMD("PMD"),
+
+        @XmlEnumValue("PDE_TR")
+        @JsonProperty("PDE_TR")
+        PDE_TR("PDE_TR"),
+
+        @XmlEnumValue("DSI")
+        @JsonProperty("DSI")
+        DSI("DSI"),
+
+        @XmlEnumValue("DSI_FORMULARIO")
+        @JsonProperty("DSI_FORMULARIO")
+        DSI_FORMULARIO("DSI_FORMULARIO"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TipoDocumentoSaidaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocumentoSaidaEnum fromValue(String v) {
+            for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
+        }
     }
 
     @XmlElement(name = "tipoDocumentoSaida", required = true)
@@ -148,15 +247,43 @@ public class EntregaCarga {
      **/
     private TipoDocumentoSaidaEnum tipoDocumentoSaida = null;
 
-    /**
-     * Indica a apresentação de comprovante de pagamento/exoneração do ICMS
-     *
-     * @return comprovanteIcmsApresentado
-     **/
-    @JsonProperty("comprovanteIcmsApresentado")
-    @NotNull
-    public Boolean isisComprovanteIcmsApresentado() {
-        return comprovanteIcmsApresentado;
+
+    @XmlType(name = "TipoEntregaEnum")
+    @XmlEnum(String.class)
+    public enum TipoEntregaEnum {
+
+        @XmlEnumValue("PARCIAL")
+        @JsonProperty("PARCIAL")
+        PARCIAL("PARCIAL"),
+
+        @XmlEnumValue("TOTAL")
+        @JsonProperty("TOTAL")
+        TOTAL("TOTAL");
+
+
+        private final String value;
+
+        TipoEntregaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEntregaEnum fromValue(String v) {
+            for (TipoEntregaEnum b : TipoEntregaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEntregaEnum");
+        }
     }
 
     @XmlElement(name = "tipoEntrega", required = true)
@@ -173,9 +300,12 @@ public class EntregaCarga {
      **/
     private String unidadeRFB = null;
 
-    public void setComprovanteIcmsApresentado(Boolean comprovanteIcmsApresentado) {
-        this.comprovanteIcmsApresentado = comprovanteIcmsApresentado;
-    }
+    @XmlElement(name = "volumeEntrega", required = true)
+    @ApiModelProperty(example = "5", required = true, value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
+    /**
+     * Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos
+     **/
+    private Long volumeEntrega = null;
 
     /**
      * CNPJ do responsável pelo arquivo do conhecimento de carga.&lt;br/&gt;Somente deve ser informado para conhecimentos do tipo HAWB&lt;br/&gt;Tamanho: 8&lt;br/&gt;Formato: NNNNNNNN ou &lt;br/&gt;Tamanho: 14&lt;br/&gt;Formato: NNNNNNNNNNNNNN
@@ -217,18 +347,18 @@ public class EntregaCarga {
     }
 
     /**
-     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
+     * Indica a apresentação de comprovante de pagamento/exoneração do ICMS
      *
-     * @return identificacaoCarga
+     * @return comprovanteIcmsApresentado
      **/
-    @JsonProperty("identificacaoCarga")
+    @JsonProperty("comprovanteIcmsApresentado")
     @NotNull
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
+    public Boolean isisComprovanteIcmsApresentado() {
+        return comprovanteIcmsApresentado;
     }
 
-    public void setIdentificacaoCarga(String identificacaoCarga) {
-        this.identificacaoCarga = identificacaoCarga;
+    public void setComprovanteIcmsApresentado(Boolean comprovanteIcmsApresentado) {
+        this.comprovanteIcmsApresentado = comprovanteIcmsApresentado;
     }
 
     public EntregaCarga comprovanteIcmsApresentado(Boolean comprovanteIcmsApresentado) {
@@ -319,17 +449,18 @@ public class EntregaCarga {
     }
 
     /**
-     * Observações sobre a entrega&lt;br/&gt;Tamanho máximo: 300
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
      *
-     * @return observacoes
+     * @return identificacaoCarga
      **/
-    @JsonProperty("observacoes")
-    public String getObservacoes() {
-        return observacoes;
+    @JsonProperty("identificacaoCarga")
+    @NotNull
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
     }
 
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+    public void setIdentificacaoCarga(String identificacaoCarga) {
+        this.identificacaoCarga = identificacaoCarga;
     }
 
     public EntregaCarga identificacaoCarga(String identificacaoCarga) {
@@ -358,21 +489,16 @@ public class EntregaCarga {
     }
 
     /**
-     * Indicador para entrega parcial ou total
-     *
-     * @return tipoEntrega
+     * Observações sobre a entrega&lt;br/&gt;Tamanho máximo: 300
+     * @return observacoes
      **/
-    @JsonProperty("tipoEntrega")
-    @NotNull
-    public String getTipoEntrega() {
-        if (tipoEntrega == null) {
-            return null;
-        }
-        return tipoEntrega.value();
+    @JsonProperty("observacoes")
+    public String getObservacoes() {
+        return observacoes;
     }
 
-    public void setTipoEntrega(TipoEntregaEnum tipoEntrega) {
-        this.tipoEntrega = tipoEntrega;
+    public void setObservacoes(String observacoes) {
+        this.observacoes = observacoes;
     }
 
     public EntregaCarga observacoes(String observacoes) {
@@ -482,18 +608,21 @@ public class EntregaCarga {
     }
 
     /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     * Indicador para entrega parcial ou total
      *
-     * @return volumeEntrega
+     * @return tipoEntrega
      **/
-    @JsonProperty("volumeEntrega")
+    @JsonProperty("tipoEntrega")
     @NotNull
-    public Long getVolumeEntrega() {
-        return volumeEntrega;
+    public String getTipoEntrega() {
+        if (tipoEntrega == null) {
+            return null;
+        }
+        return tipoEntrega.value();
     }
 
-    public void setVolumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
+    public void setTipoEntrega(TipoEntregaEnum tipoEntrega) {
+        this.tipoEntrega = tipoEntrega;
     }
 
     public EntregaCarga tipoEntrega(TipoEntregaEnum tipoEntrega) {
@@ -518,6 +647,27 @@ public class EntregaCarga {
         this.unidadeRFB = unidadeRFB;
         return this;
     }
+
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return volumeEntrega
+     **/
+    @JsonProperty("volumeEntrega")
+    @NotNull
+    public Long getVolumeEntrega() {
+        return volumeEntrega;
+    }
+
+    public void setVolumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
+    }
+
+    public EntregaCarga volumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -545,163 +695,14 @@ public class EntregaCarga {
         return sb;
     }
 
-    @XmlType(name = "TipoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoCargaEnum {
-
-        @XmlEnumValue("740")
-        @JsonProperty("740")
-        _740("740"),
-
-        @XmlEnumValue("741")
-        @JsonProperty("741")
-        _741("741"),
-
-        @XmlEnumValue("703")
-        @JsonProperty("703")
-        _703("703"),
-
-        @XmlEnumValue("14")
-        @JsonProperty("14")
-        _14("14"),
-
-        @XmlEnumValue("13")
-        @JsonProperty("13")
-        _13("13");
-
-
-        private final String value;
-
-        TipoCargaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoCargaEnum fromValue(String v) {
-            for (TipoCargaEnum b : TipoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    public EntregaCarga volumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
-        return this;
-    }
-
-
-    @XmlType(name = "TipoDocumentoSaidaEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoSaidaEnum {
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("PROCESSO")
-        @JsonProperty("PROCESSO")
-        PROCESSO("PROCESSO"),
-
-        @XmlEnumValue("EDMOV")
-        @JsonProperty("EDMOV")
-        EDMOV("EDMOV"),
-
-        @XmlEnumValue("OUTROS")
-        @JsonProperty("OUTROS")
-        OUTROS("OUTROS"),
-
-        @XmlEnumValue("PMD")
-        @JsonProperty("PMD")
-        PMD("PMD"),
-
-        @XmlEnumValue("PDE_TR")
-        @JsonProperty("PDE_TR")
-        PDE_TR("PDE_TR"),
-
-        @XmlEnumValue("DSI")
-        @JsonProperty("DSI")
-        DSI("DSI"),
-
-        @XmlEnumValue("DSI_FORMULARIO")
-        @JsonProperty("DSI_FORMULARIO")
-        DSI_FORMULARIO("DSI_FORMULARIO"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TipoDocumentoSaidaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDocumentoSaidaEnum fromValue(String v) {
-            for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoEntregaEnum")
-    @XmlEnum(String.class)
-    public enum TipoEntregaEnum {
-
-        @XmlEnumValue("PARCIAL")
-        @JsonProperty("PARCIAL")
-        PARCIAL("PARCIAL"),
-
-        @XmlEnumValue("TOTAL")
-        @JsonProperty("TOTAL")
-        TOTAL("TOTAL");
-
-
-        private final String value;
-
-        TipoEntregaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEntregaEnum fromValue(String v) {
-            for (TipoEntregaEnum b : TipoEntregaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEntregaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

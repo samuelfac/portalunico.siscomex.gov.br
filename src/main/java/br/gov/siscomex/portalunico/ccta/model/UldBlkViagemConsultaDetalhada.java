@@ -37,12 +37,47 @@ public class UldBlkViagemConsultaDetalhada {
     private List<ConhecimentoViagemConsultaDetalhada> conhecimentos = null;
 
 
-    @XmlElement(name = "tipoULD")
-    @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
-    /**
-     * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
-     **/
-    private String tipoULD = null;
+    @XmlType(name = "FormaTransporteEnum")
+    @XmlEnum(String.class)
+    public enum FormaTransporteEnum {
+
+        @XmlEnumValue("ULD")
+        @JsonProperty("ULD")
+        ULD("ULD"),
+
+        @XmlEnumValue("BLK")
+        @JsonProperty("BLK")
+        BLK("BLK"),
+
+        @XmlEnumValue("NIL")
+        @JsonProperty("NIL")
+        NIL("NIL");
+
+
+        private final String value;
+
+        FormaTransporteEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static FormaTransporteEnum fromValue(String v) {
+            for (FormaTransporteEnum b : FormaTransporteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to FormaTransporteEnum");
+        }
+    }
 
     @XmlElement(name = "formaTransporte")
     @ApiModelProperty(example = "BLK", value = "Forma de transporte<br/>Tamanho 3<br/> Formato: AAA")
@@ -58,16 +93,12 @@ public class UldBlkViagemConsultaDetalhada {
      **/
     private String numeroSerieULD = null;
 
+    @XmlElement(name = "tipoULD")
+    @ApiModelProperty(example = "ULD", value = "Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Código referente ao tipo da ULD<br/>Tamanho 3<br/> Formato: AAA
+     **/
+    private String tipoULD = null;
 
     /**
      * Identifica a companhia aérea proprietária da ULD&lt;br/&gt;Tamanho: : 2&lt;br/&gt; Formato: AA
@@ -172,6 +203,7 @@ public class UldBlkViagemConsultaDetalhada {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -185,45 +217,14 @@ public class UldBlkViagemConsultaDetalhada {
         return sb;
     }
 
-    @XmlType(name = "FormaTransporteEnum")
-    @XmlEnum(String.class)
-    public enum FormaTransporteEnum {
-
-        @XmlEnumValue("ULD")
-        @JsonProperty("ULD")
-        ULD("ULD"),
-
-        @XmlEnumValue("BLK")
-        @JsonProperty("BLK")
-        BLK("BLK"),
-
-        @XmlEnumValue("NIL")
-        @JsonProperty("NIL")
-        NIL("NIL");
-
-
-        private final String value;
-
-        FormaTransporteEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static FormaTransporteEnum fromValue(String v) {
-            for (FormaTransporteEnum b : FormaTransporteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to FormaTransporteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

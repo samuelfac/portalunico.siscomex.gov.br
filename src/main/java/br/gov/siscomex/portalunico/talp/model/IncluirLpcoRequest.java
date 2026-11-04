@@ -137,15 +137,9 @@ public class IncluirLpcoRequest {
         this.dataReferencia = dataReferencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public IncluirLpcoRequest dataReferencia(String dataReferencia) {
+        this.dataReferencia = dataReferencia;
+        return this;
     }
 
     /**
@@ -211,8 +205,8 @@ public class IncluirLpcoRequest {
         this.numeroLI = numeroLI;
     }
 
-    public IncluirLpcoRequest dataReferencia(String dataReferencia) {
-        this.dataReferencia = dataReferencia;
+    public IncluirLpcoRequest numeroLI(Long numeroLI) {
+        this.numeroLI = numeroLI;
         return this;
     }
 
@@ -254,10 +248,6 @@ public class IncluirLpcoRequest {
         return this;
     }
 
-    public IncluirLpcoRequest numeroLI(Long numeroLI) {
-        this.numeroLI = numeroLI;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -274,4 +264,15 @@ public class IncluirLpcoRequest {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

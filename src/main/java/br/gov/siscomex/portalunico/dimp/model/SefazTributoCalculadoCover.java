@@ -121,15 +121,9 @@ public class SefazTributoCalculadoCover {
         this.valorAReduzir = valorAReduzir;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazTributoCalculadoCover valorAReduzir(BigDecimal valorAReduzir) {
+        this.valorAReduzir = valorAReduzir;
+        return this;
     }
 
     /**
@@ -165,8 +159,8 @@ public class SefazTributoCalculadoCover {
         this.valorDevido = valorDevido;
     }
 
-    public SefazTributoCalculadoCover valorAReduzir(BigDecimal valorAReduzir) {
-        this.valorAReduzir = valorAReduzir;
+    public SefazTributoCalculadoCover valorDevido(BigDecimal valorDevido) {
+        this.valorDevido = valorDevido;
         return this;
     }
 
@@ -189,10 +183,6 @@ public class SefazTributoCalculadoCover {
         return this;
     }
 
-    public SefazTributoCalculadoCover valorDevido(BigDecimal valorDevido) {
-        this.valorDevido = valorDevido;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -206,5 +196,16 @@ public class SefazTributoCalculadoCover {
                 "    impostoARecolher: " + toIndentedString(impostoARecolher) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

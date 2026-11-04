@@ -31,12 +31,43 @@ public class CargaDuimpConsultaCover {
     private UnidadeDeclaradaCover unidadeDeclarada = null;
 
 
-    @XmlElement(name = "identificacao")
-    @ApiModelProperty(value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
-    /**
-     * Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
-     **/
-    private String identificacao = null;
+    @XmlType(name = "TipoIdentificacaoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoIdentificacaoCargaEnum {
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("RUC")
+        @JsonProperty("RUC")
+        RUC("RUC");
+
+
+        private final String value;
+
+        TipoIdentificacaoCargaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoIdentificacaoCargaEnum fromValue(String v) {
+            for (TipoIdentificacaoCargaEnum b : TipoIdentificacaoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoCargaEnum");
+        }
+    }
 
     @XmlElement(name = "tipoIdentificacaoCarga")
     @ApiModelProperty(example = "CE", value = "Descreve se a identificação da carga é do tipo CE ou RUC")
@@ -45,16 +76,12 @@ public class CargaDuimpConsultaCover {
      **/
     private TipoIdentificacaoCargaEnum tipoIdentificacaoCarga = null;
 
+    @XmlElement(name = "identificacao")
+    @ApiModelProperty(value = "Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número de Identificação da Carga.<br>Quando tipo de identificação da carga for CE: <br> - Tamanho: 15 <br> - Formato: NNNNNNNNNNNNNNN<br>Quando tipo de identificação da carga for RUC: <br> - Tamanho mínimo: 1<br> - Tamanho máximo: 32<br>Origem: Sistema Siscomex Carga - https://www4.receita.fazenda.gov.br/g33159/jsp/logon.jsp?ind=11<br><br>Origem: Portal Único Siscomex - Sistema CCT Importação - https://portalunico.siscomex.gov.br/<br>Para Duimp COM situação especial de despacho (atributo carga.motivoSituacaoEspecial.codigo preenchido), este atributo será retornado nulo
+     **/
+    private String identificacao = null;
 
     @XmlElement(name = "seguro")
     @ApiModelProperty(value = "")
@@ -212,6 +239,7 @@ public class CargaDuimpConsultaCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -227,41 +255,14 @@ public class CargaDuimpConsultaCover {
         return sb;
     }
 
-    @XmlType(name = "TipoIdentificacaoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoIdentificacaoCargaEnum {
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("RUC")
-        @JsonProperty("RUC")
-        RUC("RUC");
-
-
-        private final String value;
-
-        TipoIdentificacaoCargaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoIdentificacaoCargaEnum fromValue(String v) {
-            for (TipoIdentificacaoCargaEnum b : TipoIdentificacaoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

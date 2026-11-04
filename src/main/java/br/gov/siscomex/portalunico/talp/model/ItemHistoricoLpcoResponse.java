@@ -97,15 +97,9 @@ public class ItemHistoricoLpcoResponse {
         this.dataAlteracao = dataAlteracao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemHistoricoLpcoResponse dataAlteracao(String dataAlteracao) {
+        this.dataAlteracao = dataAlteracao;
+        return this;
     }
 
     /**
@@ -161,8 +155,8 @@ public class ItemHistoricoLpcoResponse {
         this.solicitacao = solicitacao;
     }
 
-    public ItemHistoricoLpcoResponse dataAlteracao(String dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
+    public ItemHistoricoLpcoResponse solicitacao(String solicitacao) {
+        this.solicitacao = solicitacao;
         return this;
     }
 
@@ -218,8 +212,8 @@ public class ItemHistoricoLpcoResponse {
         this.motivoAnalise = motivoAnalise;
     }
 
-    public ItemHistoricoLpcoResponse solicitacao(String solicitacao) {
-        this.solicitacao = solicitacao;
+    public ItemHistoricoLpcoResponse motivoAnalise(String motivoAnalise) {
+        this.motivoAnalise = motivoAnalise;
         return this;
     }
 
@@ -247,10 +241,6 @@ public class ItemHistoricoLpcoResponse {
         return this;
     }
 
-    public ItemHistoricoLpcoResponse motivoAnalise(String motivoAnalise) {
-        this.motivoAnalise = motivoAnalise;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -267,4 +257,15 @@ public class ItemHistoricoLpcoResponse {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

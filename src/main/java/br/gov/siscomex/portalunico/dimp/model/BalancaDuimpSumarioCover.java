@@ -121,15 +121,9 @@ public class BalancaDuimpSumarioCover {
         this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public BalancaDuimpSumarioCover quantidadeTotaltensDuimp(Long quantidadeTotaltensDuimp) {
+        this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
+        return this;
     }
 
     /**
@@ -189,10 +183,6 @@ public class BalancaDuimpSumarioCover {
         return this;
     }
 
-    public BalancaDuimpSumarioCover quantidadeTotaltensDuimp(Long quantidadeTotaltensDuimp) {
-        this.quantidadeTotaltensDuimp = quantidadeTotaltensDuimp;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -206,5 +196,16 @@ public class BalancaDuimpSumarioCover {
                 "    somatorioPesoItensDuimp: " + toIndentedString(somatorioPesoItensDuimp) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -89,5 +89,5 @@ public class DadosNavioAgenda {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

@@ -20,15 +20,58 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoTotalMoedaOrigem {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "CodigoEnum")
+    @XmlEnum(String.class)
+    public enum CodigoEnum {
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("V")
+        @JsonProperty("V")
+        V("V"),
+
+        @XmlEnumValue("I")
+        @JsonProperty("I")
+        I("I"),
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A"),
+
+        @XmlEnumValue("C")
+        @JsonProperty("C")
+        C("C"),
+
+        @XmlEnumValue("T")
+        @JsonProperty("T")
+        T("T");
+
+
+        private final String value;
+
+        CodigoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CodigoEnum fromValue(String v) {
+            for (CodigoEnum b : CodigoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
+        }
     }
 
     @XmlElement(name = "codigo")
@@ -86,6 +129,7 @@ public class TipoTotalMoedaOrigem {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -96,57 +140,14 @@ public class TipoTotalMoedaOrigem {
         return sb;
     }
 
-    @XmlType(name = "CodigoEnum")
-    @XmlEnum(String.class)
-    public enum CodigoEnum {
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("V")
-        @JsonProperty("V")
-        V("V"),
-
-        @XmlEnumValue("I")
-        @JsonProperty("I")
-        I("I"),
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A"),
-
-        @XmlEnumValue("C")
-        @JsonProperty("C")
-        C("C"),
-
-        @XmlEnumValue("T")
-        @JsonProperty("T")
-        T("T");
-
-
-        private final String value;
-
-        CodigoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static CodigoEnum fromValue(String v) {
-            for (CodigoEnum b : CodigoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

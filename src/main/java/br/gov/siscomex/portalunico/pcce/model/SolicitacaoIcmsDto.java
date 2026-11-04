@@ -127,94 +127,6 @@ public class SolicitacaoIcmsDto {
     private String periodoReferencia = null;
 
 
-    @XmlElement(name = "status")
-    @ApiModelProperty(example = "Entrega da carga não permitida. ICMS não declarado ou não foi solicitado pagamento/exoneração do ICMS no Portal Único Siscomex.", value = "Observação, conforme o tipo de tratamento")
-    /**
-     * Observação, conforme o tipo de tratamento
-     **/
-    private String status = null;
-
-    @XmlElement(name = "situacaoSolicitacao", required = true)
-    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
-    /**
-     * Descrição da situação da solicitação
-     **/
-    private SituacaoSolicitacaoEnum situacaoSolicitacao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Histórico da solicitação de ICMS
-     *
-     * @return historico
-     **/
-    @JsonProperty("historico")
-    public List<SituacaoHistoricoDto> getHistorico() {
-        return historico;
-    }
-
-    @XmlElement(name = "tipoDeclaracao", required = true)
-    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
-    /**
-     * Tipo da declaração no Comércio Exterior
-     **/
-    private TipoDeclaracaoEnum tipoDeclaracao = null;
-
-    @Override
-    public String toString() {
-
-        String sb = "class SolicitacaoIcmsDto {\n" +
-                "    cargaEntregue: " + toIndentedString(cargaEntregue) + "\n" +
-                "    cnaeAdquirente: " + toIndentedString(cnaeAdquirente) + "\n" +
-                "    cnaeImportador: " + toIndentedString(cnaeImportador) + "\n" +
-                "    codMunicipioDesembaracoPretendido: " + toIndentedString(codMunicipioDesembaracoPretendido) + "\n" +
-                "    cpfSolicitante: " + toIndentedString(cpfSolicitante) + "\n" +
-                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
-                "    descricaoDespesasAduaneiras: " + toIndentedString(descricaoDespesasAduaneiras) + "\n" +
-                "    guias: " + toIndentedString(guias) + "\n" +
-                "    historico: " + toIndentedString(historico) + "\n" +
-                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
-                "    numMandadoJudicial: " + toIndentedString(numMandadoJudicial) + "\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
-                "    opcaoIcms: " + toIndentedString(opcaoIcms) + "\n" +
-                "    periodoReferencia: " + toIndentedString(periodoReferencia) + "\n" +
-                "    situacaoSolicitacao: " + toIndentedString(situacaoSolicitacao) + "\n" +
-                "    status: " + toIndentedString(status) + "\n" +
-                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
-                "    ufAdquirente: " + toIndentedString(ufAdquirente) + "\n" +
-                "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
-                "    ufImportador: " + toIndentedString(ufImportador) + "\n" +
-                "    valorAfrmm: " + toIndentedString(valorAfrmm) + "\n" +
-                "    valorCIFExonerado: " + toIndentedString(valorCIFExonerado) + "\n" +
-                "    valorCIFPagamento: " + toIndentedString(valorCIFPagamento) + "\n" +
-                "    valorDespesasAduaneiras: " + toIndentedString(valorDespesasAduaneiras) + "\n" +
-                "    valorTotalARecolher: " + toIndentedString(valorTotalARecolher) + "\n" +
-                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
-                "    valorTotalDevido: " + toIndentedString(valorTotalDevido) + "\n" +
-                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
-                "}";
-        return sb;
-    }
-
-    @XmlElement(name = "tipoSolicitacao", required = true)
-    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
-    /**
-     * Tipo de solicitação
-     **/
-    private TipoSolicitacaoEnum tipoSolicitacao = null;
-
-
     @XmlType(name = "SituacaoSolicitacaoEnum")
     @XmlEnum(String.class)
     public enum SituacaoSolicitacaoEnum {
@@ -286,15 +198,6 @@ public class SolicitacaoIcmsDto {
             value = v;
         }
 
-        public static SituacaoSolicitacaoEnum fromValue(String v) {
-            for (SituacaoSolicitacaoEnum b : SituacaoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -303,14 +206,30 @@ public class SolicitacaoIcmsDto {
         public String toString() {
             return String.valueOf(value);
         }
+
+        public static SituacaoSolicitacaoEnum fromValue(String v) {
+            for (SituacaoSolicitacaoEnum b : SituacaoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoEnum");
+        }
     }
 
-    @XmlElement(name = "tipoTratamento", required = true)
-    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de tratamento usado na declaração")
+    @XmlElement(name = "situacaoSolicitacao", required = true)
+    @ApiModelProperty(example = "DUIMP_AGUARDANDO_EXIGENCIA", required = true, value = "Descrição da situação da solicitação")
     /**
-     * Tipo de tratamento usado na declaração
+     * Descrição da situação da solicitação
      **/
-    private TipoTratamentoEnum tipoTratamento = null;
+    private SituacaoSolicitacaoEnum situacaoSolicitacao = null;
+
+    @XmlElement(name = "status")
+    @ApiModelProperty(example = "Entrega da carga não permitida. ICMS não declarado ou não foi solicitado pagamento/exoneração do ICMS no Portal Único Siscomex.", value = "Observação, conforme o tipo de tratamento")
+    /**
+     * Observação, conforme o tipo de tratamento
+     **/
+    private String status = null;
 
 
     @XmlType(name = "TipoDeclaracaoEnum")
@@ -328,15 +247,6 @@ public class SolicitacaoIcmsDto {
             value = v;
         }
 
-        public static TipoDeclaracaoEnum fromValue(String v) {
-            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -345,14 +255,23 @@ public class SolicitacaoIcmsDto {
         public String toString() {
             return String.valueOf(value);
         }
+
+        public static TipoDeclaracaoEnum fromValue(String v) {
+            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
+        }
     }
 
-    @XmlElement(name = "ufAdquirente")
-    @ApiModelProperty(example = "SC", value = "UF favorecida")
+    @XmlElement(name = "tipoDeclaracao", required = true)
+    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
     /**
-     * UF favorecida
+     * Tipo da declaração no Comércio Exterior
      **/
-    private UfAdquirenteEnum ufAdquirente = null;
+    private TipoDeclaracaoEnum tipoDeclaracao = null;
 
 
     @XmlType(name = "TipoSolicitacaoEnum")
@@ -386,15 +305,6 @@ public class SolicitacaoIcmsDto {
             value = v;
         }
 
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-
         public String value() {
             return value;
         }
@@ -403,14 +313,23 @@ public class SolicitacaoIcmsDto {
         public String toString() {
             return String.valueOf(value);
         }
+
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
     }
 
-    @XmlElement(name = "ufFavorecida", required = true)
-    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
+    @XmlElement(name = "tipoSolicitacao", required = true)
+    @ApiModelProperty(example = "PAGAMENTO_INTEGRAL_DUIMP", required = true, value = "Tipo de solicitação")
     /**
-     * UF favorecida
+     * Tipo de solicitação
      **/
-    private UfFavorecidaEnum ufFavorecida = null;
+    private TipoSolicitacaoEnum tipoSolicitacao = null;
 
 
     @XmlType(name = "TipoTratamentoEnum")
@@ -440,6 +359,15 @@ public class SolicitacaoIcmsDto {
             value = v;
         }
 
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
         public static TipoTratamentoEnum fromValue(String v) {
             for (TipoTratamentoEnum b : TipoTratamentoEnum.values()) {
                 if (String.valueOf(b.value).equals(v)) {
@@ -447,6 +375,134 @@ public class SolicitacaoIcmsDto {
                 }
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTratamentoEnum");
+        }
+    }
+
+    @XmlElement(name = "tipoTratamento", required = true)
+    @ApiModelProperty(example = "MANUAL", required = true, value = "Tipo de tratamento usado na declaração")
+    /**
+     * Tipo de tratamento usado na declaração
+     **/
+    private TipoTratamentoEnum tipoTratamento = null;
+
+
+    @XmlType(name = "UfAdquirenteEnum")
+    @XmlEnum(String.class)
+    public enum UfAdquirenteEnum {
+
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
+
+        @XmlEnumValue("AL")
+        @JsonProperty("AL")
+        AL("AL"),
+
+        @XmlEnumValue("AM")
+        @JsonProperty("AM")
+        AM("AM"),
+
+        @XmlEnumValue("AP")
+        @JsonProperty("AP")
+        AP("AP"),
+
+        @XmlEnumValue("BA")
+        @JsonProperty("BA")
+        BA("BA"),
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("DF")
+        @JsonProperty("DF")
+        DF("DF"),
+
+        @XmlEnumValue("ES")
+        @JsonProperty("ES")
+        ES("ES"),
+
+        @XmlEnumValue("GO")
+        @JsonProperty("GO")
+        GO("GO"),
+
+        @XmlEnumValue("MA")
+        @JsonProperty("MA")
+        MA("MA"),
+
+        @XmlEnumValue("MG")
+        @JsonProperty("MG")
+        MG("MG"),
+
+        @XmlEnumValue("MS")
+        @JsonProperty("MS")
+        MS("MS"),
+
+        @XmlEnumValue("MT")
+        @JsonProperty("MT")
+        MT("MT"),
+
+        @XmlEnumValue("PA")
+        @JsonProperty("PA")
+        PA("PA"),
+
+        @XmlEnumValue("PB")
+        @JsonProperty("PB")
+        PB("PB"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("PI")
+        @JsonProperty("PI")
+        PI("PI"),
+
+        @XmlEnumValue("PR")
+        @JsonProperty("PR")
+        PR("PR"),
+
+        @XmlEnumValue("RJ")
+        @JsonProperty("RJ")
+        RJ("RJ"),
+
+        @XmlEnumValue("RN")
+        @JsonProperty("RN")
+        RN("RN"),
+
+        @XmlEnumValue("RO")
+        @JsonProperty("RO")
+        RO("RO"),
+
+        @XmlEnumValue("RR")
+        @JsonProperty("RR")
+        RR("RR"),
+
+        @XmlEnumValue("RS")
+        @JsonProperty("RS")
+        RS("RS"),
+
+        @XmlEnumValue("SC")
+        @JsonProperty("SC")
+        SC("SC"),
+
+        @XmlEnumValue("SE")
+        @JsonProperty("SE")
+        SE("SE"),
+
+        @XmlEnumValue("SP")
+        @JsonProperty("SP")
+        SP("SP"),
+
+        @XmlEnumValue("TO")
+        @JsonProperty("TO")
+        TO("TO");
+
+
+        private final String value;
+
+        UfAdquirenteEnum(String v) {
+            value = v;
         }
 
         public String value() {
@@ -456,6 +512,307 @@ public class SolicitacaoIcmsDto {
         @Override
         public String toString() {
             return String.valueOf(value);
+        }
+
+        public static UfAdquirenteEnum fromValue(String v) {
+            for (UfAdquirenteEnum b : UfAdquirenteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfAdquirenteEnum");
+        }
+    }
+
+    @XmlElement(name = "ufAdquirente")
+    @ApiModelProperty(example = "SC", value = "UF favorecida")
+    /**
+     * UF favorecida
+     **/
+    private UfAdquirenteEnum ufAdquirente = null;
+
+
+    @XmlType(name = "UfFavorecidaEnum")
+    @XmlEnum(String.class)
+    public enum UfFavorecidaEnum {
+
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
+
+        @XmlEnumValue("AL")
+        @JsonProperty("AL")
+        AL("AL"),
+
+        @XmlEnumValue("AM")
+        @JsonProperty("AM")
+        AM("AM"),
+
+        @XmlEnumValue("AP")
+        @JsonProperty("AP")
+        AP("AP"),
+
+        @XmlEnumValue("BA")
+        @JsonProperty("BA")
+        BA("BA"),
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("DF")
+        @JsonProperty("DF")
+        DF("DF"),
+
+        @XmlEnumValue("ES")
+        @JsonProperty("ES")
+        ES("ES"),
+
+        @XmlEnumValue("GO")
+        @JsonProperty("GO")
+        GO("GO"),
+
+        @XmlEnumValue("MA")
+        @JsonProperty("MA")
+        MA("MA"),
+
+        @XmlEnumValue("MG")
+        @JsonProperty("MG")
+        MG("MG"),
+
+        @XmlEnumValue("MS")
+        @JsonProperty("MS")
+        MS("MS"),
+
+        @XmlEnumValue("MT")
+        @JsonProperty("MT")
+        MT("MT"),
+
+        @XmlEnumValue("PA")
+        @JsonProperty("PA")
+        PA("PA"),
+
+        @XmlEnumValue("PB")
+        @JsonProperty("PB")
+        PB("PB"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("PI")
+        @JsonProperty("PI")
+        PI("PI"),
+
+        @XmlEnumValue("PR")
+        @JsonProperty("PR")
+        PR("PR"),
+
+        @XmlEnumValue("RJ")
+        @JsonProperty("RJ")
+        RJ("RJ"),
+
+        @XmlEnumValue("RN")
+        @JsonProperty("RN")
+        RN("RN"),
+
+        @XmlEnumValue("RO")
+        @JsonProperty("RO")
+        RO("RO"),
+
+        @XmlEnumValue("RR")
+        @JsonProperty("RR")
+        RR("RR"),
+
+        @XmlEnumValue("RS")
+        @JsonProperty("RS")
+        RS("RS"),
+
+        @XmlEnumValue("SC")
+        @JsonProperty("SC")
+        SC("SC"),
+
+        @XmlEnumValue("SE")
+        @JsonProperty("SE")
+        SE("SE"),
+
+        @XmlEnumValue("SP")
+        @JsonProperty("SP")
+        SP("SP"),
+
+        @XmlEnumValue("TO")
+        @JsonProperty("TO")
+        TO("TO");
+
+
+        private final String value;
+
+        UfFavorecidaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static UfFavorecidaEnum fromValue(String v) {
+            for (UfFavorecidaEnum b : UfFavorecidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfFavorecidaEnum");
+        }
+    }
+
+    @XmlElement(name = "ufFavorecida", required = true)
+    @ApiModelProperty(example = "RS", required = true, value = "UF favorecida")
+    /**
+     * UF favorecida
+     **/
+    private UfFavorecidaEnum ufFavorecida = null;
+
+
+    @XmlType(name = "UfImportadorEnum")
+    @XmlEnum(String.class)
+    public enum UfImportadorEnum {
+
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
+
+        @XmlEnumValue("AL")
+        @JsonProperty("AL")
+        AL("AL"),
+
+        @XmlEnumValue("AM")
+        @JsonProperty("AM")
+        AM("AM"),
+
+        @XmlEnumValue("AP")
+        @JsonProperty("AP")
+        AP("AP"),
+
+        @XmlEnumValue("BA")
+        @JsonProperty("BA")
+        BA("BA"),
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("DF")
+        @JsonProperty("DF")
+        DF("DF"),
+
+        @XmlEnumValue("ES")
+        @JsonProperty("ES")
+        ES("ES"),
+
+        @XmlEnumValue("GO")
+        @JsonProperty("GO")
+        GO("GO"),
+
+        @XmlEnumValue("MA")
+        @JsonProperty("MA")
+        MA("MA"),
+
+        @XmlEnumValue("MG")
+        @JsonProperty("MG")
+        MG("MG"),
+
+        @XmlEnumValue("MS")
+        @JsonProperty("MS")
+        MS("MS"),
+
+        @XmlEnumValue("MT")
+        @JsonProperty("MT")
+        MT("MT"),
+
+        @XmlEnumValue("PA")
+        @JsonProperty("PA")
+        PA("PA"),
+
+        @XmlEnumValue("PB")
+        @JsonProperty("PB")
+        PB("PB"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("PI")
+        @JsonProperty("PI")
+        PI("PI"),
+
+        @XmlEnumValue("PR")
+        @JsonProperty("PR")
+        PR("PR"),
+
+        @XmlEnumValue("RJ")
+        @JsonProperty("RJ")
+        RJ("RJ"),
+
+        @XmlEnumValue("RN")
+        @JsonProperty("RN")
+        RN("RN"),
+
+        @XmlEnumValue("RO")
+        @JsonProperty("RO")
+        RO("RO"),
+
+        @XmlEnumValue("RR")
+        @JsonProperty("RR")
+        RR("RR"),
+
+        @XmlEnumValue("RS")
+        @JsonProperty("RS")
+        RS("RS"),
+
+        @XmlEnumValue("SC")
+        @JsonProperty("SC")
+        SC("SC"),
+
+        @XmlEnumValue("SE")
+        @JsonProperty("SE")
+        SE("SE"),
+
+        @XmlEnumValue("SP")
+        @JsonProperty("SP")
+        SP("SP"),
+
+        @XmlEnumValue("TO")
+        @JsonProperty("TO")
+        TO("TO");
+
+
+        private final String value;
+
+        UfImportadorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static UfImportadorEnum fromValue(String v) {
+            for (UfImportadorEnum b : UfImportadorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfImportadorEnum");
         }
     }
 
@@ -689,142 +1046,14 @@ public class SolicitacaoIcmsDto {
         return this;
     }
 
-    @XmlType(name = "UfAdquirenteEnum")
-    @XmlEnum(String.class)
-    public enum UfAdquirenteEnum {
-
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
-
-        @XmlEnumValue("AL")
-        @JsonProperty("AL")
-        AL("AL"),
-
-        @XmlEnumValue("AM")
-        @JsonProperty("AM")
-        AM("AM"),
-
-        @XmlEnumValue("AP")
-        @JsonProperty("AP")
-        AP("AP"),
-
-        @XmlEnumValue("BA")
-        @JsonProperty("BA")
-        BA("BA"),
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("DF")
-        @JsonProperty("DF")
-        DF("DF"),
-
-        @XmlEnumValue("ES")
-        @JsonProperty("ES")
-        ES("ES"),
-
-        @XmlEnumValue("GO")
-        @JsonProperty("GO")
-        GO("GO"),
-
-        @XmlEnumValue("MA")
-        @JsonProperty("MA")
-        MA("MA"),
-
-        @XmlEnumValue("MG")
-        @JsonProperty("MG")
-        MG("MG"),
-
-        @XmlEnumValue("MS")
-        @JsonProperty("MS")
-        MS("MS"),
-
-        @XmlEnumValue("MT")
-        @JsonProperty("MT")
-        MT("MT"),
-
-        @XmlEnumValue("PA")
-        @JsonProperty("PA")
-        PA("PA"),
-
-        @XmlEnumValue("PB")
-        @JsonProperty("PB")
-        PB("PB"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("PI")
-        @JsonProperty("PI")
-        PI("PI"),
-
-        @XmlEnumValue("PR")
-        @JsonProperty("PR")
-        PR("PR"),
-
-        @XmlEnumValue("RJ")
-        @JsonProperty("RJ")
-        RJ("RJ"),
-
-        @XmlEnumValue("RN")
-        @JsonProperty("RN")
-        RN("RN"),
-
-        @XmlEnumValue("RO")
-        @JsonProperty("RO")
-        RO("RO"),
-
-        @XmlEnumValue("RR")
-        @JsonProperty("RR")
-        RR("RR"),
-
-        @XmlEnumValue("RS")
-        @JsonProperty("RS")
-        RS("RS"),
-
-        @XmlEnumValue("SC")
-        @JsonProperty("SC")
-        SC("SC"),
-
-        @XmlEnumValue("SE")
-        @JsonProperty("SE")
-        SE("SE"),
-
-        @XmlEnumValue("SP")
-        @JsonProperty("SP")
-        SP("SP"),
-
-        @XmlEnumValue("TO")
-        @JsonProperty("TO")
-        TO("TO");
-
-
-        private final String value;
-
-        UfAdquirenteEnum(String v) {
-            value = v;
-        }
-
-        public static UfAdquirenteEnum fromValue(String v) {
-            for (UfAdquirenteEnum b : UfAdquirenteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfAdquirenteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Histórico da solicitação de ICMS
+     *
+     * @return historico
+     **/
+    @JsonProperty("historico")
+    public List<SituacaoHistoricoDto> getHistorico() {
+        return historico;
     }
 
     public void setHistorico(List<SituacaoHistoricoDto> historico) {
@@ -1258,279 +1487,52 @@ public class SolicitacaoIcmsDto {
     }
 
 
-    @XmlType(name = "UfFavorecidaEnum")
-    @XmlEnum(String.class)
-    public enum UfFavorecidaEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
-
-        @XmlEnumValue("AL")
-        @JsonProperty("AL")
-        AL("AL"),
-
-        @XmlEnumValue("AM")
-        @JsonProperty("AM")
-        AM("AM"),
-
-        @XmlEnumValue("AP")
-        @JsonProperty("AP")
-        AP("AP"),
-
-        @XmlEnumValue("BA")
-        @JsonProperty("BA")
-        BA("BA"),
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("DF")
-        @JsonProperty("DF")
-        DF("DF"),
-
-        @XmlEnumValue("ES")
-        @JsonProperty("ES")
-        ES("ES"),
-
-        @XmlEnumValue("GO")
-        @JsonProperty("GO")
-        GO("GO"),
-
-        @XmlEnumValue("MA")
-        @JsonProperty("MA")
-        MA("MA"),
-
-        @XmlEnumValue("MG")
-        @JsonProperty("MG")
-        MG("MG"),
-
-        @XmlEnumValue("MS")
-        @JsonProperty("MS")
-        MS("MS"),
-
-        @XmlEnumValue("MT")
-        @JsonProperty("MT")
-        MT("MT"),
-
-        @XmlEnumValue("PA")
-        @JsonProperty("PA")
-        PA("PA"),
-
-        @XmlEnumValue("PB")
-        @JsonProperty("PB")
-        PB("PB"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("PI")
-        @JsonProperty("PI")
-        PI("PI"),
-
-        @XmlEnumValue("PR")
-        @JsonProperty("PR")
-        PR("PR"),
-
-        @XmlEnumValue("RJ")
-        @JsonProperty("RJ")
-        RJ("RJ"),
-
-        @XmlEnumValue("RN")
-        @JsonProperty("RN")
-        RN("RN"),
-
-        @XmlEnumValue("RO")
-        @JsonProperty("RO")
-        RO("RO"),
-
-        @XmlEnumValue("RR")
-        @JsonProperty("RR")
-        RR("RR"),
-
-        @XmlEnumValue("RS")
-        @JsonProperty("RS")
-        RS("RS"),
-
-        @XmlEnumValue("SC")
-        @JsonProperty("SC")
-        SC("SC"),
-
-        @XmlEnumValue("SE")
-        @JsonProperty("SE")
-        SE("SE"),
-
-        @XmlEnumValue("SP")
-        @JsonProperty("SP")
-        SP("SP"),
-
-        @XmlEnumValue("TO")
-        @JsonProperty("TO")
-        TO("TO");
-
-
-        private final String value;
-
-        UfFavorecidaEnum(String v) {
-            value = v;
-        }
-
-        public static UfFavorecidaEnum fromValue(String v) {
-            for (UfFavorecidaEnum b : UfFavorecidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfFavorecidaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SolicitacaoIcmsDto {\n" +
+                "    cargaEntregue: " + toIndentedString(cargaEntregue) + "\n" +
+                "    cnaeAdquirente: " + toIndentedString(cnaeAdquirente) + "\n" +
+                "    cnaeImportador: " + toIndentedString(cnaeImportador) + "\n" +
+                "    codMunicipioDesembaracoPretendido: " + toIndentedString(codMunicipioDesembaracoPretendido) + "\n" +
+                "    cpfSolicitante: " + toIndentedString(cpfSolicitante) + "\n" +
+                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
+                "    descricaoDespesasAduaneiras: " + toIndentedString(descricaoDespesasAduaneiras) + "\n" +
+                "    guias: " + toIndentedString(guias) + "\n" +
+                "    historico: " + toIndentedString(historico) + "\n" +
+                "    informacoesComplementares: " + toIndentedString(informacoesComplementares) + "\n" +
+                "    numMandadoJudicial: " + toIndentedString(numMandadoJudicial) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    opcaoIcms: " + toIndentedString(opcaoIcms) + "\n" +
+                "    periodoReferencia: " + toIndentedString(periodoReferencia) + "\n" +
+                "    situacaoSolicitacao: " + toIndentedString(situacaoSolicitacao) + "\n" +
+                "    status: " + toIndentedString(status) + "\n" +
+                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    tipoTratamento: " + toIndentedString(tipoTratamento) + "\n" +
+                "    ufAdquirente: " + toIndentedString(ufAdquirente) + "\n" +
+                "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
+                "    ufImportador: " + toIndentedString(ufImportador) + "\n" +
+                "    valorAfrmm: " + toIndentedString(valorAfrmm) + "\n" +
+                "    valorCIFExonerado: " + toIndentedString(valorCIFExonerado) + "\n" +
+                "    valorCIFPagamento: " + toIndentedString(valorCIFPagamento) + "\n" +
+                "    valorDespesasAduaneiras: " + toIndentedString(valorDespesasAduaneiras) + "\n" +
+                "    valorTotalARecolher: " + toIndentedString(valorTotalARecolher) + "\n" +
+                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
+                "    valorTotalDevido: " + toIndentedString(valorTotalDevido) + "\n" +
+                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "UfImportadorEnum")
-    @XmlEnum(String.class)
-    public enum UfImportadorEnum {
-
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
-
-        @XmlEnumValue("AL")
-        @JsonProperty("AL")
-        AL("AL"),
-
-        @XmlEnumValue("AM")
-        @JsonProperty("AM")
-        AM("AM"),
-
-        @XmlEnumValue("AP")
-        @JsonProperty("AP")
-        AP("AP"),
-
-        @XmlEnumValue("BA")
-        @JsonProperty("BA")
-        BA("BA"),
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("DF")
-        @JsonProperty("DF")
-        DF("DF"),
-
-        @XmlEnumValue("ES")
-        @JsonProperty("ES")
-        ES("ES"),
-
-        @XmlEnumValue("GO")
-        @JsonProperty("GO")
-        GO("GO"),
-
-        @XmlEnumValue("MA")
-        @JsonProperty("MA")
-        MA("MA"),
-
-        @XmlEnumValue("MG")
-        @JsonProperty("MG")
-        MG("MG"),
-
-        @XmlEnumValue("MS")
-        @JsonProperty("MS")
-        MS("MS"),
-
-        @XmlEnumValue("MT")
-        @JsonProperty("MT")
-        MT("MT"),
-
-        @XmlEnumValue("PA")
-        @JsonProperty("PA")
-        PA("PA"),
-
-        @XmlEnumValue("PB")
-        @JsonProperty("PB")
-        PB("PB"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("PI")
-        @JsonProperty("PI")
-        PI("PI"),
-
-        @XmlEnumValue("PR")
-        @JsonProperty("PR")
-        PR("PR"),
-
-        @XmlEnumValue("RJ")
-        @JsonProperty("RJ")
-        RJ("RJ"),
-
-        @XmlEnumValue("RN")
-        @JsonProperty("RN")
-        RN("RN"),
-
-        @XmlEnumValue("RO")
-        @JsonProperty("RO")
-        RO("RO"),
-
-        @XmlEnumValue("RR")
-        @JsonProperty("RR")
-        RR("RR"),
-
-        @XmlEnumValue("RS")
-        @JsonProperty("RS")
-        RS("RS"),
-
-        @XmlEnumValue("SC")
-        @JsonProperty("SC")
-        SC("SC"),
-
-        @XmlEnumValue("SE")
-        @JsonProperty("SE")
-        SE("SE"),
-
-        @XmlEnumValue("SP")
-        @JsonProperty("SP")
-        SP("SP"),
-
-        @XmlEnumValue("TO")
-        @JsonProperty("TO")
-        TO("TO");
-
-
-        private final String value;
-
-        UfImportadorEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static UfImportadorEnum fromValue(String v) {
-            for (UfImportadorEnum b : UfImportadorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfImportadorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

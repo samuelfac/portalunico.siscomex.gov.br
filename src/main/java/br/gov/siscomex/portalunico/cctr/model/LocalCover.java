@@ -108,15 +108,9 @@ public class LocalCover {
         this.latitude = latitude;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public LocalCover latitude(String latitude) {
+        this.latitude = latitude;
+        return this;
     }
 
     /**
@@ -139,10 +133,6 @@ public class LocalCover {
         return this;
     }
 
-    public LocalCover latitude(String latitude) {
-        this.latitude = latitude;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -154,5 +144,16 @@ public class LocalCover {
                 "    longitude: " + toIndentedString(longitude) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

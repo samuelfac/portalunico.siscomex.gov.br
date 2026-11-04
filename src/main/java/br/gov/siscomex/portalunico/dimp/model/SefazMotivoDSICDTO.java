@@ -20,85 +20,6 @@ import javax.xml.bind.annotation.XmlType;
 public class SefazMotivoDSICDTO {
 
 
-    @XmlElement(name = "motivo")
-    @ApiModelProperty(example = "BAGAGEM_DESDOBRAMENTO", value = "Indica o motivo para utilização do Tipo de Conhecimento DSIC")
-    /**
-     * Indica o motivo para utilização do Tipo de Conhecimento DSIC
-     **/
-    private MotivoEnum motivo = null;
-    @XmlElement(name = "subTipoMotivo")
-    @ApiModelProperty(example = "DESDOBRAMENTO", value = "Indica o submotivo  quando o 'motivo' informado for 'Bagagem/Desdobramento'")
-    /**
-     * Indica o submotivo  quando o 'motivo' informado for 'Bagagem/Desdobramento'
-     **/
-    private SubTipoMotivoEnum subTipoMotivo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Indica o motivo para utilização do Tipo de Conhecimento DSIC
-     *
-     * @return motivo
-     **/
-    @JsonProperty("motivo")
-    public String getMotivo() {
-        if (motivo == null) {
-            return null;
-        }
-        return motivo.value();
-    }
-
-    public void setMotivo(MotivoEnum motivo) {
-        this.motivo = motivo;
-    }
-
-    public SefazMotivoDSICDTO motivo(MotivoEnum motivo) {
-        this.motivo = motivo;
-        return this;
-    }
-
-    /**
-     * Indica o submotivo  quando o &#39;motivo&#39; informado for &#39;Bagagem/Desdobramento&#39;
-     *
-     * @return subTipoMotivo
-     **/
-    @JsonProperty("subTipoMotivo")
-    public String getSubTipoMotivo() {
-        if (subTipoMotivo == null) {
-            return null;
-        }
-        return subTipoMotivo.value();
-    }
-
-    public void setSubTipoMotivo(SubTipoMotivoEnum subTipoMotivo) {
-        this.subTipoMotivo = subTipoMotivo;
-    }
-
-    public SefazMotivoDSICDTO subTipoMotivo(SubTipoMotivoEnum subTipoMotivo) {
-        this.subTipoMotivo = subTipoMotivo;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SefazMotivoDSICDTO {\n" +
-                "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    subTipoMotivo: " + toIndentedString(subTipoMotivo) + "\n" +
-                "}";
-        return sb;
-    }
-
-
     @XmlType(name = "MotivoEnum")
     @XmlEnum(String.class)
     public enum MotivoEnum {
@@ -149,6 +70,14 @@ public class SefazMotivoDSICDTO {
         }
     }
 
+    @XmlElement(name = "motivo")
+    @ApiModelProperty(example = "BAGAGEM_DESDOBRAMENTO", value = "Indica o motivo para utilização do Tipo de Conhecimento DSIC")
+    /**
+     * Indica o motivo para utilização do Tipo de Conhecimento DSIC
+     **/
+    private MotivoEnum motivo = null;
+
+
     @XmlType(name = "SubTipoMotivoEnum")
     @XmlEnum(String.class)
     public enum SubTipoMotivoEnum {
@@ -189,5 +118,78 @@ public class SefazMotivoDSICDTO {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to SubTipoMotivoEnum");
         }
+    }
+
+    @XmlElement(name = "subTipoMotivo")
+    @ApiModelProperty(example = "DESDOBRAMENTO", value = "Indica o submotivo  quando o 'motivo' informado for 'Bagagem/Desdobramento'")
+    /**
+     * Indica o submotivo  quando o 'motivo' informado for 'Bagagem/Desdobramento'
+     **/
+    private SubTipoMotivoEnum subTipoMotivo = null;
+
+    /**
+     * Indica o motivo para utilização do Tipo de Conhecimento DSIC
+     *
+     * @return motivo
+     **/
+    @JsonProperty("motivo")
+    public String getMotivo() {
+        if (motivo == null) {
+            return null;
+        }
+        return motivo.value();
+    }
+
+    public void setMotivo(MotivoEnum motivo) {
+        this.motivo = motivo;
+    }
+
+    public SefazMotivoDSICDTO motivo(MotivoEnum motivo) {
+        this.motivo = motivo;
+        return this;
+    }
+
+    /**
+     * Indica o submotivo  quando o &#39;motivo&#39; informado for &#39;Bagagem/Desdobramento&#39;
+     *
+     * @return subTipoMotivo
+     **/
+    @JsonProperty("subTipoMotivo")
+    public String getSubTipoMotivo() {
+        if (subTipoMotivo == null) {
+            return null;
+        }
+        return subTipoMotivo.value();
+    }
+
+    public void setSubTipoMotivo(SubTipoMotivoEnum subTipoMotivo) {
+        this.subTipoMotivo = subTipoMotivo;
+    }
+
+    public SefazMotivoDSICDTO subTipoMotivo(SubTipoMotivoEnum subTipoMotivo) {
+        this.subTipoMotivo = subTipoMotivo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class SefazMotivoDSICDTO {\n" +
+                "    motivo: " + toIndentedString(motivo) + "\n" +
+                "    subTipoMotivo: " + toIndentedString(subTipoMotivo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

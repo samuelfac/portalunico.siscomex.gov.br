@@ -75,15 +75,9 @@ public class EndereoParaRegistroERetificaoDeManifesto {
         this.cep = cep;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EndereoParaRegistroERetificaoDeManifesto cep(String cep) {
+        this.cep = cep;
+        return this;
     }
 
     /**
@@ -121,8 +115,8 @@ public class EndereoParaRegistroERetificaoDeManifesto {
         this.estado = estado;
     }
 
-    public EndereoParaRegistroERetificaoDeManifesto cep(String cep) {
-        this.cep = cep;
+    public EndereoParaRegistroERetificaoDeManifesto estado(String estado) {
+        this.estado = estado;
         return this;
     }
 
@@ -187,10 +181,6 @@ public class EndereoParaRegistroERetificaoDeManifesto {
         return this;
     }
 
-    public EndereoParaRegistroERetificaoDeManifesto estado(String estado) {
-        this.estado = estado;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -205,4 +195,15 @@ public class EndereoParaRegistroERetificaoDeManifesto {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

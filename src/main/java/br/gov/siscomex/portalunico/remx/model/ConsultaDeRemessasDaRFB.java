@@ -174,15 +174,9 @@ public class ConsultaDeRemessasDaRFB {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConsultaDeRemessasDaRFB addListaOrgaoFiscalizacaoItem(String listaOrgaoFiscalizacaoItem) {
+        this.listaOrgaoFiscalizacao.add(listaOrgaoFiscalizacaoItem);
+        return this;
     }
 
     /**
@@ -228,8 +222,8 @@ public class ConsultaDeRemessasDaRFB {
         return this;
     }
 
-    public ConsultaDeRemessasDaRFB addListaOrgaoFiscalizacaoItem(String listaOrgaoFiscalizacaoItem) {
-        this.listaOrgaoFiscalizacao.add(listaOrgaoFiscalizacaoItem);
+    public ConsultaDeRemessasDaRFB addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
+        this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
         return this;
     }
 
@@ -312,10 +306,6 @@ public class ConsultaDeRemessasDaRFB {
         return this;
     }
 
-    public ConsultaDeRemessasDaRFB addListaSituacaoOcorrenciaItem(Integer listaSituacaoOcorrenciaItem) {
-        this.listaSituacaoOcorrencia.add(listaSituacaoOcorrenciaItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -334,4 +324,15 @@ public class ConsultaDeRemessasDaRFB {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -54,15 +54,9 @@ public class DadosConsulta {
         this.numeroMRUC = numeroMRUC;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosConsulta numeroMRUC(String numeroMRUC) {
+        this.numeroMRUC = numeroMRUC;
+        return this;
     }
 
     /**
@@ -108,10 +102,6 @@ public class DadosConsulta {
         return this;
     }
 
-    public DadosConsulta numeroMRUC(String numeroMRUC) {
-        this.numeroMRUC = numeroMRUC;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -122,5 +112,16 @@ public class DadosConsulta {
                 "    permiteMovimentacao: " + toIndentedString(permiteMovimentacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

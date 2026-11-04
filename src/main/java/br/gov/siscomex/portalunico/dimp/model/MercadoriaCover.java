@@ -32,12 +32,43 @@ public class MercadoriaCover {
     private TipoAplicacaoCover tipoAplicacao = null;
 
 
-    @XmlElement(name = "unidadeComercial", required = true)
-    @ApiModelProperty(example = "SACAS", required = true, value = "Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
-    /**
-     * Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
-     **/
-    private String unidadeComercial = null;
+    @XmlType(name = "CondicaoEnum")
+    @XmlEnum(String.class)
+    public enum CondicaoEnum {
+
+        @XmlEnumValue("NOVA")
+        @JsonProperty("NOVA")
+        NOVA("NOVA"),
+
+        @XmlEnumValue("USADA")
+        @JsonProperty("USADA")
+        USADA("USADA");
+
+
+        private final String value;
+
+        CondicaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CondicaoEnum fromValue(String v) {
+            for (CondicaoEnum b : CondicaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CondicaoEnum");
+        }
+    }
 
     @XmlElement(name = "condicao", required = true)
     @ApiModelProperty(example = "NOVA", required = true, value = "Indica se a mercadoria é nova ou usada.<br>Domínio:")
@@ -45,10 +76,13 @@ public class MercadoriaCover {
      * Indica se a mercadoria é nova ou usada.<br>Domínio:
      **/
     private CondicaoEnum condicao = null;
-    @XmlElement(name = "moedaNegociada", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private MoedaNegociadaCover moedaNegociada = null;
+
+    @XmlElement(name = "unidadeComercial", required = true)
+    @ApiModelProperty(example = "SACAS", required = true, value = "Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20")
+    /**
+     * Unidade de medida utilizada na comercialização da mercadoria.<br>Tamanho mínimo: 1<br>Tamanho máximo: 20
+     **/
+    private String unidadeComercial = null;
 
     @XmlElement(name = "quantidadeComercial", required = true)
     @ApiModelProperty(example = "100.5", required = true, value = "Quantidade da mercadoria na unidade de medida comercial.<br>Tamanho: 9,5<br>Formato: Decimal, com até 5 casas decimais separadas por ponto.")
@@ -71,16 +105,10 @@ public class MercadoriaCover {
      **/
     private String pesoLiquido = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "moedaNegociada", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private MoedaNegociadaCover moedaNegociada = null;
 
     @XmlElement(name = "valorUnitarioMoedaNegociada", required = true)
     @ApiModelProperty(example = "10", required = true, value = "Valor unitário da mercadoria na condição de venda.<br>Tamanho: 13,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -277,6 +305,7 @@ public class MercadoriaCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -294,41 +323,14 @@ public class MercadoriaCover {
         return sb;
     }
 
-    @XmlType(name = "CondicaoEnum")
-    @XmlEnum(String.class)
-    public enum CondicaoEnum {
-
-        @XmlEnumValue("NOVA")
-        @JsonProperty("NOVA")
-        NOVA("NOVA"),
-
-        @XmlEnumValue("USADA")
-        @JsonProperty("USADA")
-        USADA("USADA");
-
-
-        private final String value;
-
-        CondicaoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static CondicaoEnum fromValue(String v) {
-            for (CondicaoEnum b : CondicaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CondicaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

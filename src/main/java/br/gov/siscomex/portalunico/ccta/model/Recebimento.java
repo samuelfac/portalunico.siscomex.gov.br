@@ -41,12 +41,51 @@ public class Recebimento {
     private String dateTime = null;
 
 
-    @XmlElement(name = "cpf")
-    @ApiModelProperty(example = "99999999999", value = "CPF do usuário autenticado que enviou o arquivo<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
-    /**
-     * CPF do usuário autenticado que enviou o arquivo<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
-     **/
-    private String cpf = null;
+    @XmlType(name = "FileTypeEnum")
+    @XmlEnum(String.class)
+    public enum FileTypeEnum {
+
+        @XmlEnumValue("XFFM")
+        @JsonProperty("XFFM")
+        XFFM("XFFM"),
+
+        @XmlEnumValue("XFWB")
+        @JsonProperty("XFWB")
+        XFWB("XFWB"),
+
+        @XmlEnumValue("XFZB")
+        @JsonProperty("XFZB")
+        XFZB("XFZB"),
+
+        @XmlEnumValue("XFHL")
+        @JsonProperty("XFHL")
+        XFHL("XFHL");
+
+
+        private final String value;
+
+        FileTypeEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static FileTypeEnum fromValue(String v) {
+            for (FileTypeEnum b : FileTypeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to FileTypeEnum");
+        }
+    }
 
     @XmlElement(name = "fileType")
     @ApiModelProperty(example = "XFFM", value = "Tipo de arquivo recebido")
@@ -54,12 +93,49 @@ public class Recebimento {
      * Tipo de arquivo recebido
      **/
     private FileTypeEnum fileType = null;
-    @XmlElement(name = "cnpj")
-    @ApiModelProperty(example = "99999999999999", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'")
-    /**
-     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'
-     **/
-    private String cnpj = null;
+
+
+    @XmlType(name = "StatusEnum")
+    @XmlEnum(String.class)
+    public enum StatusEnum {
+
+        @XmlEnumValue("Processed")
+        @JsonProperty("Processed")
+        PROCESSED("Processed"),
+
+        @XmlEnumValue("Received")
+        @JsonProperty("Received")
+        RECEIVED("Received"),
+
+        @XmlEnumValue("Rejected")
+        @JsonProperty("Rejected")
+        REJECTED("Rejected");
+
+
+        private final String value;
+
+        StatusEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static StatusEnum fromValue(String v) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to StatusEnum");
+        }
+    }
 
     @XmlElement(name = "status")
     @ApiModelProperty(example = "Rejected", value = "Situação atual do processamento do arquivo")
@@ -68,26 +144,19 @@ public class Recebimento {
      **/
     private StatusEnum status = null;
 
+    @XmlElement(name = "cpf")
+    @ApiModelProperty(example = "99999999999", value = "CPF do usuário autenticado que enviou o arquivo<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Data/hora de recebimento do arquivo, no fuso horário de Brasília&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss:SSS-03:00&#39;
-     *
-     * @return dateTime
+     * CPF do usuário autenticado que enviou o arquivo<br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
      **/
-    @JsonProperty("dateTime")
-    public String getDateTime() {
-        return dateTime;
-    }
+    private String cpf = null;
+
+    @XmlElement(name = "cnpj")
+    @ApiModelProperty(example = "99999999999999", value = "CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'")
+    /**
+     * CNPJ do Transportador (Cia Aérea) ou do Agente de Carga responsável pelo envio do arquivo<br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'
+     **/
+    private String cnpj = null;
 
     @XmlElement(name = "errorList")
     @ApiModelProperty(value = "Lista de erros encontrados no processamento do arquivo")
@@ -117,13 +186,13 @@ public class Recebimento {
     }
 
     /**
-     * CPF do usuário autenticado que enviou o arquivo&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     * Data/hora de recebimento do arquivo, no fuso horário de Brasília&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss:SSS-03:00&#39;
      *
-     * @return cpf
+     * @return dateTime
      **/
-    @JsonProperty("cpf")
-    public String getCpf() {
-        return cpf;
+    @JsonProperty("dateTime")
+    public String getDateTime() {
+        return dateTime;
     }
 
     public void setDateTime(String dateTime) {
@@ -179,19 +248,14 @@ public class Recebimento {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class Recebimento {\n" +
-                "    protocolNumber: " + toIndentedString(protocolNumber) + "\n" +
-                "    dateTime: " + toIndentedString(dateTime) + "\n" +
-                "    fileType: " + toIndentedString(fileType) + "\n" +
-                "    status: " + toIndentedString(status) + "\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
-                "    errorList: " + toIndentedString(errorList) + "\n" +
-                "}";
-        return sb;
+    /**
+     * CPF do usuário autenticado que enviou o arquivo&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;
+     *
+     * @return cpf
+     **/
+    @JsonProperty("cpf")
+    public String getCpf() {
+        return cpf;
     }
 
     public void setCpf(String cpf) {
@@ -247,91 +311,29 @@ public class Recebimento {
     }
 
 
-    @XmlType(name = "FileTypeEnum")
-    @XmlEnum(String.class)
-    public enum FileTypeEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("XFFM")
-        @JsonProperty("XFFM")
-        XFFM("XFFM"),
-
-        @XmlEnumValue("XFWB")
-        @JsonProperty("XFWB")
-        XFWB("XFWB"),
-
-        @XmlEnumValue("XFZB")
-        @JsonProperty("XFZB")
-        XFZB("XFZB"),
-
-        @XmlEnumValue("XFHL")
-        @JsonProperty("XFHL")
-        XFHL("XFHL");
-
-
-        private final String value;
-
-        FileTypeEnum(String v) {
-            value = v;
-        }
-
-        public static FileTypeEnum fromValue(String v) {
-            for (FileTypeEnum b : FileTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to FileTypeEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class Recebimento {\n" +
+                "    protocolNumber: " + toIndentedString(protocolNumber) + "\n" +
+                "    dateTime: " + toIndentedString(dateTime) + "\n" +
+                "    fileType: " + toIndentedString(fileType) + "\n" +
+                "    status: " + toIndentedString(status) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    errorList: " + toIndentedString(errorList) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "StatusEnum")
-    @XmlEnum(String.class)
-    public enum StatusEnum {
-
-        @XmlEnumValue("Processed")
-        @JsonProperty("Processed")
-        PROCESSED("Processed"),
-
-        @XmlEnumValue("Received")
-        @JsonProperty("Received")
-        RECEIVED("Received"),
-
-        @XmlEnumValue("Rejected")
-        @JsonProperty("Rejected")
-        REJECTED("Rejected");
-
-
-        private final String value;
-
-        StatusEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static StatusEnum fromValue(String v) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to StatusEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

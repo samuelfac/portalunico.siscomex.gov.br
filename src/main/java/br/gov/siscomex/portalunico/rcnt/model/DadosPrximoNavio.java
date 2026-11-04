@@ -94,5 +94,5 @@ public class DadosPrximoNavio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

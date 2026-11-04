@@ -96,5 +96,5 @@ public class ReferenciaImportacaoTerceiro {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

@@ -110,15 +110,9 @@ public class Cargas {
         this.tipoCarga = tipoCarga;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Cargas tipoCarga(ItemDTO tipoCarga) {
+        this.tipoCarga = tipoCarga;
+        return this;
     }
 
     /**
@@ -159,10 +153,6 @@ public class Cargas {
         return this;
     }
 
-    public Cargas tipoCarga(ItemDTO tipoCarga) {
-        this.tipoCarga = tipoCarga;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -175,5 +165,16 @@ public class Cargas {
                 "    quantidadeManifestada: " + toIndentedString(quantidadeManifestada) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

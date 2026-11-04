@@ -167,15 +167,9 @@ public class ViagemRodoviariaCargaDetalhada {
         this.cidadeEntrega = cidadeEntrega;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ViagemRodoviariaCargaDetalhada cidadeEntrega(Cidade cidadeEntrega) {
+        this.cidadeEntrega = cidadeEntrega;
+        return this;
     }
 
     /**
@@ -211,8 +205,8 @@ public class ViagemRodoviariaCargaDetalhada {
         this.conhecimentoManifestado = conhecimentoManifestado;
     }
 
-    public ViagemRodoviariaCargaDetalhada cidadeEntrega(Cidade cidadeEntrega) {
-        this.cidadeEntrega = cidadeEntrega;
+    public ViagemRodoviariaCargaDetalhada conhecimentoManifestado(Boolean conhecimentoManifestado) {
+        this.conhecimentoManifestado = conhecimentoManifestado;
         return this;
     }
 
@@ -292,8 +286,8 @@ public class ViagemRodoviariaCargaDetalhada {
         this.identificacaoConsignatario = identificacaoConsignatario;
     }
 
-    public ViagemRodoviariaCargaDetalhada conhecimentoManifestado(Boolean conhecimentoManifestado) {
-        this.conhecimentoManifestado = conhecimentoManifestado;
+    public ViagemRodoviariaCargaDetalhada identificacaoConsignatario(String identificacaoConsignatario) {
+        this.identificacaoConsignatario = identificacaoConsignatario;
         return this;
     }
 
@@ -357,8 +351,8 @@ public class ViagemRodoviariaCargaDetalhada {
         this.nomeConsignatario = nomeConsignatario;
     }
 
-    public ViagemRodoviariaCargaDetalhada identificacaoConsignatario(String identificacaoConsignatario) {
-        this.identificacaoConsignatario = identificacaoConsignatario;
+    public ViagemRodoviariaCargaDetalhada nomeConsignatario(String nomeConsignatario) {
+        this.nomeConsignatario = nomeConsignatario;
         return this;
     }
 
@@ -398,11 +392,6 @@ public class ViagemRodoviariaCargaDetalhada {
         return this;
     }
 
-    public ViagemRodoviariaCargaDetalhada nomeConsignatario(String nomeConsignatario) {
-        this.nomeConsignatario = nomeConsignatario;
-        return this;
-    }
-
     /**
      * Get paisTransportadorResponsabilizaCarga
      *
@@ -415,6 +404,11 @@ public class ViagemRodoviariaCargaDetalhada {
 
     public void setPaisTransportadorResponsabilizaCarga(Pais paisTransportadorResponsabilizaCarga) {
         this.paisTransportadorResponsabilizaCarga = paisTransportadorResponsabilizaCarga;
+    }
+
+    public ViagemRodoviariaCargaDetalhada paisTransportadorResponsabilizaCarga(Pais paisTransportadorResponsabilizaCarga) {
+        this.paisTransportadorResponsabilizaCarga = paisTransportadorResponsabilizaCarga;
+        return this;
     }
 
     /**
@@ -450,8 +444,8 @@ public class ViagemRodoviariaCargaDetalhada {
         this.tipoCarga = tipoCarga;
     }
 
-    public ViagemRodoviariaCargaDetalhada paisTransportadorResponsabilizaCarga(Pais paisTransportadorResponsabilizaCarga) {
-        this.paisTransportadorResponsabilizaCarga = paisTransportadorResponsabilizaCarga;
+    public ViagemRodoviariaCargaDetalhada tipoCarga(TipoItemCargaCrt tipoCarga) {
+        this.tipoCarga = tipoCarga;
         return this;
     }
 
@@ -505,22 +499,8 @@ public class ViagemRodoviariaCargaDetalhada {
         this.valorFca = valorFca;
     }
 
-    public ViagemRodoviariaCargaDetalhada tipoCarga(TipoItemCargaCrt tipoCarga) {
-        this.tipoCarga = tipoCarga;
-        return this;
-    }
-
     public ViagemRodoviariaCargaDetalhada valorFca(ValorMonetario valorFca) {
         this.valorFca = valorFca;
-        return this;
-    }
-
-    public void setValorFrete(ValorMonetario valorFrete) {
-        this.valorFrete = valorFrete;
-    }
-
-    public ViagemRodoviariaCargaDetalhada valorFrete(ValorMonetario valorFrete) {
-        this.valorFrete = valorFrete;
         return this;
     }
 
@@ -534,8 +514,12 @@ public class ViagemRodoviariaCargaDetalhada {
         return valorFrete;
     }
 
-    public ViagemRodoviariaCargaDetalhada valorSeguro(ValorMonetario valorSeguro) {
-        this.valorSeguro = valorSeguro;
+    public void setValorFrete(ValorMonetario valorFrete) {
+        this.valorFrete = valorFrete;
+    }
+
+    public ViagemRodoviariaCargaDetalhada valorFrete(ValorMonetario valorFrete) {
+        this.valorFrete = valorFrete;
         return this;
     }
 
@@ -552,6 +536,12 @@ public class ViagemRodoviariaCargaDetalhada {
     public void setValorSeguro(ValorMonetario valorSeguro) {
         this.valorSeguro = valorSeguro;
     }
+
+    public ViagemRodoviariaCargaDetalhada valorSeguro(ValorMonetario valorSeguro) {
+        this.valorSeguro = valorSeguro;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -580,5 +570,16 @@ public class ViagemRodoviariaCargaDetalhada {
                 "    valorSeguro: " + toIndentedString(valorSeguro) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

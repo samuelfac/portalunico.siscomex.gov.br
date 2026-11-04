@@ -106,15 +106,9 @@ public class ValoresTributoDuimpCover {
         this.aReduzir = aReduzir;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ValoresTributoDuimpCover aReduzir(Double aReduzir) {
+        this.aReduzir = aReduzir;
+        return this;
     }
 
     /**
@@ -150,8 +144,8 @@ public class ValoresTributoDuimpCover {
         this.suspenso = suspenso;
     }
 
-    public ValoresTributoDuimpCover aReduzir(Double aReduzir) {
-        this.aReduzir = aReduzir;
+    public ValoresTributoDuimpCover suspenso(Double suspenso) {
+        this.suspenso = suspenso;
         return this;
     }
 
@@ -230,10 +224,6 @@ public class ValoresTributoDuimpCover {
         return this;
     }
 
-    public ValoresTributoDuimpCover suspenso(Double suspenso) {
-        this.suspenso = suspenso;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -249,5 +239,16 @@ public class ValoresTributoDuimpCover {
                 "    juros: " + toIndentedString(juros) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

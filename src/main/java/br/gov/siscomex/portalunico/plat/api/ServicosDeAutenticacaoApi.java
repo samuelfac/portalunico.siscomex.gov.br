@@ -25,7 +25,7 @@ public interface ServicosDeAutenticacaoApi {
 
     /**
      * Autentica o usuário a partir do par de chaves de acesso gerado no portal
-     *
+     * <p>
      * Efetua a autenticação básica do par de chaves. O par de chaves deve ser fornecido pelo usuário que deseja compartilhar sua credencial.
      *
      */
@@ -41,7 +41,7 @@ public interface ServicosDeAutenticacaoApi {
 
     /**
      * Autentica o sistema a partir do par de chaves de acesso gerado no portal
-     *
+     * <p>
      * Efetua a autenticação básica do par de chaves. O par de chaves deve ser fornecido por algum usuário cadastrado como responsável pelo sistema integrado. Esse tipo de autenticação é de uso restrito dos órgãos da administração pública.
      *
      */
@@ -57,7 +57,7 @@ public interface ServicosDeAutenticacaoApi {
 
     /**
      * Autentica o sistema a partir do certificado digital de equipamento previamente habilitado
-     *
+     * <p>
      * Efetua a autenticação mútua (mTLS) do certificado digital de equipamento (SSL). O certificado deve ser previamente habilitado por um usuário cadastrador de sistemas integrados do portal. Esse tipo de autenticação é de uso restrito dos órgãos da administração pública.
      *
      */
@@ -73,7 +73,7 @@ public interface ServicosDeAutenticacaoApi {
 
     /**
      * Autentica o usuário a partir do certificado digital de pessoa física ou jurídica
-     *
+     * <p>
      * Efetua a autenticação mútua (mTLS) do certificado digital e-CPF ou e-CNPJ padrão ICP Brasil.
      *
      */

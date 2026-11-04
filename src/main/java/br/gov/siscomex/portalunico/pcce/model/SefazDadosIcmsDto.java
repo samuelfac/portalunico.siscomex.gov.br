@@ -64,12 +64,43 @@ public class SefazDadosIcmsDto {
     private String descricaoDespesasAduaneiras = null;
 
 
-    @XmlElement(name = "iniciativaSefaz", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador de que a solicitação foi originada na Sefaz<br>Dominio:<br>true - Sim, <br>false - Não")
-    /**
-     * Indicador de que a solicitação foi originada na Sefaz<br>Dominio:<br>true - Sim, <br>false - Não
-     **/
-    private Boolean iniciativaSefaz = null;
+    @XmlType(name = "GeradorGuiaEnum")
+    @XmlEnum(String.class)
+    public enum GeradorGuiaEnum {
+
+        @XmlEnumValue("ESTADO")
+        @JsonProperty("ESTADO")
+        ESTADO("ESTADO"),
+
+        @XmlEnumValue("GNRE")
+        @JsonProperty("GNRE")
+        GNRE("GNRE");
+
+
+        private final String value;
+
+        GeradorGuiaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static GeradorGuiaEnum fromValue(String v) {
+            for (GeradorGuiaEnum b : GeradorGuiaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to GeradorGuiaEnum");
+        }
+    }
 
     @XmlElement(name = "geradorGuia")
     @ApiModelProperty(value = "Orgão gerador da guia de pagamento de ICMS <br/> (*) Obrigatório se tipoRetorno = CALCULADO_A_PAGAR e pagamentoFracionado = false")
@@ -85,12 +116,13 @@ public class SefazDadosIcmsDto {
      * Lista de guias de pagamento de ICMS<br/>(*) Obrigatório se tipoRetorno = CALCULADO_A_PAGAR e geradorGuia = ESTADO.
      **/
     private List<GuiaIcmsCreditoDto> guias = null;
-    @XmlElement(name = "numeroGlme")
-    @ApiModelProperty(example = "11111111111111111111111", value = "Número da GLME <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO")
+
+    @XmlElement(name = "iniciativaSefaz", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador de que a solicitação foi originada na Sefaz<br>Dominio:<br>true - Sim, <br>false - Não")
     /**
-     * Número da GLME <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO
+     * Indicador de que a solicitação foi originada na Sefaz<br>Dominio:<br>true - Sim, <br>false - Não
      **/
-    private String numeroGlme = null;
+    private Boolean iniciativaSefaz = null;
 
     @XmlElement(name = "justificativaIndeferimento")
     @ApiModelProperty(example = "Lorem ipsum dolor sit amet.", value = "Justificativa para o indeferimento da solicitação de declaração de ICMS <br>Tamanho mínimo: 1<br>Tamanho máximo: 300<br/>(*) Obrigatório se tipoRetorno = INDEFERIDO")
@@ -105,12 +137,13 @@ public class SefazDadosIcmsDto {
      * Número da declaração<br>Formato: 'NNAANNNNNNNNNNN'<br>Tamanho: 15
      **/
     private String numeroDeclaracao = null;
-    @XmlElement(name = "pagamentoFracionado")
-    @ApiModelProperty(example = "true", value = "Indicador de que o pagamento do ICMS será fracionado<br>Dominio:<br>true - Sim, <br>false - Não")
+
+    @XmlElement(name = "numeroGlme")
+    @ApiModelProperty(example = "11111111111111111111111", value = "Número da GLME <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO")
     /**
-     * Indicador de que o pagamento do ICMS será fracionado<br>Dominio:<br>true - Sim, <br>false - Não
+     * Número da GLME <br>Tamanho mínimo: 1<br>Tamanho máximo: 100<br/>(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao = EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO
      **/
-    private Boolean pagamentoFracionado = null;
+    private String numeroGlme = null;
 
     @XmlElement(name = "numeroMandadoJudicial")
     @ApiModelProperty(example = "11111111111111111111", value = "Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP e tipoRetorno != INDEFERIDO")
@@ -118,12 +151,13 @@ public class SefazDadosIcmsDto {
      * Número do Mandado Judicial <br>Tamanho mínimo: 1<br>Tamanho máximo: 30<br/>(*) Obrigatório se tipoSolicitacao = MANDADO_JUDICIAL_DUIMP e tipoRetorno != INDEFERIDO
      **/
     private String numeroMandadoJudicial = null;
-    @XmlElement(name = "tipoDeclaracao", required = true)
-    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
+
+    @XmlElement(name = "pagamentoFracionado")
+    @ApiModelProperty(example = "true", value = "Indicador de que o pagamento do ICMS será fracionado<br>Dominio:<br>true - Sim, <br>false - Não")
     /**
-     * Tipo da declaração no Comércio Exterior
+     * Indicador de que o pagamento do ICMS será fracionado<br>Dominio:<br>true - Sim, <br>false - Não
      **/
-    private TipoDeclaracaoEnum tipoDeclaracao = null;
+    private Boolean pagamentoFracionado = null;
 
     @XmlElement(name = "periodoReferencia")
     @ApiModelProperty(example = "2024-04", value = "Período de referência <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: 'yyyy-MM'")
@@ -131,45 +165,148 @@ public class SefazDadosIcmsDto {
      * Período de referência <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: 'yyyy-MM'
      **/
     private String periodoReferencia = null;
+
+
+    @XmlType(name = "TipoDeclaracaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDeclaracaoEnum {
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TipoDeclaracaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDeclaracaoEnum fromValue(String v) {
+            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
+        }
+    }
+
+    @XmlElement(name = "tipoDeclaracao", required = true)
+    @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo da declaração no Comércio Exterior")
+    /**
+     * Tipo da declaração no Comércio Exterior
+     **/
+    private TipoDeclaracaoEnum tipoDeclaracao = null;
+
+
+    @XmlType(name = "TipoRetornoEnum")
+    @XmlEnum(String.class)
+    public enum TipoRetornoEnum {
+
+        @XmlEnumValue("CALCULADO_A_PAGAR")
+        @JsonProperty("CALCULADO_A_PAGAR")
+        CALCULADO_A_PAGAR("CALCULADO_A_PAGAR"),
+
+        @XmlEnumValue("SEM_VALOR_A_PAGAR")
+        @JsonProperty("SEM_VALOR_A_PAGAR")
+        SEM_VALOR_A_PAGAR("SEM_VALOR_A_PAGAR"),
+
+        @XmlEnumValue("INDEFERIDO")
+        @JsonProperty("INDEFERIDO")
+        INDEFERIDO("INDEFERIDO");
+
+
+        private final String value;
+
+        TipoRetornoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoRetornoEnum fromValue(String v) {
+            for (TipoRetornoEnum b : TipoRetornoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoRetornoEnum");
+        }
+    }
+
     @XmlElement(name = "tipoRetorno", required = true)
     @ApiModelProperty(example = "CALCULADO_A_PAGAR", required = true, value = "Tipo de retorno")
     /**
      * Tipo de retorno
      **/
     private TipoRetornoEnum tipoRetorno = null;
-    @XmlElement(name = "valorTotalDevido")
-    @ApiModelProperty(example = "90.45", value = "Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
-    @Valid
-    /**
-     * Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
-     **/
-    private BigDecimal valorTotalDevido = null;
-    @XmlElement(name = "versaoDeclaracao", required = true)
-    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
-    /**
-     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
-     **/
-    private String versaoDeclaracao = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoSolicitacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoSolicitacaoEnum {
+
+        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
+        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
+        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
+        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
+        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
+        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
+        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
+
+        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
+        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
+        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
+
+        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
+        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
+        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
+
+
+        private final String value;
+
+        TipoSolicitacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
     }
 
-    /**
-     * CPF do responsável pela declaração de ICMS&lt;br/&gt;(*) Obrigatório se iniciativaSefaz &#x3D; true.&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11
-     *
-     * @return cpfSolicitante
-     **/
-    @JsonProperty("cpfSolicitante")
-    public String getCpfSolicitante() {
-        return cpfSolicitante;
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
     }
 
     @XmlElement(name = "tipoSolicitacao", required = true)
@@ -179,8 +316,143 @@ public class SefazDadosIcmsDto {
      **/
     private TipoSolicitacaoEnum tipoSolicitacao = null;
 
-    public void setCpfSolicitante(String cpfSolicitante) {
-        this.cpfSolicitante = cpfSolicitante;
+
+    @XmlType(name = "UfFavorecidaEnum")
+    @XmlEnum(String.class)
+    public enum UfFavorecidaEnum {
+
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
+
+        @XmlEnumValue("AL")
+        @JsonProperty("AL")
+        AL("AL"),
+
+        @XmlEnumValue("AM")
+        @JsonProperty("AM")
+        AM("AM"),
+
+        @XmlEnumValue("AP")
+        @JsonProperty("AP")
+        AP("AP"),
+
+        @XmlEnumValue("BA")
+        @JsonProperty("BA")
+        BA("BA"),
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("DF")
+        @JsonProperty("DF")
+        DF("DF"),
+
+        @XmlEnumValue("ES")
+        @JsonProperty("ES")
+        ES("ES"),
+
+        @XmlEnumValue("GO")
+        @JsonProperty("GO")
+        GO("GO"),
+
+        @XmlEnumValue("MA")
+        @JsonProperty("MA")
+        MA("MA"),
+
+        @XmlEnumValue("MG")
+        @JsonProperty("MG")
+        MG("MG"),
+
+        @XmlEnumValue("MS")
+        @JsonProperty("MS")
+        MS("MS"),
+
+        @XmlEnumValue("MT")
+        @JsonProperty("MT")
+        MT("MT"),
+
+        @XmlEnumValue("PA")
+        @JsonProperty("PA")
+        PA("PA"),
+
+        @XmlEnumValue("PB")
+        @JsonProperty("PB")
+        PB("PB"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("PI")
+        @JsonProperty("PI")
+        PI("PI"),
+
+        @XmlEnumValue("PR")
+        @JsonProperty("PR")
+        PR("PR"),
+
+        @XmlEnumValue("RJ")
+        @JsonProperty("RJ")
+        RJ("RJ"),
+
+        @XmlEnumValue("RN")
+        @JsonProperty("RN")
+        RN("RN"),
+
+        @XmlEnumValue("RO")
+        @JsonProperty("RO")
+        RO("RO"),
+
+        @XmlEnumValue("RR")
+        @JsonProperty("RR")
+        RR("RR"),
+
+        @XmlEnumValue("RS")
+        @JsonProperty("RS")
+        RS("RS"),
+
+        @XmlEnumValue("SC")
+        @JsonProperty("SC")
+        SC("SC"),
+
+        @XmlEnumValue("SE")
+        @JsonProperty("SE")
+        SE("SE"),
+
+        @XmlEnumValue("SP")
+        @JsonProperty("SP")
+        SP("SP"),
+
+        @XmlEnumValue("TO")
+        @JsonProperty("TO")
+        TO("TO");
+
+
+        private final String value;
+
+        UfFavorecidaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static UfFavorecidaEnum fromValue(String v) {
+            for (UfFavorecidaEnum b : UfFavorecidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfFavorecidaEnum");
+        }
     }
 
     @XmlElement(name = "ufFavorecida", required = true)
@@ -238,10 +510,13 @@ public class SefazDadosIcmsDto {
      **/
     private BigDecimal valorTotalCredito = null;
 
-    public SefazDadosIcmsDto cpfSolicitante(String cpfSolicitante) {
-        this.cpfSolicitante = cpfSolicitante;
-        return this;
-    }
+    @XmlElement(name = "valorTotalDevido")
+    @ApiModelProperty(example = "90.45", value = "Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
+    @Valid
+    /**
+     * Valor total devido (a pagar ou pago) <br/>(*) Obrigatório se tipoRetorno != INDEFERIDO.<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2
+     **/
+    private BigDecimal valorTotalDevido = null;
 
     @XmlElement(name = "valorTotalaRecolher")
     @ApiModelProperty(example = "42.87", value = "Somatório dos valores devidos + juros + multa + atualização monetária<br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2<br/>(*) Obrigatório se tipoSolicitacao = PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno != INDEFERIDO.")
@@ -251,16 +526,12 @@ public class SefazDadosIcmsDto {
      **/
     private BigDecimal valorTotalaRecolher = null;
 
+    @XmlElement(name = "versaoDeclaracao", required = true)
+    @ApiModelProperty(example = "1", required = true, value = "Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999")
     /**
-     * Indicador de que a solicitação foi originada na Sefaz&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
-     *
-     * @return iniciativaSefaz
+     * Versão da declaração<br>Valor mínimo: 1<br>Valor máximo: 9999
      **/
-    @JsonProperty("iniciativaSefaz")
-    @NotNull
-    public Boolean isisIniciativaSefaz() {
-        return iniciativaSefaz;
-    }
+    private String versaoDeclaracao = null;
 
     /**
      * Código de autorização de exoneração Sefaz &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
@@ -281,23 +552,23 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    public void setIniciativaSefaz(Boolean iniciativaSefaz) {
-        this.iniciativaSefaz = iniciativaSefaz;
-    }
-
-    public SefazDadosIcmsDto iniciativaSefaz(Boolean iniciativaSefaz) {
-        this.iniciativaSefaz = iniciativaSefaz;
-        return this;
-    }
-
     /**
-     * Número da GLME &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
+     * CPF do responsável pela declaração de ICMS&lt;br/&gt;(*) Obrigatório se iniciativaSefaz &#x3D; true.&lt;br&gt;Formato: &#39;NNNNNNNNNNN&#39;&lt;br&gt;Tamanho: 11
      *
-     * @return numeroGlme
+     * @return cpfSolicitante
      **/
-    @JsonProperty("numeroGlme")
-    public String getNumeroGlme() {
-        return numeroGlme;
+    @JsonProperty("cpfSolicitante")
+    public String getCpfSolicitante() {
+        return cpfSolicitante;
+    }
+
+    public void setCpfSolicitante(String cpfSolicitante) {
+        this.cpfSolicitante = cpfSolicitante;
+    }
+
+    public SefazDadosIcmsDto cpfSolicitante(String cpfSolicitante) {
+        this.cpfSolicitante = cpfSolicitante;
+        return this;
     }
 
     /**
@@ -403,23 +674,24 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    public void setNumeroGlme(String numeroGlme) {
-        this.numeroGlme = numeroGlme;
-    }
-
-    public SefazDadosIcmsDto numeroGlme(String numeroGlme) {
-        this.numeroGlme = numeroGlme;
-        return this;
-    }
-
     /**
-     * Número do Mandado Judicial &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; MANDADO_JUDICIAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
+     * Indicador de que a solicitação foi originada na Sefaz&lt;br&gt;Dominio:&lt;br&gt;true - Sim, &lt;br&gt;false - Não
      *
-     * @return numeroMandadoJudicial
+     * @return iniciativaSefaz
      **/
-    @JsonProperty("numeroMandadoJudicial")
-    public String getNumeroMandadoJudicial() {
-        return numeroMandadoJudicial;
+    @JsonProperty("iniciativaSefaz")
+    @NotNull
+    public Boolean isisIniciativaSefaz() {
+        return iniciativaSefaz;
+    }
+
+    public void setIniciativaSefaz(Boolean iniciativaSefaz) {
+        this.iniciativaSefaz = iniciativaSefaz;
+    }
+
+    public SefazDadosIcmsDto iniciativaSefaz(Boolean iniciativaSefaz) {
+        this.iniciativaSefaz = iniciativaSefaz;
+        return this;
     }
 
     /**
@@ -460,41 +732,37 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    public void setNumeroMandadoJudicial(String numeroMandadoJudicial) {
-        this.numeroMandadoJudicial = numeroMandadoJudicial;
-    }
-
     /**
-     * Período de referência &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: &#39;yyyy-MM&#39;
+     * Número da GLME &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100&lt;br/&gt;(*) Obrigatório numeroGlme ou autenticidadeGlme se tipoSolicitacao &#x3D; EXONERACAO_PAG_PARCIAL_DUIMP ou EXONERACAO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
      *
-     * @return periodoReferencia
+     * @return numeroGlme
      **/
-    @JsonProperty("periodoReferencia")
-    public String getPeriodoReferencia() {
-        return periodoReferencia;
+    @JsonProperty("numeroGlme")
+    public String getNumeroGlme() {
+        return numeroGlme;
     }
 
-    public void setPeriodoReferencia(String periodoReferencia) {
-        this.periodoReferencia = periodoReferencia;
+    public void setNumeroGlme(String numeroGlme) {
+        this.numeroGlme = numeroGlme;
     }
 
-    public SefazDadosIcmsDto periodoReferencia(String periodoReferencia) {
-        this.periodoReferencia = periodoReferencia;
+    public SefazDadosIcmsDto numeroGlme(String numeroGlme) {
+        this.numeroGlme = numeroGlme;
         return this;
     }
 
     /**
-     * Tipo de solicitação
+     * Número do Mandado Judicial &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; MANDADO_JUDICIAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO
      *
-     * @return tipoSolicitacao
+     * @return numeroMandadoJudicial
      **/
-    @JsonProperty("tipoSolicitacao")
-    @NotNull
-    public String getTipoSolicitacao() {
-        if (tipoSolicitacao == null) {
-            return null;
-        }
-        return tipoSolicitacao.value();
+    @JsonProperty("numeroMandadoJudicial")
+    public String getNumeroMandadoJudicial() {
+        return numeroMandadoJudicial;
+    }
+
+    public void setNumeroMandadoJudicial(String numeroMandadoJudicial) {
+        this.numeroMandadoJudicial = numeroMandadoJudicial;
     }
 
     public SefazDadosIcmsDto numeroMandadoJudicial(String numeroMandadoJudicial) {
@@ -520,27 +788,23 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    public void setTipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
-        this.tipoSolicitacao = tipoSolicitacao;
-    }
-
-    public SefazDadosIcmsDto tipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
-        this.tipoSolicitacao = tipoSolicitacao;
-        return this;
-    }
-
     /**
-     * UF favorecida
+     * Período de referência &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: &#39;yyyy-MM&#39;
      *
-     * @return ufFavorecida
+     * @return periodoReferencia
      **/
-    @JsonProperty("ufFavorecida")
-    @NotNull
-    public String getUfFavorecida() {
-        if (ufFavorecida == null) {
-            return null;
-        }
-        return ufFavorecida.value();
+    @JsonProperty("periodoReferencia")
+    public String getPeriodoReferencia() {
+        return periodoReferencia;
+    }
+
+    public void setPeriodoReferencia(String periodoReferencia) {
+        this.periodoReferencia = periodoReferencia;
+    }
+
+    public SefazDadosIcmsDto periodoReferencia(String periodoReferencia) {
+        this.periodoReferencia = periodoReferencia;
+        return this;
     }
 
     /**
@@ -589,57 +853,40 @@ public class SefazDadosIcmsDto {
     }
 
     /**
-     * Somatório dos valores devidos + juros + multa + atualização monetária&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
+     * Tipo de solicitação
      *
-     * @return valorTotalaRecolher
+     * @return tipoSolicitacao
      **/
-    @JsonProperty("valorTotalaRecolher")
-    public BigDecimal getValorTotalaRecolher() {
-        return valorTotalaRecolher;
+    @JsonProperty("tipoSolicitacao")
+    @NotNull
+    public String getTipoSolicitacao() {
+        if (tipoSolicitacao == null) {
+            return null;
+        }
+        return tipoSolicitacao.value();
     }
 
-    public void setValorTotalaRecolher(BigDecimal valorTotalaRecolher) {
-        this.valorTotalaRecolher = valorTotalaRecolher;
+    public void setTipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
+        this.tipoSolicitacao = tipoSolicitacao;
     }
 
-    public SefazDadosIcmsDto valorTotalaRecolher(BigDecimal valorTotalaRecolher) {
-        this.valorTotalaRecolher = valorTotalaRecolher;
+    public SefazDadosIcmsDto tipoSolicitacao(TipoSolicitacaoEnum tipoSolicitacao) {
+        this.tipoSolicitacao = tipoSolicitacao;
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SefazDadosIcmsDto {\n" +
-                "    autenticidadeGlme: " + toIndentedString(autenticidadeGlme) + "\n" +
-                "    cpfSolicitante: " + toIndentedString(cpfSolicitante) + "\n" +
-                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
-                "    dataLimiteGeracaoGuiaGnre: " + toIndentedString(dataLimiteGeracaoGuiaGnre) + "\n" +
-                "    descricaoDespesasAduaneiras: " + toIndentedString(descricaoDespesasAduaneiras) + "\n" +
-                "    geradorGuia: " + toIndentedString(geradorGuia) + "\n" +
-                "    guias: " + toIndentedString(guias) + "\n" +
-                "    iniciativaSefaz: " + toIndentedString(iniciativaSefaz) + "\n" +
-                "    justificativaIndeferimento: " + toIndentedString(justificativaIndeferimento) + "\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
-                "    numeroGlme: " + toIndentedString(numeroGlme) + "\n" +
-                "    numeroMandadoJudicial: " + toIndentedString(numeroMandadoJudicial) + "\n" +
-                "    pagamentoFracionado: " + toIndentedString(pagamentoFracionado) + "\n" +
-                "    periodoReferencia: " + toIndentedString(periodoReferencia) + "\n" +
-                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
-                "    tipoRetorno: " + toIndentedString(tipoRetorno) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
-                "    valorAfrmm: " + toIndentedString(valorAfrmm) + "\n" +
-                "    valorCIFExonerado: " + toIndentedString(valorCIFExonerado) + "\n" +
-                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
-                "    valorCifPagamento: " + toIndentedString(valorCifPagamento) + "\n" +
-                "    valorDespesasAduaneiras: " + toIndentedString(valorDespesasAduaneiras) + "\n" +
-                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
-                "    valorTotalDevido: " + toIndentedString(valorTotalDevido) + "\n" +
-                "    valorTotalaRecolher: " + toIndentedString(valorTotalaRecolher) + "\n" +
-                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
-                "}";
-        return sb;
+    /**
+     * UF favorecida
+     *
+     * @return ufFavorecida
+     **/
+    @JsonProperty("ufFavorecida")
+    @NotNull
+    public String getUfFavorecida() {
+        if (ufFavorecida == null) {
+            return null;
+        }
+        return ufFavorecida.value();
     }
 
     public void setUfFavorecida(UfFavorecidaEnum ufFavorecida) {
@@ -761,7 +1008,6 @@ public class SefazDadosIcmsDto {
 
     /**
      * Valor total devido (a pagar ou pago) &lt;br/&gt;(*) Obrigatório se tipoRetorno !&#x3D; INDEFERIDO.&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2
-     *
      * @return valorTotalDevido
      **/
     @JsonProperty("valorTotalDevido")
@@ -778,123 +1024,27 @@ public class SefazDadosIcmsDto {
         return this;
     }
 
-    @XmlType(name = "GeradorGuiaEnum")
-    @XmlEnum(String.class)
-    public enum GeradorGuiaEnum {
-
-        @XmlEnumValue("ESTADO")
-        @JsonProperty("ESTADO")
-        ESTADO("ESTADO"),
-
-        @XmlEnumValue("GNRE")
-        @JsonProperty("GNRE")
-        GNRE("GNRE");
-
-
-        private final String value;
-
-        GeradorGuiaEnum(String v) {
-            value = v;
-        }
-
-        public static GeradorGuiaEnum fromValue(String v) {
-            for (GeradorGuiaEnum b : GeradorGuiaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to GeradorGuiaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Somatório dos valores devidos + juros + multa + atualização monetária&lt;br&gt;Formato: Decimal, com 2 casas decimais separadas por ponto.&lt;br&gt;Tamanho: 15,2&lt;br/&gt;(*) Obrigatório se tipoSolicitacao &#x3D; PAGAMENTO_PARCIAL_DUIMP ou EXONERACAO_PAG_PARCIAL_DUIMP ou PAGAMENTO_INTEGRAL_DUIMP e tipoRetorno !&#x3D; INDEFERIDO.
+     *
+     * @return valorTotalaRecolher
+     **/
+    @JsonProperty("valorTotalaRecolher")
+    public BigDecimal getValorTotalaRecolher() {
+        return valorTotalaRecolher;
     }
 
-    @XmlType(name = "TipoDeclaracaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDeclaracaoEnum {
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TipoDeclaracaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDeclaracaoEnum fromValue(String v) {
-            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setValorTotalaRecolher(BigDecimal valorTotalaRecolher) {
+        this.valorTotalaRecolher = valorTotalaRecolher;
     }
 
-    @XmlType(name = "TipoRetornoEnum")
-    @XmlEnum(String.class)
-    public enum TipoRetornoEnum {
-
-        @XmlEnumValue("CALCULADO_A_PAGAR")
-        @JsonProperty("CALCULADO_A_PAGAR")
-        CALCULADO_A_PAGAR("CALCULADO_A_PAGAR"),
-
-        @XmlEnumValue("SEM_VALOR_A_PAGAR")
-        @JsonProperty("SEM_VALOR_A_PAGAR")
-        SEM_VALOR_A_PAGAR("SEM_VALOR_A_PAGAR"),
-
-        @XmlEnumValue("INDEFERIDO")
-        @JsonProperty("INDEFERIDO")
-        INDEFERIDO("INDEFERIDO");
-
-
-        private final String value;
-
-        TipoRetornoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoRetornoEnum fromValue(String v) {
-            for (TipoRetornoEnum b : TipoRetornoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoRetornoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public SefazDadosIcmsDto valorTotalaRecolher(BigDecimal valorTotalaRecolher) {
+        this.valorTotalaRecolher = valorTotalaRecolher;
+        return this;
     }
 
     /**
      * Versão da declaração&lt;br&gt;Valor mínimo: 1&lt;br&gt;Valor máximo: 9999
-     *
      * @return versaoDeclaracao
      **/
     @JsonProperty("versaoDeclaracao")
@@ -913,191 +1063,49 @@ public class SefazDadosIcmsDto {
     }
 
 
-    @XmlType(name = "TipoSolicitacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoSolicitacaoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("PAGAMENTO_INTEGRAL_DUIMP")
-        @JsonProperty("PAGAMENTO_INTEGRAL_DUIMP")
-        PAGAMENTO_INTEGRAL_DUIMP("PAGAMENTO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("PAGAMENTO_PARCIAL_DUIMP")
-        @JsonProperty("PAGAMENTO_PARCIAL_DUIMP")
-        PAGAMENTO_PARCIAL_DUIMP("PAGAMENTO_PARCIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_INTEGRAL_DUIMP")
-        @JsonProperty("EXONERACAO_INTEGRAL_DUIMP")
-        EXONERACAO_INTEGRAL_DUIMP("EXONERACAO_INTEGRAL_DUIMP"),
-
-        @XmlEnumValue("MANDADO_JUDICIAL_DUIMP")
-        @JsonProperty("MANDADO_JUDICIAL_DUIMP")
-        MANDADO_JUDICIAL_DUIMP("MANDADO_JUDICIAL_DUIMP"),
-
-        @XmlEnumValue("EXONERACAO_PAG_PARCIAL_DUIMP")
-        @JsonProperty("EXONERACAO_PAG_PARCIAL_DUIMP")
-        EXONERACAO_PAG_PARCIAL_DUIMP("EXONERACAO_PAG_PARCIAL_DUIMP");
-
-
-        private final String value;
-
-        TipoSolicitacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SefazDadosIcmsDto {\n" +
+                "    autenticidadeGlme: " + toIndentedString(autenticidadeGlme) + "\n" +
+                "    cpfSolicitante: " + toIndentedString(cpfSolicitante) + "\n" +
+                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
+                "    dataLimiteGeracaoGuiaGnre: " + toIndentedString(dataLimiteGeracaoGuiaGnre) + "\n" +
+                "    descricaoDespesasAduaneiras: " + toIndentedString(descricaoDespesasAduaneiras) + "\n" +
+                "    geradorGuia: " + toIndentedString(geradorGuia) + "\n" +
+                "    guias: " + toIndentedString(guias) + "\n" +
+                "    iniciativaSefaz: " + toIndentedString(iniciativaSefaz) + "\n" +
+                "    justificativaIndeferimento: " + toIndentedString(justificativaIndeferimento) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    numeroGlme: " + toIndentedString(numeroGlme) + "\n" +
+                "    numeroMandadoJudicial: " + toIndentedString(numeroMandadoJudicial) + "\n" +
+                "    pagamentoFracionado: " + toIndentedString(pagamentoFracionado) + "\n" +
+                "    periodoReferencia: " + toIndentedString(periodoReferencia) + "\n" +
+                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tipoRetorno: " + toIndentedString(tipoRetorno) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    ufFavorecida: " + toIndentedString(ufFavorecida) + "\n" +
+                "    valorAfrmm: " + toIndentedString(valorAfrmm) + "\n" +
+                "    valorCIFExonerado: " + toIndentedString(valorCIFExonerado) + "\n" +
+                "    valorCalculado: " + toIndentedString(valorCalculado) + "\n" +
+                "    valorCifPagamento: " + toIndentedString(valorCifPagamento) + "\n" +
+                "    valorDespesasAduaneiras: " + toIndentedString(valorDespesasAduaneiras) + "\n" +
+                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
+                "    valorTotalDevido: " + toIndentedString(valorTotalDevido) + "\n" +
+                "    valorTotalaRecolher: " + toIndentedString(valorTotalaRecolher) + "\n" +
+                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "UfFavorecidaEnum")
-    @XmlEnum(String.class)
-    public enum UfFavorecidaEnum {
-
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
-
-        @XmlEnumValue("AL")
-        @JsonProperty("AL")
-        AL("AL"),
-
-        @XmlEnumValue("AM")
-        @JsonProperty("AM")
-        AM("AM"),
-
-        @XmlEnumValue("AP")
-        @JsonProperty("AP")
-        AP("AP"),
-
-        @XmlEnumValue("BA")
-        @JsonProperty("BA")
-        BA("BA"),
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("DF")
-        @JsonProperty("DF")
-        DF("DF"),
-
-        @XmlEnumValue("ES")
-        @JsonProperty("ES")
-        ES("ES"),
-
-        @XmlEnumValue("GO")
-        @JsonProperty("GO")
-        GO("GO"),
-
-        @XmlEnumValue("MA")
-        @JsonProperty("MA")
-        MA("MA"),
-
-        @XmlEnumValue("MG")
-        @JsonProperty("MG")
-        MG("MG"),
-
-        @XmlEnumValue("MS")
-        @JsonProperty("MS")
-        MS("MS"),
-
-        @XmlEnumValue("MT")
-        @JsonProperty("MT")
-        MT("MT"),
-
-        @XmlEnumValue("PA")
-        @JsonProperty("PA")
-        PA("PA"),
-
-        @XmlEnumValue("PB")
-        @JsonProperty("PB")
-        PB("PB"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("PI")
-        @JsonProperty("PI")
-        PI("PI"),
-
-        @XmlEnumValue("PR")
-        @JsonProperty("PR")
-        PR("PR"),
-
-        @XmlEnumValue("RJ")
-        @JsonProperty("RJ")
-        RJ("RJ"),
-
-        @XmlEnumValue("RN")
-        @JsonProperty("RN")
-        RN("RN"),
-
-        @XmlEnumValue("RO")
-        @JsonProperty("RO")
-        RO("RO"),
-
-        @XmlEnumValue("RR")
-        @JsonProperty("RR")
-        RR("RR"),
-
-        @XmlEnumValue("RS")
-        @JsonProperty("RS")
-        RS("RS"),
-
-        @XmlEnumValue("SC")
-        @JsonProperty("SC")
-        SC("SC"),
-
-        @XmlEnumValue("SE")
-        @JsonProperty("SE")
-        SE("SE"),
-
-        @XmlEnumValue("SP")
-        @JsonProperty("SP")
-        SP("SP"),
-
-        @XmlEnumValue("TO")
-        @JsonProperty("TO")
-        TO("TO");
-
-
-        private final String value;
-
-        UfFavorecidaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static UfFavorecidaEnum fromValue(String v) {
-            for (UfFavorecidaEnum b : UfFavorecidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfFavorecidaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

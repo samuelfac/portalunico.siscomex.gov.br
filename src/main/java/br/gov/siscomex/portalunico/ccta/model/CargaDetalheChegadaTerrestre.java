@@ -83,15 +83,142 @@ public class CargaDetalheChegadaTerrestre {
     private String termo = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "UfEnum")
+    @XmlEnum(String.class)
+    public enum UfEnum {
+
+        @XmlEnumValue("AC")
+        @JsonProperty("AC")
+        AC("AC"),
+
+        @XmlEnumValue("AL")
+        @JsonProperty("AL")
+        AL("AL"),
+
+        @XmlEnumValue("AM")
+        @JsonProperty("AM")
+        AM("AM"),
+
+        @XmlEnumValue("AP")
+        @JsonProperty("AP")
+        AP("AP"),
+
+        @XmlEnumValue("BA")
+        @JsonProperty("BA")
+        BA("BA"),
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("DF")
+        @JsonProperty("DF")
+        DF("DF"),
+
+        @XmlEnumValue("ES")
+        @JsonProperty("ES")
+        ES("ES"),
+
+        @XmlEnumValue("GO")
+        @JsonProperty("GO")
+        GO("GO"),
+
+        @XmlEnumValue("MA")
+        @JsonProperty("MA")
+        MA("MA"),
+
+        @XmlEnumValue("MG")
+        @JsonProperty("MG")
+        MG("MG"),
+
+        @XmlEnumValue("MS")
+        @JsonProperty("MS")
+        MS("MS"),
+
+        @XmlEnumValue("MT")
+        @JsonProperty("MT")
+        MT("MT"),
+
+        @XmlEnumValue("PA")
+        @JsonProperty("PA")
+        PA("PA"),
+
+        @XmlEnumValue("PB")
+        @JsonProperty("PB")
+        PB("PB"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("PI")
+        @JsonProperty("PI")
+        PI("PI"),
+
+        @XmlEnumValue("PR")
+        @JsonProperty("PR")
+        PR("PR"),
+
+        @XmlEnumValue("RJ")
+        @JsonProperty("RJ")
+        RJ("RJ"),
+
+        @XmlEnumValue("RN")
+        @JsonProperty("RN")
+        RN("RN"),
+
+        @XmlEnumValue("RO")
+        @JsonProperty("RO")
+        RO("RO"),
+
+        @XmlEnumValue("RR")
+        @JsonProperty("RR")
+        RR("RR"),
+
+        @XmlEnumValue("RS")
+        @JsonProperty("RS")
+        RS("RS"),
+
+        @XmlEnumValue("SC")
+        @JsonProperty("SC")
+        SC("SC"),
+
+        @XmlEnumValue("SE")
+        @JsonProperty("SE")
+        SE("SE"),
+
+        @XmlEnumValue("SP")
+        @JsonProperty("SP")
+        SP("SP"),
+
+        @XmlEnumValue("TO")
+        @JsonProperty("TO")
+        TO("TO");
+
+
+        private final String value;
+
+        UfEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static UfEnum fromValue(String v) {
+            for (UfEnum b : UfEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfEnum");
+        }
     }
 
     @XmlElement(name = "uf")
@@ -101,23 +228,43 @@ public class CargaDetalheChegadaTerrestre {
      **/
     private UfEnum uf = null;
 
+
+    @XmlType(name = "VeiculoRegistradoNoMantraEnum")
+    @XmlEnum(String.class)
+    public enum VeiculoRegistradoNoMantraEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        VeiculoRegistradoNoMantraEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
     @Override
     public String toString() {
+        return String.valueOf(value);
+    }
 
-        String sb = "class CargaDetalheChegadaTerrestre {\n" +
-                "    codigoRecintoChegada: " + toIndentedString(codigoRecintoChegada) + "\n" +
-                "    codigoRecintoPartida: " + toIndentedString(codigoRecintoPartida) + "\n" +
-                "    codigoUaChegada: " + toIndentedString(codigoUaChegada) + "\n" +
-                "    codigoUaPartida: " + toIndentedString(codigoUaPartida) + "\n" +
-                "    dataHoraChegada: " + toIndentedString(dataHoraChegada) + "\n" +
-                "    dataHoraPartida: " + toIndentedString(dataHoraPartida) + "\n" +
-                "    numeroDta: " + toIndentedString(numeroDta) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    termo: " + toIndentedString(termo) + "\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
-                "    veiculoRegistradoNoMantra: " + toIndentedString(veiculoRegistradoNoMantra) + "\n" +
-                "}";
-        return sb;
+        public static VeiculoRegistradoNoMantraEnum fromValue(String v) {
+            for (VeiculoRegistradoNoMantraEnum b : VeiculoRegistradoNoMantraEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to VeiculoRegistradoNoMantraEnum");
+        }
     }
 
     @XmlElement(name = "veiculoRegistradoNoMantra")
@@ -341,179 +488,33 @@ public class CargaDetalheChegadaTerrestre {
     }
 
 
-    @XmlType(name = "UfEnum")
-    @XmlEnum(String.class)
-    public enum UfEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("AC")
-        @JsonProperty("AC")
-        AC("AC"),
-
-        @XmlEnumValue("AL")
-        @JsonProperty("AL")
-        AL("AL"),
-
-        @XmlEnumValue("AM")
-        @JsonProperty("AM")
-        AM("AM"),
-
-        @XmlEnumValue("AP")
-        @JsonProperty("AP")
-        AP("AP"),
-
-        @XmlEnumValue("BA")
-        @JsonProperty("BA")
-        BA("BA"),
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("DF")
-        @JsonProperty("DF")
-        DF("DF"),
-
-        @XmlEnumValue("ES")
-        @JsonProperty("ES")
-        ES("ES"),
-
-        @XmlEnumValue("GO")
-        @JsonProperty("GO")
-        GO("GO"),
-
-        @XmlEnumValue("MA")
-        @JsonProperty("MA")
-        MA("MA"),
-
-        @XmlEnumValue("MG")
-        @JsonProperty("MG")
-        MG("MG"),
-
-        @XmlEnumValue("MS")
-        @JsonProperty("MS")
-        MS("MS"),
-
-        @XmlEnumValue("MT")
-        @JsonProperty("MT")
-        MT("MT"),
-
-        @XmlEnumValue("PA")
-        @JsonProperty("PA")
-        PA("PA"),
-
-        @XmlEnumValue("PB")
-        @JsonProperty("PB")
-        PB("PB"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("PI")
-        @JsonProperty("PI")
-        PI("PI"),
-
-        @XmlEnumValue("PR")
-        @JsonProperty("PR")
-        PR("PR"),
-
-        @XmlEnumValue("RJ")
-        @JsonProperty("RJ")
-        RJ("RJ"),
-
-        @XmlEnumValue("RN")
-        @JsonProperty("RN")
-        RN("RN"),
-
-        @XmlEnumValue("RO")
-        @JsonProperty("RO")
-        RO("RO"),
-
-        @XmlEnumValue("RR")
-        @JsonProperty("RR")
-        RR("RR"),
-
-        @XmlEnumValue("RS")
-        @JsonProperty("RS")
-        RS("RS"),
-
-        @XmlEnumValue("SC")
-        @JsonProperty("SC")
-        SC("SC"),
-
-        @XmlEnumValue("SE")
-        @JsonProperty("SE")
-        SE("SE"),
-
-        @XmlEnumValue("SP")
-        @JsonProperty("SP")
-        SP("SP"),
-
-        @XmlEnumValue("TO")
-        @JsonProperty("TO")
-        TO("TO");
-
-
-        private final String value;
-
-        UfEnum(String v) {
-            value = v;
-        }
-
-        public static UfEnum fromValue(String v) {
-            for (UfEnum b : UfEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UfEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class CargaDetalheChegadaTerrestre {\n" +
+                "    codigoRecintoChegada: " + toIndentedString(codigoRecintoChegada) + "\n" +
+                "    codigoRecintoPartida: " + toIndentedString(codigoRecintoPartida) + "\n" +
+                "    codigoUaChegada: " + toIndentedString(codigoUaChegada) + "\n" +
+                "    codigoUaPartida: " + toIndentedString(codigoUaPartida) + "\n" +
+                "    dataHoraChegada: " + toIndentedString(dataHoraChegada) + "\n" +
+                "    dataHoraPartida: " + toIndentedString(dataHoraPartida) + "\n" +
+                "    numeroDta: " + toIndentedString(numeroDta) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    termo: " + toIndentedString(termo) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
+                "    veiculoRegistradoNoMantra: " + toIndentedString(veiculoRegistradoNoMantra) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "VeiculoRegistradoNoMantraEnum")
-    @XmlEnum(String.class)
-    public enum VeiculoRegistradoNoMantraEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        VeiculoRegistradoNoMantraEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static VeiculoRegistradoNoMantraEnum fromValue(String v) {
-            for (VeiculoRegistradoNoMantraEnum b : VeiculoRegistradoNoMantraEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to VeiculoRegistradoNoMantraEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

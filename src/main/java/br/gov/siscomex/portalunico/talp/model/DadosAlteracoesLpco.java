@@ -93,15 +93,9 @@ public class DadosAlteracoesLpco {
         this.origem = origem;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosAlteracoesLpco origem(String origem) {
+        this.origem = origem;
+        return this;
     }
 
     /**
@@ -138,8 +132,8 @@ public class DadosAlteracoesLpco {
         this.valorOriginal = valorOriginal;
     }
 
-    public DadosAlteracoesLpco origem(String origem) {
-        this.origem = origem;
+    public DadosAlteracoesLpco valorOriginal(String valorOriginal) {
+        this.valorOriginal = valorOriginal;
         return this;
     }
 
@@ -162,10 +156,6 @@ public class DadosAlteracoesLpco {
         return this;
     }
 
-    public DadosAlteracoesLpco valorOriginal(String valorOriginal) {
-        this.valorOriginal = valorOriginal;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -179,4 +169,15 @@ public class DadosAlteracoesLpco {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

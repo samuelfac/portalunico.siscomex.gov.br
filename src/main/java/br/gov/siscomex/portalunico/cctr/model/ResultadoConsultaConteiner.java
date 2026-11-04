@@ -125,15 +125,9 @@ public class ResultadoConsultaConteiner {
         this.motivoNaoPesagem = motivoNaoPesagem;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ResultadoConsultaConteiner motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
     }
 
     /**
@@ -174,8 +168,8 @@ public class ResultadoConsultaConteiner {
         return this;
     }
 
-    public ResultadoConsultaConteiner motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
+    public ResultadoConsultaConteiner addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
         return this;
     }
 
@@ -246,10 +240,6 @@ public class ResultadoConsultaConteiner {
         return this;
     }
 
-    public ResultadoConsultaConteiner addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -265,5 +255,16 @@ public class ResultadoConsultaConteiner {
                 "    permiteMovimentacao: " + toIndentedString(permiteMovimentacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

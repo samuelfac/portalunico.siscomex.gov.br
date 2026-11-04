@@ -101,15 +101,9 @@ public class FabricanteCover {
         this.niOperador = niOperador;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public FabricanteCover niOperador(String niOperador) {
+        this.niOperador = niOperador;
+        return this;
     }
 
     /**
@@ -131,10 +125,6 @@ public class FabricanteCover {
         return this;
     }
 
-    public FabricanteCover niOperador(String niOperador) {
-        this.niOperador = niOperador;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -146,5 +136,16 @@ public class FabricanteCover {
                 "    pais: " + toIndentedString(pais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -84,15 +84,9 @@ public class EstoqueConsultaResumida {
         this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EstoqueConsultaResumida dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
+        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+        return this;
     }
 
     /**
@@ -147,8 +141,8 @@ public class EstoqueConsultaResumida {
         this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
     }
 
-    public EstoqueConsultaResumida dataHoraSituacaoAtual(String dataHoraSituacaoAtual) {
-        this.dataHoraSituacaoAtual = dataHoraSituacaoAtual;
+    public EstoqueConsultaResumida quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
+        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
         return this;
     }
 
@@ -185,8 +179,8 @@ public class EstoqueConsultaResumida {
         this.situacaoAtual = situacaoAtual;
     }
 
-    public EstoqueConsultaResumida quantidadeVolumesEstoque(BigDecimal quantidadeVolumesEstoque) {
-        this.quantidadeVolumesEstoque = quantidadeVolumesEstoque;
+    public EstoqueConsultaResumida situacaoAtual(String situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
         return this;
     }
 
@@ -209,10 +203,6 @@ public class EstoqueConsultaResumida {
         return this;
     }
 
-    public EstoqueConsultaResumida situacaoAtual(String situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -227,5 +217,16 @@ public class EstoqueConsultaResumida {
                 "    unidadeRfb: " + toIndentedString(unidadeRfb) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

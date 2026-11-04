@@ -28,358 +28,6 @@ import java.util.List;
 public class CampoFormulario {
 
 
-    @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "PAIS_DESTINO", required = true, value = "Código de identificação do campo<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50")
-    /**
-     * Código de identificação do campo<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50
-     **/
-    private CodigoEnum codigo = null;
-    @XmlElement(name = "nome", required = true)
-    @ApiModelProperty(example = "País de destino", required = true, value = "Nome descritivo do campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40")
-    /**
-     * Nome descritivo do campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40
-     **/
-    private String nome = null;
-    @XmlElement(name = "unidadeMedida")
-    @ApiModelProperty(example = "KG", value = "Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60")
-    /**
-     * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60
-     **/
-    private String unidadeMedida = null;
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "LISTA_ESTATICA", required = true, value = "Tipo da informação recebida pelo campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40")
-    /**
-     * Tipo da informação recebida pelo campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "validacao", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private ValidacaoCampoLpco validacao = null;
-    @XmlElement(name = "condicaoPreenchimento")
-    @ApiModelProperty(example = "1) 'ATT_1 == 04 || == 05 || == 06', 2) 'ATT_1 > 10 && < 100'", value = "Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são '<', '<=', '>', '>=', '==', '!=', '&&', '||', e o campo será preenchido com a sentença completa, conforme os exemplos")
-    /**
-     * Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são '<', '<=', '>', '>=', '==', '!=', '&&', '||', e o campo será preenchido com a sentença completa, conforme os exemplos
-     **/
-    private String condicaoPreenchimento = null;
-    @XmlElement(name = "codigoAtributoPai")
-    @ApiModelProperty(example = "ATT_1", value = "Código do atributo condicionante a ser informado no campo LPCO na propriedade 'codigoAtributoPai'")
-    /**
-     * Código do atributo condicionante a ser informado no campo LPCO na propriedade 'codigoAtributoPai'
-     **/
-    private String codigoAtributoPai = null;
-    @XmlElement(name = "subatributos")
-    @ApiModelProperty(value = "Lista de subatributos que compõem este campo quando for um atributo composto")
-    @Valid
-    /**
-     * Lista de subatributos que compõem este campo quando for um atributo composto
-     **/
-    private List<CampoFormulario> subatributos = null;
-    @XmlElement(name = "codigosCamposFiltro")
-    @ApiModelProperty(example = "[\"ATT_1\", \"NCM\"]", value = "Códigos dos campos que são utilizados como filtro para definição do domínio deste campo. Utilizado apenas quando o tipo do campo é LISTA_TABX_FILTRO")
-    /**
-     * Códigos dos campos que são utilizados como filtro para definição do domínio deste campo. Utilizado apenas quando o tipo do campo é LISTA_TABX_FILTRO
-     **/
-    private List<String> codigosCamposFiltro = null;
-    @XmlElement(name = "orientacao")
-    @ApiModelProperty(example = "Preencher o valor conforme a máscara do campo.", value = "Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.")
-    /**
-     * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
-     **/
-    private String orientacao = null;
-    @XmlElement(name = "exemplo")
-    @ApiModelProperty(example = "{ \"codigo\": \"ATT_0001\", \"listaValor\": [ \"true\"] }", value = "Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.")
-    /**
-     * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
-     **/
-    private String exemplo = null;
-    @XmlElement(name = "nomeIdentificadorAtributo")
-    @ApiModelProperty(example = "Destaque da NCM 01012000", value = "Nome único de identificação de campos que são atributos.")
-    /**
-     * Nome único de identificação de campos que são atributos.
-     **/
-    private String nomeIdentificadorAtributo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código de identificação do campo&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
-     *
-     * @return codigo
-     **/
-    @JsonProperty("codigo")
-    @NotNull
-    public String getCodigo() {
-        if (codigo == null) {
-            return null;
-        }
-        return codigo.value();
-    }
-
-    public void setCodigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-    }
-
-    public CampoFormulario codigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-    /**
-     * Nome descritivo do campo&lt;br&gt;Tamanho mínimo: 1 &lt;br&gt;Tamanho máximo: 40
-     *
-     * @return nome
-     **/
-    @JsonProperty("nome")
-    @NotNull
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public CampoFormulario nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
-
-    /**
-     * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 60
-     *
-     * @return unidadeMedida
-     **/
-    @JsonProperty("unidadeMedida")
-    public String getUnidadeMedida() {
-        return unidadeMedida;
-    }
-
-    public void setUnidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
-    }
-
-    public CampoFormulario unidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
-        return this;
-    }
-
-    /**
-     * Tipo da informação recebida pelo campo&lt;br&gt;Tamanho mínimo: 1 &lt;br&gt;Tamanho máximo: 40
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    @NotNull
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public CampoFormulario tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Get validacao
-     *
-     * @return validacao
-     **/
-    @JsonProperty("validacao")
-    @NotNull
-    public ValidacaoCampoLpco getValidacao() {
-        return validacao;
-    }
-
-    public void setValidacao(ValidacaoCampoLpco validacao) {
-        this.validacao = validacao;
-    }
-
-    public CampoFormulario validacao(ValidacaoCampoLpco validacao) {
-        this.validacao = validacao;
-        return this;
-    }
-
-    /**
-     * Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são &#39;&lt;&#39;, &#39;&lt;&#x3D;&#39;, &#39;&gt;&#39;, &#39;&gt;&#x3D;&#39;, &#39;&#x3D;&#x3D;&#39;, &#39;!&#x3D;&#39;, &#39;&amp;&amp;&#39;, &#39;||&#39;, e o campo será preenchido com a sentença completa, conforme os exemplos
-     *
-     * @return condicaoPreenchimento
-     **/
-    @JsonProperty("condicaoPreenchimento")
-    public String getCondicaoPreenchimento() {
-        return condicaoPreenchimento;
-    }
-
-    public void setCondicaoPreenchimento(String condicaoPreenchimento) {
-        this.condicaoPreenchimento = condicaoPreenchimento;
-    }
-
-    public CampoFormulario condicaoPreenchimento(String condicaoPreenchimento) {
-        this.condicaoPreenchimento = condicaoPreenchimento;
-        return this;
-    }
-
-    /**
-     * Código do atributo condicionante a ser informado no campo LPCO na propriedade &#39;codigoAtributoPai&#39;
-     *
-     * @return codigoAtributoPai
-     **/
-    @JsonProperty("codigoAtributoPai")
-    public String getCodigoAtributoPai() {
-        return codigoAtributoPai;
-    }
-
-    public void setCodigoAtributoPai(String codigoAtributoPai) {
-        this.codigoAtributoPai = codigoAtributoPai;
-    }
-
-    public CampoFormulario codigoAtributoPai(String codigoAtributoPai) {
-        this.codigoAtributoPai = codigoAtributoPai;
-        return this;
-    }
-
-    /**
-     * Lista de subatributos que compõem este campo quando for um atributo composto
-     *
-     * @return subatributos
-     **/
-    @JsonProperty("subatributos")
-    public List<CampoFormulario> getSubatributos() {
-        return subatributos;
-    }
-
-    public void setSubatributos(List<CampoFormulario> subatributos) {
-        this.subatributos = subatributos;
-    }
-
-    public CampoFormulario subatributos(List<CampoFormulario> subatributos) {
-        this.subatributos = subatributos;
-        return this;
-    }
-
-    public CampoFormulario addSubatributosItem(CampoFormulario subatributosItem) {
-        this.subatributos.add(subatributosItem);
-        return this;
-    }
-
-    /**
-     * Códigos dos campos que são utilizados como filtro para definição do domínio deste campo. Utilizado apenas quando o tipo do campo é LISTA_TABX_FILTRO
-     *
-     * @return codigosCamposFiltro
-     **/
-    @JsonProperty("codigosCamposFiltro")
-    public List<String> getCodigosCamposFiltro() {
-        return codigosCamposFiltro;
-    }
-
-    public void setCodigosCamposFiltro(List<String> codigosCamposFiltro) {
-        this.codigosCamposFiltro = codigosCamposFiltro;
-    }
-
-    public CampoFormulario codigosCamposFiltro(List<String> codigosCamposFiltro) {
-        this.codigosCamposFiltro = codigosCamposFiltro;
-        return this;
-    }
-
-    public CampoFormulario addCodigosCamposFiltroItem(String codigosCamposFiltroItem) {
-        this.codigosCamposFiltro.add(codigosCamposFiltroItem);
-        return this;
-    }
-
-    /**
-     * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
-     *
-     * @return orientacao
-     **/
-    @JsonProperty("orientacao")
-    public String getOrientacao() {
-        return orientacao;
-    }
-
-    public void setOrientacao(String orientacao) {
-        this.orientacao = orientacao;
-    }
-
-    public CampoFormulario orientacao(String orientacao) {
-        this.orientacao = orientacao;
-        return this;
-    }
-
-    /**
-     * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
-     *
-     * @return exemplo
-     **/
-    @JsonProperty("exemplo")
-    public String getExemplo() {
-        return exemplo;
-    }
-
-    public void setExemplo(String exemplo) {
-        this.exemplo = exemplo;
-    }
-
-    public CampoFormulario exemplo(String exemplo) {
-        this.exemplo = exemplo;
-        return this;
-    }
-
-    /**
-     * Nome único de identificação de campos que são atributos.
-     *
-     * @return nomeIdentificadorAtributo
-     **/
-    @JsonProperty("nomeIdentificadorAtributo")
-    public String getNomeIdentificadorAtributo() {
-        return nomeIdentificadorAtributo;
-    }
-
-    public void setNomeIdentificadorAtributo(String nomeIdentificadorAtributo) {
-        this.nomeIdentificadorAtributo = nomeIdentificadorAtributo;
-    }
-
-    public CampoFormulario nomeIdentificadorAtributo(String nomeIdentificadorAtributo) {
-        this.nomeIdentificadorAtributo = nomeIdentificadorAtributo;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CampoFormulario {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    unidadeMedida: " + toIndentedString(unidadeMedida) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    validacao: " + toIndentedString(validacao) + "\n" +
-                "    condicaoPreenchimento: " + toIndentedString(condicaoPreenchimento) + "\n" +
-                "    codigoAtributoPai: " + toIndentedString(codigoAtributoPai) + "\n" +
-                "    subatributos: " + toIndentedString(subatributos) + "\n" +
-                "    codigosCamposFiltro: " + toIndentedString(codigosCamposFiltro) + "\n" +
-                "    orientacao: " + toIndentedString(orientacao) + "\n" +
-                "    exemplo: " + toIndentedString(exemplo) + "\n" +
-                "    nomeIdentificadorAtributo: " + toIndentedString(nomeIdentificadorAtributo) + "\n" +
-                "}";
-        return sb;
-    }
-
-
     @XmlType(name = "CodigoEnum")
     @XmlEnum(String.class)
     public enum CodigoEnum {
@@ -690,6 +338,28 @@ public class CampoFormulario {
         }
     }
 
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "PAIS_DESTINO", required = true, value = "Código de identificação do campo<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50")
+    /**
+     * Código de identificação do campo<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50
+     **/
+    private CodigoEnum codigo = null;
+
+    @XmlElement(name = "nome", required = true)
+    @ApiModelProperty(example = "País de destino", required = true, value = "Nome descritivo do campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40")
+    /**
+     * Nome descritivo do campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40
+     **/
+    private String nome = null;
+
+    @XmlElement(name = "unidadeMedida")
+    @ApiModelProperty(example = "KG", value = "Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60")
+    /**
+     * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA<br>Tamanho mínimo: 0<br>Tamanho máximo: 60
+     **/
+    private String unidadeMedida = null;
+
+
     @XmlType(name = "TipoEnum")
     @XmlEnum(String.class)
     public enum TipoEnum {
@@ -802,5 +472,347 @@ public class CampoFormulario {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
+    }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "LISTA_ESTATICA", required = true, value = "Tipo da informação recebida pelo campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40")
+    /**
+     * Tipo da informação recebida pelo campo<br>Tamanho mínimo: 1 <br>Tamanho máximo: 40
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "validacao", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private ValidacaoCampoLpco validacao = null;
+
+    @XmlElement(name = "condicaoPreenchimento")
+    @ApiModelProperty(example = "1) 'ATT_1 == 04 || == 05 || == 06', 2) 'ATT_1 > 10 && < 100'", value = "Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são '<', '<=', '>', '>=', '==', '!=', '&&', '||', e o campo será preenchido com a sentença completa, conforme os exemplos")
+    /**
+     * Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são '<', '<=', '>', '>=', '==', '!=', '&&', '||', e o campo será preenchido com a sentença completa, conforme os exemplos
+     **/
+    private String condicaoPreenchimento = null;
+
+    @XmlElement(name = "codigoAtributoPai")
+    @ApiModelProperty(example = "ATT_1", value = "Código do atributo condicionante a ser informado no campo LPCO na propriedade 'codigoAtributoPai'")
+    /**
+     * Código do atributo condicionante a ser informado no campo LPCO na propriedade 'codigoAtributoPai'
+     **/
+    private String codigoAtributoPai = null;
+
+    @XmlElement(name = "subatributos")
+    @ApiModelProperty(value = "Lista de subatributos que compõem este campo quando for um atributo composto")
+    @Valid
+    /**
+     * Lista de subatributos que compõem este campo quando for um atributo composto
+     **/
+    private List<CampoFormulario> subatributos = null;
+
+    @XmlElement(name = "codigosCamposFiltro")
+    @ApiModelProperty(example = "[\"ATT_1\", \"NCM\"]", value = "Códigos dos campos que são utilizados como filtro para definição do domínio deste campo. Utilizado apenas quando o tipo do campo é LISTA_TABX_FILTRO")
+    /**
+     * Códigos dos campos que são utilizados como filtro para definição do domínio deste campo. Utilizado apenas quando o tipo do campo é LISTA_TABX_FILTRO
+     **/
+    private List<String> codigosCamposFiltro = null;
+
+    @XmlElement(name = "orientacao")
+    @ApiModelProperty(example = "Preencher o valor conforme a máscara do campo.", value = "Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.")
+    /**
+     * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+     **/
+    private String orientacao = null;
+
+    @XmlElement(name = "exemplo")
+    @ApiModelProperty(example = "{ \"codigo\": \"ATT_0001\", \"listaValor\": [ \"true\"] }", value = "Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.")
+    /**
+     * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+     **/
+    private String exemplo = null;
+
+    @XmlElement(name = "nomeIdentificadorAtributo")
+    @ApiModelProperty(example = "Destaque da NCM 01012000", value = "Nome único de identificação de campos que são atributos.")
+    /**
+     * Nome único de identificação de campos que são atributos.
+     **/
+    private String nomeIdentificadorAtributo = null;
+
+    /**
+     * Código de identificação do campo&lt;br&gt;Tamanho mínimo: 0 &lt;br&gt;Tamanho máximo: 50
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    @NotNull
+    public String getCodigo() {
+        if (codigo == null) {
+            return null;
+        }
+        return codigo.value();
+    }
+
+    public void setCodigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+    }
+
+    public CampoFormulario codigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+    /**
+     * Nome descritivo do campo&lt;br&gt;Tamanho mínimo: 1 &lt;br&gt;Tamanho máximo: 40
+     *
+     * @return nome
+     **/
+    @JsonProperty("nome")
+    @NotNull
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public CampoFormulario nome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    /**
+     * Unidade de medida que será retornada para os campos QTDE_ESTATISTICA e QTDE_COMERCIALIZADA e deverá ser informada para QTDE_COMERCIALIZADA&lt;br&gt;Tamanho mínimo: 0&lt;br&gt;Tamanho máximo: 60
+     *
+     * @return unidadeMedida
+     **/
+    @JsonProperty("unidadeMedida")
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+    }
+
+    public CampoFormulario unidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
+        return this;
+    }
+
+    /**
+     * Tipo da informação recebida pelo campo&lt;br&gt;Tamanho mínimo: 1 &lt;br&gt;Tamanho máximo: 40
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    @NotNull
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public CampoFormulario tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Get validacao
+     *
+     * @return validacao
+     **/
+    @JsonProperty("validacao")
+    @NotNull
+    public ValidacaoCampoLpco getValidacao() {
+        return validacao;
+    }
+
+    public void setValidacao(ValidacaoCampoLpco validacao) {
+        this.validacao = validacao;
+    }
+
+    public CampoFormulario validacao(ValidacaoCampoLpco validacao) {
+        this.validacao = validacao;
+        return this;
+    }
+
+    /**
+     * Indica em qual condição este campo pode ser preenchido. Os operadores condicionais são &#39;&lt;&#39;, &#39;&lt;&#x3D;&#39;, &#39;&gt;&#39;, &#39;&gt;&#x3D;&#39;, &#39;&#x3D;&#x3D;&#39;, &#39;!&#x3D;&#39;, &#39;&amp;&amp;&#39;, &#39;||&#39;, e o campo será preenchido com a sentença completa, conforme os exemplos
+     *
+     * @return condicaoPreenchimento
+     **/
+    @JsonProperty("condicaoPreenchimento")
+    public String getCondicaoPreenchimento() {
+        return condicaoPreenchimento;
+    }
+
+    public void setCondicaoPreenchimento(String condicaoPreenchimento) {
+        this.condicaoPreenchimento = condicaoPreenchimento;
+    }
+
+    public CampoFormulario condicaoPreenchimento(String condicaoPreenchimento) {
+        this.condicaoPreenchimento = condicaoPreenchimento;
+        return this;
+    }
+
+    /**
+     * Código do atributo condicionante a ser informado no campo LPCO na propriedade &#39;codigoAtributoPai&#39;
+     *
+     * @return codigoAtributoPai
+     **/
+    @JsonProperty("codigoAtributoPai")
+    public String getCodigoAtributoPai() {
+        return codigoAtributoPai;
+    }
+
+    public void setCodigoAtributoPai(String codigoAtributoPai) {
+        this.codigoAtributoPai = codigoAtributoPai;
+    }
+
+    public CampoFormulario codigoAtributoPai(String codigoAtributoPai) {
+        this.codigoAtributoPai = codigoAtributoPai;
+        return this;
+    }
+
+    /**
+     * Lista de subatributos que compõem este campo quando for um atributo composto
+     *
+     * @return subatributos
+     **/
+    @JsonProperty("subatributos")
+    public List<CampoFormulario> getSubatributos() {
+        return subatributos;
+    }
+
+    public void setSubatributos(List<CampoFormulario> subatributos) {
+        this.subatributos = subatributos;
+    }
+
+    public CampoFormulario subatributos(List<CampoFormulario> subatributos) {
+        this.subatributos = subatributos;
+        return this;
+    }
+
+    public CampoFormulario addSubatributosItem(CampoFormulario subatributosItem) {
+        this.subatributos.add(subatributosItem);
+        return this;
+    }
+
+    /**
+     * Códigos dos campos que são utilizados como filtro para definição do domínio deste campo. Utilizado apenas quando o tipo do campo é LISTA_TABX_FILTRO
+     *
+     * @return codigosCamposFiltro
+     **/
+    @JsonProperty("codigosCamposFiltro")
+    public List<String> getCodigosCamposFiltro() {
+        return codigosCamposFiltro;
+    }
+
+    public void setCodigosCamposFiltro(List<String> codigosCamposFiltro) {
+        this.codigosCamposFiltro = codigosCamposFiltro;
+    }
+
+    public CampoFormulario codigosCamposFiltro(List<String> codigosCamposFiltro) {
+        this.codigosCamposFiltro = codigosCamposFiltro;
+        return this;
+    }
+
+    public CampoFormulario addCodigosCamposFiltroItem(String codigosCamposFiltroItem) {
+        this.codigosCamposFiltro.add(codigosCamposFiltroItem);
+        return this;
+    }
+
+    /**
+     * Orientação de como preencher o campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+     *
+     * @return orientacao
+     **/
+    @JsonProperty("orientacao")
+    public String getOrientacao() {
+        return orientacao;
+    }
+
+    public void setOrientacao(String orientacao) {
+        this.orientacao = orientacao;
+    }
+
+    public CampoFormulario orientacao(String orientacao) {
+        this.orientacao = orientacao;
+        return this;
+    }
+
+    /**
+     * Exemplo de JSON para preenchimento do campo nos serviços de inclusão, alteração e retifiação de pedido LPCO.
+     *
+     * @return exemplo
+     **/
+    @JsonProperty("exemplo")
+    public String getExemplo() {
+        return exemplo;
+    }
+
+    public void setExemplo(String exemplo) {
+        this.exemplo = exemplo;
+    }
+
+    public CampoFormulario exemplo(String exemplo) {
+        this.exemplo = exemplo;
+        return this;
+    }
+
+    /**
+     * Nome único de identificação de campos que são atributos.
+     *
+     * @return nomeIdentificadorAtributo
+     **/
+    @JsonProperty("nomeIdentificadorAtributo")
+    public String getNomeIdentificadorAtributo() {
+        return nomeIdentificadorAtributo;
+    }
+
+    public void setNomeIdentificadorAtributo(String nomeIdentificadorAtributo) {
+        this.nomeIdentificadorAtributo = nomeIdentificadorAtributo;
+    }
+
+    public CampoFormulario nomeIdentificadorAtributo(String nomeIdentificadorAtributo) {
+        this.nomeIdentificadorAtributo = nomeIdentificadorAtributo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class CampoFormulario {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    unidadeMedida: " + toIndentedString(unidadeMedida) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    validacao: " + toIndentedString(validacao) + "\n" +
+                "    condicaoPreenchimento: " + toIndentedString(condicaoPreenchimento) + "\n" +
+                "    codigoAtributoPai: " + toIndentedString(codigoAtributoPai) + "\n" +
+                "    subatributos: " + toIndentedString(subatributos) + "\n" +
+                "    codigosCamposFiltro: " + toIndentedString(codigosCamposFiltro) + "\n" +
+                "    orientacao: " + toIndentedString(orientacao) + "\n" +
+                "    exemplo: " + toIndentedString(exemplo) + "\n" +
+                "    nomeIdentificadorAtributo: " + toIndentedString(nomeIdentificadorAtributo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

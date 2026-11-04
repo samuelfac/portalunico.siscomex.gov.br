@@ -92,5 +92,5 @@ public class CampoRetornoApiRepresentation {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

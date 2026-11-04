@@ -141,15 +141,9 @@ public class DuimpItemBalancaComercialCover {
         this.caracterizacaoImportacao = caracterizacaoImportacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DuimpItemBalancaComercialCover caracterizacaoImportacao(CaracterizacaoImportacaoConsultaItemCover caracterizacaoImportacao) {
+        this.caracterizacaoImportacao = caracterizacaoImportacao;
+        return this;
     }
 
     /**
@@ -185,8 +179,8 @@ public class DuimpItemBalancaComercialCover {
         this.fabricante = fabricante;
     }
 
-    public DuimpItemBalancaComercialCover caracterizacaoImportacao(CaracterizacaoImportacaoConsultaItemCover caracterizacaoImportacao) {
-        this.caracterizacaoImportacao = caracterizacaoImportacao;
+    public DuimpItemBalancaComercialCover fabricante(FabricanteCover fabricante) {
+        this.fabricante = fabricante;
         return this;
     }
 
@@ -223,8 +217,8 @@ public class DuimpItemBalancaComercialCover {
         this.indicadorCompradorVendedor = indicadorCompradorVendedor;
     }
 
-    public DuimpItemBalancaComercialCover fabricante(FabricanteCover fabricante) {
-        this.fabricante = fabricante;
+    public DuimpItemBalancaComercialCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
+        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
         return this;
     }
 
@@ -325,8 +319,8 @@ public class DuimpItemBalancaComercialCover {
         return this;
     }
 
-    public DuimpItemBalancaComercialCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
-        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
+    public DuimpItemBalancaComercialCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
+        this.atributosDuimp.add(atributosDuimpItem);
         return this;
     }
 
@@ -372,10 +366,6 @@ public class DuimpItemBalancaComercialCover {
         return this;
     }
 
-    public DuimpItemBalancaComercialCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
-        this.atributosDuimp.add(atributosDuimpItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -397,5 +387,16 @@ public class DuimpItemBalancaComercialCover {
                 "    tributos: " + toIndentedString(tributos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

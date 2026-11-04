@@ -23,12 +23,47 @@ import java.util.List;
 public class DadosAcessoVeculo {
 
 
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
@@ -43,12 +78,13 @@ public class DadosAcessoVeculo {
      * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
      **/
     private String idEvento = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String protocoloEventoRetificadoOuExcluido = null;
+    private String dataHoraOcorrencia = null;
 
     @XmlElement(name = "dataHoraRegistro", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -70,13 +106,13 @@ public class DadosAcessoVeculo {
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
-    @XmlElement(name = "listaDeclaracaoAduaneira")
-    @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
-    @Valid
+
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
     /**
-     * Lista de declarações aduaneiras associadas à carga.
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
      **/
-    private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
+    private String protocoloEventoRetificadoOuExcluido = null;
 
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -91,12 +127,45 @@ public class DadosAcessoVeculo {
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
      **/
     private String codigoRecinto = null;
-    @XmlElement(name = "tipoGranel")
-    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS")
-    /**
-     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS
-     **/
-    private TipoGranelEnum tipoGranel = null;
+
+
+    @XmlType(name = "OperacaoEnum")
+    @XmlEnum(String.class)
+    public enum OperacaoEnum {
+
+        @XmlEnumValue("G")
+        @JsonProperty("G")
+        G("G"),
+
+        @XmlEnumValue("C")
+        @JsonProperty("C")
+        C("C");
+
+
+        private final String value;
+
+        OperacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static OperacaoEnum fromValue(String v) {
+            for (OperacaoEnum b : OperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to OperacaoEnum");
+        }
+    }
 
     @XmlElement(name = "operacao", required = true)
     @ApiModelProperty(example = "G", required = true, value = "Operação de agendamento de entrada/saída de veículo (agendamento) ou de entrada/saída de veículo (acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso")
@@ -104,12 +173,45 @@ public class DadosAcessoVeculo {
      * Operação de agendamento de entrada/saída de veículo (agendamento) ou de entrada/saída de veículo (acesso). Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>G - Agendamento<br/>C - Acesso
      **/
     private OperacaoEnum operacao = null;
-    @XmlElement(name = "placa")
-    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
-    /**
-     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
-     **/
-    private String placa = null;
+
+
+    @XmlType(name = "DirecaoEnum")
+    @XmlEnum(String.class)
+    public enum DirecaoEnum {
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'"),
+
+        @XmlEnumValue("'S'")
+        @JsonProperty("'S'")
+        S_("'S'");
+
+
+        private final String value;
+
+        DirecaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static DirecaoEnum fromValue(String v) {
+            for (DirecaoEnum b : DirecaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DirecaoEnum");
+        }
+    }
 
     @XmlElement(name = "direcao", required = true)
     @ApiModelProperty(example = "E", required = true, value = "Direção do veículo. Indica se é um movimento de entrada ou de saída do veículo. Pode ser nulo quando o evento for de exclusão.<br/>Domínio:<br/>E - Entrada<br/>S - Saída")
@@ -139,12 +241,14 @@ public class DadosAcessoVeculo {
      * Lista de manifestos.
      **/
     private List<DadosDoManifestoDaCarga> listaManifestos = null;
-    @XmlElement(name = "ufEmplacamento")
-    @ApiModelProperty(example = "SP", value = "UF Emplacamento.<br/>Informar apenas no caso de trânsito terrestre cuja chegada da carga no país ocorreu via aeroporto<br/>Tamanho: 2")
+
+    @XmlElement(name = "listaDeclaracaoAduaneira")
+    @ApiModelProperty(value = "Lista de declarações aduaneiras associadas à carga.")
+    @Valid
     /**
-     * UF Emplacamento.<br/>Informar apenas no caso de trânsito terrestre cuja chegada da carga no país ocorreu via aeroporto<br/>Tamanho: 2
+     * Lista de declarações aduaneiras associadas à carga.
      **/
-    private String ufEmplacamento = null;
+    private List<DocumentoAduaneiro> listaDeclaracaoAduaneira = null;
 
     @XmlElement(name = "listaNfe")
     @ApiModelProperty(value = "Lista de chaves das NFE que amparam o transporte.")
@@ -161,16 +265,76 @@ public class DadosAcessoVeculo {
      * Lista com as malas postais. Utilizar apenas para remessa postal internacional.
      **/
     private List<DadosDaMala> listaMalas = null;
-    @XmlElement(name = "nomeTransportador")
-    @ApiModelProperty(value = "Nome da empresa transportadora.<br/>Tamanho: 100")
+
+
+    @XmlType(name = "TipoGranelEnum")
+    @XmlEnum(String.class)
+    public enum TipoGranelEnum {
+
+        @XmlEnumValue("'01'")
+        @JsonProperty("'01'")
+        _01_("'01'"),
+
+        @XmlEnumValue("'02'")
+        @JsonProperty("'02'")
+        _02_("'02'"),
+
+        @XmlEnumValue("'03'")
+        @JsonProperty("'03'")
+        _03_("'03'"),
+
+        @XmlEnumValue("'04'")
+        @JsonProperty("'04'")
+        _04_("'04'"),
+
+        @XmlEnumValue("'05'")
+        @JsonProperty("'05'")
+        _05_("'05'"),
+
+        @XmlEnumValue("'06'")
+        @JsonProperty("'06'")
+        _06_("'06'"),
+
+        @XmlEnumValue("'07'")
+        @JsonProperty("'07'")
+        _07_("'07'"),
+
+        @XmlEnumValue("'99'")
+        @JsonProperty("'99'")
+        _99_("'99'");
+
+
+        private final String value;
+
+        TipoGranelEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoGranelEnum fromValue(String v) {
+            for (TipoGranelEnum b : TipoGranelEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoGranelEnum");
+        }
+    }
+
+    @XmlElement(name = "tipoGranel")
+    @ApiModelProperty(example = "01", value = "Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS")
     /**
-     * Nome da empresa transportadora.<br/>Tamanho: 100
+     * Tipo de granel conforme tabela de domínio.<br/>Domínio:<br/>01 - SÓLIDOS - MINÉRIOS<br/>02 - SÓLIDOS - GRÃOS<br/>03 - SÓLIDOS - FARELOS<br/>04 - SÓLIDOS - OUTROS<br/>05 - LÍQUIDOS - COMBUSTÍVEIS<br/>06 - LÍQUIDOS - OUTROS<br/>07 - GASOSOS<br/>99 - OUTROS
      **/
-    private String nomeTransportador = null;
-    @XmlElement(name = "motorista")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DadosMotorista motorista = null;
+    private TipoGranelEnum tipoGranel = null;
 
     @XmlElement(name = "listaChassi")
     @ApiModelProperty(value = "Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50")
@@ -179,23 +343,20 @@ public class DadosAcessoVeculo {
      * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'listaChassi.chassi' quando o atributo 'placa' não for informado.<br/>Tamanho: 50
      **/
     private List<DadosDoChassiEmbarque> listaChassi = null;
-    @XmlElement(name = "gate")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36")
-    /**
-     * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36
-     **/
-    private String gate = null;
 
+    @XmlElement(name = "placa")
+    @ApiModelProperty(value = "Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'placa' quando o atributo 'lista.Chassi.chassi' não for informado. Pode ser nulo quando o evento for de exclusão.<br/>Tamanho: 50
+     **/
+    private String placa = null;
+
+    @XmlElement(name = "ufEmplacamento")
+    @ApiModelProperty(example = "SP", value = "UF Emplacamento.<br/>Informar apenas no caso de trânsito terrestre cuja chegada da carga no país ocorreu via aeroporto<br/>Tamanho: 2")
+    /**
+     * UF Emplacamento.<br/>Informar apenas no caso de trânsito terrestre cuja chegada da carga no país ocorreu via aeroporto<br/>Tamanho: 2
+     **/
+    private String ufEmplacamento = null;
 
     @XmlElement(name = "ocrPlaca")
     @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'operacao' for informado com valor 'C'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -255,20 +416,17 @@ public class DadosAcessoVeculo {
      **/
     private String transportadorEstrangeiro = null;
 
+    @XmlElement(name = "nomeTransportador")
+    @ApiModelProperty(value = "Nome da empresa transportadora.<br/>Tamanho: 100")
     /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraOcorrencia
+     * Nome da empresa transportadora.<br/>Tamanho: 100
      **/
-    @JsonProperty("dataHoraOcorrencia")
-    @NotNull
-    public String getDataHoraOcorrencia() {
-        return dataHoraOcorrencia;
-    }
+    private String nomeTransportador = null;
 
-    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-    }
+    @XmlElement(name = "motorista")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DadosMotorista motorista = null;
 
     @XmlElement(name = "codigoRecintoDestino")
     @ApiModelProperty(value = "Código Siscomex do recinto de destino. Informar apenas no caso de saída do recinto em regime de trânsito.<br/>Tamanho: 15")
@@ -291,9 +449,43 @@ public class DadosAcessoVeculo {
      **/
     private String dataHoraPartidaOrigem = null;
 
-    public DadosAcessoVeculo dataHoraOcorrencia(String dataHoraOcorrencia) {
-        this.dataHoraOcorrencia = dataHoraOcorrencia;
-        return this;
+
+    @XmlType(name = "ModalEnum")
+    @XmlEnum(String.class)
+    public enum ModalEnum {
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'F'")
+        @JsonProperty("'F'")
+        F_("'F'");
+
+
+        private final String value;
+
+        ModalEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ModalEnum fromValue(String v) {
+            for (ModalEnum b : ModalEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalEnum");
+        }
     }
 
     @XmlElement(name = "modal")
@@ -303,15 +495,12 @@ public class DadosAcessoVeculo {
      **/
     private ModalEnum modal = null;
 
+    @XmlElement(name = "gate")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36")
     /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
-     *
-     * @return cpfOperadorRegistro
+     * Identificação do Gate.<br/>Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'gate' quando o atributo 'operacao' for informado com valor 'C'.<br/>Tamanho: 36
      **/
-    @JsonProperty("cpfOperadorRegistro")
-    public String getCpfOperadorRegistro() {
-        return cpfOperadorRegistro;
-    }
+    private String gate = null;
 
     @XmlElement(name = "listaCameras")
     @ApiModelProperty(value = "Lista de identificação das câmeras. Usar o protocolo do evento de georreferenciamento para indicar, nesta lista, todas as câmeras que cobrem o Gate por onde o veículo ingressou/saiu.")
@@ -364,23 +553,24 @@ public class DadosAcessoVeculo {
         return this;
     }
 
-    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-    }
-
-    public DadosAcessoVeculo cpfOperadorRegistro(String cpfOperadorRegistro) {
-        this.cpfOperadorRegistro = cpfOperadorRegistro;
-        return this;
-    }
-
     /**
-     * Lista de declarações aduaneiras associadas à carga.
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return listaDeclaracaoAduaneira
+     * @return dataHoraOcorrencia
      **/
-    @JsonProperty("listaDeclaracaoAduaneira")
-    public List<DocumentoAduaneiro> getListaDeclaracaoAduaneira() {
-        return listaDeclaracaoAduaneira;
+    @JsonProperty("dataHoraOcorrencia")
+    @NotNull
+    public String getDataHoraOcorrencia() {
+        return dataHoraOcorrencia;
+    }
+
+    public void setDataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+    }
+
+    public DadosAcessoVeculo dataHoraOcorrencia(String dataHoraOcorrencia) {
+        this.dataHoraOcorrencia = dataHoraOcorrencia;
+        return this;
     }
 
     /**
@@ -423,21 +613,21 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Lista de chaves das NFE que amparam o transporte.
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.&lt;br&gt;Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.&lt;br/&gt;Tamanho: 11&lt;br/&gt;Formato: &#39;NNNNNNNNNNN&#39;
      *
-     * @return listaNfe
+     * @return cpfOperadorRegistro
      **/
-    @JsonProperty("listaNfe")
-    public List<DadosDaNotaFiscal> getListaNfe() {
-        return listaNfe;
+    @JsonProperty("cpfOperadorRegistro")
+    public String getCpfOperadorRegistro() {
+        return cpfOperadorRegistro;
     }
 
-    public void setListaNfe(List<DadosDaNotaFiscal> listaNfe) {
-        this.listaNfe = listaNfe;
+    public void setCpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
     }
 
-    public DadosAcessoVeculo listaNfe(List<DadosDaNotaFiscal> listaNfe) {
-        this.listaNfe = listaNfe;
+    public DadosAcessoVeculo cpfOperadorRegistro(String cpfOperadorRegistro) {
+        this.cpfOperadorRegistro = cpfOperadorRegistro;
         return this;
     }
 
@@ -604,9 +794,14 @@ public class DadosAcessoVeculo {
         return this;
     }
 
-    public DadosAcessoVeculo addListaNfeItem(DadosDaNotaFiscal listaNfeItem) {
-        this.listaNfe.add(listaNfeItem);
-        return this;
+    /**
+     * Lista de declarações aduaneiras associadas à carga.
+     *
+     * @return listaDeclaracaoAduaneira
+     **/
+    @JsonProperty("listaDeclaracaoAduaneira")
+    public List<DocumentoAduaneiro> getListaDeclaracaoAduaneira() {
+        return listaDeclaracaoAduaneira;
     }
 
     public void setListaDeclaracaoAduaneira(List<DocumentoAduaneiro> listaDeclaracaoAduaneira) {
@@ -624,25 +819,25 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;listaChassi.chassi&#39; quando o atributo &#39;placa&#39; não for informado.&lt;br/&gt;Tamanho: 50
-     * @return listaChassi
+     * Lista de chaves das NFE que amparam o transporte.
+     * @return listaNfe
      **/
-    @JsonProperty("listaChassi")
-    public List<DadosDoChassiEmbarque> getListaChassi() {
-        return listaChassi;
+    @JsonProperty("listaNfe")
+    public List<DadosDaNotaFiscal> getListaNfe() {
+        return listaNfe;
     }
 
-    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
-        this.listaChassi = listaChassi;
+    public void setListaNfe(List<DadosDaNotaFiscal> listaNfe) {
+        this.listaNfe = listaNfe;
     }
 
-    public DadosAcessoVeculo listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
-        this.listaChassi = listaChassi;
+    public DadosAcessoVeculo listaNfe(List<DadosDaNotaFiscal> listaNfe) {
+        this.listaNfe = listaNfe;
         return this;
     }
 
-    public DadosAcessoVeculo addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
-        this.listaChassi.add(listaChassiItem);
+    public DadosAcessoVeculo addListaNfeItem(DadosDaNotaFiscal listaNfeItem) {
+        this.listaNfe.add(listaNfeItem);
         return this;
     }
 
@@ -671,6 +866,7 @@ public class DadosAcessoVeculo {
 
     /**
      * Tipo de granel conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;01 - SÓLIDOS - MINÉRIOS&lt;br/&gt;02 - SÓLIDOS - GRÃOS&lt;br/&gt;03 - SÓLIDOS - FARELOS&lt;br/&gt;04 - SÓLIDOS - OUTROS&lt;br/&gt;05 - LÍQUIDOS - COMBUSTÍVEIS&lt;br/&gt;06 - LÍQUIDOS - OUTROS&lt;br/&gt;07 - GASOSOS&lt;br/&gt;99 - OUTROS
+     *
      * @return tipoGranel
      **/
     @JsonProperty("tipoGranel")
@@ -691,32 +887,26 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return ocrPlaca
+     * Lista de Chassis. Informar todos os chassis das mercadorias, inclusive o tipo meios próprios (Impo/Expo ônibus, cavalo-trator, semirreboque...).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;listaChassi.chassi&#39; quando o atributo &#39;placa&#39; não for informado.&lt;br/&gt;Tamanho: 50
+     * @return listaChassi
      **/
-    @JsonProperty("ocrPlaca")
-    public Boolean isisOcrPlaca() {
-        return ocrPlaca;
+    @JsonProperty("listaChassi")
+    public List<DadosDoChassiEmbarque> getListaChassi() {
+        return listaChassi;
     }
 
-    public void setOcrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
+    public void setListaChassi(List<DadosDoChassiEmbarque> listaChassi) {
+        this.listaChassi = listaChassi;
     }
 
-    public DadosAcessoVeculo ocrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
+    public DadosAcessoVeculo listaChassi(List<DadosDoChassiEmbarque> listaChassi) {
+        this.listaChassi = listaChassi;
         return this;
     }
 
-    /**
-     * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;oogDimensao&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
-     *
-     * @return oogDimensao
-     **/
-    @JsonProperty("oogDimensao")
-    public Boolean isisOogDimensao() {
-        return oogDimensao;
+    public DadosAcessoVeculo addListaChassiItem(DadosDoChassiEmbarque listaChassiItem) {
+        this.listaChassi.add(listaChassiItem);
+        return this;
     }
 
     /**
@@ -756,32 +946,30 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Código Siscomex do recinto de destino. Informar apenas no caso de saída do recinto em regime de trânsito.&lt;br/&gt;Tamanho: 15
-     *
-     * @return codigoRecintoDestino
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition)&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * @return ocrPlaca
      **/
-    @JsonProperty("codigoRecintoDestino")
-    public String getCodigoRecintoDestino() {
-        return codigoRecintoDestino;
+    @JsonProperty("ocrPlaca")
+    public Boolean isisOcrPlaca() {
+        return ocrPlaca;
     }
 
-    public void setCodigoRecintoDestino(String codigoRecintoDestino) {
-        this.codigoRecintoDestino = codigoRecintoDestino;
+    public void setOcrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
     }
 
-    public DadosAcessoVeculo codigoRecintoDestino(String codigoRecintoDestino) {
-        this.codigoRecintoDestino = codigoRecintoDestino;
+    public DadosAcessoVeculo ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
         return this;
     }
 
     /**
-     * Código Siscomex do recinto de origem. Informar apenas no caso de chegada em recinto em regime de trânsito.&lt;br/&gt;Tamanho: 15
-     *
-     * @return codigoRecintoOrigem
+     * Dimensões que impeçam a entrada/saída OOG (Out of Gauge) pelo gate padrão ou a pesagem ou a passagem pelo scanner.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;oogDimensao&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * @return oogDimensao
      **/
-    @JsonProperty("codigoRecintoOrigem")
-    public String getCodigoRecintoOrigem() {
-        return codigoRecintoOrigem;
+    @JsonProperty("oogDimensao")
+    public Boolean isisOogDimensao() {
+        return oogDimensao;
     }
 
     public void setOogDimensao(Boolean oogDimensao) {
@@ -931,6 +1119,7 @@ public class DadosAcessoVeculo {
 
     /**
      * Get motorista
+     *
      * @return motorista
      **/
     @JsonProperty("motorista")
@@ -948,67 +1137,30 @@ public class DadosAcessoVeculo {
     }
 
     /**
-     * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;gate&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 36
-     *
-     * @return gate
+     * Código Siscomex do recinto de destino. Informar apenas no caso de saída do recinto em regime de trânsito.&lt;br/&gt;Tamanho: 15
+     * @return codigoRecintoDestino
      **/
-    @JsonProperty("gate")
-    public String getGate() {
-        return gate;
+    @JsonProperty("codigoRecintoDestino")
+    public String getCodigoRecintoDestino() {
+        return codigoRecintoDestino;
     }
 
-    public void setGate(String gate) {
-        this.gate = gate;
+    public void setCodigoRecintoDestino(String codigoRecintoDestino) {
+        this.codigoRecintoDestino = codigoRecintoDestino;
     }
 
-    public DadosAcessoVeculo gate(String gate) {
-        this.gate = gate;
+    public DadosAcessoVeculo codigoRecintoDestino(String codigoRecintoDestino) {
+        this.codigoRecintoDestino = codigoRecintoDestino;
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class DadosAcessoVeculo {\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
-                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
-                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    operacao: " + toIndentedString(operacao) + "\n" +
-                "    direcao: " + toIndentedString(direcao) + "\n" +
-                "    protocoloAgenda: " + toIndentedString(protocoloAgenda) + "\n" +
-                "    dataHoraAgenda: " + toIndentedString(dataHoraAgenda) + "\n" +
-                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
-                "    listaDeclaracaoAduaneira: " + toIndentedString(listaDeclaracaoAduaneira) + "\n" +
-                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
-                "    listaMalas: " + toIndentedString(listaMalas) + "\n" +
-                "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
-                "    listaChassi: " + toIndentedString(listaChassi) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    ufEmplacamento: " + toIndentedString(ufEmplacamento) + "\n" +
-                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
-                "    oogDimensao: " + toIndentedString(oogDimensao) + "\n" +
-                "    oogPeso: " + toIndentedString(oogPeso) + "\n" +
-                "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
-                "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
-                "    cnpjTransportador: " + toIndentedString(cnpjTransportador) + "\n" +
-                "    cpfTransportador: " + toIndentedString(cpfTransportador) + "\n" +
-                "    transportadorEstrangeiro: " + toIndentedString(transportadorEstrangeiro) + "\n" +
-                "    nomeTransportador: " + toIndentedString(nomeTransportador) + "\n" +
-                "    motorista: " + toIndentedString(motorista) + "\n" +
-                "    codigoRecintoDestino: " + toIndentedString(codigoRecintoDestino) + "\n" +
-                "    codigoRecintoOrigem: " + toIndentedString(codigoRecintoOrigem) + "\n" +
-                "    dataHoraPartidaOrigem: " + toIndentedString(dataHoraPartidaOrigem) + "\n" +
-                "    modal: " + toIndentedString(modal) + "\n" +
-                "    gate: " + toIndentedString(gate) + "\n" +
-                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Código Siscomex do recinto de origem. Informar apenas no caso de chegada em recinto em regime de trânsito.&lt;br/&gt;Tamanho: 15
+     * @return codigoRecintoOrigem
+     **/
+    @JsonProperty("codigoRecintoOrigem")
+    public String getCodigoRecintoOrigem() {
+        return codigoRecintoOrigem;
     }
 
     public void setCodigoRecintoOrigem(String codigoRecintoOrigem) {
@@ -1059,122 +1211,22 @@ public class DadosAcessoVeculo {
         return this;
     }
 
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Identificação do Gate.&lt;br/&gt;Usar o protocolo do evento de georreferenciamento relativo ao ponto de acesso utilizado.&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;gate&#39; quando o atributo &#39;operacao&#39; for informado com valor &#39;C&#39;.&lt;br/&gt;Tamanho: 36
+     * @return gate
+     **/
+    @JsonProperty("gate")
+    public String getGate() {
+        return gate;
     }
 
-    @XmlType(name = "OperacaoEnum")
-    @XmlEnum(String.class)
-    public enum OperacaoEnum {
-
-        @XmlEnumValue("G")
-        @JsonProperty("G")
-        G("G"),
-
-        @XmlEnumValue("C")
-        @JsonProperty("C")
-        C("C");
-
-
-        private final String value;
-
-        OperacaoEnum(String v) {
-            value = v;
-        }
-
-        public static OperacaoEnum fromValue(String v) {
-            for (OperacaoEnum b : OperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to OperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setGate(String gate) {
+        this.gate = gate;
     }
 
-    @XmlType(name = "DirecaoEnum")
-    @XmlEnum(String.class)
-    public enum DirecaoEnum {
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'"),
-
-        @XmlEnumValue("'S'")
-        @JsonProperty("'S'")
-        S_("'S'");
-
-
-        private final String value;
-
-        DirecaoEnum(String v) {
-            value = v;
-        }
-
-        public static DirecaoEnum fromValue(String v) {
-            for (DirecaoEnum b : DirecaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DirecaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public DadosAcessoVeculo gate(String gate) {
+        this.gate = gate;
+        return this;
     }
 
     /**
@@ -1201,103 +1253,59 @@ public class DadosAcessoVeculo {
     }
 
 
-    @XmlType(name = "TipoGranelEnum")
-    @XmlEnum(String.class)
-    public enum TipoGranelEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("'01'")
-        @JsonProperty("'01'")
-        _01_("'01'"),
-
-        @XmlEnumValue("'02'")
-        @JsonProperty("'02'")
-        _02_("'02'"),
-
-        @XmlEnumValue("'03'")
-        @JsonProperty("'03'")
-        _03_("'03'"),
-
-        @XmlEnumValue("'04'")
-        @JsonProperty("'04'")
-        _04_("'04'"),
-
-        @XmlEnumValue("'05'")
-        @JsonProperty("'05'")
-        _05_("'05'"),
-
-        @XmlEnumValue("'06'")
-        @JsonProperty("'06'")
-        _06_("'06'"),
-
-        @XmlEnumValue("'07'")
-        @JsonProperty("'07'")
-        _07_("'07'"),
-
-        @XmlEnumValue("'99'")
-        @JsonProperty("'99'")
-        _99_("'99'");
-
-
-        private final String value;
-
-        TipoGranelEnum(String v) {
-            value = v;
-        }
-
-        public static TipoGranelEnum fromValue(String v) {
-            for (TipoGranelEnum b : TipoGranelEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoGranelEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class DadosAcessoVeculo {\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
+                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    operacao: " + toIndentedString(operacao) + "\n" +
+                "    direcao: " + toIndentedString(direcao) + "\n" +
+                "    protocoloAgenda: " + toIndentedString(protocoloAgenda) + "\n" +
+                "    dataHoraAgenda: " + toIndentedString(dataHoraAgenda) + "\n" +
+                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
+                "    listaDeclaracaoAduaneira: " + toIndentedString(listaDeclaracaoAduaneira) + "\n" +
+                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
+                "    listaMalas: " + toIndentedString(listaMalas) + "\n" +
+                "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
+                "    listaChassi: " + toIndentedString(listaChassi) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    ufEmplacamento: " + toIndentedString(ufEmplacamento) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
+                "    oogDimensao: " + toIndentedString(oogDimensao) + "\n" +
+                "    oogPeso: " + toIndentedString(oogPeso) + "\n" +
+                "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
+                "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
+                "    cnpjTransportador: " + toIndentedString(cnpjTransportador) + "\n" +
+                "    cpfTransportador: " + toIndentedString(cpfTransportador) + "\n" +
+                "    transportadorEstrangeiro: " + toIndentedString(transportadorEstrangeiro) + "\n" +
+                "    nomeTransportador: " + toIndentedString(nomeTransportador) + "\n" +
+                "    motorista: " + toIndentedString(motorista) + "\n" +
+                "    codigoRecintoDestino: " + toIndentedString(codigoRecintoDestino) + "\n" +
+                "    codigoRecintoOrigem: " + toIndentedString(codigoRecintoOrigem) + "\n" +
+                "    dataHoraPartidaOrigem: " + toIndentedString(dataHoraPartidaOrigem) + "\n" +
+                "    modal: " + toIndentedString(modal) + "\n" +
+                "    gate: " + toIndentedString(gate) + "\n" +
+                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "ModalEnum")
-    @XmlEnum(String.class)
-    public enum ModalEnum {
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'F'")
-        @JsonProperty("'F'")
-        F_("'F'");
-
-
-        private final String value;
-
-        ModalEnum(String v) {
-            value = v;
-        }
-
-        public static ModalEnum fromValue(String v) {
-            for (ModalEnum b : ModalEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+   */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

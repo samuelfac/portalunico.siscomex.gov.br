@@ -58,15 +58,9 @@ public class Error {
         this.timestamp = timestamp;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Error timestamp(OffsetDateTime timestamp) {
+        this.timestamp = timestamp;
+        return this;
     }
 
     /**
@@ -107,10 +101,6 @@ public class Error {
         return this;
     }
 
-    public Error timestamp(OffsetDateTime timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -122,4 +112,15 @@ public class Error {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

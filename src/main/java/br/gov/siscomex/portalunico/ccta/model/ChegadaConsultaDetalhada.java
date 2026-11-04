@@ -109,15 +109,9 @@ public class ChegadaConsultaDetalhada {
         this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ChegadaConsultaDetalhada dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
+        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+        return this;
     }
 
     /**
@@ -153,8 +147,8 @@ public class ChegadaConsultaDetalhada {
         this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
     }
 
-    public ChegadaConsultaDetalhada dataHoraChegadaEfetiva(String dataHoraChegadaEfetiva) {
-        this.dataHoraChegadaEfetiva = dataHoraChegadaEfetiva;
+    public ChegadaConsultaDetalhada dataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
+        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
         return this;
     }
 
@@ -239,10 +233,6 @@ public class ChegadaConsultaDetalhada {
         return this;
     }
 
-    public ChegadaConsultaDetalhada dataHoraPartidaPrevista(String dataHoraPartidaPrevista) {
-        this.dataHoraPartidaPrevista = dataHoraPartidaPrevista;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -258,5 +248,16 @@ public class ChegadaConsultaDetalhada {
                 "    uldBlks: " + toIndentedString(uldBlks) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

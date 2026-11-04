@@ -76,15 +76,9 @@ public class FiltroCampoApiRepresentation {
         this.nome = nome;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public FiltroCampoApiRepresentation nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     /**
@@ -112,10 +106,6 @@ public class FiltroCampoApiRepresentation {
         return this;
     }
 
-    public FiltroCampoApiRepresentation nome(String nome) {
-        this.nome = nome;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -127,4 +117,15 @@ public class FiltroCampoApiRepresentation {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

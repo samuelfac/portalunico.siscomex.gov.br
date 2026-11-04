@@ -138,15 +138,9 @@ public class RecepcaoDocumentoCarga {
         this.local = local;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RecepcaoDocumentoCarga local(Local local) {
+        this.local = local;
+        return this;
     }
 
     /**
@@ -203,8 +197,8 @@ public class RecepcaoDocumentoCarga {
         this.pesoAferido = pesoAferido;
     }
 
-    public RecepcaoDocumentoCarga local(Local local) {
-        this.local = local;
+    public RecepcaoDocumentoCarga pesoAferido(BigDecimal pesoAferido) {
+        this.pesoAferido = pesoAferido;
         return this;
     }
 
@@ -264,10 +258,6 @@ public class RecepcaoDocumentoCarga {
         return this;
     }
 
-    public RecepcaoDocumentoCarga pesoAferido(BigDecimal pesoAferido) {
-        this.pesoAferido = pesoAferido;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -284,5 +274,16 @@ public class RecepcaoDocumentoCarga {
                 "    observacoes: " + toIndentedString(observacoes) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

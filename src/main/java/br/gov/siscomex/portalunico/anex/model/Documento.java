@@ -37,12 +37,43 @@ public class Documento {
     private Boolean acessivelSetorPrivado = null;
 
 
-    @XmlElement(name = "documentoLido", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.")
-    /**
-     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
-     **/
-    private Boolean documentoLido = null;
+    @XmlType(name = "AnexadoPorEnum")
+    @XmlEnum(String.class)
+    public enum AnexadoPorEnum {
+
+        @XmlEnumValue("Representante Legal")
+        @JsonProperty("Representante Legal")
+        REPRESENTANTE_LEGAL("Representante Legal"),
+
+        @XmlEnumValue("Administração Pública")
+        @JsonProperty("Administração Pública")
+        ADMINISTRA_O_P_BLICA("Administração Pública");
+
+
+        private final String value;
+
+        AnexadoPorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static AnexadoPorEnum fromValue(String v) {
+            for (AnexadoPorEnum b : AnexadoPorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to AnexadoPorEnum");
+        }
+    }
 
     @XmlElement(name = "anexadoPor", required = true)
     @ApiModelProperty(example = "Representante Legal", required = true, value = "Tipo de usuário/órgão que anexou o documento.<br/>Tamanho máximo: 30")
@@ -72,23 +103,25 @@ public class Documento {
      * Somente será retornado para dossiês de operações DI, LI, RE, DT e DIR<br/>
      **/
     private List<DocumentoDisponivelParaOrgao> disponivelParaOrgaos = null;
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "4456487453", required = true, value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807")
+
+    @XmlElement(name = "documentoLido", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.")
     /**
-     * Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807
+     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
      **/
-    private Long id = null;
+    private Boolean documentoLido = null;
 
     @XmlElement(name = "documentoPalavrasChave", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private List<DocumentoPalavraChave> documentoPalavrasChave = new ArrayList<>();
-    @XmlElement(name = "sha256", required = true)
-    @ApiModelProperty(example = "536292681b12d75fb1bce7b793d38c5d9d82efc408b53bda08abeeccb5eda434", required = true, value = "String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64")
+
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "4456487453", required = true, value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: Integer.MAX_VALUE")
     /**
-     * String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64
+     * Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: Integer.MAX_VALUE
      **/
-    private String sha256 = null;
+    private Long id = null;
 
     @XmlElement(name = "idTipoDocumento", required = true)
     @ApiModelProperty(example = "87453", required = true, value = "Id do tipo de documento.<br/>Valor mínimo: 1<br/>Valor máximo: 2147483647")
@@ -111,26 +144,54 @@ public class Documento {
      **/
     private String nomeTipoDocumento = null;
 
+    @XmlElement(name = "sha256", required = true)
+    @ApiModelProperty(example = "536292681b12d75fb1bce7b793d38c5d9d82efc408b53bda08abeeccb5eda434", required = true, value = "String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+     * String em SHA256 representando o hash do arquivo.<br/>Tamanho: 64
+     **/
+    private String sha256 = null;
+
+
+    @XmlType(name = "TipoAcessoEnum")
+    @XmlEnum(Integer.class)
+    public enum TipoAcessoEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        NUMBER_1(Integer.valueOf(1)),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        NUMBER_2(Integer.valueOf(2)),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        NUMBER_3(Integer.valueOf(3));
+
+
+        private final Integer value;
+
+        TipoAcessoEnum(Integer v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public Integer value() {
+            return value;
     }
 
-    /**
-     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
-     *
-     * @return documentoLido
-     **/
-    @JsonProperty("documentoLido")
-    @NotNull
-    public Boolean isisDocumentoLido() {
-        return documentoLido;
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoAcessoEnum fromValue(String v) {
+            for (TipoAcessoEnum b : TipoAcessoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoAcessoEnum");
+        }
     }
 
     @XmlElement(name = "tipoAcesso")
@@ -246,14 +307,14 @@ public class Documento {
     }
 
     /**
-     * Id do documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: 9223372036854775807
+     * Indica que este documento foi lido pelo usuário logado. Lido equivale ao usuário ter feito o upload ou o download do documento.
      *
-     * @return id
+     * @return documentoLido
      **/
-    @JsonProperty("id")
+    @JsonProperty("documentoLido")
     @NotNull
-    public Long getId() {
-        return id;
+    public Boolean isisDocumentoLido() {
+        return documentoLido;
     }
 
     public void setDocumentoLido(Boolean documentoLido) {
@@ -291,14 +352,13 @@ public class Documento {
     }
 
     /**
-     * Nome do arquivo&lt;br/&gt;Tamanho máximo: 255
-     *
-     * @return nomeArquivo
+     * Id do documento.&lt;br/&gt;Valor mínimo: 1&lt;br/&gt;Valor máximo: Integer.MAX_VALUE
+     * @return id
      **/
-    @JsonProperty("nomeArquivo")
+    @JsonProperty("id")
     @NotNull
-    public String getNomeArquivo() {
-        return nomeArquivo;
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -331,14 +391,13 @@ public class Documento {
     }
 
     /**
-     * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
-     *
-     * @return sha256
+     * Nome do arquivo&lt;br/&gt;Tamanho máximo: 255
+     * @return nomeArquivo
      **/
-    @JsonProperty("sha256")
+    @JsonProperty("nomeArquivo")
     @NotNull
-    public String getSha256() {
-        return sha256;
+    public String getNomeArquivo() {
+        return nomeArquivo;
     }
 
     public void setNomeArquivo(String nomeArquivo) {
@@ -370,25 +429,15 @@ public class Documento {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class Documento {\n" +
-                "    acessivelSetorPrivado: " + toIndentedString(acessivelSetorPrivado) + "\n" +
-                "    anexadoPor: " + toIndentedString(anexadoPor) + "\n" +
-                "    cpfAnexacao: " + toIndentedString(cpfAnexacao) + "\n" +
-                "    dataHoraAnexacao: " + toIndentedString(dataHoraAnexacao) + "\n" +
-                "    disponivelParaOrgaos: " + toIndentedString(disponivelParaOrgaos) + "\n" +
-                "    documentoLido: " + toIndentedString(documentoLido) + "\n" +
-                "    documentoPalavrasChave: " + toIndentedString(documentoPalavrasChave) + "\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    idTipoDocumento: " + toIndentedString(idTipoDocumento) + "\n" +
-                "    nomeArquivo: " + toIndentedString(nomeArquivo) + "\n" +
-                "    nomeTipoDocumento: " + toIndentedString(nomeTipoDocumento) + "\n" +
-                "    sha256: " + toIndentedString(sha256) + "\n" +
-                "    tipoAcesso: " + toIndentedString(tipoAcesso) + "\n" +
-                "}";
-        return sb;
+    /**
+     * String em SHA256 representando o hash do arquivo.&lt;br/&gt;Tamanho: 64
+     *
+     * @return sha256
+     **/
+    @JsonProperty("sha256")
+    @NotNull
+    public String getSha256() {
+        return sha256;
     }
 
     public void setSha256(String sha256) {
@@ -423,83 +472,35 @@ public class Documento {
     }
 
 
-    @XmlType(name = "AnexadoPorEnum")
-    @XmlEnum(String.class)
-    public enum AnexadoPorEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("Representante Legal")
-        @JsonProperty("Representante Legal")
-        REPRESENTANTE_LEGAL("Representante Legal"),
-
-        @XmlEnumValue("Administração Pública")
-        @JsonProperty("Administração Pública")
-        ADMINISTRA_O_P_BLICA("Administração Pública");
-
-
-        private final String value;
-
-        AnexadoPorEnum(String v) {
-            value = v;
-        }
-
-        public static AnexadoPorEnum fromValue(String v) {
-            for (AnexadoPorEnum b : AnexadoPorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to AnexadoPorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class Documento {\n" +
+                "    acessivelSetorPrivado: " + toIndentedString(acessivelSetorPrivado) + "\n" +
+                "    anexadoPor: " + toIndentedString(anexadoPor) + "\n" +
+                "    cpfAnexacao: " + toIndentedString(cpfAnexacao) + "\n" +
+                "    dataHoraAnexacao: " + toIndentedString(dataHoraAnexacao) + "\n" +
+                "    disponivelParaOrgaos: " + toIndentedString(disponivelParaOrgaos) + "\n" +
+                "    documentoLido: " + toIndentedString(documentoLido) + "\n" +
+                "    documentoPalavrasChave: " + toIndentedString(documentoPalavrasChave) + "\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    idTipoDocumento: " + toIndentedString(idTipoDocumento) + "\n" +
+                "    nomeArquivo: " + toIndentedString(nomeArquivo) + "\n" +
+                "    nomeTipoDocumento: " + toIndentedString(nomeTipoDocumento) + "\n" +
+                "    sha256: " + toIndentedString(sha256) + "\n" +
+                "    tipoAcesso: " + toIndentedString(tipoAcesso) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoAcessoEnum")
-    @XmlEnum(Integer.class)
-    public enum TipoAcessoEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        NUMBER_1(Integer.valueOf(1)),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        NUMBER_2(Integer.valueOf(2)),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        NUMBER_3(Integer.valueOf(3));
-
-
-        private final Integer value;
-
-        TipoAcessoEnum(Integer v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoAcessoEnum fromValue(String v) {
-            for (TipoAcessoEnum b : TipoAcessoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoAcessoEnum");
-        }
-
-        public Integer value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

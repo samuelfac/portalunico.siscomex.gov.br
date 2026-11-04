@@ -102,15 +102,9 @@ public class SefazDuimpHistEventoCover {
         this.evento = evento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazDuimpHistEventoCover evento(TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio evento) {
+        this.evento = evento;
+        return this;
     }
 
     /**
@@ -132,10 +126,6 @@ public class SefazDuimpHistEventoCover {
         return this;
     }
 
-    public SefazDuimpHistEventoCover evento(TipoDeEventoObjetoCompostoPelosAtributosCdigoEDescrio evento) {
-        this.evento = evento;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -147,5 +137,16 @@ public class SefazDuimpHistEventoCover {
                 "    dataHora: " + toIndentedString(dataHora) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

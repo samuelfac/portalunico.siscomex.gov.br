@@ -94,15 +94,9 @@ public class CargaDTO {
         this.numeroRuc = numeroRuc;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaDTO numeroRuc(String numeroRuc) {
+        this.numeroRuc = numeroRuc;
+        return this;
     }
 
     /**
@@ -176,8 +170,8 @@ public class CargaDTO {
         this.descricaoTipoGranel = descricaoTipoGranel;
     }
 
-    public CargaDTO numeroRuc(String numeroRuc) {
-        this.numeroRuc = numeroRuc;
+    public CargaDTO descricaoTipoGranel(String descricaoTipoGranel) {
+        this.descricaoTipoGranel = descricaoTipoGranel;
         return this;
     }
 
@@ -255,10 +249,6 @@ public class CargaDTO {
         return this;
     }
 
-    public CargaDTO descricaoTipoGranel(String descricaoTipoGranel) {
-        this.descricaoTipoGranel = descricaoTipoGranel;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -276,5 +266,16 @@ public class CargaDTO {
                 "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

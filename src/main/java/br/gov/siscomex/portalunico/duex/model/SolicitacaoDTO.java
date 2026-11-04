@@ -56,29 +56,105 @@ public class SolicitacaoDTO {
     private String numeroDoComprot = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "SituacaoSolicitacaoDueEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoSolicitacaoDueEnum {
+
+        @XmlEnumValue("PENDENTE")
+        @JsonProperty("PENDENTE")
+        PENDENTE("PENDENTE"),
+
+        @XmlEnumValue("EM_ANALISE")
+        @JsonProperty("EM_ANALISE")
+        EM_ANALISE("EM_ANALISE"),
+
+        @XmlEnumValue("DEFERIDA")
+        @JsonProperty("DEFERIDA")
+        DEFERIDA("DEFERIDA"),
+
+        @XmlEnumValue("EXIGENCIA")
+        @JsonProperty("EXIGENCIA")
+        EXIGENCIA("EXIGENCIA"),
+
+        @XmlEnumValue("DEFERIDA_COM_EXIGENCIA")
+        @JsonProperty("DEFERIDA_COM_EXIGENCIA")
+        DEFERIDA_COM_EXIGENCIA("DEFERIDA_COM_EXIGENCIA"),
+
+        @XmlEnumValue("INDEFERIDA")
+        @JsonProperty("INDEFERIDA")
+        INDEFERIDA("INDEFERIDA"),
+
+        @XmlEnumValue("CANCELADA")
+        @JsonProperty("CANCELADA")
+        CANCELADA("CANCELADA");
+
+
+        private final String value;
+
+        SituacaoSolicitacaoDueEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SituacaoSolicitacaoDueEnum fromValue(String v) {
+            for (SituacaoSolicitacaoDueEnum b : SituacaoSolicitacaoDueEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoDueEnum");
+        }
     }
 
     @XmlElement(name = "situacaoSolicitacaoDue")
     @ApiModelProperty(value = "")
     private SituacaoSolicitacaoDueEnum situacaoSolicitacaoDue = null;
 
-    /**
-     * Data da solicitação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
-     *
-     * @return dataDaSolicitacao
-     **/
-    @JsonProperty("dataDaSolicitacao")
-    public OffsetDateTime getDataDaSolicitacao() {
-        return dataDaSolicitacao;
+
+    @XmlType(name = "TipoSolicitacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoSolicitacaoEnum {
+
+        @XmlEnumValue("RETIFICACAO")
+        @JsonProperty("RETIFICACAO")
+        RETIFICACAO("RETIFICACAO"),
+
+        @XmlEnumValue("CANCELAMENTO")
+        @JsonProperty("CANCELAMENTO")
+        CANCELAMENTO("CANCELAMENTO");
+
+
+        private final String value;
+
+        TipoSolicitacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoSolicitacaoEnum fromValue(String v) {
+            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
+        }
     }
 
     @XmlElement(name = "tipoSolicitacao")
@@ -100,13 +176,13 @@ public class SolicitacaoDTO {
     private String usuarioResponsavel = null;
 
     /**
-     * Motivo do indeferimento&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
+     * Data da solicitação&lt;br /&gt;Formato:&#39;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#39;
      *
-     * @return motivoDoIndeferimento
+     * @return dataDaSolicitacao
      **/
-    @JsonProperty("motivoDoIndeferimento")
-    public String getMotivoDoIndeferimento() {
-        return motivoDoIndeferimento;
+    @JsonProperty("dataDaSolicitacao")
+    public OffsetDateTime getDataDaSolicitacao() {
+        return dataDaSolicitacao;
     }
 
     public void setDataDaSolicitacao(OffsetDateTime dataDaSolicitacao) {
@@ -156,21 +232,14 @@ public class SolicitacaoDTO {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SolicitacaoDTO {\n" +
-                "    dataDaSolicitacao: " + toIndentedString(dataDaSolicitacao) + "\n" +
-                "    dataDeApreciacao: " + toIndentedString(dataDeApreciacao) + "\n" +
-                "    motivo: " + toIndentedString(motivo) + "\n" +
-                "    motivoDoIndeferimento: " + toIndentedString(motivoDoIndeferimento) + "\n" +
-                "    numeroDoComprot: " + toIndentedString(numeroDoComprot) + "\n" +
-                "    situacaoSolicitacaoDue: " + toIndentedString(situacaoSolicitacaoDue) + "\n" +
-                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
-                "    usuarioQueAnalisou: " + toIndentedString(usuarioQueAnalisou) + "\n" +
-                "    usuarioResponsavel: " + toIndentedString(usuarioResponsavel) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Motivo do indeferimento&lt;br /&gt;Tamanho mínimo: 0&lt;br /&gt;Tamanho máximo: 4000
+     *
+     * @return motivoDoIndeferimento
+     **/
+    @JsonProperty("motivoDoIndeferimento")
+    public String getMotivoDoIndeferimento() {
+        return motivoDoIndeferimento;
     }
 
     public void setMotivoDoIndeferimento(String motivoDoIndeferimento) {
@@ -284,99 +353,31 @@ public class SolicitacaoDTO {
     }
 
 
-    @XmlType(name = "SituacaoSolicitacaoDueEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoSolicitacaoDueEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("PENDENTE")
-        @JsonProperty("PENDENTE")
-        PENDENTE("PENDENTE"),
-
-        @XmlEnumValue("EM_ANALISE")
-        @JsonProperty("EM_ANALISE")
-        EM_ANALISE("EM_ANALISE"),
-
-        @XmlEnumValue("DEFERIDA")
-        @JsonProperty("DEFERIDA")
-        DEFERIDA("DEFERIDA"),
-
-        @XmlEnumValue("EXIGENCIA")
-        @JsonProperty("EXIGENCIA")
-        EXIGENCIA("EXIGENCIA"),
-
-        @XmlEnumValue("DEFERIDA_COM_EXIGENCIA")
-        @JsonProperty("DEFERIDA_COM_EXIGENCIA")
-        DEFERIDA_COM_EXIGENCIA("DEFERIDA_COM_EXIGENCIA"),
-
-        @XmlEnumValue("INDEFERIDA")
-        @JsonProperty("INDEFERIDA")
-        INDEFERIDA("INDEFERIDA"),
-
-        @XmlEnumValue("CANCELADA")
-        @JsonProperty("CANCELADA")
-        CANCELADA("CANCELADA");
-
-
-        private final String value;
-
-        SituacaoSolicitacaoDueEnum(String v) {
-            value = v;
-        }
-
-        public static SituacaoSolicitacaoDueEnum fromValue(String v) {
-            for (SituacaoSolicitacaoDueEnum b : SituacaoSolicitacaoDueEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoSolicitacaoDueEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SolicitacaoDTO {\n" +
+                "    dataDaSolicitacao: " + toIndentedString(dataDaSolicitacao) + "\n" +
+                "    dataDeApreciacao: " + toIndentedString(dataDeApreciacao) + "\n" +
+                "    motivo: " + toIndentedString(motivo) + "\n" +
+                "    motivoDoIndeferimento: " + toIndentedString(motivoDoIndeferimento) + "\n" +
+                "    numeroDoComprot: " + toIndentedString(numeroDoComprot) + "\n" +
+                "    situacaoSolicitacaoDue: " + toIndentedString(situacaoSolicitacaoDue) + "\n" +
+                "    tipoSolicitacao: " + toIndentedString(tipoSolicitacao) + "\n" +
+                "    usuarioQueAnalisou: " + toIndentedString(usuarioQueAnalisou) + "\n" +
+                "    usuarioResponsavel: " + toIndentedString(usuarioResponsavel) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoSolicitacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoSolicitacaoEnum {
-
-        @XmlEnumValue("RETIFICACAO")
-        @JsonProperty("RETIFICACAO")
-        RETIFICACAO("RETIFICACAO"),
-
-        @XmlEnumValue("CANCELAMENTO")
-        @JsonProperty("CANCELAMENTO")
-        CANCELAMENTO("CANCELAMENTO");
-
-
-        private final String value;
-
-        TipoSolicitacaoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoSolicitacaoEnum fromValue(String v) {
-            for (TipoSolicitacaoEnum b : TipoSolicitacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoSolicitacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

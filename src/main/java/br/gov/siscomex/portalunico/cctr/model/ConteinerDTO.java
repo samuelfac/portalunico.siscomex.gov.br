@@ -95,15 +95,9 @@ public class ConteinerDTO {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConteinerDTO addLacresItem(String lacresItem) {
+        this.lacres.add(lacresItem);
+        return this;
     }
 
     /**
@@ -125,10 +119,6 @@ public class ConteinerDTO {
         return this;
     }
 
-    public ConteinerDTO addLacresItem(String lacresItem) {
-        this.lacres.add(lacresItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -140,5 +130,16 @@ public class ConteinerDTO {
                 "    pesoBruto: " + toIndentedString(pesoBruto) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -87,15 +87,9 @@ public class AtoConcessorio {
         this.beneficiario = beneficiario;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public AtoConcessorio beneficiario(Beneficiario beneficiario) {
+        this.beneficiario = beneficiario;
+        return this;
     }
 
     /**
@@ -131,8 +125,8 @@ public class AtoConcessorio {
         this.itemDeDUE = itemDeDUE;
     }
 
-    public AtoConcessorio beneficiario(Beneficiario beneficiario) {
-        this.beneficiario = beneficiario;
+    public AtoConcessorio itemDeDUE(ItemDeDUE itemDeDUE) {
+        this.itemDeDUE = itemDeDUE;
         return this;
     }
 
@@ -174,8 +168,8 @@ public class AtoConcessorio {
         this.numero = numero;
     }
 
-    public AtoConcessorio itemDeDUE(ItemDeDUE itemDeDUE) {
-        this.itemDeDUE = itemDeDUE;
+    public AtoConcessorio numero(String numero) {
+        this.numero = numero;
         return this;
     }
 
@@ -230,8 +224,8 @@ public class AtoConcessorio {
         this.tipo = tipo;
     }
 
-    public AtoConcessorio numero(String numero) {
-        this.numero = numero;
+    public AtoConcessorio tipo(TipoDeAtoConcessorio tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -254,10 +248,6 @@ public class AtoConcessorio {
         return this;
     }
 
-    public AtoConcessorio tipo(TipoDeAtoConcessorio tipo) {
-        this.tipo = tipo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -274,5 +264,16 @@ public class AtoConcessorio {
                 "    valorComCoberturaCambial: " + toIndentedString(valorComCoberturaCambial) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

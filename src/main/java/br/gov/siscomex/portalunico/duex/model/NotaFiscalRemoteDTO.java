@@ -117,15 +117,9 @@ public class NotaFiscalRemoteDTO {
         this.dataEmissao = dataEmissao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
     }
 
     /**
@@ -180,8 +174,8 @@ public class NotaFiscalRemoteDTO {
         this.modelo = modelo;
     }
 
-    public NotaFiscalRemoteDTO dataEmissao(OffsetDateTime dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public NotaFiscalRemoteDTO modelo(String modelo) {
+        this.modelo = modelo;
         return this;
     }
 
@@ -237,8 +231,8 @@ public class NotaFiscalRemoteDTO {
         this.quantidadeDeItens = quantidadeDeItens;
     }
 
-    public NotaFiscalRemoteDTO modelo(String modelo) {
-        this.modelo = modelo;
+    public NotaFiscalRemoteDTO quantidadeDeItens(Integer quantidadeDeItens) {
+        this.quantidadeDeItens = quantidadeDeItens;
         return this;
     }
 
@@ -278,10 +272,6 @@ public class NotaFiscalRemoteDTO {
         return this;
     }
 
-    public NotaFiscalRemoteDTO quantidadeDeItens(Integer quantidadeDeItens) {
-        this.quantidadeDeItens = quantidadeDeItens;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -299,5 +289,16 @@ public class NotaFiscalRemoteDTO {
                 "    ufDoEmissor: " + toIndentedString(ufDoEmissor) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

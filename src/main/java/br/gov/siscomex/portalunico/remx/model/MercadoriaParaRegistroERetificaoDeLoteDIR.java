@@ -130,15 +130,9 @@ public class MercadoriaParaRegistroERetificaoDeLoteDIR {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public MercadoriaParaRegistroERetificaoDeLoteDIR descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -195,8 +189,8 @@ public class MercadoriaParaRegistroERetificaoDeLoteDIR {
         this.quantidade = quantidade;
     }
 
-    public MercadoriaParaRegistroERetificaoDeLoteDIR descricao(String descricao) {
-        this.descricao = descricao;
+    public MercadoriaParaRegistroERetificaoDeLoteDIR quantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
         return this;
     }
 
@@ -258,8 +252,8 @@ public class MercadoriaParaRegistroERetificaoDeLoteDIR {
         this.tratamentoAdm = tratamentoAdm;
     }
 
-    public MercadoriaParaRegistroERetificaoDeLoteDIR quantidade(BigDecimal quantidade) {
-        this.quantidade = quantidade;
+    public MercadoriaParaRegistroERetificaoDeLoteDIR tratamentoAdm(Integer tratamentoAdm) {
+        this.tratamentoAdm = tratamentoAdm;
         return this;
     }
 
@@ -303,10 +297,6 @@ public class MercadoriaParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    public MercadoriaParaRegistroERetificaoDeLoteDIR tratamentoAdm(Integer tratamentoAdm) {
-        this.tratamentoAdm = tratamentoAdm;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -325,4 +315,15 @@ public class MercadoriaParaRegistroERetificaoDeLoteDIR {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

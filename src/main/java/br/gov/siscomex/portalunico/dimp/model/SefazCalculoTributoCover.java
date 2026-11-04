@@ -178,15 +178,42 @@ public class SefazCalculoTributoCover {
     private BigDecimal valorCalculadoPagamentoProporcional = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "IndicadorTributadoEnum")
+    @XmlEnum(Integer.class)
+    public enum IndicadorTributadoEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        NUMBER_1(Integer.valueOf(1)),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        NUMBER_2(Integer.valueOf(2));
+
+
+        private final Integer value;
+
+        IndicadorTributadoEnum(Integer v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public Integer value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorTributadoEnum fromValue(String v) {
+            for (IndicadorTributadoEnum b : IndicadorTributadoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorTributadoEnum");
+        }
     }
 
     @XmlElement(name = "indicadorTributado")
@@ -621,41 +648,14 @@ public class SefazCalculoTributoCover {
         return sb;
     }
 
-    @XmlType(name = "IndicadorTributadoEnum")
-    @XmlEnum(Integer.class)
-    public enum IndicadorTributadoEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        NUMBER_1(Integer.valueOf(1)),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        NUMBER_2(Integer.valueOf(2));
-
-
-        private final Integer value;
-
-        IndicadorTributadoEnum(Integer v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static IndicadorTributadoEnum fromValue(String v) {
-            for (IndicadorTributadoEnum b : IndicadorTributadoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorTributadoEnum");
-        }
-
-        public Integer value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

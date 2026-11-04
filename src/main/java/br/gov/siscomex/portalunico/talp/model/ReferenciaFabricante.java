@@ -65,15 +65,9 @@ public class ReferenciaFabricante {
         this.codigoPais = codigoPais;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ReferenciaFabricante codigoPais(String codigoPais) {
+        this.codigoPais = codigoPais;
+        return this;
     }
 
     /**
@@ -110,8 +104,8 @@ public class ReferenciaFabricante {
         this.cpfCnpj = cpfCnpj;
     }
 
-    public ReferenciaFabricante codigoPais(String codigoPais) {
-        this.codigoPais = codigoPais;
+    public ReferenciaFabricante cpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
         return this;
     }
 
@@ -134,10 +128,6 @@ public class ReferenciaFabricante {
         return this;
     }
 
-    public ReferenciaFabricante cpfCnpj(String cpfCnpj) {
-        this.cpfCnpj = cpfCnpj;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -150,4 +140,15 @@ public class ReferenciaFabricante {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

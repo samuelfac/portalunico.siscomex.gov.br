@@ -95,5 +95,5 @@ public class ReferenciaExportadorEFabricanteDoProduto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

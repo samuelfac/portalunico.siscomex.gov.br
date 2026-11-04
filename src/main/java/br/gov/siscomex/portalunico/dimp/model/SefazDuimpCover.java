@@ -84,12 +84,43 @@ public class SefazDuimpCover {
     private String cpfResponsavel = null;
 
 
-    @XmlElement(name = "nomeImportador", required = true)
-    @ApiModelProperty(example = "Importador Exemplo XYZ", required = true, value = "Nome do importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
-    /**
-     * Nome do importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
-     **/
-    private String nomeImportador = null;
+    @XmlType(name = "TipoImportadorEnum")
+    @XmlEnum(String.class)
+    public enum TipoImportadorEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2");
+
+
+        private final String value;
+
+        TipoImportadorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoImportadorEnum fromValue(String v) {
+            for (TipoImportadorEnum b : TipoImportadorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoImportadorEnum");
+        }
+    }
 
     @XmlElement(name = "tipoImportador", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  <br>Dominio: <br>1 - Pessoa Jurídica, <br>2 - Pessoa Física residente no país")
@@ -104,13 +135,13 @@ public class SefazDuimpCover {
      * <br>Número de indentificação do Importador: <br>Caso seja CNPJ: <br>Tamanho: 14<br>Formato: 'NNNNNNNNNNNNNN'<br>Caso seja CPF: <br>Tamanho: 11<br>Formato: 'NNNNNNNNNNN'
      **/
     private Long niImportador = null;
-    @XmlElement(name = "processosVinculados")
-    @ApiModelProperty(value = "Lista de processos vinculados")
-    @Valid
+
+    @XmlElement(name = "nomeImportador", required = true)
+    @ApiModelProperty(example = "Importador Exemplo XYZ", required = true, value = "Nome do importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 100")
     /**
-     * Lista de processos vinculados
+     * Nome do importador <br>Tamanho mínimo: 1<br>Tamanho máximo: 100
      **/
-    private List<DadosDoProcesso> processosVinculados = null;
+    private String nomeImportador = null;
 
     @XmlElement(name = "ufImportador", required = true)
     @ApiModelProperty(example = "RJ", required = true, value = "UF do importador<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO")
@@ -118,10 +149,53 @@ public class SefazDuimpCover {
      * UF do importador<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO
      **/
     private String ufImportador = null;
-    @XmlElement(name = "sefazDadosResumo", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private SefazDadosResumo sefazDadosResumo = null;
+
+
+    @XmlType(name = "CanalSelecaoEnum")
+    @XmlEnum(Integer.class)
+    public enum CanalSelecaoEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        NUMBER_1(Integer.valueOf(1)),
+
+        @XmlEnumValue("12")
+        @JsonProperty("12")
+        NUMBER_12(Integer.valueOf(12)),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        NUMBER_3(Integer.valueOf(3)),
+
+        @XmlEnumValue("15")
+        @JsonProperty("15")
+        NUMBER_15(Integer.valueOf(15));
+
+
+        private final Integer value;
+
+        CanalSelecaoEnum(Integer v) {
+            value = v;
+        }
+
+        public Integer value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CanalSelecaoEnum fromValue(String v) {
+            for (CanalSelecaoEnum b : CanalSelecaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalSelecaoEnum");
+        }
+    }
 
     @XmlElement(name = "canalSelecao", required = true)
     @ApiModelProperty(example = "1", required = true, value = "Canal da declaração. <br>Dominio: <br>1 - verde, <br>12 - amarelo, <br>3 - vermelho, <br>15 - cinza")
@@ -155,13 +229,14 @@ public class SefazDuimpCover {
      * Lista de documentos instrutivos do despacho
      **/
     private List<DocumentoInstrutivoDoDespacho> documentosInstrutivoDespacho = new ArrayList<>();
-    @XmlElement(name = "itens", required = true)
-    @ApiModelProperty(required = true, value = "Lista de itens de Duimp")
+
+    @XmlElement(name = "processosVinculados")
+    @ApiModelProperty(value = "Lista de processos vinculados")
     @Valid
     /**
-     * Lista de itens de Duimp
+     * Lista de processos vinculados
      **/
-    private List<SefazItemCover> itens = new ArrayList<>();
+    private List<DadosDoProcesso> processosVinculados = null;
 
     @XmlElement(name = "docDeclaracoesExportacaoEstrangeira")
     @ApiModelProperty(value = "Lista de declarações estrangeiras")
@@ -171,16 +246,10 @@ public class SefazDuimpCover {
      **/
     private List<DadosDaDeclaraoEstrangeira> docDeclaracoesExportacaoEstrangeira = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "sefazDadosResumo", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private SefazDadosResumo sefazDadosResumo = null;
 
     @XmlElement(name = "itensHistorico")
     @ApiModelProperty(value = "Lista de eventos no histórico de operações")
@@ -190,19 +259,13 @@ public class SefazDuimpCover {
      **/
     private List<SefazDuimpHistEventoCover> itensHistorico = null;
 
+    @XmlElement(name = "itens", required = true)
+    @ApiModelProperty(required = true, value = "Lista de itens de Duimp")
+    @Valid
     /**
-     * Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  &lt;br&gt;Dominio: &lt;br&gt;1 - Pessoa Jurídica, &lt;br&gt;2 - Pessoa Física residente no país
-     *
-     * @return tipoImportador
+     * Lista de itens de Duimp
      **/
-    @JsonProperty("tipoImportador")
-    @NotNull
-    public String getTipoImportador() {
-        if (tipoImportador == null) {
-            return null;
-        }
-        return tipoImportador.value();
-    }
+    private List<SefazItemCover> itens = new ArrayList<>();
 
     /**
      * Número da Duimp&lt;br&gt;Tamanho: 15&lt;br&gt;Formato: &#39;NNAANNNNNNNNNNN&#39;&lt;br&gt;Lei de formação. O número da Duimp é composto por: &lt;br&gt;* NN &#x3D; Corresponde ao ano do registro da Declaração. &lt;br&gt;* AA &#x3D; Corresponde à sigla do país de emissão do documento (BR).&lt;br&gt;* NNNNNNNNNN &#x3D; 10 caracteres numéricos. Número sequencial da Duimp dentro do ano.&lt;br&gt;* N &#x3D; 1 caracter numérico. DV para todos os demais caracteres numéricos (Módulo 11)
@@ -365,14 +428,17 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Nome do importador &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+     * Tipo de importador. Descreve se o importador é uma pessoa jurídica (CNPJ)  ou uma pessoa física (CPF)  &lt;br&gt;Dominio: &lt;br&gt;1 - Pessoa Jurídica, &lt;br&gt;2 - Pessoa Física residente no país
      *
-     * @return nomeImportador
+     * @return tipoImportador
      **/
-    @JsonProperty("nomeImportador")
+    @JsonProperty("tipoImportador")
     @NotNull
-    public String getNomeImportador() {
-        return nomeImportador;
+    public String getTipoImportador() {
+        if (tipoImportador == null) {
+            return null;
+        }
+        return tipoImportador.value();
     }
 
     public void setTipoImportador(TipoImportadorEnum tipoImportador) {
@@ -404,14 +470,13 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Lista de documentos instrutivos do despacho
-     *
-     * @return documentosInstrutivoDespacho
+     * Nome do importador &lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 100
+     * @return nomeImportador
      **/
-    @JsonProperty("documentosInstrutivoDespacho")
+    @JsonProperty("nomeImportador")
     @NotNull
-    public List<DocumentoInstrutivoDoDespacho> getDocumentosInstrutivoDespacho() {
-        return documentosInstrutivoDespacho;
+    public String getNomeImportador() {
+        return nomeImportador;
     }
 
     public void setNomeImportador(String nomeImportador) {
@@ -467,6 +532,7 @@ public class SefazDuimpCover {
 
     /**
      * Lista de equipes de trabalho
+     *
      * @return equipesTrabalho
      **/
     @JsonProperty("equipesTrabalho")
@@ -530,13 +596,14 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Lista de processos vinculados
+     * Lista de documentos instrutivos do despacho
      *
-     * @return processosVinculados
+     * @return documentosInstrutivoDespacho
      **/
-    @JsonProperty("processosVinculados")
-    public List<DadosDoProcesso> getProcessosVinculados() {
-        return processosVinculados;
+    @JsonProperty("documentosInstrutivoDespacho")
+    @NotNull
+    public List<DocumentoInstrutivoDoDespacho> getDocumentosInstrutivoDespacho() {
+        return documentosInstrutivoDespacho;
     }
 
     public void setDocumentosInstrutivoDespacho(List<DocumentoInstrutivoDoDespacho> documentosInstrutivoDespacho) {
@@ -554,14 +621,12 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Get sefazDadosResumo
-     *
-     * @return sefazDadosResumo
+     * Lista de processos vinculados
+     * @return processosVinculados
      **/
-    @JsonProperty("sefazDadosResumo")
-    @NotNull
-    public SefazDadosResumo getSefazDadosResumo() {
-        return sefazDadosResumo;
+    @JsonProperty("processosVinculados")
+    public List<DadosDoProcesso> getProcessosVinculados() {
+        return processosVinculados;
     }
 
     public void setProcessosVinculados(List<DadosDoProcesso> processosVinculados) {
@@ -602,14 +667,13 @@ public class SefazDuimpCover {
     }
 
     /**
-     * Lista de itens de Duimp
-     *
-     * @return itens
+     * Get sefazDadosResumo
+     * @return sefazDadosResumo
      **/
-    @JsonProperty("itens")
+    @JsonProperty("sefazDadosResumo")
     @NotNull
-    public List<SefazItemCover> getItens() {
-        return itens;
+    public SefazDadosResumo getSefazDadosResumo() {
+        return sefazDadosResumo;
     }
 
     public void setSefazDadosResumo(SefazDadosResumo sefazDadosResumo) {
@@ -623,7 +687,6 @@ public class SefazDuimpCover {
 
     /**
      * Lista de eventos no histórico de operações
-     *
      * @return itensHistorico
      **/
     @JsonProperty("itensHistorico")
@@ -644,6 +707,32 @@ public class SefazDuimpCover {
         this.itensHistorico.add(itensHistoricoItem);
         return this;
     }
+
+    /**
+     * Lista de itens de Duimp
+     *
+     * @return itens
+     **/
+    @JsonProperty("itens")
+    @NotNull
+    public List<SefazItemCover> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<SefazItemCover> itens) {
+        this.itens = itens;
+    }
+
+    public SefazDuimpCover itens(List<SefazItemCover> itens) {
+        this.itens = itens;
+        return this;
+    }
+
+    public SefazDuimpCover addItensItem(SefazItemCover itensItem) {
+        this.itens.add(itensItem);
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -675,102 +764,14 @@ public class SefazDuimpCover {
         return sb;
     }
 
-    public void setItens(List<SefazItemCover> itens) {
-        this.itens = itens;
-    }
-
-    public SefazDuimpCover itens(List<SefazItemCover> itens) {
-        this.itens = itens;
-        return this;
-    }
-
-    public SefazDuimpCover addItensItem(SefazItemCover itensItem) {
-        this.itens.add(itensItem);
-        return this;
-    }
-
-
-    @XmlType(name = "TipoImportadorEnum")
-    @XmlEnum(String.class)
-    public enum TipoImportadorEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2");
-
-
-        private final String value;
-
-        TipoImportadorEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoImportadorEnum fromValue(String v) {
-            for (TipoImportadorEnum b : TipoImportadorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoImportadorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "CanalSelecaoEnum")
-    @XmlEnum(Integer.class)
-    public enum CanalSelecaoEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        NUMBER_1(Integer.valueOf(1)),
-
-        @XmlEnumValue("12")
-        @JsonProperty("12")
-        NUMBER_12(Integer.valueOf(12)),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        NUMBER_3(Integer.valueOf(3)),
-
-        @XmlEnumValue("15")
-        @JsonProperty("15")
-        NUMBER_15(Integer.valueOf(15));
-
-
-        private final Integer value;
-
-        CanalSelecaoEnum(Integer v) {
-            value = v;
-        }
-
-        public static CanalSelecaoEnum fromValue(String v) {
-            for (CanalSelecaoEnum b : CanalSelecaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalSelecaoEnum");
-        }
-
-        public Integer value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

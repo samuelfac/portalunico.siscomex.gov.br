@@ -153,15 +153,42 @@ public class RespostaConsultaPosACD {
     private String nomeSituacaoEspecial = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "ExisteConteinerEnum")
+    @XmlEnum(String.class)
+    public enum ExisteConteinerEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        ExisteConteinerEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ExisteConteinerEnum fromValue(String v) {
+            for (ExisteConteinerEnum b : ExisteConteinerEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ExisteConteinerEnum");
+        }
     }
 
     @XmlElement(name = "existeConteiner")
@@ -601,41 +628,14 @@ public class RespostaConsultaPosACD {
         return sb;
     }
 
-    @XmlType(name = "ExisteConteinerEnum")
-    @XmlEnum(String.class)
-    public enum ExisteConteinerEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        ExisteConteinerEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ExisteConteinerEnum fromValue(String v) {
-            for (ExisteConteinerEnum b : ExisteConteinerEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ExisteConteinerEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

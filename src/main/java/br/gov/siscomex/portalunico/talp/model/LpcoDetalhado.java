@@ -164,12 +164,47 @@ public class LpcoDetalhado {
     private String numeroConhecimento = null;
 
 
-    @XmlElement(name = "canal")
-    @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
-    /**
-     * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
-     **/
-    private CanalEnum canal = null;
+    @XmlType(name = "ModalTransporteEnum")
+    @XmlEnum(String.class)
+    public enum ModalTransporteEnum {
+
+        @XmlEnumValue("AEREO")
+        @JsonProperty("AEREO")
+        AEREO("AEREO"),
+
+        @XmlEnumValue("MARITIMO")
+        @JsonProperty("MARITIMO")
+        MARITIMO("MARITIMO"),
+
+        @XmlEnumValue("TERRESTRE")
+        @JsonProperty("TERRESTRE")
+        TERRESTRE("TERRESTRE");
+
+
+        private final String value;
+
+        ModalTransporteEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ModalTransporteEnum fromValue(String v) {
+            for (ModalTransporteEnum b : ModalTransporteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalTransporteEnum");
+        }
+    }
 
     @XmlElement(name = "modalTransporte")
     @ApiModelProperty(example = "MARITIMO", value = "Modal de tansporte da carga associada ao LPCO. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
@@ -192,27 +227,55 @@ public class LpcoDetalhado {
      **/
     private String dataHoraPresencaCarga = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "CanalEnum")
+    @XmlEnum(String.class)
+    public enum CanalEnum {
+
+        @XmlEnumValue("VERDE")
+        @JsonProperty("VERDE")
+        VERDE("VERDE"),
+
+        @XmlEnumValue("AMARELO")
+        @JsonProperty("AMARELO")
+        AMARELO("AMARELO"),
+
+        @XmlEnumValue("VERMELHO")
+        @JsonProperty("VERMELHO")
+        VERMELHO("VERMELHO");
+
+
+        private final String value;
+
+        CanalEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CanalEnum fromValue(String v) {
+            for (CanalEnum b : CanalEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+        }
     }
 
+    @XmlElement(name = "canal")
+    @ApiModelProperty(example = "VERDE", value = "Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20")
     /**
-     * Data em que a versão do modelo do LPCO entrou em vigência&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
-     *
-     * @return dataInicioVigenciaModelo
+     * Canal. Disponível apenas em LPCOs com LI vinculada.<br>Tamanho máximo: 20
      **/
-    @JsonProperty("dataInicioVigenciaModelo")
-    @NotNull
-    public String getDataInicioVigenciaModelo() {
-        return dataInicioVigenciaModelo;
-    }
+    private CanalEnum canal = null;
 
     @XmlElement(name = "situacaoPagamentoTaxa")
     @ApiModelProperty(value = "")
@@ -317,13 +380,14 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Informações adicionais prestadas pelo importador/exportador
+     * Data em que a versão do modelo do LPCO entrou em vigência&lt;br&gt;Formato: dd-MM-yyyy&#39;T&#39;HH:mmZ
      *
-     * @return informacaoAdicional
+     * @return dataInicioVigenciaModelo
      **/
-    @JsonProperty("informacaoAdicional")
-    public String getInformacaoAdicional() {
-        return informacaoAdicional;
+    @JsonProperty("dataInicioVigenciaModelo")
+    @NotNull
+    public String getDataInicioVigenciaModelo() {
+        return dataInicioVigenciaModelo;
     }
 
     public void setDataInicioVigenciaModelo(String dataInicioVigenciaModelo) {
@@ -396,14 +460,12 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Momento no qual o LPCO foi registrado&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
-     *
-     * @return dataRegistro
+     * Informações adicionais prestadas pelo importador/exportador
+     * @return informacaoAdicional
      **/
-    @JsonProperty("dataRegistro")
-    @NotNull
-    public String getDataRegistro() {
-        return dataRegistro;
+    @JsonProperty("informacaoAdicional")
+    public String getInformacaoAdicional() {
+        return informacaoAdicional;
     }
 
     public void setInformacaoAdicional(String informacaoAdicional) {
@@ -436,6 +498,7 @@ public class LpcoDetalhado {
 
     /**
      * Indica se há um pedido de prorrogação do LPCO ainda pendente
+     *
      * @return prorrogacaoPendente
      **/
     @JsonProperty("prorrogacaoPendente")
@@ -473,13 +536,13 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Lista de documentos \&quot;DU-E\&quot; ou \&quot;Duimp\&quot; que estão vinculados ao LPCO.
-     *
-     * @return listaVinculos
+     * Momento no qual o LPCO foi registrado&lt;br&gt;Formato: YYYY-MM-DD&#39;T&#39;HH:MI:SS.SSSZ
+     * @return dataRegistro
      **/
-    @JsonProperty("listaVinculos")
-    public List<VinculoDocLpco> getListaVinculos() {
-        return listaVinculos;
+    @JsonProperty("dataRegistro")
+    @NotNull
+    public String getDataRegistro() {
+        return dataRegistro;
     }
 
     public void setDataRegistro(String dataRegistro) {
@@ -493,6 +556,7 @@ public class LpcoDetalhado {
 
     /**
      * Lista de campos do pedido que fazem parte dos \&quot;Dados Gerais\&quot; do LPCO, ou seja, aqueles que não são informados por item.
+     *
      * @return listaCamposFormulario
      **/
     @JsonProperty("listaCamposFormulario")
@@ -539,13 +603,12 @@ public class LpcoDetalhado {
     }
 
     /**
-     * Get situacaoPagamentoTaxa
-     *
-     * @return situacaoPagamentoTaxa
+     * Lista de documentos \&quot;DU-E\&quot; ou \&quot;Duimp\&quot; que estão vinculados ao LPCO.
+     * @return listaVinculos
      **/
-    @JsonProperty("situacaoPagamentoTaxa")
-    public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
-        return situacaoPagamentoTaxa;
+    @JsonProperty("listaVinculos")
+    public List<VinculoDocLpco> getListaVinculos() {
+        return listaVinculos;
     }
 
     public void setListaVinculos(List<VinculoDocLpco> listaVinculos) {
@@ -682,6 +745,25 @@ public class LpcoDetalhado {
         return this;
     }
 
+    /**
+     * Get situacaoPagamentoTaxa
+     * @return situacaoPagamentoTaxa
+     **/
+    @JsonProperty("situacaoPagamentoTaxa")
+    public SituacaoPagamentoTaxa getSituacaoPagamentoTaxa() {
+        return situacaoPagamentoTaxa;
+    }
+
+    public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    }
+
+    public LpcoDetalhado situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
+        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+        return this;
+    }
+
+
     @Override
     public String toString() {
 
@@ -714,97 +796,14 @@ public class LpcoDetalhado {
         return sb;
     }
 
-    public void setSituacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
-        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public LpcoDetalhado situacaoPagamentoTaxa(SituacaoPagamentoTaxa situacaoPagamentoTaxa) {
-        this.situacaoPagamentoTaxa = situacaoPagamentoTaxa;
-        return this;
-    }
-
-
-    @XmlType(name = "ModalTransporteEnum")
-    @XmlEnum(String.class)
-    public enum ModalTransporteEnum {
-
-        @XmlEnumValue("AEREO")
-        @JsonProperty("AEREO")
-        AEREO("AEREO"),
-
-        @XmlEnumValue("MARITIMO")
-        @JsonProperty("MARITIMO")
-        MARITIMO("MARITIMO"),
-
-        @XmlEnumValue("TERRESTRE")
-        @JsonProperty("TERRESTRE")
-        TERRESTRE("TERRESTRE");
-
-
-        private final String value;
-
-        ModalTransporteEnum(String v) {
-            value = v;
-        }
-
-        public static ModalTransporteEnum fromValue(String v) {
-            for (ModalTransporteEnum b : ModalTransporteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalTransporteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "CanalEnum")
-    @XmlEnum(String.class)
-    public enum CanalEnum {
-
-        @XmlEnumValue("VERDE")
-        @JsonProperty("VERDE")
-        VERDE("VERDE"),
-
-        @XmlEnumValue("AMARELO")
-        @JsonProperty("AMARELO")
-        AMARELO("AMARELO"),
-
-        @XmlEnumValue("VERMELHO")
-        @JsonProperty("VERMELHO")
-        VERMELHO("VERMELHO");
-
-
-        private final String value;
-
-        CanalEnum(String v) {
-            value = v;
-        }
-
-        public static CanalEnum fromValue(String v) {
-            for (CanalEnum b : CanalEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-        }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
-    }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

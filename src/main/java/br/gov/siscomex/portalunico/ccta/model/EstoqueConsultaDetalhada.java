@@ -80,15 +80,118 @@ public class EstoqueConsultaDetalhada {
     private String situacaoAtual = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoDocumentoSaidaEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoSaidaEnum {
+
+        @XmlEnumValue("10")
+        @JsonProperty("10")
+        _10("10"),
+
+        @XmlEnumValue("11")
+        @JsonProperty("11")
+        _11("11"),
+
+        @XmlEnumValue("12")
+        @JsonProperty("12")
+        _12("12"),
+
+        @XmlEnumValue("20")
+        @JsonProperty("20")
+        _20("20"),
+
+        @XmlEnumValue("21")
+        @JsonProperty("21")
+        _21("21"),
+
+        @XmlEnumValue("22")
+        @JsonProperty("22")
+        _22("22"),
+
+        @XmlEnumValue("23")
+        @JsonProperty("23")
+        _23("23"),
+
+        @XmlEnumValue("24")
+        @JsonProperty("24")
+        _24("24"),
+
+        @XmlEnumValue("30")
+        @JsonProperty("30")
+        _30("30"),
+
+        @XmlEnumValue("21")
+        @JsonProperty("21")
+        _21_9("21"),
+
+        @XmlEnumValue("32")
+        @JsonProperty("32")
+        _32("32"),
+
+        @XmlEnumValue("33")
+        @JsonProperty("33")
+        _33("33"),
+
+        @XmlEnumValue("34")
+        @JsonProperty("34")
+        _34("34"),
+
+        @XmlEnumValue("35")
+        @JsonProperty("35")
+        _35("35"),
+
+        @XmlEnumValue("36")
+        @JsonProperty("36")
+        _36("36"),
+
+        @XmlEnumValue("37")
+        @JsonProperty("37")
+        _37("37"),
+
+        @XmlEnumValue("38")
+        @JsonProperty("38")
+        _38("38"),
+
+        @XmlEnumValue("39")
+        @JsonProperty("39")
+        _39("39"),
+
+        @XmlEnumValue("40")
+        @JsonProperty("40")
+        _40("40"),
+
+        @XmlEnumValue("50")
+        @JsonProperty("50")
+        _50("50"),
+
+        @XmlEnumValue("99")
+        @JsonProperty("99")
+        _99("99");
+
+
+        private final String value;
+
+        TipoDocumentoSaidaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocumentoSaidaEnum fromValue(String v) {
+            for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
+        }
     }
 
     @XmlElement(name = "tipoDocumentoSaida")
@@ -297,6 +400,7 @@ public class EstoqueConsultaDetalhada {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -315,117 +419,14 @@ public class EstoqueConsultaDetalhada {
         return sb;
     }
 
-    @XmlType(name = "TipoDocumentoSaidaEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoSaidaEnum {
-
-        @XmlEnumValue("10")
-        @JsonProperty("10")
-        _10("10"),
-
-        @XmlEnumValue("11")
-        @JsonProperty("11")
-        _11("11"),
-
-        @XmlEnumValue("12")
-        @JsonProperty("12")
-        _12("12"),
-
-        @XmlEnumValue("20")
-        @JsonProperty("20")
-        _20("20"),
-
-        @XmlEnumValue("21")
-        @JsonProperty("21")
-        _21("21"),
-
-        @XmlEnumValue("22")
-        @JsonProperty("22")
-        _22("22"),
-
-        @XmlEnumValue("23")
-        @JsonProperty("23")
-        _23("23"),
-
-        @XmlEnumValue("24")
-        @JsonProperty("24")
-        _24("24"),
-
-        @XmlEnumValue("30")
-        @JsonProperty("30")
-        _30("30"),
-
-        @XmlEnumValue("21")
-        @JsonProperty("21")
-        _21_9("21"),
-
-        @XmlEnumValue("32")
-        @JsonProperty("32")
-        _32("32"),
-
-        @XmlEnumValue("33")
-        @JsonProperty("33")
-        _33("33"),
-
-        @XmlEnumValue("34")
-        @JsonProperty("34")
-        _34("34"),
-
-        @XmlEnumValue("35")
-        @JsonProperty("35")
-        _35("35"),
-
-        @XmlEnumValue("36")
-        @JsonProperty("36")
-        _36("36"),
-
-        @XmlEnumValue("37")
-        @JsonProperty("37")
-        _37("37"),
-
-        @XmlEnumValue("38")
-        @JsonProperty("38")
-        _38("38"),
-
-        @XmlEnumValue("39")
-        @JsonProperty("39")
-        _39("39"),
-
-        @XmlEnumValue("40")
-        @JsonProperty("40")
-        _40("40"),
-
-        @XmlEnumValue("50")
-        @JsonProperty("50")
-        _50("50"),
-
-        @XmlEnumValue("99")
-        @JsonProperty("99")
-        _99("99");
-
-
-        private final String value;
-
-        TipoDocumentoSaidaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDocumentoSaidaEnum fromValue(String v) {
-            for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

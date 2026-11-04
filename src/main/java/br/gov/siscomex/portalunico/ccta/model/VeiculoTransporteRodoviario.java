@@ -113,15 +113,9 @@ public class VeiculoTransporteRodoviario {
         this.chassi = chassi;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public VeiculoTransporteRodoviario chassi(String chassi) {
+        this.chassi = chassi;
+        return this;
     }
 
     /**
@@ -162,8 +156,8 @@ public class VeiculoTransporteRodoviario {
         this.marca = marca;
     }
 
-    public VeiculoTransporteRodoviario chassi(String chassi) {
-        this.chassi = chassi;
+    public VeiculoTransporteRodoviario marca(String marca) {
+        this.marca = marca;
         return this;
     }
 
@@ -186,10 +180,6 @@ public class VeiculoTransporteRodoviario {
         return this;
     }
 
-    public VeiculoTransporteRodoviario marca(String marca) {
-        this.marca = marca;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -203,5 +193,16 @@ public class VeiculoTransporteRodoviario {
                 "    transportadorProprietarioVeiculo: " + toIndentedString(transportadorProprietarioVeiculo) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

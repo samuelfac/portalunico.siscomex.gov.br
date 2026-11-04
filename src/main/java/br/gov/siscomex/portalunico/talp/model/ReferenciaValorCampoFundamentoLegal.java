@@ -81,15 +81,9 @@ public class ReferenciaValorCampoFundamentoLegal {
         this.ncm = ncm;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ReferenciaValorCampoFundamentoLegal ncm(String ncm) {
+        this.ncm = ncm;
+        return this;
     }
 
     /**
@@ -116,10 +110,6 @@ public class ReferenciaValorCampoFundamentoLegal {
         return this;
     }
 
-    public ReferenciaValorCampoFundamentoLegal ncm(String ncm) {
-        this.ncm = ncm;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -131,4 +121,15 @@ public class ReferenciaValorCampoFundamentoLegal {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

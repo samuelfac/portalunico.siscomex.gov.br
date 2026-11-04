@@ -59,15 +59,9 @@ public class OpcaoCalculoIcmsDTO {
         this.codigoOpcao = codigoOpcao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public OpcaoCalculoIcmsDTO codigoOpcao(String codigoOpcao) {
+        this.codigoOpcao = codigoOpcao;
+        return this;
     }
 
     /**
@@ -110,10 +104,6 @@ public class OpcaoCalculoIcmsDTO {
         return this;
     }
 
-    public OpcaoCalculoIcmsDTO codigoOpcao(String codigoOpcao) {
-        this.codigoOpcao = codigoOpcao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -124,5 +114,16 @@ public class OpcaoCalculoIcmsDTO {
                 "    opcaoIcms: " + toIndentedString(opcaoIcms) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

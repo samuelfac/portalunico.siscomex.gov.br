@@ -64,15 +64,9 @@ public class DiffCondicionadoDTO {
         this.atributo = atributo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DiffCondicionadoDTO atributo(DiffArquivoDiarioAtributoDTO atributo) {
+        this.atributo = atributo;
+        return this;
     }
 
     /**
@@ -127,8 +121,8 @@ public class DiffCondicionadoDTO {
         this.dataInicioVigencia = dataInicioVigencia;
     }
 
-    public DiffCondicionadoDTO atributo(DiffArquivoDiarioAtributoDTO atributo) {
-        this.atributo = atributo;
+    public DiffCondicionadoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
         return this;
     }
 
@@ -170,10 +164,6 @@ public class DiffCondicionadoDTO {
         return this;
     }
 
-    public DiffCondicionadoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -187,5 +177,16 @@ public class DiffCondicionadoDTO {
                 "    condicao: " + toIndentedString(condicao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -208,15 +208,9 @@ public class ProcessamentoDaSolicitaoDeDARF {
         this.codigoBarrasCampo3 = codigoBarrasCampo3;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo3(String codigoBarrasCampo3) {
+        this.codigoBarrasCampo3 = codigoBarrasCampo3;
+        return this;
     }
 
     /**
@@ -348,8 +342,8 @@ public class ProcessamentoDaSolicitaoDeDARF {
         this.dataLimitePagamento = dataLimitePagamento;
     }
 
-    public ProcessamentoDaSolicitaoDeDARF codigoBarrasCampo3(String codigoBarrasCampo3) {
-        this.codigoBarrasCampo3 = codigoBarrasCampo3;
+    public ProcessamentoDaSolicitaoDeDARF dataLimitePagamento(OffsetDateTime dataLimitePagamento) {
+        this.dataLimitePagamento = dataLimitePagamento;
         return this;
     }
 
@@ -390,8 +384,8 @@ public class ProcessamentoDaSolicitaoDeDARF {
         this.numeroDocumento = numeroDocumento;
     }
 
-    public ProcessamentoDaSolicitaoDeDARF dataLimitePagamento(OffsetDateTime dataLimitePagamento) {
-        this.dataLimitePagamento = dataLimitePagamento;
+    public ProcessamentoDaSolicitaoDeDARF numeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
         return this;
     }
 
@@ -452,10 +446,6 @@ public class ProcessamentoDaSolicitaoDeDARF {
         return this;
     }
 
-    public ProcessamentoDaSolicitaoDeDARF numeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -480,4 +470,15 @@ public class ProcessamentoDaSolicitaoDeDARF {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

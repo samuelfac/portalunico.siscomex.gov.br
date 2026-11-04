@@ -71,6 +71,16 @@ public class ApoliceSeguro {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class ApoliceSeguro {\n" +
+                "    dataVencimento: " + toIndentedString(dataVencimento) + "\n" +
+                "    numero: " + toIndentedString(numero) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -80,15 +90,5 @@ public class ApoliceSeguro {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ApoliceSeguro {\n" +
-                "    dataVencimento: " + toIndentedString(dataVencimento) + "\n" +
-                "    numero: " + toIndentedString(numero) + "\n" +
-                "}";
-        return sb;
     }
 }

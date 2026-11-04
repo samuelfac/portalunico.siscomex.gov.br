@@ -27,15 +27,42 @@ import java.math.BigDecimal;
 public class SefazCertificadoMercosul {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoCertificadoMercosulEnum")
+    @XmlEnum(String.class)
+    public enum TipoCertificadoMercosulEnum {
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2"),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        _3("3");
+
+
+        private final String value;
+
+        TipoCertificadoMercosulEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoCertificadoMercosulEnum fromValue(String v) {
+            for (TipoCertificadoMercosulEnum b : TipoCertificadoMercosulEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCertificadoMercosulEnum");
+        }
     }
 
     @XmlElement(name = "tipoCertificadoMercosul")
@@ -120,6 +147,7 @@ public class SefazCertificadoMercosul {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -131,41 +159,14 @@ public class SefazCertificadoMercosul {
         return sb;
     }
 
-    @XmlType(name = "TipoCertificadoMercosulEnum")
-    @XmlEnum(String.class)
-    public enum TipoCertificadoMercosulEnum {
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2"),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        _3("3");
-
-
-        private final String value;
-
-        TipoCertificadoMercosulEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoCertificadoMercosulEnum fromValue(String v) {
-            for (TipoCertificadoMercosulEnum b : TipoCertificadoMercosulEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCertificadoMercosulEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

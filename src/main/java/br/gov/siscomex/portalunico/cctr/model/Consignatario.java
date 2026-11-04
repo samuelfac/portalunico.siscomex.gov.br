@@ -92,15 +92,9 @@ public class Consignatario {
         this.pais = pais;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Consignatario pais(String pais) {
+        this.pais = pais;
+        return this;
     }
 
     /**
@@ -136,8 +130,8 @@ public class Consignatario {
         this.endereco = endereco;
     }
 
-    public Consignatario pais(String pais) {
-        this.pais = pais;
+    public Consignatario endereco(String endereco) {
+        this.endereco = endereco;
         return this;
     }
 
@@ -160,10 +154,6 @@ public class Consignatario {
         return this;
     }
 
-    public Consignatario endereco(String endereco) {
-        this.endereco = endereco;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -176,5 +166,16 @@ public class Consignatario {
                 "    idEstrangeiro: " + toIndentedString(idEstrangeiro) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

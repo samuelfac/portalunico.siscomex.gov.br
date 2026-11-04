@@ -26,12 +26,63 @@ import javax.xml.bind.annotation.XmlType;
 public class AlterarSituacaoLpcoRequest {
 
 
-    @XmlElement(name = "dataFinalVigencia")
-    @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
-    /**
-     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
-     **/
-    private String dataFinalVigencia = null;
+    @XmlType(name = "SituacaoEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoEnum {
+
+        @XmlEnumValue("PARA_ANALISE")
+        @JsonProperty("PARA_ANALISE")
+        PARA_ANALISE("PARA_ANALISE"),
+
+        @XmlEnumValue("EM_ANALISE")
+        @JsonProperty("EM_ANALISE")
+        EM_ANALISE("EM_ANALISE"),
+
+        @XmlEnumValue("DEFERIDO")
+        @JsonProperty("DEFERIDO")
+        DEFERIDO("DEFERIDO"),
+
+        @XmlEnumValue("CANCELADO")
+        @JsonProperty("CANCELADO")
+        CANCELADO("CANCELADO"),
+
+        @XmlEnumValue("INDEFERIDO")
+        @JsonProperty("INDEFERIDO")
+        INDEFERIDO("INDEFERIDO"),
+
+        @XmlEnumValue("ANULADO_REVOGADO")
+        @JsonProperty("ANULADO_REVOGADO")
+        ANULADO_REVOGADO("ANULADO_REVOGADO"),
+
+        @XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
+        @JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
+        AUTORIZACAO_IMPORTACAO_EMITIDA("AUTORIZACAO_IMPORTACAO_EMITIDA");
+
+
+        private final String value;
+
+        SituacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
+    }
 
     @XmlElement(name = "situacao", required = true)
     @ApiModelProperty(example = "EM_ANALISE", required = true, value = "Código da nova situação do LPCO<br>Tamanho mínimo: 0 <br>Tamanho máximo: 50")
@@ -53,23 +104,20 @@ public class AlterarSituacaoLpcoRequest {
      * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
      **/
     private String dataInicioVigencia = null;
+
+    @XmlElement(name = "dataFinalVigencia")
+    @ApiModelProperty(example = "2021-09-02", value = "Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd")
+    /**
+     * Data do final de vigência do LPCO, só deve ser informado quando a nova situação do LPCO for DEFERIDO<br>Formato: yyyy-MM-dd
+     **/
+    private String dataFinalVigencia = null;
+
     @XmlElement(name = "numeroOrgaoOrigem")
     @ApiModelProperty(example = "EXA12345", value = "Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
      * Número do LPCO no órgão anuente, se houver<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
     private String numeroOrgaoOrigem = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     @XmlElement(name = "requerInspecao")
     @ApiModelProperty(example = "false", value = "Indica se haverá necessidade de inspeção de carga")
@@ -92,14 +140,47 @@ public class AlterarSituacaoLpcoRequest {
      **/
     private Boolean faltaPagamentoTaxa = null;
 
-    /**
-     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
-     *
-     * @return dataInicioVigencia
-     **/
-    @JsonProperty("dataInicioVigencia")
-    public String getDataInicioVigencia() {
-        return dataInicioVigencia;
+
+    @XmlType(name = "CanalEnum")
+    @XmlEnum(String.class)
+    public enum CanalEnum {
+
+        @XmlEnumValue("VERDE")
+        @JsonProperty("VERDE")
+        VERDE("VERDE"),
+
+        @XmlEnumValue("AMARELO")
+        @JsonProperty("AMARELO")
+        AMARELO("AMARELO"),
+
+        @XmlEnumValue("VERMELHO")
+        @JsonProperty("VERMELHO")
+        VERMELHO("VERMELHO");
+
+
+        private final String value;
+
+        CanalEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CanalEnum fromValue(String v) {
+            for (CanalEnum b : CanalEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+        }
     }
 
     @XmlElement(name = "canal")
@@ -159,13 +240,13 @@ public class AlterarSituacaoLpcoRequest {
     }
 
     /**
-     * Número do LPCO no órgão anuente, se houver&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
+     * Data de início de vigência, só deve ser informada quando a nova situação do LPCO for DEFERIDO&lt;br&gt;Formato: yyyy-MM-dd
      *
-     * @return numeroOrgaoOrigem
+     * @return dataInicioVigencia
      **/
-    @JsonProperty("numeroOrgaoOrigem")
-    public String getNumeroOrgaoOrigem() {
-        return numeroOrgaoOrigem;
+    @JsonProperty("dataInicioVigencia")
+    public String getDataInicioVigencia() {
+        return dataInicioVigencia;
     }
 
     public void setDataInicioVigencia(String dataInicioVigencia) {
@@ -197,13 +278,13 @@ public class AlterarSituacaoLpcoRequest {
     }
 
     /**
-     * Indicador de pagamento de taxa não efetuado
+     * Número do LPCO no órgão anuente, se houver&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
      *
-     * @return faltaPagamentoTaxa
+     * @return numeroOrgaoOrigem
      **/
-    @JsonProperty("faltaPagamentoTaxa")
-    public Boolean isisFaltaPagamentoTaxa() {
-        return faltaPagamentoTaxa;
+    @JsonProperty("numeroOrgaoOrigem")
+    public String getNumeroOrgaoOrigem() {
+        return numeroOrgaoOrigem;
     }
 
     public void setNumeroOrgaoOrigem(String numeroOrgaoOrigem) {
@@ -253,22 +334,14 @@ public class AlterarSituacaoLpcoRequest {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class AlterarSituacaoLpcoRequest {\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    justificativa: " + toIndentedString(justificativa) + "\n" +
-                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
-                "    dataFinalVigencia: " + toIndentedString(dataFinalVigencia) + "\n" +
-                "    numeroOrgaoOrigem: " + toIndentedString(numeroOrgaoOrigem) + "\n" +
-                "    requerInspecao: " + toIndentedString(requerInspecao) + "\n" +
-                "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
-                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
-                "    canal: " + toIndentedString(canal) + "\n" +
-                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Indicador de pagamento de taxa não efetuado
+     *
+     * @return faltaPagamentoTaxa
+     **/
+    @JsonProperty("faltaPagamentoTaxa")
+    public Boolean isisFaltaPagamentoTaxa() {
+        return faltaPagamentoTaxa;
     }
 
     public void setFaltaPagamentoTaxa(Boolean faltaPagamentoTaxa) {
@@ -321,103 +394,32 @@ public class AlterarSituacaoLpcoRequest {
     }
 
 
-    @XmlType(name = "SituacaoEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("PARA_ANALISE")
-        @JsonProperty("PARA_ANALISE")
-        PARA_ANALISE("PARA_ANALISE"),
-
-        @XmlEnumValue("EM_ANALISE")
-        @JsonProperty("EM_ANALISE")
-        EM_ANALISE("EM_ANALISE"),
-
-        @XmlEnumValue("DEFERIDO")
-        @JsonProperty("DEFERIDO")
-        DEFERIDO("DEFERIDO"),
-
-        @XmlEnumValue("CANCELADO")
-        @JsonProperty("CANCELADO")
-        CANCELADO("CANCELADO"),
-
-        @XmlEnumValue("INDEFERIDO")
-        @JsonProperty("INDEFERIDO")
-        INDEFERIDO("INDEFERIDO"),
-
-        @XmlEnumValue("ANULADO_REVOGADO")
-        @JsonProperty("ANULADO_REVOGADO")
-        ANULADO_REVOGADO("ANULADO_REVOGADO"),
-
-        @XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
-        @JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
-        AUTORIZACAO_IMPORTACAO_EMITIDA("AUTORIZACAO_IMPORTACAO_EMITIDA");
-
-
-        private final String value;
-
-        SituacaoEnum(String v) {
-            value = v;
-        }
-
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class AlterarSituacaoLpcoRequest {\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    justificativa: " + toIndentedString(justificativa) + "\n" +
+                "    dataInicioVigencia: " + toIndentedString(dataInicioVigencia) + "\n" +
+                "    dataFinalVigencia: " + toIndentedString(dataFinalVigencia) + "\n" +
+                "    numeroOrgaoOrigem: " + toIndentedString(numeroOrgaoOrigem) + "\n" +
+                "    requerInspecao: " + toIndentedString(requerInspecao) + "\n" +
+                "    decisaoJudicial: " + toIndentedString(decisaoJudicial) + "\n" +
+                "    faltaPagamentoTaxa: " + toIndentedString(faltaPagamentoTaxa) + "\n" +
+                "    canal: " + toIndentedString(canal) + "\n" +
+                "    motivoAnalise: " + toIndentedString(motivoAnalise) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "CanalEnum")
-    @XmlEnum(String.class)
-    public enum CanalEnum {
-
-        @XmlEnumValue("VERDE")
-        @JsonProperty("VERDE")
-        VERDE("VERDE"),
-
-        @XmlEnumValue("AMARELO")
-        @JsonProperty("AMARELO")
-        AMARELO("AMARELO"),
-
-        @XmlEnumValue("VERMELHO")
-        @JsonProperty("VERMELHO")
-        VERMELHO("VERMELHO");
-
-
-        private final String value;
-
-        CanalEnum(String v) {
-            value = v;
-        }
-
-        public static CanalEnum fromValue(String v) {
-            for (CanalEnum b : CanalEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

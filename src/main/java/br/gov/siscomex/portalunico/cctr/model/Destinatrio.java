@@ -57,15 +57,9 @@ public class Destinatrio {
         this.numeroCnpj = numeroCnpj;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Destinatrio numeroCnpj(String numeroCnpj) {
+        this.numeroCnpj = numeroCnpj;
+        return this;
     }
 
     /**
@@ -106,10 +100,6 @@ public class Destinatrio {
         return this;
     }
 
-    public Destinatrio numeroCnpj(String numeroCnpj) {
-        this.numeroCnpj = numeroCnpj;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -120,5 +110,16 @@ public class Destinatrio {
                 "    endereco: " + toIndentedString(endereco) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

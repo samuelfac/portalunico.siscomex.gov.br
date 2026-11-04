@@ -91,15 +91,9 @@ public class EstrangeiroOcasional {
         this.pais = pais;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EstrangeiroOcasional pais(String pais) {
+        this.pais = pais;
+        return this;
     }
 
     /**
@@ -136,8 +130,8 @@ public class EstrangeiroOcasional {
         this.endereco = endereco;
     }
 
-    public EstrangeiroOcasional pais(String pais) {
-        this.pais = pais;
+    public EstrangeiroOcasional endereco(String endereco) {
+        this.endereco = endereco;
         return this;
     }
 
@@ -161,10 +155,6 @@ public class EstrangeiroOcasional {
         return this;
     }
 
-    public EstrangeiroOcasional endereco(String endereco) {
-        this.endereco = endereco;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -177,5 +167,16 @@ public class EstrangeiroOcasional {
                 "    nome: " + toIndentedString(nome) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

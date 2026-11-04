@@ -83,15 +83,9 @@ public class DuimpBalancaComercialCover {
         this.situacao = situacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DuimpBalancaComercialCover situacao(SituacaoDuimpConsultaCover situacao) {
+        this.situacao = situacao;
+        return this;
     }
 
     /**
@@ -127,8 +121,8 @@ public class DuimpBalancaComercialCover {
         this.carga = carga;
     }
 
-    public DuimpBalancaComercialCover situacao(SituacaoDuimpConsultaCover situacao) {
-        this.situacao = situacao;
+    public DuimpBalancaComercialCover carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
         return this;
     }
 
@@ -170,10 +164,6 @@ public class DuimpBalancaComercialCover {
         return this;
     }
 
-    public DuimpBalancaComercialCover carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -187,5 +177,16 @@ public class DuimpBalancaComercialCover {
                 "    quantidadeItens: " + toIndentedString(quantidadeItens) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

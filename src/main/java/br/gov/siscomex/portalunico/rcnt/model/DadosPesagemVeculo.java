@@ -24,12 +24,47 @@ import java.util.List;
 public class DadosPesagemVeculo {
 
 
-    @XmlElement(name = "dataHoraOcorrencia", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraOcorrencia = null;
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
@@ -44,12 +79,13 @@ public class DadosPesagemVeculo {
      * Identificador único do evento que pode ser utilizado para recuperar as informações do Evento no sistema de origem do Recinto remetente. Ex.: Chave tabela 1 + ... + chave tabela n - tantas chaves quantas forem as tabelas necessárias para montar o registro do evento.<br/> O idEvento informado em cada evento não pode ser repetido quando \"tipoOperacao\"=\"I-Incluir\", ou seja, não pode ser reutilizado em novos eventos de inclusão para o mesmo tipo de evento e pelo mesmo recinto remetente.<br/>Tamanho: 100
      **/
     private String idEvento = null;
-    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
-    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
+
+    @XmlElement(name = "dataHoraOcorrencia", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
+     * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String protocoloEventoRetificadoOuExcluido = null;
+    private String dataHoraOcorrencia = null;
 
     @XmlElement(name = "dataHoraRegistro", required = true)
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -71,12 +107,13 @@ public class DadosPesagemVeculo {
      * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorRegistro = null;
-    @XmlElement(name = "ocrPlaca")
-    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+
+    @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
+    @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36
      **/
-    private Boolean ocrPlaca = null;
+    private String protocoloEventoRetificadoOuExcluido = null;
 
     @XmlElement(name = "contingencia", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Indica que este evento ocorreu durante uma contingência. Via de regra deverá haver um evento (Ocorrências de indisponibilidade de equipamentos) para o equipamento envolvido. Transmitir como true sempre que ocorrer falha operacional no sistema do recinto que impeça o registro e/ou envio de informações em seu sistema.<br/>Domínio:<br/>true - Sim<br/>false - Não")
@@ -122,13 +159,13 @@ public class DadosPesagemVeculo {
      * Placa do veículo (Cavalo-trator/truck/automóvel/locomotiva).<br/>Tamanho: 50
      **/
     private String placa = null;
-    @XmlElement(name = "listaSemirreboque")
-    @ApiModelProperty(value = "Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.")
-    @Valid
+
+    @XmlElement(name = "ocrPlaca")
+    @ApiModelProperty(example = "false", value = "Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'ocrPlaca' quando o atributo 'placa' for informado.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
-    private List<DadosSemirreboquePesagem> listaSemirreboque = null;
+    private Boolean ocrPlaca = null;
 
     @XmlElement(name = "tara")
     @ApiModelProperty(example = "15.5", value = "Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>tara, até 4 casas decimais.")
@@ -137,13 +174,14 @@ public class DadosPesagemVeculo {
      * Tara do veículo. Para os casos em que a tara é aferida separadamente (cavalo/semireboque). Cadastro de taras comum no modal rodoviário.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<br/>tara, até 4 casas decimais.
      **/
     private BigDecimal tara = null;
-    @XmlElement(name = "listaConteineresUld")
-    @ApiModelProperty(value = "Lista de contêineres ou ULD (Unit Load Device – Aéreo).")
+
+    @XmlElement(name = "listaSemirreboque")
+    @ApiModelProperty(value = "Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.")
     @Valid
     /**
-     * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
+     * Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.
      **/
-    private List<DadosContinerUldPesagemVeculo> listaConteineresUld = null;
+    private List<DadosSemirreboquePesagem> listaSemirreboque = null;
 
     @XmlElement(name = "taraConjunto")
     @ApiModelProperty(example = "15.5", value = "Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>taraConjunto, até 4 casas decimais.")
@@ -152,12 +190,14 @@ public class DadosPesagemVeculo {
      * Tara do conjunto. Para os casos em que a tara NÃO é aferida separadamente (cavalo/semirreboque). Comum no modal aquaviário e aéreo.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'tara', 'taraConjunto' quando o atributo 'placa' estiver informado.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar pelo menos um dos seguintes atributos: 'taraConjunto', 'listaSemirreboque.tara', quando o atributo 'listaSemirreboque.placa' estiver informado.<br/>taraConjunto, até 4 casas decimais.
      **/
     private BigDecimal taraConjunto = null;
-    @XmlElement(name = "dutos")
-    @ApiModelProperty(example = "E", value = "Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.<br/>Domínio:<br/>E - Entrada via dutos<br/>S - Saída via dutos")
+
+    @XmlElement(name = "listaConteineresUld")
+    @ApiModelProperty(value = "Lista de contêineres ou ULD (Unit Load Device – Aéreo).")
+    @Valid
     /**
-     * Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.<br/>Domínio:<br/>E - Entrada via dutos<br/>S - Saída via dutos
+     * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
      **/
-    private DutosEnum dutos = null;
+    private List<DadosContinerUldPesagemVeculo> listaConteineresUld = null;
 
     @XmlElement(name = "pesoBrutoBalanca")
     @ApiModelProperty(example = "15.5", value = "Peso bruto da pesagem na balança (Kg).<br/>Especificamente no caso de dutos, transmitir o atributo com a soma das bateladas da balança de fluxo ao final da operação.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'pesoBrutoBalanca' quando o atributo 'volume' não for informado.<br/>pesoBrutoBalanca, até 4 casas decimais.")
@@ -181,30 +221,89 @@ public class DadosPesagemVeculo {
      **/
     private Boolean vazio = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "DutosEnum")
+    @XmlEnum(String.class)
+    public enum DutosEnum {
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'"),
+
+        @XmlEnumValue("'S'")
+        @JsonProperty("'S'")
+        S_("'S'");
+
+
+        private final String value;
+
+        DutosEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static DutosEnum fromValue(String v) {
+            for (DutosEnum b : DutosEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DutosEnum");
+        }
     }
 
+    @XmlElement(name = "dutos")
+    @ApiModelProperty(example = "E", value = "Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.<br/>Domínio:<br/>E - Entrada via dutos<br/>S - Saída via dutos")
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
+     * Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.<br/>Domínio:<br/>E - Entrada via dutos<br/>S - Saída via dutos
      **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
+    private DutosEnum dutos = null;
+
+
+    @XmlType(name = "CorreiasTransportadorasEnum")
+    @XmlEnum(String.class)
+    public enum CorreiasTransportadorasEnum {
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'"),
+
+        @XmlEnumValue("'S'")
+        @JsonProperty("'S'")
+        S_("'S'");
+
+
+        private final String value;
+
+        CorreiasTransportadorasEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
     }
 
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
+        public static CorreiasTransportadorasEnum fromValue(String v) {
+            for (CorreiasTransportadorasEnum b : CorreiasTransportadorasEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CorreiasTransportadorasEnum");
+        }
     }
 
     @XmlElement(name = "correiasTransportadoras")
@@ -308,17 +407,18 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return protocoloEventoRetificadoOuExcluido
+     * @return dataHoraRegistro
      **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
     }
 
-    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
     }
 
     public DadosPesagemVeculo dataHoraRegistro(String dataHoraRegistro) {
@@ -365,17 +465,17 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
      *
-     * @return ocrPlaca
+     * @return protocoloEventoRetificadoOuExcluido
      **/
-    @JsonProperty("ocrPlaca")
-    public Boolean isisOcrPlaca() {
-        return ocrPlaca;
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
     }
 
-    public void setOcrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
+    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
     }
 
     public DadosPesagemVeculo protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
@@ -506,17 +606,16 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.
-     *
-     * @return listaSemirreboque
+     * Captura automática da placa. Indica se a placa foi obtida via OCR (Optical Character Recognition).&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;ocrPlaca&#39; quando o atributo &#39;placa&#39; for informado.&lt;br/&gt;Domínio:&lt;br/&gt;true - Sim&lt;br/&gt;false - Não
+     * @return ocrPlaca
      **/
-    @JsonProperty("listaSemirreboque")
-    public List<DadosSemirreboquePesagem> getListaSemirreboque() {
-        return listaSemirreboque;
+    @JsonProperty("ocrPlaca")
+    public Boolean isisOcrPlaca() {
+        return ocrPlaca;
     }
 
-    public void setListaSemirreboque(List<DadosSemirreboquePesagem> listaSemirreboque) {
-        this.listaSemirreboque = listaSemirreboque;
+    public void setOcrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
     }
 
     public DadosPesagemVeculo ocrPlaca(Boolean ocrPlaca) {
@@ -543,17 +642,17 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
+     * Lista de semirreboques ou vagões. Caso a pesagem seja por semirreboque ou por vagão, enviar um evento por pesagem.
      *
-     * @return listaConteineresUld
+     * @return listaSemirreboque
      **/
-    @JsonProperty("listaConteineresUld")
-    public List<DadosContinerUldPesagemVeculo> getListaConteineresUld() {
-        return listaConteineresUld;
+    @JsonProperty("listaSemirreboque")
+    public List<DadosSemirreboquePesagem> getListaSemirreboque() {
+        return listaSemirreboque;
     }
 
-    public void setListaConteineresUld(List<DadosContinerUldPesagemVeculo> listaConteineresUld) {
-        this.listaConteineresUld = listaConteineresUld;
+    public void setListaSemirreboque(List<DadosSemirreboquePesagem> listaSemirreboque) {
+        this.listaSemirreboque = listaSemirreboque;
     }
 
     public DadosPesagemVeculo listaSemirreboque(List<DadosSemirreboquePesagem> listaSemirreboque) {
@@ -585,20 +684,17 @@ public class DadosPesagemVeculo {
     }
 
     /**
-     * Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada via dutos&lt;br/&gt;S - Saída via dutos
+     * Lista de contêineres ou ULD (Unit Load Device – Aéreo).
      *
-     * @return dutos
+     * @return listaConteineresUld
      **/
-    @JsonProperty("dutos")
-    public String getDutos() {
-        if (dutos == null) {
-            return null;
-        }
-        return dutos.value();
+    @JsonProperty("listaConteineresUld")
+    public List<DadosContinerUldPesagemVeculo> getListaConteineresUld() {
+        return listaConteineresUld;
     }
 
-    public void setDutos(DutosEnum dutos) {
-        this.dutos = dutos;
+    public void setListaConteineresUld(List<DadosContinerUldPesagemVeculo> listaConteineresUld) {
+        this.listaConteineresUld = listaConteineresUld;
     }
 
     public DadosPesagemVeculo listaConteineresUld(List<DadosContinerUldPesagemVeculo> listaConteineresUld) {
@@ -667,81 +763,20 @@ public class DadosPesagemVeculo {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class DadosPesagemVeculo {\n" +
-                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
-                "    idEvento: " + toIndentedString(idEvento) + "\n" +
-                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
-                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
-                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
-                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
-                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
-                "    contingencia: " + toIndentedString(contingencia) + "\n" +
-                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
-                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
-                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
-                "    pesoBrutoManifesto: " + toIndentedString(pesoBrutoManifesto) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
-                "    tara: " + toIndentedString(tara) + "\n" +
-                "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
-                "    taraConjunto: " + toIndentedString(taraConjunto) + "\n" +
-                "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
-                "    pesoBrutoBalanca: " + toIndentedString(pesoBrutoBalanca) + "\n" +
-                "    capturaAutoPeso: " + toIndentedString(capturaAutoPeso) + "\n" +
-                "    vazio: " + toIndentedString(vazio) + "\n" +
-                "    dutos: " + toIndentedString(dutos) + "\n" +
-                "    correiasTransportadoras: " + toIndentedString(correiasTransportadoras) + "\n" +
-                "    ncm: " + toIndentedString(ncm) + "\n" +
-                "    volume: " + toIndentedString(volume) + "\n" +
-                "    balanca: " + toIndentedString(balanca) + "\n" +
-                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Dutos. Informar tal atributo para toda a chegada e a saída do recinto de mercadoria via dutos.&lt;br/&gt;Domínio:&lt;br/&gt;E - Entrada via dutos&lt;br/&gt;S - Saída via dutos
+     * @return dutos
+     **/
+    @JsonProperty("dutos")
+    public String getDutos() {
+        if (dutos == null) {
+            return null;
+        }
+        return dutos.value();
     }
 
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setDutos(DutosEnum dutos) {
+        this.dutos = dutos;
     }
 
     public DadosPesagemVeculo dutos(DutosEnum dutos) {
@@ -850,79 +885,49 @@ public class DadosPesagemVeculo {
     }
 
 
-    @XmlType(name = "DutosEnum")
-    @XmlEnum(String.class)
-    public enum DutosEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'"),
-
-        @XmlEnumValue("'S'")
-        @JsonProperty("'S'")
-        S_("'S'");
-
-
-        private final String value;
-
-        DutosEnum(String v) {
-            value = v;
-        }
-
-        public static DutosEnum fromValue(String v) {
-            for (DutosEnum b : DutosEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DutosEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class DadosPesagemVeculo {\n" +
+                "    tipoOperacao: " + toIndentedString(tipoOperacao) + "\n" +
+                "    idEvento: " + toIndentedString(idEvento) + "\n" +
+                "    dataHoraOcorrencia: " + toIndentedString(dataHoraOcorrencia) + "\n" +
+                "    dataHoraRegistro: " + toIndentedString(dataHoraRegistro) + "\n" +
+                "    cpfOperadorOcorrencia: " + toIndentedString(cpfOperadorOcorrencia) + "\n" +
+                "    cpfOperadorRegistro: " + toIndentedString(cpfOperadorRegistro) + "\n" +
+                "    protocoloEventoRetificadoOuExcluido: " + toIndentedString(protocoloEventoRetificadoOuExcluido) + "\n" +
+                "    contingencia: " + toIndentedString(contingencia) + "\n" +
+                "    codigoRecinto: " + toIndentedString(codigoRecinto) + "\n" +
+                "    listaManifestos: " + toIndentedString(listaManifestos) + "\n" +
+                "    listaNfe: " + toIndentedString(listaNfe) + "\n" +
+                "    pesoBrutoManifesto: " + toIndentedString(pesoBrutoManifesto) + "\n" +
+                "    placa: " + toIndentedString(placa) + "\n" +
+                "    ocrPlaca: " + toIndentedString(ocrPlaca) + "\n" +
+                "    tara: " + toIndentedString(tara) + "\n" +
+                "    listaSemirreboque: " + toIndentedString(listaSemirreboque) + "\n" +
+                "    taraConjunto: " + toIndentedString(taraConjunto) + "\n" +
+                "    listaConteineresUld: " + toIndentedString(listaConteineresUld) + "\n" +
+                "    pesoBrutoBalanca: " + toIndentedString(pesoBrutoBalanca) + "\n" +
+                "    capturaAutoPeso: " + toIndentedString(capturaAutoPeso) + "\n" +
+                "    vazio: " + toIndentedString(vazio) + "\n" +
+                "    dutos: " + toIndentedString(dutos) + "\n" +
+                "    correiasTransportadoras: " + toIndentedString(correiasTransportadoras) + "\n" +
+                "    ncm: " + toIndentedString(ncm) + "\n" +
+                "    volume: " + toIndentedString(volume) + "\n" +
+                "    balanca: " + toIndentedString(balanca) + "\n" +
+                "    listaCameras: " + toIndentedString(listaCameras) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "CorreiasTransportadorasEnum")
-    @XmlEnum(String.class)
-    public enum CorreiasTransportadorasEnum {
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'"),
-
-        @XmlEnumValue("'S'")
-        @JsonProperty("'S'")
-        S_("'S'");
-
-
-        private final String value;
-
-        CorreiasTransportadorasEnum(String v) {
-            value = v;
-        }
-
-        public static CorreiasTransportadorasEnum fromValue(String v) {
-            for (CorreiasTransportadorasEnum b : CorreiasTransportadorasEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CorreiasTransportadorasEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

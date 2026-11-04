@@ -69,15 +69,9 @@ public class SimularTaResultadoExternalDTO {
         this.tipoTratamento = tipoTratamento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SimularTaResultadoExternalDTO tipoTratamento(String tipoTratamento) {
+        this.tipoTratamento = tipoTratamento;
+        return this;
     }
 
     /**
@@ -132,8 +126,8 @@ public class SimularTaResultadoExternalDTO {
         this.modelo = modelo;
     }
 
-    public SimularTaResultadoExternalDTO tipoTratamento(String tipoTratamento) {
-        this.tipoTratamento = tipoTratamento;
+    public SimularTaResultadoExternalDTO modelo(ModeloLpcoItemProcessaTaDTO modelo) {
+        this.modelo = modelo;
         return this;
     }
 
@@ -170,8 +164,8 @@ public class SimularTaResultadoExternalDTO {
         this.permiteRetificacao = permiteRetificacao;
     }
 
-    public SimularTaResultadoExternalDTO modelo(ModeloLpcoItemProcessaTaDTO modelo) {
-        this.modelo = modelo;
+    public SimularTaResultadoExternalDTO permiteRetificacao(String permiteRetificacao) {
+        this.permiteRetificacao = permiteRetificacao;
         return this;
     }
 
@@ -232,10 +226,6 @@ public class SimularTaResultadoExternalDTO {
         return this;
     }
 
-    public SimularTaResultadoExternalDTO permiteRetificacao(String permiteRetificacao) {
-        this.permiteRetificacao = permiteRetificacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -253,4 +243,15 @@ public class SimularTaResultadoExternalDTO {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

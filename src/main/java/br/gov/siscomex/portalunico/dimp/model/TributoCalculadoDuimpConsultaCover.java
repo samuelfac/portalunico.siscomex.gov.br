@@ -26,80 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TributoCalculadoDuimpConsultaCover {
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "II", value = "Tipo de impostos (códigos de receita principal únicos).<br>Domínio:")
-    /**
-     * Tipo de impostos (códigos de receita principal únicos).<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-    @XmlElement(name = "valoresBRL")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ValoresTributoDuimpConsultaCover valoresBRL = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo de impostos (códigos de receita principal únicos).&lt;br&gt;Domínio:
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public TributoCalculadoDuimpConsultaCover tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-    /**
-     * Get valoresBRL
-     *
-     * @return valoresBRL
-     **/
-    @JsonProperty("valoresBRL")
-    public ValoresTributoDuimpConsultaCover getValoresBRL() {
-        return valoresBRL;
-    }
-
-    public void setValoresBRL(ValoresTributoDuimpConsultaCover valoresBRL) {
-        this.valoresBRL = valoresBRL;
-    }
-
-    public TributoCalculadoDuimpConsultaCover valoresBRL(ValoresTributoDuimpConsultaCover valoresBRL) {
-        this.valoresBRL = valoresBRL;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class TributoCalculadoDuimpConsultaCover {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    valoresBRL: " + toIndentedString(valoresBRL) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "TipoEnum")
     @XmlEnum(String.class)
     public enum TipoEnum {
@@ -172,5 +98,80 @@ public class TributoCalculadoDuimpConsultaCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
+    }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "II", value = "Tipo de impostos (códigos de receita principal únicos).<br>Domínio:")
+    /**
+     * Tipo de impostos (códigos de receita principal únicos).<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    @XmlElement(name = "valoresBRL")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ValoresTributoDuimpConsultaCover valoresBRL = null;
+
+    /**
+     * Tipo de impostos (códigos de receita principal únicos).&lt;br&gt;Domínio:
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public TributoCalculadoDuimpConsultaCover tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+    /**
+     * Get valoresBRL
+     *
+     * @return valoresBRL
+     **/
+    @JsonProperty("valoresBRL")
+    public ValoresTributoDuimpConsultaCover getValoresBRL() {
+        return valoresBRL;
+    }
+
+    public void setValoresBRL(ValoresTributoDuimpConsultaCover valoresBRL) {
+        this.valoresBRL = valoresBRL;
+    }
+
+    public TributoCalculadoDuimpConsultaCover valoresBRL(ValoresTributoDuimpConsultaCover valoresBRL) {
+        this.valoresBRL = valoresBRL;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TributoCalculadoDuimpConsultaCover {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    valoresBRL: " + toIndentedString(valoresBRL) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

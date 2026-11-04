@@ -100,15 +100,9 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
         this.cnpj = cnpj;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -164,8 +158,8 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
         this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
     }
 
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga cnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
+        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
         return this;
     }
 
@@ -272,10 +266,6 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
         return this;
     }
 
-    public ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga dataHorarioRegistroManifesto(OffsetDateTime dataHorarioRegistroManifesto) {
-        this.dataHorarioRegistroManifesto = dataHorarioRegistroManifesto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -293,4 +283,15 @@ public class ProcessamentoDoRegistroOuRetificaoDoManifestoDeCarga {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

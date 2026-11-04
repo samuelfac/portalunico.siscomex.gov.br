@@ -135,15 +135,9 @@ public class ItemDaNotaFiscalRemoteDTO {
         this.cfop = cfop;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemDaNotaFiscalRemoteDTO cfop(Integer cfop) {
+        this.cfop = cfop;
+        return this;
     }
 
     /**
@@ -236,8 +230,8 @@ public class ItemDaNotaFiscalRemoteDTO {
         this.quantidadeComercial = quantidadeComercial;
     }
 
-    public ItemDaNotaFiscalRemoteDTO cfop(Integer cfop) {
-        this.cfop = cfop;
+    public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
+        this.quantidadeComercial = quantidadeComercial;
         return this;
     }
 
@@ -292,8 +286,8 @@ public class ItemDaNotaFiscalRemoteDTO {
         this.unidadeComercial = unidadeComercial;
     }
 
-    public ItemDaNotaFiscalRemoteDTO quantidadeComercial(BigDecimal quantidadeComercial) {
-        this.quantidadeComercial = quantidadeComercial;
+    public ItemDaNotaFiscalRemoteDTO unidadeComercial(String unidadeComercial) {
+        this.unidadeComercial = unidadeComercial;
         return this;
     }
 
@@ -333,10 +327,6 @@ public class ItemDaNotaFiscalRemoteDTO {
         return this;
     }
 
-    public ItemDaNotaFiscalRemoteDTO unidadeComercial(String unidadeComercial) {
-        this.unidadeComercial = unidadeComercial;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -356,5 +346,16 @@ public class ItemDaNotaFiscalRemoteDTO {
                 "    valorTotalCalculado: " + toIndentedString(valorTotalCalculado) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

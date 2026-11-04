@@ -76,6 +76,16 @@ public class IdentificacaoCapaCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class IdentificacaoCapaCover {\n" +
+                "    importador: " + toIndentedString(importador) + "\n" +
+                "    informacaoComplementar: " + toIndentedString(informacaoComplementar) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -85,15 +95,5 @@ public class IdentificacaoCapaCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class IdentificacaoCapaCover {\n" +
-                "    importador: " + toIndentedString(importador) + "\n" +
-                "    informacaoComplementar: " + toIndentedString(informacaoComplementar) + "\n" +
-                "}";
-        return sb;
     }
 }

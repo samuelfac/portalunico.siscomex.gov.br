@@ -23,12 +23,47 @@ import java.util.List;
 public class DadosDaConfernciaFsica {
 
 
-    @XmlElement(name = "dataHoraRegistro", required = true)
-    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
-    /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
-     **/
-    private String dataHoraRegistro = null;
+    @XmlType(name = "TipoOperacaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoOperacaoEnum {
+
+        @XmlEnumValue("'I'")
+        @JsonProperty("'I'")
+        I_("'I'"),
+
+        @XmlEnumValue("'R'")
+        @JsonProperty("'R'")
+        R_("'R'"),
+
+        @XmlEnumValue("'E'")
+        @JsonProperty("'E'")
+        E_("'E'");
+
+
+        private final String value;
+
+        TipoOperacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoOperacaoEnum fromValue(String v) {
+            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoOperacao", required = true)
     @ApiModelProperty(example = "I", required = true, value = "Indica se o evento transmitido é novo (incluir) ou retifica/exclui evento anterior.<br/>Domínio:<br/>I - Incluir<br/>R - Retificar<br/>E - Excluir")
@@ -50,12 +85,13 @@ public class DadosDaConfernciaFsica {
      * Data e hora em que o evento ocorreu ou que se coletou, em formulário papel durante uma contingência, os dados do evento. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
     private String dataHoraOcorrencia = null;
-    @XmlElement(name = "cpfOperadorRegistro")
-    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
+
+    @XmlElement(name = "dataHoraRegistro", required = true)
+    @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", required = true, value = "Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
     /**
-     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'
      **/
-    private String cpfOperadorRegistro = null;
+    private String dataHoraRegistro = null;
 
     @XmlElement(name = "cpfOperadorOcorrencia")
     @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
@@ -63,12 +99,13 @@ public class DadosDaConfernciaFsica {
      * CPF da pessoa que coletou, em formulário papel durante uma contingência, os dados do evento.<br/>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
     private String cpfOperadorOcorrencia = null;
-    @XmlElement(name = "tipo", required = true)
-    @ApiModelProperty(example = "AGE", required = true, value = "Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física")
+
+    @XmlElement(name = "cpfOperadorRegistro")
+    @ApiModelProperty(example = "55555555555", value = "CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'")
     /**
-     * Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física
+     * CPF da pessoa que efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência.<br>Pode ser nulo quando o processo for automatizado, com isso, não há operador de ocorrência e nem de registro.<br/>Tamanho: 11<br/>Formato: 'NNNNNNNNNNN'
      **/
-    private TipoEnum tipo = null;
+    private String cpfOperadorRegistro = null;
 
     @XmlElement(name = "protocoloEventoRetificadoOuExcluido")
     @ApiModelProperty(example = "66d24eb1-6ac9-4798-bc93-f4c66eb6fa9b", value = "Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.<br/>Tamanho: 36")
@@ -90,18 +127,52 @@ public class DadosDaConfernciaFsica {
      * Código Siscomex do recinto onde ocorreu o evento a ser transmitido.<br/>Tamanho: 15
      **/
     private String codigoRecinto = null;
-    @XmlElement(name = "setorSolicitante")
-    @ApiModelProperty(value = "Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100")
+
+
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("'AGE'")
+        @JsonProperty("'AGE'")
+        AGE_("'AGE'"),
+
+        @XmlEnumValue("'CCF'")
+        @JsonProperty("'CCF'")
+        CCF_("'CCF'");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+    }
+
+    @XmlElement(name = "tipo", required = true)
+    @ApiModelProperty(example = "AGE", required = true, value = "Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física")
     /**
-     * Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100
+     * Informar o tipo de evento a ser enviado.<br/>Domínio:<br/>AGE - Agendamento<br/>CCF - Conclusão de Conferência Física
      **/
-    private String setorSolicitante = null;
-    @XmlElement(name = "numeroManifesto")
-    @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
-    /**
-     * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
-     **/
-    private String numeroManifesto = null;
+    private TipoEnum tipo = null;
 
     @XmlElement(name = "dataHoraAgenda")
     @ApiModelProperty(example = "2020-04-01T10:50:30.150-0300", value = "<b>Nota:</b> Data e hora agendada. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'dataHoraAgenda' quando o atributo 'tipo' for informado com valor 'AGE'.<br/>Formato: 'yyyy-MM-ddTHH:mm:ss.SSSZ'")
@@ -131,30 +202,74 @@ public class DadosDaConfernciaFsica {
      * Indicar qual o interveniente que solicitou a conferência física. Conforme tabelas de domínio Órgão ou Solicitante disponíveis no <a href=https://portalunico.siscomex.gov.br/tabx/#/tabelas rel=\"noopener noreferrer\" target=\"_blank\">Portal Único Siscomex.</a>
      **/
     private String solicitante = null;
+
+    @XmlElement(name = "setorSolicitante")
+    @ApiModelProperty(value = "Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100")
+    /**
+     * Identificação do setor, seção e/ou serviço solicitante da conferência física.<br/>Tamanho: 100
+     **/
+    private String setorSolicitante = null;
+
+    @XmlElement(name = "numeroManifesto")
+    @ApiModelProperty(example = "1318500002175", value = "Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100")
+    /**
+     * Número do Manifesto. No caso de MDF-e informar a chave de acesso.<br/>Tamanho: 100
+     **/
+    private String numeroManifesto = null;
+
+
+    @XmlType(name = "TipoManifestoEnum")
+    @XmlEnum(String.class)
+    public enum TipoManifestoEnum {
+
+        @XmlEnumValue("'MICDTA'")
+        @JsonProperty("'MICDTA'")
+        MICDTA_("'MICDTA'"),
+
+        @XmlEnumValue("'TIFDTA'")
+        @JsonProperty("'TIFDTA'")
+        TIFDTA_("'TIFDTA'"),
+
+        @XmlEnumValue("'MDFE'")
+        @JsonProperty("'MDFE'")
+        MDFE_("'MDFE'"),
+
+        @XmlEnumValue("'MELET'")
+        @JsonProperty("'MELET'")
+        MELET_("'MELET'");
+
+
+        private final String value;
+
+        TipoManifestoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoManifestoEnum fromValue(String v) {
+            for (TipoManifestoEnum b : TipoManifestoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoManifestoEnum");
+        }
+    }
+
     @XmlElement(name = "tipoManifesto")
     @ApiModelProperty(example = "MICDTA", value = "Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico")
     /**
      * Tipo do manifesto conforme tabela de domínio.<br/>Domínio:<br/>MICDTA - MicDTA<br/>TIFDTA - TifDTA<br/>MDFE - MDF-e<br/>MELET - Manifesto Eletrônico
      **/
     private TipoManifestoEnum tipoManifesto = null;
-    @XmlElement(name = "listaNumeroConteiner")
-    @ApiModelProperty(value = "Lista de número do contêiner")
-    @Valid
-    /**
-     * Lista de número do contêiner
-     **/
-    private List<DadosDoConteiner> listaNumeroConteiner = null;
-    @XmlElement(name = "listaIdentificacaoUld")
-    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
-    @Valid
-    /**
-     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
-     **/
-    private List<DadosDaIdentificaoULD_> listaIdentificacaoUld = null;
-    @XmlElement(name = "dataHoraOperacao")
-    @ApiModelProperty(value = "")
-    @Valid
-    private DatasDeOperao dataHoraOperacao = null;
 
     @XmlElement(name = "numeroConhecimentoMAWB")
     @ApiModelProperty(example = "0556548723", value = "Identificação do conhecimento MASTER (MAWB), a ser utilizado somente no modal aéreo. <br/>Quando se tratar de um MAWB, esse campo deve ser preenchido, e o campo 'Conhecimento de carga' deve ser deixado vazio. <br/>Quando se tratar de um HAWB, este campo deve ser preenchido com o MASTER (inclusive nos casos de remessa) e o campo 'Conhecimento de carga' <br/> deve ser preenchido com o HOUSE.<br/>Deve ser informado sem caracteres de máscara de formatação. Contudo, será permitido o uso do caractere \"-\".<br/>Tamanho: 100")
@@ -189,18 +304,22 @@ public class DadosDaConfernciaFsica {
      * Lista de Placas de semirreboques, vagões ou truck.
      **/
     private List<PlacaSemirreboque> listaPlacaSemirreboque = null;
-    @XmlElement(name = "retiradaAmostras")
-    @ApiModelProperty(example = "false", value = "Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+
+    @XmlElement(name = "listaNumeroConteiner")
+    @ApiModelProperty(value = "Lista de número do contêiner")
+    @Valid
     /**
-     * Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Lista de número do contêiner
      **/
-    private Boolean retiradaAmostras = null;
-    @XmlElement(name = "divergenciaQualificacao")
-    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    private List<DadosDoConteiner> listaNumeroConteiner = null;
+
+    @XmlElement(name = "listaIdentificacaoUld")
+    @ApiModelProperty(example = "AZEB123_AA, AKE21001NZ", value = "Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10")
+    @Valid
     /**
-     * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     * Identificação da ULD no formato (TTTNNNNNPP) composta pelos seguintes atributos: Tipo de ULD (3 caracteres - TTT), Número da ULD (5 caracteres - NNNNN - Caso o número tenha menos que 5 caracteres, preencher à direita com o caracter especial \"_\") e Código do proprietário da ULD (2 caracteres - PP).<br/>Tamanho: 10
      **/
-    private Boolean divergenciaQualificacao = null;
+    private List<DadosDaIdentificaoULD_> listaIdentificacaoUld = null;
 
     @XmlElement(name = "listaNumeroLote")
     @ApiModelProperty(value = "Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.")
@@ -225,16 +344,10 @@ public class DadosDaConfernciaFsica {
      **/
     private List<DadosDaCmera> listaCameras = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "dataHoraOperacao")
+    @ApiModelProperty(value = "")
+    @Valid
+    private DatasDeOperao dataHoraOperacao = null;
 
     @XmlElement(name = "listaOperadoresPosicionamento")
     @ApiModelProperty(value = "Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.")
@@ -260,16 +373,12 @@ public class DadosDaConfernciaFsica {
      **/
     private List<DadosDoLacre> listaLacres = null;
 
+    @XmlElement(name = "retiradaAmostras")
+    @ApiModelProperty(example = "false", value = "Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
     /**
-     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
-     *
-     * @return dataHoraRegistro
+     * Informar se houve retirada de amostras durante a conferência física<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
      **/
-    @JsonProperty("dataHoraRegistro")
-    @NotNull
-    public String getDataHoraRegistro() {
-        return dataHoraRegistro;
-    }
+    private Boolean retiradaAmostras = null;
 
     @XmlElement(name = "listaTipoAvaria")
     @ApiModelProperty(value = "Lista dos Tipos de Avarias.")
@@ -300,9 +409,12 @@ public class DadosDaConfernciaFsica {
      **/
     private Boolean divergenciaQuantidade = null;
 
-    public void setDataHoraRegistro(String dataHoraRegistro) {
-        this.dataHoraRegistro = dataHoraRegistro;
-    }
+    @XmlElement(name = "divergenciaQualificacao")
+    @ApiModelProperty(example = "false", value = "Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não")
+    /**
+     * Caso constatado, informar se há divergências de qualificação de mercadorias/volumes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar os atributos 'dataHoraInicioPosicionamento', 'dataHoraFimPosicionamento', 'dataHoraInicioConferenciaFisica', 'dataHoraFimConferenciaFisica', 'listaOperadoresPosicionamento (cpf, nome'), 'retiradaAmostras', 'divergenciaQualificacao', 'divergenciaQuantidade', 'areaConferenciaFisica', quando o atributo 'tipo' for informado com valor 'CCF'.<br/>Domínio:<br/>true - Sim<br/>false - Não
+     **/
+    private Boolean divergenciaQualificacao = null;
 
     @XmlElement(name = "quantidadeVolumesDivergentes")
     @ApiModelProperty(example = "17", value = "Caso constatado, informar a quantidade de volumes divergentes<font color=\"red\"><strong><br/>(!)</strong></font>É obrigatório informar o atributo 'quantidadeVolumesDivergentes' quando o atributo 'tipo' for informado com valor 'CCF' e 'divergenciaQuantidade' for informado com valor 'True'")
@@ -390,17 +502,18 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
+     * Data e hora em que se efetuou o lançamento, no sistema informatizado, seja em operações normais, seja das informações coletadas durante uma contingência. Deve-se enviar, junto da data, o fuso horário no qual tal data e hora foi gerada.&lt;br/&gt;Formato: &#39;yyyy-MM-ddTHH:mm:ss.SSSZ&#39;
      *
-     * @return protocoloEventoRetificadoOuExcluido
+     * @return dataHoraRegistro
      **/
-    @JsonProperty("protocoloEventoRetificadoOuExcluido")
-    public String getProtocoloEventoRetificadoOuExcluido() {
-        return protocoloEventoRetificadoOuExcluido;
+    @JsonProperty("dataHoraRegistro")
+    @NotNull
+    public String getDataHoraRegistro() {
+        return dataHoraRegistro;
     }
 
-    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
-        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
+    public void setDataHoraRegistro(String dataHoraRegistro) {
+        this.dataHoraRegistro = dataHoraRegistro;
     }
 
     public DadosDaConfernciaFsica dataHoraRegistro(String dataHoraRegistro) {
@@ -447,21 +560,17 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Informar o tipo de evento a ser enviado.&lt;br/&gt;Domínio:&lt;br/&gt;AGE - Agendamento&lt;br/&gt;CCF - Conclusão de Conferência Física
+     * Observar que no caso de evento retificador ou de exclusão, o protocolo do evento retificado ou excluído deve ser informado para possibilitar a correta vinculação. Usar protocolo recebido após o envio do evento original. O envio de eventos retificadores substitui completamente as informações prestadas no evento retificado.&lt;br/&gt;Tamanho: 36
      *
-     * @return tipo
+     * @return protocoloEventoRetificadoOuExcluido
      **/
-    @JsonProperty("tipo")
-    @NotNull
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
+    @JsonProperty("protocoloEventoRetificadoOuExcluido")
+    public String getProtocoloEventoRetificadoOuExcluido() {
+        return protocoloEventoRetificadoOuExcluido;
     }
 
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
+    public void setProtocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
+        this.protocoloEventoRetificadoOuExcluido = protocoloEventoRetificadoOuExcluido;
     }
 
     public DadosDaConfernciaFsica protocoloEventoRetificadoOuExcluido(String protocoloEventoRetificadoOuExcluido) {
@@ -509,17 +618,21 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Identificação do setor, seção e/ou serviço solicitante da conferência física.&lt;br/&gt;Tamanho: 100
+     * Informar o tipo de evento a ser enviado.&lt;br/&gt;Domínio:&lt;br/&gt;AGE - Agendamento&lt;br/&gt;CCF - Conclusão de Conferência Física
      *
-     * @return setorSolicitante
+     * @return tipo
      **/
-    @JsonProperty("setorSolicitante")
-    public String getSetorSolicitante() {
-        return setorSolicitante;
+    @JsonProperty("tipo")
+    @NotNull
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
     }
 
-    public void setSetorSolicitante(String setorSolicitante) {
-        this.setorSolicitante = setorSolicitante;
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
     }
 
     public DadosDaConfernciaFsica tipo(TipoEnum tipo) {
@@ -607,20 +720,16 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Tipo do manifesto conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;MICDTA - MicDTA&lt;br/&gt;TIFDTA - TifDTA&lt;br/&gt;MDFE - MDF-e&lt;br/&gt;MELET - Manifesto Eletrônico
-     *
-     * @return tipoManifesto
+     * Identificação do setor, seção e/ou serviço solicitante da conferência física.&lt;br/&gt;Tamanho: 100
+     * @return setorSolicitante
      **/
-    @JsonProperty("tipoManifesto")
-    public String getTipoManifesto() {
-        if (tipoManifesto == null) {
-            return null;
-        }
-        return tipoManifesto.value();
+    @JsonProperty("setorSolicitante")
+    public String getSetorSolicitante() {
+        return setorSolicitante;
     }
 
-    public void setTipoManifesto(TipoManifestoEnum tipoManifesto) {
-        this.tipoManifesto = tipoManifesto;
+    public void setSetorSolicitante(String setorSolicitante) {
+        this.setorSolicitante = setorSolicitante;
     }
 
     public DadosDaConfernciaFsica setorSolicitante(String setorSolicitante) {
@@ -647,17 +756,20 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
+     * Tipo do manifesto conforme tabela de domínio.&lt;br/&gt;Domínio:&lt;br/&gt;MICDTA - MicDTA&lt;br/&gt;TIFDTA - TifDTA&lt;br/&gt;MDFE - MDF-e&lt;br/&gt;MELET - Manifesto Eletrônico
      *
-     * @return listaNumeroLote
+     * @return tipoManifesto
      **/
-    @JsonProperty("listaNumeroLote")
-    public List<DadosDaIdentificaoDoLote> getListaNumeroLote() {
-        return listaNumeroLote;
+    @JsonProperty("tipoManifesto")
+    public String getTipoManifesto() {
+        if (tipoManifesto == null) {
+            return null;
+        }
+        return tipoManifesto.value();
     }
 
-    public void setListaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
-        this.listaNumeroLote = listaNumeroLote;
+    public void setTipoManifesto(TipoManifestoEnum tipoManifesto) {
+        this.tipoManifesto = tipoManifesto;
     }
 
     public DadosDaConfernciaFsica tipoManifesto(TipoManifestoEnum tipoManifesto) {
@@ -739,6 +851,7 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Lista de Placas de semirreboques, vagões ou truck.
+     *
      * @return listaPlacaSemirreboque
      **/
     @JsonProperty("listaPlacaSemirreboque")
@@ -807,17 +920,16 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.
-     *
-     * @return listaOperadoresPosicionamento
+     * Lista de Lotes. Usar o mesmo número gerado no evento GERAÇÃO DE LOTES.
+     * @return listaNumeroLote
      **/
-    @JsonProperty("listaOperadoresPosicionamento")
-    public List<OperadorQueParticipouDoManuseioDaCarga> getListaOperadoresPosicionamento() {
-        return listaOperadoresPosicionamento;
+    @JsonProperty("listaNumeroLote")
+    public List<DadosDaIdentificaoDoLote> getListaNumeroLote() {
+        return listaNumeroLote;
     }
 
-    public void setListaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
-        this.listaOperadoresPosicionamento = listaOperadoresPosicionamento;
+    public void setListaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
+        this.listaNumeroLote = listaNumeroLote;
     }
 
     public DadosDaConfernciaFsica listaNumeroLote(List<DadosDaIdentificaoDoLote> listaNumeroLote) {
@@ -890,23 +1002,17 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Informar todos as pessoas que acompanharam o posicionamento da carga e/ou a conferência física exceto os operadores informados na lista anterior.
+     * Informar todos os operadores que participaram do manuseio da carga objetivando seu posicionamento para conferência física.
      *
-     * @return listaPessoasAcompanhamento
+     * @return listaOperadoresPosicionamento
      **/
-    @JsonProperty("listaPessoasAcompanhamento")
-    public List<DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica> getListaPessoasAcompanhamento() {
-        return listaPessoasAcompanhamento;
+    @JsonProperty("listaOperadoresPosicionamento")
+    public List<OperadorQueParticipouDoManuseioDaCarga> getListaOperadoresPosicionamento() {
+        return listaOperadoresPosicionamento;
     }
 
-    /**
-     * Lista de lacres verificados
-     *
-     * @return listaLacres
-     **/
-    @JsonProperty("listaLacres")
-    public List<DadosDoLacre> getListaLacres() {
-        return listaLacres;
+    public void setListaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
+        this.listaOperadoresPosicionamento = listaOperadoresPosicionamento;
     }
 
     public DadosDaConfernciaFsica listaOperadoresPosicionamento(List<OperadorQueParticipouDoManuseioDaCarga> listaOperadoresPosicionamento) {
@@ -919,8 +1025,14 @@ public class DadosDaConfernciaFsica {
         return this;
     }
 
-    public void setListaLacres(List<DadosDoLacre> listaLacres) {
-        this.listaLacres = listaLacres;
+    /**
+     * Informar todos as pessoas que acompanharam o posicionamento da carga e/ou a conferência física exceto os operadores informados na lista anterior.
+     *
+     * @return listaPessoasAcompanhamento
+     **/
+    @JsonProperty("listaPessoasAcompanhamento")
+    public List<DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica> getListaPessoasAcompanhamento() {
+        return listaPessoasAcompanhamento;
     }
 
     public void setListaPessoasAcompanhamento(List<DadosDaPessoaQueAcompanhouOPosicionamentoEOuAConfernciaFsica> listaPessoasAcompanhamento) {
@@ -938,17 +1050,17 @@ public class DadosDaConfernciaFsica {
     }
 
     /**
-     * Caso constatado, informar a quantidade de volumes divergentes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesDivergentes&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;divergenciaQuantidade&#39; for informado com valor &#39;True&#39;
+     * Lista de lacres verificados
      *
-     * @return quantidadeVolumesDivergentes
+     * @return listaLacres
      **/
-    @JsonProperty("quantidadeVolumesDivergentes")
-    public Integer getQuantidadeVolumesDivergentes() {
-        return quantidadeVolumesDivergentes;
+    @JsonProperty("listaLacres")
+    public List<DadosDoLacre> getListaLacres() {
+        return listaLacres;
     }
 
-    public void setQuantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
-        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
+    public void setListaLacres(List<DadosDoLacre> listaLacres) {
+        this.listaLacres = listaLacres;
     }
 
     public DadosDaConfernciaFsica listaLacres(List<DadosDoLacre> listaLacres) {
@@ -981,7 +1093,6 @@ public class DadosDaConfernciaFsica {
 
     /**
      * Lista dos Tipos de Avarias.
-     *
      * @return listaTipoAvaria
      **/
     @JsonProperty("listaTipoAvaria")
@@ -1075,6 +1186,66 @@ public class DadosDaConfernciaFsica {
         return this;
     }
 
+    /**
+     * Caso constatado, informar a quantidade de volumes divergentes&lt;font color&#x3D;\&quot;red\&quot;&gt;&lt;strong&gt;&lt;br/&gt;(!)&lt;/strong&gt;&lt;/font&gt;É obrigatório informar o atributo &#39;quantidadeVolumesDivergentes&#39; quando o atributo &#39;tipo&#39; for informado com valor &#39;CCF&#39; e &#39;divergenciaQuantidade&#39; for informado com valor &#39;True&#39;
+     * @return quantidadeVolumesDivergentes
+     **/
+    @JsonProperty("quantidadeVolumesDivergentes")
+    public Integer getQuantidadeVolumesDivergentes() {
+        return quantidadeVolumesDivergentes;
+    }
+
+    public void setQuantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
+        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
+    }
+
+    public DadosDaConfernciaFsica quantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
+        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
+        return this;
+    }
+
+    /**
+     * Caso constatado, registrar as informações das divergências&lt;br/&gt;Tamanho: 200
+     * @return observacaoDivergencia
+     **/
+    @JsonProperty("observacaoDivergencia")
+    public String getObservacaoDivergencia() {
+        return observacaoDivergencia;
+    }
+
+    public void setObservacaoDivergencia(String observacaoDivergencia) {
+        this.observacaoDivergencia = observacaoDivergencia;
+    }
+
+    public DadosDaConfernciaFsica observacaoDivergencia(String observacaoDivergencia) {
+        this.observacaoDivergencia = observacaoDivergencia;
+        return this;
+    }
+
+    /**
+     * Lista de Tratamento Administrativo
+     * @return listaTratamentoAdministrativo
+     **/
+    @JsonProperty("listaTratamentoAdministrativo")
+    public List<DadosDoTratamentoAdministrativo> getListaTratamentoAdministrativo() {
+        return listaTratamentoAdministrativo;
+    }
+
+    public void setListaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
+        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
+    }
+
+    public DadosDaConfernciaFsica listaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
+        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
+        return this;
+    }
+
+    public DadosDaConfernciaFsica addListaTratamentoAdministrativoItem(DadosDoTratamentoAdministrativo listaTratamentoAdministrativoItem) {
+        this.listaTratamentoAdministrativo.add(listaTratamentoAdministrativoItem);
+        return this;
+    }
+
+
     @Override
     public String toString() {
 
@@ -1123,178 +1294,14 @@ public class DadosDaConfernciaFsica {
         return sb;
     }
 
-    @XmlType(name = "TipoOperacaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoOperacaoEnum {
-
-        @XmlEnumValue("'I'")
-        @JsonProperty("'I'")
-        I_("'I'"),
-
-        @XmlEnumValue("'R'")
-        @JsonProperty("'R'")
-        R_("'R'"),
-
-        @XmlEnumValue("'E'")
-        @JsonProperty("'E'")
-        E_("'E'");
-
-
-        private final String value;
-
-        TipoOperacaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoOperacaoEnum fromValue(String v) {
-            for (TipoOperacaoEnum b : TipoOperacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoOperacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    public DadosDaConfernciaFsica quantidadeVolumesDivergentes(Integer quantidadeVolumesDivergentes) {
-        this.quantidadeVolumesDivergentes = quantidadeVolumesDivergentes;
-        return this;
-    }
-
     /**
-     * Caso constatado, registrar as informações das divergências&lt;br/&gt;Tamanho: 200
-     *
-     * @return observacaoDivergencia
-     **/
-    @JsonProperty("observacaoDivergencia")
-    public String getObservacaoDivergencia() {
-        return observacaoDivergencia;
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+   */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public void setObservacaoDivergencia(String observacaoDivergencia) {
-        this.observacaoDivergencia = observacaoDivergencia;
-    }
-
-    public DadosDaConfernciaFsica observacaoDivergencia(String observacaoDivergencia) {
-        this.observacaoDivergencia = observacaoDivergencia;
-        return this;
-    }
-
-    /**
-     * Lista de Tratamento Administrativo
-     *
-     * @return listaTratamentoAdministrativo
-     **/
-    @JsonProperty("listaTratamentoAdministrativo")
-    public List<DadosDoTratamentoAdministrativo> getListaTratamentoAdministrativo() {
-        return listaTratamentoAdministrativo;
-    }
-
-    public void setListaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
-        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
-    }
-
-    public DadosDaConfernciaFsica listaTratamentoAdministrativo(List<DadosDoTratamentoAdministrativo> listaTratamentoAdministrativo) {
-        this.listaTratamentoAdministrativo = listaTratamentoAdministrativo;
-        return this;
-    }
-
-    public DadosDaConfernciaFsica addListaTratamentoAdministrativoItem(DadosDoTratamentoAdministrativo listaTratamentoAdministrativoItem) {
-        this.listaTratamentoAdministrativo.add(listaTratamentoAdministrativoItem);
-        return this;
-    }
-
-
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("'AGE'")
-        @JsonProperty("'AGE'")
-        AGE_("'AGE'"),
-
-        @XmlEnumValue("'CCF'")
-        @JsonProperty("'CCF'")
-        CCF_("'CCF'");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoManifestoEnum")
-    @XmlEnum(String.class)
-    public enum TipoManifestoEnum {
-
-        @XmlEnumValue("'MICDTA'")
-        @JsonProperty("'MICDTA'")
-        MICDTA_("'MICDTA'"),
-
-        @XmlEnumValue("'TIFDTA'")
-        @JsonProperty("'TIFDTA'")
-        TIFDTA_("'TIFDTA'"),
-
-        @XmlEnumValue("'MDFE'")
-        @JsonProperty("'MDFE'")
-        MDFE_("'MDFE'"),
-
-        @XmlEnumValue("'MELET'")
-        @JsonProperty("'MELET'")
-        MELET_("'MELET'");
-
-
-        private final String value;
-
-        TipoManifestoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoManifestoEnum fromValue(String v) {
-            for (TipoManifestoEnum b : TipoManifestoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoManifestoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

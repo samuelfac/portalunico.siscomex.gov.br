@@ -125,15 +125,9 @@ public class DadosCargaContiner {
         this.idElemento = idElemento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosCargaContiner idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**
@@ -203,8 +197,8 @@ public class DadosCargaContiner {
         return this;
     }
 
-    public DadosCargaContiner idElemento(String idElemento) {
-        this.idElemento = idElemento;
+    public DadosCargaContiner addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
+        this.listaManifestos.add(listaManifestosItem);
         return this;
     }
 
@@ -227,10 +221,6 @@ public class DadosCargaContiner {
         return this;
     }
 
-    public DadosCargaContiner addListaManifestosItem(DadosDoManifestoDaCargaSimplificado listaManifestosItem) {
-        this.listaManifestos.add(listaManifestosItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -246,4 +236,15 @@ public class DadosCargaContiner {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

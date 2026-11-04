@@ -66,15 +66,9 @@ public class CargaDetalheFreteTotalMoedaOrigem {
         this.valorCollect = valorCollect;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaDetalheFreteTotalMoedaOrigem valorCollect(ValorMonetario valorCollect) {
+        this.valorCollect = valorCollect;
+        return this;
     }
 
     /**
@@ -96,10 +90,6 @@ public class CargaDetalheFreteTotalMoedaOrigem {
         return this;
     }
 
-    public CargaDetalheFreteTotalMoedaOrigem valorCollect(ValorMonetario valorCollect) {
-        this.valorCollect = valorCollect;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -110,5 +100,16 @@ public class CargaDetalheFreteTotalMoedaOrigem {
                 "    valorPrepaid: " + toIndentedString(valorPrepaid) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

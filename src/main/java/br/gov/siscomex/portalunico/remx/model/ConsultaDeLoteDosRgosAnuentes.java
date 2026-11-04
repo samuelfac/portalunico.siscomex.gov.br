@@ -214,15 +214,9 @@ public class ConsultaDeLoteDosRgosAnuentes {
         this.dataInicioAnexacao = dataInicioAnexacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConsultaDeLoteDosRgosAnuentes dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
+        this.dataInicioAnexacao = dataInicioAnexacao;
+        return this;
     }
 
     /**
@@ -258,8 +252,8 @@ public class ConsultaDeLoteDosRgosAnuentes {
         this.dataInicioManifesto = dataInicioManifesto;
     }
 
-    public ConsultaDeLoteDosRgosAnuentes dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
-        this.dataInicioAnexacao = dataInicioAnexacao;
+    public ConsultaDeLoteDosRgosAnuentes dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
         return this;
     }
 
@@ -301,8 +295,8 @@ public class ConsultaDeLoteDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeLoteDosRgosAnuentes dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
+    public ConsultaDeLoteDosRgosAnuentes addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
+        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
         return this;
     }
 
@@ -371,8 +365,8 @@ public class ConsultaDeLoteDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeLoteDosRgosAnuentes addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
-        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
+    public ConsultaDeLoteDosRgosAnuentes addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
+        this.listaSituacaoLote.add(listaSituacaoLoteItem);
         return this;
     }
 
@@ -445,10 +439,6 @@ public class ConsultaDeLoteDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeLoteDosRgosAnuentes addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
-        this.listaSituacaoLote.add(listaSituacaoLoteItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -472,4 +462,15 @@ public class ConsultaDeLoteDosRgosAnuentes {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -97,5 +97,5 @@ public class CodigoNomeTributoDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

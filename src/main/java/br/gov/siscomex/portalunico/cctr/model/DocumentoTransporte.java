@@ -36,18 +36,58 @@ public class DocumentoTransporte {
     private String numeroDocumentoTransporte = null;
 
 
+    @XmlType(name = "TipoDocumentoTransporteEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoTransporteEnum {
+
+        @XmlEnumValue("MIC_DTA")
+        @JsonProperty("MIC_DTA")
+        MIC_DTA("MIC_DTA"),
+
+        @XmlEnumValue("TIF_DTA")
+        @JsonProperty("TIF_DTA")
+        TIF_DTA("TIF_DTA"),
+
+        @XmlEnumValue("DTAI")
+        @JsonProperty("DTAI")
+        DTAI("DTAI"),
+
+        @XmlEnumValue("DAT")
+        @JsonProperty("DAT")
+        DAT("DAT");
+
+
+        private final String value;
+
+        TipoDocumentoTransporteEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocumentoTransporteEnum fromValue(String v) {
+            for (TipoDocumentoTransporteEnum b : TipoDocumentoTransporteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoTransporteEnum");
+        }
+    }
+
     @XmlElement(name = "tipoDocumentoTransporte")
     @ApiModelProperty(value = "Tipo de documento de transporte")
     /**
      * Tipo de documento de transporte
      **/
     private TipoDocumentoTransporteEnum tipoDocumentoTransporte = null;
-    @XmlElement(name = "cpfCnpjTransportador")
-    @ApiModelProperty(example = "27657485000147", value = "CPF ou CNPJ do Transportador")
-    /**
-     * CPF ou CNPJ do Transportador
-     **/
-    private String cpfCnpjTransportador = null;
 
     @XmlElement(name = "numeroRUT")
     @ApiModelProperty(example = "24BR000064T", value = "Número do RUT")
@@ -81,10 +121,13 @@ public class DocumentoTransporte {
      * Data de Emissão do Documento de Transporte<br>No formato AAAA-MM-YY
      **/
     private String dataEmissao = null;
-    @XmlElement(name = "localDestinoPrevisto")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Local localDestinoPrevisto = null;
+
+    @XmlElement(name = "cpfCnpjTransportador")
+    @ApiModelProperty(example = "27657485000147", value = "CPF ou CNPJ do Transportador")
+    /**
+     * CPF ou CNPJ do Transportador
+     **/
+    private String cpfCnpjTransportador = null;
 
     @XmlElement(name = "nomeTransportador")
     @ApiModelProperty(example = "IEYIQBEIWMVEU KXIXW DVNW", value = "Nome do Transportador")
@@ -92,10 +135,45 @@ public class DocumentoTransporte {
      * Nome do Transportador
      **/
     private String nomeTransportador = null;
-    @XmlElement(name = "localEstoque")
-    @ApiModelProperty(value = "")
-    @Valid
-    private Local localEstoque = null;
+
+
+    @XmlType(name = "TipoDATEnum")
+    @XmlEnum(String.class)
+    public enum TipoDATEnum {
+
+        @XmlEnumValue("SIMPLIFICADO")
+        @JsonProperty("SIMPLIFICADO")
+        SIMPLIFICADO("SIMPLIFICADO"),
+
+        @XmlEnumValue("COMPLETO")
+        @JsonProperty("COMPLETO")
+        COMPLETO("COMPLETO");
+
+
+        private final String value;
+
+        TipoDATEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDATEnum fromValue(String v) {
+            for (TipoDATEnum b : TipoDATEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDATEnum");
+        }
+    }
 
     @XmlElement(name = "tipoDAT")
     @ApiModelProperty(value = "Tipo do DAT")
@@ -108,10 +186,11 @@ public class DocumentoTransporte {
     @ApiModelProperty(value = "")
     @Valid
     private Local localOrigem = null;
-    @XmlElement(name = "veiculoFerroviario")
+
+    @XmlElement(name = "localDestinoPrevisto")
     @ApiModelProperty(value = "")
     @Valid
-    private VeiculoFerroviario veiculoFerroviario = null;
+    private Local localDestinoPrevisto = null;
 
     @XmlElement(name = "localDestinoRealizado")
     @ApiModelProperty(value = "")
@@ -122,6 +201,22 @@ public class DocumentoTransporte {
     @ApiModelProperty(value = "")
     @Valid
     private Local localManifestacao = null;
+
+    @XmlElement(name = "localEstoque")
+    @ApiModelProperty(value = "")
+    @Valid
+    private Local localEstoque = null;
+
+    @XmlElement(name = "veiculoFerroviario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private VeiculoFerroviario veiculoFerroviario = null;
+
+    @XmlElement(name = "veiculoRodoviario")
+    @ApiModelProperty(value = "")
+    @Valid
+    private VeiculoRodovario veiculoRodoviario = null;
+
     @XmlElement(name = "conteineres")
     @ApiModelProperty(value = "Lista de Contêineres vinculados ao documento de transporte")
     @Valid
@@ -129,24 +224,6 @@ public class DocumentoTransporte {
      * Lista de Contêineres vinculados ao documento de transporte
      **/
     private List<Conteineres> conteineres = null;
-    @XmlElement(name = "pesoBrutoTransportado")
-    @ApiModelProperty(example = "9999.99", value = "Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN")
-    @Valid
-    /**
-     * Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN
-     **/
-    private BigDecimal pesoBrutoTransportado = null;
-
-    @XmlElement(name = "veiculoRodoviario")
-    @ApiModelProperty(value = "")
-    @Valid
-    private VeiculoRodovario veiculoRodoviario = null;
-    @XmlElement(name = "dadosUnidadeTransporteConferem")
-    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
-    /**
-     * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
-     **/
-    private String dadosUnidadeTransporteConferem = null;
 
     @XmlElement(name = "cargas")
     @ApiModelProperty(value = "Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte")
@@ -155,12 +232,14 @@ public class DocumentoTransporte {
      * Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte
      **/
     private List<Cargas> cargas = null;
-    @XmlElement(name = "dadosEmbalagemConferem")
-    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
+
+    @XmlElement(name = "pesoBrutoTransportado")
+    @ApiModelProperty(example = "9999.99", value = "Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN")
+    @Valid
     /**
-     * Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     * Peso aferido na balança do recinto em Kg<br>Deve ser informado somente quando há informação de pesagem. Neste caso, é obrigatório.<br>Tamanho: 4.2<br>Formato: NNNN.NN
      **/
-    private String dadosEmbalagemConferem = null;
+    private BigDecimal pesoBrutoTransportado = null;
 
     @XmlElement(name = "observacao")
     @ApiModelProperty(example = "Observações adicionais", value = "Observações adicionais")
@@ -176,16 +255,12 @@ public class DocumentoTransporte {
      **/
     private String dadosVeiculoConferem = null;
 
+    @XmlElement(name = "dadosUnidadeTransporteConferem")
+    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica
+     **/
+    private String dadosUnidadeTransporteConferem = null;
 
     @XmlElement(name = "dadosConteinerConferem")
     @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados do contêiner com os dados recepcionados<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
@@ -194,15 +269,12 @@ public class DocumentoTransporte {
      **/
     private String dadosConteinerConferem = null;
 
+    @XmlElement(name = "dadosEmbalagemConferem")
+    @ApiModelProperty(example = "N", value = "Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
     /**
-     * Número do documento de transporte
-     *
-     * @return numeroDocumentoTransporte
+     * Indicador de conferência dos dados das embalagens com os dados informados na entrega<br>Domínio: S = Sim, N = Não e NA = Não se aplica
      **/
-    @JsonProperty("numeroDocumentoTransporte")
-    public String getNumeroDocumentoTransporte() {
-        return numeroDocumentoTransporte;
-    }
+    private String dadosEmbalagemConferem = null;
 
     @XmlElement(name = "cargaComAvaria")
     @ApiModelProperty(example = "N", value = "Indicador de avarias<br>Domínio: S = Sim, N = Não e NA = Não se aplica")
@@ -240,13 +312,13 @@ public class DocumentoTransporte {
     private String observacaoRecepcao = null;
 
     /**
-     * Número do RUT
+     * Número do documento de transporte
      *
-     * @return numeroRUT
+     * @return numeroDocumentoTransporte
      **/
-    @JsonProperty("numeroRUT")
-    public String getNumeroRUT() {
-        return numeroRUT;
+    @JsonProperty("numeroDocumentoTransporte")
+    public String getNumeroDocumentoTransporte() {
+        return numeroDocumentoTransporte;
     }
 
     public void setNumeroDocumentoTransporte(String numeroDocumentoTransporte) {
@@ -281,13 +353,13 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Nome do Transportador
+     * Número do RUT
      *
-     * @return nomeTransportador
+     * @return numeroRUT
      **/
-    @JsonProperty("nomeTransportador")
-    public String getNomeTransportador() {
-        return nomeTransportador;
+    @JsonProperty("numeroRUT")
+    public String getNumeroRUT() {
+        return numeroRUT;
     }
 
     public void setNumeroRUT(String numeroRUT) {
@@ -400,13 +472,13 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Get localDestinoRealizado
+     * Nome do Transportador
      *
-     * @return localDestinoRealizado
+     * @return nomeTransportador
      **/
-    @JsonProperty("localDestinoRealizado")
-    public Local getLocalDestinoRealizado() {
-        return localDestinoRealizado;
+    @JsonProperty("nomeTransportador")
+    public String getNomeTransportador() {
+        return nomeTransportador;
     }
 
     public void setNomeTransportador(String nomeTransportador) {
@@ -477,13 +549,12 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Get veiculoRodoviario
-     *
-     * @return veiculoRodoviario
+     * Get localDestinoRealizado
+     * @return localDestinoRealizado
      **/
-    @JsonProperty("veiculoRodoviario")
-    public VeiculoRodovario getVeiculoRodoviario() {
-        return veiculoRodoviario;
+    @JsonProperty("localDestinoRealizado")
+    public Local getLocalDestinoRealizado() {
+        return localDestinoRealizado;
     }
 
     public void setLocalDestinoRealizado(Local localDestinoRealizado) {
@@ -550,13 +621,12 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte
-     *
-     * @return cargas
+     * Get veiculoRodoviario
+     * @return veiculoRodoviario
      **/
-    @JsonProperty("cargas")
-    public List<Cargas> getCargas() {
-        return cargas;
+    @JsonProperty("veiculoRodoviario")
+    public VeiculoRodovario getVeiculoRodoviario() {
+        return veiculoRodoviario;
     }
 
     public void setVeiculoRodoviario(VeiculoRodovario veiculoRodoviario) {
@@ -592,13 +662,12 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Observações adicionais
-     *
-     * @return observacao
+     * Lista de DUE’s e/ou RUC’s vinculados ao documento de transporte
+     * @return cargas
      **/
-    @JsonProperty("observacao")
-    public String getObservacao() {
-        return observacao;
+    @JsonProperty("cargas")
+    public List<Cargas> getCargas() {
+        return cargas;
     }
 
     public void setCargas(List<Cargas> cargas) {
@@ -634,13 +703,12 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Indicador de conferência dos dados das embalagens com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
-     *
-     * @return dadosEmbalagemConferem
+     * Observações adicionais
+     * @return observacao
      **/
-    @JsonProperty("dadosEmbalagemConferem")
-    public String getDadosEmbalagemConferem() {
-        return dadosEmbalagemConferem;
+    @JsonProperty("observacao")
+    public String getObservacao() {
+        return observacao;
     }
 
     public void setObservacao(String observacao) {
@@ -672,6 +740,7 @@ public class DocumentoTransporte {
 
     /**
      * Indicador de conferência dos dados da unidade de transporte com os dados recepcionados&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     *
      * @return dadosUnidadeTransporteConferem
      **/
     @JsonProperty("dadosUnidadeTransporteConferem")
@@ -707,13 +776,12 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Avarias identificadas
-     *
-     * @return descricaoAvaria
+     * Indicador de conferência dos dados das embalagens com os dados informados na entrega&lt;br&gt;Domínio: S &#x3D; Sim, N &#x3D; Não e NA &#x3D; Não se aplica
+     * @return dadosEmbalagemConferem
      **/
-    @JsonProperty("descricaoAvaria")
-    public String getDescricaoAvaria() {
-        return descricaoAvaria;
+    @JsonProperty("dadosEmbalagemConferem")
+    public String getDadosEmbalagemConferem() {
+        return dadosEmbalagemConferem;
     }
 
     public void setDadosEmbalagemConferem(String dadosEmbalagemConferem) {
@@ -744,13 +812,12 @@ public class DocumentoTransporte {
     }
 
     /**
-     * Observações adicionais
-     *
-     * @return observacaoRecepcao
+     * Avarias identificadas
+     * @return descricaoAvaria
      **/
-    @JsonProperty("observacaoRecepcao")
-    public String getObservacaoRecepcao() {
-        return observacaoRecepcao;
+    @JsonProperty("descricaoAvaria")
+    public String getDescricaoAvaria() {
+        return descricaoAvaria;
     }
 
     public void setDescricaoAvaria(String descricaoAvaria) {
@@ -782,7 +849,6 @@ public class DocumentoTransporte {
 
     /**
      * Divergências identificadas
-     *
      * @return descricaoDivergencia
      **/
     @JsonProperty("descricaoDivergencia")
@@ -798,6 +864,26 @@ public class DocumentoTransporte {
         this.descricaoDivergencia = descricaoDivergencia;
         return this;
     }
+
+    /**
+     * Observações adicionais
+     *
+     * @return observacaoRecepcao
+     **/
+    @JsonProperty("observacaoRecepcao")
+    public String getObservacaoRecepcao() {
+        return observacaoRecepcao;
+    }
+
+    public void setObservacaoRecepcao(String observacaoRecepcao) {
+        this.observacaoRecepcao = observacaoRecepcao;
+    }
+
+    public DocumentoTransporte observacaoRecepcao(String observacaoRecepcao) {
+        this.observacaoRecepcao = observacaoRecepcao;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -837,97 +923,14 @@ public class DocumentoTransporte {
         return sb;
     }
 
-    public void setObservacaoRecepcao(String observacaoRecepcao) {
-        this.observacaoRecepcao = observacaoRecepcao;
-    }
-
-    public DocumentoTransporte observacaoRecepcao(String observacaoRecepcao) {
-        this.observacaoRecepcao = observacaoRecepcao;
-        return this;
-    }
-
-
-    @XmlType(name = "TipoDocumentoTransporteEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoTransporteEnum {
-
-        @XmlEnumValue("MIC_DTA")
-        @JsonProperty("MIC_DTA")
-        MIC_DTA("MIC_DTA"),
-
-        @XmlEnumValue("TIF_DTA")
-        @JsonProperty("TIF_DTA")
-        TIF_DTA("TIF_DTA"),
-
-        @XmlEnumValue("DTAI")
-        @JsonProperty("DTAI")
-        DTAI("DTAI"),
-
-        @XmlEnumValue("DAT")
-        @JsonProperty("DAT")
-        DAT("DAT");
-
-
-        private final String value;
-
-        TipoDocumentoTransporteEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDocumentoTransporteEnum fromValue(String v) {
-            for (TipoDocumentoTransporteEnum b : TipoDocumentoTransporteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoTransporteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoDATEnum")
-    @XmlEnum(String.class)
-    public enum TipoDATEnum {
-
-        @XmlEnumValue("SIMPLIFICADO")
-        @JsonProperty("SIMPLIFICADO")
-        SIMPLIFICADO("SIMPLIFICADO"),
-
-        @XmlEnumValue("COMPLETO")
-        @JsonProperty("COMPLETO")
-        COMPLETO("COMPLETO");
-
-
-        private final String value;
-
-        TipoDATEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDATEnum fromValue(String v) {
-            for (TipoDATEnum b : TipoDATEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDATEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -26,15 +26,38 @@ import javax.xml.bind.annotation.XmlType;
 public class SituacaoRetificacaoLpco {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "IdEnum")
+    @XmlEnum(String.class)
+    public enum IdEnum {
+
+        @XmlEnumValue("PARA_ANALISE")
+        @JsonProperty("PARA_ANALISE")
+        PARA_ANALISE("PARA_ANALISE");
+
+
+        private final String value;
+
+        IdEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IdEnum fromValue(String v) {
+            for (IdEnum b : IdEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdEnum");
+        }
     }
 
     @XmlElement(name = "id", required = true)
@@ -44,14 +67,39 @@ public class SituacaoRetificacaoLpco {
      **/
     private IdEnum id = null;
 
+
+    @XmlType(name = "DescricaoEnum")
+    @XmlEnum(String.class)
+    public enum DescricaoEnum {
+
+        @XmlEnumValue("Para análise")
+        @JsonProperty("Para análise")
+        PARA_AN_LISE("Para análise");
+
+
+        private final String value;
+
+        DescricaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
     @Override
     public String toString() {
+        return String.valueOf(value);
+    }
 
-        String sb = "class SituacaoRetificacaoLpco {\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
+        public static DescricaoEnum fromValue(String v) {
+            for (DescricaoEnum b : DescricaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
+        }
     }
 
     @XmlElement(name = "descricao")
@@ -107,71 +155,24 @@ public class SituacaoRetificacaoLpco {
     }
 
 
-    @XmlType(name = "IdEnum")
-    @XmlEnum(String.class)
-    public enum IdEnum {
-
-        @XmlEnumValue("PARA_ANALISE")
-        @JsonProperty("PARA_ANALISE")
-        PARA_ANALISE("PARA_ANALISE");
-
-
-        private final String value;
-
-        IdEnum(String v) {
-            value = v;
-        }
-
-        public static IdEnum fromValue(String v) {
-            for (IdEnum b : IdEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "DescricaoEnum")
-    @XmlEnum(String.class)
-    public enum DescricaoEnum {
-
-        @XmlEnumValue("Para análise")
-        @JsonProperty("Para análise")
-        PARA_AN_LISE("Para análise");
-
-
-        private final String value;
-
-        DescricaoEnum(String v) {
-            value = v;
-        }
-
-        public static DescricaoEnum fromValue(String v) {
-            for (DescricaoEnum b : DescricaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
+    @Override
     public String toString() {
-            return String.valueOf(value);
-        }
+
+        String sb = "class SituacaoRetificacaoLpco {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

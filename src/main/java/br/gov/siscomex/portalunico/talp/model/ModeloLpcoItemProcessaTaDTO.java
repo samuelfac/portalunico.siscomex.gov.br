@@ -83,5 +83,5 @@ public class ModeloLpcoItemProcessaTaDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

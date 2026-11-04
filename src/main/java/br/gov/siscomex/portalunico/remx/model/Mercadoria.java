@@ -125,15 +125,9 @@ public class Mercadoria {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Mercadoria descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -188,8 +182,8 @@ public class Mercadoria {
         this.quantidade = quantidade;
     }
 
-    public Mercadoria descricao(String descricao) {
-        this.descricao = descricao;
+    public Mercadoria quantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
         return this;
     }
 
@@ -245,8 +239,8 @@ public class Mercadoria {
         this.tratamentoAdm = tratamentoAdm;
     }
 
-    public Mercadoria quantidade(BigDecimal quantidade) {
-        this.quantidade = quantidade;
+    public Mercadoria tratamentoAdm(Integer tratamentoAdm) {
+        this.tratamentoAdm = tratamentoAdm;
         return this;
     }
 
@@ -286,10 +280,6 @@ public class Mercadoria {
         return this;
     }
 
-    public Mercadoria tratamentoAdm(Integer tratamentoAdm) {
-        this.tratamentoAdm = tratamentoAdm;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -308,4 +298,15 @@ public class Mercadoria {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

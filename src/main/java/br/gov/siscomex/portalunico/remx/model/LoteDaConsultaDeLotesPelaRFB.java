@@ -96,15 +96,9 @@ public class LoteDaConsultaDeLotesPelaRFB {
         this.dataHorarioRegistroLote = dataHorarioRegistroLote;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public LoteDaConsultaDeLotesPelaRFB dataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
+        this.dataHorarioRegistroLote = dataHorarioRegistroLote;
+        return this;
     }
 
     /**
@@ -164,8 +158,8 @@ public class LoteDaConsultaDeLotesPelaRFB {
         this.numeroLote = numeroLote;
     }
 
-    public LoteDaConsultaDeLotesPelaRFB dataHorarioRegistroLote(OffsetDateTime dataHorarioRegistroLote) {
-        this.dataHorarioRegistroLote = dataHorarioRegistroLote;
+    public LoteDaConsultaDeLotesPelaRFB numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
         return this;
     }
 
@@ -262,10 +256,6 @@ public class LoteDaConsultaDeLotesPelaRFB {
         return this;
     }
 
-    public LoteDaConsultaDeLotesPelaRFB numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -283,4 +273,15 @@ public class LoteDaConsultaDeLotesPelaRFB {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

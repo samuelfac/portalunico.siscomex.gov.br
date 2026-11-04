@@ -98,15 +98,9 @@ public class TemplateItemLpco {
         this.descricaoNcm = descricaoNcm;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public TemplateItemLpco descricaoNcm(String descricaoNcm) {
+        this.descricaoNcm = descricaoNcm;
+        return this;
     }
 
     /**
@@ -178,10 +172,6 @@ public class TemplateItemLpco {
         return this;
     }
 
-    public TemplateItemLpco descricaoNcm(String descricaoNcm) {
-        this.descricaoNcm = descricaoNcm;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -195,4 +185,15 @@ public class TemplateItemLpco {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

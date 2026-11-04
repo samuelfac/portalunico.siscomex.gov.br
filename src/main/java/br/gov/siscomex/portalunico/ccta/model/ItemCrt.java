@@ -158,15 +158,9 @@ public class ItemCrt {
         this.conteinerVazio = conteinerVazio;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemCrt conteinerVazio(Boolean conteinerVazio) {
+        this.conteinerVazio = conteinerVazio;
+        return this;
     }
 
     /**
@@ -222,8 +216,8 @@ public class ItemCrt {
         this.embalagemVazia = embalagemVazia;
     }
 
-    public ItemCrt conteinerVazio(Boolean conteinerVazio) {
-        this.conteinerVazio = conteinerVazio;
+    public ItemCrt embalagemVazia(Boolean embalagemVazia) {
+        this.embalagemVazia = embalagemVazia;
         return this;
     }
 
@@ -260,8 +254,8 @@ public class ItemCrt {
         this.medidaConteiner = medidaConteiner;
     }
 
-    public ItemCrt embalagemVazia(Boolean embalagemVazia) {
-        this.embalagemVazia = embalagemVazia;
+    public ItemCrt medidaConteiner(String medidaConteiner) {
+        this.medidaConteiner = medidaConteiner;
         return this;
     }
 
@@ -298,8 +292,8 @@ public class ItemCrt {
         this.numeroConteiner = numeroConteiner;
     }
 
-    public ItemCrt medidaConteiner(String medidaConteiner) {
-        this.medidaConteiner = medidaConteiner;
+    public ItemCrt numeroConteiner(String numeroConteiner) {
+        this.numeroConteiner = numeroConteiner;
         return this;
     }
 
@@ -429,8 +423,8 @@ public class ItemCrt {
         this.tipoEmbalagem = tipoEmbalagem;
     }
 
-    public ItemCrt numeroConteiner(String numeroConteiner) {
-        this.numeroConteiner = numeroConteiner;
+    public ItemCrt tipoEmbalagem(String tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
         return this;
     }
 
@@ -470,10 +464,6 @@ public class ItemCrt {
         return this;
     }
 
-    public ItemCrt tipoEmbalagem(String tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -498,5 +488,16 @@ public class ItemCrt {
                 "    tipoTratamentoMadeiraBruta: " + toIndentedString(tipoTratamentoMadeiraBruta) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -93,6 +93,16 @@ public class Unitizacoes {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class Unitizacoes {\n" +
+                "    documentosUnitizacao: " + toIndentedString(documentosUnitizacao) + "\n" +
+                "    conteineres: " + toIndentedString(conteineres) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -102,15 +112,5 @@ public class Unitizacoes {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class Unitizacoes {\n" +
-                "    documentosUnitizacao: " + toIndentedString(documentosUnitizacao) + "\n" +
-                "    conteineres: " + toIndentedString(conteineres) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -38,13 +38,43 @@ public class MemoriaCalculoDto {
     private BigDecimal percentualDeReducaoDaBaseCalculado = null;
 
 
-    @XmlElement(name = "valorDaAliquota")
-    @ApiModelProperty(value = "Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorDaAliquota = null;
+    @XmlType(name = "TipoDeAliquotaEnum")
+    @XmlEnum(String.class)
+    public enum TipoDeAliquotaEnum {
+
+        @XmlEnumValue("AD_VALOREM")
+        @JsonProperty("AD_VALOREM")
+        AD_VALOREM("AD_VALOREM"),
+
+        @XmlEnumValue("ESPECIFICA")
+        @JsonProperty("ESPECIFICA")
+        ESPECIFICA("ESPECIFICA");
+
+
+        private final String value;
+
+        TipoDeAliquotaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDeAliquotaEnum fromValue(String v) {
+            for (TipoDeAliquotaEnum b : TipoDeAliquotaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeAliquotaEnum");
+        }
+    }
 
     @XmlElement(name = "tipoDeAliquota")
     @ApiModelProperty(value = "")
@@ -73,13 +103,14 @@ public class MemoriaCalculoDto {
      * Valor da base de cálculo reduzido<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
     private BigDecimal valorBaseDeCalculoReduzido = null;
-    @XmlElement(name = "valorDaAliquotaReduzida")
-    @ApiModelProperty(value = "Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+
+    @XmlElement(name = "valorDaAliquota")
+    @ApiModelProperty(value = "Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
     /**
-     * Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     * Valor da alíquota<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
      **/
-    private BigDecimal valorDaAliquotaReduzida = null;
+    private BigDecimal valorDaAliquota = null;
 
     @XmlElement(name = "valorDaAliquotaEspecifica")
     @ApiModelProperty(value = "Valor da alíquota específica<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
@@ -89,16 +120,13 @@ public class MemoriaCalculoDto {
      **/
     private BigDecimal valorDaAliquotaEspecifica = null;
 
+    @XmlElement(name = "valorDaAliquotaReduzida")
+    @ApiModelProperty(value = "Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Valor da aliquota reduzida<br />Tamanho: 16,7<br />Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorDaAliquotaReduzida = null;
 
     /**
      * Percentual de redução da alíquota&lt;br /&gt;Tamanho: 16,5&lt;br /&gt;Formato: Decimal, com até 5 casas decimais separadas por ponto.
@@ -274,6 +302,7 @@ public class MemoriaCalculoDto {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -291,41 +320,14 @@ public class MemoriaCalculoDto {
         return sb;
     }
 
-    @XmlType(name = "TipoDeAliquotaEnum")
-    @XmlEnum(String.class)
-    public enum TipoDeAliquotaEnum {
-
-        @XmlEnumValue("AD_VALOREM")
-        @JsonProperty("AD_VALOREM")
-        AD_VALOREM("AD_VALOREM"),
-
-        @XmlEnumValue("ESPECIFICA")
-        @JsonProperty("ESPECIFICA")
-        ESPECIFICA("ESPECIFICA");
-
-
-        private final String value;
-
-        TipoDeAliquotaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDeAliquotaEnum fromValue(String v) {
-            for (TipoDeAliquotaEnum b : TipoDeAliquotaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeAliquotaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -78,5 +78,5 @@ public class MercadoriaDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

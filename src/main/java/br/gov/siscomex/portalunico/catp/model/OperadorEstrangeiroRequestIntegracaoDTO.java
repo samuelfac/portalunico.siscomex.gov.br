@@ -123,15 +123,9 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
         this.nome = nome;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public OperadorEstrangeiroRequestIntegracaoDTO nome(String nome) {
+        this.nome = nome;
+        return this;
     }
 
     /**
@@ -244,8 +238,8 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
         this.email = email;
     }
 
-    public OperadorEstrangeiroRequestIntegracaoDTO nome(String nome) {
-        this.nome = nome;
+    public OperadorEstrangeiroRequestIntegracaoDTO email(String email) {
+        this.email = email;
         return this;
     }
 
@@ -273,10 +267,6 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
         return this;
     }
 
-    public OperadorEstrangeiroRequestIntegracaoDTO email(String email) {
-        this.email = email;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -293,5 +283,16 @@ public class OperadorEstrangeiroRequestIntegracaoDTO {
                 "    identificacoesAdicionais: " + toIndentedString(identificacoesAdicionais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

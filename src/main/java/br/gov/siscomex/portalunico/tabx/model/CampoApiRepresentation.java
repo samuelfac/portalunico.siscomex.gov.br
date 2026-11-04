@@ -44,12 +44,59 @@ public class CampoApiRepresentation {
     private String descricao = null;
 
 
-    @XmlElement(name = "formato")
-    @ApiModelProperty(value = "Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
-    /**
-     * Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
-     **/
-    private String formato = null;
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("INTEIRO")
+        @JsonProperty("INTEIRO")
+        INTEIRO("INTEIRO"),
+
+        @XmlEnumValue("DECIMAL")
+        @JsonProperty("DECIMAL")
+        DECIMAL("DECIMAL"),
+
+        @XmlEnumValue("STRING")
+        @JsonProperty("STRING")
+        STRING("STRING"),
+
+        @XmlEnumValue("DATA")
+        @JsonProperty("DATA")
+        DATA("DATA"),
+
+        @XmlEnumValue("DATA_HORA")
+        @JsonProperty("DATA_HORA")
+        DATA_HORA("DATA_HORA"),
+
+        @XmlEnumValue("BOOLEANO")
+        @JsonProperty("BOOLEANO")
+        BOOLEANO("BOOLEANO");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+    }
 
     @XmlElement(name = "tipo", required = true)
     @ApiModelProperty(example = "STRING", required = true, value = "Tipo do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
@@ -71,12 +118,13 @@ public class CampoApiRepresentation {
      * Casas decimais do campo.<br>Valor: 0 ou 1
      **/
     private Integer casasDecimais = null;
-    @XmlElement(name = "possuiDominio", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Indicador de existência de domínio.")
+
+    @XmlElement(name = "formato")
+    @ApiModelProperty(value = "Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30")
     /**
-     * Indicador de existência de domínio.
+     * Formato do campo.<br>Tamanho mínimo: 1<br>Tamanho máximo: 30
      **/
-    private Boolean possuiDominio = null;
+    private String formato = null;
 
     @XmlElement(name = "obrigatorio", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Obrigatoriedade do campo.")
@@ -113,16 +161,12 @@ public class CampoApiRepresentation {
      **/
     private Boolean restricaoUnicidade = null;
 
+    @XmlElement(name = "possuiDominio", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Indicador de existência de domínio.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Indicador de existência de domínio.
+     **/
+    private Boolean possuiDominio = null;
 
     @XmlElement(name = "nomeTabelaEstrangeira")
     @ApiModelProperty(value = "Nome da tabela estrangeira.<br>Tamanho mínimo: 1<br>Tamanho máximo: 50")
@@ -435,6 +479,7 @@ public class CampoApiRepresentation {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -458,57 +503,14 @@ public class CampoApiRepresentation {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("INTEIRO")
-        @JsonProperty("INTEIRO")
-        INTEIRO("INTEIRO"),
-
-        @XmlEnumValue("DECIMAL")
-        @JsonProperty("DECIMAL")
-        DECIMAL("DECIMAL"),
-
-        @XmlEnumValue("STRING")
-        @JsonProperty("STRING")
-        STRING("STRING"),
-
-        @XmlEnumValue("DATA")
-        @JsonProperty("DATA")
-        DATA("DATA"),
-
-        @XmlEnumValue("DATA_HORA")
-        @JsonProperty("DATA_HORA")
-        DATA_HORA("DATA_HORA"),
-
-        @XmlEnumValue("BOOLEANO")
-        @JsonProperty("BOOLEANO")
-        BOOLEANO("BOOLEANO");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -118,15 +118,9 @@ public class DocumentoSaida {
         this.canalDuimp = canalDuimp;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DocumentoSaida canalDuimp(String canalDuimp) {
+        this.canalDuimp = canalDuimp;
+        return this;
     }
 
     /**
@@ -181,8 +175,8 @@ public class DocumentoSaida {
         this.dataVinculacaoLong = dataVinculacaoLong;
     }
 
-    public DocumentoSaida canalDuimp(String canalDuimp) {
-        this.canalDuimp = canalDuimp;
+    public DocumentoSaida dataVinculacaoLong(Long dataVinculacaoLong) {
+        this.dataVinculacaoLong = dataVinculacaoLong;
         return this;
     }
 
@@ -237,8 +231,8 @@ public class DocumentoSaida {
         this.numero = numero;
     }
 
-    public DocumentoSaida dataVinculacaoLong(Long dataVinculacaoLong) {
-        this.dataVinculacaoLong = dataVinculacaoLong;
+    public DocumentoSaida numero(String numero) {
+        this.numero = numero;
         return this;
     }
 
@@ -274,14 +268,19 @@ public class DocumentoSaida {
         this.situacaoDuimp = situacaoDuimp;
     }
 
-    public DocumentoSaida numero(String numero) {
-        this.numero = numero;
-        return this;
-    }
-
     public DocumentoSaida situacaoDuimp(String situacaoDuimp) {
         this.situacaoDuimp = situacaoDuimp;
         return this;
+    }
+
+    /**
+     * Get tipoDocumentoSaida
+     *
+     * @return tipoDocumentoSaida
+     **/
+    @JsonProperty("tipoDocumentoSaida")
+    public TipoDocumentoSaida getTipoDocumentoSaida() {
+        return tipoDocumentoSaida;
     }
 
     public void setTipoDocumentoSaida(TipoDocumentoSaida tipoDocumentoSaida) {
@@ -325,14 +324,9 @@ public class DocumentoSaida {
         this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
     }
 
-    /**
-     * Get tipoDocumentoSaida
-     *
-     * @return tipoDocumentoSaida
-     **/
-    @JsonProperty("tipoDocumentoSaida")
-    public TipoDocumentoSaida getTipoDocumentoSaida() {
-        return tipoDocumentoSaida;
+    public DocumentoSaida valorTotalMercadoriaLocalDescarga(BigDecimal valorTotalMercadoriaLocalDescarga) {
+        this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
+        return this;
     }
 
     /**
@@ -353,10 +347,6 @@ public class DocumentoSaida {
         return this;
     }
 
-    public DocumentoSaida valorTotalMercadoriaLocalDescarga(BigDecimal valorTotalMercadoriaLocalDescarga) {
-        this.valorTotalMercadoriaLocalDescarga = valorTotalMercadoriaLocalDescarga;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -378,5 +368,16 @@ public class DocumentoSaida {
                 "    versaoDuimp: " + toIndentedString(versaoDuimp) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

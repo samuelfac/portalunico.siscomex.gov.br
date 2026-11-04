@@ -136,15 +136,9 @@ public class PucomexReturn {
         this.due = due;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public PucomexReturn due(String due) {
+        this.due = due;
+        return this;
     }
 
     /**
@@ -204,10 +198,6 @@ public class PucomexReturn {
         return this;
     }
 
-    public PucomexReturn due(String due) {
-        this.due = due;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -222,5 +212,16 @@ public class PucomexReturn {
                 "    warnings: " + toIndentedString(warnings) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

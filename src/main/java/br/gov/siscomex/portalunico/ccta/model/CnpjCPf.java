@@ -70,6 +70,16 @@ public class CnpjCPf {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CnpjCPf {\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "    numeroIdentificacao: " + toIndentedString(numeroIdentificacao) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -79,15 +89,5 @@ public class CnpjCPf {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CnpjCPf {\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    numeroIdentificacao: " + toIndentedString(numeroIdentificacao) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -61,15 +61,9 @@ public class SefazTributoAplicadoCover {
         this.tributo = tributo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazTributoAplicadoCover tributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
+        this.tributo = tributo;
+        return this;
     }
 
     /**
@@ -105,8 +99,8 @@ public class SefazTributoAplicadoCover {
         this.fundamentoLegal = fundamentoLegal;
     }
 
-    public SefazTributoAplicadoCover tributo(TipoDeTributoObjetoCompostoPelosAtributosCdigoEDescrio tributo) {
-        this.tributo = tributo;
+    public SefazTributoAplicadoCover fundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
+        this.fundamentoLegal = fundamentoLegal;
         return this;
     }
 
@@ -134,10 +128,6 @@ public class SefazTributoAplicadoCover {
         return this;
     }
 
-    public SefazTributoAplicadoCover fundamentoLegal(FundamentoLegalDoRegimeTributrioDeImportaoObjetoCompostoPelosAtributosCdigoEDescrio fundamentoLegal) {
-        this.fundamentoLegal = fundamentoLegal;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -149,5 +139,16 @@ public class SefazTributoAplicadoCover {
                 "    atributosDinamicos: " + toIndentedString(atributosDinamicos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

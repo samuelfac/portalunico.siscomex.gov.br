@@ -101,15 +101,9 @@ public class DiagnosticInfo {
         this.mnemonico = mnemonico;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DiagnosticInfo mnemonico(String mnemonico) {
+        this.mnemonico = mnemonico;
+        return this;
     }
 
     /**
@@ -145,8 +139,8 @@ public class DiagnosticInfo {
         this.trackerId = trackerId;
     }
 
-    public DiagnosticInfo mnemonico(String mnemonico) {
-        this.mnemonico = mnemonico;
+    public DiagnosticInfo trackerId(String trackerId) {
+        this.trackerId = trackerId;
         return this;
     }
 
@@ -182,8 +176,8 @@ public class DiagnosticInfo {
         this.usuario = usuario;
     }
 
-    public DiagnosticInfo trackerId(String trackerId) {
-        this.trackerId = trackerId;
+    public DiagnosticInfo usuario(String usuario) {
+        this.usuario = usuario;
         return this;
     }
 
@@ -205,10 +199,6 @@ public class DiagnosticInfo {
         return this;
     }
 
-    public DiagnosticInfo usuario(String usuario) {
-        this.usuario = usuario;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -225,4 +215,15 @@ public class DiagnosticInfo {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

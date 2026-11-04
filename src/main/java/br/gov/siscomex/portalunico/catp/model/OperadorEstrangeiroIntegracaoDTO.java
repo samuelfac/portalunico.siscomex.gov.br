@@ -174,15 +174,9 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.cpfCnpjRaiz = cpfCnpjRaiz;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public OperadorEstrangeiroIntegracaoDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
+        this.cpfCnpjRaiz = cpfCnpjRaiz;
+        return this;
     }
 
     /**
@@ -258,8 +252,8 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.nome = nome;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO cpfCnpjRaiz(String cpfCnpjRaiz) {
-        this.cpfCnpjRaiz = cpfCnpjRaiz;
+    public OperadorEstrangeiroIntegracaoDTO nome(String nome) {
+        this.nome = nome;
         return this;
     }
 
@@ -297,8 +291,8 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.logradouro = logradouro;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO nome(String nome) {
-        this.nome = nome;
+    public OperadorEstrangeiroIntegracaoDTO logradouro(String logradouro) {
+        this.logradouro = logradouro;
         return this;
     }
 
@@ -335,8 +329,8 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.codigoSubdivisaoPais = codigoSubdivisaoPais;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO logradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public OperadorEstrangeiroIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
+        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
         return this;
     }
 
@@ -408,8 +402,8 @@ public class OperadorEstrangeiroIntegracaoDTO {
         this.email = email;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO codigoSubdivisaoPais(String codigoSubdivisaoPais) {
-        this.codigoSubdivisaoPais = codigoSubdivisaoPais;
+    public OperadorEstrangeiroIntegracaoDTO email(String email) {
+        this.email = email;
         return this;
     }
 
@@ -455,10 +449,6 @@ public class OperadorEstrangeiroIntegracaoDTO {
         return this;
     }
 
-    public OperadorEstrangeiroIntegracaoDTO email(String email) {
-        this.email = email;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -482,5 +472,16 @@ public class OperadorEstrangeiroIntegracaoDTO {
                 "    identificacoesAdicionais: " + toIndentedString(identificacoesAdicionais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

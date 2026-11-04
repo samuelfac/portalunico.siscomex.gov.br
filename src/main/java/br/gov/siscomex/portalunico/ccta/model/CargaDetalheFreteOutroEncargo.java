@@ -59,15 +59,9 @@ public class CargaDetalheFreteOutroEncargo {
         this.formaPgto = formaPgto;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaDetalheFreteOutroEncargo formaPgto(FormaPagamento formaPgto) {
+        this.formaPgto = formaPgto;
+        return this;
     }
 
     /**
@@ -103,8 +97,8 @@ public class CargaDetalheFreteOutroEncargo {
         this.recebedor = recebedor;
     }
 
-    public CargaDetalheFreteOutroEncargo formaPgto(FormaPagamento formaPgto) {
-        this.formaPgto = formaPgto;
+    public CargaDetalheFreteOutroEncargo recebedor(TipoAtuacao recebedor) {
+        this.recebedor = recebedor;
         return this;
     }
 
@@ -146,10 +140,6 @@ public class CargaDetalheFreteOutroEncargo {
         return this;
     }
 
-    public CargaDetalheFreteOutroEncargo recebedor(TipoAtuacao recebedor) {
-        this.recebedor = recebedor;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -162,5 +152,16 @@ public class CargaDetalheFreteOutroEncargo {
                 "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

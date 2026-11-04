@@ -26,86 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class SituacaoLpco {
 
 
-    @XmlElement(name = "id", required = true)
-    @ApiModelProperty(example = "DEFERIDO", required = true, value = "Identificador da situação")
-    /**
-     * Identificador da situação
-     **/
-    private IdEnum id = null;
-    @XmlElement(name = "descricao")
-    @ApiModelProperty(example = "Deferido", value = "Descrição da situação")
-    /**
-     * Descrição da situação
-     **/
-    private DescricaoEnum descricao = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Identificador da situação
-     *
-     * @return id
-     **/
-    @JsonProperty("id")
-    @NotNull
-    public String getId() {
-        if (id == null) {
-            return null;
-        }
-        return id.value();
-    }
-
-    public void setId(IdEnum id) {
-        this.id = id;
-    }
-
-    public SituacaoLpco id(IdEnum id) {
-        this.id = id;
-        return this;
-    }
-
-    /**
-     * Descrição da situação
-     *
-     * @return descricao
-     **/
-    @JsonProperty("descricao")
-    public String getDescricao() {
-        if (descricao == null) {
-            return null;
-        }
-        return descricao.value();
-    }
-
-    public void setDescricao(DescricaoEnum descricao) {
-        this.descricao = descricao;
-    }
-
-    public SituacaoLpco descricao(DescricaoEnum descricao) {
-        this.descricao = descricao;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoLpco {\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
-    }
-
-
     @XmlType(name = "IdEnum")
     @XmlEnum(String.class)
     public enum IdEnum {
@@ -208,6 +128,14 @@ public class SituacaoLpco {
         }
     }
 
+    @XmlElement(name = "id", required = true)
+    @ApiModelProperty(example = "DEFERIDO", required = true, value = "Identificador da situação")
+    /**
+     * Identificador da situação
+     **/
+    private IdEnum id = null;
+
+
     @XmlType(name = "DescricaoEnum")
     @XmlEnum(String.class)
     public enum DescricaoEnum {
@@ -308,5 +236,79 @@ public class SituacaoLpco {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
         }
+    }
+
+    @XmlElement(name = "descricao")
+    @ApiModelProperty(example = "Deferido", value = "Descrição da situação")
+    /**
+     * Descrição da situação
+     **/
+    private DescricaoEnum descricao = null;
+
+    /**
+     * Identificador da situação
+     *
+     * @return id
+     **/
+    @JsonProperty("id")
+    @NotNull
+    public String getId() {
+        if (id == null) {
+            return null;
+        }
+        return id.value();
+    }
+
+    public void setId(IdEnum id) {
+        this.id = id;
+    }
+
+    public SituacaoLpco id(IdEnum id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Descrição da situação
+     *
+     * @return descricao
+     **/
+    @JsonProperty("descricao")
+    public String getDescricao() {
+        if (descricao == null) {
+            return null;
+        }
+        return descricao.value();
+    }
+
+    public void setDescricao(DescricaoEnum descricao) {
+        this.descricao = descricao;
+    }
+
+    public SituacaoLpco descricao(DescricaoEnum descricao) {
+        this.descricao = descricao;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class SituacaoLpco {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

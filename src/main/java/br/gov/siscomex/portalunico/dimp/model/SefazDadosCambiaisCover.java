@@ -27,13 +27,51 @@ import java.math.BigDecimal;
 public class SefazDadosCambiaisCover {
 
 
-    @XmlElement(name = "valorCoberturaCambial")
-    @ApiModelProperty(example = "100.12", value = "Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
-     **/
-    private BigDecimal valorCoberturaCambial = null;
+    @XmlType(name = "CoberturaCambialEnum")
+    @XmlEnum(Integer.class)
+    public enum CoberturaCambialEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        NUMBER_1(Integer.valueOf(1)),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        NUMBER_2(Integer.valueOf(2)),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        NUMBER_3(Integer.valueOf(3)),
+
+        @XmlEnumValue("4")
+        @JsonProperty("4")
+        NUMBER_4(Integer.valueOf(4));
+
+
+        private final Integer value;
+
+        CoberturaCambialEnum(Integer v) {
+            value = v;
+        }
+
+        public Integer value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CoberturaCambialEnum fromValue(String v) {
+            for (CoberturaCambialEnum b : CoberturaCambialEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CoberturaCambialEnum");
+        }
+    }
 
     @XmlElement(name = "coberturaCambial")
     @ApiModelProperty(example = "1", value = "Cobertura cambial. <br>Dominio:<br>1 - Até 180 dias,<br>2 - De 181 até 360 dias,<br>3 - Acima de 360 dias,<br>4 - Sem cobertura<br>Tamanho: 1")
@@ -48,10 +86,14 @@ public class SefazDadosCambiaisCover {
      * Código da instituição financiadora.<br>Valor mínimo: 1<br>Valor máximo: 99
      **/
     private Integer instituicaoFinanceira = null;
-    @XmlElement(name = "motivoSemCobertura")
-    @ApiModelProperty(value = "")
+
+    @XmlElement(name = "valorCoberturaCambial")
+    @ApiModelProperty(example = "100.12", value = "Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.")
     @Valid
-    private MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura = null;
+    /**
+     * Valor da cobertura cambial.<br>Tamanho: 16,7<br>Formato: Decimal, com até 7 casas decimais separadas por ponto.
+     **/
+    private BigDecimal valorCoberturaCambial = null;
 
     @XmlElement(name = "numeroROFBacen")
     @ApiModelProperty(example = "180A0A0A", value = "Número do ROF no BACEN<br>Tamanho mínimo: 1<br>Tamanho máximo: 8")
@@ -60,16 +102,10 @@ public class SefazDadosCambiaisCover {
      **/
     private String numeroROFBacen = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "motivoSemCobertura")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MotivoParaAusnciaDeCoberturaCambialObjetoCompostoPelosAtributosCdigoEDescrio motivoSemCobertura = null;
 
     /**
      * Cobertura cambial. &lt;br&gt;Dominio:&lt;br&gt;1 - Até 180 dias,&lt;br&gt;2 - De 181 até 360 dias,&lt;br&gt;3 - Acima de 360 dias,&lt;br&gt;4 - Sem cobertura&lt;br&gt;Tamanho: 1
@@ -169,6 +205,7 @@ public class SefazDadosCambiaisCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -182,49 +219,14 @@ public class SefazDadosCambiaisCover {
         return sb;
     }
 
-    @XmlType(name = "CoberturaCambialEnum")
-    @XmlEnum(Integer.class)
-    public enum CoberturaCambialEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        NUMBER_1(Integer.valueOf(1)),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        NUMBER_2(Integer.valueOf(2)),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        NUMBER_3(Integer.valueOf(3)),
-
-        @XmlEnumValue("4")
-        @JsonProperty("4")
-        NUMBER_4(Integer.valueOf(4));
-
-
-        private final Integer value;
-
-        CoberturaCambialEnum(Integer v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static CoberturaCambialEnum fromValue(String v) {
-            for (CoberturaCambialEnum b : CoberturaCambialEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CoberturaCambialEnum");
-        }
-
-        public Integer value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

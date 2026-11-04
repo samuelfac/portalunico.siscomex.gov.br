@@ -20,15 +20,46 @@ import javax.xml.bind.annotation.XmlType;
 public class Situacao {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "CodigoEnum")
+    @XmlEnum(String.class)
+    public enum CodigoEnum {
+
+        @XmlEnumValue("AGUARDANDO_VINCULO")
+        @JsonProperty("AGUARDANDO_VINCULO")
+        AGUARDANDO_VINCULO("AGUARDANDO_VINCULO"),
+
+        @XmlEnumValue("VINCULADO")
+        @JsonProperty("VINCULADO")
+        VINCULADO("VINCULADO"),
+
+        @XmlEnumValue("NAO_VINCULADO")
+        @JsonProperty("NAO_VINCULADO")
+        NAO_VINCULADO("NAO_VINCULADO");
+
+
+        private final String value;
+
+        CodigoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CodigoEnum fromValue(String v) {
+            for (CodigoEnum b : CodigoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
+        }
     }
 
     @XmlElement(name = "codigo")
@@ -98,45 +129,14 @@ public class Situacao {
         return sb.toString();
     }
 
-    @XmlType(name = "CodigoEnum")
-    @XmlEnum(String.class)
-    public enum CodigoEnum {
-
-        @XmlEnumValue("AGUARDANDO_VINCULO")
-        @JsonProperty("AGUARDANDO_VINCULO")
-        AGUARDANDO_VINCULO(String.valueOf("AGUARDANDO_VINCULO")),
-
-        @XmlEnumValue("VINCULADO")
-        @JsonProperty("VINCULADO")
-        VINCULADO(String.valueOf("VINCULADO")),
-
-        @XmlEnumValue("NAO_VINCULADO")
-        @JsonProperty("NAO_VINCULADO")
-        NAO_VINCULADO(String.valueOf("NAO_VINCULADO"));
-
-
-        private final String value;
-
-        CodigoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static CodigoEnum fromValue(String v) {
-            for (CodigoEnum b : CodigoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

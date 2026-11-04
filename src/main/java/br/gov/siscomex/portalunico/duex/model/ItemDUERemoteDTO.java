@@ -457,15 +457,9 @@ public class ItemDUERemoteDTO {
         this.exportacaoTemporaria = exportacaoTemporaria;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemDUERemoteDTO exportacaoTemporaria(ExportacaoTemporaria exportacaoTemporaria) {
+        this.exportacaoTemporaria = exportacaoTemporaria;
+        return this;
     }
 
     /**
@@ -500,8 +494,8 @@ public class ItemDUERemoteDTO {
         this.itemDaNotaFiscalDeExportacao = itemDaNotaFiscalDeExportacao;
     }
 
-    public ItemDUERemoteDTO exportacaoTemporaria(ExportacaoTemporaria exportacaoTemporaria) {
-        this.exportacaoTemporaria = exportacaoTemporaria;
+    public ItemDUERemoteDTO itemDaNotaFiscalDeExportacao(ItemDaNotaFiscalRemoteDTO itemDaNotaFiscalDeExportacao) {
+        this.itemDaNotaFiscalDeExportacao = itemDaNotaFiscalDeExportacao;
         return this;
     }
 
@@ -528,16 +522,6 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    public ItemDUERemoteDTO itemDaNotaFiscalDeExportacao(ItemDaNotaFiscalRemoteDTO itemDaNotaFiscalDeExportacao) {
-        this.itemDaNotaFiscalDeExportacao = itemDaNotaFiscalDeExportacao;
-        return this;
-    }
-
-    public ItemDUERemoteDTO itensDeNotaComplementar(List<ItemDaNotaFiscalRemoteDTO> itensDeNotaComplementar) {
-        this.itensDeNotaComplementar = itensDeNotaComplementar;
-        return this;
-    }
-
     /**
      * Get itensDeNotaComplementar
      *
@@ -550,6 +534,16 @@ public class ItemDUERemoteDTO {
 
     public void setItensDeNotaComplementar(List<ItemDaNotaFiscalRemoteDTO> itensDeNotaComplementar) {
         this.itensDeNotaComplementar = itensDeNotaComplementar;
+    }
+
+    public ItemDUERemoteDTO itensDeNotaComplementar(List<ItemDaNotaFiscalRemoteDTO> itensDeNotaComplementar) {
+        this.itensDeNotaComplementar = itensDeNotaComplementar;
+        return this;
+    }
+
+    public ItemDUERemoteDTO addItensDeNotaComplementarItem(ItemDaNotaFiscalRemoteDTO itensDeNotaComplementarItem) {
+        this.itensDeNotaComplementar.add(itensDeNotaComplementarItem);
+        return this;
     }
 
     /**
@@ -634,8 +628,8 @@ public class ItemDUERemoteDTO {
         this.motivoDoTratamentoPrioritario = motivoDoTratamentoPrioritario;
     }
 
-    public ItemDUERemoteDTO addItensDeNotaComplementarItem(ItemDaNotaFiscalRemoteDTO itensDeNotaComplementarItem) {
-        this.itensDeNotaComplementar.add(itensDeNotaComplementarItem);
+    public ItemDUERemoteDTO motivoDoTratamentoPrioritario(String motivoDoTratamentoPrioritario) {
+        this.motivoDoTratamentoPrioritario = motivoDoTratamentoPrioritario;
         return this;
     }
 
@@ -688,8 +682,8 @@ public class ItemDUERemoteDTO {
         this.numero = numero;
     }
 
-    public ItemDUERemoteDTO motivoDoTratamentoPrioritario(String motivoDoTratamentoPrioritario) {
-        this.motivoDoTratamentoPrioritario = motivoDoTratamentoPrioritario;
+    public ItemDUERemoteDTO numero(Integer numero) {
+        this.numero = numero;
         return this;
     }
 
@@ -742,8 +736,8 @@ public class ItemDUERemoteDTO {
         this.quantidadeNaUnidadeComercializada = quantidadeNaUnidadeComercializada;
     }
 
-    public ItemDUERemoteDTO numero(Integer numero) {
-        this.numero = numero;
+    public ItemDUERemoteDTO quantidadeNaUnidadeComercializada(BigDecimal quantidadeNaUnidadeComercializada) {
+        this.quantidadeNaUnidadeComercializada = quantidadeNaUnidadeComercializada;
         return this;
     }
 
@@ -824,9 +818,14 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    public ItemDUERemoteDTO quantidadeNaUnidadeComercializada(BigDecimal quantidadeNaUnidadeComercializada) {
-        this.quantidadeNaUnidadeComercializada = quantidadeNaUnidadeComercializada;
-        return this;
+    /**
+     * Get valorDaMercadoriaNaCondicaoDeVendaEmReais
+     *
+     * @return valorDaMercadoriaNaCondicaoDeVendaEmReais
+     **/
+    @JsonProperty("valorDaMercadoriaNaCondicaoDeVendaEmReais")
+    public BigDecimal getValorDaMercadoriaNaCondicaoDeVendaEmReais() {
+        return valorDaMercadoriaNaCondicaoDeVendaEmReais;
     }
 
     public void setValorDaMercadoriaNaCondicaoDeVendaEmReais(BigDecimal valorDaMercadoriaNaCondicaoDeVendaEmReais) {
@@ -870,14 +869,9 @@ public class ItemDUERemoteDTO {
         this.valorDaMercadoriaNoLocalDeEmbarqueEmReais = valorDaMercadoriaNoLocalDeEmbarqueEmReais;
     }
 
-    /**
-     * Get valorDaMercadoriaNaCondicaoDeVendaEmReais
-     *
-     * @return valorDaMercadoriaNaCondicaoDeVendaEmReais
-     **/
-    @JsonProperty("valorDaMercadoriaNaCondicaoDeVendaEmReais")
-    public BigDecimal getValorDaMercadoriaNaCondicaoDeVendaEmReais() {
-        return valorDaMercadoriaNaCondicaoDeVendaEmReais;
+    public ItemDUERemoteDTO valorDaMercadoriaNoLocalDeEmbarqueEmReais(BigDecimal valorDaMercadoriaNoLocalDeEmbarqueEmReais) {
+        this.valorDaMercadoriaNoLocalDeEmbarqueEmReais = valorDaMercadoriaNoLocalDeEmbarqueEmReais;
+        return this;
     }
 
     /**
@@ -916,10 +910,6 @@ public class ItemDUERemoteDTO {
         return this;
     }
 
-    public ItemDUERemoteDTO valorDaMercadoriaNoLocalDeEmbarqueEmReais(BigDecimal valorDaMercadoriaNoLocalDeEmbarqueEmReais) {
-        this.valorDaMercadoriaNoLocalDeEmbarqueEmReais = valorDaMercadoriaNoLocalDeEmbarqueEmReais;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -961,5 +951,16 @@ public class ItemDUERemoteDTO {
                 "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

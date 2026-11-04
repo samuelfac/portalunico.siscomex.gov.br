@@ -84,15 +84,9 @@ public class SituacaoDaCargaDTO {
         this.cargaOperada = cargaOperada;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SituacaoDaCargaDTO cargaOperada(Boolean cargaOperada) {
+        this.cargaOperada = cargaOperada;
+        return this;
     }
 
     /**
@@ -147,8 +141,8 @@ public class SituacaoDaCargaDTO {
         this.descricao = descricao;
     }
 
-    public SituacaoDaCargaDTO cargaOperada(Boolean cargaOperada) {
-        this.cargaOperada = cargaOperada;
+    public SituacaoDaCargaDTO descricao(String descricao) {
+        this.descricao = descricao;
         return this;
     }
 
@@ -185,8 +179,8 @@ public class SituacaoDaCargaDTO {
         this.longitude = longitude;
     }
 
-    public SituacaoDaCargaDTO descricao(String descricao) {
-        this.descricao = descricao;
+    public SituacaoDaCargaDTO longitude(String longitude) {
+        this.longitude = longitude;
         return this;
     }
 
@@ -228,10 +222,6 @@ public class SituacaoDaCargaDTO {
         return this;
     }
 
-    public SituacaoDaCargaDTO longitude(String longitude) {
-        this.longitude = longitude;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -247,5 +237,16 @@ public class SituacaoDaCargaDTO {
                 "    urfDeDespacho: " + toIndentedString(urfDeDespacho) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -26,15 +26,46 @@ import javax.xml.bind.annotation.XmlType;
 public class SituacaoPagamentoTaxa {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "IdEnum")
+    @XmlEnum(String.class)
+    public enum IdEnum {
+
+        @XmlEnumValue("SEM_ERRO")
+        @JsonProperty("SEM_ERRO")
+        SEM_ERRO("SEM_ERRO"),
+
+        @XmlEnumValue("ERRO_SEM_TENTATIVA")
+        @JsonProperty("ERRO_SEM_TENTATIVA")
+        ERRO_SEM_TENTATIVA("ERRO_SEM_TENTATIVA"),
+
+        @XmlEnumValue("ERRO_COM_TENTATIVA")
+        @JsonProperty("ERRO_COM_TENTATIVA")
+        ERRO_COM_TENTATIVA("ERRO_COM_TENTATIVA");
+
+
+        private final String value;
+
+        IdEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IdEnum fromValue(String v) {
+            for (IdEnum b : IdEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdEnum");
+        }
     }
 
     @XmlElement(name = "id", required = true)
@@ -44,14 +75,47 @@ public class SituacaoPagamentoTaxa {
      **/
     private IdEnum id = null;
 
+
+    @XmlType(name = "DescricaoEnum")
+    @XmlEnum(String.class)
+    public enum DescricaoEnum {
+
+        @XmlEnumValue("Sem erro")
+        @JsonProperty("Sem erro")
+        SEM_ERRO("Sem erro"),
+
+        @XmlEnumValue("Com erro sem nova tentativa")
+        @JsonProperty("Com erro sem nova tentativa")
+        COM_ERRO_SEM_NOVA_TENTATIVA("Com erro sem nova tentativa"),
+
+        @XmlEnumValue("Com erro e com nova tentativa")
+        @JsonProperty("Com erro e com nova tentativa")
+        COM_ERRO_E_COM_NOVA_TENTATIVA("Com erro e com nova tentativa");
+
+
+        private final String value;
+
+        DescricaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
     @Override
     public String toString() {
+        return String.valueOf(value);
+    }
 
-        String sb = "class SituacaoPagamentoTaxa {\n" +
-                "    id: " + toIndentedString(id) + "\n" +
-                "    descricao: " + toIndentedString(descricao) + "\n" +
-                "}";
-        return sb;
+        public static DescricaoEnum fromValue(String v) {
+            for (DescricaoEnum b : DescricaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
+        }
     }
 
     @XmlElement(name = "descricao")
@@ -107,87 +171,24 @@ public class SituacaoPagamentoTaxa {
     }
 
 
-    @XmlType(name = "IdEnum")
-    @XmlEnum(String.class)
-    public enum IdEnum {
-
-        @XmlEnumValue("SEM_ERRO")
-        @JsonProperty("SEM_ERRO")
-        SEM_ERRO("SEM_ERRO"),
-
-        @XmlEnumValue("ERRO_SEM_TENTATIVA")
-        @JsonProperty("ERRO_SEM_TENTATIVA")
-        ERRO_SEM_TENTATIVA("ERRO_SEM_TENTATIVA"),
-
-        @XmlEnumValue("ERRO_COM_TENTATIVA")
-        @JsonProperty("ERRO_COM_TENTATIVA")
-        ERRO_COM_TENTATIVA("ERRO_COM_TENTATIVA");
-
-
-        private final String value;
-
-        IdEnum(String v) {
-            value = v;
-        }
-
-        public static IdEnum fromValue(String v) {
-            for (IdEnum b : IdEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IdEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "DescricaoEnum")
-    @XmlEnum(String.class)
-    public enum DescricaoEnum {
-
-        @XmlEnumValue("Sem erro")
-        @JsonProperty("Sem erro")
-        SEM_ERRO("Sem erro"),
-
-        @XmlEnumValue("Com erro sem nova tentativa")
-        @JsonProperty("Com erro sem nova tentativa")
-        COM_ERRO_SEM_NOVA_TENTATIVA("Com erro sem nova tentativa"),
-
-        @XmlEnumValue("Com erro e com nova tentativa")
-        @JsonProperty("Com erro e com nova tentativa")
-        COM_ERRO_E_COM_NOVA_TENTATIVA("Com erro e com nova tentativa");
-
-
-        private final String value;
-
-        DescricaoEnum(String v) {
-            value = v;
-        }
-
-        public static DescricaoEnum fromValue(String v) {
-            for (DescricaoEnum b : DescricaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
+    @Override
     public String toString() {
-            return String.valueOf(value);
-        }
+
+        String sb = "class SituacaoPagamentoTaxa {\n" +
+                "    id: " + toIndentedString(id) + "\n" +
+                "    descricao: " + toIndentedString(descricao) + "\n" +
+                "}";
+        return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

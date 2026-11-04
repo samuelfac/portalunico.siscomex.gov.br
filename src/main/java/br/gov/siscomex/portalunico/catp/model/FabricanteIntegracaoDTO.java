@@ -97,15 +97,9 @@ public class FabricanteIntegracaoDTO {
         this.seq = seq;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public FabricanteIntegracaoDTO seq(Integer seq) {
+        this.seq = seq;
+        return this;
     }
 
     /**
@@ -239,8 +233,8 @@ public class FabricanteIntegracaoDTO {
         this.dataReferencia = dataReferencia;
     }
 
-    public FabricanteIntegracaoDTO seq(Integer seq) {
-        this.seq = seq;
+    public FabricanteIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
+        this.dataReferencia = dataReferencia;
         return this;
     }
 
@@ -263,10 +257,6 @@ public class FabricanteIntegracaoDTO {
         return this;
     }
 
-    public FabricanteIntegracaoDTO dataReferencia(OffsetDateTime dataReferencia) {
-        this.dataReferencia = dataReferencia;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -283,5 +273,16 @@ public class FabricanteIntegracaoDTO {
                 "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

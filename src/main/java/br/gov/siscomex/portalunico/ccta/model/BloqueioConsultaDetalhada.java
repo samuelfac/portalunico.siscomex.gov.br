@@ -20,12 +20,43 @@ import javax.xml.bind.annotation.XmlType;
 public class BloqueioConsultaDetalhada {
 
 
-    @XmlElement(name = "motivoBloqueio")
-    @ApiModelProperty(example = "Carga em abandono", value = "Motivo do bloqueio aplicado<br>Tamanho: 100<br/>")
-    /**
-     * Motivo do bloqueio aplicado<br>Tamanho: 100<br/>
-     **/
-    private String motivoBloqueio = null;
+    @XmlType(name = "AlcanceBloqueioEnum")
+    @XmlEnum(String.class)
+    public enum AlcanceBloqueioEnum {
+
+        @XmlEnumValue("T")
+        @JsonProperty("T")
+        T("T"),
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P");
+
+
+        private final String value;
+
+        AlcanceBloqueioEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static AlcanceBloqueioEnum fromValue(String v) {
+            for (AlcanceBloqueioEnum b : AlcanceBloqueioEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to AlcanceBloqueioEnum");
+        }
+    }
 
     @XmlElement(name = "alcanceBloqueio")
     @ApiModelProperty(example = "T", value = "Indica o alcance do bloqueio.<br/> Tamanho: 1<br/>T - Total<br/>P - Parcial")
@@ -48,16 +79,12 @@ public class BloqueioConsultaDetalhada {
      **/
     private String justificativaBloqueio = null;
 
+    @XmlElement(name = "motivoBloqueio")
+    @ApiModelProperty(example = "Carga em abandono", value = "Motivo do bloqueio aplicado<br>Tamanho: 100<br/>")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Motivo do bloqueio aplicado<br>Tamanho: 100<br/>
+     **/
+    private String motivoBloqueio = null;
 
     @XmlElement(name = "responsavelBloqueio")
     @ApiModelProperty(example = "PORTO DO RIO", value = "Setor responsável pela aplicação do bloqueio / desbloqueio<br>Tamanho: 50<br/>")
@@ -190,6 +217,7 @@ public class BloqueioConsultaDetalhada {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -204,41 +232,14 @@ public class BloqueioConsultaDetalhada {
         return sb;
     }
 
-    @XmlType(name = "AlcanceBloqueioEnum")
-    @XmlEnum(String.class)
-    public enum AlcanceBloqueioEnum {
-
-        @XmlEnumValue("T")
-        @JsonProperty("T")
-        T("T"),
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P");
-
-
-        private final String value;
-
-        AlcanceBloqueioEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static AlcanceBloqueioEnum fromValue(String v) {
-            for (AlcanceBloqueioEnum b : AlcanceBloqueioEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to AlcanceBloqueioEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

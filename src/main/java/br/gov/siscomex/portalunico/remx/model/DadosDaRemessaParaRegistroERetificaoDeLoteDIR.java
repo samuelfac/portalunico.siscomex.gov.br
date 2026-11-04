@@ -162,15 +162,9 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         this.destinacaoComercial = destinacaoComercial;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR destinacaoComercial(String destinacaoComercial) {
+        this.destinacaoComercial = destinacaoComercial;
+        return this;
     }
 
     /**
@@ -228,8 +222,8 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         this.freteModoPagto = freteModoPagto;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR destinacaoComercial(String destinacaoComercial) {
-        this.destinacaoComercial = destinacaoComercial;
+    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR freteModoPagto(String freteModoPagto) {
+        this.freteModoPagto = freteModoPagto;
         return this;
     }
 
@@ -312,8 +306,8 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         this.moedaFrete = moedaFrete;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR freteModoPagto(String freteModoPagto) {
-        this.freteModoPagto = freteModoPagto;
+    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR moedaFrete(String moedaFrete) {
+        this.moedaFrete = moedaFrete;
         return this;
     }
 
@@ -416,9 +410,18 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeLoteDIR moedaFrete(String moedaFrete) {
-        this.moedaFrete = moedaFrete;
-        return this;
+    /**
+     * Quantidade de volumes da remessa. Máximo de 4 caracteres numéricos (de 1 a 9999).
+     * minimum: 0
+     * maximum: Integer.MAX_VALUE
+     * @return volumes
+     **/
+    @JsonProperty("volumes")
+    @NotNull
+    @Min(0)
+    @Max(Integer.MAX_VALUE)
+    public Integer getVolumes() {
+        return volumes;
     }
 
     public void setVolumes(Integer volumes) {
@@ -430,19 +433,6 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    /**
-     * Quantidade de volumes da remessa. Máximo de 4 caracteres numéricos (de 1 a 9999).
-     * minimum: 0
-     * maximum: 9223372036854775807
-     * @return volumes
-     **/
-    @JsonProperty("volumes")
-    @NotNull
-    @Min(0)
-    @Max(Integer.MAX_VALUE)
-    public Integer getVolumes() {
-        return volumes;
-    }
 
     @Override
     public String toString() {
@@ -466,4 +456,15 @@ public class DadosDaRemessaParaRegistroERetificaoDeLoteDIR {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

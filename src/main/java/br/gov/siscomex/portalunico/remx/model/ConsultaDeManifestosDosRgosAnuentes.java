@@ -214,15 +214,9 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         this.dataInicioAnexacao = dataInicioAnexacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConsultaDeManifestosDosRgosAnuentes dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
+        this.dataInicioAnexacao = dataInicioAnexacao;
+        return this;
     }
 
     /**
@@ -258,8 +252,8 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         this.dataInicioManifesto = dataInicioManifesto;
     }
 
-    public ConsultaDeManifestosDosRgosAnuentes dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
-        this.dataInicioAnexacao = dataInicioAnexacao;
+    public ConsultaDeManifestosDosRgosAnuentes dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
         return this;
     }
 
@@ -301,8 +295,8 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeManifestosDosRgosAnuentes dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
+    public ConsultaDeManifestosDosRgosAnuentes addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
+        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
         return this;
     }
 
@@ -371,8 +365,8 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeManifestosDosRgosAnuentes addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
-        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
+    public ConsultaDeManifestosDosRgosAnuentes addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
+        this.listaSituacaoLote.add(listaSituacaoLoteItem);
         return this;
     }
 
@@ -445,10 +439,6 @@ public class ConsultaDeManifestosDosRgosAnuentes {
         return this;
     }
 
-    public ConsultaDeManifestosDosRgosAnuentes addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
-        this.listaSituacaoLote.add(listaSituacaoLoteItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -472,4 +462,15 @@ public class ConsultaDeManifestosDosRgosAnuentes {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

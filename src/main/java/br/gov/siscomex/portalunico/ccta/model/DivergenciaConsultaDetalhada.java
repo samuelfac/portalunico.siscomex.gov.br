@@ -29,13 +29,51 @@ public class DivergenciaConsultaDetalhada {
     private String dataDivergencia = null;
 
 
-    @XmlElement(name = "percentualDiferencaPeso")
-    @ApiModelProperty(example = "50.0", value = "Percentual de peso bruto (KG) divergente<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.")
-    @Valid
-    /**
-     * Percentual de peso bruto (KG) divergente<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     **/
-    private BigDecimal percentualDiferencaPeso = null;
+    @XmlType(name = "MomentoDivergenciaEnum")
+    @XmlEnum(String.class)
+    public enum MomentoDivergenciaEnum {
+
+        @XmlEnumValue("Viagem")
+        @JsonProperty("Viagem")
+        VIAGEM("Viagem"),
+
+        @XmlEnumValue("Recepção da Carga")
+        @JsonProperty("Recepção da Carga")
+        RECEP_O_DA_CARGA("Recepção da Carga"),
+
+        @XmlEnumValue("Entrega da Carga")
+        @JsonProperty("Entrega da Carga")
+        ENTREGA_DA_CARGA("Entrega da Carga"),
+
+        @XmlEnumValue("Retificação da Carga")
+        @JsonProperty("Retificação da Carga")
+        RETIFICA_O_DA_CARGA("Retificação da Carga");
+
+
+        private final String value;
+
+        MomentoDivergenciaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static MomentoDivergenciaEnum fromValue(String v) {
+            for (MomentoDivergenciaEnum b : MomentoDivergenciaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to MomentoDivergenciaEnum");
+        }
+    }
 
     @XmlElement(name = "momentoDivergencia")
     @ApiModelProperty(example = "Viagem", value = "Descrição do evento motivador da divergência<br/> ")
@@ -43,13 +81,14 @@ public class DivergenciaConsultaDetalhada {
      * Descrição do evento motivador da divergência<br/>
      **/
     private MomentoDivergenciaEnum momentoDivergencia = null;
-    @XmlElement(name = "pesoConhecimento")
-    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+
+    @XmlElement(name = "percentualDiferencaPeso")
+    @ApiModelProperty(example = "50.0", value = "Percentual de peso bruto (KG) divergente<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.")
     @Valid
     /**
-     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * Percentual de peso bruto (KG) divergente<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.
      **/
-    private BigDecimal pesoConhecimento = null;
+    private BigDecimal percentualDiferencaPeso = null;
 
     @XmlElement(name = "percentualDiferencaVolumes")
     @ApiModelProperty(example = "50.0", value = "Percentual de quantidade de volumes divergentes<br/>Tamanho: 2,2<br/> Formato: Decimal, com até 2 casas decimais separadas por ponto.")
@@ -59,16 +98,13 @@ public class DivergenciaConsultaDetalhada {
      **/
     private BigDecimal percentualDiferencaVolumes = null;
 
+    @XmlElement(name = "pesoConhecimento")
+    @ApiModelProperty(example = "105.478", value = "Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.")
+    @Valid
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     **/
+    private BigDecimal pesoConhecimento = null;
 
     @XmlElement(name = "pesoDivergente")
     @ApiModelProperty(example = "105.478", value = "Peso bruto (kg) divergente<br/>Tamanho: 10,3<br/> Formato: Decimal, com até 3 casas decimais separadas por ponto.")
@@ -107,14 +143,43 @@ public class DivergenciaConsultaDetalhada {
      **/
     private Integer quantidadeVolumesManifestoVoo = null;
 
-    /**
-     * Percentual de quantidade de volumes divergentes&lt;br/&gt;Tamanho: 2,2&lt;br/&gt; Formato: Decimal, com até 2 casas decimais separadas por ponto.
-     *
-     * @return percentualDiferencaVolumes
-     **/
-    @JsonProperty("percentualDiferencaVolumes")
-    public BigDecimal getPercentualDiferencaVolumes() {
-        return percentualDiferencaVolumes;
+
+    @XmlType(name = "TipoDivergenciaEnum")
+    @XmlEnum(String.class)
+    public enum TipoDivergenciaEnum {
+
+        @XmlEnumValue("Divergência de Peso")
+        @JsonProperty("Divergência de Peso")
+        PESO("Divergência de Peso"),
+
+        @XmlEnumValue("Divergência de Volumes")
+        @JsonProperty("Divergência de Volumes")
+        VOLUMES("Divergência de Volumes");
+
+
+        private final String value;
+
+        TipoDivergenciaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDivergenciaEnum fromValue(String v) {
+            for (TipoDivergenciaEnum b : TipoDivergenciaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDivergenciaEnum");
+        }
     }
 
     @XmlElement(name = "tipoDivergencia")
@@ -124,8 +189,55 @@ public class DivergenciaConsultaDetalhada {
      **/
     private TipoDivergenciaEnum tipoDivergencia = null;
 
-    public void setPercentualDiferencaVolumes(BigDecimal percentualDiferencaVolumes) {
-        this.percentualDiferencaVolumes = percentualDiferencaVolumes;
+
+    @XmlType(name = "TotalParcialEnum")
+    @XmlEnum(String.class)
+    public enum TotalParcialEnum {
+
+        @XmlEnumValue("D")
+        @JsonProperty("D")
+        D("D"),
+
+        @XmlEnumValue("M")
+        @JsonProperty("M")
+        M("M"),
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("T")
+        @JsonProperty("T")
+        T("T");
+
+
+        private final String value;
+
+        TotalParcialEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TotalParcialEnum fromValue(String v) {
+            for (TotalParcialEnum b : TotalParcialEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TotalParcialEnum");
+        }
     }
 
     @XmlElement(name = "totalParcial")
@@ -196,17 +308,17 @@ public class DivergenciaConsultaDetalhada {
     }
 
     /**
-     * Peso bruto (kg) divergente&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
+     * Percentual de quantidade de volumes divergentes&lt;br/&gt;Tamanho: 2,2&lt;br/&gt; Formato: Decimal, com até 2 casas decimais separadas por ponto.
      *
-     * @return pesoDivergente
+     * @return percentualDiferencaVolumes
      **/
-    @JsonProperty("pesoDivergente")
-    public BigDecimal getPesoDivergente() {
-        return pesoDivergente;
+    @JsonProperty("percentualDiferencaVolumes")
+    public BigDecimal getPercentualDiferencaVolumes() {
+        return percentualDiferencaVolumes;
     }
 
-    public void setPesoDivergente(BigDecimal pesoDivergente) {
-        this.pesoDivergente = pesoDivergente;
+    public void setPercentualDiferencaVolumes(BigDecimal percentualDiferencaVolumes) {
+        this.percentualDiferencaVolumes = percentualDiferencaVolumes;
     }
 
     public DivergenciaConsultaDetalhada percentualDiferencaVolumes(BigDecimal percentualDiferencaVolumes) {
@@ -234,20 +346,17 @@ public class DivergenciaConsultaDetalhada {
     }
 
     /**
-     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     * Peso bruto (kg) divergente&lt;br/&gt;Tamanho: 10,3&lt;br/&gt; Formato: Decimal, com até 3 casas decimais separadas por ponto.
      *
-     * @return totalParcial
+     * @return pesoDivergente
      **/
-    @JsonProperty("totalParcial")
-    public String getTotalParcial() {
-        if (totalParcial == null) {
-            return null;
-        }
-        return totalParcial.value();
+    @JsonProperty("pesoDivergente")
+    public BigDecimal getPesoDivergente() {
+        return pesoDivergente;
     }
 
-    public void setTotalParcial(TotalParcialEnum totalParcial) {
-        this.totalParcial = totalParcial;
+    public void setPesoDivergente(BigDecimal pesoDivergente) {
+        this.pesoDivergente = pesoDivergente;
     }
 
     public DivergenciaConsultaDetalhada pesoDivergente(BigDecimal pesoDivergente) {
@@ -353,6 +462,29 @@ public class DivergenciaConsultaDetalhada {
         return this;
     }
 
+    /**
+     * Indicador de parcialidade de carga&lt;br/&gt;Tamanho: 1&lt;br/&gt;T - Remessa total&lt;br/&gt;P - Remessa de peça&lt;br/&gt;S - Remessa dividida em único voo&lt;br/&gt;D - Remessa dividida em vários voos&lt;br/&gt;M - Múltiplas remessas
+     *
+     * @return totalParcial
+     **/
+    @JsonProperty("totalParcial")
+    public String getTotalParcial() {
+        if (totalParcial == null) {
+            return null;
+        }
+        return totalParcial.value();
+    }
+
+    public void setTotalParcial(TotalParcialEnum totalParcial) {
+        this.totalParcial = totalParcial;
+    }
+
+    public DivergenciaConsultaDetalhada totalParcial(TotalParcialEnum totalParcial) {
+        this.totalParcial = totalParcial;
+        return this;
+    }
+
+
     @Override
     public String toString() {
 
@@ -373,143 +505,14 @@ public class DivergenciaConsultaDetalhada {
         return sb;
     }
 
-    @XmlType(name = "MomentoDivergenciaEnum")
-    @XmlEnum(String.class)
-    public enum MomentoDivergenciaEnum {
-
-        @XmlEnumValue("Viagem")
-        @JsonProperty("Viagem")
-        VIAGEM("Viagem"),
-
-        @XmlEnumValue("Recepção da Carga")
-        @JsonProperty("Recepção da Carga")
-        RECEP_O_DA_CARGA("Recepção da Carga"),
-
-        @XmlEnumValue("Entrega da Carga")
-        @JsonProperty("Entrega da Carga")
-        ENTREGA_DA_CARGA("Entrega da Carga"),
-
-        @XmlEnumValue("Retificação da Carga")
-        @JsonProperty("Retificação da Carga")
-        RETIFICA_O_DA_CARGA("Retificação da Carga");
-
-
-        private final String value;
-
-        MomentoDivergenciaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static MomentoDivergenciaEnum fromValue(String v) {
-            for (MomentoDivergenciaEnum b : MomentoDivergenciaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to MomentoDivergenciaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    public DivergenciaConsultaDetalhada totalParcial(TotalParcialEnum totalParcial) {
-        this.totalParcial = totalParcial;
-        return this;
-    }
-
-
-    @XmlType(name = "TipoDivergenciaEnum")
-    @XmlEnum(String.class)
-    public enum TipoDivergenciaEnum {
-
-        @XmlEnumValue("Divergência de Peso")
-        @JsonProperty("Divergência de Peso")
-        PESO("Divergência de Peso"),
-
-        @XmlEnumValue("Divergência de Volumes")
-        @JsonProperty("Divergência de Volumes")
-        VOLUMES("Divergência de Volumes");
-
-
-        private final String value;
-
-        TipoDivergenciaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDivergenciaEnum fromValue(String v) {
-            for (TipoDivergenciaEnum b : TipoDivergenciaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDivergenciaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TotalParcialEnum")
-    @XmlEnum(String.class)
-    public enum TotalParcialEnum {
-
-        @XmlEnumValue("D")
-        @JsonProperty("D")
-        D("D"),
-
-        @XmlEnumValue("M")
-        @JsonProperty("M")
-        M("M"),
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("T")
-        @JsonProperty("T")
-        T("T");
-
-
-        private final String value;
-
-        TotalParcialEnum(String v) {
-            value = v;
-        }
-
-        public static TotalParcialEnum fromValue(String v) {
-            for (TotalParcialEnum b : TotalParcialEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TotalParcialEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

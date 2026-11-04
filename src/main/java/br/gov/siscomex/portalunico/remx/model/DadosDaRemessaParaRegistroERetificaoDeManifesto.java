@@ -162,15 +162,9 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         this.frete = frete;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto frete(BigDecimal frete) {
+        this.frete = frete;
+        return this;
     }
 
     /**
@@ -228,8 +222,8 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         this.moedaValorTotal = moedaValorTotal;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto frete(BigDecimal frete) {
-        this.frete = frete;
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto moedaValorTotal(String moedaValorTotal) {
+        this.moedaValorTotal = moedaValorTotal;
         return this;
     }
 
@@ -270,8 +264,8 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         this.numeroRemessa = numeroRemessa;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto moedaValorTotal(String moedaValorTotal) {
-        this.moedaValorTotal = moedaValorTotal;
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
         return this;
     }
 
@@ -309,8 +303,8 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         this.remetente = remetente;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
+    public DadosDaRemessaParaRegistroERetificaoDeManifesto remetente(PessoaParaRegistroERetificaoDeManifesto remetente) {
+        this.remetente = remetente;
         return this;
     }
 
@@ -335,19 +329,10 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         return this;
     }
 
-    public DadosDaRemessaParaRegistroERetificaoDeManifesto remetente(PessoaParaRegistroERetificaoDeManifesto remetente) {
-        this.remetente = remetente;
-        return this;
-    }
-
-    public void setVolumes(Integer volumes) {
-        this.volumes = volumes;
-    }
-
     /**
      * Quantidade de volumes da remessa manifestada. Máximo de 4 caracteres numéricos (de 0 a 9999).
      * minimum: 0
-     * maximum: 9223372036854775807
+     * maximum: Integer.MAX_VALUE
      *
      * @return volumes
      **/
@@ -359,10 +344,15 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
         return volumes;
     }
 
+    public void setVolumes(Integer volumes) {
+        this.volumes = volumes;
+    }
+
     public DadosDaRemessaParaRegistroERetificaoDeManifesto volumes(Integer volumes) {
         this.volumes = volumes;
         return this;
     }
+
 
     @Override
     public String toString() {
@@ -383,4 +373,15 @@ public class DadosDaRemessaParaRegistroERetificaoDeManifesto {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

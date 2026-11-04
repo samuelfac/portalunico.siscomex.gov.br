@@ -26,12 +26,47 @@ import javax.xml.bind.annotation.XmlType;
 public class EmbarqueCarga {
 
 
-    @XmlElement(name = "dataHoraEmbarque", required = true)
-    @ApiModelProperty(example = "2023-03-02T15:31Z", required = true, value = "Data e hora do embarque<br>Formato: dd-MM-yyyy'T'HH:mmZ")
-    /**
-     * Data e hora do embarque<br>Formato: dd-MM-yyyy'T'HH:mmZ
-     **/
-    private String dataHoraEmbarque = null;
+    @XmlType(name = "ModalTransporteEnum")
+    @XmlEnum(String.class)
+    public enum ModalTransporteEnum {
+
+        @XmlEnumValue("AEREO")
+        @JsonProperty("AEREO")
+        AEREO("AEREO"),
+
+        @XmlEnumValue("MARITIMO")
+        @JsonProperty("MARITIMO")
+        MARITIMO("MARITIMO"),
+
+        @XmlEnumValue("TERRESTRE")
+        @JsonProperty("TERRESTRE")
+        TERRESTRE("TERRESTRE");
+
+
+        private final String value;
+
+        ModalTransporteEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ModalTransporteEnum fromValue(String v) {
+            for (ModalTransporteEnum b : ModalTransporteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalTransporteEnum");
+        }
+    }
 
     @XmlElement(name = "modalTransporte", required = true)
     @ApiModelProperty(example = "MARITIMO", required = true, value = "Modal de transporte da carga associada ao LPCO.<br>Tamanho máximo: 20")
@@ -47,16 +82,12 @@ public class EmbarqueCarga {
      **/
     private String numeroConhecimento = null;
 
+    @XmlElement(name = "dataHoraEmbarque", required = true)
+    @ApiModelProperty(example = "2023-03-02T15:31Z", required = true, value = "Data e hora do embarque<br>Formato: dd-MM-yyyy'T'HH:mmZ")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Data e hora do embarque<br>Formato: dd-MM-yyyy'T'HH:mmZ
+     **/
+    private String dataHoraEmbarque = null;
 
     /**
      * Modal de transporte da carga associada ao LPCO.&lt;br&gt;Tamanho máximo: 20
@@ -121,6 +152,7 @@ public class EmbarqueCarga {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -132,45 +164,14 @@ public class EmbarqueCarga {
         return sb;
     }
 
-    @XmlType(name = "ModalTransporteEnum")
-    @XmlEnum(String.class)
-    public enum ModalTransporteEnum {
-
-        @XmlEnumValue("AEREO")
-        @JsonProperty("AEREO")
-        AEREO("AEREO"),
-
-        @XmlEnumValue("MARITIMO")
-        @JsonProperty("MARITIMO")
-        MARITIMO("MARITIMO"),
-
-        @XmlEnumValue("TERRESTRE")
-        @JsonProperty("TERRESTRE")
-        TERRESTRE("TERRESTRE");
-
-
-        private final String value;
-
-        ModalTransporteEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ModalTransporteEnum fromValue(String v) {
-            for (ModalTransporteEnum b : ModalTransporteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ModalTransporteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

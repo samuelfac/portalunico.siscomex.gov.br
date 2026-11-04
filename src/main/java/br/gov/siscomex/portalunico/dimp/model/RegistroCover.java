@@ -36,15 +36,46 @@ public class RegistroCover {
     private List<PagamentoRegistroCover> pagamentos = new ArrayList<>();
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "ConfirmacaoAlertaErrosNaoImpeditivosEnum")
+    @XmlEnum(String.class)
+    public enum ConfirmacaoAlertaErrosNaoImpeditivosEnum {
+
+        @XmlEnumValue("SIM")
+        @JsonProperty("SIM")
+        SIM("SIM"),
+
+        @XmlEnumValue("NAO")
+        @JsonProperty("NAO")
+        NAO("NAO"),
+
+        @XmlEnumValue("NA")
+        @JsonProperty("NA")
+        NA("NA");
+
+
+        private final String value;
+
+        ConfirmacaoAlertaErrosNaoImpeditivosEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ConfirmacaoAlertaErrosNaoImpeditivosEnum fromValue(String v) {
+            for (ConfirmacaoAlertaErrosNaoImpeditivosEnum b : ConfirmacaoAlertaErrosNaoImpeditivosEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ConfirmacaoAlertaErrosNaoImpeditivosEnum");
+        }
     }
 
     @XmlElement(name = "confirmacaoAlertaErrosNaoImpeditivos", required = true)
@@ -122,6 +153,7 @@ public class RegistroCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -133,45 +165,14 @@ public class RegistroCover {
         return sb;
     }
 
-    @XmlType(name = "ConfirmacaoAlertaErrosNaoImpeditivosEnum")
-    @XmlEnum(String.class)
-    public enum ConfirmacaoAlertaErrosNaoImpeditivosEnum {
-
-        @XmlEnumValue("SIM")
-        @JsonProperty("SIM")
-        SIM("SIM"),
-
-        @XmlEnumValue("NAO")
-        @JsonProperty("NAO")
-        NAO("NAO"),
-
-        @XmlEnumValue("NA")
-        @JsonProperty("NA")
-        NA("NA");
-
-
-        private final String value;
-
-        ConfirmacaoAlertaErrosNaoImpeditivosEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ConfirmacaoAlertaErrosNaoImpeditivosEnum fromValue(String v) {
-            for (ConfirmacaoAlertaErrosNaoImpeditivosEnum b : ConfirmacaoAlertaErrosNaoImpeditivosEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ConfirmacaoAlertaErrosNaoImpeditivosEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

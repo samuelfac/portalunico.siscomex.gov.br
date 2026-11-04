@@ -120,15 +120,9 @@ public class DeclarationNoNFSimplified {
         this.declarant = declarant;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DeclarationNoNFSimplified declarant(Declarant declarant) {
+        this.declarant = declarant;
+        return this;
     }
 
     /**
@@ -166,8 +160,8 @@ public class DeclarationNoNFSimplified {
         this.exitOffice = exitOffice;
     }
 
-    public DeclarationNoNFSimplified declarant(Declarant declarant) {
-        this.declarant = declarant;
+    public DeclarationNoNFSimplified exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 
@@ -234,10 +228,6 @@ public class DeclarationNoNFSimplified {
         return this;
     }
 
-    public DeclarationNoNFSimplified exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -253,5 +243,16 @@ public class DeclarationNoNFSimplified {
                 "    ucr: " + toIndentedString(ucr) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

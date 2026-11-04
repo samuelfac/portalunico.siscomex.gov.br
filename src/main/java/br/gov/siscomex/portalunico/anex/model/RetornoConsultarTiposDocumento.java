@@ -15,101 +15,99 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RetornoConsultarTiposDocumento", propOrder =
-        {"orgaosAnuentes", "tiposDocumento"
-        })
+ @XmlType(name = "RetornoConsultarTiposDocumento", propOrder =
+    { "orgaosAnuentes", "tiposDocumento"
+})
 
-@XmlRootElement(name = "RetornoConsultarTiposDocumento")
+@XmlRootElement(name="RetornoConsultarTiposDocumento")
 /**
- * Retorno da consulta de tipos de documentos e de órgãos anuentes.
+  * Retorno da consulta de tipos de documentos e de órgãos anuentes.
  **/
-@ApiModel(description = "Retorno da consulta de tipos de documentos e de órgãos anuentes.")
-public class RetornoConsultarTiposDocumento {
+@ApiModel(description="Retorno da consulta de tipos de documentos e de órgãos anuentes.")
+public class RetornoConsultarTiposDocumento  {
+  
+  @XmlElement(name="orgaosAnuentes", required = true)
+  @ApiModelProperty(required = true, value = "Lista de órgãos anuentes.")
+  @Valid
+ /**
+   * Lista de órgãos anuentes.
+  **/
+  private List<OrgaoAnuente> orgaosAnuentes = new ArrayList<>();
 
-    @XmlElement(name = "orgaosAnuentes", required = true)
-    @ApiModelProperty(required = true, value = "Lista de órgãos anuentes.")
-    @Valid
-    /**
-     * Lista de órgãos anuentes.
-     **/
-    private List<OrgaoAnuente> orgaosAnuentes = new ArrayList<>();
+  @XmlElement(name="tiposDocumento")
+  @ApiModelProperty(value = "Lista de tipos de documento.")
+  @Valid
+ /**
+   * Lista de tipos de documento.
+  **/
+  private List<TipoDocumento> tiposDocumento = null;
+ /**
+   * Lista de órgãos anuentes.
+   * @return orgaosAnuentes
+  **/
+  @JsonProperty("orgaosAnuentes")
+  @NotNull
+  public List<OrgaoAnuente> getOrgaosAnuentes() {
+    return orgaosAnuentes;
+  }
 
-    @XmlElement(name = "tiposDocumento")
-    @ApiModelProperty(value = "Lista de tipos de documento.")
-    @Valid
-    /**
-     * Lista de tipos de documento.
-     **/
-    private List<TipoDocumento> tiposDocumento = null;
+  public void setOrgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
+    this.orgaosAnuentes = orgaosAnuentes;
+  }
 
-    /**
-     * Lista de órgãos anuentes.
-     *
-     * @return orgaosAnuentes
-     **/
-    @JsonProperty("orgaosAnuentes")
-    @NotNull
-    public List<OrgaoAnuente> getOrgaosAnuentes() {
-        return orgaosAnuentes;
+  public RetornoConsultarTiposDocumento orgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
+    this.orgaosAnuentes = orgaosAnuentes;
+    return this;
+  }
+
+  public RetornoConsultarTiposDocumento addOrgaosAnuentesItem(OrgaoAnuente orgaosAnuentesItem) {
+    this.orgaosAnuentes.add(orgaosAnuentesItem);
+    return this;
+  }
+
+ /**
+   * Lista de tipos de documento.
+   * @return tiposDocumento
+  **/
+  @JsonProperty("tiposDocumento")
+  public List<TipoDocumento> getTiposDocumento() {
+    return tiposDocumento;
+  }
+
+  public void setTiposDocumento(List<TipoDocumento> tiposDocumento) {
+    this.tiposDocumento = tiposDocumento;
+  }
+
+  public RetornoConsultarTiposDocumento tiposDocumento(List<TipoDocumento> tiposDocumento) {
+    this.tiposDocumento = tiposDocumento;
+    return this;
+  }
+
+  public RetornoConsultarTiposDocumento addTiposDocumentoItem(TipoDocumento tiposDocumentoItem) {
+    this.tiposDocumento.add(tiposDocumentoItem);
+    return this;
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class RetornoConsultarTiposDocumento {\n");
+    
+    sb.append("    orgaosAnuentes: ").append(toIndentedString(orgaosAnuentes)).append("\n");
+    sb.append("    tiposDocumento: ").append(toIndentedString(tiposDocumento)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
-
-    public void setOrgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
-        this.orgaosAnuentes = orgaosAnuentes;
-    }
-
-    public RetornoConsultarTiposDocumento orgaosAnuentes(List<OrgaoAnuente> orgaosAnuentes) {
-        this.orgaosAnuentes = orgaosAnuentes;
-        return this;
-    }
-
-    public RetornoConsultarTiposDocumento addOrgaosAnuentesItem(OrgaoAnuente orgaosAnuentesItem) {
-        this.orgaosAnuentes.add(orgaosAnuentesItem);
-        return this;
-    }
-
-    /**
-     * Lista de tipos de documento.
-     *
-     * @return tiposDocumento
-     **/
-    @JsonProperty("tiposDocumento")
-    public List<TipoDocumento> getTiposDocumento() {
-        return tiposDocumento;
-    }
-
-    public void setTiposDocumento(List<TipoDocumento> tiposDocumento) {
-        this.tiposDocumento = tiposDocumento;
-    }
-
-    public RetornoConsultarTiposDocumento tiposDocumento(List<TipoDocumento> tiposDocumento) {
-        this.tiposDocumento = tiposDocumento;
-        return this;
-    }
-
-    public RetornoConsultarTiposDocumento addTiposDocumentoItem(TipoDocumento tiposDocumentoItem) {
-        this.tiposDocumento.add(tiposDocumentoItem);
-        return this;
-    }
-
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoConsultarTiposDocumento {\n" +
-                "    orgaosAnuentes: " + toIndentedString(orgaosAnuentes) + "\n" +
-                "    tiposDocumento: " + toIndentedString(tiposDocumento) + "\n" +
-                "}";
-        return sb;
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

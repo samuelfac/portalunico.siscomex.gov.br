@@ -107,15 +107,9 @@ public class PessoaParaRegistroERetificaoDeLoteDIR {
         this.endereco = endereco;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public PessoaParaRegistroERetificaoDeLoteDIR endereco(EndereoParaRegistroERetificaoDeLoteDIR endereco) {
+        this.endereco = endereco;
+        return this;
     }
 
     /**
@@ -158,10 +152,6 @@ public class PessoaParaRegistroERetificaoDeLoteDIR {
         return this;
     }
 
-    public PessoaParaRegistroERetificaoDeLoteDIR endereco(EndereoParaRegistroERetificaoDeLoteDIR endereco) {
-        this.endereco = endereco;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -175,4 +165,15 @@ public class PessoaParaRegistroERetificaoDeLoteDIR {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

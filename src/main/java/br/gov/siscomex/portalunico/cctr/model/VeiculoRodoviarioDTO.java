@@ -77,15 +77,9 @@ public class VeiculoRodoviarioDTO {
         this.cpjCnpjResponsavel = cpjCnpjResponsavel;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public VeiculoRodoviarioDTO cpjCnpjResponsavel(String cpjCnpjResponsavel) {
+        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
+        return this;
     }
 
     /**
@@ -121,8 +115,8 @@ public class VeiculoRodoviarioDTO {
         this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
     }
 
-    public VeiculoRodoviarioDTO cpjCnpjResponsavel(String cpjCnpjResponsavel) {
-        this.cpjCnpjResponsavel = cpjCnpjResponsavel;
+    public VeiculoRodoviarioDTO numeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
+        this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
         return this;
     }
 
@@ -169,10 +163,6 @@ public class VeiculoRodoviarioDTO {
         return this;
     }
 
-    public VeiculoRodoviarioDTO numeroDocCondutorEstrangeiro(String numeroDocCondutorEstrangeiro) {
-        this.numeroDocCondutorEstrangeiro = numeroDocCondutorEstrangeiro;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -186,5 +176,16 @@ public class VeiculoRodoviarioDTO {
                 "    veiculos: " + toIndentedString(veiculos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

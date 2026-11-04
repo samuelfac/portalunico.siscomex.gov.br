@@ -67,5 +67,5 @@ public class Justificativa {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

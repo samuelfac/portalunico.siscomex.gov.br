@@ -70,5 +70,5 @@ public class DadoTabelaApiRepresentation {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

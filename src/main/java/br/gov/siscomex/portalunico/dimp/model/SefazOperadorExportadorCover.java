@@ -63,15 +63,9 @@ public class SefazOperadorExportadorCover {
         this.codigoOperadorExportador = codigoOperadorExportador;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazOperadorExportadorCover codigoOperadorExportador(String codigoOperadorExportador) {
+        this.codigoOperadorExportador = codigoOperadorExportador;
+        return this;
     }
 
     /**
@@ -131,10 +125,6 @@ public class SefazOperadorExportadorCover {
         return this;
     }
 
-    public SefazOperadorExportadorCover codigoOperadorExportador(String codigoOperadorExportador) {
-        this.codigoOperadorExportador = codigoOperadorExportador;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -146,5 +136,16 @@ public class SefazOperadorExportadorCover {
                 "    niOperadorExportador: " + toIndentedString(niOperadorExportador) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

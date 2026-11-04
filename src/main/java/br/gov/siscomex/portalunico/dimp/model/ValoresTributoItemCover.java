@@ -113,15 +113,9 @@ public class ValoresTributoItemCover {
         this.aReduzir = aReduzir;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ValoresTributoItemCover aReduzir(BigDecimal aReduzir) {
+        this.aReduzir = aReduzir;
+        return this;
     }
 
     /**
@@ -157,8 +151,8 @@ public class ValoresTributoItemCover {
         this.suspenso = suspenso;
     }
 
-    public ValoresTributoItemCover aReduzir(BigDecimal aReduzir) {
-        this.aReduzir = aReduzir;
+    public ValoresTributoItemCover suspenso(BigDecimal suspenso) {
+        this.suspenso = suspenso;
         return this;
     }
 
@@ -219,10 +213,6 @@ public class ValoresTributoItemCover {
         return this;
     }
 
-    public ValoresTributoItemCover suspenso(BigDecimal suspenso) {
-        this.suspenso = suspenso;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -237,5 +227,16 @@ public class ValoresTributoItemCover {
                 "    calculadoPagProporcional: " + toIndentedString(calculadoPagProporcional) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

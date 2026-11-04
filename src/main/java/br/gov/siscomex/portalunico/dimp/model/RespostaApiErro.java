@@ -61,15 +61,9 @@ public class RespostaApiErro {
         this.message = message;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RespostaApiErro message(String message) {
+        this.message = message;
+        return this;
     }
 
     /**
@@ -139,10 +133,6 @@ public class RespostaApiErro {
         return this;
     }
 
-    public RespostaApiErro message(String message) {
-        this.message = message;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -154,5 +144,16 @@ public class RespostaApiErro {
                 "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

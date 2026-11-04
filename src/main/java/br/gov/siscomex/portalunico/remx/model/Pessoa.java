@@ -103,15 +103,9 @@ public class Pessoa {
         this.endereco = endereco;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Pessoa endereco(Endereo endereco) {
+        this.endereco = endereco;
+        return this;
     }
 
     /**
@@ -152,10 +146,6 @@ public class Pessoa {
         return this;
     }
 
-    public Pessoa endereco(Endereo endereco) {
-        this.endereco = endereco;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -169,4 +159,15 @@ public class Pessoa {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

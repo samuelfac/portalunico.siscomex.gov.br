@@ -26,12 +26,51 @@ import javax.xml.bind.annotation.XmlType;
 public class DeclaracaoVinculadaCover {
 
 
-    @XmlElement(name = "numeroItem", required = true)
-    @ApiModelProperty(example = "10001", required = true, value = "Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999")
-    /**
-     * Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999
-     **/
-    private Integer numeroItem = null;
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP"),
+
+        @XmlEnumValue("DUE")
+        @JsonProperty("DUE")
+        DUE("DUE"),
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("DE")
+        @JsonProperty("DE")
+        DE("DE");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+    }
 
     @XmlElement(name = "tipo", required = true)
     @ApiModelProperty(example = "DUIMP", required = true, value = "Tipo de declaração vinculada.<br>Domínio:")
@@ -47,16 +86,12 @@ public class DeclaracaoVinculadaCover {
      **/
     private String numero = null;
 
+    @XmlElement(name = "numeroItem", required = true)
+    @ApiModelProperty(example = "10001", required = true, value = "Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Número do item/adição da declaração.<br>Valor mínimo: 1<br>Valor máximo: 99999
+     **/
+    private Integer numeroItem = null;
 
     @XmlElement(name = "chaveAcesso")
     @ApiModelProperty(example = "23NcT000115501", value = "Chave de acesso da Duimp vinculada. Atributo previsto no json de saída para auxiliar o usuário na utilização da estrutura do json. No entanto, não é preenchido, por se tratar de um dado restrito.<br>Tamanho: 14<br>Formato: 'AALLLSSSSSSSSD'<br>Lei de formação: <br>* AA = Corresponde ao ano (2 caracteres).<br>* LLL = 3 letras aleatórias.<br>* SSSSSSSS = 8 caracteres númericos. Número sequencial da Duimp dentro do ano.<br>* D = (1 caracter númerico. DV para os demais caracteres numéricos (Módulo 11)")
@@ -147,6 +182,7 @@ public class DeclaracaoVinculadaCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -159,49 +195,14 @@ public class DeclaracaoVinculadaCover {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP"),
-
-        @XmlEnumValue("DUE")
-        @JsonProperty("DUE")
-        DUE("DUE"),
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("DE")
-        @JsonProperty("DE")
-        DE("DE");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

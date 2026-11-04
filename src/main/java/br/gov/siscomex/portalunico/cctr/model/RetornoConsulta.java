@@ -162,15 +162,9 @@ public class RetornoConsulta {
         this.existeImpedimentoEmbarque = existeImpedimentoEmbarque;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RetornoConsulta existeImpedimentoEmbarque(Boolean existeImpedimentoEmbarque) {
+        this.existeImpedimentoEmbarque = existeImpedimentoEmbarque;
+        return this;
     }
 
     /**
@@ -230,8 +224,8 @@ public class RetornoConsulta {
         return this;
     }
 
-    public RetornoConsulta existeImpedimentoEmbarque(Boolean existeImpedimentoEmbarque) {
-        this.existeImpedimentoEmbarque = existeImpedimentoEmbarque;
+    public RetornoConsulta addConteineresItem(String conteineresItem) {
+        this.conteineres.add(conteineresItem);
         return this;
     }
 
@@ -306,10 +300,6 @@ public class RetornoConsulta {
         return this;
     }
 
-    public RetornoConsulta addConteineresItem(String conteineresItem) {
-        this.conteineres.add(conteineresItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -327,5 +317,16 @@ public class RetornoConsulta {
                 "    listaGraneis: " + toIndentedString(listaGraneis) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

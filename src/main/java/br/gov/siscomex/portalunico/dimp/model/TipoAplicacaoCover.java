@@ -26,57 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TipoAplicacaoCover {
 
 
-    @XmlElement(name = "codigo", required = true)
-    @ApiModelProperty(example = "CONSUMO", required = true, value = "Destinação da mercadoria de acordo com o domínio a seguir.<br>Domínio:")
-    /**
-     * Destinação da mercadoria de acordo com o domínio a seguir.<br>Domínio:
-     **/
-    private CodigoEnum codigo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Destinação da mercadoria de acordo com o domínio a seguir.&lt;br&gt;Domínio:
-     *
-     * @return codigo
-     **/
-    @JsonProperty("codigo")
-    @NotNull
-    public String getCodigo() {
-        if (codigo == null) {
-            return null;
-        }
-        return codigo.value();
-    }
-
-    public void setCodigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-    }
-
-    public TipoAplicacaoCover codigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class TipoAplicacaoCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "CodigoEnum")
     @XmlEnum(String.class)
     public enum CodigoEnum {
@@ -125,5 +74,56 @@ public class TipoAplicacaoCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
         }
+    }
+
+    @XmlElement(name = "codigo", required = true)
+    @ApiModelProperty(example = "CONSUMO", required = true, value = "Destinação da mercadoria de acordo com o domínio a seguir.<br>Domínio:")
+    /**
+     * Destinação da mercadoria de acordo com o domínio a seguir.<br>Domínio:
+     **/
+    private CodigoEnum codigo = null;
+
+    /**
+     * Destinação da mercadoria de acordo com o domínio a seguir.&lt;br&gt;Domínio:
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    @NotNull
+    public String getCodigo() {
+        if (codigo == null) {
+            return null;
+        }
+        return codigo.value();
+    }
+
+    public void setCodigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+    }
+
+    public TipoAplicacaoCover codigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TipoAplicacaoCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

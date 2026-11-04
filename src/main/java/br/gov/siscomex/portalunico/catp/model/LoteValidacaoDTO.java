@@ -62,15 +62,9 @@ public class LoteValidacaoDTO {
         this.seq = seq;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public LoteValidacaoDTO seq(Integer seq) {
+        this.seq = seq;
+        return this;
     }
 
     /**
@@ -137,10 +131,6 @@ public class LoteValidacaoDTO {
         return this;
     }
 
-    public LoteValidacaoDTO seq(Integer seq) {
-        this.seq = seq;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -152,5 +142,16 @@ public class LoteValidacaoDTO {
                 "    sucesso: " + toIndentedString(sucesso) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

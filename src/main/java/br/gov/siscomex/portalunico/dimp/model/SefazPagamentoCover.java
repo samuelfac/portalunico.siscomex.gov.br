@@ -139,15 +139,9 @@ public class SefazPagamentoCover {
         this.agencia = agencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazPagamentoCover agencia(String agencia) {
+        this.agencia = agencia;
+        return this;
     }
 
     /**
@@ -183,8 +177,8 @@ public class SefazPagamentoCover {
         this.codigoReceita = codigoReceita;
     }
 
-    public SefazPagamentoCover agencia(String agencia) {
-        this.agencia = agencia;
+    public SefazPagamentoCover codigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
         return this;
     }
 
@@ -221,8 +215,8 @@ public class SefazPagamentoCover {
         this.valorTributo = valorTributo;
     }
 
-    public SefazPagamentoCover codigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
+    public SefazPagamentoCover valorTributo(BigDecimal valorTributo) {
+        this.valorTributo = valorTributo;
         return this;
     }
 
@@ -264,10 +258,6 @@ public class SefazPagamentoCover {
         return this;
     }
 
-    public SefazPagamentoCover valorTributo(BigDecimal valorTributo) {
-        this.valorTributo = valorTributo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -284,5 +274,16 @@ public class SefazPagamentoCover {
                 "    pagamentoJuros: " + toIndentedString(pagamentoJuros) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

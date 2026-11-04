@@ -60,12 +60,51 @@ public class ConhecimentoConsultaDetalhada {
     private String caixaPostalEmbarcadorEstrangeiro = null;
 
 
-    @XmlElement(name = "cidadeAgenteDeCargaConsolidadorEstrang")
-    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
-    /**
-     * Cidade do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
-     **/
-    private String cidadeAgenteDeCargaConsolidadorEstrang = null;
+    @XmlType(name = "CategoriaCargaEnum")
+    @XmlEnum(String.class)
+    public enum CategoriaCargaEnum {
+
+        @XmlEnumValue("I")
+        @JsonProperty("I")
+        I("I"),
+
+        @XmlEnumValue("E")
+        @JsonProperty("E")
+        E("E"),
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        CategoriaCargaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CategoriaCargaEnum fromValue(String v) {
+            for (CategoriaCargaEnum b : CategoriaCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoriaCargaEnum");
+        }
+    }
 
     @XmlElement(name = "categoriaCarga")
     @ApiModelProperty(example = "I", value = "Código da categoria da carga<br>Tamanho: 1<br/>E - Exportada <br/>I - Importada<br/>N - Nacional<br/>P - Passagem<br/>")
@@ -81,13 +120,13 @@ public class ConhecimentoConsultaDetalhada {
      * Lista as chegadas de viagens terrestres associadas ao conhecimento<br/>
      **/
     private List<CargaDetalheChegadaTerrestre> chegadasTerrestres = null;
-    @XmlElement(name = "contatosEmbarcadorEstrangeiro")
-    @ApiModelProperty(value = "Lista de contatos do embarcador estrangeiro.")
-    @Valid
+
+    @XmlElement(name = "cidadeAgenteDeCargaConsolidadorEstrang")
+    @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
     /**
-     * Lista de contatos do embarcador estrangeiro.
+     * Cidade do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
      **/
-    private List<ContatoConsultaDetalhada> contatosEmbarcadorEstrangeiro = null;
+    private String cidadeAgenteDeCargaConsolidadorEstrang = null;
 
     @XmlElement(name = "cidadeConsignatarioConhecimento")
     @ApiModelProperty(example = "Rio de Janeiro", value = "Cidade do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
@@ -139,19 +178,21 @@ public class ConhecimentoConsultaDetalhada {
      * Lista de contatos do consignatário.
      **/
     private List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento = null;
+
+    @XmlElement(name = "contatosEmbarcadorEstrangeiro")
+    @ApiModelProperty(value = "Lista de contatos do embarcador estrangeiro.")
+    @Valid
+    /**
+     * Lista de contatos do embarcador estrangeiro.
+     **/
+    private List<ContatoConsultaDetalhada> contatosEmbarcadorEstrangeiro = null;
+
     @XmlElement(name = "dataEmissao")
     @ApiModelProperty(example = "2020-05-07T17:43:18-03:00", value = "Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
     /**
      * Data/Hora de emissão.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ
      **/
     private String dataEmissao = null;
-    @XmlElement(name = "dsicsApropriados")
-    @ApiModelProperty(value = "Lista contendo os Dsics apropriados a carga<br/>")
-    @Valid
-    /**
-     * Lista contendo os Dsics apropriados a carga<br/>
-     **/
-    private List<ChaveDsic> dsicsApropriados = null;
 
     @XmlElement(name = "dataHoraAssinaturaTransportador")
     @ApiModelProperty(value = "Data/Hora de emissao do XFWB pelo transportador.<br/> Formato: yyyy-MM-dd'T'HH:mm:ssZ")
@@ -182,10 +223,14 @@ public class ConhecimentoConsultaDetalhada {
      * Lista contendo os documentos de saída associados a carga / Dsic<br/>
      **/
     private List<DocumentoSaidaConsultaDetalhada> documentosSaida = null;
-    @XmlElement(name = "frete")
-    @ApiModelProperty(value = "")
+
+    @XmlElement(name = "dsicsApropriados")
+    @ApiModelProperty(value = "Lista contendo os Dsics apropriados a carga<br/>")
     @Valid
-    private CargaDetalheFrete frete = null;
+    /**
+     * Lista contendo os Dsics apropriados a carga<br/>
+     **/
+    private List<ChaveDsic> dsicsApropriados = null;
 
     @XmlElement(name = "enderecoAgenteDeCargaConsolidadorEstrang")
     @ApiModelProperty(example = "CZIFFLAF, 3394", value = "Endereco do agente de carga consolidador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70")
@@ -207,12 +252,11 @@ public class ConhecimentoConsultaDetalhada {
      * Endereco do embarcador estrangeiro no conhecimento de carga<br/>Tamanho máximo: 70
      **/
     private String enderecoEmbarcadorEstrangeiro = null;
-    @XmlElement(name = "localAssinaturaTransportador")
-    @ApiModelProperty(example = "Rio de Janeiro", value = "Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>")
-    /**
-     * Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>
-     **/
-    private String localAssinaturaTransportador = null;
+
+    @XmlElement(name = "frete")
+    @ApiModelProperty(value = "")
+    @Valid
+    private CargaDetalheFrete frete = null;
 
     @XmlElement(name = "hawbAssociados")
     @ApiModelProperty(value = "Lista contendo as cargas HAWB<br/>")
@@ -235,12 +279,45 @@ public class ConhecimentoConsultaDetalhada {
      * CNPJ do consignatário<br/>Tamanho: 14<br/>
      **/
     private String identificacaoDocumentoConsignatario = null;
-    @XmlElement(name = "nomeAgenteDeCargaConsolidadorEstrang")
-    @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do agente de carga consolidador estrangeiro<br>Tamanho: 70<br/>")
-    /**
-     * Nome do agente de carga consolidador estrangeiro<br>Tamanho: 70<br/>
-     **/
-    private String nomeAgenteDeCargaConsolidadorEstrang = null;
+
+
+    @XmlType(name = "IndicadorNaoRecepcaoHawbAssociadosEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorNaoRecepcaoHawbAssociadosEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        IndicadorNaoRecepcaoHawbAssociadosEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorNaoRecepcaoHawbAssociadosEnum fromValue(String v) {
+            for (IndicadorNaoRecepcaoHawbAssociadosEnum b : IndicadorNaoRecepcaoHawbAssociadosEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorNaoRecepcaoHawbAssociadosEnum");
+        }
+    }
 
     @XmlElement(name = "indicadorNaoRecepcaoHawbAssociados")
     @ApiModelProperty(example = "S", value = "Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.")
@@ -248,12 +325,45 @@ public class ConhecimentoConsultaDetalhada {
      * Informação prestada pelo transportador responsável pelo conhecimento.<br>S - Sim<br>N - Não<br><br>Quando for \"S\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.<br><br>Quando for \"N\", a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.<br><br>Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.
      **/
     private IndicadorNaoRecepcaoHawbAssociadosEnum indicadorNaoRecepcaoHawbAssociados = null;
-    @XmlElement(name = "nomeAssinaturaEmbarcadorEstrangeiro")
-    @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do responsável pelo embarque<br>Tamanho: 70<br/>")
-    /**
-     * Nome do responsável pelo embarque<br>Tamanho: 70<br/>
-     **/
-    private String nomeAssinaturaEmbarcadorEstrangeiro = null;
+
+
+    @XmlType(name = "IndicadorPartesMadeiraEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorPartesMadeiraEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        IndicadorPartesMadeiraEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorPartesMadeiraEnum fromValue(String v) {
+            for (IndicadorPartesMadeiraEnum b : IndicadorPartesMadeiraEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorPartesMadeiraEnum");
+        }
+    }
 
     @XmlElement(name = "indicadorPartesMadeira")
     @ApiModelProperty(example = "S", value = "Indica se algum dos itens da carga está sendo transportado em embalagem/suporte de madeira<br/> S - Sim <br/>N - Não<br/>")
@@ -269,12 +379,13 @@ public class ConhecimentoConsultaDetalhada {
      * Lista contendo os itens de carga contidos na carga / Dsic<br/>
      **/
     private List<ItemCargaConhecimentoConsultaDetalhada> itensCarga = null;
-    @XmlElement(name = "nomeAssinaturaTransportador")
-    @ApiModelProperty(example = "Transportation Transport LTD.", value = "Assinatura transportador<br/>Tamanho: 35<br/>")
+
+    @XmlElement(name = "localAssinaturaTransportador")
+    @ApiModelProperty(example = "Rio de Janeiro", value = "Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>")
     /**
-     * Assinatura transportador<br/>Tamanho: 35<br/>
+     * Local de emissao do XFWB pelo transportador<br/>Tamanho: 35<br/>
      **/
-    private String nomeAssinaturaTransportador = null;
+    private String localAssinaturaTransportador = null;
 
     @XmlElement(name = "manuseiosEspeciais")
     @ApiModelProperty(value = "Lista contendo os manuseios especiais para a carga / Dsic<br/>")
@@ -292,30 +403,26 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private List<MawbAssociadoConsultaDetalhada> mawbAwbAssociados = null;
 
+    @XmlElement(name = "nomeAgenteDeCargaConsolidadorEstrang")
+    @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do agente de carga consolidador estrangeiro<br>Tamanho: 70<br/>")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Endereço postal do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return caixaPostalConsignatarioConhecimento
+     * Nome do agente de carga consolidador estrangeiro<br>Tamanho: 70<br/>
      **/
-    @JsonProperty("caixaPostalConsignatarioConhecimento")
-    public String getCaixaPostalConsignatarioConhecimento() {
-        return caixaPostalConsignatarioConhecimento;
-    }
+    private String nomeAgenteDeCargaConsolidadorEstrang = null;
 
-    public void setCaixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
-        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
-    }
+    @XmlElement(name = "nomeAssinaturaEmbarcadorEstrangeiro")
+    @ApiModelProperty(example = "EMBARCADOR ESTRANGEIRO EXEMPLO", value = "Nome do responsável pelo embarque<br>Tamanho: 70<br/>")
+    /**
+     * Nome do responsável pelo embarque<br>Tamanho: 70<br/>
+     **/
+    private String nomeAssinaturaEmbarcadorEstrangeiro = null;
+
+    @XmlElement(name = "nomeAssinaturaTransportador")
+    @ApiModelProperty(example = "Transportation Transport LTD.", value = "Assinatura transportador<br/>Tamanho: 35<br/>")
+    /**
+     * Assinatura transportador<br/>Tamanho: 35<br/>
+     **/
+    private String nomeAssinaturaTransportador = null;
 
     @XmlElement(name = "nomeConsignatarioConhecimento")
     @ApiModelProperty(example = "Banco do Brasil", value = "Nome do consignatário no conhecimento de carga<br/>Tamanho máximo: 70")
@@ -427,9 +534,43 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private String ruc = null;
 
-    public ConhecimentoConsultaDetalhada caixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
-        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
-        return this;
+
+    @XmlType(name = "SituacaoEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoEnum {
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A"),
+
+        @XmlEnumValue("E")
+        @JsonProperty("E")
+        E("E");
+
+
+        private final String value;
+
+        SituacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
     }
 
     @XmlElement(name = "situacao")
@@ -447,14 +588,47 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private List<InfoManuseioConsultaDetalhada> solicitacoesServicosEspeciais = null;
 
-    /**
-     * Lista as chegadas de viagens terrestres associadas ao conhecimento&lt;br/&gt;
-     *
-     * @return chegadasTerrestres
-     **/
-    @JsonProperty("chegadasTerrestres")
-    public List<CargaDetalheChegadaTerrestre> getChegadasTerrestres() {
-        return chegadasTerrestres;
+
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("AWB")
+        @JsonProperty("AWB")
+        AWB("AWB"),
+
+        @XmlEnumValue("DSIC")
+        @JsonProperty("DSIC")
+        DSIC("DSIC"),
+
+        @XmlEnumValue("HAWB ou MAWB")
+        @JsonProperty("HAWB ou MAWB")
+        HAWB_OU_MAWB("HAWB ou MAWB");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
     }
 
     @XmlElement(name = "tipo")
@@ -464,8 +638,47 @@ public class ConhecimentoConsultaDetalhada {
      **/
     private TipoEnum tipo = null;
 
-    public void setChegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
-        this.chegadasTerrestres = chegadasTerrestres;
+
+    @XmlType(name = "TipoDocumentoConsignatarioEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoConsignatarioEnum {
+
+        @XmlEnumValue("CPF")
+        @JsonProperty("CPF")
+        CPF("CPF"),
+
+        @XmlEnumValue("CNPJ")
+        @JsonProperty("CNPJ")
+        CNPJ("CNPJ"),
+
+        @XmlEnumValue("PASSAPORTE")
+        @JsonProperty("PASSAPORTE")
+        PASSAPORTE("PASSAPORTE");
+
+
+        private final String value;
+
+        TipoDocumentoConsignatarioEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocumentoConsignatarioEnum fromValue(String v) {
+            for (TipoDocumentoConsignatarioEnum b : TipoDocumentoConsignatarioEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoConsignatarioEnum");
+        }
     }
 
     @XmlElement(name = "tipoDocumentoConsignatario")
@@ -550,24 +763,23 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    public ConhecimentoConsultaDetalhada chegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
-        this.chegadasTerrestres = chegadasTerrestres;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addChegadasTerrestresItem(CargaDetalheChegadaTerrestre chegadasTerrestresItem) {
-        this.chegadasTerrestres.add(chegadasTerrestresItem);
-        return this;
-    }
-
     /**
-     * Lista de contatos do consignatário.
+     * Endereço postal do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
      *
-     * @return contatosConsignatarioConhecimento
+     * @return caixaPostalConsignatarioConhecimento
      **/
-    @JsonProperty("contatosConsignatarioConhecimento")
-    public List<ContatoConsultaDetalhada> getContatosConsignatarioConhecimento() {
-        return contatosConsignatarioConhecimento;
+    @JsonProperty("caixaPostalConsignatarioConhecimento")
+    public String getCaixaPostalConsignatarioConhecimento() {
+        return caixaPostalConsignatarioConhecimento;
+    }
+
+    public void setCaixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
+        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
+    }
+
+    public ConhecimentoConsultaDetalhada caixaPostalConsignatarioConhecimento(String caixaPostalConsignatarioConhecimento) {
+        this.caixaPostalConsignatarioConhecimento = caixaPostalConsignatarioConhecimento;
+        return this;
     }
 
     /**
@@ -611,28 +823,28 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    public void setContatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
-        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
-    }
-
-    public ConhecimentoConsultaDetalhada contatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
-        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addContatosConsignatarioConhecimentoItem(ContatoConsultaDetalhada contatosConsignatarioConhecimentoItem) {
-        this.contatosConsignatarioConhecimento.add(contatosConsignatarioConhecimentoItem);
-        return this;
-    }
-
     /**
-     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
+     * Lista as chegadas de viagens terrestres associadas ao conhecimento&lt;br/&gt;
      *
-     * @return dataEmissao
+     * @return chegadasTerrestres
      **/
-    @JsonProperty("dataEmissao")
-    public String getDataEmissao() {
-        return dataEmissao;
+    @JsonProperty("chegadasTerrestres")
+    public List<CargaDetalheChegadaTerrestre> getChegadasTerrestres() {
+        return chegadasTerrestres;
+    }
+
+    public void setChegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
+        this.chegadasTerrestres = chegadasTerrestres;
+    }
+
+    public ConhecimentoConsultaDetalhada chegadasTerrestres(List<CargaDetalheChegadaTerrestre> chegadasTerrestres) {
+        this.chegadasTerrestres = chegadasTerrestres;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addChegadasTerrestresItem(CargaDetalheChegadaTerrestre chegadasTerrestresItem) {
+        this.chegadasTerrestres.add(chegadasTerrestresItem);
+        return this;
     }
 
     /**
@@ -772,27 +984,28 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    /**
+     * Lista de contatos do consignatário.
+     *
+     * @return contatosConsignatarioConhecimento
+     **/
+    @JsonProperty("contatosConsignatarioConhecimento")
+    public List<ContatoConsultaDetalhada> getContatosConsignatarioConhecimento() {
+        return contatosConsignatarioConhecimento;
     }
 
-    public ConhecimentoConsultaDetalhada dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public void setContatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
+        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
+    }
+
+    public ConhecimentoConsultaDetalhada contatosConsignatarioConhecimento(List<ContatoConsultaDetalhada> contatosConsignatarioConhecimento) {
+        this.contatosConsignatarioConhecimento = contatosConsignatarioConhecimento;
         return this;
     }
 
-    /**
-     * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
-     *
-     * @return documentosSaida
-     **/
-    @JsonProperty("documentosSaida")
-    public List<DocumentoSaidaConsultaDetalhada> getDocumentosSaida() {
-        return documentosSaida;
-    }
-
-    public void setDocumentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
-        this.documentosSaida = documentosSaida;
+    public ConhecimentoConsultaDetalhada addContatosConsignatarioConhecimentoItem(ContatoConsultaDetalhada contatosConsignatarioConhecimentoItem) {
+        this.contatosConsignatarioConhecimento.add(contatosConsignatarioConhecimentoItem);
+        return this;
     }
 
     /**
@@ -818,24 +1031,23 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    public ConhecimentoConsultaDetalhada documentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
-        this.documentosSaida = documentosSaida;
-        return this;
-    }
-
-    public ConhecimentoConsultaDetalhada addDocumentosSaidaItem(DocumentoSaidaConsultaDetalhada documentosSaidaItem) {
-        this.documentosSaida.add(documentosSaidaItem);
-        return this;
-    }
-
     /**
-     * Lista contendo os Dsics apropriados a carga&lt;br/&gt;
+     * Data/Hora de emissão.&lt;br/&gt; Formato: yyyy-MM-dd&#39;T&#39;HH:mm:ssZ
      *
-     * @return dsicsApropriados
+     * @return dataEmissao
      **/
-    @JsonProperty("dsicsApropriados")
-    public List<ChaveDsic> getDsicsApropriados() {
-        return dsicsApropriados;
+    @JsonProperty("dataEmissao")
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public ConhecimentoConsultaDetalhada dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
     }
 
     /**
@@ -898,36 +1110,36 @@ public class ConhecimentoConsultaDetalhada {
     }
 
     /**
-     * Get frete
-     *
-     * @return frete
+     * Lista contendo os documentos de saída associados a carga / Dsic&lt;br/&gt;
+     * @return documentosSaida
      **/
-    @JsonProperty("frete")
-    public CargaDetalheFrete getFrete() {
-        return frete;
+    @JsonProperty("documentosSaida")
+    public List<DocumentoSaidaConsultaDetalhada> getDocumentosSaida() {
+        return documentosSaida;
     }
 
-    public void setFrete(CargaDetalheFrete frete) {
-        this.frete = frete;
+    public void setDocumentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
+        this.documentosSaida = documentosSaida;
     }
 
-    public ConhecimentoConsultaDetalhada frete(CargaDetalheFrete frete) {
-        this.frete = frete;
+    public ConhecimentoConsultaDetalhada documentosSaida(List<DocumentoSaidaConsultaDetalhada> documentosSaida) {
+        this.documentosSaida = documentosSaida;
+        return this;
+    }
+
+    public ConhecimentoConsultaDetalhada addDocumentosSaidaItem(DocumentoSaidaConsultaDetalhada documentosSaidaItem) {
+        this.documentosSaida.add(documentosSaidaItem);
         return this;
     }
 
     /**
-     * Lista contendo as cargas HAWB&lt;br/&gt;
+     * Lista contendo os Dsics apropriados a carga&lt;br/&gt;
      *
-     * @return hawbAssociados
+     * @return dsicsApropriados
      **/
-    @JsonProperty("hawbAssociados")
-    public List<HawbMawbAssociadoConsultaDetalhada> getHawbAssociados() {
-        return hawbAssociados;
-    }
-
-    public void setHawbAssociados(List<HawbMawbAssociadoConsultaDetalhada> hawbAssociados) {
-        this.hawbAssociados = hawbAssociados;
+    @JsonProperty("dsicsApropriados")
+    public List<ChaveDsic> getDsicsApropriados() {
+        return dsicsApropriados;
     }
 
     public void setDsicsApropriados(List<ChaveDsic> dsicsApropriados) {
@@ -999,42 +1211,34 @@ public class ConhecimentoConsultaDetalhada {
     }
 
     /**
-     * Local de emissao do XFWB pelo transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
-     *
-     * @return localAssinaturaTransportador
+     * Get frete
+     * @return frete
      **/
-    @JsonProperty("localAssinaturaTransportador")
-    public String getLocalAssinaturaTransportador() {
-        return localAssinaturaTransportador;
+    @JsonProperty("frete")
+    public CargaDetalheFrete getFrete() {
+        return frete;
     }
 
-    public void setLocalAssinaturaTransportador(String localAssinaturaTransportador) {
-        this.localAssinaturaTransportador = localAssinaturaTransportador;
+    public void setFrete(CargaDetalheFrete frete) {
+        this.frete = frete;
     }
 
-    public ConhecimentoConsultaDetalhada localAssinaturaTransportador(String localAssinaturaTransportador) {
-        this.localAssinaturaTransportador = localAssinaturaTransportador;
+    public ConhecimentoConsultaDetalhada frete(CargaDetalheFrete frete) {
+        this.frete = frete;
         return this;
     }
 
     /**
-     * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
-     *
-     * @return manuseiosEspeciais
+     * Lista contendo as cargas HAWB&lt;br/&gt;
+     * @return hawbAssociados
      **/
-    @JsonProperty("manuseiosEspeciais")
-    public List<InfoManuseioConsultaDetalhada> getManuseiosEspeciais() {
-        return manuseiosEspeciais;
+    @JsonProperty("hawbAssociados")
+    public List<HawbMawbAssociadoConsultaDetalhada> getHawbAssociados() {
+        return hawbAssociados;
     }
 
-    /**
-     * Assinatura transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
-     *
-     * @return nomeAssinaturaTransportador
-     **/
-    @JsonProperty("nomeAssinaturaTransportador")
-    public String getNomeAssinaturaTransportador() {
-        return nomeAssinaturaTransportador;
+    public void setHawbAssociados(List<HawbMawbAssociadoConsultaDetalhada> hawbAssociados) {
+        this.hawbAssociados = hawbAssociados;
     }
 
     public ConhecimentoConsultaDetalhada hawbAssociados(List<HawbMawbAssociadoConsultaDetalhada> hawbAssociados) {
@@ -1085,6 +1289,7 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Informação prestada pelo transportador responsável pelo conhecimento.&lt;br&gt;S - Sim&lt;br&gt;N - Não&lt;br&gt;&lt;br&gt;Quando for \&quot;S\&quot;, a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada pelo MAWB, e não por seus HAWB associados.&lt;br&gt;&lt;br&gt;Quando for \&quot;N\&quot;, a orientação é de que a recepção no aeroporto de destino do conhecimento seja realizada diretamente pelos HAWB.&lt;br&gt;&lt;br&gt;Este indicador não deve ser levado em consideração nas recepções realizadas em unidades que não sejam o aeroporto de destino do conhecimento. Nestes casos, indica-se como padrão a recepção pelo MAWB.
+     *
      * @return indicadorNaoRecepcaoHawbAssociados
      **/
     @JsonProperty("indicadorNaoRecepcaoHawbAssociados")
@@ -1149,32 +1354,30 @@ public class ConhecimentoConsultaDetalhada {
     }
 
     /**
-     * Nome do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return nomeConsignatarioConhecimento
+     * Local de emissao do XFWB pelo transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
+     * @return localAssinaturaTransportador
      **/
-    @JsonProperty("nomeConsignatarioConhecimento")
-    public String getNomeConsignatarioConhecimento() {
-        return nomeConsignatarioConhecimento;
+    @JsonProperty("localAssinaturaTransportador")
+    public String getLocalAssinaturaTransportador() {
+        return localAssinaturaTransportador;
     }
 
-    public void setNomeConsignatarioConhecimento(String nomeConsignatarioConhecimento) {
-        this.nomeConsignatarioConhecimento = nomeConsignatarioConhecimento;
+    public void setLocalAssinaturaTransportador(String localAssinaturaTransportador) {
+        this.localAssinaturaTransportador = localAssinaturaTransportador;
     }
 
-    public ConhecimentoConsultaDetalhada nomeConsignatarioConhecimento(String nomeConsignatarioConhecimento) {
-        this.nomeConsignatarioConhecimento = nomeConsignatarioConhecimento;
+    public ConhecimentoConsultaDetalhada localAssinaturaTransportador(String localAssinaturaTransportador) {
+        this.localAssinaturaTransportador = localAssinaturaTransportador;
         return this;
     }
 
     /**
-     * Nome do consignatário no documento&lt;br/&gt;Tamanho máximo: 70
-     *
-     * @return nomeDocumentoConsignatario
+     * Lista contendo os manuseios especiais para a carga / Dsic&lt;br/&gt;
+     * @return manuseiosEspeciais
      **/
-    @JsonProperty("nomeDocumentoConsignatario")
-    public String getNomeDocumentoConsignatario() {
-        return nomeDocumentoConsignatario;
+    @JsonProperty("manuseiosEspeciais")
+    public List<InfoManuseioConsultaDetalhada> getManuseiosEspeciais() {
+        return manuseiosEspeciais;
     }
 
     public void setManuseiosEspeciais(List<InfoManuseioConsultaDetalhada> manuseiosEspeciais) {
@@ -1250,8 +1453,14 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    public void setNomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
-        this.nomeDocumentoConsignatario = nomeDocumentoConsignatario;
+    /**
+     * Assinatura transportador&lt;br/&gt;Tamanho: 35&lt;br/&gt;
+     *
+     * @return nomeAssinaturaTransportador
+     **/
+    @JsonProperty("nomeAssinaturaTransportador")
+    public String getNomeAssinaturaTransportador() {
+        return nomeAssinaturaTransportador;
     }
 
     public void setNomeAssinaturaTransportador(String nomeAssinaturaTransportador) {
@@ -1263,230 +1472,37 @@ public class ConhecimentoConsultaDetalhada {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class ConhecimentoConsultaDetalhada {\n" +
-                "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
-                "    bloqueiosBaixados: " + toIndentedString(bloqueiosBaixados) + "\n" +
-                "    caixaPostalAgenteDeCargaConsolidadorEstrang: " + toIndentedString(caixaPostalAgenteDeCargaConsolidadorEstrang) + "\n" +
-                "    caixaPostalConsignatarioConhecimento: " + toIndentedString(caixaPostalConsignatarioConhecimento) + "\n" +
-                "    caixaPostalEmbarcadorEstrangeiro: " + toIndentedString(caixaPostalEmbarcadorEstrangeiro) + "\n" +
-                "    categoriaCarga: " + toIndentedString(categoriaCarga) + "\n" +
-                "    chegadasTerrestres: " + toIndentedString(chegadasTerrestres) + "\n" +
-                "    cidadeAgenteDeCargaConsolidadorEstrang: " + toIndentedString(cidadeAgenteDeCargaConsolidadorEstrang) + "\n" +
-                "    cidadeConsignatarioConhecimento: " + toIndentedString(cidadeConsignatarioConhecimento) + "\n" +
-                "    cidadeEmbarcadorEstrangeiro: " + toIndentedString(cidadeEmbarcadorEstrangeiro) + "\n" +
-                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
-                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
-                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
-                "    contatosAgenteDeCargaConsolidadorEstrang: " + toIndentedString(contatosAgenteDeCargaConsolidadorEstrang) + "\n" +
-                "    contatosConsignatarioConhecimento: " + toIndentedString(contatosConsignatarioConhecimento) + "\n" +
-                "    contatosEmbarcadorEstrangeiro: " + toIndentedString(contatosEmbarcadorEstrangeiro) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    dataHoraAssinaturaTransportador: " + toIndentedString(dataHoraAssinaturaTransportador) + "\n" +
-                "    descricaoResumida: " + toIndentedString(descricaoResumida) + "\n" +
-                "    divergencias: " + toIndentedString(divergencias) + "\n" +
-                "    documentosSaida: " + toIndentedString(documentosSaida) + "\n" +
-                "    dsicsApropriados: " + toIndentedString(dsicsApropriados) + "\n" +
-                "    enderecoAgenteDeCargaConsolidadorEstrang: " + toIndentedString(enderecoAgenteDeCargaConsolidadorEstrang) + "\n" +
-                "    enderecoConsignatarioConhecimento: " + toIndentedString(enderecoConsignatarioConhecimento) + "\n" +
-                "    enderecoEmbarcadorEstrangeiro: " + toIndentedString(enderecoEmbarcadorEstrangeiro) + "\n" +
-                "    frete: " + toIndentedString(frete) + "\n" +
-                "    hawbAssociados: " + toIndentedString(hawbAssociados) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    identificacaoDocumentoConsignatario: " + toIndentedString(identificacaoDocumentoConsignatario) + "\n" +
-                "    indicadorNaoRecepcaoHawbAssociados: " + toIndentedString(indicadorNaoRecepcaoHawbAssociados) + "\n" +
-                "    indicadorPartesMadeira: " + toIndentedString(indicadorPartesMadeira) + "\n" +
-                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
-                "    localAssinaturaTransportador: " + toIndentedString(localAssinaturaTransportador) + "\n" +
-                "    manuseiosEspeciais: " + toIndentedString(manuseiosEspeciais) + "\n" +
-                "    mawbAwbAssociados: " + toIndentedString(mawbAwbAssociados) + "\n" +
-                "    nomeAgenteDeCargaConsolidadorEstrang: " + toIndentedString(nomeAgenteDeCargaConsolidadorEstrang) + "\n" +
-                "    nomeAssinaturaEmbarcadorEstrangeiro: " + toIndentedString(nomeAssinaturaEmbarcadorEstrangeiro) + "\n" +
-                "    nomeAssinaturaTransportador: " + toIndentedString(nomeAssinaturaTransportador) + "\n" +
-                "    nomeConsignatarioConhecimento: " + toIndentedString(nomeConsignatarioConhecimento) + "\n" +
-                "    nomeDocumentoConsignatario: " + toIndentedString(nomeDocumentoConsignatario) + "\n" +
-                "    nomeEmbarcadorEstrangeiro: " + toIndentedString(nomeEmbarcadorEstrangeiro) + "\n" +
-                "    outrasInfosServico: " + toIndentedString(outrasInfosServico) + "\n" +
-                "    outrasPartesInteressadas: " + toIndentedString(outrasPartesInteressadas) + "\n" +
-                "    paisAgenteDeCargaConsolidadorEstrang: " + toIndentedString(paisAgenteDeCargaConsolidadorEstrang) + "\n" +
-                "    paisConsignatarioConhecimento: " + toIndentedString(paisConsignatarioConhecimento) + "\n" +
-                "    paisEmbarcadorEstrangeiro: " + toIndentedString(paisEmbarcadorEstrangeiro) + "\n" +
-                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
-                "    pesoBrutoConhecimento: " + toIndentedString(pesoBrutoConhecimento) + "\n" +
-                "    quantidadeVolumesConhecimento: " + toIndentedString(quantidadeVolumesConhecimento) + "\n" +
-                "    razaoSocialDocumentoConsignatario: " + toIndentedString(razaoSocialDocumentoConsignatario) + "\n" +
-                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
-                "    recintoAduaneiroDestino: " + toIndentedString(recintoAduaneiroDestino) + "\n" +
-                "    ruc: " + toIndentedString(ruc) + "\n" +
-                "    situacao: " + toIndentedString(situacao) + "\n" +
-                "    solicitacoesServicosEspeciais: " + toIndentedString(solicitacoesServicosEspeciais) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    tipoDocumentoConsignatario: " + toIndentedString(tipoDocumentoConsignatario) + "\n" +
-                "    viagensAssociadas: " + toIndentedString(viagensAssociadas) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Nome do consignatário no conhecimento de carga&lt;br/&gt;Tamanho máximo: 70
+     *
+     * @return nomeConsignatarioConhecimento
+     **/
+    @JsonProperty("nomeConsignatarioConhecimento")
+    public String getNomeConsignatarioConhecimento() {
+        return nomeConsignatarioConhecimento;
     }
 
-    @XmlType(name = "CategoriaCargaEnum")
-    @XmlEnum(String.class)
-    public enum CategoriaCargaEnum {
-
-        @XmlEnumValue("I")
-        @JsonProperty("I")
-        I("I"),
-
-        @XmlEnumValue("E")
-        @JsonProperty("E")
-        E("E"),
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        CategoriaCargaEnum(String v) {
-            value = v;
-        }
-
-        public static CategoriaCargaEnum fromValue(String v) {
-            for (CategoriaCargaEnum b : CategoriaCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoriaCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setNomeConsignatarioConhecimento(String nomeConsignatarioConhecimento) {
+        this.nomeConsignatarioConhecimento = nomeConsignatarioConhecimento;
     }
 
-    @XmlType(name = "IndicadorNaoRecepcaoHawbAssociadosEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorNaoRecepcaoHawbAssociadosEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        IndicadorNaoRecepcaoHawbAssociadosEnum(String v) {
-            value = v;
-        }
-
-        public static IndicadorNaoRecepcaoHawbAssociadosEnum fromValue(String v) {
-            for (IndicadorNaoRecepcaoHawbAssociadosEnum b : IndicadorNaoRecepcaoHawbAssociadosEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorNaoRecepcaoHawbAssociadosEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public ConhecimentoConsultaDetalhada nomeConsignatarioConhecimento(String nomeConsignatarioConhecimento) {
+        this.nomeConsignatarioConhecimento = nomeConsignatarioConhecimento;
+        return this;
     }
 
-    @XmlType(name = "IndicadorPartesMadeiraEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorPartesMadeiraEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        IndicadorPartesMadeiraEnum(String v) {
-            value = v;
-        }
-
-        public static IndicadorPartesMadeiraEnum fromValue(String v) {
-            for (IndicadorPartesMadeiraEnum b : IndicadorPartesMadeiraEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorPartesMadeiraEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Nome do consignatário no documento&lt;br/&gt;Tamanho máximo: 70
+     *
+     * @return nomeDocumentoConsignatario
+     **/
+    @JsonProperty("nomeDocumentoConsignatario")
+    public String getNomeDocumentoConsignatario() {
+        return nomeDocumentoConsignatario;
     }
 
-    @XmlType(name = "SituacaoEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoEnum {
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A"),
-
-        @XmlEnumValue("E")
-        @JsonProperty("E")
-        E("E");
-
-
-        private final String value;
-
-        SituacaoEnum(String v) {
-            value = v;
-        }
-
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setNomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
+        this.nomeDocumentoConsignatario = nomeDocumentoConsignatario;
     }
 
     public ConhecimentoConsultaDetalhada nomeDocumentoConsignatario(String nomeDocumentoConsignatario) {
@@ -1537,7 +1553,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista das partes interessadas.
-     *
      * @return outrasPartesInteressadas
      **/
     @JsonProperty("outrasPartesInteressadas")
@@ -1615,7 +1630,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as partes da carga&lt;br/&gt;
-     *
      * @return partesEstoque
      **/
     @JsonProperty("partesEstoque")
@@ -1773,7 +1787,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as solicitações de serviços especiaos para a carga / Dsic&lt;br/&gt;
-     *
      * @return solicitacoesServicosEspeciais
      **/
     @JsonProperty("solicitacoesServicosEspeciais")
@@ -1797,7 +1810,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Tipo de carga.
-     *
      * @return tipo
      **/
     @JsonProperty("tipo")
@@ -1841,7 +1853,6 @@ public class ConhecimentoConsultaDetalhada {
 
     /**
      * Lista contendo as viagens as quais a carga / Dsic está associada&lt;br/&gt;
-     *
      * @return viagensAssociadas
      **/
     @JsonProperty("viagensAssociadas")
@@ -1864,87 +1875,80 @@ public class ConhecimentoConsultaDetalhada {
     }
 
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("AWB")
-        @JsonProperty("AWB")
-        AWB("AWB"),
-
-        @XmlEnumValue("DSIC")
-        @JsonProperty("DSIC")
-        DSIC("DSIC"),
-
-        @XmlEnumValue("HAWB ou MAWB")
-        @JsonProperty("HAWB ou MAWB")
-        HAWB_OU_MAWB("HAWB ou MAWB");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class ConhecimentoConsultaDetalhada {\n" +
+                "    bloqueiosAtivos: " + toIndentedString(bloqueiosAtivos) + "\n" +
+                "    bloqueiosBaixados: " + toIndentedString(bloqueiosBaixados) + "\n" +
+                "    caixaPostalAgenteDeCargaConsolidadorEstrang: " + toIndentedString(caixaPostalAgenteDeCargaConsolidadorEstrang) + "\n" +
+                "    caixaPostalConsignatarioConhecimento: " + toIndentedString(caixaPostalConsignatarioConhecimento) + "\n" +
+                "    caixaPostalEmbarcadorEstrangeiro: " + toIndentedString(caixaPostalEmbarcadorEstrangeiro) + "\n" +
+                "    categoriaCarga: " + toIndentedString(categoriaCarga) + "\n" +
+                "    chegadasTerrestres: " + toIndentedString(chegadasTerrestres) + "\n" +
+                "    cidadeAgenteDeCargaConsolidadorEstrang: " + toIndentedString(cidadeAgenteDeCargaConsolidadorEstrang) + "\n" +
+                "    cidadeConsignatarioConhecimento: " + toIndentedString(cidadeConsignatarioConhecimento) + "\n" +
+                "    cidadeEmbarcadorEstrangeiro: " + toIndentedString(cidadeEmbarcadorEstrangeiro) + "\n" +
+                "    cnpjResponsavelArquivo: " + toIndentedString(cnpjResponsavelArquivo) + "\n" +
+                "    codigoAeroportoDestinoConhecimento: " + toIndentedString(codigoAeroportoDestinoConhecimento) + "\n" +
+                "    codigoAeroportoOrigemConhecimento: " + toIndentedString(codigoAeroportoOrigemConhecimento) + "\n" +
+                "    contatosAgenteDeCargaConsolidadorEstrang: " + toIndentedString(contatosAgenteDeCargaConsolidadorEstrang) + "\n" +
+                "    contatosConsignatarioConhecimento: " + toIndentedString(contatosConsignatarioConhecimento) + "\n" +
+                "    contatosEmbarcadorEstrangeiro: " + toIndentedString(contatosEmbarcadorEstrangeiro) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    dataHoraAssinaturaTransportador: " + toIndentedString(dataHoraAssinaturaTransportador) + "\n" +
+                "    descricaoResumida: " + toIndentedString(descricaoResumida) + "\n" +
+                "    divergencias: " + toIndentedString(divergencias) + "\n" +
+                "    documentosSaida: " + toIndentedString(documentosSaida) + "\n" +
+                "    dsicsApropriados: " + toIndentedString(dsicsApropriados) + "\n" +
+                "    enderecoAgenteDeCargaConsolidadorEstrang: " + toIndentedString(enderecoAgenteDeCargaConsolidadorEstrang) + "\n" +
+                "    enderecoConsignatarioConhecimento: " + toIndentedString(enderecoConsignatarioConhecimento) + "\n" +
+                "    enderecoEmbarcadorEstrangeiro: " + toIndentedString(enderecoEmbarcadorEstrangeiro) + "\n" +
+                "    frete: " + toIndentedString(frete) + "\n" +
+                "    hawbAssociados: " + toIndentedString(hawbAssociados) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    identificacaoDocumentoConsignatario: " + toIndentedString(identificacaoDocumentoConsignatario) + "\n" +
+                "    indicadorNaoRecepcaoHawbAssociados: " + toIndentedString(indicadorNaoRecepcaoHawbAssociados) + "\n" +
+                "    indicadorPartesMadeira: " + toIndentedString(indicadorPartesMadeira) + "\n" +
+                "    itensCarga: " + toIndentedString(itensCarga) + "\n" +
+                "    localAssinaturaTransportador: " + toIndentedString(localAssinaturaTransportador) + "\n" +
+                "    manuseiosEspeciais: " + toIndentedString(manuseiosEspeciais) + "\n" +
+                "    mawbAwbAssociados: " + toIndentedString(mawbAwbAssociados) + "\n" +
+                "    nomeAgenteDeCargaConsolidadorEstrang: " + toIndentedString(nomeAgenteDeCargaConsolidadorEstrang) + "\n" +
+                "    nomeAssinaturaEmbarcadorEstrangeiro: " + toIndentedString(nomeAssinaturaEmbarcadorEstrangeiro) + "\n" +
+                "    nomeAssinaturaTransportador: " + toIndentedString(nomeAssinaturaTransportador) + "\n" +
+                "    nomeConsignatarioConhecimento: " + toIndentedString(nomeConsignatarioConhecimento) + "\n" +
+                "    nomeDocumentoConsignatario: " + toIndentedString(nomeDocumentoConsignatario) + "\n" +
+                "    nomeEmbarcadorEstrangeiro: " + toIndentedString(nomeEmbarcadorEstrangeiro) + "\n" +
+                "    outrasInfosServico: " + toIndentedString(outrasInfosServico) + "\n" +
+                "    outrasPartesInteressadas: " + toIndentedString(outrasPartesInteressadas) + "\n" +
+                "    paisAgenteDeCargaConsolidadorEstrang: " + toIndentedString(paisAgenteDeCargaConsolidadorEstrang) + "\n" +
+                "    paisConsignatarioConhecimento: " + toIndentedString(paisConsignatarioConhecimento) + "\n" +
+                "    paisEmbarcadorEstrangeiro: " + toIndentedString(paisEmbarcadorEstrangeiro) + "\n" +
+                "    partesEstoque: " + toIndentedString(partesEstoque) + "\n" +
+                "    pesoBrutoConhecimento: " + toIndentedString(pesoBrutoConhecimento) + "\n" +
+                "    quantidadeVolumesConhecimento: " + toIndentedString(quantidadeVolumesConhecimento) + "\n" +
+                "    razaoSocialDocumentoConsignatario: " + toIndentedString(razaoSocialDocumentoConsignatario) + "\n" +
+                "    recepcoesComAvarias: " + toIndentedString(recepcoesComAvarias) + "\n" +
+                "    recintoAduaneiroDestino: " + toIndentedString(recintoAduaneiroDestino) + "\n" +
+                "    ruc: " + toIndentedString(ruc) + "\n" +
+                "    situacao: " + toIndentedString(situacao) + "\n" +
+                "    solicitacoesServicosEspeciais: " + toIndentedString(solicitacoesServicosEspeciais) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    tipoDocumentoConsignatario: " + toIndentedString(tipoDocumentoConsignatario) + "\n" +
+                "    viagensAssociadas: " + toIndentedString(viagensAssociadas) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoDocumentoConsignatarioEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoConsignatarioEnum {
-
-        @XmlEnumValue("CPF")
-        @JsonProperty("CPF")
-        CPF("CPF"),
-
-        @XmlEnumValue("CNPJ")
-        @JsonProperty("CNPJ")
-        CNPJ("CNPJ"),
-
-        @XmlEnumValue("PASSAPORTE")
-        @JsonProperty("PASSAPORTE")
-        PASSAPORTE("PASSAPORTE");
-
-
-        private final String value;
-
-        TipoDocumentoConsignatarioEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDocumentoConsignatarioEnum fromValue(String v) {
-            for (TipoDocumentoConsignatarioEnum b : TipoDocumentoConsignatarioEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoConsignatarioEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

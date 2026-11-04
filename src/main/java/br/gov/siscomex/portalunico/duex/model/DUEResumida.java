@@ -198,15 +198,9 @@ public class DUEResumida {
         this.dataSituacaoDUE = dataSituacaoDUE;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DUEResumida dataSituacaoDUE(String dataSituacaoDUE) {
+        this.dataSituacaoDUE = dataSituacaoDUE;
+        return this;
     }
 
     /**
@@ -266,8 +260,8 @@ public class DUEResumida {
         this.indicadorBloqueio = indicadorBloqueio;
     }
 
-    public DUEResumida dataSituacaoDUE(String dataSituacaoDUE) {
-        this.dataSituacaoDUE = dataSituacaoDUE;
+    public DUEResumida indicadorBloqueio(Integer indicadorBloqueio) {
+        this.indicadorBloqueio = indicadorBloqueio;
         return this;
     }
 
@@ -358,8 +352,8 @@ public class DUEResumida {
         this.responsavelUADespacho = responsavelUADespacho;
     }
 
-    public DUEResumida indicadorBloqueio(Integer indicadorBloqueio) {
-        this.indicadorBloqueio = indicadorBloqueio;
+    public DUEResumida responsavelUADespacho(String responsavelUADespacho) {
+        this.responsavelUADespacho = responsavelUADespacho;
         return this;
     }
 
@@ -417,8 +411,8 @@ public class DUEResumida {
         this.uaDespacho = uaDespacho;
     }
 
-    public DUEResumida responsavelUADespacho(String responsavelUADespacho) {
-        this.responsavelUADespacho = responsavelUADespacho;
+    public DUEResumida uaDespacho(String uaDespacho) {
+        this.uaDespacho = uaDespacho;
         return this;
     }
 
@@ -440,10 +434,6 @@ public class DUEResumida {
         return this;
     }
 
-    public DUEResumida uaDespacho(String uaDespacho) {
-        this.uaDespacho = uaDespacho;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -467,5 +457,16 @@ public class DUEResumida {
                 "    uaEmbarque: " + toIndentedString(uaEmbarque) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

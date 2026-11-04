@@ -60,15 +60,9 @@ public class RespostaApiDiagnosticoRegistro {
         this.message = message;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RespostaApiDiagnosticoRegistro message(String message) {
+        this.message = message;
+        return this;
     }
 
     /**
@@ -104,8 +98,8 @@ public class RespostaApiDiagnosticoRegistro {
         this.situacao = situacao;
     }
 
-    public RespostaApiDiagnosticoRegistro message(String message) {
-        this.message = message;
+    public RespostaApiDiagnosticoRegistro situacao(String situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -133,10 +127,6 @@ public class RespostaApiDiagnosticoRegistro {
         return this;
     }
 
-    public RespostaApiDiagnosticoRegistro situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -148,5 +138,16 @@ public class RespostaApiDiagnosticoRegistro {
                 "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

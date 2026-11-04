@@ -73,15 +73,9 @@ public class Mercadoria {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Mercadoria descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -117,8 +111,8 @@ public class Mercadoria {
         this.pesoKg = pesoKg;
     }
 
-    public Mercadoria descricao(String descricao) {
-        this.descricao = descricao;
+    public Mercadoria pesoKg(BigDecimal pesoKg) {
+        this.pesoKg = pesoKg;
         return this;
     }
 
@@ -161,10 +155,6 @@ public class Mercadoria {
         return this;
     }
 
-    public Mercadoria pesoKg(BigDecimal pesoKg) {
-        this.pesoKg = pesoKg;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -177,5 +167,16 @@ public class Mercadoria {
                 "    sequencial: " + toIndentedString(sequencial) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

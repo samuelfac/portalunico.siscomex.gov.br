@@ -64,12 +64,119 @@ public class DocumentoSaidaConsultaDetalhada {
     private String situacaoDuimp = null;
 
 
-    @XmlElement(name = "versaoDuimp")
-    @ApiModelProperty(value = "Versão da Duimp")
-    /**
-     * Versão da Duimp
-     **/
-    private Integer versaoDuimp = null;
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("10")
+        @JsonProperty("10")
+        _10("10"),
+
+        @XmlEnumValue("11")
+        @JsonProperty("11")
+        _11("11"),
+
+        @XmlEnumValue("12")
+        @JsonProperty("12")
+        _12("12"),
+
+        @XmlEnumValue("20")
+        @JsonProperty("20")
+        _20("20"),
+
+        @XmlEnumValue("21")
+        @JsonProperty("21")
+        _21("21"),
+
+        @XmlEnumValue("22")
+        @JsonProperty("22")
+        _22("22"),
+
+        @XmlEnumValue("23")
+        @JsonProperty("23")
+        _23("23"),
+
+        @XmlEnumValue("24")
+        @JsonProperty("24")
+        _24("24"),
+
+        @XmlEnumValue("30")
+        @JsonProperty("30")
+        _30("30"),
+
+        @XmlEnumValue("21")
+        @JsonProperty("21")
+        _21_9("21"),
+
+        @XmlEnumValue("32")
+        @JsonProperty("32")
+        _32("32"),
+
+        @XmlEnumValue("33")
+        @JsonProperty("33")
+        _33("33"),
+
+        @XmlEnumValue("34")
+        @JsonProperty("34")
+        _34("34"),
+
+        @XmlEnumValue("35")
+        @JsonProperty("35")
+        _35("35"),
+
+        @XmlEnumValue("36")
+        @JsonProperty("36")
+        _36("36"),
+
+        @XmlEnumValue("37")
+        @JsonProperty("37")
+        _37("37"),
+
+        @XmlEnumValue("38")
+        @JsonProperty("38")
+        _38("38"),
+
+        @XmlEnumValue("39")
+        @JsonProperty("39")
+        _39("39"),
+
+        @XmlEnumValue("40")
+        @JsonProperty("40")
+        _40("40"),
+
+        @XmlEnumValue("50")
+        @JsonProperty("50")
+        _50("50"),
+
+        @XmlEnumValue("99")
+        @JsonProperty("99")
+        _99("99");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+    }
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(example = "20", value = "Tipo de documento de saída<p>Os documentos podem ser:</p>10 – DI<br/>11 – Processo Digital/Processo Dossiê<br/>12 – E-DMOV<br/>20 – Outros<br/>21 – PMB<br/>22 – PDE/TR<br/>23 – DSI Eletrônica<br/>24 – DSI Formulário<br/>30 – DTA - Entrada comum<br/>31 – DTA - Entrada especial - bagagem desacompanhada<br/>32 – DTA - Entrada especial - mala diplomática<br/>33 – DTA - Entrada especial - urna funerária<br/>34 – DTA - Entrada especial - outras<br/>35 – DTA - Passagem comum<br/>36 – DTA - Passagem especial - bagagem desacompanhada<br/>37 – DTA - Passagem especial - mala diplomática<br/>38 – DTA - Passagem especial - partes e peças<br/>39 – DTA - Passagem especial - urna funerária<br/>40 – DTA - Passagem especial - outras<br/>50 – DTI<br/>99 – DUIMP<br/>")
@@ -93,16 +200,12 @@ public class DocumentoSaidaConsultaDetalhada {
      **/
     private BigDecimal valorTotalMercadoriaLocalDescarga = null;
 
+    @XmlElement(name = "versaoDuimp")
+    @ApiModelProperty(value = "Versão da Duimp")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Versão da Duimp
+     **/
+    private Integer versaoDuimp = null;
 
     /**
      * Tipo de canal em que caiu a Duimp
@@ -296,6 +399,7 @@ public class DocumentoSaidaConsultaDetalhada {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -314,117 +418,14 @@ public class DocumentoSaidaConsultaDetalhada {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("10")
-        @JsonProperty("10")
-        _10("10"),
-
-        @XmlEnumValue("11")
-        @JsonProperty("11")
-        _11("11"),
-
-        @XmlEnumValue("12")
-        @JsonProperty("12")
-        _12("12"),
-
-        @XmlEnumValue("20")
-        @JsonProperty("20")
-        _20("20"),
-
-        @XmlEnumValue("21")
-        @JsonProperty("21")
-        _21("21"),
-
-        @XmlEnumValue("22")
-        @JsonProperty("22")
-        _22("22"),
-
-        @XmlEnumValue("23")
-        @JsonProperty("23")
-        _23("23"),
-
-        @XmlEnumValue("24")
-        @JsonProperty("24")
-        _24("24"),
-
-        @XmlEnumValue("30")
-        @JsonProperty("30")
-        _30("30"),
-
-        @XmlEnumValue("21")
-        @JsonProperty("21")
-        _21_9("21"),
-
-        @XmlEnumValue("32")
-        @JsonProperty("32")
-        _32("32"),
-
-        @XmlEnumValue("33")
-        @JsonProperty("33")
-        _33("33"),
-
-        @XmlEnumValue("34")
-        @JsonProperty("34")
-        _34("34"),
-
-        @XmlEnumValue("35")
-        @JsonProperty("35")
-        _35("35"),
-
-        @XmlEnumValue("36")
-        @JsonProperty("36")
-        _36("36"),
-
-        @XmlEnumValue("37")
-        @JsonProperty("37")
-        _37("37"),
-
-        @XmlEnumValue("38")
-        @JsonProperty("38")
-        _38("38"),
-
-        @XmlEnumValue("39")
-        @JsonProperty("39")
-        _39("39"),
-
-        @XmlEnumValue("40")
-        @JsonProperty("40")
-        _40("40"),
-
-        @XmlEnumValue("50")
-        @JsonProperty("50")
-        _50("50"),
-
-        @XmlEnumValue("99")
-        @JsonProperty("99")
-        _99("99");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

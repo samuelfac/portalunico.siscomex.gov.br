@@ -72,12 +72,55 @@ public class EntregaIntermediaria {
     private String identificacaoCarga = null;
 
 
-    @XmlElement(name = "recintoAduaneiro")
-    @ApiModelProperty(example = "7911101", value = "Recinto Aduaneiro do Depositário responsável pela entrega intermediária.<br/>Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.")
-    /**
-     * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.<br/>Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
-     **/
-    private String recintoAduaneiro = null;
+    @XmlType(name = "MotivoEntregaIntermediariaEnum")
+    @XmlEnum(String.class)
+    public enum MotivoEntregaIntermediariaEnum {
+
+        @XmlEnumValue("TRANSITO_INTERNACIONAL")
+        @JsonProperty("TRANSITO_INTERNACIONAL")
+        TRANSITO_INTERNACIONAL("TRANSITO_INTERNACIONAL"),
+
+        @XmlEnumValue("TRANSITO_NACIONAL")
+        @JsonProperty("TRANSITO_NACIONAL")
+        TRANSITO_NACIONAL("TRANSITO_NACIONAL"),
+
+        @XmlEnumValue("REMESSA_POSTAL")
+        @JsonProperty("REMESSA_POSTAL")
+        REMESSA_POSTAL("REMESSA_POSTAL"),
+
+        @XmlEnumValue("REMESSA_EXPRESSA")
+        @JsonProperty("REMESSA_EXPRESSA")
+        REMESSA_EXPRESSA("REMESSA_EXPRESSA"),
+
+        @XmlEnumValue("OUTROS")
+        @JsonProperty("OUTROS")
+        OUTROS("OUTROS");
+
+
+        private final String value;
+
+        MotivoEntregaIntermediariaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static MotivoEntregaIntermediariaEnum fromValue(String v) {
+            for (MotivoEntregaIntermediariaEnum b : MotivoEntregaIntermediariaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to MotivoEntregaIntermediariaEnum");
+        }
+    }
 
     @XmlElement(name = "motivoEntregaIntermediaria", required = true)
     @ApiModelProperty(example = "TRANSITO_INTERNACIONAL", required = true, value = "Motivo da entrega intermediária.<br/>Na entrega intermediária entre depositário e transportador terrestre, os motivos escolhidos são obrigatoriamente TRANSITO_INTERNACIONAL ou TRANSITO_NACIONAL.")
@@ -107,22 +150,63 @@ public class EntregaIntermediaria {
      * Peso em Kg<br/>Tamanho: 7,3<br/>Formato: Decimal, com até 3 casas decimais separadas por ponto.
      **/
     private BigDecimal pesoEntrega = null;
-    @XmlElement(name = "unidadeRFB", required = true)
-    @ApiModelProperty(example = "0717700", required = true, value = "Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>")
-    /**
-     * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>
-     **/
-    private String unidadeRFB = null;
 
+    @XmlElement(name = "recintoAduaneiro")
+    @ApiModelProperty(example = "7911101", value = "Recinto Aduaneiro do Depositário responsável pela entrega intermediária.<br/>Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+     * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.<br/>Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
+     **/
+    private String recintoAduaneiro = null;
+
+
+    @XmlType(name = "TipoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoCargaEnum {
+
+        @XmlEnumValue("740")
+        @JsonProperty("740")
+        _740("740"),
+
+        @XmlEnumValue("741")
+        @JsonProperty("741")
+        _741("741"),
+
+        @XmlEnumValue("703")
+        @JsonProperty("703")
+        _703("703"),
+
+        @XmlEnumValue("14")
+        @JsonProperty("14")
+        _14("14"),
+
+        @XmlEnumValue("13")
+        @JsonProperty("13")
+        _13("13");
+
+
+        private final String value;
+
+        TipoCargaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoCargaEnum fromValue(String v) {
+            for (TipoCargaEnum b : TipoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+        }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
+        }
     }
 
     @XmlElement(name = "tipoCarga", required = true)
@@ -132,14 +216,79 @@ public class EntregaIntermediaria {
      **/
     private TipoCargaEnum tipoCarga = null;
 
-    /**
-     * Detalhe do motivo da entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o motivo OUTROS e não deve ser informado para os demais motivos.&lt;br/&gt;Tamanho máximo: 1000
-     *
-     * @return detalheMotivo
-     **/
-    @JsonProperty("detalheMotivo")
-    public String getDetalheMotivo() {
-        return detalheMotivo;
+
+    @XmlType(name = "TipoDTAEnum")
+    @XmlEnum(String.class)
+    public enum TipoDTAEnum {
+
+        @XmlEnumValue("30")
+        @JsonProperty("30")
+        _30("30"),
+
+        @XmlEnumValue("31")
+        @JsonProperty("31")
+        _31("31"),
+
+        @XmlEnumValue("32")
+        @JsonProperty("32")
+        _32("32"),
+
+        @XmlEnumValue("33")
+        @JsonProperty("33")
+        _33("33"),
+
+        @XmlEnumValue("34")
+        @JsonProperty("34")
+        _34("34"),
+
+        @XmlEnumValue("35")
+        @JsonProperty("35")
+        _35("35"),
+
+        @XmlEnumValue("36")
+        @JsonProperty("36")
+        _36("36"),
+
+        @XmlEnumValue("37")
+        @JsonProperty("37")
+        _37("37"),
+
+        @XmlEnumValue("38")
+        @JsonProperty("38")
+        _38("38"),
+
+        @XmlEnumValue("39")
+        @JsonProperty("39")
+        _39("39"),
+
+        @XmlEnumValue("40")
+        @JsonProperty("40")
+        _40("40");
+
+
+        private final String value;
+
+        TipoDTAEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDTAEnum fromValue(String v) {
+            for (TipoDTAEnum b : TipoDTAEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDTAEnum");
+        }
     }
 
     @XmlElement(name = "tipoDTA")
@@ -149,8 +298,51 @@ public class EntregaIntermediaria {
      **/
     private TipoDTAEnum tipoDTA = null;
 
-    public void setDetalheMotivo(String detalheMotivo) {
-        this.detalheMotivo = detalheMotivo;
+
+    @XmlType(name = "TipoRecebedorEnum")
+    @XmlEnum(String.class)
+    public enum TipoRecebedorEnum {
+
+        @XmlEnumValue("CIA_AEREA")
+        @JsonProperty("CIA_AEREA")
+        CIA_AEREA("CIA_AEREA"),
+
+        @XmlEnumValue("DEPOSITARIO")
+        @JsonProperty("DEPOSITARIO")
+        DEPOSITARIO("DEPOSITARIO"),
+
+        @XmlEnumValue("TRANSPORTADOR_TERRESTRE")
+        @JsonProperty("TRANSPORTADOR_TERRESTRE")
+        TRANSPORTADOR_TERRESTRE("TRANSPORTADOR_TERRESTRE"),
+
+        @XmlEnumValue("OPERADOR_REMESSA_POSTAL")
+        @JsonProperty("OPERADOR_REMESSA_POSTAL")
+        OPERADOR_REMESSA_POSTAL("OPERADOR_REMESSA_POSTAL");
+
+
+        private final String value;
+
+        TipoRecebedorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoRecebedorEnum fromValue(String v) {
+            for (TipoRecebedorEnum b : TipoRecebedorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoRecebedorEnum");
+        }
     }
 
     @XmlElement(name = "tipoRecebedor", required = true)
@@ -160,10 +352,12 @@ public class EntregaIntermediaria {
      **/
     private TipoRecebedorEnum tipoRecebedor = null;
 
-    public EntregaIntermediaria detalheMotivo(String detalheMotivo) {
-        this.detalheMotivo = detalheMotivo;
-        return this;
-    }
+    @XmlElement(name = "unidadeRFB", required = true)
+    @ApiModelProperty(example = "0717700", required = true, value = "Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>")
+    /**
+     * Unidade da RFB da Cia. Aérea ou Depositário responsável pela entrega intermediária<br/>
+     **/
+    private String unidadeRFB = null;
 
     @XmlElement(name = "volumeEntrega", required = true)
     @ApiModelProperty(example = "5", required = true, value = "Quantidade de volumes<br/>Tamanho: 4<br/>Formato: Inteiro, com até 4 digitos")
@@ -272,6 +466,25 @@ public class EntregaIntermediaria {
     }
 
     /**
+     * Detalhe do motivo da entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o motivo OUTROS e não deve ser informado para os demais motivos.&lt;br/&gt;Tamanho máximo: 1000
+     *
+     * @return detalheMotivo
+     **/
+    @JsonProperty("detalheMotivo")
+    public String getDetalheMotivo() {
+        return detalheMotivo;
+    }
+
+    public void setDetalheMotivo(String detalheMotivo) {
+        this.detalheMotivo = detalheMotivo;
+    }
+
+    public EntregaIntermediaria detalheMotivo(String detalheMotivo) {
+        this.detalheMotivo = detalheMotivo;
+        return this;
+    }
+
+    /**
      * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
      *
      * @return identificacaoCarga
@@ -288,25 +501,6 @@ public class EntregaIntermediaria {
 
     public EntregaIntermediaria identificacaoCarga(String identificacaoCarga) {
         this.identificacaoCarga = identificacaoCarga;
-        return this;
-    }
-
-    /**
-     * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
-     *
-     * @return recintoAduaneiro
-     **/
-    @JsonProperty("recintoAduaneiro")
-    public String getRecintoAduaneiro() {
-        return recintoAduaneiro;
-    }
-
-    public void setRecintoAduaneiro(String recintoAduaneiro) {
-        this.recintoAduaneiro = recintoAduaneiro;
-    }
-
-    public EntregaIntermediaria recintoAduaneiro(String recintoAduaneiro) {
-        this.recintoAduaneiro = recintoAduaneiro;
         return this;
     }
 
@@ -389,22 +583,20 @@ public class EntregaIntermediaria {
     }
 
     /**
-     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
-     *
-     * @return volumeEntrega
+     * Recinto Aduaneiro do Depositário responsável pela entrega intermediária.&lt;br/&gt;Este campo é obrigatório para o Depositário e não deve ser informado pelos demais intervenientes.
+     * @return recintoAduaneiro
      **/
-    @JsonProperty("volumeEntrega")
-    @NotNull
-    public Long getVolumeEntrega() {
-        return volumeEntrega;
+    @JsonProperty("recintoAduaneiro")
+    public String getRecintoAduaneiro() {
+        return recintoAduaneiro;
     }
 
-    public void setVolumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
+    public void setRecintoAduaneiro(String recintoAduaneiro) {
+        this.recintoAduaneiro = recintoAduaneiro;
     }
 
-    public EntregaIntermediaria volumeEntrega(Long volumeEntrega) {
-        this.volumeEntrega = volumeEntrega;
+    public EntregaIntermediaria recintoAduaneiro(String recintoAduaneiro) {
+        this.recintoAduaneiro = recintoAduaneiro;
         return this;
     }
 
@@ -495,6 +687,27 @@ public class EntregaIntermediaria {
         return this;
     }
 
+    /**
+     * Quantidade de volumes&lt;br/&gt;Tamanho: 4&lt;br/&gt;Formato: Inteiro, com até 4 digitos
+     *
+     * @return volumeEntrega
+     **/
+    @JsonProperty("volumeEntrega")
+    @NotNull
+    public Long getVolumeEntrega() {
+        return volumeEntrega;
+    }
+
+    public void setVolumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
+    }
+
+    public EntregaIntermediaria volumeEntrega(Long volumeEntrega) {
+        this.volumeEntrega = volumeEntrega;
+        return this;
+    }
+
+
     @Override
     public String toString() {
 
@@ -520,224 +733,14 @@ public class EntregaIntermediaria {
         return sb;
     }
 
-    @XmlType(name = "MotivoEntregaIntermediariaEnum")
-    @XmlEnum(String.class)
-    public enum MotivoEntregaIntermediariaEnum {
-
-        @XmlEnumValue("TRANSITO_INTERNACIONAL")
-        @JsonProperty("TRANSITO_INTERNACIONAL")
-        TRANSITO_INTERNACIONAL("TRANSITO_INTERNACIONAL"),
-
-        @XmlEnumValue("TRANSITO_NACIONAL")
-        @JsonProperty("TRANSITO_NACIONAL")
-        TRANSITO_NACIONAL("TRANSITO_NACIONAL"),
-
-        @XmlEnumValue("REMESSA_POSTAL")
-        @JsonProperty("REMESSA_POSTAL")
-        REMESSA_POSTAL("REMESSA_POSTAL"),
-
-        @XmlEnumValue("REMESSA_EXPRESSA")
-        @JsonProperty("REMESSA_EXPRESSA")
-        REMESSA_EXPRESSA("REMESSA_EXPRESSA"),
-
-        @XmlEnumValue("OUTROS")
-        @JsonProperty("OUTROS")
-        OUTROS("OUTROS");
-
-
-        private final String value;
-
-        MotivoEntregaIntermediariaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static MotivoEntregaIntermediariaEnum fromValue(String v) {
-            for (MotivoEntregaIntermediariaEnum b : MotivoEntregaIntermediariaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to MotivoEntregaIntermediariaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoCargaEnum {
-
-        @XmlEnumValue("740")
-        @JsonProperty("740")
-        _740("740"),
-
-        @XmlEnumValue("741")
-        @JsonProperty("741")
-        _741("741"),
-
-        @XmlEnumValue("703")
-        @JsonProperty("703")
-        _703("703"),
-
-        @XmlEnumValue("14")
-        @JsonProperty("14")
-        _14("14"),
-
-        @XmlEnumValue("13")
-        @JsonProperty("13")
-        _13("13");
-
-
-        private final String value;
-
-        TipoCargaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoCargaEnum fromValue(String v) {
-            for (TipoCargaEnum b : TipoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-
-    @XmlType(name = "TipoDTAEnum")
-    @XmlEnum(String.class)
-    public enum TipoDTAEnum {
-
-        @XmlEnumValue("30")
-        @JsonProperty("30")
-        _30("30"),
-
-        @XmlEnumValue("31")
-        @JsonProperty("31")
-        _31("31"),
-
-        @XmlEnumValue("32")
-        @JsonProperty("32")
-        _32("32"),
-
-        @XmlEnumValue("33")
-        @JsonProperty("33")
-        _33("33"),
-
-        @XmlEnumValue("34")
-        @JsonProperty("34")
-        _34("34"),
-
-        @XmlEnumValue("35")
-        @JsonProperty("35")
-        _35("35"),
-
-        @XmlEnumValue("36")
-        @JsonProperty("36")
-        _36("36"),
-
-        @XmlEnumValue("37")
-        @JsonProperty("37")
-        _37("37"),
-
-        @XmlEnumValue("38")
-        @JsonProperty("38")
-        _38("38"),
-
-        @XmlEnumValue("39")
-        @JsonProperty("39")
-        _39("39"),
-
-        @XmlEnumValue("40")
-        @JsonProperty("40")
-        _40("40");
-
-
-        private final String value;
-
-        TipoDTAEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDTAEnum fromValue(String v) {
-            for (TipoDTAEnum b : TipoDTAEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDTAEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoRecebedorEnum")
-    @XmlEnum(String.class)
-    public enum TipoRecebedorEnum {
-
-        @XmlEnumValue("CIA_AEREA")
-        @JsonProperty("CIA_AEREA")
-        CIA_AEREA("CIA_AEREA"),
-
-        @XmlEnumValue("DEPOSITARIO")
-        @JsonProperty("DEPOSITARIO")
-        DEPOSITARIO("DEPOSITARIO"),
-
-        @XmlEnumValue("TRANSPORTADOR_TERRESTRE")
-        @JsonProperty("TRANSPORTADOR_TERRESTRE")
-        TRANSPORTADOR_TERRESTRE("TRANSPORTADOR_TERRESTRE"),
-
-        @XmlEnumValue("OPERADOR_REMESSA_POSTAL")
-        @JsonProperty("OPERADOR_REMESSA_POSTAL")
-        OPERADOR_REMESSA_POSTAL("OPERADOR_REMESSA_POSTAL");
-
-
-        private final String value;
-
-        TipoRecebedorEnum(String v) {
-            value = v;
-        }
-
-        public static TipoRecebedorEnum fromValue(String v) {
-            for (TipoRecebedorEnum b : TipoRecebedorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoRecebedorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

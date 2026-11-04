@@ -81,24 +81,9 @@ public class InformaesDaRemessa {
     private Integer volumesRemessa = null;
 
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    public void setIndicadorOver(Integer indicadorOver) {
-        this.indicadorOver = indicadorOver;
-    }
-
-    /**
      * Indicador para sinalizar uma remessa over. &lt;br/&gt;Domínio:&lt;br/&gt;0 - Remessa manifestada &lt;br/&gt;1 - Remessa Over (apenas para remessa expressa).
      * minimum: 0
-     * maximum: 9223372036854775807
+     * maximum: Integer.MAX_VALUE
      *
      * @return indicadorOver
      **/
@@ -108,6 +93,15 @@ public class InformaesDaRemessa {
     @Max(Integer.MAX_VALUE)
     public Integer getIndicadorOver() {
         return indicadorOver;
+    }
+
+    public void setIndicadorOver(Integer indicadorOver) {
+        this.indicadorOver = indicadorOver;
+    }
+
+    public InformaesDaRemessa indicadorOver(Integer indicadorOver) {
+        this.indicadorOver = indicadorOver;
+        return this;
     }
 
     /**
@@ -125,8 +119,8 @@ public class InformaesDaRemessa {
         this.infoFiscalizacao = infoFiscalizacao;
     }
 
-    public InformaesDaRemessa indicadorOver(Integer indicadorOver) {
-        this.indicadorOver = indicadorOver;
+    public InformaesDaRemessa infoFiscalizacao(String infoFiscalizacao) {
+        this.infoFiscalizacao = infoFiscalizacao;
         return this;
     }
 
@@ -166,8 +160,8 @@ public class InformaesDaRemessa {
         this.numeroRemessa = numeroRemessa;
     }
 
-    public InformaesDaRemessa infoFiscalizacao(String infoFiscalizacao) {
-        this.infoFiscalizacao = infoFiscalizacao;
+    public InformaesDaRemessa numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
         return this;
     }
 
@@ -190,9 +184,18 @@ public class InformaesDaRemessa {
         return this;
     }
 
-    public InformaesDaRemessa numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
-        return this;
+    /**
+     * Especifica se a mercadoria necessita de tratamento administrativo, encaminhando a mesma para seleção do órgão desejado.&lt;br/&gt;1- Fiscalização ANVISA&lt;br/&gt;2 - Fiscalização VIGIAGRO/MAPA&lt;br/&gt;3 - Fiscalização RFB&lt;br/&gt;4 - Fiscalização VIGIAGRO/MAPA e Anvisa&lt;br/&gt;5 - Fiscalização VIGIAGRO/MAPA e RFB&lt;br/&gt;6 - Fiscalização Anvisa e RFB&lt;br/&gt;7 - Fiscalização VIGIAGRO/MAPA, Anvisa e RFB&lt;br/&gt;8 - Fiscalização IBAMA&lt;br/&gt;9 - Fiscalização IBAMA e ANVISA&lt;br/&gt;10 - Fiscalização IBAMA e VIGIAGRO/MAPA&lt;br/&gt;11 - Fiscalização IBAMA e RFB&lt;br/&gt;12 - Fiscalização IBAMA, VIGIAGRO/MAPA e ANVISA&lt;br/&gt;13 - Fiscalização IBAMA, VIGIAGRO/MAPA e RFB&lt;br/&gt;14 - Fiscalização IBAMA, ANVISA e RFB&lt;br/&gt;15 - Fiscalização IBAMA, ANVISA, VIGIAGRO/MAPA e RFB
+     * minimum: 0
+     * maximum: Integer.MAX_VALUE
+     *
+     * @return tratamentoAdm
+     **/
+    @JsonProperty("tratamentoAdm")
+    @Min(0)
+    @Max(Integer.MAX_VALUE)
+    public Integer getTratamentoAdm() {
+        return tratamentoAdm;
     }
 
     public void setTratamentoAdm(Integer tratamentoAdm) {
@@ -205,27 +208,9 @@ public class InformaesDaRemessa {
     }
 
     /**
-     * Especifica se a mercadoria necessita de tratamento administrativo, encaminhando a mesma para seleção do órgão desejado.&lt;br/&gt;1- Fiscalização ANVISA&lt;br/&gt;2 - Fiscalização VIGIAGRO/MAPA&lt;br/&gt;3 - Fiscalização RFB&lt;br/&gt;4 - Fiscalização VIGIAGRO/MAPA e Anvisa&lt;br/&gt;5 - Fiscalização VIGIAGRO/MAPA e RFB&lt;br/&gt;6 - Fiscalização Anvisa e RFB&lt;br/&gt;7 - Fiscalização VIGIAGRO/MAPA, Anvisa e RFB&lt;br/&gt;8 - Fiscalização IBAMA&lt;br/&gt;9 - Fiscalização IBAMA e ANVISA&lt;br/&gt;10 - Fiscalização IBAMA e VIGIAGRO/MAPA&lt;br/&gt;11 - Fiscalização IBAMA e RFB&lt;br/&gt;12 - Fiscalização IBAMA, VIGIAGRO/MAPA e ANVISA&lt;br/&gt;13 - Fiscalização IBAMA, VIGIAGRO/MAPA e RFB&lt;br/&gt;14 - Fiscalização IBAMA, ANVISA e RFB&lt;br/&gt;15 - Fiscalização IBAMA, ANVISA, VIGIAGRO/MAPA e RFB
-     * minimum: 0
-     * maximum: 9223372036854775807
-     *
-     * @return tratamentoAdm
-     **/
-    @JsonProperty("tratamentoAdm")
-    @Min(0)
-    @Max(Integer.MAX_VALUE)
-    public Integer getTratamentoAdm() {
-        return tratamentoAdm;
-    }
-
-    public void setVolumesRecebidos(Integer volumesRecebidos) {
-        this.volumesRecebidos = volumesRecebidos;
-    }
-
-    /**
      * Total de volumes recebidos da remessa. Máximo de 4 caracteres numéricos (0 até 9999).
      * minimum: 0
-     * maximum: 9223372036854775807
+     * maximum: Integer.MAX_VALUE
      *
      * @return volumesRecebidos
      **/
@@ -237,19 +222,19 @@ public class InformaesDaRemessa {
         return volumesRecebidos;
     }
 
+    public void setVolumesRecebidos(Integer volumesRecebidos) {
+        this.volumesRecebidos = volumesRecebidos;
+    }
+
     public InformaesDaRemessa volumesRecebidos(Integer volumesRecebidos) {
         this.volumesRecebidos = volumesRecebidos;
         return this;
     }
 
-    public void setVolumesRemessa(Integer volumesRemessa) {
-        this.volumesRemessa = volumesRemessa;
-    }
-
     /**
      * Quantidade de volumes da remessa. Para remessas over é a quantidade de volumes informados na primeira presença de carga.  Máximo de 4 caracteres numéricos (1 até 9999).
      * minimum: 0
-     * maximum: 9223372036854775807
+     * maximum: Integer.MAX_VALUE
      *
      * @return volumesRemessa
      **/
@@ -260,10 +245,15 @@ public class InformaesDaRemessa {
         return volumesRemessa;
     }
 
+    public void setVolumesRemessa(Integer volumesRemessa) {
+        this.volumesRemessa = volumesRemessa;
+    }
+
     public InformaesDaRemessa volumesRemessa(Integer volumesRemessa) {
         this.volumesRemessa = volumesRemessa;
         return this;
     }
+
 
     @Override
     public String toString() {
@@ -280,4 +270,15 @@ public class InformaesDaRemessa {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

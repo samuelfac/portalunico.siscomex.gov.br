@@ -101,15 +101,9 @@ public class CampoLpcoResponse {
         this.codigoAtributoPai = codigoAtributoPai;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CampoLpcoResponse codigoAtributoPai(String codigoAtributoPai) {
+        this.codigoAtributoPai = codigoAtributoPai;
+        return this;
     }
 
     /**
@@ -151,8 +145,8 @@ public class CampoLpcoResponse {
         this.valorComposto = valorComposto;
     }
 
-    public CampoLpcoResponse codigoAtributoPai(String codigoAtributoPai) {
-        this.codigoAtributoPai = codigoAtributoPai;
+    public CampoLpcoResponse valorComposto(ReferenciaValorComposto valorComposto) {
+        this.valorComposto = valorComposto;
         return this;
     }
 
@@ -199,10 +193,6 @@ public class CampoLpcoResponse {
         return this;
     }
 
-    public CampoLpcoResponse valorComposto(ReferenciaValorComposto valorComposto) {
-        this.valorComposto = valorComposto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -217,4 +207,15 @@ public class CampoLpcoResponse {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

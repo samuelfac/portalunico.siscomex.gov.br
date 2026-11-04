@@ -79,15 +79,9 @@ public class DadosClienteConteinerOuULD {
         this.cpfCliente = cpfCliente;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosClienteConteinerOuULD cpfCliente(String cpfCliente) {
+        this.cpfCliente = cpfCliente;
+        return this;
     }
 
     /**
@@ -129,10 +123,6 @@ public class DadosClienteConteinerOuULD {
         return this;
     }
 
-    public DadosClienteConteinerOuULD cpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -145,4 +135,15 @@ public class DadosClienteConteinerOuULD {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

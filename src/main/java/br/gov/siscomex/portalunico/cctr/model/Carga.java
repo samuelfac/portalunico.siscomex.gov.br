@@ -154,15 +154,9 @@ public class Carga {
         this.consignatario = consignatario;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Carga consignatario(Consignatario consignatario) {
+        this.consignatario = consignatario;
+        return this;
     }
 
     /**
@@ -200,8 +194,8 @@ public class Carga {
         this.destinatario = destinatario;
     }
 
-    public Carga consignatario(Consignatario consignatario) {
-        this.consignatario = consignatario;
+    public Carga destinatario(Destinatrio destinatario) {
+        this.destinatario = destinatario;
         return this;
     }
 
@@ -299,8 +293,8 @@ public class Carga {
         this.moedaValorFOT = moedaValorFOT;
     }
 
-    public Carga destinatario(Destinatrio destinatario) {
-        this.destinatario = destinatario;
+    public Carga moedaValorFOT(String moedaValorFOT) {
+        this.moedaValorFOT = moedaValorFOT;
         return this;
     }
 
@@ -354,8 +348,8 @@ public class Carga {
         this.codigoTiposVolumes = codigoTiposVolumes;
     }
 
-    public Carga moedaValorFOT(String moedaValorFOT) {
-        this.moedaValorFOT = moedaValorFOT;
+    public Carga codigoTiposVolumes(Integer codigoTiposVolumes) {
+        this.codigoTiposVolumes = codigoTiposVolumes;
         return this;
     }
 
@@ -391,8 +385,8 @@ public class Carga {
         this.qtdeVolumes = qtdeVolumes;
     }
 
-    public Carga codigoTiposVolumes(Integer codigoTiposVolumes) {
-        this.codigoTiposVolumes = codigoTiposVolumes;
+    public Carga qtdeVolumes(Integer qtdeVolumes) {
+        this.qtdeVolumes = qtdeVolumes;
         return this;
     }
 
@@ -474,10 +468,6 @@ public class Carga {
         return this;
     }
 
-    public Carga qtdeVolumes(Integer qtdeVolumes) {
-        this.qtdeVolumes = qtdeVolumes;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -502,5 +492,16 @@ public class Carga {
                 "    nfes: " + toIndentedString(nfes) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

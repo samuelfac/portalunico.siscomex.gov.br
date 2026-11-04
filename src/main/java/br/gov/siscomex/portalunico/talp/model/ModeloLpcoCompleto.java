@@ -121,15 +121,9 @@ public class ModeloLpcoCompleto {
         this.codigo = codigo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ModeloLpcoCompleto codigo(String codigo) {
+        this.codigo = codigo;
+        return this;
     }
 
     /**
@@ -166,8 +160,8 @@ public class ModeloLpcoCompleto {
         this.informacoesExportadorImportador = informacoesExportadorImportador;
     }
 
-    public ModeloLpcoCompleto codigo(String codigo) {
-        this.codigo = codigo;
+    public ModeloLpcoCompleto informacoesExportadorImportador(String informacoesExportadorImportador) {
+        this.informacoesExportadorImportador = informacoesExportadorImportador;
         return this;
     }
 
@@ -225,8 +219,8 @@ public class ModeloLpcoCompleto {
         this.requerCatalogoProduto = requerCatalogoProduto;
     }
 
-    public ModeloLpcoCompleto informacoesExportadorImportador(String informacoesExportadorImportador) {
-        this.informacoesExportadorImportador = informacoesExportadorImportador;
+    public ModeloLpcoCompleto requerCatalogoProduto(Boolean requerCatalogoProduto) {
+        this.requerCatalogoProduto = requerCatalogoProduto;
         return this;
     }
 
@@ -269,10 +263,6 @@ public class ModeloLpcoCompleto {
         return this;
     }
 
-    public ModeloLpcoCompleto requerCatalogoProduto(Boolean requerCatalogoProduto) {
-        this.requerCatalogoProduto = requerCatalogoProduto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -290,4 +280,15 @@ public class ModeloLpcoCompleto {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

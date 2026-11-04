@@ -89,15 +89,9 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
         this.dataEmissao = dataEmissao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ViagemRodoviariaResumidaCargasDetalhadas dataEmissao(LocalDate dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
     }
 
     /**
@@ -157,10 +151,6 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
         return this;
     }
 
-    public ViagemRodoviariaResumidaCargasDetalhadas dataEmissao(LocalDate dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -173,5 +163,16 @@ public class ViagemRodoviariaResumidaCargasDetalhadas {
                 "    todasCargasEntregues: " + toIndentedString(todasCargasEntregues) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

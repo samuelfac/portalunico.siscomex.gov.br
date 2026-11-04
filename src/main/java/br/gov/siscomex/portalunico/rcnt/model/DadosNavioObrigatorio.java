@@ -92,5 +92,5 @@ public class DadosNavioObrigatorio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

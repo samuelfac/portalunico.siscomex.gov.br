@@ -98,15 +98,9 @@ public class ExigenciaLpcoResponse {
         this.numero = numero;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ExigenciaLpcoResponse numero(Long numero) {
+        this.numero = numero;
+        return this;
     }
 
     /**
@@ -202,8 +196,8 @@ public class ExigenciaLpcoResponse {
         this.situacao = situacao;
     }
 
-    public ExigenciaLpcoResponse numero(Long numero) {
-        this.numero = numero;
+    public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -263,10 +257,6 @@ public class ExigenciaLpcoResponse {
         return this;
     }
 
-    public ExigenciaLpcoResponse situacao(SituacaoExigenciaLpco situacao) {
-        this.situacao = situacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -284,4 +274,15 @@ public class ExigenciaLpcoResponse {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

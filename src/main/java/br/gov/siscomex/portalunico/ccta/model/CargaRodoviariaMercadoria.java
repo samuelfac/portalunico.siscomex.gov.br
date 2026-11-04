@@ -88,15 +88,9 @@ public class CargaRodoviariaMercadoria {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaRodoviariaMercadoria descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -156,10 +150,6 @@ public class CargaRodoviariaMercadoria {
         return this;
     }
 
-    public CargaRodoviariaMercadoria descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -172,5 +162,16 @@ public class CargaRodoviariaMercadoria {
                 "    sequencial: " + toIndentedString(sequencial) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

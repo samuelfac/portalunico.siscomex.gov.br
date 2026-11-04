@@ -101,15 +101,9 @@ public class NotaFiscalFormulario {
         this.numeroNF = numeroNF;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public NotaFiscalFormulario numeroNF(String numeroNF) {
+        this.numeroNF = numeroNF;
+        return this;
     }
 
     /**
@@ -167,8 +161,8 @@ public class NotaFiscalFormulario {
         this.aamm = aamm;
     }
 
-    public NotaFiscalFormulario numeroNF(String numeroNF) {
-        this.numeroNF = numeroNF;
+    public NotaFiscalFormulario aamm(String aamm) {
+        this.aamm = aamm;
         return this;
     }
 
@@ -227,8 +221,8 @@ public class NotaFiscalFormulario {
         this.identificacaoEmissor = identificacaoEmissor;
     }
 
-    public NotaFiscalFormulario aamm(String aamm) {
-        this.aamm = aamm;
+    public NotaFiscalFormulario identificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
+        this.identificacaoEmissor = identificacaoEmissor;
         return this;
     }
 
@@ -290,10 +284,6 @@ public class NotaFiscalFormulario {
         return this;
     }
 
-    public NotaFiscalFormulario identificacaoEmissor(IdentificacaoEmissor identificacaoEmissor) {
-        this.identificacaoEmissor = identificacaoEmissor;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -311,5 +301,16 @@ public class NotaFiscalFormulario {
                 "    itensNFF: " + toIndentedString(itensNFF) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

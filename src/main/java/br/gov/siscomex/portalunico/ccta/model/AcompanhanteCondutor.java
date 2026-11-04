@@ -21,12 +21,43 @@ import javax.xml.bind.annotation.XmlType;
 public class AcompanhanteCondutor {
 
 
-    @XmlElement(name = "tipoDocumento", required = true)
-    @ApiModelProperty(example = "F", required = true, value = "Tipo do documento do acompanhante do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false, o tipo pode ser 'P' ou 'O'")
-    /**
-     * Tipo do documento do acompanhante do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false, o tipo pode ser 'P' ou 'O'
-     **/
-    private TipoDocumentoEnum tipoDocumento = null;
+    @XmlType(name = "CategoriaEnum")
+    @XmlEnum(String.class)
+    public enum CategoriaEnum {
+
+        @XmlEnumValue("A")
+        @JsonProperty("A")
+        A("A"),
+
+        @XmlEnumValue("M")
+        @JsonProperty("M")
+        M("M");
+
+
+        private final String value;
+
+        CategoriaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CategoriaEnum fromValue(String v) {
+            for (CategoriaEnum b : CategoriaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoriaEnum");
+        }
+    }
 
     @XmlElement(name = "categoria", required = true)
     @ApiModelProperty(example = "A", required = true, value = "Categoria de quem está acompanhando o condutor na viagem<br/> A = Acompanhante, M = Motorista substituto")
@@ -56,30 +87,59 @@ public class AcompanhanteCondutor {
      **/
     private String numeroDocumento = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoDocumentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoEnum {
+
+        @XmlEnumValue("H")
+        @JsonProperty("H")
+        H("H"),
+
+        @XmlEnumValue("F")
+        @JsonProperty("F")
+        F("F"),
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("O")
+        @JsonProperty("O")
+        O("O");
+
+
+        private final String value;
+
+        TipoDocumentoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocumentoEnum fromValue(String v) {
+            for (TipoDocumentoEnum b : TipoDocumentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoEnum");
+        }
     }
 
+    @XmlElement(name = "tipoDocumento", required = true)
+    @ApiModelProperty(example = "F", required = true, value = "Tipo do documento do acompanhante do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false, o tipo pode ser 'P' ou 'O'")
     /**
-     * Tipo do documento do acompanhante do condutor do veículo.&lt;br/&gt; \&quot;F\&quot; (CPF), \&quot;J\&quot; (CNPJ),\&quot;P\&quot; (passaporte), \&quot;O\&quot; (outros)&lt;br/&gt;Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \&quot;F\&quot; ou \&quot;H\&quot;.&lt;br/&gt;Se condutorBrasileiro é false, o tipo pode ser &#39;P&#39; ou &#39;O&#39;
-     *
-     * @return tipoDocumento
+     * Tipo do documento do acompanhante do condutor do veículo.<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)<br/>Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \"F\" ou \"H\".<br/>Se condutorBrasileiro é false, o tipo pode ser 'P' ou 'O'
      **/
-    @JsonProperty("tipoDocumento")
-    @NotNull
-    public String getTipoDocumento() {
-        if (tipoDocumento == null) {
-            return null;
-        }
-        return tipoDocumento.value();
-    }
+    private TipoDocumentoEnum tipoDocumento = null;
 
     /**
      * Categoria de quem está acompanhando o condutor na viagem&lt;br/&gt; A &#x3D; Acompanhante, M &#x3D; Motorista substituto
@@ -163,6 +223,30 @@ public class AcompanhanteCondutor {
         return this;
     }
 
+    /**
+     * Tipo do documento do acompanhante do condutor do veículo.&lt;br/&gt; \&quot;F\&quot; (CPF), \&quot;J\&quot; (CNPJ),\&quot;P\&quot; (passaporte), \&quot;O\&quot; (outros)&lt;br/&gt;Se nacionalidadeBrasileira é true, é obrigatório o preenchimento do valor \&quot;F\&quot; ou \&quot;H\&quot;.&lt;br/&gt;Se condutorBrasileiro é false, o tipo pode ser &#39;P&#39; ou &#39;O&#39;
+     *
+     * @return tipoDocumento
+     **/
+    @JsonProperty("tipoDocumento")
+    @NotNull
+    public String getTipoDocumento() {
+        if (tipoDocumento == null) {
+            return null;
+        }
+        return tipoDocumento.value();
+    }
+
+    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public AcompanhanteCondutor tipoDocumento(TipoDocumentoEnum tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+        return this;
+    }
+
+
     @Override
     public String toString() {
 
@@ -176,97 +260,14 @@ public class AcompanhanteCondutor {
         return sb;
     }
 
-    public void setTipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public AcompanhanteCondutor tipoDocumento(TipoDocumentoEnum tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
-
-    @XmlType(name = "CategoriaEnum")
-    @XmlEnum(String.class)
-    public enum CategoriaEnum {
-
-        @XmlEnumValue("A")
-        @JsonProperty("A")
-        A("A"),
-
-        @XmlEnumValue("M")
-        @JsonProperty("M")
-        M("M");
-
-
-        private final String value;
-
-        CategoriaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static CategoriaEnum fromValue(String v) {
-            for (CategoriaEnum b : CategoriaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CategoriaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
-
-    @XmlType(name = "TipoDocumentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoEnum {
-
-        @XmlEnumValue("H")
-        @JsonProperty("H")
-        H("H"),
-
-        @XmlEnumValue("F")
-        @JsonProperty("F")
-        F("F"),
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("O")
-        @JsonProperty("O")
-        O("O");
-
-
-        private final String value;
-
-        TipoDocumentoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDocumentoEnum fromValue(String v) {
-            for (TipoDocumentoEnum b : TipoDocumentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

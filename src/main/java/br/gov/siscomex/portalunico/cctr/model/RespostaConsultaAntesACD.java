@@ -35,12 +35,43 @@ public class RespostaConsultaAntesACD {
     private String numeroDocumento = null;
 
 
-    @XmlElement(name = "dataEmissaoNF")
-    @ApiModelProperty(value = "Tamanho: 13<br>Formato: NNNNNNNNNNNNN")
-    /**
-     * Tamanho: 13<br>Formato: NNNNNNNNNNNNN
-     **/
-    private OffsetDateTime dataEmissaoNF = null;
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("DUE")
+        @JsonProperty("DUE")
+        DUE("DUE"),
+
+        @XmlEnumValue("NF-e")
+        @JsonProperty("NF-e")
+        NF_E("NF-e");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+    }
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(example = "NF-e", value = "Tipo do documento<br>Só pode ser DUE ou NF-e")
@@ -55,12 +86,13 @@ public class RespostaConsultaAntesACD {
      * Chave de Acesso da Nota Fiscal Eletrônica<br>Tamanho: 44<br>Formato: NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
      **/
     private Integer numeroNF = null;
-    @XmlElement(name = "codigoNCM")
-    @ApiModelProperty(example = "12011000", value = "Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN")
+
+    @XmlElement(name = "dataEmissaoNF")
+    @ApiModelProperty(value = "Tamanho: 13<br>Formato: NNNNNNNNNNNNN")
     /**
-     * Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN
+     * Tamanho: 13<br>Formato: NNNNNNNNNNNNN
      **/
-    private Integer codigoNCM = null;
+    private OffsetDateTime dataEmissaoNF = null;
 
     @XmlElement(name = "numeroItem")
     @ApiModelProperty(example = "1.0", value = "Número do Item da Nota Fiscal Eletrônica<br>Tamanho máximo: 4<br>Formato: NNNN")
@@ -69,12 +101,13 @@ public class RespostaConsultaAntesACD {
      * Número do Item da Nota Fiscal Eletrônica<br>Tamanho máximo: 4<br>Formato: NNNN
      **/
     private BigDecimal numeroItem = null;
-    @XmlElement(name = "latitude")
-    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN")
+
+    @XmlElement(name = "codigoNCM")
+    @ApiModelProperty(example = "12011000", value = "Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN")
     /**
-     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN
+     * Código NCM do produto<br>Tamanho: 8<br>Formato: NNNNNNNN
      **/
-    private String latitude = null;
+    private Integer codigoNCM = null;
 
     @XmlElement(name = "codigoURF")
     @ApiModelProperty(example = "717700.0", value = "Código da Unidade de Região Fiscal<br>Tamanho Máximo: 7<br>Formato: NNNNNNN")
@@ -91,12 +124,13 @@ public class RespostaConsultaAntesACD {
      * Código do Recinto Aduaneiro<br>Tamanho: 7<br>Formato: NNNNNNN
      **/
     private BigDecimal codigoRA = null;
-    @XmlElement(name = "idResponsavel")
-    @ApiModelProperty(example = "07396865000168", value = "CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")
+
+    @XmlElement(name = "latitude")
+    @ApiModelProperty(example = "-22.812222", value = "Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN")
     /**
-     * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
+     * Latitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN
      **/
-    private String idResponsavel = null;
+    private String latitude = null;
 
     @XmlElement(name = "longitude")
     @ApiModelProperty(example = "-43.248333", value = "Longitude do local<br>Coordenadas geográficas em graus decimais<br>Formato: NN.NNNNNN ou -NN.NNNNNN")
@@ -105,16 +139,12 @@ public class RespostaConsultaAntesACD {
      **/
     private String longitude = null;
 
+    @XmlElement(name = "idResponsavel")
+    @ApiModelProperty(example = "07396865000168", value = "CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * CPF ou CNPJ do responsável pelo estoque<br>Tamanho máximo: 14<br>Formato: NNNNNNNNNNNNNN
+     **/
+    private String idResponsavel = null;
 
     @XmlElement(name = "nomeResponsavel")
     @ApiModelProperty(example = "MOCK Testes Integrados", value = "Tamanho máximo: 60<br>Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
@@ -139,14 +169,43 @@ public class RespostaConsultaAntesACD {
      **/
     private BigDecimal sequenciaDeposito = null;
 
-    /**
-     * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN
-     *
-     * @return numeroDocumento
-     **/
-    @JsonProperty("numeroDocumento")
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+
+    @XmlType(name = "ExisteConteinerEnum")
+    @XmlEnum(String.class)
+    public enum ExisteConteinerEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        ExisteConteinerEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ExisteConteinerEnum fromValue(String v) {
+            for (ExisteConteinerEnum b : ExisteConteinerEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ExisteConteinerEnum");
+        }
     }
 
     @XmlElement(name = "existeConteiner")
@@ -164,13 +223,13 @@ public class RespostaConsultaAntesACD {
     private OffsetDateTime dataCriacao = null;
 
     /**
-     * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
+     * Número do documento de transporte&lt;br&gt;Tamanho mínimo: 5&lt;br&gt;Tamanho máximo: 15&lt;br&gt;Formato: NNNNNNNNNNNNNNN
      *
-     * @return dataEmissaoNF
+     * @return numeroDocumento
      **/
-    @JsonProperty("dataEmissaoNF")
-    public OffsetDateTime getDataEmissaoNF() {
-        return dataEmissaoNF;
+    @JsonProperty("numeroDocumento")
+    public String getNumeroDocumento() {
+        return numeroDocumento;
     }
 
     public void setNumeroDocumento(String numeroDocumento) {
@@ -224,13 +283,13 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho Máximo: 7&lt;br&gt;Formato: NNNNNNN
+     * Tamanho: 13&lt;br&gt;Formato: NNNNNNNNNNNNN
      *
-     * @return codigoURF
+     * @return dataEmissaoNF
      **/
-    @JsonProperty("codigoURF")
-    public BigDecimal getCodigoURF() {
-        return codigoURF;
+    @JsonProperty("dataEmissaoNF")
+    public OffsetDateTime getDataEmissaoNF() {
+        return dataEmissaoNF;
     }
 
     public void setDataEmissaoNF(OffsetDateTime dataEmissaoNF) {
@@ -281,13 +340,13 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
+     * Código da Unidade de Região Fiscal&lt;br&gt;Tamanho Máximo: 7&lt;br&gt;Formato: NNNNNNN
      *
-     * @return latitude
+     * @return codigoURF
      **/
-    @JsonProperty("latitude")
-    public String getLatitude() {
-        return latitude;
+    @JsonProperty("codigoURF")
+    public BigDecimal getCodigoURF() {
+        return codigoURF;
     }
 
     public void setCodigoURF(BigDecimal codigoURF) {
@@ -318,13 +377,12 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-     *
-     * @return nomeResponsavel
+     * Latitude do local&lt;br&gt;Coordenadas geográficas em graus decimais&lt;br&gt;Formato: NN.NNNNNN ou -NN.NNNNNN
+     * @return latitude
      **/
-    @JsonProperty("nomeResponsavel")
-    public String getNomeResponsavel() {
-        return nomeResponsavel;
+    @JsonProperty("latitude")
+    public String getLatitude() {
+        return latitude;
     }
 
     public void setLatitude(String latitude) {
@@ -356,6 +414,7 @@ public class RespostaConsultaAntesACD {
 
     /**
      * CPF ou CNPJ do responsável pelo estoque&lt;br&gt;Tamanho máximo: 14&lt;br&gt;Formato: NNNNNNNNNNNNNN
+     *
      * @return idResponsavel
      **/
     @JsonProperty("idResponsavel")
@@ -373,16 +432,12 @@ public class RespostaConsultaAntesACD {
     }
 
     /**
-     * Tamanho: 1
-     *
-     * @return existeConteiner
+     * Tamanho máximo: 60&lt;br&gt;Formato: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+     * @return nomeResponsavel
      **/
-    @JsonProperty("existeConteiner")
-    public String getExisteConteiner() {
-        if (existeConteiner == null) {
-            return null;
-        }
-        return existeConteiner.value();
+    @JsonProperty("nomeResponsavel")
+    public String getNomeResponsavel() {
+        return nomeResponsavel;
     }
 
     public void setNomeResponsavel(String nomeResponsavel) {
@@ -414,6 +469,7 @@ public class RespostaConsultaAntesACD {
 
     /**
      * Tamanho máximo: 10&lt;br&gt;Formato: NNNNNNNNNN
+     *
      * @return sequenciaDeposito
      **/
     @JsonProperty("sequenciaDeposito")
@@ -430,28 +486,17 @@ public class RespostaConsultaAntesACD {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class RespostaConsultaAntesACD {\n" +
-                "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    numeroNF: " + toIndentedString(numeroNF) + "\n" +
-                "    dataEmissaoNF: " + toIndentedString(dataEmissaoNF) + "\n" +
-                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
-                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
-                "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
-                "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
-                "    latitude: " + toIndentedString(latitude) + "\n" +
-                "    longitude: " + toIndentedString(longitude) + "\n" +
-                "    idResponsavel: " + toIndentedString(idResponsavel) + "\n" +
-                "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
-                "    anoDeposito: " + toIndentedString(anoDeposito) + "\n" +
-                "    sequenciaDeposito: " + toIndentedString(sequenciaDeposito) + "\n" +
-                "    existeConteiner: " + toIndentedString(existeConteiner) + "\n" +
-                "    dataCriacao: " + toIndentedString(dataCriacao) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Tamanho: 1
+     *
+     * @return existeConteiner
+     **/
+    @JsonProperty("existeConteiner")
+    public String getExisteConteiner() {
+        if (existeConteiner == null) {
+            return null;
+        }
+        return existeConteiner.value();
     }
 
     public void setExisteConteiner(ExisteConteinerEnum existeConteiner) {
@@ -482,79 +527,38 @@ public class RespostaConsultaAntesACD {
     }
 
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("DUE")
-        @JsonProperty("DUE")
-        DUE("DUE"),
-
-        @XmlEnumValue("NF-e")
-        @JsonProperty("NF-e")
-        NF_E("NF-e");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class RespostaConsultaAntesACD {\n" +
+                "    numeroDocumento: " + toIndentedString(numeroDocumento) + "\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    numeroNF: " + toIndentedString(numeroNF) + "\n" +
+                "    dataEmissaoNF: " + toIndentedString(dataEmissaoNF) + "\n" +
+                "    numeroItem: " + toIndentedString(numeroItem) + "\n" +
+                "    codigoNCM: " + toIndentedString(codigoNCM) + "\n" +
+                "    codigoURF: " + toIndentedString(codigoURF) + "\n" +
+                "    codigoRA: " + toIndentedString(codigoRA) + "\n" +
+                "    latitude: " + toIndentedString(latitude) + "\n" +
+                "    longitude: " + toIndentedString(longitude) + "\n" +
+                "    idResponsavel: " + toIndentedString(idResponsavel) + "\n" +
+                "    nomeResponsavel: " + toIndentedString(nomeResponsavel) + "\n" +
+                "    anoDeposito: " + toIndentedString(anoDeposito) + "\n" +
+                "    sequenciaDeposito: " + toIndentedString(sequenciaDeposito) + "\n" +
+                "    existeConteiner: " + toIndentedString(existeConteiner) + "\n" +
+                "    dataCriacao: " + toIndentedString(dataCriacao) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "ExisteConteinerEnum")
-    @XmlEnum(String.class)
-    public enum ExisteConteinerEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        ExisteConteinerEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ExisteConteinerEnum fromValue(String v) {
-            for (ExisteConteinerEnum b : ExisteConteinerEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ExisteConteinerEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

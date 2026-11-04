@@ -77,15 +77,9 @@ public class TributoItemCover {
         this.regime = regime;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public TributoItemCover regime(RegimeCover regime) {
+        this.regime = regime;
+        return this;
     }
 
     /**
@@ -131,10 +125,6 @@ public class TributoItemCover {
         return this;
     }
 
-    public TributoItemCover regime(RegimeCover regime) {
-        this.regime = regime;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -146,5 +136,16 @@ public class TributoItemCover {
                 "    atributos: " + toIndentedString(atributos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

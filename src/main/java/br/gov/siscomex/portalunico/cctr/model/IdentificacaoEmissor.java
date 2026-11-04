@@ -75,6 +75,16 @@ public class IdentificacaoEmissor {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class IdentificacaoEmissor {\n" +
+                "    cnpj: " + toIndentedString(cnpj) + "\n" +
+                "    cpf: " + toIndentedString(cpf) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -84,15 +94,5 @@ public class IdentificacaoEmissor {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class IdentificacaoEmissor {\n" +
-                "    cnpj: " + toIndentedString(cnpj) + "\n" +
-                "    cpf: " + toIndentedString(cpf) + "\n" +
-                "}";
-        return sb;
     }
 }

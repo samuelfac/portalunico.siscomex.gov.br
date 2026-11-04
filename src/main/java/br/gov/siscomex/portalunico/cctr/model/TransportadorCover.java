@@ -74,15 +74,9 @@ public class TransportadorCover {
         this.cnpj = cnpj;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public TransportadorCover cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -120,8 +114,8 @@ public class TransportadorCover {
         this.nomeEstrangeiro = nomeEstrangeiro;
     }
 
-    public TransportadorCover cnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public TransportadorCover nomeEstrangeiro(String nomeEstrangeiro) {
+        this.nomeEstrangeiro = nomeEstrangeiro;
         return this;
     }
 
@@ -165,10 +159,6 @@ public class TransportadorCover {
         return this;
     }
 
-    public TransportadorCover nomeEstrangeiro(String nomeEstrangeiro) {
-        this.nomeEstrangeiro = nomeEstrangeiro;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -181,5 +171,16 @@ public class TransportadorCover {
                 "    nomeCondutorEstrangeiro: " + toIndentedString(nomeCondutorEstrangeiro) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

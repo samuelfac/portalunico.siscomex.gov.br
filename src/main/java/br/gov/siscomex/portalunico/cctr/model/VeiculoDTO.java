@@ -66,15 +66,9 @@ public class VeiculoDTO {
         this.tara = tara;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public VeiculoDTO tara(BigDecimal tara) {
+        this.tara = tara;
+        return this;
     }
 
     /**
@@ -101,10 +95,6 @@ public class VeiculoDTO {
         return this;
     }
 
-    public VeiculoDTO tara(BigDecimal tara) {
-        this.tara = tara;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -115,5 +105,16 @@ public class VeiculoDTO {
                 "    lacres: " + toIndentedString(lacres) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

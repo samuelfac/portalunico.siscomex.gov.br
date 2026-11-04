@@ -21,10 +21,43 @@ import javax.xml.bind.annotation.XmlType;
 public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
 
 
-    @XmlElement(name = "resumoRUC")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SefazResumoRUCCover resumoRUC = null;
+    @XmlType(name = "TipoConhecimentoEnum")
+    @XmlEnum(String.class)
+    public enum TipoConhecimentoEnum {
+
+        @XmlEnumValue("CRT")
+        @JsonProperty("CRT")
+        CRT("CRT"),
+
+        @XmlEnumValue("INVALIDO")
+        @JsonProperty("INVALIDO")
+        INVALIDO("INVALIDO");
+
+
+        private final String value;
+
+        TipoConhecimentoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoConhecimentoEnum fromValue(String v) {
+            for (TipoConhecimentoEnum b : TipoConhecimentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoConhecimentoEnum");
+        }
+    }
 
     @XmlElement(name = "tipoConhecimento")
     @ApiModelProperty(example = "CRT", value = "Tipo de conhecimento de transporte de carga rodoviária")
@@ -45,16 +78,10 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
      **/
     private Integer quantidadeVolumes = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "resumoRUC")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SefazResumoRUCCover resumoRUC = null;
 
     @XmlElement(name = "valorOutrosCustosRemetente")
     @ApiModelProperty(value = "")
@@ -183,6 +210,7 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -197,41 +225,14 @@ public class DadosEspecficosDeUmaCargaRodoviriaNoCCTImportao {
         return sb;
     }
 
-    @XmlType(name = "TipoConhecimentoEnum")
-    @XmlEnum(String.class)
-    public enum TipoConhecimentoEnum {
-
-        @XmlEnumValue("CRT")
-        @JsonProperty("CRT")
-        CRT("CRT"),
-
-        @XmlEnumValue("INVALIDO")
-        @JsonProperty("INVALIDO")
-        INVALIDO("INVALIDO");
-
-
-        private final String value;
-
-        TipoConhecimentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoConhecimentoEnum fromValue(String v) {
-            for (TipoConhecimentoEnum b : TipoConhecimentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoConhecimentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

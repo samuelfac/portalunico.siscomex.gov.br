@@ -206,15 +206,9 @@ public class ExigenciaFiscalEstruturada {
         this.descricaoExigencia = descricaoExigencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ExigenciaFiscalEstruturada descricaoExigencia(String descricaoExigencia) {
+        this.descricaoExigencia = descricaoExigencia;
+        return this;
     }
 
     /**
@@ -250,8 +244,8 @@ public class ExigenciaFiscalEstruturada {
         this.justificativaDispensa = justificativaDispensa;
     }
 
-    public ExigenciaFiscalEstruturada descricaoExigencia(String descricaoExigencia) {
-        this.descricaoExigencia = descricaoExigencia;
+    public ExigenciaFiscalEstruturada justificativaDispensa(String justificativaDispensa) {
+        this.justificativaDispensa = justificativaDispensa;
         return this;
     }
 
@@ -366,8 +360,8 @@ public class ExigenciaFiscalEstruturada {
         this.numeroExigencia = numeroExigencia;
     }
 
-    public ExigenciaFiscalEstruturada justificativaDispensa(String justificativaDispensa) {
-        this.justificativaDispensa = justificativaDispensa;
+    public ExigenciaFiscalEstruturada numeroExigencia(Integer numeroExigencia) {
+        this.numeroExigencia = numeroExigencia;
         return this;
     }
 
@@ -438,8 +432,8 @@ public class ExigenciaFiscalEstruturada {
         this.valorRecolherMulta = valorRecolherMulta;
     }
 
-    public ExigenciaFiscalEstruturada numeroExigencia(Integer numeroExigencia) {
-        this.numeroExigencia = numeroExigencia;
+    public ExigenciaFiscalEstruturada valorRecolherMulta(BigDecimal valorRecolherMulta) {
+        this.valorRecolherMulta = valorRecolherMulta;
         return this;
     }
 
@@ -461,10 +455,6 @@ public class ExigenciaFiscalEstruturada {
         return this;
     }
 
-    public ExigenciaFiscalEstruturada valorRecolherMulta(BigDecimal valorRecolherMulta) {
-        this.valorRecolherMulta = valorRecolherMulta;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -489,5 +479,16 @@ public class ExigenciaFiscalEstruturada {
                 "    versaoDocumento: " + toIndentedString(versaoDocumento) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

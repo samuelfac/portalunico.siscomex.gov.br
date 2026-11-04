@@ -86,15 +86,9 @@ public class SolicitacaoCompatibilizacaoRequest {
         this.numeroItemDocumento = numeroItemDocumento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SolicitacaoCompatibilizacaoRequest numeroItemDocumento(Integer numeroItemDocumento) {
+        this.numeroItemDocumento = numeroItemDocumento;
+        return this;
     }
 
     /**
@@ -136,10 +130,6 @@ public class SolicitacaoCompatibilizacaoRequest {
         return this;
     }
 
-    public SolicitacaoCompatibilizacaoRequest numeroItemDocumento(Integer numeroItemDocumento) {
-        this.numeroItemDocumento = numeroItemDocumento;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -152,4 +142,15 @@ public class SolicitacaoCompatibilizacaoRequest {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

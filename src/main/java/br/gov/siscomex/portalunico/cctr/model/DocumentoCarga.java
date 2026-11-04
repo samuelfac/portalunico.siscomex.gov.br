@@ -91,15 +91,9 @@ public class DocumentoCarga {
         this.numeroRUC = numeroRUC;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DocumentoCarga numeroRUC(String numeroRUC) {
+        this.numeroRUC = numeroRUC;
+        return this;
     }
 
     /**
@@ -152,10 +146,6 @@ public class DocumentoCarga {
         return this;
     }
 
-    public DocumentoCarga numeroRUC(String numeroRUC) {
-        this.numeroRUC = numeroRUC;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -167,5 +157,16 @@ public class DocumentoCarga {
                 "    granel: " + toIndentedString(granel) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

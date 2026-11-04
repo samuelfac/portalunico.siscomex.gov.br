@@ -281,12 +281,43 @@ public class ManifestoCrt {
     private Boolean inParteNotificarNacBrasileira = null;
 
 
-    @XmlElement(name = "localAssinaturaRemetente")
-    @ApiModelProperty(value = "Local de assinatura do remetente<br/> Tamanho Máximo: 35")
-    /**
-     * Local de assinatura do remetente<br/> Tamanho Máximo: 35
-     **/
-    private String localAssinaturaRemetente = null;
+    @XmlType(name = "IncotermLocalEmbarqueEnum")
+    @XmlEnum(String.class)
+    public enum IncotermLocalEmbarqueEnum {
+
+        @XmlEnumValue("FCA")
+        @JsonProperty("FCA")
+        FCA("FCA"),
+
+        @XmlEnumValue("EXW")
+        @JsonProperty("EXW")
+        EXW("EXW");
+
+
+        private final String value;
+
+        IncotermLocalEmbarqueEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IncotermLocalEmbarqueEnum fromValue(String v) {
+            for (IncotermLocalEmbarqueEnum b : IncotermLocalEmbarqueEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IncotermLocalEmbarqueEnum");
+        }
+    }
 
     @XmlElement(name = "incotermLocalEmbarque", required = true)
     @ApiModelProperty(example = "FCA", required = true, value = "Incoterms do valor: tipos FCA ou EX<br/> Tamanho: 3")
@@ -329,12 +360,13 @@ public class ManifestoCrt {
      * Local de assinatura do destinatário<br/> Tamanho Máximo: 35
      **/
     private String localAssinaturaDestinatario = null;
-    @XmlElement(name = "moedaFreteRemetente")
-    @ApiModelProperty(example = "220", value = "Código da moeda do frete da mercadoria do remetente<br/>Formato: AAA")
+
+    @XmlElement(name = "localAssinaturaRemetente")
+    @ApiModelProperty(value = "Local de assinatura do remetente<br/> Tamanho Máximo: 35")
     /**
-     * Código da moeda do frete da mercadoria do remetente<br/>Formato: AAA
+     * Local de assinatura do remetente<br/> Tamanho Máximo: 35
      **/
-    private String moedaFreteRemetente = null;
+    private String localAssinaturaRemetente = null;
 
     @XmlElement(name = "manuseiosEspeciaisCarga")
     @ApiModelProperty(value = "")
@@ -359,12 +391,13 @@ public class ManifestoCrt {
      * Código da moeda do frete externo da mercadoria<br/>Formato: AAA
      **/
     private String moedaFreteExterno = null;
-    @XmlElement(name = "moedaMercadoriaLocalEmbarque", required = true)
-    @ApiModelProperty(example = "220", required = true, value = "Código da moeda do valor da mercadoria no local de embarque no momento em que o transportador se responsabiliza pela carga<br/>Formato: AAA")
+
+    @XmlElement(name = "moedaFreteRemetente")
+    @ApiModelProperty(example = "220", value = "Código da moeda do frete da mercadoria do remetente<br/>Formato: AAA")
     /**
-     * Código da moeda do valor da mercadoria no local de embarque no momento em que o transportador se responsabiliza pela carga<br/>Formato: AAA
+     * Código da moeda do frete da mercadoria do remetente<br/>Formato: AAA
      **/
-    private String moedaMercadoriaLocalEmbarque = null;
+    private String moedaFreteRemetente = null;
 
     @XmlElement(name = "moedaMercadoriaDeclaradoRemetente")
     @ApiModelProperty(example = "220", value = "Código da moeda do valor das mercadorias declarado pelo remetente<br/>Formato: AAA")
@@ -372,12 +405,13 @@ public class ManifestoCrt {
      * Código da moeda do valor das mercadorias declarado pelo remetente<br/>Formato: AAA
      **/
     private String moedaMercadoriaDeclaradoRemetente = null;
-    @XmlElement(name = "moedaSeguroRemetente")
-    @ApiModelProperty(example = "220", value = "Código da moeda do seguro da mercadoria do remetente<br/>Formato: AAA")
+
+    @XmlElement(name = "moedaMercadoriaLocalEmbarque", required = true)
+    @ApiModelProperty(example = "220", required = true, value = "Código da moeda do valor da mercadoria no local de embarque no momento em que o transportador se responsabiliza pela carga<br/>Formato: AAA")
     /**
-     * Código da moeda do seguro da mercadoria do remetente<br/>Formato: AAA
+     * Código da moeda do valor da mercadoria no local de embarque no momento em que o transportador se responsabiliza pela carga<br/>Formato: AAA
      **/
-    private String moedaSeguroRemetente = null;
+    private String moedaMercadoriaLocalEmbarque = null;
 
     @XmlElement(name = "moedaOutrosCustosDestinatario")
     @ApiModelProperty(example = "220", value = "Código da moeda de outros custos do destinatario<br/>Formato: AAA")
@@ -406,12 +440,13 @@ public class ManifestoCrt {
      * Código da moeda do seguro da mercadoria do destinatário<br/>Formato: AAA
      **/
     private String moedaSeguroDestinatario = null;
-    @XmlElement(name = "paisConsignatario")
-    @ApiModelProperty(example = "BR", value = "Sigla do país do consignatário  estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
+
+    @XmlElement(name = "moedaSeguroRemetente")
+    @ApiModelProperty(example = "220", value = "Código da moeda do seguro da mercadoria do remetente<br/>Formato: AAA")
     /**
-     * Sigla do país do consignatário  estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
+     * Código da moeda do seguro da mercadoria do remetente<br/>Formato: AAA
      **/
-    private String paisConsignatario = null;
+    private String moedaSeguroRemetente = null;
 
     @XmlElement(name = "nomeAssinaturaDestinatario")
     @ApiModelProperty(value = "Nome do destinatário que assinou o documento<br/> Tamanho Máximo: 35")
@@ -468,12 +503,13 @@ public class ManifestoCrt {
      * Nome do transportador estrangeiro<br/>Se campo transportadorNacBrasileira  igual a \"false\" ( Transportador estrangeiro) é obrigatório o preenchimento.<br/> Tamanho Máximo: 60
      **/
     private String nomeTransportadorEstrangeiro = null;
-    @XmlElement(name = "paisParteNotificarEstrangeiro")
-    @ApiModelProperty(example = "BR", value = "País da parte a notificar, quando estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
+
+    @XmlElement(name = "paisConsignatario")
+    @ApiModelProperty(example = "BR", value = "Sigla do país do consignatário  estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
     /**
-     * País da parte a notificar, quando estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
+     * Sigla do país do consignatário  estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
      **/
-    private String paisParteNotificarEstrangeiro = null;
+    private String paisConsignatario = null;
 
     @XmlElement(name = "paisDestinatario")
     @ApiModelProperty(example = "BR", value = "Sigla do país do destinatário da carga</br>Obrigatorio para destinatário estrangeiro (\"destinatarioNacBrasileira\" = false)<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
@@ -502,12 +538,13 @@ public class ManifestoCrt {
      * País onde a mercadoria foi fabricada<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
      **/
     private String paisOrigemMercadoria = null;
-    @XmlElement(name = "prazoEntrega")
-    @ApiModelProperty(example = "20240524", value = "Data em que o transportador se compromete com a  entrega da carga<br/>Formato: yyyyMMddHHmmss")
+
+    @XmlElement(name = "paisParteNotificarEstrangeiro")
+    @ApiModelProperty(example = "BR", value = "País da parte a notificar, quando estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
     /**
-     * Data em que o transportador se compromete com a  entrega da carga<br/>Formato: yyyyMMddHHmmss
+     * País da parte a notificar, quando estrangeiro<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA
      **/
-    private String prazoEntrega = null;
+    private String paisParteNotificarEstrangeiro = null;
 
     @XmlElement(name = "paisRemetente", required = true)
     @ApiModelProperty(example = "BR", required = true, value = "Sigla do país do remetente da carga<br/>Pais informado deve existir na tabela de países ISO3166 - ALFA2<br/> Formato: AA")
@@ -530,12 +567,13 @@ public class ManifestoCrt {
      * Peso bruto da carga em KG<br/>Formato: Número Racional com 9 casas inteiras e 3 casas decimais
      **/
     private BigDecimal pesoBrutoKg = null;
-    @XmlElement(name = "tipoTransporteTransportador", required = true)
-    @ApiModelProperty(example = "REG", required = true, value = "Tipo de transporte do transportador<br/>REG = Regular PRO=próprio OCA=Ocasional<br/> Tamanho Máximo: 3")
+
+    @XmlElement(name = "prazoEntrega")
+    @ApiModelProperty(example = "20240524", value = "Data em que o transportador se compromete com a  entrega da carga<br/>Formato: yyyyMMddHHmmss")
     /**
-     * Tipo de transporte do transportador<br/>REG = Regular PRO=próprio OCA=Ocasional<br/> Tamanho Máximo: 3
+     * Data em que o transportador se compromete com a  entrega da carga<br/>Formato: yyyyMMddHHmmss
      **/
-    private TipoTransporteTransportadorEnum tipoTransporteTransportador = null;
+    private String prazoEntrega = null;
 
     @XmlElement(name = "ruaConsignatario")
     @ApiModelProperty(value = "Rua do endereço do consignatário estrangeiro <br/> Tamanho Máximo: 150")
@@ -578,13 +616,53 @@ public class ManifestoCrt {
      * Telefone da parte a notificar<br/>Precisar ter no mínimo 12 números, podendo começar com +<br/> Tamanho Máximo: 16
      **/
     private String telefoneParteNotificar = null;
-    @XmlElement(name = "valorFreteDestinatario")
-    @ApiModelProperty(example = "3284.58", value = "Valor do frete da mercadoria do destinatário<br/>Deverá ser preenchido e diferente de zero caso o valor do frete do remetente for informado zerado<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
-    @Valid
-    /**
-     * Valor do frete da mercadoria do destinatário<br/>Deverá ser preenchido e diferente de zero caso o valor do frete do remetente for informado zerado<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     **/
-    private BigDecimal valorFreteDestinatario = null;
+
+
+    @XmlType(name = "TipoDocIdFiscalConsignatarioEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocIdFiscalConsignatarioEnum {
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("J")
+        @JsonProperty("J")
+        J("J"),
+
+        @XmlEnumValue("F")
+        @JsonProperty("F")
+        F("F"),
+
+        @XmlEnumValue("O")
+        @JsonProperty("O")
+        O("O");
+
+
+        private final String value;
+
+        TipoDocIdFiscalConsignatarioEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocIdFiscalConsignatarioEnum fromValue(String v) {
+            for (TipoDocIdFiscalConsignatarioEnum b : TipoDocIdFiscalConsignatarioEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocIdFiscalConsignatarioEnum");
+        }
+    }
 
     @XmlElement(name = "tipoDocIdFiscalConsignatario", required = true)
     @ApiModelProperty(example = "J", required = true, value = "Tipo da identificação do Consignatário da carga<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)")
@@ -592,13 +670,53 @@ public class ManifestoCrt {
      * Tipo da identificação do Consignatário da carga<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)
      **/
     private TipoDocIdFiscalConsignatarioEnum tipoDocIdFiscalConsignatario = null;
-    @XmlElement(name = "valorOutrosCustosDestinatario")
-    @ApiModelProperty(example = "3284.58", value = "Valor de outros custos do destinatario<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
-    @Valid
-    /**
-     * Valor de outros custos do destinatario<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
-     **/
-    private BigDecimal valorOutrosCustosDestinatario = null;
+
+
+    @XmlType(name = "TipoDocIdFiscalParteNotificarEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocIdFiscalParteNotificarEnum {
+
+        @XmlEnumValue("P")
+        @JsonProperty("P")
+        P("P"),
+
+        @XmlEnumValue("J")
+        @JsonProperty("J")
+        J("J"),
+
+        @XmlEnumValue("F")
+        @JsonProperty("F")
+        F("F"),
+
+        @XmlEnumValue("O")
+        @JsonProperty("O")
+        O("O");
+
+
+        private final String value;
+
+        TipoDocIdFiscalParteNotificarEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocIdFiscalParteNotificarEnum fromValue(String v) {
+            for (TipoDocIdFiscalParteNotificarEnum b : TipoDocIdFiscalParteNotificarEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocIdFiscalParteNotificarEnum");
+        }
+    }
 
     @XmlElement(name = "tipoDocIdFiscalParteNotificar")
     @ApiModelProperty(value = "Tipo do documento de identificação da parte a notificfar<br/> \"F\" (CPF), \"J\" (CNPJ),\"P\" (passaporte), \"O\" (outros)")
@@ -607,15 +725,51 @@ public class ManifestoCrt {
      **/
     private TipoDocIdFiscalParteNotificarEnum tipoDocIdFiscalParteNotificar = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoItemCRTEnum")
+    @XmlEnum(String.class)
+    public enum TipoItemCRTEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2"),
+
+        @XmlEnumValue("3")
+        @JsonProperty("3")
+        _3("3"),
+
+        @XmlEnumValue("4")
+        @JsonProperty("4")
+        _4("4");
+
+
+        private final String value;
+
+        TipoItemCRTEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoItemCRTEnum fromValue(String v) {
+            for (TipoItemCRTEnum b : TipoItemCRTEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoItemCRTEnum");
+        }
     }
 
     @XmlElement(name = "tipoItemCRT", required = true)
@@ -625,19 +779,55 @@ public class ManifestoCrt {
      **/
     private TipoItemCRTEnum tipoItemCRT = null;
 
-    /**
-     * Código postal do endereço do consignatário  estrangeiro&lt;br/&gt; Tamanho Máximo: 8
-     *
-     * @return codigoPostalConsignatario
-     **/
-    @JsonProperty("codigoPostalConsignatario")
-    public String getCodigoPostalConsignatario() {
-        return codigoPostalConsignatario;
+
+    @XmlType(name = "TipoTransporteTransportadorEnum")
+    @XmlEnum(String.class)
+    public enum TipoTransporteTransportadorEnum {
+
+        @XmlEnumValue("REG")
+        @JsonProperty("REG")
+        REG("REG"),
+
+        @XmlEnumValue("OCA")
+        @JsonProperty("OCA")
+        OCA("OCA"),
+
+        @XmlEnumValue("PRO")
+        @JsonProperty("PRO")
+        PRO("PRO");
+
+
+        private final String value;
+
+        TipoTransporteTransportadorEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
     }
 
-    public void setCodigoPostalConsignatario(String codigoPostalConsignatario) {
-        this.codigoPostalConsignatario = codigoPostalConsignatario;
+        public static TipoTransporteTransportadorEnum fromValue(String v) {
+            for (TipoTransporteTransportadorEnum b : TipoTransporteTransportadorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTransporteTransportadorEnum");
+        }
     }
+
+    @XmlElement(name = "tipoTransporteTransportador", required = true)
+    @ApiModelProperty(example = "REG", required = true, value = "Tipo de transporte do transportador<br/>REG = Regular PRO=próprio OCA=Ocasional<br/> Tamanho Máximo: 3")
+    /**
+     * Tipo de transporte do transportador<br/>REG = Regular PRO=próprio OCA=Ocasional<br/> Tamanho Máximo: 3
+     **/
+    private TipoTransporteTransportadorEnum tipoTransporteTransportador = null;
 
     @XmlElement(name = "transportadorNacBrasileira", required = true)
     @ApiModelProperty(required = true, value = "Indica que o transportador da carga é brasileiro")
@@ -651,10 +841,13 @@ public class ManifestoCrt {
     @Valid
     private List<TransportadorSucessivo> transportadoresSucessivos = null;
 
-    public ManifestoCrt codigoPostalConsignatario(String codigoPostalConsignatario) {
-        this.codigoPostalConsignatario = codigoPostalConsignatario;
-        return this;
-    }
+    @XmlElement(name = "valorFreteDestinatario")
+    @ApiModelProperty(example = "3284.58", value = "Valor do frete da mercadoria do destinatário<br/>Deverá ser preenchido e diferente de zero caso o valor do frete do remetente for informado zerado<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
+    @Valid
+    /**
+     * Valor do frete da mercadoria do destinatário<br/>Deverá ser preenchido e diferente de zero caso o valor do frete do remetente for informado zerado<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
+     **/
+    private BigDecimal valorFreteDestinatario = null;
 
     @XmlElement(name = "valorFreteExterno", required = true)
     @ApiModelProperty(example = "3284.58", required = true, value = "Valor do frete externo da mercadoria<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
@@ -688,15 +881,13 @@ public class ManifestoCrt {
      **/
     private BigDecimal valorMercadoriaLocalEmbarque = null;
 
+    @XmlElement(name = "valorOutrosCustosDestinatario")
+    @ApiModelProperty(example = "3284.58", value = "Valor de outros custos do destinatario<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
+    @Valid
     /**
-     * Código postal do endereço do destinatário da cargaObrigatorio para destinatário brasileiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; true)&lt;br/&gt; Tamanho Máximo: 8
-     *
-     * @return codigoPostalDestinatario
+     * Valor de outros custos do destinatario<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais
      **/
-    @JsonProperty("codigoPostalDestinatario")
-    public String getCodigoPostalDestinatario() {
-        return codigoPostalDestinatario;
-    }
+    private BigDecimal valorOutrosCustosDestinatario = null;
 
     @XmlElement(name = "valorOutrosCustosRemetente")
     @ApiModelProperty(example = "3284.58", value = "Valor de outros custos do remetente<br/>Moeda informada deverá ser um código  na tabela de moedas (TABX)<br/>Formato: Número Racional com 12 casas inteiras e 2 casas decimais")
@@ -959,6 +1150,44 @@ public class ManifestoCrt {
     }
 
     /**
+     * Código postal do endereço do consignatário  estrangeiro&lt;br/&gt; Tamanho Máximo: 8
+     *
+     * @return codigoPostalConsignatario
+     **/
+    @JsonProperty("codigoPostalConsignatario")
+    public String getCodigoPostalConsignatario() {
+        return codigoPostalConsignatario;
+    }
+
+    public void setCodigoPostalConsignatario(String codigoPostalConsignatario) {
+        this.codigoPostalConsignatario = codigoPostalConsignatario;
+    }
+
+    public ManifestoCrt codigoPostalConsignatario(String codigoPostalConsignatario) {
+        this.codigoPostalConsignatario = codigoPostalConsignatario;
+        return this;
+    }
+
+    /**
+     * Código postal do endereço do destinatário da cargaObrigatorio para destinatário brasileiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; true)&lt;br/&gt; Tamanho Máximo: 8
+     *
+     * @return codigoPostalDestinatario
+     **/
+    @JsonProperty("codigoPostalDestinatario")
+    public String getCodigoPostalDestinatario() {
+        return codigoPostalDestinatario;
+    }
+
+    public void setCodigoPostalDestinatario(String codigoPostalDestinatario) {
+        this.codigoPostalDestinatario = codigoPostalDestinatario;
+    }
+
+    public ManifestoCrt codigoPostalDestinatario(String codigoPostalDestinatario) {
+        this.codigoPostalDestinatario = codigoPostalDestinatario;
+        return this;
+    }
+
+    /**
      * Código postal da parte a notificar, quando estrangeiro&lt;br/&gt; Tamanho Máximo: 8
      *
      * @return codigoPostalParteNotificarEstrangeiro
@@ -975,45 +1204,6 @@ public class ManifestoCrt {
     public ManifestoCrt codigoPostalParteNotificarEstrangeiro(String codigoPostalParteNotificarEstrangeiro) {
         this.codigoPostalParteNotificarEstrangeiro = codigoPostalParteNotificarEstrangeiro;
         return this;
-    }
-
-    /**
-     * Data de emissão do conhecimento&lt;br/&gt;A data de emissão não pode ser anterior à Data de Implantação do sistema CCT rodoviário menos um mês.  &lt;br/&gt;A data de emissão não pode ser posterior à data atual&lt;br/&gt;(utilizar como chave junto com numero do CRT apenas a a data AAAAMMDD&lt;br/&gt;Formato: yyyyMMddHHmmssZ
-     *
-     * @return dataEmissao
-     **/
-    @JsonProperty("dataEmissao")
-    @NotNull
-    public String getDataEmissao() {
-        return dataEmissao;
-    }
-
-    public void setCodigoPostalDestinatario(String codigoPostalDestinatario) {
-        this.codigoPostalDestinatario = codigoPostalDestinatario;
-    }
-
-    public ManifestoCrt codigoPostalDestinatario(String codigoPostalDestinatario) {
-        this.codigoPostalDestinatario = codigoPostalDestinatario;
-        return this;
-    }
-
-    public void setDataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-    }
-
-    public ManifestoCrt dataEmissao(String dataEmissao) {
-        this.dataEmissao = dataEmissao;
-        return this;
-    }
-
-    /**
-     * Data/Hora que o remetente assinou o documento&lt;br/&gt;Formato: yyyyMMddHHmmssZ
-     *
-     * @return dataHoraAssinaturaRemetente
-     **/
-    @JsonProperty("dataHoraAssinaturaRemetente")
-    public String getDataHoraAssinaturaRemetente() {
-        return dataHoraAssinaturaRemetente;
     }
 
     /**
@@ -1035,23 +1225,24 @@ public class ManifestoCrt {
         return this;
     }
 
-    public void setDataHoraAssinaturaRemetente(String dataHoraAssinaturaRemetente) {
-        this.dataHoraAssinaturaRemetente = dataHoraAssinaturaRemetente;
-    }
-
-    public ManifestoCrt dataHoraAssinaturaRemetente(String dataHoraAssinaturaRemetente) {
-        this.dataHoraAssinaturaRemetente = dataHoraAssinaturaRemetente;
-        return this;
-    }
-
     /**
-     * Identificacao do transportador estrangeiro&lt;br/&gt;Se campo transportadorNacBrasileira  igual a \&quot;false\&quot; ( Transportador estrangeiro) é obrigatório o preenchimento.&lt;br/&gt; Tamanho Máximo: 20
+     * Data de emissão do conhecimento&lt;br/&gt;A data de emissão não pode ser anterior à Data de Implantação do sistema CCT rodoviário menos um mês.  &lt;br/&gt;A data de emissão não pode ser posterior à data atual&lt;br/&gt;(utilizar como chave junto com numero do CRT apenas a a data AAAAMMDD&lt;br/&gt;Formato: yyyyMMddHHmmssZ
      *
-     * @return identificacaoTransportadorEstrangeiro
+     * @return dataEmissao
      **/
-    @JsonProperty("identificacaoTransportadorEstrangeiro")
-    public String getIdentificacaoTransportadorEstrangeiro() {
-        return identificacaoTransportadorEstrangeiro;
+    @JsonProperty("dataEmissao")
+    @NotNull
+    public String getDataEmissao() {
+        return dataEmissao;
+    }
+
+    public void setDataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+    }
+
+    public ManifestoCrt dataEmissao(String dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
     }
 
     /**
@@ -1072,27 +1263,23 @@ public class ManifestoCrt {
         return this;
     }
 
-    public void setIdentificacaoTransportadorEstrangeiro(String identificacaoTransportadorEstrangeiro) {
-        this.identificacaoTransportadorEstrangeiro = identificacaoTransportadorEstrangeiro;
-    }
-
-    public ManifestoCrt identificacaoTransportadorEstrangeiro(String identificacaoTransportadorEstrangeiro) {
-        this.identificacaoTransportadorEstrangeiro = identificacaoTransportadorEstrangeiro;
-        return this;
-    }
-
     /**
-     * Incoterms do valor: tipos FCA ou EX&lt;br/&gt; Tamanho: 3
+     * Data/Hora que o remetente assinou o documento&lt;br/&gt;Formato: yyyyMMddHHmmssZ
      *
-     * @return incotermLocalEmbarque
+     * @return dataHoraAssinaturaRemetente
      **/
-    @JsonProperty("incotermLocalEmbarque")
-    @NotNull
-    public String getIncotermLocalEmbarque() {
-        if (incotermLocalEmbarque == null) {
-            return null;
-        }
-        return incotermLocalEmbarque.value();
+    @JsonProperty("dataHoraAssinaturaRemetente")
+    public String getDataHoraAssinaturaRemetente() {
+        return dataHoraAssinaturaRemetente;
+    }
+
+    public void setDataHoraAssinaturaRemetente(String dataHoraAssinaturaRemetente) {
+        this.dataHoraAssinaturaRemetente = dataHoraAssinaturaRemetente;
+    }
+
+    public ManifestoCrt dataHoraAssinaturaRemetente(String dataHoraAssinaturaRemetente) {
+        this.dataHoraAssinaturaRemetente = dataHoraAssinaturaRemetente;
+        return this;
     }
 
     /**
@@ -1379,23 +1566,23 @@ public class ManifestoCrt {
         return this;
     }
 
-    public void setIncotermLocalEmbarque(IncotermLocalEmbarqueEnum incotermLocalEmbarque) {
-        this.incotermLocalEmbarque = incotermLocalEmbarque;
-    }
-
-    public ManifestoCrt incotermLocalEmbarque(IncotermLocalEmbarqueEnum incotermLocalEmbarque) {
-        this.incotermLocalEmbarque = incotermLocalEmbarque;
-        return this;
-    }
-
     /**
-     * Local de assinatura do destinatário&lt;br/&gt; Tamanho Máximo: 35
+     * Identificacao do transportador estrangeiro&lt;br/&gt;Se campo transportadorNacBrasileira  igual a \&quot;false\&quot; ( Transportador estrangeiro) é obrigatório o preenchimento.&lt;br/&gt; Tamanho Máximo: 20
      *
-     * @return localAssinaturaDestinatario
+     * @return identificacaoTransportadorEstrangeiro
      **/
-    @JsonProperty("localAssinaturaDestinatario")
-    public String getLocalAssinaturaDestinatario() {
-        return localAssinaturaDestinatario;
+    @JsonProperty("identificacaoTransportadorEstrangeiro")
+    public String getIdentificacaoTransportadorEstrangeiro() {
+        return identificacaoTransportadorEstrangeiro;
+    }
+
+    public void setIdentificacaoTransportadorEstrangeiro(String identificacaoTransportadorEstrangeiro) {
+        this.identificacaoTransportadorEstrangeiro = identificacaoTransportadorEstrangeiro;
+    }
+
+    public ManifestoCrt identificacaoTransportadorEstrangeiro(String identificacaoTransportadorEstrangeiro) {
+        this.identificacaoTransportadorEstrangeiro = identificacaoTransportadorEstrangeiro;
+        return this;
     }
 
     /**
@@ -1453,27 +1640,25 @@ public class ManifestoCrt {
     }
 
     /**
-     * Get manuseiosEspeciaisCarga
-     *
-     * @return manuseiosEspeciaisCarga
+     * Incoterms do valor: tipos FCA ou EX&lt;br/&gt; Tamanho: 3
+     * @return incotermLocalEmbarque
      **/
-    @JsonProperty("manuseiosEspeciaisCarga")
-    public List<ManuseioEspecialCarga> getManuseiosEspeciaisCarga() {
-        return manuseiosEspeciaisCarga;
+    @JsonProperty("incotermLocalEmbarque")
+    @NotNull
+    public String getIncotermLocalEmbarque() {
+        if (incotermLocalEmbarque == null) {
+            return null;
+        }
+        return incotermLocalEmbarque.value();
     }
 
-    /**
-     * Get mercadorias
-     *
-     * @return mercadorias
-     **/
-    @JsonProperty("mercadorias")
-    public List<Mercadoria> getMercadorias() {
-        return mercadorias;
+    public void setIncotermLocalEmbarque(IncotermLocalEmbarqueEnum incotermLocalEmbarque) {
+        this.incotermLocalEmbarque = incotermLocalEmbarque;
     }
 
-    public void setMercadorias(List<Mercadoria> mercadorias) {
-        this.mercadorias = mercadorias;
+    public ManifestoCrt incotermLocalEmbarque(IncotermLocalEmbarqueEnum incotermLocalEmbarque) {
+        this.incotermLocalEmbarque = incotermLocalEmbarque;
+        return this;
     }
 
     /**
@@ -1555,9 +1740,14 @@ public class ManifestoCrt {
         return this;
     }
 
-    public ManifestoCrt mercadorias(List<Mercadoria> mercadorias) {
-        this.mercadorias = mercadorias;
-        return this;
+    /**
+     * Local de assinatura do destinatário&lt;br/&gt; Tamanho Máximo: 35
+     *
+     * @return localAssinaturaDestinatario
+     **/
+    @JsonProperty("localAssinaturaDestinatario")
+    public String getLocalAssinaturaDestinatario() {
+        return localAssinaturaDestinatario;
     }
 
     public void setLocalAssinaturaDestinatario(String localAssinaturaDestinatario) {
@@ -1571,6 +1761,7 @@ public class ManifestoCrt {
 
     /**
      * Local de assinatura do remetente&lt;br/&gt; Tamanho Máximo: 35
+     *
      * @return localAssinaturaRemetente
      **/
     @JsonProperty("localAssinaturaRemetente")
@@ -1587,9 +1778,14 @@ public class ManifestoCrt {
         return this;
     }
 
-    public ManifestoCrt addMercadoriasItem(Mercadoria mercadoriasItem) {
-        this.mercadorias.add(mercadoriasItem);
-        return this;
+    /**
+     * Get manuseiosEspeciaisCarga
+     *
+     * @return manuseiosEspeciaisCarga
+     **/
+    @JsonProperty("manuseiosEspeciaisCarga")
+    public List<ManuseioEspecialCarga> getManuseiosEspeciaisCarga() {
+        return manuseiosEspeciaisCarga;
     }
 
     public void setManuseiosEspeciaisCarga(List<ManuseioEspecialCarga> manuseiosEspeciaisCarga) {
@@ -1607,32 +1803,27 @@ public class ManifestoCrt {
     }
 
     /**
-     * Código da moeda do frete da mercadoria do remetente&lt;br/&gt;Formato: AAA
+     * Get mercadorias
      *
-     * @return moedaFreteRemetente
+     * @return mercadorias
      **/
-    @JsonProperty("moedaFreteRemetente")
-    public String getMoedaFreteRemetente() {
-        return moedaFreteRemetente;
+    @JsonProperty("mercadorias")
+    public List<Mercadoria> getMercadorias() {
+        return mercadorias;
     }
 
-    public void setMoedaFreteRemetente(String moedaFreteRemetente) {
-        this.moedaFreteRemetente = moedaFreteRemetente;
+    public void setMercadorias(List<Mercadoria> mercadorias) {
+        this.mercadorias = mercadorias;
     }
 
-    public ManifestoCrt moedaFreteRemetente(String moedaFreteRemetente) {
-        this.moedaFreteRemetente = moedaFreteRemetente;
+    public ManifestoCrt mercadorias(List<Mercadoria> mercadorias) {
+        this.mercadorias = mercadorias;
         return this;
     }
 
-    /**
-     * Código da moeda do valor das mercadorias declarado pelo remetente&lt;br/&gt;Formato: AAA
-     *
-     * @return moedaMercadoriaDeclaradoRemetente
-     **/
-    @JsonProperty("moedaMercadoriaDeclaradoRemetente")
-    public String getMoedaMercadoriaDeclaradoRemetente() {
-        return moedaMercadoriaDeclaradoRemetente;
+    public ManifestoCrt addMercadoriasItem(Mercadoria mercadoriasItem) {
+        this.mercadorias.add(mercadoriasItem);
+        return this;
     }
 
     /**
@@ -1673,33 +1864,30 @@ public class ManifestoCrt {
     }
 
     /**
-     * Nome do remetente que assinou o documento&lt;br/&gt; Tamanho Máximo: 35
-     *
-     * @return nomeAssinaturaRemetente
+     * Código da moeda do frete da mercadoria do remetente&lt;br/&gt;Formato: AAA
+     * @return moedaFreteRemetente
      **/
-    @JsonProperty("nomeAssinaturaRemetente")
-    public String getNomeAssinaturaRemetente() {
-        return nomeAssinaturaRemetente;
+    @JsonProperty("moedaFreteRemetente")
+    public String getMoedaFreteRemetente() {
+        return moedaFreteRemetente;
     }
 
-    public void setNomeAssinaturaRemetente(String nomeAssinaturaRemetente) {
-        this.nomeAssinaturaRemetente = nomeAssinaturaRemetente;
+    public void setMoedaFreteRemetente(String moedaFreteRemetente) {
+        this.moedaFreteRemetente = moedaFreteRemetente;
     }
 
-    public ManifestoCrt nomeAssinaturaRemetente(String nomeAssinaturaRemetente) {
-        this.nomeAssinaturaRemetente = nomeAssinaturaRemetente;
+    public ManifestoCrt moedaFreteRemetente(String moedaFreteRemetente) {
+        this.moedaFreteRemetente = moedaFreteRemetente;
         return this;
     }
 
     /**
-     * Código do país de emissão do CRT&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
-     * @return paisEmissao
+     * Código da moeda do valor das mercadorias declarado pelo remetente&lt;br/&gt;Formato: AAA
+     * @return moedaMercadoriaDeclaradoRemetente
      **/
-    @JsonProperty("paisEmissao")
-    @NotNull
-    public String getPaisEmissao() {
-        return paisEmissao;
+    @JsonProperty("moedaMercadoriaDeclaradoRemetente")
+    public String getMoedaMercadoriaDeclaradoRemetente() {
+        return moedaMercadoriaDeclaradoRemetente;
     }
 
     public void setMoedaMercadoriaDeclaradoRemetente(String moedaMercadoriaDeclaradoRemetente) {
@@ -1732,6 +1920,7 @@ public class ManifestoCrt {
 
     /**
      * Código da moeda de outros custos do destinatario&lt;br/&gt;Formato: AAA
+     *
      * @return moedaOutrosCustosDestinatario
      **/
     @JsonProperty("moedaOutrosCustosDestinatario")
@@ -1838,28 +2027,28 @@ public class ManifestoCrt {
         return this;
     }
 
-    public void setPaisEmissao(String paisEmissao) {
-        this.paisEmissao = paisEmissao;
+    /**
+     * Nome do remetente que assinou o documento&lt;br/&gt; Tamanho Máximo: 35
+     *
+     * @return nomeAssinaturaRemetente
+     **/
+    @JsonProperty("nomeAssinaturaRemetente")
+    public String getNomeAssinaturaRemetente() {
+        return nomeAssinaturaRemetente;
     }
 
-    public ManifestoCrt paisEmissao(String paisEmissao) {
-        this.paisEmissao = paisEmissao;
+    public void setNomeAssinaturaRemetente(String nomeAssinaturaRemetente) {
+        this.nomeAssinaturaRemetente = nomeAssinaturaRemetente;
+    }
+
+    public ManifestoCrt nomeAssinaturaRemetente(String nomeAssinaturaRemetente) {
+        this.nomeAssinaturaRemetente = nomeAssinaturaRemetente;
         return this;
     }
 
     /**
-     * sigla do país de entrega da carga&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
-     * @return paisEntrega
-     **/
-    @JsonProperty("paisEntrega")
-    @NotNull
-    public String getPaisEntrega() {
-        return paisEntrega;
-    }
-
-    /**
      * Nome do transportador que assinou o documento&lt;br/&gt; Tamanho Máximo: 35
+     *
      * @return nomeAssinaturaTransportador
      **/
     @JsonProperty("nomeAssinaturaTransportador")
@@ -1879,7 +2068,6 @@ public class ManifestoCrt {
 
     /**
      * Nome do consignatário estrangeiro &lt;br/&gt; Tamanho Máximo: 60
-     *
      * @return nomeConsignatario
      **/
     @JsonProperty("nomeConsignatario")
@@ -1934,6 +2122,7 @@ public class ManifestoCrt {
 
     /**
      * Nome do remetente da carga&lt;br/&gt; Tamanho Máximo: 60
+     *
      * @return nomeRemetente
      **/
     @JsonProperty("nomeRemetente")
@@ -2006,32 +2195,32 @@ public class ManifestoCrt {
     }
 
     /**
-     * País da parte a notificar, quando estrangeiro&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
-     *
-     * @return paisParteNotificarEstrangeiro
+     * Código do país de emissão do CRT&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
+     * @return paisEmissao
      **/
-    @JsonProperty("paisParteNotificarEstrangeiro")
-    public String getPaisParteNotificarEstrangeiro() {
-        return paisParteNotificarEstrangeiro;
+    @JsonProperty("paisEmissao")
+    @NotNull
+    public String getPaisEmissao() {
+        return paisEmissao;
     }
 
-    public void setPaisParteNotificarEstrangeiro(String paisParteNotificarEstrangeiro) {
-        this.paisParteNotificarEstrangeiro = paisParteNotificarEstrangeiro;
+    public void setPaisEmissao(String paisEmissao) {
+        this.paisEmissao = paisEmissao;
     }
 
-    public ManifestoCrt paisParteNotificarEstrangeiro(String paisParteNotificarEstrangeiro) {
-        this.paisParteNotificarEstrangeiro = paisParteNotificarEstrangeiro;
+    public ManifestoCrt paisEmissao(String paisEmissao) {
+        this.paisEmissao = paisEmissao;
         return this;
     }
 
     /**
-     * Rua do endereço do destinatário da carga&lt;/br&gt;Obrigatorio para destinatário estrangeiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
-     *
-     * @return ruaDestinatario
+     * sigla do país de entrega da carga&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
+     * @return paisEntrega
      **/
-    @JsonProperty("ruaDestinatario")
-    public String getRuaDestinatario() {
-        return ruaDestinatario;
+    @JsonProperty("paisEntrega")
+    @NotNull
+    public String getPaisEntrega() {
+        return paisEntrega;
     }
 
     public void setPaisEntrega(String paisEntrega) {
@@ -2062,119 +2251,23 @@ public class ManifestoCrt {
         return this;
     }
 
-    public void setRuaDestinatario(String ruaDestinatario) {
-        this.ruaDestinatario = ruaDestinatario;
+    /**
+     * País da parte a notificar, quando estrangeiro&lt;br/&gt;Pais informado deve existir na tabela de países ISO3166 - ALFA2&lt;br/&gt; Formato: AA
+     *
+     * @return paisParteNotificarEstrangeiro
+     **/
+    @JsonProperty("paisParteNotificarEstrangeiro")
+    public String getPaisParteNotificarEstrangeiro() {
+        return paisParteNotificarEstrangeiro;
     }
 
-    public ManifestoCrt ruaDestinatario(String ruaDestinatario) {
-        this.ruaDestinatario = ruaDestinatario;
+    public void setPaisParteNotificarEstrangeiro(String paisParteNotificarEstrangeiro) {
+        this.paisParteNotificarEstrangeiro = paisParteNotificarEstrangeiro;
+    }
+
+    public ManifestoCrt paisParteNotificarEstrangeiro(String paisParteNotificarEstrangeiro) {
+        this.paisParteNotificarEstrangeiro = paisParteNotificarEstrangeiro;
         return this;
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class ManifestoCrt {\n" +
-                "    bairroConsignatario: " + toIndentedString(bairroConsignatario) + "\n" +
-                "    bairroDestinatario: " + toIndentedString(bairroDestinatario) + "\n" +
-                "    bairroParteNotificarEstrangeiro: " + toIndentedString(bairroParteNotificarEstrangeiro) + "\n" +
-                "    bairroRemetente: " + toIndentedString(bairroRemetente) + "\n" +
-                "    cidadeConsignatario: " + toIndentedString(cidadeConsignatario) + "\n" +
-                "    cidadeDestinatario: " + toIndentedString(cidadeDestinatario) + "\n" +
-                "    cidadeEmissao: " + toIndentedString(cidadeEmissao) + "\n" +
-                "    cidadeEntrega: " + toIndentedString(cidadeEntrega) + "\n" +
-                "    cidadeParteNotificarEstrangeiro: " + toIndentedString(cidadeParteNotificarEstrangeiro) + "\n" +
-                "    cidadeRemetente: " + toIndentedString(cidadeRemetente) + "\n" +
-                "    cidadeTranspResponsMercadoria: " + toIndentedString(cidadeTranspResponsMercadoria) + "\n" +
-                "    codigoPostalConsignatario: " + toIndentedString(codigoPostalConsignatario) + "\n" +
-                "    codigoPostalDestinatario: " + toIndentedString(codigoPostalDestinatario) + "\n" +
-                "    codigoPostalParteNotificarEstrangeiro: " + toIndentedString(codigoPostalParteNotificarEstrangeiro) + "\n" +
-                "    codigoPostalRemetente: " + toIndentedString(codigoPostalRemetente) + "\n" +
-                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
-                "    dataHoraAssinaturaDestinatario: " + toIndentedString(dataHoraAssinaturaDestinatario) + "\n" +
-                "    dataHoraAssinaturaRemetente: " + toIndentedString(dataHoraAssinaturaRemetente) + "\n" +
-                "    dataHoraTranspResponsMercadoria: " + toIndentedString(dataHoraTranspResponsMercadoria) + "\n" +
-                "    declaracaoObservacao: " + toIndentedString(declaracaoObservacao) + "\n" +
-                "    destinatarioNacBrasileira: " + toIndentedString(destinatarioNacBrasileira) + "\n" +
-                "    documentosApresentados: " + toIndentedString(documentosApresentados) + "\n" +
-                "    emailParteNotificar: " + toIndentedString(emailParteNotificar) + "\n" +
-                "    estadoConsignatario: " + toIndentedString(estadoConsignatario) + "\n" +
-                "    estadoDestinatario: " + toIndentedString(estadoDestinatario) + "\n" +
-                "    estadoParteNotificarEstrangeiro: " + toIndentedString(estadoParteNotificarEstrangeiro) + "\n" +
-                "    estadoRemetente: " + toIndentedString(estadoRemetente) + "\n" +
-                "    idFiscalConsignatario: " + toIndentedString(idFiscalConsignatario) + "\n" +
-                "    idFiscalDestinatario: " + toIndentedString(idFiscalDestinatario) + "\n" +
-                "    idFiscalParteNotificar: " + toIndentedString(idFiscalParteNotificar) + "\n" +
-                "    idFiscalRemetente: " + toIndentedString(idFiscalRemetente) + "\n" +
-                "    identificacaoCrt: " + toIndentedString(identificacaoCrt) + "\n" +
-                "    identificacaoRepresentanteTransportadorEstrangeiro: " + toIndentedString(identificacaoRepresentanteTransportadorEstrangeiro) + "\n" +
-                "    identificacaoTransportadorEstrangeiro: " + toIndentedString(identificacaoTransportadorEstrangeiro) + "\n" +
-                "    identificacaoTransportadorNacional: " + toIndentedString(identificacaoTransportadorNacional) + "\n" +
-                "    inConsignatarioNacBrasileira: " + toIndentedString(inConsignatarioNacBrasileira) + "\n" +
-                "    inParteNotificarNacBrasileira: " + toIndentedString(inParteNotificarNacBrasileira) + "\n" +
-                "    incotermLocalEmbarque: " + toIndentedString(incotermLocalEmbarque) + "\n" +
-                "    instrucaoFormalidadeAlfandega: " + toIndentedString(instrucaoFormalidadeAlfandega) + "\n" +
-                "    itensCRT: " + toIndentedString(itensCRT) + "\n" +
-                "    licencaComplementarTransportador: " + toIndentedString(licencaComplementarTransportador) + "\n" +
-                "    licencaOriginariaTransportador: " + toIndentedString(licencaOriginariaTransportador) + "\n" +
-                "    localAssinaturaDestinatario: " + toIndentedString(localAssinaturaDestinatario) + "\n" +
-                "    localAssinaturaRemetente: " + toIndentedString(localAssinaturaRemetente) + "\n" +
-                "    manuseiosEspeciaisCarga: " + toIndentedString(manuseiosEspeciaisCarga) + "\n" +
-                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
-                "    moedaFreteDestinatario: " + toIndentedString(moedaFreteDestinatario) + "\n" +
-                "    moedaFreteExterno: " + toIndentedString(moedaFreteExterno) + "\n" +
-                "    moedaFreteRemetente: " + toIndentedString(moedaFreteRemetente) + "\n" +
-                "    moedaMercadoriaDeclaradoRemetente: " + toIndentedString(moedaMercadoriaDeclaradoRemetente) + "\n" +
-                "    moedaMercadoriaLocalEmbarque: " + toIndentedString(moedaMercadoriaLocalEmbarque) + "\n" +
-                "    moedaOutrosCustosDestinatario: " + toIndentedString(moedaOutrosCustosDestinatario) + "\n" +
-                "    moedaOutrosCustosRemetente: " + toIndentedString(moedaOutrosCustosRemetente) + "\n" +
-                "    moedaReembolso: " + toIndentedString(moedaReembolso) + "\n" +
-                "    moedaSeguroDestinatario: " + toIndentedString(moedaSeguroDestinatario) + "\n" +
-                "    moedaSeguroRemetente: " + toIndentedString(moedaSeguroRemetente) + "\n" +
-                "    nomeAssinaturaDestinatario: " + toIndentedString(nomeAssinaturaDestinatario) + "\n" +
-                "    nomeAssinaturaRemetente: " + toIndentedString(nomeAssinaturaRemetente) + "\n" +
-                "    nomeAssinaturaTransportador: " + toIndentedString(nomeAssinaturaTransportador) + "\n" +
-                "    nomeConsignatario: " + toIndentedString(nomeConsignatario) + "\n" +
-                "    nomeDestinatario: " + toIndentedString(nomeDestinatario) + "\n" +
-                "    nomeParteNotificarEstrangeiro: " + toIndentedString(nomeParteNotificarEstrangeiro) + "\n" +
-                "    nomeRemetente: " + toIndentedString(nomeRemetente) + "\n" +
-                "    nomeTransportadorEstrangeiro: " + toIndentedString(nomeTransportadorEstrangeiro) + "\n" +
-                "    paisConsignatario: " + toIndentedString(paisConsignatario) + "\n" +
-                "    paisDestinatario: " + toIndentedString(paisDestinatario) + "\n" +
-                "    paisEmissao: " + toIndentedString(paisEmissao) + "\n" +
-                "    paisEntrega: " + toIndentedString(paisEntrega) + "\n" +
-                "    paisOrigemMercadoria: " + toIndentedString(paisOrigemMercadoria) + "\n" +
-                "    paisParteNotificarEstrangeiro: " + toIndentedString(paisParteNotificarEstrangeiro) + "\n" +
-                "    paisRemetente: " + toIndentedString(paisRemetente) + "\n" +
-                "    paisTranspResponsMercadoria: " + toIndentedString(paisTranspResponsMercadoria) + "\n" +
-                "    pesoBrutoKg: " + toIndentedString(pesoBrutoKg) + "\n" +
-                "    prazoEntrega: " + toIndentedString(prazoEntrega) + "\n" +
-                "    ruaConsignatario: " + toIndentedString(ruaConsignatario) + "\n" +
-                "    ruaDestinatario: " + toIndentedString(ruaDestinatario) + "\n" +
-                "    ruaParteNotificarEstrangeiro: " + toIndentedString(ruaParteNotificarEstrangeiro) + "\n" +
-                "    ruaRemetente: " + toIndentedString(ruaRemetente) + "\n" +
-                "    ruc: " + toIndentedString(ruc) + "\n" +
-                "    telefoneParteNotificar: " + toIndentedString(telefoneParteNotificar) + "\n" +
-                "    tipoDocIdFiscalConsignatario: " + toIndentedString(tipoDocIdFiscalConsignatario) + "\n" +
-                "    tipoDocIdFiscalParteNotificar: " + toIndentedString(tipoDocIdFiscalParteNotificar) + "\n" +
-                "    tipoItemCRT: " + toIndentedString(tipoItemCRT) + "\n" +
-                "    tipoTransporteTransportador: " + toIndentedString(tipoTransporteTransportador) + "\n" +
-                "    transportadorNacBrasileira: " + toIndentedString(transportadorNacBrasileira) + "\n" +
-                "    transportadoresSucessivos: " + toIndentedString(transportadoresSucessivos) + "\n" +
-                "    valorFreteDestinatario: " + toIndentedString(valorFreteDestinatario) + "\n" +
-                "    valorFreteExterno: " + toIndentedString(valorFreteExterno) + "\n" +
-                "    valorFreteRemetente: " + toIndentedString(valorFreteRemetente) + "\n" +
-                "    valorMercadoriaDeclaradoRemetente: " + toIndentedString(valorMercadoriaDeclaradoRemetente) + "\n" +
-                "    valorMercadoriaLocalEmbarque: " + toIndentedString(valorMercadoriaLocalEmbarque) + "\n" +
-                "    valorOutrosCustosDestinatario: " + toIndentedString(valorOutrosCustosDestinatario) + "\n" +
-                "    valorOutrosCustosRemetente: " + toIndentedString(valorOutrosCustosRemetente) + "\n" +
-                "    valorReembolso: " + toIndentedString(valorReembolso) + "\n" +
-                "    valorSeguroDestinatario: " + toIndentedString(valorSeguroDestinatario) + "\n" +
-                "    valorSeguroRemetente: " + toIndentedString(valorSeguroRemetente) + "\n" +
-                "    visualizacaoDepositario: " + toIndentedString(visualizacaoDepositario) + "\n" +
-                "    volumeM3: " + toIndentedString(volumeM3) + "\n" +
-                "}";
-        return sb;
     }
 
     /**
@@ -2254,7 +2347,6 @@ public class ManifestoCrt {
 
     /**
      * Rua do endereço do consignatário estrangeiro &lt;br/&gt; Tamanho Máximo: 150
-     *
      * @return ruaConsignatario
      **/
     @JsonProperty("ruaConsignatario")
@@ -2271,134 +2363,23 @@ public class ManifestoCrt {
         return this;
     }
 
-    @XmlType(name = "IncotermLocalEmbarqueEnum")
-    @XmlEnum(String.class)
-    public enum IncotermLocalEmbarqueEnum {
-
-        @XmlEnumValue("FCA")
-        @JsonProperty("FCA")
-        FCA("FCA"),
-
-        @XmlEnumValue("EXW")
-        @JsonProperty("EXW")
-        EXW("EXW");
-
-
-        private final String value;
-
-        IncotermLocalEmbarqueEnum(String v) {
-            value = v;
-        }
-
-        public static IncotermLocalEmbarqueEnum fromValue(String v) {
-            for (IncotermLocalEmbarqueEnum b : IncotermLocalEmbarqueEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IncotermLocalEmbarqueEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Rua do endereço do destinatário da carga&lt;/br&gt;Obrigatorio para destinatário estrangeiro (\&quot;destinatarioNacBrasileira\&quot; &#x3D; false)&lt;br/&gt; Tamanho Máximo: 150
+     *
+     * @return ruaDestinatario
+     **/
+    @JsonProperty("ruaDestinatario")
+    public String getRuaDestinatario() {
+        return ruaDestinatario;
     }
 
-    @XmlType(name = "TipoDocIdFiscalConsignatarioEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocIdFiscalConsignatarioEnum {
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("J")
-        @JsonProperty("J")
-        J("J"),
-
-        @XmlEnumValue("F")
-        @JsonProperty("F")
-        F("F"),
-
-        @XmlEnumValue("O")
-        @JsonProperty("O")
-        O("O");
-
-
-        private final String value;
-
-        TipoDocIdFiscalConsignatarioEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDocIdFiscalConsignatarioEnum fromValue(String v) {
-            for (TipoDocIdFiscalConsignatarioEnum b : TipoDocIdFiscalConsignatarioEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocIdFiscalConsignatarioEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public void setRuaDestinatario(String ruaDestinatario) {
+        this.ruaDestinatario = ruaDestinatario;
     }
 
-    @XmlType(name = "TipoDocIdFiscalParteNotificarEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocIdFiscalParteNotificarEnum {
-
-        @XmlEnumValue("P")
-        @JsonProperty("P")
-        P("P"),
-
-        @XmlEnumValue("J")
-        @JsonProperty("J")
-        J("J"),
-
-        @XmlEnumValue("F")
-        @JsonProperty("F")
-        F("F"),
-
-        @XmlEnumValue("O")
-        @JsonProperty("O")
-        O("O");
-
-
-        private final String value;
-
-        TipoDocIdFiscalParteNotificarEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDocIdFiscalParteNotificarEnum fromValue(String v) {
-            for (TipoDocIdFiscalParteNotificarEnum b : TipoDocIdFiscalParteNotificarEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocIdFiscalParteNotificarEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    public ManifestoCrt ruaDestinatario(String ruaDestinatario) {
+        this.ruaDestinatario = ruaDestinatario;
+        return this;
     }
 
     /**
@@ -2823,91 +2804,120 @@ public class ManifestoCrt {
     }
 
 
-    @XmlType(name = "TipoItemCRTEnum")
-    @XmlEnum(String.class)
-    public enum TipoItemCRTEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2"),
-
-        @XmlEnumValue("3")
-        @JsonProperty("3")
-        _3("3"),
-
-        @XmlEnumValue("4")
-        @JsonProperty("4")
-        _4("4");
-
-
-        private final String value;
-
-        TipoItemCRTEnum(String v) {
-            value = v;
-        }
-
-        public static TipoItemCRTEnum fromValue(String v) {
-            for (TipoItemCRTEnum b : TipoItemCRTEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoItemCRTEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class ManifestoCrt {\n" +
+                "    bairroConsignatario: " + toIndentedString(bairroConsignatario) + "\n" +
+                "    bairroDestinatario: " + toIndentedString(bairroDestinatario) + "\n" +
+                "    bairroParteNotificarEstrangeiro: " + toIndentedString(bairroParteNotificarEstrangeiro) + "\n" +
+                "    bairroRemetente: " + toIndentedString(bairroRemetente) + "\n" +
+                "    cidadeConsignatario: " + toIndentedString(cidadeConsignatario) + "\n" +
+                "    cidadeDestinatario: " + toIndentedString(cidadeDestinatario) + "\n" +
+                "    cidadeEmissao: " + toIndentedString(cidadeEmissao) + "\n" +
+                "    cidadeEntrega: " + toIndentedString(cidadeEntrega) + "\n" +
+                "    cidadeParteNotificarEstrangeiro: " + toIndentedString(cidadeParteNotificarEstrangeiro) + "\n" +
+                "    cidadeRemetente: " + toIndentedString(cidadeRemetente) + "\n" +
+                "    cidadeTranspResponsMercadoria: " + toIndentedString(cidadeTranspResponsMercadoria) + "\n" +
+                "    codigoPostalConsignatario: " + toIndentedString(codigoPostalConsignatario) + "\n" +
+                "    codigoPostalDestinatario: " + toIndentedString(codigoPostalDestinatario) + "\n" +
+                "    codigoPostalParteNotificarEstrangeiro: " + toIndentedString(codigoPostalParteNotificarEstrangeiro) + "\n" +
+                "    codigoPostalRemetente: " + toIndentedString(codigoPostalRemetente) + "\n" +
+                "    dataEmissao: " + toIndentedString(dataEmissao) + "\n" +
+                "    dataHoraAssinaturaDestinatario: " + toIndentedString(dataHoraAssinaturaDestinatario) + "\n" +
+                "    dataHoraAssinaturaRemetente: " + toIndentedString(dataHoraAssinaturaRemetente) + "\n" +
+                "    dataHoraTranspResponsMercadoria: " + toIndentedString(dataHoraTranspResponsMercadoria) + "\n" +
+                "    declaracaoObservacao: " + toIndentedString(declaracaoObservacao) + "\n" +
+                "    destinatarioNacBrasileira: " + toIndentedString(destinatarioNacBrasileira) + "\n" +
+                "    documentosApresentados: " + toIndentedString(documentosApresentados) + "\n" +
+                "    emailParteNotificar: " + toIndentedString(emailParteNotificar) + "\n" +
+                "    estadoConsignatario: " + toIndentedString(estadoConsignatario) + "\n" +
+                "    estadoDestinatario: " + toIndentedString(estadoDestinatario) + "\n" +
+                "    estadoParteNotificarEstrangeiro: " + toIndentedString(estadoParteNotificarEstrangeiro) + "\n" +
+                "    estadoRemetente: " + toIndentedString(estadoRemetente) + "\n" +
+                "    idFiscalConsignatario: " + toIndentedString(idFiscalConsignatario) + "\n" +
+                "    idFiscalDestinatario: " + toIndentedString(idFiscalDestinatario) + "\n" +
+                "    idFiscalParteNotificar: " + toIndentedString(idFiscalParteNotificar) + "\n" +
+                "    idFiscalRemetente: " + toIndentedString(idFiscalRemetente) + "\n" +
+                "    identificacaoCrt: " + toIndentedString(identificacaoCrt) + "\n" +
+                "    identificacaoRepresentanteTransportadorEstrangeiro: " + toIndentedString(identificacaoRepresentanteTransportadorEstrangeiro) + "\n" +
+                "    identificacaoTransportadorEstrangeiro: " + toIndentedString(identificacaoTransportadorEstrangeiro) + "\n" +
+                "    identificacaoTransportadorNacional: " + toIndentedString(identificacaoTransportadorNacional) + "\n" +
+                "    inConsignatarioNacBrasileira: " + toIndentedString(inConsignatarioNacBrasileira) + "\n" +
+                "    inParteNotificarNacBrasileira: " + toIndentedString(inParteNotificarNacBrasileira) + "\n" +
+                "    incotermLocalEmbarque: " + toIndentedString(incotermLocalEmbarque) + "\n" +
+                "    instrucaoFormalidadeAlfandega: " + toIndentedString(instrucaoFormalidadeAlfandega) + "\n" +
+                "    itensCRT: " + toIndentedString(itensCRT) + "\n" +
+                "    licencaComplementarTransportador: " + toIndentedString(licencaComplementarTransportador) + "\n" +
+                "    licencaOriginariaTransportador: " + toIndentedString(licencaOriginariaTransportador) + "\n" +
+                "    localAssinaturaDestinatario: " + toIndentedString(localAssinaturaDestinatario) + "\n" +
+                "    localAssinaturaRemetente: " + toIndentedString(localAssinaturaRemetente) + "\n" +
+                "    manuseiosEspeciaisCarga: " + toIndentedString(manuseiosEspeciaisCarga) + "\n" +
+                "    mercadorias: " + toIndentedString(mercadorias) + "\n" +
+                "    moedaFreteDestinatario: " + toIndentedString(moedaFreteDestinatario) + "\n" +
+                "    moedaFreteExterno: " + toIndentedString(moedaFreteExterno) + "\n" +
+                "    moedaFreteRemetente: " + toIndentedString(moedaFreteRemetente) + "\n" +
+                "    moedaMercadoriaDeclaradoRemetente: " + toIndentedString(moedaMercadoriaDeclaradoRemetente) + "\n" +
+                "    moedaMercadoriaLocalEmbarque: " + toIndentedString(moedaMercadoriaLocalEmbarque) + "\n" +
+                "    moedaOutrosCustosDestinatario: " + toIndentedString(moedaOutrosCustosDestinatario) + "\n" +
+                "    moedaOutrosCustosRemetente: " + toIndentedString(moedaOutrosCustosRemetente) + "\n" +
+                "    moedaReembolso: " + toIndentedString(moedaReembolso) + "\n" +
+                "    moedaSeguroDestinatario: " + toIndentedString(moedaSeguroDestinatario) + "\n" +
+                "    moedaSeguroRemetente: " + toIndentedString(moedaSeguroRemetente) + "\n" +
+                "    nomeAssinaturaDestinatario: " + toIndentedString(nomeAssinaturaDestinatario) + "\n" +
+                "    nomeAssinaturaRemetente: " + toIndentedString(nomeAssinaturaRemetente) + "\n" +
+                "    nomeAssinaturaTransportador: " + toIndentedString(nomeAssinaturaTransportador) + "\n" +
+                "    nomeConsignatario: " + toIndentedString(nomeConsignatario) + "\n" +
+                "    nomeDestinatario: " + toIndentedString(nomeDestinatario) + "\n" +
+                "    nomeParteNotificarEstrangeiro: " + toIndentedString(nomeParteNotificarEstrangeiro) + "\n" +
+                "    nomeRemetente: " + toIndentedString(nomeRemetente) + "\n" +
+                "    nomeTransportadorEstrangeiro: " + toIndentedString(nomeTransportadorEstrangeiro) + "\n" +
+                "    paisConsignatario: " + toIndentedString(paisConsignatario) + "\n" +
+                "    paisDestinatario: " + toIndentedString(paisDestinatario) + "\n" +
+                "    paisEmissao: " + toIndentedString(paisEmissao) + "\n" +
+                "    paisEntrega: " + toIndentedString(paisEntrega) + "\n" +
+                "    paisOrigemMercadoria: " + toIndentedString(paisOrigemMercadoria) + "\n" +
+                "    paisParteNotificarEstrangeiro: " + toIndentedString(paisParteNotificarEstrangeiro) + "\n" +
+                "    paisRemetente: " + toIndentedString(paisRemetente) + "\n" +
+                "    paisTranspResponsMercadoria: " + toIndentedString(paisTranspResponsMercadoria) + "\n" +
+                "    pesoBrutoKg: " + toIndentedString(pesoBrutoKg) + "\n" +
+                "    prazoEntrega: " + toIndentedString(prazoEntrega) + "\n" +
+                "    ruaConsignatario: " + toIndentedString(ruaConsignatario) + "\n" +
+                "    ruaDestinatario: " + toIndentedString(ruaDestinatario) + "\n" +
+                "    ruaParteNotificarEstrangeiro: " + toIndentedString(ruaParteNotificarEstrangeiro) + "\n" +
+                "    ruaRemetente: " + toIndentedString(ruaRemetente) + "\n" +
+                "    ruc: " + toIndentedString(ruc) + "\n" +
+                "    telefoneParteNotificar: " + toIndentedString(telefoneParteNotificar) + "\n" +
+                "    tipoDocIdFiscalConsignatario: " + toIndentedString(tipoDocIdFiscalConsignatario) + "\n" +
+                "    tipoDocIdFiscalParteNotificar: " + toIndentedString(tipoDocIdFiscalParteNotificar) + "\n" +
+                "    tipoItemCRT: " + toIndentedString(tipoItemCRT) + "\n" +
+                "    tipoTransporteTransportador: " + toIndentedString(tipoTransporteTransportador) + "\n" +
+                "    transportadorNacBrasileira: " + toIndentedString(transportadorNacBrasileira) + "\n" +
+                "    transportadoresSucessivos: " + toIndentedString(transportadoresSucessivos) + "\n" +
+                "    valorFreteDestinatario: " + toIndentedString(valorFreteDestinatario) + "\n" +
+                "    valorFreteExterno: " + toIndentedString(valorFreteExterno) + "\n" +
+                "    valorFreteRemetente: " + toIndentedString(valorFreteRemetente) + "\n" +
+                "    valorMercadoriaDeclaradoRemetente: " + toIndentedString(valorMercadoriaDeclaradoRemetente) + "\n" +
+                "    valorMercadoriaLocalEmbarque: " + toIndentedString(valorMercadoriaLocalEmbarque) + "\n" +
+                "    valorOutrosCustosDestinatario: " + toIndentedString(valorOutrosCustosDestinatario) + "\n" +
+                "    valorOutrosCustosRemetente: " + toIndentedString(valorOutrosCustosRemetente) + "\n" +
+                "    valorReembolso: " + toIndentedString(valorReembolso) + "\n" +
+                "    valorSeguroDestinatario: " + toIndentedString(valorSeguroDestinatario) + "\n" +
+                "    valorSeguroRemetente: " + toIndentedString(valorSeguroRemetente) + "\n" +
+                "    visualizacaoDepositario: " + toIndentedString(visualizacaoDepositario) + "\n" +
+                "    volumeM3: " + toIndentedString(volumeM3) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoTransporteTransportadorEnum")
-    @XmlEnum(String.class)
-    public enum TipoTransporteTransportadorEnum {
-
-        @XmlEnumValue("REG")
-        @JsonProperty("REG")
-        REG("REG"),
-
-        @XmlEnumValue("OCA")
-        @JsonProperty("OCA")
-        OCA("OCA"),
-
-        @XmlEnumValue("PRO")
-        @JsonProperty("PRO")
-        PRO("PRO");
-
-
-        private final String value;
-
-        TipoTransporteTransportadorEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoTransporteTransportadorEnum fromValue(String v) {
-            for (TipoTransporteTransportadorEnum b : TipoTransporteTransportadorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoTransporteTransportadorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

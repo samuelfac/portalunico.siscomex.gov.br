@@ -47,15 +47,94 @@ public class SituacaoHistoricoDto {
     private String dataSituacao = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "DescricaoSituacaoEnum")
+    @XmlEnum(String.class)
+    public enum DescricaoSituacaoEnum {
+
+        @XmlEnumValue("DUIMP_DECLARADA")
+        @JsonProperty("DUIMP_DECLARADA")
+        DECLARADA("DUIMP_DECLARADA"),
+
+        @XmlEnumValue("DUIMP_CANCELADA_IMPORTADOR")
+        @JsonProperty("DUIMP_CANCELADA_IMPORTADOR")
+        CANCELADA_IMPORTADOR("DUIMP_CANCELADA_IMPORTADOR"),
+
+        @XmlEnumValue("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
+        @JsonProperty("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
+        PENDENTE_PAGAMENTO_EXONERACAO("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO"),
+
+        @XmlEnumValue("DUIMP_PAGA_EXONERADA")
+        @JsonProperty("DUIMP_PAGA_EXONERADA")
+        PAGA_EXONERADA("DUIMP_PAGA_EXONERADA"),
+
+        @XmlEnumValue("DUIMP_CANCELADA_AUTOMATICAMENTE")
+        @JsonProperty("DUIMP_CANCELADA_AUTOMATICAMENTE")
+        CANCELADA_AUTOMATICAMENTE("DUIMP_CANCELADA_AUTOMATICAMENTE"),
+
+        @XmlEnumValue("DUIMP_AGUARDANDO_DOCUMENTACAO")
+        @JsonProperty("DUIMP_AGUARDANDO_DOCUMENTACAO")
+        AGUARDANDO_DOCUMENTACAO("DUIMP_AGUARDANDO_DOCUMENTACAO"),
+
+        @XmlEnumValue("DUIMP_AGUARDANDO_EXIGENCIA")
+        @JsonProperty("DUIMP_AGUARDANDO_EXIGENCIA")
+        AGUARDANDO_EXIGENCIA("DUIMP_AGUARDANDO_EXIGENCIA"),
+
+        @XmlEnumValue("DUIMP_A_DISTRIBUIR")
+        @JsonProperty("DUIMP_A_DISTRIBUIR")
+        A_DISTRIBUIR("DUIMP_A_DISTRIBUIR"),
+
+        @XmlEnumValue("DUIMP_A_DISTRIBUIR_RETORNO")
+        @JsonProperty("DUIMP_A_DISTRIBUIR_RETORNO")
+        A_DISTRIBUIR_RETORNO("DUIMP_A_DISTRIBUIR_RETORNO"),
+
+        @XmlEnumValue("DUIMP_DISTRIBUIDA")
+        @JsonProperty("DUIMP_DISTRIBUIDA")
+        DISTRIBUIDA("DUIMP_DISTRIBUIDA"),
+
+        @XmlEnumValue("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
+        @JsonProperty("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
+        SOLICITACAO_AUTORIZADA_SEFAZ("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ"),
+
+        @XmlEnumValue("DUIMP_SOLICITACAO_INDEFERIDA")
+        @JsonProperty("DUIMP_SOLICITACAO_INDEFERIDA")
+        SOLICITACAO_INDEFERIDA("DUIMP_SOLICITACAO_INDEFERIDA"),
+
+        @XmlEnumValue("DUIMP_DECLARADA_PAGA")
+        @JsonProperty("DUIMP_DECLARADA_PAGA")
+        DECLARADA_PAGA("DUIMP_DECLARADA_PAGA"),
+
+        @XmlEnumValue("DUIMP_CALCULO_SOLICITADO")
+        @JsonProperty("DUIMP_CALCULO_SOLICITADO")
+        CALCULO_SOLICITADO("DUIMP_CALCULO_SOLICITADO"),
+
+        @XmlEnumValue("DUIMP_CALCULO_INDEFERIDO")
+        @JsonProperty("DUIMP_CALCULO_INDEFERIDO")
+        CALCULO_INDEFERIDO("DUIMP_CALCULO_INDEFERIDO");
+
+
+        private final String value;
+
+        DescricaoSituacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static DescricaoSituacaoEnum fromValue(String v) {
+            for (DescricaoSituacaoEnum b : DescricaoSituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoSituacaoEnum");
+        }
     }
 
     @XmlElement(name = "descricaoSituacao", required = true)
@@ -147,6 +226,7 @@ public class SituacaoHistoricoDto {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -159,93 +239,14 @@ public class SituacaoHistoricoDto {
         return sb;
     }
 
-    @XmlType(name = "DescricaoSituacaoEnum")
-    @XmlEnum(String.class)
-    public enum DescricaoSituacaoEnum {
-
-        @XmlEnumValue("DUIMP_DECLARADA")
-        @JsonProperty("DUIMP_DECLARADA")
-        DECLARADA("DUIMP_DECLARADA"),
-
-        @XmlEnumValue("DUIMP_CANCELADA_IMPORTADOR")
-        @JsonProperty("DUIMP_CANCELADA_IMPORTADOR")
-        CANCELADA_IMPORTADOR("DUIMP_CANCELADA_IMPORTADOR"),
-
-        @XmlEnumValue("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
-        @JsonProperty("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO")
-        PENDENTE_PAGAMENTO_EXONERACAO("DUIMP_PENDENTE_PAGAMENTO_EXONERACAO"),
-
-        @XmlEnumValue("DUIMP_PAGA_EXONERADA")
-        @JsonProperty("DUIMP_PAGA_EXONERADA")
-        PAGA_EXONERADA("DUIMP_PAGA_EXONERADA"),
-
-        @XmlEnumValue("DUIMP_CANCELADA_AUTOMATICAMENTE")
-        @JsonProperty("DUIMP_CANCELADA_AUTOMATICAMENTE")
-        CANCELADA_AUTOMATICAMENTE("DUIMP_CANCELADA_AUTOMATICAMENTE"),
-
-        @XmlEnumValue("DUIMP_AGUARDANDO_DOCUMENTACAO")
-        @JsonProperty("DUIMP_AGUARDANDO_DOCUMENTACAO")
-        AGUARDANDO_DOCUMENTACAO("DUIMP_AGUARDANDO_DOCUMENTACAO"),
-
-        @XmlEnumValue("DUIMP_AGUARDANDO_EXIGENCIA")
-        @JsonProperty("DUIMP_AGUARDANDO_EXIGENCIA")
-        AGUARDANDO_EXIGENCIA("DUIMP_AGUARDANDO_EXIGENCIA"),
-
-        @XmlEnumValue("DUIMP_A_DISTRIBUIR")
-        @JsonProperty("DUIMP_A_DISTRIBUIR")
-        A_DISTRIBUIR("DUIMP_A_DISTRIBUIR"),
-
-        @XmlEnumValue("DUIMP_A_DISTRIBUIR_RETORNO")
-        @JsonProperty("DUIMP_A_DISTRIBUIR_RETORNO")
-        A_DISTRIBUIR_RETORNO("DUIMP_A_DISTRIBUIR_RETORNO"),
-
-        @XmlEnumValue("DUIMP_DISTRIBUIDA")
-        @JsonProperty("DUIMP_DISTRIBUIDA")
-        DISTRIBUIDA("DUIMP_DISTRIBUIDA"),
-
-        @XmlEnumValue("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
-        @JsonProperty("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ")
-        SOLICITACAO_AUTORIZADA_SEFAZ("DUIMP_SOLICITACAO_AUTORIZADA_SEFAZ"),
-
-        @XmlEnumValue("DUIMP_SOLICITACAO_INDEFERIDA")
-        @JsonProperty("DUIMP_SOLICITACAO_INDEFERIDA")
-        SOLICITACAO_INDEFERIDA("DUIMP_SOLICITACAO_INDEFERIDA"),
-
-        @XmlEnumValue("DUIMP_DECLARADA_PAGA")
-        @JsonProperty("DUIMP_DECLARADA_PAGA")
-        DECLARADA_PAGA("DUIMP_DECLARADA_PAGA"),
-
-        @XmlEnumValue("DUIMP_CALCULO_SOLICITADO")
-        @JsonProperty("DUIMP_CALCULO_SOLICITADO")
-        CALCULO_SOLICITADO("DUIMP_CALCULO_SOLICITADO"),
-
-        @XmlEnumValue("DUIMP_CALCULO_INDEFERIDO")
-        @JsonProperty("DUIMP_CALCULO_INDEFERIDO")
-        CALCULO_INDEFERIDO("DUIMP_CALCULO_INDEFERIDO");
-
-
-        private final String value;
-
-        DescricaoSituacaoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static DescricaoSituacaoEnum fromValue(String v) {
-            for (DescricaoSituacaoEnum b : DescricaoSituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to DescricaoSituacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

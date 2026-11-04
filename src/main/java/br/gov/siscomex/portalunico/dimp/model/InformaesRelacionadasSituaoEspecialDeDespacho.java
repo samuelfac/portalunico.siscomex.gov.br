@@ -22,10 +22,43 @@ import java.math.BigDecimal;
 public class InformaesRelacionadasSituaoEspecialDeDespacho {
 
 
-    @XmlElement(name = "motivoSituacaoEspecial")
-    @ApiModelProperty(value = "")
-    @Valid
-    private MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial = null;
+    @XmlType(name = "IndSituacaoEspecialDespachoEnum")
+    @XmlEnum(String.class)
+    public enum IndSituacaoEspecialDespachoEnum {
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S"),
+
+        @XmlEnumValue("N")
+        @JsonProperty("N")
+        N("N");
+
+
+        private final String value;
+
+        IndSituacaoEspecialDespachoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndSituacaoEspecialDespachoEnum fromValue(String v) {
+            for (IndSituacaoEspecialDespachoEnum b : IndSituacaoEspecialDespachoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndSituacaoEspecialDespachoEnum");
+        }
+    }
 
     @XmlElement(name = "indSituacaoEspecialDespacho")
     @ApiModelProperty(example = "S", value = "Indicador de Duimp com situação especial de despacho.<br>Dominio: <br>S - Sim, <br>N - Não<br>Tamanho: 1")
@@ -34,16 +67,10 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
      **/
     private IndSituacaoEspecialDespachoEnum indSituacaoEspecialDespacho = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "motivoSituacaoEspecial")
+    @ApiModelProperty(value = "")
+    @Valid
+    private MotivoDaSituaoEspecialDeDespacho motivoSituacaoEspecial = null;
 
     @XmlElement(name = "valorTotalFreteReal")
     @ApiModelProperty(example = "3806.12", value = "Valor do total do frete em Real para situação especial de despacho. (Valor calculado pelo sistema)<br>Tamanho: 17,2<br>Formato: Decimal, com até 2 casas decimais separadas por ponto.<br>Observação:<br>Apenas quando o indicador de situação especial de despacho for = 'S'")
@@ -140,6 +167,7 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -152,41 +180,14 @@ public class InformaesRelacionadasSituaoEspecialDeDespacho {
         return sb;
     }
 
-    @XmlType(name = "IndSituacaoEspecialDespachoEnum")
-    @XmlEnum(String.class)
-    public enum IndSituacaoEspecialDespachoEnum {
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S"),
-
-        @XmlEnumValue("N")
-        @JsonProperty("N")
-        N("N");
-
-
-        private final String value;
-
-        IndSituacaoEspecialDespachoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static IndSituacaoEspecialDespachoEnum fromValue(String v) {
-            for (IndSituacaoEspecialDespachoEnum b : IndSituacaoEspecialDespachoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndSituacaoEspecialDespachoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

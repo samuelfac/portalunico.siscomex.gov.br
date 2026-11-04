@@ -110,15 +110,9 @@ public class Recolhimento {
         this.valorDaMulta = valorDaMulta;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Recolhimento valorDaMulta(BigDecimal valorDaMulta) {
+        this.valorDaMulta = valorDaMulta;
+        return this;
     }
 
     /**
@@ -159,10 +153,6 @@ public class Recolhimento {
         return this;
     }
 
-    public Recolhimento valorDaMulta(BigDecimal valorDaMulta) {
-        this.valorDaMulta = valorDaMulta;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -175,5 +165,16 @@ public class Recolhimento {
                 "    valorDoJurosMora: " + toIndentedString(valorDoJurosMora) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -76,15 +76,9 @@ public class EnvioSolicitaoDeDarf {
         this.contribuinte = contribuinte;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EnvioSolicitaoDeDarf contribuinte(String contribuinte) {
+        this.contribuinte = contribuinte;
+        return this;
     }
 
     /**
@@ -111,10 +105,6 @@ public class EnvioSolicitaoDeDarf {
         return this;
     }
 
-    public EnvioSolicitaoDeDarf contribuinte(String contribuinte) {
-        this.contribuinte = contribuinte;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -126,4 +116,15 @@ public class EnvioSolicitaoDeDarf {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

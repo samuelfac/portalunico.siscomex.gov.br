@@ -116,15 +116,9 @@ public class CampoLpcoRequest {
         this.valorComposto = valorComposto;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CampoLpcoRequest valorComposto(ReferenciaValorComposto valorComposto) {
+        this.valorComposto = valorComposto;
+        return this;
     }
 
     /**
@@ -165,10 +159,6 @@ public class CampoLpcoRequest {
         return this;
     }
 
-    public CampoLpcoRequest valorComposto(ReferenciaValorComposto valorComposto) {
-        this.valorComposto = valorComposto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -182,4 +172,15 @@ public class CampoLpcoRequest {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

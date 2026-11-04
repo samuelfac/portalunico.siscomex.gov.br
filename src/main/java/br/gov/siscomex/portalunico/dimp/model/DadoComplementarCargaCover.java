@@ -25,9 +25,43 @@ import javax.xml.bind.annotation.XmlType;
 public class DadoComplementarCargaCover {
 
 
-    @XmlElement(name = "unidadeEntrada")
-    @ApiModelProperty(example = "0717600", value = "")
-    private String unidadeEntrada = null;
+    @XmlType(name = "TipoIdentificacaoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoIdentificacaoCargaEnum {
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("RUC")
+        @JsonProperty("RUC")
+        RUC("RUC");
+
+
+        private final String value;
+
+        TipoIdentificacaoCargaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoIdentificacaoCargaEnum fromValue(String v) {
+            for (TipoIdentificacaoCargaEnum b : TipoIdentificacaoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoCargaEnum");
+        }
+    }
 
     @XmlElement(name = "tipoIdentificacaoCarga")
     @ApiModelProperty(example = "CE", value = "Descreve se a identificação da carga é do tipo CE ou RUC")
@@ -43,30 +77,56 @@ public class DadoComplementarCargaCover {
      **/
     private String identificacao = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "ViaTransporteEnum")
+    @XmlEnum(String.class)
+    public enum ViaTransporteEnum {
+
+        @XmlEnumValue("MARITMO")
+        @JsonProperty("MARITMO")
+        MARITMO("MARITMO"),
+
+        @XmlEnumValue("AEREA")
+        @JsonProperty("AEREA")
+        AEREA("AEREA"),
+
+        @XmlEnumValue("RODOVIARIO")
+        @JsonProperty("RODOVIARIO")
+        RODOVIARIO("RODOVIARIO");
+
+
+        private final String value;
+
+        ViaTransporteEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ViaTransporteEnum fromValue(String v) {
+            for (ViaTransporteEnum b : ViaTransporteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ViaTransporteEnum");
+        }
     }
 
     @XmlElement(name = "viaTransporte")
     @ApiModelProperty(example = "AEREA", value = "")
     private ViaTransporteEnum viaTransporte = null;
 
-    /**
-     * Get unidadeEntrada
-     *
-     * @return unidadeEntrada
-     **/
-    @JsonProperty("unidadeEntrada")
-    public String getUnidadeEntrada() {
-        return unidadeEntrada;
-    }
+    @XmlElement(name = "unidadeEntrada")
+    @ApiModelProperty(example = "0717600", value = "")
+    private String unidadeEntrada = null;
 
     /**
      * Descreve se a identificação da carga é do tipo CE ou RUC
@@ -131,16 +191,14 @@ public class DadoComplementarCargaCover {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class DadoComplementarCargaCover {\n" +
-                "    tipoIdentificacaoCarga: " + toIndentedString(tipoIdentificacaoCarga) + "\n" +
-                "    identificacao: " + toIndentedString(identificacao) + "\n" +
-                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
-                "    unidadeEntrada: " + toIndentedString(unidadeEntrada) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Get unidadeEntrada
+     *
+     * @return unidadeEntrada
+     **/
+    @JsonProperty("unidadeEntrada")
+    public String getUnidadeEntrada() {
+        return unidadeEntrada;
     }
 
     public void setUnidadeEntrada(String unidadeEntrada) {
@@ -153,83 +211,26 @@ public class DadoComplementarCargaCover {
     }
 
 
-    @XmlType(name = "TipoIdentificacaoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoIdentificacaoCargaEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("RUC")
-        @JsonProperty("RUC")
-        RUC("RUC");
-
-
-        private final String value;
-
-        TipoIdentificacaoCargaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoIdentificacaoCargaEnum fromValue(String v) {
-            for (TipoIdentificacaoCargaEnum b : TipoIdentificacaoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class DadoComplementarCargaCover {\n" +
+                "    tipoIdentificacaoCarga: " + toIndentedString(tipoIdentificacaoCarga) + "\n" +
+                "    identificacao: " + toIndentedString(identificacao) + "\n" +
+                "    viaTransporte: " + toIndentedString(viaTransporte) + "\n" +
+                "    unidadeEntrada: " + toIndentedString(unidadeEntrada) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "ViaTransporteEnum")
-    @XmlEnum(String.class)
-    public enum ViaTransporteEnum {
-
-        @XmlEnumValue("MARITMO")
-        @JsonProperty("MARITMO")
-        MARITMO("MARITMO"),
-
-        @XmlEnumValue("AEREA")
-        @JsonProperty("AEREA")
-        AEREA("AEREA"),
-
-        @XmlEnumValue("RODOVIARIO")
-        @JsonProperty("RODOVIARIO")
-        RODOVIARIO("RODOVIARIO");
-
-
-        private final String value;
-
-        ViaTransporteEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ViaTransporteEnum fromValue(String v) {
-            for (ViaTransporteEnum b : ViaTransporteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ViaTransporteEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

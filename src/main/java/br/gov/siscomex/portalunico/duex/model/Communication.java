@@ -27,15 +27,42 @@ public class Communication {
     private CommunicationIdentificationIDType id = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TypeCodeEnum")
+    @XmlEnum(String.class)
+    public enum TypeCodeEnum {
+
+        @XmlEnumValue("EM")
+        @JsonProperty("EM")
+        EM("EM"),
+
+        @XmlEnumValue("TE")
+        @JsonProperty("TE")
+        TE("TE");
+
+
+        private final String value;
+
+        TypeCodeEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TypeCodeEnum fromValue(String v) {
+            for (TypeCodeEnum b : TypeCodeEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TypeCodeEnum");
+        }
     }
 
     @XmlElement(name = "typeCode", required = true)
@@ -85,6 +112,7 @@ public class Communication {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -95,41 +123,14 @@ public class Communication {
         return sb;
     }
 
-    @XmlType(name = "TypeCodeEnum")
-    @XmlEnum(String.class)
-    public enum TypeCodeEnum {
-
-        @XmlEnumValue("EM")
-        @JsonProperty("EM")
-        EM("EM"),
-
-        @XmlEnumValue("TE")
-        @JsonProperty("TE")
-        TE("TE");
-
-
-        private final String value;
-
-        TypeCodeEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TypeCodeEnum fromValue(String v) {
-            for (TypeCodeEnum b : TypeCodeEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TypeCodeEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

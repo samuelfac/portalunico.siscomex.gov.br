@@ -52,15 +52,38 @@ public class SefazIcmsFracionadoDto {
     private String numeroDeclaracao = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoDeclaracaoEnum")
+    @XmlEnum(String.class)
+    public enum TipoDeclaracaoEnum {
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TipoDeclaracaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDeclaracaoEnum fromValue(String v) {
+            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
+        }
     }
 
     @XmlElement(name = "tipoDeclaracao", required = true)
@@ -70,18 +93,43 @@ public class SefazIcmsFracionadoDto {
      **/
     private TipoDeclaracaoEnum tipoDeclaracao = null;
 
-    /**
-     * Tipo de retorno&lt;br/&gt; - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação&lt;br/&gt; - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas&lt;br/&gt;
-     *
-     * @return tipoRetorno
-     **/
-    @JsonProperty("tipoRetorno")
-    @NotNull
-    public String getTipoRetorno() {
-        if (tipoRetorno == null) {
-            return null;
+
+    @XmlType(name = "TipoRetornoEnum")
+    @XmlEnum(String.class)
+    public enum TipoRetornoEnum {
+
+        @XmlEnumValue("CALCULADO_A_PAGAR")
+        @JsonProperty("CALCULADO_A_PAGAR")
+        CALCULADO_A_PAGAR("CALCULADO_A_PAGAR"),
+
+        @XmlEnumValue("SEM_VALOR_A_PAGAR")
+        @JsonProperty("SEM_VALOR_A_PAGAR")
+        SEM_VALOR_A_PAGAR("SEM_VALOR_A_PAGAR");
+
+
+        private final String value;
+
+        TipoRetornoEnum(String v) {
+            value = v;
         }
-        return tipoRetorno.value();
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoRetornoEnum fromValue(String v) {
+            for (TipoRetornoEnum b : TipoRetornoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoRetornoEnum");
+        }
     }
 
     @XmlElement(name = "tipoRetorno", required = true)
@@ -193,19 +241,18 @@ public class SefazIcmsFracionadoDto {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SefazIcmsFracionadoDto {\n" +
-                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
-                "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
-                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
-                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
-                "    tipoRetorno: " + toIndentedString(tipoRetorno) + "\n" +
-                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
-                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Tipo de retorno&lt;br/&gt; - CALCULADO_A_PAGAR: indica que ainda existem notas fiscais pendentes de liberação&lt;br/&gt; - SEM_VALOR_A_PAGAR: indica que todas as notas fiscais já foram liberadas&lt;br/&gt;
+     *
+     * @return tipoRetorno
+     **/
+    @JsonProperty("tipoRetorno")
+    @NotNull
+    public String getTipoRetorno() {
+        if (tipoRetorno == null) {
+            return null;
+        }
+        return tipoRetorno.value();
     }
 
     public void setTipoRetorno(TipoRetornoEnum tipoRetorno) {
@@ -257,75 +304,29 @@ public class SefazIcmsFracionadoDto {
     }
 
 
-    @XmlType(name = "TipoDeclaracaoEnum")
-    @XmlEnum(String.class)
-    public enum TipoDeclaracaoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TipoDeclaracaoEnum(String v) {
-            value = v;
-        }
-
-        public static TipoDeclaracaoEnum fromValue(String v) {
-            for (TipoDeclaracaoEnum b : TipoDeclaracaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDeclaracaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SefazIcmsFracionadoDto {\n" +
+                "    dataConfirmacaoCredito: " + toIndentedString(dataConfirmacaoCredito) + "\n" +
+                "    notasFiscais: " + toIndentedString(notasFiscais) + "\n" +
+                "    numeroDeclaracao: " + toIndentedString(numeroDeclaracao) + "\n" +
+                "    tipoDeclaracao: " + toIndentedString(tipoDeclaracao) + "\n" +
+                "    tipoRetorno: " + toIndentedString(tipoRetorno) + "\n" +
+                "    valorTotalCredito: " + toIndentedString(valorTotalCredito) + "\n" +
+                "    versaoDeclaracao: " + toIndentedString(versaoDeclaracao) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoRetornoEnum")
-    @XmlEnum(String.class)
-    public enum TipoRetornoEnum {
-
-        @XmlEnumValue("CALCULADO_A_PAGAR")
-        @JsonProperty("CALCULADO_A_PAGAR")
-        CALCULADO_A_PAGAR("CALCULADO_A_PAGAR"),
-
-        @XmlEnumValue("SEM_VALOR_A_PAGAR")
-        @JsonProperty("SEM_VALOR_A_PAGAR")
-        SEM_VALOR_A_PAGAR("SEM_VALOR_A_PAGAR");
-
-
-        private final String value;
-
-        TipoRetornoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoRetornoEnum fromValue(String v) {
-            for (TipoRetornoEnum b : TipoRetornoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoRetornoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

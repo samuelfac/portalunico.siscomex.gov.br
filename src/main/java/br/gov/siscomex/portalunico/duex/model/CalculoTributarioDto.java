@@ -78,6 +78,16 @@ public class CalculoTributarioDto {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CalculoTributarioDto {\n" +
+                "    quadroDeCalculos: " + toIndentedString(quadroDeCalculos) + "\n" +
+                "    tratamentosTributarios: " + toIndentedString(tratamentosTributarios) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class CalculoTributarioDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CalculoTributarioDto {\n" +
-                "    quadroDeCalculos: " + toIndentedString(quadroDeCalculos) + "\n" +
-                "    tratamentosTributarios: " + toIndentedString(tratamentosTributarios) + "\n" +
-                "}";
-        return sb;
     }
 }

@@ -99,5 +99,5 @@ public class ManifestoDoPedidoDeReviso {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

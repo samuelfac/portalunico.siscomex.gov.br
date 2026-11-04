@@ -42,12 +42,55 @@ public class SolicitacaoPagamentoTaxaDTO {
     private String identificadorTaxa = null;
 
 
-    @XmlElement(name = "tpOperacaoOrigem", required = true)
-    @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à taxa")
-    /**
-     * Tipo da operação que deu origem à taxa
-     **/
-    private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
+    @XmlType(name = "MomentoTaxaEnum")
+    @XmlEnum(String.class)
+    public enum MomentoTaxaEnum {
+
+        @XmlEnumValue("REGISTRO")
+        @JsonProperty("REGISTRO")
+        REGISTRO("REGISTRO"),
+
+        @XmlEnumValue("RETIFICACAO")
+        @JsonProperty("RETIFICACAO")
+        RETIFICACAO("RETIFICACAO"),
+
+        @XmlEnumValue("PRORROGACAO")
+        @JsonProperty("PRORROGACAO")
+        PRORROGACAO("PRORROGACAO"),
+
+        @XmlEnumValue("COMPATIBILIZACAO")
+        @JsonProperty("COMPATIBILIZACAO")
+        COMPATIBILIZACAO("COMPATIBILIZACAO"),
+
+        @XmlEnumValue("EXIGENCIA")
+        @JsonProperty("EXIGENCIA")
+        EXIGENCIA("EXIGENCIA");
+
+
+        private final String value;
+
+        MomentoTaxaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static MomentoTaxaEnum fromValue(String v) {
+            for (MomentoTaxaEnum b : MomentoTaxaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to MomentoTaxaEnum");
+        }
+    }
 
     @XmlElement(name = "momentoTaxa")
     @ApiModelProperty(example = "EXIGENCIA", value = "Momento da taxa <br/>(*) Obrigatório se tpOperacaoOrigem=LPCO.")
@@ -70,26 +113,51 @@ public class SolicitacaoPagamentoTaxaDTO {
      **/
     private Integer numeroReferencia = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TpOperacaoOrigemEnum")
+    @XmlEnum(String.class)
+    public enum TpOperacaoOrigemEnum {
+
+        @XmlEnumValue("LPCO")
+        @JsonProperty("LPCO")
+        LPCO("LPCO"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TpOperacaoOrigemEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TpOperacaoOrigemEnum fromValue(String v) {
+            for (TpOperacaoOrigemEnum b : TpOperacaoOrigemEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpOperacaoOrigemEnum");
+        }
     }
 
+    @XmlElement(name = "tpOperacaoOrigem", required = true)
+    @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à taxa")
     /**
-     * Número de referência do evento &lt;br/&gt;Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).&lt;br/&gt;(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
-     *
-     * @return numeroReferencia
+     * Tipo da operação que deu origem à taxa
      **/
-    @JsonProperty("numeroReferencia")
-    public Integer getNumeroReferencia() {
-        return numeroReferencia;
-    }
+    private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
 
     @XmlElement(name = "valorTotal", required = true)
     @ApiModelProperty(example = "126.54", required = true, value = "Valor total a pagar <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
@@ -181,19 +249,14 @@ public class SolicitacaoPagamentoTaxaDTO {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SolicitacaoPagamentoTaxaDTO {\n" +
-                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
-                "    identificadorTaxa: " + toIndentedString(identificadorTaxa) + "\n" +
-                "    momentoTaxa: " + toIndentedString(momentoTaxa) + "\n" +
-                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
-                "    numeroReferencia: " + toIndentedString(numeroReferencia) + "\n" +
-                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
-                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Número de referência do evento &lt;br/&gt;Para LPCO referencia o número sequencial de identificação do evento (ex.: número da exigência, número da retificação etc).&lt;br/&gt;(*) Obrigatório para alguns momentos da taxa, de acordo com a regra do LPCO
+     *
+     * @return numeroReferencia
+     **/
+    @JsonProperty("numeroReferencia")
+    public Integer getNumeroReferencia() {
+        return numeroReferencia;
     }
 
     public void setNumeroReferencia(Integer numeroReferencia) {
@@ -249,91 +312,29 @@ public class SolicitacaoPagamentoTaxaDTO {
     }
 
 
-    @XmlType(name = "MomentoTaxaEnum")
-    @XmlEnum(String.class)
-    public enum MomentoTaxaEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("REGISTRO")
-        @JsonProperty("REGISTRO")
-        REGISTRO("REGISTRO"),
-
-        @XmlEnumValue("RETIFICACAO")
-        @JsonProperty("RETIFICACAO")
-        RETIFICACAO("RETIFICACAO"),
-
-        @XmlEnumValue("PRORROGACAO")
-        @JsonProperty("PRORROGACAO")
-        PRORROGACAO("PRORROGACAO"),
-
-        @XmlEnumValue("COMPATIBILIZACAO")
-        @JsonProperty("COMPATIBILIZACAO")
-        COMPATIBILIZACAO("COMPATIBILIZACAO"),
-
-        @XmlEnumValue("EXIGENCIA")
-        @JsonProperty("EXIGENCIA")
-        EXIGENCIA("EXIGENCIA");
-
-
-        private final String value;
-
-        MomentoTaxaEnum(String v) {
-            value = v;
-        }
-
-        public static MomentoTaxaEnum fromValue(String v) {
-            for (MomentoTaxaEnum b : MomentoTaxaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to MomentoTaxaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SolicitacaoPagamentoTaxaDTO {\n" +
+                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
+                "    identificadorTaxa: " + toIndentedString(identificadorTaxa) + "\n" +
+                "    momentoTaxa: " + toIndentedString(momentoTaxa) + "\n" +
+                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
+                "    numeroReferencia: " + toIndentedString(numeroReferencia) + "\n" +
+                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
+                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TpOperacaoOrigemEnum")
-    @XmlEnum(String.class)
-    public enum TpOperacaoOrigemEnum {
-
-        @XmlEnumValue("LPCO")
-        @JsonProperty("LPCO")
-        LPCO("LPCO"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TpOperacaoOrigemEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TpOperacaoOrigemEnum fromValue(String v) {
-            for (TpOperacaoOrigemEnum b : TpOperacaoOrigemEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpOperacaoOrigemEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

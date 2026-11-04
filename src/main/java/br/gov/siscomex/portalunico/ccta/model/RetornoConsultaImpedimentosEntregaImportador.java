@@ -64,15 +64,54 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     private String numeroDocumentoSaida = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoCargaEnum {
+
+        @XmlEnumValue("740")
+        @JsonProperty("740")
+        _740("740"),
+
+        @XmlEnumValue("741")
+        @JsonProperty("741")
+        _741("741"),
+
+        @XmlEnumValue("703")
+        @JsonProperty("703")
+        _703("703"),
+
+        @XmlEnumValue("14")
+        @JsonProperty("14")
+        _14("14"),
+
+        @XmlEnumValue("13")
+        @JsonProperty("13")
+        _13("13");
+
+
+        private final String value;
+
+        TipoCargaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoCargaEnum fromValue(String v) {
+            for (TipoCargaEnum b : TipoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
+        }
     }
 
     @XmlElement(name = "tipoCarga")
@@ -82,14 +121,71 @@ public class RetornoConsultaImpedimentosEntregaImportador {
      **/
     private TipoCargaEnum tipoCarga = null;
 
-    /**
-     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
-     *
-     * @return identificacaoCarga
-     **/
-    @JsonProperty("identificacaoCarga")
-    public String getIdentificacaoCarga() {
-        return identificacaoCarga;
+
+    @XmlType(name = "TipoDocumentoSaidaEnum")
+    @XmlEnum(String.class)
+    public enum TipoDocumentoSaidaEnum {
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("PROCESSO")
+        @JsonProperty("PROCESSO")
+        PROCESSO("PROCESSO"),
+
+        @XmlEnumValue("EDMOV")
+        @JsonProperty("EDMOV")
+        EDMOV("EDMOV"),
+
+        @XmlEnumValue("OUTROS")
+        @JsonProperty("OUTROS")
+        OUTROS("OUTROS"),
+
+        @XmlEnumValue("PMD")
+        @JsonProperty("PMD")
+        PMD("PMD"),
+
+        @XmlEnumValue("PDE_TR")
+        @JsonProperty("PDE_TR")
+        PDE_TR("PDE_TR"),
+
+        @XmlEnumValue("DSI")
+        @JsonProperty("DSI")
+        DSI("DSI"),
+
+        @XmlEnumValue("DSI_FORMULARIO")
+        @JsonProperty("DSI_FORMULARIO")
+        DSI_FORMULARIO("DSI_FORMULARIO"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TipoDocumentoSaidaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoDocumentoSaidaEnum fromValue(String v) {
+            for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
+        }
     }
 
     @XmlElement(name = "tipoDocumentoSaida")
@@ -143,13 +239,13 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     }
 
     /**
-     * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
+     * Identificação da carga (AWB/MAWB/HAWB/DSIC/CRT)&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo: 35
      *
-     * @return numeroDocumentoSaida
+     * @return identificacaoCarga
      **/
-    @JsonProperty("numeroDocumentoSaida")
-    public String getNumeroDocumentoSaida() {
-        return numeroDocumentoSaida;
+    @JsonProperty("identificacaoCarga")
+    public String getIdentificacaoCarga() {
+        return identificacaoCarga;
     }
 
     public void setIdentificacaoCarga(String identificacaoCarga) {
@@ -185,19 +281,14 @@ public class RetornoConsultaImpedimentosEntregaImportador {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoConsultaImpedimentosEntregaImportador {\n" +
-                "    condicoes: " + toIndentedString(condicoes) + "\n" +
-                "    entregaAutorizada: " + toIndentedString(entregaAutorizada) + "\n" +
-                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
-                "    impedimentos: " + toIndentedString(impedimentos) + "\n" +
-                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
-                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
-                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Número de documento de saída&lt;br/&gt;Tamanho mínimo: 1&lt;br/&gt;Tamanho máximo:17&lt;br/&gt; Formato: NNNNNNNNNNNNNNNNN
+     *
+     * @return numeroDocumentoSaida
+     **/
+    @JsonProperty("numeroDocumentoSaida")
+    public String getNumeroDocumentoSaida() {
+        return numeroDocumentoSaida;
     }
 
     public void setNumeroDocumentoSaida(String numeroDocumentoSaida) {
@@ -254,119 +345,29 @@ public class RetornoConsultaImpedimentosEntregaImportador {
     }
 
 
-    @XmlType(name = "TipoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoCargaEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("740")
-        @JsonProperty("740")
-        _740("740"),
-
-        @XmlEnumValue("741")
-        @JsonProperty("741")
-        _741("741"),
-
-        @XmlEnumValue("703")
-        @JsonProperty("703")
-        _703("703"),
-
-        @XmlEnumValue("14")
-        @JsonProperty("14")
-        _14("14"),
-
-        @XmlEnumValue("13")
-        @JsonProperty("13")
-        _13("13");
-
-
-        private final String value;
-
-        TipoCargaEnum(String v) {
-            value = v;
-        }
-
-        public static TipoCargaEnum fromValue(String v) {
-            for (TipoCargaEnum b : TipoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class RetornoConsultaImpedimentosEntregaImportador {\n" +
+                "    condicoes: " + toIndentedString(condicoes) + "\n" +
+                "    entregaAutorizada: " + toIndentedString(entregaAutorizada) + "\n" +
+                "    identificacaoCarga: " + toIndentedString(identificacaoCarga) + "\n" +
+                "    impedimentos: " + toIndentedString(impedimentos) + "\n" +
+                "    numeroDocumentoSaida: " + toIndentedString(numeroDocumentoSaida) + "\n" +
+                "    tipoCarga: " + toIndentedString(tipoCarga) + "\n" +
+                "    tipoDocumentoSaida: " + toIndentedString(tipoDocumentoSaida) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoDocumentoSaidaEnum")
-    @XmlEnum(String.class)
-    public enum TipoDocumentoSaidaEnum {
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("PROCESSO")
-        @JsonProperty("PROCESSO")
-        PROCESSO("PROCESSO"),
-
-        @XmlEnumValue("EDMOV")
-        @JsonProperty("EDMOV")
-        EDMOV("EDMOV"),
-
-        @XmlEnumValue("OUTROS")
-        @JsonProperty("OUTROS")
-        OUTROS("OUTROS"),
-
-        @XmlEnumValue("PMD")
-        @JsonProperty("PMD")
-        PMD("PMD"),
-
-        @XmlEnumValue("PDE_TR")
-        @JsonProperty("PDE_TR")
-        PDE_TR("PDE_TR"),
-
-        @XmlEnumValue("DSI")
-        @JsonProperty("DSI")
-        DSI("DSI"),
-
-        @XmlEnumValue("DSI_FORMULARIO")
-        @JsonProperty("DSI_FORMULARIO")
-        DSI_FORMULARIO("DSI_FORMULARIO"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TipoDocumentoSaidaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoDocumentoSaidaEnum fromValue(String v) {
-            for (TipoDocumentoSaidaEnum b : TipoDocumentoSaidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoDocumentoSaidaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

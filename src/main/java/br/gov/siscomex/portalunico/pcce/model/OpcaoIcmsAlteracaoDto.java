@@ -78,6 +78,17 @@ public class OpcaoIcmsAlteracaoDto {
     }
 
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class OpcaoIcmsAlteracaoDto {\n");
+
+        sb.append("    ativa: ").append(toIndentedString(ativa)).append("\n");
+        sb.append("    descricaoOpcao: ").append(toIndentedString(descricaoOpcao)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +98,5 @@ public class OpcaoIcmsAlteracaoDto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class OpcaoIcmsAlteracaoDto {\n" +
-                "    ativa: " + toIndentedString(ativa) + "\n" +
-                "    descricaoOpcao: " + toIndentedString(descricaoOpcao) + "\n" +
-                "}";
-        return sb;
     }
 }

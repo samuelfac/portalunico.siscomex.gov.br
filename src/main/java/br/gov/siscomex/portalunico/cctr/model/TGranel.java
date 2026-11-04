@@ -35,15 +35,42 @@ public class TGranel {
     private Integer tipoGranel = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "UnidademedidaEnum")
+    @XmlEnum(String.class)
+    public enum UnidademedidaEnum {
+
+        @XmlEnumValue("KG")
+        @JsonProperty("KG")
+        KG("KG"),
+
+        @XmlEnumValue("M_3")
+        @JsonProperty("M_3")
+        M_3("M_3");
+
+
+        private final String value;
+
+        UnidademedidaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static UnidademedidaEnum fromValue(String v) {
+            for (UnidademedidaEnum b : UnidademedidaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to UnidademedidaEnum");
+        }
     }
 
     @XmlElement(name = "unidademedida", required = true)
@@ -124,6 +151,7 @@ public class TGranel {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -135,41 +163,14 @@ public class TGranel {
         return sb;
     }
 
-    @XmlType(name = "UnidademedidaEnum")
-    @XmlEnum(String.class)
-    public enum UnidademedidaEnum {
-
-        @XmlEnumValue("KG")
-        @JsonProperty("KG")
-        KG("KG"),
-
-        @XmlEnumValue("M_3")
-        @JsonProperty("M_3")
-        M_3("M_3");
-
-
-        private final String value;
-
-        UnidademedidaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static UnidademedidaEnum fromValue(String v) {
-            for (UnidademedidaEnum b : UnidademedidaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to UnidademedidaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

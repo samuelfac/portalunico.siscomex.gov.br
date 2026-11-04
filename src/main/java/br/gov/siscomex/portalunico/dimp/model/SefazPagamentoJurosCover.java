@@ -89,15 +89,9 @@ public class SefazPagamentoJurosCover {
         this.bancoJuros = bancoJuros;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazPagamentoJurosCover bancoJuros(String bancoJuros) {
+        this.bancoJuros = bancoJuros;
+        return this;
     }
 
     /**
@@ -152,8 +146,8 @@ public class SefazPagamentoJurosCover {
         this.codigoReceita = codigoReceita;
     }
 
-    public SefazPagamentoJurosCover bancoJuros(String bancoJuros) {
-        this.bancoJuros = bancoJuros;
+    public SefazPagamentoJurosCover codigoReceita(String codigoReceita) {
+        this.codigoReceita = codigoReceita;
         return this;
     }
 
@@ -214,10 +208,6 @@ public class SefazPagamentoJurosCover {
         return this;
     }
 
-    public SefazPagamentoJurosCover codigoReceita(String codigoReceita) {
-        this.codigoReceita = codigoReceita;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -232,5 +222,16 @@ public class SefazPagamentoJurosCover {
                 "    dataHoraPagamento: " + toIndentedString(dataHoraPagamento) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

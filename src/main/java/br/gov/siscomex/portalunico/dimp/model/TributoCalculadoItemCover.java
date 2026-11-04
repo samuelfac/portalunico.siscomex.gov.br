@@ -26,15 +26,78 @@ import javax.xml.bind.annotation.XmlType;
 public class TributoCalculadoItemCover {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("II")
+        @JsonProperty("II")
+        II("II"),
+
+        @XmlEnumValue("SALVAGUARDA")
+        @JsonProperty("SALVAGUARDA")
+        SALVAGUARDA("SALVAGUARDA"),
+
+        @XmlEnumValue("IPI")
+        @JsonProperty("IPI")
+        IPI("IPI"),
+
+        @XmlEnumValue("PIS")
+        @JsonProperty("PIS")
+        PIS("PIS"),
+
+        @XmlEnumValue("COFINS")
+        @JsonProperty("COFINS")
+        COFINS("COFINS"),
+
+        @XmlEnumValue("CIDE")
+        @JsonProperty("CIDE")
+        CIDE("CIDE"),
+
+        @XmlEnumValue("ANTIDUMPING")
+        @JsonProperty("ANTIDUMPING")
+        ANTIDUMPING("ANTIDUMPING"),
+
+        @XmlEnumValue("MEDIDAS_COMPENSATORIAS")
+        @JsonProperty("MEDIDAS_COMPENSATORIAS")
+        MEDIDAS_COMPENSATORIAS("MEDIDAS_COMPENSATORIAS"),
+
+        @XmlEnumValue("MULTA_COM_REDUCAO")
+        @JsonProperty("MULTA_COM_REDUCAO")
+        MULTA_COM_REDUCAO("MULTA_COM_REDUCAO"),
+
+        @XmlEnumValue("MULTA_SEM_REDUCAO")
+        @JsonProperty("MULTA_SEM_REDUCAO")
+        MULTA_SEM_REDUCAO("MULTA_SEM_REDUCAO"),
+
+        @XmlEnumValue("TAXA_UTILIZACAO")
+        @JsonProperty("TAXA_UTILIZACAO")
+        TAXA_UTILIZACAO("TAXA_UTILIZACAO");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
     }
 
     @XmlElement(name = "tipo")
@@ -114,6 +177,7 @@ public class TributoCalculadoItemCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -125,77 +189,14 @@ public class TributoCalculadoItemCover {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("II")
-        @JsonProperty("II")
-        II("II"),
-
-        @XmlEnumValue("SALVAGUARDA")
-        @JsonProperty("SALVAGUARDA")
-        SALVAGUARDA("SALVAGUARDA"),
-
-        @XmlEnumValue("IPI")
-        @JsonProperty("IPI")
-        IPI("IPI"),
-
-        @XmlEnumValue("PIS")
-        @JsonProperty("PIS")
-        PIS("PIS"),
-
-        @XmlEnumValue("COFINS")
-        @JsonProperty("COFINS")
-        COFINS("COFINS"),
-
-        @XmlEnumValue("CIDE")
-        @JsonProperty("CIDE")
-        CIDE("CIDE"),
-
-        @XmlEnumValue("ANTIDUMPING")
-        @JsonProperty("ANTIDUMPING")
-        ANTIDUMPING("ANTIDUMPING"),
-
-        @XmlEnumValue("MEDIDAS_COMPENSATORIAS")
-        @JsonProperty("MEDIDAS_COMPENSATORIAS")
-        MEDIDAS_COMPENSATORIAS("MEDIDAS_COMPENSATORIAS"),
-
-        @XmlEnumValue("MULTA_COM_REDUCAO")
-        @JsonProperty("MULTA_COM_REDUCAO")
-        MULTA_COM_REDUCAO("MULTA_COM_REDUCAO"),
-
-        @XmlEnumValue("MULTA_SEM_REDUCAO")
-        @JsonProperty("MULTA_SEM_REDUCAO")
-        MULTA_SEM_REDUCAO("MULTA_SEM_REDUCAO"),
-
-        @XmlEnumValue("TAXA_UTILIZACAO")
-        @JsonProperty("TAXA_UTILIZACAO")
-        TAXA_UTILIZACAO("TAXA_UTILIZACAO");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

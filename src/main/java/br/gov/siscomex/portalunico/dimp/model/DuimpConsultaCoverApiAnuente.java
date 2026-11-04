@@ -109,15 +109,9 @@ public class DuimpConsultaCoverApiAnuente {
         this.identificacao = identificacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DuimpConsultaCoverApiAnuente identificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
     }
 
     /**
@@ -196,8 +190,8 @@ public class DuimpConsultaCoverApiAnuente {
         this.carga = carga;
     }
 
-    public DuimpConsultaCoverApiAnuente identificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
+    public DuimpConsultaCoverApiAnuente carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
         return this;
     }
 
@@ -258,8 +252,8 @@ public class DuimpConsultaCoverApiAnuente {
         this.tributos = tributos;
     }
 
-    public DuimpConsultaCoverApiAnuente carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
+    public DuimpConsultaCoverApiAnuente tributos(TributoConsultaDuimpCoverApiAnuente tributos) {
+        this.tributos = tributos;
         return this;
     }
 
@@ -301,8 +295,8 @@ public class DuimpConsultaCoverApiAnuente {
         this.tratamentoAdministrativo = tratamentoAdministrativo;
     }
 
-    public DuimpConsultaCoverApiAnuente tributos(TributoConsultaDuimpCoverApiAnuente tributos) {
-        this.tributos = tributos;
+    public DuimpConsultaCoverApiAnuente tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
+        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 
@@ -347,10 +341,6 @@ public class DuimpConsultaCoverApiAnuente {
         return this;
     }
 
-    public DuimpConsultaCoverApiAnuente tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
-        this.tratamentoAdministrativo = tratamentoAdministrativo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -370,5 +360,16 @@ public class DuimpConsultaCoverApiAnuente {
                 "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

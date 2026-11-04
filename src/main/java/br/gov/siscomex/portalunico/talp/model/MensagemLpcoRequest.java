@@ -64,5 +64,5 @@ public class MensagemLpcoRequest {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

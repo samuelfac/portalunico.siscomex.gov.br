@@ -102,6 +102,18 @@ public class SituacaoVO {
     }
 
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class SituacaoVO {\n");
+
+        sb.append("    nome: ").append(toIndentedString(nome)).append("\n");
+        sb.append("    dataInicio: ").append(toIndentedString(dataInicio)).append("\n");
+        sb.append("    dataFim: ").append(toIndentedString(dataFim)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -111,16 +123,5 @@ public class SituacaoVO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class SituacaoVO {\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "    dataInicio: " + toIndentedString(dataInicio) + "\n" +
-                "    dataFim: " + toIndentedString(dataFim) + "\n" +
-                "}";
-        return sb;
     }
 }

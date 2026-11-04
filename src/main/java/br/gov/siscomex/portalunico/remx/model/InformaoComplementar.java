@@ -62,5 +62,5 @@ public class InformaoComplementar {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

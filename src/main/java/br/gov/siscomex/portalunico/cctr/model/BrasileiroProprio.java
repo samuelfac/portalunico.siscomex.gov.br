@@ -75,6 +75,16 @@ public class BrasileiroProprio {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class BrasileiroProprio {\n" +
+                "    licencaTNTI: " + toIndentedString(licencaTNTI) + "\n" +
+                "    dataVencimentoLicenca: " + toIndentedString(dataVencimentoLicenca) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -84,15 +94,5 @@ public class BrasileiroProprio {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class BrasileiroProprio {\n" +
-                "    licencaTNTI: " + toIndentedString(licencaTNTI) + "\n" +
-                "    dataVencimentoLicenca: " + toIndentedString(dataVencimentoLicenca) + "\n" +
-                "}";
-        return sb;
     }
 }

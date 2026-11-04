@@ -41,10 +41,59 @@ public class InfoGeral {
     private String cnpjManifestador = null;
 
 
-    @XmlElement(name = "docTransporte", required = true)
-    @ApiModelProperty(required = true, value = "")
-    @Valid
-    private DocTransporte docTransporte = null;
+    @XmlType(name = "PaisDestinoEnum")
+    @XmlEnum(String.class)
+    public enum PaisDestinoEnum {
+
+        @XmlEnumValue("AR")
+        @JsonProperty("AR")
+        AR("AR"),
+
+        @XmlEnumValue("BO")
+        @JsonProperty("BO")
+        BO("BO"),
+
+        @XmlEnumValue("CL")
+        @JsonProperty("CL")
+        CL("CL"),
+
+        @XmlEnumValue("PY")
+        @JsonProperty("PY")
+        PY("PY"),
+
+        @XmlEnumValue("PE")
+        @JsonProperty("PE")
+        PE("PE"),
+
+        @XmlEnumValue("UY")
+        @JsonProperty("UY")
+        UY("UY");
+
+
+        private final String value;
+
+        PaisDestinoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static PaisDestinoEnum fromValue(String v) {
+            for (PaisDestinoEnum b : PaisDestinoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to PaisDestinoEnum");
+        }
+    }
 
     @XmlElement(name = "paisDestino", required = true)
     @ApiModelProperty(example = "AR", required = true, value = "Código do país de destino da carga<br>Tamanho: 2<br>Formato: AA<br>Domínio: <br>AR (Argentina), <br>BO (Bolívia), <br>CL (Chile), <br>PY (Paraguai), <br>PE (Peru), <br>UY (Uruguai)")
@@ -66,28 +115,23 @@ public class InfoGeral {
      * Indicador de transito aduaneiro internacional<br>Domínio: <br>S (Sim), <br>N(Não).
      **/
     private String indTransitoAduaneiroInternacional = null;
-    @XmlElement(name = "observacoes")
-    @ApiModelProperty(example = "MIC/DTA Pre-ACD", value = "Observações<br>Tamanho: 250")
-    /**
-     * Observações<br>Tamanho: 250
-     **/
-    private String observacoes = null;
+
+    @XmlElement(name = "docTransporte", required = true)
+    @ApiModelProperty(required = true, value = "")
+    @Valid
+    private DocTransporte docTransporte = null;
 
     @XmlElement(name = "localSaida", required = true)
     @ApiModelProperty(required = true, value = "")
     @Valid
     private LocalSaida localSaida = null;
 
+    @XmlElement(name = "observacoes")
+    @ApiModelProperty(example = "MIC/DTA Pre-ACD", value = "Observações<br>Tamanho: 250")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Observações<br>Tamanho: 250
+     **/
+    private String observacoes = null;
 
     /**
      * CPF do Manifestador&lt;br&gt;Tamanho: 11&lt;br&gt;Formato: NNNNNNNNNNN&lt;br&gt;Informado e obrigatório apenas para transportador nacional do tipo pessoa física.
@@ -248,6 +292,7 @@ public class InfoGeral {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -264,57 +309,14 @@ public class InfoGeral {
         return sb;
     }
 
-    @XmlType(name = "PaisDestinoEnum")
-    @XmlEnum(String.class)
-    public enum PaisDestinoEnum {
-
-        @XmlEnumValue("AR")
-        @JsonProperty("AR")
-        AR("AR"),
-
-        @XmlEnumValue("BO")
-        @JsonProperty("BO")
-        BO("BO"),
-
-        @XmlEnumValue("CL")
-        @JsonProperty("CL")
-        CL("CL"),
-
-        @XmlEnumValue("PY")
-        @JsonProperty("PY")
-        PY("PY"),
-
-        @XmlEnumValue("PE")
-        @JsonProperty("PE")
-        PE("PE"),
-
-        @XmlEnumValue("UY")
-        @JsonProperty("UY")
-        UY("UY");
-
-
-        private final String value;
-
-        PaisDestinoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static PaisDestinoEnum fromValue(String v) {
-            for (PaisDestinoEnum b : PaisDestinoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to PaisDestinoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

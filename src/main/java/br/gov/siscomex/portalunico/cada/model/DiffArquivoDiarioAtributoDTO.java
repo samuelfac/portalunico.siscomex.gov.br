@@ -230,15 +230,9 @@ public class DiffArquivoDiarioAtributoDTO {
         this.tipoAtributo = tipoAtributo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DiffArquivoDiarioAtributoDTO tipoAtributo(DiffValorDTO tipoAtributo) {
+        this.tipoAtributo = tipoAtributo;
+        return this;
     }
 
     /**
@@ -292,8 +286,8 @@ public class DiffArquivoDiarioAtributoDTO {
         this.orientacaoPreenchimento = orientacaoPreenchimento;
     }
 
-    public DiffArquivoDiarioAtributoDTO tipoAtributo(DiffValorDTO tipoAtributo) {
-        this.tipoAtributo = tipoAtributo;
+    public DiffArquivoDiarioAtributoDTO orientacaoPreenchimento(DiffValorDTO orientacaoPreenchimento) {
+        this.orientacaoPreenchimento = orientacaoPreenchimento;
         return this;
     }
 
@@ -420,8 +414,8 @@ public class DiffArquivoDiarioAtributoDTO {
         this.dataInicioVigencia = dataInicioVigencia;
     }
 
-    public DiffArquivoDiarioAtributoDTO orientacaoPreenchimento(DiffValorDTO orientacaoPreenchimento) {
-        this.orientacaoPreenchimento = orientacaoPreenchimento;
+    public DiffArquivoDiarioAtributoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
         return this;
     }
 
@@ -529,8 +523,8 @@ public class DiffArquivoDiarioAtributoDTO {
         this.atributoCondicionante = atributoCondicionante;
     }
 
-    public DiffArquivoDiarioAtributoDTO dataInicioVigencia(DiffValorDTO dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
+    public DiffArquivoDiarioAtributoDTO atributoCondicionante(DiffValorDTO atributoCondicionante) {
+        this.atributoCondicionante = atributoCondicionante;
         return this;
     }
 
@@ -565,8 +559,8 @@ public class DiffArquivoDiarioAtributoDTO {
         this.listaSubatributos = listaSubatributos;
     }
 
-    public DiffArquivoDiarioAtributoDTO atributoCondicionante(DiffValorDTO atributoCondicionante) {
-        this.atributoCondicionante = atributoCondicionante;
+    public DiffArquivoDiarioAtributoDTO listaSubatributos(DiffArquivoDiarioSubatributoDTO listaSubatributos) {
+        this.listaSubatributos = listaSubatributos;
         return this;
     }
 
@@ -588,10 +582,6 @@ public class DiffArquivoDiarioAtributoDTO {
         return this;
     }
 
-    public DiffArquivoDiarioAtributoDTO listaSubatributos(DiffArquivoDiarioSubatributoDTO listaSubatributos) {
-        this.listaSubatributos = listaSubatributos;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -623,5 +613,16 @@ public class DiffArquivoDiarioAtributoDTO {
                 "    multivalorado: " + toIndentedString(multivalorado) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

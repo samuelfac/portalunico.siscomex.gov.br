@@ -125,15 +125,9 @@ public class FabricanteIntegracaoRequestDTO {
         this.codigoProduto = codigoProduto;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public FabricanteIntegracaoRequestDTO codigoProduto(Long codigoProduto) {
+        this.codigoProduto = codigoProduto;
+        return this;
     }
 
     /**
@@ -156,10 +150,6 @@ public class FabricanteIntegracaoRequestDTO {
         return this;
     }
 
-    public FabricanteIntegracaoRequestDTO codigoProduto(Long codigoProduto) {
-        this.codigoProduto = codigoProduto;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -172,5 +162,16 @@ public class FabricanteIntegracaoRequestDTO {
                 "    codigoPais: " + toIndentedString(codigoPais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

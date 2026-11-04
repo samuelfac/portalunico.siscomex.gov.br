@@ -166,15 +166,9 @@ public class ConsultaEstoquePosDetails {
         this.local = local;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConsultaEstoquePosDetails local(LocalDTO local) {
+        this.local = local;
+        return this;
     }
 
     /**
@@ -229,8 +223,8 @@ public class ConsultaEstoquePosDetails {
         this.numeroCEMercante = numeroCEMercante;
     }
 
-    public ConsultaEstoquePosDetails local(LocalDTO local) {
-        this.local = local;
+    public ConsultaEstoquePosDetails numeroCEMercante(String numeroCEMercante) {
+        this.numeroCEMercante = numeroCEMercante;
         return this;
     }
 
@@ -272,8 +266,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails numeroCEMercante(String numeroCEMercante) {
-        this.numeroCEMercante = numeroCEMercante;
+    public ConsultaEstoquePosDetails addConteineresItem(ConteinerDetails conteineresItem) {
+        this.conteineres.add(conteineresItem);
         return this;
     }
 
@@ -320,8 +314,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails addConteineresItem(ConteinerDetails conteineresItem) {
-        this.conteineres.add(conteineresItem);
+    public ConsultaEstoquePosDetails addVeiculosItem(VeiculoDetails veiculosItem) {
+        this.veiculos.add(veiculosItem);
         return this;
     }
 
@@ -356,8 +350,8 @@ public class ConsultaEstoquePosDetails {
         this.situacao = situacao;
     }
 
-    public ConsultaEstoquePosDetails addVeiculosItem(VeiculoDetails veiculosItem) {
-        this.veiculos.add(veiculosItem);
+    public ConsultaEstoquePosDetails situacao(String situacao) {
+        this.situacao = situacao;
         return this;
     }
 
@@ -416,8 +410,8 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails situacao(String situacao) {
-        this.situacao = situacao;
+    public ConsultaEstoquePosDetails addIndicacaoDeImportacaoParaTerceirosItem(ImportacaoParaTerceirosDTO indicacaoDeImportacaoParaTerceirosItem) {
+        this.indicacaoDeImportacaoParaTerceiros.add(indicacaoDeImportacaoParaTerceirosItem);
         return this;
     }
 
@@ -453,8 +447,8 @@ public class ConsultaEstoquePosDetails {
         this.destinoFinalCarga = destinoFinalCarga;
     }
 
-    public ConsultaEstoquePosDetails addIndicacaoDeImportacaoParaTerceirosItem(ImportacaoParaTerceirosDTO indicacaoDeImportacaoParaTerceirosItem) {
-        this.indicacaoDeImportacaoParaTerceiros.add(indicacaoDeImportacaoParaTerceirosItem);
+    public ConsultaEstoquePosDetails destinoFinalCarga(UrfDTO destinoFinalCarga) {
+        this.destinoFinalCarga = destinoFinalCarga;
         return this;
     }
 
@@ -531,10 +525,6 @@ public class ConsultaEstoquePosDetails {
         return this;
     }
 
-    public ConsultaEstoquePosDetails destinoFinalCarga(UrfDTO destinoFinalCarga) {
-        this.destinoFinalCarga = destinoFinalCarga;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -561,5 +551,16 @@ public class ConsultaEstoquePosDetails {
                 "    entregaAutorizadaPeloSiscomexCarga: " + toIndentedString(entregaAutorizadaPeloSiscomexCarga) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

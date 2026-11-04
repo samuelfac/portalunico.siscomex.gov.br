@@ -78,6 +78,16 @@ public class CargaRodoviariaDetalhadaSituacao {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CargaRodoviariaDetalhadaSituacao {\n" +
+                "    documentoSaida: " + toIndentedString(documentoSaida) + "\n" +
+                "    itensEstoque: " + toIndentedString(itensEstoque) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class CargaRodoviariaDetalhadaSituacao {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CargaRodoviariaDetalhadaSituacao {\n" +
-                "    documentoSaida: " + toIndentedString(documentoSaida) + "\n" +
-                "    itensEstoque: " + toIndentedString(itensEstoque) + "\n" +
-                "}";
-        return sb;
     }
 }

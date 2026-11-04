@@ -57,15 +57,9 @@ public class ViagemRodoviariaId {
         this.dataEmissao = dataEmissao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ViagemRodoviariaId dataEmissao(LocalDate dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
     }
 
     /**
@@ -101,8 +95,8 @@ public class ViagemRodoviariaId {
         this.tipo = tipo;
     }
 
-    public ViagemRodoviariaId dataEmissao(LocalDate dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public ViagemRodoviariaId tipo(TipoManifestoViagem tipo) {
+        this.tipo = tipo;
         return this;
     }
 
@@ -125,10 +119,6 @@ public class ViagemRodoviariaId {
         return this;
     }
 
-    public ViagemRodoviariaId tipo(TipoManifestoViagem tipo) {
-        this.tipo = tipo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -140,5 +130,16 @@ public class ViagemRodoviariaId {
                 "    tipoNumero: " + toIndentedString(tipoNumero) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

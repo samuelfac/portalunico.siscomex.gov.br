@@ -113,15 +113,9 @@ public class TransitoSimplificado {
         this.codigoRADestino = codigoRADestino;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public TransitoSimplificado codigoRADestino(String codigoRADestino) {
+        this.codigoRADestino = codigoRADestino;
+        return this;
     }
 
     /**
@@ -157,8 +151,8 @@ public class TransitoSimplificado {
         this.veiculoRodoviario = veiculoRodoviario;
     }
 
-    public TransitoSimplificado codigoRADestino(String codigoRADestino) {
-        this.codigoRADestino = codigoRADestino;
+    public TransitoSimplificado veiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
+        this.veiculoRodoviario = veiculoRodoviario;
         return this;
     }
 
@@ -181,10 +175,6 @@ public class TransitoSimplificado {
         return this;
     }
 
-    public TransitoSimplificado veiculoRodoviario(VeiculoRodoviario veiculoRodoviario) {
-        this.veiculoRodoviario = veiculoRodoviario;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -198,5 +188,16 @@ public class TransitoSimplificado {
                 "    indEscaneamento: " + toIndentedString(indEscaneamento) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

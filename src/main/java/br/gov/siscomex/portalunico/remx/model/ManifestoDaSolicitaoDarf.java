@@ -101,5 +101,5 @@ public class ManifestoDaSolicitaoDarf {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

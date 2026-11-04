@@ -23,15 +23,42 @@ import java.math.BigDecimal;
 public class AcrescimoDeducaoConsultaItemCover {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("ACRESCIMO")
+        @JsonProperty("ACRESCIMO")
+        ACRESCIMO("ACRESCIMO"),
+
+        @XmlEnumValue("DEDUCAO")
+        @JsonProperty("DEDUCAO")
+        DEDUCAO("DEDUCAO");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
     }
 
     @XmlElement(name = "tipo", required = true)
@@ -141,6 +168,7 @@ public class AcrescimoDeducaoConsultaItemCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -153,41 +181,14 @@ public class AcrescimoDeducaoConsultaItemCover {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("ACRESCIMO")
-        @JsonProperty("ACRESCIMO")
-        ACRESCIMO("ACRESCIMO"),
-
-        @XmlEnumValue("DEDUCAO")
-        @JsonProperty("DEDUCAO")
-        DEDUCAO("DEDUCAO");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

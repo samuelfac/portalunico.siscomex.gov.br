@@ -552,15 +552,9 @@ public class DetalheDoProcessamentoDaRemessa {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DetalheDoProcessamentoDaRemessa addMercadoriasItem(Mercadoria mercadoriasItem) {
+        this.mercadorias.add(mercadoriasItem);
+        return this;
     }
 
     /**
@@ -600,8 +594,8 @@ public class DetalheDoProcessamentoDaRemessa {
         this.numeroRemessa = numeroRemessa;
     }
 
-    public DetalheDoProcessamentoDaRemessa addMercadoriasItem(Mercadoria mercadoriasItem) {
-        this.mercadorias.add(mercadoriasItem);
+    public DetalheDoProcessamentoDaRemessa numeroRemessa(String numeroRemessa) {
+        this.numeroRemessa = numeroRemessa;
         return this;
     }
 
@@ -664,8 +658,8 @@ public class DetalheDoProcessamentoDaRemessa {
         this.peso = peso;
     }
 
-    public DetalheDoProcessamentoDaRemessa numeroRemessa(String numeroRemessa) {
-        this.numeroRemessa = numeroRemessa;
+    public DetalheDoProcessamentoDaRemessa peso(BigDecimal peso) {
+        this.peso = peso;
         return this;
     }
 
@@ -759,8 +753,8 @@ public class DetalheDoProcessamentoDaRemessa {
         this.totalVolumesRecebidos = totalVolumesRecebidos;
     }
 
-    public DetalheDoProcessamentoDaRemessa peso(BigDecimal peso) {
-        this.peso = peso;
+    public DetalheDoProcessamentoDaRemessa totalVolumesRecebidos(Integer totalVolumesRecebidos) {
+        this.totalVolumesRecebidos = totalVolumesRecebidos;
         return this;
     }
 
@@ -795,8 +789,8 @@ public class DetalheDoProcessamentoDaRemessa {
         this.valorIIReal = valorIIReal;
     }
 
-    public DetalheDoProcessamentoDaRemessa totalVolumesRecebidos(Integer totalVolumesRecebidos) {
-        this.totalVolumesRecebidos = totalVolumesRecebidos;
+    public DetalheDoProcessamentoDaRemessa valorIIReal(BigDecimal valorIIReal) {
+        this.valorIIReal = valorIIReal;
         return this;
     }
 
@@ -867,8 +861,8 @@ public class DetalheDoProcessamentoDaRemessa {
         this.valorMultasReal = valorMultasReal;
     }
 
-    public DetalheDoProcessamentoDaRemessa valorIIReal(BigDecimal valorIIReal) {
-        this.valorIIReal = valorIIReal;
+    public DetalheDoProcessamentoDaRemessa valorMultasReal(BigDecimal valorMultasReal) {
+        this.valorMultasReal = valorMultasReal;
         return this;
     }
 
@@ -962,10 +956,6 @@ public class DetalheDoProcessamentoDaRemessa {
         return this;
     }
 
-    public DetalheDoProcessamentoDaRemessa valorMultasReal(BigDecimal valorMultasReal) {
-        this.valorMultasReal = valorMultasReal;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -1009,4 +999,15 @@ public class DetalheDoProcessamentoDaRemessa {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

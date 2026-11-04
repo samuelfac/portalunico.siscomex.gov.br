@@ -131,15 +131,9 @@ public class EstoqueNFE {
         this.urf = urf;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EstoqueNFE urf(String urf) {
+        this.urf = urf;
+        return this;
     }
 
     /**
@@ -297,10 +291,6 @@ public class EstoqueNFE {
         return this;
     }
 
-    public EstoqueNFE urf(String urf) {
-        this.urf = urf;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -318,5 +308,16 @@ public class EstoqueNFE {
                 "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

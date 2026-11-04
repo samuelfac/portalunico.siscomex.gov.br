@@ -32,15 +32,54 @@ public class ResultadoProcessamentoTACover {
     private String dataProcessamento = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "ResultadoConsolidadoTAEnum")
+    @XmlEnum(String.class)
+    public enum ResultadoConsolidadoTAEnum {
+
+        @XmlEnumValue("DISPENSADO")
+        @JsonProperty("DISPENSADO")
+        DISPENSADO("DISPENSADO"),
+
+        @XmlEnumValue("DEFERIDO")
+        @JsonProperty("DEFERIDO")
+        DEFERIDO("DEFERIDO"),
+
+        @XmlEnumValue("ALERTA")
+        @JsonProperty("ALERTA")
+        ALERTA("ALERTA"),
+
+        @XmlEnumValue("PENDENTE")
+        @JsonProperty("PENDENTE")
+        PENDENTE("PENDENTE"),
+
+        @XmlEnumValue("IMPEDIDO")
+        @JsonProperty("IMPEDIDO")
+        IMPEDIDO("IMPEDIDO");
+
+
+        private final String value;
+
+        ResultadoConsolidadoTAEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ResultadoConsolidadoTAEnum fromValue(String v) {
+            for (ResultadoConsolidadoTAEnum b : ResultadoConsolidadoTAEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ResultadoConsolidadoTAEnum");
+        }
     }
 
     @XmlElement(name = "resultadoConsolidadoTA")
@@ -91,6 +130,7 @@ public class ResultadoProcessamentoTACover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -101,53 +141,14 @@ public class ResultadoProcessamentoTACover {
         return sb;
     }
 
-    @XmlType(name = "ResultadoConsolidadoTAEnum")
-    @XmlEnum(String.class)
-    public enum ResultadoConsolidadoTAEnum {
-
-        @XmlEnumValue("DISPENSADO")
-        @JsonProperty("DISPENSADO")
-        DISPENSADO("DISPENSADO"),
-
-        @XmlEnumValue("DEFERIDO")
-        @JsonProperty("DEFERIDO")
-        DEFERIDO("DEFERIDO"),
-
-        @XmlEnumValue("ALERTA")
-        @JsonProperty("ALERTA")
-        ALERTA("ALERTA"),
-
-        @XmlEnumValue("PENDENTE")
-        @JsonProperty("PENDENTE")
-        PENDENTE("PENDENTE"),
-
-        @XmlEnumValue("IMPEDIDO")
-        @JsonProperty("IMPEDIDO")
-        IMPEDIDO("IMPEDIDO");
-
-
-        private final String value;
-
-        ResultadoConsolidadoTAEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ResultadoConsolidadoTAEnum fromValue(String v) {
-            for (ResultadoConsolidadoTAEnum b : ResultadoConsolidadoTAEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ResultadoConsolidadoTAEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

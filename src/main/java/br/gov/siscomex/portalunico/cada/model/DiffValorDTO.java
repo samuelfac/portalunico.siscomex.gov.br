@@ -70,6 +70,16 @@ public class DiffValorDTO {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class DiffValorDTO {\n" +
+                "    valorAnterior: " + toIndentedString(valorAnterior) + "\n" +
+                "    valorAtual: " + toIndentedString(valorAtual) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -79,15 +89,5 @@ public class DiffValorDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class DiffValorDTO {\n" +
-                "    valorAnterior: " + toIndentedString(valorAnterior) + "\n" +
-                "    valorAtual: " + toIndentedString(valorAtual) + "\n" +
-                "}";
-        return sb;
     }
 }

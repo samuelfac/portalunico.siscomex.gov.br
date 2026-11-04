@@ -86,15 +86,9 @@ public class MawbAssociadoConsultaDetalhada {
         this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public MawbAssociadoConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
+        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
+        return this;
     }
 
     /**
@@ -135,10 +129,6 @@ public class MawbAssociadoConsultaDetalhada {
         return this;
     }
 
-    public MawbAssociadoConsultaDetalhada cnpjResponsavelArquivo(String cnpjResponsavelArquivo) {
-        this.cnpjResponsavelArquivo = cnpjResponsavelArquivo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -150,5 +140,16 @@ public class MawbAssociadoConsultaDetalhada {
                 "    identificacao: " + toIndentedString(identificacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

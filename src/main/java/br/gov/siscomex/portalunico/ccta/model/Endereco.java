@@ -89,15 +89,9 @@ public class Endereco {
         this.cep = cep;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Endereco cep(String cep) {
+        this.cep = cep;
+        return this;
     }
 
     /**
@@ -176,10 +170,6 @@ public class Endereco {
         return this;
     }
 
-    public Endereco cep(String cep) {
-        this.cep = cep;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -193,5 +183,16 @@ public class Endereco {
                 "    pais: " + toIndentedString(pais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

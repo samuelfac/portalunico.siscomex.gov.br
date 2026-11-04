@@ -67,5 +67,5 @@ public class RetificacaoLpcoCancelarRequest {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

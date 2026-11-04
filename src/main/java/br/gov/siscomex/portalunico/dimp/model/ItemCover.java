@@ -160,15 +160,9 @@ public class ItemCover {
         this.caracterizacaoImportacao = caracterizacaoImportacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemCover caracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
+        this.caracterizacaoImportacao = caracterizacaoImportacao;
+        return this;
     }
 
     /**
@@ -206,8 +200,8 @@ public class ItemCover {
         this.fabricante = fabricante;
     }
 
-    public ItemCover caracterizacaoImportacao(CaracterizacaoImportacaoCover caracterizacaoImportacao) {
-        this.caracterizacaoImportacao = caracterizacaoImportacao;
+    public ItemCover fabricante(FabricanteCover fabricante) {
+        this.fabricante = fabricante;
         return this;
     }
 
@@ -246,8 +240,8 @@ public class ItemCover {
         this.indicadorCompradorVendedor = indicadorCompradorVendedor;
     }
 
-    public ItemCover fabricante(FabricanteCover fabricante) {
-        this.fabricante = fabricante;
+    public ItemCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
+        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
         return this;
     }
 
@@ -307,8 +301,8 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover indicadorCompradorVendedor(IndicadorCompradorVendedorCover indicadorCompradorVendedor) {
-        this.indicadorCompradorVendedor = indicadorCompradorVendedor;
+    public ItemCover addLpcosItem(LpcoCover lpcosItem) {
+        this.lpcos.add(lpcosItem);
         return this;
     }
 
@@ -397,8 +391,8 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover addLpcosItem(LpcoCover lpcosItem) {
-        this.lpcos.add(lpcosItem);
+    public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
+        this.atributosDuimp.add(atributosDuimpItem);
         return this;
     }
 
@@ -450,10 +444,6 @@ public class ItemCover {
         return this;
     }
 
-    public ItemCover addAtributosDuimpItem(AtributoItemCover atributosDuimpItem) {
-        this.atributosDuimp.add(atributosDuimpItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -477,5 +467,16 @@ public class ItemCover {
                 "    tributos: " + toIndentedString(tributos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

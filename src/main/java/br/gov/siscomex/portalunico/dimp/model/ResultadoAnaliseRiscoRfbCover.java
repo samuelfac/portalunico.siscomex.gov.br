@@ -27,15 +27,54 @@ public class ResultadoAnaliseRiscoRfbCover {
     private String orgao = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "ResultadoEnum")
+    @XmlEnum(String.class)
+    public enum ResultadoEnum {
+
+        @XmlEnumValue("DESEMBARACO_AUTORIZADO")
+        @JsonProperty("DESEMBARACO_AUTORIZADO")
+        DESEMBARACO_AUTORIZADO("DESEMBARACO_AUTORIZADO"),
+
+        @XmlEnumValue("DESEMBARACO_CONDICIONADO")
+        @JsonProperty("DESEMBARACO_CONDICIONADO")
+        DESEMBARACO_CONDICIONADO("DESEMBARACO_CONDICIONADO"),
+
+        @XmlEnumValue("EXAME_DOCUMENTAL")
+        @JsonProperty("EXAME_DOCUMENTAL")
+        EXAME_DOCUMENTAL("EXAME_DOCUMENTAL"),
+
+        @XmlEnumValue("EXAME_DOCUMENTAL_VERIFICACAO_FISICA")
+        @JsonProperty("EXAME_DOCUMENTAL_VERIFICACAO_FISICA")
+        EXAME_DOCUMENTAL_VERIFICACAO_FISICA("EXAME_DOCUMENTAL_VERIFICACAO_FISICA"),
+
+        @XmlEnumValue("EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE")
+        @JsonProperty("EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE")
+        EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE("EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE");
+
+
+        private final String value;
+
+        ResultadoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ResultadoEnum fromValue(String v) {
+            for (ResultadoEnum b : ResultadoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ResultadoEnum");
+        }
     }
 
     @XmlElement(name = "resultado")
@@ -86,6 +125,7 @@ public class ResultadoAnaliseRiscoRfbCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -96,53 +136,14 @@ public class ResultadoAnaliseRiscoRfbCover {
         return sb;
     }
 
-    @XmlType(name = "ResultadoEnum")
-    @XmlEnum(String.class)
-    public enum ResultadoEnum {
-
-        @XmlEnumValue("DESEMBARACO_AUTORIZADO")
-        @JsonProperty("DESEMBARACO_AUTORIZADO")
-        DESEMBARACO_AUTORIZADO("DESEMBARACO_AUTORIZADO"),
-
-        @XmlEnumValue("DESEMBARACO_CONDICIONADO")
-        @JsonProperty("DESEMBARACO_CONDICIONADO")
-        DESEMBARACO_CONDICIONADO("DESEMBARACO_CONDICIONADO"),
-
-        @XmlEnumValue("EXAME_DOCUMENTAL")
-        @JsonProperty("EXAME_DOCUMENTAL")
-        EXAME_DOCUMENTAL("EXAME_DOCUMENTAL"),
-
-        @XmlEnumValue("EXAME_DOCUMENTAL_VERIFICACAO_FISICA")
-        @JsonProperty("EXAME_DOCUMENTAL_VERIFICACAO_FISICA")
-        EXAME_DOCUMENTAL_VERIFICACAO_FISICA("EXAME_DOCUMENTAL_VERIFICACAO_FISICA"),
-
-        @XmlEnumValue("EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE")
-        @JsonProperty("EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE")
-        EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE("EXAME_DOCUMENTAL_VERIFICACAO_FISICA_APURACAO_INDICIOS_FRAUDE");
-
-
-        private final String value;
-
-        ResultadoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ResultadoEnum fromValue(String v) {
-            for (ResultadoEnum b : ResultadoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ResultadoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

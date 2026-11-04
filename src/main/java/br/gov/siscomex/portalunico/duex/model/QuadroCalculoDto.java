@@ -127,15 +127,9 @@ public class QuadroCalculoDto {
         this.memoriaDeCalculo = memoriaDeCalculo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public QuadroCalculoDto memoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
+        this.memoriaDeCalculo = memoriaDeCalculo;
+        return this;
     }
 
     /**
@@ -228,8 +222,8 @@ public class QuadroCalculoDto {
         this.valorAReduzir = valorAReduzir;
     }
 
-    public QuadroCalculoDto memoriaDeCalculo(MemoriaCalculoDto memoriaDeCalculo) {
-        this.memoriaDeCalculo = memoriaDeCalculo;
+    public QuadroCalculoDto valorAReduzir(BigDecimal valorAReduzir) {
+        this.valorAReduzir = valorAReduzir;
         return this;
     }
 
@@ -306,10 +300,6 @@ public class QuadroCalculoDto {
         return this;
     }
 
-    public QuadroCalculoDto valorAReduzir(BigDecimal valorAReduzir) {
-        this.valorAReduzir = valorAReduzir;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -328,5 +318,16 @@ public class QuadroCalculoDto {
                 "    valorSuspenso: " + toIndentedString(valorSuspenso) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

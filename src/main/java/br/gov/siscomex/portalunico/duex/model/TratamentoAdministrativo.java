@@ -46,15 +46,118 @@ public class TratamentoAdministrativo {
     private List<String> orgaos = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "SituacaoEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoEnum {
+
+        @XmlEnumValue("PARA_ANALISE")
+        @JsonProperty("PARA_ANALISE")
+        PARA_ANALISE("PARA_ANALISE"),
+
+        @XmlEnumValue("EM_ANALISE")
+        @JsonProperty("EM_ANALISE")
+        EM_ANALISE("EM_ANALISE"),
+
+        @XmlEnumValue("INDEFERIDO")
+        @JsonProperty("INDEFERIDO")
+        INDEFERIDO("INDEFERIDO"),
+
+        @XmlEnumValue("EM_EXIGENCIA")
+        @JsonProperty("EM_EXIGENCIA")
+        EM_EXIGENCIA("EM_EXIGENCIA"),
+
+        @XmlEnumValue("RESPOSTA_EXIGENCIA")
+        @JsonProperty("RESPOSTA_EXIGENCIA")
+        RESPOSTA_EXIGENCIA("RESPOSTA_EXIGENCIA"),
+
+        @XmlEnumValue("CANCELADO")
+        @JsonProperty("CANCELADO")
+        CANCELADO("CANCELADO"),
+
+        @XmlEnumValue("ESGOTADO")
+        @JsonProperty("ESGOTADO")
+        ESGOTADO("ESGOTADO"),
+
+        @XmlEnumValue("DEFERIDO")
+        @JsonProperty("DEFERIDO")
+        DEFERIDO("DEFERIDO"),
+
+        @XmlEnumValue("VENCIDO")
+        @JsonProperty("VENCIDO")
+        VENCIDO("VENCIDO"),
+
+        @XmlEnumValue("ANULADO_REVOGADO")
+        @JsonProperty("ANULADO_REVOGADO")
+        ANULADO_REVOGADO("ANULADO_REVOGADO"),
+
+        @XmlEnumValue("EM_VERIFICACAO")
+        @JsonProperty("EM_VERIFICACAO")
+        EM_VERIFICACAO("EM_VERIFICACAO"),
+
+        @XmlEnumValue("EM_INSPECAO")
+        @JsonProperty("EM_INSPECAO")
+        EM_INSPECAO("EM_INSPECAO"),
+
+        @XmlEnumValue("RASCUNHO_RETIFICACAO")
+        @JsonProperty("RASCUNHO_RETIFICACAO")
+        RASCUNHO_RETIFICACAO("RASCUNHO_RETIFICACAO"),
+
+        @XmlEnumValue("RASCUNHO_LPCO")
+        @JsonProperty("RASCUNHO_LPCO")
+        RASCUNHO_LPCO("RASCUNHO_LPCO"),
+
+        @XmlEnumValue("AGUARDANDO_PAGAMENTO")
+        @JsonProperty("AGUARDANDO_PAGAMENTO")
+        AGUARDANDO_PAGAMENTO("AGUARDANDO_PAGAMENTO"),
+
+        @XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
+        @JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
+        AUTORIZACAO_IMPORTACAO_EMITIDA("AUTORIZACAO_IMPORTACAO_EMITIDA"),
+
+        @XmlEnumValue("PARAMETRIZADO")
+        @JsonProperty("PARAMETRIZADO")
+        PARAMETRIZADO("PARAMETRIZADO"),
+
+        @XmlEnumValue("CONFERENCIA_DOCUMENTAL")
+        @JsonProperty("CONFERENCIA_DOCUMENTAL")
+        CONFERENCIA_DOCUMENTAL("CONFERENCIA_DOCUMENTAL"),
+
+        @XmlEnumValue("INSPECAO_FISICA")
+        @JsonProperty("INSPECAO_FISICA")
+        INSPECAO_FISICA("INSPECAO_FISICA"),
+
+        @XmlEnumValue("RECURSO_INDEFERIMENTO")
+        @JsonProperty("RECURSO_INDEFERIMENTO")
+        RECURSO_INDEFERIMENTO("RECURSO_INDEFERIMENTO"),
+
+        @XmlEnumValue("RECURSO_DIVERSO")
+        @JsonProperty("RECURSO_DIVERSO")
+        RECURSO_DIVERSO("RECURSO_DIVERSO");
+
+
+        private final String value;
+
+        SituacaoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
     }
 
     @XmlElement(name = "situacao")
@@ -164,6 +267,7 @@ public class TratamentoAdministrativo {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -177,117 +281,14 @@ public class TratamentoAdministrativo {
         return sb;
     }
 
-    @XmlType(name = "SituacaoEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoEnum {
-
-        @XmlEnumValue("PARA_ANALISE")
-        @JsonProperty("PARA_ANALISE")
-        PARA_ANALISE("PARA_ANALISE"),
-
-        @XmlEnumValue("EM_ANALISE")
-        @JsonProperty("EM_ANALISE")
-        EM_ANALISE("EM_ANALISE"),
-
-        @XmlEnumValue("INDEFERIDO")
-        @JsonProperty("INDEFERIDO")
-        INDEFERIDO("INDEFERIDO"),
-
-        @XmlEnumValue("EM_EXIGENCIA")
-        @JsonProperty("EM_EXIGENCIA")
-        EM_EXIGENCIA("EM_EXIGENCIA"),
-
-        @XmlEnumValue("RESPOSTA_EXIGENCIA")
-        @JsonProperty("RESPOSTA_EXIGENCIA")
-        RESPOSTA_EXIGENCIA("RESPOSTA_EXIGENCIA"),
-
-        @XmlEnumValue("CANCELADO")
-        @JsonProperty("CANCELADO")
-        CANCELADO("CANCELADO"),
-
-        @XmlEnumValue("ESGOTADO")
-        @JsonProperty("ESGOTADO")
-        ESGOTADO("ESGOTADO"),
-
-        @XmlEnumValue("DEFERIDO")
-        @JsonProperty("DEFERIDO")
-        DEFERIDO("DEFERIDO"),
-
-        @XmlEnumValue("VENCIDO")
-        @JsonProperty("VENCIDO")
-        VENCIDO("VENCIDO"),
-
-        @XmlEnumValue("ANULADO_REVOGADO")
-        @JsonProperty("ANULADO_REVOGADO")
-        ANULADO_REVOGADO("ANULADO_REVOGADO"),
-
-        @XmlEnumValue("EM_VERIFICACAO")
-        @JsonProperty("EM_VERIFICACAO")
-        EM_VERIFICACAO("EM_VERIFICACAO"),
-
-        @XmlEnumValue("EM_INSPECAO")
-        @JsonProperty("EM_INSPECAO")
-        EM_INSPECAO("EM_INSPECAO"),
-
-        @XmlEnumValue("RASCUNHO_RETIFICACAO")
-        @JsonProperty("RASCUNHO_RETIFICACAO")
-        RASCUNHO_RETIFICACAO("RASCUNHO_RETIFICACAO"),
-
-        @XmlEnumValue("RASCUNHO_LPCO")
-        @JsonProperty("RASCUNHO_LPCO")
-        RASCUNHO_LPCO("RASCUNHO_LPCO"),
-
-        @XmlEnumValue("AGUARDANDO_PAGAMENTO")
-        @JsonProperty("AGUARDANDO_PAGAMENTO")
-        AGUARDANDO_PAGAMENTO("AGUARDANDO_PAGAMENTO"),
-
-        @XmlEnumValue("AUTORIZACAO_IMPORTACAO_EMITIDA")
-        @JsonProperty("AUTORIZACAO_IMPORTACAO_EMITIDA")
-        AUTORIZACAO_IMPORTACAO_EMITIDA("AUTORIZACAO_IMPORTACAO_EMITIDA"),
-
-        @XmlEnumValue("PARAMETRIZADO")
-        @JsonProperty("PARAMETRIZADO")
-        PARAMETRIZADO("PARAMETRIZADO"),
-
-        @XmlEnumValue("CONFERENCIA_DOCUMENTAL")
-        @JsonProperty("CONFERENCIA_DOCUMENTAL")
-        CONFERENCIA_DOCUMENTAL("CONFERENCIA_DOCUMENTAL"),
-
-        @XmlEnumValue("INSPECAO_FISICA")
-        @JsonProperty("INSPECAO_FISICA")
-        INSPECAO_FISICA("INSPECAO_FISICA"),
-
-        @XmlEnumValue("RECURSO_INDEFERIMENTO")
-        @JsonProperty("RECURSO_INDEFERIMENTO")
-        RECURSO_INDEFERIMENTO("RECURSO_INDEFERIMENTO"),
-
-        @XmlEnumValue("RECURSO_DIVERSO")
-        @JsonProperty("RECURSO_DIVERSO")
-        RECURSO_DIVERSO("RECURSO_DIVERSO");
-
-
-        private final String value;
-
-        SituacaoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

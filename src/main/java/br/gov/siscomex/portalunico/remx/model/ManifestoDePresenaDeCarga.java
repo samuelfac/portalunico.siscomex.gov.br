@@ -127,5 +127,5 @@ public class ManifestoDePresenaDeCarga {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

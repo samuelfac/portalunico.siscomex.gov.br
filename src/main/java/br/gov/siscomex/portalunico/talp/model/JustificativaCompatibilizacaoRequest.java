@@ -67,5 +67,5 @@ public class JustificativaCompatibilizacaoRequest {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

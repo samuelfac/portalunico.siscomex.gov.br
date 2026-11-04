@@ -100,15 +100,9 @@ public class ProdutoIntegracaoRequestDTO {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProdutoIntegracaoRequestDTO descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -144,8 +138,8 @@ public class ProdutoIntegracaoRequestDTO {
         this.modalidade = modalidade;
     }
 
-    public ProdutoIntegracaoRequestDTO descricao(String descricao) {
-        this.descricao = descricao;
+    public ProdutoIntegracaoRequestDTO modalidade(String modalidade) {
+        this.modalidade = modalidade;
         return this;
     }
 
@@ -211,8 +205,8 @@ public class ProdutoIntegracaoRequestDTO {
         return this;
     }
 
-    public ProdutoIntegracaoRequestDTO modalidade(String modalidade) {
-        this.modalidade = modalidade;
+    public ProdutoIntegracaoRequestDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
+        this.atributosMultivalorados.add(atributosMultivaloradosItem);
         return this;
     }
 
@@ -287,10 +281,6 @@ public class ProdutoIntegracaoRequestDTO {
         return this;
     }
 
-    public ProdutoIntegracaoRequestDTO addAtributosMultivaloradosItem(ProdutoCampoMultivaloradoIntegracaoDTO atributosMultivaloradosItem) {
-        this.atributosMultivalorados.add(atributosMultivaloradosItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -307,5 +297,16 @@ public class ProdutoIntegracaoRequestDTO {
                 "    codigosInterno: " + toIndentedString(codigosInterno) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

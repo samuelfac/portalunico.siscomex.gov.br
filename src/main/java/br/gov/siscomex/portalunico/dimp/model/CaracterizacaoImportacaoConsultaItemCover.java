@@ -26,15 +26,46 @@ import javax.xml.bind.annotation.XmlType;
 public class CaracterizacaoImportacaoConsultaItemCover {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "IndicadorEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorEnum {
+
+        @XmlEnumValue("IMPORTACAO_DIRETA")
+        @JsonProperty("IMPORTACAO_DIRETA")
+        DIRETA("IMPORTACAO_DIRETA"),
+
+        @XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
+        @JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
+        POR_CONTA_E_ORDEM("IMPORTACAO_POR_CONTA_E_ORDEM"),
+
+        @XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
+        @JsonProperty("IMPORTACAO_POR_ENCOMENDA")
+        POR_ENCOMENDA("IMPORTACAO_POR_ENCOMENDA");
+
+
+        private final String value;
+
+        IndicadorEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorEnum fromValue(String v) {
+            for (IndicadorEnum b : IndicadorEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorEnum");
+        }
     }
 
     @XmlElement(name = "indicador", required = true)
@@ -93,6 +124,7 @@ public class CaracterizacaoImportacaoConsultaItemCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -103,45 +135,14 @@ public class CaracterizacaoImportacaoConsultaItemCover {
         return sb;
     }
 
-    @XmlType(name = "IndicadorEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorEnum {
-
-        @XmlEnumValue("IMPORTACAO_DIRETA")
-        @JsonProperty("IMPORTACAO_DIRETA")
-        DIRETA("IMPORTACAO_DIRETA"),
-
-        @XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
-        @JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
-        POR_CONTA_E_ORDEM("IMPORTACAO_POR_CONTA_E_ORDEM"),
-
-        @XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
-        @JsonProperty("IMPORTACAO_POR_ENCOMENDA")
-        POR_ENCOMENDA("IMPORTACAO_POR_ENCOMENDA");
-
-
-        private final String value;
-
-        IndicadorEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static IndicadorEnum fromValue(String v) {
-            for (IndicadorEnum b : IndicadorEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

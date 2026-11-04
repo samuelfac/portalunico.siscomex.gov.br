@@ -90,15 +90,9 @@ public class DeclarationNFe {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DeclarationNFe addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
+        this.additionalDocument.add(additionalDocumentItem);
+        return this;
     }
 
     /**
@@ -160,8 +154,8 @@ public class DeclarationNFe {
         this.declarant = declarant;
     }
 
-    public DeclarationNFe addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
-        this.additionalDocument.add(additionalDocumentItem);
+    public DeclarationNFe declarant(Declarant declarant) {
+        this.declarant = declarant;
         return this;
     }
 
@@ -224,8 +218,8 @@ public class DeclarationNFe {
         this.exitOffice = exitOffice;
     }
 
-    public DeclarationNFe declarant(Declarant declarant) {
-        this.declarant = declarant;
+    public DeclarationNFe exitOffice(ExitOffice exitOffice) {
+        this.exitOffice = exitOffice;
         return this;
     }
 
@@ -291,10 +285,6 @@ public class DeclarationNFe {
         return this;
     }
 
-    public DeclarationNFe exitOffice(ExitOffice exitOffice) {
-        this.exitOffice = exitOffice;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -312,5 +302,16 @@ public class DeclarationNFe {
                 "    ucr: " + toIndentedString(ucr) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

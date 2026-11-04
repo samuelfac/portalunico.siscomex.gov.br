@@ -27,10 +27,43 @@ import javax.xml.bind.annotation.XmlType;
 public class CargaCover {
 
 
-    @XmlElement(name = "seguro")
-    @ApiModelProperty(value = "")
-    @Valid
-    private SeguroCover seguro = null;
+    @XmlType(name = "TipoIdentificacaoCargaEnum")
+    @XmlEnum(String.class)
+    public enum TipoIdentificacaoCargaEnum {
+
+        @XmlEnumValue("CE")
+        @JsonProperty("CE")
+        CE("CE"),
+
+        @XmlEnumValue("RUC")
+        @JsonProperty("RUC")
+        RUC("RUC");
+
+
+        private final String value;
+
+        TipoIdentificacaoCargaEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoIdentificacaoCargaEnum fromValue(String v) {
+            for (TipoIdentificacaoCargaEnum b : TipoIdentificacaoCargaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoCargaEnum");
+        }
+    }
 
     @XmlElement(name = "tipoIdentificacaoCarga")
     @ApiModelProperty(example = "CE", value = "Descreve se a identificação da carga é do tipo CE ou RUC")
@@ -58,16 +91,10 @@ public class CargaCover {
      **/
     private String motivoSituacaoEspecial = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "seguro")
+    @ApiModelProperty(value = "")
+    @Valid
+    private SeguroCover seguro = null;
 
     @XmlElement(name = "frete")
     @ApiModelProperty(value = "")
@@ -216,6 +243,7 @@ public class CargaCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -231,41 +259,14 @@ public class CargaCover {
         return sb;
     }
 
-    @XmlType(name = "TipoIdentificacaoCargaEnum")
-    @XmlEnum(String.class)
-    public enum TipoIdentificacaoCargaEnum {
-
-        @XmlEnumValue("CE")
-        @JsonProperty("CE")
-        CE("CE"),
-
-        @XmlEnumValue("RUC")
-        @JsonProperty("RUC")
-        RUC("RUC");
-
-
-        private final String value;
-
-        TipoIdentificacaoCargaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoIdentificacaoCargaEnum fromValue(String v) {
-            for (TipoIdentificacaoCargaEnum b : TipoIdentificacaoCargaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoCargaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

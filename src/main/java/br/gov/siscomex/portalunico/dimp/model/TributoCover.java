@@ -25,56 +25,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TributoCover {
 
 
-    @XmlElement(name = "codigo")
-    @ApiModelProperty(example = "IPI", value = "Código do regime tributário.<br>Domínio:")
-    /**
-     * Código do regime tributário.<br>Domínio:
-     **/
-    private CodigoEnum codigo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Código do regime tributário.&lt;br&gt;Domínio:
-     *
-     * @return codigo
-     **/
-    @JsonProperty("codigo")
-    public String getCodigo() {
-        if (codigo == null) {
-            return null;
-        }
-        return codigo.value();
-    }
-
-    public void setCodigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-    }
-
-    public TributoCover codigo(CodigoEnum codigo) {
-        this.codigo = codigo;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class TributoCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "CodigoEnum")
     @XmlEnum(String.class)
     public enum CodigoEnum {
@@ -139,5 +89,55 @@ public class TributoCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to CodigoEnum");
         }
+    }
+
+    @XmlElement(name = "codigo")
+    @ApiModelProperty(example = "IPI", value = "Código do regime tributário.<br>Domínio:")
+    /**
+     * Código do regime tributário.<br>Domínio:
+     **/
+    private CodigoEnum codigo = null;
+
+    /**
+     * Código do regime tributário.&lt;br&gt;Domínio:
+     *
+     * @return codigo
+     **/
+    @JsonProperty("codigo")
+    public String getCodigo() {
+        if (codigo == null) {
+            return null;
+        }
+        return codigo.value();
+    }
+
+    public void setCodigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+    }
+
+    public TributoCover codigo(CodigoEnum codigo) {
+        this.codigo = codigo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TributoCover {\n" +
+                "    codigo: " + toIndentedString(codigo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

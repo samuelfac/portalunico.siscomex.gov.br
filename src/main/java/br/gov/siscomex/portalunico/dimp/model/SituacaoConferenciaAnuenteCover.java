@@ -32,35 +32,182 @@ public class SituacaoConferenciaAnuenteCover {
     private String siglaOrgao = null;
 
 
+    @XmlType(name = "SituacaoEnum")
+    @XmlEnum(String.class)
+    public enum SituacaoEnum {
+
+        @XmlEnumValue("AGUARDANDO_ANALISE_RISCO")
+        @JsonProperty("AGUARDANDO_ANALISE_RISCO")
+        AGUARDANDO_ANALISE_RISCO("AGUARDANDO_ANALISE_RISCO"),
+
+        @XmlEnumValue("CONCLUIDA_AUTOMATICAMENTE")
+        @JsonProperty("CONCLUIDA_AUTOMATICAMENTE")
+        CONCLUIDA_AUTOMATICAMENTE("CONCLUIDA_AUTOMATICAMENTE"),
+
+        @XmlEnumValue("AGUARDANDO_DOC")
+        @JsonProperty("AGUARDANDO_DOC")
+        AGUARDANDO_DOC("AGUARDANDO_DOC"),
+
+        @XmlEnumValue("AGUARDANDO_DISTRIBUICAO")
+        @JsonProperty("AGUARDANDO_DISTRIBUICAO")
+        AGUARDANDO_DISTRIBUICAO("AGUARDANDO_DISTRIBUICAO"),
+
+        @XmlEnumValue("EM_CONFERENCIA")
+        @JsonProperty("EM_CONFERENCIA")
+        EM_CONFERENCIA("EM_CONFERENCIA"),
+
+        @XmlEnumValue("EM_EXIGENCIA")
+        @JsonProperty("EM_EXIGENCIA")
+        EM_EXIGENCIA("EM_EXIGENCIA"),
+
+        @XmlEnumValue("DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL")
+        @JsonProperty("DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL")
+        DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL("DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL"),
+
+        @XmlEnumValue("CONCLUIDA")
+        @JsonProperty("CONCLUIDA")
+        CONCLUIDA("CONCLUIDA"),
+
+        @XmlEnumValue("CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO")
+        @JsonProperty("CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO")
+        CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO("CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO"),
+
+        @XmlEnumValue("CANCELADA")
+        @JsonProperty("CANCELADA")
+        CANCELADA("CANCELADA");
+
+
+        private final String value;
+
+        SituacaoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SituacaoEnum fromValue(String v) {
+            for (SituacaoEnum b : SituacaoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
+        }
+    }
+
     @XmlElement(name = "situacao")
     @ApiModelProperty(example = "DESEMBARACO_AUTOMATICO", value = "Tipos de situações de conferência do anuente.<br>Domínio:")
     /**
      * Tipos de situações de conferência do anuente.<br>Domínio:
      **/
     private SituacaoEnum situacao = null;
+
+
+    @XmlType(name = "IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum {
+
+        @XmlEnumValue("SIM")
+        @JsonProperty("SIM")
+        SIM("SIM"),
+
+        @XmlEnumValue("NAO")
+        @JsonProperty("NAO")
+        NAO("NAO"),
+
+        @XmlEnumValue("NA")
+        @JsonProperty("NA")
+        NA("NA");
+
+
+        private final String value;
+
+        IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum fromValue(String v) {
+            for (IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum b : IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum");
+        }
+    }
+
     @XmlElement(name = "indicadorAutorizacaoProsseguimentoConferenciaAnuente")
     @ApiModelProperty(example = "SIM", value = "Indicador de autorização do prosseguimento da conferência do anuente.<br>Domínio:")
     /**
      * Indicador de autorização do prosseguimento da conferência do anuente.<br>Domínio:
      **/
     private IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum indicadorAutorizacaoProsseguimentoConferenciaAnuente = null;
+
+
+    @XmlType(name = "IndicadorConclusaoDecisaoJudicialEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorConclusaoDecisaoJudicialEnum {
+
+        @XmlEnumValue("SIM")
+        @JsonProperty("SIM")
+        SIM("SIM"),
+
+        @XmlEnumValue("NAO")
+        @JsonProperty("NAO")
+        NAO("NAO"),
+
+        @XmlEnumValue("NA")
+        @JsonProperty("NA")
+        NA("NA");
+
+
+        private final String value;
+
+        IndicadorConclusaoDecisaoJudicialEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorConclusaoDecisaoJudicialEnum fromValue(String v) {
+            for (IndicadorConclusaoDecisaoJudicialEnum b : IndicadorConclusaoDecisaoJudicialEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorConclusaoDecisaoJudicialEnum");
+        }
+    }
+
     @XmlElement(name = "indicadorConclusaoDecisaoJudicial")
     @ApiModelProperty(example = "SIM", value = "Indicador de conclusão por decisão judicial.<br>Domínio:")
     /**
      * Indicador de conclusão por decisão judicial.<br>Domínio:
      **/
     private IndicadorConclusaoDecisaoJudicialEnum indicadorConclusaoDecisaoJudicial = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
 
     /**
      * Sigla do órgão da administração pública.&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 30
@@ -147,6 +294,7 @@ public class SituacaoConferenciaAnuenteCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -159,158 +307,14 @@ public class SituacaoConferenciaAnuenteCover {
         return sb;
     }
 
-    @XmlType(name = "SituacaoEnum")
-    @XmlEnum(String.class)
-    public enum SituacaoEnum {
-
-        @XmlEnumValue("AGUARDANDO_ANALISE_RISCO")
-        @JsonProperty("AGUARDANDO_ANALISE_RISCO")
-        AGUARDANDO_ANALISE_RISCO("AGUARDANDO_ANALISE_RISCO"),
-
-        @XmlEnumValue("CONCLUIDA_AUTOMATICAMENTE")
-        @JsonProperty("CONCLUIDA_AUTOMATICAMENTE")
-        CONCLUIDA_AUTOMATICAMENTE("CONCLUIDA_AUTOMATICAMENTE"),
-
-        @XmlEnumValue("AGUARDANDO_DOC")
-        @JsonProperty("AGUARDANDO_DOC")
-        AGUARDANDO_DOC("AGUARDANDO_DOC"),
-
-        @XmlEnumValue("AGUARDANDO_DISTRIBUICAO")
-        @JsonProperty("AGUARDANDO_DISTRIBUICAO")
-        AGUARDANDO_DISTRIBUICAO("AGUARDANDO_DISTRIBUICAO"),
-
-        @XmlEnumValue("EM_CONFERENCIA")
-        @JsonProperty("EM_CONFERENCIA")
-        EM_CONFERENCIA("EM_CONFERENCIA"),
-
-        @XmlEnumValue("EM_EXIGENCIA")
-        @JsonProperty("EM_EXIGENCIA")
-        EM_EXIGENCIA("EM_EXIGENCIA"),
-
-        @XmlEnumValue("DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL")
-        @JsonProperty("DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL")
-        DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL("DESEMBARACO_AUTORIZADO_DECISAO_JUDICIAL"),
-
-        @XmlEnumValue("CONCLUIDA")
-        @JsonProperty("CONCLUIDA")
-        CONCLUIDA("CONCLUIDA"),
-
-        @XmlEnumValue("CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO")
-        @JsonProperty("CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO")
-        CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO("CONCLUIDA_AUTOMATICAMENTE_PERDA_OBJETO"),
-
-        @XmlEnumValue("CANCELADA")
-        @JsonProperty("CANCELADA")
-        CANCELADA("CANCELADA");
-
-
-        private final String value;
-
-        SituacaoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static SituacaoEnum fromValue(String v) {
-            for (SituacaoEnum b : SituacaoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SituacaoEnum");
-        }
-    }
-
-
-    @XmlType(name = "IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum {
-
-        @XmlEnumValue("SIM")
-        @JsonProperty("SIM")
-        SIM("SIM"),
-
-        @XmlEnumValue("NAO")
-        @JsonProperty("NAO")
-        NAO("NAO"),
-
-        @XmlEnumValue("NA")
-        @JsonProperty("NA")
-        NA("NA");
-
-
-        private final String value;
-
-        IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum fromValue(String v) {
-            for (IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum b : IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorAutorizacaoProsseguimentoConferenciaAnuenteEnum");
-        }
-    }
-
-    @XmlType(name = "IndicadorConclusaoDecisaoJudicialEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorConclusaoDecisaoJudicialEnum {
-
-        @XmlEnumValue("SIM")
-        @JsonProperty("SIM")
-        SIM("SIM"),
-
-        @XmlEnumValue("NAO")
-        @JsonProperty("NAO")
-        NAO("NAO"),
-
-        @XmlEnumValue("NA")
-        @JsonProperty("NA")
-        NA("NA");
-
-
-        private final String value;
-
-        IndicadorConclusaoDecisaoJudicialEnum(String v) {
-            value = v;
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static IndicadorConclusaoDecisaoJudicialEnum fromValue(String v) {
-            for (IndicadorConclusaoDecisaoJudicialEnum b : IndicadorConclusaoDecisaoJudicialEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorConclusaoDecisaoJudicialEnum");
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

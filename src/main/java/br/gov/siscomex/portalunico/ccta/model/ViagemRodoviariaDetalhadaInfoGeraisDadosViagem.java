@@ -93,15 +93,9 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         this.apoliceSeguro = apoliceSeguro;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem apoliceSeguro(ApoliceSeguro apoliceSeguro) {
+        this.apoliceSeguro = apoliceSeguro;
+        return this;
     }
 
     /**
@@ -142,8 +136,8 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         this.documentoTransporte = documentoTransporte;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem apoliceSeguro(ApoliceSeguro apoliceSeguro) {
-        this.apoliceSeguro = apoliceSeguro;
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem documentoTransporte(ViagemRodoviariaId documentoTransporte) {
+        this.documentoTransporte = documentoTransporte;
         return this;
     }
 
@@ -180,8 +174,8 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         this.observacoesGerais = observacoesGerais;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem documentoTransporte(ViagemRodoviariaId documentoTransporte) {
-        this.documentoTransporte = documentoTransporte;
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem observacoesGerais(String observacoesGerais) {
+        this.observacoesGerais = observacoesGerais;
         return this;
     }
 
@@ -256,8 +250,8 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem observacoesGerais(String observacoesGerais) {
-        this.observacoesGerais = observacoesGerais;
+    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem transportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
+        this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
         return this;
     }
 
@@ -280,10 +274,6 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGeraisDadosViagem transportandoPecasOuPartesMadeira(Boolean transportandoPecasOuPartesMadeira) {
-        this.transportandoPecasOuPartesMadeira = transportandoPecasOuPartesMadeira;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -301,5 +291,16 @@ public class ViagemRodoviariaDetalhadaInfoGeraisDadosViagem {
                 "    visualizacaoDepositario: " + toIndentedString(visualizacaoDepositario) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

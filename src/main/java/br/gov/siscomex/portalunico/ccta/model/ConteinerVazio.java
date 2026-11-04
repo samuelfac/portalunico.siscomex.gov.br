@@ -54,15 +54,9 @@ public class ConteinerVazio {
         this.identificacaoConteinerVazio = identificacaoConteinerVazio;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConteinerVazio identificacaoConteinerVazio(String identificacaoConteinerVazio) {
+        this.identificacaoConteinerVazio = identificacaoConteinerVazio;
+        return this;
     }
 
     /**
@@ -104,10 +98,6 @@ public class ConteinerVazio {
         return this;
     }
 
-    public ConteinerVazio identificacaoConteinerVazio(String identificacaoConteinerVazio) {
-        this.identificacaoConteinerVazio = identificacaoConteinerVazio;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -118,5 +108,16 @@ public class ConteinerVazio {
                 "    taraConteinerVazio: " + toIndentedString(taraConteinerVazio) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

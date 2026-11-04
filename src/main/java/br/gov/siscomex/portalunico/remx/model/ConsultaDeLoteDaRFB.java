@@ -214,15 +214,9 @@ public class ConsultaDeLoteDaRFB {
         this.dataInicioAnexacao = dataInicioAnexacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ConsultaDeLoteDaRFB dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
+        this.dataInicioAnexacao = dataInicioAnexacao;
+        return this;
     }
 
     /**
@@ -258,8 +252,8 @@ public class ConsultaDeLoteDaRFB {
         this.dataInicioManifesto = dataInicioManifesto;
     }
 
-    public ConsultaDeLoteDaRFB dataInicioAnexacao(OffsetDateTime dataInicioAnexacao) {
-        this.dataInicioAnexacao = dataInicioAnexacao;
+    public ConsultaDeLoteDaRFB dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
+        this.dataInicioManifesto = dataInicioManifesto;
         return this;
     }
 
@@ -301,8 +295,8 @@ public class ConsultaDeLoteDaRFB {
         return this;
     }
 
-    public ConsultaDeLoteDaRFB dataInicioManifesto(OffsetDateTime dataInicioManifesto) {
-        this.dataInicioManifesto = dataInicioManifesto;
+    public ConsultaDeLoteDaRFB addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
+        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
         return this;
     }
 
@@ -371,8 +365,8 @@ public class ConsultaDeLoteDaRFB {
         return this;
     }
 
-    public ConsultaDeLoteDaRFB addListaCodOcorrenciaItem(Integer listaCodOcorrenciaItem) {
-        this.listaCodOcorrencia.add(listaCodOcorrenciaItem);
+    public ConsultaDeLoteDaRFB addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
+        this.listaSituacaoLote.add(listaSituacaoLoteItem);
         return this;
     }
 
@@ -445,10 +439,6 @@ public class ConsultaDeLoteDaRFB {
         return this;
     }
 
-    public ConsultaDeLoteDaRFB addListaSituacaoLoteItem(Integer listaSituacaoLoteItem) {
-        this.listaSituacaoLote.add(listaSituacaoLoteItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -472,4 +462,15 @@ public class ConsultaDeLoteDaRFB {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -26,12 +26,47 @@ import javax.xml.bind.annotation.XmlType;
 public class SefazCaracterizacaoImportacaoCover {
 
 
-    @XmlElement(name = "uf")
-    @ApiModelProperty(example = "RJ", value = "UF do adquirente ou encomendante<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
-    /**
-     * UF do adquirente ou encomendante<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
-     **/
-    private String uf = null;
+    @XmlType(name = "IndicadorImportacaoTerceirosEnum")
+    @XmlEnum(String.class)
+    public enum IndicadorImportacaoTerceirosEnum {
+
+        @XmlEnumValue("IMPORTACAO_DIRETA")
+        @JsonProperty("IMPORTACAO_DIRETA")
+        DIRETA("IMPORTACAO_DIRETA"),
+
+        @XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
+        @JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
+        POR_CONTA_E_ORDEM("IMPORTACAO_POR_CONTA_E_ORDEM"),
+
+        @XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
+        @JsonProperty("IMPORTACAO_POR_ENCOMENDA")
+        POR_ENCOMENDA("IMPORTACAO_POR_ENCOMENDA");
+
+
+        private final String value;
+
+        IndicadorImportacaoTerceirosEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static IndicadorImportacaoTerceirosEnum fromValue(String v) {
+            for (IndicadorImportacaoTerceirosEnum b : IndicadorImportacaoTerceirosEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorImportacaoTerceirosEnum");
+        }
+    }
 
     @XmlElement(name = "indicadorImportacaoTerceiros", required = true)
     @ApiModelProperty(example = "IMPORTACAO_DIRETA", required = true, value = "Indicador de importação por terceiros.")
@@ -40,15 +75,43 @@ public class SefazCaracterizacaoImportacaoCover {
      **/
     private IndicadorImportacaoTerceirosEnum indicadorImportacaoTerceiros = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TipoIdentificacaoTerceiroEnum")
+    @XmlEnum(String.class)
+    public enum TipoIdentificacaoTerceiroEnum {
+
+        @XmlEnumValue("1")
+        @JsonProperty("1")
+        _1("1"),
+
+        @XmlEnumValue("2")
+        @JsonProperty("2")
+        _2("2");
+
+
+        private final String value;
+
+        TipoIdentificacaoTerceiroEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoIdentificacaoTerceiroEnum fromValue(String v) {
+            for (TipoIdentificacaoTerceiroEnum b : TipoIdentificacaoTerceiroEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoTerceiroEnum");
+        }
     }
 
     @XmlElement(name = "tipoIdentificacaoTerceiro", required = true)
@@ -65,15 +128,12 @@ public class SefazCaracterizacaoImportacaoCover {
      **/
     private String identificacaoTerceiro = null;
 
+    @XmlElement(name = "uf")
+    @ApiModelProperty(example = "RJ", value = "UF do adquirente ou encomendante<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
     /**
-     * UF do adquirente ou encomendante&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2&lt;br&gt;Observação:&lt;br&gt;Apenas quando o atributo &#39;indicadorImportacaoTerceiros&#39; for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
-     *
-     * @return uf
+     * UF do adquirente ou encomendante<br>Dominio:<br>AC, AL, AP, AM, BA, CE, DF<br>ES, GO, MA, MT, MS, MG, PA<br>PB, PR, PE, PI, RJ, RN, RS<br>RO, RR, SC, SP, SE, TO<br>Tamanho: 2<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
      **/
-    @JsonProperty("uf")
-    public String getUf() {
-        return uf;
-    }
+    private String uf = null;
 
     @XmlElement(name = "nome")
     @ApiModelProperty(example = "Nome do CNPJ ou CPF informado", value = "Nome do adquirente ou encomendante<br>Tamanho mínimo: 1<br>Tamanho máximo: 150<br>Observação:<br>Apenas quando o atributo 'indicadorImportacaoTerceiros' for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA")
@@ -147,17 +207,14 @@ public class SefazCaracterizacaoImportacaoCover {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class SefazCaracterizacaoImportacaoCover {\n" +
-                "    indicadorImportacaoTerceiros: " + toIndentedString(indicadorImportacaoTerceiros) + "\n" +
-                "    tipoIdentificacaoTerceiro: " + toIndentedString(tipoIdentificacaoTerceiro) + "\n" +
-                "    identificacaoTerceiro: " + toIndentedString(identificacaoTerceiro) + "\n" +
-                "    uf: " + toIndentedString(uf) + "\n" +
-                "    nome: " + toIndentedString(nome) + "\n" +
-                "}";
-        return sb;
+    /**
+     * UF do adquirente ou encomendante&lt;br&gt;Dominio:&lt;br&gt;AC, AL, AP, AM, BA, CE, DF&lt;br&gt;ES, GO, MA, MT, MS, MG, PA&lt;br&gt;PB, PR, PE, PI, RJ, RN, RS&lt;br&gt;RO, RR, SC, SP, SE, TO&lt;br&gt;Tamanho: 2&lt;br&gt;Observação:&lt;br&gt;Apenas quando o atributo &#39;indicadorImportacaoTerceiros&#39; for IMPORTACAO_POR_CONTA_E_ORDEM ou IMPORTACAO_POR_ENCOMENDA
+     *
+     * @return uf
+     **/
+    @JsonProperty("uf")
+    public String getUf() {
+        return uf;
     }
 
     public void setUf(String uf) {
@@ -189,83 +246,27 @@ public class SefazCaracterizacaoImportacaoCover {
     }
 
 
-    @XmlType(name = "IndicadorImportacaoTerceirosEnum")
-    @XmlEnum(String.class)
-    public enum IndicadorImportacaoTerceirosEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("IMPORTACAO_DIRETA")
-        @JsonProperty("IMPORTACAO_DIRETA")
-        DIRETA("IMPORTACAO_DIRETA"),
-
-        @XmlEnumValue("IMPORTACAO_POR_CONTA_E_ORDEM")
-        @JsonProperty("IMPORTACAO_POR_CONTA_E_ORDEM")
-        POR_CONTA_E_ORDEM("IMPORTACAO_POR_CONTA_E_ORDEM"),
-
-        @XmlEnumValue("IMPORTACAO_POR_ENCOMENDA")
-        @JsonProperty("IMPORTACAO_POR_ENCOMENDA")
-        POR_ENCOMENDA("IMPORTACAO_POR_ENCOMENDA");
-
-
-        private final String value;
-
-        IndicadorImportacaoTerceirosEnum(String v) {
-            value = v;
-        }
-
-        public static IndicadorImportacaoTerceirosEnum fromValue(String v) {
-            for (IndicadorImportacaoTerceirosEnum b : IndicadorImportacaoTerceirosEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to IndicadorImportacaoTerceirosEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class SefazCaracterizacaoImportacaoCover {\n" +
+                "    indicadorImportacaoTerceiros: " + toIndentedString(indicadorImportacaoTerceiros) + "\n" +
+                "    tipoIdentificacaoTerceiro: " + toIndentedString(tipoIdentificacaoTerceiro) + "\n" +
+                "    identificacaoTerceiro: " + toIndentedString(identificacaoTerceiro) + "\n" +
+                "    uf: " + toIndentedString(uf) + "\n" +
+                "    nome: " + toIndentedString(nome) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TipoIdentificacaoTerceiroEnum")
-    @XmlEnum(String.class)
-    public enum TipoIdentificacaoTerceiroEnum {
-
-        @XmlEnumValue("1")
-        @JsonProperty("1")
-        _1("1"),
-
-        @XmlEnumValue("2")
-        @JsonProperty("2")
-        _2("2");
-
-
-        private final String value;
-
-        TipoIdentificacaoTerceiroEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoIdentificacaoTerceiroEnum fromValue(String v) {
-            for (TipoIdentificacaoTerceiroEnum b : TipoIdentificacaoTerceiroEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoIdentificacaoTerceiroEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

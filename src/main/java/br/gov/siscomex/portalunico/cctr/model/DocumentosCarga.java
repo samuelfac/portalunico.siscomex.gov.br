@@ -47,15 +47,9 @@ public class DocumentosCarga {
         this.nivel = nivel;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DocumentosCarga nivel(String nivel) {
+        this.nivel = nivel;
+        return this;
     }
 
     /**
@@ -82,10 +76,6 @@ public class DocumentosCarga {
         return this;
     }
 
-    public DocumentosCarga nivel(String nivel) {
-        this.nivel = nivel;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -95,5 +85,16 @@ public class DocumentosCarga {
                 "    documentos: " + toIndentedString(documentos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

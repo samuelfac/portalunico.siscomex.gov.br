@@ -55,15 +55,9 @@ public class Cavalo {
         this.placa = placa;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Cavalo placa(String placa) {
+        this.placa = placa;
+        return this;
     }
 
     /**
@@ -86,10 +80,6 @@ public class Cavalo {
         return this;
     }
 
-    public Cavalo placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -99,5 +89,16 @@ public class Cavalo {
                 "    tara: " + toIndentedString(tara) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

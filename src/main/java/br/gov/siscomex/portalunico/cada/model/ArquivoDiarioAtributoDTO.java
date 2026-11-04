@@ -84,12 +84,75 @@ public class ArquivoDiarioAtributoDTO {
     private String orientacaoPreenchimento = null;
 
 
-    @XmlElement(name = "tamanhoMaximo")
-    @ApiModelProperty(example = "100", value = "Tamanho máximo<br>Tamanho mínimo: 0<br>Tamanho máximo: 10")
-    /**
-     * Tamanho máximo<br>Tamanho mínimo: 0<br>Tamanho máximo: 10
-     **/
-    private Integer tamanhoMaximo = null;
+    @XmlType(name = "FormaPreenchimentoEnum")
+    @XmlEnum(String.class)
+    public enum FormaPreenchimentoEnum {
+
+        @XmlEnumValue("LISTA_ESTATICA")
+        @JsonProperty("LISTA_ESTATICA")
+        LISTA_ESTATICA("LISTA_ESTATICA"),
+
+        @XmlEnumValue("BOOLEANO")
+        @JsonProperty("BOOLEANO")
+        BOOLEANO("BOOLEANO"),
+
+        @XmlEnumValue("DATA")
+        @JsonProperty("DATA")
+        DATA("DATA"),
+
+        @XmlEnumValue("DATA_HORA")
+        @JsonProperty("DATA_HORA")
+        DATA_HORA("DATA_HORA"),
+
+        @XmlEnumValue("NUMERO_INTEIRO")
+        @JsonProperty("NUMERO_INTEIRO")
+        NUMERO_INTEIRO("NUMERO_INTEIRO"),
+
+        @XmlEnumValue("NUMERO_REAL")
+        @JsonProperty("NUMERO_REAL")
+        NUMERO_REAL("NUMERO_REAL"),
+
+        @XmlEnumValue("TEXTO")
+        @JsonProperty("TEXTO")
+        TEXTO("TEXTO"),
+
+        @XmlEnumValue("DOMINIO_DINAMICO")
+        @JsonProperty("DOMINIO_DINAMICO")
+        DOMINIO_DINAMICO("DOMINIO_DINAMICO"),
+
+        @XmlEnumValue("COMPOSTO")
+        @JsonProperty("COMPOSTO")
+        COMPOSTO("COMPOSTO"),
+
+        @XmlEnumValue("LISTA_TABX_FILTRO")
+        @JsonProperty("LISTA_TABX_FILTRO")
+        LISTA_TABX_FILTRO("LISTA_TABX_FILTRO");
+
+
+        private final String value;
+
+        FormaPreenchimentoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static FormaPreenchimentoEnum fromValue(String v) {
+            for (FormaPreenchimentoEnum b : FormaPreenchimentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to FormaPreenchimentoEnum");
+        }
+    }
 
     @XmlElement(name = "formaPreenchimento", required = true)
     @ApiModelProperty(example = "BOOLEANO", required = true, value = "Forma de preenchimento.<br>Tamanho máximo: 20<br>Domínio:<br>LISTA_ESTATICA<br>BOOLEANO<br>DATA<br>DATA_HORA<br>NUMERO_INTEIRO<br>NUMERO_REAL<br>TEXTO<br>DOMINIO_DINAMICO<br>COMPOSTO")
@@ -97,12 +160,13 @@ public class ArquivoDiarioAtributoDTO {
      * Forma de preenchimento.<br>Tamanho máximo: 20<br>Domínio:<br>LISTA_ESTATICA<br>BOOLEANO<br>DATA<br>DATA_HORA<br>NUMERO_INTEIRO<br>NUMERO_REAL<br>TEXTO<br>DOMINIO_DINAMICO<br>COMPOSTO
      **/
     private FormaPreenchimentoEnum formaPreenchimento = null;
-    @XmlElement(name = "modalidade", required = true)
-    @ApiModelProperty(example = "Exportação", required = true, value = "Modalidade de operação.<br>Tamanho máximo: 20<br>Domínio:<br>Exportação<br>Importação")
+
+    @XmlElement(name = "tamanhoMaximo")
+    @ApiModelProperty(example = "100", value = "Tamanho máximo<br>Tamanho mínimo: 0<br>Tamanho máximo: 10")
     /**
-     * Modalidade de operação.<br>Tamanho máximo: 20<br>Domínio:<br>Exportação<br>Importação
+     * Tamanho máximo<br>Tamanho mínimo: 0<br>Tamanho máximo: 10
      **/
-    private String modalidade = null;
+    private Integer tamanhoMaximo = null;
 
     @XmlElement(name = "mascara")
     @ApiModelProperty(example = "99999", value = "Máscara<br>Tamanho mínimo: 0<br>Tamanho máximo: 50")
@@ -117,12 +181,13 @@ public class ArquivoDiarioAtributoDTO {
      * Casas Decimais<br>Tamanho mínimo: 0<br>Tamanho máximo: 10
      **/
     private Integer casasDecimais = null;
-    @XmlElement(name = "orgaos")
-    @ApiModelProperty(value = "Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
+
+    @XmlElement(name = "modalidade", required = true)
+    @ApiModelProperty(example = "Exportação", required = true, value = "Modalidade de operação.<br>Tamanho máximo: 20<br>Domínio:<br>Exportação<br>Importação")
     /**
-     * Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
+     * Modalidade de operação.<br>Tamanho máximo: 20<br>Domínio:<br>Exportação<br>Importação
      **/
-    private List<String> orgaos = null;
+    private String modalidade = null;
 
     @XmlElement(name = "obrigatorio", required = true)
     @ApiModelProperty(example = "true", required = true, value = "Preenchimento obrigatório.<br>Domínio:<br>true<br>false")
@@ -172,12 +237,13 @@ public class ArquivoDiarioAtributoDTO {
      * Lista de objetivos do atributo
      **/
     private List<ObjetivoAtributoConsultaDTO> objetivos = null;
-    @XmlElement(name = "multivalorado", required = true)
-    @ApiModelProperty(example = "true", required = true, value = "Campo multivalorado.<br>Domínio:<br>true<br>false")
+
+    @XmlElement(name = "orgaos")
+    @ApiModelProperty(value = "Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10")
     /**
-     * Campo multivalorado.<br>Domínio:<br>true<br>false
+     * Lista de códigos dos órgãos vinculados ao Atributo e NCM<br>Tamanho mínimo: 1<br>Tamanho máximo: 10
      **/
-    private Boolean multivalorado = false;
+    private List<String> orgaos = null;
 
     @XmlElement(name = "atributoCondicionante", required = true)
     @ApiModelProperty(example = "false", required = true, value = "Atributos possui atributos condicionados.<br>Domínio:<br>true<br>false")
@@ -202,16 +268,12 @@ public class ArquivoDiarioAtributoDTO {
      **/
     private List<ArquivoDiarioAtributoDTO> listaSubatributos = null;
 
+    @XmlElement(name = "multivalorado", required = true)
+    @ApiModelProperty(example = "true", required = true, value = "Campo multivalorado.<br>Domínio:<br>true<br>false")
     /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+     * Campo multivalorado.<br>Domínio:<br>true<br>false
+     **/
+    private Boolean multivalorado = false;
 
     /**
      * Código do atributo&lt;br&gt;Tamanho mínimo: 1&lt;br&gt;Tamanho máximo: 25
@@ -743,73 +805,14 @@ public class ArquivoDiarioAtributoDTO {
         return sb;
     }
 
-    @XmlType(name = "FormaPreenchimentoEnum")
-    @XmlEnum(String.class)
-    public enum FormaPreenchimentoEnum {
-
-        @XmlEnumValue("LISTA_ESTATICA")
-        @JsonProperty("LISTA_ESTATICA")
-        LISTA_ESTATICA("LISTA_ESTATICA"),
-
-        @XmlEnumValue("BOOLEANO")
-        @JsonProperty("BOOLEANO")
-        BOOLEANO("BOOLEANO"),
-
-        @XmlEnumValue("DATA")
-        @JsonProperty("DATA")
-        DATA("DATA"),
-
-        @XmlEnumValue("DATA_HORA")
-        @JsonProperty("DATA_HORA")
-        DATA_HORA("DATA_HORA"),
-
-        @XmlEnumValue("NUMERO_INTEIRO")
-        @JsonProperty("NUMERO_INTEIRO")
-        NUMERO_INTEIRO("NUMERO_INTEIRO"),
-
-        @XmlEnumValue("NUMERO_REAL")
-        @JsonProperty("NUMERO_REAL")
-        NUMERO_REAL("NUMERO_REAL"),
-
-        @XmlEnumValue("TEXTO")
-        @JsonProperty("TEXTO")
-        TEXTO("TEXTO"),
-
-        @XmlEnumValue("DOMINIO_DINAMICO")
-        @JsonProperty("DOMINIO_DINAMICO")
-        DOMINIO_DINAMICO("DOMINIO_DINAMICO"),
-
-        @XmlEnumValue("COMPOSTO")
-        @JsonProperty("COMPOSTO")
-        COMPOSTO("COMPOSTO"),
-
-        @XmlEnumValue("LISTA_TABX_FILTRO")
-        @JsonProperty("LISTA_TABX_FILTRO")
-        LISTA_TABX_FILTRO("LISTA_TABX_FILTRO");
-
-
-        private final String value;
-
-        FormaPreenchimentoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static FormaPreenchimentoEnum fromValue(String v) {
-            for (FormaPreenchimentoEnum b : FormaPreenchimentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to FormaPreenchimentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

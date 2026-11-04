@@ -99,15 +99,9 @@ public class ComplementoVeiculoRodoviario {
         this.placa = placa;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ComplementoVeiculoRodoviario placa(String placa) {
+        this.placa = placa;
+        return this;
     }
 
     /**
@@ -186,22 +180,30 @@ public class ComplementoVeiculoRodoviario {
         return this;
     }
 
-    public ComplementoVeiculoRodoviario placa(String placa) {
-        this.placa = placa;
-        return this;
-    }
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ComplementoVeiculoRodoviario {\n");
 
-        String sb = "class ComplementoVeiculoRodoviario {\n" +
-                "    lacres: " + toIndentedString(lacres) + "\n" +
-                "    placa: " + toIndentedString(placa) + "\n" +
-                "    propriaMercadoria: " + toIndentedString(propriaMercadoria) + "\n" +
-                "    sequencial: " + toIndentedString(sequencial) + "\n" +
-                "    tara: " + toIndentedString(tara) + "\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "}";
-        return sb;
+        sb.append("    lacres: ").append(toIndentedString(lacres)).append("\n");
+        sb.append("    placa: ").append(toIndentedString(placa)).append("\n");
+        sb.append("    propriaMercadoria: ").append(toIndentedString(propriaMercadoria)).append("\n");
+        sb.append("    sequencial: ").append(toIndentedString(sequencial)).append("\n");
+        sb.append("    tara: ").append(toIndentedString(tara)).append("\n");
+        sb.append("    tipo: ").append(toIndentedString(tipo)).append("\n");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

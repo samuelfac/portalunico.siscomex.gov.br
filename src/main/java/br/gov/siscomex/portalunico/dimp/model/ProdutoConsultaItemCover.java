@@ -83,15 +83,9 @@ public class ProdutoConsultaItemCover {
         this.versao = versao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ProdutoConsultaItemCover versao(String versao) {
+        this.versao = versao;
+        return this;
     }
 
     /**
@@ -132,10 +126,6 @@ public class ProdutoConsultaItemCover {
         return this;
     }
 
-    public ProdutoConsultaItemCover versao(String versao) {
-        this.versao = versao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -147,5 +137,16 @@ public class ProdutoConsultaItemCover {
                 "    ncm: " + toIndentedString(ncm) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

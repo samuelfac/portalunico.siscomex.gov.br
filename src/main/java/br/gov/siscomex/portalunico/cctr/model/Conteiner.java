@@ -82,15 +82,9 @@ public class Conteiner {
         this.motivoNaoPesagem = motivoNaoPesagem;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Conteiner motivoNaoPesagem(String motivoNaoPesagem) {
+        this.motivoNaoPesagem = motivoNaoPesagem;
+        return this;
     }
 
     /**
@@ -118,10 +112,6 @@ public class Conteiner {
         return this;
     }
 
-    public Conteiner motivoNaoPesagem(String motivoNaoPesagem) {
-        this.motivoNaoPesagem = motivoNaoPesagem;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -132,5 +122,16 @@ public class Conteiner {
                 "    lacres: " + toIndentedString(lacres) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

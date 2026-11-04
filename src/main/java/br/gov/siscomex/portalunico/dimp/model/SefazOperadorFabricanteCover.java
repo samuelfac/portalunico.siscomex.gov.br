@@ -82,15 +82,9 @@ public class SefazOperadorFabricanteCover {
         this.versaoOperadorFabricante = versaoOperadorFabricante;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SefazOperadorFabricanteCover versaoOperadorFabricante(String versaoOperadorFabricante) {
+        this.versaoOperadorFabricante = versaoOperadorFabricante;
+        return this;
     }
 
     /**
@@ -131,10 +125,6 @@ public class SefazOperadorFabricanteCover {
         return this;
     }
 
-    public SefazOperadorFabricanteCover versaoOperadorFabricante(String versaoOperadorFabricante) {
-        this.versaoOperadorFabricante = versaoOperadorFabricante;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -146,5 +136,16 @@ public class SefazOperadorFabricanteCover {
                 "    niOperadorFabricante: " + toIndentedString(niOperadorFabricante) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

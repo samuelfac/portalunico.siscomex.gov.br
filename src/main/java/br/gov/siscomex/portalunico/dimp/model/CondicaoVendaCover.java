@@ -65,15 +65,9 @@ public class CondicaoVendaCover {
         this.metodoValoracao = metodoValoracao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CondicaoVendaCover metodoValoracao(MetodoValoracaoCover metodoValoracao) {
+        this.metodoValoracao = metodoValoracao;
+        return this;
     }
 
     /**
@@ -129,8 +123,8 @@ public class CondicaoVendaCover {
         this.seguro = seguro;
     }
 
-    public CondicaoVendaCover metodoValoracao(MetodoValoracaoCover metodoValoracao) {
-        this.metodoValoracao = metodoValoracao;
+    public CondicaoVendaCover seguro(ItemSeguroCover seguro) {
+        this.seguro = seguro;
         return this;
     }
 
@@ -158,10 +152,6 @@ public class CondicaoVendaCover {
         return this;
     }
 
-    public CondicaoVendaCover seguro(ItemSeguroCover seguro) {
-        this.seguro = seguro;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -174,5 +164,16 @@ public class CondicaoVendaCover {
                 "    acrescimosDeducoes: " + toIndentedString(acrescimosDeducoes) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -27,12 +27,51 @@ import java.time.OffsetDateTime;
 public class DeclaracaoVinculadaCoverConsulta {
 
 
-    @XmlElement(name = "numeroDeclaracaoVinculada")
-    @ApiModelProperty(example = "23BR00001010550", value = "Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15")
-    /**
-     * Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15
-     **/
-    private String numeroDeclaracaoVinculada = null;
+    @XmlType(name = "TipoEnum")
+    @XmlEnum(String.class)
+    public enum TipoEnum {
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP"),
+
+        @XmlEnumValue("DUE")
+        @JsonProperty("DUE")
+        DUE("DUE"),
+
+        @XmlEnumValue("DI")
+        @JsonProperty("DI")
+        DI("DI"),
+
+        @XmlEnumValue("DE")
+        @JsonProperty("DE")
+        DE("DE");
+
+
+        private final String value;
+
+        TipoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoEnum fromValue(String v) {
+            for (TipoEnum b : TipoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
+        }
+    }
 
     @XmlElement(name = "tipo")
     @ApiModelProperty(example = "DUIMP", value = "Tipo de declaração vinculada.<br>Domínio:")
@@ -40,10 +79,13 @@ public class DeclaracaoVinculadaCoverConsulta {
      * Tipo de declaração vinculada.<br>Domínio:
      **/
     private TipoEnum tipo = null;
-    @XmlElement(name = "item")
-    @ApiModelProperty(value = "")
-    @Valid
-    private ItemDeclaracaoVinculadaCover item = null;
+
+    @XmlElement(name = "numeroDeclaracaoVinculada")
+    @ApiModelProperty(example = "23BR00001010550", value = "Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15")
+    /**
+     * Número da Declaração.<br>Tamanho mínimo: 1<br>Tamanho máximo: 15
+     **/
+    private String numeroDeclaracaoVinculada = null;
 
     @XmlElement(name = "versaoDeclaracaoVinculada")
     @ApiModelProperty(example = "1", value = "Versão da declaração vinculada vigente no registro da Duimp consultada. Este atributo é informado apenas quando a Duimp consultada for COM situação especial de despacho e o tipo da declaração vinculada for \"Duimp\", caso contrário, esse atributo será fornecido com o valor nulo")
@@ -80,16 +122,10 @@ public class DeclaracaoVinculadaCoverConsulta {
      **/
     private Integer numeroItemDeclaracaoOriginal = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "item")
+    @ApiModelProperty(value = "")
+    @Valid
+    private ItemDeclaracaoVinculadaCover item = null;
 
     /**
      * Tipo de declaração vinculada.&lt;br&gt;Domínio:
@@ -245,6 +281,7 @@ public class DeclaracaoVinculadaCoverConsulta {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -261,49 +298,14 @@ public class DeclaracaoVinculadaCoverConsulta {
         return sb;
     }
 
-    @XmlType(name = "TipoEnum")
-    @XmlEnum(String.class)
-    public enum TipoEnum {
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP"),
-
-        @XmlEnumValue("DUE")
-        @JsonProperty("DUE")
-        DUE("DUE"),
-
-        @XmlEnumValue("DI")
-        @JsonProperty("DI")
-        DI("DI"),
-
-        @XmlEnumValue("DE")
-        @JsonProperty("DE")
-        DE("DE");
-
-
-        private final String value;
-
-        TipoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoEnum fromValue(String v) {
-            for (TipoEnum b : TipoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

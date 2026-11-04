@@ -142,6 +142,6 @@ public class DadosLocalizaoLote {
         if (o == null) {
             return "null";
         }
-        return o.toString().replace("\n", "\n    ");
-    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

@@ -26,15 +26,38 @@ import javax.xml.bind.annotation.XmlType;
 public class DispensaPagamentoLpcoRequest {
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "MomentoTaxaEnum")
+    @XmlEnum(String.class)
+    public enum MomentoTaxaEnum {
+
+        @XmlEnumValue("REGISTRO_LPCO<br>RETIFICACAO<br>PRORROGACAO<br>COMPATIBILIZACAO<br>RESPOSTA_EXIGENCIA")
+        @JsonProperty("REGISTRO_LPCO<br>RETIFICACAO<br>PRORROGACAO<br>COMPATIBILIZACAO<br>RESPOSTA_EXIGENCIA")
+        REGISTRO_LPCO_BR_RETIFICACAO_BR_PRORROGACAO_BR_COMPATIBILIZACAO_BR_RESPOSTA_EXIGENCIA("REGISTRO_LPCO<br>RETIFICACAO<br>PRORROGACAO<br>COMPATIBILIZACAO<br>RESPOSTA_EXIGENCIA");
+
+
+        private final String value;
+
+        MomentoTaxaEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static MomentoTaxaEnum fromValue(String v) {
+            for (MomentoTaxaEnum b : MomentoTaxaEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to MomentoTaxaEnum");
+        }
     }
 
     @XmlElement(name = "momentoTaxa", required = true)
@@ -93,6 +116,7 @@ public class DispensaPagamentoLpcoRequest {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -103,37 +127,14 @@ public class DispensaPagamentoLpcoRequest {
         return sb;
     }
 
-    @XmlType(name = "MomentoTaxaEnum")
-    @XmlEnum(String.class)
-    public enum MomentoTaxaEnum {
-
-        @XmlEnumValue("REGISTRO_LPCO<br>RETIFICACAO<br>PRORROGACAO<br>COMPATIBILIZACAO<br>RESPOSTA_EXIGENCIA")
-        @JsonProperty("REGISTRO_LPCO<br>RETIFICACAO<br>PRORROGACAO<br>COMPATIBILIZACAO<br>RESPOSTA_EXIGENCIA")
-        REGISTRO_LPCO_BR_RETIFICACAO_BR_PRORROGACAO_BR_COMPATIBILIZACAO_BR_RESPOSTA_EXIGENCIA("REGISTRO_LPCO<br>RETIFICACAO<br>PRORROGACAO<br>COMPATIBILIZACAO<br>RESPOSTA_EXIGENCIA");
-
-
-        private final String value;
-
-        MomentoTaxaEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static MomentoTaxaEnum fromValue(String v) {
-            for (MomentoTaxaEnum b : MomentoTaxaEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to MomentoTaxaEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-    }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

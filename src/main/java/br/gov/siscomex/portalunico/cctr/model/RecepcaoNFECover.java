@@ -152,15 +152,9 @@ public class RecepcaoNFECover {
         this.local = local;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RecepcaoNFECover local(LocalCover local) {
+        this.local = local;
+        return this;
     }
 
     /**
@@ -208,8 +202,8 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    public RecepcaoNFECover local(LocalCover local) {
-        this.local = local;
+    public RecepcaoNFECover addConteineresItem(ConteinerCover conteineresItem) {
+        this.conteineres.add(conteineresItem);
         return this;
     }
 
@@ -268,8 +262,8 @@ public class RecepcaoNFECover {
         this.localArmazenamento = localArmazenamento;
     }
 
-    public RecepcaoNFECover addConteineresItem(ConteinerCover conteineresItem) {
-        this.conteineres.add(conteineresItem);
+    public RecepcaoNFECover localArmazenamento(String localArmazenamento) {
+        this.localArmazenamento = localArmazenamento;
         return this;
     }
 
@@ -308,8 +302,8 @@ public class RecepcaoNFECover {
         this.divergenciasIdentificadas = divergenciasIdentificadas;
     }
 
-    public RecepcaoNFECover localArmazenamento(String localArmazenamento) {
-        this.localArmazenamento = localArmazenamento;
+    public RecepcaoNFECover divergenciasIdentificadas(String divergenciasIdentificadas) {
+        this.divergenciasIdentificadas = divergenciasIdentificadas;
         return this;
     }
 
@@ -391,10 +385,6 @@ public class RecepcaoNFECover {
         return this;
     }
 
-    public RecepcaoNFECover divergenciasIdentificadas(String divergenciasIdentificadas) {
-        this.divergenciasIdentificadas = divergenciasIdentificadas;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -415,5 +405,16 @@ public class RecepcaoNFECover {
                 "    motivoNaoPesagem: " + toIndentedString(motivoNaoPesagem) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

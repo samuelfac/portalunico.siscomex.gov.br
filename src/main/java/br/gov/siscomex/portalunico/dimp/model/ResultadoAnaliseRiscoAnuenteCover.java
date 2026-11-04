@@ -27,15 +27,50 @@ public class ResultadoAnaliseRiscoAnuenteCover {
     private String orgao = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "ResultadoEnum")
+    @XmlEnum(String.class)
+    public enum ResultadoEnum {
+
+        @XmlEnumValue("DISPENSADO")
+        @JsonProperty("DISPENSADO")
+        DISPENSADO("DISPENSADO"),
+
+        @XmlEnumValue("EXAME_DOCUMENTAL")
+        @JsonProperty("EXAME_DOCUMENTAL")
+        EXAME_DOCUMENTAL("EXAME_DOCUMENTAL"),
+
+        @XmlEnumValue("EXAME_DOCUMENTAL_INSPECAO_FISICA")
+        @JsonProperty("EXAME_DOCUMENTAL_INSPECAO_FISICA")
+        EXAME_DOCUMENTAL_INSPECAO_FISICA("EXAME_DOCUMENTAL_INSPECAO_FISICA"),
+
+        @XmlEnumValue("PROCEDIMENTO_AUDITORIA_INVESTIGACAO")
+        @JsonProperty("PROCEDIMENTO_AUDITORIA_INVESTIGACAO")
+        PROCEDIMENTO_AUDITORIA_INVESTIGACAO("PROCEDIMENTO_AUDITORIA_INVESTIGACAO");
+
+
+        private final String value;
+
+        ResultadoEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static ResultadoEnum fromValue(String v) {
+            for (ResultadoEnum b : ResultadoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to ResultadoEnum");
+        }
     }
 
     @XmlElement(name = "resultado")
@@ -86,6 +121,7 @@ public class ResultadoAnaliseRiscoAnuenteCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -96,49 +132,14 @@ public class ResultadoAnaliseRiscoAnuenteCover {
         return sb;
     }
 
-    @XmlType(name = "ResultadoEnum")
-    @XmlEnum(String.class)
-    public enum ResultadoEnum {
-
-        @XmlEnumValue("DISPENSADO")
-        @JsonProperty("DISPENSADO")
-        DISPENSADO("DISPENSADO"),
-
-        @XmlEnumValue("EXAME_DOCUMENTAL")
-        @JsonProperty("EXAME_DOCUMENTAL")
-        EXAME_DOCUMENTAL("EXAME_DOCUMENTAL"),
-
-        @XmlEnumValue("EXAME_DOCUMENTAL_INSPECAO_FISICA")
-        @JsonProperty("EXAME_DOCUMENTAL_INSPECAO_FISICA")
-        EXAME_DOCUMENTAL_INSPECAO_FISICA("EXAME_DOCUMENTAL_INSPECAO_FISICA"),
-
-        @XmlEnumValue("PROCEDIMENTO_AUDITORIA_INVESTIGACAO")
-        @JsonProperty("PROCEDIMENTO_AUDITORIA_INVESTIGACAO")
-        PROCEDIMENTO_AUDITORIA_INVESTIGACAO("PROCEDIMENTO_AUDITORIA_INVESTIGACAO");
-
-
-        private final String value;
-
-        ResultadoEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static ResultadoEnum fromValue(String v) {
-            for (ResultadoEnum b : ResultadoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to ResultadoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

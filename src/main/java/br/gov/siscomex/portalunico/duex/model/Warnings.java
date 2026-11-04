@@ -40,15 +40,9 @@ public class Warnings {
         this.empty = empty;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Warnings empty(Boolean empty) {
+        this.empty = empty;
+        return this;
     }
 
     /**
@@ -75,10 +69,6 @@ public class Warnings {
         return this;
     }
 
-    public Warnings empty(Boolean empty) {
-        this.empty = empty;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -88,5 +78,16 @@ public class Warnings {
                 "    warning: " + toIndentedString(warning) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -134,5 +134,5 @@ public class DuimpUFsCandidatasIcmsDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

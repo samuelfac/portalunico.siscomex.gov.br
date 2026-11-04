@@ -57,15 +57,9 @@ public class GovernmentAgencyGoodsItem {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public GovernmentAgencyGoodsItem addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
+        this.additionalDocument.add(additionalDocumentItem);
+        return this;
     }
 
     /**
@@ -113,10 +107,6 @@ public class GovernmentAgencyGoodsItem {
         return this;
     }
 
-    public GovernmentAgencyGoodsItem addAdditionalDocumentItem(AdditionalDocument additionalDocumentItem) {
-        this.additionalDocument.add(additionalDocumentItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -127,5 +117,16 @@ public class GovernmentAgencyGoodsItem {
                 "    sequenceNumeric: " + toIndentedString(sequenceNumeric) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

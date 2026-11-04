@@ -101,15 +101,9 @@ public class RecintoAduaneiroDto {
         this.descricao = descricao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RecintoAduaneiroDto descricao(String descricao) {
+        this.descricao = descricao;
+        return this;
     }
 
     /**
@@ -150,10 +144,6 @@ public class RecintoAduaneiroDto {
         return this;
     }
 
-    public RecintoAduaneiroDto descricao(String descricao) {
-        this.descricao = descricao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -166,5 +156,16 @@ public class RecintoAduaneiroDto {
                 "    zona: " + toIndentedString(zona) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -73,15 +73,9 @@ public class ErroNoProcessamento {
         this.codigoBarrasDarf = codigoBarrasDarf;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ErroNoProcessamento codigoBarrasDarf(String codigoBarrasDarf) {
+        this.codigoBarrasDarf = codigoBarrasDarf;
+        return this;
     }
 
     /**
@@ -136,8 +130,8 @@ public class ErroNoProcessamento {
         this.numeroLote = numeroLote;
     }
 
-    public ErroNoProcessamento codigoBarrasDarf(String codigoBarrasDarf) {
-        this.codigoBarrasDarf = codigoBarrasDarf;
+    public ErroNoProcessamento numeroLote(String numeroLote) {
+        this.numeroLote = numeroLote;
         return this;
     }
 
@@ -179,10 +173,6 @@ public class ErroNoProcessamento {
         return this;
     }
 
-    public ErroNoProcessamento numeroLote(String numeroLote) {
-        this.numeroLote = numeroLote;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -197,4 +187,15 @@ public class ErroNoProcessamento {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

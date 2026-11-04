@@ -58,15 +58,9 @@ public class CargaRodoviariaFluxoLogistico {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaRodoviariaFluxoLogistico addBloqueiosAtivosItem(BloqueioConsultaCarga bloqueiosAtivosItem) {
+        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+        return this;
     }
 
     /**
@@ -107,8 +101,8 @@ public class CargaRodoviariaFluxoLogistico {
         this.situacaoAtual = situacaoAtual;
     }
 
-    public CargaRodoviariaFluxoLogistico addBloqueiosAtivosItem(BloqueioConsultaCarga bloqueiosAtivosItem) {
-        this.bloqueiosAtivos.add(bloqueiosAtivosItem);
+    public CargaRodoviariaFluxoLogistico situacaoAtual(CargaRodoviariaDetalhadaSituacao situacaoAtual) {
+        this.situacaoAtual = situacaoAtual;
         return this;
     }
 
@@ -136,10 +130,6 @@ public class CargaRodoviariaFluxoLogistico {
         return this;
     }
 
-    public CargaRodoviariaFluxoLogistico situacaoAtual(CargaRodoviariaDetalhadaSituacao situacaoAtual) {
-        this.situacaoAtual = situacaoAtual;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -151,5 +141,16 @@ public class CargaRodoviariaFluxoLogistico {
                 "    viagens: " + toIndentedString(viagens) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

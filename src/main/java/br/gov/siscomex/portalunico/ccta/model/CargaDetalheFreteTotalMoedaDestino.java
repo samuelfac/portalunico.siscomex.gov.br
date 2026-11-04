@@ -67,6 +67,16 @@ public class CargaDetalheFreteTotalMoedaDestino {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CargaDetalheFreteTotalMoedaDestino {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -76,15 +86,5 @@ public class CargaDetalheFreteTotalMoedaDestino {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CargaDetalheFreteTotalMoedaDestino {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "    valorCollect: " + toIndentedString(valorCollect) + "\n" +
-                "}";
-        return sb;
     }
 }

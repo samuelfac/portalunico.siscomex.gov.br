@@ -62,15 +62,9 @@ public class Frete {
         this.codigoMoedaFrete = codigoMoedaFrete;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Frete codigoMoedaFrete(String codigoMoedaFrete) {
+        this.codigoMoedaFrete = codigoMoedaFrete;
+        return this;
     }
 
     /**
@@ -113,10 +107,6 @@ public class Frete {
         return this;
     }
 
-    public Frete codigoMoedaFrete(String codigoMoedaFrete) {
-        this.codigoMoedaFrete = codigoMoedaFrete;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -127,5 +117,16 @@ public class Frete {
                 "    valor: " + toIndentedString(valor) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -101,15 +101,9 @@ public class EntregaConteiner {
         this.identificacaoEntrega = identificacaoEntrega;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public EntregaConteiner identificacaoEntrega(String identificacaoEntrega) {
+        this.identificacaoEntrega = identificacaoEntrega;
+        return this;
     }
 
     /**
@@ -167,8 +161,8 @@ public class EntregaConteiner {
         this.local = local;
     }
 
-    public EntregaConteiner identificacaoEntrega(String identificacaoEntrega) {
-        this.identificacaoEntrega = identificacaoEntrega;
+    public EntregaConteiner local(Local local) {
+        this.local = local;
         return this;
     }
 
@@ -231,8 +225,8 @@ public class EntregaConteiner {
         this.avariasIdentificadas = avariasIdentificadas;
     }
 
-    public EntregaConteiner local(Local local) {
-        this.local = local;
+    public EntregaConteiner avariasIdentificadas(String avariasIdentificadas) {
+        this.avariasIdentificadas = avariasIdentificadas;
         return this;
     }
 
@@ -274,10 +268,6 @@ public class EntregaConteiner {
         return this;
     }
 
-    public EntregaConteiner avariasIdentificadas(String avariasIdentificadas) {
-        this.avariasIdentificadas = avariasIdentificadas;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -294,5 +284,16 @@ public class EntregaConteiner {
                 "    observacoesGerais: " + toIndentedString(observacoesGerais) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

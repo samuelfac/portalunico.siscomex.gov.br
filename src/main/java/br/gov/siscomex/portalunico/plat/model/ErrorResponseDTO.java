@@ -66,15 +66,9 @@ public class ErrorResponseDTO {
         this.status = status;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ErrorResponseDTO status(Integer status) {
+        this.status = status;
+        return this;
     }
 
     /**
@@ -137,10 +131,6 @@ public class ErrorResponseDTO {
         return this;
     }
 
-    public ErrorResponseDTO status(Integer status) {
-        this.status = status;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -152,5 +142,16 @@ public class ErrorResponseDTO {
                 "    code: " + toIndentedString(code) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

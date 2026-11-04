@@ -52,9 +52,47 @@ public class IExceptionCover {
     private String path = null;
 
 
-    @XmlElement(name = "tag")
-    @ApiModelProperty(value = "")
-    private String tag = null;
+    @XmlType(name = "SeverityEnum")
+    @XmlEnum(String.class)
+    public enum SeverityEnum {
+
+        @XmlEnumValue("ERROR")
+        @JsonProperty("ERROR")
+        ERROR("ERROR"),
+
+        @XmlEnumValue("ALERT")
+        @JsonProperty("ALERT")
+        ALERT("ALERT"),
+
+        @XmlEnumValue("INFO")
+        @JsonProperty("INFO")
+        INFO("INFO");
+
+
+        private final String value;
+
+        SeverityEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static SeverityEnum fromValue(String v) {
+            for (SeverityEnum b : SeverityEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to SeverityEnum");
+        }
+    }
 
     @XmlElement(name = "severity")
     @ApiModelProperty(value = "")
@@ -64,16 +102,9 @@ public class IExceptionCover {
     @ApiModelProperty(value = "")
     private Integer status = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "tag")
+    @ApiModelProperty(value = "")
+    private String tag = null;
 
     /**
      * Get code
@@ -196,7 +227,6 @@ public class IExceptionCover {
 
     /**
      * Get path
-     *
      * @return path
      **/
     @JsonProperty("path")
@@ -237,7 +267,6 @@ public class IExceptionCover {
 
     /**
      * Get status
-     *
      * @return status
      **/
     @JsonProperty("status")
@@ -256,7 +285,6 @@ public class IExceptionCover {
 
     /**
      * Get tag
-     *
      * @return tag
      **/
     @JsonProperty("tag")
@@ -292,45 +320,14 @@ public class IExceptionCover {
         return sb;
     }
 
-    @XmlType(name = "SeverityEnum")
-    @XmlEnum(String.class)
-    public enum SeverityEnum {
-
-        @XmlEnumValue("ERROR")
-        @JsonProperty("ERROR")
-        ERROR("ERROR"),
-
-        @XmlEnumValue("ALERT")
-        @JsonProperty("ALERT")
-        ALERT("ALERT"),
-
-        @XmlEnumValue("INFO")
-        @JsonProperty("INFO")
-        INFO("INFO");
-
-
-        private final String value;
-
-        SeverityEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static SeverityEnum fromValue(String v) {
-            for (SeverityEnum b : SeverityEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to SeverityEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

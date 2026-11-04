@@ -68,15 +68,9 @@ public class ViagemRodoviariaDetalhadaInfoGerais {
         this.enLastre = enLastre;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ViagemRodoviariaDetalhadaInfoGerais enLastre(Boolean enLastre) {
+        this.enLastre = enLastre;
+        return this;
     }
 
     /**
@@ -98,10 +92,6 @@ public class ViagemRodoviariaDetalhadaInfoGerais {
         return this;
     }
 
-    public ViagemRodoviariaDetalhadaInfoGerais enLastre(Boolean enLastre) {
-        this.enLastre = enLastre;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -112,5 +102,16 @@ public class ViagemRodoviariaDetalhadaInfoGerais {
                 "    rota: " + toIndentedString(rota) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

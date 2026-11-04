@@ -110,15 +110,46 @@ public class ConsultarLpcoResponse {
     private String dataSituacaoAtual = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "CanalEnum")
+    @XmlEnum(String.class)
+    public enum CanalEnum {
+
+        @XmlEnumValue("VERDE")
+        @JsonProperty("VERDE")
+        VERDE("VERDE"),
+
+        @XmlEnumValue("AMARELO")
+        @JsonProperty("AMARELO")
+        AMARELO("AMARELO"),
+
+        @XmlEnumValue("VERMELHO")
+        @JsonProperty("VERMELHO")
+        VERMELHO("VERMELHO");
+
+
+        private final String value;
+
+        CanalEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static CanalEnum fromValue(String v) {
+            for (CanalEnum b : CanalEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
+        }
     }
 
     @XmlElement(name = "canal")
@@ -384,6 +415,7 @@ public class ConsultarLpcoResponse {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -405,45 +437,14 @@ public class ConsultarLpcoResponse {
         return sb;
     }
 
-    @XmlType(name = "CanalEnum")
-    @XmlEnum(String.class)
-    public enum CanalEnum {
-
-        @XmlEnumValue("VERDE")
-        @JsonProperty("VERDE")
-        VERDE("VERDE"),
-
-        @XmlEnumValue("AMARELO")
-        @JsonProperty("AMARELO")
-        AMARELO("AMARELO"),
-
-        @XmlEnumValue("VERMELHO")
-        @JsonProperty("VERMELHO")
-        VERMELHO("VERMELHO");
-
-
-        private final String value;
-
-        CanalEnum(String v) {
-            value = v;
-        }
-
-        public static CanalEnum fromValue(String v) {
-            for (CanalEnum b : CanalEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to CanalEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
     }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

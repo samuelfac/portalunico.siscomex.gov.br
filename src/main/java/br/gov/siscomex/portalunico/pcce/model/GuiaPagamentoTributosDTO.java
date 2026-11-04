@@ -77,12 +77,43 @@ public class GuiaPagamentoTributosDTO {
     private String nrOperacaoOrigem = null;
 
 
-    @XmlElement(name = "tpOperacaoOrigem", required = true)
-    @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à guia")
-    /**
-     * Tipo da operação que deu origem à guia
-     **/
-    private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
+    @XmlType(name = "TpGuiaPagamentoEnum")
+    @XmlEnum(String.class)
+    public enum TpGuiaPagamentoEnum {
+
+        @XmlEnumValue("GRU")
+        @JsonProperty("GRU")
+        GRU("GRU"),
+
+        @XmlEnumValue("DARF")
+        @JsonProperty("DARF")
+        DARF("DARF");
+
+
+        private final String value;
+
+        TpGuiaPagamentoEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TpGuiaPagamentoEnum fromValue(String v) {
+            for (TpGuiaPagamentoEnum b : TpGuiaPagamentoEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpGuiaPagamentoEnum");
+        }
+    }
 
     @XmlElement(name = "tpGuiaPagamento", required = true)
     @ApiModelProperty(required = true, value = "Tipo de guia de pagamento")
@@ -91,26 +122,51 @@ public class GuiaPagamentoTributosDTO {
      **/
     private TpGuiaPagamentoEnum tpGuiaPagamento = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+
+    @XmlType(name = "TpOperacaoOrigemEnum")
+    @XmlEnum(String.class)
+    public enum TpOperacaoOrigemEnum {
+
+        @XmlEnumValue("LPCO")
+        @JsonProperty("LPCO")
+        LPCO("LPCO"),
+
+        @XmlEnumValue("DUIMP")
+        @JsonProperty("DUIMP")
+        DUIMP("DUIMP");
+
+
+        private final String value;
+
+        TpOperacaoOrigemEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TpOperacaoOrigemEnum fromValue(String v) {
+            for (TpOperacaoOrigemEnum b : TpOperacaoOrigemEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpOperacaoOrigemEnum");
+        }
     }
 
+    @XmlElement(name = "tpOperacaoOrigem", required = true)
+    @ApiModelProperty(required = true, value = "Tipo da operação que deu origem à guia")
     /**
-     * Data de vencimento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;&lt;br/&gt;(*) Obrigatório se tpGuiaPagamento &#x3D; DARF
-     *
-     * @return dtVencimento
+     * Tipo da operação que deu origem à guia
      **/
-    @JsonProperty("dtVencimento")
-    public String getDtVencimento() {
-        return dtVencimento;
-    }
+    private TpOperacaoOrigemEnum tpOperacaoOrigem = null;
 
     @XmlElement(name = "valorTotal", required = true)
     @ApiModelProperty(example = "126.54", required = true, value = "Valor total da guia <br>Formato: Decimal, com 2 casas decimais separadas por ponto.<br>Tamanho: 15,2")
@@ -159,13 +215,13 @@ public class GuiaPagamentoTributosDTO {
     }
 
     /**
-     * Link para o PDF da guia &lt;br&gt;Tamanho máximo: 400&lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem &#x3D; LPCO e tpGuiaPagamento &#x3D; GRU
+     * Data de vencimento da guia&lt;br&gt;Formato: &#39;yyyy-MM-dd&#39;&lt;br/&gt;(*) Obrigatório se tpGuiaPagamento &#x3D; DARF
      *
-     * @return linkPdf
+     * @return dtVencimento
      **/
-    @JsonProperty("linkPdf")
-    public String getLinkPdf() {
-        return linkPdf;
+    @JsonProperty("dtVencimento")
+    public String getDtVencimento() {
+        return dtVencimento;
     }
 
     public void setDtVencimento(String dtVencimento) {
@@ -216,17 +272,13 @@ public class GuiaPagamentoTributosDTO {
     }
 
     /**
-     * Tipo da operação que deu origem à guia
+     * Link para o PDF da guia &lt;br&gt;Tamanho máximo: 400&lt;br/&gt;(*) Obrigatório se tpOperacaoOrigem &#x3D; LPCO e tpGuiaPagamento &#x3D; GRU
      *
-     * @return tpOperacaoOrigem
+     * @return linkPdf
      **/
-    @JsonProperty("tpOperacaoOrigem")
-    @NotNull
-    public String getTpOperacaoOrigem() {
-        if (tpOperacaoOrigem == null) {
-            return null;
-        }
-        return tpOperacaoOrigem.value();
+    @JsonProperty("linkPdf")
+    public String getLinkPdf() {
+        return linkPdf;
     }
 
     public void setLinkPdf(String linkPdf) {
@@ -281,22 +333,18 @@ public class GuiaPagamentoTributosDTO {
         return this;
     }
 
-    @Override
-    public String toString() {
-
-        String sb = "class GuiaPagamentoTributosDTO {\n" +
-                "    codigoBarrasGuia: " + toIndentedString(codigoBarrasGuia) + "\n" +
-                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
-                "    dtVencimento: " + toIndentedString(dtVencimento) + "\n" +
-                "    infoAdicionais: " + toIndentedString(infoAdicionais) + "\n" +
-                "    linhaDigitavel: " + toIndentedString(linhaDigitavel) + "\n" +
-                "    linkPdf: " + toIndentedString(linkPdf) + "\n" +
-                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
-                "    tpGuiaPagamento: " + toIndentedString(tpGuiaPagamento) + "\n" +
-                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
-                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
-                "}";
-        return sb;
+    /**
+     * Tipo da operação que deu origem à guia
+     *
+     * @return tpOperacaoOrigem
+     **/
+    @JsonProperty("tpOperacaoOrigem")
+    @NotNull
+    public String getTpOperacaoOrigem() {
+        if (tpOperacaoOrigem == null) {
+            return null;
+        }
+        return tpOperacaoOrigem.value();
     }
 
     public void setTpOperacaoOrigem(TpOperacaoOrigemEnum tpOperacaoOrigem) {
@@ -328,79 +376,32 @@ public class GuiaPagamentoTributosDTO {
     }
 
 
-    @XmlType(name = "TpGuiaPagamentoEnum")
-    @XmlEnum(String.class)
-    public enum TpGuiaPagamentoEnum {
+    @Override
+    public String toString() {
 
-        @XmlEnumValue("GRU")
-        @JsonProperty("GRU")
-        GRU("GRU"),
-
-        @XmlEnumValue("DARF")
-        @JsonProperty("DARF")
-        DARF("DARF");
-
-
-        private final String value;
-
-        TpGuiaPagamentoEnum(String v) {
-            value = v;
-        }
-
-        public static TpGuiaPagamentoEnum fromValue(String v) {
-            for (TpGuiaPagamentoEnum b : TpGuiaPagamentoEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpGuiaPagamentoEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        String sb = "class GuiaPagamentoTributosDTO {\n" +
+                "    codigoBarrasGuia: " + toIndentedString(codigoBarrasGuia) + "\n" +
+                "    codigoReceita: " + toIndentedString(codigoReceita) + "\n" +
+                "    dtVencimento: " + toIndentedString(dtVencimento) + "\n" +
+                "    infoAdicionais: " + toIndentedString(infoAdicionais) + "\n" +
+                "    linhaDigitavel: " + toIndentedString(linhaDigitavel) + "\n" +
+                "    linkPdf: " + toIndentedString(linkPdf) + "\n" +
+                "    nrOperacaoOrigem: " + toIndentedString(nrOperacaoOrigem) + "\n" +
+                "    tpGuiaPagamento: " + toIndentedString(tpGuiaPagamento) + "\n" +
+                "    tpOperacaoOrigem: " + toIndentedString(tpOperacaoOrigem) + "\n" +
+                "    valorTotal: " + toIndentedString(valorTotal) + "\n" +
+                "}";
+        return sb;
     }
 
-    @XmlType(name = "TpOperacaoOrigemEnum")
-    @XmlEnum(String.class)
-    public enum TpOperacaoOrigemEnum {
-
-        @XmlEnumValue("LPCO")
-        @JsonProperty("LPCO")
-        LPCO("LPCO"),
-
-        @XmlEnumValue("DUIMP")
-        @JsonProperty("DUIMP")
-        DUIMP("DUIMP");
-
-
-        private final String value;
-
-        TpOperacaoOrigemEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TpOperacaoOrigemEnum fromValue(String v) {
-            for (TpOperacaoOrigemEnum b : TpOperacaoOrigemEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TpOperacaoOrigemEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

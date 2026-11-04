@@ -165,15 +165,9 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         this.numeroDIR = numeroDIR;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote numeroDIR(String numeroDIR) {
+        this.numeroDIR = numeroDIR;
+        return this;
     }
 
     /**
@@ -256,8 +250,8 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         this.valorFreteBRL = valorFreteBRL;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote numeroDIR(String numeroDIR) {
-        this.numeroDIR = numeroDIR;
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteBRL(BigDecimal valorFreteBRL) {
+        this.valorFreteBRL = valorFreteBRL;
         return this;
     }
 
@@ -354,8 +348,8 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         this.valorTotalUSD = valorTotalUSD;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorFreteBRL(BigDecimal valorFreteBRL) {
-        this.valorFreteBRL = valorFreteBRL;
+    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalUSD(BigDecimal valorTotalUSD) {
+        this.valorTotalUSD = valorTotalUSD;
         return this;
     }
 
@@ -417,10 +411,6 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
         return this;
     }
 
-    public RemessaDoProcessamentoDoRegistroOuRetificaoDeLote valorTotalUSD(BigDecimal valorTotalUSD) {
-        this.valorTotalUSD = valorTotalUSD;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -443,4 +433,15 @@ public class RemessaDoProcessamentoDoRegistroOuRetificaoDeLote {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

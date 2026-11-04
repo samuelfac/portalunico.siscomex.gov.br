@@ -116,15 +116,9 @@ public class ItemLpcoResponse {
         this.ncm = ncm;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemLpcoResponse ncm(String ncm) {
+        this.ncm = ncm;
+        return this;
     }
 
     /**
@@ -227,8 +221,8 @@ public class ItemLpcoResponse {
         this.criterioDistribuicaoCota = criterioDistribuicaoCota;
     }
 
-    public ItemLpcoResponse ncm(String ncm) {
-        this.ncm = ncm;
+    public ItemLpcoResponse criterioDistribuicaoCota(String criterioDistribuicaoCota) {
+        this.criterioDistribuicaoCota = criterioDistribuicaoCota;
         return this;
     }
 
@@ -251,10 +245,6 @@ public class ItemLpcoResponse {
         return this;
     }
 
-    public ItemLpcoResponse criterioDistribuicaoCota(String criterioDistribuicaoCota) {
-        this.criterioDistribuicaoCota = criterioDistribuicaoCota;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -271,4 +261,15 @@ public class ItemLpcoResponse {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

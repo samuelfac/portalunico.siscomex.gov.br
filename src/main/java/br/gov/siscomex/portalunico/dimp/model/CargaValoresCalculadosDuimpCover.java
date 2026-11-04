@@ -72,6 +72,16 @@ public class CargaValoresCalculadosDuimpCover {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class CargaValoresCalculadosDuimpCover {\n" +
+                "    frete: " + toIndentedString(frete) + "\n" +
+                "    seguro: " + toIndentedString(seguro) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -81,15 +91,5 @@ public class CargaValoresCalculadosDuimpCover {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class CargaValoresCalculadosDuimpCover {\n" +
-                "    frete: " + toIndentedString(frete) + "\n" +
-                "    seguro: " + toIndentedString(seguro) + "\n" +
-                "}";
-        return sb;
     }
 }

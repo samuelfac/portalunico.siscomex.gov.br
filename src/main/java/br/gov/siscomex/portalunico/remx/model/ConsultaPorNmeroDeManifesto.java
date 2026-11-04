@@ -92,5 +92,5 @@ public class ConsultaPorNmeroDeManifesto {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

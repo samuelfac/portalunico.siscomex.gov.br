@@ -51,15 +51,42 @@ public class Reboque {
     private BigDecimal taraReboque = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoReboqueEnum")
+    @XmlEnum(String.class)
+    public enum TipoReboqueEnum {
+
+        @XmlEnumValue("R")
+        @JsonProperty("R")
+        R("R"),
+
+        @XmlEnumValue("S")
+        @JsonProperty("S")
+        S("S");
+
+
+        private final String value;
+
+        TipoReboqueEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoReboqueEnum fromValue(String v) {
+            for (TipoReboqueEnum b : TipoReboqueEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoReboqueEnum");
+        }
     }
 
     @XmlElement(name = "tipoReboque", required = true)
@@ -175,6 +202,7 @@ public class Reboque {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -188,41 +216,14 @@ public class Reboque {
         return sb;
     }
 
-    @XmlType(name = "TipoReboqueEnum")
-    @XmlEnum(String.class)
-    public enum TipoReboqueEnum {
-
-        @XmlEnumValue("R")
-        @JsonProperty("R")
-        R("R"),
-
-        @XmlEnumValue("S")
-        @JsonProperty("S")
-        S("S");
-
-
-        private final String value;
-
-        TipoReboqueEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoReboqueEnum fromValue(String v) {
-            for (TipoReboqueEnum b : TipoReboqueEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoReboqueEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

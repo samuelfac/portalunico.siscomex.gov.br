@@ -101,5 +101,5 @@ public class ManifestoDoProcessamentoDaSolicitaoDeDevoluo {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

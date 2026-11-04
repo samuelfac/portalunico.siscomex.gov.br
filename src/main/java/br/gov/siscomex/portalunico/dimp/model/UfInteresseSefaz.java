@@ -28,15 +28,46 @@ public class UfInteresseSefaz {
     private String uf = null;
 
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
+    @XmlType(name = "TipoInteresseEnum")
+    @XmlEnum(String.class)
+    public enum TipoInteresseEnum {
+
+        @XmlEnumValue("DESPACHO(D : UF de realização do Despacho da Duimp) ")
+        @JsonProperty("DESPACHO(D : UF de realização do Despacho da Duimp) ")
+        DESPACHO_D_UF_DE_REALIZA_O_DO_DESPACHO_DA_DUIMP_("DESPACHO(D : UF de realização do Despacho da Duimp) "),
+
+        @XmlEnumValue("IMPORTADOR(I : UF do domicílio do importador) ")
+        @JsonProperty("IMPORTADOR(I : UF do domicílio do importador) ")
+        IMPORTADOR_I_UF_DO_DOMIC_LIO_DO_IMPORTADOR_("IMPORTADOR(I : UF do domicílio do importador) "),
+
+        @XmlEnumValue("TERCEIRO(T : UF do domicílio do terceiro (adquirente/encomendante)) ")
+        @JsonProperty("TERCEIRO(T : UF do domicílio do terceiro (adquirente/encomendante)) ")
+        TERCEIRO_T_UF_DO_DOMIC_LIO_DO_TERCEIRO_ADQUIRENTE_ENCOMENDANTE_("TERCEIRO(T : UF do domicílio do terceiro (adquirente/encomendante)) ");
+
+
+        private final String value;
+
+        TipoInteresseEnum(String v) {
+            value = v;
         }
-        return o.toString().replace("\n", "\n    ");
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static TipoInteresseEnum fromValue(String v) {
+            for (TipoInteresseEnum b : TipoInteresseEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoInteresseEnum");
+        }
     }
 
     @XmlElement(name = "tipoInteresse", required = true)
@@ -89,6 +120,7 @@ public class UfInteresseSefaz {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -99,45 +131,14 @@ public class UfInteresseSefaz {
         return sb;
     }
 
-    @XmlType(name = "TipoInteresseEnum")
-    @XmlEnum(String.class)
-    public enum TipoInteresseEnum {
-
-        @XmlEnumValue("DESPACHO(D : UF de realização do Despacho da Duimp) ")
-        @JsonProperty("DESPACHO(D : UF de realização do Despacho da Duimp) ")
-        DESPACHO_D_UF_DE_REALIZA_O_DO_DESPACHO_DA_DUIMP_("DESPACHO(D : UF de realização do Despacho da Duimp) "),
-
-        @XmlEnumValue("IMPORTADOR(I : UF do domicílio do importador) ")
-        @JsonProperty("IMPORTADOR(I : UF do domicílio do importador) ")
-        IMPORTADOR_I_UF_DO_DOMIC_LIO_DO_IMPORTADOR_("IMPORTADOR(I : UF do domicílio do importador) "),
-
-        @XmlEnumValue("TERCEIRO(T : UF do domicílio do terceiro (adquirente/encomendante)) ")
-        @JsonProperty("TERCEIRO(T : UF do domicílio do terceiro (adquirente/encomendante)) ")
-        TERCEIRO_T_UF_DO_DOMIC_LIO_DO_TERCEIRO_ADQUIRENTE_ENCOMENDANTE_("TERCEIRO(T : UF do domicílio do terceiro (adquirente/encomendante)) ");
-
-
-        private final String value;
-
-        TipoInteresseEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static TipoInteresseEnum fromValue(String v) {
-            for (TipoInteresseEnum b : TipoInteresseEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoInteresseEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

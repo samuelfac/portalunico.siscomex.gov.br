@@ -92,5 +92,5 @@ public class ConsultaPorNmeroDeLote {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

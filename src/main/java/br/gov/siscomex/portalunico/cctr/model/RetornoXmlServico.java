@@ -78,6 +78,16 @@ public class RetornoXmlServico {
     }
 
 
+    @Override
+    public String toString() {
+
+        String sb = "class RetornoXmlServico {\n" +
+                "    listaOperacao: " + toIndentedString(listaOperacao) + "\n" +
+                "    mensagem: " + toIndentedString(mensagem) + "\n" +
+                "}";
+        return sb;
+    }
+
     /**
      * Convert the given object to string with each line indented by 4 spaces
      * (except the first line).
@@ -87,15 +97,5 @@ public class RetornoXmlServico {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
-
-    @Override
-    public String toString() {
-
-        String sb = "class RetornoXmlServico {\n" +
-                "    listaOperacao: " + toIndentedString(listaOperacao) + "\n" +
-                "    mensagem: " + toIndentedString(mensagem) + "\n" +
-                "}";
-        return sb;
     }
 }

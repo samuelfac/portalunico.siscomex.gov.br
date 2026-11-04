@@ -96,5 +96,5 @@ public class IdDescricao {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

@@ -120,15 +120,9 @@ public class DiagnosticInfo {
         this.visao = visao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DiagnosticInfo visao(String visao) {
+        this.visao = visao;
+        return this;
     }
 
     /**
@@ -206,10 +200,6 @@ public class DiagnosticInfo {
         return this;
     }
 
-    public DiagnosticInfo visao(String visao) {
-        this.visao = visao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -225,5 +215,16 @@ public class DiagnosticInfo {
                 "    trackerId: " + toIndentedString(trackerId) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

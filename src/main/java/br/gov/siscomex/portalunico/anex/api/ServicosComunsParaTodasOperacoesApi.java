@@ -156,6 +156,6 @@ public interface ServicosComunsParaTodasOperacoesApi {
             @ApiResponse(code = 404, message = "Recurso não encontrado"),
             @ApiResponse(code = 422, message = "Erro(s) de validação da camada de negócio", response = ExceptionCover.class),
             @ApiResponse(code = 500, message = "Erro interno no servidor")})
-    RetornoDownloadDocumento downloadDocumentoId(@ApiParam(value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: 9223372036854775807", required = true) @PathParam("idDocumento") Long idDocumento, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
+    RetornoDownloadDocumento downloadDocumentoId(@ApiParam(value = "Id do documento.<br/>Valor mínimo: 1<br/>Valor máximo: Integer.MAX_VALUE", required = true) @PathParam("idDocumento") Long idDocumento, @ApiParam(value = "JSON Web Token (JWT) contendo as informações do usuário. Recuperado no parâmetro Set-Token no response da autenticação.", required = true) @HeaderParam("Authorization") String authorization, @ApiParam(value = "Token de prevenção contra ataques CSRF. Recuperado no parâmetro X-CSRF-Token no response da autenticação.", required = true) @HeaderParam("X-CSRF-Token") String xCSRFToken);
 }
 

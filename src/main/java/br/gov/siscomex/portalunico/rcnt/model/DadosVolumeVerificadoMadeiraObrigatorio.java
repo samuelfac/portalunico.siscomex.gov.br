@@ -81,15 +81,9 @@ public class DadosVolumeVerificadoMadeiraObrigatorio {
         this.madeira = madeira;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosVolumeVerificadoMadeiraObrigatorio madeira(Boolean madeira) {
+        this.madeira = madeira;
+        return this;
     }
 
     /**
@@ -132,10 +126,6 @@ public class DadosVolumeVerificadoMadeiraObrigatorio {
         return this;
     }
 
-    public DadosVolumeVerificadoMadeiraObrigatorio madeira(Boolean madeira) {
-        this.madeira = madeira;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -148,4 +138,15 @@ public class DadosVolumeVerificadoMadeiraObrigatorio {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

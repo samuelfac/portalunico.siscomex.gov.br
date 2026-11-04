@@ -120,15 +120,9 @@ public class ItemAgrupamentoLpco {
         this.situacao = situacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemAgrupamentoLpco situacao(String situacao) {
+        this.situacao = situacao;
+        return this;
     }
 
     /**
@@ -189,10 +183,6 @@ public class ItemAgrupamentoLpco {
         return this;
     }
 
-    public ItemAgrupamentoLpco situacao(String situacao) {
-        this.situacao = situacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -207,4 +197,15 @@ public class ItemAgrupamentoLpco {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

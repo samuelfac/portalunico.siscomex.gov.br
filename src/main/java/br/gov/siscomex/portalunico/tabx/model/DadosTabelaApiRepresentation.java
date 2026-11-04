@@ -99,5 +99,5 @@ public class DadosTabelaApiRepresentation {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

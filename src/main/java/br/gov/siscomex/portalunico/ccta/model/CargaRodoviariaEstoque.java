@@ -91,15 +91,9 @@ public class CargaRodoviariaEstoque {
         this.chassiVeiculo = chassiVeiculo;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaRodoviariaEstoque chassiVeiculo(String chassiVeiculo) {
+        this.chassiVeiculo = chassiVeiculo;
+        return this;
     }
 
     /**
@@ -240,8 +234,8 @@ public class CargaRodoviariaEstoque {
         this.quantidadeVolumes = quantidadeVolumes;
     }
 
-    public CargaRodoviariaEstoque chassiVeiculo(String chassiVeiculo) {
-        this.chassiVeiculo = chassiVeiculo;
+    public CargaRodoviariaEstoque quantidadeVolumes(Integer quantidadeVolumes) {
+        this.quantidadeVolumes = quantidadeVolumes;
         return this;
     }
 
@@ -294,8 +288,8 @@ public class CargaRodoviariaEstoque {
         this.tipoEmbalagem = tipoEmbalagem;
     }
 
-    public CargaRodoviariaEstoque quantidadeVolumes(Integer quantidadeVolumes) {
-        this.quantidadeVolumes = quantidadeVolumes;
+    public CargaRodoviariaEstoque tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
+        this.tipoEmbalagem = tipoEmbalagem;
         return this;
     }
 
@@ -317,10 +311,6 @@ public class CargaRodoviariaEstoque {
         return this;
     }
 
-    public CargaRodoviariaEstoque tipoEmbalagem(TipoEmbalagem tipoEmbalagem) {
-        this.tipoEmbalagem = tipoEmbalagem;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -340,5 +330,16 @@ public class CargaRodoviariaEstoque {
                 "    tipoGranel: " + toIndentedString(tipoGranel) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -98,15 +98,9 @@ public class DuimpConsultaCover {
         this.identificacao = identificacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DuimpConsultaCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
     }
 
     /**
@@ -185,8 +179,8 @@ public class DuimpConsultaCover {
         this.carga = carga;
     }
 
-    public DuimpConsultaCover identificacao(IdentificacaoDuimpConsultaCover identificacao) {
-        this.identificacao = identificacao;
+    public DuimpConsultaCover carga(CargaDuimpConsultaCover carga) {
+        this.carga = carga;
         return this;
     }
 
@@ -247,8 +241,8 @@ public class DuimpConsultaCover {
         this.tributos = tributos;
     }
 
-    public DuimpConsultaCover carga(CargaDuimpConsultaCover carga) {
-        this.carga = carga;
+    public DuimpConsultaCover tributos(TributoConsultaDuimpCover tributos) {
+        this.tributos = tributos;
         return this;
     }
 
@@ -290,8 +284,8 @@ public class DuimpConsultaCover {
         this.tratamentoAdministrativo = tratamentoAdministrativo;
     }
 
-    public DuimpConsultaCover tributos(TributoConsultaDuimpCover tributos) {
-        this.tributos = tributos;
+    public DuimpConsultaCover tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
+        this.tratamentoAdministrativo = tratamentoAdministrativo;
         return this;
     }
 
@@ -336,10 +330,6 @@ public class DuimpConsultaCover {
         return this;
     }
 
-    public DuimpConsultaCover tratamentoAdministrativo(TratamentoAdministrativoCover tratamentoAdministrativo) {
-        this.tratamentoAdministrativo = tratamentoAdministrativo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -359,5 +349,16 @@ public class DuimpConsultaCover {
                 "    itens: " + toIndentedString(itens) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

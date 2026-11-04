@@ -146,15 +146,9 @@ public class DadosPagamentoCover {
         this.agencia = agencia;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosPagamentoCover agencia(String agencia) {
+        this.agencia = agencia;
+        return this;
     }
 
     /**
@@ -232,10 +226,6 @@ public class DadosPagamentoCover {
         return this;
     }
 
-    public DadosPagamentoCover agencia(String agencia) {
-        this.agencia = agencia;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -251,5 +241,16 @@ public class DadosPagamentoCover {
                 "    juros: " + toIndentedString(juros) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -108,15 +108,9 @@ public class CargaRodoviariaDivergencia {
         this.momento = momento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public CargaRodoviariaDivergencia momento(Momento momento) {
+        this.momento = momento;
+        return this;
     }
 
     /**
@@ -152,8 +146,8 @@ public class CargaRodoviariaDivergencia {
         this.percDivergenciaPesoBrutoKg = percDivergenciaPesoBrutoKg;
     }
 
-    public CargaRodoviariaDivergencia momento(Momento momento) {
-        this.momento = momento;
+    public CargaRodoviariaDivergencia percDivergenciaPesoBrutoKg(BigDecimal percDivergenciaPesoBrutoKg) {
+        this.percDivergenciaPesoBrutoKg = percDivergenciaPesoBrutoKg;
         return this;
     }
 
@@ -284,8 +278,8 @@ public class CargaRodoviariaDivergencia {
         this.quantidadeVolumesViagem = quantidadeVolumesViagem;
     }
 
-    public CargaRodoviariaDivergencia percDivergenciaPesoBrutoKg(BigDecimal percDivergenciaPesoBrutoKg) {
-        this.percDivergenciaPesoBrutoKg = percDivergenciaPesoBrutoKg;
+    public CargaRodoviariaDivergencia quantidadeVolumesViagem(Integer quantidadeVolumesViagem) {
+        this.quantidadeVolumesViagem = quantidadeVolumesViagem;
         return this;
     }
 
@@ -307,10 +301,6 @@ public class CargaRodoviariaDivergencia {
         return this;
     }
 
-    public CargaRodoviariaDivergencia quantidadeVolumesViagem(Integer quantidadeVolumesViagem) {
-        this.quantidadeVolumesViagem = quantidadeVolumesViagem;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -330,5 +320,16 @@ public class CargaRodoviariaDivergencia {
                 "    tipoDivergencia: " + toIndentedString(tipoDivergencia) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

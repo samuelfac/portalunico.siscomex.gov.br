@@ -67,15 +67,9 @@ public class ResponsavelRFBRepresentation {
         this.codigoLotacao = codigoLotacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ResponsavelRFBRepresentation codigoLotacao(Integer codigoLotacao) {
+        this.codigoLotacao = codigoLotacao;
+        return this;
     }
 
     /**
@@ -173,10 +167,6 @@ public class ResponsavelRFBRepresentation {
         return this;
     }
 
-    public ResponsavelRFBRepresentation codigoLotacao(Integer codigoLotacao) {
-        this.codigoLotacao = codigoLotacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -190,5 +180,16 @@ public class ResponsavelRFBRepresentation {
                 "    nomeSetor: " + toIndentedString(nomeSetor) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

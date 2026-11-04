@@ -56,15 +56,9 @@ public class TratamentoTributarioDto {
         this.dataDoRegistro = dataDoRegistro;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public TratamentoTributarioDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
+        this.dataDoRegistro = dataDoRegistro;
+        return this;
     }
 
     /**
@@ -100,8 +94,8 @@ public class TratamentoTributarioDto {
         this.regimeTributario = regimeTributario;
     }
 
-    public TratamentoTributarioDto dataDoRegistro(OffsetDateTime dataDoRegistro) {
-        this.dataDoRegistro = dataDoRegistro;
+    public TratamentoTributarioDto regimeTributario(RegimeTributarioDto regimeTributario) {
+        this.regimeTributario = regimeTributario;
         return this;
     }
 
@@ -129,10 +123,6 @@ public class TratamentoTributarioDto {
         return this;
     }
 
-    public TratamentoTributarioDto regimeTributario(RegimeTributarioDto regimeTributario) {
-        this.regimeTributario = regimeTributario;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -144,5 +134,16 @@ public class TratamentoTributarioDto {
                 "    tributos: " + toIndentedString(tributos) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

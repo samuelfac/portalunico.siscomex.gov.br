@@ -91,5 +91,5 @@ public class DadosDaNotaFiscal {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

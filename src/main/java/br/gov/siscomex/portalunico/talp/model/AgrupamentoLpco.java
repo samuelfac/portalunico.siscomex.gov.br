@@ -56,15 +56,9 @@ public class AgrupamentoLpco {
         this.chave = chave;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public AgrupamentoLpco chave(String chave) {
+        this.chave = chave;
+        return this;
     }
 
     /**
@@ -92,10 +86,6 @@ public class AgrupamentoLpco {
         return this;
     }
 
-    public AgrupamentoLpco chave(String chave) {
-        this.chave = chave;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -106,4 +96,15 @@ public class AgrupamentoLpco {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

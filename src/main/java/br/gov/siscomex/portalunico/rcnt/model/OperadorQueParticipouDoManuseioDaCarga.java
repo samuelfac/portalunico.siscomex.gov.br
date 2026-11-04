@@ -54,15 +54,9 @@ public class OperadorQueParticipouDoManuseioDaCarga {
         this.idElemento = idElemento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public OperadorQueParticipouDoManuseioDaCarga idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**
@@ -103,10 +97,6 @@ public class OperadorQueParticipouDoManuseioDaCarga {
         return this;
     }
 
-    public OperadorQueParticipouDoManuseioDaCarga idElemento(String idElemento) {
-        this.idElemento = idElemento;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -118,4 +108,15 @@ public class OperadorQueParticipouDoManuseioDaCarga {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

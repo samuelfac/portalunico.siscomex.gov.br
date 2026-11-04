@@ -61,15 +61,9 @@ public class DadosContinerUldPosioVeculoPtio {
         this.idElemento = idElemento;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosContinerUldPosioVeculoPtio idElemento(String idElemento) {
+        this.idElemento = idElemento;
+        return this;
     }
 
     /**
@@ -105,8 +99,8 @@ public class DadosContinerUldPosioVeculoPtio {
         this.identificacaoUld = identificacaoUld;
     }
 
-    public DadosContinerUldPosioVeculoPtio idElemento(String idElemento) {
-        this.idElemento = idElemento;
+    public DadosContinerUldPosioVeculoPtio identificacaoUld(String identificacaoUld) {
+        this.identificacaoUld = identificacaoUld;
         return this;
     }
 
@@ -129,10 +123,6 @@ public class DadosContinerUldPosioVeculoPtio {
         return this;
     }
 
-    public DadosContinerUldPosioVeculoPtio identificacaoUld(String identificacaoUld) {
-        this.identificacaoUld = identificacaoUld;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -145,4 +135,15 @@ public class DadosContinerUldPosioVeculoPtio {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

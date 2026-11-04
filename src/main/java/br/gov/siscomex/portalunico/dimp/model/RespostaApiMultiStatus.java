@@ -106,15 +106,9 @@ public class RespostaApiMultiStatus {
         this.identificacao = identificacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RespostaApiMultiStatus identificacao(IdentificacaoItemCriadoCover identificacao) {
+        this.identificacao = identificacao;
+        return this;
     }
 
     /**
@@ -165,10 +159,6 @@ public class RespostaApiMultiStatus {
         return this;
     }
 
-    public RespostaApiMultiStatus identificacao(IdentificacaoItemCriadoCover identificacao) {
-        this.identificacao = identificacao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -181,5 +171,16 @@ public class RespostaApiMultiStatus {
                 "    links: " + toIndentedString(links) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

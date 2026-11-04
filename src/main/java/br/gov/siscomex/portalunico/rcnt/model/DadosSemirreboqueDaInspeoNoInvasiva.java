@@ -73,15 +73,9 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
         this.ocrPlaca = ocrPlaca;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosSemirreboqueDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
+        this.ocrPlaca = ocrPlaca;
+        return this;
     }
 
     /**
@@ -103,10 +97,6 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
         return this;
     }
 
-    public DadosSemirreboqueDaInspeoNoInvasiva ocrPlaca(Boolean ocrPlaca) {
-        this.ocrPlaca = ocrPlaca;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -118,4 +108,15 @@ public class DadosSemirreboqueDaInspeoNoInvasiva {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
+  }
 }

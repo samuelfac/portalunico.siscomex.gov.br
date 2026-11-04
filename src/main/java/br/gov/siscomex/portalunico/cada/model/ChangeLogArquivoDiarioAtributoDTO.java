@@ -64,15 +64,9 @@ public class ChangeLogArquivoDiarioAtributoDTO {
         this.dataVersao = dataVersao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ChangeLogArquivoDiarioAtributoDTO dataVersao(String dataVersao) {
+        this.dataVersao = dataVersao;
+        return this;
     }
 
     /**
@@ -94,10 +88,6 @@ public class ChangeLogArquivoDiarioAtributoDTO {
         return this;
     }
 
-    public ChangeLogArquivoDiarioAtributoDTO dataVersao(String dataVersao) {
-        this.dataVersao = dataVersao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -108,5 +98,16 @@ public class ChangeLogArquivoDiarioAtributoDTO {
                 "    alteracoes: " + toIndentedString(alteracoes) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

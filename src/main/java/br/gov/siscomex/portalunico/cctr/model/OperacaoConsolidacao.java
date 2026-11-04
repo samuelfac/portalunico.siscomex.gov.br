@@ -78,15 +78,9 @@ public class OperacaoConsolidacao {
         this.tipoDeCarga = tipoDeCarga;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public OperacaoConsolidacao tipoDeCarga(Integer tipoDeCarga) {
+        this.tipoDeCarga = tipoDeCarga;
+        return this;
     }
 
     /**
@@ -123,8 +117,8 @@ public class OperacaoConsolidacao {
         this.numeroMRUC = numeroMRUC;
     }
 
-    public OperacaoConsolidacao tipoDeCarga(Integer tipoDeCarga) {
-        this.tipoDeCarga = tipoDeCarga;
+    public OperacaoConsolidacao numeroMRUC(String numeroMRUC) {
+        this.numeroMRUC = numeroMRUC;
         return this;
     }
 
@@ -193,10 +187,6 @@ public class OperacaoConsolidacao {
         return this;
     }
 
-    public OperacaoConsolidacao numeroMRUC(String numeroMRUC) {
-        this.numeroMRUC = numeroMRUC;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -210,5 +200,16 @@ public class OperacaoConsolidacao {
                 "    documentosConsolidacao: " + toIndentedString(documentosConsolidacao) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

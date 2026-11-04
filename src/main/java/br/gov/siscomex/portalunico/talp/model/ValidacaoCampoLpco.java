@@ -83,15 +83,9 @@ public class ValidacaoCampoLpco {
         this.obrigatorio = obrigatorio;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ValidacaoCampoLpco obrigatorio(Boolean obrigatorio) {
+        this.obrigatorio = obrigatorio;
+        return this;
     }
 
     /**
@@ -147,8 +141,8 @@ public class ValidacaoCampoLpco {
         this.tamanhoMaximo = tamanhoMaximo;
     }
 
-    public ValidacaoCampoLpco obrigatorio(Boolean obrigatorio) {
-        this.obrigatorio = obrigatorio;
+    public ValidacaoCampoLpco tamanhoMaximo(Integer tamanhoMaximo) {
+        this.tamanhoMaximo = tamanhoMaximo;
         return this;
     }
 
@@ -195,10 +189,6 @@ public class ValidacaoCampoLpco {
         return this;
     }
 
-    public ValidacaoCampoLpco tamanhoMaximo(Integer tamanhoMaximo) {
-        this.tamanhoMaximo = tamanhoMaximo;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -213,4 +203,15 @@ public class ValidacaoCampoLpco {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

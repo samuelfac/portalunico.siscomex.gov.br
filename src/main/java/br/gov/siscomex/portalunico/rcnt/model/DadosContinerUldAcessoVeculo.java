@@ -183,15 +183,9 @@ public class DadosContinerUldAcessoVeculo {
         this.identificacaoUld = identificacaoUld;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DadosContinerUldAcessoVeculo identificacaoUld(String identificacaoUld) {
+        this.identificacaoUld = identificacaoUld;
+        return this;
     }
 
     /**
@@ -265,8 +259,8 @@ public class DadosContinerUldAcessoVeculo {
         this.numeroBooking = numeroBooking;
     }
 
-    public DadosContinerUldAcessoVeculo identificacaoUld(String identificacaoUld) {
-        this.identificacaoUld = identificacaoUld;
+    public DadosContinerUldAcessoVeculo numeroBooking(String numeroBooking) {
+        this.numeroBooking = numeroBooking;
         return this;
     }
 
@@ -331,8 +325,8 @@ public class DadosContinerUldAcessoVeculo {
         return this;
     }
 
-    public DadosContinerUldAcessoVeculo numeroBooking(String numeroBooking) {
-        this.numeroBooking = numeroBooking;
+    public DadosContinerUldAcessoVeculo addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
+        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
         return this;
     }
 
@@ -420,8 +414,8 @@ public class DadosContinerUldAcessoVeculo {
         this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
     }
 
-    public DadosContinerUldAcessoVeculo addListaPortoDescarregamentoItem(DadosDoPorto listaPortoDescarregamentoItem) {
-        this.listaPortoDescarregamento.add(listaPortoDescarregamentoItem);
+    public DadosContinerUldAcessoVeculo cnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
+        this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
         return this;
     }
 
@@ -443,10 +437,6 @@ public class DadosContinerUldAcessoVeculo {
         return this;
     }
 
-    public DadosContinerUldAcessoVeculo cnpjEstabelecimentoEstufagem(String cnpjEstabelecimentoEstufagem) {
-        this.cnpjEstabelecimentoEstufagem = cnpjEstabelecimentoEstufagem;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -470,4 +460,15 @@ public class DadosContinerUldAcessoVeculo {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

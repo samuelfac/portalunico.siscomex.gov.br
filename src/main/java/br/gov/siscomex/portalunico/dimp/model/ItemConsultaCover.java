@@ -22,10 +22,43 @@ import java.util.List;
 public class ItemConsultaCover {
 
 
-    @XmlElement(name = "fabricante")
-    @ApiModelProperty(value = "")
-    @Valid
-    private FabricanteCover fabricante = null;
+    @XmlType(name = "StatusEnum")
+    @XmlEnum(String.class)
+    public enum StatusEnum {
+
+        @XmlEnumValue("ATIVO")
+        @JsonProperty("ATIVO")
+        ATIVO("ATIVO"),
+
+        @XmlEnumValue("INATIVO")
+        @JsonProperty("INATIVO")
+        INATIVO("INATIVO");
+
+
+        private final String value;
+
+        StatusEnum(String v) {
+            value = v;
+        }
+
+        public String value() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+        public static StatusEnum fromValue(String v) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (String.valueOf(b.value).equals(v)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + v + "' to StatusEnum");
+        }
+    }
 
     @XmlElement(name = "status")
     @ApiModelProperty(example = "ATIVO", value = "Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).<br>Domínio:")
@@ -53,19 +86,21 @@ public class ItemConsultaCover {
     @ApiModelProperty(value = "")
     @Valid
     private IndicadorExportadorFabricanteCover indicadorExportadorFabricante = null;
-    @XmlElement(name = "indicadorCompradorVendedor")
+
+    @XmlElement(name = "fabricante")
     @ApiModelProperty(value = "")
     @Valid
-    private IndicadorCompradorVendedorCover indicadorCompradorVendedor = null;
+    private FabricanteCover fabricante = null;
 
     @XmlElement(name = "exportador")
     @ApiModelProperty(value = "")
     @Valid
     private ExportadorCover exportador = null;
-    @XmlElement(name = "lpcos")
+
+    @XmlElement(name = "indicadorCompradorVendedor")
     @ApiModelProperty(value = "")
     @Valid
-    private List<LpcoCover> lpcos = null;
+    private IndicadorCompradorVendedorCover indicadorCompradorVendedor = null;
 
     @XmlElement(name = "mercadoria")
     @ApiModelProperty(value = "")
@@ -76,19 +111,21 @@ public class ItemConsultaCover {
     @ApiModelProperty(value = "")
     @Valid
     private CondicaoVendaConsultaItemCover condicaoVenda = null;
-    @XmlElement(name = "declaracoesVinculadas")
+
+    @XmlElement(name = "lpcos")
     @ApiModelProperty(value = "")
     @Valid
-    private List<DeclaracaoVinculadaCoverConsulta> declaracoesVinculadas = null;
+    private List<LpcoCover> lpcos = null;
 
     @XmlElement(name = "certificadoMercosul")
     @ApiModelProperty(value = "")
     @Valid
     private List<CertificadoMercosulCover> certificadoMercosul = null;
-    @XmlElement(name = "tributos")
+
+    @XmlElement(name = "declaracoesVinculadas")
     @ApiModelProperty(value = "")
     @Valid
-    private TributosConsultaItemCover tributos = null;
+    private List<DeclaracaoVinculadaCoverConsulta> declaracoesVinculadas = null;
 
     @XmlElement(name = "dadosCambiais")
     @ApiModelProperty(value = "")
@@ -105,16 +142,10 @@ public class ItemConsultaCover {
     @Valid
     private List<AtributoFundamentoLegalCover> atributosFundamentoLegalDuimp = null;
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
+    @XmlElement(name = "tributos")
+    @ApiModelProperty(value = "")
+    @Valid
+    private TributosConsultaItemCover tributos = null;
 
     /**
      * Indicador da situação do item associado à versão da Duimp consultada (ativo ou inativo).&lt;br&gt;Domínio:
@@ -463,6 +494,7 @@ public class ItemConsultaCover {
         return this;
     }
 
+
     @Override
     public String toString() {
 
@@ -488,41 +520,14 @@ public class ItemConsultaCover {
         return sb;
     }
 
-    @XmlType(name = "StatusEnum")
-    @XmlEnum(String.class)
-    public enum StatusEnum {
-
-        @XmlEnumValue("ATIVO")
-        @JsonProperty("ATIVO")
-        ATIVO("ATIVO"),
-
-        @XmlEnumValue("INATIVO")
-        @JsonProperty("INATIVO")
-        INATIVO("INATIVO");
-
-
-        private final String value;
-
-        StatusEnum(String v) {
-            value = v;
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
         }
-
-        public static StatusEnum fromValue(String v) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (String.valueOf(b.value).equals(v)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + v + "' to StatusEnum");
-        }
-
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

@@ -108,15 +108,9 @@ public class RemessaDaSolicitaoDarf {
         this.impostoImportacao = impostoImportacao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public RemessaDaSolicitaoDarf impostoImportacao(String impostoImportacao) {
+        this.impostoImportacao = impostoImportacao;
+        return this;
     }
 
     /**
@@ -177,8 +171,8 @@ public class RemessaDaSolicitaoDarf {
         this.valorJurosOficio = valorJurosOficio;
     }
 
-    public RemessaDaSolicitaoDarf impostoImportacao(String impostoImportacao) {
-        this.impostoImportacao = impostoImportacao;
+    public RemessaDaSolicitaoDarf valorJurosOficio(BigDecimal valorJurosOficio) {
+        this.valorJurosOficio = valorJurosOficio;
         return this;
     }
 
@@ -203,10 +197,6 @@ public class RemessaDaSolicitaoDarf {
         return this;
     }
 
-    public RemessaDaSolicitaoDarf valorJurosOficio(BigDecimal valorJurosOficio) {
-        this.valorJurosOficio = valorJurosOficio;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -221,4 +211,15 @@ public class RemessaDaSolicitaoDarf {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

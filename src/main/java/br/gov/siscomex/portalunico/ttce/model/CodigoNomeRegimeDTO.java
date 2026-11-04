@@ -97,5 +97,5 @@ public class CodigoNomeRegimeDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
-    }
+  }
 }

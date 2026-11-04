@@ -86,15 +86,9 @@ public class DetalheDoProcessamentoDoManifesto {
         this.cnpj = cnpj;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public DetalheDoProcessamentoDoManifesto cnpj(String cnpj) {
+        this.cnpj = cnpj;
+        return this;
     }
 
     /**
@@ -221,10 +215,6 @@ public class DetalheDoProcessamentoDoManifesto {
         return this;
     }
 
-    public DetalheDoProcessamentoDoManifesto cnpj(String cnpj) {
-        this.cnpj = cnpj;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -240,4 +230,15 @@ public class DetalheDoProcessamentoDoManifesto {
                 "}";
         return sb;
     }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 }

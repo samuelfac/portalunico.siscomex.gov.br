@@ -25,56 +25,6 @@ import javax.xml.bind.annotation.XmlType;
 public class TributoDuimpConsultaCover {
 
 
-    @XmlElement(name = "tipo")
-    @ApiModelProperty(example = "II", value = "Tipo de impostos (códigos de receita principal únicos).<br>Domínio:")
-    /**
-     * Tipo de impostos (códigos de receita principal únicos).<br>Domínio:
-     **/
-    private TipoEnum tipo = null;
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
-    }
-
-    /**
-     * Tipo de impostos (códigos de receita principal únicos).&lt;br&gt;Domínio:
-     *
-     * @return tipo
-     **/
-    @JsonProperty("tipo")
-    public String getTipo() {
-        if (tipo == null) {
-            return null;
-        }
-        return tipo.value();
-    }
-
-    public void setTipo(TipoEnum tipo) {
-        this.tipo = tipo;
-    }
-
-    public TributoDuimpConsultaCover tipo(TipoEnum tipo) {
-        this.tipo = tipo;
-        return this;
-    }
-
-
-    @Override
-    public String toString() {
-
-        String sb = "class TributoDuimpConsultaCover {\n" +
-                "    tipo: " + toIndentedString(tipo) + "\n" +
-                "}";
-        return sb;
-    }
-
     @XmlType(name = "TipoEnum")
     @XmlEnum(String.class)
     public enum TipoEnum {
@@ -139,5 +89,55 @@ public class TributoDuimpConsultaCover {
             }
             throw new IllegalArgumentException("Unexpected value '" + v + "' to TipoEnum");
         }
+    }
+
+    @XmlElement(name = "tipo")
+    @ApiModelProperty(example = "II", value = "Tipo de impostos (códigos de receita principal únicos).<br>Domínio:")
+    /**
+     * Tipo de impostos (códigos de receita principal únicos).<br>Domínio:
+     **/
+    private TipoEnum tipo = null;
+
+    /**
+     * Tipo de impostos (códigos de receita principal únicos).&lt;br&gt;Domínio:
+     *
+     * @return tipo
+     **/
+    @JsonProperty("tipo")
+    public String getTipo() {
+        if (tipo == null) {
+            return null;
+        }
+        return tipo.value();
+    }
+
+    public void setTipo(TipoEnum tipo) {
+        this.tipo = tipo;
+    }
+
+    public TributoDuimpConsultaCover tipo(TipoEnum tipo) {
+        this.tipo = tipo;
+        return this;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String sb = "class TributoDuimpConsultaCover {\n" +
+                "    tipo: " + toIndentedString(tipo) + "\n" +
+                "}";
+        return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

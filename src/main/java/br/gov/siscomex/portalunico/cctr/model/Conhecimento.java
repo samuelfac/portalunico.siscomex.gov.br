@@ -122,15 +122,9 @@ public class Conhecimento {
         this.dataEmissao = dataEmissao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Conhecimento dataEmissao(OffsetDateTime dataEmissao) {
+        this.dataEmissao = dataEmissao;
+        return this;
     }
 
     /**
@@ -188,8 +182,8 @@ public class Conhecimento {
         this.valorFrete = valorFrete;
     }
 
-    public Conhecimento dataEmissao(OffsetDateTime dataEmissao) {
-        this.dataEmissao = dataEmissao;
+    public Conhecimento valorFrete(Double valorFrete) {
+        this.valorFrete = valorFrete;
         return this;
     }
 
@@ -228,8 +222,8 @@ public class Conhecimento {
         this.toOrder = toOrder;
     }
 
-    public Conhecimento valorFrete(Double valorFrete) {
-        this.valorFrete = valorFrete;
+    public Conhecimento toOrder(Boolean toOrder) {
+        this.toOrder = toOrder;
         return this;
     }
 
@@ -271,10 +265,6 @@ public class Conhecimento {
         return this;
     }
 
-    public Conhecimento toOrder(Boolean toOrder) {
-        this.toOrder = toOrder;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -291,5 +281,16 @@ public class Conhecimento {
                 "    enderecoConsignatario: " + toIndentedString(enderecoConsignatario) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

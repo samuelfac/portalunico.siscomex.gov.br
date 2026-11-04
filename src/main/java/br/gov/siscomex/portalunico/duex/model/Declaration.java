@@ -52,15 +52,9 @@ public class Declaration {
         this.declarationDrawbackIsencao = declarationDrawbackIsencao;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public Declaration declarationDrawbackIsencao(DeclarationDrawbackIsencao declarationDrawbackIsencao) {
+        this.declarationDrawbackIsencao = declarationDrawbackIsencao;
+        return this;
     }
 
     /**
@@ -120,10 +114,6 @@ public class Declaration {
         return this;
     }
 
-    public Declaration declarationDrawbackIsencao(DeclarationDrawbackIsencao declarationDrawbackIsencao) {
-        this.declarationDrawbackIsencao = declarationDrawbackIsencao;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -135,5 +125,16 @@ public class Declaration {
                 "    declarationNoNFSimplified: " + toIndentedString(declarationNoNFSimplified) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

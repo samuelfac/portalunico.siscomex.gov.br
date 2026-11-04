@@ -86,15 +86,9 @@ public class SoltaGranelDetails {
         this.quantidade = quantidade;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SoltaGranelDetails quantidade(BigDecimal quantidade) {
+        this.quantidade = quantidade;
+        return this;
     }
 
     /**
@@ -135,10 +129,6 @@ public class SoltaGranelDetails {
         return this;
     }
 
-    public SoltaGranelDetails quantidade(BigDecimal quantidade) {
-        this.quantidade = quantidade;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -150,5 +140,16 @@ public class SoltaGranelDetails {
                 "    unidadeMedida: " + toIndentedString(unidadeMedida) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

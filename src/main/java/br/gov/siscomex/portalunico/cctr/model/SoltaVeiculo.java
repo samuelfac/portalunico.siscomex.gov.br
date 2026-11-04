@@ -77,15 +77,9 @@ public class SoltaVeiculo {
         this.total = total;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public SoltaVeiculo total(Integer total) {
+        this.total = total;
+        return this;
     }
 
     /**
@@ -108,10 +102,6 @@ public class SoltaVeiculo {
         return this;
     }
 
-    public SoltaVeiculo total(Integer total) {
-        this.total = total;
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -122,5 +112,16 @@ public class SoltaVeiculo {
                 "    quantidade: " + toIndentedString(quantidade) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }

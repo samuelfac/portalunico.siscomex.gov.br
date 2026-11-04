@@ -53,11 +53,12 @@ public class PaisFabricanteCover {
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class PaisFabricanteCover {\n");
 
-        String sb = "class PaisFabricanteCover {\n" +
-                "    codigo: " + toIndentedString(codigo) + "\n" +
-                "}";
-        return sb;
+        sb.append("    codigo: ").append(toIndentedString(codigo)).append("\n");
+        sb.append("}");
+        return sb.toString();
     }
 
     /**

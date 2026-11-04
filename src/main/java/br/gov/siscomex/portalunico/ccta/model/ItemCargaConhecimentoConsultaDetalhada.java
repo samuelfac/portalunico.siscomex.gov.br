@@ -61,15 +61,9 @@ public class ItemCargaConhecimentoConsultaDetalhada {
         return this;
     }
 
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private static String toIndentedString(java.lang.Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
+        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
+        return this;
     }
 
     /**
@@ -115,10 +109,6 @@ public class ItemCargaConhecimentoConsultaDetalhada {
         return this;
     }
 
-    public ItemCargaConhecimentoConsultaDetalhada addClassificacoesMercadoriaItem(ClassificacaoMercadoriaConsultaDetalhada classificacoesMercadoriaItem) {
-        this.classificacoesMercadoria.add(classificacoesMercadoriaItem);
-        return this;
-    }
 
     @Override
     public String toString() {
@@ -129,5 +119,16 @@ public class ItemCargaConhecimentoConsultaDetalhada {
                 "    ulds: " + toIndentedString(ulds) + "\n" +
                 "}";
         return sb;
+    }
+
+    /**
+     * Convert the given object to string with each line indented by 4 spaces
+     * (except the first line).
+     */
+    private static String toIndentedString(java.lang.Object o) {
+        if (o == null) {
+            return "null";
+        }
+        return o.toString().replace("\n", "\n    ");
     }
 }
